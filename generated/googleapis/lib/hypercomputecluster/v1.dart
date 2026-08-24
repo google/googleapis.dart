@@ -20,8 +20,9 @@
 
 /// Cluster Director API - v1
 ///
-/// The Cluster Director API allows you to deploy, manage, and monitor clusters
-/// that run AI, ML, or HPC workloads.
+/// The Cluster Director API lets you deploy, manage, and monitor clusters that
+/// run artificial intelligence (AI), machine learning (ML), or high performance
+/// computing (HPC) workloads.
 ///
 /// For more information, see
 /// <https://docs.cloud.google.com/cluster-director/docs>
@@ -47,8 +48,9 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Cluster Director API allows you to deploy, manage, and monitor clusters
-/// that run AI, ML, or HPC workloads.
+/// The Cluster Director API lets you deploy, manage, and monitor clusters that
+/// run artificial intelligence (AI), machine learning (ML), or high performance
+/// computing (HPC) workloads.
 class HypercomputeClusterApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -125,7 +127,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -140,9 +142,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -209,9 +210,10 @@ class ProjectsLocationsClustersResource {
   /// created, in the format `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [clusterId] - Required. ID of the cluster to create. Must conform to
-  /// \[RFC-1034\](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-  /// alphanumeric, and at most 63 characters).
+  /// [clusterId] - Required. The ID of the cluster to create. The cluster ID
+  /// must start with a lowercase letter (`a`-`z`), use only lowercase letters
+  /// or numbers, and contain up to 10 characters. For example, specify
+  /// `cluster001`.
   ///
   /// [requestId] - Optional. A unique identifier for this request. A random
   /// UUID is recommended. This request is idempotent if and only if
@@ -643,17 +645,15 @@ class ProjectsLocationsOperationsResource {
 /// A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the
 /// boot disk for a Compute Engine VM instance.
 class BootDisk {
-  /// Size of the disk in gigabytes.
+  /// The size of the disk in gigabytes (GB), which must be at least 40 GB.
   ///
-  /// Must be at least 10GB.
-  ///
-  /// Required. Immutable.
+  /// Optional.
   core.String? sizeGb;
 
   /// [Persistent disk type](https://cloud.google.com/compute/docs/disks#disk-types),
   /// in the format `projects/{project}/zones/{zone}/diskTypes/{disk_type}`.
   ///
-  /// Required. Immutable.
+  /// Optional.
   core.String? type;
 
   BootDisk({this.sizeGb, this.type});
@@ -717,9 +717,9 @@ class Cluster {
   /// Output only.
   core.String? createTime;
 
-  /// User-provided description of the cluster.
+  /// A description for your cluster.
   ///
-  /// Maximum of 2048 characters.
+  /// You can use up to 2,048 characters.
   ///
   /// Optional.
   core.String? description;
@@ -1190,6 +1190,8 @@ class GcsAutoclassConfig {
   /// Possible string values are:
   /// - "TERMINAL_STORAGE_CLASS_UNSPECIFIED" : Unspecified terminal storage
   /// class
+  /// - "NEARLINE" : Nearline terminal storage class
+  /// - "ARCHIVE" : Archive terminal storage class
   core.String? terminalStorageClass;
 
   GcsAutoclassConfig({this.enabled, this.terminalStorageClass});
@@ -1411,7 +1413,7 @@ class NetworkResource {
   /// Immutable.
   NetworkResourceConfig? config;
 
-  /// Reference to a network in Google Compute Engine.
+  /// A reference to a network in Google Compute Engine.
   ///
   /// Output only.
   NetworkReference? network;
@@ -1509,6 +1511,7 @@ class NewBucketConfig {
   /// - "COLDLINE" : Very low-cost storage for infrequently accessed data.
   /// - "ARCHIVE" : Lowest-cost storage for data archiving, online backup, and
   /// disaster recovery.
+  /// - "RAPID" : Storage class optimized for I/O intensive workloads.
   core.String? storageClass;
 
   NewBucketConfig({
@@ -1567,7 +1570,7 @@ class NewFilestoreConfig {
   core.List<FileShareConfig>? fileShares;
 
   /// Name of the Filestore instance to create, in the format
-  /// `projects/{project}/locations/{location}/instances/{instance}`
+  /// `projects/{project}/locations/{location}/instances/{instance}`.
   ///
   /// Required. Immutable.
   core.String? filestore;
@@ -1713,11 +1716,21 @@ class NewLustreConfig {
   /// Required. Immutable.
   core.String? lustre;
 
+  /// Throughput of the instance in MB/s/TiB.
+  ///
+  /// Valid values are 125, 250, 500, 1000. See
+  /// [Performance tiers and maximum storage capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+  /// for more information.
+  ///
+  /// Optional. Immutable.
+  core.String? perUnitStorageThroughput;
+
   NewLustreConfig({
     this.capacityGb,
     this.description,
     this.filesystem,
     this.lustre,
+    this.perUnitStorageThroughput,
   });
 
   NewLustreConfig.fromJson(core.Map json_)
@@ -1726,6 +1739,8 @@ class NewLustreConfig {
         description: json_['description'] as core.String?,
         filesystem: json_['filesystem'] as core.String?,
         lustre: json_['lustre'] as core.String?,
+        perUnitStorageThroughput:
+            json_['perUnitStorageThroughput'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -1733,11 +1748,13 @@ class NewLustreConfig {
     final description = this.description;
     final filesystem = this.filesystem;
     final lustre = this.lustre;
+    final perUnitStorageThroughput = this.perUnitStorageThroughput;
     return {
       'capacityGb': ?capacityGb,
       'description': ?description,
       'filesystem': ?filesystem,
       'lustre': ?lustre,
+      'perUnitStorageThroughput': ?perUnitStorageThroughput,
     };
   }
 }
@@ -2129,7 +2146,7 @@ class SlurmLoginNodes {
 /// Nodesets are groups of compute nodes used by Slurm that are responsible for
 /// running workloads submitted to the cluster.
 class SlurmNodeSet {
-  /// ID of the compute resource on which this nodeset will run.
+  /// The ID of the compute resource on which this nodeset runs.
   ///
   /// Must match a key in the cluster's compute_resources.
   ///
@@ -2142,12 +2159,12 @@ class SlurmNodeSet {
   /// Optional.
   ComputeInstanceSlurmNodeSet? computeInstance;
 
-  /// Identifier for the nodeset, which allows it to be referenced by
+  /// The ID for the nodeset, which allows it to be referenced by cluster
   /// partitions.
   ///
-  /// Must conform to
-  /// \[RFC-1034\](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
-  /// alphanumeric, and at most 63 characters).
+  /// The nodeset ID must start with a lowercase letter (`a`-`z`), use only
+  /// lowercase letters or numbers, and contain up to 15 characters. For
+  /// example, specify `nodeset001`.
   ///
   /// Required.
   core.String? id;
@@ -2408,10 +2425,10 @@ class StorageConfig {
   }
 }
 
-/// A resource representing a form of persistent storage that is accessible to
-/// compute resources in the cluster.
+/// Represents a form of persistent storage that you can mount onto compute
+/// resources in the cluster.
 class StorageResource {
-  /// Reference to a Google Cloud Storage bucket.
+  /// A reference to a Google Cloud Storage bucket.
   ///
   /// Populated if and only if the storage resource was configured to use Google
   /// Cloud Storage.
@@ -2429,7 +2446,7 @@ class StorageResource {
   /// Required. Immutable.
   StorageResourceConfig? config;
 
-  /// Reference to a Filestore instance.
+  /// A reference to a Filestore instance.
   ///
   /// Populated if and only if the storage resource was configured to use
   /// Filestore.
@@ -2437,7 +2454,7 @@ class StorageResource {
   /// Output only.
   FilestoreReference? filestore;
 
-  /// Reference to a Managed Lustre instance.
+  /// A reference to a Managed Lustre instance.
   ///
   /// Populated if and only if the storage resource was configured to use
   /// Managed Lustre.

@@ -449,6 +449,7 @@ api.Container buildContainer() {
     o.ports = buildUnnamed10();
     o.readinessProbe = buildProbe();
     o.resources = buildResourceRequirements();
+    o.sandboxLauncher = true;
     o.securityContext = buildSecurityContext();
     o.startupProbe = buildProbe();
     o.terminationMessagePath = 'foo';
@@ -474,6 +475,7 @@ void checkContainer(api.Container o) {
     checkUnnamed10(o.ports!);
     checkProbe(o.readinessProbe!);
     checkResourceRequirements(o.resources!);
+    unittest.expect(o.sandboxLauncher!, unittest.isTrue);
     checkSecurityContext(o.securityContext!);
     checkProbe(o.startupProbe!);
     unittest.expect(o.terminationMessagePath!, unittest.equals('foo'));
@@ -836,6 +838,7 @@ api.ExecutionSpec buildExecutionSpec() {
   final o = api.ExecutionSpec();
   buildCounterExecutionSpec++;
   if (buildCounterExecutionSpec < 3) {
+    o.delayExecution = true;
     o.parallelism = 42;
     o.taskCount = 42;
     o.template = buildTaskTemplateSpec();
@@ -847,6 +850,7 @@ api.ExecutionSpec buildExecutionSpec() {
 void checkExecutionSpec(api.ExecutionSpec o) {
   buildCounterExecutionSpec++;
   if (buildCounterExecutionSpec < 3) {
+    unittest.expect(o.delayExecution!, unittest.isTrue);
     unittest.expect(o.parallelism!, unittest.equals(42));
     unittest.expect(o.taskCount!, unittest.equals(42));
     checkTaskTemplateSpec(o.template!);
@@ -1327,8 +1331,8 @@ api.InstanceSpec buildInstanceSpec() {
   if (buildCounterInstanceSpec < 3) {
     o.containers = buildUnnamed25();
     o.nodeSelector = buildUnnamed26();
+    o.restartPolicy = 'foo';
     o.serviceAccountName = 'foo';
-    o.timeout = 'foo';
     o.volumes = buildUnnamed27();
   }
   buildCounterInstanceSpec--;
@@ -1340,8 +1344,8 @@ void checkInstanceSpec(api.InstanceSpec o) {
   if (buildCounterInstanceSpec < 3) {
     checkUnnamed25(o.containers!);
     checkUnnamed26(o.nodeSelector!);
+    unittest.expect(o.restartPolicy!, unittest.equals('foo'));
     unittest.expect(o.serviceAccountName!, unittest.equals('foo'));
-    unittest.expect(o.timeout!, unittest.equals('foo'));
     checkUnnamed27(o.volumes!);
   }
   buildCounterInstanceSpec--;
@@ -2252,6 +2256,7 @@ api.Overrides buildOverrides() {
   buildCounterOverrides++;
   if (buildCounterOverrides < 3) {
     o.containerOverrides = buildUnnamed59();
+    o.delayExecution = true;
     o.taskCount = 42;
     o.timeoutSeconds = 42;
   }
@@ -2263,6 +2268,7 @@ void checkOverrides(api.Overrides o) {
   buildCounterOverrides++;
   if (buildCounterOverrides < 3) {
     checkUnnamed59(o.containerOverrides!);
+    unittest.expect(o.delayExecution!, unittest.isTrue);
     unittest.expect(o.taskCount!, unittest.equals(42));
     unittest.expect(o.timeoutSeconds!, unittest.equals(42));
   }
@@ -2963,14 +2969,18 @@ core.int buildCounterStartInstanceRequest = 0;
 api.StartInstanceRequest buildStartInstanceRequest() {
   final o = api.StartInstanceRequest();
   buildCounterStartInstanceRequest++;
-  if (buildCounterStartInstanceRequest < 3) {}
+  if (buildCounterStartInstanceRequest < 3) {
+    o.dryRun = 'foo';
+  }
   buildCounterStartInstanceRequest--;
   return o;
 }
 
 void checkStartInstanceRequest(api.StartInstanceRequest o) {
   buildCounterStartInstanceRequest++;
-  if (buildCounterStartInstanceRequest < 3) {}
+  if (buildCounterStartInstanceRequest < 3) {
+    unittest.expect(o.dryRun!, unittest.equals('foo'));
+  }
   buildCounterStartInstanceRequest--;
 }
 
@@ -3070,14 +3080,18 @@ core.int buildCounterStopInstanceRequest = 0;
 api.StopInstanceRequest buildStopInstanceRequest() {
   final o = api.StopInstanceRequest();
   buildCounterStopInstanceRequest++;
-  if (buildCounterStopInstanceRequest < 3) {}
+  if (buildCounterStopInstanceRequest < 3) {
+    o.dryRun = 'foo';
+  }
   buildCounterStopInstanceRequest--;
   return o;
 }
 
 void checkStopInstanceRequest(api.StopInstanceRequest o) {
   buildCounterStopInstanceRequest++;
-  if (buildCounterStopInstanceRequest < 3) {}
+  if (buildCounterStopInstanceRequest < 3) {
+    unittest.expect(o.dryRun!, unittest.equals('foo'));
+  }
   buildCounterStopInstanceRequest--;
 }
 
@@ -5501,6 +5515,7 @@ void main() {
       final res = api.CloudRunApi(mock).namespaces.instances;
       final arg_request = buildInstance();
       final arg_parent = 'foo';
+      final arg_dryRun = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5541,6 +5556,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['dryRun']!.first,
+            unittest.equals(arg_dryRun),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -5554,6 +5573,7 @@ void main() {
       final response = await res.create(
         arg_request,
         arg_parent,
+        dryRun: arg_dryRun,
         $fields: arg_$fields,
       );
       checkInstance(response as api.Instance);
@@ -5564,6 +5584,7 @@ void main() {
       final res = api.CloudRunApi(mock).namespaces.instances;
       final arg_name = 'foo';
       final arg_apiVersion = 'foo';
+      final arg_dryRun = 'foo';
       final arg_kind = 'foo';
       final arg_propagationPolicy = 'foo';
       final arg_$fields = 'foo';
@@ -5604,6 +5625,10 @@ void main() {
             queryMap['apiVersion']!.first,
             unittest.equals(arg_apiVersion),
           );
+          unittest.expect(
+            queryMap['dryRun']!.first,
+            unittest.equals(arg_dryRun),
+          );
           unittest.expect(queryMap['kind']!.first, unittest.equals(arg_kind));
           unittest.expect(
             queryMap['propagationPolicy']!.first,
@@ -5623,6 +5648,7 @@ void main() {
       final response = await res.delete(
         arg_name,
         apiVersion: arg_apiVersion,
+        dryRun: arg_dryRun,
         kind: arg_kind,
         propagationPolicy: arg_propagationPolicy,
         $fields: arg_$fields,
@@ -5786,6 +5812,7 @@ void main() {
       final res = api.CloudRunApi(mock).namespaces.instances;
       final arg_request = buildInstance();
       final arg_name = 'foo';
+      final arg_dryRun = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5826,6 +5853,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['dryRun']!.first,
+            unittest.equals(arg_dryRun),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -5839,6 +5870,7 @@ void main() {
       final response = await res.replaceInstance(
         arg_request,
         arg_name,
+        dryRun: arg_dryRun,
         $fields: arg_$fields,
       );
       checkInstance(response as api.Instance);
@@ -5977,6 +6009,7 @@ void main() {
       final res = api.CloudRunApi(mock).namespaces.jobs;
       final arg_request = buildJob();
       final arg_parent = 'foo';
+      final arg_dryRun = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6017,6 +6050,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['dryRun']!.first,
+            unittest.equals(arg_dryRun),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -6030,6 +6067,7 @@ void main() {
       final response = await res.create(
         arg_request,
         arg_parent,
+        dryRun: arg_dryRun,
         $fields: arg_$fields,
       );
       checkJob(response as api.Job);
@@ -6040,6 +6078,7 @@ void main() {
       final res = api.CloudRunApi(mock).namespaces.jobs;
       final arg_name = 'foo';
       final arg_apiVersion = 'foo';
+      final arg_dryRun = 'foo';
       final arg_kind = 'foo';
       final arg_propagationPolicy = 'foo';
       final arg_$fields = 'foo';
@@ -6080,6 +6119,10 @@ void main() {
             queryMap['apiVersion']!.first,
             unittest.equals(arg_apiVersion),
           );
+          unittest.expect(
+            queryMap['dryRun']!.first,
+            unittest.equals(arg_dryRun),
+          );
           unittest.expect(queryMap['kind']!.first, unittest.equals(arg_kind));
           unittest.expect(
             queryMap['propagationPolicy']!.first,
@@ -6099,6 +6142,7 @@ void main() {
       final response = await res.delete(
         arg_name,
         apiVersion: arg_apiVersion,
+        dryRun: arg_dryRun,
         kind: arg_kind,
         propagationPolicy: arg_propagationPolicy,
         $fields: arg_$fields,
@@ -6262,6 +6306,7 @@ void main() {
       final res = api.CloudRunApi(mock).namespaces.jobs;
       final arg_request = buildJob();
       final arg_name = 'foo';
+      final arg_dryRun = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6302,6 +6347,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['dryRun']!.first,
+            unittest.equals(arg_dryRun),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -6315,6 +6364,7 @@ void main() {
       final response = await res.replaceJob(
         arg_request,
         arg_name,
+        dryRun: arg_dryRun,
         $fields: arg_$fields,
       );
       checkJob(response as api.Job);

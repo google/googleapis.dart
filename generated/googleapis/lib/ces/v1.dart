@@ -33,12 +33,15 @@
 ///       - [ProjectsLocationsAppsChangelogsResource]
 ///       - [ProjectsLocationsAppsConversationsResource]
 ///       - [ProjectsLocationsAppsDeploymentsResource]
+///         - [ProjectsLocationsAppsDeploymentsMessageResource]
 ///       - [ProjectsLocationsAppsExamplesResource]
 ///       - [ProjectsLocationsAppsGuardrailsResource]
+///       - [ProjectsLocationsAppsMessageResource]
 ///       - [ProjectsLocationsAppsSessionsResource]
 ///       - [ProjectsLocationsAppsToolsResource]
 ///       - [ProjectsLocationsAppsToolsetsResource]
 ///       - [ProjectsLocationsAppsVersionsResource]
+///         - [ProjectsLocationsAppsVersionsMessageResource]
 ///     - [ProjectsLocationsOperationsResource]
 library;
 
@@ -216,6 +219,8 @@ class ProjectsLocationsAppsResource {
       ProjectsLocationsAppsExamplesResource(_requester);
   ProjectsLocationsAppsGuardrailsResource get guardrails =>
       ProjectsLocationsAppsGuardrailsResource(_requester);
+  ProjectsLocationsAppsMessageResource get message =>
+      ProjectsLocationsAppsMessageResource(_requester);
   ProjectsLocationsAppsSessionsResource get sessions =>
       ProjectsLocationsAppsSessionsResource(_requester);
   ProjectsLocationsAppsToolsResource get tools =>
@@ -434,6 +439,46 @@ class ProjectsLocationsAppsResource {
       queryParams: queryParams_,
     );
     return App.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the extended agent card for the authenticated agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [tenant] - Optional. Opaque routing identifier. Must match the `tenant`
+  /// value from the selected `AgentInterface` in the Agent Card when that field
+  /// is set.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LfA2aV1AgentCard].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LfA2aV1AgentCard> getExtendedAgentCard(
+    core.String tenant, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$tenant') + '/extendedAgentCard';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LfA2aV1AgentCard.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Imports the specified app.
@@ -1094,6 +1139,16 @@ class ProjectsLocationsAppsConversationsResource {
   /// the agent in a separate session, which is persisted for testing and
   /// debugging purposes.
   ///
+  /// [view] - Optional. The view specifying which fields in the response should
+  /// be populated.
+  /// Possible string values are:
+  /// - "CONVERSATION_VIEW_UNSPECIFIED" : Not specified, defaults to
+  /// CONVERSATION_VIEW_BASIC.
+  /// - "CONVERSATION_VIEW_BASIC" : The basic view. Returns everything except
+  /// resolved instructions.
+  /// - "CONVERSATION_VIEW_FULL" : The full view. Includes resolved instructions
+  /// dynamically per turn.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1107,10 +1162,12 @@ class ProjectsLocationsAppsConversationsResource {
   async.Future<Conversation> get(
     core.String name, {
     core.String? source,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'source': ?source == null ? null : [source],
+      'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1202,6 +1259,9 @@ class ProjectsLocationsAppsConversationsResource {
 
 class ProjectsLocationsAppsDeploymentsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsAppsDeploymentsMessageResource get message =>
+      ProjectsLocationsAppsDeploymentsMessageResource(_requester);
 
   ProjectsLocationsAppsDeploymentsResource(commons.ApiRequester client)
     : _requester = client;
@@ -1335,6 +1395,46 @@ class ProjectsLocationsAppsDeploymentsResource {
     );
   }
 
+  /// Gets the extended agent card for the authenticated agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [tenant] - Optional. Opaque routing identifier. Must match the `tenant`
+  /// value from the selected `AgentInterface` in the Agent Card when that field
+  /// is set.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+/deployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LfA2aV1AgentCard].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LfA2aV1AgentCard> getExtendedAgentCard(
+    core.String tenant, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$tenant') + '/extendedAgentCard';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LfA2aV1AgentCard.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists deployments in the given app.
   ///
   /// Request parameters:
@@ -1437,6 +1537,58 @@ class ProjectsLocationsAppsDeploymentsResource {
       queryParams: queryParams_,
     );
     return Deployment.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsAppsDeploymentsMessageResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAppsDeploymentsMessageResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Sends a message to an agent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tenant] - Optional. Opaque routing identifier. Must match the `tenant`
+  /// value from the selected `AgentInterface` in the Agent Card when that field
+  /// is set.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+/deployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LfA2aV1SendMessageResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LfA2aV1SendMessageResponse> send(
+    LfA2aV1SendMessageRequest request,
+    core.String tenant, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$tenant') + '/message:send';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LfA2aV1SendMessageResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1918,6 +2070,58 @@ class ProjectsLocationsAppsGuardrailsResource {
       queryParams: queryParams_,
     );
     return Guardrail.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAppsMessageResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAppsMessageResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Sends a message to an agent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tenant] - Optional. Opaque routing identifier. Must match the `tenant`
+  /// value from the selected `AgentInterface` in the Agent Card when that field
+  /// is set.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LfA2aV1SendMessageResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LfA2aV1SendMessageResponse> send(
+    LfA2aV1SendMessageRequest request,
+    core.String tenant, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$tenant') + '/message:send';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LfA2aV1SendMessageResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2607,6 +2811,9 @@ class ProjectsLocationsAppsToolsetsResource {
 class ProjectsLocationsAppsVersionsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAppsVersionsMessageResource get message =>
+      ProjectsLocationsAppsVersionsMessageResource(_requester);
+
   ProjectsLocationsAppsVersionsResource(commons.ApiRequester client)
     : _requester = client;
 
@@ -2738,6 +2945,46 @@ class ProjectsLocationsAppsVersionsResource {
     );
   }
 
+  /// Gets the extended agent card for the authenticated agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [tenant] - Optional. Opaque routing identifier. Must match the `tenant`
+  /// value from the selected `AgentInterface` in the Agent Card when that field
+  /// is set.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LfA2aV1AgentCard].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LfA2aV1AgentCard> getExtendedAgentCard(
+    core.String tenant, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$tenant') + '/extendedAgentCard';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LfA2aV1AgentCard.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists all app versions in the given app.
   ///
   /// Request parameters:
@@ -2839,6 +3086,58 @@ class ProjectsLocationsAppsVersionsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAppsVersionsMessageResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAppsVersionsMessageResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Sends a message to an agent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tenant] - Optional. Opaque routing identifier. Must match the `tenant`
+  /// value from the selected `AgentInterface` in the Agent Card when that field
+  /// is set.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LfA2aV1SendMessageResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LfA2aV1SendMessageResponse> send(
+    LfA2aV1SendMessageRequest request,
+    core.String tenant, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$tenant') + '/message:send';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LfA2aV1SendMessageResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3298,6 +3597,11 @@ class Agent {
   /// Output only.
   core.String? updateTime;
 
+  /// Misconfigurations or errors in the agent that may affect agent quality.
+  ///
+  /// Output only.
+  core.List<core.String>? validationErrors;
+
   Agent({
     this.afterAgentCallbacks,
     this.afterModelCallbacks,
@@ -3321,6 +3625,7 @@ class Agent {
     this.toolsets,
     this.transferRules,
     this.updateTime,
+    this.validationErrors,
   });
 
   Agent.fromJson(core.Map json_)
@@ -3414,6 +3719,9 @@ class Agent {
             )
             .toList(),
         updateTime: json_['updateTime'] as core.String?,
+        validationErrors: (json_['validationErrors'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -3439,6 +3747,7 @@ class Agent {
     final toolsets = this.toolsets;
     final transferRules = this.transferRules;
     final updateTime = this.updateTime;
+    final validationErrors = this.validationErrors;
     return {
       'afterAgentCallbacks': ?afterAgentCallbacks,
       'afterModelCallbacks': ?afterModelCallbacks,
@@ -3462,6 +3771,7 @@ class Agent {
       'toolsets': ?toolsets,
       'transferRules': ?transferRules,
       'updateTime': ?updateTime,
+      'validationErrors': ?validationErrors,
     };
   }
 }
@@ -3495,6 +3805,149 @@ class AgentAgentToolset {
     final toolIds = this.toolIds;
     final toolset = this.toolset;
     return {'toolIds': ?toolIds, 'toolset': ?toolset};
+  }
+}
+
+/// AgentCard conveys key information about a remote agent.
+///
+/// It is a trimmed version of the AgentCard defined in the A2A protocol
+/// https://a2a-protocol.org/dev/specification/#441-agentcard
+class AgentCard {
+  /// A description of the agent's domain of action/solution space.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// A human-readable name for the agent.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Skills represent a unit of ability an agent can perform.
+  ///
+  /// This may somewhat abstract but represents a more focused set of actions
+  /// that the agent is highly likely to succeed at.
+  ///
+  /// Required.
+  core.List<AgentSkill>? skills;
+
+  /// Ordered list of supported interfaces.
+  ///
+  /// The first entry is preferred.
+  ///
+  /// Required.
+  core.List<AgentInterface>? supportedInterfaces;
+
+  /// The version of the agent.
+  ///
+  /// Required.
+  core.String? version;
+
+  AgentCard({
+    this.description,
+    this.name,
+    this.skills,
+    this.supportedInterfaces,
+    this.version,
+  });
+
+  AgentCard.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+        skills: (json_['skills'] as core.List?)
+            ?.map(
+              (value) => AgentSkill.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        supportedInterfaces: (json_['supportedInterfaces'] as core.List?)
+            ?.map(
+              (value) => AgentInterface.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final name = this.name;
+    final skills = this.skills;
+    final supportedInterfaces = this.supportedInterfaces;
+    final version = this.version;
+    return {
+      'description': ?description,
+      'name': ?name,
+      'skills': ?skills,
+      'supportedInterfaces': ?supportedInterfaces,
+      'version': ?version,
+    };
+  }
+}
+
+/// Declares a combination of a target URL, transport and protocol version for
+/// interacting with the agent.
+///
+/// This allows agents to expose the same functionality over multiple protocol
+/// binding mechanisms.
+class AgentInterface {
+  /// The protocol binding supported at this URL.
+  ///
+  /// This is an open form string, to be easily extended for other protocol
+  /// bindings. The core ones officially supported are `JSONRPC`, `GRPC` and
+  /// `HTTP+JSON`.
+  ///
+  /// Required.
+  core.String? protocolBinding;
+
+  /// The version of the A2A protocol this interface exposes.
+  ///
+  /// Use the latest supported minor version per major version. Examples: "0.3",
+  /// "1.0"
+  ///
+  /// Required.
+  core.String? protocolVersion;
+
+  /// Tenant ID to be used in the request when calling the agent.
+  core.String? tenant;
+
+  /// The URL where this interface is available.
+  ///
+  /// Must be a valid absolute HTTPS URL in production. Example:
+  /// "https://api.example.com/a2a/v1", "https://grpc.example.com/a2a"
+  ///
+  /// Required.
+  core.String? url;
+
+  AgentInterface({
+    this.protocolBinding,
+    this.protocolVersion,
+    this.tenant,
+    this.url,
+  });
+
+  AgentInterface.fromJson(core.Map json_)
+    : this(
+        protocolBinding: json_['protocolBinding'] as core.String?,
+        protocolVersion: json_['protocolVersion'] as core.String?,
+        tenant: json_['tenant'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final protocolBinding = this.protocolBinding;
+    final protocolVersion = this.protocolVersion;
+    final tenant = this.tenant;
+    final url = this.url;
+    return {
+      'protocolBinding': ?protocolBinding,
+      'protocolVersion': ?protocolVersion,
+      'tenant': ?tenant,
+      'url': ?url,
+    };
   }
 }
 
@@ -3540,6 +3993,15 @@ class AgentRemoteDialogflowAgent {
   /// Optional.
   core.Map<core.String, core.String>? inputVariableMapping;
 
+  /// The name of the variable that contains the language code to be used for
+  /// the Dialogflow session.
+  ///
+  /// If unspecified, the default language code of the Dialogflow agent will be
+  /// used.
+  ///
+  /// Optional.
+  core.String? languageCodeVariable;
+
   /// The mapping of the Dialogflow session parameters names to the app
   /// variables names to be sent back to the CES agent after the Dialogflow
   /// agent execution ends.
@@ -3564,6 +4026,7 @@ class AgentRemoteDialogflowAgent {
     this.environmentId,
     this.flowId,
     this.inputVariableMapping,
+    this.languageCodeVariable,
     this.outputVariableMapping,
     this.respectResponseInterruptionSettings,
   });
@@ -3577,6 +4040,7 @@ class AgentRemoteDialogflowAgent {
             (json_['inputVariableMapping']
                     as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        languageCodeVariable: json_['languageCodeVariable'] as core.String?,
         outputVariableMapping:
             (json_['outputVariableMapping']
                     as core.Map<core.String, core.dynamic>?)
@@ -3590,6 +4054,7 @@ class AgentRemoteDialogflowAgent {
     final environmentId = this.environmentId;
     final flowId = this.flowId;
     final inputVariableMapping = this.inputVariableMapping;
+    final languageCodeVariable = this.languageCodeVariable;
     final outputVariableMapping = this.outputVariableMapping;
     final respectResponseInterruptionSettings =
         this.respectResponseInterruptionSettings;
@@ -3598,9 +4063,92 @@ class AgentRemoteDialogflowAgent {
       'environmentId': ?environmentId,
       'flowId': ?flowId,
       'inputVariableMapping': ?inputVariableMapping,
+      'languageCodeVariable': ?languageCodeVariable,
       'outputVariableMapping': ?outputVariableMapping,
       'respectResponseInterruptionSettings':
           ?respectResponseInterruptionSettings,
+    };
+  }
+}
+
+/// Represents a distinct capability or function that an agent can perform.
+class AgentSkill {
+  /// A detailed description of the skill.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// Example prompts or scenarios that this skill can handle.
+  core.List<core.String>? examples;
+
+  /// A unique identifier for the agent's skill.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// The set of supported input media types for this skill, overriding the
+  /// agent's defaults.
+  core.List<core.String>? inputModes;
+
+  /// A human-readable name for the skill.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The set of supported output media types for this skill, overriding the
+  /// agent's defaults.
+  core.List<core.String>? outputModes;
+
+  /// A set of keywords describing the skill's capabilities.
+  ///
+  /// Required.
+  core.List<core.String>? tags;
+
+  AgentSkill({
+    this.description,
+    this.examples,
+    this.id,
+    this.inputModes,
+    this.name,
+    this.outputModes,
+    this.tags,
+  });
+
+  AgentSkill.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        examples: (json_['examples'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        id: json_['id'] as core.String?,
+        inputModes: (json_['inputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        name: json_['name'] as core.String?,
+        outputModes: (json_['outputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final examples = this.examples;
+    final id = this.id;
+    final inputModes = this.inputModes;
+    final name = this.name;
+    final outputModes = this.outputModes;
+    final tags = this.tags;
+    return {
+      'description': ?description,
+      'examples': ?examples,
+      'id': ?id,
+      'inputModes': ?inputModes,
+      'name': ?name,
+      'outputModes': ?outputModes,
+      'tags': ?tags,
     };
   }
 }
@@ -3624,38 +4172,20 @@ class AgentTool {
   /// Required.
   core.String? name;
 
-  /// Deprecated: Use `agent` instead.
-  ///
-  /// The resource name of the root agent that is the entry point of the tool.
-  /// Format: `projects/{project}/locations/{location}/agents/{agent}`
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? rootAgent;
-
-  AgentTool({this.agent, this.description, this.name, this.rootAgent});
+  AgentTool({this.agent, this.description, this.name});
 
   AgentTool.fromJson(core.Map json_)
     : this(
         agent: json_['agent'] as core.String?,
         description: json_['description'] as core.String?,
         name: json_['name'] as core.String?,
-        rootAgent: json_['rootAgent'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final agent = this.agent;
     final description = this.description;
     final name = this.name;
-    final rootAgent = this.rootAgent;
-    return {
-      'agent': ?agent,
-      'description': ?description,
-      'name': ?name,
-      'rootAgent': ?rootAgent,
-    };
+    return {'agent': ?agent, 'description': ?description, 'name': ?name};
   }
 }
 
@@ -4040,10 +4570,20 @@ class App {
   /// Output only.
   core.String? updateTime;
 
+  /// Misconfigurations or warnings in the app.
+  ///
+  /// Output only.
+  core.List<core.String>? validationErrors;
+
   /// The declarations of the variables.
   ///
   /// Optional.
   core.List<AppVariableDeclaration>? variableDeclarations;
+
+  /// VPC-SC settings for the app.
+  ///
+  /// Optional.
+  VpcScSettings? vpcScSettings;
 
   App({
     this.audioProcessingConfig,
@@ -4071,7 +4611,9 @@ class App {
     this.timeZoneSettings,
     this.toolExecutionMode,
     this.updateTime,
+    this.validationErrors,
     this.variableDeclarations,
+    this.vpcScSettings,
   });
 
   App.fromJson(core.Map json_)
@@ -4161,6 +4703,9 @@ class App {
             : null,
         toolExecutionMode: json_['toolExecutionMode'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
+        validationErrors: (json_['validationErrors'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         variableDeclarations: (json_['variableDeclarations'] as core.List?)
             ?.map(
               (value) => AppVariableDeclaration.fromJson(
@@ -4168,6 +4713,11 @@ class App {
               ),
             )
             .toList(),
+        vpcScSettings: json_.containsKey('vpcScSettings')
+            ? VpcScSettings.fromJson(
+                json_['vpcScSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -4196,7 +4746,9 @@ class App {
     final timeZoneSettings = this.timeZoneSettings;
     final toolExecutionMode = this.toolExecutionMode;
     final updateTime = this.updateTime;
+    final validationErrors = this.validationErrors;
     final variableDeclarations = this.variableDeclarations;
+    final vpcScSettings = this.vpcScSettings;
     return {
       'audioProcessingConfig': ?audioProcessingConfig,
       'clientCertificateSettings': ?clientCertificateSettings,
@@ -4223,7 +4775,9 @@ class App {
       'timeZoneSettings': ?timeZoneSettings,
       'toolExecutionMode': ?toolExecutionMode,
       'updateTime': ?updateTime,
+      'validationErrors': ?validationErrors,
       'variableDeclarations': ?variableDeclarations,
+      'vpcScSettings': ?vpcScSettings,
     };
   }
 }
@@ -4590,11 +5144,11 @@ class BargeInConfig {
   /// Optional.
   core.bool? bargeInAwareness;
 
-  /// Disables user barge-in while the agent is speaking.
-  ///
-  /// If true, user input during agent response playback will be ignored.
   /// Deprecated: `disable_barge_in` is deprecated in favor of
   /// `disable_barge_in_control` in ChannelProfile.
+  ///
+  /// Disables user barge-in while the agent is speaking. If true, user input
+  /// during agent response playback will be ignored.
   ///
   /// Optional.
   @core.Deprecated(
@@ -4926,9 +5480,13 @@ class ChannelProfile {
   /// - "GOOGLE_TELEPHONY_PLATFORM" : Google Telephony Platform channel.
   /// - "CONTACT_CENTER_AS_A_SERVICE" : Contact Center as a Service (CCaaS)
   /// channel.
+  /// - "CONTACT_CENTER_AS_A_SERVICE_CHAT" : Contact Center as a Service (CCaaS
+  /// Chat) channel.
   /// - "FIVE9" : Five9 channel.
   /// - "CONTACT_CENTER_INTEGRATION" : Third party contact center integration
   /// channel.
+  /// - "WHATSAPP" : WhatsApp channel.
+  /// - "INSTAGRAM" : Instagram channel.
   core.String? channelType;
 
   /// Whether to disable user barge-in control in the conversation.
@@ -4944,6 +5502,11 @@ class ChannelProfile {
   ///
   /// Optional.
   core.bool? disableDtmf;
+
+  /// Configuration specific to Instagram deployments.
+  ///
+  /// Optional.
+  ChannelProfileInstagramConfig? instagramConfig;
 
   /// The noise suppression level of the channel profile.
   ///
@@ -4967,14 +5530,21 @@ class ChannelProfile {
   /// Optional.
   ChannelProfileWebWidgetConfig? webWidgetConfig;
 
+  /// Configuration specific to WhatsApp deployments.
+  ///
+  /// Optional.
+  ChannelProfileWhatsAppConfig? whatsappConfig;
+
   ChannelProfile({
     this.channelType,
     this.disableBargeInControl,
     this.disableDtmf,
+    this.instagramConfig,
     this.noiseSuppressionLevel,
     this.personaProperty,
     this.profileId,
     this.webWidgetConfig,
+    this.whatsappConfig,
   });
 
   ChannelProfile.fromJson(core.Map json_)
@@ -4982,6 +5552,11 @@ class ChannelProfile {
         channelType: json_['channelType'] as core.String?,
         disableBargeInControl: json_['disableBargeInControl'] as core.bool?,
         disableDtmf: json_['disableDtmf'] as core.bool?,
+        instagramConfig: json_.containsKey('instagramConfig')
+            ? ChannelProfileInstagramConfig.fromJson(
+                json_['instagramConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         noiseSuppressionLevel: json_['noiseSuppressionLevel'] as core.String?,
         personaProperty: json_.containsKey('personaProperty')
             ? ChannelProfilePersonaProperty.fromJson(
@@ -4994,24 +5569,84 @@ class ChannelProfile {
                 json_['webWidgetConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        whatsappConfig: json_.containsKey('whatsappConfig')
+            ? ChannelProfileWhatsAppConfig.fromJson(
+                json_['whatsappConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final channelType = this.channelType;
     final disableBargeInControl = this.disableBargeInControl;
     final disableDtmf = this.disableDtmf;
+    final instagramConfig = this.instagramConfig;
     final noiseSuppressionLevel = this.noiseSuppressionLevel;
     final personaProperty = this.personaProperty;
     final profileId = this.profileId;
     final webWidgetConfig = this.webWidgetConfig;
+    final whatsappConfig = this.whatsappConfig;
     return {
       'channelType': ?channelType,
       'disableBargeInControl': ?disableBargeInControl,
       'disableDtmf': ?disableDtmf,
+      'instagramConfig': ?instagramConfig,
       'noiseSuppressionLevel': ?noiseSuppressionLevel,
       'personaProperty': ?personaProperty,
       'profileId': ?profileId,
       'webWidgetConfig': ?webWidgetConfig,
+      'whatsappConfig': ?whatsappConfig,
+    };
+  }
+}
+
+/// Configuration specific to Instagram deployments.
+class ChannelProfileInstagramConfig {
+  /// The description of the Meta business page or profile.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The fetched Meta business page name.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The Instagram Account ID.
+  ///
+  /// Required.
+  core.String? instagramAccountId;
+
+  /// The fetched Meta business profile thumbnail URL.
+  ///
+  /// Output only.
+  core.String? thumbnailUrl;
+
+  ChannelProfileInstagramConfig({
+    this.description,
+    this.displayName,
+    this.instagramAccountId,
+    this.thumbnailUrl,
+  });
+
+  ChannelProfileInstagramConfig.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        instagramAccountId: json_['instagramAccountId'] as core.String?,
+        thumbnailUrl: json_['thumbnailUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final instagramAccountId = this.instagramAccountId;
+    final thumbnailUrl = this.thumbnailUrl;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'instagramAccountId': ?instagramAccountId,
+      'thumbnailUrl': ?thumbnailUrl,
     };
   }
 }
@@ -5165,6 +5800,75 @@ class ChannelProfileWebWidgetConfigSecuritySettings {
       'enableOriginCheck': ?enableOriginCheck,
       'enablePublicAccess': ?enablePublicAccess,
       'enableRecaptcha': ?enableRecaptcha,
+    };
+  }
+}
+
+/// Configuration specific to WhatsApp deployments.
+class ChannelProfileWhatsAppConfig {
+  /// The description of the Meta business page or profile.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The fetched Meta business page name.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The phone number in E.164 format.
+  ///
+  /// Optional.
+  core.String? phoneNumber;
+
+  /// The Meta phone number ID.
+  ///
+  /// Required.
+  core.String? phoneNumberId;
+
+  /// The fetched Meta business profile thumbnail URL.
+  ///
+  /// Output only.
+  core.String? thumbnailUrl;
+
+  /// The WhatsApp Business Account ID.
+  ///
+  /// Required.
+  core.String? wabaId;
+
+  ChannelProfileWhatsAppConfig({
+    this.description,
+    this.displayName,
+    this.phoneNumber,
+    this.phoneNumberId,
+    this.thumbnailUrl,
+    this.wabaId,
+  });
+
+  ChannelProfileWhatsAppConfig.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        phoneNumberId: json_['phoneNumberId'] as core.String?,
+        thumbnailUrl: json_['thumbnailUrl'] as core.String?,
+        wabaId: json_['wabaId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final phoneNumber = this.phoneNumber;
+    final phoneNumberId = this.phoneNumberId;
+    final thumbnailUrl = this.thumbnailUrl;
+    final wabaId = this.wabaId;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'phoneNumber': ?phoneNumber,
+      'phoneNumberId': ?phoneNumberId,
+      'thumbnailUrl': ?thumbnailUrl,
+      'wabaId': ?wabaId,
     };
   }
 }
@@ -5333,6 +6037,9 @@ class Citations {
 
 /// Piece of cited information.
 class CitationsCitedChunk {
+  /// Whether this citation requires attribution to be shown to the end users.
+  core.bool? requiresAttribution;
+
   /// Text used for citation.
   core.String? text;
 
@@ -5342,20 +6049,32 @@ class CitationsCitedChunk {
   /// URI used for citation.
   core.String? uri;
 
-  CitationsCitedChunk({this.text, this.title, this.uri});
+  CitationsCitedChunk({
+    this.requiresAttribution,
+    this.text,
+    this.title,
+    this.uri,
+  });
 
   CitationsCitedChunk.fromJson(core.Map json_)
     : this(
+        requiresAttribution: json_['requiresAttribution'] as core.bool?,
         text: json_['text'] as core.String?,
         title: json_['title'] as core.String?,
         uri: json_['uri'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final requiresAttribution = this.requiresAttribution;
     final text = this.text;
     final title = this.title;
     final uri = this.uri;
-    return {'text': ?text, 'title': ?title, 'uri': ?uri};
+    return {
+      'requiresAttribution': ?requiresAttribution,
+      'text': ?text,
+      'title': ?title,
+      'uri': ?uri,
+    };
   }
 }
 
@@ -5874,12 +6593,46 @@ class ConversationTurn {
   /// Optional.
   core.List<Message>? messages;
 
+  /// The full dynamically resolved developer instruction generated from
+  /// templates.
+  ///
+  /// This field is only populated on-demand when requested during history
+  /// retrieval. It is not persisted.
+  ///
+  /// Output only.
+  core.String? resolvedDeveloperInstruction;
+
   /// The root span of the action processing.
   ///
   /// Optional.
   Span? rootSpan;
 
-  ConversationTurn({this.messages, this.rootSpan});
+  /// Variables or configurations referenced by the template engine during
+  /// dynamic prompt generation.
+  ///
+  /// This allows reconstructing the exact prompt sent to the model for this
+  /// turn.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? templateAttributes;
+
+  /// The intended ground-truth text from the Simulated Caller (Polysynth).
+  ///
+  /// Only populated when word error rate metrics are enabled.
+  ///
+  /// Optional.
+  core.String? userIntendedText;
+
+  ConversationTurn({
+    this.messages,
+    this.resolvedDeveloperInstruction,
+    this.rootSpan,
+    this.templateAttributes,
+    this.userIntendedText,
+  });
 
   ConversationTurn.fromJson(core.Map json_)
     : this(
@@ -5890,17 +6643,32 @@ class ConversationTurn {
               ),
             )
             .toList(),
+        resolvedDeveloperInstruction:
+            json_['resolvedDeveloperInstruction'] as core.String?,
         rootSpan: json_.containsKey('rootSpan')
             ? Span.fromJson(
                 json_['rootSpan'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        templateAttributes: json_.containsKey('templateAttributes')
+            ? json_['templateAttributes'] as core.Map<core.String, core.dynamic>
+            : null,
+        userIntendedText: json_['userIntendedText'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final messages = this.messages;
+    final resolvedDeveloperInstruction = this.resolvedDeveloperInstruction;
     final rootSpan = this.rootSpan;
-    return {'messages': ?messages, 'rootSpan': ?rootSpan};
+    final templateAttributes = this.templateAttributes;
+    final userIntendedText = this.userIntendedText;
+    return {
+      'messages': ?messages,
+      'resolvedDeveloperInstruction': ?resolvedDeveloperInstruction,
+      'rootSpan': ?rootSpan,
+      'templateAttributes': ?templateAttributes,
+      'userIntendedText': ?userIntendedText,
+    };
   }
 }
 
@@ -6608,6 +7376,11 @@ class DataStoreToolModalityConfig {
   /// Optional.
   DataStoreToolRewriterConfig? rewriterConfig;
 
+  /// The snippets configuration.
+  ///
+  /// Optional.
+  DataStoreToolSnippetsConfig? snippetsConfig;
+
   /// The summarization config.
   ///
   /// Optional.
@@ -6617,6 +7390,7 @@ class DataStoreToolModalityConfig {
     this.groundingConfig,
     this.modalityType,
     this.rewriterConfig,
+    this.snippetsConfig,
     this.summarizationConfig,
   });
 
@@ -6633,6 +7407,11 @@ class DataStoreToolModalityConfig {
                 json_['rewriterConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        snippetsConfig: json_.containsKey('snippetsConfig')
+            ? DataStoreToolSnippetsConfig.fromJson(
+                json_['snippetsConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         summarizationConfig: json_.containsKey('summarizationConfig')
             ? DataStoreToolSummarizationConfig.fromJson(
                 json_['summarizationConfig']
@@ -6645,11 +7424,13 @@ class DataStoreToolModalityConfig {
     final groundingConfig = this.groundingConfig;
     final modalityType = this.modalityType;
     final rewriterConfig = this.rewriterConfig;
+    final snippetsConfig = this.snippetsConfig;
     final summarizationConfig = this.summarizationConfig;
     return {
       'groundingConfig': ?groundingConfig,
       'modalityType': ?modalityType,
       'rewriterConfig': ?rewriterConfig,
+      'snippetsConfig': ?snippetsConfig,
       'summarizationConfig': ?summarizationConfig,
     };
   }
@@ -6696,6 +7477,24 @@ class DataStoreToolRewriterConfig {
       'modelSettings': ?modelSettings,
       'prompt': ?prompt,
     };
+  }
+}
+
+/// Snippets configuration.
+class DataStoreToolSnippetsConfig {
+  /// Whether snippets are enabled.
+  ///
+  /// Optional.
+  core.bool? enableSnippets;
+
+  DataStoreToolSnippetsConfig({this.enableSnippets});
+
+  DataStoreToolSnippetsConfig.fromJson(core.Map json_)
+    : this(enableSnippets: json_['enableSnippets'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableSnippets = this.enableSnippets;
+    return {'enableSnippets': ?enableSnippets};
   }
 }
 
@@ -6789,6 +7588,36 @@ class Deployment {
   /// Optional.
   ExperimentConfig? experimentConfig;
 
+  /// Input only.
+  ///
+  /// Ephemeral Instagram credentials required when configuring a Instagram
+  /// channel profile.
+  ///
+  /// Optional.
+  InstagramCredentials? instagramCredentials;
+
+  /// The modality of the deployment.
+  ///
+  /// Note: Deployment-level modality override is gated behind an allowlist.
+  /// Contact the CXAS team to enable this field.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODALITY_UNSPECIFIED" : Unknown modality.
+  /// - "MODALITY_TEXT" : Text modality.
+  /// - "MODALITY_VOICE" : Voice modality.
+  /// - "MODALITY_VIDEO" : Video modality.
+  core.String? modality;
+
+  /// Model settings for the deployment.
+  ///
+  /// Overrides model settings configured at the app/agent levels. Note:
+  /// Deployment-level model settings override is gated behind an allowlist.
+  /// Contact the CXAS team to enable this field.
+  ///
+  /// Optional.
+  ModelSettings? modelSettings;
+
   /// Identifier.
   ///
   /// The resource name of the deployment. Format:
@@ -6800,6 +7629,14 @@ class Deployment {
   /// Output only.
   core.String? updateTime;
 
+  /// Input only.
+  ///
+  /// Ephemeral WhatsApp credentials required when configuring a WhatsApp
+  /// channel profile.
+  ///
+  /// Optional.
+  WhatsAppCredentials? whatsappCredentials;
+
   Deployment({
     this.appVersion,
     this.channelProfile,
@@ -6807,8 +7644,12 @@ class Deployment {
     this.displayName,
     this.etag,
     this.experimentConfig,
+    this.instagramCredentials,
+    this.modality,
+    this.modelSettings,
     this.name,
     this.updateTime,
+    this.whatsappCredentials,
   });
 
   Deployment.fromJson(core.Map json_)
@@ -6828,8 +7669,26 @@ class Deployment {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        instagramCredentials: json_.containsKey('instagramCredentials')
+            ? InstagramCredentials.fromJson(
+                json_['instagramCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        modality: json_['modality'] as core.String?,
+        modelSettings: json_.containsKey('modelSettings')
+            ? ModelSettings.fromJson(
+                json_['modelSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
+        whatsappCredentials: json_.containsKey('whatsappCredentials')
+            ? WhatsAppCredentials.fromJson(
+                json_['whatsappCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -6839,8 +7698,12 @@ class Deployment {
     final displayName = this.displayName;
     final etag = this.etag;
     final experimentConfig = this.experimentConfig;
+    final instagramCredentials = this.instagramCredentials;
+    final modality = this.modality;
+    final modelSettings = this.modelSettings;
     final name = this.name;
     final updateTime = this.updateTime;
+    final whatsappCredentials = this.whatsappCredentials;
     return {
       'appVersion': ?appVersion,
       'channelProfile': ?channelProfile,
@@ -6848,8 +7711,12 @@ class Deployment {
       'displayName': ?displayName,
       'etag': ?etag,
       'experimentConfig': ?experimentConfig,
+      'instagramCredentials': ?instagramCredentials,
+      'modality': ?modality,
+      'modelSettings': ?modelSettings,
       'name': ?name,
       'updateTime': ?updateTime,
+      'whatsappCredentials': ?whatsappCredentials,
     };
   }
 }
@@ -7599,6 +8466,13 @@ class ExecuteToolRequest {
 
 /// Response message for ToolService.ExecuteTool.
 class ExecuteToolResponse {
+  /// Citations that provide the source information for the tool's execution.
+  Citations? citations;
+
+  /// The suggestions returned from Google Search as a result of invoking the
+  /// Google Search Tool during the tool execution.
+  GoogleSearchSuggestions? googleSearchSuggestions;
+
   /// The tool execution result in JSON object format.
   ///
   /// Use "output" key to specify tool response and "error" key to specify error
@@ -7624,6 +8498,8 @@ class ExecuteToolResponse {
   core.Map<core.String, core.Object?>? variables;
 
   ExecuteToolResponse({
+    this.citations,
+    this.googleSearchSuggestions,
     this.response,
     this.tool,
     this.toolsetTool,
@@ -7632,6 +8508,17 @@ class ExecuteToolResponse {
 
   ExecuteToolResponse.fromJson(core.Map json_)
     : this(
+        citations: json_.containsKey('citations')
+            ? Citations.fromJson(
+                json_['citations'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleSearchSuggestions: json_.containsKey('googleSearchSuggestions')
+            ? GoogleSearchSuggestions.fromJson(
+                json_['googleSearchSuggestions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         response: json_.containsKey('response')
             ? json_['response'] as core.Map<core.String, core.dynamic>
             : null,
@@ -7647,11 +8534,15 @@ class ExecuteToolResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final citations = this.citations;
+    final googleSearchSuggestions = this.googleSearchSuggestions;
     final response = this.response;
     final tool = this.tool;
     final toolsetTool = this.toolsetTool;
     final variables = this.variables;
     return {
+      'citations': ?citations,
+      'googleSearchSuggestions': ?googleSearchSuggestions,
       'response': ?response,
       'tool': ?tool,
       'toolsetTool': ?toolsetTool,
@@ -7691,10 +8582,10 @@ class ExperimentConfigVersionRelease {
   /// Optional.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "PENDING" : Pending state. Experiment is pending and not valid.
+  /// - "PENDING" : Deprecated: This state is no longer used.
   /// - "RUNNING" : Running state. Experiment is running and valid.
-  /// - "DONE" : Done state. Experiment is done and no longer valid.
-  /// - "EXPIRED" : Expired state. Experiment is expired and no longer valid.
+  /// - "DONE" : Deprecated: This state is no longer used.
+  /// - "EXPIRED" : Deprecated: This state is no longer used.
   core.String? state;
 
   /// Traffic allocations for the version release.
@@ -8848,17 +9739,33 @@ class ImportAppRequestImportOptions {
   /// as new resources.
   core.String? conflictResolutionStrategy;
 
-  ImportAppRequestImportOptions({this.conflictResolutionStrategy});
+  /// Flag for dry-running the import process.
+  ///
+  /// If set to true, the import process will only perform validations and will
+  /// not make any changes to the existing app or create a new one.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  ImportAppRequestImportOptions({
+    this.conflictResolutionStrategy,
+    this.validateOnly,
+  });
 
   ImportAppRequestImportOptions.fromJson(core.Map json_)
     : this(
         conflictResolutionStrategy:
             json_['conflictResolutionStrategy'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final conflictResolutionStrategy = this.conflictResolutionStrategy;
-    return {'conflictResolutionStrategy': ?conflictResolutionStrategy};
+    final validateOnly = this.validateOnly;
+    return {
+      'conflictResolutionStrategy': ?conflictResolutionStrategy,
+      'validateOnly': ?validateOnly,
+    };
   }
 }
 
@@ -8910,6 +9817,36 @@ class InputAudioConfig {
       'audioEncoding': ?audioEncoding,
       'noiseSuppressionLevel': ?noiseSuppressionLevel,
       'sampleRateHertz': ?sampleRateHertz,
+    };
+  }
+}
+
+/// Ephemeral Meta credentials for Instagram native integration.
+class InstagramCredentials {
+  /// The Meta auth code provided by the embedded signup flow.
+  ///
+  /// Required.
+  core.String? authCode;
+
+  /// The Conversation Profile ID to use for the deployment.
+  ///
+  /// Optional.
+  core.String? conversationProfileId;
+
+  InstagramCredentials({this.authCode, this.conversationProfileId});
+
+  InstagramCredentials.fromJson(core.Map json_)
+    : this(
+        authCode: json_['authCode'] as core.String?,
+        conversationProfileId: json_['conversationProfileId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authCode = this.authCode;
+    final conversationProfileId = this.conversationProfileId;
+    return {
+      'authCode': ?authCode,
+      'conversationProfileId': ?conversationProfileId,
     };
   }
 }
@@ -8980,6 +9917,1846 @@ class LanguageSettings {
       'fallbackAction': ?fallbackAction,
       'supportedLanguageCodes': ?supportedLanguageCodes,
     };
+  }
+}
+
+/// Defines a security scheme using an API key.
+class LfA2aV1APIKeySecurityScheme {
+  /// An optional description for the security scheme.
+  core.String? description;
+
+  /// The location of the API key.
+  ///
+  /// Valid values are "query", "header", or "cookie".
+  ///
+  /// Required.
+  core.String? location;
+
+  /// The name of the header, query, or cookie parameter to be used.
+  ///
+  /// Required.
+  core.String? name;
+
+  LfA2aV1APIKeySecurityScheme({this.description, this.location, this.name});
+
+  LfA2aV1APIKeySecurityScheme.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        location: json_['location'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final location = this.location;
+    final name = this.name;
+    return {'description': ?description, 'location': ?location, 'name': ?name};
+  }
+}
+
+/// Defines optional capabilities supported by an agent.
+class LfA2aV1AgentCapabilities {
+  /// Indicates if the agent supports providing an extended agent card when
+  /// authenticated.
+  core.bool? extendedAgentCard;
+
+  /// A list of protocol extensions supported by the agent.
+  core.List<LfA2aV1AgentExtension>? extensions;
+
+  /// Indicates if the agent supports sending push notifications for
+  /// asynchronous task updates.
+  core.bool? pushNotifications;
+
+  /// Indicates if the agent supports streaming responses.
+  core.bool? streaming;
+
+  LfA2aV1AgentCapabilities({
+    this.extendedAgentCard,
+    this.extensions,
+    this.pushNotifications,
+    this.streaming,
+  });
+
+  LfA2aV1AgentCapabilities.fromJson(core.Map json_)
+    : this(
+        extendedAgentCard: json_['extendedAgentCard'] as core.bool?,
+        extensions: (json_['extensions'] as core.List?)
+            ?.map(
+              (value) => LfA2aV1AgentExtension.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        pushNotifications: json_['pushNotifications'] as core.bool?,
+        streaming: json_['streaming'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final extendedAgentCard = this.extendedAgentCard;
+    final extensions = this.extensions;
+    final pushNotifications = this.pushNotifications;
+    final streaming = this.streaming;
+    return {
+      'extendedAgentCard': ?extendedAgentCard,
+      'extensions': ?extensions,
+      'pushNotifications': ?pushNotifications,
+      'streaming': ?streaming,
+    };
+  }
+}
+
+/// A self-describing manifest for an agent.
+///
+/// It provides essential metadata including the agent's identity, capabilities,
+/// skills, supported communication methods, and security requirements. Next ID:
+/// 20
+class LfA2aV1AgentCard {
+  /// A2A Capability set supported by the agent.
+  ///
+  /// Required.
+  LfA2aV1AgentCapabilities? capabilities;
+
+  /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED The set of interaction
+  /// modes that the agent supports across all skills.
+  ///
+  /// This can be overridden per skill. Defined as media types.
+  ///
+  /// Required.
+  core.List<core.String>? defaultInputModes;
+
+  /// The media types supported as outputs from this agent.
+  ///
+  /// Required.
+  core.List<core.String>? defaultOutputModes;
+
+  /// A human-readable description of the agent, assisting users and other
+  /// agents in understanding its purpose.
+  ///
+  /// Example: "Agent that helps users with recipes and cooking."
+  ///
+  /// Required.
+  core.String? description;
+
+  /// A URL providing additional documentation about the agent.
+  core.String? documentationUrl;
+
+  /// A URL to an icon for the agent.
+  ///
+  /// Optional.
+  core.String? iconUrl;
+
+  /// A human readable name for the agent.
+  ///
+  /// Example: "Recipe Agent"
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The service provider of the agent.
+  LfA2aV1AgentProvider? provider;
+
+  /// Security requirements for contacting the agent.
+  core.List<LfA2aV1SecurityRequirement>? securityRequirements;
+
+  /// The security scheme details used for authenticating with this agent.
+  core.Map<core.String, LfA2aV1SecurityScheme>? securitySchemes;
+
+  /// JSON Web Signatures computed for this `AgentCard`.
+  core.List<LfA2aV1AgentCardSignature>? signatures;
+
+  /// Skills represent the abilities of an agent.
+  ///
+  /// It is largely a descriptive concept but represents a more focused set of
+  /// behaviors that the agent is likely to succeed at.
+  ///
+  /// Required.
+  core.List<LfA2aV1AgentSkill>? skills;
+
+  /// Ordered list of supported interfaces.
+  ///
+  /// The first entry is preferred.
+  ///
+  /// Required.
+  core.List<LfA2aV1AgentInterface>? supportedInterfaces;
+
+  /// The version of the agent.
+  ///
+  /// Example: "1.0.0"
+  ///
+  /// Required.
+  core.String? version;
+
+  LfA2aV1AgentCard({
+    this.capabilities,
+    this.defaultInputModes,
+    this.defaultOutputModes,
+    this.description,
+    this.documentationUrl,
+    this.iconUrl,
+    this.name,
+    this.provider,
+    this.securityRequirements,
+    this.securitySchemes,
+    this.signatures,
+    this.skills,
+    this.supportedInterfaces,
+    this.version,
+  });
+
+  LfA2aV1AgentCard.fromJson(core.Map json_)
+    : this(
+        capabilities: json_.containsKey('capabilities')
+            ? LfA2aV1AgentCapabilities.fromJson(
+                json_['capabilities'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        defaultInputModes: (json_['defaultInputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        defaultOutputModes: (json_['defaultOutputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        description: json_['description'] as core.String?,
+        documentationUrl: json_['documentationUrl'] as core.String?,
+        iconUrl: json_['iconUrl'] as core.String?,
+        name: json_['name'] as core.String?,
+        provider: json_.containsKey('provider')
+            ? LfA2aV1AgentProvider.fromJson(
+                json_['provider'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        securityRequirements: (json_['securityRequirements'] as core.List?)
+            ?.map(
+              (value) => LfA2aV1SecurityRequirement.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        securitySchemes:
+            (json_['securitySchemes'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    LfA2aV1SecurityScheme.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        signatures: (json_['signatures'] as core.List?)
+            ?.map(
+              (value) => LfA2aV1AgentCardSignature.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        skills: (json_['skills'] as core.List?)
+            ?.map(
+              (value) => LfA2aV1AgentSkill.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        supportedInterfaces: (json_['supportedInterfaces'] as core.List?)
+            ?.map(
+              (value) => LfA2aV1AgentInterface.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final capabilities = this.capabilities;
+    final defaultInputModes = this.defaultInputModes;
+    final defaultOutputModes = this.defaultOutputModes;
+    final description = this.description;
+    final documentationUrl = this.documentationUrl;
+    final iconUrl = this.iconUrl;
+    final name = this.name;
+    final provider = this.provider;
+    final securityRequirements = this.securityRequirements;
+    final securitySchemes = this.securitySchemes;
+    final signatures = this.signatures;
+    final skills = this.skills;
+    final supportedInterfaces = this.supportedInterfaces;
+    final version = this.version;
+    return {
+      'capabilities': ?capabilities,
+      'defaultInputModes': ?defaultInputModes,
+      'defaultOutputModes': ?defaultOutputModes,
+      'description': ?description,
+      'documentationUrl': ?documentationUrl,
+      'iconUrl': ?iconUrl,
+      'name': ?name,
+      'provider': ?provider,
+      'securityRequirements': ?securityRequirements,
+      'securitySchemes': ?securitySchemes,
+      'signatures': ?signatures,
+      'skills': ?skills,
+      'supportedInterfaces': ?supportedInterfaces,
+      'version': ?version,
+    };
+  }
+}
+
+/// AgentCardSignature represents a JWS signature of an AgentCard.
+///
+/// This follows the JSON format of an RFC 7515 JSON Web Signature (JWS).
+class LfA2aV1AgentCardSignature {
+  /// The unprotected JWS header values.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? header;
+
+  /// The protected JWS header for the signature.
+  ///
+  /// This is always a base64url-encoded JSON object.
+  ///
+  /// Required.
+  core.String? protected;
+
+  /// The computed signature, base64url-encoded.
+  ///
+  /// Required.
+  core.String? signature;
+
+  LfA2aV1AgentCardSignature({this.header, this.protected, this.signature});
+
+  LfA2aV1AgentCardSignature.fromJson(core.Map json_)
+    : this(
+        header: json_.containsKey('header')
+            ? json_['header'] as core.Map<core.String, core.dynamic>
+            : null,
+        protected: json_['protected'] as core.String?,
+        signature: json_['signature'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final header = this.header;
+    final protected = this.protected;
+    final signature = this.signature;
+    return {
+      'header': ?header,
+      'protected': ?protected,
+      'signature': ?signature,
+    };
+  }
+}
+
+/// A declaration of a protocol extension supported by an Agent.
+class LfA2aV1AgentExtension {
+  /// A human-readable description of how this agent uses the extension.
+  core.String? description;
+
+  /// Extension-specific configuration parameters.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? params;
+
+  /// If true, the client must understand and comply with the extension's
+  /// requirements.
+  core.bool? required;
+
+  /// The unique URI identifying the extension.
+  core.String? uri;
+
+  LfA2aV1AgentExtension({
+    this.description,
+    this.params,
+    this.required,
+    this.uri,
+  });
+
+  LfA2aV1AgentExtension.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        params: json_.containsKey('params')
+            ? json_['params'] as core.Map<core.String, core.dynamic>
+            : null,
+        required: json_['required'] as core.bool?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final params = this.params;
+    final required = this.required;
+    final uri = this.uri;
+    return {
+      'description': ?description,
+      'params': ?params,
+      'required': ?required,
+      'uri': ?uri,
+    };
+  }
+}
+
+/// Declares a combination of a target URL, transport and protocol version for
+/// interacting with the agent.
+///
+/// This allows agents to expose the same functionality over multiple protocol
+/// binding mechanisms.
+class LfA2aV1AgentInterface {
+  /// The protocol binding supported at this URL.
+  ///
+  /// This is an open form string, to be easily extended for other protocol
+  /// bindings. The core ones officially supported are `JSONRPC`, `GRPC` and
+  /// `HTTP+JSON`.
+  ///
+  /// Required.
+  core.String? protocolBinding;
+
+  /// The version of the A2A protocol this interface exposes.
+  ///
+  /// Use the latest supported minor version per major version. Examples: "0.3",
+  /// "1.0"
+  ///
+  /// Required.
+  core.String? protocolVersion;
+
+  /// An opaque string used for routing requests to a specific agent or tenant
+  /// when multiple agents are served behind a single A2A endpoint.
+  ///
+  /// When set, clients MUST include this value in the `tenant` field of all
+  /// request messages sent to this interface. The server is responsible for
+  /// interpreting the value and routing requests accordingly; the protocol does
+  /// not define its format or semantics.
+  ///
+  /// Optional.
+  core.String? tenant;
+
+  /// The URL where this interface is available.
+  ///
+  /// Must be a valid absolute HTTPS URL in production. Example:
+  /// "https://api.example.com/a2a/v1", "https://grpc.example.com/a2a"
+  ///
+  /// Required.
+  core.String? url;
+
+  LfA2aV1AgentInterface({
+    this.protocolBinding,
+    this.protocolVersion,
+    this.tenant,
+    this.url,
+  });
+
+  LfA2aV1AgentInterface.fromJson(core.Map json_)
+    : this(
+        protocolBinding: json_['protocolBinding'] as core.String?,
+        protocolVersion: json_['protocolVersion'] as core.String?,
+        tenant: json_['tenant'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final protocolBinding = this.protocolBinding;
+    final protocolVersion = this.protocolVersion;
+    final tenant = this.tenant;
+    final url = this.url;
+    return {
+      'protocolBinding': ?protocolBinding,
+      'protocolVersion': ?protocolVersion,
+      'tenant': ?tenant,
+      'url': ?url,
+    };
+  }
+}
+
+/// Represents the service provider of an agent.
+class LfA2aV1AgentProvider {
+  /// The name of the agent provider's organization.
+  ///
+  /// Example: "Google"
+  ///
+  /// Required.
+  core.String? organization;
+
+  /// A URL for the agent provider's website or relevant documentation.
+  ///
+  /// Example: "https://ai.google.dev"
+  ///
+  /// Required.
+  core.String? url;
+
+  LfA2aV1AgentProvider({this.organization, this.url});
+
+  LfA2aV1AgentProvider.fromJson(core.Map json_)
+    : this(
+        organization: json_['organization'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final organization = this.organization;
+    final url = this.url;
+    return {'organization': ?organization, 'url': ?url};
+  }
+}
+
+/// Represents a distinct capability or function that an agent can perform.
+class LfA2aV1AgentSkill {
+  /// A detailed description of the skill.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// Example prompts or scenarios that this skill can handle.
+  core.List<core.String>? examples;
+
+  /// A unique identifier for the agent's skill.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// The set of supported input media types for this skill, overriding the
+  /// agent's defaults.
+  core.List<core.String>? inputModes;
+
+  /// A human-readable name for the skill.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The set of supported output media types for this skill, overriding the
+  /// agent's defaults.
+  core.List<core.String>? outputModes;
+
+  /// Security schemes necessary for this skill.
+  core.List<LfA2aV1SecurityRequirement>? securityRequirements;
+
+  /// A set of keywords describing the skill's capabilities.
+  ///
+  /// Required.
+  core.List<core.String>? tags;
+
+  LfA2aV1AgentSkill({
+    this.description,
+    this.examples,
+    this.id,
+    this.inputModes,
+    this.name,
+    this.outputModes,
+    this.securityRequirements,
+    this.tags,
+  });
+
+  LfA2aV1AgentSkill.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        examples: (json_['examples'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        id: json_['id'] as core.String?,
+        inputModes: (json_['inputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        name: json_['name'] as core.String?,
+        outputModes: (json_['outputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        securityRequirements: (json_['securityRequirements'] as core.List?)
+            ?.map(
+              (value) => LfA2aV1SecurityRequirement.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final examples = this.examples;
+    final id = this.id;
+    final inputModes = this.inputModes;
+    final name = this.name;
+    final outputModes = this.outputModes;
+    final securityRequirements = this.securityRequirements;
+    final tags = this.tags;
+    return {
+      'description': ?description,
+      'examples': ?examples,
+      'id': ?id,
+      'inputModes': ?inputModes,
+      'name': ?name,
+      'outputModes': ?outputModes,
+      'securityRequirements': ?securityRequirements,
+      'tags': ?tags,
+    };
+  }
+}
+
+/// Artifacts represent task outputs.
+class LfA2aV1Artifact {
+  /// Unique identifier (e.g. UUID) for the artifact.
+  ///
+  /// It must be unique within a task.
+  ///
+  /// Required.
+  core.String? artifactId;
+
+  /// A human readable description of the artifact.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The URIs of extensions that are present or contributed to this Artifact.
+  core.List<core.String>? extensions;
+
+  /// Metadata included with the artifact.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// A human readable name for the artifact.
+  core.String? name;
+
+  /// The content of the artifact.
+  ///
+  /// Must contain at least one part.
+  ///
+  /// Required.
+  core.List<LfA2aV1Part>? parts;
+
+  LfA2aV1Artifact({
+    this.artifactId,
+    this.description,
+    this.extensions,
+    this.metadata,
+    this.name,
+    this.parts,
+  });
+
+  LfA2aV1Artifact.fromJson(core.Map json_)
+    : this(
+        artifactId: json_['artifactId'] as core.String?,
+        description: json_['description'] as core.String?,
+        extensions: (json_['extensions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        name: json_['name'] as core.String?,
+        parts: (json_['parts'] as core.List?)
+            ?.map(
+              (value) => LfA2aV1Part.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifactId = this.artifactId;
+    final description = this.description;
+    final extensions = this.extensions;
+    final metadata = this.metadata;
+    final name = this.name;
+    final parts = this.parts;
+    return {
+      'artifactId': ?artifactId,
+      'description': ?description,
+      'extensions': ?extensions,
+      'metadata': ?metadata,
+      'name': ?name,
+      'parts': ?parts,
+    };
+  }
+}
+
+/// Defines authentication details, used for push notifications.
+class LfA2aV1AuthenticationInfo {
+  /// Push Notification credentials.
+  ///
+  /// Format depends on the scheme (e.g., token for Bearer).
+  core.String? credentials;
+
+  /// HTTP Authentication Scheme from the
+  /// [IANA registry](https://www.iana.org/assignments/http-authschemes/).
+  ///
+  /// Examples: `Bearer`, `Basic`, `Digest`. Scheme names are case-insensitive
+  /// per
+  /// [RFC 9110 Section 11.1](https://www.rfc-editor.org/rfc/rfc9110#section-11.1).
+  ///
+  /// Required.
+  core.String? scheme;
+
+  LfA2aV1AuthenticationInfo({this.credentials, this.scheme});
+
+  LfA2aV1AuthenticationInfo.fromJson(core.Map json_)
+    : this(
+        credentials: json_['credentials'] as core.String?,
+        scheme: json_['scheme'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final credentials = this.credentials;
+    final scheme = this.scheme;
+    return {'credentials': ?credentials, 'scheme': ?scheme};
+  }
+}
+
+/// Defines configuration details for the OAuth 2.0 Authorization Code flow.
+class LfA2aV1AuthorizationCodeOAuthFlow {
+  /// The authorization URL to be used for this flow.
+  ///
+  /// Required.
+  core.String? authorizationUrl;
+
+  /// Indicates if PKCE (RFC 7636) is required for this flow.
+  ///
+  /// PKCE should always be used for public clients and is recommended for all
+  /// clients.
+  core.bool? pkceRequired;
+
+  /// The URL to be used for obtaining refresh tokens.
+  core.String? refreshUrl;
+
+  /// The available scopes for the OAuth2 security scheme.
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? scopes;
+
+  /// The token URL to be used for this flow.
+  ///
+  /// Required.
+  core.String? tokenUrl;
+
+  LfA2aV1AuthorizationCodeOAuthFlow({
+    this.authorizationUrl,
+    this.pkceRequired,
+    this.refreshUrl,
+    this.scopes,
+    this.tokenUrl,
+  });
+
+  LfA2aV1AuthorizationCodeOAuthFlow.fromJson(core.Map json_)
+    : this(
+        authorizationUrl: json_['authorizationUrl'] as core.String?,
+        pkceRequired: json_['pkceRequired'] as core.bool?,
+        refreshUrl: json_['refreshUrl'] as core.String?,
+        scopes: (json_['scopes'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        tokenUrl: json_['tokenUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationUrl = this.authorizationUrl;
+    final pkceRequired = this.pkceRequired;
+    final refreshUrl = this.refreshUrl;
+    final scopes = this.scopes;
+    final tokenUrl = this.tokenUrl;
+    return {
+      'authorizationUrl': ?authorizationUrl,
+      'pkceRequired': ?pkceRequired,
+      'refreshUrl': ?refreshUrl,
+      'scopes': ?scopes,
+      'tokenUrl': ?tokenUrl,
+    };
+  }
+}
+
+/// Defines configuration details for the OAuth 2.0 Client Credentials flow.
+class LfA2aV1ClientCredentialsOAuthFlow {
+  /// The URL to be used for obtaining refresh tokens.
+  core.String? refreshUrl;
+
+  /// The available scopes for the OAuth2 security scheme.
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? scopes;
+
+  /// The token URL to be used for this flow.
+  ///
+  /// Required.
+  core.String? tokenUrl;
+
+  LfA2aV1ClientCredentialsOAuthFlow({
+    this.refreshUrl,
+    this.scopes,
+    this.tokenUrl,
+  });
+
+  LfA2aV1ClientCredentialsOAuthFlow.fromJson(core.Map json_)
+    : this(
+        refreshUrl: json_['refreshUrl'] as core.String?,
+        scopes: (json_['scopes'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        tokenUrl: json_['tokenUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final refreshUrl = this.refreshUrl;
+    final scopes = this.scopes;
+    final tokenUrl = this.tokenUrl;
+    return {
+      'refreshUrl': ?refreshUrl,
+      'scopes': ?scopes,
+      'tokenUrl': ?tokenUrl,
+    };
+  }
+}
+
+/// Defines configuration details for the OAuth 2.0 Device Code flow (RFC 8628).
+///
+/// This flow is designed for input-constrained devices such as IoT devices, and
+/// CLI tools where the user authenticates on a separate device.
+class LfA2aV1DeviceCodeOAuthFlow {
+  /// The device authorization endpoint URL.
+  ///
+  /// Required.
+  core.String? deviceAuthorizationUrl;
+
+  /// The URL to be used for obtaining refresh tokens.
+  core.String? refreshUrl;
+
+  /// The available scopes for the OAuth2 security scheme.
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? scopes;
+
+  /// The token URL to be used for this flow.
+  ///
+  /// Required.
+  core.String? tokenUrl;
+
+  LfA2aV1DeviceCodeOAuthFlow({
+    this.deviceAuthorizationUrl,
+    this.refreshUrl,
+    this.scopes,
+    this.tokenUrl,
+  });
+
+  LfA2aV1DeviceCodeOAuthFlow.fromJson(core.Map json_)
+    : this(
+        deviceAuthorizationUrl: json_['deviceAuthorizationUrl'] as core.String?,
+        refreshUrl: json_['refreshUrl'] as core.String?,
+        scopes: (json_['scopes'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        tokenUrl: json_['tokenUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceAuthorizationUrl = this.deviceAuthorizationUrl;
+    final refreshUrl = this.refreshUrl;
+    final scopes = this.scopes;
+    final tokenUrl = this.tokenUrl;
+    return {
+      'deviceAuthorizationUrl': ?deviceAuthorizationUrl,
+      'refreshUrl': ?refreshUrl,
+      'scopes': ?scopes,
+      'tokenUrl': ?tokenUrl,
+    };
+  }
+}
+
+/// Defines a security scheme using HTTP authentication.
+class LfA2aV1HTTPAuthSecurityScheme {
+  /// A hint to the client to identify how the bearer token is formatted (e.g.,
+  /// "JWT").
+  ///
+  /// Primarily for documentation purposes.
+  core.String? bearerFormat;
+
+  /// An optional description for the security scheme.
+  core.String? description;
+
+  /// The name of the HTTP Authentication scheme to be used in the Authorization
+  /// header, as defined in RFC7235 (e.g., "Bearer").
+  ///
+  /// This value should be registered in the IANA Authentication Scheme
+  /// registry.
+  ///
+  /// Required.
+  core.String? scheme;
+
+  LfA2aV1HTTPAuthSecurityScheme({
+    this.bearerFormat,
+    this.description,
+    this.scheme,
+  });
+
+  LfA2aV1HTTPAuthSecurityScheme.fromJson(core.Map json_)
+    : this(
+        bearerFormat: json_['bearerFormat'] as core.String?,
+        description: json_['description'] as core.String?,
+        scheme: json_['scheme'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bearerFormat = this.bearerFormat;
+    final description = this.description;
+    final scheme = this.scheme;
+    return {
+      'bearerFormat': ?bearerFormat,
+      'description': ?description,
+      'scheme': ?scheme,
+    };
+  }
+}
+
+/// Deprecated: Use Authorization Code + PKCE instead.
+class LfA2aV1ImplicitOAuthFlow {
+  /// The authorization URL to be used for this flow.
+  ///
+  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
+  /// TLS
+  core.String? authorizationUrl;
+
+  /// The URL to be used for obtaining refresh tokens.
+  ///
+  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
+  /// TLS.
+  core.String? refreshUrl;
+
+  /// The available scopes for the OAuth2 security scheme.
+  ///
+  /// A map between the scope name and a short description for it. The map MAY
+  /// be empty.
+  core.Map<core.String, core.String>? scopes;
+
+  LfA2aV1ImplicitOAuthFlow({
+    this.authorizationUrl,
+    this.refreshUrl,
+    this.scopes,
+  });
+
+  LfA2aV1ImplicitOAuthFlow.fromJson(core.Map json_)
+    : this(
+        authorizationUrl: json_['authorizationUrl'] as core.String?,
+        refreshUrl: json_['refreshUrl'] as core.String?,
+        scopes: (json_['scopes'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationUrl = this.authorizationUrl;
+    final refreshUrl = this.refreshUrl;
+    final scopes = this.scopes;
+    return {
+      'authorizationUrl': ?authorizationUrl,
+      'refreshUrl': ?refreshUrl,
+      'scopes': ?scopes,
+    };
+  }
+}
+
+/// `Message` is one unit of communication between client and server.
+///
+/// It can be associated with a context and/or a task. For server messages,
+/// `context_id` must be provided, and `task_id` only if a task was created. For
+/// client messages, both fields are optional, with the caveat that if both are
+/// provided, they have to match (the `context_id` has to be the one that is set
+/// on the task). If only `task_id` is provided, the server will infer
+/// `context_id` from it.
+class LfA2aV1Message {
+  /// The context id of the message.
+  ///
+  /// If set, the message will be associated with the given context.
+  ///
+  /// Optional.
+  core.String? contextId;
+
+  /// The URIs of extensions that are present or contributed to this Message.
+  core.List<core.String>? extensions;
+
+  /// The unique identifier (e.g. UUID) of the message.
+  ///
+  /// This is created by the message creator.
+  ///
+  /// Required.
+  core.String? messageId;
+
+  /// Any metadata to provide along with the message.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// Parts is the container of the message content.
+  ///
+  /// Required.
+  core.List<LfA2aV1Part>? parts;
+
+  /// A list of task IDs that this message references for additional context.
+  core.List<core.String>? referenceTaskIds;
+
+  /// Identifies the sender of the message.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED" : The role is unspecified.
+  /// - "ROLE_USER" : The message is from the client to the server.
+  /// - "ROLE_AGENT" : The message is from the server to the client.
+  core.String? role;
+
+  /// The task id of the message.
+  ///
+  /// If set, the message will be associated with the given task.
+  ///
+  /// Optional.
+  core.String? taskId;
+
+  LfA2aV1Message({
+    this.contextId,
+    this.extensions,
+    this.messageId,
+    this.metadata,
+    this.parts,
+    this.referenceTaskIds,
+    this.role,
+    this.taskId,
+  });
+
+  LfA2aV1Message.fromJson(core.Map json_)
+    : this(
+        contextId: json_['contextId'] as core.String?,
+        extensions: (json_['extensions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        messageId: json_['messageId'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        parts: (json_['parts'] as core.List?)
+            ?.map(
+              (value) => LfA2aV1Part.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        referenceTaskIds: (json_['referenceTaskIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        role: json_['role'] as core.String?,
+        taskId: json_['taskId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextId = this.contextId;
+    final extensions = this.extensions;
+    final messageId = this.messageId;
+    final metadata = this.metadata;
+    final parts = this.parts;
+    final referenceTaskIds = this.referenceTaskIds;
+    final role = this.role;
+    final taskId = this.taskId;
+    return {
+      'contextId': ?contextId,
+      'extensions': ?extensions,
+      'messageId': ?messageId,
+      'metadata': ?metadata,
+      'parts': ?parts,
+      'referenceTaskIds': ?referenceTaskIds,
+      'role': ?role,
+      'taskId': ?taskId,
+    };
+  }
+}
+
+/// Defines a security scheme using mTLS authentication.
+class LfA2aV1MutualTlsSecurityScheme {
+  /// An optional description for the security scheme.
+  core.String? description;
+
+  LfA2aV1MutualTlsSecurityScheme({this.description});
+
+  LfA2aV1MutualTlsSecurityScheme.fromJson(core.Map json_)
+    : this(description: json_['description'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    return {'description': ?description};
+  }
+}
+
+/// Defines a security scheme using OAuth 2.0.
+class LfA2aV1OAuth2SecurityScheme {
+  /// An optional description for the security scheme.
+  core.String? description;
+
+  /// An object containing configuration information for the supported OAuth 2.0
+  /// flows.
+  ///
+  /// Required.
+  LfA2aV1OAuthFlows? flows;
+
+  /// URL to the OAuth2 authorization server metadata
+  /// [RFC 8414](https://datatracker.ietf.org/doc/html/rfc8414).
+  ///
+  /// TLS is required.
+  core.String? oauth2MetadataUrl;
+
+  LfA2aV1OAuth2SecurityScheme({
+    this.description,
+    this.flows,
+    this.oauth2MetadataUrl,
+  });
+
+  LfA2aV1OAuth2SecurityScheme.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        flows: json_.containsKey('flows')
+            ? LfA2aV1OAuthFlows.fromJson(
+                json_['flows'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oauth2MetadataUrl: json_['oauth2MetadataUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final flows = this.flows;
+    final oauth2MetadataUrl = this.oauth2MetadataUrl;
+    return {
+      'description': ?description,
+      'flows': ?flows,
+      'oauth2MetadataUrl': ?oauth2MetadataUrl,
+    };
+  }
+}
+
+/// Defines the configuration for the supported OAuth 2.0 flows.
+class LfA2aV1OAuthFlows {
+  /// Configuration for the OAuth Authorization Code flow.
+  LfA2aV1AuthorizationCodeOAuthFlow? authorizationCode;
+
+  /// Configuration for the OAuth Client Credentials flow.
+  LfA2aV1ClientCredentialsOAuthFlow? clientCredentials;
+
+  /// Configuration for the OAuth Device Code flow.
+  LfA2aV1DeviceCodeOAuthFlow? deviceCode;
+
+  /// Deprecated: Use Authorization Code + PKCE instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  LfA2aV1ImplicitOAuthFlow? implicit;
+
+  /// Deprecated: Use Authorization Code + PKCE or Device Code.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  LfA2aV1PasswordOAuthFlow? password;
+
+  LfA2aV1OAuthFlows({
+    this.authorizationCode,
+    this.clientCredentials,
+    this.deviceCode,
+    this.implicit,
+    this.password,
+  });
+
+  LfA2aV1OAuthFlows.fromJson(core.Map json_)
+    : this(
+        authorizationCode: json_.containsKey('authorizationCode')
+            ? LfA2aV1AuthorizationCodeOAuthFlow.fromJson(
+                json_['authorizationCode']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        clientCredentials: json_.containsKey('clientCredentials')
+            ? LfA2aV1ClientCredentialsOAuthFlow.fromJson(
+                json_['clientCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deviceCode: json_.containsKey('deviceCode')
+            ? LfA2aV1DeviceCodeOAuthFlow.fromJson(
+                json_['deviceCode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        implicit: json_.containsKey('implicit')
+            ? LfA2aV1ImplicitOAuthFlow.fromJson(
+                json_['implicit'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        password: json_.containsKey('password')
+            ? LfA2aV1PasswordOAuthFlow.fromJson(
+                json_['password'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationCode = this.authorizationCode;
+    final clientCredentials = this.clientCredentials;
+    final deviceCode = this.deviceCode;
+    final implicit = this.implicit;
+    final password = this.password;
+    return {
+      'authorizationCode': ?authorizationCode,
+      'clientCredentials': ?clientCredentials,
+      'deviceCode': ?deviceCode,
+      'implicit': ?implicit,
+      'password': ?password,
+    };
+  }
+}
+
+/// Defines a security scheme using OpenID Connect.
+class LfA2aV1OpenIdConnectSecurityScheme {
+  /// An optional description for the security scheme.
+  core.String? description;
+
+  /// The
+  /// [OpenID Connect Discovery URL](https://openid.net/specs/openid-connect-discovery-1_0.html)
+  /// for the OIDC provider's metadata.
+  ///
+  /// Required.
+  core.String? openIdConnectUrl;
+
+  LfA2aV1OpenIdConnectSecurityScheme({this.description, this.openIdConnectUrl});
+
+  LfA2aV1OpenIdConnectSecurityScheme.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        openIdConnectUrl: json_['openIdConnectUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final openIdConnectUrl = this.openIdConnectUrl;
+    return {'description': ?description, 'openIdConnectUrl': ?openIdConnectUrl};
+  }
+}
+
+/// `Part` represents a container for a section of communication content.
+///
+/// Parts can be purely textual, some sort of file (image, video, etc) or a
+/// structured data blob (i.e. JSON).
+class LfA2aV1Part {
+  /// Arbitrary structured `data` as a JSON value (object, array, string,
+  /// number, boolean, or null).
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? data;
+
+  /// An optional `filename` for the file (e.g., "document.pdf").
+  core.String? filename;
+
+  /// The `media_type` (MIME type) of the part content (e.g., "text/plain",
+  /// "application/json", "image/png").
+  ///
+  /// This field is available for all part types.
+  core.String? mediaType;
+
+  /// metadata associated with this part.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The `raw` byte content of a file.
+  ///
+  /// In JSON serialization, this is encoded as a base64 string.
+  core.String? raw;
+  core.List<core.int> get rawAsBytes => convert.base64.decode(raw!);
+
+  set rawAsBytes(core.List<core.int> bytes_) {
+    raw = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// The string content of the `text` part.
+  core.String? text;
+
+  /// A `url` pointing to the file's content.
+  core.String? url;
+
+  LfA2aV1Part({
+    this.data,
+    this.filename,
+    this.mediaType,
+    this.metadata,
+    this.raw,
+    this.text,
+    this.url,
+  });
+
+  LfA2aV1Part.fromJson(core.Map json_)
+    : this(
+        data: json_['data'],
+        filename: json_['filename'] as core.String?,
+        mediaType: json_['mediaType'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        raw: json_['raw'] as core.String?,
+        text: json_['text'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final filename = this.filename;
+    final mediaType = this.mediaType;
+    final metadata = this.metadata;
+    final raw = this.raw;
+    final text = this.text;
+    final url = this.url;
+    return {
+      'data': ?data,
+      'filename': ?filename,
+      'mediaType': ?mediaType,
+      'metadata': ?metadata,
+      'raw': ?raw,
+      'text': ?text,
+      'url': ?url,
+    };
+  }
+}
+
+/// Deprecated: Use Authorization Code + PKCE or Device Code.
+class LfA2aV1PasswordOAuthFlow {
+  /// The URL to be used for obtaining refresh tokens.
+  ///
+  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
+  /// TLS.
+  core.String? refreshUrl;
+
+  /// The available scopes for the OAuth2 security scheme.
+  ///
+  /// A map between the scope name and a short description for it. The map MAY
+  /// be empty.
+  core.Map<core.String, core.String>? scopes;
+
+  /// The token URL to be used for this flow.
+  ///
+  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
+  /// TLS.
+  core.String? tokenUrl;
+
+  LfA2aV1PasswordOAuthFlow({this.refreshUrl, this.scopes, this.tokenUrl});
+
+  LfA2aV1PasswordOAuthFlow.fromJson(core.Map json_)
+    : this(
+        refreshUrl: json_['refreshUrl'] as core.String?,
+        scopes: (json_['scopes'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        tokenUrl: json_['tokenUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final refreshUrl = this.refreshUrl;
+    final scopes = this.scopes;
+    final tokenUrl = this.tokenUrl;
+    return {
+      'refreshUrl': ?refreshUrl,
+      'scopes': ?scopes,
+      'tokenUrl': ?tokenUrl,
+    };
+  }
+}
+
+/// Defines the security requirements for an agent.
+class LfA2aV1SecurityRequirement {
+  /// A map of security schemes to the required scopes.
+  core.Map<core.String, LfA2aV1StringList>? schemes;
+
+  LfA2aV1SecurityRequirement({this.schemes});
+
+  LfA2aV1SecurityRequirement.fromJson(core.Map json_)
+    : this(
+        schemes: (json_['schemes'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                LfA2aV1StringList.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final schemes = this.schemes;
+    return {'schemes': ?schemes};
+  }
+}
+
+/// Defines a security scheme that can be used to secure an agent's endpoints.
+///
+/// This is a discriminated union type based on the OpenAPI 3.2 Security Scheme
+/// Object. See:
+/// https://spec.openapis.org/oas/v3.2.0.html#security-scheme-object
+class LfA2aV1SecurityScheme {
+  /// API key-based authentication.
+  LfA2aV1APIKeySecurityScheme? apiKeySecurityScheme;
+
+  /// HTTP authentication (Basic, Bearer, etc.).
+  LfA2aV1HTTPAuthSecurityScheme? httpAuthSecurityScheme;
+
+  /// Mutual TLS authentication.
+  LfA2aV1MutualTlsSecurityScheme? mtlsSecurityScheme;
+
+  /// OAuth 2.0 authentication.
+  LfA2aV1OAuth2SecurityScheme? oauth2SecurityScheme;
+
+  /// OpenID Connect authentication.
+  LfA2aV1OpenIdConnectSecurityScheme? openIdConnectSecurityScheme;
+
+  LfA2aV1SecurityScheme({
+    this.apiKeySecurityScheme,
+    this.httpAuthSecurityScheme,
+    this.mtlsSecurityScheme,
+    this.oauth2SecurityScheme,
+    this.openIdConnectSecurityScheme,
+  });
+
+  LfA2aV1SecurityScheme.fromJson(core.Map json_)
+    : this(
+        apiKeySecurityScheme: json_.containsKey('apiKeySecurityScheme')
+            ? LfA2aV1APIKeySecurityScheme.fromJson(
+                json_['apiKeySecurityScheme']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        httpAuthSecurityScheme: json_.containsKey('httpAuthSecurityScheme')
+            ? LfA2aV1HTTPAuthSecurityScheme.fromJson(
+                json_['httpAuthSecurityScheme']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mtlsSecurityScheme: json_.containsKey('mtlsSecurityScheme')
+            ? LfA2aV1MutualTlsSecurityScheme.fromJson(
+                json_['mtlsSecurityScheme']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oauth2SecurityScheme: json_.containsKey('oauth2SecurityScheme')
+            ? LfA2aV1OAuth2SecurityScheme.fromJson(
+                json_['oauth2SecurityScheme']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        openIdConnectSecurityScheme:
+            json_.containsKey('openIdConnectSecurityScheme')
+            ? LfA2aV1OpenIdConnectSecurityScheme.fromJson(
+                json_['openIdConnectSecurityScheme']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKeySecurityScheme = this.apiKeySecurityScheme;
+    final httpAuthSecurityScheme = this.httpAuthSecurityScheme;
+    final mtlsSecurityScheme = this.mtlsSecurityScheme;
+    final oauth2SecurityScheme = this.oauth2SecurityScheme;
+    final openIdConnectSecurityScheme = this.openIdConnectSecurityScheme;
+    return {
+      'apiKeySecurityScheme': ?apiKeySecurityScheme,
+      'httpAuthSecurityScheme': ?httpAuthSecurityScheme,
+      'mtlsSecurityScheme': ?mtlsSecurityScheme,
+      'oauth2SecurityScheme': ?oauth2SecurityScheme,
+      'openIdConnectSecurityScheme': ?openIdConnectSecurityScheme,
+    };
+  }
+}
+
+/// Configuration of a send message request.
+class LfA2aV1SendMessageConfiguration {
+  /// A list of media types the client is prepared to accept for response parts.
+  ///
+  /// Agents SHOULD use this to tailor their output.
+  core.List<core.String>? acceptedOutputModes;
+
+  /// The maximum number of most recent messages from the task's history to
+  /// retrieve in the response.
+  ///
+  /// An unset value means the client does not impose any limit. A value of zero
+  /// is a request to not include any messages. The server MUST NOT return more
+  /// messages than the provided value, but MAY apply a lower limit.
+  core.int? historyLength;
+
+  /// If `true`, the operation returns immediately after creating the task, even
+  /// if processing is still in progress.
+  ///
+  /// If `false` (default), the operation MUST wait until the task reaches a
+  /// terminal (`COMPLETED`, `FAILED`, `CANCELED`, `REJECTED`) or interrupted
+  /// (`INPUT_REQUIRED`, `AUTH_REQUIRED`) state before returning.
+  core.bool? returnImmediately;
+
+  /// Configuration for the agent to send push notifications for task updates.
+  ///
+  /// Task id should be empty when sending this configuration in a `SendMessage`
+  /// request.
+  LfA2aV1TaskPushNotificationConfig? taskPushNotificationConfig;
+
+  LfA2aV1SendMessageConfiguration({
+    this.acceptedOutputModes,
+    this.historyLength,
+    this.returnImmediately,
+    this.taskPushNotificationConfig,
+  });
+
+  LfA2aV1SendMessageConfiguration.fromJson(core.Map json_)
+    : this(
+        acceptedOutputModes: (json_['acceptedOutputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        historyLength: json_['historyLength'] as core.int?,
+        returnImmediately: json_['returnImmediately'] as core.bool?,
+        taskPushNotificationConfig:
+            json_.containsKey('taskPushNotificationConfig')
+            ? LfA2aV1TaskPushNotificationConfig.fromJson(
+                json_['taskPushNotificationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceptedOutputModes = this.acceptedOutputModes;
+    final historyLength = this.historyLength;
+    final returnImmediately = this.returnImmediately;
+    final taskPushNotificationConfig = this.taskPushNotificationConfig;
+    return {
+      'acceptedOutputModes': ?acceptedOutputModes,
+      'historyLength': ?historyLength,
+      'returnImmediately': ?returnImmediately,
+      'taskPushNotificationConfig': ?taskPushNotificationConfig,
+    };
+  }
+}
+
+/// Represents a request for the `SendMessage` method.
+class LfA2aV1SendMessageRequest {
+  /// Configuration for the send request.
+  LfA2aV1SendMessageConfiguration? configuration;
+
+  /// The message to send to the agent.
+  ///
+  /// Required.
+  LfA2aV1Message? message;
+
+  /// A flexible key-value map for passing additional context or parameters.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  LfA2aV1SendMessageRequest({this.configuration, this.message, this.metadata});
+
+  LfA2aV1SendMessageRequest.fromJson(core.Map json_)
+    : this(
+        configuration: json_.containsKey('configuration')
+            ? LfA2aV1SendMessageConfiguration.fromJson(
+                json_['configuration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        message: json_.containsKey('message')
+            ? LfA2aV1Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final configuration = this.configuration;
+    final message = this.message;
+    final metadata = this.metadata;
+    return {
+      'configuration': ?configuration,
+      'message': ?message,
+      'metadata': ?metadata,
+    };
+  }
+}
+
+/// Represents the response for the `SendMessage` method.
+class LfA2aV1SendMessageResponse {
+  /// A message from the agent.
+  LfA2aV1Message? message;
+
+  /// The task created or updated by the message.
+  LfA2aV1Task? task;
+
+  LfA2aV1SendMessageResponse({this.message, this.task});
+
+  LfA2aV1SendMessageResponse.fromJson(core.Map json_)
+    : this(
+        message: json_.containsKey('message')
+            ? LfA2aV1Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        task: json_.containsKey('task')
+            ? LfA2aV1Task.fromJson(
+                json_['task'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final task = this.task;
+    return {'message': ?message, 'task': ?task};
+  }
+}
+
+/// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED A list of strings.
+class LfA2aV1StringList {
+  /// The individual string values.
+  core.List<core.String>? list;
+
+  LfA2aV1StringList({this.list});
+
+  LfA2aV1StringList.fromJson(core.Map json_)
+    : this(
+        list: (json_['list'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final list = this.list;
+    return {'list': ?list};
+  }
+}
+
+/// `Task` is the core unit of action for A2A.
+///
+/// It has a current status and when results are created for the task they are
+/// stored in the artifact. If there are multiple turns for a task, these are
+/// stored in history.
+class LfA2aV1Task {
+  /// A set of output artifacts for a `Task`.
+  core.List<LfA2aV1Artifact>? artifacts;
+
+  /// Unique identifier (e.g. UUID) for the contextual collection of
+  /// interactions (tasks and messages).
+  core.String? contextId;
+
+  /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED The history of
+  /// interactions from a `Task`.
+  core.List<LfA2aV1Message>? history;
+
+  /// Unique identifier (e.g. UUID) for the task, generated by the server for a
+  /// new task.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED A key/value object to
+  /// store custom metadata about a task.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The current status of a `Task`, including `state` and a `message`.
+  ///
+  /// Required.
+  LfA2aV1TaskStatus? status;
+
+  LfA2aV1Task({
+    this.artifacts,
+    this.contextId,
+    this.history,
+    this.id,
+    this.metadata,
+    this.status,
+  });
+
+  LfA2aV1Task.fromJson(core.Map json_)
+    : this(
+        artifacts: (json_['artifacts'] as core.List?)
+            ?.map(
+              (value) => LfA2aV1Artifact.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        contextId: json_['contextId'] as core.String?,
+        history: (json_['history'] as core.List?)
+            ?.map(
+              (value) => LfA2aV1Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        id: json_['id'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        status: json_.containsKey('status')
+            ? LfA2aV1TaskStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifacts = this.artifacts;
+    final contextId = this.contextId;
+    final history = this.history;
+    final id = this.id;
+    final metadata = this.metadata;
+    final status = this.status;
+    return {
+      'artifacts': ?artifacts,
+      'contextId': ?contextId,
+      'history': ?history,
+      'id': ?id,
+      'metadata': ?metadata,
+      'status': ?status,
+    };
+  }
+}
+
+/// A container associating a push notification configuration with a specific
+/// task.
+class LfA2aV1TaskPushNotificationConfig {
+  /// Authentication information required to send the notification.
+  LfA2aV1AuthenticationInfo? authentication;
+
+  /// The push notification configuration details.
+  ///
+  /// A unique identifier (e.g. UUID) for this push notification configuration.
+  core.String? id;
+
+  /// The ID of the task this configuration is associated with.
+  core.String? taskId;
+
+  /// Opaque routing identifier.
+  ///
+  /// Must match the `tenant` value from the selected `AgentInterface` in the
+  /// Agent Card when that field is set.
+  ///
+  /// Optional.
+  core.String? tenant;
+
+  /// A token unique for this task or session.
+  core.String? token;
+
+  /// The URL where the notification should be sent.
+  ///
+  /// Required.
+  core.String? url;
+
+  LfA2aV1TaskPushNotificationConfig({
+    this.authentication,
+    this.id,
+    this.taskId,
+    this.tenant,
+    this.token,
+    this.url,
+  });
+
+  LfA2aV1TaskPushNotificationConfig.fromJson(core.Map json_)
+    : this(
+        authentication: json_.containsKey('authentication')
+            ? LfA2aV1AuthenticationInfo.fromJson(
+                json_['authentication'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        id: json_['id'] as core.String?,
+        taskId: json_['taskId'] as core.String?,
+        tenant: json_['tenant'] as core.String?,
+        token: json_['token'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authentication = this.authentication;
+    final id = this.id;
+    final taskId = this.taskId;
+    final tenant = this.tenant;
+    final token = this.token;
+    final url = this.url;
+    return {
+      'authentication': ?authentication,
+      'id': ?id,
+      'taskId': ?taskId,
+      'tenant': ?tenant,
+      'token': ?token,
+      'url': ?url,
+    };
+  }
+}
+
+/// A container for the status of a task
+class LfA2aV1TaskStatus {
+  /// A message associated with the status.
+  LfA2aV1Message? message;
+
+  /// The current state of this task.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TASK_STATE_UNSPECIFIED" : The task is in an unknown or indeterminate
+  /// state.
+  /// - "TASK_STATE_SUBMITTED" : Indicates that a task has been successfully
+  /// submitted and acknowledged.
+  /// - "TASK_STATE_WORKING" : Indicates that a task is actively being processed
+  /// by the agent.
+  /// - "TASK_STATE_COMPLETED" : Indicates that a task has finished
+  /// successfully. This is a terminal state.
+  /// - "TASK_STATE_FAILED" : Indicates that a task has finished with an error.
+  /// This is a terminal state.
+  /// - "TASK_STATE_CANCELED" : Indicates that a task was canceled before
+  /// completion. This is a terminal state.
+  /// - "TASK_STATE_INPUT_REQUIRED" : Indicates that the agent requires
+  /// additional user input to proceed. This is an interrupted state.
+  /// - "TASK_STATE_REJECTED" : Indicates that the agent has decided to not
+  /// perform the task. This may be done during initial task creation or later
+  /// once an agent has determined it can't or won't proceed. This is a terminal
+  /// state.
+  /// - "TASK_STATE_AUTH_REQUIRED" : Indicates that authentication is required
+  /// to proceed. This is an interrupted state.
+  core.String? state;
+
+  /// ISO 8601 Timestamp when the status was recorded.
+  ///
+  /// Example: "2023-10-27T10:00:00Z"
+  core.String? timestamp;
+
+  LfA2aV1TaskStatus({this.message, this.state, this.timestamp});
+
+  LfA2aV1TaskStatus.fromJson(core.Map json_)
+    : this(
+        message: json_.containsKey('message')
+            ? LfA2aV1Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+        timestamp: json_['timestamp'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final state = this.state;
+    final timestamp = this.timestamp;
+    return {'message': ?message, 'state': ?state, 'timestamp': ?timestamp};
   }
 }
 
@@ -9397,13 +12174,15 @@ typedef Location = $Location00;
 class LoggingSettings {
   /// Configuration for how audio interactions should be recorded.
   ///
+  /// The audio is subject to redaction as configured in RedactionConfig.
+  ///
   /// Optional.
   AudioRecordingConfig? audioRecordingConfig;
 
-  /// Settings to describe the BigQuery export behaviors for the app.
+  /// Configures the BigQuery export behaviors for the app.
   ///
-  /// The conversation data will be exported to BigQuery tables if it is
-  /// enabled.
+  /// The conversation data is subject to redaction as configured in
+  /// RedactionConfig.
   ///
   /// Optional.
   BigQueryExportSettings? bigqueryExportSettings;
@@ -9437,13 +12216,21 @@ class LoggingSettings {
   /// Optional.
   RedactionConfig? redactionConfig;
 
-  /// Configures recording of unredacted audio.
+  /// Configures an additional recording of unredacted audio.
   ///
-  /// Use this to maintain a raw backup with restricted access when audio
-  /// redaction is enabled, typically for auditing or monitoring purposes.
+  /// This can be used to maintain a raw audio copy when audio redaction is
+  /// enabled, typically for auditing or monitoring purposes.
   ///
   /// Optional.
   AudioRecordingConfig? unredactedAudioRecordingConfig;
+
+  /// Configures the BigQuery export behaviors for the app.
+  ///
+  /// The unredacted conversation data will be exported to BigQuery tables if it
+  /// is enabled.
+  ///
+  /// Optional.
+  BigQueryExportSettings? unredactedBigqueryExportSettings;
 
   LoggingSettings({
     this.audioRecordingConfig,
@@ -9454,6 +12241,7 @@ class LoggingSettings {
     this.metricAnalysisSettings,
     this.redactionConfig,
     this.unredactedAudioRecordingConfig,
+    this.unredactedBigqueryExportSettings,
   });
 
   LoggingSettings.fromJson(core.Map json_)
@@ -9508,6 +12296,13 @@ class LoggingSettings {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        unredactedBigqueryExportSettings:
+            json_.containsKey('unredactedBigqueryExportSettings')
+            ? BigQueryExportSettings.fromJson(
+                json_['unredactedBigqueryExportSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -9519,6 +12314,8 @@ class LoggingSettings {
     final metricAnalysisSettings = this.metricAnalysisSettings;
     final redactionConfig = this.redactionConfig;
     final unredactedAudioRecordingConfig = this.unredactedAudioRecordingConfig;
+    final unredactedBigqueryExportSettings =
+        this.unredactedBigqueryExportSettings;
     return {
       'audioRecordingConfig': ?audioRecordingConfig,
       'bigqueryExportSettings': ?bigqueryExportSettings,
@@ -9528,6 +12325,7 @@ class LoggingSettings {
       'metricAnalysisSettings': ?metricAnalysisSettings,
       'redactionConfig': ?redactionConfig,
       'unredactedAudioRecordingConfig': ?unredactedAudioRecordingConfig,
+      'unredactedBigqueryExportSettings': ?unredactedBigqueryExportSettings,
     };
   }
 }
@@ -9572,6 +12370,13 @@ class McpTool {
   /// Required.
   core.String? name;
 
+  /// The name override of the MCP tool.
+  ///
+  /// This is populated if the name was overridden by a Toolset override.
+  ///
+  /// Optional.
+  core.String? nameOverride;
+
   /// The schema of the output arguments of the MCP tool.
   ///
   /// Optional.
@@ -9594,6 +12399,18 @@ class McpTool {
   /// Optional.
   ServiceDirectoryConfig? serviceDirectoryConfig;
 
+  /// The dynamic availability state of the tool on the external server.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default state.
+  /// - "ACTIVE" : The tool is available and actively offered by the server.
+  /// - "INACTIVE" : The tool is configured or pinned, but currently not offered
+  /// by the server.
+  /// - "STALE" : The tool exists on the server, but does not match the version
+  /// on the server.
+  core.String? state;
+
   /// The TLS configuration.
   ///
   /// Includes the custom server certificates that the client should trust.
@@ -9607,9 +12424,11 @@ class McpTool {
     this.description,
     this.inputSchema,
     this.name,
+    this.nameOverride,
     this.outputSchema,
     this.serverAddress,
     this.serviceDirectoryConfig,
+    this.state,
     this.tlsConfig,
   });
 
@@ -9631,6 +12450,7 @@ class McpTool {
               )
             : null,
         name: json_['name'] as core.String?,
+        nameOverride: json_['nameOverride'] as core.String?,
         outputSchema: json_.containsKey('outputSchema')
             ? Schema.fromJson(
                 json_['outputSchema'] as core.Map<core.String, core.dynamic>,
@@ -9643,6 +12463,7 @@ class McpTool {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        state: json_['state'] as core.String?,
         tlsConfig: json_.containsKey('tlsConfig')
             ? TlsConfig.fromJson(
                 json_['tlsConfig'] as core.Map<core.String, core.dynamic>,
@@ -9656,9 +12477,11 @@ class McpTool {
     final description = this.description;
     final inputSchema = this.inputSchema;
     final name = this.name;
+    final nameOverride = this.nameOverride;
     final outputSchema = this.outputSchema;
     final serverAddress = this.serverAddress;
     final serviceDirectoryConfig = this.serviceDirectoryConfig;
+    final state = this.state;
     final tlsConfig = this.tlsConfig;
     return {
       'apiAuthentication': ?apiAuthentication,
@@ -9666,10 +12489,127 @@ class McpTool {
       'description': ?description,
       'inputSchema': ?inputSchema,
       'name': ?name,
+      'nameOverride': ?nameOverride,
       'outputSchema': ?outputSchema,
       'serverAddress': ?serverAddress,
       'serviceDirectoryConfig': ?serviceDirectoryConfig,
+      'state': ?state,
       'tlsConfig': ?tlsConfig,
+    };
+  }
+}
+
+/// Container for a tool's core definition elements that are snapshot.
+///
+/// Schemas in the snapshot are used as-is and cannot be overridden.
+class McpToolDefinition {
+  /// The description of the MCP tool.
+  ///
+  /// This can be overridden by `description_override` in `McpToolOverride`.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The schema of the input arguments of the MCP tool.
+  ///
+  /// Output only.
+  Schema? inputSchema;
+
+  /// The schema of the output arguments of the MCP tool.
+  ///
+  /// Output only.
+  Schema? outputSchema;
+
+  McpToolDefinition({this.description, this.inputSchema, this.outputSchema});
+
+  McpToolDefinition.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        inputSchema: json_.containsKey('inputSchema')
+            ? Schema.fromJson(
+                json_['inputSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        outputSchema: json_.containsKey('outputSchema')
+            ? Schema.fromJson(
+                json_['outputSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final inputSchema = this.inputSchema;
+    final outputSchema = this.outputSchema;
+    return {
+      'description': ?description,
+      'inputSchema': ?inputSchema,
+      'outputSchema': ?outputSchema,
+    };
+  }
+}
+
+/// Overrides associated with a given tool in a Toolset.
+///
+/// This enables "pinning" or "overriding" of tool definitions from the external
+/// dynamic server.
+class McpToolOverride {
+  /// If present, this tool uses this description instead of the original
+  /// description from the server.
+  ///
+  /// Optional.
+  core.String? descriptionOverride;
+
+  /// If present, this tool uses this name in the Agent instead of the original
+  /// name.
+  ///
+  /// This is primarily used as an alias if the MCP server offers poorly named
+  /// tools.
+  ///
+  /// Optional.
+  core.String? nameOverride;
+
+  /// If present, this tool is "Pinned" and uses the snapshot values as
+  /// fallbacks if the server becomes temporarily unavailable or if no Override
+  /// is present.
+  ///
+  /// Output only.
+  McpToolDefinition? snapshot;
+
+  /// The original name of the tool as it is emitted by the MCP server.
+  ///
+  /// Required.
+  core.String? tool;
+
+  McpToolOverride({
+    this.descriptionOverride,
+    this.nameOverride,
+    this.snapshot,
+    this.tool,
+  });
+
+  McpToolOverride.fromJson(core.Map json_)
+    : this(
+        descriptionOverride: json_['descriptionOverride'] as core.String?,
+        nameOverride: json_['nameOverride'] as core.String?,
+        snapshot: json_.containsKey('snapshot')
+            ? McpToolDefinition.fromJson(
+                json_['snapshot'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tool: json_['tool'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final descriptionOverride = this.descriptionOverride;
+    final nameOverride = this.nameOverride;
+    final snapshot = this.snapshot;
+    final tool = this.tool;
+    return {
+      'descriptionOverride': ?descriptionOverride,
+      'nameOverride': ?nameOverride,
+      'snapshot': ?snapshot,
+      'tool': ?tool,
     };
   }
 }
@@ -9719,12 +12659,21 @@ class McpToolset {
   /// Optional.
   TlsConfig? tlsConfig;
 
+  /// Overrides for individual tools within this toolset.
+  ///
+  /// This allows overriding specific details like descriptions, names, or
+  /// pinning the tools' states so they aren't fully dynamic.
+  ///
+  /// Optional.
+  core.List<McpToolOverride>? toolOverrides;
+
   McpToolset({
     this.apiAuthentication,
     this.customHeaders,
     this.serverAddress,
     this.serviceDirectoryConfig,
     this.tlsConfig,
+    this.toolOverrides,
   });
 
   McpToolset.fromJson(core.Map json_)
@@ -9750,6 +12699,13 @@ class McpToolset {
                 json_['tlsConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        toolOverrides: (json_['toolOverrides'] as core.List?)
+            ?.map(
+              (value) => McpToolOverride.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -9758,12 +12714,14 @@ class McpToolset {
     final serverAddress = this.serverAddress;
     final serviceDirectoryConfig = this.serviceDirectoryConfig;
     final tlsConfig = this.tlsConfig;
+    final toolOverrides = this.toolOverrides;
     return {
       'apiAuthentication': ?apiAuthentication,
       'customHeaders': ?customHeaders,
       'serverAddress': ?serverAddress,
       'serviceDirectoryConfig': ?serviceDirectoryConfig,
       'tlsConfig': ?tlsConfig,
+      'toolOverrides': ?toolOverrides,
     };
   }
 }
@@ -10432,23 +13390,41 @@ class PythonFunction {
   /// Optional.
   core.String? pythonCode;
 
-  PythonFunction({this.description, this.name, this.pythonCode});
+  /// Service Directory configuration for the tool.
+  ///
+  /// Optional.
+  ServiceDirectoryConfig? serviceDirectoryConfig;
+
+  PythonFunction({
+    this.description,
+    this.name,
+    this.pythonCode,
+    this.serviceDirectoryConfig,
+  });
 
   PythonFunction.fromJson(core.Map json_)
     : this(
         description: json_['description'] as core.String?,
         name: json_['name'] as core.String?,
         pythonCode: json_['pythonCode'] as core.String?,
+        serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
+            ? ServiceDirectoryConfig.fromJson(
+                json_['serviceDirectoryConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final description = this.description;
     final name = this.name;
     final pythonCode = this.pythonCode;
+    final serviceDirectoryConfig = this.serviceDirectoryConfig;
     return {
       'description': ?description,
       'name': ?name,
       'pythonCode': ?pythonCode,
+      'serviceDirectoryConfig': ?serviceDirectoryConfig,
     };
   }
 }
@@ -10500,6 +13476,48 @@ class RedactionConfig {
       'deidentifyTemplate': ?deidentifyTemplate,
       'enableRedaction': ?enableRedaction,
       'inspectTemplate': ?inspectTemplate,
+    };
+  }
+}
+
+/// Represents a tool that allows the agent to call another remote agent.
+class RemoteAgentTool {
+  /// The agent card of the remote agent that this tool invokes.
+  ///
+  /// Required.
+  AgentCard? agentCard;
+
+  /// The description of the tool.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// The name of the tool.
+  ///
+  /// Required.
+  core.String? name;
+
+  RemoteAgentTool({this.agentCard, this.description, this.name});
+
+  RemoteAgentTool.fromJson(core.Map json_)
+    : this(
+        agentCard: json_.containsKey('agentCard')
+            ? AgentCard.fromJson(
+                json_['agentCard'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentCard = this.agentCard;
+    final description = this.description;
+    final name = this.name;
+    return {
+      'agentCard': ?agentCard,
+      'description': ?description,
+      'name': ?name,
     };
   }
 }
@@ -10602,6 +13620,13 @@ class RetrieveToolSchemaResponse {
 
 /// Request message for ToolService.RetrieveTools.
 class RetrieveToolsRequest {
+  /// If true, the returned tools will contain raw descriptions and schemas
+  /// directly from the server, bypassing any stored persistence configurations
+  /// (overrides/snapshots).
+  ///
+  /// Optional.
+  core.bool? bypassPersistenceConfig;
+
   /// The identifiers of the tools to retrieve from the toolset.
   ///
   /// If empty, all tools in the toolset will be returned.
@@ -10609,18 +13634,23 @@ class RetrieveToolsRequest {
   /// Optional.
   core.List<core.String>? toolIds;
 
-  RetrieveToolsRequest({this.toolIds});
+  RetrieveToolsRequest({this.bypassPersistenceConfig, this.toolIds});
 
   RetrieveToolsRequest.fromJson(core.Map json_)
     : this(
+        bypassPersistenceConfig: json_['bypassPersistenceConfig'] as core.bool?,
         toolIds: (json_['toolIds'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final bypassPersistenceConfig = this.bypassPersistenceConfig;
     final toolIds = this.toolIds;
-    return {'toolIds': ?toolIds};
+    return {
+      'bypassPersistenceConfig': ?bypassPersistenceConfig,
+      'toolIds': ?toolIds,
+    };
   }
 }
 
@@ -11051,6 +14081,11 @@ class SessionConfig {
   /// Optional.
   core.String? entryAgent;
 
+  /// Whether to exclude diagnostic info from the session output.
+  ///
+  /// Optional.
+  core.bool? excludeDiagnosticInfo;
+
   /// The historical context of the session, including user inputs, agent
   /// responses, and other messages.
   ///
@@ -11102,6 +14137,7 @@ class SessionConfig {
     this.deployment,
     this.enableTextStreaming,
     this.entryAgent,
+    this.excludeDiagnosticInfo,
     this.historicalContexts,
     this.inputAudioConfig,
     this.outputAudioConfig,
@@ -11115,6 +14151,7 @@ class SessionConfig {
         deployment: json_['deployment'] as core.String?,
         enableTextStreaming: json_['enableTextStreaming'] as core.bool?,
         entryAgent: json_['entryAgent'] as core.String?,
+        excludeDiagnosticInfo: json_['excludeDiagnosticInfo'] as core.bool?,
         historicalContexts: (json_['historicalContexts'] as core.List?)
             ?.map(
               (value) => Message.fromJson(
@@ -11149,6 +14186,7 @@ class SessionConfig {
     final deployment = this.deployment;
     final enableTextStreaming = this.enableTextStreaming;
     final entryAgent = this.entryAgent;
+    final excludeDiagnosticInfo = this.excludeDiagnosticInfo;
     final historicalContexts = this.historicalContexts;
     final inputAudioConfig = this.inputAudioConfig;
     final outputAudioConfig = this.outputAudioConfig;
@@ -11160,6 +14198,7 @@ class SessionConfig {
       'deployment': ?deployment,
       'enableTextStreaming': ?enableTextStreaming,
       'entryAgent': ?entryAgent,
+      'excludeDiagnosticInfo': ?excludeDiagnosticInfo,
       'historicalContexts': ?historicalContexts,
       'inputAudioConfig': ?inputAudioConfig,
       'outputAudioConfig': ?outputAudioConfig,
@@ -11383,6 +14422,12 @@ class SessionOutput {
   /// text.
   Citations? citations;
 
+  /// Context messages for external supervision guardrails.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? context;
+
   /// Diagnostic information contains execution details during the processing of
   /// the input.
   ///
@@ -11422,6 +14467,7 @@ class SessionOutput {
   SessionOutput({
     this.audio,
     this.citations,
+    this.context,
     this.diagnosticInfo,
     this.endSession,
     this.googleSearchSuggestions,
@@ -11440,6 +14486,9 @@ class SessionOutput {
                 json_['citations'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        context: (json_['context'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
         diagnosticInfo: json_.containsKey('diagnosticInfo')
             ? SessionOutputDiagnosticInfo.fromJson(
                 json_['diagnosticInfo'] as core.Map<core.String, core.dynamic>,
@@ -11472,6 +14521,7 @@ class SessionOutput {
   core.Map<core.String, core.dynamic> toJson() {
     final audio = this.audio;
     final citations = this.citations;
+    final context = this.context;
     final diagnosticInfo = this.diagnosticInfo;
     final endSession = this.endSession;
     final googleSearchSuggestions = this.googleSearchSuggestions;
@@ -11483,6 +14533,7 @@ class SessionOutput {
     return {
       'audio': ?audio,
       'citations': ?citations,
+      'context': ?context,
       'diagnosticInfo': ?diagnosticInfo,
       'endSession': ?endSession,
       'googleSearchSuggestions': ?googleSearchSuggestions,
@@ -11621,6 +14672,29 @@ typedef Status = $Status00;
 
 /// Configuration for how the agent response should be synthesized.
 class SynthesizeSpeechConfig {
+  /// Deprecated: Use `custom_voice_samples` in AudioProcessingConfig instead.
+  ///
+  /// The Cloud Storage URI to the consent audio for voice cloning.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? consentAudioGcsUri;
+
+  /// The instruction used to synthesize speech when using a generative model.
+  ///
+  /// Optional.
+  core.String? instruction;
+
+  /// The model used to synthesize audio.
+  ///
+  /// Currently supported values: - "gemini-3.1-flash-tts-preview" If empty,
+  /// Chirp3-HD is used.
+  ///
+  /// Optional.
+  core.String? model;
+
   /// The speaking rate/speed in the range \[0.25, 2.0\].
   ///
   /// 1.0 is the normal native speed supported by the specific voice. 2.0 is
@@ -11640,18 +14714,53 @@ class SynthesizeSpeechConfig {
   /// Optional.
   core.String? voice;
 
-  SynthesizeSpeechConfig({this.speakingRate, this.voice});
+  /// Deprecated: Use `custom_voice_samples` in AudioProcessingConfig instead.
+  ///
+  /// The Cloud Storage URI to the audio sample for voice cloning. The audio
+  /// sample should be a mono-channel, 24kHz WAV file. Note: Please make sure
+  /// the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has
+  /// `storage.objects.get` permission to the Cloud Storage object.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? voiceSampleGcsUri;
+
+  SynthesizeSpeechConfig({
+    this.consentAudioGcsUri,
+    this.instruction,
+    this.model,
+    this.speakingRate,
+    this.voice,
+    this.voiceSampleGcsUri,
+  });
 
   SynthesizeSpeechConfig.fromJson(core.Map json_)
     : this(
+        consentAudioGcsUri: json_['consentAudioGcsUri'] as core.String?,
+        instruction: json_['instruction'] as core.String?,
+        model: json_['model'] as core.String?,
         speakingRate: (json_['speakingRate'] as core.num?)?.toDouble(),
         voice: json_['voice'] as core.String?,
+        voiceSampleGcsUri: json_['voiceSampleGcsUri'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final consentAudioGcsUri = this.consentAudioGcsUri;
+    final instruction = this.instruction;
+    final model = this.model;
     final speakingRate = this.speakingRate;
     final voice = this.voice;
-    return {'speakingRate': ?speakingRate, 'voice': ?voice};
+    final voiceSampleGcsUri = this.voiceSampleGcsUri;
+    return {
+      'consentAudioGcsUri': ?consentAudioGcsUri,
+      'instruction': ?instruction,
+      'model': ?model,
+      'speakingRate': ?speakingRate,
+      'voice': ?voice,
+      'voiceSampleGcsUri': ?voiceSampleGcsUri,
+    };
   }
 }
 
@@ -11871,10 +14980,23 @@ class Tool {
   /// Optional.
   PythonFunction? pythonFunction;
 
+  /// The remote agent tool.
+  ///
+  /// Optional.
+  RemoteAgentTool? remoteAgentTool;
+
   /// The system tool.
   ///
   /// Optional.
   SystemTool? systemTool;
+
+  /// The timeout for the tool execution.
+  ///
+  /// If not set, the default timeout is 30 seconds for `SYNCHRONOUS` tools and
+  /// 60 seconds for `ASYNCHRONOUS` tools.
+  ///
+  /// Optional.
+  core.String? timeout;
 
   /// Configuration for tool behavior in fake mode.
   ///
@@ -11907,7 +15029,9 @@ class Tool {
     this.name,
     this.openApiTool,
     this.pythonFunction,
+    this.remoteAgentTool,
     this.systemTool,
+    this.timeout,
     this.toolFakeConfig,
     this.updateTime,
     this.widgetTool,
@@ -11967,11 +15091,17 @@ class Tool {
                 json_['pythonFunction'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        remoteAgentTool: json_.containsKey('remoteAgentTool')
+            ? RemoteAgentTool.fromJson(
+                json_['remoteAgentTool'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         systemTool: json_.containsKey('systemTool')
             ? SystemTool.fromJson(
                 json_['systemTool'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        timeout: json_['timeout'] as core.String?,
         toolFakeConfig: json_.containsKey('toolFakeConfig')
             ? ToolFakeConfig.fromJson(
                 json_['toolFakeConfig'] as core.Map<core.String, core.dynamic>,
@@ -12001,7 +15131,9 @@ class Tool {
     final name = this.name;
     final openApiTool = this.openApiTool;
     final pythonFunction = this.pythonFunction;
+    final remoteAgentTool = this.remoteAgentTool;
     final systemTool = this.systemTool;
+    final timeout = this.timeout;
     final toolFakeConfig = this.toolFakeConfig;
     final updateTime = this.updateTime;
     final widgetTool = this.widgetTool;
@@ -12021,7 +15153,9 @@ class Tool {
       'name': ?name,
       'openApiTool': ?openApiTool,
       'pythonFunction': ?pythonFunction,
+      'remoteAgentTool': ?remoteAgentTool,
       'systemTool': ?systemTool,
+      'timeout': ?timeout,
       'toolFakeConfig': ?toolFakeConfig,
       'updateTime': ?updateTime,
       'widgetTool': ?widgetTool,
@@ -12317,6 +15451,14 @@ class Toolset {
   /// Optional.
   OpenApiToolset? openApiToolset;
 
+  /// The timeout for the toolset execution.
+  ///
+  /// If not set, the default timeout is 30 seconds for `SYNCHRONOUS` toolsets
+  /// and 60 seconds for `ASYNCHRONOUS` toolsets.
+  ///
+  /// Optional.
+  core.String? timeout;
+
   /// Configuration for tools behavior in fake mode.
   ///
   /// Optional.
@@ -12337,6 +15479,7 @@ class Toolset {
     this.mcpToolset,
     this.name,
     this.openApiToolset,
+    this.timeout,
     this.toolFakeConfig,
     this.updateTime,
   });
@@ -12365,6 +15508,7 @@ class Toolset {
                 json_['openApiToolset'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        timeout: json_['timeout'] as core.String?,
         toolFakeConfig: json_.containsKey('toolFakeConfig')
             ? ToolFakeConfig.fromJson(
                 json_['toolFakeConfig'] as core.Map<core.String, core.dynamic>,
@@ -12383,6 +15527,7 @@ class Toolset {
     final mcpToolset = this.mcpToolset;
     final name = this.name;
     final openApiToolset = this.openApiToolset;
+    final timeout = this.timeout;
     final toolFakeConfig = this.toolFakeConfig;
     final updateTime = this.updateTime;
     return {
@@ -12395,6 +15540,7 @@ class Toolset {
       'mcpToolset': ?mcpToolset,
       'name': ?name,
       'openApiToolset': ?openApiToolset,
+      'timeout': ?timeout,
       'toolFakeConfig': ?toolFakeConfig,
       'updateTime': ?updateTime,
     };
@@ -12700,6 +15846,34 @@ class TriggerActionTransferAgent {
   }
 }
 
+/// VPC-SC settings for the app.
+class VpcScSettings {
+  /// The allowed HTTP(s) origins that OpenAPI tools in the App are able to
+  /// directly call when VPC Service Controls are enabled.
+  ///
+  /// These strings must match the origin exactly, including the port if
+  /// specified. For example, "https://example.com" or
+  /// "https://example.com:443". This list does not yet apply to Python tools
+  /// that may make direct HTTP calls.
+  ///
+  /// Optional.
+  core.List<core.String>? allowedOrigins;
+
+  VpcScSettings({this.allowedOrigins});
+
+  VpcScSettings.fromJson(core.Map json_)
+    : this(
+        allowedOrigins: (json_['allowedOrigins'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedOrigins = this.allowedOrigins;
+    return {'allowedOrigins': ?allowedOrigins};
+  }
+}
+
 /// Represents a single web search query and its associated search uri.
 class WebSearchQuery {
   /// The search query text.
@@ -12720,6 +15894,75 @@ class WebSearchQuery {
     final query = this.query;
     final uri = this.uri;
     return {'query': ?query, 'uri': ?uri};
+  }
+}
+
+/// Ephemeral Meta credentials for WhatsApp native integration.
+class WhatsAppCredentials {
+  /// The Meta auth code provided by the embedded signup flow.
+  ///
+  /// Required.
+  core.String? authCode;
+
+  /// The Business Account ID to use for the phone number.
+  ///
+  /// Required.
+  core.String? businessAccountId;
+
+  /// The Conversation Profile ID to use for the deployment.
+  ///
+  /// Optional.
+  core.String? conversationProfileId;
+
+  /// The phone number to register with WhatsApp.
+  ///
+  /// Required.
+  core.String? phoneNumber;
+
+  /// The 6-digit PIN created by the user for two-step verification.
+  ///
+  /// Required.
+  core.String? pin;
+
+  /// The WhatsApp Business Account ID.
+  ///
+  /// Required.
+  core.String? wabaId;
+
+  WhatsAppCredentials({
+    this.authCode,
+    this.businessAccountId,
+    this.conversationProfileId,
+    this.phoneNumber,
+    this.pin,
+    this.wabaId,
+  });
+
+  WhatsAppCredentials.fromJson(core.Map json_)
+    : this(
+        authCode: json_['authCode'] as core.String?,
+        businessAccountId: json_['businessAccountId'] as core.String?,
+        conversationProfileId: json_['conversationProfileId'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        pin: json_['pin'] as core.String?,
+        wabaId: json_['wabaId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authCode = this.authCode;
+    final businessAccountId = this.businessAccountId;
+    final conversationProfileId = this.conversationProfileId;
+    final phoneNumber = this.phoneNumber;
+    final pin = this.pin;
+    final wabaId = this.wabaId;
+    return {
+      'authCode': ?authCode,
+      'businessAccountId': ?businessAccountId,
+      'conversationProfileId': ?conversationProfileId,
+      'phoneNumber': ?phoneNumber,
+      'pin': ?pin,
+      'wabaId': ?wabaId,
+    };
   }
 }
 

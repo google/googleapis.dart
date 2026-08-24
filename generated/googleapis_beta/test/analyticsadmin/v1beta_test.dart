@@ -1792,6 +1792,7 @@ buildGoogleAnalyticsAdminV1betaPropertySummary() {
   final o = api.GoogleAnalyticsAdminV1betaPropertySummary();
   buildCounterGoogleAnalyticsAdminV1betaPropertySummary++;
   if (buildCounterGoogleAnalyticsAdminV1betaPropertySummary < 3) {
+    o.canEdit = true;
     o.displayName = 'foo';
     o.parent = 'foo';
     o.property = 'foo';
@@ -1806,6 +1807,7 @@ void checkGoogleAnalyticsAdminV1betaPropertySummary(
 ) {
   buildCounterGoogleAnalyticsAdminV1betaPropertySummary++;
   if (buildCounterGoogleAnalyticsAdminV1betaPropertySummary < 3) {
+    unittest.expect(o.canEdit!, unittest.isTrue);
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.parent!, unittest.equals('foo'));
     unittest.expect(o.property!, unittest.equals('foo'));

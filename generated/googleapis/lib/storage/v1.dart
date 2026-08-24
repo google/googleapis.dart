@@ -46,6 +46,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsHmacKeysResource]
 ///   - [ProjectsServiceAccountResource]
+/// - [RapidCachesResource]
 @core.Deprecated('Use package:google_cloud_storage')
 library;
 
@@ -110,6 +111,7 @@ class StorageApi {
   ObjectsResource get objects => ObjectsResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
+  RapidCachesResource get rapidCaches => RapidCachesResource(_requester);
 
   StorageApi(
     http.Client client, {
@@ -2663,6 +2665,69 @@ class ManagedFoldersResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Updates a managed folder using patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - The name of the bucket containing the managed folder.
+  ///
+  /// [managedFolder] - The name of the managed folder.
+  ///
+  /// [ifMetagenerationMatch] - Makes the operation conditional on whether the
+  /// metageneration of the managed folder matches the specified value.
+  ///
+  /// [ifMetagenerationNotMatch] - Makes the operation conditional on whether
+  /// the metageneration of the managed folder doesn't match the specified
+  /// value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManagedFolder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedFolder> update(
+    ManagedFolder request,
+    core.String bucket,
+    core.String managedFolder, {
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'ifMetagenerationMatch': ?ifMetagenerationMatch == null
+          ? null
+          : [ifMetagenerationMatch],
+      'ifMetagenerationNotMatch': ?ifMetagenerationNotMatch == null
+          ? null
+          : [ifMetagenerationNotMatch],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'b/' +
+        commons.escapeVariable('$bucket') +
+        '/managedFolders/' +
+        commons.escapeVariable('$managedFolder');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ManagedFolder.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class NotificationsResource {
@@ -3306,8 +3371,15 @@ class ObjectsResource {
   /// - "publicRead" : Object owner gets OWNER access, and allUsers get READER
   /// access.
   ///
-  /// [dropContextGroups] - Specifies which groups of Object Contexts from the
-  /// source object(s) should be dropped from the destination object.
+  /// [dropContextGroups] - Specifies which object context groups to drop from
+  /// the source object(s) during a compose operation. The accepted value is
+  /// 'custom'.
+  /// Destination contexts behave as follows:
+  /// - When request body contexts are provided, they override all source
+  /// contexts.
+  /// - When no request body contexts are provided, source contexts are
+  /// preserved unless 'dropContextGroups' contains 'custom', in which case all
+  /// contexts are dropped.
   ///
   /// [ifGenerationMatch] - Makes the operation conditional on whether the
   /// object's current generation matches the given value. Setting to 0 makes
@@ -4488,8 +4560,14 @@ class ObjectsResource {
   /// - "publicRead" : Object owner gets OWNER access, and allUsers get READER
   /// access.
   ///
-  /// [dropContextGroups] - Specifies which groups of Object Contexts from the
-  /// source object should be dropped from the destination object.
+  /// [dropContextGroups] - Specifies which object context groups to drop from
+  /// the source object during a copy operation. The accepted value is 'custom'.
+  /// Destination contexts behave as follows:
+  /// - When request body contexts are provided, they override all source
+  /// contexts.
+  /// - When no request body contexts are provided, source contexts are
+  /// preserved unless 'dropContextGroups' contains 'custom', in which case all
+  /// contexts are dropped.
   ///
   /// [ifGenerationMatch] - Makes the operation conditional on whether the
   /// object's current generation matches the given value. Setting to 0 makes
@@ -4886,108 +4964,6 @@ class ObjectsResource {
       queryParams: queryParams_,
     );
     return Object.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Watch for changes on all objects in a bucket.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [bucket] - Name of the bucket in which to look for objects.
-  ///
-  /// [delimiter] - Returns results in a directory-like mode. items will contain
-  /// only objects whose names, aside from the prefix, do not contain delimiter.
-  /// Objects whose names, aside from the prefix, contain delimiter will have
-  /// their name, truncated after the delimiter, returned in prefixes. Duplicate
-  /// prefixes are omitted.
-  ///
-  /// [endOffset] - Filter results to objects whose names are lexicographically
-  /// before endOffset. If startOffset is also set, the objects listed will have
-  /// names between startOffset (inclusive) and endOffset (exclusive).
-  ///
-  /// [includeTrailingDelimiter] - If true, objects that end in exactly one
-  /// instance of delimiter will have their metadata included in items in
-  /// addition to prefixes.
-  ///
-  /// [maxResults] - Maximum number of items plus prefixes to return in a single
-  /// page of responses. As duplicate prefixes are omitted, fewer total results
-  /// may be returned than requested. The service will use this parameter or
-  /// 1,000 items, whichever is smaller.
-  ///
-  /// [pageToken] - A previously-returned page token representing part of the
-  /// larger set of results to view.
-  ///
-  /// [prefix] - Filter results to objects whose names begin with this prefix.
-  ///
-  /// [projection] - Set of properties to return. Defaults to noAcl.
-  /// Possible string values are:
-  /// - "full" : Include all properties.
-  /// - "noAcl" : Omit the owner, acl property.
-  ///
-  /// [startOffset] - Filter results to objects whose names are
-  /// lexicographically equal to or after startOffset. If endOffset is also set,
-  /// the objects listed will have names between startOffset (inclusive) and
-  /// endOffset (exclusive).
-  ///
-  /// [userProject] - The project to be billed for this request. Required for
-  /// Requester Pays buckets.
-  ///
-  /// [versions] - If true, lists all versions of an object as distinct results.
-  /// The default is false. For more information, see
-  /// [Object Versioning](https://cloud.google.com/storage/docs/object-versioning).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Channel].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Channel> watchAll(
-    Channel request,
-    core.String bucket, {
-    core.String? delimiter,
-    core.String? endOffset,
-    core.bool? includeTrailingDelimiter,
-    core.int? maxResults,
-    core.String? pageToken,
-    core.String? prefix,
-    core.String? projection,
-    core.String? startOffset,
-    core.String? userProject,
-    core.bool? versions,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'delimiter': ?delimiter == null ? null : [delimiter],
-      'endOffset': ?endOffset == null ? null : [endOffset],
-      'includeTrailingDelimiter': ?includeTrailingDelimiter == null
-          ? null
-          : ['${includeTrailingDelimiter}'],
-      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'prefix': ?prefix == null ? null : [prefix],
-      'projection': ?projection == null ? null : [projection],
-      'startOffset': ?startOffset == null ? null : [startOffset],
-      'userProject': ?userProject == null ? null : [userProject],
-      'versions': ?versions == null ? null : ['${versions}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/o/watch';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Channel.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5503,6 +5479,234 @@ class ProjectsServiceAccountResource {
       queryParams: queryParams_,
     );
     return ServiceAccount.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class RapidCachesResource {
+  final commons.ApiRequester _requester;
+
+  RapidCachesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Disables a Rapid Cache instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [rapidCacheId] - The ID of the requested Rapid Cache instance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> disable(
+    core.String bucket,
+    core.String rapidCacheId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'b/' +
+        commons.escapeVariable('$bucket') +
+        '/rapidCaches/' +
+        commons.escapeVariable('$rapidCacheId') +
+        '/disable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns the metadata of a Rapid Cache instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [rapidCacheId] - The ID of the requested Rapid Cache instance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RapidCache].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RapidCache> get(
+    core.String bucket,
+    core.String rapidCacheId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'b/' +
+        commons.escapeVariable('$bucket') +
+        '/rapidCaches/' +
+        commons.escapeVariable('$rapidCacheId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RapidCache.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates a Rapid Cache instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> insert(
+    RapidCache request,
+    core.String bucket, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/rapidCaches';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns a list of Rapid Cache instances of the bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [pageSize] - Maximum number of items to return in a single page of
+  /// responses.
+  ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of results to view.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RapidCaches].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RapidCaches> list(
+    core.String bucket, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/rapidCaches';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RapidCaches.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the configuration of a Rapid Cache instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the parent bucket.
+  ///
+  /// [rapidCacheId] - The ID of the requested Rapid Cache instance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> update(
+    RapidCache request,
+    core.String bucket,
+    core.String rapidCacheId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'b/' +
+        commons.escapeVariable('$bucket') +
+        '/rapidCaches/' +
+        commons.escapeVariable('$rapidCacheId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -6441,6 +6645,12 @@ class BucketLifecycleRuleCondition {
   /// object.
   core.int? numNewerVersions;
 
+  /// Objects having a size greater than this value in bytes will be matched.
+  core.String? sizeAboveBytes;
+
+  /// Objects having a size less than this value in bytes will be matched.
+  core.String? sizeBelowBytes;
+
   BucketLifecycleRuleCondition({
     this.age,
     this.createdBefore,
@@ -6454,6 +6664,8 @@ class BucketLifecycleRuleCondition {
     this.matchesSuffix,
     this.noncurrentTimeBefore,
     this.numNewerVersions,
+    this.sizeAboveBytes,
+    this.sizeBelowBytes,
   });
 
   BucketLifecycleRuleCondition.fromJson(core.Map json_)
@@ -6482,6 +6694,8 @@ class BucketLifecycleRuleCondition {
             ? core.DateTime.parse(json_['noncurrentTimeBefore'] as core.String)
             : null,
         numNewerVersions: json_['numNewerVersions'] as core.int?,
+        sizeAboveBytes: json_['sizeAboveBytes'] as core.String?,
+        sizeBelowBytes: json_['sizeBelowBytes'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -6497,6 +6711,8 @@ class BucketLifecycleRuleCondition {
     final matchesSuffix = this.matchesSuffix;
     final noncurrentTimeBefore = this.noncurrentTimeBefore;
     final numNewerVersions = this.numNewerVersions;
+    final sizeAboveBytes = this.sizeAboveBytes;
+    final sizeBelowBytes = this.sizeBelowBytes;
     return {
       'age': ?age,
       'createdBefore': ?createdBefore == null
@@ -6516,6 +6732,8 @@ class BucketLifecycleRuleCondition {
           ? null
           : "${noncurrentTimeBefore.year.toString().padLeft(4, '0')}-${noncurrentTimeBefore.month.toString().padLeft(2, '0')}-${noncurrentTimeBefore.day.toString().padLeft(2, '0')}",
       'numNewerVersions': ?numNewerVersions,
+      'sizeAboveBytes': ?sizeAboveBytes,
+      'sizeBelowBytes': ?sizeBelowBytes,
     };
   }
 }
@@ -8432,6 +8650,9 @@ class ManagedFolder {
   /// Required if not specified by URL parameter.
   core.String? name;
 
+  /// The rapid cache configuration for the managed folder.
+  RapidCacheConfig? rapidCacheConfig;
+
   /// The link to this managed folder.
   core.String? selfLink;
 
@@ -8445,6 +8666,7 @@ class ManagedFolder {
     this.kind,
     this.metageneration,
     this.name,
+    this.rapidCacheConfig,
     this.selfLink,
     this.updateTime,
   });
@@ -8459,6 +8681,12 @@ class ManagedFolder {
         kind: json_['kind'] as core.String?,
         metageneration: json_['metageneration'] as core.String?,
         name: json_['name'] as core.String?,
+        rapidCacheConfig: json_.containsKey('rapidCacheConfig')
+            ? RapidCacheConfig.fromJson(
+                json_['rapidCacheConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         selfLink: json_['selfLink'] as core.String?,
         updateTime: json_.containsKey('updateTime')
             ? core.DateTime.parse(json_['updateTime'] as core.String)
@@ -8472,6 +8700,7 @@ class ManagedFolder {
     final kind = this.kind;
     final metageneration = this.metageneration;
     final name = this.name;
+    final rapidCacheConfig = this.rapidCacheConfig;
     final selfLink = this.selfLink;
     final updateTime = this.updateTime;
     return {
@@ -8481,6 +8710,7 @@ class ManagedFolder {
       'kind': ?kind,
       'metageneration': ?metageneration,
       'name': ?name,
+      'rapidCacheConfig': ?rapidCacheConfig,
       'selfLink': ?selfLink,
       'updateTime': ?updateTime?.toUtc().toIso8601String(),
     };
@@ -9590,6 +9820,230 @@ class Policy {
       'resourceId': ?resourceId,
       'version': ?version,
     };
+  }
+}
+
+/// A Rapid Cache instance.
+class RapidCache {
+  /// The cache-level entry admission policy.
+  core.String? admissionPolicy;
+
+  /// The name of the bucket containing this cache instance.
+  core.String? bucket;
+
+  /// The type of Rapid Cache this represents.
+  ///
+  /// Valid values include: "rapid-cache" and "rapid-cache-ultra".
+  core.String? cacheType;
+
+  /// The creation time of the cache instance in RFC 3339 format.
+  core.DateTime? createTime;
+
+  /// The ID of the resource, including the project number, bucket name and
+  /// rapid cache ID.
+  core.String? id;
+
+  /// Specifies whether objects are ingested into the cache upon write.
+  core.bool? ingestOnWrite;
+
+  /// The kind of item this is.
+  ///
+  /// For Rapid Cache, this is always storage#rapidCache.
+  core.String? kind;
+
+  /// True if the cache instance has an active Update long-running operation.
+  core.bool? pendingUpdate;
+
+  /// The ID of the Rapid cache instance.
+  core.String? rapidCacheId;
+
+  /// The link to this cache instance.
+  core.String? selfLink;
+
+  /// The current state of the cache instance.
+  core.String? state;
+
+  /// The TTL of all cache entries in whole seconds.
+  ///
+  /// e.g., "7200s".
+  core.String? ttl;
+
+  /// The modification time of the cache instance metadata in RFC 3339 format.
+  core.DateTime? updateTime;
+
+  /// The zone in which the cache instance is running.
+  ///
+  /// For example, us-central1-a.
+  core.String? zone;
+
+  RapidCache({
+    this.admissionPolicy,
+    this.bucket,
+    this.cacheType,
+    this.createTime,
+    this.id,
+    this.ingestOnWrite,
+    this.kind,
+    this.pendingUpdate,
+    this.rapidCacheId,
+    this.selfLink,
+    this.state,
+    this.ttl,
+    this.updateTime,
+    this.zone,
+  });
+
+  RapidCache.fromJson(core.Map json_)
+    : this(
+        admissionPolicy: json_['admissionPolicy'] as core.String?,
+        bucket: json_['bucket'] as core.String?,
+        cacheType: json_['cacheType'] as core.String?,
+        createTime: json_.containsKey('createTime')
+            ? core.DateTime.parse(json_['createTime'] as core.String)
+            : null,
+        id: json_['id'] as core.String?,
+        ingestOnWrite: json_['ingestOnWrite'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        pendingUpdate: json_['pendingUpdate'] as core.bool?,
+        rapidCacheId: json_['rapidCacheId'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        state: json_['state'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+        updateTime: json_.containsKey('updateTime')
+            ? core.DateTime.parse(json_['updateTime'] as core.String)
+            : null,
+        zone: json_['zone'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final admissionPolicy = this.admissionPolicy;
+    final bucket = this.bucket;
+    final cacheType = this.cacheType;
+    final createTime = this.createTime;
+    final id = this.id;
+    final ingestOnWrite = this.ingestOnWrite;
+    final kind = this.kind;
+    final pendingUpdate = this.pendingUpdate;
+    final rapidCacheId = this.rapidCacheId;
+    final selfLink = this.selfLink;
+    final state = this.state;
+    final ttl = this.ttl;
+    final updateTime = this.updateTime;
+    final zone = this.zone;
+    return {
+      'admissionPolicy': ?admissionPolicy,
+      'bucket': ?bucket,
+      'cacheType': ?cacheType,
+      'createTime': ?createTime?.toUtc().toIso8601String(),
+      'id': ?id,
+      'ingestOnWrite': ?ingestOnWrite,
+      'kind': ?kind,
+      'pendingUpdate': ?pendingUpdate,
+      'rapidCacheId': ?rapidCacheId,
+      'selfLink': ?selfLink,
+      'state': ?state,
+      'ttl': ?ttl,
+      'updateTime': ?updateTime?.toUtc().toIso8601String(),
+      'zone': ?zone,
+    };
+  }
+}
+
+/// Configuration options for the rapid cache of a managed folder.
+class RapidCacheConfig {
+  /// A map of rapid cache IDs to the corresponding `RapidCachePolicy`
+  /// configurations for a managed folder.
+  core.Map<core.String, RapidCachePolicy>? policies;
+
+  RapidCacheConfig({this.policies});
+
+  RapidCacheConfig.fromJson(core.Map json_)
+    : this(
+        policies: (json_['policies'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                RapidCachePolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final policies = this.policies;
+    return {'policies': ?policies};
+  }
+}
+
+/// The rapid cache policy configuration for a managed folder.
+class RapidCachePolicy {
+  /// The ingest-on-write policy for objects in the managed folder.
+  ///
+  /// When set to `enabled`, objects are automatically ingested into the cache
+  /// when they are written to the managed folder.
+  /// Possible string values are:
+  /// - "enabled" : Ingestion on write is explicitly enabled for the managed
+  /// folder.
+  /// - "unspecified" : Ingestion on write isn't specified at the managed folder
+  /// level and is inherited from the parent resource's configuration. This is
+  /// the default value.
+  core.String? ingestOnWrite;
+
+  /// The unique identifier of the rapid cache.
+  core.String? rapidCacheId;
+
+  RapidCachePolicy({this.ingestOnWrite, this.rapidCacheId});
+
+  RapidCachePolicy.fromJson(core.Map json_)
+    : this(
+        ingestOnWrite: json_['ingestOnWrite'] as core.String?,
+        rapidCacheId: json_['rapidCacheId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ingestOnWrite = this.ingestOnWrite;
+    final rapidCacheId = this.rapidCacheId;
+    return {'ingestOnWrite': ?ingestOnWrite, 'rapidCacheId': ?rapidCacheId};
+  }
+}
+
+/// A list of Rapid Caches.
+class RapidCaches {
+  /// The list of items.
+  core.List<RapidCache>? items;
+
+  /// The kind of item this is.
+  ///
+  /// For lists of Rapid Caches, this is always storage#rapidCaches.
+  core.String? kind;
+
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
+  core.String? nextPageToken;
+
+  RapidCaches({this.items, this.kind, this.nextPageToken});
+
+  RapidCaches.fromJson(core.Map json_)
+    : this(
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => RapidCache.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    return {'items': ?items, 'kind': ?kind, 'nextPageToken': ?nextPageToken};
   }
 }
 

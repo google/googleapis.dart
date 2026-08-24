@@ -36,6 +36,7 @@
 /// -
 /// [AccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosResource]
 ///     - [AccountTypesAccountsUserListsResource]
+/// - [AdEventsResource]
 /// - [AudienceMembersResource]
 /// - [EventsResource]
 /// - [RequestStatusResource]
@@ -71,6 +72,7 @@ class DataManagerApi {
   final commons.ApiRequester _requester;
 
   AccountTypesResource get accountTypes => AccountTypesResource(_requester);
+  AdEventsResource get adEvents => AdEventsResource(_requester);
   AudienceMembersResource get audienceMembers =>
       AudienceMembersResource(_requester);
   EventsResource get events => EventsResource(_requester);
@@ -300,12 +302,15 @@ class AccountTypesAccountsPartnerLinksResource {
   /// combination of camel case and snake case. Supported operations: - `AND` -
   /// `=` - `!=` Supported fields: - `partner_link_id` -
   /// `owning_account.account_type` - `owning_account.account_id` -
-  /// `partner_account.account_type` - `partner_account.account_id` Example:
+  /// `partner_account.account_type` - `partner_account.account_id` -
+  /// `feature_set` For partner links with the FEATURE_SET_AD_EVENT_MANAGEMENT
+  /// feature set, the following fields are also supported: -
+  /// `partner_customer_account.account_id` Example:
   /// `owning_account.account_type = "GOOGLE_ADS" AND partner_account.account_id
   /// = 987654321`
   ///
   /// [pageSize] - The maximum number of partner links to return. The service
-  /// may return fewer than this value. If unspecified, at most 10 partner links
+  /// may return fewer than this value. If unspecified, at most 50 partner links
   /// will be returned. The maximum value is 100; values above 100 will be
   /// coerced to 100.
   ///
@@ -462,8 +467,10 @@ class AccountTypesAccountsUserListDirectLicensesResource {
   /// [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
   /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a
   /// combination of camel case and snake case. **Supported Operations:** -
-  /// `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **Unsupported Fields:** -
-  /// `name` (use get method instead) - `historical_pricings` and all its
+  /// `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **Supported Functions:** -
+  /// `IN(field, value1, value2, ...)`: returns true if the field matches any of
+  /// the values. Example: `IN(user_list_id, 123, 456)` **Unsupported Fields:**
+  /// - `name` (use get method instead) - `historical_pricings` and all its
   /// subfields - `pricing.start_time` - `pricing.end_time`
   ///
   /// [pageSize] - Optional. The maximum number of licenses to return per page.
@@ -682,8 +689,10 @@ class AccountTypesAccountsUserListGlobalLicensesResource {
   /// [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
   /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a
   /// combination of camel case and snake case. **Supported Operations:** -
-  /// `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **Unsupported Fields:** -
-  /// `name` (use get method instead) - `historical_pricings` and all its
+  /// `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **Supported Functions:** -
+  /// `IN(field, value1, value2, ...)`: returns true if the field matches any of
+  /// the values. Example: `IN(user_list_id, 123, 456)` **Unsupported Fields:**
+  /// - `name` (use get method instead) - `historical_pricings` and all its
   /// subfields - `pricing.start_time` - `pricing.end_time`
   ///
   /// [pageSize] - Optional. The maximum number of licenses to return. The
@@ -815,8 +824,10 @@ class AccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInf
   /// [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
   /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a
   /// combination of camel case and snake case. **Supported Operations:** -
-  /// `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **Unsupported Fields:** -
-  /// `name` (use get method instead) - `historical_pricings` and all its
+  /// `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **Supported Functions:** -
+  /// `IN(field, value1, value2, ...)`: returns true if the field matches any of
+  /// the values. Example: `IN(user_list_id, 123, 456)` **Unsupported Fields:**
+  /// - `name` (use get method instead) - `historical_pricings` and all its
   /// subfields - `pricing.start_time` - `pricing.end_time`
   ///
   /// [pageSize] - Optional. The maximum number of licenses to return. The
@@ -1052,8 +1063,10 @@ class AccountTypesAccountsUserListsResource {
   /// [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
   /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a
   /// combination of camel case and snake case. Supported operations: - `AND` -
-  /// `=` - `!=` - `>` - `>=` - `<` - `<=` - `:` (has) Supported fields: - `id`
-  /// - `display_name` - `description` - `membership_status` -
+  /// `=` - `!=` - `>` - `>=` - `<` - `<=` - `:` (has) **Supported Functions:**
+  /// - `IN(field, value1, value2, ...)`: returns true if the field matches any
+  /// of the values. Example: `IN(display_name, "name1", "name2")` Supported
+  /// fields: - `id` - `display_name` - `description` - `membership_status` -
   /// `integration_code` - `access_reason` -
   /// `ingested_user_list_info.upload_key_types`
   ///
@@ -1165,6 +1178,52 @@ class AccountTypesAccountsUserListsResource {
   }
 }
 
+class AdEventsResource {
+  final commons.ApiRequester _requester;
+
+  AdEventsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Uploads a list of AdEvent resources to Google Analytics.
+  ///
+  /// This feature is only available to accounts on an allowlist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [IngestAdEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<IngestAdEventsResponse> ingest(
+    IngestAdEventsRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/adEvents:ingest';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return IngestAdEventsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class AudienceMembersResource {
   final commons.ApiRequester _requester;
 
@@ -1242,6 +1301,44 @@ class AudienceMembersResource {
       queryParams: queryParams_,
     );
     return RemoveAudienceMembersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Removes all audience members from the provided destinations.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RemoveAllAudienceMembersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RemoveAllAudienceMembersResponse> removeAll(
+    RemoveAllAudienceMembersRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/audienceMembers:removeAll';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RemoveAllAudienceMembersResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1335,9 +1432,407 @@ class RequestStatusResource {
   }
 }
 
+/// An ad event.
+class AdEvent {
+  /// Enum value for ad format.
+  /// Possible string values are:
+  /// - "AD_FORMAT_UNSPECIFIED" : Unspecified ad format.
+  /// - "AD_FORMAT_AR" : AR ad.
+  /// - "AD_FORMAT_AUDIO" : Audio ad.
+  /// - "AD_FORMAT_BANNER" : Banner ad.
+  /// - "AD_FORMAT_BUMPER" : Bumper ad.
+  /// - "AD_FORMAT_CAROUSEL" : Carousel ad.
+  /// - "AD_FORMAT_COLLECTION" : Collection ad.
+  /// - "AD_FORMAT_IMAGE" : Image ad.
+  /// - "AD_FORMAT_INTERACTIVE" : Interactive ad.
+  /// - "AD_FORMAT_INTERSTITIAL" : Interstitial ad.
+  /// - "AD_FORMAT_IN_FEED" : In-feed ad.
+  /// - "AD_FORMAT_IN_STREAM" : In-stream ad.
+  /// - "AD_FORMAT_IN_STREAM_SKIPPABLE" : In-stream skippable ad.
+  /// - "AD_FORMAT_IN_STREAM_NON_SKIPPABLE" : In-stream non-skippable ad.
+  /// - "AD_FORMAT_NATIVE" : Native ad.
+  /// - "AD_FORMAT_SHORTS" : Shorts ad.
+  /// - "AD_FORMAT_STORY" : Story ad.
+  /// - "AD_FORMAT_SPONSORED" : Sponsored ad.
+  /// - "AD_FORMAT_VIDEO" : Video ad.
+  core.String? adFormat;
+
+  /// String value for ad format.
+  core.String? adFormatString;
+
+  /// The ID of the associated ad group.
+  ///
+  /// Optional.
+  core.String? adGroupId;
+
+  /// The height of the ad in pixels.
+  ///
+  /// Optional.
+  core.int? adHeight;
+
+  /// The ID of the associated ad within the group.
+  ///
+  /// Optional.
+  core.String? adId;
+
+  /// Enum value for ad placement.
+  /// Possible string values are:
+  /// - "AD_PLACEMENT_UNSPECIFIED" : Unspecified ad placement.
+  /// - "AD_PLACEMENT_DISCOVER" : Discover placement.
+  /// - "AD_PLACEMENT_FEED" : Feed placement.
+  /// - "AD_PLACEMENT_FOOTER" : Footer placement.
+  /// - "AD_PLACEMENT_HEADER" : Header placement.
+  /// - "AD_PLACEMENT_HOME" : Home placement.
+  /// - "AD_PLACEMENT_IN_CONTENT" : In-content placement.
+  /// - "AD_PLACEMENT_PROMOTED" : Promoted placement.
+  /// - "AD_PLACEMENT_SEARCH" : Search placement.
+  /// - "AD_PLACEMENT_STORY" : Story placement.
+  core.String? adPlacement;
+
+  /// String value for ad placement.
+  core.String? adPlacementString;
+
+  /// Enum value for ad type.
+  /// Possible string values are:
+  /// - "AD_TYPE_UNSPECIFIED" : Unspecified ad type.
+  /// - "AD_TYPE_DISPLAY" : Display ad.
+  /// - "AD_TYPE_TEXT" : Text ad.
+  /// - "AD_TYPE_IMAGE" : Image ad.
+  /// - "AD_TYPE_RICH_MEDIA" : Rich media ad.
+  /// - "AD_TYPE_HTML" : HTML ad.
+  /// - "AD_TYPE_AUDIO" : Audio ad.
+  /// - "AD_TYPE_VIDEO" : Video ad.
+  core.String? adType;
+
+  /// String value for ad type.
+  core.String? adTypeString;
+
+  /// The width of the ad in pixels.
+  ///
+  /// Optional.
+  core.int? adWidth;
+
+  /// The ID of the advertiser for the ad event.
+  ///
+  /// This must match the ID sent in the linking flow.
+  ///
+  /// Required.
+  core.String? advertiserId;
+
+  /// The partner-assumed attribution status for this ad event.
+  ///
+  /// This acts only as a signal for how the partner assumed attribution played
+  /// out, and does not force an end result in final reports.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ATTRIBUTION_HINT_UNSPECIFIED" : Unknown attribution status.
+  /// - "ATTRIBUTION_HINT_CONVERTED" : Converted status.
+  /// - "ATTRIBUTION_HINT_NOT_CONVERTED" : Not converted status.
+  core.String? attributionHint;
+
+  /// The ID of the associated campaign.
+  ///
+  /// Required.
+  core.String? campaignId;
+
+  /// The name of the associated campaign.
+  ///
+  /// Required.
+  core.String? campaignName;
+
+  /// Information gathered about the device being used when the ad event
+  /// happened.
+  ///
+  /// Required.
+  DeviceInfo? deviceInfo;
+
+  /// An ID created and managed by the caller that uniquely identifies this
+  /// event.
+  ///
+  /// Required if you want to deduplicate ad events that are included in
+  /// multiple requests. Otherwise, this field is optional.
+  ///
+  /// Optional.
+  core.String? eventId;
+
+  /// Enum value for event subtype.
+  /// Possible string values are:
+  /// - "EVENT_SUBTYPE_UNSPECIFIED" : Unspecified event subtype.
+  /// - "EVENT_SUBTYPE_IMPRESSION" : Impression event.
+  /// - "EVENT_SUBTYPE_ENGAGED_VIEW" : Engaged view event.
+  /// - "EVENT_SUBTYPE_ONSITE_CLICK" : Onsite click event.
+  /// - "EVENT_SUBTYPE_OUTBOUND_CLICK" : Outbound click event.
+  core.String? eventSubtype;
+
+  /// String value for event subtype.
+  core.String? eventSubtypeString;
+
+  /// The type of the event.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "EVENT_TYPE_UNSPECIFIED" : Unspecified event type.
+  /// - "EVENT_TYPE_VIEW" : View event.
+  /// - "EVENT_TYPE_CLICK" : Click event.
+  core.String? eventType;
+
+  /// Represents if the row is allowed to be used for measurement purposes, as
+  /// governed by applicable privacy laws within regional jurisdiction.
+  ///
+  /// Optional.
+  core.bool? measurementAllowed;
+
+  /// The medium of the ad, akin to the Google Analytics medium.
+  ///
+  /// Required.
+  core.String? medium;
+
+  /// The device ID of the device that the ad was served to.
+  ///
+  /// Optional.
+  core.String? mobileDeviceId;
+
+  /// Enum value for platform.
+  /// Possible string values are:
+  /// - "PLATFORM_UNSPECIFIED" : Unspecified platform.
+  /// - "PLATFORM_IOS" : iOS platform.
+  /// - "PLATFORM_ANDROID" : Android platform.
+  /// - "PLATFORM_WEB" : Web platform.
+  core.String? platform;
+
+  /// String value for platform.
+  core.String? platformString;
+
+  /// Enum value for platform type.
+  /// Possible string values are:
+  /// - "PLATFORM_TYPE_UNSPECIFIED" : Unspecified platform type.
+  /// - "PLATFORM_TYPE_MOBILE" : Mobile platform.
+  /// - "PLATFORM_TYPE_DESKTOP" : Desktop platform.
+  /// - "PLATFORM_TYPE_CTV" : CTV platform.
+  /// - "PLATFORM_TYPE_PHONE" : Phone platform.
+  /// - "PLATFORM_TYPE_TABLET" : Tablet platform.
+  core.String? platformType;
+
+  /// String value for platform type.
+  core.String? platformTypeString;
+
+  /// The ISO 3166-2 country plus subdivision.
+  ///
+  /// Optional.
+  core.String? regionCode;
+
+  /// The platform source of the ad, akin to the Google Analytics source.
+  ///
+  /// Required.
+  core.String? source;
+
+  /// Enum value for targeting type.
+  /// Possible string values are:
+  /// - "TARGETING_TYPE_UNSPECIFIED" : Unspecified targeting type.
+  /// - "TARGETING_TYPE_AUDIENCE" : Audience targeting.
+  /// - "TARGETING_TYPE_CONTEXTUAL" : Contextual targeting.
+  /// - "TARGETING_TYPE_DEMOGRAPHIC" : Demographic targeting.
+  /// - "TARGETING_TYPE_DEVICE" : Device targeting.
+  /// - "TARGETING_TYPE_GEO" : Geo targeting.
+  /// - "TARGETING_TYPE_INTEREST" : Interest targeting.
+  /// - "TARGETING_TYPE_PURCHASE_INTENT" : Purchase intent targeting.
+  /// - "TARGETING_TYPE_REMARKETING" : Remarketing targeting.
+  core.String? targetingType;
+
+  /// String value for targeting type.
+  core.String? targetingTypeString;
+
+  /// The time the event occurred.
+  ///
+  /// Required.
+  core.String? timestamp;
+
+  /// Multiple pieces of user-provided data, representing the user the event is
+  /// associated with.
+  ///
+  /// It is possible to provide multiple instances of the same type of data
+  /// (e.g. email address). The more data provided, the more likely a match will
+  /// be found.
+  ///
+  /// Optional.
+  UserData? userData;
+
+  /// Details of the viewability of the ad served.
+  ///
+  /// Required.
+  ViewabilityInfo? viewabilityInfo;
+
+  AdEvent({
+    this.adFormat,
+    this.adFormatString,
+    this.adGroupId,
+    this.adHeight,
+    this.adId,
+    this.adPlacement,
+    this.adPlacementString,
+    this.adType,
+    this.adTypeString,
+    this.adWidth,
+    this.advertiserId,
+    this.attributionHint,
+    this.campaignId,
+    this.campaignName,
+    this.deviceInfo,
+    this.eventId,
+    this.eventSubtype,
+    this.eventSubtypeString,
+    this.eventType,
+    this.measurementAllowed,
+    this.medium,
+    this.mobileDeviceId,
+    this.platform,
+    this.platformString,
+    this.platformType,
+    this.platformTypeString,
+    this.regionCode,
+    this.source,
+    this.targetingType,
+    this.targetingTypeString,
+    this.timestamp,
+    this.userData,
+    this.viewabilityInfo,
+  });
+
+  AdEvent.fromJson(core.Map json_)
+    : this(
+        adFormat: json_['adFormat'] as core.String?,
+        adFormatString: json_['adFormatString'] as core.String?,
+        adGroupId: json_['adGroupId'] as core.String?,
+        adHeight: json_['adHeight'] as core.int?,
+        adId: json_['adId'] as core.String?,
+        adPlacement: json_['adPlacement'] as core.String?,
+        adPlacementString: json_['adPlacementString'] as core.String?,
+        adType: json_['adType'] as core.String?,
+        adTypeString: json_['adTypeString'] as core.String?,
+        adWidth: json_['adWidth'] as core.int?,
+        advertiserId: json_['advertiserId'] as core.String?,
+        attributionHint: json_['attributionHint'] as core.String?,
+        campaignId: json_['campaignId'] as core.String?,
+        campaignName: json_['campaignName'] as core.String?,
+        deviceInfo: json_.containsKey('deviceInfo')
+            ? DeviceInfo.fromJson(
+                json_['deviceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        eventId: json_['eventId'] as core.String?,
+        eventSubtype: json_['eventSubtype'] as core.String?,
+        eventSubtypeString: json_['eventSubtypeString'] as core.String?,
+        eventType: json_['eventType'] as core.String?,
+        measurementAllowed: json_['measurementAllowed'] as core.bool?,
+        medium: json_['medium'] as core.String?,
+        mobileDeviceId: json_['mobileDeviceId'] as core.String?,
+        platform: json_['platform'] as core.String?,
+        platformString: json_['platformString'] as core.String?,
+        platformType: json_['platformType'] as core.String?,
+        platformTypeString: json_['platformTypeString'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+        source: json_['source'] as core.String?,
+        targetingType: json_['targetingType'] as core.String?,
+        targetingTypeString: json_['targetingTypeString'] as core.String?,
+        timestamp: json_['timestamp'] as core.String?,
+        userData: json_.containsKey('userData')
+            ? UserData.fromJson(
+                json_['userData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        viewabilityInfo: json_.containsKey('viewabilityInfo')
+            ? ViewabilityInfo.fromJson(
+                json_['viewabilityInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final adFormat = this.adFormat;
+    final adFormatString = this.adFormatString;
+    final adGroupId = this.adGroupId;
+    final adHeight = this.adHeight;
+    final adId = this.adId;
+    final adPlacement = this.adPlacement;
+    final adPlacementString = this.adPlacementString;
+    final adType = this.adType;
+    final adTypeString = this.adTypeString;
+    final adWidth = this.adWidth;
+    final advertiserId = this.advertiserId;
+    final attributionHint = this.attributionHint;
+    final campaignId = this.campaignId;
+    final campaignName = this.campaignName;
+    final deviceInfo = this.deviceInfo;
+    final eventId = this.eventId;
+    final eventSubtype = this.eventSubtype;
+    final eventSubtypeString = this.eventSubtypeString;
+    final eventType = this.eventType;
+    final measurementAllowed = this.measurementAllowed;
+    final medium = this.medium;
+    final mobileDeviceId = this.mobileDeviceId;
+    final platform = this.platform;
+    final platformString = this.platformString;
+    final platformType = this.platformType;
+    final platformTypeString = this.platformTypeString;
+    final regionCode = this.regionCode;
+    final source = this.source;
+    final targetingType = this.targetingType;
+    final targetingTypeString = this.targetingTypeString;
+    final timestamp = this.timestamp;
+    final userData = this.userData;
+    final viewabilityInfo = this.viewabilityInfo;
+    return {
+      'adFormat': ?adFormat,
+      'adFormatString': ?adFormatString,
+      'adGroupId': ?adGroupId,
+      'adHeight': ?adHeight,
+      'adId': ?adId,
+      'adPlacement': ?adPlacement,
+      'adPlacementString': ?adPlacementString,
+      'adType': ?adType,
+      'adTypeString': ?adTypeString,
+      'adWidth': ?adWidth,
+      'advertiserId': ?advertiserId,
+      'attributionHint': ?attributionHint,
+      'campaignId': ?campaignId,
+      'campaignName': ?campaignName,
+      'deviceInfo': ?deviceInfo,
+      'eventId': ?eventId,
+      'eventSubtype': ?eventSubtype,
+      'eventSubtypeString': ?eventSubtypeString,
+      'eventType': ?eventType,
+      'measurementAllowed': ?measurementAllowed,
+      'medium': ?medium,
+      'mobileDeviceId': ?mobileDeviceId,
+      'platform': ?platform,
+      'platformString': ?platformString,
+      'platformType': ?platformType,
+      'platformTypeString': ?platformTypeString,
+      'regionCode': ?regionCode,
+      'source': ?source,
+      'targetingType': ?targetingType,
+      'targetingTypeString': ?targetingTypeString,
+      'timestamp': ?timestamp,
+      'userData': ?userData,
+      'viewabilityInfo': ?viewabilityInfo,
+    };
+  }
+}
+
 /// Identifiers and other information used to match the conversion event with
 /// other online activity (such as ad clicks).
 class AdIdentifiers {
+  /// The display click ID associated with this event.
+  ///
+  /// Optional.
+  core.String? dclid;
+
+  /// Any number of encrypted user IDs.
+  ///
+  /// Optional.
+  core.List<EncryptedUserId>? encryptedUserIds;
+
   /// The click identifier for clicks associated with app events and originating
   /// from iOS devices starting with iOS14.
   ///
@@ -1349,11 +1844,29 @@ class AdIdentifiers {
   /// Optional.
   core.String? gclid;
 
+  /// The impression ID associated with this event.
+  ///
+  /// Optional.
+  core.String? impressionId;
+
   /// Information gathered about the device being used (if any) at the time of
   /// landing onto the advertiser’s site after interacting with the ad.
   ///
   /// Optional.
   DeviceInfo? landingPageDeviceInfo;
+
+  /// The match ID field used to join this event with a previous event.
+  ///
+  /// Optional.
+  core.String? matchId;
+
+  /// The mobile identifier for advertisers.
+  ///
+  /// This would be IDFA on iOS, AdID on Android, or other platforms’
+  /// identifiers for advertisers.
+  ///
+  /// Optional.
+  core.String? mobileDeviceId;
 
   /// Session attributes for event attribution and modeling.
   ///
@@ -1367,37 +1880,63 @@ class AdIdentifiers {
   core.String? wbraid;
 
   AdIdentifiers({
+    this.dclid,
+    this.encryptedUserIds,
     this.gbraid,
     this.gclid,
+    this.impressionId,
     this.landingPageDeviceInfo,
+    this.matchId,
+    this.mobileDeviceId,
     this.sessionAttributes,
     this.wbraid,
   });
 
   AdIdentifiers.fromJson(core.Map json_)
     : this(
+        dclid: json_['dclid'] as core.String?,
+        encryptedUserIds: (json_['encryptedUserIds'] as core.List?)
+            ?.map(
+              (value) => EncryptedUserId.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         gbraid: json_['gbraid'] as core.String?,
         gclid: json_['gclid'] as core.String?,
+        impressionId: json_['impressionId'] as core.String?,
         landingPageDeviceInfo: json_.containsKey('landingPageDeviceInfo')
             ? DeviceInfo.fromJson(
                 json_['landingPageDeviceInfo']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        matchId: json_['matchId'] as core.String?,
+        mobileDeviceId: json_['mobileDeviceId'] as core.String?,
         sessionAttributes: json_['sessionAttributes'] as core.String?,
         wbraid: json_['wbraid'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final dclid = this.dclid;
+    final encryptedUserIds = this.encryptedUserIds;
     final gbraid = this.gbraid;
     final gclid = this.gclid;
+    final impressionId = this.impressionId;
     final landingPageDeviceInfo = this.landingPageDeviceInfo;
+    final matchId = this.matchId;
+    final mobileDeviceId = this.mobileDeviceId;
     final sessionAttributes = this.sessionAttributes;
     final wbraid = this.wbraid;
     return {
+      'dclid': ?dclid,
+      'encryptedUserIds': ?encryptedUserIds,
       'gbraid': ?gbraid,
       'gclid': ?gclid,
+      'impressionId': ?impressionId,
       'landingPageDeviceInfo': ?landingPageDeviceInfo,
+      'matchId': ?matchId,
+      'mobileDeviceId': ?mobileDeviceId,
       'sessionAttributes': ?sessionAttributes,
       'wbraid': ?wbraid,
     };
@@ -1406,6 +1945,33 @@ class AdIdentifiers {
 
 /// Address information for the user.
 class AddressInfo {
+  /// The street and number of the user's address.
+  ///
+  /// Used only for Google Analytics. This field is hashed and possibly
+  /// encrypted. Normalize the value before hashing: - Remove symbol characters
+  /// - Convert to lowercase - Remove leading and trailing whitespace
+  ///
+  /// Optional.
+  core.String? addressLine;
+
+  /// The administrative area (state/province) of the user's address.
+  ///
+  /// Used only for Google Analytics. The value should be normalized as such: -
+  /// Remove symbol characters - Convert to lowercase - Remove leading and
+  /// trailing whitespace
+  ///
+  /// Optional.
+  core.String? administrativeArea;
+
+  /// The city of the user's address.
+  ///
+  /// Used only for Google Analytics. The value should be normalized as such: -
+  /// Remove symbol characters - Convert to lowercase - Remove leading and
+  /// trailing whitespace
+  ///
+  /// Optional.
+  core.String? city;
+
   /// Family (last) name of the user, all lowercase, with no punctuation, no
   /// leading or trailing whitespace, and hashed as SHA-256.
   ///
@@ -1429,6 +1995,9 @@ class AddressInfo {
   core.String? regionCode;
 
   AddressInfo({
+    this.addressLine,
+    this.administrativeArea,
+    this.city,
     this.familyName,
     this.givenName,
     this.postalCode,
@@ -1437,6 +2006,9 @@ class AddressInfo {
 
   AddressInfo.fromJson(core.Map json_)
     : this(
+        addressLine: json_['addressLine'] as core.String?,
+        administrativeArea: json_['administrativeArea'] as core.String?,
+        city: json_['city'] as core.String?,
         familyName: json_['familyName'] as core.String?,
         givenName: json_['givenName'] as core.String?,
         postalCode: json_['postalCode'] as core.String?,
@@ -1444,11 +2016,17 @@ class AddressInfo {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final addressLine = this.addressLine;
+    final administrativeArea = this.administrativeArea;
+    final city = this.city;
     final familyName = this.familyName;
     final givenName = this.givenName;
     final postalCode = this.postalCode;
     final regionCode = this.regionCode;
     return {
+      'addressLine': ?addressLine,
+      'administrativeArea': ?administrativeArea,
+      'city': ?city,
       'familyName': ?familyName,
       'givenName': ?givenName,
       'postalCode': ?postalCode,
@@ -1459,6 +2037,9 @@ class AddressInfo {
 
 /// The audience member to be operated on.
 class AudienceMember {
+  /// Group of multiple identifier types.
+  CompositeData? compositeData;
+
   /// The consent setting for the user.
   ///
   /// Optional.
@@ -1469,6 +2050,9 @@ class AudienceMember {
   /// Optional.
   core.List<core.String>? destinationReferences;
 
+  /// Encrypted Google User IDs.
+  GoogleUserIdData? googleUserIdData;
+
   /// Data identifying the user's mobile devices.
   MobileData? mobileData;
 
@@ -1477,6 +2061,9 @@ class AudienceMember {
   ///
   /// This feature is only available to data partners.
   PairData? pairData;
+
+  /// Partner-provided identifiers.
+  PartnerProvidedIdData? partnerProvidedIdData;
 
   /// Data related to publisher provided identifiers.
   ///
@@ -1491,10 +2078,13 @@ class AudienceMember {
   UserIdData? userIdData;
 
   AudienceMember({
+    this.compositeData,
     this.consent,
     this.destinationReferences,
+    this.googleUserIdData,
     this.mobileData,
     this.pairData,
+    this.partnerProvidedIdData,
     this.ppidData,
     this.userData,
     this.userIdData,
@@ -1502,6 +2092,11 @@ class AudienceMember {
 
   AudienceMember.fromJson(core.Map json_)
     : this(
+        compositeData: json_.containsKey('compositeData')
+            ? CompositeData.fromJson(
+                json_['compositeData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         consent: json_.containsKey('consent')
             ? Consent.fromJson(
                 json_['consent'] as core.Map<core.String, core.dynamic>,
@@ -1510,6 +2105,12 @@ class AudienceMember {
         destinationReferences: (json_['destinationReferences'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        googleUserIdData: json_.containsKey('googleUserIdData')
+            ? GoogleUserIdData.fromJson(
+                json_['googleUserIdData']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         mobileData: json_.containsKey('mobileData')
             ? MobileData.fromJson(
                 json_['mobileData'] as core.Map<core.String, core.dynamic>,
@@ -1518,6 +2119,12 @@ class AudienceMember {
         pairData: json_.containsKey('pairData')
             ? PairData.fromJson(
                 json_['pairData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        partnerProvidedIdData: json_.containsKey('partnerProvidedIdData')
+            ? PartnerProvidedIdData.fromJson(
+                json_['partnerProvidedIdData']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         ppidData: json_.containsKey('ppidData')
@@ -1538,18 +2145,24 @@ class AudienceMember {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final compositeData = this.compositeData;
     final consent = this.consent;
     final destinationReferences = this.destinationReferences;
+    final googleUserIdData = this.googleUserIdData;
     final mobileData = this.mobileData;
     final pairData = this.pairData;
+    final partnerProvidedIdData = this.partnerProvidedIdData;
     final ppidData = this.ppidData;
     final userData = this.userData;
     final userIdData = this.userIdData;
     return {
+      'compositeData': ?compositeData,
       'consent': ?consent,
       'destinationReferences': ?destinationReferences,
+      'googleUserIdData': ?googleUserIdData,
       'mobileData': ?mobileData,
       'pairData': ?pairData,
+      'partnerProvidedIdData': ?partnerProvidedIdData,
       'ppidData': ?ppidData,
       'userData': ?userData,
       'userIdData': ?userIdData,
@@ -1656,6 +2269,15 @@ class Baseline {
 
 /// The cart data associated with the event.
 class CartData {
+  /// The list of coupon codes that were applied to the cart.
+  ///
+  /// Cart-level and item-level coupon codes are independent. If the event is
+  /// for a Google Analytics destination, only provide a single coupon code.
+  /// Google Analytics ignores additional coupon codes.
+  ///
+  /// Optional.
+  core.List<core.String>? couponCodes;
+
   /// The list of items associated with the event.
   ///
   /// Optional.
@@ -1683,6 +2305,7 @@ class CartData {
   core.double? transactionDiscount;
 
   CartData({
+    this.couponCodes,
     this.items,
     this.merchantFeedLabel,
     this.merchantFeedLanguageCode,
@@ -1692,6 +2315,9 @@ class CartData {
 
   CartData.fromJson(core.Map json_)
     : this(
+        couponCodes: (json_['couponCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         items: (json_['items'] as core.List?)
             ?.map(
               (value) =>
@@ -1707,18 +2333,59 @@ class CartData {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final couponCodes = this.couponCodes;
     final items = this.items;
     final merchantFeedLabel = this.merchantFeedLabel;
     final merchantFeedLanguageCode = this.merchantFeedLanguageCode;
     final merchantId = this.merchantId;
     final transactionDiscount = this.transactionDiscount;
     return {
+      'couponCodes': ?couponCodes,
       'items': ?items,
       'merchantFeedLabel': ?merchantFeedLabel,
       'merchantFeedLanguageCode': ?merchantFeedLanguageCode,
       'merchantId': ?merchantId,
       'transactionDiscount': ?transactionDiscount,
     };
+  }
+}
+
+/// Composite data holding identifiers and associated data for a user.
+///
+/// At least one of `user_data` or `ip_data` is required.
+class CompositeData {
+  /// IP address data representing customer interaction used to build the
+  /// audience.
+  ///
+  /// Optional.
+  core.List<IpData>? ipData;
+
+  /// User-provided data that identifies the user.
+  ///
+  /// Optional.
+  UserData? userData;
+
+  CompositeData({this.ipData, this.userData});
+
+  CompositeData.fromJson(core.Map json_)
+    : this(
+        ipData: (json_['ipData'] as core.List?)
+            ?.map(
+              (value) =>
+                  IpData.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        userData: json_.containsKey('userData')
+            ? UserData.fromJson(
+                json_['userData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipData = this.ipData;
+    final userData = this.userData;
+    return {'ipData': ?ipData, 'userData': ?userData};
   }
 }
 
@@ -1797,49 +2464,53 @@ class ContactIdInfo {
   }
 }
 
+/// Information about the coordinator key.
+class CoordinatorKeyInfo {
+  /// The ID of the chosen coordinator key.
+  ///
+  /// Required.
+  core.String? keyId;
+
+  CoordinatorKeyInfo({this.keyId});
+
+  CoordinatorKeyInfo.fromJson(core.Map json_)
+    : this(keyId: json_['keyId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyId = this.keyId;
+    return {'keyId': ?keyId};
+  }
+}
+
 /// Custom variable for ads conversions.
-class CustomVariable {
-  /// Reference string used to determine which of the
-  /// Event.destination_references the custom variable should be sent to.
-  ///
-  /// If empty, the Event.destination_references will be used.
-  ///
-  /// Optional.
-  core.List<core.String>? destinationReferences;
+typedef CustomVariable = $CustomVariable;
 
-  /// The value to store for the custom variable.
-  ///
-  /// Optional.
-  core.String? value;
+/// The count for a specific data type.
+class DataTypeCount {
+  /// The count for this data type.
+  core.String? count;
 
-  /// The name of the custom variable to set.
-  ///
-  /// If the variable is not found for the given destination, it will be
-  /// ignored.
-  ///
-  /// Optional.
-  core.String? variable;
+  /// The type of data.
+  /// Possible string values are:
+  /// - "DATA_TYPE_UNSPECIFIED" : The data type is unspecified.
+  /// - "EMAIL" : The data is an email address.
+  /// - "PHONE_NUMBER" : The data is a phone number.
+  /// - "ADDRESS" : The data is a physical address.
+  /// - "IP_ADDRESS" : The data is an IP address.
+  core.String? type;
 
-  CustomVariable({this.destinationReferences, this.value, this.variable});
+  DataTypeCount({this.count, this.type});
 
-  CustomVariable.fromJson(core.Map json_)
+  DataTypeCount.fromJson(core.Map json_)
     : this(
-        destinationReferences: (json_['destinationReferences'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        value: json_['value'] as core.String?,
-        variable: json_['variable'] as core.String?,
+        count: json_['count'] as core.String?,
+        type: json_['type'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final destinationReferences = this.destinationReferences;
-    final value = this.value;
-    final variable = this.variable;
-    return {
-      'destinationReferences': ?destinationReferences,
-      'value': ?value,
-      'variable': ?variable,
-    };
+    final count = this.count;
+    final type = this.type;
+    return {'count': ?count, 'type': ?type};
   }
 }
 
@@ -1936,38 +2607,128 @@ class Destination {
 
 /// Information about the device being used (if any) when the event happened.
 class DeviceInfo {
+  /// The brand of the device.
+  ///
+  /// Optional.
+  core.String? brand;
+
+  /// The brand or type of the browser.
+  ///
+  /// Optional.
+  core.String? browser;
+
+  /// The version of the browser.
+  ///
+  /// Optional.
+  core.String? browserVersion;
+
+  /// The category of device.
+  ///
+  /// For example, “desktop”, “tablet”, “mobile”, “smart TV”.
+  ///
+  /// Optional.
+  core.String? category;
+
   /// The IP address of the device for the given context.
   ///
-  /// **Note:** Google Ads does not support IP address matching for end users in
-  /// the European Economic Area (EEA), United Kingdom (UK), or Switzerland
-  /// (CH). Add logic to conditionally exclude sharing IP addresses from users
-  /// from these regions and ensure that you provide users with clear and
-  /// comprehensive information about the data you collect on your sites, apps,
-  /// and other properties and get consent where required by law or any
-  /// applicable Google policies. See the
-  /// [About offline conversion imports](https://support.google.com/google-ads/answer/2998031)
-  /// page for more details.
+  /// Required when used in an AdEvent.
   ///
   /// Optional.
   core.String? ipAddress;
+
+  /// The language the device uses in ISO 639-1 format.
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// The model of the device.
+  ///
+  /// Optional.
+  core.String? model;
+
+  /// The operating system or platform of the device.
+  ///
+  /// Optional.
+  core.String? operatingSystem;
+
+  /// The version of the operating system or platform.
+  ///
+  /// Optional.
+  core.String? operatingSystemVersion;
+
+  /// The height of the screen in pixels.
+  ///
+  /// Optional.
+  core.int? screenHeight;
+
+  /// The width of the screen in pixels.
+  ///
+  /// Optional.
+  core.int? screenWidth;
 
   /// The user-agent string of the device for the given context.
   ///
   /// Optional.
   core.String? userAgent;
 
-  DeviceInfo({this.ipAddress, this.userAgent});
+  DeviceInfo({
+    this.brand,
+    this.browser,
+    this.browserVersion,
+    this.category,
+    this.ipAddress,
+    this.languageCode,
+    this.model,
+    this.operatingSystem,
+    this.operatingSystemVersion,
+    this.screenHeight,
+    this.screenWidth,
+    this.userAgent,
+  });
 
   DeviceInfo.fromJson(core.Map json_)
     : this(
+        brand: json_['brand'] as core.String?,
+        browser: json_['browser'] as core.String?,
+        browserVersion: json_['browserVersion'] as core.String?,
+        category: json_['category'] as core.String?,
         ipAddress: json_['ipAddress'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        model: json_['model'] as core.String?,
+        operatingSystem: json_['operatingSystem'] as core.String?,
+        operatingSystemVersion: json_['operatingSystemVersion'] as core.String?,
+        screenHeight: json_['screenHeight'] as core.int?,
+        screenWidth: json_['screenWidth'] as core.int?,
         userAgent: json_['userAgent'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final brand = this.brand;
+    final browser = this.browser;
+    final browserVersion = this.browserVersion;
+    final category = this.category;
     final ipAddress = this.ipAddress;
+    final languageCode = this.languageCode;
+    final model = this.model;
+    final operatingSystem = this.operatingSystem;
+    final operatingSystemVersion = this.operatingSystemVersion;
+    final screenHeight = this.screenHeight;
+    final screenWidth = this.screenWidth;
     final userAgent = this.userAgent;
-    return {'ipAddress': ?ipAddress, 'userAgent': ?userAgent};
+    return {
+      'brand': ?brand,
+      'browser': ?browser,
+      'browserVersion': ?browserVersion,
+      'category': ?category,
+      'ipAddress': ?ipAddress,
+      'languageCode': ?languageCode,
+      'model': ?model,
+      'operatingSystem': ?operatingSystem,
+      'operatingSystemVersion': ?operatingSystemVersion,
+      'screenHeight': ?screenHeight,
+      'screenWidth': ?screenWidth,
+      'userAgent': ?userAgent,
+    };
   }
 }
 
@@ -1979,21 +2740,110 @@ class DeviceInfo {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// A user identifier issued to be used for attribution.
+///
+/// All fields are required if this is used.
+class EncryptedUserId {
+  /// The alphanumeric encrypted id.
+  ///
+  /// Required.
+  core.String? encryptedId;
+
+  /// The encryption entity ID.
+  ///
+  /// This should match the encryption configuration for ad serving or Data
+  /// Transfer.
+  ///
+  /// Required.
+  core.String? entityId;
+
+  /// The encryption entity type.
+  ///
+  /// This should match the encryption configuration for ad serving or Data
+  /// Transfer.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ENCRYPTION_ENTITY_TYPE_UNSPECIFIED" : Unspecified encryption entity
+  /// type.
+  /// - "CAMPAIGN_MANAGER_ACCOUNT" : Campaign Manager 360 account.
+  /// - "CAMPAIGN_MANAGER_ADVERTISER" : Campaign Manager 360 advertiser.
+  /// - "DISPLAY_VIDEO_PARTNER" : Display & Video 360 partner.
+  /// - "DISPLAY_VIDEO_ADVERTISER" : Display & Video 360 advertiser.
+  /// - "GOOGLE_ADS_CUSTOMER" : Google Ads customer.
+  /// - "GOOGLE_AD_MANAGER_NETWORK_CODE" : Google Ad Manager network code.
+  core.String? entityType;
+
+  /// Describes whether the encrypted cookie was received from ad serving (the
+  /// %m macro) or from Data Transfer.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ENCRYPTION_SOURCE_UNSPECIFIED" : Unspecified encryption source.
+  /// - "AD_SERVING" : Ad serving encryption source.
+  /// - "DATA_TRANSFER" : Data transfer encryption source.
+  core.String? source;
+
+  EncryptedUserId({
+    this.encryptedId,
+    this.entityId,
+    this.entityType,
+    this.source,
+  });
+
+  EncryptedUserId.fromJson(core.Map json_)
+    : this(
+        encryptedId: json_['encryptedId'] as core.String?,
+        entityId: json_['entityId'] as core.String?,
+        entityType: json_['entityType'] as core.String?,
+        source: json_['source'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final encryptedId = this.encryptedId;
+    final entityId = this.entityId;
+    final entityType = this.entityType;
+    final source = this.source;
+    return {
+      'encryptedId': ?encryptedId,
+      'entityId': ?entityId,
+      'entityType': ?entityType,
+      'source': ?source,
+    };
+  }
+}
+
 /// Encryption information for the data being ingested.
 class EncryptionInfo {
   /// Amazon Web Services wrapped key information.
   AwsWrappedKeyInfo? awsWrappedKeyInfo;
 
+  /// Key information for the chosen coordinator key.
+  ///
+  /// This is not supported for the IngestEvents, IngestAudienceMembers, and
+  /// RemoveAudienceMembers methods.
+  CoordinatorKeyInfo? coordinatorKeyInfo;
+
   /// Google Cloud Platform wrapped key information.
   GcpWrappedKeyInfo? gcpWrappedKeyInfo;
 
-  EncryptionInfo({this.awsWrappedKeyInfo, this.gcpWrappedKeyInfo});
+  EncryptionInfo({
+    this.awsWrappedKeyInfo,
+    this.coordinatorKeyInfo,
+    this.gcpWrappedKeyInfo,
+  });
 
   EncryptionInfo.fromJson(core.Map json_)
     : this(
         awsWrappedKeyInfo: json_.containsKey('awsWrappedKeyInfo')
             ? AwsWrappedKeyInfo.fromJson(
                 json_['awsWrappedKeyInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        coordinatorKeyInfo: json_.containsKey('coordinatorKeyInfo')
+            ? CoordinatorKeyInfo.fromJson(
+                json_['coordinatorKeyInfo']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -2007,9 +2857,11 @@ class EncryptionInfo {
 
   core.Map<core.String, core.dynamic> toJson() {
     final awsWrappedKeyInfo = this.awsWrappedKeyInfo;
+    final coordinatorKeyInfo = this.coordinatorKeyInfo;
     final gcpWrappedKeyInfo = this.gcpWrappedKeyInfo;
     return {
       'awsWrappedKeyInfo': ?awsWrappedKeyInfo,
+      'coordinatorKeyInfo': ?coordinatorKeyInfo,
       'gcpWrappedKeyInfo': ?gcpWrappedKeyInfo,
     };
   }
@@ -2078,6 +2930,41 @@ class ErrorCount {
   /// -
   /// "PROCESSING_ERROR_REASON_ONE_PER_CLICK_CONVERSION_ACTION_NOT_PERMITTED_WITH_BRAID"
   /// : One-per-click conversion actions cannot be used with BRAIDs.
+  /// - "PROCESSING_ERROR_REASON_MATCH_ID_NOT_FOUND" : The match ID can not be
+  /// found.
+  /// - "PROCESSING_ERROR_REASON_USER_ID_NOT_FOUND_FOR_MATCH_ID" : The user ID
+  /// can not be found for the match ID.
+  /// - "PROCESSING_ERROR_REASON_USER_ID_NOT_FOUND_FOR_GCLID" : The user ID can
+  /// not be found for the GCLID.
+  /// - "PROCESSING_ERROR_REASON_USER_ID_NOT_FOUND_FOR_DCLID" : The user ID can
+  /// not be found for the DCLID.
+  /// - "PROCESSING_ERROR_REASON_INVALID_AD_IDENTIFIERS" : There are ad
+  /// identifiers that are invalid.
+  /// - "PROCESSING_ERROR_REASON_INVALID_MOBILE_ID_FORMAT" : The mobile ID
+  /// format is invalid.
+  /// - "PROCESSING_ERROR_REASON_ORIGINAL_CONVERSIONS_NOT_FOUND" : The original
+  /// conversions can't be found.
+  /// - "PROCESSING_ERROR_REASON_EVENT_ID_DECODE_ERROR" : The event ID (dclid or
+  /// impression ID) cannot be decoded.
+  /// - "PROCESSING_ERROR_REASON_USER_ID_NOT_FOUND_FOR_IMPRESSION_ID" : The user
+  /// ID cannot be found for the given impression ID.
+  /// - "PROCESSING_ERROR_REASON_USER_ID_NOT_FOUND" : The user ID cannot be
+  /// found.
+  /// - "PROCESSING_ERROR_REASON_CONVERSION_PRECEDES_CLICK" : The event
+  /// timestamp on the event was earlier than the associated click.
+  /// - "PROCESSING_ERROR_REASON_TOO_RECENT_CLICK" : The click occurred too
+  /// recently.
+  /// - "PROCESSING_ERROR_REASON_INVALID_CLICK" : The event can't be attributed
+  /// to a click (GCLID). This may be because the click did not come from a
+  /// Google Ads campaign, for example.
+  /// - "PROCESSING_ERROR_REASON_INVALID_OPERATING_ACCOUNT_FOR_CLICK" : The
+  /// click from the event isn't associated with the `operating_account` of the
+  /// destination.
+  /// - "PROCESSING_ERROR_REASON_CLICK_NOT_FOUND" : A corresponding click can't
+  /// be found that matches the provided attributes.
+  /// - "PROCESSING_ERROR_REASON_EXTERNAL_ATTRIBUTION_DATA_MISSING" : External
+  /// attribution data is missing. Sending events to a destination for an
+  /// external attribution conversion action isn't supported.
   core.String? reason;
 
   /// The count of records that failed to upload for a given reason.
@@ -2141,6 +3028,12 @@ class Event {
   /// Optional.
   core.List<EventParameter>? additionalEventParameters;
 
+  /// A unique identifier for the user instance of an app client for this GA4
+  /// app stream.
+  ///
+  /// Optional.
+  core.String? appInstanceId;
+
   /// Information about the transaction and items associated with the event.
   ///
   /// Optional.
@@ -2157,6 +3050,12 @@ class Event {
   ///
   /// Optional.
   Consent? consent;
+
+  /// The conversion quantity associated with the event, for counting-based
+  /// conversions.
+  ///
+  /// Optional.
+  core.double? conversionCount;
 
   /// The conversion value associated with the event, for value-based
   /// conversions.
@@ -2188,6 +3087,12 @@ class Event {
   /// Optional.
   DeviceInfo? eventDeviceInfo;
 
+  /// Information gathered about the location of the user when this event
+  /// occurred.
+  ///
+  /// Optional.
+  EventLocation? eventLocation;
+
   /// The name of the event.
   ///
   /// Required for GA4 events.
@@ -2205,6 +3110,7 @@ class Event {
   /// - "APP" : The event was generated from an app.
   /// - "IN_STORE" : The event was generated from an in-store transaction.
   /// - "PHONE" : The event was generated from a phone call.
+  /// - "MESSAGE" : The event was generated from a message.
   /// - "OTHER" : The event was generated from other sources.
   core.String? eventSource;
 
@@ -2224,9 +3130,16 @@ class Event {
   /// Optional.
   core.String? lastUpdatedTimestamp;
 
+  /// The same type of data provided in user_data, but explicitly flagged as
+  /// being provided as owned by a third-party and not first-party advertiser
+  /// data.
+  ///
+  /// Optional.
+  UserData? thirdPartyUserData;
+
   /// The unique identifier for this event.
   ///
-  /// Required for conversions using multiple data sources.
+  /// Required for events sent as an additional data source for tag conversions.
   ///
   /// Optional.
   core.String? transactionId;
@@ -2251,19 +3164,23 @@ class Event {
   Event({
     this.adIdentifiers,
     this.additionalEventParameters,
+    this.appInstanceId,
     this.cartData,
     this.clientId,
     this.consent,
+    this.conversionCount,
     this.conversionValue,
     this.currency,
     this.customVariables,
     this.destinationReferences,
     this.eventDeviceInfo,
+    this.eventLocation,
     this.eventName,
     this.eventSource,
     this.eventTimestamp,
     this.experimentalFields,
     this.lastUpdatedTimestamp,
+    this.thirdPartyUserData,
     this.transactionId,
     this.userData,
     this.userId,
@@ -2285,6 +3202,7 @@ class Event {
                   ),
                 )
                 .toList(),
+        appInstanceId: json_['appInstanceId'] as core.String?,
         cartData: json_.containsKey('cartData')
             ? CartData.fromJson(
                 json_['cartData'] as core.Map<core.String, core.dynamic>,
@@ -2296,6 +3214,7 @@ class Event {
                 json_['consent'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        conversionCount: (json_['conversionCount'] as core.num?)?.toDouble(),
         conversionValue: (json_['conversionValue'] as core.num?)?.toDouble(),
         currency: json_['currency'] as core.String?,
         customVariables: (json_['customVariables'] as core.List?)
@@ -2313,6 +3232,11 @@ class Event {
                 json_['eventDeviceInfo'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        eventLocation: json_.containsKey('eventLocation')
+            ? EventLocation.fromJson(
+                json_['eventLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         eventName: json_['eventName'] as core.String?,
         eventSource: json_['eventSource'] as core.String?,
         eventTimestamp: json_['eventTimestamp'] as core.String?,
@@ -2324,6 +3248,12 @@ class Event {
             )
             .toList(),
         lastUpdatedTimestamp: json_['lastUpdatedTimestamp'] as core.String?,
+        thirdPartyUserData: json_.containsKey('thirdPartyUserData')
+            ? UserData.fromJson(
+                json_['thirdPartyUserData']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         transactionId: json_['transactionId'] as core.String?,
         userData: json_.containsKey('userData')
             ? UserData.fromJson(
@@ -2341,19 +3271,23 @@ class Event {
   core.Map<core.String, core.dynamic> toJson() {
     final adIdentifiers = this.adIdentifiers;
     final additionalEventParameters = this.additionalEventParameters;
+    final appInstanceId = this.appInstanceId;
     final cartData = this.cartData;
     final clientId = this.clientId;
     final consent = this.consent;
+    final conversionCount = this.conversionCount;
     final conversionValue = this.conversionValue;
     final currency = this.currency;
     final customVariables = this.customVariables;
     final destinationReferences = this.destinationReferences;
     final eventDeviceInfo = this.eventDeviceInfo;
+    final eventLocation = this.eventLocation;
     final eventName = this.eventName;
     final eventSource = this.eventSource;
     final eventTimestamp = this.eventTimestamp;
     final experimentalFields = this.experimentalFields;
     final lastUpdatedTimestamp = this.lastUpdatedTimestamp;
+    final thirdPartyUserData = this.thirdPartyUserData;
     final transactionId = this.transactionId;
     final userData = this.userData;
     final userId = this.userId;
@@ -2361,23 +3295,98 @@ class Event {
     return {
       'adIdentifiers': ?adIdentifiers,
       'additionalEventParameters': ?additionalEventParameters,
+      'appInstanceId': ?appInstanceId,
       'cartData': ?cartData,
       'clientId': ?clientId,
       'consent': ?consent,
+      'conversionCount': ?conversionCount,
       'conversionValue': ?conversionValue,
       'currency': ?currency,
       'customVariables': ?customVariables,
       'destinationReferences': ?destinationReferences,
       'eventDeviceInfo': ?eventDeviceInfo,
+      'eventLocation': ?eventLocation,
       'eventName': ?eventName,
       'eventSource': ?eventSource,
       'eventTimestamp': ?eventTimestamp,
       'experimentalFields': ?experimentalFields,
       'lastUpdatedTimestamp': ?lastUpdatedTimestamp,
+      'thirdPartyUserData': ?thirdPartyUserData,
       'transactionId': ?transactionId,
       'userData': ?userData,
       'userId': ?userId,
       'userProperties': ?userProperties,
+    };
+  }
+}
+
+/// The location where the event occurred.
+class EventLocation {
+  /// The name of the city where the event occurred.
+  ///
+  /// Optional.
+  core.String? city;
+
+  /// The continent code in UN M49 format where the event occurred.
+  ///
+  /// Optional.
+  core.String? continentCode;
+
+  /// The 2-letter CLDR region code of the user's address.
+  ///
+  /// Optional.
+  core.String? regionCode;
+
+  /// Required for Store Sales.
+  ///
+  /// The identifier to represent a physical store where the event happened.
+  ///
+  /// Optional.
+  core.String? storeId;
+
+  /// The subcontinent code in UN M49 format where the event occurred.
+  ///
+  /// Optional.
+  core.String? subcontinentCode;
+
+  /// The ISO 3166-2 subdivision code where the event occurred.
+  ///
+  /// Optional.
+  core.String? subdivisionCode;
+
+  EventLocation({
+    this.city,
+    this.continentCode,
+    this.regionCode,
+    this.storeId,
+    this.subcontinentCode,
+    this.subdivisionCode,
+  });
+
+  EventLocation.fromJson(core.Map json_)
+    : this(
+        city: json_['city'] as core.String?,
+        continentCode: json_['continentCode'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+        storeId: json_['storeId'] as core.String?,
+        subcontinentCode: json_['subcontinentCode'] as core.String?,
+        subdivisionCode: json_['subdivisionCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final city = this.city;
+    final continentCode = this.continentCode;
+    final regionCode = this.regionCode;
+    final storeId = this.storeId;
+    final subcontinentCode = this.subcontinentCode;
+    final subdivisionCode = this.subdivisionCode;
+    return {
+      'city': ?city,
+      'continentCode': ?continentCode,
+      'regionCode': ?regionCode,
+      'storeId': ?storeId,
+      'subcontinentCode': ?subcontinentCode,
+      'subdivisionCode': ?subdivisionCode,
     };
   }
 }
@@ -2409,6 +3418,64 @@ class ExperimentalField {
     final field = this.field;
     final value = this.value;
     return {'field': ?field, 'value': ?value};
+  }
+}
+
+/// Detailed row-level warning with field paths.
+class FieldWarning {
+  /// The detailed warning message describing the issue.
+  core.String? description;
+
+  /// The field path that triggered the warning.
+  ///
+  /// Uses the same format as google.rpc.BadRequest.FieldViolation.field.
+  core.String? field;
+
+  /// The warning reason.
+  /// Possible string values are:
+  /// - "WARNING_REASON_UNSPECIFIED" : Unspecified warning reason.
+  /// - "WARNING_REASON_CUSTOM_VARIABLE_NOT_ENABLED" : A custom variable in
+  /// `custom_variables` is not enabled in the account.
+  /// - "WARNING_REASON_CUSTOM_VARIABLE_NOT_PREDEFINED" : A custom variable
+  /// value in `custom_variables` is not among the predefined allowed values
+  /// configured for the custom variable on the destination account.
+  /// - "WARNING_REASON_CART_DATA_NOT_SUPPORTED_WITH_GBRAID_OR_WBRAID" : The
+  /// `cart_data` is not supported with `gbraid` or `wbraid`.
+  /// - "WARNING_REASON_CART_DATA_ITEM_MERCHANT_PRODUCT_ID_MISSING" : The
+  /// `merchant_product_id` is missing in the cart item.
+  /// - "WARNING_REASON_CART_DATA_ITEM_UNIT_PRICE_MISSING" : The `unit_price` is
+  /// missing in the cart item.
+  /// - "WARNING_REASON_GENERIC" : Generic warning reason for issues that do not
+  /// fit into other specific categories.
+  /// - "WARNING_REASON_INVALID_CLIENT_ID" : The `client_id` is invalid.
+  /// - "WARNING_REASON_INVALID_SUBDIVISION_CODE" : The `subdivision_code` is
+  /// invalid.
+  /// - "WARNING_REASON_INVALID_REGION_CODE" : The `region_code` is invalid.
+  /// - "WARNING_REASON_INVALID_SUBCONTINENT_CODE" : The `subcontinent_code` is
+  /// invalid.
+  /// - "WARNING_REASON_INVALID_CONTINENT_CODE" : The `continent_code` is
+  /// invalid.
+  /// - "WARNING_REASON_INVALID_DEVICE_CATEGORY" : The device `category` is
+  /// invalid.
+  /// - "WARNING_REASON_INVALID_DEVICE_SCREEN_RESOLUTION" : The device
+  /// `screen_height` or `screen_width` is invalid.
+  /// - "WARNING_REASON_INVALID_MERCHANT_ID" : The `merchant_id` is invalid.
+  core.String? reason;
+
+  FieldWarning({this.description, this.field, this.reason});
+
+  FieldWarning.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        field: json_['field'] as core.String?,
+        reason: json_['reason'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final field = this.field;
+    final reason = this.reason;
+    return {'description': ?description, 'field': ?field, 'reason': ?reason};
   }
 }
 
@@ -2473,6 +3540,90 @@ class GcpWrappedKeyInfo {
     };
   }
 }
+
+/// Google user id data holding encrypted google user IDs.
+///
+/// At least one google user ID is required.
+class GoogleUserIdData {
+  /// The list of encrypted google user IDs.
+  ///
+  /// Required.
+  core.List<core.String>? googleUserIds;
+
+  GoogleUserIdData({this.googleUserIds});
+
+  GoogleUserIdData.fromJson(core.Map json_)
+    : this(
+        googleUserIds: (json_['googleUserIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final googleUserIds = this.googleUserIds;
+    return {'googleUserIds': ?googleUserIds};
+  }
+}
+
+/// Request to upload ad events.
+class IngestAdEventsRequest {
+  /// Required (at least 1).
+  ///
+  /// A list of ad events.
+  ///
+  /// Required.
+  core.List<AdEvent>? adEvents;
+
+  /// Information about encryption keys which are used to encrypt the data.
+  ///
+  /// Required.
+  EncryptionInfo? encryptionInfo;
+
+  /// If true, the request is validated, but not executed.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? validateOnly;
+
+  IngestAdEventsRequest({
+    this.adEvents,
+    this.encryptionInfo,
+    this.validateOnly,
+  });
+
+  IngestAdEventsRequest.fromJson(core.Map json_)
+    : this(
+        adEvents: (json_['adEvents'] as core.List?)
+            ?.map(
+              (value) => AdEvent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        encryptionInfo: json_.containsKey('encryptionInfo')
+            ? EncryptionInfo.fromJson(
+                json_['encryptionInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final adEvents = this.adEvents;
+    final encryptionInfo = this.encryptionInfo;
+    final validateOnly = this.validateOnly;
+    return {
+      'adEvents': ?adEvents,
+      'encryptionInfo': ?encryptionInfo,
+      'validateOnly': ?validateOnly,
+    };
+  }
+}
+
+/// Response from an ad event ingestion operation.
+typedef IngestAdEventsResponse = $Empty;
 
 /// Request to upload audience members to the provided destinations.
 ///
@@ -2602,15 +3753,50 @@ class IngestAudienceMembersRequest {
 }
 
 /// Response from the IngestAudienceMembersRequest.
-typedef IngestAudienceMembersResponse = $Response01;
+class IngestAudienceMembersResponse {
+  /// Detailed row-level warnings with field paths.
+  core.List<FieldWarning>? fieldWarnings;
+
+  /// The auto-generated ID of the request.
+  core.String? requestId;
+
+  IngestAudienceMembersResponse({this.fieldWarnings, this.requestId});
+
+  IngestAudienceMembersResponse.fromJson(core.Map json_)
+    : this(
+        fieldWarnings: (json_['fieldWarnings'] as core.List?)
+            ?.map(
+              (value) => FieldWarning.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        requestId: json_['requestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fieldWarnings = this.fieldWarnings;
+    final requestId = this.requestId;
+    return {'fieldWarnings': ?fieldWarnings, 'requestId': ?requestId};
+  }
+}
 
 /// The status of the ingest audience members request.
 class IngestAudienceMembersStatus {
+  /// The status of the composite data ingestion to the destination.
+  IngestCompositeDataStatus? compositeDataIngestionStatus;
+
+  /// The status of the google user id data ingestion to the destination.
+  IngestGoogleUserIdDataStatus? googleUserIdDataIngestionStatus;
+
   /// The status of the mobile data ingestion to the destination.
   IngestMobileDataStatus? mobileDataIngestionStatus;
 
   /// The status of the pair data ingestion to the destination.
   IngestPairDataStatus? pairDataIngestionStatus;
+
+  /// The status of the partner provided id data ingestion to the destination.
+  IngestPartnerProvidedIdDataStatus? partnerProvidedIdDataIngestionStatus;
 
   /// The status of the ppid data ingestion to the destination.
   IngestPpidDataStatus? ppidDataIngestionStatus;
@@ -2622,8 +3808,11 @@ class IngestAudienceMembersStatus {
   IngestUserIdDataStatus? userIdDataIngestionStatus;
 
   IngestAudienceMembersStatus({
+    this.compositeDataIngestionStatus,
+    this.googleUserIdDataIngestionStatus,
     this.mobileDataIngestionStatus,
     this.pairDataIngestionStatus,
+    this.partnerProvidedIdDataIngestionStatus,
     this.ppidDataIngestionStatus,
     this.userDataIngestionStatus,
     this.userIdDataIngestionStatus,
@@ -2631,6 +3820,20 @@ class IngestAudienceMembersStatus {
 
   IngestAudienceMembersStatus.fromJson(core.Map json_)
     : this(
+        compositeDataIngestionStatus:
+            json_.containsKey('compositeDataIngestionStatus')
+            ? IngestCompositeDataStatus.fromJson(
+                json_['compositeDataIngestionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleUserIdDataIngestionStatus:
+            json_.containsKey('googleUserIdDataIngestionStatus')
+            ? IngestGoogleUserIdDataStatus.fromJson(
+                json_['googleUserIdDataIngestionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         mobileDataIngestionStatus:
             json_.containsKey('mobileDataIngestionStatus')
             ? IngestMobileDataStatus.fromJson(
@@ -2641,6 +3844,13 @@ class IngestAudienceMembersStatus {
         pairDataIngestionStatus: json_.containsKey('pairDataIngestionStatus')
             ? IngestPairDataStatus.fromJson(
                 json_['pairDataIngestionStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        partnerProvidedIdDataIngestionStatus:
+            json_.containsKey('partnerProvidedIdDataIngestionStatus')
+            ? IngestPartnerProvidedIdDataStatus.fromJson(
+                json_['partnerProvidedIdDataIngestionStatus']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -2666,17 +3876,98 @@ class IngestAudienceMembersStatus {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final compositeDataIngestionStatus = this.compositeDataIngestionStatus;
+    final googleUserIdDataIngestionStatus =
+        this.googleUserIdDataIngestionStatus;
     final mobileDataIngestionStatus = this.mobileDataIngestionStatus;
     final pairDataIngestionStatus = this.pairDataIngestionStatus;
+    final partnerProvidedIdDataIngestionStatus =
+        this.partnerProvidedIdDataIngestionStatus;
     final ppidDataIngestionStatus = this.ppidDataIngestionStatus;
     final userDataIngestionStatus = this.userDataIngestionStatus;
     final userIdDataIngestionStatus = this.userIdDataIngestionStatus;
     return {
+      'compositeDataIngestionStatus': ?compositeDataIngestionStatus,
+      'googleUserIdDataIngestionStatus': ?googleUserIdDataIngestionStatus,
       'mobileDataIngestionStatus': ?mobileDataIngestionStatus,
       'pairDataIngestionStatus': ?pairDataIngestionStatus,
+      'partnerProvidedIdDataIngestionStatus':
+          ?partnerProvidedIdDataIngestionStatus,
       'ppidDataIngestionStatus': ?ppidDataIngestionStatus,
       'userDataIngestionStatus': ?userDataIngestionStatus,
       'userIdDataIngestionStatus': ?userIdDataIngestionStatus,
+    };
+  }
+}
+
+/// The status of the composite data ingestion to the destination containing
+/// stats related to the ingestion.
+class IngestCompositeDataStatus {
+  /// The total count of data types sent in the upload request for the
+  /// destination, broken down by data type.
+  ///
+  /// Includes all data types in the request, regardless of whether they were
+  /// successfully ingested or not.
+  core.List<DataTypeCount>? dataTypeCounts;
+
+  /// The total count of audience members sent in the upload request for the
+  /// destination.
+  ///
+  /// Includes all audience members in the request, regardless of whether they
+  /// were successfully ingested or not.
+  core.String? recordCount;
+
+  /// The match rate range of the upload.
+  /// Possible string values are:
+  /// - "MATCH_RATE_RANGE_UNKNOWN" : The match rate range is unknown.
+  /// - "MATCH_RATE_RANGE_NOT_ELIGIBLE" : The match rate range is not eligible.
+  /// - "MATCH_RATE_RANGE_LESS_THAN_20" : The match rate range is less than 20%
+  /// (in the interval `[0, 20)`).
+  /// - "MATCH_RATE_RANGE_20_TO_30" : The match rate range is between 20% and
+  /// 30% (in the interval `[20, 31)`).
+  /// - "MATCH_RATE_RANGE_31_TO_40" : The match rate range is between 31% and
+  /// 40% (in the interval `[31, 41)`).
+  /// - "MATCH_RATE_RANGE_41_TO_50" : The match rate range is between 41% and
+  /// 50% (in the interval `[41, 51)`).
+  /// - "MATCH_RATE_RANGE_51_TO_60" : The match rate range is between 51% and
+  /// 60% (in the interval `[51, 61)`.
+  /// - "MATCH_RATE_RANGE_61_TO_70" : The match rate range is between 61% and
+  /// 70% (in the interval `[61, 71)`).
+  /// - "MATCH_RATE_RANGE_71_TO_80" : The match rate range is between 71% and
+  /// 80% (in the interval `[71, 81)`).
+  /// - "MATCH_RATE_RANGE_81_TO_90" : The match rate range is between 81% and
+  /// 90% (in the interval `[81, 91)`).
+  /// - "MATCH_RATE_RANGE_91_TO_100" : The match rate range is between 91% and
+  /// 100% (in the interval `[91, 100]`).
+  core.String? uploadMatchRateRange;
+
+  IngestCompositeDataStatus({
+    this.dataTypeCounts,
+    this.recordCount,
+    this.uploadMatchRateRange,
+  });
+
+  IngestCompositeDataStatus.fromJson(core.Map json_)
+    : this(
+        dataTypeCounts: (json_['dataTypeCounts'] as core.List?)
+            ?.map(
+              (value) => DataTypeCount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        recordCount: json_['recordCount'] as core.String?,
+        uploadMatchRateRange: json_['uploadMatchRateRange'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataTypeCounts = this.dataTypeCounts;
+    final recordCount = this.recordCount;
+    final uploadMatchRateRange = this.uploadMatchRateRange;
+    return {
+      'dataTypeCounts': ?dataTypeCounts,
+      'recordCount': ?recordCount,
+      'uploadMatchRateRange': ?uploadMatchRateRange,
     };
   }
 }
@@ -2795,7 +4086,33 @@ class IngestEventsRequest {
 }
 
 /// Response from the IngestEventsRequest.
-typedef IngestEventsResponse = $Response01;
+class IngestEventsResponse {
+  /// Detailed row-level warnings with field paths.
+  core.List<FieldWarning>? fieldWarnings;
+
+  /// The auto-generated ID of the request.
+  core.String? requestId;
+
+  IngestEventsResponse({this.fieldWarnings, this.requestId});
+
+  IngestEventsResponse.fromJson(core.Map json_)
+    : this(
+        fieldWarnings: (json_['fieldWarnings'] as core.List?)
+            ?.map(
+              (value) => FieldWarning.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        requestId: json_['requestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fieldWarnings = this.fieldWarnings;
+    final requestId = this.requestId;
+    return {'fieldWarnings': ?fieldWarnings, 'requestId': ?requestId};
+  }
+}
 
 /// The status of the events ingestion to the destination.
 class IngestEventsStatus {
@@ -2813,6 +4130,41 @@ class IngestEventsStatus {
   core.Map<core.String, core.dynamic> toJson() {
     final recordCount = this.recordCount;
     return {'recordCount': ?recordCount};
+  }
+}
+
+/// The status of the google user id data ingestion to the destination
+/// containing stats related to the ingestion.
+class IngestGoogleUserIdDataStatus {
+  /// The total count of google user ids sent in the upload request for the
+  /// destination.
+  ///
+  /// Includes all google user ids in the request, regardless of whether they
+  /// were successfully ingested or not.
+  core.String? googleUserIdCount;
+
+  /// The total count of audience members sent in the upload request for the
+  /// destination.
+  ///
+  /// Includes all audience members in the request, regardless of whether they
+  /// were successfully ingested or not.
+  core.String? recordCount;
+
+  IngestGoogleUserIdDataStatus({this.googleUserIdCount, this.recordCount});
+
+  IngestGoogleUserIdDataStatus.fromJson(core.Map json_)
+    : this(
+        googleUserIdCount: json_['googleUserIdCount'] as core.String?,
+        recordCount: json_['recordCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final googleUserIdCount = this.googleUserIdCount;
+    final recordCount = this.recordCount;
+    return {
+      'googleUserIdCount': ?googleUserIdCount,
+      'recordCount': ?recordCount,
+    };
   }
 }
 
@@ -2877,6 +4229,44 @@ class IngestPairDataStatus {
     final pairIdCount = this.pairIdCount;
     final recordCount = this.recordCount;
     return {'pairIdCount': ?pairIdCount, 'recordCount': ?recordCount};
+  }
+}
+
+/// The status of the partner provided id data ingestion to the destination
+/// containing stats related to the ingestion.
+class IngestPartnerProvidedIdDataStatus {
+  /// The total count of partner provided ids sent in the upload request for the
+  /// destination.
+  ///
+  /// Includes all partner provided ids in the request, regardless of whether
+  /// they were successfully ingested or not.
+  core.String? partnerProvidedIdCount;
+
+  /// The total count of audience members sent in the upload request for the
+  /// destination.
+  ///
+  /// Includes all audience members in the request, regardless of whether they
+  /// were successfully ingested or not.
+  core.String? recordCount;
+
+  IngestPartnerProvidedIdDataStatus({
+    this.partnerProvidedIdCount,
+    this.recordCount,
+  });
+
+  IngestPartnerProvidedIdDataStatus.fromJson(core.Map json_)
+    : this(
+        partnerProvidedIdCount: json_['partnerProvidedIdCount'] as core.String?,
+        recordCount: json_['recordCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final partnerProvidedIdCount = this.partnerProvidedIdCount;
+    final recordCount = this.recordCount;
+    return {
+      'partnerProvidedIdCount': ?partnerProvidedIdCount,
+      'recordCount': ?recordCount,
+    };
   }
 }
 
@@ -3120,6 +4510,49 @@ class IngestedUserListInfo {
   }
 }
 
+/// IP address information for a user.
+///
+/// We recommend including observe_start_time and observe_end_time to help
+/// improve Customer Match match rates.
+class IpData {
+  /// IP address captured at the time of customer interaction.
+  ///
+  /// Accepts standard string formats for both IPv4 and IPv6.
+  ///
+  /// Required.
+  core.String? ipAddress;
+
+  /// Last recorded interaction time from this IP address in a session.
+  ///
+  /// Optional.
+  core.String? observeEndTime;
+
+  /// First recorded interaction time from this IP address in a session.
+  ///
+  /// Optional.
+  core.String? observeStartTime;
+
+  IpData({this.ipAddress, this.observeEndTime, this.observeStartTime});
+
+  IpData.fromJson(core.Map json_)
+    : this(
+        ipAddress: json_['ipAddress'] as core.String?,
+        observeEndTime: json_['observeEndTime'] as core.String?,
+        observeStartTime: json_['observeStartTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipAddress = this.ipAddress;
+    final observeEndTime = this.observeEndTime;
+    final observeStartTime = this.observeStartTime;
+    return {
+      'ipAddress': ?ipAddress,
+      'observeEndTime': ?observeEndTime,
+      'observeStartTime': ?observeStartTime,
+    };
+  }
+}
+
 /// Represents an item in the cart associated with the event.
 class Item {
   /// A bucket of any
@@ -3130,10 +4563,46 @@ class Item {
   /// Optional.
   core.List<ItemParameter>? additionalItemParameters;
 
+  /// The conversion value associated with this item within the event, for cases
+  /// where the conversion value is different for each item.
+  ///
+  /// Optional.
+  core.double? conversionValue;
+
+  /// Additional key/value pair information to send to the conversion containers
+  /// (conversion action or Floodlight activity), when tracking per-item
+  /// conversions.
+  ///
+  /// Optional.
+  core.List<ItemCustomVariable>? customVariables;
+
   /// A unique identifier to reference the item.
   ///
   /// Optional.
   core.String? itemId;
+
+  /// The feed label of the Merchant Center feed.
+  ///
+  /// If countries are still being used, the 2-letter country code in ISO-3166-1
+  /// alpha-2 can be used instead. For Store Sales events this will override the
+  /// value set at the cart level. This field is ignored for other events.
+  ///
+  /// Optional.
+  core.String? merchantFeedLabel;
+
+  /// The language code in ISO 639-1 associated with the Merchant Center feed
+  /// where your items are uploaded.
+  ///
+  /// Optional.
+  core.String? merchantFeedLanguageCode;
+
+  /// The Merchant Center ID associated with the item.
+  ///
+  /// For Store Sales events this will override the value set at the cart level.
+  /// This field is ignored for other events.
+  ///
+  /// Optional.
+  core.String? merchantId;
 
   /// The product ID within the Merchant Center account.
   ///
@@ -3153,7 +4622,12 @@ class Item {
 
   Item({
     this.additionalItemParameters,
+    this.conversionValue,
+    this.customVariables,
     this.itemId,
+    this.merchantFeedLabel,
+    this.merchantFeedLanguageCode,
+    this.merchantId,
     this.merchantProductId,
     this.quantity,
     this.unitPrice,
@@ -3169,7 +4643,19 @@ class Item {
                   ),
                 )
                 .toList(),
+        conversionValue: (json_['conversionValue'] as core.num?)?.toDouble(),
+        customVariables: (json_['customVariables'] as core.List?)
+            ?.map(
+              (value) => ItemCustomVariable.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         itemId: json_['itemId'] as core.String?,
+        merchantFeedLabel: json_['merchantFeedLabel'] as core.String?,
+        merchantFeedLanguageCode:
+            json_['merchantFeedLanguageCode'] as core.String?,
+        merchantId: json_['merchantId'] as core.String?,
         merchantProductId: json_['merchantProductId'] as core.String?,
         quantity: json_['quantity'] as core.String?,
         unitPrice: (json_['unitPrice'] as core.num?)?.toDouble(),
@@ -3177,19 +4663,32 @@ class Item {
 
   core.Map<core.String, core.dynamic> toJson() {
     final additionalItemParameters = this.additionalItemParameters;
+    final conversionValue = this.conversionValue;
+    final customVariables = this.customVariables;
     final itemId = this.itemId;
+    final merchantFeedLabel = this.merchantFeedLabel;
+    final merchantFeedLanguageCode = this.merchantFeedLanguageCode;
+    final merchantId = this.merchantId;
     final merchantProductId = this.merchantProductId;
     final quantity = this.quantity;
     final unitPrice = this.unitPrice;
     return {
       'additionalItemParameters': ?additionalItemParameters,
+      'conversionValue': ?conversionValue,
+      'customVariables': ?customVariables,
       'itemId': ?itemId,
+      'merchantFeedLabel': ?merchantFeedLabel,
+      'merchantFeedLanguageCode': ?merchantFeedLanguageCode,
+      'merchantId': ?merchantId,
       'merchantProductId': ?merchantProductId,
       'quantity': ?quantity,
       'unitPrice': ?unitPrice,
     };
   }
 }
+
+/// Item-level custom variable for ads conversions.
+typedef ItemCustomVariable = $CustomVariable;
 
 /// A bucket of any
 /// [event parameters related to an item](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events)
@@ -3468,7 +4967,10 @@ class MarketingDataInsightsAttribute {
 ///
 /// At least one mobile ID is required.
 class MobileData {
-  /// The list of mobile device IDs (advertising ID/IDFA).
+  /// The list of mobile device IDs (Android advertising ID, iOS IDFA for
+  /// Customer Match user lists and Android advertising ID, iOS IDFA, Xbox or
+  /// Microsoft ID, Amazon Fire TV ID, Roku ID, Generic Device ID for basic user
+  /// lists).
   ///
   /// At most 10 `mobileIds` can be provided in a single AudienceMember.
   ///
@@ -3688,8 +5190,64 @@ class PartnerAudienceInfo {
   }
 }
 
+/// Represents a customer account in the partner's system.
+class PartnerCustomerAccount {
+  /// The identifier of the customer account in the partner's ID space.
+  ///
+  /// Required.
+  core.String? accountId;
+
+  /// The name of the account.
+  ///
+  /// Optional.
+  core.String? accountName;
+
+  /// The type of the account.
+  ///
+  /// Can be used to distinguish between advertiser accounts and business level
+  /// accounts, for example.
+  ///
+  /// Optional.
+  core.String? accountType;
+
+  PartnerCustomerAccount({this.accountId, this.accountName, this.accountType});
+
+  PartnerCustomerAccount.fromJson(core.Map json_)
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        accountName: json_['accountName'] as core.String?,
+        accountType: json_['accountType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountId = this.accountId;
+    final accountName = this.accountName;
+    final accountType = this.accountType;
+    return {
+      'accountId': ?accountId,
+      'accountName': ?accountName,
+      'accountType': ?accountType,
+    };
+  }
+}
+
 /// A partner link between an owning account and a partner account.
 class PartnerLink {
+  /// The set of features supported for the partner link.
+  ///
+  /// If not specified, the system behavior defaults to
+  /// FEATURE_SET_AUDIENCE_AND_EVENT_MANAGEMENT.
+  ///
+  /// Optional. Immutable.
+  /// Possible string values are:
+  /// - "FEATURE_SET_UNSPECIFIED" : Unspecified feature set. If unspecified, the
+  /// system behavior defaults to FEATURE_SET_AUDIENCE_AND_EVENT_MANAGEMENT.
+  /// - "FEATURE_SET_AUDIENCE_AND_EVENT_MANAGEMENT" : Indicates a link used for
+  /// audience and event management.
+  /// - "FEATURE_SET_AD_EVENT_MANAGEMENT" : Indicates a link used for ad event
+  /// management.
+  core.String? featureSet;
+
   /// Identifier.
   ///
   /// The name of the partner link. Format:
@@ -3706,20 +5264,40 @@ class PartnerLink {
   /// Required.
   ProductAccount? partnerAccount;
 
+  /// The customer account in the partner system.
+  ///
+  /// This is required for partner links with the
+  /// FEATURE_SET_AD_EVENT_MANAGEMENT feature set.
+  ///
+  /// Optional.
+  PartnerCustomerAccount? partnerCustomerAccount;
+
   /// The partner link ID.
   ///
   /// Output only.
   core.String? partnerLinkId;
 
+  /// Metadata associated with the partner link.
+  ///
+  /// This is optional and only accepted for partner links with the
+  /// FEATURE_SET_AD_EVENT_MANAGEMENT.
+  ///
+  /// Optional.
+  PartnerLinkMetadata? partnerLinkMetadata;
+
   PartnerLink({
+    this.featureSet,
     this.name,
     this.owningAccount,
     this.partnerAccount,
+    this.partnerCustomerAccount,
     this.partnerLinkId,
+    this.partnerLinkMetadata,
   });
 
   PartnerLink.fromJson(core.Map json_)
     : this(
+        featureSet: json_['featureSet'] as core.String?,
         name: json_['name'] as core.String?,
         owningAccount: json_.containsKey('owningAccount')
             ? ProductAccount.fromJson(
@@ -3731,20 +5309,88 @@ class PartnerLink {
                 json_['partnerAccount'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        partnerCustomerAccount: json_.containsKey('partnerCustomerAccount')
+            ? PartnerCustomerAccount.fromJson(
+                json_['partnerCustomerAccount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         partnerLinkId: json_['partnerLinkId'] as core.String?,
+        partnerLinkMetadata: json_.containsKey('partnerLinkMetadata')
+            ? PartnerLinkMetadata.fromJson(
+                json_['partnerLinkMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final featureSet = this.featureSet;
     final name = this.name;
     final owningAccount = this.owningAccount;
     final partnerAccount = this.partnerAccount;
+    final partnerCustomerAccount = this.partnerCustomerAccount;
     final partnerLinkId = this.partnerLinkId;
+    final partnerLinkMetadata = this.partnerLinkMetadata;
     return {
+      'featureSet': ?featureSet,
       'name': ?name,
       'owningAccount': ?owningAccount,
       'partnerAccount': ?partnerAccount,
+      'partnerCustomerAccount': ?partnerCustomerAccount,
       'partnerLinkId': ?partnerLinkId,
+      'partnerLinkMetadata': ?partnerLinkMetadata,
     };
+  }
+}
+
+/// Represents metadata associated with a partner link.
+class PartnerLinkMetadata {
+  /// The list of implicit accounts.
+  ///
+  /// Optional.
+  core.List<PartnerCustomerAccount>? implicitAccounts;
+
+  PartnerLinkMetadata({this.implicitAccounts});
+
+  PartnerLinkMetadata.fromJson(core.Map json_)
+    : this(
+        implicitAccounts: (json_['implicitAccounts'] as core.List?)
+            ?.map(
+              (value) => PartnerCustomerAccount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final implicitAccounts = this.implicitAccounts;
+    return {'implicitAccounts': ?implicitAccounts};
+  }
+}
+
+/// Partner-provided data holding the partner-provided identifiers.
+///
+/// At least one partner-provided identifier is required.
+class PartnerProvidedIdData {
+  /// The list of partner-provided identifiers.
+  ///
+  /// Required.
+  core.List<core.String>? partnerProvidedIds;
+
+  PartnerProvidedIdData({this.partnerProvidedIds});
+
+  PartnerProvidedIdData.fromJson(core.Map json_)
+    : this(
+        partnerProvidedIds: (json_['partnerProvidedIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final partnerProvidedIds = this.partnerProvidedIds;
+    return {'partnerProvidedIds': ?partnerProvidedIds};
   }
 }
 
@@ -3787,7 +5433,7 @@ class ProductAccount {
   /// For example, `GOOGLE_ADS`. Either `account_type` or the deprecated
   /// `product` is required. If both are set, the values must match.
   ///
-  /// Optional.
+  /// Required.
   /// Possible string values are:
   /// - "ACCOUNT_TYPE_UNSPECIFIED" : Unspecified product. Should never be used.
   /// - "GOOGLE_ADS" : Google Ads.
@@ -3796,6 +5442,7 @@ class ProductAccount {
   /// - "DATA_PARTNER" : Data Partner.
   /// - "GOOGLE_ANALYTICS_PROPERTY" : Google Analytics.
   /// - "GOOGLE_AD_MANAGER_AUDIENCE_LINK" : Google Ad Manager audience link.
+  /// - "FLOODLIGHT_CONFIG" : Floodlight configuration.
   core.String? accountType;
 
   /// Use `account_type` instead.
@@ -3872,6 +5519,69 @@ class PseudonymousIdInfo {
     };
   }
 }
+
+/// Request to remove all users from an audience in the provided destinations.
+///
+/// Returns a RemoveAllAudienceMembersResponse.
+class RemoveAllAudienceMembersRequest {
+  /// The list of destinations to remove the users from.
+  ///
+  /// Required.
+  core.List<Destination>? destinations;
+
+  /// The remove as of time.
+  ///
+  /// If set, only audience members last added before this time will be removed.
+  /// If not set, it defaults to current time. The remove as of time must not be
+  /// in the future.
+  ///
+  /// Optional.
+  core.String? removeAsOfTime;
+
+  /// For testing purposes.
+  ///
+  /// If `true`, the request is validated but not executed. Only errors are
+  /// returned, not results.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  RemoveAllAudienceMembersRequest({
+    this.destinations,
+    this.removeAsOfTime,
+    this.validateOnly,
+  });
+
+  RemoveAllAudienceMembersRequest.fromJson(core.Map json_)
+    : this(
+        destinations: (json_['destinations'] as core.List?)
+            ?.map(
+              (value) => Destination.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        removeAsOfTime: json_['removeAsOfTime'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinations = this.destinations;
+    final removeAsOfTime = this.removeAsOfTime;
+    final validateOnly = this.validateOnly;
+    return {
+      'destinations': ?destinations,
+      'removeAsOfTime': ?removeAsOfTime,
+      'validateOnly': ?validateOnly,
+    };
+  }
+}
+
+/// Response from the RemoveAllAudienceMembersRequest.
+typedef RemoveAllAudienceMembersResponse = $AudienceMembersResponse;
+
+/// The status of the remove all audience members request.
+typedef RemoveAllAudienceMembersStatus = $Empty;
 
 /// Request to remove users from an audience in the provided destinations.
 ///
@@ -3967,15 +5677,24 @@ class RemoveAudienceMembersRequest {
 }
 
 /// Response from the RemoveAudienceMembersRequest.
-typedef RemoveAudienceMembersResponse = $Response01;
+typedef RemoveAudienceMembersResponse = $AudienceMembersResponse;
 
 /// The status of the remove audience members request.
 class RemoveAudienceMembersStatus {
+  /// The status of the composite data removal from the destination.
+  RemoveCompositeDataStatus? compositeDataRemovalStatus;
+
+  /// The status of the google user id data removal from the destination.
+  RemoveGoogleUserIdDataStatus? googleUserIdDataRemovalStatus;
+
   /// The status of the mobile data removal from the destination.
   RemoveMobileDataStatus? mobileDataRemovalStatus;
 
   /// The status of the pair data removal from the destination.
   RemovePairDataStatus? pairDataRemovalStatus;
+
+  /// The status of the partner provided id data removal from the destination.
+  RemovePartnerProvidedIdDataStatus? partnerProvidedIdDataRemovalStatus;
 
   /// The status of the ppid data removal from the destination.
   RemovePpidDataStatus? ppidDataRemovalStatus;
@@ -3987,8 +5706,11 @@ class RemoveAudienceMembersStatus {
   RemoveUserIdDataStatus? userIdDataRemovalStatus;
 
   RemoveAudienceMembersStatus({
+    this.compositeDataRemovalStatus,
+    this.googleUserIdDataRemovalStatus,
     this.mobileDataRemovalStatus,
     this.pairDataRemovalStatus,
+    this.partnerProvidedIdDataRemovalStatus,
     this.ppidDataRemovalStatus,
     this.userDataRemovalStatus,
     this.userIdDataRemovalStatus,
@@ -3996,6 +5718,20 @@ class RemoveAudienceMembersStatus {
 
   RemoveAudienceMembersStatus.fromJson(core.Map json_)
     : this(
+        compositeDataRemovalStatus:
+            json_.containsKey('compositeDataRemovalStatus')
+            ? RemoveCompositeDataStatus.fromJson(
+                json_['compositeDataRemovalStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleUserIdDataRemovalStatus:
+            json_.containsKey('googleUserIdDataRemovalStatus')
+            ? RemoveGoogleUserIdDataStatus.fromJson(
+                json_['googleUserIdDataRemovalStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         mobileDataRemovalStatus: json_.containsKey('mobileDataRemovalStatus')
             ? RemoveMobileDataStatus.fromJson(
                 json_['mobileDataRemovalStatus']
@@ -4005,6 +5741,13 @@ class RemoveAudienceMembersStatus {
         pairDataRemovalStatus: json_.containsKey('pairDataRemovalStatus')
             ? RemovePairDataStatus.fromJson(
                 json_['pairDataRemovalStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        partnerProvidedIdDataRemovalStatus:
+            json_.containsKey('partnerProvidedIdDataRemovalStatus')
+            ? RemovePartnerProvidedIdDataStatus.fromJson(
+                json_['partnerProvidedIdDataRemovalStatus']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -4029,17 +5772,92 @@ class RemoveAudienceMembersStatus {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final compositeDataRemovalStatus = this.compositeDataRemovalStatus;
+    final googleUserIdDataRemovalStatus = this.googleUserIdDataRemovalStatus;
     final mobileDataRemovalStatus = this.mobileDataRemovalStatus;
     final pairDataRemovalStatus = this.pairDataRemovalStatus;
+    final partnerProvidedIdDataRemovalStatus =
+        this.partnerProvidedIdDataRemovalStatus;
     final ppidDataRemovalStatus = this.ppidDataRemovalStatus;
     final userDataRemovalStatus = this.userDataRemovalStatus;
     final userIdDataRemovalStatus = this.userIdDataRemovalStatus;
     return {
+      'compositeDataRemovalStatus': ?compositeDataRemovalStatus,
+      'googleUserIdDataRemovalStatus': ?googleUserIdDataRemovalStatus,
       'mobileDataRemovalStatus': ?mobileDataRemovalStatus,
       'pairDataRemovalStatus': ?pairDataRemovalStatus,
+      'partnerProvidedIdDataRemovalStatus': ?partnerProvidedIdDataRemovalStatus,
       'ppidDataRemovalStatus': ?ppidDataRemovalStatus,
       'userDataRemovalStatus': ?userDataRemovalStatus,
       'userIdDataRemovalStatus': ?userIdDataRemovalStatus,
+    };
+  }
+}
+
+/// The status of the composite data removal from the destination.
+class RemoveCompositeDataStatus {
+  /// The total count of data types sent in the removal request, broken down by
+  /// data type.
+  ///
+  /// Includes all data types in the request, regardless of whether they were
+  /// successfully removed or not.
+  core.List<DataTypeCount>? dataTypeCounts;
+
+  /// The total count of audience members sent in the removal request.
+  ///
+  /// Includes all audience members in the request, regardless of whether they
+  /// were successfully removed or not.
+  core.String? recordCount;
+
+  RemoveCompositeDataStatus({this.dataTypeCounts, this.recordCount});
+
+  RemoveCompositeDataStatus.fromJson(core.Map json_)
+    : this(
+        dataTypeCounts: (json_['dataTypeCounts'] as core.List?)
+            ?.map(
+              (value) => DataTypeCount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        recordCount: json_['recordCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataTypeCounts = this.dataTypeCounts;
+    final recordCount = this.recordCount;
+    return {'dataTypeCounts': ?dataTypeCounts, 'recordCount': ?recordCount};
+  }
+}
+
+/// The status of the google user id data removal from the destination.
+class RemoveGoogleUserIdDataStatus {
+  /// The total count of google user ids sent in the removal request.
+  ///
+  /// Includes all google user ids in the request, regardless of whether they
+  /// were successfully removed or not.
+  core.String? googleUserIdCount;
+
+  /// The total count of audience members sent in the removal request.
+  ///
+  /// Includes all audience members in the request, regardless of whether they
+  /// were successfully removed or not.
+  core.String? recordCount;
+
+  RemoveGoogleUserIdDataStatus({this.googleUserIdCount, this.recordCount});
+
+  RemoveGoogleUserIdDataStatus.fromJson(core.Map json_)
+    : this(
+        googleUserIdCount: json_['googleUserIdCount'] as core.String?,
+        recordCount: json_['recordCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final googleUserIdCount = this.googleUserIdCount;
+    final recordCount = this.recordCount;
+    return {
+      'googleUserIdCount': ?googleUserIdCount,
+      'recordCount': ?recordCount,
     };
   }
 }
@@ -4099,6 +5917,41 @@ class RemovePairDataStatus {
     final pairIdCount = this.pairIdCount;
     final recordCount = this.recordCount;
     return {'pairIdCount': ?pairIdCount, 'recordCount': ?recordCount};
+  }
+}
+
+/// The status of the partner provided id data removal from the destination.
+class RemovePartnerProvidedIdDataStatus {
+  /// The total count of partner provided ids sent in the removal request.
+  ///
+  /// Includes all partner provided ids in the request, regardless of whether
+  /// they were successfully removed or not.
+  core.String? partnerProvidedIdCount;
+
+  /// The total count of audience members sent in the removal request.
+  ///
+  /// Includes all audience members in the request, regardless of whether they
+  /// were successfully removed or not.
+  core.String? recordCount;
+
+  RemovePartnerProvidedIdDataStatus({
+    this.partnerProvidedIdCount,
+    this.recordCount,
+  });
+
+  RemovePartnerProvidedIdDataStatus.fromJson(core.Map json_)
+    : this(
+        partnerProvidedIdCount: json_['partnerProvidedIdCount'] as core.String?,
+        recordCount: json_['recordCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final partnerProvidedIdCount = this.partnerProvidedIdCount;
+    final recordCount = this.recordCount;
+    return {
+      'partnerProvidedIdCount': ?partnerProvidedIdCount,
+      'recordCount': ?recordCount,
+    };
   }
 }
 
@@ -4205,22 +6058,38 @@ class RequestStatusPerDestination {
 
   /// An error info error containing the error reason and error counts related
   /// to the upload.
+  ///
+  /// Only populated if the `request_status` is `FAILED` or `PARTIAL_SUCCESS`.
+  /// This field isn't populated while the request has `request_status` of
+  /// `PROCESSING`.
   ErrorInfo? errorInfo;
 
   /// The status of the ingest events request.
   IngestEventsStatus? eventsIngestionStatus;
 
+  /// The status of the remove all audience members request.
+  RemoveAllAudienceMembersStatus? removeAllAudienceMembersStatus;
+
   /// The request status of the destination.
   /// Possible string values are:
   /// - "REQUEST_STATUS_UNKNOWN" : The request status is unknown.
-  /// - "SUCCESS" : The request succeeded.
+  /// - "SUCCESS" : Processing succeeded for all records without any errors.
+  /// However, there may be warnings in the `warning_info` field.
   /// - "PROCESSING" : The request is processing.
-  /// - "FAILED" : The request failed.
-  /// - "PARTIAL_SUCCESS" : The request partially succeeded.
+  /// - "FAILED" : Processing failed for all records. Check the `error_info`
+  /// field for error details, and check the `warning_info` field for warning
+  /// details.
+  /// - "PARTIAL_SUCCESS" : Processing completed successfully without errors for
+  /// some records, but failed with errors for other records. Check the
+  /// `error_info` field for error details, and check the `warning_info` field
+  /// for warning details.
   core.String? requestStatus;
 
   /// A warning info containing the warning reason and warning counts related to
   /// the upload.
+  ///
+  /// This field isn't populated while the request has `request_status` of
+  /// `PROCESSING`.
   WarningInfo? warningInfo;
 
   RequestStatusPerDestination({
@@ -4229,6 +6098,7 @@ class RequestStatusPerDestination {
     this.destination,
     this.errorInfo,
     this.eventsIngestionStatus,
+    this.removeAllAudienceMembersStatus,
     this.requestStatus,
     this.warningInfo,
   });
@@ -4265,6 +6135,13 @@ class RequestStatusPerDestination {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        removeAllAudienceMembersStatus:
+            json_.containsKey('removeAllAudienceMembersStatus')
+            ? RemoveAllAudienceMembersStatus.fromJson(
+                json_['removeAllAudienceMembersStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         requestStatus: json_['requestStatus'] as core.String?,
         warningInfo: json_.containsKey('warningInfo')
             ? WarningInfo.fromJson(
@@ -4279,6 +6156,7 @@ class RequestStatusPerDestination {
     final destination = this.destination;
     final errorInfo = this.errorInfo;
     final eventsIngestionStatus = this.eventsIngestionStatus;
+    final removeAllAudienceMembersStatus = this.removeAllAudienceMembersStatus;
     final requestStatus = this.requestStatus;
     final warningInfo = this.warningInfo;
     return {
@@ -4287,6 +6165,7 @@ class RequestStatusPerDestination {
       'destination': ?destination,
       'errorInfo': ?errorInfo,
       'eventsIngestionStatus': ?eventsIngestionStatus,
+      'removeAllAudienceMembersStatus': ?removeAllAudienceMembersStatus,
       'requestStatus': ?requestStatus,
       'warningInfo': ?warningInfo,
     };
@@ -4415,6 +6294,11 @@ class SizeInfo {
   /// Output only.
   core.String? displayNetworkMembersCount;
 
+  /// Estimated number of members in this user list on Gmail.
+  ///
+  /// Output only.
+  core.String? gmailMembersCount;
+
   /// Estimated number of members in this user list in the google.com domain.
   ///
   /// These are the members available for targeting in Search campaigns.
@@ -4422,22 +6306,38 @@ class SizeInfo {
   /// Output only.
   core.String? searchNetworkMembersCount;
 
-  SizeInfo({this.displayNetworkMembersCount, this.searchNetworkMembersCount});
+  /// Estimated number of members in this user list on YouTube.
+  ///
+  /// Output only.
+  core.String? youtubeMembersCount;
+
+  SizeInfo({
+    this.displayNetworkMembersCount,
+    this.gmailMembersCount,
+    this.searchNetworkMembersCount,
+    this.youtubeMembersCount,
+  });
 
   SizeInfo.fromJson(core.Map json_)
     : this(
         displayNetworkMembersCount:
             json_['displayNetworkMembersCount'] as core.String?,
+        gmailMembersCount: json_['gmailMembersCount'] as core.String?,
         searchNetworkMembersCount:
             json_['searchNetworkMembersCount'] as core.String?,
+        youtubeMembersCount: json_['youtubeMembersCount'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final displayNetworkMembersCount = this.displayNetworkMembersCount;
+    final gmailMembersCount = this.gmailMembersCount;
     final searchNetworkMembersCount = this.searchNetworkMembersCount;
+    final youtubeMembersCount = this.youtubeMembersCount;
     return {
       'displayNetworkMembersCount': ?displayNetworkMembersCount,
+      'gmailMembersCount': ?gmailMembersCount,
       'searchNetworkMembersCount': ?searchNetworkMembersCount,
+      'youtubeMembersCount': ?youtubeMembersCount,
     };
   }
 }
@@ -5524,6 +7424,105 @@ class UserProperty {
   }
 }
 
+/// Details of the viewability of the ad served.
+class ViewabilityInfo {
+  /// The duration of the ad media.
+  ///
+  /// Optional.
+  core.String? mediaDuration;
+
+  /// The amount of the media that was played as discrete quartiles.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MEDIA_QUARTILE_UNSPECIFIED" : Unspecified media quartile.
+  /// - "MEDIA_QUARTILE_START" : Start.
+  /// - "MEDIA_QUARTILE_FIRST_QUARTILE" : First quartile.
+  /// - "MEDIA_QUARTILE_MIDPOINT" : Midpoint.
+  /// - "MEDIA_QUARTILE_THIRD_QUARTILE" : Third quartile.
+  /// - "MEDIA_QUARTILE_COMPLETE" : Complete.
+  core.String? mediaQuartile;
+
+  /// Whether the ad media was skippable or not.
+  ///
+  /// Optional.
+  core.bool? mediaSkippable;
+
+  /// The numerical percent (0-100) of the volume of the media playback.
+  ///
+  /// Optional.
+  core.int? mediaVolumePercent;
+
+  /// The duration of playback of the ad media, regardless of whether it was
+  /// viewable or not.
+  ///
+  /// Optional.
+  core.String? playbackDuration;
+
+  /// The type of the event.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VIEW_TYPE_UNSPECIFIED" : Unspecified view type.
+  /// - "VIEW_TYPE_MRC_VIEWED" : MRC viewed.
+  /// - "VIEW_TYPE_MRC_RENDERED" : MRC rendered.
+  core.String? viewType;
+
+  /// The amount of time the ad was viewable for.
+  ///
+  /// Optional.
+  core.String? viewableDuration;
+
+  /// The numerical percent (0-100) of the pixels that were viewable.
+  ///
+  /// Optional.
+  core.int? viewablePercent;
+
+  ViewabilityInfo({
+    this.mediaDuration,
+    this.mediaQuartile,
+    this.mediaSkippable,
+    this.mediaVolumePercent,
+    this.playbackDuration,
+    this.viewType,
+    this.viewableDuration,
+    this.viewablePercent,
+  });
+
+  ViewabilityInfo.fromJson(core.Map json_)
+    : this(
+        mediaDuration: json_['mediaDuration'] as core.String?,
+        mediaQuartile: json_['mediaQuartile'] as core.String?,
+        mediaSkippable: json_['mediaSkippable'] as core.bool?,
+        mediaVolumePercent: json_['mediaVolumePercent'] as core.int?,
+        playbackDuration: json_['playbackDuration'] as core.String?,
+        viewType: json_['viewType'] as core.String?,
+        viewableDuration: json_['viewableDuration'] as core.String?,
+        viewablePercent: json_['viewablePercent'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mediaDuration = this.mediaDuration;
+    final mediaQuartile = this.mediaQuartile;
+    final mediaSkippable = this.mediaSkippable;
+    final mediaVolumePercent = this.mediaVolumePercent;
+    final playbackDuration = this.playbackDuration;
+    final viewType = this.viewType;
+    final viewableDuration = this.viewableDuration;
+    final viewablePercent = this.viewablePercent;
+    return {
+      'mediaDuration': ?mediaDuration,
+      'mediaQuartile': ?mediaQuartile,
+      'mediaSkippable': ?mediaSkippable,
+      'mediaVolumePercent': ?mediaVolumePercent,
+      'playbackDuration': ?playbackDuration,
+      'viewType': ?viewType,
+      'viewableDuration': ?viewableDuration,
+      'viewablePercent': ?viewablePercent,
+    };
+  }
+}
+
 /// The warning count for a given warning reason.
 class WarningCount {
   /// The warning reason.
@@ -5543,7 +7542,7 @@ class WarningCount {
   /// - "PROCESSING_WARNING_REASON_INVALID_KEK" : The KEK cannot decrypt data
   /// because it is the wrong KEK, or it does not exist.
   /// - "PROCESSING_WARNING_REASON_USER_IDENTIFIER_DECRYPTION_ERROR" : Failed to
-  /// decrypt th UserIdentifier data using the DEK.
+  /// decrypt the UserIdentifier data using the DEK.
   /// - "PROCESSING_WARNING_REASON_INTERNAL_ERROR" : Internal error.
   /// - "PROCESSING_WARNING_REASON_AWS_AUTH_FAILED" : The system failed to
   /// authenticate with AWS.

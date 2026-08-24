@@ -2035,6 +2035,19 @@ class ObjectConditions {
   /// transfers\](/storage-transfer/docs/filtering-objects-from-transfers).
   core.List<core.String>? includePrefixes;
 
+  /// If specified, objects in the source matching any of the storage classes in
+  /// this field will be transferred.
+  ///
+  /// Objects in storage classes not included in this field will be skipped. If
+  /// empty, the default behavior regarding the storage classes is applied. This
+  /// includes all storage classes except "GLACIER" as per default behavior.
+  /// Currently, this field only supports S3 data source. For the list of valid
+  /// Amazon S3 storage classnames, please refer to the AWS documentation:
+  /// https://docs.aws.amazon.com/AmazonS3/latest/userguide/sc-howtoset.html
+  ///
+  /// Optional.
+  core.List<core.String>? includeStorageClasses;
+
   /// If specified, only objects with a "last modification time" before this
   /// timestamp and objects that don't have a "last modification time" are
   /// transferred.
@@ -2080,6 +2093,7 @@ class ObjectConditions {
   ObjectConditions({
     this.excludePrefixes,
     this.includePrefixes,
+    this.includeStorageClasses,
     this.lastModifiedBefore,
     this.lastModifiedSince,
     this.matchGlob,
@@ -2095,6 +2109,9 @@ class ObjectConditions {
         includePrefixes: (json_['includePrefixes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        includeStorageClasses: (json_['includeStorageClasses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         lastModifiedBefore: json_['lastModifiedBefore'] as core.String?,
         lastModifiedSince: json_['lastModifiedSince'] as core.String?,
         matchGlob: json_['matchGlob'] as core.String?,
@@ -2107,6 +2124,7 @@ class ObjectConditions {
   core.Map<core.String, core.dynamic> toJson() {
     final excludePrefixes = this.excludePrefixes;
     final includePrefixes = this.includePrefixes;
+    final includeStorageClasses = this.includeStorageClasses;
     final lastModifiedBefore = this.lastModifiedBefore;
     final lastModifiedSince = this.lastModifiedSince;
     final matchGlob = this.matchGlob;
@@ -2117,6 +2135,7 @@ class ObjectConditions {
     return {
       'excludePrefixes': ?excludePrefixes,
       'includePrefixes': ?includePrefixes,
+      'includeStorageClasses': ?includeStorageClasses,
       'lastModifiedBefore': ?lastModifiedBefore,
       'lastModifiedSince': ?lastModifiedSince,
       'matchGlob': ?matchGlob,
@@ -2743,7 +2762,8 @@ class TransferOptions {
   /// exclusive.
   core.bool? deleteObjectsFromSourceAfterTransfer;
 
-  /// Whether objects that exist only in the sink should be deleted.
+  /// Whether objects that exist only in the sink should be deleted from the
+  /// sink.
   ///
   /// **Note:** This option and delete_objects_from_source_after_transfer are
   /// mutually exclusive.

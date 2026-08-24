@@ -4,6 +4,7 @@
 - Generate `@Deprecated` annotations for associated members.
 - Support `deprecationMap` to emit `@Deprecated` annotations and markdown
   deprecation notices for deprecated API libraries.
+- Replace Javadoc `{@code ...}` tags containing qualified identifiers and numbers.
 - Add positional parameters to all schema types.
 - Package version must be provided or default is to set `publish_to: none`.
 - Added `Function` to the set of reserved names.

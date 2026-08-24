@@ -113,6 +113,11 @@ class SecurityCommandCenterApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud Security Command Center
+  /// data and see the email address for your Google Account
+  static const securitycenterScope =
+      'https://www.googleapis.com/auth/securitycenter';
+
   final commons.ApiRequester _requester;
 
   FoldersResource get folders => FoldersResource(_requester);
@@ -160,16 +165,11 @@ class FoldersAssetsResource {
 
   FoldersAssetsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Filters an organization's assets and groups them by their specified
-  /// properties.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent to group the assets by. Its
-  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -208,100 +208,24 @@ class FoldersAssetsResource {
     );
   }
 
-  /// Lists an organization's assets.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent resource that contains the
-  /// assets. The value that you can specify on parent depends on the method in
-  /// which you specify parent. You can specify one of the following values:
-  /// `organizations/[organization_id]`, `folders/[folder_id]`, or
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
-  /// "state_change" attribute is updated to indicate whether the asset was
-  /// added, removed, or remained present during the compare_duration period of
-  /// time that precedes the read_time. This is the time between (read_time -
-  /// compare_duration) and read_time. The state_change value is derived based
-  /// on the presence of the asset at the two points in time. Intermediate state
-  /// changes between the two times don't affect the result. For example, the
-  /// results aren't affected if the asset is removed and re-created again.
-  /// Possible "state_change" values when compare_duration is specified: *
-  /// "ADDED": indicates that the asset was not present at the start of
-  /// compare_duration, but present at read_time. * "REMOVED": indicates that
-  /// the asset was present at the start of compare_duration, but not present at
-  /// read_time. * "ACTIVE": indicates that the asset was present at both the
-  /// start and the end of the time period defined by compare_duration and
-  /// read_time. If compare_duration is not specified, then the only possible
-  /// state_change is "UNUSED", which will be the state_change set for all
-  /// assets present at read_time.
+  /// [compareDuration] - null
   ///
-  /// [fieldMask] - A field mask to specify the ListAssetsResult fields to be
-  /// listed in the response. An empty field mask will list all fields.
+  /// [fieldMask] - null
   ///
-  /// [filter] - Expression that defines the filter to apply across assets. The
-  /// expression is a list of zero or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. The fields map to those
-  /// defined in the Asset resource. Examples include: * name *
-  /// security_center_properties.resource_name * resource_properties.a_property
-  /// * security_marks.marks.marka The supported operators are: * `=` for all
-  /// value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning
-  /// substring matching, for strings. The supported value types are: * string
-  /// literals in quotes. * integer literals without quotes. * boolean literals
-  /// `true` and `false` without quotes. The following are the allowed field and
-  /// operator combinations: * name: `=` * update_time: `=`, `>`, `<`, `>=`,
-  /// `<=` Usage: This should be milliseconds since epoch or an RFC3339 string.
-  /// Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time =
-  /// 1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should
-  /// be milliseconds since epoch or an RFC3339 string. Examples: `create_time =
-  /// "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000` *
-  /// iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`,
-  /// `<`, `>=`, `<=` * security_marks.marks: `=`, `:` *
-  /// security_center_properties.resource_name: `=`, `:` *
-  /// security_center_properties.resource_display_name: `=`, `:` *
-  /// security_center_properties.resource_type: `=`, `:` *
-  /// security_center_properties.resource_parent: `=`, `:` *
-  /// security_center_properties.resource_parent_display_name: `=`, `:` *
-  /// security_center_properties.resource_project: `=`, `:` *
-  /// security_center_properties.resource_project_display_name: `=`, `:` *
-  /// security_center_properties.resource_owners: `=`, `:` For example,
-  /// `resource_properties.size = 100` is a valid filter string. Use a partial
-  /// match on the empty string to filter based on a property existing:
-  /// `resource_properties.my_property : ""` Use a negated partial match on the
-  /// empty string to filter based on a property not existing:
-  /// `-resource_properties.my_property : ""`
+  /// [filter] - null
   ///
-  /// [orderBy] - Expression that defines what fields and order to use for
-  /// sorting. The string value should follow SQL syntax: comma separated list
-  /// of fields. For example: "name,resource_properties.a_property". The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix " desc" should be appended to the field name. For example: "name
-  /// desc,resource_properties.a_property". Redundant space characters in the
-  /// syntax are insignificant. "name desc,resource_properties.a_property" and "
-  /// name desc , resource_properties.a_property " are equivalent. The following
-  /// fields are supported: name update_time resource_properties
-  /// security_marks.marks security_center_properties.resource_name
-  /// security_center_properties.resource_display_name
-  /// security_center_properties.resource_parent
-  /// security_center_properties.resource_parent_display_name
-  /// security_center_properties.resource_project
-  /// security_center_properties.resource_project_display_name
-  /// security_center_properties.resource_type
+  /// [orderBy] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListAssetsResponse`;
-  /// indicates that this is a continuation of a prior `ListAssets` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - null
   ///
-  /// [readTime] - Time used as a reference point when filtering assets. The
-  /// filter is limited to assets existing at the supplied time and their values
-  /// are those at that specific time. Absence of this field will default to the
-  /// API's version of NOW.
+  /// [readTime] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -350,28 +274,16 @@ class FoldersAssetsResource {
     );
   }
 
-  /// Updates security marks.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of the SecurityMarks. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  /// [name] - null
   /// Value must have pattern `^folders/\[^/\]+/assets/\[^/\]+/securityMarks$`.
   ///
-  /// [startTime] - The time at which the updated SecurityMarks take effect. If
-  /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time. Must be
-  /// earlier or equal to the server time.
+  /// [startTime] - null
   ///
-  /// [updateMask] - The FieldMask to use when updating the security marks
-  /// resource. The field mask must not contain duplicate fields. If empty or
-  /// set to "marks", all marks will be replaced. Individual marks can be
-  /// updated using "marks.".
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -417,21 +329,14 @@ class FoldersBigQueryExportsResource {
   FoldersBigQueryExportsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a BigQuery export.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent resource of the new BigQuery
-  /// export. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, or `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [bigQueryExportId] - Required. Unique identifier provided by the client
-  /// within the parent scope. It must consist of only lowercase letters,
-  /// numbers, and hyphens, must start with a letter, must end with either a
-  /// letter or a number, and must be 63 characters or less.
+  /// [bigQueryExportId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -468,14 +373,9 @@ class FoldersBigQueryExportsResource {
     );
   }
 
-  /// Deletes an existing BigQuery export.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the BigQuery export to delete. Its format
-  /// is `organizations/{organization}/bigQueryExports/{export_id}`,
-  /// `folders/{folder}/bigQueryExports/{export_id}`, or
-  /// `projects/{project}/bigQueryExports/{export_id}`
+  /// [name] - null
   /// Value must have pattern `^folders/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -503,14 +403,9 @@ class FoldersBigQueryExportsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a BigQuery export.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the BigQuery export to retrieve. Its format is
-  /// `organizations/{organization}/bigQueryExports/{export_id}`,
-  /// `folders/{folder}/bigQueryExports/{export_id}`, or
-  /// `projects/{project}/bigQueryExports/{export_id}`
+  /// [name] - null
   /// Value must have pattern `^folders/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -543,29 +438,14 @@ class FoldersBigQueryExportsResource {
     );
   }
 
-  /// Lists BigQuery exports.
-  ///
-  /// Note that when requesting BigQuery exports at a given level all exports
-  /// under that level are also returned e.g. if requesting BigQuery exports
-  /// under a folder, then all BigQuery exports immediately under the folder
-  /// plus the ones created under the projects within the folder are returned.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns the collection of BigQuery
-  /// exports. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of configs to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous `ListBigQueryExports`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListBigQueryExports` must match the call
-  /// that provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -601,23 +481,14 @@ class FoldersBigQueryExportsResource {
     );
   }
 
-  /// Updates a BigQuery export.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of this export. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name.
-  /// Example format:
-  /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example
-  /// format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
-  /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided
-  /// in responses, and is ignored when provided in create requests.
+  /// [name] - null
   /// Value must have pattern `^folders/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -669,17 +540,11 @@ class FoldersEventThreatDetectionSettingsResource {
   FoldersEventThreatDetectionSettingsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Validates the given Event Threat Detection custom module.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the parent to validate the Custom
-  /// Module under. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings`. *
-  /// `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -725,20 +590,11 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a resident Event Threat Detection custom module at the scope of
-  /// the given Resource Manager parent, and also creates inherited custom
-  /// modules for all descendants of the given parent.
-  ///
-  /// These modules are enabled by default.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The new custom module's parent. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings`. *
-  /// `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -774,18 +630,9 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Deletes the specified Event Threat Detection custom module and all of its
-  /// descendants in the Resource Manager hierarchy.
-  ///
-  /// This method is only supported for resident custom modules.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to delete. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
-  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -814,15 +661,9 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets an Event Threat Detection custom module.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to get. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
-  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -856,30 +697,14 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Lists all Event Threat Detection custom modules for the given Resource
-  /// Manager parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent along
-  /// with modules inherited from ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
-  /// * `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
   ///
-  /// [pageSize] - The maximum number of modules to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListEventThreatDetectionCustomModules` call. Provide this to retrieve the
-  /// subsequent page. When paginating, all other parameters provided to
-  /// `ListEventThreatDetectionCustomModules` must match the call that provided
-  /// the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -915,27 +740,14 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Lists all resident Event Threat Detection custom modules under the given
-  /// Resource Manager parent and its descendants.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
-  /// * `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
   ///
-  /// [pageSize] - The maximum number of modules to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListDescendantEventThreatDetectionCustomModules` call. Provide this to
-  /// retrieve the subsequent page. When paginating, all other parameters
-  /// provided to `ListDescendantEventThreatDetectionCustomModules` must match
-  /// the call that provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -976,30 +788,15 @@ class FoldersEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Updates the Event Threat Detection custom module with the given name based
-  /// on the given update mask.
-  ///
-  /// Updating the enablement state is supported for both resident and inherited
-  /// modules (though resident modules cannot have an enablement state of
-  /// "inherited"). Updating the display name or configuration of a module is
-  /// supported for resident modules only. The type of a module cannot be
-  /// changed.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the Event Threat Detection custom
-  /// module. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
-  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1044,17 +841,9 @@ class FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Gets an effective Event Threat Detection custom module at the given level.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the effective Event Threat
-  /// Detection custom module. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
-  /// *
-  /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/eventThreatDetectionSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -1088,30 +877,14 @@ class FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource {
     );
   }
 
-  /// Lists all effective Event Threat Detection custom modules for the given
-  /// parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent along
-  /// with modules inherited from its ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list custom modules for. Its
-  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
-  /// * `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
   ///
-  /// [pageSize] - The maximum number of modules to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListEffectiveEventThreatDetectionCustomModules` call. Provide this to
-  /// retrieve the subsequent page. When paginating, all other parameters
-  /// provided to `ListEffectiveEventThreatDetectionCustomModules` must match
-  /// the call that provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1154,18 +927,11 @@ class FoldersFindingsResource {
 
   FoldersFindingsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Kicks off an LRO to bulk mute findings for a parent based on a filter.
-  ///
-  /// The parent can be either an organization, folder or project. The findings
-  /// matched by the filter will be muted after the LRO is done.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, at which bulk action needs to be applied.
-  /// Its format is `organizations/[organization_id]`, `folders/[folder_id]`,
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1215,17 +981,9 @@ class FoldersLocationsMuteConfigsResource {
   FoldersLocationsMuteConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes an existing mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to delete. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -1254,17 +1012,9 @@ class FoldersLocationsMuteConfigsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -1298,24 +1048,15 @@ class FoldersLocationsMuteConfigsResource {
     );
   }
 
-  /// Updates a mute config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - This field will be ignored if provided on config creation. Format
-  /// `organizations/{organization}/muteConfigs/{mute_config}`
-  /// `folders/{folder}/muteConfigs/{mute_config}`
-  /// `projects/{project}/muteConfigs/{mute_config}`
-  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
-  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
-  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1358,21 +1099,14 @@ class FoldersMuteConfigsResource {
 
   FoldersMuteConfigsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a mute config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new mute configs's parent. Its
-  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [muteConfigId] - Required. Unique identifier provided by the client within
-  /// the parent scope. It must consist of only lowercase letters, numbers, and
-  /// hyphens, must start with a letter, must end with either a letter or a
-  /// number, and must be 63 characters or less.
+  /// [muteConfigId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1409,17 +1143,9 @@ class FoldersMuteConfigsResource {
     );
   }
 
-  /// Deletes an existing mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to delete. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern `^folders/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1447,17 +1173,9 @@ class FoldersMuteConfigsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern `^folders/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1490,24 +1208,14 @@ class FoldersMuteConfigsResource {
     );
   }
 
-  /// Lists mute configs.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns the collection of mute
-  /// configs. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of configs to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous `ListMuteConfigs`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListMuteConfigs` must match the call that
-  /// provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1543,23 +1251,14 @@ class FoldersMuteConfigsResource {
     );
   }
 
-  /// Updates a mute config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - This field will be ignored if provided on config creation. Format
-  /// `organizations/{organization}/muteConfigs/{mute_config}`
-  /// `folders/{folder}/muteConfigs/{mute_config}`
-  /// `projects/{project}/muteConfigs/{mute_config}`
-  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
-  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
-  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
+  /// [name] - null
   /// Value must have pattern `^folders/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1603,20 +1302,14 @@ class FoldersNotificationConfigsResource {
   FoldersNotificationConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a notification config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new notification config's
-  /// parent. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, or `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [configId] - Required. Unique identifier provided by the client within the
-  /// parent scope. It must be between 1 and 128 characters and contain
-  /// alphanumeric characters, underscores, or hyphens only.
+  /// [configId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1654,14 +1347,9 @@ class FoldersNotificationConfigsResource {
     );
   }
 
-  /// Deletes a notification config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the notification config to delete. Its format
-  /// is `organizations/[organization_id]/notificationConfigs/[config_id]`,
-  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
-  /// `projects/[project_id]/notificationConfigs/[config_id]`.
+  /// [name] - null
   /// Value must have pattern `^folders/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1689,14 +1377,9 @@ class FoldersNotificationConfigsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a notification config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the notification config to get. Its format is
-  /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
-  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
-  /// `projects/[project_id]/notificationConfigs/[config_id]`.
+  /// [name] - null
   /// Value must have pattern `^folders/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1729,23 +1412,14 @@ class FoldersNotificationConfigsResource {
     );
   }
 
-  /// Lists notification configs.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent in which to list the
-  /// notification configurations. Its format is
-  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last
-  /// `ListNotificationConfigsResponse`; indicates that this is a continuation
-  /// of a prior `ListNotificationConfigs` call, and that the system should
-  /// return the next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1782,25 +1456,14 @@ class FoldersNotificationConfigsResource {
     );
   }
 
-  ///  Updates a notification config.
-  ///
-  /// The following update fields are allowed: description, pubsub_topic,
-  /// streaming_config.filter
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of this notification config. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
-  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
-  /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
-  /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
+  /// [name] - null
   /// Value must have pattern `^folders/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the notification config.
-  /// If empty all mutable fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1861,21 +1524,11 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
-  /// given CRM parent, and also creates inherited
-  /// SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
-  /// parent.
-  ///
-  /// These modules are enabled by default.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new custom module's parent. Its
-  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -1914,18 +1567,9 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
-  /// descendants in the CRM hierarchy.
-  ///
-  /// This method is only supported for resident custom modules.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to delete. Its format is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// or
-  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -1954,15 +1598,9 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves a SecurityHealthAnalyticsCustomModule.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to get. Its format is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// or
-  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -1995,26 +1633,15 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given
-  /// parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent, and
-  /// inherited modules, inherited from CRM ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list custom modules. Its format is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last call indicating a
-  /// continuation
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2050,23 +1677,15 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under
-  /// the given CRM parent and all of the parent’s CRM descendants.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list descendant custom modules. Its
-  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last call indicating a
-  /// continuation
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2107,33 +1726,15 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Updates the SecurityHealthAnalyticsCustomModule under the given name based
-  /// on the given update mask.
-  ///
-  /// Updating the enablement state is supported on both resident and inherited
-  /// modules (though resident modules cannot have an enablement state of
-  /// "inherited"). Updating the display name and custom config of a module is
-  /// supported on resident modules only.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the custom module. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// or
-  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
-  /// The id {customModule} is server-generated and is not user settable. It
-  /// will be a numeric id containing 1-20 digits.
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. The only fields that can
-  /// be updated are `enablement_state` and `custom_config`. If empty or set to
-  /// the wildcard value `*`, both `enablement_state` and `custom_config` are
-  /// updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2172,17 +1773,11 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The relative resource name of the organization,
-  /// project, or folder. For more information about relative resource names,
-  /// see
-  /// [Relative Resource Name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// Example: `organizations/{organization_id}`
+  /// [parent] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -2228,16 +1823,9 @@ class FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the effective custom module to get. Its format
-  /// is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
-  /// or
-  /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -2272,26 +1860,15 @@ class FoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
     );
   }
 
-  /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for
-  /// the given parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent, and
-  /// inherited modules, inherited from CRM ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list effective custom modules. Its
-  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last call indicating a
-  /// continuation
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2338,21 +1915,14 @@ class FoldersSourcesResource {
 
   FoldersSourcesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Lists all sources belonging to an organization.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be `organizations/[organization_id]`, `folders/[folder_id]`,
-  /// or `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListSourcesResponse`;
-  /// indicates that this is a continuation of a prior `ListSources` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2398,25 +1968,11 @@ class FoldersSourcesFindingsResource {
   FoldersSourcesFindingsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Filters an organization or source's findings and groups them by their
-  /// specified properties.
-  ///
-  /// To group across all sources provide a `-` as the source id. Example:
-  /// /v1/organizations/{organization_id}/sources/-/findings,
-  /// /v1/folders/{folder_id}/sources/-/findings,
-  /// /v1/projects/{project_id}/sources/-/findings
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the source to groupBy. Its format is
-  /// `organizations/[organization_id]/sources/[source_id]`,
-  /// `folders/[folder_id]/sources/[source_id]`, or
-  /// `projects/[project_id]/sources/[source_id]`. To groupBy across all sources
-  /// provide a source_id of `-`. For example:
-  /// `organizations/{organization_id}/sources/-,
-  /// folders/{folder_id}/sources/-`, or `projects/{project_id}/sources/-`
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2452,98 +2008,24 @@ class FoldersSourcesFindingsResource {
     );
   }
 
-  /// Lists an organization or source's findings.
-  ///
-  /// To list across all sources provide a `-` as the source id. Example:
-  /// /v1/organizations/{organization_id}/sources/-/findings
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the source the findings belong to. Its format
-  /// is `organizations/[organization_id]/sources/[source_id]`,
-  /// `folders/[folder_id]/sources/[source_id]`, or
-  /// `projects/[project_id]/sources/[source_id]`. To list across all sources
-  /// provide a source_id of `-`. For example:
-  /// `organizations/{organization_id}/sources/-`,
-  /// `folders/{folder_id}/sources/-` or `projects/{projects_id}/sources/-`
+  /// [parent] - null
   /// Value must have pattern `^folders/\[^/\]+/sources/\[^/\]+$`.
   ///
-  /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
-  /// "state_change" attribute is updated to indicate whether the finding had
-  /// its state changed, the finding's state remained unchanged, or if the
-  /// finding was added in any state during the compare_duration period of time
-  /// that precedes the read_time. This is the time between (read_time -
-  /// compare_duration) and read_time. The state_change value is derived based
-  /// on the presence and state of the finding at the two points in time.
-  /// Intermediate state changes between the two times don't affect the result.
-  /// For example, the results aren't affected if the finding is made inactive
-  /// and then active again. Possible "state_change" values when
-  /// compare_duration is specified: * "CHANGED": indicates that the finding was
-  /// present and matched the given filter at the start of compare_duration, but
-  /// changed its state at read_time. * "UNCHANGED": indicates that the finding
-  /// was present and matched the given filter at the start of compare_duration
-  /// and did not change state at read_time. * "ADDED": indicates that the
-  /// finding did not match the given filter or was not present at the start of
-  /// compare_duration, but was present at read_time. * "REMOVED": indicates
-  /// that the finding was present and matched the filter at the start of
-  /// compare_duration, but did not match the filter at read_time. If
-  /// compare_duration is not specified, then the only possible state_change is
-  /// "UNUSED", which will be the state_change set for all findings present at
-  /// read_time.
+  /// [compareDuration] - null
   ///
-  /// [fieldMask] - A field mask to specify the Finding fields to be listed in
-  /// the response. An empty field mask will list all fields.
+  /// [fieldMask] - null
   ///
-  /// [filter] - Expression that defines the filter to apply across findings.
-  /// The expression is a list of one or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. Examples include: * name
-  /// * source_properties.a_property * security_marks.marks.marka The supported
-  /// operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for
-  /// integer values. * `:`, meaning substring matching, for strings. The
-  /// supported value types are: * string literals in quotes. * integer literals
-  /// without quotes. * boolean literals `true` and `false` without quotes. The
-  /// following field and operator combinations are supported: * name: `=` *
-  /// parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category:
-  /// `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
-  /// Usage: This should be milliseconds since epoch or an RFC3339 string.
-  /// Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
-  /// 1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` *
-  /// security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`,
-  /// `>=`, `<=` For example, `source_properties.size = 100` is a valid filter
-  /// string. Use a partial match on the empty string to filter based on a
-  /// property existing: `source_properties.my_property : ""` Use a negated
-  /// partial match on the empty string to filter based on a property not
-  /// existing: `-source_properties.my_property : ""` * resource: *
-  /// resource.name: `=`, `:` * resource.parent_name: `=`, `:` *
-  /// resource.parent_display_name: `=`, `:` * resource.project_name: `=`, `:` *
-  /// resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
-  /// resource.folders.resource_folder: `=`, `:` * resource.display_name: `=`,
-  /// `:`
+  /// [filter] - null
   ///
-  /// [orderBy] - Expression that defines what fields and order to use for
-  /// sorting. The string value should follow SQL syntax: comma separated list
-  /// of fields. For example: "name,resource_properties.a_property". The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix " desc" should be appended to the field name. For example: "name
-  /// desc,source_properties.a_property". Redundant space characters in the
-  /// syntax are insignificant. "name desc,source_properties.a_property" and "
-  /// name desc , source_properties.a_property " are equivalent. The following
-  /// fields are supported: name parent state category resource_name event_time
-  /// source_properties security_marks.marks
+  /// [orderBy] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListFindingsResponse`;
-  /// indicates that this is a continuation of a prior `ListFindings` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - null
   ///
-  /// [readTime] - Time used as a reference point when filtering findings. The
-  /// filter is limited to findings existing at the supplied time and their
-  /// values are those at that specific time. Absence of this field will default
-  /// to the API's version of NOW.
+  /// [readTime] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2589,28 +2071,15 @@ class FoldersSourcesFindingsResource {
     );
   }
 
-  /// Creates or updates a finding.
-  ///
-  /// The corresponding source must exist for a finding creation to succeed.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The
-  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// of the finding. Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the finding resource.
-  /// This field should not be specified when creating a finding. When updating
-  /// a finding, an empty mask is treated as updating all mutable fields and
-  /// replacing source_properties. Individual source_properties can be
-  /// added/updated by using "source_properties." in the field mask.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2645,18 +2114,11 @@ class FoldersSourcesFindingsResource {
     return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the mute state of a finding.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The
-  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// of the finding. Example:
-  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -2691,18 +2153,11 @@ class FoldersSourcesFindingsResource {
     return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the state of a finding.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The
-  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// of the finding. Example:
-  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -2737,29 +2192,17 @@ class FoldersSourcesFindingsResource {
     return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates security marks.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of the SecurityMarks. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/securityMarks$`.
   ///
-  /// [startTime] - The time at which the updated SecurityMarks take effect. If
-  /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time. Must be
-  /// earlier or equal to the server time.
+  /// [startTime] - null
   ///
-  /// [updateMask] - The FieldMask to use when updating the security marks
-  /// resource. The field mask must not contain duplicate fields. If empty or
-  /// set to "marks", all marks will be replaced. Individual marks can be
-  /// updated using "marks.".
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2805,23 +2248,15 @@ class FoldersSourcesFindingsExternalSystemsResource {
   FoldersSourcesFindingsExternalSystemsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Updates external system.
-  ///
-  /// This is for a given finding.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Full resource name of the external system, for example:
-  /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
-  /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
-  /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
+  /// [name] - null
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/externalSystems/\[^/\]+$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the external system
-  /// resource. If empty all mutable fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2895,12 +2330,9 @@ class OrganizationsResource {
 
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the settings for an organization.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the organization to get organization settings
-  /// for. Its format is `organizations/[organization_id]/organizationSettings`.
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/organizationSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2933,19 +2365,14 @@ class OrganizationsResource {
     );
   }
 
-  /// Updates an organization's settings.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of the settings. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example: "organizations/{organization_id}/organizationSettings".
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/organizationSettings$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the settings resource.
-  /// If empty all mutable fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2992,16 +2419,11 @@ class OrganizationsAssetsResource {
   OrganizationsAssetsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Filters an organization's assets and groups them by their specified
-  /// properties.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent to group the assets by. Its
-  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3040,100 +2462,24 @@ class OrganizationsAssetsResource {
     );
   }
 
-  /// Lists an organization's assets.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent resource that contains the
-  /// assets. The value that you can specify on parent depends on the method in
-  /// which you specify parent. You can specify one of the following values:
-  /// `organizations/[organization_id]`, `folders/[folder_id]`, or
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
-  /// "state_change" attribute is updated to indicate whether the asset was
-  /// added, removed, or remained present during the compare_duration period of
-  /// time that precedes the read_time. This is the time between (read_time -
-  /// compare_duration) and read_time. The state_change value is derived based
-  /// on the presence of the asset at the two points in time. Intermediate state
-  /// changes between the two times don't affect the result. For example, the
-  /// results aren't affected if the asset is removed and re-created again.
-  /// Possible "state_change" values when compare_duration is specified: *
-  /// "ADDED": indicates that the asset was not present at the start of
-  /// compare_duration, but present at read_time. * "REMOVED": indicates that
-  /// the asset was present at the start of compare_duration, but not present at
-  /// read_time. * "ACTIVE": indicates that the asset was present at both the
-  /// start and the end of the time period defined by compare_duration and
-  /// read_time. If compare_duration is not specified, then the only possible
-  /// state_change is "UNUSED", which will be the state_change set for all
-  /// assets present at read_time.
+  /// [compareDuration] - null
   ///
-  /// [fieldMask] - A field mask to specify the ListAssetsResult fields to be
-  /// listed in the response. An empty field mask will list all fields.
+  /// [fieldMask] - null
   ///
-  /// [filter] - Expression that defines the filter to apply across assets. The
-  /// expression is a list of zero or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. The fields map to those
-  /// defined in the Asset resource. Examples include: * name *
-  /// security_center_properties.resource_name * resource_properties.a_property
-  /// * security_marks.marks.marka The supported operators are: * `=` for all
-  /// value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning
-  /// substring matching, for strings. The supported value types are: * string
-  /// literals in quotes. * integer literals without quotes. * boolean literals
-  /// `true` and `false` without quotes. The following are the allowed field and
-  /// operator combinations: * name: `=` * update_time: `=`, `>`, `<`, `>=`,
-  /// `<=` Usage: This should be milliseconds since epoch or an RFC3339 string.
-  /// Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time =
-  /// 1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should
-  /// be milliseconds since epoch or an RFC3339 string. Examples: `create_time =
-  /// "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000` *
-  /// iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`,
-  /// `<`, `>=`, `<=` * security_marks.marks: `=`, `:` *
-  /// security_center_properties.resource_name: `=`, `:` *
-  /// security_center_properties.resource_display_name: `=`, `:` *
-  /// security_center_properties.resource_type: `=`, `:` *
-  /// security_center_properties.resource_parent: `=`, `:` *
-  /// security_center_properties.resource_parent_display_name: `=`, `:` *
-  /// security_center_properties.resource_project: `=`, `:` *
-  /// security_center_properties.resource_project_display_name: `=`, `:` *
-  /// security_center_properties.resource_owners: `=`, `:` For example,
-  /// `resource_properties.size = 100` is a valid filter string. Use a partial
-  /// match on the empty string to filter based on a property existing:
-  /// `resource_properties.my_property : ""` Use a negated partial match on the
-  /// empty string to filter based on a property not existing:
-  /// `-resource_properties.my_property : ""`
+  /// [filter] - null
   ///
-  /// [orderBy] - Expression that defines what fields and order to use for
-  /// sorting. The string value should follow SQL syntax: comma separated list
-  /// of fields. For example: "name,resource_properties.a_property". The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix " desc" should be appended to the field name. For example: "name
-  /// desc,resource_properties.a_property". Redundant space characters in the
-  /// syntax are insignificant. "name desc,resource_properties.a_property" and "
-  /// name desc , resource_properties.a_property " are equivalent. The following
-  /// fields are supported: name update_time resource_properties
-  /// security_marks.marks security_center_properties.resource_name
-  /// security_center_properties.resource_display_name
-  /// security_center_properties.resource_parent
-  /// security_center_properties.resource_parent_display_name
-  /// security_center_properties.resource_project
-  /// security_center_properties.resource_project_display_name
-  /// security_center_properties.resource_type
+  /// [orderBy] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListAssetsResponse`;
-  /// indicates that this is a continuation of a prior `ListAssets` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - null
   ///
-  /// [readTime] - Time used as a reference point when filtering assets. The
-  /// filter is limited to assets existing at the supplied time and their values
-  /// are those at that specific time. Absence of this field will default to the
-  /// API's version of NOW.
+  /// [readTime] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3182,18 +2528,11 @@ class OrganizationsAssetsResource {
     );
   }
 
-  /// Runs asset discovery.
-  ///
-  /// The discovery is tracked with a long-running operation. This API can only
-  /// be called with limited frequency for an organization. If it is called too
-  /// frequently the caller will receive a TOO_MANY_REQUESTS error.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the organization to run asset discovery for.
-  /// Its format is `organizations/[organization_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3231,29 +2570,17 @@ class OrganizationsAssetsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates security marks.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of the SecurityMarks. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/assets/\[^/\]+/securityMarks$`.
   ///
-  /// [startTime] - The time at which the updated SecurityMarks take effect. If
-  /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time. Must be
-  /// earlier or equal to the server time.
+  /// [startTime] - null
   ///
-  /// [updateMask] - The FieldMask to use when updating the security marks
-  /// resource. The field mask must not contain duplicate fields. If empty or
-  /// set to "marks", all marks will be replaced. Individual marks can be
-  /// updated using "marks.".
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3299,27 +2626,16 @@ class OrganizationsAttackPathsResource {
   OrganizationsAttackPathsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Lists the attack paths for a set of simulation results or valued resources
-  /// and filter.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list attack paths. Valid formats:
-  /// `organizations/{organization}`,
-  /// `organizations/{organization}/simulations/{simulation}`
-  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
-  /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression that filters the attack path in the
-  /// response. Supported fields: * `valued_resources` supports =
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListAttackPathsResponse`;
-  /// indicates that this is a continuation of a prior `ListAttackPaths` call,
-  /// and that the system should return the next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3364,21 +2680,14 @@ class OrganizationsBigQueryExportsResource {
   OrganizationsBigQueryExportsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a BigQuery export.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent resource of the new BigQuery
-  /// export. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, or `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [bigQueryExportId] - Required. Unique identifier provided by the client
-  /// within the parent scope. It must consist of only lowercase letters,
-  /// numbers, and hyphens, must start with a letter, must end with either a
-  /// letter or a number, and must be 63 characters or less.
+  /// [bigQueryExportId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3415,14 +2724,9 @@ class OrganizationsBigQueryExportsResource {
     );
   }
 
-  /// Deletes an existing BigQuery export.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the BigQuery export to delete. Its format
-  /// is `organizations/{organization}/bigQueryExports/{export_id}`,
-  /// `folders/{folder}/bigQueryExports/{export_id}`, or
-  /// `projects/{project}/bigQueryExports/{export_id}`
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3450,14 +2754,9 @@ class OrganizationsBigQueryExportsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a BigQuery export.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the BigQuery export to retrieve. Its format is
-  /// `organizations/{organization}/bigQueryExports/{export_id}`,
-  /// `folders/{folder}/bigQueryExports/{export_id}`, or
-  /// `projects/{project}/bigQueryExports/{export_id}`
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3490,29 +2789,14 @@ class OrganizationsBigQueryExportsResource {
     );
   }
 
-  /// Lists BigQuery exports.
-  ///
-  /// Note that when requesting BigQuery exports at a given level all exports
-  /// under that level are also returned e.g. if requesting BigQuery exports
-  /// under a folder, then all BigQuery exports immediately under the folder
-  /// plus the ones created under the projects within the folder are returned.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns the collection of BigQuery
-  /// exports. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of configs to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous `ListBigQueryExports`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListBigQueryExports` must match the call
-  /// that provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3548,23 +2832,14 @@ class OrganizationsBigQueryExportsResource {
     );
   }
 
-  /// Updates a BigQuery export.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of this export. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name.
-  /// Example format:
-  /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example
-  /// format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
-  /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided
-  /// in responses, and is ignored when provided in create requests.
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3619,17 +2894,11 @@ class OrganizationsEventThreatDetectionSettingsResource {
   OrganizationsEventThreatDetectionSettingsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Validates the given Event Threat Detection custom module.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the parent to validate the Custom
-  /// Module under. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings`. *
-  /// `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
@@ -3676,20 +2945,11 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a resident Event Threat Detection custom module at the scope of
-  /// the given Resource Manager parent, and also creates inherited custom
-  /// modules for all descendants of the given parent.
-  ///
-  /// These modules are enabled by default.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The new custom module's parent. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings`. *
-  /// `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
@@ -3726,18 +2986,9 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Deletes the specified Event Threat Detection custom module and all of its
-  /// descendants in the Resource Manager hierarchy.
-  ///
-  /// This method is only supported for resident custom modules.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to delete. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
-  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -3766,15 +3017,9 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets an Event Threat Detection custom module.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to get. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
-  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -3808,31 +3053,15 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Lists all Event Threat Detection custom modules for the given Resource
-  /// Manager parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent along
-  /// with modules inherited from ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
-  /// * `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
-  /// [pageSize] - The maximum number of modules to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListEventThreatDetectionCustomModules` call. Provide this to retrieve the
-  /// subsequent page. When paginating, all other parameters provided to
-  /// `ListEventThreatDetectionCustomModules` must match the call that provided
-  /// the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3868,28 +3097,15 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Lists all resident Event Threat Detection custom modules under the given
-  /// Resource Manager parent and its descendants.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
-  /// * `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
-  /// [pageSize] - The maximum number of modules to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListDescendantEventThreatDetectionCustomModules` call. Provide this to
-  /// retrieve the subsequent page. When paginating, all other parameters
-  /// provided to `ListDescendantEventThreatDetectionCustomModules` must match
-  /// the call that provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3930,30 +3146,15 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Updates the Event Threat Detection custom module with the given name based
-  /// on the given update mask.
-  ///
-  /// Updating the enablement state is supported for both resident and inherited
-  /// modules (though resident modules cannot have an enablement state of
-  /// "inherited"). Updating the display name or configuration of a module is
-  /// supported for resident modules only. The type of a module cannot be
-  /// changed.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the Event Threat Detection custom
-  /// module. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
-  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3998,17 +3199,9 @@ class OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Gets an effective Event Threat Detection custom module at the given level.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the effective Event Threat
-  /// Detection custom module. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
-  /// *
-  /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -4042,31 +3235,15 @@ class OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource {
     );
   }
 
-  /// Lists all effective Event Threat Detection custom modules for the given
-  /// parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent along
-  /// with modules inherited from its ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list custom modules for. Its
-  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
-  /// * `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
-  /// [pageSize] - The maximum number of modules to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListEffectiveEventThreatDetectionCustomModules` call. Provide this to
-  /// retrieve the subsequent page. When paginating, all other parameters
-  /// provided to `ListEffectiveEventThreatDetectionCustomModules` must match
-  /// the call that provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4110,18 +3287,11 @@ class OrganizationsFindingsResource {
   OrganizationsFindingsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Kicks off an LRO to bulk mute findings for a parent based on a filter.
-  ///
-  /// The parent can be either an organization, folder or project. The findings
-  /// matched by the filter will be muted after the LRO is done.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, at which bulk action needs to be applied.
-  /// Its format is `organizations/[organization_id]`, `folders/[folder_id]`,
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4172,17 +3342,9 @@ class OrganizationsLocationsMuteConfigsResource {
   OrganizationsLocationsMuteConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes an existing mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to delete. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -4211,17 +3373,9 @@ class OrganizationsLocationsMuteConfigsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -4255,24 +3409,15 @@ class OrganizationsLocationsMuteConfigsResource {
     );
   }
 
-  /// Updates a mute config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - This field will be ignored if provided on config creation. Format
-  /// `organizations/{organization}/muteConfigs/{mute_config}`
-  /// `folders/{folder}/muteConfigs/{mute_config}`
-  /// `projects/{project}/muteConfigs/{mute_config}`
-  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
-  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
-  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4316,21 +3461,14 @@ class OrganizationsMuteConfigsResource {
   OrganizationsMuteConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a mute config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new mute configs's parent. Its
-  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [muteConfigId] - Required. Unique identifier provided by the client within
-  /// the parent scope. It must consist of only lowercase letters, numbers, and
-  /// hyphens, must start with a letter, must end with either a letter or a
-  /// number, and must be 63 characters or less.
+  /// [muteConfigId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4367,17 +3505,9 @@ class OrganizationsMuteConfigsResource {
     );
   }
 
-  /// Deletes an existing mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to delete. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4405,17 +3535,9 @@ class OrganizationsMuteConfigsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4448,24 +3570,14 @@ class OrganizationsMuteConfigsResource {
     );
   }
 
-  /// Lists mute configs.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns the collection of mute
-  /// configs. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of configs to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous `ListMuteConfigs`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListMuteConfigs` must match the call that
-  /// provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4501,23 +3613,14 @@ class OrganizationsMuteConfigsResource {
     );
   }
 
-  /// Updates a mute config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - This field will be ignored if provided on config creation. Format
-  /// `organizations/{organization}/muteConfigs/{mute_config}`
-  /// `folders/{folder}/muteConfigs/{mute_config}`
-  /// `projects/{project}/muteConfigs/{mute_config}`
-  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
-  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
-  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4561,20 +3664,14 @@ class OrganizationsNotificationConfigsResource {
   OrganizationsNotificationConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a notification config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new notification config's
-  /// parent. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, or `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [configId] - Required. Unique identifier provided by the client within the
-  /// parent scope. It must be between 1 and 128 characters and contain
-  /// alphanumeric characters, underscores, or hyphens only.
+  /// [configId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4612,14 +3709,9 @@ class OrganizationsNotificationConfigsResource {
     );
   }
 
-  /// Deletes a notification config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the notification config to delete. Its format
-  /// is `organizations/[organization_id]/notificationConfigs/[config_id]`,
-  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
-  /// `projects/[project_id]/notificationConfigs/[config_id]`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
@@ -4648,14 +3740,9 @@ class OrganizationsNotificationConfigsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a notification config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the notification config to get. Its format is
-  /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
-  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
-  /// `projects/[project_id]/notificationConfigs/[config_id]`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
@@ -4689,23 +3776,14 @@ class OrganizationsNotificationConfigsResource {
     );
   }
 
-  /// Lists notification configs.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent in which to list the
-  /// notification configurations. Its format is
-  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last
-  /// `ListNotificationConfigsResponse`; indicates that this is a continuation
-  /// of a prior `ListNotificationConfigs` call, and that the system should
-  /// return the next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4742,26 +3820,15 @@ class OrganizationsNotificationConfigsResource {
     );
   }
 
-  ///  Updates a notification config.
-  ///
-  /// The following update fields are allowed: description, pubsub_topic,
-  /// streaming_config.filter
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of this notification config. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
-  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
-  /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
-  /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the notification config.
-  /// If empty all mutable fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4805,20 +3872,9 @@ class OrganizationsOperationsResource {
   OrganizationsOperationsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
-  /// to `Code.CANCELLED`.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation resource to be cancelled.
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4846,15 +3902,9 @@ class OrganizationsOperationsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation resource to be deleted.
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4882,14 +3932,9 @@ class OrganizationsOperationsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the latest state of a long-running operation.
-  ///
-  /// Clients can use this method to poll the operation result at intervals as
-  /// recommended by the API service.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation resource.
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4917,28 +3962,18 @@ class OrganizationsOperationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation's parent resource.
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/operations$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - null
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - null
   ///
-  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
-  /// are returned as normal, and those that are unreachable are returned in the
-  /// ListOperationsResponse.unreachable field. This can only be `true` when
-  /// reading across collections. For example, when `parent` is set to
-  /// `"projects/example/locations/-"`. This field is not supported by default
-  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
-  /// documented otherwise in service or product specific documentation.
+  /// [returnPartialSuccess] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4987,18 +4022,11 @@ class OrganizationsResourceValueConfigsResource {
   OrganizationsResourceValueConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a ResourceValueConfig for an organization.
-  ///
-  /// Maps user's tags to difference resource values for use by the attack path
-  /// simulation.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new ResourceValueConfig's
-  /// parent. The parent field in the CreateResourceValueConfigRequest messages
-  /// must either be empty or match this field.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5037,11 +4065,9 @@ class OrganizationsResourceValueConfigsResource {
     );
   }
 
-  /// Deletes a ResourceValueConfig.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the ResourceValueConfig to delete
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/resourceValueConfigs/\[^/\]+$`.
   ///
@@ -5070,12 +4096,9 @@ class OrganizationsResourceValueConfigsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a ResourceValueConfig.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource value config to retrieve. Its
-  /// format is `organizations/{organization}/resourceValueConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/resourceValueConfigs/\[^/\]+$`.
   ///
@@ -5109,23 +4132,14 @@ class OrganizationsResourceValueConfigsResource {
     );
   }
 
-  /// Lists all ResourceValueConfigs.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns the collection of resource
-  /// value configs. Its format is `organizations/[organization_id]`
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [pageSize] - The number of results to return. The service may return fewer
-  /// than this value. If unspecified, at most 10 configs will be returned. The
-  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListResourceValueConfigs` call. Provide this to retrieve the subsequent
-  /// page. When paginating, all other parameters provided to
-  /// `ListResourceValueConfigs` must match the call that provided the page
-  /// token. page_size can be specified, and the new page_size will be used.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5162,18 +4176,15 @@ class OrganizationsResourceValueConfigsResource {
     );
   }
 
-  /// Updates an existing ResourceValueConfigs with new rules.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name for the resource value configuration
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/resourceValueConfigs/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5237,21 +4248,11 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
-  /// given CRM parent, and also creates inherited
-  /// SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
-  /// parent.
-  ///
-  /// These modules are enabled by default.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new custom module's parent. Its
-  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -5290,18 +4291,9 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
-  /// descendants in the CRM hierarchy.
-  ///
-  /// This method is only supported for resident custom modules.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to delete. Its format is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// or
-  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -5330,15 +4322,9 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves a SecurityHealthAnalyticsCustomModule.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to get. Its format is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// or
-  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -5371,26 +4357,15 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given
-  /// parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent, and
-  /// inherited modules, inherited from CRM ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list custom modules. Its format is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last call indicating a
-  /// continuation
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5426,23 +4401,15 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under
-  /// the given CRM parent and all of the parent’s CRM descendants.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list descendant custom modules. Its
-  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last call indicating a
-  /// continuation
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5483,33 +4450,15 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Updates the SecurityHealthAnalyticsCustomModule under the given name based
-  /// on the given update mask.
-  ///
-  /// Updating the enablement state is supported on both resident and inherited
-  /// modules (though resident modules cannot have an enablement state of
-  /// "inherited"). Updating the display name and custom config of a module is
-  /// supported on resident modules only.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the custom module. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// or
-  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
-  /// The id {customModule} is server-generated and is not user settable. It
-  /// will be a numeric id containing 1-20 digits.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. The only fields that can
-  /// be updated are `enablement_state` and `custom_config`. If empty or set to
-  /// the wildcard value `*`, both `enablement_state` and `custom_config` are
-  /// updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5548,17 +4497,11 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The relative resource name of the organization,
-  /// project, or folder. For more information about relative resource names,
-  /// see
-  /// [Relative Resource Name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// Example: `organizations/{organization_id}`
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -5604,16 +4547,9 @@ class OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the effective custom module to get. Its format
-  /// is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
-  /// or
-  /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -5648,26 +4584,15 @@ class OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
     );
   }
 
-  /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for
-  /// the given parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent, and
-  /// inherited modules, inherited from CRM ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list effective custom modules. Its
-  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last call indicating a
-  /// continuation
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5720,14 +4645,9 @@ class OrganizationsSimulationsResource {
   OrganizationsSimulationsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Get the simulation by name or the latest simulation for the given
-  /// organization.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The organization name or simulation name of this
-  /// simulation Valid format: `organizations/{organization}/simulations/latest`
-  /// `organizations/{organization}/simulations/{simulation}`
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/simulations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5784,28 +4704,17 @@ class OrganizationsSimulationsAttackExposureResultsAttackPathsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Lists the attack paths for a set of simulation results or valued resources
-  /// and filter.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list attack paths. Valid formats:
-  /// `organizations/{organization}`,
-  /// `organizations/{organization}/simulations/{simulation}`
-  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
-  /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/simulations/\[^/\]+/attackExposureResults/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression that filters the attack path in the
-  /// response. Supported fields: * `valued_resources` supports =
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListAttackPathsResponse`;
-  /// indicates that this is a continuation of a prior `ListAttackPaths` call,
-  /// and that the system should return the next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5851,36 +4760,19 @@ class OrganizationsSimulationsAttackExposureResultsValuedResourcesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Lists the valued resources for a set of simulation results and filter.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list valued resources. Valid
-  /// formats: `organizations/{organization}`,
-  /// `organizations/{organization}/simulations/{simulation}`
-  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/simulations/\[^/\]+/attackExposureResults/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression that filters the valued resources in the
-  /// response. Supported fields: * `resource_value` supports = *
-  /// `resource_type` supports =
+  /// [filter] - null
   ///
-  /// [orderBy] - Optional. The fields by which to order the valued resources
-  /// response. Supported fields: * `exposed_score` * `resource_value` *
-  /// `resource_type` * `resource` * `display_name` Values should be a comma
-  /// separated list of fields. For example: `exposed_score,resource_value`. The
-  /// default sorting order is descending. To specify ascending or descending
-  /// order for a field, append a ` ASC` or a ` DESC` suffix, respectively; for
-  /// example: `exposed_score DESC`.
+  /// [orderBy] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last
-  /// `ListValuedResourcesResponse`; indicates that this is a continuation of a
-  /// prior `ListValuedResources` call, and that the system should return the
-  /// next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5927,27 +4819,16 @@ class OrganizationsSimulationsAttackPathsResource {
   OrganizationsSimulationsAttackPathsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Lists the attack paths for a set of simulation results or valued resources
-  /// and filter.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list attack paths. Valid formats:
-  /// `organizations/{organization}`,
-  /// `organizations/{organization}/simulations/{simulation}`
-  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
-  /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+/simulations/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression that filters the attack path in the
-  /// response. Supported fields: * `valued_resources` supports =
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListAttackPathsResponse`;
-  /// indicates that this is a continuation of a prior `ListAttackPaths` call,
-  /// and that the system should return the next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5995,12 +4876,9 @@ class OrganizationsSimulationsValuedResourcesResource {
   OrganizationsSimulationsValuedResourcesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Get the valued resource by name
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of this valued resource Valid format:
-  /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/simulations/\[^/\]+/valuedResources/\[^/\]+$`.
   ///
@@ -6034,35 +4912,18 @@ class OrganizationsSimulationsValuedResourcesResource {
     );
   }
 
-  /// Lists the valued resources for a set of simulation results and filter.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list valued resources. Valid
-  /// formats: `organizations/{organization}`,
-  /// `organizations/{organization}/simulations/{simulation}`
-  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+/simulations/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression that filters the valued resources in the
-  /// response. Supported fields: * `resource_value` supports = *
-  /// `resource_type` supports =
+  /// [filter] - null
   ///
-  /// [orderBy] - Optional. The fields by which to order the valued resources
-  /// response. Supported fields: * `exposed_score` * `resource_value` *
-  /// `resource_type` * `resource` * `display_name` Values should be a comma
-  /// separated list of fields. For example: `exposed_score,resource_value`. The
-  /// default sorting order is descending. To specify ascending or descending
-  /// order for a field, append a ` ASC` or a ` DESC` suffix, respectively; for
-  /// example: `exposed_score DESC`.
+  /// [orderBy] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last
-  /// `ListValuedResourcesResponse`; indicates that this is a continuation of a
-  /// prior `ListValuedResources` call, and that the system should return the
-  /// next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6110,28 +4971,17 @@ class OrganizationsSimulationsValuedResourcesAttackPathsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Lists the attack paths for a set of simulation results or valued resources
-  /// and filter.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list attack paths. Valid formats:
-  /// `organizations/{organization}`,
-  /// `organizations/{organization}/simulations/{simulation}`
-  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
-  /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
+  /// [parent] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/simulations/\[^/\]+/valuedResources/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression that filters the attack path in the
-  /// response. Supported fields: * `valued_resources` supports =
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListAttackPathsResponse`;
-  /// indicates that this is a continuation of a prior `ListAttackPaths` call,
-  /// and that the system should return the next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6179,14 +5029,11 @@ class OrganizationsSourcesResource {
   OrganizationsSourcesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a source.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new source's parent. Its format
-  /// should be `organizations/[organization_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6220,12 +5067,9 @@ class OrganizationsSourcesResource {
     return Source.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a source.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Relative resource name of the source. Its format is
-  /// `organizations/[organization_id]/source/[source_id]`.
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6253,16 +5097,11 @@ class OrganizationsSourcesResource {
     return Source.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the access control policy on the specified Source.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
+  /// [resource] - null
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6296,21 +5135,14 @@ class OrganizationsSourcesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all sources belonging to an organization.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be `organizations/[organization_id]`, `folders/[folder_id]`,
-  /// or `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListSourcesResponse`;
-  /// indicates that this is a continuation of a prior `ListSources` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6346,19 +5178,14 @@ class OrganizationsSourcesResource {
     );
   }
 
-  /// Updates a source.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of this source. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example: "organizations/{organization_id}/sources/{source_id}"
+  /// [name] - null
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the source resource. If
-  /// empty all mutable fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6393,16 +5220,11 @@ class OrganizationsSourcesResource {
     return Source.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the access control policy on the specified Source.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
+  /// [resource] - null
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6436,16 +5258,11 @@ class OrganizationsSourcesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns the permissions that a caller has on the specified source.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
+  /// [resource] - null
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6492,21 +5309,14 @@ class OrganizationsSourcesFindingsResource {
   OrganizationsSourcesFindingsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a finding.
-  ///
-  /// The corresponding source must exist for finding creation to succeed.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new finding's parent. Its format
-  /// should be `organizations/[organization_id]/sources/[source_id]`.
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
-  /// [findingId] - Required. Unique identifier provided by the client within
-  /// the parent scope. It must be alphanumeric and less than or equal to 32
-  /// characters and greater than 0 characters in length.
+  /// [findingId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6541,25 +5351,11 @@ class OrganizationsSourcesFindingsResource {
     return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Filters an organization or source's findings and groups them by their
-  /// specified properties.
-  ///
-  /// To group across all sources provide a `-` as the source id. Example:
-  /// /v1/organizations/{organization_id}/sources/-/findings,
-  /// /v1/folders/{folder_id}/sources/-/findings,
-  /// /v1/projects/{project_id}/sources/-/findings
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the source to groupBy. Its format is
-  /// `organizations/[organization_id]/sources/[source_id]`,
-  /// `folders/[folder_id]/sources/[source_id]`, or
-  /// `projects/[project_id]/sources/[source_id]`. To groupBy across all sources
-  /// provide a source_id of `-`. For example:
-  /// `organizations/{organization_id}/sources/-,
-  /// folders/{folder_id}/sources/-`, or `projects/{project_id}/sources/-`
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6595,98 +5391,24 @@ class OrganizationsSourcesFindingsResource {
     );
   }
 
-  /// Lists an organization or source's findings.
-  ///
-  /// To list across all sources provide a `-` as the source id. Example:
-  /// /v1/organizations/{organization_id}/sources/-/findings
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the source the findings belong to. Its format
-  /// is `organizations/[organization_id]/sources/[source_id]`,
-  /// `folders/[folder_id]/sources/[source_id]`, or
-  /// `projects/[project_id]/sources/[source_id]`. To list across all sources
-  /// provide a source_id of `-`. For example:
-  /// `organizations/{organization_id}/sources/-`,
-  /// `folders/{folder_id}/sources/-` or `projects/{projects_id}/sources/-`
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
-  /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
-  /// "state_change" attribute is updated to indicate whether the finding had
-  /// its state changed, the finding's state remained unchanged, or if the
-  /// finding was added in any state during the compare_duration period of time
-  /// that precedes the read_time. This is the time between (read_time -
-  /// compare_duration) and read_time. The state_change value is derived based
-  /// on the presence and state of the finding at the two points in time.
-  /// Intermediate state changes between the two times don't affect the result.
-  /// For example, the results aren't affected if the finding is made inactive
-  /// and then active again. Possible "state_change" values when
-  /// compare_duration is specified: * "CHANGED": indicates that the finding was
-  /// present and matched the given filter at the start of compare_duration, but
-  /// changed its state at read_time. * "UNCHANGED": indicates that the finding
-  /// was present and matched the given filter at the start of compare_duration
-  /// and did not change state at read_time. * "ADDED": indicates that the
-  /// finding did not match the given filter or was not present at the start of
-  /// compare_duration, but was present at read_time. * "REMOVED": indicates
-  /// that the finding was present and matched the filter at the start of
-  /// compare_duration, but did not match the filter at read_time. If
-  /// compare_duration is not specified, then the only possible state_change is
-  /// "UNUSED", which will be the state_change set for all findings present at
-  /// read_time.
+  /// [compareDuration] - null
   ///
-  /// [fieldMask] - A field mask to specify the Finding fields to be listed in
-  /// the response. An empty field mask will list all fields.
+  /// [fieldMask] - null
   ///
-  /// [filter] - Expression that defines the filter to apply across findings.
-  /// The expression is a list of one or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. Examples include: * name
-  /// * source_properties.a_property * security_marks.marks.marka The supported
-  /// operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for
-  /// integer values. * `:`, meaning substring matching, for strings. The
-  /// supported value types are: * string literals in quotes. * integer literals
-  /// without quotes. * boolean literals `true` and `false` without quotes. The
-  /// following field and operator combinations are supported: * name: `=` *
-  /// parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category:
-  /// `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
-  /// Usage: This should be milliseconds since epoch or an RFC3339 string.
-  /// Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
-  /// 1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` *
-  /// security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`,
-  /// `>=`, `<=` For example, `source_properties.size = 100` is a valid filter
-  /// string. Use a partial match on the empty string to filter based on a
-  /// property existing: `source_properties.my_property : ""` Use a negated
-  /// partial match on the empty string to filter based on a property not
-  /// existing: `-source_properties.my_property : ""` * resource: *
-  /// resource.name: `=`, `:` * resource.parent_name: `=`, `:` *
-  /// resource.parent_display_name: `=`, `:` * resource.project_name: `=`, `:` *
-  /// resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
-  /// resource.folders.resource_folder: `=`, `:` * resource.display_name: `=`,
-  /// `:`
+  /// [filter] - null
   ///
-  /// [orderBy] - Expression that defines what fields and order to use for
-  /// sorting. The string value should follow SQL syntax: comma separated list
-  /// of fields. For example: "name,resource_properties.a_property". The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix " desc" should be appended to the field name. For example: "name
-  /// desc,source_properties.a_property". Redundant space characters in the
-  /// syntax are insignificant. "name desc,source_properties.a_property" and "
-  /// name desc , source_properties.a_property " are equivalent. The following
-  /// fields are supported: name parent state category resource_name event_time
-  /// source_properties security_marks.marks
+  /// [orderBy] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListFindingsResponse`;
-  /// indicates that this is a continuation of a prior `ListFindings` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - null
   ///
-  /// [readTime] - Time used as a reference point when filtering findings. The
-  /// filter is limited to findings existing at the supplied time and their
-  /// values are those at that specific time. Absence of this field will default
-  /// to the API's version of NOW.
+  /// [readTime] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6732,28 +5454,15 @@ class OrganizationsSourcesFindingsResource {
     );
   }
 
-  /// Creates or updates a finding.
-  ///
-  /// The corresponding source must exist for a finding creation to succeed.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The
-  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// of the finding. Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the finding resource.
-  /// This field should not be specified when creating a finding. When updating
-  /// a finding, an empty mask is treated as updating all mutable fields and
-  /// replacing source_properties. Individual source_properties can be
-  /// added/updated by using "source_properties." in the field mask.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6788,18 +5497,11 @@ class OrganizationsSourcesFindingsResource {
     return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the mute state of a finding.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The
-  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// of the finding. Example:
-  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -6834,18 +5536,11 @@ class OrganizationsSourcesFindingsResource {
     return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the state of a finding.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The
-  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// of the finding. Example:
-  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -6880,29 +5575,17 @@ class OrganizationsSourcesFindingsResource {
     return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates security marks.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of the SecurityMarks. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/securityMarks$`.
   ///
-  /// [startTime] - The time at which the updated SecurityMarks take effect. If
-  /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time. Must be
-  /// earlier or equal to the server time.
+  /// [startTime] - null
   ///
-  /// [updateMask] - The FieldMask to use when updating the security marks
-  /// resource. The field mask must not contain duplicate fields. If empty or
-  /// set to "marks", all marks will be replaced. Individual marks can be
-  /// updated using "marks.".
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6949,23 +5632,15 @@ class OrganizationsSourcesFindingsExternalSystemsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Updates external system.
-  ///
-  /// This is for a given finding.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Full resource name of the external system, for example:
-  /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
-  /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
-  /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
+  /// [name] - null
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/externalSystems/\[^/\]+$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the external system
-  /// resource. If empty all mutable fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7009,35 +5684,18 @@ class OrganizationsValuedResourcesResource {
   OrganizationsValuedResourcesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Lists the valued resources for a set of simulation results and filter.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list valued resources. Valid
-  /// formats: `organizations/{organization}`,
-  /// `organizations/{organization}/simulations/{simulation}`
-  /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+  /// [parent] - null
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression that filters the valued resources in the
-  /// response. Supported fields: * `resource_value` supports = *
-  /// `resource_type` supports =
+  /// [filter] - null
   ///
-  /// [orderBy] - Optional. The fields by which to order the valued resources
-  /// response. Supported fields: * `exposed_score` * `resource_value` *
-  /// `resource_type` * `resource` * `display_name` Values should be a comma
-  /// separated list of fields. For example: `exposed_score,resource_value`. The
-  /// default sorting order is descending. To specify ascending or descending
-  /// order for a field, append a ` ASC` or a ` DESC` suffix, respectively; for
-  /// example: `exposed_score DESC`.
+  /// [orderBy] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last
-  /// `ListValuedResourcesResponse`; indicates that this is a continuation of a
-  /// prior `ListValuedResources` call, and that the system should return the
-  /// next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7107,16 +5765,11 @@ class ProjectsAssetsResource {
 
   ProjectsAssetsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Filters an organization's assets and groups them by their specified
-  /// properties.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent to group the assets by. Its
-  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7155,100 +5808,24 @@ class ProjectsAssetsResource {
     );
   }
 
-  /// Lists an organization's assets.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent resource that contains the
-  /// assets. The value that you can specify on parent depends on the method in
-  /// which you specify parent. You can specify one of the following values:
-  /// `organizations/[organization_id]`, `folders/[folder_id]`, or
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
-  /// "state_change" attribute is updated to indicate whether the asset was
-  /// added, removed, or remained present during the compare_duration period of
-  /// time that precedes the read_time. This is the time between (read_time -
-  /// compare_duration) and read_time. The state_change value is derived based
-  /// on the presence of the asset at the two points in time. Intermediate state
-  /// changes between the two times don't affect the result. For example, the
-  /// results aren't affected if the asset is removed and re-created again.
-  /// Possible "state_change" values when compare_duration is specified: *
-  /// "ADDED": indicates that the asset was not present at the start of
-  /// compare_duration, but present at read_time. * "REMOVED": indicates that
-  /// the asset was present at the start of compare_duration, but not present at
-  /// read_time. * "ACTIVE": indicates that the asset was present at both the
-  /// start and the end of the time period defined by compare_duration and
-  /// read_time. If compare_duration is not specified, then the only possible
-  /// state_change is "UNUSED", which will be the state_change set for all
-  /// assets present at read_time.
+  /// [compareDuration] - null
   ///
-  /// [fieldMask] - A field mask to specify the ListAssetsResult fields to be
-  /// listed in the response. An empty field mask will list all fields.
+  /// [fieldMask] - null
   ///
-  /// [filter] - Expression that defines the filter to apply across assets. The
-  /// expression is a list of zero or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. The fields map to those
-  /// defined in the Asset resource. Examples include: * name *
-  /// security_center_properties.resource_name * resource_properties.a_property
-  /// * security_marks.marks.marka The supported operators are: * `=` for all
-  /// value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning
-  /// substring matching, for strings. The supported value types are: * string
-  /// literals in quotes. * integer literals without quotes. * boolean literals
-  /// `true` and `false` without quotes. The following are the allowed field and
-  /// operator combinations: * name: `=` * update_time: `=`, `>`, `<`, `>=`,
-  /// `<=` Usage: This should be milliseconds since epoch or an RFC3339 string.
-  /// Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time =
-  /// 1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should
-  /// be milliseconds since epoch or an RFC3339 string. Examples: `create_time =
-  /// "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000` *
-  /// iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`,
-  /// `<`, `>=`, `<=` * security_marks.marks: `=`, `:` *
-  /// security_center_properties.resource_name: `=`, `:` *
-  /// security_center_properties.resource_display_name: `=`, `:` *
-  /// security_center_properties.resource_type: `=`, `:` *
-  /// security_center_properties.resource_parent: `=`, `:` *
-  /// security_center_properties.resource_parent_display_name: `=`, `:` *
-  /// security_center_properties.resource_project: `=`, `:` *
-  /// security_center_properties.resource_project_display_name: `=`, `:` *
-  /// security_center_properties.resource_owners: `=`, `:` For example,
-  /// `resource_properties.size = 100` is a valid filter string. Use a partial
-  /// match on the empty string to filter based on a property existing:
-  /// `resource_properties.my_property : ""` Use a negated partial match on the
-  /// empty string to filter based on a property not existing:
-  /// `-resource_properties.my_property : ""`
+  /// [filter] - null
   ///
-  /// [orderBy] - Expression that defines what fields and order to use for
-  /// sorting. The string value should follow SQL syntax: comma separated list
-  /// of fields. For example: "name,resource_properties.a_property". The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix " desc" should be appended to the field name. For example: "name
-  /// desc,resource_properties.a_property". Redundant space characters in the
-  /// syntax are insignificant. "name desc,resource_properties.a_property" and "
-  /// name desc , resource_properties.a_property " are equivalent. The following
-  /// fields are supported: name update_time resource_properties
-  /// security_marks.marks security_center_properties.resource_name
-  /// security_center_properties.resource_display_name
-  /// security_center_properties.resource_parent
-  /// security_center_properties.resource_parent_display_name
-  /// security_center_properties.resource_project
-  /// security_center_properties.resource_project_display_name
-  /// security_center_properties.resource_type
+  /// [orderBy] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListAssetsResponse`;
-  /// indicates that this is a continuation of a prior `ListAssets` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - null
   ///
-  /// [readTime] - Time used as a reference point when filtering assets. The
-  /// filter is limited to assets existing at the supplied time and their values
-  /// are those at that specific time. Absence of this field will default to the
-  /// API's version of NOW.
+  /// [readTime] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7297,28 +5874,16 @@ class ProjectsAssetsResource {
     );
   }
 
-  /// Updates security marks.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of the SecurityMarks. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/assets/\[^/\]+/securityMarks$`.
   ///
-  /// [startTime] - The time at which the updated SecurityMarks take effect. If
-  /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time. Must be
-  /// earlier or equal to the server time.
+  /// [startTime] - null
   ///
-  /// [updateMask] - The FieldMask to use when updating the security marks
-  /// resource. The field mask must not contain duplicate fields. If empty or
-  /// set to "marks", all marks will be replaced. Individual marks can be
-  /// updated using "marks.".
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7364,21 +5929,14 @@ class ProjectsBigQueryExportsResource {
   ProjectsBigQueryExportsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a BigQuery export.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent resource of the new BigQuery
-  /// export. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, or `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [bigQueryExportId] - Required. Unique identifier provided by the client
-  /// within the parent scope. It must consist of only lowercase letters,
-  /// numbers, and hyphens, must start with a letter, must end with either a
-  /// letter or a number, and must be 63 characters or less.
+  /// [bigQueryExportId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7415,14 +5973,9 @@ class ProjectsBigQueryExportsResource {
     );
   }
 
-  /// Deletes an existing BigQuery export.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the BigQuery export to delete. Its format
-  /// is `organizations/{organization}/bigQueryExports/{export_id}`,
-  /// `folders/{folder}/bigQueryExports/{export_id}`, or
-  /// `projects/{project}/bigQueryExports/{export_id}`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7450,14 +6003,9 @@ class ProjectsBigQueryExportsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a BigQuery export.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the BigQuery export to retrieve. Its format is
-  /// `organizations/{organization}/bigQueryExports/{export_id}`,
-  /// `folders/{folder}/bigQueryExports/{export_id}`, or
-  /// `projects/{project}/bigQueryExports/{export_id}`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7490,29 +6038,14 @@ class ProjectsBigQueryExportsResource {
     );
   }
 
-  /// Lists BigQuery exports.
-  ///
-  /// Note that when requesting BigQuery exports at a given level all exports
-  /// under that level are also returned e.g. if requesting BigQuery exports
-  /// under a folder, then all BigQuery exports immediately under the folder
-  /// plus the ones created under the projects within the folder are returned.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns the collection of BigQuery
-  /// exports. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of configs to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous `ListBigQueryExports`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListBigQueryExports` must match the call
-  /// that provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7548,23 +6081,14 @@ class ProjectsBigQueryExportsResource {
     );
   }
 
-  /// Updates a BigQuery export.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of this export. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name.
-  /// Example format:
-  /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example
-  /// format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
-  /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided
-  /// in responses, and is ignored when provided in create requests.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/bigQueryExports/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7616,17 +6140,11 @@ class ProjectsEventThreatDetectionSettingsResource {
   ProjectsEventThreatDetectionSettingsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Validates the given Event Threat Detection custom module.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the parent to validate the Custom
-  /// Module under. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings`. *
-  /// `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7672,20 +6190,11 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a resident Event Threat Detection custom module at the scope of
-  /// the given Resource Manager parent, and also creates inherited custom
-  /// modules for all descendants of the given parent.
-  ///
-  /// These modules are enabled by default.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The new custom module's parent. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings`. *
-  /// `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7721,18 +6230,9 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Deletes the specified Event Threat Detection custom module and all of its
-  /// descendants in the Resource Manager hierarchy.
-  ///
-  /// This method is only supported for resident custom modules.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to delete. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
-  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -7761,15 +6261,9 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets an Event Threat Detection custom module.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to get. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
-  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -7803,30 +6297,14 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Lists all Event Threat Detection custom modules for the given Resource
-  /// Manager parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent along
-  /// with modules inherited from ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
-  /// * `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
   ///
-  /// [pageSize] - The maximum number of modules to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListEventThreatDetectionCustomModules` call. Provide this to retrieve the
-  /// subsequent page. When paginating, all other parameters provided to
-  /// `ListEventThreatDetectionCustomModules` must match the call that provided
-  /// the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7862,27 +6340,14 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Lists all resident Event Threat Detection custom modules under the given
-  /// Resource Manager parent and its descendants.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list custom modules under. Its
-  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
-  /// * `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
   ///
-  /// [pageSize] - The maximum number of modules to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListDescendantEventThreatDetectionCustomModules` call. Provide this to
-  /// retrieve the subsequent page. When paginating, all other parameters
-  /// provided to `ListDescendantEventThreatDetectionCustomModules` must match
-  /// the call that provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7923,30 +6388,15 @@ class ProjectsEventThreatDetectionSettingsCustomModulesResource {
     );
   }
 
-  /// Updates the Event Threat Detection custom module with the given name based
-  /// on the given update mask.
-  ///
-  /// Updating the enablement state is supported for both resident and inherited
-  /// modules (though resident modules cannot have an enablement state of
-  /// "inherited"). Updating the display name or configuration of a module is
-  /// supported for resident modules only. The type of a module cannot be
-  /// changed.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the Event Threat Detection custom
-  /// module. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
-  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7991,17 +6441,9 @@ class ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Gets an effective Event Threat Detection custom module at the given level.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the effective Event Threat
-  /// Detection custom module. Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
-  /// *
-  /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/eventThreatDetectionSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -8035,30 +6477,14 @@ class ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource {
     );
   }
 
-  /// Lists all effective Event Threat Detection custom modules for the given
-  /// parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent along
-  /// with modules inherited from its ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the parent to list custom modules for. Its
-  /// format is: * `organizations/{organization}/eventThreatDetectionSettings`.
-  /// * `folders/{folder}/eventThreatDetectionSettings`. *
-  /// `projects/{project}/eventThreatDetectionSettings`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
   ///
-  /// [pageSize] - The maximum number of modules to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListEffectiveEventThreatDetectionCustomModules` call. Provide this to
-  /// retrieve the subsequent page. When paginating, all other parameters
-  /// provided to `ListEffectiveEventThreatDetectionCustomModules` must match
-  /// the call that provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8101,18 +6527,11 @@ class ProjectsFindingsResource {
 
   ProjectsFindingsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Kicks off an LRO to bulk mute findings for a parent based on a filter.
-  ///
-  /// The parent can be either an organization, folder or project. The findings
-  /// matched by the filter will be muted after the LRO is done.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, at which bulk action needs to be applied.
-  /// Its format is `organizations/[organization_id]`, `folders/[folder_id]`,
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8162,17 +6581,9 @@ class ProjectsLocationsMuteConfigsResource {
   ProjectsLocationsMuteConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes an existing mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to delete. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -8201,17 +6612,9 @@ class ProjectsLocationsMuteConfigsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
@@ -8245,24 +6648,15 @@ class ProjectsLocationsMuteConfigsResource {
     );
   }
 
-  /// Updates a mute config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - This field will be ignored if provided on config creation. Format
-  /// `organizations/{organization}/muteConfigs/{mute_config}`
-  /// `folders/{folder}/muteConfigs/{mute_config}`
-  /// `projects/{project}/muteConfigs/{mute_config}`
-  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
-  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
-  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8306,21 +6700,14 @@ class ProjectsMuteConfigsResource {
   ProjectsMuteConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a mute config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new mute configs's parent. Its
-  /// format is `organizations/[organization_id]`, `folders/[folder_id]`, or
-  /// `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [muteConfigId] - Required. Unique identifier provided by the client within
-  /// the parent scope. It must consist of only lowercase letters, numbers, and
-  /// hyphens, must start with a letter, must end with either a letter or a
-  /// number, and must be 63 characters or less.
+  /// [muteConfigId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8357,17 +6744,9 @@ class ProjectsMuteConfigsResource {
     );
   }
 
-  /// Deletes an existing mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to delete. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8395,17 +6774,9 @@ class ProjectsMuteConfigsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a mute config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the mute config to retrieve. Its format is
-  /// `organizations/{organization}/muteConfigs/{config_id}`,
-  /// `folders/{folder}/muteConfigs/{config_id}`,
-  /// `projects/{project}/muteConfigs/{config_id}`,
-  /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
-  /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
-  /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8438,24 +6809,14 @@ class ProjectsMuteConfigsResource {
     );
   }
 
-  /// Lists mute configs.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent, which owns the collection of mute
-  /// configs. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of configs to return. The service may
-  /// return fewer than this value. If unspecified, at most 10 configs will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token, received from a previous `ListMuteConfigs`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListMuteConfigs` must match the call that
-  /// provided the page token.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8491,23 +6852,14 @@ class ProjectsMuteConfigsResource {
     );
   }
 
-  /// Updates a mute config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - This field will be ignored if provided on config creation. Format
-  /// `organizations/{organization}/muteConfigs/{mute_config}`
-  /// `folders/{folder}/muteConfigs/{mute_config}`
-  /// `projects/{project}/muteConfigs/{mute_config}`
-  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
-  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
-  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. If empty all mutable
-  /// fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8551,20 +6903,14 @@ class ProjectsNotificationConfigsResource {
   ProjectsNotificationConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a notification config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new notification config's
-  /// parent. Its format is `organizations/[organization_id]`,
-  /// `folders/[folder_id]`, or `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [configId] - Required. Unique identifier provided by the client within the
-  /// parent scope. It must be between 1 and 128 characters and contain
-  /// alphanumeric characters, underscores, or hyphens only.
+  /// [configId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8602,14 +6948,9 @@ class ProjectsNotificationConfigsResource {
     );
   }
 
-  /// Deletes a notification config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the notification config to delete. Its format
-  /// is `organizations/[organization_id]/notificationConfigs/[config_id]`,
-  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
-  /// `projects/[project_id]/notificationConfigs/[config_id]`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8637,14 +6978,9 @@ class ProjectsNotificationConfigsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a notification config.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the notification config to get. Its format is
-  /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
-  /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
-  /// `projects/[project_id]/notificationConfigs/[config_id]`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8677,23 +7013,14 @@ class ProjectsNotificationConfigsResource {
     );
   }
 
-  /// Lists notification configs.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent in which to list the
-  /// notification configurations. Its format is
-  /// "organizations/\[organization_id\]", "folders/\[folder_id\]", or
-  /// "projects/\[project_id\]".
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last
-  /// `ListNotificationConfigsResponse`; indicates that this is a continuation
-  /// of a prior `ListNotificationConfigs` call, and that the system should
-  /// return the next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8730,25 +7057,14 @@ class ProjectsNotificationConfigsResource {
     );
   }
 
-  ///  Updates a notification config.
-  ///
-  /// The following update fields are allowed: description, pubsub_topic,
-  /// streaming_config.filter
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of this notification config. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
-  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
-  /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
-  /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the notification config.
-  /// If empty all mutable fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8809,21 +7125,11 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
-  /// given CRM parent, and also creates inherited
-  /// SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
-  /// parent.
-  ///
-  /// These modules are enabled by default.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the new custom module's parent. Its
-  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -8862,18 +7168,9 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
-  /// descendants in the CRM hierarchy.
-  ///
-  /// This method is only supported for resident custom modules.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to delete. Its format is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// or
-  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -8902,15 +7199,9 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves a SecurityHealthAnalyticsCustomModule.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom module to get. Its format is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`,
-  /// or
-  /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
@@ -8943,26 +7234,15 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Returns a list of all SecurityHealthAnalyticsCustomModules for the given
-  /// parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent, and
-  /// inherited modules, inherited from CRM ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list custom modules. Its format is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last call indicating a
-  /// continuation
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8998,23 +7278,15 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Returns a list of all resident SecurityHealthAnalyticsCustomModules under
-  /// the given CRM parent and all of the parent’s CRM descendants.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list descendant custom modules. Its
-  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last call indicating a
-  /// continuation
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9055,33 +7327,15 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Updates the SecurityHealthAnalyticsCustomModule under the given name based
-  /// on the given update mask.
-  ///
-  /// Updating the enablement state is supported on both resident and inherited
-  /// modules (though resident modules cannot have an enablement state of
-  /// "inherited"). Updating the display name and custom config of a module is
-  /// supported on resident modules only.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the custom module. Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// or
-  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
-  /// The id {customModule} is server-generated and is not user settable. It
-  /// will be a numeric id containing 1-20 digits.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. The only fields that can
-  /// be updated are `enablement_state` and `custom_config`. If empty or set to
-  /// the wildcard value `*`, both `enablement_state` and `custom_config` are
-  /// updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9120,17 +7374,11 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
   }
 
-  /// Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The relative resource name of the organization,
-  /// project, or folder. For more information about relative resource names,
-  /// see
-  /// [Relative Resource Name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// Example: `organizations/{organization_id}`
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -9176,16 +7424,9 @@ class ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the effective custom module to get. Its format
-  /// is
-  /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
-  /// or
-  /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/effectiveCustomModules/\[^/\]+$`.
   ///
@@ -9220,26 +7461,15 @@ class ProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource {
     );
   }
 
-  /// Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for
-  /// the given parent.
-  ///
-  /// This includes resident modules defined at the scope of the parent, and
-  /// inherited modules, inherited from CRM ancestors.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of parent to list effective custom modules. Its
-  /// format is `organizations/{organization}/securityHealthAnalyticsSettings`,
-  /// `folders/{folder}/securityHealthAnalyticsSettings`, or
-  /// `projects/{project}/securityHealthAnalyticsSettings`
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last call indicating a
-  /// continuation
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9286,21 +7516,14 @@ class ProjectsSourcesResource {
 
   ProjectsSourcesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Lists all sources belonging to an organization.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be `organizations/[organization_id]`, `folders/[folder_id]`,
-  /// or `projects/[project_id]`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListSourcesResponse`;
-  /// indicates that this is a continuation of a prior `ListSources` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9346,25 +7569,11 @@ class ProjectsSourcesFindingsResource {
   ProjectsSourcesFindingsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Filters an organization or source's findings and groups them by their
-  /// specified properties.
-  ///
-  /// To group across all sources provide a `-` as the source id. Example:
-  /// /v1/organizations/{organization_id}/sources/-/findings,
-  /// /v1/folders/{folder_id}/sources/-/findings,
-  /// /v1/projects/{project_id}/sources/-/findings
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the source to groupBy. Its format is
-  /// `organizations/[organization_id]/sources/[source_id]`,
-  /// `folders/[folder_id]/sources/[source_id]`, or
-  /// `projects/[project_id]/sources/[source_id]`. To groupBy across all sources
-  /// provide a source_id of `-`. For example:
-  /// `organizations/{organization_id}/sources/-,
-  /// folders/{folder_id}/sources/-`, or `projects/{project_id}/sources/-`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -9400,98 +7609,24 @@ class ProjectsSourcesFindingsResource {
     );
   }
 
-  /// Lists an organization or source's findings.
-  ///
-  /// To list across all sources provide a `-` as the source id. Example:
-  /// /v1/organizations/{organization_id}/sources/-/findings
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the source the findings belong to. Its format
-  /// is `organizations/[organization_id]/sources/[source_id]`,
-  /// `folders/[folder_id]/sources/[source_id]`, or
-  /// `projects/[project_id]/sources/[source_id]`. To list across all sources
-  /// provide a source_id of `-`. For example:
-  /// `organizations/{organization_id}/sources/-`,
-  /// `folders/{folder_id}/sources/-` or `projects/{projects_id}/sources/-`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/sources/\[^/\]+$`.
   ///
-  /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
-  /// "state_change" attribute is updated to indicate whether the finding had
-  /// its state changed, the finding's state remained unchanged, or if the
-  /// finding was added in any state during the compare_duration period of time
-  /// that precedes the read_time. This is the time between (read_time -
-  /// compare_duration) and read_time. The state_change value is derived based
-  /// on the presence and state of the finding at the two points in time.
-  /// Intermediate state changes between the two times don't affect the result.
-  /// For example, the results aren't affected if the finding is made inactive
-  /// and then active again. Possible "state_change" values when
-  /// compare_duration is specified: * "CHANGED": indicates that the finding was
-  /// present and matched the given filter at the start of compare_duration, but
-  /// changed its state at read_time. * "UNCHANGED": indicates that the finding
-  /// was present and matched the given filter at the start of compare_duration
-  /// and did not change state at read_time. * "ADDED": indicates that the
-  /// finding did not match the given filter or was not present at the start of
-  /// compare_duration, but was present at read_time. * "REMOVED": indicates
-  /// that the finding was present and matched the filter at the start of
-  /// compare_duration, but did not match the filter at read_time. If
-  /// compare_duration is not specified, then the only possible state_change is
-  /// "UNUSED", which will be the state_change set for all findings present at
-  /// read_time.
+  /// [compareDuration] - null
   ///
-  /// [fieldMask] - A field mask to specify the Finding fields to be listed in
-  /// the response. An empty field mask will list all fields.
+  /// [fieldMask] - null
   ///
-  /// [filter] - Expression that defines the filter to apply across findings.
-  /// The expression is a list of one or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. Examples include: * name
-  /// * source_properties.a_property * security_marks.marks.marka The supported
-  /// operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for
-  /// integer values. * `:`, meaning substring matching, for strings. The
-  /// supported value types are: * string literals in quotes. * integer literals
-  /// without quotes. * boolean literals `true` and `false` without quotes. The
-  /// following field and operator combinations are supported: * name: `=` *
-  /// parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category:
-  /// `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
-  /// Usage: This should be milliseconds since epoch or an RFC3339 string.
-  /// Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
-  /// 1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` *
-  /// security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`,
-  /// `>=`, `<=` For example, `source_properties.size = 100` is a valid filter
-  /// string. Use a partial match on the empty string to filter based on a
-  /// property existing: `source_properties.my_property : ""` Use a negated
-  /// partial match on the empty string to filter based on a property not
-  /// existing: `-source_properties.my_property : ""` * resource: *
-  /// resource.name: `=`, `:` * resource.parent_name: `=`, `:` *
-  /// resource.parent_display_name: `=`, `:` * resource.project_name: `=`, `:` *
-  /// resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
-  /// resource.folders.resource_folder: `=`, `:` * resource.display_name: `=`,
-  /// `:`
+  /// [filter] - null
   ///
-  /// [orderBy] - Expression that defines what fields and order to use for
-  /// sorting. The string value should follow SQL syntax: comma separated list
-  /// of fields. For example: "name,resource_properties.a_property". The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix " desc" should be appended to the field name. For example: "name
-  /// desc,source_properties.a_property". Redundant space characters in the
-  /// syntax are insignificant. "name desc,source_properties.a_property" and "
-  /// name desc , source_properties.a_property " are equivalent. The following
-  /// fields are supported: name parent state category resource_name event_time
-  /// source_properties security_marks.marks
+  /// [orderBy] - null
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The value returned by the last `ListFindingsResponse`;
-  /// indicates that this is a continuation of a prior `ListFindings` call, and
-  /// that the system should return the next page of data.
+  /// [pageToken] - null
   ///
-  /// [readTime] - Time used as a reference point when filtering findings. The
-  /// filter is limited to findings existing at the supplied time and their
-  /// values are those at that specific time. Absence of this field will default
-  /// to the API's version of NOW.
+  /// [readTime] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9537,28 +7672,15 @@ class ProjectsSourcesFindingsResource {
     );
   }
 
-  /// Creates or updates a finding.
-  ///
-  /// The corresponding source must exist for a finding creation to succeed.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The
-  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// of the finding. Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the finding resource.
-  /// This field should not be specified when creating a finding. When updating
-  /// a finding, an empty mask is treated as updating all mutable fields and
-  /// replacing source_properties. Individual source_properties can be
-  /// added/updated by using "source_properties." in the field mask.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9593,18 +7715,11 @@ class ProjectsSourcesFindingsResource {
     return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the mute state of a finding.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The
-  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// of the finding. Example:
-  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -9639,18 +7754,11 @@ class ProjectsSourcesFindingsResource {
     return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the state of a finding.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The
-  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// of the finding. Example:
-  /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
-  /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
@@ -9685,29 +7793,17 @@ class ProjectsSourcesFindingsResource {
     return Finding.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates security marks.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of the SecurityMarks. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/securityMarks$`.
   ///
-  /// [startTime] - The time at which the updated SecurityMarks take effect. If
-  /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time. Must be
-  /// earlier or equal to the server time.
+  /// [startTime] - null
   ///
-  /// [updateMask] - The FieldMask to use when updating the security marks
-  /// resource. The field mask must not contain duplicate fields. If empty or
-  /// set to "marks", all marks will be replaced. Individual marks can be
-  /// updated using "marks.".
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9753,23 +7849,15 @@ class ProjectsSourcesFindingsExternalSystemsResource {
   ProjectsSourcesFindingsExternalSystemsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Updates external system.
-  ///
-  /// This is for a given finding.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Full resource name of the external system, for example:
-  /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
-  /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
-  /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/externalSystems/\[^/\]+$`.
   ///
-  /// [updateMask] - The FieldMask to use when updating the external system
-  /// resource. If empty all mutable fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9807,75 +7895,17 @@ class ProjectsSourcesFindingsExternalSystemsResource {
   }
 }
 
-/// Represents an access event.
 class Access {
-  /// Caller's IP address, such as "1.1.1.1".
   core.String? callerIp;
-
-  /// The caller IP's geolocation, which identifies where the call came from.
   Geolocation? callerIpGeo;
-
-  /// The method that the service account called, e.g. "SetIamPolicy".
   core.String? methodName;
-
-  /// Associated email, such as "foo@google.com".
-  ///
-  /// The email address of the authenticated user or a service account acting on
-  /// behalf of a third party principal making the request. For third party
-  /// identity callers, the `principal_subject` field is populated instead of
-  /// this field. For privacy reasons, the principal email address is sometimes
-  /// redacted. For more information, see
-  /// [Caller identities in audit logs](https://cloud.google.com/logging/docs/audit#user-id).
   core.String? principalEmail;
-
-  /// A string that represents the principal_subject that is associated with the
-  /// identity.
-  ///
-  /// Unlike `principal_email`, `principal_subject` supports principals that
-  /// aren't associated with email addresses, such as third party principals.
-  /// For most identities, the format is
-  /// `principal://iam.googleapis.com/{identity pool name}/subject/{subject}`.
-  /// Some GKE identities, such as GKE_WORKLOAD, FREEFORM, and GKE_HUB_WORKLOAD,
-  /// still use the legacy format `serviceAccount:{identity pool
-  /// name}[{subject}]`.
   core.String? principalSubject;
-
-  /// The identity delegation history of an authenticated service account that
-  /// made the request.
-  ///
-  /// The `serviceAccountDelegationInfo[]` object contains information about the
-  /// real authorities that try to access Google Cloud resources by delegating
-  /// on a service account. When multiple authorities are present, they are
-  /// guaranteed to be sorted based on the original ordering of the identity
-  /// delegation events.
   core.List<ServiceAccountDelegationInfo>? serviceAccountDelegationInfo;
-
-  /// The name of the service account key that was used to create or exchange
-  /// credentials when authenticating the service account that made the request.
-  ///
-  /// This is a scheme-less URI full resource name. For example:
-  /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}".
   core.String? serviceAccountKeyName;
-
-  /// This is the API service that the service account made a call to, e.g.
-  /// "iam.googleapis.com"
   core.String? serviceName;
-
-  /// The caller's user agent string associated with the finding.
   core.String? userAgent;
-
-  /// Type of user agent associated with the finding.
-  ///
-  /// For example, an operating system shell or an embedded or standalone
-  /// application.
   core.String? userAgentFamily;
-
-  /// A string that represents a username.
-  ///
-  /// The username provided depends on the type of the finding and is likely not
-  /// an IAM principal. For example, this can be a system username if the
-  /// finding is related to a virtual machine, or it can be an application login
-  /// username.
   core.String? userName;
 
   Access({
@@ -9946,44 +7976,13 @@ class Access {
   }
 }
 
-/// Conveys information about a Kubernetes access review (such as one returned
-/// by a \[`kubectl auth
-/// can-i`\](https://kubernetes.io/docs/reference/access-authn-authz/authorization/#checking-api-access)
-/// command) that was involved in a finding.
 class AccessReview {
-  /// The API group of the resource.
-  ///
-  /// "*" means all.
   core.String? group;
-
-  /// The name of the resource being requested.
-  ///
-  /// Empty means all.
   core.String? name;
-
-  /// Namespace of the action being requested.
-  ///
-  /// Currently, there is no distinction between no namespace and all
-  /// namespaces. Both are represented by "" (empty).
   core.String? ns;
-
-  /// The optional resource type requested.
-  ///
-  /// "*" means all.
   core.String? resource;
-
-  /// The optional subresource type.
   core.String? subresource;
-
-  /// A Kubernetes resource API verb, like get, list, watch, create, update,
-  /// delete, proxy.
-  ///
-  /// "*" means all.
   core.String? verb;
-
-  /// The API version of the resource.
-  ///
-  /// "*" means all.
   core.String? version;
 
   AccessReview({
@@ -10027,16 +8026,7 @@ class AccessReview {
   }
 }
 
-/// Information about
-/// [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/cloud-armor-overview#google-cloud-armor-adaptive-protection).
 class AdaptiveProtection {
-  /// A score of 0 means that there is low confidence that the detected event is
-  /// an actual attack.
-  ///
-  /// A score of 1 means that there is high confidence that the detected event
-  /// is an attack. See the
-  /// [Adaptive Protection documentation](https://cloud.google.com/armor/docs/adaptive-protection-overview#configure-alert-tuning)
-  /// for further explanation.
   core.double? confidence;
 
   AdaptiveProtection({this.confidence});
@@ -10050,15 +8040,8 @@ class AdaptiveProtection {
   }
 }
 
-/// Represents an ADC application associated with the finding.
 class AdcApplication {
-  /// Consumer provided attributes for the AppHub application.
   GoogleCloudSecuritycenterV1ResourceApplicationAttributes? attributes;
-
-  /// The resource name of an ADC Application.
-  ///
-  /// Format:
-  /// projects/{project}/locations/{location}/spaces/{space}/applications/{application}
   core.String? name;
 
   AdcApplication({this.attributes, this.name});
@@ -10080,47 +8063,10 @@ class AdcApplication {
   }
 }
 
-/// Represents an ADC template associated with the finding.
-class AdcApplicationTemplateRevision {
-  /// The resource name of an ADC Application Template Revision.
-  ///
-  /// Format:
-  /// projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}
-  core.String? name;
+typedef AdcApplicationTemplateRevision = $Shared00;
+typedef AdcSharedTemplateRevision = $Shared00;
 
-  AdcApplicationTemplateRevision({this.name});
-
-  AdcApplicationTemplateRevision.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    return {'name': ?name};
-  }
-}
-
-/// Represents an ADC shared template associated with the finding.
-class AdcSharedTemplateRevision {
-  /// The resource name of an ADC Shared Template Revision.
-  ///
-  /// Format:
-  /// projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}
-  core.String? name;
-
-  AdcSharedTemplateRevision({this.name});
-
-  AdcSharedTemplateRevision.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    return {'name': ?name};
-  }
-}
-
-/// Details about resources affected by this finding.
 class AffectedResources {
-  /// The count of resources affected by the finding.
   core.String? count;
 
   AffectedResources({this.count});
@@ -10134,24 +8080,61 @@ class AffectedResources {
   }
 }
 
-/// Details about a data access attempt made by an agent principal not
-/// authorized under applicable data security policy.
-class AgentDataAccessEvent {
-  /// Unique identifier for data access event.
-  core.String? eventId;
+typedef Agent = $Shared08;
 
-  /// Timestamp of data access event.
+class AgentAnomaly {
+  core.double? confidenceScore;
+  core.List<DetectorReference>? detectorReferences;
+  core.List<InvocationReference>? invocationReferences;
+
+  AgentAnomaly({
+    this.confidenceScore,
+    this.detectorReferences,
+    this.invocationReferences,
+  });
+
+  AgentAnomaly.fromJson(core.Map json_)
+    : this(
+        confidenceScore: (json_['confidenceScore'] as core.num?)?.toDouble(),
+        detectorReferences: (json_['detectorReferences'] as core.List?)
+            ?.map(
+              (value) => DetectorReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        invocationReferences: (json_['invocationReferences'] as core.List?)
+            ?.map(
+              (value) => InvocationReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final confidenceScore = this.confidenceScore;
+    final detectorReferences = this.detectorReferences;
+    final invocationReferences = this.invocationReferences;
+    return {
+      'confidenceScore': ?confidenceScore,
+      'detectorReferences': ?detectorReferences,
+      'invocationReferences': ?invocationReferences,
+    };
+  }
+}
+
+class AgentDataAccessEvent {
+  core.String? eventId;
   core.String? eventTime;
 
-  /// The operation performed by the principal to access the data.
+  ///
   /// Possible string values are:
-  /// - "OPERATION_UNSPECIFIED" : The operation is unspecified.
-  /// - "READ" : Represents a read operation.
-  /// - "MOVE" : Represents a move operation.
-  /// - "COPY" : Represents a copy operation.
+  /// - "OPERATION_UNSPECIFIED"
+  /// - "READ"
+  /// - "MOVE"
+  /// - "COPY"
   core.String? operation;
-
-  /// The agent principal that accessed the data.
   core.String? principalSubject;
 
   AgentDataAccessEvent({
@@ -10183,38 +8166,35 @@ class AgentDataAccessEvent {
   }
 }
 
-/// Contains information about the AI model associated with the finding.
+class AgentSession {
+  core.String? sessionId;
+
+  AgentSession({this.sessionId});
+
+  AgentSession.fromJson(core.Map json_)
+    : this(sessionId: json_['sessionId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sessionId = this.sessionId;
+    return {'sessionId': ?sessionId};
+  }
+}
+
 class AiModel {
-  /// The platform on which the model is deployed.
-  /// Possible string values are:
-  /// - "DEPLOYMENT_PLATFORM_UNSPECIFIED" : Unspecified deployment platform.
-  /// - "VERTEX_AI" : Vertex AI.
-  /// - "GKE" : Google Kubernetes Engine.
-  /// - "GCE" : Google Compute Engine.
-  /// - "FINE_TUNED_MODEL" : Fine tuned model.
-  core.String? deploymentPlatform;
-
-  /// The user defined display name of model.
   ///
-  /// Ex. baseline-classification-model
+  /// Possible string values are:
+  /// - "DEPLOYMENT_PLATFORM_UNSPECIFIED"
+  /// - "VERTEX_AI"
+  /// - "GKE"
+  /// - "GCE"
+  /// - "FINE_TUNED_MODEL"
+  core.String? deploymentPlatform;
   core.String? displayName;
-
-  /// The domain of the model, for example, “image-classification”.
   core.String? domain;
-
-  /// The name of the model library, for example, “transformers”.
   core.String? library;
-
-  /// The region in which the model is used, for example, “us-central1”.
   core.String? location;
-
-  /// The name of the AI model, for example, "gemini:1.0.0".
   core.String? name;
-
-  /// The publisher of the model, for example, “google” or “nvidia”.
   core.String? publisher;
-
-  /// The purpose of the model, for example, "Inteference" or "Training".
   core.String? usageCategory;
 
   AiModel({
@@ -10262,11 +8242,7 @@ class AiModel {
   }
 }
 
-/// Allowed IP rule.
 class Allowed {
-  /// Optional list of allowed IP rules.
-  ///
-  /// Optional.
   core.List<IpRule>? ipRules;
 
   Allowed({this.ipRules});
@@ -10287,17 +8263,8 @@ class Allowed {
   }
 }
 
-/// Represents an application associated with a finding.
 class Application {
-  /// The base URI that identifies the network location of the application in
-  /// which the vulnerability was detected.
-  ///
-  /// For example, `http://example.com`.
   core.String? baseUri;
-
-  /// The full URI with payload that can be used to reproduce the vulnerability.
-  ///
-  /// For example, `http://example.com?p=aMmYgI6H`.
   core.String? fullUri;
 
   Application({this.baseUri, this.fullUri});
@@ -10315,12 +8282,8 @@ class Application {
   }
 }
 
-/// Represents the result of evaluating artifact guard policies.
 class ArtifactGuardPolicies {
-  /// A list of failing policies.
   core.List<ArtifactGuardPolicy>? failingPolicies;
-
-  /// The ID of the resource that has policies configured for it.
   core.String? resourceId;
 
   ArtifactGuardPolicies({this.failingPolicies, this.resourceId});
@@ -10344,21 +8307,14 @@ class ArtifactGuardPolicies {
   }
 }
 
-/// Represents an artifact guard policy.
 class ArtifactGuardPolicy {
-  /// The reason for the policy failure, for example, "severity=HIGH AND
-  /// max_vuln_count=2".
   core.String? failureReason;
-
-  /// The ID of the failing policy, for example,
-  /// "organizations/3392779/locations/global/policies/prod-policy".
   core.String? policyId;
 
-  /// The type of the policy evaluation.
+  ///
   /// Possible string values are:
-  /// - "ARTIFACT_GUARD_POLICY_TYPE_UNSPECIFIED" : Default value. This value is
-  /// unused.
-  /// - "VULNERABILITY" : Vulnerability type.
+  /// - "ARTIFACT_GUARD_POLICY_TYPE_UNSPECIFIED"
+  /// - "VULNERABILITY"
   core.String? type;
 
   ArtifactGuardPolicy({this.failureReason, this.policyId, this.type});
@@ -10382,60 +8338,19 @@ class ArtifactGuardPolicy {
   }
 }
 
-/// Security Command Center representation of a Google Cloud resource.
-///
-/// The Asset is a Security Command Center resource that captures information
-/// about a single Google Cloud resource. All modifications to an Asset are only
-/// within the context of Security Command Center and don't affect the
-/// referenced Google Cloud resource.
 class Asset {
-  /// The canonical name of the resource.
-  ///
-  /// It's either "organizations/{organization_id}/assets/{asset_id}",
-  /// "folders/{folder_id}/assets/{asset_id}" or
-  /// "projects/{project_number}/assets/{asset_id}", depending on the closest
-  /// CRM ancestor of the resource.
   core.String? canonicalName;
-
-  /// The time at which the asset was created in Security Command Center.
   core.String? createTime;
-
-  /// Cloud IAM Policy information associated with the Google Cloud resource
-  /// described by the Security Command Center asset.
-  ///
-  /// This information is managed and defined by the Google Cloud resource and
-  /// cannot be modified by the user.
   IamPolicy? iamPolicy;
-
-  /// The relative resource name of this asset.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example: "organizations/{organization_id}/assets/{asset_id}".
   core.String? name;
 
-  /// Resource managed properties.
   ///
-  /// These properties are managed and defined by the Google Cloud resource and
-  /// cannot be modified by the user.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? resourceProperties;
-
-  /// Security Command Center managed properties.
-  ///
-  /// These properties are managed by Security Command Center and cannot be
-  /// modified by the user.
   SecurityCenterProperties? securityCenterProperties;
-
-  /// User specified security marks.
-  ///
-  /// These marks are entirely managed by the user and come from the
-  /// SecurityMarks resource that belongs to the asset.
   SecurityMarks? securityMarks;
-
-  /// The time at which the asset was last updated or added in Cloud SCC.
   core.String? updateTime;
 
   Asset({
@@ -10498,24 +8413,15 @@ class Asset {
   }
 }
 
-/// The configuration used for Asset Discovery runs.
 class AssetDiscoveryConfig {
-  /// The folder ids to use for filtering asset discovery.
-  ///
-  /// It consists of only digits, e.g., 756619654966.
   core.List<core.String>? folderIds;
 
-  /// The mode to use for filtering asset discovery.
+  ///
   /// Possible string values are:
-  /// - "INCLUSION_MODE_UNSPECIFIED" : Unspecified. Setting the mode with this
-  /// value will disable inclusion/exclusion filtering for Asset Discovery.
-  /// - "INCLUDE_ONLY" : Asset Discovery will capture only the resources within
-  /// the projects specified. All other resources will be ignored.
-  /// - "EXCLUDE" : Asset Discovery will ignore all resources under the projects
-  /// specified. All other resources will be retrieved.
+  /// - "INCLUSION_MODE_UNSPECIFIED"
+  /// - "INCLUDE_ONLY"
+  /// - "EXCLUDE"
   core.String? inclusionMode;
-
-  /// The project ids to use for filtering asset discovery.
   core.List<core.String>? projectIds;
 
   AssetDiscoveryConfig({this.folderIds, this.inclusionMode, this.projectIds});
@@ -10543,31 +8449,17 @@ class AssetDiscoveryConfig {
   }
 }
 
-/// Information about DDoS attack volume and classification.
 class Attack {
-  /// Type of attack, for example, 'SYN-flood', 'NTP-udp', or 'CHARGEN-udp'.
   core.String? classification;
-
-  /// Total BPS (bytes per second) volume of attack.
-  ///
-  /// Deprecated - refer to volume_bps_long instead.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.int? volumeBps;
-
-  /// Total BPS (bytes per second) volume of attack.
   core.String? volumeBpsLong;
-
-  /// Total PPS (packets per second) volume of attack.
-  ///
-  /// Deprecated - refer to volume_pps_long instead.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.int? volumePps;
-
-  /// Total PPS (packets per second) volume of attack.
   core.String? volumePpsLong;
 
   Attack({
@@ -10603,43 +8495,19 @@ class Attack {
   }
 }
 
-/// An attack exposure contains the results of an attack path simulation run.
 class AttackExposure {
-  /// The resource name of the attack path simulation result that contains the
-  /// details regarding this attack exposure score.
-  ///
-  /// Example: `organizations/123/simulations/456/attackExposureResults/789`
   core.String? attackExposureResult;
-
-  /// The number of high value resources that are exposed as a result of this
-  /// finding.
   core.int? exposedHighValueResourcesCount;
-
-  /// The number of high value resources that are exposed as a result of this
-  /// finding.
   core.int? exposedLowValueResourcesCount;
-
-  /// The number of medium value resources that are exposed as a result of this
-  /// finding.
   core.int? exposedMediumValueResourcesCount;
-
-  /// The most recent time the attack exposure was updated on this finding.
   core.String? latestCalculationTime;
-
-  /// A number between 0 (inclusive) and infinity that represents how important
-  /// this finding is to remediate.
-  ///
-  /// The higher the score, the more important it is to remediate.
   core.double? score;
 
-  /// What state this AttackExposure is in.
   ///
-  /// This captures whether or not an attack exposure has been calculated or
-  /// not.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The state is not specified.
-  /// - "CALCULATED" : The attack exposure has been calculated.
-  /// - "NOT_CALCULATED" : The attack exposure has not been calculated.
+  /// - "STATE_UNSPECIFIED"
+  /// - "CALCULATED"
+  /// - "NOT_CALCULATED"
   core.String? state;
 
   AttackExposure({
@@ -10687,16 +8555,9 @@ class AttackExposure {
   }
 }
 
-/// A path that an attacker could take to reach an exposed resource.
 class AttackPath {
-  /// A list of the edges between nodes in this attack path.
   core.List<AttackPathEdge>? edges;
-
-  /// The attack path name, for example,
-  /// `organizations/12/simulation/34/valuedResources/56/attackPaths/78`
   core.String? name;
-
-  /// A list of nodes that exist in this attack path.
   core.List<AttackPathNode>? pathNodes;
 
   AttackPath({this.edges, this.name, this.pathNodes});
@@ -10728,13 +8589,8 @@ class AttackPath {
   }
 }
 
-/// Represents a connection between a source node and a destination node in this
-/// attack path.
 class AttackPathEdge {
-  /// The attack node uuid of the destination node.
   core.String? destination;
-
-  /// The attack node uuid of the source node.
   core.String? source;
 
   AttackPathEdge({this.destination, this.source});
@@ -10752,28 +8608,12 @@ class AttackPathEdge {
   }
 }
 
-/// Represents one point that an attacker passes through in this attack path.
 class AttackPathNode {
-  /// The findings associated with this node in the attack path.
   core.List<PathNodeAssociatedFinding>? associatedFindings;
-
-  /// A list of attack step nodes that exist in this attack path node.
   core.List<AttackStepNode>? attackSteps;
-
-  /// Human-readable name of this resource.
   core.String? displayName;
-
-  /// The name of the resource at this point in the attack path.
-  ///
-  /// The format of the name follows the Cloud Asset Inventory
-  /// [resource name format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   core.String? resource;
-
-  /// The
-  /// [supported resource type](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   core.String? resourceType;
-
-  /// Unique id of the attack path node.
   core.String? uuid;
 
   AttackPathNode({
@@ -10825,29 +8665,19 @@ class AttackPathNode {
   }
 }
 
-/// Detailed steps the attack can take between path nodes.
 class AttackStepNode {
-  /// Attack step description
   core.String? description;
-
-  /// User friendly name of the attack step
   core.String? displayName;
-
-  /// Attack step labels for metadata
   core.Map<core.String, core.String>? labels;
 
-  /// Attack step type.
   ///
-  /// Can be either AND, OR or DEFENSE
   /// Possible string values are:
-  /// - "NODE_TYPE_UNSPECIFIED" : Type not specified
-  /// - "NODE_TYPE_AND" : Incoming edge joined with AND
-  /// - "NODE_TYPE_OR" : Incoming edge joined with OR
-  /// - "NODE_TYPE_DEFENSE" : Incoming edge is defense
-  /// - "NODE_TYPE_ATTACKER" : Incoming edge is attacker
+  /// - "NODE_TYPE_UNSPECIFIED"
+  /// - "NODE_TYPE_AND"
+  /// - "NODE_TYPE_OR"
+  /// - "NODE_TYPE_DEFENSE"
+  /// - "NODE_TYPE_ATTACKER"
   core.String? type;
-
-  /// Unique ID for one Node
   core.String? uuid;
 
   AttackStepNode({
@@ -10885,31 +8715,8 @@ class AttackStepNode {
   }
 }
 
-/// Specifies the audit configuration for a service.
-///
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging. An AuditConfig must have one
-/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
-/// and a specific service, the union of the two AuditConfigs is used for that
-/// service: the log_types specified in each AuditConfig are enabled, and the
-/// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
-/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
-/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
-/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
-/// `aliya@example.com` from DATA_WRITE logging.
 class AuditConfig {
-  /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
-
-  /// Specifies a service that will be enabled for audit logging.
-  ///
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
   core.String? service;
 
   AuditConfig({this.auditLogConfigs, this.service});
@@ -10933,48 +8740,39 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions.
-///
-/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
-/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
-/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
-/// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+class AuditLogConfig {
+  core.List<core.String>? exemptedMembers;
 
-/// An AWS account that is a member of an organization.
-class AwsAccount {
-  /// The unique identifier (ID) of the account, containing exactly 12 digits.
-  core.String? id;
+  ///
+  /// Possible string values are:
+  /// - "LOG_TYPE_UNSPECIFIED"
+  /// - "ADMIN_READ"
+  /// - "DATA_WRITE"
+  /// - "DATA_READ"
+  core.String? logType;
 
-  /// The friendly name of this account.
-  core.String? name;
+  AuditLogConfig({this.exemptedMembers, this.logType});
 
-  AwsAccount({this.id, this.name});
-
-  AwsAccount.fromJson(core.Map json_)
+  AuditLogConfig.fromJson(core.Map json_)
     : this(
-        id: json_['id'] as core.String?,
-        name: json_['name'] as core.String?,
+        exemptedMembers: (json_['exemptedMembers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        logType: json_['logType'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final id = this.id;
-    final name = this.name;
-    return {'id': ?id, 'name': ?name};
+    final exemptedMembers = this.exemptedMembers;
+    final logType = this.logType;
+    return {'exemptedMembers': ?exemptedMembers, 'logType': ?logType};
   }
 }
 
-/// AWS metadata associated with the resource, only applicable if the finding's
-/// cloud provider is Amazon Web Services.
+typedef AwsAccount = $Shared05;
+
 class AwsMetadata {
-  /// The AWS account associated with the resource.
   AwsAccount? account;
-
-  /// The AWS organization associated with the resource.
   AwsOrganization? organization;
-
-  /// A list of AWS organizational units associated with the resource, ordered
-  /// from lowest level (closest to the account) to highest level.
   core.List<AwsOrganizationalUnit>? organizationalUnits;
 
   AwsMetadata({this.account, this.organization, this.organizationalUnits});
@@ -11012,98 +8810,14 @@ class AwsMetadata {
   }
 }
 
-/// An organization is a collection of accounts that are centrally managed
-/// together using consolidated billing, organized hierarchically with
-/// organizational units (OUs), and controlled with policies.
-class AwsOrganization {
-  /// The unique identifier (ID) for the organization.
-  ///
-  /// The regex pattern for an organization ID string requires "o-" followed by
-  /// from 10 to 32 lowercase letters or digits.
-  core.String? id;
+typedef AwsOrganization = $Shared02;
+typedef AwsOrganizationalUnit = $Shared05;
+typedef AzureManagementGroup = $Shared08;
 
-  AwsOrganization({this.id});
-
-  AwsOrganization.fromJson(core.Map json_)
-    : this(id: json_['id'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final id = this.id;
-    return {'id': ?id};
-  }
-}
-
-/// An Organizational Unit (OU) is a container of AWS accounts within a root of
-/// an organization.
-///
-/// Policies that are attached to an OU apply to all accounts contained in that
-/// OU and in any child OUs.
-class AwsOrganizationalUnit {
-  /// The unique identifier (ID) associated with this OU.
-  ///
-  /// The regex pattern for an organizational unit ID string requires "ou-"
-  /// followed by from 4 to 32 lowercase letters or digits (the ID of the root
-  /// that contains the OU). This string is followed by a second "-" dash and
-  /// from 8 to 32 additional lowercase letters or digits. For example,
-  /// "ou-ab12-cd34ef56".
-  core.String? id;
-
-  /// The friendly name of the OU.
-  core.String? name;
-
-  AwsOrganizationalUnit({this.id, this.name});
-
-  AwsOrganizationalUnit.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final id = this.id;
-    final name = this.name;
-    return {'id': ?id, 'name': ?name};
-  }
-}
-
-/// Represents an Azure management group.
-class AzureManagementGroup {
-  /// The display name of the Azure management group.
-  core.String? displayName;
-
-  /// The UUID of the Azure management group, for example,
-  /// `20000000-0001-0000-0000-000000000000`.
-  core.String? id;
-
-  AzureManagementGroup({this.displayName, this.id});
-
-  AzureManagementGroup.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        id: json_['id'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final id = this.id;
-    return {'displayName': ?displayName, 'id': ?id};
-  }
-}
-
-/// Azure metadata associated with the resource, only applicable if the
-/// finding's cloud provider is Microsoft Azure.
 class AzureMetadata {
-  /// A list of Azure management groups associated with the resource, ordered
-  /// from lowest level (closest to the subscription) to highest level.
   core.List<AzureManagementGroup>? managementGroups;
-
-  /// The Azure resource group associated with the resource.
   AzureResourceGroup? resourceGroup;
-
-  /// The Azure subscription associated with the resource.
   AzureSubscription? subscription;
-
-  /// The Azure Entra tenant associated with the resource.
   AzureTenant? tenant;
 
   AzureMetadata({
@@ -11153,149 +8867,20 @@ class AzureMetadata {
   }
 }
 
-/// Represents an Azure resource group.
-class AzureResourceGroup {
-  /// The ID of the Azure resource group.
-  core.String? id;
+typedef AzureResourceGroup = $Shared05;
+typedef AzureSubscription = $Shared08;
+typedef AzureTenant = $Shared08;
 
-  /// The name of the Azure resource group.
-  ///
-  /// This is not a UUID.
-  core.String? name;
-
-  AzureResourceGroup({this.id, this.name});
-
-  AzureResourceGroup.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final id = this.id;
-    final name = this.name;
-    return {'id': ?id, 'name': ?name};
-  }
-}
-
-/// Represents an Azure subscription.
-class AzureSubscription {
-  /// The display name of the Azure subscription.
-  core.String? displayName;
-
-  /// The UUID of the Azure subscription, for example,
-  /// `291bba3f-e0a5-47bc-a099-3bdcb2a50a05`.
-  core.String? id;
-
-  AzureSubscription({this.displayName, this.id});
-
-  AzureSubscription.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        id: json_['id'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final id = this.id;
-    return {'displayName': ?displayName, 'id': ?id};
-  }
-}
-
-/// Represents a Microsoft Entra tenant.
-class AzureTenant {
-  /// The display name of the Azure tenant.
-  core.String? displayName;
-
-  /// The ID of the Microsoft Entra tenant, for example,
-  /// "a11aaa11-aa11-1aa1-11aa-1aaa11a".
-  core.String? id;
-
-  AzureTenant({this.displayName, this.id});
-
-  AzureTenant.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        id: json_['id'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final id = this.id;
-    return {'displayName': ?displayName, 'id': ?id};
-  }
-}
-
-/// Information related to Google Cloud Backup and DR Service findings.
 class BackupDisasterRecovery {
-  /// The name of the Backup and DR appliance that captures, moves, and manages
-  /// the lifecycle of backup data.
-  ///
-  /// For example, `backup-server-57137`.
   core.String? appliance;
-
-  /// The names of Backup and DR applications.
-  ///
-  /// An application is a VM, database, or file system on a managed host
-  /// monitored by a backup and recovery appliance. For example,
-  /// `centos7-01-vol00`, `centos7-01-vol01`, `centos7-01-vol02`.
   core.List<core.String>? applications;
-
-  /// The timestamp at which the Backup and DR backup was created.
   core.String? backupCreateTime;
-
-  /// The name of a Backup and DR template which comprises one or more backup
-  /// policies.
-  ///
-  /// See the
-  /// [Backup and DR documentation](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#temp)
-  /// for more information. For example, `snap-ov`.
   core.String? backupTemplate;
-
-  /// The backup type of the Backup and DR image.
-  ///
-  /// For example, `Snapshot`, `Remote Snapshot`, `OnVault`.
   core.String? backupType;
-
-  /// The name of a Backup and DR host, which is managed by the backup and
-  /// recovery appliance and known to the management console.
-  ///
-  /// The host can be of type Generic (for example, Compute Engine, SQL Server,
-  /// Oracle DB, SMB file system, etc.), vCenter, or an ESX server. See the
-  /// [Backup and DR documentation on hosts](https://cloud.google.com/backup-disaster-recovery/docs/configuration/manage-hosts-and-their-applications)
-  /// for more information. For example, `centos7-01`.
   core.String? host;
-
-  /// The names of Backup and DR policies that are associated with a template
-  /// and that define when to run a backup, how frequently to run a backup, and
-  /// how long to retain the backup image.
-  ///
-  /// For example, `onvaults`.
   core.List<core.String>? policies;
-
-  /// The names of Backup and DR advanced policy options of a policy applying to
-  /// an application.
-  ///
-  /// See the
-  /// [Backup and DR documentation on policy options](https://cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings).
-  /// For example, `skipofflineappsincongrp, nounmap`.
   core.List<core.String>? policyOptions;
-
-  /// The name of the Backup and DR resource profile that specifies the storage
-  /// media for backups of application and VM data.
-  ///
-  /// See the
-  /// [Backup and DR documentation on profiles](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#profile).
-  /// For example, `GCP`.
   core.String? profile;
-
-  /// The name of the Backup and DR storage pool that the backup and recovery
-  /// appliance is storing data in.
-  ///
-  /// The storage pool could be of type Cloud, Primary, Snapshot, or OnVault.
-  /// See the
-  /// [Backup and DR documentation on storage pools](https://cloud.google.com/backup-disaster-recovery/docs/concepts/storage-pools).
-  /// For example, `DiskPoolOne`.
   core.String? storagePool;
 
   BackupDisasterRecovery({
@@ -11357,11 +8942,7 @@ class BackupDisasterRecovery {
   }
 }
 
-/// Request message to create multiple resource value configs
 class BatchCreateResourceValueConfigsRequest {
-  /// The resource value configs to be created.
-  ///
-  /// Required.
   core.List<CreateResourceValueConfigRequest>? requests;
 
   BatchCreateResourceValueConfigsRequest({this.requests});
@@ -11383,9 +8964,7 @@ class BatchCreateResourceValueConfigsRequest {
   }
 }
 
-/// Response message for BatchCreateResourceValueConfigs
 class BatchCreateResourceValueConfigsResponse {
-  /// The resource value configs created
   core.List<GoogleCloudSecuritycenterV1ResourceValueConfig>?
   resourceValueConfigs;
 
@@ -11409,84 +8988,9 @@ class BatchCreateResourceValueConfigsResponse {
   }
 }
 
-/// Associates `members`, or principals, with a `role`.
 class Binding {
-  /// The condition that is associated with this binding.
-  ///
-  /// If the condition evaluates to `true`, then this binding applies to the
-  /// current request. If the condition evaluates to `false`, then this binding
-  /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the principals in this
-  /// binding. To learn which resources support conditions in their IAM
-  /// policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
-
-  /// Specifies the principals requesting access for a Google Cloud resource.
-  ///
-  /// `members` can have the following values: * `allUsers`: A special
-  /// identifier that represents anyone who is on the internet; with or without
-  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
-  /// represents anyone who is authenticated with a Google account or a service
-  /// account. Does not include identities that come from external identity
-  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
-  /// address that represents a specific Google account. For example,
-  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
-  /// represents a Google service account. For example,
-  /// `my-other-app@appspot.gserviceaccount.com`. *
-  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
-  /// identifier for a
-  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
-  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
-  /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
-  /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. *
-  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
-  /// A single identity in a workforce identity pool. *
-  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
-  /// All workforce identities in a group. *
-  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
-  /// All workforce identities with a specific attribute value. *
-  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
-  /// / * `: All identities in a workforce identity pool. *
-  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
-  /// A single identity in a workload identity pool. *
-  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
-  /// A workload identity pool group. *
-  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
-  /// All identities in a workload identity pool with a certain attribute. *
-  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
-  /// / * `: All identities in a workload identity pool. *
-  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
-  /// identifier) representing a user that has been recently deleted. For
-  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
-  /// recovered, this value reverts to `user:{emailid}` and the recovered user
-  /// retains the role in the binding. *
-  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
-  /// unique identifier) representing a service account that has been recently
-  /// deleted. For example,
-  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
-  /// the service account is undeleted, this value reverts to
-  /// `serviceAccount:{emailid}` and the undeleted service account retains the
-  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
-  /// address (plus unique identifier) representing a Google group that has been
-  /// recently deleted. For example,
-  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
-  /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. *
-  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
-  /// Deleted single identity in a workforce identity pool. For example,
-  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
-
-  /// Role that is assigned to the list of `members`, or principals.
-  ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
-  /// overview of the IAM roles and permissions, see the
-  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
-  /// a list of the available pre-defined roles, see
-  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({this.condition, this.members, this.role});
@@ -11512,43 +9016,18 @@ class Binding {
   }
 }
 
-/// Request message for bulk findings update.
-///
-/// Note: 1. If multiple bulk update requests match the same resource, the order
-/// in which they get executed is not defined. 2. Once a bulk operation is
-/// started, there is no way to stop it.
 class BulkMuteFindingsRequest {
-  /// Expression that identifies findings that should be updated.
-  ///
-  /// The expression is a list of zero or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. The fields map to those
-  /// defined in the corresponding resource. The supported operators are: * `=`
-  /// for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`,
-  /// meaning substring matching, for strings. The supported value types are: *
-  /// string literals in quotes. * integer literals without quotes. * boolean
-  /// literals `true` and `false` without quotes.
   core.String? filter;
-
-  /// This can be a mute configuration name or any identifier for mute/unmute of
-  /// findings based on the filter.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? muteAnnotation;
 
-  /// All findings matching the given filter will have their mute state set to
-  /// this value.
   ///
-  /// The default value is `MUTED`. Setting this to `UNDEFINED` will clear the
-  /// mute state on all matching findings.
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "MUTE_STATE_UNSPECIFIED" : Unused.
-  /// - "MUTED" : Matching findings will be muted (default).
-  /// - "UNDEFINED" : Matching findings will have their mute state cleared.
+  /// - "MUTE_STATE_UNSPECIFIED"
+  /// - "MUTED"
+  /// - "UNDEFINED"
   core.String? muteState;
 
   BulkMuteFindingsRequest({this.filter, this.muteAnnotation, this.muteState});
@@ -11572,14 +9051,7 @@ class BulkMuteFindingsRequest {
   }
 }
 
-/// Contains details about a chokepoint, which is a resource or resource group
-/// where high-risk attack paths converge, based on
-/// [attack path simulations](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations).
 class Chokepoint {
-  /// List of resource names of findings associated with this chokepoint.
-  ///
-  /// For example, organizations/123/sources/456/findings/789. This list will
-  /// have at most 100 findings.
   core.List<core.String>? relatedFindings;
 
   Chokepoint({this.relatedFindings});
@@ -11597,33 +9069,12 @@ class Chokepoint {
   }
 }
 
-/// Fields related to Google Cloud Armor findings.
 class CloudArmor {
-  /// Information about potential Layer 7 DDoS attacks identified by
-  /// [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview).
   AdaptiveProtection? adaptiveProtection;
-
-  /// Information about DDoS attack volume and classification.
   Attack? attack;
-
-  /// Duration of attack from the start until the current moment (updated every
-  /// 5 minutes).
   core.String? duration;
-
-  /// Information about incoming requests evaluated by
-  /// [Google Cloud Armor security policies](https://cloud.google.com/armor/docs/security-policy-overview).
   Requests? requests;
-
-  /// Information about the
-  /// [Google Cloud Armor security policy](https://cloud.google.com/armor/docs/security-policy-overview)
-  /// relevant to the finding.
   SecurityPolicy? securityPolicy;
-
-  /// Distinguish between volumetric & protocol DDoS attack and application
-  /// layer attacks.
-  ///
-  /// For example, "L3_4" for Layer 3 and Layer 4 DDoS attacks, or "L_7" for
-  /// Layer 7 DDoS attacks.
   core.String? threatVector;
 
   CloudArmor({
@@ -11680,22 +9131,16 @@ class CloudArmor {
   }
 }
 
-/// CloudControl associated with the finding.
 class CloudControl {
-  /// Name of the CloudControl associated with the finding.
   core.String? cloudControlName;
-
-  /// Policy type of the CloudControl
   core.String? policyType;
 
-  /// Type of cloud control.
+  ///
   /// Possible string values are:
-  /// - "CLOUD_CONTROL_TYPE_UNSPECIFIED" : Unspecified.
-  /// - "BUILT_IN" : Built in Cloud Control.
-  /// - "CUSTOM" : Custom Cloud Control.
+  /// - "CLOUD_CONTROL_TYPE_UNSPECIFIED"
+  /// - "BUILT_IN"
+  /// - "CUSTOM"
   core.String? type;
-
-  /// Version of the Cloud Control
   core.int? version;
 
   CloudControl({
@@ -11727,24 +9172,15 @@ class CloudControl {
   }
 }
 
-/// The [data profile](https://cloud.google.com/dlp/docs/data-profiles)
-/// associated with the finding.
 class CloudDlpDataProfile {
-  /// Name of the data profile, for example,
-  /// `projects/123/locations/europe/tableProfiles/8383929`.
   core.String? dataProfile;
-
-  /// Type of information detected by SDP.
-  ///
-  /// Info type includes name, version and sensitivity of the detected
-  /// information type.
   core.List<InfoType>? infoTypes;
 
-  /// The resource hierarchy level at which the data profile was generated.
+  ///
   /// Possible string values are:
-  /// - "PARENT_TYPE_UNSPECIFIED" : Unspecified parent type.
-  /// - "ORGANIZATION" : Organization-level configurations.
-  /// - "PROJECT" : Project-level configurations.
+  /// - "PARENT_TYPE_UNSPECIFIED"
+  /// - "ORGANIZATION"
+  /// - "PROJECT"
   core.String? parentType;
 
   CloudDlpDataProfile({this.dataProfile, this.infoTypes, this.parentType});
@@ -11774,24 +9210,10 @@ class CloudDlpDataProfile {
   }
 }
 
-/// Details about the Cloud Data Loss Prevention (Cloud DLP)
-/// [inspection job](https://cloud.google.com/dlp/docs/concepts-job-triggers)
-/// that produced the finding.
 class CloudDlpInspection {
-  /// Whether Cloud DLP scanned the complete resource or a sampled subset.
   core.bool? fullScan;
-
-  /// The type of information (or
-  /// *[infoType](https://cloud.google.com/dlp/docs/infotypes-reference)*)
-  /// found, for example, `EMAIL_ADDRESS` or `STREET_ADDRESS`.
   core.String? infoType;
-
-  /// The number of times Cloud DLP found this infoType within this job and
-  /// resource.
   core.String? infoTypeCount;
-
-  /// Name of the inspection job, for example,
-  /// `projects/123/locations/europe/dlpJobs/i-8383929`.
   core.String? inspectJob;
 
   CloudDlpInspection({
@@ -11823,25 +9245,10 @@ class CloudDlpInspection {
   }
 }
 
-/// Metadata taken from a
-/// [Cloud Logging LogEntry](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry)
 class CloudLoggingEntry {
-  /// A unique identifier for the log entry.
   core.String? insertId;
-
-  /// The type of the log (part of `log_name`.
-  ///
-  /// `log_name` is the resource name of the log to which this log entry
-  /// belongs). For example: `cloudresourcemanager.googleapis.com/activity`.
-  /// Note that this field is not URL-encoded, unlike the `LOG_ID` field in
-  /// `LogEntry`.
   core.String? logId;
-
-  /// The organization, folder, or project of the monitored resource that
-  /// produced this log entry.
   core.String? resourceContainer;
-
-  /// The time the event described by the log entry occurred.
   core.String? timestamp;
 
   CloudLoggingEntry({
@@ -11873,17 +9280,9 @@ class CloudLoggingEntry {
   }
 }
 
-/// Contains compliance information about a security standard indicating unmet
-/// recommendations.
 class Compliance {
-  /// Policies within the standard or benchmark, for example, A.12.4.1
   core.List<core.String>? ids;
-
-  /// Industry-wide compliance standards or benchmarks, such as CIS, PCI, and
-  /// OWASP.
   core.String? standard;
-
-  /// Version of the standard or benchmark, for example, 1.1
   core.String? version;
 
   Compliance({this.ids, this.standard, this.version});
@@ -11905,18 +9304,9 @@ class Compliance {
   }
 }
 
-/// Compliance Details associated with the finding.
 class ComplianceDetails {
-  /// CloudControl associated with the finding
   CloudControl? cloudControl;
-
-  /// Cloud Control Deployments associated with the finding.
-  ///
-  /// For example,
-  /// organizations/123/locations/global/cloudControlDeployments/deploymentIdentifier
   core.List<core.String>? cloudControlDeploymentNames;
-
-  /// Details of Frameworks associated with the finding
   core.List<Framework>? frameworks;
 
   ComplianceDetails({
@@ -11957,32 +9347,20 @@ class ComplianceDetails {
   }
 }
 
-/// Contains information about the IP connection associated with the finding.
 class Connection {
-  /// Destination IP address.
-  ///
-  /// Not present for sockets that are listening and not connected.
   core.String? destinationIp;
-
-  /// Destination port.
-  ///
-  /// Not present for sockets that are listening and not connected.
   core.int? destinationPort;
 
-  /// IANA Internet Protocol Number such as TCP(6) and UDP(17).
+  ///
   /// Possible string values are:
-  /// - "PROTOCOL_UNSPECIFIED" : Unspecified protocol (not HOPOPT).
-  /// - "ICMP" : Internet Control Message Protocol.
-  /// - "TCP" : Transmission Control Protocol.
-  /// - "UDP" : User Datagram Protocol.
-  /// - "GRE" : Generic Routing Encapsulation.
-  /// - "ESP" : Encap Security Payload.
+  /// - "PROTOCOL_UNSPECIFIED"
+  /// - "ICMP"
+  /// - "TCP"
+  /// - "UDP"
+  /// - "GRE"
+  /// - "ESP"
   core.String? protocol;
-
-  /// Source IP address.
   core.String? sourceIp;
-
-  /// Source port.
   core.int? sourcePort;
 
   Connection({
@@ -12018,27 +9396,9 @@ class Connection {
   }
 }
 
-/// The email address of a contact.
-class Contact {
-  /// An email address.
-  ///
-  /// For example, "`person123@company.com`".
-  core.String? email;
+typedef Contact = $Shared30;
 
-  Contact({this.email});
-
-  Contact.fromJson(core.Map json_)
-    : this(email: json_['email'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final email = this.email;
-    return {'email': ?email};
-  }
-}
-
-/// Details about specific contacts
 class ContactDetails {
-  /// A list of contacts
   core.List<Contact>? contacts;
 
   ContactDetails({this.contacts});
@@ -12060,26 +9420,11 @@ class ContactDetails {
   }
 }
 
-/// Container associated with the finding.
 class Container {
-  /// The time that the container was created.
   core.String? createTime;
-
-  /// Optional container image ID, if provided by the container runtime.
-  ///
-  /// Uniquely identifies the container image launched using a container image
-  /// digest.
   core.String? imageId;
-
-  /// Container labels, as provided by the container runtime.
   core.List<Label>? labels;
-
-  /// Name of the container.
   core.String? name;
-
-  /// Container image URI provided when configuring a pod or container.
-  ///
-  /// This string can identify a container image version using mutable tags.
   core.String? uri;
 
   Container({this.createTime, this.imageId, this.labels, this.name, this.uri});
@@ -12114,14 +9459,8 @@ class Container {
   }
 }
 
-/// Compliance control associated with the finding.
 class Control {
-  /// Name of the Control
   core.String? controlName;
-
-  /// Display name of the control.
-  ///
-  /// For example, AU-02.
   core.String? displayName;
 
   Control({this.controlName, this.displayName});
@@ -12139,16 +9478,8 @@ class Control {
   }
 }
 
-/// Request message to create single resource value config
 class CreateResourceValueConfigRequest {
-  /// Resource name of the new ResourceValueConfig's parent.
-  ///
-  /// Required.
   core.String? parent;
-
-  /// The resource value config being created.
-  ///
-  /// Required.
   GoogleCloudSecuritycenterV1ResourceValueConfig? resourceValueConfig;
 
   CreateResourceValueConfigRequest({this.parent, this.resourceValueConfig});
@@ -12171,31 +9502,10 @@ class CreateResourceValueConfigRequest {
   }
 }
 
-/// An error encountered while validating the uploaded configuration of an Event
-/// Threat Detection Custom Module.
 class CustomModuleValidationError {
-  /// A description of the error, suitable for human consumption.
-  ///
-  /// Required.
   core.String? description;
-
-  /// The end position of the error in the uploaded text version of the module.
-  ///
-  /// This field may be omitted if no specific position applies, or if one could
-  /// not be computed.
   Position? end;
-
-  /// The path, in RFC 8901 JSON Pointer format, to the field that failed
-  /// validation.
-  ///
-  /// This may be left empty if no specific field is affected.
   core.String? fieldPath;
-
-  /// The initial position of the error in the uploaded text version of the
-  /// module.
-  ///
-  /// This field may be omitted if no specific position applies, or if one could
-  /// not be computed.
   Position? start;
 
   CustomModuleValidationError({
@@ -12235,10 +9545,7 @@ class CustomModuleValidationError {
   }
 }
 
-/// A list of zero or more errors encountered while validating the uploaded
-/// configuration of an Event Threat Detection Custom Module.
 class CustomModuleValidationErrors {
-  /// The list of errors.
   core.List<CustomModuleValidationError>? errors;
 
   CustomModuleValidationErrors({this.errors});
@@ -12260,65 +9567,33 @@ class CustomModuleValidationErrors {
   }
 }
 
-/// CVE stands for Common Vulnerabilities and Exposures.
-///
-/// Information from the
-/// [CVE record](https://www.cve.org/ResourcesSupport/Glossary) that describes
-/// this vulnerability.
 class Cve {
-  /// Describe Common Vulnerability Scoring System specified at
-  /// https://www.first.org/cvss/v3.1/specification-document
   Cvssv3? cvssv3;
-
-  /// Date the first publicly available exploit or PoC was released.
   core.String? exploitReleaseDate;
 
-  /// The exploitation activity of the vulnerability in the wild.
-  /// Possible string values are:
-  /// - "EXPLOITATION_ACTIVITY_UNSPECIFIED" : Invalid or empty value.
-  /// - "WIDE" : Exploitation has been reported or confirmed to widely occur.
-  /// - "CONFIRMED" : Limited reported or confirmed exploitation activities.
-  /// - "AVAILABLE" : Exploit is publicly available.
-  /// - "ANTICIPATED" : No known exploitation activity, but has a high potential
-  /// for exploitation.
-  /// - "NO_KNOWN" : No known exploitation activity.
-  core.String? exploitationActivity;
-
-  /// Date of the earliest known exploitation.
-  core.String? firstExploitationDate;
-
-  /// The unique identifier for the vulnerability.
   ///
-  /// e.g. CVE-2021-34527
+  /// Possible string values are:
+  /// - "EXPLOITATION_ACTIVITY_UNSPECIFIED"
+  /// - "WIDE"
+  /// - "CONFIRMED"
+  /// - "AVAILABLE"
+  /// - "ANTICIPATED"
+  /// - "NO_KNOWN"
+  core.String? exploitationActivity;
+  core.String? firstExploitationDate;
   core.String? id;
 
-  /// The potential impact of the vulnerability if it was to be exploited.
-  /// Possible string values are:
-  /// - "RISK_RATING_UNSPECIFIED" : Invalid or empty value.
-  /// - "LOW" : Exploitation would have little to no security impact.
-  /// - "MEDIUM" : Exploitation would enable attackers to perform activities, or
-  /// could allow attackers to have a direct impact, but would require
-  /// additional steps.
-  /// - "HIGH" : Exploitation would enable attackers to have a notable direct
-  /// impact without needing to overcome any major mitigating factors.
-  /// - "CRITICAL" : Exploitation would fundamentally undermine the security of
-  /// affected systems, enable actors to perform significant attacks with
-  /// minimal effort, with little to no mitigating factors to overcome.
-  core.String? impact;
-
-  /// Whether or not the vulnerability has been observed in the wild.
-  core.bool? observedInTheWild;
-
-  /// Additional information about the CVE.
   ///
-  /// e.g. https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527
+  /// Possible string values are:
+  /// - "RISK_RATING_UNSPECIFIED"
+  /// - "LOW"
+  /// - "MEDIUM"
+  /// - "HIGH"
+  /// - "CRITICAL"
+  core.String? impact;
+  core.bool? observedInTheWild;
   core.List<Reference>? references;
-
-  /// Whether upstream fix is available for the CVE.
   core.bool? upstreamFixAvailable;
-
-  /// Whether or not the vulnerability was zero day when the finding was
-  /// published.
   core.bool? zeroDay;
 
   Cve({
@@ -12384,110 +9659,68 @@ class Cve {
   }
 }
 
-/// Common Vulnerability Scoring System version 3.
 class Cvssv3 {
-  /// This metric describes the conditions beyond the attacker's control that
-  /// must exist in order to exploit the vulnerability.
+  ///
   /// Possible string values are:
-  /// - "ATTACK_COMPLEXITY_UNSPECIFIED" : Invalid value.
-  /// - "ATTACK_COMPLEXITY_LOW" : Specialized access conditions or extenuating
-  /// circumstances do not exist. An attacker can expect repeatable success when
-  /// attacking the vulnerable component.
-  /// - "ATTACK_COMPLEXITY_HIGH" : A successful attack depends on conditions
-  /// beyond the attacker's control. That is, a successful attack cannot be
-  /// accomplished at will, but requires the attacker to invest in some
-  /// measurable amount of effort in preparation or execution against the
-  /// vulnerable component before a successful attack can be expected.
+  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
+  /// - "ATTACK_COMPLEXITY_LOW"
+  /// - "ATTACK_COMPLEXITY_HIGH"
   core.String? attackComplexity;
 
-  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
-  /// that are constant over time and across user environments.
   ///
-  /// This metric reflects the context by which vulnerability exploitation is
-  /// possible.
   /// Possible string values are:
-  /// - "ATTACK_VECTOR_UNSPECIFIED" : Invalid value.
-  /// - "ATTACK_VECTOR_NETWORK" : The vulnerable component is bound to the
-  /// network stack and the set of possible attackers extends beyond the other
-  /// options listed below, up to and including the entire Internet.
-  /// - "ATTACK_VECTOR_ADJACENT" : The vulnerable component is bound to the
-  /// network stack, but the attack is limited at the protocol level to a
-  /// logically adjacent topology.
-  /// - "ATTACK_VECTOR_LOCAL" : The vulnerable component is not bound to the
-  /// network stack and the attacker's path is via read/write/execute
-  /// capabilities.
-  /// - "ATTACK_VECTOR_PHYSICAL" : The attack requires the attacker to
-  /// physically touch or manipulate the vulnerable component.
+  /// - "ATTACK_VECTOR_UNSPECIFIED"
+  /// - "ATTACK_VECTOR_NETWORK"
+  /// - "ATTACK_VECTOR_ADJACENT"
+  /// - "ATTACK_VECTOR_LOCAL"
+  /// - "ATTACK_VECTOR_PHYSICAL"
   core.String? attackVector;
 
-  /// This metric measures the impact to the availability of the impacted
-  /// component resulting from a successfully exploited vulnerability.
+  ///
   /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED" : Invalid value.
-  /// - "IMPACT_HIGH" : High impact.
-  /// - "IMPACT_LOW" : Low impact.
-  /// - "IMPACT_NONE" : No impact.
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
   core.String? availabilityImpact;
-
-  /// The base score is a function of the base metric scores.
   core.double? baseScore;
 
-  /// This metric measures the impact to the confidentiality of the information
-  /// resources managed by a software component due to a successfully exploited
-  /// vulnerability.
+  ///
   /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED" : Invalid value.
-  /// - "IMPACT_HIGH" : High impact.
-  /// - "IMPACT_LOW" : Low impact.
-  /// - "IMPACT_NONE" : No impact.
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
   core.String? confidentialityImpact;
 
-  /// This metric measures the impact to integrity of a successfully exploited
-  /// vulnerability.
+  ///
   /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED" : Invalid value.
-  /// - "IMPACT_HIGH" : High impact.
-  /// - "IMPACT_LOW" : Low impact.
-  /// - "IMPACT_NONE" : No impact.
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
   core.String? integrityImpact;
 
-  /// This metric describes the level of privileges an attacker must possess
-  /// before successfully exploiting the vulnerability.
+  ///
   /// Possible string values are:
-  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED" : Invalid value.
-  /// - "PRIVILEGES_REQUIRED_NONE" : The attacker is unauthorized prior to
-  /// attack, and therefore does not require any access to settings or files of
-  /// the vulnerable system to carry out an attack.
-  /// - "PRIVILEGES_REQUIRED_LOW" : The attacker requires privileges that
-  /// provide basic user capabilities that could normally affect only settings
-  /// and files owned by a user. Alternatively, an attacker with Low privileges
-  /// has the ability to access only non-sensitive resources.
-  /// - "PRIVILEGES_REQUIRED_HIGH" : The attacker requires privileges that
-  /// provide significant (e.g., administrative) control over the vulnerable
-  /// component allowing access to component-wide settings and files.
+  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
+  /// - "PRIVILEGES_REQUIRED_NONE"
+  /// - "PRIVILEGES_REQUIRED_LOW"
+  /// - "PRIVILEGES_REQUIRED_HIGH"
   core.String? privilegesRequired;
 
-  /// The Scope metric captures whether a vulnerability in one vulnerable
-  /// component impacts resources in components beyond its security scope.
+  ///
   /// Possible string values are:
-  /// - "SCOPE_UNSPECIFIED" : Invalid value.
-  /// - "SCOPE_UNCHANGED" : An exploited vulnerability can only affect resources
-  /// managed by the same security authority.
-  /// - "SCOPE_CHANGED" : An exploited vulnerability can affect resources beyond
-  /// the security scope managed by the security authority of the vulnerable
-  /// component.
+  /// - "SCOPE_UNSPECIFIED"
+  /// - "SCOPE_UNCHANGED"
+  /// - "SCOPE_CHANGED"
   core.String? scope;
 
-  /// This metric captures the requirement for a human user, other than the
-  /// attacker, to participate in the successful compromise of the vulnerable
-  /// component.
+  ///
   /// Possible string values are:
-  /// - "USER_INTERACTION_UNSPECIFIED" : Invalid value.
-  /// - "USER_INTERACTION_NONE" : The vulnerable system can be exploited without
-  /// interaction from any user.
-  /// - "USER_INTERACTION_REQUIRED" : Successful exploitation of this
-  /// vulnerability requires a user to take some action before the vulnerability
-  /// can be exploited.
+  /// - "USER_INTERACTION_UNSPECIFIED"
+  /// - "USER_INTERACTION_NONE"
+  /// - "USER_INTERACTION_REQUIRED"
   core.String? userInteraction;
 
   Cvssv3({
@@ -12539,16 +9772,8 @@ class Cvssv3 {
   }
 }
 
-/// CWE stands for Common Weakness Enumeration.
-///
-/// Information about this weakness, as described by
-/// [CWE](https://cwe.mitre.org/).
 class Cwe {
-  /// The CWE identifier, e.g. CWE-94
   core.String? id;
-
-  /// Any reference to the details on the CWE, for example,
-  /// https://cwe.mitre.org/data/definitions/94.html
   core.List<Reference>? references;
 
   Cwe({this.id, this.references});
@@ -12572,27 +9797,17 @@ class Cwe {
   }
 }
 
-/// Details about a data access attempt made by a principal not authorized under
-/// applicable data security policy.
 class DataAccessEvent {
-  /// Unique identifier for data access event.
   core.String? eventId;
-
-  /// Timestamp of data access event.
   core.String? eventTime;
 
-  /// The operation performed by the principal to access the data.
-  /// Possible string values are:
-  /// - "OPERATION_UNSPECIFIED" : The operation is unspecified.
-  /// - "READ" : Represents a read operation.
-  /// - "MOVE" : Represents a move operation.
-  /// - "COPY" : Represents a copy operation.
-  core.String? operation;
-
-  /// The email address of the principal that accessed the data.
   ///
-  /// The principal could be a user account, service account, Google group, or
-  /// other.
+  /// Possible string values are:
+  /// - "OPERATION_UNSPECIFIED"
+  /// - "READ"
+  /// - "MOVE"
+  /// - "COPY"
+  core.String? operation;
   core.String? principalEmail;
 
   DataAccessEvent({
@@ -12624,31 +9839,18 @@ class DataAccessEvent {
   }
 }
 
-/// Details about a data flow event, in which either the data is moved to or is
-/// accessed from a non-compliant geo-location, as defined in the applicable
-/// data security policy.
 class DataFlowEvent {
-  /// Unique identifier for data flow event.
   core.String? eventId;
-
-  /// Timestamp of data flow event.
   core.String? eventTime;
 
-  /// The operation performed by the principal for the data flow event.
-  /// Possible string values are:
-  /// - "OPERATION_UNSPECIFIED" : The operation is unspecified.
-  /// - "READ" : Represents a read operation.
-  /// - "MOVE" : Represents a move operation.
-  /// - "COPY" : Represents a copy operation.
-  core.String? operation;
-
-  /// The email address of the principal that initiated the data flow event.
   ///
-  /// The principal could be a user account, service account, Google group, or
-  /// other.
+  /// Possible string values are:
+  /// - "OPERATION_UNSPECIFIED"
+  /// - "READ"
+  /// - "MOVE"
+  /// - "COPY"
+  core.String? operation;
   core.String? principalEmail;
-
-  /// Non-compliant location of the principal or the data destination.
   core.String? violatedLocation;
 
   DataFlowEvent({
@@ -12684,54 +9886,19 @@ class DataFlowEvent {
   }
 }
 
-/// Details about data retention deletion violations, in which the data is
-/// non-compliant based on their retention or deletion time, as defined in the
-/// applicable data security policy.
-///
-/// The Data Retention Deletion (DRD) control is a control of the DSPM (Data
-/// Security Posture Management) suite that enables organizations to manage data
-/// retention and deletion policies in compliance with regulations, such as GDPR
-/// and CRPA. DRD supports two primary policy types: maximum storage length (max
-/// TTL) and minimum storage length (min TTL). Both are aimed at helping
-/// organizations meet regulatory and data management commitments.
 class DataRetentionDeletionEvent {
-  /// Number of objects that violated the policy for this resource.
-  ///
-  /// If the number is less than 1,000, then the value of this field is the
-  /// exact number. If the number of objects that violated the policy is greater
-  /// than or equal to 1,000, then the value of this field is 1000.
   core.String? dataObjectCount;
-
-  /// Timestamp indicating when the event was detected.
   core.String? eventDetectionTime;
 
-  /// Type of the DRD event.
+  ///
   /// Possible string values are:
-  /// - "EVENT_TYPE_UNSPECIFIED" : Unspecified event type.
-  /// - "EVENT_TYPE_MAX_TTL_EXCEEDED" : Deprecated: This field is pending
-  /// removal. Use EVENT_TYPE_MAX_TTL_FROM_CREATION or
-  /// EVENT_TYPE_MAX_TTL_FROM_LAST_MODIFICATION instead.
-  /// - "EVENT_TYPE_MAX_TTL_FROM_CREATION" : Max TTL from the asset's creation
-  /// time.
-  /// - "EVENT_TYPE_MAX_TTL_FROM_LAST_MODIFICATION" : Max TTL from the asset's
-  /// last modification time.
-  /// - "EVENT_TYPE_MIN_TTL_FROM_CREATION" : Min TTL from the asset's creation
-  /// time.
+  /// - "EVENT_TYPE_UNSPECIFIED"
+  /// - "EVENT_TYPE_MAX_TTL_EXCEEDED"
+  /// - "EVENT_TYPE_MAX_TTL_FROM_CREATION"
+  /// - "EVENT_TYPE_MAX_TTL_FROM_LAST_MODIFICATION"
+  /// - "EVENT_TYPE_MIN_TTL_FROM_CREATION"
   core.String? eventType;
-
-  /// Maximum duration of retention allowed from the DRD control.
-  ///
-  /// This comes from the DRD control where users set a max TTL for their data.
-  /// For example, suppose that a user sets the max TTL for a Cloud Storage
-  /// bucket to 90 days. However, an object in that bucket is 100 days old. In
-  /// this case, a DataRetentionDeletionEvent will be generated for that Cloud
-  /// Storage bucket, and the max_retention_allowed is 90 days.
   core.String? maxRetentionAllowed;
-
-  /// Min duration of retention allowed from the DSPM retention control.
-  ///
-  /// This field is only populated when event type is set to
-  /// EVENT_TYPE_MIN_TTL_FROM_CREATION.
   core.String? minRetentionAllowed;
 
   DataRetentionDeletionEvent({
@@ -12767,46 +9934,12 @@ class DataRetentionDeletionEvent {
   }
 }
 
-/// Represents database access information, such as queries.
-///
-/// A database may be a sub-resource of an instance (as in the case of Cloud SQL
-/// instances or Cloud Spanner instances), or the database instance itself. Some
-/// database resources might not have the
-/// [full resource name](https://google.aip.dev/122#full-resource-names)
-/// populated because these resource types, such as Cloud SQL databases, are not
-/// yet supported by Cloud Asset Inventory. In these cases only the display name
-/// is provided.
 class Database {
-  /// The human-readable name of the database that the user connected to.
   core.String? displayName;
-
-  /// The target usernames, roles, or groups of an SQL privilege grant, which is
-  /// not an IAM policy change.
   core.List<core.String>? grantees;
-
-  /// Some database resources may not have the
-  /// [full resource name](https://google.aip.dev/122#full-resource-names)
-  /// populated because these resource types are not yet supported by Cloud
-  /// Asset Inventory (e.g. Cloud SQL databases).
-  ///
-  /// In these cases only the display name will be provided. The
-  /// [full resource name](https://google.aip.dev/122#full-resource-names) of
-  /// the database that the user connected to, if it is supported by Cloud Asset
-  /// Inventory.
   core.String? name;
-
-  /// The SQL statement that is associated with the database access.
   core.String? query;
-
-  /// The username used to connect to the database.
-  ///
-  /// The username might not be an IAM principal and does not have a set format.
   core.String? userName;
-
-  /// The version of the database, for example, POSTGRES_14.
-  ///
-  /// See
-  /// [the complete list](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/SqlDatabaseVersion).
   core.String? version;
 
   Database({
@@ -12848,17 +9981,9 @@ class Database {
   }
 }
 
-/// Vertex AI dataset associated with the finding.
 class Dataset {
-  /// The user defined display name of dataset, e.g. plants-dataset
   core.String? displayName;
-
-  /// Resource name of the dataset, e.g.
-  /// projects/{project}/locations/{location}/datasets/2094040236064505856
   core.String? name;
-
-  /// Data source, such as BigQuery source URI, e.g.
-  /// bq://scc-nexus-test.AIPPtest.gsod
   core.String? source;
 
   Dataset({this.displayName, this.name, this.source});
@@ -12878,11 +10003,7 @@ class Dataset {
   }
 }
 
-/// Denied IP rule.
 class Denied {
-  /// Optional list of denied IP rules.
-  ///
-  /// Optional.
   core.List<IpRule>? ipRules;
 
   Denied({this.ipRules});
@@ -12903,13 +10024,8 @@ class Denied {
   }
 }
 
-/// Memory hash detection contributing to the binary family match.
 class Detection {
-  /// The name of the binary associated with the memory hash signature
-  /// detection.
   core.String? binary;
-
-  /// The percentage of memory page hashes in the signature that were matched.
   core.double? percentPagesMatched;
 
   Detection({this.binary, this.percentPagesMatched});
@@ -12928,33 +10044,70 @@ class Detection {
   }
 }
 
-/// Represents discovered, customer managed workload that is not registered with
-/// the respective GCP service.
-class DiscoveredWorkload {
-  /// The confidence in detection of this workload.
+class DetectorReference {
+  core.String? detectorId;
+  core.String? displayName;
+  core.String? explanation;
+  core.String? recommendation;
+
+  ///
   /// Possible string values are:
-  /// - "CONFIDENCE_UNSPECIFIED" : Unspecified confidence level.
-  /// - "CONFIDENCE_HIGH" : High confidence in detection of a workload.
+  /// - "SEVERITY_UNSPECIFIED"
+  /// - "CRITICAL"
+  /// - "HIGH"
+  /// - "MEDIUM"
+  /// - "LOW"
+  core.String? severity;
+
+  DetectorReference({
+    this.detectorId,
+    this.displayName,
+    this.explanation,
+    this.recommendation,
+    this.severity,
+  });
+
+  DetectorReference.fromJson(core.Map json_)
+    : this(
+        detectorId: json_['detectorId'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        explanation: json_['explanation'] as core.String?,
+        recommendation: json_['recommendation'] as core.String?,
+        severity: json_['severity'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectorId = this.detectorId;
+    final displayName = this.displayName;
+    final explanation = this.explanation;
+    final recommendation = this.recommendation;
+    final severity = this.severity;
+    return {
+      'detectorId': ?detectorId,
+      'displayName': ?displayName,
+      'explanation': ?explanation,
+      'recommendation': ?recommendation,
+      'severity': ?severity,
+    };
+  }
+}
+
+class DiscoveredWorkload {
+  ///
+  /// Possible string values are:
+  /// - "CONFIDENCE_UNSPECIFIED"
+  /// - "CONFIDENCE_HIGH"
   core.String? confidence;
-
-  /// A boolean flag set to true if associated hardware strongly predicts the
-  /// workload type.
   core.bool? detectedRelevantHardware;
-
-  /// A boolean flag set to true if associated keywords strongly predict the
-  /// workload type.
   core.bool? detectedRelevantKeywords;
-
-  /// A boolean flag set to true if installed packages strongly predict the
-  /// workload type.
   core.bool? detectedRelevantPackages;
 
-  /// The type of workload.
+  ///
   /// Possible string values are:
-  /// - "WORKLOAD_TYPE_UNSPECIFIED" : Unspecified workload type
-  /// - "MCP_SERVER" : A workload of type MCP Server
-  /// - "AI_INFERENCE" : A workload of type AI Inference
-  /// - "AGENT" : A workload of type LLM Agent
+  /// - "WORKLOAD_TYPE_UNSPECIFIED"
+  /// - "MCP_SERVER"
+  /// - "AI_INFERENCE"
+  /// - "AGENT"
   core.String? workloadType;
 
   DiscoveredWorkload({
@@ -12993,31 +10146,10 @@ class DiscoveredWorkload {
   }
 }
 
-/// Contains information about the disk associated with the finding.
-class Disk {
-  /// The name of the disk, for example,
-  /// "https://www.googleapis.com/compute/v1/projects/{project-id}/zones/{zone-id}/disks/{disk-id}".
-  core.String? name;
+typedef Disk = $Shared00;
 
-  Disk({this.name});
-
-  Disk.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    return {'name': ?name};
-  }
-}
-
-/// Path of the file in terms of underlying disk/partition identifiers.
 class DiskPath {
-  /// UUID of the partition (format
-  /// https://wiki.archlinux.org/title/persistent_block_device_naming#by-uuid)
   core.String? partitionUuid;
-
-  /// Relative path of the file in the partition as a JSON encoded string.
-  ///
-  /// Example: /home/user1/executable_file.sh
   core.String? relativePath;
 
   DiskPath({this.partitionUuid, this.relativePath});
@@ -13035,15 +10167,8 @@ class DiskPath {
   }
 }
 
-/// The record of a dynamic mute rule that matches the finding.
 class DynamicMuteRecord {
-  /// When the dynamic mute rule first matched the finding.
   core.String? matchTime;
-
-  /// The relative resource name of the mute rule, represented by a mute config,
-  /// that created this record, for example
-  /// `organizations/123/muteConfigs/mymuteconfig` or
-  /// `organizations/123/locations/global/muteConfigs/mymuteconfig`.
   core.String? muteConfig;
 
   DynamicMuteRecord({this.matchTime, this.muteConfig});
@@ -13061,71 +10186,30 @@ class DynamicMuteRecord {
   }
 }
 
-/// An EffectiveEventThreatDetectionCustomModule is the representation of an
-/// Event Threat Detection custom module at a specified level of the resource
-/// hierarchy: organization, folder, or project.
-///
-/// If a custom module is inherited from a parent organization or folder, the
-/// value of the `enablement_state` property in
-/// EffectiveEventThreatDetectionCustomModule is set to the value that is
-/// effective in the parent, instead of `INHERITED`. For example, if the module
-/// is enabled in a parent organization or folder, the effective
-/// `enablement_state` for the module in all child folders or projects is also
-/// `enabled`. EffectiveEventThreatDetectionCustomModule is read-only.
 class EffectiveEventThreatDetectionCustomModule {
-  /// The cloud provider of the custom module.
+  ///
   /// Possible string values are:
-  /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
-  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud.
-  /// - "AMAZON_WEB_SERVICES" : Amazon Web Services.
-  /// - "MICROSOFT_AZURE" : Microsoft Azure.
+  /// - "CLOUD_PROVIDER_UNSPECIFIED"
+  /// - "GOOGLE_CLOUD_PLATFORM"
+  /// - "AMAZON_WEB_SERVICES"
+  /// - "MICROSOFT_AZURE"
   core.String? cloudProvider;
 
-  /// Config for the effective module.
   ///
-  /// Output only.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? config;
-
-  /// The description for the module.
-  ///
-  /// Output only.
   core.String? description;
-
-  /// The human readable name to be displayed for the module.
-  ///
-  /// Output only.
   core.String? displayName;
 
-  /// The effective state of enablement for the module at the given level of the
-  /// hierarchy.
   ///
-  /// Output only.
   /// Possible string values are:
-  /// - "ENABLEMENT_STATE_UNSPECIFIED" : Unspecified enablement state.
-  /// - "ENABLED" : The module is enabled at the given level.
-  /// - "DISABLED" : The module is disabled at the given level.
+  /// - "ENABLEMENT_STATE_UNSPECIFIED"
+  /// - "ENABLED"
+  /// - "DISABLED"
   core.String? enablementState;
-
-  /// The resource name of the effective ETD custom module.
-  ///
-  /// Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
-  /// *
-  /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
-  ///
-  /// Output only.
   core.String? name;
-
-  /// Type for the module.
-  ///
-  /// e.g. CONFIGURABLE_BAD_IP.
-  ///
-  /// Output only.
   core.String? type;
 
   EffectiveEventThreatDetectionCustomModule({
@@ -13171,21 +10255,10 @@ class EffectiveEventThreatDetectionCustomModule {
   }
 }
 
-/// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs.
-///
-/// A typical example is to use it as the request or the response type of an API
-/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// A name-value pair representing an environment variable used in an operating
-/// system process.
 class EnvironmentVariable {
-  /// Environment variable name as a JSON encoded string.
   core.String? name;
-
-  /// Environment variable value as a JSON encoded string.
   core.String? val;
 
   EnvironmentVariable({this.name, this.val});
@@ -13203,79 +10276,35 @@ class EnvironmentVariable {
   }
 }
 
-/// Represents an instance of an Event Threat Detection custom module, including
-/// its full module name, display name, enablement state, and last updated time.
-///
-/// You can create a custom module at the organization, folder, or project
-/// level. Custom modules that you create at the organization or folder level
-/// are inherited by child folders and projects.
 class EventThreatDetectionCustomModule {
-  /// The closest ancestor module that this module inherits the enablement state
-  /// from.
-  ///
-  /// The format is the same as the EventThreatDetectionCustomModule resource
-  /// name.
-  ///
-  /// Output only.
   core.String? ancestorModule;
 
-  /// The cloud provider of the custom module.
+  ///
   /// Possible string values are:
-  /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
-  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud.
-  /// - "AMAZON_WEB_SERVICES" : Amazon Web Services (AWS).
-  /// - "MICROSOFT_AZURE" : Microsoft Azure.
+  /// - "CLOUD_PROVIDER_UNSPECIFIED"
+  /// - "GOOGLE_CLOUD_PLATFORM"
+  /// - "AMAZON_WEB_SERVICES"
+  /// - "MICROSOFT_AZURE"
   core.String? cloudProvider;
 
-  /// Config for the module.
   ///
-  /// For the resident module, its config value is defined at this level. For
-  /// the inherited module, its config value is inherited from the ancestor
-  /// module.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? config;
-
-  /// The description for the module.
   core.String? description;
-
-  /// The human readable name to be displayed for the module.
   core.String? displayName;
 
-  /// The state of enablement for the module at the given level of the
-  /// hierarchy.
+  ///
   /// Possible string values are:
-  /// - "ENABLEMENT_STATE_UNSPECIFIED" : Unspecified enablement state.
-  /// - "ENABLED" : The module is enabled at the given level.
-  /// - "DISABLED" : The module is disabled at the given level.
-  /// - "INHERITED" : When the enablement state is inherited.
+  /// - "ENABLEMENT_STATE_UNSPECIFIED"
+  /// - "ENABLED"
+  /// - "DISABLED"
+  /// - "INHERITED"
   core.String? enablementState;
-
-  /// The editor the module was last updated by.
-  ///
-  /// Output only.
   core.String? lastEditor;
-
-  /// The resource name of the Event Threat Detection custom module.
-  ///
-  /// Its format is: *
-  /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`.
-  /// * `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`.
-  /// *
-  /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
-  ///
-  /// Immutable.
   core.String? name;
-
-  /// Type for the module.
-  ///
-  /// e.g. CONFIGURABLE_BAD_IP.
   core.String? type;
-
-  /// The time the module was last updated.
-  ///
-  /// Output only.
   core.String? updateTime;
 
   EventThreatDetectionCustomModule({
@@ -13333,18 +10362,8 @@ class EventThreatDetectionCustomModule {
   }
 }
 
-/// Resource where data was exfiltrated from or exfiltrated to.
 class ExfilResource {
-  /// Subcomponents of the asset that was exfiltrated, like URIs used during
-  /// exfiltration, table names, databases, and filenames.
-  ///
-  /// For example, multiple tables might have been exfiltrated from the same
-  /// Cloud SQL instance, or multiple files might have been exfiltrated from the
-  /// same Cloud Storage bucket.
   core.List<core.String>? components;
-
-  /// The resource's
-  /// [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name).
   core.String? name;
 
   ExfilResource({this.components, this.name});
@@ -13364,24 +10383,9 @@ class ExfilResource {
   }
 }
 
-/// Exfiltration represents a data exfiltration attempt from one or more sources
-/// to one or more targets.
-///
-/// The `sources` attribute lists the sources of the exfiltrated data. The
-/// `targets` attribute lists the destinations the data was copied to.
 class Exfiltration {
-  /// If there are multiple sources, then the data is considered "joined"
-  /// between them.
-  ///
-  /// For instance, BigQuery can join multiple tables, and each table would be
-  /// considered a source.
   core.List<ExfilResource>? sources;
-
-  /// If there are multiple targets, each target would get a complete copy of
-  /// the "joined" source data.
   core.List<ExfilResource>? targets;
-
-  /// Total exfiltrated bytes processed for the entire job.
   core.String? totalExfiltratedBytes;
 
   Exfiltration({this.sources, this.targets, this.totalExfiltratedBytes});
@@ -13417,83 +10421,78 @@ class Exfiltration {
   }
 }
 
-/// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax.
-///
-/// CEL is a C-like expression language. The syntax and semantics of CEL are
-/// documented at https://github.com/google/cel-spec. Example (Comparison):
-/// title: "Summary size limit" description: "Determines if a summary is less
-/// than 100 chars" expression: "document.summary.size() \< 100" Example
-/// (Equality): title: "Requestor is owner" description: "Determines if
-/// requestor is the document owner" expression: "document.owner ==
-/// request.auth.claims.email" Example (Logic): title: "Public documents"
-/// description: "Determine whether the document should be publicly visible"
-/// expression: "document.type != 'private' && document.type != 'internal'"
-/// Example (Data Manipulation): title: "Notification string" description:
-/// "Create a notification string with a timestamp." expression: "'New message
-/// received at ' + string(document.create_time)" The exact variables and
-/// functions that may be referenced within an expression are determined by the
-/// service that evaluates it. See the service documentation for additional
-/// information.
-typedef Expr = $Expr;
+class Expr {
+  core.String? description;
+  core.String? expression;
+  core.String? location;
+  core.String? title;
 
-/// Details about the externally exposed resource associated with the finding.
+  Expr({this.description, this.expression, this.location, this.title});
+
+  Expr.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        expression: json_['expression'] as core.String?,
+        location: json_['location'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final expression = this.expression;
+    final location = this.location;
+    final title = this.title;
+    return {
+      'description': ?description,
+      'expression': ?expression,
+      'location': ?location,
+      'title': ?title,
+    };
+  }
+}
+
 class ExternalExposure {
-  /// The full resource name of load balancer backend service, for example,
-  /// "//compute.googleapis.com/projects/{project-id}/global/backendServices/{name}".
+  core.String? backendBucket;
   core.String? backendService;
-
-  /// The resource which is running the exposed service, for example,
-  /// "//compute.googleapis.com/projects/{project-id}/zones/{zone}/instances/{instance}.”
+  core.String? exposedApplication;
   core.String? exposedEndpoint;
-
-  /// The name and version of the service, for example, "Jupyter Notebook
-  /// 6.14.0".
   core.String? exposedService;
-
-  /// The full resource name of the forwarding rule, for example,
-  /// "//compute.googleapis.com/projects/{project-id}/global/forwardingRules/{forwarding-rule-name}".
   core.String? forwardingRule;
-
-  /// The full resource name of the instance group, for example,
-  /// "//compute.googleapis.com/projects/{project-id}/global/instanceGroups/{name}".
+  core.String? hostnameUri;
+  core.List<HttpResponse>? httpResponse;
   core.String? instanceGroup;
-
-  /// The full resource name of the load balancer firewall policy, for example,
-  /// "//compute.googleapis.com/projects/{project-id}/global/firewallPolicies/{policy-name}".
+  core.String? internalBackendService;
   core.String? loadBalancerFirewallPolicy;
-
-  /// The full resource name of the network endpoint group, for example,
-  /// "//compute.googleapis.com/projects/{project-id}/global/networkEndpointGroups/{name}".
   core.String? networkEndpointGroup;
-
-  /// Private IP address of the exposed endpoint.
+  core.String? networkIngressFirewallPolicy;
+  core.String? networkPathInsightsGenerationTime;
   core.String? privateIpAddress;
-
-  /// Port number associated with private IP address.
   core.String? privatePort;
-
-  /// Public IP address of the exposed endpoint.
+  core.String? pscNetworkAttachment;
+  core.String? pscServiceAttachment;
   core.String? publicIpAddress;
-
-  /// Public port number of the exposed endpoint.
   core.String? publicPort;
-
-  /// The full resource name of the firewall policy of the exposed service, for
-  /// example,
-  /// "//compute.googleapis.com/projects/{project-id}/global/firewallPolicies/{policy-name}".
   core.String? serviceFirewallPolicy;
 
   ExternalExposure({
+    this.backendBucket,
     this.backendService,
+    this.exposedApplication,
     this.exposedEndpoint,
     this.exposedService,
     this.forwardingRule,
+    this.hostnameUri,
+    this.httpResponse,
     this.instanceGroup,
+    this.internalBackendService,
     this.loadBalancerFirewallPolicy,
     this.networkEndpointGroup,
+    this.networkIngressFirewallPolicy,
+    this.networkPathInsightsGenerationTime,
     this.privateIpAddress,
     this.privatePort,
+    this.pscNetworkAttachment,
+    this.pscServiceAttachment,
     this.publicIpAddress,
     this.publicPort,
     this.serviceFirewallPolicy,
@@ -13501,44 +10500,80 @@ class ExternalExposure {
 
   ExternalExposure.fromJson(core.Map json_)
     : this(
+        backendBucket: json_['backendBucket'] as core.String?,
         backendService: json_['backendService'] as core.String?,
+        exposedApplication: json_['exposedApplication'] as core.String?,
         exposedEndpoint: json_['exposedEndpoint'] as core.String?,
         exposedService: json_['exposedService'] as core.String?,
         forwardingRule: json_['forwardingRule'] as core.String?,
+        hostnameUri: json_['hostnameUri'] as core.String?,
+        httpResponse: (json_['httpResponse'] as core.List?)
+            ?.map(
+              (value) => HttpResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         instanceGroup: json_['instanceGroup'] as core.String?,
+        internalBackendService: json_['internalBackendService'] as core.String?,
         loadBalancerFirewallPolicy:
             json_['loadBalancerFirewallPolicy'] as core.String?,
         networkEndpointGroup: json_['networkEndpointGroup'] as core.String?,
+        networkIngressFirewallPolicy:
+            json_['networkIngressFirewallPolicy'] as core.String?,
+        networkPathInsightsGenerationTime:
+            json_['networkPathInsightsGenerationTime'] as core.String?,
         privateIpAddress: json_['privateIpAddress'] as core.String?,
         privatePort: json_['privatePort'] as core.String?,
+        pscNetworkAttachment: json_['pscNetworkAttachment'] as core.String?,
+        pscServiceAttachment: json_['pscServiceAttachment'] as core.String?,
         publicIpAddress: json_['publicIpAddress'] as core.String?,
         publicPort: json_['publicPort'] as core.String?,
         serviceFirewallPolicy: json_['serviceFirewallPolicy'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final backendBucket = this.backendBucket;
     final backendService = this.backendService;
+    final exposedApplication = this.exposedApplication;
     final exposedEndpoint = this.exposedEndpoint;
     final exposedService = this.exposedService;
     final forwardingRule = this.forwardingRule;
+    final hostnameUri = this.hostnameUri;
+    final httpResponse = this.httpResponse;
     final instanceGroup = this.instanceGroup;
+    final internalBackendService = this.internalBackendService;
     final loadBalancerFirewallPolicy = this.loadBalancerFirewallPolicy;
     final networkEndpointGroup = this.networkEndpointGroup;
+    final networkIngressFirewallPolicy = this.networkIngressFirewallPolicy;
+    final networkPathInsightsGenerationTime =
+        this.networkPathInsightsGenerationTime;
     final privateIpAddress = this.privateIpAddress;
     final privatePort = this.privatePort;
+    final pscNetworkAttachment = this.pscNetworkAttachment;
+    final pscServiceAttachment = this.pscServiceAttachment;
     final publicIpAddress = this.publicIpAddress;
     final publicPort = this.publicPort;
     final serviceFirewallPolicy = this.serviceFirewallPolicy;
     return {
+      'backendBucket': ?backendBucket,
       'backendService': ?backendService,
+      'exposedApplication': ?exposedApplication,
       'exposedEndpoint': ?exposedEndpoint,
       'exposedService': ?exposedService,
       'forwardingRule': ?forwardingRule,
+      'hostnameUri': ?hostnameUri,
+      'httpResponse': ?httpResponse,
       'instanceGroup': ?instanceGroup,
+      'internalBackendService': ?internalBackendService,
       'loadBalancerFirewallPolicy': ?loadBalancerFirewallPolicy,
       'networkEndpointGroup': ?networkEndpointGroup,
+      'networkIngressFirewallPolicy': ?networkIngressFirewallPolicy,
+      'networkPathInsightsGenerationTime': ?networkPathInsightsGenerationTime,
       'privateIpAddress': ?privateIpAddress,
       'privatePort': ?privatePort,
+      'pscNetworkAttachment': ?pscNetworkAttachment,
+      'pscServiceAttachment': ?pscServiceAttachment,
       'publicIpAddress': ?publicIpAddress,
       'publicPort': ?publicPort,
       'serviceFirewallPolicy': ?serviceFirewallPolicy,
@@ -13546,46 +10581,21 @@ class ExternalExposure {
   }
 }
 
-/// File information about the related binary/library used by an executable, or
-/// the script used by a script interpreter
 class File {
-  /// Prefix of the file contents as a JSON-encoded string.
   core.String? contents;
-
-  /// Path of the file in terms of underlying disk/partition identifiers.
   DiskPath? diskPath;
 
-  /// The load state of the file.
+  ///
   /// Possible string values are:
-  /// - "FILE_LOAD_STATE_UNSPECIFIED" : The file state is unspecified.
-  /// - "LOADED_BY_PROCESS" : The file is being used by an active process at the
-  /// time of scanning.
-  /// - "NOT_LOADED_BY_PROCESS" : The file is not being used by any active
-  /// process at the time of scanning.
+  /// - "FILE_LOAD_STATE_UNSPECIFIED"
+  /// - "LOADED_BY_PROCESS"
+  /// - "NOT_LOADED_BY_PROCESS"
   core.String? fileLoadState;
-
-  /// The length in bytes of the file prefix that was hashed.
-  ///
-  /// If hashed_size == size, any hashes reported represent the entire file.
   core.String? hashedSize;
-
-  /// Operation(s) performed on a file.
   core.List<FileOperation>? operations;
-
-  /// True when the hash covers only a prefix of the file.
   core.bool? partiallyHashed;
-
-  /// Absolute path of the file as a JSON encoded string.
   core.String? path;
-
-  /// SHA256 hash of the first hashed_size bytes of the file encoded as a hex
-  /// string.
-  ///
-  /// If hashed_size == size, sha256 represents the SHA256 hash of the entire
-  /// file.
   core.String? sha256;
-
-  /// Size of the file in bytes.
   core.String? size;
 
   File({
@@ -13647,16 +10657,15 @@ class File {
   }
 }
 
-/// Operation(s) performed on a file.
 class FileOperation {
-  /// The type of the operation
+  ///
   /// Possible string values are:
-  /// - "OPERATION_TYPE_UNSPECIFIED" : The operation is unspecified.
-  /// - "OPEN" : Represents an open operation.
-  /// - "READ" : Represents a read operation.
-  /// - "RENAME" : Represents a rename operation.
-  /// - "WRITE" : Represents a write operation.
-  /// - "EXECUTE" : Represents an execute operation.
+  /// - "OPERATION_TYPE_UNSPECIFIED"
+  /// - "OPEN"
+  /// - "READ"
+  /// - "RENAME"
+  /// - "WRITE"
+  /// - "EXECUTE"
   core.String? type;
 
   FileOperation({this.type});
@@ -13670,404 +10679,129 @@ class FileOperation {
   }
 }
 
-/// Security Command Center finding.
-///
-/// A finding is a record of assessment data like security, risk, health, or
-/// privacy, that is ingested into Security Command Center for presentation,
-/// notification, analysis, policy testing, and enforcement. For example, a
-/// cross-site scripting (XSS) vulnerability in an App Engine application is a
-/// finding.
 class Finding {
-  /// Access details associated with the finding, such as more information on
-  /// the caller, which method was accessed, and from where.
   Access? access;
-
-  /// AffectedResources associated with the finding.
   AffectedResources? affectedResources;
-
-  /// Agent data access events associated with the finding.
+  Agent? agent;
+  AgentAnomaly? agentAnomaly;
   core.List<AgentDataAccessEvent>? agentDataAccessEvents;
-
-  /// The AI model associated with the finding.
+  core.List<AgentSession>? agentSessions;
   AiModel? aiModel;
-
-  /// Represents an application associated with the finding.
   Application? application;
-
-  /// ArtifactGuardPolicies associated with the finding.
   ArtifactGuardPolicies? artifactGuardPolicies;
-
-  /// The results of an attack path simulation relevant to this finding.
   AttackExposure? attackExposure;
-
-  /// Fields related to Backup and DR findings.
   BackupDisasterRecovery? backupDisasterRecovery;
-
-  /// The canonical name of the finding.
-  ///
-  /// It's either
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or
-  /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}",
-  /// depending on the closest CRM ancestor of the resource associated with the
-  /// finding.
   core.String? canonicalName;
-
-  /// The additional taxonomy group within findings from a given source.
-  ///
-  /// This field is immutable after creation time. Example:
-  /// "XSS_FLASH_INJECTION"
   core.String? category;
-
-  /// Contains details about a chokepoint, which is a resource or resource group
-  /// where high-risk attack paths converge, based on
-  /// [attack path simulations](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations).
-  ///
-  /// This field cannot be updated. Its value is ignored in all update requests.
   Chokepoint? chokepoint;
-
-  /// Fields related to Cloud Armor findings.
   CloudArmor? cloudArmor;
-
-  /// Cloud DLP data profile that is associated with the finding.
   CloudDlpDataProfile? cloudDlpDataProfile;
-
-  /// Cloud Data Loss Prevention (Cloud DLP) inspection results that are
-  /// associated with the finding.
   CloudDlpInspection? cloudDlpInspection;
-
-  /// Details about the compliance implications of the finding.
   ComplianceDetails? complianceDetails;
-
-  /// Contains compliance information for security standards associated to the
-  /// finding.
   core.List<Compliance>? compliances;
-
-  /// Contains information about the IP connection associated with the finding.
   core.List<Connection>? connections;
-
-  /// Map containing the points of contact for the given finding.
-  ///
-  /// The key represents the type of contact, while the value contains a list of
-  /// all the contacts that pertain. Please refer to:
-  /// https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories
-  /// { "security": { "contacts": \[ { "email": "person1@company.com" }, {
-  /// "email": "person2@company.com" } \] } }
-  ///
-  /// Output only.
   core.Map<core.String, ContactDetails>? contacts;
-
-  /// Containers associated with the finding.
-  ///
-  /// This field provides information for both Kubernetes and non-Kubernetes
-  /// containers.
   core.List<Container>? containers;
-
-  /// The time at which the finding was created in Security Command Center.
   core.String? createTime;
-
-  /// Data access events associated with the finding.
   core.List<DataAccessEvent>? dataAccessEvents;
-
-  /// Data flow events associated with the finding.
   core.List<DataFlowEvent>? dataFlowEvents;
-
-  /// Data retention deletion events associated with the finding.
   core.List<DataRetentionDeletionEvent>? dataRetentionDeletionEvents;
-
-  /// Database associated with the finding.
   Database? database;
-
-  /// Contains more details about the finding.
   core.String? description;
-
-  /// DiscoveredWorkload associated with the finding.
   DiscoveredWorkload? discoveredWorkload;
-
-  /// Disk associated with the finding.
   Disk? disk;
-
-  /// The time the finding was first detected.
-  ///
-  /// If an existing finding is updated, then this is the time the update
-  /// occurred. For example, if the finding represents an open firewall, this
-  /// property captures the time the detector believes the firewall became open.
-  /// The accuracy is determined by the detector. If the finding is later
-  /// resolved, then this time reflects when the finding was resolved. This must
-  /// not be set to a value greater than the current timestamp.
   core.String? eventTime;
-
-  /// Represents exfiltrations associated with the finding.
   Exfiltration? exfiltration;
-
-  /// External exposure associated with the finding.
   ExternalExposure? externalExposure;
-
-  /// Third party SIEM/SOAR fields within SCC, contains external system
-  /// information and external system finding fields.
-  ///
-  /// Output only.
   core.Map<core.String, GoogleCloudSecuritycenterV1ExternalSystem>?
   externalSystems;
-
-  /// The URI that, if available, points to a web page outside of Security
-  /// Command Center where additional information about the finding can be
-  /// found.
-  ///
-  /// This field is guaranteed to be either empty or a well formed URL.
   core.String? externalUri;
-
-  /// File associated with the finding.
   core.List<File>? files;
 
-  /// The class of the finding.
+  ///
   /// Possible string values are:
-  /// - "FINDING_CLASS_UNSPECIFIED" : Unspecified finding class.
-  /// - "THREAT" : Describes unwanted or malicious activity.
-  /// - "VULNERABILITY" : Describes a potential weakness in software that
-  /// increases risk to Confidentiality & Integrity & Availability.
-  /// - "MISCONFIGURATION" : Describes a potential weakness in cloud
-  /// resource/asset configuration that increases risk.
-  /// - "OBSERVATION" : Describes a security observation that is for
-  /// informational purposes.
-  /// - "SCC_ERROR" : Describes an error that prevents some SCC functionality.
-  /// - "POSTURE_VIOLATION" : Describes a potential security risk due to a
-  /// change in the security posture.
-  /// - "TOXIC_COMBINATION" : Describes a group of security issues that, when
-  /// the issues occur together, represent a greater risk than when the issues
-  /// occur independently. A group of such issues is referred to as a toxic
-  /// combination.
-  /// - "SENSITIVE_DATA_RISK" : Describes a potential security risk to data
-  /// assets that contain sensitive data.
-  /// - "CHOKEPOINT" : Describes a resource or resource group where high risk
-  /// attack paths converge, based on attack path simulations (APS).
-  /// - "EXTERNAL_EXPOSURE" : Describes a potential security risk due to the
-  /// resource being exposed to the internet.
+  /// - "FINDING_CLASS_UNSPECIFIED"
+  /// - "THREAT"
+  /// - "VULNERABILITY"
+  /// - "MISCONFIGURATION"
+  /// - "OBSERVATION"
+  /// - "SCC_ERROR"
+  /// - "POSTURE_VIOLATION"
+  /// - "TOXIC_COMBINATION"
+  /// - "SENSITIVE_DATA_RISK"
+  /// - "CHOKEPOINT"
+  /// - "EXTERNAL_EXPOSURE"
+  /// - "SECRET"
   core.String? findingClass;
-
-  /// Contains details about groups of which this finding is a member.
-  ///
-  /// A group is a collection of findings that are related in some way. This
-  /// field cannot be updated. Its value is ignored in all update requests.
   core.List<GroupMembership>? groupMemberships;
-
-  /// Represents IAM bindings associated with the finding.
   core.List<IamBinding>? iamBindings;
-
-  /// Represents what's commonly known as an *indicator of compromise* (IoC) in
-  /// computer forensics.
-  ///
-  /// This is an artifact observed on a network or in an operating system that,
-  /// with high confidence, indicates a computer intrusion. For more
-  /// information, see
-  /// [Indicator of compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise).
+  GoogleCloudSecuritycenterV1IamDetails? iamDetails;
   Indicator? indicator;
-
-  /// IP rules associated with the finding.
   IpRules? ipRules;
-
-  /// Job associated with the finding.
   Job? job;
-
-  /// Signature of the kernel rootkit.
   KernelRootkit? kernelRootkit;
-
-  /// Kubernetes resources associated with the finding.
   Kubernetes? kubernetes;
-
-  /// The load balancers associated with the finding.
   core.List<LoadBalancer>? loadBalancers;
-
-  /// Log entries that are relevant to the finding.
   core.List<LogEntry>? logEntries;
-
-  /// MITRE ATT&CK tactics and techniques related to this finding.
-  ///
-  /// See: https://attack.mitre.org
   MitreAttack? mitreAttack;
-
-  /// Unique identifier of the module which generated the finding.
-  ///
-  /// Example:
-  /// folders/598186756061/securityHealthAnalyticsSettings/customModules/56799441161885
   core.String? moduleName;
 
-  /// Indicates the mute state of a finding (either muted, unmuted or
-  /// undefined).
   ///
-  /// Unlike other attributes of a finding, a finding provider shouldn't set the
-  /// value of mute.
   /// Possible string values are:
-  /// - "MUTE_UNSPECIFIED" : Unspecified.
-  /// - "MUTED" : Finding has been muted.
-  /// - "UNMUTED" : Finding has been unmuted.
-  /// - "UNDEFINED" : Finding has never been muted/unmuted.
+  /// - "MUTE_UNSPECIFIED"
+  /// - "MUTED"
+  /// - "UNMUTED"
+  /// - "UNDEFINED"
   core.String? mute;
-
-  /// The mute information regarding this finding.
-  ///
-  /// Output only.
   MuteInfo? muteInfo;
-
-  /// Records additional information about the mute operation, for example, the
-  /// \[mute configuration\](/security-command-center/docs/how-to-mute-findings)
-  /// that muted the finding and the user who muted the finding.
   core.String? muteInitiator;
-
-  /// The most recent time this finding was muted or unmuted.
-  ///
-  /// Output only.
   core.String? muteUpdateTime;
-
-  /// The
-  /// [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
-  /// of the finding.
-  ///
-  /// Example:
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-  /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
   core.String? name;
-
-  /// Represents the VPC networks that the resource is attached to.
   core.List<Network>? networks;
-
-  /// Steps to address the finding.
   core.String? nextSteps;
-
-  /// Notebook associated with the finding.
   Notebook? notebook;
-
-  /// Contains information about the org policies associated with the finding.
   core.List<OrgPolicy>? orgPolicies;
-
-  /// The relative resource name of the source the finding belongs to.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// This field is immutable after creation time. For example:
-  /// "organizations/{organization_id}/sources/{source_id}"
   core.String? parent;
-
-  /// The human readable display name of the finding source such as "Event
-  /// Threat Detection" or "Security Health Analytics".
-  ///
-  /// Output only.
   core.String? parentDisplayName;
-
-  /// PolicyViolationSummary associated with the finding.
   PolicyViolationSummary? policyViolationSummary;
-
-  /// Represents operating system processes associated with the Finding.
   core.List<Process>? processes;
-
-  /// For findings on Google Cloud resources, the full resource name of the
-  /// Google Cloud resource this finding is for.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  /// When the finding is for a non-Google Cloud resource, the resourceName can
-  /// be a customer or partner defined string. This field is immutable after
-  /// creation time.
   core.String? resourceName;
-
-  /// Secret associated with the finding.
   Secret? secret;
-
-  /// User specified security marks.
-  ///
-  /// These marks are entirely managed by the user and come from the
-  /// SecurityMarks resource that belongs to the finding.
-  ///
-  /// Output only.
   SecurityMarks? securityMarks;
-
-  /// The security posture associated with the finding.
   SecurityPosture? securityPosture;
 
-  /// The severity of the finding.
   ///
-  /// This field is managed by the source that writes the finding.
   /// Possible string values are:
-  /// - "SEVERITY_UNSPECIFIED" : This value is used for findings when a source
-  /// doesn't write a severity value.
-  /// - "CRITICAL" : Vulnerability: A critical vulnerability is easily
-  /// discoverable by an external actor, exploitable, and results in the direct
-  /// ability to execute arbitrary code, exfiltrate data, and otherwise gain
-  /// additional access and privileges to cloud resources and workloads.
-  /// Examples include publicly accessible unprotected user data and public SSH
-  /// access with weak or no passwords. Threat: Indicates a threat that is able
-  /// to access, modify, or delete data or execute unauthorized code within
-  /// existing resources.
-  /// - "HIGH" : Vulnerability: A high risk vulnerability can be easily
-  /// discovered and exploited in combination with other vulnerabilities in
-  /// order to gain direct access and the ability to execute arbitrary code,
-  /// exfiltrate data, and otherwise gain additional access and privileges to
-  /// cloud resources and workloads. An example is a database with weak or no
-  /// passwords that is only accessible internally. This database could easily
-  /// be compromised by an actor that had access to the internal network.
-  /// Threat: Indicates a threat that is able to create new computational
-  /// resources in an environment but not able to access data or execute code in
-  /// existing resources.
-  /// - "MEDIUM" : Vulnerability: A medium risk vulnerability could be used by
-  /// an actor to gain access to resources or privileges that enable them to
-  /// eventually (through multiple steps or a complex exploit) gain access and
-  /// the ability to execute arbitrary code or exfiltrate data. An example is a
-  /// service account with access to more projects than it should have. If an
-  /// actor gains access to the service account, they could potentially use that
-  /// access to manipulate a project the service account was not intended to.
-  /// Threat: Indicates a threat that is able to cause operational impact but
-  /// may not access data or execute unauthorized code.
-  /// - "LOW" : Vulnerability: A low risk vulnerability hampers a security
-  /// organization's ability to detect vulnerabilities or active threats in
-  /// their deployment, or prevents the root cause investigation of security
-  /// issues. An example is monitoring and logs being disabled for resource
-  /// configurations and access. Threat: Indicates a threat that has obtained
-  /// minimal access to an environment but is not able to access data, execute
-  /// code, or create resources.
+  /// - "SEVERITY_UNSPECIFIED"
+  /// - "CRITICAL"
+  /// - "HIGH"
+  /// - "MEDIUM"
+  /// - "LOW"
   core.String? severity;
 
-  /// Source specific properties.
   ///
-  /// These properties are managed by the source that writes the finding. The
-  /// key names in the source_properties map must be between 1 and 255
-  /// characters, and must start with a letter and contain alphanumeric
-  /// characters or underscores only.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? sourceProperties;
 
-  /// The state of the finding.
+  ///
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "ACTIVE" : The finding requires attention and has not been addressed
-  /// yet.
-  /// - "INACTIVE" : The finding has been fixed, triaged as a non-issue or
-  /// otherwise addressed and is no longer active.
+  /// - "STATE_UNSPECIFIED"
+  /// - "ACTIVE"
+  /// - "INACTIVE"
   core.String? state;
-
-  /// Contains details about a group of security issues that, when the issues
-  /// occur together, represent a greater risk than when the issues occur
-  /// independently.
-  ///
-  /// A group of such issues is referred to as a toxic combination. This field
-  /// cannot be updated. Its value is ignored in all update requests.
   ToxicCombination? toxicCombination;
-
-  /// VertexAi associated with the finding.
   VertexAi? vertexAi;
-
-  /// Represents vulnerability-specific fields like CVE and CVSS scores.
-  ///
-  /// CVE stands for Common Vulnerabilities and Exposures
-  /// (https://cve.mitre.org/about/)
   Vulnerability? vulnerability;
 
   Finding({
     this.access,
     this.affectedResources,
+    this.agent,
+    this.agentAnomaly,
     this.agentDataAccessEvents,
+    this.agentSessions,
     this.aiModel,
     this.application,
     this.artifactGuardPolicies,
@@ -14101,6 +10835,7 @@ class Finding {
     this.findingClass,
     this.groupMemberships,
     this.iamBindings,
+    this.iamDetails,
     this.indicator,
     this.ipRules,
     this.job,
@@ -14148,9 +10883,26 @@ class Finding {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        agent: json_.containsKey('agent')
+            ? Agent.fromJson(
+                json_['agent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        agentAnomaly: json_.containsKey('agentAnomaly')
+            ? AgentAnomaly.fromJson(
+                json_['agentAnomaly'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         agentDataAccessEvents: (json_['agentDataAccessEvents'] as core.List?)
             ?.map(
               (value) => AgentDataAccessEvent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        agentSessions: (json_['agentSessions'] as core.List?)
+            ?.map(
+              (value) => AgentSession.fromJson(
                 value as core.Map<core.String, core.dynamic>,
               ),
             )
@@ -14326,6 +11078,11 @@ class Finding {
               ),
             )
             .toList(),
+        iamDetails: json_.containsKey('iamDetails')
+            ? GoogleCloudSecuritycenterV1IamDetails.fromJson(
+                json_['iamDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         indicator: json_.containsKey('indicator')
             ? Indicator.fromJson(
                 json_['indicator'] as core.Map<core.String, core.dynamic>,
@@ -14455,7 +11212,10 @@ class Finding {
   core.Map<core.String, core.dynamic> toJson() {
     final access = this.access;
     final affectedResources = this.affectedResources;
+    final agent = this.agent;
+    final agentAnomaly = this.agentAnomaly;
     final agentDataAccessEvents = this.agentDataAccessEvents;
+    final agentSessions = this.agentSessions;
     final aiModel = this.aiModel;
     final application = this.application;
     final artifactGuardPolicies = this.artifactGuardPolicies;
@@ -14489,6 +11249,7 @@ class Finding {
     final findingClass = this.findingClass;
     final groupMemberships = this.groupMemberships;
     final iamBindings = this.iamBindings;
+    final iamDetails = this.iamDetails;
     final indicator = this.indicator;
     final ipRules = this.ipRules;
     final job = this.job;
@@ -14524,7 +11285,10 @@ class Finding {
     return {
       'access': ?access,
       'affectedResources': ?affectedResources,
+      'agent': ?agent,
+      'agentAnomaly': ?agentAnomaly,
       'agentDataAccessEvents': ?agentDataAccessEvents,
+      'agentSessions': ?agentSessions,
       'aiModel': ?aiModel,
       'application': ?application,
       'artifactGuardPolicies': ?artifactGuardPolicies,
@@ -14558,6 +11322,7 @@ class Finding {
       'findingClass': ?findingClass,
       'groupMemberships': ?groupMemberships,
       'iamBindings': ?iamBindings,
+      'iamDetails': ?iamDetails,
       'indicator': ?indicator,
       'ipRules': ?ipRules,
       'job': ?job,
@@ -14594,16 +11359,8 @@ class Finding {
   }
 }
 
-/// Message that contains the resource name and display name of a folder
-/// resource.
 class Folder {
-  /// Full resource name of this folder.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String? resourceFolder;
-
-  /// The user defined display name for this folder.
   core.String? resourceFolderDisplayName;
 
   Folder({this.resourceFolder, this.resourceFolderDisplayName});
@@ -14625,34 +11382,17 @@ class Folder {
   }
 }
 
-/// Compliance framework associated with the finding.
 class Framework {
-  /// Category of the framework associated with the finding.
-  ///
-  /// E.g. Security Benchmark, or Assured Workloads
   core.List<core.String>? category;
-
-  /// The controls associated with the framework.
   core.List<Control>? controls;
-
-  /// Display name of the framework.
-  ///
-  /// For a standard framework, this will look like e.g. PCI DSS 3.2.1, whereas
-  /// for a custom framework it can be a user defined string like MyFramework
   core.String? displayName;
-
-  /// Name of the framework associated with the finding
   core.String? name;
 
-  /// Type of the framework associated with the finding, to specify whether the
-  /// framework is built-in (pre-defined and immutable) or a custom framework
-  /// defined by the customer (equivalent to security posture)
+  ///
   /// Possible string values are:
-  /// - "FRAMEWORK_TYPE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "FRAMEWORK_TYPE_BUILT_IN" : The framework is a built-in framework if it
-  /// is created and managed by GCP.
-  /// - "FRAMEWORK_TYPE_CUSTOM" : The framework is a custom framework if it is
-  /// created and managed by the user.
+  /// - "FRAMEWORK_TYPE_UNSPECIFIED"
+  /// - "FRAMEWORK_TYPE_BUILT_IN"
+  /// - "FRAMEWORK_TYPE_CUSTOM"
   core.String? type;
 
   Framework({
@@ -14696,9 +11436,7 @@ class Framework {
   }
 }
 
-/// Represents a geographical location for a given access.
 class Geolocation {
-  /// A CLDR.
   core.String? regionCode;
 
   Geolocation({this.regionCode});
@@ -14712,10 +11450,7 @@ class Geolocation {
   }
 }
 
-/// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
-  /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
-  /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
   GetIamPolicyRequest({this.options});
@@ -14735,74 +11470,30 @@ class GetIamPolicyRequest {
   }
 }
 
-/// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions00;
+class GetPolicyOptions {
+  core.int? requestedPolicyVersion;
 
-/// Configures how to deliver Findings to BigQuery Instance.
+  GetPolicyOptions({this.requestedPolicyVersion});
+
+  GetPolicyOptions.fromJson(core.Map json_)
+    : this(
+        requestedPolicyVersion: json_['requestedPolicyVersion'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestedPolicyVersion = this.requestedPolicyVersion;
+    return {'requestedPolicyVersion': ?requestedPolicyVersion};
+  }
+}
+
 class GoogleCloudSecuritycenterV1BigQueryExport {
-  /// The time at which the BigQuery export was created.
-  ///
-  /// This field is set by the server and will be ignored if provided on export
-  /// on creation.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// The dataset to write findings' updates to.
-  ///
-  /// Its format is "projects/\[project_id\]/datasets/\[bigquery_dataset_id\]".
-  /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers
-  /// (0-9), or underscores (_).
   core.String? dataset;
-
-  /// The description of the export (max of 1024 characters).
   core.String? description;
-
-  /// Expression that defines the filter to apply across create/update events of
-  /// findings.
-  ///
-  /// The expression is a list of zero or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. The fields map to those
-  /// defined in the corresponding resource. The supported operators are: * `=`
-  /// for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`,
-  /// meaning substring matching, for strings. The supported value types are: *
-  /// string literals in quotes. * integer literals without quotes. * boolean
-  /// literals `true` and `false` without quotes.
   core.String? filter;
-
-  /// Email address of the user who last edited the BigQuery export.
-  ///
-  /// This field is set by the server and will be ignored if provided on export
-  /// creation or update.
-  ///
-  /// Output only.
   core.String? mostRecentEditor;
-
-  /// The relative resource name of this export.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name.
-  /// Example format:
-  /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example
-  /// format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
-  /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided
-  /// in responses, and is ignored when provided in create requests.
   core.String? name;
-
-  /// The service account that needs permission to create table and upload data
-  /// to the BigQuery dataset.
-  ///
-  /// Output only.
   core.String? principal;
-
-  /// The most recent time at which the BigQuery export was updated.
-  ///
-  /// This field is set by the server and will be ignored if provided on export
-  /// creation or update.
-  ///
-  /// Output only.
   core.String? updateTime;
 
   GoogleCloudSecuritycenterV1BigQueryExport({
@@ -14850,20 +11541,10 @@ class GoogleCloudSecuritycenterV1BigQueryExport {
   }
 }
 
-/// Represents a Kubernetes RoleBinding or ClusterRoleBinding.
 class GoogleCloudSecuritycenterV1Binding {
-  /// Name for the binding.
   core.String? name;
-
-  /// Namespace for the binding.
   core.String? ns;
-
-  /// The Role or ClusterRole referenced by the binding.
   Role? role;
-
-  /// Represents one or more subjects that are bound to the role.
-  ///
-  /// Not always available for PATCH requests.
   core.List<Subject>? subjects;
 
   GoogleCloudSecuritycenterV1Binding({
@@ -14900,48 +11581,20 @@ class GoogleCloudSecuritycenterV1Binding {
   }
 }
 
-/// Defines the properties in a custom module configuration for Security Health
-/// Analytics.
-///
-/// Use the custom module configuration to create custom detectors that generate
-/// custom findings for resources that you specify.
 class GoogleCloudSecuritycenterV1CustomConfig {
-  /// Custom output properties.
   GoogleCloudSecuritycenterV1CustomOutputSpec? customOutput;
-
-  /// Text that describes the vulnerability or misconfiguration that the custom
-  /// module detects.
-  ///
-  /// This explanation is returned with each finding instance to help
-  /// investigators understand the detected issue. The text must be enclosed in
-  /// quotation marks.
   core.String? description;
-
-  /// The CEL expression to evaluate to produce findings.
-  ///
-  /// When the expression evaluates to true against a resource, a finding is
-  /// generated.
   Expr? predicate;
-
-  /// An explanation of the recommended steps that security teams can take to
-  /// resolve the detected issue.
-  ///
-  /// This explanation is returned with each finding generated by this module in
-  /// the `nextSteps` property of the finding JSON.
   core.String? recommendation;
-
-  /// The resource types that the custom module operates on.
-  ///
-  /// Each custom module can specify up to 5 resource types.
   GoogleCloudSecuritycenterV1ResourceSelector? resourceSelector;
 
-  /// The severity to assign to findings generated by the module.
+  ///
   /// Possible string values are:
-  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity.
-  /// - "CRITICAL" : Critical severity.
-  /// - "HIGH" : High severity.
-  /// - "MEDIUM" : Medium severity.
-  /// - "LOW" : Low severity.
+  /// - "SEVERITY_UNSPECIFIED"
+  /// - "CRITICAL"
+  /// - "HIGH"
+  /// - "MEDIUM"
+  /// - "LOW"
   core.String? severity;
 
   GoogleCloudSecuritycenterV1CustomConfig({
@@ -14994,13 +11647,7 @@ class GoogleCloudSecuritycenterV1CustomConfig {
   }
 }
 
-/// A set of optional name-value pairs that define custom source properties to
-/// return with each finding that is generated by the custom module.
-///
-/// The custom source properties that are defined here are included in the
-/// finding JSON under `sourceProperties`.
 class GoogleCloudSecuritycenterV1CustomOutputSpec {
-  /// A list of custom output properties to add to the finding.
   core.List<GoogleCloudSecuritycenterV1Property>? properties;
 
   GoogleCloudSecuritycenterV1CustomOutputSpec({this.properties});
@@ -15022,59 +11669,23 @@ class GoogleCloudSecuritycenterV1CustomOutputSpec {
   }
 }
 
-/// An EffectiveSecurityHealthAnalyticsCustomModule is the representation of a
-/// Security Health Analytics custom module at a specified level of the resource
-/// hierarchy: organization, folder, or project.
-///
-/// If a custom module is inherited from a parent organization or folder, the
-/// value of the `enablementState` property in
-/// EffectiveSecurityHealthAnalyticsCustomModule is set to the value that is
-/// effective in the parent, instead of `INHERITED`. For example, if the module
-/// is enabled in a parent organization or folder, the effective
-/// enablement_state for the module in all child folders or projects is also
-/// `enabled`. EffectiveSecurityHealthAnalyticsCustomModule is read-only.
 class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule {
-  /// The cloud provider of the custom module.
+  ///
   /// Possible string values are:
-  /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
-  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud.
-  /// - "AMAZON_WEB_SERVICES" : Amazon Web Services.
-  /// - "MICROSOFT_AZURE" : Microsoft Azure.
+  /// - "CLOUD_PROVIDER_UNSPECIFIED"
+  /// - "GOOGLE_CLOUD_PLATFORM"
+  /// - "AMAZON_WEB_SERVICES"
+  /// - "MICROSOFT_AZURE"
   core.String? cloudProvider;
-
-  /// The user-specified configuration for the module.
-  ///
-  /// Output only.
   GoogleCloudSecuritycenterV1CustomConfig? customConfig;
-
-  /// The display name for the custom module.
-  ///
-  /// The name must be between 1 and 128 characters, start with a lowercase
-  /// letter, and contain alphanumeric characters or underscores only.
-  ///
-  /// Output only.
   core.String? displayName;
 
-  /// The effective state of enablement for the module at the given level of the
-  /// hierarchy.
   ///
-  /// Output only.
   /// Possible string values are:
-  /// - "ENABLEMENT_STATE_UNSPECIFIED" : Unspecified enablement state.
-  /// - "ENABLED" : The module is enabled at the given level.
-  /// - "DISABLED" : The module is disabled at the given level.
+  /// - "ENABLEMENT_STATE_UNSPECIFIED"
+  /// - "ENABLED"
+  /// - "DISABLED"
   core.String? enablementState;
-
-  /// The resource name of the custom module.
-  ///
-  /// Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-  /// or
-  /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-  /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
-  ///
-  /// Output only.
   core.String? name;
 
   GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule({
@@ -15115,46 +11726,17 @@ class GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule {
   }
 }
 
-/// Representation of third party SIEM/SOAR fields within SCC.
 class GoogleCloudSecuritycenterV1ExternalSystem {
-  /// References primary/secondary etc assignees in the external system.
   core.List<core.String>? assignees;
-
-  /// The time when the case was closed, as reported by the external system.
   core.String? caseCloseTime;
-
-  /// The time when the case was created, as reported by the external system.
   core.String? caseCreateTime;
-
-  /// The priority of the finding's corresponding case in the external system.
   core.String? casePriority;
-
-  /// The SLA of the finding's corresponding case in the external system.
   core.String? caseSla;
-
-  /// The link to the finding's corresponding case in the external system.
   core.String? caseUri;
-
-  /// The time when the case was last updated, as reported by the external
-  /// system.
   core.String? externalSystemUpdateTime;
-
-  /// The identifier that's used to track the finding's corresponding case in
-  /// the external system.
   core.String? externalUid;
-
-  /// Full resource name of the external system, for example:
-  /// "organizations/1234/sources/5678/findings/123456/externalSystems/jira",
-  /// "folders/1234/sources/5678/findings/123456/externalSystems/jira",
-  /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
   core.String? name;
-
-  /// The most recent status of the finding's corresponding case, as reported by
-  /// the external system.
   core.String? status;
-
-  /// Information about the ticket, if any, that is being used to track the
-  /// resolution of the issue that is identified by this finding.
   TicketInfo? ticketInfo;
 
   GoogleCloudSecuritycenterV1ExternalSystem({
@@ -15221,95 +11803,65 @@ class GoogleCloudSecuritycenterV1ExternalSystem {
   }
 }
 
-/// A mute config is a Cloud SCC resource that contains the configuration to
-/// mute create/update events of findings.
+class GoogleCloudSecuritycenterV1IamDetails {
+  core.List<GoogleCloudSecuritycenterV1IamRolePermission>? iamRolePermissions;
+
+  GoogleCloudSecuritycenterV1IamDetails({this.iamRolePermissions});
+
+  GoogleCloudSecuritycenterV1IamDetails.fromJson(core.Map json_)
+    : this(
+        iamRolePermissions: (json_['iamRolePermissions'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudSecuritycenterV1IamRolePermission.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final iamRolePermissions = this.iamRolePermissions;
+    return {'iamRolePermissions': ?iamRolePermissions};
+  }
+}
+
+class GoogleCloudSecuritycenterV1IamRolePermission {
+  core.String? name;
+  core.String? role;
+
+  GoogleCloudSecuritycenterV1IamRolePermission({this.name, this.role});
+
+  GoogleCloudSecuritycenterV1IamRolePermission.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        role: json_['role'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final role = this.role;
+    return {'name': ?name, 'role': ?role};
+  }
+}
+
 class GoogleCloudSecuritycenterV1MuteConfig {
-  /// The time at which the mute config was created.
-  ///
-  /// This field is set by the server and will be ignored if provided on config
-  /// creation.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// A description of the mute config.
   core.String? description;
-
-  /// The human readable name to be displayed for the mute config.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? displayName;
-
-  /// The expiry of the mute config.
-  ///
-  /// Only applicable for dynamic configs. If the expiry is set, when the config
-  /// expires, it is removed from all findings.
-  ///
-  /// Optional.
   core.String? expiryTime;
-
-  /// An expression that defines the filter to apply across create/update events
-  /// of findings.
-  ///
-  /// While creating a filter string, be mindful of the scope in which the mute
-  /// configuration is being created. E.g., If a filter contains project = X but
-  /// is created under the project = Y scope, it might not match any findings.
-  /// The following field and operator combinations are supported: * severity:
-  /// `=`, `:` * category: `=`, `:` * resource.name: `=`, `:` *
-  /// resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:`
-  /// * resource.folders.resource_folder: `=`, `:` * resource.parent_name: `=`,
-  /// `:` * resource.parent_display_name: `=`, `:` * resource.type: `=`, `:` *
-  /// finding_class: `=`, `:` * indicator.ip_addresses: `=`, `:` *
-  /// indicator.domains: `=`, `:`
-  ///
-  /// Required.
   core.String? filter;
-
-  /// Email address of the user who last edited the mute config.
-  ///
-  /// This field is set by the server and will be ignored if provided on config
-  /// creation or update.
-  ///
-  /// Output only.
   core.String? mostRecentEditor;
-
-  /// This field will be ignored if provided on config creation.
-  ///
-  /// Format `organizations/{organization}/muteConfigs/{mute_config}`
-  /// `folders/{folder}/muteConfigs/{mute_config}`
-  /// `projects/{project}/muteConfigs/{mute_config}`
-  /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
-  /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
-  /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
   core.String? name;
 
-  /// The type of the mute config, which determines what type of mute state the
-  /// config affects.
   ///
-  /// The static mute state takes precedence over the dynamic mute state.
-  /// Immutable after creation. STATIC by default if not set during creation.
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "MUTE_CONFIG_TYPE_UNSPECIFIED" : Unused.
-  /// - "STATIC" : A static mute config, which sets the static mute state of
-  /// future matching findings to muted. Once the static mute state has been
-  /// set, finding or config modifications will not affect the state.
-  /// - "DYNAMIC" : A dynamic mute config, which is applied to existing and
-  /// future matching findings, setting their dynamic mute state to "muted". If
-  /// the config is updated or deleted, or a matching finding is updated, such
-  /// that the finding doesn't match the config, the config will be removed from
-  /// the finding, and the finding's dynamic mute state may become "unmuted"
-  /// (unless other configs still match).
+  /// - "MUTE_CONFIG_TYPE_UNSPECIFIED"
+  /// - "STATIC"
+  /// - "DYNAMIC"
   core.String? type;
-
-  /// The most recent time at which the mute config was updated.
-  ///
-  /// This field is set by the server and will be ignored if provided on config
-  /// creation or update.
-  ///
-  /// Output only.
   core.String? updateTime;
 
   GoogleCloudSecuritycenterV1MuteConfig({
@@ -15361,15 +11913,8 @@ class GoogleCloudSecuritycenterV1MuteConfig {
   }
 }
 
-/// An individual name-value pair that defines a custom source property.
 class GoogleCloudSecuritycenterV1Property {
-  /// Name of the property for the custom output.
   core.String? name;
-
-  /// The CEL expression for the custom output.
-  ///
-  /// A resource property can be specified to return the value of the property
-  /// or a text string enclosed in quotation marks.
   Expr? valueExpression;
 
   GoogleCloudSecuritycenterV1Property({this.name, this.valueExpression});
@@ -15391,15 +11936,8 @@ class GoogleCloudSecuritycenterV1Property {
   }
 }
 
-/// The App Hub Application associated with the finding's resource.
 class GoogleCloudSecuritycenterV1ResourceApplication {
-  /// Consumer provided attributes for the application
   GoogleCloudSecuritycenterV1ResourceApplicationAttributes? attributes;
-
-  /// The resource name of an Application.
-  ///
-  /// Format:
-  /// `projects/{host-project-id}/locations/{location}/applications/{application-id}`
   core.String? name;
 
   GoogleCloudSecuritycenterV1ResourceApplication({this.attributes, this.name});
@@ -15421,29 +11959,19 @@ class GoogleCloudSecuritycenterV1ResourceApplication {
   }
 }
 
-/// Consumer provided attributes for the application
 class GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
-  /// Business team that ensures user needs are met and value is delivered
   core.List<
     GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
   >?
   businessOwners;
-
-  /// User-defined criticality information.
   GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality?
   criticality;
-
-  /// Developer team that owns development and coding.
   core.List<
     GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
   >?
   developerOwners;
-
-  /// User-defined environment information.
   GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment?
   environment;
-
-  /// Operator team that ensures runtime and operations.
   core.List<
     GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
   >?
@@ -15512,34 +12040,17 @@ class GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
   }
 }
 
-/// Contact information of stakeholders.
-class GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo {
-  /// Email address of the contacts.
-  core.String? email;
+typedef GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo =
+    $Shared30;
 
-  GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo({
-    this.email,
-  });
-
-  GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo.fromJson(
-    core.Map json_,
-  ) : this(email: json_['email'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final email = this.email;
-    return {'email': ?email};
-  }
-}
-
-/// Criticality of the Application, Service, or Workload
 class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality {
-  /// Criticality Type.
+  ///
   /// Possible string values are:
-  /// - "CRITICALITY_TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "MISSION_CRITICAL" : Mission critical service, application or workload.
-  /// - "HIGH" : High impact.
-  /// - "MEDIUM" : Medium impact.
-  /// - "LOW" : Low impact.
+  /// - "CRITICALITY_TYPE_UNSPECIFIED"
+  /// - "MISSION_CRITICAL"
+  /// - "HIGH"
+  /// - "MEDIUM"
+  /// - "LOW"
   core.String? type;
 
   GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality({
@@ -15556,15 +12067,14 @@ class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality {
   }
 }
 
-/// Environment of the Application, Service, or Workload
 class GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment {
-  /// Environment Type.
+  ///
   /// Possible string values are:
-  /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "PRODUCTION" : Production environment.
-  /// - "STAGING" : Staging environment.
-  /// - "TEST" : Test environment.
-  /// - "DEVELOPMENT" : Development environment.
+  /// - "ENVIRONMENT_TYPE_UNSPECIFIED"
+  /// - "PRODUCTION"
+  /// - "STAGING"
+  /// - "TEST"
+  /// - "DEVELOPMENT"
   core.String? type;
 
   GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment({
@@ -15581,9 +12091,7 @@ class GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment {
   }
 }
 
-/// Resource for selecting resource type.
 class GoogleCloudSecuritycenterV1ResourceSelector {
-  /// The resource types to run the detector on.
   core.List<core.String>? resourceTypes;
 
   GoogleCloudSecuritycenterV1ResourceSelector({this.resourceTypes});
@@ -15601,83 +12109,32 @@ class GoogleCloudSecuritycenterV1ResourceSelector {
   }
 }
 
-/// A resource value configuration (RVC) is a mapping configuration of user's
-/// resources to resource values.
-///
-/// Used in Attack path simulations.
 class GoogleCloudSecuritycenterV1ResourceValueConfig {
-  /// Cloud provider this configuration applies to
+  ///
   /// Possible string values are:
-  /// - "CLOUD_PROVIDER_UNSPECIFIED" : The cloud provider is unspecified.
-  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud.
-  /// - "AMAZON_WEB_SERVICES" : The cloud provider is Amazon Web Services.
-  /// - "MICROSOFT_AZURE" : The cloud provider is Microsoft Azure.
+  /// - "CLOUD_PROVIDER_UNSPECIFIED"
+  /// - "GOOGLE_CLOUD_PLATFORM"
+  /// - "AMAZON_WEB_SERVICES"
+  /// - "MICROSOFT_AZURE"
   core.String? cloudProvider;
-
-  /// Timestamp this resource value configuration was created.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// Description of the resource value configuration.
   core.String? description;
-
-  /// Name for the resource value configuration
   core.String? name;
-
-  /// List of resource labels to search for, evaluated with `AND`.
-  ///
-  /// For example, `"resource_labels_selector": {"key": "value", "env": "prod"}`
-  /// will match resources with labels "key": "value" `AND` "env": "prod"
-  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
   core.Map<core.String, core.String>? resourceLabelsSelector;
-
-  /// Apply resource_value only to resources that match resource_type.
-  ///
-  /// resource_type will be checked with `AND` of other resources. For example,
-  /// "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply
-  /// "HIGH" value only to "storage.googleapis.com/Bucket" resources.
   core.String? resourceType;
 
-  /// Resource value level this expression represents
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "RESOURCE_VALUE_UNSPECIFIED" : Unspecific value
-  /// - "HIGH" : High resource value
-  /// - "MEDIUM" : Medium resource value
-  /// - "LOW" : Low resource value
-  /// - "NONE" : No resource value, e.g. ignore these resources
+  /// - "RESOURCE_VALUE_UNSPECIFIED"
+  /// - "HIGH"
+  /// - "MEDIUM"
+  /// - "LOW"
+  /// - "NONE"
   core.String? resourceValue;
-
-  /// Project or folder to scope this configuration to.
-  ///
-  /// For example, "project/456" would apply this configuration only to
-  /// resources in "project/456" scope will be checked with `AND` of other
-  /// resources.
   core.String? scope;
-
-  /// A mapping of the sensitivity on Sensitive Data Protection finding to
-  /// resource values.
-  ///
-  /// This mapping can only be used in combination with a resource_type that is
-  /// related to BigQuery, e.g. "bigquery.googleapis.com/Dataset".
   GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping?
   sensitiveDataProtectionMapping;
-
-  /// Tag values combined with `AND` to check against.
-  ///
-  /// For Google Cloud resources, they are tag value IDs in the form of
-  /// "tagValues/123". Example: `[ "tagValues/123", "tagValues/456",
-  /// "tagValues/789" ]`
-  /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
-  ///
-  /// Required.
   core.List<core.String>? tagValues;
-
-  /// Timestamp this resource value configuration was last updated.
-  ///
-  /// Output only.
   core.String? updateTime;
 
   GoogleCloudSecuritycenterV1ResourceValueConfig({
@@ -15748,75 +12205,28 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
   }
 }
 
-/// Represents an instance of a Security Health Analytics custom module,
-/// including its full module name, display name, enablement state, and last
-/// updated time.
-///
-/// You can create a custom module at the organization, folder, or project
-/// level. Custom modules that you create at the organization or folder level
-/// are inherited by the child folders and projects.
 class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule {
-  /// If empty, indicates that the custom module was created in the
-  /// organization, folder, or project in which you are viewing the custom
-  /// module.
-  ///
-  /// Otherwise, `ancestor_module` specifies the organization or folder from
-  /// which the custom module is inherited.
-  ///
-  /// Output only.
   core.String? ancestorModule;
 
-  /// The cloud provider of the custom module.
-  /// Possible string values are:
-  /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
-  /// - "GOOGLE_CLOUD_PLATFORM" : Google Cloud.
-  /// - "AMAZON_WEB_SERVICES" : Amazon Web Services (AWS).
-  /// - "MICROSOFT_AZURE" : Microsoft Azure.
-  core.String? cloudProvider;
-
-  /// The user specified custom configuration for the module.
-  GoogleCloudSecuritycenterV1CustomConfig? customConfig;
-
-  /// The display name of the Security Health Analytics custom module.
   ///
-  /// This display name becomes the finding category for all findings that are
-  /// returned by this custom module. The display name must be between 1 and 128
-  /// characters, start with a lowercase letter, and contain alphanumeric
-  /// characters or underscores only.
+  /// Possible string values are:
+  /// - "CLOUD_PROVIDER_UNSPECIFIED"
+  /// - "GOOGLE_CLOUD_PLATFORM"
+  /// - "AMAZON_WEB_SERVICES"
+  /// - "MICROSOFT_AZURE"
+  core.String? cloudProvider;
+  GoogleCloudSecuritycenterV1CustomConfig? customConfig;
   core.String? displayName;
 
-  /// The enablement state of the custom module.
+  ///
   /// Possible string values are:
-  /// - "ENABLEMENT_STATE_UNSPECIFIED" : Unspecified enablement state.
-  /// - "ENABLED" : The module is enabled at the given CRM resource.
-  /// - "DISABLED" : The module is disabled at the given CRM resource.
-  /// - "INHERITED" : State is inherited from an ancestor module. The module
-  /// will either be effectively ENABLED or DISABLED based on its closest
-  /// non-inherited ancestor module in the CRM hierarchy.
+  /// - "ENABLEMENT_STATE_UNSPECIFIED"
+  /// - "ENABLED"
+  /// - "DISABLED"
+  /// - "INHERITED"
   core.String? enablementState;
-
-  /// The editor that last updated the custom module.
-  ///
-  /// Output only.
   core.String? lastEditor;
-
-  /// The resource name of the custom module.
-  ///
-  /// Its format is
-  /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// or
-  /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}",
-  /// or
-  /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
-  /// The id {customModule} is server-generated and is not user settable. It
-  /// will be a numeric id containing 1-20 digits.
-  ///
-  /// Immutable.
   core.String? name;
-
-  /// The time at which the custom module was last updated.
-  ///
-  /// Output only.
   core.String? updateTime;
 
   GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule({
@@ -15869,29 +12279,23 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule {
   }
 }
 
-/// Resource value mapping for Sensitive Data Protection findings.
-///
-/// If any of these mappings have a resource value that is not unspecified, the
-/// resource_value field will be ignored when reading this configuration.
 class GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping {
-  /// Resource value mapping for high-sensitivity Sensitive Data Protection
-  /// findings
+  ///
   /// Possible string values are:
-  /// - "RESOURCE_VALUE_UNSPECIFIED" : Unspecific value
-  /// - "HIGH" : High resource value
-  /// - "MEDIUM" : Medium resource value
-  /// - "LOW" : Low resource value
-  /// - "NONE" : No resource value, e.g. ignore these resources
+  /// - "RESOURCE_VALUE_UNSPECIFIED"
+  /// - "HIGH"
+  /// - "MEDIUM"
+  /// - "LOW"
+  /// - "NONE"
   core.String? highSensitivityMapping;
 
-  /// Resource value mapping for medium-sensitivity Sensitive Data Protection
-  /// findings
+  ///
   /// Possible string values are:
-  /// - "RESOURCE_VALUE_UNSPECIFIED" : Unspecific value
-  /// - "HIGH" : High resource value
-  /// - "MEDIUM" : Medium resource value
-  /// - "LOW" : Low resource value
-  /// - "NONE" : No resource value, e.g. ignore these resources
+  /// - "RESOURCE_VALUE_UNSPECIFIED"
+  /// - "HIGH"
+  /// - "MEDIUM"
+  /// - "LOW"
+  /// - "NONE"
   core.String? mediumSensitivityMapping;
 
   GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping({
@@ -15917,99 +12321,12 @@ class GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping {
   }
 }
 
-/// Request message for grouping by assets.
 class GroupAssetsRequest {
-  /// When compare_duration is set, the GroupResult's "state_change" property is
-  /// updated to indicate whether the asset was added, removed, or remained
-  /// present during the compare_duration period of time that precedes the
-  /// read_time.
-  ///
-  /// This is the time between (read_time - compare_duration) and read_time. The
-  /// state change value is derived based on the presence of the asset at the
-  /// two points in time. Intermediate state changes between the two times don't
-  /// affect the result. For example, the results aren't affected if the asset
-  /// is removed and re-created again. Possible "state_change" values when
-  /// compare_duration is specified: * "ADDED": indicates that the asset was not
-  /// present at the start of compare_duration, but present at reference_time. *
-  /// "REMOVED": indicates that the asset was present at the start of
-  /// compare_duration, but not present at reference_time. * "ACTIVE": indicates
-  /// that the asset was present at both the start and the end of the time
-  /// period defined by compare_duration and reference_time. If compare_duration
-  /// is not specified, then the only possible state_change is "UNUSED", which
-  /// will be the state_change set for all assets present at read_time. If this
-  /// field is set then `state_change` must be a specified field in `group_by`.
   core.String? compareDuration;
-
-  /// Expression that defines the filter to apply across assets.
-  ///
-  /// The expression is a list of zero or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. The fields map to those
-  /// defined in the Asset resource. Examples include: * name *
-  /// security_center_properties.resource_name * resource_properties.a_property
-  /// * security_marks.marks.marka The supported operators are: * `=` for all
-  /// value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning
-  /// substring matching, for strings. The supported value types are: * string
-  /// literals in quotes. * integer literals without quotes. * boolean literals
-  /// `true` and `false` without quotes. The following field and operator
-  /// combinations are supported: * name: `=` * update_time: `=`, `>`, `<`,
-  /// `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
-  /// string. Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time
-  /// = 1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This
-  /// should be milliseconds since epoch or an RFC3339 string. Examples:
-  /// `create_time = "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000`
-  /// * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`,
-  /// `<`, `>=`, `<=` * security_marks.marks: `=`, `:` *
-  /// security_center_properties.resource_name: `=`, `:` *
-  /// security_center_properties.resource_display_name: `=`, `:` *
-  /// security_center_properties.resource_type: `=`, `:` *
-  /// security_center_properties.resource_parent: `=`, `:` *
-  /// security_center_properties.resource_parent_display_name: `=`, `:` *
-  /// security_center_properties.resource_project: `=`, `:` *
-  /// security_center_properties.resource_project_display_name: `=`, `:` *
-  /// security_center_properties.resource_owners: `=`, `:` For example,
-  /// `resource_properties.size = 100` is a valid filter string. Use a partial
-  /// match on the empty string to filter based on a property existing:
-  /// `resource_properties.my_property : ""` Use a negated partial match on the
-  /// empty string to filter based on a property not existing:
-  /// `-resource_properties.my_property : ""`
   core.String? filter;
-
-  /// Expression that defines what assets fields to use for grouping.
-  ///
-  /// The string value should follow SQL syntax: comma separated list of fields.
-  /// For example:
-  /// "security_center_properties.resource_project,security_center_properties.project".
-  /// The following fields are supported when compare_duration is not set: *
-  /// security_center_properties.resource_project *
-  /// security_center_properties.resource_project_display_name *
-  /// security_center_properties.resource_type *
-  /// security_center_properties.resource_parent *
-  /// security_center_properties.resource_parent_display_name The following
-  /// fields are supported when compare_duration is set: *
-  /// security_center_properties.resource_type *
-  /// security_center_properties.resource_project_display_name *
-  /// security_center_properties.resource_parent_display_name
-  ///
-  /// Required.
   core.String? groupBy;
-
-  /// The maximum number of results to return in a single response.
-  ///
-  /// Default is 10, minimum is 1, maximum is 1000.
   core.int? pageSize;
-
-  /// The value returned by the last `GroupAssetsResponse`; indicates that this
-  /// is a continuation of a prior `GroupAssets` call, and that the system
-  /// should return the next page of data.
   core.String? pageToken;
-
-  /// Time used as a reference point when filtering assets.
-  ///
-  /// The filter is limited to assets existing at the supplied time and their
-  /// values are those at that specific time. Absence of this field will default
-  /// to the API's version of NOW.
   core.String? readTime;
 
   GroupAssetsRequest({
@@ -16049,23 +12366,10 @@ class GroupAssetsRequest {
   }
 }
 
-/// Response message for grouping by assets.
 class GroupAssetsResponse {
-  /// Group results.
-  ///
-  /// There exists an element for each existing unique combination of
-  /// property/values. The element contains a count for the number of times
-  /// those specific property/values appear.
   core.List<GroupResult>? groupByResults;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results.
   core.String? nextPageToken;
-
-  /// Time used for executing the groupBy request.
   core.String? readTime;
-
-  /// The total number of results matching the query.
   core.int? totalSize;
 
   GroupAssetsResponse({
@@ -16103,89 +12407,15 @@ class GroupAssetsResponse {
   }
 }
 
-/// Request message for grouping by findings.
 class GroupFindingsRequest {
-  /// When compare_duration is set, the GroupResult's "state_change" attribute
-  /// is updated to indicate whether the finding had its state changed, the
-  /// finding's state remained unchanged, or if the finding was added during the
-  /// compare_duration period of time that precedes the read_time.
-  ///
-  /// This is the time between (read_time - compare_duration) and read_time. The
-  /// state_change value is derived based on the presence and state of the
-  /// finding at the two points in time. Intermediate state changes between the
-  /// two times don't affect the result. For example, the results aren't
-  /// affected if the finding is made inactive and then active again. Possible
-  /// "state_change" values when compare_duration is specified: * "CHANGED":
-  /// indicates that the finding was present and matched the given filter at the
-  /// start of compare_duration, but changed its state at read_time. *
-  /// "UNCHANGED": indicates that the finding was present and matched the given
-  /// filter at the start of compare_duration and did not change state at
-  /// read_time. * "ADDED": indicates that the finding did not match the given
-  /// filter or was not present at the start of compare_duration, but was
-  /// present at read_time. * "REMOVED": indicates that the finding was present
-  /// and matched the filter at the start of compare_duration, but did not match
-  /// the filter at read_time. If compare_duration is not specified, then the
-  /// only possible state_change is "UNUSED", which will be the state_change set
-  /// for all findings present at read_time. If this field is set then
-  /// `state_change` must be a specified field in `group_by`.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? compareDuration;
-
-  /// Expression that defines the filter to apply across findings.
-  ///
-  /// The expression is a list of one or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. Examples include: * name
-  /// * source_properties.a_property * security_marks.marks.marka The supported
-  /// operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for
-  /// integer values. * `:`, meaning substring matching, for strings. The
-  /// supported value types are: * string literals in quotes. * integer literals
-  /// without quotes. * boolean literals `true` and `false` without quotes. The
-  /// following field and operator combinations are supported: * name: `=` *
-  /// parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category:
-  /// `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
-  /// Usage: This should be milliseconds since epoch or an RFC3339 string.
-  /// Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
-  /// 1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` *
-  /// security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`,
-  /// `>=`, `<=` For example, `source_properties.size = 100` is a valid filter
-  /// string. Use a partial match on the empty string to filter based on a
-  /// property existing: `source_properties.my_property : ""` Use a negated
-  /// partial match on the empty string to filter based on a property not
-  /// existing: `-source_properties.my_property : ""` * resource: *
-  /// resource.name: `=`, `:` * resource.parent_name: `=`, `:` *
-  /// resource.parent_display_name: `=`, `:` * resource.project_name: `=`, `:` *
-  /// resource.project_display_name: `=`, `:` * resource.type: `=`, `:`
   core.String? filter;
-
-  /// Expression that defines what assets fields to use for grouping (including
-  /// `state_change`).
-  ///
-  /// The string value should follow SQL syntax: comma separated list of fields.
-  /// For example: "parent,resource_name". The following fields are supported
-  /// when compare_duration is set: * state_change
-  ///
-  /// Required.
   core.String? groupBy;
-
-  /// The maximum number of results to return in a single response.
-  ///
-  /// Default is 10, minimum is 1, maximum is 1000.
   core.int? pageSize;
-
-  /// The value returned by the last `GroupFindingsResponse`; indicates that
-  /// this is a continuation of a prior `GroupFindings` call, and that the
-  /// system should return the next page of data.
   core.String? pageToken;
-
-  /// Time used as a reference point when filtering findings.
-  ///
-  /// The filter is limited to findings existing at the supplied time and their
-  /// values are those at that specific time. Absence of this field will default
-  /// to the API's version of NOW.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -16228,23 +12458,10 @@ class GroupFindingsRequest {
   }
 }
 
-/// Response message for group by findings.
 class GroupFindingsResponse {
-  /// Group results.
-  ///
-  /// There exists an element for each existing unique combination of
-  /// property/values. The element contains a count for the number of times
-  /// those specific property/values appear.
   core.List<GroupResult>? groupByResults;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results.
   core.String? nextPageToken;
-
-  /// Time used for executing the groupBy request.
   core.String? readTime;
-
-  /// The total number of results matching the query.
   core.int? totalSize;
 
   GroupFindingsResponse({
@@ -16282,18 +12499,14 @@ class GroupFindingsResponse {
   }
 }
 
-/// Contains details about groups of which this finding is a member.
-///
-/// A group is a collection of findings that are related in some way.
 class GroupMembership {
-  /// ID of the group.
   core.String? groupId;
 
-  /// Type of group.
+  ///
   /// Possible string values are:
-  /// - "GROUP_TYPE_UNSPECIFIED" : Default value.
-  /// - "GROUP_TYPE_TOXIC_COMBINATION" : Group represents a toxic combination.
-  /// - "GROUP_TYPE_CHOKEPOINT" : Group represents a chokepoint.
+  /// - "GROUP_TYPE_UNSPECIFIED"
+  /// - "GROUP_TYPE_TOXIC_COMBINATION"
+  /// - "GROUP_TYPE_CHOKEPOINT"
   core.String? groupType;
 
   GroupMembership({this.groupId, this.groupType});
@@ -16311,12 +12524,10 @@ class GroupMembership {
   }
 }
 
-/// Result containing the properties and count of a groupBy request.
 class GroupResult {
-  /// Total count of resources for the given properties.
   core.String? count;
 
-  /// Properties matching the groupBy fields in the request.
+  ///
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -16339,23 +12550,33 @@ class GroupResult {
   }
 }
 
-/// Represents a particular IAM binding, which captures a member's role
-/// addition, removal, or state.
+class HttpResponse {
+  core.String? path;
+  core.String? statusCode;
+
+  HttpResponse({this.path, this.statusCode});
+
+  HttpResponse.fromJson(core.Map json_)
+    : this(
+        path: json_['path'] as core.String?,
+        statusCode: json_['statusCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final path = this.path;
+    final statusCode = this.statusCode;
+    return {'path': ?path, 'statusCode': ?statusCode};
+  }
+}
+
 class IamBinding {
-  /// The action that was performed on a Binding.
-  /// Possible string values are:
-  /// - "ACTION_UNSPECIFIED" : Unspecified.
-  /// - "ADD" : Addition of a Binding.
-  /// - "REMOVE" : Removal of a Binding.
-  core.String? action;
-
-  /// A single identity requesting access for a Cloud Platform resource, for
-  /// example, "foo@google.com".
-  core.String? member;
-
-  /// Role that is assigned to "members".
   ///
-  /// For example, "roles/viewer", "roles/editor", or "roles/owner".
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED"
+  /// - "ADD"
+  /// - "REMOVE"
+  core.String? action;
+  core.String? member;
   core.String? role;
 
   IamBinding({this.action, this.member, this.role});
@@ -16375,16 +12596,7 @@ class IamBinding {
   }
 }
 
-/// Cloud IAM Policy information associated with the Google Cloud resource
-/// described by the Security Command Center asset.
-///
-/// This information is managed and defined by the Google Cloud resource and
-/// cannot be modified by the user.
 class IamPolicy {
-  /// The JSON representation of the Policy associated with the asset.
-  ///
-  /// See https://cloud.google.com/iam/reference/rest/v1/Policy for format
-  /// details.
   core.String? policyBlob;
 
   IamPolicy({this.policyBlob});
@@ -16398,25 +12610,10 @@ class IamPolicy {
   }
 }
 
-/// Represents what's commonly known as an _indicator of compromise_ (IoC) in
-/// computer forensics.
-///
-/// This is an artifact observed on a network or in an operating system that,
-/// with high confidence, indicates a computer intrusion. For more information,
-/// see
-/// [Indicator of compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise).
 class Indicator {
-  /// List of domains associated to the Finding.
   core.List<core.String>? domains;
-
-  /// The list of IP addresses that are associated with the finding.
   core.List<core.String>? ipAddresses;
-
-  /// The list of matched signatures indicating that the given process is
-  /// present in the environment.
   core.List<ProcessSignature>? signatures;
-
-  /// The list of URIs associated to the Findings.
   core.List<core.String>? uris;
 
   Indicator({this.domains, this.ipAddresses, this.signatures, this.uris});
@@ -16455,24 +12652,9 @@ class Indicator {
   }
 }
 
-/// Type of information detected by the API.
 class InfoType {
-  /// Name of the information type.
-  ///
-  /// Either a name of your choosing when creating a CustomInfoType, or one of
-  /// the names listed at
-  /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
-  /// when specifying a built-in type. When sending Cloud DLP results to Data
-  /// Catalog, infoType names should conform to the pattern
-  /// `[A-Za-z0-9$_-]{1,64}`.
   core.String? name;
-
-  /// Optional custom sensitivity for this InfoType.
-  ///
-  /// This only applies to data profiling.
   SensitivityScore? sensitivityScore;
-
-  /// Optional version name for this InfoType.
   core.String? version;
 
   InfoType({this.name, this.sensitivityScore, this.version});
@@ -16501,21 +12683,22 @@ class InfoType {
   }
 }
 
-/// IP rule information.
-class IpRule {
-  /// An optional list of ports to which this rule applies.
-  ///
-  /// This field is only applicable for the UDP or (S)TCP protocols. Each entry
-  /// must be either an integer or a range including a min and max port number.
-  ///
-  /// Optional.
-  core.List<PortRange>? portRanges;
+class InvocationReference {
+  core.String? invocationId;
 
-  /// The IP protocol this rule applies to.
-  ///
-  /// This value can either be one of the following well known protocol strings
-  /// (TCP, UDP, ICMP, ESP, AH, IPIP, SCTP) or a string representation of the
-  /// integer value.
+  InvocationReference({this.invocationId});
+
+  InvocationReference.fromJson(core.Map json_)
+    : this(invocationId: json_['invocationId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final invocationId = this.invocationId;
+    return {'invocationId': ?invocationId};
+  }
+}
+
+class IpRule {
+  core.List<PortRange>? portRanges;
   core.String? protocol;
 
   IpRule({this.portRanges, this.protocol});
@@ -16539,38 +12722,18 @@ class IpRule {
   }
 }
 
-/// IP rules associated with the finding.
 class IpRules {
-  /// Tuple with allowed rules.
   Allowed? allowed;
-
-  /// Tuple with denied rules.
   Denied? denied;
-
-  /// If destination IP ranges are specified, the firewall rule applies only to
-  /// traffic that has a destination IP address in these ranges.
-  ///
-  /// These ranges must be expressed in CIDR format. Only supports IPv4.
   core.List<core.String>? destinationIpRanges;
 
-  /// The direction that the rule is applicable to, one of ingress or egress.
+  ///
   /// Possible string values are:
-  /// - "DIRECTION_UNSPECIFIED" : Unspecified direction value.
-  /// - "INGRESS" : Ingress direction value.
-  /// - "EGRESS" : Egress direction value.
+  /// - "DIRECTION_UNSPECIFIED"
+  /// - "INGRESS"
+  /// - "EGRESS"
   core.String? direction;
-
-  /// Name of the network protocol service, such as FTP, that is exposed by the
-  /// open port.
-  ///
-  /// Follows the naming convention available at:
-  /// https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml.
   core.List<core.String>? exposedServices;
-
-  /// If source IP ranges are specified, the firewall rule applies only to
-  /// traffic that has a source IP address in these ranges.
-  ///
-  /// These ranges must be expressed in CIDR format. Only supports IPv4.
   core.List<core.String>? sourceIpRanges;
 
   IpRules({
@@ -16624,33 +12787,18 @@ class IpRules {
   }
 }
 
-/// Describes a job
 class Job {
-  /// If the job did not complete successfully, this field describes why.
-  ///
-  /// Optional.
   core.int? errorCode;
-
-  /// Gives the location where the job ran, such as `US` or `europe-west1`
-  ///
-  /// Optional.
   core.String? location;
-
-  /// The fully-qualified name for a job.
-  ///
-  /// e.g. `projects//jobs/`
   core.String? name;
 
-  /// State of the job, such as `RUNNING` or `PENDING`.
   ///
-  /// Output only.
   /// Possible string values are:
-  /// - "JOB_STATE_UNSPECIFIED" : Unspecified represents an unknown state and
-  /// should not be used.
-  /// - "PENDING" : Job is scheduled and pending for run
-  /// - "RUNNING" : Job in progress
-  /// - "SUCCEEDED" : Job has completed with success
-  /// - "FAILED" : Job has completed but with failure
+  /// - "JOB_STATE_UNSPECIFIED"
+  /// - "PENDING"
+  /// - "RUNNING"
+  /// - "SUCCEEDED"
+  /// - "FAILED"
   core.String? state;
 
   Job({this.errorCode, this.location, this.name, this.state});
@@ -16677,41 +12825,15 @@ class Job {
   }
 }
 
-/// Kernel mode rootkit signatures.
 class KernelRootkit {
-  /// Rootkit name, when available.
   core.String? name;
-
-  /// True if unexpected modifications of kernel code memory are present.
   core.bool? unexpectedCodeModification;
-
-  /// True if `ftrace` points are present with callbacks pointing to regions
-  /// that are not in the expected kernel or module code range.
   core.bool? unexpectedFtraceHandler;
-
-  /// True if interrupt handlers that are are not in the expected kernel or
-  /// module code regions are present.
   core.bool? unexpectedInterruptHandler;
-
-  /// True if kernel code pages that are not in the expected kernel or module
-  /// code regions are present.
   core.bool? unexpectedKernelCodePages;
-
-  /// True if `kprobe` points are present with callbacks pointing to regions
-  /// that are not in the expected kernel or module code range.
   core.bool? unexpectedKprobeHandler;
-
-  /// True if unexpected processes in the scheduler run queue are present.
-  ///
-  /// Such processes are in the run queue, but not in the process task list.
   core.bool? unexpectedProcessesInRunqueue;
-
-  /// True if unexpected modifications of kernel read-only data memory are
-  /// present.
   core.bool? unexpectedReadOnlyDataModification;
-
-  /// True if system call handlers that are are not in the expected kernel or
-  /// module code regions are present.
   core.bool? unexpectedSystemCallHandler;
 
   KernelRootkit({
@@ -16770,41 +12892,13 @@ class KernelRootkit {
   }
 }
 
-/// Kubernetes-related attributes.
 class Kubernetes {
-  /// Provides information on any Kubernetes access reviews (privilege checks)
-  /// relevant to the finding.
   core.List<AccessReview>? accessReviews;
-
-  /// Provides Kubernetes role binding information for findings that involve
-  /// [RoleBindings or ClusterRoleBindings](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
   core.List<GoogleCloudSecuritycenterV1Binding>? bindings;
-
-  /// GKE
-  /// [node pools](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pools)
-  /// associated with the finding.
-  ///
-  /// This field contains node pool information for each node, when it is
-  /// available.
   core.List<NodePool>? nodePools;
-
-  /// Provides Kubernetes
-  /// [node](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture#nodes)
-  /// information.
   core.List<Node>? nodes;
-
-  /// Kubernetes objects related to the finding.
   core.List<Object>? objects;
-
-  /// Kubernetes
-  /// [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod)
-  /// associated with the finding.
-  ///
-  /// This field contains Pod records for each container that is owned by a Pod.
   core.List<Pod>? pods;
-
-  /// Provides Kubernetes role information for findings that involve
-  /// [Roles or ClusterRoles](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
   core.List<Role>? roles;
 
   Kubernetes({
@@ -16886,46 +12980,12 @@ class Kubernetes {
   }
 }
 
-/// Represents a generic name-value label.
-///
-/// A label has separate name and value fields to support filtering with the
-/// `contains()` function. For more information, see \[Filtering on array-type
-/// fields\](https://cloud.google.com/security-command-center/docs/how-to-api-list-findings#array-contains-filtering).
-class Label {
-  /// Name of the label.
-  core.String? name;
+typedef Label = $Shared09;
 
-  /// Value that corresponds to the label's name.
-  core.String? value;
-
-  Label({this.name, this.value});
-
-  Label.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    final value = this.value;
-    return {'name': ?name, 'value': ?value};
-  }
-}
-
-/// Response message for listing assets.
 class ListAssetsResponse {
-  /// Assets matching the list request.
   core.List<ListAssetsResult>? listAssetsResults;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results.
   core.String? nextPageToken;
-
-  /// Time used for executing the list request.
   core.String? readTime;
-
-  /// The total number of assets matching the query.
   core.int? totalSize;
 
   ListAssetsResponse({
@@ -16963,18 +13023,15 @@ class ListAssetsResponse {
   }
 }
 
-/// Result containing the Asset and its State.
 class ListAssetsResult {
-  /// Asset matching the search request.
   Asset? asset;
 
-  /// State change of the asset between the points in time.
+  ///
   /// Possible string values are:
-  /// - "UNUSED" : State change is unused, this is the canonical default for
-  /// this enum.
-  /// - "ADDED" : Asset was added between the points in time.
-  /// - "REMOVED" : Asset was removed between the points in time.
-  /// - "ACTIVE" : Asset was present at both point(s) in time.
+  /// - "UNUSED"
+  /// - "ADDED"
+  /// - "REMOVED"
+  /// - "ACTIVE"
   core.String? stateChange;
 
   ListAssetsResult({this.asset, this.stateChange});
@@ -16996,14 +13053,8 @@ class ListAssetsResult {
   }
 }
 
-/// Response message for listing the attack paths for a given simulation or
-/// valued resource.
 class ListAttackPathsResponse {
-  /// The attack paths that the attack path simulation identified.
   core.List<AttackPath>? attackPaths;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results.
   core.String? nextPageToken;
 
   ListAttackPathsResponse({this.attackPaths, this.nextPageToken});
@@ -17027,14 +13078,8 @@ class ListAttackPathsResponse {
   }
 }
 
-/// Response message for listing BigQuery exports.
 class ListBigQueryExportsResponse {
-  /// The BigQuery exports from the specified parent.
   core.List<GoogleCloudSecuritycenterV1BigQueryExport>? bigQueryExports;
-
-  /// A token, which can be sent as `page_token` to retrieve the next page.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
   ListBigQueryExportsResponse({this.bigQueryExports, this.nextPageToken});
@@ -17061,16 +13106,9 @@ class ListBigQueryExportsResponse {
   }
 }
 
-/// Response for listing current and descendant resident Event Threat Detection
-/// custom modules.
 class ListDescendantEventThreatDetectionCustomModulesResponse {
-  /// Custom modules belonging to the requested parent.
   core.List<EventThreatDetectionCustomModule>?
   eventThreatDetectionCustomModules;
-
-  /// A token, which can be sent as `page_token` to retrieve the next page.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
   ListDescendantEventThreatDetectionCustomModulesResponse({
@@ -17103,14 +13141,8 @@ class ListDescendantEventThreatDetectionCustomModulesResponse {
   }
 }
 
-/// Response message for listing descendant Security Health Analytics custom
-/// modules.
 class ListDescendantSecurityHealthAnalyticsCustomModulesResponse {
-  /// If not empty, indicates that there may be more custom modules to be
-  /// returned.
   core.String? nextPageToken;
-
-  /// Custom modules belonging to the requested parent and its descendants.
   core.List<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>?
   securityHealthAnalyticsCustomModules;
 
@@ -17146,15 +13178,9 @@ class ListDescendantSecurityHealthAnalyticsCustomModulesResponse {
   }
 }
 
-/// Response for listing EffectiveEventThreatDetectionCustomModules.
 class ListEffectiveEventThreatDetectionCustomModulesResponse {
-  /// Effective custom modules belonging to the requested parent.
   core.List<EffectiveEventThreatDetectionCustomModule>?
   effectiveEventThreatDetectionCustomModules;
-
-  /// A token, which can be sent as `page_token` to retrieve the next page.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
   ListEffectiveEventThreatDetectionCustomModulesResponse({
@@ -17188,17 +13214,11 @@ class ListEffectiveEventThreatDetectionCustomModulesResponse {
   }
 }
 
-/// Response message for listing effective Security Health Analytics custom
-/// modules.
 class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse {
-  /// Effective custom modules belonging to the requested parent.
   core.List<
     GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule
   >?
   effectiveSecurityHealthAnalyticsCustomModules;
-
-  /// If not empty, indicates that there may be more effective custom modules to
-  /// be returned.
   core.String? nextPageToken;
 
   ListEffectiveSecurityHealthAnalyticsCustomModulesResponse({
@@ -17234,15 +13254,9 @@ class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse {
   }
 }
 
-/// Response for listing Event Threat Detection custom modules.
 class ListEventThreatDetectionCustomModulesResponse {
-  /// Custom modules belonging to the requested parent.
   core.List<EventThreatDetectionCustomModule>?
   eventThreatDetectionCustomModules;
-
-  /// A token, which can be sent as `page_token` to retrieve the next page.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
   ListEventThreatDetectionCustomModulesResponse({
@@ -17274,19 +13288,10 @@ class ListEventThreatDetectionCustomModulesResponse {
   }
 }
 
-/// Response message for listing findings.
 class ListFindingsResponse {
-  /// Findings matching the list request.
   core.List<ListFindingsResult>? listFindingsResults;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results.
   core.String? nextPageToken;
-
-  /// Time used for executing the list request.
   core.String? readTime;
-
-  /// The total number of findings matching the query.
   core.int? totalSize;
 
   ListFindingsResponse({
@@ -17324,27 +13329,17 @@ class ListFindingsResponse {
   }
 }
 
-/// Result containing the Finding and its StateChange.
 class ListFindingsResult {
-  /// Finding matching the search request.
   Finding? finding;
-
-  /// Resource that is associated with this finding.
-  ///
-  /// Output only.
   Resource? resource;
 
-  /// State change of the finding between the points in time.
+  ///
   /// Possible string values are:
-  /// - "UNUSED" : State change is unused, this is the canonical default for
-  /// this enum.
-  /// - "CHANGED" : The finding has changed state in some way between the points
-  /// in time and existed at both points.
-  /// - "UNCHANGED" : The finding has not changed state between the points in
-  /// time and existed at both points.
-  /// - "ADDED" : The finding was created between the points in time.
-  /// - "REMOVED" : The finding at timestamp does not match the filter
-  /// specified, but it did at timestamp - compare_duration.
+  /// - "UNUSED"
+  /// - "CHANGED"
+  /// - "UNCHANGED"
+  /// - "ADDED"
+  /// - "REMOVED"
   core.String? stateChange;
 
   ListFindingsResult({this.finding, this.resource, this.stateChange});
@@ -17376,14 +13371,8 @@ class ListFindingsResult {
   }
 }
 
-/// Response message for listing mute configs.
 class ListMuteConfigsResponse {
-  /// The mute configs from the specified parent.
   core.List<GoogleCloudSecuritycenterV1MuteConfig>? muteConfigs;
-
-  /// A token, which can be sent as `page_token` to retrieve the next page.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
   ListMuteConfigsResponse({this.muteConfigs, this.nextPageToken});
@@ -17407,13 +13396,8 @@ class ListMuteConfigsResponse {
   }
 }
 
-/// Response message for listing notification configs.
 class ListNotificationConfigsResponse {
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results.
   core.String? nextPageToken;
-
-  /// Notification configs belonging to the requested parent.
   core.List<NotificationConfig>? notificationConfigs;
 
   ListNotificationConfigsResponse({
@@ -17443,20 +13427,9 @@ class ListNotificationConfigsResponse {
   }
 }
 
-/// The response message for Operations.ListOperations.
 class ListOperationsResponse {
-  /// The standard List next-page token.
   core.String? nextPageToken;
-
-  /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
-
-  /// Unordered list.
-  ///
-  /// Unreachable resources. Populated when the request sets
-  /// `ListOperationsRequest.return_partial_success` and reads across
-  /// collections. For example, when attempting to list all resources across all
-  /// supported locations.
   core.List<core.String>? unreachable;
 
   ListOperationsResponse({
@@ -17492,14 +13465,8 @@ class ListOperationsResponse {
   }
 }
 
-/// Response message to list resource value configs
 class ListResourceValueConfigsResponse {
-  /// A token, which can be sent as `page_token` to retrieve the next page.
-  ///
-  /// If this field is empty, there are no subsequent pages.
   core.String? nextPageToken;
-
-  /// The resource value configs from the specified parent.
   core.List<GoogleCloudSecuritycenterV1ResourceValueConfig>?
   resourceValueConfigs;
 
@@ -17531,13 +13498,8 @@ class ListResourceValueConfigsResponse {
   }
 }
 
-/// Response message for listing Security Health Analytics custom modules.
 class ListSecurityHealthAnalyticsCustomModulesResponse {
-  /// If not empty, indicates that there may be more custom modules to be
-  /// returned.
   core.String? nextPageToken;
-
-  /// Custom modules belonging to the requested parent.
   core.List<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>?
   securityHealthAnalyticsCustomModules;
 
@@ -17572,13 +13534,8 @@ class ListSecurityHealthAnalyticsCustomModulesResponse {
   }
 }
 
-/// Response message for listing sources.
 class ListSourcesResponse {
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results.
   core.String? nextPageToken;
-
-  /// Sources belonging to the requested parent.
   core.List<Source>? sources;
 
   ListSourcesResponse({this.nextPageToken, this.sources});
@@ -17601,16 +13558,9 @@ class ListSourcesResponse {
   }
 }
 
-/// Response message for listing the valued resources for a given simulation.
 class ListValuedResourcesResponse {
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results.
   core.String? nextPageToken;
-
-  /// The estimated total number of results matching the query.
   core.int? totalSize;
-
-  /// The valued resources that the attack path simulation identified.
   core.List<ValuedResource>? valuedResources;
 
   ListValuedResourcesResponse({
@@ -17644,26 +13594,9 @@ class ListValuedResourcesResponse {
   }
 }
 
-/// Contains information related to the load balancer associated with the
-/// finding.
-class LoadBalancer {
-  /// The name of the load balancer associated with the finding.
-  core.String? name;
+typedef LoadBalancer = $Shared00;
 
-  LoadBalancer({this.name});
-
-  LoadBalancer.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    return {'name': ?name};
-  }
-}
-
-/// An individual entry in a log.
 class LogEntry {
-  /// An individual entry in a log stored in Cloud Logging.
   CloudLoggingEntry? cloudLoggingEntry;
 
   LogEntry({this.cloudLoggingEntry});
@@ -17684,13 +13617,8 @@ class LogEntry {
   }
 }
 
-/// A signature corresponding to memory page hashes.
 class MemoryHashSignature {
-  /// The binary family.
   core.String? binaryFamily;
-
-  /// The list of memory hash detections contributing to the binary family
-  /// match.
   core.List<Detection>? detections;
 
   MemoryHashSignature({this.binaryFamily, this.detections});
@@ -17714,49 +13642,29 @@ class MemoryHashSignature {
   }
 }
 
-/// MITRE ATT&CK tactics and techniques related to this finding.
-///
-/// See: https://attack.mitre.org
 class MitreAttack {
-  /// Additional MITRE ATT&CK tactics related to this finding, if any.
   core.List<core.String>? additionalTactics;
-
-  /// Additional MITRE ATT&CK techniques related to this finding, if any, along
-  /// with any of their respective parent techniques.
   core.List<core.String>? additionalTechniques;
 
-  /// The MITRE ATT&CK tactic most closely represented by this finding, if any.
+  ///
   /// Possible string values are:
-  /// - "TACTIC_UNSPECIFIED" : Unspecified value.
-  /// - "RECONNAISSANCE" : TA0043
-  /// - "RESOURCE_DEVELOPMENT" : TA0042
-  /// - "INITIAL_ACCESS" : TA0001
-  /// - "EXECUTION" : TA0002
-  /// - "PERSISTENCE" : TA0003
-  /// - "PRIVILEGE_ESCALATION" : TA0004
-  /// - "DEFENSE_EVASION" : TA0005
-  /// - "CREDENTIAL_ACCESS" : TA0006
-  /// - "DISCOVERY" : TA0007
-  /// - "LATERAL_MOVEMENT" : TA0008
-  /// - "COLLECTION" : TA0009
-  /// - "COMMAND_AND_CONTROL" : TA0011
-  /// - "EXFILTRATION" : TA0010
-  /// - "IMPACT" : TA0040
+  /// - "TACTIC_UNSPECIFIED"
+  /// - "RECONNAISSANCE"
+  /// - "RESOURCE_DEVELOPMENT"
+  /// - "INITIAL_ACCESS"
+  /// - "EXECUTION"
+  /// - "PERSISTENCE"
+  /// - "PRIVILEGE_ESCALATION"
+  /// - "DEFENSE_EVASION"
+  /// - "CREDENTIAL_ACCESS"
+  /// - "DISCOVERY"
+  /// - "LATERAL_MOVEMENT"
+  /// - "COLLECTION"
+  /// - "COMMAND_AND_CONTROL"
+  /// - "EXFILTRATION"
+  /// - "IMPACT"
   core.String? primaryTactic;
-
-  /// The MITRE ATT&CK technique most closely represented by this finding, if
-  /// any.
-  ///
-  /// primary_techniques is a repeated field because there are multiple levels
-  /// of MITRE ATT&CK techniques. If the technique most closely represented by
-  /// this finding is a sub-technique (e.g. `SCANNING_IP_BLOCKS`), both the
-  /// sub-technique and its parent technique(s) will be listed (e.g.
-  /// `SCANNING_IP_BLOCKS`, `ACTIVE_SCANNING`).
   core.List<core.String>? primaryTechniques;
-
-  /// The MITRE ATT&CK version referenced by the above fields.
-  ///
-  /// E.g. "8".
   core.String? version;
 
   MitreAttack({
@@ -17798,15 +13706,8 @@ class MitreAttack {
   }
 }
 
-/// Mute information about the finding, including whether the finding has a
-/// static mute or any matching dynamic mute rules.
 class MuteInfo {
-  /// The list of dynamic mute rules that currently match the finding.
   core.List<DynamicMuteRecord>? dynamicMuteRecords;
-
-  /// If set, the static mute applied to this finding.
-  ///
-  /// Static mutes override dynamic mutes. If unset, there is no static mute.
   StaticMute? staticMute;
 
   MuteInfo({this.dynamicMuteRecords, this.staticMute});
@@ -17837,44 +13738,11 @@ class MuteInfo {
   }
 }
 
-/// Contains information about a VPC network associated with the finding.
-class Network {
-  /// The name of the VPC network resource, for example,
-  /// `//compute.googleapis.com/projects/my-project/global/networks/my-network`.
-  core.String? name;
+typedef Network = $Shared00;
+typedef Node = $Shared00;
 
-  Network({this.name});
-
-  Network.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    return {'name': ?name};
-  }
-}
-
-/// Kubernetes nodes associated with the finding.
-class Node {
-  /// [Full resource name](https://google.aip.dev/122#full-resource-names) of
-  /// the Compute Engine VM running the cluster node.
-  core.String? name;
-
-  Node({this.name});
-
-  Node.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    return {'name': ?name};
-  }
-}
-
-/// Provides GKE node pool information.
 class NodePool {
-  /// Kubernetes node pool name.
   core.String? name;
-
-  /// Nodes associated with the finding.
   core.List<Node>? nodes;
 
   NodePool({this.name, this.nodes});
@@ -17897,20 +13765,10 @@ class NodePool {
   }
 }
 
-/// Represents a Jupyter notebook IPYNB file, such as a
-/// [Colab Enterprise notebook](https://cloud.google.com/colab/docs/introduction)
-/// file, that is associated with a finding.
 class Notebook {
-  /// The user ID of the latest author to modify the notebook.
   core.String? lastAuthor;
-
-  /// The name of the notebook.
   core.String? name;
-
-  /// The most recent time the notebook was updated.
   core.String? notebookUpdateTime;
-
-  /// The source notebook service, for example, "Colab Enterprise".
   core.String? service;
 
   Notebook({this.lastAuthor, this.name, this.notebookUpdateTime, this.service});
@@ -17937,37 +13795,11 @@ class Notebook {
   }
 }
 
-/// Cloud Security Command Center (Cloud SCC) notification configs.
-///
-/// A notification config is a Cloud SCC resource that contains the
-/// configuration to send notifications for create/update events of findings,
-/// assets and etc.
 class NotificationConfig {
-  /// The description of the notification config (max of 1024 characters).
   core.String? description;
-
-  /// The relative resource name of this notification config.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example:
-  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket",
-  /// "folders/{folder_id}/notificationConfigs/notify_public_bucket", or
-  /// "projects/{project_id}/notificationConfigs/notify_public_bucket".
   core.String? name;
-
-  /// The Pub/Sub topic to send notifications to.
-  ///
-  /// Its format is "projects/\[project_id\]/topics/\[topic\]".
   core.String? pubsubTopic;
-
-  /// The service account that needs "pubsub.topics.publish" permission to
-  /// publish to the Pub/Sub topic.
-  ///
-  /// Output only.
   core.String? serviceAccount;
-
-  /// The config for triggering streaming-based notifications.
   StreamingConfig? streamingConfig;
 
   NotificationConfig({
@@ -18007,31 +13839,11 @@ class NotificationConfig {
   }
 }
 
-/// Kubernetes object related to the finding, uniquely identified by GKNN.
-///
-/// Used if the object Kind is not one of Pod, Node, NodePool, Binding, or
-/// AccessReview.
 class Object {
-  /// Pod containers associated with this finding, if any.
   core.List<Container>? containers;
-
-  /// Kubernetes object group, such as "policy.k8s.io/v1".
   core.String? group;
-
-  /// Kubernetes object kind, such as "Namespace".
   core.String? kind;
-
-  /// Kubernetes object name.
-  ///
-  /// For details see
-  /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/.
   core.String? name;
-
-  /// Kubernetes object namespace.
-  ///
-  /// Must be a valid DNS label. Named "ns" to avoid collision with C++
-  /// namespace keyword. For details see
-  /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/.
   core.String? ns;
 
   Object({this.containers, this.group, this.kind, this.name, this.ns});
@@ -18067,44 +13879,18 @@ class Object {
   }
 }
 
-/// This resource represents a long-running operation that is the result of a
-/// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  ///
-  /// If `true`, the operation is completed, and either `error` or `response` is
-  /// available.
   core.bool? done;
-
-  /// The error result of the operation in case of failure or cancellation.
   Status? error;
 
-  /// Service-specific metadata associated with the operation.
   ///
-  /// It typically contains progress information and common metadata such as
-  /// create time. Some services might not provide such metadata. Any method
-  /// that returns a long-running operation should document the metadata type,
-  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? metadata;
-
-  /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it.
-  ///
-  /// If you use the default HTTP mapping, the `name` should be a resource name
-  /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal, successful response of the operation.
   ///
-  /// If the original method returns no data on success, such as `Delete`, the
-  /// response is `google.protobuf.Empty`. If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource. For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
-  /// the original method name. For example, if the original method name is
-  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -18145,42 +13931,11 @@ class Operation {
   }
 }
 
-/// Contains information about the org policies associated with the finding.
-class OrgPolicy {
-  /// The resource name of the org policy.
-  ///
-  /// Example: "organizations/{organization_id}/policies/{constraint_name}"
-  core.String? name;
+typedef OrgPolicy = $Shared00;
 
-  OrgPolicy({this.name});
-
-  OrgPolicy.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    return {'name': ?name};
-  }
-}
-
-/// User specified settings that are attached to the Security Command Center
-/// organization.
 class OrganizationSettings {
-  /// The configuration used for Asset Discovery runs.
   AssetDiscoveryConfig? assetDiscoveryConfig;
-
-  /// A flag that indicates if Asset Discovery should be enabled.
-  ///
-  /// If the flag is set to `true`, then discovery of assets will occur. If it
-  /// is set to `false`, all historical assets will remain, but discovery of
-  /// future assets will not occur.
   core.bool? enableAssetDiscovery;
-
-  /// The relative resource name of the settings.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example: "organizations/{organization_id}/organizationSettings".
   core.String? name;
 
   OrganizationSettings({
@@ -18213,18 +13968,10 @@ class OrganizationSettings {
   }
 }
 
-/// Package is a generic definition of a package.
 class Package {
-  /// The CPE URI where the vulnerability was detected.
   core.String? cpeUri;
-
-  /// The name of the package where the vulnerability was detected.
   core.String? packageName;
-
-  /// Type of package, for example, os, maven, or go.
   core.String? packageType;
-
-  /// The version of the package.
   core.String? packageVersion;
 
   Package({
@@ -18256,17 +14003,9 @@ class Package {
   }
 }
 
-/// A finding that is associated with this node in the attack path.
 class PathNodeAssociatedFinding {
-  /// Canonical name of the associated findings.
-  ///
-  /// Example: `organizations/123/sources/456/findings/789`
   core.String? canonicalFinding;
-
-  /// The additional taxonomy group within findings from a given source.
   core.String? findingCategory;
-
-  /// Full resource name of the finding.
   core.String? name;
 
   PathNodeAssociatedFinding({
@@ -18294,44 +14033,12 @@ class PathNodeAssociatedFinding {
   }
 }
 
-/// Vertex AI training pipeline associated with the finding.
-class Pipeline {
-  /// The user defined display name of pipeline, e.g. plants-classification
-  core.String? displayName;
+typedef Pipeline = $Shared23;
 
-  /// Resource name of the pipeline, e.g.
-  /// projects/{project}/locations/{location}/trainingPipelines/5253428229225578496
-  core.String? name;
-
-  Pipeline({this.displayName, this.name});
-
-  Pipeline.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final name = this.name;
-    return {'displayName': ?displayName, 'name': ?name};
-  }
-}
-
-/// A Kubernetes Pod.
 class Pod {
-  /// Pod containers associated with this finding, if any.
   core.List<Container>? containers;
-
-  /// Pod labels.
-  ///
-  /// For Kubernetes containers, these are applied to the container.
   core.List<Label>? labels;
-
-  /// Kubernetes Pod name.
   core.String? name;
-
-  /// Kubernetes Pod namespace.
   core.String? ns;
 
   Pod({this.containers, this.labels, this.name, this.ns});
@@ -18369,65 +14076,9 @@ class Pod {
   }
 }
 
-/// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources.
-///
-/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members`, or principals, to a single `role`. Principals can be user
-/// accounts, service accounts, Google groups, and domains (such as G Suite). A
-/// `role` is a named list of permissions; each `role` can be an IAM predefined
-/// role or a user-created custom role. For some types of Google Cloud
-/// resources, a `binding` can also specify a `condition`, which is a logical
-/// expression that allows access to a resource only if the expression evaluates
-/// to `true`. A condition can add constraints based on attributes of the
-/// request, the resource, or both. To learn which resources support conditions
-/// in their IAM policies, see the
-/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** ``` { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
-/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
-/// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
-/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
-/// members: - user:mike@example.com - group:admins@example.com -
-/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-/// role: roles/resourcemanager.organizationAdmin - members: -
-/// user:eve@example.com role: roles/resourcemanager.organizationViewer
-/// condition: title: expirable access description: Does not grant access after
-/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
-/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
-
-  /// Associates a list of `members`, or principals, with a `role`.
-  ///
-  /// Optionally, may specify a `condition` that determines how and when the
-  /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
-  /// principals; up to 250 of these principals can be Google groups. Each
-  /// occurrence of a principal counts towards these limits. For example, if the
-  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
-  /// to any other principal, then you can add another 1,450 principals to the
-  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
-
-  /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other.
-  ///
-  /// It is strongly suggested that systems make use of the `etag` in the
-  /// read-modify-write cycle to perform policy updates in order to avoid race
-  /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
-  /// systems are expected to put that etag in the request to `setIamPolicy` to
-  /// ensure that their change will be applied to the same version of the
-  /// policy. **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost.
   core.String? etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
@@ -18438,23 +14089,6 @@ class Policy {
         .replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy.
-  ///
-  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-  /// are rejected. Any operation that affects conditional role bindings must
-  /// specify version `3`. This requirement applies to the following operations:
-  /// * Getting a policy that includes a conditional role binding * Adding a
-  /// conditional role binding to a policy * Changing a conditional role binding
-  /// in a policy * Removing any role binding, with or without a condition, from
-  /// a policy that includes conditions **Important:** If you use IAM
-  /// Conditions, you must include the `etag` field whenever you call
-  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
-  /// version `3` policy with a version `1` policy, and all of the conditions in
-  /// the version `3` policy are lost. If a policy does not include any
-  /// conditions, operations on that policy may specify any valid version or
-  /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
   Policy({this.auditConfigs, this.bindings, this.etag, this.version});
@@ -18493,19 +14127,9 @@ class Policy {
   }
 }
 
-/// The policy field that violates the deployed posture and its expected and
-/// detected values.
 class PolicyDriftDetails {
-  /// The detected value that violates the deployed posture, for example,
-  /// `false` or `allowed_values={"projects/22831892"}`.
   core.String? detectedValue;
-
-  /// The value of this field that was configured in a posture, for example,
-  /// `true` or `allowed_values={"projects/29831892"}`.
   core.String? expectedValue;
-
-  /// The name of the updated field, for example
-  /// constraint.implementation.policy_rules\[0\].enforce
   core.String? field;
 
   PolicyDriftDetails({this.detectedValue, this.expectedValue, this.field});
@@ -18529,28 +14153,10 @@ class PolicyDriftDetails {
   }
 }
 
-/// Metadata summarizing policy violations of child resources of the affected
-/// resource.
-///
-/// `finding_category` and `resource` determine the exact semantics of the
-/// counts. For example, when
-/// category=DATA_SECURITY_POSTURE_OBJECT_PUBLIC_ACCESS_VIOLATION and
-/// resource='storage.googleapis.com/buckets/my-bucket-name' then this counts
-/// the number of Cloud Storage objects in my-bucket-name which violate a Public
-/// Access control.
 class PolicyViolationSummary {
-  /// Total number of child resources that conform to the policy.
   core.String? conformantResourcesCount;
-
-  /// Number of child resources for which errors during evaluation occurred.
-  ///
-  /// The evaluation result for these child resources is effectively "unknown".
   core.String? evaluationErrorsCount;
-
-  /// Total count of child resources which were not in scope for evaluation.
   core.String? outOfScopeResourcesCount;
-
-  /// Count of child resources in violation of the policy.
   core.String? policyViolationsCount;
 
   PolicyViolationSummary({
@@ -18584,16 +14190,8 @@ class PolicyViolationSummary {
   }
 }
 
-/// A port range which is inclusive of the min and max values.
-///
-/// Values are between 0 and 2^16-1. The max can be equal / must be not smaller
-/// than the min value. If min and max are equal this indicates that it is a
-/// single port.
 class PortRange {
-  /// Maximum port value.
   core.String? max;
-
-  /// Minimum port value.
   core.String? min;
 
   PortRange({this.max, this.min});
@@ -18611,12 +14209,8 @@ class PortRange {
   }
 }
 
-/// A position in the uploaded text version of a module.
 class Position {
-  /// The column number.
   core.int? columnNumber;
-
-  /// The line number.
   core.int? lineNumber;
 
   Position({this.columnNumber, this.lineNumber});
@@ -18634,46 +14228,17 @@ class Position {
   }
 }
 
-/// Represents an operating system process.
 class Process {
-  /// Process arguments as JSON encoded strings.
   core.List<core.String>? args;
-
-  /// True if `args` is incomplete.
   core.bool? argumentsTruncated;
-
-  /// File information for the process executable.
   File? binary;
-
-  /// Process environment variables.
   core.List<EnvironmentVariable>? envVariables;
-
-  /// True if `env_variables` is incomplete.
   core.bool? envVariablesTruncated;
-
-  /// File information for libraries loaded by the process.
   core.List<File>? libraries;
-
-  /// The process name, as displayed in utilities like `top` and `ps`.
-  ///
-  /// This name can be accessed through `/proc/[pid]/comm` and changed with
-  /// `prctl(PR_SET_NAME)`.
   core.String? name;
-
-  /// The parent process ID.
   core.String? parentPid;
-
-  /// The process ID.
   core.String? pid;
-
-  /// When the process represents the invocation of a script, `binary` provides
-  /// information about the interpreter, while `script` provides information
-  /// about the script file provided to the interpreter.
   File? script;
-
-  /// The ID of the user that executed the process.
-  ///
-  /// E.g. If this is the root user this will always be 0.
   core.String? userId;
 
   Process({
@@ -18754,19 +14319,15 @@ class Process {
   }
 }
 
-/// Indicates what signature matched this process.
 class ProcessSignature {
-  /// Signature indicating that a binary family was matched.
   MemoryHashSignature? memoryHashSignature;
 
-  /// Describes the type of resource associated with the signature.
+  ///
   /// Possible string values are:
-  /// - "SIGNATURE_TYPE_UNSPECIFIED" : The default signature type.
-  /// - "SIGNATURE_TYPE_PROCESS" : Used for signatures concerning processes.
-  /// - "SIGNATURE_TYPE_FILE" : Used for signatures concerning disks.
+  /// - "SIGNATURE_TYPE_UNSPECIFIED"
+  /// - "SIGNATURE_TYPE_PROCESS"
+  /// - "SIGNATURE_TYPE_FILE"
   core.String? signatureType;
-
-  /// Signature indicating that a YARA rule was matched.
   YaraRuleSignature? yaraRuleSignature;
 
   ProcessSignature({
@@ -18804,13 +14365,8 @@ class ProcessSignature {
   }
 }
 
-/// Additional Links
 class Reference {
-  /// Source of the reference e.g. NVD
   core.String? source;
-
-  /// Uri for the mentioned source e.g.
-  /// https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527.
   core.String? uri;
 
   Reference({this.source, this.uri});
@@ -18828,22 +14384,10 @@ class Reference {
   }
 }
 
-/// Information about the requests relevant to the finding.
 class Requests {
-  /// Allowed RPS (requests per second) over the long term.
   core.int? longTermAllowed;
-
-  /// Denied RPS (requests per second) over the long term.
   core.int? longTermDenied;
-
-  /// For 'Increasing deny ratio', the ratio is the denied traffic divided by
-  /// the allowed traffic.
-  ///
-  /// For 'Allowed traffic spike', the ratio is the allowed traffic in the short
-  /// term divided by allowed traffic in the long term.
   core.double? ratio;
-
-  /// Allowed RPS (requests per second) in the short term.
   core.int? shortTermAllowed;
 
   Requests({
@@ -18875,87 +14419,33 @@ class Requests {
   }
 }
 
-/// Information related to the Google Cloud resource that is associated with
-/// this finding.
 class Resource {
-  /// The ADC application associated with the finding.
   AdcApplication? adcApplication;
-
-  /// The ADC template associated with the finding.
   AdcApplicationTemplateRevision? adcApplicationTemplate;
-
-  /// The ADC shared template associated with the finding.
   AdcSharedTemplateRevision? adcSharedTemplate;
-
-  /// The App Hub application this resource belongs to.
   GoogleCloudSecuritycenterV1ResourceApplication? application;
-
-  /// The AWS metadata associated with the finding.
   AwsMetadata? awsMetadata;
-
-  /// The Azure metadata associated with the finding.
   AzureMetadata? azureMetadata;
 
-  /// Indicates which cloud provider the finding is from.
+  ///
   /// Possible string values are:
-  /// - "CLOUD_PROVIDER_UNSPECIFIED" : The cloud provider is unspecified.
-  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud.
-  /// - "AMAZON_WEB_SERVICES" : The cloud provider is Amazon Web Services.
-  /// - "MICROSOFT_AZURE" : The cloud provider is Microsoft Azure.
+  /// - "CLOUD_PROVIDER_UNSPECIFIED"
+  /// - "GOOGLE_CLOUD_PLATFORM"
+  /// - "AMAZON_WEB_SERVICES"
+  /// - "MICROSOFT_AZURE"
   core.String? cloudProvider;
-
-  /// The human readable name of the resource.
   core.String? displayName;
-
-  /// Contains a Folder message for each folder in the assets ancestry.
-  ///
-  /// The first folder is the deepest nested folder, and the last folder is the
-  /// folder directly under the Organization.
   core.List<Folder>? folders;
-
-  /// The region or location of the service (if applicable).
   core.String? location;
-
-  /// The full resource name of the resource.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String? name;
-
-  /// Indicates which organization / tenant the finding is for.
   core.String? organization;
-
-  /// The human readable name of resource's parent.
   core.String? parentDisplayName;
-
-  /// The full resource name of resource's parent.
   core.String? parentName;
-
-  /// The project ID that the resource belongs to.
   core.String? projectDisplayName;
-
-  /// The full resource name of project that the resource belongs to.
   core.String? projectName;
-
-  /// Provides the path to the resource within the resource hierarchy.
   ResourcePath? resourcePath;
-
-  /// A string representation of the resource path.
-  ///
-  /// For Google Cloud, it has the format of
-  /// `org/{organization_id}/folder/{folder_id}/folder/{folder_id}/project/{project_id}`
-  /// where there can be any number of folders. For AWS, it has the format of
-  /// `org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id}`
-  /// where there can be any number of organizational units. For Azure, it has
-  /// the format of
-  /// `mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}`
-  /// where there can be any number of management groups.
   core.String? resourcePathString;
-
-  /// The service or resource provider associated with the resource.
   core.String? service;
-
-  /// The full resource type of the resource.
   core.String? type;
 
   Resource({
@@ -19086,11 +14576,7 @@ class Resource {
   }
 }
 
-/// Represents the path of resources leading up to the resource this finding is
-/// about.
 class ResourcePath {
-  /// The list of nodes that make the up resource path, ordered from lowest
-  /// level to highest level.
   core.List<ResourcePathNode>? nodes;
 
   ResourcePath({this.nodes});
@@ -19112,30 +14598,22 @@ class ResourcePath {
   }
 }
 
-/// A node within the resource path.
-///
-/// Each node represents a resource within the resource hierarchy.
 class ResourcePathNode {
-  /// The display name of the resource this node represents.
   core.String? displayName;
-
-  /// The ID of the resource this node represents.
   core.String? id;
 
-  /// The type of resource this node represents.
+  ///
   /// Possible string values are:
-  /// - "RESOURCE_PATH_NODE_TYPE_UNSPECIFIED" : Node type is unspecified.
-  /// - "GCP_ORGANIZATION" : The node represents a Google Cloud organization.
-  /// - "GCP_FOLDER" : The node represents a Google Cloud folder.
-  /// - "GCP_PROJECT" : The node represents a Google Cloud project.
-  /// - "AWS_ORGANIZATION" : The node represents an AWS organization.
-  /// - "AWS_ORGANIZATIONAL_UNIT" : The node represents an AWS organizational
-  /// unit.
-  /// - "AWS_ACCOUNT" : The node represents an AWS account.
-  /// - "AZURE_MANAGEMENT_GROUP" : The node represents an Azure management
-  /// group.
-  /// - "AZURE_SUBSCRIPTION" : The node represents an Azure subscription.
-  /// - "AZURE_RESOURCE_GROUP" : The node represents an Azure resource group.
+  /// - "RESOURCE_PATH_NODE_TYPE_UNSPECIFIED"
+  /// - "GCP_ORGANIZATION"
+  /// - "GCP_FOLDER"
+  /// - "GCP_PROJECT"
+  /// - "AWS_ORGANIZATION"
+  /// - "AWS_ORGANIZATIONAL_UNIT"
+  /// - "AWS_ACCOUNT"
+  /// - "AZURE_MANAGEMENT_GROUP"
+  /// - "AZURE_SUBSCRIPTION"
+  /// - "AZURE_RESOURCE_GROUP"
   core.String? nodeType;
 
   ResourcePathNode({this.displayName, this.id, this.nodeType});
@@ -19155,37 +14633,16 @@ class ResourcePathNode {
   }
 }
 
-/// Metadata about a ResourceValueConfig.
-///
-/// For example, id and name.
-class ResourceValueConfigMetadata {
-  /// Resource value config name
-  core.String? name;
+typedef ResourceValueConfigMetadata = $Shared00;
 
-  ResourceValueConfigMetadata({this.name});
-
-  ResourceValueConfigMetadata.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    return {'name': ?name};
-  }
-}
-
-/// Kubernetes Role or ClusterRole.
 class Role {
-  /// Role type.
+  ///
   /// Possible string values are:
-  /// - "KIND_UNSPECIFIED" : Role type is not specified.
-  /// - "ROLE" : Kubernetes Role.
-  /// - "CLUSTER_ROLE" : Kubernetes ClusterRole.
+  /// - "KIND_UNSPECIFIED"
+  /// - "ROLE"
+  /// - "CLUSTER_ROLE"
   core.String? kind;
-
-  /// Role name.
   core.String? name;
-
-  /// Role namespace.
   core.String? ns;
 
   Role({this.kind, this.name, this.ns});
@@ -19205,21 +14662,12 @@ class Role {
   }
 }
 
-/// Request message for running asset discovery for an organization.
 typedef RunAssetDiscoveryRequest = $Empty;
 
-/// Details about a secret or credential associated with the finding.
 class Secret {
-  /// The environment variable containing the secret.
   SecretEnvironmentVariable? environmentVariable;
-
-  /// The file containing the secret.
   SecretFilePath? filePath;
-
-  /// The status of the secret.
   SecretStatus? status;
-
-  /// The type of secret, for example, GCP_API_KEY.
   core.String? type;
 
   Secret({this.environmentVariable, this.filePath, this.status, this.type});
@@ -19259,12 +14707,7 @@ class Secret {
   }
 }
 
-/// Environment variable containing the secret.
 class SecretEnvironmentVariable {
-  /// Environment variable name as a JSON encoded string.
-  ///
-  /// Note that value is not included since the value contains the secret data,
-  /// which is sensitive core content.
   core.String? key;
 
   SecretEnvironmentVariable({this.key});
@@ -19278,9 +14721,7 @@ class SecretEnvironmentVariable {
   }
 }
 
-/// File path containing the secret.
 class SecretFilePath {
-  /// Path to the file.
   core.String? path;
 
   SecretFilePath({this.path});
@@ -19294,21 +14735,16 @@ class SecretFilePath {
   }
 }
 
-/// The status of the secret.
 class SecretStatus {
-  /// Time that the secret was found.
   core.String? lastUpdatedTime;
 
-  /// The validity of the secret.
+  ///
   /// Possible string values are:
-  /// - "SECRET_VALIDITY_UNSPECIFIED" : Default value; no validation was
-  /// attempted.
-  /// - "SECRET_VALIDITY_UNSUPPORTED" : There is no mechanism to validate the
-  /// secret.
-  /// - "SECRET_VALIDITY_FAILED" : Validation is supported but the validation
-  /// failed.
-  /// - "SECRET_VALIDITY_INVALID" : The secret is confirmed to be invalid.
-  /// - "SECRET_VALIDITY_VALID" : The secret is confirmed to be valid.
+  /// - "SECRET_VALIDITY_UNSPECIFIED"
+  /// - "SECRET_VALIDITY_UNSUPPORTED"
+  /// - "SECRET_VALIDITY_FAILED"
+  /// - "SECRET_VALIDITY_INVALID"
+  /// - "SECRET_VALIDITY_VALID"
   core.String? validity;
 
   SecretStatus({this.lastUpdatedTime, this.validity});
@@ -19326,18 +14762,9 @@ class SecretStatus {
   }
 }
 
-/// SecurityBulletin are notifications of vulnerabilities of Google products.
 class SecurityBulletin {
-  /// ID of the bulletin corresponding to the vulnerability.
   core.String? bulletinId;
-
-  /// Submission time of this Security Bulletin.
   core.String? submissionTime;
-
-  /// This represents a version that the cluster receiving this notification
-  /// should be upgraded to, based on its current version.
-  ///
-  /// For example, 1.15.0
   core.String? suggestedUpgradeVersion;
 
   SecurityBulletin({
@@ -19366,52 +14793,15 @@ class SecurityBulletin {
   }
 }
 
-/// Security Command Center managed properties.
-///
-/// These properties are managed by Security Command Center and cannot be
-/// modified by the user.
 class SecurityCenterProperties {
-  /// Contains a Folder message for each folder in the assets ancestry.
-  ///
-  /// The first folder is the deepest nested folder, and the last folder is the
-  /// folder directly under the Organization.
   core.List<Folder>? folders;
-
-  /// The user defined display name for this resource.
   core.String? resourceDisplayName;
-
-  /// The full resource name of the Google Cloud resource this asset represents.
-  ///
-  /// This field is immutable after create time. See:
-  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String? resourceName;
-
-  /// Owners of the Google Cloud resource.
   core.List<core.String>? resourceOwners;
-
-  /// The full resource name of the immediate parent of the resource.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String? resourceParent;
-
-  /// The user defined display name for the parent of this resource.
   core.String? resourceParentDisplayName;
-
-  /// The full resource name of the project the resource belongs to.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String? resourceProject;
-
-  /// The user defined display name for the project of this resource.
   core.String? resourceProjectDisplayName;
-
-  /// The type of the Google Cloud resource.
-  ///
-  /// Examples include: APPLICATION, PROJECT, and ORGANIZATION. This is a case
-  /// insensitive field defined by Security Command Center and/or the producer
-  /// of the resource and is immutable after create time.
   core.String? resourceType;
 
   SecurityCenterProperties({
@@ -19472,40 +14862,9 @@ class SecurityCenterProperties {
   }
 }
 
-/// User specified security marks that are attached to the parent Security
-/// Command Center resource.
-///
-/// Security marks are scoped within a Security Command Center organization --
-/// they can be modified and viewed by all users who have proper permissions on
-/// the organization.
 class SecurityMarks {
-  /// The canonical name of the marks.
-  ///
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "folders/{folder_id}/assets/{asset_id}/securityMarks"
-  /// "projects/{project_number}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
   core.String? canonicalName;
-
-  /// Mutable user specified security marks belonging to the parent resource.
-  ///
-  /// Constraints are as follows: * Keys and values are treated as case
-  /// insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys
-  /// must be letters, numbers, underscores, or dashes * Values have leading and
-  /// trailing whitespace trimmed, remaining characters must be between 1 - 4096
-  /// characters (inclusive)
   core.Map<core.String, core.String>? marks;
-
-  /// The relative resource name of the SecurityMarks.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
   core.String? name;
 
   SecurityMarks({this.canonicalName, this.marks, this.name});
@@ -19527,20 +14886,9 @@ class SecurityMarks {
   }
 }
 
-/// Information about the
-/// [Google Cloud Armor security policy](https://cloud.google.com/armor/docs/security-policy-overview)
-/// relevant to the finding.
 class SecurityPolicy {
-  /// The name of the Google Cloud Armor security policy, for example,
-  /// "my-security-policy".
   core.String? name;
-
-  /// Whether or not the associated rule or policy is in preview mode.
   core.bool? preview;
-
-  /// The type of Google Cloud Armor security policy for example, 'backend
-  /// security policy', 'edge security policy', 'network edge security policy',
-  /// or 'always-on DDoS protection'.
   core.String? type;
 
   SecurityPolicy({this.name, this.preview, this.type});
@@ -19560,38 +14908,14 @@ class SecurityPolicy {
   }
 }
 
-/// Represents a posture that is deployed on Google Cloud by the Security
-/// Command Center Posture Management service.
-///
-/// A posture contains one or more policy sets. A policy set is a group of
-/// policies that enforce a set of security rules on Google Cloud.
 class SecurityPosture {
-  /// The name of the updated policy, for example,
-  /// `projects/{project_id}/policies/{constraint_name}`.
   core.String? changedPolicy;
-
-  /// Name of the posture, for example, `CIS-Posture`.
   core.String? name;
-
-  /// The ID of the updated policy, for example, `compute-policy-1`.
   core.String? policy;
-
-  /// The details about a change in an updated policy that violates the deployed
-  /// posture.
   core.List<PolicyDriftDetails>? policyDriftDetails;
-
-  /// The name of the updated policyset, for example, `cis-policyset`.
   core.String? policySet;
-
-  /// The name of the posture deployment, for example,
-  /// `organizations/{org_id}/posturedeployments/{posture_deployment_id}`.
   core.String? postureDeployment;
-
-  /// The project, folder, or organization on which the posture is deployed, for
-  /// example, `projects/{project_number}`.
   core.String? postureDeploymentResource;
-
-  /// The version of the posture, for example, `c7cfa2a8`.
   core.String? revisionId;
 
   SecurityPosture({
@@ -19646,24 +14970,14 @@ class SecurityPosture {
   }
 }
 
-/// Score is calculated from of all elements in the data profile.
-///
-/// A higher level means the data is more sensitive.
 class SensitivityScore {
-  /// The sensitivity score applied to the resource.
+  ///
   /// Possible string values are:
-  /// - "SENSITIVITY_SCORE_LEVEL_UNSPECIFIED" : Unused.
-  /// - "SENSITIVITY_LOW" : No sensitive information detected. The resource
-  /// isn't publicly accessible.
-  /// - "SENSITIVITY_UNKNOWN" : Unable to determine sensitivity.
-  /// - "SENSITIVITY_MODERATE" : Medium risk. Contains personally identifiable
-  /// information (PII), potentially sensitive data, or fields with free-text
-  /// data that are at a higher risk of having intermittent sensitive data.
-  /// Consider limiting access.
-  /// - "SENSITIVITY_HIGH" : High risk. Sensitive personally identifiable
-  /// information (SPII) can be present. Exfiltration of data can lead to user
-  /// data loss. Re-identification of users might be possible. Consider limiting
-  /// usage and or removing SPII.
+  /// - "SENSITIVITY_SCORE_LEVEL_UNSPECIFIED"
+  /// - "SENSITIVITY_LOW"
+  /// - "SENSITIVITY_UNKNOWN"
+  /// - "SENSITIVITY_MODERATE"
+  /// - "SENSITIVITY_HIGH"
   core.String? score;
 
   SensitivityScore({this.score});
@@ -19677,19 +14991,8 @@ class SensitivityScore {
   }
 }
 
-/// Identity delegation history of an authenticated service account.
 class ServiceAccountDelegationInfo {
-  /// The email address of a Google account.
   core.String? principalEmail;
-
-  /// A string representing the principal_subject associated with the identity.
-  ///
-  /// As compared to `principal_email`, supports principals that aren't
-  /// associated with email addresses, such as third party principals. For most
-  /// identities, the format will be `principal://iam.googleapis.com/{identity
-  /// pool name}/subjects/{subject}` except for some GKE identities
-  /// (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy
-  /// format `serviceAccount:{identity pool name}[{subject}]`
   core.String? principalSubject;
 
   ServiceAccountDelegationInfo({this.principalEmail, this.principalSubject});
@@ -19710,27 +15013,17 @@ class ServiceAccountDelegationInfo {
   }
 }
 
-/// Request message for updating a finding's state.
 class SetFindingStateRequest {
-  /// The time at which the updated state takes effect.
-  ///
-  /// If unset, defaults to the request time.
-  ///
-  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? startTime;
 
-  /// The desired State of the finding.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "ACTIVE" : The finding requires attention and has not been addressed
-  /// yet.
-  /// - "INACTIVE" : The finding has been fixed, triaged as a non-issue or
-  /// otherwise addressed and is no longer active.
+  /// - "STATE_UNSPECIFIED"
+  /// - "ACTIVE"
+  /// - "INACTIVE"
   core.String? state;
 
   SetFindingStateRequest({this.startTime, this.state});
@@ -19748,19 +15041,8 @@ class SetFindingStateRequest {
   }
 }
 
-/// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`.
-  ///
-  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Google Cloud services (such as Projects) might
-  /// reject them.
   Policy? policy;
-
-  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
-  ///
-  /// Only the fields in the mask will be modified. If no mask is provided, the
-  /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
   SetIamPolicyRequest({this.policy, this.updateMask});
@@ -19782,16 +15064,13 @@ class SetIamPolicyRequest {
   }
 }
 
-/// Request message for updating a finding's mute status.
 class SetMuteRequest {
-  /// The desired state of the Mute.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "MUTE_UNSPECIFIED" : Unspecified.
-  /// - "MUTED" : Finding has been muted.
-  /// - "UNMUTED" : Finding has been unmuted.
-  /// - "UNDEFINED" : Finding has never been muted/unmuted.
+  /// - "MUTE_UNSPECIFIED"
+  /// - "MUTED"
+  /// - "UNMUTED"
+  /// - "UNDEFINED"
   core.String? mute;
 
   SetMuteRequest({this.mute});
@@ -19805,18 +15084,8 @@ class SetMuteRequest {
   }
 }
 
-/// Request message to simulate a CustomConfig against a given test resource.
-///
-/// Maximum size of the request is 4 MB by default.
 class SimulateSecurityHealthAnalyticsCustomModuleRequest {
-  /// The custom configuration that you need to test.
-  ///
-  /// Required.
   GoogleCloudSecuritycenterV1CustomConfig? customConfig;
-
-  /// Resource data to simulate custom module against.
-  ///
-  /// Required.
   SimulatedResource? resource;
 
   SimulateSecurityHealthAnalyticsCustomModuleRequest({
@@ -19845,10 +15114,7 @@ class SimulateSecurityHealthAnalyticsCustomModuleRequest {
   }
 }
 
-/// Response message for simulating a `SecurityHealthAnalyticsCustomModule`
-/// against a given resource.
 class SimulateSecurityHealthAnalyticsCustomModuleResponse {
-  /// Result for test case in the corresponding request.
   SimulatedResult? result;
 
   SimulateSecurityHealthAnalyticsCustomModuleResponse({this.result});
@@ -19868,30 +15134,14 @@ class SimulateSecurityHealthAnalyticsCustomModuleResponse {
   }
 }
 
-/// Manually constructed resource name.
-///
-/// If the custom module evaluates against only the resource data, you can omit
-/// the `iam_policy_data` field. If it evaluates only the `iam_policy_data`
-/// field, you can omit the resource data.
 class SimulatedResource {
-  /// A representation of the IAM policy.
-  ///
-  /// Optional.
   Policy? iamPolicyData;
 
-  /// A representation of the Google Cloud resource.
   ///
-  /// Should match the Google Cloud resource JSON format.
-  ///
-  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? resourceData;
-
-  /// The type of the resource, for example, `compute.googleapis.com/Disk`.
-  ///
-  /// Required.
   core.String? resourceType;
 
   SimulatedResource({this.iamPolicyData, this.resourceData, this.resourceType});
@@ -19921,16 +15171,9 @@ class SimulatedResource {
   }
 }
 
-/// Possible test result.
 class SimulatedResult {
-  /// Error encountered during the test.
   Status? error;
-
-  /// Finding that would be published for the test case, if a violation is
-  /// detected.
   Finding? finding;
-
-  /// Indicates that the test case does not trigger any violation.
   Empty? noViolation;
 
   SimulatedResult({this.error, this.finding, this.noViolation});
@@ -19962,27 +15205,16 @@ class SimulatedResult {
   }
 }
 
-/// Attack path simulation
 class Simulation {
-  /// Indicates which cloud provider was used in this simulation.
+  ///
   /// Possible string values are:
-  /// - "CLOUD_PROVIDER_UNSPECIFIED" : The cloud provider is unspecified.
-  /// - "GOOGLE_CLOUD_PLATFORM" : The cloud provider is Google Cloud.
-  /// - "AMAZON_WEB_SERVICES" : The cloud provider is Amazon Web Services.
-  /// - "MICROSOFT_AZURE" : The cloud provider is Microsoft Azure.
+  /// - "CLOUD_PROVIDER_UNSPECIFIED"
+  /// - "GOOGLE_CLOUD_PLATFORM"
+  /// - "AMAZON_WEB_SERVICES"
+  /// - "MICROSOFT_AZURE"
   core.String? cloudProvider;
-
-  /// Time simulation was created
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// Full resource name of the Simulation: `organizations/123/simulations/456`
   core.String? name;
-
-  /// Resource value configurations' metadata used in this simulation.
-  ///
-  /// Maximum of 100.
   core.List<ResourceValueConfigMetadata>? resourceValueConfigsMetadata;
 
   Simulation({
@@ -20021,41 +15253,10 @@ class Simulation {
   }
 }
 
-/// Security Command Center finding source.
-///
-/// A finding source is an entity or a mechanism that can produce a finding. A
-/// source is like a container of findings that come from the same scanner,
-/// logger, monitor, and other tools.
 class Source {
-  /// The canonical name of the finding source.
-  ///
-  /// It's either "organizations/{organization_id}/sources/{source_id}",
-  /// "folders/{folder_id}/sources/{source_id}", or
-  /// "projects/{project_number}/sources/{source_id}", depending on the closest
-  /// CRM ancestor of the resource associated with the finding.
   core.String? canonicalName;
-
-  /// The description of the source (max of 1024 characters).
-  ///
-  /// Example: "Web Security Scanner is a web security scanner for common
-  /// vulnerabilities in App Engine applications. It can automatically scan and
-  /// detect four common vulnerabilities, including cross-site-scripting (XSS),
-  /// Flash injection, mixed content (HTTP in HTTPS), and outdated or insecure
-  /// libraries."
   core.String? description;
-
-  /// The source's display name.
-  ///
-  /// A source's display name must be unique amongst its siblings, for example,
-  /// two sources with the same parent can't share the same display name. The
-  /// display name must have a length between 1 and 64 characters (inclusive).
   core.String? displayName;
-
-  /// The relative resource name of this source.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Example: "organizations/{organization_id}/sources/{source_id}"
   core.String? name;
 
   Source({this.canonicalName, this.description, this.displayName, this.name});
@@ -20082,24 +15283,15 @@ class Source {
   }
 }
 
-/// Information about the static mute state.
-///
-/// A static mute state overrides any dynamic mute rules that apply to this
-/// finding. The static mute state can be set by a static mute rule or by muting
-/// the finding directly.
 class StaticMute {
-  /// When the static mute was applied.
   core.String? applyTime;
 
-  /// The static mute state.
   ///
-  /// If the value is `MUTED` or `UNMUTED`, then the finding's overall mute
-  /// state will have the same value.
   /// Possible string values are:
-  /// - "MUTE_UNSPECIFIED" : Unspecified.
-  /// - "MUTED" : Finding has been muted.
-  /// - "UNMUTED" : Finding has been unmuted.
-  /// - "UNDEFINED" : Finding has never been muted/unmuted.
+  /// - "MUTE_UNSPECIFIED"
+  /// - "MUTED"
+  /// - "UNMUTED"
+  /// - "UNDEFINED"
   core.String? state;
 
   StaticMute({this.applyTime, this.state});
@@ -20117,30 +15309,9 @@ class StaticMute {
   }
 }
 
-/// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs.
-///
-/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
-/// contains three pieces of data: error code, error message, and error details.
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status00;
+typedef Status = $Status01;
 
-/// The config for streaming-based notifications, which send each event as soon
-/// as it is detected.
 class StreamingConfig {
-  /// Expression that defines the filter to apply across create/update events of
-  /// assets or findings as specified by the event type.
-  ///
-  /// The expression is a list of zero or more restrictions combined via logical
-  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
-  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
-  /// character in front of them to indicate negation. The fields map to those
-  /// defined in the corresponding resource. The supported operators are: * `=`
-  /// for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`,
-  /// meaning substring matching, for strings. The supported value types are: *
-  /// string literals in quotes. * integer literals without quotes. * boolean
-  /// literals `true` and `false` without quotes.
   core.String? filter;
 
   StreamingConfig({this.filter});
@@ -20154,21 +15325,15 @@ class StreamingConfig {
   }
 }
 
-/// Represents a Kubernetes subject.
 class Subject {
-  /// Authentication type for the subject.
+  ///
   /// Possible string values are:
-  /// - "AUTH_TYPE_UNSPECIFIED" : Authentication is not specified.
-  /// - "USER" : User with valid certificate.
-  /// - "SERVICEACCOUNT" : Users managed by Kubernetes API with credentials
-  /// stored as secrets.
-  /// - "GROUP" : Collection of users.
+  /// - "AUTH_TYPE_UNSPECIFIED"
+  /// - "USER"
+  /// - "SERVICEACCOUNT"
+  /// - "GROUP"
   core.String? kind;
-
-  /// Name for the subject.
   core.String? name;
-
-  /// Namespace for the subject.
   core.String? ns;
 
   Subject({this.kind, this.name, this.ns});
@@ -20188,32 +15353,15 @@ class Subject {
   }
 }
 
-/// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+typedef TestIamPermissionsRequest = $Shared31;
+typedef TestIamPermissionsResponse = $Shared31;
 
-/// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $PermissionsResponse;
-
-/// Information about the ticket, if any, that is being used to track the
-/// resolution of the issue that is identified by this finding.
 class TicketInfo {
-  /// The assignee of the ticket in the ticket system.
   core.String? assignee;
-
-  /// The description of the ticket in the ticket system.
   core.String? description;
-
-  /// The identifier of the ticket in the ticket system.
   core.String? id;
-
-  /// The latest status of the ticket, as reported by the ticket system.
   core.String? status;
-
-  /// The time when the ticket was last updated, as reported by the ticket
-  /// system.
   core.String? updateTime;
-
-  /// The link to the ticket in the ticket system.
   core.String? uri;
 
   TicketInfo({
@@ -20253,23 +15401,8 @@ class TicketInfo {
   }
 }
 
-/// Contains details about a group of security issues that, when the issues
-/// occur together, represent a greater risk than when the issues occur
-/// independently.
-///
-/// A group of such issues is referred to as a toxic combination.
 class ToxicCombination {
-  /// The
-  /// [Attack exposure score](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_exposure_scores)
-  /// of this toxic combination.
-  ///
-  /// The score is a measure of how much this toxic combination exposes one or
-  /// more high-value resources to potential attack.
   core.double? attackExposureScore;
-
-  /// List of resource names of findings associated with this toxic combination.
-  ///
-  /// For example, `organizations/123/sources/456/findings/789`.
   core.List<core.String>? relatedFindings;
 
   ToxicCombination({this.attackExposureScore, this.relatedFindings});
@@ -20293,18 +15426,8 @@ class ToxicCombination {
   }
 }
 
-/// Request to validate an Event Threat Detection custom module.
 class ValidateEventThreatDetectionCustomModuleRequest {
-  /// The raw text of the module's contents.
-  ///
-  /// Used to generate error messages.
-  ///
-  /// Required.
   core.String? rawText;
-
-  /// The type of the module (e.g. CONFIGURABLE_BAD_IP).
-  ///
-  /// Required.
   core.String? type;
 
   ValidateEventThreatDetectionCustomModuleRequest({this.rawText, this.type});
@@ -20322,11 +15445,7 @@ class ValidateEventThreatDetectionCustomModuleRequest {
   }
 }
 
-/// Response to validating an Event Threat Detection custom module.
 class ValidateEventThreatDetectionCustomModuleResponse {
-  /// A list of errors returned by the validator.
-  ///
-  /// If the list is empty, there were no errors.
   CustomModuleValidationErrors? errors;
 
   ValidateEventThreatDetectionCustomModuleResponse({this.errors});
@@ -20346,42 +15465,20 @@ class ValidateEventThreatDetectionCustomModuleResponse {
   }
 }
 
-/// A resource that is determined to have value to a user's system
 class ValuedResource {
-  /// Human-readable name of the valued resource.
   core.String? displayName;
-
-  /// Exposed score for this valued resource.
-  ///
-  /// A value of 0 means no exposure was detected exposure.
   core.double? exposedScore;
-
-  /// Valued resource name, for example, e.g.:
-  /// `organizations/123/simulations/456/valuedResources/789`
   core.String? name;
-
-  /// The
-  /// [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-  /// of the valued resource.
   core.String? resource;
-
-  /// The
-  /// [resource type](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
-  /// of the valued resource.
   core.String? resourceType;
 
-  /// How valuable this resource is.
-  /// Possible string values are:
-  /// - "RESOURCE_VALUE_UNSPECIFIED" : The resource value isn't specified.
-  /// - "RESOURCE_VALUE_LOW" : This is a low-value resource.
-  /// - "RESOURCE_VALUE_MEDIUM" : This is a medium-value resource.
-  /// - "RESOURCE_VALUE_HIGH" : This is a high-value resource.
-  core.String? resourceValue;
-
-  /// List of resource value configurations' metadata used to determine the
-  /// value of this resource.
   ///
-  /// Maximum of 100.
+  /// Possible string values are:
+  /// - "RESOURCE_VALUE_UNSPECIFIED"
+  /// - "RESOURCE_VALUE_LOW"
+  /// - "RESOURCE_VALUE_MEDIUM"
+  /// - "RESOURCE_VALUE_HIGH"
+  core.String? resourceValue;
   core.List<ResourceValueConfigMetadata>? resourceValueConfigsUsed;
 
   ValuedResource({
@@ -20432,12 +15529,8 @@ class ValuedResource {
   }
 }
 
-/// Vertex AI-related information associated with the finding.
 class VertexAi {
-  /// Datasets associated with the finding.
   core.List<Dataset>? datasets;
-
-  /// Pipelines associated with the finding.
   core.List<Pipeline>? pipelines;
 
   VertexAi({this.datasets, this.pipelines});
@@ -20467,32 +15560,13 @@ class VertexAi {
   }
 }
 
-/// Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
 class Vulnerability {
-  /// CVE stands for Common Vulnerabilities and Exposures
-  /// (https://cve.mitre.org/about/)
   Cve? cve;
-
-  /// Represents one or more Common Weakness Enumeration (CWE) information on
-  /// this vulnerability.
   core.List<Cwe>? cwes;
-
-  /// The fixed package is relevant to the finding.
   Package? fixedPackage;
-
-  /// The offending package is relevant to the finding.
   Package? offendingPackage;
-
-  /// Provider provided risk_score based on multiple factors.
-  ///
-  /// The higher the risk score, the more risky the vulnerability is.
   core.String? providerRiskScore;
-
-  /// Represents whether the vulnerability is reachable (detected via static
-  /// analysis)
   core.bool? reachable;
-
-  /// The security bulletin is relevant to this finding.
   SecurityBulletin? securityBulletin;
 
   Vulnerability({
@@ -20557,9 +15631,7 @@ class Vulnerability {
   }
 }
 
-/// A signature corresponding to a YARA rule.
 class YaraRuleSignature {
-  /// The name of the YARA rule.
   core.String? yaraRule;
 
   YaraRuleSignature({this.yaraRule});

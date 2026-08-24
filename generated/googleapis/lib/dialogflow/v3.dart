@@ -7611,7 +7611,7 @@ class GoogleCloudDialogflowCxV3AgentPersonalizationSettings {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3AgentUtterance = $Shared02;
+typedef GoogleCloudDialogflowCxV3AgentUtterance = $Shared04;
 
 class GoogleCloudDialogflowCxV3AgentValidationResult {
   core.List<GoogleCloudDialogflowCxV3FlowValidationResult>?
@@ -10333,6 +10333,7 @@ class GoogleCloudDialogflowCxV3FulfillIntentResponse {
 
 class GoogleCloudDialogflowCxV3Fulfillment {
   GoogleCloudDialogflowCxV3AdvancedSettings? advancedSettings;
+  core.String? codeBlockFunction;
   core.List<GoogleCloudDialogflowCxV3FulfillmentConditionalCases>?
   conditionalCases;
   core.bool? enableGenerativeFallback;
@@ -10346,6 +10347,7 @@ class GoogleCloudDialogflowCxV3Fulfillment {
 
   GoogleCloudDialogflowCxV3Fulfillment({
     this.advancedSettings,
+    this.codeBlockFunction,
     this.conditionalCases,
     this.enableGenerativeFallback,
     this.generators,
@@ -10364,6 +10366,7 @@ class GoogleCloudDialogflowCxV3Fulfillment {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        codeBlockFunction: json_['codeBlockFunction'] as core.String?,
         conditionalCases: (json_['conditionalCases'] as core.List?)
             ?.map(
               (value) =>
@@ -10404,6 +10407,7 @@ class GoogleCloudDialogflowCxV3Fulfillment {
 
   core.Map<core.String, core.dynamic> toJson() {
     final advancedSettings = this.advancedSettings;
+    final codeBlockFunction = this.codeBlockFunction;
     final conditionalCases = this.conditionalCases;
     final enableGenerativeFallback = this.enableGenerativeFallback;
     final generators = this.generators;
@@ -10414,6 +10418,7 @@ class GoogleCloudDialogflowCxV3Fulfillment {
     final webhook = this.webhook;
     return {
       'advancedSettings': ?advancedSettings,
+      'codeBlockFunction': ?codeBlockFunction,
       'conditionalCases': ?conditionalCases,
       'enableGenerativeFallback': ?enableGenerativeFallback,
       'generators': ?generators,
@@ -10573,7 +10578,7 @@ class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3GcsDestination = $Shared08;
+typedef GoogleCloudDialogflowCxV3GcsDestination = $Shared11;
 
 class GoogleCloudDialogflowCxV3GenerativeSettings {
   GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings? fallbackSettings;
@@ -10855,24 +10860,7 @@ class GoogleCloudDialogflowCxV3GeneratorModelParameter {
   }
 }
 
-class GoogleCloudDialogflowCxV3GeneratorPlaceholder {
-  core.String? id;
-  core.String? name;
-
-  GoogleCloudDialogflowCxV3GeneratorPlaceholder({this.id, this.name});
-
-  GoogleCloudDialogflowCxV3GeneratorPlaceholder.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final id = this.id;
-    final name = this.name;
-    return {'id': ?id, 'name': ?name};
-  }
-}
+typedef GoogleCloudDialogflowCxV3GeneratorPlaceholder = $Shared05;
 
 class GoogleCloudDialogflowCxV3Handler {
   GoogleCloudDialogflowCxV3HandlerEventHandler? eventHandler;
@@ -12730,7 +12718,7 @@ class GoogleCloudDialogflowCxV3ParameterDefinition {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3Phrase = $Shared02;
+typedef GoogleCloudDialogflowCxV3Phrase = $Shared04;
 
 class GoogleCloudDialogflowCxV3Playbook {
   GoogleCloudDialogflowCxV3CodeBlock? codeBlock;
@@ -13564,24 +13552,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   }
 }
 
-class GoogleCloudDialogflowCxV3ResourceName {
-  core.String? displayName;
-  core.String? name;
-
-  GoogleCloudDialogflowCxV3ResourceName({this.displayName, this.name});
-
-  GoogleCloudDialogflowCxV3ResourceName.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final displayName = this.displayName;
-    final name = this.name;
-    return {'displayName': ?displayName, 'name': ?name};
-  }
-}
+typedef GoogleCloudDialogflowCxV3ResourceName = $Shared23;
 
 class GoogleCloudDialogflowCxV3ResponseMessage {
   core.String? channel;
@@ -13723,10 +13694,10 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess = $Shared23;
+typedef GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess = $Shared24;
 typedef GoogleCloudDialogflowCxV3ResponseMessageEndInteraction = $Empty;
 typedef GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard = $Empty;
-typedef GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff = $Shared23;
+typedef GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff = $Shared24;
 
 class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
   core.List<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>?
@@ -14806,7 +14777,7 @@ class GoogleCloudDialogflowCxV3TestRunDifference {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3TextInput = $Shared02;
+typedef GoogleCloudDialogflowCxV3TextInput = $Shared04;
 
 class GoogleCloudDialogflowCxV3TextToSpeechSettings {
   core.Map<core.String, GoogleCloudDialogflowCxV3SynthesizeSpeechConfig>?
@@ -15063,7 +15034,19 @@ class GoogleCloudDialogflowCxV3ToolCallResult {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3ToolCallResultError = $ToolCallResultError;
+class GoogleCloudDialogflowCxV3ToolCallResultError {
+  core.String? message;
+
+  GoogleCloudDialogflowCxV3ToolCallResultError({this.message});
+
+  GoogleCloudDialogflowCxV3ToolCallResultError.fromJson(core.Map json_)
+    : this(message: json_['message'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    return {'message': ?message};
+  }
+}
 
 class GoogleCloudDialogflowCxV3ToolDataStoreTool {
   core.List<GoogleCloudDialogflowCxV3DataStoreConnection>? dataStoreConnections;
@@ -15781,9 +15764,9 @@ class GoogleCloudDialogflowCxV3TypeSchemaSchemaReference {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3UserUtterance = $Shared02;
-typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Shared07;
-typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Shared07;
+typedef GoogleCloudDialogflowCxV3UserUtterance = $Shared04;
+typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Shared10;
+typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Shared10;
 
 class GoogleCloudDialogflowCxV3ValidationMessage {
   core.String? detail;
@@ -16421,5 +16404,5 @@ class GoogleLongrunningOperation {
 }
 
 typedef GoogleProtobufEmpty = $Empty;
-typedef GoogleRpcStatus = $GoogleRpcStatus;
+typedef GoogleRpcStatus = $Status01;
 typedef GoogleTypeLatLng = $GoogleTypeLatLng;

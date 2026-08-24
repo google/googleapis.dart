@@ -108,6 +108,11 @@ class ProjectsLocationsResource {
   /// should be returned. Must be in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [fetchReservedPublicIps] - Optional. Indicates whether to fetch the
+  /// reserved public IP addresses allocated for private connections in this
+  /// location. If false or not set, fetches the shared external static IP
+  /// addresses instead.
+  ///
   /// [pageSize] - Optional. Maximum number of IPs to return.
   ///
   /// [pageToken] - Optional. A page token, received from a previous
@@ -125,11 +130,15 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<FetchStaticIpsResponse> fetchStaticIps(
     core.String name, {
+    core.bool? fetchReservedPublicIps,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'fetchReservedPublicIps': ?fetchReservedPublicIps == null
+          ? null
+          : ['${fetchReservedPublicIps}'],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'fields': ?$fields == null ? null : [$fields],
@@ -182,7 +191,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -197,9 +206,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -6031,6 +6039,8 @@ class EntityIssue {
   /// - "ISSUE_TYPE_DDL" : Issue originated from the DDL
   /// - "ISSUE_TYPE_APPLY" : Issue originated during the apply process
   /// - "ISSUE_TYPE_CONVERT" : Issue originated during the convert process
+  /// - "ISSUE_TYPE_PULL_SCHEMA" : Issue originated during the pull schema
+  /// process
   core.String? type;
 
   EntityIssue({
@@ -7231,9 +7241,12 @@ class MappingRule {
   /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
   core.String? ruleScope;
 
-  /// Rule to specify the primary key for a table
+  /// Deprecated: This rule is no longer supported.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   SetTablePrimaryKey? setTablePrimaryKey;
 
   /// Rule to specify how a single column is converted.
@@ -7625,6 +7638,11 @@ class MigrationJob {
   /// "wrench", "mass": "1.3kg", "count": "3" }`.
   core.Map<core.String, core.String>? labels;
 
+  /// Configuration for MySQL homogeneous migration.
+  ///
+  /// Optional.
+  MySqlHomogeneousConfig? mysqlHomogeneousConfig;
+
   /// The name (URI) of this migration job resource, in the form of:
   /// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
   core.String? name;
@@ -7663,6 +7681,11 @@ class MigrationJob {
   /// waiting for dump to begin
   /// - "READY_FOR_PROMOTE" : The migration job is ready to be promoted.
   core.String? phase;
+
+  /// Configuration for PostgreSQL homogeneous migration.
+  ///
+  /// Optional.
+  PostgresHomogeneousConfig? postgresHomogeneousConfig;
 
   /// Configuration for heterogeneous failback migrations from **PostgreSQL to
   /// SQL Server**.
@@ -7770,12 +7793,14 @@ class MigrationJob {
     this.error,
     this.filter,
     this.labels,
+    this.mysqlHomogeneousConfig,
     this.name,
     this.objectsConfig,
     this.oracleToPostgresConfig,
     this.originalMigrationName,
     this.performanceConfig,
     this.phase,
+    this.postgresHomogeneousConfig,
     this.postgresToSqlserverConfig,
     this.purpose,
     this.reverseSshConnectivity,
@@ -7828,6 +7853,12 @@ class MigrationJob {
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        mysqlHomogeneousConfig: json_.containsKey('mysqlHomogeneousConfig')
+            ? MySqlHomogeneousConfig.fromJson(
+                json_['mysqlHomogeneousConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         objectsConfig: json_.containsKey('objectsConfig')
             ? MigrationJobObjectsConfig.fromJson(
@@ -7848,6 +7879,13 @@ class MigrationJob {
               )
             : null,
         phase: json_['phase'] as core.String?,
+        postgresHomogeneousConfig:
+            json_.containsKey('postgresHomogeneousConfig')
+            ? PostgresHomogeneousConfig.fromJson(
+                json_['postgresHomogeneousConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         postgresToSqlserverConfig:
             json_.containsKey('postgresToSqlserverConfig')
             ? PostgresToSqlServerConfig.fromJson(
@@ -7916,12 +7954,14 @@ class MigrationJob {
     final error = this.error;
     final filter = this.filter;
     final labels = this.labels;
+    final mysqlHomogeneousConfig = this.mysqlHomogeneousConfig;
     final name = this.name;
     final objectsConfig = this.objectsConfig;
     final oracleToPostgresConfig = this.oracleToPostgresConfig;
     final originalMigrationName = this.originalMigrationName;
     final performanceConfig = this.performanceConfig;
     final phase = this.phase;
+    final postgresHomogeneousConfig = this.postgresHomogeneousConfig;
     final postgresToSqlserverConfig = this.postgresToSqlserverConfig;
     final purpose = this.purpose;
     final reverseSshConnectivity = this.reverseSshConnectivity;
@@ -7952,12 +7992,14 @@ class MigrationJob {
       'error': ?error,
       'filter': ?filter,
       'labels': ?labels,
+      'mysqlHomogeneousConfig': ?mysqlHomogeneousConfig,
       'name': ?name,
       'objectsConfig': ?objectsConfig,
       'oracleToPostgresConfig': ?oracleToPostgresConfig,
       'originalMigrationName': ?originalMigrationName,
       'performanceConfig': ?performanceConfig,
       'phase': ?phase,
+      'postgresHomogeneousConfig': ?postgresHomogeneousConfig,
       'postgresToSqlserverConfig': ?postgresToSqlserverConfig,
       'purpose': ?purpose,
       'reverseSshConnectivity': ?reverseSshConnectivity,
@@ -8010,6 +8052,10 @@ class MigrationJobObject {
   /// - "PROMOTED" : The migration job is promoted.
   /// - "DIFF_BACKUP" : The migration job object is in the differential backup
   /// phase.
+  /// - "CREATING_BACKUP" : The migration job object is creating a fully managed
+  /// backup of the source.
+  /// - "RESTORING_BACKUP" : The migration job object is restoring a fully
+  /// managed backup to the destination.
   core.String? phase;
 
   /// The object identifier in the data source.
@@ -8377,6 +8423,24 @@ class MySqlConnectionProfile {
       'ssl': ?ssl,
       'username': ?username,
     };
+  }
+}
+
+/// Configuration for MySQL to MySQL migrations.
+class MySqlHomogeneousConfig {
+  /// Whether the destination for the migration job is a primary instance.
+  ///
+  /// Optional.
+  core.bool? isPrimaryDestination;
+
+  MySqlHomogeneousConfig({this.isPrimaryDestination});
+
+  MySqlHomogeneousConfig.fromJson(core.Map json_)
+    : this(isPrimaryDestination: json_['isPrimaryDestination'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isPrimaryDestination = this.isPrimaryDestination;
+    return {'isPrimaryDestination': ?isPrimaryDestination};
   }
 }
 
@@ -9217,6 +9281,40 @@ class PostgreSqlConnectionProfile {
 /// Configuration for Postgres as a destination in a migration.
 typedef PostgresDestinationConfig = $DestinationConfig;
 
+/// Configuration for PostgreSQL to PostgreSQL migrations.
+class PostgresHomogeneousConfig {
+  /// Whether the migration is native logical.
+  ///
+  /// Required.
+  core.bool? isNativeLogical;
+
+  /// Maximum number of additional subscriptions to use for the migration job.
+  ///
+  /// Optional.
+  core.int? maxAdditionalSubscriptions;
+
+  PostgresHomogeneousConfig({
+    this.isNativeLogical,
+    this.maxAdditionalSubscriptions,
+  });
+
+  PostgresHomogeneousConfig.fromJson(core.Map json_)
+    : this(
+        isNativeLogical: json_['isNativeLogical'] as core.bool?,
+        maxAdditionalSubscriptions:
+            json_['maxAdditionalSubscriptions'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isNativeLogical = this.isNativeLogical;
+    final maxAdditionalSubscriptions = this.maxAdditionalSubscriptions;
+    return {
+      'isNativeLogical': ?isNativeLogical,
+      'maxAdditionalSubscriptions': ?maxAdditionalSubscriptions,
+    };
+  }
+}
+
 /// Configuration for Postgres as a source in a migration.
 class PostgresSourceConfig {
   /// Whether to skip full dump or not.
@@ -9406,6 +9504,9 @@ class PrivateConnection {
   /// PSC Interface configuration.
   PscInterfaceConfig? pscInterfaceConfig;
 
+  /// Reserved Public IP configuration.
+  ReservedPublicIpConfig? reservedPublicIpConfig;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -9447,6 +9548,7 @@ class PrivateConnection {
     this.labels,
     this.name,
     this.pscInterfaceConfig,
+    this.reservedPublicIpConfig,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.state,
@@ -9473,6 +9575,12 @@ class PrivateConnection {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        reservedPublicIpConfig: json_.containsKey('reservedPublicIpConfig')
+            ? ReservedPublicIpConfig.fromJson(
+                json_['reservedPublicIpConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         state: json_['state'] as core.String?,
@@ -9492,6 +9600,7 @@ class PrivateConnection {
     final labels = this.labels;
     final name = this.name;
     final pscInterfaceConfig = this.pscInterfaceConfig;
+    final reservedPublicIpConfig = this.reservedPublicIpConfig;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
     final state = this.state;
@@ -9504,6 +9613,7 @@ class PrivateConnection {
       'labels': ?labels,
       'name': ?name,
       'pscInterfaceConfig': ?pscInterfaceConfig,
+      'reservedPublicIpConfig': ?reservedPublicIpConfig,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
       'state': ?state,
@@ -9594,6 +9704,35 @@ class PscInterfaceConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final networkAttachment = this.networkAttachment;
     return {'networkAttachment': ?networkAttachment};
+  }
+}
+
+/// Reserved Public IP configuration.
+class ReservedPublicIpConfig {
+  /// The reserved public IPs.
+  ///
+  /// Output only.
+  core.List<core.String>? egressPublicIps;
+
+  /// Number of static public IP addresses to reserve.
+  ///
+  /// Optional.
+  core.int? natIpsCount;
+
+  ReservedPublicIpConfig({this.egressPublicIps, this.natIpsCount});
+
+  ReservedPublicIpConfig.fromJson(core.Map json_)
+    : this(
+        egressPublicIps: (json_['egressPublicIps'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        natIpsCount: json_['natIpsCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final egressPublicIps = this.egressPublicIps;
+    final natIpsCount = this.natIpsCount;
+    return {'egressPublicIps': ?egressPublicIps, 'natIpsCount': ?natIpsCount};
   }
 }
 
@@ -9998,7 +10137,7 @@ class SetIamPolicyRequest {
   }
 }
 
-/// Options to configure rule type SetTablePrimaryKey.
+/// Deprecated: Options to configure rule type SetTablePrimaryKey.
 ///
 /// The rule is used to specify the columns and name to configure/alter the
 /// primary key of a table. The rule filter field can refer to one entity. The

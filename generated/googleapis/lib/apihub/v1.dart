@@ -48,6 +48,7 @@
 ///       - [ProjectsLocationsPluginsInstancesResource]
 ///       - [ProjectsLocationsPluginsStyleGuideResource]
 ///     - [ProjectsLocationsRuntimeProjectAttachmentsResource]
+///     - [ProjectsLocationsServersResource]
 library;
 
 import 'dart:async' as async;
@@ -64,6 +65,16 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class APIHubApi {
+  /// See your Google Cloud API hub data and the email address of your Google
+  /// Account
+  static const apihubReadonlyScope =
+      'https://www.googleapis.com/auth/apihub.readonly';
+
+  /// See, edit, configure, and delete your Google Cloud API hub data and see
+  /// the email address for your Google Account
+  static const apihubReadwriteScope =
+      'https://www.googleapis.com/auth/apihub.readwrite';
+
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
   static const cloudPlatformScope =
@@ -126,6 +137,8 @@ class ProjectsLocationsResource {
   ProjectsLocationsRuntimeProjectAttachmentsResource
   get runtimeProjectAttachments =>
       ProjectsLocationsRuntimeProjectAttachmentsResource(_requester);
+  ProjectsLocationsServersResource get servers =>
+      ProjectsLocationsServersResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -5437,6 +5450,63 @@ class ProjectsLocationsRuntimeProjectAttachmentsResource {
   }
 }
 
+class ProjectsLocationsServersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServersResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Configures and deploys a given server config for given target.
+  ///
+  /// Currently this API supports only deploying MCP server in Apigee X. For mcp
+  /// server deployment in apigee X, if there is already a mcp proxy deployed,
+  /// then this method will try to overwrite it by creating new revision i.e.
+  /// all existing tools will be removed and new set of tools will be deployed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> configureAndDeployServer(
+    GoogleCloudApihubV1ConfigureAndDeployServerRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/servers:configureAndDeployServer';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -5863,7 +5933,7 @@ class GoogleCloudApihubV1AllowedValue {
 class GoogleCloudApihubV1Api {
   /// The api functional requirements associated with the API resource.
   ///
-  /// Carinality is 1 for this attribute. This maps to the following system
+  /// Cardinality is 1 for this attribute. This maps to the following system
   /// defined attribute:
   /// `projects/{project}/locations/{location}/attributes/system-api-functional-requirements`
   /// attribute. The value of the attribute should be a proper URI, and in case
@@ -5875,7 +5945,7 @@ class GoogleCloudApihubV1Api {
 
   /// The api requirement doc associated with the API resource.
   ///
-  /// Carinality is 1 for this attribute. This maps to the following system
+  /// Cardinality is 1 for this attribute. This maps to the following system
   /// defined attribute:
   /// `projects/{project}/locations/{location}/attributes/system-api-requirements`
   /// attribute. The value of the attribute should be a proper URI, and in case
@@ -5899,7 +5969,7 @@ class GoogleCloudApihubV1Api {
 
   /// The api technical requirements associated with the API resource.
   ///
-  /// Carinality is 1 for this attribute. This maps to the following system
+  /// Cardinality is 1 for this attribute. This maps to the following system
   /// defined attribute:
   /// `projects/{project}/locations/{location}/attributes/system-api-technical-requirements`
   /// attribute. The value of the attribute should be a proper URI, and in case
@@ -6748,6 +6818,80 @@ class GoogleCloudApihubV1ApigeeXHybridConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final environmentFilter = this.environmentFilter;
     return {'environmentFilter': ?environmentFilter};
+  }
+}
+
+/// The target configuration for Apigee X.
+///
+/// Note: If this API is called while an earlier deployment is still in
+/// progress, the earlier deployment will be aborted and a new deployment will
+/// be triggered.
+class GoogleCloudApihubV1ApigeeXTargetDetails {
+  /// The revision number of the Apigee proxy that was deployed.
+  ///
+  /// Output only.
+  core.String? deployedRevision;
+
+  /// The specific Apigee environment where the server will be deployed.
+  ///
+  /// Required.
+  core.String? environment;
+
+  /// Metadata for the proxy configuration in Apigee X.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1MetaData? metadata;
+
+  /// This name identifies the proxy resource in Apigee.
+  ///
+  /// It typically follows a standard alphanumeric format (e.g.,
+  /// "mcp-discovery-server").
+  ///
+  /// Required.
+  core.String? proxy;
+
+  /// The runtime project that hosts the Apigee X organization.
+  ///
+  /// This must be one of the runtime projects attached to the API Hub host
+  /// project.
+  ///
+  /// Required.
+  core.String? targetProject;
+
+  GoogleCloudApihubV1ApigeeXTargetDetails({
+    this.deployedRevision,
+    this.environment,
+    this.metadata,
+    this.proxy,
+    this.targetProject,
+  });
+
+  GoogleCloudApihubV1ApigeeXTargetDetails.fromJson(core.Map json_)
+    : this(
+        deployedRevision: json_['deployedRevision'] as core.String?,
+        environment: json_['environment'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? GoogleCloudApihubV1MetaData.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        proxy: json_['proxy'] as core.String?,
+        targetProject: json_['targetProject'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deployedRevision = this.deployedRevision;
+    final environment = this.environment;
+    final metadata = this.metadata;
+    final proxy = this.proxy;
+    final targetProject = this.targetProject;
+    return {
+      'deployedRevision': ?deployedRevision,
+      'environment': ?environment,
+      'metadata': ?metadata,
+      'proxy': ?proxy,
+      'targetProject': ?targetProject,
+    };
   }
 }
 
@@ -7621,6 +7765,28 @@ class GoogleCloudApihubV1ConfigVariableTemplate {
       'validationRegex': ?validationRegex,
       'valueType': ?valueType,
     };
+  }
+}
+
+/// Request message for ApiHub.ConfigureAndDeployServer.
+class GoogleCloudApihubV1ConfigureAndDeployServerRequest {
+  /// MCP (Model Context Protocol) server configuration.
+  GoogleCloudApihubV1McpServerConfig? mcpServerConfig;
+
+  GoogleCloudApihubV1ConfigureAndDeployServerRequest({this.mcpServerConfig});
+
+  GoogleCloudApihubV1ConfigureAndDeployServerRequest.fromJson(core.Map json_)
+    : this(
+        mcpServerConfig: json_.containsKey('mcpServerConfig')
+            ? GoogleCloudApihubV1McpServerConfig.fromJson(
+                json_['mcpServerConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mcpServerConfig = this.mcpServerConfig;
+    return {'mcpServerConfig': ?mcpServerConfig};
   }
 }
 
@@ -9545,6 +9711,57 @@ class GoogleCloudApihubV1HttpOperation {
   }
 }
 
+/// Identifies a single API Hub operation by spec resource name + HTTP path +
+/// HTTP method.
+class GoogleCloudApihubV1HttpOperationConfig {
+  /// HTTP method of the operation within the referenced spec.
+  ///
+  /// (GET / PUT / POST / DELETE / OPTIONS / HEAD / PATCH / TRACE).
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "METHOD_UNSPECIFIED" : Method unspecified.
+  /// - "GET" : Get Operation type.
+  /// - "PUT" : Put Operation type.
+  /// - "POST" : Post Operation type.
+  /// - "DELETE" : Delete Operation type.
+  /// - "OPTIONS" : Options Operation type.
+  /// - "HEAD" : Head Operation type.
+  /// - "PATCH" : Patch Operation type.
+  /// - "TRACE" : Trace Operation type.
+  core.String? method;
+
+  /// HTTP path of the operation within the referenced spec.
+  ///
+  /// Match is exact (no template substitution): the path here must appear
+  /// verbatim on an APIOperationRevision belonging to the spec.
+  ///
+  /// Required.
+  core.String? path;
+
+  /// Spec resource name:
+  /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}`
+  ///
+  /// Required.
+  core.String? spec;
+
+  GoogleCloudApihubV1HttpOperationConfig({this.method, this.path, this.spec});
+
+  GoogleCloudApihubV1HttpOperationConfig.fromJson(core.Map json_)
+    : this(
+        method: json_['method'] as core.String?,
+        path: json_['path'] as core.String?,
+        spec: json_['spec'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final method = this.method;
+    final path = this.path;
+    final spec = this.spec;
+    return {'method': ?method, 'path': ?path, 'spec': ?spec};
+  }
+}
+
 /// An HTTP-based API Operation, sometimes called a "REST" Operation.
 class GoogleCloudApihubV1HttpOperationDetails {
   /// An HTTP Operation.
@@ -10656,6 +10873,44 @@ class GoogleCloudApihubV1MatchResult {
   }
 }
 
+/// MCP-specific server configuration.
+class GoogleCloudApihubV1McpServerConfig {
+  /// The target Apigee X configuration.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1ApigeeXTargetDetails? apigeeXTargetDetails;
+
+  /// The tools to expose on the MCP server.
+  ///
+  /// Required.
+  core.List<GoogleCloudApihubV1McpToolConfig>? tools;
+
+  GoogleCloudApihubV1McpServerConfig({this.apigeeXTargetDetails, this.tools});
+
+  GoogleCloudApihubV1McpServerConfig.fromJson(core.Map json_)
+    : this(
+        apigeeXTargetDetails: json_.containsKey('apigeeXTargetDetails')
+            ? GoogleCloudApihubV1ApigeeXTargetDetails.fromJson(
+                json_['apigeeXTargetDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tools: (json_['tools'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudApihubV1McpToolConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apigeeXTargetDetails = this.apigeeXTargetDetails;
+    final tools = this.tools;
+    return {'apigeeXTargetDetails': ?apigeeXTargetDetails, 'tools': ?tools};
+  }
+}
+
 /// Details describing an MCP Tool.
 class GoogleCloudApihubV1McpTool {
   /// Optional annotations for the tool.
@@ -10738,6 +10993,96 @@ class GoogleCloudApihubV1McpTool {
       'outputSchema': ?outputSchema,
       'title': ?title,
     };
+  }
+}
+
+/// A tool exposed by the MCP server.
+///
+/// Each tool wraps exactly one API Hub operation under a caller-supplied
+/// identifier.
+class GoogleCloudApihubV1McpToolConfig {
+  /// Description of what the tool does and how it is used.
+  ///
+  /// Description serves as key reference for the agent to know about the tool
+  /// capabilities.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// The API Hub operation this tool exposes.
+  ///
+  /// Each tool wraps exactly one operation; callers that want to expose
+  /// multiple operations should declare multiple tools.
+  ///
+  /// Required.
+  GoogleCloudApihubV1OperationConfig? operation;
+
+  /// Caller-supplied identifier for the tool; each tool must have a unique
+  /// identifier.
+  ///
+  /// This will be by used by agents to invoke the tool. Tool ID must be unique
+  /// across all tools in the given MCP server configuration.
+  ///
+  /// Required.
+  core.String? toolId;
+
+  GoogleCloudApihubV1McpToolConfig({
+    this.description,
+    this.operation,
+    this.toolId,
+  });
+
+  GoogleCloudApihubV1McpToolConfig.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        operation: json_.containsKey('operation')
+            ? GoogleCloudApihubV1OperationConfig.fromJson(
+                json_['operation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolId: json_['toolId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final operation = this.operation;
+    final toolId = this.toolId;
+    return {
+      'description': ?description,
+      'operation': ?operation,
+      'toolId': ?toolId,
+    };
+  }
+}
+
+/// Metadata for the server configuration in Apigee X.
+class GoogleCloudApihubV1MetaData {
+  /// Description for the server.
+  ///
+  /// For apigee target, this will be used as revision description.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Display name for the server.
+  ///
+  /// For apigee target, this will be used as revision display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  GoogleCloudApihubV1MetaData({this.description, this.displayName});
+
+  GoogleCloudApihubV1MetaData.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    return {'description': ?description, 'displayName': ?displayName};
   }
 }
 
@@ -10899,6 +11244,34 @@ class GoogleCloudApihubV1OpenApiSpecDetails {
     final owner = this.owner;
     final version = this.version;
     return {'format': ?format, 'owner': ?owner, 'version': ?version};
+  }
+}
+
+/// API hub Operation config.
+class GoogleCloudApihubV1OperationConfig {
+  /// The HTTP operation config.
+  GoogleCloudApihubV1HttpOperationConfig? httpOperation;
+
+  /// Full API Hub operation resource name:
+  /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}`
+  core.String? operation;
+
+  GoogleCloudApihubV1OperationConfig({this.httpOperation, this.operation});
+
+  GoogleCloudApihubV1OperationConfig.fromJson(core.Map json_)
+    : this(
+        httpOperation: json_.containsKey('httpOperation')
+            ? GoogleCloudApihubV1HttpOperationConfig.fromJson(
+                json_['httpOperation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        operation: json_['operation'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final httpOperation = this.httpOperation;
+    final operation = this.operation;
+    return {'httpOperation': ?httpOperation, 'operation': ?operation};
   }
 }
 
@@ -11147,6 +11520,8 @@ class GoogleCloudApihubV1Plugin {
   /// - "CLOUD_ENDPOINTS" : The gateway type is Cloud Endpoints.
   /// - "API_DISCOVERY" : The gateway type is API Discovery.
   /// - "OTHERS" : The gateway type for any other types of gateways.
+  /// - "AWS_API_GATEWAY" : The gateway type is AWS API Gateway.
+  /// - "AZURE_API_MANAGEMENT" : The gateway type is Azure API Management.
   core.String? gatewayType;
 
   /// This field is optional.
@@ -12961,10 +13336,12 @@ class GoogleCloudApihubV1Version {
   /// Output only.
   core.List<core.String>? definitions;
 
-  /// The deployments linked to this API version.
+  /// The deployments linked directly to this API version.
   ///
-  /// Note: A particular API version could be deployed to multiple deployments
-  /// (for dev deployment, UAT deployment, etc) Format is
+  /// Only directly-linked deployments are returned; deployments linked to this
+  /// version's specs or operations are not included. Note: A particular API
+  /// version could be deployed to multiple deployments (for dev deployment, UAT
+  /// deployment, etc) Format is
   /// `projects/{project}/locations/{location}/deployments/{deployment}`
   ///
   /// Optional.

@@ -57,6 +57,10 @@ class CloudAssetApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud Asset data and see the
+  /// email address for your Google Account
+  static const cloudassetScope = 'https://www.googleapis.com/auth/cloudasset';
+
   final commons.ApiRequester _requester;
 
   AssetsResource get assets => AssetsResource(_requester);
@@ -4788,6 +4792,10 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
 /// restrictions it specifies apply to all projects within an organization.
 typedef GoogleIdentityAccesscontextmanagerV1AccessPolicy = $AccessPolicy;
 
+/// Adds a request header to the API.
+typedef GoogleIdentityAccesscontextmanagerV1AddRequestHeader =
+    $AddRequestHeader;
+
 /// Identification for an API Operation.
 class GoogleIdentityAccesscontextmanagerV1ApiOperation {
   /// API methods or permissions to allow.
@@ -5254,7 +5262,63 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
 
 /// The source that EgressPolicy authorizes access from inside the
 /// ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
-typedef GoogleIdentityAccesscontextmanagerV1EgressSource = $EgressSource;
+class GoogleIdentityAccesscontextmanagerV1EgressSource {
+  /// An AccessLevel resource name that allows protected resources inside the
+  /// ServicePerimeters to access outside the ServicePerimeter boundaries.
+  ///
+  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
+  /// Referencing a nonexistent AccessLevel will cause an error. If an
+  /// AccessLevel name is not specified, only resources within the perimeter can
+  /// be accessed through Google Cloud calls with request origins within the
+  /// perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a
+  /// single `*` is specified for `access_level`, then all EgressSources will be
+  /// allowed.
+  core.String? accessLevel;
+
+  /// A PrivateServiceConnectEndpoint that is allowed to access data outside the
+  /// perimeter.
+  ///
+  /// The Private Service Connect endpoint may be in any organization, not just
+  /// the organization that the perimeter is defined in.
+  GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint?
+  pscEndpoint;
+
+  /// A Google Cloud resource from the service perimeter that you want to allow
+  /// to access data outside the perimeter.
+  ///
+  /// This field supports only projects. The project format is
+  /// `projects/{project_number}`. You can't use `*` in this field to allow all
+  /// Google Cloud resources.
+  core.String? resource;
+
+  GoogleIdentityAccesscontextmanagerV1EgressSource({
+    this.accessLevel,
+    this.pscEndpoint,
+    this.resource,
+  });
+
+  GoogleIdentityAccesscontextmanagerV1EgressSource.fromJson(core.Map json_)
+    : this(
+        accessLevel: json_['accessLevel'] as core.String?,
+        pscEndpoint: json_.containsKey('pscEndpoint')
+            ? GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint.fromJson(
+                json_['pscEndpoint'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resource: json_['resource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessLevel = this.accessLevel;
+    final pscEndpoint = this.pscEndpoint;
+    final resource = this.resource;
+    return {
+      'accessLevel': ?accessLevel,
+      'pscEndpoint': ?pscEndpoint,
+      'resource': ?resource,
+    };
+  }
+}
 
 /// Defines the conditions under which an EgressPolicy matches a request.
 ///
@@ -5468,7 +5532,64 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
 }
 
 /// The source that IngressPolicy authorizes access from.
-typedef GoogleIdentityAccesscontextmanagerV1IngressSource = $IngressSource;
+class GoogleIdentityAccesscontextmanagerV1IngressSource {
+  /// An AccessLevel resource name that allow resources within the
+  /// ServicePerimeters to be accessed from the internet.
+  ///
+  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
+  /// Referencing a nonexistent AccessLevel will cause an error. If no
+  /// AccessLevel names are listed, resources within the perimeter can only be
+  /// accessed via Google Cloud calls with request origins within the perimeter.
+  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*`
+  /// is specified for `access_level`, then all IngressSources will be allowed.
+  core.String? accessLevel;
+
+  /// A PrivateServiceConnectEndpoint that is allowed to access the perimeter.
+  ///
+  /// The Private Service Connect endpoint may be in any organization, not just
+  /// the organization that the perimeter is defined in.
+  GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint?
+  pscEndpoint;
+
+  /// A Google Cloud resource that is allowed to ingress the perimeter.
+  ///
+  /// Requests from these resources will be allowed to access perimeter data.
+  /// Currently only projects and VPCs are allowed. Project format:
+  /// `projects/{project_number}` VPC network format:
+  /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
+  /// The project may be in any Google Cloud organization, not just the
+  /// organization that the perimeter is defined in. `*` is not allowed, the
+  /// case of allowing all Google Cloud resources only is not supported.
+  core.String? resource;
+
+  GoogleIdentityAccesscontextmanagerV1IngressSource({
+    this.accessLevel,
+    this.pscEndpoint,
+    this.resource,
+  });
+
+  GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(core.Map json_)
+    : this(
+        accessLevel: json_['accessLevel'] as core.String?,
+        pscEndpoint: json_.containsKey('pscEndpoint')
+            ? GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint.fromJson(
+                json_['pscEndpoint'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resource: json_['resource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessLevel = this.accessLevel;
+    final pscEndpoint = this.pscEndpoint;
+    final resource = this.resource;
+    return {
+      'accessLevel': ?accessLevel,
+      'pscEndpoint': ?pscEndpoint,
+      'resource': ?resource,
+    };
+  }
+}
 
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///
@@ -5532,8 +5653,77 @@ class GoogleIdentityAccesscontextmanagerV1IngressTo {
 /// An allowed method or permission of a service specified in ApiOperation.
 typedef GoogleIdentityAccesscontextmanagerV1MethodSelector = $MethodSelector;
 
+/// Modifier to apply to the API requests.
+class GoogleIdentityAccesscontextmanagerV1Modifier {
+  /// Adds an additional HTTP request header.
+  GoogleIdentityAccesscontextmanagerV1AddRequestHeader? addRequestHeader;
+
+  GoogleIdentityAccesscontextmanagerV1Modifier({this.addRequestHeader});
+
+  GoogleIdentityAccesscontextmanagerV1Modifier.fromJson(core.Map json_)
+    : this(
+        addRequestHeader: json_.containsKey('addRequestHeader')
+            ? GoogleIdentityAccesscontextmanagerV1AddRequestHeader.fromJson(
+                json_['addRequestHeader']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final addRequestHeader = this.addRequestHeader;
+    return {'addRequestHeader': ?addRequestHeader};
+  }
+}
+
 /// A restriction on the OS type and version of devices making requests.
 typedef GoogleIdentityAccesscontextmanagerV1OsConstraint = $OsConstraint;
+
+/// Specifies the Private Service Connect endpoint that an API call refers to.
+typedef GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint =
+    $PrivateServiceConnectEndpoint;
+
+/// Service patterns used to allow access.
+class GoogleIdentityAccesscontextmanagerV1ServicePattern {
+  /// Modifiers to apply to the requests that match the URL pattern.
+  core.List<GoogleIdentityAccesscontextmanagerV1Modifier>? modifiers;
+
+  /// URL pattern to allow.
+  ///
+  /// Only patterns of ".googleapis.com / * ", "www.googleapis.com/ / * " and
+  /// "*.appspot.com / * forms are supported, where should be an alphanumeric
+  /// name.
+  core.String? pattern;
+
+  /// Supported service to allow.
+  core.String? service;
+
+  GoogleIdentityAccesscontextmanagerV1ServicePattern({
+    this.modifiers,
+    this.pattern,
+    this.service,
+  });
+
+  GoogleIdentityAccesscontextmanagerV1ServicePattern.fromJson(core.Map json_)
+    : this(
+        modifiers: (json_['modifiers'] as core.List?)
+            ?.map(
+              (value) => GoogleIdentityAccesscontextmanagerV1Modifier.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        pattern: json_['pattern'] as core.String?,
+        service: json_['service'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final modifiers = this.modifiers;
+    final pattern = this.pattern;
+    final service = this.service;
+    return {'modifiers': ?modifiers, 'pattern': ?pattern, 'service': ?service};
+  }
+}
 
 /// `ServicePerimeter` describes a set of Google Cloud resources which can
 /// freely import and export data amongst themselves, but not export outside of
@@ -5780,8 +5970,69 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
 }
 
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
-typedef GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices =
-    $VpcAccessibleServices;
+class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
+  /// Specifies which Google services are allowed to be accessed from VPC
+  /// networks in the service perimeter.
+  core.List<GoogleIdentityAccesscontextmanagerV1ServicePattern>?
+  allowedServicePatterns;
+
+  /// The list of APIs usable within the Service Perimeter.
+  ///
+  /// Must be empty unless 'enable_restriction' is True. You can specify a list
+  /// of individual services, as well as include the 'RESTRICTED-SERVICES'
+  /// value, which automatically includes all of the services protected by the
+  /// perimeter.
+  core.List<core.String>? allowedServices;
+
+  /// Whether to restrict API calls within the Service Perimeter to the list of
+  /// APIs specified in 'allowed_services'.
+  core.bool? enableRestriction;
+
+  /// Defines the enforcement scopes of service patterns.
+  core.List<core.String>? servicePatternsEnforcementScopes;
+
+  GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices({
+    this.allowedServicePatterns,
+    this.allowedServices,
+    this.enableRestriction,
+    this.servicePatternsEnforcementScopes,
+  });
+
+  GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices.fromJson(
+    core.Map json_,
+  ) : this(
+        allowedServicePatterns: (json_['allowedServicePatterns'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleIdentityAccesscontextmanagerV1ServicePattern.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        allowedServices: (json_['allowedServices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        enableRestriction: json_['enableRestriction'] as core.bool?,
+        servicePatternsEnforcementScopes:
+            (json_['servicePatternsEnforcementScopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedServicePatterns = this.allowedServicePatterns;
+    final allowedServices = this.allowedServices;
+    final enableRestriction = this.enableRestriction;
+    final servicePatternsEnforcementScopes =
+        this.servicePatternsEnforcementScopes;
+    return {
+      'allowedServicePatterns': ?allowedServicePatterns,
+      'allowedServices': ?allowedServices,
+      'enableRestriction': ?enableRestriction,
+      'servicePatternsEnforcementScopes': ?servicePatternsEnforcementScopes,
+    };
+  }
+}
 
 /// The originating network source in Google Cloud.
 class GoogleIdentityAccesscontextmanagerV1VpcNetworkSource {

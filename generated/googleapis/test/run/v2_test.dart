@@ -248,6 +248,7 @@ api.GoogleCloudRunV2Condition buildGoogleCloudRunV2Condition() {
   buildCounterGoogleCloudRunV2Condition++;
   if (buildCounterGoogleCloudRunV2Condition < 3) {
     o.executionReason = 'foo';
+    o.instanceReason = 'foo';
     o.lastTransitionTime = 'foo';
     o.message = 'foo';
     o.reason = 'foo';
@@ -264,6 +265,7 @@ void checkGoogleCloudRunV2Condition(api.GoogleCloudRunV2Condition o) {
   buildCounterGoogleCloudRunV2Condition++;
   if (buildCounterGoogleCloudRunV2Condition < 3) {
     unittest.expect(o.executionReason!, unittest.equals('foo'));
+    unittest.expect(o.instanceReason!, unittest.equals('foo'));
     unittest.expect(o.lastTransitionTime!, unittest.equals('foo'));
     unittest.expect(o.message!, unittest.equals('foo'));
     unittest.expect(o.reason!, unittest.equals('foo'));
@@ -349,6 +351,7 @@ api.GoogleCloudRunV2Container buildGoogleCloudRunV2Container() {
     o.ports = buildUnnamed7();
     o.readinessProbe = buildGoogleCloudRunV2Probe();
     o.resources = buildGoogleCloudRunV2ResourceRequirements();
+    o.sandboxLauncher = true;
     o.sourceCode = buildGoogleCloudRunV2SourceCode();
     o.startupProbe = buildGoogleCloudRunV2Probe();
     o.volumeMounts = buildUnnamed8();
@@ -373,6 +376,7 @@ void checkGoogleCloudRunV2Container(api.GoogleCloudRunV2Container o) {
     checkUnnamed7(o.ports!);
     checkGoogleCloudRunV2Probe(o.readinessProbe!);
     checkGoogleCloudRunV2ResourceRequirements(o.resources!);
+    unittest.expect(o.sandboxLauncher!, unittest.isTrue);
     checkGoogleCloudRunV2SourceCode(o.sourceCode!);
     checkGoogleCloudRunV2Probe(o.startupProbe!);
     checkUnnamed8(o.volumeMounts!);
@@ -710,6 +714,7 @@ api.GoogleCloudRunV2ExecutionTemplate buildGoogleCloudRunV2ExecutionTemplate() {
     o.annotations = buildUnnamed14();
     o.client = 'foo';
     o.clientVersion = 'foo';
+    o.delayExecution = true;
     o.labels = buildUnnamed15();
     o.parallelism = 42;
     o.taskCount = 42;
@@ -727,6 +732,7 @@ void checkGoogleCloudRunV2ExecutionTemplate(
     checkUnnamed14(o.annotations!);
     unittest.expect(o.client!, unittest.equals('foo'));
     unittest.expect(o.clientVersion!, unittest.equals('foo'));
+    unittest.expect(o.delayExecution!, unittest.isTrue);
     checkUnnamed15(o.labels!);
     unittest.expect(o.parallelism!, unittest.equals(42));
     unittest.expect(o.taskCount!, unittest.equals(42));
@@ -1064,6 +1070,7 @@ api.GoogleCloudRunV2Instance buildGoogleCloudRunV2Instance() {
     o.containers = buildUnnamed23();
     o.createTime = 'foo';
     o.creator = 'foo';
+    o.defaultUriDisabled = true;
     o.deleteTime = 'foo';
     o.description = 'foo';
     o.encryptionKey = 'foo';
@@ -1084,10 +1091,10 @@ api.GoogleCloudRunV2Instance buildGoogleCloudRunV2Instance() {
     o.nodeSelector = buildGoogleCloudRunV2NodeSelector();
     o.observedGeneration = 'foo';
     o.reconciling = true;
+    o.restartPolicy = 'foo';
     o.satisfiesPzs = true;
     o.serviceAccount = 'foo';
     o.terminalCondition = buildGoogleCloudRunV2Condition();
-    o.timeout = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
     o.urls = buildUnnamed25();
@@ -1110,6 +1117,7 @@ void checkGoogleCloudRunV2Instance(api.GoogleCloudRunV2Instance o) {
     checkUnnamed23(o.containers!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.creator!, unittest.equals('foo'));
+    unittest.expect(o.defaultUriDisabled!, unittest.isTrue);
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.encryptionKey!, unittest.equals('foo'));
@@ -1130,10 +1138,10 @@ void checkGoogleCloudRunV2Instance(api.GoogleCloudRunV2Instance o) {
     checkGoogleCloudRunV2NodeSelector(o.nodeSelector!);
     unittest.expect(o.observedGeneration!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(o.restartPolicy!, unittest.equals('foo'));
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     checkGoogleCloudRunV2Condition(o.terminalCondition!);
-    unittest.expect(o.timeout!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     checkUnnamed25(o.urls!);
@@ -1686,6 +1694,7 @@ api.GoogleCloudRunV2Overrides buildGoogleCloudRunV2Overrides() {
   buildCounterGoogleCloudRunV2Overrides++;
   if (buildCounterGoogleCloudRunV2Overrides < 3) {
     o.containerOverrides = buildUnnamed40();
+    o.delayExecution = true;
     o.taskCount = 42;
     o.timeout = 'foo';
   }
@@ -1697,6 +1706,7 @@ void checkGoogleCloudRunV2Overrides(api.GoogleCloudRunV2Overrides o) {
   buildCounterGoogleCloudRunV2Overrides++;
   if (buildCounterGoogleCloudRunV2Overrides < 3) {
     checkUnnamed40(o.containerOverrides!);
+    unittest.expect(o.delayExecution!, unittest.isTrue);
     unittest.expect(o.taskCount!, unittest.equals(42));
     unittest.expect(o.timeout!, unittest.equals('foo'));
   }
@@ -2219,6 +2229,7 @@ api.GoogleCloudRunV2Service buildGoogleCloudRunV2Service() {
     o.defaultUriDisabled = true;
     o.deleteTime = 'foo';
     o.description = 'foo';
+    o.durableExecution = true;
     o.etag = 'foo';
     o.expireTime = 'foo';
     o.generation = 'foo';
@@ -2236,6 +2247,7 @@ api.GoogleCloudRunV2Service buildGoogleCloudRunV2Service() {
     o.reconciling = true;
     o.satisfiesPzs = true;
     o.scaling = buildGoogleCloudRunV2ServiceScaling();
+    o.sshEnabled = true;
     o.template = buildGoogleCloudRunV2RevisionTemplate();
     o.terminalCondition = buildGoogleCloudRunV2Condition();
     o.threatDetectionEnabled = true;
@@ -2265,6 +2277,7 @@ void checkGoogleCloudRunV2Service(api.GoogleCloudRunV2Service o) {
     unittest.expect(o.defaultUriDisabled!, unittest.isTrue);
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.durableExecution!, unittest.isTrue);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.expireTime!, unittest.equals('foo'));
     unittest.expect(o.generation!, unittest.equals('foo'));
@@ -2282,6 +2295,7 @@ void checkGoogleCloudRunV2Service(api.GoogleCloudRunV2Service o) {
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkGoogleCloudRunV2ServiceScaling(o.scaling!);
+    unittest.expect(o.sshEnabled!, unittest.isTrue);
     checkGoogleCloudRunV2RevisionTemplate(o.template!);
     checkGoogleCloudRunV2Condition(o.terminalCondition!);
     unittest.expect(o.threatDetectionEnabled!, unittest.isTrue);
@@ -2816,6 +2830,50 @@ void checkGoogleCloudRunV2TrafficTargetStatus(
     unittest.expect(o.uri!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRunV2TrafficTargetStatus--;
+}
+
+core.int buildCounterGoogleCloudRunV2UploadSourceRequest = 0;
+api.GoogleCloudRunV2UploadSourceRequest
+buildGoogleCloudRunV2UploadSourceRequest() {
+  final o = api.GoogleCloudRunV2UploadSourceRequest();
+  buildCounterGoogleCloudRunV2UploadSourceRequest++;
+  if (buildCounterGoogleCloudRunV2UploadSourceRequest < 3) {
+    o.service = 'foo';
+  }
+  buildCounterGoogleCloudRunV2UploadSourceRequest--;
+  return o;
+}
+
+void checkGoogleCloudRunV2UploadSourceRequest(
+  api.GoogleCloudRunV2UploadSourceRequest o,
+) {
+  buildCounterGoogleCloudRunV2UploadSourceRequest++;
+  if (buildCounterGoogleCloudRunV2UploadSourceRequest < 3) {
+    unittest.expect(o.service!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudRunV2UploadSourceRequest--;
+}
+
+core.int buildCounterGoogleCloudRunV2UploadSourceResponse = 0;
+api.GoogleCloudRunV2UploadSourceResponse
+buildGoogleCloudRunV2UploadSourceResponse() {
+  final o = api.GoogleCloudRunV2UploadSourceResponse();
+  buildCounterGoogleCloudRunV2UploadSourceResponse++;
+  if (buildCounterGoogleCloudRunV2UploadSourceResponse < 3) {
+    o.cloudStorageSource = buildGoogleCloudRunV2CloudStorageSource();
+  }
+  buildCounterGoogleCloudRunV2UploadSourceResponse--;
+  return o;
+}
+
+void checkGoogleCloudRunV2UploadSourceResponse(
+  api.GoogleCloudRunV2UploadSourceResponse o,
+) {
+  buildCounterGoogleCloudRunV2UploadSourceResponse++;
+  if (buildCounterGoogleCloudRunV2UploadSourceResponse < 3) {
+    checkGoogleCloudRunV2CloudStorageSource(o.cloudStorageSource!);
+  }
+  buildCounterGoogleCloudRunV2UploadSourceResponse--;
 }
 
 core.int buildCounterGoogleCloudRunV2VersionToPath = 0;
@@ -4452,6 +4510,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudRunV2UploadSourceRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRunV2UploadSourceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRunV2UploadSourceRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudRunV2UploadSourceRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRunV2UploadSourceResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRunV2UploadSourceResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRunV2UploadSourceResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudRunV2UploadSourceResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudRunV2VersionToPath', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudRunV2VersionToPath();
@@ -5195,6 +5275,68 @@ void main() {
       checkGoogleCloudRunV2Instance(response as api.GoogleCloudRunV2Instance);
     });
 
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudRunApi(mock).projects.locations.instances;
+      final arg_resource = 'foo';
+      final arg_options_requestedPolicyVersion = 42;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+            unittest.equals(arg_options_requestedPolicyVersion),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleIamV1Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getIamPolicy(
+        arg_resource,
+        options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+        $fields: arg_$fields,
+      );
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.CloudRunApi(mock).projects.locations.instances;
@@ -5356,6 +5498,69 @@ void main() {
       );
     });
 
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudRunApi(mock).projects.locations.instances;
+      final arg_request = buildGoogleIamV1SetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleIamV1SetIamPolicyRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleIamV1Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.setIamPolicy(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
+    });
+
     unittest.test('method--start', () async {
       final mock = HttpServerMock();
       final res = api.CloudRunApi(mock).projects.locations.instances;
@@ -5483,6 +5688,73 @@ void main() {
       );
       checkGoogleLongrunningOperation(
         response as api.GoogleLongrunningOperation,
+      );
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudRunApi(mock).projects.locations.instances;
+      final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleIamV1TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleIamV1TestIamPermissionsRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleIamV1TestIamPermissionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.testIamPermissions(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
+      checkGoogleIamV1TestIamPermissionsResponse(
+        response as api.GoogleIamV1TestIamPermissionsResponse,
       );
     });
   });
@@ -7634,6 +7906,78 @@ void main() {
       );
       checkGoogleCloudRunV2ListRevisionsResponse(
         response as api.GoogleCloudRunV2ListRevisionsResponse,
+      );
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsSourceUploadsResource', () {
+    unittest.test('method--upload', () async {
+      // TODO: Implement tests for media upload;
+      // TODO: Implement tests for media download;
+
+      final mock = HttpServerMock();
+      final res = api.CloudRunApi(mock).projects.locations.sourceUploads;
+      final arg_request = buildGoogleCloudRunV2UploadSourceRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudRunV2UploadSourceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudRunV2UploadSourceRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudRunV2UploadSourceResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.upload(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkGoogleCloudRunV2UploadSourceResponse(
+        response as api.GoogleCloudRunV2UploadSourceResponse,
       );
     });
   });

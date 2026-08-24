@@ -279,7 +279,9 @@ class AccountsResource {
   ///
   /// Note that these accounts might not currently have GA properties.
   /// Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an
-  /// empty list if no relevant accounts are found.
+  /// empty list if no relevant accounts are found. Note: The easiest way to
+  /// retrieve a list of all properties you have access to is by using
+  /// `ListAccountSummaries`.
   ///
   /// Request parameters:
   ///
@@ -1321,6 +1323,11 @@ class PropertiesCustomDimensionsResource {
   }
 
   /// Creates a CustomDimension.
+  ///
+  /// Warning: It's not permissible to use this method to collect data on
+  /// individual users. In particular, sending user IDs in custom dimensions
+  /// violates the
+  /// [Google Analytics Terms of Service](https://www.google.com/analytics/terms/).
   ///
   /// [request] - The metadata request object.
   ///

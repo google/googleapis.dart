@@ -301,6 +301,7 @@ api.CodeCompilationConfig buildCodeCompilationConfig() {
     o.defaultLocation = 'foo';
     o.defaultNotebookRuntimeOptions = buildNotebookRuntimeOptions();
     o.defaultSchema = 'foo';
+    o.pipelineConfig = buildPipelineConfig();
     o.schemaSuffix = 'foo';
     o.tablePrefix = 'foo';
     o.vars = buildUnnamed3();
@@ -319,6 +320,7 @@ void checkCodeCompilationConfig(api.CodeCompilationConfig o) {
     unittest.expect(o.defaultLocation!, unittest.equals('foo'));
     checkNotebookRuntimeOptions(o.defaultNotebookRuntimeOptions!);
     unittest.expect(o.defaultSchema!, unittest.equals('foo'));
+    checkPipelineConfig(o.pipelineConfig!);
     unittest.expect(o.schemaSuffix!, unittest.equals('foo'));
     unittest.expect(o.tablePrefix!, unittest.equals('foo'));
     checkUnnamed3(o.vars!);
@@ -579,6 +581,7 @@ api.CompilationResult buildCompilationResult() {
     o.createTime = 'foo';
     o.dataEncryptionState = buildDataEncryptionState();
     o.dataformCoreVersion = 'foo';
+    o.gcsRepositorySnapshotMetadata = buildGcsRepositorySnapshotMetadata();
     o.gitCommitish = 'foo';
     o.internalMetadata = 'foo';
     o.name = 'foo';
@@ -599,6 +602,7 @@ void checkCompilationResult(api.CompilationResult o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkDataEncryptionState(o.dataEncryptionState!);
     unittest.expect(o.dataformCoreVersion!, unittest.equals('foo'));
+    checkGcsRepositorySnapshotMetadata(o.gcsRepositorySnapshotMetadata!);
     unittest.expect(o.gitCommitish!, unittest.equals('foo'));
     unittest.expect(o.internalMetadata!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -1198,6 +1202,50 @@ void checkFolderContentsEntry(api.FolderContentsEntry o) {
   buildCounterFolderContentsEntry--;
 }
 
+core.int buildCounterGcsRepositorySnapshotDestination = 0;
+api.GcsRepositorySnapshotDestination buildGcsRepositorySnapshotDestination() {
+  final o = api.GcsRepositorySnapshotDestination();
+  buildCounterGcsRepositorySnapshotDestination++;
+  if (buildCounterGcsRepositorySnapshotDestination < 3) {
+    o.repositorySnapshotUri = 'foo';
+  }
+  buildCounterGcsRepositorySnapshotDestination--;
+  return o;
+}
+
+void checkGcsRepositorySnapshotDestination(
+  api.GcsRepositorySnapshotDestination o,
+) {
+  buildCounterGcsRepositorySnapshotDestination++;
+  if (buildCounterGcsRepositorySnapshotDestination < 3) {
+    unittest.expect(o.repositorySnapshotUri!, unittest.equals('foo'));
+  }
+  buildCounterGcsRepositorySnapshotDestination--;
+}
+
+core.int buildCounterGcsRepositorySnapshotMetadata = 0;
+api.GcsRepositorySnapshotMetadata buildGcsRepositorySnapshotMetadata() {
+  final o = api.GcsRepositorySnapshotMetadata();
+  buildCounterGcsRepositorySnapshotMetadata++;
+  if (buildCounterGcsRepositorySnapshotMetadata < 3) {
+    o.crc32cChecksum = 'foo';
+    o.generation = 'foo';
+    o.repositorySnapshotUri = 'foo';
+  }
+  buildCounterGcsRepositorySnapshotMetadata--;
+  return o;
+}
+
+void checkGcsRepositorySnapshotMetadata(api.GcsRepositorySnapshotMetadata o) {
+  buildCounterGcsRepositorySnapshotMetadata++;
+  if (buildCounterGcsRepositorySnapshotMetadata < 3) {
+    unittest.expect(o.crc32cChecksum!, unittest.equals('foo'));
+    unittest.expect(o.generation!, unittest.equals('foo'));
+    unittest.expect(o.repositorySnapshotUri!, unittest.equals('foo'));
+  }
+  buildCounterGcsRepositorySnapshotMetadata--;
+}
+
 core.int buildCounterGitRemoteSettings = 0;
 api.GitRemoteSettings buildGitRemoteSettings() {
   final o = api.GitRemoteSettings();
@@ -1205,6 +1253,8 @@ api.GitRemoteSettings buildGitRemoteSettings() {
   if (buildCounterGitRemoteSettings < 3) {
     o.authenticationTokenSecretVersion = 'foo';
     o.defaultBranch = 'foo';
+    o.effectiveDefaultBranch = 'foo';
+    o.gitRepositoryLink = 'foo';
     o.sshAuthenticationConfig = buildSshAuthenticationConfig();
     o.tokenStatus = 'foo';
     o.url = 'foo';
@@ -1221,6 +1271,8 @@ void checkGitRemoteSettings(api.GitRemoteSettings o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.defaultBranch!, unittest.equals('foo'));
+    unittest.expect(o.effectiveDefaultBranch!, unittest.equals('foo'));
+    unittest.expect(o.gitRepositoryLink!, unittest.equals('foo'));
     checkSshAuthenticationConfig(o.sshAuthenticationConfig!);
     unittest.expect(o.tokenStatus!, unittest.equals('foo'));
     unittest.expect(o.url!, unittest.equals('foo'));
@@ -1304,14 +1356,18 @@ core.int buildCounterInstallNpmPackagesRequest = 0;
 api.InstallNpmPackagesRequest buildInstallNpmPackagesRequest() {
   final o = api.InstallNpmPackagesRequest();
   buildCounterInstallNpmPackagesRequest++;
-  if (buildCounterInstallNpmPackagesRequest < 3) {}
+  if (buildCounterInstallNpmPackagesRequest < 3) {
+    o.pipelineConfig = buildPipelineConfig();
+  }
   buildCounterInstallNpmPackagesRequest--;
   return o;
 }
 
 void checkInstallNpmPackagesRequest(api.InstallNpmPackagesRequest o) {
   buildCounterInstallNpmPackagesRequest++;
-  if (buildCounterInstallNpmPackagesRequest < 3) {}
+  if (buildCounterInstallNpmPackagesRequest < 3) {
+    checkPipelineConfig(o.pipelineConfig!);
+  }
   buildCounterInstallNpmPackagesRequest--;
 }
 
@@ -2001,6 +2057,7 @@ api.NotebookAction buildNotebookAction() {
   buildCounterNotebookAction++;
   if (buildCounterNotebookAction < 3) {
     o.contents = 'foo';
+    o.filePath = 'foo';
     o.jobId = 'foo';
   }
   buildCounterNotebookAction--;
@@ -2011,6 +2068,7 @@ void checkNotebookAction(api.NotebookAction o) {
   buildCounterNotebookAction++;
   if (buildCounterNotebookAction < 3) {
     unittest.expect(o.contents!, unittest.equals('foo'));
+    unittest.expect(o.filePath!, unittest.equals('foo'));
     unittest.expect(o.jobId!, unittest.equals('foo'));
   }
   buildCounterNotebookAction--;
@@ -2023,6 +2081,8 @@ api.NotebookRuntimeOptions buildNotebookRuntimeOptions() {
   if (buildCounterNotebookRuntimeOptions < 3) {
     o.aiPlatformNotebookRuntimeTemplate = 'foo';
     o.gcsOutputBucket = 'foo';
+    o.gcsRepositorySnapshotDestination =
+        buildGcsRepositorySnapshotDestination();
   }
   buildCounterNotebookRuntimeOptions--;
   return o;
@@ -2036,6 +2096,7 @@ void checkNotebookRuntimeOptions(api.NotebookRuntimeOptions o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.gcsOutputBucket!, unittest.equals('foo'));
+    checkGcsRepositorySnapshotDestination(o.gcsRepositorySnapshotDestination!);
   }
   buildCounterNotebookRuntimeOptions--;
 }
@@ -2172,6 +2233,27 @@ void checkOperations(api.Operations o) {
     checkUnnamed42(o.tags!);
   }
   buildCounterOperations--;
+}
+
+core.int buildCounterPipelineConfig = 0;
+api.PipelineConfig buildPipelineConfig() {
+  final o = api.PipelineConfig();
+  buildCounterPipelineConfig++;
+  if (buildCounterPipelineConfig < 3) {
+    o.path = 'foo';
+    o.pipelineType = 'foo';
+  }
+  buildCounterPipelineConfig--;
+  return o;
+}
+
+void checkPipelineConfig(api.PipelineConfig o) {
+  buildCounterPipelineConfig++;
+  if (buildCounterPipelineConfig < 3) {
+    unittest.expect(o.path!, unittest.equals('foo'));
+    unittest.expect(o.pipelineType!, unittest.equals('foo'));
+  }
+  buildCounterPipelineConfig--;
 }
 
 core.List<api.Binding> buildUnnamed43() => [buildBinding(), buildBinding()];
@@ -3441,6 +3523,7 @@ api.WorkflowInvocation buildWorkflowInvocation() {
     o.invocationConfig = buildInvocationConfig();
     o.invocationTiming = buildInterval();
     o.name = 'foo';
+    o.pipelineConfig = buildPipelineConfig();
     o.privateResourceMetadata = buildPrivateResourceMetadata();
     o.resolvedCompilationResult = 'foo';
     o.state = 'foo';
@@ -3459,6 +3542,7 @@ void checkWorkflowInvocation(api.WorkflowInvocation o) {
     checkInvocationConfig(o.invocationConfig!);
     checkInterval(o.invocationTiming!);
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkPipelineConfig(o.pipelineConfig!);
     checkPrivateResourceMetadata(o.privateResourceMetadata!);
     unittest.expect(o.resolvedCompilationResult!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
@@ -4135,6 +4219,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GcsRepositorySnapshotDestination', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGcsRepositorySnapshotDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GcsRepositorySnapshotDestination.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGcsRepositorySnapshotDestination(od);
+    });
+  });
+
+  unittest.group('obj-schema-GcsRepositorySnapshotMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGcsRepositorySnapshotMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GcsRepositorySnapshotMetadata.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGcsRepositorySnapshotMetadata(od);
+    });
+  });
+
   unittest.group('obj-schema-GitRemoteSettings', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGitRemoteSettings();
@@ -4462,6 +4568,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkOperations(od);
+    });
+  });
+
+  unittest.group('obj-schema-PipelineConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPipelineConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PipelineConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPipelineConfig(od);
     });
   });
 

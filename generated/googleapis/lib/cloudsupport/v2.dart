@@ -32,6 +32,8 @@
 ///   - [CasesAttachmentsResource]
 ///   - [CasesCommentsResource]
 /// - [MediaResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsSupportEventSubscriptionsResource]
 library;
 
 import 'dart:async' as async;
@@ -69,6 +71,7 @@ class CloudSupportApi {
       CaseClassificationsResource(_requester);
   CasesResource get cases => CasesResource(_requester);
   MediaResource get media => MediaResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
 
   CloudSupportApi(
     http.Client client, {
@@ -610,6 +613,53 @@ class CasesAttachmentsResource {
 
   CasesAttachmentsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Retrieve an attachment associated with a support case.
+  ///
+  /// EXAMPLES: cURL: ```shell
+  /// attachment="projects/some-project/cases/23598314/attachments/0684M00000P3h1fQAB"
+  /// curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)"
+  /// \ "https://cloudsupport.googleapis.com/v2/$attachment" ``` Python:
+  /// ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = ( supportApiService.cases() .attachments()
+  /// .get(name="projects/some-project/cases/43595344/attachments/0684M00000P3h1fQAB")
+  /// ) print(request.execute()) ```
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the attachment to get.
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/cases/\[^/\]+/attachments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Attachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Attachment> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Attachment.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// List all the attachments associated with a support case.
   ///
   /// EXAMPLES: cURL: ```shell case="projects/some-project/cases/23598314" curl
@@ -728,6 +778,51 @@ class CasesCommentsResource {
       url_,
       'POST',
       body: body_,
+      queryParams: queryParams_,
+    );
+    return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve a comment.
+  ///
+  /// EXAMPLES: cURL: ```shell
+  /// comment="projects/some-project/cases/43595344/comments/234567890" curl \
+  /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$comment" ``` Python: ```python
+  /// import googleapiclient.discovery api_version = "v2" supportApiService =
+  /// googleapiclient.discovery.build( serviceName="cloudsupport",
+  /// version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.cases().comments().get(
+  /// name="projects/some-project/cases/43595344/comments/234567890", )
+  /// print(request.execute()) ```
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the comment to retrieve.
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/cases/\[^/\]+/comments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Comment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Comment> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
       queryParams: queryParams_,
     );
     return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -868,7 +963,7 @@ class MediaResource {
   /// > "./example_file.txt" case="projects/some-project/cases/43594844" curl \
   /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
   /// --data-binary @"./example_file.txt" \
-  /// "https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt"
+  /// "https://cloudsupport.googleapis.com/upload/v2/$case/attachments?attachment.filename=uploaded_via_curl.txt"
   /// ``` Python: ```python import googleapiclient.discovery api_version = "v2"
   /// supportApiService = googleapiclient.discovery.build(
   /// serviceName="cloudsupport", version=api_version,
@@ -928,6 +1023,438 @@ class MediaResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return Attachment.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSupportEventSubscriptionsResource
+  get supportEventSubscriptions =>
+      OrganizationsSupportEventSubscriptionsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsSupportEventSubscriptionsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSupportEventSubscriptionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a support event subscription for an organization.
+  ///
+  /// EXAMPLES: cURL: ```shell parent="organizations/123456789" curl \ --request
+  /// POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)"
+  /// \ --header 'Content-Type: application/json' \ --data '{ "pub_sub_topic":
+  /// "projects/my-project/topics/my-topic" }' \
+  /// "https://cloudsupport.googleapis.com/v2/$parent/supportEventSubscriptions"
+  /// ``` Python: ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.supportEventSubscriptions().create(
+  /// parent="organizations/123456789", body={ "pub_sub_topic":
+  /// "projects/my-project/topics/my-topic" }, ) print(request.execute()) ```
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name where the support event
+  /// subscription will be created. Format: organizations/{organization_id}
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SupportEventSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SupportEventSubscription> create(
+    SupportEventSubscription request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/supportEventSubscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SupportEventSubscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Soft deletes a support event subscription.
+  ///
+  /// EXAMPLES: cURL: ```shell
+  /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456"
+  /// curl \ --request DELETE \ --header "Authorization: Bearer $(gcloud auth
+  /// print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription" ```
+  /// Python: ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService).supportEventSubscriptions().delete(
+  /// name="organizations/123456789/supportEventSubscriptions/abcdef123456" )
+  /// print(request.execute()) ```
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the support event subscription to delete.
+  /// Format:
+  /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/supportEventSubscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SupportEventSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SupportEventSubscription> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return SupportEventSubscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Expunges a support event subscription.
+  ///
+  /// EXAMPLES: cURL: ```shell
+  /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456"
+  /// curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth
+  /// print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription:expunge"
+  /// ``` Python: ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.supportEventSubscriptions().expunge(
+  /// name="organizations/123456789/supportEventSubscriptions/abcdef123456" )
+  /// print(request.execute()) ```
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the support event subscription to expunge.
+  /// Format:
+  /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/supportEventSubscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> expunge(
+    ExpungeSupportEventSubscriptionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':expunge';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a support event subscription.
+  ///
+  /// EXAMPLES: cURL: ```shell
+  /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456"
+  /// curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)"
+  /// \ "https://cloudsupport.googleapis.com/v2/$support_event_subscription" ```
+  /// Python: ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.supportEventSubscriptions().get(
+  /// name="organizations/123456789/supportEventSubscriptions/abcdef123456" )
+  /// print(request.execute()) ```
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the support event subscription to retrieve.
+  /// Format:
+  /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/supportEventSubscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SupportEventSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SupportEventSubscription> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SupportEventSubscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists support event subscriptions.
+  ///
+  /// EXAMPLES: cURL: ```shell parent="organizations/123456789" curl \ --header
+  /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$parent/supportEventSubscriptions"
+  /// ``` Python: ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.supportEventSubscriptions().list(
+  /// parent="organizations/123456789" ) print(request.execute()) ```
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The fully qualified name of the Cloud resource to
+  /// list support event subscriptions under. Format:
+  /// organizations/{organization_id}
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression based on AIP-160. Supported fields:
+  /// - pub_sub_topic - state Examples: -
+  /// `pub_sub_topic="projects/example-project/topics/example-topic"` -
+  /// `state=WORKING` -
+  /// `pub_sub_topic="projects/example-project/topics/example-topic" AND
+  /// state=WORKING`
+  ///
+  /// [pageSize] - Optional. The maximum number of support event subscriptions
+  /// to return.
+  ///
+  /// [pageToken] - Optional. A token identifying the page of results to return.
+  /// If unspecified, the first page is retrieved. When paginating, all other
+  /// parameters provided to `ListSupportEventSubscriptions` must match the call
+  /// that provided the page token.
+  ///
+  /// [showDeleted] - Optional. Whether to show deleted subscriptions. By
+  /// default, deleted subscriptions are not returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSupportEventSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSupportEventSubscriptionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/supportEventSubscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSupportEventSubscriptionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a support event subscription.
+  ///
+  /// EXAMPLES: cURL: ```shell
+  /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456"
+  /// curl \ --request PATCH \ --header "Authorization: Bearer $(gcloud auth
+  /// print-access-token)" \ --header "Content-Type: application/json" \ --data
+  /// '{ "pub_sub_topic": "projects/my-project/topics/new-topic" }' \
+  /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription?updateMask=pub_sub_topic"
+  /// ``` Python: ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.supportEventSubscriptions().patch(
+  /// name="organizations/123456789/supportEventSubscriptions/abcdef123456",
+  /// body={ "pub_sub_topic": "projects/my-project/topics/new-topic" }, )
+  /// print(request.execute()) ```
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the support event subscription.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/supportEventSubscriptions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. The only supported
+  /// value is pub_sub_topic.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SupportEventSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SupportEventSubscription> patch(
+    SupportEventSubscription request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SupportEventSubscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Undeletes a support event subscription.
+  ///
+  /// EXAMPLES: cURL: ```shell
+  /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456"
+  /// curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth
+  /// print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription:undelete"
+  /// ``` Python: ```python import googleapiclient.discovery api_version = "v2"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.supportEventSubscriptions().undelete(
+  /// name="organizations/123456789/supportEventSubscriptions/abcdef123456" )
+  /// print(request.execute()) ```
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the support event subscription to undelete.
+  /// Format:
+  /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/supportEventSubscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SupportEventSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SupportEventSubscription> undelete(
+    UndeleteSupportEventSubscriptionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SupportEventSubscription.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1936,6 +2463,14 @@ class DownloadParameters {
   }
 }
 
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
 /// The request message for the EscalateCase endpoint.
 class EscalateCaseRequest {
   /// The escalation information to be sent with the escalation request.
@@ -1993,6 +2528,9 @@ class Escalation {
     return {'justification': ?justification, 'reason': ?reason};
   }
 }
+
+/// Request message for ExpungeSupportEventSubscription.
+typedef ExpungeSupportEventSubscriptionRequest = $Empty;
 
 /// The response message for the ListAttachments endpoint.
 class ListAttachmentsResponse {
@@ -2087,6 +2625,44 @@ class ListCommentsResponse {
     final comments = this.comments;
     final nextPageToken = this.nextPageToken;
     return {'comments': ?comments, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Response message for ListSupportEventSubscriptions.
+class ListSupportEventSubscriptionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The support event subscriptions.
+  core.List<SupportEventSubscription>? supportEventSubscriptions;
+
+  ListSupportEventSubscriptionsResponse({
+    this.nextPageToken,
+    this.supportEventSubscriptions,
+  });
+
+  ListSupportEventSubscriptionsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        supportEventSubscriptions:
+            (json_['supportEventSubscriptions'] as core.List?)
+                ?.map(
+                  (value) => SupportEventSubscription.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final supportEventSubscriptions = this.supportEventSubscriptions;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'supportEventSubscriptions': ?supportEventSubscriptions,
+    };
   }
 }
 
@@ -2278,6 +2854,18 @@ class Media {
   }
 
   /// # gdata.* are outside protos with mising documentation
+  core.String? sha512Hash;
+  core.List<core.int> get sha512HashAsBytes =>
+      convert.base64.decode(sha512Hash!);
+
+  set sha512HashAsBytes(core.List<core.int> bytes_) {
+    sha512Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// # gdata.* are outside protos with mising documentation
   core.String? timestamp;
 
   /// # gdata.* are outside protos with mising documentation
@@ -2312,6 +2900,7 @@ class Media {
     this.referenceType,
     this.sha1Hash,
     this.sha256Hash,
+    this.sha512Hash,
     this.timestamp,
     this.token,
   });
@@ -2394,6 +2983,7 @@ class Media {
         referenceType: json_['referenceType'] as core.String?,
         sha1Hash: json_['sha1Hash'] as core.String?,
         sha256Hash: json_['sha256Hash'] as core.String?,
+        sha512Hash: json_['sha512Hash'] as core.String?,
         timestamp: json_['timestamp'] as core.String?,
         token: json_['token'] as core.String?,
       );
@@ -2427,6 +3017,7 @@ class Media {
     final referenceType = this.referenceType;
     final sha1Hash = this.sha1Hash;
     final sha256Hash = this.sha256Hash;
+    final sha512Hash = this.sha512Hash;
     final timestamp = this.timestamp;
     final token = this.token;
     return {
@@ -2458,6 +3049,7 @@ class Media {
       'referenceType': ?referenceType,
       'sha1Hash': ?sha1Hash,
       'sha256Hash': ?sha256Hash,
+      'sha512Hash': ?sha512Hash,
       'timestamp': ?timestamp,
       'token': ?token,
     };
@@ -2566,3 +3158,123 @@ class SearchCasesResponse {
     return {'cases': ?cases, 'nextPageToken': ?nextPageToken};
   }
 }
+
+/// A support event subscription.
+///
+/// You can also manage support event subscriptions using other tools: *
+/// \[`gcloud support
+/// support-event-subscriptions`\](/sdk/gcloud/reference/support/support-event-subscriptions)
+/// (or \[`gcloud
+/// beta`\](/sdk/gcloud/reference/beta/support/support-event-subscriptions) for
+/// beta) * \[Terraform
+/// `google_cloud_support_support_event_subscription`\](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_support_support_event_subscription)
+/// (or \[google-beta
+/// provider\](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/cloud_support_support_event_subscription)
+/// for beta)
+class SupportEventSubscription {
+  /// The time at which the subscription was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time at which the subscription was deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// Reason why subscription is failing.
+  ///
+  /// State of subscription must be FAILING in order for this to have a value.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FAILURE_REASON_UNSPECIFIED" : Unspecified failure reason.
+  /// - "PERMISSION_DENIED" : The service account (i.e.
+  /// cloud-support-apievents@system.gserviceaccount.com) lacks the permission
+  /// to publish to the customer's Pub/Sub topic.
+  /// - "TOPIC_NOT_FOUND" : The specified Pub/Sub topic does not exist.
+  /// - "OTHER" : Message failed to publish due to a system-side error.
+  core.String? failureReason;
+
+  /// Identifier.
+  ///
+  /// The resource name of the support event subscription.
+  core.String? name;
+
+  /// The name of the Pub/Sub topic to publish notifications to.
+  ///
+  /// Format: projects/{project}/topics/{topic}
+  ///
+  /// Required.
+  core.String? pubSubTopic;
+
+  /// The time at which the subscription will be purged.
+  ///
+  /// Output only.
+  core.String? purgeTime;
+
+  /// The state of the subscription.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "WORKING" : Subscription is active and working.
+  /// - "FAILING" : Subscription is failing. Notifications cannot be published
+  /// for some reason.
+  /// - "DELETED" : Subscription has been deleted and is pending purge.
+  /// Notifications are not sent for deleted subscriptions. Deleted
+  /// subscriptions are purged after their `purge_time` has passed.
+  core.String? state;
+
+  /// The time at which the subscription was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  SupportEventSubscription({
+    this.createTime,
+    this.deleteTime,
+    this.failureReason,
+    this.name,
+    this.pubSubTopic,
+    this.purgeTime,
+    this.state,
+    this.updateTime,
+  });
+
+  SupportEventSubscription.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        failureReason: json_['failureReason'] as core.String?,
+        name: json_['name'] as core.String?,
+        pubSubTopic: json_['pubSubTopic'] as core.String?,
+        purgeTime: json_['purgeTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final failureReason = this.failureReason;
+    final name = this.name;
+    final pubSubTopic = this.pubSubTopic;
+    final purgeTime = this.purgeTime;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'failureReason': ?failureReason,
+      'name': ?name,
+      'pubSubTopic': ?pubSubTopic,
+      'purgeTime': ?purgeTime,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Request message for UndeleteSupportEventSubscription.
+typedef UndeleteSupportEventSubscriptionRequest = $Empty;

@@ -204,7 +204,7 @@ class ProjectsLocationsJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The `name` of the job to cancel. Format:
-  /// projects/{project_id}/locations/global/jobs/{job_id}.
+  /// `projects/{project_id}/locations/global/jobs/{job_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -247,20 +247,18 @@ class ProjectsLocationsJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Value for parent.
+  /// [parent] - Required. The value for parent.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [jobId] - Required. The optional `job_id` for this Job . If not specified,
-  /// an id is generated. `job_id` should be no more than 128 characters and
-  /// must include only characters available in DNS names, as defined by
-  /// RFC-1123.
+  /// [jobId] - Required. A unique identifier for the job. `job_id` must be up
+  /// to 128 characters and must include only characters available in DNS names,
+  /// as defined by RFC-1123.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID in case you need to retry your request.
-  /// Requests with same `request_id` will be ignored for at least 60 minutes
-  /// since the first request. The request ID must be a valid UUID with the
-  /// exception that zero UUID is not supported
-  /// (00000000-0000-0000-0000-000000000000).
+  /// Requests with same `request_id` are ignored for at least 60 minutes since
+  /// the first request. The request ID must be a valid UUID with the exception
+  /// that zero UUID isn't supported (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -302,21 +300,20 @@ class ProjectsLocationsJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The `name` of the job to delete. Format:
-  /// projects/{project_id}/locations/global/jobs/{job_id} .
+  /// `projects/{project_id}/locations/global/jobs/{job_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [force] - Optional. If set to true, any child bucket operations of the job
-  /// will also be deleted. Highly recommended to be set to true by all clients.
-  /// Users cannot mutate bucket operations directly, so only the jobs.delete
-  /// permission is required to delete a job (and its child bucket operations).
+  /// are deleted. We recommend setting this to `true`. You can't mutate bucket
+  /// operations directly, so only the `jobs.delete` permission is required to
+  /// delete a job (and its child bucket operations).
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID in case you need to retry your request.
-  /// Requests with same `request_id` will be ignored for at least 60 minutes
-  /// since the first request. The request ID must be a valid UUID with the
-  /// exception that zero UUID is not supported
-  /// (00000000-0000-0000-0000-000000000000).
+  /// Requests with same `request_id` are ignored for at least 60 minutes since
+  /// the first request. The request ID must be a valid UUID with the exception
+  /// that zero UUID isn't supported (00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -354,8 +351,8 @@ class ProjectsLocationsJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. `name` of the job to retrieve. Format:
-  /// projects/{project_id}/locations/global/jobs/{job_id} .
+  /// [name] - Required. The `name` of the job to retrieve. Format:
+  /// `projects/{project_id}/locations/global/jobs/{job_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -394,10 +391,10 @@ class ProjectsLocationsJobsResource {
   /// [filter] - Optional. Filters results as defined by
   /// https://google.aip.dev/160.
   ///
-  /// [orderBy] - Optional. Field to sort by. Supported fields are name,
-  /// create_time.
+  /// [orderBy] - Optional. Field to sort by. Supported fields are `name` and
+  /// `create_time`.
   ///
-  /// [pageSize] - Optional. The list page size. default page size is 100.
+  /// [pageSize] - Optional. The list page size. The default page size is 100.
   ///
   /// [pageToken] - Optional. The list page token.
   ///
@@ -450,8 +447,8 @@ class ProjectsLocationsJobsBucketOperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. `name` of the bucket operation to retrieve. Format:
-  /// projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation_id}.
+  /// [name] - Required. The `name` of the bucket operation to retrieve. Format:
+  /// `projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/bucketOperations/\[^/\]+$`.
   ///
@@ -490,15 +487,15 @@ class ProjectsLocationsJobsBucketOperationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Format:
-  /// projects/{project_id}/locations/global/jobs/{job_id}.
+  /// `projects/{project_id}/locations/global/jobs/{job_id}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filters results as defined by
   /// https://google.aip.dev/160.
   ///
-  /// [orderBy] - Optional. Field to sort by. Supported fields are name,
-  /// create_time.
+  /// [orderBy] - Optional. Field to sort by. Supported fields are `name` and
+  /// `create_time`.
   ///
   /// [pageSize] - Optional. The list page size. Default page size is 100.
   ///
@@ -736,6 +733,45 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// Represents updates to existing access-control entries on an object.
+class AccessControlsUpdates {
+  /// Grants to add or update.
+  ///
+  /// If a grant for same entity exists, its role is updated.
+  ///
+  /// Optional.
+  core.List<ObjectAccessControl>? grants;
+
+  /// Entities for which all grants should be removed.
+  ///
+  /// An entity can't be in both `grants` and `remove_entities`.
+  ///
+  /// Optional.
+  core.List<core.String>? removeEntities;
+
+  AccessControlsUpdates({this.grants, this.removeEntities});
+
+  AccessControlsUpdates.fromJson(core.Map json_)
+    : this(
+        grants: (json_['grants'] as core.List?)
+            ?.map(
+              (value) => ObjectAccessControl.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        removeEntities: (json_['removeEntities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final grants = this.grants;
+    final removeEntities = this.removeEntities;
+    return {'grants': ?grants, 'removeEntities': ?removeEntities};
+  }
+}
+
 /// Describes configuration of a single bucket and its objects to be
 /// transformed.
 class Bucket {
@@ -783,8 +819,8 @@ class Bucket {
 class BucketList {
   /// List of buckets and their objects to be transformed.
   ///
-  /// Currently, only one bucket configuration is supported. If multiple buckets
-  /// are specified, an error will be returned.
+  /// You can specify only one bucket per job. If multiple buckets are
+  /// specified, an error occurs.
   ///
   /// Required.
   core.List<Bucket>? buckets;
@@ -842,11 +878,14 @@ class BucketOperation {
   ///
   /// The resource name of the BucketOperation. This is defined by the service.
   /// Format:
-  /// projects/{project}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation}.
+  /// `projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation}`.
   core.String? name;
 
   /// Specifies objects matching a prefix set.
   PrefixList? prefixList;
+
+  /// Specifies objects matching the object filters in a project source.
+  ProjectSource? projectSource;
 
   /// Updates object metadata.
   ///
@@ -860,6 +899,9 @@ class BucketOperation {
 
   /// Rewrite the object and updates metadata like KMS key.
   RewriteObject? rewriteObject;
+
+  /// Updates object ACLs.
+  SetObjectAcls? setObjectAcls;
 
   /// The time that the BucketOperation was started.
   ///
@@ -891,9 +933,11 @@ class BucketOperation {
     this.manifest,
     this.name,
     this.prefixList,
+    this.projectSource,
     this.putMetadata,
     this.putObjectHold,
     this.rewriteObject,
+    this.setObjectAcls,
     this.startTime,
     this.state,
     this.updateObjectCustomContext,
@@ -932,6 +976,11 @@ class BucketOperation {
                 json_['prefixList'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        projectSource: json_.containsKey('projectSource')
+            ? ProjectSource.fromJson(
+                json_['projectSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         putMetadata: json_.containsKey('putMetadata')
             ? PutMetadata.fromJson(
                 json_['putMetadata'] as core.Map<core.String, core.dynamic>,
@@ -945,6 +994,11 @@ class BucketOperation {
         rewriteObject: json_.containsKey('rewriteObject')
             ? RewriteObject.fromJson(
                 json_['rewriteObject'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        setObjectAcls: json_.containsKey('setObjectAcls')
+            ? SetObjectAcls.fromJson(
+                json_['setObjectAcls'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         startTime: json_['startTime'] as core.String?,
@@ -968,9 +1022,11 @@ class BucketOperation {
     final manifest = this.manifest;
     final name = this.name;
     final prefixList = this.prefixList;
+    final projectSource = this.projectSource;
     final putMetadata = this.putMetadata;
     final putObjectHold = this.putObjectHold;
     final rewriteObject = this.rewriteObject;
+    final setObjectAcls = this.setObjectAcls;
     final startTime = this.startTime;
     final state = this.state;
     final updateObjectCustomContext = this.updateObjectCustomContext;
@@ -984,9 +1040,11 @@ class BucketOperation {
       'manifest': ?manifest,
       'name': ?name,
       'prefixList': ?prefixList,
+      'projectSource': ?projectSource,
       'putMetadata': ?putMetadata,
       'putObjectHold': ?putObjectHold,
       'rewriteObject': ?rewriteObject,
+      'setObjectAcls': ?setObjectAcls,
       'startTime': ?startTime,
       'state': ?state,
       'updateObjectCustomContext': ?updateObjectCustomContext,
@@ -999,10 +1057,9 @@ class CancelJobRequest {
   /// An optional request ID to identify requests.
   ///
   /// Specify a unique request ID in case you need to retry your request.
-  /// Requests with same `request_id` will be ignored for at least 60 minutes
-  /// since the first request. The request ID must be a valid UUID with the
-  /// exception that zero UUID is not supported
-  /// (00000000-0000-0000-0000-000000000000).
+  /// Requests with same `request_id` are ignored for at least 60 minutes since
+  /// the first request. The request ID must be a valid UUID with the exception
+  /// that zero UUID isn't supported (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
   core.String? requestId;
@@ -1069,6 +1126,14 @@ class Counters {
   /// Output only.
   core.String? totalBytesFound;
 
+  /// The total number of bytes affected by the transformation.
+  ///
+  /// For example, this counts bytes deleted for `DeleteObject` operations and
+  /// bytes rewritten for `RewriteObject` operations.
+  ///
+  /// Output only.
+  core.String? totalBytesTransformed;
+
   /// Number of objects listed.
   ///
   /// Output only.
@@ -1081,6 +1146,7 @@ class Counters {
     this.objectCustomContextsUpdated,
     this.succeededObjectCount,
     this.totalBytesFound,
+    this.totalBytesTransformed,
     this.totalObjectCount,
   });
 
@@ -1095,6 +1161,7 @@ class Counters {
             json_['objectCustomContextsUpdated'] as core.String?,
         succeededObjectCount: json_['succeededObjectCount'] as core.String?,
         totalBytesFound: json_['totalBytesFound'] as core.String?,
+        totalBytesTransformed: json_['totalBytesTransformed'] as core.String?,
         totalObjectCount: json_['totalObjectCount'] as core.String?,
       );
 
@@ -1105,6 +1172,7 @@ class Counters {
     final objectCustomContextsUpdated = this.objectCustomContextsUpdated;
     final succeededObjectCount = this.succeededObjectCount;
     final totalBytesFound = this.totalBytesFound;
+    final totalBytesTransformed = this.totalBytesTransformed;
     final totalObjectCount = this.totalObjectCount;
     return {
       'failedObjectCount': ?failedObjectCount,
@@ -1113,6 +1181,7 @@ class Counters {
       'objectCustomContextsUpdated': ?objectCustomContextsUpdated,
       'succeededObjectCount': ?succeededObjectCount,
       'totalBytesFound': ?totalBytesFound,
+      'totalBytesTransformed': ?totalBytesTransformed,
       'totalObjectCount': ?totalObjectCount,
     };
   }
@@ -1123,7 +1192,7 @@ class Counters {
 class CustomContextUpdates {
   /// Custom contexts to clear by key.
   ///
-  /// A key cannot be present in both `updates` and `keys_to_clear`.
+  /// A key can't be present in both `updates` and `keys_to_clear`.
   ///
   /// Optional.
   core.List<core.String>? keysToClear;
@@ -1163,14 +1232,14 @@ class DeleteObject {
   /// Controls deletion behavior when versioning is enabled for the object's
   /// bucket.
   ///
-  /// If true both live and noncurrent objects will be permanently deleted.
+  /// If true, both live and noncurrent objects will be permanently deleted.
   /// Otherwise live objects in versioned buckets will become noncurrent and
   /// objects that were already noncurrent will be skipped. This setting doesn't
   /// have any impact on the Soft Delete feature. All objects deleted by this
   /// service can be be restored for the duration of the Soft Delete retention
   /// duration if enabled. If enabled and the manifest doesn't specify an
-  /// object's generation, a GetObjectMetadata call (a Class B operation) will
-  /// be made to determine the live object generation.
+  /// object's generation, a `GetObjectMetadata` call is made to determine the
+  /// live object generation.
   ///
   /// Required.
   core.bool? permanentObjectDeletionEnabled;
@@ -1353,7 +1422,27 @@ class ErrorSummary {
   }
 }
 
-/// The Storage Batch Operations Job description.
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
+typedef Expr = $Expr;
+
+/// The storage batch operations job description.
 class Job {
   /// Specifies a list of buckets and their objects to be transformed.
   BucketList? bucketList;
@@ -1376,18 +1465,18 @@ class Job {
   /// Delete objects.
   DeleteObject? deleteObject;
 
-  /// A description provided by the user for the job.
+  /// A user-provided description for the job.
   ///
-  /// Its max length is 1024 bytes when Unicode-encoded.
+  /// Maximum length: 1024 bytes when unicode-encoded.
   ///
   /// Optional.
   core.String? description;
 
-  /// If true, the job will run in dry run mode, returning the total object
-  /// count and, if the object configuration is a prefix list, the bytes found
-  /// from source.
+  /// If true, the job runs in dry run mode, returning the total object count
+  /// and, if the object configuration is a prefix list, the bytes found from
+  /// source.
   ///
-  /// No transformations will be performed.
+  /// No transformations are performed.
   ///
   /// Optional.
   core.bool? dryRun;
@@ -1397,9 +1486,9 @@ class Job {
   /// Output only.
   core.List<ErrorSummary>? errorSummaries;
 
-  /// If true, this Job operates on multiple buckets.
+  /// If true, this job operates on multiple buckets.
   ///
-  /// Multibucket jobs are subject to different quota limits than single-bucket
+  /// Multi-bucket jobs are subject to different quota limits than single-bucket
   /// jobs.
   ///
   /// Output only.
@@ -1412,17 +1501,22 @@ class Job {
 
   /// Identifier.
   ///
-  /// The resource name of the Job. job_id is unique within the project, that is
-  /// either set by the customer or defined by the service. Format:
-  /// projects/{project}/locations/global/jobs/{job_id} . For example:
-  /// "projects/123456/locations/global/jobs/job01".
+  /// The resource name of the job. Format:
+  /// `projects/{project_id}/locations/global/jobs/{job_id}`. For example:
+  /// `projects/123456/locations/global/jobs/job01`. `job_id` is unique in a
+  /// given project.
   core.String? name;
+
+  /// Specifies a project source and filters to identify objects to be
+  /// transformed.
+  ProjectSource? projectSource;
 
   /// Updates object metadata.
   ///
-  /// Allows updating fixed-key and custom metadata and fixed-key metadata i.e.
-  /// Cache-Control, Content-Disposition, Content-Encoding, Content-Language,
-  /// Content-Type, Custom-Time.
+  /// Allows updating fixed-key and custom metadata. For example,
+  /// `Cache-Control`, `Content-Disposition`, `Content-Encoding`,
+  /// `Content-Language`, `Content-Type`, `Custom-Time`, and `Retention
+  /// configuration`.
   PutMetadata? putMetadata;
 
   /// Changes object hold status.
@@ -1435,6 +1529,9 @@ class Job {
   ///
   /// Output only.
   core.String? scheduleTime;
+
+  /// Updates object ACLs.
+  SetObjectAcls? setObjectAcls;
 
   /// State of the job.
   ///
@@ -1463,10 +1560,12 @@ class Job {
     this.isMultiBucketJob,
     this.loggingConfig,
     this.name,
+    this.projectSource,
     this.putMetadata,
     this.putObjectHold,
     this.rewriteObject,
     this.scheduleTime,
+    this.setObjectAcls,
     this.state,
     this.updateObjectCustomContext,
   });
@@ -1506,6 +1605,11 @@ class Job {
               )
             : null,
         name: json_['name'] as core.String?,
+        projectSource: json_.containsKey('projectSource')
+            ? ProjectSource.fromJson(
+                json_['projectSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         putMetadata: json_.containsKey('putMetadata')
             ? PutMetadata.fromJson(
                 json_['putMetadata'] as core.Map<core.String, core.dynamic>,
@@ -1522,6 +1626,11 @@ class Job {
               )
             : null,
         scheduleTime: json_['scheduleTime'] as core.String?,
+        setObjectAcls: json_.containsKey('setObjectAcls')
+            ? SetObjectAcls.fromJson(
+                json_['setObjectAcls'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         updateObjectCustomContext:
             json_.containsKey('updateObjectCustomContext')
@@ -1544,10 +1653,12 @@ class Job {
     final isMultiBucketJob = this.isMultiBucketJob;
     final loggingConfig = this.loggingConfig;
     final name = this.name;
+    final projectSource = this.projectSource;
     final putMetadata = this.putMetadata;
     final putObjectHold = this.putObjectHold;
     final rewriteObject = this.rewriteObject;
     final scheduleTime = this.scheduleTime;
+    final setObjectAcls = this.setObjectAcls;
     final state = this.state;
     final updateObjectCustomContext = this.updateObjectCustomContext;
     return {
@@ -1562,10 +1673,12 @@ class Job {
       'isMultiBucketJob': ?isMultiBucketJob,
       'loggingConfig': ?loggingConfig,
       'name': ?name,
+      'projectSource': ?projectSource,
       'putMetadata': ?putMetadata,
       'putObjectHold': ?putObjectHold,
       'rewriteObject': ?rewriteObject,
       'scheduleTime': ?scheduleTime,
+      'setObjectAcls': ?setObjectAcls,
       'state': ?state,
       'updateObjectCustomContext': ?updateObjectCustomContext,
     };
@@ -1769,18 +1882,25 @@ class LoggingConfig {
 
 /// Describes list of objects to be transformed.
 class Manifest {
-  /// `manifest_location` must contain the manifest source file that is a CSV
-  /// file in a Google Cloud Storage bucket.
+  /// Specify the manifest file location.
   ///
-  /// Each row in the file must include the object details i.e. BucketId and
-  /// Name. Generation may optionally be specified. When it is not specified the
-  /// live object is acted upon. `manifest_location` should either be 1) An
-  /// absolute path to the object in the format of
-  /// `gs://bucket_name/path/file_name.csv`. 2) An absolute path with a single
-  /// wildcard character in the file name, for example
-  /// `gs://bucket_name/path/file_name*.csv`. If manifest location is specified
-  /// with a wildcard, objects in all manifest files matching the pattern will
-  /// be acted upon.
+  /// The format of manifest location can be an absolute path to the object in
+  /// the format of `gs://bucket_name/path/object_name`. For example,
+  /// `gs://bucket_name/path/object_name.csv`. Alternatively, you can specify an
+  /// absolute path with a single wildcard character in the file name, for
+  /// example `gs://bucket_name/path/file_name*.csv`. If the manifest location
+  /// is specified with a wildcard, objects in all manifest files matching the
+  /// pattern will be acted upon. The manifest is a CSV file, uploaded to Cloud
+  /// Storage, that contains one object or a list of objects that you want to
+  /// process. Each row in the manifest must include the `bucket` and `name` of
+  /// the object. You can optionally specify the `generation` of the object. If
+  /// you don't specify the `generation`, the current version of the object is
+  /// used. You can optionally include a header row with the following format:
+  /// `bucket,name,generation`. For example, bucket,name,generation
+  /// bucket_1,object_1,generation_1 bucket_1,object_2,generation_2
+  /// bucket_1,object_3,generation_3 Note: The manifest file must specify only
+  /// objects within the bucket provided to the job. Rows referencing objects in
+  /// other buckets are ignored.
   ///
   /// Required.
   core.String? manifestLocation;
@@ -1796,13 +1916,44 @@ class Manifest {
   }
 }
 
-/// Describes the payload of a user defined object custom context.
+/// Represents an access control entry on an object.
+class ObjectAccessControl {
+  /// The entity holding the permission, in one of the following forms: *
+  /// `allUsers` * `allAuthenticatedUsers`
+  ///
+  /// Required.
+  core.String? entity;
+
+  /// The role to grant.
+  ///
+  /// Acceptable values are: * `READER` - gives read access to the object. *
+  /// `OWNER` - gives owner access to the object.
+  ///
+  /// Required.
+  core.String? role;
+
+  ObjectAccessControl({this.entity, this.role});
+
+  ObjectAccessControl.fromJson(core.Map json_)
+    : this(
+        entity: json_['entity'] as core.String?,
+        role: json_['role'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entity = this.entity;
+    final role = this.role;
+    return {'entity': ?entity, 'role': ?role};
+  }
+}
+
+/// Describes the payload of a user-defined object custom context.
 class ObjectCustomContextPayload {
   /// The value of the object custom context.
   ///
-  /// If set, `value` must NOT be an empty string since it is a required field
-  /// in custom context. If unset, `value` will be ignored and no changes will
-  /// be made to the `value` field of the custom context payload.
+  /// If set, `value` can't be an empty string because it is a required field in
+  /// custom context. If unset, `value` is ignored and no changes are made to
+  /// the `value` field of the custom context payload.
   core.String? value;
 
   ObjectCustomContextPayload({this.value});
@@ -1818,22 +1969,28 @@ class ObjectCustomContextPayload {
 
 /// Describes options for object retention update.
 class ObjectRetention {
-  /// The time when the object will be retained until.
+  /// The object's retention expiration time, during which, the object is
+  /// protected from being deleted or overwritten.
   ///
-  /// UNSET will clear the retention. Must be specified in RFC 3339 format e.g.
-  /// YYYY-MM-DD'T'HH:MM:SS.SS'Z' or YYYY-MM-DD'T'HH:MM:SS'Z'.
+  /// The time must be specified in RFC 3339 format, for example
+  /// `YYYY-MM-DD'T'HH:MM:SS'Z'` or `YYYY-MM-DD'T'HH:MM:SS.SS'Z'`. To clear an
+  /// object's retention, both `retentionMode` and `retainUntilTime` must be
+  /// left unset (omitted). Setting `retentionMode` to
+  /// `RETENTION_MODE_UNSPECIFIED` is treated as a no-op. Unlike an unset field,
+  /// it doesn't modify or clear the retention settings.
   ///
   /// Required.
   core.String? retainUntilTime;
 
-  /// The retention mode of the object.
+  /// The retention mode.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "RETENTION_MODE_UNSPECIFIED" : If set and retain_until_time is empty,
-  /// clears the retention.
-  /// - "LOCKED" : Sets the retention mode to locked.
-  /// - "UNLOCKED" : Sets the retention mode to unlocked.
+  /// - "RETENTION_MODE_UNSPECIFIED" : The retention mode isn't specified.
+  /// - "LOCKED" : When the retention mode is `LOCKED`, the `retainUntilTime`
+  /// can't be removed or reduced.
+  /// - "UNLOCKED" : When the retention mode is `UNLOCKED`, the
+  /// `retainUntilTime` can be removed or modified.
   core.String? retentionMode;
 
   ObjectRetention({this.retainUntilTime, this.retentionMode});
@@ -1934,11 +2091,11 @@ class Operation {
 
 /// Describes prefixes of objects to be transformed.
 class PrefixList {
-  /// Include prefixes of the objects to be transformed.
+  /// Specify one or more object prefixes.
   ///
-  /// * Supports full object name * Supports prefix of the object name *
-  /// Wildcards are not supported * Supports empty string for all objects in a
-  /// bucket.
+  /// For example: * To match one object, use a single prefix, `prefix1`. * To
+  /// match multiple objects, use comma-separated prefixes, `prefix1, prefix2`.
+  /// * To match all objects, use an empty prefix, `''`
   ///
   /// Optional.
   core.List<core.String>? includedObjectPrefixes;
@@ -1958,82 +2115,200 @@ class PrefixList {
   }
 }
 
+/// Describes the project source where the objects satisfying the filters will
+/// be transformed.
+class ProjectSource {
+  /// Filters expressed in Common Expression Language (CEL) to apply to buckets
+  /// to identify buckets with objects to be transformed.
+  ///
+  /// Optional.
+  Expr? bucketFilters;
+
+  /// The unique identifier of a dry run job to use as the baseline for the
+  /// current job.
+  ///
+  /// Specifying this ID ensures the job is executed against the same set of
+  /// objects validated during the dry run. The value corresponds to the
+  /// {job_id} segment of the resource name:
+  /// `projects/{project_id}/locations/{location}/jobs/{job_id}`.
+  ///
+  /// Optional.
+  core.String? dryRunJobId;
+
+  /// The resource identifier of the Storage Insights dataset configuration.
+  ///
+  /// Storage batch operations uses the latest snapshot from this dataset as the
+  /// source to list and filter target objects. Format:
+  /// `projects/{project_id}/locations/{location}/datasetConfigs/{dataset_config}`.
+  ///
+  /// Required.
+  core.String? insightsDatasetConfig;
+
+  /// Filters expressed in Common Expression Language (CEL) to apply to objects
+  /// to identify objects to be transformed.
+  ///
+  /// Optional.
+  Expr? objectFilters;
+
+  /// Project name of the objects to be transformed.
+  ///
+  /// e.g. projects/my-project or projects/123456.
+  ///
+  /// Required.
+  core.String? project;
+
+  /// The snapshot time used by the job to read the Storage Insights dataset for
+  /// bucket and object discovery.
+  ///
+  /// This field is populated by the service and reflects the exact timestamp of
+  /// the dataset snapshot used.
+  ///
+  /// Output only.
+  core.String? snapshotTime;
+
+  /// Specifies the Cloud Storage locations to include in the job.
+  ///
+  /// If provided, only buckets and objects within these locations will be
+  /// discovered from the Storage Insights dataset as configured in the
+  /// `insights_dataset_config`. If omitted, the job will discover buckets and
+  /// objects from all locations configured in the `insights_dataset_config`.
+  ///
+  /// Optional.
+  TargetLocations? targetLocations;
+
+  ProjectSource({
+    this.bucketFilters,
+    this.dryRunJobId,
+    this.insightsDatasetConfig,
+    this.objectFilters,
+    this.project,
+    this.snapshotTime,
+    this.targetLocations,
+  });
+
+  ProjectSource.fromJson(core.Map json_)
+    : this(
+        bucketFilters: json_.containsKey('bucketFilters')
+            ? Expr.fromJson(
+                json_['bucketFilters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dryRunJobId: json_['dryRunJobId'] as core.String?,
+        insightsDatasetConfig: json_['insightsDatasetConfig'] as core.String?,
+        objectFilters: json_.containsKey('objectFilters')
+            ? Expr.fromJson(
+                json_['objectFilters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        project: json_['project'] as core.String?,
+        snapshotTime: json_['snapshotTime'] as core.String?,
+        targetLocations: json_.containsKey('targetLocations')
+            ? TargetLocations.fromJson(
+                json_['targetLocations'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucketFilters = this.bucketFilters;
+    final dryRunJobId = this.dryRunJobId;
+    final insightsDatasetConfig = this.insightsDatasetConfig;
+    final objectFilters = this.objectFilters;
+    final project = this.project;
+    final snapshotTime = this.snapshotTime;
+    final targetLocations = this.targetLocations;
+    return {
+      'bucketFilters': ?bucketFilters,
+      'dryRunJobId': ?dryRunJobId,
+      'insightsDatasetConfig': ?insightsDatasetConfig,
+      'objectFilters': ?objectFilters,
+      'project': ?project,
+      'snapshotTime': ?snapshotTime,
+      'targetLocations': ?targetLocations,
+    };
+  }
+}
+
 /// Describes options for object metadata update.
 class PutMetadata {
-  /// Updates objects Cache-Control fixed metadata.
+  /// Updates the objects `Cache-Control` fixed metadata.
   ///
-  /// Unset values will be ignored. Set empty values to clear the metadata.
-  /// Additionally, the value for Custom-Time cannot decrease. Refer to
-  /// documentation in
-  /// https://cloud.google.com/storage/docs/metadata#caching_data.
+  /// Unset values in the request are ignored. To clear the metadata, set an
+  /// empty value. Additionally, the value for `Custom-Time` can't decrease. For
+  /// details, see
+  /// \[Cache-Control\](https://cloud.google.com/storage/docs/metadata#caching_data).
   ///
   /// Optional.
   core.String? cacheControl;
 
-  /// Updates objects Content-Disposition fixed metadata.
+  /// Updates objects `Content-Disposition` fixed metadata.
   ///
-  /// Unset values will be ignored. Set empty values to clear the metadata.
-  /// Refer https://cloud.google.com/storage/docs/metadata#content-disposition
-  /// for additional documentation.
+  /// Unset values in the request are ignored. To clear the metadata, set an
+  /// empty value. For details, see
+  /// \[Content-Disposition\](https://cloud.google.com/storage/docs/metadata#content-disposition).
   ///
   /// Optional.
   core.String? contentDisposition;
 
-  /// Updates objects Content-Encoding fixed metadata.
+  /// Updates the objects `Content-Encoding` fixed metadata.
   ///
-  /// Unset values will be ignored. Set empty values to clear the metadata.
-  /// Refer to documentation in
-  /// https://cloud.google.com/storage/docs/metadata#content-encoding.
+  /// Unset values in the request are ignored. To clear the metadata, set an
+  /// empty value. For details, see
+  /// \[Content-Encoding\](https://cloud.google.com/storage/docs/metadata#content-encoding).
   ///
   /// Optional.
   core.String? contentEncoding;
 
-  /// Updates objects Content-Language fixed metadata.
+  /// Updates the objects `Content-Language` fixed metadata.
   ///
-  /// Refer to ISO 639-1 language codes for typical values of this metadata. Max
-  /// length 100 characters. Unset values will be ignored. Set empty values to
-  /// clear the metadata. Refer to documentation in
-  /// https://cloud.google.com/storage/docs/metadata#content-language.
+  /// Metadata values must use ISO 639-1 language codes. The maximum length for
+  /// metadata values is 100 characters. Unset values in the request are
+  /// ignored. To clear the metadata, set an empty value. For details, see
+  /// \[Content-Language\](https://cloud.google.com/storage/docs/metadata#content-language).
   ///
   /// Optional.
   core.String? contentLanguage;
 
-  /// Updates objects Content-Type fixed metadata.
+  /// Updates objects `Content-Type` fixed metadata.
   ///
-  /// Unset values will be ignored. Set empty values to clear the metadata.
-  /// Refer to documentation in
-  /// https://cloud.google.com/storage/docs/metadata#content-type
+  /// Unset values in the request are ignored. To clear the metadata, set an
+  /// empty value. For details, see
+  /// \[Content-Type\](https://cloud.google.com/storage/docs/metadata#content-type).
   ///
   /// Optional.
   core.String? contentType;
 
-  /// Updates objects custom metadata.
+  /// Updates the object's custom metadata.
   ///
-  /// Adds or sets individual custom metadata key value pairs on objects. Keys
-  /// that are set with empty custom metadata values will have its value
-  /// cleared. Existing custom metadata not specified with this flag is not
-  /// changed. Refer to documentation in
-  /// https://cloud.google.com/storage/docs/metadata#custom-metadata
+  /// This operation adds or sets individual custom metadata key-value pairs.
+  /// Keys specified with empty values have their values cleared. Existing
+  /// custom metadata keys not included in the request remain unchanged. For
+  /// details, see
+  /// [Custom metadata](https://cloud.google.com/storage/docs/metadata#custom-metadata).
   ///
   /// Optional.
   core.Map<core.String, core.String>? customMetadata;
 
-  /// Updates objects Custom-Time fixed metadata.
+  /// Updates the objects `Custom-Time` fixed metadata.
   ///
-  /// Unset values will be ignored. Set empty values to clear the metadata.
-  /// Refer to documentation in
-  /// https://cloud.google.com/storage/docs/metadata#custom-time.
+  /// Unset values in the request are ignored. To clear the metadata, set an
+  /// empty value. The time must be specified in RFC 3339 format, for example
+  /// `YYYY-MM-DD'T'HH:MM:SS'Z'` or `YYYY-MM-DD'T'HH:MM:SS.SS'Z'`. For details,
+  /// see
+  /// \[Custom-Time\](https://cloud.google.com/storage/docs/metadata#custom-time).
   ///
   /// Optional.
   core.String? customTime;
 
-  /// Updates objects retention lock configuration.
+  /// Updates an object's retention configuration.
   ///
-  /// Unset values will be ignored. Set empty values to clear the retention for
-  /// the object with existing `Unlocked` retention mode. Object with existing
-  /// `Locked` retention mode cannot be cleared or reduce retain_until_time.
-  /// Refer to documentation in
-  /// https://cloud.google.com/storage/docs/object-lock
+  /// To clear an object's retention, both `retentionMode` and `retainUntilTime`
+  /// must be left unset (omitted). Setting `retentionMode` to
+  /// `RETENTION_MODE_UNSPECIFIED` is treated as a no-op. Unlike an unset field,
+  /// it doesn't modify or clear the retention settings. An object with `LOCKED`
+  /// retention mode can't have its retention cleared or its `retainUntilTime`
+  /// reduced. For more information, see
+  /// [Object retention](https://cloud.google.com/storage/docs/batch-operations/create-manage-batch-operation-jobs#retain-until-time).
   ///
   /// Optional.
   ObjectRetention? objectRetention;
@@ -2093,26 +2368,26 @@ class PutMetadata {
 class PutObjectHold {
   /// Updates object event based holds state.
   ///
-  /// When object event based hold is set, object cannot be deleted or replaced.
+  /// When object event based hold is set, object can't be deleted or replaced.
   /// Resets object's time in the bucket for the purposes of the retention
   /// period.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "HOLD_STATUS_UNSPECIFIED" : Default value, Object hold status will not
-  /// be changed.
+  /// - "HOLD_STATUS_UNSPECIFIED" : Default value, Object hold status isn't
+  /// changed.
   /// - "SET" : Places the hold.
   /// - "UNSET" : Releases the hold.
   core.String? eventBasedHold;
 
   /// Updates object temporary holds state.
   ///
-  /// When object temporary hold is set, object cannot be deleted or replaced.
+  /// When object temporary hold is set, object can't be deleted or replaced.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "HOLD_STATUS_UNSPECIFIED" : Default value, Object hold status will not
-  /// be changed.
+  /// - "HOLD_STATUS_UNSPECIFIED" : Default value, Object hold status isn't
+  /// changed.
   /// - "SET" : Places the hold.
   /// - "UNSET" : Releases the hold.
   core.String? temporaryHold;
@@ -2134,28 +2409,73 @@ class PutObjectHold {
 
 /// Describes options for object rewrite.
 class RewriteObject {
-  /// Resource name of the Cloud KMS key that will be used to encrypt the
-  /// object.
+  /// Resource name of the Cloud KMS key that is used to encrypt the object.
   ///
-  /// The Cloud KMS key must be located in same location as the object. Refer to
+  /// The Cloud KMS key must be located in same location as the object. For
+  /// details, see
   /// https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys#add-object-key
-  /// for additional documentation. Format:
-  /// projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}
+  /// Format:
+  /// `projects/{project_id}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
   /// For example:
-  /// "projects/123456/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key".
+  /// `projects/123456/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key`.
   /// The object will be rewritten and set with the specified KMS key.
   ///
-  /// Required.
+  /// Optional.
   core.String? kmsKey;
 
-  RewriteObject({this.kmsKey});
+  /// Rewrites the object to the specified storage class.
+  ///
+  /// Setting this field will perform a full byte copy of the object if the
+  /// storage class is different from the object's current storage class. If
+  /// Autoclass is enabled on the bucket, storage class changes are ignored by
+  /// Cloud Storage.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STORAGE_CLASS_UNSPECIFIED" : The storage class is not specified.
+  /// - "STANDARD" : Standard storage class.
+  /// - "NEARLINE" : Nearline storage class.
+  /// - "COLDLINE" : Coldline storage class.
+  /// - "ARCHIVE" : Archive storage class.
+  core.String? storageClass;
+
+  RewriteObject({this.kmsKey, this.storageClass});
 
   RewriteObject.fromJson(core.Map json_)
-    : this(kmsKey: json_['kmsKey'] as core.String?);
+    : this(
+        kmsKey: json_['kmsKey'] as core.String?,
+        storageClass: json_['storageClass'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final kmsKey = this.kmsKey;
-    return {'kmsKey': ?kmsKey};
+    final storageClass = this.storageClass;
+    return {'kmsKey': ?kmsKey, 'storageClass': ?storageClass};
+  }
+}
+
+/// Describes options for setting object ACLs.
+class SetObjectAcls {
+  /// Add, update, or remove grants from the object's existing ACLs.
+  ///
+  /// Required.
+  AccessControlsUpdates? accessControlsUpdates;
+
+  SetObjectAcls({this.accessControlsUpdates});
+
+  SetObjectAcls.fromJson(core.Map json_)
+    : this(
+        accessControlsUpdates: json_.containsKey('accessControlsUpdates')
+            ? AccessControlsUpdates.fromJson(
+                json_['accessControlsUpdates']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessControlsUpdates = this.accessControlsUpdates;
+    return {'accessControlsUpdates': ?accessControlsUpdates};
   }
 }
 
@@ -2168,10 +2488,53 @@ class RewriteObject {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
 
+/// Describes the Cloud Storage locations to include in a ProjectSource job.
+class TargetLocations {
+  /// A list of Cloud Storage locations (e.g., `us-central1`) to include in the
+  /// job.
+  ///
+  /// If `snapshot_time` is omitted, the job automatically defaults to the most
+  /// recent snapshot timestamp that is successfully populated in BOTH the
+  /// `object_attributes_view` and `bucket_attributes_view` across ALL specified
+  /// locations. For details on Storage Insights dataset snapshots and views,
+  /// see:
+  /// https://docs.cloud.google.com/storage/docs/insights/dataset-tables-and-schemas#schema
+  ///
+  /// Required.
+  core.List<core.String>? locations;
+
+  /// The exact Storage Insights snapshot timestamp to use for the job
+  /// compatible with the RFC 3339 format (e.g., `2024-01-02T03:04:05Z`).
+  ///
+  /// If specified, this exact snapshot must exist in BOTH the
+  /// `object_attributes_view` and `bucket_attributes_view` for every location
+  /// listed in `locations`. If the snapshot is missing from either view in any
+  /// of the locations, the job fails.
+  ///
+  /// Optional.
+  core.String? snapshotTime;
+
+  TargetLocations({this.locations, this.snapshotTime});
+
+  TargetLocations.fromJson(core.Map json_)
+    : this(
+        locations: (json_['locations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        snapshotTime: json_['snapshotTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final snapshotTime = this.snapshotTime;
+    return {'locations': ?locations, 'snapshotTime': ?snapshotTime};
+  }
+}
+
 /// Describes options to update object custom contexts.
 class UpdateObjectCustomContext {
-  /// If set, must be set to true and all existing object custom contexts will
-  /// be deleted.
+  /// If set, must be set to true and all existing object custom contexts are
+  /// deleted.
   core.bool? clearAll;
 
   /// A collection of updates to apply to specific custom contexts.

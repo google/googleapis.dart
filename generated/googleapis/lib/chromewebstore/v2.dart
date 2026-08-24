@@ -535,6 +535,16 @@ class ItemRevisionStatus {
 
 /// Request message for PublishItem.
 class PublishItemRequest {
+  /// When set to true the request will fail if there are any warnings during
+  /// validation and the details will be included in the `error.details`.
+  ///
+  /// Otherwise warnings are treated as non-blocking and will be ignored for
+  /// validation but will be included in the response for inspection. Defaults
+  /// to `false` if unset.
+  ///
+  /// Optional.
+  core.bool? blockOnWarnings;
+
   /// Additional deploy information including the desired initial percentage
   /// rollout.
   ///
@@ -566,10 +576,16 @@ class PublishItemRequest {
   /// Optional.
   core.bool? skipReview;
 
-  PublishItemRequest({this.deployInfos, this.publishType, this.skipReview});
+  PublishItemRequest({
+    this.blockOnWarnings,
+    this.deployInfos,
+    this.publishType,
+    this.skipReview,
+  });
 
   PublishItemRequest.fromJson(core.Map json_)
     : this(
+        blockOnWarnings: json_['blockOnWarnings'] as core.bool?,
         deployInfos: (json_['deployInfos'] as core.List?)
             ?.map(
               (value) => DeployInfo.fromJson(
@@ -582,10 +598,12 @@ class PublishItemRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final blockOnWarnings = this.blockOnWarnings;
     final deployInfos = this.deployInfos;
     final publishType = this.publishType;
     final skipReview = this.skipReview;
     return {
+      'blockOnWarnings': ?blockOnWarnings,
       'deployInfos': ?deployInfos,
       'publishType': ?publishType,
       'skipReview': ?skipReview,
@@ -616,20 +634,36 @@ class PublishItemResponse {
   /// - "CANCELLED" : The item submission has been cancelled.
   core.String? state;
 
-  PublishItemResponse({this.itemId, this.name, this.state});
+  /// Non-blocking warnings encountered during the request.
+  ///
+  /// Output only.
+  WarningsInfo? warningInfo;
+
+  PublishItemResponse({this.itemId, this.name, this.state, this.warningInfo});
 
   PublishItemResponse.fromJson(core.Map json_)
     : this(
         itemId: json_['itemId'] as core.String?,
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
+        warningInfo: json_.containsKey('warningInfo')
+            ? WarningsInfo.fromJson(
+                json_['warningInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final itemId = this.itemId;
     final name = this.name;
     final state = this.state;
-    return {'itemId': ?itemId, 'name': ?name, 'state': ?state};
+    final warningInfo = this.warningInfo;
+    return {
+      'itemId': ?itemId,
+      'name': ?name,
+      'state': ?state,
+      'warningInfo': ?warningInfo,
+    };
   }
 }
 
@@ -717,5 +751,58 @@ class UploadItemPackageResponse {
       'name': ?name,
       'uploadState': ?uploadState,
     };
+  }
+}
+
+/// Represents a single warning encountered during the request.
+class Warning {
+  /// A description of the warning.
+  ///
+  /// Developers should use this message to understand the warning and take
+  /// appropriate action to resolve the issue.
+  core.String? description;
+
+  /// The reason for the warning.
+  ///
+  /// This is a constant value that identifies the proximate cause of the
+  /// warning.
+  core.String? reason;
+
+  Warning({this.description, this.reason});
+
+  Warning.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        reason: json_['reason'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final reason = this.reason;
+    return {'description': ?description, 'reason': ?reason};
+  }
+}
+
+/// Message containing details on warnings encountered during PublishItem.
+class WarningsInfo {
+  /// All warnings encountered during the request.
+  core.List<Warning>? warnings;
+
+  WarningsInfo({this.warnings});
+
+  WarningsInfo.fromJson(core.Map json_)
+    : this(
+        warnings: (json_['warnings'] as core.List?)
+            ?.map(
+              (value) => Warning.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final warnings = this.warnings;
+    return {'warnings': ?warnings};
   }
 }

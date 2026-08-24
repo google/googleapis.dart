@@ -198,11 +198,6 @@
         },
         {
             "description": "Regional Endpoint",
-            "endpointUrl": "https://datastream.us-central2.rep.googleapis.com/",
-            "location": "us-central2"
-        },
-        {
-            "description": "Regional Endpoint",
             "endpointUrl": "https://datastream.us-east1.rep.googleapis.com/",
             "location": "us-east1"
         },
@@ -245,11 +240,6 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://datastream.us-west4.rep.googleapis.com/",
             "location": "us-west4"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://datastream.us-west8.rep.googleapis.com/",
-            "location": "us-west8"
         }
     ],
     "icons": {
@@ -262,7 +252,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260321",
+    "revision": "20260719",
     "rootUrl": "https://datastream.googleapis.com/",
     "servicePath": "",
     "title": "Datastream API",
@@ -412,7 +402,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "datastream.projects.locations.list",
@@ -421,7 +411,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -1540,6 +1530,10 @@
                     "$ref": "PostgresqlRdbms",
                     "description": "PostgreSQL data source objects to avoid backfilling."
                 },
+                "saasExcludedObjects": {
+                    "$ref": "SourceCatalog",
+                    "description": "Source catalog data source objects to avoid backfilling. This is mainly used to represent SaaS applications objects."
+                },
                 "salesforceExcludedObjects": {
                     "$ref": "SalesforceOrg",
                     "description": "Salesforce data source objects to avoid backfilling"
@@ -1566,6 +1560,11 @@
                     },
                     "readOnly": true,
                     "type": "array"
+                },
+                "eventFilter": {
+                    "$ref": "EventFilter",
+                    "description": "Output only. The filter for performing a partial backfill.",
+                    "readOnly": true
                 },
                 "lastEndTime": {
                     "description": "Output only. Backfill job's end time.",
@@ -1825,6 +1824,10 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "dataverseProfile": {
+                    "$ref": "DataverseProfile",
+                    "description": "Profile for connecting to a Dataverse source."
+                },
                 "displayName": {
                     "description": "Required. Display name.",
                     "type": "string"
@@ -1869,6 +1872,10 @@
                     "$ref": "PrivateConnectivity",
                     "description": "Private connectivity."
                 },
+                "salesforceMarketingCloudProfile": {
+                    "$ref": "SalesforceMarketingCloudProfile",
+                    "description": "Profile for connecting to a Salesforce Marketing Cloud source."
+                },
                 "salesforceProfile": {
                     "$ref": "SalesforceProfile",
                     "description": "Profile for connecting to a Salesforce source."
@@ -1882,6 +1889,10 @@
                     "description": "Output only. Reserved for future use.",
                     "readOnly": true,
                     "type": "boolean"
+                },
+                "serviceNowProfile": {
+                    "$ref": "ServiceNowProfile",
+                    "description": "Profile for connecting to a ServiceNow source."
                 },
                 "spannerProfile": {
                     "$ref": "SpannerProfile",
@@ -1900,6 +1911,10 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "workdayProfile": {
+                    "$ref": "WorkdayProfile",
+                    "description": "Optional. Profile for connecting to a Workday source."
                 }
             },
             "type": "object"
@@ -1933,6 +1948,45 @@
                 },
                 "location": {
                     "description": "Required. The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DataverseProfile": {
+            "description": "Profile for connecting to a Dataverse source.",
+            "id": "DataverseProfile",
+            "properties": {
+                "environmentUrl": {
+                    "description": "Required. Environment URL of the Microsoft Dataverse instance. Example: `.crm.dynamics.com`",
+                    "type": "string"
+                },
+                "oauthClientCredentials": {
+                    "$ref": "OauthClientCredentials",
+                    "description": "Required. Credentials for authenticating with the Dataverse API."
+                },
+                "tenantId": {
+                    "description": "Required. Tenant id of the Microsoft Dataverse instance.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DataverseSourceConfig": {
+            "description": "Configuration for syncing data from a Dataverse source.",
+            "id": "DataverseSourceConfig",
+            "properties": {
+                "excludeObjects": {
+                    "$ref": "SourceCatalog",
+                    "description": "Optional. The objects to exclude from the stream."
+                },
+                "includeObjects": {
+                    "$ref": "SourceCatalog",
+                    "description": "Optional. The objects to retrieve from the source."
+                },
+                "pollingInterval": {
+                    "description": "Required. Incremental sync polling interval for all objects. If not set, a default value of `5 minutes` is used. The duration must be from `5 minutes` to `24 hours`, inclusive.",
+                    "format": "google-duration",
                     "type": "string"
                 }
             },
@@ -2016,6 +2070,10 @@
                     "$ref": "SalesforceOrg",
                     "description": "Optional. Salesforce organization to enrich with child data objects and metadata."
                 },
+                "sourceCatalog": {
+                    "$ref": "SourceCatalog",
+                    "description": "Optional. Source catalog to enrich with child data objects and metadata. This is mainly used to represent SaaS sources databases."
+                },
                 "spannerDatabase": {
                     "$ref": "SpannerDatabase",
                     "description": "Optional. Spanner database to enrich with child data objects and metadata."
@@ -2050,6 +2108,10 @@
                 "salesforceOrg": {
                     "$ref": "SalesforceOrg",
                     "description": "Enriched Salesforce organization."
+                },
+                "sourceCatalog": {
+                    "$ref": "SourceCatalog",
+                    "description": "Enriched source catalog. This is mainly used to represent SaaS sources databases."
                 },
                 "spannerDatabase": {
                     "$ref": "SpannerDatabase",
@@ -2142,7 +2204,7 @@
                     "type": "object"
                 },
                 "reason": {
-                    "description": "The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.",
+                    "description": "The reason for the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.",
                     "type": "string"
                 }
             },
@@ -2194,7 +2256,7 @@
                     "description": "Provides a localized error message for field-level errors that is safe to return to the API consumer."
                 },
                 "reason": {
-                    "description": "The reason of the field-level error. This is a constant value that identifies the proximate cause of the field-level error. It should uniquely identify the type of the FieldViolation within the scope of the google.rpc.ErrorInfo.domain. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.",
+                    "description": "The reason for the field-level error. This is a constant value that identifies the proximate cause of the field-level error. It should uniquely identify the type of the FieldViolation within the scope of the google.rpc.ErrorInfo.domain. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.",
                     "type": "string"
                 }
             },
@@ -3135,6 +3197,36 @@
             },
             "type": "object"
         },
+        "OauthClientCredentials": {
+            "description": "OAuth Client Credentials.",
+            "id": "OauthClientCredentials",
+            "properties": {
+                "clientId": {
+                    "description": "Required. Client ID for OAuth Client Credentials.",
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "$ref": "Secret",
+                    "description": "Required. Client secret for OAuth Client Credentials."
+                }
+            },
+            "type": "object"
+        },
+        "OauthRefreshTokenCredentials": {
+            "description": "OAuth Refresh Token Credentials.",
+            "id": "OauthRefreshTokenCredentials",
+            "properties": {
+                "oauthClientCredentials": {
+                    "$ref": "OauthClientCredentials",
+                    "description": "Required. Specifies the OAuth Client Credentials."
+                },
+                "refreshToken": {
+                    "$ref": "Secret",
+                    "description": "Required. Specifies the OAuth Refresh Token."
+                }
+            },
+            "type": "object"
+        },
         "ObjectFilter": {
             "description": "Object filter to apply the rules to.",
             "id": "ObjectFilter",
@@ -3851,7 +3943,7 @@
             "id": "QuotaFailureViolation",
             "properties": {
                 "apiService": {
-                    "description": "The API Service from which the `QuotaFailure.Violation` orginates. In some cases, Quota issues originate from an API Service other than the one that was called. In other words, a dependency of the called API Service could be the cause of the `QuotaFailure`, and this field would have the dependency API service name. For example, if the called API is Kubernetes Engine API (container.googleapis.com), and a quota violation occurs in the Kubernetes Engine API itself, this field would be \"container.googleapis.com\". On the other hand, if the quota violation occurs when the Kubernetes Engine API creates VMs in the Compute Engine API (compute.googleapis.com), this field would be \"compute.googleapis.com\".",
+                    "description": "The API Service from which the `QuotaFailure.Violation` originates. In some cases, Quota issues originate from an API Service other than the one that was called. In other words, a dependency of the called API Service could be the cause of the `QuotaFailure`, and this field would have the dependency API service name. For example, if the called API is Kubernetes Engine API (container.googleapis.com), and a quota violation occurs in the Kubernetes Engine API itself, this field would be \"container.googleapis.com\". On the other hand, if the quota violation occurs when the Kubernetes Engine API creates VMs in the Compute Engine API (compute.googleapis.com), this field would be \"compute.googleapis.com\".",
                     "type": "string"
                 },
                 "description": {
@@ -4036,6 +4128,46 @@
             },
             "type": "object"
         },
+        "SalesforceMarketingCloudProfile": {
+            "description": "Profile for connecting to a Salesforce Marketing Cloud source.",
+            "id": "SalesforceMarketingCloudProfile",
+            "properties": {
+                "oauthClientCredentials": {
+                    "$ref": "OauthClientCredentials",
+                    "description": "Required. Input only. Credentials for authenticating with the Salesforce Marketing Cloud API."
+                },
+                "subdomain": {
+                    "description": "Required. Subdomain for the Salesforce Marketing Cloud connection. Example: if your specific endpoint is `https://{your-specific-subdomain}.rest.marketingcloudapis.com/`, the subdomain is `{your-specific-subdomain}`. Must be 1-63 characters, start and end with an alphanumeric character, and contain only lowercase letters, numbers, and hyphens (-).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SalesforceMarketingCloudSourceConfig": {
+            "description": "Configuration for syncing data from a Salesforce Marketing Cloud source.",
+            "id": "SalesforceMarketingCloudSourceConfig",
+            "properties": {
+                "excludeObjects": {
+                    "$ref": "SourceCatalog",
+                    "description": "Optional. The objects to exclude from the stream."
+                },
+                "fullRefreshPollingInterval": {
+                    "description": "Required. Specifies the polling interval for a full refresh of objects that do not support incremental sync. If not set, a default value of 24 hours is used. The duration must be between 1 and 24 hours, inclusive.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "includeObjects": {
+                    "$ref": "SourceCatalog",
+                    "description": "Optional. The objects to retrieve from the source."
+                },
+                "pollingInterval": {
+                    "description": "Required. Incremental sync polling interval for all objects. If not set, a default value of `5 minutes` is used. The duration must be from `5 minutes` to `24 hours`, inclusive.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SalesforceObject": {
             "description": "Salesforce object.",
             "id": "SalesforceObject",
@@ -4093,7 +4225,8 @@
                 },
                 "userCredentials": {
                     "$ref": "UserCredentials",
-                    "description": "User-password authentication."
+                    "deprecated": true,
+                    "description": "Deprecated: Salesforce is retiring Username-Password authentication. Use `oauth2_client_credentials` instead."
                 }
             },
             "type": "object"
@@ -4113,6 +4246,21 @@
                 "pollingInterval": {
                     "description": "Required. Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be from `5 minutes` to `24 hours`, inclusive.",
                     "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Secret": {
+            "description": "A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager.",
+            "id": "Secret",
+            "properties": {
+                "rawValue": {
+                    "description": "Optional. Input only. The actual raw value of the secret as plain text.",
+                    "type": "string"
+                },
+                "secretVersion": {
+                    "description": "Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}",
                     "type": "string"
                 }
             },
@@ -4156,6 +4304,45 @@
             },
             "type": "object"
         },
+        "ServiceNowProfile": {
+            "description": "Profile for connecting to a ServiceNow source.",
+            "id": "ServiceNowProfile",
+            "properties": {
+                "instance": {
+                    "description": "Required. The instance of the ServiceNow account. This is the `` part of the URL `https://.service-now.com`.",
+                    "type": "string"
+                },
+                "oauthClientCredentials": {
+                    "$ref": "OauthClientCredentials",
+                    "description": "Credentials for authenticating with the ServiceNow API."
+                },
+                "userPasswordCredentials": {
+                    "$ref": "UserPasswordCredentials",
+                    "description": "User-password authentication."
+                }
+            },
+            "type": "object"
+        },
+        "ServiceNowSourceConfig": {
+            "description": "Configuration for syncing data from a ServiceNow source.",
+            "id": "ServiceNowSourceConfig",
+            "properties": {
+                "excludeObjects": {
+                    "$ref": "SourceCatalog",
+                    "description": "Optional. The objects to exclude from the stream."
+                },
+                "includeObjects": {
+                    "$ref": "SourceCatalog",
+                    "description": "Optional. The objects to retrieve from the source."
+                },
+                "pollingInterval": {
+                    "description": "Required. Incremental sync polling interval for all objects. If not set, a default value of `5 minutes` is used. The duration must be from `5 minutes` to `24 hours`, inclusive.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SingleTargetDataset": {
             "description": "A single target dataset to which all data will be streamed.",
             "id": "SingleTargetDataset",
@@ -4167,10 +4354,28 @@
             },
             "type": "object"
         },
+        "SourceCatalog": {
+            "description": "Source catalog.",
+            "id": "SourceCatalog",
+            "properties": {
+                "objects": {
+                    "description": "Optional. Source objects in the catalog.",
+                    "items": {
+                        "$ref": "SourceObject"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "SourceConfig": {
             "description": "The configuration of the stream source.",
             "id": "SourceConfig",
             "properties": {
+                "dataverseSourceConfig": {
+                    "$ref": "DataverseSourceConfig",
+                    "description": "Dataverse data source configuration."
+                },
                 "mongodbSourceConfig": {
                     "$ref": "MongodbSourceConfig",
                     "description": "MongoDB data source configuration."
@@ -4187,9 +4392,17 @@
                     "$ref": "PostgresqlSourceConfig",
                     "description": "PostgreSQL data source configuration."
                 },
+                "salesforceMarketingCloudSourceConfig": {
+                    "$ref": "SalesforceMarketingCloudSourceConfig",
+                    "description": "Salesforce Marketing Cloud data source configuration."
+                },
                 "salesforceSourceConfig": {
                     "$ref": "SalesforceSourceConfig",
                     "description": "Salesforce data source configuration."
+                },
+                "serviceNowSourceConfig": {
+                    "$ref": "ServiceNowSourceConfig",
+                    "description": "ServiceNow data source configuration."
                 },
                 "sourceConnectionProfile": {
                     "description": "Required. Source connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`",
@@ -4202,6 +4415,10 @@
                 "sqlServerSourceConfig": {
                     "$ref": "SqlServerSourceConfig",
                     "description": "SQLServer data source configuration."
+                },
+                "workdaySourceConfig": {
+                    "$ref": "WorkdaySourceConfig",
+                    "description": "Optional. Workday data source configuration."
                 }
             },
             "type": "object"
@@ -4217,6 +4434,24 @@
                 "projectId": {
                     "description": "Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SourceObject": {
+            "description": "Source object.",
+            "id": "SourceObject",
+            "properties": {
+                "objectName": {
+                    "description": "Required. The object name.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Optional. Source properties. When unspecified as part of include objects, includes everything, when unspecified as part of exclude objects, excludes nothing.",
+                    "items": {
+                        "$ref": "SourceProperty"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -4252,6 +4487,40 @@
                 "sqlServerIdentifier": {
                     "$ref": "SqlServerObjectIdentifier",
                     "description": "SQLServer data source object identifier."
+                }
+            },
+            "type": "object"
+        },
+        "SourceProperty": {
+            "description": "Source property.",
+            "id": "SourceProperty",
+            "properties": {
+                "primaryKey": {
+                    "description": "Optional. Whether or not the property is a primary key.",
+                    "type": "boolean"
+                },
+                "properties": {
+                    "description": "Optional. Source properties. When specified, it means that the current property contains nested properties of its own. When unspecified as part of include objects, includes everything, when unspecified as part of exclude objects, excludes nothing.",
+                    "items": {
+                        "$ref": "SourceProperty"
+                    },
+                    "type": "array"
+                },
+                "propertyName": {
+                    "description": "Required. The property name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SpannerChangeStreamPosition": {
+            "description": "Represents a position in a Spanner change stream from which to start replicating.",
+            "id": "SpannerChangeStreamPosition",
+            "properties": {
+                "startTime": {
+                    "description": "Required. The timestamp to start change stream queries from. The timestamp must be a positive value.",
+                    "format": "google-datetime",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4432,6 +4701,10 @@
                 "oracleScnPosition": {
                     "$ref": "OracleScnPosition",
                     "description": "Oracle SCN to start replicating from."
+                },
+                "spannerChangeStreamPosition": {
+                    "$ref": "SpannerChangeStreamPosition",
+                    "description": "Optional. Spanner change stream position to start replicating from."
                 },
                 "sqlServerLsnPosition": {
                     "$ref": "SqlServerLsnPosition",
@@ -4683,7 +4956,7 @@
             "properties": {
                 "eventFilter": {
                     "$ref": "EventFilter",
-                    "description": "Optional. Optional event filter. If not set, or empty, the backfill will be performed on the entire object. This is currently used for partial backfill and only supported for SQL Server sources."
+                    "description": "Optional. Optional event filter. If not set, or empty, the backfill will be performed on the entire object. This is currently used for partial backfill and only supported for SQL sources."
                 }
             },
             "type": "object"
@@ -4949,7 +5222,8 @@
             "type": "object"
         },
         "UserCredentials": {
-            "description": "Username-password credentials.",
+            "deprecated": true,
+            "description": "Deprecated: Salesforce is retiring Username-Password authentication. Use `Oauth2ClientCredentials` instead.",
             "id": "UserCredentials",
             "properties": {
                 "password": {
@@ -4970,6 +5244,21 @@
                 },
                 "username": {
                     "description": "Required. Username for the Salesforce connection.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserPasswordCredentials": {
+            "description": "User-password credentials.",
+            "id": "UserPasswordCredentials",
+            "properties": {
+                "password": {
+                    "$ref": "Secret",
+                    "description": "Required. Password for the connection."
+                },
+                "username": {
+                    "description": "Required. Username for the connection.",
                     "type": "string"
                 }
             },
@@ -5076,6 +5365,45 @@
                 },
                 "vpc": {
                     "description": "Required. Fully qualified name of the VPC that Datastream will peer to. Format: `projects/{project}/global/{networks}/{name}`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "WorkdayProfile": {
+            "description": "Profile for connecting to a Workday source.",
+            "id": "WorkdayProfile",
+            "properties": {
+                "host": {
+                    "description": "Required. Host for the Workday connection. Must be a valid hostname (e.g., `wd3-impl-services1.workday.com`).",
+                    "type": "string"
+                },
+                "oauthRefreshTokenCredentials": {
+                    "$ref": "OauthRefreshTokenCredentials",
+                    "description": "Required. Credentials for authenticating with the Workday API. OAuth Refresh Token credentials for authenticating with the Workday API."
+                },
+                "tenant": {
+                    "description": "Required. Tenant for the Workday connection (e.g., `google12`).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "WorkdaySourceConfig": {
+            "description": "Configuration for syncing data from a Workday source.",
+            "id": "WorkdaySourceConfig",
+            "properties": {
+                "excludeObjects": {
+                    "$ref": "SourceCatalog",
+                    "description": "Optional. The objects to exclude from the stream."
+                },
+                "includeObjects": {
+                    "$ref": "SourceCatalog",
+                    "description": "Optional. The objects to retrieve from the source."
+                },
+                "pollingInterval": {
+                    "description": "Required. Incremental sync polling interval for all objects. If not set, a default value of `5 minutes` is used. The duration must be from `5 minutes` to `24 hours`, inclusive.",
+                    "format": "google-duration",
                     "type": "string"
                 }
             },

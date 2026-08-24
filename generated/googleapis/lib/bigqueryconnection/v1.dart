@@ -1138,12 +1138,31 @@ class ConnectorConfiguration {
   /// Networking configuration.
   ConnectorConfigurationNetwork? network;
 
+  /// A map of name-value pairs for connector-specific parameters.
+  ///
+  /// These extra configuration parameters aren't standardized in the
+  /// configuration sections. To update a single parameter value, call
+  /// ConnectionService.UpdateConnection with `update_mask` set to
+  /// `configuration.parameters.parameter_id`. If ``parameter_id`` doesn't fit
+  /// the `[a-zA-Z0-9_]+` pattern, ``parameter_id`` should be escaped with
+  /// backticks—for example, ``configuration.parameters.`parameter id` ``.
+  ///
+  /// Optional.
+  core.Map<core.String, ConnectorConfigurationParameterValue>? parameters;
+
+  /// TLS configuration options.
+  ///
+  /// Optional.
+  ConnectorConfigurationTls? tls;
+
   ConnectorConfiguration({
     this.asset,
     this.authentication,
     this.connectorId,
     this.endpoint,
     this.network,
+    this.parameters,
+    this.tls,
   });
 
   ConnectorConfiguration.fromJson(core.Map json_)
@@ -1169,6 +1188,20 @@ class ConnectorConfiguration {
                 json_['network'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        parameters:
+            (json_['parameters'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ConnectorConfigurationParameterValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        tls: json_.containsKey('tls')
+            ? ConnectorConfigurationTls.fromJson(
+                json_['tls'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -1177,12 +1210,16 @@ class ConnectorConfiguration {
     final connectorId = this.connectorId;
     final endpoint = this.endpoint;
     final network = this.network;
+    final parameters = this.parameters;
+    final tls = this.tls;
     return {
       'asset': ?asset,
       'authentication': ?authentication,
       'connectorId': ?connectorId,
       'endpoint': ?endpoint,
       'network': ?network,
+      'parameters': ?parameters,
+      'tls': ?tls,
     };
   }
 }
@@ -1218,6 +1255,18 @@ class ConnectorConfigurationAsset {
 
 /// Client authentication.
 class ConnectorConfigurationAuthentication {
+  /// A map of name-value pairs for connector-specific parameters.
+  ///
+  /// These extra configuration parameters aren't standardized in the
+  /// configuration sections. To update a single parameter value, call
+  /// ConnectionService.UpdateConnection with `update_mask` set to
+  /// `configuration.parameters.parameter_id`. If ``parameter_id`` doesn't fit
+  /// the `[a-zA-Z0-9_]+` pattern, ``parameter_id`` should be escaped with
+  /// backticks—for example, ``configuration.parameters.`parameter id` ``.
+  ///
+  /// Optional.
+  core.Map<core.String, ConnectorConfigurationParameterValue>? parameters;
+
   /// Google-managed service account associated with this connection, e.g.,
   /// `service-{project_number}@gcp-sa-bigqueryconnection.iam.gserviceaccount.com`.
   ///
@@ -1231,12 +1280,22 @@ class ConnectorConfigurationAuthentication {
   ConnectorConfigurationUsernamePassword? usernamePassword;
 
   ConnectorConfigurationAuthentication({
+    this.parameters,
     this.serviceAccount,
     this.usernamePassword,
   });
 
   ConnectorConfigurationAuthentication.fromJson(core.Map json_)
     : this(
+        parameters:
+            (json_['parameters'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ConnectorConfigurationParameterValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
         serviceAccount: json_['serviceAccount'] as core.String?,
         usernamePassword: json_.containsKey('usernamePassword')
             ? ConnectorConfigurationUsernamePassword.fromJson(
@@ -1247,9 +1306,11 @@ class ConnectorConfigurationAuthentication {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final parameters = this.parameters;
     final serviceAccount = this.serviceAccount;
     final usernamePassword = this.usernamePassword;
     return {
+      'parameters': ?parameters,
       'serviceAccount': ?serviceAccount,
       'usernamePassword': ?usernamePassword,
     };
@@ -1294,6 +1355,62 @@ class ConnectorConfigurationNetwork {
   core.Map<core.String, core.dynamic> toJson() {
     final privateServiceConnect = this.privateServiceConnect;
     return {'privateServiceConnect': ?privateServiceConnect};
+  }
+}
+
+/// Represents a value for a connector parameter.
+class ConnectorConfigurationParameterValue {
+  /// A boolean parameter value.
+  core.bool? boolValue;
+
+  /// A double parameter value.
+  core.double? doubleValue;
+
+  /// An int32 parameter value.
+  core.int? int32Value;
+
+  /// A secret parameter value.
+  ///
+  /// Allowed only for Authentication parameters.
+  ConnectorConfigurationSecret? secretValue;
+
+  /// A string parameter value.
+  core.String? stringValue;
+
+  ConnectorConfigurationParameterValue({
+    this.boolValue,
+    this.doubleValue,
+    this.int32Value,
+    this.secretValue,
+    this.stringValue,
+  });
+
+  ConnectorConfigurationParameterValue.fromJson(core.Map json_)
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+        int32Value: json_['int32Value'] as core.int?,
+        secretValue: json_.containsKey('secretValue')
+            ? ConnectorConfigurationSecret.fromJson(
+                json_['secretValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stringValue: json_['stringValue'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final boolValue = this.boolValue;
+    final doubleValue = this.doubleValue;
+    final int32Value = this.int32Value;
+    final secretValue = this.secretValue;
+    final stringValue = this.stringValue;
+    return {
+      'boolValue': ?boolValue,
+      'doubleValue': ?doubleValue,
+      'int32Value': ?int32Value,
+      'secretValue': ?secretValue,
+      'stringValue': ?stringValue,
+    };
   }
 }
 
@@ -1348,6 +1465,80 @@ class ConnectorConfigurationSecret {
     return {'plaintext': ?plaintext, 'secretType': ?secretType};
   }
 }
+
+/// TLS configuration options.
+class ConnectorConfigurationTls {
+  /// The mode of TLS configuration.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : TLS mode unspecified.
+  /// - "DISABLE" : TLS is disabled.
+  /// - "ENCRYPT_VERIFY_NONE" : Encryption is enabled, but server certificate is
+  /// not verified.
+  /// - "ENCRYPT_VERIFY_CA" : Encryption is enabled, and server certificate is
+  /// verified.
+  /// - "ENCRYPT_VERIFY_CA_AND_HOST" : Encryption is enabled, and server
+  /// certificate and host are verified.
+  core.String? mode;
+
+  /// Private PKI.
+  ///
+  /// Optional.
+  ConnectorConfigurationTlsPrivatePki? privatePki;
+
+  /// Web PKI.
+  ///
+  /// Optional.
+  ConnectorConfigurationTlsWebPki? webPki;
+
+  ConnectorConfigurationTls({this.mode, this.privatePki, this.webPki});
+
+  ConnectorConfigurationTls.fromJson(core.Map json_)
+    : this(
+        mode: json_['mode'] as core.String?,
+        privatePki: json_.containsKey('privatePki')
+            ? ConnectorConfigurationTlsPrivatePki.fromJson(
+                json_['privatePki'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        webPki: json_.containsKey('webPki')
+            ? ConnectorConfigurationTlsWebPki.fromJson(
+                json_['webPki'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mode = this.mode;
+    final privatePki = this.privatePki;
+    final webPki = this.webPki;
+    return {'mode': ?mode, 'privatePki': ?privatePki, 'webPki': ?webPki};
+  }
+}
+
+/// Private PKI.
+class ConnectorConfigurationTlsPrivatePki {
+  /// a PEM-encoded list of certificates to trust
+  ///
+  /// Optional.
+  core.String? trustedCertificatesPem;
+
+  ConnectorConfigurationTlsPrivatePki({this.trustedCertificatesPem});
+
+  ConnectorConfigurationTlsPrivatePki.fromJson(core.Map json_)
+    : this(
+        trustedCertificatesPem: json_['trustedCertificatesPem'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final trustedCertificatesPem = this.trustedCertificatesPem;
+    return {'trustedCertificatesPem': ?trustedCertificatesPem};
+  }
+}
+
+/// Web PKI.
+typedef ConnectorConfigurationTlsWebPki = $Empty;
 
 /// Username and Password authentication.
 class ConnectorConfigurationUsernamePassword {

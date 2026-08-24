@@ -816,6 +816,7 @@ class GoogleCloudKmsV1CryptoKey {
   /// - "MAC" : CryptoKeys with this purpose may be used with MacSign.
   /// - "KEY_ENCAPSULATION" : CryptoKeys with this purpose may be used with
   /// GetPublicKey and Decapsulate.
+  /// - "AES_WRAPPING" : CryptoKeys with this purpose may be used for AES key
   core.String? purpose;
 
   /// next_rotation_time will be advanced by this period when the service
@@ -1011,6 +1012,12 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// - "PQ_SIGN_ML_DSA_87_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
   /// Digital Signature Algorithm, at security level 5. Randomized version
   /// supporting externally-computed message representatives.
+  /// - "KEM_ECDH_P256" : Key encapsulation: Elliptic Curve Diffie-Hellman with
+  /// NIST P-256 key that returns shared secret.
+  /// - "KEM_ECDH_P384" : Key encapsulation: Elliptic Curve Diffie-Hellman with
+  /// NIST P-384 key that returns shared secret.
+  /// - "AES_256_KWP" : AES key wrap with zero padding algorithm (RFC 5649). Can
+  /// only be used by keys with purpose AES_WRAPPING.
   core.String? algorithm;
 
   /// Statement that was generated and signed by the HSM at key creation time.
@@ -1066,6 +1073,14 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   ///
   /// Output only.
   core.String? generationFailureReason;
+
+  /// Field indicating that the key wrapping key is trusted.
+  ///
+  /// This field is only valid for key purpose AES_256_WRAPPING, and protection
+  /// level HSM_SINGLE_TENANT.
+  ///
+  /// Output only.
+  core.bool? hsmTrusted;
 
   /// The root cause of the most recent import failure.
   ///
@@ -1151,6 +1166,16 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// CryptoKeyVersion.external_destruction_failure_reason.
   core.String? state;
 
+  /// Field indicating that the key may be wrapped by a trusted key.
+  ///
+  /// This field can be set for all key purposes except ENCRYPT_DECRYPT, and is
+  /// only valid for keys with protection level HSM_SINGLE_TENANT. This field
+  /// can only be set at creation or import time via CreateCryptoKeyVersion, or
+  /// ImportCryptoKeyVersion.
+  ///
+  /// Optional. Immutable.
+  core.bool? trustedWrappingEnabled;
+
   GoogleCloudKmsV1CryptoKeyVersion({
     this.algorithm,
     this.attestation,
@@ -1161,6 +1186,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
     this.externalProtectionLevelOptions,
     this.generateTime,
     this.generationFailureReason,
+    this.hsmTrusted,
     this.importFailureReason,
     this.importJob,
     this.importTime,
@@ -1168,6 +1194,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
     this.protectionLevel,
     this.reimportEligible,
     this.state,
+    this.trustedWrappingEnabled,
   });
 
   GoogleCloudKmsV1CryptoKeyVersion.fromJson(core.Map json_)
@@ -1193,6 +1220,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
         generateTime: json_['generateTime'] as core.String?,
         generationFailureReason:
             json_['generationFailureReason'] as core.String?,
+        hsmTrusted: json_['hsmTrusted'] as core.bool?,
         importFailureReason: json_['importFailureReason'] as core.String?,
         importJob: json_['importJob'] as core.String?,
         importTime: json_['importTime'] as core.String?,
@@ -1200,6 +1228,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
         protectionLevel: json_['protectionLevel'] as core.String?,
         reimportEligible: json_['reimportEligible'] as core.bool?,
         state: json_['state'] as core.String?,
+        trustedWrappingEnabled: json_['trustedWrappingEnabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -1213,6 +1242,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
     final externalProtectionLevelOptions = this.externalProtectionLevelOptions;
     final generateTime = this.generateTime;
     final generationFailureReason = this.generationFailureReason;
+    final hsmTrusted = this.hsmTrusted;
     final importFailureReason = this.importFailureReason;
     final importJob = this.importJob;
     final importTime = this.importTime;
@@ -1220,6 +1250,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
     final protectionLevel = this.protectionLevel;
     final reimportEligible = this.reimportEligible;
     final state = this.state;
+    final trustedWrappingEnabled = this.trustedWrappingEnabled;
     return {
       'algorithm': ?algorithm,
       'attestation': ?attestation,
@@ -1230,6 +1261,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
       'externalProtectionLevelOptions': ?externalProtectionLevelOptions,
       'generateTime': ?generateTime,
       'generationFailureReason': ?generationFailureReason,
+      'hsmTrusted': ?hsmTrusted,
       'importFailureReason': ?importFailureReason,
       'importJob': ?importJob,
       'importTime': ?importTime,
@@ -1237,6 +1269,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
       'protectionLevel': ?protectionLevel,
       'reimportEligible': ?reimportEligible,
       'state': ?state,
+      'trustedWrappingEnabled': ?trustedWrappingEnabled,
     };
   }
 }
@@ -1294,6 +1327,8 @@ class GoogleCloudKmsV1KeyOperationAttestation {
   /// https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/software-key-attestation.html.
   /// - "CAVIUM_V2_COMPRESSED" : Cavium HSM attestation V2 compressed with gzip.
   /// This is a new format introduced in Cavium's version 3.2-08.
+  /// - "CAVIUM_V209" : Cavium HSM attestation V209, introduced in Cavium's
+  /// version 2.09-0702.
   core.String? format;
 
   GoogleCloudKmsV1KeyOperationAttestation({

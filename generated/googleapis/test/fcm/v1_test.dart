@@ -128,6 +128,7 @@ api.AndroidNotification buildAndroidNotification() {
     o.body = 'foo';
     o.bodyLocArgs = buildUnnamed1();
     o.bodyLocKey = 'foo';
+    o.bypassProxyNotification = true;
     o.channelId = 'foo';
     o.clickAction = 'foo';
     o.color = 'foo';
@@ -162,6 +163,7 @@ void checkAndroidNotification(api.AndroidNotification o) {
     unittest.expect(o.body!, unittest.equals('foo'));
     checkUnnamed1(o.bodyLocArgs!);
     unittest.expect(o.bodyLocKey!, unittest.equals('foo'));
+    unittest.expect(o.bypassProxyNotification!, unittest.isTrue);
     unittest.expect(o.channelId!, unittest.equals('foo'));
     unittest.expect(o.clickAction!, unittest.equals('foo'));
     unittest.expect(o.color!, unittest.equals('foo'));
@@ -355,6 +357,7 @@ api.Message buildMessage() {
     o.condition = 'foo';
     o.data = buildUnnamed6();
     o.fcmOptions = buildFcmOptions();
+    o.fid = 'foo';
     o.name = 'foo';
     o.notification = buildNotification();
     o.token = 'foo';
@@ -373,6 +376,7 @@ void checkMessage(api.Message o) {
     unittest.expect(o.condition!, unittest.equals('foo'));
     checkUnnamed6(o.data!);
     checkFcmOptions(o.fcmOptions!);
+    unittest.expect(o.fid!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkNotification(o.notification!);
     unittest.expect(o.token!, unittest.equals('foo'));

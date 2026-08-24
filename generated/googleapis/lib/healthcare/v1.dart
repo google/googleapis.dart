@@ -151,7 +151,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -166,9 +166,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -9559,6 +9558,16 @@ class BulkDeleteResourcesRequest {
   /// Optional.
   GoogleCloudHealthcareV1FhirGcsDestination? gcsDestination;
 
+  /// Specifies the Cloud Storage source data location containing the list of
+  /// resource IDs to delete.
+  ///
+  /// Each file inside `gcs_source` must contain newline-delimited strings in
+  /// the format `{resourceType}/{resourceId}`. This field is mutually exclusive
+  /// with filter parameters such as `type` and `until`.
+  ///
+  /// Optional.
+  GoogleCloudHealthcareV1FhirGcsSource? gcsSource;
+
   /// String of comma-delimited FHIR resource types.
   ///
   /// If provided, only resources of the specified resource type(s) will be
@@ -9576,6 +9585,15 @@ class BulkDeleteResourcesRequest {
   /// Optional.
   core.String? until;
 
+  /// If set to true, the request will only perform a dry run.
+  ///
+  /// By default (once the behavior change is fully rolled out), this will
+  /// default to true. During the transition period, the default depends on the
+  /// Mendel flag status for the project.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
   /// Specifies which version of the resources to delete.
   ///
   /// Optional.
@@ -9590,8 +9608,10 @@ class BulkDeleteResourcesRequest {
 
   BulkDeleteResourcesRequest({
     this.gcsDestination,
+    this.gcsSource,
     this.type,
     this.until,
+    this.validateOnly,
     this.versionConfig,
   });
 
@@ -9602,20 +9622,30 @@ class BulkDeleteResourcesRequest {
                 json_['gcsDestination'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        gcsSource: json_.containsKey('gcsSource')
+            ? GoogleCloudHealthcareV1FhirGcsSource.fromJson(
+                json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         type: json_['type'] as core.String?,
         until: json_['until'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
         versionConfig: json_['versionConfig'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final gcsDestination = this.gcsDestination;
+    final gcsSource = this.gcsSource;
     final type = this.type;
     final until = this.until;
+    final validateOnly = this.validateOnly;
     final versionConfig = this.versionConfig;
     return {
       'gcsDestination': ?gcsDestination,
+      'gcsSource': ?gcsSource,
       'type': ?type,
       'until': ?until,
+      'validateOnly': ?validateOnly,
       'versionConfig': ?versionConfig,
     };
   }
@@ -12647,7 +12677,31 @@ class GcsDestination {
 }
 
 /// Specifies the configuration for importing data from Cloud Storage.
-typedef GcsSource = $GcsSource;
+class GcsSource {
+  /// Points to a Cloud Storage URI containing file(s) to import.
+  ///
+  /// The URI must be in the following format: `gs://{bucket_id}/{object_id}`.
+  /// The URI can include wildcards in `object_id` and thus identify multiple
+  /// files. Supported wildcards: * `*` to match 0 or more non-separator
+  /// characters * `**` to match 0 or more characters (including separators).
+  /// Must be used at the end of a path and with no other wildcards in the path.
+  /// Can also be used with a file extension (such as .ndjson), which imports
+  /// all files with the extension in the specified directory and its
+  /// sub-directories. For example, `gs://my-bucket/my-directory / * *.ndjson`
+  /// imports all files with `.ndjson` extensions in `my-directory/` and its
+  /// sub-directories. * `?` to match 1 character Files matching the wildcard
+  /// are expected to contain content only, no metadata.
+  core.String? uri;
+
+  GcsSource({this.uri});
+
+  GcsSource.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final uri = this.uri;
+    return {'uri': ?uri};
+  }
+}
 
 /// The Cloud Storage location for export.
 class GoogleCloudHealthcareV1ConsentGcsDestination {
@@ -13061,7 +13115,34 @@ class GoogleCloudHealthcareV1FhirGcsDestination {
 }
 
 /// Specifies the configuration for importing data from Cloud Storage.
-typedef GoogleCloudHealthcareV1FhirGcsSource = $GcsSource;
+class GoogleCloudHealthcareV1FhirGcsSource {
+  /// Points to a Cloud Storage URI containing file(s) to import.
+  ///
+  /// The URI must be in the following format: `gs://{bucket_id}/{object_id}`.
+  /// The URI can include wildcards in `object_id` and thus identify multiple
+  /// files. Supported wildcards: * `*` to match 0 or more non-separator
+  /// characters * `**` to match 0 or more characters (including separators).
+  /// Must be used at the end of a path and with no other wildcards in the path.
+  /// Can also be used with a file extension (such as .ndjson), which imports
+  /// all files with the extension in the specified directory and its
+  /// sub-directories. For example, `gs://my-bucket/my-directory / * *.ndjson`
+  /// imports all files with `.ndjson` extensions in `my-directory/` and its
+  /// sub-directories. * `?` to match 1 character Files matching the wildcard
+  /// are expected to contain content only, no metadata.
+  ///
+  /// Required.
+  core.String? uri;
+
+  GoogleCloudHealthcareV1FhirGcsSource({this.uri});
+
+  GoogleCloudHealthcareV1FhirGcsSource.fromJson(core.Map json_)
+    : this(uri: json_['uri'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final uri = this.uri;
+    return {'uri': ?uri};
+  }
+}
 
 /// Construct representing a logical group or a segment.
 class GroupOrSegment {

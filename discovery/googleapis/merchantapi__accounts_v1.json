@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260415",
+    "revision": "20260807",
     "rootUrl": "https://merchantapi.googleapis.com/",
     "servicePath": "",
     "title": "Merchant API",
@@ -611,7 +611,7 @@
                             ]
                         },
                         "registerGcp": {
-                            "description": "Registers the GCP used for the API call to the shopping account passed in the request. Will create a user with an \"API developer\" and add the \"developer_email\" as a contact with \"API notifications\" email preference on.",
+                            "description": "Registers the GCP used for the API call to the shopping account passed in the request. Will create a user with an \"API developer\" and add the \"developer_email\" as a contact with \"API notifications\" email preference on. Restrictions: * The caller account must be authenticated and must not impersonate another account at registration time. Registering for subaccounts is not supported if the caller account is authenticated with the parent or the managing advanced account. * The caller account must have a [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center. * [Test accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts) are not eligible for registration.",
                             "flatPath": "accounts/v1/accounts/{accountsId}/developerRegistration:registerGcp",
                             "httpMethod": "POST",
                             "id": "merchantapi.accounts.developerRegistration.registerGcp",
@@ -620,7 +620,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The name of the developer registration to be created for the merchant account that the GCP will be registered with. Format: `accounts/{account}/developerRegistration` The {account} used must be the same account where user calling this API method is directly added to.",
+                                    "description": "Required. The name of the developer registration to be created for the merchant account that the GCP will be registered with. Format: `accounts/{account}/developerRegistration` The {account} used must be the same account where user calling this API method is directly added to. Note: The account used must be a production account (can't be a [test account](https://developers.google.com/merchant/api/guides/accounts/test-accounts) ) and must have a [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center.",
                                     "location": "path",
                                     "pattern": "^accounts/[^/]+/developerRegistration$",
                                     "required": true,
@@ -2420,7 +2420,7 @@
                             ],
                             "enumDescriptions": [
                                 "Default value. This value is unused.",
-                                "Terms of service for the Merchant Center application."
+                                "Terms of Service for the Merchant Center application."
                             ],
                             "location": "query",
                             "type": "string"
@@ -4891,11 +4891,13 @@
                     "description": "The resource that changed, in this case it will always be `Product`.",
                     "enum": [
                         "RESOURCE_UNSPECIFIED",
-                        "PRODUCT"
+                        "PRODUCT",
+                        "ACCOUNT_SERVICE"
                     ],
                     "enumDescriptions": [
                         "Unspecified resource",
-                        "Resource type : product"
+                        "Resource type : product",
+                        "Account service"
                     ],
                     "type": "string"
                 }
@@ -4909,7 +4911,7 @@
             "type": "object"
         },
         "Program": {
-            "description": "Defines participation in a given program for the specified account. Programs provide a mechanism for adding functionality to a Merchant Center accounts. A typical example of this is the [Free product listings](https://support.google.com/merchants/answer/13889434) program, which enables products from a business's store to be shown across Google for free. The following list is the available set of program resource IDs accessible through the API: * `checkout` * `free-listings` * `product-ratings` * `shopping-ads` * `youtube-affiliate` * `youtube-shopping-checkout`",
+            "description": "Defines participation in a given program for the specified account. Programs provide a mechanism for adding functionality to a Merchant Center accounts. A typical example of this is the [Free product listings](https://support.google.com/merchants/answer/13889434) program, which enables products from a business's store to be shown across Google for free. The following list is the available set of program resource IDs accessible through the API: * `checkout` * `free-listings` * `product-ratings` * `shopping-ads` * `ucp-integration` (limited access) * `youtube-affiliate` * `youtube-shopping-checkout`",
             "id": "Program",
             "properties": {
                 "activeRegionCodes": {
@@ -5470,7 +5472,7 @@
                     ],
                     "enumDescriptions": [
                         "Default value. This value is unused.",
-                        "Terms of service for the Merchant Center application."
+                        "Terms of Service for the Merchant Center application."
                     ],
                     "type": "string"
                 },
@@ -5513,7 +5515,7 @@
                     ],
                     "enumDescriptions": [
                         "Default value. This value is unused.",
-                        "Terms of service for the Merchant Center application."
+                        "Terms of Service for the Merchant Center application."
                     ],
                     "type": "string"
                 }

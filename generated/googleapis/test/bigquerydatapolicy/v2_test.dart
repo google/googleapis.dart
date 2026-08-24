@@ -172,6 +172,27 @@ void checkCreateDataPolicyRequest(api.CreateDataPolicyRequest o) {
   buildCounterCreateDataPolicyRequest--;
 }
 
+core.int buildCounterDataGovernanceTag = 0;
+api.DataGovernanceTag buildDataGovernanceTag() {
+  final o = api.DataGovernanceTag();
+  buildCounterDataGovernanceTag++;
+  if (buildCounterDataGovernanceTag < 3) {
+    o.key = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterDataGovernanceTag--;
+  return o;
+}
+
+void checkDataGovernanceTag(api.DataGovernanceTag o) {
+  buildCounterDataGovernanceTag++;
+  if (buildCounterDataGovernanceTag < 3) {
+    unittest.expect(o.key!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals('foo'));
+  }
+  buildCounterDataGovernanceTag--;
+}
+
 core.int buildCounterDataMaskingPolicy = 0;
 api.DataMaskingPolicy buildDataMaskingPolicy() {
   final o = api.DataMaskingPolicy();
@@ -206,6 +227,7 @@ api.DataPolicy buildDataPolicy() {
   final o = api.DataPolicy();
   buildCounterDataPolicy++;
   if (buildCounterDataPolicy < 3) {
+    o.dataGovernanceTag = buildDataGovernanceTag();
     o.dataMaskingPolicy = buildDataMaskingPolicy();
     o.dataPolicyId = 'foo';
     o.dataPolicyType = 'foo';
@@ -222,6 +244,7 @@ api.DataPolicy buildDataPolicy() {
 void checkDataPolicy(api.DataPolicy o) {
   buildCounterDataPolicy++;
   if (buildCounterDataPolicy < 3) {
+    checkDataGovernanceTag(o.dataGovernanceTag!);
     checkDataMaskingPolicy(o.dataMaskingPolicy!);
     unittest.expect(o.dataPolicyId!, unittest.equals('foo'));
     unittest.expect(o.dataPolicyType!, unittest.equals('foo'));
@@ -543,6 +566,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCreateDataPolicyRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DataGovernanceTag', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataGovernanceTag();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataGovernanceTag.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDataGovernanceTag(od);
     });
   });
 

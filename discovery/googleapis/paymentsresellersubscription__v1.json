@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260301",
+    "revision": "20260816",
     "rootUrl": "https://paymentsresellersubscription.googleapis.com/",
     "servicePath": "",
     "title": "Payments Reseller Subscription API",
@@ -670,7 +670,8 @@
                     "description": "Optional. The cycle options for the subscription."
                 },
                 "parent": {
-                    "description": "Required. The parent resource name, which is the identifier of the partner.",
+                    "deprecated": true,
+                    "description": "Optional. Deprecated: Use the `parent` field in `GenerateUserSessionRequest` instead. The parent resource name, which is the identifier of the partner.",
                     "type": "string"
                 },
                 "subscription": {
@@ -1338,12 +1339,14 @@
                     "enum": [
                         "RESUME_MODE_UNSPECIFIED",
                         "RESUME_MODE_CYCLE_OPTIONS",
-                        "RESUME_MODE_RESTORE_EXISTING_BILLING_SCHEDULE"
+                        "RESUME_MODE_RESTORE_EXISTING_BILLING_SCHEDULE",
+                        "RESUME_MODE_IMMEDIATE_NEW_CYCLE"
                     ],
                     "enumDescriptions": [
                         "Reserved for invalid or unexpected value. Do not use.",
                         "Resume the subscription using the input from `cycle_options`.",
-                        "Resume the subscription with the existing billing schedule. The subscription's next renewal time must still be in the future for this mode to be applicable."
+                        "Resume the subscription with the existing billing schedule. The subscription's next renewal time must still be in the future for this mode to be applicable.",
+                        "Resume the subscription and start a new billing cycle immediately, resulting in a new charge."
                     ],
                     "type": "string"
                 }
@@ -1436,13 +1439,15 @@
                         "PROCESSING_STATE_UNSPECIFIED",
                         "PROCESSING_STATE_CANCELLING",
                         "PROCESSING_STATE_RECURRING",
-                        "PROCESSING_STATE_RESUMING"
+                        "PROCESSING_STATE_RESUMING",
+                        "PROCESSING_STATE_SUSPENDING"
                     ],
                     "enumDescriptions": [
                         "The processing state is unspecified.",
                         "The subscription is being cancelled.",
                         "The subscription is recurring.",
-                        "The subscription is being resumed."
+                        "The subscription is being resumed.",
+                        "The subscription is being suspended."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -1715,6 +1720,12 @@
             "description": "Describes the details of the migrated subscription.",
             "id": "SubscriptionMigrationDetails",
             "properties": {
+                "legacyCreationTime": {
+                    "description": "Output only. The creation time of the migrated subscription in the legacy system.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "migratedSubscriptionId": {
                     "description": "Output only. The migrated subscription id in the legacy system.",
                     "readOnly": true,
@@ -1789,7 +1800,22 @@
         "SuspendSubscriptionRequest": {
             "description": "Request to suspend a subscription.",
             "id": "SuspendSubscriptionRequest",
-            "properties": {},
+            "properties": {
+                "suspendMode": {
+                    "description": "Optional. The mode to suspend the subscription. It's required for partners to specify the suspend mode, whether suspend immediately and indefinitely, or cancel the subscription after grace_period_millis or auto_cancel_duration_millis if it's not resumed.",
+                    "enum": [
+                        "SUSPEND_MODE_UNSPECIFIED",
+                        "SUSPEND_MODE_CANCEL_AFTER_GRACE_PERIOD",
+                        "SUSPEND_MODE_CANCEL_AFTER_RETENTION_PERIOD"
+                    ],
+                    "enumDescriptions": [
+                        "The default value. Suspend the subscription, and the subscription will stay suspended indefinitely.",
+                        "Suspend the subscription, and the subscription will be auto cancelled after the grace period. Contract terms dictate how long the grace period is.",
+                        "Suspend the subscription, and the subscription will be auto cancelled after the retention period. Contract terms dictate how long the retention period is."
+                    ],
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "SuspendSubscriptionResponse": {

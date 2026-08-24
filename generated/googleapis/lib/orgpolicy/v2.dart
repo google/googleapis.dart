@@ -61,6 +61,16 @@ class OrgPolicyApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud Organization Policy
+  /// data and see the email address for your Google Account
+  static const organizationpolicyScope =
+      'https://www.googleapis.com/auth/organizationpolicy';
+
+  /// See your Google Cloud Organization Policy data and the email address of
+  /// your Google Account
+  static const organizationpolicyReadonlyScope =
+      'https://www.googleapis.com/auth/organizationpolicy.readonly';
+
   final commons.ApiRequester _requester;
 
   FoldersResource get folders => FoldersResource(_requester);
@@ -101,16 +111,14 @@ class FoldersConstraintsResource {
   /// [parent] - Required. The Google Cloud resource that parents the
   /// constraint. Must be in one of the following forms: *
   /// `projects/{project_number}` * `projects/{project_id}` *
-  /// `folders/{folder_id}` * `organizations/{organization_id}`
+  /// `folders/{folder_number}` * `organizations/{organization_number}`
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [pageSize] - Size of the pages to be returned. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field to limit page size.
+  /// [pageSize] - Size of the pages to be returned. This is not used, but the
+  /// server may at any point start using this field to limit page size.
   ///
-  /// [pageToken] - Page token used to retrieve the next page. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field.
+  /// [pageToken] - Page token used to retrieve the next page. This is not used,
+  /// but the server may at any point start using this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -166,7 +174,7 @@ class FoldersPoliciesResource {
   /// [parent] - Required. The Google Cloud resource that will parent the new
   /// policy. Must be in one of the following forms: *
   /// `projects/{project_number}` * `projects/{project_id}` *
-  /// `folders/{folder_id}` * `organizations/{organization_id}`
+  /// `folders/{folder_number}` * `organizations/{organization_number}`
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -343,17 +351,15 @@ class FoldersPoliciesResource {
   /// [parent] - Required. The target Google Cloud resource that parents the set
   /// of constraints and policies that will be returned from this call. Must be
   /// in one of the following forms: * `projects/{project_number}` *
-  /// `projects/{project_id}` * `folders/{folder_id}` *
-  /// `organizations/{organization_id}`
+  /// `projects/{project_id}` * `folders/{folder_number}` *
+  /// `organizations/{organization_number}`
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [pageSize] - Size of the pages to be returned. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field to limit page size.
+  /// [pageSize] - Size of the pages to be returned. This is not used, but the
+  /// server may at any point start using this field to limit page size.
   ///
-  /// [pageToken] - Page token used to retrieve the next page. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field.
+  /// [pageToken] - Page token used to retrieve the next page. This is not used,
+  /// but the server may at any point start using this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -405,9 +411,9 @@ class FoldersPoliciesResource {
   /// following forms, where `constraint_name` is the name of the constraint
   /// that this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
-  /// `folders/{folder_id}/policies/{constraint_name}` *
-  /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
+  /// `folders/{folder_number}/policies/{constraint_name}` *
+  /// `organizations/{organization_number}/policies/{constraint_name}` For
+  /// example, `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
@@ -479,16 +485,14 @@ class OrganizationsConstraintsResource {
   /// [parent] - Required. The Google Cloud resource that parents the
   /// constraint. Must be in one of the following forms: *
   /// `projects/{project_number}` * `projects/{project_id}` *
-  /// `folders/{folder_id}` * `organizations/{organization_id}`
+  /// `folders/{folder_number}` * `organizations/{organization_number}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [pageSize] - Size of the pages to be returned. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field to limit page size.
+  /// [pageSize] - Size of the pages to be returned. This is not used, but the
+  /// server may at any point start using this field to limit page size.
   ///
-  /// [pageToken] - Page token used to retrieve the next page. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field.
+  /// [pageToken] - Page token used to retrieve the next page. This is not used,
+  /// but the server may at any point start using this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -673,13 +677,11 @@ class OrganizationsCustomConstraintsResource {
   /// of the following forms: * `organizations/{organization_id}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [pageSize] - Size of the pages to be returned. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field to limit page size.
+  /// [pageSize] - Size of the pages to be returned. This is not used, but the
+  /// server may at any point start using this field to limit page size.
   ///
-  /// [pageToken] - Page token used to retrieve the next page. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field.
+  /// [pageToken] - Page token used to retrieve the next page. This is not used,
+  /// but the server may at any point start using this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -726,7 +728,7 @@ class OrganizationsCustomConstraintsResource {
   /// Request parameters:
   ///
   /// [name] - Immutable. Name of the constraint. This is unique within the
-  /// organization. Format of the name should be *
+  /// organization. The name must be of the form: *
   /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
   /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
   /// The max length is 71 characters and the minimum length is 1. Note that the
@@ -789,7 +791,7 @@ class OrganizationsPoliciesResource {
   /// [parent] - Required. The Google Cloud resource that will parent the new
   /// policy. Must be in one of the following forms: *
   /// `projects/{project_number}` * `projects/{project_id}` *
-  /// `folders/{folder_id}` * `organizations/{organization_id}`
+  /// `folders/{folder_number}` * `organizations/{organization_number}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -966,17 +968,15 @@ class OrganizationsPoliciesResource {
   /// [parent] - Required. The target Google Cloud resource that parents the set
   /// of constraints and policies that will be returned from this call. Must be
   /// in one of the following forms: * `projects/{project_number}` *
-  /// `projects/{project_id}` * `folders/{folder_id}` *
-  /// `organizations/{organization_id}`
+  /// `projects/{project_id}` * `folders/{folder_number}` *
+  /// `organizations/{organization_number}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [pageSize] - Size of the pages to be returned. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field to limit page size.
+  /// [pageSize] - Size of the pages to be returned. This is not used, but the
+  /// server may at any point start using this field to limit page size.
   ///
-  /// [pageToken] - Page token used to retrieve the next page. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field.
+  /// [pageToken] - Page token used to retrieve the next page. This is not used,
+  /// but the server may at any point start using this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1028,9 +1028,9 @@ class OrganizationsPoliciesResource {
   /// following forms, where `constraint_name` is the name of the constraint
   /// that this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
-  /// `folders/{folder_id}/policies/{constraint_name}` *
-  /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
+  /// `folders/{folder_number}/policies/{constraint_name}` *
+  /// `organizations/{organization_number}/policies/{constraint_name}` For
+  /// example, `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
@@ -1099,16 +1099,14 @@ class ProjectsConstraintsResource {
   /// [parent] - Required. The Google Cloud resource that parents the
   /// constraint. Must be in one of the following forms: *
   /// `projects/{project_number}` * `projects/{project_id}` *
-  /// `folders/{folder_id}` * `organizations/{organization_id}`
+  /// `folders/{folder_number}` * `organizations/{organization_number}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - Size of the pages to be returned. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field to limit page size.
+  /// [pageSize] - Size of the pages to be returned. This is not used, but the
+  /// server may at any point start using this field to limit page size.
   ///
-  /// [pageToken] - Page token used to retrieve the next page. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field.
+  /// [pageToken] - Page token used to retrieve the next page. This is not used,
+  /// but the server may at any point start using this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1164,7 +1162,7 @@ class ProjectsPoliciesResource {
   /// [parent] - Required. The Google Cloud resource that will parent the new
   /// policy. Must be in one of the following forms: *
   /// `projects/{project_number}` * `projects/{project_id}` *
-  /// `folders/{folder_id}` * `organizations/{organization_id}`
+  /// `folders/{folder_number}` * `organizations/{organization_number}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1341,17 +1339,15 @@ class ProjectsPoliciesResource {
   /// [parent] - Required. The target Google Cloud resource that parents the set
   /// of constraints and policies that will be returned from this call. Must be
   /// in one of the following forms: * `projects/{project_number}` *
-  /// `projects/{project_id}` * `folders/{folder_id}` *
-  /// `organizations/{organization_id}`
+  /// `projects/{project_id}` * `folders/{folder_number}` *
+  /// `organizations/{organization_number}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - Size of the pages to be returned. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field to limit page size.
+  /// [pageSize] - Size of the pages to be returned. This is not used, but the
+  /// server may at any point start using this field to limit page size.
   ///
-  /// [pageToken] - Page token used to retrieve the next page. This is currently
-  /// unsupported and will be ignored. The server may at any point start using
-  /// this field.
+  /// [pageToken] - Page token used to retrieve the next page. This is not used,
+  /// but the server may at any point start using this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1403,9 +1399,9 @@ class ProjectsPoliciesResource {
   /// following forms, where `constraint_name` is the name of the constraint
   /// that this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
-  /// `folders/{folder_id}/policies/{constraint_name}` *
-  /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
+  /// `folders/{folder_number}/policies/{constraint_name}` *
+  /// `organizations/{organization_number}/policies/{constraint_name}` For
+  /// example, `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
@@ -1458,7 +1454,7 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /// Reference to the launch that will be used while audit logging and to
   /// control the launch.
   ///
-  /// Should be set only in the alternate policy.
+  /// Set only in the alternate policy.
   core.String? launch;
 
   /// Specify constraint for configurations of Google Cloud resources.
@@ -1503,7 +1499,7 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// The evaluation behavior of this constraint in the absence of a policy.
   /// Possible string values are:
   /// - "CONSTRAINT_DEFAULT_UNSPECIFIED" : This is only used for distinguishing
-  /// unset values and should never be used. Results in an error.
+  /// unset values, and results in an error if set.
   /// - "ALLOW" : Indicate that all values are allowed for list constraints.
   /// Indicate that enforcement is off for boolean constraints.
   /// - "DENY" : Indicate that all values are denied for list constraints.
@@ -1536,8 +1532,8 @@ class GoogleCloudOrgpolicyV2Constraint {
   ///
   /// Must be in one of the following forms: *
   /// `projects/{project_number}/constraints/{constraint_name}` *
-  /// `folders/{folder_id}/constraints/{constraint_name}` *
-  /// `organizations/{organization_id}/constraints/{constraint_name}` For
+  /// `folders/{folder_number}/constraints/{constraint_name}` *
+  /// `organizations/{organization_number}/constraints/{constraint_name}` For
   /// example, "/projects/123/constraints/compute.disableSerialPortAccess".
   ///
   /// Immutable.
@@ -1647,7 +1643,7 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition {
   /// Allow or deny type.
   /// Possible string values are:
   /// - "ACTION_TYPE_UNSPECIFIED" : This is only used for distinguishing unset
-  /// values and should never be used. Results in an error.
+  /// values, and results in an error if used.
   /// - "ALLOW" : Allowed action type.
   /// - "DENY" : Deny action type.
   core.String? actionType;
@@ -1736,8 +1732,8 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
   /// For example, `LIST` can be specified by defining `type: LIST`, and `item:
   /// STRING`.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : This is only used for distinguishing unset values
-  /// and should never be used. Results in an error.
+  /// - "TYPE_UNSPECIFIED" : This is only used for distinguishing unset values,
+  /// and results in an error if used.
   /// - "LIST" : List parameter type.
   /// - "STRING" : String parameter type.
   /// - "BOOLEAN" : Boolean parameter type.
@@ -1750,8 +1746,8 @@ class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
 
   /// Type of the parameter.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : This is only used for distinguishing unset values
-  /// and should never be used. Results in an error.
+  /// - "TYPE_UNSPECIFIED" : This is only used for distinguishing unset values,
+  /// and results in an error if used.
   /// - "LIST" : List parameter type.
   /// - "STRING" : String parameter type.
   /// - "BOOLEAN" : Boolean parameter type.
@@ -1862,113 +1858,8 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
 /// By creating a custom constraint, customers can apply policies of this custom
 /// constraint. *Creating a custom constraint itself does NOT apply any policy
 /// enforcement*.
-class GoogleCloudOrgpolicyV2CustomConstraint {
-  /// Allow or deny type.
-  /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : This is only used for distinguishing unset
-  /// values and should never be used. Results in an error.
-  /// - "ALLOW" : Allowed action type.
-  /// - "DENY" : Deny action type.
-  core.String? actionType;
-
-  /// A Common Expression Language (CEL) condition which is used in the
-  /// evaluation of the constraint.
-  ///
-  /// For example:
-  /// `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")` or,
-  /// `resource.management.auto_upgrade == true` The max length of the condition
-  /// is 1000 characters.
-  core.String? condition;
-
-  /// Detailed information about this custom policy constraint.
-  ///
-  /// The max length of the description is 2000 characters.
-  core.String? description;
-
-  /// One line display name for the UI.
-  ///
-  /// The max length of the display_name is 200 characters.
-  core.String? displayName;
-
-  /// All the operations being applied for this constraint.
-  core.List<core.String>? methodTypes;
-
-  /// Name of the constraint.
-  ///
-  /// This is unique within the organization. Format of the name should be *
-  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
-  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
-  /// The max length is 71 characters and the minimum length is 1. Note that the
-  /// prefix `organizations/{organization_id}/customConstraints/custom.` is not
-  /// counted.
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// The resource instance type on which this policy applies.
-  ///
-  /// Format will be of the form : `/` Example: *
-  /// `compute.googleapis.com/Instance`.
-  ///
-  /// Immutable.
-  core.List<core.String>? resourceTypes;
-
-  /// The last time this custom constraint was updated.
-  ///
-  /// This represents the last time that the `CreateCustomConstraint` or
-  /// `UpdateCustomConstraint` methods were called.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleCloudOrgpolicyV2CustomConstraint({
-    this.actionType,
-    this.condition,
-    this.description,
-    this.displayName,
-    this.methodTypes,
-    this.name,
-    this.resourceTypes,
-    this.updateTime,
-  });
-
-  GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
-    : this(
-        actionType: json_['actionType'] as core.String?,
-        condition: json_['condition'] as core.String?,
-        description: json_['description'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        methodTypes: (json_['methodTypes'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        name: json_['name'] as core.String?,
-        resourceTypes: (json_['resourceTypes'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final actionType = this.actionType;
-    final condition = this.condition;
-    final description = this.description;
-    final displayName = this.displayName;
-    final methodTypes = this.methodTypes;
-    final name = this.name;
-    final resourceTypes = this.resourceTypes;
-    final updateTime = this.updateTime;
-    return {
-      'actionType': ?actionType,
-      'condition': ?condition,
-      'description': ?description,
-      'displayName': ?displayName,
-      'methodTypes': ?methodTypes,
-      'name': ?name,
-      'resourceTypes': ?resourceTypes,
-      'updateTime': ?updateTime,
-    };
-  }
-}
+typedef GoogleCloudOrgpolicyV2CustomConstraint =
+    $GoogleCloudOrgpolicyV2CustomConstraint;
 
 /// The response returned from the ListConstraints method.
 class GoogleCloudOrgpolicyV2ListConstraintsResponse {
@@ -1977,7 +1868,7 @@ class GoogleCloudOrgpolicyV2ListConstraintsResponse {
 
   /// Page token used to retrieve the next page.
   ///
-  /// This is currently not used.
+  /// This is not used.
   core.String? nextPageToken;
 
   GoogleCloudOrgpolicyV2ListConstraintsResponse({
@@ -2017,8 +1908,8 @@ class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
 
   /// Page token used to retrieve the next page.
   ///
-  /// This is currently not used, but the server may at any point start
-  /// supplying a valid token.
+  /// This is not used, but the server may at any point start supplying a valid
+  /// token.
   core.String? nextPageToken;
 
   GoogleCloudOrgpolicyV2ListCustomConstraintsResponse({
@@ -2054,8 +1945,8 @@ class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
 class GoogleCloudOrgpolicyV2ListPoliciesResponse {
   /// Page token used to retrieve the next page.
   ///
-  /// This is currently not used, but the server may at any point start
-  /// supplying a valid token.
+  /// This is not used, but the server may at any point start supplying a valid
+  /// token.
   core.String? nextPageToken;
 
   /// All policies that exist on the resource.
@@ -2117,9 +2008,9 @@ class GoogleCloudOrgpolicyV2Policy {
   /// Must be one of the following forms, where `constraint_name` is the name of
   /// the constraint that this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
-  /// `folders/{folder_id}/policies/{constraint_name}` *
-  /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
+  /// `folders/{folder_number}/policies/{constraint_name}` *
+  /// `organizations/{organization_number}/policies/{constraint_name}` For
+  /// example, `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.

@@ -160,15 +160,96 @@ void checkListParametersResponse(api.ListParametersResponse o) {
   buildCounterListParametersResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5() => {'x': 'foo', 'y': 'foo'};
+core.List<api.TemplateVersion> buildUnnamed5() => [
+  buildTemplateVersion(),
+  buildTemplateVersion(),
+];
 
-void checkUnnamed5(core.Map<core.String, core.String> o) {
+void checkUnnamed5(core.List<api.TemplateVersion> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTemplateVersion(o[0]);
+  checkTemplateVersion(o[1]);
+}
+
+core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
+
+void checkUnnamed6(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterListTemplateVersionsResponse = 0;
+api.ListTemplateVersionsResponse buildListTemplateVersionsResponse() {
+  final o = api.ListTemplateVersionsResponse();
+  buildCounterListTemplateVersionsResponse++;
+  if (buildCounterListTemplateVersionsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.templateVersions = buildUnnamed5();
+    o.unreachable = buildUnnamed6();
+  }
+  buildCounterListTemplateVersionsResponse--;
+  return o;
+}
+
+void checkListTemplateVersionsResponse(api.ListTemplateVersionsResponse o) {
+  buildCounterListTemplateVersionsResponse++;
+  if (buildCounterListTemplateVersionsResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed5(o.templateVersions!);
+    checkUnnamed6(o.unreachable!);
+  }
+  buildCounterListTemplateVersionsResponse--;
+}
+
+core.List<api.Template> buildUnnamed7() => [buildTemplate(), buildTemplate()];
+
+void checkUnnamed7(core.List<api.Template> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTemplate(o[0]);
+  checkTemplate(o[1]);
+}
+
+core.List<core.String> buildUnnamed8() => ['foo', 'foo'];
+
+void checkUnnamed8(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterListTemplatesResponse = 0;
+api.ListTemplatesResponse buildListTemplatesResponse() {
+  final o = api.ListTemplatesResponse();
+  buildCounterListTemplatesResponse++;
+  if (buildCounterListTemplatesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.templates = buildUnnamed7();
+    o.unreachable = buildUnnamed8();
+  }
+  buildCounterListTemplatesResponse--;
+  return o;
+}
+
+void checkListTemplatesResponse(api.ListTemplatesResponse o) {
+  buildCounterListTemplatesResponse++;
+  if (buildCounterListTemplatesResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed7(o.templates!);
+    checkUnnamed8(o.unreachable!);
+  }
+  buildCounterListTemplatesResponse--;
+}
+
+core.Map<core.String, core.String> buildUnnamed9() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed9(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed6() => {
+core.Map<core.String, core.Object?> buildUnnamed10() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -181,7 +262,7 @@ core.Map<core.String, core.Object?> buildUnnamed6() => {
   },
 };
 
-void checkUnnamed6(core.Map<core.String, core.Object?> o) {
+void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -201,9 +282,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed5();
+    o.labels = buildUnnamed9();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed6();
+    o.metadata = buildUnnamed10();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -214,17 +295,17 @@ void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed5(o.labels!);
+    checkUnnamed9(o.labels!);
     unittest.expect(o.locationId!, unittest.equals('foo'));
-    checkUnnamed6(o.metadata!);
+    checkUnnamed10(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterLocation--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed11() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed7(core.Map<core.String, core.String> o) {
+void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -238,7 +319,7 @@ api.Parameter buildParameter() {
     o.createTime = 'foo';
     o.format = 'foo';
     o.kmsKey = 'foo';
-    o.labels = buildUnnamed7();
+    o.labels = buildUnnamed11();
     o.name = 'foo';
     o.policyMember = buildResourcePolicyMember();
     o.updateTime = 'foo';
@@ -253,7 +334,7 @@ void checkParameter(api.Parameter o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.format!, unittest.equals('foo'));
     unittest.expect(o.kmsKey!, unittest.equals('foo'));
-    checkUnnamed7(o.labels!);
+    checkUnnamed11(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkResourcePolicyMember(o.policyMember!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -332,6 +413,33 @@ void checkRenderParameterVersionResponse(api.RenderParameterVersionResponse o) {
   buildCounterRenderParameterVersionResponse--;
 }
 
+core.int buildCounterRenderTemplateVersionResponse = 0;
+api.RenderTemplateVersionResponse buildRenderTemplateVersionResponse() {
+  final o = api.RenderTemplateVersionResponse();
+  buildCounterRenderTemplateVersionResponse++;
+  if (buildCounterRenderTemplateVersionResponse < 3) {
+    o.parameterVersion = 'foo';
+    o.payload = buildTemplateVersionPayload();
+    o.renderedPayload = 'foo';
+    o.templateFormat = 'foo';
+    o.templateVersion = 'foo';
+  }
+  buildCounterRenderTemplateVersionResponse--;
+  return o;
+}
+
+void checkRenderTemplateVersionResponse(api.RenderTemplateVersionResponse o) {
+  buildCounterRenderTemplateVersionResponse++;
+  if (buildCounterRenderTemplateVersionResponse < 3) {
+    unittest.expect(o.parameterVersion!, unittest.equals('foo'));
+    checkTemplateVersionPayload(o.payload!);
+    unittest.expect(o.renderedPayload!, unittest.equals('foo'));
+    unittest.expect(o.templateFormat!, unittest.equals('foo'));
+    unittest.expect(o.templateVersion!, unittest.equals('foo'));
+  }
+  buildCounterRenderTemplateVersionResponse--;
+}
+
 core.int buildCounterResourcePolicyMember = 0;
 api.ResourcePolicyMember buildResourcePolicyMember() {
   final o = api.ResourcePolicyMember();
@@ -353,9 +461,90 @@ void checkResourcePolicyMember(api.ResourcePolicyMember o) {
   buildCounterResourcePolicyMember--;
 }
 
-core.List<core.String> buildUnnamed8() => ['foo', 'foo'];
+core.Map<core.String, core.String> buildUnnamed12() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed8(core.List<core.String> o) {
+void checkUnnamed12(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
+core.int buildCounterTemplate = 0;
+api.Template buildTemplate() {
+  final o = api.Template();
+  buildCounterTemplate++;
+  if (buildCounterTemplate < 3) {
+    o.createTime = 'foo';
+    o.format = 'foo';
+    o.labels = buildUnnamed12();
+    o.name = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterTemplate--;
+  return o;
+}
+
+void checkTemplate(api.Template o) {
+  buildCounterTemplate++;
+  if (buildCounterTemplate < 3) {
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.format!, unittest.equals('foo'));
+    checkUnnamed12(o.labels!);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterTemplate--;
+}
+
+core.int buildCounterTemplateVersion = 0;
+api.TemplateVersion buildTemplateVersion() {
+  final o = api.TemplateVersion();
+  buildCounterTemplateVersion++;
+  if (buildCounterTemplateVersion < 3) {
+    o.createTime = 'foo';
+    o.disabled = true;
+    o.name = 'foo';
+    o.payload = buildTemplateVersionPayload();
+    o.updateTime = 'foo';
+  }
+  buildCounterTemplateVersion--;
+  return o;
+}
+
+void checkTemplateVersion(api.TemplateVersion o) {
+  buildCounterTemplateVersion++;
+  if (buildCounterTemplateVersion < 3) {
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.disabled!, unittest.isTrue);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    checkTemplateVersionPayload(o.payload!);
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterTemplateVersion--;
+}
+
+core.int buildCounterTemplateVersionPayload = 0;
+api.TemplateVersionPayload buildTemplateVersionPayload() {
+  final o = api.TemplateVersionPayload();
+  buildCounterTemplateVersionPayload++;
+  if (buildCounterTemplateVersionPayload < 3) {
+    o.data = 'foo';
+  }
+  buildCounterTemplateVersionPayload--;
+  return o;
+}
+
+void checkTemplateVersionPayload(api.TemplateVersionPayload o) {
+  buildCounterTemplateVersionPayload++;
+  if (buildCounterTemplateVersionPayload < 3) {
+    unittest.expect(o.data!, unittest.equals('foo'));
+  }
+  buildCounterTemplateVersionPayload--;
+}
+
+core.List<core.String> buildUnnamed13() => ['foo', 'foo'];
+
+void checkUnnamed13(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -403,6 +592,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkListParametersResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListTemplateVersionsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListTemplateVersionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListTemplateVersionsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListTemplateVersionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListTemplatesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListTemplatesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListTemplatesResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListTemplatesResponse(od);
     });
   });
 
@@ -461,6 +672,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RenderTemplateVersionResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRenderTemplateVersionResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RenderTemplateVersionResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRenderTemplateVersionResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ResourcePolicyMember', () {
     unittest.test('to-json--from-json', () async {
       final o = buildResourcePolicyMember();
@@ -469,6 +691,39 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkResourcePolicyMember(od);
+    });
+  });
+
+  unittest.group('obj-schema-Template', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTemplate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Template.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTemplate(od);
+    });
+  });
+
+  unittest.group('obj-schema-TemplateVersion', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTemplateVersion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TemplateVersion.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTemplateVersion(od);
+    });
+  });
+
+  unittest.group('obj-schema-TemplateVersionPayload', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTemplateVersionPayload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TemplateVersionPayload.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTemplateVersionPayload(od);
     });
   });
 
@@ -530,7 +785,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ParameterManagerApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed8();
+      final arg_extraLocationTypes = buildUnnamed13();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1376,6 +1631,786 @@ void main() {
       final response = await res.render(arg_name, $fields: arg_$fields);
       checkRenderParameterVersionResponse(
         response as api.RenderParameterVersionResponse,
+      );
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsTemplatesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(mock).projects.locations.templates;
+      final arg_request = buildTemplate();
+      final arg_parent = 'foo';
+      final arg_requestId = 'foo';
+      final arg_templateId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Template.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTemplate(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['templateId']!.first,
+            unittest.equals(arg_templateId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTemplate());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        requestId: arg_requestId,
+        templateId: arg_templateId,
+        $fields: arg_$fields,
+      );
+      checkTemplate(response as api.Template);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(mock).projects.locations.templates;
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(mock).projects.locations.templates;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTemplate());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTemplate(response as api.Template);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(mock).projects.locations.templates;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListTemplatesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListTemplatesResponse(response as api.ListTemplatesResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(mock).projects.locations.templates;
+      final arg_request = buildTemplate();
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Template.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTemplate(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTemplate());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        requestId: arg_requestId,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkTemplate(response as api.Template);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsTemplatesVersionsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.templates.versions;
+      final arg_request = buildTemplateVersion();
+      final arg_parent = 'foo';
+      final arg_requestId = 'foo';
+      final arg_templateVersionId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TemplateVersion.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTemplateVersion(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['templateVersionId']!.first,
+            unittest.equals(arg_templateVersionId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTemplateVersion());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        requestId: arg_requestId,
+        templateVersionId: arg_templateVersionId,
+        $fields: arg_$fields,
+      );
+      checkTemplateVersion(response as api.TemplateVersion);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.templates.versions;
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.templates.versions;
+      final arg_name = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(queryMap['view']!.first, unittest.equals(arg_view));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTemplateVersion());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(
+        arg_name,
+        view: arg_view,
+        $fields: arg_$fields,
+      );
+      checkTemplateVersion(response as api.TemplateVersion);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.templates.versions;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListTemplateVersionsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListTemplateVersionsResponse(
+        response as api.ListTemplateVersionsResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.templates.versions;
+      final arg_request = buildTemplateVersion();
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TemplateVersion.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTemplateVersion(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTemplateVersion());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        requestId: arg_requestId,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkTemplateVersion(response as api.TemplateVersion);
+    });
+
+    unittest.test('method--render', () async {
+      final mock = HttpServerMock();
+      final res = api.ParameterManagerApi(
+        mock,
+      ).projects.locations.templates.versions;
+      final arg_name = 'foo';
+      final arg_parameterVersion = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['parameterVersion']!.first,
+            unittest.equals(arg_parameterVersion),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildRenderTemplateVersionResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.render(
+        arg_name,
+        parameterVersion: arg_parameterVersion,
+        $fields: arg_$fields,
+      );
+      checkRenderTemplateVersionResponse(
+        response as api.RenderTemplateVersionResponse,
       );
     });
   });

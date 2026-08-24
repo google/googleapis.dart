@@ -1755,113 +1755,8 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
 /// By creating a custom constraint, customers can apply policies of this custom
 /// constraint. *Creating a custom constraint itself does NOT apply any policy
 /// enforcement*.
-class GoogleCloudOrgpolicyV2CustomConstraint {
-  /// Allow or deny type.
-  /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : This is only used for distinguishing unset
-  /// values, and results in an error if used.
-  /// - "ALLOW" : Allowed action type.
-  /// - "DENY" : Deny action type.
-  core.String? actionType;
-
-  /// A Common Expression Language (CEL) condition which is used in the
-  /// evaluation of the constraint.
-  ///
-  /// For example:
-  /// `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")` or,
-  /// `resource.management.auto_upgrade == true` The max length of the condition
-  /// is 1000 characters.
-  core.String? condition;
-
-  /// Detailed information about this custom policy constraint.
-  ///
-  /// The max length of the description is 2000 characters.
-  core.String? description;
-
-  /// One line display name for the UI.
-  ///
-  /// The max length of the display_name is 200 characters.
-  core.String? displayName;
-
-  /// All the operations being applied for this constraint.
-  core.List<core.String>? methodTypes;
-
-  /// Name of the constraint.
-  ///
-  /// This is unique within the organization. The name must be of the form: *
-  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
-  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
-  /// The max length is 71 characters and the minimum length is 1. Note that the
-  /// prefix `organizations/{organization_id}/customConstraints/custom.` is not
-  /// counted.
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// The resource instance type on which this policy applies.
-  ///
-  /// Format will be of the form : `/` Example: *
-  /// `compute.googleapis.com/Instance`.
-  ///
-  /// Immutable.
-  core.List<core.String>? resourceTypes;
-
-  /// The last time this custom constraint was updated.
-  ///
-  /// This represents the last time that the `CreateCustomConstraint` or
-  /// `UpdateCustomConstraint` methods were called.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleCloudOrgpolicyV2CustomConstraint({
-    this.actionType,
-    this.condition,
-    this.description,
-    this.displayName,
-    this.methodTypes,
-    this.name,
-    this.resourceTypes,
-    this.updateTime,
-  });
-
-  GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
-    : this(
-        actionType: json_['actionType'] as core.String?,
-        condition: json_['condition'] as core.String?,
-        description: json_['description'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        methodTypes: (json_['methodTypes'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        name: json_['name'] as core.String?,
-        resourceTypes: (json_['resourceTypes'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final actionType = this.actionType;
-    final condition = this.condition;
-    final description = this.description;
-    final displayName = this.displayName;
-    final methodTypes = this.methodTypes;
-    final name = this.name;
-    final resourceTypes = this.resourceTypes;
-    final updateTime = this.updateTime;
-    return {
-      'actionType': ?actionType,
-      'condition': ?condition,
-      'description': ?description,
-      'displayName': ?displayName,
-      'methodTypes': ?methodTypes,
-      'name': ?name,
-      'resourceTypes': ?resourceTypes,
-      'updateTime': ?updateTime,
-    };
-  }
-}
+typedef GoogleCloudOrgpolicyV2CustomConstraint =
+    $GoogleCloudOrgpolicyV2CustomConstraint;
 
 /// Defines an organization policy that is used to specify constraints for
 /// configurations of Google Cloud resources.
@@ -1893,9 +1788,9 @@ class GoogleCloudOrgpolicyV2Policy {
   /// Must be one of the following forms, where `constraint_name` is the name of
   /// the constraint that this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
-  /// `folders/{folder_id}/policies/{constraint_name}` *
-  /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
+  /// `folders/{folder_number}/policies/{constraint_name}` *
+  /// `organizations/{organization_number}/policies/{constraint_name}` For
+  /// example, `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.

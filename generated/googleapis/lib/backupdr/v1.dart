@@ -25,6 +25,12 @@
 ///
 /// Create an instance of [BackupdrApi] to access these resources:
 ///
+/// - [FoldersResource]
+///   - [FoldersLocationsResource]
+///     - [FoldersLocationsResourceBackupConfigsResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsResourceBackupConfigsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBackupPlanAssociationsResource]
@@ -55,6 +61,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class BackupdrApi {
+  /// See, edit, configure, and delete your Google Cloud Backup and DR data and
+  /// see the email address for your Google Account
+  static const cloudBackupdrScope =
+      'https://www.googleapis.com/auth/cloud-backupdr';
+
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
   static const cloudPlatformScope =
@@ -62,6 +73,8 @@ class BackupdrApi {
 
   final commons.ApiRequester _requester;
 
+  FoldersResource get folders => FoldersResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   BackupdrApi(
@@ -74,6 +87,181 @@ class BackupdrApi {
          servicePath,
          requestHeaders,
        );
+}
+
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsResource get locations =>
+      FoldersLocationsResource(_requester);
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsResourceBackupConfigsResource get resourceBackupConfigs =>
+      FoldersLocationsResourceBackupConfigsResource(_requester);
+
+  FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsResourceBackupConfigsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsResourceBackupConfigsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Fetches ResourceBackupConfigs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project, folder or organization and location for
+  /// which to retrieve resource backup configs. Format:
+  /// 'projects/{project_id}/locations/{location}',
+  /// 'folders/{folder_id}/locations/{location}', or
+  /// 'organizations/{organization_id}/locations/{location}'.
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will use 100 as default. Maximum
+  /// value is 500 and values above 500 will be coerced to 500.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchResourceBackupConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchResourceBackupConfigsResponse> fetch(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/resourceBackupConfigs:fetch';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchResourceBackupConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResourceBackupConfigsResource
+  get resourceBackupConfigs =>
+      OrganizationsLocationsResourceBackupConfigsResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class OrganizationsLocationsResourceBackupConfigsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResourceBackupConfigsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Fetches ResourceBackupConfigs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project, folder or organization and location for
+  /// which to retrieve resource backup configs. Format:
+  /// 'projects/{project_id}/locations/{location}',
+  /// 'folders/{folder_id}/locations/{location}', or
+  /// 'organizations/{organization_id}/locations/{location}'.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will use 100 as default. Maximum
+  /// value is 500 and values above 500 will be coerced to 500.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchResourceBackupConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchResourceBackupConfigsResponse> fetch(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/resourceBackupConfigs:fetch';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchResourceBackupConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsResource {
@@ -178,7 +366,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -193,9 +381,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3180,6 +3367,67 @@ class ProjectsLocationsResourceBackupConfigsResource {
   ProjectsLocationsResourceBackupConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Fetches ResourceBackupConfigs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project, folder or organization and location for
+  /// which to retrieve resource backup configs. Format:
+  /// 'projects/{project_id}/locations/{location}',
+  /// 'folders/{folder_id}/locations/{location}', or
+  /// 'organizations/{organization_id}/locations/{location}'.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will use 100 as default. Maximum
+  /// value is 500 and values above 500 will be coerced to 500.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchResourceBackupConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchResourceBackupConfigsResponse> fetch(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/resourceBackupConfigs:fetch';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchResourceBackupConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists ResourceBackupConfigs.
   ///
   /// Request parameters:
@@ -5179,8 +5427,8 @@ class BackupPlan {
   /// Output only.
   core.String? backupVaultServiceAccount;
 
-  /// Defines optional properties specific to backups of disk-based resources,
-  /// such as Compute Engine.
+  /// Defines optional properties specific to backups of compute instance-based
+  /// resources, such as Compute Engine.
   ///
   /// This includes settings like whether to perform a guest flush.
   ///
@@ -5743,11 +5991,10 @@ class BackupRule {
 
 /// Message describing a BackupVault object.
 class BackupVault {
-  /// Note: This field is added for future use case and will not be supported in
-  /// the current release.
+  /// Restricts access to certain sources and destinations for data being sent
+  /// into, or restored from, the backup vault.
   ///
-  /// Access restriction for the backup vault. Default value is
-  /// WITHIN_ORGANIZATION if not provided during creation.
+  /// Defaults to WITHIN_ORGANIZATION if not provided during creation.
   ///
   /// Optional.
   /// Possible string values are:
@@ -6241,8 +6488,20 @@ class CloudSqlInstanceInitializationConfig {
   }
 }
 
-/// --- ComputeInstanceBackupPlanProperties Message ---
+/// Properties for a compute instance backup plan.
 class ComputeInstanceBackupPlanProperties {
+  /// If true, only the boot disk will be backed up.
+  ///
+  /// Optional.
+  core.bool? bootDiskOnly;
+
+  /// Labels used to identify disks for exclusion from the backup.
+  ///
+  /// If a disk carries any of these labels, it will be excluded (OR logic).
+  ///
+  /// Optional.
+  DiskExclusionLabels? diskExclusionLabels;
+
   /// Indicates whether to perform a guest flush operation before taking a
   /// compute backup.
   ///
@@ -6252,14 +6511,33 @@ class ComputeInstanceBackupPlanProperties {
   /// Optional.
   core.bool? guestFlush;
 
-  ComputeInstanceBackupPlanProperties({this.guestFlush});
+  ComputeInstanceBackupPlanProperties({
+    this.bootDiskOnly,
+    this.diskExclusionLabels,
+    this.guestFlush,
+  });
 
   ComputeInstanceBackupPlanProperties.fromJson(core.Map json_)
-    : this(guestFlush: json_['guestFlush'] as core.bool?);
+    : this(
+        bootDiskOnly: json_['bootDiskOnly'] as core.bool?,
+        diskExclusionLabels: json_.containsKey('diskExclusionLabels')
+            ? DiskExclusionLabels.fromJson(
+                json_['diskExclusionLabels']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        guestFlush: json_['guestFlush'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final bootDiskOnly = this.bootDiskOnly;
+    final diskExclusionLabels = this.diskExclusionLabels;
     final guestFlush = this.guestFlush;
-    return {'guestFlush': ?guestFlush};
+    return {
+      'bootDiskOnly': ?bootDiskOnly,
+      'diskExclusionLabels': ?diskExclusionLabels,
+      'guestFlush': ?guestFlush,
+    };
   }
 }
 
@@ -6285,6 +6563,11 @@ class ComputeInstanceBackupProperties {
   /// from these properties.
   core.List<AttachedDisk>? disk;
 
+  /// List of disks excluded from the backup.
+  ///
+  /// Optional.
+  core.List<core.String>? excludedDisks;
+
   /// A list of guest accelerator cards' type and count to use for instances
   /// created from these properties.
   core.List<AcceleratorConfig>? guestAccelerator;
@@ -6297,6 +6580,11 @@ class ComputeInstanceBackupProperties {
   ///
   /// Optional.
   core.bool? guestFlush;
+
+  /// List of disks included in the backup.
+  ///
+  /// Optional.
+  core.List<core.String>? includedDisks;
 
   /// KeyRevocationActionType of the instance.
   ///
@@ -6367,8 +6655,10 @@ class ComputeInstanceBackupProperties {
     this.canIpForward,
     this.description,
     this.disk,
+    this.excludedDisks,
     this.guestAccelerator,
     this.guestFlush,
+    this.includedDisks,
     this.keyRevocationActionType,
     this.labels,
     this.machineType,
@@ -6392,6 +6682,9 @@ class ComputeInstanceBackupProperties {
               ),
             )
             .toList(),
+        excludedDisks: (json_['excludedDisks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         guestAccelerator: (json_['guestAccelerator'] as core.List?)
             ?.map(
               (value) => AcceleratorConfig.fromJson(
@@ -6400,6 +6693,9 @@ class ComputeInstanceBackupProperties {
             )
             .toList(),
         guestFlush: json_['guestFlush'] as core.bool?,
+        includedDisks: (json_['includedDisks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         keyRevocationActionType:
             json_['keyRevocationActionType'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -6443,8 +6739,10 @@ class ComputeInstanceBackupProperties {
     final canIpForward = this.canIpForward;
     final description = this.description;
     final disk = this.disk;
+    final excludedDisks = this.excludedDisks;
     final guestAccelerator = this.guestAccelerator;
     final guestFlush = this.guestFlush;
+    final includedDisks = this.includedDisks;
     final keyRevocationActionType = this.keyRevocationActionType;
     final labels = this.labels;
     final machineType = this.machineType;
@@ -6459,8 +6757,10 @@ class ComputeInstanceBackupProperties {
       'canIpForward': ?canIpForward,
       'description': ?description,
       'disk': ?disk,
+      'excludedDisks': ?excludedDisks,
       'guestAccelerator': ?guestAccelerator,
       'guestFlush': ?guestFlush,
+      'includedDisks': ?includedDisks,
       'keyRevocationActionType': ?keyRevocationActionType,
       'labels': ?labels,
       'machineType': ?machineType,
@@ -6899,28 +7199,63 @@ class ComputeInstanceTargetEnvironment {
   /// Required.
   core.String? project;
 
+  /// Whether to use the project service account for the Compute Engine instance
+  /// restore.
+  ///
+  /// Optional.
+  core.bool? useProjectServiceAccount;
+
   /// The zone of the Compute Engine instance.
   ///
   /// Required.
   core.String? zone;
 
-  ComputeInstanceTargetEnvironment({this.project, this.zone});
+  ComputeInstanceTargetEnvironment({
+    this.project,
+    this.useProjectServiceAccount,
+    this.zone,
+  });
 
   ComputeInstanceTargetEnvironment.fromJson(core.Map json_)
     : this(
         project: json_['project'] as core.String?,
+        useProjectServiceAccount:
+            json_['useProjectServiceAccount'] as core.bool?,
         zone: json_['zone'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final project = this.project;
+    final useProjectServiceAccount = this.useProjectServiceAccount;
     final zone = this.zone;
-    return {'project': ?project, 'zone': ?zone};
+    return {
+      'project': ?project,
+      'useProjectServiceAccount': ?useProjectServiceAccount,
+      'zone': ?zone,
+    };
   }
 }
 
 /// A set of Confidential Instance options.
-typedef ConfidentialInstanceConfig = $ConfidentialInstanceConfig;
+class ConfidentialInstanceConfig {
+  /// Defines whether the instance should have confidential compute enabled.
+  ///
+  /// Optional.
+  core.bool? enableConfidentialCompute;
+
+  ConfidentialInstanceConfig({this.enableConfidentialCompute});
+
+  ConfidentialInstanceConfig.fromJson(core.Map json_)
+    : this(
+        enableConfidentialCompute:
+            json_['enableConfidentialCompute'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableConfidentialCompute = this.enableConfidentialCompute;
+    return {'enableConfidentialCompute': ?enableConfidentialCompute};
+  }
+}
 
 /// A customer-supplied encryption key.
 class CustomerEncryptionKey {
@@ -7595,7 +7930,7 @@ class DataSourceReference {
   }
 }
 
-/// --- DiskBackupPlanProperties Message ---
+/// Properties for a disk backup plan.
 class DiskBackupPlanProperties {
   /// Indicates whether to perform a guest flush operation before taking a disk
   /// backup.
@@ -7832,6 +8167,34 @@ class DiskDataSourceProperties {
   }
 }
 
+/// Message for selective disk backup exclusion labels.
+class DiskExclusionLabels {
+  /// Labels used to identify disks for exclusion from the backup.
+  ///
+  /// If a disk carries any of these labels, it will be excluded (OR logic).
+  ///
+  /// Optional.
+  core.List<LabelKeyValPair>? labels;
+
+  DiskExclusionLabels({this.labels});
+
+  DiskExclusionLabels.fromJson(core.Map json_)
+    : this(
+        labels: (json_['labels'] as core.List?)
+            ?.map(
+              (value) => LabelKeyValPair.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final labels = this.labels;
+    return {'labels': ?labels};
+  }
+}
+
 /// DiskRestoreProperties represents the properties of a Disk restore.
 class DiskRestoreProperties {
   /// The access mode of the disk.
@@ -7883,6 +8246,10 @@ class DiskRestoreProperties {
   ///
   /// Optional.
   core.List<GuestOsFeature>? guestOsFeature;
+
+  /// Provides options for creating a disk from a source Compute Instance
+  /// backup.
+  RestoreDiskFromInstanceOptions? instanceBackupSource;
 
   /// Labels to apply to this disk.
   ///
@@ -7963,6 +8330,7 @@ class DiskRestoreProperties {
     this.diskEncryptionKey,
     this.enableConfidentialCompute,
     this.guestOsFeature,
+    this.instanceBackupSource,
     this.labels,
     this.licenses,
     this.name,
@@ -7996,6 +8364,12 @@ class DiskRestoreProperties {
               ),
             )
             .toList(),
+        instanceBackupSource: json_.containsKey('instanceBackupSource')
+            ? RestoreDiskFromInstanceOptions.fromJson(
+                json_['instanceBackupSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -8025,6 +8399,7 @@ class DiskRestoreProperties {
     final diskEncryptionKey = this.diskEncryptionKey;
     final enableConfidentialCompute = this.enableConfidentialCompute;
     final guestOsFeature = this.guestOsFeature;
+    final instanceBackupSource = this.instanceBackupSource;
     final labels = this.labels;
     final licenses = this.licenses;
     final name = this.name;
@@ -8043,6 +8418,7 @@ class DiskRestoreProperties {
       'diskEncryptionKey': ?diskEncryptionKey,
       'enableConfidentialCompute': ?enableConfidentialCompute,
       'guestOsFeature': ?guestOsFeature,
+      'instanceBackupSource': ?instanceBackupSource,
       'labels': ?labels,
       'licenses': ?licenses,
       'name': ?name,
@@ -8065,23 +8441,39 @@ class DiskTargetEnvironment {
   /// Required.
   core.String? project;
 
+  /// Whether to use the project service account for the disk restore.
+  ///
+  /// Optional.
+  core.bool? useProjectServiceAccount;
+
   /// Target zone for the disk.
   ///
   /// Required.
   core.String? zone;
 
-  DiskTargetEnvironment({this.project, this.zone});
+  DiskTargetEnvironment({
+    this.project,
+    this.useProjectServiceAccount,
+    this.zone,
+  });
 
   DiskTargetEnvironment.fromJson(core.Map json_)
     : this(
         project: json_['project'] as core.String?,
+        useProjectServiceAccount:
+            json_['useProjectServiceAccount'] as core.bool?,
         zone: json_['zone'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final project = this.project;
+    final useProjectServiceAccount = this.useProjectServiceAccount;
     final zone = this.zone;
-    return {'project': ?project, 'zone': ?zone};
+    return {
+      'project': ?project,
+      'useProjectServiceAccount': ?useProjectServiceAccount,
+      'zone': ?zone,
+    };
   }
 }
 
@@ -8235,6 +8627,8 @@ class FetchAccessTokenResponse {
   /// The location in bucket that can be used for reading.
   core.String? readLocation;
 
+  /// Input only.
+  ///
   /// The downscoped token that was created.
   core.String? token;
 
@@ -8410,6 +8804,41 @@ class FetchMsComplianceMetadataResponse {
   core.Map<core.String, core.dynamic> toJson() {
     final isAssuredWorkload = this.isAssuredWorkload;
     return {'isAssuredWorkload': ?isAssuredWorkload};
+  }
+}
+
+/// Response for FetchResourceBackupConfigs.
+class FetchResourceBackupConfigsResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of ResourceBackupConfigs for the specified scope.
+  core.List<ResourceBackupConfig>? resourceBackupConfigs;
+
+  FetchResourceBackupConfigsResponse({
+    this.nextPageToken,
+    this.resourceBackupConfigs,
+  });
+
+  FetchResourceBackupConfigsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resourceBackupConfigs: (json_['resourceBackupConfigs'] as core.List?)
+            ?.map(
+              (value) => ResourceBackupConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final resourceBackupConfigs = this.resourceBackupConfigs;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'resourceBackupConfigs': ?resourceBackupConfigs,
+    };
   }
 }
 
@@ -9017,6 +9446,40 @@ class InstanceParams {
   core.Map<core.String, core.dynamic> toJson() {
     final resourceManagerTags = this.resourceManagerTags;
     return {'resourceManagerTags': ?resourceManagerTags};
+  }
+}
+
+/// Message for a label key-value pair.
+class LabelKeyValPair {
+  /// Key of the label.
+  ///
+  /// The key must follow the format: `\\p{Ll}\\p{Lo}{0,62}`. This means the key
+  /// must start with a lowercase letter or a lowercase international character,
+  /// followed by zero or more lowercase letters, lowercase international
+  /// characters, numbers, underscores, or dashes. The key must be at most 63
+  /// characters long. International characters are allowed.
+  core.String? key;
+
+  /// Value of the label.
+  ///
+  /// The value must follow the format: `[\\p{Ll}\\p{Lo}\\p{N}_-]{1,63}`. This
+  /// means the value must be one or more lowercase letters, lowercase
+  /// international characters, numbers, underscores, or dashes. The value must
+  /// be at most 63 characters long. International characters are allowed.
+  core.String? value;
+
+  LabelKeyValPair({this.key, this.value});
+
+  LabelKeyValPair.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
   }
 }
 
@@ -10360,7 +10823,17 @@ class RegionDiskTargetEnvironment {
   /// Required.
   core.List<core.String>? replicaZones;
 
-  RegionDiskTargetEnvironment({this.project, this.region, this.replicaZones});
+  /// Whether to use the project service account for the disk restore.
+  ///
+  /// Optional.
+  core.bool? useProjectServiceAccount;
+
+  RegionDiskTargetEnvironment({
+    this.project,
+    this.region,
+    this.replicaZones,
+    this.useProjectServiceAccount,
+  });
 
   RegionDiskTargetEnvironment.fromJson(core.Map json_)
     : this(
@@ -10369,16 +10842,20 @@ class RegionDiskTargetEnvironment {
         replicaZones: (json_['replicaZones'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        useProjectServiceAccount:
+            json_['useProjectServiceAccount'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final project = this.project;
     final region = this.region;
     final replicaZones = this.replicaZones;
+    final useProjectServiceAccount = this.useProjectServiceAccount;
     return {
       'project': ?project,
       'region': ?region,
       'replicaZones': ?replicaZones,
+      'useProjectServiceAccount': ?useProjectServiceAccount,
     };
   }
 }
@@ -10627,6 +11104,31 @@ class RestoreBackupRequest {
       'regionDiskTargetEnvironment': ?regionDiskTargetEnvironment,
       'requestId': ?requestId,
     };
+  }
+}
+
+/// Options for creating a disk from a source Compute Instance backup.
+class RestoreDiskFromInstanceOptions {
+  /// Specifies that the boot disk should be restored from the instance backup.
+  ///
+  /// This field should only be set to `true` if selected.
+  core.bool? bootDisk;
+
+  /// The device name of the disk to restore from the VM backup.
+  core.String? sourceDeviceName;
+
+  RestoreDiskFromInstanceOptions({this.bootDisk, this.sourceDeviceName});
+
+  RestoreDiskFromInstanceOptions.fromJson(core.Map json_)
+    : this(
+        bootDisk: json_['bootDisk'] as core.bool?,
+        sourceDeviceName: json_['sourceDeviceName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bootDisk = this.bootDisk;
+    final sourceDeviceName = this.sourceDeviceName;
+    return {'bootDisk': ?bootDisk, 'sourceDeviceName': ?sourceDeviceName};
   }
 }
 
@@ -11040,15 +11542,17 @@ class StandardSchedule {
 
   /// Specifies frequency for hourly backups.
   ///
-  /// A hourly frequency of 2 means jobs will run every 2 hours from start time
+  /// A hourly frequency of 1 means jobs will run every 1 hour from start time
   /// till end time defined. This is required for `recurrence_type`, `HOURLY`
   /// and is not applicable otherwise. A validation error will occur if a value
-  /// is supplied and `recurrence_type` is not `HOURLY`. Value of hourly
-  /// frequency should be between 4 and 23. Reason for limit : We found that
-  /// there is bandwidth limitation of 3GB/S for GMI while taking a backup and
-  /// 5GB/S while doing a restore. Given the amount of parallel backups and
-  /// restore we are targeting, this will potentially take the backup time to
-  /// mins and hours (in worst case scenario).
+  /// is supplied and `recurrence_type` is not `HOURLY`. The supported values
+  /// for each resource type are as follows: *
+  /// `compute.googleapis.com/Instance`: 1-23 * `compute.googleapis.com/Disk`:
+  /// 1-23 * `sqladmin.googleapis.com/Instance`: 6-23 *
+  /// `alloydb.googleapis.com/Cluster`: 1-23 * `file.googleapis.com/Instance`:
+  /// 1-23 Refer to link
+  /// https://cloud.google.com/backup-disaster-recovery/docs/concepts/cloud_best_practices
+  /// for more details.
   ///
   /// Optional.
   core.int? hourlyFrequency;

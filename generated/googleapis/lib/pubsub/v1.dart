@@ -2513,11 +2513,9 @@ class AwsKinesis {
   /// - "STREAM_NOT_FOUND" : The Kinesis stream does not exist.
   /// - "CONSUMER_NOT_FOUND" : The Kinesis consumer does not exist.
   /// - "CONFLICTING_REGION_CONSTRAINTS" : Indicates an error state where the
-  /// ingestion source cannot be processed. This occurs because there is no
-  /// overlap between the regions allowed by the topic's `MessageStoragePolicy`
-  /// and the regions permitted by the Regional Access Boundary (RAB)
-  /// restrictions on the project's Pub/Sub service account. A common, allowed
-  /// region is required to determine a valid ingestion region.
+  /// ingestion source cannot be processed because the selected ingestion region
+  /// is not permitted by the Regional Access Boundary (RAB) restrictions on the
+  /// project's service account.
   core.String? state;
 
   /// The Kinesis stream ARN to ingest data from.
@@ -2598,11 +2596,9 @@ class AwsMsk {
   /// - "CLUSTER_NOT_FOUND" : The provided MSK cluster wasn't found.
   /// - "TOPIC_NOT_FOUND" : The provided topic wasn't found.
   /// - "CONFLICTING_REGION_CONSTRAINTS" : Indicates an error state where the
-  /// ingestion source cannot be processed. This occurs because there is no
-  /// overlap between the regions allowed by the topic's `MessageStoragePolicy`
-  /// and the regions permitted by the Regional Access Boundary (RAB)
-  /// restrictions on the project's Pub/Sub service account. A common, allowed
-  /// region is required to determine a valid ingestion region.
+  /// ingestion source cannot be processed because the selected ingestion region
+  /// is not permitted by the Regional Access Boundary (RAB) restrictions on the
+  /// project's service account.
   core.String? state;
 
   /// The name of the topic in the Amazon MSK cluster that Pub/Sub will import
@@ -2692,11 +2688,9 @@ class AzureEventHubs {
   /// - "RESOURCE_GROUP_NOT_FOUND" : The provided Event Hubs resource group
   /// couldn't be found.
   /// - "CONFLICTING_REGION_CONSTRAINTS" : Indicates an error state where the
-  /// ingestion source cannot be processed. This occurs because there is no
-  /// overlap between the regions allowed by the topic's `MessageStoragePolicy`
-  /// and the regions permitted by the Regional Access Boundary (RAB)
-  /// restrictions on the project's Pub/Sub service account. A common, allowed
-  /// region is required to determine a valid ingestion region.
+  /// ingestion source cannot be processed because the selected ingestion region
+  /// is not permitted by the Regional Access Boundary (RAB) restrictions on the
+  /// project's service account.
   core.String? state;
 
   /// The Azure subscription id.
@@ -2757,12 +2751,15 @@ class AzureEventHubs {
 
 /// Configuration for a BigQuery subscription.
 class BigQueryConfig {
-  /// When true and use_topic_schema is true, any fields that are a part of the
-  /// topic schema that are not part of the BigQuery table schema are dropped
-  /// when writing to BigQuery.
+  /// If true and `use_topic_schema` is true, drops any fields that are part of
+  /// the topic schema that are not part of the BigQuery table schema when
+  /// writing to BigQuery.
   ///
   /// Otherwise, the schemas must be kept in sync and any messages with extra
-  /// fields are not written and remain in the subscription's backlog.
+  /// fields are not written and remain in the subscription's backlog. If true
+  /// and `use_table_schema` is true, drops any fields in the message that are
+  /// not part of the BigQuery table schema when writing to BigQuery. Otherwise,
+  /// the write to BigQuery will fail.
   ///
   /// Optional.
   core.bool? dropUnknownFields;
@@ -2881,9 +2878,10 @@ class BigQueryConfig {
 /// Configuration for a Bigtable subscription.
 ///
 /// The Pub/Sub message will be written to a Bigtable row as follows: - row key:
-/// subscription name and message ID delimited by #. - columns: message bytes
-/// written to a single column family "data" with an empty-string column
-/// qualifier. - cell timestamp: the message publish timestamp.
+/// subscription name, message ID hash, and message ID delimited by `#`. -
+/// columns: message bytes written to a single column family `data` with an
+/// empty-string column qualifier. - cell timestamp: the message publish
+/// timestamp.
 class BigtableConfig {
   /// The app profile to use for the Bigtable writes.
   ///
@@ -2911,19 +2909,21 @@ class BigtableConfig {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
   /// - "ACTIVE" : The subscription can actively send messages to Bigtable.
-  /// - "NOT_FOUND" : Cannot write to Bigtable because the instance, table, or
-  /// app profile does not exist.
-  /// - "APP_PROFILE_MISCONFIGURED" : Cannot write to Bigtable because the app
-  /// profile is not configured for single-cluster routing.
+  /// - "NOT_FOUND" : Unused in the current implementation. Placeholder for
+  /// future use.
+  /// - "APP_PROFILE_MISCONFIGURED" : Unused in the current implementation.
+  /// Placeholder for future use.
   /// - "PERMISSION_DENIED" : Cannot write to Bigtable because of permission
-  /// denied errors. This can happen if: - The Pub/Sub service agent has not
-  /// been granted the \[appropriate Bigtable IAM permission
+  /// denied errors. This can happen if: - The Bigtable instance, table, or app
+  /// profile does not exist. - The Pub/Sub service agent has not been granted
+  /// the \[appropriate Bigtable IAM permission
   /// bigtable.tables.mutateRows\]({$universe.dns_names.final_documentation_domain}/bigtable/docs/access-control#permissions)
   /// - The bigtable.googleapis.com API is not enabled for the project
   /// (\[instructions\]({$universe.dns_names.final_documentation_domain}/service-usage/docs/enable-disable))
   /// - "SCHEMA_MISMATCH" : Cannot write to Bigtable because of a missing column
-  /// family ("data") or if there is no structured row key for the subscription
-  /// name + message ID.
+  /// family (`data`), or if there is no structured row key for the subscription
+  /// name + message ID, if because the app profile is not configured for
+  /// single-cluster routing.
   /// - "IN_TRANSIT_LOCATION_RESTRICTION" : Cannot write to the destination
   /// because enforce_in_transit is set to true and the destination locations
   /// are not in the allowed regions.
@@ -3142,11 +3142,9 @@ class CloudStorage {
   /// - "TOO_MANY_OBJECTS" : The Cloud Storage bucket has too many objects,
   /// ingestion will be paused.
   /// - "CONFLICTING_REGION_CONSTRAINTS" : Indicates an error state where the
-  /// ingestion source cannot be processed. This occurs because there is no
-  /// overlap between the regions allowed by the topic's `MessageStoragePolicy`
-  /// and the regions permitted by the Regional Access Boundary (RAB)
-  /// restrictions on the project's Pub/Sub service account. A common, allowed
-  /// region is required to determine a valid ingestion region.
+  /// ingestion source cannot be processed because the selected ingestion region
+  /// is not permitted by the Regional Access Boundary (RAB) restrictions on the
+  /// project's service account.
   core.String? state;
 
   /// Data from Cloud Storage will be interpreted as text.
@@ -3403,6 +3401,10 @@ class CommitSchemaRequest {
   }
 }
 
+/// Configuration for compressing/decompressing message data using a
+/// user-specified compression algorithm.
+typedef Compression = $Compression;
+
 /// Ingestion settings for Confluent Cloud.
 class ConfluentCloud {
   /// The address of the bootstrap server.
@@ -3448,11 +3450,9 @@ class ConfluentCloud {
   /// - "CLUSTER_NOT_FOUND" : The provided cluster wasn't found.
   /// - "TOPIC_NOT_FOUND" : The provided topic wasn't found.
   /// - "CONFLICTING_REGION_CONSTRAINTS" : Indicates an error state where the
-  /// ingestion source cannot be processed. This occurs because there is no
-  /// overlap between the regions allowed by the topic's `MessageStoragePolicy`
-  /// and the regions permitted by the Regional Access Boundary (RAB)
-  /// restrictions on the project's Pub/Sub service account. A common, allowed
-  /// region is required to determine a valid ingestion region.
+  /// ingestion source cannot be processed because the selected ingestion region
+  /// is not permitted by the Regional Access Boundary (RAB) restrictions on the
+  /// project's service account.
   core.String? state;
 
   /// The name of the topic in the Confluent Cloud cluster that Pub/Sub will
@@ -3522,7 +3522,9 @@ class CreateSnapshotRequest {
   /// Input only.
   ///
   /// Immutable. Tag keys/values directly bound to this resource. For example:
-  /// "123/environment": "production", "123/costCenter": "marketing"
+  /// "123/environment": "production", "123/costCenter": "marketing" See
+  /// https://{$universe.dns_names.final_documentation_domain}/pubsub/docs/tags
+  /// for more information on using tags with Pub/Sub resources.
   ///
   /// Optional.
   core.Map<core.String, core.String>? tags;
@@ -4047,6 +4049,11 @@ class MessageTransform {
   /// Optional.
   AIInference? aiInference;
 
+  /// Compression/Decompression.
+  ///
+  /// Optional.
+  Compression? compression;
+
   /// If true, the transform is disabled and will not be applied to messages.
   ///
   /// Defaults to `false`.
@@ -4072,6 +4079,7 @@ class MessageTransform {
 
   MessageTransform({
     this.aiInference,
+    this.compression,
     this.disabled,
     this.enabled,
     this.javascriptUdf,
@@ -4082,6 +4090,11 @@ class MessageTransform {
         aiInference: json_.containsKey('aiInference')
             ? AIInference.fromJson(
                 json_['aiInference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        compression: json_.containsKey('compression')
+            ? Compression.fromJson(
+                json_['compression'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         disabled: json_['disabled'] as core.bool?,
@@ -4095,11 +4108,13 @@ class MessageTransform {
 
   core.Map<core.String, core.dynamic> toJson() {
     final aiInference = this.aiInference;
+    final compression = this.compression;
     final disabled = this.disabled;
     final enabled = this.enabled;
     final javascriptUdf = this.javascriptUdf;
     return {
       'aiInference': ?aiInference,
+      'compression': ?compression,
       'disabled': ?disabled,
       'enabled': ?enabled,
       'javascriptUdf': ?javascriptUdf,
@@ -4910,9 +4925,9 @@ class Snapshot {
 
 /// A subscription resource.
 ///
-/// If none of `push_config`, `bigquery_config`, or `cloud_storage_config` is
-/// set, then the subscriber will pull and ack messages using API methods. At
-/// most one of these fields may be set.
+/// If none of `push_config`, `bigquery_config`, `cloud_storage_config`, or
+/// `bigtable_config` is set, then the subscriber will pull and ack messages
+/// using API methods. At most one of these fields may be set.
 class Subscription {
   /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
   /// the subscriber to acknowledge receipt before resending the message.
@@ -5106,7 +5121,9 @@ class Subscription {
   /// Input only.
   ///
   /// Immutable. Tag keys/values directly bound to this resource. For example:
-  /// "123/environment": "production", "123/costCenter": "marketing"
+  /// "123/environment": "production", "123/costCenter": "marketing" See
+  /// https://{$universe.dns_names.final_documentation_domain}/pubsub/docs/tags
+  /// for more information on using tags with Pub/Sub resources.
   ///
   /// Optional.
   core.Map<core.String, core.String>? tags;
@@ -5405,7 +5422,9 @@ class Topic {
   /// Input only.
   ///
   /// Immutable. Tag keys/values directly bound to this resource. For example:
-  /// "123/environment": "production", "123/costCenter": "marketing"
+  /// "123/environment": "production", "123/costCenter": "marketing" See
+  /// https://{$universe.dns_names.final_documentation_domain}/pubsub/docs/tags
+  /// for more information on using tags with Pub/Sub resources.
   ///
   /// Optional.
   core.Map<core.String, core.String>? tags;

@@ -551,12 +551,6 @@ class FetchVerificationOptionsResponse {
 
 /// Request message for Verifications.GenerateInstantVerificationToken.
 class GenerateInstantVerificationTokenRequest {
-  /// The address and other details of the location to generate an instant
-  /// verification token for.
-  ///
-  /// Immutable.
-  LocationData? locationData;
-
   /// The location identifier associated with an unverified listing.
   ///
   /// This is the location id generated at the time that the listing was
@@ -568,22 +562,14 @@ class GenerateInstantVerificationTokenRequest {
   /// documentation for more information.
   core.String? locationId;
 
-  GenerateInstantVerificationTokenRequest({this.locationData, this.locationId});
+  GenerateInstantVerificationTokenRequest({this.locationId});
 
   GenerateInstantVerificationTokenRequest.fromJson(core.Map json_)
-    : this(
-        locationData: json_.containsKey('locationData')
-            ? LocationData.fromJson(
-                json_['locationData'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        locationId: json_['locationId'] as core.String?,
-      );
+    : this(locationId: json_['locationId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() {
-    final locationData = this.locationData;
     final locationId = this.locationId;
-    return {'locationData': ?locationData, 'locationId': ?locationId};
+    return {'locationId': ?locationId};
   }
 }
 
@@ -654,52 +640,6 @@ class ListVerificationsResponse {
     final nextPageToken = this.nextPageToken;
     final verifications = this.verifications;
     return {'nextPageToken': ?nextPageToken, 'verifications': ?verifications};
-  }
-}
-
-/// The address and other details of the location to generate an instant
-/// verification token for.
-class LocationData {
-  /// A precise, accurate address to describe your business location.
-  ///
-  /// PO boxes or mailboxes located at remote locations are not acceptable. At
-  /// this time, you can specify a maximum of five `address_lines` values in the
-  /// address.
-  ///
-  /// Immutable.
-  PostalAddress? address;
-
-  /// Name should reflect your business's real-world name, as used consistently
-  /// on your storefront, website, and stationery, and as known to customers.
-  ///
-  /// Any additional information, when relevant, can be included in other fields
-  /// of the resource (for example, `Address`, `Categories`). Don't add
-  /// unnecessary information to your name (for example, prefer "Google" over
-  /// "Google Inc. - Mountain View Corporate Headquarters"). Don't include
-  /// marketing taglines, store codes, special characters, hours or closed/open
-  /// status, phone numbers, website URLs, service/product information,
-  /// location/address or directions, or containment information (for example,
-  /// "Chase ATM in Duane Reade").
-  ///
-  /// Immutable.
-  core.String? name;
-
-  LocationData({this.address, this.name});
-
-  LocationData.fromJson(core.Map json_)
-    : this(
-        address: json_.containsKey('address')
-            ? PostalAddress.fromJson(
-                json_['address'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final address = this.address;
-    final name = this.name;
-    return {'address': ?address, 'name': ?name};
   }
 }
 

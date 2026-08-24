@@ -125,7 +125,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -140,9 +140,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2278,6 +2277,15 @@ class GceHyperdiskBalancedHighAvailability {
   /// Optional.
   core.String? archiveTimeout;
 
+  /// Maximum size in GB to which this persistent directory can be resized.
+  ///
+  /// Defaults to `0`, which indicates no maximum limit is enforced by this
+  /// configuration. Resizing is still subject to the quotas and limits of the
+  /// underlying disk type.
+  ///
+  /// Optional.
+  core.int? maxSizeGb;
+
   /// Whether the persistent disk should be deleted when the workstation is
   /// deleted.
   ///
@@ -2310,6 +2318,7 @@ class GceHyperdiskBalancedHighAvailability {
 
   GceHyperdiskBalancedHighAvailability({
     this.archiveTimeout,
+    this.maxSizeGb,
     this.reclaimPolicy,
     this.sizeGb,
     this.sourceSnapshot,
@@ -2318,6 +2327,7 @@ class GceHyperdiskBalancedHighAvailability {
   GceHyperdiskBalancedHighAvailability.fromJson(core.Map json_)
     : this(
         archiveTimeout: json_['archiveTimeout'] as core.String?,
+        maxSizeGb: json_['maxSizeGb'] as core.int?,
         reclaimPolicy: json_['reclaimPolicy'] as core.String?,
         sizeGb: json_['sizeGb'] as core.int?,
         sourceSnapshot: json_['sourceSnapshot'] as core.String?,
@@ -2325,11 +2335,13 @@ class GceHyperdiskBalancedHighAvailability {
 
   core.Map<core.String, core.dynamic> toJson() {
     final archiveTimeout = this.archiveTimeout;
+    final maxSizeGb = this.maxSizeGb;
     final reclaimPolicy = this.reclaimPolicy;
     final sizeGb = this.sizeGb;
     final sourceSnapshot = this.sourceSnapshot;
     return {
       'archiveTimeout': ?archiveTimeout,
+      'maxSizeGb': ?maxSizeGb,
       'reclaimPolicy': ?reclaimPolicy,
       'sizeGb': ?sizeGb,
       'sourceSnapshot': ?sourceSnapshot,
@@ -2758,6 +2770,15 @@ class GceRegionalPersistentDisk {
   /// Optional.
   core.String? fsType;
 
+  /// Maximum size in GB to which this persistent directory can be resized.
+  ///
+  /// Defaults to `0`, which indicates no maximum limit is enforced by this
+  /// configuration. Resizing is still subject to the quotas and limits of the
+  /// underlying disk type.
+  ///
+  /// Optional.
+  core.int? maxSizeGb;
+
   /// Whether the persistent disk should be deleted when the workstation is
   /// deleted.
   ///
@@ -2793,6 +2814,7 @@ class GceRegionalPersistentDisk {
     this.archiveTimeout,
     this.diskType,
     this.fsType,
+    this.maxSizeGb,
     this.reclaimPolicy,
     this.sizeGb,
     this.sourceSnapshot,
@@ -2803,6 +2825,7 @@ class GceRegionalPersistentDisk {
         archiveTimeout: json_['archiveTimeout'] as core.String?,
         diskType: json_['diskType'] as core.String?,
         fsType: json_['fsType'] as core.String?,
+        maxSizeGb: json_['maxSizeGb'] as core.int?,
         reclaimPolicy: json_['reclaimPolicy'] as core.String?,
         sizeGb: json_['sizeGb'] as core.int?,
         sourceSnapshot: json_['sourceSnapshot'] as core.String?,
@@ -2812,6 +2835,7 @@ class GceRegionalPersistentDisk {
     final archiveTimeout = this.archiveTimeout;
     final diskType = this.diskType;
     final fsType = this.fsType;
+    final maxSizeGb = this.maxSizeGb;
     final reclaimPolicy = this.reclaimPolicy;
     final sizeGb = this.sizeGb;
     final sourceSnapshot = this.sourceSnapshot;
@@ -2819,6 +2843,7 @@ class GceRegionalPersistentDisk {
       'archiveTimeout': ?archiveTimeout,
       'diskType': ?diskType,
       'fsType': ?fsType,
+      'maxSizeGb': ?maxSizeGb,
       'reclaimPolicy': ?reclaimPolicy,
       'sizeGb': ?sizeGb,
       'sourceSnapshot': ?sourceSnapshot,
@@ -3858,6 +3883,11 @@ class Workstation {
   /// Full name of this workstation.
   core.String? name;
 
+  /// Directories to persist across workstation sessions.
+  ///
+  /// Optional.
+  core.List<WorkstationPersistentDirectory>? persistentDirectories;
+
   /// Indicates whether this workstation is currently being updated to match its
   /// intended state.
   ///
@@ -3916,6 +3946,7 @@ class Workstation {
     this.kmsKey,
     this.labels,
     this.name,
+    this.persistentDirectories,
     this.reconciling,
     this.runtimeHost,
     this.sourceWorkstation,
@@ -3944,6 +3975,13 @@ class Workstation {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        persistentDirectories: (json_['persistentDirectories'] as core.List?)
+            ?.map(
+              (value) => WorkstationPersistentDirectory.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         reconciling: json_['reconciling'] as core.bool?,
         runtimeHost: json_.containsKey('runtimeHost')
             ? RuntimeHost.fromJson(
@@ -3968,6 +4006,7 @@ class Workstation {
     final kmsKey = this.kmsKey;
     final labels = this.labels;
     final name = this.name;
+    final persistentDirectories = this.persistentDirectories;
     final reconciling = this.reconciling;
     final runtimeHost = this.runtimeHost;
     final sourceWorkstation = this.sourceWorkstation;
@@ -3986,6 +4025,7 @@ class Workstation {
       'kmsKey': ?kmsKey,
       'labels': ?labels,
       'name': ?name,
+      'persistentDirectories': ?persistentDirectories,
       'reconciling': ?reconciling,
       'runtimeHost': ?runtimeHost,
       'sourceWorkstation': ?sourceWorkstation,
@@ -4464,21 +4504,20 @@ class WorkstationConfig {
   /// Optional. Immutable.
   core.List<core.String>? replicaZones;
 
-  /// Number of seconds that a workstation can run until it is automatically
-  /// shut down.
+  /// Number of seconds to wait before automatically stopping a workstation.
   ///
-  /// We recommend that workstations be shut down daily to reduce costs and so
-  /// that security updates can be applied upon restart. The idle_timeout and
-  /// running_timeout fields are independent of each other. Note that the
-  /// running_timeout field shuts down VMs after the specified time, regardless
-  /// of whether or not the VMs are idle. Provide duration terminated by `s` for
-  /// seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12
-  /// hours). A value of `"0s"` indicates that workstations using this
-  /// configuration should never time out. If encryption_key is set, it must be
-  /// greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value
-  /// of `"0s"` indicates that Cloud Workstations VMs created with this
-  /// configuration have no maximum running time. This is strongly discouraged
-  /// because you incur costs and will not pick up security updates.
+  /// We recommend that workstations be stopped daily so that security updates
+  /// can be applied upon restart. The idle_timeout and running_timeout fields
+  /// are independent of each other. Note that the running_timeout field stops
+  /// workstations after the specified time, regardless of whether or not the
+  /// workstations are idle. Provide duration terminated by `s` for seconds—for
+  /// example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value
+  /// of `"0s"` indicates that workstations using this configuration should
+  /// never time out. If encryption_key is set, it must be greater than `"0s"`
+  /// and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates
+  /// that Cloud Workstations VMs created with this configuration have no
+  /// maximum running time. This is strongly discouraged because you incur costs
+  /// and will not pick up security updates.
   ///
   /// Optional.
   core.String? runningTimeout;
@@ -4657,5 +4696,38 @@ class WorkstationConfig {
       'uid': ?uid,
       'updateTime': ?updateTime,
     };
+  }
+}
+
+/// A directory to persist across workstation sessions.
+///
+/// Updates to this field will only take effect on this workstation after it is
+/// restarted.
+class WorkstationPersistentDirectory {
+  /// The mount path of the persistent directory.
+  ///
+  /// Optional.
+  core.String? mountPath;
+
+  /// Size of the persistent directory in GB.
+  ///
+  /// If specified in an update request, this is the desired size of the
+  /// directory.
+  ///
+  /// Optional.
+  core.int? sizeGb;
+
+  WorkstationPersistentDirectory({this.mountPath, this.sizeGb});
+
+  WorkstationPersistentDirectory.fromJson(core.Map json_)
+    : this(
+        mountPath: json_['mountPath'] as core.String?,
+        sizeGb: json_['sizeGb'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mountPath = this.mountPath;
+    final sizeGb = this.sizeGb;
+    return {'mountPath': ?mountPath, 'sizeGb': ?sizeGb};
   }
 }

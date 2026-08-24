@@ -168,7 +168,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -183,9 +183,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -5093,7 +5092,7 @@ typedef CancelAutomationRunResponse = $Empty;
 typedef CancelOperationRequest = $Empty;
 
 /// The request object used by `CancelRollout`.
-typedef CancelRolloutRequest = $Request06;
+typedef CancelRolloutRequest = $Request07;
 
 /// The response object from `CancelRollout`.
 typedef CancelRolloutResponse = $Empty;
@@ -6087,6 +6086,8 @@ class DeliveryPipeline {
   /// allowed. * Keys must start with a lowercase letter or international
   /// character. * Each resource is limited to a maximum of 64 labels. Both keys
   /// and values are additionally constrained to be \<= 128 bytes.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Identifier.
@@ -9400,6 +9401,8 @@ class Release {
   /// allowed. * Keys must start with a lowercase letter or international
   /// character. * Each resource is limited to a maximum of 64 labels. Both keys
   /// and values are additionally constrained to be \<= 128 bytes.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Identifier.
@@ -12129,7 +12132,7 @@ class Task {
 }
 
 /// The request object used by `TerminateJobRun`.
-typedef TerminateJobRunRequest = $Request06;
+typedef TerminateJobRunRequest = $Request07;
 
 /// The response object from `TerminateJobRun`.
 typedef TerminateJobRunResponse = $Empty;

@@ -462,10 +462,11 @@ class CoursesResource {
   /// This field is required to do an update. The update will fail if invalid
   /// fields are specified. The following fields are valid: * `courseState` *
   /// `description` * `descriptionHeading` * `name` * `ownerId` * `room` *
-  /// `section` * `subject` Note: patches to ownerId are treated as being
-  /// effective immediately, but in practice it may take some time for the
-  /// ownership transfer of all affected resources to complete. When set in a
-  /// query parameter, this field should be specified as `updateMask=,,...`
+  /// `section` * `subject` * `learningStandardSettings` * `levels` Note:
+  /// patches to ownerId are treated as being effective immediately, but in
+  /// practice it may take some time for the ownership transfer of all affected
+  /// resources to complete. When set in a query parameter, this field should be
+  /// specified as `updateMask=,,...`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -502,9 +503,13 @@ class CoursesResource {
 
   /// Updates a course.
   ///
-  /// This method returns the following error codes: * `PERMISSION_DENIED` if
-  /// the requesting user is not permitted to modify the requested course or for
-  /// access errors. * `NOT_FOUND` if no course exists with the requested ID. *
+  /// Note: Unlike other fields, `levels` is not cleared if omitted from the
+  /// request. The `UpdateCourse` method only modifies `levels` if it is
+  /// explicitly provided; otherwise, the existing value is preserved. Use the
+  /// `PatchCourse` method to clear the `levels` field. This method returns the
+  /// following error codes: * `PERMISSION_DENIED` if the requesting user is not
+  /// permitted to modify the requested course or for access errors. *
+  /// `NOT_FOUND` if no course exists with the requested ID. *
   /// `FAILED_PRECONDITION` for the following request errors: *
   /// CourseNotModifiable * CourseTitleCannotContainUrl
   ///
@@ -1956,7 +1961,7 @@ class CoursesCourseWorkResource {
   /// error is returned. The following fields may be specified by teachers: *
   /// `title` * `description` * `state` * `due_date` * `due_time` * `max_points`
   /// * `scheduled_time` * `submission_modification_mode` * `topic_id` *
-  /// `grading_period_id`
+  /// `grading_period_id` * `learning_goals`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3745,7 +3750,7 @@ class CoursesCourseWorkMaterialsResource {
   /// is included in the update mask and not set in the course work material
   /// object, an `INVALID_ARGUMENT` error is returned. The following fields may
   /// be specified by teachers: * `title` * `description` * `state` *
-  /// `scheduled_time` * `topic_id`
+  /// `scheduled_time` * `topic_id` * `learning_goals`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6752,7 +6757,7 @@ class AddOnAttachment {
   /// The URI will be opened in an iframe with the `courseId`, `itemId`,
   /// `itemType`, `attachmentId`, and `submissionId` query parameters set. This
   /// is the same `submissionId` returned in the
-  /// \[`AddOnContext.studentContext`\](//devsite.google.com/classroom/reference/rest/v1/AddOnContext#StudentContext)
+  /// \[`AddOnContext.studentContext`\](/workspace/classroom/reference/rest/v1/AddOnContext#StudentContext)
   /// field when a student views the attachment. If the URI is omitted or
   /// removed, `max_points` will also be discarded.
   EmbedUri? studentWorkReviewUri;
@@ -6862,6 +6867,20 @@ class AddOnAttachment {
 
 /// Payload for grade update requests.
 class AddOnAttachmentStudentSubmission {
+  /// Identifier of the course work submission under which this attachment
+  /// submission was made.
+  ///
+  /// Output only.
+  core.String? courseWorkSubmissionId;
+
+  /// Classroom-assigned identifier for this student submission.
+  ///
+  /// This is unique among submissions for the relevant course work and add-on
+  /// attachment combination.
+  ///
+  /// Output only.
+  core.String? id;
+
   /// Student grade on this attachment.
   ///
   /// If unset, no grade was set.
@@ -6882,10 +6901,14 @@ class AddOnAttachmentStudentSubmission {
   /// Identifier for the student that owns this submission.
   ///
   /// Requires the user to be a teacher in the course and have permission to
-  /// read student submissions. Read-only.
+  /// read student submissions. See
+  /// \[`courseWork.studentSubmissions.get`\](/workspace/classroom/reference/rest/v1/courses.courseWork.studentSubmissions/get#authorization-scopes)
+  /// for the list of acceptable OAuth scopes for this field. Read-only.
   core.String? userId;
 
   AddOnAttachmentStudentSubmission({
+    this.courseWorkSubmissionId,
+    this.id,
     this.pointsEarned,
     this.postSubmissionState,
     this.userId,
@@ -6893,16 +6916,22 @@ class AddOnAttachmentStudentSubmission {
 
   AddOnAttachmentStudentSubmission.fromJson(core.Map json_)
     : this(
+        courseWorkSubmissionId: json_['courseWorkSubmissionId'] as core.String?,
+        id: json_['id'] as core.String?,
         pointsEarned: (json_['pointsEarned'] as core.num?)?.toDouble(),
         postSubmissionState: json_['postSubmissionState'] as core.String?,
         userId: json_['userId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final courseWorkSubmissionId = this.courseWorkSubmissionId;
+    final id = this.id;
     final pointsEarned = this.pointsEarned;
     final postSubmissionState = this.postSubmissionState;
     final userId = this.userId;
     return {
+      'courseWorkSubmissionId': ?courseWorkSubmissionId,
+      'id': ?id,
       'pointsEarned': ?pointsEarned,
       'postSubmissionState': ?postSubmissionState,
       'userId': ?userId,
@@ -7427,6 +7456,15 @@ class Course {
   /// Specifying this field in a course update mask results in an error.
   core.String? id;
 
+  /// Levels for the course.
+  ///
+  /// Examples: "9th grade", "Middle school", "4th - 5th", "K-2", "3000". If
+  /// set, this field must be a valid UTF-8 string and fewer than 1000
+  /// characters. This field can only be cleared using the `PatchCourse` method.
+  ///
+  /// Optional.
+  core.String? levels;
+
   /// Name of the course.
   ///
   /// For example, "10th Grade Biology". The name is required. It must be
@@ -7492,6 +7530,7 @@ class Course {
     this.gradebookSettings,
     this.guardiansEnabled,
     this.id,
+    this.levels,
     this.name,
     this.ownerId,
     this.room,
@@ -7527,6 +7566,7 @@ class Course {
             : null,
         guardiansEnabled: json_['guardiansEnabled'] as core.bool?,
         id: json_['id'] as core.String?,
+        levels: json_['levels'] as core.String?,
         name: json_['name'] as core.String?,
         ownerId: json_['ownerId'] as core.String?,
         room: json_['room'] as core.String?,
@@ -7554,6 +7594,7 @@ class Course {
     final gradebookSettings = this.gradebookSettings;
     final guardiansEnabled = this.guardiansEnabled;
     final id = this.id;
+    final levels = this.levels;
     final name = this.name;
     final ownerId = this.ownerId;
     final room = this.room;
@@ -7575,6 +7616,7 @@ class Course {
       'gradebookSettings': ?gradebookSettings,
       'guardiansEnabled': ?guardiansEnabled,
       'id': ?id,
+      'levels': ?levels,
       'name': ?name,
       'ownerId': ?ownerId,
       'room': ?room,

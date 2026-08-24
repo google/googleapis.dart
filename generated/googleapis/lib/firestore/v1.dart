@@ -35,6 +35,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsDatabasesResource]
 ///     - [ProjectsDatabasesBackupSchedulesResource]
+///     - [ProjectsDatabasesChangeStreamsResource]
 ///     - [ProjectsDatabasesCollectionGroupsResource]
 ///       - [ProjectsDatabasesCollectionGroupsFieldsResource]
 ///       - [ProjectsDatabasesCollectionGroupsIndexesResource]
@@ -102,6 +103,8 @@ class ProjectsDatabasesResource {
 
   ProjectsDatabasesBackupSchedulesResource get backupSchedules =>
       ProjectsDatabasesBackupSchedulesResource(_requester);
+  ProjectsDatabasesChangeStreamsResource get changeStreams =>
+      ProjectsDatabasesChangeStreamsResource(_requester);
   ProjectsDatabasesCollectionGroupsResource get collectionGroups =>
       ProjectsDatabasesCollectionGroupsResource(_requester);
   ProjectsDatabasesDocumentsResource get documents =>
@@ -806,6 +809,183 @@ class ProjectsDatabasesBackupSchedulesResource {
   }
 }
 
+class ProjectsDatabasesChangeStreamsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsDatabasesChangeStreamsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new change stream for the database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent database to create the change stream for.
+  /// Format is `projects/{project}/databases/{database}`.
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [changeStreamId] - Required. The ID to use for the change stream, which
+  /// will become the final component of the change stream's resource name. This
+  /// value should be 4-63 characters. Valid characters are lowercase letters,
+  /// numbers, and hyphens. The first character must be a letter, and the last
+  /// character must be a letter or a number.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1ChangeStream].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1ChangeStream> create(
+    GoogleFirestoreAdminV1ChangeStream request,
+    core.String parent, {
+    core.String? changeStreamId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'changeStreamId': ?changeStreamId == null ? null : [changeStreamId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/changeStreams';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1ChangeStream.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a change stream.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the change stream to delete. Format is
+  /// `projects/{project}/databases/{database}/changeStreams/{change_stream}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/changeStreams/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag of the change stream to delete. If this is not
+  /// the current etag of the change stream, the deletion will fail.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a change stream.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the change stream to retrieve. Format is
+  /// `projects/{project}/databases/{database}/changeStreams/{change_stream}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/changeStreams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1ChangeStream].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1ChangeStream> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1ChangeStream.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all change streams in a database.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent database to list change streams from.
+  /// Format is `projects/{project}/databases/{database}`.
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1ListChangeStreamsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1ListChangeStreamsResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/changeStreams';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1ListChangeStreamsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsDatabasesCollectionGroupsResource {
   final commons.ApiRequester _requester;
 
@@ -1399,6 +1579,8 @@ class ProjectsDatabasesDocumentsResource {
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
   ///
+  /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1415,12 +1597,14 @@ class ProjectsDatabasesDocumentsResource {
     core.String collectionId, {
     core.String? documentId,
     core.List<core.String>? mask_fieldPaths,
+    core.List<core.String>? requestOptions_requestTags,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'documentId': ?documentId == null ? null : [documentId],
       'mask.fieldPaths': ?mask_fieldPaths,
+      'requestOptions.requestTags': ?requestOptions_requestTags,
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1456,6 +1640,8 @@ class ProjectsDatabasesDocumentsResource {
   /// and have been last updated at that time. Timestamp must be microsecond
   /// aligned.
   ///
+  /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1470,6 +1656,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String name, {
     core.bool? currentDocument_exists,
     core.String? currentDocument_updateTime,
+    core.List<core.String>? requestOptions_requestTags,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -1479,6 +1666,7 @@ class ProjectsDatabasesDocumentsResource {
       'currentDocument.updateTime': ?currentDocument_updateTime == null
           ? null
           : [currentDocument_updateTime],
+      'requestOptions.requestTags': ?requestOptions_requestTags,
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1554,6 +1742,8 @@ class ProjectsDatabasesDocumentsResource {
   /// Point-in-Time Recovery is enabled, can additionally be a whole minute
   /// timestamp within the past 7 days.
   ///
+  /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  ///
   /// [transaction] - Reads the document in a transaction.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1570,12 +1760,14 @@ class ProjectsDatabasesDocumentsResource {
     core.String name, {
     core.List<core.String>? mask_fieldPaths,
     core.String? readTime,
+    core.List<core.String>? requestOptions_requestTags,
     core.String? transaction,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'mask.fieldPaths': ?mask_fieldPaths,
       'readTime': ?readTime == null ? null : [readTime],
+      'requestOptions.requestTags': ?requestOptions_requestTags,
       'transaction': ?transaction == null ? null : [transaction],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -1628,6 +1820,15 @@ class ProjectsDatabasesDocumentsResource {
   /// Point-in-Time Recovery is enabled, can additionally be a whole minute
   /// timestamp within the past 7 days.
   ///
+  /// [recursive] - Optional. If the list should recursively include all
+  /// documents nested under the parent at any level. If the request specifies a
+  /// `collection_id`, then the list will include all nested documents in the
+  /// collection under the parent. This is optional, and when not provided,
+  /// Firestore will only list documents nested immediately under the parent.
+  /// Requests with `recursive` may not specify `show_missing`.
+  ///
+  /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  ///
   /// [showMissing] - If the list should show missing documents. A document is
   /// missing if it does not exist, but there are sub-documents nested
   /// underneath it. When true, such missing documents will be returned with a
@@ -1654,6 +1855,8 @@ class ProjectsDatabasesDocumentsResource {
     core.int? pageSize,
     core.String? pageToken,
     core.String? readTime,
+    core.bool? recursive,
+    core.List<core.String>? requestOptions_requestTags,
     core.bool? showMissing,
     core.String? transaction,
     core.String? $fields,
@@ -1664,6 +1867,8 @@ class ProjectsDatabasesDocumentsResource {
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'readTime': ?readTime == null ? null : [readTime],
+      'recursive': ?recursive == null ? null : ['${recursive}'],
+      'requestOptions.requestTags': ?requestOptions_requestTags,
       'showMissing': ?showMissing == null ? null : ['${showMissing}'],
       'transaction': ?transaction == null ? null : [transaction],
       'fields': ?$fields == null ? null : [$fields],
@@ -1695,6 +1900,8 @@ class ProjectsDatabasesDocumentsResource {
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   /// For example:
   /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+  /// Use `projects/{project_id}/databases/{database_id}/documents` to list
+  /// top-level collections.
   /// Value must have pattern
   /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
   ///
@@ -1768,6 +1975,15 @@ class ProjectsDatabasesDocumentsResource {
   /// Point-in-Time Recovery is enabled, can additionally be a whole minute
   /// timestamp within the past 7 days.
   ///
+  /// [recursive] - Optional. If the list should recursively include all
+  /// documents nested under the parent at any level. If the request specifies a
+  /// `collection_id`, then the list will include all nested documents in the
+  /// collection under the parent. This is optional, and when not provided,
+  /// Firestore will only list documents nested immediately under the parent.
+  /// Requests with `recursive` may not specify `show_missing`.
+  ///
+  /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  ///
   /// [showMissing] - If the list should show missing documents. A document is
   /// missing if it does not exist, but there are sub-documents nested
   /// underneath it. When true, such missing documents will be returned with a
@@ -1794,6 +2010,8 @@ class ProjectsDatabasesDocumentsResource {
     core.int? pageSize,
     core.String? pageToken,
     core.String? readTime,
+    core.bool? recursive,
+    core.List<core.String>? requestOptions_requestTags,
     core.bool? showMissing,
     core.String? transaction,
     core.String? $fields,
@@ -1804,6 +2022,8 @@ class ProjectsDatabasesDocumentsResource {
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'readTime': ?readTime == null ? null : [readTime],
+      'recursive': ?recursive == null ? null : ['${recursive}'],
+      'requestOptions.requestTags': ?requestOptions_requestTags,
       'showMissing': ?showMissing == null ? null : ['${showMissing}'],
       'transaction': ?transaction == null ? null : [transaction],
       'fields': ?$fields == null ? null : [$fields],
@@ -1896,6 +2116,8 @@ class ProjectsDatabasesDocumentsResource {
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
   ///
+  /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  ///
   /// [updateMask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
   ///
@@ -1915,6 +2137,7 @@ class ProjectsDatabasesDocumentsResource {
     core.bool? currentDocument_exists,
     core.String? currentDocument_updateTime,
     core.List<core.String>? mask_fieldPaths,
+    core.List<core.String>? requestOptions_requestTags,
     core.List<core.String>? updateMask_fieldPaths,
     core.String? $fields,
   }) async {
@@ -1927,6 +2150,7 @@ class ProjectsDatabasesDocumentsResource {
           ? null
           : [currentDocument_updateTime],
       'mask.fieldPaths': ?mask_fieldPaths,
+      'requestOptions.requestTags': ?requestOptions_requestTags,
       'updateMask.fieldPaths': ?updateMask_fieldPaths,
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -2690,7 +2914,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -2705,9 +2929,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3052,6 +3275,11 @@ class BatchGetDocumentsRequest {
   /// minute timestamp within the past 7 days.
   core.String? readTime;
 
+  /// The request options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   /// Reads documents in a transaction.
   core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
@@ -3069,6 +3297,7 @@ class BatchGetDocumentsRequest {
     this.mask,
     this.newTransaction,
     this.readTime,
+    this.requestOptions,
     this.transaction,
   });
 
@@ -3088,6 +3317,11 @@ class BatchGetDocumentsRequest {
               )
             : null,
         readTime: json_['readTime'] as core.String?,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         transaction: json_['transaction'] as core.String?,
       );
 
@@ -3096,12 +3330,14 @@ class BatchGetDocumentsRequest {
     final mask = this.mask;
     final newTransaction = this.newTransaction;
     final readTime = this.readTime;
+    final requestOptions = this.requestOptions;
     final transaction = this.transaction;
     return {
       'documents': ?documents,
       'mask': ?mask,
       'newTransaction': ?newTransaction,
       'readTime': ?readTime,
+      'requestOptions': ?requestOptions,
       'transaction': ?transaction,
     };
   }
@@ -3180,6 +3416,11 @@ class BatchWriteRequest {
   /// Labels associated with this batch write.
   core.Map<core.String, core.String>? labels;
 
+  /// The request options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   /// The writes to apply.
   ///
   /// Method does not apply writes atomically and does not guarantee ordering.
@@ -3187,13 +3428,18 @@ class BatchWriteRequest {
   /// document more than once per request.
   core.List<Write>? writes;
 
-  BatchWriteRequest({this.labels, this.writes});
+  BatchWriteRequest({this.labels, this.requestOptions, this.writes});
 
   BatchWriteRequest.fromJson(core.Map json_)
     : this(
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         writes: (json_['writes'] as core.List?)
             ?.map(
               (value) =>
@@ -3204,8 +3450,13 @@ class BatchWriteRequest {
 
   core.Map<core.String, core.dynamic> toJson() {
     final labels = this.labels;
+    final requestOptions = this.requestOptions;
     final writes = this.writes;
-    return {'labels': ?labels, 'writes': ?writes};
+    return {
+      'labels': ?labels,
+      'requestOptions': ?requestOptions,
+      'writes': ?writes,
+    };
   }
 }
 
@@ -3254,7 +3505,12 @@ class BeginTransactionRequest {
   /// Defaults to a read-write transaction.
   TransactionOptions? options;
 
-  BeginTransactionRequest({this.options});
+  /// The request options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
+  BeginTransactionRequest({this.options, this.requestOptions});
 
   BeginTransactionRequest.fromJson(core.Map json_)
     : this(
@@ -3263,11 +3519,17 @@ class BeginTransactionRequest {
                 json_['options'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final options = this.options;
-    return {'options': ?options};
+    final requestOptions = this.requestOptions;
+    return {'options': ?options, 'requestOptions': ?requestOptions};
   }
 }
 
@@ -3326,6 +3588,11 @@ class CollectionSelector {
 
 /// The request for Firestore.Commit.
 class CommitRequest {
+  /// The request options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   /// If set, applies all writes in this transaction, and commits it.
   core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
@@ -3343,10 +3610,15 @@ class CommitRequest {
   /// Always executed atomically and in order.
   core.List<Write>? writes;
 
-  CommitRequest({this.transaction, this.writes});
+  CommitRequest({this.requestOptions, this.transaction, this.writes});
 
   CommitRequest.fromJson(core.Map json_)
     : this(
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         transaction: json_['transaction'] as core.String?,
         writes: (json_['writes'] as core.List?)
             ?.map(
@@ -3357,9 +3629,14 @@ class CommitRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final requestOptions = this.requestOptions;
     final transaction = this.transaction;
     final writes = this.writes;
-    return {'transaction': ?transaction, 'writes': ?writes};
+    return {
+      'requestOptions': ?requestOptions,
+      'transaction': ?transaction,
+      'writes': ?writes,
+    };
   }
 }
 
@@ -3631,6 +3908,14 @@ typedef Empty = $Empty;
 
 /// The request for Firestore.ExecutePipeline.
 class ExecutePipelineRequest {
+  /// Automatically commits the transaction after the pipeline has been
+  /// executed.
+  ///
+  /// Only permitted in combination with `transaction` or `new_transaction`.
+  ///
+  /// Optional.
+  core.bool? autoCommitTransaction;
+
   /// Execute the pipeline in a new transaction.
   ///
   /// The identifier of the newly created transaction will be returned in the
@@ -3643,6 +3928,11 @@ class ExecutePipelineRequest {
   /// or if Point-in-Time Recovery is enabled, can additionally be a whole
   /// minute timestamp within the past 7 days.
   core.String? readTime;
+
+  /// The request options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
 
   /// A pipelined operation.
   StructuredPipeline? structuredPipeline;
@@ -3662,20 +3952,28 @@ class ExecutePipelineRequest {
   }
 
   ExecutePipelineRequest({
+    this.autoCommitTransaction,
     this.newTransaction,
     this.readTime,
+    this.requestOptions,
     this.structuredPipeline,
     this.transaction,
   });
 
   ExecutePipelineRequest.fromJson(core.Map json_)
     : this(
+        autoCommitTransaction: json_['autoCommitTransaction'] as core.bool?,
         newTransaction: json_.containsKey('newTransaction')
             ? TransactionOptions.fromJson(
                 json_['newTransaction'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         readTime: json_['readTime'] as core.String?,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         structuredPipeline: json_.containsKey('structuredPipeline')
             ? StructuredPipeline.fromJson(
                 json_['structuredPipeline']
@@ -3686,20 +3984,24 @@ class ExecutePipelineRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final autoCommitTransaction = this.autoCommitTransaction;
     final newTransaction = this.newTransaction;
     final readTime = this.readTime;
+    final requestOptions = this.requestOptions;
     final structuredPipeline = this.structuredPipeline;
     final transaction = this.transaction;
     return {
+      'autoCommitTransaction': ?autoCommitTransaction,
       'newTransaction': ?newTransaction,
       'readTime': ?readTime,
+      'requestOptions': ?requestOptions,
       'structuredPipeline': ?structuredPipeline,
       'transaction': ?transaction,
     };
   }
 }
 
-/// The response for Firestore.Execute.
+/// The response for Firestore.ExecutePipeline.
 class ExecutePipelineResponse {
   /// The time at which the results are valid.
   ///
@@ -4543,6 +4845,105 @@ class GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
   }
 }
 
+/// A Change Stream is a resource that allows users to receive change
+/// notifications from a Firestore database.
+class GoogleFirestoreAdminV1ChangeStream {
+  /// If set, the change stream is scoped to a collection group.
+  GoogleFirestoreAdminV1CollectionGroupScope? collectionGroupScope;
+
+  /// The time the Change Stream was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// If set, the change stream is scoped to the entire database.
+  GoogleFirestoreAdminV1DatabaseScope? databaseScope;
+
+  /// An etag used to determine which version of the configuration is being
+  /// edited.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The external resource name of the change stream. Format
+  /// `projects/{project}/databases/{database}/changeStreams/{change_stream}`
+  core.String? name;
+
+  /// The retention period of the change stream.
+  ///
+  /// This is the amount of time a change event is available on the change
+  /// stream. Must be from 1 to 7 days, inclusive. The retention_period must be
+  /// in day granularity, i.e. it must be a multiple of 24 hours.
+  ///
+  /// Required.
+  core.String? retentionPeriod;
+
+  /// The time the Change Stream started recording events.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The time the Change Stream was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleFirestoreAdminV1ChangeStream({
+    this.collectionGroupScope,
+    this.createTime,
+    this.databaseScope,
+    this.etag,
+    this.name,
+    this.retentionPeriod,
+    this.startTime,
+    this.updateTime,
+  });
+
+  GoogleFirestoreAdminV1ChangeStream.fromJson(core.Map json_)
+    : this(
+        collectionGroupScope: json_.containsKey('collectionGroupScope')
+            ? GoogleFirestoreAdminV1CollectionGroupScope.fromJson(
+                json_['collectionGroupScope']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        databaseScope: json_.containsKey('databaseScope')
+            ? GoogleFirestoreAdminV1DatabaseScope.fromJson(
+                json_['databaseScope'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        retentionPeriod: json_['retentionPeriod'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final collectionGroupScope = this.collectionGroupScope;
+    final createTime = this.createTime;
+    final databaseScope = this.databaseScope;
+    final etag = this.etag;
+    final name = this.name;
+    final retentionPeriod = this.retentionPeriod;
+    final startTime = this.startTime;
+    final updateTime = this.updateTime;
+    return {
+      'collectionGroupScope': ?collectionGroupScope,
+      'createTime': ?createTime,
+      'databaseScope': ?databaseScope,
+      'etag': ?etag,
+      'name': ?name,
+      'retentionPeriod': ?retentionPeriod,
+      'startTime': ?startTime,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
 /// The request message for FirestoreAdmin.CloneDatabase.
 class GoogleFirestoreAdminV1CloneDatabaseRequest {
   /// The ID to use for the database, which will become the final component of
@@ -4667,6 +5068,28 @@ class GoogleFirestoreAdminV1CmekConfig {
   }
 }
 
+/// The change stream is scoped to a collection group.
+///
+/// Only events associated with the given collection group are visible to the
+/// Change Stream. Only a single change stream can be enabled per collection
+/// group.
+class GoogleFirestoreAdminV1CollectionGroupScope {
+  /// The collection group name.
+  ///
+  /// Required.
+  core.String? collectionGroupId;
+
+  GoogleFirestoreAdminV1CollectionGroupScope({this.collectionGroupId});
+
+  GoogleFirestoreAdminV1CollectionGroupScope.fromJson(core.Map json_)
+    : this(collectionGroupId: json_['collectionGroupId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final collectionGroupId = this.collectionGroupId;
+    return {'collectionGroupId': ?collectionGroupId};
+  }
+}
+
 /// The configuration options for using CMEK (Customer Managed Encryption Key)
 /// encryption.
 class GoogleFirestoreAdminV1CustomerManagedEncryptionOptions {
@@ -4718,19 +5141,23 @@ class GoogleFirestoreAdminV1Database {
   /// Optional.
   GoogleFirestoreAdminV1CmekConfig? cmekConfig;
 
-  /// The concurrency control mode to use for this database.
+  /// The default concurrency control mode to use for this database.
   ///
   /// If unspecified in a CreateDatabase request, this will default based on the
   /// database edition: Optimistic for Enterprise and Pessimistic for all other
-  /// databases.
+  /// databases. While transactions can explicitly specify their own concurrency
+  /// mode, this setting defines the default behavior when left unspecified.
+  /// Important: This database-level setting is not respected for Firestore with
+  /// MongoDB compatibility. All transactions through the MongoDB compatibility
+  /// layer will use optimistic concurrency control, regardless of this setting.
   /// Possible string values are:
   /// - "CONCURRENCY_MODE_UNSPECIFIED" : Not used.
   /// - "OPTIMISTIC" : Use optimistic concurrency control by default. This mode
   /// is available for Cloud Firestore databases. This is the default setting
-  /// for Cloud Firestore Enterprise Edition databases.
+  /// for Cloud Firestore Enterprise edition databases.
   /// - "PESSIMISTIC" : Use pessimistic concurrency control by default. This
   /// mode is available for Cloud Firestore databases. This is the default
-  /// setting for Cloud Firestore Standard Edition databases.
+  /// setting for Cloud Firestore Standard edition databases.
   /// - "OPTIMISTIC_WITH_ENTITY_GROUPS" : Use optimistic concurrency control
   /// with entity groups by default. This mode is enabled for some databases
   /// that were automatically upgraded from Cloud Datastore to Cloud Firestore
@@ -4790,8 +5217,8 @@ class GoogleFirestoreAdminV1Database {
   /// The Firestore API data access mode to use for this database.
   ///
   /// If not set on write: - the default value is DATA_ACCESS_MODE_DISABLED for
-  /// Enterprise Edition. - the default value is DATA_ACCESS_MODE_ENABLED for
-  /// Standard Edition.
+  /// Enterprise edition. - the default value is DATA_ACCESS_MODE_ENABLED for
+  /// Standard edition.
   ///
   /// Optional.
   /// Possible string values are:
@@ -4837,8 +5264,8 @@ class GoogleFirestoreAdminV1Database {
   /// The MongoDB compatible API data access mode to use for this database.
   ///
   /// If not set on write, the default value is DATA_ACCESS_MODE_ENABLED for
-  /// Enterprise Edition. The value is always DATA_ACCESS_MODE_DISABLED for
-  /// Standard Edition.
+  /// Enterprise edition. The value is always DATA_ACCESS_MODE_DISABLED for
+  /// Standard edition.
   ///
   /// Optional.
   /// Possible string values are:
@@ -5058,6 +5485,12 @@ class GoogleFirestoreAdminV1Database {
     };
   }
 }
+
+/// The change stream is scoped to the entire database.
+///
+/// All events in the database are visible to the Change Stream. One Database
+/// scope Change Stream is allowed per database.
+typedef GoogleFirestoreAdminV1DatabaseScope = $Empty;
 
 /// The request for FirestoreAdmin.DisableUserCreds.
 typedef GoogleFirestoreAdminV1DisableUserCredsRequest = $Empty;
@@ -5322,6 +5755,12 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
 
 /// Cloud Firestore indexes enable simple and complex queries against documents
 /// in a database.
+///
+/// In Standard edition databases, single-field indexes are managed using the
+/// google.firestore.admin.v1.Field resource, and composite indexes are managed
+/// using the google.firestore.admin.v1.Index resource. In Enterprise edition
+/// databases, both single-field and composite indexes are managed using the
+/// google.firestore.admin.v1.Index resource.
 class GoogleFirestoreAdminV1Index {
   /// The API scope supported by this index.
   /// Possible string values are:
@@ -5341,7 +5780,7 @@ class GoogleFirestoreAdminV1Index {
   /// setting. This value is input only.
   /// - "SPARSE_ALL" : An index entry will only exist if ALL fields are present
   /// in the document. This is both the default and only allowed value for
-  /// Standard Edition databases (for both Cloud Firestore `ANY_API` and Cloud
+  /// Standard edition databases (for both Cloud Firestore `ANY_API` and Cloud
   /// Datastore `DATASTORE_MODE_API`). Take for example the following document:
   /// ``` { "__name__": "...", "a": 1, "b": 2, "c": 3 } ``` an index on `(a ASC,
   /// b ASC, c ASC, __name__ ASC)` will generate an index entry for this
@@ -5352,7 +5791,7 @@ class GoogleFirestoreAdminV1Index {
   /// requirements that all fields from the index are present.
   /// - "SPARSE_ANY" : An index entry will exist if ANY field are present in the
   /// document. This is used as the definition of a sparse index for Enterprise
-  /// Edition databases. Take for example the following document: ``` {
+  /// edition databases. Take for example the following document: ``` {
   /// "__name__": "...", "a": 1, "b": 2, "c": 3 } ``` an index on `(a ASC, d
   /// ASC)` will generate an index entry for this document since `a` is present,
   /// and will fill in an `unset` value for `d`. An index on `(d ASC, e ASC)`
@@ -5361,21 +5800,20 @@ class GoogleFirestoreAdminV1Index {
   /// documents since Firestore guarantees that all documents have a `__name__`
   /// field.
   /// - "DENSE" : An index entry will exist regardless of if the fields are
-  /// present or not. This is the default density for an Enterprise Edition
+  /// present or not. This is the default density for an Enterprise edition
   /// database. The index will store `unset` values for fields that are not
   /// present in the document.
   core.String? density;
 
   /// The fields supported by this index.
   ///
-  /// For composite indexes, this requires a minimum of 2 and a maximum of 100
-  /// fields. The last field entry is always for the field path `__name__`. If,
-  /// on creation, `__name__` was not specified as the last field, it will be
-  /// added automatically with the same direction as that of the last field
-  /// defined. If the final field in a composite index is not directional, the
-  /// `__name__` will be ordered ASCENDING (unless explicitly specified). For
-  /// single field indexes, this will always be exactly one entry with a field
-  /// path equal to the field path of the associated field.
+  /// At most 100 fields may be specified. In Standard edition databases only: -
+  /// At least 2 fields must be specified. - The last field entry is always for
+  /// the field path `__name__`. If, on creation, `__name__` was not specified
+  /// as the last field, it will be added automatically with the same direction
+  /// as that of the last field defined. If the final field in the index is not
+  /// directional, the `__name__` will be ordered ASCENDING (unless explicitly
+  /// specified).
   core.List<GoogleFirestoreAdminV1IndexField>? fields;
 
   /// Whether the index is multikey.
@@ -5390,13 +5828,13 @@ class GoogleFirestoreAdminV1Index {
   /// Optional.
   core.bool? multikey;
 
-  /// A server defined name for this index.
+  /// A server-defined name for this index.
   ///
-  /// The form of this name for composite indexes will be:
-  /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`
-  /// For single field indexes, this field will be empty.
-  ///
-  /// Output only.
+  /// Output only. When used in the google.firestore.admin.v1.Index resource,
+  /// the value is of the form:
+  /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
+  /// When used in the google.firestore.admin.v1.Field resource, the value is
+  /// empty.
   core.String? name;
 
   /// Indexes with a collection query scope specified allow queries against a
@@ -5615,9 +6053,6 @@ class GoogleFirestoreAdminV1IndexField {
   core.String? order;
 
   /// Indicates that this field supports search operations.
-  ///
-  /// This field is only currently supported for indexes with
-  /// MONGODB_COMPATIBLE_API ApiScope.
   GoogleFirestoreAdminV1SearchConfig? searchConfig;
 
   /// Indicates that this field supports nearest neighbor and distance
@@ -5722,6 +6157,30 @@ class GoogleFirestoreAdminV1ListBackupsResponse {
     final backups = this.backups;
     final unreachable = this.unreachable;
     return {'backups': ?backups, 'unreachable': ?unreachable};
+  }
+}
+
+/// Response to FirestoreAdmin.ListChangeStreams.
+class GoogleFirestoreAdminV1ListChangeStreamsResponse {
+  /// The list of change streams.
+  core.List<GoogleFirestoreAdminV1ChangeStream>? changeStreams;
+
+  GoogleFirestoreAdminV1ListChangeStreamsResponse({this.changeStreams});
+
+  GoogleFirestoreAdminV1ListChangeStreamsResponse.fromJson(core.Map json_)
+    : this(
+        changeStreams: (json_['changeStreams'] as core.List?)
+            ?.map(
+              (value) => GoogleFirestoreAdminV1ChangeStream.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final changeStreams = this.changeStreams;
+    return {'changeStreams': ?changeStreams};
   }
 }
 
@@ -6612,23 +7071,40 @@ class ListCollectionIdsRequest {
   /// minute timestamp within the past 7 days.
   core.String? readTime;
 
-  ListCollectionIdsRequest({this.pageSize, this.pageToken, this.readTime});
+  /// The request options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
+  ListCollectionIdsRequest({
+    this.pageSize,
+    this.pageToken,
+    this.readTime,
+    this.requestOptions,
+  });
 
   ListCollectionIdsRequest.fromJson(core.Map json_)
     : this(
         pageSize: json_['pageSize'] as core.int?,
         pageToken: json_['pageToken'] as core.String?,
         readTime: json_['readTime'] as core.String?,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final pageSize = this.pageSize;
     final pageToken = this.pageToken;
     final readTime = this.readTime;
+    final requestOptions = this.requestOptions;
     return {
       'pageSize': ?pageSize,
       'pageToken': ?pageToken,
       'readTime': ?readTime,
+      'requestOptions': ?requestOptions,
     };
   }
 }
@@ -6821,6 +7297,11 @@ class PartitionQueryRequest {
   /// minute timestamp within the past 7 days.
   core.String? readTime;
 
+  /// The request options for the request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   /// A structured query.
   ///
   /// Query must specify collection with all descendants and be ordered by name
@@ -6833,6 +7314,7 @@ class PartitionQueryRequest {
     this.pageToken,
     this.partitionCount,
     this.readTime,
+    this.requestOptions,
     this.structuredQuery,
   });
 
@@ -6842,6 +7324,11 @@ class PartitionQueryRequest {
         pageToken: json_['pageToken'] as core.String?,
         partitionCount: json_['partitionCount'] as core.String?,
         readTime: json_['readTime'] as core.String?,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         structuredQuery: json_.containsKey('structuredQuery')
             ? StructuredQuery.fromJson(
                 json_['structuredQuery'] as core.Map<core.String, core.dynamic>,
@@ -6854,12 +7341,14 @@ class PartitionQueryRequest {
     final pageToken = this.pageToken;
     final partitionCount = this.partitionCount;
     final readTime = this.readTime;
+    final requestOptions = this.requestOptions;
     final structuredQuery = this.structuredQuery;
     return {
       'pageSize': ?pageSize,
       'pageToken': ?pageToken,
       'partitionCount': ?partitionCount,
       'readTime': ?readTime,
+      'requestOptions': ?requestOptions,
       'structuredQuery': ?structuredQuery,
     };
   }
@@ -7012,10 +7501,24 @@ class ReadOnly {
 }
 
 /// Options for a transaction that can be used to read and write documents.
-///
-/// Firestore does not allow 3rd party auth requests to create read-write.
-/// transactions.
 class ReadWrite {
+  /// The concurrency control mode to use for this transaction.
+  ///
+  /// A database is able to use different concurrency modes for different
+  /// transactions simultaneously. 3rd party auth requests are only allowed to
+  /// create optimistic read-write transactions and must specify that here even
+  /// if the database-level setting is already configured to optimistic.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONCURRENCY_MODE_UNSPECIFIED" : Start the transaction with the
+  /// database-level default concurrency mode.
+  /// - "OPTIMISTIC" : Use optimistic concurrency control for the new
+  /// transaction.
+  /// - "PESSIMISTIC" : Use pessimistic concurrency control for the new
+  /// transaction.
+  core.String? concurrencyMode;
+
   /// An optional transaction to retry.
   core.String? retryTransaction;
   core.List<core.int> get retryTransactionAsBytes =>
@@ -7028,19 +7531,53 @@ class ReadWrite {
         .replaceAll('+', '-');
   }
 
-  ReadWrite({this.retryTransaction});
+  ReadWrite({this.concurrencyMode, this.retryTransaction});
 
   ReadWrite.fromJson(core.Map json_)
-    : this(retryTransaction: json_['retryTransaction'] as core.String?);
+    : this(
+        concurrencyMode: json_['concurrencyMode'] as core.String?,
+        retryTransaction: json_['retryTransaction'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final concurrencyMode = this.concurrencyMode;
     final retryTransaction = this.retryTransaction;
-    return {'retryTransaction': ?retryTransaction};
+    return {
+      'concurrencyMode': ?concurrencyMode,
+      'retryTransaction': ?retryTransaction,
+    };
+  }
+}
+
+/// Options for a server request.
+class RequestOptions {
+  /// The request tags for the request.
+  ///
+  /// Optional.
+  core.List<core.String>? requestTags;
+
+  RequestOptions({this.requestTags});
+
+  RequestOptions.fromJson(core.Map json_)
+    : this(
+        requestTags: (json_['requestTags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestTags = this.requestTags;
+    return {'requestTags': ?requestTags};
   }
 }
 
 /// The request for Firestore.Rollback.
 class RollbackRequest {
+  /// The request options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   /// The transaction to roll back.
   ///
   /// Required.
@@ -7055,14 +7592,22 @@ class RollbackRequest {
         .replaceAll('+', '-');
   }
 
-  RollbackRequest({this.transaction});
+  RollbackRequest({this.requestOptions, this.transaction});
 
   RollbackRequest.fromJson(core.Map json_)
-    : this(transaction: json_['transaction'] as core.String?);
+    : this(
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        transaction: json_['transaction'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final requestOptions = this.requestOptions;
     final transaction = this.transaction;
-    return {'transaction': ?transaction};
+    return {'requestOptions': ?requestOptions, 'transaction': ?transaction};
   }
 }
 
@@ -7089,6 +7634,11 @@ class RunAggregationQueryRequest {
   /// minute timestamp within the past 7 days.
   core.String? readTime;
 
+  /// The request options for the request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   /// An aggregation query.
   StructuredAggregationQuery? structuredAggregationQuery;
 
@@ -7110,6 +7660,7 @@ class RunAggregationQueryRequest {
     this.explainOptions,
     this.newTransaction,
     this.readTime,
+    this.requestOptions,
     this.structuredAggregationQuery,
     this.transaction,
   });
@@ -7127,6 +7678,11 @@ class RunAggregationQueryRequest {
               )
             : null,
         readTime: json_['readTime'] as core.String?,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         structuredAggregationQuery:
             json_.containsKey('structuredAggregationQuery')
             ? StructuredAggregationQuery.fromJson(
@@ -7141,12 +7697,14 @@ class RunAggregationQueryRequest {
     final explainOptions = this.explainOptions;
     final newTransaction = this.newTransaction;
     final readTime = this.readTime;
+    final requestOptions = this.requestOptions;
     final structuredAggregationQuery = this.structuredAggregationQuery;
     final transaction = this.transaction;
     return {
       'explainOptions': ?explainOptions,
       'newTransaction': ?newTransaction,
       'readTime': ?readTime,
+      'requestOptions': ?requestOptions,
       'structuredAggregationQuery': ?structuredAggregationQuery,
       'transaction': ?transaction,
     };
@@ -7254,6 +7812,11 @@ class RunQueryRequest {
   /// minute timestamp within the past 7 days.
   core.String? readTime;
 
+  /// The request options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   /// A structured query.
   StructuredQuery? structuredQuery;
 
@@ -7275,6 +7838,7 @@ class RunQueryRequest {
     this.explainOptions,
     this.newTransaction,
     this.readTime,
+    this.requestOptions,
     this.structuredQuery,
     this.transaction,
   });
@@ -7292,6 +7856,11 @@ class RunQueryRequest {
               )
             : null,
         readTime: json_['readTime'] as core.String?,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         structuredQuery: json_.containsKey('structuredQuery')
             ? StructuredQuery.fromJson(
                 json_['structuredQuery'] as core.Map<core.String, core.dynamic>,
@@ -7304,12 +7873,14 @@ class RunQueryRequest {
     final explainOptions = this.explainOptions;
     final newTransaction = this.newTransaction;
     final readTime = this.readTime;
+    final requestOptions = this.requestOptions;
     final structuredQuery = this.structuredQuery;
     final transaction = this.transaction;
     return {
       'explainOptions': ?explainOptions,
       'newTransaction': ?newTransaction,
       'readTime': ?readTime,
+      'requestOptions': ?requestOptions,
       'structuredQuery': ?structuredQuery,
       'transaction': ?transaction,
     };
@@ -7828,8 +8399,10 @@ class UnaryFilter {
 class Value {
   /// An array value.
   ///
-  /// Cannot directly contain another array value, though can contain a map
-  /// which contains another array.
+  /// In Standard edition databases, an array value cannot directly contain
+  /// another array value, though it can contain a map which contains another
+  /// array. In Enterprise edition databases, an array value can contain another
+  /// array value.
   ArrayValue? arrayValue;
 
   /// A boolean value.
@@ -7837,8 +8410,10 @@ class Value {
 
   /// A bytes value.
   ///
-  /// Must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes are
-  /// considered by queries.
+  /// In Standard edition databases: * The value must not exceed 1 MiB - 89
+  /// bytes. * Only the first 1,500 bytes are considered by queries. In
+  /// Enterprise edition databases, there is no limit on the size of the value.
+  /// However, it is still subject to document and index entry size limits.
   core.String? bytesValue;
   core.List<core.int> get bytesValueAsBytes =>
       convert.base64.decode(bytesValue!);
@@ -7893,9 +8468,11 @@ class Value {
 
   /// A string value.
   ///
-  /// The string, represented as UTF-8, must not exceed 1 MiB - 89 bytes. Only
-  /// the first 1,500 bytes of the UTF-8 representation are considered by
-  /// queries.
+  /// In Standard edition databases: * The string, represented as UTF-8, must
+  /// not exceed 1 MiB - 89 bytes. * Only the first 1,500 bytes of the UTF-8
+  /// representation are considered by queries. In Enterprise edition databases,
+  /// there is no limit on the size of the value. However, it is still subject
+  /// to document and index entry size limits.
   core.String? stringValue;
 
   /// A timestamp value.
@@ -8111,6 +8688,11 @@ class WriteRequest {
   /// Labels associated with this write request.
   core.Map<core.String, core.String>? labels;
 
+  /// The request options for the request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   /// The ID of the write stream to resume.
   ///
   /// This may only be set in the first message. When left empty, a new write
@@ -8145,13 +8727,24 @@ class WriteRequest {
   /// all other requests.
   core.List<Write>? writes;
 
-  WriteRequest({this.labels, this.streamId, this.streamToken, this.writes});
+  WriteRequest({
+    this.labels,
+    this.requestOptions,
+    this.streamId,
+    this.streamToken,
+    this.writes,
+  });
 
   WriteRequest.fromJson(core.Map json_)
     : this(
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         streamId: json_['streamId'] as core.String?,
         streamToken: json_['streamToken'] as core.String?,
         writes: (json_['writes'] as core.List?)
@@ -8164,11 +8757,13 @@ class WriteRequest {
 
   core.Map<core.String, core.dynamic> toJson() {
     final labels = this.labels;
+    final requestOptions = this.requestOptions;
     final streamId = this.streamId;
     final streamToken = this.streamToken;
     final writes = this.writes;
     return {
       'labels': ?labels,
+      'requestOptions': ?requestOptions,
       'streamId': ?streamId,
       'streamToken': ?streamToken,
       'writes': ?writes,

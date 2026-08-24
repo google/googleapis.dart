@@ -1980,6 +1980,11 @@ class CorpusQuery {
   /// If set, **CorpusType** must be **DRIVE**.
   HeldDriveQuery? driveQuery;
 
+  /// Service-specific options for Gemini holds.
+  ///
+  /// If set, **CorpusType** must be **GEMINI**.
+  HeldGeminiQuery? geminiQuery;
+
   /// Service-specific options for Groups holds.
   ///
   /// If set, **CorpusType** must be **GROUPS**.
@@ -2003,6 +2008,7 @@ class CorpusQuery {
   CorpusQuery({
     this.calendarQuery,
     this.driveQuery,
+    this.geminiQuery,
     this.groupsQuery,
     this.hangoutsChatQuery,
     this.mailQuery,
@@ -2019,6 +2025,11 @@ class CorpusQuery {
         driveQuery: json_.containsKey('driveQuery')
             ? HeldDriveQuery.fromJson(
                 json_['driveQuery'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        geminiQuery: json_.containsKey('geminiQuery')
+            ? HeldGeminiQuery.fromJson(
+                json_['geminiQuery'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         groupsQuery: json_.containsKey('groupsQuery')
@@ -2047,6 +2058,7 @@ class CorpusQuery {
   core.Map<core.String, core.dynamic> toJson() {
     final calendarQuery = this.calendarQuery;
     final driveQuery = this.driveQuery;
+    final geminiQuery = this.geminiQuery;
     final groupsQuery = this.groupsQuery;
     final hangoutsChatQuery = this.hangoutsChatQuery;
     final mailQuery = this.mailQuery;
@@ -2054,6 +2066,7 @@ class CorpusQuery {
     return {
       'calendarQuery': ?calendarQuery,
       'driveQuery': ?driveQuery,
+      'geminiQuery': ?geminiQuery,
       'groupsQuery': ?groupsQuery,
       'hangoutsChatQuery': ?hangoutsChatQuery,
       'mailQuery': ?mailQuery,
@@ -2694,6 +2707,9 @@ class HeldDriveQuery {
   }
 }
 
+/// Options for Gemini holds.
+typedef HeldGeminiQuery = $Empty;
+
 /// Query options for group holds.
 typedef HeldGroupsQuery = $Query;
 
@@ -3072,6 +3088,7 @@ class MailExportOptions {
   /// and Calendar.
   /// - "ICS" : Export as ICS. Only available for Calendar.
   /// - "XML" : Export as XML. Only available for Gemini.
+  /// - "JSON" : Export as JSON. Only available for Gemini in Workpace.
   core.String? exportFormat;
 
   /// To enable exporting linked Drive files, set to **true**.

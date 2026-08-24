@@ -41,6 +41,7 @@
 /// - [ProjectsLocationsMulticloudDataTransferConfigsDestinationsResource]
 ///     - [ProjectsLocationsMulticloudDataTransferSupportedServicesResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsPscAuthorizationPoliciesResource]
 ///     - [ProjectsLocationsRegionalEndpointsResource]
 ///     - [ProjectsLocationsRemoteTransportProfilesResource]
 ///     - [ProjectsLocationsServiceClassesResource]
@@ -48,6 +49,7 @@
 ///     - [ProjectsLocationsServiceConnectionPoliciesResource]
 ///     - [ProjectsLocationsServiceConnectionTokensResource]
 ///     - [ProjectsLocationsSpokesResource]
+///       - [ProjectsLocationsSpokesGatewayAdvertisedRoutesResource]
 ///     - [ProjectsLocationsTransportsResource]
 library;
 
@@ -115,6 +117,9 @@ class ProjectsLocationsResource {
       );
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsPscAuthorizationPoliciesResource
+  get pscAuthorizationPolicies =>
+      ProjectsLocationsPscAuthorizationPoliciesResource(_requester);
   ProjectsLocationsRegionalEndpointsResource get regionalEndpoints =>
       ProjectsLocationsRegionalEndpointsResource(_requester);
   ProjectsLocationsRemoteTransportProfilesResource
@@ -225,7 +230,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -240,9 +245,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3555,6 +3559,210 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsPscAuthorizationPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPscAuthorizationPoliciesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new PscAuthorizationPolicy in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name of the
+  /// PscAuthorizationPolicy.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pscAuthorizationPolicyId] - Required. Resource ID of the
+  /// PscAuthorizationPolicy.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    PscAuthorizationPolicy request,
+    core.String parent, {
+    core.String? pscAuthorizationPolicyId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pscAuthorizationPolicyId': ?pscAuthorizationPolicyId == null
+          ? null
+          : [pscAuthorizationPolicyId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/pscAuthorizationPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a single PscAuthorizationPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the PscAuthorizationPolicy to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/pscAuthorizationPolicies/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag of the PscAuthorizationPolicy to delete.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of a single PscAuthorizationPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the PscAuthorizationPolicy to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/pscAuthorizationPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PscAuthorizationPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PscAuthorizationPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return PscAuthorizationPolicy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists PscAuthorizationPolicies in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression to restrict the results.
+  ///
+  /// [orderBy] - Optional. Sort order of the results.
+  ///
+  /// [pageSize] - Optional. The maximum number of PscAuthorizationPolicies to
+  /// return in a single page. The service may return fewer than this value. If
+  /// unspecified, at most 50 PscAuthorizationPolicies will be returned. The
+  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListPscAuthorizationPolicies` call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPscAuthorizationPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPscAuthorizationPoliciesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/pscAuthorizationPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPscAuthorizationPoliciesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsRegionalEndpointsResource {
   final commons.ApiRequester _requester;
 
@@ -4959,6 +5167,10 @@ class ProjectsLocationsServiceConnectionTokensResource {
 class ProjectsLocationsSpokesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsSpokesGatewayAdvertisedRoutesResource
+  get gatewayAdvertisedRoutes =>
+      ProjectsLocationsSpokesGatewayAdvertisedRoutesResource(_requester);
+
   ProjectsLocationsSpokesResource(commons.ApiRequester client)
     : _requester = client;
 
@@ -5384,6 +5596,298 @@ class ProjectsLocationsSpokesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsSpokesGatewayAdvertisedRoutesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSpokesGatewayAdvertisedRoutesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Create a GatewayAdvertisedRoute
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+$`.
+  ///
+  /// [gatewayAdvertisedRouteId] - Required. Unique id for the route to create.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
+  /// creating duplicate commitments. The request ID must be a valid UUID, with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GatewayAdvertisedRoute request,
+    core.String parent, {
+    core.String? gatewayAdvertisedRouteId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'gatewayAdvertisedRouteId': ?gatewayAdvertisedRouteId == null
+          ? null
+          : [gatewayAdvertisedRouteId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/gatewayAdvertisedRoutes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Delete a GatewayAdvertisedRoute
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the gateway advertised route to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+/gatewayAdvertisedRoutes/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
+  /// creating duplicate commitments. The request ID must be a valid UUID, with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Get a GatewayAdvertisedRoute
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the gateway advertised route to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+/gatewayAdvertisedRoutes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GatewayAdvertisedRoute].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GatewayAdvertisedRoute> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GatewayAdvertisedRoute.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// List GatewayAdvertisedRoutes
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+$`.
+  ///
+  /// [filter] - An expression that filters the list of results.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - Optional. The maximum number of results per page that should
+  /// be returned.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListGatewayAdvertisedRoutes` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListGatewayAdvertisedRoutes` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGatewayAdvertisedRoutesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGatewayAdvertisedRoutesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/gatewayAdvertisedRoutes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGatewayAdvertisedRoutesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update a GatewayAdvertisedRoute
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the gateway advertised route. Route names
+  /// must be unique and use the following form:
+  /// `projects/{project_number}/locations/{region}/spokes/{spoke}/gatewayAdvertisedRoutes/{gateway_advertised_route_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+/gatewayAdvertisedRoutes/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
+  /// creating duplicate commitments. The request ID must be a valid UUID, with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. In the case of an update to an existing group,
+  /// field mask is used to specify the fields to be overwritten. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field is overwritten if it is in the mask. If the user does not
+  /// provide a mask, then all fields are overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GatewayAdvertisedRoute request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -6141,7 +6645,7 @@ class AutomatedDnsRecord {
   /// The service class identifier which authorizes this AutomatedDnsRecord.
   ///
   /// Any API calls targeting this AutomatedDnsRecord must have
-  /// `networkconnectivity.serviceclasses.use` IAM permission for the provided
+  /// `networkconnectivity.serviceClasses.use` IAM permission for the provided
   /// service class.
   ///
   /// Required. Immutable.
@@ -7141,6 +7645,217 @@ class Filter {
   }
 }
 
+/// A gateway that can apply specialized traffic processing.
+class Gateway {
+  /// The aggregate processing capacity of this gateway.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GATEWAY_CAPACITY_UNSPECIFIED" : The gateway capacity is unspecified.
+  /// - "CAPACITY_1_GBPS" : The gateway has 1 Gbps of aggregate processing
+  /// capacity
+  /// - "CAPACITY_10_GBPS" : The gateway has 10 Gbps of aggregate processing
+  /// capacity
+  core.String? capacity;
+
+  /// The list of Cloud Routers that are connected to this gateway.
+  ///
+  /// Should be in the form:
+  /// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/routers/{router}
+  ///
+  /// Output only.
+  core.List<core.String>? cloudRouters;
+
+  /// A list of IP ranges that are reserved for this gateway's internal
+  /// intfrastructure.
+  ///
+  /// Optional.
+  core.List<IpRangeReservation>? ipRangeReservations;
+
+  /// The URI of the connected SACAttachment.
+  ///
+  /// Should be in the form:
+  /// projects/{project}/locations/{location}/sacAttachments/{sac_attachment}
+  ///
+  /// Output only.
+  core.String? sacAttachment;
+
+  Gateway({
+    this.capacity,
+    this.cloudRouters,
+    this.ipRangeReservations,
+    this.sacAttachment,
+  });
+
+  Gateway.fromJson(core.Map json_)
+    : this(
+        capacity: json_['capacity'] as core.String?,
+        cloudRouters: (json_['cloudRouters'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        ipRangeReservations: (json_['ipRangeReservations'] as core.List?)
+            ?.map(
+              (value) => IpRangeReservation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        sacAttachment: json_['sacAttachment'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final capacity = this.capacity;
+    final cloudRouters = this.cloudRouters;
+    final ipRangeReservations = this.ipRangeReservations;
+    final sacAttachment = this.sacAttachment;
+    return {
+      'capacity': ?capacity,
+      'cloudRouters': ?cloudRouters,
+      'ipRangeReservations': ?ipRangeReservations,
+      'sacAttachment': ?sacAttachment,
+    };
+  }
+}
+
+/// A gateway advertised route is a route that a gateway spoke advertises
+/// somewhere.
+class GatewayAdvertisedRoute {
+  /// The time the gateway advertised route was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// An optional description of the gateway advertised route.
+  core.String? description;
+
+  /// This route's advertised IP address range.
+  ///
+  /// Must be a valid CIDR-formatted prefix. If an IP address is provided
+  /// without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP
+  /// address range, and, for IPv6, `/128`.
+  ///
+  /// Immutable.
+  core.String? ipRange;
+
+  /// Optional labels in key-value pair format.
+  ///
+  /// For more information about labels, see
+  /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the gateway advertised route. Route names must be unique and
+  /// use the following form:
+  /// `projects/{project_number}/locations/{region}/spokes/{spoke}/gatewayAdvertisedRoutes/{gateway_advertised_route_id}`
+  core.String? name;
+
+  /// The priority of this advertised route.
+  ///
+  /// You can choose a value from `0` to `65335`. If you don't provide a value,
+  /// Google Cloud assigns a priority of `100` to the ranges.
+  ///
+  /// Optional.
+  core.int? priority;
+
+  /// The recipient of this advertised route.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RECIPIENT_UNSPECIFIED" : No recipient specified. By default routes are
+  /// advertised to the hub.
+  /// - "ADVERTISE_TO_HUB" : Advertises a route toward the hub. Other spokes
+  /// reachable from this spoke will receive the route.
+  core.String? recipient;
+
+  /// The current lifecycle state of this gateway advertised route.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state information available
+  /// - "CREATING" : The resource's create operation is in progress.
+  /// - "ACTIVE" : The resource is active
+  /// - "DELETING" : The resource's delete operation is in progress.
+  /// - "ACCEPTING" : The resource's accept operation is in progress.
+  /// - "REJECTING" : The resource's reject operation is in progress.
+  /// - "UPDATING" : The resource's update operation is in progress.
+  /// - "INACTIVE" : The resource is inactive.
+  /// - "OBSOLETE" : The hub associated with this spoke resource has been
+  /// deleted. This state applies to spoke resources only.
+  /// - "FAILED" : The resource is in an undefined state due to resource
+  /// creation or deletion failure. You can try to delete the resource later or
+  /// contact support for help.
+  core.String? state;
+
+  /// The Google-generated UUID for the gateway advertised route.
+  ///
+  /// This value is unique across all gateway advertised route resources. If a
+  /// gateway advertised route is deleted and another with the same name is
+  /// created, the new route is assigned a different `unique_id`.
+  ///
+  /// Output only.
+  core.String? uniqueId;
+
+  /// The time the gateway advertised route was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GatewayAdvertisedRoute({
+    this.createTime,
+    this.description,
+    this.ipRange,
+    this.labels,
+    this.name,
+    this.priority,
+    this.recipient,
+    this.state,
+    this.uniqueId,
+    this.updateTime,
+  });
+
+  GatewayAdvertisedRoute.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        ipRange: json_['ipRange'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        priority: json_['priority'] as core.int?,
+        recipient: json_['recipient'] as core.String?,
+        state: json_['state'] as core.String?,
+        uniqueId: json_['uniqueId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final ipRange = this.ipRange;
+    final labels = this.labels;
+    final name = this.name;
+    final priority = this.priority;
+    final recipient = this.recipient;
+    final state = this.state;
+    final uniqueId = this.uniqueId;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'ipRange': ?ipRange,
+      'labels': ?labels,
+      'name': ?name,
+      'priority': ?priority,
+      'recipient': ?recipient,
+      'state': ?state,
+      'uniqueId': ?uniqueId,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;
 
@@ -7308,7 +8023,7 @@ class GoogleRpcErrorInfo {
   /// instances that can be created in a single (batch) request.
   core.Map<core.String, core.String>? metadata;
 
-  /// The reason of the error.
+  /// The reason for the error.
   ///
   /// This is a constant value that identifies the proximate cause of the error.
   /// Error reasons are unique within a particular domain of errors. This should
@@ -7544,6 +8259,9 @@ class Hub {
   /// - "STAR" : Star topology is implemented. Two groups, `center` and `edge`,
   /// are automatically created along with hub creation. Spokes have to join one
   /// of the groups during creation.
+  /// - "HYBRID_INSPECTION" : Hybrid inspection has 4 groups ('non-prod',
+  /// 'prod', 'services', and 'untrusted') that are automatically created along
+  /// with hub creation.
   core.String? presetTopology;
 
   /// The route tables that belong to this hub.
@@ -8013,6 +8731,29 @@ class InternalRange {
       'usage': ?usage,
       'users': ?users,
     };
+  }
+}
+
+/// A list of IP ranges that are reserved for this gateway's internal
+/// intfrastructure.
+class IpRangeReservation {
+  /// A block of IP addresses used to allocate supporting infrastructure for
+  /// this gateway.
+  ///
+  /// This block must not overlap with subnets in any spokes or peer VPC
+  /// networks that the gateway can communicate with. Example: "10.1.2.0/24"
+  ///
+  /// Required.
+  core.String? ipRange;
+
+  IpRangeReservation({this.ipRange});
+
+  IpRangeReservation.fromJson(core.Map json_)
+    : this(ipRange: json_['ipRange'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ipRange = this.ipRange;
+    return {'ipRange': ?ipRange};
   }
 }
 
@@ -8593,6 +9334,54 @@ class ListDestinationsResponse {
   }
 }
 
+/// Response for HubService.ListGatewayAdvertisedRoutes method.
+class ListGatewayAdvertisedRoutesResponse {
+  /// The requested gateway advertised routes.
+  core.List<GatewayAdvertisedRoute>? gatewayAdvertisedRoutes;
+
+  /// The token for the next page of the response.
+  ///
+  /// To see more results, use this value as the page_token for your next
+  /// request. If this value is empty, there are no more results.
+  core.String? nextPageToken;
+
+  /// Hubs that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListGatewayAdvertisedRoutesResponse({
+    this.gatewayAdvertisedRoutes,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGatewayAdvertisedRoutesResponse.fromJson(core.Map json_)
+    : this(
+        gatewayAdvertisedRoutes:
+            (json_['gatewayAdvertisedRoutes'] as core.List?)
+                ?.map(
+                  (value) => GatewayAdvertisedRoute.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final gatewayAdvertisedRoutes = this.gatewayAdvertisedRoutes;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'gatewayAdvertisedRoutes': ?gatewayAdvertisedRoutes,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
 /// Response for HubService.ListGroups method.
 class ListGroupsResponse {
   /// The requested groups.
@@ -8925,6 +9714,53 @@ class ListPolicyBasedRoutesResponse {
     return {
       'nextPageToken': ?nextPageToken,
       'policyBasedRoutes': ?policyBasedRoutes,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response for ListPscAuthorizationPolicies.
+class ListPscAuthorizationPoliciesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  core.String? nextPageToken;
+
+  /// The list of PscAuthorizationPolicies.
+  core.List<PscAuthorizationPolicy>? pscAuthorizationPolicies;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListPscAuthorizationPoliciesResponse({
+    this.nextPageToken,
+    this.pscAuthorizationPolicies,
+    this.unreachable,
+  });
+
+  ListPscAuthorizationPoliciesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pscAuthorizationPolicies:
+            (json_['pscAuthorizationPolicies'] as core.List?)
+                ?.map(
+                  (value) => PscAuthorizationPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final pscAuthorizationPolicies = this.pscAuthorizationPolicies;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'pscAuthorizationPolicies': ?pscAuthorizationPolicies,
       'unreachable': ?unreachable,
     };
   }
@@ -10113,6 +10949,129 @@ class ProducerPscConfig {
     return {
       'automatedDnsCreationSpec': ?automatedDnsCreationSpec,
       'serviceAttachmentUri': ?serviceAttachmentUri,
+    };
+  }
+}
+
+/// Represents a PSC Authorization Policy.
+class PscAuthorizationPolicy {
+  /// The authorization mode.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "AUTHORIZATION_MODE_UNSPECIFIED" : Default value.
+  /// - "AUTHORIZATION_MODE_TRANSITIVE_TO_SERVICE_ATTACHMENT" : In this mode,
+  /// authorization is determined by the permissions on the underlying Service
+  /// Attachment.
+  core.String? authorizationMode;
+
+  /// List of authorized consumer resources allowed to connect.
+  ///
+  /// Supported values are: 1. Project resource name (e.g.,
+  /// `projects/{project_id}`) 2. Wildcard `"*"` (grants global ingress
+  /// authorization to the target).
+  ///
+  /// Required.
+  core.List<core.String>? authorizedClientResources;
+
+  /// The time when the PscAuthorizationPolicy was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A description of this resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The etag of the PscAuthorizationPolicy.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// User-defined labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the PscAuthorizationPolicy. Format:
+  /// projects/{project}/locations/{location}/pscAuthorizationPolicies/{psc_authorization_policy}
+  core.String? name;
+
+  /// The full absolute URI of the targeted resource governed by this policy.
+  ///
+  /// For example, for an AgentRegistry resource, the format is:
+  /// `//agentregistry.googleapis.com/projects/{project}/locations/{location}`
+  ///
+  /// Required.
+  core.String? targetResourceUri;
+
+  /// The unique identifier of the PscAuthorizationPolicy.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time when the PscAuthorizationPolicy was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  PscAuthorizationPolicy({
+    this.authorizationMode,
+    this.authorizedClientResources,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.targetResourceUri,
+    this.uid,
+    this.updateTime,
+  });
+
+  PscAuthorizationPolicy.fromJson(core.Map json_)
+    : this(
+        authorizationMode: json_['authorizationMode'] as core.String?,
+        authorizedClientResources:
+            (json_['authorizedClientResources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        targetResourceUri: json_['targetResourceUri'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationMode = this.authorizationMode;
+    final authorizedClientResources = this.authorizedClientResources;
+    final createTime = this.createTime;
+    final description = this.description;
+    final etag = this.etag;
+    final labels = this.labels;
+    final name = this.name;
+    final targetResourceUri = this.targetResourceUri;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'authorizationMode': ?authorizationMode,
+      'authorizedClientResources': ?authorizedClientResources,
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'labels': ?labels,
+      'name': ?name,
+      'targetResourceUri': ?targetResourceUri,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 }
@@ -11907,6 +12866,12 @@ class Spoke {
   /// Optional.
   core.List<core.String>? fieldPathsPendingUpdate;
 
+  /// This is a gateway that can apply specialized processing to traffic going
+  /// through it.
+  ///
+  /// Optional.
+  Gateway? gateway;
+
   /// The name of the group that this spoke is associated with.
   ///
   /// Optional.
@@ -11970,6 +12935,7 @@ class Spoke {
   /// - "INTERCONNECT_ATTACHMENT" : Spokes associated with VLAN attachments.
   /// - "ROUTER_APPLIANCE" : Spokes associated with router appliance instances.
   /// - "VPC_NETWORK" : Spokes associated with VPC networks.
+  /// - "GATEWAY" : Spokes that are NCC gateways.
   /// - "PRODUCER_VPC_NETWORK" : Spokes that are backed by a producer VPC
   /// network.
   core.String? spokeType;
@@ -12012,6 +12978,7 @@ class Spoke {
     this.description,
     this.etag,
     this.fieldPathsPendingUpdate,
+    this.gateway,
     this.group,
     this.hub,
     this.labels,
@@ -12037,6 +13004,11 @@ class Spoke {
             (json_['fieldPathsPendingUpdate'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        gateway: json_.containsKey('gateway')
+            ? Gateway.fromJson(
+                json_['gateway'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         group: json_['group'] as core.String?,
         hub: json_['hub'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -12093,6 +13065,7 @@ class Spoke {
     final description = this.description;
     final etag = this.etag;
     final fieldPathsPendingUpdate = this.fieldPathsPendingUpdate;
+    final gateway = this.gateway;
     final group = this.group;
     final hub = this.hub;
     final labels = this.labels;
@@ -12112,6 +13085,7 @@ class Spoke {
       'description': ?description,
       'etag': ?etag,
       'fieldPathsPendingUpdate': ?fieldPathsPendingUpdate,
+      'gateway': ?gateway,
       'group': ?group,
       'hub': ?hub,
       'labels': ?labels,
@@ -12300,6 +13274,7 @@ class SpokeTypeCount {
   /// - "INTERCONNECT_ATTACHMENT" : Spokes associated with VLAN attachments.
   /// - "ROUTER_APPLIANCE" : Spokes associated with router appliance instances.
   /// - "VPC_NETWORK" : Spokes associated with VPC networks.
+  /// - "GATEWAY" : Spokes that are NCC gateways.
   /// - "PRODUCER_VPC_NETWORK" : Spokes that are backed by a producer VPC
   /// network.
   core.String? spokeType;

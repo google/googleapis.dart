@@ -5516,7 +5516,26 @@ class ClientUserInvitation {
 }
 
 /// Request message for indicating that the proposal's setup step is complete.
-typedef CompleteSetupRequest = $Empty;
+class CompleteSetupRequest {
+  /// The external deal ids of the deals to mark as setup completed.
+  ///
+  /// If empty, all the deals in the proposal will be marked as setup completed.
+  core.List<core.String>? externalDealIds;
+
+  CompleteSetupRequest({this.externalDealIds});
+
+  CompleteSetupRequest.fromJson(core.Map json_)
+    : this(
+        externalDealIds: (json_['externalDealIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final externalDealIds = this.externalDealIds;
+    return {'externalDealIds': ?externalDealIds};
+  }
+}
 
 /// Contains information on how a buyer or seller can be reached.
 class ContactInformation {

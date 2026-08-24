@@ -121,7 +121,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -136,9 +136,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2320,8 +2319,12 @@ class ConfigManagementSpec {
   )
   ConfigManagementHierarchyControllerConfig? hierarchyController;
 
-  /// Deprecated: From version 1.21.0, automatic Feature management is
-  /// unavailable, and Config Sync only supports manual upgrades.
+  /// Deprecated: Automatic Feature management is in Preview and is unavailable
+  /// in version 1.21.0 and later, after which Config Sync only supports manual
+  /// upgrades.
+  ///
+  /// If set to manual upgrades, clear this field instead, which is behaviorally
+  /// equivalent but helps prevent compatibility issues with newer fields.
   ///
   /// Optional.
   /// Possible string values are:
@@ -5121,6 +5124,17 @@ class ServiceMeshCondition {
   /// - "NON_STANDARD_BINARY_USAGE" : Non-standard binary usage error code
   /// - "UNSUPPORTED_GATEWAY_CLASS" : Unsupported gateway class error code
   /// - "MANAGED_CNI_NOT_ENABLED" : Managed CNI not enabled error code
+  /// - "MISSING_CONTROL_PLANE_CONFIG" : Missing control plane configuration
+  /// error code
+  /// - "SHARED_VPC_MISSING_PERMISSIONS" : Shared VPC missing permissions error
+  /// code
+  /// - "REQUIRED_ORG_POLICY_DISABLED" : Required org policy disabled error code
+  /// - "MODERNIZATION_INCOMPATIBLE_POD_ANNOTATION" : One or more Pods have
+  /// unsupported annotations.
+  /// - "MODERNIZATION_INCOMPATIBLE_CONFIG" : Incompatible config found in the
+  /// cluster.
+  /// - "MODERNIZATION_INCOMPATIBLE_GATEWAY_POD_SCALE" : Gateway pods per
+  /// cluster limit exceeded.
   /// - "MODERNIZATION_SCHEDULED" : Modernization is scheduled for a cluster.
   /// - "MODERNIZATION_IN_PROGRESS" : Modernization is in progress for a
   /// cluster.
@@ -5148,6 +5162,15 @@ class ServiceMeshCondition {
   /// in a fleet. Rollback is no longer allowed.
   /// - "MODERNIZATION_ROLLING_BACK_FLEET" : Rollback is in progress for
   /// modernization of all clusters in a fleet.
+  /// - "MODERNIZATION_MODERNIZED" : Modernization of all the fleet's clusters
+  /// is complete. Soaking before finalizing the modernization.
+  /// - "MODERNIZATION_COMPATIBLE" : Fleet is compatible for modernization.
+  /// - "MODERNIZATION_INCOMPATIBLE" : Fleet is not yet compatible for
+  /// modernization.
+  /// - "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE" : Fleet exceeds service mesh
+  /// fleet-level scalability limits.
+  /// - "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA" : Fleet exceeds service mesh
+  /// fleet-level quota limits.
   core.String? code;
 
   /// A short summary about the issue.

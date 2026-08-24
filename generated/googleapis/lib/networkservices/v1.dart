@@ -26,11 +26,14 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAgentConnectivityTemplatesResource]
+///     - [ProjectsLocationsAgentGatewaysResource]
 ///     - [ProjectsLocationsAuthzExtensionsResource]
 ///     - [ProjectsLocationsEdgeCacheKeysetsResource]
 ///     - [ProjectsLocationsEdgeCacheOriginsResource]
 ///     - [ProjectsLocationsEdgeCacheServicesResource]
 ///     - [ProjectsLocationsEndpointPoliciesResource]
+///     - [ProjectsLocationsExtensionBindingsResource]
 ///     - [ProjectsLocationsGatewaysResource]
 ///       - [ProjectsLocationsGatewaysRouteViewsResource]
 ///     - [ProjectsLocationsGrpcRoutesResource]
@@ -40,7 +43,10 @@
 ///     - [ProjectsLocationsLbTrafficExtensionsResource]
 ///     - [ProjectsLocationsMeshesResource]
 ///       - [ProjectsLocationsMeshesRouteViewsResource]
+///     - [ProjectsLocationsMulticastConsumerAssociationsResource]
+///     - [ProjectsLocationsMulticastGroupConsumerActivationsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsProducerExtensionsResource]
 ///     - [ProjectsLocationsServiceBindingsResource]
 ///     - [ProjectsLocationsServiceLbPoliciesResource]
 ///     - [ProjectsLocationsTcpRoutesResource]
@@ -96,6 +102,11 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAgentConnectivityTemplatesResource
+  get agentConnectivityTemplates =>
+      ProjectsLocationsAgentConnectivityTemplatesResource(_requester);
+  ProjectsLocationsAgentGatewaysResource get agentGateways =>
+      ProjectsLocationsAgentGatewaysResource(_requester);
   ProjectsLocationsAuthzExtensionsResource get authzExtensions =>
       ProjectsLocationsAuthzExtensionsResource(_requester);
   ProjectsLocationsEdgeCacheKeysetsResource get edgeCacheKeysets =>
@@ -106,6 +117,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsEdgeCacheServicesResource(_requester);
   ProjectsLocationsEndpointPoliciesResource get endpointPolicies =>
       ProjectsLocationsEndpointPoliciesResource(_requester);
+  ProjectsLocationsExtensionBindingsResource get extensionBindings =>
+      ProjectsLocationsExtensionBindingsResource(_requester);
   ProjectsLocationsGatewaysResource get gateways =>
       ProjectsLocationsGatewaysResource(_requester);
   ProjectsLocationsGrpcRoutesResource get grpcRoutes =>
@@ -120,8 +133,16 @@ class ProjectsLocationsResource {
       ProjectsLocationsLbTrafficExtensionsResource(_requester);
   ProjectsLocationsMeshesResource get meshes =>
       ProjectsLocationsMeshesResource(_requester);
+  ProjectsLocationsMulticastConsumerAssociationsResource
+  get multicastConsumerAssociations =>
+      ProjectsLocationsMulticastConsumerAssociationsResource(_requester);
+  ProjectsLocationsMulticastGroupConsumerActivationsResource
+  get multicastGroupConsumerActivations =>
+      ProjectsLocationsMulticastGroupConsumerActivationsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsProducerExtensionsResource get producerExtensions =>
+      ProjectsLocationsProducerExtensionsResource(_requester);
   ProjectsLocationsServiceBindingsResource get serviceBindings =>
       ProjectsLocationsServiceBindingsResource(_requester);
   ProjectsLocationsServiceLbPoliciesResource get serviceLbPolicies =>
@@ -170,7 +191,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -185,9 +206,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -235,6 +255,496 @@ class ProjectsLocationsResource {
     return ListLocationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+}
+
+class ProjectsLocationsAgentConnectivityTemplatesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentConnectivityTemplatesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a new AgentConnectivityTemplate in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the AgentConnectivityTemplate.
+  /// Must be in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [agentConnectivityTemplateId] - Required. Short name of the
+  /// AgentConnectivityTemplate resource to be created.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AgentConnectivityTemplate request,
+    core.String parent, {
+    core.String? agentConnectivityTemplateId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'agentConnectivityTemplateId': ?agentConnectivityTemplateId == null
+          ? null
+          : [agentConnectivityTemplateId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/agentConnectivityTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single AgentConnectivityTemplate.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the AgentConnectivityTemplate to delete. Must
+  /// be in the format `projects / * /locations / * /agentConnectivityTemplates
+  /// / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agentConnectivityTemplates/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag of the AgentConnectivityTemplate to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single AgentConnectivityTemplate.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the AgentConnectivityTemplate to get. Must be
+  /// in the format `projects / * /locations / * /agentConnectivityTemplates / *
+  /// `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agentConnectivityTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AgentConnectivityTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AgentConnectivityTemplate> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AgentConnectivityTemplate.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists AgentConnectivityTemplates in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// AgentConnectivityTemplates should be listed, specified in the format
+  /// `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of AgentConnectivityTemplates to
+  /// return per call.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListAgentConnectivityTemplatesResponse` Indicates that this is a
+  /// continuation of a prior `ListAgentConnectivityTemplates` call, and that
+  /// the system should return the next page of data.
+  ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests. Otherwise if one of the locations
+  /// is down or unreachable, the Aggregated List request will fail.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAgentConnectivityTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAgentConnectivityTemplatesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/agentConnectivityTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAgentConnectivityTemplatesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single AgentConnectivityTemplate.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the AgentConnectivityTemplate resource. It
+  /// matches pattern `projects / * /locations / *
+  /// /agentConnectivityTemplates/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agentConnectivityTemplates/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the AgentConnectivityTemplate resource by the update. The
+  /// fields specified in the update_mask are relative to the resource, not the
+  /// full request. A field will be overwritten if it is in the mask. If the
+  /// user does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AgentConnectivityTemplate request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentGatewaysResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentGatewaysResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new AgentGateway in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the AgentGateway. Must be in
+  /// the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [agentGatewayId] - Required. Short name of the AgentGateway resource to be
+  /// created.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AgentGateway request,
+    core.String parent, {
+    core.String? agentGatewayId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'agentGatewayId': ?agentGatewayId == null ? null : [agentGatewayId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/agentGateways';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single AgentGateway.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the AgentGateway to delete. Must be in the
+  /// format `projects / * /locations / * /agentGateways / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agentGateways/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag of the AgentGateway to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single AgentGateway.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the AgentGateway to get. Must be in the
+  /// format `projects / * /locations / * /agentGateways / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agentGateways/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AgentGateway].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AgentGateway> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AgentGateway.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists AgentGateways in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the AgentGateways
+  /// should be listed, specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of AgentGateways to return per call.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListAgentGatewaysResponse` Indicates that this is a continuation of a
+  /// prior `ListAgentGateways` call, and that the system should return the next
+  /// page of data.
+  ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests. Otherwise if one of the locations
+  /// is down or unreachable, the Aggregated List request will fail.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAgentGatewaysResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAgentGatewaysResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/agentGateways';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAgentGatewaysResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single AgentGateway.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the AgentGateway resource. It matches pattern
+  /// `projects / * /locations / * /agentGateways/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agentGateways/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the AgentGateway resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AgentGateway request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1247,6 +1757,245 @@ class ProjectsLocationsEndpointPoliciesResource {
   }
 }
 
+class ProjectsLocationsExtensionBindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsExtensionBindingsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new `ExtensionBinding` resource in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the `ExtensionBinding`
+  /// resource. Must be in the format `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [extensionBindingId] - Required. Short name of the `ExtensionBinding`
+  /// resource to be created.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    ExtensionBinding request,
+    core.String parent, {
+    core.String? extensionBindingId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'extensionBindingId': ?extensionBindingId == null
+          ? null
+          : [extensionBindingId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/extensionBindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified `ExtensionBinding` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the `ExtensionBinding` resource to delete.
+  /// Must be in the format
+  /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/extensionBindings/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag of the ExtensionBinding to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of the specified `ExtensionBinding` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the `ExtensionBinding` resource to get. Must
+  /// be in the format
+  /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/extensionBindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExtensionBinding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExtensionBinding> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ExtensionBinding.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists `ExtensionBinding` resources in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// `ExtensionBinding` resources should be listed, specified in the format
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of `ExtensionBinding` resources to
+  /// return per call.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListExtensionBindingsResponse` Indicates that this is a continuation of a
+  /// prior `ListExtensionBindings` call, and that the system should return the
+  /// next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExtensionBindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExtensionBindingsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/extensionBindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListExtensionBindingsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of the specified `ExtensionBinding` resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the `ExtensionBinding` resource in the
+  /// following format:
+  /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/extensionBindings/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the `ExtensionBinding` resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    ExtensionBinding request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsGatewaysResource {
   final commons.ApiRequester _requester;
 
@@ -1816,6 +2565,8 @@ class ProjectsLocationsHttpRoutesResource {
   /// [httpRouteId] - Required. Short name of the HttpRoute resource to be
   /// created.
   ///
+  /// [requestId] - Optional. Idempotent request UUID.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1830,11 +2581,13 @@ class ProjectsLocationsHttpRoutesResource {
     HttpRoute request,
     core.String parent, {
     core.String? httpRouteId,
+    core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'httpRouteId': ?httpRouteId == null ? null : [httpRouteId],
+      'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1928,6 +2681,8 @@ class ProjectsLocationsHttpRoutesResource {
   /// should be listed, specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filter expression to restrict the list.
+  ///
   /// [pageSize] - Maximum number of HttpRoutes to return per call.
   ///
   /// [pageToken] - The value returned by the last `ListHttpRoutesResponse`
@@ -1950,12 +2705,14 @@ class ProjectsLocationsHttpRoutesResource {
   /// this method will complete with the same error.
   async.Future<ListHttpRoutesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'returnPartialSuccess': ?returnPartialSuccess == null
@@ -3200,6 +3957,612 @@ class ProjectsLocationsMeshesRouteViewsResource {
   }
 }
 
+class ProjectsLocationsMulticastConsumerAssociationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMulticastConsumerAssociationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a new multicast consumer association in a given project and
+  /// location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the multicast consumer
+  /// association. Use the following format: `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [multicastConsumerAssociationId] - Required. A unique name for the
+  /// multicast consumer association. The name is restricted to lower-case
+  /// letters, numbers, and hyphen, with the first character a lower-case
+  /// letter, and the last a letter or a number. The name must not exceed 48
+  /// characters.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    MulticastConsumerAssociation request,
+    core.String parent, {
+    core.String? multicastConsumerAssociationId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'multicastConsumerAssociationId': ?multicastConsumerAssociationId == null
+          ? null
+          : [multicastConsumerAssociationId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/multicastConsumerAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single multicast consumer association.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the multicast consumer association
+  /// to delete. Use the following format: `projects / * /locations / *
+  /// /multicastConsumerAssociations / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastConsumerAssociations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single multicast consumer association.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the multicast consumer association
+  /// to get. Use the following format: `projects / * /locations / *
+  /// /multicastConsumerAssociations / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastConsumerAssociations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MulticastConsumerAssociation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MulticastConsumerAssociation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MulticastConsumerAssociation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists multicast consumer associations in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource for which to list multicast
+  /// consumer associations. Use the following format: `projects / * /locations
+  /// / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters the resources listed
+  /// in the response. The expression must be of the form ` ` where operators:
+  /// `<`, `>`, `<=`, `>=`, `!=`, `=`, `:` are supported (colon `:` represents a
+  /// HAS operator which is roughly synonymous with equality). can refer to a
+  /// proto or JSON field, or a synthetic field. Field names can be camelCase or
+  /// snake_case. Examples: * Filter by name: name = "RESOURCE_NAME" * Filter by
+  /// labels: * Resources that have a key named `foo` labels.foo:* * Resources
+  /// that have a key named `foo` whose value is `bar` labels.foo = bar
+  ///
+  /// [orderBy] - Optional. A field used to sort the results by a certain order.
+  ///
+  /// [pageSize] - Optional. The maximum number of multicast consumer
+  /// associations to return per call.
+  ///
+  /// [pageToken] - Optional. A page token from an earlier query, as returned in
+  /// `next_page_token`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMulticastConsumerAssociationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMulticastConsumerAssociationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/multicastConsumerAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMulticastConsumerAssociationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single multicast consumer association.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the multicast consumer
+  /// association. Use the following format: `projects / * /locations / *
+  /// /multicastConsumerAssociations / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastConsumerAssociations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the MulticastConsumerAssociation resource by the update.
+  /// The fields specified in the `update_mask` are relative to the resource,
+  /// not the full request. A field will be overwritten if it is in the mask. If
+  /// the user does not provide a mask then all mutable fields present in the
+  /// request will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    MulticastConsumerAssociation request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsMulticastGroupConsumerActivationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMulticastGroupConsumerActivationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a new multicast group consumer activation in a given project and
+  /// location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the multicast group consumer
+  /// activation. Use the following format: `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [multicastGroupConsumerActivationId] - Required. A unique name for the
+  /// multicast group consumer activation. The name is restricted to lower-case
+  /// letters, numbers, and hyphen, with the first character a lower-case
+  /// letter, and the last a letter or a number. The name must not exceed 48
+  /// characters.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    MulticastGroupConsumerActivation request,
+    core.String parent, {
+    core.String? multicastGroupConsumerActivationId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'multicastGroupConsumerActivationId':
+          ?multicastGroupConsumerActivationId == null
+          ? null
+          : [multicastGroupConsumerActivationId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/multicastGroupConsumerActivations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single multicast group consumer activation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the multicast group consumer
+  /// activation to delete. Use the following format: `projects / * /locations /
+  /// * /multicastGroupConsumerActivations / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastGroupConsumerActivations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single multicast group consumer activation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the multicast group consumer
+  /// activation to get. Use the following format: `projects / * /locations / *
+  /// /multicastGroupConsumerActivations / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastGroupConsumerActivations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MulticastGroupConsumerActivation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MulticastGroupConsumerActivation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MulticastGroupConsumerActivation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists multicast group consumer activations in a given project and
+  /// location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource for which to list multicast group
+  /// consumer activations. Use the following format: `projects / * /locations /
+  /// * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters the resources listed
+  /// in the response. The expression must be of the form ` ` where operators:
+  /// `<`, `>`, `<=`, `>=`, `!=`, `=`, `:` are supported (colon `:` represents a
+  /// HAS operator which is roughly synonymous with equality). can refer to a
+  /// proto or JSON field, or a synthetic field. Field names can be camelCase or
+  /// snake_case. Examples: * Filter by name: name = "RESOURCE_NAME" * Filter by
+  /// labels: * Resources that have a key named `foo` labels.foo:* * Resources
+  /// that have a key named `foo` whose value is `bar` labels.foo = bar
+  ///
+  /// [orderBy] - Optional. A field used to sort the results by a certain order.
+  ///
+  /// [pageSize] - Optional. The maximum number of multicast group consumer
+  /// activations to return per call.
+  ///
+  /// [pageToken] - Optional. A page token from an earlier query, as returned in
+  /// `next_page_token`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMulticastGroupConsumerActivationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMulticastGroupConsumerActivationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/multicastGroupConsumerActivations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMulticastGroupConsumerActivationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single multicast group consumer activation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the multicast group consumer
+  /// activation. Use the following format: `projects / * /locations / *
+  /// /multicastGroupConsumerActivations / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicastGroupConsumerActivations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the MulticastGroupConsumerActivation resource by the
+  /// update. The fields specified in the `update_mask` are relative to the
+  /// resource, not the full request. A field will be overwritten if it is in
+  /// the mask. If the user does not provide a mask then all mutable fields
+  /// present in the request will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    MulticastGroupConsumerActivation request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -3388,6 +4751,195 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsProducerExtensionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProducerExtensionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new `ProducerExtension` resource in a given project and
+  /// location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the `ProducerExtension`
+  /// resource. Must be in the format `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [producerExtensionId] - Required. Short name of the `ProducerExtension`
+  /// resource to be created.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    ProducerExtension request,
+    core.String parent, {
+    core.String? producerExtensionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'producerExtensionId': ?producerExtensionId == null
+          ? null
+          : [producerExtensionId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/producerExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified `ProducerExtension` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the `ProducerExtension` resource to delete.
+  /// Must be in the format
+  /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/producerExtensions/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag of the ProducerExtension to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of the specified `ProducerExtension` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the `ProducerExtension` resource to get. Must
+  /// be in the format
+  /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/producerExtensions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProducerExtension].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProducerExtension> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ProducerExtension.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists `ProducerExtension` resources in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the
+  /// `ProducerExtension` resources should be listed, specified in the format
+  /// `projects/{project}/locations/{location}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of `ProducerExtension` resources to
+  /// return per call.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListProducerExtensionsResponse` Indicates that this is a continuation of
+  /// a prior `ListProducerExtensions` call, and that the system should return
+  /// the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProducerExtensionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProducerExtensionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/producerExtensions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListProducerExtensionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4757,6 +6309,542 @@ class ProjectsLocationsWasmPluginsVersionsResource {
   }
 }
 
+/// AgentConnectivityTemplate represents a reusable network configuration.
+class AgentConnectivityTemplate {
+  /// The path of the access.
+  ///
+  /// Maps roughly to ingress/egress, though we keep CLIENT_TO_AGENT and
+  /// AGENT_TO_ANYWHERE as carryovers from Agent Gateway's original resource
+  /// model. The path is immutable once set. Exactly one path can be set.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "ACCESS_PATH_UNSPECIFIED" : Unspecified access path.
+  /// - "CLIENT_TO_AGENT" : Protect connection to Agent or Tool.
+  /// - "AGENT_TO_ANYWHERE" : Govern agent connections to destinations.
+  core.String? accessPath;
+
+  /// The types of network access provided to the gateway.
+  ///
+  /// Both PUBLIC and PRIVATE can be configured.
+  ///
+  /// Optional.
+  core.List<core.String>? accessTypes;
+
+  /// The compute environment where the agent is hosted.
+  ///
+  /// Exactly one type of compute must be chosen.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AGENT_COMPUTE_UNSPECIFIED" : Unspecified compute type.
+  /// - "GKE" : Google Kubernetes Engine.
+  /// - "CLOUD_RUN" : Google Cloud Run.
+  /// - "BORG" : Google Borg (for 1P producers).
+  core.String? agentCompute;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The deployment model for the gateway.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_MODEL_UNSPECIFIED" : Unspecified deployment model.
+  /// - "CENTRALIZED" : Centralized deployment.
+  /// - "AMBIENT" : Ambient deployment.
+  core.String? deploymentModel;
+
+  /// A free-text description of the resource.
+  ///
+  /// Max length 1024 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Configuration for egress network traffic.
+  ///
+  /// Optional.
+  EgressNetworkConfig? egressNetworkConfig;
+
+  /// Etag of the resource.
+  ///
+  /// If this is provided, it must match the server's etag. If the provided etag
+  /// does not match the server's etag, the request will fail with a 409 ABORTED
+  /// error.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Set of label tags associated with the AgentConnectivityTemplate resource.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Name of the AgentConnectivityTemplate resource. It matches pattern
+  /// `projects / * /locations / * /agentConnectivityTemplates/`.
+  core.String? name;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AgentConnectivityTemplate({
+    this.accessPath,
+    this.accessTypes,
+    this.agentCompute,
+    this.createTime,
+    this.deploymentModel,
+    this.description,
+    this.egressNetworkConfig,
+    this.etag,
+    this.labels,
+    this.name,
+    this.updateTime,
+  });
+
+  AgentConnectivityTemplate.fromJson(core.Map json_)
+    : this(
+        accessPath: json_['accessPath'] as core.String?,
+        accessTypes: (json_['accessTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        agentCompute: json_['agentCompute'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deploymentModel: json_['deploymentModel'] as core.String?,
+        description: json_['description'] as core.String?,
+        egressNetworkConfig: json_.containsKey('egressNetworkConfig')
+            ? EgressNetworkConfig.fromJson(
+                json_['egressNetworkConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessPath = this.accessPath;
+    final accessTypes = this.accessTypes;
+    final agentCompute = this.agentCompute;
+    final createTime = this.createTime;
+    final deploymentModel = this.deploymentModel;
+    final description = this.description;
+    final egressNetworkConfig = this.egressNetworkConfig;
+    final etag = this.etag;
+    final labels = this.labels;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'accessPath': ?accessPath,
+      'accessTypes': ?accessTypes,
+      'agentCompute': ?agentCompute,
+      'createTime': ?createTime,
+      'deploymentModel': ?deploymentModel,
+      'description': ?description,
+      'egressNetworkConfig': ?egressNetworkConfig,
+      'etag': ?etag,
+      'labels': ?labels,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// AgentGateway represents the agent gateway resource.
+class AgentGateway {
+  /// The resource name of the AgentConnectivityTemplate.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/agentConnectivityTemplates/{template}
+  ///
+  /// Optional.
+  core.String? agentConnectivityTemplate;
+
+  /// Field for populated AgentGateway card.
+  ///
+  /// Output only.
+  AgentGatewayAgentGatewayOutputCard? agentGatewayCard;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A free-text description of the resource.
+  ///
+  /// Max length 1024 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Etag of the resource.
+  ///
+  /// If this is provided, it must match the server's etag. If the provided etag
+  /// does not match the server's etag, the request will fail with a 409 ABORTED
+  /// error.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Proxy is orchestrated and managed by GoogleCloud in a tenant project.
+  ///
+  /// Optional.
+  AgentGatewayGoogleManaged? googleManaged;
+
+  /// Set of label tags associated with the AgentGateway resource.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Name of the AgentGateway resource. It matches pattern `projects / *
+  /// /locations / * /agentGateways/`.
+  core.String? name;
+
+  /// Network configuration for the AgentGateway.
+  ///
+  /// Optional.
+  AgentGatewayNetworkConfig? networkConfig;
+
+  /// Deprecated.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<core.String>? protocols;
+
+  /// A list of Agent registries containing the agents, MCP servers and tools
+  /// governed by the Agent Gateway.
+  ///
+  /// Note: Currently limited to project-scoped registries Must be of format
+  /// `//agentregistry.googleapis.com/projects/{project}/locations/{location}/`
+  ///
+  /// Optional.
+  core.List<core.String>? registries;
+
+  /// Attach to existing Application Load Balancers or Secure Web Proxies.
+  ///
+  /// Optional.
+  AgentGatewaySelfManaged? selfManaged;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AgentGateway({
+    this.agentConnectivityTemplate,
+    this.agentGatewayCard,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.googleManaged,
+    this.labels,
+    this.name,
+    this.networkConfig,
+    this.protocols,
+    this.registries,
+    this.selfManaged,
+    this.updateTime,
+  });
+
+  AgentGateway.fromJson(core.Map json_)
+    : this(
+        agentConnectivityTemplate:
+            json_['agentConnectivityTemplate'] as core.String?,
+        agentGatewayCard: json_.containsKey('agentGatewayCard')
+            ? AgentGatewayAgentGatewayOutputCard.fromJson(
+                json_['agentGatewayCard']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        googleManaged: json_.containsKey('googleManaged')
+            ? AgentGatewayGoogleManaged.fromJson(
+                json_['googleManaged'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        networkConfig: json_.containsKey('networkConfig')
+            ? AgentGatewayNetworkConfig.fromJson(
+                json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        protocols: (json_['protocols'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        registries: (json_['registries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        selfManaged: json_.containsKey('selfManaged')
+            ? AgentGatewaySelfManaged.fromJson(
+                json_['selfManaged'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentConnectivityTemplate = this.agentConnectivityTemplate;
+    final agentGatewayCard = this.agentGatewayCard;
+    final createTime = this.createTime;
+    final description = this.description;
+    final etag = this.etag;
+    final googleManaged = this.googleManaged;
+    final labels = this.labels;
+    final name = this.name;
+    final networkConfig = this.networkConfig;
+    final protocols = this.protocols;
+    final registries = this.registries;
+    final selfManaged = this.selfManaged;
+    final updateTime = this.updateTime;
+    return {
+      'agentConnectivityTemplate': ?agentConnectivityTemplate,
+      'agentGatewayCard': ?agentGatewayCard,
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'googleManaged': ?googleManaged,
+      'labels': ?labels,
+      'name': ?name,
+      'networkConfig': ?networkConfig,
+      'protocols': ?protocols,
+      'registries': ?registries,
+      'selfManaged': ?selfManaged,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// AgentGatewayOutputCard contains informational output-only fields
+class AgentGatewayAgentGatewayOutputCard {
+  /// mTLS Endpoint associated with this AgentGateway
+  ///
+  /// Output only.
+  core.String? mtlsEndpoint;
+
+  /// Root Certificates for Agents to validate this AgentGateway
+  ///
+  /// Output only.
+  core.List<core.String>? rootCertificates;
+
+  /// Service Account used by Service Extensions to operate.
+  ///
+  /// Output only.
+  core.String? serviceExtensionsServiceAccount;
+
+  AgentGatewayAgentGatewayOutputCard({
+    this.mtlsEndpoint,
+    this.rootCertificates,
+    this.serviceExtensionsServiceAccount,
+  });
+
+  AgentGatewayAgentGatewayOutputCard.fromJson(core.Map json_)
+    : this(
+        mtlsEndpoint: json_['mtlsEndpoint'] as core.String?,
+        rootCertificates: (json_['rootCertificates'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        serviceExtensionsServiceAccount:
+            json_['serviceExtensionsServiceAccount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mtlsEndpoint = this.mtlsEndpoint;
+    final rootCertificates = this.rootCertificates;
+    final serviceExtensionsServiceAccount =
+        this.serviceExtensionsServiceAccount;
+    return {
+      'mtlsEndpoint': ?mtlsEndpoint,
+      'rootCertificates': ?rootCertificates,
+      'serviceExtensionsServiceAccount': ?serviceExtensionsServiceAccount,
+    };
+  }
+}
+
+/// Configuration for Google Managed deployment mode.
+///
+/// Proxy is orchestrated and managed by GoogleCloud in a tenant project.
+class AgentGatewayGoogleManaged {
+  /// Operating Mode of Agent Gateway.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GOVERNED_ACCESS_PATH_UNSPECIFIED" : Governed access path is not
+  /// specified.
+  /// - "AGENT_TO_ANYWHERE" : Govern agent conections to destinations.
+  /// - "CLIENT_TO_AGENT" : Protect connection to Agent or Tool.
+  core.String? governedAccessPath;
+
+  AgentGatewayGoogleManaged({this.governedAccessPath});
+
+  AgentGatewayGoogleManaged.fromJson(core.Map json_)
+    : this(governedAccessPath: json_['governedAccessPath'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final governedAccessPath = this.governedAccessPath;
+    return {'governedAccessPath': ?governedAccessPath};
+  }
+}
+
+/// NetworkConfig contains network configurations for the AgentGateway.
+class AgentGatewayNetworkConfig {
+  /// Optional DNS peering configuration for connectivity to your private VPC
+  /// network.
+  ///
+  /// Optional.
+  AgentGatewayNetworkConfigDnsPeeringConfig? dnsPeeringConfig;
+
+  /// Optional PSC-Interface network attachment for connectivity to your private
+  /// VPCs network.
+  ///
+  /// Optional.
+  AgentGatewayNetworkConfigEgress? egress;
+
+  AgentGatewayNetworkConfig({this.dnsPeeringConfig, this.egress});
+
+  AgentGatewayNetworkConfig.fromJson(core.Map json_)
+    : this(
+        dnsPeeringConfig: json_.containsKey('dnsPeeringConfig')
+            ? AgentGatewayNetworkConfigDnsPeeringConfig.fromJson(
+                json_['dnsPeeringConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        egress: json_.containsKey('egress')
+            ? AgentGatewayNetworkConfigEgress.fromJson(
+                json_['egress'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dnsPeeringConfig = this.dnsPeeringConfig;
+    final egress = this.egress;
+    return {'dnsPeeringConfig': ?dnsPeeringConfig, 'egress': ?egress};
+  }
+}
+
+/// DNS peering config for the user VPC network.
+class AgentGatewayNetworkConfigDnsPeeringConfig {
+  /// Domain names for which DNS queries should be forwarded to the target
+  /// network.
+  ///
+  /// Required.
+  core.List<core.String>? domains;
+
+  /// Target network in 'target project' to which DNS queries should be
+  /// forwarded to.
+  ///
+  /// Must be in format of `projects/{project}/global/networks/{network}`.
+  ///
+  /// Required.
+  core.String? targetNetwork;
+
+  /// Target project ID to which DNS queries should be forwarded to.
+  ///
+  /// This can be the same project that contains the AgentGateway or a different
+  /// project.
+  ///
+  /// Required.
+  core.String? targetProject;
+
+  AgentGatewayNetworkConfigDnsPeeringConfig({
+    this.domains,
+    this.targetNetwork,
+    this.targetProject,
+  });
+
+  AgentGatewayNetworkConfigDnsPeeringConfig.fromJson(core.Map json_)
+    : this(
+        domains: (json_['domains'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        targetNetwork: json_['targetNetwork'] as core.String?,
+        targetProject: json_['targetProject'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final domains = this.domains;
+    final targetNetwork = this.targetNetwork;
+    final targetProject = this.targetProject;
+    return {
+      'domains': ?domains,
+      'targetNetwork': ?targetNetwork,
+      'targetProject': ?targetProject,
+    };
+  }
+}
+
+/// Configuration for Egress
+class AgentGatewayNetworkConfigEgress {
+  /// The URI of the Network Attachment resource.
+  ///
+  /// Optional.
+  core.String? networkAttachment;
+
+  AgentGatewayNetworkConfigEgress({this.networkAttachment});
+
+  AgentGatewayNetworkConfigEgress.fromJson(core.Map json_)
+    : this(networkAttachment: json_['networkAttachment'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final networkAttachment = this.networkAttachment;
+    return {'networkAttachment': ?networkAttachment};
+  }
+}
+
+/// Configuration for Self Managed deployment mode.
+///
+/// Attach to existing Application Load Balancers or Secure Web Proxies.
+class AgentGatewaySelfManaged {
+  /// A supported Google Cloud networking proxy in the Project and Location
+  ///
+  /// Optional.
+  core.String? resourceUri;
+
+  /// List of supported Google Cloud networking proxies in the Project and
+  /// Location.
+  ///
+  /// resource_uris is mutually exclusive with resource_uri.
+  ///
+  /// Optional.
+  core.List<core.String>? resourceUris;
+
+  AgentGatewaySelfManaged({this.resourceUri, this.resourceUris});
+
+  AgentGatewaySelfManaged.fromJson(core.Map json_)
+    : this(
+        resourceUri: json_['resourceUri'] as core.String?,
+        resourceUris: (json_['resourceUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final resourceUri = this.resourceUri;
+    final resourceUris = this.resourceUris;
+    return {'resourceUri': ?resourceUri, 'resourceUris': ?resourceUris};
+  }
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -4819,8 +6907,7 @@ class AuthzExtension {
   /// The `:authority` header in the gRPC request sent from Envoy to the
   /// extension service.
   ///
-  /// It is required when the `service` field points to a backend service or a
-  /// wasm plugin.
+  /// It is required when the `service` field points to a backend service.
   ///
   /// Optional.
   core.String? authority;
@@ -4883,9 +6970,9 @@ class AuthzExtension {
   /// All backend services and forwarding rules referenced by this extension
   /// must share the same load balancing scheme.
   ///
-  /// Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. Can be omitted
-  /// for AuthzExtensions that do not reference a backend service. For more
-  /// information, refer to
+  /// The supported values are `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. You
+  /// can omit this field for `AuthzExtensions` resources that don't reference a
+  /// backend service. For more information, see
   /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
   ///
   /// Optional.
@@ -4922,13 +7009,21 @@ class AuthzExtension {
 
   /// The reference to the service that runs the extension.
   ///
-  /// To configure a callout extension, `service` must be a fully-qualified
-  /// reference to a
+  /// To configure a callout extension: For global AuthzExtension, `service`
+  /// must be a fully-qualified reference to a
   /// [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
   /// in the format:
-  /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
-  /// or
   /// `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
+  /// For regional AuthzExtension, `service` must be a fully-qualified reference
+  /// to one of the following: * a
+  /// [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
+  /// in the format:
+  /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`.
+  /// * a fully qualified domain name that can be resolved by the Google Cloud
+  /// DNS. * `iap.googleapis.com` and it can only be referenced by an
+  /// AuthzPolicy with the policyProfile set to REQUEST_AUTHZ. *
+  /// `modelarmor..rep.googleapis.com` and it can only be referenced by an
+  /// AuthzPolicy with the policyProfile set to CONTENT_AUTHZ.
   ///
   /// Required.
   core.String? service;
@@ -5148,6 +7243,105 @@ class Binding {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// DNS Peering configuration.
+class DnsPeeringConfig {
+  /// The domain to peer.
+  ///
+  /// Optional.
+  core.String? domain;
+
+  /// The target network resource name for DNS peering.
+  ///
+  /// Format: projects/{project}/global/networks/{network_id}
+  ///
+  /// Optional.
+  core.String? targetNetwork;
+
+  DnsPeeringConfig({this.domain, this.targetNetwork});
+
+  DnsPeeringConfig.fromJson(core.Map json_)
+    : this(
+        domain: json_['domain'] as core.String?,
+        targetNetwork: json_['targetNetwork'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final domain = this.domain;
+    final targetNetwork = this.targetNetwork;
+    return {'domain': ?domain, 'targetNetwork': ?targetNetwork};
+  }
+}
+
+class EgressNetworkConfig {
+  /// DNS Peering configuration.
+  ///
+  /// Optional.
+  DnsPeeringConfig? dnsPeeringConfig;
+
+  /// The network attachment resource name.
+  ///
+  /// Format:
+  /// projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+  ///
+  /// Optional.
+  core.String? networkAttachment;
+
+  /// Deprecated: Use tls_config instead.
+  ///
+  /// The trust config resource name. Format:
+  /// projects/{project}/locations/{location}/trustConfigs/{trust_config}
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? trustConfig;
+
+  /// The VPC egress setting.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "VPC_EGRESS_UNSPECIFIED" : Unspecified
+  /// - "ALL_TRAFFIC" : All outbound traffic is routed through the VPC
+  /// connector.
+  /// - "PRIVATE_RANGES_ONLY" : Only private IP ranges are routed through the
+  /// VPC connector.
+  core.String? vpcEgress;
+
+  EgressNetworkConfig({
+    this.dnsPeeringConfig,
+    this.networkAttachment,
+    this.trustConfig,
+    this.vpcEgress,
+  });
+
+  EgressNetworkConfig.fromJson(core.Map json_)
+    : this(
+        dnsPeeringConfig: json_.containsKey('dnsPeeringConfig')
+            ? DnsPeeringConfig.fromJson(
+                json_['dnsPeeringConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        networkAttachment: json_['networkAttachment'] as core.String?,
+        trustConfig: json_['trustConfig'] as core.String?,
+        vpcEgress: json_['vpcEgress'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dnsPeeringConfig = this.dnsPeeringConfig;
+    final networkAttachment = this.networkAttachment;
+    final trustConfig = this.trustConfig;
+    final vpcEgress = this.vpcEgress;
+    return {
+      'dnsPeeringConfig': ?dnsPeeringConfig,
+      'networkAttachment': ?networkAttachment,
+      'trustConfig': ?trustConfig,
+      'vpcEgress': ?vpcEgress,
+    };
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -5288,17 +7482,21 @@ class EndpointPolicy {
   /// Optional.
   core.String? authorizationPolicy;
 
-  /// A URL referring to a ClientTlsPolicy resource.
+  /// Deprecated: This field is not used and is a no-op.
   ///
-  /// ClientTlsPolicy can be set to specify the authentication for traffic from
-  /// the proxy to the actual endpoints. More specifically, it is applied to the
-  /// outgoing traffic from the proxy to the endpoint. This is typically used
-  /// for sidecar model where the proxy identifies itself as endpoint to the
-  /// control plane, with the connection between sidecar and endpoint requiring
-  /// authentication. If this field is not set, authentication is
-  /// disabled(open). Applicable only when EndpointPolicyType is SIDECAR_PROXY.
+  /// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set
+  /// to specify the authentication for traffic from the proxy to the actual
+  /// endpoints. More specifically, it is applied to the outgoing traffic from
+  /// the proxy to the endpoint. This is typically used for sidecar model where
+  /// the proxy identifies itself as endpoint to the control plane, with the
+  /// connection between sidecar and endpoint requiring authentication. If this
+  /// field is not set, authentication is disabled(open). Applicable only when
+  /// EndpointPolicyType is SIDECAR_PROXY.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clientTlsPolicy;
 
   /// The timestamp when the resource was created.
@@ -5449,6 +7647,533 @@ class EndpointPolicy {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// `ExtensionBinding` is a resource representing the attachment of an extension
+/// to a service.
+class ExtensionBinding {
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A human-readable description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Etag of the resource.
+  ///
+  /// If provided, it must match the server's etag. If the provided etag does
+  /// not match the server's etag, the request will fail with a 409 ABORTED
+  /// error.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Determines the behavior of the extension binding when the call to the
+  /// extension fails or times out.
+  ///
+  /// Default value is `FALSE`. When set to `TRUE`, failures of the extension
+  /// are silently ignored.
+  ///
+  /// Optional.
+  core.bool? failOpen;
+
+  /// Set of labels associated with the `ExtensionBinding` resource.
+  ///
+  /// The format must comply with
+  /// [the following requirements](https://cloud.google.com/compute/docs/labeling-resources#requirements).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// A list of match conditions to match against the incoming request.
+  ///
+  /// The extension will be invoked if at least one condition matches the
+  /// request, or if no match conditions are specified. Limited to 5 conditions.
+  ///
+  /// Optional.
+  core.List<ExtensionBindingMatchCondition>? matchConditions;
+
+  /// Identifier.
+  ///
+  /// Name of the `ExtensionBinding` resource in the following format:
+  /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+  core.String? name;
+
+  /// Priority of the extension binding.
+  ///
+  /// Lower numbers indicate higher priority. Priority of extension bindings are
+  /// used to determine the order in which extension bindings are applied to a
+  /// request.
+  ///
+  /// Optional.
+  core.int? priority;
+
+  /// The name of the extension that this binding should attach to target
+  /// resources.
+  ///
+  /// Format: For Google-provided extensions, specify the service endpoint (see
+  /// [Model Armor integration](https://docs.cloud.google.com/model-armor/integrations))
+  ///
+  /// Required.
+  core.String? producerExtension;
+
+  /// Additional metadata that should be passed to the attached extension with
+  /// each request.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? producerMetadata;
+
+  /// Specifies a target to which this `ExtensionBinding` should be attached.
+  ///
+  /// The target can be either a single resource or a scope of resources.
+  ///
+  /// Required.
+  ExtensionBindingTarget? target;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ExtensionBinding({
+    this.createTime,
+    this.description,
+    this.etag,
+    this.failOpen,
+    this.labels,
+    this.matchConditions,
+    this.name,
+    this.priority,
+    this.producerExtension,
+    this.producerMetadata,
+    this.target,
+    this.updateTime,
+  });
+
+  ExtensionBinding.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        failOpen: json_['failOpen'] as core.bool?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        matchConditions: (json_['matchConditions'] as core.List?)
+            ?.map(
+              (value) => ExtensionBindingMatchCondition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        name: json_['name'] as core.String?,
+        priority: json_['priority'] as core.int?,
+        producerExtension: json_['producerExtension'] as core.String?,
+        producerMetadata:
+            (json_['producerMetadata'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        target: json_.containsKey('target')
+            ? ExtensionBindingTarget.fromJson(
+                json_['target'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final etag = this.etag;
+    final failOpen = this.failOpen;
+    final labels = this.labels;
+    final matchConditions = this.matchConditions;
+    final name = this.name;
+    final priority = this.priority;
+    final producerExtension = this.producerExtension;
+    final producerMetadata = this.producerMetadata;
+    final target = this.target;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'failOpen': ?failOpen,
+      'labels': ?labels,
+      'matchConditions': ?matchConditions,
+      'name': ?name,
+      'priority': ?priority,
+      'producerExtension': ?producerExtension,
+      'producerMetadata': ?producerMetadata,
+      'target': ?target,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Conditions to match against the incoming request.
+class ExtensionBindingMatchCondition {
+  /// Describes properties of a destination of a request.
+  ///
+  /// If specified, the extension will only be invoked on requests to
+  /// destinations that match the specified criteria.
+  ///
+  /// Optional.
+  ExtensionBindingMatchConditionTo? to;
+
+  ExtensionBindingMatchCondition({this.to});
+
+  ExtensionBindingMatchCondition.fromJson(core.Map json_)
+    : this(
+        to: json_.containsKey('to')
+            ? ExtensionBindingMatchConditionTo.fromJson(
+                json_['to'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final to = this.to;
+    return {'to': ?to};
+  }
+}
+
+/// Determines how an HTTP header should be matched.
+class ExtensionBindingMatchConditionHeaderMatch {
+  /// Specifies the name of the header in the request.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Specifies how the header match will be performed.
+  ///
+  /// Optional.
+  ExtensionBindingMatchConditionStringMatch? value;
+
+  ExtensionBindingMatchConditionHeaderMatch({this.name, this.value});
+
+  ExtensionBindingMatchConditionHeaderMatch.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_.containsKey('value')
+            ? ExtensionBindingMatchConditionStringMatch.fromJson(
+                json_['value'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final value = this.value;
+    return {'name': ?name, 'value': ?value};
+  }
+}
+
+/// Specifies matching logic for string values.
+class ExtensionBindingMatchConditionStringMatch {
+  /// The input string must have the substring specified here.
+  ///
+  /// Note: empty contains match is not allowed, please use regex instead.
+  /// Examples: * ``abc`` matches the value ``xyz.abc.def``
+  ///
+  /// Optional.
+  core.String? contains;
+
+  /// The input string must match exactly the string specified here.
+  ///
+  /// Examples: * ``abc`` only matches the value ``abc``.
+  ///
+  /// Optional.
+  core.String? exact;
+
+  /// If true, indicates the exact/prefix/suffix/contains matching should be
+  /// case insensitive.
+  ///
+  /// For example, the matcher ``data`` will match both input string ``Data``
+  /// and ``data`` if set to true.
+  ///
+  /// Optional.
+  core.bool? ignoreCase;
+
+  /// The input string must have the prefix specified here.
+  ///
+  /// Note: empty prefix is not allowed. Examples: * ``abc`` matches the value
+  /// ``abc.xyz``
+  ///
+  /// Optional.
+  core.String? prefix;
+
+  /// The input string must have the suffix specified here.
+  ///
+  /// Note: empty prefix is not allowed, please use regex instead. Examples: *
+  /// ``abc`` matches the value ``xyz.abc``
+  ///
+  /// Optional.
+  core.String? suffix;
+
+  ExtensionBindingMatchConditionStringMatch({
+    this.contains,
+    this.exact,
+    this.ignoreCase,
+    this.prefix,
+    this.suffix,
+  });
+
+  ExtensionBindingMatchConditionStringMatch.fromJson(core.Map json_)
+    : this(
+        contains: json_['contains'] as core.String?,
+        exact: json_['exact'] as core.String?,
+        ignoreCase: json_['ignoreCase'] as core.bool?,
+        prefix: json_['prefix'] as core.String?,
+        suffix: json_['suffix'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contains = this.contains;
+    final exact = this.exact;
+    final ignoreCase = this.ignoreCase;
+    final prefix = this.prefix;
+    final suffix = this.suffix;
+    return {
+      'contains': ?contains,
+      'exact': ?exact,
+      'ignoreCase': ?ignoreCase,
+      'prefix': ?prefix,
+      'suffix': ?suffix,
+    };
+  }
+}
+
+/// Describes properties of one or more destinations of a request.
+class ExtensionBindingMatchConditionTo {
+  /// Describes properties of destination of a request.
+  ///
+  /// Within a destination, the match follows AND semantics across fields and OR
+  /// semantics within a field, i.e. a match occurs when ANY path matches AND
+  /// ANY header matches and ANY method matches. At least one of destination or
+  /// not_destination must be specified.
+  ///
+  /// Optional.
+  ExtensionBindingMatchConditionToDestination? destination;
+
+  /// Describes the negated properties of the request destination.
+  ///
+  /// Extension will not be invoked on requests that match the criteria
+  /// specified in this field. At least one of destination or not_destination
+  /// must be specified.
+  ///
+  /// Optional.
+  ExtensionBindingMatchConditionToDestination? notDestination;
+
+  ExtensionBindingMatchConditionTo({this.destination, this.notDestination});
+
+  ExtensionBindingMatchConditionTo.fromJson(core.Map json_)
+    : this(
+        destination: json_.containsKey('destination')
+            ? ExtensionBindingMatchConditionToDestination.fromJson(
+                json_['destination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        notDestination: json_.containsKey('notDestination')
+            ? ExtensionBindingMatchConditionToDestination.fromJson(
+                json_['notDestination'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final destination = this.destination;
+    final notDestination = this.notDestination;
+    return {'destination': ?destination, 'notDestination': ?notDestination};
+  }
+}
+
+/// Describes properties of a single destination.
+class ExtensionBindingMatchConditionToDestination {
+  /// A set of HTTP headers to match against.
+  ///
+  /// If not specified, requests with any headers are matched.
+  ///
+  /// Optional.
+  ExtensionBindingMatchConditionToDestinationHeaderSet? headerSet;
+
+  /// A list of HTTP Hosts to match against.
+  ///
+  /// Limited to 10 hosts. If not specified, any host is allowed. If specified,
+  /// a match occurs if any of the hosts matches the host value in the request.
+  ///
+  /// Optional.
+  core.List<ExtensionBindingMatchConditionStringMatch>? hosts;
+
+  /// A list of paths to match against.
+  ///
+  /// Limited to 10 paths. If not specified, any path is allowed. Note that this
+  /// path match includes the query parameters. For gRPC services, this should
+  /// be a fully-qualified name of the form /package.service/method.
+  ///
+  /// Optional.
+  core.List<ExtensionBindingMatchConditionStringMatch>? paths;
+
+  /// A list of non-empty strings whose value is matched against the resource to
+  /// which a request is sent (e.g., an Agent in AiApplication).
+  ///
+  /// If not specified, any resource is allowed. If specified, a match occurs if
+  /// any of the resources matches the resource value in the request. Limited to
+  /// 5 resources. When matching against resources in the AgentRegistry, use the
+  /// URNs of the registry resources.
+  ///
+  /// Optional.
+  core.List<ExtensionBindingMatchConditionStringMatch>? resources;
+
+  ExtensionBindingMatchConditionToDestination({
+    this.headerSet,
+    this.hosts,
+    this.paths,
+    this.resources,
+  });
+
+  ExtensionBindingMatchConditionToDestination.fromJson(core.Map json_)
+    : this(
+        headerSet: json_.containsKey('headerSet')
+            ? ExtensionBindingMatchConditionToDestinationHeaderSet.fromJson(
+                json_['headerSet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        hosts: (json_['hosts'] as core.List?)
+            ?.map(
+              (value) => ExtensionBindingMatchConditionStringMatch.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        paths: (json_['paths'] as core.List?)
+            ?.map(
+              (value) => ExtensionBindingMatchConditionStringMatch.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        resources: (json_['resources'] as core.List?)
+            ?.map(
+              (value) => ExtensionBindingMatchConditionStringMatch.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final headerSet = this.headerSet;
+    final hosts = this.hosts;
+    final paths = this.paths;
+    final resources = this.resources;
+    return {
+      'headerSet': ?headerSet,
+      'hosts': ?hosts,
+      'paths': ?paths,
+      'resources': ?resources,
+    };
+  }
+}
+
+/// Describes a set of HTTP headers to match against.
+class ExtensionBindingMatchConditionToDestinationHeaderSet {
+  /// A list of headers to match against in http header.
+  ///
+  /// If multiple header matches are provided, they will be evaluated as an AND,
+  /// i.e. all header matches must match for the request to match.
+  ///
+  /// Required.
+  core.List<ExtensionBindingMatchConditionHeaderMatch>? headers;
+
+  ExtensionBindingMatchConditionToDestinationHeaderSet({this.headers});
+
+  ExtensionBindingMatchConditionToDestinationHeaderSet.fromJson(core.Map json_)
+    : this(
+        headers: (json_['headers'] as core.List?)
+            ?.map(
+              (value) => ExtensionBindingMatchConditionHeaderMatch.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final headers = this.headers;
+    return {'headers': ?headers};
+  }
+}
+
+/// Specifies a list of targets to which this `ExtensionBinding` should attach.
+class ExtensionBindingTarget {
+  /// The reference to the target resource, to which this binding should attach.
+  ///
+  /// Exactly one of `resources` or `scope` must be set.
+  ///
+  /// Optional.
+  core.List<core.String>? resources;
+
+  /// Specifies the scope of resources to which this binding should attach.
+  ///
+  /// Exactly one of `resources` or `scope` must be set.
+  ///
+  /// Optional.
+  ExtensionBindingTargetScope? scope;
+
+  ExtensionBindingTarget({this.resources, this.scope});
+
+  ExtensionBindingTarget.fromJson(core.Map json_)
+    : this(
+        resources: (json_['resources'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        scope: json_.containsKey('scope')
+            ? ExtensionBindingTargetScope.fromJson(
+                json_['scope'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final resources = this.resources;
+    final scope = this.scope;
+    return {'resources': ?resources, 'scope': ?scope};
+  }
+}
+
+/// Specifies the scope of resources to which this binding should attach.
+class ExtensionBindingTargetScope {
+  /// Parent resource name specification, in the format:
+  /// `projects/{project_number}`.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// Type of the resource to which the binding should attach.
+  ///
+  /// Limited to 1 resource type.
+  ///
+  /// Required.
+  core.List<core.String>? resourceTypes;
+
+  ExtensionBindingTargetScope({this.parent, this.resourceTypes});
+
+  ExtensionBindingTargetScope.fromJson(core.Map json_)
+    : this(
+        parent: json_['parent'] as core.String?,
+        resourceTypes: (json_['resourceTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final parent = this.parent;
+    final resourceTypes = this.resourceTypes;
+    return {'parent': ?parent, 'resourceTypes': ?resourceTypes};
+  }
+}
 
 /// A single extension chain wrapper that contains the match conditions and
 /// extensions to execute.
@@ -8338,6 +11063,110 @@ class LbTrafficExtension {
   }
 }
 
+/// Response returned by the ListAgentConnectivityTemplates method.
+class ListAgentConnectivityTemplatesResponse {
+  /// List of AgentConnectivityTemplate resources.
+  core.List<AgentConnectivityTemplate>? agentConnectivityTemplates;
+
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request attempts to list all
+  /// resources across all supported locations, while some locations are
+  /// temporarily unavailable.
+  core.List<core.String>? unreachable;
+
+  ListAgentConnectivityTemplatesResponse({
+    this.agentConnectivityTemplates,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAgentConnectivityTemplatesResponse.fromJson(core.Map json_)
+    : this(
+        agentConnectivityTemplates:
+            (json_['agentConnectivityTemplates'] as core.List?)
+                ?.map(
+                  (value) => AgentConnectivityTemplate.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentConnectivityTemplates = this.agentConnectivityTemplates;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'agentConnectivityTemplates': ?agentConnectivityTemplates,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response returned by the ListAgentGateways method.
+class ListAgentGatewaysResponse {
+  /// List of AgentGateway resources.
+  core.List<AgentGateway>? agentGateways;
+
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// Unreachable resources.
+  ///
+  /// Populated when the request attempts to list all resources across all
+  /// supported locations, while some locations are temporarily unavailable.
+  core.List<core.String>? unreachable;
+
+  ListAgentGatewaysResponse({
+    this.agentGateways,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAgentGatewaysResponse.fromJson(core.Map json_)
+    : this(
+        agentGateways: (json_['agentGateways'] as core.List?)
+            ?.map(
+              (value) => AgentGateway.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentGateways = this.agentGateways;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'agentGateways': ?agentGateways,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
 /// Message for response to listing `AuthzExtension` resources.
 class ListAuthzExtensionsResponse {
   /// The list of `AuthzExtension` resources.
@@ -8428,6 +11257,59 @@ class ListEndpointPoliciesResponse {
     final unreachable = this.unreachable;
     return {
       'endpointPolicies': ?endpointPolicies,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response returned by the `ListExtensionBindings` method.
+class ListExtensionBindingsResponse {
+  /// List of `ExtensionBinding` resources.
+  core.List<ExtensionBinding>? extensionBindings;
+
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request attempts to list all
+  /// resources across all supported locations, while some locations are
+  /// temporarily unavailable. The resource names are in the format
+  /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+  core.List<core.String>? unreachable;
+
+  ListExtensionBindingsResponse({
+    this.extensionBindings,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListExtensionBindingsResponse.fromJson(core.Map json_)
+    : this(
+        extensionBindings: (json_['extensionBindings'] as core.List?)
+            ?.map(
+              (value) => ExtensionBinding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final extensionBindings = this.extensionBindings;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'extensionBindings': ?extensionBindings,
       'nextPageToken': ?nextPageToken,
       'unreachable': ?unreachable,
     };
@@ -8888,6 +11770,98 @@ class ListMeshesResponse {
   }
 }
 
+/// Response message for ListMulticastConsumerAssociations.
+class ListMulticastConsumerAssociationsResponse {
+  /// The list of multicast consumer associations.
+  core.List<MulticastConsumerAssociation>? multicastConsumerAssociations;
+
+  /// A page token from an earlier query, as returned in `next_page_token`.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListMulticastConsumerAssociationsResponse({
+    this.multicastConsumerAssociations,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListMulticastConsumerAssociationsResponse.fromJson(core.Map json_)
+    : this(
+        multicastConsumerAssociations:
+            (json_['multicastConsumerAssociations'] as core.List?)
+                ?.map(
+                  (value) => MulticastConsumerAssociation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final multicastConsumerAssociations = this.multicastConsumerAssociations;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'multicastConsumerAssociations': ?multicastConsumerAssociations,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response message for ListMulticastGroupConsumerActivations.
+class ListMulticastGroupConsumerActivationsResponse {
+  /// The list of multicast group consumer activations.
+  core.List<MulticastGroupConsumerActivation>?
+  multicastGroupConsumerActivations;
+
+  /// A page token from an earlier query, as returned in `next_page_token`.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListMulticastGroupConsumerActivationsResponse({
+    this.multicastGroupConsumerActivations,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListMulticastGroupConsumerActivationsResponse.fromJson(core.Map json_)
+    : this(
+        multicastGroupConsumerActivations:
+            (json_['multicastGroupConsumerActivations'] as core.List?)
+                ?.map(
+                  (value) => MulticastGroupConsumerActivation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final multicastGroupConsumerActivations =
+        this.multicastGroupConsumerActivations;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'multicastGroupConsumerActivations': ?multicastGroupConsumerActivations,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -8932,6 +11906,59 @@ class ListOperationsResponse {
     return {
       'nextPageToken': ?nextPageToken,
       'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response returned by the `ListProducerExtensions` method.
+class ListProducerExtensionsResponse {
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// List of `ProducerExtension` resources.
+  core.List<ProducerExtension>? producerExtensions;
+
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request attempts to list all
+  /// resources across all supported locations, while some locations are
+  /// temporarily unavailable. The resource names are in the format:
+  /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
+  core.List<core.String>? unreachable;
+
+  ListProducerExtensionsResponse({
+    this.nextPageToken,
+    this.producerExtensions,
+    this.unreachable,
+  });
+
+  ListProducerExtensionsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        producerExtensions: (json_['producerExtensions'] as core.List?)
+            ?.map(
+              (value) => ProducerExtension.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final producerExtensions = this.producerExtensions;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'producerExtensions': ?producerExtensions,
       'unreachable': ?unreachable,
     };
   }
@@ -9416,6 +12443,377 @@ class MeshRouteView {
   }
 }
 
+/// Multicast consumer association resource.
+class MulticastConsumerAssociation {
+  /// The timestamp when the multicast consumer association was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// An optional text description of the multicast consumer association.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Labels as key-value pairs
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The resource name of the multicast domain activation that is in the same
+  /// zone as this multicast consumer association.
+  ///
+  /// Use the following format: `projects / * /locations / *
+  /// /multicastDomainActivations / * `.
+  ///
+  /// Optional.
+  core.String? multicastDomainActivation;
+
+  /// Identifier.
+  ///
+  /// The resource name of the multicast consumer association. Use the following
+  /// format: `projects / * /locations / * /multicastConsumerAssociations / * `.
+  core.String? name;
+
+  /// The resource name of the multicast consumer VPC network.
+  ///
+  /// Use following format:
+  /// `projects/{project}/locations/global/networks/{network}`.
+  ///
+  /// Required.
+  core.String? network;
+
+  /// A Compute Engine (placement
+  /// policy)\[https://cloud.google.com/compute/docs/instances/placement-policies-overview\]
+  /// that can be used to place virtual machine (VM) instances as multicast
+  /// consumers close to the multicast infrastructure created for this domain,
+  /// on a best effort basis.
+  ///
+  /// Output only.
+  core.String? placementPolicy;
+
+  /// The resource state of the multicast consumer association.
+  ///
+  /// Use the state field instead.
+  ///
+  /// Output only. Deprecated.
+  /// Possible string values are:
+  /// - "CONSUMER_RESOURCE_STATE_UNSPECIFIED" : The consumer resource state is
+  /// not specified.
+  /// - "ACTIVE" : The consumer resource state is active.
+  /// - "OBSOLETE" : The associated admin resource has been deleted. The
+  /// consumer resource state becomes obsolete.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? resourceState;
+
+  /// The state of the resource.
+  ///
+  /// Output only.
+  MulticastResourceState? state;
+
+  /// The Google-generated UUID for the resource.
+  ///
+  /// This value is unique across all multicast consumer association resources.
+  /// If a consumer association is deleted and another with the same name is
+  /// created, the new consumer association is assigned a different unique_id.
+  ///
+  /// Output only.
+  core.String? uniqueId;
+
+  /// The timestamp when the Multicast Consumer Association was most recently
+  /// updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  MulticastConsumerAssociation({
+    this.createTime,
+    this.description,
+    this.labels,
+    this.multicastDomainActivation,
+    this.name,
+    this.network,
+    this.placementPolicy,
+    this.resourceState,
+    this.state,
+    this.uniqueId,
+    this.updateTime,
+  });
+
+  MulticastConsumerAssociation.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        multicastDomainActivation:
+            json_['multicastDomainActivation'] as core.String?,
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        placementPolicy: json_['placementPolicy'] as core.String?,
+        resourceState: json_['resourceState'] as core.String?,
+        state: json_.containsKey('state')
+            ? MulticastResourceState.fromJson(
+                json_['state'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uniqueId: json_['uniqueId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final labels = this.labels;
+    final multicastDomainActivation = this.multicastDomainActivation;
+    final name = this.name;
+    final network = this.network;
+    final placementPolicy = this.placementPolicy;
+    final resourceState = this.resourceState;
+    final state = this.state;
+    final uniqueId = this.uniqueId;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'labels': ?labels,
+      'multicastDomainActivation': ?multicastDomainActivation,
+      'name': ?name,
+      'network': ?network,
+      'placementPolicy': ?placementPolicy,
+      'resourceState': ?resourceState,
+      'state': ?state,
+      'uniqueId': ?uniqueId,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Multicast group consumer activation resource.
+class MulticastGroupConsumerActivation {
+  /// The timestamp when the multicast group consumer activation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// An optional text description of the multicast group consumer activation.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Labels as key-value pairs
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Specifies the logging options for the activities performed related to the
+  /// multicast group consumer activation.
+  ///
+  /// Defaults to false. If logging is enabled, logs are exported to Cloud
+  /// Logging.
+  ///
+  /// Optional.
+  MulticastLogConfig? logConfig;
+
+  /// The resource name of the multicast consumer association that is in the
+  /// same zone as this multicast group consumer activation.
+  ///
+  /// Use the following format: `projects / * /locations / *
+  /// /multicastConsumerAssociations / * `.
+  ///
+  /// Required.
+  core.String? multicastConsumerAssociation;
+
+  /// The resource name of the multicast group created by the admin in the same
+  /// zone as this multicast group consumer activation.
+  ///
+  /// Use the following format: // `projects / * /locations / * /multicastGroups
+  /// / * `. This field is deprecated. Use multicast_group_range_activation
+  /// instead.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? multicastGroup;
+
+  /// The resource name of the multicast group range activation created by the
+  /// admin in the same zone as this multicast group consumer activation.
+  ///
+  /// Use the following format: // `projects / * /locations / *
+  /// /multicastGroupRangeActivations / * `.
+  ///
+  /// Required.
+  core.String? multicastGroupRangeActivation;
+
+  /// Identifier.
+  ///
+  /// The resource name of the multicast group consumer activation. Use the
+  /// following format: `projects / * /locations / *
+  /// /multicastGroupConsumerActivations / * `.
+  core.String? name;
+
+  /// The resource state of the multicast group consumer activation.
+  ///
+  /// Use the state field instead.
+  ///
+  /// Output only. Deprecated.
+  /// Possible string values are:
+  /// - "CONSUMER_RESOURCE_STATE_UNSPECIFIED" : The consumer resource state is
+  /// not specified.
+  /// - "ACTIVE" : The consumer resource state is active.
+  /// - "OBSOLETE" : The associated admin resource has been deleted. The
+  /// consumer resource state becomes obsolete.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? resourceState;
+
+  /// The state of the resource.
+  ///
+  /// Output only.
+  MulticastResourceState? state;
+
+  /// The Google-generated UUID for the resource.
+  ///
+  /// This value is unique across all multicast group consumer activation
+  /// resources. If a group consumer activation is deleted and another with the
+  /// same name is created, the new group consumer activation is assigned a
+  /// different unique_id.
+  ///
+  /// Output only.
+  core.String? uniqueId;
+
+  /// The timestamp when the multicast group consumer activation was most
+  /// recently updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  MulticastGroupConsumerActivation({
+    this.createTime,
+    this.description,
+    this.labels,
+    this.logConfig,
+    this.multicastConsumerAssociation,
+    this.multicastGroup,
+    this.multicastGroupRangeActivation,
+    this.name,
+    this.resourceState,
+    this.state,
+    this.uniqueId,
+    this.updateTime,
+  });
+
+  MulticastGroupConsumerActivation.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        logConfig: json_.containsKey('logConfig')
+            ? MulticastLogConfig.fromJson(
+                json_['logConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        multicastConsumerAssociation:
+            json_['multicastConsumerAssociation'] as core.String?,
+        multicastGroup: json_['multicastGroup'] as core.String?,
+        multicastGroupRangeActivation:
+            json_['multicastGroupRangeActivation'] as core.String?,
+        name: json_['name'] as core.String?,
+        resourceState: json_['resourceState'] as core.String?,
+        state: json_.containsKey('state')
+            ? MulticastResourceState.fromJson(
+                json_['state'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uniqueId: json_['uniqueId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final labels = this.labels;
+    final logConfig = this.logConfig;
+    final multicastConsumerAssociation = this.multicastConsumerAssociation;
+    final multicastGroup = this.multicastGroup;
+    final multicastGroupRangeActivation = this.multicastGroupRangeActivation;
+    final name = this.name;
+    final resourceState = this.resourceState;
+    final state = this.state;
+    final uniqueId = this.uniqueId;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'labels': ?labels,
+      'logConfig': ?logConfig,
+      'multicastConsumerAssociation': ?multicastConsumerAssociation,
+      'multicastGroup': ?multicastGroup,
+      'multicastGroupRangeActivation': ?multicastGroupRangeActivation,
+      'name': ?name,
+      'resourceState': ?resourceState,
+      'state': ?state,
+      'uniqueId': ?uniqueId,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// The logging configuration.
+class MulticastLogConfig {
+  /// Whether to enable logging or not.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  MulticastLogConfig({this.enabled});
+
+  MulticastLogConfig.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
+}
+
+/// The multicast resource's state.
+class MulticastResourceState {
+  /// The state of the multicast resource.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STATE_ENUM_UNSPECIFIED" : The resource is in unspecified state.
+  /// - "CREATING" : The resource is being created.
+  /// - "ACTIVE" : The resource is in a normal state and ready to use.
+  /// - "DELETING" : The resource is being deleted.
+  /// - "DELETE_FAILED" : The resource is failed to be deleted.
+  /// - "UPDATING" : The resource is being updated.
+  /// - "UPDATE_FAILED" : The resource is failed to be updated.
+  /// - "INACTIVE" : The multicast consumer resource that is deactivated by the
+  /// multicast administrator based on permission.
+  /// - "OBSOLETE" : The multicast consumer resource that is obsoleted due to
+  /// multicast admin setup teardown.
+  core.String? state;
+
+  MulticastResourceState({this.state});
+
+  MulticastResourceState.fromJson(core.Map json_)
+    : this(state: json_['state'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    return {'state': ?state};
+  }
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -9614,6 +13012,168 @@ class Policy {
       'bindings': ?bindings,
       'etag': ?etag,
       'version': ?version,
+    };
+  }
+}
+
+/// `ProducerExtension` is a resource representing producer defined
+/// configuration for their service extension.
+class ProducerExtension {
+  /// The timestamp when the resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A human-readable description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Etag of the resource.
+  ///
+  /// If this is provided, it must match the server's etag. If the provided etag
+  /// does not match the server's etag, the request will fail with a 409 ABORTED
+  /// error.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The configuration for the service that this `ProducerExtension` offers.
+  ///
+  /// Required.
+  ProducerExtensionExtensionSettings? extensionSettings;
+
+  /// Set of labels associated with the `ProducerExtension` resource.
+  ///
+  /// The format must comply with
+  /// [the following requirements](https://cloud.google.com/compute/docs/labeling-resources#requirements).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Name of the `ProducerExtension` resource in the following format:
+  /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
+  core.String? name;
+
+  /// The phase in which this `ProducerExtension` should execute.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PHASE_UNSPECIFIED" : Unspecified phase.
+  /// - "TRAFFIC" : The `ProducerExtension` will be executed during the traffic
+  /// phase.
+  /// - "AUTHZ" : The `ProducerExtension` will be executed during the
+  /// authorization phase.
+  core.String? phase;
+
+  /// The timestamp when the resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ProducerExtension({
+    this.createTime,
+    this.description,
+    this.etag,
+    this.extensionSettings,
+    this.labels,
+    this.name,
+    this.phase,
+    this.updateTime,
+  });
+
+  ProducerExtension.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        extensionSettings: json_.containsKey('extensionSettings')
+            ? ProducerExtensionExtensionSettings.fromJson(
+                json_['extensionSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        phase: json_['phase'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final description = this.description;
+    final etag = this.etag;
+    final extensionSettings = this.extensionSettings;
+    final labels = this.labels;
+    final name = this.name;
+    final phase = this.phase;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'extensionSettings': ?extensionSettings,
+      'labels': ?labels,
+      'name': ?name,
+      'phase': ?phase,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// The configuration for the service that this `ProducerExtension` offers.
+class ProducerExtensionExtensionSettings {
+  /// The `:authority` header in the request sent to the extension service.
+  ///
+  /// Optional.
+  core.String? authority;
+
+  /// Whether the extension should function in observability mode.
+  ///
+  /// Optional.
+  core.bool? observabilityMode;
+
+  /// URI of the PSC attachment.
+  ///
+  /// Required.
+  core.String? service;
+
+  /// The event types supported by the extension.
+  ///
+  /// Required.
+  core.List<core.String>? supportedEvents;
+
+  ProducerExtensionExtensionSettings({
+    this.authority,
+    this.observabilityMode,
+    this.service,
+    this.supportedEvents,
+  });
+
+  ProducerExtensionExtensionSettings.fromJson(core.Map json_)
+    : this(
+        authority: json_['authority'] as core.String?,
+        observabilityMode: json_['observabilityMode'] as core.bool?,
+        service: json_['service'] as core.String?,
+        supportedEvents: (json_['supportedEvents'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authority = this.authority;
+    final observabilityMode = this.observabilityMode;
+    final service = this.service;
+    final supportedEvents = this.supportedEvents;
+    return {
+      'authority': ?authority,
+      'observabilityMode': ?observabilityMode,
+      'service': ?service,
+      'supportedEvents': ?supportedEvents,
     };
   }
 }
@@ -10779,6 +14339,8 @@ class WasmPluginLogConfig {
   /// statements in your Wasm code. This field is can be set only if logging is
   /// enabled for the plugin. If the field is not provided when logging is
   /// enabled, it is set to `INFO` by default.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "LOG_LEVEL_UNSPECIFIED" : Unspecified value. Defaults to
   /// `LogLevel.INFO`.
@@ -10798,6 +14360,8 @@ class WasmPluginLogConfig {
   /// of log messages is stored. The default value when logging is enabled is
   /// `1.0`. The value of the field must be between `0` and `1` (inclusive).
   /// This field can be specified only if logging is enabled for this plugin.
+  ///
+  /// Optional.
   core.double? sampleRate;
 
   WasmPluginLogConfig({this.enable, this.minLogLevel, this.sampleRate});

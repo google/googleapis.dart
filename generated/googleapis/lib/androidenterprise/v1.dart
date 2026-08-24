@@ -5042,7 +5042,8 @@ class EnrollmentToken {
   /// \[`Durations.MAX_VALUE`\](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE),
   /// approximately 10,000 years.
   ///
-  /// If not specified, the default duration is 1 hour.
+  /// If not specified, the default duration is 1 hour. In the JSON REST API,
+  /// this is represented as a string (e.g., `3600s`).
   ///
   /// Optional.
   core.String? duration;
@@ -5417,13 +5418,6 @@ typedef GenerateEnterpriseUpgradeUrlResponse =
 
 /// Contains settings for Google-provided user authentication.
 class GoogleAuthenticationSettings {
-  /// Whether dedicated devices are allowed.
-  /// Possible string values are:
-  /// - "dedicatedDevicesAllowedUnspecified" : This value is unused.
-  /// - "disallowed" : Dedicated devices are not allowed.
-  /// - "allowed" : Dedicated devices are allowed.
-  core.String? dedicatedDevicesAllowed;
-
   /// Whether Google authentication is required.
   /// Possible string values are:
   /// - "googleAuthenticationRequiredUnspecified" : This value is unused.
@@ -5432,26 +5426,17 @@ class GoogleAuthenticationSettings {
   /// Google.
   core.String? googleAuthenticationRequired;
 
-  GoogleAuthenticationSettings({
-    this.dedicatedDevicesAllowed,
-    this.googleAuthenticationRequired,
-  });
+  GoogleAuthenticationSettings({this.googleAuthenticationRequired});
 
   GoogleAuthenticationSettings.fromJson(core.Map json_)
     : this(
-        dedicatedDevicesAllowed:
-            json_['dedicatedDevicesAllowed'] as core.String?,
         googleAuthenticationRequired:
             json_['googleAuthenticationRequired'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final dedicatedDevicesAllowed = this.dedicatedDevicesAllowed;
     final googleAuthenticationRequired = this.googleAuthenticationRequired;
-    return {
-      'dedicatedDevicesAllowed': ?dedicatedDevicesAllowed,
-      'googleAuthenticationRequired': ?googleAuthenticationRequired,
-    };
+    return {'googleAuthenticationRequired': ?googleAuthenticationRequired};
   }
 }
 

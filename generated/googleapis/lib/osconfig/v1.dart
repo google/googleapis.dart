@@ -36,7 +36,6 @@
 ///       - [ProjectsLocationsInstancesOsPolicyAssignmentsResource]
 ///         - [ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource]
 ///       - [ProjectsLocationsInstancesVulnerabilityReportsResource]
-///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsOsPolicyAssignmentsResource]
 ///       - [ProjectsLocationsOsPolicyAssignmentsOperationsResource]
 ///   - [ProjectsPatchDeploymentsResource]
@@ -101,8 +100,6 @@ class ProjectsLocationsResource {
       ProjectsLocationsGlobalResource(_requester);
   ProjectsLocationsInstancesResource get instances =>
       ProjectsLocationsInstancesResource(_requester);
-  ProjectsLocationsOperationsResource get operations =>
-      ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsOsPolicyAssignmentsResource get osPolicyAssignments =>
       ProjectsLocationsOsPolicyAssignmentsResource(_requester);
 
@@ -596,199 +593,6 @@ class ProjectsLocationsInstancesVulnerabilityReportsResource {
       queryParams: queryParams_,
     );
     return ListVulnerabilityReportsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsOperationsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsOperationsResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
-  /// to `Code.CANCELLED`.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> cancel(
-    CancelOperationRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Gets the latest state of a long-running operation.
-  ///
-  /// Clients can use this method to poll the operation result at intervals as
-  /// recommended by the API service.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [filter] - The standard list filter.
-  ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
-  /// are returned as normal, and those that are unreachable are returned in the
-  /// ListOperationsResponse.unreachable field. This can only be `true` when
-  /// reading across collections. For example, when `parent` is set to
-  /// `"projects/example/locations/-"`. This field is not supported by default
-  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
-  /// documented otherwise in service or product specific documentation.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListOperationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(
-    core.String name, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.bool? returnPartialSuccess,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'filter': ?filter == null ? null : [filter],
-      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListOperationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2880,55 +2684,6 @@ class ListOSPolicyAssignmentsResponse {
   }
 }
 
-/// The response message for Operations.ListOperations.
-class ListOperationsResponse {
-  /// The standard List next-page token.
-  core.String? nextPageToken;
-
-  /// A list of operations that matches the specified filter in the request.
-  core.List<Operation>? operations;
-
-  /// Unordered list.
-  ///
-  /// Unreachable resources. Populated when the request sets
-  /// `ListOperationsRequest.return_partial_success` and reads across
-  /// collections. For example, when attempting to list all resources across all
-  /// supported locations.
-  core.List<core.String>? unreachable;
-
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-    this.unreachable,
-  });
-
-  ListOperationsResponse.fromJson(core.Map json_)
-    : this(
-        nextPageToken: json_['nextPageToken'] as core.String?,
-        operations: (json_['operations'] as core.List?)
-            ?.map(
-              (value) => Operation.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-        unreachable: (json_['unreachable'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final nextPageToken = this.nextPageToken;
-    final operations = this.operations;
-    final unreachable = this.unreachable;
-    return {
-      'nextPageToken': ?nextPageToken,
-      'operations': ?operations,
-      'unreachable': ?unreachable,
-    };
-  }
-}
-
 /// A response message for listing patch deployments.
 class ListPatchDeploymentsResponse {
   /// A pagination token that can be used to get the next page of patch
@@ -3440,7 +3195,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared05;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared07;
 
 /// Message representing label set.
 ///
@@ -3810,7 +3565,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared05;
+typedef OSPolicyInventoryFilter = $Shared07;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -4313,7 +4068,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT = $Shared01;
+typedef OSPolicyResourcePackageResourceAPT = $Shared03;
 
 /// A deb package file.
 ///
@@ -4353,7 +4108,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet = $Shared01;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared03;
 
 /// An MSI package.
 ///
@@ -4428,12 +4183,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM = $Shared01;
+typedef OSPolicyResourcePackageResourceYUM = $Shared03;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper = $Shared01;
+typedef OSPolicyResourcePackageResourceZypper = $Shared03;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {

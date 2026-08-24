@@ -93,7 +93,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260414",
+    "revision": "20260816",
     "rootUrl": "https://classroom.googleapis.com/",
     "servicePath": "",
     "title": "Google Classroom API",
@@ -346,7 +346,7 @@
                             "type": "string"
                         },
                         "updateMask": {
-                            "description": "Mask that identifies which fields on the course to update. This field is required to do an update. The update will fail if invalid fields are specified. The following fields are valid: * `courseState` * `description` * `descriptionHeading` * `name` * `ownerId` * `room` * `section` * `subject` Note: patches to ownerId are treated as being effective immediately, but in practice it may take some time for the ownership transfer of all affected resources to complete. When set in a query parameter, this field should be specified as `updateMask=,,...`",
+                            "description": "Mask that identifies which fields on the course to update. This field is required to do an update. The update will fail if invalid fields are specified. The following fields are valid: * `courseState` * `description` * `descriptionHeading` * `name` * `ownerId` * `room` * `section` * `subject` * `learningStandardSettings` * `levels` Note: patches to ownerId are treated as being effective immediately, but in practice it may take some time for the ownership transfer of all affected resources to complete. When set in a query parameter, this field should be specified as `updateMask=,,...`",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -364,7 +364,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable * CourseTitleCannotContainUrl",
+                    "description": "Updates a course. Note: Unlike other fields, `levels` is not cleared if omitted from the request. The `UpdateCourse` method only modifies `levels` if it is explicitly provided; otherwise, the existing value is preserved. Use the `PatchCourse` method to clear the `levels` field. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable * CourseTitleCannotContainUrl",
                     "flatPath": "v1/courses/{id}",
                     "httpMethod": "PUT",
                     "id": "classroom.courses.update",
@@ -1299,7 +1299,7 @@
                                     "type": "string"
                                 },
                                 "updateMask": {
-                                    "description": "Mask that identifies which fields on the course work to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `CourseWork` object. If a field that does not support empty values is included in the update mask and not set in the `CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` * `submission_modification_mode` * `topic_id` * `grading_period_id`",
+                                    "description": "Mask that identifies which fields on the course work to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `CourseWork` object. If a field that does not support empty values is included in the update mask and not set in the `CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` * `submission_modification_mode` * `topic_id` * `grading_period_id` * `learning_goals`",
                                     "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
@@ -1654,6 +1654,11 @@
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/classroom.addons.student",
                                                 "https://www.googleapis.com/auth/classroom.addons.teacher",
+                                                "https://www.googleapis.com/auth/classroom.coursework.me",
+                                                "https://www.googleapis.com/auth/classroom.coursework.me.readonly",
+                                                "https://www.googleapis.com/auth/classroom.coursework.students",
+                                                "https://www.googleapis.com/auth/classroom.coursework.students.readonly",
+                                                "https://www.googleapis.com/auth/classroom.student-submissions.me.readonly",
                                                 "https://www.googleapis.com/auth/classroom.student-submissions.students.readonly"
                                             ]
                                         },
@@ -2513,7 +2518,7 @@
                                     "type": "string"
                                 },
                                 "updateMask": {
-                                    "description": "Mask that identifies which fields on the course work material to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the course work material object. If a field that does not support empty values is included in the update mask and not set in the course work material object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `scheduled_time` * `topic_id`",
+                                    "description": "Mask that identifies which fields on the course work material to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the course work material object. If a field that does not support empty values is included in the update mask and not set in the course work material object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `scheduled_time` * `topic_id` * `learning_goals`",
                                     "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
@@ -3110,6 +3115,11 @@
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/classroom.addons.student",
                                                 "https://www.googleapis.com/auth/classroom.addons.teacher",
+                                                "https://www.googleapis.com/auth/classroom.coursework.me",
+                                                "https://www.googleapis.com/auth/classroom.coursework.me.readonly",
+                                                "https://www.googleapis.com/auth/classroom.coursework.students",
+                                                "https://www.googleapis.com/auth/classroom.coursework.students.readonly",
+                                                "https://www.googleapis.com/auth/classroom.student-submissions.me.readonly",
                                                 "https://www.googleapis.com/auth/classroom.student-submissions.students.readonly"
                                             ]
                                         },
@@ -4418,7 +4428,7 @@
                 },
                 "studentWorkReviewUri": {
                     "$ref": "EmbedUri",
-                    "description": "URI for the teacher to see student work on the attachment, if applicable. The URI will be opened in an iframe with the `courseId`, `itemId`, `itemType`, `attachmentId`, and `submissionId` query parameters set. This is the same `submissionId` returned in the [`AddOnContext.studentContext`](//devsite.google.com/classroom/reference/rest/v1/AddOnContext#StudentContext) field when a student views the attachment. If the URI is omitted or removed, `max_points` will also be discarded."
+                    "description": "URI for the teacher to see student work on the attachment, if applicable. The URI will be opened in an iframe with the `courseId`, `itemId`, `itemType`, `attachmentId`, and `submissionId` query parameters set. This is the same `submissionId` returned in the [`AddOnContext.studentContext`](/workspace/classroom/reference/rest/v1/AddOnContext#StudentContext) field when a student views the attachment. If the URI is omitted or removed, `max_points` will also be discarded."
                 },
                 "teacherViewUri": {
                     "$ref": "EmbedUri",
@@ -4435,6 +4445,16 @@
             "description": "Payload for grade update requests.",
             "id": "AddOnAttachmentStudentSubmission",
             "properties": {
+                "courseWorkSubmissionId": {
+                    "description": "Output only. Identifier of the course work submission under which this attachment submission was made.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Output only. Classroom-assigned identifier for this student submission. This is unique among submissions for the relevant course work and add-on attachment combination.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "pointsEarned": {
                     "description": "Student grade on this attachment. If unset, no grade was set.",
                     "format": "double",
@@ -4461,7 +4481,7 @@
                     "type": "string"
                 },
                 "userId": {
-                    "description": "Identifier for the student that owns this submission. Requires the user to be a teacher in the course and have permission to read student submissions. Read-only.",
+                    "description": "Identifier for the student that owns this submission. Requires the user to be a teacher in the course and have permission to read student submissions. See [`courseWork.studentSubmissions.get`](/workspace/classroom/reference/rest/v1/courses.courseWork.studentSubmissions/get#authorization-scopes) for the list of acceptable OAuth scopes for this field. Read-only.",
                     "type": "string"
                 }
             },
@@ -4736,6 +4756,10 @@
                 },
                 "id": {
                     "description": "Identifier for this course assigned by Classroom. When creating a course, you may optionally set this identifier to an alias string in the request to create a corresponding alias. The `id` is still assigned by Classroom and cannot be updated after the course is created. Specifying this field in a course update mask results in an error.",
+                    "type": "string"
+                },
+                "levels": {
+                    "description": "Optional. Levels for the course. Examples: \"9th grade\", \"Middle school\", \"4th - 5th\", \"K-2\", \"3000\". If set, this field must be a valid UTF-8 string and fewer than 1000 characters. This field can only be cleared using the `PatchCourse` method.",
                     "type": "string"
                 },
                 "name": {

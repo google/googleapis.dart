@@ -82,6 +82,9 @@ class BuildingInsightsResource {
   ///
   /// Request parameters:
   ///
+  /// [additionalInsights] - Optional. A list of additional_insights to be
+  /// included in the response.
+  ///
   /// [exactQualityRequired] - Optional. Whether to require exact quality of the
   /// imagery. If set to false, the `required_quality` field is interpreted as
   /// the minimum required quality, such that HIGH quality imagery may be
@@ -128,6 +131,7 @@ class BuildingInsightsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BuildingInsights> findClosest({
+    core.List<core.String>? additionalInsights,
     core.bool? exactQualityRequired,
     core.List<core.String>? experiments,
     core.double? location_latitude,
@@ -136,6 +140,7 @@ class BuildingInsightsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'additionalInsights': ?additionalInsights,
       'exactQualityRequired': ?exactQualityRequired == null
           ? null
           : ['${exactQualityRequired}'],
@@ -346,6 +351,12 @@ class BuildingInsights {
   /// A point near the center of the building.
   LatLng? center;
 
+  /// Solar arrays detected on the building.
+  ///
+  /// This field is only populated if DETECTED_ARRAYS is included in the
+  /// request's FindClosestBuildingInsightsRequest.additional_insights.
+  BuildingInsightsDetectedArrays? detectedArrays;
+
   /// Date that the underlying imagery was acquired.
   ///
   /// This is approximate.
@@ -386,6 +397,7 @@ class BuildingInsights {
     this.administrativeArea,
     this.boundingBox,
     this.center,
+    this.detectedArrays,
     this.imageryDate,
     this.imageryProcessedDate,
     this.imageryQuality,
@@ -407,6 +419,11 @@ class BuildingInsights {
         center: json_.containsKey('center')
             ? LatLng.fromJson(
                 json_['center'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        detectedArrays: json_.containsKey('detectedArrays')
+            ? BuildingInsightsDetectedArrays.fromJson(
+                json_['detectedArrays'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         imageryDate: json_.containsKey('imageryDate')
@@ -436,6 +453,7 @@ class BuildingInsights {
     final administrativeArea = this.administrativeArea;
     final boundingBox = this.boundingBox;
     final center = this.center;
+    final detectedArrays = this.detectedArrays;
     final imageryDate = this.imageryDate;
     final imageryProcessedDate = this.imageryProcessedDate;
     final imageryQuality = this.imageryQuality;
@@ -448,6 +466,7 @@ class BuildingInsights {
       'administrativeArea': ?administrativeArea,
       'boundingBox': ?boundingBox,
       'center': ?center,
+      'detectedArrays': ?detectedArrays,
       'imageryDate': ?imageryDate,
       'imageryProcessedDate': ?imageryProcessedDate,
       'imageryQuality': ?imageryQuality,
@@ -456,6 +475,48 @@ class BuildingInsights {
       'regionCode': ?regionCode,
       'solarPotential': ?solarPotential,
       'statisticalArea': ?statisticalArea,
+    };
+  }
+}
+
+/// Information about solar arrays detected on the building.
+class BuildingInsightsDetectedArrays {
+  /// Indicates the detection status of solar arrays for this building.
+  /// Possible string values are:
+  /// - "DETECTION_STATUS_UNSPECIFIED" : Unspecified status.
+  /// - "DETECTION_STATUS_DATA_UNAVAILABLE" : Detected solar array data is
+  /// unavailable for this building.
+  /// - "DETECTION_STATUS_ARRAYS_DETECTED" : At least one solar array has been
+  /// detected for this building.
+  /// - "DETECTION_STATUS_NO_ARRAYS_DETECTED" : No solar arrays detected for
+  /// this building.
+  core.String? detectionStatus;
+
+  /// The date indicating when the latest solar array data was captured.
+  Date? latestCaptureDate;
+
+  BuildingInsightsDetectedArrays({
+    this.detectionStatus,
+    this.latestCaptureDate,
+  });
+
+  BuildingInsightsDetectedArrays.fromJson(core.Map json_)
+    : this(
+        detectionStatus: json_['detectionStatus'] as core.String?,
+        latestCaptureDate: json_.containsKey('latestCaptureDate')
+            ? Date.fromJson(
+                json_['latestCaptureDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectionStatus = this.detectionStatus;
+    final latestCaptureDate = this.latestCaptureDate;
+    return {
+      'detectionStatus': ?detectionStatus,
+      'latestCaptureDate': ?latestCaptureDate,
     };
   }
 }

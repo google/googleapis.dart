@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260408",
+    "revision": "20260506",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Reporting API",
@@ -835,6 +835,11 @@
                     "type": "string"
                 },
                 "sha256Hash": {
+                    "description": "gdata",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "sha512Hash": {
                     "description": "gdata",
                     "format": "byte",
                     "type": "string"

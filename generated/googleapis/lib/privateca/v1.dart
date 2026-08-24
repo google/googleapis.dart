@@ -134,7 +134,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -149,9 +149,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1703,8 +1702,7 @@ class ProjectsLocationsCaPoolsCertificatesResource {
   /// /locations / * /caPools / * ` 2. **All CA Pools in a Location:** To list
   /// certificates across *all* CA Pools in a given project and location, use
   /// the wildcard character (`-`) in place of the CA Pool ID. Example:
-  /// `projects / * /locations / * /caPools/-` See
-  /// go/ccfe-nested-collections#aggregate-listing for more details.
+  /// `projects / * /locations / * /caPools/-`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/caPools/\[^/\]+$`.
   ///
@@ -3043,6 +3041,19 @@ class Certificate {
   /// Immutable.
   core.String? pemCsr;
 
+  /// The requested not_before_time of this Certificate.
+  ///
+  /// This field may only be set if the
+  /// CaPool.IssuancePolicy.allow_requester_specified_not_before_time field is
+  /// set to true for the issuing CaPool. If this field is specified, the
+  /// certificate will be issued with this 'not_before_time'. If this is not
+  /// specified, the 'not_before_time' will be set to the issuance time or
+  /// issuance time minus backdate_duration depending on the CaPool
+  /// configuration.
+  ///
+  /// Optional.
+  core.String? requestedNotBeforeTime;
+
   /// Details regarding the revocation of this Certificate.
   ///
   /// This Certificate is considered revoked if and only if this field is
@@ -3093,6 +3104,7 @@ class Certificate {
     this.pemCertificate,
     this.pemCertificateChain,
     this.pemCsr,
+    this.requestedNotBeforeTime,
     this.revocationDetails,
     this.subjectMode,
     this.updateTime,
@@ -3125,6 +3137,7 @@ class Certificate {
             ?.map((value) => value as core.String)
             .toList(),
         pemCsr: json_['pemCsr'] as core.String?,
+        requestedNotBeforeTime: json_['requestedNotBeforeTime'] as core.String?,
         revocationDetails: json_.containsKey('revocationDetails')
             ? RevocationDetails.fromJson(
                 json_['revocationDetails']
@@ -3147,6 +3160,7 @@ class Certificate {
     final pemCertificate = this.pemCertificate;
     final pemCertificateChain = this.pemCertificateChain;
     final pemCsr = this.pemCsr;
+    final requestedNotBeforeTime = this.requestedNotBeforeTime;
     final revocationDetails = this.revocationDetails;
     final subjectMode = this.subjectMode;
     final updateTime = this.updateTime;
@@ -3162,6 +3176,7 @@ class Certificate {
       'pemCertificate': ?pemCertificate,
       'pemCertificateChain': ?pemCertificateChain,
       'pemCsr': ?pemCsr,
+      'requestedNotBeforeTime': ?requestedNotBeforeTime,
       'revocationDetails': ?revocationDetails,
       'subjectMode': ?subjectMode,
       'updateTime': ?updateTime,
@@ -4153,7 +4168,7 @@ class EcKeyType {
 typedef Empty = $Empty;
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.
-typedef EnableCertificateAuthorityRequest = $Request03;
+typedef EnableCertificateAuthorityRequest = $Request04;
 
 /// The configuration used for encrypting data at rest.
 class EncryptionSpec {
@@ -4266,7 +4281,7 @@ class ExtendedKeyUsageOptions {
 }
 
 /// Request message for CertificateAuthorityService.FetchCaCerts.
-typedef FetchCaCertsRequest = $Request03;
+typedef FetchCaCertsRequest = $Request04;
 
 /// Response message for CertificateAuthorityService.FetchCaCerts.
 class FetchCaCertsResponse {
@@ -4347,6 +4362,18 @@ class IssuanceModes {
 
 /// Defines controls over all certificate issuance within a CaPool.
 class IssuancePolicy {
+  /// If set to true, allows requesters to specify the requested_not_before_time
+  /// field when creating a Certificate.
+  ///
+  /// Certificates requested with this option enabled will have a
+  /// 'not_before_time' equal to the value specified in the request. The
+  /// 'not_after_time' will be adjusted to preserve the requested lifetime. The
+  /// maximum time that a certificate can be backdated with these options is 48
+  /// hours in the past. This option cannot be set if backdate_duration is set.
+  ///
+  /// Optional.
+  core.bool? allowRequesterSpecifiedNotBeforeTime;
+
   /// If specified, then only methods allowed in the IssuanceModes may be used
   /// to issue Certificates.
   ///
@@ -4418,6 +4445,7 @@ class IssuancePolicy {
   CertificateExtensionConstraints? passthroughExtensions;
 
   IssuancePolicy({
+    this.allowRequesterSpecifiedNotBeforeTime,
     this.allowedIssuanceModes,
     this.allowedKeyTypes,
     this.backdateDuration,
@@ -4429,6 +4457,8 @@ class IssuancePolicy {
 
   IssuancePolicy.fromJson(core.Map json_)
     : this(
+        allowRequesterSpecifiedNotBeforeTime:
+            json_['allowRequesterSpecifiedNotBeforeTime'] as core.bool?,
         allowedIssuanceModes: json_.containsKey('allowedIssuanceModes')
             ? IssuanceModes.fromJson(
                 json_['allowedIssuanceModes']
@@ -4464,6 +4494,8 @@ class IssuancePolicy {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final allowRequesterSpecifiedNotBeforeTime =
+        this.allowRequesterSpecifiedNotBeforeTime;
     final allowedIssuanceModes = this.allowedIssuanceModes;
     final allowedKeyTypes = this.allowedKeyTypes;
     final backdateDuration = this.backdateDuration;
@@ -4472,6 +4504,8 @@ class IssuancePolicy {
     final maximumLifetime = this.maximumLifetime;
     final passthroughExtensions = this.passthroughExtensions;
     return {
+      'allowRequesterSpecifiedNotBeforeTime':
+          ?allowRequesterSpecifiedNotBeforeTime,
       'allowedIssuanceModes': ?allowedIssuanceModes,
       'allowedKeyTypes': ?allowedKeyTypes,
       'backdateDuration': ?backdateDuration,
@@ -6067,7 +6101,7 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Request message for
 /// CertificateAuthorityService.UndeleteCertificateAuthority.
-typedef UndeleteCertificateAuthorityRequest = $Request03;
+typedef UndeleteCertificateAuthorityRequest = $Request04;
 
 /// User-defined URLs for accessing content published by this
 /// CertificateAuthority.

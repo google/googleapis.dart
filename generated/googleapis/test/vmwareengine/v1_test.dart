@@ -564,6 +564,27 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterEncryptionConfig = 0;
+api.EncryptionConfig buildEncryptionConfig() {
+  final o = api.EncryptionConfig();
+  buildCounterEncryptionConfig++;
+  if (buildCounterEncryptionConfig < 3) {
+    o.cryptoKeyName = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterEncryptionConfig--;
+  return o;
+}
+
+void checkEncryptionConfig(api.EncryptionConfig o) {
+  buildCounterEncryptionConfig++;
+  if (buildCounterEncryptionConfig < 3) {
+    unittest.expect(o.cryptoKeyName!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
+  }
+  buildCounterEncryptionConfig--;
+}
+
 core.int buildCounterExpr = 0;
 api.Expr buildExpr() {
   final o = api.Expr();
@@ -1910,6 +1931,29 @@ void checkManagementDnsZoneBinding(api.ManagementDnsZoneBinding o) {
   buildCounterManagementDnsZoneBinding--;
 }
 
+core.int buildCounterMigrateManagementVmsRequest = 0;
+api.MigrateManagementVmsRequest buildMigrateManagementVmsRequest() {
+  final o = api.MigrateManagementVmsRequest();
+  buildCounterMigrateManagementVmsRequest++;
+  if (buildCounterMigrateManagementVmsRequest < 3) {
+    o.clusterId = 'foo';
+    o.etag = 'foo';
+    o.requestId = 'foo';
+  }
+  buildCounterMigrateManagementVmsRequest--;
+  return o;
+}
+
+void checkMigrateManagementVmsRequest(api.MigrateManagementVmsRequest o) {
+  buildCounterMigrateManagementVmsRequest++;
+  if (buildCounterMigrateManagementVmsRequest < 3) {
+    unittest.expect(o.clusterId!, unittest.equals('foo'));
+    unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(o.requestId!, unittest.equals('foo'));
+  }
+  buildCounterMigrateManagementVmsRequest--;
+}
+
 core.int buildCounterMountDatastoreRequest = 0;
 api.MountDatastoreRequest buildMountDatastoreRequest() {
   final o = api.MountDatastoreRequest();
@@ -2415,6 +2459,7 @@ api.PrivateCloud buildPrivateCloud() {
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.description = 'foo';
+    o.encryptionConfig = buildEncryptionConfig();
     o.expireTime = 'foo';
     o.hcx = buildHcx();
     o.managementCluster = buildManagementCluster();
@@ -2437,6 +2482,7 @@ void checkPrivateCloud(api.PrivateCloud o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
+    checkEncryptionConfig(o.encryptionConfig!);
     unittest.expect(o.expireTime!, unittest.equals('foo'));
     checkHcx(o.hcx!);
     checkManagementCluster(o.managementCluster!);
@@ -3325,6 +3371,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EncryptionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEncryptionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EncryptionConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEncryptionConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-Expr', () {
     unittest.test('to-json--from-json', () async {
       final o = buildExpr();
@@ -3727,6 +3784,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkManagementDnsZoneBinding(od);
+    });
+  });
+
+  unittest.group('obj-schema-MigrateManagementVmsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMigrateManagementVmsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MigrateManagementVmsRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMigrateManagementVmsRequest(od);
     });
   });
 
@@ -6946,6 +7014,69 @@ void main() {
         $fields: arg_$fields,
       );
       checkListPrivateCloudsResponse(response as api.ListPrivateCloudsResponse);
+    });
+
+    unittest.test('method--migrateManagementVms', () async {
+      final mock = HttpServerMock();
+      final res = api.VMwareEngineApi(mock).projects.locations.privateClouds;
+      final arg_request = buildMigrateManagementVmsRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.MigrateManagementVmsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkMigrateManagementVmsRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.migrateManagementVms(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
     });
 
     unittest.test('method--patch', () async {

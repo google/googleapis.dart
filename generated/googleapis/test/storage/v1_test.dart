@@ -694,6 +694,8 @@ api.BucketLifecycleRuleCondition buildBucketLifecycleRuleCondition() {
     o.matchesSuffix = buildUnnamed14();
     o.noncurrentTimeBefore = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.numNewerVersions = 42;
+    o.sizeAboveBytes = 'foo';
+    o.sizeBelowBytes = 'foo';
   }
   buildCounterBucketLifecycleRuleCondition--;
   return o;
@@ -723,6 +725,8 @@ void checkBucketLifecycleRuleCondition(api.BucketLifecycleRuleCondition o) {
       unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
     );
     unittest.expect(o.numNewerVersions!, unittest.equals(42));
+    unittest.expect(o.sizeAboveBytes!, unittest.equals('foo'));
+    unittest.expect(o.sizeBelowBytes!, unittest.equals('foo'));
   }
   buildCounterBucketLifecycleRuleCondition--;
 }
@@ -1836,6 +1840,7 @@ api.ManagedFolder buildManagedFolder() {
     o.kind = 'foo';
     o.metageneration = 'foo';
     o.name = 'foo';
+    o.rapidCacheConfig = buildRapidCacheConfig();
     o.selfLink = 'foo';
     o.updateTime = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
@@ -1855,6 +1860,7 @@ void checkManagedFolder(api.ManagedFolder o) {
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.metageneration!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkRapidCacheConfig(o.rapidCacheConfig!);
     unittest.expect(o.selfLink!, unittest.equals('foo'));
     unittest.expect(
       o.updateTime!,
@@ -2451,9 +2457,145 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
-core.List<core.String> buildUnnamed42() => ['foo', 'foo'];
+core.int buildCounterRapidCache = 0;
+api.RapidCache buildRapidCache() {
+  final o = api.RapidCache();
+  buildCounterRapidCache++;
+  if (buildCounterRapidCache < 3) {
+    o.admissionPolicy = 'foo';
+    o.bucket = 'foo';
+    o.cacheType = 'foo';
+    o.createTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.id = 'foo';
+    o.ingestOnWrite = true;
+    o.kind = 'foo';
+    o.pendingUpdate = true;
+    o.rapidCacheId = 'foo';
+    o.selfLink = 'foo';
+    o.state = 'foo';
+    o.ttl = 'foo';
+    o.updateTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.zone = 'foo';
+  }
+  buildCounterRapidCache--;
+  return o;
+}
 
-void checkUnnamed42(core.List<core.String> o) {
+void checkRapidCache(api.RapidCache o) {
+  buildCounterRapidCache++;
+  if (buildCounterRapidCache < 3) {
+    unittest.expect(o.admissionPolicy!, unittest.equals('foo'));
+    unittest.expect(o.bucket!, unittest.equals('foo'));
+    unittest.expect(o.cacheType!, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.ingestOnWrite!, unittest.isTrue);
+    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(o.pendingUpdate!, unittest.isTrue);
+    unittest.expect(o.rapidCacheId!, unittest.equals('foo'));
+    unittest.expect(o.selfLink!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.ttl!, unittest.equals('foo'));
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
+    unittest.expect(o.zone!, unittest.equals('foo'));
+  }
+  buildCounterRapidCache--;
+}
+
+core.Map<core.String, api.RapidCachePolicy> buildUnnamed42() => {
+  'x': buildRapidCachePolicy(),
+  'y': buildRapidCachePolicy(),
+};
+
+void checkUnnamed42(core.Map<core.String, api.RapidCachePolicy> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRapidCachePolicy(o['x']!);
+  checkRapidCachePolicy(o['y']!);
+}
+
+core.int buildCounterRapidCacheConfig = 0;
+api.RapidCacheConfig buildRapidCacheConfig() {
+  final o = api.RapidCacheConfig();
+  buildCounterRapidCacheConfig++;
+  if (buildCounterRapidCacheConfig < 3) {
+    o.policies = buildUnnamed42();
+  }
+  buildCounterRapidCacheConfig--;
+  return o;
+}
+
+void checkRapidCacheConfig(api.RapidCacheConfig o) {
+  buildCounterRapidCacheConfig++;
+  if (buildCounterRapidCacheConfig < 3) {
+    checkUnnamed42(o.policies!);
+  }
+  buildCounterRapidCacheConfig--;
+}
+
+core.int buildCounterRapidCachePolicy = 0;
+api.RapidCachePolicy buildRapidCachePolicy() {
+  final o = api.RapidCachePolicy();
+  buildCounterRapidCachePolicy++;
+  if (buildCounterRapidCachePolicy < 3) {
+    o.ingestOnWrite = 'foo';
+    o.rapidCacheId = 'foo';
+  }
+  buildCounterRapidCachePolicy--;
+  return o;
+}
+
+void checkRapidCachePolicy(api.RapidCachePolicy o) {
+  buildCounterRapidCachePolicy++;
+  if (buildCounterRapidCachePolicy < 3) {
+    unittest.expect(o.ingestOnWrite!, unittest.equals('foo'));
+    unittest.expect(o.rapidCacheId!, unittest.equals('foo'));
+  }
+  buildCounterRapidCachePolicy--;
+}
+
+core.List<api.RapidCache> buildUnnamed43() => [
+  buildRapidCache(),
+  buildRapidCache(),
+];
+
+void checkUnnamed43(core.List<api.RapidCache> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRapidCache(o[0]);
+  checkRapidCache(o[1]);
+}
+
+core.int buildCounterRapidCaches = 0;
+api.RapidCaches buildRapidCaches() {
+  final o = api.RapidCaches();
+  buildCounterRapidCaches++;
+  if (buildCounterRapidCaches < 3) {
+    o.items = buildUnnamed43();
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
+  }
+  buildCounterRapidCaches--;
+  return o;
+}
+
+void checkRapidCaches(api.RapidCaches o) {
+  buildCounterRapidCaches++;
+  if (buildCounterRapidCaches < 3) {
+    checkUnnamed43(o.items!);
+    unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+  }
+  buildCounterRapidCaches--;
+}
+
+core.List<core.String> buildUnnamed44() => ['foo', 'foo'];
+
+void checkUnnamed44(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2465,7 +2607,7 @@ buildRelocateBucketRequestDestinationCustomPlacementConfig() {
   final o = api.RelocateBucketRequestDestinationCustomPlacementConfig();
   buildCounterRelocateBucketRequestDestinationCustomPlacementConfig++;
   if (buildCounterRelocateBucketRequestDestinationCustomPlacementConfig < 3) {
-    o.dataLocations = buildUnnamed42();
+    o.dataLocations = buildUnnamed44();
   }
   buildCounterRelocateBucketRequestDestinationCustomPlacementConfig--;
   return o;
@@ -2476,7 +2618,7 @@ void checkRelocateBucketRequestDestinationCustomPlacementConfig(
 ) {
   buildCounterRelocateBucketRequestDestinationCustomPlacementConfig++;
   if (buildCounterRelocateBucketRequestDestinationCustomPlacementConfig < 3) {
-    checkUnnamed42(o.dataLocations!);
+    checkUnnamed44(o.dataLocations!);
   }
   buildCounterRelocateBucketRequestDestinationCustomPlacementConfig--;
 }
@@ -2559,9 +2701,9 @@ void checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount--;
 }
 
-core.List<core.String> buildUnnamed43() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
 
-void checkUnnamed43(core.List<core.String> o) {
+void checkUnnamed45(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2573,7 +2715,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
     o.kind = 'foo';
-    o.permissions = buildUnnamed43();
+    o.permissions = buildUnnamed45();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -2583,25 +2725,9 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
     unittest.expect(o.kind!, unittest.equals('foo'));
-    checkUnnamed43(o.permissions!);
+    checkUnnamed45(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
-}
-
-core.List<core.String> buildUnnamed44() => ['foo', 'foo'];
-
-void checkUnnamed44(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
-
-void checkUnnamed45(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed46() => ['foo', 'foo'];
@@ -2623,6 +2749,22 @@ void checkUnnamed47(core.List<core.String> o) {
 core.List<core.String> buildUnnamed48() => ['foo', 'foo'];
 
 void checkUnnamed48(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed49() => ['foo', 'foo'];
+
+void checkUnnamed49(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed50() => ['foo', 'foo'];
+
+void checkUnnamed50(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3395,6 +3537,50 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-RapidCache', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRapidCache();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RapidCache.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRapidCache(od);
+    });
+  });
+
+  unittest.group('obj-schema-RapidCacheConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRapidCacheConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RapidCacheConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRapidCacheConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-RapidCachePolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRapidCachePolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RapidCachePolicy.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRapidCachePolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-RapidCaches', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRapidCaches();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RapidCaches.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRapidCaches(od);
     });
   });
 
@@ -5554,7 +5740,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).buckets;
       final arg_bucket = 'foo';
-      final arg_permissions = buildUnnamed44();
+      final arg_permissions = buildUnnamed46();
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7460,7 +7646,7 @@ void main() {
       final res = api.StorageApi(mock).managedFolders;
       final arg_bucket = 'foo';
       final arg_managedFolder = 'foo';
-      final arg_permissions = buildUnnamed45();
+      final arg_permissions = buildUnnamed47();
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7553,6 +7739,102 @@ void main() {
       checkTestIamPermissionsResponse(
         response as api.TestIamPermissionsResponse,
       );
+    });
+
+    unittest.test('method--update', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).managedFolders;
+      final arg_request = buildManagedFolder();
+      final arg_bucket = 'foo';
+      final arg_managedFolder = 'foo';
+      final arg_ifMetagenerationMatch = 'foo';
+      final arg_ifMetagenerationNotMatch = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ManagedFolder.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkManagedFolder(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('storage/v1/'),
+          );
+          pathOffset += 11;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 2),
+            unittest.equals('b/'),
+          );
+          pathOffset += 2;
+          index = path.indexOf('/managedFolders/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_bucket'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('/managedFolders/'),
+          );
+          pathOffset += 16;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_managedFolder'));
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['ifMetagenerationMatch']!.first,
+            unittest.equals(arg_ifMetagenerationMatch),
+          );
+          unittest.expect(
+            queryMap['ifMetagenerationNotMatch']!.first,
+            unittest.equals(arg_ifMetagenerationNotMatch),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildManagedFolder());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.update(
+        arg_request,
+        arg_bucket,
+        arg_managedFolder,
+        ifMetagenerationMatch: arg_ifMetagenerationMatch,
+        ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+        $fields: arg_$fields,
+      );
+      checkManagedFolder(response as api.ManagedFolder);
     });
   });
 
@@ -8605,7 +8887,7 @@ void main() {
       final arg_destinationBucket = 'foo';
       final arg_destinationObject = 'foo';
       final arg_destinationPredefinedAcl = 'foo';
-      final arg_dropContextGroups = buildUnnamed46();
+      final arg_dropContextGroups = buildUnnamed48();
       final arg_ifGenerationMatch = 'foo';
       final arg_ifMetagenerationMatch = 'foo';
       final arg_kmsKeyName = 'foo';
@@ -9995,7 +10277,7 @@ void main() {
       final arg_destinationObject = 'foo';
       final arg_destinationKmsKeyName = 'foo';
       final arg_destinationPredefinedAcl = 'foo';
-      final arg_dropContextGroups = buildUnnamed47();
+      final arg_dropContextGroups = buildUnnamed49();
       final arg_ifGenerationMatch = 'foo';
       final arg_ifGenerationNotMatch = 'foo';
       final arg_ifMetagenerationMatch = 'foo';
@@ -10303,7 +10585,7 @@ void main() {
       final res = api.StorageApi(mock).objects;
       final arg_bucket = 'foo';
       final arg_object = 'foo';
-      final arg_permissions = buildUnnamed48();
+      final arg_permissions = buildUnnamed50();
       final arg_generation = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
@@ -10540,145 +10822,6 @@ void main() {
         $fields: arg_$fields,
       );
       checkObject(response as api.Object);
-    });
-
-    unittest.test('method--watchAll', () async {
-      final mock = HttpServerMock();
-      final res = api.StorageApi(mock).objects;
-      final arg_request = buildChannel();
-      final arg_bucket = 'foo';
-      final arg_delimiter = 'foo';
-      final arg_endOffset = 'foo';
-      final arg_includeTrailingDelimiter = true;
-      final arg_maxResults = 42;
-      final arg_pageToken = 'foo';
-      final arg_prefix = 'foo';
-      final arg_projection = 'foo';
-      final arg_startOffset = 'foo';
-      final arg_userProject = 'foo';
-      final arg_versions = true;
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.Channel.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkChannel(obj);
-
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 11),
-            unittest.equals('storage/v1/'),
-          );
-          pathOffset += 11;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 2),
-            unittest.equals('b/'),
-          );
-          pathOffset += 2;
-          index = path.indexOf('/o/watch', pathOffset);
-          unittest.expect(index >= 0, unittest.isTrue);
-          subPart = core.Uri.decodeQueryComponent(
-            path.substring(pathOffset, index),
-          );
-          pathOffset = index;
-          unittest.expect(subPart, unittest.equals('$arg_bucket'));
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 8),
-            unittest.equals('/o/watch'),
-          );
-          pathOffset += 8;
-
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
-
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
-          }
-          unittest.expect(
-            queryMap['delimiter']!.first,
-            unittest.equals(arg_delimiter),
-          );
-          unittest.expect(
-            queryMap['endOffset']!.first,
-            unittest.equals(arg_endOffset),
-          );
-          unittest.expect(
-            queryMap['includeTrailingDelimiter']!.first,
-            unittest.equals('$arg_includeTrailingDelimiter'),
-          );
-          unittest.expect(
-            core.int.parse(queryMap['maxResults']!.first),
-            unittest.equals(arg_maxResults),
-          );
-          unittest.expect(
-            queryMap['pageToken']!.first,
-            unittest.equals(arg_pageToken),
-          );
-          unittest.expect(
-            queryMap['prefix']!.first,
-            unittest.equals(arg_prefix),
-          );
-          unittest.expect(
-            queryMap['projection']!.first,
-            unittest.equals(arg_projection),
-          );
-          unittest.expect(
-            queryMap['startOffset']!.first,
-            unittest.equals(arg_startOffset),
-          );
-          unittest.expect(
-            queryMap['userProject']!.first,
-            unittest.equals(arg_userProject),
-          );
-          unittest.expect(
-            queryMap['versions']!.first,
-            unittest.equals('$arg_versions'),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
-
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildChannel());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.watchAll(
-        arg_request,
-        arg_bucket,
-        delimiter: arg_delimiter,
-        endOffset: arg_endOffset,
-        includeTrailingDelimiter: arg_includeTrailingDelimiter,
-        maxResults: arg_maxResults,
-        pageToken: arg_pageToken,
-        prefix: arg_prefix,
-        projection: arg_projection,
-        startOffset: arg_startOffset,
-        userProject: arg_userProject,
-        versions: arg_versions,
-        $fields: arg_$fields,
-      );
-      checkChannel(response as api.Channel);
     });
   });
 
@@ -11550,6 +11693,424 @@ void main() {
         $fields: arg_$fields,
       );
       checkServiceAccount(response as api.ServiceAccount);
+    });
+  });
+
+  unittest.group('resource-RapidCachesResource', () {
+    unittest.test('method--disable', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).rapidCaches;
+      final arg_bucket = 'foo';
+      final arg_rapidCacheId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('storage/v1/'),
+          );
+          pathOffset += 11;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 2),
+            unittest.equals('b/'),
+          );
+          pathOffset += 2;
+          index = path.indexOf('/rapidCaches/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_bucket'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 13),
+            unittest.equals('/rapidCaches/'),
+          );
+          pathOffset += 13;
+          index = path.indexOf('/disable', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_rapidCacheId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals('/disable'),
+          );
+          pathOffset += 8;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.disable(
+        arg_bucket,
+        arg_rapidCacheId,
+        $fields: arg_$fields,
+      );
+      checkGoogleLongrunningOperation(
+        response as api.GoogleLongrunningOperation,
+      );
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).rapidCaches;
+      final arg_bucket = 'foo';
+      final arg_rapidCacheId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('storage/v1/'),
+          );
+          pathOffset += 11;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 2),
+            unittest.equals('b/'),
+          );
+          pathOffset += 2;
+          index = path.indexOf('/rapidCaches/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_bucket'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 13),
+            unittest.equals('/rapidCaches/'),
+          );
+          pathOffset += 13;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_rapidCacheId'));
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildRapidCache());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(
+        arg_bucket,
+        arg_rapidCacheId,
+        $fields: arg_$fields,
+      );
+      checkRapidCache(response as api.RapidCache);
+    });
+
+    unittest.test('method--insert', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).rapidCaches;
+      final arg_request = buildRapidCache();
+      final arg_bucket = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.RapidCache.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkRapidCache(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('storage/v1/'),
+          );
+          pathOffset += 11;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 2),
+            unittest.equals('b/'),
+          );
+          pathOffset += 2;
+          index = path.indexOf('/rapidCaches', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_bucket'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('/rapidCaches'),
+          );
+          pathOffset += 12;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.insert(
+        arg_request,
+        arg_bucket,
+        $fields: arg_$fields,
+      );
+      checkGoogleLongrunningOperation(
+        response as api.GoogleLongrunningOperation,
+      );
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).rapidCaches;
+      final arg_bucket = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('storage/v1/'),
+          );
+          pathOffset += 11;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 2),
+            unittest.equals('b/'),
+          );
+          pathOffset += 2;
+          index = path.indexOf('/rapidCaches', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_bucket'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('/rapidCaches'),
+          );
+          pathOffset += 12;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildRapidCaches());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_bucket,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkRapidCaches(response as api.RapidCaches);
+    });
+
+    unittest.test('method--update', () async {
+      final mock = HttpServerMock();
+      final res = api.StorageApi(mock).rapidCaches;
+      final arg_request = buildRapidCache();
+      final arg_bucket = 'foo';
+      final arg_rapidCacheId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.RapidCache.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkRapidCache(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('storage/v1/'),
+          );
+          pathOffset += 11;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 2),
+            unittest.equals('b/'),
+          );
+          pathOffset += 2;
+          index = path.indexOf('/rapidCaches/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_bucket'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 13),
+            unittest.equals('/rapidCaches/'),
+          );
+          pathOffset += 13;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_rapidCacheId'));
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.update(
+        arg_request,
+        arg_bucket,
+        arg_rapidCacheId,
+        $fields: arg_$fields,
+      );
+      checkGoogleLongrunningOperation(
+        response as api.GoogleLongrunningOperation,
+      );
     });
   });
 }

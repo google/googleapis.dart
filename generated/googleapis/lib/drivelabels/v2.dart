@@ -948,7 +948,7 @@ class LabelsPermissionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Label permission resource name.
-  /// Value must have pattern `^labels/\[^/\]+/permissions/\[^/\]+$`.
+  /// Value must have pattern `^labels/\[^/\]+/permissions/.*$`.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
   /// credentials. The server will verify the user is an admin for the label
@@ -1329,7 +1329,7 @@ class LabelsRevisionsPermissionsResource {
   ///
   /// [name] - Required. Label permission resource name.
   /// Value must have pattern
-  /// `^labels/\[^/\]+/revisions/\[^/\]+/permissions/\[^/\]+$`.
+  /// `^labels/\[^/\]+/revisions/\[^/\]+/permissions/.*$`.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
   /// credentials. The server will verify the user is an admin for the label

@@ -840,6 +840,9 @@ class ProjectsLocationsRegistrationsResource {
   /// as a comma-separated list. For example, if only the labels are being
   /// updated, the `update_mask` is `"labels"`.
   ///
+  /// [validateOnly] - Optional. If set, validates the request without actually
+  /// updating the registration.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -854,11 +857,13 @@ class ProjectsLocationsRegistrationsResource {
     Registration request,
     core.String name, {
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2389,7 +2394,7 @@ class EmailForwarding {
 /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
 ///
 /// Request for the `ExportRegistration` method.
-typedef ExportRegistrationRequest = $Shared00;
+typedef ExportRegistrationRequest = $Shared01;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2712,14 +2717,23 @@ class InitiatePushTransferRequest {
   /// Required.
   core.String? tag;
 
-  InitiatePushTransferRequest({this.tag});
+  /// If set, validates the request without actually initiating the transfer.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  InitiatePushTransferRequest({this.tag, this.validateOnly});
 
   InitiatePushTransferRequest.fromJson(core.Map json_)
-    : this(tag: json_['tag'] as core.String?);
+    : this(
+        tag: json_['tag'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final tag = this.tag;
-    return {'tag': ?tag};
+    final validateOnly = this.validateOnly;
+    return {'tag': ?tag, 'validateOnly': ?validateOnly};
   }
 }
 

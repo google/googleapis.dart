@@ -156,7 +156,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -171,9 +171,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3294,6 +3293,8 @@ class Cluster {
     'Not supported. Member documentation may have more information.',
   )
   core.String? network;
+
+  /// Optional.
   NetworkConfig? networkConfig;
 
   /// Cross Region replication config specific to PRIMARY cluster.
@@ -3715,6 +3716,23 @@ class ConnectionInfo {
 
 /// Configuration for Managed Connection Pool (MCP).
 class ConnectionPoolConfig {
+  /// The number of running AuthProxy poolers per instance.
+  ///
+  /// Output only.
+  core.int? authproxyPoolerCount;
+
+  /// The scaling type of the AuthProxy pooler.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POOLER_SCALING_TYPE_UNSPECIFIED" : The scaling type is not specified.
+  /// - "POOLER_NONE" : No pooler is enabled.
+  /// - "POOLER_MACHINE_SIZED" : The number of poolers is automatically
+  /// determined by the service based on the VM size.
+  /// - "POOLER_MANUAL_OVERRIDE" : The number of poolers is kept unchanged no
+  /// matter the machine size.
+  core.String? authproxyPoolerScalingType;
+
   /// Whether to enable Managed Connection Pool (MCP).
   ///
   /// Optional.
@@ -3730,22 +3748,55 @@ class ConnectionPoolConfig {
   /// Output only.
   core.int? poolerCount;
 
-  ConnectionPoolConfig({this.enabled, this.flags, this.poolerCount});
+  /// The scaling type of the regular pooler.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POOLER_SCALING_TYPE_UNSPECIFIED" : The scaling type is not specified.
+  /// - "POOLER_NONE" : No pooler is enabled.
+  /// - "POOLER_MACHINE_SIZED" : The number of poolers is automatically
+  /// determined by the service based on the VM size.
+  /// - "POOLER_MANUAL_OVERRIDE" : The number of poolers is kept unchanged no
+  /// matter the machine size.
+  core.String? poolerScalingType;
+
+  ConnectionPoolConfig({
+    this.authproxyPoolerCount,
+    this.authproxyPoolerScalingType,
+    this.enabled,
+    this.flags,
+    this.poolerCount,
+    this.poolerScalingType,
+  });
 
   ConnectionPoolConfig.fromJson(core.Map json_)
     : this(
+        authproxyPoolerCount: json_['authproxyPoolerCount'] as core.int?,
+        authproxyPoolerScalingType:
+            json_['authproxyPoolerScalingType'] as core.String?,
         enabled: json_['enabled'] as core.bool?,
         flags: (json_['flags'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         poolerCount: json_['poolerCount'] as core.int?,
+        poolerScalingType: json_['poolerScalingType'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final authproxyPoolerCount = this.authproxyPoolerCount;
+    final authproxyPoolerScalingType = this.authproxyPoolerScalingType;
     final enabled = this.enabled;
     final flags = this.flags;
     final poolerCount = this.poolerCount;
-    return {'enabled': ?enabled, 'flags': ?flags, 'poolerCount': ?poolerCount};
+    final poolerScalingType = this.poolerScalingType;
+    return {
+      'authproxyPoolerCount': ?authproxyPoolerCount,
+      'authproxyPoolerScalingType': ?authproxyPoolerScalingType,
+      'enabled': ?enabled,
+      'flags': ?flags,
+      'poolerCount': ?poolerCount,
+      'poolerScalingType': ?poolerScalingType,
+    };
   }
 }
 
@@ -4233,7 +4284,7 @@ class ExportClusterRequest {
 }
 
 /// Message for triggering failover on an Instance
-typedef FailoverInstanceRequest = $Request05;
+typedef FailoverInstanceRequest = $Request06;
 
 /// Destination for Export.
 ///
@@ -6494,18 +6545,25 @@ class StringRestrictions {
   /// This field will be empty if there is a unbounded number of allowed values.
   core.List<core.String>? allowedValues;
 
-  StringRestrictions({this.allowedValues});
+  /// Whether the allowed values are case agnostic.
+  ///
+  /// Output only.
+  core.bool? caseAgnostic;
+
+  StringRestrictions({this.allowedValues, this.caseAgnostic});
 
   StringRestrictions.fromJson(core.Map json_)
     : this(
         allowedValues: (json_['allowedValues'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        caseAgnostic: json_['caseAgnostic'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final allowedValues = this.allowedValues;
-    return {'allowedValues': ?allowedValues};
+    final caseAgnostic = this.caseAgnostic;
+    return {'allowedValues': ?allowedValues, 'caseAgnostic': ?caseAgnostic};
   }
 }
 
@@ -6642,7 +6700,7 @@ class SupportedDatabaseFlag {
 }
 
 /// Message for switching over to a cluster
-typedef SwitchoverClusterRequest = $Request05;
+typedef SwitchoverClusterRequest = $Request06;
 
 /// A time based retention policy specifies that all backups within a certain
 /// time period should be retained.

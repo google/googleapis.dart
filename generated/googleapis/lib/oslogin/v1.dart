@@ -735,6 +735,17 @@ class SignSshPublicKeyRequest {
   /// apps/{app}/services/{service}/versions/{version}/instances/{instance}
   core.String? appEngineInstance;
 
+  /// The Cloud Run resource to sign the SSH public key for.
+  ///
+  /// Expected formats: -
+  /// `projects/{project}/locations/{location}/services/{service}` -
+  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}` -
+  /// `projects/{project}/locations/{location}/jobs/{job}` -
+  /// `projects/{project}/locations/{location}/instances/{instance}`
+  ///
+  /// Optional.
+  core.String? cloudRunResource;
+
   /// The Compute instance to sign the SSH public key for.
   ///
   /// Expected format:
@@ -758,6 +769,7 @@ class SignSshPublicKeyRequest {
 
   SignSshPublicKeyRequest({
     this.appEngineInstance,
+    this.cloudRunResource,
     this.computeInstance,
     this.serviceAccount,
     this.sshPublicKey,
@@ -766,6 +778,7 @@ class SignSshPublicKeyRequest {
   SignSshPublicKeyRequest.fromJson(core.Map json_)
     : this(
         appEngineInstance: json_['appEngineInstance'] as core.String?,
+        cloudRunResource: json_['cloudRunResource'] as core.String?,
         computeInstance: json_['computeInstance'] as core.String?,
         serviceAccount: json_['serviceAccount'] as core.String?,
         sshPublicKey: json_['sshPublicKey'] as core.String?,
@@ -773,11 +786,13 @@ class SignSshPublicKeyRequest {
 
   core.Map<core.String, core.dynamic> toJson() {
     final appEngineInstance = this.appEngineInstance;
+    final cloudRunResource = this.cloudRunResource;
     final computeInstance = this.computeInstance;
     final serviceAccount = this.serviceAccount;
     final sshPublicKey = this.sshPublicKey;
     return {
       'appEngineInstance': ?appEngineInstance,
+      'cloudRunResource': ?cloudRunResource,
       'computeInstance': ?computeInstance,
       'serviceAccount': ?serviceAccount,
       'sshPublicKey': ?sshPublicKey,

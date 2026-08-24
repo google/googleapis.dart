@@ -551,6 +551,46 @@ class AccountsProductsRegionalInventoriesResource {
   }
 }
 
+/// A message that represents custom attributes.
+///
+/// Exactly one of `value` or `group_values` must not be empty.
+class CustomAttribute {
+  /// Subattributes within this attribute group.
+  ///
+  /// If `group_values` is not empty, `value` must be empty.
+  core.List<CustomAttribute>? groupValues;
+
+  /// The name of the attribute.
+  core.String? name;
+
+  /// The value of the attribute.
+  ///
+  /// If `value` is not empty, `group_values` must be empty.
+  core.String? value;
+
+  CustomAttribute({this.groupValues, this.name, this.value});
+
+  CustomAttribute.fromJson(core.Map json_)
+    : this(
+        groupValues: (json_['groupValues'] as core.List?)
+            ?.map(
+              (value) => CustomAttribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final groupValues = this.groupValues;
+    final name = this.name;
+    final value = this.value;
+    return {'groupValues': ?groupValues, 'name': ?name, 'value': ?value};
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -869,12 +909,36 @@ class LocalInventoryAttributes {
   /// - "OUT_OF_STOCK" : Indicates that the product is out of stock.
   core.String? availability;
 
+  /// A list of custom (merchant-provided) attributes.
+  ///
+  /// It can also be used for submitting any attribute of the data specification
+  /// in its generic form (for example, `{ "name": "size type", "value":
+  /// "regular" }`). This is useful for submitting attributes not explicitly
+  /// exposed by the API. Maximum allowed number of characters for each custom
+  /// attribute is 10240 (represents sum of characters for name and value).
+  /// Maximum 2500 custom attributes can be set, with total size of 102.4kB.
+  /// Underscores in custom attribute names are replaced by spaces upon
+  /// insertion.
+  ///
+  /// Optional.
+  core.List<CustomAttribute>? customAttributes;
+
   /// Location of the product inside the store.
   ///
   /// Maximum length is 20 bytes.
   ///
   /// Optional.
   core.String? instoreProductLocation;
+
+  /// Specifies a label associated with the shipping for the `LocalInventory`
+  /// resource.
+  ///
+  /// Can be used to group local shipping services to this particular inventory
+  /// item. For accepted field format, see the
+  /// [Local delivery](https://support.google.com/merchants/answer/14819809#localdelivery)
+  ///
+  /// Optional.
+  core.String? localShippingLabel;
 
   /// An optional list of loyalty programs containing applicable loyalty member
   /// prices for this product at this store.
@@ -955,7 +1019,9 @@ class LocalInventoryAttributes {
 
   LocalInventoryAttributes({
     this.availability,
+    this.customAttributes,
     this.instoreProductLocation,
+    this.localShippingLabel,
     this.loyaltyPrograms,
     this.pickupMethod,
     this.pickupSla,
@@ -968,7 +1034,15 @@ class LocalInventoryAttributes {
   LocalInventoryAttributes.fromJson(core.Map json_)
     : this(
         availability: json_['availability'] as core.String?,
+        customAttributes: (json_['customAttributes'] as core.List?)
+            ?.map(
+              (value) => CustomAttribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         instoreProductLocation: json_['instoreProductLocation'] as core.String?,
+        localShippingLabel: json_['localShippingLabel'] as core.String?,
         loyaltyPrograms: (json_['loyaltyPrograms'] as core.List?)
             ?.map(
               (value) => InventoryLoyaltyProgram.fromJson(
@@ -999,7 +1073,9 @@ class LocalInventoryAttributes {
 
   core.Map<core.String, core.dynamic> toJson() {
     final availability = this.availability;
+    final customAttributes = this.customAttributes;
     final instoreProductLocation = this.instoreProductLocation;
+    final localShippingLabel = this.localShippingLabel;
     final loyaltyPrograms = this.loyaltyPrograms;
     final pickupMethod = this.pickupMethod;
     final pickupSla = this.pickupSla;
@@ -1009,7 +1085,9 @@ class LocalInventoryAttributes {
     final salePriceEffectiveDate = this.salePriceEffectiveDate;
     return {
       'availability': ?availability,
+      'customAttributes': ?customAttributes,
       'instoreProductLocation': ?instoreProductLocation,
+      'localShippingLabel': ?localShippingLabel,
       'loyaltyPrograms': ?loyaltyPrograms,
       'pickupMethod': ?pickupMethod,
       'pickupSla': ?pickupSla,

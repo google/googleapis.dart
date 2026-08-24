@@ -1125,6 +1125,7 @@ api.WebAppConfig buildWebAppConfig() {
     o.projectId = 'foo';
     o.projectNumber = 'foo';
     o.realtimeDatabaseUrl = 'foo';
+    o.recaptchaSiteKey = 'foo';
     o.storageBucket = 'foo';
     o.version = 'foo';
   }
@@ -1145,6 +1146,7 @@ void checkWebAppConfig(api.WebAppConfig o) {
     unittest.expect(o.projectId!, unittest.equals('foo'));
     unittest.expect(o.projectNumber!, unittest.equals('foo'));
     unittest.expect(o.realtimeDatabaseUrl!, unittest.equals('foo'));
+    unittest.expect(o.recaptchaSiteKey!, unittest.equals('foo'));
     unittest.expect(o.storageBucket!, unittest.equals('foo'));
     unittest.expect(o.version!, unittest.equals('foo'));
   }

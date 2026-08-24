@@ -184,7 +184,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -199,9 +199,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1547,11 +1546,11 @@ class ProjectsLocationsGoogleApiSourcesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/googleApiSources/\[^/\]+$`.
   ///
-  /// [allowMissing] - Optional. If set to true, and the MessageBus is not
+  /// [allowMissing] - Optional. If set to true, and the GoogleApiSource is not
   /// found, the request will succeed but no action will be taken on the server.
   ///
-  /// [etag] - Optional. If provided, the MessageBus will only be deleted if the
-  /// etag matches the current etag on the resource.
+  /// [etag] - Optional. If provided, the GoogleApiSource will only be deleted
+  /// if the etag matches the current etag on the resource.
   ///
   /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
@@ -3698,11 +3697,10 @@ class Binding {
   }
 }
 
-/// A representation of the Channel resource.
+/// Represents a subscriber's intent to receive events from an event provider.
 ///
-/// A Channel is a resource on which event providers publish their events. The
-/// published events are delivered through the transport associated with the
-/// channel. Note that a channel is associated with exactly one event provider.
+/// Published events are delivered using the transport associated with the
+/// Channel resource. A channel is associated with exactly one event provider.
 class Channel {
   /// The activation token for the channel.
   ///
@@ -4471,7 +4469,10 @@ class GKE {
   }
 }
 
-/// A GoogleApiSource represents a subscription of 1P events from a MessageBus.
+/// Represents a subscription to first-party events for a MessageBus resource.
+///
+/// A GoogleApiSource resource lets you configure the delivery of events from
+/// Google API sources to a designated bus.
 class GoogleApiSource {
   /// Resource annotations.
   ///
@@ -4638,12 +4639,12 @@ class GoogleApiSource {
   }
 }
 
-/// A GoogleChannelConfig is a resource that stores the custom settings
-/// respected by Eventarc first-party triggers in the matching region.
+/// Can be used to customize security settings for Eventarc first-party triggers
+/// in a specific region.
 ///
-/// Once configured, first-party event data will be protected using the
-/// specified custom managed encryption key instead of Google-managed encryption
-/// keys.
+/// Once the GoogleChannelConfig resource is configured, first-party event data
+/// is protected using the specified customer-managed encryption key instead of
+/// a Google-managed encryption key.
 class GoogleChannelConfig {
   /// Resource name of a KMS crypto key (managed by the user) used to
   /// encrypt/decrypt their event data.

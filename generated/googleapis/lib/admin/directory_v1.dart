@@ -5571,8 +5571,7 @@ class UsersResource {
   /// Create a guest user with access to a
   /// [subset of Workspace capabilities](https://support.google.com/a/answer/16558545).
   ///
-  /// This feature is currently in Alpha. Please reach out to support if you are
-  /// interested in trying this feature.
+  /// This feature is currently in Open Beta.
   ///
   /// [request] - The metadata request object.
   ///
@@ -9757,12 +9756,15 @@ class DirectoryChromeosdevicesIssueCommandResponse {
 class DirectoryUsersCreateGuestRequest {
   /// Immutable ID of the Google Workspace account.
   ///
+  /// Only required when request is created by a service account. Defaults to
+  /// the authenticated user's customer ID otherwise.
+  ///
   /// Optional.
   core.String? customer;
 
   /// External email of the guest user being created.
   ///
-  /// Immutable.
+  /// Required.
   core.String? primaryGuestEmail;
 
   DirectoryUsersCreateGuestRequest({this.customer, this.primaryGuestEmail});
@@ -9991,6 +9993,30 @@ class Domains2 {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// External identifier used to link and identify this group across external
+/// directory systems.
+class ExternalId {
+  /// The unique identifier string assigned by the external provider.
+  core.String? id;
+
+  /// The system or identity provider managing this ID.
+  core.String? namespace;
+
+  ExternalId({this.id, this.namespace});
+
+  ExternalId.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        namespace: json_['namespace'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final namespace = this.namespace;
+    return {'id': ?id, 'namespace': ?namespace};
+  }
+}
 
 /// Info about failures
 class FailureInfo {
@@ -10279,6 +10305,14 @@ class Group {
   /// ETag of the resource.
   core.String? etag;
 
+  /// The list of external IDs for the group, such as an immutable identifier
+  /// from an external identity provider or directory sync client.
+  ///
+  /// Each entry contains a namespace and an ID value.
+  ///
+  /// Optional.
+  core.List<ExternalId>? externalIds;
+
   /// Read-only.
   ///
   /// The unique ID of a group. A group `id` can be used as a group request
@@ -10309,6 +10343,7 @@ class Group {
     this.directMembersCount,
     this.email,
     this.etag,
+    this.externalIds,
     this.id,
     this.kind,
     this.name,
@@ -10325,6 +10360,13 @@ class Group {
         directMembersCount: json_['directMembersCount'] as core.String?,
         email: json_['email'] as core.String?,
         etag: json_['etag'] as core.String?,
+        externalIds: (json_['externalIds'] as core.List?)
+            ?.map(
+              (value) => ExternalId.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
@@ -10340,6 +10382,7 @@ class Group {
     final directMembersCount = this.directMembersCount;
     final email = this.email;
     final etag = this.etag;
+    final externalIds = this.externalIds;
     final id = this.id;
     final kind = this.kind;
     final name = this.name;
@@ -10351,6 +10394,7 @@ class Group {
       'directMembersCount': ?directMembersCount,
       'email': ?email,
       'etag': ?etag,
+      'externalIds': ?externalIds,
       'id': ?id,
       'kind': ?kind,
       'name': ?name,
@@ -12550,6 +12594,13 @@ class User {
   /// Output only.
   core.List<core.String>? aliases;
 
+  /// User's account archival time.
+  ///
+  /// (Read-only)
+  ///
+  /// Output only.
+  core.String? archivalTime;
+
   /// Indicates if user is archived.
   core.bool? archived;
 
@@ -12838,6 +12889,13 @@ class User {
   /// Output only.
   core.String? suspensionReason;
 
+  /// User's account suspension time.
+  ///
+  /// (Read-only)
+  ///
+  /// Output only.
+  core.String? suspensionTime;
+
   /// ETag of the user's photo (Read-only)
   ///
   /// Output only.
@@ -12862,6 +12920,7 @@ class User {
     this.addresses,
     this.agreedToTerms,
     this.aliases,
+    this.archivalTime,
     this.archived,
     this.changePasswordAtNextLogin,
     this.creationTime,
@@ -12904,6 +12963,7 @@ class User {
     this.sshPublicKeys,
     this.suspended,
     this.suspensionReason,
+    this.suspensionTime,
     this.thumbnailPhotoEtag,
     this.thumbnailPhotoUrl,
     this.websites,
@@ -12916,6 +12976,7 @@ class User {
         aliases: (json_['aliases'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        archivalTime: json_['archivalTime'] as core.String?,
         archived: json_['archived'] as core.bool?,
         changePasswordAtNextLogin:
             json_['changePasswordAtNextLogin'] as core.bool?,
@@ -12984,6 +13045,7 @@ class User {
         sshPublicKeys: json_['sshPublicKeys'],
         suspended: json_['suspended'] as core.bool?,
         suspensionReason: json_['suspensionReason'] as core.String?,
+        suspensionTime: json_['suspensionTime'] as core.String?,
         thumbnailPhotoEtag: json_['thumbnailPhotoEtag'] as core.String?,
         thumbnailPhotoUrl: json_['thumbnailPhotoUrl'] as core.String?,
         websites: json_['websites'],
@@ -12993,6 +13055,7 @@ class User {
     final addresses = this.addresses;
     final agreedToTerms = this.agreedToTerms;
     final aliases = this.aliases;
+    final archivalTime = this.archivalTime;
     final archived = this.archived;
     final changePasswordAtNextLogin = this.changePasswordAtNextLogin;
     final creationTime = this.creationTime;
@@ -13035,6 +13098,7 @@ class User {
     final sshPublicKeys = this.sshPublicKeys;
     final suspended = this.suspended;
     final suspensionReason = this.suspensionReason;
+    final suspensionTime = this.suspensionTime;
     final thumbnailPhotoEtag = this.thumbnailPhotoEtag;
     final thumbnailPhotoUrl = this.thumbnailPhotoUrl;
     final websites = this.websites;
@@ -13042,6 +13106,7 @@ class User {
       'addresses': ?addresses,
       'agreedToTerms': ?agreedToTerms,
       'aliases': ?aliases,
+      'archivalTime': ?archivalTime,
       'archived': ?archived,
       'changePasswordAtNextLogin': ?changePasswordAtNextLogin,
       'creationTime': ?creationTime?.toUtc().toIso8601String(),
@@ -13084,6 +13149,7 @@ class User {
       'sshPublicKeys': ?sshPublicKeys,
       'suspended': ?suspended,
       'suspensionReason': ?suspensionReason,
+      'suspensionTime': ?suspensionTime,
       'thumbnailPhotoEtag': ?thumbnailPhotoEtag,
       'thumbnailPhotoUrl': ?thumbnailPhotoUrl,
       'websites': ?websites,

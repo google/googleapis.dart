@@ -185,6 +185,7 @@ api.SignSshPublicKeyRequest buildSignSshPublicKeyRequest() {
   buildCounterSignSshPublicKeyRequest++;
   if (buildCounterSignSshPublicKeyRequest < 3) {
     o.appEngineInstance = 'foo';
+    o.cloudRunResource = 'foo';
     o.computeInstance = 'foo';
     o.serviceAccount = 'foo';
     o.sshPublicKey = 'foo';
@@ -197,6 +198,7 @@ void checkSignSshPublicKeyRequest(api.SignSshPublicKeyRequest o) {
   buildCounterSignSshPublicKeyRequest++;
   if (buildCounterSignSshPublicKeyRequest < 3) {
     unittest.expect(o.appEngineInstance!, unittest.equals('foo'));
+    unittest.expect(o.cloudRunResource!, unittest.equals('foo'));
     unittest.expect(o.computeInstance!, unittest.equals('foo'));
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     unittest.expect(o.sshPublicKey!, unittest.equals('foo'));

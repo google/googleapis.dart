@@ -416,6 +416,13 @@ class Auth {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? claims;
 
+  /// Identifies the client credential id used for authentication.
+  ///
+  /// credential_id is in the format of AUTH_METHOD:IDENTIFIER, e.g.
+  /// "serviceaccount:XXXXX, apikey:XXXXX" where the format of the IDENTIFIER
+  /// can vary for different AUTH_METHODs.
+  core.String? credentialId;
+
   /// Attributes of the OAuth token associated with the request.
   Oauth? oauth;
 
@@ -438,6 +445,7 @@ class Auth {
     this.accessLevels,
     this.audiences,
     this.claims,
+    this.credentialId,
     this.oauth,
     this.presenter,
     this.principal,
@@ -454,6 +462,7 @@ class Auth {
         claims: json_.containsKey('claims')
             ? json_['claims'] as core.Map<core.String, core.dynamic>
             : null,
+        credentialId: json_['credentialId'] as core.String?,
         oauth: json_.containsKey('oauth')
             ? Oauth.fromJson(
                 json_['oauth'] as core.Map<core.String, core.dynamic>,
@@ -467,6 +476,7 @@ class Auth {
     final accessLevels = this.accessLevels;
     final audiences = this.audiences;
     final claims = this.claims;
+    final credentialId = this.credentialId;
     final oauth = this.oauth;
     final presenter = this.presenter;
     final principal = this.principal;
@@ -474,6 +484,7 @@ class Auth {
       'accessLevels': ?accessLevels,
       'audiences': ?audiences,
       'claims': ?claims,
+      'credentialId': ?credentialId,
       'oauth': ?oauth,
       'presenter': ?presenter,
       'principal': ?principal,

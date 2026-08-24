@@ -198,6 +198,25 @@ void checkDataPart(api.DataPart o) {
   buildCounterDataPart--;
 }
 
+core.int buildCounterDriveOptions = 0;
+api.DriveOptions buildDriveOptions() {
+  final o = api.DriveOptions();
+  buildCounterDriveOptions++;
+  if (buildCounterDriveOptions < 3) {
+    o.includeDescendants = true;
+  }
+  buildCounterDriveOptions--;
+  return o;
+}
+
+void checkDriveOptions(api.DriveOptions o) {
+  buildCounterDriveOptions++;
+  if (buildCounterDriveOptions < 3) {
+    unittest.expect(o.includeDescendants!, unittest.isTrue);
+  }
+  buildCounterDriveOptions--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -778,6 +797,7 @@ api.Subscription buildSubscription() {
   if (buildCounterSubscription < 3) {
     o.authority = 'foo';
     o.createTime = 'foo';
+    o.driveOptions = buildDriveOptions();
     o.etag = 'foo';
     o.eventTypes = buildUnnamed17();
     o.expireTime = 'foo';
@@ -803,6 +823,7 @@ void checkSubscription(api.Subscription o) {
   if (buildCounterSubscription < 3) {
     unittest.expect(o.authority!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
+    checkDriveOptions(o.driveOptions!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     checkUnnamed17(o.eventTypes!);
     unittest.expect(o.expireTime!, unittest.equals('foo'));
@@ -1090,6 +1111,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkDataPart(od);
+    });
+  });
+
+  unittest.group('obj-schema-DriveOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDriveOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DriveOptions.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDriveOptions(od);
     });
   });
 

@@ -32,6 +32,40 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.List<api.CustomAttribute> buildUnnamed0() => [
+  buildCustomAttribute(),
+  buildCustomAttribute(),
+];
+
+void checkUnnamed0(core.List<api.CustomAttribute> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCustomAttribute(o[0]);
+  checkCustomAttribute(o[1]);
+}
+
+core.int buildCounterCustomAttribute = 0;
+api.CustomAttribute buildCustomAttribute() {
+  final o = api.CustomAttribute();
+  buildCounterCustomAttribute++;
+  if (buildCounterCustomAttribute < 3) {
+    o.groupValues = buildUnnamed0();
+    o.name = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterCustomAttribute--;
+  return o;
+}
+
+void checkCustomAttribute(api.CustomAttribute o) {
+  buildCounterCustomAttribute++;
+  if (buildCounterCustomAttribute < 3) {
+    checkUnnamed0(o.groupValues!);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals('foo'));
+  }
+  buildCounterCustomAttribute--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -99,12 +133,12 @@ void checkInventoryLoyaltyProgram(api.InventoryLoyaltyProgram o) {
   buildCounterInventoryLoyaltyProgram--;
 }
 
-core.List<api.LocalInventory> buildUnnamed0() => [
+core.List<api.LocalInventory> buildUnnamed1() => [
   buildLocalInventory(),
   buildLocalInventory(),
 ];
 
-void checkUnnamed0(core.List<api.LocalInventory> o) {
+void checkUnnamed1(core.List<api.LocalInventory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalInventory(o[0]);
   checkLocalInventory(o[1]);
@@ -115,7 +149,7 @@ api.ListLocalInventoriesResponse buildListLocalInventoriesResponse() {
   final o = api.ListLocalInventoriesResponse();
   buildCounterListLocalInventoriesResponse++;
   if (buildCounterListLocalInventoriesResponse < 3) {
-    o.localInventories = buildUnnamed0();
+    o.localInventories = buildUnnamed1();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocalInventoriesResponse--;
@@ -125,18 +159,18 @@ api.ListLocalInventoriesResponse buildListLocalInventoriesResponse() {
 void checkListLocalInventoriesResponse(api.ListLocalInventoriesResponse o) {
   buildCounterListLocalInventoriesResponse++;
   if (buildCounterListLocalInventoriesResponse < 3) {
-    checkUnnamed0(o.localInventories!);
+    checkUnnamed1(o.localInventories!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListLocalInventoriesResponse--;
 }
 
-core.List<api.RegionalInventory> buildUnnamed1() => [
+core.List<api.RegionalInventory> buildUnnamed2() => [
   buildRegionalInventory(),
   buildRegionalInventory(),
 ];
 
-void checkUnnamed1(core.List<api.RegionalInventory> o) {
+void checkUnnamed2(core.List<api.RegionalInventory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRegionalInventory(o[0]);
   checkRegionalInventory(o[1]);
@@ -148,7 +182,7 @@ api.ListRegionalInventoriesResponse buildListRegionalInventoriesResponse() {
   buildCounterListRegionalInventoriesResponse++;
   if (buildCounterListRegionalInventoriesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.regionalInventories = buildUnnamed1();
+    o.regionalInventories = buildUnnamed2();
   }
   buildCounterListRegionalInventoriesResponse--;
   return o;
@@ -160,7 +194,7 @@ void checkListRegionalInventoriesResponse(
   buildCounterListRegionalInventoriesResponse++;
   if (buildCounterListRegionalInventoriesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed1(o.regionalInventories!);
+    checkUnnamed2(o.regionalInventories!);
   }
   buildCounterListRegionalInventoriesResponse--;
 }
@@ -192,12 +226,23 @@ void checkLocalInventory(api.LocalInventory o) {
   buildCounterLocalInventory--;
 }
 
-core.List<api.InventoryLoyaltyProgram> buildUnnamed2() => [
+core.List<api.CustomAttribute> buildUnnamed3() => [
+  buildCustomAttribute(),
+  buildCustomAttribute(),
+];
+
+void checkUnnamed3(core.List<api.CustomAttribute> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCustomAttribute(o[0]);
+  checkCustomAttribute(o[1]);
+}
+
+core.List<api.InventoryLoyaltyProgram> buildUnnamed4() => [
   buildInventoryLoyaltyProgram(),
   buildInventoryLoyaltyProgram(),
 ];
 
-void checkUnnamed2(core.List<api.InventoryLoyaltyProgram> o) {
+void checkUnnamed4(core.List<api.InventoryLoyaltyProgram> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInventoryLoyaltyProgram(o[0]);
   checkInventoryLoyaltyProgram(o[1]);
@@ -209,8 +254,10 @@ api.LocalInventoryAttributes buildLocalInventoryAttributes() {
   buildCounterLocalInventoryAttributes++;
   if (buildCounterLocalInventoryAttributes < 3) {
     o.availability = 'foo';
+    o.customAttributes = buildUnnamed3();
     o.instoreProductLocation = 'foo';
-    o.loyaltyPrograms = buildUnnamed2();
+    o.localShippingLabel = 'foo';
+    o.loyaltyPrograms = buildUnnamed4();
     o.pickupMethod = 'foo';
     o.pickupSla = 'foo';
     o.price = buildPrice();
@@ -226,8 +273,10 @@ void checkLocalInventoryAttributes(api.LocalInventoryAttributes o) {
   buildCounterLocalInventoryAttributes++;
   if (buildCounterLocalInventoryAttributes < 3) {
     unittest.expect(o.availability!, unittest.equals('foo'));
+    checkUnnamed3(o.customAttributes!);
     unittest.expect(o.instoreProductLocation!, unittest.equals('foo'));
-    checkUnnamed2(o.loyaltyPrograms!);
+    unittest.expect(o.localShippingLabel!, unittest.equals('foo'));
+    checkUnnamed4(o.loyaltyPrograms!);
     unittest.expect(o.pickupMethod!, unittest.equals('foo'));
     unittest.expect(o.pickupSla!, unittest.equals('foo'));
     checkPrice(o.price!);
@@ -286,12 +335,12 @@ void checkRegionalInventory(api.RegionalInventory o) {
   buildCounterRegionalInventory--;
 }
 
-core.List<api.InventoryLoyaltyProgram> buildUnnamed3() => [
+core.List<api.InventoryLoyaltyProgram> buildUnnamed5() => [
   buildInventoryLoyaltyProgram(),
   buildInventoryLoyaltyProgram(),
 ];
 
-void checkUnnamed3(core.List<api.InventoryLoyaltyProgram> o) {
+void checkUnnamed5(core.List<api.InventoryLoyaltyProgram> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInventoryLoyaltyProgram(o[0]);
   checkInventoryLoyaltyProgram(o[1]);
@@ -303,7 +352,7 @@ api.RegionalInventoryAttributes buildRegionalInventoryAttributes() {
   buildCounterRegionalInventoryAttributes++;
   if (buildCounterRegionalInventoryAttributes < 3) {
     o.availability = 'foo';
-    o.loyaltyPrograms = buildUnnamed3();
+    o.loyaltyPrograms = buildUnnamed5();
     o.price = buildPrice();
     o.salePrice = buildPrice();
     o.salePriceEffectiveDate = buildInterval();
@@ -316,7 +365,7 @@ void checkRegionalInventoryAttributes(api.RegionalInventoryAttributes o) {
   buildCounterRegionalInventoryAttributes++;
   if (buildCounterRegionalInventoryAttributes < 3) {
     unittest.expect(o.availability!, unittest.equals('foo'));
-    checkUnnamed3(o.loyaltyPrograms!);
+    checkUnnamed5(o.loyaltyPrograms!);
     checkPrice(o.price!);
     checkPrice(o.salePrice!);
     checkInterval(o.salePriceEffectiveDate!);
@@ -325,6 +374,17 @@ void checkRegionalInventoryAttributes(api.RegionalInventoryAttributes o) {
 }
 
 void main() {
+  unittest.group('obj-schema-CustomAttribute', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCustomAttribute();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CustomAttribute.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCustomAttribute(od);
+    });
+  });
+
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();

@@ -3168,6 +3168,8 @@ api.RequestOptions buildRequestOptions() {
   final o = api.RequestOptions();
   buildCounterRequestOptions++;
   if (buildCounterRequestOptions < 3) {
+    o.clientDisplayLanguageCode = 'foo';
+    o.countryCode = 'foo';
     o.debugOptions = buildDebugOptions();
     o.languageCode = 'foo';
     o.searchApplicationId = 'foo';
@@ -3180,6 +3182,8 @@ api.RequestOptions buildRequestOptions() {
 void checkRequestOptions(api.RequestOptions o) {
   buildCounterRequestOptions++;
   if (buildCounterRequestOptions < 3) {
+    unittest.expect(o.clientDisplayLanguageCode!, unittest.equals('foo'));
+    unittest.expect(o.countryCode!, unittest.equals('foo'));
     checkDebugOptions(o.debugOptions!);
     unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.searchApplicationId!, unittest.equals('foo'));
@@ -7974,6 +7978,8 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudSearchApi(mock).query.sources;
       final arg_pageToken = 'foo';
+      final arg_requestOptions_clientDisplayLanguageCode = 'foo';
+      final arg_requestOptions_countryCode = 'foo';
       final arg_requestOptions_debugOptions_enableDebugging = true;
       final arg_requestOptions_languageCode = 'foo';
       final arg_requestOptions_searchApplicationId = 'foo';
@@ -8016,6 +8022,14 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(
+            queryMap['requestOptions.clientDisplayLanguageCode']!.first,
+            unittest.equals(arg_requestOptions_clientDisplayLanguageCode),
+          );
+          unittest.expect(
+            queryMap['requestOptions.countryCode']!.first,
+            unittest.equals(arg_requestOptions_countryCode),
+          );
+          unittest.expect(
             queryMap['requestOptions.debugOptions.enableDebugging']!.first,
             unittest.equals('$arg_requestOptions_debugOptions_enableDebugging'),
           );
@@ -8044,6 +8058,9 @@ void main() {
       );
       final response = await res.list(
         pageToken: arg_pageToken,
+        requestOptions_clientDisplayLanguageCode:
+            arg_requestOptions_clientDisplayLanguageCode,
+        requestOptions_countryCode: arg_requestOptions_countryCode,
         requestOptions_debugOptions_enableDebugging:
             arg_requestOptions_debugOptions_enableDebugging,
         requestOptions_languageCode: arg_requestOptions_languageCode,

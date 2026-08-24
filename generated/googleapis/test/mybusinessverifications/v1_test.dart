@@ -196,7 +196,6 @@ buildGenerateInstantVerificationTokenRequest() {
   final o = api.GenerateInstantVerificationTokenRequest();
   buildCounterGenerateInstantVerificationTokenRequest++;
   if (buildCounterGenerateInstantVerificationTokenRequest < 3) {
-    o.locationData = buildLocationData();
     o.locationId = 'foo';
   }
   buildCounterGenerateInstantVerificationTokenRequest--;
@@ -208,7 +207,6 @@ void checkGenerateInstantVerificationTokenRequest(
 ) {
   buildCounterGenerateInstantVerificationTokenRequest++;
   if (buildCounterGenerateInstantVerificationTokenRequest < 3) {
-    checkLocationData(o.locationData!);
     unittest.expect(o.locationId!, unittest.equals('foo'));
   }
   buildCounterGenerateInstantVerificationTokenRequest--;
@@ -268,27 +266,6 @@ void checkListVerificationsResponse(api.ListVerificationsResponse o) {
     checkUnnamed1(o.verifications!);
   }
   buildCounterListVerificationsResponse--;
-}
-
-core.int buildCounterLocationData = 0;
-api.LocationData buildLocationData() {
-  final o = api.LocationData();
-  buildCounterLocationData++;
-  if (buildCounterLocationData < 3) {
-    o.address = buildPostalAddress();
-    o.name = 'foo';
-  }
-  buildCounterLocationData--;
-  return o;
-}
-
-void checkLocationData(api.LocationData o) {
-  buildCounterLocationData++;
-  if (buildCounterLocationData < 3) {
-    checkPostalAddress(o.address!);
-    unittest.expect(o.name!, unittest.equals('foo'));
-  }
-  buildCounterLocationData--;
 }
 
 core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
@@ -676,17 +653,6 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkListVerificationsResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-LocationData', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildLocationData();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.LocationData.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
-      checkLocationData(od);
     });
   });
 

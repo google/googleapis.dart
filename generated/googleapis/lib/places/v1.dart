@@ -1362,16 +1362,8 @@ class GoogleMapsPlacesV1ContentBlock {
   }
 }
 
-/// Experimental: See
-/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-/// for more details.
-///
 /// Content that is contextual to the place query.
 class GoogleMapsPlacesV1ContextualContent {
-  /// Experimental: See
-  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-  /// for more details.
-  ///
   /// Justifications for the place.
   core.List<GoogleMapsPlacesV1ContextualContentJustification>? justifications;
 
@@ -1426,22 +1418,13 @@ class GoogleMapsPlacesV1ContextualContent {
   }
 }
 
-/// Experimental: See
-/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-/// for more details.
+/// Justifications for the place.
 ///
-/// Justifications for the place. Justifications answers the question of why a
-/// place could interest an end user.
+/// Justifications answers the question of why a place could interest an end
+/// user.
 class GoogleMapsPlacesV1ContextualContentJustification {
-  /// Experimental: See
-  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-  /// for more details.
   GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification?
   businessAvailabilityAttributesJustification;
-
-  /// Experimental: See
-  /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-  /// for more details.
   GoogleMapsPlacesV1ContextualContentJustificationReviewJustification?
   reviewJustification;
 
@@ -1479,12 +1462,9 @@ class GoogleMapsPlacesV1ContextualContentJustification {
   }
 }
 
-/// Experimental: See
-/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-/// for more details.
+/// BusinessAvailabilityAttributes justifications.
 ///
-/// BusinessAvailabilityAttributes justifications. This shows some attributes a
-/// business has that could interest an end user.
+/// This shows some attributes a business has that could interest an end user.
 class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification {
   /// If a place provides delivery.
   core.bool? delivery;
@@ -1517,14 +1497,11 @@ class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttrib
   }
 }
 
-/// Experimental: See
-/// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
-/// for more details.
+/// User review justifications.
 ///
-/// User review justifications. This highlights a section of the user review
-/// that would interest an end user. For instance, if the search query is
-/// "firewood pizza", the review justification highlights the text relevant to
-/// the search query.
+/// This highlights a section of the user review that would interest an end
+/// user. For instance, if the search query is "firewood pizza", the review
+/// justification highlights the text relevant to the search query.
 class GoogleMapsPlacesV1ContextualContentJustificationReviewJustification {
   GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText?
   highlightedText;
@@ -1988,11 +1965,15 @@ class GoogleMapsPlacesV1Place {
   /// Specifies if the business supports curbside pickup.
   core.bool? curbsidePickup;
 
-  /// The hours of operation for the next seven days (including today).
+  /// The hours of operation for the next seven days (including today)
+  /// incorporating any special opening hours.
   ///
   /// The time period starts at midnight on the date of the request and ends at
-  /// 11:59 pm six days later. This field includes the special_days subfield of
-  /// all hours, set for dates that have exceptional hours.
+  /// 11:59 pm six days later. If the actual opening hours are outside of this
+  /// range, the opening hours will be truncated. For example, if a place is
+  /// open from 10pm yesterday to 6am today, the opening hours will be truncated
+  /// to 12am today to 6am today. This field includes the special_days subfield
+  /// of all hours, set for dates that have exceptional hours.
   GoogleMapsPlacesV1PlaceOpeningHours? currentOpeningHours;
 
   /// Contains an array of entries for the next seven days including information
@@ -2025,6 +2006,9 @@ class GoogleMapsPlacesV1Place {
   /// language code for these if applicable. Summary text must be presented
   /// as-is and can not be modified or altered.
   GoogleTypeLocalizedText? editorialSummary;
+
+  /// Entrances for this destination.
+  core.List<GoogleMapsPlacesV1PlaceEntrance>? entrances;
 
   /// The summary of amenities near the EV charging station.
   GoogleMapsPlacesV1PlaceEvChargeAmenitySummary? evChargeAmenitySummary;
@@ -2113,6 +2097,9 @@ class GoogleMapsPlacesV1Place {
   /// A human-readable phone number for the place, in national format.
   core.String? nationalPhoneNumber;
 
+  /// Navigation points for this destination.
+  core.List<GoogleMapsPlacesV1PlaceNavigationPoint>? navigationPoints;
+
   /// A summary of points of interest near the place.
   GoogleMapsPlacesV1PlaceNeighborhoodSummary? neighborhoodSummary;
 
@@ -2189,7 +2176,8 @@ class GoogleMapsPlacesV1Place {
   /// A rating between 1.0 and 5.0, based on user reviews of this place.
   core.double? rating;
 
-  /// The regular hours of operation.
+  /// The regular hours are the hours of operation for a place on a typical
+  /// schedule.
   ///
   /// Note that if a place is always open (24 hours), the `close` field will not
   /// be set. Clients can rely on always open (24 hours) being represented as an
@@ -2271,6 +2259,9 @@ class GoogleMapsPlacesV1Place {
   /// For example "America/New_York".
   GoogleTypeTimeZone? timeZone;
 
+  /// The transit station information for the place.
+  GoogleMapsPlacesV1TransitStation? transitStation;
+
   /// A set of type tags for this result.
   ///
   /// For example, "political" and "locality". For the complete list of possible
@@ -2317,6 +2308,7 @@ class GoogleMapsPlacesV1Place {
     this.dineIn,
     this.displayName,
     this.editorialSummary,
+    this.entrances,
     this.evChargeAmenitySummary,
     this.evChargeOptions,
     this.formattedAddress,
@@ -2339,6 +2331,7 @@ class GoogleMapsPlacesV1Place {
     this.movedPlaceId,
     this.name,
     this.nationalPhoneNumber,
+    this.navigationPoints,
     this.neighborhoodSummary,
     this.openingDate,
     this.outdoorSeating,
@@ -2373,6 +2366,7 @@ class GoogleMapsPlacesV1Place {
     this.subDestinations,
     this.takeout,
     this.timeZone,
+    this.transitStation,
     this.types,
     this.userRatingCount,
     this.utcOffsetMinutes,
@@ -2451,6 +2445,13 @@ class GoogleMapsPlacesV1Place {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        entrances: (json_['entrances'] as core.List?)
+            ?.map(
+              (value) => GoogleMapsPlacesV1PlaceEntrance.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         evChargeAmenitySummary: json_.containsKey('evChargeAmenitySummary')
             ? GoogleMapsPlacesV1PlaceEvChargeAmenitySummary.fromJson(
                 json_['evChargeAmenitySummary']
@@ -2505,6 +2506,13 @@ class GoogleMapsPlacesV1Place {
         movedPlaceId: json_['movedPlaceId'] as core.String?,
         name: json_['name'] as core.String?,
         nationalPhoneNumber: json_['nationalPhoneNumber'] as core.String?,
+        navigationPoints: (json_['navigationPoints'] as core.List?)
+            ?.map(
+              (value) => GoogleMapsPlacesV1PlaceNavigationPoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         neighborhoodSummary: json_.containsKey('neighborhoodSummary')
             ? GoogleMapsPlacesV1PlaceNeighborhoodSummary.fromJson(
                 json_['neighborhoodSummary']
@@ -2611,6 +2619,11 @@ class GoogleMapsPlacesV1Place {
                 json_['timeZone'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        transitStation: json_.containsKey('transitStation')
+            ? GoogleMapsPlacesV1TransitStation.fromJson(
+                json_['transitStation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         types: (json_['types'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -2641,6 +2654,7 @@ class GoogleMapsPlacesV1Place {
     final dineIn = this.dineIn;
     final displayName = this.displayName;
     final editorialSummary = this.editorialSummary;
+    final entrances = this.entrances;
     final evChargeAmenitySummary = this.evChargeAmenitySummary;
     final evChargeOptions = this.evChargeOptions;
     final formattedAddress = this.formattedAddress;
@@ -2663,6 +2677,7 @@ class GoogleMapsPlacesV1Place {
     final movedPlaceId = this.movedPlaceId;
     final name = this.name;
     final nationalPhoneNumber = this.nationalPhoneNumber;
+    final navigationPoints = this.navigationPoints;
     final neighborhoodSummary = this.neighborhoodSummary;
     final openingDate = this.openingDate;
     final outdoorSeating = this.outdoorSeating;
@@ -2697,6 +2712,7 @@ class GoogleMapsPlacesV1Place {
     final subDestinations = this.subDestinations;
     final takeout = this.takeout;
     final timeZone = this.timeZone;
+    final transitStation = this.transitStation;
     final types = this.types;
     final userRatingCount = this.userRatingCount;
     final utcOffsetMinutes = this.utcOffsetMinutes;
@@ -2719,6 +2735,7 @@ class GoogleMapsPlacesV1Place {
       'dineIn': ?dineIn,
       'displayName': ?displayName,
       'editorialSummary': ?editorialSummary,
+      'entrances': ?entrances,
       'evChargeAmenitySummary': ?evChargeAmenitySummary,
       'evChargeOptions': ?evChargeOptions,
       'formattedAddress': ?formattedAddress,
@@ -2741,6 +2758,7 @@ class GoogleMapsPlacesV1Place {
       'movedPlaceId': ?movedPlaceId,
       'name': ?name,
       'nationalPhoneNumber': ?nationalPhoneNumber,
+      'navigationPoints': ?navigationPoints,
       'neighborhoodSummary': ?neighborhoodSummary,
       'openingDate': ?openingDate,
       'outdoorSeating': ?outdoorSeating,
@@ -2775,6 +2793,7 @@ class GoogleMapsPlacesV1Place {
       'subDestinations': ?subDestinations,
       'takeout': ?takeout,
       'timeZone': ?timeZone,
+      'transitStation': ?transitStation,
       'types': ?types,
       'userRatingCount': ?userRatingCount,
       'utcOffsetMinutes': ?utcOffsetMinutes,
@@ -3036,6 +3055,36 @@ class GoogleMapsPlacesV1PlaceContainingPlace {
   }
 }
 
+/// An entrance is a single latitude/longitude coordinate pair that defines the
+/// location of an entry and exit point for a place.
+class GoogleMapsPlacesV1PlaceEntrance {
+  /// The location of the entrance.
+  GoogleTypeLatLng? location;
+
+  /// A list of tags that describe the entrance.
+  core.List<core.String>? tags;
+
+  GoogleMapsPlacesV1PlaceEntrance({this.location, this.tags});
+
+  GoogleMapsPlacesV1PlaceEntrance.fromJson(core.Map json_)
+    : this(
+        location: json_.containsKey('location')
+            ? GoogleTypeLatLng.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final location = this.location;
+    final tags = this.tags;
+    return {'location': ?location, 'tags': ?tags};
+  }
+}
+
 /// The summary of amenities near the EV charging station.
 ///
 /// This only applies to places with type `electric_vehicle_charging_station`.
@@ -3218,6 +3267,76 @@ class GoogleMapsPlacesV1PlaceGoogleMapsLinks {
       'placeUri': ?placeUri,
       'reviewsUri': ?reviewsUri,
       'writeAReviewUri': ?writeAReviewUri,
+    };
+  }
+}
+
+/// A navigation point is a location next to a road where navigation can end.
+class GoogleMapsPlacesV1PlaceNavigationPoint {
+  /// The display name of this navigation point.
+  ///
+  /// For example, "5th Ave" or "Gate B".
+  GoogleTypeLocalizedText? displayName;
+
+  /// A point next to the road segment where navigation should end.
+  ///
+  /// The point is intentionally slightly offset from the road's centerline to
+  /// clearly mark the side of the road where the place is located.
+  GoogleTypeLatLng? location;
+
+  /// A token that can be used to identify this navigation point.
+  core.String? navigationPointToken;
+
+  /// Travel modes that are appropriate for this navigation point.
+  core.List<core.String>? travelModes;
+
+  /// Lists `usages` supported by this navigation point.
+  ///
+  /// If empty, it does not necessarily mean its usage is restricted in any way.
+  /// All navigation points can be used for general navigation.
+  core.List<core.String>? usages;
+
+  GoogleMapsPlacesV1PlaceNavigationPoint({
+    this.displayName,
+    this.location,
+    this.navigationPointToken,
+    this.travelModes,
+    this.usages,
+  });
+
+  GoogleMapsPlacesV1PlaceNavigationPoint.fromJson(core.Map json_)
+    : this(
+        displayName: json_.containsKey('displayName')
+            ? GoogleTypeLocalizedText.fromJson(
+                json_['displayName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        location: json_.containsKey('location')
+            ? GoogleTypeLatLng.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        navigationPointToken: json_['navigationPointToken'] as core.String?,
+        travelModes: (json_['travelModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        usages: (json_['usages'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final location = this.location;
+    final navigationPointToken = this.navigationPointToken;
+    final travelModes = this.travelModes;
+    final usages = this.usages;
+    return {
+      'displayName': ?displayName,
+      'location': ?location,
+      'navigationPointToken': ?navigationPointToken,
+      'travelModes': ?travelModes,
+      'usages': ?usages,
     };
   }
 }
@@ -4913,6 +5032,379 @@ class GoogleMapsPlacesV1SearchTextResponse {
       'places': ?places,
       'routingSummaries': ?routingSummaries,
       'searchUri': ?searchUri,
+    };
+  }
+}
+
+/// Represents a transit agency.
+class GoogleMapsPlacesV1TransitAgency {
+  /// Agency name (e.g. "VTA") in the requested language.
+  GoogleTypeLocalizedText? displayName;
+
+  /// The URL of the agency's fare details page.
+  core.String? fareUrl;
+
+  /// Icon identifier for localized branded icon of a transit system (e.g.
+  /// London Underground) which should be used instead of
+  /// TransitLine.vehicle_icon in the UI.
+  GoogleMapsPlacesV1TransitIcon? icon;
+
+  /// The transit lines that are served by this agency.
+  core.List<GoogleMapsPlacesV1TransitLine>? lines;
+
+  /// The URL of the agency's homepage.
+  core.String? url;
+
+  GoogleMapsPlacesV1TransitAgency({
+    this.displayName,
+    this.fareUrl,
+    this.icon,
+    this.lines,
+    this.url,
+  });
+
+  GoogleMapsPlacesV1TransitAgency.fromJson(core.Map json_)
+    : this(
+        displayName: json_.containsKey('displayName')
+            ? GoogleTypeLocalizedText.fromJson(
+                json_['displayName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fareUrl: json_['fareUrl'] as core.String?,
+        icon: json_.containsKey('icon')
+            ? GoogleMapsPlacesV1TransitIcon.fromJson(
+                json_['icon'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lines: (json_['lines'] as core.List?)
+            ?.map(
+              (value) => GoogleMapsPlacesV1TransitLine.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final fareUrl = this.fareUrl;
+    final icon = this.icon;
+    final lines = this.lines;
+    final url = this.url;
+    return {
+      'displayName': ?displayName,
+      'fareUrl': ?fareUrl,
+      'icon': ?icon,
+      'lines': ?lines,
+      'url': ?url,
+    };
+  }
+}
+
+/// Icon for a transit line, vehicle, or agency.
+class GoogleMapsPlacesV1TransitIcon {
+  /// Whether the name is contained in the icon and there is no need to display
+  /// it next to the icon.
+  core.bool? nameIncluded;
+
+  /// The URL of the icon.
+  core.String? url;
+
+  GoogleMapsPlacesV1TransitIcon({this.nameIncluded, this.url});
+
+  GoogleMapsPlacesV1TransitIcon.fromJson(core.Map json_)
+    : this(
+        nameIncluded: json_['nameIncluded'] as core.bool?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nameIncluded = this.nameIncluded;
+    final url = this.url;
+    return {'nameIncluded': ?nameIncluded, 'url': ?url};
+  }
+}
+
+/// Represents a single transit line.
+class GoogleMapsPlacesV1TransitLine {
+  /// The background color of the labels for this transit line in #RRGGBB hex
+  /// format, e.g. #909CE1.
+  ///
+  /// This color can also be used for drawing shapes for this transit line.
+  core.String? backgroundColor;
+
+  /// The long name for this transit line (e.g. "Sunnydale local").
+  GoogleTypeLocalizedText? displayName;
+
+  /// Icon identifier for this particular line (e.g. subway lines in New York).
+  GoogleMapsPlacesV1TransitIcon? icon;
+
+  /// The id of the transit line that can be used to uniquely identify the line
+  /// among other transit lines in the same transit station.
+  ///
+  /// This identifier is not guaranteed to be stable across different responses.
+  core.String? id;
+
+  /// The short name for this transit line (e.g. "S2").
+  GoogleTypeLocalizedText? shortDisplayName;
+
+  /// The text color of labels for this transit line in #RRGGBB hex format, e.g.
+  /// #909CE1.
+  core.String? textColor;
+
+  /// The URL of a webpage with details about this line.
+  core.String? url;
+
+  /// Icon identifier for this particular vehicle type.
+  GoogleMapsPlacesV1TransitIcon? vehicleIcon;
+
+  /// The type of vehicle using this line.
+  /// Possible string values are:
+  /// - "VEHICLE_TYPE_UNSPECIFIED" : Default value when vehicle type is not
+  /// specified.
+  /// - "RAIL" : Rail.
+  /// - "METRO_RAIL" : Metro rail.
+  /// - "SUBWAY" : Subway.
+  /// - "TRAM" : Tram.
+  /// - "MONORAIL" : Monorail.
+  /// - "HEAVY_RAIL" : Heavy rail.
+  /// - "COMMUTER_TRAIN" : Commuter train.
+  /// - "HIGH_SPEED_TRAIN" : High speed train.
+  /// - "LONG_DISTANCE_TRAIN" : Long distance train.
+  /// - "BUS" : Bus.
+  /// - "INTERCITY_BUS" : Intercity bus.
+  /// - "TROLLEYBUS" : Trolleybus.
+  /// - "SHARE_TAXI" : Share taxi.
+  /// - "COACH" : Coach.
+  /// - "FERRY" : Ferry.
+  /// - "CABLE_CAR" : Cable car.
+  /// - "GONDOLA_LIFT" : Gondola lift.
+  /// - "FUNICULAR" : Funicular.
+  /// - "SPECIAL" : Special.
+  /// - "HORSE_CARRIAGE" : Horse carriage.
+  /// - "AIRPLANE" : Airplane.
+  core.String? vehicleType;
+
+  GoogleMapsPlacesV1TransitLine({
+    this.backgroundColor,
+    this.displayName,
+    this.icon,
+    this.id,
+    this.shortDisplayName,
+    this.textColor,
+    this.url,
+    this.vehicleIcon,
+    this.vehicleType,
+  });
+
+  GoogleMapsPlacesV1TransitLine.fromJson(core.Map json_)
+    : this(
+        backgroundColor: json_['backgroundColor'] as core.String?,
+        displayName: json_.containsKey('displayName')
+            ? GoogleTypeLocalizedText.fromJson(
+                json_['displayName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        icon: json_.containsKey('icon')
+            ? GoogleMapsPlacesV1TransitIcon.fromJson(
+                json_['icon'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        id: json_['id'] as core.String?,
+        shortDisplayName: json_.containsKey('shortDisplayName')
+            ? GoogleTypeLocalizedText.fromJson(
+                json_['shortDisplayName']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textColor: json_['textColor'] as core.String?,
+        url: json_['url'] as core.String?,
+        vehicleIcon: json_.containsKey('vehicleIcon')
+            ? GoogleMapsPlacesV1TransitIcon.fromJson(
+                json_['vehicleIcon'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vehicleType: json_['vehicleType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backgroundColor = this.backgroundColor;
+    final displayName = this.displayName;
+    final icon = this.icon;
+    final id = this.id;
+    final shortDisplayName = this.shortDisplayName;
+    final textColor = this.textColor;
+    final url = this.url;
+    final vehicleIcon = this.vehicleIcon;
+    final vehicleType = this.vehicleType;
+    return {
+      'backgroundColor': ?backgroundColor,
+      'displayName': ?displayName,
+      'icon': ?icon,
+      'id': ?id,
+      'shortDisplayName': ?shortDisplayName,
+      'textColor': ?textColor,
+      'url': ?url,
+      'vehicleIcon': ?vehicleIcon,
+      'vehicleType': ?vehicleType,
+    };
+  }
+}
+
+/// Represents transit-specific information for a place.
+class GoogleMapsPlacesV1TransitStation {
+  /// The transit agencies that serve this station.
+  core.List<GoogleMapsPlacesV1TransitAgency>? agencies;
+
+  /// The name of the station in the local language.
+  GoogleTypeLocalizedText? displayName;
+
+  /// Transit stops at this station.
+  core.List<GoogleMapsPlacesV1TransitStop>? stops;
+
+  GoogleMapsPlacesV1TransitStation({
+    this.agencies,
+    this.displayName,
+    this.stops,
+  });
+
+  GoogleMapsPlacesV1TransitStation.fromJson(core.Map json_)
+    : this(
+        agencies: (json_['agencies'] as core.List?)
+            ?.map(
+              (value) => GoogleMapsPlacesV1TransitAgency.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        displayName: json_.containsKey('displayName')
+            ? GoogleTypeLocalizedText.fromJson(
+                json_['displayName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stops: (json_['stops'] as core.List?)
+            ?.map(
+              (value) => GoogleMapsPlacesV1TransitStop.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agencies = this.agencies;
+    final displayName = this.displayName;
+    final stops = this.stops;
+    return {
+      'agencies': ?agencies,
+      'displayName': ?displayName,
+      'stops': ?stops,
+    };
+  }
+}
+
+/// Represents a transit stop within a station.
+///
+/// This is a specific location where passengers board and alight transit
+/// vehicles, such as a platform or bus bay. This is distinct from a
+/// `Departure`, which is an event of a vehicle leaving a stop at a specific
+/// time.
+class GoogleMapsPlacesV1TransitStop {
+  /// The name of the stop.
+  GoogleTypeLocalizedText? displayName;
+
+  /// The id of the transit stop that can be used to uniquely identify the stop
+  /// among other transit stops in the same transit station.
+  ///
+  /// This identifier is not guaranteed to be stable across different responses.
+  core.String? id;
+
+  /// The stop's location.
+  GoogleTypeLatLng? location;
+
+  /// The platform code represented by this stop.
+  ///
+  /// It can be formatted in any way. (eg: "2", "Platform 2", "2-4", or "1x").
+  GoogleTypeLocalizedText? platformCode;
+
+  /// The verbatim text written on the signboard for this platform, e.g.
+  /// "Towards Central" or "East side & Brooklyn".
+  ///
+  /// When `platform_code` is absent, this field is potentially the only
+  /// identifier for the platform; however, both `platform_code` and
+  /// `signage_text` may be set simultaneously.
+  GoogleTypeLocalizedText? signageText;
+
+  /// Human readable identifier of the stop, used by transit agencies to
+  /// distinguish stops with the same name.
+  GoogleTypeLocalizedText? stopCode;
+
+  /// Wheelchair accessibility of this stop.
+  ///
+  /// This field indicates whether there is an accessible path from outside the
+  /// station to the stop. It does not indicate whether it is possible to board
+  /// a vehicle from the stop.
+  core.bool? wheelchairAccessibleEntrance;
+
+  GoogleMapsPlacesV1TransitStop({
+    this.displayName,
+    this.id,
+    this.location,
+    this.platformCode,
+    this.signageText,
+    this.stopCode,
+    this.wheelchairAccessibleEntrance,
+  });
+
+  GoogleMapsPlacesV1TransitStop.fromJson(core.Map json_)
+    : this(
+        displayName: json_.containsKey('displayName')
+            ? GoogleTypeLocalizedText.fromJson(
+                json_['displayName'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        id: json_['id'] as core.String?,
+        location: json_.containsKey('location')
+            ? GoogleTypeLatLng.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        platformCode: json_.containsKey('platformCode')
+            ? GoogleTypeLocalizedText.fromJson(
+                json_['platformCode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        signageText: json_.containsKey('signageText')
+            ? GoogleTypeLocalizedText.fromJson(
+                json_['signageText'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stopCode: json_.containsKey('stopCode')
+            ? GoogleTypeLocalizedText.fromJson(
+                json_['stopCode'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wheelchairAccessibleEntrance:
+            json_['wheelchairAccessibleEntrance'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final id = this.id;
+    final location = this.location;
+    final platformCode = this.platformCode;
+    final signageText = this.signageText;
+    final stopCode = this.stopCode;
+    final wheelchairAccessibleEntrance = this.wheelchairAccessibleEntrance;
+    return {
+      'displayName': ?displayName,
+      'id': ?id,
+      'location': ?location,
+      'platformCode': ?platformCode,
+      'signageText': ?signageText,
+      'stopCode': ?stopCode,
+      'wheelchairAccessibleEntrance': ?wheelchairAccessibleEntrance,
     };
   }
 }

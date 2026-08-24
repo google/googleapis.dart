@@ -676,6 +676,9 @@ class AccountsContainersDestinationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Destination> get(
     core.String path, {
     core.String? $fields,
@@ -720,6 +723,9 @@ class AccountsContainersDestinationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Destination> link(
     core.String parent, {
     core.bool? allowUserPermissionFeatureUpdate,
@@ -8837,6 +8843,8 @@ class VariableFormatValue {
   /// period as the decimal separator.
   /// - "comma" : The option to convert a variable value to a number with a
   /// comma as the decimal separator.
+  /// - "automatic" : The option to convert a variable value to a number with
+  /// automatic decimal separator detection.
   core.String? convertToNumber;
 
   /// The value to convert if a variable value is true.

@@ -79,6 +79,11 @@
         },
         {
             "description": "Locational Endpoint",
+            "endpointUrl": "https://asia-southeast4-run.googleapis.com/",
+            "location": "asia-southeast4"
+        },
+        {
+            "description": "Locational Endpoint",
             "endpointUrl": "https://australia-southeast1-run.googleapis.com/",
             "location": "australia-southeast1"
         },
@@ -314,6 +319,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://run.asia-southeast4.rep.googleapis.com/",
+            "location": "asia-southeast4"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://run.australia-southeast1.rep.googleapis.com/",
             "location": "australia-southeast1"
         },
@@ -503,7 +513,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260403",
+    "revision": "20260814",
     "rootUrl": "https://run.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Run Admin API",
@@ -750,6 +760,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
+                                            "description": "Required. The location and project in which this Instance should be created.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -774,7 +785,7 @@
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Deletes a Instance",
+                                    "description": "Deletes an Instance",
                                     "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
                                     "httpMethod": "DELETE",
                                     "id": "run.projects.locations.instances.delete",
@@ -788,6 +799,7 @@
                                             "type": "string"
                                         },
                                         "name": {
+                                            "description": "Required. The name of the Instance to delete.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                                             "required": true,
@@ -809,7 +821,7 @@
                                     ]
                                 },
                                 "get": {
-                                    "description": "Gets a Instance",
+                                    "description": "Gets an Instance",
                                     "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
                                     "httpMethod": "GET",
                                     "id": "run.projects.locations.instances.get",
@@ -818,6 +830,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
+                                            "description": "Required. The name of the Instance to retrieve.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                                             "required": true,
@@ -827,6 +840,39 @@
                                     "path": "v2/{+name}",
                                     "response": {
                                         "$ref": "GoogleCloudRunV2Instance"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/run",
+                                        "https://www.googleapis.com/auth/run.readonly"
+                                    ]
+                                },
+                                "getIamPolicy": {
+                                    "description": "Gets the IAM Access Control policy currently in effect for the given Instance. This result does not include any inherited policies.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:getIamPolicy",
+                                    "httpMethod": "GET",
+                                    "id": "run.projects.locations.instances.getIamPolicy",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "options.requestedPolicyVersion": {
+                                            "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+resource}:getIamPolicy",
+                                    "response": {
+                                        "$ref": "GoogleIamV1Policy"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
@@ -855,7 +901,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. The location and project to list resources on. Format: projects/{project}/locations/{location}, where {project} can be project id or number.",
+                                            "description": "Required. The location and project to list resources on.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -887,12 +933,12 @@
                                     ],
                                     "parameters": {
                                         "allowMissing": {
-                                            "description": "Optional. If set to true, and if the Instance does not exist, it will create a new one. The caller must have 'run.instances.create' permissions if this is set to true and the Instance does not exist.",
+                                            "description": "Optional. If set to `true`, and if the Instance does not exist, it will create a new one. The caller must have `run.instances.create` permissions if this is set to `true` and the Instance does not exist.",
                                             "location": "query",
                                             "type": "boolean"
                                         },
                                         "name": {
-                                            "description": "The fully qualified name of this Instance. In CreateInstanceRequest, this field is ignored, and instead composed from CreateInstanceRequest.parent and CreateInstanceRequest.instance_id. Format: projects/{project}/locations/{location}/instances/{instance_id}",
+                                            "description": "The fully qualified name of this Instance. In `CreateInstanceRequest`, this field is ignored, and instead composed from `CreateInstanceRequest.parent` and `CreateInstanceRequest.instance_id`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                                             "required": true,
@@ -922,6 +968,35 @@
                                         "https://www.googleapis.com/auth/run"
                                     ]
                                 },
+                                "setIamPolicy": {
+                                    "description": "Sets the IAM Access control policy for the specified Instance. Overwrites any existing policy.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:setIamPolicy",
+                                    "httpMethod": "POST",
+                                    "id": "run.projects.locations.instances.setIamPolicy",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+resource}:setIamPolicy",
+                                    "request": {
+                                        "$ref": "GoogleIamV1SetIamPolicyRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleIamV1Policy"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/run"
+                                    ]
+                                },
                                 "start": {
                                     "description": "Starts an Instance.",
                                     "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:start",
@@ -932,7 +1007,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The name of the Instance to stop. Format: `projects/{project}/locations/{location}/instances/{instance}`, where `{project}` can be project id or number.",
+                                            "description": "Required. The name of the Instance to start.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                                             "required": true,
@@ -961,7 +1036,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Required. The name of the Instance to stop. Format: `projects/{project}/locations/{location}/instances/{instance}`, where `{project}` can be project id or number.",
+                                            "description": "Required. The name of the Instance to stop.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                                             "required": true,
@@ -978,6 +1053,36 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/run"
+                                    ]
+                                },
+                                "testIamPermissions": {
+                                    "description": "Returns permissions that a caller has on the specified Project. There are no permissions required for making this API call.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:testIamPermissions",
+                                    "httpMethod": "POST",
+                                    "id": "run.projects.locations.instances.testIamPermissions",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+resource}:testIamPermissions",
+                                    "request": {
+                                        "$ref": "GoogleIamV1TestIamPermissionsRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleIamV1TestIamPermissionsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/run",
+                                        "https://www.googleapis.com/auth/run.readonly"
                                     ]
                                 }
                             }
@@ -2114,6 +2219,56 @@
                                 }
                             }
                         },
+                        "sourceUploads": {
+                            "methods": {
+                                "upload": {
+                                    "description": "Uploads a source archive to a Google Cloud Storage bucket through Cloud Run. The uploaded source object should be used for Cloud Run resource deployments. User is responsible for managing the lifecycle of the uploaded object. If uploading through the Cloud Run API to Cloud Storage is not desired, you can use the IAM Deny Policy to deny the `run.locations.uploadSource` permission for all principals.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}:uploadSource",
+                                    "httpMethod": "POST",
+                                    "id": "run.projects.locations.sourceUploads.upload",
+                                    "mediaUpload": {
+                                        "accept": [
+                                            "*/*"
+                                        ],
+                                        "maxSize": "262144000",
+                                        "protocols": {
+                                            "resumable": {
+                                                "multipart": true,
+                                                "path": "/resumable/upload/v2/{+parent}:uploadSource"
+                                            },
+                                            "simple": {
+                                                "multipart": true,
+                                                "path": "/upload/v2/{+parent}:uploadSource"
+                                            }
+                                        }
+                                    },
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The project and location in which the source archive should be uploaded to, specified in the format `projects/*/locations/*`.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}:uploadSource",
+                                    "request": {
+                                        "$ref": "GoogleCloudRunV2UploadSourceRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudRunV2UploadSourceResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/run"
+                                    ],
+                                    "supportsMediaUpload": true
+                                }
+                            }
+                        },
                         "workerPools": {
                             "methods": {
                                 "create": {
@@ -2707,7 +2862,8 @@
                         "CANCELLED",
                         "CANCELLING",
                         "DELETED",
-                        "DELAYED_START_PENDING"
+                        "DELAYED_START_PENDING",
+                        "DELAYED_EXECUTION_EXCEEDING_DURATION_LIMIT"
                     ],
                     "enumDescriptions": [
                         "Default value.",
@@ -2716,7 +2872,27 @@
                         "The execution was cancelled by users.",
                         "The execution is in the process of being cancelled.",
                         "The execution was deleted.",
-                        "A delayed execution is waiting for a start time."
+                        "A delayed execution is waiting for a start time.",
+                        "A delayed execution exceeded the maximum runtime duration."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "instanceReason": {
+                    "description": "Output only. A reason for the instance condition.",
+                    "enum": [
+                        "INSTANCE_REASON_UNSPECIFIED",
+                        "INSTANCE_DELETED",
+                        "INSTANCE_STOPPED",
+                        "INSTANCE_STOPPING",
+                        "INSTANCE_NON_ZERO_EXIT_CODE"
+                    ],
+                    "enumDescriptions": [
+                        "Default value.",
+                        "Instance deleted.",
+                        "Instance stopped.",
+                        "Instance stopping.",
+                        "Instance exited with a non-zero exit code."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2914,6 +3090,10 @@
                 "resources": {
                     "$ref": "GoogleCloudRunV2ResourceRequirements",
                     "description": "Compute Resource requirements by this container."
+                },
+                "sandboxLauncher": {
+                    "description": "Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.",
+                    "type": "boolean"
                 },
                 "sourceCode": {
                     "$ref": "GoogleCloudRunV2SourceCode",
@@ -3323,6 +3503,10 @@
                     "description": "Optional. Arbitrary version identifier for the API client.",
                     "type": "string"
                 },
+                "delayExecution": {
+                    "description": "Optional. If true, the system will start the execution within the next 12 hours depending on available capacity.",
+                    "type": "boolean"
+                },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
@@ -3582,6 +3766,10 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "defaultUriDisabled": {
+                    "description": "Optional. Disables public resolution of the default URI of this Instance.",
+                    "type": "boolean"
+                },
                 "deleteTime": {
                     "description": "Output only. The deletion time.",
                     "format": "google-datetime",
@@ -3611,7 +3799,7 @@
                     "type": "string"
                 },
                 "encryptionKeyShutdownDuration": {
-                    "description": "If encryption_key_revocation_action is SHUTDOWN, the duration before shutting down all instances. The minimum increment is 1 hour.",
+                    "description": "If `encryption_key_revocation_action` is `SHUTDOWN`, the duration before shutting down all instances. The minimum increment is 1 hour.",
                     "format": "google-duration",
                     "type": "string"
                 },
@@ -3626,7 +3814,7 @@
                     "type": "string"
                 },
                 "generation": {
-                    "description": "Output only. A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.",
+                    "description": "Output only. A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an `int64` value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.",
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
@@ -3640,7 +3828,7 @@
                     "type": "boolean"
                 },
                 "ingress": {
-                    "description": "Optional. Provides the ingress settings for this Instance. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.",
+                    "description": "Optional. Provides the ingress settings for this Instance. On output, returns the currently observed ingress settings, or `INGRESS_TRAFFIC_UNSPECIFIED` if no revision is active.",
                     "enum": [
                         "INGRESS_TRAFFIC_UNSPECIFIED",
                         "INGRESS_TRAFFIC_ALL",
@@ -3658,7 +3846,7 @@
                     "type": "string"
                 },
                 "invokerIamDisabled": {
-                    "description": "Optional. Disables IAM permission check for run.routes.invoke for callers of this Instance. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.",
+                    "description": "Optional. Disables IAM permission check for `run.routes.invoke` for callers of this Instance. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.",
                     "type": "boolean"
                 },
                 "labels": {
@@ -3673,7 +3861,7 @@
                     "type": "string"
                 },
                 "launchStage": {
-                    "description": "The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.",
+                    "description": "The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, `GA` is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if `ALPHA` is provided as input, but only `BETA` and `GA`-level features are used, this field will be `BETA` on output.",
                     "enum": [
                         "LAUNCH_STAGE_UNSPECIFIED",
                         "UNIMPLEMENTED",
@@ -3702,7 +3890,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The fully qualified name of this Instance. In CreateInstanceRequest, this field is ignored, and instead composed from CreateInstanceRequest.parent and CreateInstanceRequest.instance_id. Format: projects/{project}/locations/{location}/instances/{instance_id}",
+                    "description": "The fully qualified name of this Instance. In `CreateInstanceRequest`, this field is ignored, and instead composed from `CreateInstanceRequest.parent` and `CreateInstanceRequest.instance_id`.",
                     "type": "string"
                 },
                 "nodeSelector": {
@@ -3710,15 +3898,31 @@
                     "description": "Optional. The node selector for the instance."
                 },
                 "observedGeneration": {
-                    "description": "Output only. The generation of this Instance currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.",
+                    "description": "Output only. The generation of this Instance currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an `int64` value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.",
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
                 },
                 "reconciling": {
-                    "description": "Output only. Returns true if the Instance is currently being acted upon by the system to bring it into the desired state. When a new Instance is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Instance to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation` will have a transient value that might mismatch the intended state. Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Instance, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`.",
+                    "description": "Output only. Returns `true` if the Instance is currently being acted upon by the system to bring it into the desired state. When a new Instance is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Instance to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation` will have a transient value that might mismatch the intended state. Once reconciliation is over (and this field is `false`), there are two possible outcomes: reconciliation succeeded and the serving state matches the Instance, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`.",
                     "readOnly": true,
                     "type": "boolean"
+                },
+                "restartPolicy": {
+                    "description": "Optional. Restart policy for the Instance.",
+                    "enum": [
+                        "RESTART_POLICY_UNSPECIFIED",
+                        "ALWAYS",
+                        "ON_FAILURE",
+                        "NEVER"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified restart policy.",
+                        "Always restart the instance.",
+                        "Restart if the instance terminates with non-zero exit code.",
+                        "Never restart the instance."
+                    ],
+                    "type": "string"
                 },
                 "satisfiesPzs": {
                     "description": "Output only. Reserved for future use.",
@@ -3732,11 +3936,6 @@
                     "$ref": "GoogleCloudRunV2Condition",
                     "description": "Output only. The Condition of this Instance, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.",
                     "readOnly": true
-                },
-                "timeout": {
-                    "description": "Optional. Duration the instance may be active before the system will shut it down.",
-                    "format": "google-duration",
-                    "type": "string"
                 },
                 "uid": {
                     "description": "Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.",
@@ -4219,6 +4418,10 @@
                     },
                     "type": "array"
                 },
+                "delayExecution": {
+                    "description": "Optional. If true, the system will start the execution within the next 12 hours depending on available capacity.",
+                    "type": "boolean"
+                },
                 "taskCount": {
                     "description": "Optional. The desired number of tasks the execution should run. Will replace existing task_count value.",
                     "format": "int32",
@@ -4539,7 +4742,7 @@
                     "type": "number"
                 },
                 "cpuUtilization": {
-                    "description": "Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.",
+                    "description": "Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between `0.1` and `0.90` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.",
                     "format": "float",
                     "type": "number"
                 },
@@ -4818,6 +5021,10 @@
                     "description": "User-provided description of the Service. This field currently has a 512-character limit.",
                     "type": "string"
                 },
+                "durableExecution": {
+                    "description": "Optional. Immutable. Indicates whether the Service has durable execution enabled. This field is immutable once the Service is created.",
+                    "type": "boolean"
+                },
                 "etag": {
                     "description": "Optional. A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.",
                     "type": "string"
@@ -4933,6 +5140,10 @@
                 "scaling": {
                     "$ref": "GoogleCloudRunV2ServiceScaling",
                     "description": "Optional. Specifies service-level scaling settings"
+                },
+                "sshEnabled": {
+                    "description": "Optional. Enables SSH access to the Service.",
+                    "type": "boolean"
                 },
                 "template": {
                     "$ref": "GoogleCloudRunV2RevisionTemplate",
@@ -5579,6 +5790,28 @@
                 "uri": {
                     "description": "Displays the target URI.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRunV2UploadSourceRequest": {
+            "description": "The request message for the UploadSource method.",
+            "id": "GoogleCloudRunV2UploadSourceRequest",
+            "properties": {
+                "service": {
+                    "description": "The name of Cloud Run Service upload source archive will be used for.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRunV2UploadSourceResponse": {
+            "description": "The response message for the UploadSource method.",
+            "id": "GoogleCloudRunV2UploadSourceResponse",
+            "properties": {
+                "cloudStorageSource": {
+                    "$ref": "GoogleCloudRunV2CloudStorageSource",
+                    "description": "The Cloud Storage object path the source archive is uploaded to."
                 }
             },
             "type": "object"
@@ -6449,12 +6682,14 @@
                         "N1_HIGHCPU_32",
                         "E2_HIGHCPU_8",
                         "E2_HIGHCPU_32",
-                        "E2_MEDIUM"
+                        "E2_MEDIUM",
+                        "E2_STANDARD_2"
                     ],
                     "enumDeprecated": [
                         false,
                         true,
                         true,
+                        false,
                         false,
                         false,
                         false
@@ -6465,7 +6700,8 @@
                         "Highcpu machine with 32 CPUs.",
                         "Highcpu e2 machine with 8 CPUs.",
                         "Highcpu e2 machine with 32 CPUs.",
-                        "E2 machine with 1 CPU."
+                        "E2 machine with 1 CPU.",
+                        "E2 machine with 2 CPUs."
                     ],
                     "type": "string"
                 },
@@ -6607,6 +6843,13 @@
                     "description": "Output only. Stores timing information for pulling this build step's builder image only.",
                     "readOnly": true
                 },
+                "results": {
+                    "description": "Declaration of results for this build step.",
+                    "items": {
+                        "$ref": "GoogleDevtoolsCloudbuildV1StepResult"
+                    },
+                    "type": "array"
+                },
                 "script": {
                     "description": "A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.",
                     "type": "string"
@@ -6670,6 +6913,20 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleDevtoolsCloudbuildV1BuildStepResults": {
+            "description": "Results for a build step.",
+            "id": "GoogleDevtoolsCloudbuildV1BuildStepResults",
+            "properties": {
+                "results": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Results for a build step.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -6890,6 +7147,10 @@
                 "destPath": {
                     "description": "Required. Where should the files be placed on the worker.",
                     "type": "string"
+                },
+                "fetchTags": {
+                    "description": "Optional. True if remote tags should be fetched too (default false). Note: when depth is 1 (default), git fetch only retrieves tags pointing to commits within the shallow boundary. Set depth to -1 to fetch all historical tags.",
+                    "type": "boolean"
                 },
                 "recurseSubmodules": {
                     "description": "Optional. True if submodules should be fetched too (default false).",
@@ -7180,6 +7441,13 @@
                     },
                     "type": "array"
                 },
+                "buildStepResults": {
+                    "additionalProperties": {
+                        "$ref": "GoogleDevtoolsCloudbuildV1BuildStepResults"
+                    },
+                    "description": "Results for build steps. step_id -> ",
+                    "type": "object"
+                },
                 "genericArtifacts": {
                     "description": "Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.",
                     "items": {
@@ -7350,6 +7618,25 @@
                 "resolvedStorageSourceManifest": {
                     "$ref": "GoogleDevtoolsCloudbuildV1StorageSourceManifest",
                     "description": "A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleDevtoolsCloudbuildV1StepResult": {
+            "description": "StepResult is the declaration of a result for a build step.",
+            "id": "GoogleDevtoolsCloudbuildV1StepResult",
+            "properties": {
+                "attestationContent": {
+                    "description": "Optional. The content of the attestation to be generated.",
+                    "type": "string"
+                },
+                "attestationType": {
+                    "description": "Optional. The type of attestation to be generated.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. The name of the result.",
+                    "type": "string"
                 }
             },
             "type": "object"

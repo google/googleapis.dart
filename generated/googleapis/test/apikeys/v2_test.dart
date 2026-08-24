@@ -846,6 +846,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ApiKeysServiceApi(mock).projects.locations.keys;
       final arg_name = 'foo';
+      final arg_checkExistingUsage = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -881,6 +882,10 @@ void main() {
               );
             }
           }
+          unittest.expect(
+            queryMap['checkExistingUsage']!.first,
+            unittest.equals(arg_checkExistingUsage),
+          );
           unittest.expect(queryMap['etag']!.first, unittest.equals(arg_etag));
           unittest.expect(
             queryMap['fields']!.first,
@@ -895,6 +900,7 @@ void main() {
       );
       final response = await res.delete(
         arg_name,
+        checkExistingUsage: arg_checkExistingUsage,
         etag: arg_etag,
         $fields: arg_$fields,
       );
@@ -1086,6 +1092,7 @@ void main() {
       final res = api.ApiKeysServiceApi(mock).projects.locations.keys;
       final arg_request = buildV2Key();
       final arg_name = 'foo';
+      final arg_checkExistingUsage = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -1127,6 +1134,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['checkExistingUsage']!.first,
+            unittest.equals(arg_checkExistingUsage),
+          );
+          unittest.expect(
             queryMap['updateMask']!.first,
             unittest.equals(arg_updateMask),
           );
@@ -1144,6 +1155,7 @@ void main() {
       final response = await res.patch(
         arg_request,
         arg_name,
+        checkExistingUsage: arg_checkExistingUsage,
         updateMask: arg_updateMask,
         $fields: arg_$fields,
       );

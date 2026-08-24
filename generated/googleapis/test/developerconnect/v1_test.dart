@@ -164,6 +164,14 @@ void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
+
+void checkUnnamed3(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterArtifactDeployment = 0;
 api.ArtifactDeployment buildArtifactDeployment() {
   final o = api.ArtifactDeployment();
@@ -174,7 +182,8 @@ api.ArtifactDeployment buildArtifactDeployment() {
     o.containerStatusSummary = 'foo';
     o.deployTime = 'foo';
     o.id = 'foo';
-    o.sourceCommitUris = buildUnnamed2();
+    o.sourceCodeUris = buildUnnamed2();
+    o.sourceCommitUris = buildUnnamed3();
     o.undeployTime = 'foo';
   }
   buildCounterArtifactDeployment--;
@@ -189,7 +198,8 @@ void checkArtifactDeployment(api.ArtifactDeployment o) {
     unittest.expect(o.containerStatusSummary!, unittest.equals('foo'));
     unittest.expect(o.deployTime!, unittest.equals('foo'));
     unittest.expect(o.id!, unittest.equals('foo'));
-    checkUnnamed2(o.sourceCommitUris!);
+    checkUnnamed2(o.sourceCodeUris!);
+    checkUnnamed3(o.sourceCommitUris!);
     unittest.expect(o.undeployTime!, unittest.equals('foo'));
   }
   buildCounterArtifactDeployment--;
@@ -306,17 +316,17 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed3() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed4() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed3(core.Map<core.String, core.String> o) {
+void checkUnnamed4(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed4() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed5() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed4(core.Map<core.String, core.String> o) {
+void checkUnnamed5(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -327,7 +337,7 @@ api.Connection buildConnection() {
   final o = api.Connection();
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
-    o.annotations = buildUnnamed3();
+    o.annotations = buildUnnamed4();
     o.bitbucketCloudConfig = buildBitbucketCloudConfig();
     o.bitbucketDataCenterConfig = buildBitbucketDataCenterConfig();
     o.createTime = 'foo';
@@ -342,7 +352,7 @@ api.Connection buildConnection() {
     o.gitlabEnterpriseConfig = buildGitLabEnterpriseConfig();
     o.httpConfig = buildGenericHTTPEndpointConfig();
     o.installationState = buildInstallationState();
-    o.labels = buildUnnamed4();
+    o.labels = buildUnnamed5();
     o.name = 'foo';
     o.reconciling = true;
     o.secureSourceManagerInstanceConfig =
@@ -357,7 +367,7 @@ api.Connection buildConnection() {
 void checkConnection(api.Connection o) {
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
-    checkUnnamed3(o.annotations!);
+    checkUnnamed4(o.annotations!);
     checkBitbucketCloudConfig(o.bitbucketCloudConfig!);
     checkBitbucketDataCenterConfig(o.bitbucketDataCenterConfig!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
@@ -372,7 +382,7 @@ void checkConnection(api.Connection o) {
     checkGitLabEnterpriseConfig(o.gitlabEnterpriseConfig!);
     checkGenericHTTPEndpointConfig(o.httpConfig!);
     checkInstallationState(o.installationState!);
-    checkUnnamed4(o.labels!);
+    checkUnnamed5(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
     checkSecureSourceManagerInstanceConfig(
@@ -403,9 +413,9 @@ void checkCryptoKeyConfig(api.CryptoKeyConfig o) {
   buildCounterCryptoKeyConfig--;
 }
 
-core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
 
-void checkUnnamed5(core.List<core.String> o) {
+void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -422,7 +432,7 @@ api.CustomOAuthConfig buildCustomOAuthConfig() {
     o.hostUri = 'foo';
     o.pkceDisabled = true;
     o.scmProvider = 'foo';
-    o.scopes = buildUnnamed5();
+    o.scopes = buildUnnamed6();
     o.serverVersion = 'foo';
     o.serviceDirectoryConfig = buildServiceDirectoryConfig();
     o.sslCaCertificate = 'foo';
@@ -441,7 +451,7 @@ void checkCustomOAuthConfig(api.CustomOAuthConfig o) {
     unittest.expect(o.hostUri!, unittest.equals('foo'));
     unittest.expect(o.pkceDisabled!, unittest.isTrue);
     unittest.expect(o.scmProvider!, unittest.equals('foo'));
-    checkUnnamed5(o.scopes!);
+    checkUnnamed6(o.scopes!);
     unittest.expect(o.serverVersion!, unittest.equals('foo'));
     checkServiceDirectoryConfig(o.serviceDirectoryConfig!);
     unittest.expect(o.sslCaCertificate!, unittest.equals('foo'));
@@ -450,12 +460,12 @@ void checkCustomOAuthConfig(api.CustomOAuthConfig o) {
   buildCounterCustomOAuthConfig--;
 }
 
-core.List<api.ArtifactDeployment> buildUnnamed6() => [
+core.List<api.ArtifactDeployment> buildUnnamed7() => [
   buildArtifactDeployment(),
   buildArtifactDeployment(),
 ];
 
-void checkUnnamed6(core.List<api.ArtifactDeployment> o) {
+void checkUnnamed7(core.List<api.ArtifactDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkArtifactDeployment(o[0]);
   checkArtifactDeployment(o[1]);
@@ -466,7 +476,7 @@ api.DeploymentEvent buildDeploymentEvent() {
   final o = api.DeploymentEvent();
   buildCounterDeploymentEvent++;
   if (buildCounterDeploymentEvent < 3) {
-    o.artifactDeployments = buildUnnamed6();
+    o.artifactDeployments = buildUnnamed7();
     o.createTime = 'foo';
     o.deployTime = 'foo';
     o.name = 'foo';
@@ -483,7 +493,7 @@ api.DeploymentEvent buildDeploymentEvent() {
 void checkDeploymentEvent(api.DeploymentEvent o) {
   buildCounterDeploymentEvent++;
   if (buildCounterDeploymentEvent < 3) {
-    checkUnnamed6(o.artifactDeployments!);
+    checkUnnamed7(o.artifactDeployments!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.deployTime!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -547,9 +557,9 @@ void checkFetchAccessTokenRequest(api.FetchAccessTokenRequest o) {
   buildCounterFetchAccessTokenRequest--;
 }
 
-core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed8() => ['foo', 'foo'];
 
-void checkUnnamed7(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -562,7 +572,7 @@ api.FetchAccessTokenResponse buildFetchAccessTokenResponse() {
   if (buildCounterFetchAccessTokenResponse < 3) {
     o.exchangeError = buildExchangeError();
     o.expirationTime = 'foo';
-    o.scopes = buildUnnamed7();
+    o.scopes = buildUnnamed8();
     o.token = 'foo';
   }
   buildCounterFetchAccessTokenResponse--;
@@ -574,18 +584,18 @@ void checkFetchAccessTokenResponse(api.FetchAccessTokenResponse o) {
   if (buildCounterFetchAccessTokenResponse < 3) {
     checkExchangeError(o.exchangeError!);
     unittest.expect(o.expirationTime!, unittest.equals('foo'));
-    checkUnnamed7(o.scopes!);
+    checkUnnamed8(o.scopes!);
     unittest.expect(o.token!, unittest.equals('foo'));
   }
   buildCounterFetchAccessTokenResponse--;
 }
 
-core.List<api.Installation> buildUnnamed8() => [
+core.List<api.Installation> buildUnnamed9() => [
   buildInstallation(),
   buildInstallation(),
 ];
 
-void checkUnnamed8(core.List<api.Installation> o) {
+void checkUnnamed9(core.List<api.Installation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstallation(o[0]);
   checkInstallation(o[1]);
@@ -596,7 +606,7 @@ api.FetchGitHubInstallationsResponse buildFetchGitHubInstallationsResponse() {
   final o = api.FetchGitHubInstallationsResponse();
   buildCounterFetchGitHubInstallationsResponse++;
   if (buildCounterFetchGitHubInstallationsResponse < 3) {
-    o.installations = buildUnnamed8();
+    o.installations = buildUnnamed9();
   }
   buildCounterFetchGitHubInstallationsResponse--;
   return o;
@@ -607,14 +617,14 @@ void checkFetchGitHubInstallationsResponse(
 ) {
   buildCounterFetchGitHubInstallationsResponse++;
   if (buildCounterFetchGitHubInstallationsResponse < 3) {
-    checkUnnamed8(o.installations!);
+    checkUnnamed9(o.installations!);
   }
   buildCounterFetchGitHubInstallationsResponse--;
 }
 
-core.List<core.String> buildUnnamed9() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed10() => ['foo', 'foo'];
 
-void checkUnnamed9(core.List<core.String> o) {
+void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -626,7 +636,7 @@ api.FetchGitRefsResponse buildFetchGitRefsResponse() {
   buildCounterFetchGitRefsResponse++;
   if (buildCounterFetchGitRefsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.refNames = buildUnnamed9();
+    o.refNames = buildUnnamed10();
   }
   buildCounterFetchGitRefsResponse--;
   return o;
@@ -636,17 +646,17 @@ void checkFetchGitRefsResponse(api.FetchGitRefsResponse o) {
   buildCounterFetchGitRefsResponse++;
   if (buildCounterFetchGitRefsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed9(o.refNames!);
+    checkUnnamed10(o.refNames!);
   }
   buildCounterFetchGitRefsResponse--;
 }
 
-core.List<api.LinkableGitRepository> buildUnnamed10() => [
+core.List<api.LinkableGitRepository> buildUnnamed11() => [
   buildLinkableGitRepository(),
   buildLinkableGitRepository(),
 ];
 
-void checkUnnamed10(core.List<api.LinkableGitRepository> o) {
+void checkUnnamed11(core.List<api.LinkableGitRepository> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLinkableGitRepository(o[0]);
   checkLinkableGitRepository(o[1]);
@@ -658,7 +668,7 @@ buildFetchLinkableGitRepositoriesResponse() {
   final o = api.FetchLinkableGitRepositoriesResponse();
   buildCounterFetchLinkableGitRepositoriesResponse++;
   if (buildCounterFetchLinkableGitRepositoriesResponse < 3) {
-    o.linkableGitRepositories = buildUnnamed10();
+    o.linkableGitRepositories = buildUnnamed11();
     o.nextPageToken = 'foo';
   }
   buildCounterFetchLinkableGitRepositoriesResponse--;
@@ -670,7 +680,7 @@ void checkFetchLinkableGitRepositoriesResponse(
 ) {
   buildCounterFetchLinkableGitRepositoriesResponse++;
   if (buildCounterFetchLinkableGitRepositoriesResponse < 3) {
-    checkUnnamed10(o.linkableGitRepositories!);
+    checkUnnamed11(o.linkableGitRepositories!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterFetchLinkableGitRepositoriesResponse--;
@@ -752,12 +762,12 @@ void checkFetchReadWriteTokenResponse(api.FetchReadWriteTokenResponse o) {
   buildCounterFetchReadWriteTokenResponse--;
 }
 
-core.List<api.UserRepository> buildUnnamed11() => [
+core.List<api.UserRepository> buildUnnamed12() => [
   buildUserRepository(),
   buildUserRepository(),
 ];
 
-void checkUnnamed11(core.List<api.UserRepository> o) {
+void checkUnnamed12(core.List<api.UserRepository> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserRepository(o[0]);
   checkUserRepository(o[1]);
@@ -769,7 +779,7 @@ api.FetchUserRepositoriesResponse buildFetchUserRepositoriesResponse() {
   buildCounterFetchUserRepositoriesResponse++;
   if (buildCounterFetchUserRepositoriesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.userRepos = buildUnnamed11();
+    o.userRepos = buildUnnamed12();
   }
   buildCounterFetchUserRepositoriesResponse--;
   return o;
@@ -779,7 +789,7 @@ void checkFetchUserRepositoriesResponse(api.FetchUserRepositoriesResponse o) {
   buildCounterFetchUserRepositoriesResponse++;
   if (buildCounterFetchUserRepositoriesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed11(o.userRepos!);
+    checkUnnamed12(o.userRepos!);
   }
   buildCounterFetchUserRepositoriesResponse--;
 }
@@ -990,17 +1000,17 @@ void checkGitProxyConfig(api.GitProxyConfig o) {
   buildCounterGitProxyConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed12() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed13() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed12(core.Map<core.String, core.String> o) {
+void checkUnnamed13(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed13() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed14() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed13(core.Map<core.String, core.String> o) {
+void checkUnnamed14(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -1011,13 +1021,13 @@ api.GitRepositoryLink buildGitRepositoryLink() {
   final o = api.GitRepositoryLink();
   buildCounterGitRepositoryLink++;
   if (buildCounterGitRepositoryLink < 3) {
-    o.annotations = buildUnnamed12();
+    o.annotations = buildUnnamed13();
     o.cloneUri = 'foo';
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.etag = 'foo';
     o.gitProxyUri = 'foo';
-    o.labels = buildUnnamed13();
+    o.labels = buildUnnamed14();
     o.name = 'foo';
     o.reconciling = true;
     o.uid = 'foo';
@@ -1031,13 +1041,13 @@ api.GitRepositoryLink buildGitRepositoryLink() {
 void checkGitRepositoryLink(api.GitRepositoryLink o) {
   buildCounterGitRepositoryLink++;
   if (buildCounterGitRepositoryLink < 3) {
-    checkUnnamed12(o.annotations!);
+    checkUnnamed13(o.annotations!);
     unittest.expect(o.cloneUri!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.gitProxyUri!, unittest.equals('foo'));
-    checkUnnamed13(o.labels!);
+    checkUnnamed14(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.uid!, unittest.equals('foo'));
@@ -1106,7 +1116,7 @@ void checkGoogleCloudRun(api.GoogleCloudRun o) {
   buildCounterGoogleCloudRun--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed14() => {
+core.Map<core.String, core.Object?> buildUnnamed15() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1119,7 +1129,7 @@ core.Map<core.String, core.Object?> buildUnnamed14() => {
   },
 };
 
-void checkUnnamed14(core.Map<core.String, core.Object?> o) {
+void checkUnnamed15(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1133,15 +1143,15 @@ void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed15() => [
-  buildUnnamed14(),
-  buildUnnamed14(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed16() => [
+  buildUnnamed15(),
+  buildUnnamed15(),
 ];
 
-void checkUnnamed15(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed16(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed14(o[0]);
-  checkUnnamed14(o[1]);
+  checkUnnamed15(o[0]);
+  checkUnnamed15(o[1]);
 }
 
 core.int buildCounterHttpBody = 0;
@@ -1151,7 +1161,7 @@ api.HttpBody buildHttpBody() {
   if (buildCounterHttpBody < 3) {
     o.contentType = 'foo';
     o.data = 'foo';
-    o.extensions = buildUnnamed15();
+    o.extensions = buildUnnamed16();
   }
   buildCounterHttpBody--;
   return o;
@@ -1162,52 +1172,52 @@ void checkHttpBody(api.HttpBody o) {
   if (buildCounterHttpBody < 3) {
     unittest.expect(o.contentType!, unittest.equals('foo'));
     unittest.expect(o.data!, unittest.equals('foo'));
-    checkUnnamed15(o.extensions!);
+    checkUnnamed16(o.extensions!);
   }
   buildCounterHttpBody--;
 }
 
-core.Map<core.String, core.String> buildUnnamed16() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed17() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed16(core.Map<core.String, core.String> o) {
+void checkUnnamed17(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.ArtifactConfig> buildUnnamed17() => [
+core.List<api.ArtifactConfig> buildUnnamed18() => [
   buildArtifactConfig(),
   buildArtifactConfig(),
 ];
 
-void checkUnnamed17(core.List<api.ArtifactConfig> o) {
+void checkUnnamed18(core.List<api.ArtifactConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkArtifactConfig(o[0]);
   checkArtifactConfig(o[1]);
 }
 
-core.List<api.Status> buildUnnamed18() => [buildStatus(), buildStatus()];
+core.List<api.Status> buildUnnamed19() => [buildStatus(), buildStatus()];
 
-void checkUnnamed18(core.List<api.Status> o) {
+void checkUnnamed19(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatus(o[0]);
   checkStatus(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed19() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed20() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed19(core.Map<core.String, core.String> o) {
+void checkUnnamed20(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.RuntimeConfig> buildUnnamed20() => [
+core.List<api.RuntimeConfig> buildUnnamed21() => [
   buildRuntimeConfig(),
   buildRuntimeConfig(),
 ];
 
-void checkUnnamed20(core.List<api.RuntimeConfig> o) {
+void checkUnnamed21(core.List<api.RuntimeConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRuntimeConfig(o[0]);
   checkRuntimeConfig(o[1]);
@@ -1218,16 +1228,16 @@ api.InsightsConfig buildInsightsConfig() {
   final o = api.InsightsConfig();
   buildCounterInsightsConfig++;
   if (buildCounterInsightsConfig < 3) {
-    o.annotations = buildUnnamed16();
+    o.annotations = buildUnnamed17();
     o.appHubApplication = 'foo';
-    o.artifactConfigs = buildUnnamed17();
+    o.artifactConfigs = buildUnnamed18();
     o.createTime = 'foo';
-    o.errors = buildUnnamed18();
-    o.labels = buildUnnamed19();
+    o.errors = buildUnnamed19();
+    o.labels = buildUnnamed20();
     o.name = 'foo';
     o.projects = buildProjects();
     o.reconciling = true;
-    o.runtimeConfigs = buildUnnamed20();
+    o.runtimeConfigs = buildUnnamed21();
     o.state = 'foo';
     o.updateTime = 'foo';
   }
@@ -1238,16 +1248,16 @@ api.InsightsConfig buildInsightsConfig() {
 void checkInsightsConfig(api.InsightsConfig o) {
   buildCounterInsightsConfig++;
   if (buildCounterInsightsConfig < 3) {
-    checkUnnamed16(o.annotations!);
+    checkUnnamed17(o.annotations!);
     unittest.expect(o.appHubApplication!, unittest.equals('foo'));
-    checkUnnamed17(o.artifactConfigs!);
+    checkUnnamed18(o.artifactConfigs!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
-    checkUnnamed18(o.errors!);
-    checkUnnamed19(o.labels!);
+    checkUnnamed19(o.errors!);
+    checkUnnamed20(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkProjects(o.projects!);
     unittest.expect(o.reconciling!, unittest.isTrue);
-    checkUnnamed20(o.runtimeConfigs!);
+    checkUnnamed21(o.runtimeConfigs!);
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
@@ -1319,20 +1329,20 @@ void checkLinkableGitRepository(api.LinkableGitRepository o) {
   buildCounterLinkableGitRepository--;
 }
 
-core.List<api.AccountConnector> buildUnnamed21() => [
+core.List<api.AccountConnector> buildUnnamed22() => [
   buildAccountConnector(),
   buildAccountConnector(),
 ];
 
-void checkUnnamed21(core.List<api.AccountConnector> o) {
+void checkUnnamed22(core.List<api.AccountConnector> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccountConnector(o[0]);
   checkAccountConnector(o[1]);
 }
 
-core.List<core.String> buildUnnamed22() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed23() => ['foo', 'foo'];
 
-void checkUnnamed22(core.List<core.String> o) {
+void checkUnnamed23(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1343,9 +1353,9 @@ api.ListAccountConnectorsResponse buildListAccountConnectorsResponse() {
   final o = api.ListAccountConnectorsResponse();
   buildCounterListAccountConnectorsResponse++;
   if (buildCounterListAccountConnectorsResponse < 3) {
-    o.accountConnectors = buildUnnamed21();
+    o.accountConnectors = buildUnnamed22();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed22();
+    o.unreachable = buildUnnamed23();
   }
   buildCounterListAccountConnectorsResponse--;
   return o;
@@ -1354,27 +1364,27 @@ api.ListAccountConnectorsResponse buildListAccountConnectorsResponse() {
 void checkListAccountConnectorsResponse(api.ListAccountConnectorsResponse o) {
   buildCounterListAccountConnectorsResponse++;
   if (buildCounterListAccountConnectorsResponse < 3) {
-    checkUnnamed21(o.accountConnectors!);
+    checkUnnamed22(o.accountConnectors!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed22(o.unreachable!);
+    checkUnnamed23(o.unreachable!);
   }
   buildCounterListAccountConnectorsResponse--;
 }
 
-core.List<api.Connection> buildUnnamed23() => [
+core.List<api.Connection> buildUnnamed24() => [
   buildConnection(),
   buildConnection(),
 ];
 
-void checkUnnamed23(core.List<api.Connection> o) {
+void checkUnnamed24(core.List<api.Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnection(o[0]);
   checkConnection(o[1]);
 }
 
-core.List<core.String> buildUnnamed24() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed25() => ['foo', 'foo'];
 
-void checkUnnamed24(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1385,9 +1395,9 @@ api.ListConnectionsResponse buildListConnectionsResponse() {
   final o = api.ListConnectionsResponse();
   buildCounterListConnectionsResponse++;
   if (buildCounterListConnectionsResponse < 3) {
-    o.connections = buildUnnamed23();
+    o.connections = buildUnnamed24();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed24();
+    o.unreachable = buildUnnamed25();
   }
   buildCounterListConnectionsResponse--;
   return o;
@@ -1396,19 +1406,19 @@ api.ListConnectionsResponse buildListConnectionsResponse() {
 void checkListConnectionsResponse(api.ListConnectionsResponse o) {
   buildCounterListConnectionsResponse++;
   if (buildCounterListConnectionsResponse < 3) {
-    checkUnnamed23(o.connections!);
+    checkUnnamed24(o.connections!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed24(o.unreachable!);
+    checkUnnamed25(o.unreachable!);
   }
   buildCounterListConnectionsResponse--;
 }
 
-core.List<api.DeploymentEvent> buildUnnamed25() => [
+core.List<api.DeploymentEvent> buildUnnamed26() => [
   buildDeploymentEvent(),
   buildDeploymentEvent(),
 ];
 
-void checkUnnamed25(core.List<api.DeploymentEvent> o) {
+void checkUnnamed26(core.List<api.DeploymentEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeploymentEvent(o[0]);
   checkDeploymentEvent(o[1]);
@@ -1419,7 +1429,7 @@ api.ListDeploymentEventsResponse buildListDeploymentEventsResponse() {
   final o = api.ListDeploymentEventsResponse();
   buildCounterListDeploymentEventsResponse++;
   if (buildCounterListDeploymentEventsResponse < 3) {
-    o.deploymentEvents = buildUnnamed25();
+    o.deploymentEvents = buildUnnamed26();
     o.nextPageToken = 'foo';
   }
   buildCounterListDeploymentEventsResponse--;
@@ -1429,26 +1439,26 @@ api.ListDeploymentEventsResponse buildListDeploymentEventsResponse() {
 void checkListDeploymentEventsResponse(api.ListDeploymentEventsResponse o) {
   buildCounterListDeploymentEventsResponse++;
   if (buildCounterListDeploymentEventsResponse < 3) {
-    checkUnnamed25(o.deploymentEvents!);
+    checkUnnamed26(o.deploymentEvents!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListDeploymentEventsResponse--;
 }
 
-core.List<api.GitRepositoryLink> buildUnnamed26() => [
+core.List<api.GitRepositoryLink> buildUnnamed27() => [
   buildGitRepositoryLink(),
   buildGitRepositoryLink(),
 ];
 
-void checkUnnamed26(core.List<api.GitRepositoryLink> o) {
+void checkUnnamed27(core.List<api.GitRepositoryLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGitRepositoryLink(o[0]);
   checkGitRepositoryLink(o[1]);
 }
 
-core.List<core.String> buildUnnamed27() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed28() => ['foo', 'foo'];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed28(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1459,9 +1469,9 @@ api.ListGitRepositoryLinksResponse buildListGitRepositoryLinksResponse() {
   final o = api.ListGitRepositoryLinksResponse();
   buildCounterListGitRepositoryLinksResponse++;
   if (buildCounterListGitRepositoryLinksResponse < 3) {
-    o.gitRepositoryLinks = buildUnnamed26();
+    o.gitRepositoryLinks = buildUnnamed27();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed27();
+    o.unreachable = buildUnnamed28();
   }
   buildCounterListGitRepositoryLinksResponse--;
   return o;
@@ -1470,27 +1480,27 @@ api.ListGitRepositoryLinksResponse buildListGitRepositoryLinksResponse() {
 void checkListGitRepositoryLinksResponse(api.ListGitRepositoryLinksResponse o) {
   buildCounterListGitRepositoryLinksResponse++;
   if (buildCounterListGitRepositoryLinksResponse < 3) {
-    checkUnnamed26(o.gitRepositoryLinks!);
+    checkUnnamed27(o.gitRepositoryLinks!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed27(o.unreachable!);
+    checkUnnamed28(o.unreachable!);
   }
   buildCounterListGitRepositoryLinksResponse--;
 }
 
-core.List<api.InsightsConfig> buildUnnamed28() => [
+core.List<api.InsightsConfig> buildUnnamed29() => [
   buildInsightsConfig(),
   buildInsightsConfig(),
 ];
 
-void checkUnnamed28(core.List<api.InsightsConfig> o) {
+void checkUnnamed29(core.List<api.InsightsConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInsightsConfig(o[0]);
   checkInsightsConfig(o[1]);
 }
 
-core.List<core.String> buildUnnamed29() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed30() => ['foo', 'foo'];
 
-void checkUnnamed29(core.List<core.String> o) {
+void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1501,9 +1511,9 @@ api.ListInsightsConfigsResponse buildListInsightsConfigsResponse() {
   final o = api.ListInsightsConfigsResponse();
   buildCounterListInsightsConfigsResponse++;
   if (buildCounterListInsightsConfigsResponse < 3) {
-    o.insightsConfigs = buildUnnamed28();
+    o.insightsConfigs = buildUnnamed29();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed29();
+    o.unreachable = buildUnnamed30();
   }
   buildCounterListInsightsConfigsResponse--;
   return o;
@@ -1512,16 +1522,16 @@ api.ListInsightsConfigsResponse buildListInsightsConfigsResponse() {
 void checkListInsightsConfigsResponse(api.ListInsightsConfigsResponse o) {
   buildCounterListInsightsConfigsResponse++;
   if (buildCounterListInsightsConfigsResponse < 3) {
-    checkUnnamed28(o.insightsConfigs!);
+    checkUnnamed29(o.insightsConfigs!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed29(o.unreachable!);
+    checkUnnamed30(o.unreachable!);
   }
   buildCounterListInsightsConfigsResponse--;
 }
 
-core.List<api.Location> buildUnnamed30() => [buildLocation(), buildLocation()];
+core.List<api.Location> buildUnnamed31() => [buildLocation(), buildLocation()];
 
-void checkUnnamed30(core.List<api.Location> o) {
+void checkUnnamed31(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -1532,7 +1542,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   final o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed30();
+    o.locations = buildUnnamed31();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
@@ -1542,26 +1552,26 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed30(o.locations!);
+    checkUnnamed31(o.locations!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed31() => [
+core.List<api.Operation> buildUnnamed32() => [
   buildOperation(),
   buildOperation(),
 ];
 
-void checkUnnamed31(core.List<api.Operation> o) {
+void checkUnnamed32(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
 }
 
-core.List<core.String> buildUnnamed32() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed33() => ['foo', 'foo'];
 
-void checkUnnamed32(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1573,8 +1583,8 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed31();
-    o.unreachable = buildUnnamed32();
+    o.operations = buildUnnamed32();
+    o.unreachable = buildUnnamed33();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -1584,23 +1594,23 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed31(o.operations!);
-    checkUnnamed32(o.unreachable!);
+    checkUnnamed32(o.operations!);
+    checkUnnamed33(o.unreachable!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<core.String> buildUnnamed33() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed34() => ['foo', 'foo'];
 
-void checkUnnamed33(core.List<core.String> o) {
+void checkUnnamed34(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.User> buildUnnamed34() => [buildUser(), buildUser()];
+core.List<api.User> buildUnnamed35() => [buildUser(), buildUser()];
 
-void checkUnnamed34(core.List<api.User> o) {
+void checkUnnamed35(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -1612,8 +1622,8 @@ api.ListUsersResponse buildListUsersResponse() {
   buildCounterListUsersResponse++;
   if (buildCounterListUsersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed33();
-    o.users = buildUnnamed34();
+    o.unreachable = buildUnnamed34();
+    o.users = buildUnnamed35();
   }
   buildCounterListUsersResponse--;
   return o;
@@ -1623,21 +1633,21 @@ void checkListUsersResponse(api.ListUsersResponse o) {
   buildCounterListUsersResponse++;
   if (buildCounterListUsersResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed33(o.unreachable!);
-    checkUnnamed34(o.users!);
+    checkUnnamed34(o.unreachable!);
+    checkUnnamed35(o.users!);
   }
   buildCounterListUsersResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed35() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed36() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed35(core.Map<core.String, core.String> o) {
+void checkUnnamed36(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed36() => {
+core.Map<core.String, core.Object?> buildUnnamed37() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1650,7 +1660,7 @@ core.Map<core.String, core.Object?> buildUnnamed36() => {
   },
 };
 
-void checkUnnamed36(core.Map<core.String, core.Object?> o) {
+void checkUnnamed37(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1670,9 +1680,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed35();
+    o.labels = buildUnnamed36();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed36();
+    o.metadata = buildUnnamed37();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -1683,9 +1693,9 @@ void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed35(o.labels!);
+    checkUnnamed36(o.labels!);
     unittest.expect(o.locationId!, unittest.equals('foo'));
-    checkUnnamed36(o.metadata!);
+    checkUnnamed37(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterLocation--;
@@ -1712,33 +1722,6 @@ void checkOAuthCredential(api.OAuthCredential o) {
   buildCounterOAuthCredential--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed37() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed37(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o['x']!) as core.Map;
-  unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5['bool'], unittest.equals(true));
-  unittest.expect(casted5['string'], unittest.equals('foo'));
-  var casted6 = (o['y']!) as core.Map;
-  unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6['bool'], unittest.equals(true));
-  unittest.expect(casted6['string'], unittest.equals('foo'));
-}
-
 core.Map<core.String, core.Object?> buildUnnamed38() => {
   'x': {
     'list': [1, 2, 3],
@@ -1753,6 +1736,33 @@ core.Map<core.String, core.Object?> buildUnnamed38() => {
 };
 
 void checkUnnamed38(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted5 = (o['x']!) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']!) as core.Map;
+  unittest.expect(casted6, unittest.hasLength(3));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.Object?> buildUnnamed39() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed39(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1773,9 +1783,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed37();
+    o.metadata = buildUnnamed38();
     o.name = 'foo';
-    o.response = buildUnnamed38();
+    o.response = buildUnnamed39();
   }
   buildCounterOperation--;
   return o;
@@ -1786,9 +1796,9 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed37(o.metadata!);
+    checkUnnamed38(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed38(o.response!);
+    checkUnnamed39(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1900,9 +1910,9 @@ void checkProcessGitLabWebhookRequest(api.ProcessGitLabWebhookRequest o) {
   buildCounterProcessGitLabWebhookRequest--;
 }
 
-core.List<core.String> buildUnnamed39() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed40() => ['foo', 'foo'];
 
-void checkUnnamed39(core.List<core.String> o) {
+void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1913,7 +1923,7 @@ api.Projects buildProjects() {
   final o = api.Projects();
   buildCounterProjects++;
   if (buildCounterProjects < 3) {
-    o.projectIds = buildUnnamed39();
+    o.projectIds = buildUnnamed40();
   }
   buildCounterProjects--;
   return o;
@@ -1922,14 +1932,14 @@ api.Projects buildProjects() {
 void checkProjects(api.Projects o) {
   buildCounterProjects++;
   if (buildCounterProjects < 3) {
-    checkUnnamed39(o.projectIds!);
+    checkUnnamed40(o.projectIds!);
   }
   buildCounterProjects--;
 }
 
-core.List<core.String> buildUnnamed40() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed41() => ['foo', 'foo'];
 
-void checkUnnamed40(core.List<core.String> o) {
+void checkUnnamed41(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1940,7 +1950,7 @@ api.ProviderOAuthConfig buildProviderOAuthConfig() {
   final o = api.ProviderOAuthConfig();
   buildCounterProviderOAuthConfig++;
   if (buildCounterProviderOAuthConfig < 3) {
-    o.scopes = buildUnnamed40();
+    o.scopes = buildUnnamed41();
     o.systemProviderId = 'foo';
   }
   buildCounterProviderOAuthConfig--;
@@ -1950,7 +1960,7 @@ api.ProviderOAuthConfig buildProviderOAuthConfig() {
 void checkProviderOAuthConfig(api.ProviderOAuthConfig o) {
   buildCounterProviderOAuthConfig++;
   if (buildCounterProviderOAuthConfig < 3) {
-    checkUnnamed40(o.scopes!);
+    checkUnnamed41(o.scopes!);
     unittest.expect(o.systemProviderId!, unittest.equals('foo'));
   }
   buildCounterProviderOAuthConfig--;
@@ -2046,9 +2056,9 @@ void checkServiceDirectoryConfig(api.ServiceDirectoryConfig o) {
   buildCounterServiceDirectoryConfig--;
 }
 
-core.List<core.String> buildUnnamed41() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed42() => ['foo', 'foo'];
 
-void checkUnnamed41(core.List<core.String> o) {
+void checkUnnamed42(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2063,7 +2073,7 @@ api.StartOAuthResponse buildStartOAuthResponse() {
     o.clientId = 'foo';
     o.codeChallenge = 'foo';
     o.codeChallengeMethod = 'foo';
-    o.scopes = buildUnnamed41();
+    o.scopes = buildUnnamed42();
     o.systemProviderId = 'foo';
     o.ticket = 'foo';
   }
@@ -2078,14 +2088,14 @@ void checkStartOAuthResponse(api.StartOAuthResponse o) {
     unittest.expect(o.clientId!, unittest.equals('foo'));
     unittest.expect(o.codeChallenge!, unittest.equals('foo'));
     unittest.expect(o.codeChallengeMethod!, unittest.equals('foo'));
-    checkUnnamed41(o.scopes!);
+    checkUnnamed42(o.scopes!);
     unittest.expect(o.systemProviderId!, unittest.equals('foo'));
     unittest.expect(o.ticket!, unittest.equals('foo'));
   }
   buildCounterStartOAuthResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed42() => {
+core.Map<core.String, core.Object?> buildUnnamed43() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -2098,7 +2108,7 @@ core.Map<core.String, core.Object?> buildUnnamed42() => {
   },
 };
 
-void checkUnnamed42(core.Map<core.String, core.Object?> o) {
+void checkUnnamed43(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -2112,15 +2122,15 @@ void checkUnnamed42(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted10['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed43() => [
-  buildUnnamed42(),
-  buildUnnamed42(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed44() => [
+  buildUnnamed43(),
+  buildUnnamed43(),
 ];
 
-void checkUnnamed43(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed44(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed42(o[0]);
-  checkUnnamed42(o[1]);
+  checkUnnamed43(o[0]);
+  checkUnnamed43(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2129,7 +2139,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed43();
+    o.details = buildUnnamed44();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2140,7 +2150,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed43(o.details!);
+    checkUnnamed44(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -2215,17 +2225,17 @@ void checkUserRepository(api.UserRepository o) {
   buildCounterUserRepository--;
 }
 
-core.List<core.String> buildUnnamed44() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
 
-void checkUnnamed44(core.List<core.String> o) {
+void checkUnnamed45(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed46() => ['foo', 'foo'];
 
-void checkUnnamed45(core.List<core.String> o) {
+void checkUnnamed46(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3060,7 +3070,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DeveloperConnectApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed44();
+      final arg_extraLocationTypes = buildUnnamed45();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3866,7 +3876,7 @@ void main() {
         mock,
       ).projects.locations.accountConnectors.users;
       final arg_accountConnector = 'foo';
-      final arg_googleOauthParams_scopes = buildUnnamed45();
+      final arg_googleOauthParams_scopes = buildUnnamed46();
       final arg_googleOauthParams_ticket = 'foo';
       final arg_googleOauthParams_versionInfo = 'foo';
       final arg_oauthParams_code = 'foo';
@@ -5864,6 +5874,7 @@ void main() {
         ).projects.locations.insightsConfigs.deploymentEvents;
         final arg_parent = 'foo';
         final arg_filter = 'foo';
+        final arg_orderBy = 'foo';
         final arg_pageSize = 42;
         final arg_pageToken = 'foo';
         final arg_$fields = 'foo';
@@ -5905,6 +5916,10 @@ void main() {
               unittest.equals(arg_filter),
             );
             unittest.expect(
+              queryMap['orderBy']!.first,
+              unittest.equals(arg_orderBy),
+            );
+            unittest.expect(
               core.int.parse(queryMap['pageSize']!.first),
               unittest.equals(arg_pageSize),
             );
@@ -5928,6 +5943,7 @@ void main() {
         final response = await res.list(
           arg_parent,
           filter: arg_filter,
+          orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields,

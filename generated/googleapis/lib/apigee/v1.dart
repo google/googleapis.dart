@@ -907,7 +907,8 @@ class OrganizationsResource {
   /// Value must have pattern `^organizations/\[^/\]+/controlPlaneAccess$`.
   ///
   /// [updateMask] - List of fields to be updated. Fields that can be updated:
-  /// synchronizer_identities, publisher_identities.
+  /// synchronizer_identities, analytics_publisher_identities,
+  /// watcher_identities.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1879,7 +1880,11 @@ class OrganizationsApiproductsResource {
   /// product name required in the request URL is the internal name of the
   /// product, not the display name. While they may be the same, it depends on
   /// whether the API product was created via UI or API. View the list of API
-  /// products to identify their internal names.
+  /// products to identify their internal names. **Note:** We recommend that you
+  /// avoid making concurrent update requests for the same resource.
+  /// Near-simultaneous writes to the same entity can result in conflicts and
+  /// unexpected behavior. Ensure operations are sequential when modifying a
+  /// single resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3824,7 +3829,11 @@ class OrganizationsAppgroupsResource {
   /// This API replaces the existing AppGroup details with those specified in
   /// the request. Include or exclude any existing details that you want to
   /// retain or delete, respectively. Note that the state of the AppGroup should
-  /// be updated using `action`, and not via AppGroup.
+  /// be updated using `action`, and not via AppGroup. **Note:** We recommend
+  /// that you avoid making concurrent update requests for the same resource.
+  /// Near-simultaneous writes to the same entity can result in conflicts and
+  /// unexpected behavior. Ensure operations are sequential when modifying a
+  /// single resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3874,6 +3883,11 @@ class OrganizationsAppgroupsResource {
   }
 
   /// Updates the monetization configuration for the AppGroup.
+  ///
+  /// **Note:** We recommend that you avoid making concurrent update requests
+  /// for the same resource. Near-simultaneous writes to the same entity can
+  /// result in conflicts and unexpected behavior. Ensure operations are
+  /// sequential when modifying a single resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4126,7 +4140,10 @@ class OrganizationsAppgroupsAppsResource {
   /// key used to identify the app and cannot be changed. This API replaces the
   /// existing attributes with those specified in the request. Include or
   /// exclude any existing attributes that you want to retain or delete,
-  /// respectively.
+  /// respectively. **Note:** We recommend that you avoid making concurrent
+  /// update requests for the same resource. Near-simultaneous writes to the
+  /// same entity can result in conflicts and unexpected behavior. Ensure
+  /// operations are sequential when modifying a single resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5630,7 +5647,11 @@ class OrganizationsDevelopersResource {
   /// default). Any custom attributes associated with these entities are cached
   /// for at least 180 seconds after the entity is accessed at runtime.
   /// Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to
-  /// expire an access token in less than 180 seconds.
+  /// expire an access token in less than 180 seconds. **Note:** We recommend
+  /// that you avoid making concurrent update requests for the same resource.
+  /// Near-simultaneous writes to the same entity can result in conflicts and
+  /// unexpected behavior. Ensure operations are sequential when modifying a
+  /// single resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6086,7 +6107,11 @@ class OrganizationsDevelopersAppsResource {
   /// and cannot be changed. * Scopes associated with the app. Instead, use the
   /// ReplaceDeveloperAppKey API. This API replaces the existing attributes with
   /// those specified in the request. Include or exclude any existing attributes
-  /// that you want to retain or delete, respectively.
+  /// that you want to retain or delete, respectively. **Note:** We recommend
+  /// that you avoid making concurrent update requests for the same resource.
+  /// Near-simultaneous writes to the same entity can result in conflicts and
+  /// unexpected behavior. Ensure operations are sequential when modifying a
+  /// single resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -19508,7 +19533,7 @@ class GoogleCloudApigeeV1Access {
 /// Get action.
 ///
 /// For example, "Get" : { "name" : "target.name", "value" : "default" }
-typedef GoogleCloudApigeeV1AccessGet = $Shared06;
+typedef GoogleCloudApigeeV1AccessGet = $Shared09;
 
 /// Access logging configuration enables customers to ship the access logs from
 /// the tenant projects to their own project's cloud logging.
@@ -20601,6 +20626,20 @@ class GoogleCloudApigeeV1ApiProduct {
   /// operation group; otherwise the call will fail.
   GoogleCloudApigeeV1OperationGroup? operationGroup;
 
+  /// Configuration used to group Apigee proxies with payload-based operations
+  /// and quotas.
+  ///
+  /// Unlike `operation_group`, which matches on the URL path, this grouping
+  /// matches on operation identifiers extracted from the request payload (for
+  /// example, JSON-RPC method and tool names). This enables fine-grained
+  /// authorization and quota enforcement for protocols such as MCP where
+  /// multiple operations share a single endpoint. **Note:** The `proxies` and
+  /// `api_resources` settings cannot be specified for both the API product and
+  /// payload operation group; otherwise the call will fail.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1PayloadOperationGroup? payloadOperationGroup;
+
   /// Comma-separated list of API proxy names to which this API product is
   /// bound.
   ///
@@ -20688,6 +20727,7 @@ class GoogleCloudApigeeV1ApiProduct {
     this.llmQuotaTimeUnit,
     this.name,
     this.operationGroup,
+    this.payloadOperationGroup,
     this.proxies,
     this.quota,
     this.quotaCounterScope,
@@ -20744,6 +20784,12 @@ class GoogleCloudApigeeV1ApiProduct {
                 json_['operationGroup'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        payloadOperationGroup: json_.containsKey('payloadOperationGroup')
+            ? GoogleCloudApigeeV1PayloadOperationGroup.fromJson(
+                json_['payloadOperationGroup']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         proxies: (json_['proxies'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -20774,6 +20820,7 @@ class GoogleCloudApigeeV1ApiProduct {
     final llmQuotaTimeUnit = this.llmQuotaTimeUnit;
     final name = this.name;
     final operationGroup = this.operationGroup;
+    final payloadOperationGroup = this.payloadOperationGroup;
     final proxies = this.proxies;
     final quota = this.quota;
     final quotaCounterScope = this.quotaCounterScope;
@@ -20798,6 +20845,7 @@ class GoogleCloudApigeeV1ApiProduct {
       'llmQuotaTimeUnit': ?llmQuotaTimeUnit,
       'name': ?name,
       'operationGroup': ?operationGroup,
+      'payloadOperationGroup': ?payloadOperationGroup,
       'proxies': ?proxies,
       'quota': ?quota,
       'quotaCounterScope': ?quotaCounterScope,
@@ -20999,6 +21047,15 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   /// epoch.
   core.String? lastModifiedAt;
 
+  /// Whether this proxy revision is detected as an MCP (Model Context Protocol)
+  /// proxy.
+  ///
+  /// A proxy revision is identified as MCP if it has a proxy endpoint with the
+  /// `/mcp` base path that routes to the MCP target URL.
+  ///
+  /// Output only.
+  core.bool? mcp;
+
   /// Name of the API proxy.
   core.String? name;
 
@@ -21071,6 +21128,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     this.hasExtensiblePolicy,
     this.integrationEndpoints,
     this.lastModifiedAt,
+    this.mcp,
     this.name,
     this.policies,
     this.proxies,
@@ -21112,6 +21170,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
             ?.map((value) => value as core.String)
             .toList(),
         lastModifiedAt: json_['lastModifiedAt'] as core.String?,
+        mcp: json_['mcp'] as core.bool?,
         name: json_['name'] as core.String?,
         policies: (json_['policies'] as core.List?)
             ?.map((value) => value as core.String)
@@ -21162,6 +21221,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     final hasExtensiblePolicy = this.hasExtensiblePolicy;
     final integrationEndpoints = this.integrationEndpoints;
     final lastModifiedAt = this.lastModifiedAt;
+    final mcp = this.mcp;
     final name = this.name;
     final policies = this.policies;
     final proxies = this.proxies;
@@ -21188,6 +21248,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
       'hasExtensiblePolicy': ?hasExtensiblePolicy,
       'integrationEndpoints': ?integrationEndpoints,
       'lastModifiedAt': ?lastModifiedAt,
+      'mcp': ?mcp,
       'name': ?name,
       'policies': ?policies,
       'proxies': ?proxies,
@@ -30978,6 +31039,134 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
   }
 }
 
+/// Represents a single operation identifier extracted from the request payload.
+class GoogleCloudApigeeV1PayloadOperation {
+  /// The operation name extracted from the request payload at runtime by the
+  /// ParsePayload policy.
+  ///
+  /// For example, for MCP protocol requests, this could be `"tools/list"` or
+  /// `"tools/call/get_weather"`. Wildcards are not supported.
+  ///
+  /// Required.
+  core.String? operation;
+
+  GoogleCloudApigeeV1PayloadOperation({this.operation});
+
+  GoogleCloudApigeeV1PayloadOperation.fromJson(core.Map json_)
+    : this(operation: json_['operation'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final operation = this.operation;
+    return {'operation': ?operation};
+  }
+}
+
+/// Binds the payload operations in an API proxy with the associated quota
+/// enforcement.
+class GoogleCloudApigeeV1PayloadOperationConfig {
+  /// Name of the API proxy with which the payload operations and quota are
+  /// associated.
+  ///
+  /// Required.
+  core.String? apiSource;
+
+  /// Custom attributes associated with the operation.
+  ///
+  /// Optional.
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
+
+  /// List of payload operations for the API proxy to which quota will be
+  /// applied.
+  ///
+  /// Required.
+  core.List<GoogleCloudApigeeV1PayloadOperation>? operations;
+
+  /// Quota parameters to be enforced for the operations and API source
+  /// combination.
+  ///
+  /// If none are specified, quota enforcement will not be done unless a quota
+  /// is defined at the API product level.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1Quota? quota;
+
+  GoogleCloudApigeeV1PayloadOperationConfig({
+    this.apiSource,
+    this.attributes,
+    this.operations,
+    this.quota,
+  });
+
+  GoogleCloudApigeeV1PayloadOperationConfig.fromJson(core.Map json_)
+    : this(
+        apiSource: json_['apiSource'] as core.String?,
+        attributes: (json_['attributes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudApigeeV1Attribute.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudApigeeV1PayloadOperation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        quota: json_.containsKey('quota')
+            ? GoogleCloudApigeeV1Quota.fromJson(
+                json_['quota'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiSource = this.apiSource;
+    final attributes = this.attributes;
+    final operations = this.operations;
+    final quota = this.quota;
+    return {
+      'apiSource': ?apiSource,
+      'attributes': ?attributes,
+      'operations': ?operations,
+      'quota': ?quota,
+    };
+  }
+}
+
+/// List of payload operation configuration details associated with Apigee API
+/// proxies.
+///
+/// Payload operations enable governance of protocols where operations are
+/// embedded in the request body (such as JSON-RPC) rather than defined by the
+/// URL path.
+class GoogleCloudApigeeV1PayloadOperationGroup {
+  /// List of payload operation configurations for Apigee API proxies that are
+  /// associated with this API product.
+  ///
+  /// Required.
+  core.List<GoogleCloudApigeeV1PayloadOperationConfig>? operationConfigs;
+
+  GoogleCloudApigeeV1PayloadOperationGroup({this.operationConfigs});
+
+  GoogleCloudApigeeV1PayloadOperationGroup.fromJson(core.Map json_)
+    : this(
+        operationConfigs: (json_['operationConfigs'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudApigeeV1PayloadOperationConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final operationConfigs = this.operationConfigs;
+    return {'operationConfigs': ?operationConfigs};
+  }
+}
+
 class GoogleCloudApigeeV1PodStatus {
   /// Version of the application running in the pod.
   core.String? appVersion;
@@ -32865,6 +33054,9 @@ class GoogleCloudApigeeV1RuntimeAddonsConfig {
   /// Revision number used by the runtime to detect config changes.
   core.String? revisionId;
 
+  /// Runtime configuration for Spec Generation add-on.
+  GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig? specGenerationConfig;
+
   /// UID is to detect if config is recreated after deletion.
   ///
   /// The add-on config will only be deleted when the environment itself gets
@@ -32876,6 +33068,7 @@ class GoogleCloudApigeeV1RuntimeAddonsConfig {
     this.apiSecurityConfig,
     this.name,
     this.revisionId,
+    this.specGenerationConfig,
     this.uid,
   });
 
@@ -32894,6 +33087,12 @@ class GoogleCloudApigeeV1RuntimeAddonsConfig {
             : null,
         name: json_['name'] as core.String?,
         revisionId: json_['revisionId'] as core.String?,
+        specGenerationConfig: json_.containsKey('specGenerationConfig')
+            ? GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig.fromJson(
+                json_['specGenerationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
       );
 
@@ -32902,12 +33101,14 @@ class GoogleCloudApigeeV1RuntimeAddonsConfig {
     final apiSecurityConfig = this.apiSecurityConfig;
     final name = this.name;
     final revisionId = this.revisionId;
+    final specGenerationConfig = this.specGenerationConfig;
     final uid = this.uid;
     return {
       'analyticsConfig': ?analyticsConfig,
       'apiSecurityConfig': ?apiSecurityConfig,
       'name': ?name,
       'revisionId': ?revisionId,
+      'specGenerationConfig': ?specGenerationConfig,
       'uid': ?uid,
     };
   }
@@ -33013,7 +33214,85 @@ class GoogleCloudApigeeV1RuntimeConfig {
   }
 }
 
-/// NEXT ID: 10 RuntimeTraceConfig defines the configurations for distributed
+/// Runtime configuration for the Spec Generation add-on.
+///
+/// All fields are proto3 primitives (bool, string, double) rather than
+/// google.protobuf.*Value wrappers because the runtime consumer deserializes
+/// the JSON via Gson field reflection with no registered type adapters. Wrapper
+/// types would serialize as JSON objects/null that Gson cannot bind to Java
+/// primitive fields.
+class GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig {
+  /// Full Pub/Sub topic path in the Apigee Runtime Tenant Project where the
+  /// Schema Inferring Engine publishes inferred ApiObservation messages.
+  ///
+  /// Format: projects/{project}/topics/{topic}. Same sentinel semantics as
+  /// raw_observations_pubsub_topic. Default: empty string.
+  core.String? apiObservationsPubsubTopic;
+
+  /// Whether the Spec Generation add-on is active for this environment.
+  ///
+  /// Default: false.
+  core.bool? enabled;
+
+  /// ISO-8601 timestamp until which Spec Generation remains active (e.g.
+  /// "2026-12-31T23:59:59Z").
+  ///
+  /// Empty string is the canonical "not configured" sentinel and MUST be
+  /// treated by the consumer as "expired" (short-circuit before parsing).
+  /// Default: empty string.
+  core.String? enabledUntil;
+
+  /// Full Pub/Sub topic path in the Apigee Runtime Tenant Project where the
+  /// message processor publishes captured RawObservation messages.
+  ///
+  /// Format: projects/{project}/topics/{topic}. Empty string is the "not
+  /// configured" sentinel; the consumer short-circuits publishing when empty.
+  /// Default: empty string.
+  core.String? rawObservationsPubsubTopic;
+
+  /// Fraction of eligible transactions to capture, in \[0.0, 1.0\].
+  ///
+  /// The consumer enforces an internal upper-bound clamp independently of this
+  /// field. Default: 0.0 (omitted from JSON per proto3 default-scalar-omission;
+  /// the consumer's field initializer supplies the effective 0.01 fallback).
+  core.double? samplingRate;
+
+  GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig({
+    this.apiObservationsPubsubTopic,
+    this.enabled,
+    this.enabledUntil,
+    this.rawObservationsPubsubTopic,
+    this.samplingRate,
+  });
+
+  GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig.fromJson(core.Map json_)
+    : this(
+        apiObservationsPubsubTopic:
+            json_['apiObservationsPubsubTopic'] as core.String?,
+        enabled: json_['enabled'] as core.bool?,
+        enabledUntil: json_['enabledUntil'] as core.String?,
+        rawObservationsPubsubTopic:
+            json_['rawObservationsPubsubTopic'] as core.String?,
+        samplingRate: (json_['samplingRate'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiObservationsPubsubTopic = this.apiObservationsPubsubTopic;
+    final enabled = this.enabled;
+    final enabledUntil = this.enabledUntil;
+    final rawObservationsPubsubTopic = this.rawObservationsPubsubTopic;
+    final samplingRate = this.samplingRate;
+    return {
+      'apiObservationsPubsubTopic': ?apiObservationsPubsubTopic,
+      'enabled': ?enabled,
+      'enabledUntil': ?enabledUntil,
+      'rawObservationsPubsubTopic': ?rawObservationsPubsubTopic,
+      'samplingRate': ?samplingRate,
+    };
+  }
+}
+
+/// NEXT ID: 13 RuntimeTraceConfig defines the configurations for distributed
 /// trace in an environment.
 class GoogleCloudApigeeV1RuntimeTraceConfig {
   /// Endpoint of the exporter.
@@ -33036,6 +33315,14 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
   /// with OpenTelemetry protocol.
   core.String? exporter;
 
+  /// mTLS configuration for the OTel Collector endpoint.
+  ///
+  /// Required when `otel_collector_security_scheme` is `MTLS`; must be absent
+  /// otherwise.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig? mTlsConfig;
+
   /// Name of the trace config in the following format:
   /// `organizations/{org}/environment/{env}/traceConfig`
   core.String? name;
@@ -33056,6 +33343,24 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
   )
   core.bool? openTelemetryProtocolEnabled;
 
+  /// Security scheme for the outbound connection to the customer-owned
+  /// OpenTelemetry Collector.
+  ///
+  /// Only meaningful when `exporter` is `OPEN_TELEMETRY_COLLECTOR`. Runtime
+  /// consumers unaware of a value should treat it as
+  /// `OTEL_COLLECTOR_SECURITY_SCHEME_UNSPECIFIED` (== NONE).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OTEL_COLLECTOR_SECURITY_SCHEME_UNSPECIFIED" : Unspecified. Behavior is
+  /// identical to NONE.
+  /// - "NONE" : Default. Unauthenticated OTLP/HTTP export. Preserves today's
+  /// behavior byte-for-byte for existing configurations.
+  /// - "MTLS" : Mutual TLS via customer PKI. Cert material is stored in Apigee
+  /// Keystores/Truststores and referenced by resource ID in `mtls_config` (same
+  /// mechanism as TargetServer.tls_info).
+  core.String? otelCollectorSecurityScheme;
+
   /// List of trace configuration overrides for spicific API proxies.
   core.List<GoogleCloudApigeeV1RuntimeTraceConfigOverride>? overrides;
 
@@ -33068,6 +33373,20 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
 
   /// Trace configuration for all API proxies in an environment.
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig? samplingConfig;
+
+  /// The span semantics to use.
+  ///
+  /// Configuration Requirements (if `span_semantics` is `OTEL`): -
+  /// `trace_protocol` must be `OTLP`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SPAN_SEMANTICS_UNSPECIFIED" : Semantics unspecified. Defaults to
+  /// LEGACY.
+  /// - "LEGACY" : Uses Apigee legacy span and attribute names.
+  /// - "OTEL" : Uses OpenTelemetry semantic-convention-aligned span and
+  /// attribute names.
+  core.String? spanSemantics;
 
   /// The trace protocol to use.
   ///
@@ -33082,12 +33401,15 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
   GoogleCloudApigeeV1RuntimeTraceConfig({
     this.endpoint,
     this.exporter,
+    this.mTlsConfig,
     this.name,
     this.openTelemetryProtocolEnabled,
+    this.otelCollectorSecurityScheme,
     this.overrides,
     this.revisionCreateTime,
     this.revisionId,
     this.samplingConfig,
+    this.spanSemantics,
     this.traceProtocol,
   });
 
@@ -33095,9 +33417,16 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
     : this(
         endpoint: json_['endpoint'] as core.String?,
         exporter: json_['exporter'] as core.String?,
+        mTlsConfig: json_.containsKey('mTlsConfig')
+            ? GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig.fromJson(
+                json_['mTlsConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         openTelemetryProtocolEnabled:
             json_['openTelemetryProtocolEnabled'] as core.bool?,
+        otelCollectorSecurityScheme:
+            json_['otelCollectorSecurityScheme'] as core.String?,
         overrides: (json_['overrides'] as core.List?)
             ?.map(
               (value) => GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(
@@ -33112,34 +33441,110 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
                 json_['samplingConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        spanSemantics: json_['spanSemantics'] as core.String?,
         traceProtocol: json_['traceProtocol'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final endpoint = this.endpoint;
     final exporter = this.exporter;
+    final mTlsConfig = this.mTlsConfig;
     final name = this.name;
     final openTelemetryProtocolEnabled = this.openTelemetryProtocolEnabled;
+    final otelCollectorSecurityScheme = this.otelCollectorSecurityScheme;
     final overrides = this.overrides;
     final revisionCreateTime = this.revisionCreateTime;
     final revisionId = this.revisionId;
     final samplingConfig = this.samplingConfig;
+    final spanSemantics = this.spanSemantics;
     final traceProtocol = this.traceProtocol;
     return {
       'endpoint': ?endpoint,
       'exporter': ?exporter,
+      'mTlsConfig': ?mTlsConfig,
       'name': ?name,
       'openTelemetryProtocolEnabled': ?openTelemetryProtocolEnabled,
+      'otelCollectorSecurityScheme': ?otelCollectorSecurityScheme,
       'overrides': ?overrides,
       'revisionCreateTime': ?revisionCreateTime,
       'revisionId': ?revisionId,
       'samplingConfig': ?samplingConfig,
+      'spanSemantics': ?spanSemantics,
       'traceProtocol': ?traceProtocol,
     };
   }
 }
 
-/// NEXT ID: 9 Trace configuration override for a specific API proxy in an
+/// Runtime-side view of `TraceConfig.OtelMtlsConfig` for the outbound OTel
+/// Collector mTLS connection.
+///
+/// Shape mirrors `TlsInfoConfig` (in this same file, above) exactly. The oneof
+/// discriminates between a direct keystore reference and a `ref://`-indirected
+/// reference; both are surfaced on the wire without flattening. The referenced
+/// keystore must also appear in `EnvironmentConfig.keystores[]` so the
+/// underlying alias bytes are available at runtime. Referential integrity is
+/// enforced at trace-config update time: any PATCH that references a keystore
+/// not already present is rejected in the same transaction that would persist
+/// the update, and keystore/alias/reference deletion is blocked while a
+/// trace-config references it.
+class GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig {
+  /// Full alias resource name of the client-side key/cert alias.
+  ///
+  /// Format:
+  /// `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}`
+  /// Set when the customer supplied a plain keystore ID in
+  /// `TraceConfig.OtelMtlsConfig.key_store`.
+  core.String? keyAlias;
+
+  /// Reference name and alias-id pair.
+  ///
+  /// Set when the customer supplied a `ref://{referenceID}` URI in
+  /// `TraceConfig.OtelMtlsConfig.key_store`. Resolved via the References
+  /// catalog the same way as `TlsInfoConfig.key_alias_reference` in
+  /// target-server TLS. Reuses the top-level `KeyAliasReference` message
+  /// defined for `TlsInfoConfig` above; no new message.
+  GoogleCloudApigeeV1KeyAliasReference? keyAliasReference;
+
+  /// Full resource name of the truststore holding the CA(s) that signed the
+  /// OTel Collector's server certificate.
+  ///
+  /// Either a keystore or a reference resource name, mirroring
+  /// `TlsInfoConfig.trust_store` above:
+  /// `organizations/{org}/environments/{env}/keystores/{keystore}`
+  /// `organizations/{org}/environments/{env}/references/{reference}`
+  core.String? trustStore;
+
+  GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig({
+    this.keyAlias,
+    this.keyAliasReference,
+    this.trustStore,
+  });
+
+  GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig.fromJson(core.Map json_)
+    : this(
+        keyAlias: json_['keyAlias'] as core.String?,
+        keyAliasReference: json_.containsKey('keyAliasReference')
+            ? GoogleCloudApigeeV1KeyAliasReference.fromJson(
+                json_['keyAliasReference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        trustStore: json_['trustStore'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyAlias = this.keyAlias;
+    final keyAliasReference = this.keyAliasReference;
+    final trustStore = this.trustStore;
+    return {
+      'keyAlias': ?keyAlias,
+      'keyAliasReference': ?keyAliasReference,
+      'trustStore': ?trustStore,
+    };
+  }
+}
+
+/// NEXT ID: 10 Trace configuration override for a specific API proxy in an
 /// environment.
 class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   /// Name of the API proxy that will have its trace configuration overridden
@@ -33176,6 +33581,20 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   /// Trace configuration override for a specific API proxy in an environment.
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig? samplingConfig;
 
+  /// The span semantics to use.
+  ///
+  /// Configuration Requirements (if `span_semantics` is `OTEL`): -
+  /// `trace_protocol` must be `OTLP`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SPAN_SEMANTICS_UNSPECIFIED" : Semantics unspecified. Defaults to
+  /// LEGACY.
+  /// - "LEGACY" : Uses Apigee legacy span and attribute names.
+  /// - "OTEL" : Uses OpenTelemetry semantic-convention-aligned span and
+  /// attribute names.
+  core.String? spanSemantics;
+
   /// The trace protocol to use.
   ///
   /// Optional.
@@ -33199,6 +33618,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
     this.revisionCreateTime,
     this.revisionId,
     this.samplingConfig,
+    this.spanSemantics,
     this.traceProtocol,
     this.uid,
   });
@@ -33216,6 +33636,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
                 json_['samplingConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        spanSemantics: json_['spanSemantics'] as core.String?,
         traceProtocol: json_['traceProtocol'] as core.String?,
         uid: json_['uid'] as core.String?,
       );
@@ -33227,6 +33648,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
     final revisionCreateTime = this.revisionCreateTime;
     final revisionId = this.revisionId;
     final samplingConfig = this.samplingConfig;
+    final spanSemantics = this.spanSemantics;
     final traceProtocol = this.traceProtocol;
     final uid = this.uid;
     return {
@@ -33236,6 +33658,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
       'revisionCreateTime': ?revisionCreateTime,
       'revisionId': ?revisionId,
       'samplingConfig': ?samplingConfig,
+      'spanSemantics': ?spanSemantics,
       'traceProtocol': ?traceProtocol,
       'uid': ?uid,
     };
@@ -36854,37 +37277,184 @@ class GoogleCloudApigeeV1TraceConfig {
   /// with OpenTelemetry protocol.
   core.String? exporter;
 
+  /// mTLS configuration for the OTel Collector endpoint.
+  ///
+  /// Required when `otel_collector_security_scheme` == MTLS; must not be set
+  /// otherwise.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1TraceConfigOtelMtlsConfig? mtlsConfig;
+
+  /// The security scheme for the OTel Collector endpoint.
+  ///
+  /// Defaults to NONE (unauthenticated OTLP/HTTP), preserving today's behavior
+  /// for existing configurations. Only applicable when `exporter` ==
+  /// OPEN_TELEMETRY_COLLECTOR.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OTEL_COLLECTOR_SECURITY_SCHEME_UNSPECIFIED" : Unspecified. Behavior is
+  /// identical to NONE.
+  /// - "NONE" : Default. Unauthenticated OTLP/HTTP export. Preserves today's
+  /// behavior byte-for-byte for existing configurations.
+  /// - "MTLS" : Mutual TLS via customer PKI. Cert material is stored in Apigee
+  /// Keystores/Truststores and referenced by resource ID in `mtls_config` (same
+  /// mechanism as TargetServer.tls_info).
+  core.String? otelCollectorSecurityScheme;
+
   /// Distributed trace configuration for all API proxies in an environment.
   ///
   /// You can also override the configuration for a specific API proxy using the
   /// distributed trace configuration overrides API.
   GoogleCloudApigeeV1TraceSamplingConfig? samplingConfig;
 
+  /// The span semantics to use.
+  ///
+  /// Configuration Requirements (if span_semantics is OTEL): - trace_protocol
+  /// must be OTLP.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SPAN_SEMANTICS_UNSPECIFIED" : Semantics unspecified. Defaults to
+  /// LEGACY.
+  /// - "LEGACY" : Uses Apigee legacy span and attribute names.
+  /// - "OTEL" : Uses OpenTelemetry semantic-convention-aligned span and
+  /// attribute names.
+  core.String? spanSemantics;
+
+  /// The trace protocol to use.
+  ///
+  /// Configuration Requirements (if trace_protocol is OTLP): - Allowed
+  /// Exporters: CLOUD_TRACE or OPEN_TELEMETRY_COLLECTOR. - If Exporter is
+  /// OPEN_TELEMETRY_COLLECTOR: - endpoint refers to a valid OTLP collector URL.
+  /// - If Exporter is CLOUD_TRACE: - endpoint refers to a valid project ID.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRACE_PROTOCOL_UNSPECIFIED" : Protocol unspecified. Defaults to
+  /// OPEN_CENSUS.
+  /// - "OPEN_CENSUS" : Uses OpenCensus protocol.
+  /// - "OTLP" : Uses OpenTelemetry Protocol (OTLP).
+  core.String? traceProtocol;
+
   GoogleCloudApigeeV1TraceConfig({
     this.endpoint,
     this.exporter,
+    this.mtlsConfig,
+    this.otelCollectorSecurityScheme,
     this.samplingConfig,
+    this.spanSemantics,
+    this.traceProtocol,
   });
 
   GoogleCloudApigeeV1TraceConfig.fromJson(core.Map json_)
     : this(
         endpoint: json_['endpoint'] as core.String?,
         exporter: json_['exporter'] as core.String?,
+        mtlsConfig: json_.containsKey('mtlsConfig')
+            ? GoogleCloudApigeeV1TraceConfigOtelMtlsConfig.fromJson(
+                json_['mtlsConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        otelCollectorSecurityScheme:
+            json_['otelCollectorSecurityScheme'] as core.String?,
         samplingConfig: json_.containsKey('samplingConfig')
             ? GoogleCloudApigeeV1TraceSamplingConfig.fromJson(
                 json_['samplingConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        spanSemantics: json_['spanSemantics'] as core.String?,
+        traceProtocol: json_['traceProtocol'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final endpoint = this.endpoint;
     final exporter = this.exporter;
+    final mtlsConfig = this.mtlsConfig;
+    final otelCollectorSecurityScheme = this.otelCollectorSecurityScheme;
     final samplingConfig = this.samplingConfig;
+    final spanSemantics = this.spanSemantics;
+    final traceProtocol = this.traceProtocol;
     return {
       'endpoint': ?endpoint,
       'exporter': ?exporter,
+      'mtlsConfig': ?mtlsConfig,
+      'otelCollectorSecurityScheme': ?otelCollectorSecurityScheme,
       'samplingConfig': ?samplingConfig,
+      'spanSemantics': ?spanSemantics,
+      'traceProtocol': ?traceProtocol,
+    };
+  }
+}
+
+/// OtelMtlsConfig configures mutual TLS for the outbound OTel Collector
+/// connection by referencing already-uploaded Keystore/Truststore aliases.
+///
+/// Key/cert material is uploaded via the existing Keystore Alias APIs (POST
+/// .../keystores/{ks}/aliases), the same APIs used to configure mTLS for
+/// `TargetServer.tls_info`. Only the resource IDs of those aliases live in this
+/// message; no secret material is inlined into TraceConfig. Field shape mirrors
+/// `TlsInfo` used by `TargetServer.tls_info`: - `key_store` and `trust_store`
+/// accept either a plain keystore ID or a `ref://{referenceID}` URI (an
+/// environment-scoped Reference whose `resource_type` is
+/// `KeyStore`/`TrustStore`). References enable rotation without editing the
+/// TraceConfig itself. - `key_alias` is the plain alias ID within `key_store`.
+/// Fields that would normally appear on `TlsInfo` (enabled,
+/// client_auth_enabled, protocols, enforce, ignore_validation_errors) are
+/// intentionally omitted from this customer surface. The runtime enforces
+/// secure defaults: - Mutual TLS is always required (both server AND client
+/// cert exchanged). - Server certificate validation is always strict (no
+/// ignoring errors). - TLS 1.2 and TLS 1.3 are enabled; older versions are
+/// rejected.
+class GoogleCloudApigeeV1TraceConfigOtelMtlsConfig {
+  /// Plain alias ID within `key_store` that contains the client key/cert used
+  /// for mTLS.
+  ///
+  /// Required.
+  core.String? keyAlias;
+
+  /// Keystore holding the client-side key/cert alias.
+  ///
+  /// Accepts either a plain keystore ID (e.g. `my-keystore`) resolving to
+  /// `organizations/{org}/environments/{env}/keystores/{key_store}`, or a
+  /// reference URI of the form `ref://{referenceID}` that points to a Reference
+  /// whose `resource_type` is `KeyStore`.
+  ///
+  /// Required.
+  core.String? keyStore;
+
+  /// Truststore holding the CA(s) that signed the OTel Collector's server
+  /// certificate.
+  ///
+  /// Accepts either a plain keystore ID (e.g. `my-truststore`) resolving to
+  /// `organizations/{org}/environments/{env}/keystores/{trust_store}`, or a
+  /// reference URI of the form `ref://{referenceID}` that points to a Reference
+  /// whose `resource_type` is `KeyStore` (used as a truststore).
+  ///
+  /// Required.
+  core.String? trustStore;
+
+  GoogleCloudApigeeV1TraceConfigOtelMtlsConfig({
+    this.keyAlias,
+    this.keyStore,
+    this.trustStore,
+  });
+
+  GoogleCloudApigeeV1TraceConfigOtelMtlsConfig.fromJson(core.Map json_)
+    : this(
+        keyAlias: json_['keyAlias'] as core.String?,
+        keyStore: json_['keyStore'] as core.String?,
+        trustStore: json_['trustStore'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyAlias = this.keyAlias;
+    final keyStore = this.keyStore;
+    final trustStore = this.trustStore;
+    return {
+      'keyAlias': ?keyAlias,
+      'keyStore': ?keyStore,
+      'trustStore': ?trustStore,
     };
   }
 }

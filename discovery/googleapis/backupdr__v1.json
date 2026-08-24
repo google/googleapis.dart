@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/cloud-backupdr": {
+                    "description": "See, edit, configure, and delete your Google Cloud Backup and DR data and see the email address for your Google Account"
+                },
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
                 }
@@ -262,7 +265,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260408",
+    "revision": "20260812",
     "rootUrl": "https://backupdr.googleapis.com/",
     "servicePath": "",
     "title": "Backup and DR Service API",
@@ -346,6 +349,124 @@
         }
     },
     "resources": {
+        "folders": {
+            "resources": {
+                "locations": {
+                    "resources": {
+                        "resourceBackupConfigs": {
+                            "methods": {
+                                "fetch": {
+                                    "description": "Fetches ResourceBackupConfigs.",
+                                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/resourceBackupConfigs:fetch",
+                                    "httpMethod": "GET",
+                                    "id": "backupdr.folders.locations.resourceBackupConfigs.fetch",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "Optional. Filtering results.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Optional. Hint for how to order the results.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will use 100 as default. Maximum value is 500 and values above 500 will be coerced to 500.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Optional. A token identifying a page of results the server should return.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The project, folder or organization and location for which to retrieve resource backup configs. Format: 'projects/{project_id}/locations/{location}', 'folders/{folder_id}/locations/{location}', or 'organizations/{organization_id}/locations/{location}'.",
+                                            "location": "path",
+                                            "pattern": "^folders/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/resourceBackupConfigs:fetch",
+                                    "response": {
+                                        "$ref": "FetchResourceBackupConfigsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "organizations": {
+            "resources": {
+                "locations": {
+                    "resources": {
+                        "resourceBackupConfigs": {
+                            "methods": {
+                                "fetch": {
+                                    "description": "Fetches ResourceBackupConfigs.",
+                                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/resourceBackupConfigs:fetch",
+                                    "httpMethod": "GET",
+                                    "id": "backupdr.organizations.locations.resourceBackupConfigs.fetch",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "Optional. Filtering results.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Optional. Hint for how to order the results.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will use 100 as default. Maximum value is 500 and values above 500 will be coerced to 500.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Optional. A token identifying a page of results the server should return.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The project, folder or organization and location for which to retrieve resource backup configs. Format: 'projects/{project_id}/locations/{location}', 'folders/{folder_id}/locations/{location}', or 'organizations/{organization_id}/locations/{location}'.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/resourceBackupConfigs:fetch",
+                                    "response": {
+                                        "$ref": "FetchResourceBackupConfigsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "projects": {
             "resources": {
                 "locations": {
@@ -372,6 +493,7 @@
                                 "$ref": "Location"
                             },
                             "scopes": [
+                                "https://www.googleapis.com/auth/cloud-backupdr",
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
@@ -397,11 +519,12 @@
                                 "$ref": "Trial"
                             },
                             "scopes": [
+                                "https://www.googleapis.com/auth/cloud-backupdr",
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "backupdr.projects.locations.list",
@@ -410,7 +533,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -444,6 +567,7 @@
                                 "$ref": "ListLocationsResponse"
                             },
                             "scopes": [
+                                "https://www.googleapis.com/auth/cloud-backupdr",
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         }
@@ -486,6 +610,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -516,6 +641,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -567,6 +693,7 @@
                                         "$ref": "FetchBackupPlanAssociationsForResourceTypeResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -592,6 +719,7 @@
                                         "$ref": "BackupPlanAssociation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -633,6 +761,7 @@
                                         "$ref": "ListBackupPlanAssociationsResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -672,6 +801,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -700,6 +830,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
@@ -742,6 +873,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -772,6 +904,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -797,6 +930,7 @@
                                         "$ref": "BackupPlan"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -843,6 +977,7 @@
                                         "$ref": "ListBackupPlansResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -882,6 +1017,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
@@ -911,6 +1047,7 @@
                                                 "$ref": "BackupPlanRevision"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -947,6 +1084,7 @@
                                                 "$ref": "ListBackupPlanRevisionsResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         }
@@ -996,6 +1134,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -1051,6 +1190,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -1097,6 +1237,7 @@
                                         "$ref": "FetchUsableBackupVaultsResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -1137,6 +1278,7 @@
                                         "$ref": "BackupVault"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -1198,6 +1340,7 @@
                                         "$ref": "ListBackupVaultsResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -1252,6 +1395,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -1280,6 +1424,7 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
@@ -1312,6 +1457,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1340,6 +1486,7 @@
                                                 "$ref": "FetchAccessTokenResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1368,6 +1515,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1393,6 +1541,7 @@
                                                 "$ref": "DataSource"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1421,6 +1570,7 @@
                                                 "$ref": "InitiateBackupResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1467,6 +1617,7 @@
                                                 "$ref": "ListDataSourcesResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1511,6 +1662,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1539,6 +1691,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1567,6 +1720,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-backupdr",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         }
@@ -1601,6 +1755,7 @@
                                                         "$ref": "Operation"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1667,6 +1822,7 @@
                                                         "$ref": "FetchBackupsForResourceTypeResponse"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1707,6 +1863,7 @@
                                                         "$ref": "Backup"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1768,6 +1925,7 @@
                                                         "$ref": "ListBackupsResponse"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1807,6 +1965,7 @@
                                                         "$ref": "Operation"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1835,6 +1994,7 @@
                                                         "$ref": "Operation"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 }
@@ -1894,6 +2054,7 @@
                                         "$ref": "FetchDataSourceReferencesForResourceTypeResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -1919,6 +2080,7 @@
                                         "$ref": "DataSourceReference"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -1965,6 +2127,7 @@
                                         "$ref": "ListDataSourceReferencesResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
@@ -2007,6 +2170,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2037,6 +2201,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2062,6 +2227,7 @@
                                         "$ref": "ManagementServer"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2093,6 +2259,7 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2139,6 +2306,7 @@
                                         "$ref": "ListManagementServersResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2167,6 +2335,7 @@
                                         "$ref": "FetchMsComplianceMetadataResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2195,6 +2364,7 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2223,6 +2393,7 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
@@ -2255,6 +2426,7 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2280,6 +2452,7 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2305,6 +2478,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2351,6 +2525,7 @@
                                         "$ref": "ListOperationsResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
@@ -2358,6 +2533,53 @@
                         },
                         "resourceBackupConfigs": {
                             "methods": {
+                                "fetch": {
+                                    "description": "Fetches ResourceBackupConfigs.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/resourceBackupConfigs:fetch",
+                                    "httpMethod": "GET",
+                                    "id": "backupdr.projects.locations.resourceBackupConfigs.fetch",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "Optional. Filtering results.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Optional. Hint for how to order the results.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will use 100 as default. Maximum value is 500 and values above 500 will be coerced to 500.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Optional. A token identifying a page of results the server should return.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The project, folder or organization and location for which to retrieve resource backup configs. Format: 'projects/{project_id}/locations/{location}', 'folders/{folder_id}/locations/{location}', or 'organizations/{organization_id}/locations/{location}'.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/resourceBackupConfigs:fetch",
+                                    "response": {
+                                        "$ref": "FetchResourceBackupConfigsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "list": {
                                     "description": "Lists ResourceBackupConfigs.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/resourceBackupConfigs",
@@ -2401,6 +2623,7 @@
                                         "$ref": "ListResourceBackupConfigsResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
@@ -2433,6 +2656,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
@@ -2465,6 +2689,7 @@
                                         "$ref": "Trial"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -2493,6 +2718,7 @@
                                         "$ref": "Trial"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-backupdr",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
@@ -3515,7 +3741,7 @@
                 },
                 "computeInstanceBackupPlanProperties": {
                     "$ref": "ComputeInstanceBackupPlanProperties",
-                    "description": "Optional. Defines optional properties specific to backups of disk-based resources, such as Compute Engine. This includes settings like whether to perform a guest flush."
+                    "description": "Optional. Defines optional properties specific to backups of compute instance-based resources, such as Compute Engine. This includes settings like whether to perform a guest flush."
                 },
                 "createTime": {
                     "description": "Output only. When the `BackupPlan` was created.",
@@ -3775,7 +4001,7 @@
             "id": "BackupVault",
             "properties": {
                 "accessRestriction": {
-                    "description": "Optional. Note: This field is added for future use case and will not be supported in the current release. Access restriction for the backup vault. Default value is WITHIN_ORGANIZATION if not provided during creation.",
+                    "description": "Optional. Restricts access to certain sources and destinations for data being sent into, or restored from, the backup vault. Defaults to WITHIN_ORGANIZATION if not provided during creation.",
                     "enum": [
                         "ACCESS_RESTRICTION_UNSPECIFIED",
                         "WITHIN_PROJECT",
@@ -4085,9 +4311,17 @@
             "type": "object"
         },
         "ComputeInstanceBackupPlanProperties": {
-            "description": "--- ComputeInstanceBackupPlanProperties Message ---",
+            "description": "Properties for a compute instance backup plan.",
             "id": "ComputeInstanceBackupPlanProperties",
             "properties": {
+                "bootDiskOnly": {
+                    "description": "Optional. If true, only the boot disk will be backed up.",
+                    "type": "boolean"
+                },
+                "diskExclusionLabels": {
+                    "$ref": "DiskExclusionLabels",
+                    "description": "Optional. Labels used to identify disks for exclusion from the backup. If a disk carries any of these labels, it will be excluded (OR logic)."
+                },
                 "guestFlush": {
                     "description": "Optional. Indicates whether to perform a guest flush operation before taking a compute backup. When set to false, the system will create crash-consistent backups. Default value is false.",
                     "type": "boolean"
@@ -4114,6 +4348,13 @@
                     },
                     "type": "array"
                 },
+                "excludedDisks": {
+                    "description": "Optional. List of disks excluded from the backup.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "guestAccelerator": {
                     "description": "A list of guest accelerator cards' type and count to use for instances created from these properties.",
                     "items": {
@@ -4124,6 +4365,13 @@
                 "guestFlush": {
                     "description": "Optional. Indicates whether to perform a guest flush operation before taking a compute backup. When set to false, the system will create crash-consistent backups. Default value is false.",
                     "type": "boolean"
+                },
+                "includedDisks": {
+                    "description": "Optional. List of disks included in the backup.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "keyRevocationActionType": {
                     "description": "KeyRevocationActionType of the instance. Supported options are \"STOP\" and \"NONE\". The default value is \"NONE\" if it is not specified.",
@@ -4370,6 +4618,10 @@
                 "project": {
                     "description": "Required. Target project for the Compute Engine instance.",
                     "type": "string"
+                },
+                "useProjectServiceAccount": {
+                    "description": "Optional. Whether to use the project service account for the Compute Engine instance restore.",
+                    "type": "boolean"
                 },
                 "zone": {
                     "description": "Required. The zone of the Compute Engine instance.",
@@ -4719,7 +4971,7 @@
             "type": "object"
         },
         "DiskBackupPlanProperties": {
-            "description": "--- DiskBackupPlanProperties Message ---",
+            "description": "Properties for a disk backup plan.",
             "id": "DiskBackupPlanProperties",
             "properties": {
                 "guestFlush": {
@@ -4858,6 +5110,20 @@
             },
             "type": "object"
         },
+        "DiskExclusionLabels": {
+            "description": "Message for selective disk backup exclusion labels.",
+            "id": "DiskExclusionLabels",
+            "properties": {
+                "labels": {
+                    "description": "Optional. Labels used to identify disks for exclusion from the backup. If a disk carries any of these labels, it will be excluded (OR logic).",
+                    "items": {
+                        "$ref": "LabelKeyValPair"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "DiskRestoreProperties": {
             "description": "DiskRestoreProperties represents the properties of a Disk restore.",
             "id": "DiskRestoreProperties",
@@ -4908,6 +5174,10 @@
                         "$ref": "GuestOsFeature"
                     },
                     "type": "array"
+                },
+                "instanceBackupSource": {
+                    "$ref": "RestoreDiskFromInstanceOptions",
+                    "description": "Provides options for creating a disk from a source Compute Instance backup."
                 },
                 "labels": {
                     "additionalProperties": {
@@ -4979,6 +5249,10 @@
                 "project": {
                     "description": "Required. Target project for the disk.",
                     "type": "string"
+                },
+                "useProjectServiceAccount": {
+                    "description": "Optional. Whether to use the project service account for the disk restore.",
+                    "type": "boolean"
                 },
                 "zone": {
                     "description": "Required. Target zone for the disk.",
@@ -5100,7 +5374,7 @@
                     "type": "string"
                 },
                 "token": {
-                    "description": "The downscoped token that was created.",
+                    "description": "Input only. The downscoped token that was created.",
                     "type": "string"
                 },
                 "writeLocation": {
@@ -5184,6 +5458,24 @@
                 "isAssuredWorkload": {
                     "description": "The ms compliance metadata of the target project, if the project is an Assured Workloads project, values will be true, otherwise false.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "FetchResourceBackupConfigsResponse": {
+            "description": "Response for FetchResourceBackupConfigs.",
+            "id": "FetchResourceBackupConfigsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token identifying a page of results the server should return.",
+                    "type": "string"
+                },
+                "resourceBackupConfigs": {
+                    "description": "The list of ResourceBackupConfigs for the specified scope.",
+                    "items": {
+                        "$ref": "ResourceBackupConfig"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -5577,6 +5869,21 @@
                     },
                     "description": "Optional. Resource manager tags to be bound to the instance.",
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "LabelKeyValPair": {
+            "description": "Message for a label key-value pair.",
+            "id": "LabelKeyValPair",
+            "properties": {
+                "key": {
+                    "description": "Key of the label. The key must follow the format: `\\\\p{Ll}\\\\p{Lo}{0,62}`. This means the key must start with a lowercase letter or a lowercase international character, followed by zero or more lowercase letters, lowercase international characters, numbers, underscores, or dashes. The key must be at most 63 characters long. International characters are allowed.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Value of the label. The value must follow the format: `[\\\\p{Ll}\\\\p{Lo}\\\\p{N}_-]{1,63}`. This means the value must be one or more lowercase letters, lowercase international characters, numbers, underscores, or dashes. The value must be at most 63 characters long. International characters are allowed.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -6287,6 +6594,58 @@
             },
             "type": "object"
         },
+        "OperationMetadata": {
+            "description": "Represents the metadata of the long-running operation.",
+            "id": "OperationMetadata",
+            "properties": {
+                "additionalInfo": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Output only. AdditionalInfo contains additional Info related to backup plan association resource.",
+                    "readOnly": true,
+                    "type": "object"
+                },
+                "apiVersion": {
+                    "description": "Output only. API version used to start the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Output only. The time the operation was created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Output only. The time the operation finished running.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "requestedCancellation": {
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to 'Code.CANCELLED'.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "statusMessage": {
+                    "description": "Output only. Human-readable status of the operation, if any.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Output only. Server-defined resource path for the target of the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "verb": {
+                    "description": "Output only. Name of the verb executed by the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "PitrSettings": {
             "description": "Point in time recovery settings of the backup configuration resource.",
             "id": "PitrSettings",
@@ -6349,6 +6708,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "useProjectServiceAccount": {
+                    "description": "Optional. Whether to use the project service account for the disk restore.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -6478,6 +6841,21 @@
                 "targetResource": {
                     "$ref": "TargetResource",
                     "description": "Details of the target resource created/modified as part of restore."
+                }
+            },
+            "type": "object"
+        },
+        "RestoreDiskFromInstanceOptions": {
+            "description": "Options for creating a disk from a source Compute Instance backup.",
+            "id": "RestoreDiskFromInstanceOptions",
+            "properties": {
+                "bootDisk": {
+                    "description": "Specifies that the boot disk should be restored from the instance backup. This field should only be set to `true` if selected.",
+                    "type": "boolean"
+                },
+                "sourceDeviceName": {
+                    "description": "The device name of the disk to restore from the VM backup.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -6741,7 +7119,7 @@
                     "type": "array"
                 },
                 "hourlyFrequency": {
-                    "description": "Optional. Specifies frequency for hourly backups. A hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined. This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise. A validation error will occur if a value is supplied and `recurrence_type` is not `HOURLY`. Value of hourly frequency should be between 4 and 23. Reason for limit : We found that there is bandwidth limitation of 3GB/S for GMI while taking a backup and 5GB/S while doing a restore. Given the amount of parallel backups and restore we are targeting, this will potentially take the backup time to mins and hours (in worst case scenario).",
+                    "description": "Optional. Specifies frequency for hourly backups. A hourly frequency of 1 means jobs will run every 1 hour from start time till end time defined. This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise. A validation error will occur if a value is supplied and `recurrence_type` is not `HOURLY`. The supported values for each resource type are as follows: * `compute.googleapis.com/Instance`: 1-23 * `compute.googleapis.com/Disk`: 1-23 * `sqladmin.googleapis.com/Instance`: 6-23 * `alloydb.googleapis.com/Cluster`: 1-23 * `file.googleapis.com/Instance`: 1-23 Refer to link https://cloud.google.com/backup-disaster-recovery/docs/concepts/cloud_best_practices for more details.",
                     "format": "int32",
                     "type": "integer"
                 },

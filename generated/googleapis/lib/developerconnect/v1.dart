@@ -132,7 +132,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -147,9 +147,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2292,6 +2291,14 @@ class ProjectsLocationsInsightsConfigsDeploymentEventsResource {
   /// [filter] - Optional. Filter expression that matches a subset of the
   /// DeploymentEvents. https://google.aip.dev/160.
   ///
+  /// [orderBy] - Optional. Field to use to order the list of DeploymentEvents.
+  /// Expects AIP-132 format "field_name asc" or "field_name desc", e.g.
+  /// "deploy_time desc" Supported fields for ordering are: deploy_time,
+  /// update_time. Currently, only sorting by a single field is supported. If
+  /// this field is not provided, the list will be sorted by "deploy_time desc".
+  /// For more details on the ordering syntax, see
+  /// https://google.aip.dev/132#ordering.
+  ///
   /// [pageSize] - Optional. The maximum number of deployment events to return.
   /// The service may return fewer than this value. If unspecified, at most 50
   /// deployment events will be returned. The maximum value is 1000; values
@@ -2315,12 +2322,14 @@ class ProjectsLocationsInsightsConfigsDeploymentEventsResource {
   async.Future<ListDeploymentEventsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'fields': ?$fields == null ? null : [$fields],
@@ -2839,6 +2848,14 @@ class ArtifactDeployment {
   /// Output only.
   core.String? id;
 
+  /// The URIs of the source code, if available.
+  ///
+  /// For Cloud Run source deploy for example:
+  /// `gs://my-bucket/my-folder/1234567890.abcde-fdbe.zip#1234567890`
+  ///
+  /// Output only.
+  core.List<core.String>? sourceCodeUris;
+
   /// The source commits at which this artifact was built.
   ///
   /// Extracted from provenance.
@@ -2858,6 +2875,7 @@ class ArtifactDeployment {
     this.containerStatusSummary,
     this.deployTime,
     this.id,
+    this.sourceCodeUris,
     this.sourceCommitUris,
     this.undeployTime,
   });
@@ -2869,6 +2887,9 @@ class ArtifactDeployment {
         containerStatusSummary: json_['containerStatusSummary'] as core.String?,
         deployTime: json_['deployTime'] as core.String?,
         id: json_['id'] as core.String?,
+        sourceCodeUris: (json_['sourceCodeUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         sourceCommitUris: (json_['sourceCommitUris'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -2881,6 +2902,7 @@ class ArtifactDeployment {
     final containerStatusSummary = this.containerStatusSummary;
     final deployTime = this.deployTime;
     final id = this.id;
+    final sourceCodeUris = this.sourceCodeUris;
     final sourceCommitUris = this.sourceCommitUris;
     final undeployTime = this.undeployTime;
     return {
@@ -2889,6 +2911,7 @@ class ArtifactDeployment {
       'containerStatusSummary': ?containerStatusSummary,
       'deployTime': ?deployTime,
       'id': ?id,
+      'sourceCodeUris': ?sourceCodeUris,
       'sourceCommitUris': ?sourceCommitUris,
       'undeployTime': ?undeployTime,
     };
@@ -5486,6 +5509,7 @@ class ProviderOAuthConfig {
   /// - "NEW_RELIC" : New Relic provider. No scopes are allowed.
   /// - "DATASTAX" : Datastax provider. No scopes are allowed.
   /// - "DYNATRACE" : Dynatrace provider.
+  /// - "BITBUCKET_CLOUD" : Bitbucket Cloud provider.
   core.String? systemProviderId;
 
   ProviderOAuthConfig({this.scopes, this.systemProviderId});
@@ -5688,6 +5712,7 @@ class StartOAuthResponse {
   /// - "NEW_RELIC" : New Relic provider. No scopes are allowed.
   /// - "DATASTAX" : Datastax provider. No scopes are allowed.
   /// - "DYNATRACE" : Dynatrace provider.
+  /// - "BITBUCKET_CLOUD" : Bitbucket Cloud provider.
   core.String? systemProviderId;
 
   /// The ticket to be used for post processing the callback from the service

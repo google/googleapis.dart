@@ -1,4 +1,4 @@
-## 17.0.0-wip
+## 17.0.0
 
 - Mark APIs as `@Deprecated` with references to replacement
   `package:google_cloud_*` packages:
@@ -12,11 +12,25 @@
 
 ### APIs
 
-- `ces` - new
-- `developerknowledge` - new
+- `agentidentity` - new!
+- `agentidentitycredentials` - new!
+- `agentregistry` - new!
+- `analytics` - removed
+- `androiddeveloperidstatus` - new!
+- `apigeeregistry` - removed
+- `ces` - new!
+- `cloudproductregistry` - new!
+- `developerknowledge` - new!
+- `dfareporting` - removed `v4`
+- `ftp` - new!
 - `gmailpostmastertools` - added `v2`
-- `health` - new
-- `saasservicemgmt` - new
+- `health` - new!
+- `integrations` - removed
+- `merchantapi` - added `loyaltycustomers_v1`
+- `mybusinessqanda` - removed
+- `saasservicemgmt` - new!
+- `searchads360` - new!
+- `webcontentpublisher` - new!
 
 ## 16.0.0
 

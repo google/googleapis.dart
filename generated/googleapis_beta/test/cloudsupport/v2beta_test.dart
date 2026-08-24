@@ -507,6 +507,21 @@ void checkEmailMessage(api.EmailMessage o) {
   buildCounterEmailMessage--;
 }
 
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  final o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+}
+
 core.int buildCounterEscalateCaseRequest = 0;
 api.EscalateCaseRequest buildEscalateCaseRequest() {
   final o = api.EscalateCaseRequest();
@@ -545,6 +560,24 @@ void checkEscalation(api.Escalation o) {
     unittest.expect(o.reason!, unittest.equals('foo'));
   }
   buildCounterEscalation--;
+}
+
+core.int buildCounterExpungeSupportEventSubscriptionRequest = 0;
+api.ExpungeSupportEventSubscriptionRequest
+buildExpungeSupportEventSubscriptionRequest() {
+  final o = api.ExpungeSupportEventSubscriptionRequest();
+  buildCounterExpungeSupportEventSubscriptionRequest++;
+  if (buildCounterExpungeSupportEventSubscriptionRequest < 3) {}
+  buildCounterExpungeSupportEventSubscriptionRequest--;
+  return o;
+}
+
+void checkExpungeSupportEventSubscriptionRequest(
+  api.ExpungeSupportEventSubscriptionRequest o,
+) {
+  buildCounterExpungeSupportEventSubscriptionRequest++;
+  if (buildCounterExpungeSupportEventSubscriptionRequest < 3) {}
+  buildCounterExpungeSupportEventSubscriptionRequest--;
 }
 
 core.int buildCounterFeedItem = 0;
@@ -664,12 +697,47 @@ void checkListCommentsResponse(api.ListCommentsResponse o) {
   buildCounterListCommentsResponse--;
 }
 
-core.List<api.CompositeMedia> buildUnnamed6() => [
+core.List<api.SupportEventSubscription> buildUnnamed6() => [
+  buildSupportEventSubscription(),
+  buildSupportEventSubscription(),
+];
+
+void checkUnnamed6(core.List<api.SupportEventSubscription> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSupportEventSubscription(o[0]);
+  checkSupportEventSubscription(o[1]);
+}
+
+core.int buildCounterListSupportEventSubscriptionsResponse = 0;
+api.ListSupportEventSubscriptionsResponse
+buildListSupportEventSubscriptionsResponse() {
+  final o = api.ListSupportEventSubscriptionsResponse();
+  buildCounterListSupportEventSubscriptionsResponse++;
+  if (buildCounterListSupportEventSubscriptionsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.supportEventSubscriptions = buildUnnamed6();
+  }
+  buildCounterListSupportEventSubscriptionsResponse--;
+  return o;
+}
+
+void checkListSupportEventSubscriptionsResponse(
+  api.ListSupportEventSubscriptionsResponse o,
+) {
+  buildCounterListSupportEventSubscriptionsResponse++;
+  if (buildCounterListSupportEventSubscriptionsResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed6(o.supportEventSubscriptions!);
+  }
+  buildCounterListSupportEventSubscriptionsResponse--;
+}
+
+core.List<api.CompositeMedia> buildUnnamed7() => [
   buildCompositeMedia(),
   buildCompositeMedia(),
 ];
 
-void checkUnnamed6(core.List<api.CompositeMedia> o) {
+void checkUnnamed7(core.List<api.CompositeMedia> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCompositeMedia(o[0]);
   checkCompositeMedia(o[1]);
@@ -684,7 +752,7 @@ api.Media buildMedia() {
     o.bigstoreObjectRef = 'foo';
     o.blobRef = 'foo';
     o.blobstore2Info = buildBlobstore2Info();
-    o.compositeMedia = buildUnnamed6();
+    o.compositeMedia = buildUnnamed7();
     o.contentType = 'foo';
     o.contentTypeInfo = buildContentTypeInfo();
     o.cosmoBinaryReference = 'foo';
@@ -708,6 +776,7 @@ api.Media buildMedia() {
     o.referenceType = 'foo';
     o.sha1Hash = 'foo';
     o.sha256Hash = 'foo';
+    o.sha512Hash = 'foo';
     o.timestamp = 'foo';
     o.token = 'foo';
   }
@@ -722,7 +791,7 @@ void checkMedia(api.Media o) {
     unittest.expect(o.bigstoreObjectRef!, unittest.equals('foo'));
     unittest.expect(o.blobRef!, unittest.equals('foo'));
     checkBlobstore2Info(o.blobstore2Info!);
-    checkUnnamed6(o.compositeMedia!);
+    checkUnnamed7(o.compositeMedia!);
     unittest.expect(o.contentType!, unittest.equals('foo'));
     checkContentTypeInfo(o.contentTypeInfo!);
     unittest.expect(o.cosmoBinaryReference!, unittest.equals('foo'));
@@ -746,6 +815,7 @@ void checkMedia(api.Media o) {
     unittest.expect(o.referenceType!, unittest.equals('foo'));
     unittest.expect(o.sha1Hash!, unittest.equals('foo'));
     unittest.expect(o.sha256Hash!, unittest.equals('foo'));
+    unittest.expect(o.sha512Hash!, unittest.equals('foo'));
     unittest.expect(o.timestamp!, unittest.equals('foo'));
     unittest.expect(o.token!, unittest.equals('foo'));
   }
@@ -794,12 +864,12 @@ void checkProduct(api.Product o) {
   buildCounterProduct--;
 }
 
-core.List<api.CaseClassification> buildUnnamed7() => [
+core.List<api.CaseClassification> buildUnnamed8() => [
   buildCaseClassification(),
   buildCaseClassification(),
 ];
 
-void checkUnnamed7(core.List<api.CaseClassification> o) {
+void checkUnnamed8(core.List<api.CaseClassification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCaseClassification(o[0]);
   checkCaseClassification(o[1]);
@@ -810,7 +880,7 @@ api.SearchCaseClassificationsResponse buildSearchCaseClassificationsResponse() {
   final o = api.SearchCaseClassificationsResponse();
   buildCounterSearchCaseClassificationsResponse++;
   if (buildCounterSearchCaseClassificationsResponse < 3) {
-    o.caseClassifications = buildUnnamed7();
+    o.caseClassifications = buildUnnamed8();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchCaseClassificationsResponse--;
@@ -822,15 +892,15 @@ void checkSearchCaseClassificationsResponse(
 ) {
   buildCounterSearchCaseClassificationsResponse++;
   if (buildCounterSearchCaseClassificationsResponse < 3) {
-    checkUnnamed7(o.caseClassifications!);
+    checkUnnamed8(o.caseClassifications!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterSearchCaseClassificationsResponse--;
 }
 
-core.List<api.Case> buildUnnamed8() => [buildCase(), buildCase()];
+core.List<api.Case> buildUnnamed9() => [buildCase(), buildCase()];
 
-void checkUnnamed8(core.List<api.Case> o) {
+void checkUnnamed9(core.List<api.Case> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCase(o[0]);
   checkCase(o[1]);
@@ -841,7 +911,7 @@ api.SearchCasesResponse buildSearchCasesResponse() {
   final o = api.SearchCasesResponse();
   buildCounterSearchCasesResponse++;
   if (buildCounterSearchCasesResponse < 3) {
-    o.cases = buildUnnamed8();
+    o.cases = buildUnnamed9();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchCasesResponse--;
@@ -851,15 +921,15 @@ api.SearchCasesResponse buildSearchCasesResponse() {
 void checkSearchCasesResponse(api.SearchCasesResponse o) {
   buildCounterSearchCasesResponse++;
   if (buildCounterSearchCasesResponse < 3) {
-    checkUnnamed8(o.cases!);
+    checkUnnamed9(o.cases!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterSearchCasesResponse--;
 }
 
-core.List<api.FeedItem> buildUnnamed9() => [buildFeedItem(), buildFeedItem()];
+core.List<api.FeedItem> buildUnnamed10() => [buildFeedItem(), buildFeedItem()];
 
-void checkUnnamed9(core.List<api.FeedItem> o) {
+void checkUnnamed10(core.List<api.FeedItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeedItem(o[0]);
   checkFeedItem(o[1]);
@@ -870,7 +940,7 @@ api.ShowFeedResponse buildShowFeedResponse() {
   final o = api.ShowFeedResponse();
   buildCounterShowFeedResponse++;
   if (buildCounterShowFeedResponse < 3) {
-    o.feedItems = buildUnnamed9();
+    o.feedItems = buildUnnamed10();
     o.nextPageToken = 'foo';
   }
   buildCounterShowFeedResponse--;
@@ -880,10 +950,43 @@ api.ShowFeedResponse buildShowFeedResponse() {
 void checkShowFeedResponse(api.ShowFeedResponse o) {
   buildCounterShowFeedResponse++;
   if (buildCounterShowFeedResponse < 3) {
-    checkUnnamed9(o.feedItems!);
+    checkUnnamed10(o.feedItems!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterShowFeedResponse--;
+}
+
+core.int buildCounterSupportEventSubscription = 0;
+api.SupportEventSubscription buildSupportEventSubscription() {
+  final o = api.SupportEventSubscription();
+  buildCounterSupportEventSubscription++;
+  if (buildCounterSupportEventSubscription < 3) {
+    o.createTime = 'foo';
+    o.deleteTime = 'foo';
+    o.failureReason = 'foo';
+    o.name = 'foo';
+    o.pubSubTopic = 'foo';
+    o.purgeTime = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterSupportEventSubscription--;
+  return o;
+}
+
+void checkSupportEventSubscription(api.SupportEventSubscription o) {
+  buildCounterSupportEventSubscription++;
+  if (buildCounterSupportEventSubscription < 3) {
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.deleteTime!, unittest.equals('foo'));
+    unittest.expect(o.failureReason!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.pubSubTopic!, unittest.equals('foo'));
+    unittest.expect(o.purgeTime!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterSupportEventSubscription--;
 }
 
 core.int buildCounterTextContent = 0;
@@ -903,6 +1006,24 @@ void checkTextContent(api.TextContent o) {
     unittest.expect(o.plainText!, unittest.equals('foo'));
   }
   buildCounterTextContent--;
+}
+
+core.int buildCounterUndeleteSupportEventSubscriptionRequest = 0;
+api.UndeleteSupportEventSubscriptionRequest
+buildUndeleteSupportEventSubscriptionRequest() {
+  final o = api.UndeleteSupportEventSubscriptionRequest();
+  buildCounterUndeleteSupportEventSubscriptionRequest++;
+  if (buildCounterUndeleteSupportEventSubscriptionRequest < 3) {}
+  buildCounterUndeleteSupportEventSubscriptionRequest--;
+  return o;
+}
+
+void checkUndeleteSupportEventSubscriptionRequest(
+  api.UndeleteSupportEventSubscriptionRequest o,
+) {
+  buildCounterUndeleteSupportEventSubscriptionRequest++;
+  if (buildCounterUndeleteSupportEventSubscriptionRequest < 3) {}
+  buildCounterUndeleteSupportEventSubscriptionRequest--;
 }
 
 void main() {
@@ -1093,6 +1214,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Empty.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEmpty(od);
+    });
+  });
+
   unittest.group('obj-schema-EscalateCaseRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEscalateCaseRequest();
@@ -1112,6 +1244,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkEscalation(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExpungeSupportEventSubscriptionRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExpungeSupportEventSubscriptionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExpungeSupportEventSubscriptionRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkExpungeSupportEventSubscriptionRequest(od);
     });
   });
 
@@ -1156,6 +1299,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkListCommentsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListSupportEventSubscriptionsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListSupportEventSubscriptionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSupportEventSubscriptionsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListSupportEventSubscriptionsResponse(od);
     });
   });
 
@@ -1225,6 +1379,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SupportEventSubscription', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSupportEventSubscription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SupportEventSubscription.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSupportEventSubscription(od);
+    });
+  });
+
   unittest.group('obj-schema-TextContent', () {
     unittest.test('to-json--from-json', () async {
       final o = buildTextContent();
@@ -1233,6 +1398,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkTextContent(od);
+    });
+  });
+
+  unittest.group('obj-schema-UndeleteSupportEventSubscriptionRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUndeleteSupportEventSubscriptionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UndeleteSupportEventSubscriptionRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUndeleteSupportEventSubscriptionRequest(od);
     });
   });
 
@@ -2287,6 +2463,470 @@ void main() {
         $fields: arg_$fields,
       );
       checkAttachment(response as api.Attachment);
+    });
+  });
+
+  unittest.group('resource-OrganizationsSupportEventSubscriptionsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSupportApi(
+        mock,
+      ).organizations.supportEventSubscriptions;
+      final arg_request = buildSupportEventSubscription();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SupportEventSubscription.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSupportEventSubscription(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v2beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSupportEventSubscription());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkSupportEventSubscription(response as api.SupportEventSubscription);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSupportApi(
+        mock,
+      ).organizations.supportEventSubscriptions;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v2beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSupportEventSubscription());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkSupportEventSubscription(response as api.SupportEventSubscription);
+    });
+
+    unittest.test('method--expunge', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSupportApi(
+        mock,
+      ).organizations.supportEventSubscriptions;
+      final arg_request = buildExpungeSupportEventSubscriptionRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ExpungeSupportEventSubscriptionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkExpungeSupportEventSubscriptionRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v2beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.expunge(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSupportApi(
+        mock,
+      ).organizations.supportEventSubscriptions;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v2beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSupportEventSubscription());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSupportEventSubscription(response as api.SupportEventSubscription);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSupportApi(
+        mock,
+      ).organizations.supportEventSubscriptions;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_showDeleted = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v2beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['showDeleted']!.first,
+            unittest.equals('$arg_showDeleted'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListSupportEventSubscriptionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        showDeleted: arg_showDeleted,
+        $fields: arg_$fields,
+      );
+      checkListSupportEventSubscriptionsResponse(
+        response as api.ListSupportEventSubscriptionsResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSupportApi(
+        mock,
+      ).organizations.supportEventSubscriptions;
+      final arg_request = buildSupportEventSubscription();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SupportEventSubscription.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSupportEventSubscription(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v2beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSupportEventSubscription());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkSupportEventSubscription(response as api.SupportEventSubscription);
+    });
+
+    unittest.test('method--undelete', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSupportApi(
+        mock,
+      ).organizations.supportEventSubscriptions;
+      final arg_request = buildUndeleteSupportEventSubscriptionRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.UndeleteSupportEventSubscriptionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkUndeleteSupportEventSubscriptionRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals('v2beta/'),
+          );
+          pathOffset += 7;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSupportEventSubscription());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.undelete(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkSupportEventSubscription(response as api.SupportEventSubscription);
     });
   });
 }

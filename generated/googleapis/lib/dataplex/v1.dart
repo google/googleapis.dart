@@ -36,6 +36,7 @@
 ///     - [ProjectsLocationsChangeRequestsResource]
 ///     - [ProjectsLocationsDataAttributeBindingsResource]
 ///     - [ProjectsLocationsDataDomainsResource]
+///       - [ProjectsLocationsDataDomainsBindingsResource]
 ///     - [ProjectsLocationsDataProductsResource]
 ///       - [ProjectsLocationsDataProductsDataAssetsResource]
 ///     - [ProjectsLocationsDataScansResource]
@@ -64,7 +65,6 @@
 ///     - [ProjectsLocationsMetadataFeedsResource]
 ///     - [ProjectsLocationsMetadataJobsResource]
 ///     - [ProjectsLocationsOperationsResource]
-///     - [ProjectsLocationsPolicyIntentsResource]
 library;
 
 import 'dart:async' as async;
@@ -801,8 +801,6 @@ class ProjectsLocationsResource {
       ProjectsLocationsMetadataJobsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
-  ProjectsLocationsPolicyIntentsResource get policyIntents =>
-      ProjectsLocationsPolicyIntentsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -861,9 +859,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -974,7 +971,9 @@ class ProjectsLocationsResource {
   /// the provided paths within the Entry. It only works for CUSTOM view.
   ///
   /// [view] - Optional. View to control which parts of an entry the service
-  /// should return.
+  /// should return. Please check the limitations on returned aspects in the
+  /// Entry view documentation. Amount of returned aspects depends on the
+  /// selected Entry View.
   /// Possible string values are:
   /// - "ENTRY_VIEW_UNSPECIFIED" : Unspecified EntryView. Defaults to FULL.
   /// - "BASIC" : Returns entry only, without aspects.
@@ -1645,6 +1644,134 @@ class ProjectsLocationsChangeRequestsResource {
   ProjectsLocationsChangeRequestsResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Approves a ChangeRequest.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ChangeRequest to approve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/changeRequests/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ChangeRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ChangeRequest> approve(
+    GoogleCloudDataplexV1ApproveChangeRequestRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ChangeRequest.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a ChangeRequest.Behavior depends on the caller's permissions and
+  /// the resource's state: 1.
+  ///
+  /// Callers with dataplex.changeRequests.delete can only delete ChangeRequests
+  /// in the NEW state. 2. Callers with the dataplex.changeRequests.adminDelete
+  /// permission can delete ChangeRequests regardless of their state.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ChangeRequest to delete. Format:
+  /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/changeRequests/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag of the ChangeRequest.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a ChangeRequest.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ChangeRequest to retrieve. Format:
+  /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/changeRequests/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ChangeRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ChangeRequest> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ChangeRequest.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1701,6 +1828,157 @@ class ProjectsLocationsChangeRequestsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists ChangeRequests.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// ChangeRequests. Format: projects/{project_number}/locations/{location_id}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter request. Supports filtering by: state, author,
+  /// resource, create_time, update_time.
+  ///
+  /// [orderBy] - Optional. Order by fields for the result.
+  ///
+  /// [pageSize] - Optional. Maximum number of ChangeRequests to return. The
+  /// service may return fewer.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// ListChangeRequests call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ListChangeRequestsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ListChangeRequestsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/changeRequests';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ListChangeRequestsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a ChangeRequest.
+  ///
+  /// Only allowed when the state is NEW.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The relative resource name of the ChangeRequest, of
+  /// the form:
+  /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/changeRequests/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ChangeRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ChangeRequest> patch(
+    GoogleCloudDataplexV1ChangeRequest request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ChangeRequest.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Rejects a ChangeRequest.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ChangeRequest to reject.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/changeRequests/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ChangeRequest].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ChangeRequest> reject(
+    GoogleCloudDataplexV1RejectChangeRequestRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reject';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ChangeRequest.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2258,8 +2536,144 @@ class ProjectsLocationsDataAttributeBindingsResource {
 class ProjectsLocationsDataDomainsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDataDomainsBindingsResource get bindings =>
+      ProjectsLocationsDataDomainsBindingsResource(_requester);
+
   ProjectsLocationsDataDomainsResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Creates a DataDomain resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent location:
+  /// projects/{project_id_or_number}/locations/{location_id}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [dataDomainId] - Required. DataDomain identifier. * Must contain only
+  /// lowercase letters, numbers and hyphens. * Must start with a letter. * Must
+  /// be between 1-63 characters. * Must end with a number or a letter. * Must
+  /// be unique within the project and location.
+  ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDataplexV1DataDomain request,
+    core.String parent, {
+    core.String? dataDomainId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'dataDomainId': ?dataDomainId == null ? null : [dataDomainId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataDomains';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a DataDomain resource (allowed only when there are no bindings).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataDomain:
+  /// projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataDomains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves a DataDomain resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataDomain:
+  /// projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataDomains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1DataDomain].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1DataDomain> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1DataDomain.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Gets the access control policy for a resource.
   ///
@@ -2317,6 +2731,119 @@ class ProjectsLocationsDataDomainsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists DataDomain resources in a project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent location:
+  /// projects/{project_id_or_number}/locations/{location_id}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter request. Supports filter by
+  /// parent_data_domain.
+  ///
+  /// [orderBy] - Optional. Order by fields for the result.
+  ///
+  /// [pageSize] - Optional. Maximum number of DataDomains to return. The
+  /// service may return fewer. If unspecified, at most 50 domains will be
+  /// returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// ListDataDomains call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ListDataDomainsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ListDataDomainsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dataDomains';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ListDataDomainsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a DataDomain resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The relative resource name of the DataDomain, of the
+  /// form:
+  /// projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataDomains/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Mask of fields to update.
+  ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudDataplexV1DataDomain request,
+    core.String name, {
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2418,6 +2945,209 @@ class ProjectsLocationsDataDomainsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDataDomainsBindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataDomainsBindingsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a DataDomainBinding resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent DataDomain:
+  /// projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataDomains/\[^/\]+$`.
+  ///
+  /// [dataDomainBindingId] - Optional. DataDomainBinding identifier. * Must
+  /// contain only lowercase letters, numbers and hyphens. * Must start with a
+  /// letter. * Must be between 1-63 characters. * Must end with a number or a
+  /// letter. * Must be unique within the parent DataDomain. If not provided, a
+  /// system-generated UUID will be used.
+  ///
+  /// [validateOnly] - Optional. Only validate the request, but do not perform
+  /// mutations.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDataplexV1DataDomainBinding request,
+    core.String parent, {
+    core.String? dataDomainBindingId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'dataDomainBindingId': ?dataDomainBindingId == null
+          ? null
+          : [dataDomainBindingId],
+      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a DataDomainBinding resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataDomainBinding:
+  /// projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}/bindings/{binding_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataDomains/\[^/\]+/bindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves a DataDomainBinding resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the DataDomainBinding:
+  /// projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}/bindings/{binding_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataDomains/\[^/\]+/bindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1DataDomainBinding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1DataDomainBinding> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1DataDomainBinding.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists DataDomainBinding resources under a DataDomain.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent DataDomain:
+  /// projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataDomains/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter request.
+  ///
+  /// [orderBy] - Optional. Order by fields for the result.
+  ///
+  /// [pageSize] - Optional. Maximum number of DataDomainBindings to return. The
+  /// service may return fewer. If unspecified, at most 50 bindings will be
+  /// returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100.
+  ///
+  /// [pageToken] - Optional. Page token received from a previous
+  /// ListDataDomainBindings call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1ListDataDomainBindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1ListDataDomainBindingsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1ListDataDomainBindingsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2761,6 +3491,55 @@ class ProjectsLocationsDataProductsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Requests access to a data product.
+  ///
+  /// This will trigger an access approval workflow, and the requester will need
+  /// to wait for the approval to be granted before they will be able to access
+  /// the data product assets.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the data product. Format:
+  /// projects/{project_number}/locations/{location_id}/dataProducts/{data_product_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataProducts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDataplexV1RequestDataProductAccessResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDataplexV1RequestDataProductAccessResponse>
+  requestAccess(
+    GoogleCloudDataplexV1RequestDataProductAccessRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':requestAccess';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDataplexV1RequestDataProductAccessResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3162,10 +3941,11 @@ class ProjectsLocationsDataScansResource {
   /// region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [dataScanId] - Required. DataScan identifier. Must contain only lowercase
-  /// letters, numbers and hyphens. Must start with a letter. Must end with a
-  /// number or a letter. Must be between 1-63 characters. Must be unique within
-  /// the customer project / location.
+  /// [dataScanId] - Optional. DataScan identifier. If not provided, a unique ID
+  /// will be generated with the prefix "data-scan-". Must contain only
+  /// lowercase letters, numbers and hyphens. Must start with a letter. Must end
+  /// with a number or a letter. Must be between 1-63 characters. Must be unique
+  /// within the customer project / location.
   ///
   /// [validateOnly] - Optional. Only validate the request, but do not perform
   /// mutations. The default is false.
@@ -5325,7 +6105,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// the provided paths within the Entry. It only works for CUSTOM view.
   ///
   /// [view] - Optional. View to control which parts of an entry the service
-  /// should return.
+  /// should return. Please check the limitations on returned aspects in the
+  /// Entry view documentation. Amount of returned aspects depends on the
+  /// selected Entry View.
   /// Possible string values are:
   /// - "ENTRY_VIEW_UNSPECIFIED" : Unspecified EntryView. Defaults to FULL.
   /// - "BASIC" : Returns entry only, without aspects.
@@ -10937,174 +11719,6 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
-class ProjectsLocationsPolicyIntentsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsPolicyIntentsResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/policyIntents/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy.Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected.Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset.The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1.To learn which resources support
-  /// conditions in their IAM policies, see the IAM documentation
-  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
-          ? null
-          : ['${options_requestedPolicyVersion}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
-  /// PERMISSION_DENIED errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/policyIntents/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> setIamPolicy(
-    GoogleIamV1SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Returns permissions that a caller has on the specified resource.
-  ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
-  /// used for building permission-aware UIs and command-line tools, not for
-  /// authorization checking. This operation may "fail open" without warning.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/policyIntents/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
-    GoogleIamV1TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1TestIamPermissionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -11467,6 +12081,35 @@ typedef GoogleCloudDataplexV1ActionMissingResource = $Empty;
 /// service account associated with the lake instance is not authorized to
 /// access or manage the resource associated with an asset.
 typedef GoogleCloudDataplexV1ActionUnauthorizedResource = $Empty;
+
+/// Request message for ApproveChangeRequest.
+class GoogleCloudDataplexV1ApproveChangeRequestRequest {
+  /// The comment or reason for approving the ChangeRequest.
+  ///
+  /// Maximum length is 1024 characters.
+  ///
+  /// Optional.
+  core.String? comment;
+
+  /// The etag of the ChangeRequest.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  GoogleCloudDataplexV1ApproveChangeRequestRequest({this.comment, this.etag});
+
+  GoogleCloudDataplexV1ApproveChangeRequestRequest.fromJson(core.Map json_)
+    : this(
+        comment: json_['comment'] as core.String?,
+        etag: json_['etag'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final comment = this.comment;
+    final etag = this.etag;
+    return {'comment': ?comment, 'etag': ?etag};
+  }
+}
 
 /// Represents a single piece of metadata describing an entry or entry link.
 class GoogleCloudDataplexV1Aspect {
@@ -12674,6 +13317,695 @@ typedef GoogleCloudDataplexV1CancelJobRequest = $Empty;
 /// Cancel metadata job request.
 typedef GoogleCloudDataplexV1CancelMetadataJobRequest = $Empty;
 
+/// Represents a proposed change to a metadata resource.
+class GoogleCloudDataplexV1ChangeRequest {
+  /// The email address of the user who approved/rejected the ChangeRequest.
+  ///
+  /// Output only.
+  core.String? approver;
+
+  /// The email address of the user who created the ChangeRequest.
+  ///
+  /// Output only.
+  core.String? author;
+
+  /// The type of change represented by the change_payload.
+  ///
+  /// This field is derived from the populated field in the change_payload
+  /// oneof.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CHANGE_TYPE_UNSPECIFIED" : State unspecified.
+  /// - "CREATE_ENTRY" : Request to create an Entry.
+  /// - "UPDATE_ENTRY" : Request to update an Entry.
+  /// - "DELETE_ENTRY" : Request to delete an Entry.
+  /// - "CREATE_ENTRY_LINK" : Request to create an EntryLink.
+  /// - "DELETE_ENTRY_LINK" : Request to delete an EntryLink.
+  /// - "CREATE_GLOSSARY" : Request to create a Glossary.
+  /// - "UPDATE_GLOSSARY" : Request to update a Glossary.
+  /// - "DELETE_GLOSSARY" : Request to delete a Glossary.
+  /// - "CREATE_GLOSSARY_CATEGORY" : Request to create a GlossaryCategory.
+  /// - "UPDATE_GLOSSARY_CATEGORY" : Request to update a GlossaryCategory.
+  /// - "DELETE_GLOSSARY_CATEGORY" : Request to delete a GlossaryCategory.
+  /// - "CREATE_GLOSSARY_TERM" : Request to create a GlossaryTerm.
+  /// - "UPDATE_GLOSSARY_TERM" : Request to update a GlossaryTerm.
+  /// - "DELETE_GLOSSARY_TERM" : Request to delete a GlossaryTerm.
+  /// - "REQUEST_DATA_PRODUCT_ACCESS" : Request to request Data Product access.
+  core.String? changeType;
+
+  /// Payload for creating an Entry.
+  GoogleCloudDataplexV1CreateEntryRequest? createEntry;
+
+  /// Payload for creating an EntryLink.
+  GoogleCloudDataplexV1CreateEntryLinkRequest? createEntryLink;
+
+  /// Payload for creating a Glossary.
+  GoogleCloudDataplexV1CreateGlossaryRequest? createGlossary;
+
+  /// Payload for creating a GlossaryCategory.
+  GoogleCloudDataplexV1CreateGlossaryCategoryRequest? createGlossaryCategory;
+
+  /// Payload for creating a GlossaryTerm.
+  GoogleCloudDataplexV1CreateGlossaryTermRequest? createGlossaryTerm;
+
+  /// The time when the ChangeRequest was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Payload for Data Product access request.
+  GoogleCloudDataplexV1DataProductAccessRequest? dataProductAccessRequest;
+
+  /// Payload for deleting an Entry.
+  GoogleCloudDataplexV1DeleteEntryRequest? deleteEntry;
+
+  /// Payload for deleting an EntryLink.
+  GoogleCloudDataplexV1DeleteEntryLinkRequest? deleteEntryLink;
+
+  /// Payload for deleting a Glossary.
+  GoogleCloudDataplexV1DeleteGlossaryRequest? deleteGlossary;
+
+  /// Payload for deleting a GlossaryCategory.
+  GoogleCloudDataplexV1DeleteGlossaryCategoryRequest? deleteGlossaryCategory;
+
+  /// Payload for deleting a GlossaryTerm.
+  GoogleCloudDataplexV1DeleteGlossaryTermRequest? deleteGlossaryTerm;
+
+  /// This checksum is computed by the service.
+  ///
+  /// It can be sent on update and delete requests to ensure the client has an
+  /// up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Justification of the ChangeRequest.
+  ///
+  /// This should explain why the change is needed or why it should be approved.
+  ///
+  /// Optional.
+  core.String? justification;
+
+  /// User-defined labels for the ChangeRequest.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The relative resource name of the ChangeRequest, of the form:
+  /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+  core.String? name;
+
+  /// The reason provided for rejecting the ChangeRequest.
+  ///
+  /// Output only.
+  core.String? rejectionComment;
+
+  /// The full resource name of the target resource to be modified.
+  ///
+  /// Example:
+  /// //dataplex.googleapis.com/projects/my-project/locations/us-central1/entryGroups/my-group/entries/my-entry
+  ///
+  /// Output only.
+  core.String? resource;
+
+  /// The comment provided by the reviewer when approving or rejecting the
+  /// ChangeRequest.
+  ///
+  /// Maximum length is 1024 characters.
+  ///
+  /// Output only.
+  core.String? reviewerComment;
+
+  /// The current state of the ChangeRequest.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "NEW" : The change is proposed and new.
+  /// - "APPROVED" : The change has been approved.
+  /// - "REJECTED" : The change has been rejected.
+  /// - "EXPIRED" : The change request has expired.
+  /// - "REVOKED" : The approved change has been revoked.
+  core.String? state;
+
+  /// System generated globally unique ID for the ChangeRequest.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Payload for updating an Entry.
+  GoogleCloudDataplexV1UpdateEntryRequest? updateEntry;
+
+  /// Payload for updating a Glossary.
+  GoogleCloudDataplexV1UpdateGlossaryRequest? updateGlossary;
+
+  /// Payload for updating a GlossaryCategory.
+  GoogleCloudDataplexV1UpdateGlossaryCategoryRequest? updateGlossaryCategory;
+
+  /// Payload for updating a GlossaryTerm.
+  GoogleCloudDataplexV1UpdateGlossaryTermRequest? updateGlossaryTerm;
+
+  /// The time when the ChangeRequest was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDataplexV1ChangeRequest({
+    this.approver,
+    this.author,
+    this.changeType,
+    this.createEntry,
+    this.createEntryLink,
+    this.createGlossary,
+    this.createGlossaryCategory,
+    this.createGlossaryTerm,
+    this.createTime,
+    this.dataProductAccessRequest,
+    this.deleteEntry,
+    this.deleteEntryLink,
+    this.deleteGlossary,
+    this.deleteGlossaryCategory,
+    this.deleteGlossaryTerm,
+    this.etag,
+    this.justification,
+    this.labels,
+    this.name,
+    this.rejectionComment,
+    this.resource,
+    this.reviewerComment,
+    this.state,
+    this.uid,
+    this.updateEntry,
+    this.updateGlossary,
+    this.updateGlossaryCategory,
+    this.updateGlossaryTerm,
+    this.updateTime,
+  });
+
+  GoogleCloudDataplexV1ChangeRequest.fromJson(core.Map json_)
+    : this(
+        approver: json_['approver'] as core.String?,
+        author: json_['author'] as core.String?,
+        changeType: json_['changeType'] as core.String?,
+        createEntry: json_.containsKey('createEntry')
+            ? GoogleCloudDataplexV1CreateEntryRequest.fromJson(
+                json_['createEntry'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createEntryLink: json_.containsKey('createEntryLink')
+            ? GoogleCloudDataplexV1CreateEntryLinkRequest.fromJson(
+                json_['createEntryLink'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createGlossary: json_.containsKey('createGlossary')
+            ? GoogleCloudDataplexV1CreateGlossaryRequest.fromJson(
+                json_['createGlossary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createGlossaryCategory: json_.containsKey('createGlossaryCategory')
+            ? GoogleCloudDataplexV1CreateGlossaryCategoryRequest.fromJson(
+                json_['createGlossaryCategory']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createGlossaryTerm: json_.containsKey('createGlossaryTerm')
+            ? GoogleCloudDataplexV1CreateGlossaryTermRequest.fromJson(
+                json_['createGlossaryTerm']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        dataProductAccessRequest: json_.containsKey('dataProductAccessRequest')
+            ? GoogleCloudDataplexV1DataProductAccessRequest.fromJson(
+                json_['dataProductAccessRequest']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deleteEntry: json_.containsKey('deleteEntry')
+            ? GoogleCloudDataplexV1DeleteEntryRequest.fromJson(
+                json_['deleteEntry'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deleteEntryLink: json_.containsKey('deleteEntryLink')
+            ? GoogleCloudDataplexV1DeleteEntryLinkRequest.fromJson(
+                json_['deleteEntryLink'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deleteGlossary: json_.containsKey('deleteGlossary')
+            ? GoogleCloudDataplexV1DeleteGlossaryRequest.fromJson(
+                json_['deleteGlossary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deleteGlossaryCategory: json_.containsKey('deleteGlossaryCategory')
+            ? GoogleCloudDataplexV1DeleteGlossaryCategoryRequest.fromJson(
+                json_['deleteGlossaryCategory']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deleteGlossaryTerm: json_.containsKey('deleteGlossaryTerm')
+            ? GoogleCloudDataplexV1DeleteGlossaryTermRequest.fromJson(
+                json_['deleteGlossaryTerm']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        etag: json_['etag'] as core.String?,
+        justification: json_['justification'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        rejectionComment: json_['rejectionComment'] as core.String?,
+        resource: json_['resource'] as core.String?,
+        reviewerComment: json_['reviewerComment'] as core.String?,
+        state: json_['state'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateEntry: json_.containsKey('updateEntry')
+            ? GoogleCloudDataplexV1UpdateEntryRequest.fromJson(
+                json_['updateEntry'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateGlossary: json_.containsKey('updateGlossary')
+            ? GoogleCloudDataplexV1UpdateGlossaryRequest.fromJson(
+                json_['updateGlossary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateGlossaryCategory: json_.containsKey('updateGlossaryCategory')
+            ? GoogleCloudDataplexV1UpdateGlossaryCategoryRequest.fromJson(
+                json_['updateGlossaryCategory']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateGlossaryTerm: json_.containsKey('updateGlossaryTerm')
+            ? GoogleCloudDataplexV1UpdateGlossaryTermRequest.fromJson(
+                json_['updateGlossaryTerm']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final approver = this.approver;
+    final author = this.author;
+    final changeType = this.changeType;
+    final createEntry = this.createEntry;
+    final createEntryLink = this.createEntryLink;
+    final createGlossary = this.createGlossary;
+    final createGlossaryCategory = this.createGlossaryCategory;
+    final createGlossaryTerm = this.createGlossaryTerm;
+    final createTime = this.createTime;
+    final dataProductAccessRequest = this.dataProductAccessRequest;
+    final deleteEntry = this.deleteEntry;
+    final deleteEntryLink = this.deleteEntryLink;
+    final deleteGlossary = this.deleteGlossary;
+    final deleteGlossaryCategory = this.deleteGlossaryCategory;
+    final deleteGlossaryTerm = this.deleteGlossaryTerm;
+    final etag = this.etag;
+    final justification = this.justification;
+    final labels = this.labels;
+    final name = this.name;
+    final rejectionComment = this.rejectionComment;
+    final resource = this.resource;
+    final reviewerComment = this.reviewerComment;
+    final state = this.state;
+    final uid = this.uid;
+    final updateEntry = this.updateEntry;
+    final updateGlossary = this.updateGlossary;
+    final updateGlossaryCategory = this.updateGlossaryCategory;
+    final updateGlossaryTerm = this.updateGlossaryTerm;
+    final updateTime = this.updateTime;
+    return {
+      'approver': ?approver,
+      'author': ?author,
+      'changeType': ?changeType,
+      'createEntry': ?createEntry,
+      'createEntryLink': ?createEntryLink,
+      'createGlossary': ?createGlossary,
+      'createGlossaryCategory': ?createGlossaryCategory,
+      'createGlossaryTerm': ?createGlossaryTerm,
+      'createTime': ?createTime,
+      'dataProductAccessRequest': ?dataProductAccessRequest,
+      'deleteEntry': ?deleteEntry,
+      'deleteEntryLink': ?deleteEntryLink,
+      'deleteGlossary': ?deleteGlossary,
+      'deleteGlossaryCategory': ?deleteGlossaryCategory,
+      'deleteGlossaryTerm': ?deleteGlossaryTerm,
+      'etag': ?etag,
+      'justification': ?justification,
+      'labels': ?labels,
+      'name': ?name,
+      'rejectionComment': ?rejectionComment,
+      'resource': ?resource,
+      'reviewerComment': ?reviewerComment,
+      'state': ?state,
+      'uid': ?uid,
+      'updateEntry': ?updateEntry,
+      'updateGlossary': ?updateGlossary,
+      'updateGlossaryCategory': ?updateGlossaryCategory,
+      'updateGlossaryTerm': ?updateGlossaryTerm,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Identity of a business contact.
+class GoogleCloudDataplexV1ContactIdentity {
+  /// Email ID or freeform ID of the Contact person.
+  ///
+  /// Optional.
+  core.String? contactId;
+
+  /// Name of the contact person for the Data Domain; unvalidated freeform text.
+  ///
+  /// Required.
+  core.String? contactName;
+
+  /// Designation of the person i.e. Data Steward or Data Analyst.
+  ///
+  /// Example values: owner, steward, producer, admin.
+  ///
+  /// Required.
+  core.String? contactRole;
+
+  GoogleCloudDataplexV1ContactIdentity({
+    this.contactId,
+    this.contactName,
+    this.contactRole,
+  });
+
+  GoogleCloudDataplexV1ContactIdentity.fromJson(core.Map json_)
+    : this(
+        contactId: json_['contactId'] as core.String?,
+        contactName: json_['contactName'] as core.String?,
+        contactRole: json_['contactRole'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contactId = this.contactId;
+    final contactName = this.contactName;
+    final contactRole = this.contactRole;
+    return {
+      'contactId': ?contactId,
+      'contactName': ?contactName,
+      'contactRole': ?contactRole,
+    };
+  }
+}
+
+/// Business contacts part of business context of a Data Domain.
+///
+/// Corresponds to the Contacts Aspect in Dataplex Universal Catalog.
+class GoogleCloudDataplexV1Contacts {
+  /// Identities of the business contacts.
+  ///
+  /// Required.
+  core.List<GoogleCloudDataplexV1ContactIdentity>? identities;
+
+  GoogleCloudDataplexV1Contacts({this.identities});
+
+  GoogleCloudDataplexV1Contacts.fromJson(core.Map json_)
+    : this(
+        identities: (json_['identities'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDataplexV1ContactIdentity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final identities = this.identities;
+    return {'identities': ?identities};
+  }
+}
+
+/// Request message for CreateEntryLink.
+class GoogleCloudDataplexV1CreateEntryLinkRequest {
+  /// Entry Link resource.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1EntryLink? entryLink;
+
+  /// Entry Link identifier * Must contain only lowercase letters, numbers and
+  /// hyphens.
+  ///
+  /// * Must start with a letter. * Must be between 1-63 characters. * Must end
+  /// with a number or a letter. * Must be unique within the EntryGroup.
+  ///
+  /// Required.
+  core.String? entryLinkId;
+
+  /// The resource name of the parent Entry Group:
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+  ///
+  /// Required.
+  core.String? parent;
+
+  GoogleCloudDataplexV1CreateEntryLinkRequest({
+    this.entryLink,
+    this.entryLinkId,
+    this.parent,
+  });
+
+  GoogleCloudDataplexV1CreateEntryLinkRequest.fromJson(core.Map json_)
+    : this(
+        entryLink: json_.containsKey('entryLink')
+            ? GoogleCloudDataplexV1EntryLink.fromJson(
+                json_['entryLink'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        entryLinkId: json_['entryLinkId'] as core.String?,
+        parent: json_['parent'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entryLink = this.entryLink;
+    final entryLinkId = this.entryLinkId;
+    final parent = this.parent;
+    return {
+      'entryLink': ?entryLink,
+      'entryLinkId': ?entryLinkId,
+      'parent': ?parent,
+    };
+  }
+}
+
+/// Create Entry request.
+class GoogleCloudDataplexV1CreateEntryRequest {
+  /// Entry resource.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1Entry? entry;
+
+  /// Entry identifier.
+  ///
+  /// It has to be unique within an Entry Group.Entries corresponding to Google
+  /// Cloud resources use an Entry ID format based on full resource names
+  /// (https://cloud.google.com/apis/design/resource_names#full_resource_name).
+  /// The format is a full resource name of the resource without the prefix
+  /// double slashes in the API service name part of the full resource name.
+  /// This allows retrieval of entries using their associated resource name.For
+  /// example, if the full resource name of a resource is
+  /// //library.googleapis.com/shelves/shelf1/books/book2, then the suggested
+  /// entry_id is library.googleapis.com/shelves/shelf1/books/book2.It is also
+  /// suggested to follow the same convention for entries corresponding to
+  /// resources from providers or systems other than Google Cloud.The maximum
+  /// size of the field is 4000 characters.
+  ///
+  /// Required.
+  core.String? entryId;
+
+  /// The resource name of the parent Entry Group:
+  /// projects/{project}/locations/{location}/entryGroups/{entry_group}.
+  ///
+  /// Required.
+  core.String? parent;
+
+  GoogleCloudDataplexV1CreateEntryRequest({
+    this.entry,
+    this.entryId,
+    this.parent,
+  });
+
+  GoogleCloudDataplexV1CreateEntryRequest.fromJson(core.Map json_)
+    : this(
+        entry: json_.containsKey('entry')
+            ? GoogleCloudDataplexV1Entry.fromJson(
+                json_['entry'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        entryId: json_['entryId'] as core.String?,
+        parent: json_['parent'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entry = this.entry;
+    final entryId = this.entryId;
+    final parent = this.parent;
+    return {'entry': ?entry, 'entryId': ?entryId, 'parent': ?parent};
+  }
+}
+
+/// Creates a new GlossaryCategory under the specified Glossary.
+class GoogleCloudDataplexV1CreateGlossaryCategoryRequest {
+  /// The GlossaryCategory to create.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1GlossaryCategory? category;
+
+  /// GlossaryCategory identifier.
+  ///
+  /// Required.
+  core.String? categoryId;
+
+  /// The parent resource where this GlossaryCategory will be created.
+  ///
+  /// Format:
+  /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
+  /// where locationId refers to a Google Cloud region.
+  ///
+  /// Required.
+  core.String? parent;
+
+  GoogleCloudDataplexV1CreateGlossaryCategoryRequest({
+    this.category,
+    this.categoryId,
+    this.parent,
+  });
+
+  GoogleCloudDataplexV1CreateGlossaryCategoryRequest.fromJson(core.Map json_)
+    : this(
+        category: json_.containsKey('category')
+            ? GoogleCloudDataplexV1GlossaryCategory.fromJson(
+                json_['category'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        categoryId: json_['categoryId'] as core.String?,
+        parent: json_['parent'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final categoryId = this.categoryId;
+    final parent = this.parent;
+    return {
+      'category': ?category,
+      'categoryId': ?categoryId,
+      'parent': ?parent,
+    };
+  }
+}
+
+/// Create Glossary Request
+class GoogleCloudDataplexV1CreateGlossaryRequest {
+  /// The Glossary to create.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1Glossary? glossary;
+
+  /// Glossary ID: Glossary identifier.
+  ///
+  /// Required.
+  core.String? glossaryId;
+
+  /// The parent resource where this Glossary will be created.
+  ///
+  /// Format: projects/{project_id_or_number}/locations/{location_id} where
+  /// location_id refers to a Google Cloud region.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// Validates the request without actually creating the Glossary.
+  ///
+  /// Default: false.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  GoogleCloudDataplexV1CreateGlossaryRequest({
+    this.glossary,
+    this.glossaryId,
+    this.parent,
+    this.validateOnly,
+  });
+
+  GoogleCloudDataplexV1CreateGlossaryRequest.fromJson(core.Map json_)
+    : this(
+        glossary: json_.containsKey('glossary')
+            ? GoogleCloudDataplexV1Glossary.fromJson(
+                json_['glossary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        glossaryId: json_['glossaryId'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final glossary = this.glossary;
+    final glossaryId = this.glossaryId;
+    final parent = this.parent;
+    final validateOnly = this.validateOnly;
+    return {
+      'glossary': ?glossary,
+      'glossaryId': ?glossaryId,
+      'parent': ?parent,
+      'validateOnly': ?validateOnly,
+    };
+  }
+}
+
+/// Creates a new GlossaryTerm under the specified Glossary.
+class GoogleCloudDataplexV1CreateGlossaryTermRequest {
+  /// The parent resource where the GlossaryTerm will be created.
+  ///
+  /// Format:
+  /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
+  /// where location_id refers to a Google Cloud region.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The GlossaryTerm to create.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1GlossaryTerm? term;
+
+  /// GlossaryTerm identifier.
+  ///
+  /// Required.
+  core.String? termId;
+
+  GoogleCloudDataplexV1CreateGlossaryTermRequest({
+    this.parent,
+    this.term,
+    this.termId,
+  });
+
+  GoogleCloudDataplexV1CreateGlossaryTermRequest.fromJson(core.Map json_)
+    : this(
+        parent: json_['parent'] as core.String?,
+        term: json_.containsKey('term')
+            ? GoogleCloudDataplexV1GlossaryTerm.fromJson(
+                json_['term'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        termId: json_['termId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final parent = this.parent;
+    final term = this.term;
+    final termId = this.termId;
+    return {'parent': ?parent, 'term': ?term, 'termId': ?termId};
+  }
+}
+
 /// DataAccessSpec holds the access control configuration to be enforced on data
 /// stored within resources (eg: rows, columns in BigQuery Tables).
 ///
@@ -13660,16 +14992,10 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions {
 
 /// Describes options for unstructured data discovery.
 class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions {
-  /// Deprecated: Use semantic_inference_enabled instead.
-  ///
-  /// Specifies whether deeper entity inference over the objects' contents using
-  /// GenAI is enabled.
+  /// Whether to use the global model endpoint.
   ///
   /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.bool? entityInferenceEnabled;
+  core.bool? globalEndpointEnabled;
 
   /// Specifies whether deeper semantic inference over the objects' contents
   /// using GenAI is enabled.
@@ -13678,23 +15004,23 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions
   core.bool? semanticInferenceEnabled;
 
   GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions({
-    this.entityInferenceEnabled,
+    this.globalEndpointEnabled,
     this.semanticInferenceEnabled,
   });
 
   GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions.fromJson(
     core.Map json_,
   ) : this(
-        entityInferenceEnabled: json_['entityInferenceEnabled'] as core.bool?,
+        globalEndpointEnabled: json_['globalEndpointEnabled'] as core.bool?,
         semanticInferenceEnabled:
             json_['semanticInferenceEnabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final entityInferenceEnabled = this.entityInferenceEnabled;
+    final globalEndpointEnabled = this.globalEndpointEnabled;
     final semanticInferenceEnabled = this.semanticInferenceEnabled;
     return {
-      'entityInferenceEnabled': ?entityInferenceEnabled,
+      'globalEndpointEnabled': ?globalEndpointEnabled,
       'semanticInferenceEnabled': ?semanticInferenceEnabled,
     };
   }
@@ -14119,12 +15445,209 @@ class GoogleCloudDataplexV1DataDocumentationSpec {
   }
 }
 
+/// A DataDomain is a logical grouping of data resources for governance,
+/// discovery, and management at scale.
+class GoogleCloudDataplexV1DataDomain {
+  /// Contact info for the Data Domains.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1Contacts? contacts;
+
+  /// The time at which the DataDomain was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description of the DataDomain.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User-friendly display name.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// User-defined labels for the DataDomain.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The relative resource name of the DataDomain, of the form:
+  /// projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}
+  core.String? name;
+
+  /// The resource name of the parent DataDomain.
+  ///
+  /// Empty if this is a top-level DataDomain. Format:
+  /// projects/{project_id_or_number}/locations/{location}/dataDomains/{parent_data_domain_id}
+  /// This field is immutable after creation.
+  ///
+  /// Optional. Immutable.
+  core.String? parentDataDomain;
+
+  /// Output-only policy member strings of this resource.
+  ///
+  /// Output only.
+  GoogleIamV1ResourcePolicyMember? policyMember;
+
+  /// System-generated globally unique ID for the DataDomain.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time at which the DataDomain was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudDataplexV1DataDomain({
+    this.contacts,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.labels,
+    this.name,
+    this.parentDataDomain,
+    this.policyMember,
+    this.uid,
+    this.updateTime,
+  });
+
+  GoogleCloudDataplexV1DataDomain.fromJson(core.Map json_)
+    : this(
+        contacts: json_.containsKey('contacts')
+            ? GoogleCloudDataplexV1Contacts.fromJson(
+                json_['contacts'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        parentDataDomain: json_['parentDataDomain'] as core.String?,
+        policyMember: json_.containsKey('policyMember')
+            ? GoogleIamV1ResourcePolicyMember.fromJson(
+                json_['policyMember'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contacts = this.contacts;
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final name = this.name;
+    final parentDataDomain = this.parentDataDomain;
+    final policyMember = this.policyMember;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'contacts': ?contacts,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'parentDataDomain': ?parentDataDomain,
+      'policyMember': ?policyMember,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// DataDomainBinding represents a rule that includes a Google Cloud resource
+/// and its contents into a DataDomain.
+class GoogleCloudDataplexV1DataDomainBinding {
+  /// The time at which the DataDomainBinding was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The relative resource name of the DataDomainBinding. Format:
+  /// projects/{project_id_or_number}/locations/{location}/dataDomains/{data_domain_id}/bindings/{binding_id}
+  core.String? name;
+
+  /// The full resource name of the Google Cloud resource to be bound (i.e.
+  /// included together with its contents) to the DataDomain.Format: IAM Full
+  /// resource name (https://docs.cloud.google.com/iam/docs/full-resource-names)
+  /// Examples: - GCP Project:
+  /// //cloudresourcemanager.googleapis.com/projects/{project-id} - BigQuery
+  /// Dataset:
+  /// //bigquery.googleapis.com/projects/{project-id}/datasets/{dataset-id} -
+  /// BigQuery Table:
+  /// //bigquery.googleapis.com/projects/{project-id}/datasets/{dataset-id}/tables/{table-id}
+  /// - Dataplex Data Product:
+  /// //dataplex.googleapis.com/projects/{project-number}/locations/{location}/dataProducts/{data-product-id}Authorization:
+  /// the resource to be bound must first grant an IAM role with the
+  /// resource-specific setIamPolicy permission to the DataDomain.
+  ///
+  /// Example: - resource:
+  /// //bigquery.googleapis.com/projects/{project-id}/datasets/{dataset-id} -
+  /// IAM role: with bigquery.datasets.setIamPolicy permission (e.g.
+  /// roles/owner) - IAM member:
+  /// principal://dataplex.googleapis.com/projects/{project-number}/name/locations/{location}/dataDomains/{data-domain-id}
+  ///
+  /// Required. Immutable.
+  core.String? resource;
+
+  /// System-generated unique ID.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  GoogleCloudDataplexV1DataDomainBinding({
+    this.createTime,
+    this.name,
+    this.resource,
+    this.uid,
+  });
+
+  GoogleCloudDataplexV1DataDomainBinding.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        resource: json_['resource'] as core.String?,
+        uid: json_['uid'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final name = this.name;
+    final resource = this.resource;
+    final uid = this.uid;
+    return {
+      'createTime': ?createTime,
+      'name': ?name,
+      'resource': ?resource,
+      'uid': ?uid,
+    };
+  }
+}
+
 /// A data product is a curated collection of data assets, packaged to address
 /// specific use cases.
 ///
 /// It's a way to manage and share data in a more organized, product-like
 /// manner.
 class GoogleCloudDataplexV1DataProduct {
+  /// Configuration for access approval for the data product.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataProductAccessApprovalConfig? accessApprovalConfig;
+
   /// Data product access groups by access group id as key.
   ///
   /// If data product is used only for packaging data assets, then access groups
@@ -14213,6 +15736,7 @@ class GoogleCloudDataplexV1DataProduct {
   core.String? updateTime;
 
   GoogleCloudDataplexV1DataProduct({
+    this.accessApprovalConfig,
     this.accessGroups,
     this.assetCount,
     this.createTime,
@@ -14229,6 +15753,12 @@ class GoogleCloudDataplexV1DataProduct {
 
   GoogleCloudDataplexV1DataProduct.fromJson(core.Map json_)
     : this(
+        accessApprovalConfig: json_.containsKey('accessApprovalConfig')
+            ? GoogleCloudDataplexV1DataProductAccessApprovalConfig.fromJson(
+                json_['accessApprovalConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         accessGroups:
             (json_['accessGroups'] as core.Map<core.String, core.dynamic>?)
                 ?.map(
@@ -14257,6 +15787,7 @@ class GoogleCloudDataplexV1DataProduct {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final accessApprovalConfig = this.accessApprovalConfig;
     final accessGroups = this.accessGroups;
     final assetCount = this.assetCount;
     final createTime = this.createTime;
@@ -14270,6 +15801,7 @@ class GoogleCloudDataplexV1DataProduct {
     final uid = this.uid;
     final updateTime = this.updateTime;
     return {
+      'accessApprovalConfig': ?accessApprovalConfig,
       'accessGroups': ?accessGroups,
       'assetCount': ?assetCount,
       'createTime': ?createTime,
@@ -14283,6 +15815,31 @@ class GoogleCloudDataplexV1DataProduct {
       'uid': ?uid,
       'updateTime': ?updateTime,
     };
+  }
+}
+
+/// Configuration for access approval for the data product.
+class GoogleCloudDataplexV1DataProductAccessApprovalConfig {
+  /// Specifies the email addresses of users who are potential approvers and are
+  /// notified when an access request is made for the data product.
+  ///
+  /// The maximum number of emails allowed is 10.
+  ///
+  /// Optional.
+  core.List<core.String>? approverEmails;
+
+  GoogleCloudDataplexV1DataProductAccessApprovalConfig({this.approverEmails});
+
+  GoogleCloudDataplexV1DataProductAccessApprovalConfig.fromJson(core.Map json_)
+    : this(
+        approverEmails: (json_['approverEmails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final approverEmails = this.approverEmails;
+    return {'approverEmails': ?approverEmails};
   }
 }
 
@@ -14348,6 +15905,72 @@ class GoogleCloudDataplexV1DataProductAccessGroup {
   }
 }
 
+/// Message for requesting access to a Data Product.
+///
+/// This will be used to create a ChangeRequest of type
+/// REQUEST_DATA_PRODUCT_ACCESS.
+class GoogleCloudDataplexV1DataProductAccessRequest {
+  /// The display name of the access group defined in the Data Product for which
+  /// access is being requested.
+  ///
+  /// Output only.
+  core.String? accessGroupDisplayName;
+
+  /// The ID of the access group for which access is being requested.
+  ///
+  /// This corresponds to the unique identifier of the AccessGroup defined in
+  /// the Data Product.
+  ///
+  /// Required.
+  core.String? accessGroupId;
+
+  /// The resource name of the data product.
+  ///
+  /// Format:
+  /// projects/{project_number}/locations/{location_id}/dataProducts/{data_product_id}
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The principal for which access is being requested in IAM format.
+  ///
+  /// If not specified, the requestor's principal will be used. Example:
+  /// serviceAccount:my-sa@my-project.iam.gserviceaccount.com. Only service
+  /// account principals are currently supported.
+  /// https://cloud.google.com/iam/docs/principal-identifiers
+  ///
+  /// Optional.
+  core.String? requestedPrincipal;
+
+  GoogleCloudDataplexV1DataProductAccessRequest({
+    this.accessGroupDisplayName,
+    this.accessGroupId,
+    this.parent,
+    this.requestedPrincipal,
+  });
+
+  GoogleCloudDataplexV1DataProductAccessRequest.fromJson(core.Map json_)
+    : this(
+        accessGroupDisplayName: json_['accessGroupDisplayName'] as core.String?,
+        accessGroupId: json_['accessGroupId'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        requestedPrincipal: json_['requestedPrincipal'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessGroupDisplayName = this.accessGroupDisplayName;
+    final accessGroupId = this.accessGroupId;
+    final parent = this.parent;
+    final requestedPrincipal = this.requestedPrincipal;
+    return {
+      'accessGroupDisplayName': ?accessGroupDisplayName,
+      'accessGroupId': ?accessGroupId,
+      'parent': ?parent,
+      'requestedPrincipal': ?requestedPrincipal,
+    };
+  }
+}
+
 /// Represents the principal entity associated with an access group, as per
 /// https://cloud.google.com/iam/docs/principals-overview.
 class GoogleCloudDataplexV1DataProductPrincipal {
@@ -14357,14 +15980,27 @@ class GoogleCloudDataplexV1DataProductPrincipal {
   /// Optional.
   core.String? googleGroup;
 
-  GoogleCloudDataplexV1DataProductPrincipal({this.googleGroup});
+  /// Specifies the email of the producer service account, as per
+  /// https://cloud.google.com/iam/docs/principals-overview#service-account.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
+  GoogleCloudDataplexV1DataProductPrincipal({
+    this.googleGroup,
+    this.serviceAccount,
+  });
 
   GoogleCloudDataplexV1DataProductPrincipal.fromJson(core.Map json_)
-    : this(googleGroup: json_['googleGroup'] as core.String?);
+    : this(
+        googleGroup: json_['googleGroup'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final googleGroup = this.googleGroup;
-    return {'googleGroup': ?googleGroup};
+    final serviceAccount = this.serviceAccount;
+    return {'googleGroup': ?googleGroup, 'serviceAccount': ?serviceAccount};
   }
 }
 
@@ -14945,9 +16581,9 @@ class GoogleCloudDataplexV1DataProfileSpec {
   /// other fields such as sampling_percent, row_filter, and column filters.
   /// This mode allows for full scans or custom sampling.
   /// - "LIGHTWEIGHT" : Specifies lightweight profiling mode. This mode is
-  /// optimized for low-latency low-fidelity profiling.When this mode is
-  /// selected, the following fields must not be set: - sampling_percent -
-  /// row_filter - include_fields - exclude_fields
+  /// optimized for low-latency, low-fidelity profiling.When this mode is
+  /// selected, the following fields must not be set: sampling_percent,
+  /// row_filter, include_fields, and exclude_fields.
   core.String? mode;
 
   /// Actions to take upon job completion..
@@ -17081,6 +18717,7 @@ class GoogleCloudDataplexV1DataScan {
   /// - "DATA_PROFILE" : Data profile scan.
   /// - "DATA_DISCOVERY" : Data discovery scan.
   /// - "DATA_DOCUMENTATION" : Data documentation scan.
+  /// - "UNSTRUCTURED_DATA_PROFILE" : Unstructured data profile scan.
   core.String? type;
 
   /// System generated globally unique ID for the scan.
@@ -17090,6 +18727,17 @@ class GoogleCloudDataplexV1DataScan {
   ///
   /// Output only.
   core.String? uid;
+
+  /// The result of an unstructured data profile scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1UnstructuredDataProfileResult?
+  unstructuredDataProfileResult;
+
+  /// Settings for an unstructured data profile scan.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1UnstructuredDataProfileSpec? unstructuredDataProfileSpec;
 
   /// The time when the scan was last updated.
   ///
@@ -17117,6 +18765,8 @@ class GoogleCloudDataplexV1DataScan {
     this.state,
     this.type,
     this.uid,
+    this.unstructuredDataProfileResult,
+    this.unstructuredDataProfileSpec,
     this.updateTime,
   });
 
@@ -17199,6 +18849,20 @@ class GoogleCloudDataplexV1DataScan {
         state: json_['state'] as core.String?,
         type: json_['type'] as core.String?,
         uid: json_['uid'] as core.String?,
+        unstructuredDataProfileResult:
+            json_.containsKey('unstructuredDataProfileResult')
+            ? GoogleCloudDataplexV1UnstructuredDataProfileResult.fromJson(
+                json_['unstructuredDataProfileResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        unstructuredDataProfileSpec:
+            json_.containsKey('unstructuredDataProfileSpec')
+            ? GoogleCloudDataplexV1UnstructuredDataProfileSpec.fromJson(
+                json_['unstructuredDataProfileSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -17223,6 +18887,8 @@ class GoogleCloudDataplexV1DataScan {
     final state = this.state;
     final type = this.type;
     final uid = this.uid;
+    final unstructuredDataProfileResult = this.unstructuredDataProfileResult;
+    final unstructuredDataProfileSpec = this.unstructuredDataProfileSpec;
     final updateTime = this.updateTime;
     return {
       'createTime': ?createTime,
@@ -17245,6 +18911,8 @@ class GoogleCloudDataplexV1DataScan {
       'state': ?state,
       'type': ?type,
       'uid': ?uid,
+      'unstructuredDataProfileResult': ?unstructuredDataProfileResult,
+      'unstructuredDataProfileSpec': ?unstructuredDataProfileSpec,
       'updateTime': ?updateTime,
     };
   }
@@ -17454,12 +19122,24 @@ class GoogleCloudDataplexV1DataScanJob {
   /// - "DATA_PROFILE" : Data profile scan.
   /// - "DATA_DISCOVERY" : Data discovery scan.
   /// - "DATA_DOCUMENTATION" : Data documentation scan.
+  /// - "UNSTRUCTURED_DATA_PROFILE" : Unstructured data profile scan.
   core.String? type;
 
   /// System generated globally unique ID for the DataScanJob.
   ///
   /// Output only.
   core.String? uid;
+
+  /// The result of an unstructured data profile scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1UnstructuredDataProfileResult?
+  unstructuredDataProfileResult;
+
+  /// Settings for an unstructured data profile scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1UnstructuredDataProfileSpec? unstructuredDataProfileSpec;
 
   GoogleCloudDataplexV1DataScanJob({
     this.createTime,
@@ -17479,6 +19159,8 @@ class GoogleCloudDataplexV1DataScanJob {
     this.state,
     this.type,
     this.uid,
+    this.unstructuredDataProfileResult,
+    this.unstructuredDataProfileSpec,
   });
 
   GoogleCloudDataplexV1DataScanJob.fromJson(core.Map json_)
@@ -17538,6 +19220,20 @@ class GoogleCloudDataplexV1DataScanJob {
         state: json_['state'] as core.String?,
         type: json_['type'] as core.String?,
         uid: json_['uid'] as core.String?,
+        unstructuredDataProfileResult:
+            json_.containsKey('unstructuredDataProfileResult')
+            ? GoogleCloudDataplexV1UnstructuredDataProfileResult.fromJson(
+                json_['unstructuredDataProfileResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        unstructuredDataProfileSpec:
+            json_.containsKey('unstructuredDataProfileSpec')
+            ? GoogleCloudDataplexV1UnstructuredDataProfileSpec.fromJson(
+                json_['unstructuredDataProfileSpec']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -17558,6 +19254,8 @@ class GoogleCloudDataplexV1DataScanJob {
     final state = this.state;
     final type = this.type;
     final uid = this.uid;
+    final unstructuredDataProfileResult = this.unstructuredDataProfileResult;
+    final unstructuredDataProfileSpec = this.unstructuredDataProfileSpec;
     return {
       'createTime': ?createTime,
       'dataDiscoveryResult': ?dataDiscoveryResult,
@@ -17576,6 +19274,8 @@ class GoogleCloudDataplexV1DataScanJob {
       'state': ?state,
       'type': ?type,
       'uid': ?uid,
+      'unstructuredDataProfileResult': ?unstructuredDataProfileResult,
+      'unstructuredDataProfileSpec': ?unstructuredDataProfileSpec,
     };
   }
 }
@@ -17730,6 +19430,120 @@ class GoogleCloudDataplexV1DataTaxonomy {
       'uid': ?uid,
       'updateTime': ?updateTime,
     };
+  }
+}
+
+/// Request message for DeleteEntryLink.
+class GoogleCloudDataplexV1DeleteEntryLinkRequest {
+  /// The resource name of the Entry Link:
+  /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}.
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudDataplexV1DeleteEntryLinkRequest({this.name});
+
+  GoogleCloudDataplexV1DeleteEntryLinkRequest.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
+}
+
+/// Delete Entry request.
+class GoogleCloudDataplexV1DeleteEntryRequest {
+  /// The resource name of the Entry:
+  /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudDataplexV1DeleteEntryRequest({this.name});
+
+  GoogleCloudDataplexV1DeleteEntryRequest.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
+}
+
+/// Delete GlossaryCategory Request
+class GoogleCloudDataplexV1DeleteGlossaryCategoryRequest {
+  /// The name of the GlossaryCategory to delete.
+  ///
+  /// Format:
+  /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudDataplexV1DeleteGlossaryCategoryRequest({this.name});
+
+  GoogleCloudDataplexV1DeleteGlossaryCategoryRequest.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
+}
+
+/// Delete Glossary Request
+class GoogleCloudDataplexV1DeleteGlossaryRequest {
+  /// The etag of the Glossary.
+  ///
+  /// If this is provided, it must match the server's etag. If the etag is
+  /// provided and does not match the server-computed etag, the request must
+  /// fail with a ABORTED error code.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The name of the Glossary to delete.
+  ///
+  /// Format:
+  /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudDataplexV1DeleteGlossaryRequest({this.etag, this.name});
+
+  GoogleCloudDataplexV1DeleteGlossaryRequest.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final name = this.name;
+    return {'etag': ?etag, 'name': ?name};
+  }
+}
+
+/// Delete GlossaryTerm Request
+class GoogleCloudDataplexV1DeleteGlossaryTermRequest {
+  /// The name of the GlossaryTerm to delete.
+  ///
+  /// Format:
+  /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudDataplexV1DeleteGlossaryTermRequest({this.name});
+
+  GoogleCloudDataplexV1DeleteGlossaryTermRequest.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
   }
 }
 
@@ -19345,6 +21159,488 @@ class GoogleCloudDataplexV1GlossaryTerm {
   }
 }
 
+/// Contains the strict structure for graph-profile for semantic inference scan
+/// result.
+class GoogleCloudDataplexV1GraphProfile {
+  /// Edge types.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1GraphProfileEdgeType>? edgeTypes;
+
+  /// Node types.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1GraphProfileNodeType>? nodeTypes;
+
+  GoogleCloudDataplexV1GraphProfile({this.edgeTypes, this.nodeTypes});
+
+  GoogleCloudDataplexV1GraphProfile.fromJson(core.Map json_)
+    : this(
+        edgeTypes: (json_['edgeTypes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDataplexV1GraphProfileEdgeType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nodeTypes: (json_['nodeTypes'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDataplexV1GraphProfileNodeType.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final edgeTypes = this.edgeTypes;
+    final nodeTypes = this.nodeTypes;
+    return {'edgeTypes': ?edgeTypes, 'nodeTypes': ?nodeTypes};
+  }
+}
+
+/// Represents a type of edge (relationship) in the graph.
+class GoogleCloudDataplexV1GraphProfileEdgeType {
+  /// Description of the edge type.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Extraction hints for the edge.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints? extractionHints;
+
+  /// Fields of the edge type.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1GraphProfileField>? fields;
+
+  /// Defines the Foreign Key constraints for the edge.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey>? foreignKeys;
+
+  /// Name of the edge type.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Source node type.
+  ///
+  /// Output only.
+  core.String? sourceNodeType;
+
+  /// Target node type.
+  ///
+  /// Output only.
+  core.String? targetNodeType;
+
+  GoogleCloudDataplexV1GraphProfileEdgeType({
+    this.description,
+    this.extractionHints,
+    this.fields,
+    this.foreignKeys,
+    this.name,
+    this.sourceNodeType,
+    this.targetNodeType,
+  });
+
+  GoogleCloudDataplexV1GraphProfileEdgeType.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        extractionHints: json_.containsKey('extractionHints')
+            ? GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints.fromJson(
+                json_['extractionHints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fields: (json_['fields'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDataplexV1GraphProfileField.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        foreignKeys: (json_['foreignKeys'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        name: json_['name'] as core.String?,
+        sourceNodeType: json_['sourceNodeType'] as core.String?,
+        targetNodeType: json_['targetNodeType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final extractionHints = this.extractionHints;
+    final fields = this.fields;
+    final foreignKeys = this.foreignKeys;
+    final name = this.name;
+    final sourceNodeType = this.sourceNodeType;
+    final targetNodeType = this.targetNodeType;
+    return {
+      'description': ?description,
+      'extractionHints': ?extractionHints,
+      'fields': ?fields,
+      'foreignKeys': ?foreignKeys,
+      'name': ?name,
+      'sourceNodeType': ?sourceNodeType,
+      'targetNodeType': ?targetNodeType,
+    };
+  }
+}
+
+/// Extraction hints (edge-level).
+class GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints {
+  /// Expected connectivity topology and bounds of this relationship.
+  ///
+  /// Format: "Topology - Description" Example: "1:N - One company can have
+  /// multiple financial reports."
+  ///
+  /// Output only.
+  core.String? cardinality;
+
+  GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints({this.cardinality});
+
+  GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints.fromJson(
+    core.Map json_,
+  ) : this(cardinality: json_['cardinality'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cardinality = this.cardinality;
+    return {'cardinality': ?cardinality};
+  }
+}
+
+/// Represents a foreign key constraint.
+class GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey {
+  /// Description of the foreign key.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Field Mappings.
+  ///
+  /// Mappings between local fields and the fields they reference in the
+  /// referenced node type.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping>?
+  fieldMappings;
+
+  /// Name of the foreign key constraint.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The node type this constraint references.
+  ///
+  /// Output only.
+  core.String? referencedNodeType;
+
+  GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey({
+    this.description,
+    this.fieldMappings,
+    this.name,
+    this.referencedNodeType,
+  });
+
+  GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        fieldMappings: (json_['fieldMappings'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        name: json_['name'] as core.String?,
+        referencedNodeType: json_['referencedNodeType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final fieldMappings = this.fieldMappings;
+    final name = this.name;
+    final referencedNodeType = this.referencedNodeType;
+    return {
+      'description': ?description,
+      'fieldMappings': ?fieldMappings,
+      'name': ?name,
+      'referencedNodeType': ?referencedNodeType,
+    };
+  }
+}
+
+/// Maps a local field to a referenced field.
+class GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping {
+  /// Local field name forming part of the foreign key.
+  ///
+  /// Output only.
+  core.String? field;
+
+  /// Field name in the referenced node type.
+  ///
+  /// Output only.
+  core.String? referencedField;
+
+  GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping({
+    this.field,
+    this.referencedField,
+  });
+
+  GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping.fromJson(
+    core.Map json_,
+  ) : this(
+        field: json_['field'] as core.String?,
+        referencedField: json_['referencedField'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final field = this.field;
+    final referencedField = this.referencedField;
+    return {'field': ?field, 'referencedField': ?referencedField};
+  }
+}
+
+/// Represents a field in a node or edge type.
+class GoogleCloudDataplexV1GraphProfileField {
+  /// The data type of the field, e.g., STRING, INTEGER, DATE.
+  ///
+  /// Output only.
+  core.String? dataType;
+
+  /// Description of the field.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Extraction hints for the field.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1GraphProfileFieldExtractionHints? extractionHints;
+
+  /// Sub-fields of this field (for STRUCT types).
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1GraphProfileField>? fields;
+
+  /// The mapped metadata type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "METADATA_TYPE_UNSPECIFIED" : Unspecified metadata type.
+  /// - "BOOLEAN" : Boolean type.
+  /// - "NUMBER" : Numeric type.
+  /// - "STRING" : String type.
+  /// - "BYTES" : Bytes type.
+  /// - "DATETIME" : Date and time type.
+  /// - "TIMESTAMP" : Timestamp type.
+  /// - "GEOSPATIAL" : Geospatial type.
+  /// - "STRUCT" : Struct (record) type.
+  /// - "OTHER" : Other types not covered above.
+  core.String? metadataType;
+
+  /// The mode of the field.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Unspecified mode.
+  /// - "NULLABLE" : Field can be null.
+  /// - "REPEATED" : Field can be repeated.
+  /// - "REQUIRED" : Field is required.
+  core.String? mode;
+
+  /// Name of the field.
+  ///
+  /// Output only.
+  core.String? name;
+
+  GoogleCloudDataplexV1GraphProfileField({
+    this.dataType,
+    this.description,
+    this.extractionHints,
+    this.fields,
+    this.metadataType,
+    this.mode,
+    this.name,
+  });
+
+  GoogleCloudDataplexV1GraphProfileField.fromJson(core.Map json_)
+    : this(
+        dataType: json_['dataType'] as core.String?,
+        description: json_['description'] as core.String?,
+        extractionHints: json_.containsKey('extractionHints')
+            ? GoogleCloudDataplexV1GraphProfileFieldExtractionHints.fromJson(
+                json_['extractionHints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fields: (json_['fields'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDataplexV1GraphProfileField.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        metadataType: json_['metadataType'] as core.String?,
+        mode: json_['mode'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataType = this.dataType;
+    final description = this.description;
+    final extractionHints = this.extractionHints;
+    final fields = this.fields;
+    final metadataType = this.metadataType;
+    final mode = this.mode;
+    final name = this.name;
+    return {
+      'dataType': ?dataType,
+      'description': ?description,
+      'extractionHints': ?extractionHints,
+      'fields': ?fields,
+      'metadataType': ?metadataType,
+      'mode': ?mode,
+      'name': ?name,
+    };
+  }
+}
+
+/// Extraction hints (field-level).
+class GoogleCloudDataplexV1GraphProfileFieldExtractionHints {
+  /// Standardizes extracted data (e.g., to ISO 3166-1 alpha-2).
+  ///
+  /// Output only.
+  core.String? normalization;
+
+  /// Generates value from other data instead of direct extraction (e.g.,
+  /// hashing).
+  ///
+  /// Output only.
+  core.String? synthesis;
+
+  GoogleCloudDataplexV1GraphProfileFieldExtractionHints({
+    this.normalization,
+    this.synthesis,
+  });
+
+  GoogleCloudDataplexV1GraphProfileFieldExtractionHints.fromJson(core.Map json_)
+    : this(
+        normalization: json_['normalization'] as core.String?,
+        synthesis: json_['synthesis'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final normalization = this.normalization;
+    final synthesis = this.synthesis;
+    return {'normalization': ?normalization, 'synthesis': ?synthesis};
+  }
+}
+
+/// Represents a type of node in the graph.
+class GoogleCloudDataplexV1GraphProfileNodeType {
+  /// Description of the node type.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Extraction hints for the node.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints? extractionHints;
+
+  /// Fields of the node type.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1GraphProfileField>? fields;
+
+  /// Name of the node type.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Field names forming the primary keys.
+  ///
+  /// The order in this array defines the key's ordinal positions for composite
+  /// keys.
+  ///
+  /// Output only.
+  core.List<core.String>? primaryKeys;
+
+  GoogleCloudDataplexV1GraphProfileNodeType({
+    this.description,
+    this.extractionHints,
+    this.fields,
+    this.name,
+    this.primaryKeys,
+  });
+
+  GoogleCloudDataplexV1GraphProfileNodeType.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        extractionHints: json_.containsKey('extractionHints')
+            ? GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints.fromJson(
+                json_['extractionHints'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fields: (json_['fields'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDataplexV1GraphProfileField.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        name: json_['name'] as core.String?,
+        primaryKeys: (json_['primaryKeys'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final extractionHints = this.extractionHints;
+    final fields = this.fields;
+    final name = this.name;
+    final primaryKeys = this.primaryKeys;
+    return {
+      'description': ?description,
+      'extractionHints': ?extractionHints,
+      'fields': ?fields,
+      'name': ?name,
+      'primaryKeys': ?primaryKeys,
+    };
+  }
+}
+
+/// Extraction hints (node-level).
+class GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints {
+  /// Expected occurrence frequency of this node type within a document.
+  ///
+  /// Format: "Bounds - Description" Example: "0:N - A document may contain
+  /// multiple people names."
+  ///
+  /// Output only.
+  core.String? cardinality;
+
+  GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints({this.cardinality});
+
+  GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints.fromJson(
+    core.Map json_,
+  ) : this(cardinality: json_['cardinality'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cardinality = this.cardinality;
+    return {'cardinality': ?cardinality};
+  }
+}
+
 /// A job represents an instance of a task.
 class GoogleCloudDataplexV1Job {
   /// The time when the job ended.
@@ -19827,6 +22123,50 @@ class GoogleCloudDataplexV1ListAssetsResponse {
   }
 }
 
+/// Response message for ListChangeRequests.
+class GoogleCloudDataplexV1ListChangeRequestsResponse {
+  /// The ChangeRequests from the specified project and location.
+  core.List<GoogleCloudDataplexV1ChangeRequest>? changeRequests;
+
+  /// A token, which can be sent as page_token to retrieve the next page.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  GoogleCloudDataplexV1ListChangeRequestsResponse({
+    this.changeRequests,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  GoogleCloudDataplexV1ListChangeRequestsResponse.fromJson(core.Map json_)
+    : this(
+        changeRequests: (json_['changeRequests'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDataplexV1ChangeRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final changeRequests = this.changeRequests;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'changeRequests': ?changeRequests,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
 /// Response message for listing data assets.
 class GoogleCloudDataplexV1ListDataAssetsResponse {
   /// The data assets for the requested filter criteria.
@@ -19949,6 +22289,73 @@ class GoogleCloudDataplexV1ListDataAttributesResponse {
       'nextPageToken': ?nextPageToken,
       'unreachableLocations': ?unreachableLocations,
     };
+  }
+}
+
+/// List DataDomainBindings response.
+class GoogleCloudDataplexV1ListDataDomainBindingsResponse {
+  /// DataDomainBindings under the given parent.
+  core.List<GoogleCloudDataplexV1DataDomainBinding>? dataDomainBindings;
+
+  /// Token to retrieve the next page of results.
+  core.String? nextPageToken;
+
+  GoogleCloudDataplexV1ListDataDomainBindingsResponse({
+    this.dataDomainBindings,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDataplexV1ListDataDomainBindingsResponse.fromJson(core.Map json_)
+    : this(
+        dataDomainBindings: (json_['dataDomainBindings'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDataplexV1DataDomainBinding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataDomainBindings = this.dataDomainBindings;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'dataDomainBindings': ?dataDomainBindings,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
+/// List DataDomains response.
+class GoogleCloudDataplexV1ListDataDomainsResponse {
+  /// DataDomains under the given parent.
+  core.List<GoogleCloudDataplexV1DataDomain>? dataDomains;
+
+  /// Token to retrieve the next page of results.
+  core.String? nextPageToken;
+
+  GoogleCloudDataplexV1ListDataDomainsResponse({
+    this.dataDomains,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDataplexV1ListDataDomainsResponse.fromJson(core.Map json_)
+    : this(
+        dataDomains: (json_['dataDomains'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDataplexV1DataDomain.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataDomains = this.dataDomains;
+    final nextPageToken = this.nextPageToken;
+    return {'dataDomains': ?dataDomains, 'nextPageToken': ?nextPageToken};
   }
 }
 
@@ -20744,6 +23151,9 @@ class GoogleCloudDataplexV1LookupContextRequest {
   /// context_budget - If provided, the output will be intelligently truncated
   /// on a best-effort basis to contain approximately the desired amount of
   /// characters. There is no guarantee to achieve the specific amount.
+  /// all_schema_fields - If set to true, all schema fields will be returned in
+  /// the context (regardless of context_budget value). Otherwise, the list of
+  /// schema fields is truncated. Default is false.
   ///
   /// Optional.
   core.Map<core.String, core.String>? options;
@@ -21915,6 +24325,90 @@ class GoogleCloudDataplexV1Partition {
       'name': ?name,
       'values': ?values,
     };
+  }
+}
+
+/// Request message for RejectChangeRequest.
+class GoogleCloudDataplexV1RejectChangeRequestRequest {
+  /// The reason for rejecting the ChangeRequest.
+  ///
+  /// Optional.
+  core.String? comment;
+
+  /// The etag of the ChangeRequest.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  GoogleCloudDataplexV1RejectChangeRequestRequest({this.comment, this.etag});
+
+  GoogleCloudDataplexV1RejectChangeRequestRequest.fromJson(core.Map json_)
+    : this(
+        comment: json_['comment'] as core.String?,
+        etag: json_['etag'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final comment = this.comment;
+    final etag = this.etag;
+    return {'comment': ?comment, 'etag': ?etag};
+  }
+}
+
+/// Message for requesting access to a Data Product.
+class GoogleCloudDataplexV1RequestDataProductAccessRequest {
+  /// The change request for the data product access request.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1ChangeRequest? changeRequest;
+
+  /// Validates the request without actually creating the access change request.
+  ///
+  /// Defaults to false.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  GoogleCloudDataplexV1RequestDataProductAccessRequest({
+    this.changeRequest,
+    this.validateOnly,
+  });
+
+  GoogleCloudDataplexV1RequestDataProductAccessRequest.fromJson(core.Map json_)
+    : this(
+        changeRequest: json_.containsKey('changeRequest')
+            ? GoogleCloudDataplexV1ChangeRequest.fromJson(
+                json_['changeRequest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final changeRequest = this.changeRequest;
+    final validateOnly = this.validateOnly;
+    return {'changeRequest': ?changeRequest, 'validateOnly': ?validateOnly};
+  }
+}
+
+/// Response message for requesting access to a Data Product.
+class GoogleCloudDataplexV1RequestDataProductAccessResponse {
+  /// The resource name of the created ChangeRequest.
+  ///
+  /// Format:
+  /// projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id}
+  core.String? changeRequestName;
+
+  GoogleCloudDataplexV1RequestDataProductAccessResponse({
+    this.changeRequestName,
+  });
+
+  GoogleCloudDataplexV1RequestDataProductAccessResponse.fromJson(core.Map json_)
+    : this(changeRequestName: json_['changeRequestName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final changeRequestName = this.changeRequestName;
+    return {'changeRequestName': ?changeRequestName};
   }
 }
 
@@ -23543,6 +26037,305 @@ class GoogleCloudDataplexV1TriggerSchedule {
   }
 }
 
+/// Contains the result of an unstructured data profile scan.
+class GoogleCloudDataplexV1UnstructuredDataProfileResult {
+  /// The inferred description.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The inferred graph profile.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1GraphProfile? graphProfile;
+
+  /// Optional message for partial failures (e.g. node type extraction failed).
+  ///
+  /// Output only.
+  core.String? partialFailureMessage;
+
+  GoogleCloudDataplexV1UnstructuredDataProfileResult({
+    this.description,
+    this.graphProfile,
+    this.partialFailureMessage,
+  });
+
+  GoogleCloudDataplexV1UnstructuredDataProfileResult.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        graphProfile: json_.containsKey('graphProfile')
+            ? GoogleCloudDataplexV1GraphProfile.fromJson(
+                json_['graphProfile'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        partialFailureMessage: json_['partialFailureMessage'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final graphProfile = this.graphProfile;
+    final partialFailureMessage = this.partialFailureMessage;
+    return {
+      'description': ?description,
+      'graphProfile': ?graphProfile,
+      'partialFailureMessage': ?partialFailureMessage,
+    };
+  }
+}
+
+/// Contains the specification for an unstructured data profile scan.
+class GoogleCloudDataplexV1UnstructuredDataProfileSpec {
+  /// Customized prompt for unstructured data profile.
+  ///
+  /// The field will be used as part of the prompt, could be some instruction,
+  /// specifying skill, or specific area to focus.
+  ///
+  /// Optional.
+  core.String? customizedPrompt;
+
+  /// Whether to use the global model.
+  ///
+  /// Optional.
+  core.bool? globalEndpointEnabled;
+
+  /// Whether to publish graph-profile as aspect on the catalog entry.
+  ///
+  /// Optional.
+  core.bool? graphProfilePublishingEnabled;
+
+  GoogleCloudDataplexV1UnstructuredDataProfileSpec({
+    this.customizedPrompt,
+    this.globalEndpointEnabled,
+    this.graphProfilePublishingEnabled,
+  });
+
+  GoogleCloudDataplexV1UnstructuredDataProfileSpec.fromJson(core.Map json_)
+    : this(
+        customizedPrompt: json_['customizedPrompt'] as core.String?,
+        globalEndpointEnabled: json_['globalEndpointEnabled'] as core.bool?,
+        graphProfilePublishingEnabled:
+            json_['graphProfilePublishingEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final customizedPrompt = this.customizedPrompt;
+    final globalEndpointEnabled = this.globalEndpointEnabled;
+    final graphProfilePublishingEnabled = this.graphProfilePublishingEnabled;
+    return {
+      'customizedPrompt': ?customizedPrompt,
+      'globalEndpointEnabled': ?globalEndpointEnabled,
+      'graphProfilePublishingEnabled': ?graphProfilePublishingEnabled,
+    };
+  }
+}
+
+/// Update Entry request.
+class GoogleCloudDataplexV1UpdateEntryRequest {
+  /// If set to true and the entry doesn't exist, the service will create it.
+  ///
+  /// Optional.
+  core.bool? allowMissing;
+
+  /// The map keys of the Aspects which the service should modify.
+  ///
+  /// It supports the following syntaxes: - matches an aspect of the given type
+  /// and empty path. @path - matches an aspect of the given type and specified
+  /// path. For example, to attach an aspect to a field that is specified by the
+  /// schema aspect, the path should have the format Schema.. @* - matches
+  /// aspects of the given type for all paths. *@path - matches aspects of all
+  /// types on the given path.The service will not remove existing aspects
+  /// matching the syntax unless delete_missing_aspects is set to true.If this
+  /// field is left empty, the service treats it as specifying exactly those
+  /// Aspects present in the request.
+  ///
+  /// Optional.
+  core.List<core.String>? aspectKeys;
+
+  /// If set to true and the aspect_keys specify aspect ranges, the service
+  /// deletes any existing aspects from that range that weren't provided in the
+  /// request.
+  ///
+  /// Optional.
+  core.bool? deleteMissingAspects;
+
+  /// Entry resource.
+  ///
+  /// Required.
+  GoogleCloudDataplexV1Entry? entry;
+
+  /// Mask of fields to update.
+  ///
+  /// To update Aspects, the update_mask must contain the value "aspects".If the
+  /// update_mask is empty, the service will update all modifiable fields
+  /// present in the request.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  GoogleCloudDataplexV1UpdateEntryRequest({
+    this.allowMissing,
+    this.aspectKeys,
+    this.deleteMissingAspects,
+    this.entry,
+    this.updateMask,
+  });
+
+  GoogleCloudDataplexV1UpdateEntryRequest.fromJson(core.Map json_)
+    : this(
+        allowMissing: json_['allowMissing'] as core.bool?,
+        aspectKeys: (json_['aspectKeys'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        deleteMissingAspects: json_['deleteMissingAspects'] as core.bool?,
+        entry: json_.containsKey('entry')
+            ? GoogleCloudDataplexV1Entry.fromJson(
+                json_['entry'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowMissing = this.allowMissing;
+    final aspectKeys = this.aspectKeys;
+    final deleteMissingAspects = this.deleteMissingAspects;
+    final entry = this.entry;
+    final updateMask = this.updateMask;
+    return {
+      'allowMissing': ?allowMissing,
+      'aspectKeys': ?aspectKeys,
+      'deleteMissingAspects': ?deleteMissingAspects,
+      'entry': ?entry,
+      'updateMask': ?updateMask,
+    };
+  }
+}
+
+/// Update GlossaryCategory Request
+class GoogleCloudDataplexV1UpdateGlossaryCategoryRequest {
+  /// The GlossaryCategory to update.
+  ///
+  /// The GlossaryCategory's name field is used to identify the GlossaryCategory
+  /// to update. Format:
+  /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id}
+  ///
+  /// Required.
+  GoogleCloudDataplexV1GlossaryCategory? category;
+
+  /// The list of fields to update.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  GoogleCloudDataplexV1UpdateGlossaryCategoryRequest({
+    this.category,
+    this.updateMask,
+  });
+
+  GoogleCloudDataplexV1UpdateGlossaryCategoryRequest.fromJson(core.Map json_)
+    : this(
+        category: json_.containsKey('category')
+            ? GoogleCloudDataplexV1GlossaryCategory.fromJson(
+                json_['category'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final updateMask = this.updateMask;
+    return {'category': ?category, 'updateMask': ?updateMask};
+  }
+}
+
+/// Update Glossary Request
+class GoogleCloudDataplexV1UpdateGlossaryRequest {
+  /// The Glossary to update.
+  ///
+  /// The Glossary's name field is used to identify the Glossary to update.
+  /// Format:
+  /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}
+  ///
+  /// Required.
+  GoogleCloudDataplexV1Glossary? glossary;
+
+  /// The list of fields to update.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  /// Validates the request without actually updating the Glossary.
+  ///
+  /// Default: false.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  GoogleCloudDataplexV1UpdateGlossaryRequest({
+    this.glossary,
+    this.updateMask,
+    this.validateOnly,
+  });
+
+  GoogleCloudDataplexV1UpdateGlossaryRequest.fromJson(core.Map json_)
+    : this(
+        glossary: json_.containsKey('glossary')
+            ? GoogleCloudDataplexV1Glossary.fromJson(
+                json_['glossary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateMask: json_['updateMask'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final glossary = this.glossary;
+    final updateMask = this.updateMask;
+    final validateOnly = this.validateOnly;
+    return {
+      'glossary': ?glossary,
+      'updateMask': ?updateMask,
+      'validateOnly': ?validateOnly,
+    };
+  }
+}
+
+/// Update GlossaryTerm Request
+class GoogleCloudDataplexV1UpdateGlossaryTermRequest {
+  /// The GlossaryTerm to update.
+  ///
+  /// The GlossaryTerm's name field is used to identify the GlossaryTerm to
+  /// update. Format:
+  /// projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id}
+  ///
+  /// Required.
+  GoogleCloudDataplexV1GlossaryTerm? term;
+
+  /// The list of fields to update.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  GoogleCloudDataplexV1UpdateGlossaryTermRequest({this.term, this.updateMask});
+
+  GoogleCloudDataplexV1UpdateGlossaryTermRequest.fromJson(core.Map json_)
+    : this(
+        term: json_.containsKey('term')
+            ? GoogleCloudDataplexV1GlossaryTerm.fromJson(
+                json_['term'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final term = this.term;
+    final updateMask = this.updateMask;
+    return {'term': ?term, 'updateMask': ?updateMask};
+  }
+}
+
 /// A zone represents a logical group of related assets within a lake.
 ///
 /// A zone can be used to map to organizational structure or represent stages of
@@ -24151,6 +26944,50 @@ class GoogleIamV1Policy {
       'bindings': ?bindings,
       'etag': ?etag,
       'version': ?version,
+    };
+  }
+}
+
+/// Output-only policy member strings of a Google Cloud resource's built-in
+/// identity.
+class GoogleIamV1ResourcePolicyMember {
+  /// IAM policy binding member referring to a Google Cloud resource by
+  /// user-assigned name (https://google.aip.dev/122).
+  ///
+  /// If a resource is deleted and recreated with the same name, the binding
+  /// will be applicable to the new resource.Example:
+  /// principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter
+  ///
+  /// Output only.
+  core.String? iamPolicyNamePrincipal;
+
+  /// IAM policy binding member referring to a Google Cloud resource by
+  /// system-assigned unique identifier (https://google.aip.dev/148#uid).
+  ///
+  /// If a resource is deleted and recreated with the same name, the binding
+  /// will not be applicable to the new resourceExample:
+  /// principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5
+  ///
+  /// Output only.
+  core.String? iamPolicyUidPrincipal;
+
+  GoogleIamV1ResourcePolicyMember({
+    this.iamPolicyNamePrincipal,
+    this.iamPolicyUidPrincipal,
+  });
+
+  GoogleIamV1ResourcePolicyMember.fromJson(core.Map json_)
+    : this(
+        iamPolicyNamePrincipal: json_['iamPolicyNamePrincipal'] as core.String?,
+        iamPolicyUidPrincipal: json_['iamPolicyUidPrincipal'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final iamPolicyNamePrincipal = this.iamPolicyNamePrincipal;
+    final iamPolicyUidPrincipal = this.iamPolicyUidPrincipal;
+    return {
+      'iamPolicyNamePrincipal': ?iamPolicyNamePrincipal,
+      'iamPolicyUidPrincipal': ?iamPolicyUidPrincipal,
     };
   }
 }

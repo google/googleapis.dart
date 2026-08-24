@@ -4237,11 +4237,14 @@ class PolicyTopicEvidence {
 ///
 /// These control which inventory a bidder will receive bid requests for.
 class PretargetingConfig {
-  /// Targeting modes included by this config.
+  /// Deprecated: The value of this field no longer has any effect.
   ///
-  /// A bid request must allow all the specified targeting modes. An unset value
-  /// allows all bid requests to be sent, regardless of which targeting modes
-  /// they allow.
+  /// Targeting modes included by this config. A bid request must allow all the
+  /// specified targeting modes. An unset value allows all bid requests to be
+  /// sent, regardless of which targeting modes they allow.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? allowedUserTargetingModes;
 
   /// Targeting on a subset of app inventory.

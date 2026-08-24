@@ -209,6 +209,17 @@ void checkUnnamed7(core.Map<core.String, core.String> o) {
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
+core.List<api.AuthzPolicyAuthzRule> buildUnnamed8() => [
+  buildAuthzPolicyAuthzRule(),
+  buildAuthzPolicyAuthzRule(),
+];
+
+void checkUnnamed8(core.List<api.AuthzPolicyAuthzRule> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAuthzPolicyAuthzRule(o[0]);
+  checkAuthzPolicyAuthzRule(o[1]);
+}
+
 core.int buildCounterAuthzPolicy = 0;
 api.AuthzPolicy buildAuthzPolicy() {
   final o = api.AuthzPolicy();
@@ -221,6 +232,7 @@ api.AuthzPolicy buildAuthzPolicy() {
     o.httpRules = buildUnnamed6();
     o.labels = buildUnnamed7();
     o.name = 'foo';
+    o.networkRules = buildUnnamed8();
     o.policyProfile = 'foo';
     o.target = buildAuthzPolicyTarget();
     o.updateTime = 'foo';
@@ -239,6 +251,7 @@ void checkAuthzPolicy(api.AuthzPolicy o) {
     checkUnnamed6(o.httpRules!);
     checkUnnamed7(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkUnnamed8(o.networkRules!);
     unittest.expect(o.policyProfile!, unittest.equals('foo'));
     checkAuthzPolicyTarget(o.target!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -269,17 +282,6 @@ void checkAuthzPolicyAuthzRule(api.AuthzPolicyAuthzRule o) {
   buildCounterAuthzPolicyAuthzRule--;
 }
 
-core.List<api.AuthzPolicyAuthzRuleFromRequestSource> buildUnnamed8() => [
-  buildAuthzPolicyAuthzRuleFromRequestSource(),
-  buildAuthzPolicyAuthzRuleFromRequestSource(),
-];
-
-void checkUnnamed8(core.List<api.AuthzPolicyAuthzRuleFromRequestSource> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkAuthzPolicyAuthzRuleFromRequestSource(o[0]);
-  checkAuthzPolicyAuthzRuleFromRequestSource(o[1]);
-}
-
 core.List<api.AuthzPolicyAuthzRuleFromRequestSource> buildUnnamed9() => [
   buildAuthzPolicyAuthzRuleFromRequestSource(),
   buildAuthzPolicyAuthzRuleFromRequestSource(),
@@ -291,13 +293,24 @@ void checkUnnamed9(core.List<api.AuthzPolicyAuthzRuleFromRequestSource> o) {
   checkAuthzPolicyAuthzRuleFromRequestSource(o[1]);
 }
 
+core.List<api.AuthzPolicyAuthzRuleFromRequestSource> buildUnnamed10() => [
+  buildAuthzPolicyAuthzRuleFromRequestSource(),
+  buildAuthzPolicyAuthzRuleFromRequestSource(),
+];
+
+void checkUnnamed10(core.List<api.AuthzPolicyAuthzRuleFromRequestSource> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAuthzPolicyAuthzRuleFromRequestSource(o[0]);
+  checkAuthzPolicyAuthzRuleFromRequestSource(o[1]);
+}
+
 core.int buildCounterAuthzPolicyAuthzRuleFrom = 0;
 api.AuthzPolicyAuthzRuleFrom buildAuthzPolicyAuthzRuleFrom() {
   final o = api.AuthzPolicyAuthzRuleFrom();
   buildCounterAuthzPolicyAuthzRuleFrom++;
   if (buildCounterAuthzPolicyAuthzRuleFrom < 3) {
-    o.notSources = buildUnnamed8();
-    o.sources = buildUnnamed9();
+    o.notSources = buildUnnamed9();
+    o.sources = buildUnnamed10();
   }
   buildCounterAuthzPolicyAuthzRuleFrom--;
   return o;
@@ -306,40 +319,40 @@ api.AuthzPolicyAuthzRuleFrom buildAuthzPolicyAuthzRuleFrom() {
 void checkAuthzPolicyAuthzRuleFrom(api.AuthzPolicyAuthzRuleFrom o) {
   buildCounterAuthzPolicyAuthzRuleFrom++;
   if (buildCounterAuthzPolicyAuthzRuleFrom < 3) {
-    checkUnnamed8(o.notSources!);
-    checkUnnamed9(o.sources!);
+    checkUnnamed9(o.notSources!);
+    checkUnnamed10(o.sources!);
   }
   buildCounterAuthzPolicyAuthzRuleFrom--;
 }
 
-core.List<api.AuthzPolicyAuthzRuleIpBlock> buildUnnamed10() => [
+core.List<api.AuthzPolicyAuthzRuleIpBlock> buildUnnamed11() => [
   buildAuthzPolicyAuthzRuleIpBlock(),
   buildAuthzPolicyAuthzRuleIpBlock(),
 ];
 
-void checkUnnamed10(core.List<api.AuthzPolicyAuthzRuleIpBlock> o) {
+void checkUnnamed11(core.List<api.AuthzPolicyAuthzRuleIpBlock> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthzPolicyAuthzRuleIpBlock(o[0]);
   checkAuthzPolicyAuthzRuleIpBlock(o[1]);
 }
 
-core.List<api.AuthzPolicyAuthzRulePrincipal> buildUnnamed11() => [
+core.List<api.AuthzPolicyAuthzRulePrincipal> buildUnnamed12() => [
   buildAuthzPolicyAuthzRulePrincipal(),
   buildAuthzPolicyAuthzRulePrincipal(),
 ];
 
-void checkUnnamed11(core.List<api.AuthzPolicyAuthzRulePrincipal> o) {
+void checkUnnamed12(core.List<api.AuthzPolicyAuthzRulePrincipal> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthzPolicyAuthzRulePrincipal(o[0]);
   checkAuthzPolicyAuthzRulePrincipal(o[1]);
 }
 
-core.List<api.AuthzPolicyAuthzRuleRequestResource> buildUnnamed12() => [
+core.List<api.AuthzPolicyAuthzRuleRequestResource> buildUnnamed13() => [
   buildAuthzPolicyAuthzRuleRequestResource(),
   buildAuthzPolicyAuthzRuleRequestResource(),
 ];
 
-void checkUnnamed12(core.List<api.AuthzPolicyAuthzRuleRequestResource> o) {
+void checkUnnamed13(core.List<api.AuthzPolicyAuthzRuleRequestResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthzPolicyAuthzRuleRequestResource(o[0]);
   checkAuthzPolicyAuthzRuleRequestResource(o[1]);
@@ -351,9 +364,9 @@ buildAuthzPolicyAuthzRuleFromRequestSource() {
   final o = api.AuthzPolicyAuthzRuleFromRequestSource();
   buildCounterAuthzPolicyAuthzRuleFromRequestSource++;
   if (buildCounterAuthzPolicyAuthzRuleFromRequestSource < 3) {
-    o.ipBlocks = buildUnnamed10();
-    o.principals = buildUnnamed11();
-    o.resources = buildUnnamed12();
+    o.ipBlocks = buildUnnamed11();
+    o.principals = buildUnnamed12();
+    o.resources = buildUnnamed13();
   }
   buildCounterAuthzPolicyAuthzRuleFromRequestSource--;
   return o;
@@ -364,9 +377,9 @@ void checkAuthzPolicyAuthzRuleFromRequestSource(
 ) {
   buildCounterAuthzPolicyAuthzRuleFromRequestSource++;
   if (buildCounterAuthzPolicyAuthzRuleFromRequestSource < 3) {
-    checkUnnamed10(o.ipBlocks!);
-    checkUnnamed11(o.principals!);
-    checkUnnamed12(o.resources!);
+    checkUnnamed11(o.ipBlocks!);
+    checkUnnamed12(o.principals!);
+    checkUnnamed13(o.resources!);
   }
   buildCounterAuthzPolicyAuthzRuleFromRequestSource--;
 }
@@ -460,9 +473,9 @@ void checkAuthzPolicyAuthzRuleRequestResource(
   buildCounterAuthzPolicyAuthzRuleRequestResource--;
 }
 
-core.List<core.String> buildUnnamed13() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
 
-void checkUnnamed13(core.List<core.String> o) {
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -474,7 +487,7 @@ buildAuthzPolicyAuthzRuleRequestResourceTagValueIdSet() {
   final o = api.AuthzPolicyAuthzRuleRequestResourceTagValueIdSet();
   buildCounterAuthzPolicyAuthzRuleRequestResourceTagValueIdSet++;
   if (buildCounterAuthzPolicyAuthzRuleRequestResourceTagValueIdSet < 3) {
-    o.ids = buildUnnamed13();
+    o.ids = buildUnnamed14();
   }
   buildCounterAuthzPolicyAuthzRuleRequestResourceTagValueIdSet--;
   return o;
@@ -485,7 +498,7 @@ void checkAuthzPolicyAuthzRuleRequestResourceTagValueIdSet(
 ) {
   buildCounterAuthzPolicyAuthzRuleRequestResourceTagValueIdSet++;
   if (buildCounterAuthzPolicyAuthzRuleRequestResourceTagValueIdSet < 3) {
-    checkUnnamed13(o.ids!);
+    checkUnnamed14(o.ids!);
   }
   buildCounterAuthzPolicyAuthzRuleRequestResourceTagValueIdSet--;
 }
@@ -519,17 +532,6 @@ void checkAuthzPolicyAuthzRuleStringMatch(
   buildCounterAuthzPolicyAuthzRuleStringMatch--;
 }
 
-core.List<api.AuthzPolicyAuthzRuleToRequestOperation> buildUnnamed14() => [
-  buildAuthzPolicyAuthzRuleToRequestOperation(),
-  buildAuthzPolicyAuthzRuleToRequestOperation(),
-];
-
-void checkUnnamed14(core.List<api.AuthzPolicyAuthzRuleToRequestOperation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkAuthzPolicyAuthzRuleToRequestOperation(o[0]);
-  checkAuthzPolicyAuthzRuleToRequestOperation(o[1]);
-}
-
 core.List<api.AuthzPolicyAuthzRuleToRequestOperation> buildUnnamed15() => [
   buildAuthzPolicyAuthzRuleToRequestOperation(),
   buildAuthzPolicyAuthzRuleToRequestOperation(),
@@ -541,13 +543,24 @@ void checkUnnamed15(core.List<api.AuthzPolicyAuthzRuleToRequestOperation> o) {
   checkAuthzPolicyAuthzRuleToRequestOperation(o[1]);
 }
 
+core.List<api.AuthzPolicyAuthzRuleToRequestOperation> buildUnnamed16() => [
+  buildAuthzPolicyAuthzRuleToRequestOperation(),
+  buildAuthzPolicyAuthzRuleToRequestOperation(),
+];
+
+void checkUnnamed16(core.List<api.AuthzPolicyAuthzRuleToRequestOperation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAuthzPolicyAuthzRuleToRequestOperation(o[0]);
+  checkAuthzPolicyAuthzRuleToRequestOperation(o[1]);
+}
+
 core.int buildCounterAuthzPolicyAuthzRuleTo = 0;
 api.AuthzPolicyAuthzRuleTo buildAuthzPolicyAuthzRuleTo() {
   final o = api.AuthzPolicyAuthzRuleTo();
   buildCounterAuthzPolicyAuthzRuleTo++;
   if (buildCounterAuthzPolicyAuthzRuleTo < 3) {
-    o.notOperations = buildUnnamed14();
-    o.operations = buildUnnamed15();
+    o.notOperations = buildUnnamed15();
+    o.operations = buildUnnamed16();
   }
   buildCounterAuthzPolicyAuthzRuleTo--;
   return o;
@@ -556,37 +569,48 @@ api.AuthzPolicyAuthzRuleTo buildAuthzPolicyAuthzRuleTo() {
 void checkAuthzPolicyAuthzRuleTo(api.AuthzPolicyAuthzRuleTo o) {
   buildCounterAuthzPolicyAuthzRuleTo++;
   if (buildCounterAuthzPolicyAuthzRuleTo < 3) {
-    checkUnnamed14(o.notOperations!);
-    checkUnnamed15(o.operations!);
+    checkUnnamed15(o.notOperations!);
+    checkUnnamed16(o.operations!);
   }
   buildCounterAuthzPolicyAuthzRuleTo--;
 }
 
-core.List<api.AuthzPolicyAuthzRuleStringMatch> buildUnnamed16() => [
+core.List<api.AuthzPolicyAuthzRuleStringMatch> buildUnnamed17() => [
   buildAuthzPolicyAuthzRuleStringMatch(),
   buildAuthzPolicyAuthzRuleStringMatch(),
 ];
 
-void checkUnnamed16(core.List<api.AuthzPolicyAuthzRuleStringMatch> o) {
+void checkUnnamed17(core.List<api.AuthzPolicyAuthzRuleStringMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthzPolicyAuthzRuleStringMatch(o[0]);
   checkAuthzPolicyAuthzRuleStringMatch(o[1]);
 }
 
-core.List<core.String> buildUnnamed17() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed18() => ['foo', 'foo'];
 
-void checkUnnamed17(core.List<core.String> o) {
+void checkUnnamed18(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.AuthzPolicyAuthzRuleStringMatch> buildUnnamed18() => [
+core.List<api.AuthzPolicyAuthzRuleStringMatch> buildUnnamed19() => [
   buildAuthzPolicyAuthzRuleStringMatch(),
   buildAuthzPolicyAuthzRuleStringMatch(),
 ];
 
-void checkUnnamed18(core.List<api.AuthzPolicyAuthzRuleStringMatch> o) {
+void checkUnnamed19(core.List<api.AuthzPolicyAuthzRuleStringMatch> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAuthzPolicyAuthzRuleStringMatch(o[0]);
+  checkAuthzPolicyAuthzRuleStringMatch(o[1]);
+}
+
+core.List<api.AuthzPolicyAuthzRuleStringMatch> buildUnnamed20() => [
+  buildAuthzPolicyAuthzRuleStringMatch(),
+  buildAuthzPolicyAuthzRuleStringMatch(),
+];
+
+void checkUnnamed20(core.List<api.AuthzPolicyAuthzRuleStringMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthzPolicyAuthzRuleStringMatch(o[0]);
   checkAuthzPolicyAuthzRuleStringMatch(o[1]);
@@ -599,10 +623,11 @@ buildAuthzPolicyAuthzRuleToRequestOperation() {
   buildCounterAuthzPolicyAuthzRuleToRequestOperation++;
   if (buildCounterAuthzPolicyAuthzRuleToRequestOperation < 3) {
     o.headerSet = buildAuthzPolicyAuthzRuleToRequestOperationHeaderSet();
-    o.hosts = buildUnnamed16();
+    o.hosts = buildUnnamed17();
     o.mcp = buildAuthzPolicyAuthzRuleToRequestOperationMCP();
-    o.methods = buildUnnamed17();
-    o.paths = buildUnnamed18();
+    o.methods = buildUnnamed18();
+    o.paths = buildUnnamed19();
+    o.snis = buildUnnamed20();
   }
   buildCounterAuthzPolicyAuthzRuleToRequestOperation--;
   return o;
@@ -614,20 +639,21 @@ void checkAuthzPolicyAuthzRuleToRequestOperation(
   buildCounterAuthzPolicyAuthzRuleToRequestOperation++;
   if (buildCounterAuthzPolicyAuthzRuleToRequestOperation < 3) {
     checkAuthzPolicyAuthzRuleToRequestOperationHeaderSet(o.headerSet!);
-    checkUnnamed16(o.hosts!);
+    checkUnnamed17(o.hosts!);
     checkAuthzPolicyAuthzRuleToRequestOperationMCP(o.mcp!);
-    checkUnnamed17(o.methods!);
-    checkUnnamed18(o.paths!);
+    checkUnnamed18(o.methods!);
+    checkUnnamed19(o.paths!);
+    checkUnnamed20(o.snis!);
   }
   buildCounterAuthzPolicyAuthzRuleToRequestOperation--;
 }
 
-core.List<api.AuthzPolicyAuthzRuleHeaderMatch> buildUnnamed19() => [
+core.List<api.AuthzPolicyAuthzRuleHeaderMatch> buildUnnamed21() => [
   buildAuthzPolicyAuthzRuleHeaderMatch(),
   buildAuthzPolicyAuthzRuleHeaderMatch(),
 ];
 
-void checkUnnamed19(core.List<api.AuthzPolicyAuthzRuleHeaderMatch> o) {
+void checkUnnamed21(core.List<api.AuthzPolicyAuthzRuleHeaderMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthzPolicyAuthzRuleHeaderMatch(o[0]);
   checkAuthzPolicyAuthzRuleHeaderMatch(o[1]);
@@ -639,7 +665,7 @@ buildAuthzPolicyAuthzRuleToRequestOperationHeaderSet() {
   final o = api.AuthzPolicyAuthzRuleToRequestOperationHeaderSet();
   buildCounterAuthzPolicyAuthzRuleToRequestOperationHeaderSet++;
   if (buildCounterAuthzPolicyAuthzRuleToRequestOperationHeaderSet < 3) {
-    o.headers = buildUnnamed19();
+    o.headers = buildUnnamed21();
   }
   buildCounterAuthzPolicyAuthzRuleToRequestOperationHeaderSet--;
   return o;
@@ -650,18 +676,18 @@ void checkAuthzPolicyAuthzRuleToRequestOperationHeaderSet(
 ) {
   buildCounterAuthzPolicyAuthzRuleToRequestOperationHeaderSet++;
   if (buildCounterAuthzPolicyAuthzRuleToRequestOperationHeaderSet < 3) {
-    checkUnnamed19(o.headers!);
+    checkUnnamed21(o.headers!);
   }
   buildCounterAuthzPolicyAuthzRuleToRequestOperationHeaderSet--;
 }
 
 core.List<api.AuthzPolicyAuthzRuleToRequestOperationMCPMethod>
-buildUnnamed20() => [
+buildUnnamed22() => [
   buildAuthzPolicyAuthzRuleToRequestOperationMCPMethod(),
   buildAuthzPolicyAuthzRuleToRequestOperationMCPMethod(),
 ];
 
-void checkUnnamed20(
+void checkUnnamed22(
   core.List<api.AuthzPolicyAuthzRuleToRequestOperationMCPMethod> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -676,7 +702,7 @@ buildAuthzPolicyAuthzRuleToRequestOperationMCP() {
   buildCounterAuthzPolicyAuthzRuleToRequestOperationMCP++;
   if (buildCounterAuthzPolicyAuthzRuleToRequestOperationMCP < 3) {
     o.baseProtocolMethodsOption = 'foo';
-    o.methods = buildUnnamed20();
+    o.methods = buildUnnamed22();
   }
   buildCounterAuthzPolicyAuthzRuleToRequestOperationMCP--;
   return o;
@@ -688,17 +714,17 @@ void checkAuthzPolicyAuthzRuleToRequestOperationMCP(
   buildCounterAuthzPolicyAuthzRuleToRequestOperationMCP++;
   if (buildCounterAuthzPolicyAuthzRuleToRequestOperationMCP < 3) {
     unittest.expect(o.baseProtocolMethodsOption!, unittest.equals('foo'));
-    checkUnnamed20(o.methods!);
+    checkUnnamed22(o.methods!);
   }
   buildCounterAuthzPolicyAuthzRuleToRequestOperationMCP--;
 }
 
-core.List<api.AuthzPolicyAuthzRuleStringMatch> buildUnnamed21() => [
+core.List<api.AuthzPolicyAuthzRuleStringMatch> buildUnnamed23() => [
   buildAuthzPolicyAuthzRuleStringMatch(),
   buildAuthzPolicyAuthzRuleStringMatch(),
 ];
 
-void checkUnnamed21(core.List<api.AuthzPolicyAuthzRuleStringMatch> o) {
+void checkUnnamed23(core.List<api.AuthzPolicyAuthzRuleStringMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthzPolicyAuthzRuleStringMatch(o[0]);
   checkAuthzPolicyAuthzRuleStringMatch(o[1]);
@@ -711,7 +737,7 @@ buildAuthzPolicyAuthzRuleToRequestOperationMCPMethod() {
   buildCounterAuthzPolicyAuthzRuleToRequestOperationMCPMethod++;
   if (buildCounterAuthzPolicyAuthzRuleToRequestOperationMCPMethod < 3) {
     o.name = 'foo';
-    o.params = buildUnnamed21();
+    o.params = buildUnnamed23();
   }
   buildCounterAuthzPolicyAuthzRuleToRequestOperationMCPMethod--;
   return o;
@@ -723,7 +749,7 @@ void checkAuthzPolicyAuthzRuleToRequestOperationMCPMethod(
   buildCounterAuthzPolicyAuthzRuleToRequestOperationMCPMethod++;
   if (buildCounterAuthzPolicyAuthzRuleToRequestOperationMCPMethod < 3) {
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed21(o.params!);
+    checkUnnamed23(o.params!);
   }
   buildCounterAuthzPolicyAuthzRuleToRequestOperationMCPMethod--;
 }
@@ -749,9 +775,9 @@ void checkAuthzPolicyCustomProvider(api.AuthzPolicyCustomProvider o) {
   buildCounterAuthzPolicyCustomProvider--;
 }
 
-core.List<core.String> buildUnnamed22() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed24() => ['foo', 'foo'];
 
-void checkUnnamed22(core.List<core.String> o) {
+void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -763,7 +789,7 @@ buildAuthzPolicyCustomProviderAuthzExtension() {
   final o = api.AuthzPolicyCustomProviderAuthzExtension();
   buildCounterAuthzPolicyCustomProviderAuthzExtension++;
   if (buildCounterAuthzPolicyCustomProviderAuthzExtension < 3) {
-    o.resources = buildUnnamed22();
+    o.resources = buildUnnamed24();
   }
   buildCounterAuthzPolicyCustomProviderAuthzExtension--;
   return o;
@@ -774,7 +800,7 @@ void checkAuthzPolicyCustomProviderAuthzExtension(
 ) {
   buildCounterAuthzPolicyCustomProviderAuthzExtension++;
   if (buildCounterAuthzPolicyCustomProviderAuthzExtension < 3) {
-    checkUnnamed22(o.resources!);
+    checkUnnamed24(o.resources!);
   }
   buildCounterAuthzPolicyCustomProviderAuthzExtension--;
 }
@@ -796,9 +822,9 @@ void checkAuthzPolicyCustomProviderCloudIap(
   buildCounterAuthzPolicyCustomProviderCloudIap--;
 }
 
-core.List<core.String> buildUnnamed23() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed25() => ['foo', 'foo'];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -810,7 +836,7 @@ api.AuthzPolicyTarget buildAuthzPolicyTarget() {
   buildCounterAuthzPolicyTarget++;
   if (buildCounterAuthzPolicyTarget < 3) {
     o.loadBalancingScheme = 'foo';
-    o.resources = buildUnnamed23();
+    o.resources = buildUnnamed25();
   }
   buildCounterAuthzPolicyTarget--;
   return o;
@@ -820,14 +846,14 @@ void checkAuthzPolicyTarget(api.AuthzPolicyTarget o) {
   buildCounterAuthzPolicyTarget++;
   if (buildCounterAuthzPolicyTarget < 3) {
     unittest.expect(o.loadBalancingScheme!, unittest.equals('foo'));
-    checkUnnamed23(o.resources!);
+    checkUnnamed25(o.resources!);
   }
   buildCounterAuthzPolicyTarget--;
 }
 
-core.Map<core.String, core.String> buildUnnamed24() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed26() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed24(core.Map<core.String, core.String> o) {
+void checkUnnamed26(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -842,7 +868,7 @@ api.BackendAuthenticationConfig buildBackendAuthenticationConfig() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed24();
+    o.labels = buildUnnamed26();
     o.name = 'foo';
     o.trustConfig = 'foo';
     o.updateTime = 'foo';
@@ -859,7 +885,7 @@ void checkBackendAuthenticationConfig(api.BackendAuthenticationConfig o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
-    checkUnnamed24(o.labels!);
+    checkUnnamed26(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.trustConfig!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -902,20 +928,20 @@ void checkCertificateProviderInstance(api.CertificateProviderInstance o) {
   buildCounterCertificateProviderInstance--;
 }
 
-core.Map<core.String, core.String> buildUnnamed25() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed27() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed25(core.Map<core.String, core.String> o) {
+void checkUnnamed27(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.ValidationCA> buildUnnamed26() => [
+core.List<api.ValidationCA> buildUnnamed28() => [
   buildValidationCA(),
   buildValidationCA(),
 ];
 
-void checkUnnamed26(core.List<api.ValidationCA> o) {
+void checkUnnamed28(core.List<api.ValidationCA> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValidationCA(o[0]);
   checkValidationCA(o[1]);
@@ -930,9 +956,9 @@ api.ClientTlsPolicy buildClientTlsPolicy() {
         buildGoogleCloudNetworksecurityV1CertificateProvider();
     o.createTime = 'foo';
     o.description = 'foo';
-    o.labels = buildUnnamed25();
+    o.labels = buildUnnamed27();
     o.name = 'foo';
-    o.serverValidationCa = buildUnnamed26();
+    o.serverValidationCa = buildUnnamed28();
     o.sni = 'foo';
     o.updateTime = 'foo';
   }
@@ -946,9 +972,9 @@ void checkClientTlsPolicy(api.ClientTlsPolicy o) {
     checkGoogleCloudNetworksecurityV1CertificateProvider(o.clientCertificate!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed25(o.labels!);
+    checkUnnamed27(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed26(o.serverValidationCa!);
+    checkUnnamed28(o.serverValidationCa!);
     unittest.expect(o.sni!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
@@ -1014,53 +1040,12 @@ void checkCustomMirroringProfile(api.CustomMirroringProfile o) {
   buildCounterCustomMirroringProfile--;
 }
 
-core.List<core.String> buildUnnamed27() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed29() => ['foo', 'foo'];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed28() => ['foo', 'foo'];
-
-void checkUnnamed28(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.int> buildUnnamed29() => [42, 42];
-
-void checkUnnamed29(core.List<core.int> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
-}
-
-core.int buildCounterDestination = 0;
-api.Destination buildDestination() {
-  final o = api.Destination();
-  buildCounterDestination++;
-  if (buildCounterDestination < 3) {
-    o.hosts = buildUnnamed27();
-    o.httpHeaderMatch = buildHttpHeaderMatch();
-    o.methods = buildUnnamed28();
-    o.ports = buildUnnamed29();
-  }
-  buildCounterDestination--;
-  return o;
-}
-
-void checkDestination(api.Destination o) {
-  buildCounterDestination++;
-  if (buildCounterDestination < 3) {
-    checkUnnamed27(o.hosts!);
-    checkHttpHeaderMatch(o.httpHeaderMatch!);
-    checkUnnamed28(o.methods!);
-    checkUnnamed29(o.ports!);
-  }
-  buildCounterDestination--;
 }
 
 core.List<core.String> buildUnnamed30() => ['foo', 'foo'];
@@ -1071,9 +1056,50 @@ void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed31() => {'x': 'foo', 'y': 'foo'};
+core.List<core.int> buildUnnamed31() => [42, 42];
 
-void checkUnnamed31(core.Map<core.String, core.String> o) {
+void checkUnnamed31(core.List<core.int> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals(42));
+  unittest.expect(o[1], unittest.equals(42));
+}
+
+core.int buildCounterDestination = 0;
+api.Destination buildDestination() {
+  final o = api.Destination();
+  buildCounterDestination++;
+  if (buildCounterDestination < 3) {
+    o.hosts = buildUnnamed29();
+    o.httpHeaderMatch = buildHttpHeaderMatch();
+    o.methods = buildUnnamed30();
+    o.ports = buildUnnamed31();
+  }
+  buildCounterDestination--;
+  return o;
+}
+
+void checkDestination(api.Destination o) {
+  buildCounterDestination++;
+  if (buildCounterDestination < 3) {
+    checkUnnamed29(o.hosts!);
+    checkHttpHeaderMatch(o.httpHeaderMatch!);
+    checkUnnamed30(o.methods!);
+    checkUnnamed31(o.ports!);
+  }
+  buildCounterDestination--;
+}
+
+core.List<core.String> buildUnnamed32() => ['foo', 'foo'];
+
+void checkUnnamed32(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.String> buildUnnamed33() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed33(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -1085,8 +1111,8 @@ api.DnsThreatDetector buildDnsThreatDetector() {
   buildCounterDnsThreatDetector++;
   if (buildCounterDnsThreatDetector < 3) {
     o.createTime = 'foo';
-    o.excludedNetworks = buildUnnamed30();
-    o.labels = buildUnnamed31();
+    o.excludedNetworks = buildUnnamed32();
+    o.labels = buildUnnamed33();
     o.name = 'foo';
     o.provider = 'foo';
     o.updateTime = 'foo';
@@ -1099,8 +1125,8 @@ void checkDnsThreatDetector(api.DnsThreatDetector o) {
   buildCounterDnsThreatDetector++;
   if (buildCounterDnsThreatDetector < 3) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
-    checkUnnamed30(o.excludedNetworks!);
-    checkUnnamed31(o.labels!);
+    checkUnnamed32(o.excludedNetworks!);
+    checkUnnamed33(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.provider!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -1148,28 +1174,28 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.List<core.String> buildUnnamed32() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed34() => ['foo', 'foo'];
 
-void checkUnnamed32(core.List<core.String> o) {
+void checkUnnamed34(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.FirewallEndpointAssociationReference> buildUnnamed33() => [
+core.List<api.FirewallEndpointAssociationReference> buildUnnamed35() => [
   buildFirewallEndpointAssociationReference(),
   buildFirewallEndpointAssociationReference(),
 ];
 
-void checkUnnamed33(core.List<api.FirewallEndpointAssociationReference> o) {
+void checkUnnamed35(core.List<api.FirewallEndpointAssociationReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFirewallEndpointAssociationReference(o[0]);
   checkFirewallEndpointAssociationReference(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed34() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed36() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed34(core.Map<core.String, core.String> o) {
+void checkUnnamed36(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -1180,13 +1206,13 @@ api.FirewallEndpoint buildFirewallEndpoint() {
   final o = api.FirewallEndpoint();
   buildCounterFirewallEndpoint++;
   if (buildCounterFirewallEndpoint < 3) {
-    o.associatedNetworks = buildUnnamed32();
-    o.associations = buildUnnamed33();
+    o.associatedNetworks = buildUnnamed34();
+    o.associations = buildUnnamed35();
     o.billingProjectId = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
     o.endpointSettings = buildFirewallEndpointEndpointSettings();
-    o.labels = buildUnnamed34();
+    o.labels = buildUnnamed36();
     o.name = 'foo';
     o.reconciling = true;
     o.satisfiesPzi = true;
@@ -1201,13 +1227,13 @@ api.FirewallEndpoint buildFirewallEndpoint() {
 void checkFirewallEndpoint(api.FirewallEndpoint o) {
   buildCounterFirewallEndpoint++;
   if (buildCounterFirewallEndpoint < 3) {
-    checkUnnamed32(o.associatedNetworks!);
-    checkUnnamed33(o.associations!);
+    checkUnnamed34(o.associatedNetworks!);
+    checkUnnamed35(o.associations!);
     unittest.expect(o.billingProjectId!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     checkFirewallEndpointEndpointSettings(o.endpointSettings!);
-    checkUnnamed34(o.labels!);
+    checkUnnamed36(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
@@ -1218,9 +1244,9 @@ void checkFirewallEndpoint(api.FirewallEndpoint o) {
   buildCounterFirewallEndpoint--;
 }
 
-core.Map<core.String, core.String> buildUnnamed35() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed37() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed35(core.Map<core.String, core.String> o) {
+void checkUnnamed37(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -1234,7 +1260,7 @@ api.FirewallEndpointAssociation buildFirewallEndpointAssociation() {
     o.createTime = 'foo';
     o.disabled = true;
     o.firewallEndpoint = 'foo';
-    o.labels = buildUnnamed35();
+    o.labels = buildUnnamed37();
     o.name = 'foo';
     o.network = 'foo';
     o.reconciling = true;
@@ -1252,7 +1278,7 @@ void checkFirewallEndpointAssociation(api.FirewallEndpointAssociation o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(o.firewallEndpoint!, unittest.equals('foo'));
-    checkUnnamed35(o.labels!);
+    checkUnnamed37(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.network!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
@@ -1418,12 +1444,12 @@ void checkGoogleCloudNetworksecurityV1GrpcEndpoint(
   buildCounterGoogleCloudNetworksecurityV1GrpcEndpoint--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed36() => [
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed38() => [
   buildGoogleIamV1AuditLogConfig(),
   buildGoogleIamV1AuditLogConfig(),
 ];
 
-void checkUnnamed36(core.List<api.GoogleIamV1AuditLogConfig> o) {
+void checkUnnamed38(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -1434,7 +1460,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed36();
+    o.auditLogConfigs = buildUnnamed38();
     o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -1444,15 +1470,15 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed36(o.auditLogConfigs!);
+    checkUnnamed38(o.auditLogConfigs!);
     unittest.expect(o.service!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed37() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed39() => ['foo', 'foo'];
 
-void checkUnnamed37(core.List<core.String> o) {
+void checkUnnamed39(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1463,7 +1489,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   final o = api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed37();
+    o.exemptedMembers = buildUnnamed39();
     o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
@@ -1473,15 +1499,15 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
 void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed37(o.exemptedMembers!);
+    checkUnnamed39(o.exemptedMembers!);
     unittest.expect(o.logType!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed38() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed40() => ['foo', 'foo'];
 
-void checkUnnamed38(core.List<core.String> o) {
+void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1493,7 +1519,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed38();
+    o.members = buildUnnamed40();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -1504,29 +1530,29 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkExpr(o.condition!);
-    checkUnnamed38(o.members!);
+    checkUnnamed40(o.members!);
     unittest.expect(o.role!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed39() => [
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed41() => [
   buildGoogleIamV1AuditConfig(),
   buildGoogleIamV1AuditConfig(),
 ];
 
-void checkUnnamed39(core.List<api.GoogleIamV1AuditConfig> o) {
+void checkUnnamed41(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed40() => [
+core.List<api.GoogleIamV1Binding> buildUnnamed42() => [
   buildGoogleIamV1Binding(),
   buildGoogleIamV1Binding(),
 ];
 
-void checkUnnamed40(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed42(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -1537,8 +1563,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed39();
-    o.bindings = buildUnnamed40();
+    o.auditConfigs = buildUnnamed41();
+    o.bindings = buildUnnamed42();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1549,8 +1575,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed39(o.auditConfigs!);
-    checkUnnamed40(o.bindings!);
+    checkUnnamed41(o.auditConfigs!);
+    checkUnnamed42(o.bindings!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.version!, unittest.equals(42));
   }
@@ -1578,9 +1604,9 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed41() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed43() => ['foo', 'foo'];
 
-void checkUnnamed41(core.List<core.String> o) {
+void checkUnnamed43(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1592,7 +1618,7 @@ buildGoogleIamV1TestIamPermissionsRequest() {
   final o = api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed41();
+    o.permissions = buildUnnamed43();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
@@ -1603,14 +1629,14 @@ void checkGoogleIamV1TestIamPermissionsRequest(
 ) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed41(o.permissions!);
+    checkUnnamed43(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed42() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed44() => ['foo', 'foo'];
 
-void checkUnnamed42(core.List<core.String> o) {
+void checkUnnamed44(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1622,7 +1648,7 @@ buildGoogleIamV1TestIamPermissionsResponse() {
   final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed42();
+    o.permissions = buildUnnamed44();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -1633,7 +1659,7 @@ void checkGoogleIamV1TestIamPermissionsResponse(
 ) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed42(o.permissions!);
+    checkUnnamed44(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
@@ -1659,9 +1685,9 @@ void checkHttpHeaderMatch(api.HttpHeaderMatch o) {
   buildCounterHttpHeaderMatch--;
 }
 
-core.Map<core.String, core.String> buildUnnamed43() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed45() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed43(core.Map<core.String, core.String> o) {
+void checkUnnamed45(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -1676,7 +1702,7 @@ api.InterceptDeployment buildInterceptDeployment() {
     o.description = 'foo';
     o.forwardingRule = 'foo';
     o.interceptDeploymentGroup = 'foo';
-    o.labels = buildUnnamed43();
+    o.labels = buildUnnamed45();
     o.name = 'foo';
     o.reconciling = true;
     o.state = 'foo';
@@ -1693,7 +1719,7 @@ void checkInterceptDeployment(api.InterceptDeployment o) {
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.forwardingRule!, unittest.equals('foo'));
     unittest.expect(o.interceptDeploymentGroup!, unittest.equals('foo'));
-    checkUnnamed43(o.labels!);
+    checkUnnamed45(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
@@ -1703,12 +1729,12 @@ void checkInterceptDeployment(api.InterceptDeployment o) {
 }
 
 core.List<api.InterceptDeploymentGroupConnectedEndpointGroup>
-buildUnnamed44() => [
+buildUnnamed46() => [
   buildInterceptDeploymentGroupConnectedEndpointGroup(),
   buildInterceptDeploymentGroupConnectedEndpointGroup(),
 ];
 
-void checkUnnamed44(
+void checkUnnamed46(
   core.List<api.InterceptDeploymentGroupConnectedEndpointGroup> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1716,31 +1742,31 @@ void checkUnnamed44(
   checkInterceptDeploymentGroupConnectedEndpointGroup(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed45() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed47() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed45(core.Map<core.String, core.String> o) {
+void checkUnnamed47(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.InterceptLocation> buildUnnamed46() => [
+core.List<api.InterceptLocation> buildUnnamed48() => [
   buildInterceptLocation(),
   buildInterceptLocation(),
 ];
 
-void checkUnnamed46(core.List<api.InterceptLocation> o) {
+void checkUnnamed48(core.List<api.InterceptLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInterceptLocation(o[0]);
   checkInterceptLocation(o[1]);
 }
 
-core.List<api.InterceptDeploymentGroupDeployment> buildUnnamed47() => [
+core.List<api.InterceptDeploymentGroupDeployment> buildUnnamed49() => [
   buildInterceptDeploymentGroupDeployment(),
   buildInterceptDeploymentGroupDeployment(),
 ];
 
-void checkUnnamed47(core.List<api.InterceptDeploymentGroupDeployment> o) {
+void checkUnnamed49(core.List<api.InterceptDeploymentGroupDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInterceptDeploymentGroupDeployment(o[0]);
   checkInterceptDeploymentGroupDeployment(o[1]);
@@ -1751,13 +1777,13 @@ api.InterceptDeploymentGroup buildInterceptDeploymentGroup() {
   final o = api.InterceptDeploymentGroup();
   buildCounterInterceptDeploymentGroup++;
   if (buildCounterInterceptDeploymentGroup < 3) {
-    o.connectedEndpointGroups = buildUnnamed44();
+    o.connectedEndpointGroups = buildUnnamed46();
     o.createTime = 'foo';
     o.description = 'foo';
-    o.labels = buildUnnamed45();
-    o.locations = buildUnnamed46();
+    o.labels = buildUnnamed47();
+    o.locations = buildUnnamed48();
     o.name = 'foo';
-    o.nestedDeployments = buildUnnamed47();
+    o.nestedDeployments = buildUnnamed49();
     o.network = 'foo';
     o.reconciling = true;
     o.state = 'foo';
@@ -1770,13 +1796,13 @@ api.InterceptDeploymentGroup buildInterceptDeploymentGroup() {
 void checkInterceptDeploymentGroup(api.InterceptDeploymentGroup o) {
   buildCounterInterceptDeploymentGroup++;
   if (buildCounterInterceptDeploymentGroup < 3) {
-    checkUnnamed44(o.connectedEndpointGroups!);
+    checkUnnamed46(o.connectedEndpointGroups!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed45(o.labels!);
-    checkUnnamed46(o.locations!);
+    checkUnnamed47(o.labels!);
+    checkUnnamed48(o.locations!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed47(o.nestedDeployments!);
+    checkUnnamed49(o.nestedDeployments!);
     unittest.expect(o.network!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
@@ -1831,20 +1857,20 @@ void checkInterceptDeploymentGroupDeployment(
   buildCounterInterceptDeploymentGroupDeployment--;
 }
 
-core.List<api.InterceptEndpointGroupAssociationDetails> buildUnnamed48() => [
+core.List<api.InterceptEndpointGroupAssociationDetails> buildUnnamed50() => [
   buildInterceptEndpointGroupAssociationDetails(),
   buildInterceptEndpointGroupAssociationDetails(),
 ];
 
-void checkUnnamed48(core.List<api.InterceptEndpointGroupAssociationDetails> o) {
+void checkUnnamed50(core.List<api.InterceptEndpointGroupAssociationDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInterceptEndpointGroupAssociationDetails(o[0]);
   checkInterceptEndpointGroupAssociationDetails(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed49() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed51() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed49(core.Map<core.String, core.String> o) {
+void checkUnnamed51(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -1855,13 +1881,13 @@ api.InterceptEndpointGroup buildInterceptEndpointGroup() {
   final o = api.InterceptEndpointGroup();
   buildCounterInterceptEndpointGroup++;
   if (buildCounterInterceptEndpointGroup < 3) {
-    o.associations = buildUnnamed48();
+    o.associations = buildUnnamed50();
     o.connectedDeploymentGroup =
         buildInterceptEndpointGroupConnectedDeploymentGroup();
     o.createTime = 'foo';
     o.description = 'foo';
     o.interceptDeploymentGroup = 'foo';
-    o.labels = buildUnnamed49();
+    o.labels = buildUnnamed51();
     o.name = 'foo';
     o.reconciling = true;
     o.state = 'foo';
@@ -1874,14 +1900,14 @@ api.InterceptEndpointGroup buildInterceptEndpointGroup() {
 void checkInterceptEndpointGroup(api.InterceptEndpointGroup o) {
   buildCounterInterceptEndpointGroup++;
   if (buildCounterInterceptEndpointGroup < 3) {
-    checkUnnamed48(o.associations!);
+    checkUnnamed50(o.associations!);
     checkInterceptEndpointGroupConnectedDeploymentGroup(
       o.connectedDeploymentGroup!,
     );
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.interceptDeploymentGroup!, unittest.equals('foo'));
-    checkUnnamed49(o.labels!);
+    checkUnnamed51(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
@@ -1890,32 +1916,32 @@ void checkInterceptEndpointGroup(api.InterceptEndpointGroup o) {
   buildCounterInterceptEndpointGroup--;
 }
 
-core.Map<core.String, core.String> buildUnnamed50() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed52() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed50(core.Map<core.String, core.String> o) {
+void checkUnnamed52(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.InterceptLocation> buildUnnamed51() => [
+core.List<api.InterceptLocation> buildUnnamed53() => [
   buildInterceptLocation(),
   buildInterceptLocation(),
 ];
 
-void checkUnnamed51(core.List<api.InterceptLocation> o) {
+void checkUnnamed53(core.List<api.InterceptLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInterceptLocation(o[0]);
   checkInterceptLocation(o[1]);
 }
 
 core.List<api.InterceptEndpointGroupAssociationLocationDetails>
-buildUnnamed52() => [
+buildUnnamed54() => [
   buildInterceptEndpointGroupAssociationLocationDetails(),
   buildInterceptEndpointGroupAssociationLocationDetails(),
 ];
 
-void checkUnnamed52(
+void checkUnnamed54(
   core.List<api.InterceptEndpointGroupAssociationLocationDetails> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1930,9 +1956,9 @@ api.InterceptEndpointGroupAssociation buildInterceptEndpointGroupAssociation() {
   if (buildCounterInterceptEndpointGroupAssociation < 3) {
     o.createTime = 'foo';
     o.interceptEndpointGroup = 'foo';
-    o.labels = buildUnnamed50();
-    o.locations = buildUnnamed51();
-    o.locationsDetails = buildUnnamed52();
+    o.labels = buildUnnamed52();
+    o.locations = buildUnnamed53();
+    o.locationsDetails = buildUnnamed54();
     o.name = 'foo';
     o.network = 'foo';
     o.networkCookie = 42;
@@ -1951,9 +1977,9 @@ void checkInterceptEndpointGroupAssociation(
   if (buildCounterInterceptEndpointGroupAssociation < 3) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.interceptEndpointGroup!, unittest.equals('foo'));
-    checkUnnamed50(o.labels!);
-    checkUnnamed51(o.locations!);
-    checkUnnamed52(o.locationsDetails!);
+    checkUnnamed52(o.labels!);
+    checkUnnamed53(o.locations!);
+    checkUnnamed54(o.locationsDetails!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.network!, unittest.equals('foo'));
     unittest.expect(o.networkCookie!, unittest.equals(42));
@@ -2014,12 +2040,12 @@ void checkInterceptEndpointGroupAssociationLocationDetails(
   buildCounterInterceptEndpointGroupAssociationLocationDetails--;
 }
 
-core.List<api.InterceptLocation> buildUnnamed53() => [
+core.List<api.InterceptLocation> buildUnnamed55() => [
   buildInterceptLocation(),
   buildInterceptLocation(),
 ];
 
-void checkUnnamed53(core.List<api.InterceptLocation> o) {
+void checkUnnamed55(core.List<api.InterceptLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInterceptLocation(o[0]);
   checkInterceptLocation(o[1]);
@@ -2031,7 +2057,7 @@ buildInterceptEndpointGroupConnectedDeploymentGroup() {
   final o = api.InterceptEndpointGroupConnectedDeploymentGroup();
   buildCounterInterceptEndpointGroupConnectedDeploymentGroup++;
   if (buildCounterInterceptEndpointGroupConnectedDeploymentGroup < 3) {
-    o.locations = buildUnnamed53();
+    o.locations = buildUnnamed55();
     o.name = 'foo';
   }
   buildCounterInterceptEndpointGroupConnectedDeploymentGroup--;
@@ -2043,7 +2069,7 @@ void checkInterceptEndpointGroupConnectedDeploymentGroup(
 ) {
   buildCounterInterceptEndpointGroupConnectedDeploymentGroup++;
   if (buildCounterInterceptEndpointGroupConnectedDeploymentGroup < 3) {
-    checkUnnamed53(o.locations!);
+    checkUnnamed55(o.locations!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterInterceptEndpointGroupConnectedDeploymentGroup--;
@@ -2071,12 +2097,12 @@ void checkInterceptLocation(api.InterceptLocation o) {
 }
 
 core.List<api.ListAddressGroupReferencesResponseAddressGroupReference>
-buildUnnamed54() => [
+buildUnnamed56() => [
   buildListAddressGroupReferencesResponseAddressGroupReference(),
   buildListAddressGroupReferencesResponseAddressGroupReference(),
 ];
 
-void checkUnnamed54(
+void checkUnnamed56(
   core.List<api.ListAddressGroupReferencesResponseAddressGroupReference> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2090,7 +2116,7 @@ buildListAddressGroupReferencesResponse() {
   final o = api.ListAddressGroupReferencesResponse();
   buildCounterListAddressGroupReferencesResponse++;
   if (buildCounterListAddressGroupReferencesResponse < 3) {
-    o.addressGroupReferences = buildUnnamed54();
+    o.addressGroupReferences = buildUnnamed56();
     o.nextPageToken = 'foo';
   }
   buildCounterListAddressGroupReferencesResponse--;
@@ -2102,7 +2128,7 @@ void checkListAddressGroupReferencesResponse(
 ) {
   buildCounterListAddressGroupReferencesResponse++;
   if (buildCounterListAddressGroupReferencesResponse < 3) {
-    checkUnnamed54(o.addressGroupReferences!);
+    checkUnnamed56(o.addressGroupReferences!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListAddressGroupReferencesResponse--;
@@ -2135,20 +2161,20 @@ void checkListAddressGroupReferencesResponseAddressGroupReference(
   buildCounterListAddressGroupReferencesResponseAddressGroupReference--;
 }
 
-core.List<api.AddressGroup> buildUnnamed55() => [
+core.List<api.AddressGroup> buildUnnamed57() => [
   buildAddressGroup(),
   buildAddressGroup(),
 ];
 
-void checkUnnamed55(core.List<api.AddressGroup> o) {
+void checkUnnamed57(core.List<api.AddressGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAddressGroup(o[0]);
   checkAddressGroup(o[1]);
 }
 
-core.List<core.String> buildUnnamed56() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed58() => ['foo', 'foo'];
 
-void checkUnnamed56(core.List<core.String> o) {
+void checkUnnamed58(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2159,9 +2185,9 @@ api.ListAddressGroupsResponse buildListAddressGroupsResponse() {
   final o = api.ListAddressGroupsResponse();
   buildCounterListAddressGroupsResponse++;
   if (buildCounterListAddressGroupsResponse < 3) {
-    o.addressGroups = buildUnnamed55();
+    o.addressGroups = buildUnnamed57();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed56();
+    o.unreachable = buildUnnamed58();
   }
   buildCounterListAddressGroupsResponse--;
   return o;
@@ -2170,19 +2196,19 @@ api.ListAddressGroupsResponse buildListAddressGroupsResponse() {
 void checkListAddressGroupsResponse(api.ListAddressGroupsResponse o) {
   buildCounterListAddressGroupsResponse++;
   if (buildCounterListAddressGroupsResponse < 3) {
-    checkUnnamed55(o.addressGroups!);
+    checkUnnamed57(o.addressGroups!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed56(o.unreachable!);
+    checkUnnamed58(o.unreachable!);
   }
   buildCounterListAddressGroupsResponse--;
 }
 
-core.List<api.AuthorizationPolicy> buildUnnamed57() => [
+core.List<api.AuthorizationPolicy> buildUnnamed59() => [
   buildAuthorizationPolicy(),
   buildAuthorizationPolicy(),
 ];
 
-void checkUnnamed57(core.List<api.AuthorizationPolicy> o) {
+void checkUnnamed59(core.List<api.AuthorizationPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthorizationPolicy(o[0]);
   checkAuthorizationPolicy(o[1]);
@@ -2193,7 +2219,7 @@ api.ListAuthorizationPoliciesResponse buildListAuthorizationPoliciesResponse() {
   final o = api.ListAuthorizationPoliciesResponse();
   buildCounterListAuthorizationPoliciesResponse++;
   if (buildCounterListAuthorizationPoliciesResponse < 3) {
-    o.authorizationPolicies = buildUnnamed57();
+    o.authorizationPolicies = buildUnnamed59();
     o.nextPageToken = 'foo';
   }
   buildCounterListAuthorizationPoliciesResponse--;
@@ -2205,26 +2231,26 @@ void checkListAuthorizationPoliciesResponse(
 ) {
   buildCounterListAuthorizationPoliciesResponse++;
   if (buildCounterListAuthorizationPoliciesResponse < 3) {
-    checkUnnamed57(o.authorizationPolicies!);
+    checkUnnamed59(o.authorizationPolicies!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListAuthorizationPoliciesResponse--;
 }
 
-core.List<api.AuthzPolicy> buildUnnamed58() => [
+core.List<api.AuthzPolicy> buildUnnamed60() => [
   buildAuthzPolicy(),
   buildAuthzPolicy(),
 ];
 
-void checkUnnamed58(core.List<api.AuthzPolicy> o) {
+void checkUnnamed60(core.List<api.AuthzPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuthzPolicy(o[0]);
   checkAuthzPolicy(o[1]);
 }
 
-core.List<core.String> buildUnnamed59() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed61() => ['foo', 'foo'];
 
-void checkUnnamed59(core.List<core.String> o) {
+void checkUnnamed61(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2235,9 +2261,9 @@ api.ListAuthzPoliciesResponse buildListAuthzPoliciesResponse() {
   final o = api.ListAuthzPoliciesResponse();
   buildCounterListAuthzPoliciesResponse++;
   if (buildCounterListAuthzPoliciesResponse < 3) {
-    o.authzPolicies = buildUnnamed58();
+    o.authzPolicies = buildUnnamed60();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed59();
+    o.unreachable = buildUnnamed61();
   }
   buildCounterListAuthzPoliciesResponse--;
   return o;
@@ -2246,27 +2272,27 @@ api.ListAuthzPoliciesResponse buildListAuthzPoliciesResponse() {
 void checkListAuthzPoliciesResponse(api.ListAuthzPoliciesResponse o) {
   buildCounterListAuthzPoliciesResponse++;
   if (buildCounterListAuthzPoliciesResponse < 3) {
-    checkUnnamed58(o.authzPolicies!);
+    checkUnnamed60(o.authzPolicies!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed59(o.unreachable!);
+    checkUnnamed61(o.unreachable!);
   }
   buildCounterListAuthzPoliciesResponse--;
 }
 
-core.List<api.BackendAuthenticationConfig> buildUnnamed60() => [
+core.List<api.BackendAuthenticationConfig> buildUnnamed62() => [
   buildBackendAuthenticationConfig(),
   buildBackendAuthenticationConfig(),
 ];
 
-void checkUnnamed60(core.List<api.BackendAuthenticationConfig> o) {
+void checkUnnamed62(core.List<api.BackendAuthenticationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackendAuthenticationConfig(o[0]);
   checkBackendAuthenticationConfig(o[1]);
 }
 
-core.List<core.String> buildUnnamed61() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed63() => ['foo', 'foo'];
 
-void checkUnnamed61(core.List<core.String> o) {
+void checkUnnamed63(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2278,9 +2304,9 @@ buildListBackendAuthenticationConfigsResponse() {
   final o = api.ListBackendAuthenticationConfigsResponse();
   buildCounterListBackendAuthenticationConfigsResponse++;
   if (buildCounterListBackendAuthenticationConfigsResponse < 3) {
-    o.backendAuthenticationConfigs = buildUnnamed60();
+    o.backendAuthenticationConfigs = buildUnnamed62();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed61();
+    o.unreachable = buildUnnamed63();
   }
   buildCounterListBackendAuthenticationConfigsResponse--;
   return o;
@@ -2291,19 +2317,19 @@ void checkListBackendAuthenticationConfigsResponse(
 ) {
   buildCounterListBackendAuthenticationConfigsResponse++;
   if (buildCounterListBackendAuthenticationConfigsResponse < 3) {
-    checkUnnamed60(o.backendAuthenticationConfigs!);
+    checkUnnamed62(o.backendAuthenticationConfigs!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed61(o.unreachable!);
+    checkUnnamed63(o.unreachable!);
   }
   buildCounterListBackendAuthenticationConfigsResponse--;
 }
 
-core.List<api.ClientTlsPolicy> buildUnnamed62() => [
+core.List<api.ClientTlsPolicy> buildUnnamed64() => [
   buildClientTlsPolicy(),
   buildClientTlsPolicy(),
 ];
 
-void checkUnnamed62(core.List<api.ClientTlsPolicy> o) {
+void checkUnnamed64(core.List<api.ClientTlsPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClientTlsPolicy(o[0]);
   checkClientTlsPolicy(o[1]);
@@ -2314,7 +2340,7 @@ api.ListClientTlsPoliciesResponse buildListClientTlsPoliciesResponse() {
   final o = api.ListClientTlsPoliciesResponse();
   buildCounterListClientTlsPoliciesResponse++;
   if (buildCounterListClientTlsPoliciesResponse < 3) {
-    o.clientTlsPolicies = buildUnnamed62();
+    o.clientTlsPolicies = buildUnnamed64();
     o.nextPageToken = 'foo';
   }
   buildCounterListClientTlsPoliciesResponse--;
@@ -2324,26 +2350,26 @@ api.ListClientTlsPoliciesResponse buildListClientTlsPoliciesResponse() {
 void checkListClientTlsPoliciesResponse(api.ListClientTlsPoliciesResponse o) {
   buildCounterListClientTlsPoliciesResponse++;
   if (buildCounterListClientTlsPoliciesResponse < 3) {
-    checkUnnamed62(o.clientTlsPolicies!);
+    checkUnnamed64(o.clientTlsPolicies!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListClientTlsPoliciesResponse--;
 }
 
-core.List<api.DnsThreatDetector> buildUnnamed63() => [
+core.List<api.DnsThreatDetector> buildUnnamed65() => [
   buildDnsThreatDetector(),
   buildDnsThreatDetector(),
 ];
 
-void checkUnnamed63(core.List<api.DnsThreatDetector> o) {
+void checkUnnamed65(core.List<api.DnsThreatDetector> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsThreatDetector(o[0]);
   checkDnsThreatDetector(o[1]);
 }
 
-core.List<core.String> buildUnnamed64() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed66() => ['foo', 'foo'];
 
-void checkUnnamed64(core.List<core.String> o) {
+void checkUnnamed66(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2354,9 +2380,9 @@ api.ListDnsThreatDetectorsResponse buildListDnsThreatDetectorsResponse() {
   final o = api.ListDnsThreatDetectorsResponse();
   buildCounterListDnsThreatDetectorsResponse++;
   if (buildCounterListDnsThreatDetectorsResponse < 3) {
-    o.dnsThreatDetectors = buildUnnamed63();
+    o.dnsThreatDetectors = buildUnnamed65();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed64();
+    o.unreachable = buildUnnamed66();
   }
   buildCounterListDnsThreatDetectorsResponse--;
   return o;
@@ -2365,27 +2391,27 @@ api.ListDnsThreatDetectorsResponse buildListDnsThreatDetectorsResponse() {
 void checkListDnsThreatDetectorsResponse(api.ListDnsThreatDetectorsResponse o) {
   buildCounterListDnsThreatDetectorsResponse++;
   if (buildCounterListDnsThreatDetectorsResponse < 3) {
-    checkUnnamed63(o.dnsThreatDetectors!);
+    checkUnnamed65(o.dnsThreatDetectors!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed64(o.unreachable!);
+    checkUnnamed66(o.unreachable!);
   }
   buildCounterListDnsThreatDetectorsResponse--;
 }
 
-core.List<api.FirewallEndpointAssociation> buildUnnamed65() => [
+core.List<api.FirewallEndpointAssociation> buildUnnamed67() => [
   buildFirewallEndpointAssociation(),
   buildFirewallEndpointAssociation(),
 ];
 
-void checkUnnamed65(core.List<api.FirewallEndpointAssociation> o) {
+void checkUnnamed67(core.List<api.FirewallEndpointAssociation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFirewallEndpointAssociation(o[0]);
   checkFirewallEndpointAssociation(o[1]);
 }
 
-core.List<core.String> buildUnnamed66() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed68() => ['foo', 'foo'];
 
-void checkUnnamed66(core.List<core.String> o) {
+void checkUnnamed68(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2397,9 +2423,9 @@ buildListFirewallEndpointAssociationsResponse() {
   final o = api.ListFirewallEndpointAssociationsResponse();
   buildCounterListFirewallEndpointAssociationsResponse++;
   if (buildCounterListFirewallEndpointAssociationsResponse < 3) {
-    o.firewallEndpointAssociations = buildUnnamed65();
+    o.firewallEndpointAssociations = buildUnnamed67();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed66();
+    o.unreachable = buildUnnamed68();
   }
   buildCounterListFirewallEndpointAssociationsResponse--;
   return o;
@@ -2410,27 +2436,27 @@ void checkListFirewallEndpointAssociationsResponse(
 ) {
   buildCounterListFirewallEndpointAssociationsResponse++;
   if (buildCounterListFirewallEndpointAssociationsResponse < 3) {
-    checkUnnamed65(o.firewallEndpointAssociations!);
+    checkUnnamed67(o.firewallEndpointAssociations!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed66(o.unreachable!);
+    checkUnnamed68(o.unreachable!);
   }
   buildCounterListFirewallEndpointAssociationsResponse--;
 }
 
-core.List<api.FirewallEndpoint> buildUnnamed67() => [
+core.List<api.FirewallEndpoint> buildUnnamed69() => [
   buildFirewallEndpoint(),
   buildFirewallEndpoint(),
 ];
 
-void checkUnnamed67(core.List<api.FirewallEndpoint> o) {
+void checkUnnamed69(core.List<api.FirewallEndpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFirewallEndpoint(o[0]);
   checkFirewallEndpoint(o[1]);
 }
 
-core.List<core.String> buildUnnamed68() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed70() => ['foo', 'foo'];
 
-void checkUnnamed68(core.List<core.String> o) {
+void checkUnnamed70(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2441,9 +2467,9 @@ api.ListFirewallEndpointsResponse buildListFirewallEndpointsResponse() {
   final o = api.ListFirewallEndpointsResponse();
   buildCounterListFirewallEndpointsResponse++;
   if (buildCounterListFirewallEndpointsResponse < 3) {
-    o.firewallEndpoints = buildUnnamed67();
+    o.firewallEndpoints = buildUnnamed69();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed68();
+    o.unreachable = buildUnnamed70();
   }
   buildCounterListFirewallEndpointsResponse--;
   return o;
@@ -2452,27 +2478,27 @@ api.ListFirewallEndpointsResponse buildListFirewallEndpointsResponse() {
 void checkListFirewallEndpointsResponse(api.ListFirewallEndpointsResponse o) {
   buildCounterListFirewallEndpointsResponse++;
   if (buildCounterListFirewallEndpointsResponse < 3) {
-    checkUnnamed67(o.firewallEndpoints!);
+    checkUnnamed69(o.firewallEndpoints!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed68(o.unreachable!);
+    checkUnnamed70(o.unreachable!);
   }
   buildCounterListFirewallEndpointsResponse--;
 }
 
-core.List<api.GatewaySecurityPolicy> buildUnnamed69() => [
+core.List<api.GatewaySecurityPolicy> buildUnnamed71() => [
   buildGatewaySecurityPolicy(),
   buildGatewaySecurityPolicy(),
 ];
 
-void checkUnnamed69(core.List<api.GatewaySecurityPolicy> o) {
+void checkUnnamed71(core.List<api.GatewaySecurityPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGatewaySecurityPolicy(o[0]);
   checkGatewaySecurityPolicy(o[1]);
 }
 
-core.List<core.String> buildUnnamed70() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed72() => ['foo', 'foo'];
 
-void checkUnnamed70(core.List<core.String> o) {
+void checkUnnamed72(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2484,9 +2510,9 @@ buildListGatewaySecurityPoliciesResponse() {
   final o = api.ListGatewaySecurityPoliciesResponse();
   buildCounterListGatewaySecurityPoliciesResponse++;
   if (buildCounterListGatewaySecurityPoliciesResponse < 3) {
-    o.gatewaySecurityPolicies = buildUnnamed69();
+    o.gatewaySecurityPolicies = buildUnnamed71();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed70();
+    o.unreachable = buildUnnamed72();
   }
   buildCounterListGatewaySecurityPoliciesResponse--;
   return o;
@@ -2497,27 +2523,27 @@ void checkListGatewaySecurityPoliciesResponse(
 ) {
   buildCounterListGatewaySecurityPoliciesResponse++;
   if (buildCounterListGatewaySecurityPoliciesResponse < 3) {
-    checkUnnamed69(o.gatewaySecurityPolicies!);
+    checkUnnamed71(o.gatewaySecurityPolicies!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed70(o.unreachable!);
+    checkUnnamed72(o.unreachable!);
   }
   buildCounterListGatewaySecurityPoliciesResponse--;
 }
 
-core.List<api.GatewaySecurityPolicyRule> buildUnnamed71() => [
+core.List<api.GatewaySecurityPolicyRule> buildUnnamed73() => [
   buildGatewaySecurityPolicyRule(),
   buildGatewaySecurityPolicyRule(),
 ];
 
-void checkUnnamed71(core.List<api.GatewaySecurityPolicyRule> o) {
+void checkUnnamed73(core.List<api.GatewaySecurityPolicyRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGatewaySecurityPolicyRule(o[0]);
   checkGatewaySecurityPolicyRule(o[1]);
 }
 
-core.List<core.String> buildUnnamed72() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed74() => ['foo', 'foo'];
 
-void checkUnnamed72(core.List<core.String> o) {
+void checkUnnamed74(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2529,9 +2555,9 @@ buildListGatewaySecurityPolicyRulesResponse() {
   final o = api.ListGatewaySecurityPolicyRulesResponse();
   buildCounterListGatewaySecurityPolicyRulesResponse++;
   if (buildCounterListGatewaySecurityPolicyRulesResponse < 3) {
-    o.gatewaySecurityPolicyRules = buildUnnamed71();
+    o.gatewaySecurityPolicyRules = buildUnnamed73();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed72();
+    o.unreachable = buildUnnamed74();
   }
   buildCounterListGatewaySecurityPolicyRulesResponse--;
   return o;
@@ -2542,19 +2568,19 @@ void checkListGatewaySecurityPolicyRulesResponse(
 ) {
   buildCounterListGatewaySecurityPolicyRulesResponse++;
   if (buildCounterListGatewaySecurityPolicyRulesResponse < 3) {
-    checkUnnamed71(o.gatewaySecurityPolicyRules!);
+    checkUnnamed73(o.gatewaySecurityPolicyRules!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed72(o.unreachable!);
+    checkUnnamed74(o.unreachable!);
   }
   buildCounterListGatewaySecurityPolicyRulesResponse--;
 }
 
-core.List<api.InterceptDeploymentGroup> buildUnnamed73() => [
+core.List<api.InterceptDeploymentGroup> buildUnnamed75() => [
   buildInterceptDeploymentGroup(),
   buildInterceptDeploymentGroup(),
 ];
 
-void checkUnnamed73(core.List<api.InterceptDeploymentGroup> o) {
+void checkUnnamed75(core.List<api.InterceptDeploymentGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInterceptDeploymentGroup(o[0]);
   checkInterceptDeploymentGroup(o[1]);
@@ -2566,7 +2592,7 @@ buildListInterceptDeploymentGroupsResponse() {
   final o = api.ListInterceptDeploymentGroupsResponse();
   buildCounterListInterceptDeploymentGroupsResponse++;
   if (buildCounterListInterceptDeploymentGroupsResponse < 3) {
-    o.interceptDeploymentGroups = buildUnnamed73();
+    o.interceptDeploymentGroups = buildUnnamed75();
     o.nextPageToken = 'foo';
   }
   buildCounterListInterceptDeploymentGroupsResponse--;
@@ -2578,26 +2604,26 @@ void checkListInterceptDeploymentGroupsResponse(
 ) {
   buildCounterListInterceptDeploymentGroupsResponse++;
   if (buildCounterListInterceptDeploymentGroupsResponse < 3) {
-    checkUnnamed73(o.interceptDeploymentGroups!);
+    checkUnnamed75(o.interceptDeploymentGroups!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListInterceptDeploymentGroupsResponse--;
 }
 
-core.List<api.InterceptDeployment> buildUnnamed74() => [
+core.List<api.InterceptDeployment> buildUnnamed76() => [
   buildInterceptDeployment(),
   buildInterceptDeployment(),
 ];
 
-void checkUnnamed74(core.List<api.InterceptDeployment> o) {
+void checkUnnamed76(core.List<api.InterceptDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInterceptDeployment(o[0]);
   checkInterceptDeployment(o[1]);
 }
 
-core.List<core.String> buildUnnamed75() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed77() => ['foo', 'foo'];
 
-void checkUnnamed75(core.List<core.String> o) {
+void checkUnnamed77(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2608,9 +2634,9 @@ api.ListInterceptDeploymentsResponse buildListInterceptDeploymentsResponse() {
   final o = api.ListInterceptDeploymentsResponse();
   buildCounterListInterceptDeploymentsResponse++;
   if (buildCounterListInterceptDeploymentsResponse < 3) {
-    o.interceptDeployments = buildUnnamed74();
+    o.interceptDeployments = buildUnnamed76();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed75();
+    o.unreachable = buildUnnamed77();
   }
   buildCounterListInterceptDeploymentsResponse--;
   return o;
@@ -2621,19 +2647,19 @@ void checkListInterceptDeploymentsResponse(
 ) {
   buildCounterListInterceptDeploymentsResponse++;
   if (buildCounterListInterceptDeploymentsResponse < 3) {
-    checkUnnamed74(o.interceptDeployments!);
+    checkUnnamed76(o.interceptDeployments!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed75(o.unreachable!);
+    checkUnnamed77(o.unreachable!);
   }
   buildCounterListInterceptDeploymentsResponse--;
 }
 
-core.List<api.InterceptEndpointGroupAssociation> buildUnnamed76() => [
+core.List<api.InterceptEndpointGroupAssociation> buildUnnamed78() => [
   buildInterceptEndpointGroupAssociation(),
   buildInterceptEndpointGroupAssociation(),
 ];
 
-void checkUnnamed76(core.List<api.InterceptEndpointGroupAssociation> o) {
+void checkUnnamed78(core.List<api.InterceptEndpointGroupAssociation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInterceptEndpointGroupAssociation(o[0]);
   checkInterceptEndpointGroupAssociation(o[1]);
@@ -2645,7 +2671,7 @@ buildListInterceptEndpointGroupAssociationsResponse() {
   final o = api.ListInterceptEndpointGroupAssociationsResponse();
   buildCounterListInterceptEndpointGroupAssociationsResponse++;
   if (buildCounterListInterceptEndpointGroupAssociationsResponse < 3) {
-    o.interceptEndpointGroupAssociations = buildUnnamed76();
+    o.interceptEndpointGroupAssociations = buildUnnamed78();
     o.nextPageToken = 'foo';
   }
   buildCounterListInterceptEndpointGroupAssociationsResponse--;
@@ -2657,18 +2683,18 @@ void checkListInterceptEndpointGroupAssociationsResponse(
 ) {
   buildCounterListInterceptEndpointGroupAssociationsResponse++;
   if (buildCounterListInterceptEndpointGroupAssociationsResponse < 3) {
-    checkUnnamed76(o.interceptEndpointGroupAssociations!);
+    checkUnnamed78(o.interceptEndpointGroupAssociations!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListInterceptEndpointGroupAssociationsResponse--;
 }
 
-core.List<api.InterceptEndpointGroup> buildUnnamed77() => [
+core.List<api.InterceptEndpointGroup> buildUnnamed79() => [
   buildInterceptEndpointGroup(),
   buildInterceptEndpointGroup(),
 ];
 
-void checkUnnamed77(core.List<api.InterceptEndpointGroup> o) {
+void checkUnnamed79(core.List<api.InterceptEndpointGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInterceptEndpointGroup(o[0]);
   checkInterceptEndpointGroup(o[1]);
@@ -2680,7 +2706,7 @@ buildListInterceptEndpointGroupsResponse() {
   final o = api.ListInterceptEndpointGroupsResponse();
   buildCounterListInterceptEndpointGroupsResponse++;
   if (buildCounterListInterceptEndpointGroupsResponse < 3) {
-    o.interceptEndpointGroups = buildUnnamed77();
+    o.interceptEndpointGroups = buildUnnamed79();
     o.nextPageToken = 'foo';
   }
   buildCounterListInterceptEndpointGroupsResponse--;
@@ -2692,15 +2718,15 @@ void checkListInterceptEndpointGroupsResponse(
 ) {
   buildCounterListInterceptEndpointGroupsResponse++;
   if (buildCounterListInterceptEndpointGroupsResponse < 3) {
-    checkUnnamed77(o.interceptEndpointGroups!);
+    checkUnnamed79(o.interceptEndpointGroups!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListInterceptEndpointGroupsResponse--;
 }
 
-core.List<api.Location> buildUnnamed78() => [buildLocation(), buildLocation()];
+core.List<api.Location> buildUnnamed80() => [buildLocation(), buildLocation()];
 
-void checkUnnamed78(core.List<api.Location> o) {
+void checkUnnamed80(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -2711,7 +2737,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   final o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed78();
+    o.locations = buildUnnamed80();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
@@ -2721,18 +2747,18 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed78(o.locations!);
+    checkUnnamed80(o.locations!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.MirroringDeploymentGroup> buildUnnamed79() => [
+core.List<api.MirroringDeploymentGroup> buildUnnamed81() => [
   buildMirroringDeploymentGroup(),
   buildMirroringDeploymentGroup(),
 ];
 
-void checkUnnamed79(core.List<api.MirroringDeploymentGroup> o) {
+void checkUnnamed81(core.List<api.MirroringDeploymentGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringDeploymentGroup(o[0]);
   checkMirroringDeploymentGroup(o[1]);
@@ -2744,7 +2770,7 @@ buildListMirroringDeploymentGroupsResponse() {
   final o = api.ListMirroringDeploymentGroupsResponse();
   buildCounterListMirroringDeploymentGroupsResponse++;
   if (buildCounterListMirroringDeploymentGroupsResponse < 3) {
-    o.mirroringDeploymentGroups = buildUnnamed79();
+    o.mirroringDeploymentGroups = buildUnnamed81();
     o.nextPageToken = 'foo';
   }
   buildCounterListMirroringDeploymentGroupsResponse--;
@@ -2756,26 +2782,26 @@ void checkListMirroringDeploymentGroupsResponse(
 ) {
   buildCounterListMirroringDeploymentGroupsResponse++;
   if (buildCounterListMirroringDeploymentGroupsResponse < 3) {
-    checkUnnamed79(o.mirroringDeploymentGroups!);
+    checkUnnamed81(o.mirroringDeploymentGroups!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListMirroringDeploymentGroupsResponse--;
 }
 
-core.List<api.MirroringDeployment> buildUnnamed80() => [
+core.List<api.MirroringDeployment> buildUnnamed82() => [
   buildMirroringDeployment(),
   buildMirroringDeployment(),
 ];
 
-void checkUnnamed80(core.List<api.MirroringDeployment> o) {
+void checkUnnamed82(core.List<api.MirroringDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringDeployment(o[0]);
   checkMirroringDeployment(o[1]);
 }
 
-core.List<core.String> buildUnnamed81() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed83() => ['foo', 'foo'];
 
-void checkUnnamed81(core.List<core.String> o) {
+void checkUnnamed83(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2786,9 +2812,9 @@ api.ListMirroringDeploymentsResponse buildListMirroringDeploymentsResponse() {
   final o = api.ListMirroringDeploymentsResponse();
   buildCounterListMirroringDeploymentsResponse++;
   if (buildCounterListMirroringDeploymentsResponse < 3) {
-    o.mirroringDeployments = buildUnnamed80();
+    o.mirroringDeployments = buildUnnamed82();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed81();
+    o.unreachable = buildUnnamed83();
   }
   buildCounterListMirroringDeploymentsResponse--;
   return o;
@@ -2799,19 +2825,19 @@ void checkListMirroringDeploymentsResponse(
 ) {
   buildCounterListMirroringDeploymentsResponse++;
   if (buildCounterListMirroringDeploymentsResponse < 3) {
-    checkUnnamed80(o.mirroringDeployments!);
+    checkUnnamed82(o.mirroringDeployments!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed81(o.unreachable!);
+    checkUnnamed83(o.unreachable!);
   }
   buildCounterListMirroringDeploymentsResponse--;
 }
 
-core.List<api.MirroringEndpointGroupAssociation> buildUnnamed82() => [
+core.List<api.MirroringEndpointGroupAssociation> buildUnnamed84() => [
   buildMirroringEndpointGroupAssociation(),
   buildMirroringEndpointGroupAssociation(),
 ];
 
-void checkUnnamed82(core.List<api.MirroringEndpointGroupAssociation> o) {
+void checkUnnamed84(core.List<api.MirroringEndpointGroupAssociation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringEndpointGroupAssociation(o[0]);
   checkMirroringEndpointGroupAssociation(o[1]);
@@ -2823,7 +2849,7 @@ buildListMirroringEndpointGroupAssociationsResponse() {
   final o = api.ListMirroringEndpointGroupAssociationsResponse();
   buildCounterListMirroringEndpointGroupAssociationsResponse++;
   if (buildCounterListMirroringEndpointGroupAssociationsResponse < 3) {
-    o.mirroringEndpointGroupAssociations = buildUnnamed82();
+    o.mirroringEndpointGroupAssociations = buildUnnamed84();
     o.nextPageToken = 'foo';
   }
   buildCounterListMirroringEndpointGroupAssociationsResponse--;
@@ -2835,18 +2861,18 @@ void checkListMirroringEndpointGroupAssociationsResponse(
 ) {
   buildCounterListMirroringEndpointGroupAssociationsResponse++;
   if (buildCounterListMirroringEndpointGroupAssociationsResponse < 3) {
-    checkUnnamed82(o.mirroringEndpointGroupAssociations!);
+    checkUnnamed84(o.mirroringEndpointGroupAssociations!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListMirroringEndpointGroupAssociationsResponse--;
 }
 
-core.List<api.MirroringEndpointGroup> buildUnnamed83() => [
+core.List<api.MirroringEndpointGroup> buildUnnamed85() => [
   buildMirroringEndpointGroup(),
   buildMirroringEndpointGroup(),
 ];
 
-void checkUnnamed83(core.List<api.MirroringEndpointGroup> o) {
+void checkUnnamed85(core.List<api.MirroringEndpointGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringEndpointGroup(o[0]);
   checkMirroringEndpointGroup(o[1]);
@@ -2858,7 +2884,7 @@ buildListMirroringEndpointGroupsResponse() {
   final o = api.ListMirroringEndpointGroupsResponse();
   buildCounterListMirroringEndpointGroupsResponse++;
   if (buildCounterListMirroringEndpointGroupsResponse < 3) {
-    o.mirroringEndpointGroups = buildUnnamed83();
+    o.mirroringEndpointGroups = buildUnnamed85();
     o.nextPageToken = 'foo';
   }
   buildCounterListMirroringEndpointGroupsResponse--;
@@ -2870,26 +2896,26 @@ void checkListMirroringEndpointGroupsResponse(
 ) {
   buildCounterListMirroringEndpointGroupsResponse++;
   if (buildCounterListMirroringEndpointGroupsResponse < 3) {
-    checkUnnamed83(o.mirroringEndpointGroups!);
+    checkUnnamed85(o.mirroringEndpointGroups!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListMirroringEndpointGroupsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed84() => [
+core.List<api.Operation> buildUnnamed86() => [
   buildOperation(),
   buildOperation(),
 ];
 
-void checkUnnamed84(core.List<api.Operation> o) {
+void checkUnnamed86(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
 }
 
-core.List<core.String> buildUnnamed85() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed87() => ['foo', 'foo'];
 
-void checkUnnamed85(core.List<core.String> o) {
+void checkUnnamed87(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2901,8 +2927,8 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed84();
-    o.unreachable = buildUnnamed85();
+    o.operations = buildUnnamed86();
+    o.unreachable = buildUnnamed87();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -2912,18 +2938,99 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed84(o.operations!);
-    checkUnnamed85(o.unreachable!);
+    checkUnnamed86(o.operations!);
+    checkUnnamed87(o.unreachable!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.SecurityProfileGroup> buildUnnamed86() => [
+core.List<api.SACAttachment> buildUnnamed88() => [
+  buildSACAttachment(),
+  buildSACAttachment(),
+];
+
+void checkUnnamed88(core.List<api.SACAttachment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSACAttachment(o[0]);
+  checkSACAttachment(o[1]);
+}
+
+core.List<core.String> buildUnnamed89() => ['foo', 'foo'];
+
+void checkUnnamed89(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterListSACAttachmentsResponse = 0;
+api.ListSACAttachmentsResponse buildListSACAttachmentsResponse() {
+  final o = api.ListSACAttachmentsResponse();
+  buildCounterListSACAttachmentsResponse++;
+  if (buildCounterListSACAttachmentsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.sacAttachments = buildUnnamed88();
+    o.unreachable = buildUnnamed89();
+  }
+  buildCounterListSACAttachmentsResponse--;
+  return o;
+}
+
+void checkListSACAttachmentsResponse(api.ListSACAttachmentsResponse o) {
+  buildCounterListSACAttachmentsResponse++;
+  if (buildCounterListSACAttachmentsResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed88(o.sacAttachments!);
+    checkUnnamed89(o.unreachable!);
+  }
+  buildCounterListSACAttachmentsResponse--;
+}
+
+core.List<api.SACRealm> buildUnnamed90() => [buildSACRealm(), buildSACRealm()];
+
+void checkUnnamed90(core.List<api.SACRealm> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSACRealm(o[0]);
+  checkSACRealm(o[1]);
+}
+
+core.List<core.String> buildUnnamed91() => ['foo', 'foo'];
+
+void checkUnnamed91(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterListSACRealmsResponse = 0;
+api.ListSACRealmsResponse buildListSACRealmsResponse() {
+  final o = api.ListSACRealmsResponse();
+  buildCounterListSACRealmsResponse++;
+  if (buildCounterListSACRealmsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.sacRealms = buildUnnamed90();
+    o.unreachable = buildUnnamed91();
+  }
+  buildCounterListSACRealmsResponse--;
+  return o;
+}
+
+void checkListSACRealmsResponse(api.ListSACRealmsResponse o) {
+  buildCounterListSACRealmsResponse++;
+  if (buildCounterListSACRealmsResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed90(o.sacRealms!);
+    checkUnnamed91(o.unreachable!);
+  }
+  buildCounterListSACRealmsResponse--;
+}
+
+core.List<api.SecurityProfileGroup> buildUnnamed92() => [
   buildSecurityProfileGroup(),
   buildSecurityProfileGroup(),
 ];
 
-void checkUnnamed86(core.List<api.SecurityProfileGroup> o) {
+void checkUnnamed92(core.List<api.SecurityProfileGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSecurityProfileGroup(o[0]);
   checkSecurityProfileGroup(o[1]);
@@ -2935,7 +3042,7 @@ api.ListSecurityProfileGroupsResponse buildListSecurityProfileGroupsResponse() {
   buildCounterListSecurityProfileGroupsResponse++;
   if (buildCounterListSecurityProfileGroupsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.securityProfileGroups = buildUnnamed86();
+    o.securityProfileGroups = buildUnnamed92();
   }
   buildCounterListSecurityProfileGroupsResponse--;
   return o;
@@ -2947,17 +3054,17 @@ void checkListSecurityProfileGroupsResponse(
   buildCounterListSecurityProfileGroupsResponse++;
   if (buildCounterListSecurityProfileGroupsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed86(o.securityProfileGroups!);
+    checkUnnamed92(o.securityProfileGroups!);
   }
   buildCounterListSecurityProfileGroupsResponse--;
 }
 
-core.List<api.SecurityProfile> buildUnnamed87() => [
+core.List<api.SecurityProfile> buildUnnamed93() => [
   buildSecurityProfile(),
   buildSecurityProfile(),
 ];
 
-void checkUnnamed87(core.List<api.SecurityProfile> o) {
+void checkUnnamed93(core.List<api.SecurityProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSecurityProfile(o[0]);
   checkSecurityProfile(o[1]);
@@ -2969,7 +3076,7 @@ api.ListSecurityProfilesResponse buildListSecurityProfilesResponse() {
   buildCounterListSecurityProfilesResponse++;
   if (buildCounterListSecurityProfilesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.securityProfiles = buildUnnamed87();
+    o.securityProfiles = buildUnnamed93();
   }
   buildCounterListSecurityProfilesResponse--;
   return o;
@@ -2979,25 +3086,25 @@ void checkListSecurityProfilesResponse(api.ListSecurityProfilesResponse o) {
   buildCounterListSecurityProfilesResponse++;
   if (buildCounterListSecurityProfilesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed87(o.securityProfiles!);
+    checkUnnamed93(o.securityProfiles!);
   }
   buildCounterListSecurityProfilesResponse--;
 }
 
-core.List<api.ServerTlsPolicy> buildUnnamed88() => [
+core.List<api.ServerTlsPolicy> buildUnnamed94() => [
   buildServerTlsPolicy(),
   buildServerTlsPolicy(),
 ];
 
-void checkUnnamed88(core.List<api.ServerTlsPolicy> o) {
+void checkUnnamed94(core.List<api.ServerTlsPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServerTlsPolicy(o[0]);
   checkServerTlsPolicy(o[1]);
 }
 
-core.List<core.String> buildUnnamed89() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed95() => ['foo', 'foo'];
 
-void checkUnnamed89(core.List<core.String> o) {
+void checkUnnamed95(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3009,8 +3116,8 @@ api.ListServerTlsPoliciesResponse buildListServerTlsPoliciesResponse() {
   buildCounterListServerTlsPoliciesResponse++;
   if (buildCounterListServerTlsPoliciesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.serverTlsPolicies = buildUnnamed88();
-    o.unreachable = buildUnnamed89();
+    o.serverTlsPolicies = buildUnnamed94();
+    o.unreachable = buildUnnamed95();
   }
   buildCounterListServerTlsPoliciesResponse--;
   return o;
@@ -3020,26 +3127,26 @@ void checkListServerTlsPoliciesResponse(api.ListServerTlsPoliciesResponse o) {
   buildCounterListServerTlsPoliciesResponse++;
   if (buildCounterListServerTlsPoliciesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed88(o.serverTlsPolicies!);
-    checkUnnamed89(o.unreachable!);
+    checkUnnamed94(o.serverTlsPolicies!);
+    checkUnnamed95(o.unreachable!);
   }
   buildCounterListServerTlsPoliciesResponse--;
 }
 
-core.List<api.TlsInspectionPolicy> buildUnnamed90() => [
+core.List<api.TlsInspectionPolicy> buildUnnamed96() => [
   buildTlsInspectionPolicy(),
   buildTlsInspectionPolicy(),
 ];
 
-void checkUnnamed90(core.List<api.TlsInspectionPolicy> o) {
+void checkUnnamed96(core.List<api.TlsInspectionPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTlsInspectionPolicy(o[0]);
   checkTlsInspectionPolicy(o[1]);
 }
 
-core.List<core.String> buildUnnamed91() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed97() => ['foo', 'foo'];
 
-void checkUnnamed91(core.List<core.String> o) {
+void checkUnnamed97(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3051,8 +3158,8 @@ api.ListTlsInspectionPoliciesResponse buildListTlsInspectionPoliciesResponse() {
   buildCounterListTlsInspectionPoliciesResponse++;
   if (buildCounterListTlsInspectionPoliciesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tlsInspectionPolicies = buildUnnamed90();
-    o.unreachable = buildUnnamed91();
+    o.tlsInspectionPolicies = buildUnnamed96();
+    o.unreachable = buildUnnamed97();
   }
   buildCounterListTlsInspectionPoliciesResponse--;
   return o;
@@ -3064,23 +3171,23 @@ void checkListTlsInspectionPoliciesResponse(
   buildCounterListTlsInspectionPoliciesResponse++;
   if (buildCounterListTlsInspectionPoliciesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed90(o.tlsInspectionPolicies!);
-    checkUnnamed91(o.unreachable!);
+    checkUnnamed96(o.tlsInspectionPolicies!);
+    checkUnnamed97(o.unreachable!);
   }
   buildCounterListTlsInspectionPoliciesResponse--;
 }
 
-core.List<core.String> buildUnnamed92() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed98() => ['foo', 'foo'];
 
-void checkUnnamed92(core.List<core.String> o) {
+void checkUnnamed98(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.UrlList> buildUnnamed93() => [buildUrlList(), buildUrlList()];
+core.List<api.UrlList> buildUnnamed99() => [buildUrlList(), buildUrlList()];
 
-void checkUnnamed93(core.List<api.UrlList> o) {
+void checkUnnamed99(core.List<api.UrlList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlList(o[0]);
   checkUrlList(o[1]);
@@ -3092,8 +3199,8 @@ api.ListUrlListsResponse buildListUrlListsResponse() {
   buildCounterListUrlListsResponse++;
   if (buildCounterListUrlListsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed92();
-    o.urlLists = buildUnnamed93();
+    o.unreachable = buildUnnamed98();
+    o.urlLists = buildUnnamed99();
   }
   buildCounterListUrlListsResponse--;
   return o;
@@ -3103,21 +3210,24 @@ void checkListUrlListsResponse(api.ListUrlListsResponse o) {
   buildCounterListUrlListsResponse++;
   if (buildCounterListUrlListsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed92(o.unreachable!);
-    checkUnnamed93(o.urlLists!);
+    checkUnnamed98(o.unreachable!);
+    checkUnnamed99(o.urlLists!);
   }
   buildCounterListUrlListsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed94() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed100() => {
+  'x': 'foo',
+  'y': 'foo',
+};
 
-void checkUnnamed94(core.Map<core.String, core.String> o) {
+void checkUnnamed100(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed95() => {
+core.Map<core.String, core.Object?> buildUnnamed101() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -3130,7 +3240,7 @@ core.Map<core.String, core.Object?> buildUnnamed95() => {
   },
 };
 
-void checkUnnamed95(core.Map<core.String, core.Object?> o) {
+void checkUnnamed101(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -3150,9 +3260,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed94();
+    o.labels = buildUnnamed100();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed95();
+    o.metadata = buildUnnamed101();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -3163,20 +3273,20 @@ void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed94(o.labels!);
+    checkUnnamed100(o.labels!);
     unittest.expect(o.locationId!, unittest.equals('foo'));
-    checkUnnamed95(o.metadata!);
+    checkUnnamed101(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterLocation--;
 }
 
-core.List<api.ValidationCA> buildUnnamed96() => [
+core.List<api.ValidationCA> buildUnnamed102() => [
   buildValidationCA(),
   buildValidationCA(),
 ];
 
-void checkUnnamed96(core.List<api.ValidationCA> o) {
+void checkUnnamed102(core.List<api.ValidationCA> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValidationCA(o[0]);
   checkValidationCA(o[1]);
@@ -3187,7 +3297,7 @@ api.MTLSPolicy buildMTLSPolicy() {
   final o = api.MTLSPolicy();
   buildCounterMTLSPolicy++;
   if (buildCounterMTLSPolicy < 3) {
-    o.clientValidationCa = buildUnnamed96();
+    o.clientValidationCa = buildUnnamed102();
     o.clientValidationMode = 'foo';
     o.clientValidationTrustConfig = 'foo';
   }
@@ -3198,16 +3308,19 @@ api.MTLSPolicy buildMTLSPolicy() {
 void checkMTLSPolicy(api.MTLSPolicy o) {
   buildCounterMTLSPolicy++;
   if (buildCounterMTLSPolicy < 3) {
-    checkUnnamed96(o.clientValidationCa!);
+    checkUnnamed102(o.clientValidationCa!);
     unittest.expect(o.clientValidationMode!, unittest.equals('foo'));
     unittest.expect(o.clientValidationTrustConfig!, unittest.equals('foo'));
   }
   buildCounterMTLSPolicy--;
 }
 
-core.Map<core.String, core.String> buildUnnamed97() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed103() => {
+  'x': 'foo',
+  'y': 'foo',
+};
 
-void checkUnnamed97(core.Map<core.String, core.String> o) {
+void checkUnnamed103(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3221,7 +3334,7 @@ api.MirroringDeployment buildMirroringDeployment() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.forwardingRule = 'foo';
-    o.labels = buildUnnamed97();
+    o.labels = buildUnnamed103();
     o.mirroringDeploymentGroup = 'foo';
     o.name = 'foo';
     o.reconciling = true;
@@ -3238,7 +3351,7 @@ void checkMirroringDeployment(api.MirroringDeployment o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.forwardingRule!, unittest.equals('foo'));
-    checkUnnamed97(o.labels!);
+    checkUnnamed103(o.labels!);
     unittest.expect(o.mirroringDeploymentGroup!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
@@ -3249,12 +3362,12 @@ void checkMirroringDeployment(api.MirroringDeployment o) {
 }
 
 core.List<api.MirroringDeploymentGroupConnectedEndpointGroup>
-buildUnnamed98() => [
+buildUnnamed104() => [
   buildMirroringDeploymentGroupConnectedEndpointGroup(),
   buildMirroringDeploymentGroupConnectedEndpointGroup(),
 ];
 
-void checkUnnamed98(
+void checkUnnamed104(
   core.List<api.MirroringDeploymentGroupConnectedEndpointGroup> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3262,31 +3375,34 @@ void checkUnnamed98(
   checkMirroringDeploymentGroupConnectedEndpointGroup(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed99() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed105() => {
+  'x': 'foo',
+  'y': 'foo',
+};
 
-void checkUnnamed99(core.Map<core.String, core.String> o) {
+void checkUnnamed105(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.MirroringLocation> buildUnnamed100() => [
+core.List<api.MirroringLocation> buildUnnamed106() => [
   buildMirroringLocation(),
   buildMirroringLocation(),
 ];
 
-void checkUnnamed100(core.List<api.MirroringLocation> o) {
+void checkUnnamed106(core.List<api.MirroringLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringLocation(o[0]);
   checkMirroringLocation(o[1]);
 }
 
-core.List<api.MirroringDeploymentGroupDeployment> buildUnnamed101() => [
+core.List<api.MirroringDeploymentGroupDeployment> buildUnnamed107() => [
   buildMirroringDeploymentGroupDeployment(),
   buildMirroringDeploymentGroupDeployment(),
 ];
 
-void checkUnnamed101(core.List<api.MirroringDeploymentGroupDeployment> o) {
+void checkUnnamed107(core.List<api.MirroringDeploymentGroupDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringDeploymentGroupDeployment(o[0]);
   checkMirroringDeploymentGroupDeployment(o[1]);
@@ -3297,13 +3413,13 @@ api.MirroringDeploymentGroup buildMirroringDeploymentGroup() {
   final o = api.MirroringDeploymentGroup();
   buildCounterMirroringDeploymentGroup++;
   if (buildCounterMirroringDeploymentGroup < 3) {
-    o.connectedEndpointGroups = buildUnnamed98();
+    o.connectedEndpointGroups = buildUnnamed104();
     o.createTime = 'foo';
     o.description = 'foo';
-    o.labels = buildUnnamed99();
-    o.locations = buildUnnamed100();
+    o.labels = buildUnnamed105();
+    o.locations = buildUnnamed106();
     o.name = 'foo';
-    o.nestedDeployments = buildUnnamed101();
+    o.nestedDeployments = buildUnnamed107();
     o.network = 'foo';
     o.reconciling = true;
     o.state = 'foo';
@@ -3316,13 +3432,13 @@ api.MirroringDeploymentGroup buildMirroringDeploymentGroup() {
 void checkMirroringDeploymentGroup(api.MirroringDeploymentGroup o) {
   buildCounterMirroringDeploymentGroup++;
   if (buildCounterMirroringDeploymentGroup < 3) {
-    checkUnnamed98(o.connectedEndpointGroups!);
+    checkUnnamed104(o.connectedEndpointGroups!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed99(o.labels!);
-    checkUnnamed100(o.locations!);
+    checkUnnamed105(o.labels!);
+    checkUnnamed106(o.locations!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed101(o.nestedDeployments!);
+    checkUnnamed107(o.nestedDeployments!);
     unittest.expect(o.network!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
@@ -3377,12 +3493,12 @@ void checkMirroringDeploymentGroupDeployment(
   buildCounterMirroringDeploymentGroupDeployment--;
 }
 
-core.List<api.MirroringEndpointGroupAssociationDetails> buildUnnamed102() => [
+core.List<api.MirroringEndpointGroupAssociationDetails> buildUnnamed108() => [
   buildMirroringEndpointGroupAssociationDetails(),
   buildMirroringEndpointGroupAssociationDetails(),
 ];
 
-void checkUnnamed102(
+void checkUnnamed108(
   core.List<api.MirroringEndpointGroupAssociationDetails> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3391,12 +3507,12 @@ void checkUnnamed102(
 }
 
 core.List<api.MirroringEndpointGroupConnectedDeploymentGroup>
-buildUnnamed103() => [
+buildUnnamed109() => [
   buildMirroringEndpointGroupConnectedDeploymentGroup(),
   buildMirroringEndpointGroupConnectedDeploymentGroup(),
 ];
 
-void checkUnnamed103(
+void checkUnnamed109(
   core.List<api.MirroringEndpointGroupConnectedDeploymentGroup> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3404,12 +3520,12 @@ void checkUnnamed103(
   checkMirroringEndpointGroupConnectedDeploymentGroup(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed104() => {
+core.Map<core.String, core.String> buildUnnamed110() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed104(core.Map<core.String, core.String> o) {
+void checkUnnamed110(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3420,11 +3536,11 @@ api.MirroringEndpointGroup buildMirroringEndpointGroup() {
   final o = api.MirroringEndpointGroup();
   buildCounterMirroringEndpointGroup++;
   if (buildCounterMirroringEndpointGroup < 3) {
-    o.associations = buildUnnamed102();
-    o.connectedDeploymentGroups = buildUnnamed103();
+    o.associations = buildUnnamed108();
+    o.connectedDeploymentGroups = buildUnnamed109();
     o.createTime = 'foo';
     o.description = 'foo';
-    o.labels = buildUnnamed104();
+    o.labels = buildUnnamed110();
     o.mirroringDeploymentGroup = 'foo';
     o.name = 'foo';
     o.reconciling = true;
@@ -3439,11 +3555,11 @@ api.MirroringEndpointGroup buildMirroringEndpointGroup() {
 void checkMirroringEndpointGroup(api.MirroringEndpointGroup o) {
   buildCounterMirroringEndpointGroup++;
   if (buildCounterMirroringEndpointGroup < 3) {
-    checkUnnamed102(o.associations!);
-    checkUnnamed103(o.connectedDeploymentGroups!);
+    checkUnnamed108(o.associations!);
+    checkUnnamed109(o.connectedDeploymentGroups!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed104(o.labels!);
+    checkUnnamed110(o.labels!);
     unittest.expect(o.mirroringDeploymentGroup!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
@@ -3454,35 +3570,35 @@ void checkMirroringEndpointGroup(api.MirroringEndpointGroup o) {
   buildCounterMirroringEndpointGroup--;
 }
 
-core.Map<core.String, core.String> buildUnnamed105() => {
+core.Map<core.String, core.String> buildUnnamed111() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed105(core.Map<core.String, core.String> o) {
+void checkUnnamed111(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.MirroringLocation> buildUnnamed106() => [
+core.List<api.MirroringLocation> buildUnnamed112() => [
   buildMirroringLocation(),
   buildMirroringLocation(),
 ];
 
-void checkUnnamed106(core.List<api.MirroringLocation> o) {
+void checkUnnamed112(core.List<api.MirroringLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringLocation(o[0]);
   checkMirroringLocation(o[1]);
 }
 
 core.List<api.MirroringEndpointGroupAssociationLocationDetails>
-buildUnnamed107() => [
+buildUnnamed113() => [
   buildMirroringEndpointGroupAssociationLocationDetails(),
   buildMirroringEndpointGroupAssociationLocationDetails(),
 ];
 
-void checkUnnamed107(
+void checkUnnamed113(
   core.List<api.MirroringEndpointGroupAssociationLocationDetails> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3496,12 +3612,13 @@ api.MirroringEndpointGroupAssociation buildMirroringEndpointGroupAssociation() {
   buildCounterMirroringEndpointGroupAssociation++;
   if (buildCounterMirroringEndpointGroupAssociation < 3) {
     o.createTime = 'foo';
-    o.labels = buildUnnamed105();
-    o.locations = buildUnnamed106();
-    o.locationsDetails = buildUnnamed107();
+    o.labels = buildUnnamed111();
+    o.locations = buildUnnamed112();
+    o.locationsDetails = buildUnnamed113();
     o.mirroringEndpointGroup = 'foo';
     o.name = 'foo';
     o.network = 'foo';
+    o.networkCookie = 42;
     o.reconciling = true;
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -3516,12 +3633,13 @@ void checkMirroringEndpointGroupAssociation(
   buildCounterMirroringEndpointGroupAssociation++;
   if (buildCounterMirroringEndpointGroupAssociation < 3) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
-    checkUnnamed105(o.labels!);
-    checkUnnamed106(o.locations!);
-    checkUnnamed107(o.locationsDetails!);
+    checkUnnamed111(o.labels!);
+    checkUnnamed112(o.locations!);
+    checkUnnamed113(o.locationsDetails!);
     unittest.expect(o.mirroringEndpointGroup!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.network!, unittest.equals('foo'));
+    unittest.expect(o.networkCookie!, unittest.equals(42));
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -3579,12 +3697,12 @@ void checkMirroringEndpointGroupAssociationLocationDetails(
   buildCounterMirroringEndpointGroupAssociationLocationDetails--;
 }
 
-core.List<api.MirroringLocation> buildUnnamed108() => [
+core.List<api.MirroringLocation> buildUnnamed114() => [
   buildMirroringLocation(),
   buildMirroringLocation(),
 ];
 
-void checkUnnamed108(core.List<api.MirroringLocation> o) {
+void checkUnnamed114(core.List<api.MirroringLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringLocation(o[0]);
   checkMirroringLocation(o[1]);
@@ -3596,7 +3714,7 @@ buildMirroringEndpointGroupConnectedDeploymentGroup() {
   final o = api.MirroringEndpointGroupConnectedDeploymentGroup();
   buildCounterMirroringEndpointGroupConnectedDeploymentGroup++;
   if (buildCounterMirroringEndpointGroupConnectedDeploymentGroup < 3) {
-    o.locations = buildUnnamed108();
+    o.locations = buildUnnamed114();
     o.name = 'foo';
   }
   buildCounterMirroringEndpointGroupConnectedDeploymentGroup--;
@@ -3608,7 +3726,7 @@ void checkMirroringEndpointGroupConnectedDeploymentGroup(
 ) {
   buildCounterMirroringEndpointGroupConnectedDeploymentGroup++;
   if (buildCounterMirroringEndpointGroupConnectedDeploymentGroup < 3) {
-    checkUnnamed108(o.locations!);
+    checkUnnamed114(o.locations!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterMirroringEndpointGroupConnectedDeploymentGroup--;
@@ -3635,7 +3753,7 @@ void checkMirroringLocation(api.MirroringLocation o) {
   buildCounterMirroringLocation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed109() => {
+core.Map<core.String, core.Object?> buildUnnamed115() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -3648,7 +3766,7 @@ core.Map<core.String, core.Object?> buildUnnamed109() => {
   },
 };
 
-void checkUnnamed109(core.Map<core.String, core.Object?> o) {
+void checkUnnamed115(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -3662,7 +3780,7 @@ void checkUnnamed109(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed110() => {
+core.Map<core.String, core.Object?> buildUnnamed116() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -3675,7 +3793,7 @@ core.Map<core.String, core.Object?> buildUnnamed110() => {
   },
 };
 
-void checkUnnamed110(core.Map<core.String, core.Object?> o) {
+void checkUnnamed116(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -3696,9 +3814,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed109();
+    o.metadata = buildUnnamed115();
     o.name = 'foo';
-    o.response = buildUnnamed110();
+    o.response = buildUnnamed116();
   }
   buildCounterOperation--;
   return o;
@@ -3709,16 +3827,16 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed109(o.metadata!);
+    checkUnnamed115(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed110(o.response!);
+    checkUnnamed116(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.List<core.String> buildUnnamed111() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed117() => ['foo', 'foo'];
 
-void checkUnnamed111(core.List<core.String> o) {
+void checkUnnamed117(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3729,7 +3847,7 @@ api.RemoveAddressGroupItemsRequest buildRemoveAddressGroupItemsRequest() {
   final o = api.RemoveAddressGroupItemsRequest();
   buildCounterRemoveAddressGroupItemsRequest++;
   if (buildCounterRemoveAddressGroupItemsRequest < 3) {
-    o.items = buildUnnamed111();
+    o.items = buildUnnamed117();
     o.requestId = 'foo';
   }
   buildCounterRemoveAddressGroupItemsRequest--;
@@ -3739,26 +3857,26 @@ api.RemoveAddressGroupItemsRequest buildRemoveAddressGroupItemsRequest() {
 void checkRemoveAddressGroupItemsRequest(api.RemoveAddressGroupItemsRequest o) {
   buildCounterRemoveAddressGroupItemsRequest++;
   if (buildCounterRemoveAddressGroupItemsRequest < 3) {
-    checkUnnamed111(o.items!);
+    checkUnnamed117(o.items!);
     unittest.expect(o.requestId!, unittest.equals('foo'));
   }
   buildCounterRemoveAddressGroupItemsRequest--;
 }
 
-core.List<api.Destination> buildUnnamed112() => [
+core.List<api.Destination> buildUnnamed118() => [
   buildDestination(),
   buildDestination(),
 ];
 
-void checkUnnamed112(core.List<api.Destination> o) {
+void checkUnnamed118(core.List<api.Destination> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDestination(o[0]);
   checkDestination(o[1]);
 }
 
-core.List<api.Source> buildUnnamed113() => [buildSource(), buildSource()];
+core.List<api.Source> buildUnnamed119() => [buildSource(), buildSource()];
 
-void checkUnnamed113(core.List<api.Source> o) {
+void checkUnnamed119(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSource(o[0]);
   checkSource(o[1]);
@@ -3769,8 +3887,8 @@ api.Rule buildRule() {
   final o = api.Rule();
   buildCounterRule++;
   if (buildCounterRule < 3) {
-    o.destinations = buildUnnamed112();
-    o.sources = buildUnnamed113();
+    o.destinations = buildUnnamed118();
+    o.sources = buildUnnamed119();
   }
   buildCounterRule--;
   return o;
@@ -3779,18 +3897,123 @@ api.Rule buildRule() {
 void checkRule(api.Rule o) {
   buildCounterRule++;
   if (buildCounterRule < 3) {
-    checkUnnamed112(o.destinations!);
-    checkUnnamed113(o.sources!);
+    checkUnnamed118(o.destinations!);
+    checkUnnamed119(o.sources!);
   }
   buildCounterRule--;
 }
 
-core.Map<core.String, core.String> buildUnnamed114() => {
+core.Map<core.String, core.String> buildUnnamed120() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed114(core.Map<core.String, core.String> o) {
+void checkUnnamed120(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
+core.int buildCounterSACAttachment = 0;
+api.SACAttachment buildSACAttachment() {
+  final o = api.SACAttachment();
+  buildCounterSACAttachment++;
+  if (buildCounterSACAttachment < 3) {
+    o.createTime = 'foo';
+    o.labels = buildUnnamed120();
+    o.name = 'foo';
+    o.nccGateway = 'foo';
+    o.sacRealm = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterSACAttachment--;
+  return o;
+}
+
+void checkSACAttachment(api.SACAttachment o) {
+  buildCounterSACAttachment++;
+  if (buildCounterSACAttachment < 3) {
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    checkUnnamed120(o.labels!);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.nccGateway!, unittest.equals('foo'));
+    unittest.expect(o.sacRealm!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterSACAttachment--;
+}
+
+core.Map<core.String, core.String> buildUnnamed121() => {
+  'x': 'foo',
+  'y': 'foo',
+};
+
+void checkUnnamed121(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
+core.int buildCounterSACRealm = 0;
+api.SACRealm buildSACRealm() {
+  final o = api.SACRealm();
+  buildCounterSACRealm++;
+  if (buildCounterSACRealm < 3) {
+    o.createTime = 'foo';
+    o.labels = buildUnnamed121();
+    o.name = 'foo';
+    o.pairingKey = buildSACRealmPairingKey();
+    o.securityService = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterSACRealm--;
+  return o;
+}
+
+void checkSACRealm(api.SACRealm o) {
+  buildCounterSACRealm++;
+  if (buildCounterSACRealm < 3) {
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    checkUnnamed121(o.labels!);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    checkSACRealmPairingKey(o.pairingKey!);
+    unittest.expect(o.securityService!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterSACRealm--;
+}
+
+core.int buildCounterSACRealmPairingKey = 0;
+api.SACRealmPairingKey buildSACRealmPairingKey() {
+  final o = api.SACRealmPairingKey();
+  buildCounterSACRealmPairingKey++;
+  if (buildCounterSACRealmPairingKey < 3) {
+    o.expireTime = 'foo';
+    o.key = 'foo';
+  }
+  buildCounterSACRealmPairingKey--;
+  return o;
+}
+
+void checkSACRealmPairingKey(api.SACRealmPairingKey o) {
+  buildCounterSACRealmPairingKey++;
+  if (buildCounterSACRealmPairingKey < 3) {
+    unittest.expect(o.expireTime!, unittest.equals('foo'));
+    unittest.expect(o.key!, unittest.equals('foo'));
+  }
+  buildCounterSACRealmPairingKey--;
+}
+
+core.Map<core.String, core.String> buildUnnamed122() => {
+  'x': 'foo',
+  'y': 'foo',
+};
+
+void checkUnnamed122(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3806,7 +4029,7 @@ api.SecurityProfile buildSecurityProfile() {
     o.customMirroringProfile = buildCustomMirroringProfile();
     o.description = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed114();
+    o.labels = buildUnnamed122();
     o.name = 'foo';
     o.threatPreventionProfile = buildThreatPreventionProfile();
     o.type = 'foo';
@@ -3825,7 +4048,7 @@ void checkSecurityProfile(api.SecurityProfile o) {
     checkCustomMirroringProfile(o.customMirroringProfile!);
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
-    checkUnnamed114(o.labels!);
+    checkUnnamed122(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkThreatPreventionProfile(o.threatPreventionProfile!);
     unittest.expect(o.type!, unittest.equals('foo'));
@@ -3835,12 +4058,12 @@ void checkSecurityProfile(api.SecurityProfile o) {
   buildCounterSecurityProfile--;
 }
 
-core.Map<core.String, core.String> buildUnnamed115() => {
+core.Map<core.String, core.String> buildUnnamed123() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed115(core.Map<core.String, core.String> o) {
+void checkUnnamed123(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3857,7 +4080,7 @@ api.SecurityProfileGroup buildSecurityProfileGroup() {
     o.dataPathId = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed115();
+    o.labels = buildUnnamed123();
     o.name = 'foo';
     o.threatPreventionProfile = 'foo';
     o.updateTime = 'foo';
@@ -3876,7 +4099,7 @@ void checkSecurityProfileGroup(api.SecurityProfileGroup o) {
     unittest.expect(o.dataPathId!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
-    checkUnnamed115(o.labels!);
+    checkUnnamed123(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.threatPreventionProfile!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -3885,12 +4108,12 @@ void checkSecurityProfileGroup(api.SecurityProfileGroup o) {
   buildCounterSecurityProfileGroup--;
 }
 
-core.Map<core.String, core.String> buildUnnamed116() => {
+core.Map<core.String, core.String> buildUnnamed124() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed116(core.Map<core.String, core.String> o) {
+void checkUnnamed124(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3904,7 +4127,7 @@ api.ServerTlsPolicy buildServerTlsPolicy() {
     o.allowOpen = true;
     o.createTime = 'foo';
     o.description = 'foo';
-    o.labels = buildUnnamed116();
+    o.labels = buildUnnamed124();
     o.mtlsPolicy = buildMTLSPolicy();
     o.name = 'foo';
     o.serverCertificate =
@@ -3921,7 +4144,7 @@ void checkServerTlsPolicy(api.ServerTlsPolicy o) {
     unittest.expect(o.allowOpen!, unittest.isTrue);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed116(o.labels!);
+    checkUnnamed124(o.labels!);
     checkMTLSPolicy(o.mtlsPolicy!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudNetworksecurityV1CertificateProvider(o.serverCertificate!);
@@ -3951,17 +4174,17 @@ void checkSeverityOverride(api.SeverityOverride o) {
   buildCounterSeverityOverride--;
 }
 
-core.List<core.String> buildUnnamed117() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed125() => ['foo', 'foo'];
 
-void checkUnnamed117(core.List<core.String> o) {
+void checkUnnamed125(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed118() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed126() => ['foo', 'foo'];
 
-void checkUnnamed118(core.List<core.String> o) {
+void checkUnnamed126(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3972,8 +4195,8 @@ api.Source buildSource() {
   final o = api.Source();
   buildCounterSource++;
   if (buildCounterSource < 3) {
-    o.ipBlocks = buildUnnamed117();
-    o.principals = buildUnnamed118();
+    o.ipBlocks = buildUnnamed125();
+    o.principals = buildUnnamed126();
   }
   buildCounterSource--;
   return o;
@@ -3982,13 +4205,13 @@ api.Source buildSource() {
 void checkSource(api.Source o) {
   buildCounterSource++;
   if (buildCounterSource < 3) {
-    checkUnnamed117(o.ipBlocks!);
-    checkUnnamed118(o.principals!);
+    checkUnnamed125(o.ipBlocks!);
+    checkUnnamed126(o.principals!);
   }
   buildCounterSource--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed119() => {
+core.Map<core.String, core.Object?> buildUnnamed127() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -4001,7 +4224,7 @@ core.Map<core.String, core.Object?> buildUnnamed119() => {
   },
 };
 
-void checkUnnamed119(core.Map<core.String, core.Object?> o) {
+void checkUnnamed127(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -4015,15 +4238,15 @@ void checkUnnamed119(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed120() => [
-  buildUnnamed119(),
-  buildUnnamed119(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed128() => [
+  buildUnnamed127(),
+  buildUnnamed127(),
 ];
 
-void checkUnnamed120(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed128(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed119(o[0]);
-  checkUnnamed119(o[1]);
+  checkUnnamed127(o[0]);
+  checkUnnamed127(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -4032,7 +4255,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed120();
+    o.details = buildUnnamed128();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -4043,7 +4266,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed120(o.details!);
+    checkUnnamed128(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -4072,34 +4295,34 @@ void checkThreatOverride(api.ThreatOverride o) {
   buildCounterThreatOverride--;
 }
 
-core.List<api.AntivirusOverride> buildUnnamed121() => [
+core.List<api.AntivirusOverride> buildUnnamed129() => [
   buildAntivirusOverride(),
   buildAntivirusOverride(),
 ];
 
-void checkUnnamed121(core.List<api.AntivirusOverride> o) {
+void checkUnnamed129(core.List<api.AntivirusOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAntivirusOverride(o[0]);
   checkAntivirusOverride(o[1]);
 }
 
-core.List<api.SeverityOverride> buildUnnamed122() => [
+core.List<api.SeverityOverride> buildUnnamed130() => [
   buildSeverityOverride(),
   buildSeverityOverride(),
 ];
 
-void checkUnnamed122(core.List<api.SeverityOverride> o) {
+void checkUnnamed130(core.List<api.SeverityOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSeverityOverride(o[0]);
   checkSeverityOverride(o[1]);
 }
 
-core.List<api.ThreatOverride> buildUnnamed123() => [
+core.List<api.ThreatOverride> buildUnnamed131() => [
   buildThreatOverride(),
   buildThreatOverride(),
 ];
 
-void checkUnnamed123(core.List<api.ThreatOverride> o) {
+void checkUnnamed131(core.List<api.ThreatOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatOverride(o[0]);
   checkThreatOverride(o[1]);
@@ -4110,9 +4333,9 @@ api.ThreatPreventionProfile buildThreatPreventionProfile() {
   final o = api.ThreatPreventionProfile();
   buildCounterThreatPreventionProfile++;
   if (buildCounterThreatPreventionProfile < 3) {
-    o.antivirusOverrides = buildUnnamed121();
-    o.severityOverrides = buildUnnamed122();
-    o.threatOverrides = buildUnnamed123();
+    o.antivirusOverrides = buildUnnamed129();
+    o.severityOverrides = buildUnnamed130();
+    o.threatOverrides = buildUnnamed131();
   }
   buildCounterThreatPreventionProfile--;
   return o;
@@ -4121,16 +4344,16 @@ api.ThreatPreventionProfile buildThreatPreventionProfile() {
 void checkThreatPreventionProfile(api.ThreatPreventionProfile o) {
   buildCounterThreatPreventionProfile++;
   if (buildCounterThreatPreventionProfile < 3) {
-    checkUnnamed121(o.antivirusOverrides!);
-    checkUnnamed122(o.severityOverrides!);
-    checkUnnamed123(o.threatOverrides!);
+    checkUnnamed129(o.antivirusOverrides!);
+    checkUnnamed130(o.severityOverrides!);
+    checkUnnamed131(o.threatOverrides!);
   }
   buildCounterThreatPreventionProfile--;
 }
 
-core.List<core.String> buildUnnamed124() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed132() => ['foo', 'foo'];
 
-void checkUnnamed124(core.List<core.String> o) {
+void checkUnnamed132(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4143,7 +4366,7 @@ api.TlsInspectionPolicy buildTlsInspectionPolicy() {
   if (buildCounterTlsInspectionPolicy < 3) {
     o.caPool = 'foo';
     o.createTime = 'foo';
-    o.customTlsFeatures = buildUnnamed124();
+    o.customTlsFeatures = buildUnnamed132();
     o.description = 'foo';
     o.excludePublicCaSet = true;
     o.minTlsVersion = 'foo';
@@ -4161,7 +4384,7 @@ void checkTlsInspectionPolicy(api.TlsInspectionPolicy o) {
   if (buildCounterTlsInspectionPolicy < 3) {
     unittest.expect(o.caPool!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
-    checkUnnamed124(o.customTlsFeatures!);
+    checkUnnamed132(o.customTlsFeatures!);
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.excludePublicCaSet!, unittest.isTrue);
     unittest.expect(o.minTlsVersion!, unittest.equals('foo'));
@@ -4173,9 +4396,9 @@ void checkTlsInspectionPolicy(api.TlsInspectionPolicy o) {
   buildCounterTlsInspectionPolicy--;
 }
 
-core.List<core.String> buildUnnamed125() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed133() => ['foo', 'foo'];
 
-void checkUnnamed125(core.List<core.String> o) {
+void checkUnnamed133(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4188,7 +4411,7 @@ api.UrlFilter buildUrlFilter() {
   if (buildCounterUrlFilter < 3) {
     o.filteringAction = 'foo';
     o.priority = 42;
-    o.urls = buildUnnamed125();
+    o.urls = buildUnnamed133();
   }
   buildCounterUrlFilter--;
   return o;
@@ -4199,17 +4422,17 @@ void checkUrlFilter(api.UrlFilter o) {
   if (buildCounterUrlFilter < 3) {
     unittest.expect(o.filteringAction!, unittest.equals('foo'));
     unittest.expect(o.priority!, unittest.equals(42));
-    checkUnnamed125(o.urls!);
+    checkUnnamed133(o.urls!);
   }
   buildCounterUrlFilter--;
 }
 
-core.List<api.UrlFilter> buildUnnamed126() => [
+core.List<api.UrlFilter> buildUnnamed134() => [
   buildUrlFilter(),
   buildUrlFilter(),
 ];
 
-void checkUnnamed126(core.List<api.UrlFilter> o) {
+void checkUnnamed134(core.List<api.UrlFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlFilter(o[0]);
   checkUrlFilter(o[1]);
@@ -4220,7 +4443,7 @@ api.UrlFilteringProfile buildUrlFilteringProfile() {
   final o = api.UrlFilteringProfile();
   buildCounterUrlFilteringProfile++;
   if (buildCounterUrlFilteringProfile < 3) {
-    o.urlFilters = buildUnnamed126();
+    o.urlFilters = buildUnnamed134();
   }
   buildCounterUrlFilteringProfile--;
   return o;
@@ -4229,14 +4452,14 @@ api.UrlFilteringProfile buildUrlFilteringProfile() {
 void checkUrlFilteringProfile(api.UrlFilteringProfile o) {
   buildCounterUrlFilteringProfile++;
   if (buildCounterUrlFilteringProfile < 3) {
-    checkUnnamed126(o.urlFilters!);
+    checkUnnamed134(o.urlFilters!);
   }
   buildCounterUrlFilteringProfile--;
 }
 
-core.List<core.String> buildUnnamed127() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed135() => ['foo', 'foo'];
 
-void checkUnnamed127(core.List<core.String> o) {
+void checkUnnamed135(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4251,7 +4474,7 @@ api.UrlList buildUrlList() {
     o.description = 'foo';
     o.name = 'foo';
     o.updateTime = 'foo';
-    o.values = buildUnnamed127();
+    o.values = buildUnnamed135();
   }
   buildCounterUrlList--;
   return o;
@@ -4264,7 +4487,7 @@ void checkUrlList(api.UrlList o) {
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
-    checkUnnamed127(o.values!);
+    checkUnnamed135(o.values!);
   }
   buildCounterUrlList--;
 }
@@ -4290,9 +4513,17 @@ void checkValidationCA(api.ValidationCA o) {
   buildCounterValidationCA--;
 }
 
-core.List<core.String> buildUnnamed128() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed136() => ['foo', 'foo'];
 
-void checkUnnamed128(core.List<core.String> o) {
+void checkUnnamed136(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed137() => ['foo', 'foo'];
+
+void checkUnnamed137(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -5235,6 +5466,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListSACAttachmentsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListSACAttachmentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSACAttachmentsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListSACAttachmentsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListSACRealmsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListSACRealmsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSACRealmsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListSACRealmsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListSecurityProfileGroupsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListSecurityProfileGroupsResponse();
@@ -5465,6 +5718,39 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SACAttachment', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSACAttachment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SACAttachment.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSACAttachment(od);
+    });
+  });
+
+  unittest.group('obj-schema-SACRealm', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSACRealm();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SACRealm.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSACRealm(od);
+    });
+  });
+
+  unittest.group('obj-schema-SACRealmPairingKey', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSACRealmPairingKey();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SACRealmPairingKey.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSACRealmPairingKey(od);
+    });
+  });
+
   unittest.group('obj-schema-SecurityProfile', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSecurityProfile();
@@ -5605,6 +5891,141 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkValidationCA(od);
+    });
+  });
+
+  unittest.group('resource-OrganizationsLocationsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(mock).organizations.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildLocation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(mock).organizations.locations;
+      final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed136();
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['extraLocationTypes']!,
+            unittest.equals(arg_extraLocationTypes),
+          );
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListLocationsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_name,
+        extraLocationTypes: arg_extraLocationTypes,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
@@ -6226,6 +6647,75 @@ void main() {
       );
       checkOperation(response as api.Operation);
     });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).organizations.locations.addressGroups;
+      final arg_request = buildGoogleIamV1TestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleIamV1TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleIamV1TestIamPermissionsRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleIamV1TestIamPermissionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.testIamPermissions(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
+      checkGoogleIamV1TestIamPermissionsResponse(
+        response as api.GoogleIamV1TestIamPermissionsResponse,
+      );
+    });
   });
 
   unittest.group('resource-OrganizationsLocationsFirewallEndpointsResource', () {
@@ -6238,6 +6728,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_firewallEndpointId = 'foo';
       final arg_requestId = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6286,6 +6777,10 @@ void main() {
             unittest.equals(arg_requestId),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -6301,6 +6796,7 @@ void main() {
         arg_parent,
         firewallEndpointId: arg_firewallEndpointId,
         requestId: arg_requestId,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -7572,7 +8068,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.NetworkSecurityApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed128();
+      final arg_extraLocationTypes = buildUnnamed137();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10999,6 +11495,373 @@ void main() {
             json as core.Map<core.String, core.dynamic>,
           );
           checkFirewallEndpointAssociation(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        requestId: arg_requestId,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsFirewallEndpointsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpoints;
+      final arg_request = buildFirewallEndpoint();
+      final arg_parent = 'foo';
+      final arg_firewallEndpointId = 'foo';
+      final arg_requestId = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.FirewallEndpoint.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkFirewallEndpoint(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['firewallEndpointId']!.first,
+            unittest.equals(arg_firewallEndpointId),
+          );
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        firewallEndpointId: arg_firewallEndpointId,
+        requestId: arg_requestId,
+        validateOnly: arg_validateOnly,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpoints;
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpoints;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildFirewallEndpoint());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkFirewallEndpoint(response as api.FirewallEndpoint);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpoints;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListFirewallEndpointsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListFirewallEndpointsResponse(
+        response as api.ListFirewallEndpointsResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.firewallEndpoints;
+      final arg_request = buildFirewallEndpoint();
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.FirewallEndpoint.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkFirewallEndpoint(obj);
 
           final path = req.url.path;
           var pathOffset = 0;
@@ -14869,6 +15732,1226 @@ void main() {
         $fields: arg_$fields,
       );
       checkListOperationsResponse(response as api.ListOperationsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsSacAttachmentsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.sacAttachments;
+      final arg_request = buildSACAttachment();
+      final arg_parent = 'foo';
+      final arg_requestId = 'foo';
+      final arg_sacAttachmentId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SACAttachment.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSACAttachment(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['sacAttachmentId']!.first,
+            unittest.equals(arg_sacAttachmentId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        requestId: arg_requestId,
+        sacAttachmentId: arg_sacAttachmentId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.sacAttachments;
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.sacAttachments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSACAttachment());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSACAttachment(response as api.SACAttachment);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.sacAttachments;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListSACAttachmentsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListSACAttachmentsResponse(
+        response as api.ListSACAttachmentsResponse,
+      );
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsSacRealmsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(mock).projects.locations.sacRealms;
+      final arg_request = buildSACRealm();
+      final arg_parent = 'foo';
+      final arg_requestId = 'foo';
+      final arg_sacRealmId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SACRealm.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSACRealm(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['sacRealmId']!.first,
+            unittest.equals(arg_sacRealmId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        requestId: arg_requestId,
+        sacRealmId: arg_sacRealmId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(mock).projects.locations.sacRealms;
+      final arg_name = 'foo';
+      final arg_requestId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        requestId: arg_requestId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(mock).projects.locations.sacRealms;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSACRealm());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSACRealm(response as api.SACRealm);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(mock).projects.locations.sacRealms;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListSACRealmsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListSACRealmsResponse(response as api.ListSACRealmsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsSecurityProfileGroupsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.securityProfileGroups;
+      final arg_request = buildSecurityProfileGroup();
+      final arg_parent = 'foo';
+      final arg_securityProfileGroupId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SecurityProfileGroup.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSecurityProfileGroup(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['securityProfileGroupId']!.first,
+            unittest.equals(arg_securityProfileGroupId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        securityProfileGroupId: arg_securityProfileGroupId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.securityProfileGroups;
+      final arg_name = 'foo';
+      final arg_etag = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(queryMap['etag']!.first, unittest.equals(arg_etag));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        etag: arg_etag,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.securityProfileGroups;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSecurityProfileGroup());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSecurityProfileGroup(response as api.SecurityProfileGroup);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.securityProfileGroups;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListSecurityProfileGroupsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListSecurityProfileGroupsResponse(
+        response as api.ListSecurityProfileGroupsResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.securityProfileGroups;
+      final arg_request = buildSecurityProfileGroup();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SecurityProfileGroup.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSecurityProfileGroup(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsSecurityProfilesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.securityProfiles;
+      final arg_request = buildSecurityProfile();
+      final arg_parent = 'foo';
+      final arg_securityProfileId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SecurityProfile.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSecurityProfile(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['securityProfileId']!.first,
+            unittest.equals(arg_securityProfileId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        securityProfileId: arg_securityProfileId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.securityProfiles;
+      final arg_name = 'foo';
+      final arg_etag = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(queryMap['etag']!.first, unittest.equals(arg_etag));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        etag: arg_etag,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.securityProfiles;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSecurityProfile());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSecurityProfile(response as api.SecurityProfile);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.securityProfiles;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListSecurityProfilesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListSecurityProfilesResponse(
+        response as api.ListSecurityProfilesResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.NetworkSecurityApi(
+        mock,
+      ).projects.locations.securityProfiles;
+      final arg_request = buildSecurityProfile();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SecurityProfile.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSecurityProfile(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
     });
   });
 

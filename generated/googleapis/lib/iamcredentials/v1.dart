@@ -102,8 +102,7 @@ class LocationsWorkforcePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of workforce pool. Format:
-  /// `locations/global/workforcePools/{pool_id}`
+  /// [name] - Required. Resource name of workforce pool.
   /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -167,8 +166,7 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of workload identity pool. Format:
-  /// `projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}`
+  /// [name] - Required. Resource name of workload identity pool.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
   ///

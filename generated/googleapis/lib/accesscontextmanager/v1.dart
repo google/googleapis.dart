@@ -422,7 +422,9 @@ class AccessPoliciesResource {
   /// Context Manager resource.
   ///
   /// The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter.
-  /// This method does not support other resources.
+  /// This method does not support other resources. **IAM Permissions**: No
+  /// specific IAM permission is required to call this method. It returns the
+  /// subset of the requested permissions that the caller possesses.
   ///
   /// [request] - The metadata request object.
   ///
@@ -784,7 +786,9 @@ class AccessPoliciesAccessLevelsResource {
   /// Context Manager resource.
   ///
   /// The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter.
-  /// This method does not support other resources.
+  /// This method does not support other resources. **IAM Permissions**: No
+  /// specific IAM permission is required to call this method. It returns the
+  /// subset of the requested permissions that the caller possesses.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1227,6 +1231,17 @@ class AccessPoliciesServicePerimetersResource {
   /// Value must have pattern
   /// `^accessPolicies/\[^/\]+/servicePerimeters/\[^/\]+$`.
   ///
+  /// [deletedPrincipalSyntax] - Optional. If true, the response will contain
+  /// the deleted principal syntax for identities that support it.
+  /// Possible string values are:
+  /// - "DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED" : Deleted principal
+  /// syntax support was not specified.
+  /// - "DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED" : Deleted principal syntax
+  /// is disabled and no identities in the request or response will contain
+  /// deleted principal syntax.
+  /// - "DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED" : The request and response
+  /// can contain identities with deleted IAM principal syntax.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1239,9 +1254,13 @@ class AccessPoliciesServicePerimetersResource {
   /// this method will complete with the same error.
   async.Future<ServicePerimeter> get(
     core.String name, {
+    core.String? deletedPrincipalSyntax,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'deletedPrincipalSyntax': ?deletedPrincipalSyntax == null
+          ? null
+          : [deletedPrincipalSyntax],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1265,6 +1284,17 @@ class AccessPoliciesServicePerimetersResource {
   /// Perimeters from. Format: `accessPolicies/{policy_id}`
   /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
+  /// [deletedPrincipalSyntax] - Optional. If true, the response will contain
+  /// the deleted principal syntax for identities that support it.
+  /// Possible string values are:
+  /// - "DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED" : Deleted principal
+  /// syntax support was not specified.
+  /// - "DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED" : Deleted principal syntax
+  /// is disabled and no identities in the request or response will contain
+  /// deleted principal syntax.
+  /// - "DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED" : The request and response
+  /// can contain identities with deleted IAM principal syntax.
+  ///
   /// [pageSize] - Number of Service Perimeters to include in the list. Default
   /// 100.
   ///
@@ -1283,11 +1313,15 @@ class AccessPoliciesServicePerimetersResource {
   /// this method will complete with the same error.
   async.Future<ListServicePerimetersResponse> list(
     core.String parent, {
+    core.String? deletedPrincipalSyntax,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'deletedPrincipalSyntax': ?deletedPrincipalSyntax == null
+          ? null
+          : [deletedPrincipalSyntax],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'fields': ?$fields == null ? null : [$fields],
@@ -1324,6 +1358,18 @@ class AccessPoliciesServicePerimetersResource {
   /// Value must have pattern
   /// `^accessPolicies/\[^/\]+/servicePerimeters/\[^/\]+$`.
   ///
+  /// [deletedPrincipalSyntax] - Optional. If true, the response will contain
+  /// the deleted principal syntax for identities that support it and the
+  /// request can contain identities with deleted principal syntax.
+  /// Possible string values are:
+  /// - "DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED" : Deleted principal
+  /// syntax support was not specified.
+  /// - "DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED" : Deleted principal syntax
+  /// is disabled and no identities in the request or response will contain
+  /// deleted principal syntax.
+  /// - "DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED" : The request and response
+  /// can contain identities with deleted IAM principal syntax.
+  ///
   /// [updateMask] - Required. Mask to control which fields get updated. Must be
   /// non-empty.
   ///
@@ -1340,11 +1386,15 @@ class AccessPoliciesServicePerimetersResource {
   async.Future<Operation> patch(
     ServicePerimeter request,
     core.String name, {
+    core.String? deletedPrincipalSyntax,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'deletedPrincipalSyntax': ?deletedPrincipalSyntax == null
+          ? null
+          : [deletedPrincipalSyntax],
       'updateMask': ?updateMask == null ? null : [updateMask],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -1366,7 +1416,7 @@ class AccessPoliciesServicePerimetersResource {
   /// This is done atomically. The long-running operation from this RPC has a
   /// successful status after all replacements propagate to long-lasting
   /// storage. Replacements containing errors result in an error response for
-  /// the first error encountered. Upon an error, replacement are cancelled and
+  /// the first error encountered. Upon an error, replacements are cancelled and
   /// existing service perimeters are not affected. The Operation.response field
   /// contains ReplaceServicePerimetersResponse.
   ///
@@ -1416,7 +1466,9 @@ class AccessPoliciesServicePerimetersResource {
   /// Context Manager resource.
   ///
   /// The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter.
-  /// This method does not support other resources.
+  /// This method does not support other resources. **IAM Permissions**: No
+  /// specific IAM permission is required to call this method. It returns the
+  /// subset of the requested permissions that the caller possesses.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1801,6 +1853,12 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// [parent] - Required. Example: "organizations/256"
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. The literal filter to apply to the results returned.
+  /// See https://google.aip.dev/160 for more details. Accepts values: *
+  /// `principal:group_key` * `principal:service_account` OR
+  /// `principal:service_account_project_number`. If this field is empty or not
+  /// one of the above, the default value is `"principal:group_key"`.
+  ///
   /// [pageSize] - Optional. Maximum number of items to return. The server may
   /// return fewer items. If left blank, the server may return any number of
   /// items.
@@ -1821,11 +1879,13 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// this method will complete with the same error.
   async.Future<ListGcpUserAccessBindingsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'fields': ?$fields == null ? null : [$fields],
@@ -1921,15 +1981,16 @@ class PermissionsResource {
 
   PermissionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Lists all supported permissions in VPCSC Granular Controls.
+  /// Lists all supported permissions in VPC Service Controls ingress and egress
+  /// rules for Granular Controls.
   ///
   /// Request parameters:
   ///
   /// [pageSize] - Optional. This flag specifies the maximum number of services
-  /// to return per page. Default is 100.
+  /// to return per page. Default value is 100.
   ///
-  /// [pageToken] - Optional. Token to start on a later page. Default is the
-  /// first page.
+  /// [pageToken] - Optional. Use this token to retrieve a specific page of
+  /// results. Default is the first page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1972,6 +2033,9 @@ class ServicesResource {
 
   /// Returns a VPC-SC supported service based on the service name.
   ///
+  /// **IAM Permissions**: Requires the following IAM permissions to use this
+  /// method: - `serviceusage.services.use` on the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The name of the service to get information about. The names must
@@ -2010,12 +2074,16 @@ class ServicesResource {
 
   /// Lists all VPC-SC supported services.
   ///
+  /// **IAM Permissions**: Requires the following IAM permissions to use this
+  /// method: - `serviceusage.services.use` on the project.
+  ///
   /// Request parameters:
   ///
   /// [pageSize] - This flag specifies the maximum number of services to return
-  /// per page. Default is 100.
+  /// per page. Default value is 100.
   ///
-  /// [pageToken] - Token to start on a later page. Default is the first page.
+  /// [pageToken] - Use this token to retrieve a specific page of results.
+  /// Default is the first page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2194,6 +2262,9 @@ class AccessSettings {
     return {'accessLevels': ?accessLevels, 'sessionSettings': ?sessionSettings};
   }
 }
+
+/// Adds a request header to the API.
+typedef AddRequestHeader = $AddRequestHeader;
 
 /// Identification for an API Operation.
 class ApiOperation {
@@ -2562,7 +2633,12 @@ class ClientScope {
   /// Optional.
   Application? restrictedClientApplication;
 
-  ClientScope({this.restrictedClientApplication});
+  /// The Google Cloud project that is subject to this binding's scope.
+  ///
+  /// Optional.
+  Project? restrictedProject;
+
+  ClientScope({this.restrictedClientApplication, this.restrictedProject});
 
   ClientScope.fromJson(core.Map json_)
     : this(
@@ -2573,11 +2649,21 @@ class ClientScope {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        restrictedProject: json_.containsKey('restrictedProject')
+            ? Project.fromJson(
+                json_['restrictedProject']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final restrictedClientApplication = this.restrictedClientApplication;
-    return {'restrictedClientApplication': ?restrictedClientApplication};
+    final restrictedProject = this.restrictedProject;
+    return {
+      'restrictedClientApplication': ?restrictedClientApplication,
+      'restrictedProject': ?restrictedProject,
+    };
   }
 }
 
@@ -2978,7 +3064,58 @@ class EgressPolicy {
 
 /// The source that EgressPolicy authorizes access from inside the
 /// ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
-typedef EgressSource = $EgressSource;
+class EgressSource {
+  /// An AccessLevel resource name that allows protected resources inside the
+  /// ServicePerimeters to access outside the ServicePerimeter boundaries.
+  ///
+  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
+  /// Referencing a nonexistent AccessLevel will cause an error. If an
+  /// AccessLevel name is not specified, only resources within the perimeter can
+  /// be accessed through Google Cloud calls with request origins within the
+  /// perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a
+  /// single `*` is specified for `access_level`, then all EgressSources will be
+  /// allowed.
+  core.String? accessLevel;
+
+  /// A PrivateServiceConnectEndpoint that is allowed to access data outside the
+  /// perimeter.
+  ///
+  /// The Private Service Connect endpoint may be in any organization, not just
+  /// the organization that the perimeter is defined in.
+  PrivateServiceConnectEndpoint? pscEndpoint;
+
+  /// A Google Cloud resource from the service perimeter that you want to allow
+  /// to access data outside the perimeter.
+  ///
+  /// This field supports only projects. The project format is
+  /// `projects/{project_number}`. You can't use `*` in this field to allow all
+  /// Google Cloud resources.
+  core.String? resource;
+
+  EgressSource({this.accessLevel, this.pscEndpoint, this.resource});
+
+  EgressSource.fromJson(core.Map json_)
+    : this(
+        accessLevel: json_['accessLevel'] as core.String?,
+        pscEndpoint: json_.containsKey('pscEndpoint')
+            ? PrivateServiceConnectEndpoint.fromJson(
+                json_['pscEndpoint'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resource: json_['resource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessLevel = this.accessLevel;
+    final pscEndpoint = this.pscEndpoint;
+    final resource = this.resource;
+    return {
+      'accessLevel': ?accessLevel,
+      'pscEndpoint': ?pscEndpoint,
+      'resource': ?resource,
+    };
+  }
+}
 
 /// Defines the conditions under which an EgressPolicy matches a request.
 ///
@@ -3132,12 +3269,22 @@ class GcpUserAccessBinding {
   /// Immutable.
   core.String? name;
 
-  /// A list of applications that are subject to this binding's restrictions.
+  /// The principal that is subject to the access policies in this policy
+  /// binding.
   ///
-  /// If the list is empty, the binding restrictions will universally apply to
-  /// all applications.
+  /// Optional. Immutable.
+  Principal? principal;
+
+  /// Deprecated: Use `scoped_access_settings` instead.
+  ///
+  /// A list of applications that are subject to this binding's restrictions. If
+  /// the list is empty, the binding restrictions will universally apply to all
+  /// applications.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<Application>? restrictedClientApplications;
 
   /// A list of scoped access settings that set this binding's restrictions on a
@@ -3158,6 +3305,7 @@ class GcpUserAccessBinding {
     this.dryRunAccessLevels,
     this.groupKey,
     this.name,
+    this.principal,
     this.restrictedClientApplications,
     this.scopedAccessSettings,
     this.sessionSettings,
@@ -3173,6 +3321,11 @@ class GcpUserAccessBinding {
             .toList(),
         groupKey: json_['groupKey'] as core.String?,
         name: json_['name'] as core.String?,
+        principal: json_.containsKey('principal')
+            ? Principal.fromJson(
+                json_['principal'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         restrictedClientApplications:
             (json_['restrictedClientApplications'] as core.List?)
                 ?.map(
@@ -3200,6 +3353,7 @@ class GcpUserAccessBinding {
     final dryRunAccessLevels = this.dryRunAccessLevels;
     final groupKey = this.groupKey;
     final name = this.name;
+    final principal = this.principal;
     final restrictedClientApplications = this.restrictedClientApplications;
     final scopedAccessSettings = this.scopedAccessSettings;
     final sessionSettings = this.sessionSettings;
@@ -3208,6 +3362,7 @@ class GcpUserAccessBinding {
       'dryRunAccessLevels': ?dryRunAccessLevels,
       'groupKey': ?groupKey,
       'name': ?name,
+      'principal': ?principal,
       'restrictedClientApplications': ?restrictedClientApplications,
       'scopedAccessSettings': ?scopedAccessSettings,
       'sessionSettings': ?sessionSettings,
@@ -3362,7 +3517,59 @@ class IngressPolicy {
 }
 
 /// The source that IngressPolicy authorizes access from.
-typedef IngressSource = $IngressSource;
+class IngressSource {
+  /// An AccessLevel resource name that allow resources within the
+  /// ServicePerimeters to be accessed from the internet.
+  ///
+  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
+  /// Referencing a nonexistent AccessLevel will cause an error. If no
+  /// AccessLevel names are listed, resources within the perimeter can only be
+  /// accessed via Google Cloud calls with request origins within the perimeter.
+  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*`
+  /// is specified for `access_level`, then all IngressSources will be allowed.
+  core.String? accessLevel;
+
+  /// A PrivateServiceConnectEndpoint that is allowed to access the perimeter.
+  ///
+  /// The Private Service Connect endpoint may be in any organization, not just
+  /// the organization that the perimeter is defined in.
+  PrivateServiceConnectEndpoint? pscEndpoint;
+
+  /// A Google Cloud resource that is allowed to ingress the perimeter.
+  ///
+  /// Requests from these resources will be allowed to access perimeter data.
+  /// Currently only projects and VPCs are allowed. Project format:
+  /// `projects/{project_number}` VPC network format:
+  /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
+  /// The project may be in any Google Cloud organization, not just the
+  /// organization that the perimeter is defined in. `*` is not allowed, the
+  /// case of allowing all Google Cloud resources only is not supported.
+  core.String? resource;
+
+  IngressSource({this.accessLevel, this.pscEndpoint, this.resource});
+
+  IngressSource.fromJson(core.Map json_)
+    : this(
+        accessLevel: json_['accessLevel'] as core.String?,
+        pscEndpoint: json_.containsKey('pscEndpoint')
+            ? PrivateServiceConnectEndpoint.fromJson(
+                json_['pscEndpoint'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resource: json_['resource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessLevel = this.accessLevel;
+    final pscEndpoint = this.pscEndpoint;
+    final resource = this.resource;
+    return {
+      'accessLevel': ?accessLevel,
+      'pscEndpoint': ?pscEndpoint,
+      'resource': ?resource,
+    };
+  }
+}
 
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///
@@ -3639,12 +3846,12 @@ class ListServicePerimetersResponse {
 
 /// A response to `ListSupportedPermissionsRequest`.
 class ListSupportedPermissionsResponse {
-  /// The pagination token to retrieve the next page of results.
+  /// Use this pagination token to retrieve the next page of results.
   ///
-  /// If the value is empty, no further results remain.
+  /// An empty value indicates that no further results are available.
   core.String? nextPageToken;
 
-  /// List of VPC-SC supported permissions.
+  /// List of VPC Service Controls supported permissions.
   core.List<core.String>? supportedPermissions;
 
   ListSupportedPermissionsResponse({
@@ -3672,9 +3879,9 @@ class ListSupportedPermissionsResponse {
 
 /// A response to `ListSupportedServicesRequest`.
 class ListSupportedServicesResponse {
-  /// The pagination token to retrieve the next page of results.
+  /// Use this pagination token to retrieve the next page of results.
   ///
-  /// If the value is empty, no further results remain.
+  /// An empty value indicates that no further results are available.
   core.String? nextPageToken;
 
   /// List of services supported by VPC Service Controls instances.
@@ -3706,6 +3913,29 @@ class ListSupportedServicesResponse {
 
 /// An allowed method or permission of a service specified in ApiOperation.
 typedef MethodSelector = $MethodSelector;
+
+/// Modifier to apply to the API requests.
+class Modifier {
+  /// Adds an additional HTTP request header.
+  AddRequestHeader? addRequestHeader;
+
+  Modifier({this.addRequestHeader});
+
+  Modifier.fromJson(core.Map json_)
+    : this(
+        addRequestHeader: json_.containsKey('addRequestHeader')
+            ? AddRequestHeader.fromJson(
+                json_['addRequestHeader']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final addRequestHeader = this.addRequestHeader;
+    return {'addRequestHeader': ?addRequestHeader};
+  }
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -3912,6 +4142,93 @@ class Policy {
   }
 }
 
+/// The comprehensive identity container supporting identities including groups,
+/// service accounts, and federated identities.
+///
+/// Only one of them can be set to create an access binding.
+class Principal {
+  /// The IAM principal identifier of the federated workforce or workload to
+  /// assign the policy to.
+  ///
+  /// Examples include the following: * Single principal:
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+  /// * All workloads in a workload identity pool:
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * ` * All Workforce Pools in a Google Cloud organization:
+  /// `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+  /// Bindings created for all Workforce Pools in a Google Cloud organization
+  /// support only `scoped_access_settings` with the `restricted_project` client
+  /// scope and active `session_settings`. No other configurations are allowed.
+  ///
+  /// Immutable.
+  core.String? federatedPrincipal;
+
+  /// Service account email used to assign policies to a specific service
+  /// account.
+  ///
+  /// If a service account is subject to multiple policies (e.g., if there is a
+  /// policy for all service accounts in a project and a policy for the service
+  /// account), the closest (i.e. the most specific) dry-run policy will be used
+  /// for the dry-run functionality and the closest enforcement policy will be
+  /// used for the enforcement.
+  ///
+  /// Immutable.
+  core.String? serviceAccount;
+
+  /// Cloud project number used to assign policies to all service accounts owned
+  /// by the project.
+  ///
+  /// Immutable.
+  core.String? serviceAccountProjectNumber;
+
+  Principal({
+    this.federatedPrincipal,
+    this.serviceAccount,
+    this.serviceAccountProjectNumber,
+  });
+
+  Principal.fromJson(core.Map json_)
+    : this(
+        federatedPrincipal: json_['federatedPrincipal'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        serviceAccountProjectNumber:
+            json_['serviceAccountProjectNumber'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final federatedPrincipal = this.federatedPrincipal;
+    final serviceAccount = this.serviceAccount;
+    final serviceAccountProjectNumber = this.serviceAccountProjectNumber;
+    return {
+      'federatedPrincipal': ?federatedPrincipal,
+      'serviceAccount': ?serviceAccount,
+      'serviceAccountProjectNumber': ?serviceAccountProjectNumber,
+    };
+  }
+}
+
+/// Specifies the Private Service Connect endpoint that an API call refers to.
+typedef PrivateServiceConnectEndpoint = $PrivateServiceConnectEndpoint;
+
+/// A Google Cloud project which contains applications and resources that users
+/// can access.
+class Project {
+  /// The Google Cloud project resource name.
+  ///
+  /// Format: `projects/{project_number}`. Only the project number is supported.
+  /// Example: `projects/1234567890`
+  core.String? name;
+
+  Project({this.name});
+
+  Project.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
+}
+
 /// A request to replace all existing Access Levels in an Access Policy with the
 /// Access Levels provided.
 ///
@@ -4054,6 +4371,44 @@ class ScopedAccessSettings {
       'dryRunSettings': ?dryRunSettings,
       'scope': ?scope,
     };
+  }
+}
+
+/// Service patterns used to allow access.
+class ServicePattern {
+  /// Modifiers to apply to the requests that match the URL pattern.
+  core.List<Modifier>? modifiers;
+
+  /// URL pattern to allow.
+  ///
+  /// Only patterns of ".googleapis.com / * ", "www.googleapis.com/ / * " and
+  /// "*.appspot.com / * forms are supported, where should be an alphanumeric
+  /// name.
+  core.String? pattern;
+
+  /// Supported service to allow.
+  core.String? service;
+
+  ServicePattern({this.modifiers, this.pattern, this.service});
+
+  ServicePattern.fromJson(core.Map json_)
+    : this(
+        modifiers: (json_['modifiers'] as core.List?)
+            ?.map(
+              (value) => Modifier.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        pattern: json_['pattern'] as core.String?,
+        service: json_['service'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final modifiers = this.modifiers;
+    final pattern = this.pattern;
+    final service = this.service;
+    return {'modifiers': ?modifiers, 'pattern': ?pattern, 'service': ?service};
   }
 }
 
@@ -4311,10 +4666,13 @@ class SessionSettings {
 
   /// The session length.
   ///
-  /// Setting this field to zero is equal to disabling session. Also can set
-  /// infinite session by flipping the enabled bit to false below. If
-  /// use_oidc_max_age is true, for OIDC apps, the session length will be the
-  /// minimum of this field and OIDC max_age param.
+  /// Setting this field to zero allows for sessions that are active
+  /// indefinitely. Also, setting `session_length_enabled` to `false` disregards
+  /// session limits, which means that sessions never expire. If
+  /// `use_oidc_max_age` is `true`, for OIDC apps, the session length will be
+  /// the minimum of this field and the OIDC `max_age` param. If this field is
+  /// set to zero, `session_length_enabled` must be set to `false` or left
+  /// unset.
   ///
   /// Optional.
   core.String? sessionLength;
@@ -4322,7 +4680,8 @@ class SessionSettings {
   /// This field enables or disables Google Cloud session length.
   ///
   /// When false, all fields set above will be disregarded and the session
-  /// length is basically infinite.
+  /// length is basically infinite. If `session_length` is set to zero, this
+  /// field must be set to false.
   ///
   /// Optional.
   core.bool? sessionLengthEnabled;
@@ -4556,7 +4915,66 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
-typedef VpcAccessibleServices = $VpcAccessibleServices;
+class VpcAccessibleServices {
+  /// Specifies which Google services are allowed to be accessed from VPC
+  /// networks in the service perimeter.
+  core.List<ServicePattern>? allowedServicePatterns;
+
+  /// The list of APIs usable within the Service Perimeter.
+  ///
+  /// Must be empty unless 'enable_restriction' is True. You can specify a list
+  /// of individual services, as well as include the 'RESTRICTED-SERVICES'
+  /// value, which automatically includes all of the services protected by the
+  /// perimeter.
+  core.List<core.String>? allowedServices;
+
+  /// Whether to restrict API calls within the Service Perimeter to the list of
+  /// APIs specified in 'allowed_services'.
+  core.bool? enableRestriction;
+
+  /// Defines the enforcement scopes of service patterns.
+  core.List<core.String>? servicePatternsEnforcementScopes;
+
+  VpcAccessibleServices({
+    this.allowedServicePatterns,
+    this.allowedServices,
+    this.enableRestriction,
+    this.servicePatternsEnforcementScopes,
+  });
+
+  VpcAccessibleServices.fromJson(core.Map json_)
+    : this(
+        allowedServicePatterns: (json_['allowedServicePatterns'] as core.List?)
+            ?.map(
+              (value) => ServicePattern.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        allowedServices: (json_['allowedServices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        enableRestriction: json_['enableRestriction'] as core.bool?,
+        servicePatternsEnforcementScopes:
+            (json_['servicePatternsEnforcementScopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedServicePatterns = this.allowedServicePatterns;
+    final allowedServices = this.allowedServices;
+    final enableRestriction = this.enableRestriction;
+    final servicePatternsEnforcementScopes =
+        this.servicePatternsEnforcementScopes;
+    return {
+      'allowedServicePatterns': ?allowedServicePatterns,
+      'allowedServices': ?allowedServices,
+      'enableRestriction': ?enableRestriction,
+      'servicePatternsEnforcementScopes': ?servicePatternsEnforcementScopes,
+    };
+  }
+}
 
 /// The originating network source in Google Cloud.
 class VpcNetworkSource {

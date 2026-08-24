@@ -157,12 +157,12 @@ class ProjectsTracesSpansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the span in the following format:
-  /// * `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]`
-  /// is a unique identifier for a trace within a project; it is a 32-character
-  /// hexadecimal encoding of a 16-byte array. It should not be zero.
-  /// `[SPAN_ID]` is a unique identifier for a span within a trace; it is a
-  /// 16-character hexadecimal encoding of an 8-byte array. It should not be
+  /// [name] - Identifier. The resource name of the span in the following
+  /// format: * `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]`
+  /// `[TRACE_ID]` is a unique identifier for a trace within a project; it is a
+  /// 32-character hexadecimal encoding of a 16-byte array. It should not be
+  /// zero. `[SPAN_ID]` is a unique identifier for a span within a trace; it is
+  /// a 16-character hexadecimal encoding of an 8-byte array. It should not be
   /// zero. .
   /// Value must have pattern `^projects/\[^/\]+/traces/\[^/\]+/spans/\[^/\]+$`.
   ///
@@ -203,11 +203,15 @@ class Annotation {
   /// A set of attributes on the annotation.
   ///
   /// You can have up to 4 attributes per Annotation.
+  ///
+  /// Optional.
   Attributes? attributes;
 
   /// A user-supplied message describing the event.
   ///
   /// The maximum length for the description is 256 bytes.
+  ///
+  /// Optional.
   TruncatableString? description;
 
   Annotation({this.attributes, this.description});
@@ -236,12 +240,18 @@ class Annotation {
 /// The allowed types for `[VALUE]` in a `[KEY]:[VALUE]` attribute.
 class AttributeValue {
   /// A Boolean value represented by `true` or `false`.
+  ///
+  /// Optional.
   core.bool? boolValue;
 
   /// A 64-bit signed integer.
+  ///
+  /// Optional.
   core.String? intValue;
 
   /// A string up to 256 bytes long.
+  ///
+  /// Optional.
   TruncatableString? stringValue;
 
   AttributeValue({this.boolValue, this.intValue, this.stringValue});
@@ -278,6 +288,8 @@ class Attributes {
   /// `true` or `false`. For example: "/instance_id": { "string_value": {
   /// "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
   /// "example.com/myattribute": { "bool_value": false }
+  ///
+  /// Optional.
   core.Map<core.String, AttributeValue>? attributeMap;
 
   /// The number of attributes that were discarded.
@@ -285,6 +297,8 @@ class Attributes {
   /// Attributes can be discarded because their keys are too long or because
   /// there are too many attributes. If this value is 0 then all attributes are
   /// valid.
+  ///
+  /// Optional.
   core.int? droppedAttributesCount;
 
   Attributes({this.attributeMap, this.droppedAttributesCount});
@@ -360,15 +374,23 @@ class Link {
   /// A set of attributes on the link.
   ///
   /// Up to 32 attributes can be specified per link.
+  ///
+  /// Optional.
   Attributes? attributes;
 
   /// The `[SPAN_ID]` for a span within a trace.
+  ///
+  /// Optional.
   core.String? spanId;
 
   /// The `[TRACE_ID]` for a trace within a project.
+  ///
+  /// Optional.
   core.String? traceId;
 
   /// The relationship of the current span relative to the linked span.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The relationship of the two spans is unknown.
   /// - "CHILD_LINKED_SPAN" : The linked span is a child of the current span.
@@ -409,9 +431,13 @@ class Links {
   /// The number of dropped links after the maximum size was enforced.
   ///
   /// If this value is 0, then no links were dropped.
+  ///
+  /// Optional.
   core.int? droppedLinksCount;
 
   /// A collection of links.
+  ///
+  /// Optional.
   core.List<Link>? link;
 
   Links({this.droppedLinksCount, this.link});
@@ -440,15 +466,21 @@ class MessageEvent {
   ///
   /// If missing, the compressed size is assumed to be the same size as the
   /// uncompressed size.
+  ///
+  /// Optional.
   core.String? compressedSizeBytes;
 
   /// An identifier for the MessageEvent's message that can be used to match
   /// `SENT` and `RECEIVED` MessageEvents.
+  ///
+  /// Optional.
   core.String? id;
 
   /// Type of MessageEvent.
   ///
   /// Indicates whether the message was sent or received.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unknown event type.
   /// - "SENT" : Indicates a sent message.
@@ -456,6 +488,8 @@ class MessageEvent {
   core.String? type;
 
   /// The number of uncompressed bytes sent or received.
+  ///
+  /// Optional.
   core.String? uncompressedSizeBytes;
 
   MessageEvent({
@@ -491,10 +525,14 @@ class MessageEvent {
 class Module {
   /// A unique identifier for the module, usually a hash of its contents (up to
   /// 128 bytes).
+  ///
+  /// Optional.
   TruncatableString? buildId;
 
   /// For example: main binary, kernel modules, and dynamic libraries such as
   /// libc.so, sharedlib.so (up to 256 bytes).
+  ///
+  /// Optional.
   TruncatableString? module;
 
   Module({this.buildId, this.module});
@@ -531,6 +569,8 @@ class Span {
   /// A set of attributes on the span.
   ///
   /// You can have up to 32 attributes per span.
+  ///
+  /// Optional.
   Attributes? attributes;
 
   /// The number of child spans that were generated while this span was active.
@@ -563,23 +603,26 @@ class Span {
   /// Links associated with the span.
   ///
   /// You can have up to 128 links per Span.
+  ///
+  /// Optional.
   Links? links;
 
+  /// Identifier.
+  ///
   /// The resource name of the span in the following format: *
   /// `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is
   /// a unique identifier for a trace within a project; it is a 32-character
-  /// hexadecimal encoding of a 16-byte array.
-  ///
-  /// It should not be zero. `[SPAN_ID]` is a unique identifier for a span
-  /// within a trace; it is a 16-character hexadecimal encoding of an 8-byte
-  /// array. It should not be zero. .
-  ///
-  /// Required.
+  /// hexadecimal encoding of a 16-byte array. It should not be zero.
+  /// `[SPAN_ID]` is a unique identifier for a span within a trace; it is a
+  /// 16-character hexadecimal encoding of an 8-byte array. It should not be
+  /// zero. .
   core.String? name;
 
   /// The `[SPAN_ID]` of this span's parent span.
   ///
   /// If this is a root span, then this field must be empty.
+  ///
+  /// Optional.
   core.String? parentSpanId;
 
   /// Set this parameter to indicate whether this span is in the same process as
@@ -621,6 +664,8 @@ class Span {
   core.String? spanKind;
 
   /// Stack trace captured at the start of the span.
+  ///
+  /// Optional.
   StackTrace? stackTrace;
 
   /// The start time of the span.
@@ -640,6 +685,8 @@ class Span {
   /// A set of time events.
   ///
   /// You can have up to 32 annotations and 128 message events per span.
+  ///
+  /// Optional.
   TimeEvents? timeEvents;
 
   Span({
@@ -740,20 +787,30 @@ class StackFrame {
   /// The column number where the function call appears, if available.
   ///
   /// This is important in JavaScript because of its anonymous functions.
+  ///
+  /// Optional.
   core.String? columnNumber;
 
   /// The name of the source file where the function call appears (up to 256
   /// bytes).
+  ///
+  /// Optional.
   TruncatableString? fileName;
 
   /// The fully-qualified name that uniquely identifies the function or method
   /// that is active in this frame (up to 1024 bytes).
+  ///
+  /// Optional.
   TruncatableString? functionName;
 
   /// The line number in `file_name` where the function call appears.
+  ///
+  /// Optional.
   core.String? lineNumber;
 
   /// The binary module from where the code was loaded.
+  ///
+  /// Optional.
   Module? loadModule;
 
   /// An un-mangled function name, if `function_name` is mangled.
@@ -761,9 +818,13 @@ class StackFrame {
   /// To get information about name mangling, run
   /// [this search](https://www.google.com/search?q=cxx+name+mangling). The name
   /// can be fully-qualified (up to 1024 bytes).
+  ///
+  /// Optional.
   TruncatableString? originalFunctionName;
 
   /// The version of the deployed source code (up to 128 bytes).
+  ///
+  /// Optional.
   TruncatableString? sourceVersion;
 
   StackFrame({
@@ -834,9 +895,13 @@ class StackFrames {
   /// stack frames.
   ///
   /// If this value is 0, then no stack frames were dropped.
+  ///
+  /// Optional.
   core.int? droppedFramesCount;
 
   /// Stack frames in this call stack.
+  ///
+  /// Optional.
   core.List<StackFrame>? frame;
 
   StackFrames({this.droppedFramesCount, this.frame});
@@ -865,6 +930,8 @@ class StackTrace {
   /// Stack frames in this stack trace.
   ///
   /// A maximum of 128 frames are allowed.
+  ///
+  /// Optional.
   StackFrames? stackFrames;
 
   /// The hash ID is used to conserve network bandwidth for duplicate stack
@@ -874,6 +941,8 @@ class StackTrace {
   /// occurrence of a stack trace should contain both the `stackFrame` content
   /// and a value in `stackTraceHashId`. Subsequent spans within the same
   /// request can refer to that stack trace by only setting `stackTraceHashId`.
+  ///
+  /// Optional.
   core.String? stackTraceHashId;
 
   StackTrace({this.stackFrames, this.stackTraceHashId});
@@ -913,6 +982,8 @@ class TimeEvent {
   MessageEvent? messageEvent;
 
   /// The timestamp indicating the time the event occurred.
+  ///
+  /// Optional.
   core.String? time;
 
   TimeEvent({this.annotation, this.messageEvent, this.time});
@@ -953,14 +1024,20 @@ class TimeEvents {
   /// The number of dropped annotations in all the included time events.
   ///
   /// If the value is 0, then no annotations were dropped.
+  ///
+  /// Optional.
   core.int? droppedAnnotationsCount;
 
   /// The number of dropped message events in all the included time events.
   ///
   /// If the value is 0, then no message events were dropped.
+  ///
+  /// Optional.
   core.int? droppedMessageEventsCount;
 
   /// A collection of `TimeEvent`s.
+  ///
+  /// Optional.
   core.List<TimeEvent>? timeEvent;
 
   TimeEvents({
@@ -996,4 +1073,36 @@ class TimeEvents {
 }
 
 /// Represents a string that might be shortened to a specified length.
-typedef TruncatableString = $TruncatableString;
+class TruncatableString {
+  /// The number of bytes removed from the original string.
+  ///
+  /// If this value is 0, then the string was not shortened.
+  ///
+  /// Optional.
+  core.int? truncatedByteCount;
+
+  /// The shortened string.
+  ///
+  /// For example, if the original string is 500 bytes long and the limit of the
+  /// string is 128 bytes, then `value` contains the first 128 bytes of the
+  /// 500-byte string. Truncation always happens on a UTF8 character boundary.
+  /// If there are multi-byte characters in the string, then the length of the
+  /// shortened string might be less than the size limit.
+  ///
+  /// Optional.
+  core.String? value;
+
+  TruncatableString({this.truncatedByteCount, this.value});
+
+  TruncatableString.fromJson(core.Map json_)
+    : this(
+        truncatedByteCount: json_['truncatedByteCount'] as core.int?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final truncatedByteCount = this.truncatedByteCount;
+    final value = this.value;
+    return {'truncatedByteCount': ?truncatedByteCount, 'value': ?value};
+  }
+}

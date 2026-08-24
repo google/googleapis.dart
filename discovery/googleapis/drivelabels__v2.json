@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250807",
+    "revision": "20260628",
     "rootUrl": "https://drivelabels.googleapis.com/",
     "servicePath": "",
     "title": "Drive Labels API",
@@ -674,7 +674,7 @@
                                 "name": {
                                     "description": "Required. Label permission resource name.",
                                     "location": "path",
-                                    "pattern": "^labels/[^/]+/permissions/[^/]+$",
+                                    "pattern": "^labels/[^/]+/permissions/.*$",
                                     "required": true,
                                     "type": "string"
                                 },
@@ -926,7 +926,7 @@
                                         "name": {
                                             "description": "Required. Label permission resource name.",
                                             "location": "path",
-                                            "pattern": "^labels/[^/]+/revisions/[^/]+/permissions/[^/]+$",
+                                            "pattern": "^labels/[^/]+/revisions/[^/]+/permissions/.*$",
                                             "required": true,
                                             "type": "string"
                                         },

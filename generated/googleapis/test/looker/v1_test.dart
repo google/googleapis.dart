@@ -337,6 +337,7 @@ api.Instance buildInstance() {
   final o = api.Instance();
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
+    o.acceleratedSecurityPatchEnabled = true;
     o.adminSettings = buildAdminSettings();
     o.catalogIntegrationOptOut = true;
     o.classType = 'foo';
@@ -367,10 +368,13 @@ api.Instance buildInstance() {
     o.pscConfig = buildPscConfig();
     o.pscEnabled = true;
     o.publicIpEnabled = true;
+    o.releaseChannel = 'foo';
     o.reservedRange = 'foo';
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
+    o.softDeleteReason = 'foo';
     o.state = 'foo';
+    o.suspendedTime = 'foo';
     o.updateTime = 'foo';
     o.userMetadata = buildUserMetadata();
   }
@@ -381,6 +385,7 @@ api.Instance buildInstance() {
 void checkInstance(api.Instance o) {
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
+    unittest.expect(o.acceleratedSecurityPatchEnabled!, unittest.isTrue);
     checkAdminSettings(o.adminSettings!);
     unittest.expect(o.catalogIntegrationOptOut!, unittest.isTrue);
     unittest.expect(o.classType!, unittest.equals('foo'));
@@ -411,10 +416,13 @@ void checkInstance(api.Instance o) {
     checkPscConfig(o.pscConfig!);
     unittest.expect(o.pscEnabled!, unittest.isTrue);
     unittest.expect(o.publicIpEnabled!, unittest.isTrue);
+    unittest.expect(o.releaseChannel!, unittest.equals('foo'));
     unittest.expect(o.reservedRange!, unittest.equals('foo'));
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
+    unittest.expect(o.softDeleteReason!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.suspendedTime!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     checkUserMetadata(o.userMetadata!);
   }
@@ -1028,6 +1036,21 @@ void checkTimeOfDay(api.TimeOfDay o) {
   buildCounterTimeOfDay--;
 }
 
+core.int buildCounterUndeleteInstanceRequest = 0;
+api.UndeleteInstanceRequest buildUndeleteInstanceRequest() {
+  final o = api.UndeleteInstanceRequest();
+  buildCounterUndeleteInstanceRequest++;
+  if (buildCounterUndeleteInstanceRequest < 3) {}
+  buildCounterUndeleteInstanceRequest--;
+  return o;
+}
+
+void checkUndeleteInstanceRequest(api.UndeleteInstanceRequest o) {
+  buildCounterUndeleteInstanceRequest++;
+  if (buildCounterUndeleteInstanceRequest < 3) {}
+  buildCounterUndeleteInstanceRequest--;
+}
+
 core.int buildCounterUserMetadata = 0;
 api.UserMetadata buildUserMetadata() {
   final o = api.UserMetadata();
@@ -1398,6 +1421,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkTimeOfDay(od);
+    });
+  });
+
+  unittest.group('obj-schema-UndeleteInstanceRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUndeleteInstanceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UndeleteInstanceRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUndeleteInstanceRequest(od);
     });
   });
 
@@ -1864,6 +1898,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_showDeleted = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1907,6 +1942,10 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(
+            queryMap['showDeleted']!.first,
+            unittest.equals('$arg_showDeleted'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -1921,6 +1960,7 @@ void main() {
         arg_parent,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
+        showDeleted: arg_showDeleted,
         $fields: arg_$fields,
       );
       checkListInstancesResponse(response as api.ListInstancesResponse);
@@ -2114,6 +2154,69 @@ void main() {
         true,
       );
       final response = await res.restore(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--undelete', () async {
+      final mock = HttpServerMock();
+      final res = api.LookerApi(mock).projects.locations.instances;
+      final arg_request = buildUndeleteInstanceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.UndeleteInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkUndeleteInstanceRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.undelete(
         arg_request,
         arg_name,
         $fields: arg_$fields,

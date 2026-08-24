@@ -20,7 +20,7 @@
 
 /// Cloud SQL Admin API - v1beta4
 ///
-/// API for Cloud SQL database instance management
+/// Cloud SQL Admin API
 ///
 /// For more information, see <https://cloud.google.com/sql/docs>
 ///
@@ -53,7 +53,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// API for Cloud SQL database instance management
+/// Cloud SQL Admin API
 class SQLAdminApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -619,6 +619,52 @@ class ConnectResource {
         '/instances/' +
         commons.escapeVariable('$instance') +
         '/connectSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ConnectSettings.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves connect settings about a Cloud SQL instance using the instance
+  /// DNS name.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The region of the instance.
+  ///
+  /// [dnsName] - Required. Cloud SQL instance ID. This does not include the
+  /// project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConnectSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConnectSettings> resolve(
+    core.String location,
+    core.String dnsName, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'sql/v1beta4/locations/' +
+        commons.escapeVariable('$location') +
+        '/dns/' +
+        commons.escapeVariable('$dnsName') +
+        ':resolveConnectSettings';
 
     final response_ = await _requester.request(
       url_,
@@ -2025,6 +2071,12 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [reconcilePscNetworking] - Optional. Set PSC config to the same value as
+  /// the existing config to reconcile the PSC networking.
+  ///
+  /// [reconcilePscNetworkingForce] - Optional. Set PSC config to the same value
+  /// as the existing config and force reconcile the PSC networking.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2039,10 +2091,18 @@ class InstancesResource {
     DatabaseInstance request,
     core.String project,
     core.String instance, {
+    core.bool? reconcilePscNetworking,
+    core.bool? reconcilePscNetworkingForce,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'reconcilePscNetworking': ?reconcilePscNetworking == null
+          ? null
+          : ['${reconcilePscNetworking}'],
+      'reconcilePscNetworkingForce': ?reconcilePscNetworkingForce == null
+          ? null
+          : ['${reconcilePscNetworkingForce}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2741,6 +2801,8 @@ class OperationsResource {
   ///
   /// [operation] - Instance operation ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2754,9 +2816,11 @@ class OperationsResource {
   async.Future<Empty> cancel(
     core.String project,
     core.String operation, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2783,6 +2847,8 @@ class OperationsResource {
   ///
   /// [operation] - Instance operation ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2796,9 +2862,11 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String project,
     core.String operation, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2825,6 +2893,8 @@ class OperationsResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [maxResults] - Maximum number of operations per response.
   ///
   /// [pageToken] - A previously-returned page token representing part of the
@@ -2843,12 +2913,14 @@ class OperationsResource {
   async.Future<OperationsListResponse> list(
     core.String project, {
     core.String? instance,
+    core.String? location,
     core.int? maxResults,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'instance': ?instance == null ? null : [instance],
+      'location': ?location == null ? null : [location],
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'fields': ?$fields == null ? null : [$fields],
@@ -3734,6 +3806,15 @@ class UsersResource {
   /// unset, the database roles specified in `database_roles` are added to the
   /// user's existing roles.
   ///
+  /// [revokeExistingServerRoles] - Optional. Specifies whether to revoke
+  /// existing roles that are not present in the `server_roles` field. If
+  /// `false` or unset, the server roles specified in `server_roles` are added
+  /// to the user's existing server roles.
+  ///
+  /// [serverRoles] - Optional. The server roles to grant to the SQL Server
+  /// login. Existing server roles will not be revoked if revoke_existing_roles
+  /// is false. body.server_roles will be ignored for update request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3752,6 +3833,8 @@ class UsersResource {
     core.String? host,
     core.String? name,
     core.bool? revokeExistingRoles,
+    core.bool? revokeExistingServerRoles,
+    core.List<core.String>? serverRoles,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -3762,6 +3845,10 @@ class UsersResource {
       'revokeExistingRoles': ?revokeExistingRoles == null
           ? null
           : ['${revokeExistingRoles}'],
+      'revokeExistingServerRoles': ?revokeExistingServerRoles == null
+          ? null
+          : ['${revokeExistingServerRoles}'],
+      'serverRoles': ?serverRoles,
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -4057,6 +4144,8 @@ class Backup {
   /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "POSTGRES_17" : The database version is PostgreSQL 17.
   /// - "POSTGRES_18" : The database version is PostgreSQL 18.
+  /// - "POSTGRES_19" : The database version is PostgreSQL 19.
+  /// - "POSTGRES_20" : The database version is PostgreSQL 20.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -4352,7 +4441,15 @@ class BackupConfiguration {
   /// Whether point in time recovery is enabled.
   core.bool? pointInTimeRecoveryEnabled;
 
-  /// Reserved for future use.
+  /// Deprecated: replication_log_archiving_enabled is deprecated and will be
+  /// removed from a future version of the API.
+  ///
+  /// Use point_in_time_recovery_enabled instead.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? replicationLogArchivingEnabled;
 
   /// Start time for the daily backup configuration in UTC timezone in the 24
@@ -4621,6 +4718,8 @@ class BackupRun {
   /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "POSTGRES_17" : The database version is PostgreSQL 17.
   /// - "POSTGRES_18" : The database version is PostgreSQL 18.
+  /// - "POSTGRES_19" : The database version is PostgreSQL 19.
+  /// - "POSTGRES_20" : The database version is PostgreSQL 20.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -4933,7 +5032,7 @@ class CloneContext {
   core.String? destinationInstanceName;
 
   /// The fully qualified URI of the VPC network to which the cloned instance
-  /// will be connected via Private Services Access for private IP.
+  /// will be connected via private services access for private IP.
   ///
   /// For example:`projects/my-network-project/global/networks/my-network`. This
   /// field is only required for cross-project cloning.
@@ -5159,6 +5258,12 @@ class ConnectSettings {
   /// - "EXTERNAL" : On premises instance.
   core.String? backendType;
 
+  /// Connection name of the Cloud SQL instance used in connection strings, in
+  /// the format project:region:instance.
+  ///
+  /// Optional. Output only.
+  core.String? connectionName;
+
   /// Custom subject alternative names for the server certificate.
   core.List<core.String>? customSubjectAlternativeNames;
 
@@ -5242,6 +5347,8 @@ class ConnectSettings {
   /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "POSTGRES_17" : The database version is PostgreSQL 17.
   /// - "POSTGRES_18" : The database version is PostgreSQL 18.
+  /// - "POSTGRES_19" : The database version is PostgreSQL 19.
+  /// - "POSTGRES_20" : The database version is PostgreSQL 20.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -5322,6 +5429,7 @@ class ConnectSettings {
 
   ConnectSettings({
     this.backendType,
+    this.connectionName,
     this.customSubjectAlternativeNames,
     this.databaseVersion,
     this.dnsName,
@@ -5340,6 +5448,7 @@ class ConnectSettings {
   ConnectSettings.fromJson(core.Map json_)
     : this(
         backendType: json_['backendType'] as core.String?,
+        connectionName: json_['connectionName'] as core.String?,
         customSubjectAlternativeNames:
             (json_['customSubjectAlternativeNames'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -5384,6 +5493,7 @@ class ConnectSettings {
 
   core.Map<core.String, core.dynamic> toJson() {
     final backendType = this.backendType;
+    final connectionName = this.connectionName;
     final customSubjectAlternativeNames = this.customSubjectAlternativeNames;
     final databaseVersion = this.databaseVersion;
     final dnsName = this.dnsName;
@@ -5399,6 +5509,7 @@ class ConnectSettings {
     final serverCaMode = this.serverCaMode;
     return {
       'backendType': ?backendType,
+      'connectionName': ?connectionName,
       'customSubjectAlternativeNames': ?customSubjectAlternativeNames,
       'databaseVersion': ?databaseVersion,
       'dnsName': ?dnsName,
@@ -5702,6 +5813,13 @@ class DatabaseInstance {
   )
   core.String? currentDiskSize;
 
+  /// If true, instance metadata is sent to the Database Center.
+  ///
+  /// If false, instance metadata is not sent to the Database Center.
+  ///
+  /// Optional.
+  core.bool? databaseCenterIntegrationEnabled;
+
   /// Stores the current database version running on the instance including
   /// minor version such as `MYSQL_8_0_18`.
   ///
@@ -5780,6 +5898,8 @@ class DatabaseInstance {
   /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "POSTGRES_17" : The database version is PostgreSQL 17.
   /// - "POSTGRES_18" : The database version is PostgreSQL 18.
+  /// - "POSTGRES_19" : The database version is PostgreSQL 19.
+  /// - "POSTGRES_20" : The database version is PostgreSQL 20.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -6050,6 +6170,7 @@ class DatabaseInstance {
     this.connectionName,
     this.createTime,
     this.currentDiskSize,
+    this.databaseCenterIntegrationEnabled,
     this.databaseInstalledVersion,
     this.databaseVersion,
     this.diskEncryptionConfiguration,
@@ -6108,6 +6229,8 @@ class DatabaseInstance {
         connectionName: json_['connectionName'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         currentDiskSize: json_['currentDiskSize'] as core.String?,
+        databaseCenterIntegrationEnabled:
+            json_['databaseCenterIntegrationEnabled'] as core.bool?,
         databaseInstalledVersion:
             json_['databaseInstalledVersion'] as core.String?,
         databaseVersion: json_['databaseVersion'] as core.String?,
@@ -6249,6 +6372,8 @@ class DatabaseInstance {
     final connectionName = this.connectionName;
     final createTime = this.createTime;
     final currentDiskSize = this.currentDiskSize;
+    final databaseCenterIntegrationEnabled =
+        this.databaseCenterIntegrationEnabled;
     final databaseInstalledVersion = this.databaseInstalledVersion;
     final databaseVersion = this.databaseVersion;
     final diskEncryptionConfiguration = this.diskEncryptionConfiguration;
@@ -6303,6 +6428,7 @@ class DatabaseInstance {
       'connectionName': ?connectionName,
       'createTime': ?createTime,
       'currentDiskSize': ?currentDiskSize,
+      'databaseCenterIntegrationEnabled': ?databaseCenterIntegrationEnabled,
       'databaseInstalledVersion': ?databaseInstalledVersion,
       'databaseVersion': ?databaseVersion,
       'diskEncryptionConfiguration': ?diskEncryptionConfiguration,
@@ -6785,6 +6911,19 @@ class ExecuteSqlPayload {
   /// result can be retrieved due to error. Don't throw an error.
   core.String? partialResultMode;
 
+  /// The resource name of the Secret Manager secret holding the password for
+  /// the user to log into the database.
+  ///
+  /// The secret should be created using the regional endpoint (for API) or from
+  /// the Regional Secrets page (for UI), and stored in the same region as the
+  /// Cloud SQL instance. The expected resource name format is
+  /// `projects/{project}/locations/{location}/secrets/{secret}/versions/{secret_version}`.
+  /// This field is used together with the `user` field. The secret resource
+  /// name will not be stored.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
   /// The maximum number of rows returned per SQL statement.
   ///
   /// Optional.
@@ -6811,6 +6950,7 @@ class ExecuteSqlPayload {
     this.autoIamAuthn,
     this.database,
     this.partialResultMode,
+    this.passwordSecretVersion,
     this.rowLimit,
     this.sqlStatement,
     this.user,
@@ -6822,6 +6962,7 @@ class ExecuteSqlPayload {
         autoIamAuthn: json_['autoIamAuthn'] as core.bool?,
         database: json_['database'] as core.String?,
         partialResultMode: json_['partialResultMode'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
         rowLimit: json_['rowLimit'] as core.String?,
         sqlStatement: json_['sqlStatement'] as core.String?,
         user: json_['user'] as core.String?,
@@ -6832,6 +6973,7 @@ class ExecuteSqlPayload {
     final autoIamAuthn = this.autoIamAuthn;
     final database = this.database;
     final partialResultMode = this.partialResultMode;
+    final passwordSecretVersion = this.passwordSecretVersion;
     final rowLimit = this.rowLimit;
     final sqlStatement = this.sqlStatement;
     final user = this.user;
@@ -6840,6 +6982,7 @@ class ExecuteSqlPayload {
       'autoIamAuthn': ?autoIamAuthn,
       'database': ?database,
       'partialResultMode': ?partialResultMode,
+      'passwordSecretVersion': ?passwordSecretVersion,
       'rowLimit': ?rowLimit,
       'sqlStatement': ?sqlStatement,
       'user': ?user,
@@ -9539,6 +9682,11 @@ class OnPremisesConfiguration {
   /// The corresponding public key is encoded in the client's certificate.
   core.String? clientKey;
 
+  /// Indicates whether the resource is managed by Database Migration Service.
+  ///
+  /// Output only.
+  core.bool? dmsManaged;
+
   /// The dump file to create the Cloud SQL replica.
   core.String? dumpFilePath;
 
@@ -9581,6 +9729,7 @@ class OnPremisesConfiguration {
     this.caCertificate,
     this.clientCertificate,
     this.clientKey,
+    this.dmsManaged,
     this.dumpFilePath,
     this.hostPort,
     this.kind,
@@ -9596,6 +9745,7 @@ class OnPremisesConfiguration {
         caCertificate: json_['caCertificate'] as core.String?,
         clientCertificate: json_['clientCertificate'] as core.String?,
         clientKey: json_['clientKey'] as core.String?,
+        dmsManaged: json_['dmsManaged'] as core.bool?,
         dumpFilePath: json_['dumpFilePath'] as core.String?,
         hostPort: json_['hostPort'] as core.String?,
         kind: json_['kind'] as core.String?,
@@ -9620,6 +9770,7 @@ class OnPremisesConfiguration {
     final caCertificate = this.caCertificate;
     final clientCertificate = this.clientCertificate;
     final clientKey = this.clientKey;
+    final dmsManaged = this.dmsManaged;
     final dumpFilePath = this.dumpFilePath;
     final hostPort = this.hostPort;
     final kind = this.kind;
@@ -9632,6 +9783,7 @@ class OnPremisesConfiguration {
       'caCertificate': ?caCertificate,
       'clientCertificate': ?clientCertificate,
       'clientKey': ?clientKey,
+      'dmsManaged': ?dmsManaged,
       'dumpFilePath': ?dumpFilePath,
       'hostPort': ?hostPort,
       'kind': ?kind,
@@ -9776,6 +9928,10 @@ class Operation {
   /// - "CREATE_READ_POOL" : Creates a Cloud SQL read pool instance.
   /// - "PRE_CHECK_MAJOR_VERSION_UPGRADE" : Pre-checks for major version
   /// upgrade.
+  /// - "SETUP_MIGRATION" : This operation type represents individual steps in a
+  /// multi-step setup migration workflow: including configuration, replication,
+  /// switchover/back, and data reseeding, as defined by operation's intent.
+  /// - "AGENT_SEND_MESSAGE" : Sends a message to a Cloud SQL agent.
   core.String? operationType;
 
   /// The context for pre-check major version upgrade operation, if applicable.
@@ -10169,77 +10325,203 @@ class PerformDiskShrinkContext {
   }
 }
 
-/// Performance Capture configuration.
+/// Performance capture configuration.
 class PerformanceCaptureConfig {
-  /// Enable or disable the Performance Capture.
+  /// Specifies the minimum percentage of CPU utilization to trigger the
+  /// performance capture.
+  ///
+  /// Valid integers range from `10` to `99`. Enter `0` to disable the check.
+  ///
+  /// Optional.
+  core.int? cpuUtilizationThresholdPercent;
+
+  /// Enables or disables the performance capture feature.
   ///
   /// Optional.
   core.bool? enabled;
 
-  /// The minimum number of consecutive readings above threshold that triggers
-  /// instance state capture.
+  /// Specifies the minimum number of undo log entries in the history list
+  /// length to trigger the performance capture.
+  ///
+  /// Valid integers range from `10000` to `10000000`. Enter `0` to disable the
+  /// check.
+  ///
+  /// Optional.
+  core.int? historyListLengthThresholdCount;
+
+  /// Specifies the minimum percentage of memory usage to trigger the
+  /// performance capture.
+  ///
+  /// Valid integers range from `10` to `99`. Enter `0` to disable the check.
+  ///
+  /// Optional.
+  core.int? memoryUsageThresholdPercent;
+
+  /// Specifies the minimum number of consecutive probe threshold that triggers
+  /// performance capture.
   ///
   /// Optional.
   core.int? probeThreshold;
 
-  /// The time interval in seconds between any two probes.
+  /// Specifies the interval in seconds between consecutive probes that check if
+  /// any trigger condition thresholds have been reached.
   ///
   /// Optional.
   core.int? probingIntervalSeconds;
 
-  /// The minimum number of server threads running to trigger the capture on
-  /// primary.
+  /// Specifies the minimum number of MySQL `Threads_running` to trigger the
+  /// performance capture on the primary instance.
   ///
   /// Optional.
   core.int? runningThreadsThreshold;
 
-  /// The minimum number of seconds replica must be lagging behind primary to
-  /// trigger capture on replica.
+  /// Specifies the minimum number of seconds replica must be lagging behind
+  /// primary instance to trigger the performance capture on replica.
   ///
   /// Optional.
   core.int? secondsBehindSourceThreshold;
 
-  /// The amount of time in seconds that a transaction needs to have been open
-  /// before the watcher starts recording it.
+  /// Specifies the minimum allowed number of semaphore waits to trigger the
+  /// performance capture.
+  ///
+  /// Valid integers range from `10` to `10000`. Enter `0` to disable the check.
+  ///
+  /// Optional.
+  core.int? semaphoreWaitThresholdCount;
+
+  /// Specifies the amount of time in seconds that a transaction needs to have
+  /// been open before the watcher starts recording it.
   ///
   /// Optional.
   core.int? transactionDurationThreshold;
 
+  /// Specifies a customer-defined list of users to exclude from transaction
+  /// termination.
+  ///
+  /// Entries can be in the format 'user@host' or just 'user'. A standalone
+  /// 'user' implies 'user@%', excluding the user from any host. Wildcard '%' is
+  /// allowed in the host part of the 'user@host' format. Example: `["app_user",
+  /// "db_admin@10.1.2.3", "report_user@%"]`
+  ///
+  /// Optional.
+  core.List<core.String>? transactionKillExcludedUserHosts;
+
+  /// Specifies the amount of time in seconds that a transaction needs to have
+  /// been open before the watcher starts terminating it.
+  ///
+  /// Valid integers range from `60` to `604800` (7 days). Enter `0` to disable.
+  /// If enabled (i.e., \> 0), this value must be greater than or equal to
+  /// `transaction_duration_threshold`. Configurations where `0 <
+  /// transaction_kill_threshold_seconds < transaction_duration_threshold` will
+  /// be rejected.
+  ///
+  /// Optional.
+  core.int? transactionKillThresholdSeconds;
+
+  /// Determines which transactions are allowed to be terminated when they
+  /// exceed `transaction_kill_threshold_seconds`.
+  ///
+  /// This allows protecting write-heavy transactions from auto-termination if
+  /// desired. Defaults to `READ_ONLY_TRANSACTIONS` if unspecified.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRANSACTION_KILL_TYPE_UNSPECIFIED" : Unspecified.
+  /// - "READ_ONLY_TRANSACTIONS" : Only read-only transactions are eligible for
+  /// termination.
+  /// - "ALL_TRANSACTIONS" : All transactions are eligible for termination,
+  /// including those with write operations (such as INSERT, UPDATE, DELETE, or
+  /// DDL).
+  core.String? transactionKillType;
+
+  /// Specifies the minimum allowed number of transactions in lock wait state to
+  /// trigger the performance capture.
+  ///
+  /// Valid integers range from `10` to `10000`. Enter `0` to disable the check.
+  ///
+  /// Optional.
+  core.int? transactionLockWaitThresholdCount;
+
   PerformanceCaptureConfig({
+    this.cpuUtilizationThresholdPercent,
     this.enabled,
+    this.historyListLengthThresholdCount,
+    this.memoryUsageThresholdPercent,
     this.probeThreshold,
     this.probingIntervalSeconds,
     this.runningThreadsThreshold,
     this.secondsBehindSourceThreshold,
+    this.semaphoreWaitThresholdCount,
     this.transactionDurationThreshold,
+    this.transactionKillExcludedUserHosts,
+    this.transactionKillThresholdSeconds,
+    this.transactionKillType,
+    this.transactionLockWaitThresholdCount,
   });
 
   PerformanceCaptureConfig.fromJson(core.Map json_)
     : this(
+        cpuUtilizationThresholdPercent:
+            json_['cpuUtilizationThresholdPercent'] as core.int?,
         enabled: json_['enabled'] as core.bool?,
+        historyListLengthThresholdCount:
+            json_['historyListLengthThresholdCount'] as core.int?,
+        memoryUsageThresholdPercent:
+            json_['memoryUsageThresholdPercent'] as core.int?,
         probeThreshold: json_['probeThreshold'] as core.int?,
         probingIntervalSeconds: json_['probingIntervalSeconds'] as core.int?,
         runningThreadsThreshold: json_['runningThreadsThreshold'] as core.int?,
         secondsBehindSourceThreshold:
             json_['secondsBehindSourceThreshold'] as core.int?,
+        semaphoreWaitThresholdCount:
+            json_['semaphoreWaitThresholdCount'] as core.int?,
         transactionDurationThreshold:
             json_['transactionDurationThreshold'] as core.int?,
+        transactionKillExcludedUserHosts:
+            (json_['transactionKillExcludedUserHosts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        transactionKillThresholdSeconds:
+            json_['transactionKillThresholdSeconds'] as core.int?,
+        transactionKillType: json_['transactionKillType'] as core.String?,
+        transactionLockWaitThresholdCount:
+            json_['transactionLockWaitThresholdCount'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final cpuUtilizationThresholdPercent = this.cpuUtilizationThresholdPercent;
     final enabled = this.enabled;
+    final historyListLengthThresholdCount =
+        this.historyListLengthThresholdCount;
+    final memoryUsageThresholdPercent = this.memoryUsageThresholdPercent;
     final probeThreshold = this.probeThreshold;
     final probingIntervalSeconds = this.probingIntervalSeconds;
     final runningThreadsThreshold = this.runningThreadsThreshold;
     final secondsBehindSourceThreshold = this.secondsBehindSourceThreshold;
+    final semaphoreWaitThresholdCount = this.semaphoreWaitThresholdCount;
     final transactionDurationThreshold = this.transactionDurationThreshold;
+    final transactionKillExcludedUserHosts =
+        this.transactionKillExcludedUserHosts;
+    final transactionKillThresholdSeconds =
+        this.transactionKillThresholdSeconds;
+    final transactionKillType = this.transactionKillType;
+    final transactionLockWaitThresholdCount =
+        this.transactionLockWaitThresholdCount;
     return {
+      'cpuUtilizationThresholdPercent': ?cpuUtilizationThresholdPercent,
       'enabled': ?enabled,
+      'historyListLengthThresholdCount': ?historyListLengthThresholdCount,
+      'memoryUsageThresholdPercent': ?memoryUsageThresholdPercent,
       'probeThreshold': ?probeThreshold,
       'probingIntervalSeconds': ?probingIntervalSeconds,
       'runningThreadsThreshold': ?runningThreadsThreshold,
       'secondsBehindSourceThreshold': ?secondsBehindSourceThreshold,
+      'semaphoreWaitThresholdCount': ?semaphoreWaitThresholdCount,
       'transactionDurationThreshold': ?transactionDurationThreshold,
+      'transactionKillExcludedUserHosts': ?transactionKillExcludedUserHosts,
+      'transactionKillThresholdSeconds': ?transactionKillThresholdSeconds,
+      'transactionKillType': ?transactionKillType,
+      'transactionLockWaitThresholdCount': ?transactionLockWaitThresholdCount,
     };
   }
 }
@@ -10591,6 +10873,8 @@ class PreCheckMajorVersionUpgradeContext {
   /// - "POSTGRES_16" : The database version is PostgreSQL 16.
   /// - "POSTGRES_17" : The database version is PostgreSQL 17.
   /// - "POSTGRES_18" : The database version is PostgreSQL 18.
+  /// - "POSTGRES_19" : The database version is PostgreSQL 19.
+  /// - "POSTGRES_20" : The database version is PostgreSQL 20.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -10712,18 +10996,61 @@ class PscAutoConnectionConfig {
   /// Optional.
   core.String? consumerProject;
 
+  /// The status of automated DNS provisioning.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AUTO_DNS_STATUS_UNSPECIFIED" : Unspecified status. This means status is
+  /// missing from dependency service.
+  /// - "AUTO_DNS_OK" : DNS provisioning is OK.
+  /// - "AUTO_DNS_FAILED" : DNS provisioning failed.
+  /// - "AUTO_DNS_UNKNOWN" : DNS provisioning status is not recognized by Cloud
+  /// SQL.
+  core.String? instanceAutoDnsStatus;
+
   /// The IP address of the consumer endpoint.
   core.String? ipAddress;
 
+  /// The service connection policy created automatically for the consumer
+  /// network when `psc_auto_connection_policy_enabled` is true.
+  ///
+  /// It is in the format of:
+  /// `projects/{project}/regions/{region}/serviceConnectionPolicies/{policy_id}`
+  /// The `policy_id` is in format of `$NETWORK-$RANDOM`.
+  ///
+  /// Output only.
+  core.String? serviceConnectionPolicy;
+
+  /// The status of service connection policy creation.
+  ///
+  /// Output only.
+  core.String? serviceConnectionPolicyCreationResult;
+
   /// The connection status of the consumer endpoint.
   core.String? status;
+
+  /// The status of automated DNS provisioning for the write endpoint.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AUTO_DNS_STATUS_UNSPECIFIED" : Unspecified status. This means status is
+  /// missing from dependency service.
+  /// - "AUTO_DNS_OK" : DNS provisioning is OK.
+  /// - "AUTO_DNS_FAILED" : DNS provisioning failed.
+  /// - "AUTO_DNS_UNKNOWN" : DNS provisioning status is not recognized by Cloud
+  /// SQL.
+  core.String? writeEndpointAutoDnsStatus;
 
   PscAutoConnectionConfig({
     this.consumerNetwork,
     this.consumerNetworkStatus,
     this.consumerProject,
+    this.instanceAutoDnsStatus,
     this.ipAddress,
+    this.serviceConnectionPolicy,
+    this.serviceConnectionPolicyCreationResult,
     this.status,
+    this.writeEndpointAutoDnsStatus,
   });
 
   PscAutoConnectionConfig.fromJson(core.Map json_)
@@ -10731,22 +11058,39 @@ class PscAutoConnectionConfig {
         consumerNetwork: json_['consumerNetwork'] as core.String?,
         consumerNetworkStatus: json_['consumerNetworkStatus'] as core.String?,
         consumerProject: json_['consumerProject'] as core.String?,
+        instanceAutoDnsStatus: json_['instanceAutoDnsStatus'] as core.String?,
         ipAddress: json_['ipAddress'] as core.String?,
+        serviceConnectionPolicy:
+            json_['serviceConnectionPolicy'] as core.String?,
+        serviceConnectionPolicyCreationResult:
+            json_['serviceConnectionPolicyCreationResult'] as core.String?,
         status: json_['status'] as core.String?,
+        writeEndpointAutoDnsStatus:
+            json_['writeEndpointAutoDnsStatus'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final consumerNetwork = this.consumerNetwork;
     final consumerNetworkStatus = this.consumerNetworkStatus;
     final consumerProject = this.consumerProject;
+    final instanceAutoDnsStatus = this.instanceAutoDnsStatus;
     final ipAddress = this.ipAddress;
+    final serviceConnectionPolicy = this.serviceConnectionPolicy;
+    final serviceConnectionPolicyCreationResult =
+        this.serviceConnectionPolicyCreationResult;
     final status = this.status;
+    final writeEndpointAutoDnsStatus = this.writeEndpointAutoDnsStatus;
     return {
       'consumerNetwork': ?consumerNetwork,
       'consumerNetworkStatus': ?consumerNetworkStatus,
       'consumerProject': ?consumerProject,
+      'instanceAutoDnsStatus': ?instanceAutoDnsStatus,
       'ipAddress': ?ipAddress,
+      'serviceConnectionPolicy': ?serviceConnectionPolicy,
+      'serviceConnectionPolicyCreationResult':
+          ?serviceConnectionPolicyCreationResult,
       'status': ?status,
+      'writeEndpointAutoDnsStatus': ?writeEndpointAutoDnsStatus,
     };
   }
 }
@@ -10772,18 +11116,24 @@ class PscConfig {
   /// Optional.
   core.String? networkAttachmentUri;
 
+  /// Whether to set up the PSC service connection policy automatically.
+  ///
+  /// Optional.
+  core.bool? pscAutoConnectionPolicyEnabled;
+
   /// The list of settings for requested Private Service Connect consumer
   /// endpoints that can be used to connect to this Cloud SQL instance.
   ///
   /// Optional.
   core.List<PscAutoConnectionConfig>? pscAutoConnections;
 
-  /// Indicates whether PSC DNS automation is enabled for this instance.
+  /// Indicates whether Private Service Connect DNS automation is enabled for
+  /// this instance.
   ///
   /// When enabled, Cloud SQL provisions a universal DNS record across all
-  /// networks configured with Private Service Connect (PSC) auto-connections.
-  /// This will default to true for new instances when Private Service Connect
-  /// is enabled.
+  /// networks configured with Private Service Connect auto-connections. This
+  /// will default to true for new instances when Private Service Connect is
+  /// enabled.
   ///
   /// Optional.
   core.bool? pscAutoDnsEnabled;
@@ -10791,15 +11141,14 @@ class PscConfig {
   /// Whether PSC connectivity is enabled for this instance.
   core.bool? pscEnabled;
 
-  /// Indicates whether PSC write endpoint DNS automation is enabled for this
-  /// instance.
+  /// Indicates whether Private Service Connect write endpoint DNS automation is
+  /// enabled for this instance.
   ///
   /// When enabled, Cloud SQL provisions a universal global DNS record across
-  /// all networks configured with Private Service Connect (PSC)
-  /// auto-connections that always points to the cluster primary instance. This
-  /// feature is only supported for Enterprise Plus edition. This will default
-  /// to true for new enterprise plus instances when `psc_auto_dns_enabled` is
-  /// enabled.
+  /// all networks configured with Private Service Connect auto-connections that
+  /// points to the cluster primary instance. This feature is only supported for
+  /// Enterprise Plus edition. This will default to true for new enterprise plus
+  /// instances when `psc_auto_dns_enabled` is enabled.
   ///
   /// Optional.
   core.bool? pscWriteEndpointDnsEnabled;
@@ -10807,6 +11156,7 @@ class PscConfig {
   PscConfig({
     this.allowedConsumerProjects,
     this.networkAttachmentUri,
+    this.pscAutoConnectionPolicyEnabled,
     this.pscAutoConnections,
     this.pscAutoDnsEnabled,
     this.pscEnabled,
@@ -10820,6 +11170,8 @@ class PscConfig {
                 ?.map((value) => value as core.String)
                 .toList(),
         networkAttachmentUri: json_['networkAttachmentUri'] as core.String?,
+        pscAutoConnectionPolicyEnabled:
+            json_['pscAutoConnectionPolicyEnabled'] as core.bool?,
         pscAutoConnections: (json_['pscAutoConnections'] as core.List?)
             ?.map(
               (value) => PscAutoConnectionConfig.fromJson(
@@ -10836,6 +11188,7 @@ class PscConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final allowedConsumerProjects = this.allowedConsumerProjects;
     final networkAttachmentUri = this.networkAttachmentUri;
+    final pscAutoConnectionPolicyEnabled = this.pscAutoConnectionPolicyEnabled;
     final pscAutoConnections = this.pscAutoConnections;
     final pscAutoDnsEnabled = this.pscAutoDnsEnabled;
     final pscEnabled = this.pscEnabled;
@@ -10843,6 +11196,7 @@ class PscConfig {
     return {
       'allowedConsumerProjects': ?allowedConsumerProjects,
       'networkAttachmentUri': ?networkAttachmentUri,
+      'pscAutoConnectionPolicyEnabled': ?pscAutoConnectionPolicyEnabled,
       'pscAutoConnections': ?pscAutoConnections,
       'pscAutoDnsEnabled': ?pscAutoDnsEnabled,
       'pscEnabled': ?pscEnabled,
@@ -11491,13 +11845,14 @@ class Settings {
   /// Deny maintenance periods
   core.List<DenyMaintenancePeriod>? denyMaintenancePeriods;
 
-  /// The edition of the instance.
+  /// The edition type of the Cloud SQL instance.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "EDITION_UNSPECIFIED" : The instance did not specify the edition.
   /// - "ENTERPRISE" : The instance is an enterprise edition.
   /// - "ENTERPRISE_PLUS" : The instance is an Enterprise Plus edition.
+  /// - "DEVELOPER" : This instance is a Cloud SQL developer edition instance.
   core.String? edition;
 
   /// By default, Cloud SQL instances have schema extraction disabled for
@@ -13356,6 +13711,11 @@ class User {
   /// The Google apps domain is prefixed if applicable. Can be omitted for
   /// *update* because it is already specified on the URL.
   core.String? project;
+
+  /// The server roles for the SQL Server login.
+  ///
+  /// Optional.
+  core.List<core.String>? serverRoles;
   SqlServerUserDetails? sqlserverUserDetails;
 
   /// The user type.
@@ -13371,6 +13731,8 @@ class User {
   /// Cloud IAM group.
   /// - "CLOUD_IAM_GROUP_SERVICE_ACCOUNT" : Read-only. Login for a service
   /// account that belongs to the Cloud IAM group.
+  /// - "CLOUD_IAM_WORKFORCE_IDENTITY" : Cloud IAM workforce identity user
+  /// managed via workforce identity federation.
   /// - "ENTRAID_USER" : Microsoft Entra ID user.
   core.String? type;
 
@@ -13387,6 +13749,7 @@ class User {
     this.password,
     this.passwordPolicy,
     this.project,
+    this.serverRoles,
     this.sqlserverUserDetails,
     this.type,
   });
@@ -13411,6 +13774,9 @@ class User {
               )
             : null,
         project: json_['project'] as core.String?,
+        serverRoles: (json_['serverRoles'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         sqlserverUserDetails: json_.containsKey('sqlserverUserDetails')
             ? SqlServerUserDetails.fromJson(
                 json_['sqlserverUserDetails']
@@ -13433,6 +13799,7 @@ class User {
     final password = this.password;
     final passwordPolicy = this.passwordPolicy;
     final project = this.project;
+    final serverRoles = this.serverRoles;
     final sqlserverUserDetails = this.sqlserverUserDetails;
     final type = this.type;
     return {
@@ -13448,6 +13815,7 @@ class User {
       'password': ?password,
       'passwordPolicy': ?passwordPolicy,
       'project': ?project,
+      'serverRoles': ?serverRoles,
       'sqlserverUserDetails': ?sqlserverUserDetails,
       'type': ?type,
     };

@@ -580,11 +580,15 @@ class DataSource {
 /// Data source reference can be used to manage related data sources within the
 /// data source service.
 class DataSourceReference {
-  /// The name of the primary data source.
+  /// Deprecated: Use `self` instead to reference the primary data source.
   ///
-  /// Format: `accounts/{account}/dataSources/{datasource}`
+  /// The name of the primary data source. Format:
+  /// `accounts/{account}/dataSources/{datasource}`
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? primaryDataSourceName;
 
   /// Self should be used to reference the primary data source itself.
@@ -637,7 +641,11 @@ class DefaultRule {
   /// will result in changing the priority of data sources in the default rule.
   /// For example, providing the following list: \[`1001`, `self`\] will take
   /// attribute values from supplemental data source `1001`, and fallback to
-  /// `self` if the attribute is not set in `1001`.
+  /// `self` if the attribute is not set in `1001`. Warning: The update (patch)
+  /// and create call replaces the entire default rule setup. It doesn't work as
+  /// an addition or append. If `self` is missing from the list of
+  /// `take_from_data_sources`, the API will ignore attributes from the primary
+  /// data source itself.
   ///
   /// Required.
   core.List<DataSourceReference>? takeFromDataSources;
@@ -1189,7 +1197,11 @@ class PrimaryProductDataSource {
 
   /// Default rule management of the data source.
   ///
-  /// If set, the linked data sources will be replaced.
+  /// If set, the linked data sources will be replaced. Warning: The update
+  /// (patch) and create call replaces the entire default rule setup. It doesn't
+  /// work as an addition or append. If `self` is missing from the list of
+  /// `take_from_data_sources`, the API will ignore attributes from the primary
+  /// data source itself.
   ///
   /// Optional.
   DefaultRule? defaultRule;

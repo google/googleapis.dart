@@ -165,8 +165,10 @@ This https://example.com/\[this_is_not\]/''',
     for (var entry in {
       '{@code Foo}': '`Foo`',
       '{@code Foo_Bar}': '`Foo_Bar`',
-      '{@code Foo1}': '{@code Foo1}', // Numbers not supported per spec
-      '{@code foo bar}': '{@code foo bar}', // Spaces not supported
+      '{@code Foo1}': '`Foo1`',
+      '{@code GoogleAdsService.SearchGoogleAdsRequest}':
+          '`GoogleAdsService.SearchGoogleAdsRequest`',
+      '{@code foo bar}': '`foo bar`',
     }.entries) {
       test(entry.key, () {
         expect(Comment(entry.key).rawComment, entry.value);

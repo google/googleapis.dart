@@ -52,6 +52,7 @@
 ///     - [AdvertisersLocationListsAssignedLocationsResource]
 ///   - [AdvertisersNegativeKeywordListsResource]
 ///     - [AdvertisersNegativeKeywordListsNegativeKeywordsResource]
+///   - [AdvertisersReachForecastResource]
 ///   - [AdvertisersTargetingTypesResource]
 ///     - [AdvertisersTargetingTypesAssignedTargetingOptionsResource]
 /// - [CombinedAudiencesResource]
@@ -194,6 +195,8 @@ class AdvertisersResource {
       AdvertisersLocationListsResource(_requester);
   AdvertisersNegativeKeywordListsResource get negativeKeywordLists =>
       AdvertisersNegativeKeywordListsResource(_requester);
+  AdvertisersReachForecastResource get reachForecast =>
+      AdvertisersReachForecastResource(_requester);
   AdvertisersTargetingTypesResource get targetingTypes =>
       AdvertisersTargetingTypesResource(_requester);
 
@@ -847,6 +850,65 @@ class AdvertisersAdAssetsResource {
     );
   }
 
+  /// Updates an ad asset.
+  ///
+  /// Returns the updated ad asset if successful. Supports updating assets of
+  /// AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO` and `AD_ASSET_TYPE_IMAGE`. Only
+  /// the AdAsset.synthetic_content_attestation_status field is mutable.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser this ad asset belongs
+  /// to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [adAssetId] - Output only. The ID of the ad asset. Referred to as the
+  /// asset ID when assigned to an ad.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update. Only
+  /// AdAsset.synthetic_content_attestation_status is mutable.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdAsset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdAsset> patch(
+    AdAsset request,
+    core.String advertiserId,
+    core.String adAssetId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/adAssets/' +
+        core.Uri.encodeFull('$adAssetId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AdAsset.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Uploads and creates an ad asset.
   ///
   /// Returns the ID of the newly-created ad asset if successful. Only supports
@@ -918,9 +980,7 @@ class AdvertisersAdGroupAdsResource {
 
   /// Creates an ad group ad.
   ///
-  /// This method is only supported for Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This method is only
-  /// available to allowlisted users.
+  /// This method is only supported for Demand Gen ads.
   ///
   /// [request] - The metadata request object.
   ///
@@ -966,9 +1026,7 @@ class AdvertisersAdGroupAdsResource {
 
   /// Deletes an ad group ad.
   ///
-  /// This method is only supported for Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This method is only
-  /// available to allowlisted users.
+  /// This method is only supported for Demand Gen ads.
   ///
   /// Request parameters:
   ///
@@ -1135,9 +1193,7 @@ class AdvertisersAdGroupAdsResource {
 
   /// Updates an ad group ad.
   ///
-  /// This method is only supported for Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This method is only
-  /// available to allowlisted users.
+  /// This method is only supported for Demand Gen ads.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1211,9 +1267,7 @@ class AdvertisersAdGroupsResource {
   /// BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each
   /// ad group, and then create the assigned targeting options provided in
   /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This
-  /// method is only supported for Demand Gen ad groups. Retrieval and
-  /// management of Demand Gen resources is currently in beta. This method is
-  /// only available to allowlisted users.
+  /// method is only supported for Demand Gen ad groups.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1349,9 +1403,7 @@ class AdvertisersAdGroupsResource {
   /// Creates a new ad group.
   ///
   /// Returns the newly created ad group if successful. This method is only
-  /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen
-  /// resources is currently in beta. This method is only available to
-  /// allowlisted users.
+  /// supported for Demand Gen ad groups.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1396,9 +1448,7 @@ class AdvertisersAdGroupsResource {
   /// Deletes a AdGroup.
   ///
   /// Returns error code `NOT_FOUND` if the ad group does not exist. This method
-  /// is only supported for Demand Gen ad groups. Retrieval and management of
-  /// Demand Gen resources is currently in beta. This method is only available
-  /// to allowlisted users.
+  /// is only supported for Demand Gen ad groups.
   ///
   /// Request parameters:
   ///
@@ -1566,8 +1616,7 @@ class AdvertisersAdGroupsResource {
   /// Updates an existing ad group.
   ///
   /// Returns the updated ad group if successful. This method is only supported
-  /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources
-  /// is currently in beta. This method is only available to allowlisted users.
+  /// for Demand Gen ad groups.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1645,9 +1694,7 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// Assigns a targeting option to an ad group.
   ///
   /// Returns the assigned targeting option if successful. This method is only
-  /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen
-  /// resources is currently in beta. This method is only available to
-  /// allowlisted users.
+  /// supported for Demand Gen ad groups.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1785,6 +1832,8 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1831,9 +1880,7 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// Deletes an assigned targeting option from an ad group.
   ///
   /// This method is only supported for Demand Gen ad groups with the
-  /// AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of
-  /// Demand Gen resources is currently in beta. This method is only available
-  /// to allowlisted users.
+  /// AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`.
   ///
   /// Request parameters:
   ///
@@ -1969,6 +2016,8 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -2151,6 +2200,8 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -2337,6 +2388,8 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Optional. Allows filtering by assigned targeting option fields.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -5041,6 +5094,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5244,6 +5299,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -5446,6 +5503,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -5652,6 +5711,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -7040,6 +7101,284 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
   }
 }
 
+class AdvertisersReachForecastResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersReachForecastResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Generates a reach forecast for a given advertiser and targeting
+  /// configuration.
+  ///
+  /// API support for generating reach forecasts and retrieving related metadata
+  /// is in beta. This method is only available to allowlisted users.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser that will run the
+  /// planned campaign.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateReachForecastResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateReachForecastResponse> generateReachForecast(
+    GenerateReachForecastRequest request,
+    core.String advertiserId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/reachForecast:generateReachForecast';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenerateReachForecastResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves the list of countries where reach forecasting is supported.
+  ///
+  /// API support for generating reach forecasts and retrieving related metadata
+  /// is in beta. This method is only available to allowlisted users.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser to list plannable
+  /// locations for.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrievePlannableLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrievePlannableLocationsResponse> retrievePlannableLocations(
+    core.String advertiserId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/reachForecast:retrievePlannableLocations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetrievePlannableLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves the list of products that can be planned for a location.
+  ///
+  /// API support for generating reach forecasts and retrieving related metadata
+  /// is in beta. This method is only available to allowlisted users.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser to list plannable
+  /// products for.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [plannableLocationId] - Required. The ID of the plannable location.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrievePlannableProductsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrievePlannableProductsResponse> retrievePlannableProducts(
+    core.String advertiserId, {
+    core.String? plannableLocationId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'plannableLocationId': ?plannableLocationId == null
+          ? null
+          : [plannableLocationId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/reachForecast:retrievePlannableProducts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetrievePlannableProductsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves Google Audiences (User Interests) available for forecasting.
+  ///
+  /// API support for generating reach forecasts and retrieving related metadata
+  /// is in beta. This method is only available to allowlisted users.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser to list plannable user
+  /// interests for.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [productCategory] - Required. The product category to retrieve plannable
+  /// user interests for.
+  /// Possible string values are:
+  /// - "PLANNABLE_PRODUCT_CATEGORY_UNSPECIFIED" : Not specified.
+  /// - "YOUTUBE" : YouTube.
+  /// - "OPEN_AUCTION" : Open Auction.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrievePlannableUserInterestsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrievePlannableUserInterestsResponse>
+  retrievePlannableUserInterests(
+    core.String advertiserId, {
+    core.String? productCategory,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'productCategory': ?productCategory == null ? null : [productCategory],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/reachForecast:retrievePlannableUserInterests';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetrievePlannableUserInterestsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves first and third party user lists available for forecasting.
+  ///
+  /// API support for generating reach forecasts and retrieving related metadata
+  /// is in beta. This method is only available to allowlisted users.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser to retrieve plannable
+  /// user lists for.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Allows filtering by plannable user list properties.
+  /// Supported syntax: * Filter expressions are made up of one or more
+  /// restrictions. * Restrictions can be combined by `AND` or `OR` logical
+  /// operators. * A restriction has the form of `{field} {operator} {value}`. *
+  /// The `displayName` field must use the `HAS (:)` operator. * All other
+  /// fields must use the `EQUALS (=)` operator. Supported fields: *
+  /// `plannableStatus` * `displayName` * `userListType` * `name` Examples: *
+  /// All plannable user lists: `plannableStatus="PLANNABLE"` * Plannable user
+  /// lists with display name containing "Shopping":
+  /// `plannableStatus="PLANNABLE" AND displayName:"Shopping"` * First party
+  /// user lists: `userListType="FIRST_PARTY"` The length of this field should
+  /// be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
+  ///
+  /// [pageSize] - Optional. Requested page size. Must be between `1` and
+  /// `5000`. If unspecified will default to `5000`.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. Typically, this is the value of next_page_token returned
+  /// from the previous call to `RetrievePlannableUserLists` method. If not
+  /// specified, the first page of results will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrievePlannableUserListsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrievePlannableUserListsResponse> retrievePlannableUserLists(
+    core.String advertiserId, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v4/advertisers/' +
+        core.Uri.encodeFull('$advertiserId') +
+        '/reachForecast:retrievePlannableUserLists';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetrievePlannableUserListsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class AdvertisersTargetingTypesResource {
   final commons.ApiRequester _requester;
 
@@ -7188,6 +7527,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7354,6 +7695,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -7523,6 +7866,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this advertiser that identifies the assigned targeting
@@ -7695,6 +8040,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -11538,6 +11885,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11702,6 +12051,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -11867,6 +12218,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this partner that identifies the assigned targeting
@@ -12035,6 +12388,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -12401,6 +12756,8 @@ class TargetingTypesTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [targetingOptionId] - Required. The ID of the of targeting option to
   /// retrieve.
@@ -12582,6 +12939,8 @@ class TargetingTypesTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
@@ -12785,6 +13144,8 @@ class TargetingTypesTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13187,6 +13548,17 @@ class AdAsset {
   /// The resource name of the ad asset.
   core.String? name;
 
+  /// Whether to add a label to the asset as created or edited using AI when
+  /// served in regions with local AI labeling regulations.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED" : No attestation has
+  /// been provided.
+  /// - "NOT_SYNTHETIC" : Attested as not created or edited using AI.
+  /// - "IS_SYNTHETIC" : Attested as created or edited using AI.
+  core.String? syntheticContentAttestationStatus;
+
   /// Youtube video asset data.
   YoutubeVideoAsset? youtubeVideoAsset;
 
@@ -13195,6 +13567,7 @@ class AdAsset {
     this.adAssetType,
     this.entityStatus,
     this.name,
+    this.syntheticContentAttestationStatus,
     this.youtubeVideoAsset,
   });
 
@@ -13204,6 +13577,8 @@ class AdAsset {
         adAssetType: json_['adAssetType'] as core.String?,
         entityStatus: json_['entityStatus'] as core.String?,
         name: json_['name'] as core.String?,
+        syntheticContentAttestationStatus:
+            json_['syntheticContentAttestationStatus'] as core.String?,
         youtubeVideoAsset: json_.containsKey('youtubeVideoAsset')
             ? YoutubeVideoAsset.fromJson(
                 json_['youtubeVideoAsset']
@@ -13217,12 +13592,15 @@ class AdAsset {
     final adAssetType = this.adAssetType;
     final entityStatus = this.entityStatus;
     final name = this.name;
+    final syntheticContentAttestationStatus =
+        this.syntheticContentAttestationStatus;
     final youtubeVideoAsset = this.youtubeVideoAsset;
     return {
       'adAssetId': ?adAssetId,
       'adAssetType': ?adAssetType,
       'entityStatus': ?entityStatus,
       'name': ?name,
+      'syntheticContentAttestationStatus': ?syntheticContentAttestationStatus,
       'youtubeVideoAsset': ?youtubeVideoAsset,
     };
   }
@@ -13247,9 +13625,7 @@ class AdGroup {
   /// including in-stream and bumper ads.
   /// - "AD_GROUP_FORMAT_MASTHEAD" : Masthead Ad that is surfaced on the top
   /// slot on the YouTube homepage.
-  /// - "AD_GROUP_FORMAT_DEMAND_GEN" : Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This enum value is only
-  /// available to allowlisted users.
+  /// - "AD_GROUP_FORMAT_DEMAND_GEN" : Demand Gen ads.
   core.String? adGroupFormat;
 
   /// The unique ID of the ad group.
@@ -13453,38 +13829,25 @@ class AdGroupAd {
   /// The DCM tracking ad info.
   ///
   /// Only valid for Demand Gen ads. To remove the DCM tracking ad info, please
-  /// leave this field empty. Retrieval and management of Demand Gen resources
-  /// is currently in beta. This field is only available to allowlisted users.
+  /// leave this field empty.
   ///
   /// Optional.
   DcmTrackingInfo? dcmTrackingInfo;
 
   /// Details of a \[Demand Gen carousel
   /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#CarouselAd).
-  ///
-  /// Retrieval and management of Demand Gen resources is currently in beta.
-  /// This field is only available to allowlisted users.
   DemandGenCarouselAd? demandGenCarouselAd;
 
   /// Details of a \[Demand Gen image
   /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#ImageAd).
-  ///
-  /// Retrieval and management of Demand Gen resources is currently in beta.
-  /// This field is only available to allowlisted users.
   DemandGenImageAd? demandGenImageAd;
 
   /// Details of a \[Demand Gen product
   /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#Product-onlyAd).
-  ///
-  /// Retrieval and management of Demand Gen resources is currently in beta.
-  /// This field is only available to allowlisted users.
   DemandGenProductAd? demandGenProductAd;
 
   /// Details of a \[Demand Gen video
   /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#VideoAd).
-  ///
-  /// Retrieval and management of Demand Gen resources is currently in beta.
-  /// This field is only available to allowlisted users.
   DemandGenVideoAd? demandGenVideoAd;
 
   /// The display name of the ad.
@@ -14436,7 +14799,7 @@ class AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry {
 }
 
 /// A list of fragments of text that violated the policy.
-typedef AdPolicyTopicEvidenceTextList = $AdPolicyTopicEvidenceTextList;
+typedef AdPolicyTopicEvidenceTextList = $TextList;
 
 /// Trademark terms that caused a policy violation.
 class AdPolicyTopicEvidenceTrademark {
@@ -14481,13 +14844,214 @@ class AdPolicyTopicEvidenceTrademark {
 }
 
 /// A list of websites that violated the policy.
-typedef AdPolicyTopicEvidenceWebsiteList = $AdPolicyTopicEvidenceWebsiteList;
+typedef AdPolicyTopicEvidenceWebsiteList = $WebsiteList;
 
 /// Additional URLs related to the ad, including beacons.
 typedef AdUrl = $AdUrl;
 
 /// Details of Scope3 (previously known as Adloox) brand safety settings.
 typedef Adloox = $Adloox;
+
+/// Product-specific targeting overrides.
+class AdvancedProductTargeting {
+  /// The age range to target.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PLANNABLE_AGE_RANGE_UNSPECIFIED" : Not specified.
+  /// - "PLANNABLE_AGE_RANGE_18_24" : 18 to 24 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_34" : 18 to 34 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_44" : 18 to 44 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_49" : 18 to 49 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_54" : 18 to 54 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_64" : 18 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_65_UP" : 18 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_21_34" : 21 to 34 years old.
+  /// - "PLANNABLE_AGE_RANGE_21_44" : 21 to 44 years old.
+  /// - "PLANNABLE_AGE_RANGE_21_49" : 21 to 49 years old.
+  /// - "PLANNABLE_AGE_RANGE_21_54" : 21 to 54 years old.
+  /// - "PLANNABLE_AGE_RANGE_21_64" : 21 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_21_65_UP" : 21 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_25_34" : 25 to 34 years old.
+  /// - "PLANNABLE_AGE_RANGE_25_44" : 25 to 44 years old.
+  /// - "PLANNABLE_AGE_RANGE_25_49" : 25 to 49 years old.
+  /// - "PLANNABLE_AGE_RANGE_25_54" : 25 to 54 years old.
+  /// - "PLANNABLE_AGE_RANGE_25_64" : 25 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_25_65_UP" : 25 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_35_44" : 35 to 44 years old.
+  /// - "PLANNABLE_AGE_RANGE_35_49" : 35 to 49 years old.
+  /// - "PLANNABLE_AGE_RANGE_35_54" : 35 to 54 years old.
+  /// - "PLANNABLE_AGE_RANGE_35_64" : 35 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_35_65_UP" : 35 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_45_54" : 45 to 54 years old.
+  /// - "PLANNABLE_AGE_RANGE_45_64" : 45 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_45_65_UP" : 45 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_50_65_UP" : 50 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_55_64" : 55 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_55_65_UP" : 55 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_65_UP" : 65+ years old.
+  core.String? ageRange;
+
+  /// The date range to target.
+  ///
+  /// Optional.
+  DateRange? dateRange;
+
+  /// The devices to target.
+  ///
+  /// Optional.
+  core.List<core.String>? devices;
+
+  /// The frequency cap for the specific product.
+  ///
+  /// Optional.
+  FrequencyCap? frequencyCap;
+
+  /// The gender options to target.
+  ///
+  /// Optional.
+  core.List<core.String>? genders;
+
+  /// The network to target.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PLANNABLE_NETWORK_UNSPECIFIED" : Not specified.
+  /// - "PLANNABLE_NETWORK_YOUTUBE" : YouTube.
+  /// - "PLANNABLE_NETWORK_GOOGLE_VIDEO_PARTNERS" : Google Video Partners.
+  /// - "PLANNABLE_NETWORK_YOUTUBE_AND_GOOGLE_VIDEO_PARTNERS" : YouTube and
+  /// Google Video Partners.
+  core.String? network;
+
+  /// Plannable location IDs to target.
+  ///
+  /// Optional.
+  core.List<core.String>? plannableLocationIds;
+
+  /// Plannable surfaces to target.
+  ///
+  /// Optional.
+  SurfaceTargetingSettings? surfaceTargetingSettings;
+
+  /// The average number of times the ads will show to the same person over a
+  /// certain period of time.
+  ///
+  /// Optional.
+  TargetFrequency? targetFrequency;
+
+  /// The user interest IDs to target.
+  ///
+  /// Plannable user interests can be retrieved using the
+  /// `RetrievePlannableUserInterests` method.
+  ///
+  /// Optional.
+  core.List<core.String>? userInterestIds;
+
+  /// The user list IDs to target.
+  ///
+  /// Plannable user lists can be retrieved using the
+  /// `RetrievePlannableUserInterests` method.
+  ///
+  /// Optional.
+  core.List<core.String>? userListIds;
+
+  /// YouTube Select settings.
+  ///
+  /// Optional.
+  YouTubeSelectSettings? youtubeSelectSettings;
+
+  AdvancedProductTargeting({
+    this.ageRange,
+    this.dateRange,
+    this.devices,
+    this.frequencyCap,
+    this.genders,
+    this.network,
+    this.plannableLocationIds,
+    this.surfaceTargetingSettings,
+    this.targetFrequency,
+    this.userInterestIds,
+    this.userListIds,
+    this.youtubeSelectSettings,
+  });
+
+  AdvancedProductTargeting.fromJson(core.Map json_)
+    : this(
+        ageRange: json_['ageRange'] as core.String?,
+        dateRange: json_.containsKey('dateRange')
+            ? DateRange.fromJson(
+                json_['dateRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        devices: (json_['devices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        frequencyCap: json_.containsKey('frequencyCap')
+            ? FrequencyCap.fromJson(
+                json_['frequencyCap'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        genders: (json_['genders'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        network: json_['network'] as core.String?,
+        plannableLocationIds: (json_['plannableLocationIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        surfaceTargetingSettings: json_.containsKey('surfaceTargetingSettings')
+            ? SurfaceTargetingSettings.fromJson(
+                json_['surfaceTargetingSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        targetFrequency: json_.containsKey('targetFrequency')
+            ? TargetFrequency.fromJson(
+                json_['targetFrequency'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userInterestIds: (json_['userInterestIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        userListIds: (json_['userListIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        youtubeSelectSettings: json_.containsKey('youtubeSelectSettings')
+            ? YouTubeSelectSettings.fromJson(
+                json_['youtubeSelectSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ageRange = this.ageRange;
+    final dateRange = this.dateRange;
+    final devices = this.devices;
+    final frequencyCap = this.frequencyCap;
+    final genders = this.genders;
+    final network = this.network;
+    final plannableLocationIds = this.plannableLocationIds;
+    final surfaceTargetingSettings = this.surfaceTargetingSettings;
+    final targetFrequency = this.targetFrequency;
+    final userInterestIds = this.userInterestIds;
+    final userListIds = this.userListIds;
+    final youtubeSelectSettings = this.youtubeSelectSettings;
+    return {
+      'ageRange': ?ageRange,
+      'dateRange': ?dateRange,
+      'devices': ?devices,
+      'frequencyCap': ?frequencyCap,
+      'genders': ?genders,
+      'network': ?network,
+      'plannableLocationIds': ?plannableLocationIds,
+      'surfaceTargetingSettings': ?surfaceTargetingSettings,
+      'targetFrequency': ?targetFrequency,
+      'userInterestIds': ?userInterestIds,
+      'userListIds': ?userListIds,
+      'youtubeSelectSettings': ?youtubeSelectSettings,
+    };
+  }
+}
 
 /// A single advertiser in Display & Video 360 (DV360).
 class Advertiser {
@@ -14533,6 +15097,23 @@ class Advertiser {
 
   /// Settings that control how advertiser data may be accessed.
   AdvertiserDataAccessConfig? dataAccessConfig;
+
+  /// The default business name for the advertiser.
+  ///
+  /// This is the value used by YouTube and Demand Gen ads under this advertiser
+  /// if a business name is not provided.
+  ///
+  /// Optional.
+  core.String? defaultBusinessName;
+
+  /// The asset ID of the default logo image for the advertiser.
+  ///
+  /// This is the asset ID that will be used by YouTube and Demand ads under
+  /// this advertiser if a logo asset is not provided. You must use
+  /// advertisers.adAssets.upload to upload this asset using the API.
+  ///
+  /// Optional.
+  core.String? defaultLogoAssetId;
 
   /// The display name of the advertiser.
   ///
@@ -14612,6 +15193,8 @@ class Advertiser {
     this.containsEuPoliticalAds,
     this.creativeConfig,
     this.dataAccessConfig,
+    this.defaultBusinessName,
+    this.defaultLogoAssetId,
     this.displayName,
     this.entityStatus,
     this.generalConfig,
@@ -14648,6 +15231,8 @@ class Advertiser {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        defaultBusinessName: json_['defaultBusinessName'] as core.String?,
+        defaultLogoAssetId: json_['defaultLogoAssetId'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         entityStatus: json_['entityStatus'] as core.String?,
         generalConfig: json_.containsKey('generalConfig')
@@ -14679,6 +15264,8 @@ class Advertiser {
     final containsEuPoliticalAds = this.containsEuPoliticalAds;
     final creativeConfig = this.creativeConfig;
     final dataAccessConfig = this.dataAccessConfig;
+    final defaultBusinessName = this.defaultBusinessName;
+    final defaultLogoAssetId = this.defaultLogoAssetId;
     final displayName = this.displayName;
     final entityStatus = this.entityStatus;
     final generalConfig = this.generalConfig;
@@ -14695,6 +15282,8 @@ class Advertiser {
       'containsEuPoliticalAds': ?containsEuPoliticalAds,
       'creativeConfig': ?creativeConfig,
       'dataAccessConfig': ?dataAccessConfig,
+      'defaultBusinessName': ?defaultBusinessName,
+      'defaultLogoAssetId': ?defaultLogoAssetId,
       'displayName': ?displayName,
       'entityStatus': ?entityStatus,
       'generalConfig': ?generalConfig,
@@ -15429,6 +16018,8 @@ class AssignedTargetingOption {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   core.String? targetingType;
 
   /// Third party verification details.
@@ -15467,6 +16058,12 @@ class AssignedTargetingOption {
   /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_YOUTUBE_CHANNEL`.
   YoutubeChannelAssignedTargetingOptionDetails? youtubeChannelDetails;
+
+  /// YouTube channel pack details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// `TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+  YoutubeChannelPackAssignedTargetingOptionDetails? youtubeChannelPackDetails;
 
   /// YouTube video details.
   ///
@@ -15528,6 +16125,7 @@ class AssignedTargetingOption {
     this.videoPlayerSizeDetails,
     this.viewabilityDetails,
     this.youtubeChannelDetails,
+    this.youtubeChannelPackDetails,
     this.youtubeVideoDetails,
   });
 
@@ -15829,6 +16427,13 @@ class AssignedTargetingOption {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        youtubeChannelPackDetails:
+            json_.containsKey('youtubeChannelPackDetails')
+            ? YoutubeChannelPackAssignedTargetingOptionDetails.fromJson(
+                json_['youtubeChannelPackDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         youtubeVideoDetails: json_.containsKey('youtubeVideoDetails')
             ? YoutubeVideoAssignedTargetingOptionDetails.fromJson(
                 json_['youtubeVideoDetails']
@@ -15894,6 +16499,7 @@ class AssignedTargetingOption {
     final videoPlayerSizeDetails = this.videoPlayerSizeDetails;
     final viewabilityDetails = this.viewabilityDetails;
     final youtubeChannelDetails = this.youtubeChannelDetails;
+    final youtubeChannelPackDetails = this.youtubeChannelPackDetails;
     final youtubeVideoDetails = this.youtubeVideoDetails;
     return {
       'ageRangeDetails': ?ageRangeDetails,
@@ -15950,6 +16556,7 @@ class AssignedTargetingOption {
       'videoPlayerSizeDetails': ?videoPlayerSizeDetails,
       'viewabilityDetails': ?viewabilityDetails,
       'youtubeChannelDetails': ?youtubeChannelDetails,
+      'youtubeChannelPackDetails': ?youtubeChannelPackDetails,
       'youtubeVideoDetails': ?youtubeVideoDetails,
     };
   }
@@ -17798,6 +18405,37 @@ class CampaignBudget {
   }
 }
 
+/// The duration of the reach plan.
+class CampaignDuration {
+  /// The date range the plan covers.
+  ///
+  /// Required.
+  DateRange? dateRange;
+
+  /// The number of days the plan covers.
+  ///
+  /// Required.
+  core.int? durationDays;
+
+  CampaignDuration({this.dateRange, this.durationDays});
+
+  CampaignDuration.fromJson(core.Map json_)
+    : this(
+        dateRange: json_.containsKey('dateRange')
+            ? DateRange.fromJson(
+                json_['dateRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        durationDays: json_['durationDays'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dateRange = this.dateRange;
+    final durationDays = this.durationDays;
+    return {'dateRange': ?dateRange, 'durationDays': ?durationDays};
+  }
+}
+
 /// Settings that track the planned spend and duration of a campaign.
 class CampaignFlight {
   /// The dates that the campaign is expected to run.
@@ -18144,10 +18782,133 @@ class CommonInStreamAttribute {
 }
 
 /// User consent status.
-typedef Consent = $Consent;
+class Consent {
+  /// Represents consent for ad personalization.
+  /// Possible string values are:
+  /// - "CONSENT_STATUS_UNSPECIFIED" : Type value is not specified or is unknown
+  /// in this version.
+  /// - "CONSENT_STATUS_GRANTED" : Consent is granted.
+  /// - "CONSENT_STATUS_DENIED" : Consent is denied.
+  core.String? adPersonalization;
+
+  /// Represents consent for ad user data.
+  /// Possible string values are:
+  /// - "CONSENT_STATUS_UNSPECIFIED" : Type value is not specified or is unknown
+  /// in this version.
+  /// - "CONSENT_STATUS_GRANTED" : Consent is granted.
+  /// - "CONSENT_STATUS_DENIED" : Consent is denied.
+  core.String? adUserData;
+
+  Consent({this.adPersonalization, this.adUserData});
+
+  Consent.fromJson(core.Map json_)
+    : this(
+        adPersonalization: json_['adPersonalization'] as core.String?,
+        adUserData: json_['adUserData'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final adPersonalization = this.adPersonalization;
+    final adUserData = this.adUserData;
+    return {'adPersonalization': ?adPersonalization, 'adUserData': ?adUserData};
+  }
+}
 
 /// Contact information defining a Customer Match audience member.
-typedef ContactInfo = $ContactInfo;
+class ContactInfo {
+  /// Country code of the member.
+  ///
+  /// Must also be set with the following fields: * hashed_first_name *
+  /// hashed_last_name * zip_codes
+  ///
+  /// Optional.
+  core.String? countryCode;
+
+  /// A list of SHA256 hashed email of the member.
+  ///
+  /// Before hashing, remove all whitespace and make sure the string is all
+  /// lowercase.
+  ///
+  /// Optional.
+  core.List<core.String>? hashedEmails;
+
+  /// SHA256 hashed first name of the member.
+  ///
+  /// Before hashing, remove all whitespace and make sure the string is all
+  /// lowercase. Must also be set with the following fields: * country_code *
+  /// hashed_last_name * zip_codes
+  ///
+  /// Optional.
+  core.String? hashedFirstName;
+
+  /// SHA256 hashed last name of the member.
+  ///
+  /// Before hashing, remove all whitespace and make sure the string is all
+  /// lowercase. Must also be set with the following fields: * country_code *
+  /// hashed_first_name * zip_codes
+  ///
+  /// Optional.
+  core.String? hashedLastName;
+
+  /// A list of SHA256 hashed phone numbers of the member.
+  ///
+  /// Before hashing, all phone numbers must be formatted using the
+  /// [E.164 format](https://en.wikipedia.org/wiki/E.164) and include the
+  /// country calling code.
+  ///
+  /// Optional.
+  core.List<core.String>? hashedPhoneNumbers;
+
+  /// A list of zip codes of the member.
+  ///
+  /// Must also be set with the following fields: * country_code *
+  /// hashed_first_name * hashed_last_name
+  ///
+  /// Optional.
+  core.List<core.String>? zipCodes;
+
+  ContactInfo({
+    this.countryCode,
+    this.hashedEmails,
+    this.hashedFirstName,
+    this.hashedLastName,
+    this.hashedPhoneNumbers,
+    this.zipCodes,
+  });
+
+  ContactInfo.fromJson(core.Map json_)
+    : this(
+        countryCode: json_['countryCode'] as core.String?,
+        hashedEmails: (json_['hashedEmails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        hashedFirstName: json_['hashedFirstName'] as core.String?,
+        hashedLastName: json_['hashedLastName'] as core.String?,
+        hashedPhoneNumbers: (json_['hashedPhoneNumbers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        zipCodes: (json_['zipCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final countryCode = this.countryCode;
+    final hashedEmails = this.hashedEmails;
+    final hashedFirstName = this.hashedFirstName;
+    final hashedLastName = this.hashedLastName;
+    final hashedPhoneNumbers = this.hashedPhoneNumbers;
+    final zipCodes = this.zipCodes;
+    return {
+      'countryCode': ?countryCode,
+      'hashedEmails': ?hashedEmails,
+      'hashedFirstName': ?hashedFirstName,
+      'hashedLastName': ?hashedLastName,
+      'hashedPhoneNumbers': ?hashedPhoneNumbers,
+      'zipCodes': ?zipCodes,
+    };
+  }
+}
 
 /// Wrapper message for a list of contact information defining Customer Match
 /// audience members.
@@ -18164,6 +18925,8 @@ class ContactInfoList {
   ///
   /// The size of members after splitting the contact_infos mustn't be greater
   /// than 500,000.
+  ///
+  /// Optional.
   core.List<ContactInfo>? contactInfos;
 
   ContactInfoList({this.consent, this.contactInfos});
@@ -18311,9 +19074,7 @@ class ConversionCountingConfig {
   /// This attribution model will determine how conversions are counted. The
   /// Primary model can be set by you for a floodlight config or group. More
   /// details [here](https://support.google.com/displayvideo/answer/7409983).
-  /// Only applicable to Demand Gen line items. Retrieval and management of
-  /// Demand Gen resources is currently in beta. This field is only available to
-  /// allowlisted users.
+  /// Only applicable to Demand Gen line items.
   ///
   /// Optional.
   core.String? primaryAttributionModelId;
@@ -18531,6 +19292,8 @@ class CreateAssignedTargetingOptionsRequest {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   core.String? targetingType;
 
   CreateAssignedTargetingOptionsRequest({
@@ -18619,6 +19382,8 @@ class CreateSdfDownloadTaskRequest {
   /// migrating to this version.
   /// - "SDF_VERSION_9_1" : SDF version 9.1.
   /// - "SDF_VERSION_9_2" : SDF version 9.2.
+  /// - "SDF_VERSION_10" : SDF version 10.
+  /// - "SDF_VERSION_10_1" : SDF version 10.1.
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -19088,6 +19853,17 @@ class Creative {
   /// Optional.
   core.bool? skippable;
 
+  /// Whether to add a label to the creative as created or edited using AI when
+  /// served in regions with local AI labeling regulations.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED" : No attestation has
+  /// been provided.
+  /// - "NOT_SYNTHETIC" : Attested as not created or edited using AI.
+  /// - "IS_SYNTHETIC" : Attested as created or edited using AI.
+  core.String? syntheticContentAttestationStatus;
+
   /// The original third-party tag used for the creative.
   ///
   /// Required and only valid for third-party tag creatives. Third-party tag
@@ -19224,6 +20000,7 @@ class Creative {
     this.reviewStatus,
     this.skipOffset,
     this.skippable,
+    this.syntheticContentAttestationStatus,
     this.thirdPartyTag,
     this.thirdPartyUrls,
     this.timerEvents,
@@ -19330,6 +20107,8 @@ class Creative {
               )
             : null,
         skippable: json_['skippable'] as core.bool?,
+        syntheticContentAttestationStatus:
+            json_['syntheticContentAttestationStatus'] as core.String?,
         thirdPartyTag: json_['thirdPartyTag'] as core.String?,
         thirdPartyUrls: (json_['thirdPartyUrls'] as core.List?)
             ?.map(
@@ -19404,6 +20183,8 @@ class Creative {
     final reviewStatus = this.reviewStatus;
     final skipOffset = this.skipOffset;
     final skippable = this.skippable;
+    final syntheticContentAttestationStatus =
+        this.syntheticContentAttestationStatus;
     final thirdPartyTag = this.thirdPartyTag;
     final thirdPartyUrls = this.thirdPartyUrls;
     final timerEvents = this.timerEvents;
@@ -19452,6 +20233,7 @@ class Creative {
       'reviewStatus': ?reviewStatus,
       'skipOffset': ?skipOffset,
       'skippable': ?skippable,
+      'syntheticContentAttestationStatus': ?syntheticContentAttestationStatus,
       'thirdPartyTag': ?thirdPartyTag,
       'thirdPartyUrls': ?thirdPartyUrls,
       'timerEvents': ?timerEvents,
@@ -20062,7 +20844,10 @@ typedef DemandGenBiddingStrategy = $DemandGenBiddingStrategy;
 class DemandGenCarouselAd {
   /// The business name shown on the ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   core.String? businessName;
 
   /// The list of cards shown on the ad.
@@ -20097,7 +20882,10 @@ class DemandGenCarouselAd {
 
   /// The logo image used by this ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   ImageAsset? logo;
 
   /// The URL address loaded in the background for tracking purposes.
@@ -20180,7 +20968,10 @@ class DemandGenCarouselAd {
 class DemandGenImageAd {
   /// The business name shown on the ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   core.String? businessName;
 
   /// The call-to-action button shown on the ad.
@@ -20220,6 +21011,9 @@ class DemandGenImageAd {
   core.List<core.String>? headlines;
 
   /// The list of logo images shown on the ad.
+  ///
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
   core.List<ImageAsset>? logoImages;
 
   /// The list of marketing images shown on the ad.
@@ -20346,7 +21140,10 @@ class DemandGenImageAd {
 class DemandGenProductAd {
   /// The business name shown on the ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   core.String? businessName;
 
   /// The call-to-action button shown on the ad.
@@ -20415,7 +21212,10 @@ class DemandGenProductAd {
 
   /// The logo image used by this ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   ImageAsset? logo;
 
   /// The URL address loaded in the background for tracking purposes.
@@ -20554,7 +21354,10 @@ class DemandGenSettings {
 class DemandGenVideoAd {
   /// The business name shown on the ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   core.String? businessName;
 
   /// The call-to-action button shown on the ad.
@@ -20635,7 +21438,10 @@ class DemandGenVideoAd {
 
   /// The logo image used by this ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   ImageAsset? logo;
 
   /// The list of long headlines shown on the ad.
@@ -20921,7 +21727,7 @@ typedef DuplicateLineItemRequest = $DuplicateLineItemRequest;
 typedef DuplicateLineItemResponse = $DuplicateLineItemResponse;
 
 /// Request message for
-/// FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
+/// FirstPartyAndPartnerAudienceService.EditCustomerMatchMembers.
 class EditCustomerMatchMembersRequest {
   /// Input only.
   ///
@@ -21003,7 +21809,8 @@ class EditCustomerMatchMembersRequest {
   }
 }
 
-/// The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
+/// The response of
+/// FirstPartyAndPartnerAudienceService.EditCustomerMatchMembers.
 class EditCustomerMatchMembersResponse {
   /// The ID of the updated Customer Match FirstPartyAndPartnerAudience.
   ///
@@ -21232,9 +22039,10 @@ class FirstPartyAndPartnerAudience {
   /// customers to known Mobile device IDs.
   /// - "CUSTOMER_MATCH_USER_ID" : Audience was generated through matching
   /// customers to known User IDs.
-  /// - "ACTIVITY_BASED" : Audience was created based on campaign activity.
-  /// - "FREQUENCY_CAP" : Audience was created based on excluding the number of
-  /// impressions they were served.
+  /// - "ACTIVITY_BASED" : Deprecated: Audience was created based on campaign
+  /// activity.
+  /// - "FREQUENCY_CAP" : Deprecated: Audience was created based on excluding
+  /// the number of impressions they were served.
   /// - "TAG_BASED" : Audience was created based on custom variables attached to
   /// pixel.
   /// - "YOUTUBE_USERS" : Audience was created based on past interactions with
@@ -21795,7 +22603,7 @@ class FloodlightGroup {
 
 /// Settings that control the number of times a user may be shown with the same
 /// ad during a given time period.
-typedef FrequencyCap = $FrequencyCap00;
+typedef FrequencyCap = $FrequencyCap;
 
 /// Details for assigned gender targeting option.
 ///
@@ -21809,6 +22617,124 @@ typedef GenderAssignedTargetingOptionDetails =
 /// This will be populated in the gender_details field of a TargetingOption when
 /// targeting_type is `TARGETING_TYPE_GENDER`.
 typedef GenderTargetingOptionDetails = $GenderTargetingOptionDetails;
+
+/// Request message for ReachForecastService.GenerateReachForecast.
+class GenerateReachForecastRequest {
+  /// The duration of the planned campaign.
+  ///
+  /// Required.
+  CampaignDuration? campaignDuration;
+
+  /// The currency code for the plan in ISO 4217 format.
+  ///
+  /// Required.
+  core.String? currencyCode;
+
+  /// The minimum effective frequency for the reported reach metrics.
+  ///
+  /// This is the smallest number of times a customer must be exposed to the ad
+  /// for it to be considered effective. This setting only impacts reporting.
+  /// Must be between 1 and 10, inclusive. If not specified, a default of 1 is
+  /// applied.
+  ///
+  /// Optional.
+  core.int? minEffectiveFrequency;
+
+  /// The list of line items to include in the forecast.
+  ///
+  /// Required.
+  core.List<PlannedProduct>? plannedProducts;
+
+  /// The targeting parameters of the planned campaign.
+  ///
+  /// Required.
+  Targeting? targeting;
+
+  GenerateReachForecastRequest({
+    this.campaignDuration,
+    this.currencyCode,
+    this.minEffectiveFrequency,
+    this.plannedProducts,
+    this.targeting,
+  });
+
+  GenerateReachForecastRequest.fromJson(core.Map json_)
+    : this(
+        campaignDuration: json_.containsKey('campaignDuration')
+            ? CampaignDuration.fromJson(
+                json_['campaignDuration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        currencyCode: json_['currencyCode'] as core.String?,
+        minEffectiveFrequency: json_['minEffectiveFrequency'] as core.int?,
+        plannedProducts: (json_['plannedProducts'] as core.List?)
+            ?.map(
+              (value) => PlannedProduct.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        targeting: json_.containsKey('targeting')
+            ? Targeting.fromJson(
+                json_['targeting'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final campaignDuration = this.campaignDuration;
+    final currencyCode = this.currencyCode;
+    final minEffectiveFrequency = this.minEffectiveFrequency;
+    final plannedProducts = this.plannedProducts;
+    final targeting = this.targeting;
+    return {
+      'campaignDuration': ?campaignDuration,
+      'currencyCode': ?currencyCode,
+      'minEffectiveFrequency': ?minEffectiveFrequency,
+      'plannedProducts': ?plannedProducts,
+      'targeting': ?targeting,
+    };
+  }
+}
+
+/// Response message for ReachForecastService.GenerateReachForecast.
+class GenerateReachForecastResponse {
+  /// The estimated audience sizes for the targeted geography.
+  OnTargetAudienceMetrics? onTargetAudienceMetrics;
+
+  /// The generated forecast curve.
+  ReachCurve? reachCurve;
+
+  GenerateReachForecastResponse({
+    this.onTargetAudienceMetrics,
+    this.reachCurve,
+  });
+
+  GenerateReachForecastResponse.fromJson(core.Map json_)
+    : this(
+        onTargetAudienceMetrics: json_.containsKey('onTargetAudienceMetrics')
+            ? OnTargetAudienceMetrics.fromJson(
+                json_['onTargetAudienceMetrics']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        reachCurve: json_.containsKey('reachCurve')
+            ? ReachCurve.fromJson(
+                json_['reachCurve'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final onTargetAudienceMetrics = this.onTargetAudienceMetrics;
+    final reachCurve = this.reachCurve;
+    return {
+      'onTargetAudienceMetrics': ?onTargetAudienceMetrics,
+      'reachCurve': ?reachCurve,
+    };
+  }
+}
 
 /// Details for assigned geographic region targeting option.
 ///
@@ -21989,6 +22915,7 @@ class GuaranteedOrder {
   /// - "EXCHANGE_TUBI" : Tubi.
   /// - "EXCHANGE_SNAP" : Snap.
   /// - "EXCHANGE_CADENT" : Cadent.
+  /// - "EXCHANGE_EXTE" : Exte.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -22788,6 +23715,7 @@ class InventorySource {
   /// - "EXCHANGE_TUBI" : Tubi.
   /// - "EXCHANGE_SNAP" : Snap.
   /// - "EXCHANGE_CADENT" : Cadent.
+  /// - "EXCHANGE_EXTE" : Exte.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.
@@ -23544,9 +24472,7 @@ class LineItem {
 
   /// Settings specific to Demand Gen line items.
   ///
-  /// Only applicable to Demand Gen line items. Retrieval and management of
-  /// Demand Gen resources is currently in beta. This field is only available to
-  /// allowlisted users.
+  /// Only applicable to Demand Gen line items.
   ///
   /// Optional.
   DemandGenSettings? demandGenSettings;
@@ -23690,9 +24616,7 @@ class LineItem {
   /// - "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME" : Video ads served on
   /// digital-out-of-home inventory. Line items of this type and their targeting
   /// cannot be created or updated using the API.
-  /// - "LINE_ITEM_TYPE_DEMAND_GEN" : Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This enum value is only
-  /// available to allowlisted users.
+  /// - "LINE_ITEM_TYPE_DEMAND_GEN" : Demand Gen ads.
   core.String? lineItemType;
 
   /// The mobile app promoted by the line item.
@@ -25551,7 +26475,7 @@ class MaximizeSpendBidStrategy {
 typedef MeasurementConfig = $MeasurementConfig;
 
 /// A mobile app promoted by a mobile app install line item.
-typedef MobileApp = $MobileApp00;
+typedef MobileApp = $MobileApp;
 
 /// Wrapper message for a list of mobile device IDs defining Customer Match
 /// audience members.
@@ -25567,6 +26491,8 @@ class MobileDeviceIdList {
   /// A list of mobile device IDs defining Customer Match audience members.
   ///
   /// The size of mobile_device_ids mustn't be greater than 500,000.
+  ///
+  /// Optional.
   core.List<core.String>? mobileDeviceIds;
 
   MobileDeviceIdList({this.consent, this.mobileDeviceIds});
@@ -25793,6 +26719,32 @@ typedef OnScreenPositionAssignedTargetingOptionDetails =
 /// targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`.
 typedef OnScreenPositionTargetingOptionDetails =
     $OnScreenPositionTargetingOptionDetails;
+
+/// Estimated audience sizes for a targeted geography.
+class OnTargetAudienceMetrics {
+  /// Size of the audience based on the census data of the targeted geography.
+  core.String? censusAudienceSize;
+
+  /// Estimated size of the YouTube audience.
+  core.String? youtubeAudienceSize;
+
+  OnTargetAudienceMetrics({this.censusAudienceSize, this.youtubeAudienceSize});
+
+  OnTargetAudienceMetrics.fromJson(core.Map json_)
+    : this(
+        censusAudienceSize: json_['censusAudienceSize'] as core.String?,
+        youtubeAudienceSize: json_['youtubeAudienceSize'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final censusAudienceSize = this.censusAudienceSize;
+    final youtubeAudienceSize = this.youtubeAudienceSize;
+    return {
+      'censusAudienceSize': ?censusAudienceSize,
+      'youtubeAudienceSize': ?youtubeAudienceSize,
+    };
+  }
+}
 
 /// Assigned operating system targeting option details.
 ///
@@ -26212,6 +27164,618 @@ class PerformanceGoalBidStrategy {
   }
 }
 
+/// A plannable location used for forecasting.
+class PlannableLocation {
+  /// The display name of the location, for example "Algeria".
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The type of location.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GEO_REGION_TYPE_UNKNOWN" : The geographic region type is unknown.
+  /// - "GEO_REGION_TYPE_OTHER" : The geographic region type is other.
+  /// - "GEO_REGION_TYPE_COUNTRY" : The geographic region is a country.
+  /// - "GEO_REGION_TYPE_REGION" : The geographic region type is region.
+  /// - "GEO_REGION_TYPE_TERRITORY" : The geographic region is a territory.
+  /// - "GEO_REGION_TYPE_PROVINCE" : The geographic region is a province.
+  /// - "GEO_REGION_TYPE_STATE" : The geographic region is a state.
+  /// - "GEO_REGION_TYPE_PREFECTURE" : The geographic region is a prefecture.
+  /// - "GEO_REGION_TYPE_GOVERNORATE" : The geographic region is a governorate.
+  /// - "GEO_REGION_TYPE_CANTON" : The geographic region is a canton.
+  /// - "GEO_REGION_TYPE_UNION_TERRITORY" : The geographic region is a union
+  /// territory.
+  /// - "GEO_REGION_TYPE_AUTONOMOUS_COMMUNITY" : The geographic region is an
+  /// autonomous community.
+  /// - "GEO_REGION_TYPE_DMA_REGION" : The geographic region is a designated
+  /// market area (DMA) region.
+  /// - "GEO_REGION_TYPE_METRO" : The geographic region type is metro.
+  /// - "GEO_REGION_TYPE_CONGRESSIONAL_DISTRICT" : The geographic region is a
+  /// congressional district.
+  /// - "GEO_REGION_TYPE_COUNTY" : The geographic region is a county.
+  /// - "GEO_REGION_TYPE_MUNICIPALITY" : The geographic region is a
+  /// municipality.
+  /// - "GEO_REGION_TYPE_CITY" : The geographic region is a city.
+  /// - "GEO_REGION_TYPE_POSTAL_CODE" : The geographic region targeting type is
+  /// postal code.
+  /// - "GEO_REGION_TYPE_DEPARTMENT" : The geographic region targeting type is
+  /// department.
+  /// - "GEO_REGION_TYPE_AIRPORT" : The geographic region is an airport.
+  /// - "GEO_REGION_TYPE_TV_REGION" : The geographic region is a TV region.
+  /// - "GEO_REGION_TYPE_OKRUG" : The geographic region is an okrug.
+  /// - "GEO_REGION_TYPE_BOROUGH" : The geographic region is a borough.
+  /// - "GEO_REGION_TYPE_CITY_REGION" : The geographic region is a city region.
+  /// - "GEO_REGION_TYPE_ARRONDISSEMENT" : The geographic region is an
+  /// arrondissement.
+  /// - "GEO_REGION_TYPE_NEIGHBORHOOD" : The geographic region is a
+  /// neighborhood.
+  /// - "GEO_REGION_TYPE_UNIVERSITY" : The geographic region is a university.
+  /// - "GEO_REGION_TYPE_DISTRICT" : The geographic region is a district.
+  /// - "GEO_REGION_TYPE_NATIONAL_PARK" : The geographic region is a national
+  /// park.
+  /// - "GEO_REGION_TYPE_BARRIO" : The geographic region is a barrio.
+  /// - "GEO_REGION_TYPE_SUB_WARD" : The geographic region is a sub ward.
+  /// - "GEO_REGION_TYPE_MUNICIPALITY_DISTRICT" : The geographic region is a
+  /// municipality district.
+  /// - "GEO_REGION_TYPE_SUB_DISTRICT" : The geographic region is a sub
+  /// district.
+  /// - "GEO_REGION_TYPE_QUARTER" : The geographic region is a quarter.
+  /// - "GEO_REGION_TYPE_DIVISION" : The geographic region is a division.
+  /// - "GEO_REGION_TYPE_COMMUNE" : The geographic region is a commune.
+  /// - "GEO_REGION_TYPE_COLLOQUIAL_AREA" : The geographic region is a
+  /// colloquial area.
+  /// - "GEO_REGION_TYPE_POST_TOWN" : The geographic region is a post town.
+  /// - "GEO_REGION_TYPE_WARD" : The geographic region is a ward.
+  /// - "GEO_REGION_TYPE_TOWN" : The geographic region is a town.
+  /// - "GEO_REGION_TYPE_VILLAGE" : The geographic region is a village.
+  /// - "GEO_REGION_TYPE_CITY_DISTRICT" : The geographic region is a city
+  /// district.
+  /// - "GEO_REGION_TYPE_SUBURB" : The geographic region is a suburb.
+  /// - "GEO_REGION_TYPE_HAMLET" : The geographic region is a hamlet.
+  /// - "GEO_REGION_TYPE_MUNICIPAL_DISTRICT" : The geographic region is a
+  /// municipal district.
+  /// - "GEO_REGION_TYPE_COMMUNITY" : The geographic region is a community.
+  /// - "GEO_REGION_TYPE_TOWNSHIP" : The geographic region is a township.
+  /// - "GEO_REGION_TYPE_URBAN_DISTRICT" : The geographic region is an urban
+  /// district.
+  /// - "GEO_REGION_TYPE_RESIDENTIAL_AREA" : The geographic region is a
+  /// residential area.
+  /// - "GEO_REGION_TYPE_INDEPENDENT_CITY" : The geographic region is an
+  /// independent city.
+  /// - "GEO_REGION_TYPE_SECTOR" : The geographic region is a sector.
+  /// - "GEO_REGION_TYPE_AREA" : The geographic region is an area.
+  /// - "GEO_REGION_TYPE_ESTATE" : The geographic region is an estate.
+  /// - "GEO_REGION_TYPE_PARISH" : The geographic region is a parish.
+  /// - "GEO_REGION_TYPE_SETTLEMENT" : The geographic region is a settlement.
+  /// - "GEO_REGION_TYPE_ZONE" : The geographic region is a zone.
+  /// - "GEO_REGION_TYPE_COLONY" : The geographic region is a colony.
+  /// - "GEO_REGION_TYPE_INDUSTRIAL_AREA" : The geographic region is an
+  /// industrial area.
+  /// - "GEO_REGION_TYPE_PROVINCIAL_CITY" : The geographic region is a
+  /// provincial city.
+  /// - "GEO_REGION_TYPE_RURAL_DISTRICT" : The geographic region is a rural
+  /// district.
+  core.String? geoRegionType;
+
+  /// The resource name of the plannable location.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The parent plannable location ID, for example the country ID for subgeos.
+  ///
+  /// Output only.
+  core.String? parentPlannableLocationId;
+
+  /// The plannable location ID.
+  ///
+  /// Output only.
+  core.String? plannableLocationId;
+
+  /// The region code of the location, for example "DZ" for Algeria.
+  ///
+  /// Output only.
+  core.String? regionCode;
+
+  PlannableLocation({
+    this.displayName,
+    this.geoRegionType,
+    this.name,
+    this.parentPlannableLocationId,
+    this.plannableLocationId,
+    this.regionCode,
+  });
+
+  PlannableLocation.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        geoRegionType: json_['geoRegionType'] as core.String?,
+        name: json_['name'] as core.String?,
+        parentPlannableLocationId:
+            json_['parentPlannableLocationId'] as core.String?,
+        plannableLocationId: json_['plannableLocationId'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final geoRegionType = this.geoRegionType;
+    final name = this.name;
+    final parentPlannableLocationId = this.parentPlannableLocationId;
+    final plannableLocationId = this.plannableLocationId;
+    final regionCode = this.regionCode;
+    return {
+      'displayName': ?displayName,
+      'geoRegionType': ?geoRegionType,
+      'name': ?name,
+      'parentPlannableLocationId': ?parentPlannableLocationId,
+      'plannableLocationId': ?plannableLocationId,
+      'regionCode': ?regionCode,
+    };
+  }
+}
+
+/// Core attributes for a plannable product.
+class PlannableProductCoreAttributes {
+  /// The buying method.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PLANNABLE_BUYING_METHOD_UNSPECIFIED" : Not specified.
+  /// - "PLANNABLE_BUYING_METHOD_AUCTION" : Auction.
+  /// - "PLANNABLE_BUYING_METHOD_RESERVATION" : Reservation.
+  core.String? buyingMethod;
+
+  /// The cost model.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PLANNABLE_COST_MODEL_UNSPECIFIED" : Not specified.
+  /// - "PLANNABLE_COST_MODEL_CPM" : CPM.
+  /// - "PLANNABLE_COST_MODEL_CPV" : CPV.
+  /// - "PLANNABLE_COST_MODEL_CPC" : CPC.
+  /// - "PLANNABLE_COST_MODEL_CPA" : CPA.
+  core.String? costModel;
+
+  /// The product category.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PLANNABLE_PRODUCT_CATEGORY_UNSPECIFIED" : Not specified.
+  /// - "YOUTUBE" : YouTube.
+  /// - "OPEN_AUCTION" : Open Auction.
+  core.String? productCategory;
+
+  PlannableProductCoreAttributes({
+    this.buyingMethod,
+    this.costModel,
+    this.productCategory,
+  });
+
+  PlannableProductCoreAttributes.fromJson(core.Map json_)
+    : this(
+        buyingMethod: json_['buyingMethod'] as core.String?,
+        costModel: json_['costModel'] as core.String?,
+        productCategory: json_['productCategory'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final buyingMethod = this.buyingMethod;
+    final costModel = this.costModel;
+    final productCategory = this.productCategory;
+    return {
+      'buyingMethod': ?buyingMethod,
+      'costModel': ?costModel,
+      'productCategory': ?productCategory,
+    };
+  }
+}
+
+/// Targeting capabilities for a given product.
+class PlannableTargeting {
+  /// Allowed plannable age ranges for the product.
+  ///
+  /// Actual targeting is computed by mapping this age range onto standard
+  /// Google age targeting.
+  ///
+  /// Output only.
+  core.List<core.String>? ageRanges;
+
+  /// The default YouTube Select Lineup for this product, if applicable.
+  ///
+  /// Output only.
+  YouTubeSelectLineUp? defaultYoutubeSelectLineup;
+
+  /// Targetable devices for the ad product.
+  ///
+  /// Output only.
+  core.List<core.String>? devices;
+
+  /// Targetable genders for the ad product.
+  ///
+  /// Output only.
+  core.List<core.String>? genders;
+
+  /// Targetable networks for the ad product.
+  ///
+  /// Output only.
+  core.List<core.String>? networks;
+
+  /// Targetable surface combinations for the ad product.
+  ///
+  /// Output only.
+  SurfaceTargetingCombinations? surfaceTargetingCombinations;
+
+  /// Targetable YouTube Select Lineups for the ad product.
+  ///
+  /// Output only.
+  core.List<YouTubeSelectLineUp>? youtubeSelectLineups;
+
+  PlannableTargeting({
+    this.ageRanges,
+    this.defaultYoutubeSelectLineup,
+    this.devices,
+    this.genders,
+    this.networks,
+    this.surfaceTargetingCombinations,
+    this.youtubeSelectLineups,
+  });
+
+  PlannableTargeting.fromJson(core.Map json_)
+    : this(
+        ageRanges: (json_['ageRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        defaultYoutubeSelectLineup:
+            json_.containsKey('defaultYoutubeSelectLineup')
+            ? YouTubeSelectLineUp.fromJson(
+                json_['defaultYoutubeSelectLineup']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        devices: (json_['devices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        genders: (json_['genders'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        networks: (json_['networks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        surfaceTargetingCombinations:
+            json_.containsKey('surfaceTargetingCombinations')
+            ? SurfaceTargetingCombinations.fromJson(
+                json_['surfaceTargetingCombinations']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        youtubeSelectLineups: (json_['youtubeSelectLineups'] as core.List?)
+            ?.map(
+              (value) => YouTubeSelectLineUp.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ageRanges = this.ageRanges;
+    final defaultYoutubeSelectLineup = this.defaultYoutubeSelectLineup;
+    final devices = this.devices;
+    final genders = this.genders;
+    final networks = this.networks;
+    final surfaceTargetingCombinations = this.surfaceTargetingCombinations;
+    final youtubeSelectLineups = this.youtubeSelectLineups;
+    return {
+      'ageRanges': ?ageRanges,
+      'defaultYoutubeSelectLineup': ?defaultYoutubeSelectLineup,
+      'devices': ?devices,
+      'genders': ?genders,
+      'networks': ?networks,
+      'surfaceTargetingCombinations': ?surfaceTargetingCombinations,
+      'youtubeSelectLineups': ?youtubeSelectLineups,
+    };
+  }
+}
+
+/// A plannable user interest used for targeting.
+class PlannableUserInterest {
+  /// The identifier for the user interest.
+  ///
+  /// The product_category specified in the request dictates the field populated
+  /// in the object. * user_interest_category is populated for "Youtube". *
+  /// user_interest_user_list is populated for "Open Auction".
+  ///
+  /// Output only.
+  UserInterest? userInterest;
+
+  /// The display name of the interest, for example "Outdoor Enthusiasts".
+  ///
+  /// Output only.
+  core.String? userInterestDisplayName;
+
+  /// The category path of the interest.
+  ///
+  /// Output only.
+  core.String? userInterestPath;
+
+  /// The type of audience, e.g., "AFFINITY", "IN_MARKET".
+  ///
+  /// Output only.
+  core.String? userInterestType;
+
+  PlannableUserInterest({
+    this.userInterest,
+    this.userInterestDisplayName,
+    this.userInterestPath,
+    this.userInterestType,
+  });
+
+  PlannableUserInterest.fromJson(core.Map json_)
+    : this(
+        userInterest: json_.containsKey('userInterest')
+            ? UserInterest.fromJson(
+                json_['userInterest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userInterestDisplayName:
+            json_['userInterestDisplayName'] as core.String?,
+        userInterestPath: json_['userInterestPath'] as core.String?,
+        userInterestType: json_['userInterestType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final userInterest = this.userInterest;
+    final userInterestDisplayName = this.userInterestDisplayName;
+    final userInterestPath = this.userInterestPath;
+    final userInterestType = this.userInterestType;
+    return {
+      'userInterest': ?userInterest,
+      'userInterestDisplayName': ?userInterestDisplayName,
+      'userInterestPath': ?userInterestPath,
+      'userInterestType': ?userInterestType,
+    };
+  }
+}
+
+/// A plannable user list used for reach forecasting.
+class PlannableUserList {
+  /// The display name of the user list.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The resource name identifying the user list.
+  ///
+  /// Format: `advertisers/{advertiser_id}/userLists/{user_list_id}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The plannability status of the user list.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PLANNABLE_STATUS_UNSPECIFIED" : Unspecified plannability status.
+  /// - "PLANNABLE" : The user list is plannable.
+  /// - "UNPLANNABLE" : The user list is unplannable.
+  core.String? plannableStatus;
+
+  /// The type of the user list.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "USER_LIST_TYPE_UNSPECIFIED" : Unspecified user list type.
+  /// - "FIRST_PARTY" : A first-party user list.
+  /// - "THIRD_PARTY" : A third-party user list.
+  core.String? userListType;
+
+  PlannableUserList({
+    this.displayName,
+    this.name,
+    this.plannableStatus,
+    this.userListType,
+  });
+
+  PlannableUserList.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        plannableStatus: json_['plannableStatus'] as core.String?,
+        userListType: json_['userListType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final name = this.name;
+    final plannableStatus = this.plannableStatus;
+    final userListType = this.userListType;
+    return {
+      'displayName': ?displayName,
+      'name': ?name,
+      'plannableStatus': ?plannableStatus,
+      'userListType': ?userListType,
+    };
+  }
+}
+
+/// Configuration for a specific product in the plan.
+class PlannedProduct {
+  /// Optional line item level targeting overrides.
+  ///
+  /// Optional.
+  AdvancedProductTargeting? advancedProductTargeting;
+
+  /// The budget for this product in micros.
+  ///
+  /// Required.
+  core.String? budgetMicros;
+
+  /// The code for the product, e.g. "VIDEO_REACH_CAMPAIGN".
+  ///
+  /// Required.
+  core.String? plannableProductCode;
+
+  PlannedProduct({
+    this.advancedProductTargeting,
+    this.budgetMicros,
+    this.plannableProductCode,
+  });
+
+  PlannedProduct.fromJson(core.Map json_)
+    : this(
+        advancedProductTargeting: json_.containsKey('advancedProductTargeting')
+            ? AdvancedProductTargeting.fromJson(
+                json_['advancedProductTargeting']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        budgetMicros: json_['budgetMicros'] as core.String?,
+        plannableProductCode: json_['plannableProductCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final advancedProductTargeting = this.advancedProductTargeting;
+    final budgetMicros = this.budgetMicros;
+    final plannableProductCode = this.plannableProductCode;
+    return {
+      'advancedProductTargeting': ?advancedProductTargeting,
+      'budgetMicros': ?budgetMicros,
+      'plannableProductCode': ?plannableProductCode,
+    };
+  }
+}
+
+/// Performance metrics for a forecast point.
+class PlannedProductForecast {
+  /// Number of on-target impressions including co-viewers.
+  core.String? onTargetCoviewImpressions;
+
+  /// Number of unique people reached that match the on-target definition
+  /// including co-viewers.
+  core.String? onTargetCoviewReach;
+
+  /// Number of on-target impressions.
+  core.String? onTargetImpressions;
+
+  /// Number of unique people reached that match the on-target definition.
+  core.String? onTargetReach;
+
+  /// Total number of impressions including co-viewers.
+  core.String? totalCoviewImpressions;
+
+  /// Total number of unique people reached including co-viewers.
+  core.String? totalCoviewReach;
+
+  /// Total number of impressions.
+  core.String? totalImpressions;
+
+  /// Total number of unique people reached.
+  core.String? totalReach;
+
+  /// Number of TrueView views.
+  core.String? trueviewViews;
+
+  /// Number of viewable impressions.
+  core.String? viewableImpressions;
+
+  PlannedProductForecast({
+    this.onTargetCoviewImpressions,
+    this.onTargetCoviewReach,
+    this.onTargetImpressions,
+    this.onTargetReach,
+    this.totalCoviewImpressions,
+    this.totalCoviewReach,
+    this.totalImpressions,
+    this.totalReach,
+    this.trueviewViews,
+    this.viewableImpressions,
+  });
+
+  PlannedProductForecast.fromJson(core.Map json_)
+    : this(
+        onTargetCoviewImpressions:
+            json_['onTargetCoviewImpressions'] as core.String?,
+        onTargetCoviewReach: json_['onTargetCoviewReach'] as core.String?,
+        onTargetImpressions: json_['onTargetImpressions'] as core.String?,
+        onTargetReach: json_['onTargetReach'] as core.String?,
+        totalCoviewImpressions: json_['totalCoviewImpressions'] as core.String?,
+        totalCoviewReach: json_['totalCoviewReach'] as core.String?,
+        totalImpressions: json_['totalImpressions'] as core.String?,
+        totalReach: json_['totalReach'] as core.String?,
+        trueviewViews: json_['trueviewViews'] as core.String?,
+        viewableImpressions: json_['viewableImpressions'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final onTargetCoviewImpressions = this.onTargetCoviewImpressions;
+    final onTargetCoviewReach = this.onTargetCoviewReach;
+    final onTargetImpressions = this.onTargetImpressions;
+    final onTargetReach = this.onTargetReach;
+    final totalCoviewImpressions = this.totalCoviewImpressions;
+    final totalCoviewReach = this.totalCoviewReach;
+    final totalImpressions = this.totalImpressions;
+    final totalReach = this.totalReach;
+    final trueviewViews = this.trueviewViews;
+    final viewableImpressions = this.viewableImpressions;
+    return {
+      'onTargetCoviewImpressions': ?onTargetCoviewImpressions,
+      'onTargetCoviewReach': ?onTargetCoviewReach,
+      'onTargetImpressions': ?onTargetImpressions,
+      'onTargetReach': ?onTargetReach,
+      'totalCoviewImpressions': ?totalCoviewImpressions,
+      'totalCoviewReach': ?totalCoviewReach,
+      'totalImpressions': ?totalImpressions,
+      'totalReach': ?totalReach,
+      'trueviewViews': ?trueviewViews,
+      'viewableImpressions': ?viewableImpressions,
+    };
+  }
+}
+
+/// Performance forecast for a specific product.
+class PlannedProductReachForecast {
+  /// The cost in micros for this product.
+  core.String? costMicros;
+
+  /// The code for the product.
+  core.String? plannableProductCode;
+
+  /// Performance metrics for the product.
+  PlannedProductForecast? plannedProductForecast;
+
+  PlannedProductReachForecast({
+    this.costMicros,
+    this.plannableProductCode,
+    this.plannedProductForecast,
+  });
+
+  PlannedProductReachForecast.fromJson(core.Map json_)
+    : this(
+        costMicros: json_['costMicros'] as core.String?,
+        plannableProductCode: json_['plannableProductCode'] as core.String?,
+        plannedProductForecast: json_.containsKey('plannedProductForecast')
+            ? PlannedProductForecast.fromJson(
+                json_['plannedProductForecast']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final costMicros = this.costMicros;
+    final plannableProductCode = this.plannableProductCode;
+    final plannedProductForecast = this.plannedProductForecast;
+    return {
+      'costMicros': ?costMicros,
+      'plannableProductCode': ?plannableProductCode,
+      'plannedProductForecast': ?plannedProductForecast,
+    };
+  }
+}
+
 /// Details for assigned POI targeting option.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
@@ -26359,6 +27923,80 @@ class ProductMatchDimension {
   }
 }
 
+/// Metadata for a plannable product.
+class ProductMetadata {
+  /// The name associated with the ad product.
+  ///
+  /// For example: "Video View Campaign".
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The plannable product code (e.g. "YOUTUBE_REACH_MIX").
+  ///
+  /// Output only.
+  core.String? plannableProductCode;
+
+  /// Core attributes for this product.
+  ///
+  /// Output only.
+  PlannableProductCoreAttributes? plannableProductCoreAttributes;
+
+  /// The plain-text description of the ad product.
+  ///
+  /// Output only.
+  core.String? plannableProductDescription;
+
+  /// The targeting capabilities available for this product.
+  ///
+  /// Output only.
+  PlannableTargeting? plannableTargeting;
+
+  ProductMetadata({
+    this.displayName,
+    this.plannableProductCode,
+    this.plannableProductCoreAttributes,
+    this.plannableProductDescription,
+    this.plannableTargeting,
+  });
+
+  ProductMetadata.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        plannableProductCode: json_['plannableProductCode'] as core.String?,
+        plannableProductCoreAttributes:
+            json_.containsKey('plannableProductCoreAttributes')
+            ? PlannableProductCoreAttributes.fromJson(
+                json_['plannableProductCoreAttributes']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        plannableProductDescription:
+            json_['plannableProductDescription'] as core.String?,
+        plannableTargeting: json_.containsKey('plannableTargeting')
+            ? PlannableTargeting.fromJson(
+                json_['plannableTargeting']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final plannableProductCode = this.plannableProductCode;
+    final plannableProductCoreAttributes = this.plannableProductCoreAttributes;
+    final plannableProductDescription = this.plannableProductDescription;
+    final plannableTargeting = this.plannableTargeting;
+    return {
+      'displayName': ?displayName,
+      'plannableProductCode': ?plannableProductCode,
+      'plannableProductCoreAttributes': ?plannableProductCoreAttributes,
+      'plannableProductDescription': ?plannableProductDescription,
+      'plannableTargeting': ?plannableTargeting,
+    };
+  }
+}
+
 /// Targeting details for proximity location list.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
@@ -26433,6 +28071,77 @@ class RateDetails {
       'minimumSpend': ?minimumSpend,
       'rate': ?rate,
       'unitsPurchased': ?unitsPurchased,
+    };
+  }
+}
+
+/// The generated reach curve.
+class ReachCurve {
+  /// Points along the curve, ordered by cost.
+  core.List<ReachForecast>? reachForecasts;
+
+  ReachCurve({this.reachForecasts});
+
+  ReachCurve.fromJson(core.Map json_)
+    : this(
+        reachForecasts: (json_['reachForecasts'] as core.List?)
+            ?.map(
+              (value) => ReachForecast.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reachForecasts = this.reachForecasts;
+    return {'reachForecasts': ?reachForecasts};
+  }
+}
+
+/// A single point in the reach curve.
+class ReachForecast {
+  /// Total cost for this point in micros.
+  core.String? costMicros;
+
+  /// Aggregate forecast for the entire plan.
+  PlannedProductForecast? forecast;
+
+  /// Breakdown for individual products at this cost point.
+  core.List<PlannedProductReachForecast>? plannedProductReachForecasts;
+
+  ReachForecast({
+    this.costMicros,
+    this.forecast,
+    this.plannedProductReachForecasts,
+  });
+
+  ReachForecast.fromJson(core.Map json_)
+    : this(
+        costMicros: json_['costMicros'] as core.String?,
+        forecast: json_.containsKey('forecast')
+            ? PlannedProductForecast.fromJson(
+                json_['forecast'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        plannedProductReachForecasts:
+            (json_['plannedProductReachForecasts'] as core.List?)
+                ?.map(
+                  (value) => PlannedProductReachForecast.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final costMicros = this.costMicros;
+    final forecast = this.forecast;
+    final plannedProductReachForecasts = this.plannedProductReachForecasts;
+    return {
+      'costMicros': ?costMicros,
+      'forecast': ?forecast,
+      'plannedProductReachForecasts': ?plannedProductReachForecasts,
     };
   }
 }
@@ -26556,6 +28265,121 @@ class ReplaceSitesResponse {
   core.Map<core.String, core.dynamic> toJson() {
     final sites = this.sites;
     return {'sites': ?sites};
+  }
+}
+
+/// Response for RetrievePlannableLocations
+class RetrievePlannableLocationsResponse {
+  /// The list of plannable locations.
+  ///
+  /// Output only.
+  core.List<PlannableLocation>? plannableLocations;
+
+  RetrievePlannableLocationsResponse({this.plannableLocations});
+
+  RetrievePlannableLocationsResponse.fromJson(core.Map json_)
+    : this(
+        plannableLocations: (json_['plannableLocations'] as core.List?)
+            ?.map(
+              (value) => PlannableLocation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final plannableLocations = this.plannableLocations;
+    return {'plannableLocations': ?plannableLocations};
+  }
+}
+
+/// Response for RetrievePlannableProducts
+class RetrievePlannableProductsResponse {
+  /// The list of product metadata showing targeting possibilities.
+  ///
+  /// Output only.
+  core.List<ProductMetadata>? productMetadata;
+
+  RetrievePlannableProductsResponse({this.productMetadata});
+
+  RetrievePlannableProductsResponse.fromJson(core.Map json_)
+    : this(
+        productMetadata: (json_['productMetadata'] as core.List?)
+            ?.map(
+              (value) => ProductMetadata.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final productMetadata = this.productMetadata;
+    return {'productMetadata': ?productMetadata};
+  }
+}
+
+/// Response for RetrievePlannableUserInterests.
+class RetrievePlannableUserInterestsResponse {
+  /// The list of plannable user interests (Google Audiences).
+  core.List<PlannableUserInterest>? plannableUserInterests;
+
+  RetrievePlannableUserInterestsResponse({this.plannableUserInterests});
+
+  RetrievePlannableUserInterestsResponse.fromJson(core.Map json_)
+    : this(
+        plannableUserInterests: (json_['plannableUserInterests'] as core.List?)
+            ?.map(
+              (value) => PlannableUserInterest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final plannableUserInterests = this.plannableUserInterests;
+    return {'plannableUserInterests': ?plannableUserInterests};
+  }
+}
+
+/// Response for RetrievePlannableUserLists.
+class RetrievePlannableUserListsResponse {
+  /// A token to retrieve the next page of results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// The list of plannable user lists.
+  ///
+  /// Output only.
+  core.List<PlannableUserList>? plannableUserLists;
+
+  RetrievePlannableUserListsResponse({
+    this.nextPageToken,
+    this.plannableUserLists,
+  });
+
+  RetrievePlannableUserListsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        plannableUserLists: (json_['plannableUserLists'] as core.List?)
+            ?.map(
+              (value) => PlannableUserList.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final plannableUserLists = this.plannableUserLists;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'plannableUserLists': ?plannableUserLists,
+    };
   }
 }
 
@@ -26819,9 +28643,199 @@ typedef SubExchangeAssignedTargetingOptionDetails =
 /// TargetingOption when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`.
 typedef SubExchangeTargetingOptionDetails = $SubExchangeTargetingOptionDetails;
 
+/// A valid combination of surfaces.
+class SurfaceTargetingCombination {
+  /// The combination of surfaces.
+  ///
+  /// Output only.
+  core.List<core.String>? choices;
+
+  SurfaceTargetingCombination({this.choices});
+
+  SurfaceTargetingCombination.fromJson(core.Map json_)
+    : this(
+        choices: (json_['choices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final choices = this.choices;
+    return {'choices': ?choices};
+  }
+}
+
+/// Surface targeting rules.
+class SurfaceTargetingCombinations {
+  /// The surface types available.
+  ///
+  /// Output only.
+  core.List<core.String>? availableSurfaceTypes;
+
+  /// The default surface types for this product.
+  ///
+  /// Output only.
+  core.List<core.String>? defaultSurfaceTypes;
+
+  /// Valid combinations of surfaces that can be selected together.
+  ///
+  /// Output only.
+  core.List<SurfaceTargetingCombination>? validSurfaceCombinations;
+
+  SurfaceTargetingCombinations({
+    this.availableSurfaceTypes,
+    this.defaultSurfaceTypes,
+    this.validSurfaceCombinations,
+  });
+
+  SurfaceTargetingCombinations.fromJson(core.Map json_)
+    : this(
+        availableSurfaceTypes: (json_['availableSurfaceTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        defaultSurfaceTypes: (json_['defaultSurfaceTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        validSurfaceCombinations:
+            (json_['validSurfaceCombinations'] as core.List?)
+                ?.map(
+                  (value) => SurfaceTargetingCombination.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final availableSurfaceTypes = this.availableSurfaceTypes;
+    final defaultSurfaceTypes = this.defaultSurfaceTypes;
+    final validSurfaceCombinations = this.validSurfaceCombinations;
+    return {
+      'availableSurfaceTypes': ?availableSurfaceTypes,
+      'defaultSurfaceTypes': ?defaultSurfaceTypes,
+      'validSurfaceCombinations': ?validSurfaceCombinations,
+    };
+  }
+}
+
+/// Surface targeting selection.
+class SurfaceTargetingSettings {
+  /// The surfaces to target.
+  ///
+  /// Optional.
+  core.List<core.String>? surfaces;
+
+  SurfaceTargetingSettings({this.surfaces});
+
+  SurfaceTargetingSettings.fromJson(core.Map json_)
+    : this(
+        surfaces: (json_['surfaces'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final surfaces = this.surfaces;
+    return {'surfaces': ?surfaces};
+  }
+}
+
 /// Setting that controls the average number of times the ads will show to the
 /// same person over a certain period of time.
 typedef TargetFrequency = $TargetFrequency;
+
+/// Targeting settings for a planned campaign.
+class Targeting {
+  /// The age range to target.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PLANNABLE_AGE_RANGE_UNSPECIFIED" : Not specified.
+  /// - "PLANNABLE_AGE_RANGE_18_24" : 18 to 24 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_34" : 18 to 34 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_44" : 18 to 44 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_49" : 18 to 49 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_54" : 18 to 54 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_64" : 18 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_18_65_UP" : 18 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_21_34" : 21 to 34 years old.
+  /// - "PLANNABLE_AGE_RANGE_21_44" : 21 to 44 years old.
+  /// - "PLANNABLE_AGE_RANGE_21_49" : 21 to 49 years old.
+  /// - "PLANNABLE_AGE_RANGE_21_54" : 21 to 54 years old.
+  /// - "PLANNABLE_AGE_RANGE_21_64" : 21 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_21_65_UP" : 21 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_25_34" : 25 to 34 years old.
+  /// - "PLANNABLE_AGE_RANGE_25_44" : 25 to 44 years old.
+  /// - "PLANNABLE_AGE_RANGE_25_49" : 25 to 49 years old.
+  /// - "PLANNABLE_AGE_RANGE_25_54" : 25 to 54 years old.
+  /// - "PLANNABLE_AGE_RANGE_25_64" : 25 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_25_65_UP" : 25 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_35_44" : 35 to 44 years old.
+  /// - "PLANNABLE_AGE_RANGE_35_49" : 35 to 49 years old.
+  /// - "PLANNABLE_AGE_RANGE_35_54" : 35 to 54 years old.
+  /// - "PLANNABLE_AGE_RANGE_35_64" : 35 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_35_65_UP" : 35 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_45_54" : 45 to 54 years old.
+  /// - "PLANNABLE_AGE_RANGE_45_64" : 45 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_45_65_UP" : 45 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_50_65_UP" : 50 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_55_64" : 55 to 64 years old.
+  /// - "PLANNABLE_AGE_RANGE_55_65_UP" : 55 to 65+ years old.
+  /// - "PLANNABLE_AGE_RANGE_65_UP" : 65+ years old.
+  core.String? ageRange;
+
+  /// The devices to target.
+  ///
+  /// Optional.
+  core.List<core.String>? devices;
+
+  /// The gender options to target.
+  ///
+  /// Optional.
+  core.List<core.String>? genders;
+
+  /// IDs of plannable locations to target.
+  ///
+  /// Plannable locations can be retrieved using the
+  /// `RetrievePlannableLocations` method.
+  ///
+  /// Required.
+  core.List<core.String>? plannableLocationIds;
+
+  Targeting({
+    this.ageRange,
+    this.devices,
+    this.genders,
+    this.plannableLocationIds,
+  });
+
+  Targeting.fromJson(core.Map json_)
+    : this(
+        ageRange: json_['ageRange'] as core.String?,
+        devices: (json_['devices'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        genders: (json_['genders'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        plannableLocationIds: (json_['plannableLocationIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ageRange = this.ageRange;
+    final devices = this.devices;
+    final genders = this.genders;
+    final plannableLocationIds = this.plannableLocationIds;
+    return {
+      'ageRange': ?ageRange,
+      'devices': ?devices,
+      'genders': ?genders,
+      'plannableLocationIds': ?plannableLocationIds,
+    };
+  }
+}
 
 /// Settings that control the \[optimized
 /// targeting\](//support.google.com/displayvideo/answer/12060859) settings of
@@ -27054,6 +29068,8 @@ class TargetingOption {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   core.String? targetingType;
 
   /// User rewarded content details.
@@ -27402,8 +29418,7 @@ class ThirdPartyMeasurementConfigs {
   ///
   /// The following third-party vendors are applicable: *
   /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` *
-  /// `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_NIELSEN` *
-  /// `THIRD_PARTY_VENDOR_MACROMILL`
+  /// `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_MACROMILL`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? brandLiftVendorConfigs;
@@ -27695,7 +29710,7 @@ class Transcode {
 /// platforms.
 ///
 /// This is part of the VAST 4.0 standard.
-typedef UniversalAdId = $UniversalAdId00;
+typedef UniversalAdId = $UniversalAdId;
 
 /// A request message for UploadAdAsset.
 class UploadAdAssetRequest {
@@ -27717,18 +29732,41 @@ class UploadAdAssetRequest {
   /// Required.
   core.String? filename;
 
-  UploadAdAssetRequest({this.adAssetType, this.filename});
+  /// Whether to add a label to the asset as created or edited using AI when
+  /// served in regions with local AI labeling regulations.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED" : No attestation has
+  /// been provided.
+  /// - "NOT_SYNTHETIC" : Attested as not created or edited using AI.
+  /// - "IS_SYNTHETIC" : Attested as created or edited using AI.
+  core.String? syntheticContentAttestationStatus;
+
+  UploadAdAssetRequest({
+    this.adAssetType,
+    this.filename,
+    this.syntheticContentAttestationStatus,
+  });
 
   UploadAdAssetRequest.fromJson(core.Map json_)
     : this(
         adAssetType: json_['adAssetType'] as core.String?,
         filename: json_['filename'] as core.String?,
+        syntheticContentAttestationStatus:
+            json_['syntheticContentAttestationStatus'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final adAssetType = this.adAssetType;
     final filename = this.filename;
-    return {'adAssetType': ?adAssetType, 'filename': ?filename};
+    final syntheticContentAttestationStatus =
+        this.syntheticContentAttestationStatus;
+    return {
+      'adAssetType': ?adAssetType,
+      'filename': ?filename,
+      'syntheticContentAttestationStatus': ?syntheticContentAttestationStatus,
+    };
   }
 }
 
@@ -27836,6 +29874,42 @@ class User {
       'lastLoginTime': ?lastLoginTime,
       'name': ?name,
       'userId': ?userId,
+    };
+  }
+}
+
+/// The identifier for a user interest.
+class UserInterest {
+  /// The resource name of the interest category.
+  ///
+  /// Populated when `product_category` is "Youtube". Format:
+  /// customers/{customer_id}/userInterests/{user_interest_id}
+  ///
+  /// Output only.
+  core.String? userInterestCategory;
+
+  /// The resource name of the user list.
+  ///
+  /// Populated when `product_category` is "Open Auction". Format:
+  /// customers/{customer_id}/userLists/{user_list_id}
+  ///
+  /// Output only.
+  core.String? userInterestUserList;
+
+  UserInterest({this.userInterestCategory, this.userInterestUserList});
+
+  UserInterest.fromJson(core.Map json_)
+    : this(
+        userInterestCategory: json_['userInterestCategory'] as core.String?,
+        userInterestUserList: json_['userInterestUserList'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final userInterestCategory = this.userInterestCategory;
+    final userInterestUserList = this.userInterestUserList;
+    return {
+      'userInterestCategory': ?userInterestCategory,
+      'userInterestUserList': ?userInterestUserList,
     };
   }
 }
@@ -28104,6 +30178,51 @@ typedef ViewabilityAssignedTargetingOptionDetails =
 /// This will be populated in the viewability_details field of a TargetingOption
 /// when targeting_type is `TARGETING_TYPE_VIEWABILITY`.
 typedef ViewabilityTargetingOptionDetails = $ViewabilityTargetingOptionDetails;
+
+/// A Plannable YouTube Select Lineup for product targeting.
+class YouTubeSelectLineUp {
+  /// The display name of the YouTube Select Lineup.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The ID of the YouTube Select Lineup.
+  ///
+  /// Output only.
+  core.String? lineupId;
+
+  YouTubeSelectLineUp({this.displayName, this.lineupId});
+
+  YouTubeSelectLineUp.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        lineupId: json_['lineupId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final lineupId = this.lineupId;
+    return {'displayName': ?displayName, 'lineupId': ?lineupId};
+  }
+}
+
+/// Settings for YouTube Select Lineups.
+class YouTubeSelectSettings {
+  /// The ID of the YouTube Select Lineup.
+  ///
+  /// Optional.
+  core.String? lineupId;
+
+  YouTubeSelectSettings({this.lineupId});
+
+  YouTubeSelectSettings.fromJson(core.Map json_)
+    : this(lineupId: json_['lineupId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final lineupId = this.lineupId;
+    return {'lineupId': ?lineupId};
+  }
+}
 
 /// Settings that control the bid strategy for YouTube and Partners resources.
 typedef YoutubeAndPartnersBiddingStrategy = $YoutubeAndPartnersBiddingStrategy;
@@ -28681,6 +30800,13 @@ class YoutubeAssetAssociationSitelinkAsset {
 /// targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL`.
 typedef YoutubeChannelAssignedTargetingOptionDetails =
     $YoutubeChannelAssignedTargetingOptionDetails;
+
+/// Details for YouTube channel pack assigned targeting option.
+///
+/// This will be populated in the youtube_channel_pack_details field when
+/// targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+typedef YoutubeChannelPackAssignedTargetingOptionDetails =
+    $YoutubeChannelPackAssignedTargetingOptionDetails;
 
 /// Data for a YouTube video ad asset.
 class YoutubeVideoAsset {

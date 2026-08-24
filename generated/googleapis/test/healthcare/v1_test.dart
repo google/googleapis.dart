@@ -475,8 +475,10 @@ api.BulkDeleteResourcesRequest buildBulkDeleteResourcesRequest() {
   buildCounterBulkDeleteResourcesRequest++;
   if (buildCounterBulkDeleteResourcesRequest < 3) {
     o.gcsDestination = buildGoogleCloudHealthcareV1FhirGcsDestination();
+    o.gcsSource = buildGoogleCloudHealthcareV1FhirGcsSource();
     o.type = 'foo';
     o.until = 'foo';
+    o.validateOnly = true;
     o.versionConfig = 'foo';
   }
   buildCounterBulkDeleteResourcesRequest--;
@@ -487,8 +489,10 @@ void checkBulkDeleteResourcesRequest(api.BulkDeleteResourcesRequest o) {
   buildCounterBulkDeleteResourcesRequest++;
   if (buildCounterBulkDeleteResourcesRequest < 3) {
     checkGoogleCloudHealthcareV1FhirGcsDestination(o.gcsDestination!);
+    checkGoogleCloudHealthcareV1FhirGcsSource(o.gcsSource!);
     unittest.expect(o.type!, unittest.equals('foo'));
     unittest.expect(o.until!, unittest.equals('foo'));
+    unittest.expect(o.validateOnly!, unittest.isTrue);
     unittest.expect(o.versionConfig!, unittest.equals('foo'));
   }
   buildCounterBulkDeleteResourcesRequest--;

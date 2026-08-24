@@ -24,12 +24,32 @@
 ///
 /// Create an instance of [AssuredworkloadsApi] to access these resources:
 ///
+/// - [AssuredworkloadsResource]
+/// - [FoldersResource]
+///   - [FoldersLocationsResource]
+///     - [FoldersLocationsDbFindingSummariesResource]
+///     - [FoldersLocationsDbFrameworkComplianceReportsResource]
+/// -
+/// [FoldersLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource]
+///     - [FoldersLocationsDbFrameworkComplianceSummariesResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsDbFindingSummariesResource]
+///     - [OrganizationsLocationsDbFrameworkComplianceReportsResource]
+/// -
+/// [OrganizationsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource]
+///     - [OrganizationsLocationsDbFrameworkComplianceSummariesResource]
 ///     - [OrganizationsLocationsOperationsResource]
 ///     - [OrganizationsLocationsWorkloadsResource]
 ///       - [OrganizationsLocationsWorkloadsUpdatesResource]
 ///       - [OrganizationsLocationsWorkloadsViolationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsDbFindingSummariesResource]
+///     - [ProjectsLocationsDbFrameworkComplianceReportsResource]
+/// -
+/// [ProjectsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource]
+///     - [ProjectsLocationsDbFrameworkComplianceSummariesResource]
 library;
 
 import 'dart:async' as async;
@@ -53,7 +73,11 @@ class AssuredworkloadsApi {
 
   final commons.ApiRequester _requester;
 
+  AssuredworkloadsResource get assuredworkloads =>
+      AssuredworkloadsResource(_requester);
+  FoldersResource get folders => FoldersResource(_requester);
   OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   AssuredworkloadsApi(
     http.Client client, {
@@ -65,6 +89,467 @@ class AssuredworkloadsApi {
          servicePath,
          requestHeaders,
        );
+}
+
+class AssuredworkloadsResource {
+  final commons.ApiRequester _requester;
+
+  AssuredworkloadsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Finds orphan ResourceEvents matching the criteria and moves them to the
+  /// ArchivedResourceEvents table.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse>
+  archiveResourceEvents(
+    GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/assuredworkloads:archiveResourceEvents';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Finds matching ArchivedResourceEvents and moves them back to the
+  /// ResourceEvents table.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse
+  >
+  revertArchivedResourceEvents(
+    GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/assuredworkloads:revertArchivedResourceEvents';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsResource get locations =>
+      FoldersLocationsResource(_requester);
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsDbFindingSummariesResource get dbFindingSummaries =>
+      FoldersLocationsDbFindingSummariesResource(_requester);
+  FoldersLocationsDbFrameworkComplianceReportsResource
+  get dbFrameworkComplianceReports =>
+      FoldersLocationsDbFrameworkComplianceReportsResource(_requester);
+  FoldersLocationsDbFrameworkComplianceSummariesResource
+  get dbFrameworkComplianceSummaries =>
+      FoldersLocationsDbFrameworkComplianceSummariesResource(_requester);
+
+  FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsDbFindingSummariesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsDbFindingSummariesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Lists the finding summary by category for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent scope for the framework overview page.
+  /// Formats: - projects/{project}/locations/{location} -
+  /// folders/{folder}/locations/{location} -
+  /// organizations/{organization}/locations/{location}
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [pageSize] - Optional. The requested page size. The server might return
+  /// fewer items than requested. If unspecified, the server picks an
+  /// appropriate default.
+  ///
+  /// [pageToken] - Optional. A token that identifies the page of results that
+  /// the server should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse>
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dbFindingSummaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class FoldersLocationsDbFrameworkComplianceReportsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource
+  get dbControlComplianceSummaries =>
+      FoldersLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource(
+        _requester,
+      );
+
+  FoldersLocationsDbFrameworkComplianceReportsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets the aggregated compliance report over time for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the aggregated compliance report over time
+  /// to retrieve. Format:
+  /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [interval_endTime] - Optional. Exclusive end of the interval. If
+  /// specified, a Timestamp matching this interval will have to be before the
+  /// end.
+  ///
+  /// [interval_startTime] - Optional. Inclusive start of the interval. If
+  /// specified, a Timestamp matching this interval will have to be the same or
+  /// after the start.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse
+  >
+  aggregate(
+    core.String name, {
+    core.String? filter,
+    core.String? interval_endTime,
+    core.String? interval_startTime,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'interval.endTime': ?interval_endTime == null ? null : [interval_endTime],
+      'interval.startTime': ?interval_startTime == null
+          ? null
+          : [interval_startTime],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':aggregate';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fetches the framework compliance report for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the framework compliance report to
+  /// retrieve.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
+  ///
+  /// [endTime] - Optional. The end time of the report.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse
+  >
+  fetch(
+    core.String name, {
+    core.String? endTime,
+    core.String? filter,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'endTime': ?endTime == null ? null : [endTime],
+      'filter': ?filter == null ? null : [filter],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetch';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class FoldersLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists the control compliance summary for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent scope for the framework overview page.
+  /// Format:
+  /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [pageSize] - Optional. The requested page size. The server might return
+  /// fewer items than requested. If unspecified, the default page size is 50.
+  /// The maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. A token that identifies the page of results that
+  /// the server should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse
+  >
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/dbControlComplianceSummaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class FoldersLocationsDbFrameworkComplianceSummariesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsDbFrameworkComplianceSummariesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists the framework compliance summary for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent scope for the framework compliance
+  /// summary. Format: organizations/{organization}/locations/{location}
+  /// folders/{folder}/locations/{location}
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [pageSize] - Optional. The requested page size. The server might return
+  /// fewer items than requested. If unspecified, the default page size is 50.
+  /// The maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. A token that identifies the page of results that
+  /// the server should return. Pass the next_page_token value from a previous
+  /// result.
+  ///
+  /// [view] - Optional. Specifies the level of detail to return in the
+  /// response.
+  /// Possible string values are:
+  /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED" : The default / unset
+  /// value. The API will default to the BASIC view.
+  /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC" : Includes basic compliance
+  /// metadata, but omits trend data.
+  /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL" : Includes all information,
+  /// including finding_count and controls_passing_trend. Trend data is provided
+  /// for the last 30 days.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse
+  >
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/dbFrameworkComplianceSummaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class OrganizationsResource {
@@ -79,6 +564,14 @@ class OrganizationsResource {
 class OrganizationsLocationsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsLocationsDbFindingSummariesResource get dbFindingSummaries =>
+      OrganizationsLocationsDbFindingSummariesResource(_requester);
+  OrganizationsLocationsDbFrameworkComplianceReportsResource
+  get dbFrameworkComplianceReports =>
+      OrganizationsLocationsDbFrameworkComplianceReportsResource(_requester);
+  OrganizationsLocationsDbFrameworkComplianceSummariesResource
+  get dbFrameworkComplianceSummaries =>
+      OrganizationsLocationsDbFrameworkComplianceSummariesResource(_requester);
   OrganizationsLocationsOperationsResource get operations =>
       OrganizationsLocationsOperationsResource(_requester);
   OrganizationsLocationsWorkloadsResource get workloads =>
@@ -86,6 +579,353 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsResource(commons.ApiRequester client)
     : _requester = client;
+}
+
+class OrganizationsLocationsDbFindingSummariesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsDbFindingSummariesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Lists the finding summary by category for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent scope for the framework overview page.
+  /// Formats: - projects/{project}/locations/{location} -
+  /// folders/{folder}/locations/{location} -
+  /// organizations/{organization}/locations/{location}
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [pageSize] - Optional. The requested page size. The server might return
+  /// fewer items than requested. If unspecified, the server picks an
+  /// appropriate default.
+  ///
+  /// [pageToken] - Optional. A token that identifies the page of results that
+  /// the server should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse>
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dbFindingSummaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsLocationsDbFrameworkComplianceReportsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource
+  get dbControlComplianceSummaries =>
+      OrganizationsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource(
+        _requester,
+      );
+
+  OrganizationsLocationsDbFrameworkComplianceReportsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets the aggregated compliance report over time for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the aggregated compliance report over time
+  /// to retrieve. Format:
+  /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [interval_endTime] - Optional. Exclusive end of the interval. If
+  /// specified, a Timestamp matching this interval will have to be before the
+  /// end.
+  ///
+  /// [interval_startTime] - Optional. Inclusive start of the interval. If
+  /// specified, a Timestamp matching this interval will have to be the same or
+  /// after the start.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse
+  >
+  aggregate(
+    core.String name, {
+    core.String? filter,
+    core.String? interval_endTime,
+    core.String? interval_startTime,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'interval.endTime': ?interval_endTime == null ? null : [interval_endTime],
+      'interval.startTime': ?interval_startTime == null
+          ? null
+          : [interval_startTime],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':aggregate';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fetches the framework compliance report for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the framework compliance report to
+  /// retrieve.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
+  ///
+  /// [endTime] - Optional. The end time of the report.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse
+  >
+  fetch(
+    core.String name, {
+    core.String? endTime,
+    core.String? filter,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'endTime': ?endTime == null ? null : [endTime],
+      'filter': ?filter == null ? null : [filter],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetch';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists the control compliance summary for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent scope for the framework overview page.
+  /// Format:
+  /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [pageSize] - Optional. The requested page size. The server might return
+  /// fewer items than requested. If unspecified, the default page size is 50.
+  /// The maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. A token that identifies the page of results that
+  /// the server should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse
+  >
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/dbControlComplianceSummaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsLocationsDbFrameworkComplianceSummariesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsDbFrameworkComplianceSummariesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists the framework compliance summary for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent scope for the framework compliance
+  /// summary. Format: organizations/{organization}/locations/{location}
+  /// folders/{folder}/locations/{location}
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [pageSize] - Optional. The requested page size. The server might return
+  /// fewer items than requested. If unspecified, the default page size is 50.
+  /// The maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. A token that identifies the page of results that
+  /// the server should return. Pass the next_page_token value from a previous
+  /// result.
+  ///
+  /// [view] - Optional. Specifies the level of detail to return in the
+  /// response.
+  /// Possible string values are:
+  /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED" : The default / unset
+  /// value. The API will default to the BASIC view.
+  /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC" : Includes basic compliance
+  /// metadata, but omits trend data.
+  /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL" : Includes all information,
+  /// including finding_count and controls_passing_trend. Trend data is provided
+  /// for the last 30 days.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse
+  >
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/dbFrameworkComplianceSummaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class OrganizationsLocationsOperationsResource {
@@ -945,6 +1785,8 @@ class OrganizationsLocationsWorkloadsViolationsResource {
   ///
   /// [interval_startTime] - The start of the time window.
   ///
+  /// [orderBy] - Optional. Actionable sorting delegation.
+  ///
   /// [pageSize] - Optional. Page size.
   ///
   /// [pageToken] - Optional. Page token returned from previous request.
@@ -964,6 +1806,7 @@ class OrganizationsLocationsWorkloadsViolationsResource {
     core.String? filter,
     core.String? interval_endTime,
     core.String? interval_startTime,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
@@ -974,6 +1817,7 @@ class OrganizationsLocationsWorkloadsViolationsResource {
       'interval.startTime': ?interval_startTime == null
           ? null
           : [interval_startTime],
+      'orderBy': ?orderBy == null ? null : [orderBy],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'fields': ?$fields == null ? null : [$fields],
@@ -987,6 +1831,377 @@ class OrganizationsLocationsWorkloadsViolationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1ListViolationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDbFindingSummariesResource get dbFindingSummaries =>
+      ProjectsLocationsDbFindingSummariesResource(_requester);
+  ProjectsLocationsDbFrameworkComplianceReportsResource
+  get dbFrameworkComplianceReports =>
+      ProjectsLocationsDbFrameworkComplianceReportsResource(_requester);
+  ProjectsLocationsDbFrameworkComplianceSummariesResource
+  get dbFrameworkComplianceSummaries =>
+      ProjectsLocationsDbFrameworkComplianceSummariesResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsDbFindingSummariesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDbFindingSummariesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Lists the finding summary by category for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent scope for the framework overview page.
+  /// Formats: - projects/{project}/locations/{location} -
+  /// folders/{folder}/locations/{location} -
+  /// organizations/{organization}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [pageSize] - Optional. The requested page size. The server might return
+  /// fewer items than requested. If unspecified, the server picks an
+  /// appropriate default.
+  ///
+  /// [pageToken] - Optional. A token that identifies the page of results that
+  /// the server should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse>
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dbFindingSummaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDbFrameworkComplianceReportsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource
+  get dbControlComplianceSummaries =>
+      ProjectsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource(
+        _requester,
+      );
+
+  ProjectsLocationsDbFrameworkComplianceReportsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets the aggregated compliance report over time for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the aggregated compliance report over time
+  /// to retrieve. Format:
+  /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [interval_endTime] - Optional. Exclusive end of the interval. If
+  /// specified, a Timestamp matching this interval will have to be before the
+  /// end.
+  ///
+  /// [interval_startTime] - Optional. Inclusive start of the interval. If
+  /// specified, a Timestamp matching this interval will have to be the same or
+  /// after the start.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse
+  >
+  aggregate(
+    core.String name, {
+    core.String? filter,
+    core.String? interval_endTime,
+    core.String? interval_startTime,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'interval.endTime': ?interval_endTime == null ? null : [interval_endTime],
+      'interval.startTime': ?interval_startTime == null
+          ? null
+          : [interval_startTime],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':aggregate';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fetches the framework compliance report for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the framework compliance report to
+  /// retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
+  ///
+  /// [endTime] - Optional. The end time of the report.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse
+  >
+  fetch(
+    core.String name, {
+    core.String? endTime,
+    core.String? filter,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'endTime': ?endTime == null ? null : [endTime],
+      'filter': ?filter == null ? null : [filter],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':fetch';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists the control compliance summary for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent scope for the framework overview page.
+  /// Format:
+  /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [pageSize] - Optional. The requested page size. The server might return
+  /// fewer items than requested. If unspecified, the default page size is 50.
+  /// The maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. A token that identifies the page of results that
+  /// the server should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse
+  >
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/dbControlComplianceSummaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDbFrameworkComplianceSummariesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDbFrameworkComplianceSummariesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists the framework compliance summary for a given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent scope for the framework compliance
+  /// summary. Format: organizations/{organization}/locations/{location}
+  /// folders/{folder}/locations/{location}
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filtering results.
+  ///
+  /// [pageSize] - Optional. The requested page size. The server might return
+  /// fewer items than requested. If unspecified, the default page size is 50.
+  /// The maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. A token that identifies the page of results that
+  /// the server should return. Pass the next_page_token value from a previous
+  /// result.
+  ///
+  /// [view] - Optional. Specifies the level of detail to return in the
+  /// response.
+  /// Possible string values are:
+  /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED" : The default / unset
+  /// value. The API will default to the BASIC view.
+  /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC" : Includes basic compliance
+  /// metadata, but omits trend data.
+  /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL" : Includes all information,
+  /// including finding_count and controls_passing_trend. Trend data is provided
+  /// for the last 30 days.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse
+  >
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/dbFrameworkComplianceSummaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1052,6 +2267,72 @@ class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
 /// Response for violation acknowledgement
 typedef GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse = $Empty;
 
+/// The response message for AggregateDbFrameworkComplianceReport.
+class GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse {
+  /// The list of aggregated compliance reports.
+  core.List<GoogleCloudAssuredworkloadsV1AggregatedComplianceReport>?
+  aggregatedComplianceReports;
+
+  GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse({
+    this.aggregatedComplianceReports,
+  });
+
+  GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        aggregatedComplianceReports:
+            (json_['aggregatedComplianceReports'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAssuredworkloadsV1AggregatedComplianceReport.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aggregatedComplianceReports = this.aggregatedComplianceReports;
+    return {'aggregatedComplianceReports': ?aggregatedComplianceReports};
+  }
+}
+
+/// The aggregated compliance report.
+class GoogleCloudAssuredworkloadsV1AggregatedComplianceReport {
+  /// The control assessment details of the framework.
+  GoogleCloudAssuredworkloadsV1ControlAssessmentDetails?
+  controlAssessmentDetails;
+
+  /// The report time of the aggregated compliance report.
+  core.String? reportTime;
+
+  GoogleCloudAssuredworkloadsV1AggregatedComplianceReport({
+    this.controlAssessmentDetails,
+    this.reportTime,
+  });
+
+  GoogleCloudAssuredworkloadsV1AggregatedComplianceReport.fromJson(
+    core.Map json_,
+  ) : this(
+        controlAssessmentDetails: json_.containsKey('controlAssessmentDetails')
+            ? GoogleCloudAssuredworkloadsV1ControlAssessmentDetails.fromJson(
+                json_['controlAssessmentDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        reportTime: json_['reportTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlAssessmentDetails = this.controlAssessmentDetails;
+    final reportTime = this.reportTime;
+    return {
+      'controlAssessmentDetails': ?controlAssessmentDetails,
+      'reportTime': ?reportTime,
+    };
+  }
+}
+
 /// Response containing the analysis results for the hypothetical resource move.
 class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse {
   /// List of analysis results for each asset in scope.
@@ -1111,6 +2392,99 @@ class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest {
   }
 }
 
+/// Request for archiving resource events.
+class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest {
+  /// Time to set as ArchiveTime in the archive table.
+  ///
+  /// If not provided, the current time is used.
+  ///
+  /// Optional.
+  core.String? archiveTime;
+
+  /// The number of events to process in a single transaction batch.
+  ///
+  /// Required.
+  core.int? batchSize;
+
+  /// Only events with EventTime earlier than this cutoff will be archived.
+  ///
+  /// Required.
+  core.String? eventCutoffTime;
+
+  /// The maximum total number of events to move in this request.
+  ///
+  /// Required.
+  core.int? maxEventsMove;
+
+  /// The organization ID for which to archive events.
+  ///
+  /// Required.
+  core.String? organizationId;
+
+  /// The region of the workload(s) whose events should be archived.
+  ///
+  /// This is used to filter workloads based on AssurantWorkloadData.region.
+  ///
+  /// Required.
+  core.String? region;
+
+  GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest({
+    this.archiveTime,
+    this.batchSize,
+    this.eventCutoffTime,
+    this.maxEventsMove,
+    this.organizationId,
+    this.region,
+  });
+
+  GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest.fromJson(
+    core.Map json_,
+  ) : this(
+        archiveTime: json_['archiveTime'] as core.String?,
+        batchSize: json_['batchSize'] as core.int?,
+        eventCutoffTime: json_['eventCutoffTime'] as core.String?,
+        maxEventsMove: json_['maxEventsMove'] as core.int?,
+        organizationId: json_['organizationId'] as core.String?,
+        region: json_['region'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final archiveTime = this.archiveTime;
+    final batchSize = this.batchSize;
+    final eventCutoffTime = this.eventCutoffTime;
+    final maxEventsMove = this.maxEventsMove;
+    final organizationId = this.organizationId;
+    final region = this.region;
+    return {
+      'archiveTime': ?archiveTime,
+      'batchSize': ?batchSize,
+      'eventCutoffTime': ?eventCutoffTime,
+      'maxEventsMove': ?maxEventsMove,
+      'organizationId': ?organizationId,
+      'region': ?region,
+    };
+  }
+}
+
+/// Response for archiving resource events.
+class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse {
+  /// The total number of events successfully moved to the archive table.
+  core.int? movedEventsCount;
+
+  GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse({
+    this.movedEventsCount,
+  });
+
+  GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse.fromJson(
+    core.Map json_,
+  ) : this(movedEventsCount: json_['movedEventsCount'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final movedEventsCount = this.movedEventsCount;
+    return {'movedEventsCount': ?movedEventsCount};
+  }
+}
+
 /// Represents move analysis results for an asset.
 class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
   /// List of eligible analyses performed for the asset.
@@ -1160,11 +2534,1038 @@ class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
   }
 }
 
+/// A Common Expression Language (CEL) expression that's used to create a rule.
+class GoogleCloudAssuredworkloadsV1CELExpression {
+  /// The logical expression in CEL.
+  ///
+  /// The maximum length of the condition is 1000 characters. For more
+  /// information, see
+  /// [CEL expression](https://cloud.google.com/security-command-center/docs/compliance-manager-write-cel-expressions).
+  ///
+  /// Required.
+  core.String? expression;
+
+  /// The resource instance types on which this expression is defined.
+  ///
+  /// The format is `/`. For example: `compute.googleapis.com/Instance`
+  GoogleCloudAssuredworkloadsV1StringList? resourceTypesValues;
+
+  GoogleCloudAssuredworkloadsV1CELExpression({
+    this.expression,
+    this.resourceTypesValues,
+  });
+
+  GoogleCloudAssuredworkloadsV1CELExpression.fromJson(core.Map json_)
+    : this(
+        expression: json_['expression'] as core.String?,
+        resourceTypesValues: json_.containsKey('resourceTypesValues')
+            ? GoogleCloudAssuredworkloadsV1StringList.fromJson(
+                json_['resourceTypesValues']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final expression = this.expression;
+    final resourceTypesValues = this.resourceTypesValues;
+    return {
+      'expression': ?expression,
+      'resourceTypesValues': ?resourceTypesValues,
+    };
+  }
+}
+
+/// The cloud control assessment details for non-manual cloud controls.
+class GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails {
+  /// The evaluation status of the cloud control.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EVALUATION_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "EVALUATION_STATE_PASSED" : The control is passing.
+  /// - "EVALUATION_STATE_FAILED" : The control is failing.
+  /// - "EVALUATION_STATE_NOT_ASSESSED" : The control is not assessed.
+  core.String? evaluationState;
+
+  /// The number of findings for the cloud control.
+  core.int? findingsCount;
+
+  GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails({
+    this.evaluationState,
+    this.findingsCount,
+  });
+
+  GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails.fromJson(
+    core.Map json_,
+  ) : this(
+        evaluationState: json_['evaluationState'] as core.String?,
+        findingsCount: json_['findingsCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final evaluationState = this.evaluationState;
+    final findingsCount = this.findingsCount;
+    return {
+      'evaluationState': ?evaluationState,
+      'findingsCount': ?findingsCount,
+    };
+  }
+}
+
+/// The cloud control report.
+class GoogleCloudAssuredworkloadsV1CloudControlReport {
+  /// The list of categories for the cloud control.
+  core.List<core.String>? categories;
+
+  /// The name of the cloud control.
+  core.String? cloudControl;
+
+  /// The details of a cloud control assessment.
+  GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails?
+  cloudControlAssessmentDetails;
+
+  /// The name of the cloud control deployment.
+  core.String? cloudControlDeployment;
+
+  /// The type of the cloud control.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "CUSTOM" : A cloud control that's created and managed by you.
+  /// - "BUILT_IN" : A cloud control that's provided and managed by Google.
+  core.String? cloudControlType;
+
+  /// The description of the cloud control.
+  core.String? description;
+
+  /// The display name of the cloud control.
+  core.String? displayName;
+
+  /// The enforcement mode of the cloud control.
+  /// Possible string values are:
+  /// - "ENFORCEMENT_MODE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "PREVENTIVE" : The cloud control is enforced to prevent non-compliance.
+  /// - "DETECTIVE" : The cloud control is enforced to detect non-compliance.
+  /// - "AUDIT" : The cloud control is enforced to audit for non-compliance.
+  core.String? enforcementMode;
+
+  /// The category of the finding.
+  core.String? findingCategory;
+
+  /// The severity of the finding.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Default value. This value is unused.
+  /// - "CRITICAL" : A critical vulnerability is easily discoverable by an
+  /// external actor, exploitable, and results in the direct ability to execute
+  /// arbitrary code, exfiltrate data, and otherwise gain additional access and
+  /// privileges to cloud resources and workloads. Examples include publicly
+  /// accessible unprotected user data and public SSH access with weak or no
+  /// passwords. A critical threat is a threat that can access, modify, or
+  /// delete data or execute unauthorized code within existing resources.
+  /// - "HIGH" : A high-risk vulnerability can be easily discovered and
+  /// exploited in combination with other vulnerabilities to gain direct access
+  /// and the ability to execute arbitrary code, exfiltrate data, and otherwise
+  /// gain additional access and privileges to cloud resources and workloads. An
+  /// example is a database with weak or no passwords that is only accessible
+  /// internally. This database could easily be compromised by an actor that had
+  /// access to the internal network. A high-risk threat is a threat that can
+  /// create new computational resources in an environment but can't access data
+  /// or execute code in existing resources.
+  /// - "MEDIUM" : A medium-risk vulnerability can be used by an actor to gain
+  /// access to resources or privileges that enable them to eventually (through
+  /// multiple steps or a complex exploit) gain access and the ability to
+  /// execute arbitrary code or exfiltrate data. An example is a service account
+  /// with access to more projects than it should have. If an actor gains access
+  /// to the service account, they could potentially use that access to
+  /// manipulate a project the service account was not intended to. A
+  /// medium-risk threat can cause operational impact but might not access data
+  /// or execute unauthorized code.
+  /// - "LOW" : A low-risk vulnerability hampers a security organization's
+  /// ability to detect vulnerabilities or active threats in their deployment,
+  /// or prevents the root cause investigation of security issues. An example is
+  /// monitoring and logs being disabled for resource configurations and access.
+  /// A low-risk threat is a threat that has obtained minimal access to an
+  /// environment but can't access data, execute code, or create resources.
+  core.String? findingSeverity;
+
+  /// The major revision IDs of the frameworks that the cloud control belongs
+  /// to.
+  core.List<core.String>? frameworkMajorRevisionIds;
+
+  /// The major revision ID of the cloud control.
+  core.String? majorRevisionId;
+
+  /// The details of a manual cloud control assessment.
+  GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails?
+  manualCloudControlAssessmentDetails;
+
+  /// The minor revision ID of the cloud control.
+  core.String? minorRevisionId;
+
+  /// The list of rules that correspond to the cloud control.
+  core.List<GoogleCloudAssuredworkloadsV1Rule>? rules;
+
+  /// The list of similar controls.
+  core.List<GoogleCloudAssuredworkloadsV1SimilarControls>? similarControls;
+
+  GoogleCloudAssuredworkloadsV1CloudControlReport({
+    this.categories,
+    this.cloudControl,
+    this.cloudControlAssessmentDetails,
+    this.cloudControlDeployment,
+    this.cloudControlType,
+    this.description,
+    this.displayName,
+    this.enforcementMode,
+    this.findingCategory,
+    this.findingSeverity,
+    this.frameworkMajorRevisionIds,
+    this.majorRevisionId,
+    this.manualCloudControlAssessmentDetails,
+    this.minorRevisionId,
+    this.rules,
+    this.similarControls,
+  });
+
+  GoogleCloudAssuredworkloadsV1CloudControlReport.fromJson(core.Map json_)
+    : this(
+        categories: (json_['categories'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        cloudControl: json_['cloudControl'] as core.String?,
+        cloudControlAssessmentDetails:
+            json_.containsKey('cloudControlAssessmentDetails')
+            ? GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails.fromJson(
+                json_['cloudControlAssessmentDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cloudControlDeployment: json_['cloudControlDeployment'] as core.String?,
+        cloudControlType: json_['cloudControlType'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        enforcementMode: json_['enforcementMode'] as core.String?,
+        findingCategory: json_['findingCategory'] as core.String?,
+        findingSeverity: json_['findingSeverity'] as core.String?,
+        frameworkMajorRevisionIds:
+            (json_['frameworkMajorRevisionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        majorRevisionId: json_['majorRevisionId'] as core.String?,
+        manualCloudControlAssessmentDetails:
+            json_.containsKey('manualCloudControlAssessmentDetails')
+            ? GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails.fromJson(
+                json_['manualCloudControlAssessmentDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        minorRevisionId: json_['minorRevisionId'] as core.String?,
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAssuredworkloadsV1Rule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        similarControls: (json_['similarControls'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAssuredworkloadsV1SimilarControls.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final categories = this.categories;
+    final cloudControl = this.cloudControl;
+    final cloudControlAssessmentDetails = this.cloudControlAssessmentDetails;
+    final cloudControlDeployment = this.cloudControlDeployment;
+    final cloudControlType = this.cloudControlType;
+    final description = this.description;
+    final displayName = this.displayName;
+    final enforcementMode = this.enforcementMode;
+    final findingCategory = this.findingCategory;
+    final findingSeverity = this.findingSeverity;
+    final frameworkMajorRevisionIds = this.frameworkMajorRevisionIds;
+    final majorRevisionId = this.majorRevisionId;
+    final manualCloudControlAssessmentDetails =
+        this.manualCloudControlAssessmentDetails;
+    final minorRevisionId = this.minorRevisionId;
+    final rules = this.rules;
+    final similarControls = this.similarControls;
+    return {
+      'categories': ?categories,
+      'cloudControl': ?cloudControl,
+      'cloudControlAssessmentDetails': ?cloudControlAssessmentDetails,
+      'cloudControlDeployment': ?cloudControlDeployment,
+      'cloudControlType': ?cloudControlType,
+      'description': ?description,
+      'displayName': ?displayName,
+      'enforcementMode': ?enforcementMode,
+      'findingCategory': ?findingCategory,
+      'findingSeverity': ?findingSeverity,
+      'frameworkMajorRevisionIds': ?frameworkMajorRevisionIds,
+      'majorRevisionId': ?majorRevisionId,
+      'manualCloudControlAssessmentDetails':
+          ?manualCloudControlAssessmentDetails,
+      'minorRevisionId': ?minorRevisionId,
+      'rules': ?rules,
+      'similarControls': ?similarControls,
+    };
+  }
+}
+
+/// The details for a control assessment.
+class GoogleCloudAssuredworkloadsV1ControlAssessmentDetails {
+  /// The list of controls that were assessed and are passing.
+  core.List<core.String>? assessedPassingControlIds;
+
+  /// The number of controls that were assessed and are passing.
+  core.int? assessedPassingControls;
+
+  /// The list of controls that are failing.
+  core.List<core.String>? failingControlIds;
+
+  /// The number of controls that are failing.
+  core.int? failingControls;
+
+  /// The list of controls that aren't assessed because they require manual
+  /// review.
+  core.List<core.String>? notAssessedControlIds;
+
+  /// The number of controls that aren't assessed because they require manual
+  /// review.
+  core.int? notAssessedControls;
+
+  /// The list of controls that are passing or not assessed.
+  core.List<core.String>? passingControlIds;
+
+  /// The number of controls that are passing or not assessed.
+  core.int? passingControls;
+
+  GoogleCloudAssuredworkloadsV1ControlAssessmentDetails({
+    this.assessedPassingControlIds,
+    this.assessedPassingControls,
+    this.failingControlIds,
+    this.failingControls,
+    this.notAssessedControlIds,
+    this.notAssessedControls,
+    this.passingControlIds,
+    this.passingControls,
+  });
+
+  GoogleCloudAssuredworkloadsV1ControlAssessmentDetails.fromJson(core.Map json_)
+    : this(
+        assessedPassingControlIds:
+            (json_['assessedPassingControlIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        assessedPassingControls: json_['assessedPassingControls'] as core.int?,
+        failingControlIds: (json_['failingControlIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        failingControls: json_['failingControls'] as core.int?,
+        notAssessedControlIds: (json_['notAssessedControlIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        notAssessedControls: json_['notAssessedControls'] as core.int?,
+        passingControlIds: (json_['passingControlIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        passingControls: json_['passingControls'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final assessedPassingControlIds = this.assessedPassingControlIds;
+    final assessedPassingControls = this.assessedPassingControls;
+    final failingControlIds = this.failingControlIds;
+    final failingControls = this.failingControls;
+    final notAssessedControlIds = this.notAssessedControlIds;
+    final notAssessedControls = this.notAssessedControls;
+    final passingControlIds = this.passingControlIds;
+    final passingControls = this.passingControls;
+    return {
+      'assessedPassingControlIds': ?assessedPassingControlIds,
+      'assessedPassingControls': ?assessedPassingControls,
+      'failingControlIds': ?failingControlIds,
+      'failingControls': ?failingControls,
+      'notAssessedControlIds': ?notAssessedControlIds,
+      'notAssessedControls': ?notAssessedControls,
+      'passingControlIds': ?passingControlIds,
+      'passingControls': ?passingControls,
+    };
+  }
+}
+
+/// The details for control compliance.
+class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary {
+  /// The list of cloud control reports.
+  core.List<GoogleCloudAssuredworkloadsV1CloudControlReport>?
+  cloudControlReports;
+
+  /// The list of compliance frameworks that the control belongs to.
+  core.List<core.String>? complianceFrameworks;
+
+  /// The name of the control.
+  core.String? control;
+
+  /// The responsibility type for the control.
+  /// Possible string values are:
+  /// - "REGULATORY_CONTROL_RESPONSIBILITY_TYPE_UNSPECIFIED" : Default value.
+  /// This value is unused.
+  /// - "GOOGLE" : Google's responsibility.
+  /// - "CUSTOMER" : Your responsibility.
+  /// - "SHARED" : Shared responsibility.
+  core.String? controlResponsibilityType;
+
+  /// The description of the control.
+  core.String? description;
+
+  /// The display name of the control.
+  core.String? displayName;
+
+  /// Whether the control is a fake control.
+  ///
+  /// Fake controls are created and mapped to cloud controls that don't belong
+  /// to a control group.
+  core.bool? isFakeControl;
+
+  /// Identifier.
+  ///
+  /// The name of the control compliance summary.
+  core.String? name;
+
+  /// The overall evaluation status of the control.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EVALUATION_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "EVALUATION_STATE_PASSED" : The control is passing.
+  /// - "EVALUATION_STATE_FAILED" : The control is failing.
+  /// - "EVALUATION_STATE_NOT_ASSESSED" : The control is not assessed.
+  core.String? overallEvaluationState;
+
+  /// The list of similar controls.
+  core.List<GoogleCloudAssuredworkloadsV1SimilarControls>? similarControls;
+
+  /// The total number of findings for the control.
+  core.int? totalFindingsCount;
+
+  GoogleCloudAssuredworkloadsV1DbControlComplianceSummary({
+    this.cloudControlReports,
+    this.complianceFrameworks,
+    this.control,
+    this.controlResponsibilityType,
+    this.description,
+    this.displayName,
+    this.isFakeControl,
+    this.name,
+    this.overallEvaluationState,
+    this.similarControls,
+    this.totalFindingsCount,
+  });
+
+  GoogleCloudAssuredworkloadsV1DbControlComplianceSummary.fromJson(
+    core.Map json_,
+  ) : this(
+        cloudControlReports: (json_['cloudControlReports'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudAssuredworkloadsV1CloudControlReport.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        complianceFrameworks: (json_['complianceFrameworks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        control: json_['control'] as core.String?,
+        controlResponsibilityType:
+            json_['controlResponsibilityType'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        isFakeControl: json_['isFakeControl'] as core.bool?,
+        name: json_['name'] as core.String?,
+        overallEvaluationState: json_['overallEvaluationState'] as core.String?,
+        similarControls: (json_['similarControls'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAssuredworkloadsV1SimilarControls.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        totalFindingsCount: json_['totalFindingsCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudControlReports = this.cloudControlReports;
+    final complianceFrameworks = this.complianceFrameworks;
+    final control = this.control;
+    final controlResponsibilityType = this.controlResponsibilityType;
+    final description = this.description;
+    final displayName = this.displayName;
+    final isFakeControl = this.isFakeControl;
+    final name = this.name;
+    final overallEvaluationState = this.overallEvaluationState;
+    final similarControls = this.similarControls;
+    final totalFindingsCount = this.totalFindingsCount;
+    return {
+      'cloudControlReports': ?cloudControlReports,
+      'complianceFrameworks': ?complianceFrameworks,
+      'control': ?control,
+      'controlResponsibilityType': ?controlResponsibilityType,
+      'description': ?description,
+      'displayName': ?displayName,
+      'isFakeControl': ?isFakeControl,
+      'name': ?name,
+      'overallEvaluationState': ?overallEvaluationState,
+      'similarControls': ?similarControls,
+      'totalFindingsCount': ?totalFindingsCount,
+    };
+  }
+}
+
+/// The details for a finding.
+class GoogleCloudAssuredworkloadsV1DbFindingSummary {
+  /// The category of the finding.
+  ///
+  /// Output only.
+  core.String? findingCategory;
+
+  /// The class of the finding.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FINDING_CLASS_UNSPECIFIED" : Default value. This value is unused.
+  /// - "THREAT" : The activity is unwanted or malicious.
+  /// - "VULNERABILITY" : A potential weakness in software that increases risk
+  /// to confidentiality, integrity, and availability.
+  /// - "MISCONFIGURATION" : A potential weakness in a cloud resource or asset
+  /// configuration that increases risk.
+  /// - "OBSERVATION" : A security observation that is for informational
+  /// purposes.
+  /// - "SCC_ERROR" : An error that prevents Security Command Center from
+  /// functioning properly.
+  /// - "POSTURE_VIOLATION" : A potential security risk that's due to a change
+  /// in the security posture.
+  /// - "TOXIC_COMBINATION" : A combination of security issues that represent a
+  /// more severe security problem when taken together.
+  /// - "SENSITIVE_DATA_RISK" : A potential security risk to data assets that
+  /// contain sensitive data.
+  /// - "CHOKEPOINT" : A resource or resource group where high risk attack paths
+  /// converge, based on attack path simulations (APS).
+  core.String? findingClass;
+
+  /// The count of the finding.
+  ///
+  /// Output only.
+  core.String? findingCount;
+
+  /// Identifier.
+  ///
+  /// The name of the finding summary.
+  core.String? name;
+
+  /// Number of active organization policy findings for this category.
+  ///
+  /// Output only.
+  core.String? organizationPolicyFindingCount;
+
+  /// The list of compliance frameworks that the finding belongs to.
+  ///
+  /// Optional.
+  core.List<core.String>? relatedFrameworks;
+
+  /// Number of active resource findings for this category.
+  ///
+  /// Output only.
+  core.String? resourceFindingCount;
+
+  /// The severity of the finding.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Default value. This value is unused.
+  /// - "CRITICAL" : A critical vulnerability is easily discoverable by an
+  /// external actor, exploitable, and results in the direct ability to execute
+  /// arbitrary code, exfiltrate data, and otherwise gain additional access and
+  /// privileges to cloud resources and workloads. Examples include publicly
+  /// accessible unprotected user data and public SSH access with weak or no
+  /// passwords. A critical threat is a threat that can access, modify, or
+  /// delete data or execute unauthorized code within existing resources.
+  /// - "HIGH" : A high-risk vulnerability can be easily discovered and
+  /// exploited in combination with other vulnerabilities to gain direct access
+  /// and the ability to execute arbitrary code, exfiltrate data, and otherwise
+  /// gain additional access and privileges to cloud resources and workloads. An
+  /// example is a database with weak or no passwords that is only accessible
+  /// internally. This database could easily be compromised by an actor that had
+  /// access to the internal network. A high-risk threat is a threat that can
+  /// create new computational resources in an environment but can't access data
+  /// or execute code in existing resources.
+  /// - "MEDIUM" : A medium-risk vulnerability can be used by an actor to gain
+  /// access to resources or privileges that enable them to eventually (through
+  /// multiple steps or a complex exploit) gain access and the ability to
+  /// execute arbitrary code or exfiltrate data. An example is a service account
+  /// with access to more projects than it should have. If an actor gains access
+  /// to the service account, they could potentially use that access to
+  /// manipulate a project the service account was not intended to. A
+  /// medium-risk threat can cause operational impact but might not access data
+  /// or execute unauthorized code.
+  /// - "LOW" : A low-risk vulnerability hampers a security organization's
+  /// ability to detect vulnerabilities or active threats in their deployment,
+  /// or prevents the root cause investigation of security issues. An example is
+  /// monitoring and logs being disabled for resource configurations and access.
+  /// A low-risk threat is a threat that has obtained minimal access to an
+  /// environment but can't access data, execute code, or create resources.
+  core.String? severity;
+
+  /// The last updated time of the finding.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudAssuredworkloadsV1DbFindingSummary({
+    this.findingCategory,
+    this.findingClass,
+    this.findingCount,
+    this.name,
+    this.organizationPolicyFindingCount,
+    this.relatedFrameworks,
+    this.resourceFindingCount,
+    this.severity,
+    this.updateTime,
+  });
+
+  GoogleCloudAssuredworkloadsV1DbFindingSummary.fromJson(core.Map json_)
+    : this(
+        findingCategory: json_['findingCategory'] as core.String?,
+        findingClass: json_['findingClass'] as core.String?,
+        findingCount: json_['findingCount'] as core.String?,
+        name: json_['name'] as core.String?,
+        organizationPolicyFindingCount:
+            json_['organizationPolicyFindingCount'] as core.String?,
+        relatedFrameworks: (json_['relatedFrameworks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        resourceFindingCount: json_['resourceFindingCount'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final findingCategory = this.findingCategory;
+    final findingClass = this.findingClass;
+    final findingCount = this.findingCount;
+    final name = this.name;
+    final organizationPolicyFindingCount = this.organizationPolicyFindingCount;
+    final relatedFrameworks = this.relatedFrameworks;
+    final resourceFindingCount = this.resourceFindingCount;
+    final severity = this.severity;
+    final updateTime = this.updateTime;
+    return {
+      'findingCategory': ?findingCategory,
+      'findingClass': ?findingClass,
+      'findingCount': ?findingCount,
+      'name': ?name,
+      'organizationPolicyFindingCount': ?organizationPolicyFindingCount,
+      'relatedFrameworks': ?relatedFrameworks,
+      'resourceFindingCount': ?resourceFindingCount,
+      'severity': ?severity,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// The details for a framework compliance summary.
+class GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary {
+  /// The control assessment details of the framework.
+  GoogleCloudAssuredworkloadsV1ControlAssessmentDetails?
+  controlAssessmentDetails;
+
+  /// The trend of controls that are passing for the given duration.
+  ///
+  /// Output only.
+  GoogleCloudAssuredworkloadsV1Trend? controlsPassingTrend;
+
+  /// The count of the findings generated against the framework.
+  ///
+  /// Output only.
+  core.String? findingCount;
+
+  /// The name of the framework.
+  core.String? framework;
+
+  /// The list of framework categories supported by the framework.
+  core.List<core.String>? frameworkCategories;
+
+  /// The display name for the framework.
+  ///
+  /// Optional.
+  core.String? frameworkDisplayName;
+
+  /// The type of framework.
+  /// Possible string values are:
+  /// - "FRAMEWORK_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "BUILT_IN" : A framework that's provided and managed by Google.
+  /// - "CUSTOM" : A framework that's created and managed by you.
+  core.String? frameworkType;
+
+  /// The major revision ID of the framework.
+  core.String? majorRevisionId;
+
+  /// The minor revision ID of the framework.
+  core.String? minorRevisionId;
+
+  /// Identifier.
+  ///
+  /// The name of the framework compliance summary.
+  core.String? name;
+
+  /// The list of cloud providers supported by the framework.
+  core.List<core.String>? supportedCloudProviders;
+
+  /// The target resource details for the framework.
+  core.List<GoogleCloudAssuredworkloadsV1TargetResourceDetails>?
+  targetResourceDetails;
+
+  GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary({
+    this.controlAssessmentDetails,
+    this.controlsPassingTrend,
+    this.findingCount,
+    this.framework,
+    this.frameworkCategories,
+    this.frameworkDisplayName,
+    this.frameworkType,
+    this.majorRevisionId,
+    this.minorRevisionId,
+    this.name,
+    this.supportedCloudProviders,
+    this.targetResourceDetails,
+  });
+
+  GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary.fromJson(
+    core.Map json_,
+  ) : this(
+        controlAssessmentDetails: json_.containsKey('controlAssessmentDetails')
+            ? GoogleCloudAssuredworkloadsV1ControlAssessmentDetails.fromJson(
+                json_['controlAssessmentDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        controlsPassingTrend: json_.containsKey('controlsPassingTrend')
+            ? GoogleCloudAssuredworkloadsV1Trend.fromJson(
+                json_['controlsPassingTrend']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        findingCount: json_['findingCount'] as core.String?,
+        framework: json_['framework'] as core.String?,
+        frameworkCategories: (json_['frameworkCategories'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        frameworkDisplayName: json_['frameworkDisplayName'] as core.String?,
+        frameworkType: json_['frameworkType'] as core.String?,
+        majorRevisionId: json_['majorRevisionId'] as core.String?,
+        minorRevisionId: json_['minorRevisionId'] as core.String?,
+        name: json_['name'] as core.String?,
+        supportedCloudProviders:
+            (json_['supportedCloudProviders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        targetResourceDetails: (json_['targetResourceDetails'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudAssuredworkloadsV1TargetResourceDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlAssessmentDetails = this.controlAssessmentDetails;
+    final controlsPassingTrend = this.controlsPassingTrend;
+    final findingCount = this.findingCount;
+    final framework = this.framework;
+    final frameworkCategories = this.frameworkCategories;
+    final frameworkDisplayName = this.frameworkDisplayName;
+    final frameworkType = this.frameworkType;
+    final majorRevisionId = this.majorRevisionId;
+    final minorRevisionId = this.minorRevisionId;
+    final name = this.name;
+    final supportedCloudProviders = this.supportedCloudProviders;
+    final targetResourceDetails = this.targetResourceDetails;
+    return {
+      'controlAssessmentDetails': ?controlAssessmentDetails,
+      'controlsPassingTrend': ?controlsPassingTrend,
+      'findingCount': ?findingCount,
+      'framework': ?framework,
+      'frameworkCategories': ?frameworkCategories,
+      'frameworkDisplayName': ?frameworkDisplayName,
+      'frameworkType': ?frameworkType,
+      'majorRevisionId': ?majorRevisionId,
+      'minorRevisionId': ?minorRevisionId,
+      'name': ?name,
+      'supportedCloudProviders': ?supportedCloudProviders,
+      'targetResourceDetails': ?targetResourceDetails,
+    };
+  }
+}
+
 /// Response for EnableComplianceUpdates endpoint.
 typedef GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse = $Empty;
 
 /// Response for EnableResourceMonitoring endpoint.
 typedef GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse = $Empty;
+
+/// The response message for FetchDbFrameworkComplianceReport.
+class GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse {
+  /// The control assessment details of the framework.
+  GoogleCloudAssuredworkloadsV1ControlAssessmentDetails?
+  controlAssessmentDetails;
+
+  /// The name of the framework.
+  core.String? framework;
+
+  /// The list of framework categories supported.
+  core.List<core.String>? frameworkCategories;
+
+  /// The description of the framework.
+  core.String? frameworkDescription;
+
+  /// The display name for the framework.
+  ///
+  /// Optional.
+  core.String? frameworkDisplayName;
+
+  /// The type of the framework.
+  /// Possible string values are:
+  /// - "FRAMEWORK_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "BUILT_IN" : A framework that's provided and managed by Google.
+  /// - "CUSTOM" : A framework that's created and managed by you.
+  core.String? frameworkType;
+
+  /// The latest major revision ID of the framework.
+  core.String? majorRevisionId;
+
+  /// The latest minor revision ID of the latest major revision of the
+  /// framework.
+  core.String? minorRevisionId;
+
+  /// The name of the framework compliance report.
+  core.String? name;
+
+  /// The list of cloud providers that are supported by the framework.
+  core.List<core.String>? supportedCloudProviders;
+
+  /// The target resource details of the framework.
+  core.List<GoogleCloudAssuredworkloadsV1TargetResourceDetails>?
+  targetResourceDetails;
+
+  /// The last updated time of the report.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse({
+    this.controlAssessmentDetails,
+    this.framework,
+    this.frameworkCategories,
+    this.frameworkDescription,
+    this.frameworkDisplayName,
+    this.frameworkType,
+    this.majorRevisionId,
+    this.minorRevisionId,
+    this.name,
+    this.supportedCloudProviders,
+    this.targetResourceDetails,
+    this.updateTime,
+  });
+
+  GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        controlAssessmentDetails: json_.containsKey('controlAssessmentDetails')
+            ? GoogleCloudAssuredworkloadsV1ControlAssessmentDetails.fromJson(
+                json_['controlAssessmentDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        framework: json_['framework'] as core.String?,
+        frameworkCategories: (json_['frameworkCategories'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        frameworkDescription: json_['frameworkDescription'] as core.String?,
+        frameworkDisplayName: json_['frameworkDisplayName'] as core.String?,
+        frameworkType: json_['frameworkType'] as core.String?,
+        majorRevisionId: json_['majorRevisionId'] as core.String?,
+        minorRevisionId: json_['minorRevisionId'] as core.String?,
+        name: json_['name'] as core.String?,
+        supportedCloudProviders:
+            (json_['supportedCloudProviders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        targetResourceDetails: (json_['targetResourceDetails'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudAssuredworkloadsV1TargetResourceDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlAssessmentDetails = this.controlAssessmentDetails;
+    final framework = this.framework;
+    final frameworkCategories = this.frameworkCategories;
+    final frameworkDescription = this.frameworkDescription;
+    final frameworkDisplayName = this.frameworkDisplayName;
+    final frameworkType = this.frameworkType;
+    final majorRevisionId = this.majorRevisionId;
+    final minorRevisionId = this.minorRevisionId;
+    final name = this.name;
+    final supportedCloudProviders = this.supportedCloudProviders;
+    final targetResourceDetails = this.targetResourceDetails;
+    final updateTime = this.updateTime;
+    return {
+      'controlAssessmentDetails': ?controlAssessmentDetails,
+      'framework': ?framework,
+      'frameworkCategories': ?frameworkCategories,
+      'frameworkDescription': ?frameworkDescription,
+      'frameworkDisplayName': ?frameworkDisplayName,
+      'frameworkType': ?frameworkType,
+      'majorRevisionId': ?majorRevisionId,
+      'minorRevisionId': ?minorRevisionId,
+      'name': ?name,
+      'supportedCloudProviders': ?supportedCloudProviders,
+      'targetResourceDetails': ?targetResourceDetails,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// The response message for ListDBControlComplianceSummaries.
+class GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse {
+  /// The list of control compliance details.
+  core.List<GoogleCloudAssuredworkloadsV1DbControlComplianceSummary>?
+  dbControlComplianceSummaries;
+
+  /// The token to retrieve the next page of results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse({
+    this.dbControlComplianceSummaries,
+    this.nextPageToken,
+  });
+
+  GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        dbControlComplianceSummaries:
+            (json_['dbControlComplianceSummaries'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAssuredworkloadsV1DbControlComplianceSummary.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dbControlComplianceSummaries = this.dbControlComplianceSummaries;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'dbControlComplianceSummaries': ?dbControlComplianceSummaries,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
+/// The response message for ListDbFindingSummaries.
+class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse {
+  /// List of finding summary by category.
+  core.List<GoogleCloudAssuredworkloadsV1DbFindingSummary>? dbFindingSummaries;
+
+  /// The token to retrieve the next page of results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse({
+    this.dbFindingSummaries,
+    this.nextPageToken,
+  });
+
+  GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        dbFindingSummaries: (json_['dbFindingSummaries'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAssuredworkloadsV1DbFindingSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dbFindingSummaries = this.dbFindingSummaries;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'dbFindingSummaries': ?dbFindingSummaries,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
+/// The response message for ListDbFrameworkComplianceSummariesResponse.
+class GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse {
+  /// The list of framework compliance summaries.
+  core.List<GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary>?
+  dbFrameworkComplianceSummaries;
+
+  /// The token to retrieve the next page of results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse({
+    this.dbFrameworkComplianceSummaries,
+    this.nextPageToken,
+  });
+
+  GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        dbFrameworkComplianceSummaries:
+            (json_['dbFrameworkComplianceSummaries'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dbFrameworkComplianceSummaries = this.dbFrameworkComplianceSummaries;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'dbFrameworkComplianceSummaries': ?dbFrameworkComplianceSummaries,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
 
 /// Response of ListViolations endpoint.
 class GoogleCloudAssuredworkloadsV1ListViolationsResponse {
@@ -1173,17 +3574,22 @@ class GoogleCloudAssuredworkloadsV1ListViolationsResponse {
   /// Returns empty if reached the last page.
   core.String? nextPageToken;
 
+  /// The total number of violations.
+  core.int? totalSize;
+
   /// List of Violations under a Workload.
   core.List<GoogleCloudAssuredworkloadsV1Violation>? violations;
 
   GoogleCloudAssuredworkloadsV1ListViolationsResponse({
     this.nextPageToken,
+    this.totalSize,
     this.violations,
   });
 
   GoogleCloudAssuredworkloadsV1ListViolationsResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
+        totalSize: json_['totalSize'] as core.int?,
         violations: (json_['violations'] as core.List?)
             ?.map(
               (value) => GoogleCloudAssuredworkloadsV1Violation.fromJson(
@@ -1195,8 +3601,13 @@ class GoogleCloudAssuredworkloadsV1ListViolationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() {
     final nextPageToken = this.nextPageToken;
+    final totalSize = this.totalSize;
     final violations = this.violations;
-    return {'nextPageToken': ?nextPageToken, 'violations': ?violations};
+    return {
+      'nextPageToken': ?nextPageToken,
+      'totalSize': ?totalSize,
+      'violations': ?violations,
+    };
   }
 }
 
@@ -1269,6 +3680,30 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
     final nextPageToken = this.nextPageToken;
     final workloads = this.workloads;
     return {'nextPageToken': ?nextPageToken, 'workloads': ?workloads};
+  }
+}
+
+/// The details for a manual cloud control assessment.
+class GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails {
+  /// The guide for assessing a cloud control manually.
+  core.List<core.String>? manualCloudControlGuide;
+
+  GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails({
+    this.manualCloudControlGuide,
+  });
+
+  GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails.fromJson(
+    core.Map json_,
+  ) : this(
+        manualCloudControlGuide:
+            (json_['manualCloudControlGuide'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final manualCloudControlGuide = this.manualCloudControlGuide;
+    return {'manualCloudControlGuide': ?manualCloudControlGuide};
   }
 }
 
@@ -1626,6 +4061,299 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
 
 /// Response for restricting the list of allowed resources.
 typedef GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse = $Empty;
+
+/// Request for reverting archived resource events.
+class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest {
+  /// Only events within this time range will be reverted.
+  ///
+  /// This helps prevent reverting everything when something goes wrong.
+  ///
+  /// Required.
+  core.String? archiveEndTime;
+
+  /// Only events within this time range will be reverted.
+  ///
+  /// This helps prevent reverting everything when something goes wrong.
+  ///
+  /// Required.
+  core.String? archiveStartTime;
+
+  /// The number of events to process in a single transaction batch.
+  ///
+  /// Required.
+  core.int? batchSize;
+
+  /// The maximum total number of events to move in this request.
+  ///
+  /// Required.
+  core.int? maxEventsMove;
+
+  /// The organization ID for which to revert events.
+  ///
+  /// Required.
+  core.String? organizationId;
+
+  /// The region of the workload(s) whose events should be reverted.
+  ///
+  /// This is used to filter workloads based on AssurantWorkloadData.region.
+  ///
+  /// Required.
+  core.String? region;
+
+  GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest({
+    this.archiveEndTime,
+    this.archiveStartTime,
+    this.batchSize,
+    this.maxEventsMove,
+    this.organizationId,
+    this.region,
+  });
+
+  GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest.fromJson(
+    core.Map json_,
+  ) : this(
+        archiveEndTime: json_['archiveEndTime'] as core.String?,
+        archiveStartTime: json_['archiveStartTime'] as core.String?,
+        batchSize: json_['batchSize'] as core.int?,
+        maxEventsMove: json_['maxEventsMove'] as core.int?,
+        organizationId: json_['organizationId'] as core.String?,
+        region: json_['region'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final archiveEndTime = this.archiveEndTime;
+    final archiveStartTime = this.archiveStartTime;
+    final batchSize = this.batchSize;
+    final maxEventsMove = this.maxEventsMove;
+    final organizationId = this.organizationId;
+    final region = this.region;
+    return {
+      'archiveEndTime': ?archiveEndTime,
+      'archiveStartTime': ?archiveStartTime,
+      'batchSize': ?batchSize,
+      'maxEventsMove': ?maxEventsMove,
+      'organizationId': ?organizationId,
+      'region': ?region,
+    };
+  }
+}
+
+/// Response for reverting archived resource events.
+class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse {
+  /// The total number of events successfully moved to the original table.
+  core.int? movedEventsCount;
+
+  GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse({
+    this.movedEventsCount,
+  });
+
+  GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse.fromJson(
+    core.Map json_,
+  ) : this(movedEventsCount: json_['movedEventsCount'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final movedEventsCount = this.movedEventsCount;
+    return {'movedEventsCount': ?movedEventsCount};
+  }
+}
+
+/// A rule in the cloud control.
+class GoogleCloudAssuredworkloadsV1Rule {
+  /// The rule's logic expression in Common Expression Language (CEL).
+  GoogleCloudAssuredworkloadsV1CELExpression? celExpression;
+
+  /// The rule description.
+  ///
+  /// The maximum length is 2000 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The functionality that's enabled by the rule.
+  ///
+  /// Required.
+  core.List<core.String>? ruleActionTypes;
+
+  GoogleCloudAssuredworkloadsV1Rule({
+    this.celExpression,
+    this.description,
+    this.ruleActionTypes,
+  });
+
+  GoogleCloudAssuredworkloadsV1Rule.fromJson(core.Map json_)
+    : this(
+        celExpression: json_.containsKey('celExpression')
+            ? GoogleCloudAssuredworkloadsV1CELExpression.fromJson(
+                json_['celExpression'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        description: json_['description'] as core.String?,
+        ruleActionTypes: (json_['ruleActionTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final celExpression = this.celExpression;
+    final description = this.description;
+    final ruleActionTypes = this.ruleActionTypes;
+    return {
+      'celExpression': ?celExpression,
+      'description': ?description,
+      'ruleActionTypes': ?ruleActionTypes,
+    };
+  }
+}
+
+/// The similar controls.
+class GoogleCloudAssuredworkloadsV1SimilarControls {
+  /// The ID of the control.
+  core.String? controlId;
+
+  /// The name of the framework.
+  core.String? framework;
+
+  GoogleCloudAssuredworkloadsV1SimilarControls({
+    this.controlId,
+    this.framework,
+  });
+
+  GoogleCloudAssuredworkloadsV1SimilarControls.fromJson(core.Map json_)
+    : this(
+        controlId: json_['controlId'] as core.String?,
+        framework: json_['framework'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlId = this.controlId;
+    final framework = this.framework;
+    return {'controlId': ?controlId, 'framework': ?framework};
+  }
+}
+
+/// A list of strings for the parameter value.
+class GoogleCloudAssuredworkloadsV1StringList {
+  /// The strings in the list.
+  ///
+  /// Required.
+  core.List<core.String>? values;
+
+  GoogleCloudAssuredworkloadsV1StringList({this.values});
+
+  GoogleCloudAssuredworkloadsV1StringList.fromJson(core.Map json_)
+    : this(
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
+}
+
+/// The details for a target resource.
+class GoogleCloudAssuredworkloadsV1TargetResourceDetails {
+  /// The create time of the target resource.
+  core.String? createTime;
+
+  /// The framework deployment name for the target resource.
+  ///
+  /// For example,
+  /// `organizations/{organization_id}/locations/{location}/frameworkDeployments/{framework_deployment_id}`
+  core.String? frameworkDeployment;
+
+  /// The major revision ID of the framework for the target resource.
+  core.String? majorRevisionId;
+
+  /// The minor revision ID of the framework for the target resource.
+  core.String? minorRevisionId;
+
+  /// The target resource.
+  ///
+  /// For example, `organizations/1234567890`, `projects/1234567890`, or
+  /// `folders/1234567890`.
+  core.String? targetResource;
+
+  /// The display name of the target resource.
+  ///
+  /// For example, `google.com`, `staging-project`, or `development-folder`.
+  core.String? targetResourceDisplayName;
+
+  /// The update time of the target resource.
+  core.String? updateTime;
+
+  GoogleCloudAssuredworkloadsV1TargetResourceDetails({
+    this.createTime,
+    this.frameworkDeployment,
+    this.majorRevisionId,
+    this.minorRevisionId,
+    this.targetResource,
+    this.targetResourceDisplayName,
+    this.updateTime,
+  });
+
+  GoogleCloudAssuredworkloadsV1TargetResourceDetails.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        frameworkDeployment: json_['frameworkDeployment'] as core.String?,
+        majorRevisionId: json_['majorRevisionId'] as core.String?,
+        minorRevisionId: json_['minorRevisionId'] as core.String?,
+        targetResource: json_['targetResource'] as core.String?,
+        targetResourceDisplayName:
+            json_['targetResourceDisplayName'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final frameworkDeployment = this.frameworkDeployment;
+    final majorRevisionId = this.majorRevisionId;
+    final minorRevisionId = this.minorRevisionId;
+    final targetResource = this.targetResource;
+    final targetResourceDisplayName = this.targetResourceDisplayName;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'frameworkDeployment': ?frameworkDeployment,
+      'majorRevisionId': ?majorRevisionId,
+      'minorRevisionId': ?minorRevisionId,
+      'targetResource': ?targetResource,
+      'targetResourceDisplayName': ?targetResourceDisplayName,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// The trend of a compliance metric.
+class GoogleCloudAssuredworkloadsV1Trend {
+  /// The duration for the trend.
+  ///
+  /// Output only.
+  core.String? duration;
+
+  /// The trend value as a percentage.
+  ///
+  /// The value can be positive or negative.
+  ///
+  /// Output only.
+  core.double? valuePercent;
+
+  GoogleCloudAssuredworkloadsV1Trend({this.duration, this.valuePercent});
+
+  GoogleCloudAssuredworkloadsV1Trend.fromJson(core.Map json_)
+    : this(
+        duration: json_['duration'] as core.String?,
+        valuePercent: (json_['valuePercent'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final duration = this.duration;
+    final valuePercent = this.valuePercent;
+    return {'duration': ?duration, 'valuePercent': ?valuePercent};
+  }
+}
 
 /// The details of the update.
 class GoogleCloudAssuredworkloadsV1UpdateDetails {
@@ -2099,6 +4827,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// Support
   /// - "ISRAEL_DATA_BOUNDARY_AND_SUPPORT" : Israel Data Boundary and Support
   /// - "JAPAN_DATA_BOUNDARY" : Japan Data Boundary
+  /// - "SWITZERLAND_DATA_BOUNDARY_WITH_ACCESS_JUSTIFICATIONS" : Switzerland
+  /// Data Boundary with Access Justifications
   /// - "KSA_DATA_BOUNDARY_WITH_ACCESS_JUSTIFICATIONS" : Kingdom of Saudi Arabia
   /// (KSA) Data Boundary with Access Justifications
   /// - "REGIONAL_DATA_BOUNDARY" : Data boundary for one of Assured Workloads'

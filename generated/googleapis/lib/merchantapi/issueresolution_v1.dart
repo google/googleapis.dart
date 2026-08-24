@@ -86,12 +86,18 @@ class AccountsAggregateProductStatusesResource {
   ///
   /// The response might contain fewer items than specified by `pageSize`. If
   /// `pageToken` was returned in previous request, it can be used to obtain
-  /// additional results.
+  /// additional results. This method can only be accessed by standalone
+  /// accounts and sub-accounts of an advanced account. To retrieve product
+  /// statuses for sub-accounts, you must first call the
+  /// accounts.listSubaccounts method to obtain a list of sub-accounts, and then
+  /// call `accounts.aggregateProductStatuses.list` for each sub-account
+  /// individually.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The account to list aggregate product statuses for.
-  /// Format: `accounts/{account}`
+  /// Format: `accounts/{account}` Can only be sub-accounts and standalone
+  /// accounts.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [filter] - Optional. A filter expression that filters the aggregate
@@ -312,9 +318,10 @@ class IssueresolutionResource {
   /// Before the business can request the action, the third-party application
   /// needs to show them action specific content and display a user input form.
   /// Access to the `triggeraction` method is restricted to an allowlist. You
-  /// can request access using
-  /// [Trigger action allowlist form](https://docs.google.com/forms/d/e/1FAIpQLSfeV_sBW9MBQv9BMTV6JZ1g11PGHLdHsrefca-9h0LmpU7CUg/viewform?usp=sharing).
-  /// The action can be successfully started only once all `required` inputs are
+  /// can submit an allowlist request in the
+  /// [Shopping API Support Form](https://support.google.com/merchants/contact/shopping_api_support_form)
+  /// under "What is the issue/question?" to get access to this feature. The
+  /// action can be successfully started only once all `required` inputs are
   /// provided. If any `required` input is missing, or invalid value was
   /// provided, the service will return 400 error. Validation errors will
   /// contain Ids for all problematic field together with translated, human
@@ -1450,7 +1457,7 @@ class Reason {
 }
 
 /// Region with code and localized name.
-typedef Region = $Region00;
+typedef Region = $Region;
 
 /// Response containing an issue resolution content and actions for listed
 /// account issues.
@@ -1622,10 +1629,15 @@ class RenderedIssue {
   /// tooltip shows helpful information, can use the '?' as an icon. *
   /// `tooltip-style-info` - the tooltip adds additional information fitting to
   /// the context, can use the 'i' as an icon. * `content-moderation` - marks
-  /// the paragraph that explains how the issue was identified. * `new-element`
-  /// - Present for new elements added to the pre-rendered content in the
-  /// future. To make sure that a new content element does not break your style,
-  /// you can hide everything with this class.
+  /// the paragraph that explains how the issue was identified. * `asset-value`
+  /// - marks the paragraph that contains the asset information. * `asset-label`
+  /// - marks the section of the text that contains the label of the asset. *
+  /// `asset-link` - marks the section of the text that contains a link to the
+  /// asset. * `asset-provided-value` - marks the section of the text that
+  /// contains the value of the asset. * `new-element` - Present for new
+  /// elements added to the pre-rendered content in the future. To make sure
+  /// that a new content element does not break your style, you can hide
+  /// everything with this class.
   core.String? prerenderedContent;
 
   /// Pre-rendered HTML that contains a link to the external location where the

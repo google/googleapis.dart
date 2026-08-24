@@ -96,6 +96,123 @@ void checkGoogleIdentityStsV1ExchangeTokenResponse(
   buildCounterGoogleIdentityStsV1ExchangeTokenResponse--;
 }
 
+core.int buildCounterGoogleIdentityStsV1Jwk = 0;
+api.GoogleIdentityStsV1Jwk buildGoogleIdentityStsV1Jwk() {
+  final o = api.GoogleIdentityStsV1Jwk();
+  buildCounterGoogleIdentityStsV1Jwk++;
+  if (buildCounterGoogleIdentityStsV1Jwk < 3) {
+    o.alg = 'foo';
+    o.e = 'foo';
+    o.kid = 'foo';
+    o.kty = 'foo';
+    o.n = 'foo';
+    o.use = 'foo';
+  }
+  buildCounterGoogleIdentityStsV1Jwk--;
+  return o;
+}
+
+void checkGoogleIdentityStsV1Jwk(api.GoogleIdentityStsV1Jwk o) {
+  buildCounterGoogleIdentityStsV1Jwk++;
+  if (buildCounterGoogleIdentityStsV1Jwk < 3) {
+    unittest.expect(o.alg!, unittest.equals('foo'));
+    unittest.expect(o.e!, unittest.equals('foo'));
+    unittest.expect(o.kid!, unittest.equals('foo'));
+    unittest.expect(o.kty!, unittest.equals('foo'));
+    unittest.expect(o.n!, unittest.equals('foo'));
+    unittest.expect(o.use!, unittest.equals('foo'));
+  }
+  buildCounterGoogleIdentityStsV1Jwk--;
+}
+
+core.List<api.GoogleIdentityStsV1Jwk> buildUnnamed0() => [
+  buildGoogleIdentityStsV1Jwk(),
+  buildGoogleIdentityStsV1Jwk(),
+];
+
+void checkUnnamed0(core.List<api.GoogleIdentityStsV1Jwk> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleIdentityStsV1Jwk(o[0]);
+  checkGoogleIdentityStsV1Jwk(o[1]);
+}
+
+core.int buildCounterGoogleIdentityStsV1Jwks = 0;
+api.GoogleIdentityStsV1Jwks buildGoogleIdentityStsV1Jwks() {
+  final o = api.GoogleIdentityStsV1Jwks();
+  buildCounterGoogleIdentityStsV1Jwks++;
+  if (buildCounterGoogleIdentityStsV1Jwks < 3) {
+    o.keys = buildUnnamed0();
+  }
+  buildCounterGoogleIdentityStsV1Jwks--;
+  return o;
+}
+
+void checkGoogleIdentityStsV1Jwks(api.GoogleIdentityStsV1Jwks o) {
+  buildCounterGoogleIdentityStsV1Jwks++;
+  if (buildCounterGoogleIdentityStsV1Jwks < 3) {
+    checkUnnamed0(o.keys!);
+  }
+  buildCounterGoogleIdentityStsV1Jwks--;
+}
+
+core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
+
+void checkUnnamed2(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
+
+void checkUnnamed3(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterGoogleIdentityStsV1OpenIdProviderConfig = 0;
+api.GoogleIdentityStsV1OpenIdProviderConfig
+buildGoogleIdentityStsV1OpenIdProviderConfig() {
+  final o = api.GoogleIdentityStsV1OpenIdProviderConfig();
+  buildCounterGoogleIdentityStsV1OpenIdProviderConfig++;
+  if (buildCounterGoogleIdentityStsV1OpenIdProviderConfig < 3) {
+    o.authorizationEndpoint = 'foo';
+    o.idTokenSigningAlgValuesSupported = buildUnnamed1();
+    o.issuer = 'foo';
+    o.jwksUri = 'foo';
+    o.responseTypesSupported = buildUnnamed2();
+    o.subjectTypesSupported = buildUnnamed3();
+    o.tokenEndpoint = 'foo';
+  }
+  buildCounterGoogleIdentityStsV1OpenIdProviderConfig--;
+  return o;
+}
+
+void checkGoogleIdentityStsV1OpenIdProviderConfig(
+  api.GoogleIdentityStsV1OpenIdProviderConfig o,
+) {
+  buildCounterGoogleIdentityStsV1OpenIdProviderConfig++;
+  if (buildCounterGoogleIdentityStsV1OpenIdProviderConfig < 3) {
+    unittest.expect(o.authorizationEndpoint!, unittest.equals('foo'));
+    checkUnnamed1(o.idTokenSigningAlgValuesSupported!);
+    unittest.expect(o.issuer!, unittest.equals('foo'));
+    unittest.expect(o.jwksUri!, unittest.equals('foo'));
+    checkUnnamed2(o.responseTypesSupported!);
+    checkUnnamed3(o.subjectTypesSupported!);
+    unittest.expect(o.tokenEndpoint!, unittest.equals('foo'));
+  }
+  buildCounterGoogleIdentityStsV1OpenIdProviderConfig--;
+}
+
 void main() {
   unittest.group('obj-schema-GoogleIdentityStsV1ExchangeTokenRequest', () {
     unittest.test('to-json--from-json', () async {
@@ -118,6 +235,293 @@ void main() {
       checkGoogleIdentityStsV1ExchangeTokenResponse(od);
     });
   });
+
+  unittest.group('obj-schema-GoogleIdentityStsV1Jwk', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIdentityStsV1Jwk();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1Jwk.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleIdentityStsV1Jwk(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleIdentityStsV1Jwks', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIdentityStsV1Jwks();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1Jwks.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleIdentityStsV1Jwks(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleIdentityStsV1OpenIdProviderConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleIdentityStsV1OpenIdProviderConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleIdentityStsV1OpenIdProviderConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleIdentityStsV1OpenIdProviderConfig(od);
+    });
+  });
+
+  unittest.group(
+    'resource-OrganizationsLocationsWorkloadIdentityPoolsOpenidResource',
+    () {
+      unittest.test('method--getJwks', () async {
+        final mock = HttpServerMock();
+        final res = api.CloudSecurityTokenApi(
+          mock,
+        ).organizations.locations.workloadIdentityPools.openid;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildGoogleIdentityStsV1Jwks());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.getJwks(arg_name, $fields: arg_$fields);
+        checkGoogleIdentityStsV1Jwks(response as api.GoogleIdentityStsV1Jwks);
+      });
+    },
+  );
+
+  unittest.group(
+    'resource-OrganizationsLocationsWorkloadIdentityPoolsWellKnownResource',
+    () {
+      unittest.test('method--getOpenidConfiguration', () async {
+        final mock = HttpServerMock();
+        final res = api.CloudSecurityTokenApi(
+          mock,
+        ).organizations.locations.workloadIdentityPools.wellKnown;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildGoogleIdentityStsV1OpenIdProviderConfig(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.getOpenidConfiguration(
+          arg_name,
+          $fields: arg_$fields,
+        );
+        checkGoogleIdentityStsV1OpenIdProviderConfig(
+          response as api.GoogleIdentityStsV1OpenIdProviderConfig,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'resource-ProjectsLocationsWorkloadIdentityPoolsOpenidResource',
+    () {
+      unittest.test('method--getJwks', () async {
+        final mock = HttpServerMock();
+        final res = api.CloudSecurityTokenApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.openid;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildGoogleIdentityStsV1Jwks());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.getJwks(arg_name, $fields: arg_$fields);
+        checkGoogleIdentityStsV1Jwks(response as api.GoogleIdentityStsV1Jwks);
+      });
+    },
+  );
+
+  unittest.group(
+    'resource-ProjectsLocationsWorkloadIdentityPoolsWellKnownResource',
+    () {
+      unittest.test('method--getOpenidConfiguration', () async {
+        final mock = HttpServerMock();
+        final res = api.CloudSecurityTokenApi(
+          mock,
+        ).projects.locations.workloadIdentityPools.wellKnown;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildGoogleIdentityStsV1OpenIdProviderConfig(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.getOpenidConfiguration(
+          arg_name,
+          $fields: arg_$fields,
+        );
+        checkGoogleIdentityStsV1OpenIdProviderConfig(
+          response as api.GoogleIdentityStsV1OpenIdProviderConfig,
+        );
+      });
+    },
+  );
 
   unittest.group('resource-V1Resource', () {
     unittest.test('method--token', () async {

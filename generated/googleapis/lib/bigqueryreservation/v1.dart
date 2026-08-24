@@ -863,6 +863,58 @@ class ProjectsLocationsReservationGroupsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Updates an existing reservation group resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the reservation group, e.g.,
+  /// `projects / * /locations / * /reservationGroups/team1-prod`. The
+  /// reservation_group_id must only contain lower case alphanumeric characters
+  /// or dashes. It must start with a letter and must not end with a dash. Its
+  /// maximum length is 64 characters.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservationGroups/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Standard field mask for the set of fields to be
+  /// updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReservationGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReservationGroup> patch(
+    ReservationGroup request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ReservationGroup.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsLocationsReservationsResource {
@@ -1763,6 +1815,15 @@ class Assignment {
   /// Optional.
   core.String? assignee;
 
+  /// Common Expression Language (CEL) condition that defines the matching
+  /// criteria for this assignment.
+  ///
+  /// The condition must resolve to a boolean value. Supported variables will be
+  /// added later.
+  ///
+  /// Optional.
+  Expr? condition;
+
   /// Deprecated: "Gemini in BigQuery" is now available by default for all
   /// BigQuery editions and should not be explicitly set.
   ///
@@ -1805,6 +1866,10 @@ class Assignment {
   /// for refreshing search indexes upon BigQuery table columns. Reservations
   /// with this job type take priority over a default BACKGROUND reservation
   /// assignment (if it exists).
+  /// - "AUTOMATIC_MATERIALIZED_VIEW_REFRESH" : Automated materialized view
+  /// refresh jobs will use the reservation. Reservations with this job type
+  /// will take priority over a default QUERY reservation assignment (if it
+  /// exists).
   core.String? jobType;
 
   /// Name of the resource.
@@ -1816,6 +1881,17 @@ class Assignment {
   ///
   /// Output only.
   core.String? name;
+
+  /// Specifies the priority precedence for this assignment.
+  ///
+  /// Used to resolve ambiguity when multiple assignments match a single job.
+  /// Higher numerical values represent higher priority (e.g., 20 is higher than
+  /// 10). If unspecified, it defaults to 0. Multiple assignments can share the
+  /// same precedence, but it is recommended to use unique precedence values for
+  /// assignments within the same assignee scope.
+  ///
+  /// Optional.
+  core.String? precedence;
 
   /// Represents the principal for this assignment.
   ///
@@ -1857,9 +1933,11 @@ class Assignment {
 
   Assignment({
     this.assignee,
+    this.condition,
     this.enableGeminiInBigquery,
     this.jobType,
     this.name,
+    this.precedence,
     this.principal,
     this.schedulingPolicy,
     this.state,
@@ -1868,9 +1946,15 @@ class Assignment {
   Assignment.fromJson(core.Map json_)
     : this(
         assignee: json_['assignee'] as core.String?,
+        condition: json_.containsKey('condition')
+            ? Expr.fromJson(
+                json_['condition'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enableGeminiInBigquery: json_['enableGeminiInBigquery'] as core.bool?,
         jobType: json_['jobType'] as core.String?,
         name: json_['name'] as core.String?,
+        precedence: json_['precedence'] as core.String?,
         principal: json_['principal'] as core.String?,
         schedulingPolicy: json_.containsKey('schedulingPolicy')
             ? SchedulingPolicy.fromJson(
@@ -1883,17 +1967,21 @@ class Assignment {
 
   core.Map<core.String, core.dynamic> toJson() {
     final assignee = this.assignee;
+    final condition = this.condition;
     final enableGeminiInBigquery = this.enableGeminiInBigquery;
     final jobType = this.jobType;
     final name = this.name;
+    final precedence = this.precedence;
     final principal = this.principal;
     final schedulingPolicy = this.schedulingPolicy;
     final state = this.state;
     return {
       'assignee': ?assignee,
+      'condition': ?condition,
       'enableGeminiInBigquery': ?enableGeminiInBigquery,
       'jobType': ?jobType,
       'name': ?name,
+      'precedence': ?precedence,
       'principal': ?principal,
       'schedulingPolicy': ?schedulingPolicy,
       'state': ?state,
@@ -2223,9 +2311,10 @@ class CapacityCommitment {
   /// Possible string values are:
   /// - "COMMITMENT_PLAN_UNSPECIFIED" : Invalid plan value. Requests with this
   /// value will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
-  /// - "FLEX" : Flex commitments have committed period of 1 minute after
-  /// becoming ACTIVE. After that, they are not in a committed period anymore
-  /// and can be removed any time.
+  /// - "FLEX" : Deprecated: Flex commitments are deprecated. Please use
+  /// Edition-based capacity commitments. Flex commitments have committed period
+  /// of 1 minute after becoming ACTIVE. After that, they are not in a committed
+  /// period anymore and can be removed any time.
   /// - "FLEX_FLAT_RATE" : Same as FLEX, should only be used if flat-rate
   /// commitments are still available.
   /// - "TRIAL" : Trial commitments have a committed period of 182 days after
@@ -2263,9 +2352,10 @@ class CapacityCommitment {
   /// Possible string values are:
   /// - "COMMITMENT_PLAN_UNSPECIFIED" : Invalid plan value. Requests with this
   /// value will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
-  /// - "FLEX" : Flex commitments have committed period of 1 minute after
-  /// becoming ACTIVE. After that, they are not in a committed period anymore
-  /// and can be removed any time.
+  /// - "FLEX" : Deprecated: Flex commitments are deprecated. Please use
+  /// Edition-based capacity commitments. Flex commitments have committed period
+  /// of 1 minute after becoming ACTIVE. After that, they are not in a committed
+  /// period anymore and can be removed any time.
   /// - "FLEX_FLAT_RATE" : Same as FLEX, should only be used if flat-rate
   /// commitments are still available.
   /// - "TRIAL" : Trial commitments have a committed period of 182 days after
@@ -2977,6 +3067,16 @@ class Reservation {
   /// Optional.
   core.String? reservationGroup;
 
+  /// The reservation group path of the reservation from root to leaf.
+  ///
+  /// The order of elements matters: the first element is the top level group
+  /// and the last element is the direct parent reservation group. For example,
+  /// if a reservation is under group-1 -\> group-2 -\> group-3, then the
+  /// reservation group path is \["group-1", "group-2", "group-3"\].
+  ///
+  /// Output only.
+  core.List<core.String>? reservationGroupPath;
+
   /// The scaling mode for the reservation.
   ///
   /// If the field is present but max_slots is not present, requests will be
@@ -3080,6 +3180,7 @@ class Reservation {
     this.primaryLocation,
     this.replicationStatus,
     this.reservationGroup,
+    this.reservationGroupPath,
     this.scalingMode,
     this.schedulingPolicy,
     this.secondaryLocation,
@@ -3114,6 +3215,9 @@ class Reservation {
               )
             : null,
         reservationGroup: json_['reservationGroup'] as core.String?,
+        reservationGroupPath: (json_['reservationGroupPath'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         scalingMode: json_['scalingMode'] as core.String?,
         schedulingPolicy: json_.containsKey('schedulingPolicy')
             ? SchedulingPolicy.fromJson(
@@ -3140,6 +3244,7 @@ class Reservation {
     final primaryLocation = this.primaryLocation;
     final replicationStatus = this.replicationStatus;
     final reservationGroup = this.reservationGroup;
+    final reservationGroupPath = this.reservationGroupPath;
     final scalingMode = this.scalingMode;
     final schedulingPolicy = this.schedulingPolicy;
     final secondaryLocation = this.secondaryLocation;
@@ -3159,6 +3264,7 @@ class Reservation {
       'primaryLocation': ?primaryLocation,
       'replicationStatus': ?replicationStatus,
       'reservationGroup': ?reservationGroup,
+      'reservationGroupPath': ?reservationGroupPath,
       'scalingMode': ?scalingMode,
       'schedulingPolicy': ?schedulingPolicy,
       'secondaryLocation': ?secondaryLocation,
@@ -3170,6 +3276,11 @@ class Reservation {
 
 /// A reservation group is a container for reservations.
 class ReservationGroup {
+  /// Creation time of the reservation group.
+  ///
+  /// Output only.
+  core.String? creationTime;
+
   /// Identifier.
   ///
   /// The resource name of the reservation group, e.g., `projects / * /locations
@@ -3178,14 +3289,50 @@ class ReservationGroup {
   /// letter and must not end with a dash. Its maximum length is 64 characters.
   core.String? name;
 
-  ReservationGroup({this.name});
+  /// The parent reservation group of the reservation group.
+  ///
+  /// Format: `projects / * /locations / * /reservationGroups/team1-prod` for
+  /// non-root reservation groups, or `projects / * /locations / * ` for root
+  /// reservation groups.
+  ///
+  /// Optional.
+  core.String? parentGroup;
+
+  /// Last update time of the reservation group via a user operation.
+  ///
+  /// This timestamp is updated only when an update operation explicitly targets
+  /// this reservation group directly. It is not updated when parent or child
+  /// groups are created, updated, or deleted.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ReservationGroup({
+    this.creationTime,
+    this.name,
+    this.parentGroup,
+    this.updateTime,
+  });
 
   ReservationGroup.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
+    : this(
+        creationTime: json_['creationTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        parentGroup: json_['parentGroup'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final creationTime = this.creationTime;
     final name = this.name;
-    return {'name': ?name};
+    final parentGroup = this.parentGroup;
+    final updateTime = this.updateTime;
+    return {
+      'creationTime': ?creationTime,
+      'name': ?name,
+      'parentGroup': ?parentGroup,
+      'updateTime': ?updateTime,
+    };
   }
 }
 

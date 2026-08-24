@@ -52,6 +52,10 @@ class AIPlatformNotebooksApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud Agent Platform
+  /// Workbench Instances data and see the email address for your Google Account
+  static const notebooksScope = 'https://www.googleapis.com/auth/notebooks';
+
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -122,7 +126,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -137,9 +141,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -678,7 +681,11 @@ class ProjectsLocationsInstancesResource {
   /// `gce_setup.reservation_affinity.values` * `gce_setup.tags` *
   /// `gce_setup.container_image` * `gce_setup.container_image.repository` *
   /// `gce_setup.container_image.tag` * `gce_setup.disable_public_ip` *
-  /// `disable_proxy_access`
+  /// `disable_proxy_access` Note: `gce_setup.disable_public_ip` and
+  /// `disable_proxy_access` are one-way on update -- they can only be used to
+  /// *disable* the feature (set the field to `true`). Requests that set either
+  /// field back to `false` (re-enabling the external IP or proxy access) are
+  /// rejected with `INVALID_ARGUMENT`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1429,6 +1436,7 @@ class AcceleratorConfig {
   /// - "NVIDIA_TESLA_P4_VWS" : Accelerator type is NVIDIA Tesla P4 Virtual
   /// Workstations.
   /// - "NVIDIA_B200" : Accelerator type is NVIDIA B200.
+  /// - "NVIDIA_RTX6000" : NVIDIA RTX 6000.
   core.String? type;
 
   AcceleratorConfig({this.coreCount, this.type});
@@ -1454,6 +1462,8 @@ class AccessConfig {
   /// leave this field undefined to use an IP from a shared ephemeral IP address
   /// pool. If you specify a static external IP address, it must live in the
   /// same region as the zone of the instance.
+  ///
+  /// Optional.
   core.String? externalIp;
 
   AccessConfig({this.externalIp});
@@ -1572,8 +1582,6 @@ class Binding {
 
 /// The definition of a boot disk.
 class BootDisk {
-  /// Input only.
-  ///
   /// Disk encryption method used on the boot and data disks, defaults to GMEK.
   ///
   /// Optional.
@@ -1613,10 +1621,10 @@ class BootDisk {
   /// be used as a boot disk or data disk.
   core.String? diskType;
 
-  /// Input only.
-  ///
   /// The KMS key used to encrypt the disks, only applicable if disk_encryption
-  /// is CMEK. Format:
+  /// is CMEK.
+  ///
+  /// Format:
   /// `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
   /// Learn more about using your own encryption keys.
   ///
@@ -1715,7 +1723,7 @@ class CheckAuthorizationResponse {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-typedef CheckInstanceUpgradabilityResponse = $Response02;
+typedef CheckInstanceUpgradabilityResponse = $Response03;
 
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfig {
@@ -1843,8 +1851,6 @@ class ContainerImage {
 
 /// An instance-attached disk resource.
 class DataDisk {
-  /// Input only.
-  ///
   /// Disk encryption method used on the boot and data disks, defaults to GMEK.
   ///
   /// Optional.
@@ -1862,8 +1868,6 @@ class DataDisk {
   /// Optional.
   core.String? diskSizeGb;
 
-  /// Input only.
-  ///
   /// Indicates the type of the disk.
   ///
   /// Optional.
@@ -1886,10 +1890,10 @@ class DataDisk {
   /// be used as a boot disk or data disk.
   core.String? diskType;
 
-  /// Input only.
-  ///
   /// The KMS key used to encrypt the disks, only applicable if disk_encryption
-  /// is CMEK. Format:
+  /// is CMEK.
+  ///
+  /// Format:
   /// `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
   /// Learn more about using your own encryption keys.
   ///
@@ -2504,6 +2508,18 @@ class GenerateAccessTokenResponse {
 
 /// ConfigImage represents an image release available to create a WbI
 class ImageRelease {
+  /// The description of the image.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The image family of the image.
+  ///
+  /// (ex: workbench-instances or workbench-2603)
+  ///
+  /// Output only.
+  core.String? imageFamily;
+
   /// The name of the image of the form workbench-instances-vYYYYmmdd--
   ///
   /// Output only.
@@ -2514,18 +2530,32 @@ class ImageRelease {
   /// Output only.
   core.String? releaseName;
 
-  ImageRelease({this.imageName, this.releaseName});
+  ImageRelease({
+    this.description,
+    this.imageFamily,
+    this.imageName,
+    this.releaseName,
+  });
 
   ImageRelease.fromJson(core.Map json_)
     : this(
+        description: json_['description'] as core.String?,
+        imageFamily: json_['imageFamily'] as core.String?,
         imageName: json_['imageName'] as core.String?,
         releaseName: json_['releaseName'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final imageFamily = this.imageFamily;
     final imageName = this.imageName;
     final releaseName = this.releaseName;
-    return {'imageName': ?imageName, 'releaseName': ?releaseName};
+    return {
+      'description': ?description,
+      'imageFamily': ?imageFamily,
+      'imageName': ?imageName,
+      'releaseName': ?releaseName,
+    };
   }
 }
 
@@ -3661,10 +3691,31 @@ class UpgradeHistoryEntry {
 }
 
 /// Request for upgrading a notebook instance
-typedef UpgradeInstanceRequest = $Empty;
+class UpgradeInstanceRequest {
+  /// The Compute Engine image family resource name to upgrade to.
+  ///
+  /// Format: `projects/{project_id}/global/images/family/{image_family}` If
+  /// specified, the instance will be upgraded to the latest image in the
+  /// specified image family, allowing upgrades across image families. If not
+  /// specified, the instance will be upgraded to the latest image in its
+  /// current image family.
+  ///
+  /// Optional.
+  core.String? imageFamily;
+
+  UpgradeInstanceRequest({this.imageFamily});
+
+  UpgradeInstanceRequest.fromJson(core.Map json_)
+    : this(imageFamily: json_['imageFamily'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageFamily = this.imageFamily;
+    return {'imageFamily': ?imageFamily};
+  }
+}
 
 /// Request for upgrading a notebook instance from within the VM
-typedef UpgradeInstanceSystemRequest = $Request12;
+typedef UpgradeInstanceSystemRequest = $Request13;
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.
@@ -3674,6 +3725,15 @@ class VmImage {
   ///
   /// Optional.
   core.String? family;
+
+  /// A human-readable description of the image running on the instance (for
+  /// example, "Debian 11, Python 3.10"), derived at read time from the image
+  /// release configuration (the source of truth).
+  ///
+  /// Set to "Custom" for unrecognized boot-disk images.
+  ///
+  /// Output only.
+  core.String? imageDescription;
 
   /// Use VM image name to find the image.
   ///
@@ -3687,19 +3747,26 @@ class VmImage {
   /// Required.
   core.String? project;
 
-  VmImage({this.family, this.name, this.project});
+  VmImage({this.family, this.imageDescription, this.name, this.project});
 
   VmImage.fromJson(core.Map json_)
     : this(
         family: json_['family'] as core.String?,
+        imageDescription: json_['imageDescription'] as core.String?,
         name: json_['name'] as core.String?,
         project: json_['project'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final family = this.family;
+    final imageDescription = this.imageDescription;
     final name = this.name;
     final project = this.project;
-    return {'family': ?family, 'name': ?name, 'project': ?project};
+    return {
+      'family': ?family,
+      'imageDescription': ?imageDescription,
+      'name': ?name,
+      'project': ?project,
+    };
   }
 }

@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20251031",
+    "revision": "20260717",
     "rootUrl": "https://firebasestorage.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Storage for Firebase API",
@@ -358,7 +358,7 @@
                     "readOnly": true
                 },
                 "location": {
-                    "description": "Immutable. Location of the default bucket.",
+                    "description": "Required. Immutable. Location of the default bucket.",
                     "type": "string"
                 },
                 "name": {

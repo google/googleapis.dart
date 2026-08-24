@@ -355,6 +355,7 @@ api.Certificate buildCertificate() {
     o.pemCertificate = 'foo';
     o.pemCertificateChain = buildUnnamed7();
     o.pemCsr = 'foo';
+    o.requestedNotBeforeTime = 'foo';
     o.revocationDetails = buildRevocationDetails();
     o.subjectMode = 'foo';
     o.updateTime = 'foo';
@@ -377,6 +378,7 @@ void checkCertificate(api.Certificate o) {
     unittest.expect(o.pemCertificate!, unittest.equals('foo'));
     checkUnnamed7(o.pemCertificateChain!);
     unittest.expect(o.pemCsr!, unittest.equals('foo'));
+    unittest.expect(o.requestedNotBeforeTime!, unittest.equals('foo'));
     checkRevocationDetails(o.revocationDetails!);
     unittest.expect(o.subjectMode!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -1003,6 +1005,7 @@ api.IssuancePolicy buildIssuancePolicy() {
   final o = api.IssuancePolicy();
   buildCounterIssuancePolicy++;
   if (buildCounterIssuancePolicy < 3) {
+    o.allowRequesterSpecifiedNotBeforeTime = true;
     o.allowedIssuanceModes = buildIssuanceModes();
     o.allowedKeyTypes = buildUnnamed19();
     o.backdateDuration = 'foo';
@@ -1018,6 +1021,7 @@ api.IssuancePolicy buildIssuancePolicy() {
 void checkIssuancePolicy(api.IssuancePolicy o) {
   buildCounterIssuancePolicy++;
   if (buildCounterIssuancePolicy < 3) {
+    unittest.expect(o.allowRequesterSpecifiedNotBeforeTime!, unittest.isTrue);
     checkIssuanceModes(o.allowedIssuanceModes!);
     checkUnnamed19(o.allowedKeyTypes!);
     unittest.expect(o.backdateDuration!, unittest.equals('foo'));

@@ -1407,6 +1407,7 @@ api.NetworkInterface buildNetworkInterface() {
   buildCounterNetworkInterface++;
   if (buildCounterNetworkInterface < 3) {
     o.network = 'foo';
+    o.nicType = 'foo';
     o.noExternalIpAddress = true;
     o.subnetwork = 'foo';
   }
@@ -1418,6 +1419,7 @@ void checkNetworkInterface(api.NetworkInterface o) {
   buildCounterNetworkInterface++;
   if (buildCounterNetworkInterface < 3) {
     unittest.expect(o.network!, unittest.equals('foo'));
+    unittest.expect(o.nicType!, unittest.equals('foo'));
     unittest.expect(o.noExternalIpAddress!, unittest.isTrue);
     unittest.expect(o.subnetwork!, unittest.equals('foo'));
   }

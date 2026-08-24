@@ -934,7 +934,15 @@ class AccountsDeveloperRegistrationResource {
   /// the request.
   ///
   /// Will create a user with an "API developer" and add the "developer_email"
-  /// as a contact with "API notifications" email preference on.
+  /// as a contact with "API notifications" email preference on. Restrictions: *
+  /// The caller account must be authenticated and must not impersonate another
+  /// account at registration time. Registering for subaccounts is not supported
+  /// if the caller account is authenticated with the parent or the managing
+  /// advanced account. * The caller account must have a
+  /// [verified website](https://support.google.com/merchants/answer/11586344)
+  /// in Merchant Center. *
+  /// [Test accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts)
+  /// are not eligible for registration.
   ///
   /// [request] - The metadata request object.
   ///
@@ -944,6 +952,11 @@ class AccountsDeveloperRegistrationResource {
   /// for the merchant account that the GCP will be registered with. Format:
   /// `accounts/{account}/developerRegistration` The {account} used must be the
   /// same account where user calling this API method is directly added to.
+  /// Note: The account used must be a production account (can't be a
+  /// [test account](https://developers.google.com/merchant/api/guides/accounts/test-accounts)
+  /// ) and must have a
+  /// [verified website](https://support.google.com/merchants/answer/11586344)
+  /// in Merchant Center.
   /// Value must have pattern `^accounts/\[^/\]+/developerRegistration$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3711,7 +3724,7 @@ class TermsOfServiceResource {
   /// Possible string values are:
   /// - "TERMS_OF_SERVICE_KIND_UNSPECIFIED" : Default value. This value is
   /// unused.
-  /// - "MERCHANT_CENTER" : Terms of service for the Merchant Center
+  /// - "MERCHANT_CENTER" : Terms of Service for the Merchant Center
   /// application.
   ///
   /// [regionCode] - Required. Region code as defined by
@@ -7964,8 +7977,8 @@ typedef ProductsManagement = $Empty;
 /// program, which enables products from a business's store to be shown across
 /// Google for free. The following list is the available set of program resource
 /// IDs accessible through the API: * `checkout` * `free-listings` *
-/// `product-ratings` * `shopping-ads` * `youtube-affiliate` *
-/// `youtube-shopping-checkout`
+/// `product-ratings` * `shopping-ads` * `ucp-integration` (limited access) *
+/// `youtube-affiliate` * `youtube-shopping-checkout`
 class Program {
   /// The regions in which the account is actively participating in the program.
   ///
@@ -9160,7 +9173,7 @@ class TermsOfService {
   /// Possible string values are:
   /// - "TERMS_OF_SERVICE_KIND_UNSPECIFIED" : Default value. This value is
   /// unused.
-  /// - "MERCHANT_CENTER" : Terms of service for the Merchant Center
+  /// - "MERCHANT_CENTER" : Terms of Service for the Merchant Center
   /// application.
   core.String? kind;
 
@@ -9261,7 +9274,7 @@ class TermsOfServiceAgreementState {
   /// Possible string values are:
   /// - "TERMS_OF_SERVICE_KIND_UNSPECIFIED" : Default value. This value is
   /// unused.
-  /// - "MERCHANT_CENTER" : Terms of service for the Merchant Center
+  /// - "MERCHANT_CENTER" : Terms of Service for the Merchant Center
   /// application.
   core.String? termsOfServiceKind;
 

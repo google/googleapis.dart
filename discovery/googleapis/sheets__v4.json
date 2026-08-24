@@ -37,7 +37,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260213",
+    "revision": "20260610",
     "rootUrl": "https://sheets.googleapis.com/",
     "servicePath": "",
     "title": "Google Sheets API",
@@ -3197,7 +3197,7 @@
                     "enumDescriptions": [
                         "Paste values, formulas, formats, and merges.",
                         "Paste the values ONLY without formats, formulas, or merges.",
-                        "Paste the format and data validation only.",
+                        "Paste the format only, excluding data validation.",
                         "Like `PASTE_NORMAL` but without borders.",
                         "Paste the formulas only.",
                         "Paste the data validation only.",
@@ -3267,7 +3267,7 @@
                     "enumDescriptions": [
                         "Paste values, formulas, formats, and merges.",
                         "Paste the values ONLY without formats, formulas, or merges.",
-                        "Paste the format and data validation only.",
+                        "Paste the format only, excluding data validation.",
                         "Like `PASTE_NORMAL` but without borders.",
                         "Paste the formulas only.",
                         "Paste the data validation only.",
@@ -5556,7 +5556,7 @@
                     "enumDescriptions": [
                         "Paste values, formulas, formats, and merges.",
                         "Paste the values ONLY without formats, formulas, or merges.",
-                        "Paste the format and data validation only.",
+                        "Paste the format only, excluding data validation.",
                         "Like `PASTE_NORMAL` but without borders.",
                         "Paste the formulas only.",
                         "Paste the data validation only.",

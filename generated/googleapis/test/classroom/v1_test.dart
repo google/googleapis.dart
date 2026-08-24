@@ -89,6 +89,8 @@ api.AddOnAttachmentStudentSubmission buildAddOnAttachmentStudentSubmission() {
   final o = api.AddOnAttachmentStudentSubmission();
   buildCounterAddOnAttachmentStudentSubmission++;
   if (buildCounterAddOnAttachmentStudentSubmission < 3) {
+    o.courseWorkSubmissionId = 'foo';
+    o.id = 'foo';
     o.pointsEarned = 42.0;
     o.postSubmissionState = 'foo';
     o.userId = 'foo';
@@ -102,6 +104,8 @@ void checkAddOnAttachmentStudentSubmission(
 ) {
   buildCounterAddOnAttachmentStudentSubmission++;
   if (buildCounterAddOnAttachmentStudentSubmission < 3) {
+    unittest.expect(o.courseWorkSubmissionId!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.pointsEarned!, unittest.equals(42.0));
     unittest.expect(o.postSubmissionState!, unittest.equals('foo'));
     unittest.expect(o.userId!, unittest.equals('foo'));
@@ -333,6 +337,7 @@ api.Course buildCourse() {
     o.gradebookSettings = buildGradebookSettings();
     o.guardiansEnabled = true;
     o.id = 'foo';
+    o.levels = 'foo';
     o.name = 'foo';
     o.ownerId = 'foo';
     o.room = 'foo';
@@ -361,6 +366,7 @@ void checkCourse(api.Course o) {
     checkGradebookSettings(o.gradebookSettings!);
     unittest.expect(o.guardiansEnabled!, unittest.isTrue);
     unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.levels!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.ownerId!, unittest.equals('foo'));
     unittest.expect(o.room!, unittest.equals('foo'));

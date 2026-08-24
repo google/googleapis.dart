@@ -54,7 +54,6 @@
 ///   - [CustomBiddingAlgorithmsRulesResource]
 ///   - [CustomBiddingAlgorithmsScriptsResource]
 /// - [CustomListsResource]
-/// - [FirstAndThirdPartyAudiencesResource]
 /// - [FloodlightGroupsResource]
 ///   - [FloodlightGroupsFloodlightActivitiesResource]
 /// - [GoogleAudiencesResource]
@@ -126,8 +125,6 @@ class DisplayVideoApi {
   CustomBiddingAlgorithmsResource get customBiddingAlgorithms =>
       CustomBiddingAlgorithmsResource(_requester);
   CustomListsResource get customLists => CustomListsResource(_requester);
-  FirstAndThirdPartyAudiencesResource get firstAndThirdPartyAudiences =>
-      FirstAndThirdPartyAudiencesResource(_requester);
   FloodlightGroupsResource get floodlightGroups =>
       FloodlightGroupsResource(_requester);
   GoogleAudiencesResource get googleAudiences =>
@@ -621,9 +618,7 @@ class AdvertisersAdGroupAdsResource {
 
   /// Creates an ad group ad.
   ///
-  /// This method is only supported for Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This method is only
-  /// available to allowlisted users.
+  /// This method is only supported for Demand Gen ads.
   ///
   /// [request] - The metadata request object.
   ///
@@ -669,9 +664,7 @@ class AdvertisersAdGroupAdsResource {
 
   /// Deletes an ad group ad.
   ///
-  /// This method is only supported for Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This method is only
-  /// available to allowlisted users.
+  /// This method is only supported for Demand Gen ads.
   ///
   /// Request parameters:
   ///
@@ -838,9 +831,7 @@ class AdvertisersAdGroupAdsResource {
 
   /// Updates an ad group ad.
   ///
-  /// This method is only supported for Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This method is only
-  /// available to allowlisted users.
+  /// This method is only supported for Demand Gen ads.
   ///
   /// [request] - The metadata request object.
   ///
@@ -912,9 +903,7 @@ class AdvertisersAdGroupsResource {
   /// BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each
   /// ad group, and then create the assigned targeting options provided in
   /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This
-  /// method is only supported for Demand Gen ad groups. Retrieval and
-  /// management of Demand Gen resources is currently in beta. This method is
-  /// only available to allowlisted users.
+  /// method is only supported for Demand Gen ad groups.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1050,9 +1039,7 @@ class AdvertisersAdGroupsResource {
   /// Creates a new ad group.
   ///
   /// Returns the newly created ad group if successful. This method is only
-  /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen
-  /// resources is currently in beta. This method is only available to
-  /// allowlisted users.
+  /// supported for Demand Gen ad groups.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1097,9 +1084,7 @@ class AdvertisersAdGroupsResource {
   /// Deletes a AdGroup.
   ///
   /// Returns error code `NOT_FOUND` if the ad group does not exist. This method
-  /// is only supported for Demand Gen ad groups. Retrieval and management of
-  /// Demand Gen resources is currently in beta. This method is only available
-  /// to allowlisted users.
+  /// is only supported for Demand Gen ad groups.
   ///
   /// Request parameters:
   ///
@@ -1267,8 +1252,7 @@ class AdvertisersAdGroupsResource {
   /// Updates an existing ad group.
   ///
   /// Returns the updated ad group if successful. This method is only supported
-  /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources
-  /// is currently in beta. This method is only available to allowlisted users.
+  /// for Demand Gen ad groups.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1346,9 +1330,7 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// Assigns a targeting option to an ad group.
   ///
   /// Returns the assigned targeting option if successful. This method is only
-  /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen
-  /// resources is currently in beta. This method is only available to
-  /// allowlisted users.
+  /// supported for Demand Gen ad groups.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1486,6 +1468,8 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1532,9 +1516,7 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// Deletes an assigned targeting option from an ad group.
   ///
   /// This method is only supported for Demand Gen ad groups with the
-  /// AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of
-  /// Demand Gen resources is currently in beta. This method is only available
-  /// to allowlisted users.
+  /// AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`.
   ///
   /// Request parameters:
   ///
@@ -1670,6 +1652,8 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -1852,6 +1836,8 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -2038,6 +2024,8 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Optional. Allows filtering by assigned targeting option fields.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -4477,6 +4465,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4680,6 +4670,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -4882,6 +4874,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -5088,6 +5082,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -6361,6 +6357,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6527,6 +6525,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -6696,6 +6696,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this advertiser that identifies the assigned targeting
@@ -6868,6 +6870,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -7932,296 +7936,6 @@ class CustomListsResource {
       queryParams: queryParams_,
     );
     return ListCustomListsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class FirstAndThirdPartyAudiencesResource {
-  final commons.ApiRequester _requester;
-
-  FirstAndThirdPartyAudiencesResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Creates a FirstAndThirdPartyAudience.
-  ///
-  /// Only supported for the following audience_type: *
-  /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [advertiserId] - Required. The ID of the advertiser under whom the
-  /// FirstAndThirdPartyAudience will be created.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [FirstAndThirdPartyAudience].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<FirstAndThirdPartyAudience> create(
-    FirstAndThirdPartyAudience request, {
-    core.String? advertiserId,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'advertiserId': ?advertiserId == null ? null : [advertiserId],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    const url_ = 'v3/firstAndThirdPartyAudiences';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return FirstAndThirdPartyAudience.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Updates the member list of a Customer Match audience.
-  ///
-  /// Only supported for the following audience_type: *
-  /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [firstAndThirdPartyAudienceId] - Required. The ID of the Customer Match
-  /// FirstAndThirdPartyAudience whose members will be edited.
-  /// Value must have pattern `^\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [EditCustomerMatchMembersResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<EditCustomerMatchMembersResponse> editCustomerMatchMembers(
-    EditCustomerMatchMembersRequest request,
-    core.String firstAndThirdPartyAudienceId, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v3/firstAndThirdPartyAudiences/' +
-        core.Uri.encodeFull('$firstAndThirdPartyAudienceId') +
-        ':editCustomerMatchMembers';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return EditCustomerMatchMembersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Gets a first and third party audience.
-  ///
-  /// Request parameters:
-  ///
-  /// [firstAndThirdPartyAudienceId] - Required. The ID of the first and third
-  /// party audience to fetch.
-  /// Value must have pattern `^\[^/\]+$`.
-  ///
-  /// [advertiserId] - The ID of the advertiser that has access to the fetched
-  /// first and third party audience.
-  ///
-  /// [partnerId] - The ID of the partner that has access to the fetched first
-  /// and third party audience.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [FirstAndThirdPartyAudience].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<FirstAndThirdPartyAudience> get(
-    core.String firstAndThirdPartyAudienceId, {
-    core.String? advertiserId,
-    core.String? partnerId,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'advertiserId': ?advertiserId == null ? null : [advertiserId],
-      'partnerId': ?partnerId == null ? null : [partnerId],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v3/firstAndThirdPartyAudiences/' +
-        core.Uri.encodeFull('$firstAndThirdPartyAudienceId');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return FirstAndThirdPartyAudience.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Lists first and third party audiences.
-  ///
-  /// The order is defined by the order_by parameter.
-  ///
-  /// Request parameters:
-  ///
-  /// [advertiserId] - The ID of the advertiser that has access to the fetched
-  /// first and third party audiences.
-  ///
-  /// [filter] - Allows filtering by first and third party audience fields.
-  /// Supported syntax: * Filter expressions for first and third party audiences
-  /// can only contain at most one restriction. * A restriction has the form of
-  /// `{field} {operator} {value}`. * All fields must use the `HAS (:)`
-  /// operator. Supported fields: * `displayName` Examples: * All first and
-  /// third party audiences for which the display name contains "Google":
-  /// `displayName:"Google"`. The length of this field should be no more than
-  /// 500 characters. Reference our \[filter `LIST`
-  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
-  /// information.
-  ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `firstAndThirdPartyAudienceId` (default) * `displayName` The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix "desc" should be added to the field name. Example: `displayName
-  /// desc`.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `5000`. If
-  /// unspecified, this value defaults to `5000`. Returns error code
-  /// `INVALID_ARGUMENT` if an invalid value is specified.
-  ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListFirstAndThirdPartyAudiences` method. If not
-  /// specified, the first page of results will be returned.
-  ///
-  /// [partnerId] - The ID of the partner that has access to the fetched first
-  /// and third party audiences.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListFirstAndThirdPartyAudiencesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListFirstAndThirdPartyAudiencesResponse> list({
-    core.String? advertiserId,
-    core.String? filter,
-    core.String? orderBy,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? partnerId,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'advertiserId': ?advertiserId == null ? null : [advertiserId],
-      'filter': ?filter == null ? null : [filter],
-      'orderBy': ?orderBy == null ? null : [orderBy],
-      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'partnerId': ?partnerId == null ? null : [partnerId],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    const url_ = 'v3/firstAndThirdPartyAudiences';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListFirstAndThirdPartyAudiencesResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Updates an existing FirstAndThirdPartyAudience.
-  ///
-  /// Only supported for the following audience_type: *
-  /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [firstAndThirdPartyAudienceId] - Output only. The unique ID of the first
-  /// and third party audience. Assigned by the system.
-  /// Value must have pattern `^\[^/\]+$`.
-  ///
-  /// [advertiserId] - Required. The ID of the owner advertiser of the updated
-  /// FirstAndThirdPartyAudience.
-  ///
-  /// [updateMask] - Required. The mask to control which fields to update.
-  /// Updates are only supported for the following fields: * `displayName` *
-  /// `description` * `membershipDurationDays`
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [FirstAndThirdPartyAudience].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<FirstAndThirdPartyAudience> patch(
-    FirstAndThirdPartyAudience request,
-    core.String firstAndThirdPartyAudienceId, {
-    core.String? advertiserId,
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'advertiserId': ?advertiserId == null ? null : [advertiserId],
-      'updateMask': ?updateMask == null ? null : [updateMask],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v3/firstAndThirdPartyAudiences/' +
-        core.Uri.encodeFull('$firstAndThirdPartyAudienceId');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return FirstAndThirdPartyAudience.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -10418,6 +10132,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10582,6 +10298,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -10747,6 +10465,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this partner that identifies the assigned targeting
@@ -10915,6 +10635,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -11231,6 +10953,8 @@ class TargetingTypesTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [targetingOptionId] - Required. The ID of the of targeting option to
   /// retrieve.
@@ -11412,6 +11136,8 @@ class TargetingTypesTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
@@ -11615,6 +11341,8 @@ class TargetingTypesTargetingOptionsResource {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11995,9 +11723,7 @@ class AdGroup {
   /// including in-stream and bumper ads.
   /// - "AD_GROUP_FORMAT_MASTHEAD" : Masthead Ad that is surfaced on the top
   /// slot on the YouTube homepage.
-  /// - "AD_GROUP_FORMAT_DEMAND_GEN" : Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This enum value is only
-  /// available to allowlisted users.
+  /// - "AD_GROUP_FORMAT_DEMAND_GEN" : Demand Gen ads.
   core.String? adGroupFormat;
 
   /// The unique ID of the ad group.
@@ -12201,38 +11927,25 @@ class AdGroupAd {
   /// The DCM tracking ad info.
   ///
   /// Only valid for Demand Gen ads. To remove the DCM tracking ad info, please
-  /// leave this field empty. Retrieval and management of Demand Gen resources
-  /// is currently in beta. This field is only available to allowlisted users.
+  /// leave this field empty.
   ///
   /// Optional.
   DcmTrackingInfo? dcmTrackingInfo;
 
   /// Details of a \[Demand Gen carousel
   /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#CarouselAd).
-  ///
-  /// Retrieval and management of Demand Gen resources is currently in beta.
-  /// This field is only available to allowlisted users.
   DemandGenCarouselAd? demandGenCarouselAd;
 
   /// Details of a \[Demand Gen image
   /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#ImageAd).
-  ///
-  /// Retrieval and management of Demand Gen resources is currently in beta.
-  /// This field is only available to allowlisted users.
   DemandGenImageAd? demandGenImageAd;
 
   /// Details of a \[Demand Gen product
   /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#Product-onlyAd).
-  ///
-  /// Retrieval and management of Demand Gen resources is currently in beta.
-  /// This field is only available to allowlisted users.
   DemandGenProductAd? demandGenProductAd;
 
   /// Details of a \[Demand Gen video
   /// ad\](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#VideoAd).
-  ///
-  /// Retrieval and management of Demand Gen resources is currently in beta.
-  /// This field is only available to allowlisted users.
   DemandGenVideoAd? demandGenVideoAd;
 
   /// The display name of the ad.
@@ -13184,7 +12897,7 @@ class AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry {
 }
 
 /// A list of fragments of text that violated the policy.
-typedef AdPolicyTopicEvidenceTextList = $AdPolicyTopicEvidenceTextList;
+typedef AdPolicyTopicEvidenceTextList = $TextList;
 
 /// Trademark terms that caused a policy violation.
 class AdPolicyTopicEvidenceTrademark {
@@ -13229,7 +12942,7 @@ class AdPolicyTopicEvidenceTrademark {
 }
 
 /// A list of websites that violated the policy.
-typedef AdPolicyTopicEvidenceWebsiteList = $AdPolicyTopicEvidenceWebsiteList;
+typedef AdPolicyTopicEvidenceWebsiteList = $WebsiteList;
 
 /// Additional URLs related to the ad, including beacons.
 typedef AdUrl = $AdUrl;
@@ -13281,6 +12994,23 @@ class Advertiser {
 
   /// Settings that control how advertiser data may be accessed.
   AdvertiserDataAccessConfig? dataAccessConfig;
+
+  /// The default business name for the advertiser.
+  ///
+  /// This is the value used by YouTube and Demand Gen ads under this advertiser
+  /// if a business name is not provided.
+  ///
+  /// Optional.
+  core.String? defaultBusinessName;
+
+  /// The asset ID of the default logo image for the advertiser.
+  ///
+  /// This is the asset ID that will be used by YouTube and Demand ads under
+  /// this advertiser if a logo asset is not provided. You must use
+  /// advertisers.adAssets.upload to upload this asset using the API.
+  ///
+  /// Optional.
+  core.String? defaultLogoAssetId;
 
   /// The display name of the advertiser.
   ///
@@ -13360,6 +13090,8 @@ class Advertiser {
     this.containsEuPoliticalAds,
     this.creativeConfig,
     this.dataAccessConfig,
+    this.defaultBusinessName,
+    this.defaultLogoAssetId,
     this.displayName,
     this.entityStatus,
     this.generalConfig,
@@ -13396,6 +13128,8 @@ class Advertiser {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        defaultBusinessName: json_['defaultBusinessName'] as core.String?,
+        defaultLogoAssetId: json_['defaultLogoAssetId'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         entityStatus: json_['entityStatus'] as core.String?,
         generalConfig: json_.containsKey('generalConfig')
@@ -13427,6 +13161,8 @@ class Advertiser {
     final containsEuPoliticalAds = this.containsEuPoliticalAds;
     final creativeConfig = this.creativeConfig;
     final dataAccessConfig = this.dataAccessConfig;
+    final defaultBusinessName = this.defaultBusinessName;
+    final defaultLogoAssetId = this.defaultLogoAssetId;
     final displayName = this.displayName;
     final entityStatus = this.entityStatus;
     final generalConfig = this.generalConfig;
@@ -13443,6 +13179,8 @@ class Advertiser {
       'containsEuPoliticalAds': ?containsEuPoliticalAds,
       'creativeConfig': ?creativeConfig,
       'dataAccessConfig': ?dataAccessConfig,
+      'defaultBusinessName': ?defaultBusinessName,
+      'defaultLogoAssetId': ?defaultLogoAssetId,
       'displayName': ?displayName,
       'entityStatus': ?entityStatus,
       'generalConfig': ?generalConfig,
@@ -14177,6 +13915,8 @@ class AssignedTargetingOption {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   core.String? targetingType;
 
   /// Third party verification details.
@@ -14215,6 +13955,12 @@ class AssignedTargetingOption {
   /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_YOUTUBE_CHANNEL`.
   YoutubeChannelAssignedTargetingOptionDetails? youtubeChannelDetails;
+
+  /// YouTube channel pack details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// `TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+  YoutubeChannelPackAssignedTargetingOptionDetails? youtubeChannelPackDetails;
 
   /// YouTube video details.
   ///
@@ -14276,6 +14022,7 @@ class AssignedTargetingOption {
     this.videoPlayerSizeDetails,
     this.viewabilityDetails,
     this.youtubeChannelDetails,
+    this.youtubeChannelPackDetails,
     this.youtubeVideoDetails,
   });
 
@@ -14577,6 +14324,13 @@ class AssignedTargetingOption {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        youtubeChannelPackDetails:
+            json_.containsKey('youtubeChannelPackDetails')
+            ? YoutubeChannelPackAssignedTargetingOptionDetails.fromJson(
+                json_['youtubeChannelPackDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         youtubeVideoDetails: json_.containsKey('youtubeVideoDetails')
             ? YoutubeVideoAssignedTargetingOptionDetails.fromJson(
                 json_['youtubeVideoDetails']
@@ -14642,6 +14396,7 @@ class AssignedTargetingOption {
     final videoPlayerSizeDetails = this.videoPlayerSizeDetails;
     final viewabilityDetails = this.viewabilityDetails;
     final youtubeChannelDetails = this.youtubeChannelDetails;
+    final youtubeChannelPackDetails = this.youtubeChannelPackDetails;
     final youtubeVideoDetails = this.youtubeVideoDetails;
     return {
       'ageRangeDetails': ?ageRangeDetails,
@@ -14698,6 +14453,7 @@ class AssignedTargetingOption {
       'videoPlayerSizeDetails': ?videoPlayerSizeDetails,
       'viewabilityDetails': ?viewabilityDetails,
       'youtubeChannelDetails': ?youtubeChannelDetails,
+      'youtubeChannelPackDetails': ?youtubeChannelPackDetails,
       'youtubeVideoDetails': ?youtubeVideoDetails,
     };
   }
@@ -16838,54 +16594,6 @@ class CommonInStreamAttribute {
   }
 }
 
-/// User consent status.
-typedef Consent = $Consent;
-
-/// Contact information defining a Customer Match audience member.
-typedef ContactInfo = $ContactInfo;
-
-/// Wrapper message for a list of contact information defining Customer Match
-/// audience members.
-class ContactInfoList {
-  /// Input only.
-  ///
-  /// The consent setting for the users in contact_infos. Leaving this field
-  /// unset indicates that consent is not specified. If ad_user_data or
-  /// ad_personalization fields are set to `CONSENT_STATUS_DENIED`, the request
-  /// will return an error.
-  Consent? consent;
-
-  /// A list of ContactInfo objects defining Customer Match audience members.
-  ///
-  /// The size of members after splitting the contact_infos mustn't be greater
-  /// than 500,000.
-  core.List<ContactInfo>? contactInfos;
-
-  ContactInfoList({this.consent, this.contactInfos});
-
-  ContactInfoList.fromJson(core.Map json_)
-    : this(
-        consent: json_.containsKey('consent')
-            ? Consent.fromJson(
-                json_['consent'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        contactInfos: (json_['contactInfos'] as core.List?)
-            ?.map(
-              (value) => ContactInfo.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final consent = this.consent;
-    final contactInfos = this.contactInfos;
-    return {'consent': ?consent, 'contactInfos': ?contactInfos};
-  }
-}
-
 /// Details for content duration assigned targeting option.
 ///
 /// This will be populated in the content_duration_details field when
@@ -17006,9 +16714,7 @@ class ConversionCountingConfig {
   /// This attribution model will determine how conversions are counted. The
   /// Primary model can be set by you for a floodlight config or group. More
   /// details [here](https://support.google.com/displayvideo/answer/7409983).
-  /// Only applicable to Demand Gen line items. Retrieval and management of
-  /// Demand Gen resources is currently in beta. This field is only available to
-  /// allowlisted users.
+  /// Only applicable to Demand Gen line items.
   ///
   /// Optional.
   core.String? primaryAttributionModelId;
@@ -17200,6 +16906,8 @@ class CreateAssignedTargetingOptionsRequest {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   core.String? targetingType;
 
   CreateAssignedTargetingOptionsRequest({
@@ -17288,6 +16996,8 @@ class CreateSdfDownloadTaskRequest {
   /// migrating to this version.
   /// - "SDF_VERSION_9_1" : SDF version 9.1.
   /// - "SDF_VERSION_9_2" : SDF version 9.2.
+  /// - "SDF_VERSION_10" : SDF version 10.
+  /// - "SDF_VERSION_10_1" : SDF version 10.1.
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -17757,6 +17467,17 @@ class Creative {
   /// Optional.
   core.bool? skippable;
 
+  /// Whether to add a label to the creative as created or edited using AI when
+  /// served in regions with local AI labeling regulations.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED" : No attestation has
+  /// been provided.
+  /// - "NOT_SYNTHETIC" : Attested as not created or edited using AI.
+  /// - "IS_SYNTHETIC" : Attested as created or edited using AI.
+  core.String? syntheticContentAttestationStatus;
+
   /// The original third-party tag used for the creative.
   ///
   /// Required and only valid for third-party tag creatives. Third-party tag
@@ -17893,6 +17614,7 @@ class Creative {
     this.reviewStatus,
     this.skipOffset,
     this.skippable,
+    this.syntheticContentAttestationStatus,
     this.thirdPartyTag,
     this.thirdPartyUrls,
     this.timerEvents,
@@ -17999,6 +17721,8 @@ class Creative {
               )
             : null,
         skippable: json_['skippable'] as core.bool?,
+        syntheticContentAttestationStatus:
+            json_['syntheticContentAttestationStatus'] as core.String?,
         thirdPartyTag: json_['thirdPartyTag'] as core.String?,
         thirdPartyUrls: (json_['thirdPartyUrls'] as core.List?)
             ?.map(
@@ -18073,6 +17797,8 @@ class Creative {
     final reviewStatus = this.reviewStatus;
     final skipOffset = this.skipOffset;
     final skippable = this.skippable;
+    final syntheticContentAttestationStatus =
+        this.syntheticContentAttestationStatus;
     final thirdPartyTag = this.thirdPartyTag;
     final thirdPartyUrls = this.thirdPartyUrls;
     final timerEvents = this.timerEvents;
@@ -18121,6 +17847,7 @@ class Creative {
       'reviewStatus': ?reviewStatus,
       'skipOffset': ?skipOffset,
       'skippable': ?skippable,
+      'syntheticContentAttestationStatus': ?syntheticContentAttestationStatus,
       'thirdPartyTag': ?thirdPartyTag,
       'thirdPartyUrls': ?thirdPartyUrls,
       'timerEvents': ?timerEvents,
@@ -18622,7 +18349,10 @@ typedef DemandGenBiddingStrategy = $DemandGenBiddingStrategy;
 class DemandGenCarouselAd {
   /// The business name shown on the ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   core.String? businessName;
 
   /// The list of cards shown on the ad.
@@ -18657,7 +18387,10 @@ class DemandGenCarouselAd {
 
   /// The logo image used by this ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   ImageAsset? logo;
 
   /// The URL address loaded in the background for tracking purposes.
@@ -18740,7 +18473,10 @@ class DemandGenCarouselAd {
 class DemandGenImageAd {
   /// The business name shown on the ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   core.String? businessName;
 
   /// The call-to-action button shown on the ad.
@@ -18780,6 +18516,9 @@ class DemandGenImageAd {
   core.List<core.String>? headlines;
 
   /// The list of logo images shown on the ad.
+  ///
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
   core.List<ImageAsset>? logoImages;
 
   /// The list of marketing images shown on the ad.
@@ -18906,7 +18645,10 @@ class DemandGenImageAd {
 class DemandGenProductAd {
   /// The business name shown on the ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   core.String? businessName;
 
   /// The call-to-action button shown on the ad.
@@ -18975,7 +18717,10 @@ class DemandGenProductAd {
 
   /// The logo image used by this ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   ImageAsset? logo;
 
   /// The URL address loaded in the background for tracking purposes.
@@ -19114,7 +18859,10 @@ class DemandGenSettings {
 class DemandGenVideoAd {
   /// The business name shown on the ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   core.String? businessName;
 
   /// The call-to-action button shown on the ad.
@@ -19195,7 +18943,10 @@ class DemandGenVideoAd {
 
   /// The logo image used by this ad.
   ///
-  /// Required.
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
   ImageAsset? logo;
 
   /// The list of long headlines shown on the ad.
@@ -19480,110 +19231,6 @@ typedef DoubleVerifyVideoViewability = $DoubleVerifyVideoViewability;
 typedef DuplicateLineItemRequest = $DuplicateLineItemRequest;
 typedef DuplicateLineItemResponse = $DuplicateLineItemResponse;
 
-/// Request message for
-/// FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
-class EditCustomerMatchMembersRequest {
-  /// Input only.
-  ///
-  /// A list of contact information to define the members to be added.
-  ContactInfoList? addedContactInfoList;
-
-  /// Input only.
-  ///
-  /// A list of mobile device IDs to define the members to be added.
-  MobileDeviceIdList? addedMobileDeviceIdList;
-
-  /// The ID of the owner advertiser of the updated Customer Match
-  /// FirstAndThirdPartyAudience.
-  ///
-  /// Required.
-  core.String? advertiserId;
-
-  /// Input only.
-  ///
-  /// A list of contact information to define the members to be removed.
-  ContactInfoList? removedContactInfoList;
-
-  /// Input only.
-  ///
-  /// A list of mobile device IDs to define the members to be removed.
-  MobileDeviceIdList? removedMobileDeviceIdList;
-
-  EditCustomerMatchMembersRequest({
-    this.addedContactInfoList,
-    this.addedMobileDeviceIdList,
-    this.advertiserId,
-    this.removedContactInfoList,
-    this.removedMobileDeviceIdList,
-  });
-
-  EditCustomerMatchMembersRequest.fromJson(core.Map json_)
-    : this(
-        addedContactInfoList: json_.containsKey('addedContactInfoList')
-            ? ContactInfoList.fromJson(
-                json_['addedContactInfoList']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        addedMobileDeviceIdList: json_.containsKey('addedMobileDeviceIdList')
-            ? MobileDeviceIdList.fromJson(
-                json_['addedMobileDeviceIdList']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        advertiserId: json_['advertiserId'] as core.String?,
-        removedContactInfoList: json_.containsKey('removedContactInfoList')
-            ? ContactInfoList.fromJson(
-                json_['removedContactInfoList']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        removedMobileDeviceIdList:
-            json_.containsKey('removedMobileDeviceIdList')
-            ? MobileDeviceIdList.fromJson(
-                json_['removedMobileDeviceIdList']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final addedContactInfoList = this.addedContactInfoList;
-    final addedMobileDeviceIdList = this.addedMobileDeviceIdList;
-    final advertiserId = this.advertiserId;
-    final removedContactInfoList = this.removedContactInfoList;
-    final removedMobileDeviceIdList = this.removedMobileDeviceIdList;
-    return {
-      'addedContactInfoList': ?addedContactInfoList,
-      'addedMobileDeviceIdList': ?addedMobileDeviceIdList,
-      'advertiserId': ?advertiserId,
-      'removedContactInfoList': ?removedContactInfoList,
-      'removedMobileDeviceIdList': ?removedMobileDeviceIdList,
-    };
-  }
-}
-
-/// The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
-class EditCustomerMatchMembersResponse {
-  /// The ID of the updated Customer Match FirstAndThirdPartyAudience.
-  ///
-  /// Required.
-  core.String? firstAndThirdPartyAudienceId;
-
-  EditCustomerMatchMembersResponse({this.firstAndThirdPartyAudienceId});
-
-  EditCustomerMatchMembersResponse.fromJson(core.Map json_)
-    : this(
-        firstAndThirdPartyAudienceId:
-            json_['firstAndThirdPartyAudienceId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final firstAndThirdPartyAudienceId = this.firstAndThirdPartyAudienceId;
-    return {'firstAndThirdPartyAudienceId': ?firstAndThirdPartyAudienceId};
-  }
-}
-
 /// Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors.
 typedef EditGuaranteedOrderReadAccessorsRequest =
     $EditGuaranteedOrderReadAccessorsRequest;
@@ -19658,270 +19305,6 @@ typedef ExchangeTargetingOptionDetails = $ExchangeTargetingOptionDetails;
 
 /// Exit event of the creative.
 typedef ExitEvent = $ExitEvent;
-
-/// Describes a first or third party audience list used for targeting.
-///
-/// First party audiences are created via usage of client data. Third party
-/// audiences are provided by Third Party data providers and can only be
-/// licensed to customers.
-class FirstAndThirdPartyAudience {
-  /// The estimated audience size for the Display network in the past month.
-  ///
-  /// If the size is less than 1000, the number will be hidden and 0 will be
-  /// returned due to privacy reasons. Otherwise, the number will be rounded off
-  /// to two significant digits. Only returned in GET request.
-  ///
-  /// Output only.
-  core.String? activeDisplayAudienceSize;
-
-  /// The app_id matches with the type of the mobile_device_ids being uploaded.
-  ///
-  /// Only applicable to audience_type `CUSTOMER_MATCH_DEVICE_ID`
-  core.String? appId;
-
-  /// The source of the audience.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "AUDIENCE_SOURCE_UNSPECIFIED" : Default value when audience source is
-  /// not specified or is unknown.
-  /// - "DISPLAY_VIDEO_360" : Originated from Display & Video 360.
-  /// - "CAMPAIGN_MANAGER" : Originated from Campaign Manager 360.
-  /// - "AD_MANAGER" : Originated from Google Ad Manager.
-  /// - "SEARCH_ADS_360" : Originated from Search Ads 360.
-  /// - "YOUTUBE" : Originated from Youtube.
-  /// - "ADS_DATA_HUB" : Originated from Ads Data Hub.
-  core.String? audienceSource;
-
-  /// The type of the audience.
-  /// Possible string values are:
-  /// - "AUDIENCE_TYPE_UNSPECIFIED" : Default value when type is not specified
-  /// or is unknown.
-  /// - "CUSTOMER_MATCH_CONTACT_INFO" : Audience was generated through matching
-  /// customers to known contact information.
-  /// - "CUSTOMER_MATCH_DEVICE_ID" : Audience was generated through matching
-  /// customers to known Mobile device IDs.
-  /// - "CUSTOMER_MATCH_USER_ID" : Audience was generated through matching
-  /// customers to known User IDs.
-  /// - "ACTIVITY_BASED" : Audience was created based on campaign activity.
-  /// - "FREQUENCY_CAP" : Audience was created based on excluding the number of
-  /// impressions they were served.
-  /// - "TAG_BASED" : Audience was created based on custom variables attached to
-  /// pixel.
-  /// - "YOUTUBE_USERS" : Audience was created based on past interactions with
-  /// videos, YouTube ads, or YouTube channel.
-  /// - "LICENSED" : Subtype of third party audience type.
-  core.String? audienceType;
-
-  /// Input only.
-  ///
-  /// A list of contact information to define the initial audience members. Only
-  /// applicable to audience_type `CUSTOMER_MATCH_CONTACT_INFO`
-  ContactInfoList? contactInfoList;
-
-  /// The user-provided description of the audience.
-  ///
-  /// Only applicable to first party audiences.
-  core.String? description;
-
-  /// The estimated audience size for the Display network.
-  ///
-  /// If the size is less than 1000, the number will be hidden and 0 will be
-  /// returned due to privacy reasons. Otherwise, the number will be rounded off
-  /// to two significant digits. Only returned in GET request.
-  ///
-  /// Output only.
-  core.String? displayAudienceSize;
-
-  /// The estimated desktop audience size in Display network.
-  ///
-  /// If the size is less than 1000, the number will be hidden and 0 will be
-  /// returned due to privacy reasons. Otherwise, the number will be rounded off
-  /// to two significant digits. Only applicable to first party audiences. Only
-  /// returned in GET request.
-  ///
-  /// Output only.
-  core.String? displayDesktopAudienceSize;
-
-  /// The estimated mobile app audience size in Display network.
-  ///
-  /// If the size is less than 1000, the number will be hidden and 0 will be
-  /// returned due to privacy reasons. Otherwise, the number will be rounded off
-  /// to two significant digits. Only applicable to first party audiences. Only
-  /// returned in GET request.
-  ///
-  /// Output only.
-  core.String? displayMobileAppAudienceSize;
-
-  /// The estimated mobile web audience size in Display network.
-  ///
-  /// If the size is less than 1000, the number will be hidden and 0 will be
-  /// returned due to privacy reasons. Otherwise, the number will be rounded off
-  /// to two significant digits. Only applicable to first party audiences. Only
-  /// returned in GET request.
-  ///
-  /// Output only.
-  core.String? displayMobileWebAudienceSize;
-
-  /// The display name of the first and third party audience.
-  core.String? displayName;
-
-  /// The unique ID of the first and third party audience.
-  ///
-  /// Assigned by the system.
-  ///
-  /// Output only.
-  core.String? firstAndThirdPartyAudienceId;
-
-  /// Whether the audience is a first or third party audience.
-  /// Possible string values are:
-  /// - "FIRST_AND_THIRD_PARTY_AUDIENCE_TYPE_UNSPECIFIED" : Default value when
-  /// type is not specified or is unknown.
-  /// - "FIRST_AND_THIRD_PARTY_AUDIENCE_TYPE_FIRST_PARTY" : Audience that is
-  /// created via usage of client data.
-  /// - "FIRST_AND_THIRD_PARTY_AUDIENCE_TYPE_THIRD_PARTY" : Audience that is
-  /// provided by Third Party data providers.
-  core.String? firstAndThirdPartyAudienceType;
-
-  /// The estimated audience size for Gmail network.
-  ///
-  /// If the size is less than 1000, the number will be hidden and 0 will be
-  /// returned due to privacy reasons. Otherwise, the number will be rounded off
-  /// to two significant digits. Only applicable to first party audiences. Only
-  /// returned in GET request.
-  ///
-  /// Output only.
-  core.String? gmailAudienceSize;
-
-  /// The duration in days that an entry remains in the audience after the
-  /// qualifying event.
-  ///
-  /// The set value must be greater than 0 and less than or equal to 540. Only
-  /// applicable to first party audiences. This field is required if one of the
-  /// following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` *
-  /// `CUSTOMER_MATCH_DEVICE_ID`
-  core.String? membershipDurationDays;
-
-  /// Input only.
-  ///
-  /// A list of mobile device IDs to define the initial audience members. Only
-  /// applicable to audience_type `CUSTOMER_MATCH_DEVICE_ID`
-  MobileDeviceIdList? mobileDeviceIdList;
-
-  /// The resource name of the first and third party audience.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The estimated audience size for YouTube network.
-  ///
-  /// If the size is less than 1000, the number will be hidden and 0 will be
-  /// returned due to privacy reasons. Otherwise, the number will be rounded off
-  /// to two significant digits. Only applicable to first party audiences. Only
-  /// returned in GET request.
-  ///
-  /// Output only.
-  core.String? youtubeAudienceSize;
-
-  FirstAndThirdPartyAudience({
-    this.activeDisplayAudienceSize,
-    this.appId,
-    this.audienceSource,
-    this.audienceType,
-    this.contactInfoList,
-    this.description,
-    this.displayAudienceSize,
-    this.displayDesktopAudienceSize,
-    this.displayMobileAppAudienceSize,
-    this.displayMobileWebAudienceSize,
-    this.displayName,
-    this.firstAndThirdPartyAudienceId,
-    this.firstAndThirdPartyAudienceType,
-    this.gmailAudienceSize,
-    this.membershipDurationDays,
-    this.mobileDeviceIdList,
-    this.name,
-    this.youtubeAudienceSize,
-  });
-
-  FirstAndThirdPartyAudience.fromJson(core.Map json_)
-    : this(
-        activeDisplayAudienceSize:
-            json_['activeDisplayAudienceSize'] as core.String?,
-        appId: json_['appId'] as core.String?,
-        audienceSource: json_['audienceSource'] as core.String?,
-        audienceType: json_['audienceType'] as core.String?,
-        contactInfoList: json_.containsKey('contactInfoList')
-            ? ContactInfoList.fromJson(
-                json_['contactInfoList'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        description: json_['description'] as core.String?,
-        displayAudienceSize: json_['displayAudienceSize'] as core.String?,
-        displayDesktopAudienceSize:
-            json_['displayDesktopAudienceSize'] as core.String?,
-        displayMobileAppAudienceSize:
-            json_['displayMobileAppAudienceSize'] as core.String?,
-        displayMobileWebAudienceSize:
-            json_['displayMobileWebAudienceSize'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        firstAndThirdPartyAudienceId:
-            json_['firstAndThirdPartyAudienceId'] as core.String?,
-        firstAndThirdPartyAudienceType:
-            json_['firstAndThirdPartyAudienceType'] as core.String?,
-        gmailAudienceSize: json_['gmailAudienceSize'] as core.String?,
-        membershipDurationDays: json_['membershipDurationDays'] as core.String?,
-        mobileDeviceIdList: json_.containsKey('mobileDeviceIdList')
-            ? MobileDeviceIdList.fromJson(
-                json_['mobileDeviceIdList']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        name: json_['name'] as core.String?,
-        youtubeAudienceSize: json_['youtubeAudienceSize'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final activeDisplayAudienceSize = this.activeDisplayAudienceSize;
-    final appId = this.appId;
-    final audienceSource = this.audienceSource;
-    final audienceType = this.audienceType;
-    final contactInfoList = this.contactInfoList;
-    final description = this.description;
-    final displayAudienceSize = this.displayAudienceSize;
-    final displayDesktopAudienceSize = this.displayDesktopAudienceSize;
-    final displayMobileAppAudienceSize = this.displayMobileAppAudienceSize;
-    final displayMobileWebAudienceSize = this.displayMobileWebAudienceSize;
-    final displayName = this.displayName;
-    final firstAndThirdPartyAudienceId = this.firstAndThirdPartyAudienceId;
-    final firstAndThirdPartyAudienceType = this.firstAndThirdPartyAudienceType;
-    final gmailAudienceSize = this.gmailAudienceSize;
-    final membershipDurationDays = this.membershipDurationDays;
-    final mobileDeviceIdList = this.mobileDeviceIdList;
-    final name = this.name;
-    final youtubeAudienceSize = this.youtubeAudienceSize;
-    return {
-      'activeDisplayAudienceSize': ?activeDisplayAudienceSize,
-      'appId': ?appId,
-      'audienceSource': ?audienceSource,
-      'audienceType': ?audienceType,
-      'contactInfoList': ?contactInfoList,
-      'description': ?description,
-      'displayAudienceSize': ?displayAudienceSize,
-      'displayDesktopAudienceSize': ?displayDesktopAudienceSize,
-      'displayMobileAppAudienceSize': ?displayMobileAppAudienceSize,
-      'displayMobileWebAudienceSize': ?displayMobileWebAudienceSize,
-      'displayName': ?displayName,
-      'firstAndThirdPartyAudienceId': ?firstAndThirdPartyAudienceId,
-      'firstAndThirdPartyAudienceType': ?firstAndThirdPartyAudienceType,
-      'gmailAudienceSize': ?gmailAudienceSize,
-      'membershipDurationDays': ?membershipDurationDays,
-      'mobileDeviceIdList': ?mobileDeviceIdList,
-      'name': ?name,
-      'youtubeAudienceSize': ?youtubeAudienceSize,
-    };
-  }
-}
 
 /// Details of first and third party audience group.
 ///
@@ -20256,7 +19639,7 @@ class FloodlightGroup {
 
 /// Settings that control the number of times a user may be shown with the same
 /// ad during a given time period.
-typedef FrequencyCap = $FrequencyCap00;
+typedef FrequencyCap = $FrequencyCap;
 
 /// Details for assigned gender targeting option.
 ///
@@ -20450,6 +19833,7 @@ class GuaranteedOrder {
   /// - "EXCHANGE_TUBI" : Tubi.
   /// - "EXCHANGE_SNAP" : Snap.
   /// - "EXCHANGE_CADENT" : Cadent.
+  /// - "EXCHANGE_EXTE" : Exte.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -21425,9 +20809,7 @@ class LineItem {
 
   /// Settings specific to Demand Gen line items.
   ///
-  /// Only applicable to Demand Gen line items. Retrieval and management of
-  /// Demand Gen resources is currently in beta. This field is only available to
-  /// allowlisted users.
+  /// Only applicable to Demand Gen line items.
   ///
   /// Optional.
   DemandGenSettings? demandGenSettings;
@@ -21571,9 +20953,7 @@ class LineItem {
   /// - "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME" : Video ads served on
   /// digital-out-of-home inventory. Line items of this type and their targeting
   /// cannot be created or updated using the API.
-  /// - "LINE_ITEM_TYPE_DEMAND_GEN" : Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This enum value is only
-  /// available to allowlisted users.
+  /// - "LINE_ITEM_TYPE_DEMAND_GEN" : Demand Gen ads.
   core.String? lineItemType;
 
   /// The mobile app promoted by the line item.
@@ -22488,48 +21868,6 @@ class ListCustomListsResponse {
   }
 }
 
-class ListFirstAndThirdPartyAudiencesResponse {
-  /// The list of first and third party audiences.
-  ///
-  /// Audience size properties will not be included. This list will be absent if
-  /// empty.
-  core.List<FirstAndThirdPartyAudience>? firstAndThirdPartyAudiences;
-
-  /// A token to retrieve the next page of results.
-  ///
-  /// Pass this value in the page_token field in the subsequent call to
-  /// `ListFirstAndThirdPartyAudiences` method to retrieve the next page of
-  /// results.
-  core.String? nextPageToken;
-
-  ListFirstAndThirdPartyAudiencesResponse({
-    this.firstAndThirdPartyAudiences,
-    this.nextPageToken,
-  });
-
-  ListFirstAndThirdPartyAudiencesResponse.fromJson(core.Map json_)
-    : this(
-        firstAndThirdPartyAudiences:
-            (json_['firstAndThirdPartyAudiences'] as core.List?)
-                ?.map(
-                  (value) => FirstAndThirdPartyAudience.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        nextPageToken: json_['nextPageToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final firstAndThirdPartyAudiences = this.firstAndThirdPartyAudiences;
-    final nextPageToken = this.nextPageToken;
-    return {
-      'firstAndThirdPartyAudiences': ?firstAndThirdPartyAudiences,
-      'nextPageToken': ?nextPageToken,
-    };
-  }
-}
-
 class ListFloodlightActivitiesResponse {
   /// The list of Floodlight activities.
   ///
@@ -23246,44 +22584,7 @@ typedef MaximizeSpendBidStrategy = $MaximizeSpendBidStrategy;
 typedef MeasurementConfig = $MeasurementConfig;
 
 /// A mobile app promoted by a mobile app install line item.
-typedef MobileApp = $MobileApp00;
-
-/// Wrapper message for a list of mobile device IDs defining Customer Match
-/// audience members.
-class MobileDeviceIdList {
-  /// Input only.
-  ///
-  /// The consent setting for the users in mobile_device_ids. Leaving this field
-  /// unset indicates that consent is not specified. If ad_user_data or
-  /// ad_personalization fields are set to `CONSENT_STATUS_DENIED`, the request
-  /// will return an error.
-  Consent? consent;
-
-  /// A list of mobile device IDs defining Customer Match audience members.
-  ///
-  /// The size of mobile_device_ids mustn't be greater than 500,000.
-  core.List<core.String>? mobileDeviceIds;
-
-  MobileDeviceIdList({this.consent, this.mobileDeviceIds});
-
-  MobileDeviceIdList.fromJson(core.Map json_)
-    : this(
-        consent: json_.containsKey('consent')
-            ? Consent.fromJson(
-                json_['consent'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        mobileDeviceIds: (json_['mobileDeviceIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final consent = this.consent;
-    final mobileDeviceIds = this.mobileDeviceIds;
-    return {'consent': ?consent, 'mobileDeviceIds': ?mobileDeviceIds};
-  }
-}
+typedef MobileApp = $MobileApp;
 
 /// Details for native content position assigned targeting option.
 ///
@@ -24741,6 +24042,8 @@ class TargetingOption {
   /// resources. Targeting of this type cannot be created or updated using the
   /// API. This targeting is only inherited by child YouTube and Demand Gen line
   /// item resources.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   core.String? targetingType;
 
   /// User rewarded content details.
@@ -25089,8 +24392,7 @@ class ThirdPartyMeasurementConfigs {
   ///
   /// The following third-party vendors are applicable: *
   /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` *
-  /// `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_NIELSEN` *
-  /// `THIRD_PARTY_VENDOR_MACROMILL`
+  /// `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_MACROMILL`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? brandLiftVendorConfigs;
@@ -25355,7 +24657,7 @@ class Transcode {
 /// platforms.
 ///
 /// This is part of the VAST 4.0 standard.
-typedef UniversalAdId = $UniversalAdId00;
+typedef UniversalAdId = $UniversalAdId;
 
 /// Details for assigned URL targeting option.
 ///
@@ -25906,6 +25208,13 @@ class YoutubeAndPartnersSettings {
 /// targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL`.
 typedef YoutubeChannelAssignedTargetingOptionDetails =
     $YoutubeChannelAssignedTargetingOptionDetails;
+
+/// Details for YouTube channel pack assigned targeting option.
+///
+/// This will be populated in the youtube_channel_pack_details field when
+/// targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+typedef YoutubeChannelPackAssignedTargetingOptionDetails =
+    $YoutubeChannelPackAssignedTargetingOptionDetails;
 
 /// Details for YouTube video assigned targeting option.
 ///

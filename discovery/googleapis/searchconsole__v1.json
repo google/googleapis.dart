@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250714",
+    "revision": "20260805",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "servicePath": "",
     "title": "Google Search Console API",
@@ -626,16 +626,18 @@
             "type": "object"
         },
         "ApiDimensionFilterGroup": {
-            "description": "A set of dimension value filters to test against each row. Only rows that pass all filter groups will be returned. All results within a filter group are either AND'ed or OR'ed together, depending on the group type selected. All filter groups are AND'ed together.",
+            "description": "A set of `dimension` value filters to test against each row. Only rows that pass all filter groups will be returned. All results within a filter group are either AND'ed or OR'ed together, depending on the group type selected. All filter groups are AND'ed together.",
             "id": "ApiDimensionFilterGroup",
             "properties": {
                 "filters": {
+                    "description": "Optional. A list of single-value filters in this group.",
                     "items": {
                         "$ref": "ApiDimensionFilter"
                     },
                     "type": "array"
                 },
                 "groupType": {
+                    "description": "Optional. The logic operator between filters of the same group.",
                     "enum": [
                         "AND"
                     ],

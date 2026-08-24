@@ -901,6 +901,32 @@ class CloudExportAdditionalProperties {
   }
 }
 
+/// The co2 emission of the vehicle.
+class Co2Emissions {
+  /// The unit of the co2 emission.
+  /// Possible string values are:
+  /// - "UNIT_UNSPECIFIED" : Unspecified unit.
+  /// - "GPERKM" : Grams per kilometer.
+  core.String? unit;
+
+  /// The co2 emission value.
+  core.String? value;
+
+  Co2Emissions({this.unit, this.value});
+
+  Co2Emissions.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final unit = this.unit;
+    final value = this.value;
+    return {'unit': ?unit, 'value': ?value};
+  }
+}
+
 /// A message that represents custom attributes.
 ///
 /// Exactly one of `value` or `group_values` must not be empty.
@@ -1032,6 +1058,56 @@ class DestinationStatus {
   }
 }
 
+/// The display address of the property.
+class DisplayAddress {
+  /// The city such as Seattle, New York, etc.
+  core.String? city;
+
+  /// The postal code, such as 94043.
+  core.String? postalCode;
+
+  /// The region(state), such as WA, OH, etc.
+  core.String? region;
+
+  /// The street name.
+  core.String? streetName;
+
+  /// The street number.
+  core.String? streetNumber;
+
+  DisplayAddress({
+    this.city,
+    this.postalCode,
+    this.region,
+    this.streetName,
+    this.streetNumber,
+  });
+
+  DisplayAddress.fromJson(core.Map json_)
+    : this(
+        city: json_['city'] as core.String?,
+        postalCode: json_['postalCode'] as core.String?,
+        region: json_['region'] as core.String?,
+        streetName: json_['streetName'] as core.String?,
+        streetNumber: json_['streetNumber'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final city = this.city;
+    final postalCode = this.postalCode;
+    final region = this.region;
+    final streetName = this.streetName;
+    final streetNumber = this.streetNumber;
+    return {
+      'city': ?city,
+      'postalCode': ?postalCode,
+      'region': ?region,
+      'streetName': ?streetName,
+      'streetNumber': ?streetNumber,
+    };
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1039,6 +1115,32 @@ class DestinationStatus {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// The energy consumption of the vehicle.
+class EnergyConsumption {
+  /// The unit of the energy consumption.
+  /// Possible string values are:
+  /// - "UNIT_UNSPECIFIED" : Unspecified unit.
+  /// - "KWHPER100KM" : Kilowatt hours per 100 kilometers.
+  core.String? unit;
+
+  /// The energy consumption value.
+  core.double? value;
+
+  EnergyConsumption({this.unit, this.value});
+
+  EnergyConsumption.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final unit = this.unit;
+    final value = this.value;
+    return {'unit': ?unit, 'value': ?value};
+  }
+}
 
 /// Conditions to be met for a product to have free shipping.
 class FreeShippingThreshold {
@@ -1068,6 +1170,33 @@ class FreeShippingThreshold {
     final country = this.country;
     final priceThreshold = this.priceThreshold;
     return {'country': ?country, 'priceThreshold': ?priceThreshold};
+  }
+}
+
+/// The fuel consumption of the vehicle.
+class FuelConsumption {
+  /// The unit of the fuel consumption.
+  /// Possible string values are:
+  /// - "UNIT_UNSPECIFIED" : Unspecified unit.
+  /// - "LPER100KM" : Liter per 100 kilometers.
+  /// - "KGPER100KM" : Kilograms per 100 kilometers.
+  core.String? unit;
+
+  /// The fuel consumption value.
+  core.double? value;
+
+  FuelConsumption({this.unit, this.value});
+
+  FuelConsumption.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final unit = this.unit;
+    final value = this.value;
+    return {'unit': ?unit, 'value': ?value};
   }
 }
 
@@ -1264,6 +1393,45 @@ class ItemLevelIssue {
   }
 }
 
+/// The lease term of the property.
+class LeaseTerm {
+  /// The duration unit of the lease term.
+  /// Possible string values are:
+  /// - "DURATION_UNIT_UNSPECIFIED" : Unspecified duration unit.
+  /// - "MONTHS" : Month.
+  /// - "WEEKS" : Week.
+  core.String? durationUnit;
+
+  /// The duration value of the lease term.
+  core.String? durationValue;
+
+  /// The type of lease term.
+  /// Possible string values are:
+  /// - "LEASE_TERM_TYPE_UNSPECIFIED" : Unspecified lease term type.
+  /// - "FIXED_TERM" : Fixed term.
+  core.String? type;
+
+  LeaseTerm({this.durationUnit, this.durationValue, this.type});
+
+  LeaseTerm.fromJson(core.Map json_)
+    : this(
+        durationUnit: json_['durationUnit'] as core.String?,
+        durationValue: json_['durationValue'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final durationUnit = this.durationUnit;
+    final durationValue = this.durationValue;
+    final type = this.type;
+    return {
+      'durationUnit': ?durationUnit,
+      'durationValue': ?durationValue,
+      'type': ?type,
+    };
+  }
+}
+
 /// Response message for the ListProducts method.
 class ListProductsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -1429,6 +1597,93 @@ class LoyaltyProgram {
   }
 }
 
+/// The mileage of the vehicle.
+class Mileage {
+  /// The unit of the mileage.
+  /// Possible string values are:
+  /// - "UNIT_UNSPECIFIED" : Unspecified unit.
+  /// - "MILES" : Miles.
+  /// - "KM" : Kilometers.
+  core.String? unit;
+
+  /// The distance value.
+  core.String? value;
+
+  Mileage({this.unit, this.value});
+
+  Mileage.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final unit = this.unit;
+    final value = this.value;
+    return {'unit': ?unit, 'value': ?value};
+  }
+}
+
+/// The pet policy of the property.
+class PetPolicy {
+  /// The pet types allowed.
+  core.List<core.String>? petTypes;
+
+  /// Whether pets are allowed.
+  core.bool? petsAllowed;
+
+  PetPolicy({this.petTypes, this.petsAllowed});
+
+  PetPolicy.fromJson(core.Map json_)
+    : this(
+        petTypes: (json_['petTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        petsAllowed: json_['petsAllowed'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final petTypes = this.petTypes;
+    final petsAllowed = this.petsAllowed;
+    return {'petTypes': ?petTypes, 'petsAllowed': ?petsAllowed};
+  }
+}
+
+/// The pickup cost of the item.
+class PickupCost {
+  /// The flat rate pickup cost of the item.
+  ///
+  /// Required.
+  Price? flatRate;
+
+  /// The price threshold above which pickup is free of charge.
+  ///
+  /// Optional.
+  Price? freeThreshold;
+
+  PickupCost({this.flatRate, this.freeThreshold});
+
+  PickupCost.fromJson(core.Map json_)
+    : this(
+        flatRate: json_.containsKey('flatRate')
+            ? Price.fromJson(
+                json_['flatRate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        freeThreshold: json_.containsKey('freeThreshold')
+            ? Price.fromJson(
+                json_['freeThreshold'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final flatRate = this.flatRate;
+    final freeThreshold = this.freeThreshold;
+    return {'flatRate': ?flatRate, 'freeThreshold': ?freeThreshold};
+  }
+}
+
 /// The price represented as a number and currency.
 typedef Price = $Price;
 
@@ -1445,6 +1700,16 @@ typedef Price = $Price;
 /// [Product data specification](https://support.google.com/merchants/answer/7052112)
 /// with some exceptions.
 class Product {
+  /// Determines whether the product is
+  /// [archived](https://support.google.com/merchants/answer/11909930).
+  ///
+  /// To archive or restore your product, visit Merchant Center products page.
+  /// Learn also more about
+  /// [offer visibility](https://support.google.com/merchants/answer/12488713).
+  ///
+  /// Output only.
+  core.bool? archived;
+
   /// The automated discounts information for the product.
   ///
   /// Output only.
@@ -1551,6 +1816,7 @@ class Product {
   core.String? versionNumber;
 
   Product({
+    this.archived,
     this.automatedDiscounts,
     this.base64EncodedName,
     this.contentLanguage,
@@ -1567,6 +1833,7 @@ class Product {
 
   Product.fromJson(core.Map json_)
     : this(
+        archived: json_['archived'] as core.bool?,
         automatedDiscounts: json_.containsKey('automatedDiscounts')
             ? AutomatedDiscounts.fromJson(
                 json_['automatedDiscounts']
@@ -1602,6 +1869,7 @@ class Product {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final archived = this.archived;
     final automatedDiscounts = this.automatedDiscounts;
     final base64EncodedName = this.base64EncodedName;
     final contentLanguage = this.contentLanguage;
@@ -1615,6 +1883,7 @@ class Product {
     final productStatus = this.productStatus;
     final versionNumber = this.versionNumber;
     return {
+      'archived': ?archived,
       'automatedDiscounts': ?automatedDiscounts,
       'base64EncodedName': ?base64EncodedName,
       'contentLanguage': ?contentLanguage,
@@ -1663,6 +1932,9 @@ class ProductAttributes {
   /// - "NEWBORN" : 0-3 months old.
   core.String? ageGroup;
 
+  /// The amenity features for the property.
+  core.List<core.String>? amenityFeature;
+
   /// A safeguard in the
   /// [automated discounts](https://support.google.com/merchants/answer/10295759)
   /// and "Dynamic Promotions"
@@ -1686,6 +1958,43 @@ class ProductAttributes {
   /// [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format.
   core.String? availabilityDate;
 
+  /// The [body style](https://support.google.com/google-ads/answer/14157085) of
+  /// the vehicle.
+  /// Possible string values are:
+  /// - "VEHICLE_BODY_STYLE_UNSPECIFIED" : Unspecified vehicle body style.
+  /// - "ATV_SPORT" : ATV Sport.
+  /// - "ATV_TOURING" : ATV Touring.
+  /// - "ATV_UTILITY" : ATV Utility.
+  /// - "ATV_YOUTH" : ATV Youth.
+  /// - "CITY_CAR" : City car.
+  /// - "CLASS_A_MOTORHOME" : Class A motorhome.
+  /// - "CLASS_B_MOTORHOME" : Class B motorhome.
+  /// - "CLASS_C_MOTORHOME" : Class C motorhome.
+  /// - "COMPACT_SUV" : Compact SUV.
+  /// - "CONVERTIBLE" : Convertible.
+  /// - "COUPE" : Coupe.
+  /// - "CROSSOVER" : Crossover.
+  /// - "FIFTH_WHEEL" : Fifth wheel.
+  /// - "FULL_SIZE_VAN" : Full size van.
+  /// - "HATCHBACK" : Hatchback.
+  /// - "LIMOUSINE" : Limousine.
+  /// - "MINIVAN" : Minivan.
+  /// - "NOTCHBACK" : Notchback.
+  /// - "POP_UP_CAMPER" : Pop up camper.
+  /// - "SEDAN" : Sedan.
+  /// - "SIDE_BY_SIDE" : Side by side.
+  /// - "STATION_WAGON" : Station wagon.
+  /// - "SUV" : SUV.
+  /// - "TRAVEL_TRAILER" : Travel trailer.
+  /// - "TRUCK" : Truck.
+  /// - "TRUCK_CAMPER" : Truck camper.
+  /// - "UTE" : Ute.
+  /// - "UTV_RECREATIONAL_UTILITY" : UTV Recreational utility.
+  /// - "UTV_SPORT" : UTV Sport.
+  /// - "UTV_UTILITY" : UTV Utility.
+  /// - "UTV_YOUTH" : UTV Youth.
+  core.String? bodyStyle;
+
   /// [Brand](https://support.google.com/merchants/answer/6324351) of the item.
   ///
   /// For example, "Google".
@@ -1706,8 +2015,16 @@ class ProductAttributes {
   /// article for more information.
   core.List<ProductCertification>? certifications;
 
+  /// Whether the vehicle is OEM \[certified
+  /// pre-owned\](https://support.google.com/google-ads/answer/14156475).
+  core.bool? certifiedPreOwned;
+
   /// Extra fields to export to the Cloud Retail program.
   core.List<CloudExportAdditionalProperties>? cloudExportAdditionalProperties;
+
+  /// The [co2 emission](https://support.google.com/google-ads/answer/14546146)
+  /// of the vehicle.
+  Co2Emissions? co2Emissions;
 
   /// [Color](https://support.google.com/merchants/answer/6324487) of the item.
   ///
@@ -1749,6 +2066,13 @@ class ProductAttributes {
   /// custom grouping of items in a Shopping campaign.
   core.String? customLabel4;
 
+  /// The date the vehicle was first registered.
+  ///
+  /// Format: `YYYY-MM`. See the
+  /// [Date first registered](https://support.google.com/google-ads/answer/14546138)
+  /// for more information.
+  core.String? dateFirstRegistered;
+
   /// Description of the item.
   core.String? description;
 
@@ -1760,6 +2084,9 @@ class ProductAttributes {
   /// [Disclosure date](https://support.google.com/merchants/answer/13034208)
   /// for more information.
   core.String? disclosureDate;
+
+  /// The display address of the property.
+  DisplayAddress? displayAddress;
 
   /// An identifier for an item for dynamic remarketing campaigns.
   core.String? displayAdsId;
@@ -1783,6 +2110,46 @@ class ProductAttributes {
   /// [Display ads attribute](https://support.google.com/merchants/answer/6069387).
   core.double? displayAdsValue;
 
+  /// Contains a list of PDF
+  /// [document URLs](https://support.google.com/merchants/answer/17084656) for
+  /// the product.
+  ///
+  /// Examples are training manuals, user guides, assembly instructions, package
+  /// inserts, etc. Must start with "http://" or "https://"), ASCII characters
+  /// only, and RFC 3986 compliant.
+  ///
+  /// Optional.
+  core.List<core.String>? documentLinks;
+
+  /// The
+  /// [electric range](https://support.google.com/google-ads/answer/15162232) of
+  /// the vehicle in miles/kms.
+  Mileage? electricRange;
+
+  /// The
+  /// [emission standard](https://support.google.com/google-ads/answer/14869021)
+  /// of the vehicle.
+  /// Possible string values are:
+  /// - "EMISSIONS_STANDARD_UNSPECIFIED" : Unspecified emission standard.
+  /// - "ZERO_EMISSIONS" : Zero emissions.
+  /// - "EURO1" : Euro 1.
+  /// - "EURO2" : Euro 2.
+  /// - "EURO3" : Euro 3.
+  /// - "EURO4" : Euro 4.
+  /// - "EURO5" : Euro 5.
+  /// - "EURO5B" : Euro 5b.
+  /// - "EURO6" : Euro 6.
+  /// - "EURO6C" : Euro 6c.
+  /// - "EURO6D" : Euro 6d.
+  /// - "EURO6D_TEMP" : Euro 6d-TEMP.
+  /// - "EURO6E" : Euro 6e.
+  core.String? emissionsStandard;
+
+  /// The
+  /// [energy consumption](https://support.google.com/google-ads/answer/14546149)
+  /// of the vehicle.
+  EnergyConsumption? energyConsumption;
+
   /// The
   /// [energy efficiency class](https://support.google.com/merchants/answer/7562785)
   /// as defined in EU directive 2010/30/EU.
@@ -1800,6 +2167,21 @@ class ProductAttributes {
   /// - "F" : F.
   /// - "G" : G.
   core.String? energyEfficiencyClass;
+
+  /// The [engine](https://support.google.com/google-ads/answer/14156068) type
+  /// of the vehicle.
+  /// Possible string values are:
+  /// - "ENGINE_TYPE_UNSPECIFIED" : Unspecified engine type.
+  /// - "GASOLINE" : Gasoline.
+  /// - "DIESEL" : Diesel.
+  /// - "ELECTRIC" : Electric.
+  /// - "HYBRID" : Hybrid.
+  /// - "PLUG_IN_HYBRID" : Plug-in hybrid.
+  /// - "NATURAL_GAS" : Natural gas.
+  /// - "LPG" : LPG.
+  /// - "METHANE" : Methane.
+  /// - "OTHER" : Other.
+  core.String? engine;
 
   /// The list of destinations to exclude for this target (corresponds to
   /// unchecked check boxes in Merchant Center).
@@ -1826,6 +2208,18 @@ class ProductAttributes {
 
   /// Conditions to be met for a product to have free shipping.
   core.List<FreeShippingThreshold>? freeShippingThreshold;
+
+  /// The
+  /// [fuel consumption](https://support.google.com/google-ads/answer/14543580)
+  /// of the vehicle.
+  FuelConsumption? fuelConsumption;
+
+  /// The fuel consumption of the vehicle when the hybrid battery is discharged.
+  ///
+  /// See the
+  /// [Help Center article](https://support.google.com/google-ads/answer/15162033)
+  /// for more information.
+  FuelConsumption? fuelConsumptionDischargedBattery;
 
   /// Target [gender](https://support.google.com/merchants/answer/6324479) of
   /// the item.
@@ -1885,6 +2279,27 @@ class ProductAttributes {
   /// Shared identifier for all variants of the same product.
   core.String? itemGroupId;
 
+  /// Represents the
+  /// [title of the product group](https://support.google.com/merchants/answer/17085146)
+  /// to which this variant product belongs.
+  ///
+  /// This can be used along with the
+  /// [item group id](https://support.google.com/merchants/answer/6324507)
+  /// attribute. It lets you perform better grouping of variant products, and
+  /// helps identifying common product characteristics more efficiently.
+  ///
+  /// Optional.
+  core.String? itemGroupTitle;
+
+  /// The latitude of the property.
+  ///
+  /// The value must be between -90 (inclusive) and 90 (inclusive), up to 6
+  /// decimal places.
+  core.double? latitude;
+
+  /// The lease term of the property.
+  LeaseTerm? leaseTerm;
+
   /// Additional URLs of lifestyle images of the item, used to explicitly
   /// identify images that showcase your item in a real-world context.
   ///
@@ -1899,6 +2314,12 @@ class ProductAttributes {
   /// [Link template](https://support.google.com/merchants/answer/13871172) for
   /// business hosted local storefront.
   core.String? linkTemplate;
+
+  /// The longitude of the property.
+  ///
+  /// The value must be between -180 (inclusive) and 180 (inclusive), up to 6
+  /// decimal places.
+  core.double? longitude;
 
   /// Loyalty points that users receive after purchasing the item.
   ///
@@ -1942,6 +2363,12 @@ class ProductAttributes {
   /// Applicable to India only.
   Price? maximumRetailPrice;
 
+  /// The number of miles/kms on the vehicle.
+  ///
+  /// See the [Mileage](https://support.google.com/google-ads/answer/14156166)
+  /// for more information.
+  Mileage? mileage;
+
   /// The
   /// [energy efficiency class](https://support.google.com/merchants/answer/7562785)
   /// as defined in EU directive 2010/30/EU.
@@ -1977,12 +2404,35 @@ class ProductAttributes {
   /// business hosted local storefront optimized for mobile devices.
   core.String? mobileLinkTemplate;
 
+  /// The [Model](https://support.google.com/google-ads/answer/14154511) of the
+  /// vehicle, such as `LX`, `EX`, and others.
+  core.String? model;
+
   /// Manufacturer Part Number
   /// ([MPN](https://support.google.com/merchants/answer/6324482)) of the item.
   core.String? mpn;
 
   /// The number of identical products in a business-defined multipack.
   core.String? multipack;
+
+  /// The neighborhood (locality) of the property, such as `Wallingford`,
+  /// `Greenwood`, etc.
+  core.String? neighborhood;
+
+  /// The number of bathrooms in the property.
+  ///
+  /// The value must be greater than 0 and a multiple of 0.5.
+  core.double? numberOfBathrooms;
+
+  /// The number of bedrooms in the property.
+  ///
+  /// The value must be greater than or equal to 0 and a multiple of 1.0.
+  core.double? numberOfBedrooms;
+
+  /// The number of units available for a specific floor plan of the property.
+  ///
+  /// The value must be greater than 0.
+  core.String? numberOfUnits;
 
   /// The item's [pattern](https://support.google.com/merchants/answer/6324483).
   ///
@@ -1999,6 +2449,15 @@ class ProductAttributes {
   /// (including Shopping Ads, Display Ads, local inventory ads, Buy on Google,
   /// and free listings).
   core.String? pause;
+
+  /// The pet policy for the property.
+  PetPolicy? petPolicy;
+
+  /// The [pickup cost](https://support.google.com/merchants/answer/16988704)
+  /// for an item when a customer buys it online and picks it up at a store.
+  ///
+  /// Optional.
+  PickupCost? pickupCost;
 
   /// The [pickup](https://support.google.com/merchants/answer/14634021) option
   /// for the item.
@@ -2036,11 +2495,23 @@ class ProductAttributes {
   /// a customer to pick up in one week or more.
   core.String? pickupSla;
 
+  /// Indicates the
+  /// [popularity](https://support.google.com/merchants/answer/17085297) of the
+  /// product in a merchant's inventory.
+  ///
+  /// Using a scale of 0.0 (lowest) to 100.0 (highest).
+  ///
+  /// Optional.
+  core.double? popularityRank;
+
   /// Price of the item.
   Price? price;
 
   /// Technical specification or additional product details.
   core.List<ProductDetail>? productDetails;
+
+  /// The product fee for the property.
+  core.List<ProductFee>? productFee;
 
   /// The height of the product in the units provided.
   ///
@@ -2073,12 +2544,53 @@ class ProductAttributes {
   /// The unique ID of a promotion.
   core.List<core.String>? promotionIds;
 
+  /// The name of the property.
+  core.String? propertyName;
+
+  /// The type of property.
+  /// Possible string values are:
+  /// - "PROPERTY_TYPE_UNSPECIFIED" : Unspecified property type.
+  /// - "APARTMENT" : Apartment.
+  /// - "CONDO" : Condo.
+  /// - "LOFT" : Loft.
+  /// - "MULTI_FAMILY_HOME" : Multi-family home.
+  /// - "PENTHOUSE" : Penthouse.
+  /// - "ROOM" : Room.
+  /// - "SINGLE_FAMILY_HOME" : Single-family home.
+  /// - "STUDIO" : Studio.
+  /// - "TOWNHOUSE" : Townhouse.
+  core.String? propertyType;
+
+  /// Contains user-, merchant-, and manufacturer-authored
+  /// [questions and answers](https://support.google.com/merchants/answer/17085211)
+  /// about the product.
+  ///
+  /// Max 30 question and answer pairs. Max 10000 characters total. Each
+  /// question can have max 1000 characters. Each answer can have max 1000
+  /// characters.
+  ///
+  /// Optional.
+  core.List<QuestionAndAnswer>? questionsAndAnswers;
+
+  /// Specifies how other
+  /// [products are related](https://support.google.com/merchants/answer/17085213)
+  /// to this product.
+  ///
+  /// Optional.
+  core.List<RelatedProduct>? relatedProducts;
+
   /// The return label of the product, used to group products in account-level
   /// return policies.
   ///
   /// Max. 100 characters. For more information, see
   /// [Return policy label](https://support.google.com/merchants/answer/9445425).
   core.String? returnPolicyLabel;
+
+  /// [Return rules](https://support.google.com/merchants/answer/17081382) for
+  /// the product.
+  ///
+  /// Optional.
+  core.List<Returns>? returns;
 
   /// Advertised sale price of the item.
   Price? salePrice;
@@ -2132,6 +2644,9 @@ class ProductAttributes {
   /// source settings.
   core.List<core.String>? shoppingAdsExcludedCountries;
 
+  /// The short title of the item.
+  core.String? shortTitle;
+
   /// Size of the item.
   ///
   /// Only one value is allowed. For variants with different sizes, insert a
@@ -2165,6 +2680,18 @@ class ProductAttributes {
   /// [Size type](https://support.google.com/merchants/answer/6324497).
   core.List<core.String>? sizeTypes;
 
+  /// The specialty housing type for the property.
+  /// Possible string values are:
+  /// - "SPECIALTY_HOUSING_TYPE_UNSPECIFIED" : Unspecified specialty housing
+  /// type.
+  /// - "CORPORATE" : Corporate housing.
+  /// - "LOW_INCOME" : Low income housing.
+  /// - "MILITARY" : Military housing.
+  /// - "SENIOR" : Senior housing.
+  /// - "SHORT_TERM" : Short term housing.
+  /// - "STUDENT" : Student housing.
+  core.String? specialtyHousingType;
+
   /// Structured description, for algorithmically (AI)-generated descriptions.
   StructuredDescription? structuredDescription;
 
@@ -2185,11 +2712,76 @@ class ProductAttributes {
   /// account-level transit time tables.
   core.String? transitTimeLabel;
 
+  /// The [Trim](https://support.google.com/google-ads/answer/14154176) of the
+  /// vehicle model, such as `S`, `SV`, `SL` and others.
+  core.String? trim;
+
+  /// The unit area of the property, such as `1000 sqft`.
+  UnitArea? unitArea;
+
   /// The preference of the denominator of the unit price.
   UnitPricingBaseMeasure? unitPricingBaseMeasure;
 
   /// The measure and dimension of an item.
   UnitPricingMeasure? unitPricingMeasure;
+
+  /// The utilities included for the property.
+  core.List<core.String>? utilitiesIncluded;
+
+  /// Contains the \[list of all variant-identifying
+  /// options\](https://support.google.com/merchants/answer/17085214) of this
+  /// product.
+  ///
+  /// Optional.
+  core.List<VariantOption>? variantOptions;
+
+  /// The all-in advertised price for a vehicle, which includes costs for the
+  /// following – any accessories attached to the vehicle, environmental levies,
+  /// extra warranty, fuel, freight, pre-delivery inspection (PDI), dealer fees
+  /// for handling licensing, provincial regulatory fees, miscellaneous dealer
+  /// charges for security etching and nitrogen tire fill, and
+  /// factory-to-customer or dealer-to-customer discounts or incentives.
+  ///
+  /// See the \[Vehicle all-in
+  /// price\](https://support.google.com/google-ads/answer/14156981) for more
+  /// information.
+  Price? vehicleAllInPrice;
+
+  /// The miscellaneous expenses like insurance and registration fees of the
+  /// vehicle.
+  ///
+  /// See the
+  /// [Vehicle expenses](https://support.google.com/google-ads/answer/15957154)
+  /// for more information.
+  Price? vehicleExpenses;
+
+  /// Whether the vehicle is sold with mandatory inspection and maintenance
+  /// performed before delivery.
+  ///
+  /// See the
+  /// [Vehicle mandatory inspection included](https://support.google.com/google-ads/answer/15956630)
+  /// for more information.\`
+  core.bool? vehicleMandatoryInspectionIncluded;
+
+  /// The MSRP (Manufacturer Suggested Retail Price) for the vehicle in its
+  /// current configuration.
+  ///
+  /// See the
+  /// [Vehicle MSRP](https://support.google.com/google-ads/answer/14154171) for
+  /// more information.
+  Price? vehicleMsrp;
+
+  /// The [price type](https://support.google.com/google-ads/answer/14592783) of
+  /// the vehicle.
+  /// Possible string values are:
+  /// - "VEHICLE_PRICE_TYPE_UNSPECIFIED" : Unspecified vehicle price type.
+  /// - "ALL_IN_PRICE" : All in price.
+  /// - "DRIVE_AWAY_PRICE" : Drive away price.
+  /// - "ESTIMATED_DRIVE_AWAY_PRICE" : Estimated drive away price.
+  /// - "EXCLUDING_GOVERNMENT_CHARGES_PRICE" : Excluding government charges
+  /// price.
+  /// - "VEHICLE_BASE_PRICE" : Vehicle base price.
+  core.String? vehiclePriceType;
 
   /// A list of video URLs for the item.
   ///
@@ -2201,12 +2793,25 @@ class ProductAttributes {
   /// Optional.
   core.List<core.String>? videoLinks;
 
+  /// The \[Vehicle Identification Number
+  /// (VIN)\](https://support.google.com/google-ads/answer/14154510) of the
+  /// vehicle.
+  core.String? vin;
+
   /// URL of the 3D image of the item.
   ///
   /// See the
   /// [Help Center article](https://support.google.com/merchants/answer/13674896)
   /// for more information.
   core.String? virtualModelLink;
+
+  /// The [warranty](https://support.google.com/google-ads/answer/15957626) of
+  /// the vehicle.
+  Warranty? warranty;
+
+  /// The [Year](https://support.google.com/google-ads/answer/14152816) of the
+  /// vehicle model.
+  core.String? year;
 
   ProductAttributes({
     this.additionalImageLinks,
@@ -2215,14 +2820,18 @@ class ProductAttributes {
     this.adsRedirect,
     this.adult,
     this.ageGroup,
+    this.amenityFeature,
     this.autoPricingMinPrice,
     this.availability,
     this.availabilityDate,
+    this.bodyStyle,
     this.brand,
     this.canonicalLink,
     this.carrierShipping,
     this.certifications,
+    this.certifiedPreOwned,
     this.cloudExportAdditionalProperties,
+    this.co2Emissions,
     this.color,
     this.condition,
     this.costOfGoodsSold,
@@ -2231,18 +2840,27 @@ class ProductAttributes {
     this.customLabel2,
     this.customLabel3,
     this.customLabel4,
+    this.dateFirstRegistered,
     this.description,
     this.disclosureDate,
+    this.displayAddress,
     this.displayAdsId,
     this.displayAdsLink,
     this.displayAdsSimilarIds,
     this.displayAdsTitle,
     this.displayAdsValue,
+    this.documentLinks,
+    this.electricRange,
+    this.emissionsStandard,
+    this.energyConsumption,
     this.energyEfficiencyClass,
+    this.engine,
     this.excludedDestinations,
     this.expirationDate,
     this.externalSellerId,
     this.freeShippingThreshold,
+    this.fuelConsumption,
+    this.fuelConsumptionDischargedBattery,
     this.gender,
     this.googleProductCategory,
     this.gtins,
@@ -2253,28 +2871,42 @@ class ProductAttributes {
     this.installment,
     this.isBundle,
     this.itemGroupId,
+    this.itemGroupTitle,
+    this.latitude,
+    this.leaseTerm,
     this.lifestyleImageLinks,
     this.link,
     this.linkTemplate,
+    this.longitude,
     this.loyaltyPoints,
     this.loyaltyPrograms,
     this.material,
     this.maxEnergyEfficiencyClass,
     this.maxHandlingTime,
     this.maximumRetailPrice,
+    this.mileage,
     this.minEnergyEfficiencyClass,
     this.minHandlingTime,
     this.minimumOrderValues,
     this.mobileLink,
     this.mobileLinkTemplate,
+    this.model,
     this.mpn,
     this.multipack,
+    this.neighborhood,
+    this.numberOfBathrooms,
+    this.numberOfBedrooms,
+    this.numberOfUnits,
     this.pattern,
     this.pause,
+    this.petPolicy,
+    this.pickupCost,
     this.pickupMethod,
     this.pickupSla,
+    this.popularityRank,
     this.price,
     this.productDetails,
+    this.productFee,
     this.productHeight,
     this.productHighlights,
     this.productLength,
@@ -2282,7 +2914,12 @@ class ProductAttributes {
     this.productWeight,
     this.productWidth,
     this.promotionIds,
+    this.propertyName,
+    this.propertyType,
+    this.questionsAndAnswers,
+    this.relatedProducts,
     this.returnPolicyLabel,
+    this.returns,
     this.salePrice,
     this.salePriceEffectiveDate,
     this.sellOnGoogleQuantity,
@@ -2295,19 +2932,33 @@ class ProductAttributes {
     this.shippingWeight,
     this.shippingWidth,
     this.shoppingAdsExcludedCountries,
+    this.shortTitle,
     this.size,
     this.sizeSystem,
     this.sizeTypes,
+    this.specialtyHousingType,
     this.structuredDescription,
     this.structuredTitle,
     this.subscriptionCost,
     this.sustainabilityIncentives,
     this.title,
     this.transitTimeLabel,
+    this.trim,
+    this.unitArea,
     this.unitPricingBaseMeasure,
     this.unitPricingMeasure,
+    this.utilitiesIncluded,
+    this.variantOptions,
+    this.vehicleAllInPrice,
+    this.vehicleExpenses,
+    this.vehicleMandatoryInspectionIncluded,
+    this.vehicleMsrp,
+    this.vehiclePriceType,
     this.videoLinks,
+    this.vin,
     this.virtualModelLink,
+    this.warranty,
+    this.year,
   });
 
   ProductAttributes.fromJson(core.Map json_)
@@ -2322,6 +2973,9 @@ class ProductAttributes {
         adsRedirect: json_['adsRedirect'] as core.String?,
         adult: json_['adult'] as core.bool?,
         ageGroup: json_['ageGroup'] as core.String?,
+        amenityFeature: (json_['amenityFeature'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         autoPricingMinPrice: json_.containsKey('autoPricingMinPrice')
             ? Price.fromJson(
                 json_['autoPricingMinPrice']
@@ -2330,6 +2984,7 @@ class ProductAttributes {
             : null,
         availability: json_['availability'] as core.String?,
         availabilityDate: json_['availabilityDate'] as core.String?,
+        bodyStyle: json_['bodyStyle'] as core.String?,
         brand: json_['brand'] as core.String?,
         canonicalLink: json_['canonicalLink'] as core.String?,
         carrierShipping: (json_['carrierShipping'] as core.List?)
@@ -2346,6 +3001,7 @@ class ProductAttributes {
               ),
             )
             .toList(),
+        certifiedPreOwned: json_['certifiedPreOwned'] as core.bool?,
         cloudExportAdditionalProperties:
             (json_['cloudExportAdditionalProperties'] as core.List?)
                 ?.map(
@@ -2354,6 +3010,11 @@ class ProductAttributes {
                   ),
                 )
                 .toList(),
+        co2Emissions: json_.containsKey('co2Emissions')
+            ? Co2Emissions.fromJson(
+                json_['co2Emissions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         color: json_['color'] as core.String?,
         condition: json_['condition'] as core.String?,
         costOfGoodsSold: json_.containsKey('costOfGoodsSold')
@@ -2366,8 +3027,14 @@ class ProductAttributes {
         customLabel2: json_['customLabel2'] as core.String?,
         customLabel3: json_['customLabel3'] as core.String?,
         customLabel4: json_['customLabel4'] as core.String?,
+        dateFirstRegistered: json_['dateFirstRegistered'] as core.String?,
         description: json_['description'] as core.String?,
         disclosureDate: json_['disclosureDate'] as core.String?,
+        displayAddress: json_.containsKey('displayAddress')
+            ? DisplayAddress.fromJson(
+                json_['displayAddress'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayAdsId: json_['displayAdsId'] as core.String?,
         displayAdsLink: json_['displayAdsLink'] as core.String?,
         displayAdsSimilarIds: (json_['displayAdsSimilarIds'] as core.List?)
@@ -2375,7 +3042,23 @@ class ProductAttributes {
             .toList(),
         displayAdsTitle: json_['displayAdsTitle'] as core.String?,
         displayAdsValue: (json_['displayAdsValue'] as core.num?)?.toDouble(),
+        documentLinks: (json_['documentLinks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        electricRange: json_.containsKey('electricRange')
+            ? Mileage.fromJson(
+                json_['electricRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        emissionsStandard: json_['emissionsStandard'] as core.String?,
+        energyConsumption: json_.containsKey('energyConsumption')
+            ? EnergyConsumption.fromJson(
+                json_['energyConsumption']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         energyEfficiencyClass: json_['energyEfficiencyClass'] as core.String?,
+        engine: json_['engine'] as core.String?,
         excludedDestinations: (json_['excludedDestinations'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -2388,6 +3071,18 @@ class ProductAttributes {
               ),
             )
             .toList(),
+        fuelConsumption: json_.containsKey('fuelConsumption')
+            ? FuelConsumption.fromJson(
+                json_['fuelConsumption'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fuelConsumptionDischargedBattery:
+            json_.containsKey('fuelConsumptionDischargedBattery')
+            ? FuelConsumption.fromJson(
+                json_['fuelConsumptionDischargedBattery']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gender: json_['gender'] as core.String?,
         googleProductCategory: json_['googleProductCategory'] as core.String?,
         gtins: (json_['gtins'] as core.List?)
@@ -2412,11 +3107,19 @@ class ProductAttributes {
             : null,
         isBundle: json_['isBundle'] as core.bool?,
         itemGroupId: json_['itemGroupId'] as core.String?,
+        itemGroupTitle: json_['itemGroupTitle'] as core.String?,
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        leaseTerm: json_.containsKey('leaseTerm')
+            ? LeaseTerm.fromJson(
+                json_['leaseTerm'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lifestyleImageLinks: (json_['lifestyleImageLinks'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
         link: json_['link'] as core.String?,
         linkTemplate: json_['linkTemplate'] as core.String?,
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
         loyaltyPoints: json_.containsKey('loyaltyPoints')
             ? LoyaltyPoints.fromJson(
                 json_['loyaltyPoints'] as core.Map<core.String, core.dynamic>,
@@ -2439,6 +3142,11 @@ class ProductAttributes {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        mileage: json_.containsKey('mileage')
+            ? Mileage.fromJson(
+                json_['mileage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         minEnergyEfficiencyClass:
             json_['minEnergyEfficiencyClass'] as core.String?,
         minHandlingTime: json_['minHandlingTime'] as core.String?,
@@ -2451,12 +3159,29 @@ class ProductAttributes {
             .toList(),
         mobileLink: json_['mobileLink'] as core.String?,
         mobileLinkTemplate: json_['mobileLinkTemplate'] as core.String?,
+        model: json_['model'] as core.String?,
         mpn: json_['mpn'] as core.String?,
         multipack: json_['multipack'] as core.String?,
+        neighborhood: json_['neighborhood'] as core.String?,
+        numberOfBathrooms: (json_['numberOfBathrooms'] as core.num?)
+            ?.toDouble(),
+        numberOfBedrooms: (json_['numberOfBedrooms'] as core.num?)?.toDouble(),
+        numberOfUnits: json_['numberOfUnits'] as core.String?,
         pattern: json_['pattern'] as core.String?,
         pause: json_['pause'] as core.String?,
+        petPolicy: json_.containsKey('petPolicy')
+            ? PetPolicy.fromJson(
+                json_['petPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pickupCost: json_.containsKey('pickupCost')
+            ? PickupCost.fromJson(
+                json_['pickupCost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         pickupMethod: json_['pickupMethod'] as core.String?,
         pickupSla: json_['pickupSla'] as core.String?,
+        popularityRank: (json_['popularityRank'] as core.num?)?.toDouble(),
         price: json_.containsKey('price')
             ? Price.fromJson(
                 json_['price'] as core.Map<core.String, core.dynamic>,
@@ -2465,6 +3190,13 @@ class ProductAttributes {
         productDetails: (json_['productDetails'] as core.List?)
             ?.map(
               (value) => ProductDetail.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        productFee: (json_['productFee'] as core.List?)
+            ?.map(
+              (value) => ProductFee.fromJson(
                 value as core.Map<core.String, core.dynamic>,
               ),
             )
@@ -2498,7 +3230,30 @@ class ProductAttributes {
         promotionIds: (json_['promotionIds'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        propertyName: json_['propertyName'] as core.String?,
+        propertyType: json_['propertyType'] as core.String?,
+        questionsAndAnswers: (json_['questionsAndAnswers'] as core.List?)
+            ?.map(
+              (value) => QuestionAndAnswer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        relatedProducts: (json_['relatedProducts'] as core.List?)
+            ?.map(
+              (value) => RelatedProduct.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         returnPolicyLabel: json_['returnPolicyLabel'] as core.String?,
+        returns: (json_['returns'] as core.List?)
+            ?.map(
+              (value) => Returns.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         salePrice: json_.containsKey('salePrice')
             ? Price.fromJson(
                 json_['salePrice'] as core.Map<core.String, core.dynamic>,
@@ -2559,11 +3314,13 @@ class ProductAttributes {
             (json_['shoppingAdsExcludedCountries'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        shortTitle: json_['shortTitle'] as core.String?,
         size: json_['size'] as core.String?,
         sizeSystem: json_['sizeSystem'] as core.String?,
         sizeTypes: (json_['sizeTypes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        specialtyHousingType: json_['specialtyHousingType'] as core.String?,
         structuredDescription: json_.containsKey('structuredDescription')
             ? StructuredDescription.fromJson(
                 json_['structuredDescription']
@@ -2591,6 +3348,12 @@ class ProductAttributes {
                 .toList(),
         title: json_['title'] as core.String?,
         transitTimeLabel: json_['transitTimeLabel'] as core.String?,
+        trim: json_['trim'] as core.String?,
+        unitArea: json_.containsKey('unitArea')
+            ? UnitArea.fromJson(
+                json_['unitArea'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         unitPricingBaseMeasure: json_.containsKey('unitPricingBaseMeasure')
             ? UnitPricingBaseMeasure.fromJson(
                 json_['unitPricingBaseMeasure']
@@ -2603,10 +3366,46 @@ class ProductAttributes {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        utilitiesIncluded: (json_['utilitiesIncluded'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        variantOptions: (json_['variantOptions'] as core.List?)
+            ?.map(
+              (value) => VariantOption.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        vehicleAllInPrice: json_.containsKey('vehicleAllInPrice')
+            ? Price.fromJson(
+                json_['vehicleAllInPrice']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vehicleExpenses: json_.containsKey('vehicleExpenses')
+            ? Price.fromJson(
+                json_['vehicleExpenses'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vehicleMandatoryInspectionIncluded:
+            json_['vehicleMandatoryInspectionIncluded'] as core.bool?,
+        vehicleMsrp: json_.containsKey('vehicleMsrp')
+            ? Price.fromJson(
+                json_['vehicleMsrp'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        vehiclePriceType: json_['vehiclePriceType'] as core.String?,
         videoLinks: (json_['videoLinks'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        vin: json_['vin'] as core.String?,
         virtualModelLink: json_['virtualModelLink'] as core.String?,
+        warranty: json_.containsKey('warranty')
+            ? Warranty.fromJson(
+                json_['warranty'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        year: json_['year'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -2616,15 +3415,19 @@ class ProductAttributes {
     final adsRedirect = this.adsRedirect;
     final adult = this.adult;
     final ageGroup = this.ageGroup;
+    final amenityFeature = this.amenityFeature;
     final autoPricingMinPrice = this.autoPricingMinPrice;
     final availability = this.availability;
     final availabilityDate = this.availabilityDate;
+    final bodyStyle = this.bodyStyle;
     final brand = this.brand;
     final canonicalLink = this.canonicalLink;
     final carrierShipping = this.carrierShipping;
     final certifications = this.certifications;
+    final certifiedPreOwned = this.certifiedPreOwned;
     final cloudExportAdditionalProperties =
         this.cloudExportAdditionalProperties;
+    final co2Emissions = this.co2Emissions;
     final color = this.color;
     final condition = this.condition;
     final costOfGoodsSold = this.costOfGoodsSold;
@@ -2633,18 +3436,28 @@ class ProductAttributes {
     final customLabel2 = this.customLabel2;
     final customLabel3 = this.customLabel3;
     final customLabel4 = this.customLabel4;
+    final dateFirstRegistered = this.dateFirstRegistered;
     final description = this.description;
     final disclosureDate = this.disclosureDate;
+    final displayAddress = this.displayAddress;
     final displayAdsId = this.displayAdsId;
     final displayAdsLink = this.displayAdsLink;
     final displayAdsSimilarIds = this.displayAdsSimilarIds;
     final displayAdsTitle = this.displayAdsTitle;
     final displayAdsValue = this.displayAdsValue;
+    final documentLinks = this.documentLinks;
+    final electricRange = this.electricRange;
+    final emissionsStandard = this.emissionsStandard;
+    final energyConsumption = this.energyConsumption;
     final energyEfficiencyClass = this.energyEfficiencyClass;
+    final engine = this.engine;
     final excludedDestinations = this.excludedDestinations;
     final expirationDate = this.expirationDate;
     final externalSellerId = this.externalSellerId;
     final freeShippingThreshold = this.freeShippingThreshold;
+    final fuelConsumption = this.fuelConsumption;
+    final fuelConsumptionDischargedBattery =
+        this.fuelConsumptionDischargedBattery;
     final gender = this.gender;
     final googleProductCategory = this.googleProductCategory;
     final gtins = this.gtins;
@@ -2655,28 +3468,42 @@ class ProductAttributes {
     final installment = this.installment;
     final isBundle = this.isBundle;
     final itemGroupId = this.itemGroupId;
+    final itemGroupTitle = this.itemGroupTitle;
+    final latitude = this.latitude;
+    final leaseTerm = this.leaseTerm;
     final lifestyleImageLinks = this.lifestyleImageLinks;
     final link = this.link;
     final linkTemplate = this.linkTemplate;
+    final longitude = this.longitude;
     final loyaltyPoints = this.loyaltyPoints;
     final loyaltyPrograms = this.loyaltyPrograms;
     final material = this.material;
     final maxEnergyEfficiencyClass = this.maxEnergyEfficiencyClass;
     final maxHandlingTime = this.maxHandlingTime;
     final maximumRetailPrice = this.maximumRetailPrice;
+    final mileage = this.mileage;
     final minEnergyEfficiencyClass = this.minEnergyEfficiencyClass;
     final minHandlingTime = this.minHandlingTime;
     final minimumOrderValues = this.minimumOrderValues;
     final mobileLink = this.mobileLink;
     final mobileLinkTemplate = this.mobileLinkTemplate;
+    final model = this.model;
     final mpn = this.mpn;
     final multipack = this.multipack;
+    final neighborhood = this.neighborhood;
+    final numberOfBathrooms = this.numberOfBathrooms;
+    final numberOfBedrooms = this.numberOfBedrooms;
+    final numberOfUnits = this.numberOfUnits;
     final pattern = this.pattern;
     final pause = this.pause;
+    final petPolicy = this.petPolicy;
+    final pickupCost = this.pickupCost;
     final pickupMethod = this.pickupMethod;
     final pickupSla = this.pickupSla;
+    final popularityRank = this.popularityRank;
     final price = this.price;
     final productDetails = this.productDetails;
+    final productFee = this.productFee;
     final productHeight = this.productHeight;
     final productHighlights = this.productHighlights;
     final productLength = this.productLength;
@@ -2684,7 +3511,12 @@ class ProductAttributes {
     final productWeight = this.productWeight;
     final productWidth = this.productWidth;
     final promotionIds = this.promotionIds;
+    final propertyName = this.propertyName;
+    final propertyType = this.propertyType;
+    final questionsAndAnswers = this.questionsAndAnswers;
+    final relatedProducts = this.relatedProducts;
     final returnPolicyLabel = this.returnPolicyLabel;
+    final returns = this.returns;
     final salePrice = this.salePrice;
     final salePriceEffectiveDate = this.salePriceEffectiveDate;
     final sellOnGoogleQuantity = this.sellOnGoogleQuantity;
@@ -2697,19 +3529,34 @@ class ProductAttributes {
     final shippingWeight = this.shippingWeight;
     final shippingWidth = this.shippingWidth;
     final shoppingAdsExcludedCountries = this.shoppingAdsExcludedCountries;
+    final shortTitle = this.shortTitle;
     final size = this.size;
     final sizeSystem = this.sizeSystem;
     final sizeTypes = this.sizeTypes;
+    final specialtyHousingType = this.specialtyHousingType;
     final structuredDescription = this.structuredDescription;
     final structuredTitle = this.structuredTitle;
     final subscriptionCost = this.subscriptionCost;
     final sustainabilityIncentives = this.sustainabilityIncentives;
     final title = this.title;
     final transitTimeLabel = this.transitTimeLabel;
+    final trim = this.trim;
+    final unitArea = this.unitArea;
     final unitPricingBaseMeasure = this.unitPricingBaseMeasure;
     final unitPricingMeasure = this.unitPricingMeasure;
+    final utilitiesIncluded = this.utilitiesIncluded;
+    final variantOptions = this.variantOptions;
+    final vehicleAllInPrice = this.vehicleAllInPrice;
+    final vehicleExpenses = this.vehicleExpenses;
+    final vehicleMandatoryInspectionIncluded =
+        this.vehicleMandatoryInspectionIncluded;
+    final vehicleMsrp = this.vehicleMsrp;
+    final vehiclePriceType = this.vehiclePriceType;
     final videoLinks = this.videoLinks;
+    final vin = this.vin;
     final virtualModelLink = this.virtualModelLink;
+    final warranty = this.warranty;
+    final year = this.year;
     return {
       'additionalImageLinks': ?additionalImageLinks,
       'adsGrouping': ?adsGrouping,
@@ -2717,14 +3564,18 @@ class ProductAttributes {
       'adsRedirect': ?adsRedirect,
       'adult': ?adult,
       'ageGroup': ?ageGroup,
+      'amenityFeature': ?amenityFeature,
       'autoPricingMinPrice': ?autoPricingMinPrice,
       'availability': ?availability,
       'availabilityDate': ?availabilityDate,
+      'bodyStyle': ?bodyStyle,
       'brand': ?brand,
       'canonicalLink': ?canonicalLink,
       'carrierShipping': ?carrierShipping,
       'certifications': ?certifications,
+      'certifiedPreOwned': ?certifiedPreOwned,
       'cloudExportAdditionalProperties': ?cloudExportAdditionalProperties,
+      'co2Emissions': ?co2Emissions,
       'color': ?color,
       'condition': ?condition,
       'costOfGoodsSold': ?costOfGoodsSold,
@@ -2733,18 +3584,27 @@ class ProductAttributes {
       'customLabel2': ?customLabel2,
       'customLabel3': ?customLabel3,
       'customLabel4': ?customLabel4,
+      'dateFirstRegistered': ?dateFirstRegistered,
       'description': ?description,
       'disclosureDate': ?disclosureDate,
+      'displayAddress': ?displayAddress,
       'displayAdsId': ?displayAdsId,
       'displayAdsLink': ?displayAdsLink,
       'displayAdsSimilarIds': ?displayAdsSimilarIds,
       'displayAdsTitle': ?displayAdsTitle,
       'displayAdsValue': ?displayAdsValue,
+      'documentLinks': ?documentLinks,
+      'electricRange': ?electricRange,
+      'emissionsStandard': ?emissionsStandard,
+      'energyConsumption': ?energyConsumption,
       'energyEfficiencyClass': ?energyEfficiencyClass,
+      'engine': ?engine,
       'excludedDestinations': ?excludedDestinations,
       'expirationDate': ?expirationDate,
       'externalSellerId': ?externalSellerId,
       'freeShippingThreshold': ?freeShippingThreshold,
+      'fuelConsumption': ?fuelConsumption,
+      'fuelConsumptionDischargedBattery': ?fuelConsumptionDischargedBattery,
       'gender': ?gender,
       'googleProductCategory': ?googleProductCategory,
       'gtins': ?gtins,
@@ -2755,28 +3615,42 @@ class ProductAttributes {
       'installment': ?installment,
       'isBundle': ?isBundle,
       'itemGroupId': ?itemGroupId,
+      'itemGroupTitle': ?itemGroupTitle,
+      'latitude': ?latitude,
+      'leaseTerm': ?leaseTerm,
       'lifestyleImageLinks': ?lifestyleImageLinks,
       'link': ?link,
       'linkTemplate': ?linkTemplate,
+      'longitude': ?longitude,
       'loyaltyPoints': ?loyaltyPoints,
       'loyaltyPrograms': ?loyaltyPrograms,
       'material': ?material,
       'maxEnergyEfficiencyClass': ?maxEnergyEfficiencyClass,
       'maxHandlingTime': ?maxHandlingTime,
       'maximumRetailPrice': ?maximumRetailPrice,
+      'mileage': ?mileage,
       'minEnergyEfficiencyClass': ?minEnergyEfficiencyClass,
       'minHandlingTime': ?minHandlingTime,
       'minimumOrderValues': ?minimumOrderValues,
       'mobileLink': ?mobileLink,
       'mobileLinkTemplate': ?mobileLinkTemplate,
+      'model': ?model,
       'mpn': ?mpn,
       'multipack': ?multipack,
+      'neighborhood': ?neighborhood,
+      'numberOfBathrooms': ?numberOfBathrooms,
+      'numberOfBedrooms': ?numberOfBedrooms,
+      'numberOfUnits': ?numberOfUnits,
       'pattern': ?pattern,
       'pause': ?pause,
+      'petPolicy': ?petPolicy,
+      'pickupCost': ?pickupCost,
       'pickupMethod': ?pickupMethod,
       'pickupSla': ?pickupSla,
+      'popularityRank': ?popularityRank,
       'price': ?price,
       'productDetails': ?productDetails,
+      'productFee': ?productFee,
       'productHeight': ?productHeight,
       'productHighlights': ?productHighlights,
       'productLength': ?productLength,
@@ -2784,7 +3658,12 @@ class ProductAttributes {
       'productWeight': ?productWeight,
       'productWidth': ?productWidth,
       'promotionIds': ?promotionIds,
+      'propertyName': ?propertyName,
+      'propertyType': ?propertyType,
+      'questionsAndAnswers': ?questionsAndAnswers,
+      'relatedProducts': ?relatedProducts,
       'returnPolicyLabel': ?returnPolicyLabel,
+      'returns': ?returns,
       'salePrice': ?salePrice,
       'salePriceEffectiveDate': ?salePriceEffectiveDate,
       'sellOnGoogleQuantity': ?sellOnGoogleQuantity,
@@ -2797,19 +3676,33 @@ class ProductAttributes {
       'shippingWeight': ?shippingWeight,
       'shippingWidth': ?shippingWidth,
       'shoppingAdsExcludedCountries': ?shoppingAdsExcludedCountries,
+      'shortTitle': ?shortTitle,
       'size': ?size,
       'sizeSystem': ?sizeSystem,
       'sizeTypes': ?sizeTypes,
+      'specialtyHousingType': ?specialtyHousingType,
       'structuredDescription': ?structuredDescription,
       'structuredTitle': ?structuredTitle,
       'subscriptionCost': ?subscriptionCost,
       'sustainabilityIncentives': ?sustainabilityIncentives,
       'title': ?title,
       'transitTimeLabel': ?transitTimeLabel,
+      'trim': ?trim,
+      'unitArea': ?unitArea,
       'unitPricingBaseMeasure': ?unitPricingBaseMeasure,
       'unitPricingMeasure': ?unitPricingMeasure,
+      'utilitiesIncluded': ?utilitiesIncluded,
+      'variantOptions': ?variantOptions,
+      'vehicleAllInPrice': ?vehicleAllInPrice,
+      'vehicleExpenses': ?vehicleExpenses,
+      'vehicleMandatoryInspectionIncluded': ?vehicleMandatoryInspectionIncluded,
+      'vehicleMsrp': ?vehicleMsrp,
+      'vehiclePriceType': ?vehiclePriceType,
       'videoLinks': ?videoLinks,
+      'vin': ?vin,
       'virtualModelLink': ?virtualModelLink,
+      'warranty': ?warranty,
+      'year': ?year,
     };
   }
 }
@@ -2887,6 +3780,38 @@ typedef ProductDetail = $ProductDetail;
 
 /// The dimension of the product.
 typedef ProductDimension = $ProductDimension;
+
+/// The product fee attribute containing type and amount.
+class ProductFee {
+  /// The amount of product fee.
+  Price? amount;
+
+  /// The type of product fee.
+  /// Possible string values are:
+  /// - "FEE_TYPE_UNSPECIFIED" : Unspecified fee type.
+  /// - "ADMIN_FEE" : Admin fee.
+  /// - "APPLICATION_FEE" : Application fee.
+  /// - "SECURITY_DEPOSIT" : Security deposit.
+  core.String? type;
+
+  ProductFee({this.amount, this.type});
+
+  ProductFee.fromJson(core.Map json_)
+    : this(
+        amount: json_.containsKey('amount')
+            ? Price.fromJson(
+                json_['amount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final amount = this.amount;
+    final type = this.type;
+    return {'amount': ?amount, 'type': ?type};
+  }
+}
 
 /// This resource represents input data you submit for a product, not the
 /// processed product that you see in Merchant Center, in Shopping ads, or
@@ -3137,12 +4062,18 @@ class ProductInstallment {
   /// The number of installments the buyer has to pay.
   core.String? months;
 
+  /// Total amount the buyer has to pay, including interest.
+  ///
+  /// Optional.
+  Price? totalAmount;
+
   ProductInstallment({
     this.amount,
     this.annualPercentageRate,
     this.creditType,
     this.downpayment,
     this.months,
+    this.totalAmount,
   });
 
   ProductInstallment.fromJson(core.Map json_)
@@ -3161,6 +4092,11 @@ class ProductInstallment {
               )
             : null,
         months: json_['months'] as core.String?,
+        totalAmount: json_.containsKey('totalAmount')
+            ? Price.fromJson(
+                json_['totalAmount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -3169,12 +4105,14 @@ class ProductInstallment {
     final creditType = this.creditType;
     final downpayment = this.downpayment;
     final months = this.months;
+    final totalAmount = this.totalAmount;
     return {
       'amount': ?amount,
       'annualPercentageRate': ?annualPercentageRate,
       'creditType': ?creditType,
       'downpayment': ?downpayment,
       'months': ?months,
+      'totalAmount': ?totalAmount,
     };
   }
 }
@@ -3353,6 +4291,216 @@ class ProductSustainabilityIncentive {
 
 /// The weight of the product.
 typedef ProductWeight = $ProductWeight;
+
+/// The question and answer for the product.
+class QuestionAndAnswer {
+  /// The answer text.
+  ///
+  /// Required.
+  core.String? answer;
+
+  /// The question text.
+  ///
+  /// Required.
+  core.String? question;
+
+  QuestionAndAnswer({this.answer, this.question});
+
+  QuestionAndAnswer.fromJson(core.Map json_)
+    : this(
+        answer: json_['answer'] as core.String?,
+        question: json_['question'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final answer = this.answer;
+    final question = this.question;
+    return {'answer': ?answer, 'question': ?question};
+  }
+}
+
+/// Specifies how other products are related to this product.
+class RelatedProduct {
+  /// The identifier of the related product.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// The type of the identifier of the related product.
+  ///
+  /// For example, [GTIN](https://support.google.com/merchants/answer/6219078)
+  /// or [product ID](https://support.google.com/merchants/answer/6324405).
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ID_TYPE_UNSPECIFIED" : The identifier type is unspecified.
+  /// - "GTIN" : The identifier is a GTIN.
+  /// - "ID" : The identifier is a product ID in the feed.
+  core.String? idType;
+
+  /// The type of the relationship between this product and the related product.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RELATIONSHIP_TYPE_UNSPECIFIED" : The relationship type is unspecified.
+  /// - "PART_OF_SET" : Part of a set of products that are often purchased
+  /// together.
+  /// - "REQUIRED_PART" : Part that is necessary for the product to function,
+  /// for example a battery for a battery-operated lamp.
+  /// - "OFTEN_BOUGHT_WITH" : A product that this product is often purchased
+  /// together with, for example a phone case with a phone.
+  /// - "SUBSTITUTE" : Product that this product can be substituted for. For
+  /// example a printer comparable in function to another printer.
+  /// - "DIFFERENT_BRAND" : An identical product sold under a different brand,
+  /// for example a cheaper house brand.
+  /// - "ACCESSORY" : An accessory to this product, for example a side table
+  /// that matches the style of a couch.
+  core.String? relationshipType;
+
+  RelatedProduct({this.id, this.idType, this.relationshipType});
+
+  RelatedProduct.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        idType: json_['idType'] as core.String?,
+        relationshipType: json_['relationshipType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final idType = this.idType;
+    final relationshipType = this.relationshipType;
+    return {
+      'id': ?id,
+      'idType': ?idType,
+      'relationshipType': ?relationshipType,
+    };
+  }
+}
+
+/// The returns of the product.
+class Returns {
+  /// The
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// of the countries to which an item can be returned.
+  core.List<core.String>? countries;
+
+  /// The condition the item must be in to be accepted.
+  core.List<core.String>? itemConditions;
+
+  /// The physical methods by which the item can be returned.
+  core.List<core.String>? methods;
+
+  /// The financial outcomes available for a return.
+  core.List<core.String>? outcomes;
+
+  /// The URL of the return policy.
+  core.String? policyUrl;
+
+  /// A flat restocking fee penalty.
+  Price? restockingFee;
+
+  /// A percentage restocking fee penalty.
+  core.double? restockingPercentageFee;
+
+  /// The fixed cost out-of-pocket for a customer to return an item.
+  Price? shippingFee;
+
+  /// The type of return shipping fee.
+  /// Possible string values are:
+  /// - "RETURN_SHIPPING_FEE_TYPE_UNSPECIFIED" : The return shipping fee type is
+  /// unspecified.
+  /// - "CUSTOMER_RESPONSIBILITY" : The customer is responsible for shipping
+  /// costs.
+  /// - "DEDUCTED_FROM_REFUND" : The shipping cost is deducted from the refund.
+  core.String? shippingFeeType;
+
+  /// The duration of the return window in days.
+  core.String? windowDays;
+
+  /// Special return window behavior.
+  /// Possible string values are:
+  /// - "RETURN_WINDOW_TYPE_UNSPECIFIED" : The return window type is
+  /// unspecified.
+  /// - "FINITE_RETURN_WINDOW" : Window with a fixed number of days. If this is
+  /// set, the `window_days` field must be set.
+  /// - "NO_RETURNS" : No returns accepted.
+  /// - "LIFETIME" : Lifetime returns accepted.
+  core.String? windowType;
+
+  Returns({
+    this.countries,
+    this.itemConditions,
+    this.methods,
+    this.outcomes,
+    this.policyUrl,
+    this.restockingFee,
+    this.restockingPercentageFee,
+    this.shippingFee,
+    this.shippingFeeType,
+    this.windowDays,
+    this.windowType,
+  });
+
+  Returns.fromJson(core.Map json_)
+    : this(
+        countries: (json_['countries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        itemConditions: (json_['itemConditions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        methods: (json_['methods'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        outcomes: (json_['outcomes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        policyUrl: json_['policyUrl'] as core.String?,
+        restockingFee: json_.containsKey('restockingFee')
+            ? Price.fromJson(
+                json_['restockingFee'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        restockingPercentageFee: (json_['restockingPercentageFee'] as core.num?)
+            ?.toDouble(),
+        shippingFee: json_.containsKey('shippingFee')
+            ? Price.fromJson(
+                json_['shippingFee'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        shippingFeeType: json_['shippingFeeType'] as core.String?,
+        windowDays: json_['windowDays'] as core.String?,
+        windowType: json_['windowType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final countries = this.countries;
+    final itemConditions = this.itemConditions;
+    final methods = this.methods;
+    final outcomes = this.outcomes;
+    final policyUrl = this.policyUrl;
+    final restockingFee = this.restockingFee;
+    final restockingPercentageFee = this.restockingPercentageFee;
+    final shippingFee = this.shippingFee;
+    final shippingFeeType = this.shippingFeeType;
+    final windowDays = this.windowDays;
+    final windowType = this.windowType;
+    return {
+      'countries': ?countries,
+      'itemConditions': ?itemConditions,
+      'methods': ?methods,
+      'outcomes': ?outcomes,
+      'policyUrl': ?policyUrl,
+      'restockingFee': ?restockingFee,
+      'restockingPercentageFee': ?restockingPercentageFee,
+      'shippingFee': ?shippingFee,
+      'shippingFeeType': ?shippingFeeType,
+      'windowDays': ?windowDays,
+      'windowType': ?windowType,
+    };
+  }
+}
 
 /// The Shipping of the product.
 class Shipping {
@@ -3684,8 +4832,93 @@ class SubscriptionCost {
   }
 }
 
+/// The unit area of the property.
+class UnitArea {
+  /// The unit of area.
+  /// Possible string values are:
+  /// - "UNIT_UNSPECIFIED" : Unspecified unit.
+  /// - "SQM" : Square meters.
+  /// - "SQFT" : Square feet.
+  core.String? unit;
+
+  /// The area value.
+  core.double? value;
+
+  UnitArea({this.unit, this.value});
+
+  UnitArea.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final unit = this.unit;
+    final value = this.value;
+    return {'unit': ?unit, 'value': ?value};
+  }
+}
+
 /// The UnitPricingBaseMeasure of the product.
 typedef UnitPricingBaseMeasure = $UnitPricingBaseMeasure;
 
 /// The UnitPricingMeasure of the product.
 typedef UnitPricingMeasure = $UnitPricingMeasure;
+
+/// Additional product variants for the product.
+class VariantOption {
+  /// The name of the variant.
+  ///
+  /// For example, "Color", "Memory", "Size", "Length"
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The value of the variant.
+  ///
+  /// For example, "Red", "128GB", "XL", "100cm"
+  ///
+  /// Required.
+  core.String? value;
+
+  VariantOption({this.name, this.value});
+
+  VariantOption.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final value = this.value;
+    return {'name': ?name, 'value': ?value};
+  }
+}
+
+/// The warranty of the vehicle.
+class Warranty {
+  /// The warranty duration in months.
+  core.String? duration;
+
+  /// The warranty mileage.
+  Mileage? mileage;
+
+  Warranty({this.duration, this.mileage});
+
+  Warranty.fromJson(core.Map json_)
+    : this(
+        duration: json_['duration'] as core.String?,
+        mileage: json_.containsKey('mileage')
+            ? Mileage.fromJson(
+                json_['mileage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final duration = this.duration;
+    final mileage = this.mileage;
+    return {'duration': ?duration, 'mileage': ?mileage};
+  }
+}

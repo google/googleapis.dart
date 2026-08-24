@@ -350,7 +350,7 @@ class FoldersLocationsGlobalPolicyOrchestratorsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Identifier. In form of *
+  /// [name] - Immutable. Identifier. In the following format: *
   /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// *
   /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -872,7 +872,7 @@ class OrganizationsLocationsGlobalPolicyOrchestratorsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Identifier. In form of *
+  /// [name] - Immutable. Identifier. In the following format: *
   /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// *
   /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -1390,7 +1390,7 @@ class ProjectsLocationsGlobalPolicyOrchestratorsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. Identifier. In form of *
+  /// [name] - Immutable. Identifier. In the following format: *
   /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// *
   /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -2044,22 +2044,23 @@ class GoogleCloudOsconfigV2OrchestrationScope {
   }
 }
 
-/// PolicyOrchestrator helps managing project+zone level policy resources (e.g.
-/// OS Policy Assignments), by providing tools to create, update and delete them
-/// across projects and locations, at scale.
+/// A policy orchestrator manages project-level and zone-level policy resources,
+/// such as OS policy assignments.
 ///
-/// Policy orchestrator functions as an endless loop. Each iteration
-/// orchestrator computes a set of resources that should be affected, then
-/// progressively applies changes to them. If for some reason this set of
-/// resources changes over time (e.g. new projects are added), the future loop
-/// iterations will address that. Orchestrator can either upsert or delete
-/// policy resources. For more details, see the description of the `action`, and
-/// `orchestrated_resource` fields. Note that policy orchestrator do not
-/// "manage" the resources it creates. Every iteration is independent and only
-/// minimal history of past actions is retained (apart from Cloud Logging). If
-/// orchestrator gets deleted, it does not affect the resources it created in
-/// the past. Those will remain where they were. Same applies if projects are
-/// removed from the orchestrator's scope.
+/// It provides methods to create, update, and delete these resources across
+/// projects and locations at scale. The policy orchestrator operates as a
+/// continuous loop. In each iteration, the orchestrator identifies the set of
+/// resources to be modified and progressively applies changes. If the set of
+/// resources changes over time (for example, if you add new projects),
+/// subsequent iterations address those changes. The orchestrator can either
+/// upsert or delete policy resources. For more details, see the `action` and
+/// `orchestrated_resource` fields. The policy orchestrator does not manage the
+/// lifecycle of the resources it creates. Each iteration is independent and,
+/// besides Cloud Logging, the orchestrator retains only a minimal history of
+/// past actions. Deleting the orchestrator does not affect previously created
+/// resources; these resources remain in their current state. Similarly,
+/// removing projects from the orchestrator's scope does not affect existing
+/// resources.
 class GoogleCloudOsconfigV2PolicyOrchestrator {
   /// Action to be done by the orchestrator in
   /// `projects/{project_id}/zones/{zone_id}` locations defined by the
@@ -2096,7 +2097,7 @@ class GoogleCloudOsconfigV2PolicyOrchestrator {
 
   /// Identifier.
   ///
-  /// In form of *
+  /// In the following format: *
   /// `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// *
   /// `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -2614,7 +2615,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared05;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared07;
 
 /// Message representing label set.
 ///
@@ -2667,7 +2668,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared05;
+typedef OSPolicyInventoryFilter = $Shared07;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -3170,7 +3171,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT = $Shared01;
+typedef OSPolicyResourcePackageResourceAPT = $Shared03;
 
 /// A deb package file.
 ///
@@ -3210,7 +3211,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet = $Shared01;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared03;
 
 /// An MSI package.
 ///
@@ -3285,12 +3286,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM = $Shared01;
+typedef OSPolicyResourcePackageResourceYUM = $Shared03;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper = $Shared01;
+typedef OSPolicyResourcePackageResourceZypper = $Shared03;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {

@@ -1016,6 +1016,8 @@ buildGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders() {
       3) {
     o.deviceInfo =
         buildGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo();
+    o.dispatchInfo =
+        buildGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo();
     o.groupInfo =
         buildGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo();
     o.outputType = 'foo';
@@ -1034,6 +1036,9 @@ void checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders(
       3) {
     checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo(
       o.deviceInfo!,
+    );
+    checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo(
+      o.dispatchInfo!,
     );
     checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo(
       o.groupInfo!,
@@ -1073,6 +1078,35 @@ checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo
     unittest.expect(o.outputType!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo--;
+}
+
+core.int
+buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo =
+    0;
+api.GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo
+buildGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo() {
+  final o =
+      api.GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo();
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo <
+      3) {
+    o.outputType = 'foo';
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo--;
+  return o;
+}
+
+void
+checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo(
+  api.GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo
+  o,
+) {
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo++;
+  if (buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo <
+      3) {
+    unittest.expect(o.outputType!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo--;
 }
 
 core.int
@@ -2610,6 +2644,24 @@ void main() {
               oJson as core.Map<core.String, core.dynamic>,
             );
         checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo(
           od,
         );
       });

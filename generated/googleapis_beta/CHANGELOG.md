@@ -3,6 +3,10 @@
 - Require `sdk: ^3.9.0`
 - Require `package:http` `1.0.0`.
 
+### APIs
+
+- `datalabeling` - removed `v1beta1`
+
 ## 9.0.0
 
 - Require Dart 3.0 or later.

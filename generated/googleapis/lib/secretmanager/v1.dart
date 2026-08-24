@@ -132,7 +132,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -147,9 +147,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -347,6 +346,56 @@ class ProjectsLocationsSecretsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Enables the managed rotation feature for a Secret.
+  ///
+  /// This method can only be triggered once for a secret. In order to do
+  /// further rotations, RotateSecret should be used. This method will add a
+  /// secret version and update the password in Cloud SQL.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Secret to associate with the
+  /// SecretVersion in the format `projects / * /secrets / * ` or `projects / *
+  /// /locations / * /secrets / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecretVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecretVersion> enableManagedRotation(
+    EnableManagedRotationRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':enableManagedRotation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SecretVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Gets metadata for a given Secret.
   ///
   /// Request parameters:
@@ -540,6 +589,54 @@ class ProjectsLocationsSecretsResource {
       queryParams: queryParams_,
     );
     return Secret.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Do a managed rotation for a Secret.
+  ///
+  /// This can only be triggered after Managed rotation has been enabled. This
+  /// method will add a secret version and update the password in Cloud SQL.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Secret to associate with the
+  /// SecretVersion in the format `projects / * /secrets / * ` or `projects / *
+  /// /locations / * /secrets / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecretVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecretVersion> rotateSecret(
+    RotateSecretRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':rotateSecret';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SecretVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified secret.
@@ -1086,6 +1183,55 @@ class ProjectsSecretsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Enables the managed rotation feature for a Secret.
+  ///
+  /// This method can only be triggered once for a secret. In order to do
+  /// further rotations, RotateSecret should be used. This method will add a
+  /// secret version and update the password in Cloud SQL.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Secret to associate with the
+  /// SecretVersion in the format `projects / * /secrets / * ` or `projects / *
+  /// /locations / * /secrets / * `.
+  /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecretVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecretVersion> enableManagedRotation(
+    EnableManagedRotationRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':enableManagedRotation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SecretVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Gets metadata for a given Secret.
   ///
   /// Request parameters:
@@ -1276,6 +1422,53 @@ class ProjectsSecretsResource {
       queryParams: queryParams_,
     );
     return Secret.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Do a managed rotation for a Secret.
+  ///
+  /// This can only be triggered after Managed rotation has been enabled. This
+  /// method will add a secret version and update the password in Cloud SQL.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Secret to associate with the
+  /// SecretVersion in the format `projects / * /secrets / * ` or `projects / *
+  /// /locations / * /secrets / * `.
+  /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecretVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecretVersion> rotateSecret(
+    RotateSecretRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':rotateSecret';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SecretVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified secret.
@@ -1949,6 +2142,51 @@ class Binding {
   }
 }
 
+/// These are the credentials required for Cloud SQL DB for Single user Managed
+/// Rotation.
+class CloudSQLSingleUserCredentials {
+  /// Instance ID of the Cloud SQL instance.
+  ///
+  /// Required.
+  core.String? instanceId;
+
+  /// Password of the Cloud SQL instance.
+  ///
+  /// If this is not provided, a random password will be generated.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Username of the Cloud SQL instance.
+  ///
+  /// Required.
+  core.String? username;
+
+  CloudSQLSingleUserCredentials({
+    this.instanceId,
+    this.password,
+    this.username,
+  });
+
+  CloudSQLSingleUserCredentials.fromJson(core.Map json_)
+    : this(
+        instanceId: json_['instanceId'] as core.String?,
+        password: json_['password'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final instanceId = this.instanceId;
+    final password = this.password;
+    final username = this.username;
+    return {
+      'instanceId': ?instanceId,
+      'password': ?password,
+      'username': ?username,
+    };
+  }
+}
+
 /// Configuration for encrypting secret payloads using customer-managed
 /// encryption keys (CMEK).
 class CustomerManagedEncryption {
@@ -2008,6 +2246,30 @@ typedef DisableSecretVersionRequest = $SecretVersionRequest;
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Request message for SecretManagerService.EnableManagedRotation.
+class EnableManagedRotationRequest {
+  /// Credentials required for Cloud SQL DB for Single user Managed Rotation.
+  CloudSQLSingleUserCredentials? cloudSqlSingleUserCredentials;
+
+  EnableManagedRotationRequest({this.cloudSqlSingleUserCredentials});
+
+  EnableManagedRotationRequest.fromJson(core.Map json_)
+    : this(
+        cloudSqlSingleUserCredentials:
+            json_.containsKey('cloudSqlSingleUserCredentials')
+            ? CloudSQLSingleUserCredentials.fromJson(
+                json_['cloudSqlSingleUserCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudSqlSingleUserCredentials = this.cloudSqlSingleUserCredentials;
+    return {'cloudSqlSingleUserCredentials': ?cloudSqlSingleUserCredentials};
+  }
+}
 
 /// Request message for SecretManagerService.EnableSecretVersion.
 typedef EnableSecretVersionRequest = $SecretVersionRequest;
@@ -2151,6 +2413,48 @@ class ListSecretsResponse {
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// Represents the status of a managed rotation.
+///
+/// This is applicable only to Typed Secrets. It indicates whether the rotation
+/// is active and any errors that may have occurred during the asynchronous
+/// managed rotation.
+class ManagedRotationStatus {
+  /// Displays customer-facing issues that occurred during an asynchronous
+  /// managed rotation.
+  ///
+  /// For example, if there are some permission errors.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// Indicates whether the Managed Rotation is active or not.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not specified. This value is unused and invalid.
+  /// - "ACTIVE" : Indicates that the Managed rotation is ACTIVE.
+  /// - "INACTIVE" : Indicates that the Managed rotation is INACTIVE.
+  core.String? state;
+
+  ManagedRotationStatus({this.error, this.state});
+
+  ManagedRotationStatus.fromJson(core.Map json_)
+    : this(
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final state = this.state;
+    return {'error': ?error, 'state': ?state};
+  }
+}
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -2425,12 +2729,27 @@ class ReplicationStatus {
   }
 }
 
+/// Output-only policy member strings of a Google Cloud resource's built-in
+/// identity.
+typedef ResourcePolicyMember = $ResourcePolicyMember;
+
+/// Request message for SecretManagerService.RotateSecret.
+typedef RotateSecretRequest = $Empty;
+
 /// The rotation time and period for a Secret.
 ///
 /// At next_rotation_time, Secret Manager will send a Pub/Sub notification to
 /// the topics configured on the Secret. Secret.topics must be set to configure
 /// rotation.
 class Rotation {
+  /// The current status of the managed rotation.
+  ///
+  /// This field is only applicable to Typed Secrets. This field is set by the
+  /// service and cannot be set by the user.
+  ///
+  /// Output only.
+  ManagedRotationStatus? managedRotationStatus;
+
   /// Timestamp in UTC at which the Secret is scheduled to rotate.
   ///
   /// Cannot be set to less than 300s (5 min) in the future and at most
@@ -2449,18 +2768,30 @@ class Rotation {
   /// notifications.
   core.String? rotationPeriod;
 
-  Rotation({this.nextRotationTime, this.rotationPeriod});
+  Rotation({
+    this.managedRotationStatus,
+    this.nextRotationTime,
+    this.rotationPeriod,
+  });
 
   Rotation.fromJson(core.Map json_)
     : this(
+        managedRotationStatus: json_.containsKey('managedRotationStatus')
+            ? ManagedRotationStatus.fromJson(
+                json_['managedRotationStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         nextRotationTime: json_['nextRotationTime'] as core.String?,
         rotationPeriod: json_['rotationPeriod'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final managedRotationStatus = this.managedRotationStatus;
     final nextRotationTime = this.nextRotationTime;
     final rotationPeriod = this.rotationPeriod;
     return {
+      'managedRotationStatus': ?managedRotationStatus,
       'nextRotationTime': ?nextRotationTime,
       'rotationPeriod': ?rotationPeriod,
     };
@@ -2529,6 +2860,14 @@ class Secret {
   /// Output only.
   core.String? name;
 
+  /// Defines the policy member for the secret.
+  ///
+  /// This will be used to check if the caller has the permission to perform
+  /// certain operations on the typed secret.
+  ///
+  /// Output only.
+  ResourcePolicyMember? policyMember;
+
   /// The replication policy of the secret data attached to the Secret.
   ///
   /// The replication policy cannot be changed after the Secret has been
@@ -2543,6 +2882,27 @@ class Secret {
   ///
   /// Optional.
   Rotation? rotation;
+
+  /// This defines the type of the secret.
+  ///
+  /// Enforces certain structural requirements on the SecretVersions. For secret
+  /// of type UNSPECIFIED, the SecretVersions can be of any type.
+  ///
+  /// Optional. Immutable.
+  /// Possible string values are:
+  /// - "SECRET_TYPE_UNSPECIFIED" : Applicable to all secrets which do not have
+  /// any restriction on the SecretVersions.
+  /// - "CLOUD_SQL_DB_CREDENTIALS" : Applicable to secrets which are used for
+  /// the managed rotation feature for Cloud SQL Single User.
+  /// - "ACCESS_KEY" : Applicable to secrets where the payload contains an
+  /// access key.
+  /// - "CERTIFICATE" : Applicable to secrets where the payload contains a
+  /// certificate.
+  /// - "OTHER_DB_CREDENTIALS" : Applicable to secrets where the payload
+  /// contains database credentials.
+  /// - "OTHER" : Applicable to secrets whose type doesn't belong to any of the
+  /// above defined types.
+  core.String? secretType;
 
   /// Input only.
   ///
@@ -2596,8 +2956,10 @@ class Secret {
     this.expireTime,
     this.labels,
     this.name,
+    this.policyMember,
     this.replication,
     this.rotation,
+    this.secretType,
     this.tags,
     this.topics,
     this.ttl,
@@ -2625,6 +2987,11 @@ class Secret {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        policyMember: json_.containsKey('policyMember')
+            ? ResourcePolicyMember.fromJson(
+                json_['policyMember'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         replication: json_.containsKey('replication')
             ? Replication.fromJson(
                 json_['replication'] as core.Map<core.String, core.dynamic>,
@@ -2635,6 +3002,7 @@ class Secret {
                 json_['rotation'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        secretType: json_['secretType'] as core.String?,
         tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -2659,8 +3027,10 @@ class Secret {
     final expireTime = this.expireTime;
     final labels = this.labels;
     final name = this.name;
+    final policyMember = this.policyMember;
     final replication = this.replication;
     final rotation = this.rotation;
+    final secretType = this.secretType;
     final tags = this.tags;
     final topics = this.topics;
     final ttl = this.ttl;
@@ -2674,8 +3044,10 @@ class Secret {
       'expireTime': ?expireTime,
       'labels': ?labels,
       'name': ?name,
+      'policyMember': ?policyMember,
       'replication': ?replication,
       'rotation': ?rotation,
+      'secretType': ?secretType,
       'tags': ?tags,
       'topics': ?topics,
       'ttl': ?ttl,
@@ -2893,6 +3265,15 @@ class SetIamPolicyRequest {
     return {'policy': ?policy, 'updateMask': ?updateMask};
   }
 }
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

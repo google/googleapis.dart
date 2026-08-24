@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
   googleapis:
-    version: 17.0.0-wip
+    version: 17.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -26,18 +26,20 @@ packages:
       - adsense:v2
       - adsenseplatform:v1
       - advisorynotifications:v1
+      - agentidentity:v1
+      - agentidentitycredentials:v1
+      - agentregistry:v1
       - aiplatform:v1
       - airquality:v1
       - alloydb:v1
-      - analytics:v3
       - analyticshub:v1
+      - androiddeveloperidstatus:v1
       - androiddeviceprovisioning:v1
       - androidenterprise:v1
       - androidmanagement:v1
       - androidpublisher:v3
       - apigateway:v1
       - apigee:v1
-      - apigeeregistry:v1
       - apihub:v1
       - apikeys:v2
       - appengine:v1
@@ -89,6 +91,7 @@ packages:
       - cloudidentity:v1
       - cloudkms:v1
       - cloudlocationfinder:v1
+      - cloudproductregistry:v1
       - cloudprofiler:v2
       - cloudresourcemanager:v1
       - cloudresourcemanager:v2
@@ -127,7 +130,6 @@ packages:
       - developerconnect:v1
       - developerknowledge:v1
       - dfareporting:v3.5
-      - dfareporting:v4
       - dfareporting:v5
       - dialogflow:v2
       - dialogflow:v3
@@ -162,6 +164,7 @@ packages:
       - firestore:v1
       - fitness:v1
       - forms:v1
+      - ftp:v1
       - games:v1
       - gamesConfiguration:v1configuration
       - gamesManagement:v1management
@@ -187,7 +190,6 @@ packages:
       - identitytoolkit:v3
       - ids:v1
       - indexing:v3
-      - integrations:v1
       - jobs:v3
       - jobs:v4
       - keep:v1
@@ -211,6 +213,7 @@ packages:
       - merchantapi:inventories_v1
       - merchantapi:issueresolution_v1
       - merchantapi:lfp_v1
+      - merchantapi:loyaltycustomers_v1
       - merchantapi:notifications_v1
       - merchantapi:ordertracking_v1
       - merchantapi:products_v1
@@ -226,7 +229,6 @@ packages:
       - mybusinesslodging:v1
       - mybusinessnotifications:v1
       - mybusinessplaceactions:v1
-      - mybusinessqanda:v1
       - mybusinessverifications:v1
       - netapp:v1
       - networkconnectivity:v1
@@ -275,6 +277,7 @@ packages:
       - safebrowsing:v4
       - safebrowsing:v5
       - script:v1
+      - searchads360:v23
       - searchconsole:v1
       - secretmanager:v1
       - securesourcemanager:v1
@@ -321,6 +324,7 @@ packages:
       - vmwareengine:v1
       - vpcaccess:v1
       - walletobjects:v1
+      - webcontentpublisher:v1
       - webfonts:v1
       - webrisk:v1
       - websecurityscanner:v1
@@ -354,29 +358,28 @@ packages:
     mono_pkg: resources/googleapis_beta/_mono_pkg.yaml
     resolution: workspace
     apis:
-    - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
-    - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/
-    - analyticsadmin:v1alpha
-    - analyticsadmin:v1beta
-    - analyticsdata:v1beta
-    - bigqueryconnection:v1beta1
-    - clouderrorreporting:v1beta1 # https://cloud.google.com/error-reporting/
-    - cloudsupport:v2beta
-    - dataflow:v1b3 # https://cloud.google.com/dataflow/
-    - datalabeling:v1beta1
-    - datastream:v1alpha1
-    - factchecktools:v1alpha1
-    - fcmdata:v1beta1
-    - firebase:v1beta1
-    - firebaseappcheck:v1beta
-    - firebasedatabase:v1beta
-    - firebasestorage:v1beta
-    - gkehub:v2alpha
-    - prod_tt_sasportal:v1alpha1
-    - recommendationengine:v1beta1
-    - sasportal:v1alpha1
-    - sqladmin:v1beta4
-    - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
+      - adexchangebuyer2:v2beta1
+      - alertcenter:v1beta1
+      - analyticsadmin:v1alpha
+      - analyticsadmin:v1beta
+      - analyticsdata:v1beta
+      - bigqueryconnection:v1beta1
+      - clouderrorreporting:v1beta1
+      - cloudsupport:v2beta
+      - dataflow:v1b3
+      - datastream:v1alpha1
+      - factchecktools:v1alpha1
+      - fcmdata:v1beta1
+      - firebase:v1beta1
+      - firebaseappcheck:v1beta
+      - firebasedatabase:v1beta
+      - firebasestorage:v1beta
+      - gkehub:v2alpha
+      - prod_tt_sasportal:v1alpha1
+      - recommendationengine:v1beta1
+      - sasportal:v1alpha1
+      - sqladmin:v1beta4
+      - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
 
 skip_tests:
 - chat:v1 # generates classes that are too big to JSON encode/decode
@@ -385,6 +388,10 @@ skip_tests:
 skipped_apis:
   - admob:v1beta
   - adsenseplatform:v1alpha
+  - agentidentity:v1alpha
+  - agentidentity:v1beta
+  - agentidentitycredentials:v1alpha
+  - agentidentitycredentials:v1beta
   - agentregistry:v1alpha
   - aiplatform:v1beta1
   - alloydb:v1alpha
@@ -416,6 +423,7 @@ skipped_apis:
   - cloudfunctions:v2beta
   - cloudidentity:v1beta1
   - cloudlocationfinder:v1alpha
+  - cloudnumberregistry:v1alpha
   - cloudresourcemanager:v1beta1
   - cloudresourcemanager:v2beta1
   - cloudscheduler:v1beta1
@@ -430,6 +438,7 @@ skipped_apis:
   - container:v1beta1
   - containeranalysis:v1alpha1
   - containeranalysis:v1beta1
+  - databasecenter:v1beta
   - datacatalog:v1beta1
   - dataform:v1beta1
   - datafusion:v1beta1
@@ -453,12 +462,14 @@ skipped_apis:
   - file:v1beta1
   - firebaseappdistribution:v1alpha
   - firebaseapphosting:v1beta
+  - firebasecrashlytics:v1alpha
   - firebasedataconnect:v1beta
   - firebasehosting:v1beta1
   - firebaseml:v1beta2
   - firebaseml:v2beta
   - firestore:v1beta1
   - firestore:v1beta2
+  - ftp:v1alpha
   - gkehub:v1alpha
   - gkehub:v1beta
   - gkehub:v1beta1

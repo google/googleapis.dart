@@ -168,6 +168,7 @@ api.AllocateIdsRequest buildAllocateIdsRequest() {
   if (buildCounterAllocateIdsRequest < 3) {
     o.databaseId = 'foo';
     o.keys = buildUnnamed3();
+    o.requestOptions = buildRequestOptions();
   }
   buildCounterAllocateIdsRequest--;
   return o;
@@ -178,6 +179,7 @@ void checkAllocateIdsRequest(api.AllocateIdsRequest o) {
   if (buildCounterAllocateIdsRequest < 3) {
     unittest.expect(o.databaseId!, unittest.equals('foo'));
     checkUnnamed3(o.keys!);
+    checkRequestOptions(o.requestOptions!);
   }
   buildCounterAllocateIdsRequest--;
 }
@@ -261,6 +263,7 @@ api.BeginTransactionRequest buildBeginTransactionRequest() {
   buildCounterBeginTransactionRequest++;
   if (buildCounterBeginTransactionRequest < 3) {
     o.databaseId = 'foo';
+    o.requestOptions = buildRequestOptions();
     o.transactionOptions = buildTransactionOptions();
   }
   buildCounterBeginTransactionRequest--;
@@ -271,6 +274,7 @@ void checkBeginTransactionRequest(api.BeginTransactionRequest o) {
   buildCounterBeginTransactionRequest++;
   if (buildCounterBeginTransactionRequest < 3) {
     unittest.expect(o.databaseId!, unittest.equals('foo'));
+    checkRequestOptions(o.requestOptions!);
     checkTransactionOptions(o.transactionOptions!);
   }
   buildCounterBeginTransactionRequest--;
@@ -311,6 +315,7 @@ api.CommitRequest buildCommitRequest() {
     o.databaseId = 'foo';
     o.mode = 'foo';
     o.mutations = buildUnnamed6();
+    o.requestOptions = buildRequestOptions();
     o.singleUseTransaction = buildTransactionOptions();
     o.transaction = 'foo';
   }
@@ -324,6 +329,7 @@ void checkCommitRequest(api.CommitRequest o) {
     unittest.expect(o.databaseId!, unittest.equals('foo'));
     unittest.expect(o.mode!, unittest.equals('foo'));
     checkUnnamed6(o.mutations!);
+    checkRequestOptions(o.requestOptions!);
     checkTransactionOptions(o.singleUseTransaction!);
     unittest.expect(o.transaction!, unittest.equals('foo'));
   }
@@ -1118,6 +1124,7 @@ api.LookupRequest buildLookupRequest() {
     o.keys = buildUnnamed24();
     o.propertyMask = buildPropertyMask();
     o.readOptions = buildReadOptions();
+    o.requestOptions = buildRequestOptions();
   }
   buildCounterLookupRequest--;
   return o;
@@ -1130,6 +1137,7 @@ void checkLookupRequest(api.LookupRequest o) {
     checkUnnamed24(o.keys!);
     checkPropertyMask(o.propertyMask!);
     checkReadOptions(o.readOptions!);
+    checkRequestOptions(o.requestOptions!);
   }
   buildCounterLookupRequest--;
 }
@@ -1705,9 +1713,36 @@ void checkReadWrite(api.ReadWrite o) {
   buildCounterReadWrite--;
 }
 
-core.List<api.Key> buildUnnamed38() => [buildKey(), buildKey()];
+core.List<core.String> buildUnnamed38() => ['foo', 'foo'];
 
-void checkUnnamed38(core.List<api.Key> o) {
+void checkUnnamed38(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterRequestOptions = 0;
+api.RequestOptions buildRequestOptions() {
+  final o = api.RequestOptions();
+  buildCounterRequestOptions++;
+  if (buildCounterRequestOptions < 3) {
+    o.requestTags = buildUnnamed38();
+  }
+  buildCounterRequestOptions--;
+  return o;
+}
+
+void checkRequestOptions(api.RequestOptions o) {
+  buildCounterRequestOptions++;
+  if (buildCounterRequestOptions < 3) {
+    checkUnnamed38(o.requestTags!);
+  }
+  buildCounterRequestOptions--;
+}
+
+core.List<api.Key> buildUnnamed39() => [buildKey(), buildKey()];
+
+void checkUnnamed39(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkKey(o[0]);
   checkKey(o[1]);
@@ -1719,7 +1754,8 @@ api.ReserveIdsRequest buildReserveIdsRequest() {
   buildCounterReserveIdsRequest++;
   if (buildCounterReserveIdsRequest < 3) {
     o.databaseId = 'foo';
-    o.keys = buildUnnamed38();
+    o.keys = buildUnnamed39();
+    o.requestOptions = buildRequestOptions();
   }
   buildCounterReserveIdsRequest--;
   return o;
@@ -1729,7 +1765,8 @@ void checkReserveIdsRequest(api.ReserveIdsRequest o) {
   buildCounterReserveIdsRequest++;
   if (buildCounterReserveIdsRequest < 3) {
     unittest.expect(o.databaseId!, unittest.equals('foo'));
-    checkUnnamed38(o.keys!);
+    checkUnnamed39(o.keys!);
+    checkRequestOptions(o.requestOptions!);
   }
   buildCounterReserveIdsRequest--;
 }
@@ -1755,6 +1792,7 @@ api.RollbackRequest buildRollbackRequest() {
   buildCounterRollbackRequest++;
   if (buildCounterRollbackRequest < 3) {
     o.databaseId = 'foo';
+    o.requestOptions = buildRequestOptions();
     o.transaction = 'foo';
   }
   buildCounterRollbackRequest--;
@@ -1765,6 +1803,7 @@ void checkRollbackRequest(api.RollbackRequest o) {
   buildCounterRollbackRequest++;
   if (buildCounterRollbackRequest < 3) {
     unittest.expect(o.databaseId!, unittest.equals('foo'));
+    checkRequestOptions(o.requestOptions!);
     unittest.expect(o.transaction!, unittest.equals('foo'));
   }
   buildCounterRollbackRequest--;
@@ -1796,6 +1835,7 @@ api.RunAggregationQueryRequest buildRunAggregationQueryRequest() {
     o.gqlQuery = buildGqlQuery();
     o.partitionId = buildPartitionId();
     o.readOptions = buildReadOptions();
+    o.requestOptions = buildRequestOptions();
   }
   buildCounterRunAggregationQueryRequest--;
   return o;
@@ -1810,6 +1850,7 @@ void checkRunAggregationQueryRequest(api.RunAggregationQueryRequest o) {
     checkGqlQuery(o.gqlQuery!);
     checkPartitionId(o.partitionId!);
     checkReadOptions(o.readOptions!);
+    checkRequestOptions(o.requestOptions!);
   }
   buildCounterRunAggregationQueryRequest--;
 }
@@ -1851,6 +1892,7 @@ api.RunQueryRequest buildRunQueryRequest() {
     o.propertyMask = buildPropertyMask();
     o.query = buildQuery();
     o.readOptions = buildReadOptions();
+    o.requestOptions = buildRequestOptions();
   }
   buildCounterRunQueryRequest--;
   return o;
@@ -1866,6 +1908,7 @@ void checkRunQueryRequest(api.RunQueryRequest o) {
     checkPropertyMask(o.propertyMask!);
     checkQuery(o.query!);
     checkReadOptions(o.readOptions!);
+    checkRequestOptions(o.requestOptions!);
   }
   buildCounterRunQueryRequest--;
 }
@@ -1895,7 +1938,7 @@ void checkRunQueryResponse(api.RunQueryResponse o) {
   buildCounterRunQueryResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed39() => {
+core.Map<core.String, core.Object?> buildUnnamed40() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1908,7 +1951,7 @@ core.Map<core.String, core.Object?> buildUnnamed39() => {
   },
 };
 
-void checkUnnamed39(core.Map<core.String, core.Object?> o) {
+void checkUnnamed40(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -1922,15 +1965,15 @@ void checkUnnamed39(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted10['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed40() => [
-  buildUnnamed39(),
-  buildUnnamed39(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed41() => [
+  buildUnnamed40(),
+  buildUnnamed40(),
 ];
 
-void checkUnnamed40(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed41(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed39(o[0]);
-  checkUnnamed39(o[1]);
+  checkUnnamed40(o[0]);
+  checkUnnamed40(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1939,7 +1982,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed40();
+    o.details = buildUnnamed41();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1950,7 +1993,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed40(o.details!);
+    checkUnnamed41(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -2616,6 +2659,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkReadWrite(od);
+    });
+  });
+
+  unittest.group('obj-schema-RequestOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRequestOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RequestOptions.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRequestOptions(od);
     });
   });
 

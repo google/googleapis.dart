@@ -3663,8 +3663,8 @@ class RolloutPolicy {
   ///
   /// Patterns in this list take precedence over required_paths. **Note**: All
   /// paths must be in the ignored_paths in order for the rollout to be skipped.
-  /// Limited to 100 paths. Example: ignored_paths: { pattern: "foo/bar/excluded
-  /// / * ” type: GLOB }
+  /// Limited to 100 paths. Example: ``` ignored_paths: { pattern:
+  /// "foo/bar/excluded / * ", type: "GLOB" } ```
   ///
   /// Optional.
   core.List<Path>? ignoredPaths;
@@ -3673,8 +3673,9 @@ class RolloutPolicy {
   /// one of the changed files in the commit are present in this list.
   ///
   /// This field is optional; the rollout policy will default to triggering on
-  /// all paths if not populated. Limited to 100 paths. Example:
-  /// “required_paths: { pattern: "foo/bar / * ” type: GLOB }
+  /// all paths if both ignored_paths and required_paths are not populated.
+  /// Limited to 100 paths. Example: ``` required_paths: { pattern: "foo/bar / *
+  /// ", type: "GLOB" } ```
   ///
   /// Optional.
   core.List<Path>? requiredPaths;

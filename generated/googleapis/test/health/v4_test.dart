@@ -32,6 +32,46 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterActiveEnergyBurned = 0;
+api.ActiveEnergyBurned buildActiveEnergyBurned() {
+  final o = api.ActiveEnergyBurned();
+  buildCounterActiveEnergyBurned++;
+  if (buildCounterActiveEnergyBurned < 3) {
+    o.interval = buildObservationTimeInterval();
+    o.kcal = 42.0;
+  }
+  buildCounterActiveEnergyBurned--;
+  return o;
+}
+
+void checkActiveEnergyBurned(api.ActiveEnergyBurned o) {
+  buildCounterActiveEnergyBurned++;
+  if (buildCounterActiveEnergyBurned < 3) {
+    checkObservationTimeInterval(o.interval!);
+    unittest.expect(o.kcal!, unittest.equals(42.0));
+  }
+  buildCounterActiveEnergyBurned--;
+}
+
+core.int buildCounterActiveEnergyBurnedRollupValue = 0;
+api.ActiveEnergyBurnedRollupValue buildActiveEnergyBurnedRollupValue() {
+  final o = api.ActiveEnergyBurnedRollupValue();
+  buildCounterActiveEnergyBurnedRollupValue++;
+  if (buildCounterActiveEnergyBurnedRollupValue < 3) {
+    o.kcalSum = 42.0;
+  }
+  buildCounterActiveEnergyBurnedRollupValue--;
+  return o;
+}
+
+void checkActiveEnergyBurnedRollupValue(api.ActiveEnergyBurnedRollupValue o) {
+  buildCounterActiveEnergyBurnedRollupValue++;
+  if (buildCounterActiveEnergyBurnedRollupValue < 3) {
+    unittest.expect(o.kcalSum!, unittest.equals(42.0));
+  }
+  buildCounterActiveEnergyBurnedRollupValue--;
+}
+
 core.List<api.ActiveMinutesByActivityLevel> buildUnnamed0() => [
   buildActiveMinutesByActivityLevel(),
   buildActiveMinutesByActivityLevel(),
@@ -260,6 +300,50 @@ void checkActivityLevelRollupValue(api.ActivityLevelRollupValue o) {
   buildCounterActivityLevelRollupValue--;
 }
 
+core.List<api.HeartBeat> buildUnnamed3() => [
+  buildHeartBeat(),
+  buildHeartBeat(),
+];
+
+void checkUnnamed3(core.List<api.HeartBeat> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkHeartBeat(o[0]);
+  checkHeartBeat(o[1]);
+}
+
+core.int buildCounterAlertWindow = 0;
+api.AlertWindow buildAlertWindow() {
+  final o = api.AlertWindow();
+  buildCounterAlertWindow++;
+  if (buildCounterAlertWindow < 3) {
+    o.civilEndTime = buildCivilDateTime();
+    o.civilStartTime = buildCivilDateTime();
+    o.endTime = 'foo';
+    o.endUtcOffset = 'foo';
+    o.heartBeats = buildUnnamed3();
+    o.positive = true;
+    o.startTime = 'foo';
+    o.startUtcOffset = 'foo';
+  }
+  buildCounterAlertWindow--;
+  return o;
+}
+
+void checkAlertWindow(api.AlertWindow o) {
+  buildCounterAlertWindow++;
+  if (buildCounterAlertWindow < 3) {
+    checkCivilDateTime(o.civilEndTime!);
+    checkCivilDateTime(o.civilStartTime!);
+    unittest.expect(o.endTime!, unittest.equals('foo'));
+    unittest.expect(o.endUtcOffset!, unittest.equals('foo'));
+    checkUnnamed3(o.heartBeats!);
+    unittest.expect(o.positive!, unittest.isTrue);
+    unittest.expect(o.startTime!, unittest.equals('foo'));
+    unittest.expect(o.startUtcOffset!, unittest.equals('foo'));
+  }
+  buildCounterAlertWindow--;
+}
+
 core.int buildCounterAltitude = 0;
 api.Altitude buildAltitude() {
   final o = api.Altitude();
@@ -323,9 +407,30 @@ void checkApplication(api.Application o) {
   buildCounterApplication--;
 }
 
-core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
+core.int buildCounterBasalEnergyBurned = 0;
+api.BasalEnergyBurned buildBasalEnergyBurned() {
+  final o = api.BasalEnergyBurned();
+  buildCounterBasalEnergyBurned++;
+  if (buildCounterBasalEnergyBurned < 3) {
+    o.interval = buildObservationTimeInterval();
+    o.kcal = 42.0;
+  }
+  buildCounterBasalEnergyBurned--;
+  return o;
+}
 
-void checkUnnamed3(core.List<core.String> o) {
+void checkBasalEnergyBurned(api.BasalEnergyBurned o) {
+  buildCounterBasalEnergyBurned++;
+  if (buildCounterBasalEnergyBurned < 3) {
+    checkObservationTimeInterval(o.interval!);
+    unittest.expect(o.kcal!, unittest.equals(42.0));
+  }
+  buildCounterBasalEnergyBurned--;
+}
+
+core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
+
+void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -336,7 +441,7 @@ api.BatchDeleteDataPointsRequest buildBatchDeleteDataPointsRequest() {
   final o = api.BatchDeleteDataPointsRequest();
   buildCounterBatchDeleteDataPointsRequest++;
   if (buildCounterBatchDeleteDataPointsRequest < 3) {
-    o.names = buildUnnamed3();
+    o.names = buildUnnamed4();
   }
   buildCounterBatchDeleteDataPointsRequest--;
   return o;
@@ -345,9 +450,65 @@ api.BatchDeleteDataPointsRequest buildBatchDeleteDataPointsRequest() {
 void checkBatchDeleteDataPointsRequest(api.BatchDeleteDataPointsRequest o) {
   buildCounterBatchDeleteDataPointsRequest++;
   if (buildCounterBatchDeleteDataPointsRequest < 3) {
-    checkUnnamed3(o.names!);
+    checkUnnamed4(o.names!);
   }
   buildCounterBatchDeleteDataPointsRequest--;
+}
+
+core.int buildCounterBloodGlucose = 0;
+api.BloodGlucose buildBloodGlucose() {
+  final o = api.BloodGlucose();
+  buildCounterBloodGlucose++;
+  if (buildCounterBloodGlucose < 3) {
+    o.bloodGlucoseMilligramsPerDeciliter = 42.0;
+    o.mealType = 'foo';
+    o.measurementSource = 'foo';
+    o.measurementTiming = 'foo';
+    o.notes = 'foo';
+    o.sampleTime = buildObservationSampleTime();
+    o.specimen = 'foo';
+  }
+  buildCounterBloodGlucose--;
+  return o;
+}
+
+void checkBloodGlucose(api.BloodGlucose o) {
+  buildCounterBloodGlucose++;
+  if (buildCounterBloodGlucose < 3) {
+    unittest.expect(
+      o.bloodGlucoseMilligramsPerDeciliter!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(o.mealType!, unittest.equals('foo'));
+    unittest.expect(o.measurementSource!, unittest.equals('foo'));
+    unittest.expect(o.measurementTiming!, unittest.equals('foo'));
+    unittest.expect(o.notes!, unittest.equals('foo'));
+    checkObservationSampleTime(o.sampleTime!);
+    unittest.expect(o.specimen!, unittest.equals('foo'));
+  }
+  buildCounterBloodGlucose--;
+}
+
+core.int buildCounterBloodGlucoseRollupValue = 0;
+api.BloodGlucoseRollupValue buildBloodGlucoseRollupValue() {
+  final o = api.BloodGlucoseRollupValue();
+  buildCounterBloodGlucoseRollupValue++;
+  if (buildCounterBloodGlucoseRollupValue < 3) {
+    o.bloodGlucoseMilligramsPerDeciliterAvg = 42.0;
+  }
+  buildCounterBloodGlucoseRollupValue--;
+  return o;
+}
+
+void checkBloodGlucoseRollupValue(api.BloodGlucoseRollupValue o) {
+  buildCounterBloodGlucoseRollupValue++;
+  if (buildCounterBloodGlucoseRollupValue < 3) {
+    unittest.expect(
+      o.bloodGlucoseMilligramsPerDeciliterAvg!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterBloodGlucoseRollupValue--;
 }
 
 core.int buildCounterBodyFat = 0;
@@ -390,12 +551,12 @@ void checkBodyFatRollupValue(api.BodyFatRollupValue o) {
   buildCounterBodyFatRollupValue--;
 }
 
-core.List<api.CaloriesInHeartRateZoneValue> buildUnnamed4() => [
+core.List<api.CaloriesInHeartRateZoneValue> buildUnnamed5() => [
   buildCaloriesInHeartRateZoneValue(),
   buildCaloriesInHeartRateZoneValue(),
 ];
 
-void checkUnnamed4(core.List<api.CaloriesInHeartRateZoneValue> o) {
+void checkUnnamed5(core.List<api.CaloriesInHeartRateZoneValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCaloriesInHeartRateZoneValue(o[0]);
   checkCaloriesInHeartRateZoneValue(o[1]);
@@ -407,7 +568,7 @@ buildCaloriesInHeartRateZoneRollupValue() {
   final o = api.CaloriesInHeartRateZoneRollupValue();
   buildCounterCaloriesInHeartRateZoneRollupValue++;
   if (buildCounterCaloriesInHeartRateZoneRollupValue < 3) {
-    o.caloriesInHeartRateZones = buildUnnamed4();
+    o.caloriesInHeartRateZones = buildUnnamed5();
   }
   buildCounterCaloriesInHeartRateZoneRollupValue--;
   return o;
@@ -418,7 +579,7 @@ void checkCaloriesInHeartRateZoneRollupValue(
 ) {
   buildCounterCaloriesInHeartRateZoneRollupValue++;
   if (buildCounterCaloriesInHeartRateZoneRollupValue < 3) {
-    checkUnnamed4(o.caloriesInHeartRateZones!);
+    checkUnnamed5(o.caloriesInHeartRateZones!);
   }
   buildCounterCaloriesInHeartRateZoneRollupValue--;
 }
@@ -486,12 +647,60 @@ void checkCivilTimeInterval(api.CivilTimeInterval o) {
   buildCounterCivilTimeInterval--;
 }
 
-core.List<api.SubscriberConfig> buildUnnamed5() => [
+core.int buildCounterCoreBodyTemperature = 0;
+api.CoreBodyTemperature buildCoreBodyTemperature() {
+  final o = api.CoreBodyTemperature();
+  buildCounterCoreBodyTemperature++;
+  if (buildCounterCoreBodyTemperature < 3) {
+    o.id = 'foo';
+    o.measurementLocation = 'foo';
+    o.sampleTime = buildObservationSampleTime();
+    o.temperatureCelsius = 42.0;
+  }
+  buildCounterCoreBodyTemperature--;
+  return o;
+}
+
+void checkCoreBodyTemperature(api.CoreBodyTemperature o) {
+  buildCounterCoreBodyTemperature++;
+  if (buildCounterCoreBodyTemperature < 3) {
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.measurementLocation!, unittest.equals('foo'));
+    checkObservationSampleTime(o.sampleTime!);
+    unittest.expect(o.temperatureCelsius!, unittest.equals(42.0));
+  }
+  buildCounterCoreBodyTemperature--;
+}
+
+core.int buildCounterCoreBodyTemperatureRollupValue = 0;
+api.CoreBodyTemperatureRollupValue buildCoreBodyTemperatureRollupValue() {
+  final o = api.CoreBodyTemperatureRollupValue();
+  buildCounterCoreBodyTemperatureRollupValue++;
+  if (buildCounterCoreBodyTemperatureRollupValue < 3) {
+    o.temperatureCelsiusAvg = 42.0;
+    o.temperatureCelsiusMax = 42.0;
+    o.temperatureCelsiusMin = 42.0;
+  }
+  buildCounterCoreBodyTemperatureRollupValue--;
+  return o;
+}
+
+void checkCoreBodyTemperatureRollupValue(api.CoreBodyTemperatureRollupValue o) {
+  buildCounterCoreBodyTemperatureRollupValue++;
+  if (buildCounterCoreBodyTemperatureRollupValue < 3) {
+    unittest.expect(o.temperatureCelsiusAvg!, unittest.equals(42.0));
+    unittest.expect(o.temperatureCelsiusMax!, unittest.equals(42.0));
+    unittest.expect(o.temperatureCelsiusMin!, unittest.equals(42.0));
+  }
+  buildCounterCoreBodyTemperatureRollupValue--;
+}
+
+core.List<api.SubscriberConfig> buildUnnamed6() => [
   buildSubscriberConfig(),
   buildSubscriberConfig(),
 ];
 
-void checkUnnamed5(core.List<api.SubscriberConfig> o) {
+void checkUnnamed6(core.List<api.SubscriberConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscriberConfig(o[0]);
   checkSubscriberConfig(o[1]);
@@ -504,7 +713,7 @@ api.CreateSubscriberPayload buildCreateSubscriberPayload() {
   if (buildCounterCreateSubscriberPayload < 3) {
     o.endpointAuthorization = buildEndpointAuthorization();
     o.endpointUri = 'foo';
-    o.subscriberConfigs = buildUnnamed5();
+    o.subscriberConfigs = buildUnnamed6();
   }
   buildCounterCreateSubscriberPayload--;
   return o;
@@ -515,9 +724,38 @@ void checkCreateSubscriberPayload(api.CreateSubscriberPayload o) {
   if (buildCounterCreateSubscriberPayload < 3) {
     checkEndpointAuthorization(o.endpointAuthorization!);
     unittest.expect(o.endpointUri!, unittest.equals('foo'));
-    checkUnnamed5(o.subscriberConfigs!);
+    checkUnnamed6(o.subscriberConfigs!);
   }
   buildCounterCreateSubscriberPayload--;
+}
+
+core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
+
+void checkUnnamed7(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterCreateSubscriptionPayload = 0;
+api.CreateSubscriptionPayload buildCreateSubscriptionPayload() {
+  final o = api.CreateSubscriptionPayload();
+  buildCounterCreateSubscriptionPayload++;
+  if (buildCounterCreateSubscriptionPayload < 3) {
+    o.dataTypes = buildUnnamed7();
+    o.user = 'foo';
+  }
+  buildCounterCreateSubscriptionPayload--;
+  return o;
+}
+
+void checkCreateSubscriptionPayload(api.CreateSubscriptionPayload o) {
+  buildCounterCreateSubscriptionPayload++;
+  if (buildCounterCreateSubscriptionPayload < 3) {
+    checkUnnamed7(o.dataTypes!);
+    unittest.expect(o.user!, unittest.equals('foo'));
+  }
+  buildCounterCreateSubscriptionPayload--;
 }
 
 core.int buildCounterDailyHeartRateVariability = 0;
@@ -553,12 +791,12 @@ void checkDailyHeartRateVariability(api.DailyHeartRateVariability o) {
   buildCounterDailyHeartRateVariability--;
 }
 
-core.List<api.HeartRateZone> buildUnnamed6() => [
+core.List<api.HeartRateZone> buildUnnamed8() => [
   buildHeartRateZone(),
   buildHeartRateZone(),
 ];
 
-void checkUnnamed6(core.List<api.HeartRateZone> o) {
+void checkUnnamed8(core.List<api.HeartRateZone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHeartRateZone(o[0]);
   checkHeartRateZone(o[1]);
@@ -570,7 +808,7 @@ api.DailyHeartRateZones buildDailyHeartRateZones() {
   buildCounterDailyHeartRateZones++;
   if (buildCounterDailyHeartRateZones < 3) {
     o.date = buildDate();
-    o.heartRateZones = buildUnnamed6();
+    o.heartRateZones = buildUnnamed8();
   }
   buildCounterDailyHeartRateZones--;
   return o;
@@ -580,7 +818,7 @@ void checkDailyHeartRateZones(api.DailyHeartRateZones o) {
   buildCounterDailyHeartRateZones++;
   if (buildCounterDailyHeartRateZones < 3) {
     checkDate(o.date!);
-    checkUnnamed6(o.heartRateZones!);
+    checkUnnamed8(o.heartRateZones!);
   }
   buildCounterDailyHeartRateZones--;
 }
@@ -702,12 +940,12 @@ void checkDailyRollUpDataPointsRequest(api.DailyRollUpDataPointsRequest o) {
   buildCounterDailyRollUpDataPointsRequest--;
 }
 
-core.List<api.DailyRollupDataPoint> buildUnnamed7() => [
+core.List<api.DailyRollupDataPoint> buildUnnamed9() => [
   buildDailyRollupDataPoint(),
   buildDailyRollupDataPoint(),
 ];
 
-void checkUnnamed7(core.List<api.DailyRollupDataPoint> o) {
+void checkUnnamed9(core.List<api.DailyRollupDataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDailyRollupDataPoint(o[0]);
   checkDailyRollupDataPoint(o[1]);
@@ -718,7 +956,7 @@ api.DailyRollUpDataPointsResponse buildDailyRollUpDataPointsResponse() {
   final o = api.DailyRollUpDataPointsResponse();
   buildCounterDailyRollUpDataPointsResponse++;
   if (buildCounterDailyRollUpDataPointsResponse < 3) {
-    o.rollupDataPoints = buildUnnamed7();
+    o.rollupDataPoints = buildUnnamed9();
   }
   buildCounterDailyRollUpDataPointsResponse--;
   return o;
@@ -727,7 +965,7 @@ api.DailyRollUpDataPointsResponse buildDailyRollUpDataPointsResponse() {
 void checkDailyRollUpDataPointsResponse(api.DailyRollUpDataPointsResponse o) {
   buildCounterDailyRollUpDataPointsResponse++;
   if (buildCounterDailyRollUpDataPointsResponse < 3) {
-    checkUnnamed7(o.rollupDataPoints!);
+    checkUnnamed9(o.rollupDataPoints!);
   }
   buildCounterDailyRollUpDataPointsResponse--;
 }
@@ -737,20 +975,24 @@ api.DailyRollupDataPoint buildDailyRollupDataPoint() {
   final o = api.DailyRollupDataPoint();
   buildCounterDailyRollupDataPoint++;
   if (buildCounterDailyRollupDataPoint < 3) {
+    o.activeEnergyBurned = buildActiveEnergyBurnedRollupValue();
     o.activeMinutes = buildActiveMinutesRollupValue();
     o.activeZoneMinutes = buildActiveZoneMinutesRollupValue();
     o.activityLevel = buildActivityLevelRollupValue();
     o.altitude = buildAltitudeRollupValue();
+    o.bloodGlucose = buildBloodGlucoseRollupValue();
     o.bodyFat = buildBodyFatRollupValue();
     o.caloriesInHeartRateZone = buildCaloriesInHeartRateZoneRollupValue();
     o.civilEndTime = buildCivilDateTime();
     o.civilStartTime = buildCivilDateTime();
+    o.coreBodyTemperature = buildCoreBodyTemperatureRollupValue();
     o.distance = buildDistanceRollupValue();
     o.floors = buildFloorsRollupValue();
     o.heartRate = buildHeartRateRollupValue();
     o.heartRateVariabilityPersonalRange =
         buildHeartRateVariabilityPersonalRangeRollupValue();
     o.hydrationLog = buildHydrationLogRollupValue();
+    o.nutritionLog = buildNutritionLogRollupValue();
     o.restingHeartRatePersonalRange =
         buildRestingHeartRatePersonalRangeRollupValue();
     o.runVo2Max = buildRunVO2MaxRollupValue();
@@ -768,14 +1010,17 @@ api.DailyRollupDataPoint buildDailyRollupDataPoint() {
 void checkDailyRollupDataPoint(api.DailyRollupDataPoint o) {
   buildCounterDailyRollupDataPoint++;
   if (buildCounterDailyRollupDataPoint < 3) {
+    checkActiveEnergyBurnedRollupValue(o.activeEnergyBurned!);
     checkActiveMinutesRollupValue(o.activeMinutes!);
     checkActiveZoneMinutesRollupValue(o.activeZoneMinutes!);
     checkActivityLevelRollupValue(o.activityLevel!);
     checkAltitudeRollupValue(o.altitude!);
+    checkBloodGlucoseRollupValue(o.bloodGlucose!);
     checkBodyFatRollupValue(o.bodyFat!);
     checkCaloriesInHeartRateZoneRollupValue(o.caloriesInHeartRateZone!);
     checkCivilDateTime(o.civilEndTime!);
     checkCivilDateTime(o.civilStartTime!);
+    checkCoreBodyTemperatureRollupValue(o.coreBodyTemperature!);
     checkDistanceRollupValue(o.distance!);
     checkFloorsRollupValue(o.floors!);
     checkHeartRateRollupValue(o.heartRate!);
@@ -783,6 +1028,7 @@ void checkDailyRollupDataPoint(api.DailyRollupDataPoint o) {
       o.heartRateVariabilityPersonalRange!,
     );
     checkHydrationLogRollupValue(o.hydrationLog!);
+    checkNutritionLogRollupValue(o.nutritionLog!);
     checkRestingHeartRatePersonalRangeRollupValue(
       o.restingHeartRatePersonalRange!,
     );
@@ -856,11 +1102,15 @@ api.DataPoint buildDataPoint() {
   final o = api.DataPoint();
   buildCounterDataPoint++;
   if (buildCounterDataPoint < 3) {
+    o.activeEnergyBurned = buildActiveEnergyBurned();
     o.activeMinutes = buildActiveMinutes();
     o.activeZoneMinutes = buildActiveZoneMinutes();
     o.activityLevel = buildActivityLevel();
     o.altitude = buildAltitude();
+    o.basalEnergyBurned = buildBasalEnergyBurned();
+    o.bloodGlucose = buildBloodGlucose();
     o.bodyFat = buildBodyFat();
+    o.coreBodyTemperature = buildCoreBodyTemperature();
     o.dailyHeartRateVariability = buildDailyHeartRateVariability();
     o.dailyHeartRateZones = buildDailyHeartRateZones();
     o.dailyOxygenSaturation = buildDailyOxygenSaturation();
@@ -871,13 +1121,21 @@ api.DataPoint buildDataPoint() {
     o.dailyVo2Max = buildDailyVO2Max();
     o.dataSource = buildDataSource();
     o.distance = buildDistance();
+    o.electrocardiogram = buildElectrocardiogram();
     o.exercise = buildExercise();
     o.floors = buildFloors();
+    o.food = buildFood();
+    o.foodMeasurementUnit = buildFoodMeasurementUnit();
     o.heartRate = buildHeartRate();
     o.heartRateVariability = buildHeartRateVariability();
     o.height = buildHeight();
     o.hydrationLog = buildHydrationLog();
+    o.irregularRhythmNotification = buildIrregularRhythmNotification();
+    o.menstrualPeriod = buildMenstrualPeriod();
+    o.moods = buildMoods();
     o.name = 'foo';
+    o.nutritionLog = buildNutritionLog();
+    o.ovulationTest = buildOvulationTest();
     o.oxygenSaturation = buildOxygenSaturation();
     o.respiratoryRateSleepSummary = buildRespiratoryRateSleepSummary();
     o.runVo2Max = buildRunVO2Max();
@@ -885,6 +1143,7 @@ api.DataPoint buildDataPoint() {
     o.sleep = buildSleep();
     o.steps = buildSteps();
     o.swimLengthsData = buildSwimLengthsData();
+    o.symptoms = buildSymptoms();
     o.timeInHeartRateZone = buildTimeInHeartRateZone();
     o.vo2Max = buildVO2Max();
     o.weight = buildWeight();
@@ -896,11 +1155,15 @@ api.DataPoint buildDataPoint() {
 void checkDataPoint(api.DataPoint o) {
   buildCounterDataPoint++;
   if (buildCounterDataPoint < 3) {
+    checkActiveEnergyBurned(o.activeEnergyBurned!);
     checkActiveMinutes(o.activeMinutes!);
     checkActiveZoneMinutes(o.activeZoneMinutes!);
     checkActivityLevel(o.activityLevel!);
     checkAltitude(o.altitude!);
+    checkBasalEnergyBurned(o.basalEnergyBurned!);
+    checkBloodGlucose(o.bloodGlucose!);
     checkBodyFat(o.bodyFat!);
+    checkCoreBodyTemperature(o.coreBodyTemperature!);
     checkDailyHeartRateVariability(o.dailyHeartRateVariability!);
     checkDailyHeartRateZones(o.dailyHeartRateZones!);
     checkDailyOxygenSaturation(o.dailyOxygenSaturation!);
@@ -910,13 +1173,21 @@ void checkDataPoint(api.DataPoint o) {
     checkDailyVO2Max(o.dailyVo2Max!);
     checkDataSource(o.dataSource!);
     checkDistance(o.distance!);
+    checkElectrocardiogram(o.electrocardiogram!);
     checkExercise(o.exercise!);
     checkFloors(o.floors!);
+    checkFood(o.food!);
+    checkFoodMeasurementUnit(o.foodMeasurementUnit!);
     checkHeartRate(o.heartRate!);
     checkHeartRateVariability(o.heartRateVariability!);
     checkHeight(o.height!);
     checkHydrationLog(o.hydrationLog!);
+    checkIrregularRhythmNotification(o.irregularRhythmNotification!);
+    checkMenstrualPeriod(o.menstrualPeriod!);
+    checkMoods(o.moods!);
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkNutritionLog(o.nutritionLog!);
+    checkOvulationTest(o.ovulationTest!);
     checkOxygenSaturation(o.oxygenSaturation!);
     checkRespiratoryRateSleepSummary(o.respiratoryRateSleepSummary!);
     checkRunVO2Max(o.runVo2Max!);
@@ -924,6 +1195,7 @@ void checkDataPoint(api.DataPoint o) {
     checkSleep(o.sleep!);
     checkSteps(o.steps!);
     checkSwimLengthsData(o.swimLengthsData!);
+    checkSymptoms(o.symptoms!);
     checkTimeInHeartRateZone(o.timeInHeartRateZone!);
     checkVO2Max(o.vo2Max!);
     checkWeight(o.weight!);
@@ -1042,6 +1314,62 @@ void checkDistanceRollupValue(api.DistanceRollupValue o) {
   buildCounterDistanceRollupValue--;
 }
 
+core.List<core.int> buildUnnamed10() => [42, 42];
+
+void checkUnnamed10(core.List<core.int> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals(42));
+  unittest.expect(o[1], unittest.equals(42));
+}
+
+core.int buildCounterElectrocardiogram = 0;
+api.Electrocardiogram buildElectrocardiogram() {
+  final o = api.Electrocardiogram();
+  buildCounterElectrocardiogram++;
+  if (buildCounterElectrocardiogram < 3) {
+    o.beatsPerMinuteAvg = 'foo';
+    o.interval = buildSessionTimeInterval();
+    o.leadNumber = 42;
+    o.medicalDeviceInfo = buildMedicalDeviceInfo();
+    o.millivoltsScalingFactor = 42;
+    o.resultClassification = 'foo';
+    o.samplingFrequencyHertz = 42;
+    o.waveformSamples = buildUnnamed10();
+  }
+  buildCounterElectrocardiogram--;
+  return o;
+}
+
+void checkElectrocardiogram(api.Electrocardiogram o) {
+  buildCounterElectrocardiogram++;
+  if (buildCounterElectrocardiogram < 3) {
+    unittest.expect(o.beatsPerMinuteAvg!, unittest.equals('foo'));
+    checkSessionTimeInterval(o.interval!);
+    unittest.expect(o.leadNumber!, unittest.equals(42));
+    checkMedicalDeviceInfo(o.medicalDeviceInfo!);
+    unittest.expect(o.millivoltsScalingFactor!, unittest.equals(42));
+    unittest.expect(o.resultClassification!, unittest.equals('foo'));
+    unittest.expect(o.samplingFrequencyHertz!, unittest.equals(42));
+    checkUnnamed10(o.waveformSamples!);
+  }
+  buildCounterElectrocardiogram--;
+}
+
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  final o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+}
+
 core.int buildCounterEndpointAuthorization = 0;
 api.EndpointAuthorization buildEndpointAuthorization() {
   final o = api.EndpointAuthorization();
@@ -1063,34 +1391,76 @@ void checkEndpointAuthorization(api.EndpointAuthorization o) {
   buildCounterEndpointAuthorization--;
 }
 
-core.List<api.ExerciseEvent> buildUnnamed8() => [
+core.int buildCounterEnergyQuantity = 0;
+api.EnergyQuantity buildEnergyQuantity() {
+  final o = api.EnergyQuantity();
+  buildCounterEnergyQuantity++;
+  if (buildCounterEnergyQuantity < 3) {
+    o.kcal = 42.0;
+    o.userProvidedUnit = 'foo';
+  }
+  buildCounterEnergyQuantity--;
+  return o;
+}
+
+void checkEnergyQuantity(api.EnergyQuantity o) {
+  buildCounterEnergyQuantity++;
+  if (buildCounterEnergyQuantity < 3) {
+    unittest.expect(o.kcal!, unittest.equals(42.0));
+    unittest.expect(o.userProvidedUnit!, unittest.equals('foo'));
+  }
+  buildCounterEnergyQuantity--;
+}
+
+core.int buildCounterEnergyQuantityRollup = 0;
+api.EnergyQuantityRollup buildEnergyQuantityRollup() {
+  final o = api.EnergyQuantityRollup();
+  buildCounterEnergyQuantityRollup++;
+  if (buildCounterEnergyQuantityRollup < 3) {
+    o.kcalSum = 42.0;
+    o.userProvidedUnitLast = 'foo';
+  }
+  buildCounterEnergyQuantityRollup--;
+  return o;
+}
+
+void checkEnergyQuantityRollup(api.EnergyQuantityRollup o) {
+  buildCounterEnergyQuantityRollup++;
+  if (buildCounterEnergyQuantityRollup < 3) {
+    unittest.expect(o.kcalSum!, unittest.equals(42.0));
+    unittest.expect(o.userProvidedUnitLast!, unittest.equals('foo'));
+  }
+  buildCounterEnergyQuantityRollup--;
+}
+
+core.List<api.ExerciseEvent> buildUnnamed11() => [
   buildExerciseEvent(),
   buildExerciseEvent(),
 ];
 
-void checkUnnamed8(core.List<api.ExerciseEvent> o) {
+void checkUnnamed11(core.List<api.ExerciseEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExerciseEvent(o[0]);
   checkExerciseEvent(o[1]);
 }
 
-core.List<api.SplitSummary> buildUnnamed9() => [
+core.List<api.SplitSummary> buildUnnamed12() => [
   buildSplitSummary(),
   buildSplitSummary(),
 ];
 
-void checkUnnamed9(core.List<api.SplitSummary> o) {
+void checkUnnamed12(core.List<api.SplitSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSplitSummary(o[0]);
   checkSplitSummary(o[1]);
 }
 
-core.List<api.SplitSummary> buildUnnamed10() => [
+core.List<api.SplitSummary> buildUnnamed13() => [
   buildSplitSummary(),
   buildSplitSummary(),
 ];
 
-void checkUnnamed10(core.List<api.SplitSummary> o) {
+void checkUnnamed13(core.List<api.SplitSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSplitSummary(o[0]);
   checkSplitSummary(o[1]);
@@ -1104,14 +1474,14 @@ api.Exercise buildExercise() {
     o.activeDuration = 'foo';
     o.createTime = 'foo';
     o.displayName = 'foo';
-    o.exerciseEvents = buildUnnamed8();
+    o.exerciseEvents = buildUnnamed11();
     o.exerciseMetadata = buildExerciseMetadata();
     o.exerciseType = 'foo';
     o.interval = buildSessionTimeInterval();
     o.metricsSummary = buildMetricsSummary();
     o.notes = 'foo';
-    o.splitSummaries = buildUnnamed9();
-    o.splits = buildUnnamed10();
+    o.splitSummaries = buildUnnamed12();
+    o.splits = buildUnnamed13();
     o.updateTime = 'foo';
   }
   buildCounterExercise--;
@@ -1124,14 +1494,14 @@ void checkExercise(api.Exercise o) {
     unittest.expect(o.activeDuration!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed8(o.exerciseEvents!);
+    checkUnnamed11(o.exerciseEvents!);
     checkExerciseMetadata(o.exerciseMetadata!);
     unittest.expect(o.exerciseType!, unittest.equals('foo'));
     checkSessionTimeInterval(o.interval!);
     checkMetricsSummary(o.metricsSummary!);
     unittest.expect(o.notes!, unittest.equals('foo'));
-    checkUnnamed9(o.splitSummaries!);
-    checkUnnamed10(o.splits!);
+    checkUnnamed12(o.splitSummaries!);
+    checkUnnamed13(o.splits!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterExercise--;
@@ -1238,6 +1608,151 @@ void checkFloorsRollupValue(api.FloorsRollupValue o) {
     unittest.expect(o.countSum!, unittest.equals('foo'));
   }
   buildCounterFloorsRollupValue--;
+}
+
+core.List<api.NutrientQuantity> buildUnnamed14() => [
+  buildNutrientQuantity(),
+  buildNutrientQuantity(),
+];
+
+void checkUnnamed14(core.List<api.NutrientQuantity> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkNutrientQuantity(o[0]);
+  checkNutrientQuantity(o[1]);
+}
+
+core.List<api.FoodServing> buildUnnamed15() => [
+  buildFoodServing(),
+  buildFoodServing(),
+];
+
+void checkUnnamed15(core.List<api.FoodServing> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkFoodServing(o[0]);
+  checkFoodServing(o[1]);
+}
+
+core.int buildCounterFood = 0;
+api.Food buildFood() {
+  final o = api.Food();
+  buildCounterFood++;
+  if (buildCounterFood < 3) {
+    o.accessLevel = 'foo';
+    o.brand = 'foo';
+    o.defaultServing = buildFoodServing();
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.energyAvg = buildEnergyQuantity();
+    o.energyFromFat = buildEnergyQuantity();
+    o.energyMax = buildEnergyQuantity();
+    o.energyMin = buildEnergyQuantity();
+    o.languageCode = 'foo';
+    o.mealType = 'foo';
+    o.nutrients = buildUnnamed14();
+    o.servings = buildUnnamed15();
+    o.totalCarbohydrate = buildWeightQuantity();
+    o.totalFat = buildWeightQuantity();
+  }
+  buildCounterFood--;
+  return o;
+}
+
+void checkFood(api.Food o) {
+  buildCounterFood++;
+  if (buildCounterFood < 3) {
+    unittest.expect(o.accessLevel!, unittest.equals('foo'));
+    unittest.expect(o.brand!, unittest.equals('foo'));
+    checkFoodServing(o.defaultServing!);
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    checkEnergyQuantity(o.energyAvg!);
+    checkEnergyQuantity(o.energyFromFat!);
+    checkEnergyQuantity(o.energyMax!);
+    checkEnergyQuantity(o.energyMin!);
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(o.mealType!, unittest.equals('foo'));
+    checkUnnamed14(o.nutrients!);
+    checkUnnamed15(o.servings!);
+    checkWeightQuantity(o.totalCarbohydrate!);
+    checkWeightQuantity(o.totalFat!);
+  }
+  buildCounterFood--;
+}
+
+core.int buildCounterFoodMeasurementUnit = 0;
+api.FoodMeasurementUnit buildFoodMeasurementUnit() {
+  final o = api.FoodMeasurementUnit();
+  buildCounterFoodMeasurementUnit++;
+  if (buildCounterFoodMeasurementUnit < 3) {
+    o.displayName = 'foo';
+    o.pluralDisplayName = 'foo';
+  }
+  buildCounterFoodMeasurementUnit--;
+  return o;
+}
+
+void checkFoodMeasurementUnit(api.FoodMeasurementUnit o) {
+  buildCounterFoodMeasurementUnit++;
+  if (buildCounterFoodMeasurementUnit < 3) {
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.pluralDisplayName!, unittest.equals('foo'));
+  }
+  buildCounterFoodMeasurementUnit--;
+}
+
+core.int buildCounterFoodServing = 0;
+api.FoodServing buildFoodServing() {
+  final o = api.FoodServing();
+  buildCounterFoodServing++;
+  if (buildCounterFoodServing < 3) {
+    o.amount = 42.0;
+    o.foodMeasurementUnit = 'foo';
+    o.foodMeasurementUnitDisplayName = 'foo';
+    o.foodMeasurementUnitDisplayNamePlural = 'foo';
+    o.multiplier = 42.0;
+  }
+  buildCounterFoodServing--;
+  return o;
+}
+
+void checkFoodServing(api.FoodServing o) {
+  buildCounterFoodServing++;
+  if (buildCounterFoodServing < 3) {
+    unittest.expect(o.amount!, unittest.equals(42.0));
+    unittest.expect(o.foodMeasurementUnit!, unittest.equals('foo'));
+    unittest.expect(o.foodMeasurementUnitDisplayName!, unittest.equals('foo'));
+    unittest.expect(
+      o.foodMeasurementUnitDisplayNamePlural!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.multiplier!, unittest.equals(42.0));
+  }
+  buildCounterFoodServing--;
+}
+
+core.int buildCounterHeartBeat = 0;
+api.HeartBeat buildHeartBeat() {
+  final o = api.HeartBeat();
+  buildCounterHeartBeat++;
+  if (buildCounterHeartBeat < 3) {
+    o.beatsPerMinute = 42;
+    o.civilTime = buildCivilDateTime();
+    o.physicalTime = 'foo';
+    o.utcOffset = 'foo';
+  }
+  buildCounterHeartBeat--;
+  return o;
+}
+
+void checkHeartBeat(api.HeartBeat o) {
+  buildCounterHeartBeat++;
+  if (buildCounterHeartBeat < 3) {
+    unittest.expect(o.beatsPerMinute!, unittest.equals(42));
+    checkCivilDateTime(o.civilTime!);
+    unittest.expect(o.physicalTime!, unittest.equals('foo'));
+    unittest.expect(o.utcOffset!, unittest.equals('foo'));
+  }
+  buildCounterHeartBeat--;
 }
 
 core.int buildCounterHeartRate = 0;
@@ -1407,6 +1922,67 @@ void checkHeight(api.Height o) {
   buildCounterHeight--;
 }
 
+core.Map<core.String, core.Object?> buildUnnamed16() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed16(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
+}
+
+core.List<core.Map<core.String, core.Object?>> buildUnnamed17() => [
+  buildUnnamed16(),
+  buildUnnamed16(),
+];
+
+void checkUnnamed17(core.List<core.Map<core.String, core.Object?>> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUnnamed16(o[0]);
+  checkUnnamed16(o[1]);
+}
+
+core.int buildCounterHttpBody = 0;
+api.HttpBody buildHttpBody() {
+  final o = api.HttpBody();
+  buildCounterHttpBody++;
+  if (buildCounterHttpBody < 3) {
+    o.contentType = 'foo';
+    o.data = 'foo';
+    o.extensions = buildUnnamed17();
+  }
+  buildCounterHttpBody--;
+  return o;
+}
+
+void checkHttpBody(api.HttpBody o) {
+  buildCounterHttpBody++;
+  if (buildCounterHttpBody < 3) {
+    unittest.expect(o.contentType!, unittest.equals('foo'));
+    unittest.expect(o.data!, unittest.equals('foo'));
+    checkUnnamed17(o.extensions!);
+  }
+  buildCounterHttpBody--;
+}
+
 core.int buildCounterHydrationLog = 0;
 api.HydrationLog buildHydrationLog() {
   final o = api.HydrationLog();
@@ -1491,12 +2067,71 @@ void checkInterval(api.Interval o) {
   buildCounterInterval--;
 }
 
-core.List<api.DataPoint> buildUnnamed11() => [
+core.int buildCounterIrnProfile = 0;
+api.IrnProfile buildIrnProfile() {
+  final o = api.IrnProfile();
+  buildCounterIrnProfile++;
+  if (buildCounterIrnProfile < 3) {
+    o.enrollmentStatus = true;
+    o.name = 'foo';
+    o.onboardingStatus = true;
+    o.updateTime = 'foo';
+  }
+  buildCounterIrnProfile--;
+  return o;
+}
+
+void checkIrnProfile(api.IrnProfile o) {
+  buildCounterIrnProfile++;
+  if (buildCounterIrnProfile < 3) {
+    unittest.expect(o.enrollmentStatus!, unittest.isTrue);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.onboardingStatus!, unittest.isTrue);
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+  }
+  buildCounterIrnProfile--;
+}
+
+core.List<api.AlertWindow> buildUnnamed18() => [
+  buildAlertWindow(),
+  buildAlertWindow(),
+];
+
+void checkUnnamed18(core.List<api.AlertWindow> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAlertWindow(o[0]);
+  checkAlertWindow(o[1]);
+}
+
+core.int buildCounterIrregularRhythmNotification = 0;
+api.IrregularRhythmNotification buildIrregularRhythmNotification() {
+  final o = api.IrregularRhythmNotification();
+  buildCounterIrregularRhythmNotification++;
+  if (buildCounterIrregularRhythmNotification < 3) {
+    o.alertWindows = buildUnnamed18();
+    o.interval = buildSessionTimeInterval();
+    o.medicalDeviceInfo = buildMedicalDeviceInfo();
+  }
+  buildCounterIrregularRhythmNotification--;
+  return o;
+}
+
+void checkIrregularRhythmNotification(api.IrregularRhythmNotification o) {
+  buildCounterIrregularRhythmNotification++;
+  if (buildCounterIrregularRhythmNotification < 3) {
+    checkUnnamed18(o.alertWindows!);
+    checkSessionTimeInterval(o.interval!);
+    checkMedicalDeviceInfo(o.medicalDeviceInfo!);
+  }
+  buildCounterIrregularRhythmNotification--;
+}
+
+core.List<api.DataPoint> buildUnnamed19() => [
   buildDataPoint(),
   buildDataPoint(),
 ];
 
-void checkUnnamed11(core.List<api.DataPoint> o) {
+void checkUnnamed19(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataPoint(o[0]);
   checkDataPoint(o[1]);
@@ -1507,7 +2142,7 @@ api.ListDataPointsResponse buildListDataPointsResponse() {
   final o = api.ListDataPointsResponse();
   buildCounterListDataPointsResponse++;
   if (buildCounterListDataPointsResponse < 3) {
-    o.dataPoints = buildUnnamed11();
+    o.dataPoints = buildUnnamed19();
     o.nextPageToken = 'foo';
   }
   buildCounterListDataPointsResponse--;
@@ -1517,18 +2152,50 @@ api.ListDataPointsResponse buildListDataPointsResponse() {
 void checkListDataPointsResponse(api.ListDataPointsResponse o) {
   buildCounterListDataPointsResponse++;
   if (buildCounterListDataPointsResponse < 3) {
-    checkUnnamed11(o.dataPoints!);
+    checkUnnamed19(o.dataPoints!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListDataPointsResponse--;
 }
 
-core.List<api.Subscriber> buildUnnamed12() => [
+core.List<api.PairedDevice> buildUnnamed20() => [
+  buildPairedDevice(),
+  buildPairedDevice(),
+];
+
+void checkUnnamed20(core.List<api.PairedDevice> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPairedDevice(o[0]);
+  checkPairedDevice(o[1]);
+}
+
+core.int buildCounterListPairedDevicesResponse = 0;
+api.ListPairedDevicesResponse buildListPairedDevicesResponse() {
+  final o = api.ListPairedDevicesResponse();
+  buildCounterListPairedDevicesResponse++;
+  if (buildCounterListPairedDevicesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.pairedDevices = buildUnnamed20();
+  }
+  buildCounterListPairedDevicesResponse--;
+  return o;
+}
+
+void checkListPairedDevicesResponse(api.ListPairedDevicesResponse o) {
+  buildCounterListPairedDevicesResponse++;
+  if (buildCounterListPairedDevicesResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed20(o.pairedDevices!);
+  }
+  buildCounterListPairedDevicesResponse--;
+}
+
+core.List<api.Subscriber> buildUnnamed21() => [
   buildSubscriber(),
   buildSubscriber(),
 ];
 
-void checkUnnamed12(core.List<api.Subscriber> o) {
+void checkUnnamed21(core.List<api.Subscriber> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscriber(o[0]);
   checkSubscriber(o[1]);
@@ -1540,7 +2207,7 @@ api.ListSubscribersResponse buildListSubscribersResponse() {
   buildCounterListSubscribersResponse++;
   if (buildCounterListSubscribersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.subscribers = buildUnnamed12();
+    o.subscribers = buildUnnamed21();
     o.totalSize = 42;
   }
   buildCounterListSubscribersResponse--;
@@ -1551,10 +2218,113 @@ void checkListSubscribersResponse(api.ListSubscribersResponse o) {
   buildCounterListSubscribersResponse++;
   if (buildCounterListSubscribersResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed12(o.subscribers!);
+    checkUnnamed21(o.subscribers!);
     unittest.expect(o.totalSize!, unittest.equals(42));
   }
   buildCounterListSubscribersResponse--;
+}
+
+core.List<api.Subscription> buildUnnamed22() => [
+  buildSubscription(),
+  buildSubscription(),
+];
+
+void checkUnnamed22(core.List<api.Subscription> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSubscription(o[0]);
+  checkSubscription(o[1]);
+}
+
+core.int buildCounterListSubscriptionsResponse = 0;
+api.ListSubscriptionsResponse buildListSubscriptionsResponse() {
+  final o = api.ListSubscriptionsResponse();
+  buildCounterListSubscriptionsResponse++;
+  if (buildCounterListSubscriptionsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.subscriptions = buildUnnamed22();
+  }
+  buildCounterListSubscriptionsResponse--;
+  return o;
+}
+
+void checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
+  buildCounterListSubscriptionsResponse++;
+  if (buildCounterListSubscriptionsResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed22(o.subscriptions!);
+  }
+  buildCounterListSubscriptionsResponse--;
+}
+
+core.int buildCounterManifestParams = 0;
+api.ManifestParams buildManifestParams() {
+  final o = api.ManifestParams();
+  buildCounterManifestParams++;
+  if (buildCounterManifestParams < 3) {
+    o.embeddedLengthMax = 42;
+    o.passcode = 'foo';
+    o.recipient = 'foo';
+  }
+  buildCounterManifestParams--;
+  return o;
+}
+
+void checkManifestParams(api.ManifestParams o) {
+  buildCounterManifestParams++;
+  if (buildCounterManifestParams < 3) {
+    unittest.expect(o.embeddedLengthMax!, unittest.equals(42));
+    unittest.expect(o.passcode!, unittest.equals('foo'));
+    unittest.expect(o.recipient!, unittest.equals('foo'));
+  }
+  buildCounterManifestParams--;
+}
+
+core.int buildCounterMedicalDeviceInfo = 0;
+api.MedicalDeviceInfo buildMedicalDeviceInfo() {
+  final o = api.MedicalDeviceInfo();
+  buildCounterMedicalDeviceInfo++;
+  if (buildCounterMedicalDeviceInfo < 3) {
+    o.algorithmVersion = 'foo';
+    o.deviceModel = 'foo';
+    o.featureVersion = 'foo';
+    o.firmwareVersion = 'foo';
+    o.serviceVersion = 'foo';
+  }
+  buildCounterMedicalDeviceInfo--;
+  return o;
+}
+
+void checkMedicalDeviceInfo(api.MedicalDeviceInfo o) {
+  buildCounterMedicalDeviceInfo++;
+  if (buildCounterMedicalDeviceInfo < 3) {
+    unittest.expect(o.algorithmVersion!, unittest.equals('foo'));
+    unittest.expect(o.deviceModel!, unittest.equals('foo'));
+    unittest.expect(o.featureVersion!, unittest.equals('foo'));
+    unittest.expect(o.firmwareVersion!, unittest.equals('foo'));
+    unittest.expect(o.serviceVersion!, unittest.equals('foo'));
+  }
+  buildCounterMedicalDeviceInfo--;
+}
+
+core.int buildCounterMenstrualPeriod = 0;
+api.MenstrualPeriod buildMenstrualPeriod() {
+  final o = api.MenstrualPeriod();
+  buildCounterMenstrualPeriod++;
+  if (buildCounterMenstrualPeriod < 3) {
+    o.interval = buildObservationTimeInterval();
+    o.notes = 'foo';
+  }
+  buildCounterMenstrualPeriod--;
+  return o;
+}
+
+void checkMenstrualPeriod(api.MenstrualPeriod o) {
+  buildCounterMenstrualPeriod++;
+  if (buildCounterMenstrualPeriod < 3) {
+    checkObservationTimeInterval(o.interval!);
+    unittest.expect(o.notes!, unittest.equals('foo'));
+  }
+  buildCounterMenstrualPeriod--;
 }
 
 core.int buildCounterMetricsSummary = 0;
@@ -1628,6 +2398,173 @@ void checkMobilityMetrics(api.MobilityMetrics o) {
   buildCounterMobilityMetrics--;
 }
 
+core.List<core.String> buildUnnamed23() => ['foo', 'foo'];
+
+void checkUnnamed23(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed24() => ['foo', 'foo'];
+
+void checkUnnamed24(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterMoods = 0;
+api.Moods buildMoods() {
+  final o = api.Moods();
+  buildCounterMoods++;
+  if (buildCounterMoods < 3) {
+    o.moods = buildUnnamed23();
+    o.sampleTime = buildObservationSampleTime();
+    o.valences = buildUnnamed24();
+  }
+  buildCounterMoods--;
+  return o;
+}
+
+void checkMoods(api.Moods o) {
+  buildCounterMoods++;
+  if (buildCounterMoods < 3) {
+    checkUnnamed23(o.moods!);
+    checkObservationSampleTime(o.sampleTime!);
+    checkUnnamed24(o.valences!);
+  }
+  buildCounterMoods--;
+}
+
+core.int buildCounterNutrientQuantity = 0;
+api.NutrientQuantity buildNutrientQuantity() {
+  final o = api.NutrientQuantity();
+  buildCounterNutrientQuantity++;
+  if (buildCounterNutrientQuantity < 3) {
+    o.nutrient = 'foo';
+    o.quantity = buildWeightQuantity();
+  }
+  buildCounterNutrientQuantity--;
+  return o;
+}
+
+void checkNutrientQuantity(api.NutrientQuantity o) {
+  buildCounterNutrientQuantity++;
+  if (buildCounterNutrientQuantity < 3) {
+    unittest.expect(o.nutrient!, unittest.equals('foo'));
+    checkWeightQuantity(o.quantity!);
+  }
+  buildCounterNutrientQuantity--;
+}
+
+core.int buildCounterNutrientQuantityRollup = 0;
+api.NutrientQuantityRollup buildNutrientQuantityRollup() {
+  final o = api.NutrientQuantityRollup();
+  buildCounterNutrientQuantityRollup++;
+  if (buildCounterNutrientQuantityRollup < 3) {
+    o.nutrient = 'foo';
+    o.quantity = buildWeightQuantityRollup();
+  }
+  buildCounterNutrientQuantityRollup--;
+  return o;
+}
+
+void checkNutrientQuantityRollup(api.NutrientQuantityRollup o) {
+  buildCounterNutrientQuantityRollup++;
+  if (buildCounterNutrientQuantityRollup < 3) {
+    unittest.expect(o.nutrient!, unittest.equals('foo'));
+    checkWeightQuantityRollup(o.quantity!);
+  }
+  buildCounterNutrientQuantityRollup--;
+}
+
+core.List<api.NutrientQuantity> buildUnnamed25() => [
+  buildNutrientQuantity(),
+  buildNutrientQuantity(),
+];
+
+void checkUnnamed25(core.List<api.NutrientQuantity> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkNutrientQuantity(o[0]);
+  checkNutrientQuantity(o[1]);
+}
+
+core.int buildCounterNutritionLog = 0;
+api.NutritionLog buildNutritionLog() {
+  final o = api.NutritionLog();
+  buildCounterNutritionLog++;
+  if (buildCounterNutritionLog < 3) {
+    o.energy = buildEnergyQuantity();
+    o.energyFromFat = buildEnergyQuantity();
+    o.food = 'foo';
+    o.foodDisplayName = 'foo';
+    o.interval = buildSessionTimeInterval();
+    o.mealType = 'foo';
+    o.nutrients = buildUnnamed25();
+    o.serving = buildServing();
+    o.totalCarbohydrate = buildWeightQuantity();
+    o.totalFat = buildWeightQuantity();
+  }
+  buildCounterNutritionLog--;
+  return o;
+}
+
+void checkNutritionLog(api.NutritionLog o) {
+  buildCounterNutritionLog++;
+  if (buildCounterNutritionLog < 3) {
+    checkEnergyQuantity(o.energy!);
+    checkEnergyQuantity(o.energyFromFat!);
+    unittest.expect(o.food!, unittest.equals('foo'));
+    unittest.expect(o.foodDisplayName!, unittest.equals('foo'));
+    checkSessionTimeInterval(o.interval!);
+    unittest.expect(o.mealType!, unittest.equals('foo'));
+    checkUnnamed25(o.nutrients!);
+    checkServing(o.serving!);
+    checkWeightQuantity(o.totalCarbohydrate!);
+    checkWeightQuantity(o.totalFat!);
+  }
+  buildCounterNutritionLog--;
+}
+
+core.List<api.NutrientQuantityRollup> buildUnnamed26() => [
+  buildNutrientQuantityRollup(),
+  buildNutrientQuantityRollup(),
+];
+
+void checkUnnamed26(core.List<api.NutrientQuantityRollup> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkNutrientQuantityRollup(o[0]);
+  checkNutrientQuantityRollup(o[1]);
+}
+
+core.int buildCounterNutritionLogRollupValue = 0;
+api.NutritionLogRollupValue buildNutritionLogRollupValue() {
+  final o = api.NutritionLogRollupValue();
+  buildCounterNutritionLogRollupValue++;
+  if (buildCounterNutritionLogRollupValue < 3) {
+    o.energy = buildEnergyQuantityRollup();
+    o.energyFromFat = buildEnergyQuantityRollup();
+    o.nutrients = buildUnnamed26();
+    o.totalCarbohydrate = buildWeightQuantityRollup();
+    o.totalFat = buildWeightQuantityRollup();
+  }
+  buildCounterNutritionLogRollupValue--;
+  return o;
+}
+
+void checkNutritionLogRollupValue(api.NutritionLogRollupValue o) {
+  buildCounterNutritionLogRollupValue++;
+  if (buildCounterNutritionLogRollupValue < 3) {
+    checkEnergyQuantityRollup(o.energy!);
+    checkEnergyQuantityRollup(o.energyFromFat!);
+    checkUnnamed26(o.nutrients!);
+    checkWeightQuantityRollup(o.totalCarbohydrate!);
+    checkWeightQuantityRollup(o.totalFat!);
+  }
+  buildCounterNutritionLogRollupValue--;
+}
+
 core.int buildCounterObservationSampleTime = 0;
 api.ObservationSampleTime buildObservationSampleTime() {
   final o = api.ObservationSampleTime();
@@ -1680,7 +2617,7 @@ void checkObservationTimeInterval(api.ObservationTimeInterval o) {
   buildCounterObservationTimeInterval--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed13() => {
+core.Map<core.String, core.Object?> buildUnnamed27() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1693,34 +2630,7 @@ core.Map<core.String, core.Object?> buildUnnamed13() => {
   },
 };
 
-void checkUnnamed13(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']!) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']!) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
-}
-
-core.Map<core.String, core.Object?> buildUnnamed14() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed14(core.Map<core.String, core.Object?> o) {
+void checkUnnamed27(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1734,6 +2644,33 @@ void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
+core.Map<core.String, core.Object?> buildUnnamed28() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed28(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted5 = (o['x']!) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']!) as core.Map;
+  unittest.expect(casted6, unittest.hasLength(3));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
+}
+
 core.int buildCounterOperation = 0;
 api.Operation buildOperation() {
   final o = api.Operation();
@@ -1741,9 +2678,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed13();
+    o.metadata = buildUnnamed27();
     o.name = 'foo';
-    o.response = buildUnnamed14();
+    o.response = buildUnnamed28();
   }
   buildCounterOperation--;
   return o;
@@ -1754,9 +2691,9 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed13(o.metadata!);
+    checkUnnamed27(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed14(o.response!);
+    checkUnnamed28(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1786,6 +2723,27 @@ void checkOutOfBedSegment(api.OutOfBedSegment o) {
   buildCounterOutOfBedSegment--;
 }
 
+core.int buildCounterOvulationTest = 0;
+api.OvulationTest buildOvulationTest() {
+  final o = api.OvulationTest();
+  buildCounterOvulationTest++;
+  if (buildCounterOvulationTest < 3) {
+    o.result = 'foo';
+    o.sampleTime = buildObservationSampleTime();
+  }
+  buildCounterOvulationTest--;
+  return o;
+}
+
+void checkOvulationTest(api.OvulationTest o) {
+  buildCounterOvulationTest++;
+  if (buildCounterOvulationTest < 3) {
+    unittest.expect(o.result!, unittest.equals('foo'));
+    checkObservationSampleTime(o.sampleTime!);
+  }
+  buildCounterOvulationTest--;
+}
+
 core.int buildCounterOxygenSaturation = 0;
 api.OxygenSaturation buildOxygenSaturation() {
   final o = api.OxygenSaturation();
@@ -1805,6 +2763,47 @@ void checkOxygenSaturation(api.OxygenSaturation o) {
     checkObservationSampleTime(o.sampleTime!);
   }
   buildCounterOxygenSaturation--;
+}
+
+core.List<core.String> buildUnnamed29() => ['foo', 'foo'];
+
+void checkUnnamed29(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterPairedDevice = 0;
+api.PairedDevice buildPairedDevice() {
+  final o = api.PairedDevice();
+  buildCounterPairedDevice++;
+  if (buildCounterPairedDevice < 3) {
+    o.batteryLevel = 42;
+    o.batteryStatus = 'foo';
+    o.deviceType = 'foo';
+    o.deviceVersion = 'foo';
+    o.features = buildUnnamed29();
+    o.lastSyncTime = 'foo';
+    o.macAddress = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterPairedDevice--;
+  return o;
+}
+
+void checkPairedDevice(api.PairedDevice o) {
+  buildCounterPairedDevice++;
+  if (buildCounterPairedDevice < 3) {
+    unittest.expect(o.batteryLevel!, unittest.equals(42));
+    unittest.expect(o.batteryStatus!, unittest.equals('foo'));
+    unittest.expect(o.deviceType!, unittest.equals('foo'));
+    unittest.expect(o.deviceVersion!, unittest.equals('foo'));
+    checkUnnamed29(o.features!);
+    unittest.expect(o.lastSyncTime!, unittest.equals('foo'));
+    unittest.expect(o.macAddress!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+  }
+  buildCounterPairedDevice--;
 }
 
 core.int buildCounterProfile = 0;
@@ -1844,12 +2843,12 @@ void checkProfile(api.Profile o) {
   buildCounterProfile--;
 }
 
-core.List<api.ReconciledDataPoint> buildUnnamed15() => [
+core.List<api.ReconciledDataPoint> buildUnnamed30() => [
   buildReconciledDataPoint(),
   buildReconciledDataPoint(),
 ];
 
-void checkUnnamed15(core.List<api.ReconciledDataPoint> o) {
+void checkUnnamed30(core.List<api.ReconciledDataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReconciledDataPoint(o[0]);
   checkReconciledDataPoint(o[1]);
@@ -1860,7 +2859,7 @@ api.ReconcileDataPointsResponse buildReconcileDataPointsResponse() {
   final o = api.ReconcileDataPointsResponse();
   buildCounterReconcileDataPointsResponse++;
   if (buildCounterReconcileDataPointsResponse < 3) {
-    o.dataPoints = buildUnnamed15();
+    o.dataPoints = buildUnnamed30();
     o.nextPageToken = 'foo';
   }
   buildCounterReconcileDataPointsResponse--;
@@ -1870,7 +2869,7 @@ api.ReconcileDataPointsResponse buildReconcileDataPointsResponse() {
 void checkReconcileDataPointsResponse(api.ReconcileDataPointsResponse o) {
   buildCounterReconcileDataPointsResponse++;
   if (buildCounterReconcileDataPointsResponse < 3) {
-    checkUnnamed15(o.dataPoints!);
+    checkUnnamed30(o.dataPoints!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterReconcileDataPointsResponse--;
@@ -1881,11 +2880,15 @@ api.ReconciledDataPoint buildReconciledDataPoint() {
   final o = api.ReconciledDataPoint();
   buildCounterReconciledDataPoint++;
   if (buildCounterReconciledDataPoint < 3) {
+    o.activeEnergyBurned = buildActiveEnergyBurned();
     o.activeMinutes = buildActiveMinutes();
     o.activeZoneMinutes = buildActiveZoneMinutes();
     o.activityLevel = buildActivityLevel();
     o.altitude = buildAltitude();
+    o.basalEnergyBurned = buildBasalEnergyBurned();
+    o.bloodGlucose = buildBloodGlucose();
     o.bodyFat = buildBodyFat();
+    o.coreBodyTemperature = buildCoreBodyTemperature();
     o.dailyHeartRateVariability = buildDailyHeartRateVariability();
     o.dailyHeartRateZones = buildDailyHeartRateZones();
     o.dailyOxygenSaturation = buildDailyOxygenSaturation();
@@ -1902,6 +2905,7 @@ api.ReconciledDataPoint buildReconciledDataPoint() {
     o.heartRateVariability = buildHeartRateVariability();
     o.height = buildHeight();
     o.hydrationLog = buildHydrationLog();
+    o.nutritionLog = buildNutritionLog();
     o.oxygenSaturation = buildOxygenSaturation();
     o.respiratoryRateSleepSummary = buildRespiratoryRateSleepSummary();
     o.runVo2Max = buildRunVO2Max();
@@ -1920,11 +2924,15 @@ api.ReconciledDataPoint buildReconciledDataPoint() {
 void checkReconciledDataPoint(api.ReconciledDataPoint o) {
   buildCounterReconciledDataPoint++;
   if (buildCounterReconciledDataPoint < 3) {
+    checkActiveEnergyBurned(o.activeEnergyBurned!);
     checkActiveMinutes(o.activeMinutes!);
     checkActiveZoneMinutes(o.activeZoneMinutes!);
     checkActivityLevel(o.activityLevel!);
     checkAltitude(o.altitude!);
+    checkBasalEnergyBurned(o.basalEnergyBurned!);
+    checkBloodGlucose(o.bloodGlucose!);
     checkBodyFat(o.bodyFat!);
+    checkCoreBodyTemperature(o.coreBodyTemperature!);
     checkDailyHeartRateVariability(o.dailyHeartRateVariability!);
     checkDailyHeartRateZones(o.dailyHeartRateZones!);
     checkDailyOxygenSaturation(o.dailyOxygenSaturation!);
@@ -1940,6 +2948,7 @@ void checkReconciledDataPoint(api.ReconciledDataPoint o) {
     checkHeartRateVariability(o.heartRateVariability!);
     checkHeight(o.height!);
     checkHydrationLog(o.hydrationLog!);
+    checkNutritionLog(o.nutritionLog!);
     checkOxygenSaturation(o.oxygenSaturation!);
     checkRespiratoryRateSleepSummary(o.respiratoryRateSleepSummary!);
     checkRunVO2Max(o.runVo2Max!);
@@ -2058,12 +3067,12 @@ void checkRollUpDataPointsRequest(api.RollUpDataPointsRequest o) {
   buildCounterRollUpDataPointsRequest--;
 }
 
-core.List<api.RollupDataPoint> buildUnnamed16() => [
+core.List<api.RollupDataPoint> buildUnnamed31() => [
   buildRollupDataPoint(),
   buildRollupDataPoint(),
 ];
 
-void checkUnnamed16(core.List<api.RollupDataPoint> o) {
+void checkUnnamed31(core.List<api.RollupDataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRollupDataPoint(o[0]);
   checkRollupDataPoint(o[1]);
@@ -2075,7 +3084,7 @@ api.RollUpDataPointsResponse buildRollUpDataPointsResponse() {
   buildCounterRollUpDataPointsResponse++;
   if (buildCounterRollUpDataPointsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.rollupDataPoints = buildUnnamed16();
+    o.rollupDataPoints = buildUnnamed31();
   }
   buildCounterRollUpDataPointsResponse--;
   return o;
@@ -2085,7 +3094,7 @@ void checkRollUpDataPointsResponse(api.RollUpDataPointsResponse o) {
   buildCounterRollUpDataPointsResponse++;
   if (buildCounterRollUpDataPointsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed16(o.rollupDataPoints!);
+    checkUnnamed31(o.rollupDataPoints!);
   }
   buildCounterRollUpDataPointsResponse--;
 }
@@ -2095,17 +3104,21 @@ api.RollupDataPoint buildRollupDataPoint() {
   final o = api.RollupDataPoint();
   buildCounterRollupDataPoint++;
   if (buildCounterRollupDataPoint < 3) {
+    o.activeEnergyBurned = buildActiveEnergyBurnedRollupValue();
     o.activeMinutes = buildActiveMinutesRollupValue();
     o.activeZoneMinutes = buildActiveZoneMinutesRollupValue();
     o.activityLevel = buildActivityLevelRollupValue();
     o.altitude = buildAltitudeRollupValue();
+    o.bloodGlucose = buildBloodGlucoseRollupValue();
     o.bodyFat = buildBodyFatRollupValue();
     o.caloriesInHeartRateZone = buildCaloriesInHeartRateZoneRollupValue();
+    o.coreBodyTemperature = buildCoreBodyTemperatureRollupValue();
     o.distance = buildDistanceRollupValue();
     o.endTime = 'foo';
     o.floors = buildFloorsRollupValue();
     o.heartRate = buildHeartRateRollupValue();
     o.hydrationLog = buildHydrationLogRollupValue();
+    o.nutritionLog = buildNutritionLogRollupValue();
     o.runVo2Max = buildRunVO2MaxRollupValue();
     o.sedentaryPeriod = buildSedentaryPeriodRollupValue();
     o.startTime = 'foo';
@@ -2122,17 +3135,21 @@ api.RollupDataPoint buildRollupDataPoint() {
 void checkRollupDataPoint(api.RollupDataPoint o) {
   buildCounterRollupDataPoint++;
   if (buildCounterRollupDataPoint < 3) {
+    checkActiveEnergyBurnedRollupValue(o.activeEnergyBurned!);
     checkActiveMinutesRollupValue(o.activeMinutes!);
     checkActiveZoneMinutesRollupValue(o.activeZoneMinutes!);
     checkActivityLevelRollupValue(o.activityLevel!);
     checkAltitudeRollupValue(o.altitude!);
+    checkBloodGlucoseRollupValue(o.bloodGlucose!);
     checkBodyFatRollupValue(o.bodyFat!);
     checkCaloriesInHeartRateZoneRollupValue(o.caloriesInHeartRateZone!);
+    checkCoreBodyTemperatureRollupValue(o.coreBodyTemperature!);
     checkDistanceRollupValue(o.distance!);
     unittest.expect(o.endTime!, unittest.equals('foo'));
     checkFloorsRollupValue(o.floors!);
     checkHeartRateRollupValue(o.heartRate!);
     checkHydrationLogRollupValue(o.hydrationLog!);
+    checkNutritionLogRollupValue(o.nutritionLog!);
     checkRunVO2MaxRollupValue(o.runVo2Max!);
     checkSedentaryPeriodRollupValue(o.sedentaryPeriod!);
     unittest.expect(o.startTime!, unittest.equals('foo'));
@@ -2227,6 +3244,29 @@ void checkSedentaryPeriodRollupValue(api.SedentaryPeriodRollupValue o) {
   buildCounterSedentaryPeriodRollupValue--;
 }
 
+core.int buildCounterServing = 0;
+api.Serving buildServing() {
+  final o = api.Serving();
+  buildCounterServing++;
+  if (buildCounterServing < 3) {
+    o.amount = 42.0;
+    o.foodMeasurementUnit = 'foo';
+    o.foodMeasurementUnitDisplayName = 'foo';
+  }
+  buildCounterServing--;
+  return o;
+}
+
+void checkServing(api.Serving o) {
+  buildCounterServing++;
+  if (buildCounterServing < 3) {
+    unittest.expect(o.amount!, unittest.equals(42.0));
+    unittest.expect(o.foodMeasurementUnit!, unittest.equals('foo'));
+    unittest.expect(o.foodMeasurementUnitDisplayName!, unittest.equals('foo'));
+  }
+  buildCounterServing--;
+}
+
 core.int buildCounterSessionTimeInterval = 0;
 api.SessionTimeInterval buildSessionTimeInterval() {
   final o = api.SessionTimeInterval();
@@ -2263,6 +3303,7 @@ api.Settings buildSettings() {
   if (buildCounterSettings < 3) {
     o.autoStrideEnabled = true;
     o.distanceUnit = 'foo';
+    o.foodLanguageCode = 'foo';
     o.glucoseUnit = 'foo';
     o.heightUnit = 'foo';
     o.languageLocale = 'foo';
@@ -2285,6 +3326,7 @@ void checkSettings(api.Settings o) {
   if (buildCounterSettings < 3) {
     unittest.expect(o.autoStrideEnabled!, unittest.isTrue);
     unittest.expect(o.distanceUnit!, unittest.equals('foo'));
+    unittest.expect(o.foodLanguageCode!, unittest.equals('foo'));
     unittest.expect(o.glucoseUnit!, unittest.equals('foo'));
     unittest.expect(o.heightUnit!, unittest.equals('foo'));
     unittest.expect(o.languageLocale!, unittest.equals('foo'));
@@ -2301,23 +3343,34 @@ void checkSettings(api.Settings o) {
   buildCounterSettings--;
 }
 
-core.List<api.OutOfBedSegment> buildUnnamed17() => [
+core.List<api.OutOfBedSegment> buildUnnamed32() => [
   buildOutOfBedSegment(),
   buildOutOfBedSegment(),
 ];
 
-void checkUnnamed17(core.List<api.OutOfBedSegment> o) {
+void checkUnnamed32(core.List<api.OutOfBedSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOutOfBedSegment(o[0]);
   checkOutOfBedSegment(o[1]);
 }
 
-core.List<api.SleepStage> buildUnnamed18() => [
+core.List<api.SleepStage> buildUnnamed33() => [
   buildSleepStage(),
   buildSleepStage(),
 ];
 
-void checkUnnamed18(core.List<api.SleepStage> o) {
+void checkUnnamed33(core.List<api.SleepStage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSleepStage(o[0]);
+  checkSleepStage(o[1]);
+}
+
+core.List<api.SleepStage> buildUnnamed34() => [
+  buildSleepStage(),
+  buildSleepStage(),
+];
+
+void checkUnnamed34(core.List<api.SleepStage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSleepStage(o[0]);
   checkSleepStage(o[1]);
@@ -2331,8 +3384,9 @@ api.Sleep buildSleep() {
     o.createTime = 'foo';
     o.interval = buildSessionTimeInterval();
     o.metadata = buildSleepMetadata();
-    o.outOfBedSegments = buildUnnamed17();
-    o.stages = buildUnnamed18();
+    o.outOfBedSegments = buildUnnamed32();
+    o.shortAwakenings = buildUnnamed33();
+    o.stages = buildUnnamed34();
     o.summary = buildSleepSummary();
     o.type = 'foo';
     o.updateTime = 'foo';
@@ -2347,8 +3401,9 @@ void checkSleep(api.Sleep o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkSessionTimeInterval(o.interval!);
     checkSleepMetadata(o.metadata!);
-    checkUnnamed17(o.outOfBedSegments!);
-    checkUnnamed18(o.stages!);
+    checkUnnamed32(o.outOfBedSegments!);
+    checkUnnamed33(o.shortAwakenings!);
+    checkUnnamed34(o.stages!);
     checkSleepSummary(o.summary!);
     unittest.expect(o.type!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -2362,6 +3417,7 @@ api.SleepMetadata buildSleepMetadata() {
   buildCounterSleepMetadata++;
   if (buildCounterSleepMetadata < 3) {
     o.externalId = 'foo';
+    o.mainSleep = true;
     o.manuallyEdited = true;
     o.nap = true;
     o.processed = true;
@@ -2375,6 +3431,7 @@ void checkSleepMetadata(api.SleepMetadata o) {
   buildCounterSleepMetadata++;
   if (buildCounterSleepMetadata < 3) {
     unittest.expect(o.externalId!, unittest.equals('foo'));
+    unittest.expect(o.mainSleep!, unittest.isTrue);
     unittest.expect(o.manuallyEdited!, unittest.isTrue);
     unittest.expect(o.nap!, unittest.isTrue);
     unittest.expect(o.processed!, unittest.isTrue);
@@ -2414,12 +3471,12 @@ void checkSleepStage(api.SleepStage o) {
   buildCounterSleepStage--;
 }
 
-core.List<api.StageSummary> buildUnnamed19() => [
+core.List<api.StageSummary> buildUnnamed35() => [
   buildStageSummary(),
   buildStageSummary(),
 ];
 
-void checkUnnamed19(core.List<api.StageSummary> o) {
+void checkUnnamed35(core.List<api.StageSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStageSummary(o[0]);
   checkStageSummary(o[1]);
@@ -2435,7 +3492,7 @@ api.SleepSummary buildSleepSummary() {
     o.minutesAwake = 'foo';
     o.minutesInSleepPeriod = 'foo';
     o.minutesToFallAsleep = 'foo';
-    o.stagesSummary = buildUnnamed19();
+    o.stagesSummary = buildUnnamed35();
   }
   buildCounterSleepSummary--;
   return o;
@@ -2449,7 +3506,7 @@ void checkSleepSummary(api.SleepSummary o) {
     unittest.expect(o.minutesAwake!, unittest.equals('foo'));
     unittest.expect(o.minutesInSleepPeriod!, unittest.equals('foo'));
     unittest.expect(o.minutesToFallAsleep!, unittest.equals('foo'));
-    checkUnnamed19(o.stagesSummary!);
+    checkUnnamed35(o.stagesSummary!);
   }
   buildCounterSleepSummary--;
 }
@@ -2508,7 +3565,7 @@ void checkStageSummary(api.StageSummary o) {
   buildCounterStageSummary--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed20() => {
+core.Map<core.String, core.Object?> buildUnnamed36() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -2521,29 +3578,29 @@ core.Map<core.String, core.Object?> buildUnnamed20() => {
   },
 };
 
-void checkUnnamed20(core.Map<core.String, core.Object?> o) {
+void checkUnnamed36(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o['x']!) as core.Map;
-  unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5['bool'], unittest.equals(true));
-  unittest.expect(casted5['string'], unittest.equals('foo'));
-  var casted6 = (o['y']!) as core.Map;
-  unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6['bool'], unittest.equals(true));
-  unittest.expect(casted6['string'], unittest.equals('foo'));
+  var casted7 = (o['x']!) as core.Map;
+  unittest.expect(casted7, unittest.hasLength(3));
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
+  var casted8 = (o['y']!) as core.Map;
+  unittest.expect(casted8, unittest.hasLength(3));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed21() => [
-  buildUnnamed20(),
-  buildUnnamed20(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed37() => [
+  buildUnnamed36(),
+  buildUnnamed36(),
 ];
 
-void checkUnnamed21(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed37(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed20(o[0]);
-  checkUnnamed20(o[1]);
+  checkUnnamed36(o[0]);
+  checkUnnamed36(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2552,7 +3609,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed21();
+    o.details = buildUnnamed37();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2563,7 +3620,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed21(o.details!);
+    checkUnnamed37(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -2609,12 +3666,12 @@ void checkStepsRollupValue(api.StepsRollupValue o) {
   buildCounterStepsRollupValue--;
 }
 
-core.List<api.SubscriberConfig> buildUnnamed22() => [
+core.List<api.SubscriberConfig> buildUnnamed38() => [
   buildSubscriberConfig(),
   buildSubscriberConfig(),
 ];
 
-void checkUnnamed22(core.List<api.SubscriberConfig> o) {
+void checkUnnamed38(core.List<api.SubscriberConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscriberConfig(o[0]);
   checkSubscriberConfig(o[1]);
@@ -2630,7 +3687,7 @@ api.Subscriber buildSubscriber() {
     o.endpointUri = 'foo';
     o.name = 'foo';
     o.state = 'foo';
-    o.subscriberConfigs = buildUnnamed22();
+    o.subscriberConfigs = buildUnnamed38();
     o.updateTime = 'foo';
   }
   buildCounterSubscriber--;
@@ -2645,15 +3702,15 @@ void checkSubscriber(api.Subscriber o) {
     unittest.expect(o.endpointUri!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
-    checkUnnamed22(o.subscriberConfigs!);
+    checkUnnamed38(o.subscriberConfigs!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterSubscriber--;
 }
 
-core.List<core.String> buildUnnamed23() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed39() => ['foo', 'foo'];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed39(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2664,7 +3721,7 @@ api.SubscriberConfig buildSubscriberConfig() {
   final o = api.SubscriberConfig();
   buildCounterSubscriberConfig++;
   if (buildCounterSubscriberConfig < 3) {
-    o.dataTypes = buildUnnamed23();
+    o.dataTypes = buildUnnamed39();
     o.subscriptionCreatePolicy = 'foo';
   }
   buildCounterSubscriberConfig--;
@@ -2674,10 +3731,41 @@ api.SubscriberConfig buildSubscriberConfig() {
 void checkSubscriberConfig(api.SubscriberConfig o) {
   buildCounterSubscriberConfig++;
   if (buildCounterSubscriberConfig < 3) {
-    checkUnnamed23(o.dataTypes!);
+    checkUnnamed39(o.dataTypes!);
     unittest.expect(o.subscriptionCreatePolicy!, unittest.equals('foo'));
   }
   buildCounterSubscriberConfig--;
+}
+
+core.List<core.String> buildUnnamed40() => ['foo', 'foo'];
+
+void checkUnnamed40(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterSubscription = 0;
+api.Subscription buildSubscription() {
+  final o = api.Subscription();
+  buildCounterSubscription++;
+  if (buildCounterSubscription < 3) {
+    o.dataTypes = buildUnnamed40();
+    o.name = 'foo';
+    o.user = 'foo';
+  }
+  buildCounterSubscription--;
+  return o;
+}
+
+void checkSubscription(api.Subscription o) {
+  buildCounterSubscription++;
+  if (buildCounterSubscription < 3) {
+    checkUnnamed40(o.dataTypes!);
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.user!, unittest.equals('foo'));
+  }
+  buildCounterSubscription--;
 }
 
 core.int buildCounterSwimLengthsData = 0;
@@ -2722,6 +3810,35 @@ void checkSwimLengthsDataRollupValue(api.SwimLengthsDataRollupValue o) {
   buildCounterSwimLengthsDataRollupValue--;
 }
 
+core.List<core.String> buildUnnamed41() => ['foo', 'foo'];
+
+void checkUnnamed41(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterSymptoms = 0;
+api.Symptoms buildSymptoms() {
+  final o = api.Symptoms();
+  buildCounterSymptoms++;
+  if (buildCounterSymptoms < 3) {
+    o.sampleTime = buildObservationSampleTime();
+    o.symptoms = buildUnnamed41();
+  }
+  buildCounterSymptoms--;
+  return o;
+}
+
+void checkSymptoms(api.Symptoms o) {
+  buildCounterSymptoms++;
+  if (buildCounterSymptoms < 3) {
+    checkObservationSampleTime(o.sampleTime!);
+    checkUnnamed41(o.symptoms!);
+  }
+  buildCounterSymptoms--;
+}
+
 core.int buildCounterTimeInHeartRateZone = 0;
 api.TimeInHeartRateZone buildTimeInHeartRateZone() {
   final o = api.TimeInHeartRateZone();
@@ -2743,12 +3860,12 @@ void checkTimeInHeartRateZone(api.TimeInHeartRateZone o) {
   buildCounterTimeInHeartRateZone--;
 }
 
-core.List<api.TimeInHeartRateZoneValue> buildUnnamed24() => [
+core.List<api.TimeInHeartRateZoneValue> buildUnnamed42() => [
   buildTimeInHeartRateZoneValue(),
   buildTimeInHeartRateZoneValue(),
 ];
 
-void checkUnnamed24(core.List<api.TimeInHeartRateZoneValue> o) {
+void checkUnnamed42(core.List<api.TimeInHeartRateZoneValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeInHeartRateZoneValue(o[0]);
   checkTimeInHeartRateZoneValue(o[1]);
@@ -2759,7 +3876,7 @@ api.TimeInHeartRateZoneRollupValue buildTimeInHeartRateZoneRollupValue() {
   final o = api.TimeInHeartRateZoneRollupValue();
   buildCounterTimeInHeartRateZoneRollupValue++;
   if (buildCounterTimeInHeartRateZoneRollupValue < 3) {
-    o.timeInHeartRateZones = buildUnnamed24();
+    o.timeInHeartRateZones = buildUnnamed42();
   }
   buildCounterTimeInHeartRateZoneRollupValue--;
   return o;
@@ -2768,7 +3885,7 @@ api.TimeInHeartRateZoneRollupValue buildTimeInHeartRateZoneRollupValue() {
 void checkTimeInHeartRateZoneRollupValue(api.TimeInHeartRateZoneRollupValue o) {
   buildCounterTimeInHeartRateZoneRollupValue++;
   if (buildCounterTimeInHeartRateZoneRollupValue < 3) {
-    checkUnnamed24(o.timeInHeartRateZones!);
+    checkUnnamed42(o.timeInHeartRateZones!);
   }
   buildCounterTimeInHeartRateZoneRollupValue--;
 }
@@ -2951,6 +4068,48 @@ void checkWeight(api.Weight o) {
   buildCounterWeight--;
 }
 
+core.int buildCounterWeightQuantity = 0;
+api.WeightQuantity buildWeightQuantity() {
+  final o = api.WeightQuantity();
+  buildCounterWeightQuantity++;
+  if (buildCounterWeightQuantity < 3) {
+    o.grams = 42.0;
+    o.userProvidedUnit = 'foo';
+  }
+  buildCounterWeightQuantity--;
+  return o;
+}
+
+void checkWeightQuantity(api.WeightQuantity o) {
+  buildCounterWeightQuantity++;
+  if (buildCounterWeightQuantity < 3) {
+    unittest.expect(o.grams!, unittest.equals(42.0));
+    unittest.expect(o.userProvidedUnit!, unittest.equals('foo'));
+  }
+  buildCounterWeightQuantity--;
+}
+
+core.int buildCounterWeightQuantityRollup = 0;
+api.WeightQuantityRollup buildWeightQuantityRollup() {
+  final o = api.WeightQuantityRollup();
+  buildCounterWeightQuantityRollup++;
+  if (buildCounterWeightQuantityRollup < 3) {
+    o.gramsSum = 42.0;
+    o.userProvidedUnitLast = 'foo';
+  }
+  buildCounterWeightQuantityRollup--;
+  return o;
+}
+
+void checkWeightQuantityRollup(api.WeightQuantityRollup o) {
+  buildCounterWeightQuantityRollup++;
+  if (buildCounterWeightQuantityRollup < 3) {
+    unittest.expect(o.gramsSum!, unittest.equals(42.0));
+    unittest.expect(o.userProvidedUnitLast!, unittest.equals('foo'));
+  }
+  buildCounterWeightQuantityRollup--;
+}
+
 core.int buildCounterWeightRollupValue = 0;
 api.WeightRollupValue buildWeightRollupValue() {
   final o = api.WeightRollupValue();
@@ -2971,6 +4130,28 @@ void checkWeightRollupValue(api.WeightRollupValue o) {
 }
 
 void main() {
+  unittest.group('obj-schema-ActiveEnergyBurned', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildActiveEnergyBurned();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ActiveEnergyBurned.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkActiveEnergyBurned(od);
+    });
+  });
+
+  unittest.group('obj-schema-ActiveEnergyBurnedRollupValue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildActiveEnergyBurnedRollupValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ActiveEnergyBurnedRollupValue.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkActiveEnergyBurnedRollupValue(od);
+    });
+  });
+
   unittest.group('obj-schema-ActiveMinutes', () {
     unittest.test('to-json--from-json', () async {
       final o = buildActiveMinutes();
@@ -3070,6 +4251,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AlertWindow', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAlertWindow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AlertWindow.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAlertWindow(od);
+    });
+  });
+
   unittest.group('obj-schema-Altitude', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAltitude();
@@ -3103,6 +4295,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-BasalEnergyBurned', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBasalEnergyBurned();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BasalEnergyBurned.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBasalEnergyBurned(od);
+    });
+  });
+
   unittest.group('obj-schema-BatchDeleteDataPointsRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBatchDeleteDataPointsRequest();
@@ -3111,6 +4314,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkBatchDeleteDataPointsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-BloodGlucose', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBloodGlucose();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BloodGlucose.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBloodGlucose(od);
+    });
+  });
+
+  unittest.group('obj-schema-BloodGlucoseRollupValue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBloodGlucoseRollupValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BloodGlucoseRollupValue.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBloodGlucoseRollupValue(od);
     });
   });
 
@@ -3180,6 +4405,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CoreBodyTemperature', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCoreBodyTemperature();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CoreBodyTemperature.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCoreBodyTemperature(od);
+    });
+  });
+
+  unittest.group('obj-schema-CoreBodyTemperatureRollupValue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCoreBodyTemperatureRollupValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CoreBodyTemperatureRollupValue.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCoreBodyTemperatureRollupValue(od);
+    });
+  });
+
   unittest.group('obj-schema-CreateSubscriberPayload', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCreateSubscriberPayload();
@@ -3188,6 +4435,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCreateSubscriberPayload(od);
+    });
+  });
+
+  unittest.group('obj-schema-CreateSubscriptionPayload', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCreateSubscriptionPayload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateSubscriptionPayload.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCreateSubscriptionPayload(od);
     });
   });
 
@@ -3378,6 +4636,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Electrocardiogram', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildElectrocardiogram();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Electrocardiogram.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkElectrocardiogram(od);
+    });
+  });
+
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Empty.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEmpty(od);
+    });
+  });
+
   unittest.group('obj-schema-EndpointAuthorization', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEndpointAuthorization();
@@ -3386,6 +4666,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkEndpointAuthorization(od);
+    });
+  });
+
+  unittest.group('obj-schema-EnergyQuantity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnergyQuantity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnergyQuantity.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEnergyQuantity(od);
+    });
+  });
+
+  unittest.group('obj-schema-EnergyQuantityRollup', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnergyQuantityRollup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnergyQuantityRollup.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEnergyQuantityRollup(od);
     });
   });
 
@@ -3452,6 +4754,50 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkFloorsRollupValue(od);
+    });
+  });
+
+  unittest.group('obj-schema-Food', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFood();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Food.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFood(od);
+    });
+  });
+
+  unittest.group('obj-schema-FoodMeasurementUnit', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFoodMeasurementUnit();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FoodMeasurementUnit.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFoodMeasurementUnit(od);
+    });
+  });
+
+  unittest.group('obj-schema-FoodServing', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFoodServing();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FoodServing.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFoodServing(od);
+    });
+  });
+
+  unittest.group('obj-schema-HeartBeat', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHeartBeat();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HeartBeat.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkHeartBeat(od);
     });
   });
 
@@ -3532,6 +4878,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-HttpBody', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHttpBody();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HttpBody.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkHttpBody(od);
+    });
+  });
+
   unittest.group('obj-schema-HydrationLog', () {
     unittest.test('to-json--from-json', () async {
       final o = buildHydrationLog();
@@ -3576,6 +4933,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-IrnProfile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIrnProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IrnProfile.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkIrnProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-IrregularRhythmNotification', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIrregularRhythmNotification();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IrregularRhythmNotification.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkIrregularRhythmNotification(od);
+    });
+  });
+
   unittest.group('obj-schema-ListDataPointsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListDataPointsResponse();
@@ -3587,6 +4966,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListPairedDevicesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListPairedDevicesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListPairedDevicesResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListPairedDevicesResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListSubscribersResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListSubscribersResponse();
@@ -3595,6 +4985,50 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkListSubscribersResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListSubscriptionsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListSubscriptionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSubscriptionsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListSubscriptionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ManifestParams', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildManifestParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ManifestParams.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkManifestParams(od);
+    });
+  });
+
+  unittest.group('obj-schema-MedicalDeviceInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMedicalDeviceInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MedicalDeviceInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMedicalDeviceInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-MenstrualPeriod', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMenstrualPeriod();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MenstrualPeriod.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMenstrualPeriod(od);
     });
   });
 
@@ -3617,6 +5051,61 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkMobilityMetrics(od);
+    });
+  });
+
+  unittest.group('obj-schema-Moods', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMoods();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Moods.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMoods(od);
+    });
+  });
+
+  unittest.group('obj-schema-NutrientQuantity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNutrientQuantity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NutrientQuantity.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkNutrientQuantity(od);
+    });
+  });
+
+  unittest.group('obj-schema-NutrientQuantityRollup', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNutrientQuantityRollup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NutrientQuantityRollup.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkNutrientQuantityRollup(od);
+    });
+  });
+
+  unittest.group('obj-schema-NutritionLog', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNutritionLog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NutritionLog.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkNutritionLog(od);
+    });
+  });
+
+  unittest.group('obj-schema-NutritionLogRollupValue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNutritionLogRollupValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NutritionLogRollupValue.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkNutritionLogRollupValue(od);
     });
   });
 
@@ -3664,6 +5153,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-OvulationTest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOvulationTest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OvulationTest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkOvulationTest(od);
+    });
+  });
+
   unittest.group('obj-schema-OxygenSaturation', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOxygenSaturation();
@@ -3672,6 +5172,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkOxygenSaturation(od);
+    });
+  });
+
+  unittest.group('obj-schema-PairedDevice', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPairedDevice();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PairedDevice.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPairedDevice(od);
     });
   });
 
@@ -3818,6 +5329,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Serving', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServing();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Serving.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkServing(od);
+    });
+  });
+
   unittest.group('obj-schema-SessionTimeInterval', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSessionTimeInterval();
@@ -3961,6 +5483,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Subscription', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSubscription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Subscription.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSubscription(od);
+    });
+  });
+
   unittest.group('obj-schema-SwimLengthsData', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSwimLengthsData();
@@ -3980,6 +5513,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSwimLengthsDataRollupValue(od);
+    });
+  });
+
+  unittest.group('obj-schema-Symptoms', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSymptoms();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Symptoms.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSymptoms(od);
     });
   });
 
@@ -4090,6 +5634,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkWeight(od);
+    });
+  });
+
+  unittest.group('obj-schema-WeightQuantity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWeightQuantity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WeightQuantity.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWeightQuantity(od);
+    });
+  });
+
+  unittest.group('obj-schema-WeightQuantityRollup', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWeightQuantityRollup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WeightQuantityRollup.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWeightQuantityRollup(od);
     });
   });
 
@@ -4374,6 +5940,414 @@ void main() {
     });
   });
 
+  unittest.group('resource-ProjectsSubscribersSubscriptionsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleHealthApi(mock).projects.subscribers.subscriptions;
+      final arg_request = buildCreateSubscriptionPayload();
+      final arg_parent = 'foo';
+      final arg_subscriptionId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.CreateSubscriptionPayload.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkCreateSubscriptionPayload(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v4/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['subscriptionId']!.first,
+            unittest.equals(arg_subscriptionId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSubscription());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        subscriptionId: arg_subscriptionId,
+        $fields: arg_$fields,
+      );
+      checkSubscription(response as api.Subscription);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleHealthApi(mock).projects.subscribers.subscriptions;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v4/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleHealthApi(mock).projects.subscribers.subscriptions;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v4/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListSubscriptionsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListSubscriptionsResponse(response as api.ListSubscriptionsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleHealthApi(mock).projects.subscribers.subscriptions;
+      final arg_request = buildSubscription();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Subscription.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSubscription(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v4/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSubscription());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkSubscription(response as api.Subscription);
+    });
+  });
+
+  unittest.group('resource-ShlMResource', () {
+    unittest.test('method--getShlManifest', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleHealthApi(mock).shl.m;
+      final arg_request = buildManifestParams();
+      final arg_externalShlId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ManifestParams.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkManifestParams(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('v4/shl/m/'),
+          );
+          pathOffset += 9;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_externalShlId'));
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildHttpBody());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getShlManifest(
+        arg_request,
+        arg_externalShlId,
+        $fields: arg_$fields,
+      );
+      checkHttpBody(response as api.HttpBody);
+    });
+  });
+
+  unittest.group('resource-ShlRResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleHealthApi(mock).shl.r;
+      final arg_externalShlId = 'foo';
+      final arg_resourceToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('v4/shl/r/'),
+          );
+          pathOffset += 9;
+          index = path.indexOf('/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_externalShlId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_resourceToken'));
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildHttpBody());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(
+        arg_externalShlId,
+        arg_resourceToken,
+        $fields: arg_$fields,
+      );
+      checkHttpBody(response as api.HttpBody);
+    });
+  });
+
   unittest.group('resource-UsersResource', () {
     unittest.test('method--getIdentity', () async {
       final mock = HttpServerMock();
@@ -4426,6 +6400,59 @@ void main() {
       );
       final response = await res.getIdentity(arg_name, $fields: arg_$fields);
       checkIdentity(response as api.Identity);
+    });
+
+    unittest.test('method--getIrnProfile', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleHealthApi(mock).users;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v4/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildIrnProfile());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getIrnProfile(arg_name, $fields: arg_$fields);
+      checkIrnProfile(response as api.IrnProfile);
     });
 
     unittest.test('method--getProfile', () async {
@@ -5265,6 +7292,129 @@ void main() {
         $fields: arg_$fields,
       );
       checkRollUpDataPointsResponse(response as api.RollUpDataPointsResponse);
+    });
+  });
+
+  unittest.group('resource-UsersPairedDevicesResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleHealthApi(mock).users.pairedDevices;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v4/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildPairedDevice());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkPairedDevice(response as api.PairedDevice);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleHealthApi(mock).users.pairedDevices;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v4/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListPairedDevicesResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListPairedDevicesResponse(response as api.ListPairedDevicesResponse);
     });
   });
 }

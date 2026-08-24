@@ -18,9 +18,9 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Vertex AI Search for commerce API - v2
+/// AI Commerce Search API - v2
 ///
-/// Vertex AI Search for commerce API is made up of Retail Search, Browse and
+/// The AI Commerce Search API is made up of Retail Search, Browse and
 /// Recommendations. These discovery AI solutions help you implement
 /// personalized search, browse and recommendations, based on machine learning
 /// models, across your websites and mobile applications.
@@ -62,7 +62,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Vertex AI Search for commerce API is made up of Retail Search, Browse and
+/// The AI Commerce Search API is made up of Retail Search, Browse and
 /// Recommendations.
 ///
 /// These discovery AI solutions help you implement personalized search, browse
@@ -576,9 +576,9 @@ class ProjectsLocationsCatalogsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
   ///
-  /// [updateMask] - Indicates which fields in the provided Catalog to update.
-  /// If an unsupported or unknown field is provided, an INVALID_ARGUMENT error
-  /// is returned.
+  /// [updateMask] - Optional. Indicates which fields in the provided Catalog to
+  /// update. If an unsupported or unknown field is provided, an
+  /// INVALID_ARGUMENT error is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -698,8 +698,8 @@ class ProjectsLocationsCatalogsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/attributesConfig$`.
   ///
-  /// [updateMask] - Indicates which fields in the provided AttributesConfig to
-  /// update. The following is the only supported field: *
+  /// [updateMask] - Optional. Indicates which fields in the provided
+  /// AttributesConfig to update. The following is the only supported field: *
   /// AttributesConfig.catalog_attributes If not set, all supported fields are
   /// updated.
   ///
@@ -749,8 +749,8 @@ class ProjectsLocationsCatalogsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/completionConfig$`.
   ///
-  /// [updateMask] - Indicates which fields in the provided CompletionConfig to
-  /// update. The following are the only supported fields: *
+  /// [updateMask] - Optional. Indicates which fields in the provided
+  /// CompletionConfig to update. The following are the only supported fields: *
   /// CompletionConfig.matching_order * CompletionConfig.max_suggestions *
   /// CompletionConfig.min_prefix_length * CompletionConfig.auto_learning If not
   /// set, all supported fields are updated.
@@ -3457,8 +3457,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
   ///
   /// For larger user event payload over 16 KB, the POST method should be used
   /// instead, otherwise a 400 Bad Request error is returned. This method is
-  /// used only by the Retail API JavaScript pixel and Google Tag Manager. Users
-  /// should not call this method directly.
+  /// used only by the AI Commerce Search API JavaScript pixel and Google Tag
+  /// Manager. Users should not call this method directly.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8847,8 +8847,9 @@ class GoogleCloudRetailV2Product {
   /// represents size value. In "GIRLS:27", size system is empty; "GIRLS"
   /// represents size type; "27" represents size value. In "32 inches", both
   /// size system and size type are empty, while size value is "32 inches". A
-  /// maximum of 20 values are allowed per Product. Each value must be a UTF-8
-  /// encoded string with a length limit of 128 characters. Otherwise, an
+  /// maximum of 20 values are allowed per Product by default. This limit can be
+  /// increased using dynamic override configurations. Each value must be a
+  /// UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
   /// INVALID_ARGUMENT error is returned. Corresponding properties: Google
   /// Merchant Center property
   /// [size](https://support.google.com/merchants/answer/6324492),
@@ -9796,6 +9797,8 @@ class GoogleCloudRetailV2ReplaceCatalogAttributeRequest {
   ///
   /// The following are NOT supported: * CatalogAttribute.key If not set, all
   /// supported fields are updated.
+  ///
+  /// Optional.
   core.String? updateMask;
 
   GoogleCloudRetailV2ReplaceCatalogAttributeRequest({
@@ -12763,26 +12766,26 @@ class GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest {
   }
 }
 
-/// UserEvent captures all metadata information Retail API needs to know about
-/// how end users interact with customers' website.
+/// UserEvent captures all metadata information AI Commerce Search API needs to
+/// know about how end users interact with customers' website.
 class GoogleCloudRetailV2UserEvent {
   /// Extra user event features to include in the recommendation model.
   ///
   /// If you provide custom attributes for ingested user events, also include
   /// them in the user events that you associate with prediction requests.
   /// Custom attribute formatting must be consistent between imported events and
-  /// events provided with prediction requests. This lets the Retail API use
-  /// those custom attributes when training models and serving predictions,
-  /// which helps improve recommendation quality. This field needs to pass all
-  /// below criteria, otherwise an INVALID_ARGUMENT error is returned: * The key
-  /// must be a UTF-8 encoded string with a length limit of 5,000 characters. *
-  /// For text attributes, at most 400 values are allowed. Empty values are not
-  /// allowed. Each value must be a UTF-8 encoded string with a length limit of
-  /// 256 characters. * For number attributes, at most 400 values are allowed.
-  /// For product recommendations, an example of extra user information is
-  /// traffic_channel, which is how a user arrives at the site. Users can arrive
-  /// at the site by coming to the site directly, coming through Google search,
-  /// or in other ways.
+  /// events provided with prediction requests. This lets the AI Commerce Search
+  /// API use those custom attributes when training models and serving
+  /// predictions, which helps improve recommendation quality. This field needs
+  /// to pass all below criteria, otherwise an INVALID_ARGUMENT error is
+  /// returned: * The key must be a UTF-8 encoded string with a length limit of
+  /// 5,000 characters. * For text attributes, at most 400 values are allowed.
+  /// Empty values are not allowed. Each value must be a UTF-8 encoded string
+  /// with a length limit of 256 characters. * For number attributes, at most
+  /// 400 values are allowed. For product recommendations, an example of extra
+  /// user information is traffic_channel, which is how a user arrives at the
+  /// site. Users can arrive at the site by coming to the site directly, coming
+  /// through Google search, or in other ways.
   core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
   /// Highly recommended for user events that are the result of
@@ -12844,8 +12847,8 @@ class GoogleCloudRetailV2UserEvent {
   /// event belongs to.
   ///
   /// This is used to distinguish between user events associated with different
-  /// experiment setups (e.g. using Retail API, using different recommendation
-  /// models).
+  /// experiment setups (such as by using AI Commerce Search API, or using
+  /// different recommendation models).
   core.List<core.String>? experimentIds;
 
   /// The filter syntax consists of an expression language for constructing a

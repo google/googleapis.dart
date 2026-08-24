@@ -28,6 +28,16 @@
 ///
 /// Create an instance of [CloudSecurityTokenApi] to access these resources:
 ///
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsWorkloadIdentityPoolsResource]
+///       - [OrganizationsLocationsWorkloadIdentityPoolsOpenidResource]
+///       - [OrganizationsLocationsWorkloadIdentityPoolsWellKnownResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsWorkloadIdentityPoolsResource]
+///       - [ProjectsLocationsWorkloadIdentityPoolsOpenidResource]
+///       - [ProjectsLocationsWorkloadIdentityPoolsWellKnownResource]
 /// - [V1Resource]
 library;
 
@@ -48,6 +58,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class CloudSecurityTokenApi {
   final commons.ApiRequester _requester;
 
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
   CloudSecurityTokenApi(
@@ -60,6 +72,323 @@ class CloudSecurityTokenApi {
          servicePath,
          requestHeaders,
        );
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsWorkloadIdentityPoolsResource
+  get workloadIdentityPools =>
+      OrganizationsLocationsWorkloadIdentityPoolsResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class OrganizationsLocationsWorkloadIdentityPoolsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsWorkloadIdentityPoolsOpenidResource get openid =>
+      OrganizationsLocationsWorkloadIdentityPoolsOpenidResource(_requester);
+  OrganizationsLocationsWorkloadIdentityPoolsWellKnownResource get wellKnown =>
+      OrganizationsLocationsWorkloadIdentityPoolsWellKnownResource(_requester);
+
+  OrganizationsLocationsWorkloadIdentityPoolsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+}
+
+class OrganizationsLocationsWorkloadIdentityPoolsOpenidResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsWorkloadIdentityPoolsOpenidResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Fetches the signing keys for an agentic or managed workload identity pool
+  /// and returns them in JWKs format, defined in
+  /// [RFC 7517](https://tools.ietf.org/html/rfc7517).
+  ///
+  /// For now, only agentic system pools are supported. **Preview** This feature
+  /// is subject to the "Pre-GA Offerings Terms" in the General Service Terms
+  /// section of the
+  /// [Service Specific Terms](https://cloud.google.com/terms/service-terms#1).
+  /// Pre-GA features are available "as is" and might have limited support. For
+  /// more information, see the
+  /// [launch stage descriptions](https://cloud.google.com/products#product-launch-stages).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pool whose JWKS needs to be retrieved.
+  /// Format:
+  /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+  /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+  /// Example(s):
+  /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+  /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIdentityStsV1Jwks].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIdentityStsV1Jwks> getJwks(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/openid/jwks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIdentityStsV1Jwks.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsLocationsWorkloadIdentityPoolsWellKnownResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsWorkloadIdentityPoolsWellKnownResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets the OIDC provider configuration for an agentic or managed workload
+  /// identity pool following
+  /// [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse).
+  ///
+  /// For now, only agentic system pools are supported. **Preview** This feature
+  /// is subject to the "Pre-GA Offerings Terms" in the General Service Terms
+  /// section of the
+  /// [Service Specific Terms](https://cloud.google.com/terms/service-terms#1).
+  /// Pre-GA features are available "as is" and might have limited support. For
+  /// more information, see the
+  /// [launch stage descriptions](https://cloud.google.com/products#product-launch-stages).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pool whose OpenID provider
+  /// configuration to retrieve. Format:
+  /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+  /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+  /// Example:
+  /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+  /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIdentityStsV1OpenIdProviderConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIdentityStsV1OpenIdProviderConfig> getOpenidConfiguration(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$name') +
+        '/.well-known/openid-configuration';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIdentityStsV1OpenIdProviderConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsResource get workloadIdentityPools =>
+      ProjectsLocationsWorkloadIdentityPoolsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsOpenidResource get openid =>
+      ProjectsLocationsWorkloadIdentityPoolsOpenidResource(_requester);
+  ProjectsLocationsWorkloadIdentityPoolsWellKnownResource get wellKnown =>
+      ProjectsLocationsWorkloadIdentityPoolsWellKnownResource(_requester);
+
+  ProjectsLocationsWorkloadIdentityPoolsResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsOpenidResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsOpenidResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Fetches the signing keys for an agentic or managed workload identity pool
+  /// and returns them in JWKs format, defined in
+  /// [RFC 7517](https://tools.ietf.org/html/rfc7517).
+  ///
+  /// For now, only agentic system pools are supported. **Preview** This feature
+  /// is subject to the "Pre-GA Offerings Terms" in the General Service Terms
+  /// section of the
+  /// [Service Specific Terms](https://cloud.google.com/terms/service-terms#1).
+  /// Pre-GA features are available "as is" and might have limited support. For
+  /// more information, see the
+  /// [launch stage descriptions](https://cloud.google.com/products#product-launch-stages).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pool whose JWKS needs to be retrieved.
+  /// Format:
+  /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+  /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+  /// Example(s):
+  /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+  /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIdentityStsV1Jwks].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIdentityStsV1Jwks> getJwks(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/openid/jwks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIdentityStsV1Jwks.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsWellKnownResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsWellKnownResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets the OIDC provider configuration for an agentic or managed workload
+  /// identity pool following
+  /// [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse).
+  ///
+  /// For now, only agentic system pools are supported. **Preview** This feature
+  /// is subject to the "Pre-GA Offerings Terms" in the General Service Terms
+  /// section of the
+  /// [Service Specific Terms](https://cloud.google.com/terms/service-terms#1).
+  /// Pre-GA features are available "as is" and might have limited support. For
+  /// more information, see the
+  /// [launch stage descriptions](https://cloud.google.com/products#product-launch-stages).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the pool whose OpenID provider
+  /// configuration to retrieve. Format:
+  /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+  /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
+  /// Example:
+  /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
+  /// 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIdentityStsV1OpenIdProviderConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIdentityStsV1OpenIdProviderConfig> getOpenidConfiguration(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$name') +
+        '/.well-known/openid-configuration';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIdentityStsV1OpenIdProviderConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class V1Resource {
@@ -383,6 +712,187 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
       'expires_in': ?expiresIn,
       'issued_token_type': ?issuedTokenType,
       'token_type': ?tokenType,
+    };
+  }
+}
+
+/// A JSON web key set (JWK) See also
+/// https://datatracker.ietf.org/doc/html/rfc7517 and
+/// https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-representation-in-the-spiffe-bundle
+class GoogleIdentityStsV1Jwk {
+  /// Algorithm intended for use with the key.
+  ///
+  /// Currently "RS256".
+  core.String? alg;
+
+  /// Exponent value for kty="RSA".
+  core.String? e;
+
+  /// Key ID.
+  core.String? kid;
+
+  /// Key type.
+  ///
+  /// Currently "RSA".
+  core.String? kty;
+
+  /// Modulus value for kty="RSA".
+  core.String? n;
+
+  /// Public key use.
+  ///
+  /// Currently "sig".
+  core.String? use;
+
+  GoogleIdentityStsV1Jwk({
+    this.alg,
+    this.e,
+    this.kid,
+    this.kty,
+    this.n,
+    this.use,
+  });
+
+  GoogleIdentityStsV1Jwk.fromJson(core.Map json_)
+    : this(
+        alg: json_['alg'] as core.String?,
+        e: json_['e'] as core.String?,
+        kid: json_['kid'] as core.String?,
+        kty: json_['kty'] as core.String?,
+        n: json_['n'] as core.String?,
+        use: json_['use'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alg = this.alg;
+    final e = this.e;
+    final kid = this.kid;
+    final kty = this.kty;
+    final n = this.n;
+    final use = this.use;
+    return {
+      'alg': ?alg,
+      'e': ?e,
+      'kid': ?kid,
+      'kty': ?kty,
+      'n': ?n,
+      'use': ?use,
+    };
+  }
+}
+
+/// Response message for GetJwks.
+class GoogleIdentityStsV1Jwks {
+  /// The JWKS for this OP.
+  core.List<GoogleIdentityStsV1Jwk>? keys;
+
+  GoogleIdentityStsV1Jwks({this.keys});
+
+  GoogleIdentityStsV1Jwks.fromJson(core.Map json_)
+    : this(
+        keys: (json_['keys'] as core.List?)
+            ?.map(
+              (value) => GoogleIdentityStsV1Jwk.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final keys = this.keys;
+    return {'keys': ?keys};
+  }
+}
+
+/// Response message for GetOpenIdProviderConfig.
+///
+/// Message fields are defined in
+/// https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse
+class GoogleIdentityStsV1OpenIdProviderConfig {
+  /// URL pointing to an authorization endpoint under this issuer.
+  ///
+  /// Note: Currently this endpoint returns a 404.
+  core.String? authorizationEndpoint;
+
+  /// JSON array containing a list of the JWS signing algorithms (alg values)
+  /// supported by the OP for the ID token to encode the claims in a JWT
+  /// \[JWT\].
+  ///
+  /// Note: Currently always "\["RS256"\]".
+  core.List<core.String>? idTokenSigningAlgValuesSupported;
+
+  /// URL using the https scheme with no query or fragment components that the
+  /// OP asserts as its issuer identifier.
+  core.String? issuer;
+
+  /// URL of the OP's JWK Set \[JWK\] document, which MUST use the https scheme.
+  core.String? jwksUri;
+
+  /// JSON array containing a list of the OAuth 2.0 response_type values that
+  /// this OP supports.
+  ///
+  /// Note: Currently always "\["id_token"\]".
+  core.List<core.String>? responseTypesSupported;
+
+  /// JSON array containing a list of the subject identifier types that this OP
+  /// supports.
+  ///
+  /// Note: Currently always "\["public"\]".
+  core.List<core.String>? subjectTypesSupported;
+
+  /// URL pointing to a token endpoint under this issuer.
+  ///
+  /// Note: Currently this endpoint returns a 404.
+  core.String? tokenEndpoint;
+
+  GoogleIdentityStsV1OpenIdProviderConfig({
+    this.authorizationEndpoint,
+    this.idTokenSigningAlgValuesSupported,
+    this.issuer,
+    this.jwksUri,
+    this.responseTypesSupported,
+    this.subjectTypesSupported,
+    this.tokenEndpoint,
+  });
+
+  GoogleIdentityStsV1OpenIdProviderConfig.fromJson(core.Map json_)
+    : this(
+        authorizationEndpoint: json_['authorization_endpoint'] as core.String?,
+        idTokenSigningAlgValuesSupported:
+            (json_['id_token_signing_alg_values_supported'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        issuer: json_['issuer'] as core.String?,
+        jwksUri: json_['jwks_uri'] as core.String?,
+        responseTypesSupported:
+            (json_['response_types_supported'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        subjectTypesSupported: (json_['subject_types_supported'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        tokenEndpoint: json_['token_endpoint'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationEndpoint = this.authorizationEndpoint;
+    final idTokenSigningAlgValuesSupported =
+        this.idTokenSigningAlgValuesSupported;
+    final issuer = this.issuer;
+    final jwksUri = this.jwksUri;
+    final responseTypesSupported = this.responseTypesSupported;
+    final subjectTypesSupported = this.subjectTypesSupported;
+    final tokenEndpoint = this.tokenEndpoint;
+    return {
+      'authorization_endpoint': ?authorizationEndpoint,
+      'id_token_signing_alg_values_supported':
+          ?idTokenSigningAlgValuesSupported,
+      'issuer': ?issuer,
+      'jwks_uri': ?jwksUri,
+      'response_types_supported': ?responseTypesSupported,
+      'subject_types_supported': ?subjectTypesSupported,
+      'token_endpoint': ?tokenEndpoint,
     };
   }
 }

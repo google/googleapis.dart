@@ -781,6 +781,7 @@ api.NewLustreConfig buildNewLustreConfig() {
     o.description = 'foo';
     o.filesystem = 'foo';
     o.lustre = 'foo';
+    o.perUnitStorageThroughput = 'foo';
   }
   buildCounterNewLustreConfig--;
   return o;
@@ -793,6 +794,7 @@ void checkNewLustreConfig(api.NewLustreConfig o) {
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.filesystem!, unittest.equals('foo'));
     unittest.expect(o.lustre!, unittest.equals('foo'));
+    unittest.expect(o.perUnitStorageThroughput!, unittest.equals('foo'));
   }
   buildCounterNewLustreConfig--;
 }

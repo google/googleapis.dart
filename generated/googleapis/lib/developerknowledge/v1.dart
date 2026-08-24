@@ -27,9 +27,11 @@
 /// Create an instance of [DeveloperKnowledgeApi] to access these resources:
 ///
 /// - [DocumentsResource]
+/// - [V1Resource]
 library;
 
 import 'dart:async' as async;
+import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
@@ -50,6 +52,7 @@ class DeveloperKnowledgeApi {
   final commons.ApiRequester _requester;
 
   DocumentsResource get documents => DocumentsResource(_requester);
+  V1Resource get v1 => V1Resource(_requester);
 
   DeveloperKnowledgeApi(
     http.Client client, {
@@ -76,7 +79,9 @@ class DocumentsResource {
   /// maximum of 20 documents can be retrieved in a batch. The documents are
   /// returned in the same order as the `names` in the request. Format:
   /// `documents/{uri_without_scheme}` Example:
-  /// `documents/docs.cloud.google.com/storage/docs/creating-buckets`
+  /// `documents/docs.cloud.google.com/storage/docs/creating-buckets` Each name
+  /// must not exceed 500 characters; values longer than 500 characters will
+  /// result in an `INVALID_ARGUMENT` error.
   ///
   /// [view] - Optional. Specifies the DocumentView of the document. If
   /// unspecified, DeveloperKnowledge.BatchGetDocuments defaults to
@@ -86,7 +91,7 @@ class DocumentsResource {
   /// method for its default value if DocumentView is not specified.
   /// - "DOCUMENT_VIEW_BASIC" : Includes only the basic metadata fields: -
   /// `name` - `uri` - `data_source` - `title` - `description` - `update_time` -
-  /// `view` This is the default of view for
+  /// `view` - `content_length_bytes` This is the default of view for
   /// DeveloperKnowledge.SearchDocumentChunks.
   /// - "DOCUMENT_VIEW_FULL" : Includes all Document fields.
   /// - "DOCUMENT_VIEW_CONTENT" : Includes the `DOCUMENT_VIEW_BASIC` fields and
@@ -132,7 +137,9 @@ class DocumentsResource {
   ///
   /// [name] - Required. Specifies the name of the document to retrieve. Format:
   /// `documents/{uri_without_scheme}` Example:
-  /// `documents/docs.cloud.google.com/storage/docs/creating-buckets`
+  /// `documents/docs.cloud.google.com/storage/docs/creating-buckets` The name
+  /// must not exceed 500 characters; values longer than 500 characters will
+  /// result in an `INVALID_ARGUMENT` error.
   /// Value must have pattern `^documents/.*$`.
   ///
   /// [view] - Optional. Specifies the DocumentView of the document. If
@@ -143,7 +150,7 @@ class DocumentsResource {
   /// method for its default value if DocumentView is not specified.
   /// - "DOCUMENT_VIEW_BASIC" : Includes only the basic metadata fields: -
   /// `name` - `uri` - `data_source` - `title` - `description` - `update_time` -
-  /// `view` This is the default of view for
+  /// `view` - `content_length_bytes` This is the default of view for
   /// DeveloperKnowledge.SearchDocumentChunks.
   /// - "DOCUMENT_VIEW_FULL" : Includes all Document fields.
   /// - "DOCUMENT_VIEW_CONTENT" : Includes the `DOCUMENT_VIEW_BASIC` fields and
@@ -194,21 +201,27 @@ class DocumentsResource {
   /// expression supports a subset of the syntax described at
   /// https://google.aip.dev/160. While `SearchDocumentChunks` returns
   /// DocumentChunks, the filter is applied to `DocumentChunk.document` fields.
-  /// Supported fields for filtering: * `data_source` (STRING): The source of
-  /// the document, e.g. `docs.cloud.google.com`. See
+  /// Supported fields for filtering: * `content_length_bytes` (INTEGER): The
+  /// length of the `Document.content` field in bytes. * `data_source` (STRING):
+  /// The source of the document, e.g. `docs.cloud.google.com`. See
   /// https://developers.google.com/knowledge/reference/corpus-reference for the
   /// complete list of data sources in the corpus. * `update_time` (TIMESTAMP):
   /// The timestamp of when the document was last meaningfully updated. A
   /// meaningful update is one that changes document's markdown content or
   /// metadata. * `uri` (STRING): The document URI, e.g.
-  /// `https://docs.cloud.google.com/bigquery/docs/tables`. STRING fields
-  /// support `=` (equals) and `!=` (not equals) operators for **exact match**
-  /// on the whole string. Partial match, prefix match, and regexp match are not
-  /// supported. TIMESTAMP fields support `=`, `<`, `<=`, `>`, and `>=`
-  /// operators. Timestamps must be in RFC-3339 format, e.g.,
-  /// `"2025-01-01T00:00:00Z"`. You can combine expressions using `AND`, `OR`,
-  /// and `NOT` (or `-`) logical operators. `OR` has higher precedence than
-  /// `AND`. Use parentheses for explicit precedence grouping. Examples: *
+  /// `https://docs.cloud.google.com/bigquery/docs/tables`. INTEGER fields
+  /// support `=`, `<`, `<=`, `>`, and `>=` operators. STRING fields support `=`
+  /// (equals) and `!=` (not equals) operators for **exact match** on the whole
+  /// string. Partial match, prefix match, and regexp match are not supported.
+  /// TIMESTAMP fields support `=`, `<`, `<=`, `>`, and `>=` operators.
+  /// Timestamps must be in RFC-3339 format, e.g., `"2025-01-01T00:00:00Z"`.
+  /// Note: Field names must be in `snake_case` (e.g., `data_source`). Values on
+  /// the right-hand side of filtering expressions must be string literals
+  /// enclosed in double quotes (e.g., `"docs.cloud.google.com"`). You can
+  /// combine expressions using `AND`, `OR`, and `NOT` (or `-`) logical
+  /// operators. `OR` has higher precedence than `AND`. Use parentheses for
+  /// explicit precedence grouping. Examples: * Filter by
+  /// `Document.content_length_bytes`: `content_length_bytes < 50000` *
   /// `data_source = "docs.cloud.google.com" OR data_source =
   /// "firebase.google.com"` * `data_source != "firebase.google.com"` *
   /// `update_time < "2024-01-01T00:00:00Z"` * `update_time >=
@@ -220,14 +233,16 @@ class DocumentsResource {
   ///
   /// [pageSize] - Optional. Specifies the maximum number of results to return.
   /// The service may return fewer than this value. If unspecified, at most 5
-  /// results will be returned. The maximum value is 20; values above 20 will
-  /// result in an INVALID_ARGUMENT error.
+  /// results will be returned. The maximum value is 100; values above 100 will
+  /// be coerced to 100.
   ///
   /// [pageToken] - Optional. Contains a page token, received from a previous
   /// `SearchDocumentChunks` call. Provide this to retrieve the subsequent page.
   ///
   /// [query] - Required. Provides the raw query string provided by the user,
-  /// such as "How to create a Cloud Storage bucket?".
+  /// such as "How to create a Cloud Storage bucket?". The query must not exceed
+  /// 500 characters; values longer than 500 characters will result in an
+  /// `INVALID_ARGUMENT` error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -267,6 +282,215 @@ class DocumentsResource {
   }
 }
 
+class V1Resource {
+  final commons.ApiRequester _requester;
+
+  V1Resource(commons.ApiRequester client) : _requester = client;
+
+  /// Answers a query using grounded generation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnswerQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnswerQueryResponse> answerQuery(
+    AnswerQueryRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1:answerQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AnswerQueryResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+/// An answer to a query.
+class Answer {
+  /// Contains the text of the answer.
+  core.String? answerText;
+
+  /// Contains citations for the answer.
+  ///
+  /// Output only.
+  core.List<AnswerCitation>? citations;
+
+  /// Contains references for the answer.
+  ///
+  /// Output only.
+  core.List<AnswerReference>? references;
+
+  Answer({this.answerText, this.citations, this.references});
+
+  Answer.fromJson(core.Map json_)
+    : this(
+        answerText: json_['answerText'] as core.String?,
+        citations: (json_['citations'] as core.List?)
+            ?.map(
+              (value) => AnswerCitation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        references: (json_['references'] as core.List?)
+            ?.map(
+              (value) => AnswerReference.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerText = this.answerText;
+    final citations = this.citations;
+    final references = this.references;
+    return {
+      'answerText': ?answerText,
+      'citations': ?citations,
+      'references': ?references,
+    };
+  }
+}
+
+/// Citation info for a segment.
+class AnswerCitation {
+  /// Indicates the end of the segment, measured in bytes (UTF-8 unicode),
+  /// exclusive.
+  ///
+  /// If there are multi-byte characters, such as non-ASCII characters, the
+  /// index measurement is longer than the string length.
+  ///
+  /// Output only.
+  core.int? endIndex;
+
+  /// Contains citation sources for the attributed segment.
+  ///
+  /// Output only.
+  core.List<CitationSource>? sources;
+
+  /// Indicates the start of the segment, measured in bytes (UTF-8 unicode),
+  /// inclusive.
+  ///
+  /// If there are multi-byte characters, such as non-ASCII characters, the
+  /// index measurement is longer than the string length.
+  ///
+  /// Output only.
+  core.int? startIndex;
+
+  AnswerCitation({this.endIndex, this.sources, this.startIndex});
+
+  AnswerCitation.fromJson(core.Map json_)
+    : this(
+        endIndex: json_['endIndex'] as core.int?,
+        sources: (json_['sources'] as core.List?)
+            ?.map(
+              (value) => CitationSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        startIndex: json_['startIndex'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endIndex = this.endIndex;
+    final sources = this.sources;
+    final startIndex = this.startIndex;
+    return {
+      'endIndex': ?endIndex,
+      'sources': ?sources,
+      'startIndex': ?startIndex,
+    };
+  }
+}
+
+/// Request message for DeveloperKnowledge.AnswerQuery.
+class AnswerQueryRequest {
+  /// The query to answer.
+  ///
+  /// Required.
+  core.String? query;
+
+  AnswerQueryRequest({this.query});
+
+  AnswerQueryRequest.fromJson(core.Map json_)
+    : this(query: json_['query'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final query = this.query;
+    return {'query': ?query};
+  }
+}
+
+/// Response message for DeveloperKnowledge.AnswerQuery.
+class AnswerQueryResponse {
+  /// The answer to the query.
+  Answer? answer;
+
+  AnswerQueryResponse({this.answer});
+
+  AnswerQueryResponse.fromJson(core.Map json_)
+    : this(
+        answer: json_.containsKey('answer')
+            ? Answer.fromJson(
+                json_['answer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final answer = this.answer;
+    return {'answer': ?answer};
+  }
+}
+
+/// Represents a reference to a source.
+class AnswerReference {
+  /// The reference document.
+  ///
+  /// Output only.
+  DocumentReference? documentReference;
+
+  AnswerReference({this.documentReference});
+
+  AnswerReference.fromJson(core.Map json_)
+    : this(
+        documentReference: json_.containsKey('documentReference')
+            ? DocumentReference.fromJson(
+                json_['documentReference']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentReference = this.documentReference;
+    return {'documentReference': ?documentReference};
+  }
+}
+
 /// Response message for DeveloperKnowledge.BatchGetDocuments.
 class BatchGetDocumentsResponse {
   /// Contains the documents requested.
@@ -291,13 +515,38 @@ class BatchGetDocumentsResponse {
   }
 }
 
-/// A Document represents a piece of content from the Developer Knowledge
-/// corpus.
+/// Citation source.
+class CitationSource {
+  /// Contains the index of the Answer.AnswerReference in the `references`
+  /// repeated field.
+  ///
+  /// Output only.
+  core.int? referenceIndex;
+
+  CitationSource({this.referenceIndex});
+
+  CitationSource.fromJson(core.Map json_)
+    : this(referenceIndex: json_['referenceIndex'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final referenceIndex = this.referenceIndex;
+    return {'referenceIndex': ?referenceIndex};
+  }
+}
+
+/// A Document represents a page of documentation in the Developer Knowledge
+/// corpus, like the page at
+/// https://docs.cloud.google.com/storage/docs/creating-buckets.
 class Document {
   /// Contains the full content of the document in Markdown format.
   ///
   /// Output only.
   core.String? content;
+
+  /// The length of the `content` field in bytes.
+  ///
+  /// Output only.
+  core.int? contentLengthBytes;
 
   /// Specifies the data source of the document.
   ///
@@ -343,7 +592,7 @@ class Document {
   /// method for its default value if DocumentView is not specified.
   /// - "DOCUMENT_VIEW_BASIC" : Includes only the basic metadata fields: -
   /// `name` - `uri` - `data_source` - `title` - `description` - `update_time` -
-  /// `view` This is the default of view for
+  /// `view` - `content_length_bytes` This is the default of view for
   /// DeveloperKnowledge.SearchDocumentChunks.
   /// - "DOCUMENT_VIEW_FULL" : Includes all Document fields.
   /// - "DOCUMENT_VIEW_CONTENT" : Includes the `DOCUMENT_VIEW_BASIC` fields and
@@ -353,6 +602,7 @@ class Document {
 
   Document({
     this.content,
+    this.contentLengthBytes,
     this.dataSource,
     this.description,
     this.name,
@@ -365,6 +615,7 @@ class Document {
   Document.fromJson(core.Map json_)
     : this(
         content: json_['content'] as core.String?,
+        contentLengthBytes: json_['contentLengthBytes'] as core.int?,
         dataSource: json_['dataSource'] as core.String?,
         description: json_['description'] as core.String?,
         name: json_['name'] as core.String?,
@@ -376,6 +627,7 @@ class Document {
 
   core.Map<core.String, core.dynamic> toJson() {
     final content = this.content;
+    final contentLengthBytes = this.contentLengthBytes;
     final dataSource = this.dataSource;
     final description = this.description;
     final name = this.name;
@@ -385,6 +637,7 @@ class Document {
     final view = this.view;
     return {
       'content': ?content,
+      'contentLengthBytes': ?contentLengthBytes,
       'dataSource': ?dataSource,
       'description': ?description,
       'name': ?name,
@@ -435,7 +688,21 @@ class DocumentChunk {
   /// Output only.
   core.String? parent;
 
-  DocumentChunk({this.content, this.document, this.id, this.parent});
+  /// Represents the relevance score of the chunk to the search query.
+  ///
+  /// Higher score indicates higher chunk relevance. The score is in range
+  /// \[0.0, 1.0\].
+  ///
+  /// Output only.
+  core.double? relevanceScore;
+
+  DocumentChunk({
+    this.content,
+    this.document,
+    this.id,
+    this.parent,
+    this.relevanceScore,
+  });
 
   DocumentChunk.fromJson(core.Map json_)
     : this(
@@ -447,6 +714,7 @@ class DocumentChunk {
             : null,
         id: json_['id'] as core.String?,
         parent: json_['parent'] as core.String?,
+        relevanceScore: (json_['relevanceScore'] as core.num?)?.toDouble(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -454,12 +722,40 @@ class DocumentChunk {
     final document = this.document;
     final id = this.id;
     final parent = this.parent;
+    final relevanceScore = this.relevanceScore;
     return {
       'content': ?content,
       'document': ?document,
       'id': ?id,
       'parent': ?parent,
+      'relevanceScore': ?relevanceScore,
     };
+  }
+}
+
+/// Represents a reference to a document.
+class DocumentReference {
+  /// Contains the document chunk.
+  ///
+  /// The `document_chunk.id` field is not set and will be empty.
+  ///
+  /// Output only.
+  DocumentChunk? documentChunk;
+
+  DocumentReference({this.documentChunk});
+
+  DocumentReference.fromJson(core.Map json_)
+    : this(
+        documentChunk: json_.containsKey('documentChunk')
+            ? DocumentChunk.fromJson(
+                json_['documentChunk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentChunk = this.documentChunk;
+    return {'documentChunk': ?documentChunk};
   }
 }
 
@@ -469,8 +765,6 @@ class SearchDocumentChunksResponse {
   /// page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  ///
-  /// Optional.
   core.String? nextPageToken;
 
   /// Contains the search results for the given query.

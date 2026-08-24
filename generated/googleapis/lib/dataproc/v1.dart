@@ -706,9 +706,10 @@ class ProjectsLocationsBatchesResource {
   /// filter is a logical expression constraining the values of various fields
   /// in each batch resource. Filters are case sensitive, and may contain
   /// multiple clauses combined with logical operators (AND/OR). Supported
-  /// fields are batch_id, batch_uuid, state, create_time, and labels.e.g. state
-  /// = RUNNING and create_time \< "2023-01-01T00:00:00Z" filters for batches in
-  /// state RUNNING that were created before 2023-01-01. state = RUNNING and
+  /// fields: * batch_id * batch_uuid * state * create_time * labels *
+  /// runtime_info.cohort_info.cohort e.g. state = RUNNING and create_time \<
+  /// "2023-01-01T00:00:00Z" filters for batches in state RUNNING that were
+  /// created before 2023-01-01. state = RUNNING and
   /// labels.environment=production filters for batches in state in a RUNNING
   /// state that have a production environment label.See
   /// https://google.aip.dev/assets/misc/ebnf-filtering.txt for a detailed
@@ -905,6 +906,102 @@ class ProjectsLocationsBatchesSparkApplicationsResource {
       queryParams: queryParams_,
     );
     return AccessSparkApplicationJobResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Obtain build data for Native Job
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSparkApplicationNativeBuildInfoResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSparkApplicationNativeBuildInfoResponse>
+  accessNativeBuildInfo(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':accessNativeBuildInfo';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSparkApplicationNativeBuildInfoResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Obtain data corresponding to a particular Native SQL Query for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [executionId] - Required. Execution ID
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSparkApplicationNativeSqlQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSparkApplicationNativeSqlQueryResponse>
+  accessNativeSqlQuery(
+    core.String name, {
+    core.String? executionId,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'executionId': ?executionId == null ? null : [executionId],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessNativeSqlQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSparkApplicationNativeSqlQueryResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1129,6 +1226,61 @@ class ProjectsLocationsBatchesSparkApplicationsResource {
       queryParams: queryParams_,
     );
     return AccessSparkApplicationStageRddOperationGraphResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns autotuning configuration for a specific query plan id and cohort
+  /// id.
+  ///
+  /// Called by Spark during query planning.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the spark application to
+  /// retrieve autotuning configuration for in the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [executionId] - Required. Spark execution ID for the query.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [semanticQueryId] - Required. Spark semantic query ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ComputeTuningConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ComputeTuningConfigResponse> computeTuningConfig(
+    core.String name, {
+    core.String? executionId,
+    core.String? parent,
+    core.String? semanticQueryId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'executionId': ?executionId == null ? null : [executionId],
+      'parent': ?parent == null ? null : [parent],
+      'semanticQueryId': ?semanticQueryId == null ? null : [semanticQueryId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':computeTuningConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ComputeTuningConfigResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1407,6 +1559,64 @@ class ProjectsLocationsBatchesSparkApplicationsResource {
       queryParams: queryParams_,
     );
     return SearchSparkApplicationJobsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Obtain data corresponding to Native SQL Queries for a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the batch to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of queries to return in each
+  /// response. The service may return fewer than this. The default page size is
+  /// 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSparkApplicationNativeSqlQueries call. Provide this token to
+  /// retrieve the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Batch) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSparkApplicationNativeSqlQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSparkApplicationNativeSqlQueriesResponse>
+  searchNativeSqlQueries(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':searchNativeSqlQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSparkApplicationNativeSqlQueriesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2741,6 +2951,103 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
     );
   }
 
+  /// Obtain data corresponding to Native Build Information for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSessionSparkApplicationNativeBuildInfoResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSessionSparkApplicationNativeBuildInfoResponse>
+  accessNativeBuildInfo(
+    core.String name, {
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':accessNativeBuildInfo';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSessionSparkApplicationNativeBuildInfoResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Obtain data corresponding to a particular Native SQL Query for a Spark
+  /// Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [executionId] - Required. Execution ID
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccessSessionSparkApplicationNativeSqlQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccessSessionSparkApplicationNativeSqlQueryResponse>
+  accessNativeSqlQuery(
+    core.String name, {
+    core.String? executionId,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'executionId': ?executionId == null ? null : [executionId],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accessNativeSqlQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccessSessionSparkApplicationNativeSqlQueryResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Obtain Spark Plan Graph for a Spark Application SQL execution.
   ///
   /// Limits the number of clusters returned as part of the graph to 10000.
@@ -3247,6 +3554,64 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
       queryParams: queryParams_,
     );
     return SearchSessionSparkApplicationJobsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Obtain data corresponding to Native SQL Queries for a Spark Application.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the session to retrieve in
+  /// the format
+  /// "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of queries to return in each
+  /// response. The service may return fewer than this. The default page size is
+  /// 10; the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous
+  /// SearchSessionSparkApplicationSqlQueries call. Provide this token to
+  /// retrieve the subsequent page.
+  ///
+  /// [parent] - Required. Parent (Session) resource reference.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchSessionSparkApplicationNativeSqlQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchSessionSparkApplicationNativeSqlQueriesResponse>
+  searchNativeSqlQueries(
+    core.String name, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'parent': ?parent == null ? null : [parent],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':searchNativeSqlQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchSessionSparkApplicationNativeSqlQueriesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4773,7 +5138,7 @@ class ProjectsRegionsClustersResource {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the cluster belongs to.
   ///
-  /// [region] - Required. The Dataproc region in which to handle the request.
+  /// [region] - Required. The region in which to handle the request.
   ///
   /// [actionOnFailedPrimaryWorkers] - Optional. Failure action when primary
   /// worker creation fails.
@@ -4847,7 +5212,7 @@ class ProjectsRegionsClustersResource {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the cluster belongs to.
   ///
-  /// [region] - Required. The Dataproc region in which to handle the request.
+  /// [region] - Required. The region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
   ///
@@ -4932,7 +5297,7 @@ class ProjectsRegionsClustersResource {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the cluster belongs to.
   ///
-  /// [region] - Required. The Dataproc region in which to handle the request.
+  /// [region] - Required. The region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
   ///
@@ -4983,7 +5348,7 @@ class ProjectsRegionsClustersResource {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the cluster belongs to.
   ///
-  /// [region] - Required. The Dataproc region in which to handle the request.
+  /// [region] - Required. The region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
   ///
@@ -5136,12 +5501,12 @@ class ProjectsRegionsClustersResource {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the cluster belongs to.
   ///
-  /// [region] - Required. The Dataproc region in which to handle the request.
+  /// [region] - Required. The region in which to handle the request.
   ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
   /// are case-sensitive and have the following syntax:field = value AND field =
   /// value ...where field is one of status.state, clusterName, or
-  /// labels.\[KEY\], and \[KEY\] is a label key. value can be * to match all
+  /// labels.\[KEY\], and \[KEY\] is a label key. value can be "*" to match all
   /// values. status.state can be one of the following: ACTIVE, INACTIVE,
   /// CREATING, RUNNING, ERROR, DELETING, UPDATING, STOPPING, or STOPPED. ACTIVE
   /// contains the CREATING, UPDATING, and RUNNING states. INACTIVE contains the
@@ -5213,7 +5578,7 @@ class ProjectsRegionsClustersResource {
   /// [projectId] - Required. The ID of the Google Cloud Platform project the
   /// cluster belongs to.
   ///
-  /// [region] - Required. The Dataproc region in which to handle the request.
+  /// [region] - Required. The region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
   ///
@@ -5224,8 +5589,8 @@ class ProjectsRegionsClustersResource {
   /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
   /// decommission), and the maximum allowed timeout is 1 day. (see JSON
   /// representation of Duration
-  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only
-  /// supported on Dataproc image versions 1.2 and higher.
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Supported
+  /// in image versions 1.2 and higher.
   ///
   /// [requestId] - Optional. A unique ID used to identify the request. If the
   /// server receives two UpdateClusterRequest
@@ -5309,7 +5674,7 @@ class ProjectsRegionsClustersResource {
   /// [projectId] - Required. The ID of the Google Cloud Platform project the
   /// cluster belongs to.
   ///
-  /// [region] - Required. The Dataproc region in which to handle the request.
+  /// [region] - Required. The region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
   ///
@@ -5409,7 +5774,7 @@ class ProjectsRegionsClustersResource {
   /// [projectId] - Required. The ID of the Google Cloud Platform project the
   /// cluster belongs to.
   ///
-  /// [region] - Required. The Dataproc region in which to handle the request.
+  /// [region] - Required. The region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
   ///
@@ -5462,7 +5827,7 @@ class ProjectsRegionsClustersResource {
   /// [projectId] - Required. The ID of the Google Cloud Platform project the
   /// cluster belongs to.
   ///
-  /// [region] - Required. The Dataproc region in which to handle the request.
+  /// [region] - Required. The region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
   ///
@@ -7190,11 +7555,10 @@ class AcceleratorConfig {
   /// (https://cloud.google.com/compute/docs/reference/v1/acceleratorTypes).Examples:
   /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/\[zone\]/acceleratorTypes/nvidia-tesla-t4
   /// projects/\[project_id\]/zones/\[zone\]/acceleratorTypes/nvidia-tesla-t4
-  /// nvidia-tesla-t4Auto Zone Exception: If you are using the Dataproc Auto
-  /// Zone Placement
-  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
-  /// feature, you must use the short name of the accelerator type resource, for
-  /// example, nvidia-tesla-t4.
+  /// nvidia-tesla-t4Auto Zone Exception: If you are using Auto Zone Placement
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement),
+  /// you must use the short name of the accelerator type resource, for example,
+  /// nvidia-tesla-t4.
   core.String? acceleratorTypeUri;
 
   AcceleratorConfig({this.acceleratorCount, this.acceleratorTypeUri});
@@ -7262,6 +7626,50 @@ class AccessSessionSparkApplicationJobResponse {
   core.Map<core.String, core.dynamic> toJson() {
     final jobData = this.jobData;
     return {'jobData': ?jobData};
+  }
+}
+
+/// Details of a native build info for a Spark Application
+class AccessSessionSparkApplicationNativeBuildInfoResponse {
+  /// Native SQL Execution Data
+  NativeBuildInfoUiData? executionData;
+
+  AccessSessionSparkApplicationNativeBuildInfoResponse({this.executionData});
+
+  AccessSessionSparkApplicationNativeBuildInfoResponse.fromJson(core.Map json_)
+    : this(
+        executionData: json_.containsKey('executionData')
+            ? NativeBuildInfoUiData.fromJson(
+                json_['executionData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionData = this.executionData;
+    return {'executionData': ?executionData};
+  }
+}
+
+/// Details of a native query for a Spark Application
+class AccessSessionSparkApplicationNativeSqlQueryResponse {
+  /// Native SQL Execution Data
+  NativeSqlExecutionUiData? executionData;
+
+  AccessSessionSparkApplicationNativeSqlQueryResponse({this.executionData});
+
+  AccessSessionSparkApplicationNativeSqlQueryResponse.fromJson(core.Map json_)
+    : this(
+        executionData: json_.containsKey('executionData')
+            ? NativeSqlExecutionUiData.fromJson(
+                json_['executionData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionData = this.executionData;
+    return {'executionData': ?executionData};
   }
 }
 
@@ -7433,6 +7841,50 @@ class AccessSparkApplicationJobResponse {
   core.Map<core.String, core.dynamic> toJson() {
     final jobData = this.jobData;
     return {'jobData': ?jobData};
+  }
+}
+
+/// Details of Native Build Info for a Spark Application
+class AccessSparkApplicationNativeBuildInfoResponse {
+  /// Native Build Info Data
+  NativeBuildInfoUiData? buildInfo;
+
+  AccessSparkApplicationNativeBuildInfoResponse({this.buildInfo});
+
+  AccessSparkApplicationNativeBuildInfoResponse.fromJson(core.Map json_)
+    : this(
+        buildInfo: json_.containsKey('buildInfo')
+            ? NativeBuildInfoUiData.fromJson(
+                json_['buildInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final buildInfo = this.buildInfo;
+    return {'buildInfo': ?buildInfo};
+  }
+}
+
+/// Details of a query for a Spark Application
+class AccessSparkApplicationNativeSqlQueryResponse {
+  /// Native SQL Execution Data
+  NativeSqlExecutionUiData? executionData;
+
+  AccessSparkApplicationNativeSqlQueryResponse({this.executionData});
+
+  AccessSparkApplicationNativeSqlQueryResponse.fromJson(core.Map json_)
+    : this(
+        executionData: json_.containsKey('executionData')
+            ? NativeSqlExecutionUiData.fromJson(
+                json_['executionData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final executionData = this.executionData;
+    return {'executionData': ?executionData};
   }
 }
 
@@ -7966,7 +8418,7 @@ class AutoscalingConfig {
   /// Examples:
   /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/locations/\[dataproc_region\]/autoscalingPolicies/\[policy_id\]
   /// projects/\[project_id\]/locations/\[dataproc_region\]/autoscalingPolicies/\[policy_id\]Note
-  /// that the policy must be in the same project and Dataproc region.
+  /// that the policy must be in the same project and region.
   ///
   /// Optional.
   core.String? policyUri;
@@ -8712,8 +9164,7 @@ class BuildInfo {
 /// A request to cancel a job.
 typedef CancelJobRequest = $Empty;
 
-/// Describes the identifying information, config, and status of a Dataproc
-/// cluster
+/// Describes the identifying information, config, and status of a cluster
 class Cluster {
   /// The cluster name, which must be unique within a project.
   ///
@@ -8726,14 +9177,14 @@ class Cluster {
 
   /// A cluster UUID (Unique Universal Identifier).
   ///
-  /// Dataproc generates this value when it creates the cluster.
+  /// The service generates this value when it creates the cluster.
   ///
   /// Output only.
   core.String? clusterUuid;
 
   /// The cluster config for a cluster of Compute Engine Instances.
   ///
-  /// Note that Dataproc may set default values, and values may change when
+  /// Note that the service may set default values, and values may change when
   /// clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig
   /// must be specified.
   ///
@@ -8774,13 +9225,13 @@ class Cluster {
   /// Output only.
   core.List<ClusterStatus>? statusHistory;
 
-  /// The virtual cluster config is used when creating a Dataproc cluster that
-  /// does not directly control the underlying compute resources, for example,
-  /// when creating a Dataproc-on-GKE cluster
+  /// The virtual cluster config is used when creating a cluster that does not
+  /// directly control the underlying compute resources, for example, when
+  /// creating a GKE cluster
   /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
   ///
-  /// Dataproc may set default values, and values may change when clusters are
-  /// updated. Exactly one of config or virtual_cluster_config must be
+  /// the service may set default values, and values may change when clusters
+  /// are updated. Exactly one of config or virtual_cluster_config must be
   /// specified.
   ///
   /// Optional.
@@ -8878,10 +9329,9 @@ class ClusterConfig {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "CLUSTER_TIER_UNSPECIFIED" : Not set. Works the same as
-  /// CLUSTER_TIER_STANDARD.
-  /// - "CLUSTER_TIER_STANDARD" : Standard Dataproc cluster.
-  /// - "CLUSTER_TIER_PREMIUM" : Premium Dataproc cluster.
+  /// - "CLUSTER_TIER_UNSPECIFIED" : Uses standard tier if unspecified.
+  /// - "CLUSTER_TIER_STANDARD" : Standard cluster tier.
+  /// - "CLUSTER_TIER_PREMIUM" : Premium cluster tier.
   core.String? clusterTier;
 
   /// The type of the cluster.
@@ -8900,11 +9350,11 @@ class ClusterConfig {
   /// A Cloud Storage bucket used to stage job dependencies, config files, and
   /// job driver console output.
   ///
-  /// If you do not specify a staging bucket, Cloud Dataproc will determine a
-  /// Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket
+  /// If you do not specify a staging bucket, the service will determine a Cloud
+  /// Storage location (US, ASIA, or EU) for your cluster's staging bucket
   /// according to the Compute Engine zone where your cluster is deployed, and
   /// then create and manage this project-level, per-location bucket (see
-  /// Dataproc staging and temp buckets
+  /// staging and temp buckets
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
   /// This field requires a Cloud Storage bucket name, not a gs://... URI to a
   /// Cloud Storage bucket.
@@ -8912,7 +9362,7 @@ class ClusterConfig {
   /// Optional.
   core.String? configBucket;
 
-  /// The config for Dataproc metrics.
+  /// The config for metrics.
   ///
   /// Optional.
   DataprocMetricConfig? dataprocMetricConfig;
@@ -8920,10 +9370,9 @@ class ClusterConfig {
   /// A Cloud Storage bucket used to collect checkpoint diagnostic data
   /// (https://cloud.google.com/dataproc/docs/support/diagnose-clusters#checkpoint_diagnostic_data).
   ///
-  /// If you do not specify a diagnostic bucket, Cloud Dataproc will use the
-  /// Dataproc temp bucket to collect the checkpoint diagnostic data. This field
-  /// requires a Cloud Storage bucket name, not a gs://... URI to a Cloud
-  /// Storage bucket.
+  /// If you do not specify a diagnostic bucket, The service will use the temp
+  /// bucket to collect the checkpoint diagnostic data. This field requires a
+  /// Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
   ///
   /// Optional.
   core.String? diagnosticBucket;
@@ -8945,7 +9394,8 @@ class ClusterConfig {
   /// - "ENGINE_UNSPECIFIED" : The engine is not specified. Works the same as
   /// ENGINE_DEFAULT.
   /// - "DEFAULT" : The cluster is a default engine cluster.
-  /// - "LIGHTNING" : The cluster is a lightning engine cluster.
+  /// - "LIGHTNING" : The cluster is a Lightning Engine
+  /// (https://cloud.google.com/dataproc/docs/guides/lightning-engine) cluster.
   core.String? engine;
 
   /// The shared Compute Engine config settings for all instances in a cluster.
@@ -8955,10 +9405,9 @@ class ClusterConfig {
 
   /// BETA.
   ///
-  /// The Kubernetes Engine config for Dataproc clusters deployed to The
-  /// Kubernetes Engine config for Dataproc clusters deployed to Kubernetes.
-  /// These config settings are mutually exclusive with Compute Engine-based
-  /// options, such as gce_cluster_config, master_config, worker_config,
+  /// The Kubernetes Engine config for clusters deployed to Kubernetes. These
+  /// config settings are mutually exclusive with Compute Engine-based options,
+  /// such as gce_cluster_config, master_config, worker_config,
   /// secondary_worker_config, and autoscaling_config.
   ///
   /// Optional.
@@ -9014,12 +9463,12 @@ class ClusterConfig {
   /// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such
   /// as Spark and MapReduce history files.
   ///
-  /// If you do not specify a temp bucket, Dataproc will determine a Cloud
+  /// If you do not specify a temp bucket, the service will determine a Cloud
   /// Storage location (US, ASIA, or EU) for your cluster's temp bucket
   /// according to the Compute Engine zone where your cluster is deployed, and
   /// then create and manage this project-level, per-location bucket. The
   /// default bucket has a TTL of 90 days, but you can use any TTL (or none) if
-  /// you specify a bucket (see Dataproc staging and temp buckets
+  /// you specify a bucket (see staging and temp buckets
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
   /// This field requires a Cloud Storage bucket name, not a gs://... URI to a
   /// Cloud Storage bucket.
@@ -9314,7 +9763,7 @@ class ClusterStatus {
   /// example, critical daemons are not running or HDFS capacity is
   /// exhausted).Applies to RUNNING state.
   /// - "STALE_STATUS" : The agent-reported status is out of date (may occur if
-  /// Dataproc loses communication with Agent).Applies to RUNNING state.
+  /// the service loses communication with the Agent).Applies to RUNNING state.
   core.String? substate;
 
   ClusterStatus({this.detail, this.state, this.stateStartTime, this.substate});
@@ -9395,9 +9844,77 @@ class CohortInfo {
   }
 }
 
+/// Response for ComputeTuningConfig RPC.
+class ComputeTuningConfigResponse {
+  /// Recommended Spark properties for the query (e.g.,
+  /// {"spark.sql.shuffle.partitions": "500"}).
+  core.Map<core.String, core.String>? recommendedProperties;
+
+  ComputeTuningConfigResponse({this.recommendedProperties});
+
+  ComputeTuningConfigResponse.fromJson(core.Map json_)
+    : this(
+        recommendedProperties:
+            (json_['recommendedProperties']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final recommendedProperties = this.recommendedProperties;
+    return {'recommendedProperties': ?recommendedProperties};
+  }
+}
+
 /// Confidential Instance Config for clusters using Confidential VMs
-/// (https://cloud.google.com/compute/confidential-vm/docs)
-typedef ConfidentialInstanceConfig = $ConfidentialInstanceConfig;
+/// (https://cloud.google.com/confidential-computing/confidential-vm/docs)
+class ConfidentialInstanceConfig {
+  /// Defines the type of Confidential Compute technology to use.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED" : Confidential Instance Type is
+  /// not specified.
+  /// - "SEV" : AMD Secure Encrypted Virtualization
+  /// (https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview#amd_sev)
+  /// - "SEV_SNP" : AMD Secure Encrypted Virtualization-Secure Nested Paging
+  /// (https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview#amd_sev-snp)
+  /// - "TDX" : Intel Trust Domain Extensions
+  /// (https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview#intel_tdx)
+  core.String? confidentialInstanceType;
+
+  /// Deprecated: Use 'confidential_instance_type' instead.
+  ///
+  /// Defines whether the instance should have confidential compute enabled.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? enableConfidentialCompute;
+
+  ConfidentialInstanceConfig({
+    this.confidentialInstanceType,
+    this.enableConfidentialCompute,
+  });
+
+  ConfidentialInstanceConfig.fromJson(core.Map json_)
+    : this(
+        confidentialInstanceType:
+            json_['confidentialInstanceType'] as core.String?,
+        enableConfidentialCompute:
+            json_['enableConfidentialCompute'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final confidentialInstanceType = this.confidentialInstanceType;
+    final enableConfidentialCompute = this.enableConfidentialCompute;
+    return {
+      'confidentialInstanceType': ?confidentialInstanceType,
+      'enableConfidentialCompute': ?enableConfidentialCompute,
+    };
+  }
+}
 
 /// Consolidated summary about executors used by the application.
 class ConsolidatedExecutorSummary {
@@ -9504,7 +10021,7 @@ class ConsolidatedExecutorSummary {
   }
 }
 
-/// Dataproc metric config.
+/// Metric config.
 class DataprocMetricConfig {
   /// Metrics sources to enable.
   ///
@@ -9563,8 +10080,8 @@ class DiagnoseClusterRequest {
   /// default access of the bucket
   /// - "GOOGLE_CLOUD_SUPPORT" : Google Cloud Support group has read access to
   /// the diagnostic tarball
-  /// - "GOOGLE_DATAPROC_DIAGNOSE" : Google Cloud Dataproc Diagnose service
-  /// account has read access to the diagnostic tarball
+  /// - "GOOGLE_DATAPROC_DIAGNOSE" : The diagnose service account has read
+  /// access to the diagnostic tarball
   core.String? tarballAccess;
 
   /// (Optional) The output Cloud Storage directory for the diagnostic tarball.
@@ -9671,20 +10188,20 @@ class DiskConfig {
   /// Optional.
   core.int? bootDiskSizeGb;
 
-  /// Type of the boot disk (default is "pd-standard").
+  /// Type of the boot disk (default is pd-standard).
   ///
-  /// Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive),
-  /// "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent
+  /// Valid values: pd-balanced (Persistent Disk Balanced Solid State Drive),
+  /// pd-ssd (Persistent Disk Solid State Drive), or pd-standard (Persistent
   /// Disk Hard Disk Drive). See Disk types
   /// (https://cloud.google.com/compute/docs/disks#disk-types).
   ///
   /// Optional.
   core.String? bootDiskType;
 
-  /// Interface type of local SSDs (default is "scsi").
+  /// Interface type of local SSDs (default is scsi).
   ///
-  /// Valid values: "scsi" (Small Computer System Interface), "nvme"
-  /// (Non-Volatile Memory Express). See local SSD performance
+  /// Valid values: scsi (Small Computer System Interface), nvme (Non-Volatile
+  /// Memory Express). See local SSD performance
   /// (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
   ///
   /// Optional.
@@ -9959,6 +10476,16 @@ class ExecutionConfig {
   /// Optional.
   core.String? networkUri;
 
+  /// Associates Resource Manager tags with the workload nodes.
+  ///
+  /// There is a max limit of 30 tags. Keys and values can be either in numeric
+  /// format, such as tagKeys/{tag_key_id} and tagValues/{tag_value_id}, or in
+  /// namespaced format, such as {org_id|project_id}/{tag_key_short_name} and
+  /// {tag_value_short_name}.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? resourceManagerTags;
+
   /// Service account that used to execute workload.
   ///
   /// Optional.
@@ -10007,6 +10534,7 @@ class ExecutionConfig {
     this.kmsKey,
     this.networkTags,
     this.networkUri,
+    this.resourceManagerTags,
     this.serviceAccount,
     this.stagingBucket,
     this.subnetworkUri,
@@ -10027,6 +10555,10 @@ class ExecutionConfig {
             ?.map((value) => value as core.String)
             .toList(),
         networkUri: json_['networkUri'] as core.String?,
+        resourceManagerTags:
+            (json_['resourceManagerTags']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         serviceAccount: json_['serviceAccount'] as core.String?,
         stagingBucket: json_['stagingBucket'] as core.String?,
         subnetworkUri: json_['subnetworkUri'] as core.String?,
@@ -10039,6 +10571,7 @@ class ExecutionConfig {
     final kmsKey = this.kmsKey;
     final networkTags = this.networkTags;
     final networkUri = this.networkUri;
+    final resourceManagerTags = this.resourceManagerTags;
     final serviceAccount = this.serviceAccount;
     final stagingBucket = this.stagingBucket;
     final subnetworkUri = this.subnetworkUri;
@@ -10049,6 +10582,7 @@ class ExecutionConfig {
       'kmsKey': ?kmsKey,
       'networkTags': ?networkTags,
       'networkUri': ?networkUri,
+      'resourceManagerTags': ?resourceManagerTags,
       'serviceAccount': ?serviceAccount,
       'stagingBucket': ?stagingBucket,
       'subnetworkUri': ?subnetworkUri,
@@ -10716,8 +11250,8 @@ class FlinkJob {
 /// Common config settings for resources of Compute Engine cluster instances,
 /// applicable to all instances in the cluster.
 class GceClusterConfig {
-  /// An optional list of Compute Engine zones where the Dataproc cluster will
-  /// not be located when Auto Zone is enabled.
+  /// An optional list of Compute Engine zones where the cluster will not be
+  /// located when Auto Zone is enabled.
   ///
   /// Only one of zone_uri or auto_zone_exclude_zone_uris can be set. If both
   /// are omitted, the service will pick a zone in the cluster Compute Engine
@@ -10732,7 +11266,7 @@ class GceClusterConfig {
   core.List<core.String>? autoZoneExcludeZoneUris;
 
   /// Confidential Instance Config for clusters using Confidential VMs
-  /// (https://cloud.google.com/compute/confidential-vm/docs).
+  /// (https://cloud.google.com/confidential-computing/confidential-vm/docs).
   ///
   /// Optional.
   ConfidentialInstanceConfig? confidentialInstanceConfig;
@@ -10742,7 +11276,7 @@ class GceClusterConfig {
   /// It is set to true by default in clusters created with image versions
   /// 2.2.x.When set to true: All cluster VMs have internal IP addresses. Google
   /// Private Access (https://cloud.google.com/vpc/docs/private-google-access)
-  /// must be enabled to access Dataproc and other Google Cloud APIs.
+  /// must be enabled to access the Dataproc API and other Google Cloud APIs.
   /// Off-cluster dependencies must be configured to be accessible without
   /// external IP addresses.When set to false: Cluster VMs are not restricted to
   /// internal IP addresses. Ephemeral external IP addresses are assigned to
@@ -10762,7 +11296,7 @@ class GceClusterConfig {
   ///
   /// Cannot be specified with subnetwork_uri. If neither network_uri nor
   /// subnetwork_uri is specified, the "default" network of the project is used,
-  /// if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks
+  /// if it exists. Cannot be a Custom Subnet Network (see Using Subnetworks
   /// (https://cloud.google.com/compute/docs/subnetworks) for more
   /// information).A full URL, partial URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/global/networks/default
@@ -10787,9 +11321,9 @@ class GceClusterConfig {
   /// configuration inherited from the subnetwork configuration. This is the
   /// default Compute Engine behavior.
   /// - "OUTBOUND" : Enables outbound private IPv6 access to Google Services
-  /// from the Dataproc cluster.
+  /// from the cluster.
   /// - "BIDIRECTIONAL" : Enables bidirectional private IPv6 access between
-  /// Google Services and the Dataproc cluster.
+  /// Google Services and the cluster.
   core.String? privateIpv6GoogleAccess;
 
   /// Reservation Affinity for consuming Zonal reservation.
@@ -10799,18 +11333,18 @@ class GceClusterConfig {
 
   /// Resource manager tags
   /// (https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
-  /// to add to all instances (see Use secure tags in Dataproc
+  /// to add to all instances (see Use secure tags
   /// (https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
   ///
   /// Optional.
   core.Map<core.String, core.String>? resourceManagerTags;
 
-  /// The Dataproc service account
+  /// The VM service account
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc)
   /// (also see VM Data Plane identity
   /// (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity))
-  /// used by Dataproc cluster VM instances to access Google Cloud Platform
-  /// services.If not specified, the Compute Engine default service account
+  /// used by cluster VM instances to access Google Cloud Platform services.If
+  /// not specified, the Compute Engine default service account
   /// (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account)
   /// is used.
   ///
@@ -10853,7 +11387,7 @@ class GceClusterConfig {
   /// instances (https://cloud.google.com/vpc/docs/add-remove-network-tags)).
   core.List<core.String>? tags;
 
-  /// The Compute Engine zone where the Dataproc cluster will be located.
+  /// The Compute Engine zone where the cluster will be located.
   ///
   /// If omitted, the service will pick a zone in the cluster's Compute Engine
   /// region. On a get request, zone will always be present.A full URL, partial
@@ -11117,6 +11651,17 @@ class GkeNodeConfig {
   /// Optional.
   core.bool? preemptible;
 
+  /// Specifies the service account
+  /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-iam) to
+  /// be used by the node pools.
+  ///
+  /// Specify the email address of the service account or its full resource
+  /// name.Format: projects/{project}/serviceAccounts/{service_account_email} or
+  /// {service_account_email}.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
   /// Whether the nodes are created as Spot VM instances
   /// (https://cloud.google.com/compute/docs/instances/spot).
   ///
@@ -11136,6 +11681,7 @@ class GkeNodeConfig {
     this.machineType,
     this.minCpuPlatform,
     this.preemptible,
+    this.serviceAccount,
     this.spot,
   });
 
@@ -11153,6 +11699,7 @@ class GkeNodeConfig {
         machineType: json_['machineType'] as core.String?,
         minCpuPlatform: json_['minCpuPlatform'] as core.String?,
         preemptible: json_['preemptible'] as core.bool?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
         spot: json_['spot'] as core.bool?,
       );
 
@@ -11163,6 +11710,7 @@ class GkeNodeConfig {
     final machineType = this.machineType;
     final minCpuPlatform = this.minCpuPlatform;
     final preemptible = this.preemptible;
+    final serviceAccount = this.serviceAccount;
     final spot = this.spot;
     return {
       'accelerators': ?accelerators,
@@ -11171,6 +11719,7 @@ class GkeNodeConfig {
       'machineType': ?machineType,
       'minCpuPlatform': ?minCpuPlatform,
       'preemptible': ?preemptible,
+      'serviceAccount': ?serviceAccount,
       'spot': ?spot,
     };
   }
@@ -11611,15 +12160,25 @@ class HiveJob {
 /// Identity related configuration, including service account based secure
 /// multi-tenancy user mappings.
 class IdentityConfig {
+  /// Whether to enable SSH access for the cluster.
+  ///
+  /// The default is true for image versions prior to 3.1 and false for image
+  /// versions 3.1 and later. The default behavior can be changed when creating
+  /// clusters using image versions 2.3.30 and later.
+  ///
+  /// Optional.
+  core.bool? enableSsh;
+
   /// Map of user to service account.
   ///
   /// Required.
   core.Map<core.String, core.String>? userServiceAccountMapping;
 
-  IdentityConfig({this.userServiceAccountMapping});
+  IdentityConfig({this.enableSsh, this.userServiceAccountMapping});
 
   IdentityConfig.fromJson(core.Map json_)
     : this(
+        enableSsh: json_['enableSsh'] as core.bool?,
         userServiceAccountMapping:
             (json_['userServiceAccountMapping']
                     as core.Map<core.String, core.dynamic>?)
@@ -11627,8 +12186,12 @@ class IdentityConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final enableSsh = this.enableSsh;
     final userServiceAccountMapping = this.userServiceAccountMapping;
-    return {'userServiceAccountMapping': ?userServiceAccountMapping};
+    return {
+      'enableSsh': ?enableSsh,
+      'userServiceAccountMapping': ?userServiceAccountMapping,
+    };
   }
 }
 
@@ -11859,7 +12422,7 @@ class InstanceGroupConfig {
   /// projects/\[project_id\]/global/images/\[image-id\] image-idImage family
   /// examples.
   ///
-  /// Dataproc will use the most recent image from the family:
+  /// The service will use the most recent image from the family:
   /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/global/images/family/\[custom-image-family-name\]
   /// projects/\[project_id\]/global/images/family/\[custom-image-family-name\]If
   /// the URI is unspecified, it will be inferred from
@@ -11874,10 +12437,8 @@ class InstanceGroupConfig {
   /// Optional.
   InstanceFlexibilityPolicy? instanceFlexibilityPolicy;
 
-  /// The list of instance names.
-  ///
-  /// Dataproc derives the names from cluster_name, num_instances, and the
-  /// instance group.
+  /// The list of instance names, derived from cluster_name, num_instances, and
+  /// the instance group.
   ///
   /// Output only.
   core.List<core.String>? instanceNames;
@@ -11898,11 +12459,10 @@ class InstanceGroupConfig {
   /// Examples:
   /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/\[zone\]/machineTypes/n1-standard-2
   /// projects/\[project_id\]/zones/\[zone\]/machineTypes/n1-standard-2
-  /// n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone
-  /// Placement
-  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
-  /// feature, you must use the short name of the machine type resource, for
-  /// example, n1-standard-2.
+  /// n1-standard-2Auto Zone Exception: If you are using Auto Zone Placement
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement),
+  /// you must use the short name of the machine type resource, for example,
+  /// n1-standard-2.
   ///
   /// Optional.
   core.String? machineTypeUri;
@@ -11917,7 +12477,7 @@ class InstanceGroupConfig {
 
   /// Specifies the minimum cpu platform for the Instance Group.
   ///
-  /// See Dataproc -\> Minimum CPU Platform
+  /// See Minimum CPU Platform
   /// (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
   ///
   /// Optional.
@@ -12124,6 +12684,15 @@ class InstanceReference {
 
 /// Defines machines types and a rank to which the machines types belong.
 class InstanceSelection {
+  /// Disk configuration to apply to the instances in this instance selection.
+  ///
+  /// If specified on any entry in instanceSelectionList, then it must be
+  /// specified on every entry in instanceSelectionList and the
+  /// instanceGroupConfig must not specify any diskConfig.
+  ///
+  /// Optional.
+  DiskConfig? diskConfig;
+
   /// Full machine-type names, e.g. "n1-standard-16".
   ///
   /// Optional.
@@ -12131,18 +12700,23 @@ class InstanceSelection {
 
   /// Preference of this instance selection.
   ///
-  /// Lower number means higher preference. Dataproc will first try to create a
-  /// VM based on the machine-type with priority rank and fallback to next rank
-  /// based on availability. Machine types and instance selections with the same
-  /// priority have the same preference.
+  /// Lower number means higher preference. The service will first try to create
+  /// a VM based on the machine-type with priority rank and fallback to next
+  /// rank based on availability. Machine types and instance selections with the
+  /// same priority have the same preference.
   ///
   /// Optional.
   core.int? rank;
 
-  InstanceSelection({this.machineTypes, this.rank});
+  InstanceSelection({this.diskConfig, this.machineTypes, this.rank});
 
   InstanceSelection.fromJson(core.Map json_)
     : this(
+        diskConfig: json_.containsKey('diskConfig')
+            ? DiskConfig.fromJson(
+                json_['diskConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         machineTypes: (json_['machineTypes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -12150,9 +12724,14 @@ class InstanceSelection {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final diskConfig = this.diskConfig;
     final machineTypes = this.machineTypes;
     final rank = this.rank;
-    return {'machineTypes': ?machineTypes, 'rank': ?rank};
+    return {
+      'diskConfig': ?diskConfig,
+      'machineTypes': ?machineTypes,
+      'rank': ?rank,
+    };
   }
 }
 
@@ -13028,8 +13607,8 @@ class KerberosConfig {
   /// Optional.
   core.String? crossRealmTrustKdc;
 
-  /// The remote realm the Dataproc on-cluster KDC will trust, should the user
-  /// enable cross realm trust.
+  /// The remote realm the on-cluster KDC will trust, should the user enable
+  /// cross realm trust.
   ///
   /// Optional.
   core.String? crossRealmTrustRealm;
@@ -13057,7 +13636,8 @@ class KerberosConfig {
   /// The Cloud Storage URI of a KMS encrypted file containing the password to
   /// the user provided key.
   ///
-  /// For the self-signed certificate, this password is generated by Dataproc.
+  /// For the self-signed certificate, this password is generated by the
+  /// service.
   ///
   /// Optional.
   core.String? keyPasswordUri;
@@ -13065,14 +13645,15 @@ class KerberosConfig {
   /// The Cloud Storage URI of a KMS encrypted file containing the password to
   /// the user provided keystore.
   ///
-  /// For the self-signed certificate, this password is generated by Dataproc.
+  /// For the self-signed certificate, this password is generated by the
+  /// service.
   ///
   /// Optional.
   core.String? keystorePasswordUri;
 
   /// The Cloud Storage URI of the keystore file used for SSL encryption.
   ///
-  /// If not provided, Dataproc will provide a self-signed certificate.
+  /// If not provided, the service will provide a self-signed certificate.
   ///
   /// Optional.
   core.String? keystoreUri;
@@ -13105,14 +13686,15 @@ class KerberosConfig {
   /// The Cloud Storage URI of a KMS encrypted file containing the password to
   /// the user provided truststore.
   ///
-  /// For the self-signed certificate, this password is generated by Dataproc.
+  /// For the self-signed certificate, this password is generated by the
+  /// service.
   ///
   /// Optional.
   core.String? truststorePasswordUri;
 
   /// The Cloud Storage URI of the truststore file used for SSL encryption.
   ///
-  /// If not provided, Dataproc will provide a self-signed certificate.
+  /// If not provided, the service will provide a self-signed certificate.
   ///
   /// Optional.
   core.String? truststoreUri;
@@ -13900,7 +14482,7 @@ class MemoryMetrics {
 
 /// Specifies a Metastore configuration.
 class MetastoreConfig {
-  /// Resource name of an existing Dataproc Metastore service.Example:
+  /// Resource name of an existing Metastore service.Example:
   /// projects/\[project_id\]/locations/\[dataproc_region\]/services/\[service-name\]
   ///
   /// Required.
@@ -13920,7 +14502,7 @@ class MetastoreConfig {
   }
 }
 
-/// A Dataproc custom metric.
+/// A custom metric.
 class Metric {
   /// Specify one or more Custom metrics
   /// (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics)
@@ -13952,8 +14534,8 @@ class Metric {
   /// Possible string values are:
   /// - "METRIC_SOURCE_UNSPECIFIED" : Required unspecified metric source.
   /// - "MONITORING_AGENT_DEFAULTS" : Monitoring agent metrics. If this source
-  /// is enabled, Dataproc enables the monitoring agent in Compute Engine, and
-  /// collects monitoring agent metrics, which are published with an
+  /// is enabled, the service enables the monitoring agent in Compute Engine,
+  /// and collects monitoring agent metrics, which are published with an
   /// agent.googleapis.com prefix.
   /// - "HDFS" : HDFS metric source.
   /// - "SPARK" : Spark metric source.
@@ -14124,10 +14706,9 @@ class NativeSqlExecutionUiData {
   }
 }
 
-/// Dataproc Node Group.
+/// Node Group.
 ///
-/// The Dataproc NodeGroup resource is not related to the Dataproc
-/// NodeGroupAffinity resource.
+/// The NodeGroup resource is not related to the NodeGroupAffinity resource.
 class NodeGroup {
   /// Node group labels.
   ///
@@ -14187,8 +14768,7 @@ class NodeGroup {
 
 /// Node Group Affinity for clusters using sole-tenant node groups.
 ///
-/// The Dataproc NodeGroupAffinity resource is not related to the Dataproc
-/// NodeGroup resource.
+/// The NodeGroupAffinity resource is not related to the NodeGroup resource.
 class NodeGroupAffinity {
   /// The URI of a sole-tenant node group resource
   /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that
@@ -15089,17 +15669,16 @@ class PropertiesInfo {
   }
 }
 
-/// Defines how Dataproc should create VMs with a mixture of provisioning
-/// models.
+/// Defines how to create VMs with a mixture of provisioning models.
 class ProvisioningModelMix {
   /// The base capacity that will always use Standard VMs to avoid risk of more
   /// preemption than the minimum capacity you need.
   ///
-  /// Dataproc will create only standard VMs until it reaches
+  /// The service will create only standard VMs until it reaches
   /// standard_capacity_base, then it will start using
   /// standard_capacity_percent_above_base to mix Spot with Standard VMs. eg. If
-  /// 15 instances are requested and standard_capacity_base is 5, Dataproc will
-  /// create 5 standard VMs and then start mixing spot and standard VMs for
+  /// 15 instances are requested and standard_capacity_base is 5, the service
+  /// will create 5 standard VMs and thenstart mixing spot and standard VMs for
   /// remaining 10 instances.
   ///
   /// Optional.
@@ -15110,7 +15689,7 @@ class ProvisioningModelMix {
   /// The remaining percentage will use Spot VMs. The percentage applies only to
   /// the capacity above standard_capacity_base. eg. If 15 instances are
   /// requested and standard_capacity_base is 5 and
-  /// standard_capacity_percent_above_base is 30, Dataproc will create 5
+  /// standard_capacity_percent_above_base is 30, the service will create 5
   /// standard VMs and then start mixing spot and standard VMs for remaining 10
   /// instances. The mix will be 30% standard and 70% spot.
   ///
@@ -15943,7 +16522,7 @@ class RepairClusterRequest {
   /// Optional.
   core.String? clusterUuid;
 
-  /// Whether the request is submitted by Dataproc super user.
+  /// Whether the request is submitted by a super user.
   ///
   /// If true, IAM will check 'dataproc.clusters.repair' permission instead of
   /// 'dataproc.clusters.update' permission. This is to give Dataproc superuser
@@ -15961,7 +16540,7 @@ class RepairClusterRequest {
   /// is 0 for forceful decommissioning, and the maximum timeout period is 1
   /// day. (see JSON Mapping—Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).graceful_decommission_timeout
-  /// is supported in Dataproc image versions 1.2+.
+  /// is supported in image versions 1.2+.
   ///
   /// Optional.
   core.String? gracefulDecommissionTimeout;
@@ -16628,6 +17207,48 @@ class SearchSessionSparkApplicationJobsResponse {
   }
 }
 
+/// List of all Native queries for a Spark Application.
+class SearchSessionSparkApplicationNativeSqlQueriesResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSessionSparkApplicationSqlQueriesRequest.
+  core.String? nextPageToken;
+
+  /// Native SQL Execution Data
+  ///
+  /// Output only.
+  core.List<NativeSqlExecutionUiData>? sparkApplicationNativeSqlQueries;
+
+  SearchSessionSparkApplicationNativeSqlQueriesResponse({
+    this.nextPageToken,
+    this.sparkApplicationNativeSqlQueries,
+  });
+
+  SearchSessionSparkApplicationNativeSqlQueriesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        sparkApplicationNativeSqlQueries:
+            (json_['sparkApplicationNativeSqlQueries'] as core.List?)
+                ?.map(
+                  (value) => NativeSqlExecutionUiData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sparkApplicationNativeSqlQueries =
+        this.sparkApplicationNativeSqlQueries;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'sparkApplicationNativeSqlQueries': ?sparkApplicationNativeSqlQueries,
+    };
+  }
+}
+
 /// List of all queries for a Spark Application.
 class SearchSessionSparkApplicationSqlQueriesResponse {
   /// This token is included in the response if there are more results to fetch.
@@ -16947,6 +17568,48 @@ class SearchSparkApplicationJobsResponse {
     return {
       'nextPageToken': ?nextPageToken,
       'sparkApplicationJobs': ?sparkApplicationJobs,
+    };
+  }
+}
+
+/// List of all Native SQL queries details for a Spark Application.
+class SearchSparkApplicationNativeSqlQueriesResponse {
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent SearchSparkApplicationNativeSqlQueriesRequest.
+  core.String? nextPageToken;
+
+  /// Native SQL Execution Data
+  ///
+  /// Output only.
+  core.List<NativeSqlExecutionUiData>? sparkApplicationNativeSqlQueries;
+
+  SearchSparkApplicationNativeSqlQueriesResponse({
+    this.nextPageToken,
+    this.sparkApplicationNativeSqlQueries,
+  });
+
+  SearchSparkApplicationNativeSqlQueriesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        sparkApplicationNativeSqlQueries:
+            (json_['sparkApplicationNativeSqlQueries'] as core.List?)
+                ?.map(
+                  (value) => NativeSqlExecutionUiData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final sparkApplicationNativeSqlQueries =
+        this.sparkApplicationNativeSqlQueries;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'sparkApplicationNativeSqlQueries': ?sparkApplicationNativeSqlQueries,
     };
   }
 }
@@ -18023,7 +18686,7 @@ class SinkProgress {
 class SoftwareConfig {
   /// The version of software inside the cluster.
   ///
-  /// It must be one of the supported Dataproc Versions
+  /// It must be one of the supported Image Versions
   /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported-dataproc-image-versions),
   /// such as "1.2" (including a subminor version, such as "1.2.29"), or the
   /// "preview" version
@@ -21595,17 +22258,40 @@ class TrinoJob {
 
 /// Usage metrics represent approximate total resources consumed by a workload.
 class UsageMetrics {
-  /// DEPRECATED Accelerator type being used, if any
+  /// Accelerator type being used, if any Deprecated: This field is only used in
+  /// runtime versions below 3.0.
   ///
   /// Optional.
   core.String? acceleratorType;
 
-  /// DEPRECATED Accelerator usage in (milliAccelerator x seconds) (see Dataproc
+  /// Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless
+  /// pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+  ///
+  /// Deprecated: This field is only used in runtime versions below 3.0.
+  ///
+  /// Optional.
+  core.String? milliAcceleratorSeconds;
+
+  /// A100-40 accelerator usage in (milliAccelerator x seconds) (see Dataproc
   /// Serverless pricing
   /// (https://cloud.google.com/dataproc-serverless/pricing)).
   ///
   /// Optional.
-  core.String? milliAcceleratorSeconds;
+  core.String? milliAcceleratorSecondsA10040;
+
+  /// A100-80 accelerator usage in (milliAccelerator x seconds) (see Dataproc
+  /// Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing)).
+  ///
+  /// Optional.
+  core.String? milliAcceleratorSecondsA10080;
+
+  /// L4 accelerator usage in (milliAccelerator x seconds) (see Dataproc
+  /// Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing)).
+  ///
+  /// Optional.
+  core.String? milliAcceleratorSecondsL4;
 
   /// DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc
   /// Serverless pricing
@@ -21628,6 +22314,9 @@ class UsageMetrics {
   UsageMetrics({
     this.acceleratorType,
     this.milliAcceleratorSeconds,
+    this.milliAcceleratorSecondsA10040,
+    this.milliAcceleratorSecondsA10080,
+    this.milliAcceleratorSecondsL4,
     this.milliDcuSeconds,
     this.shuffleStorageGbSeconds,
     this.updateTime,
@@ -21638,6 +22327,12 @@ class UsageMetrics {
         acceleratorType: json_['acceleratorType'] as core.String?,
         milliAcceleratorSeconds:
             json_['milliAcceleratorSeconds'] as core.String?,
+        milliAcceleratorSecondsA10040:
+            json_['milliAcceleratorSecondsA10040'] as core.String?,
+        milliAcceleratorSecondsA10080:
+            json_['milliAcceleratorSecondsA10080'] as core.String?,
+        milliAcceleratorSecondsL4:
+            json_['milliAcceleratorSecondsL4'] as core.String?,
         milliDcuSeconds: json_['milliDcuSeconds'] as core.String?,
         shuffleStorageGbSeconds:
             json_['shuffleStorageGbSeconds'] as core.String?,
@@ -21647,12 +22342,18 @@ class UsageMetrics {
   core.Map<core.String, core.dynamic> toJson() {
     final acceleratorType = this.acceleratorType;
     final milliAcceleratorSeconds = this.milliAcceleratorSeconds;
+    final milliAcceleratorSecondsA10040 = this.milliAcceleratorSecondsA10040;
+    final milliAcceleratorSecondsA10080 = this.milliAcceleratorSecondsA10080;
+    final milliAcceleratorSecondsL4 = this.milliAcceleratorSecondsL4;
     final milliDcuSeconds = this.milliDcuSeconds;
     final shuffleStorageGbSeconds = this.shuffleStorageGbSeconds;
     final updateTime = this.updateTime;
     return {
       'acceleratorType': ?acceleratorType,
       'milliAcceleratorSeconds': ?milliAcceleratorSeconds,
+      'milliAcceleratorSecondsA10040': ?milliAcceleratorSecondsA10040,
+      'milliAcceleratorSecondsA10080': ?milliAcceleratorSecondsA10080,
+      'milliAcceleratorSecondsL4': ?milliAcceleratorSecondsL4,
       'milliDcuSeconds': ?milliDcuSeconds,
       'shuffleStorageGbSeconds': ?shuffleStorageGbSeconds,
       'updateTime': ?updateTime,
@@ -21663,7 +22364,8 @@ class UsageMetrics {
 /// The usage snapshot represents the resources consumed by a workload at a
 /// specified time.
 class UsageSnapshot {
-  /// Accelerator type being used, if any
+  /// Accelerator type being used, if any Deprecated: This field is only used in
+  /// runtime versions below 3.0.
   ///
   /// Optional.
   core.String? acceleratorType;
@@ -21671,10 +22373,35 @@ class UsageSnapshot {
   /// Milli (one-thousandth) accelerator.
   ///
   /// (see Dataproc Serverless pricing
-  /// (https://cloud.google.com/dataproc-serverless/pricing))
+  /// (https://cloud.google.com/dataproc-serverless/pricing)) Deprecated: This
+  /// field is only used in runtime versions below 3.0.
   ///
   /// Optional.
   core.String? milliAccelerator;
+
+  /// Milli (one-thousandth) accelerator for A100-40 accelerators.
+  ///
+  /// (see Dataproc Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing))
+  ///
+  /// Optional.
+  core.String? milliAcceleratorA10040;
+
+  /// Milli (one-thousandth) accelerator for A100-80 accelerators.
+  ///
+  /// (see Dataproc Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing))
+  ///
+  /// Optional.
+  core.String? milliAcceleratorA10080;
+
+  /// Milli (one-thousandth) accelerator for L4 accelerators.
+  ///
+  /// (see Dataproc Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing))
+  ///
+  /// Optional.
+  core.String? milliAcceleratorL4;
 
   /// Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc
   /// Serverless pricing
@@ -21714,6 +22441,9 @@ class UsageSnapshot {
   UsageSnapshot({
     this.acceleratorType,
     this.milliAccelerator,
+    this.milliAcceleratorA10040,
+    this.milliAcceleratorA10080,
+    this.milliAcceleratorL4,
     this.milliDcu,
     this.milliDcuPremium,
     this.shuffleStorageGb,
@@ -21725,6 +22455,9 @@ class UsageSnapshot {
     : this(
         acceleratorType: json_['acceleratorType'] as core.String?,
         milliAccelerator: json_['milliAccelerator'] as core.String?,
+        milliAcceleratorA10040: json_['milliAcceleratorA10040'] as core.String?,
+        milliAcceleratorA10080: json_['milliAcceleratorA10080'] as core.String?,
+        milliAcceleratorL4: json_['milliAcceleratorL4'] as core.String?,
         milliDcu: json_['milliDcu'] as core.String?,
         milliDcuPremium: json_['milliDcuPremium'] as core.String?,
         shuffleStorageGb: json_['shuffleStorageGb'] as core.String?,
@@ -21736,6 +22469,9 @@ class UsageSnapshot {
   core.Map<core.String, core.dynamic> toJson() {
     final acceleratorType = this.acceleratorType;
     final milliAccelerator = this.milliAccelerator;
+    final milliAcceleratorA10040 = this.milliAcceleratorA10040;
+    final milliAcceleratorA10080 = this.milliAcceleratorA10080;
+    final milliAcceleratorL4 = this.milliAcceleratorL4;
     final milliDcu = this.milliDcu;
     final milliDcuPremium = this.milliDcuPremium;
     final shuffleStorageGb = this.shuffleStorageGb;
@@ -21744,6 +22480,9 @@ class UsageSnapshot {
     return {
       'acceleratorType': ?acceleratorType,
       'milliAccelerator': ?milliAccelerator,
+      'milliAcceleratorA10040': ?milliAcceleratorA10040,
+      'milliAcceleratorA10080': ?milliAcceleratorA10080,
+      'milliAcceleratorL4': ?milliAcceleratorL4,
       'milliDcu': ?milliDcu,
       'milliDcuPremium': ?milliDcuPremium,
       'shuffleStorageGb': ?shuffleStorageGb,
@@ -21809,8 +22548,8 @@ class ValueValidation {
   }
 }
 
-/// The Dataproc cluster config for a cluster that does not directly control the
-/// underlying compute resources, such as a Dataproc-on-GKE cluster
+/// The cluster config for a cluster that does not directly control the
+/// underlying compute resources, such as a GKE cluster
 /// (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
 class VirtualClusterConfig {
   /// Configuration of auxiliary services used by this cluster.
@@ -21818,7 +22557,7 @@ class VirtualClusterConfig {
   /// Optional.
   AuxiliaryServicesConfig? auxiliaryServicesConfig;
 
-  /// The configuration for running the Dataproc cluster on Kubernetes.
+  /// The configuration for running the cluster on Kubernetes.
   ///
   /// Required.
   KubernetesClusterConfig? kubernetesClusterConfig;
@@ -21826,11 +22565,11 @@ class VirtualClusterConfig {
   /// A Cloud Storage bucket used to stage job dependencies, config files, and
   /// job driver console output.
   ///
-  /// If you do not specify a staging bucket, Cloud Dataproc will determine a
-  /// Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket
+  /// If you do not specify a staging bucket, the service will determine a Cloud
+  /// Storage location (US, ASIA, or EU) for your cluster's staging bucket
   /// according to the Compute Engine zone where your cluster is deployed, and
   /// then create and manage this project-level, per-location bucket (see
-  /// Dataproc staging and temp buckets
+  /// staging and temp buckets
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
   /// This field requires a Cloud Storage bucket name, not a gs://... URI to a
   /// Cloud Storage bucket.

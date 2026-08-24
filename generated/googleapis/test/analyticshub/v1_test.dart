@@ -328,6 +328,27 @@ void checkCloudStorageConfig(api.CloudStorageConfig o) {
   buildCounterCloudStorageConfig--;
 }
 
+core.int buildCounterCompression = 0;
+api.Compression buildCompression() {
+  final o = api.Compression();
+  buildCounterCompression++;
+  if (buildCounterCompression < 3) {
+    o.compressionAlgorithm = 'foo';
+    o.compressionMode = 'foo';
+  }
+  buildCounterCompression--;
+  return o;
+}
+
+void checkCompression(api.Compression o) {
+  buildCounterCompression++;
+  if (buildCounterCompression < 3) {
+    unittest.expect(o.compressionAlgorithm!, unittest.equals('foo'));
+    unittest.expect(o.compressionMode!, unittest.equals('foo'));
+  }
+  buildCounterCompression--;
+}
+
 core.int buildCounterDataExchange = 0;
 api.DataExchange buildDataExchange() {
   final o = api.DataExchange();
@@ -1131,6 +1152,7 @@ api.MessageTransform buildMessageTransform() {
   buildCounterMessageTransform++;
   if (buildCounterMessageTransform < 3) {
     o.aiInference = buildAIInference();
+    o.compression = buildCompression();
     o.disabled = true;
     o.enabled = true;
     o.javascriptUdf = buildJavaScriptUDF();
@@ -1143,6 +1165,7 @@ void checkMessageTransform(api.MessageTransform o) {
   buildCounterMessageTransform++;
   if (buildCounterMessageTransform < 3) {
     checkAIInference(o.aiInference!);
+    checkCompression(o.compression!);
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(o.enabled!, unittest.isTrue);
     checkJavaScriptUDF(o.javascriptUdf!);
@@ -2140,6 +2163,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCloudStorageConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-Compression', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCompression();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Compression.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCompression(od);
     });
   });
 

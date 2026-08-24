@@ -13699,10 +13699,14 @@ class GoogleCloudDialogflowV2CesAppSpec {
   /// - "REQUIRED"
   /// - "NOT_REQUIRED"
   core.String? confirmationRequirement;
+  core.bool? proactiveEnabled;
+  core.bool? reactiveEnabled;
 
   GoogleCloudDialogflowV2CesAppSpec({
     this.cesApp,
     this.confirmationRequirement,
+    this.proactiveEnabled,
+    this.reactiveEnabled,
   });
 
   GoogleCloudDialogflowV2CesAppSpec.fromJson(core.Map json_)
@@ -13710,14 +13714,20 @@ class GoogleCloudDialogflowV2CesAppSpec {
         cesApp: json_['cesApp'] as core.String?,
         confirmationRequirement:
             json_['confirmationRequirement'] as core.String?,
+        proactiveEnabled: json_['proactiveEnabled'] as core.bool?,
+        reactiveEnabled: json_['reactiveEnabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final cesApp = this.cesApp;
     final confirmationRequirement = this.confirmationRequirement;
+    final proactiveEnabled = this.proactiveEnabled;
+    final reactiveEnabled = this.reactiveEnabled;
     return {
       'cesApp': ?cesApp,
       'confirmationRequirement': ?confirmationRequirement,
+      'proactiveEnabled': ?proactiveEnabled,
+      'reactiveEnabled': ?reactiveEnabled,
     };
   }
 }
@@ -14243,7 +14253,7 @@ class GoogleCloudDialogflowV2ConversationGeneratorContext {
   }
 }
 
-typedef GoogleCloudDialogflowV2ConversationInfo = $Shared07;
+typedef GoogleCloudDialogflowV2ConversationInfo = $Shared10;
 
 class GoogleCloudDialogflowV2ConversationModel {
   GoogleCloudDialogflowV2ArticleSuggestionModelMetadata?
@@ -14432,6 +14442,7 @@ class GoogleCloudDialogflowV2ConversationProfile {
   newRecognitionResultNotificationConfig;
   GoogleCloudDialogflowV2NotificationConfig? notificationConfig;
   core.String? securitySettings;
+  GoogleCloudDialogflowV2SipConfig? sipConfig;
   GoogleCloudDialogflowV2SpeechToTextConfig? sttConfig;
   core.String? timeZone;
   GoogleCloudDialogflowV2SynthesizeSpeechConfig? ttsConfig;
@@ -14450,6 +14461,7 @@ class GoogleCloudDialogflowV2ConversationProfile {
     this.newRecognitionResultNotificationConfig,
     this.notificationConfig,
     this.securitySettings,
+    this.sipConfig,
     this.sttConfig,
     this.timeZone,
     this.ttsConfig,
@@ -14507,6 +14519,11 @@ class GoogleCloudDialogflowV2ConversationProfile {
               )
             : null,
         securitySettings: json_['securitySettings'] as core.String?,
+        sipConfig: json_.containsKey('sipConfig')
+            ? GoogleCloudDialogflowV2SipConfig.fromJson(
+                json_['sipConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sttConfig: json_.containsKey('sttConfig')
             ? GoogleCloudDialogflowV2SpeechToTextConfig.fromJson(
                 json_['sttConfig'] as core.Map<core.String, core.dynamic>,
@@ -14536,6 +14553,7 @@ class GoogleCloudDialogflowV2ConversationProfile {
         this.newRecognitionResultNotificationConfig;
     final notificationConfig = this.notificationConfig;
     final securitySettings = this.securitySettings;
+    final sipConfig = this.sipConfig;
     final sttConfig = this.sttConfig;
     final timeZone = this.timeZone;
     final ttsConfig = this.ttsConfig;
@@ -14554,6 +14572,7 @@ class GoogleCloudDialogflowV2ConversationProfile {
           ?newRecognitionResultNotificationConfig,
       'notificationConfig': ?notificationConfig,
       'securitySettings': ?securitySettings,
+      'sipConfig': ?sipConfig,
       'sttConfig': ?sttConfig,
       'timeZone': ?timeZone,
       'ttsConfig': ?ttsConfig,
@@ -14651,7 +14670,7 @@ class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent {
 }
 
 typedef GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader =
-    $Shared06;
+    $Shared09;
 
 class GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest {
   GoogleCloudDialogflowV2ConversationModelEvaluation?
@@ -15501,7 +15520,7 @@ class GoogleCloudDialogflowV2FewShotExample {
   }
 }
 
-typedef GoogleCloudDialogflowV2FreeFormContext = $Shared02;
+typedef GoogleCloudDialogflowV2FreeFormContext = $Shared04;
 
 class GoogleCloudDialogflowV2FreeFormSuggestion {
   core.String? response;
@@ -15631,7 +15650,7 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
   }
 }
 
-typedef GoogleCloudDialogflowV2GcsDestination = $Shared08;
+typedef GoogleCloudDialogflowV2GcsDestination = $Shared11;
 
 class GoogleCloudDialogflowV2GcsSources {
   core.List<core.String>? uris;
@@ -15980,6 +15999,9 @@ class GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswe
 
 class GoogleCloudDialogflowV2Generator {
   GoogleCloudDialogflowV2AgentCoachingContext? agentCoachingContext;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<GoogleCloudDialogflowV2CesAppSpec>? cesAppSpecs;
   core.List<GoogleCloudDialogflowV2CesToolSpec>? cesToolSpecs;
   core.String? createTime;
@@ -16721,6 +16743,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
   GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig?
   conversationProcessConfig;
   core.bool? disableAgentQueryLogging;
+  core.bool? disableQuerySearchContext;
   core.bool? enableConversationAugmentedQuery;
   core.bool? enableEventBasedSuggestion;
   core.bool? enableQuerySuggestionOnly;
@@ -16730,6 +16753,15 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
   queryConfig;
   GoogleCloudDialogflowV2RaiSettings? raiSettings;
   GoogleCloudDialogflowV2SuggestionFeature? suggestionFeature;
+
+  ///
+  /// Possible string values are:
+  /// - "TRIGGER_EVENT_UNSPECIFIED"
+  /// - "END_OF_UTTERANCE"
+  /// - "MANUAL_CALL"
+  /// - "CUSTOMER_MESSAGE"
+  /// - "AGENT_MESSAGE"
+  core.String? suggestionTriggerEvent;
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings?
   suggestionTriggerSettings;
 
@@ -16737,6 +16769,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
     this.conversationModelConfig,
     this.conversationProcessConfig,
     this.disableAgentQueryLogging,
+    this.disableQuerySearchContext,
     this.enableConversationAugmentedQuery,
     this.enableEventBasedSuggestion,
     this.enableQuerySuggestionOnly,
@@ -16745,6 +16778,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
     this.queryConfig,
     this.raiSettings,
     this.suggestionFeature,
+    this.suggestionTriggerEvent,
     this.suggestionTriggerSettings,
   });
 
@@ -16766,6 +16800,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
             : null,
         disableAgentQueryLogging:
             json_['disableAgentQueryLogging'] as core.bool?,
+        disableQuerySearchContext:
+            json_['disableQuerySearchContext'] as core.bool?,
         enableConversationAugmentedQuery:
             json_['enableConversationAugmentedQuery'] as core.bool?,
         enableEventBasedSuggestion:
@@ -16791,6 +16827,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        suggestionTriggerEvent: json_['suggestionTriggerEvent'] as core.String?,
         suggestionTriggerSettings:
             json_.containsKey('suggestionTriggerSettings')
             ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings.fromJson(
@@ -16804,6 +16841,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
     final conversationModelConfig = this.conversationModelConfig;
     final conversationProcessConfig = this.conversationProcessConfig;
     final disableAgentQueryLogging = this.disableAgentQueryLogging;
+    final disableQuerySearchContext = this.disableQuerySearchContext;
     final enableConversationAugmentedQuery =
         this.enableConversationAugmentedQuery;
     final enableEventBasedSuggestion = this.enableEventBasedSuggestion;
@@ -16814,11 +16852,13 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
     final queryConfig = this.queryConfig;
     final raiSettings = this.raiSettings;
     final suggestionFeature = this.suggestionFeature;
+    final suggestionTriggerEvent = this.suggestionTriggerEvent;
     final suggestionTriggerSettings = this.suggestionTriggerSettings;
     return {
       'conversationModelConfig': ?conversationModelConfig,
       'conversationProcessConfig': ?conversationProcessConfig,
       'disableAgentQueryLogging': ?disableAgentQueryLogging,
+      'disableQuerySearchContext': ?disableQuerySearchContext,
       'enableConversationAugmentedQuery': ?enableConversationAugmentedQuery,
       'enableEventBasedSuggestion': ?enableEventBasedSuggestion,
       'enableQuerySuggestionOnly': ?enableQuerySuggestionOnly,
@@ -16827,6 +16867,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
       'queryConfig': ?queryConfig,
       'raiSettings': ?raiSettings,
       'suggestionFeature': ?suggestionFeature,
+      'suggestionTriggerEvent': ?suggestionTriggerEvent,
       'suggestionTriggerSettings': ?suggestionTriggerSettings,
     };
   }
@@ -17471,6 +17512,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   core.String? audioEncoding;
   core.bool? disableNoSpeechRecognizedEvent;
   core.bool? enableAutomaticPunctuation;
+  core.bool? enableVoiceActivityEvents;
   core.bool? enableWordInfo;
   core.String? languageCode;
   core.String? model;
@@ -17496,6 +17538,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     this.audioEncoding,
     this.disableNoSpeechRecognizedEvent,
     this.enableAutomaticPunctuation,
+    this.enableVoiceActivityEvents,
     this.enableWordInfo,
     this.languageCode,
     this.model,
@@ -17515,6 +17558,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
             json_['disableNoSpeechRecognizedEvent'] as core.bool?,
         enableAutomaticPunctuation:
             json_['enableAutomaticPunctuation'] as core.bool?,
+        enableVoiceActivityEvents:
+            json_['enableVoiceActivityEvents'] as core.bool?,
         enableWordInfo: json_['enableWordInfo'] as core.bool?,
         languageCode: json_['languageCode'] as core.String?,
         model: json_['model'] as core.String?,
@@ -17542,6 +17587,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     final audioEncoding = this.audioEncoding;
     final disableNoSpeechRecognizedEvent = this.disableNoSpeechRecognizedEvent;
     final enableAutomaticPunctuation = this.enableAutomaticPunctuation;
+    final enableVoiceActivityEvents = this.enableVoiceActivityEvents;
     final enableWordInfo = this.enableWordInfo;
     final languageCode = this.languageCode;
     final model = this.model;
@@ -17556,6 +17602,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
       'audioEncoding': ?audioEncoding,
       'disableNoSpeechRecognizedEvent': ?disableNoSpeechRecognizedEvent,
       'enableAutomaticPunctuation': ?enableAutomaticPunctuation,
+      'enableVoiceActivityEvents': ?enableVoiceActivityEvents,
       'enableWordInfo': ?enableWordInfo,
       'languageCode': ?languageCode,
       'model': ?model,
@@ -18044,7 +18091,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
 }
 
 typedef GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction =
-    $Shared08;
+    $Shared11;
 
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
   ///
@@ -18735,7 +18782,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
   }
 }
 
-typedef GoogleCloudDialogflowV2IntentMessageTableCardCell = $Shared02;
+typedef GoogleCloudDialogflowV2IntentMessageTableCardCell = $Shared04;
 
 class GoogleCloudDialogflowV2IntentMessageTableCardRow {
   core.List<GoogleCloudDialogflowV2IntentMessageTableCardCell>? cells;
@@ -19004,23 +19051,61 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswer {
   }
 }
 
+class GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult {
+  core.String? answerRecord;
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery? suggestedQuery;
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult({
+    this.answerRecord,
+    this.suggestedQuery,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult.fromJson(
+    core.Map json_,
+  ) : this(
+        answerRecord: json_['answerRecord'] as core.String?,
+        suggestedQuery: json_.containsKey('suggestedQuery')
+            ? GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery.fromJson(
+                json_['suggestedQuery'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final answerRecord = this.answerRecord;
+    final suggestedQuery = this.suggestedQuery;
+    return {'answerRecord': ?answerRecord, 'suggestedQuery': ?suggestedQuery};
+  }
+}
+
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
   core.String? answerText;
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource?
+  eventSource;
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource?
   faqSource;
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource?
   generativeSource;
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource?
+  playbookSource;
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer({
     this.answerText,
+    this.eventSource,
     this.faqSource,
     this.generativeSource,
+    this.playbookSource,
   });
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer.fromJson(
     core.Map json_,
   ) : this(
         answerText: json_['answerText'] as core.String?,
+        eventSource: json_.containsKey('eventSource')
+            ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource.fromJson(
+                json_['eventSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         faqSource: json_.containsKey('faqSource')
             ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource.fromJson(
                 json_['faqSource'] as core.Map<core.String, core.dynamic>,
@@ -19032,17 +19117,54 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        playbookSource: json_.containsKey('playbookSource')
+            ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource.fromJson(
+                json_['playbookSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final answerText = this.answerText;
+    final eventSource = this.eventSource;
     final faqSource = this.faqSource;
     final generativeSource = this.generativeSource;
+    final playbookSource = this.playbookSource;
     return {
       'answerText': ?answerText,
+      'eventSource': ?eventSource,
       'faqSource': ?faqSource,
       'generativeSource': ?generativeSource,
+      'playbookSource': ?playbookSource,
     };
+  }
+}
+
+class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource {
+  core.String? event;
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource?
+  snippets;
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource({
+    this.event,
+    this.snippets,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource.fromJson(
+    core.Map json_,
+  ) : this(
+        event: json_['event'] as core.String?,
+        snippets: json_.containsKey('snippets')
+            ? GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource.fromJson(
+                json_['snippets'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final event = this.event;
+    final snippets = this.snippets;
+    return {'event': ?event, 'snippets': ?snippets};
   }
 }
 
@@ -19131,20 +19253,67 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourc
 
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery {
   core.String? queryText;
+  core.List<
+    GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext
+  >?
+  searchContexts;
 
-  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery({this.queryText});
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery({
+    this.queryText,
+    this.searchContexts,
+  });
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery.fromJson(
     core.Map json_,
-  ) : this(queryText: json_['queryText'] as core.String?);
+  ) : this(
+        queryText: json_['queryText'] as core.String?,
+        searchContexts: (json_['searchContexts'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final queryText = this.queryText;
-    return {'queryText': ?queryText};
+    final searchContexts = this.searchContexts;
+    return {'queryText': ?queryText, 'searchContexts': ?searchContexts};
+  }
+}
+
+class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext {
+  core.String? key;
+  core.String? value;
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext({
+    this.key,
+    this.value,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext.fromJson(
+    core.Map json_,
+  ) : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
   }
 }
 
 class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? cesDebugInfo;
+
   ///
   /// Possible string values are:
   /// - "DATASTORE_RESPONSE_REASON_UNSPECIFIED"
@@ -19170,6 +19339,8 @@ class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
   /// - "QUERY_CATEGORIZATION_RESULT_NOT_FOUND"
   /// - "QUERY_CATEGORIZATION_FAILED"
   core.String? queryCategorizationFailureReason;
+  GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo?
+  queryGenerationDebugInfo;
 
   ///
   /// Possible string values are:
@@ -19188,16 +19359,21 @@ class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
   GoogleCloudDialogflowV2ServiceLatency? serviceLatency;
 
   GoogleCloudDialogflowV2KnowledgeAssistDebugInfo({
+    this.cesDebugInfo,
     this.datastoreResponseReason,
     this.ingestedContextReferenceDebugInfo,
     this.knowledgeAssistBehavior,
     this.queryCategorizationFailureReason,
+    this.queryGenerationDebugInfo,
     this.queryGenerationFailureReason,
     this.serviceLatency,
   });
 
   GoogleCloudDialogflowV2KnowledgeAssistDebugInfo.fromJson(core.Map json_)
     : this(
+        cesDebugInfo: json_.containsKey('cesDebugInfo')
+            ? json_['cesDebugInfo'] as core.Map<core.String, core.dynamic>
+            : null,
         datastoreResponseReason:
             json_['datastoreResponseReason'] as core.String?,
         ingestedContextReferenceDebugInfo:
@@ -19215,6 +19391,12 @@ class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
             : null,
         queryCategorizationFailureReason:
             json_['queryCategorizationFailureReason'] as core.String?,
+        queryGenerationDebugInfo: json_.containsKey('queryGenerationDebugInfo')
+            ? GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo.fromJson(
+                json_['queryGenerationDebugInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         queryGenerationFailureReason:
             json_['queryGenerationFailureReason'] as core.String?,
         serviceLatency: json_.containsKey('serviceLatency')
@@ -19225,19 +19407,23 @@ class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final cesDebugInfo = this.cesDebugInfo;
     final datastoreResponseReason = this.datastoreResponseReason;
     final ingestedContextReferenceDebugInfo =
         this.ingestedContextReferenceDebugInfo;
     final knowledgeAssistBehavior = this.knowledgeAssistBehavior;
     final queryCategorizationFailureReason =
         this.queryCategorizationFailureReason;
+    final queryGenerationDebugInfo = this.queryGenerationDebugInfo;
     final queryGenerationFailureReason = this.queryGenerationFailureReason;
     final serviceLatency = this.serviceLatency;
     return {
+      'cesDebugInfo': ?cesDebugInfo,
       'datastoreResponseReason': ?datastoreResponseReason,
       'ingestedContextReferenceDebugInfo': ?ingestedContextReferenceDebugInfo,
       'knowledgeAssistBehavior': ?knowledgeAssistBehavior,
       'queryCategorizationFailureReason': ?queryCategorizationFailureReason,
+      'queryGenerationDebugInfo': ?queryGenerationDebugInfo,
       'queryGenerationFailureReason': ?queryGenerationFailureReason,
       'serviceLatency': ?serviceLatency,
     };
@@ -19360,6 +19546,59 @@ class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior {
       'useCustomSafetyFilterLevel': ?useCustomSafetyFilterLevel,
       'usePubsubDelivery': ?usePubsubDelivery,
       'useTranslatedMessage': ?useTranslatedMessage,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo {
+  core.int? candidatesTokenCount;
+  core.int? promptTokenCount;
+  core.double? similarityToLastQuery;
+  core.double? similarityToLastQueryThreshold;
+  core.int? thinkingBudgetTokens;
+  core.String? thinkingLevel;
+  core.int? totalTokenCount;
+
+  GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo({
+    this.candidatesTokenCount,
+    this.promptTokenCount,
+    this.similarityToLastQuery,
+    this.similarityToLastQueryThreshold,
+    this.thinkingBudgetTokens,
+    this.thinkingLevel,
+    this.totalTokenCount,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo.fromJson(
+    core.Map json_,
+  ) : this(
+        candidatesTokenCount: json_['candidatesTokenCount'] as core.int?,
+        promptTokenCount: json_['promptTokenCount'] as core.int?,
+        similarityToLastQuery: (json_['similarityToLastQuery'] as core.num?)
+            ?.toDouble(),
+        similarityToLastQueryThreshold:
+            (json_['similarityToLastQueryThreshold'] as core.num?)?.toDouble(),
+        thinkingBudgetTokens: json_['thinkingBudgetTokens'] as core.int?,
+        thinkingLevel: json_['thinkingLevel'] as core.String?,
+        totalTokenCount: json_['totalTokenCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final candidatesTokenCount = this.candidatesTokenCount;
+    final promptTokenCount = this.promptTokenCount;
+    final similarityToLastQuery = this.similarityToLastQuery;
+    final similarityToLastQueryThreshold = this.similarityToLastQueryThreshold;
+    final thinkingBudgetTokens = this.thinkingBudgetTokens;
+    final thinkingLevel = this.thinkingLevel;
+    final totalTokenCount = this.totalTokenCount;
+    return {
+      'candidatesTokenCount': ?candidatesTokenCount,
+      'promptTokenCount': ?promptTokenCount,
+      'similarityToLastQuery': ?similarityToLastQuery,
+      'similarityToLastQueryThreshold': ?similarityToLastQueryThreshold,
+      'thinkingBudgetTokens': ?thinkingBudgetTokens,
+      'thinkingLevel': ?thinkingLevel,
+      'totalTokenCount': ?totalTokenCount,
     };
   }
 }
@@ -20301,6 +20540,42 @@ class GoogleCloudDialogflowV2Participant {
   }
 }
 
+class GoogleCloudDialogflowV2ProbeDetails {
+  core.String? initTime;
+  core.String? optionsLatency;
+
+  ///
+  /// Possible string values are:
+  /// - "PROBE_STATUS_UNSPECIFIED"
+  /// - "PROBE_STATUS_SUCCESS"
+  /// - "PROBE_STATUS_FAILED"
+  core.String? probeStatus;
+
+  GoogleCloudDialogflowV2ProbeDetails({
+    this.initTime,
+    this.optionsLatency,
+    this.probeStatus,
+  });
+
+  GoogleCloudDialogflowV2ProbeDetails.fromJson(core.Map json_)
+    : this(
+        initTime: json_['initTime'] as core.String?,
+        optionsLatency: json_['optionsLatency'] as core.String?,
+        probeStatus: json_['probeStatus'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final initTime = this.initTime;
+    final optionsLatency = this.optionsLatency;
+    final probeStatus = this.probeStatus;
+    return {
+      'initTime': ?initTime,
+      'optionsLatency': ?optionsLatency,
+      'probeStatus': ?probeStatus,
+    };
+  }
+}
+
 class GoogleCloudDialogflowV2QueryInput {
   GoogleCloudDialogflowV2InputAudioConfig? audioConfig;
   GoogleCloudDialogflowV2EventInput? event;
@@ -20701,6 +20976,8 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswer {
   /// - "FAQ"
   /// - "GENERATIVE"
   /// - "INTENT"
+  /// - "PLAYBOOK"
+  /// - "EVENT"
   core.String? answerType;
 
   GoogleCloudDialogflowV2SearchKnowledgeAnswer({
@@ -20783,6 +21060,12 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource {
 
 class GoogleCloudDialogflowV2SearchKnowledgeDebugInfo {
   ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? cesDebugInfo;
+
+  ///
   /// Possible string values are:
   /// - "DATASTORE_RESPONSE_REASON_UNSPECIFIED"
   /// - "NONE"
@@ -20802,6 +21085,7 @@ class GoogleCloudDialogflowV2SearchKnowledgeDebugInfo {
   GoogleCloudDialogflowV2ServiceLatency? serviceLatency;
 
   GoogleCloudDialogflowV2SearchKnowledgeDebugInfo({
+    this.cesDebugInfo,
     this.datastoreResponseReason,
     this.ingestedContextReferenceDebugInfo,
     this.searchKnowledgeBehavior,
@@ -20810,6 +21094,9 @@ class GoogleCloudDialogflowV2SearchKnowledgeDebugInfo {
 
   GoogleCloudDialogflowV2SearchKnowledgeDebugInfo.fromJson(core.Map json_)
     : this(
+        cesDebugInfo: json_.containsKey('cesDebugInfo')
+            ? json_['cesDebugInfo'] as core.Map<core.String, core.dynamic>
+            : null,
         datastoreResponseReason:
             json_['datastoreResponseReason'] as core.String?,
         ingestedContextReferenceDebugInfo:
@@ -20833,12 +21120,14 @@ class GoogleCloudDialogflowV2SearchKnowledgeDebugInfo {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final cesDebugInfo = this.cesDebugInfo;
     final datastoreResponseReason = this.datastoreResponseReason;
     final ingestedContextReferenceDebugInfo =
         this.ingestedContextReferenceDebugInfo;
     final searchKnowledgeBehavior = this.searchKnowledgeBehavior;
     final serviceLatency = this.serviceLatency;
     return {
+      'cesDebugInfo': ?cesDebugInfo,
       'datastoreResponseReason': ?datastoreResponseReason,
       'ingestedContextReferenceDebugInfo': ?ingestedContextReferenceDebugInfo,
       'searchKnowledgeBehavior': ?searchKnowledgeBehavior,
@@ -21394,17 +21683,185 @@ class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest {
   }
 }
 
+class GoogleCloudDialogflowV2SipConfig {
+  core.bool? allowVirtualAgentInteraction;
+  core.List<core.String>? copyInboundCallLegHeaders;
+  core.bool? createConversationOnTheFly;
+  core.bool? ignoreReinviteMediaDirection;
+  core.bool? inactiveStart;
+  core.bool? keepConversationRunning;
+  core.String? maxAudioRecordingDuration;
+
+  GoogleCloudDialogflowV2SipConfig({
+    this.allowVirtualAgentInteraction,
+    this.copyInboundCallLegHeaders,
+    this.createConversationOnTheFly,
+    this.ignoreReinviteMediaDirection,
+    this.inactiveStart,
+    this.keepConversationRunning,
+    this.maxAudioRecordingDuration,
+  });
+
+  GoogleCloudDialogflowV2SipConfig.fromJson(core.Map json_)
+    : this(
+        allowVirtualAgentInteraction:
+            json_['allowVirtualAgentInteraction'] as core.bool?,
+        copyInboundCallLegHeaders:
+            (json_['copyInboundCallLegHeaders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createConversationOnTheFly:
+            json_['createConversationOnTheFly'] as core.bool?,
+        ignoreReinviteMediaDirection:
+            json_['ignoreReinviteMediaDirection'] as core.bool?,
+        inactiveStart: json_['inactiveStart'] as core.bool?,
+        keepConversationRunning: json_['keepConversationRunning'] as core.bool?,
+        maxAudioRecordingDuration:
+            json_['maxAudioRecordingDuration'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowVirtualAgentInteraction = this.allowVirtualAgentInteraction;
+    final copyInboundCallLegHeaders = this.copyInboundCallLegHeaders;
+    final createConversationOnTheFly = this.createConversationOnTheFly;
+    final ignoreReinviteMediaDirection = this.ignoreReinviteMediaDirection;
+    final inactiveStart = this.inactiveStart;
+    final keepConversationRunning = this.keepConversationRunning;
+    final maxAudioRecordingDuration = this.maxAudioRecordingDuration;
+    return {
+      'allowVirtualAgentInteraction': ?allowVirtualAgentInteraction,
+      'copyInboundCallLegHeaders': ?copyInboundCallLegHeaders,
+      'createConversationOnTheFly': ?createConversationOnTheFly,
+      'ignoreReinviteMediaDirection': ?ignoreReinviteMediaDirection,
+      'inactiveStart': ?inactiveStart,
+      'keepConversationRunning': ?keepConversationRunning,
+      'maxAudioRecordingDuration': ?maxAudioRecordingDuration,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2SipHostname {
+  ///
+  /// Possible string values are:
+  /// - "CONNECTION_STATE_UNSPECIFIED"
+  /// - "CONNECTED"
+  /// - "DISCONNECTED"
+  /// - "AUTHENTICATION_FAILED"
+  /// - "KEEPALIVE"
+  core.String? connectionState;
+  core.bool? enabledSipPing;
+  GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails? errorDetails;
+  core.String? peerHostname;
+  core.String? peerSocketAddress;
+  core.String? pingInterval;
+  GoogleCloudDialogflowV2ProbeDetails? probeDetails;
+
+  GoogleCloudDialogflowV2SipHostname({
+    this.connectionState,
+    this.enabledSipPing,
+    this.errorDetails,
+    this.peerHostname,
+    this.peerSocketAddress,
+    this.pingInterval,
+    this.probeDetails,
+  });
+
+  GoogleCloudDialogflowV2SipHostname.fromJson(core.Map json_)
+    : this(
+        connectionState: json_['connectionState'] as core.String?,
+        enabledSipPing: json_['enabledSipPing'] as core.bool?,
+        errorDetails: json_.containsKey('errorDetails')
+            ? GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails.fromJson(
+                json_['errorDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        peerHostname: json_['peerHostname'] as core.String?,
+        peerSocketAddress: json_['peerSocketAddress'] as core.String?,
+        pingInterval: json_['pingInterval'] as core.String?,
+        probeDetails: json_.containsKey('probeDetails')
+            ? GoogleCloudDialogflowV2ProbeDetails.fromJson(
+                json_['probeDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionState = this.connectionState;
+    final enabledSipPing = this.enabledSipPing;
+    final errorDetails = this.errorDetails;
+    final peerHostname = this.peerHostname;
+    final peerSocketAddress = this.peerSocketAddress;
+    final pingInterval = this.pingInterval;
+    final probeDetails = this.probeDetails;
+    return {
+      'connectionState': ?connectionState,
+      'enabledSipPing': ?enabledSipPing,
+      'errorDetails': ?errorDetails,
+      'peerHostname': ?peerHostname,
+      'peerSocketAddress': ?peerSocketAddress,
+      'pingInterval': ?pingInterval,
+      'probeDetails': ?probeDetails,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails {
+  ///
+  /// Possible string values are:
+  /// - "HOSTNAME_CERTIFICATE_STATE_UNSPECIFIED"
+  /// - "VALID"
+  /// - "INVALID"
+  /// - "EXPIRED"
+  /// - "HOSTNAME_NOT_FOUND"
+  /// - "UNAUTHENTICATED"
+  /// - "TRUST_STORE_NOT_FOUND"
+  /// - "HOSTNAME_INVALID_FORMAT"
+  /// - "QUOTA_EXCEEDED"
+  core.String? certificateState;
+  core.String? errorMessage;
+
+  GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails({
+    this.certificateState,
+    this.errorMessage,
+  });
+
+  GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails.fromJson(
+    core.Map json_,
+  ) : this(
+        certificateState: json_['certificateState'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificateState = this.certificateState;
+    final errorMessage = this.errorMessage;
+    return {
+      'certificateState': ?certificateState,
+      'errorMessage': ?errorMessage,
+    };
+  }
+}
+
 class GoogleCloudDialogflowV2SipTrunk {
   core.List<GoogleCloudDialogflowV2Connection>? connections;
   core.String? displayName;
   core.List<core.String>? expectedHostname;
+
+  ///
+  /// Possible string values are:
+  /// - "CERT_FILE_UNSPECIFIED"
+  /// - "EXTERNAL_PRIVATE_CA"
+  core.String? googleRootCertFile;
   core.String? name;
+  core.List<GoogleCloudDialogflowV2SipHostname>? peerHostnames;
 
   GoogleCloudDialogflowV2SipTrunk({
     this.connections,
     this.displayName,
     this.expectedHostname,
+    this.googleRootCertFile,
     this.name,
+    this.peerHostnames,
   });
 
   GoogleCloudDialogflowV2SipTrunk.fromJson(core.Map json_)
@@ -21420,19 +21877,31 @@ class GoogleCloudDialogflowV2SipTrunk {
         expectedHostname: (json_['expectedHostname'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        googleRootCertFile: json_['googleRootCertFile'] as core.String?,
         name: json_['name'] as core.String?,
+        peerHostnames: (json_['peerHostnames'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDialogflowV2SipHostname.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final connections = this.connections;
     final displayName = this.displayName;
     final expectedHostname = this.expectedHostname;
+    final googleRootCertFile = this.googleRootCertFile;
     final name = this.name;
+    final peerHostnames = this.peerHostnames;
     return {
       'connections': ?connections,
       'displayName': ?displayName,
       'expectedHostname': ?expectedHostname,
+      'googleRootCertFile': ?googleRootCertFile,
       'name': ?name,
+      'peerHostnames': ?peerHostnames,
     };
   }
 }
@@ -21943,11 +22412,16 @@ class GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest {
 }
 
 class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
+  core.List<
+    GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult
+  >?
+  additionalSuggestedQueryResults;
   core.int? contextSize;
   GoogleCloudDialogflowV2KnowledgeAssistAnswer? knowledgeAssistAnswer;
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse({
+    this.additionalSuggestedQueryResults,
     this.contextSize,
     this.knowledgeAssistAnswer,
     this.latestMessage,
@@ -21955,6 +22429,15 @@ class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
 
   GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse.fromJson(core.Map json_)
     : this(
+        additionalSuggestedQueryResults:
+            (json_['additionalSuggestedQueryResults'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
         contextSize: json_['contextSize'] as core.int?,
         knowledgeAssistAnswer: json_.containsKey('knowledgeAssistAnswer')
             ? GoogleCloudDialogflowV2KnowledgeAssistAnswer.fromJson(
@@ -21966,10 +22449,13 @@ class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final additionalSuggestedQueryResults =
+        this.additionalSuggestedQueryResults;
     final contextSize = this.contextSize;
     final knowledgeAssistAnswer = this.knowledgeAssistAnswer;
     final latestMessage = this.latestMessage;
     return {
+      'additionalSuggestedQueryResults': ?additionalSuggestedQueryResults,
       'contextSize': ?contextSize,
       'knowledgeAssistAnswer': ?knowledgeAssistAnswer,
       'latestMessage': ?latestMessage,
@@ -23378,7 +23864,24 @@ class GoogleCloudDialogflowV2ToolCallResult {
   }
 }
 
-typedef GoogleCloudDialogflowV2ToolCallResultError = $ToolCallResultError;
+class GoogleCloudDialogflowV2ToolCallResultError {
+  core.String? message;
+  core.bool? retryable;
+
+  GoogleCloudDialogflowV2ToolCallResultError({this.message, this.retryable});
+
+  GoogleCloudDialogflowV2ToolCallResultError.fromJson(core.Map json_)
+    : this(
+        message: json_['message'] as core.String?,
+        retryable: json_['retryable'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final retryable = this.retryable;
+    return {'message': ?message, 'retryable': ?retryable};
+  }
+}
 
 class GoogleCloudDialogflowV2ToolConnectorTool {
   core.List<GoogleCloudDialogflowV2ToolConnectorToolAction>? actions;
@@ -23482,7 +23985,7 @@ class GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation {
   }
 }
 
-typedef GoogleCloudDialogflowV2ToolExtensionTool = $Shared10;
+typedef GoogleCloudDialogflowV2ToolExtensionTool = $Shared00;
 
 class GoogleCloudDialogflowV2ToolFunctionTool {
   ///
@@ -23888,5 +24391,5 @@ class GoogleLongrunningOperation {
 }
 
 typedef GoogleProtobufEmpty = $Empty;
-typedef GoogleRpcStatus = $GoogleRpcStatus;
+typedef GoogleRpcStatus = $Status01;
 typedef GoogleTypeLatLng = $GoogleTypeLatLng;

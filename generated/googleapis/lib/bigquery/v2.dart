@@ -124,7 +124,8 @@ class DatasetsResource {
   ///
   /// Before you can delete a dataset, you must delete all its tables, either
   /// manually or by specifying deleteContents. Immediately after deletion, you
-  /// can create another dataset with the same name.
+  /// can create another dataset with the same name. # IAM Permissions Requires
+  /// the `bigquery.datasets.delete` permission on the dataset.
   ///
   /// Request parameters:
   ///
@@ -171,6 +172,9 @@ class DatasetsResource {
   }
 
   /// Returns the dataset specified by datasetID.
+  ///
+  /// # IAM Permissions Requires the `bigquery.datasets.get` permission on the
+  /// dataset.
   ///
   /// Request parameters:
   ///
@@ -249,6 +253,9 @@ class DatasetsResource {
 
   /// Creates a new empty dataset.
   ///
+  /// # IAM Permissions Requires the `bigquery.datasets.create` permission on
+  /// the project.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -306,6 +313,10 @@ class DatasetsResource {
 
   /// Lists all datasets in the specified project to which the user has been
   /// granted the READER dataset role.
+  ///
+  /// # IAM Permissions Requires no specific IAM permission(s) to use this
+  /// method. Results are filtered to only include datasets on which the caller
+  /// has the `bigquery.datasets.get` permission.
   ///
   /// Request parameters:
   ///
@@ -370,7 +381,10 @@ class DatasetsResource {
   ///
   /// The update method replaces the entire dataset resource, whereas the patch
   /// method only replaces fields that are provided in the submitted dataset
-  /// resource. This method supports RFC5789 patch semantics.
+  /// resource. This method supports RFC5789 patch semantics. # IAM Permissions
+  /// Requires the following IAM permission(s) to use this method: -
+  /// `bigquery.datasets.update` on the dataset. - `bigquery.datasets.get` on
+  /// the dataset.
   ///
   /// [request] - The metadata request object.
   ///
@@ -455,7 +469,10 @@ class DatasetsResource {
   /// Undeletes a dataset which is within time travel window based on datasetId.
   ///
   /// If a time is specified, the dataset version deleted at that time is
-  /// undeleted, else the last live version is undeleted.
+  /// undeleted, else the last live version is undeleted. # IAM Permissions
+  /// Requires the following IAM permission(s) to use this method: -
+  /// `bigquery.datasets.create` on the project. - `bigquery.datasets.get` on
+  /// the dataset.
   ///
   /// [request] - The metadata request object.
   ///
@@ -508,7 +525,8 @@ class DatasetsResource {
   ///
   /// The update method replaces the entire dataset resource, whereas the patch
   /// method only replaces fields that are provided in the submitted dataset
-  /// resource.
+  /// resource. # IAM Permissions Requires the `bigquery.datasets.update`
+  /// permission on the dataset.
   ///
   /// [request] - The metadata request object.
   ///
@@ -600,7 +618,10 @@ class JobsResource {
   ///
   /// This call will return immediately, and the client will need to poll for
   /// the job status to see if the cancel completed successfully. Cancelled jobs
-  /// may still incur costs.
+  /// may still incur costs. # IAM Permissions Requires the
+  /// `bigquery.jobs.update` permission on the job resource. If the user matches
+  /// the creator of the job, the `bigquery.jobs.create` permission on the
+  /// project is required instead.
   ///
   /// Request parameters:
   ///
@@ -656,7 +677,8 @@ class JobsResource {
 
   /// Requests the deletion of the metadata of a job.
   ///
-  /// This call returns when the job's metadata is deleted.
+  /// This call returns when the job's metadata is deleted. # IAM Permissions
+  /// Requires the `bigquery.jobs.delete` permission on the job resource.
   ///
   /// Request parameters:
   ///
@@ -712,7 +734,10 @@ class JobsResource {
   ///
   /// Job information is available for a six month period after creation.
   /// Requires that you're the person who ran the job, or have the Is Owner
-  /// project role.
+  /// project role. # IAM Permissions Requires the `bigquery.jobs.get`
+  /// permission on the job resource. If the user matches the creator of the
+  /// job, the `bigquery.jobs.create` permission on the project is required
+  /// instead.
   ///
   /// Request parameters:
   ///
@@ -765,6 +790,12 @@ class JobsResource {
   }
 
   /// RPC to get the results of a query job.
+  ///
+  /// # IAM Permissions Requires the following IAM permission(s) to use this
+  /// method: - `bigquery.jobs.get` on the job. - `bigquery.tables.getData` on
+  /// the destination table. If the user matches the creator of the job, the
+  /// following IAM permission(s) are required instead: - `bigquery.jobs.create`
+  /// on the project. - `bigquery.tables.getData` on the destination table.
   ///
   /// Request parameters:
   ///
@@ -876,7 +907,14 @@ class JobsResource {
   /// interactions, as it accepts the job configuration directly. * The *Upload*
   /// URI is ONLY for the case when you're sending both a load job configuration
   /// and a data stream together. In this case, the Upload URI accepts the job
-  /// configuration and the data as two distinct multipart MIME parts.
+  /// configuration and the data as two distinct multipart MIME parts. # IAM
+  /// Permissions Requires the `bigquery.jobs.create` permission on the project
+  /// resource. Additional permissions are required depending on the job type: -
+  /// **Load, Export, and Copy jobs**: Generally require data-level permissions
+  /// such as `bigquery.tables.export` or access to external storage. - **Query
+  /// jobs**: Permissions are dependent on the SQL statement. Complex queries
+  /// (DDL, DCL) may require additional permissions to create reservations,
+  /// modify IAM policies, or update project settings.
   ///
   /// [request] - The metadata request object.
   ///
@@ -944,7 +982,12 @@ class JobsResource {
   /// Job information is available for a six month period after creation. The
   /// job list is sorted in reverse chronological order, by job creation time.
   /// Requires the Can View project role, or the Is Owner project role if you
-  /// set the allUsers property.
+  /// set the allUsers property. # IAM Permissions Requires no specific IAM
+  /// permission(s) to use this method. Users are able to list the jobs they
+  /// created. Additional access is granted based on the following permissions:
+  /// - Users with the `bigquery.jobs.listAll` permission can list all jobs with
+  /// all metadata. - Users with the `bigquery.jobs.list` permission can list
+  /// all jobs, but with redacted information for jobs they did not create.
   ///
   /// Request parameters:
   ///
@@ -1026,6 +1069,13 @@ class JobsResource {
   /// Runs a BigQuery SQL query synchronously and returns query results if the
   /// query completes within a specified timeout.
   ///
+  /// # IAM Permissions Requires the `bigquery.jobs.create` permission on the
+  /// project resource. Data-level permissions are highly dependent on the SQL
+  /// statement being executed. While standard queries require data access (such
+  /// as `bigquery.tables.getData`), complex operations like DDL or DCL may
+  /// require permissions to manage reservations, IAM policies, or project
+  /// settings.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1074,6 +1124,9 @@ class ModelsResource {
 
   /// Deletes the model specified by modelId from the dataset.
   ///
+  /// # IAM Permissions Requires the `bigquery.models.delete` permission on the
+  /// model.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the model to delete.
@@ -1120,6 +1173,9 @@ class ModelsResource {
   }
 
   /// Gets the specified model resource by model ID.
+  ///
+  /// # IAM Permissions Requires the `bigquery.models.getMetadata` permission on
+  /// the model.
   ///
   /// Request parameters:
   ///
@@ -1172,7 +1228,8 @@ class ModelsResource {
   ///
   /// Requires the READER dataset role. After retrieving the list of models, you
   /// can get information about a particular model by calling the models.get
-  /// method.
+  /// method. # IAM Permissions Requires the `bigquery.models.list` permission
+  /// on the dataset.
   ///
   /// Request parameters:
   ///
@@ -1230,6 +1287,9 @@ class ModelsResource {
   }
 
   /// Patch specific fields in the specified model.
+  ///
+  /// # IAM Permissions Requires the `bigquery.models.updateMetadata` permission
+  /// on the model.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1290,7 +1350,12 @@ class ProjectsResource {
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// RPC to get the service account for a project used for interactions with
-  /// Google Cloud KMS
+  /// Google Cloud KMS.
+  ///
+  /// Requires the `bigquery.jobs.create` permission on the project resource.
+  /// This permission is required to authorize the retrieval of the project's
+  /// service identity for technical management tasks like encryption
+  /// configuration.
   ///
   /// Request parameters:
   ///
@@ -1333,7 +1398,10 @@ class ProjectsResource {
   /// Users of this method are encouraged to consider the
   /// [Resource Manager](https://cloud.google.com/resource-manager/docs/) API,
   /// which provides the underlying data for this method and has more
-  /// capabilities.
+  /// capabilities. # IAM Permissions Requires no specific IAM permission(s) to
+  /// use this method. The results are filtered to only include projects on
+  /// which the caller has been granted a project-level role such as a BigQuery
+  /// predefined IAM role or a basic role such as Viewer or Owner.
   ///
   /// Request parameters:
   ///
@@ -1386,6 +1454,9 @@ class RoutinesResource {
 
   /// Deletes the routine specified by routineId from the dataset.
   ///
+  /// # IAM Permissions Requires the `bigquery.routines.delete` permission on
+  /// the routine.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the routine to delete
@@ -1432,6 +1503,9 @@ class RoutinesResource {
   }
 
   /// Gets the specified routine resource by routine ID.
+  ///
+  /// # IAM Permissions Requires the `bigquery.routines.get` permission on the
+  /// routine.
   ///
   /// Request parameters:
   ///
@@ -1534,6 +1608,9 @@ class RoutinesResource {
 
   /// Creates a new routine in the dataset.
   ///
+  /// # IAM Permissions Requires the `bigquery.routines.create` permission on
+  /// the dataset.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1583,7 +1660,8 @@ class RoutinesResource {
 
   /// Lists all routines in the specified dataset.
   ///
-  /// Requires the READER dataset role.
+  /// Requires the READER dataset role. # IAM Permissions Requires the
+  /// `bigquery.routines.list` permission on the dataset.
   ///
   /// Request parameters:
   ///
@@ -1755,7 +1833,8 @@ class RoutinesResource {
 
   /// Updates information in an existing routine.
   ///
-  /// The update method replaces the entire Routine resource.
+  /// The update method replaces the entire Routine resource. # IAM Permissions
+  /// Requires the `bigquery.routines.update` permission on the routine.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1817,6 +1896,10 @@ class RowAccessPoliciesResource {
 
   /// Deletes provided row access policies.
   ///
+  /// # IAM Permissions Requires the following IAM permission(s) on the table: -
+  /// `bigquery.rowAccessPolicies.delete` -
+  /// `bigquery.rowAccessPolicies.setIamPolicy`
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1872,6 +1955,10 @@ class RowAccessPoliciesResource {
   }
 
   /// Deletes a row access policy.
+  ///
+  /// # IAM Permissions Requires the following IAM permission(s) on the table: -
+  /// `bigquery.rowAccessPolicies.delete` -
+  /// `bigquery.rowAccessPolicies.setIamPolicy`
   ///
   /// Request parameters:
   ///
@@ -1934,6 +2021,9 @@ class RowAccessPoliciesResource {
   }
 
   /// Gets the specified row access policy by policy ID.
+  ///
+  /// # IAM Permissions Requires the `bigquery.rowAccessPolicies.get` permission
+  /// on the table.
   ///
   /// Request parameters:
   ///
@@ -2041,6 +2131,10 @@ class RowAccessPoliciesResource {
 
   /// Creates a row access policy.
   ///
+  /// # IAM Permissions Requires the following IAM permission(s) on the table: -
+  /// `bigquery.rowAccessPolicies.create` -
+  /// `bigquery.rowAccessPolicies.setIamPolicy` - `bigquery.tables.getData`
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2099,6 +2193,9 @@ class RowAccessPoliciesResource {
   }
 
   /// Lists all row access policies on the specified table.
+  ///
+  /// # IAM Permissions Requires the `bigquery.rowAccessPolicies.list`
+  /// permission on the table.
   ///
   /// Request parameters:
   ///
@@ -2213,6 +2310,10 @@ class RowAccessPoliciesResource {
 
   /// Updates a row access policy.
   ///
+  /// # IAM Permissions Requires the following IAM permission(s) on the table: -
+  /// `bigquery.rowAccessPolicies.update` -
+  /// `bigquery.rowAccessPolicies.setIamPolicy` - `bigquery.tables.getData`
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2284,6 +2385,11 @@ class TabledataResource {
   /// Streams data into BigQuery one record at a time without needing to run a
   /// load job.
   ///
+  /// # IAM Permissions Requires the following IAM permission(s) to use this
+  /// method: - `bigquery.tables.updateData` on the table. -
+  /// `bigquery.tables.get` on the table. - `bigquery.datasets.get` on the
+  /// dataset.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2340,6 +2446,9 @@ class TabledataResource {
   }
 
   /// List the content of a table in rows.
+  ///
+  /// # IAM Permissions Requires the `bigquery.tables.getData` permission on the
+  /// table.
   ///
   /// Request parameters:
   ///
@@ -2442,7 +2551,8 @@ class TablesResource {
 
   /// Deletes the table specified by tableId from the dataset.
   ///
-  /// If the table contains data, all the data will be deleted.
+  /// If the table contains data, all the data will be deleted. # IAM
+  /// Permissions Requires the `bigquery.tables.delete` permission on the table.
   ///
   /// Request parameters:
   ///
@@ -2492,7 +2602,8 @@ class TablesResource {
   /// Gets the specified table resource by table ID.
   ///
   /// This method does not return the data in the table, it only returns the
-  /// table resource, which describes the structure of this table.
+  /// table resource, which describes the structure of this table. # IAM
+  /// Permissions Requires the `bigquery.tables.get` permission on the table.
   ///
   /// Request parameters:
   ///
@@ -2618,6 +2729,9 @@ class TablesResource {
 
   /// Creates a new, empty table in the dataset.
   ///
+  /// # IAM Permissions Requires the `bigquery.tables.create` permission on the
+  /// dataset.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2667,7 +2781,8 @@ class TablesResource {
 
   /// Lists all tables in the specified dataset.
   ///
-  /// Requires the READER dataset role.
+  /// Requires the READER dataset role. # IAM Permissions Requires the
+  /// `bigquery.tables.list` permission on the dataset.
   ///
   /// Request parameters:
   ///
@@ -2726,7 +2841,9 @@ class TablesResource {
   ///
   /// The update method replaces the entire table resource, whereas the patch
   /// method only replaces fields that are provided in the submitted table
-  /// resource. This method supports RFC5789 patch semantics.
+  /// resource. This method supports RFC5789 patch semantics. # IAM Permissions
+  /// Requires the following IAM permission(s) on the table: -
+  /// `bigquery.tables.update` - `bigquery.tables.get`
   ///
   /// [request] - The metadata request object.
   ///
@@ -2889,7 +3006,8 @@ class TablesResource {
   ///
   /// The update method replaces the entire Table resource, whereas the patch
   /// method only replaces fields that are provided in the submitted Table
-  /// resource.
+  /// resource. # IAM Permissions Requires the `bigquery.tables.update`
+  /// permission on the table.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3085,6 +3203,9 @@ class Argument {
   /// which can be a struct or an array, but not a table.
   /// - "ANY_TYPE" : The argument is any type, including struct or array, but
   /// not a table.
+  /// - "FIXED_TABLE" : The argument is a table with fully specified column
+  /// names and types.
+  /// - "ANY_TABLE" : The argument is any table type.
   core.String? argumentKind;
 
   /// Set if argument_kind == FIXED_TYPE.
@@ -3119,12 +3240,18 @@ class Argument {
   /// Optional.
   core.String? name;
 
+  /// Set if argument_kind == FIXED_TABLE.
+  ///
+  /// Optional.
+  StandardSqlTableType? tableType;
+
   Argument({
     this.argumentKind,
     this.dataType,
     this.isAggregate,
     this.mode,
     this.name,
+    this.tableType,
   });
 
   Argument.fromJson(core.Map json_)
@@ -3138,6 +3265,11 @@ class Argument {
         isAggregate: json_['isAggregate'] as core.bool?,
         mode: json_['mode'] as core.String?,
         name: json_['name'] as core.String?,
+        tableType: json_.containsKey('tableType')
+            ? StandardSqlTableType.fromJson(
+                json_['tableType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -3146,12 +3278,14 @@ class Argument {
     final isAggregate = this.isAggregate;
     final mode = this.mode;
     final name = this.name;
+    final tableType = this.tableType;
     return {
       'argumentKind': ?argumentKind,
       'dataType': ?dataType,
       'isAggregate': ?isAggregate,
       'mode': ?mode,
       'name': ?name,
+      'tableType': ?tableType,
     };
   }
 }
@@ -3623,6 +3757,120 @@ class ArimaSingleModelForecastingMetrics {
       'seasonalPeriods': ?seasonalPeriods,
       'timeSeriesId': ?timeSeriesId,
       'timeSeriesIds': ?timeSeriesIds,
+    };
+  }
+}
+
+/// Arrow RecordBatch.
+///
+/// This feature is not yet available.
+class ArrowRecordBatch {
+  /// IPC-serialized Arrow RecordBatch.
+  core.String? serializedRecordBatch;
+  core.List<core.int> get serializedRecordBatchAsBytes =>
+      convert.base64.decode(serializedRecordBatch!);
+
+  set serializedRecordBatchAsBytes(core.List<core.int> bytes_) {
+    serializedRecordBatch = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ArrowRecordBatch({this.serializedRecordBatch});
+
+  ArrowRecordBatch.fromJson(core.Map json_)
+    : this(
+        serializedRecordBatch: json_['serializedRecordBatch'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final serializedRecordBatch = this.serializedRecordBatch;
+    return {'serializedRecordBatch': ?serializedRecordBatch};
+  }
+}
+
+/// Arrow schema as specified in
+/// https://arrow.apache.org/docs/python/api/datatypes.html and serialized to
+/// bytes using IPC:
+/// https://arrow.apache.org/docs/format/Columnar.html#serialization-and-interprocess-communication-ipc
+/// See code samples on how this message can be deserialized.
+///
+/// This feature is not yet available.
+class ArrowSchema {
+  /// IPC serialized Arrow schema.
+  core.String? serializedSchema;
+  core.List<core.int> get serializedSchemaAsBytes =>
+      convert.base64.decode(serializedSchema!);
+
+  set serializedSchemaAsBytes(core.List<core.int> bytes_) {
+    serializedSchema = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ArrowSchema({this.serializedSchema});
+
+  ArrowSchema.fromJson(core.Map json_)
+    : this(serializedSchema: json_['serializedSchema'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final serializedSchema = this.serializedSchema;
+    return {'serializedSchema': ?serializedSchema};
+  }
+}
+
+/// Contains options specific to Arrow Serialization.
+///
+/// This feature is not yet available.
+class ArrowSerializationOptions {
+  /// The compression codec to use for Arrow buffers in serialized record
+  /// batches.
+  /// Possible string values are:
+  /// - "COMPRESSION_UNSPECIFIED" : If unspecified no compression will be used.
+  /// - "LZ4_FRAME" : LZ4 Frame
+  /// (https://github.com/lz4/lz4/blob/dev/doc/lz4_Frame_format.md)
+  /// - "ZSTD" : Zstandard compression.
+  core.String? bufferCompression;
+
+  /// Set timestamp precision option.
+  ///
+  /// If not set, the default precision is microseconds.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PICOS_TIMESTAMP_PRECISION_UNSPECIFIED" : Unspecified timestamp
+  /// precision. The default precision is microseconds.
+  /// - "TIMESTAMP_PRECISION_MICROS" : Timestamp values returned in the results
+  /// will be truncated to microsecond level precision. The value will be
+  /// encoded as Arrow TIMESTAMP type in a 64 bit integer.
+  /// - "TIMESTAMP_PRECISION_NANOS" : Timestamp values returned in the results
+  /// will be truncated to nanosecond level precision. The value will be encoded
+  /// as Arrow TIMESTAMP type in a 64 bit integer.
+  /// - "TIMESTAMP_PRECISION_PICOS" : Timestamp values returned in the results
+  /// will contain full precision picosecond value. The value will be encoded as
+  /// a string which conforms to ISO 8601 format.
+  core.String? picosTimestampPrecision;
+
+  ArrowSerializationOptions({
+    this.bufferCompression,
+    this.picosTimestampPrecision,
+  });
+
+  ArrowSerializationOptions.fromJson(core.Map json_)
+    : this(
+        bufferCompression: json_['bufferCompression'] as core.String?,
+        picosTimestampPrecision:
+            json_['picosTimestampPrecision'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bufferCompression = this.bufferCompression;
+    final picosTimestampPrecision = this.picosTimestampPrecision;
+    return {
+      'bufferCompression': ?bufferCompression,
+      'picosTimestampPrecision': ?picosTimestampPrecision,
     };
   }
 }
@@ -5211,6 +5459,35 @@ class DataMaskingStatistics {
   core.Map<core.String, core.dynamic> toJson() {
     final dataMaskingApplied = this.dataMaskingApplied;
     return {'dataMaskingApplied': ?dataMaskingApplied};
+  }
+}
+
+/// A list of data policy options.
+///
+/// For more information, see
+/// [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+class DataPolicyList {
+  /// Contains a list of data policy options.
+  ///
+  /// At most 9 data policies are allowed per field.
+  core.List<DataPolicyOption>? dataPolicies;
+
+  DataPolicyList({this.dataPolicies});
+
+  DataPolicyList.fromJson(core.Map json_)
+    : this(
+        dataPolicies: (json_['dataPolicies'] as core.List?)
+            ?.map(
+              (value) => DataPolicyOption.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataPolicies = this.dataPolicies;
+    return {'dataPolicies': ?dataPolicies};
   }
 }
 
@@ -7473,15 +7750,15 @@ class ExternalDataConfiguration {
   /// TIMESTAMP types that are allowed to the destination table for
   /// autodetection mode.
   ///
-  /// Available for the formats: CSV, PARQUET, and AVRO. Possible values
-  /// include: Not Specified, \[\], or \[6\]: timestamp(6) for all auto detected
-  /// TIMESTAMP columns \[6, 12\]: timestamp(6) for all auto detected TIMESTAMP
-  /// columns that have less than 6 digits of subseconds. timestamp(12) for all
-  /// auto detected TIMESTAMP columns that have more than 6 digits of
-  /// subseconds. \[12\]: timestamp(12) for all auto detected TIMESTAMP columns.
-  /// The order of the elements in this array is ignored. Inputs that have
-  /// higher precision than the highest target precision in this array will be
-  /// truncated.
+  /// Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table.
+  /// Possible values include: Not Specified, \[\], or \[6\]: timestamp(6) for
+  /// all auto detected TIMESTAMP columns \[6, 12\]: timestamp(6) for all auto
+  /// detected TIMESTAMP columns that have less than 6 digits of subseconds.
+  /// timestamp(12) for all auto detected TIMESTAMP columns that have more than
+  /// 6 digits of subseconds. \[12\]: timestamp(12) for all auto detected
+  /// TIMESTAMP columns. The order of the elements in this array is ignored.
+  /// Inputs that have higher precision than the highest target precision in
+  /// this array will be truncated.
   core.List<core.int>? timestampTargetPrecision;
 
   ExternalDataConfiguration({
@@ -7696,6 +7973,16 @@ class ExternalRuntimeOptions {
   /// Optional.
   core.String? containerMemory;
 
+  /// Maximum number of requests that a Python UDF instance can handle
+  /// concurrently.
+  ///
+  /// If absent or if `0`, the default concurrency value is used. For more
+  /// information, see
+  /// [Configure container limits for Python UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits).
+  ///
+  /// Optional.
+  core.String? containerRequestConcurrency;
+
   /// Maximum number of rows in each batch sent to the external runtime.
   ///
   /// If absent or if 0, BigQuery dynamically decides the number of rows in a
@@ -7723,6 +8010,7 @@ class ExternalRuntimeOptions {
   ExternalRuntimeOptions({
     this.containerCpu,
     this.containerMemory,
+    this.containerRequestConcurrency,
     this.maxBatchingRows,
     this.runtimeConnection,
     this.runtimeVersion,
@@ -7732,6 +8020,8 @@ class ExternalRuntimeOptions {
     : this(
         containerCpu: (json_['containerCpu'] as core.num?)?.toDouble(),
         containerMemory: json_['containerMemory'] as core.String?,
+        containerRequestConcurrency:
+            json_['containerRequestConcurrency'] as core.String?,
         maxBatchingRows: json_['maxBatchingRows'] as core.String?,
         runtimeConnection: json_['runtimeConnection'] as core.String?,
         runtimeVersion: json_['runtimeVersion'] as core.String?,
@@ -7740,12 +8030,14 @@ class ExternalRuntimeOptions {
   core.Map<core.String, core.dynamic> toJson() {
     final containerCpu = this.containerCpu;
     final containerMemory = this.containerMemory;
+    final containerRequestConcurrency = this.containerRequestConcurrency;
     final maxBatchingRows = this.maxBatchingRows;
     final runtimeConnection = this.runtimeConnection;
     final runtimeVersion = this.runtimeVersion;
     return {
       'containerCpu': ?containerCpu,
       'containerMemory': ?containerMemory,
+      'containerRequestConcurrency': ?containerRequestConcurrency,
       'maxBatchingRows': ?maxBatchingRows,
       'runtimeConnection': ?runtimeConnection,
       'runtimeVersion': ?runtimeVersion,
@@ -7941,6 +8233,22 @@ class GenAiErrorStats {
   }
 }
 
+/// Provides cache statistics for a GenAi function call.
+class GenAiFunctionCacheStats {
+  /// Number of rows served from cache.
+  core.String? numCacheHitRows;
+
+  GenAiFunctionCacheStats({this.numCacheHitRows});
+
+  GenAiFunctionCacheStats.fromJson(core.Map json_)
+    : this(numCacheHitRows: json_['numCacheHitRows'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final numCacheHitRows = this.numCacheHitRows;
+    return {'numCacheHitRows': ?numCacheHitRows};
+  }
+}
+
 /// Provides cost optimization statistics for a GenAi function call.
 class GenAiFunctionCostOptimizationStats {
   /// System generated message to provide insights into cost optimization state.
@@ -7992,6 +8300,9 @@ class GenAiFunctionErrorStats {
 
 /// Provides statistics for each Ai function call within a query.
 class GenAiFunctionStats {
+  /// Cache stats for the function.
+  GenAiFunctionCacheStats? cacheStats;
+
   /// Cost optimization stats if applied on the rows processed by the function.
   GenAiFunctionCostOptimizationStats? costOptimizationStats;
 
@@ -8010,6 +8321,7 @@ class GenAiFunctionStats {
   core.String? prompt;
 
   GenAiFunctionStats({
+    this.cacheStats,
     this.costOptimizationStats,
     this.errorStats,
     this.functionName,
@@ -8019,6 +8331,11 @@ class GenAiFunctionStats {
 
   GenAiFunctionStats.fromJson(core.Map json_)
     : this(
+        cacheStats: json_.containsKey('cacheStats')
+            ? GenAiFunctionCacheStats.fromJson(
+                json_['cacheStats'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         costOptimizationStats: json_.containsKey('costOptimizationStats')
             ? GenAiFunctionCostOptimizationStats.fromJson(
                 json_['costOptimizationStats']
@@ -8036,12 +8353,14 @@ class GenAiFunctionStats {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final cacheStats = this.cacheStats;
     final costOptimizationStats = this.costOptimizationStats;
     final errorStats = this.errorStats;
     final functionName = this.functionName;
     final numProcessedRows = this.numProcessedRows;
     final prompt = this.prompt;
     return {
+      'cacheStats': ?cacheStats,
       'costOptimizationStats': ?costOptimizationStats,
       'errorStats': ?errorStats,
       'functionName': ?functionName,
@@ -8056,9 +8375,10 @@ class GenAiStats {
   /// Job level error stats across all GenAi functions
   GenAiErrorStats? errorStats;
 
-  /// Function level stats for GenAi Functions.
+  /// Function level stats for GenAI Functions.
   ///
-  /// See https://docs.cloud.google.com/bigquery/docs/generative-ai-overview
+  /// For more information, see
+  /// [Generative AI overview](https://docs.cloud.google.com/bigquery/docs/generative-ai-overview).
   core.List<GenAiFunctionStats>? functionStats;
 
   GenAiStats({this.errorStats, this.functionStats});
@@ -8137,8 +8457,7 @@ class GeneratedExpressionInfo {
   /// Optional.
   core.bool? asynchronous;
 
-  /// The generation expression (e.g. AI.EMBED(...)) used to generated the
-  /// field.
+  /// The generation expression (e.g. AI.EMBED(...)) used to generate the field.
   ///
   /// Optional.
   core.String? generationExpression;
@@ -9678,6 +9997,9 @@ class JobConfiguration {
   /// set, reservation is determined based on the rules defined by the
   /// reservation assignments. The expected format is
   /// `projects/{project}/locations/{location}/reservations/{reservation}`.
+  /// Forces the query to use on-demand billing when set to `none`, which
+  /// requires the project or organization to have `reservation_override_mode`
+  /// set to `ALLOW_ANY_OVERRIDE`.
   ///
   /// Optional.
   core.String? reservation;
@@ -10313,15 +10635,15 @@ class JobConfigurationLoad {
   /// TIMESTAMP types that are allowed to the destination table for
   /// autodetection mode.
   ///
-  /// Available for the formats: CSV, PARQUET, and AVRO. Possible values
-  /// include: Not Specified, \[\], or \[6\]: timestamp(6) for all auto detected
-  /// TIMESTAMP columns \[6, 12\]: timestamp(6) for all auto detected TIMESTAMP
-  /// columns that have less than 6 digits of subseconds. timestamp(12) for all
-  /// auto detected TIMESTAMP columns that have more than 6 digits of
-  /// subseconds. \[12\]: timestamp(12) for all auto detected TIMESTAMP columns.
-  /// The order of the elements in this array is ignored. Inputs that have
-  /// higher precision than the highest target precision in this array will be
-  /// truncated.
+  /// Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table.
+  /// Possible values include: Not Specified, \[\], or \[6\]: timestamp(6) for
+  /// all auto detected TIMESTAMP columns \[6, 12\]: timestamp(6) for all auto
+  /// detected TIMESTAMP columns that have less than 6 digits of subseconds.
+  /// timestamp(12) for all auto detected TIMESTAMP columns that have more than
+  /// 6 digits of subseconds. \[12\]: timestamp(12) for all auto detected
+  /// TIMESTAMP columns. The order of the elements in this array is ignored.
+  /// Inputs that have higher precision than the highest target precision in
+  /// this array will be truncated.
   core.List<core.int>? timestampTargetPrecision;
 
   /// If sourceFormat is set to "AVRO", indicates whether to interpret logical
@@ -11493,6 +11815,11 @@ class JobStatistics {
   /// Output only.
   core.String? finalExecutionDurationMs;
 
+  /// Regions where the global query accesses data.
+  ///
+  /// Output only.
+  core.List<core.String>? globalQueryRemoteRegions;
+
   /// Statistics for a load job.
   ///
   /// Output only.
@@ -11502,6 +11829,11 @@ class JobStatistics {
   ///
   /// Output only.
   core.String? numChildJobs;
+
+  /// The global query that created this job.
+  ///
+  /// Output only.
+  JobReference? parentGlobalQueryJob;
 
   /// If this is a child job, specifies the job ID of the parent.
   ///
@@ -11603,8 +11935,10 @@ class JobStatistics {
     this.endTime,
     this.extract,
     this.finalExecutionDurationMs,
+    this.globalQueryRemoteRegions,
     this.load,
     this.numChildJobs,
+    this.parentGlobalQueryJob,
     this.parentJobId,
     this.query,
     this.quotaDeferments,
@@ -11644,12 +11978,22 @@ class JobStatistics {
             : null,
         finalExecutionDurationMs:
             json_['finalExecutionDurationMs'] as core.String?,
+        globalQueryRemoteRegions:
+            (json_['globalQueryRemoteRegions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         load: json_.containsKey('load')
             ? JobStatistics3.fromJson(
                 json_['load'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         numChildJobs: json_['numChildJobs'] as core.String?,
+        parentGlobalQueryJob: json_.containsKey('parentGlobalQueryJob')
+            ? JobReference.fromJson(
+                json_['parentGlobalQueryJob']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         parentJobId: json_['parentJobId'] as core.String?,
         query: json_.containsKey('query')
             ? JobStatistics2.fromJson(
@@ -11707,8 +12051,10 @@ class JobStatistics {
     final endTime = this.endTime;
     final extract = this.extract;
     final finalExecutionDurationMs = this.finalExecutionDurationMs;
+    final globalQueryRemoteRegions = this.globalQueryRemoteRegions;
     final load = this.load;
     final numChildJobs = this.numChildJobs;
+    final parentGlobalQueryJob = this.parentGlobalQueryJob;
     final parentJobId = this.parentJobId;
     final query = this.query;
     final quotaDeferments = this.quotaDeferments;
@@ -11731,8 +12077,10 @@ class JobStatistics {
       'endTime': ?endTime,
       'extract': ?extract,
       'finalExecutionDurationMs': ?finalExecutionDurationMs,
+      'globalQueryRemoteRegions': ?globalQueryRemoteRegions,
       'load': ?load,
       'numChildJobs': ?numChildJobs,
+      'parentGlobalQueryJob': ?parentGlobalQueryJob,
       'parentJobId': ?parentJobId,
       'query': ?query,
       'quotaDeferments': ?quotaDeferments,
@@ -11930,6 +12278,12 @@ class JobStatistics2 {
   ///
   /// Output only.
   core.String? numDmlAffectedRows;
+
+  /// Storage and caching statistics per cloud provider for queries over object
+  /// storage.
+  ///
+  /// Output only.
+  core.List<ObjectStorageStats>? objectStorageStats;
 
   /// Performance insights.
   ///
@@ -12133,8 +12487,12 @@ class JobStatistics2 {
   /// Output only.
   core.String? totalSlotMs;
 
-  /// Total bytes transferred for cross-cloud queries such as Cross Cloud
-  /// Transfer and CREATE TABLE AS SELECT (CTAS).
+  /// Total bytes transferred for BigQuery Omni queries from the remote cloud
+  /// back to Google Cloud.
+  ///
+  /// This tracks data movement over Google-managed connections (like query
+  /// results). It doesn't include input data read from the external data lake
+  /// (for example, S3) because that data stays within the remote cloud.
   ///
   /// Output only.
   core.String? transferredBytes;
@@ -12178,6 +12536,7 @@ class JobStatistics2 {
     this.modelTrainingCurrentIteration,
     this.modelTrainingExpectedTotalIteration,
     this.numDmlAffectedRows,
+    this.objectStorageStats,
     this.performanceInsights,
     this.queryInfo,
     this.queryPlan,
@@ -12324,6 +12683,13 @@ class JobStatistics2 {
         modelTrainingExpectedTotalIteration:
             json_['modelTrainingExpectedTotalIteration'] as core.String?,
         numDmlAffectedRows: json_['numDmlAffectedRows'] as core.String?,
+        objectStorageStats: (json_['objectStorageStats'] as core.List?)
+            ?.map(
+              (value) => ObjectStorageStats.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         performanceInsights: json_.containsKey('performanceInsights')
             ? PerformanceInsights.fromJson(
                 json_['performanceInsights']
@@ -12450,6 +12816,7 @@ class JobStatistics2 {
     final modelTrainingExpectedTotalIteration =
         this.modelTrainingExpectedTotalIteration;
     final numDmlAffectedRows = this.numDmlAffectedRows;
+    final objectStorageStats = this.objectStorageStats;
     final performanceInsights = this.performanceInsights;
     final queryInfo = this.queryInfo;
     final queryPlan = this.queryPlan;
@@ -12500,6 +12867,7 @@ class JobStatistics2 {
       'modelTrainingExpectedTotalIteration':
           ?modelTrainingExpectedTotalIteration,
       'numDmlAffectedRows': ?numDmlAffectedRows,
+      'objectStorageStats': ?objectStorageStats,
       'performanceInsights': ?performanceInsights,
       'queryInfo': ?queryInfo,
       'queryPlan': ?queryPlan,
@@ -12681,20 +13049,35 @@ class JobStatistics5 {
   /// Output only.
   core.String? copiedRows;
 
-  JobStatistics5({this.copiedLogicalBytes, this.copiedRows});
+  /// Destination region for a cross-region copy job.
+  ///
+  /// Not set for in-region copy jobs.
+  ///
+  /// Output only.
+  core.String? remoteDestinationRegion;
+
+  JobStatistics5({
+    this.copiedLogicalBytes,
+    this.copiedRows,
+    this.remoteDestinationRegion,
+  });
 
   JobStatistics5.fromJson(core.Map json_)
     : this(
         copiedLogicalBytes: json_['copiedLogicalBytes'] as core.String?,
         copiedRows: json_['copiedRows'] as core.String?,
+        remoteDestinationRegion:
+            json_['remoteDestinationRegion'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final copiedLogicalBytes = this.copiedLogicalBytes;
     final copiedRows = this.copiedRows;
+    final remoteDestinationRegion = this.remoteDestinationRegion;
     return {
       'copiedLogicalBytes': ?copiedLogicalBytes,
       'copiedRows': ?copiedRows,
+      'remoteDestinationRegion': ?remoteDestinationRegion,
     };
   }
 }
@@ -13292,6 +13675,42 @@ class MaterializedViewStatus {
     return {
       'lastRefreshStatus': ?lastRefreshStatus,
       'refreshWatermark': ?refreshWatermark,
+    };
+  }
+}
+
+/// Column Metadata Index staleness detailed infnormation.
+class MetadataCacheStalenessInsight {
+  /// Average column metadata index staleness of previous runs with the same
+  /// query hash.
+  ///
+  /// Output only.
+  core.String? avgPreviousStalenessMs;
+
+  /// The percent increase in staleness between the current job and the average
+  /// staleness of previous jobs with the same query hash.
+  ///
+  /// Output only.
+  core.double? stalenessPercentageIncrease;
+
+  MetadataCacheStalenessInsight({
+    this.avgPreviousStalenessMs,
+    this.stalenessPercentageIncrease,
+  });
+
+  MetadataCacheStalenessInsight.fromJson(core.Map json_)
+    : this(
+        avgPreviousStalenessMs: json_['avgPreviousStalenessMs'] as core.String?,
+        stalenessPercentageIncrease:
+            (json_['stalenessPercentageIncrease'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final avgPreviousStalenessMs = this.avgPreviousStalenessMs;
+    final stalenessPercentageIncrease = this.stalenessPercentageIncrease;
+    return {
+      'avgPreviousStalenessMs': ?avgPreviousStalenessMs,
+      'stalenessPercentageIncrease': ?stalenessPercentageIncrease,
     };
   }
 }
@@ -13912,6 +14331,48 @@ class MultiClassClassificationMetrics {
   }
 }
 
+/// Storage and caching statistics for object storage.
+class ObjectStorageStats {
+  /// Total bytes read from the GCP Lakehouse-internal cache, avoiding an object
+  /// storage read.
+  core.String? cacheBytesRead;
+
+  /// The cloud provider for this block of statistics.
+  /// Possible string values are:
+  /// - "CLOUD_PROVIDER_UNSPECIFIED" : Unspecified cloud provider.
+  /// - "GCP" : Google Cloud Platform.
+  /// - "AWS" : Amazon Web Services.
+  /// - "AZURE" : Microsoft Azure.
+  core.String? cloudProvider;
+
+  /// Total bytes read directly from the cloud provider's storage.
+  core.String? objectStorageBytesRead;
+
+  ObjectStorageStats({
+    this.cacheBytesRead,
+    this.cloudProvider,
+    this.objectStorageBytesRead,
+  });
+
+  ObjectStorageStats.fromJson(core.Map json_)
+    : this(
+        cacheBytesRead: json_['cacheBytesRead'] as core.String?,
+        cloudProvider: json_['cloudProvider'] as core.String?,
+        objectStorageBytesRead: json_['objectStorageBytesRead'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cacheBytesRead = this.cacheBytesRead;
+    final cloudProvider = this.cloudProvider;
+    final objectStorageBytesRead = this.objectStorageBytesRead;
+    return {
+      'cacheBytesRead': ?cacheBytesRead,
+      'cloudProvider': ?cloudProvider,
+      'objectStorageBytesRead': ?objectStorageBytesRead,
+    };
+  }
+}
+
 /// Parquet Options for load and make external tables.
 class ParquetOptions {
   /// Indicates whether to use schema inference specifically for Parquet LIST
@@ -14066,10 +14527,17 @@ class PerformanceInsights {
   core.List<StagePerformanceStandaloneInsight>?
   stagePerformanceStandaloneInsights;
 
+  /// Performance insights for table-level attributes that changed compared to
+  /// previous runs.
+  ///
+  /// Output only.
+  core.List<TableChangeInsight>? tableChangeInsights;
+
   PerformanceInsights({
     this.avgPreviousExecutionMs,
     this.stagePerformanceChangeInsights,
     this.stagePerformanceStandaloneInsights,
+    this.tableChangeInsights,
   });
 
   PerformanceInsights.fromJson(core.Map json_)
@@ -14091,6 +14559,13 @@ class PerformanceInsights {
                   ),
                 )
                 .toList(),
+        tableChangeInsights: (json_['tableChangeInsights'] as core.List?)
+            ?.map(
+              (value) => TableChangeInsight.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -14098,10 +14573,12 @@ class PerformanceInsights {
     final stagePerformanceChangeInsights = this.stagePerformanceChangeInsights;
     final stagePerformanceStandaloneInsights =
         this.stagePerformanceStandaloneInsights;
+    final tableChangeInsights = this.tableChangeInsights;
     return {
       'avgPreviousExecutionMs': ?avgPreviousExecutionMs,
       'stagePerformanceChangeInsights': ?stagePerformanceChangeInsights,
       'stagePerformanceStandaloneInsights': ?stagePerformanceStandaloneInsights,
+      'tableChangeInsights': ?tableChangeInsights,
     };
   }
 }
@@ -14869,6 +15346,11 @@ class QueryParameterValue {
 
 /// Describes the format of the jobs.query request.
 class QueryRequest {
+  /// Options specific to the Apache Arrow output format.
+  ///
+  /// Optional.
+  ArrowSerializationOptions? arrowSerializationOptions;
+
   /// Connection properties which can modify the query behavior.
   ///
   /// Optional.
@@ -15019,6 +15501,26 @@ class QueryRequest {
   /// Query parameters for GoogleSQL queries.
   core.List<QueryParameter>? queryParameters;
 
+  /// The query results format.
+  ///
+  /// If the value is anything other than `STRUCT_ENCODING` or unspecified: *
+  /// The schema of the results will be provided in
+  /// `QueryResponse.results_schema` field. * The results of the first page will
+  /// be provided in `QueryResponse.results` field. * The `QueryResponse.rows`
+  /// will not be populated. * The `QueryResponse.schema` for
+  /// `QueryResponse.rows` will also not be populated since it is the schema of
+  /// the `QueryResponse.rows`. This feature is not yet available.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "QUERY_RESULTS_FORMAT_UNSPECIFIED" : If unspecified it will default to
+  /// struct `QueryResponse.rows` (`STRUCT_ENCODING`)
+  /// - "STRUCT_ENCODING" : Default encoding of results as struct in
+  /// `QueryResponse.rows`
+  /// - "ARROW" : Arrow is a standard open source column-based message format.
+  /// See https://arrow.apache.org/ for more details.
+  core.String? queryResultsFormat;
+
   /// A unique user provided identifier to ensure idempotent behavior for
   /// queries.
   ///
@@ -15050,6 +15552,9 @@ class QueryRequest {
   /// User can specify a reservation to execute the job.query. The expected
   /// format is
   /// `projects/{project}/locations/{location}/reservations/{reservation}`.
+  /// Forces the query to use on-demand billing when set to `none`. This
+  /// requires the project or organization to have `reservation_override_mode`
+  /// set to `ALLOW_ANY_OVERRIDE`.
   ///
   /// Optional.
   core.String? reservation;
@@ -15096,6 +15601,7 @@ class QueryRequest {
   core.bool? writeIncrementalResults;
 
   QueryRequest({
+    this.arrowSerializationOptions,
     this.connectionProperties,
     this.continuous,
     this.createSession,
@@ -15115,6 +15621,7 @@ class QueryRequest {
     this.preserveNulls,
     this.query,
     this.queryParameters,
+    this.queryResultsFormat,
     this.requestId,
     this.reservation,
     this.timeoutMs,
@@ -15125,6 +15632,13 @@ class QueryRequest {
 
   QueryRequest.fromJson(core.Map json_)
     : this(
+        arrowSerializationOptions:
+            json_.containsKey('arrowSerializationOptions')
+            ? ArrowSerializationOptions.fromJson(
+                json_['arrowSerializationOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         connectionProperties: (json_['connectionProperties'] as core.List?)
             ?.map(
               (value) => ConnectionProperty.fromJson(
@@ -15172,6 +15686,7 @@ class QueryRequest {
               ),
             )
             .toList(),
+        queryResultsFormat: json_['queryResultsFormat'] as core.String?,
         requestId: json_['requestId'] as core.String?,
         reservation: json_['reservation'] as core.String?,
         timeoutMs: json_['timeoutMs'] as core.int?,
@@ -15181,6 +15696,7 @@ class QueryRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final arrowSerializationOptions = this.arrowSerializationOptions;
     final connectionProperties = this.connectionProperties;
     final continuous = this.continuous;
     final createSession = this.createSession;
@@ -15201,6 +15717,7 @@ class QueryRequest {
     final preserveNulls = this.preserveNulls;
     final query = this.query;
     final queryParameters = this.queryParameters;
+    final queryResultsFormat = this.queryResultsFormat;
     final requestId = this.requestId;
     final reservation = this.reservation;
     final timeoutMs = this.timeoutMs;
@@ -15208,6 +15725,7 @@ class QueryRequest {
     final useQueryCache = this.useQueryCache;
     final writeIncrementalResults = this.writeIncrementalResults;
     return {
+      'arrowSerializationOptions': ?arrowSerializationOptions,
       'connectionProperties': ?connectionProperties,
       'continuous': ?continuous,
       'createSession': ?createSession,
@@ -15227,6 +15745,7 @@ class QueryRequest {
       'preserveNulls': ?preserveNulls,
       'query': ?query,
       'queryParameters': ?queryParameters,
+      'queryResultsFormat': ?queryResultsFormat,
       'requestId': ?requestId,
       'reservation': ?reservation,
       'timeoutMs': ?timeoutMs,
@@ -15238,6 +15757,16 @@ class QueryRequest {
 }
 
 class QueryResponse {
+  /// Serialized row data in Arrow RecordBatch format.
+  ///
+  /// Output only.
+  ArrowRecordBatch? arrowRecordBatch;
+
+  /// Arrow schema
+  ///
+  /// Output only.
+  ArrowSchema? arrowSchema;
+
   /// Whether the query result was fetched from the query cache.
   core.bool? cacheHit;
 
@@ -15313,6 +15842,13 @@ class QueryResponse {
   /// Output only.
   core.String? numDmlAffectedRows;
 
+  /// The number of rows out of `total_rows` returned in this response.
+  ///
+  /// This feature is not yet available.
+  ///
+  /// Output only.
+  core.String? pageRowCount;
+
   /// A token used for paging results.
   ///
   /// A non-empty token indicates that additional results are available. To see
@@ -15350,6 +15886,96 @@ class QueryResponse {
   /// Output only.
   core.String? startTime;
 
+  /// The type of query statement, if valid.
+  ///
+  /// Possible values: * `SELECT`:
+  /// \[`SELECT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list)
+  /// statement. * `ASSERT`:
+  /// \[`ASSERT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/debugging-statements#assert)
+  /// statement. * `INSERT`:
+  /// \[`INSERT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#insert_statement)
+  /// statement. * `UPDATE`:
+  /// \[`UPDATE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#update_statement)
+  /// statement. * `DELETE`:
+  /// \[`DELETE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+  /// statement. * `MERGE`:
+  /// \[`MERGE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+  /// statement. * `CREATE_TABLE`: \[`CREATE
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement)
+  /// statement, without `AS SELECT`. * `CREATE_TABLE_AS_SELECT`: \[`CREATE
+  /// TABLE AS
+  /// SELECT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement)
+  /// statement. * `CREATE_VIEW`: \[`CREATE
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement)
+  /// statement. * `CREATE_MODEL`: \[`CREATE
+  /// MODEL`\](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#create_model_statement)
+  /// statement. * `CREATE_MATERIALIZED_VIEW`: \[`CREATE MATERIALIZED
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement)
+  /// statement. * `CREATE_FUNCTION`: \[`CREATE
+  /// FUNCTION`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_function_statement)
+  /// statement. * `CREATE_TABLE_FUNCTION`: \[`CREATE TABLE
+  /// FUNCTION`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_function_statement)
+  /// statement. * `CREATE_PROCEDURE`: \[`CREATE
+  /// PROCEDURE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_procedure)
+  /// statement. * `CREATE_ROW_ACCESS_POLICY`: \[`CREATE ROW ACCESS
+  /// POLICY`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_row_access_policy_statement)
+  /// statement. * `CREATE_SCHEMA`: \[`CREATE
+  /// SCHEMA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_schema_statement)
+  /// statement. * `CREATE_SNAPSHOT_TABLE`: \[`CREATE SNAPSHOT
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_snapshot_table_statement)
+  /// statement. * `CREATE_SEARCH_INDEX`: \[`CREATE SEARCH
+  /// INDEX`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_search_index_statement)
+  /// statement. * `DROP_TABLE`: \[`DROP
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_statement)
+  /// statement. * `DROP_EXTERNAL_TABLE`: \[`DROP EXTERNAL
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_external_table_statement)
+  /// statement. * `DROP_VIEW`: \[`DROP
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_view_statement)
+  /// statement. * `DROP_MODEL`: \[`DROP
+  /// MODEL`\](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-drop-model)
+  /// statement. * `DROP_MATERIALIZED_VIEW`: \[`DROP MATERIALIZED
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_materialized_view_statement)
+  /// statement. * `DROP_FUNCTION` : \[`DROP
+  /// FUNCTION`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_function_statement)
+  /// statement. * `DROP_TABLE_FUNCTION` : \[`DROP TABLE
+  /// FUNCTION`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_function)
+  /// statement. * `DROP_PROCEDURE`: \[`DROP
+  /// PROCEDURE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_procedure_statement)
+  /// statement. * `DROP_SEARCH_INDEX`: \[`DROP SEARCH
+  /// INDEX`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_search_index)
+  /// statement. * `DROP_SCHEMA`: \[`DROP
+  /// SCHEMA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_schema_statement)
+  /// statement. * `DROP_SNAPSHOT_TABLE`: \[`DROP SNAPSHOT
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_snapshot_table_statement)
+  /// statement. * `DROP_ROW_ACCESS_POLICY`: \[`DROP [ALL] ROW ACCESS
+  /// POLICY|POLICIES`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_row_access_policy_statement)
+  /// statement. * `ALTER_TABLE`: \[`ALTER
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_table_set_options_statement)
+  /// statement. * `ALTER_VIEW`: \[`ALTER
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_view_set_options_statement)
+  /// statement. * `ALTER_MATERIALIZED_VIEW`: \[`ALTER MATERIALIZED
+  /// VIEW`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_materialized_view_set_options_statement)
+  /// statement. * `ALTER_SCHEMA`: \[`ALTER
+  /// SCHEMA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_schema_set_options_statement)
+  /// statement. * `SCRIPT`:
+  /// \[`SCRIPT`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language).
+  /// * `TRUNCATE_TABLE`: \[`TRUNCATE
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#truncate_table_statement)
+  /// statement. * `CREATE_EXTERNAL_TABLE`: \[`CREATE EXTERNAL
+  /// TABLE`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_external_table_statement)
+  /// statement. * `EXPORT_DATA`: \[`EXPORT
+  /// DATA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/other-statements#export_data_statement)
+  /// statement. * `EXPORT_MODEL`: \[`EXPORT
+  /// MODEL`\](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-export-model)
+  /// statement. * `LOAD_DATA`: \[`LOAD
+  /// DATA`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/other-statements#load_data_statement)
+  /// statement. * `CALL`:
+  /// \[`CALL`\](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#call)
+  /// statement.
+  ///
+  /// Output only.
+  core.String? statementType;
+
   /// If the project is configured to use on-demand pricing, then this field
   /// contains the total bytes billed for the job.
   ///
@@ -15375,6 +16001,8 @@ class QueryResponse {
   core.String? totalSlotMs;
 
   QueryResponse({
+    this.arrowRecordBatch,
+    this.arrowSchema,
     this.cacheHit,
     this.creationTime,
     this.dmlStats,
@@ -15386,12 +16014,14 @@ class QueryResponse {
     this.kind,
     this.location,
     this.numDmlAffectedRows,
+    this.pageRowCount,
     this.pageToken,
     this.queryId,
     this.rows,
     this.schema,
     this.sessionInfo,
     this.startTime,
+    this.statementType,
     this.totalBytesBilled,
     this.totalBytesProcessed,
     this.totalRows,
@@ -15400,6 +16030,17 @@ class QueryResponse {
 
   QueryResponse.fromJson(core.Map json_)
     : this(
+        arrowRecordBatch: json_.containsKey('arrowRecordBatch')
+            ? ArrowRecordBatch.fromJson(
+                json_['arrowRecordBatch']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        arrowSchema: json_.containsKey('arrowSchema')
+            ? ArrowSchema.fromJson(
+                json_['arrowSchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cacheHit: json_['cacheHit'] as core.bool?,
         creationTime: json_['creationTime'] as core.String?,
         dmlStats: json_.containsKey('dmlStats')
@@ -15430,6 +16071,7 @@ class QueryResponse {
         kind: json_['kind'] as core.String?,
         location: json_['location'] as core.String?,
         numDmlAffectedRows: json_['numDmlAffectedRows'] as core.String?,
+        pageRowCount: json_['pageRowCount'] as core.String?,
         pageToken: json_['pageToken'] as core.String?,
         queryId: json_['queryId'] as core.String?,
         rows: (json_['rows'] as core.List?)
@@ -15450,6 +16092,7 @@ class QueryResponse {
               )
             : null,
         startTime: json_['startTime'] as core.String?,
+        statementType: json_['statementType'] as core.String?,
         totalBytesBilled: json_['totalBytesBilled'] as core.String?,
         totalBytesProcessed: json_['totalBytesProcessed'] as core.String?,
         totalRows: json_['totalRows'] as core.String?,
@@ -15457,6 +16100,8 @@ class QueryResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final arrowRecordBatch = this.arrowRecordBatch;
+    final arrowSchema = this.arrowSchema;
     final cacheHit = this.cacheHit;
     final creationTime = this.creationTime;
     final dmlStats = this.dmlStats;
@@ -15468,17 +16113,21 @@ class QueryResponse {
     final kind = this.kind;
     final location = this.location;
     final numDmlAffectedRows = this.numDmlAffectedRows;
+    final pageRowCount = this.pageRowCount;
     final pageToken = this.pageToken;
     final queryId = this.queryId;
     final rows = this.rows;
     final schema = this.schema;
     final sessionInfo = this.sessionInfo;
     final startTime = this.startTime;
+    final statementType = this.statementType;
     final totalBytesBilled = this.totalBytesBilled;
     final totalBytesProcessed = this.totalBytesProcessed;
     final totalRows = this.totalRows;
     final totalSlotMs = this.totalSlotMs;
     return {
+      'arrowRecordBatch': ?arrowRecordBatch,
+      'arrowSchema': ?arrowSchema,
       'cacheHit': ?cacheHit,
       'creationTime': ?creationTime,
       'dmlStats': ?dmlStats,
@@ -15490,12 +16139,14 @@ class QueryResponse {
       'kind': ?kind,
       'location': ?location,
       'numDmlAffectedRows': ?numDmlAffectedRows,
+      'pageRowCount': ?pageRowCount,
       'pageToken': ?pageToken,
       'queryId': ?queryId,
       'rows': ?rows,
       'schema': ?schema,
       'sessionInfo': ?sessionInfo,
       'startTime': ?startTime,
+      'statementType': ?statementType,
       'totalBytesBilled': ?totalBytesBilled,
       'totalBytesProcessed': ?totalBytesProcessed,
       'totalRows': ?totalRows,
@@ -16953,19 +17604,52 @@ class SetIamPolicyRequest {
 
 /// Details about source stages which produce skewed data.
 class SkewSource {
+  /// Max partition output size (in bytes) for this stage.
+  ///
+  /// Output only.
+  core.String? outputBytesMax;
+
+  /// Median partition output size (in bytes) for this stage.
+  ///
+  /// Output only.
+  core.String? outputBytesMedian;
+
+  /// 95-th percentile of partition output size (in bytes) for this stage.
+  ///
+  /// Output only.
+  core.String? outputBytesP95;
+
   /// Stage id of the skew source stage.
   ///
   /// Output only.
   core.String? stageId;
 
-  SkewSource({this.stageId});
+  SkewSource({
+    this.outputBytesMax,
+    this.outputBytesMedian,
+    this.outputBytesP95,
+    this.stageId,
+  });
 
   SkewSource.fromJson(core.Map json_)
-    : this(stageId: json_['stageId'] as core.String?);
+    : this(
+        outputBytesMax: json_['outputBytesMax'] as core.String?,
+        outputBytesMedian: json_['outputBytesMedian'] as core.String?,
+        outputBytesP95: json_['outputBytesP95'] as core.String?,
+        stageId: json_['stageId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final outputBytesMax = this.outputBytesMax;
+    final outputBytesMedian = this.outputBytesMedian;
+    final outputBytesP95 = this.outputBytesP95;
     final stageId = this.stageId;
-    return {'stageId': ?stageId};
+    return {
+      'outputBytesMax': ?outputBytesMax,
+      'outputBytesMedian': ?outputBytesMedian,
+      'outputBytesP95': ?outputBytesP95,
+      'stageId': ?stageId,
+    };
   }
 }
 
@@ -18533,6 +19217,67 @@ class TableCell {
   }
 }
 
+/// Table-level performance insights compared to previous runs.
+///
+/// These insights don't apply to specific query stages, rather they apply to
+/// the whole table.
+class TableChangeInsight {
+  /// True if the table's column metadata index was not used in the current job,
+  /// but was used in a previous job with the same query hash.
+  ///
+  /// Output only.
+  core.bool? metadataCacheNotUsedButUsedPreviously;
+
+  /// If present, indicates that the table's metadata column index staleness has
+  /// increased significantly compared to previous jobs with the same query
+  /// hash.
+  ///
+  /// Output only.
+  MetadataCacheStalenessInsight? metadataCacheStalenessInsight;
+
+  /// The table that was queried.
+  ///
+  /// Output only.
+  TableReference? tableReference;
+
+  TableChangeInsight({
+    this.metadataCacheNotUsedButUsedPreviously,
+    this.metadataCacheStalenessInsight,
+    this.tableReference,
+  });
+
+  TableChangeInsight.fromJson(core.Map json_)
+    : this(
+        metadataCacheNotUsedButUsedPreviously:
+            json_['metadataCacheNotUsedButUsedPreviously'] as core.bool?,
+        metadataCacheStalenessInsight:
+            json_.containsKey('metadataCacheStalenessInsight')
+            ? MetadataCacheStalenessInsight.fromJson(
+                json_['metadataCacheStalenessInsight']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tableReference: json_.containsKey('tableReference')
+            ? TableReference.fromJson(
+                json_['tableReference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final metadataCacheNotUsedButUsedPreviously =
+        this.metadataCacheNotUsedButUsedPreviously;
+    final metadataCacheStalenessInsight = this.metadataCacheStalenessInsight;
+    final tableReference = this.tableReference;
+    return {
+      'metadataCacheNotUsedButUsedPreviously':
+          ?metadataCacheNotUsedButUsedPreviously,
+      'metadataCacheStalenessInsight': ?metadataCacheStalenessInsight,
+      'tableReference': ?tableReference,
+    };
+  }
+}
+
 /// The pair of the foreign key column and primary key column.
 class TableConstraintsForeignKeysColumnReferences {
   /// The column in the primary key that are referenced by the
@@ -18960,6 +19705,53 @@ class TableFieldSchemaCategories {
   }
 }
 
+/// Specifies the data governance tags on this field.
+///
+/// This field works with other column-level security fields as follows: *
+/// **Precedence**: If a data governance tag is attached to a column, it takes
+/// precedence over the policy tag attached to the column. However, if a data
+/// policy is attached to a column, it takes precedence over the data governance
+/// tag. * **Patching behavior**: Describes how this field behaves during a
+/// `Table.patch` schema update: * **Unset**: If the `data_governance_tags_info`
+/// field is omitted from the update request, the existing tags on the column
+/// are preserved. * **Empty Field**: To clear data governance tags from a
+/// column, send the `data_governance_tags_info` field as an empty object. This
+/// removes all tags from the column. * **Updating tags**: To replace an
+/// existing tag, send the field with the new tag.
+///
+/// Optional.
+class TableFieldSchemaDataGovernanceTagsInfo {
+  /// The data governance tags added to this field are used for field-level
+  /// access control.
+  ///
+  /// Only one data governance tag is currently supported on a field. Tag keys
+  /// are globally unique. Tag key is expected to be in the namespaced format,
+  /// for example "parent-id/pii" where parent-id is the ID of the parent
+  /// organization or project resource for this tag key. Tag value is expected
+  /// to be the short name, for example "sensitive". See
+  /// [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
+  /// for more details. For example: "parent-id/pii": "sensitive",
+  /// "myProject/cost_center": "sales"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? dataGovernanceTags;
+
+  TableFieldSchemaDataGovernanceTagsInfo({this.dataGovernanceTags});
+
+  TableFieldSchemaDataGovernanceTagsInfo.fromJson(core.Map json_)
+    : this(
+        dataGovernanceTags:
+            (json_['dataGovernanceTags']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataGovernanceTags = this.dataGovernanceTags;
+    return {'dataGovernanceTags': ?dataGovernanceTags};
+  }
+}
+
 /// The policy tags attached to this field, used for field-level access control.
 ///
 /// If not set, defaults to empty policy_tags.
@@ -19020,10 +19812,36 @@ class TableFieldSchema {
   /// Optional.
   core.String? collation;
 
+  /// Specifies the data governance tags on this field.
+  ///
+  /// This field works with other column-level security fields as follows: *
+  /// **Precedence**: If a data governance tag is attached to a column, it takes
+  /// precedence over the policy tag attached to the column. However, if a data
+  /// policy is attached to a column, it takes precedence over the data
+  /// governance tag. * **Patching behavior**: Describes how this field behaves
+  /// during a `Table.patch` schema update: * **Unset**: If the
+  /// `data_governance_tags_info` field is omitted from the update request, the
+  /// existing tags on the column are preserved. * **Empty Field**: To clear
+  /// data governance tags from a column, send the `data_governance_tags_info`
+  /// field as an empty object. This removes all tags from the column. *
+  /// **Updating tags**: To replace an existing tag, send the field with the new
+  /// tag.
+  ///
+  /// Optional.
+  TableFieldSchemaDataGovernanceTagsInfo? dataGovernanceTagsInfo;
+
   /// Data policies attached to this field, used for field-level access control.
   ///
   /// Optional.
   core.List<DataPolicyOption>? dataPolicies;
+
+  /// Specifies data policies attached to this field, used for field-level
+  /// access control.
+  ///
+  /// When set, this will be the source of truth for data policy information.
+  ///
+  /// Optional.
+  DataPolicyList? dataPolicyList;
 
   /// A SQL expression to specify the
   /// [default value](https://cloud.google.com/bigquery/docs/default-values) for
@@ -19164,7 +19982,9 @@ class TableFieldSchema {
   TableFieldSchema({
     this.categories,
     this.collation,
+    this.dataGovernanceTagsInfo,
     this.dataPolicies,
+    this.dataPolicyList,
     this.defaultValueExpression,
     this.description,
     this.fields,
@@ -19190,6 +20010,12 @@ class TableFieldSchema {
               )
             : null,
         collation: json_['collation'] as core.String?,
+        dataGovernanceTagsInfo: json_.containsKey('dataGovernanceTagsInfo')
+            ? TableFieldSchemaDataGovernanceTagsInfo.fromJson(
+                json_['dataGovernanceTagsInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         dataPolicies: (json_['dataPolicies'] as core.List?)
             ?.map(
               (value) => DataPolicyOption.fromJson(
@@ -19197,6 +20023,11 @@ class TableFieldSchema {
               ),
             )
             .toList(),
+        dataPolicyList: json_.containsKey('dataPolicyList')
+            ? DataPolicyList.fromJson(
+                json_['dataPolicyList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         defaultValueExpression: json_['defaultValueExpression'] as core.String?,
         description: json_['description'] as core.String?,
         fields: (json_['fields'] as core.List?)
@@ -19236,7 +20067,9 @@ class TableFieldSchema {
   core.Map<core.String, core.dynamic> toJson() {
     final categories = this.categories;
     final collation = this.collation;
+    final dataGovernanceTagsInfo = this.dataGovernanceTagsInfo;
     final dataPolicies = this.dataPolicies;
+    final dataPolicyList = this.dataPolicyList;
     final defaultValueExpression = this.defaultValueExpression;
     final description = this.description;
     final fields = this.fields;
@@ -19255,7 +20088,9 @@ class TableFieldSchema {
     return {
       'categories': ?categories,
       'collation': ?collation,
+      'dataGovernanceTagsInfo': ?dataGovernanceTagsInfo,
       'dataPolicies': ?dataPolicies,
+      'dataPolicyList': ?dataPolicyList,
       'defaultValueExpression': ?defaultValueExpression,
       'description': ?description,
       'fields': ?fields,
@@ -19651,7 +20486,7 @@ class TableReplicationInfo {
   /// - "ACTIVE" : Replication is Active with no errors.
   /// - "SOURCE_DELETED" : Source object is deleted.
   /// - "PERMISSION_DENIED" : Source revoked replication permissions.
-  /// - "UNSUPPORTED_CONFIGURATION" : Source configuration doesn’t allow
+  /// - "UNSUPPORTED_CONFIGURATION" : Source configuration doesn't allow
   /// replication.
   core.String? replicationStatus;
 

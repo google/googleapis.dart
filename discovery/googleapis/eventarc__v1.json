@@ -18,36 +18,6 @@
     "endpoints": [
         {
             "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.africa-south1.rep.googleapis.com/",
-            "location": "africa-south1"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.asia-east1.rep.googleapis.com/",
-            "location": "asia-east1"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.asia-east2.rep.googleapis.com/",
-            "location": "asia-east2"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.asia-northeast1.rep.googleapis.com/",
-            "location": "asia-northeast1"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.asia-northeast2.rep.googleapis.com/",
-            "location": "asia-northeast2"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.asia-northeast3.rep.googleapis.com/",
-            "location": "asia-northeast3"
-        },
-        {
-            "description": "Regional Endpoint",
             "endpointUrl": "https://eventarc.asia-south1.rep.googleapis.com/",
             "location": "asia-south1"
         },
@@ -55,31 +25,6 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://eventarc.asia-south2.rep.googleapis.com/",
             "location": "asia-south2"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.asia-southeast1.rep.googleapis.com/",
-            "location": "asia-southeast1"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.asia-southeast2.rep.googleapis.com/",
-            "location": "asia-southeast2"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.asia-southeast3.rep.googleapis.com/",
-            "location": "asia-southeast3"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.australia-southeast1.rep.googleapis.com/",
-            "location": "australia-southeast1"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.australia-southeast2.rep.googleapis.com/",
-            "location": "australia-southeast2"
         },
         {
             "description": "Regional Endpoint",
@@ -118,16 +63,6 @@
         },
         {
             "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.europe-west15.rep.googleapis.com/",
-            "location": "europe-west15"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.europe-west2.rep.googleapis.com/",
-            "location": "europe-west2"
-        },
-        {
-            "description": "Regional Endpoint",
             "endpointUrl": "https://eventarc.europe-west3.rep.googleapis.com/",
             "location": "europe-west3"
         },
@@ -153,18 +88,8 @@
         },
         {
             "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.me-central1.rep.googleapis.com/",
-            "location": "me-central1"
-        },
-        {
-            "description": "Regional Endpoint",
             "endpointUrl": "https://eventarc.me-central2.rep.googleapis.com/",
             "location": "me-central2"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.me-west1.rep.googleapis.com/",
-            "location": "me-west1"
         },
         {
             "description": "Regional Endpoint",
@@ -178,28 +103,8 @@
         },
         {
             "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.northamerica-south1.rep.googleapis.com/",
-            "location": "northamerica-south1"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.southamerica-east1.rep.googleapis.com/",
-            "location": "southamerica-east1"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.southamerica-west1.rep.googleapis.com/",
-            "location": "southamerica-west1"
-        },
-        {
-            "description": "Regional Endpoint",
             "endpointUrl": "https://eventarc.us-central1.rep.googleapis.com/",
             "location": "us-central1"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.us-central2.rep.googleapis.com/",
-            "location": "us-central2"
         },
         {
             "description": "Regional Endpoint",
@@ -215,11 +120,6 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://eventarc.us-east5.rep.googleapis.com/",
             "location": "us-east5"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://eventarc.us-east7.rep.googleapis.com/",
-            "location": "us-east7"
         },
         {
             "description": "Regional Endpoint",
@@ -272,7 +172,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260320",
+    "revision": "20260612",
     "rootUrl": "https://eventarc.googleapis.com/",
     "servicePath": "",
     "title": "Eventarc API",
@@ -411,7 +311,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "eventarc.projects.locations.list",
@@ -420,7 +320,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -1301,12 +1201,12 @@
                                     ],
                                     "parameters": {
                                         "allowMissing": {
-                                            "description": "Optional. If set to true, and the MessageBus is not found, the request will succeed but no action will be taken on the server.",
+                                            "description": "Optional. If set to true, and the GoogleApiSource is not found, the request will succeed but no action will be taken on the server.",
                                             "location": "query",
                                             "type": "boolean"
                                         },
                                         "etag": {
-                                            "description": "Optional. If provided, the MessageBus will only be deleted if the etag matches the current etag on the resource.",
+                                            "description": "Optional. If provided, the GoogleApiSource will only be deleted if the etag matches the current etag on the resource.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -2703,7 +2603,7 @@
             "type": "object"
         },
         "Channel": {
-            "description": "A representation of the Channel resource. A Channel is a resource on which event providers publish their events. The published events are delivered through the transport associated with the channel. Note that a channel is associated with exactly one event provider.",
+            "description": "Represents a subscriber's intent to receive events from an event provider. Published events are delivered using the transport associated with the Channel resource. A channel is associated with exactly one event provider.",
             "id": "Channel",
             "properties": {
                 "activationToken": {
@@ -3066,7 +2966,7 @@
             "type": "object"
         },
         "GoogleApiSource": {
-            "description": "A GoogleApiSource represents a subscription of 1P events from a MessageBus.",
+            "description": "Represents a subscription to first-party events for a MessageBus resource. A GoogleApiSource resource lets you configure the delivery of events from Google API sources to a designated bus.",
             "id": "GoogleApiSource",
             "properties": {
                 "annotations": {
@@ -3137,7 +3037,7 @@
             "type": "object"
         },
         "GoogleChannelConfig": {
-            "description": "A GoogleChannelConfig is a resource that stores the custom settings respected by Eventarc first-party triggers in the matching region. Once configured, first-party event data will be protected using the specified custom managed encryption key instead of Google-managed encryption keys.",
+            "description": "Can be used to customize security settings for Eventarc first-party triggers in a specific region. Once the GoogleChannelConfig resource is configured, first-party event data is protected using the specified customer-managed encryption key instead of a Google-managed encryption key.",
             "id": "GoogleChannelConfig",
             "properties": {
                 "cryptoKeyName": {

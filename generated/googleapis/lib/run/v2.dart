@@ -39,6 +39,7 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServicesResource]
 ///       - [ProjectsLocationsServicesRevisionsResource]
+///     - [ProjectsLocationsSourceUploadsResource]
 ///     - [ProjectsLocationsWorkerPoolsResource]
 ///       - [ProjectsLocationsWorkerPoolsRevisionsResource]
 library;
@@ -54,7 +55,15 @@ import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
-    show ApiRequestError, DetailedApiRequestError;
+    show
+        ApiRequestError,
+        ByteRange,
+        DetailedApiRequestError,
+        DownloadOptions,
+        Media,
+        PartialDownloadOptions,
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// Deploy and manage user provided container images that scale automatically
 /// based on incoming requests.
@@ -115,6 +124,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsServicesResource get services =>
       ProjectsLocationsServicesResource(_requester);
+  ProjectsLocationsSourceUploadsResource get sourceUploads =>
+      ProjectsLocationsSourceUploadsResource(_requester);
   ProjectsLocationsWorkerPoolsResource get workerPools =>
       ProjectsLocationsWorkerPoolsResource(_requester);
 
@@ -358,7 +369,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - null
+  /// [parent] - Required. The location and project in which this Instance
+  /// should be created.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [instanceId] - Optional. The unique identifier for the Instance. It must
@@ -408,11 +420,11 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
-  /// Deletes a Instance
+  /// Deletes an Instance
   ///
   /// Request parameters:
   ///
-  /// [name] - null
+  /// [name] - Required. The name of the Instance to delete.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -456,11 +468,11 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
-  /// Gets a Instance
+  /// Gets an Instance
   ///
   /// Request parameters:
   ///
-  /// [name] - null
+  /// [name] - Required. The name of the Instance to retrieve.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -494,6 +506,66 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
+  /// Gets the IAM Access Control policy currently in effect for the given
+  /// Instance.
+  ///
+  /// This result does not include any inherited policies.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists Instances.
   ///
   /// Results are sorted by creation time, descending.
@@ -501,8 +573,6 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location and project to list resources on.
-  /// Format: projects/{project}/locations/{location}, where {project} can be
-  /// project id or number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. Maximum number of Instances to return in this call.
@@ -556,16 +626,15 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [name] - The fully qualified name of this Instance. In
-  /// CreateInstanceRequest, this field is ignored, and instead composed from
-  /// CreateInstanceRequest.parent and CreateInstanceRequest.instance_id.
-  /// Format: projects/{project}/locations/{location}/instances/{instance_id}
+  /// `CreateInstanceRequest`, this field is ignored, and instead composed from
+  /// `CreateInstanceRequest.parent` and `CreateInstanceRequest.instance_id`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
-  /// [allowMissing] - Optional. If set to true, and if the Instance does not
+  /// [allowMissing] - Optional. If set to `true`, and if the Instance does not
   /// exist, it will create a new one. The caller must have
-  /// 'run.instances.create' permissions if this is set to true and the Instance
-  /// does not exist.
+  /// `run.instances.create` permissions if this is set to `true` and the
+  /// Instance does not exist.
   ///
   /// [updateMask] - Optional. The list of fields to be updated.
   ///
@@ -612,15 +681,61 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
+  /// Sets the IAM Access control policy for the specified Instance.
+  ///
+  /// Overwrites any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Starts an Instance.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Instance to stop. Format:
-  /// `projects/{project}/locations/{location}/instances/{instance}`, where
-  /// `{project}` can be project id or number.
+  /// [name] - Required. The name of the Instance to start.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -663,9 +778,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Instance to stop. Format:
-  /// `projects/{project}/locations/{location}/instances/{instance}`, where
-  /// `{project}` can be project id or number.
+  /// [name] - Required. The name of the Instance to stop.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -698,6 +811,55 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns permissions that a caller has on the specified Project.
+  ///
+  /// There are no permissions required for making this API call.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2391,6 +2553,84 @@ class ProjectsLocationsServicesRevisionsResource {
   }
 }
 
+class ProjectsLocationsSourceUploadsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSourceUploadsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Uploads a source archive to a Google Cloud Storage bucket through Cloud
+  /// Run.
+  ///
+  /// The uploaded source object should be used for Cloud Run resource
+  /// deployments. User is responsible for managing the lifecycle of the
+  /// uploaded object. If uploading through the Cloud Run API to Cloud Storage
+  /// is not desired, you can use the IAM Deny Policy to deny the
+  /// `run.locations.uploadSource` permission for all principals.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location in which the source archive
+  /// should be uploaded to, specified in the format `projects / * /locations /
+  /// * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [GoogleCloudRunV2UploadSourceResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRunV2UploadSourceResponse> upload(
+    GoogleCloudRunV2UploadSourceRequest request,
+    core.String parent, {
+    core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'v2/' + core.Uri.encodeFull('$parent') + ':uploadSource';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ =
+          '/resumable/upload/v2/' +
+          core.Uri.encodeFull('$parent') +
+          ':uploadSource';
+    } else {
+      url_ = '/upload/v2/' + core.Uri.encodeFull('$parent') + ':uploadSource';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
+    );
+    return GoogleCloudRunV2UploadSourceResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsWorkerPoolsResource {
   final commons.ApiRequester _requester;
 
@@ -3398,7 +3638,21 @@ class GoogleCloudRunV2Condition {
   /// - "DELETED" : The execution was deleted.
   /// - "DELAYED_START_PENDING" : A delayed execution is waiting for a start
   /// time.
+  /// - "DELAYED_EXECUTION_EXCEEDING_DURATION_LIMIT" : A delayed execution
+  /// exceeded the maximum runtime duration.
   core.String? executionReason;
+
+  /// A reason for the instance condition.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INSTANCE_REASON_UNSPECIFIED" : Default value.
+  /// - "INSTANCE_DELETED" : Instance deleted.
+  /// - "INSTANCE_STOPPED" : Instance stopped.
+  /// - "INSTANCE_STOPPING" : Instance stopping.
+  /// - "INSTANCE_NON_ZERO_EXIT_CODE" : Instance exited with a non-zero exit
+  /// code.
+  core.String? instanceReason;
 
   /// Last time the condition transitioned from one status to another.
   core.String? lastTransitionTime;
@@ -3494,6 +3748,7 @@ class GoogleCloudRunV2Condition {
 
   GoogleCloudRunV2Condition({
     this.executionReason,
+    this.instanceReason,
     this.lastTransitionTime,
     this.message,
     this.reason,
@@ -3506,6 +3761,7 @@ class GoogleCloudRunV2Condition {
   GoogleCloudRunV2Condition.fromJson(core.Map json_)
     : this(
         executionReason: json_['executionReason'] as core.String?,
+        instanceReason: json_['instanceReason'] as core.String?,
         lastTransitionTime: json_['lastTransitionTime'] as core.String?,
         message: json_['message'] as core.String?,
         reason: json_['reason'] as core.String?,
@@ -3517,6 +3773,7 @@ class GoogleCloudRunV2Condition {
 
   core.Map<core.String, core.dynamic> toJson() {
     final executionReason = this.executionReason;
+    final instanceReason = this.instanceReason;
     final lastTransitionTime = this.lastTransitionTime;
     final message = this.message;
     final reason = this.reason;
@@ -3526,6 +3783,7 @@ class GoogleCloudRunV2Condition {
     final type = this.type;
     return {
       'executionReason': ?executionReason,
+      'instanceReason': ?instanceReason,
       'lastTransitionTime': ?lastTransitionTime,
       'message': ?message,
       'reason': ?reason,
@@ -3601,6 +3859,12 @@ class GoogleCloudRunV2Container {
   /// Compute Resource requirements by this container.
   GoogleCloudRunV2ResourceRequirements? resources;
 
+  /// Indicates that this container can act as a sandbox supervisor and launch
+  /// sandboxes.
+  ///
+  /// Optional.
+  core.bool? sandboxLauncher;
+
   /// Location of the source.
   ///
   /// Optional.
@@ -3635,6 +3899,7 @@ class GoogleCloudRunV2Container {
     this.ports,
     this.readinessProbe,
     this.resources,
+    this.sandboxLauncher,
     this.sourceCode,
     this.startupProbe,
     this.volumeMounts,
@@ -3689,6 +3954,7 @@ class GoogleCloudRunV2Container {
                 json_['resources'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        sandboxLauncher: json_['sandboxLauncher'] as core.bool?,
         sourceCode: json_.containsKey('sourceCode')
             ? GoogleCloudRunV2SourceCode.fromJson(
                 json_['sourceCode'] as core.Map<core.String, core.dynamic>,
@@ -3722,6 +3988,7 @@ class GoogleCloudRunV2Container {
     final ports = this.ports;
     final readinessProbe = this.readinessProbe;
     final resources = this.resources;
+    final sandboxLauncher = this.sandboxLauncher;
     final sourceCode = this.sourceCode;
     final startupProbe = this.startupProbe;
     final volumeMounts = this.volumeMounts;
@@ -3739,6 +4006,7 @@ class GoogleCloudRunV2Container {
       'ports': ?ports,
       'readinessProbe': ?readinessProbe,
       'resources': ?resources,
+      'sandboxLauncher': ?sandboxLauncher,
       'sourceCode': ?sourceCode,
       'startupProbe': ?startupProbe,
       'volumeMounts': ?volumeMounts,
@@ -4439,6 +4707,12 @@ class GoogleCloudRunV2ExecutionTemplate {
   /// Optional.
   core.String? clientVersion;
 
+  /// If true, the system will start the execution within the next 12 hours
+  /// depending on available capacity.
+  ///
+  /// Optional.
+  core.bool? delayExecution;
+
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   ///
@@ -4480,6 +4754,7 @@ class GoogleCloudRunV2ExecutionTemplate {
     this.annotations,
     this.client,
     this.clientVersion,
+    this.delayExecution,
     this.labels,
     this.parallelism,
     this.taskCount,
@@ -4494,6 +4769,7 @@ class GoogleCloudRunV2ExecutionTemplate {
             ),
         client: json_['client'] as core.String?,
         clientVersion: json_['clientVersion'] as core.String?,
+        delayExecution: json_['delayExecution'] as core.bool?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -4510,6 +4786,7 @@ class GoogleCloudRunV2ExecutionTemplate {
     final annotations = this.annotations;
     final client = this.client;
     final clientVersion = this.clientVersion;
+    final delayExecution = this.delayExecution;
     final labels = this.labels;
     final parallelism = this.parallelism;
     final taskCount = this.taskCount;
@@ -4518,6 +4795,7 @@ class GoogleCloudRunV2ExecutionTemplate {
       'annotations': ?annotations,
       'client': ?client,
       'clientVersion': ?clientVersion,
+      'delayExecution': ?delayExecution,
       'labels': ?labels,
       'parallelism': ?parallelism,
       'taskCount': ?taskCount,
@@ -4888,6 +5166,11 @@ class GoogleCloudRunV2Instance {
   /// Output only.
   core.String? creator;
 
+  /// Disables public resolution of the default URI of this Instance.
+  ///
+  /// Optional.
+  core.bool? defaultUriDisabled;
+
   /// The deletion time.
   ///
   /// Output only.
@@ -4913,7 +5196,7 @@ class GoogleCloudRunV2Instance {
   /// ones.
   core.String? encryptionKeyRevocationAction;
 
-  /// If encryption_key_revocation_action is SHUTDOWN, the duration before
+  /// If `encryption_key_revocation_action` is `SHUTDOWN`, the duration before
   /// shutting down all instances.
   ///
   /// The minimum increment is 1 hour.
@@ -4935,7 +5218,7 @@ class GoogleCloudRunV2Instance {
   /// A number that monotonically increases every time the user modifies the
   /// desired state.
   ///
-  /// Please note that unlike v1, this is an int64 value. As with most Google
+  /// Please note that unlike v1, this is an `int64` value. As with most Google
   /// APIs, its JSON representation will be a `string` instead of an `integer`.
   ///
   /// Output only.
@@ -4954,7 +5237,7 @@ class GoogleCloudRunV2Instance {
   /// Provides the ingress settings for this Instance.
   ///
   /// On output, returns the currently observed ingress settings, or
-  /// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
+  /// `INGRESS_TRAFFIC_UNSPECIFIED` if no revision is active.
   ///
   /// Optional.
   /// Possible string values are:
@@ -4966,7 +5249,7 @@ class GoogleCloudRunV2Instance {
   /// - "INGRESS_TRAFFIC_NONE" : No ingress traffic is allowed.
   core.String? ingress;
 
-  /// Disables IAM permission check for run.routes.invoke for callers of this
+  /// Disables IAM permission check for `run.routes.invoke` for callers of this
   /// Instance.
   ///
   /// For more information, visit
@@ -4984,12 +5267,12 @@ class GoogleCloudRunV2Instance {
   /// The launch stage as defined by
   /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
   ///
-  /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA
-  /// is assumed. Set the launch stage to a preview stage on input to allow use
-  /// of preview features in that stage. On read (or output), describes whether
-  /// the resource uses preview features. For example, if ALPHA is provided as
-  /// input, but only BETA and GA-level features are used, this field will be
-  /// BETA on output.
+  /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified,
+  /// `GA` is assumed. Set the launch stage to a preview stage on input to allow
+  /// use of preview features in that stage. On read (or output), describes
+  /// whether the resource uses preview features. For example, if `ALPHA` is
+  /// provided as input, but only `BETA` and `GA`-level features are used, this
+  /// field will be `BETA` on output.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -5031,9 +5314,9 @@ class GoogleCloudRunV2Instance {
 
   /// The fully qualified name of this Instance.
   ///
-  /// In CreateInstanceRequest, this field is ignored, and instead composed from
-  /// CreateInstanceRequest.parent and CreateInstanceRequest.instance_id.
-  /// Format: projects/{project}/locations/{location}/instances/{instance_id}
+  /// In `CreateInstanceRequest`, this field is ignored, and instead composed
+  /// from `CreateInstanceRequest.parent` and
+  /// `CreateInstanceRequest.instance_id`.
   core.String? name;
 
   /// The node selector for the instance.
@@ -5044,14 +5327,14 @@ class GoogleCloudRunV2Instance {
   /// The generation of this Instance currently serving traffic.
   ///
   /// See comments in `reconciling` for additional information on reconciliation
-  /// process in Cloud Run. Please note that unlike v1, this is an int64 value.
-  /// As with most Google APIs, its JSON representation will be a `string`
-  /// instead of an `integer`.
+  /// process in Cloud Run. Please note that unlike v1, this is an `int64`
+  /// value. As with most Google APIs, its JSON representation will be a
+  /// `string` instead of an `integer`.
   ///
   /// Output only.
   core.String? observedGeneration;
 
-  /// Returns true if the Instance is currently being acted upon by the system
+  /// Returns `true` if the Instance is currently being acted upon by the system
   /// to bring it into the desired state.
   ///
   /// When a new Instance is created, or an existing one is updated, Cloud Run
@@ -5059,13 +5342,24 @@ class GoogleCloudRunV2Instance {
   /// the desired serving state. This process is called reconciliation. While
   /// reconciliation is in process, `observed_generation` will have a transient
   /// value that might mismatch the intended state. Once reconciliation is over
-  /// (and this field is false), there are two possible outcomes: reconciliation
-  /// succeeded and the serving state matches the Instance, or there was an
-  /// error, and reconciliation failed. This state can be found in
+  /// (and this field is `false`), there are two possible outcomes:
+  /// reconciliation succeeded and the serving state matches the Instance, or
+  /// there was an error, and reconciliation failed. This state can be found in
   /// `terminal_condition.state`.
   ///
   /// Output only.
   core.bool? reconciling;
+
+  /// Restart policy for the Instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RESTART_POLICY_UNSPECIFIED" : Unspecified restart policy.
+  /// - "ALWAYS" : Always restart the instance.
+  /// - "ON_FAILURE" : Restart if the instance terminates with non-zero exit
+  /// code.
+  /// - "NEVER" : Never restart the instance.
+  core.String? restartPolicy;
 
   /// Reserved for future use.
   ///
@@ -5081,11 +5375,6 @@ class GoogleCloudRunV2Instance {
   ///
   /// Output only.
   GoogleCloudRunV2Condition? terminalCondition;
-
-  /// Duration the instance may be active before the system will shut it down.
-  ///
-  /// Optional.
-  core.String? timeout;
 
   /// Server assigned unique identifier for the trigger.
   ///
@@ -5126,6 +5415,7 @@ class GoogleCloudRunV2Instance {
     this.containers,
     this.createTime,
     this.creator,
+    this.defaultUriDisabled,
     this.deleteTime,
     this.description,
     this.encryptionKey,
@@ -5146,10 +5436,10 @@ class GoogleCloudRunV2Instance {
     this.nodeSelector,
     this.observedGeneration,
     this.reconciling,
+    this.restartPolicy,
     this.satisfiesPzs,
     this.serviceAccount,
     this.terminalCondition,
-    this.timeout,
     this.uid,
     this.updateTime,
     this.urls,
@@ -5194,6 +5484,7 @@ class GoogleCloudRunV2Instance {
             .toList(),
         createTime: json_['createTime'] as core.String?,
         creator: json_['creator'] as core.String?,
+        defaultUriDisabled: json_['defaultUriDisabled'] as core.bool?,
         deleteTime: json_['deleteTime'] as core.String?,
         description: json_['description'] as core.String?,
         encryptionKey: json_['encryptionKey'] as core.String?,
@@ -5223,6 +5514,7 @@ class GoogleCloudRunV2Instance {
             : null,
         observedGeneration: json_['observedGeneration'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
+        restartPolicy: json_['restartPolicy'] as core.String?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         serviceAccount: json_['serviceAccount'] as core.String?,
         terminalCondition: json_.containsKey('terminalCondition')
@@ -5231,7 +5523,6 @@ class GoogleCloudRunV2Instance {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
-        timeout: json_['timeout'] as core.String?,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         urls: (json_['urls'] as core.List?)
@@ -5261,6 +5552,7 @@ class GoogleCloudRunV2Instance {
     final containers = this.containers;
     final createTime = this.createTime;
     final creator = this.creator;
+    final defaultUriDisabled = this.defaultUriDisabled;
     final deleteTime = this.deleteTime;
     final description = this.description;
     final encryptionKey = this.encryptionKey;
@@ -5281,10 +5573,10 @@ class GoogleCloudRunV2Instance {
     final nodeSelector = this.nodeSelector;
     final observedGeneration = this.observedGeneration;
     final reconciling = this.reconciling;
+    final restartPolicy = this.restartPolicy;
     final satisfiesPzs = this.satisfiesPzs;
     final serviceAccount = this.serviceAccount;
     final terminalCondition = this.terminalCondition;
-    final timeout = this.timeout;
     final uid = this.uid;
     final updateTime = this.updateTime;
     final urls = this.urls;
@@ -5300,6 +5592,7 @@ class GoogleCloudRunV2Instance {
       'containers': ?containers,
       'createTime': ?createTime,
       'creator': ?creator,
+      'defaultUriDisabled': ?defaultUriDisabled,
       'deleteTime': ?deleteTime,
       'description': ?description,
       'encryptionKey': ?encryptionKey,
@@ -5320,10 +5613,10 @@ class GoogleCloudRunV2Instance {
       'nodeSelector': ?nodeSelector,
       'observedGeneration': ?observedGeneration,
       'reconciling': ?reconciling,
+      'restartPolicy': ?restartPolicy,
       'satisfiesPzs': ?satisfiesPzs,
       'serviceAccount': ?serviceAccount,
       'terminalCondition': ?terminalCondition,
-      'timeout': ?timeout,
       'uid': ?uid,
       'updateTime': ?updateTime,
       'urls': ?urls,
@@ -6155,6 +6448,12 @@ class GoogleCloudRunV2Overrides {
   /// Per container override specification.
   core.List<GoogleCloudRunV2ContainerOverride>? containerOverrides;
 
+  /// If true, the system will start the execution within the next 12 hours
+  /// depending on available capacity.
+  ///
+  /// Optional.
+  core.bool? delayExecution;
+
   /// The desired number of tasks the execution should run.
   ///
   /// Will replace existing task_count value.
@@ -6170,6 +6469,7 @@ class GoogleCloudRunV2Overrides {
 
   GoogleCloudRunV2Overrides({
     this.containerOverrides,
+    this.delayExecution,
     this.taskCount,
     this.timeout,
   });
@@ -6183,16 +6483,19 @@ class GoogleCloudRunV2Overrides {
               ),
             )
             .toList(),
+        delayExecution: json_['delayExecution'] as core.bool?,
         taskCount: json_['taskCount'] as core.int?,
         timeout: json_['timeout'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final containerOverrides = this.containerOverrides;
+    final delayExecution = this.delayExecution;
     final taskCount = this.taskCount;
     final timeout = this.timeout;
     return {
       'containerOverrides': ?containerOverrides,
+      'delayExecution': ?delayExecution,
       'taskCount': ?taskCount,
       'timeout': ?timeout,
     };
@@ -6824,7 +7127,7 @@ class GoogleCloudRunV2RevisionScaling {
 
   /// Determines a threshold for CPU utilization before scaling begins.
   ///
-  /// Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to
+  /// Accepted values are between `0.1` and `0.90` (inclusive) or `0.0` to
   /// disable CPU utilization as threshold for scaling. CPU and concurrency
   /// scaling cannot both be disabled.
   ///
@@ -7401,6 +7704,13 @@ class GoogleCloudRunV2Service {
   /// This field currently has a 512-character limit.
   core.String? description;
 
+  /// Indicates whether the Service has durable execution enabled.
+  ///
+  /// This field is immutable once the Service is created.
+  ///
+  /// Optional. Immutable.
+  core.bool? durableExecution;
+
   /// A system-generated fingerprint for this version of the resource.
   ///
   /// May be used to detect modification conflict during updates.
@@ -7590,6 +7900,11 @@ class GoogleCloudRunV2Service {
   /// Optional.
   GoogleCloudRunV2ServiceScaling? scaling;
 
+  /// Enables SSH access to the Service.
+  ///
+  /// Optional.
+  core.bool? sshEnabled;
+
   /// The template used to create revisions for this Service.
   ///
   /// Required.
@@ -7663,6 +7978,7 @@ class GoogleCloudRunV2Service {
     this.defaultUriDisabled,
     this.deleteTime,
     this.description,
+    this.durableExecution,
     this.etag,
     this.expireTime,
     this.generation,
@@ -7680,6 +7996,7 @@ class GoogleCloudRunV2Service {
     this.reconciling,
     this.satisfiesPzs,
     this.scaling,
+    this.sshEnabled,
     this.template,
     this.terminalCondition,
     this.threatDetectionEnabled,
@@ -7725,6 +8042,7 @@ class GoogleCloudRunV2Service {
         defaultUriDisabled: json_['defaultUriDisabled'] as core.bool?,
         deleteTime: json_['deleteTime'] as core.String?,
         description: json_['description'] as core.String?,
+        durableExecution: json_['durableExecution'] as core.bool?,
         etag: json_['etag'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
         generation: json_['generation'] as core.String?,
@@ -7753,6 +8071,7 @@ class GoogleCloudRunV2Service {
                 json_['scaling'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        sshEnabled: json_['sshEnabled'] as core.bool?,
         template: json_.containsKey('template')
             ? GoogleCloudRunV2RevisionTemplate.fromJson(
                 json_['template'] as core.Map<core.String, core.dynamic>,
@@ -7800,6 +8119,7 @@ class GoogleCloudRunV2Service {
     final defaultUriDisabled = this.defaultUriDisabled;
     final deleteTime = this.deleteTime;
     final description = this.description;
+    final durableExecution = this.durableExecution;
     final etag = this.etag;
     final expireTime = this.expireTime;
     final generation = this.generation;
@@ -7817,6 +8137,7 @@ class GoogleCloudRunV2Service {
     final reconciling = this.reconciling;
     final satisfiesPzs = this.satisfiesPzs;
     final scaling = this.scaling;
+    final sshEnabled = this.sshEnabled;
     final template = this.template;
     final terminalCondition = this.terminalCondition;
     final threatDetectionEnabled = this.threatDetectionEnabled;
@@ -7839,6 +8160,7 @@ class GoogleCloudRunV2Service {
       'defaultUriDisabled': ?defaultUriDisabled,
       'deleteTime': ?deleteTime,
       'description': ?description,
+      'durableExecution': ?durableExecution,
       'etag': ?etag,
       'expireTime': ?expireTime,
       'generation': ?generation,
@@ -7856,6 +8178,7 @@ class GoogleCloudRunV2Service {
       'reconciling': ?reconciling,
       'satisfiesPzs': ?satisfiesPzs,
       'scaling': ?scaling,
+      'sshEnabled': ?sshEnabled,
       'template': ?template,
       'terminalCondition': ?terminalCondition,
       'threatDetectionEnabled': ?threatDetectionEnabled,
@@ -8037,10 +8360,10 @@ class GoogleCloudRunV2SourceFile {
 }
 
 /// Request message for starting an Instance.
-typedef GoogleCloudRunV2StartInstanceRequest = $InstanceRequest;
+typedef GoogleCloudRunV2StartInstanceRequest = $InstanceRequest01;
 
 /// Request message for deleting an Instance.
-typedef GoogleCloudRunV2StopInstanceRequest = $InstanceRequest;
+typedef GoogleCloudRunV2StopInstanceRequest = $InstanceRequest01;
 
 /// Location of the source in an archive file in Google Cloud Storage.
 class GoogleCloudRunV2StorageSource {
@@ -9020,6 +9343,45 @@ class GoogleCloudRunV2TrafficTargetStatus {
       'type': ?type,
       'uri': ?uri,
     };
+  }
+}
+
+/// The request message for the UploadSource method.
+class GoogleCloudRunV2UploadSourceRequest {
+  /// The name of Cloud Run Service upload source archive will be used for.
+  core.String? service;
+
+  GoogleCloudRunV2UploadSourceRequest({this.service});
+
+  GoogleCloudRunV2UploadSourceRequest.fromJson(core.Map json_)
+    : this(service: json_['service'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final service = this.service;
+    return {'service': ?service};
+  }
+}
+
+/// The response message for the UploadSource method.
+class GoogleCloudRunV2UploadSourceResponse {
+  /// The Cloud Storage object path the source archive is uploaded to.
+  GoogleCloudRunV2CloudStorageSource? cloudStorageSource;
+
+  GoogleCloudRunV2UploadSourceResponse({this.cloudStorageSource});
+
+  GoogleCloudRunV2UploadSourceResponse.fromJson(core.Map json_)
+    : this(
+        cloudStorageSource: json_.containsKey('cloudStorageSource')
+            ? GoogleCloudRunV2CloudStorageSource.fromJson(
+                json_['cloudStorageSource']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudStorageSource = this.cloudStorageSource;
+    return {'cloudStorageSource': ?cloudStorageSource};
   }
 }
 
@@ -10461,7 +10823,7 @@ typedef GoogleTypeExpr = $Expr;
 /// to proto2. This schema has been open-sourced only to facilitate the
 /// migration of Google products with MessageSet-bearing messages to open-source
 /// environments.
-typedef Proto2BridgeMessageSet = $Shared00;
+typedef Proto2BridgeMessageSet = $Shared01;
 
 /// Wire-format for a Status object
 class UtilStatusProto {

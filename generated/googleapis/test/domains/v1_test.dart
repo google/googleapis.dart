@@ -714,6 +714,7 @@ api.InitiatePushTransferRequest buildInitiatePushTransferRequest() {
   buildCounterInitiatePushTransferRequest++;
   if (buildCounterInitiatePushTransferRequest < 3) {
     o.tag = 'foo';
+    o.validateOnly = true;
   }
   buildCounterInitiatePushTransferRequest--;
   return o;
@@ -723,6 +724,7 @@ void checkInitiatePushTransferRequest(api.InitiatePushTransferRequest o) {
   buildCounterInitiatePushTransferRequest++;
   if (buildCounterInitiatePushTransferRequest < 3) {
     unittest.expect(o.tag!, unittest.equals('foo'));
+    unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterInitiatePushTransferRequest--;
 }
@@ -3449,6 +3451,7 @@ void main() {
       final arg_request = buildRegistration();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3493,6 +3496,10 @@ void main() {
             unittest.equals(arg_updateMask),
           );
           unittest.expect(
+            queryMap['validateOnly']!.first,
+            unittest.equals('$arg_validateOnly'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -3507,6 +3514,7 @@ void main() {
         arg_request,
         arg_name,
         updateMask: arg_updateMask,
+        validateOnly: arg_validateOnly,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);

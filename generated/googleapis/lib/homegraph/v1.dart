@@ -339,6 +339,71 @@ class AgentOtherDeviceId {
   }
 }
 
+/// Component of a provider device.
+class Component {
+  /// Child components.
+  ///
+  /// Optional.
+  core.List<Component>? childComponents;
+
+  /// List of Device types associated with this component.
+  ///
+  /// Supported device types are defined in
+  /// cs//depot/google3/home/homeservicelayer/uddm/types/uddm_device_types.proto
+  /// and the type string is the enum name, for example: ON_OFF_LIGHT =\>
+  /// "ON_OFF_LIGHT".
+  ///
+  /// Required.
+  core.List<core.String>? deviceTypes;
+
+  /// ID of the component from the device provider.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// List of trait data associated with the component.
+  ///
+  /// Required.
+  core.List<TraitData>? traitData;
+
+  Component({this.childComponents, this.deviceTypes, this.id, this.traitData});
+
+  Component.fromJson(core.Map json_)
+    : this(
+        childComponents: (json_['childComponents'] as core.List?)
+            ?.map(
+              (value) => Component.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        deviceTypes: (json_['deviceTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        id: json_['id'] as core.String?,
+        traitData: (json_['traitData'] as core.List?)
+            ?.map(
+              (value) => TraitData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final childComponents = this.childComponents;
+    final deviceTypes = this.deviceTypes;
+    final id = this.id;
+    final traitData = this.traitData;
+    return {
+      'childComponents': ?childComponents,
+      'deviceTypes': ?deviceTypes,
+      'id': ?id,
+      'traitData': ?traitData,
+    };
+  }
+}
+
 /// Contains the set of updates for a component.
 class ComponentTraitUpdates {
   /// ID of the component from the device provider.
@@ -562,6 +627,28 @@ class DeviceInfo {
   }
 }
 
+/// Metadata for traits of a single device.
+class DeviceMetadata {
+  /// Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last
+  /// Spanner commit timestamp.
+  core.Map<core.String, core.String>? traitCommitTimestamps;
+
+  DeviceMetadata({this.traitCommitTimestamps});
+
+  DeviceMetadata.fromJson(core.Map json_)
+    : this(
+        traitCommitTimestamps:
+            (json_['traitCommitTimestamps']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final traitCommitTimestamps = this.traitCommitTimestamps;
+    return {'traitCommitTimestamps': ?traitCommitTimestamps};
+  }
+}
+
 /// Identifiers used to describe the device.
 class DeviceNames {
   /// List of names provided by the manufacturer rather than the user, such as
@@ -718,6 +805,28 @@ class HomeEvents {
   }
 }
 
+/// Container for UDDM trait data associated with a device.
+class HomeTraitPayload {
+  /// The root component of the device as reported by the provider.
+  Component? rootComponent;
+
+  HomeTraitPayload({this.rootComponent});
+
+  HomeTraitPayload.fromJson(core.Map json_)
+    : this(
+        rootComponent: json_.containsKey('rootComponent')
+            ? Component.fromJson(
+                json_['rootComponent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final rootComponent = this.rootComponent;
+    return {'rootComponent': ?rootComponent};
+  }
+}
+
 /// Contains the set of updates for a device.
 class HomeTraitUpdates {
   /// Trait updates for each component.
@@ -759,6 +868,30 @@ class QueryRequest {
   /// Required.
   core.String? agentUserId;
 
+  /// Specifies the type of device data to be returned in the response.
+  ///
+  /// This allows callers to request traditional Smart Home traits, Unified
+  /// Device Data Model (UDDM) traits, or both. If unspecified, defaults to
+  /// SMART_HOME_TRAIT_ONLY.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DEVICE_VIEW_UNSPECIFIED" : Default value. Equivalent to
+  /// SMART_HOME_TRAIT_ONLY.
+  /// - "SMART_HOME_TRAIT_ONLY" : Return only standard Smart Home traits in the
+  /// `devices` map.
+  /// - "HOME_TRAIT_ONLY" : Return only Unified Device Data Model (UDDM) traits
+  /// in the `home_trait_payload` map.
+  /// - "HOME_TRAIT_AND_SMART_HOME_TRAIT" : Return both standard Smart Home
+  /// traits and UDDM traits.
+  core.String? deviceView;
+
+  /// If true, the response will include device metadata in the device_metadata
+  /// field.
+  ///
+  /// Optional.
+  core.bool? includeDeviceMetadata;
+
   /// Inputs containing third-party device IDs for which to get the device
   /// states.
   ///
@@ -768,11 +901,19 @@ class QueryRequest {
   /// Request ID used for debugging.
   core.String? requestId;
 
-  QueryRequest({this.agentUserId, this.inputs, this.requestId});
+  QueryRequest({
+    this.agentUserId,
+    this.deviceView,
+    this.includeDeviceMetadata,
+    this.inputs,
+    this.requestId,
+  });
 
   QueryRequest.fromJson(core.Map json_)
     : this(
         agentUserId: json_['agentUserId'] as core.String?,
+        deviceView: json_['deviceView'] as core.String?,
+        includeDeviceMetadata: json_['includeDeviceMetadata'] as core.bool?,
         inputs: (json_['inputs'] as core.List?)
             ?.map(
               (value) => QueryRequestInput.fromJson(
@@ -785,10 +926,14 @@ class QueryRequest {
 
   core.Map<core.String, core.dynamic> toJson() {
     final agentUserId = this.agentUserId;
+    final deviceView = this.deviceView;
+    final includeDeviceMetadata = this.includeDeviceMetadata;
     final inputs = this.inputs;
     final requestId = this.requestId;
     return {
       'agentUserId': ?agentUserId,
+      'deviceView': ?deviceView,
+      'includeDeviceMetadata': ?includeDeviceMetadata,
       'inputs': ?inputs,
       'requestId': ?requestId,
     };
@@ -881,6 +1026,12 @@ class QueryResponse {
 
 /// Payload containing device states information.
 class QueryResponsePayload {
+  /// Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last
+  /// Spanner commit timestamp.
+  ///
+  /// If a trait has no recorded timestamp, it will be omitted from this map.
+  core.Map<core.String, DeviceMetadata>? deviceMetadata;
+
   /// States of the devices.
   ///
   /// Map of third-party device ID to struct of device states.
@@ -889,10 +1040,31 @@ class QueryResponsePayload {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Map<core.String, core.Object?>>? devices;
 
-  QueryResponsePayload({this.devices});
+  /// Map of device IDs to their Unified Device Data Model (UDDM) trait
+  /// payloads.
+  ///
+  /// This field is populated when `device_view` is set to HOME_TRAIT_ONLY or
+  /// HOME_TRAIT_AND_SMART_HOME_TRAIT.
+  core.Map<core.String, HomeTraitPayload>? homeTraitPayload;
+
+  QueryResponsePayload({
+    this.deviceMetadata,
+    this.devices,
+    this.homeTraitPayload,
+  });
 
   QueryResponsePayload.fromJson(core.Map json_)
     : this(
+        deviceMetadata:
+            (json_['deviceMetadata'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    DeviceMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
         devices: (json_['devices'] as core.Map<core.String, core.dynamic>?)
             ?.map(
               (key, value) => core.MapEntry(
@@ -900,11 +1072,27 @@ class QueryResponsePayload {
                 value as core.Map<core.String, core.dynamic>,
               ),
             ),
+        homeTraitPayload:
+            (json_['homeTraitPayload'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    HomeTraitPayload.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final deviceMetadata = this.deviceMetadata;
     final devices = this.devices;
-    return {'devices': ?devices};
+    final homeTraitPayload = this.homeTraitPayload;
+    return {
+      'deviceMetadata': ?deviceMetadata,
+      'devices': ?devices,
+      'homeTraitPayload': ?homeTraitPayload,
+    };
   }
 }
 
@@ -987,12 +1175,22 @@ class ReportStateAndNotificationDevice {
 /// \[`ReportStateAndNotification`\](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification)
 /// call.
 ///
-/// It may include states, notifications, or both. States and notifications are
-/// defined per `device_id` (for example, "123" and "456" in the following
-/// example). Example: ```json { "requestId":
+/// It may include states, notifications, home_traits, home_events, or any
+/// combination thereof. Smart Home Device Traits (SHDT) `states` and
+/// `notifications` are defined per `device_id` (for example, "123" and "456" in
+/// the following example). Google Home Traits `home_traits` and `home_events`
+/// are lists of updates or events, each associated with a `device_id` (for
+/// example, "789" in the following example). Example: ```json { "requestId":
 /// "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "payload": {
 /// "devices": { "states": { "123": { "on": true }, "456": { "on": true,
-/// "brightness": 10 }, }, } } } ```
+/// "brightness": 10 }, }, "homeTraits": [ { "deviceId": "789", "components": [
+/// { "componentId": "main", "traitData": [ { "trait": { "@type":
+/// "type.googleapis.com/home.graph.v1.OnOffTrait", "onOff": true } } ] } ] } ],
+/// "homeEvents": [ { "deviceId": "789", "events": [ { "componentId": "main",
+/// "events": [ { "eventId": "event-123", "eventTime": "2026-01-01T00:00:00Z",
+/// "event": { "@type":
+/// "type.googleapis.com/home.graph.v1.DoorbellPressTrait.DoorbellPressedEvent"
+/// } } ] } ] } ] } } } ```
 class ReportStateAndNotificationRequest {
   /// Third-party user ID.
   ///
@@ -1057,17 +1255,36 @@ class ReportStateAndNotificationRequest {
 /// \[`ReportStateAndNotification`\](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification)
 /// call.
 class ReportStateAndNotificationResponse {
+  /// Map from agent device ID to the result of reporting state and
+  /// notifications.
+  ///
+  /// This is only populated for UDDM updates for now.
+  core.Map<core.String, Result>? deviceResults;
+
   /// Request ID copied from ReportStateAndNotificationRequest.
   core.String? requestId;
 
-  ReportStateAndNotificationResponse({this.requestId});
+  ReportStateAndNotificationResponse({this.deviceResults, this.requestId});
 
   ReportStateAndNotificationResponse.fromJson(core.Map json_)
-    : this(requestId: json_['requestId'] as core.String?);
+    : this(
+        deviceResults:
+            (json_['deviceResults'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    Result.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        requestId: json_['requestId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final deviceResults = this.deviceResults;
     final requestId = this.requestId;
-    return {'requestId': ?requestId};
+    return {'deviceResults': ?deviceResults, 'requestId': ?requestId};
   }
 }
 
@@ -1111,6 +1328,22 @@ class RequestSyncDevicesRequest {
 /// Intentionally empty upon success. An HTTP response code is returned with
 /// more details upon failure.
 typedef RequestSyncDevicesResponse = $Empty;
+
+/// Result of reporting state and notifications for a single device.
+class Result {
+  /// The trait commit timestamp of the state update in Home Graph.
+  core.String? homeTraitCommitTime;
+
+  Result({this.homeTraitCommitTime});
+
+  Result.fromJson(core.Map json_)
+    : this(homeTraitCommitTime: json_['homeTraitCommitTime'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final homeTraitCommitTime = this.homeTraitCommitTime;
+    return {'homeTraitCommitTime': ?homeTraitCommitTime};
+  }
+}
 
 /// Payload containing the state and notification information for devices.
 class StateAndNotificationPayload {
@@ -1232,25 +1465,44 @@ class SyncResponsePayload {
 
 /// Contains the trait payload for a single trait.
 class TraitData {
-  /// The Home API trait payload.
+  /// Other metadata for the trait.
   ///
-  /// Optional.
+  /// The time the client update was committed in the server.
+  core.String? commitTime;
+
+  /// Optional in write requests (e.g. ReportStateAndNotification).
+  ///
+  /// If set, represents the provider version timestamp of the existing trait in
+  /// the database. The server will perform optimistic locking validation if
+  /// this field is present and the experiment is enabled. It will not be
+  /// persisted to the database.
+  core.String? providerVersionTime;
+
+  /// The Provider Home API trait payload.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? trait;
 
-  TraitData({this.trait});
+  TraitData({this.commitTime, this.providerVersionTime, this.trait});
 
   TraitData.fromJson(core.Map json_)
     : this(
+        commitTime: json_['commitTime'] as core.String?,
+        providerVersionTime: json_['providerVersionTime'] as core.String?,
         trait: json_.containsKey('trait')
             ? json_['trait'] as core.Map<core.String, core.dynamic>
             : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final commitTime = this.commitTime;
+    final providerVersionTime = this.providerVersionTime;
     final trait = this.trait;
-    return {'trait': ?trait};
+    return {
+      'commitTime': ?commitTime,
+      'providerVersionTime': ?providerVersionTime,
+      'trait': ?trait,
+    };
   }
 }

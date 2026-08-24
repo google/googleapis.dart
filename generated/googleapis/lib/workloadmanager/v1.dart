@@ -143,7 +143,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -158,9 +158,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -230,7 +229,7 @@ class ProjectsLocationsDeploymentsResource {
   /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [deploymentId] - Required. Id of the deployment
+  /// [deploymentId] - Required. ID of the deployment.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
@@ -283,12 +282,12 @@ class ProjectsLocationsDeploymentsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. Name of the resource.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deployments/\[^/\]+$`.
   ///
   /// [force] - Optional. If set to true, any actuation will also be deleted.
-  /// Followed the best practice from https://aip.dev/135#cascading-delete
+  /// Follows the best practice from https://aip.dev/135#cascading-delete.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -324,8 +323,8 @@ class ProjectsLocationsDeploymentsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource. The format will be
-  /// 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}'
+  /// [name] - Required. Name of the resource. The format is
+  /// 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}'.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deployments/\[^/\]+$`.
   ///
@@ -364,7 +363,7 @@ class ProjectsLocationsDeploymentsResource {
   /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filter resource follow https://google.aip.dev/160
+  /// [filter] - Optional. Filter resource following https://google.aip.dev/160.
   ///
   /// [orderBy] - Optional. Field to sort by. See
   /// https://google.aip.dev/132#ordering for more details.
@@ -429,7 +428,7 @@ class ProjectsLocationsDeploymentsActuationsResource {
   ///
   /// [parent] - Required. The resource name of the Actuation location using the
   /// form:
-  /// 'projects/{project_id}/locations/{location}/deployments/{deployment}'
+  /// 'projects/{project_id}/locations/{location}/deployments/{deployment}'.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deployments/\[^/\]+$`.
   ///
@@ -478,12 +477,12 @@ class ProjectsLocationsDeploymentsActuationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a single Actuation
+  /// Deletes a single Actuation.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the book to delete.
-  /// project/{project_id}/locations/{location_id}/deployments/{deployment_id}/actuations/{actuation_id}
+  /// [name] - Required. The name of the actuation to delete.
+  /// projects/{project}/locations/{location}/deployments/{deployment}/actuations/{actuation}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deployments/\[^/\]+/actuations/\[^/\]+$`.
   ///
@@ -519,7 +518,7 @@ class ProjectsLocationsDeploymentsActuationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. Name of the resource.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deployments/\[^/\]+/actuations/\[^/\]+$`.
   ///
@@ -553,11 +552,11 @@ class ProjectsLocationsDeploymentsActuationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource prefix of the Actuation using the form:
-  /// 'projects/{project_id}/locations/{location}/deployments/{deployment}'
+  /// 'projects/{project_id}/locations/{location}/deployments/{deployment}'.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deployments/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filtering results
+  /// [filter] - Optional. Filtering results.
   ///
   /// [orderBy] - Optional. Field to sort by. See
   /// https://google.aip.dev/132#ordering for more details.
@@ -1728,35 +1727,35 @@ class ProjectsLocationsRulesResource {
   }
 }
 
-/// Active directory details
+/// Active Directory details.
 class ActiveDirectory {
-  /// DNS IP address
+  /// DNS IP address.
   ///
   /// Optional.
   core.String? dnsAddress;
 
-  /// human readable form of a domain such as “google.com”.
+  /// Human readable form of a domain such as `example.com`.
   ///
   /// Optional.
   core.String? domain;
 
-  /// domain username
+  /// Domain username.
   ///
   /// Optional.
   core.String? domainUsername;
 
-  /// secret_manager_secret
+  /// Secret Manager secret.
   ///
   /// Required.
   core.String? secretManagerSecret;
 
-  /// active directory type
+  /// Active Directory type.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "ACTIVE_DIRECTORY_TYPE_UNSPECIFIED" : Unspecified active directory type
-  /// - "GCP_MANAGED" : GCP managed active directory type
-  /// - "SELF_MANAGED" : Self managed active directory type
+  /// - "ACTIVE_DIRECTORY_TYPE_UNSPECIFIED" : Unspecified Active Directory type.
+  /// - "GCP_MANAGED" : GCP managed Active Directory type.
+  /// - "SELF_MANAGED" : Self managed Active Directory type.
   core.String? type;
 
   ActiveDirectory({
@@ -1795,48 +1794,48 @@ class ActiveDirectory {
 /// The Actuation object represents the bootstrap state and output results of
 /// deployed infrastructure and software.
 class Actuation {
-  /// Actuation output
+  /// Actuation output.
   ///
   /// Output only.
   ActuationOutput? actuationOutput;
 
-  /// Deployment output
+  /// Deployment output.
   ///
   /// Output only.
   core.List<DeploymentOutput>? deploymentOutput;
 
-  /// End time stamp
+  /// End time stamp.
   ///
   /// Output only.
   core.String? endTime;
 
-  /// The name of actuation resource.
+  /// The name of the actuation resource.
   ///
   /// The format is
-  /// projects/{project}/locations/{location}/deployments/{deployment}/actuations/{actuation}
+  /// projects/{project}/locations/{location}/deployments/{deployment}/actuations/{actuation}.
   core.String? name;
 
-  /// Start time stamp
+  /// Start time stamp.
   ///
   /// Output only.
   core.String? startTime;
 
-  /// Actuation state
+  /// Actuation state.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : state unspecified
-  /// - "INFRA_CREATING" : creating infrastructure in backend (terraform
-  /// applying)
-  /// - "SUCCEEDED" : success
-  /// - "FAILED" : failed either in infra creating, post infra configuring or
-  /// infra destroying
-  /// - "POST_INFRA_CONFIGURING" : configure workload after infrastructure is
-  /// ready (ansible running)
-  /// - "INFRA_DESTROYING" : destroying infrastructure in backend (terraform
-  /// destroying)
-  /// - "TIMEOUT" : ansible is timeout due to losing heartbeat in post infra
-  /// configuring
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "INFRA_CREATING" : Creating infrastructure in backend (Terraform
+  /// applying).
+  /// - "SUCCEEDED" : Success.
+  /// - "FAILED" : Failed either in infra creating, post infra configuring, or
+  /// infra destroying.
+  /// - "POST_INFRA_CONFIGURING" : Configure workload after infrastructure is
+  /// ready (Ansible running).
+  /// - "INFRA_DESTROYING" : Destroying infrastructure in backend (Terraform
+  /// destroying).
+  /// - "TIMEOUT" : Ansible timed out due to losing heartbeat in post infra
+  /// configuring.
   core.String? state;
 
   Actuation({
@@ -1886,22 +1885,22 @@ class Actuation {
   }
 }
 
-/// Message for output of Actuation
+/// Message for output of actuation.
 class ActuationOutput {
-  /// A link to gcs file that store build logs
+  /// A link to the Cloud Storage file that stores build logs.
   core.String? actuateLogs;
 
-  /// error message return from ansible.
+  /// Error message returned from Ansible.
   ///
   /// Output only.
   core.String? ansibleError;
 
-  /// failed task name return from ansible.
+  /// Failed task name returned from Ansible.
   ///
   /// Output only.
   core.List<core.String>? ansibleFailedTask;
 
-  /// reference to Blueprint Controller deployment and revision resource
+  /// Reference to the Blueprint Controller deployment and revision resource.
   core.String? blueprintId;
 
   /// Cloud Build instance UUID associated with this revision, without any
@@ -1915,40 +1914,40 @@ class ActuationOutput {
   /// Output only.
   /// Possible string values are:
   /// - "ERROR_CODE_UNSPECIFIED" : No error code was specified.
-  /// - "TERRAFORM_FAILED" : general terraform failure
-  /// - "PERMISSION_DENIED_IN_TERRAFORM" : permission error in terraform
-  /// - "QUOTA_EXCEED_IN_TERRAFORM" : quota related error in terraform
-  /// - "ANSIBLE_FAILED" : general ansible failure
-  /// - "CONSTRAINT_VIOLATION_IN_TERRAFORM" : constraint related error in
-  /// terraform
-  /// - "RESOURCE_ALREADY_EXISTS_IN_TERRAFORM" : resource already exists error
-  /// in terraform
-  /// - "RESOURCE_UNAVAILABLE_IN_TERRAFORM" : resource not found error in
-  /// terraform
-  /// - "PERMISSION_DENIED_IN_ANSIBLE" : permission denied error in ansible
-  /// - "INVALID_SECRET_IN_ANSIBLE" : secret related error in ansible
-  /// - "TERRAFORM_DELETION_FAILED" : general terraform failure during deletion
-  /// - "RESOURCE_IN_USE_IN_TERRAFORM_DELETION" : resource in use error in
-  /// terraform deletion
-  /// - "ANSIBLE_START_FAILED" : start up failure in ansible
+  /// - "TERRAFORM_FAILED" : General Terraform failure.
+  /// - "PERMISSION_DENIED_IN_TERRAFORM" : Permission error in Terraform.
+  /// - "QUOTA_EXCEED_IN_TERRAFORM" : Quota related error in Terraform.
+  /// - "ANSIBLE_FAILED" : General Ansible failure.
+  /// - "CONSTRAINT_VIOLATION_IN_TERRAFORM" : Constraint related error in
+  /// Terraform.
+  /// - "RESOURCE_ALREADY_EXISTS_IN_TERRAFORM" : Resource already exists error
+  /// in Terraform.
+  /// - "RESOURCE_UNAVAILABLE_IN_TERRAFORM" : Resource not found error in
+  /// Terraform.
+  /// - "PERMISSION_DENIED_IN_ANSIBLE" : Permission denied error in Ansible.
+  /// - "INVALID_SECRET_IN_ANSIBLE" : Secret related error in Ansible.
+  /// - "TERRAFORM_DELETION_FAILED" : General Terraform failure during deletion.
+  /// - "RESOURCE_IN_USE_IN_TERRAFORM_DELETION" : Resource in use error in
+  /// Terraform deletion.
+  /// - "ANSIBLE_START_FAILED" : Startup failure in Ansible.
   core.String? errorCode;
 
-  /// A link to actuation cloud build log.
+  /// A link to the actuation Cloud Build log.
   core.String? errorLogs;
 
-  /// whether the error message is user facing.
+  /// Whether the error message is user facing.
   ///
   /// If true, the error message will be shown in the UI.
   ///
   /// Output only.
   core.bool? hasUserFacingErrorMsg;
 
-  /// error message return from terraform.
+  /// Error message returned from Terraform.
   ///
   /// Output only.
   core.String? terraformError;
 
-  /// reference to terraform template used
+  /// Reference to the Terraform template used.
   core.String? terraformTemplate;
 
   ActuationOutput({
@@ -2512,71 +2511,74 @@ class AgentStatusServiceStatus {
   }
 }
 
-/// Message for sap instant details
+/// Message for SAP instance details.
 class AppDetails {
-  /// instance id for app
+  /// Instance ID for app.
   ///
   /// Optional.
   core.String? appInstanceId;
 
-  /// Application service account - let custoemrs bring their own SA for
-  /// application
+  /// Application service account.
+  ///
+  /// Let customers bring their own service account for the application.
   core.String? appServiceAccount;
 
-  /// Customized vm names
+  /// Customized VM names.
   ///
   /// Optional.
   core.List<core.String>? appVmNames;
 
-  /// image for ascs server
+  /// Image for the ASCS server.
   ///
   /// Required.
   core.String? ascsImage;
 
-  /// instance id for ascs
+  /// Instance ID for ASCS.
   ///
   /// Optional.
   core.String? ascsInstanceId;
 
-  /// ascs_machine_type
+  /// ASCS machine type.
   ///
   /// Required.
   core.String? ascsMachineType;
 
-  /// ASCS service account - let custoemrs bring their own SA for ASCS
+  /// ASCS service account.
+  ///
+  /// Let customers bring their own service account for ASCS.
   core.String? ascsServiceAccount;
 
-  /// ASCS vm name
+  /// ASCS VM name.
   ///
   /// Optional.
   core.String? ascsVm;
 
-  /// instance id for ers
+  /// Instance ID for ERS.
   ///
   /// Optional.
   core.String? ersInstanceId;
 
-  /// ERS vm name
+  /// ERS VM name.
   ///
   /// Optional.
   core.String? ersVm;
 
-  /// image for app server and ascs server
+  /// Image for the app server and ASCS server.
   ///
   /// Required.
   core.String? image;
 
-  /// machine type
+  /// Machine type.
   ///
   /// Required.
   core.String? machineType;
 
-  /// secret_manager_secret
+  /// Secret Manager secret.
   ///
   /// Required.
   core.String? secretManagerSecret;
 
-  /// Storage location
+  /// Storage location.
   ///
   /// Optional.
   core.String? sharedStorage;
@@ -2586,7 +2588,7 @@ class AppDetails {
   /// Required.
   core.String? sid;
 
-  /// vms_multiplier
+  /// VMs multiplier.
   ///
   /// Required.
   core.int? vmsMultiplier;
@@ -2901,67 +2903,69 @@ class ComponentHealth {
   }
 }
 
-/// Database details
+/// Database details.
 class Database {
-  /// disk_type
+  /// Disk type.
   ///
   /// Required.
   core.String? diskType;
 
-  /// only useful for Linux High Availability setup
+  /// Only useful for Linux High Availability setup.
   ///
   /// Optional.
   core.String? floatingIpAddress;
 
-  /// machine type
+  /// Machine type.
   ///
   /// Required.
   core.String? machineType;
 
-  /// the name of a secondary-sole-tenant node/node group
+  /// The name of a secondary-sole-tenant node/node group.
   ///
   /// Optional.
   core.String? secondarySoleTenantNode;
 
-  /// the type of a secondary-sole-tenant node/node group e.g.
-  /// compute.googleapis.com/node-name
+  /// The type of a secondary-sole-tenant node/node group.
+  ///
+  /// E.g., compute.googleapis.com/node-name.
   ///
   /// Optional.
   core.String? secondarySoleTenantNodeType;
 
-  /// secret_manager_secret
+  /// Secret Manager secret.
   ///
   /// Required.
   core.String? secretManagerSecret;
 
-  /// whether simultaneous multithreading is enabled or not
+  /// Whether simultaneous multithreading is enabled or not.
   ///
   /// Required.
   core.bool? smt;
 
-  /// the name of a primary sole-tenant node/node group
+  /// The name of a primary sole-tenant node/node group.
   ///
   /// Optional.
   core.String? soleTenantNode;
 
-  /// the type of a primary sole-tenant node/node group e.g.
-  /// compute.googleapis.com/node-name
+  /// The type of a primary sole-tenant node/node group.
+  ///
+  /// E.g., compute.googleapis.com/node-name.
   ///
   /// Optional.
   core.String? soleTenantNodeType;
 
-  /// whether to have TempDB on local SSD
+  /// Whether to have TempDB on local SSD.
   ///
   /// Required.
   core.bool? tempdbOnSsd;
 
-  /// SHARED or SOLE_TENANT
+  /// SHARED or SOLE_TENANT.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "TENANCY_MODEL_UNSPECIFIED" : Unspecified tenancy model
-  /// - "SHARED" : Shared tenancy model
-  /// - "SOLE_TENANT" : Sole Tenant tenancy model
+  /// - "TENANCY_MODEL_UNSPECIFIED" : Unspecified tenancy model.
+  /// - "SHARED" : Shared tenancy model.
+  /// - "SOLE_TENANT" : Sole Tenant tenancy model.
   core.String? tenancyModel;
 
   Database({
@@ -3023,42 +3027,44 @@ class Database {
   }
 }
 
-/// Message for sap instant details
+/// Message for SAP instance details.
 class DatabaseDetails {
-  /// Database service account - let custoemrs bring their own SA for database
+  /// Database service account.
+  ///
+  /// Let customers bring their own SA for the database.
   core.String? databaseServiceAccount;
 
-  /// disk_type
+  /// Disk type.
   ///
   /// Required.
   core.String? diskType;
 
-  /// image for database server
+  /// Image for the database server.
   ///
   /// Required.
   core.String? image;
 
-  /// instance id
+  /// Instance ID.
   ///
   /// Optional.
   core.String? instanceId;
 
-  /// machine type
+  /// Machine type.
   ///
   /// Required.
   core.String? machineType;
 
-  /// primary db vm name
+  /// Primary DB VM name.
   ///
   /// Optional.
   core.String? primaryDbVm;
 
-  /// secondary db vm name
+  /// Secondary DB VM name.
   ///
   /// Optional.
   core.String? secondaryDbVm;
 
-  /// secret_manager_secret
+  /// Secret Manager secret.
   ///
   /// Required.
   core.String? secretManagerSecret;
@@ -3165,30 +3171,32 @@ class DatabaseProperties {
 /// The Deployment object represents user intent for deploying a specific type
 /// of workload.
 class Deployment {
-  /// Create time stamp
+  /// Create time stamp.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Description of the Deployment
+  /// Description of the deployment.
   core.String? description;
 
-  /// The name of deployment resource.
+  /// The name of the deployment resource.
   ///
-  /// The format will be
-  /// 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}'
+  /// The format is
+  /// 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}'.
   core.String? name;
 
-  /// SAP system workload input
+  /// SAP system workload input.
   SapSystemS4Config? sapSystemS4Config;
 
-  /// User-specified Service Account (SA) credentials to be used for cloud build
+  /// User-specified Service Account (SA) credentials to be used for Cloud
+  /// Build.
+  ///
   /// Format: `projects/{projectID}/serviceAccounts/{serviceAccount}` The
   /// default Cloud Build SA will be used initially if this field is not set
-  /// during deployment creation
+  /// during deployment creation.
   core.String? serviceAccount;
 
-  /// MS SQL workload input
+  /// MS SQL workload input.
   SqlServerWorkload? sqlServerWorkload;
 
   /// Current state of the deployment.
@@ -3215,7 +3223,7 @@ class Deployment {
   /// Optional.
   core.Map<core.String, TerraformVariable>? terraformVariables;
 
-  /// Update time stamp
+  /// Update time stamp.
   ///
   /// Output only.
   core.String? updateTime;
@@ -3231,14 +3239,14 @@ class Deployment {
   /// Optional.
   core.String? workerPool;
 
-  /// Workload type of the deployment
+  /// Workload type of the deployment.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "WORKLOAD_TYPE_UNSPECIFIED" : Unspecified workload type
-  /// - "SAP_S4" : SAP S/4HANA workload type
-  /// - "SQL_SERVER" : SQL Server workload type
-  /// - "ORACLE" : Oracle workload type
+  /// - "WORKLOAD_TYPE_UNSPECIFIED" : Unspecified workload type.
+  /// - "SAP_S4" : SAP S/4HANA workload type.
+  /// - "SQL_SERVER" : SQL Server workload type.
+  /// - "ORACLE" : Oracle workload type.
   core.String? workloadType;
 
   Deployment({
@@ -3318,12 +3326,12 @@ class Deployment {
   }
 }
 
-/// Message for output of deployment resource
+/// Message for output of deployment resource.
 class DeploymentOutput {
-  /// name of the resource
+  /// Name of the resource.
   core.String? name;
 
-  /// type of the resource
+  /// Type of the resource.
   core.String? type;
 
   DeploymentOutput({this.name, this.type});
@@ -4118,7 +4126,7 @@ class InstanceProperties {
 
 /// The response object from `ListActuations`.
 class ListActuationsResponse {
-  /// The list of Actuation
+  /// The list of actuations.
   core.List<Actuation>? actuations;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -4164,9 +4172,9 @@ class ListActuationsResponse {
   }
 }
 
-/// Message for response to listing Deployments
+/// Message for response to listing deployments.
 class ListDeploymentsResponse {
-  /// The list of Deployment
+  /// The list of deployments.
   core.List<Deployment>? deployments;
 
   /// A token identifying a page of results the server should return.
@@ -4518,33 +4526,33 @@ class ListScannedResourcesResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
-/// Message for sap instant details
+/// Message for SAP instance details.
 class LocationDetails {
-  /// create firewall, if true, create firewall for the deployment.
+  /// Create firewall.
   ///
-  /// This field provides an option to not always create firewall for the
-  /// deployment.
+  /// If true, creates a firewall for the deployment. This field provides an
+  /// option to not always create a firewall for the deployment.
   ///
   /// Optional.
   core.bool? createCommsFirewall;
 
-  /// network tags
+  /// Network tags.
   ///
   /// Optional.
   core.List<core.String>? customTags;
 
-  /// when user skip DNS configuration from UI, deployment_dns_enabled=false
-  /// otherwise deployment_dns_enabled=true
+  /// When the user skips DNS configuration in the UI, `deployment_dns_enabled`
+  /// is false; otherwise `deployment_dns_enabled` is true.
   ///
   /// Optional.
   core.bool? deploymentDnsEnabled;
 
-  /// dns zone name
+  /// DNS zone name.
   ///
   /// Optional.
   core.String? dnsZone;
 
-  /// dns_zone_name_suffix
+  /// DNS zone name suffix.
   ///
   /// Optional.
   core.String? dnsZoneNameSuffix;
@@ -4556,32 +4564,32 @@ class LocationDetails {
   /// - "CONFIGURE_NAT"
   core.String? internetAccess;
 
-  /// network project
+  /// Network project.
   ///
   /// Optional.
   core.String? networkProject;
 
-  /// region_name
+  /// Region name.
   ///
   /// Required.
   core.String? regionName;
 
-  /// subnet_name
+  /// Subnet name.
   ///
   /// Required.
   core.String? subnetName;
 
-  /// vpc_name
+  /// VPC name.
   ///
   /// Required.
   core.String? vpcName;
 
-  /// zone1_name
+  /// Zone 1 name.
   ///
   /// Required.
   core.String? zone1Name;
 
-  /// zone2_name
+  /// Zone 2 name.
   ///
   /// Optional.
   core.String? zone2Name;
@@ -4779,34 +4787,34 @@ class Operation {
   }
 }
 
-/// pacemaker configuration
+/// Pacemaker configuration.
 class Pacemaker {
-  /// bucket location for node certificates
+  /// Bucket location for node certificates.
   ///
   /// Required.
   core.String? bucketNameNodeCertificates;
 
-  /// pacemaker cluster name
+  /// Pacemaker cluster name.
   ///
   /// Required.
   core.String? pacemakerCluster;
 
-  /// pacemaker cluster secret name
+  /// Pacemaker cluster secret name.
   ///
   /// Required.
   core.String? pacemakerClusterSecret;
 
-  /// pacemaker cluster username
+  /// Pacemaker cluster username.
   ///
   /// Required.
   core.String? pacemakerClusterUsername;
 
-  /// sql pacemaker secret name
+  /// SQL Pacemaker secret name.
   ///
   /// Required.
   core.String? sqlPacemakerSecret;
 
-  /// sql pacemaker username
+  /// SQL Pacemaker username.
   ///
   /// Required.
   core.String? sqlPacemakerUsername;
@@ -4851,7 +4859,7 @@ class Pacemaker {
 }
 
 /// Contains the details of a product.
-typedef Product = $Shared25;
+typedef Product = $Shared33;
 
 /// Resource in execution result.
 class Resource {
@@ -6265,7 +6273,7 @@ class SapDiscoveryWorkloadProperties {
 }
 
 /// A product name and version.
-typedef SapDiscoveryWorkloadPropertiesProductVersion = $Shared25;
+typedef SapDiscoveryWorkloadPropertiesProductVersion = $Shared33;
 
 /// A SAP software component name, version, and type.
 class SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {
@@ -6354,21 +6362,22 @@ class SapInstanceProperties {
   }
 }
 
-/// Message for sap system workload
+/// Message for SAP system workload.
 class SapSystemS4Config {
   core.bool? allowStoppingForUpdate;
 
-  /// Ansible runner service account - let custoemrs bring their own SA for
-  /// Ansible runner
+  /// Ansible runner service account.
+  ///
+  /// Let customers bring their own service account for the Ansible runner.
   core.String? ansibleRunnerServiceAccount;
 
-  /// instance details
+  /// Instance details.
   AppDetails? app;
 
-  /// database details
+  /// Database details.
   DatabaseDetails? database;
 
-  /// two model non-HA and HA supported
+  /// Supports non-HA and HA models.
   ///
   /// Required.
   /// Possible string values are:
@@ -6377,44 +6386,46 @@ class SapSystemS4Config {
   /// - "DISTRIBUTED_HA"
   core.String? deploymentModel;
 
-  /// deployment environment
+  /// Deployment environment.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : Unspecified environment type
-  /// - "NON_PRODUCTION" : Non-production environment type
-  /// - "PRODUCTION" : Production environment type
+  /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : Unspecified environment type.
+  /// - "NON_PRODUCTION" : Non-production environment type.
+  /// - "PRODUCTION" : Production environment type.
   core.String? environmentType;
 
-  /// the project that infrastructure deployed, current only support the same
-  /// project where the deployment resource exist.
+  /// The project that infrastructure is deployed in.
+  ///
+  /// Currently only supports the same project where the deployment resource
+  /// exists.
   core.String? gcpProjectId;
 
-  /// database details
+  /// Database details.
   LocationDetails? location;
 
-  /// media_bucket_name
+  /// Media bucket name.
   ///
   /// Required.
   core.String? mediaBucketName;
 
-  /// sap_boot_disk_image
+  /// SAP boot disk image.
   ///
   /// Optional.
   core.String? sapBootDiskImage;
 
-  /// support scale up and scale out
+  /// Supports scale up and scale out.
   ///
   /// Required.
   /// Possible string values are:
   /// - "SCALE_METHOD_UNSPECIFIED"
   /// - "SCALE_UP" : Scale up: Increases the size of a physical machine by
-  /// increasing the amount of RAM and CPU available for processing
+  /// increasing the amount of RAM and CPU available for processing.
   /// - "SCALE_OUT" : Scale out: Combines multiple independent computers into
-  /// one system
+  /// one system.
   core.String? scalingMethod;
 
-  /// sap hana version
+  /// SAP HANA version.
   ///
   /// Required.
   /// Possible string values are:
@@ -6424,7 +6435,7 @@ class SapSystemS4Config {
   /// - "S4_HANA_2023"
   core.String? version;
 
-  /// vm_prefix
+  /// VM prefix.
   core.String? vmPrefix;
 
   SapSystemS4Config({
@@ -6795,58 +6806,61 @@ class ShellCommand {
   }
 }
 
-/// Location and networking details for configuring SQL server workload
+/// Location and networking details for configuring SQL server workload.
 class SqlLocationDetails {
-  /// create a new DNS Zone when the field is empty, Only show for `Using an
-  /// existing DNS` List of existing DNS Zones tf variable name:
-  /// existing_dns_zone_name
+  /// Create a new DNS zone when the field is empty.
+  ///
+  /// Only shown for `Using an existing DNS`. List of existing DNS zones.
+  /// Terraform variable name: existing_dns_zone_name.
   ///
   /// Optional.
   core.String? dnsZone;
 
-  /// the project that infrastructure deployed, currently only supports the same
-  /// project where the deployment resource exists.
+  /// The project that infrastructure is deployed in.
+  ///
+  /// Currently only supports the same project where the deployment resource
+  /// exists.
   ///
   /// Required.
   core.String? gcpProjectId;
 
-  /// Internet Access
+  /// Internet Access.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "INTERNET_ACCESS_UNSPECIFIED" : Unspecified internet access
-  /// - "ALLOW_EXTERNAL_IP" : Allow external IP
-  /// - "CONFIGURE_NAT" : Configure NAT
+  /// - "INTERNET_ACCESS_UNSPECIFIED" : Unspecified internet access.
+  /// - "ALLOW_EXTERNAL_IP" : Allow external IP.
+  /// - "CONFIGURE_NAT" : Configure NAT.
   core.String? internetAccess;
 
-  /// network name
+  /// Network name.
   ///
   /// Required.
   core.String? network;
 
-  /// primary zone
+  /// Primary zone.
   ///
   /// Required.
   core.String? primaryZone;
 
-  /// region name
+  /// Region name.
   ///
   /// Required.
   core.String? region;
 
-  /// secondary zone can't be same as primary_zone and is only for High
-  /// Availability deployment mode
+  /// Secondary zone cannot be the same as primary_zone and is only for High
+  /// Availability deployment mode.
   ///
   /// Optional.
   core.String? secondaryZone;
 
-  /// subnetwork name
+  /// Subnetwork name.
   ///
   /// Required.
   core.String? subnetwork;
 
-  /// teriary zone can't be same as primary_zone and secondary zone, and it is
-  /// only for High Availability deployment mode
+  /// Tertiary zone cannot be the same as primary_zone and secondary_zone, and
+  /// it is only for High Availability deployment mode.
   ///
   /// Optional.
   core.String? tertiaryZone;
@@ -6900,128 +6914,134 @@ class SqlLocationDetails {
   }
 }
 
-/// Message for MS SQL workload
+/// Message for MS SQL workload.
 class SqlServerWorkload {
-  /// active directory details
+  /// Active Directory details.
   ///
   /// Required.
   ActiveDirectory? activeDirectory;
 
-  /// Compute engine service account - let customers bring their own SA for
-  /// Compute engine
+  /// Compute Engine service account.
+  ///
+  /// Let customers bring their own service account for Compute Engine.
   core.String? computeEngineServiceAccount;
 
-  /// database details
+  /// Database details.
   ///
   /// Required.
   Database? database;
 
-  /// HIGH_AVAILABILITY or SINGLE_INSTANCE
+  /// HIGH_AVAILABILITY or SINGLE_INSTANCE.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "DEPLOYMENT_MODEL_UNSPECIFIED" : Unspecified deployment model
-  /// - "HIGH_AVAILABILITY" : High Availability deployment model
-  /// - "SINGLE_INSTANCE" : Single Instance deployment model
+  /// - "DEPLOYMENT_MODEL_UNSPECIFIED" : Unspecified deployment model.
+  /// - "HIGH_AVAILABILITY" : High Availability deployment model.
+  /// - "SINGLE_INSTANCE" : Single instance deployment model.
   core.String? deploymentModel;
 
-  /// deployment environment
+  /// Deployment environment.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : Unspecified environment type
-  /// - "NON_PRODUCTION" : Non-production environment type
-  /// - "PRODUCTION" : Production environment type
+  /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : Unspecified environment type.
+  /// - "NON_PRODUCTION" : Non-production environment type.
+  /// - "PRODUCTION" : Production environment type.
   core.String? environmentType;
 
-  /// SHARED_DISK or S2D
+  /// SHARED_DISK or S2D.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "FCI_TYPE_UNSPECIFIED" : Unspecified FCI type
-  /// - "SHARED_DISK" : SHARED DISK FCI type
-  /// - "S2D" : S2D FCI type
+  /// - "FCI_TYPE_UNSPECIFIED" : Unspecified FCI type.
+  /// - "SHARED_DISK" : SHARED DISK FCI type.
+  /// - "S2D" : S2D FCI type.
   core.String? fciType;
 
-  /// AOAG or FCI, it is only needed for High Availability deployment mode
+  /// AOAG or FCI.
+  ///
+  /// It is only needed for the High Availability deployment mode.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "HA_TYPE_UNSPECIFIED" : Unspecified HA type
-  /// - "AOAG" : AOAG HA type
-  /// - "FCI" : FCI HA type
+  /// - "HA_TYPE_UNSPECIFIED" : Unspecified HA type.
+  /// - "AOAG" : AOAG HA type.
+  /// - "FCI" : FCI HA type.
   core.String? haType;
 
-  /// SQL licensing type
+  /// SQL licensing type.
   ///
   /// Required.
   core.bool? isSqlPayg;
 
-  /// location details
+  /// Location details.
   ///
   /// Required.
   SqlLocationDetails? location;
 
-  /// name of the media storing SQL server installation files
+  /// Name of the media storing SQL server installation files.
   ///
   /// Required.
   core.String? mediaBucket;
 
-  /// type of the operating system the SQL server is going to run on top of
+  /// The type of the operating system the SQL server is going to run on top of.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "OPERATING_SYSTEM_TYPE_UNSPECIFIED" : Unspecified operating system type
-  /// - "WINDOWS" : Windows operating system type
-  /// - "UBUNTU" : Ubuntu operating system type
+  /// - "OPERATING_SYSTEM_TYPE_UNSPECIFIED" : Unspecified operating system type.
+  /// - "WINDOWS" : Windows operating system type.
+  /// - "UBUNTU" : Ubuntu operating system type.
   /// - "RED_HAT_ENTERPRISE_LINUX" : Red Hat Enterprise Linux operating system
-  /// type
-  /// - "SUSE" : Suse operating system type
+  /// type.
+  /// - "SUSE" : SUSE operating system type.
   core.String? operatingSystemType;
 
-  /// the image of the operating system
+  /// The image of the operating system.
   ///
   /// Required.
   core.String? osImage;
 
-  /// OS image type, it's used to create boot disks for VM instances When either
-  /// Windows licensing type or SQL licensing type is BYOL, this option is
-  /// disabled and default to custom image
+  /// OS image type.
+  ///
+  /// It's used to create boot disks for VM instances. When either Windows
+  /// licensing type or SQL licensing type is BYOL, this option is disabled and
+  /// defaults to a custom image.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "OS_IMAGE_TYPE_UNSPECIFIED" : Unspecified OS image type
-  /// - "PUBLIC_IMAGE" : Public image
-  /// - "CUSTOM_IMAGE" : Custom image
+  /// - "OS_IMAGE_TYPE_UNSPECIFIED" : Unspecified OS image type.
+  /// - "PUBLIC_IMAGE" : Public image.
+  /// - "CUSTOM_IMAGE" : Custom image.
   core.String? osImageType;
 
-  /// pacemaker configuration, only applicable for Linux HA deployments
+  /// Pacemaker configuration, only applicable for Linux HA deployments.
   ///
   /// Optional.
   Pacemaker? pacemaker;
 
-  /// SQL Server Edition type, only applicable when Operating System is Linux
+  /// SQL Server Edition type, only applicable when the operating system is
+  /// Linux.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "SQL_SERVER_EDITION_TYPE_UNSPECIFIED" : Unspecified type
-  /// - "SQL_SERVER_EDITION_TYPE_DEVELOPER" : Developer type
-  /// - "SQL_SERVER_EDITION_TYPE_ENTERPRISE" : Enterprise type
-  /// - "SQL_SERVER_EDITION_TYPE_STANDARD" : Standard type
-  /// - "SQL_SERVER_EDITION_TYPE_WEB" : Web type
+  /// - "SQL_SERVER_EDITION_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "SQL_SERVER_EDITION_TYPE_DEVELOPER" : Developer type.
+  /// - "SQL_SERVER_EDITION_TYPE_ENTERPRISE" : Enterprise type.
+  /// - "SQL_SERVER_EDITION_TYPE_STANDARD" : Standard type.
+  /// - "SQL_SERVER_EDITION_TYPE_WEB" : Web type.
   core.String? sqlServerEdition;
 
-  /// 2017 or 2019 or 2022
+  /// 2017, 2019, or 2022.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "SQL_SERVER_VERSION_TYPE_UNSPECIFIED" : Unspecified type
-  /// - "SQL_SERVER_VERSION_TYPE_2017" : 2017 type
-  /// - "SQL_SERVER_VERSION_TYPE_2019" : 2019 type
-  /// - "SQL_SERVER_VERSION_TYPE_2022" : 2022 type
+  /// - "SQL_SERVER_VERSION_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "SQL_SERVER_VERSION_TYPE_2017" : 2017 type.
+  /// - "SQL_SERVER_VERSION_TYPE_2019" : 2019 type.
+  /// - "SQL_SERVER_VERSION_TYPE_2022" : 2022 type.
   core.String? sqlServerVersion;
 
-  /// should be unique in the project
+  /// Should be unique in the project.
   ///
   /// Required.
   core.String? vmPrefix;
@@ -7302,11 +7322,12 @@ class Summary {
   }
 }
 
-/// In order to align with Infra Manager dependency, we create the same
+/// In order to align with the Infra Manager dependency, we create the same
 /// TerraformVariable message to represent a Terraform input variable, by
 /// following Infra Manager's API documentation:
-/// https://cloud.google.com/infrastructure-manager/docs/reference/rest A
-/// Terraform input variable.
+/// https://cloud.google.com/infrastructure-manager/docs/reference/rest.
+///
+/// A Terraform input variable.
 typedef TerraformVariable = $TerraformVariable;
 
 /// The schema of torso workload validation data.

@@ -36,8 +36,6 @@
 ///     - [OrganizationsLocationsPostureTemplatesResource]
 ///     - [OrganizationsLocationsPosturesResource]
 ///     - [OrganizationsLocationsReportsResource]
-/// - [ProjectsResource]
-///   - [ProjectsLocationsResource]
 library;
 
 import 'dart:async' as async;
@@ -68,7 +66,6 @@ class SecurityPostureApi {
   final commons.ApiRequester _requester;
 
   OrganizationsResource get organizations => OrganizationsResource(_requester);
-  ProjectsResource get projects => ProjectsResource(_requester);
 
   SecurityPostureApi(
     http.Client client, {
@@ -107,6 +104,107 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
+  ///
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
+  ///
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.List<core.String>? extraLocationTypes,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class OrganizationsLocationsOperationsResource {
@@ -1156,118 +1254,6 @@ class OrganizationsLocationsReportsResource {
       queryParams: queryParams_,
     );
     return ListReportsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsResource get locations =>
-      ProjectsLocationsResource(_requester);
-
-  ProjectsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class ProjectsLocationsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Gets information about a location.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Resource name for the location.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Location].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists information about the supported locations for this service.
-  ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern `^projects/\[^/\]+$`.
-  ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
-  ///
-  /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like `"displayName=tokyo"`, and is
-  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
-  ///
-  /// [pageSize] - The maximum number of results to return. If not set, the
-  /// service selects a default.
-  ///
-  /// [pageToken] - A page token received from the `next_page_token` field in
-  /// the response. Send that page token to receive the subsequent page.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListLocationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListLocationsResponse> list(
-    core.String name, {
-    core.List<core.String>? extraLocationTypes,
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'extraLocationTypes': ?extraLocationTypes,
-      'filter': ?filter == null ? null : [filter],
-      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/locations';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListLocationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3167,7 +3153,7 @@ class ResourceSelector {
 ///
 /// Only supports managed constraints. Method type is `GOVERN_TAGS`.
 class ResourceTypes {
-  /// The resource types we currently support.
+  /// The resource types we support.
   ///
   /// Optional.
   core.List<core.String>? included;
