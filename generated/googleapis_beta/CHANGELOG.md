@@ -1,4 +1,4 @@
-## 9.1.0-wip
+## 9.1.0
 
 - Require `sdk: ^3.9.0`
 - Require `package:http` `1.0.0`.

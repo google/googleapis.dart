@@ -1,4 +1,4 @@
-## 1.1.0-wip
+## 1.1.0
 
 - Allow latest `package:http`.
 - Generate `@Deprecated` annotations for associated members.

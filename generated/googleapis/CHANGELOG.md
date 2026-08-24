@@ -1,4 +1,4 @@
-## 17.0.0-wip
+## 17.0.0
 
 - Mark APIs as `@Deprecated` with references to replacement
   `package:google_cloud_*` packages:

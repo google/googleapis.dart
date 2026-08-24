@@ -1,4 +1,4 @@
-## 1.0.8-wip
+## 1.0.8
 
 - Fix detection of web usage.
 - Require `sdk: ^3.9.0`
