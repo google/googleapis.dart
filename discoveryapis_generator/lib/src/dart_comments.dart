@@ -72,7 +72,7 @@ String _bracketClean(String input) => input.splitMapJoin(
   onNonMatch: markdownEscape,
 );
 
-final _codeRegExp = RegExp(r'{@code ([a-zA-Z_]+)}');
+final _codeRegExp = RegExp(r'{@code ([^}]+)}');
 
 String _rewriteCodeTags(String? input) {
   if (input == null || input.isEmpty) {

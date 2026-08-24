@@ -59806,7 +59806,7 @@ class GoogleAdsSearchads360V23ResourcesProductLinkInvitation {
   /// The type of the invited account.
   ///
   /// This field is read only and can be used for filtering invitations with
-  /// {@code GoogleAdsService.SearchGoogleAdsRequest}.
+  /// `GoogleAdsService.SearchGoogleAdsRequest`.
   ///
   /// Output only.
   /// Possible string values are:
