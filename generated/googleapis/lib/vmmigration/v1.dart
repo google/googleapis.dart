@@ -5421,6 +5421,11 @@ class ComputeEngineTargetDefaults {
   /// Hyperdisk balanced high availability disk type.
   core.String? diskType;
 
+  /// The details of each disk to create.
+  ///
+  /// Optional.
+  core.List<PersistentDiskDefaults>? disks;
+
   /// Defines whether the instance has integrity monitoring enabled.
   ///
   /// This can be set to true only if the VM boot option is EFI, and vTPM is
@@ -5511,6 +5516,7 @@ class ComputeEngineTargetDefaults {
     this.computeScheduling,
     this.diskReplicaZones,
     this.diskType,
+    this.disks,
     this.enableIntegrityMonitoring,
     this.enableVtpm,
     this.encryption,
@@ -5559,6 +5565,13 @@ class ComputeEngineTargetDefaults {
             ?.map((value) => value as core.String)
             .toList(),
         diskType: json_['diskType'] as core.String?,
+        disks: (json_['disks'] as core.List?)
+            ?.map(
+              (value) => PersistentDiskDefaults.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         enableIntegrityMonitoring:
             json_['enableIntegrityMonitoring'] as core.bool?,
         enableVtpm: json_['enableVtpm'] as core.bool?,
@@ -5603,6 +5616,7 @@ class ComputeEngineTargetDefaults {
     final computeScheduling = this.computeScheduling;
     final diskReplicaZones = this.diskReplicaZones;
     final diskType = this.diskType;
+    final disks = this.disks;
     final enableIntegrityMonitoring = this.enableIntegrityMonitoring;
     final enableVtpm = this.enableVtpm;
     final encryption = this.encryption;
@@ -5629,6 +5643,7 @@ class ComputeEngineTargetDefaults {
       'computeScheduling': ?computeScheduling,
       'diskReplicaZones': ?diskReplicaZones,
       'diskType': ?diskType,
+      'disks': ?disks,
       'enableIntegrityMonitoring': ?enableIntegrityMonitoring,
       'enableVtpm': ?enableVtpm,
       'encryption': ?encryption,
@@ -9462,9 +9477,13 @@ typedef PauseMigrationRequest = $Empty;
 /// Details of a created Persistent Disk.
 class PersistentDisk {
   /// The URI of the Persistent Disk.
+  ///
+  /// Output only.
   core.String? diskUri;
 
   /// The ordinal number of the source VM disk.
+  ///
+  /// Output only.
   core.int? sourceDiskNumber;
 
   PersistentDisk({this.diskUri, this.sourceDiskNumber});

@@ -236,6 +236,10 @@ class Categories {
   /// The accessibility category, containing all accessibility related audits.
   LighthouseCategoryV5? accessibility;
 
+  /// The agentic browsing category, containing all agentic browsing related
+  /// audits.
+  LighthouseCategoryV5? agenticBrowsing;
+
   /// The best practices category, containing all best practices related audits.
   LighthouseCategoryV5? bestPractices;
 
@@ -256,6 +260,7 @@ class Categories {
 
   Categories({
     this.accessibility,
+    this.agenticBrowsing,
     this.bestPractices,
     this.performance,
     this.pwa,
@@ -267,6 +272,12 @@ class Categories {
         accessibility: json_.containsKey('accessibility')
             ? LighthouseCategoryV5.fromJson(
                 json_['accessibility'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        agenticBrowsing: json_.containsKey('agentic-browsing')
+            ? LighthouseCategoryV5.fromJson(
+                json_['agentic-browsing']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         bestPractices: json_.containsKey('best-practices')
@@ -293,12 +304,14 @@ class Categories {
 
   core.Map<core.String, core.dynamic> toJson() {
     final accessibility = this.accessibility;
+    final agenticBrowsing = this.agenticBrowsing;
     final bestPractices = this.bestPractices;
     final performance = this.performance;
     final pwa = this.pwa;
     final seo = this.seo;
     return {
       'accessibility': ?accessibility,
+      'agentic-browsing': ?agenticBrowsing,
       'best-practices': ?bestPractices,
       'performance': ?performance,
       'pwa': ?pwa,
@@ -662,6 +675,15 @@ class LighthouseCategoryV5 {
   /// An array of references to all the audit members of this category.
   core.List<AuditRefs>? auditRefs;
 
+  /// How the category score should be displayed (e.g. as a fraction).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CATEGORY_SCORE_DISPLAY_MODE_UNSPECIFIED" : Default UNDEFINED category.
+  /// - "GAUGE" : Display the score as a standard circular gauge (default)
+  /// - "FRACTION" : Display the score as a fraction, e.g. "3/5"
+  core.String? categoryScoreDisplayMode;
+
   /// A more detailed description of the category and its importance.
   core.String? description;
 
@@ -684,6 +706,7 @@ class LighthouseCategoryV5 {
 
   LighthouseCategoryV5({
     this.auditRefs,
+    this.categoryScoreDisplayMode,
     this.description,
     this.id,
     this.manualDescription,
@@ -700,6 +723,8 @@ class LighthouseCategoryV5 {
               ),
             )
             .toList(),
+        categoryScoreDisplayMode:
+            json_['categoryScoreDisplayMode'] as core.String?,
         description: json_['description'] as core.String?,
         id: json_['id'] as core.String?,
         manualDescription: json_['manualDescription'] as core.String?,
@@ -709,6 +734,7 @@ class LighthouseCategoryV5 {
 
   core.Map<core.String, core.dynamic> toJson() {
     final auditRefs = this.auditRefs;
+    final categoryScoreDisplayMode = this.categoryScoreDisplayMode;
     final description = this.description;
     final id = this.id;
     final manualDescription = this.manualDescription;
@@ -716,6 +742,7 @@ class LighthouseCategoryV5 {
     final title = this.title;
     return {
       'auditRefs': ?auditRefs,
+      'categoryScoreDisplayMode': ?categoryScoreDisplayMode,
       'description': ?description,
       'id': ?id,
       'manualDescription': ?manualDescription,

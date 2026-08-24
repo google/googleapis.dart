@@ -338,6 +338,20 @@ void checkConnection(api.Connection o) {
   buildCounterConnection--;
 }
 
+core.Map<core.String, api.ConnectorConfigurationParameterValue>
+buildUnnamed3() => {
+  'x': buildConnectorConfigurationParameterValue(),
+  'y': buildConnectorConfigurationParameterValue(),
+};
+
+void checkUnnamed3(
+  core.Map<core.String, api.ConnectorConfigurationParameterValue> o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkConnectorConfigurationParameterValue(o['x']!);
+  checkConnectorConfigurationParameterValue(o['y']!);
+}
+
 core.int buildCounterConnectorConfiguration = 0;
 api.ConnectorConfiguration buildConnectorConfiguration() {
   final o = api.ConnectorConfiguration();
@@ -348,6 +362,8 @@ api.ConnectorConfiguration buildConnectorConfiguration() {
     o.connectorId = 'foo';
     o.endpoint = buildConnectorConfigurationEndpoint();
     o.network = buildConnectorConfigurationNetwork();
+    o.parameters = buildUnnamed3();
+    o.tls = buildConnectorConfigurationTls();
   }
   buildCounterConnectorConfiguration--;
   return o;
@@ -361,6 +377,8 @@ void checkConnectorConfiguration(api.ConnectorConfiguration o) {
     unittest.expect(o.connectorId!, unittest.equals('foo'));
     checkConnectorConfigurationEndpoint(o.endpoint!);
     checkConnectorConfigurationNetwork(o.network!);
+    checkUnnamed3(o.parameters!);
+    checkConnectorConfigurationTls(o.tls!);
   }
   buildCounterConnectorConfiguration--;
 }
@@ -386,12 +404,27 @@ void checkConnectorConfigurationAsset(api.ConnectorConfigurationAsset o) {
   buildCounterConnectorConfigurationAsset--;
 }
 
+core.Map<core.String, api.ConnectorConfigurationParameterValue>
+buildUnnamed4() => {
+  'x': buildConnectorConfigurationParameterValue(),
+  'y': buildConnectorConfigurationParameterValue(),
+};
+
+void checkUnnamed4(
+  core.Map<core.String, api.ConnectorConfigurationParameterValue> o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkConnectorConfigurationParameterValue(o['x']!);
+  checkConnectorConfigurationParameterValue(o['y']!);
+}
+
 core.int buildCounterConnectorConfigurationAuthentication = 0;
 api.ConnectorConfigurationAuthentication
 buildConnectorConfigurationAuthentication() {
   final o = api.ConnectorConfigurationAuthentication();
   buildCounterConnectorConfigurationAuthentication++;
   if (buildCounterConnectorConfigurationAuthentication < 3) {
+    o.parameters = buildUnnamed4();
     o.serviceAccount = 'foo';
     o.usernamePassword = buildConnectorConfigurationUsernamePassword();
   }
@@ -404,6 +437,7 @@ void checkConnectorConfigurationAuthentication(
 ) {
   buildCounterConnectorConfigurationAuthentication++;
   if (buildCounterConnectorConfigurationAuthentication < 3) {
+    checkUnnamed4(o.parameters!);
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     checkConnectorConfigurationUsernamePassword(o.usernamePassword!);
   }
@@ -449,6 +483,36 @@ void checkConnectorConfigurationNetwork(api.ConnectorConfigurationNetwork o) {
   buildCounterConnectorConfigurationNetwork--;
 }
 
+core.int buildCounterConnectorConfigurationParameterValue = 0;
+api.ConnectorConfigurationParameterValue
+buildConnectorConfigurationParameterValue() {
+  final o = api.ConnectorConfigurationParameterValue();
+  buildCounterConnectorConfigurationParameterValue++;
+  if (buildCounterConnectorConfigurationParameterValue < 3) {
+    o.boolValue = true;
+    o.doubleValue = 42.0;
+    o.int32Value = 42;
+    o.secretValue = buildConnectorConfigurationSecret();
+    o.stringValue = 'foo';
+  }
+  buildCounterConnectorConfigurationParameterValue--;
+  return o;
+}
+
+void checkConnectorConfigurationParameterValue(
+  api.ConnectorConfigurationParameterValue o,
+) {
+  buildCounterConnectorConfigurationParameterValue++;
+  if (buildCounterConnectorConfigurationParameterValue < 3) {
+    unittest.expect(o.boolValue!, unittest.isTrue);
+    unittest.expect(o.doubleValue!, unittest.equals(42.0));
+    unittest.expect(o.int32Value!, unittest.equals(42));
+    checkConnectorConfigurationSecret(o.secretValue!);
+    unittest.expect(o.stringValue!, unittest.equals('foo'));
+  }
+  buildCounterConnectorConfigurationParameterValue--;
+}
+
 core.int buildCounterConnectorConfigurationPrivateServiceConnect = 0;
 api.ConnectorConfigurationPrivateServiceConnect
 buildConnectorConfigurationPrivateServiceConnect() {
@@ -490,6 +554,68 @@ void checkConnectorConfigurationSecret(api.ConnectorConfigurationSecret o) {
     unittest.expect(o.secretType!, unittest.equals('foo'));
   }
   buildCounterConnectorConfigurationSecret--;
+}
+
+core.int buildCounterConnectorConfigurationTls = 0;
+api.ConnectorConfigurationTls buildConnectorConfigurationTls() {
+  final o = api.ConnectorConfigurationTls();
+  buildCounterConnectorConfigurationTls++;
+  if (buildCounterConnectorConfigurationTls < 3) {
+    o.mode = 'foo';
+    o.privatePki = buildConnectorConfigurationTlsPrivatePki();
+    o.webPki = buildConnectorConfigurationTlsWebPki();
+  }
+  buildCounterConnectorConfigurationTls--;
+  return o;
+}
+
+void checkConnectorConfigurationTls(api.ConnectorConfigurationTls o) {
+  buildCounterConnectorConfigurationTls++;
+  if (buildCounterConnectorConfigurationTls < 3) {
+    unittest.expect(o.mode!, unittest.equals('foo'));
+    checkConnectorConfigurationTlsPrivatePki(o.privatePki!);
+    checkConnectorConfigurationTlsWebPki(o.webPki!);
+  }
+  buildCounterConnectorConfigurationTls--;
+}
+
+core.int buildCounterConnectorConfigurationTlsPrivatePki = 0;
+api.ConnectorConfigurationTlsPrivatePki
+buildConnectorConfigurationTlsPrivatePki() {
+  final o = api.ConnectorConfigurationTlsPrivatePki();
+  buildCounterConnectorConfigurationTlsPrivatePki++;
+  if (buildCounterConnectorConfigurationTlsPrivatePki < 3) {
+    o.trustedCertificatesPem = 'foo';
+  }
+  buildCounterConnectorConfigurationTlsPrivatePki--;
+  return o;
+}
+
+void checkConnectorConfigurationTlsPrivatePki(
+  api.ConnectorConfigurationTlsPrivatePki o,
+) {
+  buildCounterConnectorConfigurationTlsPrivatePki++;
+  if (buildCounterConnectorConfigurationTlsPrivatePki < 3) {
+    unittest.expect(o.trustedCertificatesPem!, unittest.equals('foo'));
+  }
+  buildCounterConnectorConfigurationTlsPrivatePki--;
+}
+
+core.int buildCounterConnectorConfigurationTlsWebPki = 0;
+api.ConnectorConfigurationTlsWebPki buildConnectorConfigurationTlsWebPki() {
+  final o = api.ConnectorConfigurationTlsWebPki();
+  buildCounterConnectorConfigurationTlsWebPki++;
+  if (buildCounterConnectorConfigurationTlsWebPki < 3) {}
+  buildCounterConnectorConfigurationTlsWebPki--;
+  return o;
+}
+
+void checkConnectorConfigurationTlsWebPki(
+  api.ConnectorConfigurationTlsWebPki o,
+) {
+  buildCounterConnectorConfigurationTlsWebPki++;
+  if (buildCounterConnectorConfigurationTlsWebPki < 3) {}
+  buildCounterConnectorConfigurationTlsWebPki--;
 }
 
 core.int buildCounterConnectorConfigurationUsernamePassword = 0;
@@ -594,12 +720,12 @@ void checkGetPolicyOptions(api.GetPolicyOptions o) {
   buildCounterGetPolicyOptions--;
 }
 
-core.List<api.Connection> buildUnnamed3() => [
+core.List<api.Connection> buildUnnamed5() => [
   buildConnection(),
   buildConnection(),
 ];
 
-void checkUnnamed3(core.List<api.Connection> o) {
+void checkUnnamed5(core.List<api.Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnection(o[0]);
   checkConnection(o[1]);
@@ -610,7 +736,7 @@ api.ListConnectionsResponse buildListConnectionsResponse() {
   final o = api.ListConnectionsResponse();
   buildCounterListConnectionsResponse++;
   if (buildCounterListConnectionsResponse < 3) {
-    o.connections = buildUnnamed3();
+    o.connections = buildUnnamed5();
     o.nextPageToken = 'foo';
   }
   buildCounterListConnectionsResponse--;
@@ -620,7 +746,7 @@ api.ListConnectionsResponse buildListConnectionsResponse() {
 void checkListConnectionsResponse(api.ListConnectionsResponse o) {
   buildCounterListConnectionsResponse++;
   if (buildCounterListConnectionsResponse < 3) {
-    checkUnnamed3(o.connections!);
+    checkUnnamed5(o.connections!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListConnectionsResponse--;
@@ -645,20 +771,20 @@ void checkMetastoreServiceConfig(api.MetastoreServiceConfig o) {
   buildCounterMetastoreServiceConfig--;
 }
 
-core.List<api.AuditConfig> buildUnnamed4() => [
+core.List<api.AuditConfig> buildUnnamed6() => [
   buildAuditConfig(),
   buildAuditConfig(),
 ];
 
-void checkUnnamed4(core.List<api.AuditConfig> o) {
+void checkUnnamed6(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed5() => [buildBinding(), buildBinding()];
+core.List<api.Binding> buildUnnamed7() => [buildBinding(), buildBinding()];
 
-void checkUnnamed5(core.List<api.Binding> o) {
+void checkUnnamed7(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -669,8 +795,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed4();
-    o.bindings = buildUnnamed5();
+    o.auditConfigs = buildUnnamed6();
+    o.bindings = buildUnnamed7();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -681,8 +807,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed4(o.auditConfigs!);
-    checkUnnamed5(o.bindings!);
+    checkUnnamed6(o.auditConfigs!);
+    checkUnnamed7(o.bindings!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.version!, unittest.equals(42));
   }
@@ -775,9 +901,9 @@ void checkSparkProperties(api.SparkProperties o) {
   buildCounterSparkProperties--;
 }
 
-core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed8() => ['foo', 'foo'];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -788,7 +914,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed6();
+    o.permissions = buildUnnamed8();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -797,14 +923,14 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed6(o.permissions!);
+    checkUnnamed8(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed9() => ['foo', 'foo'];
 
-void checkUnnamed7(core.List<core.String> o) {
+void checkUnnamed9(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -815,7 +941,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed7();
+    o.permissions = buildUnnamed9();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -824,7 +950,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed7(o.permissions!);
+    checkUnnamed9(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1006,6 +1132,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ConnectorConfigurationParameterValue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConnectorConfigurationParameterValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConnectorConfigurationParameterValue.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkConnectorConfigurationParameterValue(od);
+    });
+  });
+
   unittest.group('obj-schema-ConnectorConfigurationPrivateServiceConnect', () {
     unittest.test('to-json--from-json', () async {
       final o = buildConnectorConfigurationPrivateServiceConnect();
@@ -1025,6 +1162,39 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkConnectorConfigurationSecret(od);
+    });
+  });
+
+  unittest.group('obj-schema-ConnectorConfigurationTls', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConnectorConfigurationTls();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConnectorConfigurationTls.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkConnectorConfigurationTls(od);
+    });
+  });
+
+  unittest.group('obj-schema-ConnectorConfigurationTlsPrivatePki', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConnectorConfigurationTlsPrivatePki();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConnectorConfigurationTlsPrivatePki.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkConnectorConfigurationTlsPrivatePki(od);
+    });
+  });
+
+  unittest.group('obj-schema-ConnectorConfigurationTlsWebPki', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConnectorConfigurationTlsWebPki();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConnectorConfigurationTlsWebPki.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkConnectorConfigurationTlsWebPki(od);
     });
   });
 

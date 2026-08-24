@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260323",
+    "revision": "20260520",
     "rootUrl": "https://apphub.googleapis.com/",
     "servicePath": "",
     "title": "App Hub API",
@@ -192,7 +192,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "apphub.projects.locations.list",
@@ -201,7 +201,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -285,7 +285,7 @@
                                     "type": "string"
                                 },
                                 "updateMask": {
-                                    "description": "Required. Field mask is used to specify the fields to be overwritten in the Boundary resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
+                                    "description": "Optional. Field mask is used to specify the fields to be overwritten in the Boundary resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
                                     "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
@@ -498,7 +498,7 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "Required. Field mask is used to specify the fields to be overwritten in the Application resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. The API changes the values of the fields as specified in the update_mask. The API ignores the values of all fields not covered by the update_mask. You can also unset a field by not specifying it in the updated message, but adding the field to the mask. This clears whatever value the field previously had.",
+                                            "description": "Optional. Field mask is used to specify the fields to be overwritten in the Application resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. The API changes the values of the fields as specified in the update_mask. The API ignores the values of all fields not covered by the update_mask. You can also unset a field by not specifying it in the updated message, but adding the field to the mask. This clears whatever value the field previously had.",
                                             "format": "google-fieldmask",
                                             "location": "query",
                                             "type": "string"
@@ -736,7 +736,7 @@
                                                     "type": "string"
                                                 },
                                                 "updateMask": {
-                                                    "description": "Required. Field mask is used to specify the fields to be overwritten in the Service resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. The API changes the values of the fields as specified in the update_mask. The API ignores the values of all fields not covered by the update_mask. You can also unset a field by not specifying it in the updated message, but adding the field to the mask. This clears whatever value the field previously had.",
+                                                    "description": "Optional. Field mask is used to specify the fields to be overwritten in the Service resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. The API changes the values of the fields as specified in the update_mask. The API ignores the values of all fields not covered by the update_mask. You can also unset a field by not specifying it in the updated message, but adding the field to the mask. This clears whatever value the field previously had.",
                                                     "format": "google-fieldmask",
                                                     "location": "query",
                                                     "type": "string"
@@ -918,7 +918,7 @@
                                                     "type": "string"
                                                 },
                                                 "updateMask": {
-                                                    "description": "Required. Field mask is used to specify the fields to be overwritten in the Workload resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. The API changes the values of the fields as specified in the update_mask. The API ignores the values of all fields not covered by the update_mask. You can also unset a field by not specifying it in the updated message, but adding the field to the mask. This clears whatever value the field previously had.",
+                                                    "description": "Optional. Field mask is used to specify the fields to be overwritten in the Workload resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. The API changes the values of the fields as specified in the update_mask. The API ignores the values of all fields not covered by the update_mask. You can also unset a field by not specifying it in the updated message, but adding the field to the mask. This clears whatever value the field previously had.",
                                                     "format": "google-fieldmask",
                                                     "location": "query",
                                                     "type": "string"

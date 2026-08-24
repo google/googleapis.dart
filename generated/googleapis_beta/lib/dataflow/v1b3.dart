@@ -202,6 +202,8 @@ class ProjectsJobsResource {
   /// List the jobs of a project across all regions.
   ///
   /// **Note:** This method doesn't support filtering the list of jobs by name.
+  /// # IAM Permissions Requires the `dataflow.jobs.list` permission on the
+  /// project.
   ///
   /// Request parameters:
   ///
@@ -302,7 +304,10 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
   /// start in `us-central1`. Do not enter confidential information when you
-  /// supply string values using the API.
+  /// supply string values using the API. # IAM Permissions 1. Requires the
+  /// `dataflow.jobs.create` permission on the project. 2.
+  /// `resourcemanager.projects.get` (Specifically required for regional
+  /// endpoints to resolve regional resource metadata)
   ///
   /// [request] - The metadata request object.
   ///
@@ -378,7 +383,8 @@ class ProjectsJobsResource {
   /// `projects.locations.jobs.get` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.get` is not recommended, as you can only get the
-  /// state of jobs that are running in `us-central1`.
+  /// state of jobs that are running in `us-central1`. # IAM Permissions
+  /// Requires the `dataflow.jobs.get` permission on the job.
   ///
   /// Request parameters:
   ///
@@ -451,7 +457,8 @@ class ProjectsJobsResource {
   /// `projects.locations.jobs.getMetrics` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.getMetrics` is not recommended, as you can only
-  /// request the status of jobs that are running in `us-central1`.
+  /// request the status of jobs that are running in `us-central1`. # IAM
+  /// Permissions Requires the `dataflow.metrics.get` permission on the job.
   ///
   /// Request parameters:
   ///
@@ -516,7 +523,8 @@ class ProjectsJobsResource {
   /// the list of jobs that are running in `us-central1`.
   /// `projects.locations.jobs.list` and `projects.jobs.list` support filtering
   /// the list of jobs by name. Filtering by name isn't supported by
-  /// `projects.jobs.aggregated`.
+  /// `projects.jobs.aggregated`. # IAM Permissions Requires the
+  /// `dataflow.jobs.list` permission on the project.
   ///
   /// Request parameters:
   ///
@@ -610,6 +618,9 @@ class ProjectsJobsResource {
 
   /// Snapshot the state of a streaming job.
   ///
+  /// # IAM Permissions Requires the `dataflow.jobs.snapshot` permission on the
+  /// job.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -661,7 +672,10 @@ class ProjectsJobsResource {
   /// `projects.locations.jobs.update` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.update` is not recommended, as you can only update
-  /// the state of jobs that are running in `us-central1`.
+  /// the state of jobs that are running in `us-central1`. # IAM Permissions 1.
+  /// Requires the `dataflow.jobs.cancel` permission to cancel a job. 2.
+  /// Requires the `dataflow.jobs.updateContents` permission to update runtime
+  /// parameters.
   ///
   /// [request] - The metadata request object.
   ///
@@ -842,7 +856,8 @@ class ProjectsJobsMessagesResource {
   /// `projects.locations.jobs.messages.list` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.messages.list` is not recommended, as you can only
-  /// request the status of jobs that are running in `us-central1`.
+  /// request the status of jobs that are running in `us-central1`. # IAM
+  /// Permissions Requires the `dataflow.messages.list` permission on the job.
   ///
   /// Request parameters:
   ///
@@ -1126,6 +1141,12 @@ class ProjectsLocationsFlexTemplatesResource {
 
   /// Launch a job with a FlexTemplate.
   ///
+  /// # IAM Permissions Requires the following IAM permission(s) on the
+  /// resource: - `dataflow.jobs.create` - `resourcemanager.projects.get` -
+  /// `iam.serviceAccounts.actAs` - `storage.buckets.get` -
+  /// `storage.buckets.create` (Required if the default staging bucket must be
+  /// created)
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1201,7 +1222,10 @@ class ProjectsLocationsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
   /// start in `us-central1`. Do not enter confidential information when you
-  /// supply string values using the API.
+  /// supply string values using the API. # IAM Permissions 1. Requires the
+  /// `dataflow.jobs.create` permission on the project. 2.
+  /// `resourcemanager.projects.get` (Specifically required for regional
+  /// endpoints to resolve regional resource metadata)
   ///
   /// [request] - The metadata request object.
   ///
@@ -1280,7 +1304,8 @@ class ProjectsLocationsJobsResource {
   /// `projects.locations.jobs.get` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.get` is not recommended, as you can only get the
-  /// state of jobs that are running in `us-central1`.
+  /// state of jobs that are running in `us-central1`. # IAM Permissions
+  /// Requires the `dataflow.jobs.get` permission on the job.
   ///
   /// Request parameters:
   ///
@@ -1350,7 +1375,8 @@ class ProjectsLocationsJobsResource {
 
   /// Request detailed information about the execution status of the job.
   ///
-  /// EXPERIMENTAL. This API is subject to change or removal without notice.
+  /// EXPERIMENTAL. This API is subject to change or removal without notice. #
+  /// IAM Permissions Requires the `dataflow.metrics.get` permission on the job.
   ///
   /// Request parameters:
   ///
@@ -1419,7 +1445,8 @@ class ProjectsLocationsJobsResource {
   /// `projects.locations.jobs.getMetrics` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.getMetrics` is not recommended, as you can only
-  /// request the status of jobs that are running in `us-central1`.
+  /// request the status of jobs that are running in `us-central1`. # IAM
+  /// Permissions Requires the `dataflow.metrics.get` permission on the job.
   ///
   /// Request parameters:
   ///
@@ -1485,7 +1512,8 @@ class ProjectsLocationsJobsResource {
   /// the list of jobs that are running in `us-central1`.
   /// `projects.locations.jobs.list` and `projects.jobs.list` support filtering
   /// the list of jobs by name. Filtering by name isn't supported by
-  /// `projects.jobs.aggregated`.
+  /// `projects.jobs.aggregated`. # IAM Permissions Requires the
+  /// `dataflow.jobs.list` permission on the project.
   ///
   /// Request parameters:
   ///
@@ -1582,6 +1610,9 @@ class ProjectsLocationsJobsResource {
 
   /// Snapshot the state of a streaming job.
   ///
+  /// # IAM Permissions Requires the `dataflow.jobs.snapshot` permission on the
+  /// job.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1638,7 +1669,10 @@ class ProjectsLocationsJobsResource {
   /// `projects.locations.jobs.update` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.update` is not recommended, as you can only update
-  /// the state of jobs that are running in `us-central1`.
+  /// the state of jobs that are running in `us-central1`. # IAM Permissions 1.
+  /// Requires the `dataflow.jobs.cancel` permission to cancel a job. 2.
+  /// Requires the `dataflow.jobs.updateContents` permission to update runtime
+  /// parameters.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1891,7 +1925,8 @@ class ProjectsLocationsJobsMessagesResource {
   /// `projects.locations.jobs.messages.list` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.messages.list` is not recommended, as you can only
-  /// request the status of jobs that are running in `us-central1`.
+  /// request the status of jobs that are running in `us-central1`. # IAM
+  /// Permissions Requires the `dataflow.messages.list` permission on the job.
   ///
   /// Request parameters:
   ///
@@ -2062,7 +2097,8 @@ class ProjectsLocationsJobsStagesResource {
   /// Request detailed information about the execution status of a stage of the
   /// job.
   ///
-  /// EXPERIMENTAL. This API is subject to change or removal without notice.
+  /// EXPERIMENTAL. This API is subject to change or removal without notice. #
+  /// IAM Permissions Requires the `dataflow.metrics.get` permission on the job.
   ///
   /// Request parameters:
   ///
@@ -2422,7 +2458,9 @@ class ProjectsLocationsTemplatesResource {
   /// `projects.locations.templates.create` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.templates.create` is not recommended, because your job
-  /// will always start in `us-central1`.
+  /// will always start in `us-central1`. # IAM Permissions Requires the
+  /// following IAM permission(s) on the project: - `dataflow.jobs.create` -
+  /// `resourcemanager.projects.get`
   ///
   /// [request] - The metadata request object.
   ///
@@ -2478,7 +2516,8 @@ class ProjectsLocationsTemplatesResource {
   /// with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.templates.get` is not recommended, because only templates
-  /// that are running in `us-central1` are retrieved.
+  /// that are running in `us-central1` are retrieved. # IAM Permissions
+  /// Requires the `resourcemanager.projects.get` permission on the project.
   ///
   /// Request parameters:
   ///
@@ -2543,7 +2582,9 @@ class ProjectsLocationsTemplatesResource {
   /// `projects.locations.templates.launch` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.templates.launch` is not recommended, because jobs
-  /// launched from the template will always start in `us-central1`.
+  /// launched from the template will always start in `us-central1`. # IAM
+  /// Permissions Requires the following IAM permission(s) on the project: -
+  /// `dataflow.jobs.create` - `resourcemanager.projects.get`
   ///
   /// [request] - The metadata request object.
   ///
@@ -2731,7 +2772,9 @@ class ProjectsTemplatesResource {
   /// `projects.locations.templates.create` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.templates.create` is not recommended, because your job
-  /// will always start in `us-central1`.
+  /// will always start in `us-central1`. # IAM Permissions Requires the
+  /// following IAM permission(s) on the project: - `dataflow.jobs.create` -
+  /// `resourcemanager.projects.get`
   ///
   /// [request] - The metadata request object.
   ///
@@ -2778,7 +2821,8 @@ class ProjectsTemplatesResource {
   /// with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.templates.get` is not recommended, because only templates
-  /// that are running in `us-central1` are retrieved.
+  /// that are running in `us-central1` are retrieved. # IAM Permissions
+  /// Requires the `resourcemanager.projects.get` permission on the project.
   ///
   /// Request parameters:
   ///
@@ -2842,7 +2886,9 @@ class ProjectsTemplatesResource {
   /// `projects.locations.templates.launch` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.templates.launch` is not recommended, because jobs
-  /// launched from the template will always start in `us-central1`.
+  /// launched from the template will always start in `us-central1`. # IAM
+  /// Permissions Requires the following IAM permission(s) on the project: -
+  /// `dataflow.jobs.create` - `resourcemanager.projects.get`
   ///
   /// [request] - The metadata request object.
   ///
@@ -3174,6 +3220,100 @@ class AutoscalingEvent {
       'targetNumWorkers': ?targetNumWorkers,
       'time': ?time,
       'workerPool': ?workerPool,
+    };
+  }
+}
+
+/// A schedule for autoscaling.
+class AutoscalingSchedule {
+  /// A crontab specification of when this schedule should trigger applying
+  /// overrides.
+  ///
+  /// The overrides will be applied from the trigger time until the specified
+  /// duration elapses.
+  ///
+  /// Optional.
+  core.String? crontab;
+
+  /// The duration for which the parameter overrides for this schedule will be
+  /// applied when triggered by the crontab.
+  ///
+  /// Optional.
+  core.String? duration;
+
+  /// The name of the schedule.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// The parameters to use for autoscaling when this schedule is active.
+  ///
+  /// Optional.
+  Parameters? parameters;
+
+  /// Specifies the priority of the schedule.
+  ///
+  /// If two schedules overlap, the one with the higher priority will be used.
+  /// The higher the value, the higher the priority of the schedule.
+  ///
+  /// Optional.
+  core.String? priority;
+
+  /// The time zone for the schedule.
+  ///
+  /// The value of this field must be a time zone name from the
+  /// [tz database](http://en.wikipedia.org/wiki/Tz_database). The default value
+  /// is UTC.
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  /// When the customer last updated the schedule.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AutoscalingSchedule({
+    this.crontab,
+    this.duration,
+    this.name,
+    this.parameters,
+    this.priority,
+    this.timeZone,
+    this.updateTime,
+  });
+
+  AutoscalingSchedule.fromJson(core.Map json_)
+    : this(
+        crontab: json_['crontab'] as core.String?,
+        duration: json_['duration'] as core.String?,
+        name: json_['name'] as core.String?,
+        parameters: json_.containsKey('parameters')
+            ? Parameters.fromJson(
+                json_['parameters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        priority: json_['priority'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final crontab = this.crontab;
+    final duration = this.duration;
+    final name = this.name;
+    final parameters = this.parameters;
+    final priority = this.priority;
+    final timeZone = this.timeZone;
+    final updateTime = this.updateTime;
+    return {
+      'crontab': ?crontab,
+      'duration': ?duration,
+      'name': ?name,
+      'parameters': ?parameters,
+      'priority': ?priority,
+      'timeZone': ?timeZone,
+      'updateTime': ?updateTime,
     };
   }
 }
@@ -5137,8 +5277,16 @@ class ExecutionStageState {
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
   /// please reach out to Cloud support team if you are interested.
-  /// - "JOB_STATE_PAUSING" : `JOB_STATE_PAUSING` is not implemented yet.
-  /// - "JOB_STATE_PAUSED" : `JOB_STATE_PAUSED` is not implemented yet.
+  /// - "JOB_STATE_PAUSING" : `JOB_STATE_PAUSING` indicates that the job is in
+  /// the process of pausing. A pausing job will stop processing, archive
+  /// in-flight Shuffle data, and transition to `JOB_STATE_PAUSED`. Jobs in this
+  /// state can transition to `JOB_STATE_CANCELLING` if cancellation is
+  /// requested, or can transition back to `JOB_STATE_RUNNING` if the pause
+  /// fails to complete.
+  /// - "JOB_STATE_PAUSED" : `JOB_STATE_PAUSED` indicates that the job is not
+  /// currently processing. Jobs in this state can transition back to
+  /// `JOB_STATE_RUNNING` to continue processing where they left off, or can
+  /// transition to `JOB_STATE_CANCELLING` if cancellation is requested.
   core.String? executionStageState;
 
   ExecutionStageState({
@@ -6300,8 +6448,16 @@ class Job {
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
   /// please reach out to Cloud support team if you are interested.
-  /// - "JOB_STATE_PAUSING" : `JOB_STATE_PAUSING` is not implemented yet.
-  /// - "JOB_STATE_PAUSED" : `JOB_STATE_PAUSED` is not implemented yet.
+  /// - "JOB_STATE_PAUSING" : `JOB_STATE_PAUSING` indicates that the job is in
+  /// the process of pausing. A pausing job will stop processing, archive
+  /// in-flight Shuffle data, and transition to `JOB_STATE_PAUSED`. Jobs in this
+  /// state can transition to `JOB_STATE_CANCELLING` if cancellation is
+  /// requested, or can transition back to `JOB_STATE_RUNNING` if the pause
+  /// fails to complete.
+  /// - "JOB_STATE_PAUSED" : `JOB_STATE_PAUSED` indicates that the job is not
+  /// currently processing. Jobs in this state can transition back to
+  /// `JOB_STATE_RUNNING` to continue processing where they left off, or can
+  /// transition to `JOB_STATE_CANCELLING` if cancellation is requested.
   core.String? currentState;
 
   /// The timestamp associated with the current state.
@@ -6438,8 +6594,16 @@ class Job {
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
   /// please reach out to Cloud support team if you are interested.
-  /// - "JOB_STATE_PAUSING" : `JOB_STATE_PAUSING` is not implemented yet.
-  /// - "JOB_STATE_PAUSED" : `JOB_STATE_PAUSED` is not implemented yet.
+  /// - "JOB_STATE_PAUSING" : `JOB_STATE_PAUSING` indicates that the job is in
+  /// the process of pausing. A pausing job will stop processing, archive
+  /// in-flight Shuffle data, and transition to `JOB_STATE_PAUSED`. Jobs in this
+  /// state can transition to `JOB_STATE_CANCELLING` if cancellation is
+  /// requested, or can transition back to `JOB_STATE_RUNNING` if the pause
+  /// fails to complete.
+  /// - "JOB_STATE_PAUSED" : `JOB_STATE_PAUSED` indicates that the job is not
+  /// currently processing. Jobs in this state can transition back to
+  /// `JOB_STATE_RUNNING` to continue processing where they left off, or can
+  /// transition to `JOB_STATE_CANCELLING` if cancellation is requested.
   core.String? requestedState;
 
   /// This field may ONLY be modified at runtime using the projects.jobs.update
@@ -8168,18 +8332,29 @@ class Package {
   /// The name of the package.
   core.String? name;
 
-  Package({this.location, this.name});
+  /// The hex-encoded SHA256 checksum of the package.
+  ///
+  /// If the checksum is provided, the worker will verify the checksum of the
+  /// package before using it. If the checksum does not match, the worker will
+  /// fail to start.
+  ///
+  /// Optional.
+  core.String? sha256;
+
+  Package({this.location, this.name, this.sha256});
 
   Package.fromJson(core.Map json_)
     : this(
         location: json_['location'] as core.String?,
         name: json_['name'] as core.String?,
+        sha256: json_['sha256'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final location = this.location;
     final name = this.name;
-    return {'location': ?location, 'name': ?name};
+    final sha256 = this.sha256;
+    return {'location': ?location, 'name': ?name, 'sha256': ?sha256};
   }
 }
 
@@ -8618,6 +8793,58 @@ class ParameterMetadataEnumOption {
     final label = this.label;
     final value = this.value;
     return {'description': ?description, 'label': ?label, 'value': ?value};
+  }
+}
+
+/// The parameters to use for autoscaling when this schedule is active.
+class Parameters {
+  /// The target CPU utilization for this schedule.
+  ///
+  /// Optional.
+  core.double? cpuUtilizationTarget;
+
+  /// The target latency for this schedule.
+  ///
+  /// Optional.
+  core.String? latencyTarget;
+
+  /// The maximum number of workers for this schedule.
+  ///
+  /// Optional.
+  core.int? maxWorkerCount;
+
+  /// The minimum number of workers for this schedule.
+  ///
+  /// Optional.
+  core.int? minWorkerCount;
+
+  Parameters({
+    this.cpuUtilizationTarget,
+    this.latencyTarget,
+    this.maxWorkerCount,
+    this.minWorkerCount,
+  });
+
+  Parameters.fromJson(core.Map json_)
+    : this(
+        cpuUtilizationTarget: (json_['cpuUtilizationTarget'] as core.num?)
+            ?.toDouble(),
+        latencyTarget: json_['latencyTarget'] as core.String?,
+        maxWorkerCount: json_['maxWorkerCount'] as core.int?,
+        minWorkerCount: json_['minWorkerCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpuUtilizationTarget = this.cpuUtilizationTarget;
+    final latencyTarget = this.latencyTarget;
+    final maxWorkerCount = this.maxWorkerCount;
+    final minWorkerCount = this.minWorkerCount;
+    return {
+      'cpuUtilizationTarget': ?cpuUtilizationTarget,
+      'latencyTarget': ?latencyTarget,
+      'maxWorkerCount': ?maxWorkerCount,
+      'minWorkerCount': ?minWorkerCount,
+    };
   }
 }
 
@@ -9691,6 +9918,11 @@ class RuntimeUpdatableParams {
   /// This field is currently only supported for Streaming Engine jobs.
   core.int? minNumWorkers;
 
+  /// The schedule for autoscaling.
+  ///
+  /// Optional.
+  core.List<AutoscalingSchedule>? schedules;
+
   /// Target worker utilization, compared against the aggregate utilization of
   /// the worker pool by autoscaler, to determine upscaling and downscaling when
   /// absent other constraints such as backlog.
@@ -9705,6 +9937,7 @@ class RuntimeUpdatableParams {
     this.latencyTier,
     this.maxNumWorkers,
     this.minNumWorkers,
+    this.schedules,
     this.workerUtilizationHint,
   });
 
@@ -9716,6 +9949,13 @@ class RuntimeUpdatableParams {
         latencyTier: json_['latencyTier'] as core.String?,
         maxNumWorkers: json_['maxNumWorkers'] as core.int?,
         minNumWorkers: json_['minNumWorkers'] as core.int?,
+        schedules: (json_['schedules'] as core.List?)
+            ?.map(
+              (value) => AutoscalingSchedule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         workerUtilizationHint: (json_['workerUtilizationHint'] as core.num?)
             ?.toDouble(),
       );
@@ -9726,6 +9966,7 @@ class RuntimeUpdatableParams {
     final latencyTier = this.latencyTier;
     final maxNumWorkers = this.maxNumWorkers;
     final minNumWorkers = this.minNumWorkers;
+    final schedules = this.schedules;
     final workerUtilizationHint = this.workerUtilizationHint;
     return {
       'acceptableBacklogDuration': ?acceptableBacklogDuration,
@@ -9733,6 +9974,7 @@ class RuntimeUpdatableParams {
       'latencyTier': ?latencyTier,
       'maxNumWorkers': ?maxNumWorkers,
       'minNumWorkers': ?minNumWorkers,
+      'schedules': ?schedules,
       'workerUtilizationHint': ?workerUtilizationHint,
     };
   }

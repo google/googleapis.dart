@@ -40,12 +40,77 @@ void checkUnnamed0(core.List<api.Flight> o) {
   checkFlight(o[1]);
 }
 
+core.int buildCounterComputeDetailedFlightEmissionsRequest = 0;
+api.ComputeDetailedFlightEmissionsRequest
+buildComputeDetailedFlightEmissionsRequest() {
+  final o = api.ComputeDetailedFlightEmissionsRequest();
+  buildCounterComputeDetailedFlightEmissionsRequest++;
+  if (buildCounterComputeDetailedFlightEmissionsRequest < 3) {
+    o.flights = buildUnnamed0();
+  }
+  buildCounterComputeDetailedFlightEmissionsRequest--;
+  return o;
+}
+
+void checkComputeDetailedFlightEmissionsRequest(
+  api.ComputeDetailedFlightEmissionsRequest o,
+) {
+  buildCounterComputeDetailedFlightEmissionsRequest++;
+  if (buildCounterComputeDetailedFlightEmissionsRequest < 3) {
+    checkUnnamed0(o.flights!);
+  }
+  buildCounterComputeDetailedFlightEmissionsRequest--;
+}
+
+core.List<api.FlightWithDetailedEmissions> buildUnnamed1() => [
+  buildFlightWithDetailedEmissions(),
+  buildFlightWithDetailedEmissions(),
+];
+
+void checkUnnamed1(core.List<api.FlightWithDetailedEmissions> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkFlightWithDetailedEmissions(o[0]);
+  checkFlightWithDetailedEmissions(o[1]);
+}
+
+core.int buildCounterComputeDetailedFlightEmissionsResponse = 0;
+api.ComputeDetailedFlightEmissionsResponse
+buildComputeDetailedFlightEmissionsResponse() {
+  final o = api.ComputeDetailedFlightEmissionsResponse();
+  buildCounterComputeDetailedFlightEmissionsResponse++;
+  if (buildCounterComputeDetailedFlightEmissionsResponse < 3) {
+    o.flightsWithDetailedEmissions = buildUnnamed1();
+    o.modelVersion = buildModelVersion();
+  }
+  buildCounterComputeDetailedFlightEmissionsResponse--;
+  return o;
+}
+
+void checkComputeDetailedFlightEmissionsResponse(
+  api.ComputeDetailedFlightEmissionsResponse o,
+) {
+  buildCounterComputeDetailedFlightEmissionsResponse++;
+  if (buildCounterComputeDetailedFlightEmissionsResponse < 3) {
+    checkUnnamed1(o.flightsWithDetailedEmissions!);
+    checkModelVersion(o.modelVersion!);
+  }
+  buildCounterComputeDetailedFlightEmissionsResponse--;
+}
+
+core.List<api.Flight> buildUnnamed2() => [buildFlight(), buildFlight()];
+
+void checkUnnamed2(core.List<api.Flight> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkFlight(o[0]);
+  checkFlight(o[1]);
+}
+
 core.int buildCounterComputeFlightEmissionsRequest = 0;
 api.ComputeFlightEmissionsRequest buildComputeFlightEmissionsRequest() {
   final o = api.ComputeFlightEmissionsRequest();
   buildCounterComputeFlightEmissionsRequest++;
   if (buildCounterComputeFlightEmissionsRequest < 3) {
-    o.flights = buildUnnamed0();
+    o.flights = buildUnnamed2();
   }
   buildCounterComputeFlightEmissionsRequest--;
   return o;
@@ -54,17 +119,17 @@ api.ComputeFlightEmissionsRequest buildComputeFlightEmissionsRequest() {
 void checkComputeFlightEmissionsRequest(api.ComputeFlightEmissionsRequest o) {
   buildCounterComputeFlightEmissionsRequest++;
   if (buildCounterComputeFlightEmissionsRequest < 3) {
-    checkUnnamed0(o.flights!);
+    checkUnnamed2(o.flights!);
   }
   buildCounterComputeFlightEmissionsRequest--;
 }
 
-core.List<api.FlightWithEmissions> buildUnnamed1() => [
+core.List<api.FlightWithEmissions> buildUnnamed3() => [
   buildFlightWithEmissions(),
   buildFlightWithEmissions(),
 ];
 
-void checkUnnamed1(core.List<api.FlightWithEmissions> o) {
+void checkUnnamed3(core.List<api.FlightWithEmissions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFlightWithEmissions(o[0]);
   checkFlightWithEmissions(o[1]);
@@ -75,7 +140,7 @@ api.ComputeFlightEmissionsResponse buildComputeFlightEmissionsResponse() {
   final o = api.ComputeFlightEmissionsResponse();
   buildCounterComputeFlightEmissionsResponse++;
   if (buildCounterComputeFlightEmissionsResponse < 3) {
-    o.flightEmissions = buildUnnamed1();
+    o.flightEmissions = buildUnnamed3();
     o.modelVersion = buildModelVersion();
   }
   buildCounterComputeFlightEmissionsResponse--;
@@ -85,18 +150,18 @@ api.ComputeFlightEmissionsResponse buildComputeFlightEmissionsResponse() {
 void checkComputeFlightEmissionsResponse(api.ComputeFlightEmissionsResponse o) {
   buildCounterComputeFlightEmissionsResponse++;
   if (buildCounterComputeFlightEmissionsResponse < 3) {
-    checkUnnamed1(o.flightEmissions!);
+    checkUnnamed3(o.flightEmissions!);
     checkModelVersion(o.modelVersion!);
   }
   buildCounterComputeFlightEmissionsResponse--;
 }
 
-core.List<api.Scope3FlightSegment> buildUnnamed2() => [
+core.List<api.Scope3FlightSegment> buildUnnamed4() => [
   buildScope3FlightSegment(),
   buildScope3FlightSegment(),
 ];
 
-void checkUnnamed2(core.List<api.Scope3FlightSegment> o) {
+void checkUnnamed4(core.List<api.Scope3FlightSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScope3FlightSegment(o[0]);
   checkScope3FlightSegment(o[1]);
@@ -108,7 +173,7 @@ buildComputeScope3FlightEmissionsRequest() {
   final o = api.ComputeScope3FlightEmissionsRequest();
   buildCounterComputeScope3FlightEmissionsRequest++;
   if (buildCounterComputeScope3FlightEmissionsRequest < 3) {
-    o.flights = buildUnnamed2();
+    o.flights = buildUnnamed4();
     o.modelVersion = buildModelVersion();
   }
   buildCounterComputeScope3FlightEmissionsRequest--;
@@ -120,18 +185,18 @@ void checkComputeScope3FlightEmissionsRequest(
 ) {
   buildCounterComputeScope3FlightEmissionsRequest++;
   if (buildCounterComputeScope3FlightEmissionsRequest < 3) {
-    checkUnnamed2(o.flights!);
+    checkUnnamed4(o.flights!);
     checkModelVersion(o.modelVersion!);
   }
   buildCounterComputeScope3FlightEmissionsRequest--;
 }
 
-core.List<api.Scope3FlightEmissions> buildUnnamed3() => [
+core.List<api.Scope3FlightEmissions> buildUnnamed5() => [
   buildScope3FlightEmissions(),
   buildScope3FlightEmissions(),
 ];
 
-void checkUnnamed3(core.List<api.Scope3FlightEmissions> o) {
+void checkUnnamed5(core.List<api.Scope3FlightEmissions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScope3FlightEmissions(o[0]);
   checkScope3FlightEmissions(o[1]);
@@ -143,7 +208,7 @@ buildComputeScope3FlightEmissionsResponse() {
   final o = api.ComputeScope3FlightEmissionsResponse();
   buildCounterComputeScope3FlightEmissionsResponse++;
   if (buildCounterComputeScope3FlightEmissionsResponse < 3) {
-    o.flightEmissions = buildUnnamed3();
+    o.flightEmissions = buildUnnamed5();
     o.modelVersion = buildModelVersion();
   }
   buildCounterComputeScope3FlightEmissionsResponse--;
@@ -155,15 +220,15 @@ void checkComputeScope3FlightEmissionsResponse(
 ) {
   buildCounterComputeScope3FlightEmissionsResponse++;
   if (buildCounterComputeScope3FlightEmissionsResponse < 3) {
-    checkUnnamed3(o.flightEmissions!);
+    checkUnnamed5(o.flightEmissions!);
     checkModelVersion(o.modelVersion!);
   }
   buildCounterComputeScope3FlightEmissionsResponse--;
 }
 
-core.List<api.Market> buildUnnamed4() => [buildMarket(), buildMarket()];
+core.List<api.Market> buildUnnamed6() => [buildMarket(), buildMarket()];
 
-void checkUnnamed4(core.List<api.Market> o) {
+void checkUnnamed6(core.List<api.Market> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMarket(o[0]);
   checkMarket(o[1]);
@@ -175,7 +240,7 @@ buildComputeTypicalFlightEmissionsRequest() {
   final o = api.ComputeTypicalFlightEmissionsRequest();
   buildCounterComputeTypicalFlightEmissionsRequest++;
   if (buildCounterComputeTypicalFlightEmissionsRequest < 3) {
-    o.markets = buildUnnamed4();
+    o.markets = buildUnnamed6();
   }
   buildCounterComputeTypicalFlightEmissionsRequest--;
   return o;
@@ -186,17 +251,17 @@ void checkComputeTypicalFlightEmissionsRequest(
 ) {
   buildCounterComputeTypicalFlightEmissionsRequest++;
   if (buildCounterComputeTypicalFlightEmissionsRequest < 3) {
-    checkUnnamed4(o.markets!);
+    checkUnnamed6(o.markets!);
   }
   buildCounterComputeTypicalFlightEmissionsRequest--;
 }
 
-core.List<api.TypicalFlightEmissions> buildUnnamed5() => [
+core.List<api.TypicalFlightEmissions> buildUnnamed7() => [
   buildTypicalFlightEmissions(),
   buildTypicalFlightEmissions(),
 ];
 
-void checkUnnamed5(core.List<api.TypicalFlightEmissions> o) {
+void checkUnnamed7(core.List<api.TypicalFlightEmissions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTypicalFlightEmissions(o[0]);
   checkTypicalFlightEmissions(o[1]);
@@ -209,7 +274,7 @@ buildComputeTypicalFlightEmissionsResponse() {
   buildCounterComputeTypicalFlightEmissionsResponse++;
   if (buildCounterComputeTypicalFlightEmissionsResponse < 3) {
     o.modelVersion = buildModelVersion();
-    o.typicalFlightEmissions = buildUnnamed5();
+    o.typicalFlightEmissions = buildUnnamed7();
   }
   buildCounterComputeTypicalFlightEmissionsResponse--;
   return o;
@@ -221,7 +286,7 @@ void checkComputeTypicalFlightEmissionsResponse(
   buildCounterComputeTypicalFlightEmissionsResponse++;
   if (buildCounterComputeTypicalFlightEmissionsResponse < 3) {
     checkModelVersion(o.modelVersion!);
-    checkUnnamed5(o.typicalFlightEmissions!);
+    checkUnnamed7(o.typicalFlightEmissions!);
   }
   buildCounterComputeTypicalFlightEmissionsResponse--;
 }
@@ -274,6 +339,27 @@ void checkEasaLabelMetadata(api.EasaLabelMetadata o) {
   buildCounterEasaLabelMetadata--;
 }
 
+core.int buildCounterEmissionsBreakdown = 0;
+api.EmissionsBreakdown buildEmissionsBreakdown() {
+  final o = api.EmissionsBreakdown();
+  buildCounterEmissionsBreakdown++;
+  if (buildCounterEmissionsBreakdown < 3) {
+    o.ttwEmissionsGramsPerPax = buildEmissionsGramsPerPax();
+    o.wttEmissionsGramsPerPax = buildEmissionsGramsPerPax();
+  }
+  buildCounterEmissionsBreakdown--;
+  return o;
+}
+
+void checkEmissionsBreakdown(api.EmissionsBreakdown o) {
+  buildCounterEmissionsBreakdown++;
+  if (buildCounterEmissionsBreakdown < 3) {
+    checkEmissionsGramsPerPax(o.ttwEmissionsGramsPerPax!);
+    checkEmissionsGramsPerPax(o.wttEmissionsGramsPerPax!);
+  }
+  buildCounterEmissionsBreakdown--;
+}
+
 core.int buildCounterEmissionsGramsPerPax = 0;
 api.EmissionsGramsPerPax buildEmissionsGramsPerPax() {
   final o = api.EmissionsGramsPerPax();
@@ -297,6 +383,105 @@ void checkEmissionsGramsPerPax(api.EmissionsGramsPerPax o) {
     unittest.expect(o.premiumEconomy!, unittest.equals(42));
   }
   buildCounterEmissionsGramsPerPax--;
+}
+
+core.int buildCounterEmissionsMetadata = 0;
+api.EmissionsMetadata buildEmissionsMetadata() {
+  final o = api.EmissionsMetadata();
+  buildCounterEmissionsMetadata++;
+  if (buildCounterEmissionsMetadata < 3) {
+    o.easaLabelMetadata = buildEasaLabelMetadata();
+    o.emissionsProvenance = buildEmissionsProvenance();
+    o.timWebsiteEmissionsCalculatorUrl = 'foo';
+  }
+  buildCounterEmissionsMetadata--;
+  return o;
+}
+
+void checkEmissionsMetadata(api.EmissionsMetadata o) {
+  buildCounterEmissionsMetadata++;
+  if (buildCounterEmissionsMetadata < 3) {
+    checkEasaLabelMetadata(o.easaLabelMetadata!);
+    checkEmissionsProvenance(o.emissionsProvenance!);
+    unittest.expect(
+      o.timWebsiteEmissionsCalculatorUrl!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEmissionsMetadata--;
+}
+
+core.List<api.EmissionsProvenanceEntry> buildUnnamed8() => [
+  buildEmissionsProvenanceEntry(),
+  buildEmissionsProvenanceEntry(),
+];
+
+void checkUnnamed8(core.List<api.EmissionsProvenanceEntry> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkEmissionsProvenanceEntry(o[0]);
+  checkEmissionsProvenanceEntry(o[1]);
+}
+
+core.int buildCounterEmissionsProvenance = 0;
+api.EmissionsProvenance buildEmissionsProvenance() {
+  final o = api.EmissionsProvenance();
+  buildCounterEmissionsProvenance++;
+  if (buildCounterEmissionsProvenance < 3) {
+    o.provenanceEntries = buildUnnamed8();
+  }
+  buildCounterEmissionsProvenance--;
+  return o;
+}
+
+void checkEmissionsProvenance(api.EmissionsProvenance o) {
+  buildCounterEmissionsProvenance++;
+  if (buildCounterEmissionsProvenance < 3) {
+    checkUnnamed8(o.provenanceEntries!);
+  }
+  buildCounterEmissionsProvenance--;
+}
+
+core.int buildCounterEmissionsProvenanceEntry = 0;
+api.EmissionsProvenanceEntry buildEmissionsProvenanceEntry() {
+  final o = api.EmissionsProvenanceEntry();
+  buildCounterEmissionsProvenanceEntry++;
+  if (buildCounterEmissionsProvenanceEntry < 3) {
+    o.cargoMassFractionData = 42.0;
+    o.cargoMassFractionT100Strategy = 'foo';
+    o.dataCategory = 'foo';
+    o.distanceAdjustmentStrategy = 'foo';
+    o.estimatedFlightDistanceKm = 42;
+    o.fuelBurnEeaStrategy = 'foo';
+    o.loadFactorsChAviationStrategy = 'foo';
+    o.loadFactorsData = 42.0;
+    o.loadFactorsT100Strategy = 'foo';
+    o.provenanceEntryType = 'foo';
+    o.seatAreaRatioIataStrategy = 'foo';
+    o.source = 'foo';
+    o.sourceVersion = 'foo';
+  }
+  buildCounterEmissionsProvenanceEntry--;
+  return o;
+}
+
+void checkEmissionsProvenanceEntry(api.EmissionsProvenanceEntry o) {
+  buildCounterEmissionsProvenanceEntry++;
+  if (buildCounterEmissionsProvenanceEntry < 3) {
+    unittest.expect(o.cargoMassFractionData!, unittest.equals(42.0));
+    unittest.expect(o.cargoMassFractionT100Strategy!, unittest.equals('foo'));
+    unittest.expect(o.dataCategory!, unittest.equals('foo'));
+    unittest.expect(o.distanceAdjustmentStrategy!, unittest.equals('foo'));
+    unittest.expect(o.estimatedFlightDistanceKm!, unittest.equals(42));
+    unittest.expect(o.fuelBurnEeaStrategy!, unittest.equals('foo'));
+    unittest.expect(o.loadFactorsChAviationStrategy!, unittest.equals('foo'));
+    unittest.expect(o.loadFactorsData!, unittest.equals(42.0));
+    unittest.expect(o.loadFactorsT100Strategy!, unittest.equals('foo'));
+    unittest.expect(o.provenanceEntryType!, unittest.equals('foo'));
+    unittest.expect(o.seatAreaRatioIataStrategy!, unittest.equals('foo'));
+    unittest.expect(o.source!, unittest.equals('foo'));
+    unittest.expect(o.sourceVersion!, unittest.equals('foo'));
+  }
+  buildCounterEmissionsProvenanceEntry--;
 }
 
 core.int buildCounterFlight = 0;
@@ -324,6 +509,54 @@ void checkFlight(api.Flight o) {
     unittest.expect(o.origin!, unittest.equals('foo'));
   }
   buildCounterFlight--;
+}
+
+core.int buildCounterFlightEmissionsDetails = 0;
+api.FlightEmissionsDetails buildFlightEmissionsDetails() {
+  final o = api.FlightEmissionsDetails();
+  buildCounterFlightEmissionsDetails++;
+  if (buildCounterFlightEmissionsDetails < 3) {
+    o.contrailsImpactBucket = 'foo';
+    o.emissionsBreakdown = buildEmissionsBreakdown();
+    o.emissionsGramsPerPax = buildEmissionsGramsPerPax();
+    o.source = 'foo';
+  }
+  buildCounterFlightEmissionsDetails--;
+  return o;
+}
+
+void checkFlightEmissionsDetails(api.FlightEmissionsDetails o) {
+  buildCounterFlightEmissionsDetails++;
+  if (buildCounterFlightEmissionsDetails < 3) {
+    unittest.expect(o.contrailsImpactBucket!, unittest.equals('foo'));
+    checkEmissionsBreakdown(o.emissionsBreakdown!);
+    checkEmissionsGramsPerPax(o.emissionsGramsPerPax!);
+    unittest.expect(o.source!, unittest.equals('foo'));
+  }
+  buildCounterFlightEmissionsDetails--;
+}
+
+core.int buildCounterFlightWithDetailedEmissions = 0;
+api.FlightWithDetailedEmissions buildFlightWithDetailedEmissions() {
+  final o = api.FlightWithDetailedEmissions();
+  buildCounterFlightWithDetailedEmissions++;
+  if (buildCounterFlightWithDetailedEmissions < 3) {
+    o.emissionsMetadata = buildEmissionsMetadata();
+    o.flight = buildFlight();
+    o.flightEmissionsDetails = buildFlightEmissionsDetails();
+  }
+  buildCounterFlightWithDetailedEmissions--;
+  return o;
+}
+
+void checkFlightWithDetailedEmissions(api.FlightWithDetailedEmissions o) {
+  buildCounterFlightWithDetailedEmissions++;
+  if (buildCounterFlightWithDetailedEmissions < 3) {
+    checkEmissionsMetadata(o.emissionsMetadata!);
+    checkFlight(o.flight!);
+    checkFlightEmissionsDetails(o.flightEmissionsDetails!);
+  }
+  buildCounterFlightWithDetailedEmissions--;
 }
 
 core.int buildCounterFlightWithEmissions = 0;
@@ -479,6 +712,28 @@ void checkTypicalFlightEmissions(api.TypicalFlightEmissions o) {
 }
 
 void main() {
+  unittest.group('obj-schema-ComputeDetailedFlightEmissionsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildComputeDetailedFlightEmissionsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ComputeDetailedFlightEmissionsRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkComputeDetailedFlightEmissionsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ComputeDetailedFlightEmissionsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildComputeDetailedFlightEmissionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ComputeDetailedFlightEmissionsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkComputeDetailedFlightEmissionsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ComputeFlightEmissionsRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildComputeFlightEmissionsRequest();
@@ -567,6 +822,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EmissionsBreakdown', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmissionsBreakdown();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmissionsBreakdown.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEmissionsBreakdown(od);
+    });
+  });
+
   unittest.group('obj-schema-EmissionsGramsPerPax', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmissionsGramsPerPax();
@@ -578,6 +844,39 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EmissionsMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmissionsMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmissionsMetadata.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEmissionsMetadata(od);
+    });
+  });
+
+  unittest.group('obj-schema-EmissionsProvenance', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmissionsProvenance();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmissionsProvenance.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEmissionsProvenance(od);
+    });
+  });
+
+  unittest.group('obj-schema-EmissionsProvenanceEntry', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmissionsProvenanceEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmissionsProvenanceEntry.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEmissionsProvenanceEntry(od);
+    });
+  });
+
   unittest.group('obj-schema-Flight', () {
     unittest.test('to-json--from-json', () async {
       final o = buildFlight();
@@ -586,6 +885,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkFlight(od);
+    });
+  });
+
+  unittest.group('obj-schema-FlightEmissionsDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFlightEmissionsDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FlightEmissionsDetails.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFlightEmissionsDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-FlightWithDetailedEmissions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFlightWithDetailedEmissions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FlightWithDetailedEmissions.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFlightWithDetailedEmissions(od);
     });
   });
 
@@ -656,6 +977,70 @@ void main() {
   });
 
   unittest.group('resource-FlightsResource', () {
+    unittest.test('method--computeDetailedFlightEmissions', () async {
+      final mock = HttpServerMock();
+      final res = api.TravelImpactModelApi(mock).flights;
+      final arg_request = buildComputeDetailedFlightEmissionsRequest();
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ComputeDetailedFlightEmissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkComputeDetailedFlightEmissionsRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 41),
+            unittest.equals('v1/flights:computeDetailedFlightEmissions'),
+          );
+          pathOffset += 41;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildComputeDetailedFlightEmissionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.computeDetailedFlightEmissions(
+        arg_request,
+        $fields: arg_$fields,
+      );
+      checkComputeDetailedFlightEmissionsResponse(
+        response as api.ComputeDetailedFlightEmissionsResponse,
+      );
+    });
+
     unittest.test('method--computeFlightEmissions', () async {
       final mock = HttpServerMock();
       final res = api.TravelImpactModelApi(mock).flights;

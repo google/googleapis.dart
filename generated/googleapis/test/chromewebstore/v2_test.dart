@@ -183,6 +183,7 @@ api.PublishItemRequest buildPublishItemRequest() {
   final o = api.PublishItemRequest();
   buildCounterPublishItemRequest++;
   if (buildCounterPublishItemRequest < 3) {
+    o.blockOnWarnings = true;
     o.deployInfos = buildUnnamed1();
     o.publishType = 'foo';
     o.skipReview = true;
@@ -194,6 +195,7 @@ api.PublishItemRequest buildPublishItemRequest() {
 void checkPublishItemRequest(api.PublishItemRequest o) {
   buildCounterPublishItemRequest++;
   if (buildCounterPublishItemRequest < 3) {
+    unittest.expect(o.blockOnWarnings!, unittest.isTrue);
     checkUnnamed1(o.deployInfos!);
     unittest.expect(o.publishType!, unittest.equals('foo'));
     unittest.expect(o.skipReview!, unittest.isTrue);
@@ -209,6 +211,7 @@ api.PublishItemResponse buildPublishItemResponse() {
     o.itemId = 'foo';
     o.name = 'foo';
     o.state = 'foo';
+    o.warningInfo = buildWarningsInfo();
   }
   buildCounterPublishItemResponse--;
   return o;
@@ -220,6 +223,7 @@ void checkPublishItemResponse(api.PublishItemResponse o) {
     unittest.expect(o.itemId!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
+    checkWarningsInfo(o.warningInfo!);
   }
   buildCounterPublishItemResponse--;
 }
@@ -302,6 +306,54 @@ void checkUploadItemPackageResponse(api.UploadItemPackageResponse o) {
     unittest.expect(o.uploadState!, unittest.equals('foo'));
   }
   buildCounterUploadItemPackageResponse--;
+}
+
+core.int buildCounterWarning = 0;
+api.Warning buildWarning() {
+  final o = api.Warning();
+  buildCounterWarning++;
+  if (buildCounterWarning < 3) {
+    o.description = 'foo';
+    o.reason = 'foo';
+  }
+  buildCounterWarning--;
+  return o;
+}
+
+void checkWarning(api.Warning o) {
+  buildCounterWarning++;
+  if (buildCounterWarning < 3) {
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.reason!, unittest.equals('foo'));
+  }
+  buildCounterWarning--;
+}
+
+core.List<api.Warning> buildUnnamed2() => [buildWarning(), buildWarning()];
+
+void checkUnnamed2(core.List<api.Warning> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWarning(o[0]);
+  checkWarning(o[1]);
+}
+
+core.int buildCounterWarningsInfo = 0;
+api.WarningsInfo buildWarningsInfo() {
+  final o = api.WarningsInfo();
+  buildCounterWarningsInfo++;
+  if (buildCounterWarningsInfo < 3) {
+    o.warnings = buildUnnamed2();
+  }
+  buildCounterWarningsInfo--;
+  return o;
+}
+
+void checkWarningsInfo(api.WarningsInfo o) {
+  buildCounterWarningsInfo++;
+  if (buildCounterWarningsInfo < 3) {
+    checkUnnamed2(o.warnings!);
+  }
+  buildCounterWarningsInfo--;
 }
 
 void main() {
@@ -434,6 +486,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkUploadItemPackageResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-Warning', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWarning();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Warning.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWarning(od);
+    });
+  });
+
+  unittest.group('obj-schema-WarningsInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWarningsInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WarningsInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWarningsInfo(od);
     });
   });
 

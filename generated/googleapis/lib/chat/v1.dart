@@ -36,6 +36,7 @@
 ///     - [SpacesMessagesReactionsResource]
 ///   - [SpacesSpaceEventsResource]
 /// - [UsersResource]
+///   - [UsersAvailabilityResource]
 ///   - [UsersSectionsResource]
 ///     - [UsersSectionsItemsResource]
 ///   - [UsersSpacesResource]
@@ -90,6 +91,24 @@ class HangoutsChatApi {
   /// conversations owned by your organization
   static const chatAdminSpacesReadonlyScope =
       'https://www.googleapis.com/auth/chat.admin.spaces.readonly';
+
+  /// On their own behalf, apps in Google Chat can see all members in Google
+  /// Chat spaces and conversations throughout your Workspace organization, even
+  /// when the Chat app isn't a member
+  static const chatAppAllMembershipsReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.all.memberships.readonly';
+
+  /// On their own behalf, apps in Google Chat can see all messages and
+  /// reactions throughout your Workspace organization, even when the Chat app
+  /// isn't a member of a space or conversation
+  static const chatAppAllMessagesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.all.messages.readonly';
+
+  /// On their own behalf, apps in Google Chat can see metadata about all spaces
+  /// and conversations in Google Chat throughout your Workspace organization,
+  /// even when the Chat app isn't a member
+  static const chatAppAllSpacesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.all.spaces.readonly';
 
   /// On their own behalf, apps in Google Chat can delete conversations and
   /// spaces and remove access to associated files
@@ -196,6 +215,14 @@ class HangoutsChatApi {
   /// View chat and spaces in Google Chat
   static const chatSpacesReadonlyScope =
       'https://www.googleapis.com/auth/chat.spaces.readonly';
+
+  /// See and change your availability status in Google Chat.
+  static const chatUsersAvailabilityScope =
+      'https://www.googleapis.com/auth/chat.users.availability';
+
+  /// See your availability status in Google Chat.
+  static const chatUsersAvailabilityReadonlyScope =
+      'https://www.googleapis.com/auth/chat.users.availability.readonly';
 
   /// View and modify last read time for Google Chat conversations
   static const chatUsersReadstateScope =
@@ -875,7 +902,6 @@ class SpacesResource {
     return Space.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// [Developer Preview](https://developers.google.com/workspace/preview):
   /// Returns all spaces with `spaceType == GROUP_CHAT`, whose human memberships
   /// contain exactly the calling user, and the users specified in
   /// `FindGroupChatsRequest.users`.
@@ -1199,6 +1225,20 @@ class SpacesResource {
   /// To learn more, see
   /// [Make a space discoverable to specific users](https://developers.google.com/workspace/chat/space-target-audience).
   /// `access_settings.audience` is not supported with `useAdminAccess`.
+  /// `access_settings.access_permission_settings`: Updates the
+  /// [access permission settings](https://support.google.com/chat/answer/11971020)
+  /// of who can discover and join the space where `spaceType` field is `SPACE`.
+  /// Principals allowed to join the space must also be allowed to discover it.
+  /// To update access permission settings for a space, the authenticating user
+  /// must be a space manager or assistant manager and omit all other field
+  /// masks in the request. You can't update this field if the space is in
+  /// [import mode](https://developers.google.com/workspace/chat/import-data-overview).
+  /// To learn more, see
+  /// [Make a space discoverable to specific users](https://developers.google.com/workspace/chat/space-target-audience).
+  /// `access_settings.access_permission_settings` is not supported with
+  /// `useAdminAccess`. The supported field masks include: -
+  /// `access_settings.access_permission_settings.discoverSpaceSetting` -
+  /// `access_settings.access_permission_settings.joinSpaceSetting`
   /// `permission_settings`: Supports changing the
   /// [permission settings](https://support.google.com/chat/answer/13340792) of
   /// a space. When updating permission settings, you can only specify
@@ -1254,13 +1294,21 @@ class SpacesResource {
     return Space.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns a list of spaces in a Google Workspace organization based on an
-  /// administrator's search.
+  /// Returns a list of spaces in a Google Workspace organization.
   ///
-  /// In the request, set `use_admin_access` to `true`. For an example, see
+  /// For an example, see
   /// [Search for and manage spaces](https://developers.google.com/workspace/chat/search-manage-admin).
-  /// Requires
-  /// [user authentication with administrator privileges](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user#admin-privileges)
+  /// When `use_admin_access` is set to `false`, the results are limited to
+  /// spaces where the calling user is a joined member. To search with
+  /// administrator privileges, set `use_admin_access` to `true`. Supports the
+  /// following types of
+  /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
+  /// -
+  /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
+  /// `https://www.googleapis.com/auth/chat.spaces` -
+  /// [User authentication with administrator privileges](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user#admin-privileges)
   /// and one of the following
   /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
   /// - `https://www.googleapis.com/auth/chat.admin.spaces.readonly` -
@@ -1273,12 +1321,18 @@ class SpacesResource {
   /// `membership_count.joined_direct_human_user_count` — Denotes the count of
   /// human users that have directly joined a space. - `last_active_time` —
   /// Denotes the time when last eligible item is added to any topic of this
-  /// space. - `create_time` — Denotes the time of the space creation. Valid
-  /// ordering operation values are: - `ASC` for ascending. Default value. -
-  /// `DESC` for descending. The supported syntax are: -
+  /// space. - `create_time` — Denotes the time of the space creation. When
+  /// `useAdminAccess` is `false`, only `create_time` and `relevance` are
+  /// supported for ordering. Only `DESC` is supported for these fields in
+  /// non-admin searches. Valid ordering operation values are: - `ASC` for
+  /// ascending. Default value. - `DESC` for descending. The supported syntax
+  /// are when `useAdminAccess` is set to `true`: -
   /// `membership_count.joined_direct_human_user_count DESC` -
   /// `membership_count.joined_direct_human_user_count ASC` - `last_active_time
   /// DESC` - `last_active_time ASC` - `create_time DESC` - `create_time ASC`
+  /// When `useAdminAccess` is set to `false`: - `create_time DESC` - `relevance
+  /// DESC`
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
   ///
   /// [pageSize] - The maximum number of spaces to return. The service may
   /// return fewer than this value. If unspecified, at most 100 spaces are
@@ -1292,18 +1346,23 @@ class SpacesResource {
   /// unexpected results.
   ///
   /// [query] - Required. A search query. You can search by using the following
-  /// parameters: - `create_time` - `customer` - `display_name` -
-  /// `external_user_allowed` - `last_active_time` - `space_history_state` -
-  /// `space_type` `create_time` and `last_active_time` accept a timestamp in
+  /// parameters when `useAdminAccess` is set to `true`: - `create_time` -
+  /// `customer` - `display_name` - `external_user_allowed` - `last_active_time`
+  /// - `space_history_state` - `space_type` When `useAdminAccess` is set to
+  /// `false`: - `display_name` - `external_user_allowed` - `space_type`
+  /// `create_time` and `last_active_time` accept a timestamp in
   /// \[RFC-3339\](https://www.rfc-editor.org/rfc/rfc3339) format and the
   /// supported comparison operators are: `=`, `<`, `>`, `<=`, `>=`. `customer`
-  /// is required and is used to indicate which customer to fetch spaces from.
-  /// `customers/my_customer` is the only supported value. `display_name` only
-  /// accepts the `HAS` (`:`) operator. The text to match is first tokenized
-  /// into tokens and each token is prefix-matched case-insensitively and
-  /// independently as a substring anywhere in the space's `display_name`. For
-  /// example, `Fun Eve` matches `Fun event` or `The evening was fun`, but not
-  /// `notFun event` or `even`. `external_user_allowed` accepts either `true` or
+  /// is required when `useAdminAccess` is set to `true`, and is used to
+  /// indicate which customer to fetch spaces from. `customers/my_customer` is
+  /// the only supported value. `display_name` only accepts the `HAS` (`:`)
+  /// operator. The text to match is first tokenized into tokens and each token
+  /// is prefix-matched case-insensitively and independently as a substring
+  /// anywhere in the space's `display_name`. For example, `Fun Eve` matches
+  /// `Fun event` or `The evening was fun`, but not `notFun event` or `even`.
+  /// When `useAdminAccess` is set to `false`, `display_name` is required to
+  /// retrieve meaningful results. Otherwise, the default behavior is to return
+  /// an empty response. `external_user_allowed` accepts either `true` or
   /// `false`. `space_history_state` only accepts values from the
   /// \[`historyState`\](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces#Space.HistoryState)
   /// field of a `space` resource. `space_type` is required and the only valid
@@ -1316,11 +1375,12 @@ class SpacesResource {
   /// and `create_time` support both `AND` and `OR` operators. `AND` can only be
   /// used to represent an interval, such as `last_active_time <
   /// "2022-01-01T00:00:00+00:00" AND last_active_time >
-  /// "2023-01-01T00:00:00+00:00"`. The following example queries are valid: ```
-  /// customer = "customers/my_customer" AND space_type = "SPACE" customer =
-  /// "customers/my_customer" AND space_type = "SPACE" AND display_name:"Hello
-  /// World" customer = "customers/my_customer" AND space_type = "SPACE" AND
-  /// (last_active_time < "2020-01-01T00:00:00+00:00" OR last_active_time >
+  /// "2023-01-01T00:00:00+00:00"`. The following example queries are valid when
+  /// `useAdminAccess` is set to `true`: ``` customer = "customers/my_customer"
+  /// AND space_type = "SPACE" customer = "customers/my_customer" AND space_type
+  /// = "SPACE" AND display_name:"Hello World" customer =
+  /// "customers/my_customer" AND space_type = "SPACE" AND (last_active_time <
+  /// "2020-01-01T00:00:00+00:00" OR last_active_time >
   /// "2022-01-01T00:00:00+00:00") customer = "customers/my_customer" AND
   /// space_type = "SPACE" AND (display_name:"Hello World" OR display_name:"Fun
   /// event") AND (last_active_time > "2020-01-01T00:00:00+00:00" AND
@@ -1328,7 +1388,13 @@ class SpacesResource {
   /// "customers/my_customer" AND space_type = "SPACE" AND (create_time >
   /// "2019-01-01T00:00:00+00:00" AND create_time < "2020-01-01T00:00:00+00:00")
   /// AND (external_user_allowed = "true") AND (space_history_state =
-  /// "HISTORY_ON" OR space_history_state = "HISTORY_OFF") ```
+  /// "HISTORY_ON" OR space_history_state = "HISTORY_OFF") ``` The following
+  /// example queries are valid when `useAdminAccess` is set to `false`: ```
+  /// display_name:"Hello World" AND space_type = "SPACE" (display_name:"Hello"
+  /// OR display_name:"Fun") AND space_type = "SPACE" (external_user_allowed =
+  /// "true" AND space_type = "SPACE") // Returns an empty response.
+  /// (external_user_allowed = "true" AND display_name:"Hello" AND space_type =
+  /// "SPACE") ```
   ///
   /// [useAdminAccess] - When `true`, the method runs using the user's Google
   /// Workspace administrator privileges. The calling user must be a Google
@@ -1336,8 +1402,6 @@ class SpacesResource {
   /// [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245).
   /// Requires either the `chat.admin.spaces.readonly` or `chat.admin.spaces`
   /// [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes).
-  /// This method currently only supports admin access, thus only `true` is
-  /// accepted for this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1970,6 +2034,24 @@ class SpacesMessagesResource {
   /// message. Format: `spaces/{space}`
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
+  /// [createMessageNotificationOptions_notificationType] - The notification
+  /// type for the message.
+  /// Possible string values are:
+  /// - "NOTIFICATION_TYPE_NONE" : Default behavior. Notification behavior is
+  /// similar to when the human user sends the message using the Chat UI: no
+  /// notification is sent to the human sender.
+  /// - "NOTIFICATION_TYPE_FORCE_NOTIFY" : Force notify recipients. This
+  /// bypasses users' space notification settings and
+  /// [Chat Do Not Disturb settings](https://support.google.com/chat/answer/9093489).
+  /// This option does not bypass device-level Do Not Disturb settings. Requires
+  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  /// - "NOTIFICATION_TYPE_SILENT" : Do not notify recipients, and do not mark
+  /// the message as unread. This behaves similarly to the user muting the
+  /// conversation or enabling
+  /// [Chat Do Not Disturb](https://support.google.com/chat/answer/9093489).
+  /// Requires
+  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  ///
   /// [messageId] - Optional. A custom ID for a message. Lets Chat apps get,
   /// update, or delete a message without needing to store the system-assigned
   /// ID in the message's resource name (represented in the message `name`
@@ -2021,6 +2103,7 @@ class SpacesMessagesResource {
   async.Future<Message> create(
     Message request,
     core.String parent, {
+    core.String? createMessageNotificationOptions_notificationType,
     core.String? messageId,
     core.String? messageReplyOption,
     core.String? requestId,
@@ -2029,6 +2112,10 @@ class SpacesMessagesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'createMessageNotificationOptions.notificationType':
+          ?createMessageNotificationOptions_notificationType == null
+          ? null
+          : [createMessageNotificationOptions_notificationType],
       'messageId': ?messageId == null ? null : [messageId],
       'messageReplyOption': ?messageReplyOption == null
           ? null
@@ -2145,6 +2232,19 @@ class SpacesMessagesResource {
   /// [Name a message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message).
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
+  /// [markupSyntax] - Optional. Specifies the desired output syntax for the
+  /// Chat message `formatted_text` field.
+  /// Possible string values are:
+  /// - "MARKUP_SYNTAX_UNSPECIFIED" : Represents the unspecified value.
+  /// - "MARKUP_SYNTAX_CHAT" : Uses Google Chat's markup syntax. See
+  /// https://developers.google.com/workspace/chat/format-messages#format-texts
+  /// for more information.
+  /// - "MARKUP_SYNTAX_MARKDOWN" : Uses Markdown syntax. This syntax is based on
+  /// the [CommonMark](https://commonmark.org/help/) specification, with
+  /// additional extensions. See
+  /// https://developers.google.com/workspace/chat/format-messages#format-texts
+  /// for more information.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2155,8 +2255,13 @@ class SpacesMessagesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> get(core.String name, {core.String? $fields}) async {
+  async.Future<Message> get(
+    core.String name, {
+    core.String? markupSyntax,
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'markupSyntax': ?markupSyntax == null ? null : [markupSyntax],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2220,6 +2325,19 @@ class SpacesMessagesResource {
   /// spaces/AAAAAAAAAAA/threads/123 ``` Invalid queries are rejected by the
   /// server with an `INVALID_ARGUMENT` error.
   ///
+  /// [markupSyntax] - Optional. Specifies the desired output syntax for the
+  /// Chat message `formatted_text` field.
+  /// Possible string values are:
+  /// - "MARKUP_SYNTAX_UNSPECIFIED" : Represents the unspecified value.
+  /// - "MARKUP_SYNTAX_CHAT" : Uses Google Chat's markup syntax. See
+  /// https://developers.google.com/workspace/chat/format-messages#format-texts
+  /// for more information.
+  /// - "MARKUP_SYNTAX_MARKDOWN" : Uses Markdown syntax. This syntax is based on
+  /// the [CommonMark](https://commonmark.org/help/) specification, with
+  /// additional extensions. See
+  /// https://developers.google.com/workspace/chat/format-messages#format-texts
+  /// for more information.
+  ///
   /// [orderBy] - Optional. How the list of messages is ordered. Specify a value
   /// to order by an ordering operation. Valid ordering operation values are as
   /// follows: - `ASC` for ascending. - `DESC` for descending. The default
@@ -2254,6 +2372,7 @@ class SpacesMessagesResource {
   async.Future<ListMessagesResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? markupSyntax,
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
@@ -2262,6 +2381,7 @@ class SpacesMessagesResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'filter': ?filter == null ? null : [filter],
+      'markupSyntax': ?markupSyntax == null ? null : [markupSyntax],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
@@ -2364,6 +2484,69 @@ class SpacesMessagesResource {
       queryParams: queryParams_,
     );
     return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Searches for messages in Google Chat that the calling user has access to.
+  ///
+  /// Returns a list of messages matching the search criteria. To search across
+  /// all spaces the user has access to, set `parent` to `spaces/-`. Using any
+  /// other value for `parent` results in an `INVALID_ARGUMENT` error. The
+  /// returned messages have their `name` field populated with the full resource
+  /// name, which includes the specific `space` in which the message resides.
+  /// This API doesn't return all message types. The types of messages listed
+  /// below aren't included in the response. Use ListMessages to list all
+  /// messages. - Private Messages that are visible to the authenticated user. -
+  /// Messages posted by Chat apps in spaces or group chats. - Messages in a
+  /// Chat app DM. - Messages from blocked users. - Messages in spaces that the
+  /// caller has muted. Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.messages.readonly` -
+  /// `https://www.googleapis.com/auth/chat.messages`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the space to search within. To
+  /// search across all spaces the user has access to, set this field to
+  /// `spaces/-`. Using any other value for `parent` results in an
+  /// `INVALID_ARGUMENT` error. To limit the search to one or more spaces, use
+  /// `space.name` or `space.display_name` in the `filter`.
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchMessagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchMessagesResponse> search(
+    SearchMessagesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/messages:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SearchMessagesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a message.
@@ -2893,10 +3076,292 @@ class SpacesSpaceEventsResource {
 class UsersResource {
   final commons.ApiRequester _requester;
 
+  UsersAvailabilityResource get availability =>
+      UsersAvailabilityResource(_requester);
   UsersSectionsResource get sections => UsersSectionsResource(_requester);
   UsersSpacesResource get spaces => UsersSpacesResource(_requester);
 
   UsersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class UsersAvailabilityResource {
+  final commons.ApiRequester _requester;
+
+  UsersAvailabilityResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns availability information for a human user in Google Chat.
+  ///
+  /// For example, this can be used to check if a user is online or away, or to
+  /// retrieve their custom status message. This method only retrieves the
+  /// authenticated user's availability. Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.availability.readonly` -
+  /// `https://www.googleapis.com/auth/chat.users.availability`
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the availability to retrieve.
+  /// Format: users/{user}/availability `{user}` is the id for the Person in the
+  /// People API or Admin SDK directory API. For example, `users/123456789`. The
+  /// user's email address or `me` can also be used as an alias to refer to the
+  /// caller. For example, `users/user@example.com` or `users/me`.
+  /// Value must have pattern `^users/\[^/\]+/availability$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Availability].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Availability> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Availability.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Marks user as `ACTIVE` in Google Chat.
+  ///
+  /// Sets the user's availability state to `ACTIVE`. The `ACTIVE` state lasts
+  /// until the specified expiration, at which point the user's state becomes
+  /// `AWAY`. Note that if the user is actively using Chat, the `ACTIVE` state
+  /// duration may extend beyond the provided expiration. This method only
+  /// updates the authenticated user's availability. Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.availability`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the availability to mark as
+  /// active. Format: users/{user}/availability `{user}` is the id for the
+  /// Person in the People API or Admin SDK directory API. For example,
+  /// `users/123456789`. The user's email address or `me` can also be used as an
+  /// alias to refer to the caller. For example, `users/user@example.com` or
+  /// `users/me`.
+  /// Value must have pattern `^users/\[^/\]+/availability$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Availability].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Availability> markAsActive(
+    MarkAsActiveRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markAsActive';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Availability.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Marks user as `AWAY` in Google Chat.
+  ///
+  /// Sets the user's state to away and is not affected by the user's activity.
+  /// This method only updates the authenticated user's availability. Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.availability`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the availability to mark as away.
+  /// Format: users/{user}/availability `{user}` is the id for the Person in the
+  /// People API or Admin SDK directory API. For example, `users/123456789`. The
+  /// user's email address or `me` can also be used as an alias to refer to the
+  /// caller. For example, `users/user@example.com` or `users/me`.
+  /// Value must have pattern `^users/\[^/\]+/availability$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Availability].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Availability> markAsAway(
+    MarkAsAwayRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markAsAway';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Availability.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Marks user as `DO_NOT_DISTURB` in Google Chat.
+  ///
+  /// Sets a user's availability state to `DO_NOT_DISTURB` until a specified
+  /// expiration time. When in `DO_NOT_DISTURB`, users typically won't receive
+  /// notifications. This method only updates the authenticated user's
+  /// availability. Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.availability`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the availability to mark as Do Not
+  /// Disturb. Format: users/{user}/availability `{user}` is the id for the
+  /// Person in the People API or Admin SDK directory API. For example,
+  /// `users/123456789`. The user's email address or `me` can also be used as an
+  /// alias to refer to the caller. For example, `users/user@example.com` or
+  /// `users/me`.
+  /// Value must have pattern `^users/\[^/\]+/availability$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Availability].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Availability> markAsDoNotDisturb(
+    MarkAsDoNotDisturbRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':markAsDoNotDisturb';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Availability.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates availability information for a human user.
+  ///
+  /// Only the `custom_status` field can be updated through this method. This
+  /// method only updates the authenticated user's availability. Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.availability`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name of the user's availability. Format:
+  /// `users/{user}/availability` `{user}` is the id for the Person in the
+  /// People API or Admin SDK directory API. For example, `users/123456789`. The
+  /// user's email address or `me` can also be used as an alias to refer to the
+  /// caller. For example, `users/user@example.com` or `users/me`.
+  /// Value must have pattern `^users/\[^/\]+/availability$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update. The only field that
+  /// can be updated is `custom_status`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Availability].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Availability> patch(
+    Availability request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Availability.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class UsersSectionsResource {
@@ -3618,10 +4083,86 @@ class UsersSpacesThreadsResource {
   }
 }
 
+/// An access permission setting.
+class AccessPermissionSetting {
+  /// Unordered list.
+  ///
+  /// Allowed principals for this permission.
+  ///
+  /// Optional.
+  core.List<Principal>? principals;
+
+  AccessPermissionSetting({this.principals});
+
+  AccessPermissionSetting.fromJson(core.Map json_)
+    : this(
+        principals: (json_['principals'] as core.List?)
+            ?.map(
+              (value) => Principal.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final principals = this.principals;
+    return {'principals': ?principals};
+  }
+}
+
+/// Access permission settings for a space.
+class AccessPermissionSettings {
+  /// Access permission setting for discovering the space.
+  ///
+  /// Optional.
+  AccessPermissionSetting? discoverSpaceSetting;
+
+  /// Access permission setting for joining the space.
+  ///
+  /// Optional.
+  AccessPermissionSetting? joinSpaceSetting;
+
+  AccessPermissionSettings({this.discoverSpaceSetting, this.joinSpaceSetting});
+
+  AccessPermissionSettings.fromJson(core.Map json_)
+    : this(
+        discoverSpaceSetting: json_.containsKey('discoverSpaceSetting')
+            ? AccessPermissionSetting.fromJson(
+                json_['discoverSpaceSetting']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        joinSpaceSetting: json_.containsKey('joinSpaceSetting')
+            ? AccessPermissionSetting.fromJson(
+                json_['joinSpaceSetting']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final discoverSpaceSetting = this.discoverSpaceSetting;
+    final joinSpaceSetting = this.joinSpaceSetting;
+    return {
+      'discoverSpaceSetting': ?discoverSpaceSetting,
+      'joinSpaceSetting': ?joinSpaceSetting,
+    };
+  }
+}
+
 /// Represents the
 /// [access setting](https://support.google.com/chat/answer/11971020) of the
 /// space.
 class AccessSettings {
+  /// Access permission settings for the space.
+  ///
+  /// To set the target audience when creating a space, specify the
+  /// `accessSettings.audience` field in your request.
+  ///
+  /// Optional.
+  AccessPermissionSettings? accessPermissionSettings;
+
   /// Indicates the access state of the space.
   ///
   /// Output only.
@@ -3664,18 +4205,33 @@ class AccessSettings {
   /// Optional.
   core.String? audience;
 
-  AccessSettings({this.accessState, this.audience});
+  AccessSettings({
+    this.accessPermissionSettings,
+    this.accessState,
+    this.audience,
+  });
 
   AccessSettings.fromJson(core.Map json_)
     : this(
+        accessPermissionSettings: json_.containsKey('accessPermissionSettings')
+            ? AccessPermissionSettings.fromJson(
+                json_['accessPermissionSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         accessState: json_['accessState'] as core.String?,
         audience: json_['audience'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final accessPermissionSettings = this.accessPermissionSettings;
     final accessState = this.accessState;
     final audience = this.audience;
-    return {'accessState': ?accessState, 'audience': ?audience};
+    return {
+      'accessPermissionSettings': ?accessPermissionSettings,
+      'accessState': ?accessState,
+      'audience': ?audience,
+    };
   }
 }
 
@@ -3900,8 +4456,6 @@ class ActionStatus {
 /// { "name":"users/{user}", "displayName":"FooBot",
 /// "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }]
 /// ```
-///
-/// Output only.
 class Annotation {
   /// The metadata for a custom emoji.
   CustomEmojiMetadata? customEmojiMetadata;
@@ -4154,6 +4708,112 @@ class AttachmentDataRef {
     return {
       'attachmentUploadToken': ?attachmentUploadToken,
       'resourceName': ?resourceName,
+    };
+  }
+}
+
+/// A target audience in Google Chat.
+///
+/// A target audience represents a group of users within a Google Workspace
+/// organization, defined by an administrator. Target audiences are used to
+/// configure access and visibility settings for resources, such as making a
+/// space discoverable to a specific group of users. For more details, see
+/// [Target audiences](https://support.google.com/a/answer/9934697) and
+/// [Make a space discoverable to a target audience](https://developers.google.com/workspace/chat/space-target-audience).
+class Audience {
+  /// The resource name of the
+  /// [target audience](https://support.google.com/a/answer/9934697) who can
+  /// discover or join the space.
+  ///
+  /// For details, see
+  /// [Make a space discoverable to a target audience](https://developers.google.com/workspace/chat/space-target-audience).
+  /// Format: `audiences/{audience}` To use the default target audience for the
+  /// Google Workspace organization, set to `audiences/default`.
+  core.String? name;
+
+  Audience({this.name});
+
+  Audience.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
+  }
+}
+
+/// Represents a user's current availability information in Google Chat,
+/// including their state (for example, Active, Away, Do Not Disturb) and any
+/// custom status.
+class Availability {
+  /// The user's custom status.
+  ///
+  /// Optional.
+  CustomStatus? customStatus;
+
+  /// Metadata if the user state is set to DO_NOT_DISTURB.
+  ///
+  /// Output only.
+  DoNotDisturbMetadata? doNotDisturbMetadata;
+
+  /// Identifier.
+  ///
+  /// Resource name of the user's availability. Format:
+  /// `users/{user}/availability` `{user}` is the id for the Person in the
+  /// People API or Admin SDK directory API. For example, `users/123456789`. The
+  /// user's email address or `me` can also be used as an alias to refer to the
+  /// caller. For example, `users/user@example.com` or `users/me`.
+  core.String? name;
+
+  /// The user's current availability state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. The state is unspecified.
+  /// - "ACTIVE" : The user is currently active, based on recent activity.
+  /// - "IDLE" : The user is currently idle. This state indicates a period of
+  /// inactivity after being ACTIVE, before potentially transitioning to AWAY.
+  /// - "AWAY" : The user is currently away. This can be either automatically
+  /// set after a period of inactivity in ACTIVE or IDLE state, or it can be
+  /// manually set by the user. When manually set via `MarkAsAway`, this state
+  /// persists regardless of user activity.
+  /// - "DO_NOT_DISTURB" : The user is in Do Not Disturb state, which is
+  /// manually set.
+  core.String? state;
+
+  Availability({
+    this.customStatus,
+    this.doNotDisturbMetadata,
+    this.name,
+    this.state,
+  });
+
+  Availability.fromJson(core.Map json_)
+    : this(
+        customStatus: json_.containsKey('customStatus')
+            ? CustomStatus.fromJson(
+                json_['customStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        doNotDisturbMetadata: json_.containsKey('doNotDisturbMetadata')
+            ? DoNotDisturbMetadata.fromJson(
+                json_['doNotDisturbMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final customStatus = this.customStatus;
+    final doNotDisturbMetadata = this.doNotDisturbMetadata;
+    final name = this.name;
+    final state = this.state;
+    return {
+      'customStatus': ?customStatus,
+      'doNotDisturbMetadata': ?doNotDisturbMetadata,
+      'name': ?name,
+      'state': ?state,
     };
   }
 }
@@ -4673,6 +5333,61 @@ class CustomEmojiPayload {
   }
 }
 
+/// Represents a user's custom status in Google Chat.
+///
+/// This includes a short text message with an optional emoji that a user sets
+/// to give more context about their availability.
+class CustomStatus {
+  /// The emoji of the custom status.
+  ///
+  /// Only Unicode emojis are supported; custom emojis are not supported.
+  ///
+  /// Required.
+  Emoji? emoji;
+
+  /// The timestamp when the custom status expires.
+  core.String? expireTime;
+
+  /// The text of the custom status.
+  ///
+  /// This will be a string with maximum length of 64.
+  ///
+  /// Required.
+  core.String? text;
+
+  /// Input only.
+  ///
+  /// The time-to-live duration after which the custom status expires.
+  core.String? ttl;
+
+  CustomStatus({this.emoji, this.expireTime, this.text, this.ttl});
+
+  CustomStatus.fromJson(core.Map json_)
+    : this(
+        emoji: json_.containsKey('emoji')
+            ? Emoji.fromJson(
+                json_['emoji'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        expireTime: json_['expireTime'] as core.String?,
+        text: json_['text'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final emoji = this.emoji;
+    final expireTime = this.expireTime;
+    final text = this.text;
+    final ttl = this.ttl;
+    return {
+      'emoji': ?emoji,
+      'expireTime': ?expireTime,
+      'text': ?text,
+      'ttl': ?ttl,
+    };
+  }
+}
+
 /// Information about a deleted message.
 ///
 /// A message is deleted when `delete_time` is set.
@@ -4768,6 +5483,27 @@ class DialogAction {
     final actionStatus = this.actionStatus;
     final dialog = this.dialog;
     return {'actionStatus': ?actionStatus, 'dialog': ?dialog};
+  }
+}
+
+/// Metadata associated with the `DO_NOT_DISTURB` availability state, specifying
+/// when the state is set to expire.
+class DoNotDisturbMetadata {
+  /// Timestamp until which the user should be marked as DO_NOT_DISTURB.
+  ///
+  /// This can be maximum of 1 year in the future.
+  ///
+  /// Output only.
+  core.String? expirationTime;
+
+  DoNotDisturbMetadata({this.expirationTime});
+
+  DoNotDisturbMetadata.fromJson(core.Map json_)
+    : this(expirationTime: json_['expirationTime'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final expirationTime = this.expirationTime;
+    return {'expirationTime': ?expirationTime};
   }
 }
 
@@ -4888,8 +5624,6 @@ typedef Empty = $Empty;
 
 /// A response containing group chat spaces with exactly the calling user and
 /// the requested users.
-///
-/// [Developer Preview](https://developers.google.com/workspace/preview):
 class FindGroupChatsResponse {
   /// A token that you can send as `pageToken` to retrieve the next page of
   /// results.
@@ -9285,6 +10019,58 @@ class ListSpacesResponse {
   }
 }
 
+/// Request message for the `MarkAsActive` method.
+class MarkAsActiveRequest {
+  /// The absolute timestamp when the ACTIVE state expires.
+  core.String? expireTime;
+
+  /// The duration from the current time until the ACTIVE state expires.
+  ///
+  /// Using a short TTL can effectively reset the user's state to be based on
+  /// activity after this brief duration.
+  core.String? ttl;
+
+  MarkAsActiveRequest({this.expireTime, this.ttl});
+
+  MarkAsActiveRequest.fromJson(core.Map json_)
+    : this(
+        expireTime: json_['expireTime'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final expireTime = this.expireTime;
+    final ttl = this.ttl;
+    return {'expireTime': ?expireTime, 'ttl': ?ttl};
+  }
+}
+
+/// Request message for the `MarkAsAway` method.
+typedef MarkAsAwayRequest = $Empty;
+
+/// Request message for the `MarkAsDoNotDisturb` method.
+class MarkAsDoNotDisturbRequest {
+  /// The absolute timestamp when the DND state expires.
+  core.String? expireTime;
+
+  /// The duration from the current time until the DND state expires.
+  core.String? ttl;
+
+  MarkAsDoNotDisturbRequest({this.expireTime, this.ttl});
+
+  MarkAsDoNotDisturbRequest.fromJson(core.Map json_)
+    : this(
+        expireTime: json_['expireTime'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final expireTime = this.expireTime;
+    final ttl = this.ttl;
+    return {'expireTime': ?expireTime, 'ttl': ?ttl};
+  }
+}
+
 /// A matched URL in a Chat message.
 ///
 /// Chat apps can preview matched URLs. For more information, see
@@ -9358,6 +10144,25 @@ class MeetSpaceLinkData {
 /// Represents a membership relation in Google Chat, such as whether a user or
 /// Chat app is invited to, part of, or absent from a space.
 class Membership {
+  /// A user's relationship to the Workspace organization that owns the space.
+  ///
+  /// In spaces owned by consumer accounts, the affiliation of all members is
+  /// `EXTERNAL`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AFFILIATION_UNSPECIFIED" : Default value. This value is unused.
+  /// - "INTERNAL" : An account managed by the same Google Workspace
+  /// organization that owns the space.
+  /// - "EXTERNAL" : An account external to the Google Workspace organization
+  /// that owns the space (e.g., a consumer account, or an account managed by a
+  /// different Workspace organization).
+  /// - "MANAGED_EXTERNAL" : An account managed by the Workspace organization
+  /// that owns the space, but provisioned for a user who is external to the
+  /// organization (e.g., a Guest user). To learn more about guests, see
+  /// https://support.google.com/chat/answer/16997417.
+  core.String? affiliation;
+
   /// The creation time of the membership, such as when a member joined or was
   /// invited to join a space.
   ///
@@ -9451,6 +10256,7 @@ class Membership {
   core.String? state;
 
   Membership({
+    this.affiliation,
     this.createTime,
     this.deleteTime,
     this.groupMember,
@@ -9462,6 +10268,7 @@ class Membership {
 
   Membership.fromJson(core.Map json_)
     : this(
+        affiliation: json_['affiliation'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         groupMember: json_.containsKey('groupMember')
@@ -9480,6 +10287,7 @@ class Membership {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final affiliation = this.affiliation;
     final createTime = this.createTime;
     final deleteTime = this.deleteTime;
     final groupMember = this.groupMember;
@@ -9488,6 +10296,7 @@ class Membership {
     final role = this.role;
     final state = this.state;
     return {
+      'affiliation': ?affiliation,
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
       'groupMember': ?groupMember,
@@ -9826,6 +10635,21 @@ class Message {
   /// Output only.
   core.String? lastUpdateTime;
 
+  /// Specifies how the server interprets the message `text` field content.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MARKUP_SYNTAX_UNSPECIFIED" : Represents the unspecified value.
+  /// - "MARKUP_SYNTAX_CHAT" : Uses Google Chat's markup syntax. See
+  /// https://developers.google.com/workspace/chat/format-messages#format-texts
+  /// for more information.
+  /// - "MARKUP_SYNTAX_MARKDOWN" : Uses Markdown syntax. This syntax is based on
+  /// the [CommonMark](https://commonmark.org/help/) specification, with
+  /// additional extensions. See
+  /// https://developers.google.com/workspace/chat/format-messages#format-texts
+  /// for more information.
+  core.String? markupSyntax;
+
   /// A URL in the Chat message `text` field that matches a link preview
   /// pattern.
   ///
@@ -9884,6 +10708,14 @@ class Message {
   ///
   /// Output only.
   User? sender;
+
+  /// Whether this is a silent message.
+  ///
+  /// Silent messages are messages where Chat suppresses push notifications for
+  /// recipients.
+  ///
+  /// Output only.
+  core.bool? silent;
 
   /// Slash command information, if applicable.
   ///
@@ -9944,11 +10776,13 @@ class Message {
     this.fallbackText,
     this.formattedText,
     this.lastUpdateTime,
+    this.markupSyntax,
     this.matchedUrl,
     this.name,
     this.privateMessageViewer,
     this.quotedMessageMetadata,
     this.sender,
+    this.silent,
     this.slashCommand,
     this.space,
     this.text,
@@ -10025,6 +10859,7 @@ class Message {
         fallbackText: json_['fallbackText'] as core.String?,
         formattedText: json_['formattedText'] as core.String?,
         lastUpdateTime: json_['lastUpdateTime'] as core.String?,
+        markupSyntax: json_['markupSyntax'] as core.String?,
         matchedUrl: json_.containsKey('matchedUrl')
             ? MatchedUrl.fromJson(
                 json_['matchedUrl'] as core.Map<core.String, core.dynamic>,
@@ -10048,6 +10883,7 @@ class Message {
                 json_['sender'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        silent: json_['silent'] as core.bool?,
         slashCommand: json_.containsKey('slashCommand')
             ? SlashCommand.fromJson(
                 json_['slashCommand'] as core.Map<core.String, core.dynamic>,
@@ -10084,11 +10920,13 @@ class Message {
     final fallbackText = this.fallbackText;
     final formattedText = this.formattedText;
     final lastUpdateTime = this.lastUpdateTime;
+    final markupSyntax = this.markupSyntax;
     final matchedUrl = this.matchedUrl;
     final name = this.name;
     final privateMessageViewer = this.privateMessageViewer;
     final quotedMessageMetadata = this.quotedMessageMetadata;
     final sender = this.sender;
+    final silent = this.silent;
     final slashCommand = this.slashCommand;
     final space = this.space;
     final text = this.text;
@@ -10111,11 +10949,13 @@ class Message {
       'fallbackText': ?fallbackText,
       'formattedText': ?formattedText,
       'lastUpdateTime': ?lastUpdateTime,
+      'markupSyntax': ?markupSyntax,
       'matchedUrl': ?matchedUrl,
       'name': ?name,
       'privateMessageViewer': ?privateMessageViewer,
       'quotedMessageMetadata': ?quotedMessageMetadata,
       'sender': ?sender,
+      'silent': ?silent,
       'slashCommand': ?slashCommand,
       'space': ?space,
       'text': ?text,
@@ -10593,13 +11433,32 @@ class PositionSectionResponse {
   }
 }
 
+/// A principal representing an entity granted access.
+class Principal {
+  /// An audience.
+  Audience? audience;
+
+  Principal({this.audience});
+
+  Principal.fromJson(core.Map json_)
+    : this(
+        audience: json_.containsKey('audience')
+            ? Audience.fromJson(
+                json_['audience'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final audience = this.audience;
+    return {'audience': ?audience};
+  }
+}
+
 /// Information about a message that another message quotes.
 ///
-/// When you create a message, you can quote messages within the same thread, or
-/// quote a root message to create a new root message. However, you can't quote
-/// a message reply from a different thread. When you update a message, you
-/// can't add or replace the `quotedMessageMetadata` field, but you can remove
-/// it. For example usage, see
+/// When you update a message, you can't add or replace the
+/// `quotedMessageMetadata` field, but you can remove it. For example usage, see
 /// [Quote another message](https://developers.google.com/workspace/chat/create-messages#quote-a-message).
 class QuotedMessageMetadata {
   /// Metadata about the source space of the quoted message.
@@ -10634,10 +11493,13 @@ class QuotedMessageMetadata {
   /// Optional.
   /// Possible string values are:
   /// - "QUOTE_TYPE_UNSPECIFIED" : Reserved. This value is unused.
-  /// - "REPLY" : If quote_type is `REPLY`, you can do the following: * If
+  /// - "REPLY" : When `quote_type` is `REPLY`, you can do the following: * If
   /// you're replying in a thread, you can quote another message in that thread.
   /// * If you're creating a root message, you can quote another root message in
-  /// that space. You can't quote a message reply from a different thread.
+  /// that space.
+  /// - "FORWARD" : When `quote_type` is `FORWARD`, you can quote a: * Message
+  /// from a different space. * Message reply from a different thread in the
+  /// same space.
   core.String? quoteType;
 
   /// A snapshot of the quoted message's content.
@@ -11005,6 +11867,304 @@ class RichLinkMetadata {
   }
 }
 
+/// A single result item from a message search.
+class SearchMessageResult {
+  /// The matched message.
+  Message? message;
+
+  /// Indicates if the matched message is read by the calling user.
+  ///
+  /// Only returned if the request view is `SEARCH_MESSAGES_VIEW_FULL` and the
+  /// calling credentials include one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.readstate.readonly` -
+  /// `https://www.googleapis.com/auth/chat.users.readstate`
+  core.bool? read;
+
+  /// The mute setting of the calling user for the space where the message is
+  /// posted.
+  ///
+  /// The caller app can use this information to decide how to process the
+  /// message depending on whether the space is muted for the user or not. Only
+  /// returned if the request view is `SEARCH_MESSAGES_VIEW_FULL` and the
+  /// calling credentials include the following
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.spacesettings`
+  /// Possible string values are:
+  /// - "MUTE_SETTING_UNSPECIFIED" : Reserved.
+  /// - "UNMUTED" : The user will receive notifications for the space based on
+  /// the notification setting.
+  /// - "MUTED" : The user will not receive any notifications for the space,
+  /// regardless of the notification setting.
+  core.String? spaceMuteSetting;
+
+  SearchMessageResult({this.message, this.read, this.spaceMuteSetting});
+
+  SearchMessageResult.fromJson(core.Map json_)
+    : this(
+        message: json_.containsKey('message')
+            ? Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        read: json_['read'] as core.bool?,
+        spaceMuteSetting: json_['spaceMuteSetting'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final read = this.read;
+    final spaceMuteSetting = this.spaceMuteSetting;
+    return {
+      'message': ?message,
+      'read': ?read,
+      'spaceMuteSetting': ?spaceMuteSetting,
+    };
+  }
+}
+
+/// Request message for searching messages.
+class SearchMessagesRequest {
+  /// A search query.
+  ///
+  /// The query can specify one or more search keywords, which are used to
+  /// filter the results, You can also filter the results using the following
+  /// message fields: - `create_time`: Accepts a timestamp in
+  /// \[RFC-3339\](https://www.rfc-editor.org/rfc/rfc3339) format and the
+  /// supported comparison operators are: `<` and `>=`. - `sender.name`: The
+  /// resource name of the sender (`users/{user}`). Only supports `=`. You can
+  /// use the e-mail as an alias for `{user}`. For example,
+  /// `users/example@gmail.com`, where `example@gmail.com` is the e-mail of the
+  /// Google Chat user. - `space.name`: The resource name of the space where the
+  /// message is posted. (`spaces/{space}`). Only supports `=`. If this filter
+  /// is not set, the search is performed across all direct messages and spaces
+  /// the user has access to as a space member. - `space.display_name`: Supports
+  /// the operator `:` (has) and filters spaces based on a partial match of
+  /// their display name. Results are limited to the top five space matches. For
+  /// example, `space.display_name:Project` searches for messages in the top
+  /// five spaces that contain the word "Project" in their display names. -
+  /// `attachment`: Supports the operator `:*` (has any) to check for the
+  /// presence of attachments. If `attachment:*` is specified, only messages
+  /// that have at least one attachment are returned. -
+  /// `annotations.user_mentions.user.name`: The resource name of the mentioned
+  /// user (`users/{user}`). Only supports `:` (has). For example:
+  /// `annotations.user_mentions.user.name:"users/1234567890"` returns only
+  /// messages that contain a mention to the specified user. Alternatively, the
+  /// alias `me` can be used to filter for messages that mention the caller
+  /// user, for example: `annotations.user_mentions.user.name:users/me`. You can
+  /// also use the e-mail as an alias for `{user}`, for example,
+  /// `users/example@gmail.com`. For advanced filtering, the following functions
+  /// are also available: - `has_link()`: Returns only messages that have at
+  /// least one hyperlink in the message text. - `is_unread()`: Filters out
+  /// messages that have been read by the calling user. Using the
+  /// `space.display_name` filter requires that the calling credentials include
+  /// one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.spaces.readonly` -
+  /// `https://www.googleapis.com/auth/chat.spaces` Using the `is_unread()`
+  /// filter requires that the calling credentials include one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.readstate.readonly` -
+  /// `https://www.googleapis.com/auth/chat.users.readstate` Across different
+  /// fields, only `AND` operators are supported. A valid example is
+  /// `sender.name = "users/1234567890" AND is_unread()`. The word `AND` is
+  /// optional and is implied if omitted. For example, `sender.name =
+  /// "users/1234567890" is_unread()` is valid and is equivalent to the previous
+  /// example. An invalid example is `sender.name = "users/1234567890" OR
+  /// is_unread()` because `OR` is not supported between different fields. Among
+  /// the same field: - `create_time` supports only `AND`, and can only be used
+  /// to represent an interval, such as `create_time >=
+  /// "2022-01-01T00:00:00+00:00" AND create_time <
+  /// "2023-01-01T00:00:00+00:00"`. - `sender.name` supports only the `OR`
+  /// operator, for example: `sender.name = "users/1234567890" OR sender.name =
+  /// "users/0987654321"`. - `space.name` supports only the `OR` operator, for
+  /// example: `space.name = "spaces/ABCDEFGH" OR space.name =
+  /// "spaces/QWERTYUI"`. - `space.display_name` supports the operators `AND`
+  /// and `OR`, but not a mix of both. For example: `space.display_name:Project
+  /// AND space.display_name:Tasks` returns messages that are in spaces with
+  /// display names containing both `Project` and `Tasks`, whereas
+  /// `space.display_name:Project OR space.display_name:Tasks` returns messages
+  /// that are in spaces with display names containing either `Project` or
+  /// `Tasks` or both. - `annotations.user_mentions.user.name` supports the
+  /// operators `AND` and `OR`, but not a mix of both. For example:
+  /// `annotations.user_mentions.user.name:"users/1234567890" AND
+  /// annotations.user_mentions.user.name:"users/0987654321"` returns only
+  /// messages that mentions both users, whereas
+  /// `annotations.user_mentions.user.name:"users/1234567890" OR
+  /// annotations.user_mentions.user.name:"users/0987654321"` returns messages
+  /// that mention either user or both. Parentheses are required to disambiguate
+  /// operator precedence when combining `AND` and `OR` operators in the same
+  /// query. For example: `(sender.name="users/me" OR
+  /// sender.name="users/123456") AND is_unread()`. Otherwise, parentheses are
+  /// optional. The following example queries are valid: ``` "Pending reports"
+  /// AND create_time >= "2023-01-01T00:00:00Z" sender.name =
+  /// "users/example@gmail.com"
+  /// annotations.user_mentions.user.name:"users/0987654321" attachment:* AND
+  /// space.name = "spaces/ABCDEFGH" tasks AND is_unread() AND sender.name =
+  /// "users/1234567890" "things to do" "urgent" (sender.name =
+  /// "users/1234567890") AND (create_time < "2023-05-01T00:00:00Z") tasks AND
+  /// space.name = "spaces/ABCDEFGH" AND has_link() "project one" is_unread()
+  /// space.display_name:Project tasks ``` The maximum query length is 1,000
+  /// characters. Invalid queries are rejected by the server with an
+  /// `INVALID_ARGUMENT` error.
+  ///
+  /// Required.
+  core.String? filter;
+
+  /// Specifies the desired output syntax for the Chat message `formatted_text`
+  /// field.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MARKUP_SYNTAX_UNSPECIFIED" : Represents the unspecified value.
+  /// - "MARKUP_SYNTAX_CHAT" : Uses Google Chat's markup syntax. See
+  /// https://developers.google.com/workspace/chat/format-messages#format-texts
+  /// for more information.
+  /// - "MARKUP_SYNTAX_MARKDOWN" : Uses Markdown syntax. This syntax is based on
+  /// the [CommonMark](https://commonmark.org/help/) specification, with
+  /// additional extensions. See
+  /// https://developers.google.com/workspace/chat/format-messages#format-texts
+  /// for more information.
+  core.String? markupSyntax;
+
+  /// How the results list is ordered.
+  ///
+  /// Supported attributes to order by are: - `create_time`: Sorts the results
+  /// by the time of the message creation. Default value. - `relevance`: Sorts
+  /// the results by relevance.
+  /// [Developer Preview](https://developers.google.com/workspace/preview). The
+  /// default ordering is `create_time desc`. Only a single order per query
+  /// (`create_time` or `relevance`) is supported. Only descending order
+  /// (`desc`) is supported, and it must be specified after the order attribute.
+  ///
+  /// Optional.
+  core.String? orderBy;
+
+  /// The maximum number of results to return.
+  ///
+  /// The service may return fewer than this value. If unspecified, at most 25
+  /// are returned. The maximum value is 100. If you use a value more than 100,
+  /// it's automatically changed to 100.
+  ///
+  /// Optional.
+  core.int? pageSize;
+
+  /// A token, received from the previous search messages call.
+  ///
+  /// Provide this parameter to retrieve the subsequent page. When paginating,
+  /// all other parameters provided should match the call that provided the page
+  /// token. Passing different values to the other parameters might lead to
+  /// unexpected results.
+  ///
+  /// Optional.
+  core.String? pageToken;
+
+  /// Specifies what kind of search results view to return.
+  ///
+  /// The default is `SEARCH_MESSAGES_VIEW_BASIC`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SEARCH_MESSAGES_VIEW_UNSPECIFIED" : The default / unset value. The API
+  /// will default to the BASIC view.
+  /// - "SEARCH_MESSAGES_VIEW_BASIC" : Includes only the matched messages in the
+  /// results, but no additional metadata. This is the default value.
+  /// - "SEARCH_MESSAGES_VIEW_FULL" : Includes everything in the results: the
+  /// matched messages and additional metadata.
+  core.String? view;
+
+  SearchMessagesRequest({
+    this.filter,
+    this.markupSyntax,
+    this.orderBy,
+    this.pageSize,
+    this.pageToken,
+    this.view,
+  });
+
+  SearchMessagesRequest.fromJson(core.Map json_)
+    : this(
+        filter: json_['filter'] as core.String?,
+        markupSyntax: json_['markupSyntax'] as core.String?,
+        orderBy: json_['orderBy'] as core.String?,
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        view: json_['view'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final filter = this.filter;
+    final markupSyntax = this.markupSyntax;
+    final orderBy = this.orderBy;
+    final pageSize = this.pageSize;
+    final pageToken = this.pageToken;
+    final view = this.view;
+    return {
+      'filter': ?filter,
+      'markupSyntax': ?markupSyntax,
+      'orderBy': ?orderBy,
+      'pageSize': ?pageSize,
+      'pageToken': ?pageToken,
+      'view': ?view,
+    };
+  }
+}
+
+/// Response message for searching messages.
+class SearchMessagesResponse {
+  /// A token that can be used to retrieve the next page.
+  ///
+  /// If this field is empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of search results that matched the query.
+  core.List<SearchMessageResult>? results;
+
+  SearchMessagesResponse({this.nextPageToken, this.results});
+
+  SearchMessagesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => SearchMessageResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final results = this.results;
+    return {'nextPageToken': ?nextPageToken, 'results': ?results};
+  }
+}
+
+/// A single result item from a space search.
+class SearchSpaceResult {
+  /// The matched space.
+  ///
+  /// Output only.
+  Space? space;
+
+  SearchSpaceResult({this.space});
+
+  SearchSpaceResult.fromJson(core.Map json_)
+    : this(
+        space: json_.containsKey('space')
+            ? Space.fromJson(
+                json_['space'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final space = this.space;
+    return {'space': ?space};
+  }
+}
+
 /// Response with a list of spaces corresponding to the search spaces request.
 class SearchSpacesResponse {
   /// A token that can be used to retrieve the next page.
@@ -11012,7 +12172,19 @@ class SearchSpacesResponse {
   /// If this field is empty, there are no subsequent pages.
   core.String? nextPageToken;
 
-  /// A page of the requested spaces.
+  /// The list of search results that matched the query.
+  ///
+  /// Output only.
+  core.List<SearchSpaceResult>? results;
+
+  /// Deprecated: Please use the new `results` field instead.
+  ///
+  /// A page of the requested spaces. This field will be populated only when
+  /// `useAdminAccess` is set to `true` and deprecated in favor of the new
+  /// `results` field.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<Space>? spaces;
 
   /// The total number of spaces that match the query, across all pages.
@@ -11020,11 +12192,23 @@ class SearchSpacesResponse {
   /// If the result is over 10,000 spaces, this value is an estimate.
   core.int? totalSize;
 
-  SearchSpacesResponse({this.nextPageToken, this.spaces, this.totalSize});
+  SearchSpacesResponse({
+    this.nextPageToken,
+    this.results,
+    this.spaces,
+    this.totalSize,
+  });
 
   SearchSpacesResponse.fromJson(core.Map json_)
     : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
+        results: (json_['results'] as core.List?)
+            ?.map(
+              (value) => SearchSpaceResult.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         spaces: (json_['spaces'] as core.List?)
             ?.map(
               (value) =>
@@ -11036,10 +12220,12 @@ class SearchSpacesResponse {
 
   core.Map<core.String, core.dynamic> toJson() {
     final nextPageToken = this.nextPageToken;
+    final results = this.results;
     final spaces = this.spaces;
     final totalSize = this.totalSize;
     return {
       'nextPageToken': ?nextPageToken,
+      'results': ?results,
       'spaces': ?spaces,
       'totalSize': ?totalSize,
     };
@@ -12221,7 +13407,7 @@ class TextButton {
 /// [Formatting text in Google Chat apps](https://developers.google.com/workspace/chat/format-messages#card-formatting)
 /// and \[Formatting text in Google Workspace
 /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-typedef TextParagraph = $Shared02;
+typedef TextParagraph = $Shared04;
 
 /// A thread in a Google Chat space.
 ///

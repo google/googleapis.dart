@@ -195,6 +195,10 @@ class DataPortabilityApi {
   static const dataportabilityOrderReservePurchasesReservationsScope =
       'https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations';
 
+  /// Usage and diagnostic data from your Pixel devices.
+  static const dataportabilityPixelDeviceDataScope =
+      'https://www.googleapis.com/auth/dataportability.pixel.device_data';
+
   /// Move a copy of information about your devices with Google Play Store
   /// installed
   static const dataportabilityPlayDevicesScope =

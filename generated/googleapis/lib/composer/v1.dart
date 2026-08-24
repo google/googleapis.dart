@@ -3923,6 +3923,21 @@ class SoftwareConfig {
   /// Optional.
   core.Map<core.String, core.String>? airflowConfigOverrides;
 
+  /// The selected mode of audit logs replication.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-3-airflow-*.*.*-build.* and newer.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUDIT_LOGS_REPLICATION_MODE_UNSPECIFIED" : The user's choice of logs
+  /// replication mode is unspecified.
+  /// - "AUDIT_LOGS_REPLICATION_DISABLED" : The user opted out of audit logs
+  /// replication.
+  /// - "AUDIT_LOGS_REPLICATION_ENABLED" : The user opted in to audit logs
+  /// replication.
+  core.String? auditLogsReplicationMode;
+
   /// The configuration for Cloud Data Lineage integration.
   ///
   /// Optional.
@@ -4014,6 +4029,7 @@ class SoftwareConfig {
 
   SoftwareConfig({
     this.airflowConfigOverrides,
+    this.auditLogsReplicationMode,
     this.cloudDataLineageIntegration,
     this.envVariables,
     this.imageVersion,
@@ -4029,6 +4045,8 @@ class SoftwareConfig {
             (json_['airflowConfigOverrides']
                     as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        auditLogsReplicationMode:
+            json_['auditLogsReplicationMode'] as core.String?,
         cloudDataLineageIntegration:
             json_.containsKey('cloudDataLineageIntegration')
             ? CloudDataLineageIntegration.fromJson(
@@ -4050,6 +4068,7 @@ class SoftwareConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final airflowConfigOverrides = this.airflowConfigOverrides;
+    final auditLogsReplicationMode = this.auditLogsReplicationMode;
     final cloudDataLineageIntegration = this.cloudDataLineageIntegration;
     final envVariables = this.envVariables;
     final imageVersion = this.imageVersion;
@@ -4059,6 +4078,7 @@ class SoftwareConfig {
     final webServerPluginsMode = this.webServerPluginsMode;
     return {
       'airflowConfigOverrides': ?airflowConfigOverrides,
+      'auditLogsReplicationMode': ?auditLogsReplicationMode,
       'cloudDataLineageIntegration': ?cloudDataLineageIntegration,
       'envVariables': ?envVariables,
       'imageVersion': ?imageVersion,

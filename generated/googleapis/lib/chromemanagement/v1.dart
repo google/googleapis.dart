@@ -36,6 +36,8 @@
 ///   - [CustomersCertificateProvisioningProcessesResource]
 ///     - [CustomersCertificateProvisioningProcessesOperationsResource]
 ///   - [CustomersConnectorConfigsResource]
+///   - [CustomersEnterpriseResource]
+///     - [CustomersEnterpriseSecurityInsightsResource]
 ///   - [CustomersProfilesResource]
 ///     - [CustomersProfilesCommandsResource]
 ///   - [CustomersReportsResource]
@@ -84,6 +86,14 @@ class ChromeManagementApi {
   static const chromeManagementReportsReadonlyScope =
       'https://www.googleapis.com/auth/chrome.management.reports.readonly';
 
+  /// Turn Chrome Security Insights on and off and view the data it generates
+  static const chromeManagementSecurityinsightsScope =
+      'https://www.googleapis.com/auth/chrome.management.securityinsights';
+
+  /// See Chrome Security Insights reports
+  static const chromeManagementSecurityinsightsReadonlyScope =
+      'https://www.googleapis.com/auth/chrome.management.securityinsights.readonly';
+
   /// See basic device and telemetry information collected from ChromeOS devices
   /// or users managed within your organization
   static const chromeManagementTelemetryReadonlyScope =
@@ -115,6 +125,8 @@ class CustomersResource {
       CustomersCertificateProvisioningProcessesResource(_requester);
   CustomersConnectorConfigsResource get connectorConfigs =>
       CustomersConnectorConfigsResource(_requester);
+  CustomersEnterpriseResource get enterprise =>
+      CustomersEnterpriseResource(_requester);
   CustomersProfilesResource get profiles =>
       CustomersProfilesResource(_requester);
   CustomersReportsResource get reports => CustomersReportsResource(_requester);
@@ -794,7 +806,7 @@ class CustomersConnectorConfigsResource {
   ///
   /// [connectorConfigId] - Optional. ID to use for the connector config, which
   /// becomes the final component of the connector config's resource name. If
-  /// provided, the ID must be 1-63 characters long, and contain only lowercase
+  /// provided, the ID must be 1-36 characters long, and contain only lowercase
   /// letters, digits, and hyphens. It must start with a letter, and end with a
   /// letter or number. If not provided, the connector config will be assigned a
   /// random UUID.
@@ -1008,6 +1020,506 @@ class CustomersConnectorConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleChromeManagementVersionsV1ConnectorConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class CustomersEnterpriseResource {
+  final commons.ApiRequester _requester;
+
+  CustomersEnterpriseSecurityInsightsResource get securityInsights =>
+      CustomersEnterpriseSecurityInsightsResource(_requester);
+
+  CustomersEnterpriseResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class CustomersEnterpriseSecurityInsightsResource {
+  final commons.ApiRequester _requester;
+
+  CustomersEnterpriseSecurityInsightsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets the setting state of the insights feature for the customer.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer to check the enablement status for.
+  /// Format: customers/{customer_id}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1CheckEnablementStatusResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1CheckEnablementStatusResponse>
+  checkEnablementStatus(core.String customer, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/enterprise/securityInsights:checkEnablementStatus';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1CheckEnablementStatusResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Disables insights for the customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer to disable insights for. Format:
+  /// customers/{customer}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1DisableInsightsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1DisableInsightsResponse> disable(
+    GoogleChromeManagementVersionsV1DisableInsightsRequest request,
+    core.String customer, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/enterprise/securityInsights:disable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1DisableInsightsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Enables insights for the customer and sets up required chrome connectors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer to enable insights for. Format:
+  /// customers/{customer}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1EnableInsightsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1EnableInsightsResponse> enable(
+    GoogleChromeManagementVersionsV1EnableInsightsRequest request,
+    core.String customer, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/enterprise/securityInsights:enable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1EnableInsightsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns a high-level summary of content transfers for a given customer.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer ID in the format
+  /// "customers/{customer_id}".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter to apply to the request. For syntax, see
+  /// AIP-160. Data is not available for events older than 180 days, and may be
+  /// unavailable or inaccurate for time ranges less than 4 hours. If
+  /// `event_time` is not specified, results will be returned for the last 30
+  /// days. Supported fields for filtering: - `event_time` Supported operators:
+  /// - `>=` and `<=` for `event_time` Supported conjunctions: - `AND` Example:
+  /// `event_time >= "2024-01-01T00:00:00Z" AND event_time <=
+  /// "2024-01-02T00:00:00Z"`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1QueryContentTransfersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1QueryContentTransfersResponse>
+  queryContentTransfers(
+    core.String customer, {
+    core.String? filter,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/enterprise/securityInsights:queryContentTransfers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1QueryContentTransfersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns summaries of content transfers for a given metric and breakdown
+  /// dimension.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer ID in the format
+  /// "customers/{customer_id}".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [breakdown] - Optional. The dimension to break down the content transfers
+  /// by. Defaults to USER.
+  /// Possible string values are:
+  /// - "CONTENT_TRANSFERS_BREAKDOWN_DIMENSION_UNSPECIFIED" : Unspecified
+  /// breakdown dimension. Defaults to USER.
+  /// - "USER" : Breakdown by user.
+  /// - "EVENT_DOMAIN" : Breakdown by event domain.
+  /// - "CONTENT_CATEGORY" : Breakdown by content category.
+  ///
+  /// [filter] - Optional. The filter to apply to the request. For syntax, see
+  /// AIP-160. Data is not available for events older than 180 days or more
+  /// recent than 48 hours ago. If `event_time` is not specified, results will
+  /// end 48 hours ago. Supported fields for filtering: - `user` -
+  /// `event_domain` - `content_category` - `event_time` Filtering by `user` or
+  /// `event_domain` requires the `breakdown` dimension to be set to the
+  /// corresponding value (e.g., you must set `breakdown = USER` to filter by
+  /// `user`). Supported operators: - `=` for `user`, `event_domain`, and
+  /// `content_category`. - `<=` for `event_time`. Supported conjunctions: -
+  /// `AND` Example: `user = "testuser" AND event_time <=
+  /// "2024-01-02T00:00:00Z"`
+  ///
+  /// [fixedTimeRange] - Optional. The fixed time range to return the breakdowns
+  /// for. Defaults to FIXED_TIME_RANGE_FOUR_WEEKS. Fixed time ranges are used
+  /// to allow for precomputation and optimize response times.
+  /// Possible string values are:
+  /// - "FIXED_TIME_RANGE_UNSPECIFIED" : Unspecified fixed time range. Defaults
+  /// to FIXED_TIME_RANGE_FOUR_WEEKS.
+  /// - "FIXED_TIME_RANGE_FOUR_HOURS" : Four hours.
+  /// - "FIXED_TIME_RANGE_ONE_DAY" : One day.
+  /// - "FIXED_TIME_RANGE_ONE_WEEK" : One week.
+  /// - "FIXED_TIME_RANGE_FOUR_WEEKS" : Four weeks.
+  ///
+  /// [metric] - Optional. The metric to return the breakdowns for. Defaults to
+  /// CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS.
+  /// Possible string values are:
+  /// - "CONTENT_TRANSFERS_METRIC_UNSPECIFIED" : Unspecified content transfers
+  /// metric. Defaults to CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS.
+  /// - "CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS" : The total number of content
+  /// transfers (sensitive and non-sensitive). This is the sum of the
+  /// total_uploads, total_downloads, and total_prints.
+  /// - "CONTENT_TRANSFERS_METRIC_TOTAL_UPLOADS" : The total number of content
+  /// uploads (sensitive and non-sensitive).
+  /// - "CONTENT_TRANSFERS_METRIC_TOTAL_DOWNLOADS" : The total number of content
+  /// downloads (sensitive and non-sensitive).
+  /// - "CONTENT_TRANSFERS_METRIC_TOTAL_PRINTS" : The total number of content
+  /// prints (sensitive and non-sensitive).
+  /// - "CONTENT_TRANSFERS_METRIC_TOTAL_SENSITIVE_TRANSFERS" : The total number
+  /// of sensitive content transfers. This is the sum of the sensitive_uploads,
+  /// sensitive_downloads, and sensitive_prints.
+  /// - "CONTENT_TRANSFERS_METRIC_SENSITIVE_UPLOADS" : The number of sensitive
+  /// content uploads.
+  /// - "CONTENT_TRANSFERS_METRIC_SENSITIVE_DOWNLOADS" : The number of sensitive
+  /// content downloads.
+  /// - "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS" : The number of sensitive
+  /// content prints.
+  ///
+  /// [pageSize] - Optional. The maximum number of breakdowns to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// breakdowns will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `QueryContentTransfersBreakdowns` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `QueryContentTransfersBreakdowns` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+    GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse
+  >
+  queryContentTransfersBreakdowns(
+    core.String customer, {
+    core.String? breakdown,
+    core.String? filter,
+    core.String? fixedTimeRange,
+    core.String? metric,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'breakdown': ?breakdown == null ? null : [breakdown],
+      'filter': ?filter == null ? null : [filter],
+      'fixedTimeRange': ?fixedTimeRange == null ? null : [fixedTimeRange],
+      'metric': ?metric == null ? null : [metric],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/enterprise/securityInsights:queryContentTransfersBreakdowns';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns a high-level summary of URL visits for a given customer.
+  ///
+  /// Requires a Chrome Enterprise Premium subscription. If the customer does
+  /// not have this subscription, query results will be empty.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer ID in the format
+  /// "customers/{customer_id}".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter to apply to the request. For syntax, see
+  /// AIP-160. Data is not available for events older than 180 days, and may be
+  /// unavailable or inaccurate for time ranges less than 4 hours. If
+  /// `event_time` is not specified, results will be returned for the last 30
+  /// days. Supported fields for filtering: - `event_time` Supported operators:
+  /// - `>=` and `<=` for `event_time` Supported conjunctions: - `AND` Example:
+  /// `event_time >= "2024-01-01T00:00:00Z" AND event_time <=
+  /// "2024-01-02T00:00:00Z"`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1QueryUrlVisitsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1QueryUrlVisitsResponse>
+  queryUrlVisits(
+    core.String customer, {
+    core.String? filter,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/enterprise/securityInsights:queryUrlVisits';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1QueryUrlVisitsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns summaries of URL visits for a given metric and breakdown
+  /// dimension.
+  ///
+  /// Requires a Chrome Enterprise Premium subscription. If the customer does
+  /// not have this subscription, query results will be empty.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer ID in the format
+  /// "customers/{customer_id}".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [breakdown] - Optional. The dimension to break down the URL visits by.
+  /// Defaults to USER.
+  /// Possible string values are:
+  /// - "URL_VISITS_BREAKDOWN_DIMENSION_UNSPECIFIED" : Unspecified breakdown
+  /// dimension. Defaults to USER.
+  /// - "USER" : Breakdown by user.
+  /// - "EVENT_DOMAIN" : Breakdown by event domain.
+  ///
+  /// [filter] - Optional. The filter to apply to the request. For syntax, see
+  /// AIP-160. Data is not available for events older than 180 days or more
+  /// recent than 48 hours ago. If `event_time` is not specified, results will
+  /// end 48 hours ago. Supported fields for filtering: - `user` -
+  /// `event_domain` - `event_time` Filtering by `user` or `event_domain`
+  /// requires the `breakdown` dimension to be set to the corresponding value
+  /// (e.g., you must set `breakdown = USER` to filter by `user`). Supported
+  /// operators: - `=` for `user` and `event_domain`. - `<=` for `event_time`.
+  /// Supported conjunctions: - `AND` Example: `user = "testuser" AND event_time
+  /// <= "2024-01-02T00:00:00Z"`
+  ///
+  /// [fixedTimeRange] - Optional. The fixed time range to return the breakdowns
+  /// for. Defaults to FIXED_TIME_RANGE_FOUR_WEEKS. Fixed time ranges are used
+  /// to allow for precomputation and optimize response times.
+  /// Possible string values are:
+  /// - "FIXED_TIME_RANGE_UNSPECIFIED" : Unspecified fixed time range. Defaults
+  /// to FIXED_TIME_RANGE_FOUR_WEEKS.
+  /// - "FIXED_TIME_RANGE_FOUR_HOURS" : Four hours.
+  /// - "FIXED_TIME_RANGE_ONE_DAY" : One day.
+  /// - "FIXED_TIME_RANGE_ONE_WEEK" : One week.
+  /// - "FIXED_TIME_RANGE_FOUR_WEEKS" : Four weeks.
+  ///
+  /// [metric] - Optional. The metric to return the breakdowns for. Defaults to
+  /// URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS.
+  /// Possible string values are:
+  /// - "URL_VISITS_METRIC_UNSPECIFIED" : Unspecified URL visits metric.
+  /// Defaults to URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS.
+  /// - "URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS" : The total number of
+  /// suspicious URL visits. This is the sum of the high_risk_url_visits,
+  /// medium_risk_url_visits, and low_risk_url_visits.
+  /// - "URL_VISITS_METRIC_HIGH_RISK_URL_VISITS" : The number of suspicious URL
+  /// visits with high risk.
+  /// - "URL_VISITS_METRIC_MEDIUM_RISK_URL_VISITS" : The number of suspicious
+  /// URL visits with medium risk.
+  /// - "URL_VISITS_METRIC_LOW_RISK_URL_VISITS" : The number of suspicious URL
+  /// visits with low risk.
+  ///
+  /// [pageSize] - Optional. The maximum number of breakdowns to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// breakdowns will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `QueryUrlVisitsBreakdowns` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `QueryUrlVisitsBreakdowns` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse>
+  queryUrlVisitsBreakdowns(
+    core.String customer, {
+    core.String? breakdown,
+    core.String? filter,
+    core.String? fixedTimeRange,
+    core.String? metric,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'breakdown': ?breakdown == null ? null : [breakdown],
+      'filter': ?filter == null ? null : [filter],
+      'fixedTimeRange': ?fixedTimeRange == null ? null : [fixedTimeRange],
+      'metric': ?metric == null ? null : [metric],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/enterprise/securityInsights:queryUrlVisitsBreakdowns';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1686,6 +2198,70 @@ class CustomersReportsResource {
     );
   }
 
+  /// Generate report of installed Chrome versions on managed profiles.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Customer id or "my_customer" to use the customer
+  /// associated to the account making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Query string to filter results, AND-separated fields
+  /// in EBNF syntax. Note: OR operations are not supported in this filter.
+  /// Supported filter fields: * last_active_date
+  ///
+  /// [orgUnitId] - The ID of the organizational unit. If omitted, all data will
+  /// be returned.
+  ///
+  /// [pageSize] - Optional. Maximum number of results to return. Maximum and
+  /// default are 100.
+  ///
+  /// [pageToken] - Optional. Token to specify the page of the request to be
+  /// returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountChromeProfileVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountChromeProfileVersionsResponse>
+  countChromeProfileVersions(
+    core.String customer, {
+    core.String? filter,
+    core.String? orgUnitId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orgUnitId': ?orgUnitId == null ? null : [orgUnitId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countChromeProfileVersions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountChromeProfileVersionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Generate report of installed Chrome versions.
   ///
   /// Request parameters:
@@ -2238,6 +2814,93 @@ class CustomersReportsResource {
       queryParams: queryParams_,
     );
     return GoogleChromeManagementV1FindInstalledAppDevicesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Generate report of managed Chrome profiles that have a specified app
+  /// installed.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Customer id or "my_customer" to use the customer
+  /// associated to the account making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [appId] - Required. Unique identifier of the app. For Chrome apps and
+  /// extensions, the 32-character id (e.g. ehoadneljpdggcbbknedodolkkjodefl).
+  /// For Android apps, the package name (e.g. com.evernote).
+  ///
+  /// [appType] - Type of the app. Optional. If not provided, an app type will
+  /// be inferred from the format of the app ID.
+  /// Possible string values are:
+  /// - "APP_TYPE_UNSPECIFIED" : App type not specified.
+  /// - "EXTENSION" : Chrome extension.
+  /// - "APP" : Chrome app.
+  /// - "THEME" : Chrome theme.
+  /// - "HOSTED_APP" : Chrome hosted app.
+  /// - "ANDROID_APP" : ARC++ app.
+  ///
+  /// [filter] - Optional. Query string to filter results, AND-separated fields
+  /// in EBNF syntax. Note: OR operations are not supported in this filter.
+  /// Supported filter fields: * last_active_date
+  ///
+  /// [orderBy] - Optional. Field used to order results. Supported order by
+  /// fields: * email * profile_id * profile_permanent_id
+  ///
+  /// [orgUnitId] - Optional. The ID of the organizational unit.
+  ///
+  /// [pageSize] - Optional. Maximum number of results to return. Maximum and
+  /// default are 100.
+  ///
+  /// [pageToken] - Optional. Token to specify the page of the request to be
+  /// returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1FindInstalledAppProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1FindInstalledAppProfilesResponse>
+  findInstalledAppProfiles(
+    core.String customer, {
+    core.String? appId,
+    core.String? appType,
+    core.String? filter,
+    core.String? orderBy,
+    core.String? orgUnitId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'appId': ?appId == null ? null : [appId],
+      'appType': ?appType == null ? null : [appType],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'orgUnitId': ?orgUnitId == null ? null : [orgUnitId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:findInstalledAppProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1FindInstalledAppProfilesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4472,6 +5135,50 @@ class GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse {
   }
 }
 
+/// Response containing requested managed profile versions details and counts.
+class GoogleChromeManagementV1CountChromeProfileVersionsResponse {
+  /// Token to specify the next page of the request.
+  core.String? nextPageToken;
+
+  /// List of all browser versions reported for profiles and their install
+  /// counts.
+  core.List<GoogleChromeManagementV1BrowserVersion>? profileBrowserVersions;
+
+  /// Total number browser versions matching request.
+  core.int? totalSize;
+
+  GoogleChromeManagementV1CountChromeProfileVersionsResponse({
+    this.nextPageToken,
+    this.profileBrowserVersions,
+    this.totalSize,
+  });
+
+  GoogleChromeManagementV1CountChromeProfileVersionsResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        profileBrowserVersions: (json_['profileBrowserVersions'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementV1BrowserVersion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        totalSize: json_['totalSize'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final profileBrowserVersions = this.profileBrowserVersions;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'profileBrowserVersions': ?profileBrowserVersions,
+      'totalSize': ?totalSize,
+    };
+  }
+}
+
 /// Response containing requested browser versions details and counts.
 class GoogleChromeManagementV1CountChromeVersionsResponse {
   /// List of all browser versions and their install counts.
@@ -5648,6 +6355,52 @@ class GoogleChromeManagementV1FindInstalledAppDevicesResponse {
   }
 }
 
+/// Response containing a list of profiles with queried app installed.
+class GoogleChromeManagementV1FindInstalledAppProfilesResponse {
+  /// Token to specify the next page of the request.
+  core.String? nextPageToken;
+
+  /// A list of profiles which have the app installed.
+  ///
+  /// Sorted in ascending alphabetical order on the profile.Email field.
+  core.List<GoogleChromeManagementV1ProfileAppInstallInstance>? profiles;
+
+  /// Total number of profiles matching request.
+  core.int? totalSize;
+
+  GoogleChromeManagementV1FindInstalledAppProfilesResponse({
+    this.nextPageToken,
+    this.profiles,
+    this.totalSize,
+  });
+
+  GoogleChromeManagementV1FindInstalledAppProfilesResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        profiles: (json_['profiles'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleChromeManagementV1ProfileAppInstallInstance.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        totalSize: json_['totalSize'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final profiles = this.profiles;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'profiles': ?profiles,
+      'totalSize': ?totalSize,
+    };
+  }
+}
+
 /// Information of a graphics adapter (GPU).
 class GoogleChromeManagementV1GraphicsAdapterInfo {
   /// Adapter name.
@@ -5971,6 +6724,11 @@ class GoogleChromeManagementV1InstalledApp {
   /// Output only.
   core.List<core.String>? permissions;
 
+  /// Count of Chrome Profiles with this app installed.
+  ///
+  /// Output only.
+  core.String? profileCount;
+
   /// If available, the risk assessment data about this extension.
   ///
   /// Output only.
@@ -5988,6 +6746,7 @@ class GoogleChromeManagementV1InstalledApp {
     this.homepageUri,
     this.osUserCount,
     this.permissions,
+    this.profileCount,
     this.riskAssessment,
   });
 
@@ -6006,6 +6765,7 @@ class GoogleChromeManagementV1InstalledApp {
         permissions: (json_['permissions'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        profileCount: json_['profileCount'] as core.String?,
         riskAssessment: json_.containsKey('riskAssessment')
             ? GoogleChromeManagementV1RiskAssessmentData.fromJson(
                 json_['riskAssessment'] as core.Map<core.String, core.dynamic>,
@@ -6025,6 +6785,7 @@ class GoogleChromeManagementV1InstalledApp {
     final homepageUri = this.homepageUri;
     final osUserCount = this.osUserCount;
     final permissions = this.permissions;
+    final profileCount = this.profileCount;
     final riskAssessment = this.riskAssessment;
     return {
       'appId': ?appId,
@@ -6038,6 +6799,7 @@ class GoogleChromeManagementV1InstalledApp {
       'homepageUri': ?homepageUri,
       'osUserCount': ?osUserCount,
       'permissions': ?permissions,
+      'profileCount': ?profileCount,
       'riskAssessment': ?riskAssessment,
     };
   }
@@ -7064,6 +7826,58 @@ class GoogleChromeManagementV1PrinterReport {
   }
 }
 
+/// Describes a profile reporting Chrome Profile information.
+class GoogleChromeManagementV1ProfileAppInstallInstance {
+  /// The email of the profile.
+  ///
+  /// Output only.
+  core.String? email;
+
+  /// The Chrome client side profile ID.
+  ///
+  /// Output only.
+  core.String? profileId;
+
+  /// The organizational unit id of the profile.
+  ///
+  /// Output only.
+  core.String? profileOrgUnitId;
+
+  /// Profile permanent ID is the unique identifier of a profile within one
+  /// customer.
+  ///
+  /// Output only.
+  core.String? profilePermanentId;
+
+  GoogleChromeManagementV1ProfileAppInstallInstance({
+    this.email,
+    this.profileId,
+    this.profileOrgUnitId,
+    this.profilePermanentId,
+  });
+
+  GoogleChromeManagementV1ProfileAppInstallInstance.fromJson(core.Map json_)
+    : this(
+        email: json_['email'] as core.String?,
+        profileId: json_['profileId'] as core.String?,
+        profileOrgUnitId: json_['profileOrgUnitId'] as core.String?,
+        profilePermanentId: json_['profilePermanentId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final profileId = this.profileId;
+    final profileOrgUnitId = this.profileOrgUnitId;
+    final profilePermanentId = this.profilePermanentId;
+    return {
+      'email': ?email,
+      'profileId': ?profileId,
+      'profileOrgUnitId': ?profileOrgUnitId,
+      'profilePermanentId': ?profilePermanentId,
+    };
+  }
+}
+
 /// Risk assessment for a Chrome extension.
 class GoogleChromeManagementV1RiskAssessment {
   /// Risk assessment for the extension.
@@ -7152,7 +7966,8 @@ class GoogleChromeManagementV1RiskAssessmentEntry {
   /// - "RISK_ASSESSMENT_PROVIDER_UNSPECIFIED" : Default value when no provider
   /// is specified.
   /// - "RISK_ASSESSMENT_PROVIDER_CRXCAVATOR" : CRXcavator.
-  /// - "RISK_ASSESSMENT_PROVIDER_SPIN_AI" : Spin.Ai.
+  /// - "RISK_ASSESSMENT_PROVIDER_SPIN_AI" : Deprecated: Please use
+  /// RISK_ASSESSMENT_PROVIDER_SPIN_AI_V2 instead. Spin.Ai.
   /// - "RISK_ASSESSMENT_PROVIDER_LAYERX" : LayerX Security.
   /// - "RISK_ASSESSMENT_PROVIDER_SPIN_AI_V2" : Spin.AI V2.
   core.String? provider;
@@ -9728,6 +10543,10 @@ class GoogleChromeManagementVersionsV1CertificateProvisioningProcess {
   }
 }
 
+/// Response from checking the enablement status of insights for the customer.
+typedef GoogleChromeManagementVersionsV1CheckEnablementStatusResponse =
+    $Response01;
+
 /// A representation of a Chrome browser profile.
 class GoogleChromeManagementVersionsV1ChromeBrowserProfile {
   /// The specific affiliation state of the profile.
@@ -10329,6 +11148,7 @@ class GoogleChromeManagementVersionsV1ConnectorConfig {
   /// - "CERTIFICATE_AUTHORITY" : Certificate authority connector. Not yet
   /// supported in the API.
   /// - "ROOT_STORE" : Root certificate connector.
+  /// - "CONTENT_ANALYSIS" : Content analysis connector.
   core.String? type;
 
   GoogleChromeManagementVersionsV1ConnectorConfig({
@@ -10390,6 +11210,9 @@ class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
   /// Google SecOps connector config.
   GoogleChromeManagementVersionsV1GoogleSecOpsConfig? googleSecOpsConfig;
 
+  /// MIP label connector config.
+  GoogleChromeManagementVersionsV1MipLabelConfig? mipLabelConfig;
+
   /// Palo Alto Networks connector config.
   GoogleChromeManagementVersionsV1PaloAltoNetworksConfig?
   paloAltoNetworksConfig;
@@ -10409,6 +11232,7 @@ class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
     this.crowdStrikeXdrConfig,
     this.deviceTrustConfig,
     this.googleSecOpsConfig,
+    this.mipLabelConfig,
     this.paloAltoNetworksConfig,
     this.pubSubConfig,
     this.pubSubXdrConfig,
@@ -10449,6 +11273,11 @@ class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        mipLabelConfig: json_.containsKey('mipLabelConfig')
+            ? GoogleChromeManagementVersionsV1MipLabelConfig.fromJson(
+                json_['mipLabelConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         paloAltoNetworksConfig: json_.containsKey('paloAltoNetworksConfig')
             ? GoogleChromeManagementVersionsV1PaloAltoNetworksConfig.fromJson(
                 json_['paloAltoNetworksConfig']
@@ -10478,6 +11307,7 @@ class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
     final crowdStrikeXdrConfig = this.crowdStrikeXdrConfig;
     final deviceTrustConfig = this.deviceTrustConfig;
     final googleSecOpsConfig = this.googleSecOpsConfig;
+    final mipLabelConfig = this.mipLabelConfig;
     final paloAltoNetworksConfig = this.paloAltoNetworksConfig;
     final pubSubConfig = this.pubSubConfig;
     final pubSubXdrConfig = this.pubSubXdrConfig;
@@ -10488,6 +11318,7 @@ class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
       'crowdStrikeXdrConfig': ?crowdStrikeXdrConfig,
       'deviceTrustConfig': ?deviceTrustConfig,
       'googleSecOpsConfig': ?googleSecOpsConfig,
+      'mipLabelConfig': ?mipLabelConfig,
       'paloAltoNetworksConfig': ?paloAltoNetworksConfig,
       'pubSubConfig': ?pubSubConfig,
       'pubSubXdrConfig': ?pubSubXdrConfig,
@@ -10549,6 +11380,102 @@ class GoogleChromeManagementVersionsV1ConnectorConfigStatus {
       'state': ?state,
       'updateTime': ?updateTime,
     };
+  }
+}
+
+/// A content transfers summary for a given breakdown dimension.
+class GoogleChromeManagementVersionsV1ContentTransfersBreakdown {
+  /// The content category of the content transfers.
+  core.String? contentCategory;
+
+  /// The event domain of the content transfers.
+  core.String? eventDomain;
+
+  /// The summary of content transfers for the breakdown dimension.
+  GoogleChromeManagementVersionsV1ContentTransfersSummary? summary;
+
+  /// The user that transferred the content.
+  core.String? user;
+
+  GoogleChromeManagementVersionsV1ContentTransfersBreakdown({
+    this.contentCategory,
+    this.eventDomain,
+    this.summary,
+    this.user,
+  });
+
+  GoogleChromeManagementVersionsV1ContentTransfersBreakdown.fromJson(
+    core.Map json_,
+  ) : this(
+        contentCategory: json_['contentCategory'] as core.String?,
+        eventDomain: json_['eventDomain'] as core.String?,
+        summary: json_.containsKey('summary')
+            ? GoogleChromeManagementVersionsV1ContentTransfersSummary.fromJson(
+                json_['summary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        user: json_['user'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentCategory = this.contentCategory;
+    final eventDomain = this.eventDomain;
+    final summary = this.summary;
+    final user = this.user;
+    return {
+      'contentCategory': ?contentCategory,
+      'eventDomain': ?eventDomain,
+      'summary': ?summary,
+      'user': ?user,
+    };
+  }
+}
+
+/// Summary of content transfers for a given metric.
+class GoogleChromeManagementVersionsV1ContentTransfersSummary {
+  /// The count of the content transfers metric.
+  core.String? count;
+
+  /// The type of content transfers metric.
+  /// Possible string values are:
+  /// - "CONTENT_TRANSFERS_METRIC_UNSPECIFIED" : Unspecified content transfers
+  /// metric. Defaults to CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS.
+  /// - "CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS" : The total number of content
+  /// transfers (sensitive and non-sensitive). This is the sum of the
+  /// total_uploads, total_downloads, and total_prints.
+  /// - "CONTENT_TRANSFERS_METRIC_TOTAL_UPLOADS" : The total number of content
+  /// uploads (sensitive and non-sensitive).
+  /// - "CONTENT_TRANSFERS_METRIC_TOTAL_DOWNLOADS" : The total number of content
+  /// downloads (sensitive and non-sensitive).
+  /// - "CONTENT_TRANSFERS_METRIC_TOTAL_PRINTS" : The total number of content
+  /// prints (sensitive and non-sensitive).
+  /// - "CONTENT_TRANSFERS_METRIC_TOTAL_SENSITIVE_TRANSFERS" : The total number
+  /// of sensitive content transfers. This is the sum of the sensitive_uploads,
+  /// sensitive_downloads, and sensitive_prints.
+  /// - "CONTENT_TRANSFERS_METRIC_SENSITIVE_UPLOADS" : The number of sensitive
+  /// content uploads.
+  /// - "CONTENT_TRANSFERS_METRIC_SENSITIVE_DOWNLOADS" : The number of sensitive
+  /// content downloads.
+  /// - "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS" : The number of sensitive
+  /// content prints.
+  core.String? metric;
+
+  GoogleChromeManagementVersionsV1ContentTransfersSummary({
+    this.count,
+    this.metric,
+  });
+
+  GoogleChromeManagementVersionsV1ContentTransfersSummary.fromJson(
+    core.Map json_,
+  ) : this(
+        count: json_['count'] as core.String?,
+        metric: json_['metric'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final metric = this.metric;
+    return {'count': ?count, 'metric': ?metric};
   }
 }
 
@@ -10837,6 +11764,41 @@ class GoogleChromeManagementVersionsV1DeviceTrustConfig {
   }
 }
 
+/// Request to disable insights for the customer.
+typedef GoogleChromeManagementVersionsV1DisableInsightsRequest = $Empty;
+
+/// Response from disabling insights for the customer.
+typedef GoogleChromeManagementVersionsV1DisableInsightsResponse = $Response01;
+
+/// Request to enable insights for the customer.
+class GoogleChromeManagementVersionsV1EnableInsightsRequest {
+  /// The Organizational Units to set up required connectors for.
+  ///
+  /// Organizational Units are provided as paths relative to root. If this field
+  /// is not set, connectors will be set up at root OU (as if it were set to
+  /// \["/"\]). Example: \["/corp/sales", "/eng"\]
+  ///
+  /// Optional.
+  core.List<core.String>? targetOus;
+
+  GoogleChromeManagementVersionsV1EnableInsightsRequest({this.targetOus});
+
+  GoogleChromeManagementVersionsV1EnableInsightsRequest.fromJson(core.Map json_)
+    : this(
+        targetOus: (json_['targetOus'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final targetOus = this.targetOus;
+    return {'targetOus': ?targetOus};
+  }
+}
+
+/// Response from enabling insights for the customer.
+typedef GoogleChromeManagementVersionsV1EnableInsightsResponse = $Response01;
+
 /// Describes a generic Certificate Authority Connection.
 typedef GoogleChromeManagementVersionsV1GenericCaConnection = $CaConnection;
 
@@ -11048,6 +12010,41 @@ class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse {
   }
 }
 
+/// MIP label connector config.
+class GoogleChromeManagementVersionsV1MipLabelConfig {
+  /// Domain can be used optionally for the corner case where one Dasher
+  /// customer ID maps to multiple Microsoft tenant ID.
+  ///
+  /// Each domain can be verified with at most one Microsoft tenant.
+  ///
+  /// Optional.
+  core.List<core.String>? domains;
+
+  /// Microsoft tenant ID.
+  ///
+  /// Required.
+  core.String? microsoftTenantId;
+
+  GoogleChromeManagementVersionsV1MipLabelConfig({
+    this.domains,
+    this.microsoftTenantId,
+  });
+
+  GoogleChromeManagementVersionsV1MipLabelConfig.fromJson(core.Map json_)
+    : this(
+        domains: (json_['domains'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        microsoftTenantId: json_['microsoftTenantId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final domains = this.domains;
+    final microsoftTenantId = this.microsoftTenantId;
+    return {'domains': ?domains, 'microsoftTenantId': ?microsoftTenantId};
+  }
+}
+
 /// Request to MoveThirdPartyProfileUser method.
 class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest {
   /// Destination organizational unit where the third party chrome profile user
@@ -11217,6 +12214,141 @@ class GoogleChromeManagementVersionsV1PubSubXdrConfig {
     final topicFullPath = this.topicFullPath;
     final xdrSettings = this.xdrSettings;
     return {'topicFullPath': ?topicFullPath, 'xdrSettings': ?xdrSettings};
+  }
+}
+
+/// Response message for QueryContentTransfersBreakdowns.
+class GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse {
+  /// The content transfer breakdowns from the specified insight.
+  core.List<GoogleChromeManagementVersionsV1ContentTransfersBreakdown>?
+  contentTransfersBreakdowns;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse({
+    this.contentTransfersBreakdowns,
+    this.nextPageToken,
+  });
+
+  GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        contentTransfersBreakdowns:
+            (json_['contentTransfersBreakdowns'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleChromeManagementVersionsV1ContentTransfersBreakdown.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentTransfersBreakdowns = this.contentTransfersBreakdowns;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'contentTransfersBreakdowns': ?contentTransfersBreakdowns,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
+/// Response message for QueryContentTransfers.
+class GoogleChromeManagementVersionsV1QueryContentTransfersResponse {
+  /// A collection of summaries for various content transfers metrics.
+  core.List<GoogleChromeManagementVersionsV1ContentTransfersSummary>? summaries;
+
+  GoogleChromeManagementVersionsV1QueryContentTransfersResponse({
+    this.summaries,
+  });
+
+  GoogleChromeManagementVersionsV1QueryContentTransfersResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        summaries: (json_['summaries'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleChromeManagementVersionsV1ContentTransfersSummary.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final summaries = this.summaries;
+    return {'summaries': ?summaries};
+  }
+}
+
+/// Response message for QueryUrlVisitsBreakdowns.
+class GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The URL visit breakdowns from the specified insight.
+  core.List<GoogleChromeManagementVersionsV1UrlVisitsBreakdown>?
+  urlVisitsBreakdowns;
+
+  GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse({
+    this.nextPageToken,
+    this.urlVisitsBreakdowns,
+  });
+
+  GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        urlVisitsBreakdowns: (json_['urlVisitsBreakdowns'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleChromeManagementVersionsV1UrlVisitsBreakdown.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final urlVisitsBreakdowns = this.urlVisitsBreakdowns;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'urlVisitsBreakdowns': ?urlVisitsBreakdowns,
+    };
+  }
+}
+
+/// Response message for QueryUrlVisits.
+class GoogleChromeManagementVersionsV1QueryUrlVisitsResponse {
+  /// A collection of summaries for various URL visit metrics.
+  core.List<GoogleChromeManagementVersionsV1UrlVisitsSummary>? summaries;
+
+  GoogleChromeManagementVersionsV1QueryUrlVisitsResponse({this.summaries});
+
+  GoogleChromeManagementVersionsV1QueryUrlVisitsResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        summaries: (json_['summaries'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleChromeManagementVersionsV1UrlVisitsSummary.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final summaries = this.summaries;
+    return {'summaries': ?summaries};
   }
 }
 
@@ -12031,6 +13163,77 @@ class GoogleChromeManagementVersionsV1UploadCertificateRequest {
 /// Response message for publishing an issued certificate for a certificate
 /// provisioning process.
 typedef GoogleChromeManagementVersionsV1UploadCertificateResponse = $Empty;
+
+/// A URL visits summary for a given breakdown dimension.
+class GoogleChromeManagementVersionsV1UrlVisitsBreakdown {
+  /// The event domain of the URL visits.
+  core.String? eventDomain;
+
+  /// The summary of URL visits for the breakdown dimension.
+  GoogleChromeManagementVersionsV1UrlVisitsSummary? summary;
+
+  /// The user that visited the URL.
+  core.String? user;
+
+  GoogleChromeManagementVersionsV1UrlVisitsBreakdown({
+    this.eventDomain,
+    this.summary,
+    this.user,
+  });
+
+  GoogleChromeManagementVersionsV1UrlVisitsBreakdown.fromJson(core.Map json_)
+    : this(
+        eventDomain: json_['eventDomain'] as core.String?,
+        summary: json_.containsKey('summary')
+            ? GoogleChromeManagementVersionsV1UrlVisitsSummary.fromJson(
+                json_['summary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        user: json_['user'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final eventDomain = this.eventDomain;
+    final summary = this.summary;
+    final user = this.user;
+    return {'eventDomain': ?eventDomain, 'summary': ?summary, 'user': ?user};
+  }
+}
+
+/// Summary of URL visits for a given metric.
+class GoogleChromeManagementVersionsV1UrlVisitsSummary {
+  /// The count of the URL visits metric.
+  core.String? count;
+
+  /// The type of URL visits metric.
+  /// Possible string values are:
+  /// - "URL_VISITS_METRIC_UNSPECIFIED" : Unspecified URL visits metric.
+  /// Defaults to URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS.
+  /// - "URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS" : The total number of
+  /// suspicious URL visits. This is the sum of the high_risk_url_visits,
+  /// medium_risk_url_visits, and low_risk_url_visits.
+  /// - "URL_VISITS_METRIC_HIGH_RISK_URL_VISITS" : The number of suspicious URL
+  /// visits with high risk.
+  /// - "URL_VISITS_METRIC_MEDIUM_RISK_URL_VISITS" : The number of suspicious
+  /// URL visits with medium risk.
+  /// - "URL_VISITS_METRIC_LOW_RISK_URL_VISITS" : The number of suspicious URL
+  /// visits with low risk.
+  core.String? metric;
+
+  GoogleChromeManagementVersionsV1UrlVisitsSummary({this.count, this.metric});
+
+  GoogleChromeManagementVersionsV1UrlVisitsSummary.fromJson(core.Map json_)
+    : this(
+        count: json_['count'] as core.String?,
+        metric: json_['metric'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final metric = this.metric;
+    return {'count': ?count, 'metric': ?metric};
+  }
+}
 
 /// XDR settings for connector configs.
 class GoogleChromeManagementVersionsV1XdrSettings {

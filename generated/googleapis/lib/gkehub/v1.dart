@@ -36,6 +36,8 @@
 ///       - [ProjectsLocationsMembershipsBindingsResource]
 ///       - [ProjectsLocationsMembershipsRbacrolebindingsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsRolloutSequencesResource]
+///     - [ProjectsLocationsRolloutsResource]
 ///     - [ProjectsLocationsScopesResource]
 ///       - [ProjectsLocationsScopesNamespacesResource]
 ///       - [ProjectsLocationsScopesRbacrolebindingsResource]
@@ -177,6 +179,10 @@ class ProjectsLocationsResource {
       ProjectsLocationsMembershipsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsRolloutSequencesResource get rolloutSequences =>
+      ProjectsLocationsRolloutSequencesResource(_requester);
+  ProjectsLocationsRolloutsResource get rollouts =>
+      ProjectsLocationsRolloutsResource(_requester);
   ProjectsLocationsScopesResource get scopes =>
       ProjectsLocationsScopesResource(_requester);
 
@@ -217,7 +223,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -232,9 +238,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2236,6 +2241,611 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsRolloutSequencesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRolloutSequencesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new rollout sequence resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this rollout sequence will
+  /// be created. projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [rolloutSequenceId] - Required. User provided identifier that is used as
+  /// part of the resource name; must conform to RFC-1034 and additionally
+  /// restrict to lower-cased letters. This comes out roughly to:
+  /// /^a-z+\[a-z0-9\]$/
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    RolloutSequence request,
+    core.String parent, {
+    core.String? rolloutSequenceId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'rolloutSequenceId': ?rolloutSequenceId == null
+          ? null
+          : [rolloutSequenceId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rolloutSequences';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes a RolloutSequence.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rollout sequence to delete.
+  /// projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/rolloutSequences/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve a single rollout sequence.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rollout sequence to retrieve.
+  /// projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/rolloutSequences/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RolloutSequence].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RolloutSequence> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RolloutSequence.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves the list of all rollout sequences.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of rollout
+  /// sequences. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Lists Rollout Sequences that match the filter
+  /// expression, following the syntax outlined in https://google.aip.dev/160.
+  ///
+  /// [pageSize] - Optional. The maximum number of rollout sequences to return.
+  /// The service may return fewer than this value. If unspecified, at most 50
+  /// rollout sequences will be returned. The maximum value is 1000; values
+  /// above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListRolloutSequences` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListRolloutSequences`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRolloutSequencesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRolloutSequencesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rolloutSequences';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRolloutSequencesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a rollout sequence.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the rollout sequence in the format of:
+  /// projects/{PROJECT_ID}/locations/global/rolloutSequences/{NAME}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/rolloutSequences/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    RolloutSequence request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Upgrades a rollout sequence.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rollout sequence. Format:
+  /// projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/rolloutSequences/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> upgrade(
+    UpgradeRolloutSequenceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':upgrade';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRolloutsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRolloutsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Cancels a Rollout.
+  ///
+  /// The rollout will not be started on new clusters, however the rollout
+  /// running on the cluster will be allowed to finish.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rollout to cancel.
+  /// projects/{project}/locations/{location}/rollouts/{rollout}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/rollouts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> cancel(
+    CancelRolloutRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes a Rollout.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rollout to delete.
+  /// projects/{project}/locations/{location}/rollouts/{rollout}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/rollouts/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Force-completes a rollout stage.
+  ///
+  /// Only the active stage of an active rollout can be force-completed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rollout. Format:
+  /// projects/{project}/locations/{location}/rollouts/{rollout}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/rollouts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> forceCompleteStage(
+    ForceCompleteRolloutStageRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':forceCompleteStage';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a single rollout.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rollout to retrieve.
+  /// projects/{project}/locations/{location}/rollouts/{rollout}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/rollouts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Rollout].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Rollout> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Rollout.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the list of all rollouts.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of rollout.
+  /// Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Lists Rollouts that match the filter expression,
+  /// following the syntax outlined in https://google.aip.dev/160.
+  ///
+  /// [pageSize] - The maximum number of rollout to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 rollouts will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListRollouts` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListRollouts` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRolloutsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRolloutsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/rollouts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRolloutsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Pauses a running Rollout.
+  ///
+  /// The rollout will not be started on new clusters, however the rollout
+  /// running on the cluster will be allowed to finish.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rollout to pause.
+  /// projects/{project}/locations/{location}/rollouts/{rollout}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/rollouts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> pause(
+    PauseRolloutRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':pause';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Resume a paused Rollout.
+  ///
+  /// The rollout will be resumed and allowed to be started on clusters.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the rollout to resume.
+  /// projects/{project}/locations/{location}/rollouts/{rollout}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/rollouts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resume(
+    ResumeRolloutRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resume';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsScopesResource {
   final commons.ApiRequester _requester;
 
@@ -3404,6 +4014,54 @@ class Authority {
   }
 }
 
+/// Configuration for automatic upgrades.
+class AutoUpgradeConfig {
+  /// Mandatory Safety Policies (Always active) which cannot be disabled.
+  ///
+  /// The key is the policy ID (e.g., "ENFORCED_CONTROL_PLANE_PATCH") and the
+  /// value is a human-readable description.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? enforcedRollouts;
+
+  /// Specifies the scope of automation for the creation of rollouts.
+  ///
+  /// Represents the types of rollouts (version upgrades) the sequence should
+  /// initiate automatically. If this field is `unset`, it defaults to all
+  /// types. If this field is `set` but the internal `upgrade_types` list is
+  /// `empty`, most automatic rollouts are disabled for this sequence.
+  /// Exceptions are rollouts enforcing our security policies (e.g. such as
+  /// end-of-support and outdated control plane patch enforcements). These
+  /// policy enforcements cannot be disabled.
+  ///
+  /// Optional.
+  RolloutCreationScope? rolloutCreationScope;
+
+  AutoUpgradeConfig({this.enforcedRollouts, this.rolloutCreationScope});
+
+  AutoUpgradeConfig.fromJson(core.Map json_)
+    : this(
+        enforcedRollouts:
+            (json_['enforcedRollouts'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        rolloutCreationScope: json_.containsKey('rolloutCreationScope')
+            ? RolloutCreationScope.fromJson(
+                json_['rolloutCreationScope']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enforcedRollouts = this.enforcedRollouts;
+    final rolloutCreationScope = this.rolloutCreationScope;
+    return {
+      'enforcedRollouts': ?enforcedRollouts,
+      'rolloutCreationScope': ?rolloutCreationScope,
+    };
+  }
+}
+
 /// BinaryAuthorizationConfig defines the fleet level configuration of binary
 /// authorization feature.
 class BinaryAuthorizationConfig {
@@ -3551,6 +4209,28 @@ class Binding {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Request message for cancelling a rollout.
+typedef CancelRolloutRequest = $Empty;
+
+/// Selector for clusters.
+class ClusterSelector {
+  /// A valid CEL (Common Expression Language) expression which evaluates
+  /// `resource.labels`.
+  ///
+  /// Required.
+  core.String? labelSelector;
+
+  ClusterSelector({this.labelSelector});
+
+  ClusterSelector.fromJson(core.Map json_)
+    : this(labelSelector: json_['labelSelector'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final labelSelector = this.labelSelector;
+    return {'labelSelector': ?labelSelector};
+  }
+}
 
 /// **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade
 /// feature.
@@ -3967,6 +4647,9 @@ class CommonFeatureSpec {
   /// FleetObservability feature spec.
   FleetObservabilityFeatureSpec? fleetobservability;
 
+  /// Servicemesh feature spec.
+  ServiceMeshFeatureSpec? mesh;
+
   /// Multicluster Ingress-specific spec.
   MultiClusterIngressFeatureSpec? multiclusteringress;
 
@@ -3981,6 +4664,7 @@ class CommonFeatureSpec {
     this.clusterupgrade,
     this.dataplanev2,
     this.fleetobservability,
+    this.mesh,
     this.multiclusteringress,
     this.rbacrolebindingactuation,
     this.workloadidentity,
@@ -4010,6 +4694,11 @@ class CommonFeatureSpec {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        mesh: json_.containsKey('mesh')
+            ? ServiceMeshFeatureSpec.fromJson(
+                json_['mesh'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         multiclusteringress: json_.containsKey('multiclusteringress')
             ? MultiClusterIngressFeatureSpec.fromJson(
                 json_['multiclusteringress']
@@ -4035,6 +4724,7 @@ class CommonFeatureSpec {
     final clusterupgrade = this.clusterupgrade;
     final dataplanev2 = this.dataplanev2;
     final fleetobservability = this.fleetobservability;
+    final mesh = this.mesh;
     final multiclusteringress = this.multiclusteringress;
     final rbacrolebindingactuation = this.rbacrolebindingactuation;
     final workloadidentity = this.workloadidentity;
@@ -4043,6 +4733,7 @@ class CommonFeatureSpec {
       'clusterupgrade': ?clusterupgrade,
       'dataplanev2': ?dataplanev2,
       'fleetobservability': ?fleetobservability,
+      'mesh': ?mesh,
       'multiclusteringress': ?multiclusteringress,
       'rbacrolebindingactuation': ?rbacrolebindingactuation,
       'workloadidentity': ?workloadidentity,
@@ -4064,6 +4755,9 @@ class CommonFeatureState {
   /// RBAC Role Binding Actuation feature state
   RBACRoleBindingActuationFeatureState? rbacrolebindingactuation;
 
+  /// Service Mesh-specific state.
+  ServiceMeshFeatureState? servicemesh;
+
   /// The "running state" of the Feature in this Fleet.
   ///
   /// Output only.
@@ -4077,6 +4771,7 @@ class CommonFeatureState {
     this.clusterupgrade,
     this.fleetobservability,
     this.rbacrolebindingactuation,
+    this.servicemesh,
     this.state,
     this.workloadidentity,
   });
@@ -4106,6 +4801,11 @@ class CommonFeatureState {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        servicemesh: json_.containsKey('servicemesh')
+            ? ServiceMeshFeatureState.fromJson(
+                json_['servicemesh'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_.containsKey('state')
             ? FeatureState.fromJson(
                 json_['state'] as core.Map<core.String, core.dynamic>,
@@ -4124,6 +4824,7 @@ class CommonFeatureState {
     final clusterupgrade = this.clusterupgrade;
     final fleetobservability = this.fleetobservability;
     final rbacrolebindingactuation = this.rbacrolebindingactuation;
+    final servicemesh = this.servicemesh;
     final state = this.state;
     final workloadidentity = this.workloadidentity;
     return {
@@ -4131,6 +4832,7 @@ class CommonFeatureState {
       'clusterupgrade': ?clusterupgrade,
       'fleetobservability': ?fleetobservability,
       'rbacrolebindingactuation': ?rbacrolebindingactuation,
+      'servicemesh': ?servicemesh,
       'state': ?state,
       'workloadidentity': ?workloadidentity,
     };
@@ -5033,8 +5735,12 @@ class ConfigManagementMembershipSpec {
   )
   ConfigManagementHierarchyControllerConfig? hierarchyController;
 
-  /// Deprecated: From version 1.21.0, automatic Feature management is
-  /// unavailable, and Config Sync only supports manual upgrades.
+  /// Deprecated: Automatic Feature management is in Preview and is unavailable
+  /// in version 1.21.0 and later, after which Config Sync only supports manual
+  /// upgrades.
+  ///
+  /// If set to manual upgrades, clear this field instead, which is behaviorally
+  /// equivalent but helps prevent compatibility issues with newer fields.
   ///
   /// Optional.
   /// Possible string values are:
@@ -5383,7 +6089,7 @@ typedef ConfigManagementPolicyControllerMigration =
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef ConfigManagementPolicyControllerMonitoring = $Shared04;
+typedef ConfigManagementPolicyControllerMonitoring = $Shared06;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -6427,6 +7133,24 @@ class FleetObservabilityRoutingConfig {
   }
 }
 
+/// Request message for force-completing a rollout stage.
+class ForceCompleteRolloutStageRequest {
+  /// The stage number to force-complete.
+  ///
+  /// Required.
+  core.int? stageNumber;
+
+  ForceCompleteRolloutStageRequest({this.stageNumber});
+
+  ForceCompleteRolloutStageRequest.fromJson(core.Map json_)
+    : this(stageNumber: json_['stageNumber'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final stageNumber = this.stageNumber;
+    return {'stageNumber': ?stageNumber};
+  }
+}
+
 /// GenerateConnectManifestResponse contains manifest information for
 /// installing/upgrading a Connect agent.
 class GenerateConnectManifestResponse {
@@ -7388,6 +8112,71 @@ class ListPermittedScopesResponse {
     final nextPageToken = this.nextPageToken;
     final scopes = this.scopes;
     return {'nextPageToken': ?nextPageToken, 'scopes': ?scopes};
+  }
+}
+
+/// Response message for listing rollout sequences.
+class ListRolloutSequencesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The rollout sequences from the specified parent resource.
+  core.List<RolloutSequence>? rolloutSequences;
+
+  ListRolloutSequencesResponse({this.nextPageToken, this.rolloutSequences});
+
+  ListRolloutSequencesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        rolloutSequences: (json_['rolloutSequences'] as core.List?)
+            ?.map(
+              (value) => RolloutSequence.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final rolloutSequences = this.rolloutSequences;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'rolloutSequences': ?rolloutSequences,
+    };
+  }
+}
+
+/// Response message for listing rollouts.
+class ListRolloutsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The rollouts from the specified parent resource.
+  core.List<Rollout>? rollouts;
+
+  ListRolloutsResponse({this.nextPageToken, this.rollouts});
+
+  ListRolloutsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        rollouts: (json_['rollouts'] as core.List?)
+            ?.map(
+              (value) => Rollout.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final rollouts = this.rollouts;
+    return {'nextPageToken': ?nextPageToken, 'rollouts': ?rollouts};
   }
 }
 
@@ -8596,6 +9385,56 @@ class Operation {
   }
 }
 
+/// Operational state of the Rollout Sequence.
+class OperationalState {
+  /// Reasons for the Rollout Sequence state.
+  ///
+  /// Output only.
+  core.List<core.String>? reasons;
+
+  /// State of the Rollout Sequence.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_CODE_UNSPECIFIED" : The default value. This value is used if the
+  /// state is omitted.
+  /// - "ACTIVE" : The Rollout Sequence is active.
+  /// - "WARNING" : The Rollout Sequence has warnings. It is still functioning
+  /// but performance may be degraded.
+  /// - "ERROR" : The Rollout Sequence has errors and is not functioning.
+  /// - "INITIALIZING" : The Rollout Sequence is being initialized.
+  core.String? state;
+
+  /// The timestamp at which the operational state was last changed.
+  ///
+  /// Used to track how long it has been in the current state.
+  ///
+  /// Output only.
+  core.String? stateChangeTime;
+
+  OperationalState({this.reasons, this.state, this.stateChangeTime});
+
+  OperationalState.fromJson(core.Map json_)
+    : this(
+        reasons: (json_['reasons'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        state: json_['state'] as core.String?,
+        stateChangeTime: json_['stateChangeTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reasons = this.reasons;
+    final state = this.state;
+    final stateChangeTime = this.stateChangeTime;
+    return {
+      'reasons': ?reasons,
+      'state': ?state,
+      'stateChangeTime': ?stateChangeTime,
+    };
+  }
+}
+
 /// Origin defines where this MembershipFeatureSpec originated from.
 class Origin {
   /// Type specifies which type of origin is set.
@@ -8615,6 +9454,35 @@ class Origin {
   core.Map<core.String, core.dynamic> toJson() {
     final type = this.type;
     return {'type': ?type};
+  }
+}
+
+/// Request message for pausing a rollout.
+typedef PauseRolloutRequest = $Empty;
+
+/// Configuration for per-stage soak duration overrides.
+class PerStageSoakDurationOverrides {
+  /// A mapping of stage numbers to their respective desired soak durations.
+  ///
+  /// Key is the stage number, value is the desired soak duration. Stages
+  /// omitted from the map will receive the standard soak duration configured on
+  /// the sequence for that stage.
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? stageOverrides;
+
+  PerStageSoakDurationOverrides({this.stageOverrides});
+
+  PerStageSoakDurationOverrides.fromJson(core.Map json_)
+    : this(
+        stageOverrides:
+            (json_['stageOverrides'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final stageOverrides = this.stageOverrides;
+    return {'stageOverrides': ?stageOverrides};
   }
 }
 
@@ -9044,7 +9912,7 @@ class PolicyControllerMembershipState {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef PolicyControllerMonitoringConfig = $Shared04;
+typedef PolicyControllerMonitoringConfig = $Shared06;
 
 /// OnClusterState represents the state of a sub-component of Policy Controller.
 class PolicyControllerOnClusterState {
@@ -9589,6 +10457,33 @@ class ResourceOptions {
   }
 }
 
+/// Request message for resuming a rollout.
+class ResumeRolloutRequest {
+  /// The duration to offset the Rollout schedule by.
+  ///
+  /// Optional.
+  core.String? scheduleOffset;
+
+  /// If set, resume rollout will be executed in dry-run mode.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  ResumeRolloutRequest({this.scheduleOffset, this.validateOnly});
+
+  ResumeRolloutRequest.fromJson(core.Map json_)
+    : this(
+        scheduleOffset: json_['scheduleOffset'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final scheduleOffset = this.scheduleOffset;
+    final validateOnly = this.validateOnly;
+    return {'scheduleOffset': ?scheduleOffset, 'validateOnly': ?validateOnly};
+  }
+}
+
 /// Role is the type for Kubernetes roles
 class Role {
   /// custom_role is the name of a custom KubernetesClusterRole to use.
@@ -9618,6 +10513,773 @@ class Role {
     final customRole = this.customRole;
     final predefinedRole = this.predefinedRole;
     return {'customRole': ?customRole, 'predefinedRole': ?predefinedRole};
+  }
+}
+
+/// Rollout contains the Rollout metadata and configuration.
+///
+/// Next ID: 31
+class Rollout {
+  /// The timestamp at which the Rollout was completed.
+  ///
+  /// Output only.
+  core.String? completeTime;
+
+  /// The timestamp at which the Rollout was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The timestamp at the Rollout was deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// Human readable display name of the Rollout.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// etag of the Rollout Ex.
+  ///
+  /// abc1234
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// If set to true, the rollout will ignore the disruption budgets of the
+  /// clusters.
+  ///
+  /// Optional.
+  core.bool? ignoreClusterDisruptionBudgets;
+
+  /// If set to true, the rollout will ignore any maintenance policies
+  /// (Maintenance Windows and Maintenance Exclusions) set on the clusters.
+  ///
+  /// Optional.
+  core.bool? ignoreMaintenancePolicies;
+
+  /// The intent of the rollout.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ROLLOUT_INTENT_UNSPECIFIED" : The default value.
+  /// - "REGULAR_UPGRADE" : A standard rollout for the whole sequence.
+  /// - "CONTROL_PLANE_PATCH_ENFORCEMENT" : A mandatory upgrade for clusters
+  /// that haven't been patched within the allowed window.
+  /// - "END_OF_SUPPORT_ENFORCEMENT" : A mandatory upgrade for clusters that
+  /// have reached its end of support.
+  /// - "PARTIAL_PATCH" : A patch upgrade for a subset of clusters on a given
+  /// minor version.
+  core.String? intent;
+
+  /// Labels for this Rollout.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// States of upgrading control plane or node pool targets of a single cluster
+  /// (GKE Hub membership) that's part of this Rollout.
+  ///
+  /// The key is the membership name of the cluster. The value is the state of
+  /// the cluster.
+  ///
+  /// Output only.
+  core.Map<core.String, RolloutMembershipState>? membershipStates;
+
+  /// Identifier.
+  ///
+  /// The full, unique resource name of this Rollout in the format of
+  /// `projects/{project}/locations/global/rollouts/{rollout}`.
+  core.String? name;
+
+  /// The full, unique resource name of the rollout sequence that initiatied
+  /// this Rollout.
+  ///
+  /// In the format of
+  /// `projects/{project}/locations/global/rolloutSequences/{rollout_sequence}`.
+  ///
+  /// Optional. Immutable.
+  core.String? rolloutSequence;
+
+  /// Overrides the soak durations for specific stages of the rollout.
+  ///
+  /// Key is the stage number, value is the desired soak duration. Stages
+  /// omitted from the map will receive the standard soak duration configured on
+  /// the sequence for that stage.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? stageSoakDurationOverrides;
+
+  /// The stages of the Rollout.
+  ///
+  /// Output only.
+  core.List<RolloutStage>? stages;
+
+  /// State specifies various states of the Rollout.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "RUNNING" : The Rollout is running.
+  /// - "PAUSED" : The Rollout is paused.
+  /// - "CANCELLED" : The Rollout is in a failure terminal state.
+  /// - "COMPLETED" : The Rollout is in a terminal state.
+  core.String? state;
+
+  /// A human-readable description explaining the reason for the current state.
+  ///
+  /// Output only.
+  core.String? stateReason;
+
+  /// StateReasonType specifies the reason type of the Rollout state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_REASON_TYPE_UNSPECIFIED" : Unspecified state reason.
+  /// - "PAUSED_BY_USER" : Paused by the user.
+  /// - "PAUSED_BY_SYSTEM_CONFIG" : Paused by system config (ex. GKE freeze).
+  /// - "PAUSED_WAITING_FOR_NEXT_STAGE" : Paused waiting for the next stage to
+  /// start.
+  /// - "CANCELLED_BY_USER" : Cancelled by the user.
+  /// - "CANCELLED_PAUSED_TOO_LONG" : Cancelled by the system because it was
+  /// paused too long.
+  /// - "CANCELLED_SUPERSEDED" : Cancelled by the system because the version is
+  /// too old.
+  /// - "CANCELLED_INCOMPATIBLE_ROLLOUT_SEQUENCE" : Cancelled by the system
+  /// because the rollout sequence is incompatible, for example it has different
+  /// number of stages, fleet projects or label selectors than the rollout.
+  /// - "CANCELLED_SUPERSEDED_BY_USER_ROLLOUT" : Cancelled because of a new
+  /// user-triggered rollout.
+  core.String? stateReasonType;
+
+  /// The trigger of the rollout.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ROLLOUT_TRIGGER_UNSPECIFIED" : The default value.
+  /// - "USER" : A user-initiated rollout.
+  /// - "GKE" : A Google-triggered rollout.
+  core.String? trigger;
+
+  /// Google-generated UUID for this resource.
+  ///
+  /// This is unique across all Rollout resources. If a Rollout resource is
+  /// deleted and another resource with the same name is created, it gets a
+  /// different uid.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The timestamp at which the Rollout was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Config for version upgrade of clusters.
+  ///
+  /// Optional.
+  VersionUpgrade? versionUpgrade;
+
+  Rollout({
+    this.completeTime,
+    this.createTime,
+    this.deleteTime,
+    this.displayName,
+    this.etag,
+    this.ignoreClusterDisruptionBudgets,
+    this.ignoreMaintenancePolicies,
+    this.intent,
+    this.labels,
+    this.membershipStates,
+    this.name,
+    this.rolloutSequence,
+    this.stageSoakDurationOverrides,
+    this.stages,
+    this.state,
+    this.stateReason,
+    this.stateReasonType,
+    this.trigger,
+    this.uid,
+    this.updateTime,
+    this.versionUpgrade,
+  });
+
+  Rollout.fromJson(core.Map json_)
+    : this(
+        completeTime: json_['completeTime'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        ignoreClusterDisruptionBudgets:
+            json_['ignoreClusterDisruptionBudgets'] as core.bool?,
+        ignoreMaintenancePolicies:
+            json_['ignoreMaintenancePolicies'] as core.bool?,
+        intent: json_['intent'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        membershipStates:
+            (json_['membershipStates'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    RolloutMembershipState.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        name: json_['name'] as core.String?,
+        rolloutSequence: json_['rolloutSequence'] as core.String?,
+        stageSoakDurationOverrides:
+            (json_['stageSoakDurationOverrides']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        stages: (json_['stages'] as core.List?)
+            ?.map(
+              (value) => RolloutStage.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        state: json_['state'] as core.String?,
+        stateReason: json_['stateReason'] as core.String?,
+        stateReasonType: json_['stateReasonType'] as core.String?,
+        trigger: json_['trigger'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        versionUpgrade: json_.containsKey('versionUpgrade')
+            ? VersionUpgrade.fromJson(
+                json_['versionUpgrade'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final completeTime = this.completeTime;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final ignoreClusterDisruptionBudgets = this.ignoreClusterDisruptionBudgets;
+    final ignoreMaintenancePolicies = this.ignoreMaintenancePolicies;
+    final intent = this.intent;
+    final labels = this.labels;
+    final membershipStates = this.membershipStates;
+    final name = this.name;
+    final rolloutSequence = this.rolloutSequence;
+    final stageSoakDurationOverrides = this.stageSoakDurationOverrides;
+    final stages = this.stages;
+    final state = this.state;
+    final stateReason = this.stateReason;
+    final stateReasonType = this.stateReasonType;
+    final trigger = this.trigger;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    final versionUpgrade = this.versionUpgrade;
+    return {
+      'completeTime': ?completeTime,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'ignoreClusterDisruptionBudgets': ?ignoreClusterDisruptionBudgets,
+      'ignoreMaintenancePolicies': ?ignoreMaintenancePolicies,
+      'intent': ?intent,
+      'labels': ?labels,
+      'membershipStates': ?membershipStates,
+      'name': ?name,
+      'rolloutSequence': ?rolloutSequence,
+      'stageSoakDurationOverrides': ?stageSoakDurationOverrides,
+      'stages': ?stages,
+      'state': ?state,
+      'stateReason': ?stateReason,
+      'stateReasonType': ?stateReasonType,
+      'trigger': ?trigger,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'versionUpgrade': ?versionUpgrade,
+    };
+  }
+}
+
+/// The scope for automatic rollout creation.
+class RolloutCreationScope {
+  /// The list of enabled upgrade types.
+  ///
+  /// Optional.
+  core.List<core.String>? upgradeTypes;
+
+  RolloutCreationScope({this.upgradeTypes});
+
+  RolloutCreationScope.fromJson(core.Map json_)
+    : this(
+        upgradeTypes: (json_['upgradeTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final upgradeTypes = this.upgradeTypes;
+    return {'upgradeTypes': ?upgradeTypes};
+  }
+}
+
+/// Metadata about single cluster (GKE Hub membership) that's part of this
+/// Rollout.
+class RolloutMembershipState {
+  /// The time this status and any related Rollout-specific details for the
+  /// membership were updated.
+  ///
+  /// Optional. Output only.
+  core.String? lastUpdateTime;
+
+  /// The stage assignment of this cluster in this rollout.
+  ///
+  /// Output only.
+  core.int? stageAssignment;
+
+  /// The targets of the rollout - clusters or node pools that are being
+  /// upgraded.
+  ///
+  /// All targets belongs to the same cluster, identified by the membership name
+  /// (key of membership_states map).
+  ///
+  /// Output only.
+  core.List<RolloutTarget>? targets;
+
+  RolloutMembershipState({
+    this.lastUpdateTime,
+    this.stageAssignment,
+    this.targets,
+  });
+
+  RolloutMembershipState.fromJson(core.Map json_)
+    : this(
+        lastUpdateTime: json_['lastUpdateTime'] as core.String?,
+        stageAssignment: json_['stageAssignment'] as core.int?,
+        targets: (json_['targets'] as core.List?)
+            ?.map(
+              (value) => RolloutTarget.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final lastUpdateTime = this.lastUpdateTime;
+    final stageAssignment = this.stageAssignment;
+    final targets = this.targets;
+    return {
+      'lastUpdateTime': ?lastUpdateTime,
+      'stageAssignment': ?stageAssignment,
+      'targets': ?targets,
+    };
+  }
+}
+
+/// RolloutSequence defines the desired order of upgrades.
+///
+/// Next ID: 20
+class RolloutSequence {
+  /// Configuration for automatic upgrades.
+  ///
+  /// If this message is `unset`, the system applies default behavior.
+  ///
+  /// Optional.
+  AutoUpgradeConfig? autoUpgradeConfig;
+
+  /// The computed release channel used for the Rollout Sequence.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GKE_RELEASE_CHANNEL_UNSPECIFIED" : Default if no value is specified.
+  /// Should not be used.
+  /// - "RAPID" : Release channel `RAPID` of GKE.
+  /// - "REGULAR" : Release channel `REGULAR` of GKE.
+  /// - "STABLE" : Release channel `STABLE` of GKE.
+  /// - "EXTENDED" : Release channel `EXTENDED` of GKE.
+  /// - "NO_CHANNEL" : Release channel `NO_CHANNEL` of GKE. Formerly known as
+  /// `STATIC`.
+  core.String? computedReleaseChannel;
+
+  /// The timestamp at which the Rollout Sequence was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The timestamp at the Rollout Sequence was deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// Human readable display name of the Rollout Sequence.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// The resolved auto-upgrade options which are in effect.
+  ///
+  /// Output only.
+  AutoUpgradeConfig? effectiveAutoUpgradeConfig;
+
+  /// etag of the Rollout Sequence Ex.
+  ///
+  /// abc1234
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Selector for clusters to exclude from the Rollout Sequence.
+  ///
+  /// Optional.
+  ClusterSelector? ignoredClustersSelector;
+
+  /// Labels for this Rollout Sequence.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The last qualified control plane version.
+  ///
+  /// Output only.
+  core.String? lastQualifiedControlPlaneVersion;
+
+  /// The last qualified node version.
+  ///
+  /// Output only.
+  core.String? lastQualifiedNodeVersion;
+
+  /// Identifier.
+  ///
+  /// Name of the rollout sequence in the format of:
+  /// projects/{PROJECT_ID}/locations/global/rolloutSequences/{NAME}
+  core.String? name;
+
+  /// Operational state of the Rollout Sequence.
+  ///
+  /// Output only.
+  OperationalState? operationalState;
+
+  /// Ordered list of stages that constitutes this Rollout.
+  ///
+  /// Required.
+  core.List<Stage>? stages;
+
+  /// The target control plane version of the Rollout Sequence.
+  ///
+  /// Output only.
+  core.String? targetControlPlaneVersion;
+
+  /// The target node version of the Rollout Sequence.
+  ///
+  /// Output only.
+  core.String? targetNodeVersion;
+
+  /// Google-generated UUID for this resource.
+  ///
+  /// This is unique across all Rollout Sequence resources. If a Rollout
+  /// Sequence resource is deleted and another resource with the same name is
+  /// created, it gets a different uid.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The timestamp at which the Rollout Sequence was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  RolloutSequence({
+    this.autoUpgradeConfig,
+    this.computedReleaseChannel,
+    this.createTime,
+    this.deleteTime,
+    this.displayName,
+    this.effectiveAutoUpgradeConfig,
+    this.etag,
+    this.ignoredClustersSelector,
+    this.labels,
+    this.lastQualifiedControlPlaneVersion,
+    this.lastQualifiedNodeVersion,
+    this.name,
+    this.operationalState,
+    this.stages,
+    this.targetControlPlaneVersion,
+    this.targetNodeVersion,
+    this.uid,
+    this.updateTime,
+  });
+
+  RolloutSequence.fromJson(core.Map json_)
+    : this(
+        autoUpgradeConfig: json_.containsKey('autoUpgradeConfig')
+            ? AutoUpgradeConfig.fromJson(
+                json_['autoUpgradeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        computedReleaseChannel: json_['computedReleaseChannel'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        effectiveAutoUpgradeConfig:
+            json_.containsKey('effectiveAutoUpgradeConfig')
+            ? AutoUpgradeConfig.fromJson(
+                json_['effectiveAutoUpgradeConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        etag: json_['etag'] as core.String?,
+        ignoredClustersSelector: json_.containsKey('ignoredClustersSelector')
+            ? ClusterSelector.fromJson(
+                json_['ignoredClustersSelector']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        lastQualifiedControlPlaneVersion:
+            json_['lastQualifiedControlPlaneVersion'] as core.String?,
+        lastQualifiedNodeVersion:
+            json_['lastQualifiedNodeVersion'] as core.String?,
+        name: json_['name'] as core.String?,
+        operationalState: json_.containsKey('operationalState')
+            ? OperationalState.fromJson(
+                json_['operationalState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stages: (json_['stages'] as core.List?)
+            ?.map(
+              (value) =>
+                  Stage.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        targetControlPlaneVersion:
+            json_['targetControlPlaneVersion'] as core.String?,
+        targetNodeVersion: json_['targetNodeVersion'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoUpgradeConfig = this.autoUpgradeConfig;
+    final computedReleaseChannel = this.computedReleaseChannel;
+    final createTime = this.createTime;
+    final deleteTime = this.deleteTime;
+    final displayName = this.displayName;
+    final effectiveAutoUpgradeConfig = this.effectiveAutoUpgradeConfig;
+    final etag = this.etag;
+    final ignoredClustersSelector = this.ignoredClustersSelector;
+    final labels = this.labels;
+    final lastQualifiedControlPlaneVersion =
+        this.lastQualifiedControlPlaneVersion;
+    final lastQualifiedNodeVersion = this.lastQualifiedNodeVersion;
+    final name = this.name;
+    final operationalState = this.operationalState;
+    final stages = this.stages;
+    final targetControlPlaneVersion = this.targetControlPlaneVersion;
+    final targetNodeVersion = this.targetNodeVersion;
+    final uid = this.uid;
+    final updateTime = this.updateTime;
+    return {
+      'autoUpgradeConfig': ?autoUpgradeConfig,
+      'computedReleaseChannel': ?computedReleaseChannel,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'effectiveAutoUpgradeConfig': ?effectiveAutoUpgradeConfig,
+      'etag': ?etag,
+      'ignoredClustersSelector': ?ignoredClustersSelector,
+      'labels': ?labels,
+      'lastQualifiedControlPlaneVersion': ?lastQualifiedControlPlaneVersion,
+      'lastQualifiedNodeVersion': ?lastQualifiedNodeVersion,
+      'name': ?name,
+      'operationalState': ?operationalState,
+      'stages': ?stages,
+      'targetControlPlaneVersion': ?targetControlPlaneVersion,
+      'targetNodeVersion': ?targetNodeVersion,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Stage represents a single stage in the Rollout.
+class RolloutStage {
+  /// The selector from the sequence that was used to create this stage.
+  ///
+  /// Example CEL expression: resource.labels.canary == 'true'
+  ///
+  /// Output only.
+  ClusterSelector? clusterSelector;
+
+  /// The time at which the stage ended.
+  ///
+  /// Optional. Output only.
+  core.String? endTime;
+
+  /// The fleet projects from the sequence that was used to create this stage.
+  ///
+  /// Expected format: projects/{project_number}
+  ///
+  /// Output only.
+  core.List<core.String>? fleetProjects;
+
+  /// Duration to soak after this stage before starting the next stage.
+  ///
+  /// Optional.
+  core.String? soakDuration;
+
+  /// The stage number to which this status applies.
+  ///
+  /// Output only.
+  core.int? stageNumber;
+
+  /// The time at which the stage started.
+  ///
+  /// Optional. Output only.
+  core.String? startTime;
+
+  /// The state of the stage.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value.
+  /// - "PENDING" : The stage is waiting for previous stages to complete.
+  /// - "RUNNING" : The stage targets are being upgraded.
+  /// - "SOAKING" : The stage is waiting for a predetermined time before next
+  /// stage.
+  /// - "COMPLETED" : The stage is completed.
+  /// - "PAUSED" : The stage is paused.
+  core.String? state;
+
+  RolloutStage({
+    this.clusterSelector,
+    this.endTime,
+    this.fleetProjects,
+    this.soakDuration,
+    this.stageNumber,
+    this.startTime,
+    this.state,
+  });
+
+  RolloutStage.fromJson(core.Map json_)
+    : this(
+        clusterSelector: json_.containsKey('clusterSelector')
+            ? ClusterSelector.fromJson(
+                json_['clusterSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        endTime: json_['endTime'] as core.String?,
+        fleetProjects: (json_['fleetProjects'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        soakDuration: json_['soakDuration'] as core.String?,
+        stageNumber: json_['stageNumber'] as core.int?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusterSelector = this.clusterSelector;
+    final endTime = this.endTime;
+    final fleetProjects = this.fleetProjects;
+    final soakDuration = this.soakDuration;
+    final stageNumber = this.stageNumber;
+    final startTime = this.startTime;
+    final state = this.state;
+    return {
+      'clusterSelector': ?clusterSelector,
+      'endTime': ?endTime,
+      'fleetProjects': ?fleetProjects,
+      'soakDuration': ?soakDuration,
+      'stageNumber': ?stageNumber,
+      'startTime': ?startTime,
+      'state': ?state,
+    };
+  }
+}
+
+/// Metadata about the status of targets (clusters or node pools) involved in
+/// the Rollout.
+class RolloutTarget {
+  /// The resource link of the Cluster resource upgraded in this Rollout.
+  ///
+  /// It is formatted as:
+  /// `//{api_service}/projects/{project_number}/locations/{location}/clusters/{cluster_name}`.
+  /// .
+  ///
+  /// Optional. Output only.
+  core.String? cluster;
+
+  /// The resource link of the NodePool resource upgraded in this Rollout.
+  ///
+  /// It is formatted as:
+  /// `//{api_service}/projects/{project_number}/locations/{location}/clusters/{cluster_name}/nodePools/{node_pool_name}`.
+  ///
+  /// Optional. Output only.
+  core.String? nodePool;
+
+  /// The operation resource name performing the mutation.
+  ///
+  /// Optional. Output only.
+  core.String? operation;
+
+  /// A human-readable description of the current status.
+  ///
+  /// Optional. Output only.
+  core.String? reason;
+
+  /// The high-level, machine-readable status of this Rollout for the target.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "PENDING" : The Rollout is pending for the target.
+  /// - "RUNNING" : The Rollout is running for the target.
+  /// - "FAILED" : The Rollout failed for the target.
+  /// - "SUCCEEDED" : The Rollout succeeded for the target.
+  /// - "PAUSED" : The Rollout is paused for the target.
+  /// - "REMOVED" : The target was removed from the Rollout.
+  /// - "INELIGIBLE" : The target is ineligible for the Rollout.
+  /// - "SKIPPED" : The target is skipped for the Rollout.
+  core.String? state;
+
+  RolloutTarget({
+    this.cluster,
+    this.nodePool,
+    this.operation,
+    this.reason,
+    this.state,
+  });
+
+  RolloutTarget.fromJson(core.Map json_)
+    : this(
+        cluster: json_['cluster'] as core.String?,
+        nodePool: json_['nodePool'] as core.String?,
+        operation: json_['operation'] as core.String?,
+        reason: json_['reason'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cluster = this.cluster;
+    final nodePool = this.nodePool;
+    final operation = this.operation;
+    final reason = this.reason;
+    final state = this.state;
+    return {
+      'cluster': ?cluster,
+      'nodePool': ?nodePool,
+      'operation': ?operation,
+      'reason': ?reason,
+      'state': ?state,
+    };
   }
 }
 
@@ -9895,6 +11557,242 @@ class ServiceMeshDataPlaneManagement {
   }
 }
 
+/// Condition being reported.
+class ServiceMeshFeatureCondition {
+  /// Unique identifier of the condition which describes the condition
+  /// recognizable to the user.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Default Unspecified code
+  /// - "MESH_IAM_PERMISSION_DENIED" : Mesh IAM permission denied error code
+  /// - "MESH_IAM_CROSS_PROJECT_PERMISSION_DENIED" : Permission denied error
+  /// code for cross-project
+  /// - "CNI_CONFIG_UNSUPPORTED" : CNI config unsupported error code
+  /// - "GKE_SANDBOX_UNSUPPORTED" : GKE sandbox unsupported error code
+  /// - "NODEPOOL_WORKLOAD_IDENTITY_FEDERATION_REQUIRED" : Nodepool workload
+  /// identity federation required error code
+  /// - "CNI_INSTALLATION_FAILED" : CNI installation failed error code
+  /// - "CNI_POD_UNSCHEDULABLE" : CNI pod unschedulable error code
+  /// - "CLUSTER_HAS_ZERO_NODES" : Cluster has zero node code
+  /// - "CANONICAL_SERVICE_ERROR" : Failure to reconcile CanonicalServices
+  /// - "UNSUPPORTED_MULTIPLE_CONTROL_PLANES" : Multiple control planes
+  /// unsupported error code
+  /// - "VPCSC_GA_SUPPORTED" : VPC-SC GA is supported for this control plane.
+  /// - "DEPRECATED_SPEC_CONTROL_PLANE_MANAGEMENT" : User is using deprecated
+  /// ControlPlaneManagement and they have not yet set Management.
+  /// - "DEPRECATED_SPEC_CONTROL_PLANE_MANAGEMENT_SAFE" : User is using
+  /// deprecated ControlPlaneManagement and they have already set Management.
+  /// - "CONFIG_APPLY_INTERNAL_ERROR" : Configuration (Istio/k8s resources)
+  /// failed to apply due to internal error.
+  /// - "CONFIG_VALIDATION_ERROR" : Configuration failed to be applied due to
+  /// being invalid.
+  /// - "CONFIG_VALIDATION_WARNING" : Encountered configuration(s) with possible
+  /// unintended behavior or invalid configuration. These configs may not have
+  /// been applied.
+  /// - "QUOTA_EXCEEDED_BACKEND_SERVICES" : BackendService quota exceeded error
+  /// code.
+  /// - "QUOTA_EXCEEDED_HEALTH_CHECKS" : HealthCheck quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_HTTP_ROUTES" : HTTPRoute quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TCP_ROUTES" : TCPRoute quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TLS_ROUTES" : TLS routes quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TRAFFIC_POLICIES" : TrafficPolicy quota exceeded error
+  /// code.
+  /// - "QUOTA_EXCEEDED_ENDPOINT_POLICIES" : EndpointPolicy quota exceeded error
+  /// code.
+  /// - "QUOTA_EXCEEDED_GATEWAYS" : Gateway quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_MESHES" : Mesh quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_SERVER_TLS_POLICIES" : ServerTLSPolicy quota exceeded
+  /// error code.
+  /// - "QUOTA_EXCEEDED_CLIENT_TLS_POLICIES" : ClientTLSPolicy quota exceeded
+  /// error code.
+  /// - "QUOTA_EXCEEDED_SERVICE_LB_POLICIES" : ServiceLBPolicy quota exceeded
+  /// error code.
+  /// - "QUOTA_EXCEEDED_HTTP_FILTERS" : HTTPFilter quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_TCP_FILTERS" : TCPFilter quota exceeded error code.
+  /// - "QUOTA_EXCEEDED_NETWORK_ENDPOINT_GROUPS" : NetworkEndpointGroup quota
+  /// exceeded error code.
+  /// - "CONFIG_APPLY_BLOCKED" : Configuration failed to apply due to fleet
+  /// being blocked.
+  /// - "LEGACY_MC_SECRETS" : Legacy istio secrets found for multicluster error
+  /// code.
+  /// - "WORKLOAD_IDENTITY_REQUIRED" : Workload identity required error code.
+  /// - "NON_STANDARD_BINARY_USAGE" : Non-standard binary usage error code.
+  /// - "UNSUPPORTED_GATEWAY_CLASS" : Unsupported gateway class error code.
+  /// - "MANAGED_CNI_NOT_ENABLED" : Managed CNI not enabled error code.
+  /// - "MISSING_CONTROL_PLANE_CONFIG" : Missing control plane configuration
+  /// error code.
+  /// - "SHARED_VPC_MISSING_PERMISSIONS" : Shared VPC missing permissions error
+  /// code.
+  /// - "REQUIRED_ORG_POLICY_DISABLED" : Required org policy disabled error
+  /// code.
+  /// - "MODERNIZATION_INCOMPATIBLE_POD_ANNOTATION" : One or more Pods have
+  /// unsupported annotations.
+  /// - "MODERNIZATION_INCOMPATIBLE_CONFIG" : Incompatible config found in the
+  /// cluster.
+  /// - "MODERNIZATION_INCOMPATIBLE_GATEWAY_POD_SCALE" : Gateway pods per
+  /// cluster limit exceeded.
+  /// - "MODERNIZATION_SCHEDULED" : Modernization is scheduled for a cluster.
+  /// - "MODERNIZATION_IN_PROGRESS" : Modernization is in progress for a
+  /// cluster.
+  /// - "MODERNIZATION_COMPLETED" : Modernization is completed for a cluster.
+  /// - "MODERNIZATION_ABORTED" : Modernization is aborted for a cluster.
+  /// - "MODERNIZATION_PREPARING" : Preparing cluster so that its workloads can
+  /// be migrated.
+  /// - "MODERNIZATION_STALLED" : Modernization is stalled for a cluster.
+  /// - "MODERNIZATION_PREPARED" : Cluster has been prepared for its workloads
+  /// to be migrated.
+  /// - "MODERNIZATION_MIGRATING_WORKLOADS" : Migrating the cluster's workloads
+  /// to the new implementation.
+  /// - "MODERNIZATION_ROLLING_BACK_CLUSTER" : Rollback is in progress for
+  /// modernization of a cluster.
+  /// - "MODERNIZATION_WILL_BE_SCHEDULED" : Modernization will be scheduled for
+  /// a fleet.
+  /// - "MODERNIZATION_MANUAL" : Fleet is opted out from automated
+  /// modernization.
+  /// - "MODERNIZATION_ELIGIBLE" : Fleet is eligible for modernization.
+  /// - "MODERNIZATION_MODERNIZING" : Modernization of one or more clusters in a
+  /// fleet is in progress.
+  /// - "MODERNIZATION_MODERNIZED_SOAKING" : Modernization of all the fleet's
+  /// clusters is complete. Soaking before finalizing the modernization.
+  /// - "MODERNIZATION_FINALIZED" : Modernization is finalized for all clusters
+  /// in a fleet. Rollback is no longer allowed.
+  /// - "MODERNIZATION_ROLLING_BACK_FLEET" : Rollback is in progress for
+  /// modernization of all clusters in a fleet.
+  /// - "MODERNIZATION_MODERNIZED" : Modernization of all clusters in the fleet
+  /// is complete. Soaking before finalizing the modernization.
+  /// - "MODERNIZATION_COMPATIBLE" : Fleet is compatible for modernization.
+  /// - "MODERNIZATION_INCOMPATIBLE" : Fleet is not yet compatible for
+  /// modernization.
+  /// - "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE" : Fleet exceeds service mesh
+  /// fleet-level scalability limits.
+  /// - "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA" : Fleet exceeds service mesh
+  /// fleet-level quota limits.
+  core.String? code;
+
+  /// A short summary about the issue.
+  core.String? details;
+
+  /// Links contains actionable information.
+  core.String? documentationLink;
+
+  /// Severity level of the condition.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity
+  /// - "ERROR" : Indicates an issue that prevents the mesh from operating
+  /// correctly
+  /// - "WARNING" : Indicates a setting is likely wrong, but the mesh is still
+  /// able to operate
+  /// - "INFO" : An informational message, not requiring any action
+  core.String? severity;
+
+  ServiceMeshFeatureCondition({
+    this.code,
+    this.details,
+    this.documentationLink,
+    this.severity,
+  });
+
+  ServiceMeshFeatureCondition.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        details: json_['details'] as core.String?,
+        documentationLink: json_['documentationLink'] as core.String?,
+        severity: json_['severity'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final details = this.details;
+    final documentationLink = this.documentationLink;
+    final severity = this.severity;
+    return {
+      'code': ?code,
+      'details': ?details,
+      'documentationLink': ?documentationLink,
+      'severity': ?severity,
+    };
+  }
+}
+
+/// **Service Mesh**: Spec for the fleet for the servicemesh feature
+class ServiceMeshFeatureSpec {
+  /// Specifies modernization compatibility for the fleet.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODERNIZATION_COMPATIBILITY_UNSPECIFIED" : Unspecified.
+  /// - "VALIDATION_ENABLED" : Google should report modernization eligibility
+  /// gaps.
+  /// - "VALIDATION_DISABLED" : Google should not report modernization
+  /// eligibility gaps.
+  core.String? modernizationCompatibility;
+
+  /// Declares your intended modernization strategy for the fleet.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODERNIZATION_STRATEGY_UNSPECIFIED" : Default unspecified.
+  /// - "AUTOMATIC" : The infrastructure is automatically modernized. Setting
+  /// this strategy initiates the modernization process. The system schedules
+  /// the modernization subject to configured maintenance windows and
+  /// maintenance exclusions.
+  /// - "DEFERRED" : The infrastructure is pinned to the legacy implementation.
+  /// This fleet will not be selected for Google-driven modernization. If the
+  /// resource is actively modernizing, or if the modernization has completed
+  /// but is not yet finalized (e.g., during the soak time), setting this
+  /// strategy triggers a rollback to the legacy state. If the modernization
+  /// process has already been marked as finalized, setting this strategy has no
+  /// effect.
+  core.String? modernizationStrategy;
+
+  ServiceMeshFeatureSpec({
+    this.modernizationCompatibility,
+    this.modernizationStrategy,
+  });
+
+  ServiceMeshFeatureSpec.fromJson(core.Map json_)
+    : this(
+        modernizationCompatibility:
+            json_['modernizationCompatibility'] as core.String?,
+        modernizationStrategy: json_['modernizationStrategy'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final modernizationCompatibility = this.modernizationCompatibility;
+    final modernizationStrategy = this.modernizationStrategy;
+    return {
+      'modernizationCompatibility': ?modernizationCompatibility,
+      'modernizationStrategy': ?modernizationStrategy,
+    };
+  }
+}
+
+/// **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh
+/// Hub Controller.
+class ServiceMeshFeatureState {
+  /// List of conditions reported for this feature.
+  ///
+  /// Output only.
+  core.List<ServiceMeshFeatureCondition>? conditions;
+
+  ServiceMeshFeatureState({this.conditions});
+
+  ServiceMeshFeatureState.fromJson(core.Map json_)
+    : this(
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) => ServiceMeshFeatureCondition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final conditions = this.conditions;
+    return {'conditions': ?conditions};
+  }
+}
+
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
 class ServiceMeshMembershipSpec {
   /// Specifies the API that will be used for configuring the mesh workloads.
@@ -10055,8 +11953,56 @@ class SetIamPolicyRequest {
   }
 }
 
+/// Rollout stage.
+class Stage {
+  /// Filter members of fleets (above) to a subset of clusters.
+  ///
+  /// If not specified, all clusters in the fleets are selected.
+  ///
+  /// Optional.
+  ClusterSelector? clusterSelector;
+
+  /// List of Fleet projects to select the clusters from.
+  ///
+  /// Expected format: projects/{project}
+  ///
+  /// Required.
+  core.List<core.String>? fleetProjects;
+
+  /// Soak time after upgrading all the clusters in the stage.
+  ///
+  /// Optional.
+  core.String? soakDuration;
+
+  Stage({this.clusterSelector, this.fleetProjects, this.soakDuration});
+
+  Stage.fromJson(core.Map json_)
+    : this(
+        clusterSelector: json_.containsKey('clusterSelector')
+            ? ClusterSelector.fromJson(
+                json_['clusterSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fleetProjects: (json_['fleetProjects'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        soakDuration: json_['soakDuration'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusterSelector = this.clusterSelector;
+    final fleetProjects = this.fleetProjects;
+    final soakDuration = this.soakDuration;
+    return {
+      'clusterSelector': ?clusterSelector,
+      'fleetProjects': ?fleetProjects,
+      'soakDuration': ?soakDuration,
+    };
+  }
+}
+
 /// Status specifies state for the subcomponent.
-typedef Status = $Status01;
+typedef Status = $Status02;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
@@ -10085,6 +12031,153 @@ class TypeMeta {
     final apiVersion = this.apiVersion;
     final kind = this.kind;
     return {'apiVersion': ?apiVersion, 'kind': ?kind};
+  }
+}
+
+/// Request message for upgrading a rollout sequence.
+class UpgradeRolloutSequenceRequest {
+  /// If set to true, any rollout already running on the first stage of the
+  /// sequence will be cancelled to allow for the creation of the new rollout.
+  ///
+  /// Optional.
+  core.bool? force;
+
+  /// If set to true, the rollout will ignore the disruption budgets of the
+  /// clusters.
+  ///
+  /// Optional.
+  core.bool? ignoreClusterDisruptionBudgets;
+
+  /// If set to true, the rollout will ignore any maintenance policies
+  /// (Maintenance Windows and Maintenance Exclusions) set on the clusters.
+  ///
+  /// Optional.
+  core.bool? ignoreMaintenancePolicies;
+
+  /// If set to true, the rollout will only upgrade clusters that match the
+  /// minor version of the `version` field, but are on an earlier patch version.
+  ///
+  /// Optional.
+  core.bool? patchOnly;
+
+  /// Overrides the soak duration for all stages of the rollout.
+  ///
+  /// Optional.
+  core.String? soakDurationOverrideAllStages;
+
+  /// Overrides the soak durations for specific stages of the rollout.
+  ///
+  /// Optional.
+  PerStageSoakDurationOverrides? soakDurationOverridePerStage;
+
+  /// The type of upgrade.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "UPGRADE_TYPE_UNSPECIFIED" : Default unspecified value.
+  /// - "CONTROL_PLANE" : Upgrade the control plane.
+  /// - "NODE" : Upgrade the nodes.
+  core.String? upgradeType;
+
+  /// GKE version to upgrade to.
+  ///
+  /// A valid GKE version available on the release channel used by the sequence.
+  /// Patch versions from less conservative channels are allowed if their minor
+  /// version is already available in the sequence's channel. This is similar to
+  /// single-cluster upgrade rules, see
+  /// https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster#supported-versions
+  /// Example: With the following versions available on the RAPID and REGULAR
+  /// channels: * REGULAR: 1.35.3-gke.123000 * RAPID: 1.36.4-gke.321000,
+  /// 1.35.6-gke.045000 Valid versions are 1.35.3-gke.123, 1.35.6-gke.045000
+  /// Aliases like `latest` are supported. For more information on valid upgrade
+  /// versions and specifying cluster versions, see:
+  /// https://cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version
+  ///
+  /// Required.
+  core.String? version;
+
+  UpgradeRolloutSequenceRequest({
+    this.force,
+    this.ignoreClusterDisruptionBudgets,
+    this.ignoreMaintenancePolicies,
+    this.patchOnly,
+    this.soakDurationOverrideAllStages,
+    this.soakDurationOverridePerStage,
+    this.upgradeType,
+    this.version,
+  });
+
+  UpgradeRolloutSequenceRequest.fromJson(core.Map json_)
+    : this(
+        force: json_['force'] as core.bool?,
+        ignoreClusterDisruptionBudgets:
+            json_['ignoreClusterDisruptionBudgets'] as core.bool?,
+        ignoreMaintenancePolicies:
+            json_['ignoreMaintenancePolicies'] as core.bool?,
+        patchOnly: json_['patchOnly'] as core.bool?,
+        soakDurationOverrideAllStages:
+            json_['soakDurationOverrideAllStages'] as core.String?,
+        soakDurationOverridePerStage:
+            json_.containsKey('soakDurationOverridePerStage')
+            ? PerStageSoakDurationOverrides.fromJson(
+                json_['soakDurationOverridePerStage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        upgradeType: json_['upgradeType'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final force = this.force;
+    final ignoreClusterDisruptionBudgets = this.ignoreClusterDisruptionBudgets;
+    final ignoreMaintenancePolicies = this.ignoreMaintenancePolicies;
+    final patchOnly = this.patchOnly;
+    final soakDurationOverrideAllStages = this.soakDurationOverrideAllStages;
+    final soakDurationOverridePerStage = this.soakDurationOverridePerStage;
+    final upgradeType = this.upgradeType;
+    final version = this.version;
+    return {
+      'force': ?force,
+      'ignoreClusterDisruptionBudgets': ?ignoreClusterDisruptionBudgets,
+      'ignoreMaintenancePolicies': ?ignoreMaintenancePolicies,
+      'patchOnly': ?patchOnly,
+      'soakDurationOverrideAllStages': ?soakDurationOverrideAllStages,
+      'soakDurationOverridePerStage': ?soakDurationOverridePerStage,
+      'upgradeType': ?upgradeType,
+      'version': ?version,
+    };
+  }
+}
+
+/// Config for version upgrade of clusters.
+class VersionUpgrade {
+  /// Desired version of the component.
+  ///
+  /// Optional.
+  core.String? desiredVersion;
+
+  /// Type of version upgrade specifies which component should be upgraded.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value.
+  /// - "TYPE_CONTROL_PLANE" : Control plane upgrade.
+  /// - "TYPE_NODE_POOL" : Node pool upgrade.
+  core.String? type;
+
+  VersionUpgrade({this.desiredVersion, this.type});
+
+  VersionUpgrade.fromJson(core.Map json_)
+    : this(
+        desiredVersion: json_['desiredVersion'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final desiredVersion = this.desiredVersion;
+    final type = this.type;
+    return {'desiredVersion': ?desiredVersion, 'type': ?type};
   }
 }
 

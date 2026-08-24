@@ -58,6 +58,16 @@ class SaaSServiceManagementApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud App Lifecycle
+  /// Management data and see the email address for your Google Account
+  static const saasservicemgmtReadWriteScope =
+      'https://www.googleapis.com/auth/saasservicemgmt.read-write';
+
+  /// See your Google Cloud App Lifecycle Management data and the email address
+  /// of your Google Account
+  static const saasservicemgmtReadonlyScope =
+      'https://www.googleapis.com/auth/saasservicemgmt.readonly';
+
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -160,9 +170,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2665,6 +2674,15 @@ class Blueprint {
   }
 }
 
+/// A representation of a decimal value, such as 2.5.
+///
+/// Clients may convert values into language-native decimal formats, such as
+/// Java's
+/// [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html)
+/// or Python's
+/// [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
+typedef Decimal = $Decimal;
+
 /// Dependency represent a single dependency with another unit kind by alias.
 class Dependency {
   /// An alias for the dependency.
@@ -3833,7 +3851,7 @@ class RolloutControl {
 
 /// An object that describes various settings of Rollout execution.
 ///
-/// Includes built-in policies across GCP and GDC, and customizable policies.
+/// Includes built-in and customizable policies.
 class RolloutKind {
   /// Annotations is an unstructured key-value map stored with a resource that
   /// may be set by external tools to store and retrieve arbitrary metadata.
@@ -3920,6 +3938,12 @@ class RolloutKind {
   /// Required. Immutable.
   core.String? unitKind;
 
+  /// Settings for controlling the pacing of rollouts i.e. the number of units
+  /// to be rolled out in parallel in a region.
+  ///
+  /// Optional.
+  UnitUpdatePacing? unitUpdatePacing;
+
   /// The timestamp when the resource was last updated.
   ///
   /// Any change to the resource made by users must refresh this value. Changes
@@ -3951,6 +3975,7 @@ class RolloutKind {
     this.uid,
     this.unitFilter,
     this.unitKind,
+    this.unitUpdatePacing,
     this.updateTime,
     this.updateUnitKindStrategy,
   });
@@ -3977,6 +4002,12 @@ class RolloutKind {
         uid: json_['uid'] as core.String?,
         unitFilter: json_['unitFilter'] as core.String?,
         unitKind: json_['unitKind'] as core.String?,
+        unitUpdatePacing: json_.containsKey('unitUpdatePacing')
+            ? UnitUpdatePacing.fromJson(
+                json_['unitUpdatePacing']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateTime: json_['updateTime'] as core.String?,
         updateUnitKindStrategy: json_['updateUnitKindStrategy'] as core.String?,
       );
@@ -3992,6 +4023,7 @@ class RolloutKind {
     final uid = this.uid;
     final unitFilter = this.unitFilter;
     final unitKind = this.unitKind;
+    final unitUpdatePacing = this.unitUpdatePacing;
     final updateTime = this.updateTime;
     final updateUnitKindStrategy = this.updateUnitKindStrategy;
     return {
@@ -4005,6 +4037,7 @@ class RolloutKind {
       'uid': ?uid,
       'unitFilter': ?unitFilter,
       'unitKind': ?unitKind,
+      'unitUpdatePacing': ?unitUpdatePacing,
       'updateTime': ?updateTime,
       'updateUnitKindStrategy': ?updateUnitKindStrategy,
     };
@@ -4139,19 +4172,18 @@ class Saas {
 
   /// State of the Saas.
   ///
-  /// It is always in ACTIVE state if the application_template is empty.
+  /// It is always in STATE_ACTIVE state if the application_template is empty.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_TYPE_UNSPECIFIED" : State type is unspecified.
+  /// - "STATE_UNSPECIFIED" : State is unspecified.
+  /// - "STATE_TYPE_UNSPECIFIED" : State type is unspecified. Deprecated: Use
+  /// STATE_UNSPECIFIED instead.
   /// - "STATE_ACTIVE" : The Saas is ready
   /// - "STATE_RUNNING" : In the process of importing, synchronizing or
   /// replicating ApplicationTemplates
   /// - "STATE_FAILED" : Failure during process of importing, synchronizing or
   /// replicating ApplicationTemplate processing
-  /// - "ACTIVE" : Deprecated: Use STATE_ACTIVE.
-  /// - "RUNNING" : Deprecated: Use STATE_RUNNING.
-  /// - "FAILED" : Deprecated: Use STATE_FAILED.
   core.String? state;
 
   /// The unique identifier of the resource.
@@ -4603,7 +4635,7 @@ class Unit {
   ///
   /// Optional. Immutable.
   /// Possible string values are:
-  /// - "MANAGEMENT_MODE_UNSPECIFIED"
+  /// - "MANAGEMENT_MODE_UNSPECIFIED" : Unspecified management mode.
   /// - "MANAGEMENT_MODE_USER" : Unit's lifecycle is managed by the user.
   /// - "MANAGEMENT_MODE_SYSTEM" : The system will decide when to deprovision
   /// and delete the unit. User still can deprovision or delete the unit
@@ -4686,7 +4718,7 @@ class Unit {
   ///
   /// Optional. Output only.
   /// Possible string values are:
-  /// - "SYSTEM_MANAGED_STATE_UNSPECIFIED"
+  /// - "SYSTEM_MANAGED_STATE_UNSPECIFIED" : Unspecified system managed state.
   /// - "SYSTEM_MANAGED_STATE_ACTIVE" : Unit has dependents attached.
   /// - "SYSTEM_MANAGED_STATE_INACTIVE" : Unit has no dependencies attached, but
   /// attachment is allowed.
@@ -4930,6 +4962,13 @@ class UnitCondition {
   /// - "TYPE_PROVISIONED" : Condition type is provisioned.
   /// - "TYPE_OPERATION_ERROR" : Condition type is operationError. True when the
   /// last unit operation fails with a non-ignorable error.
+  /// - "TYPE_FLAGS_CONFIG_INITIALIZED" : Condition type is
+  /// flagsConfigInitialized. True when the flags configuration is synchronized
+  /// and ready to be served.
+  /// - "TYPE_APP_CREATED_OR_ALREADY_EXISTS" : Indicates if AppHub app has been
+  /// created or if Apphub app has already existed.
+  /// - "TYPE_APP_COMPONENTS_REGISTERED" : Indicates if services and workloads
+  /// have been registered with AppHub.
   core.String? type;
 
   UnitCondition({
@@ -5009,6 +5048,15 @@ class UnitKind {
   /// Optional.
   core.Map<core.String, core.String>? annotations;
 
+  /// BoundaryType describes the type of boundary the Unit Kind represents.
+  ///
+  /// Optional. Output only.
+  /// Possible string values are:
+  /// - "BOUNDARY_TYPE_UNSPECIFIED" : Unspecified boundary type.
+  /// - "BOUNDARY_TYPE_TENANT_PROJECT" : Tenant project boundary.
+  /// - "BOUNDARY_TYPE_MANAGED_PROJECT" : Managed project boundary.
+  core.String? boundaryType;
+
   /// The timestamp when the resource was created.
   ///
   /// Output only.
@@ -5048,7 +5096,7 @@ class UnitKind {
   core.String? etag;
 
   /// List of inputVariables for this release that will either be retrieved from
-  /// a dependency’s outputVariables, or will be passed on to a dependency’s
+  /// a dependency's outputVariables, or will be passed on to a dependency's
   /// inputVariables.
   ///
   /// Maximum 100.
@@ -5105,6 +5153,7 @@ class UnitKind {
 
   UnitKind({
     this.annotations,
+    this.boundaryType,
     this.createTime,
     this.defaultFlagRevisions,
     this.defaultRelease,
@@ -5125,6 +5174,7 @@ class UnitKind {
             (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(key, value as core.String),
             ),
+        boundaryType: json_['boundaryType'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         defaultFlagRevisions: (json_['defaultFlagRevisions'] as core.List?)
             ?.map((value) => value as core.String)
@@ -5163,6 +5213,7 @@ class UnitKind {
 
   core.Map<core.String, core.dynamic> toJson() {
     final annotations = this.annotations;
+    final boundaryType = this.boundaryType;
     final createTime = this.createTime;
     final defaultFlagRevisions = this.defaultFlagRevisions;
     final defaultRelease = this.defaultRelease;
@@ -5177,6 +5228,7 @@ class UnitKind {
     final updateTime = this.updateTime;
     return {
       'annotations': ?annotations,
+      'boundaryType': ?boundaryType,
       'createTime': ?createTime,
       'defaultFlagRevisions': ?defaultFlagRevisions,
       'defaultRelease': ?defaultRelease,
@@ -5235,6 +5287,10 @@ class UnitOperation {
   ///
   /// Output only.
   core.String? deleteTime;
+
+  /// Deprovision operation.
+  ///
+  /// Optional.
   Deprovision? deprovision;
 
   /// The engine state for on-going deployment engine operation(s).
@@ -5267,6 +5323,10 @@ class UnitOperation {
   ///
   /// Output only.
   core.String? etag;
+
+  /// Flag update operation.
+  ///
+  /// Optional.
   FlagUpdate? flagUpdate;
 
   /// The labels on the resource, which can be used for categorization.
@@ -5291,6 +5351,10 @@ class UnitOperation {
   ///
   /// Optional.
   core.String? parentUnitOperation;
+
+  /// Provision operation.
+  ///
+  /// Optional.
   Provision? provision;
 
   /// Specifies which rollout created this Unit Operation.
@@ -5311,7 +5375,7 @@ class UnitOperation {
   ///
   /// Optional. Output only.
   /// Possible string values are:
-  /// - "UNIT_OPERATION_STATE_UNKNOWN"
+  /// - "UNIT_OPERATION_STATE_UNKNOWN" : Unit operation state is unknown.
   /// - "UNIT_OPERATION_STATE_PENDING" : Unit operation is accepted but not
   /// ready to run.
   /// - "UNIT_OPERATION_STATE_SCHEDULED" : Unit operation is accepted and
@@ -5345,6 +5409,10 @@ class UnitOperation {
   ///
   /// Output only.
   core.String? updateTime;
+
+  /// Upgrade operation.
+  ///
+  /// Optional.
   Upgrade? upgrade;
 
   UnitOperation({
@@ -5517,6 +5585,10 @@ class UnitOperationCondition {
   /// - "TYPE_APP_CREATED" : Indicates if AppHub app has been created.
   /// - "TYPE_APP_COMPONENTS_REGISTERED" : Indicates if services and workloads
   /// have been registered with AppHub.
+  /// - "TYPE_WORKLOAD_SUCCEEDED" : Indicates if the UnitOperation's core
+  /// workload execution completed successfully. The workload is the core
+  /// execution operation performed for a UnitOperation (e.g., provisioning,
+  /// updating, or deprovisioning resources) excluding post-operation checks.
   core.String? type;
 
   UnitOperationCondition({
@@ -5548,6 +5620,53 @@ class UnitOperationCondition {
       'reason': ?reason,
       'status': ?status,
       'type': ?type,
+    };
+  }
+}
+
+/// UnitUpdatePacing defines the policy for the maximum number of unit
+/// operations that can run for a rollout in parallel in a single region.
+class UnitUpdatePacing {
+  /// An absolute cap on concurrent units operations.
+  ///
+  /// If both percent and count are provided, the system uses the MINIMUM (most
+  /// restrictive).
+  ///
+  /// Optional.
+  core.int? maxConcurrentOperationsCount;
+
+  /// The maximum percentage of total units in the scope that can be in-flight.
+  ///
+  /// Example: 10.5 for 10.5%. If both percent and count are provided, the
+  /// system uses the MINIMUM (most restrictive).
+  ///
+  /// Optional.
+  Decimal? maxConcurrentOperationsPercent;
+
+  UnitUpdatePacing({
+    this.maxConcurrentOperationsCount,
+    this.maxConcurrentOperationsPercent,
+  });
+
+  UnitUpdatePacing.fromJson(core.Map json_)
+    : this(
+        maxConcurrentOperationsCount:
+            json_['maxConcurrentOperationsCount'] as core.int?,
+        maxConcurrentOperationsPercent:
+            json_.containsKey('maxConcurrentOperationsPercent')
+            ? Decimal.fromJson(
+                json_['maxConcurrentOperationsPercent']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxConcurrentOperationsCount = this.maxConcurrentOperationsCount;
+    final maxConcurrentOperationsPercent = this.maxConcurrentOperationsPercent;
+    return {
+      'maxConcurrentOperationsCount': ?maxConcurrentOperationsCount,
+      'maxConcurrentOperationsPercent': ?maxConcurrentOperationsPercent,
     };
   }
 }

@@ -322,6 +322,7 @@ api.GoogleCloudKmsV1CryptoKeyVersion buildGoogleCloudKmsV1CryptoKeyVersion() {
         buildGoogleCloudKmsV1ExternalProtectionLevelOptions();
     o.generateTime = 'foo';
     o.generationFailureReason = 'foo';
+    o.hsmTrusted = true;
     o.importFailureReason = 'foo';
     o.importJob = 'foo';
     o.importTime = 'foo';
@@ -329,6 +330,7 @@ api.GoogleCloudKmsV1CryptoKeyVersion buildGoogleCloudKmsV1CryptoKeyVersion() {
     o.protectionLevel = 'foo';
     o.reimportEligible = true;
     o.state = 'foo';
+    o.trustedWrappingEnabled = true;
   }
   buildCounterGoogleCloudKmsV1CryptoKeyVersion--;
   return o;
@@ -353,6 +355,7 @@ void checkGoogleCloudKmsV1CryptoKeyVersion(
     );
     unittest.expect(o.generateTime!, unittest.equals('foo'));
     unittest.expect(o.generationFailureReason!, unittest.equals('foo'));
+    unittest.expect(o.hsmTrusted!, unittest.isTrue);
     unittest.expect(o.importFailureReason!, unittest.equals('foo'));
     unittest.expect(o.importJob!, unittest.equals('foo'));
     unittest.expect(o.importTime!, unittest.equals('foo'));
@@ -360,6 +363,7 @@ void checkGoogleCloudKmsV1CryptoKeyVersion(
     unittest.expect(o.protectionLevel!, unittest.equals('foo'));
     unittest.expect(o.reimportEligible!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.trustedWrappingEnabled!, unittest.isTrue);
   }
   buildCounterGoogleCloudKmsV1CryptoKeyVersion--;
 }
@@ -394,6 +398,7 @@ buildGoogleCloudKmsV1ExternalProtectionLevelOptions() {
   final o = api.GoogleCloudKmsV1ExternalProtectionLevelOptions();
   buildCounterGoogleCloudKmsV1ExternalProtectionLevelOptions++;
   if (buildCounterGoogleCloudKmsV1ExternalProtectionLevelOptions < 3) {
+    o.ekmConnectionBackendOverride = 'foo';
     o.ekmConnectionKeyPath = 'foo';
     o.externalKeyUri = 'foo';
   }
@@ -406,6 +411,7 @@ void checkGoogleCloudKmsV1ExternalProtectionLevelOptions(
 ) {
   buildCounterGoogleCloudKmsV1ExternalProtectionLevelOptions++;
   if (buildCounterGoogleCloudKmsV1ExternalProtectionLevelOptions < 3) {
+    unittest.expect(o.ekmConnectionBackendOverride!, unittest.equals('foo'));
     unittest.expect(o.ekmConnectionKeyPath!, unittest.equals('foo'));
     unittest.expect(o.externalKeyUri!, unittest.equals('foo'));
   }

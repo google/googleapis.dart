@@ -4,6 +4,12 @@
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+                },
+                "https://www.googleapis.com/auth/organizationpolicy": {
+                    "description": "See, edit, configure, and delete your Google Cloud Organization Policy data and see the email address for your Google Account"
+                },
+                "https://www.googleapis.com/auth/organizationpolicy.readonly": {
+                    "description": "See your Google Cloud Organization Policy data and the email address of your Google Account"
                 }
             }
         }
@@ -25,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260312",
+    "revision": "20260723",
     "rootUrl": "https://orgpolicy.googleapis.com/",
     "servicePath": "",
     "title": "Organization Policy API",
@@ -123,18 +129,18 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                                    "description": "Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field.",
+                                    "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start using this field.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                                    "description": "Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}`",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+$",
                                     "required": true,
@@ -146,7 +152,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2ListConstraintsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         }
                     }
@@ -163,7 +171,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                                    "description": "Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}`",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+$",
                                     "required": true,
@@ -178,7 +186,8 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         },
                         "delete": {
@@ -208,7 +217,8 @@
                                 "$ref": "GoogleProtobufEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         },
                         "get": {
@@ -233,7 +243,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "getEffectivePolicy": {
@@ -258,7 +270,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "list": {
@@ -271,18 +285,18 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                                    "description": "Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field.",
+                                    "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start using this field.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                                    "description": "Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}`",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+$",
                                     "required": true,
@@ -294,7 +308,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2ListPoliciesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "patch": {
@@ -307,7 +323,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_number}/policies/{constraint_name}` * `organizations/{organization_number}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -328,7 +344,8 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         }
                     }
@@ -349,18 +366,18 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                                    "description": "Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field.",
+                                    "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start using this field.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                                    "description": "Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -372,7 +389,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2ListConstraintsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         }
                     }
@@ -404,7 +423,8 @@
                                 "$ref": "GoogleCloudOrgpolicyV2CustomConstraint"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         },
                         "delete": {
@@ -429,7 +449,8 @@
                                 "$ref": "GoogleProtobufEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         },
                         "get": {
@@ -454,7 +475,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2CustomConstraint"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "list": {
@@ -467,13 +490,13 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                                    "description": "Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field.",
+                                    "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start using this field.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -490,7 +513,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2ListCustomConstraintsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "patch": {
@@ -503,7 +528,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not counted.",
+                                    "description": "Immutable. Name of the constraint. This is unique within the organization. The name must be of the form: * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not counted.",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/customConstraints/[^/]+$",
                                     "required": true,
@@ -518,7 +543,8 @@
                                 "$ref": "GoogleCloudOrgpolicyV2CustomConstraint"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         }
                     }
@@ -535,7 +561,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                                    "description": "Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -550,7 +576,8 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         },
                         "delete": {
@@ -580,7 +607,8 @@
                                 "$ref": "GoogleProtobufEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         },
                         "get": {
@@ -605,7 +633,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "getEffectivePolicy": {
@@ -630,7 +660,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "list": {
@@ -643,18 +675,18 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                                    "description": "Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field.",
+                                    "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start using this field.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                                    "description": "Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -666,7 +698,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2ListPoliciesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "patch": {
@@ -679,7 +713,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_number}/policies/{constraint_name}` * `organizations/{organization_number}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -700,7 +734,8 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         }
                     }
@@ -721,18 +756,18 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                                    "description": "Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field.",
+                                    "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start using this field.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                                    "description": "Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}`",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -744,7 +779,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2ListConstraintsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         }
                     }
@@ -761,7 +798,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                                    "description": "Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}`",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -776,7 +813,8 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         },
                         "delete": {
@@ -806,7 +844,8 @@
                                 "$ref": "GoogleProtobufEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         },
                         "get": {
@@ -831,7 +870,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "getEffectivePolicy": {
@@ -856,7 +897,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "list": {
@@ -869,18 +912,18 @@
                             ],
                             "parameters": {
                                 "pageSize": {
-                                    "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                                    "description": "Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field.",
+                                    "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start using this field.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                                    "description": "Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}`",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -892,7 +935,9 @@
                                 "$ref": "GoogleCloudOrgpolicyV2ListPoliciesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy",
+                                "https://www.googleapis.com/auth/organizationpolicy.readonly"
                             ]
                         },
                         "patch": {
@@ -905,7 +950,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_number}/policies/{constraint_name}` * `organizations/{organization_number}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -926,7 +971,8 @@
                                 "$ref": "GoogleCloudOrgpolicyV2Policy"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/organizationpolicy"
                             ]
                         }
                     }
@@ -940,7 +986,7 @@
             "id": "GoogleCloudOrgpolicyV2AlternatePolicySpec",
             "properties": {
                 "launch": {
-                    "description": "Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.",
+                    "description": "Reference to the launch that will be used while audit logging and to control the launch. Set only in the alternate policy.",
                     "type": "string"
                 },
                 "spec": {
@@ -966,7 +1012,7 @@
                         "DENY"
                     ],
                     "enumDescriptions": [
-                        "This is only used for distinguishing unset values and should never be used. Results in an error.",
+                        "This is only used for distinguishing unset values, and results in an error if set.",
                         "Indicate that all values are allowed for list constraints. Indicate that enforcement is off for boolean constraints.",
                         "Indicate that all values are denied for list constraints. Indicate that enforcement is on for boolean constraints."
                     ],
@@ -989,7 +1035,7 @@
                     "description": "Defines this constraint as being a list constraint."
                 },
                 "name": {
-                    "description": "Immutable. The resource name of the constraint. Must be in one of the following forms: * `projects/{project_number}/constraints/{constraint_name}` * `folders/{folder_id}/constraints/{constraint_name}` * `organizations/{organization_id}/constraints/{constraint_name}` For example, \"/projects/123/constraints/compute.disableSerialPortAccess\".",
+                    "description": "Immutable. The resource name of the constraint. Must be in one of the following forms: * `projects/{project_number}/constraints/{constraint_name}` * `folders/{folder_number}/constraints/{constraint_name}` * `organizations/{organization_number}/constraints/{constraint_name}` For example, \"/projects/123/constraints/compute.disableSerialPortAccess\".",
                     "type": "string"
                 },
                 "supportsDryRun": {
@@ -1026,7 +1072,7 @@
                         "DENY"
                     ],
                     "enumDescriptions": [
-                        "This is only used for distinguishing unset values and should never be used. Results in an error.",
+                        "This is only used for distinguishing unset values, and results in an error if used.",
                         "Allowed action type.",
                         "Deny action type."
                     ],
@@ -1048,10 +1094,10 @@
                             "GOVERN_TAGS"
                         ],
                         "enumDescriptions": [
-                            "This is only used for distinguishing unset values and should never be used. Results in an error.",
+                            "This is only used for distinguishing unset values, and results in an error if used.",
                             "Constraint applied when creating the resource.",
                             "Constraint applied when updating the resource.",
-                            "Constraint applied when deleting the resource. Not currently supported.",
+                            "Constraint applied when deleting the resource. Not supported.",
                             "Constraint applied when removing an IAM grant.",
                             "Constraint applied when enforcing forced tagging."
                         ],
@@ -1093,7 +1139,7 @@
                         "BOOLEAN"
                     ],
                     "enumDescriptions": [
-                        "This is only used for distinguishing unset values and should never be used. Results in an error.",
+                        "This is only used for distinguishing unset values, and results in an error if used.",
                         "List parameter type.",
                         "String parameter type.",
                         "Boolean parameter type."
@@ -1113,7 +1159,7 @@
                         "BOOLEAN"
                     ],
                     "enumDescriptions": [
-                        "This is only used for distinguishing unset values and should never be used. Results in an error.",
+                        "This is only used for distinguishing unset values, and results in an error if used.",
                         "List parameter type.",
                         "String parameter type.",
                         "Boolean parameter type."
@@ -1165,7 +1211,7 @@
                         "DENY"
                     ],
                     "enumDescriptions": [
-                        "This is only used for distinguishing unset values and should never be used. Results in an error.",
+                        "This is only used for distinguishing unset values, and results in an error if used.",
                         "Allowed action type.",
                         "Deny action type."
                     ],
@@ -1195,10 +1241,10 @@
                             "GOVERN_TAGS"
                         ],
                         "enumDescriptions": [
-                            "This is only used for distinguishing unset values and should never be used. Results in an error.",
+                            "This is only used for distinguishing unset values, and results in an error if used.",
                             "Constraint applied when creating the resource.",
                             "Constraint applied when updating the resource.",
-                            "Constraint applied when deleting the resource. Not currently supported.",
+                            "Constraint applied when deleting the resource. Not supported.",
                             "Constraint applied when removing an IAM grant.",
                             "Constraint applied when enforcing forced tagging."
                         ],
@@ -1207,7 +1253,7 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not counted.",
+                    "description": "Immutable. Name of the constraint. This is unique within the organization. The name must be of the form: * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not counted.",
                     "type": "string"
                 },
                 "resourceTypes": {
@@ -1238,7 +1284,7 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "Page token used to retrieve the next page. This is currently not used.",
+                    "description": "Page token used to retrieve the next page. This is not used.",
                     "type": "string"
                 }
             },
@@ -1256,7 +1302,7 @@
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "Page token used to retrieve the next page. This is currently not used, but the server may at any point start supplying a valid token.",
+                    "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start supplying a valid token.",
                     "type": "string"
                 }
             },
@@ -1267,7 +1313,7 @@
             "id": "GoogleCloudOrgpolicyV2ListPoliciesResponse",
             "properties": {
                 "nextPageToken": {
-                    "description": "Page token used to retrieve the next page. This is currently not used, but the server may at any point start supplying a valid token.",
+                    "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start supplying a valid token.",
                     "type": "string"
                 },
                 "policies": {
@@ -1298,7 +1344,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_number}/policies/{constraint_name}` * `organizations/{organization_number}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
                     "type": "string"
                 },
                 "spec": {

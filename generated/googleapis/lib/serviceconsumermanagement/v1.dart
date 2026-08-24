@@ -1432,6 +1432,16 @@ class TenantResource {
   /// Output only.
   core.String? resource;
 
+  /// The resource name of the tenant project from which this active regional
+  /// tenant project was migrated.
+  ///
+  /// This field is only set for active regional migrated mapping tenant
+  /// projects. Format:
+  /// `services//{collection_id}/{RESOURCE_ID}/locations/{LOCATION}/tenantProjects/{TENANT_ID}`.
+  ///
+  /// Output only.
+  core.String? sourceTenantProject;
+
   /// Status of tenant resource.
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : Unspecified status is the default unset value.
@@ -1448,6 +1458,7 @@ class TenantResource {
   TenantResource({
     this.migratedTenantProject,
     this.resource,
+    this.sourceTenantProject,
     this.status,
     this.tag,
   });
@@ -1456,6 +1467,7 @@ class TenantResource {
     : this(
         migratedTenantProject: json_['migratedTenantProject'] as core.String?,
         resource: json_['resource'] as core.String?,
+        sourceTenantProject: json_['sourceTenantProject'] as core.String?,
         status: json_['status'] as core.String?,
         tag: json_['tag'] as core.String?,
       );
@@ -1463,11 +1475,13 @@ class TenantResource {
   core.Map<core.String, core.dynamic> toJson() {
     final migratedTenantProject = this.migratedTenantProject;
     final resource = this.resource;
+    final sourceTenantProject = this.sourceTenantProject;
     final status = this.status;
     final tag = this.tag;
     return {
       'migratedTenantProject': ?migratedTenantProject,
       'resource': ?resource,
+      'sourceTenantProject': ?sourceTenantProject,
       'status': ?status,
       'tag': ?tag,
     };

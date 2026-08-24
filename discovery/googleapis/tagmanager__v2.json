@@ -43,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260304",
+    "revision": "20260706",
     "rootUrl": "https://tagmanager.googleapis.com/",
     "servicePath": "",
     "title": "Tag Manager API",
@@ -523,6 +523,7 @@
                         "destinations": {
                             "methods": {
                                 "get": {
+                                    "deprecated": true,
                                     "description": "Gets a Destination.",
                                     "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/destinations/{destinationsId}",
                                     "httpMethod": "GET",
@@ -549,6 +550,7 @@
                                     ]
                                 },
                                 "link": {
+                                    "deprecated": true,
                                     "description": "Adds a Destination to this Container and removes it from the Container to which it is currently linked.",
                                     "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/destinations:link",
                                     "httpMethod": "POST",
@@ -6464,12 +6466,14 @@
                     "enum": [
                         "decimalSeparatorTypeUnspecified",
                         "period",
-                        "comma"
+                        "comma",
+                        "automatic"
                     ],
                     "enumDescriptions": [
                         "",
                         "The option to convert a variable value to a number with a period as the decimal separator.",
-                        "The option to convert a variable value to a number with a comma as the decimal separator."
+                        "The option to convert a variable value to a number with a comma as the decimal separator.",
+                        "The option to convert a variable value to a number with automatic decimal separator detection."
                     ],
                     "type": "string"
                 },

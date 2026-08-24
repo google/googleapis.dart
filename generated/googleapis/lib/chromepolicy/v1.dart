@@ -2963,7 +2963,7 @@ class Proto2FieldDescriptorProto {
 
 /// Describes a complete .proto file.
 class Proto2FileDescriptorProto {
-  /// copybara:strip_begin TODO(b/297898292) Deprecate and remove this field in
+  /// copybara:strip_begin TODO(b/538805613) Deprecate and remove this field in
   /// favor of enums.
   ///
   /// copybara:strip_end
@@ -3053,4 +3053,4 @@ class Proto2FileDescriptorProto {
 }
 
 /// Describes a oneof.
-typedef Proto2OneofDescriptorProto = $Shared10;
+typedef Proto2OneofDescriptorProto = $Shared00;

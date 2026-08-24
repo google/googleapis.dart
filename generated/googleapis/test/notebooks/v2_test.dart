@@ -650,6 +650,8 @@ api.ImageRelease buildImageRelease() {
   final o = api.ImageRelease();
   buildCounterImageRelease++;
   if (buildCounterImageRelease < 3) {
+    o.description = 'foo';
+    o.imageFamily = 'foo';
     o.imageName = 'foo';
     o.releaseName = 'foo';
   }
@@ -660,6 +662,8 @@ api.ImageRelease buildImageRelease() {
 void checkImageRelease(api.ImageRelease o) {
   buildCounterImageRelease++;
   if (buildCounterImageRelease < 3) {
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.imageFamily!, unittest.equals('foo'));
     unittest.expect(o.imageName!, unittest.equals('foo'));
     unittest.expect(o.releaseName!, unittest.equals('foo'));
   }
@@ -1521,14 +1525,18 @@ core.int buildCounterUpgradeInstanceRequest = 0;
 api.UpgradeInstanceRequest buildUpgradeInstanceRequest() {
   final o = api.UpgradeInstanceRequest();
   buildCounterUpgradeInstanceRequest++;
-  if (buildCounterUpgradeInstanceRequest < 3) {}
+  if (buildCounterUpgradeInstanceRequest < 3) {
+    o.imageFamily = 'foo';
+  }
   buildCounterUpgradeInstanceRequest--;
   return o;
 }
 
 void checkUpgradeInstanceRequest(api.UpgradeInstanceRequest o) {
   buildCounterUpgradeInstanceRequest++;
-  if (buildCounterUpgradeInstanceRequest < 3) {}
+  if (buildCounterUpgradeInstanceRequest < 3) {
+    unittest.expect(o.imageFamily!, unittest.equals('foo'));
+  }
   buildCounterUpgradeInstanceRequest--;
 }
 
@@ -1557,6 +1565,7 @@ api.VmImage buildVmImage() {
   buildCounterVmImage++;
   if (buildCounterVmImage < 3) {
     o.family = 'foo';
+    o.imageDescription = 'foo';
     o.name = 'foo';
     o.project = 'foo';
   }
@@ -1568,6 +1577,7 @@ void checkVmImage(api.VmImage o) {
   buildCounterVmImage++;
   if (buildCounterVmImage < 3) {
     unittest.expect(o.family!, unittest.equals('foo'));
+    unittest.expect(o.imageDescription!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.project!, unittest.equals('foo'));
   }

@@ -176,7 +176,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -191,9 +191,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2884,8 +2883,6 @@ class Deployment {
   /// same project as the deployment - The path cannot be within the path of
   /// `gcs_source` - The field cannot be updated, including changing its
   /// presence
-  ///
-  /// Optional.
   core.String? artifactsGcsBucket;
 
   /// Time when the deployment was created.
@@ -3053,8 +3050,6 @@ class Deployment {
   /// The user-specified Terraform version constraint.
   ///
   /// Example: "=1.3.10".
-  ///
-  /// Optional.
   core.String? tfVersionConstraint;
 
   /// Time when the deployment was last modified.
@@ -3069,8 +3064,6 @@ class Deployment {
   /// `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If
   /// this field is unspecified, the default Cloud Build worker pool will be
   /// used.
-  ///
-  /// Optional.
   core.String? workerPool;
 
   Deployment({
@@ -3689,20 +3682,14 @@ class GitSource {
   /// Subdirectory inside the repository.
   ///
   /// Example: 'staging/my-package'
-  ///
-  /// Optional.
   core.String? directory;
 
   /// Git reference (e.g. branch or tag).
-  ///
-  /// Optional.
   core.String? ref;
 
   /// Repository URL.
   ///
   /// Example: 'https://github.com/kubernetes/examples.git'
-  ///
-  /// Optional.
   core.String? repo;
 
   GitSource({this.directory, this.ref, this.repo});
@@ -4522,8 +4509,6 @@ class Preview {
   /// same project as the deployment - The path cannot be within the path of
   /// `gcs_source` If omitted and deployment resource ref provided has
   /// artifacts_gcs_bucket defined, that artifact bucket is used.
-  ///
-  /// Optional.
   core.String? artifactsGcsBucket;
 
   /// Cloud Build instance UUID associated with this preview.
@@ -4536,7 +4521,7 @@ class Preview {
   /// Output only.
   core.String? createTime;
 
-  /// Optional deployment reference.
+  /// Deployment reference.
   ///
   /// If specified, the preview will be performed using the provided
   /// deployment's current state and use any relevant fields from the deployment
@@ -4663,8 +4648,6 @@ class Preview {
   /// The user-specified Terraform version constraint.
   ///
   /// Example: "=1.3.10".
-  ///
-  /// Optional.
   core.String? tfVersionConstraint;
 
   /// The user-specified Worker Pool resource in which the Cloud Build job will
@@ -4674,8 +4657,6 @@ class Preview {
   /// If this field is unspecified, the default Cloud Build worker pool will be
   /// used. If omitted and deployment resource ref provided has worker_pool
   /// defined, that worker pool is used.
-  ///
-  /// Optional.
   core.String? workerPool;
 
   Preview({

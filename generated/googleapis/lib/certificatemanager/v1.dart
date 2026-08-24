@@ -134,7 +134,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -149,9 +149,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2104,6 +2103,14 @@ class Certificate {
   /// If set, defines data of a self-managed certificate.
   SelfManagedCertificate? selfManaged;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The last update timestamp of a Certificate.
   ///
   /// Output only.
@@ -2126,6 +2133,7 @@ class Certificate {
     this.sanDnsnames,
     this.scope,
     this.selfManaged,
+    this.tags,
     this.updateTime,
     this.usedBy,
   });
@@ -2159,6 +2167,9 @@ class Certificate {
                 json_['selfManaged'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         updateTime: json_['updateTime'] as core.String?,
         usedBy: (json_['usedBy'] as core.List?)
             ?.map(
@@ -2180,6 +2191,7 @@ class Certificate {
     final sanDnsnames = this.sanDnsnames;
     final scope = this.scope;
     final selfManaged = this.selfManaged;
+    final tags = this.tags;
     final updateTime = this.updateTime;
     final usedBy = this.usedBy;
     return {
@@ -2194,6 +2206,7 @@ class Certificate {
       'sanDnsnames': ?sanDnsnames,
       'scope': ?scope,
       'selfManaged': ?selfManaged,
+      'tags': ?tags,
       'updateTime': ?updateTime,
       'usedBy': ?usedBy,
     };
@@ -2303,6 +2316,14 @@ class CertificateIssuanceConfig {
   /// Required.
   core.int? rotationWindowPercentage;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The last update timestamp of a CertificateIssuanceConfig.
   ///
   /// Output only.
@@ -2317,6 +2338,7 @@ class CertificateIssuanceConfig {
     this.lifetime,
     this.name,
     this.rotationWindowPercentage,
+    this.tags,
     this.updateTime,
   });
 
@@ -2339,6 +2361,9 @@ class CertificateIssuanceConfig {
         name: json_['name'] as core.String?,
         rotationWindowPercentage:
             json_['rotationWindowPercentage'] as core.int?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -2351,6 +2376,7 @@ class CertificateIssuanceConfig {
     final lifetime = this.lifetime;
     final name = this.name;
     final rotationWindowPercentage = this.rotationWindowPercentage;
+    final tags = this.tags;
     final updateTime = this.updateTime;
     return {
       'certificateAuthorityConfig': ?certificateAuthorityConfig,
@@ -2361,6 +2387,7 @@ class CertificateIssuanceConfig {
       'lifetime': ?lifetime,
       'name': ?name,
       'rotationWindowPercentage': ?rotationWindowPercentage,
+      'tags': ?tags,
       'updateTime': ?updateTime,
     };
   }
@@ -2398,6 +2425,14 @@ class CertificateMap {
   /// /certificateMaps / * `.
   core.String? name;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The update timestamp of a Certificate Map.
   ///
   /// Output only.
@@ -2409,6 +2444,7 @@ class CertificateMap {
     this.gclbTargets,
     this.labels,
     this.name,
+    this.tags,
     this.updateTime,
   });
 
@@ -2427,6 +2463,9 @@ class CertificateMap {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -2436,6 +2475,7 @@ class CertificateMap {
     final gclbTargets = this.gclbTargets;
     final labels = this.labels;
     final name = this.name;
+    final tags = this.tags;
     final updateTime = this.updateTime;
     return {
       'createTime': ?createTime,
@@ -2443,6 +2483,7 @@ class CertificateMap {
       'gclbTargets': ?gclbTargets,
       'labels': ?labels,
       'name': ?name,
+      'tags': ?tags,
       'updateTime': ?updateTime,
     };
   }
@@ -2601,6 +2642,14 @@ class DnsAuthorization {
   /// /dnsAuthorizations / * `.
   core.String? name;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// Type of DnsAuthorization.
   ///
   /// If unset during resource creation the following default will be used: - in
@@ -2628,6 +2677,7 @@ class DnsAuthorization {
     this.domain,
     this.labels,
     this.name,
+    this.tags,
     this.type,
     this.updateTime,
   });
@@ -2647,6 +2697,9 @@ class DnsAuthorization {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         type: json_['type'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
@@ -2658,6 +2711,7 @@ class DnsAuthorization {
     final domain = this.domain;
     final labels = this.labels;
     final name = this.name;
+    final tags = this.tags;
     final type = this.type;
     final updateTime = this.updateTime;
     return {
@@ -2667,6 +2721,7 @@ class DnsAuthorization {
       'domain': ?domain,
       'labels': ?labels,
       'name': ?name,
+      'tags': ?tags,
       'type': ?type,
       'updateTime': ?updateTime,
     };
@@ -3662,6 +3717,14 @@ class TrustConfig {
   /// Optional.
   core.Map<core.String, TrustStore>? spiffeTrustStores;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// Set of trust stores to perform validation against.
   ///
   /// This field is supported when TrustConfig is configured with Load
@@ -3684,6 +3747,7 @@ class TrustConfig {
     this.labels,
     this.name,
     this.spiffeTrustStores,
+    this.tags,
     this.trustStores,
     this.updateTime,
   });
@@ -3715,6 +3779,9 @@ class TrustConfig {
                     ),
                   ),
                 ),
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         trustStores: (json_['trustStores'] as core.List?)
             ?.map(
               (value) => TrustStore.fromJson(
@@ -3733,6 +3800,7 @@ class TrustConfig {
     final labels = this.labels;
     final name = this.name;
     final spiffeTrustStores = this.spiffeTrustStores;
+    final tags = this.tags;
     final trustStores = this.trustStores;
     final updateTime = this.updateTime;
     return {
@@ -3743,6 +3811,7 @@ class TrustConfig {
       'labels': ?labels,
       'name': ?name,
       'spiffeTrustStores': ?spiffeTrustStores,
+      'tags': ?tags,
       'trustStores': ?trustStores,
       'updateTime': ?updateTime,
     };

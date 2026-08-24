@@ -1119,7 +1119,12 @@ class AllocateIdsRequest {
   /// Required.
   core.List<Key>? keys;
 
-  AllocateIdsRequest({this.databaseId, this.keys});
+  /// The options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
+  AllocateIdsRequest({this.databaseId, this.keys, this.requestOptions});
 
   AllocateIdsRequest.fromJson(core.Map json_)
     : this(
@@ -1130,12 +1135,22 @@ class AllocateIdsRequest {
                   Key.fromJson(value as core.Map<core.String, core.dynamic>),
             )
             .toList(),
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final databaseId = this.databaseId;
     final keys = this.keys;
-    return {'databaseId': ?databaseId, 'keys': ?keys};
+    final requestOptions = this.requestOptions;
+    return {
+      'databaseId': ?databaseId,
+      'keys': ?keys,
+      'requestOptions': ?requestOptions,
+    };
   }
 }
 
@@ -1224,14 +1239,28 @@ class BeginTransactionRequest {
   /// default database.
   core.String? databaseId;
 
+  /// The options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   /// Options for a new transaction.
   TransactionOptions? transactionOptions;
 
-  BeginTransactionRequest({this.databaseId, this.transactionOptions});
+  BeginTransactionRequest({
+    this.databaseId,
+    this.requestOptions,
+    this.transactionOptions,
+  });
 
   BeginTransactionRequest.fromJson(core.Map json_)
     : this(
         databaseId: json_['databaseId'] as core.String?,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         transactionOptions: json_.containsKey('transactionOptions')
             ? TransactionOptions.fromJson(
                 json_['transactionOptions']
@@ -1242,9 +1271,11 @@ class BeginTransactionRequest {
 
   core.Map<core.String, core.dynamic> toJson() {
     final databaseId = this.databaseId;
+    final requestOptions = this.requestOptions;
     final transactionOptions = this.transactionOptions;
     return {
       'databaseId': ?databaseId,
+      'requestOptions': ?requestOptions,
       'transactionOptions': ?transactionOptions,
     };
   }
@@ -1305,6 +1336,11 @@ class CommitRequest {
   /// no two mutations may affect a single entity.
   core.List<Mutation>? mutations;
 
+  /// The options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   /// Options for beginning a new transaction for this request.
   ///
   /// The transaction is committed when the request completes. If specified,
@@ -1330,6 +1366,7 @@ class CommitRequest {
     this.databaseId,
     this.mode,
     this.mutations,
+    this.requestOptions,
     this.singleUseTransaction,
     this.transaction,
   });
@@ -1345,6 +1382,11 @@ class CommitRequest {
               ),
             )
             .toList(),
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         singleUseTransaction: json_.containsKey('singleUseTransaction')
             ? TransactionOptions.fromJson(
                 json_['singleUseTransaction']
@@ -1358,12 +1400,14 @@ class CommitRequest {
     final databaseId = this.databaseId;
     final mode = this.mode;
     final mutations = this.mutations;
+    final requestOptions = this.requestOptions;
     final singleUseTransaction = this.singleUseTransaction;
     final transaction = this.transaction;
     return {
       'databaseId': ?databaseId,
       'mode': ?mode,
       'mutations': ?mutations,
+      'requestOptions': ?requestOptions,
       'singleUseTransaction': ?singleUseTransaction,
       'transaction': ?transaction,
     };
@@ -2442,11 +2486,17 @@ class LookupRequest {
   /// The options for this lookup request.
   ReadOptions? readOptions;
 
+  /// The options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   LookupRequest({
     this.databaseId,
     this.keys,
     this.propertyMask,
     this.readOptions,
+    this.requestOptions,
   });
 
   LookupRequest.fromJson(core.Map json_)
@@ -2468,6 +2518,11 @@ class LookupRequest {
                 json_['readOptions'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -2475,11 +2530,13 @@ class LookupRequest {
     final keys = this.keys;
     final propertyMask = this.propertyMask;
     final readOptions = this.readOptions;
+    final requestOptions = this.requestOptions;
     return {
       'databaseId': ?databaseId,
       'keys': ?keys,
       'propertyMask': ?propertyMask,
       'readOptions': ?readOptions,
+      'requestOptions': ?requestOptions,
     };
   }
 }
@@ -3601,6 +3658,31 @@ class ReadWrite {
   }
 }
 
+/// Options for a request.
+class RequestOptions {
+  /// The request tags for the request.
+  ///
+  /// The tags are processed as follows: - Truncated to 510 characters. -
+  /// Filtered out if empty. - Deduplicated. - Limited to 50 tags.
+  ///
+  /// Optional.
+  core.List<core.String>? requestTags;
+
+  RequestOptions({this.requestTags});
+
+  RequestOptions.fromJson(core.Map json_)
+    : this(
+        requestTags: (json_['requestTags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestTags = this.requestTags;
+    return {'requestTags': ?requestTags};
+  }
+}
+
 /// The request for Datastore.ReserveIds.
 class ReserveIdsRequest {
   /// The ID of the database against which to make the request.
@@ -3615,7 +3697,12 @@ class ReserveIdsRequest {
   /// Required.
   core.List<Key>? keys;
 
-  ReserveIdsRequest({this.databaseId, this.keys});
+  /// The options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
+  ReserveIdsRequest({this.databaseId, this.keys, this.requestOptions});
 
   ReserveIdsRequest.fromJson(core.Map json_)
     : this(
@@ -3626,12 +3713,22 @@ class ReserveIdsRequest {
                   Key.fromJson(value as core.Map<core.String, core.dynamic>),
             )
             .toList(),
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final databaseId = this.databaseId;
     final keys = this.keys;
-    return {'databaseId': ?databaseId, 'keys': ?keys};
+    final requestOptions = this.requestOptions;
+    return {
+      'databaseId': ?databaseId,
+      'keys': ?keys,
+      'requestOptions': ?requestOptions,
+    };
   }
 }
 
@@ -3645,6 +3742,11 @@ class RollbackRequest {
   /// '(default)' is not allowed; please use empty string '' to refer the
   /// default database.
   core.String? databaseId;
+
+  /// The options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
 
   /// The transaction identifier, returned by a call to
   /// Datastore.BeginTransaction.
@@ -3661,18 +3763,28 @@ class RollbackRequest {
         .replaceAll('+', '-');
   }
 
-  RollbackRequest({this.databaseId, this.transaction});
+  RollbackRequest({this.databaseId, this.requestOptions, this.transaction});
 
   RollbackRequest.fromJson(core.Map json_)
     : this(
         databaseId: json_['databaseId'] as core.String?,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         transaction: json_['transaction'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final databaseId = this.databaseId;
+    final requestOptions = this.requestOptions;
     final transaction = this.transaction;
-    return {'databaseId': ?databaseId, 'transaction': ?transaction};
+    return {
+      'databaseId': ?databaseId,
+      'requestOptions': ?requestOptions,
+      'transaction': ?transaction,
+    };
   }
 }
 
@@ -3714,6 +3826,11 @@ class RunAggregationQueryRequest {
   /// The options for this query.
   ReadOptions? readOptions;
 
+  /// The options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   RunAggregationQueryRequest({
     this.aggregationQuery,
     this.databaseId,
@@ -3721,6 +3838,7 @@ class RunAggregationQueryRequest {
     this.gqlQuery,
     this.partitionId,
     this.readOptions,
+    this.requestOptions,
   });
 
   RunAggregationQueryRequest.fromJson(core.Map json_)
@@ -3752,6 +3870,11 @@ class RunAggregationQueryRequest {
                 json_['readOptions'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -3761,6 +3884,7 @@ class RunAggregationQueryRequest {
     final gqlQuery = this.gqlQuery;
     final partitionId = this.partitionId;
     final readOptions = this.readOptions;
+    final requestOptions = this.requestOptions;
     return {
       'aggregationQuery': ?aggregationQuery,
       'databaseId': ?databaseId,
@@ -3768,6 +3892,7 @@ class RunAggregationQueryRequest {
       'gqlQuery': ?gqlQuery,
       'partitionId': ?partitionId,
       'readOptions': ?readOptions,
+      'requestOptions': ?requestOptions,
     };
   }
 }
@@ -3885,6 +4010,11 @@ class RunQueryRequest {
   /// The options for this query.
   ReadOptions? readOptions;
 
+  /// The options for this request.
+  ///
+  /// Optional.
+  RequestOptions? requestOptions;
+
   RunQueryRequest({
     this.databaseId,
     this.explainOptions,
@@ -3893,6 +4023,7 @@ class RunQueryRequest {
     this.propertyMask,
     this.query,
     this.readOptions,
+    this.requestOptions,
   });
 
   RunQueryRequest.fromJson(core.Map json_)
@@ -3928,6 +4059,11 @@ class RunQueryRequest {
                 json_['readOptions'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        requestOptions: json_.containsKey('requestOptions')
+            ? RequestOptions.fromJson(
+                json_['requestOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -3938,6 +4074,7 @@ class RunQueryRequest {
     final propertyMask = this.propertyMask;
     final query = this.query;
     final readOptions = this.readOptions;
+    final requestOptions = this.requestOptions;
     return {
       'databaseId': ?databaseId,
       'explainOptions': ?explainOptions,
@@ -3946,6 +4083,7 @@ class RunQueryRequest {
       'propertyMask': ?propertyMask,
       'query': ?query,
       'readOptions': ?readOptions,
+      'requestOptions': ?requestOptions,
     };
   }
 }

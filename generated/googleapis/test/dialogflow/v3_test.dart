@@ -3146,6 +3146,7 @@ buildGoogleCloudDialogflowCxV3Fulfillment() {
   buildCounterGoogleCloudDialogflowCxV3Fulfillment++;
   if (buildCounterGoogleCloudDialogflowCxV3Fulfillment < 3) {
     o.advancedSettings = buildGoogleCloudDialogflowCxV3AdvancedSettings();
+    o.codeBlockFunction = 'foo';
     o.conditionalCases = buildUnnamed46();
     o.enableGenerativeFallback = true;
     o.generators = buildUnnamed47();
@@ -3165,6 +3166,7 @@ void checkGoogleCloudDialogflowCxV3Fulfillment(
   buildCounterGoogleCloudDialogflowCxV3Fulfillment++;
   if (buildCounterGoogleCloudDialogflowCxV3Fulfillment < 3) {
     checkGoogleCloudDialogflowCxV3AdvancedSettings(o.advancedSettings!);
+    unittest.expect(o.codeBlockFunction!, unittest.equals('foo'));
     checkUnnamed46(o.conditionalCases!);
     unittest.expect(o.enableGenerativeFallback!, unittest.isTrue);
     checkUnnamed47(o.generators!);

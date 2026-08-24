@@ -274,10 +274,12 @@ class Entitlement {
 
   /// Expiration time of the entitlement.
   ///
-  /// Entitlements that have expired over 30 days will be purged. The max
-  /// expire_time is 398 days from now().
+  /// If unset, the entitlement does not expire (indefinite entitlement). We
+  /// need to support indefinite entitlements for platform publishers. dd:
+  /// go/rrm-sl-notedotcom Entitlements that have expired over 30 days will be
+  /// purged.
   ///
-  /// Required.
+  /// Optional.
   core.String? expireTime;
 
   /// The publication's product ID that the user has access to.

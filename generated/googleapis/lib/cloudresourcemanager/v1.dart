@@ -2305,7 +2305,7 @@ typedef Lien = $Lien;
 
 /// The request sent to the `ListAvailableOrgPolicyConstraints` method on the
 /// project, folder, or organization.
-typedef ListAvailableOrgPolicyConstraintsRequest = $Request07;
+typedef ListAvailableOrgPolicyConstraintsRequest = $Request08;
 
 /// The response returned from the `ListAvailableOrgPolicyConstraints` method.
 ///
@@ -2406,7 +2406,7 @@ class ListLiensResponse {
 }
 
 /// The request sent to the ListOrgPolicies method.
-typedef ListOrgPoliciesRequest = $Request07;
+typedef ListOrgPoliciesRequest = $Request08;
 
 /// The response returned from the `ListOrgPolicies` method.
 ///

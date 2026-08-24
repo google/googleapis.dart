@@ -5239,6 +5239,8 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "FEATURE_VIEW" : Feature View resource in Vertex AI Feature Store.
   /// - "FEATURE_GROUP" : Feature Group resource in Vertex AI Feature Store.
   /// - "GRAPH" : An entry type for a graph.
+  /// - "NODE" : An entry type for a graph node.
+  /// - "EDGE" : An entry type for a graph edge.
   core.String? type;
 
   /// Resource usage statistics.

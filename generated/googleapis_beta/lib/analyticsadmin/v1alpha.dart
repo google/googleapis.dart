@@ -309,7 +309,9 @@ class AccountsResource {
   ///
   /// Note that these accounts might not currently have GA properties.
   /// Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an
-  /// empty list if no relevant accounts are found.
+  /// empty list if no relevant accounts are found. Note: The easiest way to
+  /// retrieve a list of all properties you have access to is by using
+  /// `ListAccountSummaries`.
   ///
   /// Request parameters:
   ///
@@ -1869,6 +1871,60 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the reporting identity settings for this property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. Resource name for this reporting
+  /// identity settings singleton resource. Format:
+  /// properties/{property_id}/reportingIdentitySettings Example:
+  /// "properties/1234/reportingIdentitySettings"
+  /// Value must have pattern `^properties/\[^/\]+/reportingIdentitySettings$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to be updated. Field names
+  /// must be in snake case (for example, "field_to_update"). Omitted fields
+  /// will not be updated. To replace the entire entity, use one path with the
+  /// string "*" to match all fields. If omitted, the service will treat it as
+  /// an implied field mask equivalent to all fields that are populated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaReportingIdentitySettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaReportingIdentitySettings>
+  updateReportingIdentitySettings(
+    GoogleAnalyticsAdminV1alphaReportingIdentitySettings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaReportingIdentitySettings.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3726,6 +3782,11 @@ class PropertiesCustomDimensionsResource {
   }
 
   /// Creates a CustomDimension.
+  ///
+  /// Warning: It's not permissible to use this method to collect data on
+  /// individual users. In particular, sending user IDs in custom dimensions
+  /// violates the
+  /// [Google Analytics Terms of Service](https://www.google.com/analytics/terms/).
   ///
   /// [request] - The metadata request object.
   ///

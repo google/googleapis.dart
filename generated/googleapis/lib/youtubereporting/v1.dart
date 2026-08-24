@@ -1257,6 +1257,18 @@ class GdataMedia {
   }
 
   /// gdata
+  core.String? sha512Hash;
+  core.List<core.int> get sha512HashAsBytes =>
+      convert.base64.decode(sha512Hash!);
+
+  set sha512HashAsBytes(core.List<core.int> bytes_) {
+    sha512Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// gdata
   core.String? timestamp;
 
   /// gdata
@@ -1291,6 +1303,7 @@ class GdataMedia {
     this.referenceType,
     this.sha1Hash,
     this.sha256Hash,
+    this.sha512Hash,
     this.timestamp,
     this.token,
   });
@@ -1373,6 +1386,7 @@ class GdataMedia {
         referenceType: json_['referenceType'] as core.String?,
         sha1Hash: json_['sha1Hash'] as core.String?,
         sha256Hash: json_['sha256Hash'] as core.String?,
+        sha512Hash: json_['sha512Hash'] as core.String?,
         timestamp: json_['timestamp'] as core.String?,
         token: json_['token'] as core.String?,
       );
@@ -1406,6 +1420,7 @@ class GdataMedia {
     final referenceType = this.referenceType;
     final sha1Hash = this.sha1Hash;
     final sha256Hash = this.sha256Hash;
+    final sha512Hash = this.sha512Hash;
     final timestamp = this.timestamp;
     final token = this.token;
     return {
@@ -1437,6 +1452,7 @@ class GdataMedia {
       'referenceType': ?referenceType,
       'sha1Hash': ?sha1Hash,
       'sha256Hash': ?sha256Hash,
+      'sha512Hash': ?sha512Hash,
       'timestamp': ?timestamp,
       'token': ?token,
     };

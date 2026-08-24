@@ -18,9 +18,9 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Firebase Data Connect API - v1
+/// Firebase SQL Connect API - v1
 ///
-/// Firebase Data Connect is a relational database service for mobile and web
+/// Firebase SQL Connect is a relational database service for mobile and web
 /// apps that lets you build and scale using a fully-managed PostgreSQL database
 /// powered by Cloud SQL. The REST API lets developers manage the connections to
 /// their database, change the schema of their database, and query the database.
@@ -50,7 +50,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Firebase Data Connect is a relational database service for mobile and web
+/// Firebase SQL Connect is a relational database service for mobile and web
 /// apps that lets you build and scale using a fully-managed PostgreSQL database
 /// powered by Cloud SQL.
 ///
@@ -132,7 +132,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -147,9 +147,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -541,7 +540,7 @@ class ProjectsLocationsServicesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Execute any GraphQL query and mutation against the Firebase Data Connect's
+  /// Execute any GraphQL query or mutation against the Firebase SQL Connect's
   /// generated GraphQL schema.
   ///
   /// Grants full read and write access to the connected data sources. Note: Use
@@ -551,7 +550,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative resource name of Firebase Data Connect
+  /// [name] - Required. The relative resource name of Firebase SQL Connect
   /// service, in the format: ```
   /// projects/{project}/locations/{location}/services/{service} ```
   /// Value must have pattern
@@ -590,7 +589,7 @@ class ProjectsLocationsServicesResource {
     );
   }
 
-  /// Execute any GraphQL query against the Firebase Data Connect's generated
+  /// Execute any GraphQL query against the Firebase SQL Connect's generated
   /// GraphQL schema.
   ///
   /// Grants full read to the connected data sources. `ExecuteGraphqlRead` is
@@ -600,7 +599,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative resource name of Firebase Data Connect
+  /// [name] - Required. The relative resource name of Firebase SQL Connect
   /// service, in the format: ```
   /// projects/{project}/locations/{location}/services/{service} ```
   /// Value must have pattern
@@ -639,6 +638,105 @@ class ProjectsLocationsServicesResource {
     );
   }
 
+  /// Generates a GraphQL query based on a natural language prompt and the
+  /// provided schema context.
+  ///
+  /// This is a stateless method; the schema is provided per request to support
+  /// local development states. Streams results with real-time status and output
+  /// chunks.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the service in which to generate
+  /// the query. Format:
+  /// projects/{project}/locations/{location}/services/{service}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateQueryResponse> generateQuery(
+    GenerateQueryRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':generateQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenerateQueryResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Generates GraphQL schema based on a natural language prompt or data
+  /// description.
+  ///
+  /// This allows users to scaffold new types and tables quickly. Streams
+  /// results with real-time status and output chunks.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the service in which to generate
+  /// the schema. Format:
+  /// projects/{project}/locations/{location}/services/{service}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateSchemaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateSchemaResponse> generateSchema(
+    GenerateSchemaRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':generateSchema';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenerateSchemaResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Gets details of a single Service.
   ///
   /// Request parameters:
@@ -673,7 +771,7 @@ class ProjectsLocationsServicesResource {
     return Service.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Execute introspection query against the Firebase Data Connect's generated
+  /// Execute introspection query against the Firebase SQL Connect's generated
   /// GraphQL schema.
   ///
   /// GraphQL introspection query provides metadata such as what tables the
@@ -686,7 +784,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The relative resource name of Firebase Data Connect
+  /// [name] - Required. The relative resource name of Firebase SQL Connect
   /// service, in the format: ```
   /// projects/{project}/locations/{location}/services/{service} ```
   /// Value must have pattern
@@ -788,12 +886,11 @@ class ProjectsLocationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. The relative resource name of the Firebase Data
+  /// [name] - Identifier. The relative resource name of the Firebase SQL
   /// Connect service, in the format: ```
   /// projects/{project}/locations/{location}/services/{service} ``` Note that
-  /// the service ID is specific to Firebase Data Connect and does not
-  /// correspond to any of the instance IDs of the underlying data source
-  /// connections.
+  /// the service ID is specific to Firebase SQL Connect and does not correspond
+  /// to any of the instance IDs of the underlying data source connections.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -1137,7 +1234,7 @@ class ProjectsLocationsServicesConnectorsResource {
     return Connector.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Impersonate a mutation defined on a Firebase Data Connect connector.
+  /// Impersonate a mutation defined on a Firebase SQL Connect connector.
   ///
   /// It grants the admin SDK access to mutations defined in the given
   /// connector. The caller can choose to impersonate a particular Firebase Auth
@@ -1187,7 +1284,7 @@ class ProjectsLocationsServicesConnectorsResource {
     );
   }
 
-  /// Impersonate a query defined on a Firebase Data Connect connector.
+  /// Impersonate a query defined on a Firebase SQL Connect connector.
   ///
   /// It grants the admin SDK access to queries defined in the given connector.
   /// The caller can choose to impersonate a particular Firebase Auth user, or
@@ -1748,20 +1845,62 @@ class ClientCache {
 
 /// Settings for CloudSQL instance configuration.
 class CloudSqlInstance {
+  /// The Cloud SQL instance edition.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : Unspecified edition.
+  /// - "EDITION_ENTERPRISE" : Enterprise edition.
+  /// - "EDITION_ENTERPRISE_PLUS" : Enterprise Plus edition.
+  /// - "EDITION_DEVELOPER" : Developer edition (includes AI Developer edition).
+  core.String? edition;
+
   /// Name of the CloudSQL instance, in the format: ```
   /// projects/{project}/locations/{location}/instances/{instance} ```
   ///
   /// Required.
   core.String? instance;
 
-  CloudSqlInstance({this.instance});
+  CloudSqlInstance({this.edition, this.instance});
 
   CloudSqlInstance.fromJson(core.Map json_)
-    : this(instance: json_['instance'] as core.String?);
+    : this(
+        edition: json_['edition'] as core.String?,
+        instance: json_['instance'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final edition = this.edition;
     final instance = this.instance;
-    return {'instance': ?instance};
+    return {'edition': ?edition, 'instance': ?instance};
+  }
+}
+
+/// A chunk of code.
+class CodeChunk {
+  /// The code content string.
+  ///
+  /// Required.
+  core.String? code;
+
+  /// Specifies the language if we expand support beyond GraphQL (e.g., SQL or
+  /// JSON) The standard is BCP-47 language code.
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  CodeChunk({this.code, this.languageCode});
+
+  CodeChunk.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final languageCode = this.languageCode;
+    return {'code': ?code, 'languageCode': ?languageCode};
   }
 }
 
@@ -1901,7 +2040,7 @@ class Connector {
   }
 }
 
-/// Data Connect specific properties for a path under response.data.
+/// SQL Connect specific properties for a path under response.data.
 class DataConnectProperties {
   /// A single Entity ID.
   ///
@@ -1957,7 +2096,7 @@ class DataConnectProperties {
   }
 }
 
-/// A data source that backs Firebase Data Connect services.
+/// A data source that backs Firebase SQL Connect services.
 class Datasource {
   /// HTTP GraphQL server webhook configurations.
   HttpGraphql? httpGraphql;
@@ -1996,10 +2135,10 @@ class Datasource {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// The ExecuteMutation request to Firebase Data Connect.
-typedef ExecuteMutationRequest = $Request10;
+/// The ExecuteMutation request to Firebase SQL Connect.
+typedef ExecuteMutationRequest = $Request11;
 
-/// The ExecuteMutation response from Firebase Data Connect.
+/// The ExecuteMutation response from Firebase SQL Connect.
 class ExecuteMutationResponse {
   /// The result of executing the requested operation.
   ///
@@ -2042,10 +2181,10 @@ class ExecuteMutationResponse {
   }
 }
 
-/// The ExecuteQuery request to Firebase Data Connect.
-typedef ExecuteQueryRequest = $Request10;
+/// The ExecuteQuery request to Firebase SQL Connect.
+typedef ExecuteQueryRequest = $Request11;
 
-/// The ExecuteQuery response from Firebase Data Connect.
+/// The ExecuteQuery response from Firebase SQL Connect.
 class ExecuteQueryResponse {
   /// The result of executing the requested operation.
   ///
@@ -2119,18 +2258,172 @@ class File {
   }
 }
 
+/// Request message for GenerateQuery.
+class GenerateQueryRequest {
+  /// The natural language description of the desired query.
+  ///
+  /// Example: "Find all users who signed up in the last 7 days."
+  ///
+  /// Required.
+  core.String? prompt;
+
+  /// The user's locally defined FDC Schema(s).
+  ///
+  /// If not defined, the backend will fetch the user's deployed schema.
+  ///
+  /// Optional.
+  core.List<Schema>? schemas;
+
+  GenerateQueryRequest({this.prompt, this.schemas});
+
+  GenerateQueryRequest.fromJson(core.Map json_)
+    : this(
+        prompt: json_['prompt'] as core.String?,
+        schemas: (json_['schemas'] as core.List?)
+            ?.map(
+              (value) =>
+                  Schema.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final prompt = this.prompt;
+    final schemas = this.schemas;
+    return {'prompt': ?prompt, 'schemas': ?schemas};
+  }
+}
+
+/// Output for streaming generate query requests
+class GenerateQueryResponse {
+  /// The content from the current conversational turn.
+  ///
+  /// Required.
+  Part? part;
+
+  /// Essential for providing responsive UI feedback (e.g., a spinner or
+  /// "Analyzing schema..." step).
+  GenerationStatus? status;
+
+  GenerateQueryResponse({this.part, this.status});
+
+  GenerateQueryResponse.fromJson(core.Map json_)
+    : this(
+        part: json_.containsKey('part')
+            ? Part.fromJson(
+                json_['part'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        status: json_.containsKey('status')
+            ? GenerationStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final part = this.part;
+    final status = this.status;
+    return {'part': ?part, 'status': ?status};
+  }
+}
+
+/// Request message for GenerateSchema.
+class GenerateSchemaRequest {
+  /// The natural language description of the data model to generate.
+  ///
+  /// Example: "A blog system with Users, Posts, and Comments. Users can have
+  /// multiple posts."
+  ///
+  /// Required.
+  core.String? prompt;
+
+  GenerateSchemaRequest({this.prompt});
+
+  GenerateSchemaRequest.fromJson(core.Map json_)
+    : this(prompt: json_['prompt'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final prompt = this.prompt;
+    return {'prompt': ?prompt};
+  }
+}
+
+/// Output for streaming generate schema requests
+class GenerateSchemaResponse {
+  /// The content from the current conversational turn.
+  Part? part;
+
+  /// Essential for providing responsive UI feedback (e.g., a spinner or
+  /// "Analyzing schema..." step).
+  GenerationStatus? status;
+
+  GenerateSchemaResponse({this.part, this.status});
+
+  GenerateSchemaResponse.fromJson(core.Map json_)
+    : this(
+        part: json_.containsKey('part')
+            ? Part.fromJson(
+                json_['part'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        status: json_.containsKey('status')
+            ? GenerationStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final part = this.part;
+    final status = this.status;
+    return {'part': ?part, 'status': ?status};
+  }
+}
+
+/// Represents the progress of the server side generation request.
+class GenerationStatus {
+  /// A message providing more details about the state.
+  ///
+  /// Output only.
+  core.String? message;
+
+  /// The state of generation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "ANALYZING_CODE" : The agent is analyzing schema or operations.
+  /// - "GENERATING_CODE" : The agent is generating code
+  /// - "COMPLETED" : Generation is complete.
+  core.String? state;
+
+  GenerationStatus({this.message, this.state});
+
+  GenerationStatus.fromJson(core.Map json_)
+    : this(
+        message: json_['message'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final state = this.state;
+    return {'message': ?message, 'state': ?state};
+  }
+}
+
 /// GraphqlError conforms to the GraphQL error spec.
 ///
-/// https://spec.graphql.org/draft/#sec-Errors Firebase Data Connect API
-/// surfaces `GraphqlError` in various APIs: - Upon compile error,
-/// `UpdateSchema` and `UpdateConnector` return Code.Invalid_Argument with a
-/// list of `GraphqlError` in error details. - Upon query compile error,
-/// `ExecuteGraphql`, `ExecuteGraphqlRead` and `IntrospectGraphql` return
-/// Code.OK with a list of `GraphqlError` in response body. - Upon query
-/// execution error, `ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation`,
-/// `ExecuteQuery`, `IntrospectGraphql`, `ImpersonateQuery` and
-/// `ImpersonateMutation` all return Code.OK with a list of `GraphqlError` in
-/// response body.
+/// https://spec.graphql.org/draft/#sec-Errors Firebase SQL Connect API surfaces
+/// `GraphqlError` in various APIs: - Upon compile error, `UpdateSchema` and
+/// `UpdateConnector` return Code.Invalid_Argument with a list of `GraphqlError`
+/// in error details. - Upon query compile error, `ExecuteGraphql`,
+/// `ExecuteGraphqlRead` and `IntrospectGraphql` return Code.OK with a list of
+/// `GraphqlError` in response body. - Upon query execution error,
+/// `ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation`, `ExecuteQuery`,
+/// `IntrospectGraphql`, `ImpersonateQuery` and `ImpersonateMutation` all return
+/// Code.OK with a list of `GraphqlError` in response body.
 class GraphqlError {
   /// Additional error information.
   GraphqlErrorExtensions? extensions;
@@ -2286,7 +2579,7 @@ class GraphqlErrorExtensions {
   /// More detailed error message to assist debugging.
   ///
   /// It contains application business logic that are inappropriate to leak
-  /// publicly. In the emulator, Data Connect API always includes it to assist
+  /// publicly. In the emulator, SQL Connect API always includes it to assist
   /// local development and debugging. In the backend, ConnectorService always
   /// hides it. GraphqlService without impersonation always include it.
   /// GraphqlService with impersonation includes it only if explicitly opted-in
@@ -2353,7 +2646,7 @@ class GraphqlErrorExtensions {
   }
 }
 
-/// The GraphQL request to Firebase Data Connect.
+/// The GraphQL request to Firebase SQL Connect.
 ///
 /// It strives to match the GraphQL over HTTP spec.
 /// https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#post
@@ -2447,9 +2740,9 @@ class GraphqlRequestExtensions {
   }
 }
 
-/// The GraphQL response from Firebase Data Connect.
+/// The GraphQL response from Firebase SQL Connect.
 ///
-/// It strives to match the GraphQL over HTTP spec. Note: Firebase Data Connect
+/// It strives to match the GraphQL over HTTP spec. Note: Firebase SQL Connect
 /// always responds with `Content-Type: application/json`.
 /// https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#body
 class GraphqlResponse {
@@ -2509,7 +2802,7 @@ class GraphqlResponse {
 /// GraphqlResponseExtensions contains additional information of
 /// `GraphqlResponse` or `ExecuteQueryResponse`.
 class GraphqlResponseExtensions {
-  /// Data Connect specific GraphQL extension, a list of paths and properties.
+  /// SQL Connect specific GraphQL extension, a list of paths and properties.
   core.List<DataConnectProperties>? dataConnect;
 
   GraphqlResponseExtensions({this.dataConnect});
@@ -2558,7 +2851,7 @@ class HttpGraphql {
   }
 }
 
-/// The Impersonate request to Firebase Data Connect.
+/// The Impersonate request to Firebase SQL Connect.
 class ImpersonateRequest {
   /// Additional GraphQL request information.
   ///
@@ -2955,6 +3248,41 @@ class Operation {
   }
 }
 
+/// Represents a chunk of content.
+class Part {
+  /// A chunk of code.
+  ///
+  /// Optional.
+  CodeChunk? codeChunk;
+
+  /// A chunk of text.
+  ///
+  /// Optional.
+  TextChunk? textChunk;
+
+  Part({this.codeChunk, this.textChunk});
+
+  Part.fromJson(core.Map json_)
+    : this(
+        codeChunk: json_.containsKey('codeChunk')
+            ? CodeChunk.fromJson(
+                json_['codeChunk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textChunk: json_.containsKey('textChunk')
+            ? TextChunk.fromJson(
+                json_['textChunk'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final codeChunk = this.codeChunk;
+    final textChunk = this.textChunk;
+    return {'codeChunk': ?codeChunk, 'textChunk': ?textChunk};
+  }
+}
+
 /// Settings for PostgreSQL data source.
 class PostgreSql {
   /// Cloud SQL configurations.
@@ -2965,18 +3293,18 @@ class PostgreSql {
   /// Required.
   core.String? database;
 
-  /// Ephemeral is true if this data connect service is served from temporary
+  /// Ephemeral is true if this SQL Connect service is served from temporary
   /// in-memory emulation of Postgres.
   ///
-  /// While Cloud SQL is being provisioned, the data connect service provides
-  /// the ephemeral service to help developers get started. Once the Cloud SQL
-  /// is provisioned, Data Connect service will transfer its data on a
-  /// best-effort basis to the Cloud SQL instance. WARNING: Ephemeral data
-  /// sources will expire after 24 hour. The data will be lost if they aren't
-  /// transferred to the Cloud SQL instance. WARNING: When `ephemeral=true`,
-  /// mutations to the database are not guaranteed to be durably persisted, even
-  /// if an OK status code is returned. All or parts of the data may be lost or
-  /// reverted to earlier versions.
+  /// While Cloud SQL is being provisioned, the SQL Connect service provides the
+  /// ephemeral service to help developers get started. Once the Cloud SQL is
+  /// provisioned, SQL Connect service will transfer its data on a best-effort
+  /// basis to the Cloud SQL instance. WARNING: Ephemeral data sources will
+  /// expire after 24 hour. The data will be lost if they aren't transferred to
+  /// the Cloud SQL instance. WARNING: When `ephemeral=true`, mutations to the
+  /// database are not guaranteed to be durably persisted, even if an OK status
+  /// code is returned. All or parts of the data may be lost or reverted to
+  /// earlier versions.
   ///
   /// Output only.
   core.bool? ephemeral;
@@ -2988,38 +3316,43 @@ class PostgreSql {
   /// Optional.
   core.String? schema;
 
-  /// Configure how to perform Postgresql schema migration.
+  /// Configure how to perform automatic PostgreSQL schema migration before
+  /// deploying the FDC schema.
+  ///
+  /// This is an additive-only operation.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "SQL_SCHEMA_MIGRATION_UNSPECIFIED" : Unspecified SQL schema migration.
-  /// - "MIGRATE_COMPATIBLE" : Connect to the SQL database and identify any
-  /// missing SQL resources used in the given Firebase Data Connect Schema.
-  /// Automatically create necessary SQL resources (SQL table, column, etc)
-  /// before deploying the schema. During migration steps, the SQL Schema must
-  /// comply with the previous before_deploy setting in case the migration is
-  /// interrupted. Therefore, the previous before_deploy setting must not be
-  /// `schema_validation=STRICT`.
+  /// - "MIGRATE_COMPATIBLE" : Waits for the Cloud SQL instance to be
+  /// provisioned and automatically creates necessary SQL resources (tables,
+  /// columns, etc.) to match the desired FDC schema. This operation is strictly
+  /// additive and executes as a Long-Running Operation during provisioning.
+  /// Rejects migrations on a non-empty existing SQL schema.
   core.String? schemaMigration;
 
-  /// Configure how much Postgresql schema validation to perform.
+  /// Configure how much PostgreSQL schema validation to perform against the
+  /// live database before deploying the FDC schema.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "SQL_SCHEMA_VALIDATION_UNSPECIFIED" : Unspecified SQL schema validation.
-  /// Default to STRICT.
-  /// - "NONE" : Skip no SQL schema validation. Use it with extreme caution.
-  /// CreateSchema or UpdateSchema will succeed even if SQL database is
-  /// unavailable or SQL schema is incompatible. Generated SQL may fail at
-  /// execution time.
-  /// - "STRICT" : Connect to the SQL database and validate that the SQL DDL
-  /// matches the schema exactly. Surface any discrepancies as
-  /// `FAILED_PRECONDITION` with an `IncompatibleSqlSchemaError` error detail.
-  /// - "COMPATIBLE" : Connect to the SQL database and validate that the SQL DDL
-  /// has all the SQL resources used in the given Firebase Data Connect Schema.
-  /// Surface any missing resources as `FAILED_PRECONDITION` with an
-  /// `IncompatibleSqlSchemaError` error detail. Succeed even if there are
-  /// unknown tables and columns.
+  /// Defaults to STRICT.
+  /// - "NONE" : Skips SQL schema validation. Deployment succeeds even if the
+  /// database is pending provisioning, unavailable, or incompatible. Under
+  /// NONE, newly created services route requests to a temporary ephemeral
+  /// database (in-memory emulation) so the API can be tested immediately.
+  /// Ephemeral data expires after 24 hours unless successfully validated or
+  /// migrated to a linked database.
+  /// - "STRICT" : Connects to the SQL database and validates that the SQL DDL
+  /// matches the FDC schema exactly. Any discrepancies (extra or missing
+  /// tables/columns) result in a FAILED_PRECONDITION error with required SQL
+  /// diffs. Recommended for greenfield projects to ensure full schema
+  /// consistency.
+  /// - "COMPATIBLE" : Connects to the SQL database and validates that it
+  /// contains all the SQL resources required by the FDC schema. Succeeds even
+  /// if the database contains additional tables or columns not used by FDC.
+  /// Suitable when sharing a database with other tools or legacy applications.
   core.String? schemaValidation;
 
   /// No Postgres data source is linked.
@@ -3075,7 +3408,7 @@ class PostgreSql {
   }
 }
 
-/// The application schema of a Firebase Data Connect service.
+/// The application schema of a Firebase SQL Connect service.
 class Schema {
   /// Stores small amounts of arbitrary data.
   ///
@@ -3213,12 +3546,17 @@ class Schema {
   }
 }
 
-/// A Firebase Data Connect service.
+/// A Firebase SQL Connect service.
 class Service {
   /// Stores small amounts of arbitrary data.
   ///
   /// Optional.
   core.Map<core.String, core.String>? annotations;
+
+  /// The list of connectors in this service.
+  ///
+  /// Output only.
+  core.List<Connector>? connectors;
 
   /// Create time stamp.
   ///
@@ -3248,9 +3586,9 @@ class Service {
 
   /// Identifier.
   ///
-  /// The relative resource name of the Firebase Data Connect service, in the
+  /// The relative resource name of the Firebase SQL Connect service, in the
   /// format: ``` projects/{project}/locations/{location}/services/{service} ```
-  /// Note that the service ID is specific to Firebase Data Connect and does not
+  /// Note that the service ID is specific to Firebase SQL Connect and does not
   /// correspond to any of the instance IDs of the underlying data source
   /// connections.
   core.String? name;
@@ -3260,6 +3598,18 @@ class Service {
   ///
   /// Output only.
   core.bool? reconciling;
+
+  /// The list of schemas in this service.
+  ///
+  /// Output only.
+  core.List<Schema>? schemas;
+
+  /// Input only.
+  ///
+  /// The source files for service, schemas, and connectors.
+  ///
+  /// Optional.
+  Source? source;
 
   /// System-assigned, unique identifier.
   ///
@@ -3273,12 +3623,15 @@ class Service {
 
   Service({
     this.annotations,
+    this.connectors,
     this.createTime,
     this.displayName,
     this.etag,
     this.labels,
     this.name,
     this.reconciling,
+    this.schemas,
+    this.source,
     this.uid,
     this.updateTime,
   });
@@ -3289,6 +3642,13 @@ class Service {
             (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(key, value as core.String),
             ),
+        connectors: (json_['connectors'] as core.List?)
+            ?.map(
+              (value) => Connector.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
@@ -3297,28 +3657,45 @@ class Service {
         ),
         name: json_['name'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
+        schemas: (json_['schemas'] as core.List?)
+            ?.map(
+              (value) =>
+                  Schema.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        source: json_.containsKey('source')
+            ? Source.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final annotations = this.annotations;
+    final connectors = this.connectors;
     final createTime = this.createTime;
     final displayName = this.displayName;
     final etag = this.etag;
     final labels = this.labels;
     final name = this.name;
     final reconciling = this.reconciling;
+    final schemas = this.schemas;
+    final source = this.source;
     final uid = this.uid;
     final updateTime = this.updateTime;
     return {
       'annotations': ?annotations,
+      'connectors': ?connectors,
       'createTime': ?createTime,
       'displayName': ?displayName,
       'etag': ?etag,
       'labels': ?labels,
       'name': ?name,
       'reconciling': ?reconciling,
+      'schemas': ?schemas,
+      'source': ?source,
       'uid': ?uid,
       'updateTime': ?updateTime,
     };
@@ -3381,6 +3758,24 @@ class SourceLocation {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// A chunk of conversational text.
+class TextChunk {
+  /// The text content string.
+  ///
+  /// Required.
+  core.String? text;
+
+  TextChunk({this.text});
+
+  TextChunk.fromJson(core.Map json_)
+    : this(text: json_['text'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
+}
 
 /// Workaround provides suggestions to address errors and warnings.
 class Workaround {

@@ -979,9 +979,15 @@ class CreateSubscriptionIntent {
   /// Optional.
   CycleOptions? cycleOptions;
 
+  /// Deprecated: Use the `parent` field in `GenerateUserSessionRequest`
+  /// instead.
+  ///
   /// The parent resource name, which is the identifier of the partner.
   ///
-  /// Required.
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? parent;
 
   /// The Subscription to be created.
@@ -2266,6 +2272,8 @@ class ResumeSubscriptionRequest {
   /// - "RESUME_MODE_RESTORE_EXISTING_BILLING_SCHEDULE" : Resume the
   /// subscription with the existing billing schedule. The subscription's next
   /// renewal time must still be in the future for this mode to be applicable.
+  /// - "RESUME_MODE_IMMEDIATE_NEW_CYCLE" : Resume the subscription and start a
+  /// new billing cycle immediately, resulting in a new charge.
   core.String? resumeMode;
 
   ResumeSubscriptionRequest({this.cycleOptions, this.resumeMode});
@@ -2422,6 +2430,7 @@ class Subscription {
   /// - "PROCESSING_STATE_CANCELLING" : The subscription is being cancelled.
   /// - "PROCESSING_STATE_RECURRING" : The subscription is recurring.
   /// - "PROCESSING_STATE_RESUMING" : The subscription is being resumed.
+  /// - "PROCESSING_STATE_SUSPENDING" : The subscription is being suspended.
   core.String? processingState;
 
   /// Deprecated: consider using `line_items` as the input.
@@ -2985,21 +2994,34 @@ class SubscriptionLineItemOneTimeRecurrenceDetails {
 
 /// Describes the details of the migrated subscription.
 class SubscriptionMigrationDetails {
+  /// The creation time of the migrated subscription in the legacy system.
+  ///
+  /// Output only.
+  core.String? legacyCreationTime;
+
   /// The migrated subscription id in the legacy system.
   ///
   /// Output only.
   core.String? migratedSubscriptionId;
 
-  SubscriptionMigrationDetails({this.migratedSubscriptionId});
+  SubscriptionMigrationDetails({
+    this.legacyCreationTime,
+    this.migratedSubscriptionId,
+  });
 
   SubscriptionMigrationDetails.fromJson(core.Map json_)
     : this(
+        legacyCreationTime: json_['legacyCreationTime'] as core.String?,
         migratedSubscriptionId: json_['migratedSubscriptionId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final legacyCreationTime = this.legacyCreationTime;
     final migratedSubscriptionId = this.migratedSubscriptionId;
-    return {'migratedSubscriptionId': ?migratedSubscriptionId};
+    return {
+      'legacyCreationTime': ?legacyCreationTime,
+      'migratedSubscriptionId': ?migratedSubscriptionId,
+    };
   }
 }
 
@@ -3125,7 +3147,35 @@ class SubscriptionUpgradeDowngradeDetails {
 }
 
 /// Request to suspend a subscription.
-typedef SuspendSubscriptionRequest = $Empty;
+class SuspendSubscriptionRequest {
+  /// The mode to suspend the subscription.
+  ///
+  /// It's required for partners to specify the suspend mode, whether suspend
+  /// immediately and indefinitely, or cancel the subscription after
+  /// grace_period_millis or auto_cancel_duration_millis if it's not resumed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SUSPEND_MODE_UNSPECIFIED" : The default value. Suspend the
+  /// subscription, and the subscription will stay suspended indefinitely.
+  /// - "SUSPEND_MODE_CANCEL_AFTER_GRACE_PERIOD" : Suspend the subscription, and
+  /// the subscription will be auto cancelled after the grace period. Contract
+  /// terms dictate how long the grace period is.
+  /// - "SUSPEND_MODE_CANCEL_AFTER_RETENTION_PERIOD" : Suspend the subscription,
+  /// and the subscription will be auto cancelled after the retention period.
+  /// Contract terms dictate how long the retention period is.
+  core.String? suspendMode;
+
+  SuspendSubscriptionRequest({this.suspendMode});
+
+  SuspendSubscriptionRequest.fromJson(core.Map json_)
+    : this(suspendMode: json_['suspendMode'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final suspendMode = this.suspendMode;
+    return {'suspendMode': ?suspendMode};
+  }
+}
 
 /// Response that contains the suspended subscription.
 class SuspendSubscriptionResponse {

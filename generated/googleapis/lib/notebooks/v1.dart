@@ -56,6 +56,10 @@ class AIPlatformNotebooksApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud Agent Platform
+  /// Workbench Instances data and see the email address for your Google Account
+  static const notebooksScope = 'https://www.googleapis.com/auth/notebooks';
+
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -134,7 +138,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -149,9 +153,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -4528,7 +4531,7 @@ class InstanceMigrationEligibility {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-typedef IsInstanceUpgradeableResponse = $Response02;
+typedef IsInstanceUpgradeableResponse = $Response03;
 
 /// Response for listing environments.
 class ListEnvironmentsResponse {
@@ -5389,7 +5392,7 @@ class Policy {
 }
 
 /// Request for getting a new access token.
-typedef RefreshRuntimeTokenInternalRequest = $Request12;
+typedef RefreshRuntimeTokenInternalRequest = $Request13;
 
 /// Response with a new access token.
 class RefreshRuntimeTokenInternalResponse {

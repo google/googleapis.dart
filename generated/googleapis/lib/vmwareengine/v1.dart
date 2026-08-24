@@ -206,7 +206,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -221,9 +221,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2625,6 +2624,55 @@ class ProjectsLocationsPrivateCloudsResource {
     return ListPrivateCloudsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Migrates the management VMs of the PC from the current management cluster
+  /// to a workload cluster.
+  ///
+  /// Post this migration, the provided workload cluster becomes the management
+  /// cluster
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the private cloud whose management
+  /// vms are getting migrated. Resource names are schemeless URIs that follow
+  /// the conventions in https://cloud.google.com/apis/design/resource_names.
+  /// For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> migrateManagementVms(
+    MigrateManagementVmsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':migrateManagementVms';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a `PrivateCloud` resource.
@@ -7441,6 +7489,45 @@ class DnsForwarding {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Encryption configuration for a private cloud.
+class EncryptionConfig {
+  /// The resource name of the Cloud KMS key to be used for CMEK encryption.
+  ///
+  /// The format of this field is
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  /// The key must be in the same region as the private cloud. This key is used
+  /// for wrapping the key-encrypting key of vSAN clusters. This field must be
+  /// provided when `type` is `CMEK` or `LEGACY_CMEK`, and must not be set when
+  /// `type` is `OTHER`.
+  ///
+  /// Optional.
+  core.String? cryptoKeyName;
+
+  /// The encryption type of the private cloud.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : The default value. This value should never be used.
+  /// - "CMEK" : Customer-managed encryption keys (CMEK).
+  /// - "LEGACY_CMEK" : Legacy customer-managed encryption keys (CMEK).
+  /// - "OTHER" : Other encryption types, such as self-managed external KMS.
+  core.String? type;
+
+  EncryptionConfig({this.cryptoKeyName, this.type});
+
+  EncryptionConfig.fromJson(core.Map json_)
+    : this(
+        cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cryptoKeyName = this.cryptoKeyName;
+    final type = this.type;
+    return {'cryptoKeyName': ?cryptoKeyName, 'type': ?type};
+  }
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -9239,6 +9326,62 @@ class ManagementDnsZoneBinding {
   }
 }
 
+/// Request message for VmwareEngine.MigrateManagementVms
+class MigrateManagementVmsRequest {
+  /// The user-provided identifier of the workload cluster to which the
+  /// management VMs are to be migrated.
+  ///
+  /// The cluster must be in the same private cloud as the one specified in
+  /// `name`, and must be a workload cluster. The eventual cluster name will be
+  /// constructed from the private cloud name and this cluster ID.
+  ///
+  /// Required.
+  core.String? clusterId;
+
+  /// Checksum used to ensure that the user-provided value is up to date before
+  /// the server processes the request.
+  ///
+  /// The server compares provided checksum with the current checksum of the
+  /// resource. If the user-provided value is out of date, this request returns
+  /// an `ABORTED` error.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server guarantees that a request doesn't result in creation of
+  /// duplicate commitments for at least 60 minutes. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if the original operation with the same request ID was received, and if
+  /// so, will ignore the second request. This prevents clients from
+  /// accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  MigrateManagementVmsRequest({this.clusterId, this.etag, this.requestId});
+
+  MigrateManagementVmsRequest.fromJson(core.Map json_)
+    : this(
+        clusterId: json_['clusterId'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clusterId = this.clusterId;
+    final etag = this.etag;
+    final requestId = this.requestId;
+    return {'clusterId': ?clusterId, 'etag': ?etag, 'requestId': ?requestId};
+  }
+}
+
 /// Mount Datastore Request message
 class MountDatastoreRequest {
   /// The datastore mount configuration.
@@ -10105,7 +10248,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared24;
+typedef Nsx = $Shared32;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -10445,6 +10588,13 @@ class PrivateCloud {
   /// User-provided description for this private cloud.
   core.String? description;
 
+  /// Encryption configuration for the private cloud.
+  ///
+  /// If this field is left unspecified, Google default encryption is used.
+  ///
+  /// Optional.
+  EncryptionConfig? encryptionConfig;
+
   /// Time when the resource will be irreversibly deleted.
   ///
   /// Output only.
@@ -10538,6 +10688,7 @@ class PrivateCloud {
     this.createTime,
     this.deleteTime,
     this.description,
+    this.encryptionConfig,
     this.expireTime,
     this.hcx,
     this.managementCluster,
@@ -10556,6 +10707,12 @@ class PrivateCloud {
         createTime: json_['createTime'] as core.String?,
         deleteTime: json_['deleteTime'] as core.String?,
         description: json_['description'] as core.String?,
+        encryptionConfig: json_.containsKey('encryptionConfig')
+            ? EncryptionConfig.fromJson(
+                json_['encryptionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         expireTime: json_['expireTime'] as core.String?,
         hcx: json_.containsKey('hcx')
             ? Hcx.fromJson(json_['hcx'] as core.Map<core.String, core.dynamic>)
@@ -10590,6 +10747,7 @@ class PrivateCloud {
     final createTime = this.createTime;
     final deleteTime = this.deleteTime;
     final description = this.description;
+    final encryptionConfig = this.encryptionConfig;
     final expireTime = this.expireTime;
     final hcx = this.hcx;
     final managementCluster = this.managementCluster;
@@ -10605,6 +10763,7 @@ class PrivateCloud {
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
       'description': ?description,
+      'encryptionConfig': ?encryptionConfig,
       'expireTime': ?expireTime,
       'hcx': ?hcx,
       'managementCluster': ?managementCluster,
@@ -11615,7 +11774,7 @@ class Upgrade {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared24;
+typedef Vcenter = $Shared32;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.

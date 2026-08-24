@@ -40,6 +40,7 @@ api.BuildingInsights buildBuildingInsights() {
     o.administrativeArea = 'foo';
     o.boundingBox = buildLatLngBox();
     o.center = buildLatLng();
+    o.detectedArrays = buildBuildingInsightsDetectedArrays();
     o.imageryDate = buildDate();
     o.imageryProcessedDate = buildDate();
     o.imageryQuality = 'foo';
@@ -59,6 +60,7 @@ void checkBuildingInsights(api.BuildingInsights o) {
     unittest.expect(o.administrativeArea!, unittest.equals('foo'));
     checkLatLngBox(o.boundingBox!);
     checkLatLng(o.center!);
+    checkBuildingInsightsDetectedArrays(o.detectedArrays!);
     checkDate(o.imageryDate!);
     checkDate(o.imageryProcessedDate!);
     unittest.expect(o.imageryQuality!, unittest.equals('foo'));
@@ -69,6 +71,27 @@ void checkBuildingInsights(api.BuildingInsights o) {
     unittest.expect(o.statisticalArea!, unittest.equals('foo'));
   }
   buildCounterBuildingInsights--;
+}
+
+core.int buildCounterBuildingInsightsDetectedArrays = 0;
+api.BuildingInsightsDetectedArrays buildBuildingInsightsDetectedArrays() {
+  final o = api.BuildingInsightsDetectedArrays();
+  buildCounterBuildingInsightsDetectedArrays++;
+  if (buildCounterBuildingInsightsDetectedArrays < 3) {
+    o.detectionStatus = 'foo';
+    o.latestCaptureDate = buildDate();
+  }
+  buildCounterBuildingInsightsDetectedArrays--;
+  return o;
+}
+
+void checkBuildingInsightsDetectedArrays(api.BuildingInsightsDetectedArrays o) {
+  buildCounterBuildingInsightsDetectedArrays++;
+  if (buildCounterBuildingInsightsDetectedArrays < 3) {
+    unittest.expect(o.detectionStatus!, unittest.equals('foo'));
+    checkDate(o.latestCaptureDate!);
+  }
+  buildCounterBuildingInsightsDetectedArrays--;
 }
 
 core.int buildCounterCashPurchaseSavings = 0;
@@ -692,6 +715,14 @@ void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 void main() {
   unittest.group('obj-schema-BuildingInsights', () {
     unittest.test('to-json--from-json', () async {
@@ -701,6 +732,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkBuildingInsights(od);
+    });
+  });
+
+  unittest.group('obj-schema-BuildingInsightsDetectedArrays', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBuildingInsightsDetectedArrays();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BuildingInsightsDetectedArrays.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBuildingInsightsDetectedArrays(od);
     });
   });
 
@@ -906,8 +948,9 @@ void main() {
     unittest.test('method--findClosest', () async {
       final mock = HttpServerMock();
       final res = api.SolarApi(mock).buildingInsights;
+      final arg_additionalInsights = buildUnnamed9();
       final arg_exactQualityRequired = true;
-      final arg_experiments = buildUnnamed9();
+      final arg_experiments = buildUnnamed10();
       final arg_location_latitude = 42.0;
       final arg_location_longitude = 42.0;
       final arg_requiredQuality = 'foo';
@@ -945,6 +988,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['additionalInsights']!,
+            unittest.equals(arg_additionalInsights),
+          );
+          unittest.expect(
             queryMap['exactQualityRequired']!.first,
             unittest.equals('$arg_exactQualityRequired'),
           );
@@ -976,6 +1023,7 @@ void main() {
         true,
       );
       final response = await res.findClosest(
+        additionalInsights: arg_additionalInsights,
         exactQualityRequired: arg_exactQualityRequired,
         experiments: arg_experiments,
         location_latitude: arg_location_latitude,
@@ -992,7 +1040,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.SolarApi(mock).dataLayers;
       final arg_exactQualityRequired = true;
-      final arg_experiments = buildUnnamed10();
+      final arg_experiments = buildUnnamed11();
       final arg_location_latitude = 42.0;
       final arg_location_longitude = 42.0;
       final arg_pixelSizeMeters = 42.0;

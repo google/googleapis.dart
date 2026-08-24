@@ -2971,6 +2971,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3169,6 +3171,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -3366,6 +3370,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -3567,6 +3573,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -5205,6 +5213,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5366,6 +5376,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -5530,6 +5542,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this advertiser that identifies the assigned targeting
@@ -5697,6 +5711,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -6272,6 +6288,8 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -6452,6 +6470,8 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -9455,6 +9475,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9614,6 +9636,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -9774,6 +9798,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this partner that identifies the assigned targeting
@@ -9937,6 +9963,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -10248,6 +10276,8 @@ class TargetingTypesTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [targetingOptionId] - Required. The ID of the of targeting option to
   /// retrieve.
@@ -10424,6 +10454,8 @@ class TargetingTypesTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
@@ -10622,6 +10654,8 @@ class TargetingTypesTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11050,6 +11084,23 @@ class Advertiser {
   /// Settings that control how advertiser data may be accessed.
   AdvertiserDataAccessConfig? dataAccessConfig;
 
+  /// The default business name for the advertiser.
+  ///
+  /// This is the value used by YouTube and Demand Gen ads under this advertiser
+  /// if a business name is not provided.
+  ///
+  /// Optional.
+  core.String? defaultBusinessName;
+
+  /// The asset ID of the default logo image for the advertiser.
+  ///
+  /// This is the asset ID that will be used by YouTube and Demand ads under
+  /// this advertiser if a logo asset is not provided. You must use
+  /// advertisers.adAssets.upload to upload this asset using the API.
+  ///
+  /// Optional.
+  core.String? defaultLogoAssetId;
+
   /// The display name of the advertiser.
   ///
   /// Must be UTF-8 encoded with a maximum size of 240 bytes.
@@ -11127,6 +11178,8 @@ class Advertiser {
     this.containsEuPoliticalAds,
     this.creativeConfig,
     this.dataAccessConfig,
+    this.defaultBusinessName,
+    this.defaultLogoAssetId,
     this.displayName,
     this.entityStatus,
     this.generalConfig,
@@ -11158,6 +11211,8 @@ class Advertiser {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        defaultBusinessName: json_['defaultBusinessName'] as core.String?,
+        defaultLogoAssetId: json_['defaultLogoAssetId'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         entityStatus: json_['entityStatus'] as core.String?,
         generalConfig: json_.containsKey('generalConfig')
@@ -11188,6 +11243,8 @@ class Advertiser {
     final containsEuPoliticalAds = this.containsEuPoliticalAds;
     final creativeConfig = this.creativeConfig;
     final dataAccessConfig = this.dataAccessConfig;
+    final defaultBusinessName = this.defaultBusinessName;
+    final defaultLogoAssetId = this.defaultLogoAssetId;
     final displayName = this.displayName;
     final entityStatus = this.entityStatus;
     final generalConfig = this.generalConfig;
@@ -11203,6 +11260,8 @@ class Advertiser {
       'containsEuPoliticalAds': ?containsEuPoliticalAds,
       'creativeConfig': ?creativeConfig,
       'dataAccessConfig': ?dataAccessConfig,
+      'defaultBusinessName': ?defaultBusinessName,
+      'defaultLogoAssetId': ?defaultLogoAssetId,
       'displayName': ?displayName,
       'entityStatus': ?entityStatus,
       'generalConfig': ?generalConfig,
@@ -11919,6 +11978,8 @@ class AssignedTargetingOption {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   core.String? targetingType;
 
   /// Third party verification details.
@@ -11957,6 +12018,12 @@ class AssignedTargetingOption {
   /// This field will be populated when the targeting_type is
   /// `TARGETING_TYPE_YOUTUBE_CHANNEL`.
   YoutubeChannelAssignedTargetingOptionDetails? youtubeChannelDetails;
+
+  /// YouTube channel pack details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// `TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+  YoutubeChannelPackAssignedTargetingOptionDetails? youtubeChannelPackDetails;
 
   /// YouTube video details.
   ///
@@ -12017,6 +12084,7 @@ class AssignedTargetingOption {
     this.videoPlayerSizeDetails,
     this.viewabilityDetails,
     this.youtubeChannelDetails,
+    this.youtubeChannelPackDetails,
     this.youtubeVideoDetails,
   });
 
@@ -12311,6 +12379,13 @@ class AssignedTargetingOption {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        youtubeChannelPackDetails:
+            json_.containsKey('youtubeChannelPackDetails')
+            ? YoutubeChannelPackAssignedTargetingOptionDetails.fromJson(
+                json_['youtubeChannelPackDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         youtubeVideoDetails: json_.containsKey('youtubeVideoDetails')
             ? YoutubeVideoAssignedTargetingOptionDetails.fromJson(
                 json_['youtubeVideoDetails']
@@ -12375,6 +12450,7 @@ class AssignedTargetingOption {
     final videoPlayerSizeDetails = this.videoPlayerSizeDetails;
     final viewabilityDetails = this.viewabilityDetails;
     final youtubeChannelDetails = this.youtubeChannelDetails;
+    final youtubeChannelPackDetails = this.youtubeChannelPackDetails;
     final youtubeVideoDetails = this.youtubeVideoDetails;
     return {
       'ageRangeDetails': ?ageRangeDetails,
@@ -12430,6 +12506,7 @@ class AssignedTargetingOption {
       'videoPlayerSizeDetails': ?videoPlayerSizeDetails,
       'viewabilityDetails': ?viewabilityDetails,
       'youtubeChannelDetails': ?youtubeChannelDetails,
+      'youtubeChannelPackDetails': ?youtubeChannelPackDetails,
       'youtubeVideoDetails': ?youtubeVideoDetails,
     };
   }
@@ -14390,9 +14467,7 @@ class ConversionCountingConfig {
   /// This attribution model will determine how conversions are counted. The
   /// Primary model can be set by you for a floodlight config or group. More
   /// details [here](https://support.google.com/displayvideo/answer/7409983).
-  /// Only applicable to Demand Gen line items. Retrieval and management of
-  /// Demand Gen resources is currently in beta. This field is only available to
-  /// allowlisted users.
+  /// Only applicable to Demand Gen line items.
   ///
   /// Optional.
   core.String? primaryAttributionModelId;
@@ -14579,6 +14654,8 @@ class CreateAssignedTargetingOptionsRequest {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   core.String? targetingType;
 
   CreateAssignedTargetingOptionsRequest({
@@ -14667,6 +14744,8 @@ class CreateSdfDownloadTaskRequest {
   /// migrating to this version.
   /// - "SDF_VERSION_9_1" : SDF version 9.1.
   /// - "SDF_VERSION_9_2" : SDF version 9.2.
+  /// - "SDF_VERSION_10" : SDF version 10.
+  /// - "SDF_VERSION_10_1" : SDF version 10.1.
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -15136,6 +15215,17 @@ class Creative {
   /// Optional.
   core.bool? skippable;
 
+  /// Whether to add a label to the creative as created or edited using AI when
+  /// served in regions with local AI labeling regulations.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED" : No attestation has
+  /// been provided.
+  /// - "NOT_SYNTHETIC" : Attested as not created or edited using AI.
+  /// - "IS_SYNTHETIC" : Attested as created or edited using AI.
+  core.String? syntheticContentAttestationStatus;
+
   /// The original third-party tag used for the creative.
   ///
   /// Required and only valid for third-party tag creatives. Third-party tag
@@ -15272,6 +15362,7 @@ class Creative {
     this.reviewStatus,
     this.skipOffset,
     this.skippable,
+    this.syntheticContentAttestationStatus,
     this.thirdPartyTag,
     this.thirdPartyUrls,
     this.timerEvents,
@@ -15378,6 +15469,8 @@ class Creative {
               )
             : null,
         skippable: json_['skippable'] as core.bool?,
+        syntheticContentAttestationStatus:
+            json_['syntheticContentAttestationStatus'] as core.String?,
         thirdPartyTag: json_['thirdPartyTag'] as core.String?,
         thirdPartyUrls: (json_['thirdPartyUrls'] as core.List?)
             ?.map(
@@ -15452,6 +15545,8 @@ class Creative {
     final reviewStatus = this.reviewStatus;
     final skipOffset = this.skipOffset;
     final skippable = this.skippable;
+    final syntheticContentAttestationStatus =
+        this.syntheticContentAttestationStatus;
     final thirdPartyTag = this.thirdPartyTag;
     final thirdPartyUrls = this.thirdPartyUrls;
     final timerEvents = this.timerEvents;
@@ -15500,6 +15595,7 @@ class Creative {
       'reviewStatus': ?reviewStatus,
       'skipOffset': ?skipOffset,
       'skippable': ?skippable,
+      'syntheticContentAttestationStatus': ?syntheticContentAttestationStatus,
       'thirdPartyTag': ?thirdPartyTag,
       'thirdPartyUrls': ?thirdPartyUrls,
       'timerEvents': ?timerEvents,
@@ -16043,6 +16139,8 @@ class DeleteAssignedTargetingOptionsRequest {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   core.String? targetingType;
 
   DeleteAssignedTargetingOptionsRequest({
@@ -16591,7 +16689,7 @@ class FloodlightGroup {
 
 /// Settings that control the number of times a user may be shown with the same
 /// ad during a given time period.
-typedef FrequencyCap = $FrequencyCap00;
+typedef FrequencyCap = $FrequencyCap;
 
 /// Details for assigned gender targeting option.
 ///
@@ -16785,6 +16883,7 @@ class GuaranteedOrder {
   /// - "EXCHANGE_TUBI" : Tubi.
   /// - "EXCHANGE_SNAP" : Snap.
   /// - "EXCHANGE_CADENT" : Cadent.
+  /// - "EXCHANGE_EXTE" : Exte.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -18024,9 +18123,7 @@ class LineItem {
 
   /// Settings specific to Demand Gen line items.
   ///
-  /// Only applicable to Demand Gen line items. Retrieval and management of
-  /// Demand Gen resources is currently in beta. This field is only available to
-  /// allowlisted users.
+  /// Only applicable to Demand Gen line items.
   ///
   /// Optional.
   DemandGenSettings? demandGenSettings;
@@ -18170,9 +18267,7 @@ class LineItem {
   /// - "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME" : Video ads served on
   /// digital-out-of-home inventory. Line items of this type and their targeting
   /// cannot be created or updated using the API.
-  /// - "LINE_ITEM_TYPE_DEMAND_GEN" : Demand Gen ads. Retrieval and management
-  /// of Demand Gen resources is currently in beta. This enum value is only
-  /// available to allowlisted users.
+  /// - "LINE_ITEM_TYPE_DEMAND_GEN" : Demand Gen ads.
   core.String? lineItemType;
 
   /// The mobile app promoted by the line item.
@@ -19900,7 +19995,7 @@ typedef MaximizeSpendBidStrategy = $MaximizeSpendBidStrategy;
 typedef MeasurementConfig = $MeasurementConfig;
 
 /// A mobile app promoted by a mobile app install line item.
-typedef MobileApp = $MobileApp00;
+typedef MobileApp = $MobileApp;
 
 /// Details for native content position assigned targeting option.
 ///
@@ -21037,9 +21132,7 @@ typedef TargetFrequency = $TargetFrequency;
 class TargetingExpansionConfig {
   /// Whether to exclude demographic expansion for Optimized Targeting.
   ///
-  /// This field can only be set for Demand Gen ad groups. Retrieval and
-  /// management of Demand Gen resources is currently in beta. This field is
-  /// only available to allowlisted users.
+  /// This field can only be set for Demand Gen ad groups.
   ///
   /// Optional.
   core.bool? excludeDemographicExpansion;
@@ -21327,6 +21420,8 @@ class TargetingOption {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK" : Target ads to a specific YouTube
+  /// channel pack.
   core.String? targetingType;
 
   /// User rewarded content details.
@@ -21666,8 +21761,7 @@ class ThirdPartyMeasurementConfigs {
   ///
   /// The following third-party vendors are applicable: *
   /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` *
-  /// `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_NIELSEN` *
-  /// `THIRD_PARTY_VENDOR_MACROMILL`
+  /// `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_MACROMILL`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? brandLiftVendorConfigs;
@@ -21932,7 +22026,7 @@ class Transcode {
 /// platforms.
 ///
 /// This is part of the VAST 4.0 standard.
-typedef UniversalAdId = $UniversalAdId00;
+typedef UniversalAdId = $UniversalAdId;
 
 /// Details for assigned URL targeting option.
 ///
@@ -23002,6 +23096,13 @@ class YoutubeAndPartnersThirdPartyMeasurementSettings {
 /// targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL`.
 typedef YoutubeChannelAssignedTargetingOptionDetails =
     $YoutubeChannelAssignedTargetingOptionDetails;
+
+/// Details for YouTube channel pack assigned targeting option.
+///
+/// This will be populated in the youtube_channel_pack_details field when
+/// targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`.
+typedef YoutubeChannelPackAssignedTargetingOptionDetails =
+    $YoutubeChannelPackAssignedTargetingOptionDetails;
 
 /// Details for YouTube video assigned targeting option.
 ///

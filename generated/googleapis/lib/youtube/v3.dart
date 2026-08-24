@@ -42,7 +42,6 @@
 /// - [LiveChatMessagesResource]
 /// - [LiveChatModeratorsResource]
 /// - [LiveStreamsResource]
-/// - [MediaResource]
 /// - [MembersResource]
 /// - [MembershipsLevelsResource]
 /// - [PlaylistImagesResource]
@@ -61,7 +60,6 @@
 /// - [WatermarksResource]
 /// - [YoutubeResource]
 ///   - [YoutubeV3Resource]
-///     - [YoutubeV3AudiotracksResource]
 ///     - [YoutubeV3LiveChatResource]
 ///       - [YoutubeV3LiveChatMessagesResource]
 library;
@@ -143,7 +141,6 @@ class YouTubeApi {
   LiveChatModeratorsResource get liveChatModerators =>
       LiveChatModeratorsResource(_requester);
   LiveStreamsResource get liveStreams => LiveStreamsResource(_requester);
-  MediaResource get media => MediaResource(_requester);
   MembersResource get members => MembersResource(_requester);
   MembershipsLevelsResource get membershipsLevels =>
       MembershipsLevelsResource(_requester);
@@ -3231,82 +3228,6 @@ class LiveStreamsResource {
   }
 }
 
-class MediaResource {
-  final commons.ApiRequester _requester;
-
-  MediaResource(commons.ApiRequester client) : _requester = client;
-
-  /// Inserts a new AudioTrack for a video.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [language] - Required. The BCP-47 language code of the AudioTrack (e.g.,
-  /// "es-ES").
-  ///
-  /// [part] - Optional. The `part` parameter specifies the `AudioTrack`
-  /// resource parts that the API response will include. The `part` names that
-  /// you can include in the parameter value are `id` and `snippet`.
-  ///
-  /// [videoId] - Required. The external YouTube video ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// [uploadMedia] - The media to upload.
-  ///
-  /// [uploadOptions] - Options for the media upload. Streaming Media without
-  /// the length being known ahead of time is only supported via resumable
-  /// uploads.
-  ///
-  /// Completes with a [AudioTrack].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<AudioTrack> upload(
-    AudioTrack request, {
-    core.String? language,
-    core.List<core.String>? part,
-    core.String? videoId,
-    core.String? $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media? uploadMedia,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'language': ?language == null ? null : [language],
-      'part': ?part,
-      'videoId': ?videoId == null ? null : [videoId],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    core.String url_;
-    if (uploadMedia == null) {
-      url_ = 'youtube/v3/audiotracks';
-    } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/youtube/v3/audiotracks';
-    } else {
-      url_ = '/upload/youtube/v3/audiotracks';
-    }
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-      uploadMedia: uploadMedia,
-      uploadOptions: uploadOptions,
-    );
-    return AudioTrack.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
 class MembersResource {
   final commons.ApiRequester _requester;
 
@@ -4351,7 +4272,8 @@ class SearchResource {
   /// more search resource properties that the API response will include. Set
   /// the parameter value to snippet.
   ///
-  /// [channelId] - Filter on resources belonging to this channelId.
+  /// [channelId] - Filter on resources belonging to this channelId. (Force TAP
+  /// rebuild)
   ///
   /// [channelType] - Add a filter on the channel search.
   /// Possible string values are:
@@ -4962,6 +4884,9 @@ class ThirdPartyLinksResource {
   /// - "channelToStoreLink" : A link that is connecting (or about to connect) a
   /// channel with a store on a merchandising platform in order to enable retail
   /// commerce capabilities for that channel on YouTube.
+  /// - "channelToAffiliateProgramLink" : A link that is connecting (or about to
+  /// connect) a channel with an affiliate program of a partner to enable that
+  /// channel to earn commissions from that partner through affiliate links.
   ///
   /// [externalChannelId] - Channel ID to which changes should be applied, for
   /// delegation.
@@ -5076,6 +5001,9 @@ class ThirdPartyLinksResource {
   /// - "channelToStoreLink" : A link that is connecting (or about to connect) a
   /// channel with a store on a merchandising platform in order to enable retail
   /// commerce capabilities for that channel on YouTube.
+  /// - "channelToAffiliateProgramLink" : A link that is connecting (or about to
+  /// connect) a channel with an affiliate program of a partner to enable that
+  /// channel to earn commissions from that partner through affiliate links.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5412,6 +5340,72 @@ class VideosResource {
   final commons.ApiRequester _requester;
 
   VideosResource(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves a batch of VideoStat resources, possibly filtered.
+  ///
+  /// BatchGetStats is intentionally not atomic to provide a better user
+  /// experience.
+  ///
+  /// Request parameters:
+  ///
+  /// [id] - Required. Return videos with the given ids. The number of IDs
+  /// specified cannot exceed 50.
+  ///
+  /// [onBehalfOfContentOwner] - Optional. **Note:** This parameter is intended
+  /// exclusively for YouTube content partners. The `onBehalfOfContentOwner`
+  /// parameter indicates that the request's authorization credentials identify
+  /// a YouTube CMS user who is acting on behalf of the content owner specified
+  /// in the parameter value. This parameter is intended for YouTube content
+  /// partners that own and manage many different YouTube channels. It allows
+  /// content owners to authenticate once and get access to all their video and
+  /// channel data, without having to provide authentication credentials for
+  /// each individual channel. The CMS account that the user authenticates with
+  /// must be linked to the specified YouTube content owner.
+  ///
+  /// [part] - Required. The `**part**` parameter specifies a comma-separated
+  /// list of one or more `videoStat` resource properties that the API response
+  /// will include. If the parameter identifies a property that contains child
+  /// properties, the child properties will be included in the response. For
+  /// example, in a `videoStat` resource, the `statistics` property contains
+  /// `view_count` and `like_count`. As such, if you set `**part=snippet**`, the
+  /// API response will contain all of those properties.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchGetStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchGetStatsResponse> batchGetStats({
+    core.List<core.String>? id,
+    core.String? onBehalfOfContentOwner,
+    core.List<core.String>? part,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'id': ?id,
+      'onBehalfOfContentOwner': ?onBehalfOfContentOwner == null
+          ? null
+          : [onBehalfOfContentOwner],
+      'part': ?part,
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'youtube/v3/videos:batchGetStats';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BatchGetStatsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Deletes a resource.
   ///
@@ -6065,156 +6059,10 @@ class YoutubeResource {
 class YoutubeV3Resource {
   final commons.ApiRequester _requester;
 
-  YoutubeV3AudiotracksResource get audiotracks =>
-      YoutubeV3AudiotracksResource(_requester);
   YoutubeV3LiveChatResource get liveChat =>
       YoutubeV3LiveChatResource(_requester);
 
   YoutubeV3Resource(commons.ApiRequester client) : _requester = client;
-
-  /// Deletes one or more AudioTracks from a video.
-  ///
-  /// Request parameters:
-  ///
-  /// [audioTrackId] - Required. The audio track ID of the AudioTrack to be
-  /// deleted (e.g., "v1234567890").
-  ///
-  /// [part] - Optional. The `part` parameter specifies the `AudioTrack`
-  /// resource parts that the API response will include. The `part` names that
-  /// you can include in the parameter value are `id` and `snippet`.
-  ///
-  /// [videoId] - Required. The external YouTube video ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<void> deleteAudiotracks({
-    core.String? audioTrackId,
-    core.List<core.String>? part,
-    core.String? videoId,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'audioTrackId': ?audioTrackId == null ? null : [audioTrackId],
-      'part': ?part,
-      'videoId': ?videoId == null ? null : [videoId],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    const url_ = 'youtube/v3/audiotracks';
-
-    await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-      downloadOptions: null,
-    );
-  }
-
-  /// Updates an existing resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [part] - The *part* parameter specifies a comma-separated list of
-  /// commentThread resource properties that the API response will include. You
-  /// must at least include the snippet part in the parameter value since that
-  /// part contains all of the properties that the API request can update.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [CommentThread].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<CommentThread> updateCommentThreads(
-    CommentThread request, {
-    core.List<core.String>? part,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'part': ?part,
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    const url_ = 'youtube/v3/commentThreads';
-
-    final response_ = await _requester.request(
-      url_,
-      'PUT',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return CommentThread.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class YoutubeV3AudiotracksResource {
-  final commons.ApiRequester _requester;
-
-  YoutubeV3AudiotracksResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Retrieves a list of AudioTracks for a video.
-  ///
-  /// Request parameters:
-  ///
-  /// [language] - Required. Filter by specific BCP-47 language codes.
-  ///
-  /// [part] - Optional. The `part` parameter specifies a comma-separated list
-  /// of one or more `AudioTrack` resource parts that the API response will
-  /// include. The `part` names that you can include in the parameter value are
-  /// `id` and `snippet`.
-  ///
-  /// [videoId] - Required. The external YouTube video ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListAudioTracksResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListAudioTracksResponse> list({
-    core.List<core.String>? language,
-    core.List<core.String>? part,
-    core.String? videoId,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'language': ?language,
-      'part': ?part,
-      'videoId': ?videoId == null ? null : [videoId],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    const url_ = 'youtube/v3/audiotracks';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListAudioTracksResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
 }
 
 class YoutubeV3LiveChatResource {
@@ -6354,7 +6202,7 @@ class AbuseReport {
   }
 }
 
-typedef AbuseType = $Shared03;
+typedef AbuseType = $Shared02;
 
 /// Rights management policy for YouTube resources.
 class AccessPolicy {
@@ -6383,20 +6231,19 @@ class AccessPolicy {
   }
 }
 
-/// An *activity* resource contains information about an action that a
-/// particular channel, or user, has taken on YouTube.The actions reported in
-/// activity feeds include rating a video, sharing a video, marking a video as a
-/// favorite, commenting on a video, uploading a video, and so forth.
+/// An `activity` resource contains information about an action that a
+/// particular channel, or user, has taken on YouTube.
 ///
-/// Each activity resource identifies the type of action, the channel associated
-/// with the action, and the resource(s) associated with the action, such as the
-/// video that was rated or uploaded.
+/// The actions reported in activity feeds include sharing a video, uploading a
+/// video, and so forth. Each `activity` resource identifies the type of action,
+/// the channel associated with the action, and the resource(s) associated with
+/// the action, such as the video that was rated or uploaded.
 class Activity {
-  /// The contentDetails object contains information about the content
+  /// The `contentDetails` object contains information about the content
   /// associated with the activity.
   ///
-  /// For example, if the snippet.type value is videoRated, then the
-  /// contentDetails object's content identifies the rated video.
+  /// For example, if the `snippet.type` value is `videoRated`, then the
+  /// `contentDetails` object's content identifies the rated video.
   ActivityContentDetails? contentDetails;
 
   /// Etag of this resource
@@ -6407,10 +6254,10 @@ class Activity {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string "youtube#activity".
+  /// Value: The fixed string `"youtube#activity"`.
   core.String? kind;
 
-  /// The snippet object contains basic details about the activity, including
+  /// The `snippet` object contains basic details about the activity, including
   /// the activity's type and group ID.
   ActivitySnippet? snippet;
 
@@ -6452,66 +6299,69 @@ class Activity {
 /// Details about the content of an activity: the video that was shared, the
 /// channel that was subscribed to, etc.
 class ActivityContentDetails {
-  /// The bulletin object contains details about a channel bulletin post.
+  /// The `bulletin` object contains details about a channel bulletin post.
   ///
-  /// This object is only present if the snippet.type is bulletin.
+  /// This object is only present if the `snippet.type` is `bulletin`.
   ActivityContentDetailsBulletin? bulletin;
 
-  /// The channelItem object contains details about a resource which was added
+  /// The `channelItem` object contains details about a resource which was added
   /// to a channel.
   ///
-  /// This property is only present if the snippet.type is channelItem.
+  /// This property is only present if the `snippet.type` is `channelItem`.
   ActivityContentDetailsChannelItem? channelItem;
 
-  /// The comment object contains information about a resource that received a
+  /// The `comment` object contains information about a resource that received a
   /// comment.
   ///
-  /// This property is only present if the snippet.type is comment.
+  /// This property is only present if the `snippet.type` is `comment`.
   ActivityContentDetailsComment? comment;
 
-  /// The favorite object contains information about a video that was marked as
-  /// a favorite video.
+  /// The `favorite` object contains information about a video that was marked
+  /// as a favorite video.
   ///
-  /// This property is only present if the snippet.type is favorite.
+  /// This property is only present if the `snippet.type` is `favorite`.
+  /// Deprecated: This property is no longer returned.
   ActivityContentDetailsFavorite? favorite;
 
-  /// The like object contains information about a resource that received a
+  /// The `like` object contains information about a resource that received a
   /// positive (like) rating.
   ///
-  /// This property is only present if the snippet.type is like.
+  /// This property is only present if the `snippet.type` is `like`. Deprecated:
+  /// This property is no longer returned.
   ActivityContentDetailsLike? like;
 
-  /// The playlistItem object contains information about a new playlist item.
+  /// The `playlistItem` object contains information about a new playlist item.
   ///
-  /// This property is only present if the snippet.type is playlistItem.
+  /// This property is only present if the `snippet.type` is `playlistItem`.
   ActivityContentDetailsPlaylistItem? playlistItem;
 
-  /// The promotedItem object contains details about a resource which is being
+  /// The `promotedItem` object contains details about a resource which is being
   /// promoted.
   ///
-  /// This property is only present if the snippet.type is promotedItem.
+  /// This property is only present if the `snippet.type` is `promotedItem`.
   ActivityContentDetailsPromotedItem? promotedItem;
 
-  /// The recommendation object contains information about a recommended
+  /// The `recommendation` object contains information about a recommended
   /// resource.
   ///
-  /// This property is only present if the snippet.type is recommendation.
+  /// This property is only present if the `snippet.type` is `recommendation`.
   ActivityContentDetailsRecommendation? recommendation;
 
-  /// The social object contains details about a social network post.
+  /// The `social` object contains details about a social network post.
   ///
-  /// This property is only present if the snippet.type is social.
+  /// This property is only present if the `snippet.type` is `social`.
   ActivityContentDetailsSocial? social;
 
-  /// The subscription object contains information about a channel that a user
+  /// The `subscription` object contains information about a channel that a user
   /// subscribed to.
   ///
-  /// This property is only present if the snippet.type is subscription.
+  /// This property is only present if the `snippet.type` is `subscription`.
+  /// Deprecated: This property is no longer returned.
   ActivityContentDetailsSubscription? subscription;
 
-  /// The upload object contains information about the uploaded video.
+  /// The `upload` object contains information about the uploaded video.
   ///
-  /// This property is only present if the snippet.type is upload.
+  /// This property is only present if the `snippet.type` is `upload`.
   ActivityContentDetailsUpload? upload;
 
   ActivityContentDetails({
@@ -6617,7 +6467,7 @@ class ActivityContentDetails {
 
 /// Details about a channel bulletin post.
 class ActivityContentDetailsBulletin {
-  /// The resourceId object contains information that identifies the resource
+  /// The `resourceId` object contains information that identifies the resource
   /// associated with a bulletin post.
   ///
   /// @mutable youtube.activities.insert
@@ -6642,7 +6492,7 @@ class ActivityContentDetailsBulletin {
 
 /// Details about a resource which was added to a channel.
 class ActivityContentDetailsChannelItem {
-  /// The resourceId object contains information that identifies the resource
+  /// The `resourceId` object contains information that identifies the resource
   /// that was added to the channel.
   ResourceId? resourceId;
 
@@ -6665,7 +6515,7 @@ class ActivityContentDetailsChannelItem {
 
 /// Information about a resource that received a comment.
 class ActivityContentDetailsComment {
-  /// The resourceId object contains information that identifies the resource
+  /// The `resourceId` object contains information that identifies the resource
   /// associated with the comment.
   ResourceId? resourceId;
 
@@ -6687,8 +6537,10 @@ class ActivityContentDetailsComment {
 }
 
 /// Information about a video that was marked as a favorite video.
+///
+/// Deprecated: This resource is no longer returned.
 class ActivityContentDetailsFavorite {
-  /// The resourceId object contains information that identifies the resource
+  /// The `resourceId` object contains information that identifies the resource
   /// that was marked as a favorite.
   ResourceId? resourceId;
 
@@ -6710,8 +6562,10 @@ class ActivityContentDetailsFavorite {
 }
 
 /// Information about a resource that received a positive (like) rating.
+///
+/// Deprecated: This resource is no longer returned.
 class ActivityContentDetailsLike {
-  /// The resourceId object contains information that identifies the rated
+  /// The `resourceId` object contains information that identifies the rated
   /// resource.
   ResourceId? resourceId;
 
@@ -6740,7 +6594,7 @@ class ActivityContentDetailsPlaylistItem {
   /// ID of the item within the playlist.
   core.String? playlistItemId;
 
-  /// The resourceId object contains information about the resource that was
+  /// The `resourceId` object contains information about the resource that was
   /// added to the playlist.
   ResourceId? resourceId;
 
@@ -6882,16 +6736,16 @@ class ActivityContentDetailsRecommendation {
   /// The reason that the resource is recommended to the user.
   /// Possible string values are:
   /// - "reasonUnspecified"
-  /// - "videoFavorited"
-  /// - "videoLiked"
+  /// - "videoFavorited" : Deprecated: This reason is no longer used.
+  /// - "videoLiked" : Deprecated: This reason is no longer used.
   /// - "videoWatched"
   core.String? reason;
 
-  /// The resourceId object contains information that identifies the recommended
-  /// resource.
+  /// The `resourceId` object contains information that identifies the
+  /// recommended resource.
   ResourceId? resourceId;
 
-  /// The seedResourceId object contains information about the resource that
+  /// The `seedResourceId` object contains information about the resource that
   /// caused the recommendation.
   ResourceId? seedResourceId;
 
@@ -6939,7 +6793,7 @@ class ActivityContentDetailsSocial {
   /// The URL of the social network post.
   core.String? referenceUrl;
 
-  /// The resourceId object encapsulates information that identifies the
+  /// The `resourceId` object encapsulates information that identifies the
   /// resource associated with a social network post.
   ResourceId? resourceId;
 
@@ -6989,8 +6843,10 @@ class ActivityContentDetailsSocial {
 }
 
 /// Information about a channel that a user subscribed to.
+///
+/// Deprecated: This resource is no longer returned.
 class ActivityContentDetailsSubscription {
-  /// The resourceId object contains information that identifies the resource
+  /// The `resourceId` object contains information that identifies the resource
   /// that the user subscribed to.
   ResourceId? resourceId;
 
@@ -7147,10 +7003,10 @@ class ActivitySnippet {
   /// The group ID associated with the activity.
   ///
   /// A group ID identifies user events that are associated with the same user
-  /// and resource. For example, if a user rates a video and marks the same
-  /// video as a favorite, the entries for those events would have the same
-  /// group ID in the user's activity feed. In your user interface, you can
-  /// avoid repetition by grouping events with the same groupId value.
+  /// and resource. For example, if a user uploads a video and watches the same
+  /// video, the entries for those events would have the same group ID in the
+  /// user's activity feed. In your user interface, you can avoid repetition by
+  /// grouping events with the same `groupId` value.
   core.String? groupId;
 
   /// The date and time that the video was uploaded.
@@ -7171,10 +7027,10 @@ class ActivitySnippet {
   /// Possible string values are:
   /// - "typeUnspecified"
   /// - "upload"
-  /// - "like"
-  /// - "favorite"
+  /// - "like" : Deprecated: This type is no longer supported.
+  /// - "favorite" : Deprecated: This type is no longer supported.
   /// - "comment"
-  /// - "subscription"
+  /// - "subscription" : Deprecated: This type is no longer supported.
   /// - "playlistItem"
   /// - "recommendation"
   /// - "bulletin"
@@ -7234,109 +7090,209 @@ class ActivitySnippet {
   }
 }
 
-/// Represents an AudioTrack for a YouTube video.
-class AudioTrack {
-  /// Etag of this resource.
-  core.String? etag;
+/// Common proto for Live and VOD geo-restrictions
+class AvailabilityConfig {
+  /// Video is available in all regions except the ones specified in the config.
+  AvailabilityConfigGlobalConfig? globalConfig;
 
-  /// The ID that YouTube uses to uniquely identify the AudioTrack.
-  ///
-  /// This could be a generated AudioTrack ID.
-  core.String? id;
+  /// Video is available in the specified regions only.
+  AvailabilityConfigRegionsConfig? regionsConfig;
 
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string youtube#audiotrack.
-  core.String? kind;
+  AvailabilityConfig({this.globalConfig, this.regionsConfig});
 
-  /// The `snippet` object contains basic details about the AudioTrack.
-  AudioTrackSnippet? snippet;
-
-  AudioTrack({this.etag, this.id, this.kind, this.snippet});
-
-  AudioTrack.fromJson(core.Map json_)
+  AvailabilityConfig.fromJson(core.Map json_)
     : this(
-        etag: json_['etag'] as core.String?,
-        id: json_['id'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        snippet: json_.containsKey('snippet')
-            ? AudioTrackSnippet.fromJson(
-                json_['snippet'] as core.Map<core.String, core.dynamic>,
+        globalConfig: json_.containsKey('globalConfig')
+            ? AvailabilityConfigGlobalConfig.fromJson(
+                json_['globalConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        regionsConfig: json_.containsKey('regionsConfig')
+            ? AvailabilityConfigRegionsConfig.fromJson(
+                json_['regionsConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final etag = this.etag;
-    final id = this.id;
-    final kind = this.kind;
-    final snippet = this.snippet;
-    return {'etag': ?etag, 'id': ?id, 'kind': ?kind, 'snippet': ?snippet};
+    final globalConfig = this.globalConfig;
+    final regionsConfig = this.regionsConfig;
+    return {'globalConfig': ?globalConfig, 'regionsConfig': ?regionsConfig};
   }
 }
 
-/// Basic details about an AudioTrack, such as its video, language, and status.
-class AudioTrackSnippet {
-  /// The content type of the audio (e.g., "dubbed", "descriptive").
-  core.String? contentType;
-
-  /// If the status is "FAILED", this provides a reason for the failure.
-  core.String? failureReason;
-
-  /// The BCP-47 language code of this AudioTrack.
-  core.String? language;
-
-  /// The current status of this AudioTrack.
-  /// Possible string values are:
-  /// - "audioTrackStatusUnspecified"
-  /// - "processing"
-  /// - "succeeded"
-  /// - "failed"
-  /// - "rejected"
-  core.String? status;
-
-  /// Timestamp of the last update.
+/// Video is available in all regions except the ones specified in the
+/// excluded_region_codes list.
+class AvailabilityConfigGlobalConfig {
+  /// Regions where video is blocked
   ///
-  /// Output only.
-  core.String? updateTime;
+  /// Optional.
+  core.List<core.String>? excludedRegionCodes;
 
-  /// The external YouTube video ID this AudioTrack belongs to.
-  core.String? videoId;
+  /// Default time window where video is available for all non-blocked regions
+  /// Not supported for upcoming / active live broadcasts.
+  ///
+  /// If start time is unspecified, video is already available If end time is
+  /// unspecified, video is available forever Specified start and end times
+  /// cannot be more than five years in the future.
+  Interval? interval;
 
-  AudioTrackSnippet({
-    this.contentType,
-    this.failureReason,
-    this.language,
-    this.status,
-    this.updateTime,
-    this.videoId,
-  });
+  AvailabilityConfigGlobalConfig({this.excludedRegionCodes, this.interval});
 
-  AudioTrackSnippet.fromJson(core.Map json_)
+  AvailabilityConfigGlobalConfig.fromJson(core.Map json_)
     : this(
-        contentType: json_['contentType'] as core.String?,
-        failureReason: json_['failureReason'] as core.String?,
-        language: json_['language'] as core.String?,
-        status: json_['status'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-        videoId: json_['videoId'] as core.String?,
+        excludedRegionCodes: (json_['excludedRegionCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        interval: json_.containsKey('interval')
+            ? Interval.fromJson(
+                json_['interval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final contentType = this.contentType;
-    final failureReason = this.failureReason;
-    final language = this.language;
-    final status = this.status;
-    final updateTime = this.updateTime;
-    final videoId = this.videoId;
-    return {
-      'contentType': ?contentType,
-      'failureReason': ?failureReason,
-      'language': ?language,
-      'status': ?status,
-      'updateTime': ?updateTime,
-      'videoId': ?videoId,
-    };
+    final excludedRegionCodes = this.excludedRegionCodes;
+    final interval = this.interval;
+    return {'excludedRegionCodes': ?excludedRegionCodes, 'interval': ?interval};
+  }
+}
+
+/// Video is available in the specified regions only.
+class AvailabilityConfigRegionsConfig {
+  /// List of regions and time windows where video is available.
+  ///
+  /// If a region is specified multiple times, the union of all intervals is
+  /// used.
+  ///
+  /// Required.
+  core.List<AvailabilityConfigRegionsConfigRegionInterval>? regionIntervals;
+
+  AvailabilityConfigRegionsConfig({this.regionIntervals});
+
+  AvailabilityConfigRegionsConfig.fromJson(core.Map json_)
+    : this(
+        regionIntervals: (json_['regionIntervals'] as core.List?)
+            ?.map(
+              (value) => AvailabilityConfigRegionsConfigRegionInterval.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final regionIntervals = this.regionIntervals;
+    return {'regionIntervals': ?regionIntervals};
+  }
+}
+
+/// Region and time window where video is available for the region.
+class AvailabilityConfigRegionsConfigRegionInterval {
+  /// Time window where video is available for the region.
+  ///
+  /// Not supported for upcoming / active live broadcasts. If start time is
+  /// unspecified, video is already available If end time is unspecified, video
+  /// is available forever Specified start and end times cannot be more than
+  /// five years in the future.
+  Interval? interval;
+
+  /// Region where video is available
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  AvailabilityConfigRegionsConfigRegionInterval({
+    this.interval,
+    this.regionCode,
+  });
+
+  AvailabilityConfigRegionsConfigRegionInterval.fromJson(core.Map json_)
+    : this(
+        interval: json_.containsKey('interval')
+            ? Interval.fromJson(
+                json_['interval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        regionCode: json_['regionCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final interval = this.interval;
+    final regionCode = this.regionCode;
+    return {'interval': ?interval, 'regionCode': ?regionCode};
+  }
+}
+
+/// Response for the Videos.stats API.
+///
+/// Returns VideoStat information about a batch of videos. VideoStat contains a
+/// subset of the information in Video that is relevant to statistics and
+/// content details. BatchGetStats is intentionally not atomic to provide a
+/// better user experience. BatchGetStatsResponse returns a summary to help
+/// users understand the outcome of the operation.
+class BatchGetStatsResponse {
+  /// Etag of this resource.
+  core.String? etag;
+
+  /// The videos' stats information.
+  core.List<VideoStat>? items;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#batchGetStatsResponse".
+  core.String? kind;
+
+  BatchGetStatsResponse({this.etag, this.items, this.kind});
+
+  BatchGetStatsResponse.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => VideoStat.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final items = this.items;
+    final kind = this.kind;
+    return {'etag': ?etag, 'items': ?items, 'kind': ?kind};
+  }
+}
+
+/// Details about the brand partner linked to the video for Creator Initiated
+/// Linking (CIL).
+///
+/// Next ID: 6
+class BrandPartner {
+  /// Channel handle, must begin with "@"
+  ///
+  /// Required.
+  core.String? channelHandle;
+
+  /// External Channel ID, must begin with "UC"
+  ///
+  /// Required.
+  core.String? channelId;
+
+  BrandPartner({this.channelHandle, this.channelId});
+
+  BrandPartner.fromJson(core.Map json_)
+    : this(
+        channelHandle: json_['channelHandle'] as core.String?,
+        channelId: json_['channelId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final channelHandle = this.channelHandle;
+    final channelId = this.channelId;
+    return {'channelHandle': ?channelHandle, 'channelId': ?channelId};
   }
 }
 
@@ -9027,6 +8983,62 @@ class ChannelStatus {
       'madeForKids': ?madeForKids,
       'privacyStatus': ?privacyStatus,
       'selfDeclaredMadeForKids': ?selfDeclaredMadeForKids,
+    };
+  }
+}
+
+/// Information specific to a creator in an affiliate program linked to a
+/// YouTube channel.
+class ChannelToAffiliateProgramLinkDetails {
+  /// Google Merchant Center ID of the partner.
+  ///
+  /// Required.
+  core.String? merchantId;
+
+  /// Affiliate program status.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "affiliateProgramStatusUnspecified" : Unspecified status.
+  /// - "active" : Channel is active in the affiliate program.
+  /// - "inactive" : Channel is inactive in the affiliate program.
+  core.String? programStatus;
+
+  /// Reason for the last update of the affiliate program status.
+  ///
+  /// Optional.
+  core.String? statusUpdateReason;
+
+  /// Timestamp when the affiliate program status was last updated.
+  ///
+  /// Optional.
+  core.String? statusUpdateTime;
+
+  ChannelToAffiliateProgramLinkDetails({
+    this.merchantId,
+    this.programStatus,
+    this.statusUpdateReason,
+    this.statusUpdateTime,
+  });
+
+  ChannelToAffiliateProgramLinkDetails.fromJson(core.Map json_)
+    : this(
+        merchantId: json_['merchantId'] as core.String?,
+        programStatus: json_['programStatus'] as core.String?,
+        statusUpdateReason: json_['statusUpdateReason'] as core.String?,
+        statusUpdateTime: json_['statusUpdateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final merchantId = this.merchantId;
+    final programStatus = this.programStatus;
+    final statusUpdateReason = this.statusUpdateReason;
+    final statusUpdateTime = this.statusUpdateTime;
+    return {
+      'merchantId': ?merchantId,
+      'programStatus': ?programStatus,
+      'statusUpdateReason': ?statusUpdateReason,
+      'statusUpdateTime': ?statusUpdateTime,
     };
   }
 }
@@ -11753,6 +11765,14 @@ class IngestionInfo {
   }
 }
 
+/// Represents a time interval, encoded as a Timestamp start (inclusive) and a
+/// Timestamp end (exclusive).
+///
+/// The start must be less than or equal to the end. When the start equals the
+/// end, the interval is empty (matches no time). When both start and end are
+/// unspecified, the interval matches any time.
+typedef Interval = $Interval;
+
 /// Describes an invideo branding.
 class InvideoBranding {
   /// The bytes the uploaded image.
@@ -11921,48 +11941,6 @@ class LevelDetails {
   }
 }
 
-/// Response for listing AudioTracks.
-class ListAudioTracksResponse {
-  /// A list of AudioTracks that match the request criteria.
-  ///
-  /// Output only.
-  core.List<AudioTrack>? audioTracks;
-
-  /// Etag of this response.
-  ///
-  /// Output only.
-  core.String? etag;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string youtube#audiotrackList.
-  ///
-  /// Output only.
-  core.String? kind;
-
-  ListAudioTracksResponse({this.audioTracks, this.etag, this.kind});
-
-  ListAudioTracksResponse.fromJson(core.Map json_)
-    : this(
-        audioTracks: (json_['audioTracks'] as core.List?)
-            ?.map(
-              (value) => AudioTrack.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-        etag: json_['etag'] as core.String?,
-        kind: json_['kind'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final audioTracks = this.audioTracks;
-    final etag = this.etag;
-    final kind = this.kind;
-    return {'audioTracks': ?audioTracks, 'etag': ?etag, 'kind': ?kind};
-  }
-}
-
 /// A *liveBroadcast* resource represents an event that will be streamed, via
 /// live video, on YouTube.
 class LiveBroadcast {
@@ -12069,6 +12047,14 @@ class LiveBroadcast {
 
 /// Detailed settings of a broadcast.
 class LiveBroadcastContentDetails {
+  /// The broadcast's availability config.
+  ///
+  /// Used to set specific region availability or block specific regions It is
+  /// optional - if not set, it is not enforced.
+  ///
+  /// Optional.
+  AvailabilityConfig? availabilityConfig;
+
   /// This value uniquely identifies the live stream bound to the broadcast.
   core.String? boundStreamId;
 
@@ -12213,6 +12199,7 @@ class LiveBroadcastContentDetails {
   core.String? stereoLayout;
 
   LiveBroadcastContentDetails({
+    this.availabilityConfig,
     this.boundStreamId,
     this.boundStreamLastUpdateTimeMs,
     this.closedCaptionsType,
@@ -12234,6 +12221,12 @@ class LiveBroadcastContentDetails {
 
   LiveBroadcastContentDetails.fromJson(core.Map json_)
     : this(
+        availabilityConfig: json_.containsKey('availabilityConfig')
+            ? AvailabilityConfig.fromJson(
+                json_['availabilityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         boundStreamId: json_['boundStreamId'] as core.String?,
         boundStreamLastUpdateTimeMs:
             json_.containsKey('boundStreamLastUpdateTimeMs')
@@ -12263,6 +12256,7 @@ class LiveBroadcastContentDetails {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final availabilityConfig = this.availabilityConfig;
     final boundStreamId = this.boundStreamId;
     final boundStreamLastUpdateTimeMs = this.boundStreamLastUpdateTimeMs;
     final closedCaptionsType = this.closedCaptionsType;
@@ -12281,6 +12275,7 @@ class LiveBroadcastContentDetails {
     final startWithSlate = this.startWithSlate;
     final stereoLayout = this.stereoLayout;
     return {
+      'availabilityConfig': ?availabilityConfig,
       'boundStreamId': ?boundStreamId,
       'boundStreamLastUpdateTimeMs': ?boundStreamLastUpdateTimeMs
           ?.toUtc()
@@ -12440,6 +12435,9 @@ class LiveBroadcastSnippet {
   /// This information is only available once the broadcast's state is live.
   core.DateTime? actualStartTime;
 
+  /// The YouTube video category associated with the video broadcast.
+  core.String? categoryId;
+
   /// The ID that YouTube uses to uniquely identify the channel that is
   /// publishing the broadcast.
   core.String? channelId;
@@ -12486,6 +12484,7 @@ class LiveBroadcastSnippet {
   LiveBroadcastSnippet({
     this.actualEndTime,
     this.actualStartTime,
+    this.categoryId,
     this.channelId,
     this.description,
     this.isDefaultBroadcast,
@@ -12505,6 +12504,7 @@ class LiveBroadcastSnippet {
         actualStartTime: json_.containsKey('actualStartTime')
             ? core.DateTime.parse(json_['actualStartTime'] as core.String)
             : null,
+        categoryId: json_['categoryId'] as core.String?,
         channelId: json_['channelId'] as core.String?,
         description: json_['description'] as core.String?,
         isDefaultBroadcast: json_['isDefaultBroadcast'] as core.bool?,
@@ -12529,6 +12529,7 @@ class LiveBroadcastSnippet {
   core.Map<core.String, core.dynamic> toJson() {
     final actualEndTime = this.actualEndTime;
     final actualStartTime = this.actualStartTime;
+    final categoryId = this.categoryId;
     final channelId = this.channelId;
     final description = this.description;
     final isDefaultBroadcast = this.isDefaultBroadcast;
@@ -12541,6 +12542,7 @@ class LiveBroadcastSnippet {
     return {
       'actualEndTime': ?actualEndTime?.toUtc().toIso8601String(),
       'actualStartTime': ?actualStartTime?.toUtc().toIso8601String(),
+      'categoryId': ?categoryId,
       'channelId': ?channelId,
       'description': ?description,
       'isDefaultBroadcast': ?isDefaultBroadcast,
@@ -13289,8 +13291,8 @@ class LiveChatMessageSnippet {
   /// a sponsor memberMilestoneChatEvent - the member that sent the message
   /// membershipGiftingEvent - the user that made the purchase
   /// giftMembershipReceivedEvent - the user that received the gift membership
-  /// messageDeletedEvent - the moderator that took the action
-  /// messageRetractedEvent - the author that retracted their message
+  /// messageDeletedEvent - the moderator that took the action. Unused.
+  /// messageRetractedEvent - the author that retracted their message. Unused.
   /// userBannedEvent - the moderator that took the action superChatEvent - the
   /// user that made the purchase superStickerEvent - the user that made the
   /// purchase pollEvent - the user that created the poll
@@ -13327,7 +13329,13 @@ class LiveChatMessageSnippet {
   /// Details about the Membership Gifting event, this is only set if the type
   /// is 'membershipGiftingEvent'.
   LiveChatMembershipGiftingDetails? membershipGiftingDetails;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LiveChatMessageDeletedDetails? messageDeletedDetails;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LiveChatMessageRetractedDetails? messageRetractedDetails;
 
   /// Details about the New Member Announcement event, this is only set if the
@@ -16059,7 +16067,7 @@ class SearchListResponse {
   core.String? regionCode;
   TokenPagination? tokenPagination;
 
-  /// The visitorId identifies the visitor.
+  /// The visitor ID identifies the visitor.
   core.String? visitorId;
 
   SearchListResponse({
@@ -17022,6 +17030,10 @@ class ThirdPartyLinkListResponse {
 /// Basic information about a third party account link, including its type and
 /// type-specific information.
 class ThirdPartyLinkSnippet {
+  /// Information specific to a link between a channel and an affiliate program
+  /// of a partner.
+  ChannelToAffiliateProgramLinkDetails? channelToAffiliateProgramLink;
+
   /// Information specific to a link between a channel and a store on a
   /// merchandising platform.
   ChannelToStoreLinkDetails? channelToStoreLink;
@@ -17032,12 +17044,26 @@ class ThirdPartyLinkSnippet {
   /// - "channelToStoreLink" : A link that is connecting (or about to connect) a
   /// channel with a store on a merchandising platform in order to enable retail
   /// commerce capabilities for that channel on YouTube.
+  /// - "channelToAffiliateProgramLink" : A link that is connecting (or about to
+  /// connect) a channel with an affiliate program of a partner to enable that
+  /// channel to earn commissions from that partner through affiliate links.
   core.String? type;
 
-  ThirdPartyLinkSnippet({this.channelToStoreLink, this.type});
+  ThirdPartyLinkSnippet({
+    this.channelToAffiliateProgramLink,
+    this.channelToStoreLink,
+    this.type,
+  });
 
   ThirdPartyLinkSnippet.fromJson(core.Map json_)
     : this(
+        channelToAffiliateProgramLink:
+            json_.containsKey('channelToAffiliateProgramLink')
+            ? ChannelToAffiliateProgramLinkDetails.fromJson(
+                json_['channelToAffiliateProgramLink']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         channelToStoreLink: json_.containsKey('channelToStoreLink')
             ? ChannelToStoreLinkDetails.fromJson(
                 json_['channelToStoreLink']
@@ -17048,9 +17074,14 @@ class ThirdPartyLinkSnippet {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final channelToAffiliateProgramLink = this.channelToAffiliateProgramLink;
     final channelToStoreLink = this.channelToStoreLink;
     final type = this.type;
-    return {'channelToStoreLink': ?channelToStoreLink, 'type': ?type};
+    return {
+      'channelToAffiliateProgramLink': ?channelToAffiliateProgramLink,
+      'channelToStoreLink': ?channelToStoreLink,
+      'type': ?type,
+    };
   }
 }
 
@@ -17109,6 +17140,9 @@ class ThumbnailDetails {
   /// The default image for this resource.
   Thumbnail? default_;
 
+  /// The full high definition (1080p) quality image for this resource.
+  Thumbnail? fhd;
+
   /// The high quality image for this resource.
   Thumbnail? high;
 
@@ -17118,15 +17152,24 @@ class ThumbnailDetails {
   /// The medium quality image for this resource.
   Thumbnail? medium;
 
+  /// The quad high definition (1440p / 2K) quality image for this resource.
+  Thumbnail? qhd;
+
   /// The standard quality image for this resource.
   Thumbnail? standard;
 
+  /// The ultra-high resolution (4K) quality image for this resource.
+  Thumbnail? uhd;
+
   ThumbnailDetails({
     this.default_,
+    this.fhd,
     this.high,
     this.maxres,
     this.medium,
+    this.qhd,
     this.standard,
+    this.uhd,
   });
 
   ThumbnailDetails.fromJson(core.Map json_)
@@ -17134,6 +17177,11 @@ class ThumbnailDetails {
         default_: json_.containsKey('default')
             ? Thumbnail.fromJson(
                 json_['default'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fhd: json_.containsKey('fhd')
+            ? Thumbnail.fromJson(
+                json_['fhd'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         high: json_.containsKey('high')
@@ -17151,25 +17199,41 @@ class ThumbnailDetails {
                 json_['medium'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        qhd: json_.containsKey('qhd')
+            ? Thumbnail.fromJson(
+                json_['qhd'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         standard: json_.containsKey('standard')
             ? Thumbnail.fromJson(
                 json_['standard'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uhd: json_.containsKey('uhd')
+            ? Thumbnail.fromJson(
+                json_['uhd'] as core.Map<core.String, core.dynamic>,
               )
             : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final default_ = this.default_;
+    final fhd = this.fhd;
     final high = this.high;
     final maxres = this.maxres;
     final medium = this.medium;
+    final qhd = this.qhd;
     final standard = this.standard;
+    final uhd = this.uhd;
     return {
       'default': ?default_,
+      'fhd': ?fhd,
       'high': ?high,
       'maxres': ?maxres,
       'medium': ?medium,
+      'qhd': ?qhd,
       'standard': ?standard,
+      'uhd': ?uhd,
     };
   }
 }
@@ -17246,6 +17310,7 @@ class Video {
   ///
   /// This data can only be retrieved by the video owner.
   VideoAgeGating? ageGating;
+  BrandPartner? brandPartner;
 
   /// The contentDetails object contains information about the video content,
   /// including the length of the video and its aspect ratio.
@@ -17346,6 +17411,7 @@ class Video {
 
   Video({
     this.ageGating,
+    this.brandPartner,
     this.contentDetails,
     this.etag,
     this.fileDetails,
@@ -17371,6 +17437,11 @@ class Video {
         ageGating: json_.containsKey('ageGating')
             ? VideoAgeGating.fromJson(
                 json_['ageGating'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        brandPartner: json_.containsKey('brandPartner')
+            ? BrandPartner.fromJson(
+                json_['brandPartner'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         contentDetails: json_.containsKey('contentDetails')
@@ -17466,6 +17537,7 @@ class Video {
 
   core.Map<core.String, core.dynamic> toJson() {
     final ageGating = this.ageGating;
+    final brandPartner = this.brandPartner;
     final contentDetails = this.contentDetails;
     final etag = this.etag;
     final fileDetails = this.fileDetails;
@@ -17486,6 +17558,7 @@ class Video {
     final topicDetails = this.topicDetails;
     return {
       'ageGating': ?ageGating,
+      'brandPartner': ?brandPartner,
       'contentDetails': ?contentDetails,
       'etag': ?etag,
       'fileDetails': ?fileDetails,
@@ -19089,6 +19162,91 @@ class VideoSnippet {
   }
 }
 
+/// A *VideoStat* resource represents a YouTube video's stats.
+class VideoStat {
+  /// The VideoStatsContentDetails object contains information about the video
+  /// content, including the length of the video.
+  ///
+  /// Output only.
+  VideoStatsContentDetails? contentDetails;
+
+  /// Etag of this resource.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The ID that YouTube uses to uniquely identify the video.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#videoStats".
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// The VideoStatsSnippet object contains basic details about the video, such
+  /// publish time.
+  ///
+  /// Output only.
+  VideoStatsSnippet? snippet;
+
+  /// The VideoStatsStatistics object contains statistics about the video.
+  ///
+  /// Output only.
+  VideoStatsStatistics? statistics;
+
+  VideoStat({
+    this.contentDetails,
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+    this.statistics,
+  });
+
+  VideoStat.fromJson(core.Map json_)
+    : this(
+        contentDetails: json_.containsKey('contentDetails')
+            ? VideoStatsContentDetails.fromJson(
+                json_['contentDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        snippet: json_.containsKey('snippet')
+            ? VideoStatsSnippet.fromJson(
+                json_['snippet'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        statistics: json_.containsKey('statistics')
+            ? VideoStatsStatistics.fromJson(
+                json_['statistics'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentDetails = this.contentDetails;
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final snippet = this.snippet;
+    final statistics = this.statistics;
+    return {
+      'contentDetails': ?contentDetails,
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'snippet': ?snippet,
+      'statistics': ?statistics,
+    };
+  }
+}
+
 /// Statistics about the video, such as the number of times the video was viewed
 /// or liked.
 class VideoStatistics {
@@ -19140,6 +19298,96 @@ class VideoStatistics {
       'commentCount': ?commentCount,
       'dislikeCount': ?dislikeCount,
       'favoriteCount': ?favoriteCount,
+      'likeCount': ?likeCount,
+      'viewCount': ?viewCount,
+    };
+  }
+}
+
+/// Details about the content of a YouTube Video.
+///
+/// This is a subset of the information in VideoContentDetails specifically for
+/// the Videos.stats API.
+class VideoStatsContentDetails {
+  /// The length of the video.
+  ///
+  /// The property value is a
+  /// \[`google.protobuf.Duration`\](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration)
+  /// object.
+  ///
+  /// Output only.
+  core.String? duration;
+
+  VideoStatsContentDetails({this.duration});
+
+  VideoStatsContentDetails.fromJson(core.Map json_)
+    : this(duration: json_['duration'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final duration = this.duration;
+    return {'duration': ?duration};
+  }
+}
+
+/// Basic details about a video.
+///
+/// This is a subset of the information in VideoSnippet specifically for the
+/// Videos.stats API.
+class VideoStatsSnippet {
+  /// The date and time that the video was uploaded.
+  ///
+  /// The property value is a
+  /// \[`google.protobuf.Timestamp`\](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#timestamp)
+  /// object.
+  ///
+  /// Output only.
+  core.String? publishTime;
+
+  VideoStatsSnippet({this.publishTime});
+
+  VideoStatsSnippet.fromJson(core.Map json_)
+    : this(publishTime: json_['publishTime'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final publishTime = this.publishTime;
+    return {'publishTime': ?publishTime};
+  }
+}
+
+/// Statistics about the video, such as the number of times the video was viewed
+/// or liked.
+class VideoStatsStatistics {
+  /// The number of comments for the video.
+  ///
+  /// Output only.
+  core.String? commentCount;
+
+  /// The number of users who have indicated that they liked the video by giving
+  /// it a positive rating.
+  ///
+  /// Output only.
+  core.String? likeCount;
+
+  /// The number of times the video has been viewed.
+  ///
+  /// Output only.
+  core.String? viewCount;
+
+  VideoStatsStatistics({this.commentCount, this.likeCount, this.viewCount});
+
+  VideoStatsStatistics.fromJson(core.Map json_)
+    : this(
+        commentCount: json_['commentCount'] as core.String?,
+        likeCount: json_['likeCount'] as core.String?,
+        viewCount: json_['viewCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentCount = this.commentCount;
+    final likeCount = this.likeCount;
+    final viewCount = this.viewCount;
+    return {
+      'commentCount': ?commentCount,
       'likeCount': ?likeCount,
       'viewCount': ?viewCount,
     };

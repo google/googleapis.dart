@@ -5645,6 +5645,7 @@ class Publishing {
   /// - "SHOPPING" : Shopping Org.
   /// - "GEO" : Geo Org.
   /// - "GENERATIVE_AI" : Generative AI - https://developers.generativeai.google
+  /// - "HEALTH" : Health Org.
   core.String? organization;
 
   /// Optional link to proto reference documentation.

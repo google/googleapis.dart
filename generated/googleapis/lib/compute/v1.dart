@@ -46,7 +46,9 @@
 /// - [GlobalOperationsResource]
 /// - [GlobalOrganizationOperationsResource]
 /// - [GlobalPublicDelegatedPrefixesResource]
+/// - [GlobalVmExtensionPoliciesResource]
 /// - [HealthChecksResource]
+/// - [HostsResource]
 /// - [HttpHealthChecksResource]
 /// - [HttpsHealthChecksResource]
 /// - [ImageFamilyViewsResource]
@@ -117,11 +119,14 @@
 /// - [RegionUrlMapsResource]
 /// - [RegionZonesResource]
 /// - [RegionsResource]
+/// - [ReliabilityRisksResource]
 /// - [ReservationBlocksResource]
 /// - [ReservationSlotsResource]
 /// - [ReservationSubBlocksResource]
 /// - [ReservationsResource]
 /// - [ResourcePoliciesResource]
+/// - [RolloutPlansResource]
+/// - [RolloutsResource]
 /// - [RoutersResource]
 /// - [RoutesResource]
 /// - [SecurityPoliciesResource]
@@ -227,7 +232,10 @@ class ComputeApi {
       GlobalOrganizationOperationsResource(_requester);
   GlobalPublicDelegatedPrefixesResource get globalPublicDelegatedPrefixes =>
       GlobalPublicDelegatedPrefixesResource(_requester);
+  GlobalVmExtensionPoliciesResource get globalVmExtensionPolicies =>
+      GlobalVmExtensionPoliciesResource(_requester);
   HealthChecksResource get healthChecks => HealthChecksResource(_requester);
+  HostsResource get hosts => HostsResource(_requester);
   HttpHealthChecksResource get httpHealthChecks =>
       HttpHealthChecksResource(_requester);
   HttpsHealthChecksResource get httpsHealthChecks =>
@@ -354,6 +362,8 @@ class ComputeApi {
   RegionUrlMapsResource get regionUrlMaps => RegionUrlMapsResource(_requester);
   RegionZonesResource get regionZones => RegionZonesResource(_requester);
   RegionsResource get regions => RegionsResource(_requester);
+  ReliabilityRisksResource get reliabilityRisks =>
+      ReliabilityRisksResource(_requester);
   ReservationBlocksResource get reservationBlocks =>
       ReservationBlocksResource(_requester);
   ReservationSlotsResource get reservationSlots =>
@@ -363,6 +373,8 @@ class ComputeApi {
   ReservationsResource get reservations => ReservationsResource(_requester);
   ResourcePoliciesResource get resourcePolicies =>
       ResourcePoliciesResource(_requester);
+  RolloutPlansResource get rolloutPlans => RolloutPlansResource(_requester);
+  RolloutsResource get rollouts => RolloutsResource(_requester);
   RoutersResource get routers => RoutersResource(_requester);
   RoutesResource get routes => RoutesResource(_requester);
   SecurityPoliciesResource get securityPolicies =>
@@ -4287,7 +4299,10 @@ class BackendServicesResource {
     );
   }
 
-  /// Retrieves a list of all usable backend services in the specified project.
+  /// Retrieves a list of all usable backend services for Application Load
+  /// Balancers and Proxy Network Load Balancers in the specified project.
+  /// Backend services for external and internal passthrough Network Load
+  /// Balancers are not included in the response.
   ///
   /// Request parameters:
   ///
@@ -9539,6 +9554,13 @@ class ForwardingRulesResource {
   /// Value must have pattern
   /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
+  /// [view] - null
+  /// Possible string values are:
+  /// - "BASIC" : The default view of a ForwardingRule, which includes the basic
+  /// fields.
+  /// - "FULL" : The full view, including the
+  /// ForwardingRule.`attached_extensions` field.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -9553,9 +9575,11 @@ class ForwardingRulesResource {
     core.String project,
     core.String region,
     core.String forwardingRule, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -11282,6 +11306,13 @@ class GlobalForwardingRulesResource {
   /// Value must have pattern
   /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
+  /// [view] - null
+  /// Possible string values are:
+  /// - "BASIC" : The default view of a ForwardingRule, which includes the basic
+  /// fields.
+  /// - "FULL" : The full view, including the
+  /// ForwardingRule.`attached_extensions` field.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -11295,9 +11326,11 @@ class GlobalForwardingRulesResource {
   async.Future<ForwardingRule> get(
     core.String project,
     core.String forwardingRule, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -13491,6 +13524,585 @@ class GlobalPublicDelegatedPrefixesResource {
   }
 }
 
+class GlobalVmExtensionPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  GlobalVmExtensionPoliciesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Retrieves the list of all VM Extension Policy resources
+  /// available to the specified project.
+  ///
+  /// To prevent failure, it's recommended that you set the
+  /// `returnPartialSuccess` parameter to `true`.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Name of the project scoping this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [includeAllScopes] - Indicates whether every visible scope for each scope
+  /// type (zone, region,
+  /// global) should be included in the response. For new resource types added
+  /// after this field, the flag has no effect as new resource types will always
+  /// include every visible scope for each scope type in response. For resource
+  /// types which predate this field, if this flag is omitted or false, only
+  /// scopes of the scope types where the resource type is expected to be found
+  /// will be included.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [serviceProjectNumber] - The Shared VPC service project id or service
+  /// project number for which
+  /// aggregated list request is invoked for subnetworks list-usable api.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VmExtensionPolicyAggregatedListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VmExtensionPolicyAggregatedListResponse> aggregatedList(
+    core.String project, {
+    core.String? filter,
+    core.bool? includeAllScopes,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? serviceProjectNumber,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'includeAllScopes': ?includeAllScopes == null
+          ? null
+          : ['${includeAllScopes}'],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'serviceProjectNumber': ?serviceProjectNumber == null
+          ? null
+          : [serviceProjectNumber],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/aggregated/vmExtensionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VmExtensionPolicyAggregatedListResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Purge scoped resources (zonal policies) from a global VM extension
+  /// policy, and then delete the global VM extension policy.
+  ///
+  /// Purge of the scoped
+  /// resources is a pre-condition of the global VM extension policy deletion.
+  /// The deletion of the global VM extension policy happens after the purge
+  /// rollout is done, so it's not a part of the LRO. It's an automatic process
+  /// that triggers in the backend.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [globalVmExtensionPolicy] - Name of the global VM extension policy to
+  /// purge scoped resources for.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    GlobalVmExtensionPolicyRolloutOperationRolloutInput request,
+    core.String project,
+    core.String globalVmExtensionPolicy, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/vmExtensionPolicies/' +
+        commons.escapeVariable('$globalVmExtensionPolicy') +
+        '/delete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a global VM extension policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [globalVmExtensionPolicy] - Name of the GlobalVmExtensionPolicy resource
+  /// to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GlobalVmExtensionPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GlobalVmExtensionPolicy> get(
+    core.String project,
+    core.String globalVmExtensionPolicy, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/vmExtensionPolicies/' +
+        commons.escapeVariable('$globalVmExtensionPolicy');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GlobalVmExtensionPolicy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates a new project level GlobalVmExtensionPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    GlobalVmExtensionPolicy request,
+    core.String project, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/vmExtensionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists global VM extension policies.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GlobalVmExtensionPolicyList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GlobalVmExtensionPolicyList> list(
+    core.String project, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/vmExtensionPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GlobalVmExtensionPolicyList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a global VM extension policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [globalVmExtensionPolicy] - Name of the global VM extension policy to
+  /// update.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> update(
+    GlobalVmExtensionPolicy request,
+    core.String project,
+    core.String globalVmExtensionPolicy, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/vmExtensionPolicies/' +
+        commons.escapeVariable('$globalVmExtensionPolicy');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class HealthChecksResource {
   final commons.ApiRequester _requester;
 
@@ -14182,6 +14794,300 @@ class HealthChecksResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class HostsResource {
+  final commons.ApiRequester _requester;
+
+  HostsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves information about the specified host.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - The project ID for this request.
+  ///
+  /// [zone] - The name of the zone for this request, formatted as RFC1035.
+  ///
+  /// [association] - The parent resource association for the Host. This field
+  /// specifies the
+  /// hierarchical context (e.g., reservation, block, sub-block) when
+  /// accessing the host. For example, reservations/reservation_name,
+  /// reservations/reservation_name/reservationBlocks/reservation_block_name or
+  /// reservations/reservation_name/reservationBlocks/reservation_block_name/reservationSubBlocks/reservation_sub_block_name.
+  ///
+  /// [host] - The name of the host, formatted as RFC1035 or a resource ID
+  /// number.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Host].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Host> get(
+    core.String project,
+    core.String zone,
+    core.String association,
+    core.String host, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/' +
+        commons.escapeVariable('$association') +
+        '/hosts/' +
+        commons.escapeVariable('$host');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Host.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Allows customers to get SBOM versions of a host.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  ///
+  /// [zone] - Name of the zone for this request. Zone name should conform to
+  /// RFC1035.
+  ///
+  /// [association] - The parent resource association for the Host. This field
+  /// specifies the
+  /// hierarchical context (e.g., reservation, block, sub-block) when
+  /// accessing the host.
+  ///
+  /// [host] - The name of the host, formatted as RFC1035 or a resource ID
+  /// number.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> getVersion(
+    HostsGetVersionRequest request,
+    core.String project,
+    core.String zone,
+    core.String association,
+    core.String host, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/' +
+        commons.escapeVariable('$association') +
+        '/hosts/' +
+        commons.escapeVariable('$host') +
+        '/getVersion';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of hosts.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - The project ID for this request.
+  ///
+  /// [zone] - The name of the zone for this request, formatted as RFC1035.
+  ///
+  /// [association] - The parent resource association for the Host. This field
+  /// specifies the
+  /// hierarchical context (e.g., reservation, block, sub-block) when
+  /// accessing the host. For example, reservations/reservation_name,
+  /// reservations/reservation_name/reservationBlocks/reservation_block_name or
+  /// reservations/reservation_name/reservationBlocks/reservation_block_name/reservationSubBlocks/reservation_sub_block_name.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HostsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HostsListResponse> list(
+    core.String project,
+    core.String zone,
+    core.String association, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/' +
+        commons.escapeVariable('$association') +
+        '/hosts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HostsListResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -16910,6 +17816,10 @@ class InstanceGroupManagersResource {
   ///
   /// [instanceGroupManager] - The name of the managed instance group to delete.
   ///
+  /// [noGracefulShutdown] - When set, graceful shutdown is skipped for instance
+  /// deletion even if it's
+  /// configured for the instances.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so
   /// that if you must retry your request, the server will know to ignore the
@@ -16939,10 +17849,14 @@ class InstanceGroupManagersResource {
     core.String project,
     core.String zone,
     core.String instanceGroupManager, {
+    core.bool? noGracefulShutdown,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'noGracefulShutdown': ?noGracefulShutdown == null
+          ? null
+          : ['${noGracefulShutdown}'],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -16997,6 +17911,10 @@ class InstanceGroupManagersResource {
   ///
   /// [instanceGroupManager] - The name of the managed instance group.
   ///
+  /// [noGracefulShutdown] - When set, graceful shutdown is skipped for instance
+  /// deletion even if it's
+  /// configured for the instances.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so
   /// that if you must retry your request, the server will know to ignore the
@@ -17027,11 +17945,15 @@ class InstanceGroupManagersResource {
     core.String project,
     core.String zone,
     core.String instanceGroupManager, {
+    core.bool? noGracefulShutdown,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'noGracefulShutdown': ?noGracefulShutdown == null
+          ? null
+          : ['${noGracefulShutdown}'],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -18104,6 +19026,10 @@ class InstanceGroupManagersResource {
   ///
   /// [instanceGroupManager] - The name of the managed instance group.
   ///
+  /// [noGracefulShutdown] - When set, graceful shutdown is skipped for instance
+  /// recreation even if it's
+  /// configured for the instances.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so
   /// that if you must retry your request, the server will know to ignore the
@@ -18134,11 +19060,15 @@ class InstanceGroupManagersResource {
     core.String project,
     core.String zone,
     core.String instanceGroupManager, {
+    core.bool? noGracefulShutdown,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'noGracefulShutdown': ?noGracefulShutdown == null
+          ? null
+          : ['${noGracefulShutdown}'],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -18645,6 +19575,10 @@ class InstanceGroupManagersResource {
   ///
   /// [instanceGroupManager] - The name of the managed instance group.
   ///
+  /// [noGracefulShutdown] - When set, graceful shutdown is skipped for instance
+  /// stopping even if it's
+  /// configured for the instances.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so
   /// that if you must retry your request, the server will know to ignore the
@@ -18675,11 +19609,15 @@ class InstanceGroupManagersResource {
     core.String project,
     core.String zone,
     core.String instanceGroupManager, {
+    core.bool? noGracefulShutdown,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'noGracefulShutdown': ?noGracefulShutdown == null
+          ? null
+          : ['${noGracefulShutdown}'],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -21262,6 +22200,8 @@ class InstancesResource {
   /// Value must have pattern
   /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
+  /// [noGracefulShutdown] - If set to true, Graceful Shutdown is skipped.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so
   /// that if you must retry your request, the server will know to ignore the
@@ -21291,10 +22231,14 @@ class InstancesResource {
     core.String project,
     core.String zone,
     core.String instance, {
+    core.bool? noGracefulShutdown,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'noGracefulShutdown': ?noGracefulShutdown == null
+          ? null
+          : ['${noGracefulShutdown}'],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -24116,6 +25060,8 @@ class InstancesResource {
   /// If false, Local SSD data will be preserved when the instance is suspended.
   /// If true, the contents of any attached Local SSD disks will be discarded.
   ///
+  /// [noGracefulShutdown] - If set to true, Graceful Shutdown is skipped.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so
   /// that if you must retry your request, the server will know to ignore the
@@ -24146,6 +25092,7 @@ class InstancesResource {
     core.String zone,
     core.String instance, {
     core.bool? discardLocalSsd,
+    core.bool? noGracefulShutdown,
     core.String? requestId,
     core.String? $fields,
   }) async {
@@ -24153,6 +25100,9 @@ class InstancesResource {
       'discardLocalSsd': ?discardLocalSsd == null
           ? null
           : ['${discardLocalSsd}'],
+      'noGracefulShutdown': ?noGracefulShutdown == null
+          ? null
+          : ['${noGracefulShutdown}'],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -29095,6 +30045,119 @@ class LicenseCodesResource {
     return LicenseCode.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// May be empty if no such
+  /// policy or resource exists.
+  ///  *Caution* This resource is intended
+  /// for use only by third-party partners who are creatingCloud Marketplace
+  /// images.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String project,
+    core.String resource, {
+    core.int? optionsRequestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion == null
+          ? null
+          : ['${optionsRequestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/licenseCodes/' +
+        commons.escapeVariable('$resource') +
+        '/getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  /// Replaces any existing policy.
+  ///  *Caution* This resource is intended
+  /// for use only by third-party partners who are creatingCloud Marketplace
+  /// images.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    GlobalSetPolicyRequest request,
+    core.String project,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/licenseCodes/' +
+        commons.escapeVariable('$resource') +
+        '/setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -34649,6 +35712,78 @@ class NetworksResource {
         '/global/networks/' +
         commons.escapeVariable('$network') +
         '/addPeering';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Cancel requests to remove a peering from the specified network.
+  ///
+  /// Applicable
+  /// only for PeeringConnection with update_strategy=CONSENSUS.  Cancels a
+  /// request to remove a peering from the specified network.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [network] - Name of the network resource to remove peering from.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> cancelRequestRemovePeering(
+    NetworksCancelRequestRemovePeeringRequest request,
+    core.String project,
+    core.String network, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/networks/' +
+        commons.escapeVariable('$network') +
+        '/cancelRequestRemovePeering';
 
     final response_ = await _requester.request(
       url_,
@@ -44150,9 +45285,12 @@ class RegionBackendServicesResource {
     );
   }
 
-  /// Retrieves a list of all usable backend services in the specified project
-  /// in
-  /// the given region.
+  /// Retrieves a list of all usable backend services for Application Load
+  /// Balancers and Proxy Network Load Balancers in the specified project in the
+  /// given region.
+  ///
+  /// Backend services for external and internal passthrough
+  /// Network Load Balancers are not included in the response.
   ///
   /// Request parameters:
   ///
@@ -50797,6 +51935,10 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [instanceGroupManager] - Name of the managed instance group to delete.
   ///
+  /// [noGracefulShutdown] - When set, graceful shutdown is skipped for instance
+  /// deletion even if it's
+  /// configured for the instances.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so
   /// that if you must retry your request, the server will know to ignore the
@@ -50826,10 +51968,14 @@ class RegionInstanceGroupManagersResource {
     core.String project,
     core.String region,
     core.String instanceGroupManager, {
+    core.bool? noGracefulShutdown,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'noGracefulShutdown': ?noGracefulShutdown == null
+          ? null
+          : ['${noGracefulShutdown}'],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -50883,6 +52029,10 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [instanceGroupManager] - Name of the managed instance group.
   ///
+  /// [noGracefulShutdown] - When set, graceful shutdown is skipped for instance
+  /// deletion even if it's
+  /// configured for the instances.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so
   /// that if you must retry your request, the server will know to ignore the
@@ -50913,11 +52063,15 @@ class RegionInstanceGroupManagersResource {
     core.String project,
     core.String region,
     core.String instanceGroupManager, {
+    core.bool? noGracefulShutdown,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'noGracefulShutdown': ?noGracefulShutdown == null
+          ? null
+          : ['${noGracefulShutdown}'],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -51971,6 +53125,10 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [instanceGroupManager] - Name of the managed instance group.
   ///
+  /// [noGracefulShutdown] - When set, graceful shutdown is skipped for instance
+  /// recreation even if it's
+  /// configured for the instances.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so
   /// that if you must retry your request, the server will know to ignore the
@@ -52001,11 +53159,15 @@ class RegionInstanceGroupManagersResource {
     core.String project,
     core.String region,
     core.String instanceGroupManager, {
+    core.bool? noGracefulShutdown,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'noGracefulShutdown': ?noGracefulShutdown == null
+          ? null
+          : ['${noGracefulShutdown}'],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -52488,6 +53650,10 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [instanceGroupManager] - The name of the managed instance group.
   ///
+  /// [noGracefulShutdown] - When set, graceful shutdown is skipped for instance
+  /// stopping even if it's
+  /// configured for the instances.
+  ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so
   /// that if you must retry your request, the server will know to ignore the
@@ -52518,11 +53684,15 @@ class RegionInstanceGroupManagersResource {
     core.String project,
     core.String region,
     core.String instanceGroupManager, {
+    core.bool? noGracefulShutdown,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'noGracefulShutdown': ?noGracefulShutdown == null
+          ? null
+          : ['${noGracefulShutdown}'],
       'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -62460,6 +63630,208 @@ class RegionsResource {
   }
 }
 
+class ReliabilityRisksResource {
+  final commons.ApiRequester _requester;
+
+  ReliabilityRisksResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the specified ReliabilityRisk resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [reliabilityRisk] - Name of the ReliabilityRisk resource to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReliabilityRisk].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReliabilityRisk> get(
+    core.String project,
+    core.String reliabilityRisk, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/reliabilityRisks/' +
+        commons.escapeVariable('$reliabilityRisk');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ReliabilityRisk.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves the list of reliabilityRisks available in the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReliabilityRisksListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReliabilityRisksListResponse> list(
+    core.String project, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/reliabilityRisks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ReliabilityRisksListResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ReservationBlocksResource {
   final commons.ApiRequester _requester;
 
@@ -65722,6 +67094,869 @@ class ResourcePoliciesResource {
   }
 }
 
+class RolloutPlansResource {
+  final commons.ApiRequester _requester;
+
+  RolloutPlansResource(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes a RolloutPlan.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [rolloutPlan] - Name of the RolloutPlan resource to delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String rolloutPlan, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/rolloutPlans/' +
+        commons.escapeVariable('$rolloutPlan');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single project-scoped RolloutPlan.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [rolloutPlan] - Name of the persistent rollout plan to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RolloutPlan].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RolloutPlan> get(
+    core.String project,
+    core.String rolloutPlan, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/rolloutPlans/' +
+        commons.escapeVariable('$rolloutPlan');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RolloutPlan.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates a new RolloutPlan in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    RolloutPlan request,
+    core.String project, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/rolloutPlans';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists RolloutPlans in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RolloutPlansListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RolloutPlansListResponse> list(
+    core.String project, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/rolloutPlans';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RolloutPlansListResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class RolloutsResource {
+  final commons.ApiRequester _requester;
+
+  RolloutsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Advances a Rollout to the next wave, or completes it if no waves remain.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [rollout] - Required. Name of the Rollout resource to advance.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [currentWaveNumber] - Required. Wave number of the current wave.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> advance(
+    core.String project,
+    core.String rollout, {
+    core.String? currentWaveNumber,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'currentWaveNumber': ?currentWaveNumber == null
+          ? null
+          : [currentWaveNumber],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/rollouts/' +
+        commons.escapeVariable('$rollout') +
+        '/advance';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Cancels a Rollout.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [rollout] - Name of the Rollout resource to cancel.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [rollback] - Optional. If true, then the ongoing rollout must be rolled
+  /// back. Else, just cancel
+  /// the rollout without taking any further actions. Note that products must
+  /// support at least one of these options, however, it does not need to
+  /// support
+  /// both.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> cancel(
+    core.String project,
+    core.String rollout, {
+    core.String? requestId,
+    core.bool? rollback,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'rollback': ?rollback == null ? null : ['${rollback}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/rollouts/' +
+        commons.escapeVariable('$rollout');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Rollout.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [rollout] - Name of the Rollout resource to delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String rollout, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/rollouts/' +
+        commons.escapeVariable('$rollout');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single project-scoped Rollout.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [rollout] - Name of the persistent rollout to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Rollout].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Rollout> get(
+    core.String project,
+    core.String rollout, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/rollouts/' +
+        commons.escapeVariable('$rollout');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Rollout.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Rollouts in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RolloutsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RolloutsListResponse> list(
+    core.String project, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' + commons.escapeVariable('$project') + '/global/rollouts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RolloutsListResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Pauses a Rollout.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [rollout] - Required. Name of the Rollout resource to pause.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [etag] - The etag of the Rollout.
+  /// If this is provided, the request will only succeed if the etag matches
+  /// the current etag of the Rollout.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> pause(
+    core.String project,
+    core.String rollout, {
+    core.String? etag,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/rollouts/' +
+        commons.escapeVariable('$rollout') +
+        '/pause';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Resumes a Rollout.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [rollout] - Required. Name of the Rollout resource to resume.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [etag] - The etag of the Rollout.
+  /// If this is provided, the request will only succeed if the etag matches
+  /// the current etag of the Rollout.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resume(
+    core.String project,
+    core.String rollout, {
+    core.String? etag,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'etag': ?etag == null ? null : [etag],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/rollouts/' +
+        commons.escapeVariable('$rollout') +
+        '/resume';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class RoutersResource {
   final commons.ApiRequester _requester;
 
@@ -65968,6 +68203,80 @@ class RoutersResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deletes Named Set
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [router] - Name of the Router resource where Named Set is defined.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [namedSet] - The Named Set name for this request. Name must conform to
+  /// RFC1035
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deleteNamedSet(
+    core.String project,
+    core.String region,
+    core.String router, {
+    core.String? namedSet,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'namedSet': ?namedSet == null ? null : [namedSet],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/routers/' +
+        commons.escapeVariable('$router') +
+        '/deleteNamedSet';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Deletes Route Policy
   ///
   /// Request parameters:
@@ -66090,6 +68399,65 @@ class RoutersResource {
       queryParams: queryParams_,
     );
     return Router.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns specified Named Set
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [router] - Name of the Router resource to query for the named set. The
+  /// name should
+  /// conform to RFC1035.
+  ///
+  /// [namedSet] - The Named Set name for this request. Name must conform to
+  /// RFC1035
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RoutersGetNamedSetResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RoutersGetNamedSetResponse> getNamedSet(
+    core.String project,
+    core.String region,
+    core.String router, {
+    core.String? namedSet,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'namedSet': ?namedSet == null ? null : [namedSet],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/routers/' +
+        commons.escapeVariable('$router') +
+        '/getNamedSet';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RoutersGetNamedSetResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves runtime NAT IP information.
@@ -66857,6 +69225,170 @@ class RoutersResource {
     );
   }
 
+  /// Retrieves a list of router named set subresources available to the
+  /// specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [router] - Name or id of the resource for this request.
+  /// Name should conform to RFC1035.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case
+  /// of failure. The default value is false.
+  ///
+  /// For example, when partial success behavior is enabled, aggregatedList for
+  /// a
+  /// single zone scope either returns all resources in the zone or no
+  /// resources,
+  /// with an error code.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RoutersListNamedSets].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RoutersListNamedSets> listNamedSets(
+    core.String project,
+    core.String region,
+    core.String router, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/routers/' +
+        commons.escapeVariable('$router') +
+        '/listNamedSets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RoutersListNamedSets.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Retrieves a list of router route policy subresources available to the
   /// specified project.
   ///
@@ -67099,6 +69631,80 @@ class RoutersResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Patches Named Set
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [router] - Name of the Router resource where Named Set is defined.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patchNamedSet(
+    NamedSet request,
+    core.String project,
+    core.String region,
+    core.String router, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/routers/' +
+        commons.escapeVariable('$router') +
+        '/patchNamedSet';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Patches Route Policy
   ///
   /// [request] - The metadata request object.
@@ -67305,6 +69911,80 @@ class RoutersResource {
     final response_ = await _requester.request(
       url_,
       'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates or creates new Named Set
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [router] - Name of the Router resource where Named Set is defined.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateNamedSet(
+    NamedSet request,
+    core.String project,
+    core.String region,
+    core.String router, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/routers/' +
+        commons.escapeVariable('$router') +
+        '/updateNamedSet';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -82620,7 +85300,7 @@ class ZoneVmExtensionPoliciesResource {
   ZoneVmExtensionPoliciesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes a specified zone VM extension policy.
+  /// Deletes a specified zone VM extension policy within a project.
   ///
   /// Request parameters:
   ///
@@ -82686,7 +85366,7 @@ class ZoneVmExtensionPoliciesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves details of a specific zone VM extension policy.
+  /// Retrieves details of a specific zone VM extension policy within a project.
   ///
   /// Request parameters:
   ///
@@ -82961,7 +85641,7 @@ class ZoneVmExtensionPoliciesResource {
     );
   }
 
-  /// Modifies an existing zone VM extension policy.
+  /// Modifies an existing zone VM extension policy within a project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -83476,6 +86156,17 @@ class AcceleratorType {
   /// Output only.
   core.String? name;
 
+  /// Contains standard resource metadata for an AcceleratorType
+  /// resource.
+  ///
+  /// It is populated for each instance of the AcceleratorType
+  /// resource, and includes the api_version the
+  /// instance was retrieved through, and its canonical
+  /// resource_type name.
+  ///
+  /// Output only.
+  ResourceMetadata? resourceMetadata;
+
   /// Server-defined, fully qualified URL for this resource.
   ///
   /// Output only.
@@ -83499,6 +86190,7 @@ class AcceleratorType {
     this.kind,
     this.maximumCardsPerInstance,
     this.name,
+    this.resourceMetadata,
     this.selfLink,
     this.zone,
   });
@@ -83516,6 +86208,12 @@ class AcceleratorType {
         kind: json_['kind'] as core.String?,
         maximumCardsPerInstance: json_['maximumCardsPerInstance'] as core.int?,
         name: json_['name'] as core.String?,
+        resourceMetadata: json_.containsKey('resourceMetadata')
+            ? ResourceMetadata.fromJson(
+                json_['resourceMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         selfLink: json_['selfLink'] as core.String?,
         zone: json_['zone'] as core.String?,
       );
@@ -83528,6 +86226,7 @@ class AcceleratorType {
     final kind = this.kind;
     final maximumCardsPerInstance = this.maximumCardsPerInstance;
     final name = this.name;
+    final resourceMetadata = this.resourceMetadata;
     final selfLink = this.selfLink;
     final zone = this.zone;
     return {
@@ -83538,6 +86237,7 @@ class AcceleratorType {
       'kind': ?kind,
       'maximumCardsPerInstance': ?maximumCardsPerInstance,
       'name': ?name,
+      'resourceMetadata': ?resourceMetadata,
       'selfLink': ?selfLink,
       'zone': ?zone,
     };
@@ -83671,7 +86371,7 @@ class AcceleratorTypeAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<AcceleratorTypeAggregatedListWarningData>? data;
@@ -83929,7 +86629,7 @@ class AcceleratorTypeListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<AcceleratorTypeListWarningData>? data;
@@ -84176,7 +86876,7 @@ class AcceleratorTypesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<AcceleratorTypesScopedListWarningData>? data;
@@ -84447,22 +87147,41 @@ class Address {
   /// Output only.
   core.String? id;
 
-  /// Reference to the source of external IPv4 addresses,
-  /// like a PublicDelegatedPrefix (PDP) for BYOIP.
-  /// The PDP must support enhanced IPv4 allocations.
+  /// Reference to the source of IP addresses.
   ///
-  /// Use one of the following formats to specify a PDP when reserving an
-  /// external IPv4 address using BYOIP.
+  /// It supports the following cases:
   ///
   ///    -
-  /// Full resource URL, as
-  /// inhttps://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+  ///      Case 1: PublicDelegatedPrefix (PDP) for BYOIP external
+  ///      addresses.
+  ///
+  /// If an IPv4 PDP is used, the PDP must support enhanced IPv4
+  ///      allocations. If an IPv6 PDP is used, the PDP must be in
+  ///      EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
   ///    -
-  ///    Partial URL, as in
+  ///      Case 2: Internal Range for global internal addresses.
   ///
   ///
+  ///
+  /// Use one of the following formats to specify the resource:
+  ///
+  /// For a Public Delegated Prefix:
+  ///
+  ///    -
+  /// Full resource
+  /// URL:https://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp
+  ///    - Partial URL:
   /// - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
-  ///           - regions/region/publicDelegatedPrefixes/pdp-name
+  ///       - regions/region/publicDelegatedPrefixes/pdp-name
+  ///
+  ///
+  ///
+  /// For an Internal Range:
+  ///
+  /// - Full
+  /// URL:https://networkconnectivity.googleapis.com/v1/projects/project/locations/global/internalRanges/internal-range
+  /// - Partial
+  /// URL:projects/project/locations/global/internalRanges/internal-range
   core.String? ipCollection;
 
   /// The IP version that will be used by this address.
@@ -84589,6 +87308,12 @@ class Address {
   ///      - `PRIVATE_SERVICE_CONNECT` for a private network address that is
   /// used to configure Private Service Connect. Only global internal addresses
   ///      can use this purpose.
+  ///      - `PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0` for addresses
+  /// that can only be assigned to global external Passthrough Network Load
+  ///      Balancer forwarding rules, as an Availability Group 0 address.
+  ///      - `PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1` for addresses that
+  /// can only be assigned to global external Passthrough Network Load Balancer
+  ///      forwarding rules, as an Availability Group 1 address.
   /// Possible string values are:
   /// - "DNS_RESOLVER" : DNS resolver address in the subnetwork.
   /// - "GCE_ENDPOINT" : VM internal/alias IP, Internal LB service IP, etc.
@@ -84599,7 +87324,7 @@ class Address {
   /// of subnet/route in the VPC network and its peering networks. After the
   /// VLAN attachment is created with the reserved IP address range, when
   /// creating a new VPN gateway, its interface IP address is allocated
-  /// from the associated VLAN attachment’s IP address range.
+  /// from the associated VLAN attachment's IP address range.
   /// - "NAT_AUTO" : External IP automatically reserved for Cloud NAT.
   /// - "PRIVATE_SERVICE_CONNECT" : A private network IP address that can be
   /// used to configure Private
@@ -84886,7 +87611,7 @@ class AddressAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<AddressAggregatedListWarningData>? data;
@@ -85144,7 +87869,7 @@ class AddressListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<AddressListWarningData>? data;
@@ -85392,7 +88117,7 @@ class AddressesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<AddressesScopedListWarningData>? data;
@@ -86402,30 +89127,54 @@ class AttachedDiskInitializeParams {
   /// is 500 GB.
   core.String? diskSizeGb;
 
-  /// Specifies the disk type to use to create the instance.
+  /// Specifies the disk type used for the boot disk or an additional data
+  /// disk.
   ///
-  /// If not specified,
-  /// the default is pd-standard, specified using the full URL.
-  /// For example:
+  /// For valid disk type values, see
+  /// Supported types for Hyperdisk volumes and
+  /// Persistent Disk type variables.
   ///
-  /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/pd-standard
-  ///
-  ///
-  /// For a full list of acceptable values, seePersistent disk
-  /// types. If you specify this field when creating a VM, you can provide
-  /// either the full or partial URL. For example, the following values are
+  /// When creating a single instance, you must provide either the full or
+  /// partial URL of the disk type. For example, the following values are
   /// valid:
   ///
   ///
   /// -
   /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/diskType
-  ///    - projects/project/zones/zone/diskTypes/diskType
-  ///    - zones/zone/diskTypes/diskType
+  ///      - projects/project/zones/zone/diskTypes/diskType
+  ///      - zones/zone/diskTypes/diskType
   ///
   ///
-  /// If you specify this field when creating or updating an instance template
-  /// or all-instances configuration, specify the type of the disk, not the
-  /// URL. For example: pd-standard.
+  ///
+  /// When creating an instance template, instance flexibility policy, or when
+  /// creating or updating an all-instances configuration, you specify the
+  /// disk type without a URL, for example, hyperdisk-balanced.
+  ///
+  /// If you omit this field for a disk, the default disk type depends on
+  /// the instance's machine series, as follows.
+  ///
+  ///
+  /// - For first- and second-generation machine series like N1, N2, T2, and
+  ///     M1, the
+  ///        default disk type is Standard Persistent Disk
+  ///        (pd-standard).
+  ///     - For C3, C3D, and M3 the default is Balanced Persistent Disk
+  ///     (pd-balanced).
+  ///    - For other third-generation machine
+  ///     series like A3, H3, Z3, all
+  /// fourth-generation types like C4, N4, M4, and newer machine series,
+  ///         the default is Hyperdisk Balanced
+  ///         (hyperdisk-balanced).
+  ///
+  ///
+  ///
+  /// The disk type you specify must be compatible with the instance's machine
+  /// series. For a list of machine series that support Persistent Disk, see
+  /// Machine
+  /// series support for Persistent Disk.
+  ///
+  /// For a list of machine series that support Hyperdisk, seeMachine
+  /// series support for Hyperdisk.
   core.String? diskType;
 
   /// Whether this disk is using confidential compute mode.
@@ -86484,8 +89233,8 @@ class AttachedDiskInitializeParams {
   /// Resource manager tags to be bound to the disk. Tag keys and values
   /// have the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
-  /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
-  /// format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
   /// `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when
   /// empty.
   core.Map<core.String, core.String>? resourceManagerTags;
@@ -87186,7 +89935,7 @@ class AutoscalerAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<AutoscalerAggregatedListWarningData>? data;
@@ -87445,7 +90194,7 @@ class AutoscalerListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<AutoscalerListWarningData>? data;
@@ -87829,7 +90578,7 @@ class AutoscalersScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<AutoscalersScopedListWarningData>? data;
@@ -87967,6 +90716,7 @@ class AutoscalingPolicy {
   /// - "ONLY_UP" : Automatically create VMs according to the policy, but do not
   /// scale
   /// the MIG in.
+  /// It's recommended to use ONLY_SCALE_OUT instead of ONLY_UP.
   core.String? mode;
   AutoscalingPolicyScaleInControl? scaleInControl;
 
@@ -87978,6 +90728,19 @@ class AutoscalingPolicy {
   /// applied. Up to 128 scaling schedules are allowed.
   core.Map<core.String, AutoscalingPolicyScalingSchedule>? scalingSchedules;
 
+  /// The number of seconds that autoscaler waits for load stabilization before
+  /// making scale-in decisions.
+  ///
+  /// This is referred to as the
+  /// \[stabilization period\](/compute/docs/autoscaler#stabilization_period).
+  /// This might appear as a delay in scaling in but it is an important
+  /// mechanism
+  /// for your application to not have fluctuating size due to short term load
+  /// fluctuations.
+  ///
+  /// The default stabilization period is 600 seconds.
+  core.int? stabilizationPeriodSec;
+
   AutoscalingPolicy({
     this.coolDownPeriodSec,
     this.cpuUtilization,
@@ -87988,6 +90751,7 @@ class AutoscalingPolicy {
     this.mode,
     this.scaleInControl,
     this.scalingSchedules,
+    this.stabilizationPeriodSec,
   });
 
   AutoscalingPolicy.fromJson(core.Map json_)
@@ -88030,6 +90794,7 @@ class AutoscalingPolicy {
                     ),
                   ),
                 ),
+        stabilizationPeriodSec: json_['stabilizationPeriodSec'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -88042,6 +90807,7 @@ class AutoscalingPolicy {
     final mode = this.mode;
     final scaleInControl = this.scaleInControl;
     final scalingSchedules = this.scalingSchedules;
+    final stabilizationPeriodSec = this.stabilizationPeriodSec;
     return {
       'coolDownPeriodSec': ?coolDownPeriodSec,
       'cpuUtilization': ?cpuUtilization,
@@ -88052,6 +90818,7 @@ class AutoscalingPolicy {
       'mode': ?mode,
       'scaleInControl': ?scaleInControl,
       'scalingSchedules': ?scalingSchedules,
+      'stabilizationPeriodSec': ?stabilizationPeriodSec,
     };
   }
 }
@@ -88414,7 +91181,8 @@ class Backend {
   /// For usage guidelines, see
   /// Connection balancing mode.
   ///
-  /// Backends must use compatible balancing modes. For more information, see
+  /// Backends must use compatible balancing modes. Backends of a backend
+  /// service may use different balancing modes. For more information, see
   /// Supported balancing modes and target capacity settings and
   /// Restrictions and guidance for instance groups.
   ///
@@ -88464,6 +91232,9 @@ class Backend {
   ///
   /// More than one
   /// failover backend can be configured for a given BackendService.
+  ///
+  /// This field can only be used for a regional external Passthrough Network
+  /// Load Balancer or a regional internal Passthrough Network Load Balancer.
   core.bool? failover;
 
   /// The fully-qualified URL of aninstance
@@ -88578,6 +91349,15 @@ class Backend {
   ///    capacity, backends in this layer would be used and traffic would be
   ///    assigned based on the load balancing algorithm you use. This is the
   ///    default
+  ///
+  ///
+  ///
+  /// For global external Passthrough Network Load Balancers, the following
+  /// restrictions apply:
+  ///
+  ///    - At most one backend can be marked as PREFERRED.
+  ///    - PREFERRED and DEFAULT backends cannot reside
+  ///    in the same Cloud region.
   /// Possible string values are:
   /// - "DEFAULT" : No preference.
   /// - "PREFERENCE_UNSPECIFIED" : If preference is unspecified, we set it to
@@ -89048,7 +91828,7 @@ class BackendBucketAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<BackendBucketAggregatedListWarningData>? data;
@@ -89179,19 +91959,19 @@ class BackendBucketCdnPolicy {
   BackendBucketCdnPolicyCacheKeyPolicy? cacheKeyPolicy;
 
   /// Specifies the cache setting for all responses from this backend.
-  /// The possible values are:USE_ORIGIN_HEADERS Requires the origin to set
-  /// valid caching
+  /// The possible values are:
+  /// USE_ORIGIN_HEADERS Requires the origin to set valid caching
   /// headers to cache content.
   ///
   /// Responses without these headers will not be
   /// cached at Google's edge, and will require a full trip to the origin on
   /// every request, potentially impacting performance and increasing load on
-  /// the origin server.FORCE_CACHE_ALL Cache all content, ignoring any
-  /// "private",
+  /// the origin server.
+  /// FORCE_CACHE_ALL Cache all content, ignoring any "private",
   /// "no-store" or "no-cache" directives in Cache-Control response headers.
   /// Warning: this may result in Cloud CDN caching private,
-  /// per-user (user identifiable) content.CACHE_ALL_STATIC Automatically cache
-  /// static content,
+  /// per-user (user identifiable) content.
+  /// CACHE_ALL_STATIC Automatically cache static content,
   /// including common image formats, media (video and audio), and web assets
   /// (JavaScript and CSS). Requests and responses that are marked as
   /// uncacheable, as well as dynamic content (including HTML), will not be
@@ -89585,7 +92365,7 @@ class BackendBucketListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<BackendBucketListWarningData>? data;
@@ -89829,7 +92609,7 @@ class BackendBucketListUsableWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<BackendBucketListUsableWarningData>? data;
@@ -90095,7 +92875,7 @@ class BackendBucketsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<BackendBucketsScopedListWarningData>? data;
@@ -90390,8 +93170,9 @@ class BackendService {
   /// Balancers\](https://cloud.google.com/load-balancing/docs/internal/failover-overview)
   /// and \[external passthrough Network Load
   /// Balancers\](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
-  ///
-  /// failoverPolicy cannot be specified with haPolicy.
+  /// failoverPolicy cannot be specified with haPolicy.failoverPolicy cannot be
+  /// used by global external Passthrough
+  /// Network Load Balancers.
   BackendServiceFailoverPolicy? failoverPolicy;
 
   /// Fingerprint of this resource.
@@ -90444,9 +93225,10 @@ class BackendService {
   /// haPolicy requires customers to be responsible for tracking backend
   /// endpoint health and electing a leader among the healthy endpoints.
   /// Therefore, haPolicy cannot be specified with healthChecks.
-  ///
-  /// haPolicy can only be specified for External Passthrough Network Load
-  /// Balancers and Internal Passthrough Network Load Balancers.
+  /// haPolicy can only be specified for External Passthrough
+  /// Network Load Balancers and Internal Passthrough Network Load
+  /// Balancers.haPolicy cannot be used by global external Passthrough Network
+  /// Load Balancers.
   BackendServiceHAPolicy? haPolicy;
 
   /// The list of URLs to the healthChecks, httpHealthChecks (legacy), or
@@ -90540,8 +93322,8 @@ class BackendService {
   ///
   /// A backend service
   /// created for one type of load balancer cannot be used with another.
-  /// For more information, refer toChoosing
-  /// a load balancer.
+  /// For more information, refer to
+  /// Backend services product and scheme table.
   /// Possible string values are:
   /// - "EXTERNAL" : Signifies that this will be used for classic Application
   /// Load Balancers,
@@ -90612,28 +93394,41 @@ class BackendService {
   ///    HTTP response header field Endpoint-Load-Metrics. The reported
   /// metrics to use for computing the weights are specified via
   /// thecustomMetrics field.
+  ///    - WEIGHTED_MAGLEV: Per-endpoint weighted load balancing via
+  /// health check reported weights. If set, the backend service must configure
+  ///    an HTTP-based Health Check, and health check replies are expected to
+  /// contain the non-standard HTTP response header
+  /// fieldX-Load-Balancing-Endpoint-Weight to specify the per-endpoint
+  ///    weights. If set, load balancing is weighted based on the per-endpoint
+  /// weights reported in the last processed health check replies, as long as
+  /// every instance either reported a valid weight or had UNAVAILABLE_WEIGHT.
+  ///    Otherwise, load balancing remains equal-weight.
   ///
-  ///    This field is applicable to either:
-  ///       - A regional backend service with the service protocol set to HTTP,
-  ///       HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
-  ///       INTERNAL_MANAGED.
-  ///       - A global backend service with the
+  ///
+  ///
+  /// This field is applicable to either:
+  ///
+  ///    - A regional backend service with the service protocol set to HTTP,
+  ///    HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
+  ///    INTERNAL_MANAGED.
+  ///    - A global backend service with the
   /// load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or
-  ///       EXTERNAL_MANAGED.
+  ///    EXTERNAL_MANAGED.
   ///
   ///
-  ///    If sessionAffinity is not configured—that is, if session
-  ///    affinity remains at the default value of NONE—then the
-  ///    default value for localityLbPolicy
-  ///    is ROUND_ROBIN. If session affinity is set to a value other
-  ///    than NONE,
-  ///    then the default value for localityLbPolicy isMAGLEV.
   ///
-  ///    Only ROUND_ROBIN and RING_HASH are supported
-  ///    when the backend service is referenced by a URL map that is bound to
-  ///    target gRPC proxy that has validateForProxyless field set to true.
+  /// If sessionAffinity is not configured—that is, if session
+  /// affinity remains at the default value of NONE—then the
+  /// default value for localityLbPolicy
+  /// is ROUND_ROBIN. If session affinity is set to a value other
+  /// than NONE,
+  /// then the default value for localityLbPolicy isMAGLEV.
   ///
-  ///    localityLbPolicy cannot be specified with haPolicy.
+  /// Only ROUND_ROBIN and RING_HASH are supported
+  /// when the backend service is referenced by a URL map that is bound to
+  /// target gRPC proxy that has validateForProxyless field set to true.
+  ///
+  /// localityLbPolicy cannot be specified with haPolicy.
   /// Possible string values are:
   /// - "INVALID_LB_POLICY"
   /// - "LEAST_REQUEST" : An O(1) algorithm which selects two random healthy
@@ -90820,13 +93615,13 @@ class BackendService {
   /// Balancers, omit port_name.
   core.String? portName;
 
-  /// The protocol this BackendService uses to communicate
-  /// with backends.
+  /// The protocol this BackendService uses to communicate with backends.
   ///
-  /// Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP or GRPC.
-  /// depending on the chosen load balancer or Traffic Director configuration.
-  /// Refer to the documentation for the load balancers or for Traffic Director
-  /// for more information.
+  /// Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP, GRPC, or
+  /// UNSPECIFIED, depending on the chosen load balancer or Traffic Director
+  /// configuration.
+  /// Refer to
+  /// Load balancing features for more information.
   ///
   /// Must be set to GRPC when the backend service is referenced by a URL map
   /// that is bound to target gRPC proxy.
@@ -90881,7 +93676,15 @@ class BackendService {
   /// URL to networkservices.ServiceLbPolicy resource.
   ///
   /// Can only be set if load balancing scheme is EXTERNAL_MANAGED,
-  /// INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+  /// INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service,
+  /// and
+  /// EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service.
+  ///
+  /// For a
+  /// global backend service, the service lb policy must be global. For a
+  /// regional backend service, the service lb policy must be regional and in
+  /// the
+  /// same region.
   core.String? serviceLbPolicy;
 
   /// Type of session affinity to use.
@@ -91444,7 +94247,7 @@ class BackendServiceAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<BackendServiceAggregatedListWarningData>? data;
@@ -91587,19 +94390,19 @@ class BackendServiceCdnPolicy {
   CacheKeyPolicy? cacheKeyPolicy;
 
   /// Specifies the cache setting for all responses from this backend.
-  /// The possible values are:USE_ORIGIN_HEADERS Requires the origin to set
-  /// valid caching
+  /// The possible values are:
+  /// USE_ORIGIN_HEADERS Requires the origin to set valid caching
   /// headers to cache content.
   ///
   /// Responses without these headers will not be
   /// cached at Google's edge, and will require a full trip to the origin on
   /// every request, potentially impacting performance and increasing load on
-  /// the origin server.FORCE_CACHE_ALL Cache all content, ignoring any
-  /// "private",
+  /// the origin server.
+  /// FORCE_CACHE_ALL Cache all content, ignoring any "private",
   /// "no-store" or "no-cache" directives in Cache-Control response headers.
   /// Warning: this may result in Cloud CDN caching private,
-  /// per-user (user identifiable) content.CACHE_ALL_STATIC Automatically cache
-  /// static content,
+  /// per-user (user identifiable) content.
+  /// CACHE_ALL_STATIC Automatically cache static content,
   /// including common image formats, media (video and audio), and web assets
   /// (JavaScript and CSS). Requests and responses that are marked as
   /// uncacheable, as well as dynamic content (including HTML), will not be
@@ -92494,7 +95297,7 @@ class BackendServiceListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<BackendServiceListWarningData>? data;
@@ -92740,7 +95543,7 @@ class BackendServiceListUsableWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<BackendServiceListUsableWarningData>? data;
@@ -93014,6 +95817,14 @@ class BackendServiceLogConfig {
   /// The default value is false.
   core.bool? enable;
 
+  /// The list of request headers that will be logged to Stackdriver.
+  core.List<BackendServiceLogConfigLoggingHttpHeader>?
+  loggingHttpRequestHeaders;
+
+  /// The list of response headers that will be logged to Stackdriver.
+  core.List<BackendServiceLogConfigLoggingHttpHeader>?
+  loggingHttpResponseHeaders;
+
   /// This field can only be specified if logging is enabled for this backend
   /// service and "logConfig.optionalMode" was set to CUSTOM.
   ///
@@ -93046,6 +95857,8 @@ class BackendServiceLogConfig {
 
   BackendServiceLogConfig({
     this.enable,
+    this.loggingHttpRequestHeaders,
+    this.loggingHttpResponseHeaders,
     this.optionalFields,
     this.optionalMode,
     this.sampleRate,
@@ -93054,6 +95867,22 @@ class BackendServiceLogConfig {
   BackendServiceLogConfig.fromJson(core.Map json_)
     : this(
         enable: json_['enable'] as core.bool?,
+        loggingHttpRequestHeaders:
+            (json_['loggingHttpRequestHeaders'] as core.List?)
+                ?.map(
+                  (value) => BackendServiceLogConfigLoggingHttpHeader.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        loggingHttpResponseHeaders:
+            (json_['loggingHttpResponseHeaders'] as core.List?)
+                ?.map(
+                  (value) => BackendServiceLogConfigLoggingHttpHeader.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         optionalFields: (json_['optionalFields'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -93063,15 +95892,35 @@ class BackendServiceLogConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final enable = this.enable;
+    final loggingHttpRequestHeaders = this.loggingHttpRequestHeaders;
+    final loggingHttpResponseHeaders = this.loggingHttpResponseHeaders;
     final optionalFields = this.optionalFields;
     final optionalMode = this.optionalMode;
     final sampleRate = this.sampleRate;
     return {
       'enable': ?enable,
+      'loggingHttpRequestHeaders': ?loggingHttpRequestHeaders,
+      'loggingHttpResponseHeaders': ?loggingHttpResponseHeaders,
       'optionalFields': ?optionalFields,
       'optionalMode': ?optionalMode,
       'sampleRate': ?sampleRate,
     };
+  }
+}
+
+/// Determines which HTTP headers will be logged to Stackdriver.
+class BackendServiceLogConfigLoggingHttpHeader {
+  /// The name of the header to be logged.
+  core.String? headerName;
+
+  BackendServiceLogConfigLoggingHttpHeader({this.headerName});
+
+  BackendServiceLogConfigLoggingHttpHeader.fromJson(core.Map json_)
+    : this(headerName: json_['headerName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final headerName = this.headerName;
+    return {'headerName': ?headerName};
   }
 }
 
@@ -93198,6 +96047,49 @@ class BackendServiceTlsSettings {
   /// field. Can only be specified if authenticationMode is not NONE.
   core.String? authenticationConfig;
 
+  /// Assigns the Managed Identity for the BackendService Workload.
+  ///
+  ///
+  /// Use this property to configure the load balancer back-end to use
+  /// certificates and roots of trust provisioned by the Managed Workload
+  /// Identity system.
+  ///
+  ///
+  ///
+  ///  The `identity` property is the
+  /// fully-specified SPIFFE ID to use in the SVID presented by the Load
+  /// Balancer Workload.
+  ///
+  ///  The SPIFFE ID must be a resource starting with the
+  /// `trustDomain` property value, followed by the path to the Managed
+  /// Workload Identity.
+  ///
+  ///  Supported SPIFFE ID format:
+  ///
+  ///    - //\<trust_domain\>/ns/\<namespace\>/sa/\<subject\>
+  ///
+  ///
+  /// The Trust Domain within the Managed Identity must refer to a valid
+  /// Workload Identity Pool. The TrustConfig and CertificateIssuanceConfig
+  /// will be inherited from the Workload Identity Pool.
+  ///
+  ///  Restrictions:
+  ///
+  ///    - If you set the `identity` property, you cannot manually set
+  ///    the following fields:
+  ///        - tlsSettings.sni
+  ///       - tlsSettings.subjectAltNames
+  ///       - tlsSettings.authenticationConfig
+  ///
+  ///
+  /// When defining a `identity` for a RegionBackendServices, the
+  /// corresponding Workload Identity Pool must have a ca_pool
+  /// configured in the same region.
+  ///
+  /// The system will set up a read-onlytlsSettings.authenticationConfig for the
+  /// Managed Identity.
+  core.String? identity;
+
   /// Server Name Indication - see RFC3546 section 3.1.
   ///
   /// If set, the load
@@ -93225,6 +96117,7 @@ class BackendServiceTlsSettings {
 
   BackendServiceTlsSettings({
     this.authenticationConfig,
+    this.identity,
     this.sni,
     this.subjectAltNames,
   });
@@ -93232,6 +96125,7 @@ class BackendServiceTlsSettings {
   BackendServiceTlsSettings.fromJson(core.Map json_)
     : this(
         authenticationConfig: json_['authenticationConfig'] as core.String?,
+        identity: json_['identity'] as core.String?,
         sni: json_['sni'] as core.String?,
         subjectAltNames: (json_['subjectAltNames'] as core.List?)
             ?.map(
@@ -93244,10 +96138,12 @@ class BackendServiceTlsSettings {
 
   core.Map<core.String, core.dynamic> toJson() {
     final authenticationConfig = this.authenticationConfig;
+    final identity = this.identity;
     final sni = this.sni;
     final subjectAltNames = this.subjectAltNames;
     return {
       'authenticationConfig': ?authenticationConfig,
+      'identity': ?identity,
       'sni': ?sni,
       'subjectAltNames': ?subjectAltNames,
     };
@@ -93431,7 +96327,7 @@ class BackendServicesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<BackendServicesScopedListWarningData>? data;
@@ -95483,7 +98379,7 @@ class Commitment {
   /// GENERAL_PURPOSE,GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2,
   /// GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4,
   /// GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED,
-  /// GRAPHICS_OPTIMIZED_G4,MEMORY_OPTIMIZED,
+  /// GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
   /// MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3.
   ///
   /// For
@@ -95516,6 +98412,7 @@ class Commitment {
   /// - "GENERAL_PURPOSE_T2D"
   /// - "GRAPHICS_OPTIMIZED"
   /// - "GRAPHICS_OPTIMIZED_G4"
+  /// - "GRAPHICS_OPTIMIZED_G4_VGPU"
   /// - "MEMORY_OPTIMIZED"
   /// - "MEMORY_OPTIMIZED_M3"
   /// - "MEMORY_OPTIMIZED_M4"
@@ -95535,6 +98432,10 @@ class Commitment {
   /// and 12TB of memory.
   /// - "MEMORY_OPTIMIZED_X4_960_16T" : CUD bucket for X4 machine with 960 vCPUs
   /// and 16TB of memory.
+  /// - "NETWORK_OPTIMIZED_C4N" : CUD bucket for C4N (dual Diorite) machines.
+  /// - "NETWORK_OPTIMIZED_U4C" : CUD bucket for NETWORK_OPTIMIZED_U4C machines.
+  /// - "NETWORK_OPTIMIZED_U4P" : CUD bucket for NETWORK_OPTIMIZED_U4P machines.
+  /// - "NETWORK_OPTIMIZED_U4S" : CUD bucket for NETWORK_OPTIMIZED_U4S machines.
   /// - "STORAGE_OPTIMIZED_Z3"
   /// - "TYPE_UNSPECIFIED" : Note for internal users: When adding a new enum
   /// Type for v1, make sure
@@ -95806,7 +98707,7 @@ class CommitmentAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<CommitmentAggregatedListWarningData>? data;
@@ -96064,7 +98965,7 @@ class CommitmentListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<CommitmentListWarningData>? data;
@@ -96371,7 +99272,7 @@ class CommitmentsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<CommitmentsScopedListWarningData>? data;
@@ -96729,7 +99630,7 @@ class CompositeHealthCheckAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<CompositeHealthCheckAggregatedListWarningData>? data;
@@ -97038,7 +99939,7 @@ class CompositeHealthCheckListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<CompositeHealthCheckListWarningData>? data;
@@ -97312,7 +100213,7 @@ class CompositeHealthChecksScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<CompositeHealthChecksScopedListWarningData>? data;
@@ -97385,6 +100286,7 @@ class CompositeHealthChecksScopedList {
 class ConfidentialInstanceConfig {
   /// Defines the type of technology used by the confidential instance.
   /// Possible string values are:
+  /// - "CCA" : Arm Confidential Compute Architecture.
   /// - "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED" : No type specified. Do not use
   /// this value.
   /// - "SEV" : AMD Secure Encrypted Virtualization.
@@ -97855,7 +100757,7 @@ class CrossSiteNetworkListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<CrossSiteNetworkListWarningData>? data;
@@ -98162,23 +101064,30 @@ class CustomerEncryptionKey {
   /// "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
   core.String? kmsKeyServiceAccount;
 
+  /// CSEK is no longer supported.
+  ///
+  /// Use CMEK instead.
   /// Specifies a 256-bit customer-supplied
   /// encryption key, encoded in RFC
-  /// 4648 base64 to either encrypt or decrypt this resource.
-  ///
-  /// You can
+  /// 4648 base64 to either encrypt or decrypt this resource. You can
   /// provide either the rawKey or thersaEncryptedKey.
   /// For example:
   ///
   /// "rawKey":
   /// "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
+  ///
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? rawKey;
 
+  /// CSEK is no longer supported.
+  ///
+  /// Use CMEK instead.
   /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
   /// customer-supplied encryption key to either encrypt or decrypt this
-  /// resource.
-  ///
-  /// You can provide either the rawKey or thersaEncryptedKey.
+  /// resource. You can provide either the rawKey or thersaEncryptedKey.
   /// For example:
   ///
   /// "rsaEncryptedKey":
@@ -98198,13 +101107,24 @@ class CustomerEncryptionKey {
   ///
   ///
   /// https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+  ///
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? rsaEncryptedKey;
 
-  /// TheRFC
+  /// CSEK is no longer supported.
+  ///
+  /// Use CMEK instead.
+  /// \[Output only\] TheRFC
   /// 4648 base64 encoded SHA-256 hash of the customer-supplied
   /// encryption key that protects this resource.
   ///
-  /// Output only.
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? sha256;
 
   CustomerEncryptionKey({
@@ -98327,6 +101247,152 @@ class Date {
     final month = this.month;
     final year = this.year;
     return {'day': ?day, 'month': ?month, 'year': ?year};
+  }
+}
+
+/// Represents civil time (or occasionally physical time).
+///
+/// This type can represent a civil time in one of a few possible ways:
+///
+/// * When utc_offset is set and time_zone is unset: a civil time on a calendar
+///    day with a particular offset from UTC.
+/// * When time_zone is set and utc_offset is unset: a civil time on a calendar
+///    day in a particular time zone.
+///  * When neither time_zone nor utc_offset is set: a civil time on a calendar
+///    day in local time.
+///
+/// The date is relative to the Proleptic Gregorian Calendar.
+///
+/// If year, month, or day are 0, the DateTime is considered not to have a
+/// specific year, month, or day respectively.
+///
+/// This type may also be used to represent a physical time if all the date and
+/// time fields are set and either case of the `time_offset` oneof is set.
+/// Consider using `Timestamp` message for physical time instead.
+///
+/// If your use
+/// case also would like to store the user's timezone, that can be done in
+/// another field.
+///
+/// This type is more flexible than some applications may want. Make sure to
+/// document and validate your application's limitations.
+class DateTime {
+  /// Day of month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and
+  /// month, or 0 if specifying a datetime without a day.
+  ///
+  /// Optional.
+  core.int? day;
+
+  /// Hours of day in 24 hour format.
+  ///
+  /// Should be from 0 to 23, defaults
+  /// to 0 (midnight). An API may choose to allow the value "24:00:00" for
+  /// scenarios like business closing time.
+  ///
+  /// Optional.
+  core.int? hours;
+
+  /// Minutes of hour of day.
+  ///
+  /// Must be from 0 to 59, defaults to 0.
+  ///
+  /// Optional.
+  core.int? minutes;
+
+  /// Month of year.
+  ///
+  /// Must be from 1 to 12, or 0 if specifying a
+  /// datetime without a month.
+  ///
+  /// Optional.
+  core.int? month;
+
+  /// Fractions of seconds in nanoseconds.
+  ///
+  /// Must be from 0 to
+  /// 999,999,999, defaults to 0.
+  ///
+  /// Optional.
+  core.int? nanos;
+
+  /// Seconds of minutes of the time.
+  ///
+  /// Must normally be from 0 to 59,
+  /// defaults to 0. An API may allow the value 60 if it allows leap-seconds.
+  ///
+  /// Optional.
+  core.int? seconds;
+
+  /// Time zone.
+  TimeZone? timeZone;
+
+  /// UTC offset.
+  ///
+  /// Must be whole seconds, between -18 hours and +18 hours.
+  /// For example, a UTC offset of -4:00 would be represented as
+  /// { seconds: -14400 }.
+  core.String? utcOffset;
+
+  /// Year of date.
+  ///
+  /// Must be from 1 to 9999, or 0 if specifying a
+  /// datetime without a year.
+  ///
+  /// Optional.
+  core.int? year;
+
+  DateTime({
+    this.day,
+    this.hours,
+    this.minutes,
+    this.month,
+    this.nanos,
+    this.seconds,
+    this.timeZone,
+    this.utcOffset,
+    this.year,
+  });
+
+  DateTime.fromJson(core.Map json_)
+    : this(
+        day: json_['day'] as core.int?,
+        hours: json_['hours'] as core.int?,
+        minutes: json_['minutes'] as core.int?,
+        month: json_['month'] as core.int?,
+        nanos: json_['nanos'] as core.int?,
+        seconds: json_['seconds'] as core.int?,
+        timeZone: json_.containsKey('timeZone')
+            ? TimeZone.fromJson(
+                json_['timeZone'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        utcOffset: json_['utcOffset'] as core.String?,
+        year: json_['year'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final day = this.day;
+    final hours = this.hours;
+    final minutes = this.minutes;
+    final month = this.month;
+    final nanos = this.nanos;
+    final seconds = this.seconds;
+    final timeZone = this.timeZone;
+    final utcOffset = this.utcOffset;
+    final year = this.year;
+    return {
+      'day': ?day,
+      'hours': ?hours,
+      'minutes': ?minutes,
+      'month': ?month,
+      'nanos': ?nanos,
+      'seconds': ?seconds,
+      'timeZone': ?timeZone,
+      'utcOffset': ?utcOffset,
+      'year': ?year,
+    };
   }
 }
 
@@ -99320,7 +102386,7 @@ class DiskAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<DiskAggregatedListWarningData>? data;
@@ -99760,7 +102826,7 @@ class DiskListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<DiskListWarningData>? data;
@@ -99923,8 +102989,8 @@ class DiskParams {
   /// Resource manager tags to be bound to the disk. Tag keys and values
   /// have the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
-  /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
-  /// format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
   /// `{tag_value_short_name}`. The field is ignored (both PUT &
   /// PATCH) when empty.
   core.Map<core.String, core.String>? resourceManagerTags;
@@ -100287,7 +103353,7 @@ class DiskTypeAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<DiskTypeAggregatedListWarningData>? data;
@@ -100544,7 +103610,7 @@ class DiskTypeListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<DiskTypeListWarningData>? data;
@@ -100792,7 +103858,7 @@ class DiskTypesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<DiskTypesScopedListWarningData>? data;
@@ -101032,7 +104098,7 @@ class DisksScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<DisksScopedListWarningData>? data;
@@ -101527,7 +104593,7 @@ class ExchangedPeeringRoutesListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ExchangedPeeringRoutesListWarningData>? data;
@@ -102106,7 +105172,7 @@ class ExternalVpnGatewayListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ExternalVpnGatewayListWarningData>? data;
@@ -102787,7 +105853,7 @@ class FirewallListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<FirewallListWarningData>? data;
@@ -103100,7 +106166,7 @@ class FirewallPoliciesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<FirewallPoliciesScopedListWarningData>? data;
@@ -103257,11 +106323,13 @@ class FirewallPolicy {
 
   /// The type of the firewall policy.
   ///
-  /// This field can be eitherVPC_POLICY or RDMA_ROCE_POLICY.
+  /// This field can be one of
+  /// VPC_POLICY, RDMA_ROCE_POLICY or ULL_POLICY.
   ///
   /// Note: if not specified then VPC_POLICY will be used.
   /// Possible string values are:
   /// - "RDMA_ROCE_POLICY"
+  /// - "ULL_POLICY"
   /// - "VPC_POLICY"
   core.String? policyType;
 
@@ -103602,7 +106670,7 @@ class FirewallPolicyListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<FirewallPolicyListWarningData>? data;
@@ -103716,7 +106784,9 @@ class FirewallPolicyList {
 class FirewallPolicyRule {
   /// The Action to perform when the client connection triggers the rule.
   /// Valid actions for firewall rules are: "allow", "deny",
-  /// "apply_security_profile_group" and "goto_next".
+  /// "apply_security_profile_group" and "goto_next" (
+  /// "apply_security_profile_group" can be specified only for global
+  /// network firewall policies or hierarchical firewall policies).
   /// Valid actions for packet mirroring rules are: "mirror", "do_not_mirror"
   /// and "goto_next".
   core.String? action;
@@ -103778,14 +106848,30 @@ class FirewallPolicyRule {
   /// Output only.
   core.int? ruleTupleCount;
 
-  /// A fully-qualified URL of a SecurityProfile resource instance.
+  /// A fully-qualified URL of a SecurityProfileGroup resource instance.
   /// Example:
   /// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
   /// Must be specified if action is one of 'apply_security_profile_group' or
   /// 'mirror'.
   ///
-  /// Cannot be specified for other actions.
+  /// Cannot be specified for other actions. Can be specified only
+  /// for global network firewall policies or hierarchical firewall policies.
   core.String? securityProfileGroup;
+
+  /// A list of forwarding rules to which this rule applies.
+  /// This field allows you to control which load balancers get this rule.
+  /// For example, the following are valid values:
+  ///
+  ///
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+  ///      - projects/project/global/
+  ///      forwardingRules/forwardingRule
+  ///      - projects/project/regions/region/forwardingRules/
+  ///      forwardingRule
+  core.List<core.String>? targetForwardingRules;
 
   /// A list of network resource URLs to which this rule applies.
   ///
@@ -103812,6 +106898,13 @@ class FirewallPolicyRule {
   /// applied with this rule.
   core.List<core.String>? targetServiceAccounts;
 
+  /// Target types of the firewall policy rule.
+  /// Default value is INSTANCES.
+  /// Possible string values are:
+  /// - "INSTANCES"
+  /// - "INTERNAL_MANAGED_LB"
+  core.String? targetType;
+
   /// Boolean flag indicating if the traffic should be TLS decrypted.
   /// Can be set only if action = 'apply_security_profile_group' and cannot
   /// be set for other actions.
@@ -103829,9 +106922,11 @@ class FirewallPolicyRule {
     this.ruleName,
     this.ruleTupleCount,
     this.securityProfileGroup,
+    this.targetForwardingRules,
     this.targetResources,
     this.targetSecureTags,
     this.targetServiceAccounts,
+    this.targetType,
     this.tlsInspect,
   });
 
@@ -103852,6 +106947,9 @@ class FirewallPolicyRule {
         ruleName: json_['ruleName'] as core.String?,
         ruleTupleCount: json_['ruleTupleCount'] as core.int?,
         securityProfileGroup: json_['securityProfileGroup'] as core.String?,
+        targetForwardingRules: (json_['targetForwardingRules'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         targetResources: (json_['targetResources'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -103865,6 +106963,7 @@ class FirewallPolicyRule {
         targetServiceAccounts: (json_['targetServiceAccounts'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        targetType: json_['targetType'] as core.String?,
         tlsInspect: json_['tlsInspect'] as core.bool?,
       );
 
@@ -103880,9 +106979,11 @@ class FirewallPolicyRule {
     final ruleName = this.ruleName;
     final ruleTupleCount = this.ruleTupleCount;
     final securityProfileGroup = this.securityProfileGroup;
+    final targetForwardingRules = this.targetForwardingRules;
     final targetResources = this.targetResources;
     final targetSecureTags = this.targetSecureTags;
     final targetServiceAccounts = this.targetServiceAccounts;
+    final targetType = this.targetType;
     final tlsInspect = this.tlsInspect;
     return {
       'action': ?action,
@@ -103896,9 +106997,11 @@ class FirewallPolicyRule {
       'ruleName': ?ruleName,
       'ruleTupleCount': ?ruleTupleCount,
       'securityProfileGroup': ?securityProfileGroup,
+      'targetForwardingRules': ?targetForwardingRules,
       'targetResources': ?targetResources,
       'targetSecureTags': ?targetSecureTags,
       'targetServiceAccounts': ?targetServiceAccounts,
+      'targetType': ?targetType,
       'tlsInspect': ?tlsInspect,
     };
   }
@@ -104226,8 +107329,7 @@ class FirewallPolicyRuleSecureTag {
 
 /// Encapsulates numeric value that can be either absolute or relative.
 class FixedOrPercent {
-  /// Absolute value of VM instances calculated based on the
-  /// specific mode.
+  /// Absolute value of VM instances calculated based on the specific mode.
   ///
   ///
   ///
@@ -104370,6 +107472,9 @@ class ForwardingRule {
   ///
   ///
   ///
+  /// The IP address can only be set at creation. Once set, it cannot be
+  /// updated.
+  ///
   /// The forwarding rule's target or backendService,
   /// and in most cases, also the loadBalancingScheme, determine the
   /// type of IP address that you can use. For detailed information, see
@@ -104378,6 +107483,12 @@ class ForwardingRule {
   ///
   /// When reading an IPAddress, the API always returns the IP
   /// address number.
+  ///
+  /// When creating a global external Passthrough Network Load Balancer
+  /// forwarding rule (a parent forwarding rule), you must use theIPAddresses
+  /// field, but the Google Cloud generated child
+  /// forwarding rules set the IPAddress field instead. Refer to
+  /// theavailabilityGroup field for further details.
   core.String? IPAddress;
 
   /// The IP protocol to which this rule applies.
@@ -104433,9 +107544,26 @@ class ForwardingRule {
   /// endpoint can be accessed from another region.
   core.bool? allowPscGlobalAccess;
 
+  /// \[Output Only\].
+  ///
+  /// The extensions that are attached to this ForwardingRule.
+  ///
+  /// Output only.
+  core.List<ForwardingRuleAttachedExtension>? attachedExtensions;
+
   /// Identifies the backend service to which the forwarding rule sends traffic.
-  /// Required for internal and external passthrough Network Load Balancers;
-  /// must be omitted for all other load balancer types.
+  ///
+  /// It is a required field for the following load balancers:
+  ///
+  ///    - Internal passthrough Network Load Balancers
+  ///    - Backend service-based regional external passthrough Network Load
+  ///    Balancers
+  ///    - Global external passthrough Network Load Balancers
+  ///
+  ///
+  ///
+  /// It cannot be set by other load balancer types and protocol forwarding
+  /// rules.
   core.String? backendService;
 
   /// The URL for the corresponding base forwarding rule.
@@ -104604,8 +107732,8 @@ class ForwardingRule {
 
   /// Specifies the forwarding rule type.
   ///
-  /// For more information about forwarding rules, refer to
-  /// Forwarding rule concepts.
+  /// For more information, refer to
+  /// Forwarding rule product and scheme table.
   /// Possible string values are:
   /// - "EXTERNAL"
   /// - "EXTERNAL_MANAGED"
@@ -104655,6 +107783,18 @@ class ForwardingRule {
   /// Google
   /// APIs, the forwarding rule name must be a 1-20 characters string with
   /// lowercase letters and numbers and must start with a letter.
+  ///
+  /// For global external Passthrough Network Load Balancer forwarding rules,
+  /// the
+  /// forwarding rule name must be 1-43 characters long.
+  ///
+  /// For each global external
+  /// Passthrough Network Load Balancer forwarding rule (a parent forwarding
+  /// rule) that you create, Google Cloud generates two output-only child
+  /// forwarding rules that are named by concatenating the parent forwarding
+  /// rule
+  /// name with the `-ag0` and `-ag1` suffixes, respectively. Refer to
+  /// theavailabilityGroup field for further details.
   core.String? name;
 
   /// This field is not used for global external load balancing.
@@ -104726,8 +107866,9 @@ class ForwardingRule {
   ///
   ///
   /// For external forwarding rules, two or more forwarding rules cannot use the
-  /// same \[IPAddress, IPProtocol\] pair, and cannot have
-  /// overlappingportRanges.
+  /// same \[IPAddress, IPProtocol\] pair (specified inIPAddress, IPAddresses,
+  /// IPProtocol
+  /// fields) if they have overlapping portRanges.
   ///
   /// For internal forwarding rules within the same VPC network, two or more
   /// forwarding rules cannot use the same \[IPAddress, IPProtocol\]
@@ -104756,8 +107897,9 @@ class ForwardingRule {
   ///
   ///
   /// For external forwarding rules, two or more forwarding rules cannot use the
-  /// same \[IPAddress, IPProtocol\] pair if they share at least one
-  /// port number.
+  /// same \[IPAddress, IPProtocol\] pair (specified inIPAddress, IPAddresses,
+  /// IPProtocol
+  /// fields) if they share at least one port number.
   ///
   /// For internal forwarding rules within the same VPC network, two or more
   /// forwarding rules cannot use the same \[IPAddress, IPProtocol\]
@@ -104871,6 +108013,16 @@ class ForwardingRule {
   /// - For Private Service Connect forwarding rules that forward traffic to
   /// managed services, the target must be a service attachment. The target is
   /// not mutable once set as a service attachment.
+  ///
+  ///
+  ///
+  /// The following load balancers cannot set the target field (they should set
+  /// the backendService field instead):
+  ///
+  ///    - Internal passthrough Network Load Balancers
+  ///    - Backend service-based regional external passthrough Network Load
+  ///    Balancers
+  ///    - Global external passthrough Network Load Balancers
   core.String? target;
 
   ForwardingRule({
@@ -104879,6 +108031,7 @@ class ForwardingRule {
     this.allPorts,
     this.allowGlobalAccess,
     this.allowPscGlobalAccess,
+    this.attachedExtensions,
     this.backendService,
     this.baseForwardingRule,
     this.creationTimestamp,
@@ -104921,6 +108074,13 @@ class ForwardingRule {
         allPorts: json_['allPorts'] as core.bool?,
         allowGlobalAccess: json_['allowGlobalAccess'] as core.bool?,
         allowPscGlobalAccess: json_['allowPscGlobalAccess'] as core.bool?,
+        attachedExtensions: (json_['attachedExtensions'] as core.List?)
+            ?.map(
+              (value) => ForwardingRuleAttachedExtension.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         backendService: json_['backendService'] as core.String?,
         baseForwardingRule: json_['baseForwardingRule'] as core.String?,
         creationTimestamp: json_['creationTimestamp'] as core.String?,
@@ -104986,6 +108146,7 @@ class ForwardingRule {
     final allPorts = this.allPorts;
     final allowGlobalAccess = this.allowGlobalAccess;
     final allowPscGlobalAccess = this.allowPscGlobalAccess;
+    final attachedExtensions = this.attachedExtensions;
     final backendService = this.backendService;
     final baseForwardingRule = this.baseForwardingRule;
     final creationTimestamp = this.creationTimestamp;
@@ -105027,6 +108188,7 @@ class ForwardingRule {
       'allPorts': ?allPorts,
       'allowGlobalAccess': ?allowGlobalAccess,
       'allowPscGlobalAccess': ?allowPscGlobalAccess,
+      'attachedExtensions': ?attachedExtensions,
       'backendService': ?backendService,
       'baseForwardingRule': ?baseForwardingRule,
       'creationTimestamp': ?creationTimestamp,
@@ -105193,7 +108355,7 @@ class ForwardingRuleAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ForwardingRuleAggregatedListWarningData>? data;
@@ -105320,6 +108482,24 @@ class ForwardingRuleAggregatedList {
       'unreachables': ?unreachables,
       'warning': ?warning,
     };
+  }
+}
+
+/// Reference to an extension resource that is attached to this ForwardingRule.
+class ForwardingRuleAttachedExtension {
+  /// The resource name.
+  ///
+  /// Output only.
+  core.String? reference;
+
+  ForwardingRuleAttachedExtension({this.reference});
+
+  ForwardingRuleAttachedExtension.fromJson(core.Map json_)
+    : this(reference: json_['reference'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reference = this.reference;
+    return {'reference': ?reference};
   }
 }
 
@@ -105450,7 +108630,7 @@ class ForwardingRuleListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ForwardingRuleListWarningData>? data;
@@ -105752,7 +108932,7 @@ class ForwardingRulesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ForwardingRulesScopedListWarningData>? data;
@@ -105957,6 +109137,24 @@ class FutureReservation {
   /// reservation_name or a name_prefix.
   core.String? reservationName;
 
+  /// Contains standard resource metadata for an FutureReservation
+  /// resource.
+  ///
+  /// It is populated for each instance of the FutureReservation
+  /// resource, and includes the api_version the
+  /// instance was retrieved through, and its canonical
+  /// resource_type name.
+  ///
+  /// Output only.
+  ResourceMetadata? resourceMetadata;
+
+  /// Name of the resource intended to be delivered.
+  ///
+  /// Name should conform to
+  /// RFC1035. This will be the name of storage pool or Exapool for persistent
+  /// disk FRs.
+  core.String? resourceName;
+
   /// Maintenance information for this reservation
   /// Possible string values are:
   /// - "GROUPED" : Maintenance on all reserved instances in the reservation is
@@ -105996,6 +109194,9 @@ class FutureReservation {
   /// Output only.
   FutureReservationStatus? status;
 
+  /// Storage pool details for the future reservation.
+  FutureReservationStoragePoolProperties? storagePoolProperties;
+
   /// Time window for this Future Reservation.
   FutureReservationTimeWindow? timeWindow;
 
@@ -106023,6 +109224,8 @@ class FutureReservation {
     this.planningStatus,
     this.reservationMode,
     this.reservationName,
+    this.resourceMetadata,
+    this.resourceName,
     this.schedulingType,
     this.selfLink,
     this.selfLinkWithId,
@@ -106030,6 +109233,7 @@ class FutureReservation {
     this.specificReservationRequired,
     this.specificSkuProperties,
     this.status,
+    this.storagePoolProperties,
     this.timeWindow,
     this.zone,
   });
@@ -106077,6 +109281,13 @@ class FutureReservation {
         planningStatus: json_['planningStatus'] as core.String?,
         reservationMode: json_['reservationMode'] as core.String?,
         reservationName: json_['reservationName'] as core.String?,
+        resourceMetadata: json_.containsKey('resourceMetadata')
+            ? ResourceMetadata.fromJson(
+                json_['resourceMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resourceName: json_['resourceName'] as core.String?,
         schedulingType: json_['schedulingType'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
         selfLinkWithId: json_['selfLinkWithId'] as core.String?,
@@ -106096,6 +109307,12 @@ class FutureReservation {
         status: json_.containsKey('status')
             ? FutureReservationStatus.fromJson(
                 json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        storagePoolProperties: json_.containsKey('storagePoolProperties')
+            ? FutureReservationStoragePoolProperties.fromJson(
+                json_['storagePoolProperties']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         timeWindow: json_.containsKey('timeWindow')
@@ -106128,6 +109345,8 @@ class FutureReservation {
     final planningStatus = this.planningStatus;
     final reservationMode = this.reservationMode;
     final reservationName = this.reservationName;
+    final resourceMetadata = this.resourceMetadata;
+    final resourceName = this.resourceName;
     final schedulingType = this.schedulingType;
     final selfLink = this.selfLink;
     final selfLinkWithId = this.selfLinkWithId;
@@ -106135,6 +109354,7 @@ class FutureReservation {
     final specificReservationRequired = this.specificReservationRequired;
     final specificSkuProperties = this.specificSkuProperties;
     final status = this.status;
+    final storagePoolProperties = this.storagePoolProperties;
     final timeWindow = this.timeWindow;
     final zone = this.zone;
     return {
@@ -106156,6 +109376,8 @@ class FutureReservation {
       'planningStatus': ?planningStatus,
       'reservationMode': ?reservationMode,
       'reservationName': ?reservationName,
+      'resourceMetadata': ?resourceMetadata,
+      'resourceName': ?resourceName,
       'schedulingType': ?schedulingType,
       'selfLink': ?selfLink,
       'selfLinkWithId': ?selfLinkWithId,
@@ -106163,6 +109385,7 @@ class FutureReservation {
       'specificReservationRequired': ?specificReservationRequired,
       'specificSkuProperties': ?specificSkuProperties,
       'status': ?status,
+      'storagePoolProperties': ?storagePoolProperties,
       'timeWindow': ?timeWindow,
       'zone': ?zone,
     };
@@ -106321,6 +109544,11 @@ class FutureReservationStatus {
   /// Output only.
   core.List<core.String>? autoCreatedReservations;
 
+  /// Exapool provisioned capacities for each SKU type.
+  ///
+  /// Output only.
+  StoragePoolExapoolProvisionedCapacityGb? exapoolProvisionedCapacityGb;
+
   /// Represents the existing matching usage for the future
   /// reservation.
   ///
@@ -106391,15 +109619,23 @@ class FutureReservationStatus {
   core.String? procurementStatus;
   FutureReservationStatusSpecificSKUProperties? specificSkuProperties;
 
+  /// Storage pool provisioned capacities for each SKU type.
+  ///
+  /// Output only.
+  FutureReservationStoragePoolProvisionedCapacity?
+  storagePoolProvisionedCapacity;
+
   FutureReservationStatus({
     this.amendmentStatus,
     this.autoCreatedReservations,
+    this.exapoolProvisionedCapacityGb,
     this.existingMatchingUsageInfo,
     this.fulfilledCount,
     this.lastKnownGoodState,
     this.lockTime,
     this.procurementStatus,
     this.specificSkuProperties,
+    this.storagePoolProvisionedCapacity,
   });
 
   FutureReservationStatus.fromJson(core.Map json_)
@@ -106409,6 +109645,13 @@ class FutureReservationStatus {
             (json_['autoCreatedReservations'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        exapoolProvisionedCapacityGb:
+            json_.containsKey('exapoolProvisionedCapacityGb')
+            ? StoragePoolExapoolProvisionedCapacityGb.fromJson(
+                json_['exapoolProvisionedCapacityGb']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         existingMatchingUsageInfo:
             json_.containsKey('existingMatchingUsageInfo')
             ? FutureReservationStatusExistingMatchingUsageInfo.fromJson(
@@ -106431,26 +109674,37 @@ class FutureReservationStatus {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        storagePoolProvisionedCapacity:
+            json_.containsKey('storagePoolProvisionedCapacity')
+            ? FutureReservationStoragePoolProvisionedCapacity.fromJson(
+                json_['storagePoolProvisionedCapacity']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final amendmentStatus = this.amendmentStatus;
     final autoCreatedReservations = this.autoCreatedReservations;
+    final exapoolProvisionedCapacityGb = this.exapoolProvisionedCapacityGb;
     final existingMatchingUsageInfo = this.existingMatchingUsageInfo;
     final fulfilledCount = this.fulfilledCount;
     final lastKnownGoodState = this.lastKnownGoodState;
     final lockTime = this.lockTime;
     final procurementStatus = this.procurementStatus;
     final specificSkuProperties = this.specificSkuProperties;
+    final storagePoolProvisionedCapacity = this.storagePoolProvisionedCapacity;
     return {
       'amendmentStatus': ?amendmentStatus,
       'autoCreatedReservations': ?autoCreatedReservations,
+      'exapoolProvisionedCapacityGb': ?exapoolProvisionedCapacityGb,
       'existingMatchingUsageInfo': ?existingMatchingUsageInfo,
       'fulfilledCount': ?fulfilledCount,
       'lastKnownGoodState': ?lastKnownGoodState,
       'lockTime': ?lockTime,
       'procurementStatus': ?procurementStatus,
       'specificSkuProperties': ?specificSkuProperties,
+      'storagePoolProvisionedCapacity': ?storagePoolProvisionedCapacity,
     };
   }
 }
@@ -106676,6 +109930,104 @@ class FutureReservationStatusSpecificSKUProperties {
   }
 }
 
+/// Storage pool properties for the future reservation.
+class FutureReservationStoragePoolProperties {
+  /// Requested exapool provisioned capacity in GiB.
+  StoragePoolExapoolProvisionedCapacityGb?
+  requestedExapoolProvisionedCapacityGb;
+
+  /// Requested storage pool provisioned capacity.
+  FutureReservationStoragePoolProvisionedCapacity?
+  requestedStoragePoolProvisionedCapacity;
+
+  /// Type of the storage pool.
+  core.String? storagePoolType;
+
+  FutureReservationStoragePoolProperties({
+    this.requestedExapoolProvisionedCapacityGb,
+    this.requestedStoragePoolProvisionedCapacity,
+    this.storagePoolType,
+  });
+
+  FutureReservationStoragePoolProperties.fromJson(core.Map json_)
+    : this(
+        requestedExapoolProvisionedCapacityGb:
+            json_.containsKey('requestedExapoolProvisionedCapacityGb')
+            ? StoragePoolExapoolProvisionedCapacityGb.fromJson(
+                json_['requestedExapoolProvisionedCapacityGb']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        requestedStoragePoolProvisionedCapacity:
+            json_.containsKey('requestedStoragePoolProvisionedCapacity')
+            ? FutureReservationStoragePoolProvisionedCapacity.fromJson(
+                json_['requestedStoragePoolProvisionedCapacity']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        storagePoolType: json_['storagePoolType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestedExapoolProvisionedCapacityGb =
+        this.requestedExapoolProvisionedCapacityGb;
+    final requestedStoragePoolProvisionedCapacity =
+        this.requestedStoragePoolProvisionedCapacity;
+    final storagePoolType = this.storagePoolType;
+    return {
+      'requestedExapoolProvisionedCapacityGb':
+          ?requestedExapoolProvisionedCapacityGb,
+      'requestedStoragePoolProvisionedCapacity':
+          ?requestedStoragePoolProvisionedCapacity,
+      'storagePoolType': ?storagePoolType,
+    };
+  }
+}
+
+/// Storage pool provisioned capacities for each SKU type.
+class FutureReservationStoragePoolProvisionedCapacity {
+  /// Size of the storage pool in GiB.
+  core.String? poolProvisionedCapacityGb;
+
+  /// Provisioned IOPS of the storage pool.
+  ///
+  /// Only relevant if the storage pool
+  /// type is hyperdisk-balanced.
+  core.String? poolProvisionedIops;
+
+  /// Provisioned throughput of the storage pool in MiB/s.
+  ///
+  /// Only relevant if
+  /// the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+  core.String? poolProvisionedThroughput;
+
+  FutureReservationStoragePoolProvisionedCapacity({
+    this.poolProvisionedCapacityGb,
+    this.poolProvisionedIops,
+    this.poolProvisionedThroughput,
+  });
+
+  FutureReservationStoragePoolProvisionedCapacity.fromJson(core.Map json_)
+    : this(
+        poolProvisionedCapacityGb:
+            json_['poolProvisionedCapacityGb'] as core.String?,
+        poolProvisionedIops: json_['poolProvisionedIops'] as core.String?,
+        poolProvisionedThroughput:
+            json_['poolProvisionedThroughput'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final poolProvisionedCapacityGb = this.poolProvisionedCapacityGb;
+    final poolProvisionedIops = this.poolProvisionedIops;
+    final poolProvisionedThroughput = this.poolProvisionedThroughput;
+    return {
+      'poolProvisionedCapacityGb': ?poolProvisionedCapacityGb,
+      'poolProvisionedIops': ?poolProvisionedIops,
+      'poolProvisionedThroughput': ?poolProvisionedThroughput,
+    };
+  }
+}
+
 class FutureReservationTimeWindow {
   Duration? duration;
   core.String? endTime;
@@ -106838,7 +110190,7 @@ class FutureReservationsAggregatedListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<FutureReservationsAggregatedListResponseWarningData>? data;
@@ -107108,7 +110460,7 @@ class FutureReservationsListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<FutureReservationsListResponseWarningData>? data;
@@ -107373,7 +110725,7 @@ class FutureReservationsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<FutureReservationsScopedListWarningData>? data;
@@ -108037,16 +111389,12 @@ class GetVersionOperationMetadata {
 }
 
 class GetVersionOperationMetadataSbomInfo {
-  /// SBOM versions currently applied to the resource.
-  ///
-  /// The key is the component
-  /// name and the value is the version.
+  /// A mapping of components to their currently-applied versions or other
+  /// appropriate identifiers.
   core.Map<core.String, core.String>? currentComponentVersions;
 
-  /// SBOM versions scheduled for the next maintenance.
-  ///
-  /// The key is the
-  /// component name and the value is the version.
+  /// A mapping of components to their target versions or other appropriate
+  /// identifiers.
   core.Map<core.String, core.String>? targetComponentVersions;
 
   GetVersionOperationMetadataSbomInfo({
@@ -108317,6 +111665,827 @@ class GlobalSetPolicyRequest {
   }
 }
 
+/// Message describing GlobalVmExtensionPolicy object.
+class GlobalVmExtensionPolicy {
+  /// Creation timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you
+  /// create the resource.
+  core.String? description;
+
+  /// Map from extension (eg: "cloudops") to its policy configuration.
+  /// The key is the name of the extension.
+  ///
+  /// Required.
+  core.Map<core.String, GlobalVmExtensionPolicyExtensionPolicy>?
+  extensionPolicies;
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Selector to target VMs for a policy.
+  /// There is a logical "AND" between instance_selectors.
+  ///
+  /// Optional.
+  core.List<GlobalVmExtensionPolicyInstanceSelector>? instanceSelectors;
+
+  /// Type of the resource.
+  ///
+  /// Alwayscompute#globalVmExtensionPolicy for globalVmExtensionPolicies.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Name of the resource.
+  ///
+  /// Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply withRFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?`
+  /// which means the first character must be a lowercase letter, and all
+  /// following characters must be a dash, lowercase letter, or digit, except
+  /// the last character, which cannot be a dash.
+  core.String? name;
+
+  /// Used to resolve conflicts when multiple policies are active for the same
+  /// extension.
+  ///
+  /// Defaults to 0.
+  ///
+  /// Larger the number, higher the priority. When the priority is the same,
+  /// the policy with the newer create time has higher priority.
+  ///
+  /// Optional.
+  core.int? priority;
+
+  /// The rollout strategy and status.
+  ///
+  /// Required.
+  GlobalVmExtensionPolicyRolloutOperation? rolloutOperation;
+
+  /// The scoped resource status.
+  ///
+  /// It's only for tracking the
+  /// purging status of the policy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SCOPED_RESOURCE_STATUS_DELETING" : The zonal policies are being
+  /// deleted.
+  /// - "SCOPED_RESOURCE_STATUS_UNSPECIFIED" : Default value. This value is
+  /// unused.
+  core.String? scopedResourceStatus;
+
+  /// Server-defined fully-qualified URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Server-defined URL for this resource's resource id.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
+  /// Update timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? updateTimestamp;
+
+  GlobalVmExtensionPolicy({
+    this.creationTimestamp,
+    this.description,
+    this.extensionPolicies,
+    this.id,
+    this.instanceSelectors,
+    this.kind,
+    this.name,
+    this.priority,
+    this.rolloutOperation,
+    this.scopedResourceStatus,
+    this.selfLink,
+    this.selfLinkWithId,
+    this.updateTimestamp,
+  });
+
+  GlobalVmExtensionPolicy.fromJson(core.Map json_)
+    : this(
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        extensionPolicies:
+            (json_['extensionPolicies'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GlobalVmExtensionPolicyExtensionPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        id: json_['id'] as core.String?,
+        instanceSelectors: (json_['instanceSelectors'] as core.List?)
+            ?.map(
+              (value) => GlobalVmExtensionPolicyInstanceSelector.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        priority: json_['priority'] as core.int?,
+        rolloutOperation: json_.containsKey('rolloutOperation')
+            ? GlobalVmExtensionPolicyRolloutOperation.fromJson(
+                json_['rolloutOperation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        scopedResourceStatus: json_['scopedResourceStatus'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+        updateTimestamp: json_['updateTimestamp'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final extensionPolicies = this.extensionPolicies;
+    final id = this.id;
+    final instanceSelectors = this.instanceSelectors;
+    final kind = this.kind;
+    final name = this.name;
+    final priority = this.priority;
+    final rolloutOperation = this.rolloutOperation;
+    final scopedResourceStatus = this.scopedResourceStatus;
+    final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
+    final updateTimestamp = this.updateTimestamp;
+    return {
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'extensionPolicies': ?extensionPolicies,
+      'id': ?id,
+      'instanceSelectors': ?instanceSelectors,
+      'kind': ?kind,
+      'name': ?name,
+      'priority': ?priority,
+      'rolloutOperation': ?rolloutOperation,
+      'scopedResourceStatus': ?scopedResourceStatus,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+      'updateTimestamp': ?updateTimestamp,
+    };
+  }
+}
+
+/// Policy for a single extension.
+class GlobalVmExtensionPolicyExtensionPolicy {
+  /// The version pinning for the extension.
+  /// If empty, the extension will be installed with the latest version
+  /// released by the extension producer.
+  ///
+  /// Optional.
+  core.String? pinnedVersion;
+
+  /// String configuration.
+  ///
+  /// Any string payload that the extension
+  /// understands.
+  ///
+  /// Optional.
+  core.String? stringConfig;
+
+  GlobalVmExtensionPolicyExtensionPolicy({
+    this.pinnedVersion,
+    this.stringConfig,
+  });
+
+  GlobalVmExtensionPolicyExtensionPolicy.fromJson(core.Map json_)
+    : this(
+        pinnedVersion: json_['pinnedVersion'] as core.String?,
+        stringConfig: json_['stringConfig'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final pinnedVersion = this.pinnedVersion;
+    final stringConfig = this.stringConfig;
+    return {'pinnedVersion': ?pinnedVersion, 'stringConfig': ?stringConfig};
+  }
+}
+
+/// Selector to target VMs for a zone VM extension policy.
+class GlobalVmExtensionPolicyInstanceSelector {
+  /// Labels within the LabelSelector are OR'd.
+  ///
+  /// Optional.
+  GlobalVmExtensionPolicyLabelSelector? labelSelector;
+
+  GlobalVmExtensionPolicyInstanceSelector({this.labelSelector});
+
+  GlobalVmExtensionPolicyInstanceSelector.fromJson(core.Map json_)
+    : this(
+        labelSelector: json_.containsKey('labelSelector')
+            ? GlobalVmExtensionPolicyLabelSelector.fromJson(
+                json_['labelSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final labelSelector = this.labelSelector;
+    return {'labelSelector': ?labelSelector};
+  }
+}
+
+/// A LabelSelector is applicable for a VM only if it matches all labels in
+/// the LabelSelector.
+class GlobalVmExtensionPolicyLabelSelector {
+  /// Labels as key value pairs.
+  /// A VM should contain all the pairs specified in this map to be selected;
+  /// Labels within the LabelSelector are OR'ed.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? inclusionLabels;
+
+  GlobalVmExtensionPolicyLabelSelector({this.inclusionLabels});
+
+  GlobalVmExtensionPolicyLabelSelector.fromJson(core.Map json_)
+    : this(
+        inclusionLabels:
+            (json_['inclusionLabels'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final inclusionLabels = this.inclusionLabels;
+    return {'inclusionLabels': ?inclusionLabels};
+  }
+}
+
+class GlobalVmExtensionPolicyListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  GlobalVmExtensionPolicyListWarningData({this.key, this.value});
+
+  GlobalVmExtensionPolicyListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class GlobalVmExtensionPolicyListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }\]
+  ///
+  /// Output only.
+  core.List<GlobalVmExtensionPolicyListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  GlobalVmExtensionPolicyListWarning({this.code, this.data, this.message});
+
+  GlobalVmExtensionPolicyListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => GlobalVmExtensionPolicyListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Response to list global VM extension policy resources.
+class GlobalVmExtensionPolicyList {
+  core.String? etag;
+
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of GlobalVmExtensionPolicy resources.
+  core.List<GlobalVmExtensionPolicy>? items;
+
+  /// Type of resource.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  GlobalVmExtensionPolicyListWarning? warning;
+
+  GlobalVmExtensionPolicyList({
+    this.etag,
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  GlobalVmExtensionPolicyList.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => GlobalVmExtensionPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? GlobalVmExtensionPolicyListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
+/// Represents the rollout operation
+class GlobalVmExtensionPolicyRolloutOperation {
+  /// The rollout input which defines the rollout plan.
+  ///
+  /// Required.
+  GlobalVmExtensionPolicyRolloutOperationRolloutInput? rolloutInput;
+
+  /// The rollout status of the policy.
+  ///
+  /// Output only.
+  GlobalVmExtensionPolicyRolloutOperationRolloutStatus? rolloutStatus;
+
+  GlobalVmExtensionPolicyRolloutOperation({
+    this.rolloutInput,
+    this.rolloutStatus,
+  });
+
+  GlobalVmExtensionPolicyRolloutOperation.fromJson(core.Map json_)
+    : this(
+        rolloutInput: json_.containsKey('rolloutInput')
+            ? GlobalVmExtensionPolicyRolloutOperationRolloutInput.fromJson(
+                json_['rolloutInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rolloutStatus: json_.containsKey('rolloutStatus')
+            ? GlobalVmExtensionPolicyRolloutOperationRolloutStatus.fromJson(
+                json_['rolloutStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final rolloutInput = this.rolloutInput;
+    final rolloutStatus = this.rolloutStatus;
+    return {'rolloutInput': ?rolloutInput, 'rolloutStatus': ?rolloutStatus};
+  }
+}
+
+class GlobalVmExtensionPolicyRolloutOperationRolloutInput {
+  /// Specifies the behavior of the rollout if a conflict is detected in a
+  /// project during a rollout.
+  ///
+  /// This only applies to `insert` and `update`
+  /// methods.
+  ///
+  /// A conflict occurs in the following cases:
+  ///
+  /// * `insert` method: If the zonal policy already exists when the insert
+  ///   happens.
+  /// * `update` method: If the zonal policy was modified by a zonal API call
+  ///   outside of this rollout.
+  ///
+  /// Possible values are the following:
+  ///
+  /// * `""` (empty string): If a conflict occurs, the local value is not
+  ///   overwritten. This is the default behavior.
+  /// * `"overwrite"`: If a conflict occurs, the local value is overwritten
+  ///   with the rollout value.
+  ///
+  /// Optional.
+  core.String? conflictBehavior;
+
+  /// The name of the rollout plan.
+  /// Ex.
+  /// projects//locations/global/rolloutPlans/.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Specifies the predefined rollout plan for the policy.
+  ///
+  /// Valid values
+  /// are `SLOW_ROLLOUT` and `FAST_ROLLOUT`. The recommended value is
+  /// `SLOW_ROLLOUT` for progressive rollout. For more information, see Rollout
+  /// plans for global policies.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FAST_ROLLOUT"
+  /// - "ROLLOUT_PLAN_UNSPECIFIED"
+  /// - "SLOW_ROLLOUT"
+  core.String? predefinedRolloutPlan;
+
+  /// The UUID that identifies a policy rollout retry attempt for update and
+  /// delete operations.
+  ///
+  /// Set this field only when retrying a rollout for an
+  /// existing extension policy.
+  ///
+  /// * `update` method: Lets you retry policy rollout without changes.
+  /// An error occurs if you set retry_uuid but the policy is modified.
+  /// * `delete` method: Lets you retry policy deletion rollout if the
+  /// previous deletion rollout is not finished and the policy is in the
+  /// DELETING state. If you set this field when the policy is not in the
+  /// DELETING state, an error occurs.
+  ///
+  /// Optional.
+  core.String? retryUuid;
+
+  GlobalVmExtensionPolicyRolloutOperationRolloutInput({
+    this.conflictBehavior,
+    this.name,
+    this.predefinedRolloutPlan,
+    this.retryUuid,
+  });
+
+  GlobalVmExtensionPolicyRolloutOperationRolloutInput.fromJson(core.Map json_)
+    : this(
+        conflictBehavior: json_['conflictBehavior'] as core.String?,
+        name: json_['name'] as core.String?,
+        predefinedRolloutPlan: json_['predefinedRolloutPlan'] as core.String?,
+        retryUuid: json_['retryUuid'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final conflictBehavior = this.conflictBehavior;
+    final name = this.name;
+    final predefinedRolloutPlan = this.predefinedRolloutPlan;
+    final retryUuid = this.retryUuid;
+    return {
+      'conflictBehavior': ?conflictBehavior,
+      'name': ?name,
+      'predefinedRolloutPlan': ?predefinedRolloutPlan,
+      'retryUuid': ?retryUuid,
+    };
+  }
+}
+
+class GlobalVmExtensionPolicyRolloutOperationRolloutStatus {
+  /// The current rollouts for the latest version of the
+  /// resource.
+  ///
+  /// There should be only one current rollout, but for
+  /// scalability, we make it repeated.
+  ///
+  /// Output only.
+  core.List<
+    GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata
+  >?
+  currentRollouts;
+
+  /// The last completed rollout resource.
+  ///
+  /// This field will not
+  /// be populated until the first rollout is completed.
+  ///
+  /// Output only.
+  GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata?
+  previousRollout;
+
+  GlobalVmExtensionPolicyRolloutOperationRolloutStatus({
+    this.currentRollouts,
+    this.previousRollout,
+  });
+
+  GlobalVmExtensionPolicyRolloutOperationRolloutStatus.fromJson(core.Map json_)
+    : this(
+        currentRollouts: (json_['currentRollouts'] as core.List?)
+            ?.map(
+              (value) =>
+                  GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        previousRollout: json_.containsKey('previousRollout')
+            ? GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata.fromJson(
+                json_['previousRollout'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentRollouts = this.currentRollouts;
+    final previousRollout = this.previousRollout;
+    return {
+      'currentRollouts': ?currentRollouts,
+      'previousRollout': ?previousRollout,
+    };
+  }
+}
+
+class GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata {
+  /// The rollout status for each location.
+  ///
+  /// The list of the
+  /// locations is the same as the list of locations in the rollout plan.
+  ///
+  /// Output only.
+  core.Map<
+    core.String,
+    GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus
+  >?
+  locationRolloutStatus;
+
+  /// The name of the rollout.
+  /// Ex.
+  ///
+  /// projects//locations/global/rollouts/.
+  ///
+  /// Output only.
+  core.String? rollout;
+
+  /// The name of the rollout plan.
+  /// Ex.
+  /// projects//locations/global/rolloutPlans/.
+  ///
+  /// Output only.
+  core.String? rolloutPlan;
+
+  /// The overall state of the rollout.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_CANCELLED" : Iteration was explicitly cancelled.
+  /// - "STATE_COMPLETED" : Iteration completed, with all actions being
+  /// successful.
+  /// - "STATE_FAILED" : Iteration completed, with failures.
+  /// - "STATE_PAUSED" : The rollout is paused.
+  /// - "STATE_PROCESSING" : Iteration is in progress.
+  /// - "STATE_UNKNOWN" : Impossible to determine current state of the
+  /// iteration.
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  core.String? state;
+
+  GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata({
+    this.locationRolloutStatus,
+    this.rollout,
+    this.rolloutPlan,
+    this.state,
+  });
+
+  GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata.fromJson(
+    core.Map json_,
+  ) : this(
+        locationRolloutStatus:
+            (json_['locationRolloutStatus']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        rollout: json_['rollout'] as core.String?,
+        rolloutPlan: json_['rolloutPlan'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final locationRolloutStatus = this.locationRolloutStatus;
+    final rollout = this.rollout;
+    final rolloutPlan = this.rolloutPlan;
+    final state = this.state;
+    return {
+      'locationRolloutStatus': ?locationRolloutStatus,
+      'rollout': ?rollout,
+      'rolloutPlan': ?rolloutPlan,
+      'state': ?state,
+    };
+  }
+}
+
+class GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus {
+  /// The state of the location rollout.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LOCATION_ROLLOUT_STATE_COMPLETED" : The location rollout is completed.
+  /// - "LOCATION_ROLLOUT_STATE_FAILED" : The location rollout has failed.
+  /// - "LOCATION_ROLLOUT_STATE_NOT_STARTED" : The location rollout has not
+  /// started.
+  /// - "LOCATION_ROLLOUT_STATE_SKIPPED" : The location rollout is skipped.
+  /// - "LOCATION_ROLLOUT_STATE_UNSPECIFIED" : Default value. This value is
+  /// unused.
+  core.String? state;
+
+  GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus({
+    this.state,
+  });
+
+  GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus.fromJson(
+    core.Map json_,
+  ) : this(state: json_['state'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    return {'state': ?state};
+  }
+}
+
 /// Maintenance Info for ReservationBlocks.
 class GroupMaintenanceInfo {
   /// Describes number of instances that have ongoing maintenance.
@@ -108549,6 +112718,7 @@ class GuestOsFeature {
   /// Enabling guest operating system features.
   /// Possible string values are:
   /// - "BARE_METAL_LINUX_COMPATIBLE"
+  /// - "CCA_CAPABLE"
   /// - "FEATURE_TYPE_UNSPECIFIED"
   /// - "GVNIC"
   /// - "IDPF"
@@ -109074,7 +113244,7 @@ class HealthAggregationPoliciesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthAggregationPoliciesScopedListWarningData>? data;
@@ -109466,7 +113636,7 @@ class HealthAggregationPolicyAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthAggregationPolicyAggregatedListWarningData>? data;
@@ -109727,7 +113897,7 @@ class HealthAggregationPolicyListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthAggregationPolicyListWarningData>? data;
@@ -109954,7 +114124,7 @@ class HealthCheck {
   /// on what other health check fields are supported and what other resources
   /// can use this health check:
   ///
-  ///    - SSL, HTTP2, and GRPC protocols are not supported.
+  ///    - SSL, HTTP2, GRPC, and GRPC_WITH_TLS protocols are not supported.
   ///    - The TCP request field is not supported.
   ///    - The proxyHeader field for HTTP, HTTPS, and TCP is not
   ///    supported.
@@ -109972,12 +114142,11 @@ class HealthCheck {
   /// value than checkIntervalSec.
   core.int? timeoutSec;
 
-  /// Specifies the type of the healthCheck, either TCP,SSL, HTTP, HTTPS,HTTP2
-  /// or GRPC.
-  ///
-  /// Exactly one of the
-  /// protocol-specific health check fields must be specified, which must
-  /// matchtype field.
+  /// Specifies the type of the healthCheck, either TCP,SSL, HTTP, HTTPS,HTTP2,
+  /// GRPC or GRPC_WITH_TLS.
+  /// Exactly one of the protocol-specific health check fields must be
+  /// specified,
+  /// which must match type field.
   /// Possible string values are:
   /// - "GRPC"
   /// - "GRPC_WITH_TLS"
@@ -110256,7 +114425,7 @@ class HealthCheckListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthCheckListWarningData>? data;
@@ -110757,7 +114926,7 @@ class HealthCheckServiceAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthCheckServiceAggregatedListWarningData>? data;
@@ -111037,7 +115206,7 @@ class HealthCheckServicesListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthCheckServicesListWarningData>? data;
@@ -111284,7 +115453,7 @@ class HealthCheckServicesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthCheckServicesScopedListWarningData>? data;
@@ -111477,7 +115646,7 @@ class HealthChecksAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthChecksAggregatedListWarningData>? data;
@@ -111731,7 +115900,7 @@ class HealthChecksScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthChecksScopedListWarningData>? data;
@@ -112101,7 +116270,7 @@ class HealthSourceAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthSourceAggregatedListWarningData>? data;
@@ -112399,7 +116568,7 @@ class HealthSourceListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthSourceListWarningData>? data;
@@ -112731,7 +116900,7 @@ class HealthSourcesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HealthSourcesScopedListWarningData>? data;
@@ -113040,6 +117209,139 @@ class Help {
 /// Describes a URL link.
 typedef HelpLink = $Link;
 
+/// Represents a host resource.
+class Host {
+  /// All aliases for this resource.
+  /// e.g.
+  /// projects/123/zones/us-centra1-a/reservation/r1/reservationBlock/b1/hosts/h1
+  ///
+  /// Output only.
+  core.List<core.String>? aliasLinks;
+
+  /// The creation timestamp, formatted asRFC3339 text.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  core.String? description;
+
+  /// The unique identifier for this resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The type of resource.
+  ///
+  /// Alwayscompute#host for hosts.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// The name of the host.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The self link of the host.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// The self link with id of the host.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
+  /// The state of the host.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACTIVE" : The host has allocated all its resources.
+  /// - "CREATING" : The resources are being allocated for the host.
+  /// - "DELETING" : The host is currently being deleted.
+  /// - "STATE_UNSPECIFIED"
+  /// - "UNAVAILABLE" : The host is currently unavailable.
+  core.String? state;
+
+  /// The status of the host
+  ///
+  /// Output only.
+  HostStatus? status;
+
+  /// The zone in which the host resides.
+  ///
+  /// Output only.
+  core.String? zone;
+
+  Host({
+    this.aliasLinks,
+    this.creationTimestamp,
+    this.description,
+    this.id,
+    this.kind,
+    this.name,
+    this.selfLink,
+    this.selfLinkWithId,
+    this.state,
+    this.status,
+    this.zone,
+  });
+
+  Host.fromJson(core.Map json_)
+    : this(
+        aliasLinks: (json_['aliasLinks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+        state: json_['state'] as core.String?,
+        status: json_.containsKey('status')
+            ? HostStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        zone: json_['zone'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aliasLinks = this.aliasLinks;
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final id = this.id;
+    final kind = this.kind;
+    final name = this.name;
+    final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
+    final state = this.state;
+    final status = this.status;
+    final zone = this.zone;
+    return {
+      'aliasLinks': ?aliasLinks,
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+      'state': ?state,
+      'status': ?status,
+      'zone': ?zone,
+    };
+  }
+}
+
+typedef HostPhysicalTopology = $PhysicalTopology;
+
 /// UrlMaps
 /// A host-matching rule for a URL.
 ///
@@ -113088,6 +117390,293 @@ class HostRule {
       'description': ?description,
       'hosts': ?hosts,
       'pathMatcher': ?pathMatcher,
+    };
+  }
+}
+
+class HostStatus {
+  /// The physical topology of the reservation sub-block, if
+  /// present
+  ///
+  /// Output only.
+  HostPhysicalTopology? physicalTopology;
+
+  /// The URIs of the instances currently running on this host.
+  ///
+  /// Output only.
+  core.List<core.String>? runningInstances;
+
+  HostStatus({this.physicalTopology, this.runningInstances});
+
+  HostStatus.fromJson(core.Map json_)
+    : this(
+        physicalTopology: json_.containsKey('physicalTopology')
+            ? HostPhysicalTopology.fromJson(
+                json_['physicalTopology']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        runningInstances: (json_['runningInstances'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final physicalTopology = this.physicalTopology;
+    final runningInstances = this.runningInstances;
+    return {
+      'physicalTopology': ?physicalTopology,
+      'runningInstances': ?runningInstances,
+    };
+  }
+}
+
+typedef HostsGetVersionRequest = $GetVersionRequest;
+
+class HostsListResponseWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  HostsListResponseWarningData({this.key, this.value});
+
+  HostsListResponseWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// An informational warning message.
+class HostsListResponseWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }\]
+  ///
+  /// Output only.
+  core.List<HostsListResponseWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  HostsListResponseWarning({this.code, this.data, this.message});
+
+  HostsListResponseWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => HostsListResponseWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class HostsListResponse {
+  core.String? etag;
+
+  /// The unique identifier for the resource; defined by the server.
+  core.String? id;
+
+  /// A list of host resources.
+  core.List<Host>? items;
+
+  /// The type of resource.
+  ///
+  /// Always compute#host for a list of hosts.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  core.String? nextPageToken;
+
+  /// The server-defined URL for this resource.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  /// end_interface: MixerListResponseWithEtagBuilder
+  core.List<core.String>? unreachables;
+
+  /// An informational warning message.
+  HostsListResponseWarning? warning;
+
+  HostsListResponse({
+    this.etag,
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  HostsListResponse.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  Host.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? HostsListResponseWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
     };
   }
 }
@@ -113740,7 +118329,7 @@ class HttpHealthCheckListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HttpHealthCheckListWarningData>? data;
@@ -115005,7 +119594,7 @@ class HttpsHealthCheckListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<HttpsHealthCheckListWarningData>? data;
@@ -115845,7 +120434,7 @@ class ImageListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ImageListWarningData>? data;
@@ -115968,8 +120557,8 @@ class ImageParams {
   /// Resource manager tags to be bound to the image. Tag keys and values have
   /// the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
-  /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
-  /// format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
   /// `{tag_value_short_name}`. The field is ignored (both PUT &
   /// PATCH) when empty.
   core.Map<core.String, core.String>? resourceManagerTags;
@@ -116204,6 +120793,24 @@ class Instance {
   /// Output only.
   core.String? lastSuspendedTimestamp;
 
+  /// Specifies which method should be used for encrypting the
+  /// Local SSDs attached to the VM.
+  /// Possible string values are:
+  /// - "EPHEMERAL_KEY_ENCRYPTION" : The given VM will opt-in for using
+  /// ephemeral key for
+  /// encryption of Local SSDs.
+  /// The Local SSDs will not be able to recover data in case of VM
+  /// crash.
+  /// - "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED" : The given VM will be encrypted
+  /// using keys managed by the cloud
+  /// infrastructure and the keys will be deleted when the VM is
+  /// deleted.
+  /// - "STANDARD_ENCRYPTION" : The given VM will be encrypted using keys
+  /// managed by the cloud
+  /// infrastructure and the keys will be deleted when the VM is
+  /// deleted.
+  core.String? localSsdEncryptionMode;
+
   /// Full or partial URL of the machine type resource to use for this instance,
   /// in the format:zones/zone/machineTypes/machine-type.
   ///
@@ -116227,6 +120834,7 @@ class Instance {
   ///
   ///
   /// For example: zones/us-central1-f/machineTypes/custom-4-5120
+  ///
   /// For a full list of restrictions, read theSpecifications
   /// for custom machine types.
   core.String? machineType;
@@ -116370,6 +120978,7 @@ class Instance {
   /// - "PENDING" : For Flex Start provisioning instance is waiting for
   /// available capacity
   /// from Dynamic Workload Scheduler (DWS).
+  /// - "PENDING_STOP" : The instance is gracefully shutting down.
   /// - "PROVISIONING" : Resources are being allocated for the instance.
   /// - "REPAIRING" : The instance is in repair.
   /// - "RUNNING" : The instance is running.
@@ -116431,6 +121040,7 @@ class Instance {
     this.lastStartTimestamp,
     this.lastStopTimestamp,
     this.lastSuspendedTimestamp,
+    this.localSsdEncryptionMode,
     this.machineType,
     this.metadata,
     this.minCpuPlatform,
@@ -116517,6 +121127,7 @@ class Instance {
         lastStartTimestamp: json_['lastStartTimestamp'] as core.String?,
         lastStopTimestamp: json_['lastStopTimestamp'] as core.String?,
         lastSuspendedTimestamp: json_['lastSuspendedTimestamp'] as core.String?,
+        localSsdEncryptionMode: json_['localSsdEncryptionMode'] as core.String?,
         machineType: json_['machineType'] as core.String?,
         metadata: json_.containsKey('metadata')
             ? Metadata.fromJson(
@@ -116634,6 +121245,7 @@ class Instance {
     final lastStartTimestamp = this.lastStartTimestamp;
     final lastStopTimestamp = this.lastStopTimestamp;
     final lastSuspendedTimestamp = this.lastSuspendedTimestamp;
+    final localSsdEncryptionMode = this.localSsdEncryptionMode;
     final machineType = this.machineType;
     final metadata = this.metadata;
     final minCpuPlatform = this.minCpuPlatform;
@@ -116684,6 +121296,7 @@ class Instance {
       'lastStartTimestamp': ?lastStartTimestamp,
       'lastStopTimestamp': ?lastStopTimestamp,
       'lastSuspendedTimestamp': ?lastSuspendedTimestamp,
+      'localSsdEncryptionMode': ?localSsdEncryptionMode,
       'machineType': ?machineType,
       'metadata': ?metadata,
       'minCpuPlatform': ?minCpuPlatform,
@@ -116841,7 +121454,7 @@ class InstanceAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceAggregatedListWarningData>? data;
@@ -117112,6 +121725,10 @@ class InstanceFlexibilityPolicyInstanceSelection {
   /// example `n2-standard-4` and not URLs or partial URLs.
   core.List<core.String>? machineTypes;
 
+  /// Name of the minimum CPU platform to be used by this instance selection.
+  /// e.g. 'Intel Ice Lake'.
+  core.String? minCpuPlatform;
+
   /// Rank when prioritizing the shape flexibilities.
   /// The instance selections with rank are considered
   /// first, in the ascending order of the rank.
@@ -117121,6 +121738,7 @@ class InstanceFlexibilityPolicyInstanceSelection {
   InstanceFlexibilityPolicyInstanceSelection({
     this.disks,
     this.machineTypes,
+    this.minCpuPlatform,
     this.rank,
   });
 
@@ -117136,14 +121754,21 @@ class InstanceFlexibilityPolicyInstanceSelection {
         machineTypes: (json_['machineTypes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        minCpuPlatform: json_['minCpuPlatform'] as core.String?,
         rank: json_['rank'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final disks = this.disks;
     final machineTypes = this.machineTypes;
+    final minCpuPlatform = this.minCpuPlatform;
     final rank = this.rank;
-    return {'disks': ?disks, 'machineTypes': ?machineTypes, 'rank': ?rank};
+    return {
+      'disks': ?disks,
+      'machineTypes': ?machineTypes,
+      'minCpuPlatform': ?minCpuPlatform,
+      'rank': ?rank,
+    };
   }
 }
 
@@ -117474,7 +122099,7 @@ class InstanceGroupAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceGroupAggregatedListWarningData>? data;
@@ -117731,7 +122356,7 @@ class InstanceGroupListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceGroupListWarningData>? data;
@@ -118604,7 +123229,7 @@ class InstanceGroupManagerAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceGroupManagerAggregatedListWarningData>? data;
@@ -118868,22 +123493,22 @@ class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 }
 
 class InstanceGroupManagerInstanceLifecyclePolicy {
-  /// The action that a MIG performs on a failed or an unhealthy VM.
-  /// A VM is marked as unhealthy when the application running on that
-  /// VM fails a health check.
+  /// The action that a MIG performs on a failed VM.
+  ///
+  /// If the value of the
+  /// onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+  /// applies to the VMs on which your application fails a health check.
   /// Valid values are
   ///
-  ///    - REPAIR (default): MIG automatically repairs a failed or
-  ///    an unhealthy VM by recreating it.
-  ///
-  /// For more information, see About
+  ///    - REPAIR (default): MIG automatically repairs a failed VM
+  ///    by recreating it. For more information, see About
   ///    repairing VMs in a MIG.
-  ///    - DO_NOTHING: MIG does not repair a failed or an unhealthy
-  ///    VM.
+  ///    - DO_NOTHING: MIG does not repair a failed VM.
   /// Possible string values are:
-  /// - "DO_NOTHING" : MIG does not repair a failed or an unhealthy VM.
-  /// - "REPAIR" : (Default) MIG automatically repairs a failed or an unhealthy
-  /// VM by recreating it. For more information, see About
+  /// - "DO_NOTHING" : MIG does not repair a failed VM.
+  /// - "REPAIR" : (default): MIG automatically repairs a failed VM by
+  /// recreating it.
+  /// For more information, see About
   /// repairing VMs in a MIG.
   core.String? defaultActionOnFailure;
 
@@ -118925,10 +123550,14 @@ class InstanceGroupManagerInstanceLifecyclePolicy {
   /// - "REPAIR" : MIG automatically repairs an unhealthy VM by recreating it.
   core.String? onFailedHealthCheck;
 
+  /// Configuration for VM repairs in the MIG.
+  InstanceGroupManagerInstanceLifecyclePolicyOnRepair? onRepair;
+
   InstanceGroupManagerInstanceLifecyclePolicy({
     this.defaultActionOnFailure,
     this.forceUpdateOnRepair,
     this.onFailedHealthCheck,
+    this.onRepair,
   });
 
   InstanceGroupManagerInstanceLifecyclePolicy.fromJson(core.Map json_)
@@ -118936,17 +123565,49 @@ class InstanceGroupManagerInstanceLifecyclePolicy {
         defaultActionOnFailure: json_['defaultActionOnFailure'] as core.String?,
         forceUpdateOnRepair: json_['forceUpdateOnRepair'] as core.String?,
         onFailedHealthCheck: json_['onFailedHealthCheck'] as core.String?,
+        onRepair: json_.containsKey('onRepair')
+            ? InstanceGroupManagerInstanceLifecyclePolicyOnRepair.fromJson(
+                json_['onRepair'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final defaultActionOnFailure = this.defaultActionOnFailure;
     final forceUpdateOnRepair = this.forceUpdateOnRepair;
     final onFailedHealthCheck = this.onFailedHealthCheck;
+    final onRepair = this.onRepair;
     return {
       'defaultActionOnFailure': ?defaultActionOnFailure,
       'forceUpdateOnRepair': ?forceUpdateOnRepair,
       'onFailedHealthCheck': ?onFailedHealthCheck,
+      'onRepair': ?onRepair,
     };
+  }
+}
+
+/// Configuration for VM repairs in the MIG.
+class InstanceGroupManagerInstanceLifecyclePolicyOnRepair {
+  /// Specifies whether the MIG can change a VM's zone during a repair.
+  /// Valid values are:
+  ///
+  ///    - NO (default): MIG cannot change a VM's zone during a
+  ///    repair.
+  ///    - YES: MIG can select a different zone for the VM during
+  ///    a repair.
+  /// Possible string values are:
+  /// - "NO" : \[Default\] MIG cannot change a VM's zone during a repair.
+  /// - "YES" : MIG can select a different zone for the VM during a repair.
+  core.String? allowChangingZone;
+
+  InstanceGroupManagerInstanceLifecyclePolicyOnRepair({this.allowChangingZone});
+
+  InstanceGroupManagerInstanceLifecyclePolicyOnRepair.fromJson(core.Map json_)
+    : this(allowChangingZone: json_['allowChangingZone'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowChangingZone = this.allowChangingZone;
+    return {'allowChangingZone': ?allowChangingZone};
   }
 }
 
@@ -119077,7 +123738,7 @@ class InstanceGroupManagerListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceGroupManagerListWarningData>? data;
@@ -119122,8 +123783,8 @@ class InstanceGroupManagerList {
   /// A list of InstanceGroupManager resources.
   core.List<InstanceGroupManager>? items;
 
-  /// The resource type, which is always
-  /// compute#instanceGroupManagerList for a list of managed instance groups.
+  /// The resource type, which is always compute#instanceGroupManagerList for a
+  /// list of managed instance groups.
   ///
   /// Output only.
   core.String? kind;
@@ -119222,6 +123883,14 @@ class InstanceGroupManagerResizeRequest {
   /// Output only.
   core.String? id;
 
+  /// The names of instances to be created by this resize request.
+  ///
+  /// The number of
+  /// names specified determines the number of instances to create. The group's
+  /// target size will be increased by this number. This field cannot be used
+  /// together with 'resize_by'.
+  core.List<PerInstanceConfig>? instances;
+
   /// The resource type, which is
   /// alwayscompute#instanceGroupManagerResizeRequest for resize requests.
   ///
@@ -119303,6 +123972,7 @@ class InstanceGroupManagerResizeRequest {
     this.creationTimestamp,
     this.description,
     this.id,
+    this.instances,
     this.kind,
     this.name,
     this.region,
@@ -119320,6 +123990,13 @@ class InstanceGroupManagerResizeRequest {
         creationTimestamp: json_['creationTimestamp'] as core.String?,
         description: json_['description'] as core.String?,
         id: json_['id'] as core.String?,
+        instances: (json_['instances'] as core.List?)
+            ?.map(
+              (value) => PerInstanceConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
         region: json_['region'] as core.String?,
@@ -119345,6 +124022,7 @@ class InstanceGroupManagerResizeRequest {
     final creationTimestamp = this.creationTimestamp;
     final description = this.description;
     final id = this.id;
+    final instances = this.instances;
     final kind = this.kind;
     final name = this.name;
     final region = this.region;
@@ -119359,6 +124037,7 @@ class InstanceGroupManagerResizeRequest {
       'creationTimestamp': ?creationTimestamp,
       'description': ?description,
       'id': ?id,
+      'instances': ?instances,
       'kind': ?kind,
       'name': ?name,
       'region': ?region,
@@ -119373,10 +124052,19 @@ class InstanceGroupManagerResizeRequest {
   }
 }
 
+/// Container for structured error details providing additional context
+/// specific to the encountered error code.
 class InstanceGroupManagerResizeRequestStatusErrorErrorsErrorDetails {
+  /// Error information containing structured domain, reason, and metadata.
   ErrorInfo? errorInfo;
+
+  /// Links and information to help the user resolve the error.
   Help? help;
+
+  /// A localized human-readable error message intended for end users.
   LocalizedMessage? localizedMessage;
+
+  /// Details about quota limits and metrics when a quota is exceeded.
   QuotaExceededInfo? quotaInfo;
 
   InstanceGroupManagerResizeRequestStatusErrorErrorsErrorDetails({
@@ -119426,6 +124114,8 @@ class InstanceGroupManagerResizeRequestStatusErrorErrorsErrorDetails {
   }
 }
 
+/// Represents a single error encountered during the processing of an
+/// operation.
 class InstanceGroupManagerResizeRequestStatusErrorErrors {
   /// The error type identifier for this error.
   ///
@@ -119570,10 +124260,19 @@ class InstanceGroupManagerResizeRequestStatus {
   }
 }
 
+/// Container for structured error details providing additional context
+/// specific to the encountered error code.
 class InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsErrorDetails {
+  /// Error information containing structured domain, reason, and metadata.
   ErrorInfo? errorInfo;
+
+  /// Links and information to help the user resolve the error.
   Help? help;
+
+  /// A localized human-readable error message intended for end users.
   LocalizedMessage? localizedMessage;
+
+  /// Details about quota limits and metrics when a quota is exceeded.
   QuotaExceededInfo? quotaInfo;
 
   InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsErrorDetails({
@@ -119623,6 +124322,8 @@ class InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsErrorDetails 
   }
 }
 
+/// Represents a single error encountered during the processing of an
+/// operation.
 class InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrors {
   /// The error type identifier for this error.
   ///
@@ -119877,7 +124578,7 @@ class InstanceGroupManagerResizeRequestsListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceGroupManagerResizeRequestsListResponseWarningData>? data;
@@ -119935,12 +124636,9 @@ class InstanceGroupManagerResizeRequestsListResponse {
   /// Output only.
   core.String? kind;
 
-  /// This token allows you to get the next page of results for
-  /// list requests.
-  ///
-  /// If the number of results is larger thanmaxResults, use the nextPageToken
-  /// as a value for
-  /// the query parameter pageToken in the next list request.
+  /// This token allows you to get the next page of results for list requests.
+  /// If the number of results is larger than maxResults, use thenextPageToken
+  /// as a value for the query parameterpageToken in the next list request.
   /// Subsequent list requests will have their own nextPageToken to
   /// continue paging through the results.
   ///
@@ -120258,10 +124956,19 @@ class InstanceGroupManagerStatusAcceleratorTopology {
   }
 }
 
+/// Container for structured error details providing additional context
+/// specific to the encountered error code.
 class InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsErrorDetails {
+  /// Error information containing structured domain, reason, and metadata.
   ErrorInfo? errorInfo;
+
+  /// Links and information to help the user resolve the error.
   Help? help;
+
+  /// A localized human-readable error message intended for end users.
   LocalizedMessage? localizedMessage;
+
+  /// Details about quota limits and metrics when a quota is exceeded.
   QuotaExceededInfo? quotaInfo;
 
   InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsErrorDetails({
@@ -120311,6 +125018,8 @@ class InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetai
   }
 }
 
+/// Represents a single error encountered during the processing of an
+/// operation.
 class InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrors {
   /// The error type identifier for this error.
   ///
@@ -120523,10 +125232,19 @@ class InstanceGroupManagerStatusBulkInstanceOperation {
   }
 }
 
+/// Container for structured error details providing additional context
+/// specific to the encountered error code.
 class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsErrorDetails {
+  /// Error information containing structured domain, reason, and metadata.
   ErrorInfo? errorInfo;
+
+  /// Links and information to help the user resolve the error.
   Help? help;
+
+  /// A localized human-readable error message intended for end users.
   LocalizedMessage? localizedMessage;
+
+  /// Details about quota limits and metrics when a quota is exceeded.
   QuotaExceededInfo? quotaInfo;
 
   InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsErrorDetails({
@@ -120576,6 +125294,8 @@ class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorError
   }
 }
 
+/// Represents a single error encountered during the processing of an
+/// operation.
 class InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrors {
   /// The error type identifier for this error.
   ///
@@ -121318,11 +126038,9 @@ class InstanceGroupManagersListErrorsResponse {
   /// Output only.
   core.List<InstanceManagedByIgmError>? items;
 
-  /// This token allows you to get the next page of results for
-  /// list requests.
-  ///
-  /// If the number of results is larger thanmaxResults, use the nextPageToken
-  /// as a value for
+  /// This token allows you to get the next page of results for list requests.
+  /// If the number of results is larger than maxResults
+  /// , then use the nextPageToken as a value for
   /// the query parameter pageToken in the next list request.
   /// Subsequent list requests will have their own nextPageToken to
   /// continue paging through the results.
@@ -121527,7 +126245,7 @@ class InstanceGroupManagersListPerInstanceConfigsRespWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceGroupManagersListPerInstanceConfigsRespWarningData>? data;
@@ -121649,7 +126367,7 @@ class InstanceGroupManagersPatchPerInstanceConfigsReq {
   }
 }
 
-typedef InstanceGroupManagersRecreateInstancesRequest = $Request08;
+typedef InstanceGroupManagersRecreateInstancesRequest = $Request09;
 typedef InstanceGroupManagersResumeInstancesRequest =
     $InstanceGroupManagersResumeInstancesRequest;
 
@@ -121687,8 +126405,8 @@ class InstanceGroupManagersScopedListWarningData {
   }
 }
 
-/// The warning that replaces the list of managed instance
-/// groups when the list is empty.
+/// The warning that replaces the list of managed instance groups when the list
+/// is empty.
 ///
 /// Output only.
 class InstanceGroupManagersScopedListWarning {
@@ -121781,7 +126499,7 @@ class InstanceGroupManagersScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceGroupManagersScopedListWarningData>? data;
@@ -121815,14 +126533,15 @@ class InstanceGroupManagersScopedListWarning {
 }
 
 class InstanceGroupManagersScopedList {
-  /// The list of managed instance groups that are contained in
-  /// the specified project and zone.
+  /// The list of managed instance groups that are contained in the specified
+  /// project and zone.
   ///
   /// Output only.
   core.List<InstanceGroupManager>? instanceGroupManagers;
 
-  /// The warning that replaces the list of managed instance
-  /// groups when the list is empty.
+  /// The warning that replaces the list of managed instance groups when the
+  /// list
+  /// is empty.
   ///
   /// Output only.
   InstanceGroupManagersScopedListWarning? warning;
@@ -122108,7 +126827,7 @@ class InstanceGroupsListInstancesWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceGroupsListInstancesWarningData>? data;
@@ -122402,7 +127121,7 @@ class InstanceGroupsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceGroupsScopedListWarningData>? data;
@@ -122646,7 +127365,7 @@ class InstanceListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceListWarningData>? data;
@@ -122893,7 +127612,7 @@ class InstanceListReferrersWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceListReferrersWarningData>? data;
@@ -123026,6 +127745,7 @@ class InstanceManagedByIgmError {
   InstanceManagedByIgmErrorInstanceActionDetails? instanceActionDetails;
 
   /// The time that this error occurred.
+  ///
   /// This value is in RFC3339 text format.
   ///
   /// Output only.
@@ -123066,8 +127786,8 @@ class InstanceManagedByIgmError {
 }
 
 class InstanceManagedByIgmErrorInstanceActionDetails {
-  /// Action that managed instance group was executing on
-  /// the instance when the error occurred.
+  /// Action that managed instance group was executing on the instance when the
+  /// error occurred.
   ///
   /// Possible values:
   ///
@@ -123113,7 +127833,9 @@ class InstanceManagedByIgmErrorInstanceActionDetails {
   core.String? action;
 
   /// The URL of the instance.
-  /// The URL can be set even if the instance has not yet been created.
+  ///
+  /// The URL can be set even if the instance has not
+  /// yet been created.
   ///
   /// Output only.
   core.String? instance;
@@ -123232,8 +127954,8 @@ class InstanceParams {
   /// Resource manager tags to be bound to the instance. Tag keys and values
   /// have the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
-  /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
-  /// format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
   /// `{tag_value_short_name}`. The field is ignored (both PUT &
   /// PATCH) when empty.
   core.Map<core.String, core.String>? resourceManagerTags;
@@ -123310,6 +128032,24 @@ class InstanceProperties {
   /// Labels to apply to instances that are created from these properties.
   core.Map<core.String, core.String>? labels;
 
+  /// Specifies which method should be used for encrypting the
+  /// Local SSDs attached to the VM.
+  /// Possible string values are:
+  /// - "EPHEMERAL_KEY_ENCRYPTION" : The given VM will opt-in for using
+  /// ephemeral key for
+  /// encryption of Local SSDs.
+  /// The Local SSDs will not be able to recover data in case of VM
+  /// crash.
+  /// - "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED" : The given VM will be encrypted
+  /// using keys managed by the cloud
+  /// infrastructure and the keys will be deleted when the VM is
+  /// deleted.
+  /// - "STANDARD_ENCRYPTION" : The given VM will be encrypted using keys
+  /// managed by the cloud
+  /// infrastructure and the keys will be deleted when the VM is
+  /// deleted.
+  core.String? localSsdEncryptionMode;
+
   /// The machine type to use for instances that are created from these
   /// properties.
   /// This field only accepts a machine type name, for example `n2-standard-4`.
@@ -123372,8 +128112,10 @@ class InstanceProperties {
   ///
   /// Resource manager tags to be bound to the instance. Tag keys and values
   /// have the same definition as resource
-  /// manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and
-  /// values are in the format `tagValues/456`. The field is ignored (both PUT &
+  /// manager tags. Keys and values can be either in numeric format,
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// `{tag_value_short_name}`. The field is ignored (both PUT &
   /// PATCH) when empty.
   core.Map<core.String, core.String>? resourceManagerTags;
 
@@ -123416,6 +128158,7 @@ class InstanceProperties {
     this.guestAccelerators,
     this.keyRevocationActionType,
     this.labels,
+    this.localSsdEncryptionMode,
     this.machineType,
     this.metadata,
     this.minCpuPlatform,
@@ -123468,6 +128211,7 @@ class InstanceProperties {
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        localSsdEncryptionMode: json_['localSsdEncryptionMode'] as core.String?,
         machineType: json_['machineType'] as core.String?,
         metadata: json_.containsKey('metadata')
             ? Metadata.fromJson(
@@ -123543,6 +128287,7 @@ class InstanceProperties {
     final guestAccelerators = this.guestAccelerators;
     final keyRevocationActionType = this.keyRevocationActionType;
     final labels = this.labels;
+    final localSsdEncryptionMode = this.localSsdEncryptionMode;
     final machineType = this.machineType;
     final metadata = this.metadata;
     final minCpuPlatform = this.minCpuPlatform;
@@ -123566,6 +128311,7 @@ class InstanceProperties {
       'guestAccelerators': ?guestAccelerators,
       'keyRevocationActionType': ?keyRevocationActionType,
       'labels': ?labels,
+      'localSsdEncryptionMode': ?localSsdEncryptionMode,
       'machineType': ?machineType,
       'metadata': ?metadata,
       'minCpuPlatform': ?minCpuPlatform,
@@ -124015,7 +128761,7 @@ class InstanceTemplateAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceTemplateAggregatedListWarningData>? data;
@@ -124260,7 +129006,7 @@ class InstanceTemplateListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceTemplateListWarningData>? data;
@@ -124507,7 +129253,7 @@ class InstanceTemplatesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstanceTemplatesScopedListWarningData>? data;
@@ -124599,6 +129345,7 @@ class InstanceWithNamedPorts {
   /// - "PENDING" : For Flex Start provisioning instance is waiting for
   /// available capacity
   /// from Dynamic Workload Scheduler (DWS).
+  /// - "PENDING_STOP" : The instance is gracefully shutting down.
   /// - "PROVISIONING" : Resources are being allocated for the instance.
   /// - "REPAIRING" : The instance is in repair.
   /// - "RUNNING" : The instance is running.
@@ -125056,7 +129803,7 @@ class InstancesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstancesScopedListWarningData>? data;
@@ -125761,7 +130508,7 @@ class InstantSnapshotAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstantSnapshotAggregatedListWarningData>? data;
@@ -126265,7 +131012,7 @@ class InstantSnapshotListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstantSnapshotListWarningData>? data;
@@ -126556,7 +131303,7 @@ class InstantSnapshotsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InstantSnapshotsScopedListWarningData>? data;
@@ -126716,6 +131463,15 @@ class Interconnect {
   /// Provide this property when you
   /// create the resource.
   core.String? description;
+
+  /// URL of the InterconnectLocation object that represents where
+  /// this connection is to be provisioned.
+  ///
+  /// By default it will be the same as the
+  /// location field.
+  ///
+  /// Output only.
+  core.String? effectiveLocation;
 
   /// A list of outages expected for this Interconnect.
   ///
@@ -126990,6 +131746,7 @@ class Interconnect {
     this.creationTimestamp,
     this.customerName,
     this.description,
+    this.effectiveLocation,
     this.expectedOutages,
     this.googleIpAddress,
     this.googleReferenceId,
@@ -127044,6 +131801,7 @@ class Interconnect {
         creationTimestamp: json_['creationTimestamp'] as core.String?,
         customerName: json_['customerName'] as core.String?,
         description: json_['description'] as core.String?,
+        effectiveLocation: json_['effectiveLocation'] as core.String?,
         expectedOutages: (json_['expectedOutages'] as core.List?)
             ?.map(
               (value) => InterconnectOutageNotification.fromJson(
@@ -127108,6 +131866,7 @@ class Interconnect {
     final creationTimestamp = this.creationTimestamp;
     final customerName = this.customerName;
     final description = this.description;
+    final effectiveLocation = this.effectiveLocation;
     final expectedOutages = this.expectedOutages;
     final googleIpAddress = this.googleIpAddress;
     final googleReferenceId = this.googleReferenceId;
@@ -127145,6 +131904,7 @@ class Interconnect {
       'creationTimestamp': ?creationTimestamp,
       'customerName': ?customerName,
       'description': ?description,
+      'effectiveLocation': ?effectiveLocation,
       'expectedOutages': ?expectedOutages,
       'googleIpAddress': ?googleIpAddress,
       'googleReferenceId': ?googleReferenceId,
@@ -128205,7 +132965,7 @@ class InterconnectAttachmentAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InterconnectAttachmentAggregatedListWarningData>? data;
@@ -129154,7 +133914,7 @@ class InterconnectAttachmentGroupsListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InterconnectAttachmentGroupsListResponseWarningData>? data;
@@ -129802,7 +134562,7 @@ class InterconnectAttachmentListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InterconnectAttachmentListWarningData>? data;
@@ -130121,7 +134881,7 @@ class InterconnectAttachmentsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InterconnectAttachmentsScopedListWarningData>? data;
@@ -131146,7 +135906,6 @@ class InterconnectGroupsCreateMembers {
   }
 }
 
-/// LINT.IfChange
 class InterconnectGroupsCreateMembersInterconnectInput {
   /// Administrative status of the interconnect.
   ///
@@ -131484,7 +136243,7 @@ class InterconnectGroupsListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InterconnectGroupsListResponseWarningData>? data;
@@ -131885,7 +136644,7 @@ class InterconnectListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InterconnectListWarningData>? data;
@@ -132445,7 +137204,7 @@ class InterconnectLocationListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InterconnectLocationListWarningData>? data;
@@ -133469,7 +138228,7 @@ class InterconnectRemoteLocationListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<InterconnectRemoteLocationListWarningData>? data;
@@ -133911,6 +138670,16 @@ class License {
 /// use only by third-party partners who are creatingCloud Marketplace
 /// images.
 class LicenseCode {
+  /// Specifies licenseCodes of licenses that can replace this license.
+  ///
+  /// Note:
+  /// such replacements are allowed even if removable_from_disk is false.
+  core.List<core.String>? allowedReplacementLicenses;
+
+  /// If true, this license can be appended to an existing disk's set of
+  /// licenses.
+  core.bool? appendableToDisk;
+
   /// Creation timestamp inRFC3339
   /// text format.
   ///
@@ -133930,6 +138699,12 @@ class LicenseCode {
   /// Output only.
   core.String? id;
 
+  /// Specifies licenseCodes of licenses that are incompatible with this
+  /// license.
+  /// If a license is incompatible with this license, it cannot be attached to
+  /// the same disk or image.
+  core.List<core.String>? incompatibleLicenses;
+
   /// Type of resource.
   ///
   /// Always compute#licenseCode for
@@ -133944,6 +138719,14 @@ class LicenseCode {
   /// Output only.
   core.List<LicenseCodeLicenseAlias>? licenseAlias;
 
+  /// If set, this license will be unable to be removed or replaced once
+  /// attached
+  /// to a disk until the minimum_retention period has passed.
+  Duration? minimumRetention;
+
+  /// If true, this license can only be used on VMs on multi tenant nodes.
+  core.bool? multiTenantOnly;
+
   /// Name of the resource.
   ///
   /// The name is 1-20 characters long and
@@ -133952,10 +138735,31 @@ class LicenseCode {
   /// Output only.
   core.String? name;
 
+  /// If true, indicates this is an OS license.
+  ///
+  /// Only one OS license can be
+  /// attached to a disk or image at a time.
+  core.bool? osLicense;
+
+  /// If true, this license can be removed from a disk's set of licenses, with
+  /// no
+  /// replacement license needed.
+  core.bool? removableFromDisk;
+
+  /// Specifies the set of permissible coattached licenseCodes of licenses that
+  /// satisfy the coattachment requirement of this license.
+  ///
+  /// At least one license
+  /// from the set must be attached to the same disk or image as this license.
+  core.List<core.String>? requiredCoattachedLicenses;
+
   /// Server-defined URL for the resource.
   ///
   /// Output only.
   core.String? selfLink;
+
+  /// If true, this license can only be used on VMs on sole tenant nodes.
+  core.bool? soleTenantOnly;
 
   /// Current state of this License Code.
   ///
@@ -133979,23 +138783,47 @@ class LicenseCode {
   /// Output only.
   core.bool? transferable;
 
+  /// Last update timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? updateTimestamp;
+
   LicenseCode({
+    this.allowedReplacementLicenses,
+    this.appendableToDisk,
     this.creationTimestamp,
     this.description,
     this.id,
+    this.incompatibleLicenses,
     this.kind,
     this.licenseAlias,
+    this.minimumRetention,
+    this.multiTenantOnly,
     this.name,
+    this.osLicense,
+    this.removableFromDisk,
+    this.requiredCoattachedLicenses,
     this.selfLink,
+    this.soleTenantOnly,
     this.state,
     this.transferable,
+    this.updateTimestamp,
   });
 
   LicenseCode.fromJson(core.Map json_)
     : this(
+        allowedReplacementLicenses:
+            (json_['allowedReplacementLicenses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        appendableToDisk: json_['appendableToDisk'] as core.bool?,
         creationTimestamp: json_['creationTimestamp'] as core.String?,
         description: json_['description'] as core.String?,
         id: json_['id'] as core.String?,
+        incompatibleLicenses: (json_['incompatibleLicenses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         kind: json_['kind'] as core.String?,
         licenseAlias: (json_['licenseAlias'] as core.List?)
             ?.map(
@@ -134004,32 +138832,67 @@ class LicenseCode {
               ),
             )
             .toList(),
+        minimumRetention: json_.containsKey('minimumRetention')
+            ? Duration.fromJson(
+                json_['minimumRetention']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        multiTenantOnly: json_['multiTenantOnly'] as core.bool?,
         name: json_['name'] as core.String?,
+        osLicense: json_['osLicense'] as core.bool?,
+        removableFromDisk: json_['removableFromDisk'] as core.bool?,
+        requiredCoattachedLicenses:
+            (json_['requiredCoattachedLicenses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         selfLink: json_['selfLink'] as core.String?,
+        soleTenantOnly: json_['soleTenantOnly'] as core.bool?,
         state: json_['state'] as core.String?,
         transferable: json_['transferable'] as core.bool?,
+        updateTimestamp: json_['updateTimestamp'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final allowedReplacementLicenses = this.allowedReplacementLicenses;
+    final appendableToDisk = this.appendableToDisk;
     final creationTimestamp = this.creationTimestamp;
     final description = this.description;
     final id = this.id;
+    final incompatibleLicenses = this.incompatibleLicenses;
     final kind = this.kind;
     final licenseAlias = this.licenseAlias;
+    final minimumRetention = this.minimumRetention;
+    final multiTenantOnly = this.multiTenantOnly;
     final name = this.name;
+    final osLicense = this.osLicense;
+    final removableFromDisk = this.removableFromDisk;
+    final requiredCoattachedLicenses = this.requiredCoattachedLicenses;
     final selfLink = this.selfLink;
+    final soleTenantOnly = this.soleTenantOnly;
     final state = this.state;
     final transferable = this.transferable;
+    final updateTimestamp = this.updateTimestamp;
     return {
+      'allowedReplacementLicenses': ?allowedReplacementLicenses,
+      'appendableToDisk': ?appendableToDisk,
       'creationTimestamp': ?creationTimestamp,
       'description': ?description,
       'id': ?id,
+      'incompatibleLicenses': ?incompatibleLicenses,
       'kind': ?kind,
       'licenseAlias': ?licenseAlias,
+      'minimumRetention': ?minimumRetention,
+      'multiTenantOnly': ?multiTenantOnly,
       'name': ?name,
+      'osLicense': ?osLicense,
+      'removableFromDisk': ?removableFromDisk,
+      'requiredCoattachedLicenses': ?requiredCoattachedLicenses,
       'selfLink': ?selfLink,
+      'soleTenantOnly': ?soleTenantOnly,
       'state': ?state,
       'transferable': ?transferable,
+      'updateTimestamp': ?updateTimestamp,
     };
   }
 }
@@ -134067,8 +138930,8 @@ class LicenseParams {
   /// Resource manager tags to be bound to the license. Tag keys and values
   /// have the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
-  /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
-  /// format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
   /// `{tag_value_short_name}`. The field is ignored (both PUT &
   /// PATCH) when empty.
   core.Map<core.String, core.String>? resourceManagerTags;
@@ -134276,7 +139139,7 @@ class LicensesListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<LicensesListResponseWarningData>? data;
@@ -134510,7 +139373,7 @@ class ListInstantSnapshotGroupsWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ListInstantSnapshotGroupsWarningData>? data;
@@ -135292,7 +140155,7 @@ class MachineImageListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<MachineImageListWarningData>? data;
@@ -135805,7 +140668,7 @@ class MachineTypeAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<MachineTypeAggregatedListWarningData>? data;
@@ -136063,7 +140926,7 @@ class MachineTypeListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<MachineTypeListWarningData>? data;
@@ -136311,7 +141174,7 @@ class MachineTypesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<MachineTypesScopedListWarningData>? data;
@@ -136488,6 +141351,7 @@ class ManagedInstance {
   /// - "PENDING" : For Flex Start provisioning instance is waiting for
   /// available capacity
   /// from Dynamic Workload Scheduler (DWS).
+  /// - "PENDING_STOP" : The instance is gracefully shutting down.
   /// - "PROVISIONING" : Resources are being allocated for the instance.
   /// - "REPAIRING" : The instance is in repair.
   /// - "RUNNING" : The instance is running.
@@ -136536,6 +141400,18 @@ class ManagedInstance {
   ManagedInstancePropertiesFromFlexibilityPolicy?
   propertiesFromFlexibilityPolicy;
 
+  /// Information about the termination timestamp of the instance, if
+  /// applicable.
+  ///
+  /// Output only.
+  ManagedInstanceScheduling? scheduling;
+
+  /// Specifies the graceful shutdown details if the instance is in
+  /// `PENDING_STOP` state or there is a programmed stop scheduled.
+  ///
+  /// Output only.
+  ManagedInstanceShutdownDetails? shutdownDetails;
+
   /// Intended version of this instance.
   ///
   /// Output only.
@@ -136552,6 +141428,8 @@ class ManagedInstance {
     this.preservedStateFromConfig,
     this.preservedStateFromPolicy,
     this.propertiesFromFlexibilityPolicy,
+    this.scheduling,
+    this.shutdownDetails,
     this.version,
   });
 
@@ -136593,6 +141471,16 @@ class ManagedInstance {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        scheduling: json_.containsKey('scheduling')
+            ? ManagedInstanceScheduling.fromJson(
+                json_['scheduling'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        shutdownDetails: json_.containsKey('shutdownDetails')
+            ? ManagedInstanceShutdownDetails.fromJson(
+                json_['shutdownDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         version: json_.containsKey('version')
             ? ManagedInstanceVersion.fromJson(
                 json_['version'] as core.Map<core.String, core.dynamic>,
@@ -136612,6 +141500,8 @@ class ManagedInstance {
     final preservedStateFromPolicy = this.preservedStateFromPolicy;
     final propertiesFromFlexibilityPolicy =
         this.propertiesFromFlexibilityPolicy;
+    final scheduling = this.scheduling;
+    final shutdownDetails = this.shutdownDetails;
     final version = this.version;
     return {
       'currentAction': ?currentAction,
@@ -136624,6 +141514,8 @@ class ManagedInstance {
       'preservedStateFromConfig': ?preservedStateFromConfig,
       'preservedStateFromPolicy': ?preservedStateFromPolicy,
       'propertiesFromFlexibilityPolicy': ?propertiesFromFlexibilityPolicy,
+      'scheduling': ?scheduling,
+      'shutdownDetails': ?shutdownDetails,
       'version': ?version,
     };
   }
@@ -136677,10 +141569,19 @@ class ManagedInstanceInstanceHealth {
   }
 }
 
+/// Container for structured error details providing additional context
+/// specific to the encountered error code.
 class ManagedInstanceLastAttemptErrorsErrorsErrorDetails {
+  /// Error information containing structured domain, reason, and metadata.
   ErrorInfo? errorInfo;
+
+  /// Links and information to help the user resolve the error.
   Help? help;
+
+  /// A localized human-readable error message intended for end users.
   LocalizedMessage? localizedMessage;
+
+  /// Details about quota limits and metrics when a quota is exceeded.
   QuotaExceededInfo? quotaInfo;
 
   ManagedInstanceLastAttemptErrorsErrorsErrorDetails({
@@ -136729,6 +141630,8 @@ class ManagedInstanceLastAttemptErrorsErrorsErrorDetails {
   }
 }
 
+/// Represents a single error encountered during the processing of an
+/// operation.
 class ManagedInstanceLastAttemptErrorsErrors {
   /// The error type identifier for this error.
   ///
@@ -136861,6 +141764,81 @@ class ManagedInstancePropertiesFromFlexibilityPolicy {
   core.Map<core.String, core.dynamic> toJson() {
     final machineType = this.machineType;
     return {'machineType': ?machineType};
+  }
+}
+
+class ManagedInstanceScheduling {
+  /// The timestamp at which the underlying instance will be
+  /// triggered for graceful shutdown if it is configured.
+  ///
+  /// This is in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String? gracefulShutdownTimestamp;
+
+  /// The timestamp at which the managed instance will be terminated.
+  ///
+  /// This is
+  /// in RFC3339 text
+  /// format.
+  ///
+  /// Output only.
+  core.String? terminationTimestamp;
+
+  ManagedInstanceScheduling({
+    this.gracefulShutdownTimestamp,
+    this.terminationTimestamp,
+  });
+
+  ManagedInstanceScheduling.fromJson(core.Map json_)
+    : this(
+        gracefulShutdownTimestamp:
+            json_['gracefulShutdownTimestamp'] as core.String?,
+        terminationTimestamp: json_['terminationTimestamp'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final gracefulShutdownTimestamp = this.gracefulShutdownTimestamp;
+    final terminationTimestamp = this.terminationTimestamp;
+    return {
+      'gracefulShutdownTimestamp': ?gracefulShutdownTimestamp,
+      'terminationTimestamp': ?terminationTimestamp,
+    };
+  }
+}
+
+class ManagedInstanceShutdownDetails {
+  /// The duration for graceful shutdown.
+  ///
+  /// Only applicable when the instance is
+  /// in `PENDING_STOP` state.
+  ///
+  /// Output only.
+  Duration? maxDuration;
+
+  /// Past timestamp indicating the beginning of `PENDING_STOP` state of
+  /// instance in RFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? requestTimestamp;
+
+  ManagedInstanceShutdownDetails({this.maxDuration, this.requestTimestamp});
+
+  ManagedInstanceShutdownDetails.fromJson(core.Map json_)
+    : this(
+        maxDuration: json_.containsKey('maxDuration')
+            ? Duration.fromJson(
+                json_['maxDuration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        requestTimestamp: json_['requestTimestamp'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxDuration = this.maxDuration;
+    final requestTimestamp = this.requestTimestamp;
+    return {'maxDuration': ?maxDuration, 'requestTimestamp': ?requestTimestamp};
   }
 }
 
@@ -137111,6 +142089,86 @@ class NamedPort {
     final name = this.name;
     final port = this.port;
     return {'name': ?name, 'port': ?port};
+  }
+}
+
+class NamedSet {
+  /// An optional description of named set.
+  core.String? description;
+
+  /// CEL expressions that are comparable to constructs of this set's type
+  /// (see Policy Language).
+  core.List<Expr>? elements;
+
+  /// A fingerprint for the Named Set being applied to this Router, which is
+  /// essentially a hash of the Named Set used for optimistic locking.
+  /// The fingerprint is initially generated by Compute Engine and changes
+  /// after every request to modify or update the Named Set.
+  ///
+  /// You must always
+  /// provide an up-to-date fingerprint hash in order to update or change
+  /// labels.
+  ///
+  /// To see the latest fingerprint, make a getNamedSet() request
+  /// to retrieve a Named Set.
+  core.String? fingerprint;
+  core.List<core.int> get fingerprintAsBytes =>
+      convert.base64.decode(fingerprint!);
+
+  set fingerprintAsBytes(core.List<core.int> bytes_) {
+    fingerprint = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// This set's name, which must be a resource ID segment and unique within all
+  /// named sets owned by the Router.
+  ///
+  /// Name should conform to RFC1035.
+  core.String? name;
+
+  /// This named set's type
+  /// Possible string values are:
+  /// - "NAMED_SET_TYPE_COMMUNITY" : The Named Set is a Community Named Set.
+  /// - "NAMED_SET_TYPE_PREFIX" : The Named Set is a Prefix Named Set.
+  core.String? type;
+
+  NamedSet({
+    this.description,
+    this.elements,
+    this.fingerprint,
+    this.name,
+    this.type,
+  });
+
+  NamedSet.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        elements: (json_['elements'] as core.List?)
+            ?.map(
+              (value) =>
+                  Expr.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        fingerprint: json_['fingerprint'] as core.String?,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final elements = this.elements;
+    final fingerprint = this.fingerprint;
+    final name = this.name;
+    final type = this.type;
+    return {
+      'description': ?description,
+      'elements': ?elements,
+      'fingerprint': ?fingerprint,
+      'name': ?name,
+      'type': ?type,
+    };
   }
 }
 
@@ -137575,12 +142633,18 @@ class NetworkAttachment {
   /// Output only.
   core.String? network;
 
-  /// Projects that are allowed to connect to this network attachment.
-  /// The project can be specified using its id or number.
+  /// Projects or service class ids that are allowed to connect to this network
+  /// attachment.
+  ///
+  /// The project can be specified using its id or number. Service
+  /// class id can be specified as "serviceclasses/{service_class_id}".
   core.List<core.String>? producerAcceptLists;
 
-  /// Projects that are not allowed to connect to this network attachment.
+  /// Projects or service class ids that are not allowed to connect to this
+  /// network attachment.
+  ///
   /// The project can be specified using its id or number.
+  /// Service class id can be specified as "serviceclasses/{service_class_id}".
   core.List<core.String>? producerRejectLists;
 
   /// URL of the region where the network attachment resides.
@@ -137820,7 +142884,7 @@ class NetworkAttachmentAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkAttachmentAggregatedListWarningData>? data;
@@ -138155,7 +143219,7 @@ class NetworkAttachmentListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkAttachmentListWarningData>? data;
@@ -138393,7 +143457,7 @@ class NetworkAttachmentsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkAttachmentsScopedListWarningData>? data;
@@ -138726,7 +143790,7 @@ class NetworkEdgeSecurityServiceAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkEdgeSecurityServiceAggregatedListWarningData>? data;
@@ -138994,7 +144058,7 @@ class NetworkEdgeSecurityServicesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkEdgeSecurityServicesScopedListWarningData>? data;
@@ -139276,7 +144340,13 @@ class NetworkEndpointGroup {
   core.String? name;
 
   /// The URL of the network to which all network endpoints in the NEG belong.
-  /// Uses default project network if unspecified.
+  /// For networkEndpointType GCE_VM_IP_PORT,GCE_VM_IP_PORTMAP or
+  /// NON_GCP_PRIVATE_IP_PORT,
+  /// if this field is not specified, a default network will be used.
+  /// This field cannot be set for NEGs with networkEndpointType set
+  /// toSERVERLESS or PRIVATE_SERVICE_CONNECT and for
+  /// global NEGs.
+  /// For all other network endpoint types, this field is required.
   core.String? network;
 
   /// Type of network endpoints in this network endpoint group.
@@ -139582,7 +144652,7 @@ class NetworkEndpointGroupAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkEndpointGroupAggregatedListWarningData>? data;
@@ -140008,7 +145078,7 @@ class NetworkEndpointGroupListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkEndpointGroupListWarningData>? data;
@@ -140393,7 +145463,7 @@ class NetworkEndpointGroupsListNetworkEndpointsWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkEndpointGroupsListNetworkEndpointsWarningData>? data;
@@ -140635,7 +145705,7 @@ class NetworkEndpointGroupsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkEndpointGroupsScopedListWarningData>? data;
@@ -140877,7 +145947,7 @@ class NetworkFirewallPolicyAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkFirewallPolicyAggregatedListWarningData>? data;
@@ -141026,6 +146096,10 @@ class NetworkInterface {
   /// An array of alias IP ranges for this network interface.
   /// You can only specify this field for network interfaces in VPC networks.
   core.List<AliasIpRange>? aliasIpRanges;
+
+  /// An array of alias IPv6 ranges for this network interface.
+  /// You can only specify this field for network interfaces in VPC networks.
+  core.List<AliasIpRange>? aliasIpv6Ranges;
 
   /// If true, DNS resolution will be enabled over this interface.
   ///
@@ -141217,6 +146291,7 @@ class NetworkInterface {
   NetworkInterface({
     this.accessConfigs,
     this.aliasIpRanges,
+    this.aliasIpv6Ranges,
     this.enableVpcScopedDns,
     this.fingerprint,
     this.igmpQuery,
@@ -141254,6 +146329,13 @@ class NetworkInterface {
               ),
             )
             .toList(),
+        aliasIpv6Ranges: (json_['aliasIpv6Ranges'] as core.List?)
+            ?.map(
+              (value) => AliasIpRange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         enableVpcScopedDns: json_['enableVpcScopedDns'] as core.bool?,
         fingerprint: json_['fingerprint'] as core.String?,
         igmpQuery: json_['igmpQuery'] as core.String?,
@@ -141285,6 +146367,7 @@ class NetworkInterface {
   core.Map<core.String, core.dynamic> toJson() {
     final accessConfigs = this.accessConfigs;
     final aliasIpRanges = this.aliasIpRanges;
+    final aliasIpv6Ranges = this.aliasIpv6Ranges;
     final enableVpcScopedDns = this.enableVpcScopedDns;
     final fingerprint = this.fingerprint;
     final igmpQuery = this.igmpQuery;
@@ -141307,6 +146390,7 @@ class NetworkInterface {
     return {
       'accessConfigs': ?accessConfigs,
       'aliasIpRanges': ?aliasIpRanges,
+      'aliasIpv6Ranges': ?aliasIpv6Ranges,
       'enableVpcScopedDns': ?enableVpcScopedDns,
       'fingerprint': ?fingerprint,
       'igmpQuery': ?igmpQuery,
@@ -141457,7 +146541,7 @@ class NetworkListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkListWarningData>? data;
@@ -141868,8 +146952,14 @@ class NetworkPeeringConnectionStatusConsensusState {
   /// peering connection can
   /// be deleted.
   /// - "DELETE_STATUS_UNSPECIFIED"
+  /// - "LOCAL_CANCEL_REQUESTED" : The local network admin requested to cancel
+  /// their delete request
+  /// after DELETE_ACKNOWLEDGED.
   /// - "LOCAL_DELETE_REQUESTED" : Network admin has requested deletion of this
   /// peering connection.
+  /// - "PEER_CANCEL_REQUESTED" : The peer network admin requested to cancel
+  /// their delete request after
+  /// DELETE_ACKNOWLEDGED.
   /// - "PEER_DELETE_REQUESTED" : The peer network admin has requested deletion
   /// of this peering
   /// connection.
@@ -142757,7 +147847,7 @@ class NetworkProfilesListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NetworkProfilesListResponseWarningData>? data;
@@ -143059,6 +148149,8 @@ class NetworksAddPeeringRequest {
     };
   }
 }
+
+typedef NetworksCancelRequestRemovePeeringRequest = $RemovePeeringRequest;
 
 class NetworksGetEffectiveFirewallsResponse {
   /// Effective firewalls from firewall policy.
@@ -143597,7 +148689,7 @@ class NodeGroupAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NodeGroupAggregatedListWarningData>? data;
@@ -143894,7 +148986,7 @@ class NodeGroupListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NodeGroupListWarningData>? data;
@@ -144385,7 +149477,7 @@ class NodeGroupsListNodesWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NodeGroupsListNodesWarningData>? data;
@@ -144659,7 +149751,7 @@ class NodeGroupsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NodeGroupsScopedListWarningData>? data;
@@ -145105,7 +150197,7 @@ class NodeTemplateAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NodeTemplateAggregatedListWarningData>? data;
@@ -145362,7 +150454,7 @@ class NodeTemplateListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NodeTemplateListWarningData>? data;
@@ -145630,7 +150722,7 @@ class NodeTemplatesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NodeTemplatesScopedListWarningData>? data;
@@ -145981,7 +151073,7 @@ class NodeTypeAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NodeTypeAggregatedListWarningData>? data;
@@ -146238,7 +151330,7 @@ class NodeTypeListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NodeTypeListWarningData>? data;
@@ -146484,7 +151576,7 @@ class NodeTypesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NodeTypesScopedListWarningData>? data;
@@ -146797,7 +151889,7 @@ class NotificationEndpointAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NotificationEndpointAggregatedListWarningData>? data;
@@ -147136,7 +152228,7 @@ class NotificationEndpointListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NotificationEndpointListWarningData>? data;
@@ -147380,7 +152472,7 @@ class NotificationEndpointsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<NotificationEndpointsScopedListWarningData>? data;
@@ -147446,10 +152538,19 @@ class NotificationEndpointsScopedList {
   }
 }
 
+/// Container for structured error details providing additional context
+/// specific to the encountered error code.
 class OperationErrorErrorsErrorDetails {
+  /// Error information containing structured domain, reason, and metadata.
   ErrorInfo? errorInfo;
+
+  /// Links and information to help the user resolve the error.
   Help? help;
+
+  /// A localized human-readable error message intended for end users.
   LocalizedMessage? localizedMessage;
+
+  /// Details about quota limits and metrics when a quota is exceeded.
   QuotaExceededInfo? quotaInfo;
 
   OperationErrorErrorsErrorDetails({
@@ -147498,6 +152599,8 @@ class OperationErrorErrorsErrorDetails {
   }
 }
 
+/// Represents a single error encountered during the processing of an
+/// operation.
 class OperationErrorErrors {
   /// The error type identifier for this error.
   ///
@@ -147715,7 +152818,7 @@ class OperationWarnings {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<OperationWarningsData>? data;
@@ -147912,9 +153015,10 @@ class Operation {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "DONE"
-  /// - "PENDING"
-  /// - "RUNNING"
+  /// - "DONE" : The operation has completed processing successfully or with an
+  /// error.
+  /// - "PENDING" : The operation is waiting to be processed.
+  /// - "RUNNING" : The operation is actively being processed.
   core.String? status;
 
   /// An optional textual description of the current status of the
@@ -148239,7 +153343,7 @@ class OperationAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<OperationAggregatedListWarningData>? data;
@@ -148502,7 +153606,7 @@ class OperationListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<OperationListWarningData>? data;
@@ -148755,7 +153859,7 @@ class OperationsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<OperationsScopedListWarningData>? data;
@@ -149415,7 +154519,7 @@ class PacketMirroringAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<PacketMirroringAggregatedListWarningData>? data;
@@ -149748,7 +154852,7 @@ class PacketMirroringListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<PacketMirroringListWarningData>? data;
@@ -150137,7 +155241,7 @@ class PacketMirroringsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<PacketMirroringsScopedListWarningData>? data;
@@ -150684,6 +155788,86 @@ class PerInstanceConfig {
       'name': ?name,
       'preservedState': ?preservedState,
       'status': ?status,
+    };
+  }
+}
+
+/// The periodic partial maintenance schedule includes 52 weeks worth of
+/// maintenance windows.
+/// LINT.IfChange(PeriodicPartialMaintenanceSchedule)
+class PeriodicPartialMaintenanceSchedule {
+  /// The maintenance type in which the zone is during the given window.
+  /// Possible string values are:
+  /// - "MAINTENANCE_SUBTYPE_UNSPECIFIED" : Default value.
+  /// - "MAINTENANCE_TYPE_CUSTOMER_MAINTENANCE" : A dedicated window for
+  /// customers to perform their own maintenance. This
+  /// often runs concurrently with a DISRUPTIVE_UPGRADE.
+  /// - "MAINTENANCE_TYPE_DISRUPTIVE_UPGRADE" : For disruptive updates,
+  /// including host machine kernel or firmware
+  /// upgrades.
+  /// - "MAINTENANCE_TYPE_STABLE" : A post-maintenance window for customers to
+  /// conduct final testing and
+  /// performance validation before resuming full business operations.
+  /// - "MAINTENANCE_TYPE_TRANSITION" : For preliminary, non-disruptive tasks
+  /// such as key rotations.
+  core.String? subType;
+
+  /// The target resource that the maintenance window is for.
+  /// For example, "projects/my-project/zones/us-central1-a".
+  core.String? targetResource;
+
+  ///
+  /// Possible string values are:
+  /// - "MAINTENANCE_TYPE_UNSPECIFIED" : Default value.
+  /// - "PRIVATE_ZONE_MAINTENANCE" : The zone is in a private maintenance
+  /// window.
+  core.String? type;
+
+  /// The end civil timestamp of the window (not inclusive).
+  /// This contains a time zone.
+  DateTime? windowEndTime;
+
+  /// The start civil timestamp of the window.
+  /// This contains a time zone.
+  DateTime? windowStartTime;
+
+  PeriodicPartialMaintenanceSchedule({
+    this.subType,
+    this.targetResource,
+    this.type,
+    this.windowEndTime,
+    this.windowStartTime,
+  });
+
+  PeriodicPartialMaintenanceSchedule.fromJson(core.Map json_)
+    : this(
+        subType: json_['subType'] as core.String?,
+        targetResource: json_['targetResource'] as core.String?,
+        type: json_['type'] as core.String?,
+        windowEndTime: json_.containsKey('windowEndTime')
+            ? DateTime.fromJson(
+                json_['windowEndTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        windowStartTime: json_.containsKey('windowStartTime')
+            ? DateTime.fromJson(
+                json_['windowStartTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final subType = this.subType;
+    final targetResource = this.targetResource;
+    final type = this.type;
+    final windowEndTime = this.windowEndTime;
+    final windowStartTime = this.windowStartTime;
+    return {
+      'subType': ?subType,
+      'targetResource': ?targetResource,
+      'type': ?type,
+      'windowEndTime': ?windowEndTime,
+      'windowStartTime': ?windowStartTime,
     };
   }
 }
@@ -151306,7 +156490,7 @@ class PreviewFeatureListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<PreviewFeatureListWarningData>? data;
@@ -152312,7 +157496,7 @@ class PublicAdvertisedPrefixListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<PublicAdvertisedPrefixListWarningData>? data;
@@ -152898,7 +158082,7 @@ class PublicDelegatedPrefixAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<PublicDelegatedPrefixAggregatedListWarningData>? data;
@@ -153161,7 +158345,7 @@ class PublicDelegatedPrefixListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<PublicDelegatedPrefixListWarningData>? data;
@@ -153550,7 +158734,7 @@ class PublicDelegatedPrefixesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<PublicDelegatedPrefixesScopedListWarningData>? data;
@@ -153968,6 +159152,59 @@ class Reference {
   }
 }
 
+/// The spec for modifying the path using a regular expression.
+class RegexRewrite {
+  /// The regular expression used to match against the URL path.
+  /// It uses RE2 syntax with the following constraints:
+  ///
+  ///
+  ///      - Any single character operators
+  ///      - Groups are allowed to have only submatch operator inside
+  ///      - Groups are allowed only without any char repetition, e.g.
+  ///      .*
+  ///      - Any char repetition, e.g. .*, is
+  ///      only allowed to be used in a single regex together with:
+  ///
+  ///
+  ///             - Empty string operators
+  ///             - Other repetitions
+  ///             - Ranges
+  ///             - Repetitions of ranges
+  ///
+  ///
+  ///      - Ranges are only allowed to have:
+  ///
+  ///
+  ///             - Character range
+  ///             - Digits range
+  ///             - Symbols listed in characters allowed for ranges
+  ///
+  /// Required.
+  core.String? pathPattern;
+
+  /// Required when path pattern is specified.
+  ///
+  /// Used to rewrite matching parts of
+  /// the path.
+  ///
+  /// Required.
+  core.String? pathSubstitution;
+
+  RegexRewrite({this.pathPattern, this.pathSubstitution});
+
+  RegexRewrite.fromJson(core.Map json_)
+    : this(
+        pathPattern: json_['pathPattern'] as core.String?,
+        pathSubstitution: json_['pathSubstitution'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final pathPattern = this.pathPattern;
+    final pathSubstitution = this.pathSubstitution;
+    return {'pathPattern': ?pathPattern, 'pathSubstitution': ?pathSubstitution};
+  }
+}
+
 class RegionQuotaStatusWarningData {
   /// A key that provides more detail on the warning being
   /// returned.
@@ -154098,7 +159335,7 @@ class RegionQuotaStatusWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RegionQuotaStatusWarningData>? data;
@@ -154454,7 +159691,7 @@ class RegionAutoscalerListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RegionAutoscalerListWarningData>? data;
@@ -154698,7 +159935,7 @@ class RegionDiskTypeListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RegionDiskTypeListWarningData>? data;
@@ -154985,7 +160222,7 @@ class RegionInstanceGroupListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RegionInstanceGroupListWarningData>? data;
@@ -155232,7 +160469,7 @@ class RegionInstanceGroupManagerListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RegionInstanceGroupManagerListWarningData>? data;
@@ -155275,10 +160512,8 @@ class RegionInstanceGroupManagerList {
   /// A list of InstanceGroupManager resources.
   core.List<InstanceGroupManager>? items;
 
-  /// The resource type, which is always
-  /// compute#instanceGroupManagerList for a list of managed instance groups
-  /// that
-  /// exist in th regional scope.
+  /// The resource type, which is always compute#instanceGroupManagerList for a
+  /// list of managed instance groups that exist in th regional scope.
   ///
   /// Output only.
   core.String? kind;
@@ -155508,7 +160743,7 @@ class RegionInstanceGroupManagerResizeRequestsListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RegionInstanceGroupManagerResizeRequestsListResponseWarningData>?
@@ -155925,7 +161160,7 @@ class RegionInstanceGroupManagersListInstanceConfigsRespWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RegionInstanceGroupManagersListInstanceConfigsRespWarningData>?
@@ -156066,7 +161301,7 @@ class RegionInstanceGroupManagersListInstancesResponse {
   }
 }
 
-typedef RegionInstanceGroupManagersRecreateRequest = $Request08;
+typedef RegionInstanceGroupManagersRecreateRequest = $Request09;
 typedef RegionInstanceGroupManagersResumeInstancesRequest =
     $InstanceGroupManagersResumeInstancesRequest;
 
@@ -156264,7 +161499,7 @@ class RegionInstanceGroupsListInstancesWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RegionInstanceGroupsListInstancesWarningData>? data;
@@ -156589,7 +161824,7 @@ class RegionListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RegionListWarningData>? data;
@@ -157021,6 +162256,371 @@ class RegionUrlMapsValidateRequest {
   }
 }
 
+/// Represents a ReliabilityRisk resource.
+class ReliabilityRisk {
+  /// Creation timestamp in RFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional textual description of the resource; provided when the
+  /// resource is created.
+  core.String? description;
+
+  /// Details of the reliability risk resource
+  ///
+  /// Output only.
+  RiskDetails? details;
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Type of resource.
+  ///
+  /// Always compute#reliabilityRisk
+  /// for reliability risks.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Name of the resource.
+  ///
+  /// The name must be 1-63 characters long and
+  /// comply with RFC1035.
+  core.String? name;
+
+  /// The recommendation to mitigate the risk.
+  RiskRecommendation? recommendation;
+
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Server-defined URL for this resource with the resource id.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
+  ReliabilityRisk({
+    this.creationTimestamp,
+    this.description,
+    this.details,
+    this.id,
+    this.kind,
+    this.name,
+    this.recommendation,
+    this.selfLink,
+    this.selfLinkWithId,
+  });
+
+  ReliabilityRisk.fromJson(core.Map json_)
+    : this(
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        details: json_.containsKey('details')
+            ? RiskDetails.fromJson(
+                json_['details'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        recommendation: json_.containsKey('recommendation')
+            ? RiskRecommendation.fromJson(
+                json_['recommendation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final details = this.details;
+    final id = this.id;
+    final kind = this.kind;
+    final name = this.name;
+    final recommendation = this.recommendation;
+    final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
+    return {
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'details': ?details,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'recommendation': ?recommendation,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+    };
+  }
+}
+
+class ReliabilityRisksListResponseWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  ReliabilityRisksListResponseWarningData({this.key, this.value});
+
+  ReliabilityRisksListResponseWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class ReliabilityRisksListResponseWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }\]
+  ///
+  /// Output only.
+  core.List<ReliabilityRisksListResponseWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  ReliabilityRisksListResponseWarning({this.code, this.data, this.message});
+
+  ReliabilityRisksListResponseWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => ReliabilityRisksListResponseWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Response message for the List method of ReliabilityRisksService.
+class ReliabilityRisksListResponse {
+  /// An ETag of the resource.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of ReliabilityRisk resources.
+  core.List<ReliabilityRisk>? items;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  /// end_interface: MixerListResponseWithEtagBuilder
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  ReliabilityRisksListResponseWarning? warning;
+
+  ReliabilityRisksListResponse({
+    this.etag,
+    this.id,
+    this.items,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  ReliabilityRisksListResponse.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => ReliabilityRisk.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? ReliabilityRisksListResponseWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final items = this.items;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'items': ?items,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
 /// A policy that specifies how requests intended for the route's backends
 /// are shadowed to a separate mirrored backend service.
 ///
@@ -157195,6 +162795,17 @@ class Reservation {
   /// will not be shared with Google Cloud managed services.
   AllocationReservationSharingPolicy? reservationSharingPolicy;
 
+  /// Contains standard resource metadata for an Allocation
+  /// resource.
+  ///
+  /// It is populated for each instance of the Allocation
+  /// resource, and includes the api_version the
+  /// instance was retrieved through, and its canonical
+  /// resource_type name.
+  ///
+  /// Output only.
+  ResourceMetadata? resourceMetadata;
+
   /// Resource policies to be added to this reservation.
   ///
   /// The key is defined by
@@ -157291,6 +162902,7 @@ class Reservation {
     this.params,
     this.protectionTier,
     this.reservationSharingPolicy,
+    this.resourceMetadata,
     this.resourcePolicies,
     this.resourceStatus,
     this.satisfiesPzs,
@@ -157352,6 +162964,12 @@ class Reservation {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        resourceMetadata: json_.containsKey('resourceMetadata')
+            ? ResourceMetadata.fromJson(
+                json_['resourceMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         resourcePolicies:
             (json_['resourcePolicies'] as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
@@ -157399,6 +163017,7 @@ class Reservation {
     final params = this.params;
     final protectionTier = this.protectionTier;
     final reservationSharingPolicy = this.reservationSharingPolicy;
+    final resourceMetadata = this.resourceMetadata;
     final resourcePolicies = this.resourcePolicies;
     final resourceStatus = this.resourceStatus;
     final satisfiesPzs = this.satisfiesPzs;
@@ -157428,6 +163047,7 @@ class Reservation {
       'params': ?params,
       'protectionTier': ?protectionTier,
       'reservationSharingPolicy': ?reservationSharingPolicy,
+      'resourceMetadata': ?resourceMetadata,
       'resourcePolicies': ?resourcePolicies,
       'resourceStatus': ?resourceStatus,
       'satisfiesPzs': ?satisfiesPzs,
@@ -157653,7 +163273,7 @@ class ReservationAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ReservationAggregatedListWarningData>? data;
@@ -158273,7 +163893,7 @@ class ReservationBlocksListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ReservationBlocksListResponseWarningData>? data;
@@ -158509,7 +164129,7 @@ class ReservationListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ReservationListWarningData>? data;
@@ -158802,48 +164422,7 @@ class ReservationSlot {
   }
 }
 
-class ReservationSlotPhysicalTopology {
-  /// The unique identifier of the capacity block within the cluster.
-  core.String? block;
-
-  /// The cluster name of the reservation sub-block.
-  core.String? cluster;
-
-  /// The unique identifier of the capacity host within the capacity sub-block.
-  core.String? host;
-
-  /// The unique identifier of the capacity sub-block within the capacity
-  /// block.
-  core.String? subBlock;
-
-  ReservationSlotPhysicalTopology({
-    this.block,
-    this.cluster,
-    this.host,
-    this.subBlock,
-  });
-
-  ReservationSlotPhysicalTopology.fromJson(core.Map json_)
-    : this(
-        block: json_['block'] as core.String?,
-        cluster: json_['cluster'] as core.String?,
-        host: json_['host'] as core.String?,
-        subBlock: json_['subBlock'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final block = this.block;
-    final cluster = this.cluster;
-    final host = this.host;
-    final subBlock = this.subBlock;
-    return {
-      'block': ?block,
-      'cluster': ?cluster,
-      'host': ?host,
-      'subBlock': ?subBlock,
-    };
-  }
-}
+typedef ReservationSlotPhysicalTopology = $PhysicalTopology;
 
 class ReservationSlotStatus {
   /// The physical topology of the reservation sub-block.
@@ -158915,26 +164494,7 @@ class ReservationSlotsGetResponse {
   }
 }
 
-class ReservationSlotsGetVersionRequest {
-  /// The SBOM selection to return.
-  ///
-  /// Duplicate values in the list will be ignored.
-  core.List<core.String>? sbomSelections;
-
-  ReservationSlotsGetVersionRequest({this.sbomSelections});
-
-  ReservationSlotsGetVersionRequest.fromJson(core.Map json_)
-    : this(
-        sbomSelections: (json_['sbomSelections'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final sbomSelections = this.sbomSelections;
-    return {'sbomSelections': ?sbomSelections};
-  }
-}
+typedef ReservationSlotsGetVersionRequest = $GetVersionRequest;
 
 class ReservationSlotsListResponseWarningData {
   /// A key that provides more detail on the warning being
@@ -159061,7 +164621,7 @@ class ReservationSlotsListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ReservationSlotsListResponseWarningData>? data;
@@ -159613,7 +165173,7 @@ class ReservationSubBlocksListResponseWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ReservationSubBlocksListResponseWarningData>? data;
@@ -159951,7 +165511,7 @@ class ReservationsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ReservationsScopedListWarningData>? data;
@@ -160098,6 +165658,32 @@ class ResourceGroupReference {
   }
 }
 
+/// Standardized resource metadata common to all compute resources.
+class ResourceMetadata {
+  /// The version of the API interface that this resource was retrieved through.
+  /// For example, `"2025-01-01"` or `"2025-01-01-preview"`.
+  core.String? apiVersion;
+
+  /// The canonical resource type name in the format of a resource type
+  /// as defined by \[AIP-123\](https://google.aip.dev/123).
+  /// For example, `"compute.googleapis.com/Instance"`.
+  core.String? resourceType;
+
+  ResourceMetadata({this.apiVersion, this.resourceType});
+
+  ResourceMetadata.fromJson(core.Map json_)
+    : this(
+        apiVersion: json_['apiVersion'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiVersion = this.apiVersion;
+    final resourceType = this.resourceType;
+    return {'apiVersion': ?apiVersion, 'resourceType': ?resourceType};
+  }
+}
+
 class ResourcePoliciesScopedListWarningData {
   /// A key that provides more detail on the warning being
   /// returned.
@@ -160224,7 +165810,7 @@ class ResourcePoliciesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ResourcePoliciesScopedListWarningData>? data;
@@ -160594,7 +166180,7 @@ class ResourcePolicyAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ResourcePolicyAggregatedListWarningData>? data;
@@ -161094,7 +166680,7 @@ class ResourcePolicyListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ResourcePolicyListWarningData>? data;
@@ -161643,6 +167229,11 @@ class ResourceStatus {
   /// Output only.
   ResourceStatusReservationConsumptionInfo? reservationConsumptionInfo;
   ResourceStatusScheduling? scheduling;
+
+  /// Details about the instance stopping state.
+  ///
+  /// Output only.
+  ResourceStatusShutdownDetails? shutdownDetails;
   UpcomingMaintenance? upcomingMaintenance;
 
   ResourceStatus({
@@ -161651,6 +167242,7 @@ class ResourceStatus {
     this.physicalHostTopology,
     this.reservationConsumptionInfo,
     this.scheduling,
+    this.shutdownDetails,
     this.upcomingMaintenance,
   });
 
@@ -161682,6 +167274,11 @@ class ResourceStatus {
                 json_['scheduling'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        shutdownDetails: json_.containsKey('shutdownDetails')
+            ? ResourceStatusShutdownDetails.fromJson(
+                json_['shutdownDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         upcomingMaintenance: json_.containsKey('upcomingMaintenance')
             ? UpcomingMaintenance.fromJson(
                 json_['upcomingMaintenance']
@@ -161696,6 +167293,7 @@ class ResourceStatus {
     final physicalHostTopology = this.physicalHostTopology;
     final reservationConsumptionInfo = this.reservationConsumptionInfo;
     final scheduling = this.scheduling;
+    final shutdownDetails = this.shutdownDetails;
     final upcomingMaintenance = this.upcomingMaintenance;
     return {
       'effectiveInstanceMetadata': ?effectiveInstanceMetadata,
@@ -161703,6 +167301,7 @@ class ResourceStatus {
       'physicalHostTopology': ?physicalHostTopology,
       'reservationConsumptionInfo': ?reservationConsumptionInfo,
       'scheduling': ?scheduling,
+      'shutdownDetails': ?shutdownDetails,
       'upcomingMaintenance': ?upcomingMaintenance,
     };
   }
@@ -161804,6 +167403,11 @@ class ResourceStatusEffectiveInstanceMetadata {
 /// Represents the physical host topology of the host on which the VM is
 /// running.
 class ResourceStatusPhysicalHostTopology {
+  /// Additional location information of the running instance.
+  ///
+  /// Output only.
+  ResourceStatusPhysicalHostTopologyAdditionalAttributes? additionalAttributes;
+
   /// The ID of the block in which the running instance is
   /// located.
   ///
@@ -161835,6 +167439,7 @@ class ResourceStatusPhysicalHostTopology {
   core.String? subblock;
 
   ResourceStatusPhysicalHostTopology({
+    this.additionalAttributes,
     this.block,
     this.cluster,
     this.host,
@@ -161843,6 +167448,12 @@ class ResourceStatusPhysicalHostTopology {
 
   ResourceStatusPhysicalHostTopology.fromJson(core.Map json_)
     : this(
+        additionalAttributes: json_.containsKey('additionalAttributes')
+            ? ResourceStatusPhysicalHostTopologyAdditionalAttributes.fromJson(
+                json_['additionalAttributes']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         block: json_['block'] as core.String?,
         cluster: json_['cluster'] as core.String?,
         host: json_['host'] as core.String?,
@@ -161850,16 +167461,49 @@ class ResourceStatusPhysicalHostTopology {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final additionalAttributes = this.additionalAttributes;
     final block = this.block;
     final cluster = this.cluster;
     final host = this.host;
     final subblock = this.subblock;
     return {
+      'additionalAttributes': ?additionalAttributes,
       'block': ?block,
       'cluster': ?cluster,
       'host': ?host,
       'subblock': ?subblock,
     };
+  }
+}
+
+/// Additional location information of the running instance.
+class ResourceStatusPhysicalHostTopologyAdditionalAttributes {
+  /// The IDs of the accelerator topologies the instance belongs to.
+  ///
+  /// For
+  /// example
+  /// The key will be topologies like "4x4", "2x2x2" and the value will be
+  /// the location ID of the topologies.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? acceleratorTopologyIds;
+
+  ResourceStatusPhysicalHostTopologyAdditionalAttributes({
+    this.acceleratorTopologyIds,
+  });
+
+  ResourceStatusPhysicalHostTopologyAdditionalAttributes.fromJson(
+    core.Map json_,
+  ) : this(
+        acceleratorTopologyIds:
+            (json_['acceleratorTopologyIds']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceleratorTopologyIds = this.acceleratorTopologyIds;
+    return {'acceleratorTopologyIds': ?acceleratorTopologyIds};
   }
 }
 
@@ -161871,14 +167515,42 @@ class ResourceStatusReservationConsumptionInfo {
   /// Output only.
   core.String? consumedReservation;
 
-  ResourceStatusReservationConsumptionInfo({this.consumedReservation});
+  /// The full resource name of the reservation block that this
+  /// instance is consuming from.
+  ///
+  /// Output only.
+  core.String? consumedReservationBlock;
+
+  /// The full resource name of the reservation sub-block that
+  /// this instance is consuming from.
+  ///
+  /// Output only.
+  core.String? consumedReservationSubBlock;
+
+  ResourceStatusReservationConsumptionInfo({
+    this.consumedReservation,
+    this.consumedReservationBlock,
+    this.consumedReservationSubBlock,
+  });
 
   ResourceStatusReservationConsumptionInfo.fromJson(core.Map json_)
-    : this(consumedReservation: json_['consumedReservation'] as core.String?);
+    : this(
+        consumedReservation: json_['consumedReservation'] as core.String?,
+        consumedReservationBlock:
+            json_['consumedReservationBlock'] as core.String?,
+        consumedReservationSubBlock:
+            json_['consumedReservationSubBlock'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final consumedReservation = this.consumedReservation;
-    return {'consumedReservation': ?consumedReservation};
+    final consumedReservationBlock = this.consumedReservationBlock;
+    final consumedReservationSubBlock = this.consumedReservationSubBlock;
+    return {
+      'consumedReservation': ?consumedReservation,
+      'consumedReservationBlock': ?consumedReservationBlock,
+      'consumedReservationSubBlock': ?consumedReservationSubBlock,
+    };
   }
 }
 
@@ -161890,14 +167562,1751 @@ class ResourceStatusScheduling {
   /// specified in the spread placement policy attached to the instance.
   core.int? availabilityDomain;
 
-  ResourceStatusScheduling({this.availabilityDomain});
+  /// Specifies the timestamp, when the instance will start graceful shutdown
+  /// process, in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String? gracefulShutdownTimestamp;
+
+  /// Time in future when the instance will be terminated inRFC3339 text format.
+  core.String? terminationTimestamp;
+
+  ResourceStatusScheduling({
+    this.availabilityDomain,
+    this.gracefulShutdownTimestamp,
+    this.terminationTimestamp,
+  });
 
   ResourceStatusScheduling.fromJson(core.Map json_)
-    : this(availabilityDomain: json_['availabilityDomain'] as core.int?);
+    : this(
+        availabilityDomain: json_['availabilityDomain'] as core.int?,
+        gracefulShutdownTimestamp:
+            json_['gracefulShutdownTimestamp'] as core.String?,
+        terminationTimestamp: json_['terminationTimestamp'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final availabilityDomain = this.availabilityDomain;
-    return {'availabilityDomain': ?availabilityDomain};
+    final gracefulShutdownTimestamp = this.gracefulShutdownTimestamp;
+    final terminationTimestamp = this.terminationTimestamp;
+    return {
+      'availabilityDomain': ?availabilityDomain,
+      'gracefulShutdownTimestamp': ?gracefulShutdownTimestamp,
+      'terminationTimestamp': ?terminationTimestamp,
+    };
+  }
+}
+
+/// Specifies if the instance is in `PENDING_STOP` state or there is a
+/// programmed stop scheduled.
+class ResourceStatusShutdownDetails {
+  /// The duration for graceful shutdown.
+  ///
+  /// Only applicable when
+  /// `stop_state=PENDING_STOP`.
+  Duration? maxDuration;
+
+  /// Past timestamp indicating the beginning of current `stopState` in RFC3339
+  /// text format.
+  core.String? requestTimestamp;
+
+  /// Current stopping state of the instance.
+  /// Possible string values are:
+  /// - "PENDING_STOP" : The instance is gracefully shutting down.
+  /// - "STOPPING" : The instance is stopping.
+  core.String? stopState;
+
+  /// Target instance state.
+  /// Possible string values are:
+  /// - "DELETED" : The instance will be deleted.
+  /// - "STOPPED" : The instance will be stopped.
+  core.String? targetState;
+
+  ResourceStatusShutdownDetails({
+    this.maxDuration,
+    this.requestTimestamp,
+    this.stopState,
+    this.targetState,
+  });
+
+  ResourceStatusShutdownDetails.fromJson(core.Map json_)
+    : this(
+        maxDuration: json_.containsKey('maxDuration')
+            ? Duration.fromJson(
+                json_['maxDuration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        requestTimestamp: json_['requestTimestamp'] as core.String?,
+        stopState: json_['stopState'] as core.String?,
+        targetState: json_['targetState'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxDuration = this.maxDuration;
+    final requestTimestamp = this.requestTimestamp;
+    final stopState = this.stopState;
+    final targetState = this.targetState;
+    return {
+      'maxDuration': ?maxDuration,
+      'requestTimestamp': ?requestTimestamp,
+      'stopState': ?stopState,
+      'targetState': ?targetState,
+    };
+  }
+}
+
+/// Detailed insights and metrics about a detected reliability risk.
+class RiskDetails {
+  /// The duration of the risk since it was detected.
+  core.String? duration;
+
+  /// Insight details for global DNS risk.
+  RiskDetailsGlobalDnsInsight? globalDnsInsight;
+
+  /// The last time the risk was updated.
+  core.String? lastUpdateTimestamp;
+
+  /// The severity of the risk.
+  /// Possible string values are:
+  /// - "CRITICAL" : Critical severity.
+  /// - "HIGH" : High severity.
+  /// - "LOW" : Low severity.
+  /// - "MEDIUM" : Medium severity.
+  /// - "SEVERITY_UNSPECIFIED" : No severity specified. The default value.
+  core.String? severity;
+
+  /// The type of risk.
+  /// Possible string values are:
+  /// - "GLOBAL_DNS" : Risk type related to global DNS.
+  /// - "RISK_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  core.String? type;
+
+  RiskDetails({
+    this.duration,
+    this.globalDnsInsight,
+    this.lastUpdateTimestamp,
+    this.severity,
+    this.type,
+  });
+
+  RiskDetails.fromJson(core.Map json_)
+    : this(
+        duration: json_['duration'] as core.String?,
+        globalDnsInsight: json_.containsKey('globalDnsInsight')
+            ? RiskDetailsGlobalDnsInsight.fromJson(
+                json_['globalDnsInsight']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lastUpdateTimestamp: json_['lastUpdateTimestamp'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final duration = this.duration;
+    final globalDnsInsight = this.globalDnsInsight;
+    final lastUpdateTimestamp = this.lastUpdateTimestamp;
+    final severity = this.severity;
+    final type = this.type;
+    return {
+      'duration': ?duration,
+      'globalDnsInsight': ?globalDnsInsight,
+      'lastUpdateTimestamp': ?lastUpdateTimestamp,
+      'severity': ?severity,
+      'type': ?type,
+    };
+  }
+}
+
+/// Detailed insights for a global DNS reliability risk.
+class RiskDetailsGlobalDnsInsight {
+  /// Indicates whether the project's default DNS setting is global DNS.
+  core.bool? projectDefaultIsGlobalDns;
+
+  /// The observation window for the query counts.
+  core.String? queryObservationWindow;
+
+  /// The number of queries that are risky.
+  ///
+  /// This is always less than or
+  /// equal to total_query_count.
+  core.String? riskyQueryCount;
+
+  /// The total number of queries in the observation window.
+  core.String? totalQueryCount;
+
+  RiskDetailsGlobalDnsInsight({
+    this.projectDefaultIsGlobalDns,
+    this.queryObservationWindow,
+    this.riskyQueryCount,
+    this.totalQueryCount,
+  });
+
+  RiskDetailsGlobalDnsInsight.fromJson(core.Map json_)
+    : this(
+        projectDefaultIsGlobalDns:
+            json_['projectDefaultIsGlobalDns'] as core.bool?,
+        queryObservationWindow: json_['queryObservationWindow'] as core.String?,
+        riskyQueryCount: json_['riskyQueryCount'] as core.String?,
+        totalQueryCount: json_['totalQueryCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final projectDefaultIsGlobalDns = this.projectDefaultIsGlobalDns;
+    final queryObservationWindow = this.queryObservationWindow;
+    final riskyQueryCount = this.riskyQueryCount;
+    final totalQueryCount = this.totalQueryCount;
+    return {
+      'projectDefaultIsGlobalDns': ?projectDefaultIsGlobalDns,
+      'queryObservationWindow': ?queryObservationWindow,
+      'riskyQueryCount': ?riskyQueryCount,
+      'totalQueryCount': ?totalQueryCount,
+    };
+  }
+}
+
+/// Recommendation for mitigating a reliability risk, including a reference URL.
+class RiskRecommendation {
+  /// Mitigation guide for the risk.
+  core.String? content;
+
+  /// URL referencing a more detailed mitigation guide.
+  core.String? referenceUrl;
+
+  RiskRecommendation({this.content, this.referenceUrl});
+
+  RiskRecommendation.fromJson(core.Map json_)
+    : this(
+        content: json_['content'] as core.String?,
+        referenceUrl: json_['referenceUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final referenceUrl = this.referenceUrl;
+    return {'content': ?content, 'referenceUrl': ?referenceUrl};
+  }
+}
+
+/// Rollout resource.
+///
+/// A Rollout is a specific instance of a RolloutPlan.
+///
+/// It represents a single
+/// execution of a strategy to roll out a specific resource. It also provides
+/// APIs to interact with the rollout.
+class Rollout {
+  /// The timestamp at which the Rollout was cancelled.
+  ///
+  /// Output only.
+  core.String? cancellationTime;
+
+  /// The timestamp at which the Rollout was completed.
+  ///
+  /// Output only.
+  core.String? completionTime;
+
+  /// Creation timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// The number of the currently running wave.
+  /// Ex.
+  ///
+  /// 1
+  ///
+  /// Output only.
+  core.String? currentWaveNumber;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you
+  /// create the resource.
+  core.String? description;
+
+  /// etag of the Rollout
+  /// Ex.
+  ///
+  /// abc1234
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#rollout
+  /// for rollouts.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Name of the resource.
+  ///
+  /// Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply withRFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?`
+  /// which means the first character must be a lowercase letter, and all
+  /// following characters must be a dash, lowercase letter, or digit, except
+  /// the last character, which cannot be a dash.
+  core.String? name;
+
+  /// The timestamp at which the Rollout was paused.
+  ///
+  /// Output only.
+  core.String? pauseTime;
+
+  /// The timestamp at which the Rollout was resumed.
+  ///
+  /// Output only.
+  core.String? resumeTime;
+
+  /// The resource being rolled out.
+  ///
+  /// Required.
+  RolloutRolloutEntity? rolloutEntity;
+
+  /// Rollout Plan used to model the Rollout.
+  /// Ex.
+  ///
+  /// compute.googleapis.com/v1/projects/1234/rolloutPlans/rp1
+  ///
+  /// Required.
+  core.String? rolloutPlan;
+
+  /// Server-defined fully-qualified URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Server-defined URL for this resource's resource id.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
+  /// The current state of the Rollout.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CANCELLED" : The rollout is in a failure terminal state.
+  /// - "CANCELLING" : The rollout is being cancelled.
+  /// - "CANCEL_FAILED" : An attempted cancel operation was unsuccessful.
+  /// - "COMPLETED" : The rollout is in a successful terminal state.
+  /// - "COMPLETE_FAILED" : An attempted complete operation was unsuccessful.
+  /// - "COMPLETING" : The rollout is being marked as completed.
+  /// - "FAILED" : The rollout completed with failures.
+  /// - "PAUSED" : The rollout is paused.
+  /// - "PAUSE_FAILED" : An attempted pause operation was unsuccessful.
+  /// - "PAUSING" : The rollout is being paused.
+  /// - "PROCESSING" : A wave is being processed by the product.
+  /// - "READY" : The rollout has been successfully initialized and is ready to
+  /// start.
+  /// - "RESUMING" : The rollout is being resumed after being paused.
+  /// - "ROLLBACK_WAVE_FAILED" : An attempted rollback operation failed to
+  /// complete successfully.
+  /// - "ROLLING_BACK" : A wave rollback is in progress for this rollout.
+  /// - "STATE_UNSPECIFIED" : Undefined default state. Should never be exposed
+  /// to users.
+  /// - "UNINITIALIZED" : The rollout has been created but is not yet ready to
+  /// be started.
+  /// - "WAVE_FAILED" : The product failed to process the wave.
+  core.String? state;
+
+  /// Details about each wave of the rollout.
+  ///
+  /// Output only.
+  core.List<RolloutWaveDetails>? waveDetails;
+
+  Rollout({
+    this.cancellationTime,
+    this.completionTime,
+    this.creationTimestamp,
+    this.currentWaveNumber,
+    this.description,
+    this.etag,
+    this.id,
+    this.kind,
+    this.name,
+    this.pauseTime,
+    this.resumeTime,
+    this.rolloutEntity,
+    this.rolloutPlan,
+    this.selfLink,
+    this.selfLinkWithId,
+    this.state,
+    this.waveDetails,
+  });
+
+  Rollout.fromJson(core.Map json_)
+    : this(
+        cancellationTime: json_['cancellationTime'] as core.String?,
+        completionTime: json_['completionTime'] as core.String?,
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        currentWaveNumber: json_['currentWaveNumber'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        pauseTime: json_['pauseTime'] as core.String?,
+        resumeTime: json_['resumeTime'] as core.String?,
+        rolloutEntity: json_.containsKey('rolloutEntity')
+            ? RolloutRolloutEntity.fromJson(
+                json_['rolloutEntity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rolloutPlan: json_['rolloutPlan'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+        state: json_['state'] as core.String?,
+        waveDetails: (json_['waveDetails'] as core.List?)
+            ?.map(
+              (value) => RolloutWaveDetails.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cancellationTime = this.cancellationTime;
+    final completionTime = this.completionTime;
+    final creationTimestamp = this.creationTimestamp;
+    final currentWaveNumber = this.currentWaveNumber;
+    final description = this.description;
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final name = this.name;
+    final pauseTime = this.pauseTime;
+    final resumeTime = this.resumeTime;
+    final rolloutEntity = this.rolloutEntity;
+    final rolloutPlan = this.rolloutPlan;
+    final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
+    final state = this.state;
+    final waveDetails = this.waveDetails;
+    return {
+      'cancellationTime': ?cancellationTime,
+      'completionTime': ?completionTime,
+      'creationTimestamp': ?creationTimestamp,
+      'currentWaveNumber': ?currentWaveNumber,
+      'description': ?description,
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'pauseTime': ?pauseTime,
+      'resumeTime': ?resumeTime,
+      'rolloutEntity': ?rolloutEntity,
+      'rolloutPlan': ?rolloutPlan,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+      'state': ?state,
+      'waveDetails': ?waveDetails,
+    };
+  }
+}
+
+/// RolloutPlan resource.
+///
+/// A RolloutPlan is the customer-defined strategy to divide a large-scale
+/// change
+/// into smaller increments, referred to as "waves".
+///
+/// Each wave targets a specific
+/// portion of the overall affected area and defines criteria that must be met
+/// before progressing to the subsequent wave.
+class RolloutPlan {
+  /// Creation timestamp inRFC3339
+  /// text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you
+  /// create the resource.
+  core.String? description;
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#rolloutPlan
+  /// for rolloutPlans.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// The location scope of the rollout plan.
+  ///
+  /// If not specified, the location
+  /// scope is considered as ZONAL.
+  /// Possible string values are:
+  /// - "LOCATION_SCOPE_UNSPECIFIED" : Unspecified value. Considered as ZONAL.
+  /// - "REGIONAL" : Regional scope.
+  /// - "ZONAL" : Zonal scope.
+  core.String? locationScope;
+
+  /// Name of the resource.
+  ///
+  /// Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply withRFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?`
+  /// which means the first character must be a lowercase letter, and all
+  /// following characters must be a dash, lowercase letter, or digit, except
+  /// the last character, which cannot be a dash.
+  core.String? name;
+
+  /// Server-defined fully-qualified URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Server-defined URL for this resource's resource id.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
+  /// The waves included in this rollout plan.
+  ///
+  /// Required.
+  core.List<RolloutPlanWave>? waves;
+
+  RolloutPlan({
+    this.creationTimestamp,
+    this.description,
+    this.id,
+    this.kind,
+    this.locationScope,
+    this.name,
+    this.selfLink,
+    this.selfLinkWithId,
+    this.waves,
+  });
+
+  RolloutPlan.fromJson(core.Map json_)
+    : this(
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        locationScope: json_['locationScope'] as core.String?,
+        name: json_['name'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+        waves: (json_['waves'] as core.List?)
+            ?.map(
+              (value) => RolloutPlanWave.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final id = this.id;
+    final kind = this.kind;
+    final locationScope = this.locationScope;
+    final name = this.name;
+    final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
+    final waves = this.waves;
+    return {
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'id': ?id,
+      'kind': ?kind,
+      'locationScope': ?locationScope,
+      'name': ?name,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+      'waves': ?waves,
+    };
+  }
+}
+
+/// A single wave in a rollout plan.
+class RolloutPlanWave {
+  /// The display name of this wave of the rollout plan.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// The wave number.
+  ///
+  /// Output only.
+  core.String? number;
+
+  /// The orchestration options for this wave.
+  ///
+  /// Optional.
+  RolloutPlanWaveOrchestrationOptions? orchestrationOptions;
+
+  /// The selectors for this wave.
+  ///
+  /// There is a logical AND between each selector
+  /// defined in a wave, so a resource must satisfy the criteria of *all* the
+  /// specified selectors to be in scope for the wave.
+  ///
+  /// Required.
+  core.List<RolloutPlanWaveSelector>? selectors;
+
+  /// The validation to be performed at the end of this wave.
+  ///
+  /// Required.
+  RolloutPlanWaveValidation? validation;
+
+  RolloutPlanWave({
+    this.displayName,
+    this.number,
+    this.orchestrationOptions,
+    this.selectors,
+    this.validation,
+  });
+
+  RolloutPlanWave.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        number: json_['number'] as core.String?,
+        orchestrationOptions: json_.containsKey('orchestrationOptions')
+            ? RolloutPlanWaveOrchestrationOptions.fromJson(
+                json_['orchestrationOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        selectors: (json_['selectors'] as core.List?)
+            ?.map(
+              (value) => RolloutPlanWaveSelector.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        validation: json_.containsKey('validation')
+            ? RolloutPlanWaveValidation.fromJson(
+                json_['validation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final number = this.number;
+    final orchestrationOptions = this.orchestrationOptions;
+    final selectors = this.selectors;
+    final validation = this.validation;
+    return {
+      'displayName': ?displayName,
+      'number': ?number,
+      'orchestrationOptions': ?orchestrationOptions,
+      'selectors': ?selectors,
+      'validation': ?validation,
+    };
+  }
+}
+
+/// Options to control the pace of orchestration of a wave.
+///
+/// These options are
+/// required only if the resource being rolled out follows the Orchestrated
+/// pattern.
+class RolloutPlanWaveOrchestrationOptions {
+  /// Delays, if any, to be added between batches of projects.
+  ///
+  /// We allow
+  /// multiple Delays to be specified, letting users set separate delays
+  /// between batches of projects corresponding to different locations and
+  /// batches of projects corresponding to the same location.
+  ///
+  /// Optional.
+  core.List<RolloutPlanWaveOrchestrationOptionsDelay>? delays;
+
+  /// Maximum number of locations to be orchestrated in parallel.
+  ///
+  /// Optional.
+  core.String? maxConcurrentLocations;
+
+  /// Maximum number of resources to be orchestrated per location in
+  /// parallel.
+  ///
+  /// Optional.
+  core.String? maxConcurrentResourcesPerLocation;
+
+  RolloutPlanWaveOrchestrationOptions({
+    this.delays,
+    this.maxConcurrentLocations,
+    this.maxConcurrentResourcesPerLocation,
+  });
+
+  RolloutPlanWaveOrchestrationOptions.fromJson(core.Map json_)
+    : this(
+        delays: (json_['delays'] as core.List?)
+            ?.map(
+              (value) => RolloutPlanWaveOrchestrationOptionsDelay.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        maxConcurrentLocations: json_['maxConcurrentLocations'] as core.String?,
+        maxConcurrentResourcesPerLocation:
+            json_['maxConcurrentResourcesPerLocation'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final delays = this.delays;
+    final maxConcurrentLocations = this.maxConcurrentLocations;
+    final maxConcurrentResourcesPerLocation =
+        this.maxConcurrentResourcesPerLocation;
+    return {
+      'delays': ?delays,
+      'maxConcurrentLocations': ?maxConcurrentLocations,
+      'maxConcurrentResourcesPerLocation': ?maxConcurrentResourcesPerLocation,
+    };
+  }
+}
+
+/// Options to control the delay, if any, between batches of projects.
+class RolloutPlanWaveOrchestrationOptionsDelay {
+  /// Controls whether the delay should only be added between batches of
+  /// projects corresponding to different locations, or also between
+  /// batches of projects corresponding to the same location.
+  ///
+  /// Must be set to DELIMITER_UNSPECIFIED if no delay is to be added.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DELIMITER_BATCH" : The delay will also be added between batches of
+  /// projects
+  /// corresponding to the same location.
+  /// - "DELIMITER_LOCATION" : The delay will only be added between batches of
+  /// projects
+  /// corresponding to different locations.
+  /// - "DELIMITER_UNSPECIFIED" : No delay will be added between batches of
+  /// projects. Processing will
+  /// continue with the next batch as soon as the previous batch of LROs
+  /// is done.
+  core.String? delimiter;
+
+  /// The duration of the delay, if any, to be added between batches of
+  /// projects.
+  ///
+  /// A zero duration corresponds to no delay.
+  ///
+  /// Optional.
+  core.String? duration;
+
+  /// Controls whether the specified duration is to be added at the end of
+  /// each batch, or if the total processing time for each batch will be
+  /// padded if needed to meet the specified duration.
+  ///
+  /// Must be set to TYPE_UNSPECIFIED if no delay is to be added.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_MINIMUM" : The total processing time for each batch of projects
+  /// will be padded
+  /// if needed to meet the specified delay duration.
+  /// - "TYPE_OFFSET" : The specified delay will directly be added after each
+  /// batch of
+  /// projects as specified by the delimiter.
+  /// - "TYPE_UNSPECIFIED" : No delay will be added between batches of projects.
+  /// Processing will
+  /// continue with the next batch as soon as the previous batch of LROs
+  /// is done.
+  core.String? type;
+
+  RolloutPlanWaveOrchestrationOptionsDelay({
+    this.delimiter,
+    this.duration,
+    this.type,
+  });
+
+  RolloutPlanWaveOrchestrationOptionsDelay.fromJson(core.Map json_)
+    : this(
+        delimiter: json_['delimiter'] as core.String?,
+        duration: json_['duration'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final delimiter = this.delimiter;
+    final duration = this.duration;
+    final type = this.type;
+    return {'delimiter': ?delimiter, 'duration': ?duration, 'type': ?type};
+  }
+}
+
+/// A selector which specifies what resource(s) are included in a given wave.
+class RolloutPlanWaveSelector {
+  /// Roll out to resources by Cloud locations.
+  ///
+  /// Optional.
+  RolloutPlanWaveSelectorLocationSelector? locationSelector;
+
+  /// Roll out to resources by Cloud Resource Manager resource hierarchy.
+  ///
+  /// Optional.
+  RolloutPlanWaveSelectorResourceHierarchySelector? resourceHierarchySelector;
+
+  RolloutPlanWaveSelector({
+    this.locationSelector,
+    this.resourceHierarchySelector,
+  });
+
+  RolloutPlanWaveSelector.fromJson(core.Map json_)
+    : this(
+        locationSelector: json_.containsKey('locationSelector')
+            ? RolloutPlanWaveSelectorLocationSelector.fromJson(
+                json_['locationSelector']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resourceHierarchySelector:
+            json_.containsKey('resourceHierarchySelector')
+            ? RolloutPlanWaveSelectorResourceHierarchySelector.fromJson(
+                json_['resourceHierarchySelector']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final locationSelector = this.locationSelector;
+    final resourceHierarchySelector = this.resourceHierarchySelector;
+    return {
+      'locationSelector': ?locationSelector,
+      'resourceHierarchySelector': ?resourceHierarchySelector,
+    };
+  }
+}
+
+/// Roll out to resources by location.
+class RolloutPlanWaveSelectorLocationSelector {
+  /// Example: "us-central1-a"
+  ///
+  /// Optional.
+  core.List<core.String>? includedLocations;
+
+  RolloutPlanWaveSelectorLocationSelector({this.includedLocations});
+
+  RolloutPlanWaveSelectorLocationSelector.fromJson(core.Map json_)
+    : this(
+        includedLocations: (json_['includedLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final includedLocations = this.includedLocations;
+    return {'includedLocations': ?includedLocations};
+  }
+}
+
+/// Roll out to resources by Cloud Resource Manager resource hierarchy
+/// nodes such as projects, folders, orgs.
+class RolloutPlanWaveSelectorResourceHierarchySelector {
+  /// Format: "folders/{folder_id}"
+  ///
+  /// Optional.
+  core.List<core.String>? includedFolders;
+
+  /// Format: "organizations/{organization_id}"
+  ///
+  /// Optional.
+  core.List<core.String>? includedOrganizations;
+
+  /// Format: "projects/{project_id}"
+  ///
+  /// Optional.
+  core.List<core.String>? includedProjects;
+
+  RolloutPlanWaveSelectorResourceHierarchySelector({
+    this.includedFolders,
+    this.includedOrganizations,
+    this.includedProjects,
+  });
+
+  RolloutPlanWaveSelectorResourceHierarchySelector.fromJson(core.Map json_)
+    : this(
+        includedFolders: (json_['includedFolders'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        includedOrganizations: (json_['includedOrganizations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        includedProjects: (json_['includedProjects'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final includedFolders = this.includedFolders;
+    final includedOrganizations = this.includedOrganizations;
+    final includedProjects = this.includedProjects;
+    return {
+      'includedFolders': ?includedFolders,
+      'includedOrganizations': ?includedOrganizations,
+      'includedProjects': ?includedProjects,
+    };
+  }
+}
+
+/// The validation to be performed before progressing to the next wave.
+class RolloutPlanWaveValidation {
+  /// Metadata required if type = "time".
+  ///
+  /// Optional.
+  RolloutPlanWaveValidationTimeBasedValidationMetadata?
+  timeBasedValidationMetadata;
+
+  /// The type of the validation.
+  ///
+  /// If a type of validation is associated with
+  /// a metadata object, the appropriate metadata field mapping to the
+  /// validation type must be provided in the validation message. Possible
+  /// values are in quotes below alongside an explanation:
+  ///   "manual": The system waits for an end-user approval API before
+  ///     progressing to the next wave.
+  ///   "time": The system waits for a user specified duration before
+  ///     progressing to the next wave. TimeBasedValidation must be provided.
+  ///
+  /// Required.
+  core.String? type;
+
+  RolloutPlanWaveValidation({this.timeBasedValidationMetadata, this.type});
+
+  RolloutPlanWaveValidation.fromJson(core.Map json_)
+    : this(
+        timeBasedValidationMetadata:
+            json_.containsKey('timeBasedValidationMetadata')
+            ? RolloutPlanWaveValidationTimeBasedValidationMetadata.fromJson(
+                json_['timeBasedValidationMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final timeBasedValidationMetadata = this.timeBasedValidationMetadata;
+    final type = this.type;
+    return {
+      'timeBasedValidationMetadata': ?timeBasedValidationMetadata,
+      'type': ?type,
+    };
+  }
+}
+
+/// Metadata required if type = "time".
+class RolloutPlanWaveValidationTimeBasedValidationMetadata {
+  /// The duration that the system waits in between waves.
+  ///
+  /// This wait starts
+  /// after all changes in the wave are rolled out.
+  ///
+  /// Optional.
+  core.String? waitDuration;
+
+  RolloutPlanWaveValidationTimeBasedValidationMetadata({this.waitDuration});
+
+  RolloutPlanWaveValidationTimeBasedValidationMetadata.fromJson(core.Map json_)
+    : this(waitDuration: json_['waitDuration'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final waitDuration = this.waitDuration;
+    return {'waitDuration': ?waitDuration};
+  }
+}
+
+class RolloutPlansListResponseWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  RolloutPlansListResponseWarningData({this.key, this.value});
+
+  RolloutPlansListResponseWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class RolloutPlansListResponseWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }\]
+  ///
+  /// Output only.
+  core.List<RolloutPlansListResponseWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  RolloutPlansListResponseWarning({this.code, this.data, this.message});
+
+  RolloutPlansListResponseWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => RolloutPlansListResponseWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Contains a list of RolloutPlan resources.
+class RolloutPlansListResponse {
+  core.String? etag;
+
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of RolloutPlan resources.
+  core.List<RolloutPlan>? items;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  /// end_interface: MixerListResponseWithEtagBuilder
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  RolloutPlansListResponseWarning? warning;
+
+  RolloutPlansListResponse({
+    this.etag,
+    this.id,
+    this.items,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  RolloutPlansListResponse.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => RolloutPlan.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? RolloutPlansListResponseWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final items = this.items;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'items': ?items,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
+/// Specifications of the resource to roll out.
+class RolloutRolloutEntity {
+  /// Entity details for products using the Orchestrated Integration model.
+  ///
+  /// Optional.
+  RolloutRolloutEntityOrchestratedEntity? orchestratedEntity;
+
+  RolloutRolloutEntity({this.orchestratedEntity});
+
+  RolloutRolloutEntity.fromJson(core.Map json_)
+    : this(
+        orchestratedEntity: json_.containsKey('orchestratedEntity')
+            ? RolloutRolloutEntityOrchestratedEntity.fromJson(
+                json_['orchestratedEntity']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final orchestratedEntity = this.orchestratedEntity;
+    return {'orchestratedEntity': ?orchestratedEntity};
+  }
+}
+
+/// This message is used if the resource type follows the Orchestrated
+/// integration model with ProgressiveRollout.
+class RolloutRolloutEntityOrchestratedEntity {
+  /// Specifies the behavior of the Rollout if an out of band update is
+  /// detected in a project during a Rollout.
+  ///
+  /// It can be one of the following
+  /// values:
+  /// 1) overwrite : Overwrite the local value with the rollout value.
+  /// 2) no_overwrite : Do not overwrite the local value with the rollout
+  /// value.
+  ///
+  /// Required.
+  core.String? conflictBehavior;
+
+  /// Orchestration action during the Rollout.
+  ///
+  /// It can be one of the following
+  /// values:
+  /// 1) "update": Resources will be updated by the rollout.
+  /// 2) "delete": Resources will be deleted by the rollout.
+  ///
+  /// Required.
+  core.String? orchestrationAction;
+
+  /// Fully qualified resource name of the resource which contains the source
+  /// of truth of the configuration being rolled out across
+  /// locations/projects.
+  ///
+  /// For example, in the case of a global Rollout which
+  /// is applied across regions, this contains the name of the global
+  /// resource created by the user which contains a payload for a resource
+  /// that is orchestrated across regions. This follows the following format:
+  /// //.googleapis.com/projects//locations/global//
+  /// e.g.
+  /// //osconfig.googleapis.com/projects/1/locations/global/policyOrchestrators/po1
+  ///
+  /// Required.
+  core.String? orchestrationSource;
+
+  RolloutRolloutEntityOrchestratedEntity({
+    this.conflictBehavior,
+    this.orchestrationAction,
+    this.orchestrationSource,
+  });
+
+  RolloutRolloutEntityOrchestratedEntity.fromJson(core.Map json_)
+    : this(
+        conflictBehavior: json_['conflictBehavior'] as core.String?,
+        orchestrationAction: json_['orchestrationAction'] as core.String?,
+        orchestrationSource: json_['orchestrationSource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final conflictBehavior = this.conflictBehavior;
+    final orchestrationAction = this.orchestrationAction;
+    final orchestrationSource = this.orchestrationSource;
+    return {
+      'conflictBehavior': ?conflictBehavior,
+      'orchestrationAction': ?orchestrationAction,
+      'orchestrationSource': ?orchestrationSource,
+    };
+  }
+}
+
+/// Additional metadata about the status of each wave provided by the server.
+class RolloutWaveDetails {
+  /// Additional details of the wave for products using the Orchestrated
+  /// Integration model.
+  ///
+  /// Output only.
+  RolloutWaveDetailsOrchestratedWaveDetails? orchestratedWaveDetails;
+
+  /// Wave name.
+  /// Ex.
+  ///
+  /// wave1
+  ///
+  /// Output only.
+  core.String? waveDisplayName;
+
+  /// System generated number for the wave.
+  ///
+  /// Output only.
+  core.String? waveNumber;
+
+  RolloutWaveDetails({
+    this.orchestratedWaveDetails,
+    this.waveDisplayName,
+    this.waveNumber,
+  });
+
+  RolloutWaveDetails.fromJson(core.Map json_)
+    : this(
+        orchestratedWaveDetails: json_.containsKey('orchestratedWaveDetails')
+            ? RolloutWaveDetailsOrchestratedWaveDetails.fromJson(
+                json_['orchestratedWaveDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        waveDisplayName: json_['waveDisplayName'] as core.String?,
+        waveNumber: json_['waveNumber'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final orchestratedWaveDetails = this.orchestratedWaveDetails;
+    final waveDisplayName = this.waveDisplayName;
+    final waveNumber = this.waveNumber;
+    return {
+      'orchestratedWaveDetails': ?orchestratedWaveDetails,
+      'waveDisplayName': ?waveDisplayName,
+      'waveNumber': ?waveNumber,
+    };
+  }
+}
+
+/// Details of the wave for products using the Orchestrated integration
+/// model.
+class RolloutWaveDetailsOrchestratedWaveDetails {
+  /// Resource completed so far.
+  ///
+  /// Output only.
+  core.String? completedResourcesCount;
+
+  /// Estimated timestamp at which the wave will complete.
+  ///
+  /// Extrapolated from
+  /// current progress.
+  ///
+  /// Output only.
+  core.String? estimatedCompletionTime;
+
+  /// Estimated total count of resources.
+  ///
+  /// Output only.
+  core.String? estimatedTotalResourcesCount;
+
+  /// Locations that failed during orchestration, and ProgressiveRollout
+  /// stopped retrying.
+  ///
+  /// There may be some successful resources rolled out in
+  /// the wave as the location may have failed later in the Rollout.
+  ///
+  /// Output only.
+  core.List<core.String>? failedLocations;
+
+  /// Resources failed.
+  ///
+  /// Output only.
+  core.String? failedResourcesCount;
+
+  /// Status of each location in the wave.
+  ///
+  /// Map keys (locations) must be
+  /// specified like "us-east1" or "asia-west1-a".
+  ///
+  /// Output only.
+  core.Map<
+    core.String,
+    RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus
+  >?
+  locationStatus;
+
+  RolloutWaveDetailsOrchestratedWaveDetails({
+    this.completedResourcesCount,
+    this.estimatedCompletionTime,
+    this.estimatedTotalResourcesCount,
+    this.failedLocations,
+    this.failedResourcesCount,
+    this.locationStatus,
+  });
+
+  RolloutWaveDetailsOrchestratedWaveDetails.fromJson(core.Map json_)
+    : this(
+        completedResourcesCount:
+            json_['completedResourcesCount'] as core.String?,
+        estimatedCompletionTime:
+            json_['estimatedCompletionTime'] as core.String?,
+        estimatedTotalResourcesCount:
+            json_['estimatedTotalResourcesCount'] as core.String?,
+        failedLocations: (json_['failedLocations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        failedResourcesCount: json_['failedResourcesCount'] as core.String?,
+        locationStatus:
+            (json_['locationStatus'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final completedResourcesCount = this.completedResourcesCount;
+    final estimatedCompletionTime = this.estimatedCompletionTime;
+    final estimatedTotalResourcesCount = this.estimatedTotalResourcesCount;
+    final failedLocations = this.failedLocations;
+    final failedResourcesCount = this.failedResourcesCount;
+    final locationStatus = this.locationStatus;
+    return {
+      'completedResourcesCount': ?completedResourcesCount,
+      'estimatedCompletionTime': ?estimatedCompletionTime,
+      'estimatedTotalResourcesCount': ?estimatedTotalResourcesCount,
+      'failedLocations': ?failedLocations,
+      'failedResourcesCount': ?failedResourcesCount,
+      'locationStatus': ?locationStatus,
+    };
+  }
+}
+
+/// Represents the status of a location in a wave.
+class RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus {
+  /// Location state of the wave.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_FAILED" : Work on the wave failed.
+  /// - "STATE_IN_PROGRESS" : Work on the wave is in progress.
+  /// - "STATE_PENDING" : Work on the wave is pending.
+  /// - "STATE_SKIPPED" : Work on the wave was canceled or skipped.
+  /// - "STATE_SUCCEEDED" : Work on the wave succeeded.
+  /// - "STATE_UNSPECIFIED" : Undefined default state. Should never be exposed
+  /// to users.
+  core.String? state;
+
+  RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus({this.state});
+
+  RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus.fromJson(
+    core.Map json_,
+  ) : this(state: json_['state'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final state = this.state;
+    return {'state': ?state};
+  }
+}
+
+class RolloutsListResponseWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  RolloutsListResponseWarningData({this.key, this.value});
+
+  RolloutsListResponseWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class RolloutsListResponseWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }\]
+  ///
+  /// Output only.
+  core.List<RolloutsListResponseWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  RolloutsListResponseWarning({this.code, this.data, this.message});
+
+  RolloutsListResponseWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => RolloutsListResponseWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class RolloutsListResponse {
+  core.String? etag;
+
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of Rollout resources.
+  core.List<Rollout>? items;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  /// end_interface: MixerListResponseWithEtagBuilder
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  RolloutsListResponseWarning? warning;
+
+  RolloutsListResponse({
+    this.etag,
+    this.id,
+    this.items,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  RolloutsListResponse.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => Rollout.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? RolloutsListResponseWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final items = this.items;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'items': ?items,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
   }
 }
 
@@ -162025,7 +169434,7 @@ class RouteWarnings {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RouteWarningsData>? data;
@@ -162606,7 +170015,7 @@ class RouteListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RouteListWarningData>? data;
@@ -162928,6 +170337,9 @@ class Router {
   /// A list of NAT services created in this router.
   core.List<RouterNat>? nats;
 
+  /// URI of the ncc_gateway to which this router associated.
+  core.String? nccGateway;
+
   /// URI of the network to which this router belongs.
   core.String? network;
 
@@ -162964,6 +170376,7 @@ class Router {
     this.md5AuthenticationKeys,
     this.name,
     this.nats,
+    this.nccGateway,
     this.network,
     this.params,
     this.region,
@@ -163012,6 +170425,7 @@ class Router {
               ),
             )
             .toList(),
+        nccGateway: json_['nccGateway'] as core.String?,
         network: json_['network'] as core.String?,
         params: json_.containsKey('params')
             ? RouterParams.fromJson(
@@ -163034,6 +170448,7 @@ class Router {
     final md5AuthenticationKeys = this.md5AuthenticationKeys;
     final name = this.name;
     final nats = this.nats;
+    final nccGateway = this.nccGateway;
     final network = this.network;
     final params = this.params;
     final region = this.region;
@@ -163050,6 +170465,7 @@ class Router {
       'md5AuthenticationKeys': ?md5AuthenticationKeys,
       'name': ?name,
       'nats': ?nats,
+      'nccGateway': ?nccGateway,
       'network': ?network,
       'params': ?params,
       'region': ?region,
@@ -163210,7 +170626,7 @@ class RouterAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RouterAggregatedListWarningData>? data;
@@ -164131,7 +171547,7 @@ class RouterListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RouterListWarningData>? data;
@@ -164315,6 +171731,16 @@ class RouterNat {
   /// must be valid static external IPs that have been assigned to the NAT.
   /// These IPs should be used for updating/patching a NAT only.
   core.List<core.String>? drainNatIps;
+
+  /// Effective timeout (in seconds) for TCP connections that are in TIME_WAIT
+  /// state.
+  ///
+  /// This value is equal to tcp_time_wait_timeout_sec.
+  /// If tcp_time_wait_timeout_sec isn't set, the effective timeout is 30s or
+  /// 120s. The field is output only.
+  ///
+  /// Output only.
+  core.int? effectiveTcpTimeWaitTimeoutSec;
 
   /// Enable Dynamic Port Allocation.
   ///
@@ -164506,6 +171932,7 @@ class RouterNat {
   RouterNat({
     this.autoNetworkTier,
     this.drainNatIps,
+    this.effectiveTcpTimeWaitTimeoutSec,
     this.enableDynamicPortAllocation,
     this.enableEndpointIndependentMapping,
     this.endpointTypes,
@@ -164534,6 +171961,8 @@ class RouterNat {
         drainNatIps: (json_['drainNatIps'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        effectiveTcpTimeWaitTimeoutSec:
+            json_['effectiveTcpTimeWaitTimeoutSec'] as core.int?,
         enableDynamicPortAllocation:
             json_['enableDynamicPortAllocation'] as core.bool?,
         enableEndpointIndependentMapping:
@@ -164591,6 +172020,7 @@ class RouterNat {
   core.Map<core.String, core.dynamic> toJson() {
     final autoNetworkTier = this.autoNetworkTier;
     final drainNatIps = this.drainNatIps;
+    final effectiveTcpTimeWaitTimeoutSec = this.effectiveTcpTimeWaitTimeoutSec;
     final enableDynamicPortAllocation = this.enableDynamicPortAllocation;
     final enableEndpointIndependentMapping =
         this.enableEndpointIndependentMapping;
@@ -164616,6 +172046,7 @@ class RouterNat {
     return {
       'autoNetworkTier': ?autoNetworkTier,
       'drainNatIps': ?drainNatIps,
+      'effectiveTcpTimeWaitTimeoutSec': ?effectiveTcpTimeWaitTimeoutSec,
       'enableDynamicPortAllocation': ?enableDynamicPortAllocation,
       'enableEndpointIndependentMapping': ?enableEndpointIndependentMapping,
       'endpointTypes': ?endpointTypes,
@@ -164934,6 +172365,9 @@ class RouterStatus {
   core.List<RouterStatusBgpPeerStatus>? bgpPeerStatus;
   core.List<RouterStatusNatStatus>? natStatus;
 
+  /// URI of the ncc_gateway to which this router associated.
+  core.String? nccGateway;
+
   /// URI of the network to which this router belongs.
   core.String? network;
 
@@ -164942,6 +172376,7 @@ class RouterStatus {
     this.bestRoutesForRouter,
     this.bgpPeerStatus,
     this.natStatus,
+    this.nccGateway,
     this.network,
   });
 
@@ -164973,6 +172408,7 @@ class RouterStatus {
               ),
             )
             .toList(),
+        nccGateway: json_['nccGateway'] as core.String?,
         network: json_['network'] as core.String?,
       );
 
@@ -164981,12 +172417,14 @@ class RouterStatus {
     final bestRoutesForRouter = this.bestRoutesForRouter;
     final bgpPeerStatus = this.bgpPeerStatus;
     final natStatus = this.natStatus;
+    final nccGateway = this.nccGateway;
     final network = this.network;
     return {
       'bestRoutes': ?bestRoutes,
       'bestRoutesForRouter': ?bestRoutesForRouter,
       'bgpPeerStatus': ?bgpPeerStatus,
       'natStatus': ?natStatus,
+      'nccGateway': ?nccGateway,
       'network': ?network,
     };
   }
@@ -165438,6 +172876,30 @@ class RouterStatusResponse {
   }
 }
 
+class RoutersGetNamedSetResponse {
+  /// end_interface: MixerGetResponseWithEtagBuilder
+  core.String? etag;
+  NamedSet? resource;
+
+  RoutersGetNamedSetResponse({this.etag, this.resource});
+
+  RoutersGetNamedSetResponse.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        resource: json_.containsKey('resource')
+            ? NamedSet.fromJson(
+                json_['resource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final resource = this.resource;
+    return {'etag': ?etag, 'resource': ?resource};
+  }
+}
+
 class RoutersGetRoutePolicyResponse {
   RoutePolicy? resource;
 
@@ -165585,7 +173047,7 @@ class RoutersListBgpRoutesWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RoutersListBgpRoutesWarningData>? data;
@@ -165698,6 +173160,273 @@ class RoutersListBgpRoutes {
             .toList(),
         warning: json_.containsKey('warning')
             ? RoutersListBgpRoutesWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final result = this.result;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'result': ?result,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
+  }
+}
+
+class RoutersListNamedSetsWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  RoutersListNamedSetsWarningData({this.key, this.value});
+
+  RoutersListNamedSetsWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class RoutersListNamedSetsWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }\]
+  ///
+  /// Output only.
+  core.List<RoutersListNamedSetsWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  RoutersListNamedSetsWarning({this.code, this.data, this.message});
+
+  RoutersListNamedSetsWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => RoutersListNamedSetsWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class RoutersListNamedSets {
+  core.String? etag;
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Type of resource.
+  ///
+  /// Alwayscompute#routersListNamedSets for lists of named sets.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// A list of named sets.
+  ///
+  /// Output only.
+  core.List<NamedSet>? result;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  RoutersListNamedSetsWarning? warning;
+
+  RoutersListNamedSets({
+    this.etag,
+    this.id,
+    this.kind,
+    this.nextPageToken,
+    this.result,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  RoutersListNamedSets.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        result: (json_['result'] as core.List?)
+            ?.map(
+              (value) => NamedSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? RoutersListNamedSetsWarning.fromJson(
                 json_['warning'] as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -165852,7 +173581,7 @@ class RoutersListRoutePoliciesWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RoutersListRoutePoliciesWarningData>? data;
@@ -166139,7 +173868,7 @@ class RoutersScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<RoutersScopedListWarningData>? data;
@@ -166659,6 +174388,7 @@ class Scheduling {
   /// must be a number between 1 and the number of availability domains
   /// specified in the spread placement policy attached to the instance.
   core.int? availabilityDomain;
+  SchedulingGracefulShutdown? gracefulShutdown;
 
   /// Specify the time in seconds for host error detection, the value must be
   /// within the range of \[90, 330\] with the increment of 30, if unset, the
@@ -166734,6 +174464,14 @@ class Scheduling {
   /// Cycle for more information on the possible instance states.
   core.bool? preemptible;
 
+  /// Specifies the Metadata Service preemption notice duration before the GCE
+  /// ACPI G2
+  /// Soft Off signal is triggered for Spot VMs only.
+  ///
+  /// If not specified,
+  /// there will be no wait before the G2 Soft Off signal is triggered.
+  Duration? preemptionNoticeDuration;
+
   /// Specifies the provisioning model of the instance.
   /// Possible string values are:
   /// - "FLEX_START" : Instance is provisioned using the Flex Start provisioning
@@ -166761,6 +174499,7 @@ class Scheduling {
   Scheduling({
     this.automaticRestart,
     this.availabilityDomain,
+    this.gracefulShutdown,
     this.hostErrorTimeoutSeconds,
     this.instanceTerminationAction,
     this.localSsdRecoveryTimeout,
@@ -166771,6 +174510,7 @@ class Scheduling {
     this.onHostMaintenance,
     this.onInstanceStopAction,
     this.preemptible,
+    this.preemptionNoticeDuration,
     this.provisioningModel,
     this.skipGuestOsShutdown,
     this.terminationTime,
@@ -166780,6 +174520,12 @@ class Scheduling {
     : this(
         automaticRestart: json_['automaticRestart'] as core.bool?,
         availabilityDomain: json_['availabilityDomain'] as core.int?,
+        gracefulShutdown: json_.containsKey('gracefulShutdown')
+            ? SchedulingGracefulShutdown.fromJson(
+                json_['gracefulShutdown']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hostErrorTimeoutSeconds: json_['hostErrorTimeoutSeconds'] as core.int?,
         instanceTerminationAction:
             json_['instanceTerminationAction'] as core.String?,
@@ -166811,6 +174557,12 @@ class Scheduling {
               )
             : null,
         preemptible: json_['preemptible'] as core.bool?,
+        preemptionNoticeDuration: json_.containsKey('preemptionNoticeDuration')
+            ? Duration.fromJson(
+                json_['preemptionNoticeDuration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         provisioningModel: json_['provisioningModel'] as core.String?,
         skipGuestOsShutdown: json_['skipGuestOsShutdown'] as core.bool?,
         terminationTime: json_['terminationTime'] as core.String?,
@@ -166819,6 +174571,7 @@ class Scheduling {
   core.Map<core.String, core.dynamic> toJson() {
     final automaticRestart = this.automaticRestart;
     final availabilityDomain = this.availabilityDomain;
+    final gracefulShutdown = this.gracefulShutdown;
     final hostErrorTimeoutSeconds = this.hostErrorTimeoutSeconds;
     final instanceTerminationAction = this.instanceTerminationAction;
     final localSsdRecoveryTimeout = this.localSsdRecoveryTimeout;
@@ -166829,12 +174582,14 @@ class Scheduling {
     final onHostMaintenance = this.onHostMaintenance;
     final onInstanceStopAction = this.onInstanceStopAction;
     final preemptible = this.preemptible;
+    final preemptionNoticeDuration = this.preemptionNoticeDuration;
     final provisioningModel = this.provisioningModel;
     final skipGuestOsShutdown = this.skipGuestOsShutdown;
     final terminationTime = this.terminationTime;
     return {
       'automaticRestart': ?automaticRestart,
       'availabilityDomain': ?availabilityDomain,
+      'gracefulShutdown': ?gracefulShutdown,
       'hostErrorTimeoutSeconds': ?hostErrorTimeoutSeconds,
       'instanceTerminationAction': ?instanceTerminationAction,
       'localSsdRecoveryTimeout': ?localSsdRecoveryTimeout,
@@ -166845,10 +174600,42 @@ class Scheduling {
       'onHostMaintenance': ?onHostMaintenance,
       'onInstanceStopAction': ?onInstanceStopAction,
       'preemptible': ?preemptible,
+      'preemptionNoticeDuration': ?preemptionNoticeDuration,
       'provisioningModel': ?provisioningModel,
       'skipGuestOsShutdown': ?skipGuestOsShutdown,
       'terminationTime': ?terminationTime,
     };
+  }
+}
+
+/// The configuration for gracefully shutting down the instance.
+class SchedulingGracefulShutdown {
+  /// Opts-in for graceful shutdown.
+  core.bool? enabled;
+
+  /// The time allotted for the instance to gracefully shut down.
+  ///
+  /// If the
+  /// graceful shutdown isn't complete after this time, then the instance
+  /// transitions to the STOPPING state.
+  Duration? maxDuration;
+
+  SchedulingGracefulShutdown({this.enabled, this.maxDuration});
+
+  SchedulingGracefulShutdown.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        maxDuration: json_.containsKey('maxDuration')
+            ? Duration.fromJson(
+                json_['maxDuration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final maxDuration = this.maxDuration;
+    return {'enabled': ?enabled, 'maxDuration': ?maxDuration};
   }
 }
 
@@ -167065,7 +174852,7 @@ class SecurityPoliciesAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SecurityPoliciesAggregatedListWarningData>? data;
@@ -167353,7 +175140,7 @@ class SecurityPoliciesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SecurityPoliciesScopedListWarningData>? data;
@@ -168158,19 +175945,62 @@ class SecurityPolicyAssociation {
 class SecurityPolicyDdosProtectionConfig {
   ///
   /// Possible string values are:
+  /// - "DDOS_ADAPTIVE_PROTECTION_UNSPECIFIED"
+  /// - "DISABLED"
+  /// - "ENABLED"
+  /// - "PREVIEW"
+  /// - "UNSPECIFIED_ADAPTIVE_PROTECTION"
+  core.String? ddosAdaptiveProtection;
+
+  /// DDoS Protection for Network Load Balancers (and VMs with public IPs)
+  /// builds DDoS mitigations that minimize collateral damage.
+  ///
+  /// It quantifies
+  /// this as the fraction of a non-abuse baseline that's inadvertently
+  /// blocked.
+  ///
+  /// Rules whose collateral damage exceeds ddosImpactedBaselineThreshold will
+  /// not be deployed. Using a lower value will prioritize keeping collateral
+  /// damage low, possibly at the cost of its effectiveness in rate limiting
+  /// some or all of the attack. It should typically be unset, so Advanced DDoS
+  /// (and Adaptive Protection) uses the best mitigation it can find. Setting
+  /// the threshold is advised if there are logs for false positive detections
+  /// with high collateral damage, and will cause Advanced DDoS to attempt to
+  /// find a less aggressive rule that satisfies the constraint. If a suitable
+  /// rule cannot be found, the system falls back to either no mitigation for
+  /// smaller attacks or broader network throttles for larger ones.
+  core.double? ddosImpactedBaselineThreshold;
+
+  ///
+  /// Possible string values are:
   /// - "ADVANCED"
   /// - "ADVANCED_PREVIEW"
   /// - "STANDARD"
   core.String? ddosProtection;
 
-  SecurityPolicyDdosProtectionConfig({this.ddosProtection});
+  SecurityPolicyDdosProtectionConfig({
+    this.ddosAdaptiveProtection,
+    this.ddosImpactedBaselineThreshold,
+    this.ddosProtection,
+  });
 
   SecurityPolicyDdosProtectionConfig.fromJson(core.Map json_)
-    : this(ddosProtection: json_['ddosProtection'] as core.String?);
+    : this(
+        ddosAdaptiveProtection: json_['ddosAdaptiveProtection'] as core.String?,
+        ddosImpactedBaselineThreshold:
+            (json_['ddosImpactedBaselineThreshold'] as core.num?)?.toDouble(),
+        ddosProtection: json_['ddosProtection'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final ddosAdaptiveProtection = this.ddosAdaptiveProtection;
+    final ddosImpactedBaselineThreshold = this.ddosImpactedBaselineThreshold;
     final ddosProtection = this.ddosProtection;
-    return {'ddosProtection': ?ddosProtection};
+    return {
+      'ddosAdaptiveProtection': ?ddosAdaptiveProtection,
+      'ddosImpactedBaselineThreshold': ?ddosImpactedBaselineThreshold,
+      'ddosProtection': ?ddosProtection,
+    };
   }
 }
 
@@ -168301,7 +176131,7 @@ class SecurityPolicyListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SecurityPolicyListWarningData>? data;
@@ -169238,14 +177068,18 @@ class SecurityPolicyRuleRateLimitOptions {
   ///    which is resolved based on "userIpRequestHeaders" configured with the
   /// security policy. If there is no "userIpRequestHeaders" configuration or
   ///    an IP address cannot be resolved from it, the key type defaults toIP.
+  ///    - ASN: The autonomous system number of the originating
+  ///    client. If not available, the key type defaults toALL.
+  ///    - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the
+  ///    client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the
+  ///    key type defaults to ALL.
   ///
-  /// - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the
-  /// client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the
-  /// key type defaults to ALL.
+  ///
   /// For "fairshare" action, this value is limited to ALL i.e. a single rate
   /// limit threshold is enforced for all the requests matching the rule.
   /// Possible string values are:
   /// - "ALL"
+  /// - "ASN"
   /// - "HTTP_COOKIE"
   /// - "HTTP_HEADER"
   /// - "HTTP_PATH"
@@ -169414,12 +177248,14 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
   ///    which is resolved based on "userIpRequestHeaders" configured with the
   ///    security policy. If there is no "userIpRequestHeaders" configuration
   /// or an IP address cannot be resolved from it, the key type defaults toIP.
-  ///
-  /// - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the
-  /// client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the
-  /// key type defaults to ALL.
+  ///    - ASN: The autonomous system number of the originating
+  ///    client. If not available, the key type defaults toALL.
+  ///    - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the
+  ///    client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the
+  ///    key type defaults to ALL.
   /// Possible string values are:
   /// - "ALL"
+  /// - "ASN"
   /// - "HTTP_COOKIE"
   /// - "HTTP_HEADER"
   /// - "HTTP_PATH"
@@ -169883,6 +177719,10 @@ class ServiceAttachment {
   /// cannot be a dash.
   core.String? name;
 
+  /// The number of NAT IP addresses to be allocated per connected endpoint.
+  /// If not specified, the default value is 1.
+  core.int? natIpsPerEndpoint;
+
   /// An array of URLs where each entry is the URL of a subnet provided
   /// by the service producer to use for NAT in this service attachment.
   core.List<core.String>? natSubnets;
@@ -169968,6 +177808,7 @@ class ServiceAttachment {
     this.kind,
     this.metadata,
     this.name,
+    this.natIpsPerEndpoint,
     this.natSubnets,
     this.producerForwardingRule,
     this.propagatedConnectionLimit,
@@ -170010,6 +177851,7 @@ class ServiceAttachment {
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         name: json_['name'] as core.String?,
+        natIpsPerEndpoint: json_['natIpsPerEndpoint'] as core.int?,
         natSubnets: (json_['natSubnets'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -170042,6 +177884,7 @@ class ServiceAttachment {
     final kind = this.kind;
     final metadata = this.metadata;
     final name = this.name;
+    final natIpsPerEndpoint = this.natIpsPerEndpoint;
     final natSubnets = this.natSubnets;
     final producerForwardingRule = this.producerForwardingRule;
     final propagatedConnectionLimit = this.propagatedConnectionLimit;
@@ -170064,6 +177907,7 @@ class ServiceAttachment {
       'kind': ?kind,
       'metadata': ?metadata,
       'name': ?name,
+      'natIpsPerEndpoint': ?natIpsPerEndpoint,
       'natSubnets': ?natSubnets,
       'producerForwardingRule': ?producerForwardingRule,
       'propagatedConnectionLimit': ?propagatedConnectionLimit,
@@ -170203,7 +178047,7 @@ class ServiceAttachmentAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ServiceAttachmentAggregatedListWarningData>? data;
@@ -170586,7 +178430,7 @@ class ServiceAttachmentListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ServiceAttachmentListWarningData>? data;
@@ -170830,7 +178674,7 @@ class ServiceAttachmentsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ServiceAttachmentsScopedListWarningData>? data;
@@ -171028,21 +178872,7 @@ class ShareSettings {
 }
 
 /// Config for each project in the share settings.
-class ShareSettingsProjectConfig {
-  /// The project ID, should be same as the key of this project config in the
-  /// parent map.
-  core.String? projectId;
-
-  ShareSettingsProjectConfig({this.projectId});
-
-  ShareSettingsProjectConfig.fromJson(core.Map json_)
-    : this(projectId: json_['projectId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final projectId = this.projectId;
-    return {'projectId': ?projectId};
-  }
-}
+typedef ShareSettingsProjectConfig = $ShareSettingsProjectConfig;
 
 /// A set of Shielded Instance options.
 class ShieldedInstanceConfig {
@@ -171553,15 +179383,17 @@ class Snapshot {
   /// Output only.
   core.String? storageBytes;
 
-  /// An indicator whether storageBytes is in a
+  /// Instead, check the storageBytes field.
+  ///
+  /// After
+  /// snapshot creation, the storageBytesStatus field is alwaysUP_TO_DATE.
+  /// \[Output Only\] An indicator whether storageBytes is in a
   /// stable state or it is being adjusted as a result of shared storage
-  /// reallocation.
+  /// reallocation. This status can either be unset, meaning the snapshot is
+  /// being created, or UP_TO_DATE, meaning the size of the snapshot
+  /// is up-to-date.
   ///
-  /// This status can either be UPDATING, meaning
-  /// the size of the snapshot is being updated, or UP_TO_DATE,
-  /// meaning the size of the snapshot is up-to-date.
-  ///
-  /// Output only.
+  /// Output only. Deprecated.
   /// Possible string values are:
   /// - "UPDATING"
   /// - "UP_TO_DATE"
@@ -171971,7 +179803,7 @@ class SnapshotListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SnapshotListWarningData>? data;
@@ -172096,8 +179928,8 @@ class SnapshotParams {
   /// have
   /// the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
-  /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
-  /// format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
   /// `{tag_value_short_name}`. The field is ignored (both PUT &
   /// PATCH) when empty.
   core.Map<core.String, core.String>? resourceManagerTags;
@@ -172924,7 +180756,7 @@ class SslCertificateAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SslCertificateAggregatedListWarningData>? data;
@@ -173182,7 +181014,7 @@ class SslCertificateListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SslCertificateListWarningData>? data;
@@ -173528,7 +181360,7 @@ class SslCertificatesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SslCertificatesScopedListWarningData>? data;
@@ -173721,7 +181553,7 @@ class SslPoliciesAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SslPoliciesAggregatedListWarningData>? data;
@@ -173984,7 +181816,7 @@ class SslPoliciesListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SslPoliciesListWarningData>? data;
@@ -174248,7 +182080,7 @@ class SslPoliciesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SslPoliciesScopedListWarningData>? data;
@@ -174438,7 +182270,7 @@ class SslPolicyWarnings {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SslPolicyWarningsData>? data;
@@ -174566,6 +182398,24 @@ class SslPolicy {
   /// dash.
   core.String? name;
 
+  /// One of DEFAULT, ENABLED, orDEFERRED.
+  ///
+  /// Controls whether the load balancer negotiates
+  /// X25519MLKEM768 key exchange when clients advertise support for it. When
+  /// set
+  /// to DEFAULT, or if no SSL Policy is attached to the target
+  /// proxy, the load balancer disallows X25519MLKEM768 key exchange before
+  /// October 2026, and allows it afterward. When set to ENABLED,
+  /// the load balancer allows X25519MLKEM768 key exchange. When set toDEFERRED,
+  /// the load balancer disallows X25519MLKEM768 key
+  /// exchange until October 2027, and allows it afterward.
+  /// Possible string values are:
+  /// - "DEFAULT" : Default behavior: disabled until October 2026, enabled
+  /// afterward.
+  /// - "DEFERRED" : Disabled until October 2027, enabled afterward.
+  /// - "ENABLED" : Enabled now.
+  core.String? postQuantumKeyExchange;
+
   /// Profile specifies the set of SSL features that can be used by the load
   /// balancer when negotiating SSL with clients.
   ///
@@ -174621,6 +182471,7 @@ class SslPolicy {
     this.kind,
     this.minTlsVersion,
     this.name,
+    this.postQuantumKeyExchange,
     this.profile,
     this.region,
     this.selfLink,
@@ -174642,6 +182493,7 @@ class SslPolicy {
         kind: json_['kind'] as core.String?,
         minTlsVersion: json_['minTlsVersion'] as core.String?,
         name: json_['name'] as core.String?,
+        postQuantumKeyExchange: json_['postQuantumKeyExchange'] as core.String?,
         profile: json_['profile'] as core.String?,
         region: json_['region'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
@@ -174664,6 +182516,7 @@ class SslPolicy {
     final kind = this.kind;
     final minTlsVersion = this.minTlsVersion;
     final name = this.name;
+    final postQuantumKeyExchange = this.postQuantumKeyExchange;
     final profile = this.profile;
     final region = this.region;
     final selfLink = this.selfLink;
@@ -174678,6 +182531,7 @@ class SslPolicy {
       'kind': ?kind,
       'minTlsVersion': ?minTlsVersion,
       'name': ?name,
+      'postQuantumKeyExchange': ?postQuantumKeyExchange,
       'profile': ?profile,
       'region': ?region,
       'selfLink': ?selfLink,
@@ -174687,10 +182541,6 @@ class SslPolicy {
 }
 
 class SslPolicyReference {
-  /// URL of the SSL policy resource.
-  ///
-  /// Set this to empty string to clear any
-  /// existing SSL policy associated with the target proxy resource.
   core.String? sslPolicy;
 
   SslPolicyReference({this.sslPolicy});
@@ -174914,8 +182764,6 @@ class StoragePool {
   core.String? description;
 
   /// Provisioned capacities for each SKU for this Exapool in GiB
-  ///
-  /// Output only.
   StoragePoolExapoolProvisionedCapacityGb? exapoolProvisionedCapacityGb;
 
   /// The unique identifier for the resource.
@@ -175023,6 +182871,9 @@ class StoragePool {
   /// Output only.
   core.String? selfLinkWithId;
 
+  /// Share settings for the storage pool.
+  StoragePoolShareSettings? shareSettings;
+
   /// The status of storage pool creation.
   ///
   ///
@@ -175075,6 +182926,7 @@ class StoragePool {
     this.resourceStatus,
     this.selfLink,
     this.selfLinkWithId,
+    this.shareSettings,
     this.state,
     this.status,
     this.storagePoolType,
@@ -175120,6 +182972,11 @@ class StoragePool {
             : null,
         selfLink: json_['selfLink'] as core.String?,
         selfLinkWithId: json_['selfLinkWithId'] as core.String?,
+        shareSettings: json_.containsKey('shareSettings')
+            ? StoragePoolShareSettings.fromJson(
+                json_['shareSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         state: json_['state'] as core.String?,
         status: json_.containsKey('status')
             ? StoragePoolResourceStatus.fromJson(
@@ -175148,6 +183005,7 @@ class StoragePool {
     final resourceStatus = this.resourceStatus;
     final selfLink = this.selfLink;
     final selfLinkWithId = this.selfLinkWithId;
+    final shareSettings = this.shareSettings;
     final state = this.state;
     final status = this.status;
     final storagePoolType = this.storagePoolType;
@@ -175170,6 +183028,7 @@ class StoragePool {
       'resourceStatus': ?resourceStatus,
       'selfLink': ?selfLink,
       'selfLinkWithId': ?selfLinkWithId,
+      'shareSettings': ?shareSettings,
       'state': ?state,
       'status': ?status,
       'storagePoolType': ?storagePoolType,
@@ -175305,7 +183164,7 @@ class StoragePoolAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<StoragePoolAggregatedListWarningData>? data;
@@ -175733,7 +183592,7 @@ class StoragePoolListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<StoragePoolListWarningData>? data;
@@ -175998,7 +183857,7 @@ class StoragePoolListDisksWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<StoragePoolListDisksWarningData>? data;
@@ -176142,8 +184001,8 @@ class StoragePoolParams {
   /// Resource manager tags to be bound to the storage pool. Tag keys and values
   /// have the same definition as resource
   /// manager tags. Keys and values can be either in numeric format,
-  /// such as `tagKeys/{tag_key_id}` and `tagValues/456` or in namespaced
-  /// format such as `{org_id|project_id}/{tag_key_short_name}` and
+  /// such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in
+  /// namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and
   /// `{tag_value_short_name}`. The field is ignored (both PUT &
   /// PATCH) when empty.
   core.Map<core.String, core.String>? resourceManagerTags;
@@ -176331,6 +184190,35 @@ class StoragePoolResourceStatus {
     };
   }
 }
+
+/// Share settings for the storage pool.
+class StoragePoolShareSettings {
+  /// A map of project id and project config.
+  core.Map<core.String, StoragePoolShareSettingsProjectConfig>? projectMap;
+
+  StoragePoolShareSettings({this.projectMap});
+
+  StoragePoolShareSettings.fromJson(core.Map json_)
+    : this(
+        projectMap:
+            (json_['projectMap'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                StoragePoolShareSettingsProjectConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final projectMap = this.projectMap;
+    return {'projectMap': ?projectMap};
+  }
+}
+
+/// Config for each project in the share settings.
+typedef StoragePoolShareSettingsProjectConfig = $ShareSettingsProjectConfig;
 
 class StoragePoolType {
   /// Creation timestamp inRFC3339
@@ -176650,7 +184538,7 @@ class StoragePoolTypeAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<StoragePoolTypeAggregatedListWarningData>? data;
@@ -176896,7 +184784,7 @@ class StoragePoolTypeListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<StoragePoolTypeListWarningData>? data;
@@ -177143,7 +185031,7 @@ class StoragePoolTypesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<StoragePoolTypesScopedListWarningData>? data;
@@ -177341,7 +185229,7 @@ class StoragePoolsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<StoragePoolsScopedListWarningData>? data;
@@ -178054,7 +185942,7 @@ class SubnetworkAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SubnetworkAggregatedListWarningData>? data;
@@ -178312,7 +186200,7 @@ class SubnetworkListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SubnetworkListWarningData>? data;
@@ -178556,6 +186444,22 @@ class SubnetworkSecondaryRange {
   /// field.
   core.String? ipCidrRange;
 
+  /// Reference to a Public Delegated Prefix (PDP) for BYOIP.
+  /// This field should be specified for configuring BYOGUA internal IPv6
+  /// secondary range.
+  /// When specified along with the ip_cidr_range, the ip_cidr_range must lie
+  /// within the PDP referenced by the `ipCollection` field.
+  /// When specified without the ip_cidr_range, the range is auto-allocated
+  /// from the PDP referenced by the `ipCollection` field.
+  core.String? ipCollection;
+
+  ///
+  /// Possible string values are:
+  /// - "IPV4"
+  /// - "IPV6"
+  /// - "IP_VERSION_UNSPECIFIED" : Treated as IPV4 for backward-compatibility.
+  core.String? ipVersion;
+
   /// The name associated with this subnetwork secondary range, used when adding
   /// an alias IP/IPv6 range to a VM instance.
   /// The name must be 1-63 characters long, and comply withRFC1035.
@@ -178569,6 +186473,8 @@ class SubnetworkSecondaryRange {
 
   SubnetworkSecondaryRange({
     this.ipCidrRange,
+    this.ipCollection,
+    this.ipVersion,
     this.rangeName,
     this.reservedInternalRange,
   });
@@ -178576,16 +186482,22 @@ class SubnetworkSecondaryRange {
   SubnetworkSecondaryRange.fromJson(core.Map json_)
     : this(
         ipCidrRange: json_['ipCidrRange'] as core.String?,
+        ipCollection: json_['ipCollection'] as core.String?,
+        ipVersion: json_['ipVersion'] as core.String?,
         rangeName: json_['rangeName'] as core.String?,
         reservedInternalRange: json_['reservedInternalRange'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final ipCidrRange = this.ipCidrRange;
+    final ipCollection = this.ipCollection;
+    final ipVersion = this.ipVersion;
     final rangeName = this.rangeName;
     final reservedInternalRange = this.reservedInternalRange;
     return {
       'ipCidrRange': ?ipCidrRange,
+      'ipCollection': ?ipCollection,
+      'ipVersion': ?ipVersion,
       'rangeName': ?rangeName,
       'reservedInternalRange': ?reservedInternalRange,
     };
@@ -178877,7 +186789,7 @@ class SubnetworksScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SubnetworksScopedListWarningData>? data;
@@ -179068,7 +186980,7 @@ class SubnetworksScopedWarningWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<SubnetworksScopedWarningWarningData>? data;
@@ -179613,7 +187525,7 @@ class TargetGrpcProxyListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetGrpcProxyListWarningData>? data;
@@ -179857,7 +187769,7 @@ class TargetHttpProxiesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetHttpProxiesScopedListWarningData>? data;
@@ -180317,7 +188229,7 @@ class TargetHttpProxyListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetHttpProxyListWarningData>? data;
@@ -180563,7 +188475,7 @@ class TargetHttpsProxiesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetHttpsProxiesScopedListWarningData>? data;
@@ -181204,7 +189116,7 @@ class TargetHttpsProxyAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetHttpsProxyAggregatedListWarningData>? data;
@@ -181462,7 +189374,7 @@ class TargetHttpsProxyListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetHttpsProxyListWarningData>? data;
@@ -181859,7 +189771,7 @@ class TargetInstanceAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetInstanceAggregatedListWarningData>? data;
@@ -182114,7 +190026,7 @@ class TargetInstanceListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetInstanceListWarningData>? data;
@@ -182357,7 +190269,7 @@ class TargetInstancesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetInstancesScopedListWarningData>? data;
@@ -182435,7 +190347,8 @@ class TargetPool {
   /// This field is applicable only when
   /// the containing target pool is serving a forwarding rule as the primary
   /// pool, and its failoverRatio field is properly set to a value
-  /// between \[0, 1\].backupPool and failoverRatio together define
+  /// between \[0, 1\].
+  /// backupPool and failoverRatio together define
   /// the fallback behavior of the primary target pool: if the ratio of the
   /// healthy instances in the primary pool is at or belowfailoverRatio, traffic
   /// arriving at the load-balanced
@@ -182779,7 +190692,7 @@ class TargetPoolAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetPoolAggregatedListWarningData>? data;
@@ -183069,7 +190982,7 @@ class TargetPoolListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetPoolListWarningData>? data;
@@ -183423,7 +191336,7 @@ class TargetPoolsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetPoolsScopedListWarningData>? data;
@@ -183837,7 +191750,7 @@ class TargetSslProxyListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetSslProxyListWarningData>? data;
@@ -184080,7 +191993,7 @@ class TargetTcpProxiesScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetTcpProxiesScopedListWarningData>? data;
@@ -184199,6 +192112,14 @@ class TargetTcpProxy {
   /// Output only.
   core.String? kind;
 
+  /// Specifies the type of load balancing scheme used by this target proxy.
+  /// Possible string values are:
+  /// - "EXTERNAL"
+  /// - "EXTERNAL_MANAGED"
+  /// - "INTERNAL_MANAGED"
+  /// - "LOAD_BALANCING_SCHEME_UNSPECIFIED"
+  core.String? loadBalancingScheme;
+
   /// Name of the resource.
   ///
   /// Provided by the client when the resource is created.
@@ -184254,6 +192175,7 @@ class TargetTcpProxy {
     this.description,
     this.id,
     this.kind,
+    this.loadBalancingScheme,
     this.name,
     this.proxyBind,
     this.proxyHeader,
@@ -184268,6 +192190,7 @@ class TargetTcpProxy {
         description: json_['description'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
+        loadBalancingScheme: json_['loadBalancingScheme'] as core.String?,
         name: json_['name'] as core.String?,
         proxyBind: json_['proxyBind'] as core.bool?,
         proxyHeader: json_['proxyHeader'] as core.String?,
@@ -184281,6 +192204,7 @@ class TargetTcpProxy {
     final description = this.description;
     final id = this.id;
     final kind = this.kind;
+    final loadBalancingScheme = this.loadBalancingScheme;
     final name = this.name;
     final proxyBind = this.proxyBind;
     final proxyHeader = this.proxyHeader;
@@ -184292,6 +192216,7 @@ class TargetTcpProxy {
       'description': ?description,
       'id': ?id,
       'kind': ?kind,
+      'loadBalancingScheme': ?loadBalancingScheme,
       'name': ?name,
       'proxyBind': ?proxyBind,
       'proxyHeader': ?proxyHeader,
@@ -184429,7 +192354,7 @@ class TargetTcpProxyAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetTcpProxyAggregatedListWarningData>? data;
@@ -184687,7 +192612,7 @@ class TargetTcpProxyListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetTcpProxyListWarningData>? data;
@@ -185138,7 +193063,7 @@ class TargetVpnGatewayAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetVpnGatewayAggregatedListWarningData>? data;
@@ -185395,7 +193320,7 @@ class TargetVpnGatewayListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetVpnGatewayListWarningData>? data;
@@ -185644,7 +193569,7 @@ class TargetVpnGatewaysScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<TargetVpnGatewaysScopedListWarningData>? data;
@@ -185847,6 +193772,10 @@ class TestPermissionsResponse {
     return {'permissions': ?permissions};
   }
 }
+
+/// Represents a time zone from the
+/// [IANA Time Zone Database](https://www.iana.org/time-zones).
+typedef TimeZone = $TimeZone;
 
 class Uint128 {
   core.String? high;
@@ -186434,7 +194363,7 @@ class UrlMapListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<UrlMapListWarningData>? data;
@@ -186851,7 +194780,7 @@ class UrlMapsAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<UrlMapsAggregatedListWarningData>? data;
@@ -187105,7 +195034,7 @@ class UrlMapsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<UrlMapsScopedListWarningData>? data;
@@ -187286,10 +195215,17 @@ class UrlRewrite {
   /// Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
   core.String? pathTemplateRewrite;
 
+  /// The regex rewrite to be applied to the URL.
+  ///
+  /// Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be
+  /// specified.
+  RegexRewrite? regexRewrite;
+
   UrlRewrite({
     this.hostRewrite,
     this.pathPrefixRewrite,
     this.pathTemplateRewrite,
+    this.regexRewrite,
   });
 
   UrlRewrite.fromJson(core.Map json_)
@@ -187297,16 +195233,23 @@ class UrlRewrite {
         hostRewrite: json_['hostRewrite'] as core.String?,
         pathPrefixRewrite: json_['pathPrefixRewrite'] as core.String?,
         pathTemplateRewrite: json_['pathTemplateRewrite'] as core.String?,
+        regexRewrite: json_.containsKey('regexRewrite')
+            ? RegexRewrite.fromJson(
+                json_['regexRewrite'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final hostRewrite = this.hostRewrite;
     final pathPrefixRewrite = this.pathPrefixRewrite;
     final pathTemplateRewrite = this.pathTemplateRewrite;
+    final regexRewrite = this.regexRewrite;
     return {
       'hostRewrite': ?hostRewrite,
       'pathPrefixRewrite': ?pathPrefixRewrite,
       'pathTemplateRewrite': ?pathTemplateRewrite,
+      'regexRewrite': ?regexRewrite,
     };
   }
 }
@@ -187618,7 +195561,7 @@ class UsableSubnetworksAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<UsableSubnetworksAggregatedListWarningData>? data;
@@ -188158,7 +196101,7 @@ class VmEndpointNatMappingsListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<VmEndpointNatMappingsListWarningData>? data;
@@ -188280,6 +196223,198 @@ class VmEndpointNatMappingsList {
       'selfLink': ?selfLink,
       'warning': ?warning,
     };
+  }
+}
+
+class VmExtensionPoliciesScopedListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  VmExtensionPoliciesScopedListWarningData({this.key, this.value});
+
+  VmExtensionPoliciesScopedListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning which replaces the list of
+/// backend services when the list is empty.
+class VmExtensionPoliciesScopedListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }\]
+  ///
+  /// Output only.
+  core.List<VmExtensionPoliciesScopedListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  VmExtensionPoliciesScopedListWarning({this.code, this.data, this.message});
+
+  VmExtensionPoliciesScopedListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => VmExtensionPoliciesScopedListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class VmExtensionPoliciesScopedList {
+  /// List of VmExtensionPolicy resources contained in this scope.
+  core.List<VmExtensionPolicy>? vmExtensionPolicies;
+
+  /// Informational warning which replaces the list of
+  /// backend services when the list is empty.
+  VmExtensionPoliciesScopedListWarning? warning;
+
+  VmExtensionPoliciesScopedList({this.vmExtensionPolicies, this.warning});
+
+  VmExtensionPoliciesScopedList.fromJson(core.Map json_)
+    : this(
+        vmExtensionPolicies: (json_['vmExtensionPolicies'] as core.List?)
+            ?.map(
+              (value) => VmExtensionPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? VmExtensionPoliciesScopedListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final vmExtensionPolicies = this.vmExtensionPolicies;
+    final warning = this.warning;
+    return {'vmExtensionPolicies': ?vmExtensionPolicies, 'warning': ?warning};
   }
 }
 
@@ -188468,6 +196603,276 @@ class VmExtensionPolicy {
       'selfLinkWithId': ?selfLinkWithId,
       'state': ?state,
       'updateTimestamp': ?updateTimestamp,
+    };
+  }
+}
+
+class VmExtensionPolicyAggregatedListResponseWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  VmExtensionPolicyAggregatedListResponseWarningData({this.key, this.value});
+
+  VmExtensionPolicyAggregatedListResponseWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class VmExtensionPolicyAggregatedListResponseWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }\]
+  ///
+  /// Output only.
+  core.List<VmExtensionPolicyAggregatedListResponseWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  VmExtensionPolicyAggregatedListResponseWarning({
+    this.code,
+    this.data,
+    this.message,
+  });
+
+  VmExtensionPolicyAggregatedListResponseWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) =>
+                  VmExtensionPolicyAggregatedListResponseWarningData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Response for the aggregated list of VM extension policies.
+class VmExtensionPolicyAggregatedListResponse {
+  core.String? etag;
+
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of VmExtensionPoliciesScopedList resources.
+  core.Map<core.String, VmExtensionPoliciesScopedList>? items;
+
+  /// Type of resource.
+  ///
+  /// Alwayscompute#VmExtensionPolicyAggregatedList for lists of
+  /// VmExtensionPolicies.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for
+  /// list requests.
+  ///
+  /// If the number of results is larger thanmaxResults, use the nextPageToken
+  /// as a value for
+  /// the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to
+  /// continue paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  VmExtensionPolicyAggregatedListResponseWarning? warning;
+
+  VmExtensionPolicyAggregatedListResponse({
+    this.etag,
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  VmExtensionPolicyAggregatedListResponse.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            VmExtensionPoliciesScopedList.fromJson(
+              value as core.Map<core.String, core.dynamic>,
+            ),
+          ),
+        ),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? VmExtensionPolicyAggregatedListResponseWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
     };
   }
 }
@@ -188687,7 +197092,7 @@ class VmExtensionPolicyListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<VmExtensionPolicyListWarningData>? data;
@@ -189166,7 +197571,7 @@ class VpnGatewayAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<VpnGatewayAggregatedListWarningData>? data;
@@ -189424,7 +197829,7 @@ class VpnGatewayListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<VpnGatewayListWarningData>? data;
@@ -189944,7 +198349,7 @@ class VpnGatewaysScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<VpnGatewaysScopedListWarningData>? data;
@@ -190519,7 +198924,7 @@ class VpnTunnelAggregatedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<VpnTunnelAggregatedListWarningData>? data;
@@ -190804,7 +199209,7 @@ class VpnTunnelListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<VpnTunnelListWarningData>? data;
@@ -191123,7 +199528,7 @@ class VpnTunnelsScopedListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<VpnTunnelsScopedListWarningData>? data;
@@ -191817,7 +200222,7 @@ class WireGroupListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<WireGroupListWarningData>? data;
@@ -192229,7 +200634,7 @@ class XpnHostListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<XpnHostListWarningData>? data;
@@ -192435,6 +200840,7 @@ class Zone {
   ///
   /// Output only.
   core.String? region;
+  ZoneResourceStatus? resourceStatus;
 
   /// Server-defined URL for the resource.
   ///
@@ -192463,6 +200869,7 @@ class Zone {
     this.kind,
     this.name,
     this.region,
+    this.resourceStatus,
     this.selfLink,
     this.status,
     this.supportsPzs,
@@ -192484,6 +200891,11 @@ class Zone {
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
         region: json_['region'] as core.String?,
+        resourceStatus: json_.containsKey('resourceStatus')
+            ? ZoneResourceStatus.fromJson(
+                json_['resourceStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         selfLink: json_['selfLink'] as core.String?,
         status: json_['status'] as core.String?,
         supportsPzs: json_['supportsPzs'] as core.bool?,
@@ -192498,6 +200910,7 @@ class Zone {
     final kind = this.kind;
     final name = this.name;
     final region = this.region;
+    final resourceStatus = this.resourceStatus;
     final selfLink = this.selfLink;
     final status = this.status;
     final supportsPzs = this.supportsPzs;
@@ -192510,6 +200923,7 @@ class Zone {
       'kind': ?kind,
       'name': ?name,
       'region': ?region,
+      'resourceStatus': ?resourceStatus,
       'selfLink': ?selfLink,
       'status': ?status,
       'supportsPzs': ?supportsPzs,
@@ -192644,7 +201058,7 @@ class ZoneListWarning {
   ///   {
   ///    "key": "scope",
   ///    "value": "zones/us-east1-d"
-  ///   }
+  ///   }\]
   ///
   /// Output only.
   core.List<ZoneListWarningData>? data;
@@ -192757,6 +201171,31 @@ class ZoneList {
       'selfLink': ?selfLink,
       'warning': ?warning,
     };
+  }
+}
+
+class ZoneResourceStatus {
+  /// The upcoming maintenance schedule.
+  ///
+  /// Output only.
+  core.List<PeriodicPartialMaintenanceSchedule>? upcomingMaintenances;
+
+  ZoneResourceStatus({this.upcomingMaintenances});
+
+  ZoneResourceStatus.fromJson(core.Map json_)
+    : this(
+        upcomingMaintenances: (json_['upcomingMaintenances'] as core.List?)
+            ?.map(
+              (value) => PeriodicPartialMaintenanceSchedule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final upcomingMaintenances = this.upcomingMaintenances;
+    return {'upcomingMaintenances': ?upcomingMaintenances};
   }
 }
 

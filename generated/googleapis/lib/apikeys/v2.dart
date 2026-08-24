@@ -48,6 +48,15 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages the API keys associated with developer projects.
 class ApiKeysServiceApi {
+  /// See, edit, configure, and delete your Google Cloud API Keys data and see
+  /// the email address for your Google Account
+  static const apikeysScope = 'https://www.googleapis.com/auth/apikeys';
+
+  /// See your Google Cloud API Keys data and the email address of your Google
+  /// Account
+  static const apikeysReadonlyScope =
+      'https://www.googleapis.com/auth/apikeys.readonly';
+
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
   static const cloudPlatformScope =
@@ -254,6 +263,16 @@ class ProjectsLocationsKeysResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/keys/\[^/\]+$`.
   ///
+  /// [checkExistingUsage] - Optional. Defines the behavior for checking
+  /// existing usage when deleting a key.
+  /// Possible string values are:
+  /// - "CHECK_EXISTING_USAGE_UNSPECIFIED" : When unset, the default behavior is
+  /// used, which is SKIP.
+  /// - "SKIP" : If set, skip checking existing usage when deleting a key.
+  /// - "CHECK" : If set, existing usage is checked when deleting the key. If
+  /// the key has usage in the last 7 days, the request returns a
+  /// FAILED_PRECONDITION error.
+  ///
   /// [etag] - Optional. The etag known to the client for the expected state of
   /// the key. This is to be used for optimistic concurrency.
   ///
@@ -269,10 +288,14 @@ class ProjectsLocationsKeysResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.String? checkExistingUsage,
     core.String? etag,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'checkExistingUsage': ?checkExistingUsage == null
+          ? null
+          : [checkExistingUsage],
       'etag': ?etag == null ? null : [etag],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -439,6 +462,16 @@ class ProjectsLocationsKeysResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/keys/\[^/\]+$`.
   ///
+  /// [checkExistingUsage] - Optional. Defines the behavior for checking
+  /// existing usage when updating a key.
+  /// Possible string values are:
+  /// - "CHECK_EXISTING_USAGE_UNSPECIFIED" : When unset, the default behavior is
+  /// used, which is SKIP.
+  /// - "SKIP" : If set, skip checking existing usage when updating a key.
+  /// - "CHECK" : If set, existing usage is checked when updating the key. If
+  /// the key has usage in the last 7 days, the request returns a
+  /// FAILED_PRECONDITION error.
+  ///
   /// [updateMask] - The field mask specifies which fields to be updated as part
   /// of this request. All other fields are ignored. Mutable fields are:
   /// `display_name`, `restrictions`, and `annotations`. If an update mask is
@@ -460,11 +493,15 @@ class ProjectsLocationsKeysResource {
   async.Future<Operation> patch(
     V2Key request,
     core.String name, {
+    core.String? checkExistingUsage,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'checkExistingUsage': ?checkExistingUsage == null
+          ? null
+          : [checkExistingUsage],
       'updateMask': ?updateMask == null ? null : [updateMask],
       'fields': ?$fields == null ? null : [$fields],
     };

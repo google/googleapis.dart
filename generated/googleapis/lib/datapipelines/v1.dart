@@ -1249,7 +1249,7 @@ class GoogleCloudDatapipelinesV1Pipeline {
   /// project and location.
   core.String? name;
 
-  /// The sources of the pipeline (for example, Dataplex).
+  /// The sources of the pipeline (for example, Knowledge Catalog).
   ///
   /// The keys and values are set by the corresponding sources during pipeline
   /// creation.

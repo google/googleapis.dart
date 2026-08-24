@@ -333,13 +333,228 @@ class ApprovalsResource {
 
   ApprovalsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets an Approval by ID.
+  /// Approves an approval.
+  ///
+  /// For more information, see
+  /// [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+  /// This is used to update the ReviewerResponse of the requesting user with a
+  /// Response of `APPROVED`. If this is the last required reviewer response,
+  /// this also completes the approval and sets the approval Status to
+  /// `APPROVED`.
+  ///
+  /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [fileId] - Required. The ID of the file the Approval is on.
+  /// [fileId] - Required. The ID of the file that the approval is on.
   ///
-  /// [approvalId] - Required. The ID of the Approval.
+  /// [approvalId] - Required. The ID of the approval to approve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Approval].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Approval> approve(
+    ApproveApprovalRequest request,
+    core.String fileId,
+    core.String approvalId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'files/' +
+        commons.escapeVariable('$fileId') +
+        '/approvals/' +
+        commons.escapeVariable('$approvalId') +
+        ':approve';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Approval.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Cancels an approval.
+  ///
+  /// For more information, see
+  /// [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+  /// Updates the approval Status to `CANCELLED`. This can be called by any user
+  /// with the `writer` permission on the file while the approval Status is
+  /// `IN_PROGRESS`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The ID of the file that the approval is on.
+  ///
+  /// [approvalId] - Required. The ID of the approval to cancel.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Approval].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Approval> cancel(
+    CancelApprovalRequest request,
+    core.String fileId,
+    core.String approvalId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'files/' +
+        commons.escapeVariable('$fileId') +
+        '/approvals/' +
+        commons.escapeVariable('$approvalId') +
+        ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Approval.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Comments on an approval.
+  ///
+  /// For more information, see
+  /// [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+  /// This sends a notification to both the initiator and the reviewers.
+  /// Additionally, a message is also added to the approval activity log.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The ID of the file that the approval is on.
+  ///
+  /// [approvalId] - Required. The ID of the approval to comment on.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Approval].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Approval> comment(
+    CommentApprovalRequest request,
+    core.String fileId,
+    core.String approvalId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'files/' +
+        commons.escapeVariable('$fileId') +
+        '/approvals/' +
+        commons.escapeVariable('$approvalId') +
+        ':comment';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Approval.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Declines an approval.
+  ///
+  /// For more information, see
+  /// [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+  /// This is used to update the ReviewerResponse of the requesting user with a
+  /// Response of `DECLINED`. This also completes the approval and sets the
+  /// approval Status to `DECLINED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The ID of the file that the approval is on.
+  ///
+  /// [approvalId] - Required. The ID of the approval to decline.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Approval].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Approval> decline(
+    DeclineApprovalRequest request,
+    core.String fileId,
+    core.String approvalId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'files/' +
+        commons.escapeVariable('$fileId') +
+        '/approvals/' +
+        commons.escapeVariable('$approvalId') +
+        ':decline';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Approval.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an approval by ID.
+  ///
+  /// For more information, see
+  /// [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The ID of the file that the approval is on.
+  ///
+  /// [approvalId] - Required. The ID of the approval.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -374,17 +589,20 @@ class ApprovalsResource {
     return Approval.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the Approvals on a file.
+  /// Lists the approvals on a file.
+  ///
+  /// For more information, see
+  /// [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
   ///
   /// Request parameters:
   ///
-  /// [fileId] - Required. The ID of the file the Approval is on.
+  /// [fileId] - Required. The ID of the file that the approval is on.
   ///
-  /// [pageSize] - The maximum number of Approvals to return. When not set, at
-  /// most 100 Approvals will be returned.
+  /// [pageSize] - The maximum number of approvals to return. When not set, at
+  /// most 100 approvals are returned.
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This should be set to the value of nextPageToken from a previous
+  /// page. This should be set to the value of `nextPageToken` from a previous
   /// response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -419,6 +637,105 @@ class ApprovalsResource {
     return ApprovalList.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Reassigns the reviewers on an approval.
+  ///
+  /// For more information, see
+  /// [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+  /// Adds or replaces reviewers in the ReviewerResponse of the approval. This
+  /// can be called by any user with the `writer` permission on the file while
+  /// the approval Status is `IN_PROGRESS` and the Response for the reviewer
+  /// being reassigned is `NO_RESPONSE`. A user with the `reader` permission can
+  /// only reassign an approval that's assigned to themselves. Removing a
+  /// reviewer isn't allowed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The ID of the file that the approval is on.
+  ///
+  /// [approvalId] - Required. The ID of the approval to reassign.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Approval].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Approval> reassign(
+    ReassignApprovalRequest request,
+    core.String fileId,
+    core.String approvalId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'files/' +
+        commons.escapeVariable('$fileId') +
+        '/approvals/' +
+        commons.escapeVariable('$approvalId') +
+        ':reassign';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Approval.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Starts an approval on a file.
+  ///
+  /// For more information, see
+  /// [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - Required. The ID of the file that the approval is created on.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Approval].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Approval> start(
+    StartApprovalRequest request,
+    core.String fileId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'files/' + commons.escapeVariable('$fileId') + '/approvals:start';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Approval.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -621,7 +938,10 @@ class ChangesResource {
   /// [includeTeamDriveItems] - Deprecated: Use `includeItemsFromAllDrives`
   /// instead.
   ///
-  /// [pageSize] - The maximum number of changes to return per page.
+  /// [pageSize] - The maximum number of changes to return. The service may
+  /// return fewer than this value. If unspecified, at most 100 changes will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
   /// Value must be between "1" and "1000".
   ///
   /// [restrictToMyDrive] - Whether to restrict the results to changes inside
@@ -748,7 +1068,10 @@ class ChangesResource {
   /// [includeTeamDriveItems] - Deprecated: Use `includeItemsFromAllDrives`
   /// instead.
   ///
-  /// [pageSize] - The maximum number of changes to return per page.
+  /// [pageSize] - The maximum number of changes to return. The service may
+  /// return fewer than this value. If unspecified, at most 100 changes will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
   /// Value must be between "1" and "1000".
   ///
   /// [restrictToMyDrive] - Whether to restrict the results to changes inside
@@ -1038,7 +1361,10 @@ class CommentsResource {
   /// [includeDeleted] - Whether to include deleted comments. Deleted comments
   /// will not include their original content.
   ///
-  /// [pageSize] - The maximum number of comments to return per page.
+  /// [pageSize] - The maximum number of comments to return. The service may
+  /// return fewer than this value. If unspecified, at most 20 comments will be
+  /// returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100.
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
@@ -1333,7 +1659,10 @@ class DrivesResource {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Maximum number of shared drives to return per page.
+  /// [pageSize] - The maximum number of shared drives to return. The service
+  /// may return fewer than this value. If unspecified, at most 10 shared drives
+  /// will be returned. The maximum value is 100; values above 100 will be
+  /// coerced to 100.
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - Page token for shared drives.
@@ -2158,8 +2487,8 @@ class FilesResource {
   /// [orderBy] - A comma-separated list of sort keys. Valid keys are: *
   /// `createdTime`: When the file was created. Avoid using this key for queries
   /// on large item collections as it might result in timeouts or other issues.
-  /// For time-related sorting on large item collections, use `modifiedTime`
-  /// instead. * `folder`: The folder ID. This field is sorted using
+  /// For time-related sorting on large item collections, use `modifiedTime
+  /// desc` instead. * `folder`: The folder ID. This field is sorted using
   /// alphabetical ordering. * `modifiedByMeTime`: The last time the file was
   /// modified by the user. * `modifiedTime`: The last time the file was
   /// modified by anyone. * `name`: The name of the file. This field is sorted
@@ -2173,9 +2502,10 @@ class FilesResource {
   /// sorts ascending by default, but can be reversed with the `desc` modifier.
   /// Example usage: `?orderBy=folder,modifiedTime desc,name`.
   ///
-  /// [pageSize] - The maximum number of files to return per page. Partial or
-  /// empty result pages are possible even before the end of the files list has
-  /// been reached.
+  /// [pageSize] - The maximum number of files to return. The service may return
+  /// fewer than this value. If unspecified, at most 100 files will be returned
+  /// for shared drives, and the entire list of files for non-shared drives. The
+  /// maximum value is 1000; values above 1000 will be coerced to 1000.
   /// Value must be between "1" and "1000".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
@@ -2886,10 +3216,11 @@ class PermissionsResource {
   /// [includePermissionsForView] - Specifies which additional view's
   /// permissions to include in the response. Only `published` is supported.
   ///
-  /// [pageSize] - The maximum number of permissions to return per page. When
-  /// not set for files in a shared drive, at most 100 results will be returned.
-  /// When not set for files that are not in a shared drive, the entire list
-  /// will be returned.
+  /// [pageSize] - The maximum number of permissions to return. The service may
+  /// return fewer than this value. If unspecified, at most 100 permissions will
+  /// be returned for shared drives, and the entire list of permissions for
+  /// non-shared drives. The maximum value is 100; values above 100 will be
+  /// coerced to 100.
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
@@ -3228,7 +3559,10 @@ class RepliesResource {
   /// [includeDeleted] - Whether to include deleted replies. Deleted replies
   /// don't include their original content.
   ///
-  /// [pageSize] - The maximum number of replies to return per page.
+  /// [pageSize] - The maximum number of replies to return. The service may
+  /// return fewer than this value. If unspecified, at most 20 replies will be
+  /// returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100.
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
@@ -3465,7 +3799,10 @@ class RevisionsResource {
   ///
   /// [fileId] - The ID of the file.
   ///
-  /// [pageSize] - The maximum number of revisions to return per page.
+  /// [pageSize] - The maximum number of revisions to return. The service may
+  /// return fewer than this value. If unspecified, at most 200 revisions will
+  /// be returned. The maximum value is 1000; values above 1000 will be coerced
+  /// to 1000.
   /// Value must be between "1" and "1000".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
@@ -4172,6 +4509,24 @@ class AccessProposalRoleAndView {
   }
 }
 
+/// Representation of a reviewer addition.
+class AddReviewer {
+  /// The email of the reviewer to add.
+  ///
+  /// Required.
+  core.String? addedReviewerEmail;
+
+  AddReviewer({this.addedReviewerEmail});
+
+  AddReviewer.fromJson(core.Map json_)
+    : this(addedReviewerEmail: json_['addedReviewerEmail'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final addedReviewerEmail = this.addedReviewerEmail;
+    return {'addedReviewerEmail': ?addedReviewerEmail};
+  }
+}
+
 /// The `apps` resource provides a list of apps that a user has installed, with
 /// information about each app's supported MIME types, file extensions, and
 /// other details.
@@ -4477,9 +4832,9 @@ class AppList {
 
 /// Metadata for an approval.
 ///
-/// An approval is a review/approve process for a Drive item.
+/// An approval is a review or approve process for a Drive item.
 class Approval {
-  /// The Approval ID.
+  /// The approval ID.
   core.String? approvalId;
 
   /// The time the approval was completed.
@@ -4495,7 +4850,20 @@ class Approval {
   /// The time that the approval is due.
   core.String? dueTime;
 
-  /// The user that requested the Approval.
+  /// The behavior of the approval when the file content changes.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED" : The behavior is
+  /// unspecified.
+  /// - "RESET_APPROVAL" : Any ReviewerResponse with a Response of APPROVED will
+  /// be reset to NO_DECISION when the file content changes while the approval
+  /// has a Status of IN_PROGRESS. When the approval has a Status of APPROVED
+  /// and RESET_APPROVAL is selected, the file is locked.
+  /// - "NO_APPROVAL_ACTION" : No action is taken when the file content changes.
+  core.String? fileContentChangeBehavior;
+
+  /// The user that requested the approval.
   User? initiator;
 
   /// This is always drive#approval.
@@ -4506,15 +4874,15 @@ class Approval {
   /// Output only.
   core.String? modifyTime;
 
-  /// The responses made on the Approval by reviewers.
+  /// The responses made on the approval by reviewers.
   core.List<ReviewerResponse>? reviewerResponses;
 
   /// The status of the approval at the time this resource was requested.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATUS_UNSPECIFIED" : Approval status has not been set or was set to an
-  /// invalid value.
+  /// - "STATUS_UNSPECIFIED" : The approval status has not been set or was set
+  /// to an invalid value.
   /// - "IN_PROGRESS" : The approval process has started and not finished.
   /// - "APPROVED" : The approval process is finished and the target was
   /// approved.
@@ -4531,6 +4899,7 @@ class Approval {
     this.completeTime,
     this.createTime,
     this.dueTime,
+    this.fileContentChangeBehavior,
     this.initiator,
     this.kind,
     this.modifyTime,
@@ -4545,6 +4914,8 @@ class Approval {
         completeTime: json_['completeTime'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         dueTime: json_['dueTime'] as core.String?,
+        fileContentChangeBehavior:
+            json_['fileContentChangeBehavior'] as core.String?,
         initiator: json_.containsKey('initiator')
             ? User.fromJson(
                 json_['initiator'] as core.Map<core.String, core.dynamic>,
@@ -4568,6 +4939,7 @@ class Approval {
     final completeTime = this.completeTime;
     final createTime = this.createTime;
     final dueTime = this.dueTime;
+    final fileContentChangeBehavior = this.fileContentChangeBehavior;
     final initiator = this.initiator;
     final kind = this.kind;
     final modifyTime = this.modifyTime;
@@ -4579,6 +4951,7 @@ class Approval {
       'completeTime': ?completeTime,
       'createTime': ?createTime,
       'dueTime': ?dueTime,
+      'fileContentChangeBehavior': ?fileContentChangeBehavior,
       'initiator': ?initiator,
       'kind': ?kind,
       'modifyTime': ?modifyTime,
@@ -4589,22 +4962,22 @@ class Approval {
   }
 }
 
-/// The response of an Approvals list request.
+/// The response of an approvals list request.
 class ApprovalList {
-  /// The list of Approvals.
+  /// The list of approvals.
   ///
-  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// If `nextPageToken` is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
   core.List<Approval>? items;
 
   /// This is always drive#approvalList
   core.String? kind;
 
-  /// The page token for the next page of Approvals.
+  /// The page token for the next page of approvals.
   ///
-  /// This will be absent if the end of the Approvals list has been reached. If
-  /// the token is rejected for any reason, it should be discarded, and
-  /// pagination should be restarted from the first page of results.
+  /// This is absent if the end of the approvals list has been reached. If the
+  /// token is rejected for any reason, it should be discarded, and pagination
+  /// should be restarted from the first page of results.
   core.String? nextPageToken;
 
   ApprovalList({this.items, this.kind, this.nextPageToken});
@@ -4627,6 +5000,30 @@ class ApprovalList {
     final kind = this.kind;
     final nextPageToken = this.nextPageToken;
     return {'items': ?items, 'kind': ?kind, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Request for approving an approval as a reviewer.
+typedef ApproveApprovalRequest = $ApprovalRequest;
+
+/// Request for cancelling an approval as an initiator.
+class CancelApprovalRequest {
+  /// A message to accompany the cancellation of the approval.
+  ///
+  /// This message is included in notifications for the action and in the
+  /// approval activity log.
+  ///
+  /// Optional.
+  core.String? message;
+
+  CancelApprovalRequest({this.message});
+
+  CancelApprovalRequest.fromJson(core.Map json_)
+    : this(message: json_['message'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    return {'message': ?message};
   }
 }
 
@@ -5056,6 +5453,27 @@ class Comment {
   }
 }
 
+/// Request for commenting on an approval.
+class CommentApprovalRequest {
+  /// A message to comment on the approval.
+  ///
+  /// This message is included in notifications for the action and in the
+  /// approval activity log.
+  ///
+  /// Required.
+  core.String? message;
+
+  CommentApprovalRequest({this.message});
+
+  CommentApprovalRequest.fromJson(core.Map json_)
+    : this(message: json_['message'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    return {'message': ?message};
+  }
+}
+
 /// A list of comments on a file.
 class CommentList {
   /// The list of comments.
@@ -5201,6 +5619,9 @@ class ContentRestriction {
   }
 }
 
+/// Request for declining an approval as a reviewer.
+typedef DeclineApprovalRequest = $ApprovalRequest;
+
 /// Representation of the CSE DecryptionMetadata.
 typedef DecryptionMetadata = $DecryptionMetadata;
 
@@ -5211,7 +5632,7 @@ class DownloadRestriction {
 
   /// Whether download and copy is restricted for writers.
   ///
-  /// If `true`, download is also restricted for readers.
+  /// If true, download is also restricted for readers.
   core.bool? restrictedForWriters;
 
   DownloadRestriction({this.restrictedForReaders, this.restrictedForWriters});
@@ -5878,6 +6299,12 @@ class FileCapabilities {
   /// Output only.
   core.bool? canAcceptOwnership;
 
+  /// Whether the current user can access this file via Gen AI features.
+  ///
+  /// For more information, see
+  /// [Drive MCP file eligibility](https://developers.google.com/workspace/drive/api/guides/drive-mcp-server-file-eligibility).
+  core.bool? canAccessViaGenAi;
+
   /// Whether the current user can add children to this folder.
   ///
   /// This is always `false` when the item isn't a folder.
@@ -6156,6 +6583,9 @@ class FileCapabilities {
   /// Output only.
   core.bool? canShare;
 
+  /// Whether the current user can start an approval on the file.
+  core.bool? canStartApproval;
+
   /// Whether the current user can move this file to trash.
   ///
   /// Output only.
@@ -6176,6 +6606,7 @@ class FileCapabilities {
 
   FileCapabilities({
     this.canAcceptOwnership,
+    this.canAccessViaGenAi,
     this.canAddChildren,
     this.canAddFolderFromAnotherDrive,
     this.canAddMyDriveParent,
@@ -6216,6 +6647,7 @@ class FileCapabilities {
     this.canRemoveMyDriveParent,
     this.canRename,
     this.canShare,
+    this.canStartApproval,
     this.canTrash,
     this.canTrashChildren,
     this.canUntrash,
@@ -6224,6 +6656,7 @@ class FileCapabilities {
   FileCapabilities.fromJson(core.Map json_)
     : this(
         canAcceptOwnership: json_['canAcceptOwnership'] as core.bool?,
+        canAccessViaGenAi: json_['canAccessViaGenAi'] as core.bool?,
         canAddChildren: json_['canAddChildren'] as core.bool?,
         canAddFolderFromAnotherDrive:
             json_['canAddFolderFromAnotherDrive'] as core.bool?,
@@ -6282,6 +6715,7 @@ class FileCapabilities {
         canRemoveMyDriveParent: json_['canRemoveMyDriveParent'] as core.bool?,
         canRename: json_['canRename'] as core.bool?,
         canShare: json_['canShare'] as core.bool?,
+        canStartApproval: json_['canStartApproval'] as core.bool?,
         canTrash: json_['canTrash'] as core.bool?,
         canTrashChildren: json_['canTrashChildren'] as core.bool?,
         canUntrash: json_['canUntrash'] as core.bool?,
@@ -6289,6 +6723,7 @@ class FileCapabilities {
 
   core.Map<core.String, core.dynamic> toJson() {
     final canAcceptOwnership = this.canAcceptOwnership;
+    final canAccessViaGenAi = this.canAccessViaGenAi;
     final canAddChildren = this.canAddChildren;
     final canAddFolderFromAnotherDrive = this.canAddFolderFromAnotherDrive;
     final canAddMyDriveParent = this.canAddMyDriveParent;
@@ -6333,11 +6768,13 @@ class FileCapabilities {
     final canRemoveMyDriveParent = this.canRemoveMyDriveParent;
     final canRename = this.canRename;
     final canShare = this.canShare;
+    final canStartApproval = this.canStartApproval;
     final canTrash = this.canTrash;
     final canTrashChildren = this.canTrashChildren;
     final canUntrash = this.canUntrash;
     return {
       'canAcceptOwnership': ?canAcceptOwnership,
+      'canAccessViaGenAi': ?canAccessViaGenAi,
       'canAddChildren': ?canAddChildren,
       'canAddFolderFromAnotherDrive': ?canAddFolderFromAnotherDrive,
       'canAddMyDriveParent': ?canAddMyDriveParent,
@@ -6379,6 +6816,7 @@ class FileCapabilities {
       'canRemoveMyDriveParent': ?canRemoveMyDriveParent,
       'canRename': ?canRename,
       'canShare': ?canShare,
+      'canStartApproval': ?canStartApproval,
       'canTrash': ?canTrash,
       'canTrashChildren': ?canTrashChildren,
       'canUntrash': ?canUntrash,
@@ -6710,9 +7148,7 @@ class FileImageMediaMetadata {
   }
 }
 
-/// An overview of the labels on the file.
-///
-/// Output only.
+/// Label information on the file.
 class FileLabelInfo {
   /// The set of labels on the file as requested by the label IDs in the
   /// `includeLabels` parameter.
@@ -6774,11 +7210,7 @@ class FileLinkShareMetadata {
   }
 }
 
-/// Shortcut file details.
-///
-/// Only populated for shortcut files, which have the mimeType field set to
-/// `application/vnd.google-apps.shortcut`. Can only be set on `files.create`
-/// requests.
+/// Information about a shortcut file.
 class FileShortcutDetails {
   /// The ID of the file that this shortcut points to.
   ///
@@ -7016,9 +7448,7 @@ class File {
   /// Output only.
   core.String? kind;
 
-  /// An overview of the labels on the file.
-  ///
-  /// Output only.
+  /// Label information on the file.
   FileLabelInfo? labelInfo;
 
   /// The last user to modify the file.
@@ -7164,11 +7594,7 @@ class File {
   /// Output only.
   User? sharingUser;
 
-  /// Shortcut file details.
-  ///
-  /// Only populated for shortcut files, which have the mimeType field set to
-  /// `application/vnd.google-apps.shortcut`. Can only be set on `files.create`
-  /// requests.
+  /// Information about a shortcut file.
   FileShortcutDetails? shortcutDetails;
 
   /// Size in bytes of blobs and Google Workspace editor files.
@@ -8408,9 +8834,13 @@ class Permission {
   core.String? displayName;
 
   /// The domain to which this permission refers.
+  ///
+  /// Output only.
   core.String? domain;
 
   /// The email address of the user or group to which this permission refers.
+  ///
+  /// Output only.
   core.String? emailAddress;
 
   /// The time at which this permission will expire (RFC 3339 date-time).
@@ -8632,6 +9062,95 @@ class PermissionList {
       'kind': ?kind,
       'nextPageToken': ?nextPageToken,
       'permissions': ?permissions,
+    };
+  }
+}
+
+/// Request for reassigning an approval.
+///
+/// Reviewers can be added or replaced, but not removed.
+class ReassignApprovalRequest {
+  /// The list of reviewers to add.
+  ///
+  /// Optional.
+  core.List<AddReviewer>? addReviewers;
+
+  /// A message to send to the new reviewers.
+  ///
+  /// This message is included in notifications for the action and in the
+  /// approval activity log.
+  ///
+  /// Optional.
+  core.String? message;
+
+  /// The list of reviewer replacements.
+  ///
+  /// Optional.
+  core.List<ReplaceReviewer>? replaceReviewers;
+
+  ReassignApprovalRequest({
+    this.addReviewers,
+    this.message,
+    this.replaceReviewers,
+  });
+
+  ReassignApprovalRequest.fromJson(core.Map json_)
+    : this(
+        addReviewers: (json_['addReviewers'] as core.List?)
+            ?.map(
+              (value) => AddReviewer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+        replaceReviewers: (json_['replaceReviewers'] as core.List?)
+            ?.map(
+              (value) => ReplaceReviewer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final addReviewers = this.addReviewers;
+    final message = this.message;
+    final replaceReviewers = this.replaceReviewers;
+    return {
+      'addReviewers': ?addReviewers,
+      'message': ?message,
+      'replaceReviewers': ?replaceReviewers,
+    };
+  }
+}
+
+/// Representation of a reviewer replacement.
+class ReplaceReviewer {
+  /// The email of the reviewer to add.
+  ///
+  /// Required.
+  core.String? addedReviewerEmail;
+
+  /// The email of the reviewer to remove.
+  ///
+  /// Required.
+  core.String? removedReviewerEmail;
+
+  ReplaceReviewer({this.addedReviewerEmail, this.removedReviewerEmail});
+
+  ReplaceReviewer.fromJson(core.Map json_)
+    : this(
+        addedReviewerEmail: json_['addedReviewerEmail'] as core.String?,
+        removedReviewerEmail: json_['removedReviewerEmail'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final addedReviewerEmail = this.addedReviewerEmail;
+    final removedReviewerEmail = this.removedReviewerEmail;
+    return {
+      'addedReviewerEmail': ?addedReviewerEmail,
+      'removedReviewerEmail': ?removedReviewerEmail,
     };
   }
 }
@@ -8886,20 +9405,20 @@ class ResolveAccessProposalRequest {
   }
 }
 
-/// A response on an Approval made by a specific Reviewer.
+/// A response on an approval made by a specific reviewer.
 class ReviewerResponse {
   /// This is always drive#reviewerResponse.
   core.String? kind;
 
-  /// A Reviewer’s Response for the Approval.
+  /// A reviewer’s response for the approval.
   /// Possible string values are:
-  /// - "RESPONSE_UNSPECIFIED" : Response was set to an unrecognized value.
-  /// - "NO_RESPONSE" : The reviewer has not yet responded
-  /// - "APPROVED" : The Reviewer has approved the item.
-  /// - "DECLINED" : The Reviewer has declined the item.
+  /// - "RESPONSE_UNSPECIFIED" : The response was set to an unrecognized value.
+  /// - "NO_RESPONSE" : The reviewer hasn't responded.
+  /// - "APPROVED" : The reviewer has approved the item.
+  /// - "DECLINED" : The reviewer has declined the item.
   core.String? response;
 
-  /// The user that is responsible for this response.
+  /// The user that's responsible for this response.
   User? reviewer;
 
   ReviewerResponse({this.kind, this.response, this.reviewer});
@@ -9140,6 +9659,78 @@ class RevisionList {
   }
 }
 
+/// Allows creating an approval on a file.
+class StartApprovalRequest {
+  /// The time that the approval is due.
+  ///
+  /// Optional.
+  core.String? dueTime;
+
+  /// The behavior of the approval when the file content changes.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED" : The behavior is
+  /// unspecified.
+  /// - "RESET_APPROVAL" : Any ReviewerResponse with a Response of APPROVED will
+  /// be reset to NO_DECISION when the file content changes while the approval
+  /// has a Status of IN_PROGRESS. When the approval has a Status of APPROVED
+  /// and RESET_APPROVAL is selected, the file is locked.
+  /// - "NO_APPROVAL_ACTION" : No action is taken when the file content changes.
+  core.String? fileContentChangeBehavior;
+
+  /// Whether to lock the file when starting the approval.
+  ///
+  /// Optional.
+  core.bool? lockFile;
+
+  /// A message to send to reviewers when notifying them of the approval
+  /// request.
+  ///
+  /// Optional.
+  core.String? message;
+
+  /// The emails of the users who are set to review the approval.
+  ///
+  /// Required.
+  core.List<core.String>? reviewerEmails;
+
+  StartApprovalRequest({
+    this.dueTime,
+    this.fileContentChangeBehavior,
+    this.lockFile,
+    this.message,
+    this.reviewerEmails,
+  });
+
+  StartApprovalRequest.fromJson(core.Map json_)
+    : this(
+        dueTime: json_['dueTime'] as core.String?,
+        fileContentChangeBehavior:
+            json_['fileContentChangeBehavior'] as core.String?,
+        lockFile: json_['lockFile'] as core.bool?,
+        message: json_['message'] as core.String?,
+        reviewerEmails: (json_['reviewerEmails'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dueTime = this.dueTime;
+    final fileContentChangeBehavior = this.fileContentChangeBehavior;
+    final lockFile = this.lockFile;
+    final message = this.message;
+    final reviewerEmails = this.reviewerEmails;
+    return {
+      'dueTime': ?dueTime,
+      'fileContentChangeBehavior': ?fileContentChangeBehavior,
+      'lockFile': ?lockFile,
+      'message': ?message,
+      'reviewerEmails': ?reviewerEmails,
+    };
+  }
+}
+
 class StartPageToken {
   /// Identifies what kind of resource this is.
   ///
@@ -9175,12 +9766,7 @@ class StartPageToken {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
 
-/// An image file and cropping parameters from which a background image for this
-/// Team Drive is set.
-///
-/// This is a write only field; it can only be set on `drive.teamdrives.update`
-/// requests that don't set `themeId`. When specified, all fields of the
-/// `backgroundImageFile` must be set.
+/// The background image file for a Team Drive.
 class TeamDriveBackgroundImageFile {
   /// The ID of an image file in Drive to use for the background image.
   core.String? id;
@@ -9253,6 +9839,8 @@ class TeamDriveCapabilities {
 
   /// Whether the current user can change organizer-applied download
   /// restrictions of this shared drive.
+  ///
+  /// Output only.
   core.bool? canChangeDownloadRestriction;
 
   /// Whether the current user can change the
@@ -9524,13 +10112,10 @@ class TeamDriveRestrictions {
 }
 
 /// Deprecated: use the drive collection instead.
+///
+/// Next ID: 33
 class TeamDrive {
-  /// An image file and cropping parameters from which a background image for
-  /// this Team Drive is set.
-  ///
-  /// This is a write only field; it can only be set on
-  /// `drive.teamdrives.update` requests that don't set `themeId`. When
-  /// specified, all fields of the `backgroundImageFile` must be set.
+  /// The background image file for a Team Drive.
   TeamDriveBackgroundImageFile? backgroundImageFile;
 
   /// A short-lived link to this Team Drive's background image.

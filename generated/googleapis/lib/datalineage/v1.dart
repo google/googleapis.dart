@@ -58,6 +58,16 @@ class DatalineageApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Cloud Data Lineage data and
+  /// see the email address for your Google Account
+  static const datalineageReadWriteScope =
+      'https://www.googleapis.com/auth/datalineage.read-write';
+
+  /// See your Google Cloud Data Lineage data and the email address of your
+  /// Google Account
+  static const datalineageReadonlyScope =
+      'https://www.googleapis.com/auth/datalineage.readonly';
+
   final commons.ApiRequester _requester;
 
   FoldersResource get folders => FoldersResource(_requester);
@@ -428,6 +438,70 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves a streaming response of lineage links connected to the requested
+  /// assets by performing a breadth-first search in the given direction.
+  ///
+  /// Links represent the data flow between **source** (upstream) and **target**
+  /// (downstream) assets in transformation pipelines. Links are stored in the
+  /// same project as the Lineage Events that create them. This method retrieves
+  /// links from all valid locations provided in the request. This method
+  /// supports Column-Level Lineage (CLL) along with wildcard support to
+  /// retrieve all CLL for an Entity FQN. Following permissions are required to
+  /// retrieve links: * `datalineage.events.get` permission for the project
+  /// where the link is stored for entity-level lineage. *
+  /// `datalineage.events.getFields` permission for the project where the link
+  /// is stored for column-level lineage. This method also returns processes
+  /// that created the links if explicitly requested by setting
+  /// \[max_process_per_link\](google.cloud.datacatalog.lineage.v1.SearchLineageStreamingRequest.limits.max_process_per_link)
+  /// is non-zero and full process details are requested via
+  /// `links.processes.process` in the
+  /// [FieldMask](https://developers.google.com/workspace/docs/api/how-tos/field-masks#read_with_a_field_mask).
+  /// Permission required to retrieve processes: * `datalineage.processes.get`
+  /// permission for the project where the process is stored.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location to initiate the search from.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse>
+  searchLineageStreaming(
+    GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':searchLineageStreaming';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1635,8 +1709,11 @@ class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRul
   /// Required.
   /// Possible string values are:
   /// - "INTEGRATION_UNSPECIFIED" : Integration is Unspecified
+  /// - "BIGQUERY" : BigQuery
   /// - "DATAPROC" : Dataproc
   /// - "LOOKER_CORE" : Looker Core
+  /// - "MANAGED_AIRFLOW" : Managed Service for Apache Airflow (formerly known
+  /// as Cloud Composer)
   core.String? integration;
 
   GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector({
@@ -1695,6 +1772,8 @@ class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest {
   /// response.
   ///
   /// A page may contain fewer results than this value.
+  ///
+  /// Optional.
   core.int? pageSize;
 
   /// The page token received from a previous `BatchSearchLinkProcesses` call.
@@ -1702,6 +1781,8 @@ class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest {
   /// Use it to get the next page. When requesting subsequent pages of a
   /// response, remember that all parameters must match the values you provided
   /// in the original request.
+  ///
+  /// Optional.
   core.String? pageToken;
 
   GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest({
@@ -1764,8 +1845,42 @@ class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse {
   }
 }
 
+/// Dependency info describes how one entity depends on another.
+class GoogleCloudDatacatalogLineageV1DependencyInfo {
+  /// Type of dependency.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DEPENDENCY_TYPE_UNSPECIFIED" : Dependency type unspecified.
+  /// - "EXACT_COPY" : Exact data copy without any change.
+  /// - "OTHER" : Other types of dependencies like filtering or grouping.
+  core.String? dependencyType;
+
+  GoogleCloudDatacatalogLineageV1DependencyInfo({this.dependencyType});
+
+  GoogleCloudDatacatalogLineageV1DependencyInfo.fromJson(core.Map json_)
+    : this(dependencyType: json_['dependencyType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dependencyType = this.dependencyType;
+    return {'dependencyType': ?dependencyType};
+  }
+}
+
 /// The soft reference to everything you can attach a lineage event to.
 class GoogleCloudDatacatalogLineageV1EntityReference {
+  /// Field path within the entity.
+  ///
+  /// Each nesting level should be a separate value in the repeated field. The
+  /// order matters. Must be empty for asset level lineage For example to
+  /// address "salary.net" subfield where "salary" is a column and "net" is a
+  /// proto field two values in the `field` should be reported, the first is
+  /// "salary" and the second is "net". Each field length is limited to 500
+  /// characters. Maximum supported nesting level is 20.
+  ///
+  /// Optional.
+  core.List<core.String>? field;
+
   /// \[Fully Qualified Name
   /// (FQN)\](https://cloud.google.com/dataplex/docs/fully-qualified-names) of
   /// the entity.
@@ -1773,19 +1888,33 @@ class GoogleCloudDatacatalogLineageV1EntityReference {
   /// Required.
   core.String? fullyQualifiedName;
 
-  GoogleCloudDatacatalogLineageV1EntityReference({this.fullyQualifiedName});
+  GoogleCloudDatacatalogLineageV1EntityReference({
+    this.field,
+    this.fullyQualifiedName,
+  });
 
   GoogleCloudDatacatalogLineageV1EntityReference.fromJson(core.Map json_)
-    : this(fullyQualifiedName: json_['fullyQualifiedName'] as core.String?);
+    : this(
+        field: (json_['field'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        fullyQualifiedName: json_['fullyQualifiedName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final field = this.field;
     final fullyQualifiedName = this.fullyQualifiedName;
-    return {'fullyQualifiedName': ?fullyQualifiedName};
+    return {'field': ?field, 'fullyQualifiedName': ?fullyQualifiedName};
   }
 }
 
 /// A lineage between source and target entities.
 class GoogleCloudDatacatalogLineageV1EventLink {
+  /// Describes how the target depends on the source.
+  ///
+  /// Optional.
+  GoogleCloudDatacatalogLineageV1DependencyInfo? dependencyInfo;
+
   /// Reference to the source entity
   ///
   /// Required.
@@ -1796,10 +1925,19 @@ class GoogleCloudDatacatalogLineageV1EventLink {
   /// Required.
   GoogleCloudDatacatalogLineageV1EntityReference? target;
 
-  GoogleCloudDatacatalogLineageV1EventLink({this.source, this.target});
+  GoogleCloudDatacatalogLineageV1EventLink({
+    this.dependencyInfo,
+    this.source,
+    this.target,
+  });
 
   GoogleCloudDatacatalogLineageV1EventLink.fromJson(core.Map json_)
     : this(
+        dependencyInfo: json_.containsKey('dependencyInfo')
+            ? GoogleCloudDatacatalogLineageV1DependencyInfo.fromJson(
+                json_['dependencyInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         source: json_.containsKey('source')
             ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
                 json_['source'] as core.Map<core.String, core.dynamic>,
@@ -1813,9 +1951,14 @@ class GoogleCloudDatacatalogLineageV1EventLink {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final dependencyInfo = this.dependencyInfo;
     final source = this.source;
     final target = this.target;
-    return {'source': ?source, 'target': ?target};
+    return {
+      'dependencyInfo': ?dependencyInfo,
+      'source': ?source,
+      'target': ?target,
+    };
   }
 }
 
@@ -1892,12 +2035,125 @@ class GoogleCloudDatacatalogLineageV1LineageEvent {
   }
 }
 
+/// Lineage link between two entities.
+class GoogleCloudDatacatalogLineageV1LineageLink {
+  /// Describes how the target entity is dependent on the source entity.
+  core.List<GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo>?
+  dependencyInfo;
+
+  /// Depth of the current link in the graph starting from 1.
+  core.int? depth;
+
+  /// The location where the LineageEvent that created the link is stored.
+  core.String? location;
+
+  /// Processes metadata associated with the link.
+  core.List<GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess>?
+  processes;
+
+  /// The entity that is the **source** of this link.
+  GoogleCloudDatacatalogLineageV1EntityReference? source;
+
+  /// The entity that is the **target** of this link.
+  GoogleCloudDatacatalogLineageV1EntityReference? target;
+
+  GoogleCloudDatacatalogLineageV1LineageLink({
+    this.dependencyInfo,
+    this.depth,
+    this.location,
+    this.processes,
+    this.source,
+    this.target,
+  });
+
+  GoogleCloudDatacatalogLineageV1LineageLink.fromJson(core.Map json_)
+    : this(
+        dependencyInfo: (json_['dependencyInfo'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        depth: json_['depth'] as core.int?,
+        location: json_['location'] as core.String?,
+        processes: (json_['processes'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        source: json_.containsKey('source')
+            ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        target: json_.containsKey('target')
+            ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
+                json_['target'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dependencyInfo = this.dependencyInfo;
+    final depth = this.depth;
+    final location = this.location;
+    final processes = this.processes;
+    final source = this.source;
+    final target = this.target;
+    return {
+      'dependencyInfo': ?dependencyInfo,
+      'depth': ?depth,
+      'location': ?location,
+      'processes': ?processes,
+      'source': ?source,
+      'target': ?target,
+    };
+  }
+}
+
+/// Dependency info describes how one entity is dependent on another.
+typedef GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo =
+    $LinkDependencyInfo;
+
+/// Process metadata for the link.
+class GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess {
+  /// Process that created the link.
+  GoogleCloudDatacatalogLineageV1Process? process;
+
+  GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess({this.process});
+
+  GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess.fromJson(
+    core.Map json_,
+  ) : this(
+        process: json_.containsKey('process')
+            ? GoogleCloudDatacatalogLineageV1Process.fromJson(
+                json_['process'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final process = this.process;
+    return {'process': ?process};
+  }
+}
+
 /// Links represent the data flow between **source** (upstream) and **target**
 /// (downstream) assets in transformation pipelines.
 ///
 /// Links are created when LineageEvents record data transformation between
 /// related assets.
 class GoogleCloudDatacatalogLineageV1Link {
+  /// The dependency info of the link (applies only to column level links).
+  ///
+  /// Optional.
+  core.List<GoogleCloudDatacatalogLineageV1LinkDependencyInfo>? dependencyInfo;
+
   /// The end of the last event establishing this link.
   core.String? endTime;
 
@@ -1918,6 +2174,7 @@ class GoogleCloudDatacatalogLineageV1Link {
   GoogleCloudDatacatalogLineageV1EntityReference? target;
 
   GoogleCloudDatacatalogLineageV1Link({
+    this.dependencyInfo,
     this.endTime,
     this.name,
     this.source,
@@ -1927,6 +2184,14 @@ class GoogleCloudDatacatalogLineageV1Link {
 
   GoogleCloudDatacatalogLineageV1Link.fromJson(core.Map json_)
     : this(
+        dependencyInfo: (json_['dependencyInfo'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogLineageV1LinkDependencyInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         endTime: json_['endTime'] as core.String?,
         name: json_['name'] as core.String?,
         source: json_.containsKey('source')
@@ -1943,12 +2208,14 @@ class GoogleCloudDatacatalogLineageV1Link {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final dependencyInfo = this.dependencyInfo;
     final endTime = this.endTime;
     final name = this.name;
     final source = this.source;
     final startTime = this.startTime;
     final target = this.target;
     return {
+      'dependencyInfo': ?dependencyInfo,
       'endTime': ?endTime,
       'name': ?name,
       'source': ?source,
@@ -1957,6 +2224,9 @@ class GoogleCloudDatacatalogLineageV1Link {
     };
   }
 }
+
+/// Dependency info describes how one entity depends on another.
+typedef GoogleCloudDatacatalogLineageV1LinkDependencyInfo = $LinkDependencyInfo;
 
 /// Response message for ListLineageEvents.
 class GoogleCloudDatacatalogLineageV1ListLineageEventsResponse {
@@ -2061,6 +2331,36 @@ class GoogleCloudDatacatalogLineageV1ListRunsResponse {
     final nextPageToken = this.nextPageToken;
     final runs = this.runs;
     return {'nextPageToken': ?nextPageToken, 'runs': ?runs};
+  }
+}
+
+/// Multiple entity reference for SearchLinksRequest.
+class GoogleCloudDatacatalogLineageV1MultipleEntityReference {
+  /// The list of entities to search for links.
+  ///
+  /// The maximum number of entities is 20.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDatacatalogLineageV1EntityReference>? entities;
+
+  GoogleCloudDatacatalogLineageV1MultipleEntityReference({this.entities});
+
+  GoogleCloudDatacatalogLineageV1MultipleEntityReference.fromJson(
+    core.Map json_,
+  ) : this(
+        entities: (json_['entities'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entities = this.entities;
+    return {'entities': ?entities};
   }
 }
 
@@ -2311,7 +2611,7 @@ class GoogleCloudDatacatalogLineageV1Run {
 
   /// A human-readable name you can set to display in a user interface.
   ///
-  /// Must be not longer than 1024 characters and only contain UTF-8 letters or
+  /// Must be not longer than 200 characters and only contain UTF-8 letters or
   /// numbers, spaces or characters like `_-:&.`
   ///
   /// Optional.
@@ -2388,6 +2688,281 @@ class GoogleCloudDatacatalogLineageV1Run {
   }
 }
 
+/// Request message for SearchLineageStreaming.
+class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest {
+  /// Direction of the search.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SEARCH_DIRECTION_UNSPECIFIED" : Direction is unspecified.
+  /// - "DOWNSTREAM" : Retrieve links that lead from the specified asset to
+  /// downstream assets.
+  /// - "UPSTREAM" : Retrieve links that lead from upstream assets to the
+  /// specified asset.
+  core.String? direction;
+
+  /// Filters for the search.
+  ///
+  /// Optional.
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters?
+  filters;
+
+  /// Limits for the search.
+  ///
+  /// Optional.
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits?
+  limits;
+
+  /// The locations to search in.
+  ///
+  /// This list should contain the location from the `parent` field.
+  ///
+  /// Required.
+  core.List<core.String>? locations;
+
+  /// Criteria for the root of the search.
+  ///
+  /// Required.
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria?
+  rootCriteria;
+
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest({
+    this.direction,
+    this.filters,
+    this.limits,
+    this.locations,
+    this.rootCriteria,
+  });
+
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest.fromJson(
+    core.Map json_,
+  ) : this(
+        direction: json_['direction'] as core.String?,
+        filters: json_.containsKey('filters')
+            ? GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters.fromJson(
+                json_['filters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        limits: json_.containsKey('limits')
+            ? GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits.fromJson(
+                json_['limits'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locations: (json_['locations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        rootCriteria: json_.containsKey('rootCriteria')
+            ? GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria.fromJson(
+                json_['rootCriteria'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final direction = this.direction;
+    final filters = this.filters;
+    final limits = this.limits;
+    final locations = this.locations;
+    final rootCriteria = this.rootCriteria;
+    return {
+      'direction': ?direction,
+      'filters': ?filters,
+      'limits': ?limits,
+      'locations': ?locations,
+      'rootCriteria': ?rootCriteria,
+    };
+  }
+}
+
+/// Criteria for the root of the search.
+class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria {
+  /// The entities to initiate the search from.
+  ///
+  /// Entities can be specified by FQN only, or by FQN and field. To search by
+  /// FQN and all available fields for that FQN, use the wildcard `*` as the
+  /// field value.
+  ///
+  /// Optional.
+  GoogleCloudDatacatalogLineageV1MultipleEntityReference? entities;
+
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria({
+    this.entities,
+  });
+
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria.fromJson(
+    core.Map json_,
+  ) : this(
+        entities: json_.containsKey('entities')
+            ? GoogleCloudDatacatalogLineageV1MultipleEntityReference.fromJson(
+                json_['entities'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entities = this.entities;
+    return {'entities': ?entities};
+  }
+}
+
+/// Filters for the search.
+class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters {
+  /// Types of dependencies between entities to retrieve.
+  ///
+  /// If unspecified, all dependency types are returned.
+  ///
+  /// Optional.
+  core.List<core.String>? dependencyTypes;
+
+  /// Entity set restriction.
+  ///
+  /// If unspecified, the method returns all entities.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENTITY_SET_UNSPECIFIED" : The entity set is unspecified. Returns all
+  /// the data.
+  /// - "ENTITIES" : Returns entities with only FQN specified. For example,
+  /// entities with the `field` field set are not returned.
+  core.String? entitySet;
+
+  /// Time interval to search for lineage.
+  ///
+  /// If unspecified, all lineage is returned. Currently, at most one of
+  /// `start_time` and `end_time` can be set.
+  ///
+  /// Optional.
+  GoogleTypeInterval? timeRange;
+
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters({
+    this.dependencyTypes,
+    this.entitySet,
+    this.timeRange,
+  });
+
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters.fromJson(
+    core.Map json_,
+  ) : this(
+        dependencyTypes: (json_['dependencyTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        entitySet: json_['entitySet'] as core.String?,
+        timeRange: json_.containsKey('timeRange')
+            ? GoogleTypeInterval.fromJson(
+                json_['timeRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dependencyTypes = this.dependencyTypes;
+    final entitySet = this.entitySet;
+    final timeRange = this.timeRange;
+    return {
+      'dependencyTypes': ?dependencyTypes,
+      'entitySet': ?entitySet,
+      'timeRange': ?timeRange,
+    };
+  }
+}
+
+/// Limits for the search results.
+class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits {
+  /// The maximum depth of the search.
+  ///
+  /// The default value is 5 and maximum value is 100.
+  ///
+  /// Optional.
+  core.int? maxDepth;
+
+  /// The maximum number of processes to return per link.
+  ///
+  /// The default value is 0 and the maximum value is 100. If this value is
+  /// non-zero, the response will contain process names for the links. To
+  /// retrieve full process details in the response, include
+  /// `links.processes.process` in the
+  /// [FieldMask](https://developers.google.com/workspace/docs/api/how-tos/field-masks#read_with_a_field_mask).
+  ///
+  /// Optional.
+  core.int? maxProcessPerLink;
+
+  /// The maximum number of links to return in the response.
+  ///
+  /// The default value is 1_000 and the maximum value is 10_000.
+  ///
+  /// Optional.
+  core.int? maxResults;
+
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits({
+    this.maxDepth,
+    this.maxProcessPerLink,
+    this.maxResults,
+  });
+
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits.fromJson(
+    core.Map json_,
+  ) : this(
+        maxDepth: json_['maxDepth'] as core.int?,
+        maxProcessPerLink: json_['maxProcessPerLink'] as core.int?,
+        maxResults: json_['maxResults'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxDepth = this.maxDepth;
+    final maxProcessPerLink = this.maxProcessPerLink;
+    final maxResults = this.maxResults;
+    return {
+      'maxDepth': ?maxDepth,
+      'maxProcessPerLink': ?maxProcessPerLink,
+      'maxResults': ?maxResults,
+    };
+  }
+}
+
+/// Response message for SearchLineageStreaming.
+class GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse {
+  /// The lineage links that match the search criteria.
+  ///
+  /// Can be empty if no links match.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDatacatalogLineageV1LineageLink>? links;
+
+  /// Unordered list.
+  ///
+  /// Unreachable resources. If non-empty, the result set might be incomplete.
+  /// Currently, only locations are supported. Format:
+  /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]` Example:
+  /// projects/123456789/locations/us-east1
+  core.List<core.String>? unreachable;
+
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse({
+    this.links,
+    this.unreachable,
+  });
+
+  GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        links: (json_['links'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDatacatalogLineageV1LineageLink.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final links = this.links;
+    final unreachable = this.unreachable;
+    return {'links': ?links, 'unreachable': ?unreachable};
+  }
+}
+
 /// Request message for SearchLinks.
 class GoogleCloudDatacatalogLineageV1SearchLinksRequest {
   /// The maximum number of links to return in a single page of the response.
@@ -2414,17 +2989,39 @@ class GoogleCloudDatacatalogLineageV1SearchLinksRequest {
   /// Optional.
   GoogleCloudDatacatalogLineageV1EntityReference? source;
 
+  /// Send a list of asset information in the **sources** field to retrieve all
+  /// links that lead from the specified assets to downstream assets.
+  ///
+  /// This field is similar to the `source` source field but allows providing
+  /// multiple entities. All entities within the `MultipleEntityReference` must
+  /// have the same `fully_qualified_name`.
+  ///
+  /// Optional.
+  GoogleCloudDatacatalogLineageV1MultipleEntityReference? sources;
+
   /// Send asset information in the **target** field to retrieve all links that
   /// lead from upstream assets to the specified asset.
   ///
   /// Optional.
   GoogleCloudDatacatalogLineageV1EntityReference? target;
 
+  /// Send a list of asset information in the **targets** field to retrieve all
+  /// links that lead from upstream assets to the specified assets.
+  ///
+  /// This field is similar to the `target` target field but allows providing
+  /// multiple entities. All entities within the `MultipleEntityReference` must
+  /// have the same `fully_qualified_name`.
+  ///
+  /// Optional.
+  GoogleCloudDatacatalogLineageV1MultipleEntityReference? targets;
+
   GoogleCloudDatacatalogLineageV1SearchLinksRequest({
     this.pageSize,
     this.pageToken,
     this.source,
+    this.sources,
     this.target,
+    this.targets,
   });
 
   GoogleCloudDatacatalogLineageV1SearchLinksRequest.fromJson(core.Map json_)
@@ -2436,9 +3033,19 @@ class GoogleCloudDatacatalogLineageV1SearchLinksRequest {
                 json_['source'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        sources: json_.containsKey('sources')
+            ? GoogleCloudDatacatalogLineageV1MultipleEntityReference.fromJson(
+                json_['sources'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         target: json_.containsKey('target')
             ? GoogleCloudDatacatalogLineageV1EntityReference.fromJson(
                 json_['target'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        targets: json_.containsKey('targets')
+            ? GoogleCloudDatacatalogLineageV1MultipleEntityReference.fromJson(
+                json_['targets'] as core.Map<core.String, core.dynamic>,
               )
             : null,
       );
@@ -2447,12 +3054,16 @@ class GoogleCloudDatacatalogLineageV1SearchLinksRequest {
     final pageSize = this.pageSize;
     final pageToken = this.pageToken;
     final source = this.source;
+    final sources = this.sources;
     final target = this.target;
+    final targets = this.targets;
     return {
       'pageSize': ?pageSize,
       'pageToken': ?pageToken,
       'source': ?source,
+      'sources': ?sources,
       'target': ?target,
+      'targets': ?targets,
     };
   }
 }
@@ -2647,3 +3258,11 @@ typedef GoogleProtobufEmpty = $Empty;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status00;
+
+/// Represents a time interval, encoded as a Timestamp start (inclusive) and a
+/// Timestamp end (exclusive).
+///
+/// The start must be less than or equal to the end. When the start equals the
+/// end, the interval is empty (matches no time). When both start and end are
+/// unspecified, the interval matches any time.
+typedef GoogleTypeInterval = $Interval;

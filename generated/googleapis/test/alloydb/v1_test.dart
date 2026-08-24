@@ -532,9 +532,12 @@ api.ConnectionPoolConfig buildConnectionPoolConfig() {
   final o = api.ConnectionPoolConfig();
   buildCounterConnectionPoolConfig++;
   if (buildCounterConnectionPoolConfig < 3) {
+    o.authproxyPoolerCount = 42;
+    o.authproxyPoolerScalingType = 'foo';
     o.enabled = true;
     o.flags = buildUnnamed8();
     o.poolerCount = 42;
+    o.poolerScalingType = 'foo';
   }
   buildCounterConnectionPoolConfig--;
   return o;
@@ -543,9 +546,12 @@ api.ConnectionPoolConfig buildConnectionPoolConfig() {
 void checkConnectionPoolConfig(api.ConnectionPoolConfig o) {
   buildCounterConnectionPoolConfig++;
   if (buildCounterConnectionPoolConfig < 3) {
+    unittest.expect(o.authproxyPoolerCount!, unittest.equals(42));
+    unittest.expect(o.authproxyPoolerScalingType!, unittest.equals('foo'));
     unittest.expect(o.enabled!, unittest.isTrue);
     checkUnnamed8(o.flags!);
     unittest.expect(o.poolerCount!, unittest.equals(42));
+    unittest.expect(o.poolerScalingType!, unittest.equals('foo'));
   }
   buildCounterConnectionPoolConfig--;
 }
@@ -2262,6 +2268,7 @@ api.StringRestrictions buildStringRestrictions() {
   buildCounterStringRestrictions++;
   if (buildCounterStringRestrictions < 3) {
     o.allowedValues = buildUnnamed44();
+    o.caseAgnostic = true;
   }
   buildCounterStringRestrictions--;
   return o;
@@ -2271,6 +2278,7 @@ void checkStringRestrictions(api.StringRestrictions o) {
   buildCounterStringRestrictions++;
   if (buildCounterStringRestrictions < 3) {
     checkUnnamed44(o.allowedValues!);
+    unittest.expect(o.caseAgnostic!, unittest.isTrue);
   }
   buildCounterStringRestrictions--;
 }

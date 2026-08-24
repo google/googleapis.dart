@@ -1248,6 +1248,7 @@ api.SubscriptionMigrationDetails buildSubscriptionMigrationDetails() {
   final o = api.SubscriptionMigrationDetails();
   buildCounterSubscriptionMigrationDetails++;
   if (buildCounterSubscriptionMigrationDetails < 3) {
+    o.legacyCreationTime = 'foo';
     o.migratedSubscriptionId = 'foo';
   }
   buildCounterSubscriptionMigrationDetails--;
@@ -1257,6 +1258,7 @@ api.SubscriptionMigrationDetails buildSubscriptionMigrationDetails() {
 void checkSubscriptionMigrationDetails(api.SubscriptionMigrationDetails o) {
   buildCounterSubscriptionMigrationDetails++;
   if (buildCounterSubscriptionMigrationDetails < 3) {
+    unittest.expect(o.legacyCreationTime!, unittest.equals('foo'));
     unittest.expect(o.migratedSubscriptionId!, unittest.equals('foo'));
   }
   buildCounterSubscriptionMigrationDetails--;
@@ -1315,14 +1317,18 @@ core.int buildCounterSuspendSubscriptionRequest = 0;
 api.SuspendSubscriptionRequest buildSuspendSubscriptionRequest() {
   final o = api.SuspendSubscriptionRequest();
   buildCounterSuspendSubscriptionRequest++;
-  if (buildCounterSuspendSubscriptionRequest < 3) {}
+  if (buildCounterSuspendSubscriptionRequest < 3) {
+    o.suspendMode = 'foo';
+  }
   buildCounterSuspendSubscriptionRequest--;
   return o;
 }
 
 void checkSuspendSubscriptionRequest(api.SuspendSubscriptionRequest o) {
   buildCounterSuspendSubscriptionRequest++;
-  if (buildCounterSuspendSubscriptionRequest < 3) {}
+  if (buildCounterSuspendSubscriptionRequest < 3) {
+    unittest.expect(o.suspendMode!, unittest.equals('foo'));
+  }
   buildCounterSuspendSubscriptionRequest--;
 }
 

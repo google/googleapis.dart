@@ -359,6 +359,7 @@ api.CorpusQuery buildCorpusQuery() {
   if (buildCounterCorpusQuery < 3) {
     o.calendarQuery = buildHeldCalendarQuery();
     o.driveQuery = buildHeldDriveQuery();
+    o.geminiQuery = buildHeldGeminiQuery();
     o.groupsQuery = buildHeldGroupsQuery();
     o.hangoutsChatQuery = buildHeldHangoutsChatQuery();
     o.mailQuery = buildHeldMailQuery();
@@ -373,6 +374,7 @@ void checkCorpusQuery(api.CorpusQuery o) {
   if (buildCounterCorpusQuery < 3) {
     checkHeldCalendarQuery(o.calendarQuery!);
     checkHeldDriveQuery(o.driveQuery!);
+    checkHeldGeminiQuery(o.geminiQuery!);
     checkHeldGroupsQuery(o.groupsQuery!);
     checkHeldHangoutsChatQuery(o.hangoutsChatQuery!);
     checkHeldMailQuery(o.mailQuery!);
@@ -783,6 +785,21 @@ void checkHeldDriveQuery(api.HeldDriveQuery o) {
     unittest.expect(o.includeTeamDriveFiles!, unittest.isTrue);
   }
   buildCounterHeldDriveQuery--;
+}
+
+core.int buildCounterHeldGeminiQuery = 0;
+api.HeldGeminiQuery buildHeldGeminiQuery() {
+  final o = api.HeldGeminiQuery();
+  buildCounterHeldGeminiQuery++;
+  if (buildCounterHeldGeminiQuery < 3) {}
+  buildCounterHeldGeminiQuery--;
+  return o;
+}
+
+void checkHeldGeminiQuery(api.HeldGeminiQuery o) {
+  buildCounterHeldGeminiQuery++;
+  if (buildCounterHeldGeminiQuery < 3) {}
+  buildCounterHeldGeminiQuery--;
 }
 
 core.int buildCounterHeldGroupsQuery = 0;
@@ -2094,6 +2111,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkHeldDriveQuery(od);
+    });
+  });
+
+  unittest.group('obj-schema-HeldGeminiQuery', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHeldGeminiQuery();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HeldGeminiQuery.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkHeldGeminiQuery(od);
     });
   });
 

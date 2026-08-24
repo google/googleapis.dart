@@ -44,6 +44,7 @@
 ///       - [ProjectsLocationsRepositoriesPackagesResource]
 ///         - [ProjectsLocationsRepositoriesPackagesTagsResource]
 ///         - [ProjectsLocationsRepositoriesPackagesVersionsResource]
+///       - [ProjectsLocationsRepositoriesPrewarmedArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesPythonPackagesResource]
 ///       - [ProjectsLocationsRepositoriesRulesResource]
 ///       - [ProjectsLocationsRepositoriesYumArtifactsResource]
@@ -315,7 +316,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -330,9 +331,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -600,6 +600,9 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesNpmPackagesResource(_requester);
   ProjectsLocationsRepositoriesPackagesResource get packages =>
       ProjectsLocationsRepositoriesPackagesResource(_requester);
+  ProjectsLocationsRepositoriesPrewarmedArtifactsResource
+  get prewarmedArtifacts =>
+      ProjectsLocationsRepositoriesPrewarmedArtifactsResource(_requester);
   ProjectsLocationsRepositoriesPythonPackagesResource get pythonPackages =>
       ProjectsLocationsRepositoriesPythonPackagesResource(_requester);
   ProjectsLocationsRepositoriesRulesResource get rules =>
@@ -609,6 +612,52 @@ class ProjectsLocationsRepositoriesResource {
 
   ProjectsLocationsRepositoriesResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Checks an artifact streaming.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [repository] - Required. The name of the repository, for example:
+  /// `projects/p1/locations/us-central1/repositories/repo1`. If the package or
+  /// version ID parts contain slashes, the slashes are escaped.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckPrewarmedArtifactResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckPrewarmedArtifactResponse> checkPrewarmedArtifact(
+    CheckPrewarmedArtifactRequest request,
+    core.String repository, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$repository') + ':checkPrewarmedArtifact';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CheckPrewarmedArtifactResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Creates a repository.
   ///
@@ -944,6 +993,95 @@ class ProjectsLocationsRepositoriesResource {
       queryParams: queryParams_,
     );
     return Repository.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Prewarms an artifact for streaming.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [repository] - Required. The repository name, for example:
+  /// `projects/p1/locations/us-central1/repositories/repo1`. If the package or
+  /// version ID parts contain slashes, the slashes are escaped.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> prewarmArtifact(
+    PrewarmArtifactRequest request,
+    core.String repository, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$repository') + ':prewarmArtifact';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes an artifact from streaming.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [repository] - Required. The repository name, for example:
+  /// `projects/p1/locations/us-central1/repositories/repo1`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RemovePrewarmedArtifactResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RemovePrewarmedArtifactResponse> removePrewarmedArtifact(
+    RemovePrewarmedArtifactRequest request,
+    core.String repository, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$repository') + ':removePrewarmedArtifact';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RemovePrewarmedArtifactResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3045,6 +3183,68 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
   }
 }
 
+class ProjectsLocationsRepositoriesPrewarmedArtifactsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesPrewarmedArtifactsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists all streamed artifacts in a repository.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The repository of the artifact to list. Format:
+  /// projects/{project}/locations/{location}/repositories/{repository}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter should only support The location of the
+  /// prewarmed artifacts. multi-region is not supported for this field.
+  ///
+  /// [pageSize] - Optional. The maximum number of prewarmed artifacts to
+  /// return. Maximum page size is 1,000. Default page size is 100.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPrewarmedArtifactsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPrewarmedArtifactsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/prewarmedArtifacts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPrewarmedArtifactsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsRepositoriesPythonPackagesResource {
   final commons.ApiRequester _requester;
 
@@ -3776,6 +3976,32 @@ class Binding {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// The request for checking an artifact for streaming.
+typedef CheckPrewarmedArtifactRequest = $PrewarmedArtifactRequest;
+
+/// The response for checking an artifact for streaming.
+class CheckPrewarmedArtifactResponse {
+  /// The prewarmed artifact that was checked.
+  PrewarmedArtifact? prewarmedArtifact;
+
+  CheckPrewarmedArtifactResponse({this.prewarmedArtifact});
+
+  CheckPrewarmedArtifactResponse.fromJson(core.Map json_)
+    : this(
+        prewarmedArtifact: json_.containsKey('prewarmedArtifact')
+            ? PrewarmedArtifact.fromJson(
+                json_['prewarmedArtifact']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final prewarmedArtifact = this.prewarmedArtifact;
+    return {'prewarmedArtifact': ?prewarmedArtifact};
+  }
+}
 
 /// Artifact policy configuration for repository cleanup policies.
 class CleanupPolicy {
@@ -5014,6 +5240,39 @@ class ListPackagesResponse {
   }
 }
 
+/// The response for listing artifacts for streaming.
+class ListPrewarmedArtifactsResponse {
+  /// The token to retrieve the next page of prewarmed artifacts, or empty if
+  /// there are no more streamings to return.
+  core.String? nextPageToken;
+
+  /// The prewarmed artifacts.
+  core.List<PrewarmedArtifact>? prewarmedArtifacts;
+
+  ListPrewarmedArtifactsResponse({this.nextPageToken, this.prewarmedArtifacts});
+
+  ListPrewarmedArtifactsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        prewarmedArtifacts: (json_['prewarmedArtifacts'] as core.List?)
+            ?.map(
+              (value) => PrewarmedArtifact.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final prewarmedArtifacts = this.prewarmedArtifacts;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'prewarmedArtifacts': ?prewarmedArtifacts,
+    };
+  }
+}
+
 /// The response from listing python packages.
 class ListPythonPackagesResponse {
   /// The token to retrieve the next page of artifacts, or empty if there are no
@@ -5320,6 +5579,10 @@ class MavenRepositoryConfig {
     };
   }
 }
+
+/// The configuration for the no-cache fetching mode, which acts as a
+/// non-caching proxy.
+typedef NoCacheFetching = $Empty;
 
 /// NpmPackage represents an npm artifact.
 class NpmPackage {
@@ -5722,6 +5985,157 @@ class Policy {
   }
 }
 
+/// The request for prewarming an artifact for streaming.
+class PrewarmArtifactRequest {
+  /// If true, old artifact will be evicted to make room for the new artifact.
+  ///
+  /// Optional.
+  core.bool? force;
+
+  /// The platform (architecture and OS) of the image or tag.
+  ///
+  /// Optional.
+  PrewarmPlatform? platform;
+
+  /// The retention days of the prewarmed artifact.
+  ///
+  /// If not specified, the artifact will be cached for 3 days.
+  ///
+  /// Optional.
+  core.String? retentionDays;
+
+  /// The location to cache the artifact in.
+  ///
+  /// If not specified, the artifact will be cached in the same location as the
+  /// artifact. multi-region is not supported for this field.
+  ///
+  /// Optional.
+  core.String? streamLocation;
+
+  /// The artifact tag
+  /// Format:projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/tags/{tag}
+  ///
+  /// Optional.
+  core.String? tag;
+
+  /// The artifact version Format:
+  /// projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/versions/{version}
+  ///
+  /// Optional.
+  core.String? version;
+
+  PrewarmArtifactRequest({
+    this.force,
+    this.platform,
+    this.retentionDays,
+    this.streamLocation,
+    this.tag,
+    this.version,
+  });
+
+  PrewarmArtifactRequest.fromJson(core.Map json_)
+    : this(
+        force: json_['force'] as core.bool?,
+        platform: json_.containsKey('platform')
+            ? PrewarmPlatform.fromJson(
+                json_['platform'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retentionDays: json_['retentionDays'] as core.String?,
+        streamLocation: json_['streamLocation'] as core.String?,
+        tag: json_['tag'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final force = this.force;
+    final platform = this.platform;
+    final retentionDays = this.retentionDays;
+    final streamLocation = this.streamLocation;
+    final tag = this.tag;
+    final version = this.version;
+    return {
+      'force': ?force,
+      'platform': ?platform,
+      'retentionDays': ?retentionDays,
+      'streamLocation': ?streamLocation,
+      'tag': ?tag,
+      'version': ?version,
+    };
+  }
+}
+
+/// The platform (architecture and OS) of the image.
+///
+/// This is a sub-message.
+class PrewarmPlatform {
+  /// The architecture of the image or tag.
+  ///
+  /// For example, "arm64" or "amd64".
+  ///
+  /// Optional.
+  core.String? architecture;
+
+  /// The OS of the image or tag.
+  ///
+  /// For example, "linux" or "windows".
+  ///
+  /// Optional.
+  core.String? os;
+
+  PrewarmPlatform({this.architecture, this.os});
+
+  PrewarmPlatform.fromJson(core.Map json_)
+    : this(
+        architecture: json_['architecture'] as core.String?,
+        os: json_['os'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final architecture = this.architecture;
+    final os = this.os;
+    return {'architecture': ?architecture, 'os': ?os};
+  }
+}
+
+/// PrewarmedArtifact represents a streamed artifact.
+///
+/// This is not a request message, so field_behavior annotations are not
+/// required.
+class PrewarmedArtifact {
+  /// The expiration time of the prewarmed artifact.
+  core.String? expirationTime;
+
+  /// The location of the prewarmed artifact.
+  core.String? location;
+
+  /// URL to access the image.
+  ///
+  /// Example:
+  /// us-west4-docker.pkg.dev/test-project/test-repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf
+  core.String? uri;
+
+  PrewarmedArtifact({this.expirationTime, this.location, this.uri});
+
+  PrewarmedArtifact.fromJson(core.Map json_)
+    : this(
+        expirationTime: json_['expirationTime'] as core.String?,
+        location: json_['location'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final expirationTime = this.expirationTime;
+    final location = this.location;
+    final uri = this.uri;
+    return {
+      'expirationTime': ?expirationTime,
+      'location': ?location,
+      'uri': ?uri,
+    };
+  }
+}
+
 /// The Artifact Registry logging configurations that apply to a Project.
 class ProjectConfig {
   /// Identifier.
@@ -5937,6 +6351,9 @@ class RemoteRepositoryConfig {
   /// Specific settings for a Maven remote repository.
   MavenRepository? mavenRepository;
 
+  /// The remote repository will act as a non-caching proxy.
+  NoCacheFetching? noCache;
+
   /// Specific settings for an Npm remote repository.
   NpmRepository? npmRepository;
 
@@ -5958,6 +6375,7 @@ class RemoteRepositoryConfig {
     this.disableUpstreamValidation,
     this.dockerRepository,
     this.mavenRepository,
+    this.noCache,
     this.npmRepository,
     this.pythonRepository,
     this.upstreamCredentials,
@@ -5991,6 +6409,11 @@ class RemoteRepositoryConfig {
                 json_['mavenRepository'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        noCache: json_.containsKey('noCache')
+            ? NoCacheFetching.fromJson(
+                json_['noCache'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         npmRepository: json_.containsKey('npmRepository')
             ? NpmRepository.fromJson(
                 json_['npmRepository'] as core.Map<core.String, core.dynamic>,
@@ -6022,6 +6445,7 @@ class RemoteRepositoryConfig {
     final disableUpstreamValidation = this.disableUpstreamValidation;
     final dockerRepository = this.dockerRepository;
     final mavenRepository = this.mavenRepository;
+    final noCache = this.noCache;
     final npmRepository = this.npmRepository;
     final pythonRepository = this.pythonRepository;
     final upstreamCredentials = this.upstreamCredentials;
@@ -6033,11 +6457,38 @@ class RemoteRepositoryConfig {
       'disableUpstreamValidation': ?disableUpstreamValidation,
       'dockerRepository': ?dockerRepository,
       'mavenRepository': ?mavenRepository,
+      'noCache': ?noCache,
       'npmRepository': ?npmRepository,
       'pythonRepository': ?pythonRepository,
       'upstreamCredentials': ?upstreamCredentials,
       'yumRepository': ?yumRepository,
     };
+  }
+}
+
+/// The request for removing an artifact from streaming.
+typedef RemovePrewarmedArtifactRequest = $PrewarmedArtifactRequest;
+
+/// The response for removing an artifact from streaming.
+class RemovePrewarmedArtifactResponse {
+  /// The prewarmed artifact that was removed.
+  PrewarmedArtifact? prewarmedArtifact;
+
+  RemovePrewarmedArtifactResponse({this.prewarmedArtifact});
+
+  RemovePrewarmedArtifactResponse.fromJson(core.Map json_)
+    : this(
+        prewarmedArtifact: json_.containsKey('prewarmedArtifact')
+            ? PrewarmedArtifact.fromJson(
+                json_['prewarmedArtifact']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final prewarmedArtifact = this.prewarmedArtifact;
+    return {'prewarmedArtifact': ?prewarmedArtifact};
   }
 }
 

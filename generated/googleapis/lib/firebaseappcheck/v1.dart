@@ -37,7 +37,6 @@
 ///     - [ProjectsAppsPlayIntegrityConfigResource]
 ///     - [ProjectsAppsRecaptchaEnterpriseConfigResource]
 ///     - [ProjectsAppsRecaptchaV3ConfigResource]
-///     - [ProjectsAppsSafetyNetConfigResource]
 ///   - [ProjectsServicesResource]
 ///     - [ProjectsServicesResourcePoliciesResource]
 library;
@@ -373,8 +372,6 @@ class ProjectsAppsResource {
       ProjectsAppsRecaptchaEnterpriseConfigResource(_requester);
   ProjectsAppsRecaptchaV3ConfigResource get recaptchaV3Config =>
       ProjectsAppsRecaptchaV3ConfigResource(_requester);
-  ProjectsAppsSafetyNetConfigResource get safetyNetConfig =>
-      ProjectsAppsSafetyNetConfigResource(_requester);
 
   ProjectsAppsResource(commons.ApiRequester client) : _requester = client;
 
@@ -777,59 +774,6 @@ class ProjectsAppsResource {
 
     final url_ =
         'v1/' + core.Uri.encodeFull('$app') + ':exchangeRecaptchaV3Token';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleFirebaseAppcheckV1AppCheckToken.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Validates a
-  /// [SafetyNet token](https://developer.android.com/training/safetynet/attestation#request-attestation-step).
-  ///
-  /// If valid, returns an AppCheckToken.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [app] - Required. The relative resource name of the Android app, in the
-  /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
-  /// `project_number` element can be replaced with the project ID of the
-  /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
-  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleFirebaseAppcheckV1AppCheckToken].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  async.Future<GoogleFirebaseAppcheckV1AppCheckToken> exchangeSafetyNetToken(
-    GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest request,
-    core.String app, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$app') + ':exchangeSafetyNetToken';
 
     final response_ = await _requester.request(
       url_,
@@ -1941,7 +1885,7 @@ class ProjectsAppsRecaptchaV3ConfigResource {
   /// Updates the RecaptchaV3Config for the specified app.
   ///
   /// While this configuration is incomplete or invalid, the app will be unable
-  /// to exchange reCAPTCHA V3 tokens for App Check tokens. For security
+  /// to exchange reCAPTCHA v3 tokens for App Check tokens. For security
   /// reasons, the `site_secret` field is never populated in the response.
   ///
   /// [request] - The metadata request object.
@@ -1988,169 +1932,6 @@ class ProjectsAppsRecaptchaV3ConfigResource {
       queryParams: queryParams_,
     );
     return GoogleFirebaseAppcheckV1RecaptchaV3Config.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-@core.Deprecated(
-  'Not supported. Member documentation may have more information.',
-)
-class ProjectsAppsSafetyNetConfigResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsAppsSafetyNetConfigResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Atomically gets the SafetyNetConfigs for the specified list of apps.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent project name shared by all
-  /// SafetyNetConfigs being retrieved, in the format ```
-  /// projects/{project_number} ``` The parent collection in the `name` field of
-  /// any resource being retrieved must match this field, or the entire batch
-  /// fails.
-  /// Value must have pattern `^projects/\[^/\]+$`.
-  ///
-  /// [names] - Required. The relative resource names of the SafetyNetConfigs to
-  /// retrieve, in the format ```
-  /// projects/{project_number}/apps/{app_id}/safetyNetConfig ``` A maximum of
-  /// 100 objects can be retrieved in a batch.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  async.Future<GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse>
-  batchGet(
-    core.String parent, {
-    core.List<core.String>? names,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'names': ?names,
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'v1/' +
-        core.Uri.encodeFull('$parent') +
-        '/apps/-/safetyNetConfig:batchGet';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Gets the SafetyNetConfig for the specified app.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The relative resource name of the SafetyNetConfig, in
-  /// the format: ``` projects/{project_number}/apps/{app_id}/safetyNetConfig
-  /// ```
-  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/safetyNetConfig$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleFirebaseAppcheckV1SafetyNetConfig].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  async.Future<GoogleFirebaseAppcheckV1SafetyNetConfig> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Updates the SafetyNetConfig for the specified app.
-  ///
-  /// While this configuration is incomplete or invalid, the app will be unable
-  /// to exchange SafetyNet tokens for App Check tokens.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The relative resource name of the SafetyNet
-  /// configuration object, in the format: ```
-  /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
-  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/safetyNetConfig$`.
-  ///
-  /// [updateMask] - Required. A comma-separated list of names of fields in the
-  /// SafetyNetConfig to update. Example: `token_ttl`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleFirebaseAppcheckV1SafetyNetConfig].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  async.Future<GoogleFirebaseAppcheckV1SafetyNetConfig> patch(
-    GoogleFirebaseAppcheckV1SafetyNetConfig request,
-    core.String name, {
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'updateMask': ?updateMask == null ? null : [updateMask],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2216,12 +1997,8 @@ class ProjectsServicesResource {
   ///
   /// [name] - Required. The relative resource name of the Service to retrieve,
   /// in the format: ``` projects/{project_number}/services/{service_id} ```
-  /// Note that the `service_id` element must be a supported service ID.
-  /// Currently, the following service IDs are supported: *
-  /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
-  /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com`
-  /// (Google Identity for iOS)
+  /// Note that the `service_id` element must be a supported service ID. Consult
+  /// the Service.name field for a list of supported service IDs.
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2320,11 +2097,22 @@ class ProjectsServicesResource {
   /// [name] - Required. The relative resource name of the service configuration
   /// object, in the format: ``` projects/{project_number}/services/{service_id}
   /// ``` Note that the `service_id` element must be a supported service ID.
-  /// Currently, the following service IDs are supported: *
-  /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
+  /// Currently, the following service IDs are supported. Firebase and Google
+  /// Cloud services: * `identitytoolkit.googleapis.com` (Firebase
+  /// Authentication) * `firebasedataconnect.googleapis.com` (Firebase SQL
+  /// Connect) * `firestore.googleapis.com` (Cloud Firestore) *
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com`
-  /// (Google Identity for iOS)
+  /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
+  /// `firebaseml.googleapis.com` (Firebase AI Logic) Google Maps Platform
+  /// services: * `maps-backend.googleapis.com` (Maps JavaScript API) *
+  /// `places.googleapis.com` (Places API (New)) Other supported Google
+  /// services: * `oauth2.googleapis.com` (Google Identity for iOS) Note: While
+  /// all the supported `service_id`s may appear to be subdomains of
+  /// `googleapis.com`, the `service_id` has no semantic meaning beyond
+  /// identifying the service to App Check. It is not intended to represent the
+  /// actual domain to which your apps send traffic, nor is it necessarily the
+  /// API that should be enabled to use the service. For information on using
+  /// these Google services, consult their documentation.
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
@@ -2431,9 +2219,8 @@ class ProjectsServicesResourcePoliciesResource {
   /// [parent] - Required. The relative resource name of the parent Service in
   /// which the specified ResourcePolicy will be created, in the format: ```
   /// projects/{project_number}/services/{service_id} ``` Note that the
-  /// `service_id` element must be a supported service ID. Currently, the
-  /// following service IDs are supported: * `oauth2.googleapis.com` (Google
-  /// Identity for iOS)
+  /// `service_id` element must be a supported service ID. Consult the
+  /// ResourcePolicy.name field for a list of supported service IDs.
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2528,8 +2315,7 @@ class ProjectsServicesResourcePoliciesResource {
   /// retrieve, in the format: ```
   /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
   /// ``` Note that the `service_id` element must be a supported service ID.
-  /// Currently, the following service IDs are supported: *
-  /// `oauth2.googleapis.com` (Google Identity for iOS)
+  /// Consult the ResourcePolicy.name field for a list of supported service IDs.
   /// Value must have pattern
   /// `^projects/\[^/\]+/services/\[^/\]+/resourcePolicies/\[^/\]+$`.
   ///
@@ -2571,9 +2357,8 @@ class ProjectsServicesResourcePoliciesResource {
   /// [parent] - Required. The relative resource name of the parent Service for
   /// which to list each associated ResourcePolicy, in the format: ```
   /// projects/{project_number}/services/{service_id} ``` Note that the
-  /// `service_id` element must be a supported service ID. Currently, the
-  /// following service IDs are supported: * `oauth2.googleapis.com` (Google
-  /// Identity for iOS)
+  /// `service_id` element must be a supported service ID. Consult the
+  /// ResourcePolicy.name field for a list of supported service IDs.
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filters the results by the specified rule. For the
@@ -2889,31 +2674,6 @@ class GoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse {
   }
 }
 
-/// Response message for the BatchGetSafetyNetConfigs method.
-class GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse {
-  /// SafetyNetConfigs retrieved.
-  core.List<GoogleFirebaseAppcheckV1SafetyNetConfig>? configs;
-
-  GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse({this.configs});
-
-  GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse.fromJson(
-    core.Map json_,
-  ) : this(
-        configs: (json_['configs'] as core.List?)
-            ?.map(
-              (value) => GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final configs = this.configs;
-    return {'configs': ?configs};
-  }
-}
-
 /// Request message for the BatchUpdateResourcePolicies method.
 class GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest {
   /// The request messages specifying the ResourcePolicy objects to update.
@@ -3083,7 +2843,7 @@ class GoogleFirebaseAppcheckV1DebugToken {
   ///
   /// Immutable. The secret token itself. Must be provided during creation, and
   /// must be a UUID4, case insensitive. This field is immutable once set, and
-  /// cannot be provided during an UpdateDebugToken request. You can, however,
+  /// cannot be provided during a UpdateDebugToken request. You can, however,
   /// delete this debug token using DeleteDebugToken to revoke it. For security
   /// reasons, this field will never be populated in any response.
   ///
@@ -3415,6 +3175,26 @@ class GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest {
   /// Required.
   core.String? customToken;
 
+  /// When `limited_use` is set to `true`, this field specifies the desired
+  /// `jti` claim (Section 4.1.7 of RFC 7519) in the returned App Check token.
+  ///
+  /// *Limited use* App Check tokens with the same `jti` will be counted as the
+  /// same token for the purposes of replay protection. An error is returned if
+  /// this field is specified without setting `limited_use` to `true`. The size
+  /// of this field is limited to 500 bytes. If specified, its length must be at
+  /// least 16 bytes. If this field is omitted or is empty and `limited_use` is
+  /// set to `true`, a randomly generated `jti` claim with length between 16 and
+  /// 500 bytes (inclusive) will be used in the returned App Check token.
+  /// Leaving this field empty is only recommended if your custom attestation
+  /// provider itself is not vulnerable to replay attacks. When `limited_use` is
+  /// set to `false`, the presence and the contents of the `jti` claim in the
+  /// returned App Check token are unspecified. To ensure that the returned App
+  /// Check token is eligible for limited-use functionality, set `limited_use`
+  /// to `true`.
+  ///
+  /// Optional.
+  core.String? jti;
+
   /// Specifies whether this attestation is for use in a *limited use* (`true`)
   /// or *session based* (`false`) context.
   ///
@@ -3424,19 +3204,26 @@ class GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest {
 
   GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest({
     this.customToken,
+    this.jti,
     this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest.fromJson(core.Map json_)
     : this(
         customToken: json_['customToken'] as core.String?,
+        jti: json_['jti'] as core.String?,
         limitedUse: json_['limitedUse'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final customToken = this.customToken;
+    final jti = this.jti;
     final limitedUse = this.limitedUse;
-    return {'customToken': ?customToken, 'limitedUse': ?limitedUse};
+    return {
+      'customToken': ?customToken,
+      'jti': ?jti,
+      'limitedUse': ?limitedUse,
+    };
   }
 }
 
@@ -3618,26 +3405,6 @@ class GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest {
     final limitedUse = this.limitedUse;
     final recaptchaV3Token = this.recaptchaV3Token;
     return {'limitedUse': ?limitedUse, 'recaptchaV3Token': ?recaptchaV3Token};
-  }
-}
-
-/// Request message for the ExchangeSafetyNetToken method.
-class GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest {
-  /// The
-  /// [SafetyNet attestation response](https://developer.android.com/training/safetynet/attestation#request-attestation-step)
-  /// issued to your app.
-  ///
-  /// Required.
-  core.String? safetyNetToken;
-
-  GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest({this.safetyNetToken});
-
-  GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest.fromJson(core.Map json_)
-    : this(safetyNetToken: json_['safetyNetToken'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final safetyNetToken = this.safetyNetToken;
-    return {'safetyNetToken': ?safetyNetToken};
   }
 }
 
@@ -4042,8 +3809,8 @@ class GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity {
   /// rejected. If this is unspecified, the default level is `NO_INTEGRITY`.
   /// Possible string values are:
   /// - "DEVICE_RECOGNITION_LEVEL_UNSPECIFIED" : Default value. Do not specify
-  /// this value directly. When this default value is detected in a
-  /// configuration, the `NO_INTEGRITY` default level takes effect.
+  /// this value directly. If this value is detected in a configuration, it will
+  /// have the same effect as the value `NO_INTEGRITY`.
   /// - "NO_INTEGRITY" : If this level is set, no explicit device integrity
   /// label requirements will be checked. However, because Play Integrity's
   /// other features may perform (and require) their own intrinsic device
@@ -4381,50 +4148,52 @@ class GoogleFirebaseAppcheckV1RecaptchaV3Config {
 ///
 /// Note that this policy will override the service-level configuration.
 class GoogleFirebaseAppcheckV1ResourcePolicy {
-  /// The App Check enforcement mode for this resource.
+  /// The baseline protection EnforcementMode for this resource.
   ///
-  /// This will override the App Check overall EnforcementMode setting on the
-  /// service.
+  /// This will override the service-level baseline protection EnforcementMode.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "OFF" : The relevant App Check protection is not enforced for the
-  /// service or resource, nor are App Check metrics collected. Though the
-  /// relevant App Check protection is not applied, other applicable
-  /// protections, such as user authorization, are still enforced. An
-  /// unconfigured protection is in this mode by default.
-  /// - "UNENFORCED" : The relevant App Check protection is not enforced for the
-  /// service or resource. App Check metrics are collected to help you decide
-  /// when to turn on enforcement. These metrics will show the portion of
-  /// traffic that is deemed invalid by the relevant App Check protection, but
-  /// that traffic will not be rejected until you turn on enforcement. Though
-  /// the relevant App Check protection is not enforced, other applicable
-  /// protections, such as user authorization, are still enforced. Some services
-  /// require certain conditions to be met before they will work with App Check,
-  /// such as requiring you to upgrade to a specific service tier. Until those
-  /// requirements are met for a service, this `UNENFORCED` setting will have no
-  /// effect and App Check will not work with that service.
-  /// - "ENFORCED" : The relevant App Check protection is enforced for the
-  /// service or resource. The service or resource will reject any traffic not
-  /// accompanied by an App Check token that is deemded valid by the relevant
-  /// protection. There are some exceptions depending on the service; for
-  /// example, some services will still allow requests bearing the developer's
-  /// privileged service account credentials without an App Check token. App
-  /// Check metrics continue to be collected to help you detect issues with your
-  /// App Check integration and monitor the composition of your callers. While
-  /// the service is protected by App Check, other applicable protections, such
-  /// as user authorization, continue to be enforced at the same time. Use
+  /// - "OFF" : When a particular protection is set to this mode, that
+  /// protection is not applied for the service or resource, nor are metrics
+  /// related to that protection collected. Though the relevant App Check
+  /// protection is not applied, other applicable protections outside of App
+  /// Check, such as user authorization, are still applied. An unconfigured
+  /// EnforcementMode is in this mode by default.
+  /// - "UNENFORCED" : When a particular protection is set to this mode, that
+  /// protection is not enforced for the service or resource. Metrics related to
+  /// that protection are collected to help you decide when to turn on
+  /// enforcement. These metrics will show the portion of traffic that is deemed
+  /// invalid by that protection, but that traffic will not be rejected until
+  /// you turn on enforcement. This `UNENFORCED` mode is also known as
+  /// monitoring-only mode. Though the relevant App Check protection is not
+  /// enforced, other applicable protections outside of App Check, such as user
+  /// authorization, are still applied. Some services require certain conditions
+  /// to be met before they will work with App Check, such as requiring you to
+  /// upgrade to a specific service tier. Until those requirements are met for a
+  /// service, this `UNENFORCED` setting will have no effect and App Check will
+  /// not work with that service.
+  /// - "ENFORCED" : When a particular protection is set to this mode, that
+  /// protection is enforced for the service or resource. It will reject any
+  /// traffic not accompanied by an App Check token that it deems valid. There
+  /// are some exceptions depending on the service; for example, some services
+  /// will still allow requests bearing the developer's privileged service
+  /// account credentials without an App Check token. App Check metrics continue
+  /// to be collected to help you detect issues with your App Check integration
+  /// and monitor the composition of your callers. While the service is
+  /// protected by App Check, other applicable protections outside of App Check,
+  /// such as user authorization, continue to be applied at the same time. Use
   /// caution when choosing to enforce App Check protections. If your users have
   /// not updated to a version of your app that meets the requirements of the
   /// relevant App Check protection, their app may stop working. App Check
-  /// metrics can help you decide whether to enforce App Check on your services
-  /// and resources. If your app has not launched yet, you should enable
-  /// enforcement as soon as you verify that your App Check implementation is
-  /// correct, since there are no outdated clients in use. Some services require
-  /// certain conditions to be met before they will work with App Check, such as
-  /// requiring you to upgrade to a specific service tier. Until those
-  /// requirements are met for a service, this `ENFORCED` setting will have no
-  /// effect and App Check will not work with that service.
+  /// metrics can help you decide when to enforce that protection on your
+  /// services and resources. If you have not yet published your app, you should
+  /// enable enforcement as soon as you verify that your App Check
+  /// implementation is correct, since there are no outdated clients in use.
+  /// Some services require certain conditions to be met before they will work
+  /// with App Check, such as requiring you to upgrade to a specific service
+  /// tier. Until those requirements are met for a service, this `ENFORCED`
+  /// setting will have no effect and App Check will not work with that service.
   core.String? enforcementMode;
 
   /// This checksum is computed by the server based on the value of other
@@ -4497,86 +4266,52 @@ class GoogleFirebaseAppcheckV1ResourcePolicy {
   }
 }
 
-/// An app's SafetyNet configuration object.
-///
-/// This configuration controls certain properties of the `AppCheckToken`
-/// returned by ExchangeSafetyNetToken, such as its ttl. Note that your
-/// registered SHA-256 certificate fingerprints are used to validate tokens
-/// issued by SafetyNet; please register them via the Firebase Console or
-/// programmatically via the
-/// [Firebase Management Service](https://firebase.google.com/docs/projects/api/reference/rest/v11/projects.androidApps.sha/create).
-class GoogleFirebaseAppcheckV1SafetyNetConfig {
-  /// The relative resource name of the SafetyNet configuration object, in the
-  /// format: ``` projects/{project_number}/apps/{app_id}/safetyNetConfig ```
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Specifies the duration for which App Check tokens exchanged from SafetyNet
-  /// tokens will be valid.
-  ///
-  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
-  /// and 7 days, inclusive.
-  core.String? tokenTtl;
-
-  GoogleFirebaseAppcheckV1SafetyNetConfig({this.name, this.tokenTtl});
-
-  GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        tokenTtl: json_['tokenTtl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final name = this.name;
-    final tokenTtl = this.tokenTtl;
-    return {'name': ?name, 'tokenTtl': ?tokenTtl};
-  }
-}
-
 /// The enforcement configuration for a Firebase service supported by App Check.
 class GoogleFirebaseAppcheckV1Service {
-  /// The App Check enforcement mode for this service.
+  /// The baseline protection EnforcementMode for this service.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "OFF" : The relevant App Check protection is not enforced for the
-  /// service or resource, nor are App Check metrics collected. Though the
-  /// relevant App Check protection is not applied, other applicable
-  /// protections, such as user authorization, are still enforced. An
-  /// unconfigured protection is in this mode by default.
-  /// - "UNENFORCED" : The relevant App Check protection is not enforced for the
-  /// service or resource. App Check metrics are collected to help you decide
-  /// when to turn on enforcement. These metrics will show the portion of
-  /// traffic that is deemed invalid by the relevant App Check protection, but
-  /// that traffic will not be rejected until you turn on enforcement. Though
-  /// the relevant App Check protection is not enforced, other applicable
-  /// protections, such as user authorization, are still enforced. Some services
-  /// require certain conditions to be met before they will work with App Check,
-  /// such as requiring you to upgrade to a specific service tier. Until those
-  /// requirements are met for a service, this `UNENFORCED` setting will have no
-  /// effect and App Check will not work with that service.
-  /// - "ENFORCED" : The relevant App Check protection is enforced for the
-  /// service or resource. The service or resource will reject any traffic not
-  /// accompanied by an App Check token that is deemded valid by the relevant
-  /// protection. There are some exceptions depending on the service; for
-  /// example, some services will still allow requests bearing the developer's
-  /// privileged service account credentials without an App Check token. App
-  /// Check metrics continue to be collected to help you detect issues with your
-  /// App Check integration and monitor the composition of your callers. While
-  /// the service is protected by App Check, other applicable protections, such
-  /// as user authorization, continue to be enforced at the same time. Use
+  /// - "OFF" : When a particular protection is set to this mode, that
+  /// protection is not applied for the service or resource, nor are metrics
+  /// related to that protection collected. Though the relevant App Check
+  /// protection is not applied, other applicable protections outside of App
+  /// Check, such as user authorization, are still applied. An unconfigured
+  /// EnforcementMode is in this mode by default.
+  /// - "UNENFORCED" : When a particular protection is set to this mode, that
+  /// protection is not enforced for the service or resource. Metrics related to
+  /// that protection are collected to help you decide when to turn on
+  /// enforcement. These metrics will show the portion of traffic that is deemed
+  /// invalid by that protection, but that traffic will not be rejected until
+  /// you turn on enforcement. This `UNENFORCED` mode is also known as
+  /// monitoring-only mode. Though the relevant App Check protection is not
+  /// enforced, other applicable protections outside of App Check, such as user
+  /// authorization, are still applied. Some services require certain conditions
+  /// to be met before they will work with App Check, such as requiring you to
+  /// upgrade to a specific service tier. Until those requirements are met for a
+  /// service, this `UNENFORCED` setting will have no effect and App Check will
+  /// not work with that service.
+  /// - "ENFORCED" : When a particular protection is set to this mode, that
+  /// protection is enforced for the service or resource. It will reject any
+  /// traffic not accompanied by an App Check token that it deems valid. There
+  /// are some exceptions depending on the service; for example, some services
+  /// will still allow requests bearing the developer's privileged service
+  /// account credentials without an App Check token. App Check metrics continue
+  /// to be collected to help you detect issues with your App Check integration
+  /// and monitor the composition of your callers. While the service is
+  /// protected by App Check, other applicable protections outside of App Check,
+  /// such as user authorization, continue to be applied at the same time. Use
   /// caution when choosing to enforce App Check protections. If your users have
   /// not updated to a version of your app that meets the requirements of the
   /// relevant App Check protection, their app may stop working. App Check
-  /// metrics can help you decide whether to enforce App Check on your services
-  /// and resources. If your app has not launched yet, you should enable
-  /// enforcement as soon as you verify that your App Check implementation is
-  /// correct, since there are no outdated clients in use. Some services require
-  /// certain conditions to be met before they will work with App Check, such as
-  /// requiring you to upgrade to a specific service tier. Until those
-  /// requirements are met for a service, this `ENFORCED` setting will have no
-  /// effect and App Check will not work with that service.
+  /// metrics can help you decide when to enforce that protection on your
+  /// services and resources. If you have not yet published your app, you should
+  /// enable enforcement as soon as you verify that your App Check
+  /// implementation is correct, since there are no outdated clients in use.
+  /// Some services require certain conditions to be met before they will work
+  /// with App Check, such as requiring you to upgrade to a specific service
+  /// tier. Until those requirements are met for a service, this `ENFORCED`
+  /// setting will have no effect and App Check will not work with that service.
   core.String? enforcementMode;
 
   /// This checksum is computed by the server based on the value of other
@@ -4592,66 +4327,81 @@ class GoogleFirebaseAppcheckV1Service {
   /// format: ``` projects/{project_number}/services/{service_id} ``` Note that
   /// the `service_id` element must be a supported service ID.
   ///
-  /// Currently, the following service IDs are supported: *
-  /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
+  /// Currently, the following service IDs are supported. Firebase and Google
+  /// Cloud services: * `identitytoolkit.googleapis.com` (Firebase
+  /// Authentication) * `firebasedataconnect.googleapis.com` (Firebase SQL
+  /// Connect) * `firestore.googleapis.com` (Cloud Firestore) *
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com`
-  /// (Google Identity for iOS)
+  /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
+  /// `firebaseml.googleapis.com` (Firebase AI Logic) Google Maps Platform
+  /// services: * `maps-backend.googleapis.com` (Maps JavaScript API) *
+  /// `places.googleapis.com` (Places API (New)) Other supported Google
+  /// services: * `oauth2.googleapis.com` (Google Identity for iOS) Note: While
+  /// all the supported `service_id`s may appear to be subdomains of
+  /// `googleapis.com`, the `service_id` has no semantic meaning beyond
+  /// identifying the service to App Check. It is not intended to represent the
+  /// actual domain to which your apps send traffic, nor is it necessarily the
+  /// API that should be enabled to use the service. For information on using
+  /// these Google services, consult their documentation.
   ///
   /// Required.
   core.String? name;
 
-  /// The replay protection enforcement mode for this service.
+  /// The replay protection EnforcementMode for this service.
   ///
-  /// Note that this field cannot be set to a level higher than the overall App
-  /// Check enforcement mode. For example, if the overall App Check enforcement
-  /// mode is set to `UNENFORCED`, this field cannot be set to `ENFORCED`. In
-  /// order to enforce replay protection, you must first enforce App Check. An
-  /// HTTP 400 error will be returned in this case. By default, this field is
-  /// set to `OFF`. Setting this field to `UNENFORCED` or `ENFORCED` is
-  /// considered opting into replay protection. Once opted in, requests to your
-  /// protected services may experience higher latency. To opt out of replay
-  /// protection after opting in, set this field to `OFF`.
+  /// Note that this field cannot be set to a level higher than that of baseline
+  /// protection. For example, if the enforcement mode for baseline protection
+  /// is set to `UNENFORCED`, this field cannot be set to `ENFORCED`. In order
+  /// to enforce replay protection, you must first enforce App Check's baseline
+  /// protection. An HTTP 400 error will be returned in this case. By default,
+  /// this field is set to `OFF`. Setting this field to `UNENFORCED` or
+  /// `ENFORCED` is considered opting into replay protection. Opting in can
+  /// impact your requests by adding some latency and sometimes cost (depending
+  /// on your attestation provider). To opt out of replay protection after
+  /// opting in, set this field to `OFF`.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "OFF" : The relevant App Check protection is not enforced for the
-  /// service or resource, nor are App Check metrics collected. Though the
-  /// relevant App Check protection is not applied, other applicable
-  /// protections, such as user authorization, are still enforced. An
-  /// unconfigured protection is in this mode by default.
-  /// - "UNENFORCED" : The relevant App Check protection is not enforced for the
-  /// service or resource. App Check metrics are collected to help you decide
-  /// when to turn on enforcement. These metrics will show the portion of
-  /// traffic that is deemed invalid by the relevant App Check protection, but
-  /// that traffic will not be rejected until you turn on enforcement. Though
-  /// the relevant App Check protection is not enforced, other applicable
-  /// protections, such as user authorization, are still enforced. Some services
-  /// require certain conditions to be met before they will work with App Check,
-  /// such as requiring you to upgrade to a specific service tier. Until those
-  /// requirements are met for a service, this `UNENFORCED` setting will have no
-  /// effect and App Check will not work with that service.
-  /// - "ENFORCED" : The relevant App Check protection is enforced for the
-  /// service or resource. The service or resource will reject any traffic not
-  /// accompanied by an App Check token that is deemded valid by the relevant
-  /// protection. There are some exceptions depending on the service; for
-  /// example, some services will still allow requests bearing the developer's
-  /// privileged service account credentials without an App Check token. App
-  /// Check metrics continue to be collected to help you detect issues with your
-  /// App Check integration and monitor the composition of your callers. While
-  /// the service is protected by App Check, other applicable protections, such
-  /// as user authorization, continue to be enforced at the same time. Use
+  /// - "OFF" : When a particular protection is set to this mode, that
+  /// protection is not applied for the service or resource, nor are metrics
+  /// related to that protection collected. Though the relevant App Check
+  /// protection is not applied, other applicable protections outside of App
+  /// Check, such as user authorization, are still applied. An unconfigured
+  /// EnforcementMode is in this mode by default.
+  /// - "UNENFORCED" : When a particular protection is set to this mode, that
+  /// protection is not enforced for the service or resource. Metrics related to
+  /// that protection are collected to help you decide when to turn on
+  /// enforcement. These metrics will show the portion of traffic that is deemed
+  /// invalid by that protection, but that traffic will not be rejected until
+  /// you turn on enforcement. This `UNENFORCED` mode is also known as
+  /// monitoring-only mode. Though the relevant App Check protection is not
+  /// enforced, other applicable protections outside of App Check, such as user
+  /// authorization, are still applied. Some services require certain conditions
+  /// to be met before they will work with App Check, such as requiring you to
+  /// upgrade to a specific service tier. Until those requirements are met for a
+  /// service, this `UNENFORCED` setting will have no effect and App Check will
+  /// not work with that service.
+  /// - "ENFORCED" : When a particular protection is set to this mode, that
+  /// protection is enforced for the service or resource. It will reject any
+  /// traffic not accompanied by an App Check token that it deems valid. There
+  /// are some exceptions depending on the service; for example, some services
+  /// will still allow requests bearing the developer's privileged service
+  /// account credentials without an App Check token. App Check metrics continue
+  /// to be collected to help you detect issues with your App Check integration
+  /// and monitor the composition of your callers. While the service is
+  /// protected by App Check, other applicable protections outside of App Check,
+  /// such as user authorization, continue to be applied at the same time. Use
   /// caution when choosing to enforce App Check protections. If your users have
   /// not updated to a version of your app that meets the requirements of the
   /// relevant App Check protection, their app may stop working. App Check
-  /// metrics can help you decide whether to enforce App Check on your services
-  /// and resources. If your app has not launched yet, you should enable
-  /// enforcement as soon as you verify that your App Check implementation is
-  /// correct, since there are no outdated clients in use. Some services require
-  /// certain conditions to be met before they will work with App Check, such as
-  /// requiring you to upgrade to a specific service tier. Until those
-  /// requirements are met for a service, this `ENFORCED` setting will have no
-  /// effect and App Check will not work with that service.
+  /// metrics can help you decide when to enforce that protection on your
+  /// services and resources. If you have not yet published your app, you should
+  /// enable enforcement as soon as you verify that your App Check
+  /// implementation is correct, since there are no outdated clients in use.
+  /// Some services require certain conditions to be met before they will work
+  /// with App Check, such as requiring you to upgrade to a specific service
+  /// tier. Until those requirements are met for a service, this `ENFORCED`
+  /// setting will have no effect and App Check will not work with that service.
   core.String? replayProtection;
 
   /// Timestamp when this service configuration object was most recently
@@ -4702,8 +4452,7 @@ class GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest {
   /// to be updated, in the format: ```
   /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
   /// ``` Note that the `service_id` element must be a supported service ID.
-  /// Currently, the following service IDs are supported: *
-  /// `oauth2.googleapis.com` (Google Identity for iOS)
+  /// Consult the ResourcePolicy.name field for a list of supported service IDs.
   ///
   /// Required.
   GoogleFirebaseAppcheckV1ResourcePolicy? resourcePolicy;
@@ -4744,12 +4493,8 @@ class GoogleFirebaseAppcheckV1UpdateServiceRequest {
   ///
   /// The Service's `name` field is used to identify the Service to be updated,
   /// in the format: ``` projects/{project_number}/services/{service_id} ```
-  /// Note that the `service_id` element must be a supported service ID.
-  /// Currently, the following service IDs are supported: *
-  /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
-  /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com`
-  /// (Google Identity for iOS)
+  /// Note that the `service_id` element must be a supported service ID. Consult
+  /// the Service.name field for a list of supported service IDs.
   ///
   /// Required.
   GoogleFirebaseAppcheckV1Service? service;

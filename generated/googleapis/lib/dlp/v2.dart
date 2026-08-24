@@ -60,6 +60,7 @@
 ///     - [ProjectsLocationsColumnDataProfilesResource]
 ///     - [ProjectsLocationsConnectionsResource]
 ///     - [ProjectsLocationsContentResource]
+///     - [ProjectsLocationsContentPoliciesResource]
 ///     - [ProjectsLocationsDeidentifyTemplatesResource]
 ///     - [ProjectsLocationsDiscoveryConfigsResource]
 ///     - [ProjectsLocationsDlpJobsResource]
@@ -125,7 +126,7 @@ class InfoTypesResource {
   /// supports.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference
   /// to learn more.
   ///
   /// Request parameters:
@@ -198,7 +199,7 @@ class LocationsInfoTypesResource {
   /// supports.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference
   /// to learn more.
   ///
   /// Request parameters:
@@ -278,7 +279,7 @@ class OrganizationsDeidentifyTemplatesResource {
   /// de-identifying content, images, and storage.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -288,7 +289,7 @@ class OrganizationsDeidentifyTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -338,7 +339,7 @@ class OrganizationsDeidentifyTemplatesResource {
   /// Deletes a DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -383,7 +384,7 @@ class OrganizationsDeidentifyTemplatesResource {
   /// Gets a DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -428,7 +429,7 @@ class OrganizationsDeidentifyTemplatesResource {
   /// Lists DeidentifyTemplates.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -436,7 +437,7 @@ class OrganizationsDeidentifyTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -508,7 +509,7 @@ class OrganizationsDeidentifyTemplatesResource {
   /// Updates the DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -566,7 +567,7 @@ class OrganizationsInspectTemplatesResource {
   /// inspecting content, images, and storage.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -576,7 +577,7 @@ class OrganizationsInspectTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -625,7 +626,7 @@ class OrganizationsInspectTemplatesResource {
   /// Deletes an InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -670,7 +671,7 @@ class OrganizationsInspectTemplatesResource {
   /// Gets an InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -715,7 +716,7 @@ class OrganizationsInspectTemplatesResource {
   /// Lists InspectTemplates.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -723,7 +724,7 @@ class OrganizationsInspectTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -794,7 +795,7 @@ class OrganizationsInspectTemplatesResource {
   /// Updates the InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -1300,7 +1301,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// de-identifying content, images, and storage.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -1310,7 +1311,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -1360,7 +1361,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// Deletes a DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -1405,7 +1406,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// Gets a DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -1450,7 +1451,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// Lists DeidentifyTemplates.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -1458,7 +1459,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -1530,7 +1531,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// Updates the DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -1826,16 +1827,16 @@ class OrganizationsLocationsDlpJobsResource {
   /// Lists DlpJobs that match the specified filter in the request.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -2113,7 +2114,7 @@ class OrganizationsLocationsInfoTypesResource {
   /// supports.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference
   /// to learn more.
   ///
   /// Request parameters:
@@ -2178,7 +2179,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// inspecting content, images, and storage.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -2188,7 +2189,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -2237,7 +2238,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// Deletes an InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -2282,7 +2283,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// Gets an InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -2327,7 +2328,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// Lists InspectTemplates.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -2335,7 +2336,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -2406,7 +2407,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// Updates the InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -2463,7 +2464,7 @@ class OrganizationsLocationsJobTriggersResource {
   /// sensitive information on a set schedule.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -2472,7 +2473,7 @@ class OrganizationsLocationsJobTriggersResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -2518,7 +2519,7 @@ class OrganizationsLocationsJobTriggersResource {
   /// Deletes a job trigger.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// Request parameters:
@@ -2561,7 +2562,7 @@ class OrganizationsLocationsJobTriggersResource {
   /// Gets a job trigger.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// Request parameters:
@@ -2604,14 +2605,14 @@ class OrganizationsLocationsJobTriggersResource {
   /// Lists job triggers.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -2708,7 +2709,7 @@ class OrganizationsLocationsJobTriggersResource {
   /// Updates a job trigger.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -2886,7 +2887,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// Creates a pre-built stored infoType to be used for inspection.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -2896,7 +2897,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -2945,7 +2946,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// Deletes a stored infoType.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -2990,7 +2991,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// Gets a stored infoType.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -3034,7 +3035,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// Lists stored infoTypes.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -3042,7 +3043,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -3111,7 +3112,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   ///
   /// The existing version will continue to be used until the new version is
   /// ready. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -3339,7 +3340,7 @@ class OrganizationsStoredInfoTypesResource {
   /// Creates a pre-built stored infoType to be used for inspection.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -3349,7 +3350,7 @@ class OrganizationsStoredInfoTypesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -3398,7 +3399,7 @@ class OrganizationsStoredInfoTypesResource {
   /// Deletes a stored infoType.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -3442,7 +3443,7 @@ class OrganizationsStoredInfoTypesResource {
   /// Gets a stored infoType.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -3485,7 +3486,7 @@ class OrganizationsStoredInfoTypesResource {
   /// Lists stored infoTypes.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -3493,7 +3494,7 @@ class OrganizationsStoredInfoTypesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -3562,7 +3563,7 @@ class OrganizationsStoredInfoTypesResource {
   ///
   /// The existing version will continue to be used until the new version is
   /// ready. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -3636,7 +3637,7 @@ class ProjectsContentResource {
   /// De-identifies potentially sensitive info from a ContentItem.
   ///
   /// This method has limits on input size and output size. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data
   /// to learn more. When no InfoTypes or CustomInfoTypes are specified in this
   /// request, the system will automatically choose what detectors to run. By
   /// default this may be all types, but may change over time as detectors are
@@ -3648,7 +3649,7 @@ class ProjectsContentResource {
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
   /// on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -3698,9 +3699,9 @@ class ProjectsContentResource {
   /// system will automatically choose what detectors to run. By default this
   /// may be all types, but may change over time as detectors are updated. For
   /// how to guides, see
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-images
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-images
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-text,
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-text,
   ///
   /// [request] - The metadata request object.
   ///
@@ -3708,7 +3709,7 @@ class ProjectsContentResource {
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
   /// on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -3754,7 +3755,7 @@ class ProjectsContentResource {
   /// Re-identifies content that has been de-identified.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-identification_in_free_text_code_example
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-identification_in_free_text_code_example
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -3763,7 +3764,7 @@ class ProjectsContentResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -3817,7 +3818,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// de-identifying content, images, and storage.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -3827,7 +3828,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -3877,7 +3878,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// Deletes a DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -3921,7 +3922,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// Gets a DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -3965,7 +3966,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// Lists DeidentifyTemplates.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -3973,7 +3974,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -4045,7 +4046,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// Updates the DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -4101,9 +4102,9 @@ class ProjectsDlpJobsResource {
   ///
   /// The server makes a best effort to cancel the DlpJob, but success is not
   /// guaranteed. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -4149,9 +4150,9 @@ class ProjectsDlpJobsResource {
   /// Creates a new job to inspect storage or calculate risk metrics.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more. When no InfoTypes or CustomInfoTypes are specified in
   /// inspect jobs, the system will automatically choose what detectors to run.
   /// By default this may be all types, but may change over time as detectors
@@ -4163,7 +4164,7 @@ class ProjectsDlpJobsResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -4210,9 +4211,9 @@ class ProjectsDlpJobsResource {
   ///
   /// This method indicates that the client is no longer interested in the
   /// DlpJob result. The job will be canceled if possible. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more.
   ///
   /// Request parameters:
@@ -4253,9 +4254,9 @@ class ProjectsDlpJobsResource {
   /// Gets the latest state of a long-running DlpJob.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more.
   ///
   /// Request parameters:
@@ -4296,16 +4297,16 @@ class ProjectsDlpJobsResource {
   /// Lists DlpJobs that match the specified filter in the request.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -4406,7 +4407,7 @@ class ProjectsImageResource {
   ///
   /// This method has limits on input size, processing time, and output size.
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images
   /// to learn more. When no InfoTypes or CustomInfoTypes are specified in this
   /// request, the system will automatically choose what detectors to run. By
   /// default this may be all types, but may change over time as detectors are
@@ -4419,7 +4420,7 @@ class ProjectsImageResource {
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
   /// on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -4473,7 +4474,7 @@ class ProjectsInspectTemplatesResource {
   /// inspecting content, images, and storage.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -4483,7 +4484,7 @@ class ProjectsInspectTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -4532,7 +4533,7 @@ class ProjectsInspectTemplatesResource {
   /// Deletes an InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -4576,7 +4577,7 @@ class ProjectsInspectTemplatesResource {
   /// Gets an InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -4620,7 +4621,7 @@ class ProjectsInspectTemplatesResource {
   /// Lists InspectTemplates.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -4628,7 +4629,7 @@ class ProjectsInspectTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -4699,7 +4700,7 @@ class ProjectsInspectTemplatesResource {
   /// Updates the InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -4801,7 +4802,7 @@ class ProjectsJobTriggersResource {
   /// sensitive information on a set schedule.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -4810,7 +4811,7 @@ class ProjectsJobTriggersResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -4856,7 +4857,7 @@ class ProjectsJobTriggersResource {
   /// Deletes a job trigger.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// Request parameters:
@@ -4898,7 +4899,7 @@ class ProjectsJobTriggersResource {
   /// Gets a job trigger.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// Request parameters:
@@ -4940,14 +4941,14 @@ class ProjectsJobTriggersResource {
   /// Lists job triggers.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -5044,7 +5045,7 @@ class ProjectsJobTriggersResource {
   /// Updates a job trigger.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -5098,6 +5099,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsConnectionsResource(_requester);
   ProjectsLocationsContentResource get content =>
       ProjectsLocationsContentResource(_requester);
+  ProjectsLocationsContentPoliciesResource get contentPolicies =>
+      ProjectsLocationsContentPoliciesResource(_requester);
   ProjectsLocationsDeidentifyTemplatesResource get deidentifyTemplates =>
       ProjectsLocationsDeidentifyTemplatesResource(_requester);
   ProjectsLocationsDiscoveryConfigsResource get discoveryConfigs =>
@@ -5549,7 +5552,7 @@ class ProjectsLocationsContentResource {
   /// De-identifies potentially sensitive info from a ContentItem.
   ///
   /// This method has limits on input size and output size. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data
   /// to learn more. When no InfoTypes or CustomInfoTypes are specified in this
   /// request, the system will automatically choose what detectors to run. By
   /// default this may be all types, but may change over time as detectors are
@@ -5561,7 +5564,7 @@ class ProjectsLocationsContentResource {
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
   /// on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -5611,9 +5614,9 @@ class ProjectsLocationsContentResource {
   /// system will automatically choose what detectors to run. By default this
   /// may be all types, but may change over time as detectors are updated. For
   /// how to guides, see
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-images
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-images
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-text,
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-text,
   ///
   /// [request] - The metadata request object.
   ///
@@ -5621,7 +5624,7 @@ class ProjectsLocationsContentResource {
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
   /// on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -5667,7 +5670,7 @@ class ProjectsLocationsContentResource {
   /// Re-identifies content that has been de-identified.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-identification_in_free_text_code_example
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-identification_in_free_text_code_example
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -5676,7 +5679,7 @@ class ProjectsLocationsContentResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -5720,6 +5723,230 @@ class ProjectsLocationsContentResource {
   }
 }
 
+class ProjectsLocationsContentPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsContentPoliciesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Create a ContentPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on the scope of the request (project or organization): +
+  /// Projects scope: `projects/{project_id}/locations/{location_id}` +
+  /// Organizations scope: `organizations/{org_id}/locations/{location_id}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ContentPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ContentPolicy> create(
+    GooglePrivacyDlpV2CreateContentPolicyRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contentPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ContentPolicy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Delete a ContentPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the ContentPolicy to be deleted, in
+  /// the format:
+  /// `projects/{project}/locations/{location}/contentPolicies/{content_policy}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/contentPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Get a ContentPolicy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name in the format:
+  /// `projects/{project}/locations/{location}/contentPolicies/{content_policy}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/contentPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ContentPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ContentPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ContentPolicy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists ContentPolicies in a parent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the organization or project, for
+  /// example, `organizations/433245324/locations/europe` or
+  /// `projects/project-id/locations/asia`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Number of results per page, max 1000.
+  ///
+  /// [pageToken] - Optional. Page token from a previous page to return the next
+  /// set of results. If set, all other request fields must match the original
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListContentPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListContentPoliciesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/contentPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ListContentPoliciesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update a ContentPolicy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name in the format:
+  /// `projects/{project}/locations/{location}/contentPolicies/{content_policy}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/contentPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ContentPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ContentPolicy> patch(
+    GooglePrivacyDlpV2UpdateContentPolicyRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ContentPolicy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsDeidentifyTemplatesResource {
   final commons.ApiRequester _requester;
 
@@ -5730,7 +5957,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// de-identifying content, images, and storage.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -5740,7 +5967,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -5790,7 +6017,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// Deletes a DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -5835,7 +6062,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// Gets a DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -5880,7 +6107,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// Lists DeidentifyTemplates.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// Request parameters:
@@ -5888,7 +6115,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -5960,7 +6187,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// Updates the DeidentifyTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -6257,9 +6484,9 @@ class ProjectsLocationsDlpJobsResource {
   ///
   /// The server makes a best effort to cancel the DlpJob, but success is not
   /// guaranteed. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -6306,9 +6533,9 @@ class ProjectsLocationsDlpJobsResource {
   /// Creates a new job to inspect storage or calculate risk metrics.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more. When no InfoTypes or CustomInfoTypes are specified in
   /// inspect jobs, the system will automatically choose what detectors to run.
   /// By default this may be all types, but may change over time as detectors
@@ -6320,7 +6547,7 @@ class ProjectsLocationsDlpJobsResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -6367,9 +6594,9 @@ class ProjectsLocationsDlpJobsResource {
   ///
   /// This method indicates that the client is no longer interested in the
   /// DlpJob result. The job will be canceled if possible. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more.
   ///
   /// Request parameters:
@@ -6457,9 +6684,9 @@ class ProjectsLocationsDlpJobsResource {
   /// Gets the latest state of a long-running DlpJob.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more.
   ///
   /// Request parameters:
@@ -6548,16 +6775,16 @@ class ProjectsLocationsDlpJobsResource {
   /// Lists DlpJobs that match the specified filter in the request.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
   /// and
-  /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis
   /// to learn more.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -6834,7 +7061,7 @@ class ProjectsLocationsImageResource {
   ///
   /// This method has limits on input size, processing time, and output size.
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images
   /// to learn more. When no InfoTypes or CustomInfoTypes are specified in this
   /// request, the system will automatically choose what detectors to run. By
   /// default this may be all types, but may change over time as detectors are
@@ -6847,7 +7074,7 @@ class ProjectsLocationsImageResource {
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
   /// on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -6901,7 +7128,7 @@ class ProjectsLocationsInfoTypesResource {
   /// supports.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference
   /// to learn more.
   ///
   /// Request parameters:
@@ -6966,7 +7193,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// inspecting content, images, and storage.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -6976,7 +7203,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -7025,7 +7252,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// Deletes an InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -7070,7 +7297,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// Gets an InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -7115,7 +7342,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// Lists InspectTemplates.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// Request parameters:
@@ -7123,7 +7350,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -7194,7 +7421,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// Updates the InspectTemplate.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-templates
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -7298,7 +7525,7 @@ class ProjectsLocationsJobTriggersResource {
   /// sensitive information on a set schedule.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -7307,7 +7534,7 @@ class ProjectsLocationsJobTriggersResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -7353,7 +7580,7 @@ class ProjectsLocationsJobTriggersResource {
   /// Deletes a job trigger.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// Request parameters:
@@ -7396,7 +7623,7 @@ class ProjectsLocationsJobTriggersResource {
   /// Gets a job trigger.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// Request parameters:
@@ -7486,14 +7713,14 @@ class ProjectsLocationsJobTriggersResource {
   /// Lists job triggers.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -7590,7 +7817,7 @@ class ProjectsLocationsJobTriggersResource {
   /// Updates a job trigger.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -7768,7 +7995,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// Creates a pre-built stored infoType to be used for inspection.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -7778,7 +8005,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -7827,7 +8054,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// Deletes a stored infoType.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -7872,7 +8099,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// Gets a stored infoType.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -7916,7 +8143,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// Lists stored infoTypes.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -7924,7 +8151,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -7993,7 +8220,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   ///
   /// The existing version will continue to be used until the new version is
   /// ready. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -8221,7 +8448,7 @@ class ProjectsStoredInfoTypesResource {
   /// Creates a pre-built stored infoType to be used for inspection.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -8231,7 +8458,7 @@ class ProjectsStoredInfoTypesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` +
@@ -8280,7 +8507,7 @@ class ProjectsStoredInfoTypesResource {
   /// Deletes a stored infoType.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -8324,7 +8551,7 @@ class ProjectsStoredInfoTypesResource {
   /// Gets a stored infoType.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -8367,7 +8594,7 @@ class ProjectsStoredInfoTypesResource {
   /// Lists stored infoTypes.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// Request parameters:
@@ -8375,7 +8602,7 @@ class ProjectsStoredInfoTypesResource {
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
   /// whether you have
-  /// [specified a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location):
+  /// [specified a processing location](https://docs.cloud.google.com/sensitive-data-protection/docs/specifying-location):
   /// + Projects scope, location specified:
   /// `projects/{project_id}/locations/{location_id}` + Projects scope, no
   /// location specified (defaults to global): `projects/{project_id}` The
@@ -8444,7 +8671,7 @@ class ProjectsStoredInfoTypesResource {
   ///
   /// The existing version will continue to be used until the new version is
   /// ready. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
   /// to learn more.
   ///
   /// [request] - The metadata request object.
@@ -8492,7 +8719,8 @@ class ProjectsStoredInfoTypesResource {
 
 /// A task to execute on the completion of a job.
 ///
-/// See https://cloud.google.com/sensitive-data-protection/docs/concepts-actions
+/// See
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-actions
 /// to learn more.
 class GooglePrivacyDlpV2Action {
   /// Create a de-identified copy of the input data.
@@ -8501,7 +8729,7 @@ class GooglePrivacyDlpV2Action {
   /// Sends an email when the job completes.
   ///
   /// The email goes to IAM project owners and technical
-  /// [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
+  /// [Essential Contacts](https://docs.cloud.google.com/resource-manager/docs/managing-notification-contacts).
   GooglePrivacyDlpV2JobNotificationEmails? jobNotificationEmails;
 
   /// Publish a notification to a Pub/Sub topic.
@@ -8652,7 +8880,7 @@ class GooglePrivacyDlpV2AdjustByImageFindings {
   GooglePrivacyDlpV2ImageContainmentType? imageContainmentType;
 
   /// A list of image-supported infoTypes—excluding
-  /// [document infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to
+  /// [document infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to
   /// be used as context for the adjustment rule.
   ///
   /// Sensitive Data Protection adjusts the likelihood of an image finding if
@@ -8869,6 +9097,10 @@ class GooglePrivacyDlpV2AdjustmentRule {
 /// Apply transformation to all findings.
 typedef GooglePrivacyDlpV2AllInfoTypes = $Empty;
 
+/// If set, indicates that the finding applies to all messages in the
+/// conversation.
+typedef GooglePrivacyDlpV2AllMessages = $Empty;
+
 /// Catch-all for all other tables not specified by other filters.
 ///
 /// Should always be last, except for single-table configurations, which will
@@ -8994,22 +9226,34 @@ class GooglePrivacyDlpV2AmazonS3BucketRegex {
 /// Result of a risk analysis operation request.
 class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
   /// Categorical stats result
+  ///
+  /// Output only.
   GooglePrivacyDlpV2CategoricalStatsResult? categoricalStatsResult;
 
   /// Delta-presence result
+  ///
+  /// Output only.
   GooglePrivacyDlpV2DeltaPresenceEstimationResult?
   deltaPresenceEstimationResult;
 
   /// K-anonymity result
+  ///
+  /// Output only.
   GooglePrivacyDlpV2KAnonymityResult? kAnonymityResult;
 
   /// K-map result
+  ///
+  /// Output only.
   GooglePrivacyDlpV2KMapEstimationResult? kMapEstimationResult;
 
   /// L-divesity result
+  ///
+  /// Output only.
   GooglePrivacyDlpV2LDiversityResult? lDiversityResult;
 
   /// Numerical stats result
+  ///
+  /// Output only.
   GooglePrivacyDlpV2NumericalStatsResult? numericalStatsResult;
 
   /// The configuration used for this job.
@@ -9255,6 +9499,47 @@ class GooglePrivacyDlpV2AwsDiscoveryStartingLocation {
   }
 }
 
+/// Represents a batch of content to inspect or redact.
+class GooglePrivacyDlpV2BatchContentItem {
+  /// Represents a batch of string values to inspect or redact.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2StringValueBatch? stringValueBatch;
+
+  GooglePrivacyDlpV2BatchContentItem({this.stringValueBatch});
+
+  GooglePrivacyDlpV2BatchContentItem.fromJson(core.Map json_)
+    : this(
+        stringValueBatch: json_.containsKey('stringValueBatch')
+            ? GooglePrivacyDlpV2StringValueBatch.fromJson(
+                json_['stringValueBatch']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final stringValueBatch = this.stringValueBatch;
+    return {'stringValueBatch': ?stringValueBatch};
+  }
+}
+
+/// Location within a batch of content.
+class GooglePrivacyDlpV2BatchContentLocation {
+  /// Matches an index of a batch item in the batch provided in the request.
+  core.int? itemIndex;
+
+  GooglePrivacyDlpV2BatchContentLocation({this.itemIndex});
+
+  GooglePrivacyDlpV2BatchContentLocation.fromJson(core.Map json_)
+    : this(itemIndex: json_['itemIndex'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final itemIndex = this.itemIndex;
+    return {'itemIndex': ?itemIndex};
+  }
+}
+
 /// Target used to match against for discovery with BigQuery tables
 class GooglePrivacyDlpV2BigQueryDiscoveryTarget {
   /// How often and when to update profiles.
@@ -9425,7 +9710,7 @@ class GooglePrivacyDlpV2BigQueryOptions {
   /// between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to
   /// 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot
   /// be used in conjunction with TimespanConfig. Caution: A
-  /// [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling)
+  /// [known issue](https://docs.cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling)
   /// is causing the `rowsLimitPercent` field to behave unexpectedly. We
   /// recommend using `rowsLimit` instead.
   core.int? rowsLimitPercent;
@@ -9661,6 +9946,8 @@ class GooglePrivacyDlpV2BigQueryTableTypes {
 }
 
 /// Bounding box encompassing detected text within an image.
+///
+/// Coordinates are in pixels and strictly within the image or frame bounds.
 class GooglePrivacyDlpV2BoundingBox {
   /// Height of the bounding box in pixels.
   core.int? height;
@@ -9750,7 +10037,7 @@ class GooglePrivacyDlpV2Bucket {
 /// bound `Value` type differs from the type of data being transformed, we will
 /// first attempt converting the type of the data to be transformed to match the
 /// type of the bound before comparing. See
-/// https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-bucketing
 /// to learn more.
 class GooglePrivacyDlpV2BucketingConfig {
   /// Set of buckets.
@@ -10144,8 +10431,8 @@ class GooglePrivacyDlpV2CloudSqlDiscoveryTarget {
 ///
 /// This requires the Cloud SQL IAM feature to be enabled on the instance, which
 /// is not the default for Cloud SQL. See
-/// https://cloud.google.com/sql/docs/postgres/authentication and
-/// https://cloud.google.com/sql/docs/mysql/authentication.
+/// https://docs.cloud.google.com/sql/docs/postgres/authentication and
+/// https://docs.cloud.google.com/sql/docs/mysql/authentication.
 typedef GooglePrivacyDlpV2CloudSqlIamCredential = $Empty;
 
 /// Cloud SQL connection properties.
@@ -10330,7 +10617,7 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   /// `bytes_limit_per_file_percent` can be specified. This field can't be set
   /// if de-identification is requested. For certain file types, setting this
   /// field has no effect. For more information, see
-  /// [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
+  /// [Limits on bytes scanned per file](https://docs.cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
   core.String? bytesLimitPerFile;
 
   /// Max percentage of bytes to scan from a file.
@@ -10341,7 +10628,7 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   /// be specified. This field can't be set if de-identification is requested.
   /// For certain file types, setting this field has no effect. For more
   /// information, see
-  /// [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
+  /// [Limits on bytes scanned per file](https://docs.cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
   core.int? bytesLimitPerFilePercent;
 
   /// The set of one or more files to scan.
@@ -10655,7 +10942,7 @@ class GooglePrivacyDlpV2ColumnDataProfile {
 
   /// If supported, the location where the dataset's data is stored.
   ///
-  /// See https://cloud.google.com/bigquery/docs/locations for supported
+  /// See https://docs.cloud.google.com/bigquery/docs/locations for supported
   /// BigQuery locations.
   core.String? datasetLocation;
 
@@ -11100,6 +11387,9 @@ class GooglePrivacyDlpV2Container {
 
 /// Type of content to inspect.
 class GooglePrivacyDlpV2ContentItem {
+  /// Represents a batch of items to inspect.
+  GooglePrivacyDlpV2BatchContentItem? batchContentItem;
+
   /// Content data to inspect or redact.
   ///
   /// Replaces `type` and `data`.
@@ -11108,10 +11398,16 @@ class GooglePrivacyDlpV2ContentItem {
   /// User provided metadata for the content.
   GooglePrivacyDlpV2ContentMetadata? contentMetadata;
 
+  /// Represents a conversation (either complete or a slice).
+  ///
+  /// It is assumed that all included messages are contiguous and ordered in
+  /// chronological order.
+  GooglePrivacyDlpV2Conversation? conversation;
+
   /// Structured content for inspection.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-text#inspecting_a_table
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-text#inspecting_a_table
   /// to learn more.
   GooglePrivacyDlpV2Table? table;
 
@@ -11119,14 +11415,22 @@ class GooglePrivacyDlpV2ContentItem {
   core.String? value;
 
   GooglePrivacyDlpV2ContentItem({
+    this.batchContentItem,
     this.byteItem,
     this.contentMetadata,
+    this.conversation,
     this.table,
     this.value,
   });
 
   GooglePrivacyDlpV2ContentItem.fromJson(core.Map json_)
     : this(
+        batchContentItem: json_.containsKey('batchContentItem')
+            ? GooglePrivacyDlpV2BatchContentItem.fromJson(
+                json_['batchContentItem']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         byteItem: json_.containsKey('byteItem')
             ? GooglePrivacyDlpV2ByteContentItem.fromJson(
                 json_['byteItem'] as core.Map<core.String, core.dynamic>,
@@ -11135,6 +11439,11 @@ class GooglePrivacyDlpV2ContentItem {
         contentMetadata: json_.containsKey('contentMetadata')
             ? GooglePrivacyDlpV2ContentMetadata.fromJson(
                 json_['contentMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        conversation: json_.containsKey('conversation')
+            ? GooglePrivacyDlpV2Conversation.fromJson(
+                json_['conversation'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         table: json_.containsKey('table')
@@ -11146,13 +11455,17 @@ class GooglePrivacyDlpV2ContentItem {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final batchContentItem = this.batchContentItem;
     final byteItem = this.byteItem;
     final contentMetadata = this.contentMetadata;
+    final conversation = this.conversation;
     final table = this.table;
     final value = this.value;
     return {
+      'batchContentItem': ?batchContentItem,
       'byteItem': ?byteItem,
       'contentMetadata': ?contentMetadata,
+      'conversation': ?conversation,
       'table': ?table,
       'value': ?value,
     };
@@ -11162,6 +11475,9 @@ class GooglePrivacyDlpV2ContentItem {
 /// Precise location of the finding within a document, record, image, or
 /// metadata container.
 class GooglePrivacyDlpV2ContentLocation {
+  /// Location within a batch of content.
+  GooglePrivacyDlpV2BatchContentLocation? batchContentLocation;
+
   /// Name of the container where the finding is located.
   ///
   /// The top level name is the source file name or table name. Names of some
@@ -11182,6 +11498,9 @@ class GooglePrivacyDlpV2ContentLocation {
   /// Finding container version, if available ("generation" for Cloud Storage).
   core.String? containerVersion;
 
+  /// Location within a conversation.
+  GooglePrivacyDlpV2ConversationLocation? conversationLocation;
+
   /// Location data for document files.
   GooglePrivacyDlpV2DocumentLocation? documentLocation;
 
@@ -11195,9 +11514,11 @@ class GooglePrivacyDlpV2ContentLocation {
   GooglePrivacyDlpV2RecordLocation? recordLocation;
 
   GooglePrivacyDlpV2ContentLocation({
+    this.batchContentLocation,
     this.containerName,
     this.containerTimestamp,
     this.containerVersion,
+    this.conversationLocation,
     this.documentLocation,
     this.imageLocation,
     this.metadataLocation,
@@ -11206,9 +11527,21 @@ class GooglePrivacyDlpV2ContentLocation {
 
   GooglePrivacyDlpV2ContentLocation.fromJson(core.Map json_)
     : this(
+        batchContentLocation: json_.containsKey('batchContentLocation')
+            ? GooglePrivacyDlpV2BatchContentLocation.fromJson(
+                json_['batchContentLocation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         containerName: json_['containerName'] as core.String?,
         containerTimestamp: json_['containerTimestamp'] as core.String?,
         containerVersion: json_['containerVersion'] as core.String?,
+        conversationLocation: json_.containsKey('conversationLocation')
+            ? GooglePrivacyDlpV2ConversationLocation.fromJson(
+                json_['conversationLocation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         documentLocation: json_.containsKey('documentLocation')
             ? GooglePrivacyDlpV2DocumentLocation.fromJson(
                 json_['documentLocation']
@@ -11234,17 +11567,21 @@ class GooglePrivacyDlpV2ContentLocation {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final batchContentLocation = this.batchContentLocation;
     final containerName = this.containerName;
     final containerTimestamp = this.containerTimestamp;
     final containerVersion = this.containerVersion;
+    final conversationLocation = this.conversationLocation;
     final documentLocation = this.documentLocation;
     final imageLocation = this.imageLocation;
     final metadataLocation = this.metadataLocation;
     final recordLocation = this.recordLocation;
     return {
+      'batchContentLocation': ?batchContentLocation,
       'containerName': ?containerName,
       'containerTimestamp': ?containerTimestamp,
       'containerVersion': ?containerVersion,
+      'conversationLocation': ?conversationLocation,
       'documentLocation': ?documentLocation,
       'imageLocation': ?imageLocation,
       'metadataLocation': ?metadataLocation,
@@ -11255,13 +11592,25 @@ class GooglePrivacyDlpV2ContentLocation {
 
 /// Metadata on content to be scanned.
 class GooglePrivacyDlpV2ContentMetadata {
+  /// The file labels associated with the content.
+  ///
+  /// Optional.
+  core.List<GooglePrivacyDlpV2FileLabel>? fileLabels;
+
   /// User provided key-value pairs of content metadata.
   core.List<GooglePrivacyDlpV2KeyValueMetadataProperty>? properties;
 
-  GooglePrivacyDlpV2ContentMetadata({this.properties});
+  GooglePrivacyDlpV2ContentMetadata({this.fileLabels, this.properties});
 
   GooglePrivacyDlpV2ContentMetadata.fromJson(core.Map json_)
     : this(
+        fileLabels: (json_['fileLabels'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2FileLabel.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         properties: (json_['properties'] as core.List?)
             ?.map(
               (value) => GooglePrivacyDlpV2KeyValueMetadataProperty.fromJson(
@@ -11272,8 +11621,305 @@ class GooglePrivacyDlpV2ContentMetadata {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final fileLabels = this.fileLabels;
     final properties = this.properties;
-    return {'properties': ?properties};
+    return {'fileLabels': ?fileLabels, 'properties': ?properties};
+  }
+}
+
+/// A policy to apply to content based on its inspection findings.
+class GooglePrivacyDlpV2ContentPolicy {
+  /// The creation timestamp of a contentPolicy; output-only field.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Action to take if the content is scanned and no rules match.
+  ///
+  /// Defaults to returning an ALLOW verdict if not set.
+  GooglePrivacyDlpV2PolicyAction? defaultAction;
+
+  /// Display name (max 63 chars)
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// A stream of errors encountered when the policy was applied.
+  ///
+  /// Output only field. Will return the last 100 errors. Whenever the policy is
+  /// modified this list will be cleared.
+  ///
+  /// Output only.
+  core.List<GooglePrivacyDlpV2Error>? errors;
+
+  /// Action to take if the content is a supported file type and size but fails
+  /// to be scanned, for example because the file is encrypted or corrupted.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2PolicyAction? failedToScanSupportedFileType;
+
+  /// Action to take if the content is a supported file type but is too large to
+  /// be scanned.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2PolicyAction? inputTooLarge;
+
+  /// InspectConfig to use to produce findings.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2InspectConfig? inspectConfig;
+
+  /// InspectTemplate to use to produce findings.
+  ///
+  /// Deprecated: use inspect_config instead.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  GooglePrivacyDlpV2InspectTemplate? inspectTemplate;
+
+  /// Log the actions taken by the content policy to external systems.
+  ///
+  /// Optional.
+  core.List<GooglePrivacyDlpV2LoggingConfig>? loggingConfigs;
+
+  /// Resource name of the policy.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Policies to apply, based on the findings returned by inspection.
+  ///
+  /// The first rule to match applies.
+  ///
+  /// Required.
+  core.List<GooglePrivacyDlpV2PolicyRule>? rules;
+
+  /// Action to take if the content is an unsupported file type.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2PolicyAction? unsupportedFileType;
+
+  /// The last update timestamp of a contentPolicy; output-only field.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GooglePrivacyDlpV2ContentPolicy({
+    this.createTime,
+    this.defaultAction,
+    this.displayName,
+    this.errors,
+    this.failedToScanSupportedFileType,
+    this.inputTooLarge,
+    this.inspectConfig,
+    this.inspectTemplate,
+    this.loggingConfigs,
+    this.name,
+    this.rules,
+    this.unsupportedFileType,
+    this.updateTime,
+  });
+
+  GooglePrivacyDlpV2ContentPolicy.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        defaultAction: json_.containsKey('defaultAction')
+            ? GooglePrivacyDlpV2PolicyAction.fromJson(
+                json_['defaultAction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        displayName: json_['displayName'] as core.String?,
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2Error.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        failedToScanSupportedFileType:
+            json_.containsKey('failedToScanSupportedFileType')
+            ? GooglePrivacyDlpV2PolicyAction.fromJson(
+                json_['failedToScanSupportedFileType']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inputTooLarge: json_.containsKey('inputTooLarge')
+            ? GooglePrivacyDlpV2PolicyAction.fromJson(
+                json_['inputTooLarge'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inspectConfig: json_.containsKey('inspectConfig')
+            ? GooglePrivacyDlpV2InspectConfig.fromJson(
+                json_['inspectConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        inspectTemplate: json_.containsKey('inspectTemplate')
+            ? GooglePrivacyDlpV2InspectTemplate.fromJson(
+                json_['inspectTemplate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        loggingConfigs: (json_['loggingConfigs'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2LoggingConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        name: json_['name'] as core.String?,
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2PolicyRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unsupportedFileType: json_.containsKey('unsupportedFileType')
+            ? GooglePrivacyDlpV2PolicyAction.fromJson(
+                json_['unsupportedFileType']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final defaultAction = this.defaultAction;
+    final displayName = this.displayName;
+    final errors = this.errors;
+    final failedToScanSupportedFileType = this.failedToScanSupportedFileType;
+    final inputTooLarge = this.inputTooLarge;
+    final inspectConfig = this.inspectConfig;
+    final inspectTemplate = this.inspectTemplate;
+    final loggingConfigs = this.loggingConfigs;
+    final name = this.name;
+    final rules = this.rules;
+    final unsupportedFileType = this.unsupportedFileType;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'defaultAction': ?defaultAction,
+      'displayName': ?displayName,
+      'errors': ?errors,
+      'failedToScanSupportedFileType': ?failedToScanSupportedFileType,
+      'inputTooLarge': ?inputTooLarge,
+      'inspectConfig': ?inspectConfig,
+      'inspectTemplate': ?inspectTemplate,
+      'loggingConfigs': ?loggingConfigs,
+      'name': ?name,
+      'rules': ?rules,
+      'unsupportedFileType': ?unsupportedFileType,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Complete conversation or slice of a conversation.
+///
+/// It is assumed that all included messages are contiguous and ordered in
+/// chronological order.
+class GooglePrivacyDlpV2Conversation {
+  /// Messages exchanged within this conversation.
+  ///
+  /// The maximum number of messages allowed is 50k. The order of the messages
+  /// is assumed to be chronological and will be used to index findings in the
+  /// response.
+  core.List<GooglePrivacyDlpV2ConversationMessage>? messages;
+
+  GooglePrivacyDlpV2Conversation({this.messages});
+
+  GooglePrivacyDlpV2Conversation.fromJson(core.Map json_)
+    : this(
+        messages: (json_['messages'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2ConversationMessage.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final messages = this.messages;
+    return {'messages': ?messages};
+  }
+}
+
+/// Location within a conversation.
+class GooglePrivacyDlpV2ConversationLocation {
+  /// If set, indicates that the finding applies to all messages in the
+  /// conversation.
+  GooglePrivacyDlpV2AllMessages? allMessages;
+
+  /// Matches an index of a message in the conversation provided in the request.
+  core.int? messageIndex;
+
+  GooglePrivacyDlpV2ConversationLocation({this.allMessages, this.messageIndex});
+
+  GooglePrivacyDlpV2ConversationLocation.fromJson(core.Map json_)
+    : this(
+        allMessages: json_.containsKey('allMessages')
+            ? GooglePrivacyDlpV2AllMessages.fromJson(
+                json_['allMessages'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        messageIndex: json_['messageIndex'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allMessages = this.allMessages;
+    final messageIndex = this.messageIndex;
+    return {'allMessages': ?allMessages, 'messageIndex': ?messageIndex};
+  }
+}
+
+/// Single message in a conversation.
+class GooglePrivacyDlpV2ConversationMessage {
+  /// The contents of this message.
+  core.String? content;
+
+  /// The type of message.
+  /// Possible string values are:
+  /// - "MESSAGE_TYPE_UNSPECIFIED" : Unused.
+  /// - "CONTENT" : Message contains content to be inspected.
+  /// - "CONTEXT" : Message contains context only and will not have findings
+  /// reported from it during inspection or redacted from it during
+  /// de-identification.
+  core.String? messageType;
+
+  /// The identifier of the participant, for example 'test-user' or 'gemini'.
+  ///
+  /// The participant ID can contain lowercase letters, numbers, and hyphens;
+  /// that is, it must match the regular expression:
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters.
+  ///
+  /// Optional.
+  core.String? participantId;
+
+  GooglePrivacyDlpV2ConversationMessage({
+    this.content,
+    this.messageType,
+    this.participantId,
+  });
+
+  GooglePrivacyDlpV2ConversationMessage.fromJson(core.Map json_)
+    : this(
+        content: json_['content'] as core.String?,
+        messageType: json_['messageType'] as core.String?,
+        participantId: json_['participantId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final messageType = this.messageType;
+    final participantId = this.participantId;
+    return {
+      'content': ?content,
+      'messageType': ?messageType,
+      'participantId': ?participantId,
+    };
   }
 }
 
@@ -11298,6 +11944,48 @@ class GooglePrivacyDlpV2CreateConnectionRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final connection = this.connection;
     return {'connection': ?connection};
+  }
+}
+
+/// Request message for CreateContentPolicy.
+class GooglePrivacyDlpV2CreateContentPolicyRequest {
+  /// The content_policy resource.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2ContentPolicy? contentPolicy;
+
+  /// The content policy ID can contain uppercase and lowercase letters,
+  /// numbers, and hyphens; that is, it must match the regular expression:
+  /// `[a-zA-Z\d-_]+`.
+  ///
+  /// The maximum length is 100 characters. If empty, the system will generate a
+  /// random id.
+  ///
+  /// Optional.
+  core.String? contentPolicyId;
+
+  GooglePrivacyDlpV2CreateContentPolicyRequest({
+    this.contentPolicy,
+    this.contentPolicyId,
+  });
+
+  GooglePrivacyDlpV2CreateContentPolicyRequest.fromJson(core.Map json_)
+    : this(
+        contentPolicy: json_.containsKey('contentPolicy')
+            ? GooglePrivacyDlpV2ContentPolicy.fromJson(
+                json_['contentPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contentPolicyId: json_['contentPolicyId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentPolicy = this.contentPolicy;
+    final contentPolicyId = this.contentPolicyId;
+    return {
+      'contentPolicy': ?contentPolicy,
+      'contentPolicyId': ?contentPolicyId,
+    };
   }
 }
 
@@ -11690,8 +12378,8 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
 /// encoded representation of the hashed output (for example,
 /// L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and
 /// integer values can be hashed. See
-/// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to
-/// learn more.
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/pseudonymization
+/// to learn more.
 class GooglePrivacyDlpV2CryptoHashConfig {
   /// The key used by the hash function.
   GooglePrivacyDlpV2CryptoKey? cryptoKey;
@@ -11774,9 +12462,9 @@ class GooglePrivacyDlpV2CryptoKey {
 /// the same identifier will be replaced with the same surrogate. Identifiers
 /// must be at least two characters long. In the case that the identifier is the
 /// empty string, it will be skipped. See
-/// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to
-/// learn more. Note: We recommend using CryptoDeterministicConfig for all use
-/// cases which do not require preserving the input alphabet space and size,
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/pseudonymization
+/// to learn more. Note: We recommend using CryptoDeterministicConfig for all
+/// use cases which do not require preserving the input alphabet space and size,
 /// plus warrant referential integrity. FPE incurs significant latency costs.
 class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /// Common alphabets.
@@ -11833,7 +12521,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /// 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc'
   /// This annotation identifies the surrogate when inspecting content using the
   /// custom infoType
-  /// \[`SurrogateType`\](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype).
+  /// \[`SurrogateType`\](https://docs.cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype).
   /// This facilitates reversal of the surrogate when it occurs in free text. In
   /// order for inspection to work properly, the name of this infoType must not
   /// occur naturally anywhere in your data; otherwise, inspection may find a
@@ -11922,6 +12610,9 @@ class GooglePrivacyDlpV2CustomInfoType {
   /// excluded from final results, but can still affect rule execution.
   core.String? exclusionType;
 
+  /// File label to detect.
+  GooglePrivacyDlpV2FileLabelInfoType? fileLabelInfoType;
+
   /// CustomInfoType can either be a new infoType, or an extension of built-in
   /// infoType, when the name matches one of existing infoTypes and that
   /// infoType is specified in `InspectContent.info_types` field.
@@ -11971,6 +12662,7 @@ class GooglePrivacyDlpV2CustomInfoType {
     this.detectionRules,
     this.dictionary,
     this.exclusionType,
+    this.fileLabelInfoType,
     this.infoType,
     this.likelihood,
     this.metadataKeyValueExpression,
@@ -11995,6 +12687,12 @@ class GooglePrivacyDlpV2CustomInfoType {
               )
             : null,
         exclusionType: json_['exclusionType'] as core.String?,
+        fileLabelInfoType: json_.containsKey('fileLabelInfoType')
+            ? GooglePrivacyDlpV2FileLabelInfoType.fromJson(
+                json_['fileLabelInfoType']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         infoType: json_.containsKey('infoType')
             ? GooglePrivacyDlpV2InfoType.fromJson(
                 json_['infoType'] as core.Map<core.String, core.dynamic>,
@@ -12035,6 +12733,7 @@ class GooglePrivacyDlpV2CustomInfoType {
     final detectionRules = this.detectionRules;
     final dictionary = this.dictionary;
     final exclusionType = this.exclusionType;
+    final fileLabelInfoType = this.fileLabelInfoType;
     final infoType = this.infoType;
     final likelihood = this.likelihood;
     final metadataKeyValueExpression = this.metadataKeyValueExpression;
@@ -12046,6 +12745,7 @@ class GooglePrivacyDlpV2CustomInfoType {
       'detectionRules': ?detectionRules,
       'dictionary': ?dictionary,
       'exclusionType': ?exclusionType,
+      'fileLabelInfoType': ?fileLabelInfoType,
       'infoType': ?infoType,
       'likelihood': ?likelihood,
       'metadataKeyValueExpression': ?metadataKeyValueExpression,
@@ -12069,7 +12769,7 @@ class GooglePrivacyDlpV2DataProfileAction {
   ///
   /// For more information, see \[Use Sensitive Data Protection data in
   /// context-aware
-  /// analytics\](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
+  /// analytics\](https://docs.cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
   GooglePrivacyDlpV2PublishToChronicle? publishToChronicle;
 
   /// Publishes a portion of each profile to Dataplex Universal Catalog with the
@@ -12224,7 +12924,7 @@ class GooglePrivacyDlpV2DataProfileConfigSnapshot {
 ///
 /// Only one data profile configuration may exist per organization, folder, or
 /// project. The generated data profiles are retained according to the
-/// [data retention policy](https://cloud.google.com/sensitive-data-protection/docs/data-profiles#retention).
+/// [data retention policy](https://docs.cloud.google.com/sensitive-data-protection/docs/data-profiles#retention).
 class GooglePrivacyDlpV2DataProfileJobConfig {
   /// Actions to execute at the completion of the job.
   core.List<GooglePrivacyDlpV2DataProfileAction>? dataProfileActions;
@@ -12240,7 +12940,7 @@ class GooglePrivacyDlpV2DataProfileJobConfig {
   /// specified, it will be copied to that region and used instead. If no global
   /// or region-specific template is provided for a region with data, that
   /// region's data will not be scanned. For more information, see
-  /// https://cloud.google.com/sensitive-data-protection/docs/data-profiles#data-residency.
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/data-profiles#data-residency.
   core.List<core.String>? inspectTemplates;
 
   /// The data to scan.
@@ -12627,7 +13327,7 @@ class GooglePrivacyDlpV2DatastoreOptions {
 /// same context.
 ///
 /// See
-/// https://cloud.google.com/sensitive-data-protection/docs/concepts-date-shifting
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-date-shifting
 /// to learn more.
 class GooglePrivacyDlpV2DateShiftConfig {
   /// Points to the field that contains the context, for example, an entity id.
@@ -13148,7 +13848,7 @@ class GooglePrivacyDlpV2DeidentifyDataSourceStats {
 /// DeidentifyTemplates contains instructions on how to de-identify content.
 ///
 /// See
-/// https://cloud.google.com/sensitive-data-protection/docs/concepts-templates
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-templates
 /// to learn more.
 class GooglePrivacyDlpV2DeidentifyTemplate {
   /// The creation timestamp of an inspectTemplate.
@@ -13479,9 +14179,9 @@ class GooglePrivacyDlpV2DetectionRule {
 /// "jennifer". Dictionary words containing a large number of characters that
 /// are not letters or digits may result in unexpected findings because such
 /// characters are treated as whitespace. The
-/// [limits](https://cloud.google.com/sensitive-data-protection/limits) page
-/// contains details about the size limits of dictionaries. For dictionaries
-/// that do not fit within these constraints, consider using
+/// [limits](https://docs.cloud.google.com/sensitive-data-protection/limits)
+/// page contains details about the size limits of dictionaries. For
+/// dictionaries that do not fit within these constraints, consider using
 /// `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
 class GooglePrivacyDlpV2Dictionary {
   /// Newline-delimited file of words in Cloud Storage.
@@ -13996,7 +14696,7 @@ class GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence {
 ///
 /// Only one discovery configuration may exist per organization, folder, or
 /// project. The generated data profiles are retained according to the
-/// [data retention policy](https://cloud.google.com/sensitive-data-protection/docs/data-profiles#retention).
+/// [data retention policy](https://docs.cloud.google.com/sensitive-data-protection/docs/data-profiles#retention).
 class GooglePrivacyDlpV2DiscoveryConfig {
   /// Actions to execute at the completion of scanning.
   core.List<GooglePrivacyDlpV2DataProfileAction>? actions;
@@ -14029,7 +14729,7 @@ class GooglePrivacyDlpV2DiscoveryConfig {
   /// copied to that region and used instead. If no global or region-specific
   /// template is provided for a region with data, that region's data will not
   /// be scanned. For more information, see
-  /// https://cloud.google.com/sensitive-data-protection/docs/data-profiles#data-residency.
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/data-profiles#data-residency.
   core.List<core.String>? inspectTemplates;
 
   /// The timestamp of the last time this config was executed.
@@ -14040,6 +14740,8 @@ class GooglePrivacyDlpV2DiscoveryConfig {
   /// Unique resource name for the DiscoveryConfig, assigned by the service when
   /// the DiscoveryConfig is created, for example
   /// `projects/dlp-test-project/locations/global/discoveryConfigs/53234423`.
+  ///
+  /// Output only.
   core.String? name;
 
   /// Only set when the parent is an org.
@@ -14852,15 +15554,23 @@ class GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence {
 /// Combines all of the information about a DLP job.
 class GooglePrivacyDlpV2DlpJob {
   /// Events that should occur after the job has completed.
+  ///
+  /// Output only.
   core.List<GooglePrivacyDlpV2ActionDetails>? actionDetails;
 
   /// Time when the job was created.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// Time when the job finished.
+  ///
+  /// Output only.
   core.String? endTime;
 
   /// A stream of errors encountered running the job.
+  ///
+  /// Output only.
   core.List<GooglePrivacyDlpV2Error>? errors;
 
   /// Results from inspecting a data source.
@@ -14868,21 +15578,31 @@ class GooglePrivacyDlpV2DlpJob {
 
   /// If created by a job trigger, the resource name of the trigger that
   /// instantiated the job.
+  ///
+  /// Output only.
   core.String? jobTriggerName;
 
   /// Time when the job was last modified by the system.
+  ///
+  /// Output only.
   core.String? lastModified;
 
   /// The server-assigned name.
+  ///
+  /// Output only.
   core.String? name;
 
   /// Results from analyzing risk of a data source.
   GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails? riskDetails;
 
   /// Time when the job started.
+  ///
+  /// Output only.
   core.String? startTime;
 
   /// State of a job.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "JOB_STATE_UNSPECIFIED" : Unused.
   /// - "PENDING" : The job has not yet started.
@@ -15204,7 +15924,7 @@ class GooglePrivacyDlpV2ExcludeByImageFindings {
   GooglePrivacyDlpV2ImageContainmentType? imageContainmentType;
 
   /// A list of image-supported infoTypes—excluding
-  /// [document infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to
+  /// [document infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to
   /// be used as context for the exclusion rule.
   ///
   /// A finding is excluded if its bounding box has the specified spatial
@@ -15399,9 +16119,9 @@ class GooglePrivacyDlpV2Export {
   /// first profile is generated and the dataset and table are created, the
   /// discovery scan configuration will be updated with the dataset and table
   /// names. * See
-  /// [Analyze data profiles stored in BigQuery](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles).
+  /// [Analyze data profiles stored in BigQuery](https://docs.cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles).
   /// * See
-  /// [Sample queries for your BigQuery table](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles#sample_sql_queries).
+  /// [Sample queries for your BigQuery table](https://docs.cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles#sample_sql_queries).
   /// * Data is inserted using
   /// [streaming insert](https://cloud.google.com/blog/products/bigquery/life-of-a-bigquery-streaming-insert)
   /// and so data may be in the buffer for a period of time after the profile
@@ -15410,7 +16130,7 @@ class GooglePrivacyDlpV2Export {
   /// to queries by the time your topic receives the Pub/Sub notification. * The
   /// best practice is to use the same table for an entire organization so that
   /// you can take advantage of the
-  /// [provided Looker reports](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles#use_a_premade_report).
+  /// [provided Data Studio reports](https://docs.cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles#use_a_premade_report).
   /// If you use VPC Service Controls to define security perimeters, then you
   /// must use a separate table for each boundary.
   GooglePrivacyDlpV2BigQueryTable? profileTable;
@@ -15750,6 +16470,81 @@ class GooglePrivacyDlpV2FileExtensionInfo {
   }
 }
 
+/// Represents a file label.
+class GooglePrivacyDlpV2FileLabel {
+  /// Google Drive labels published by Google.
+  GooglePrivacyDlpV2GoogleDriveLabelMetadata? googleDriveLabel;
+
+  /// Sensitivity labels published by Microsoft.
+  GooglePrivacyDlpV2SensitivityLabelMetadata? sensitivityLabel;
+
+  GooglePrivacyDlpV2FileLabel({this.googleDriveLabel, this.sensitivityLabel});
+
+  GooglePrivacyDlpV2FileLabel.fromJson(core.Map json_)
+    : this(
+        googleDriveLabel: json_.containsKey('googleDriveLabel')
+            ? GooglePrivacyDlpV2GoogleDriveLabelMetadata.fromJson(
+                json_['googleDriveLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sensitivityLabel: json_.containsKey('sensitivityLabel')
+            ? GooglePrivacyDlpV2SensitivityLabelMetadata.fromJson(
+                json_['sensitivityLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final googleDriveLabel = this.googleDriveLabel;
+    final sensitivityLabel = this.sensitivityLabel;
+    return {
+      'googleDriveLabel': ?googleDriveLabel,
+      'sensitivityLabel': ?sensitivityLabel,
+    };
+  }
+}
+
+/// Configuration for a custom infoType that detects file labels.
+class GooglePrivacyDlpV2FileLabelInfoType {
+  /// Google Drive labels published by Google.
+  GooglePrivacyDlpV2GoogleDriveLabel? googleDriveLabel;
+
+  /// Sensitivity labels published by Microsoft.
+  GooglePrivacyDlpV2SensitivityLabel? sensitivityLabel;
+
+  GooglePrivacyDlpV2FileLabelInfoType({
+    this.googleDriveLabel,
+    this.sensitivityLabel,
+  });
+
+  GooglePrivacyDlpV2FileLabelInfoType.fromJson(core.Map json_)
+    : this(
+        googleDriveLabel: json_.containsKey('googleDriveLabel')
+            ? GooglePrivacyDlpV2GoogleDriveLabel.fromJson(
+                json_['googleDriveLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sensitivityLabel: json_.containsKey('sensitivityLabel')
+            ? GooglePrivacyDlpV2SensitivityLabel.fromJson(
+                json_['sensitivityLabel']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final googleDriveLabel = this.googleDriveLabel;
+    final sensitivityLabel = this.sensitivityLabel;
+    return {
+      'googleDriveLabel': ?googleDriveLabel,
+      'sensitivityLabel': ?sensitivityLabel,
+    };
+  }
+}
+
 /// Set of files to scan.
 class GooglePrivacyDlpV2FileSet {
   /// The regex-filtered set of files to scan.
@@ -15801,7 +16596,7 @@ class GooglePrivacyDlpV2FileStoreCollection {
   /// resource to match the tag filters, the resource must have all of the
   /// provided tags attached. Tags refer to Resource Manager tags bound to the
   /// resource or its ancestors. For more information, see
-  /// [Manage schedules](https://cloud.google.com/sensitive-data-protection/docs/profile-project-cloud-storage#manage-schedules).
+  /// [Manage schedules](https://docs.cloud.google.com/sensitive-data-protection/docs/profile-project-cloud-storage#manage-schedules).
   ///
   /// Optional.
   GooglePrivacyDlpV2TagFilters? includeTags;
@@ -15876,7 +16671,7 @@ class GooglePrivacyDlpV2FileStoreDataProfile {
   /// The location of the file store.
   ///
   /// * Cloud Storage:
-  /// https://cloud.google.com/storage/docs/locations#available-locations *
+  /// https://docs.cloud.google.com/storage/docs/locations#available-locations *
   /// Amazon S3:
   /// https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints
   core.String? fileStoreLocation;
@@ -16459,7 +17254,7 @@ typedef GooglePrivacyDlpV2FinishDlpJobRequest = $Empty;
 /// double, long. If the bound Value type differs from the type of data being
 /// transformed, we will first attempt converting the type of the data to be
 /// transformed to match the type of the bound before comparing. See
-/// https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-bucketing
 /// to learn more.
 class GooglePrivacyDlpV2FixedSizeBucketingConfig {
   /// Size of each bucket (except for minimum and maximum buckets).
@@ -16528,6 +17323,68 @@ typedef GooglePrivacyDlpV2FullyInside = $Empty;
 /// Processing occurs in the global region.
 typedef GooglePrivacyDlpV2GlobalProcessing = $Empty;
 
+/// Google Drive labels published by Google.
+class GooglePrivacyDlpV2GoogleDriveLabel {
+  /// The field values of the Google Drive label to match.
+  core.List<GooglePrivacyDlpV2LabelField>? labelFieldsToMatch;
+
+  /// The
+  /// [label ID](https://developers.google.com/workspace/drive/labels/guides/overview)
+  /// of the Google Drive label.
+  core.String? labelId;
+
+  GooglePrivacyDlpV2GoogleDriveLabel({this.labelFieldsToMatch, this.labelId});
+
+  GooglePrivacyDlpV2GoogleDriveLabel.fromJson(core.Map json_)
+    : this(
+        labelFieldsToMatch: (json_['labelFieldsToMatch'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2LabelField.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        labelId: json_['labelId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final labelFieldsToMatch = this.labelFieldsToMatch;
+    final labelId = this.labelId;
+    return {'labelFieldsToMatch': ?labelFieldsToMatch, 'labelId': ?labelId};
+  }
+}
+
+/// Google Drive labels published by Google.
+class GooglePrivacyDlpV2GoogleDriveLabelMetadata {
+  /// The field values of the Google Drive label
+  core.List<GooglePrivacyDlpV2LabelFieldMetadata>? labelFields;
+
+  /// The
+  /// [label ID](https://developers.google.com/workspace/drive/labels/guides/overview)
+  /// of the Google Drive label.
+  core.String? labelId;
+
+  GooglePrivacyDlpV2GoogleDriveLabelMetadata({this.labelFields, this.labelId});
+
+  GooglePrivacyDlpV2GoogleDriveLabelMetadata.fromJson(core.Map json_)
+    : this(
+        labelFields: (json_['labelFields'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2LabelFieldMetadata.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        labelId: json_['labelId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final labelFields = this.labelFields;
+    final labelId = this.labelId;
+    return {'labelFields': ?labelFields, 'labelId': ?labelId};
+  }
+}
+
 /// The rule that adjusts the likelihood of findings within a certain proximity
 /// of hotwords.
 class GooglePrivacyDlpV2HotwordRule {
@@ -16548,7 +17405,7 @@ class GooglePrivacyDlpV2HotwordRule {
   /// in question. For tabular data, if you want to modify the likelihood of an
   /// entire column of findngs, see \[Hotword example: Set the match likelihood
   /// of a table
-  /// column\](https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
+  /// column\](https://docs.cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
   GooglePrivacyDlpV2Proximity? proximity;
 
   GooglePrivacyDlpV2HotwordRule({
@@ -17130,7 +17987,7 @@ class GooglePrivacyDlpV2InfoType {
   ///
   /// Either a name of your choosing when creating a CustomInfoType, or one of
   /// the names listed at
-  /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference
   /// when specifying a built-in type. When sending Cloud DLP results to Data
   /// Catalog, infoType names should conform to the pattern
   /// `[A-Za-z0-9$_-]{1,64}`.
@@ -17282,6 +18139,55 @@ class GooglePrivacyDlpV2InfoTypeCategory {
       'industryCategory': ?industryCategory,
       'locationCategory': ?locationCategory,
       'typeCategory': ?typeCategory,
+    };
+  }
+}
+
+/// A info type based condition.
+class GooglePrivacyDlpV2InfoTypeCondition {
+  /// match any info types.
+  GoogleProtobufEmpty? anyInfoType;
+
+  /// match any of these info types.
+  GooglePrivacyDlpV2InfoTypes? infoTypes;
+
+  /// The minimum total number of findings of all matching info types required
+  /// for this condition to evaluate to true.
+  ///
+  /// Defaults to 1 if unset.
+  ///
+  /// Optional.
+  core.String? minCount;
+
+  GooglePrivacyDlpV2InfoTypeCondition({
+    this.anyInfoType,
+    this.infoTypes,
+    this.minCount,
+  });
+
+  GooglePrivacyDlpV2InfoTypeCondition.fromJson(core.Map json_)
+    : this(
+        anyInfoType: json_.containsKey('anyInfoType')
+            ? GoogleProtobufEmpty.fromJson(
+                json_['anyInfoType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        infoTypes: json_.containsKey('infoTypes')
+            ? GooglePrivacyDlpV2InfoTypes.fromJson(
+                json_['infoTypes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        minCount: json_['minCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final anyInfoType = this.anyInfoType;
+    final infoTypes = this.infoTypes;
+    final minCount = this.minCount;
+    return {
+      'anyInfoType': ?anyInfoType,
+      'infoTypes': ?infoTypes,
+      'minCount': ?minCount,
     };
   }
 }
@@ -17628,6 +18534,28 @@ class GooglePrivacyDlpV2InfoTypeTransformations {
   }
 }
 
+/// Info types to match.
+class GooglePrivacyDlpV2InfoTypes {
+  /// A list of info types to match.
+  ///
+  /// Required.
+  core.List<core.String>? infoTypeNames;
+
+  GooglePrivacyDlpV2InfoTypes({this.infoTypeNames});
+
+  GooglePrivacyDlpV2InfoTypes.fromJson(core.Map json_)
+    : this(
+        infoTypeNames: (json_['infoTypeNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final infoTypeNames = this.infoTypeNames;
+    return {'infoTypeNames': ?infoTypeNames};
+  }
+}
+
 /// Configuration description of the scanning process.
 ///
 /// When used with redactContent only info_types and min_likelihood are
@@ -17639,7 +18567,7 @@ class GooglePrivacyDlpV2InspectConfig {
   /// CustomInfoTypes provided by the user.
   ///
   /// See
-  /// https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes
   /// to learn more.
   core.List<GooglePrivacyDlpV2CustomInfoType>? customInfoTypes;
 
@@ -17658,7 +18586,7 @@ class GooglePrivacyDlpV2InspectConfig {
   ///
   /// The values must correspond to InfoType values returned by ListInfoTypes or
   /// listed at
-  /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference.
+  /// https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference.
   /// When no InfoTypes or CustomInfoTypes are specified in a request, the
   /// system may automatically choose a default list of detectors to run, which
   /// may change over time. If you need precise control and predictability as to
@@ -17685,7 +18613,7 @@ class GooglePrivacyDlpV2InspectConfig {
   /// The default is POSSIBLE. In general, the highest likelihood setting yields
   /// the fewest findings in results and the lowest chance of a false positive.
   /// For more information, see
-  /// [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
+  /// [Match likelihood](https://docs.cloud.google.com/sensitive-data-protection/docs/likelihood).
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
   /// - "VERY_UNLIKELY" : Highest chance of a false positive.
@@ -17879,6 +18807,8 @@ class GooglePrivacyDlpV2InspectDataSourceDetails {
   GooglePrivacyDlpV2RequestedOptions? requestedOptions;
 
   /// A summary of the outcome of this inspection job.
+  ///
+  /// Output only.
   GooglePrivacyDlpV2Result? result;
 
   GooglePrivacyDlpV2InspectDataSourceDetails({
@@ -18008,9 +18938,19 @@ class GooglePrivacyDlpV2InspectResult {
 /// InspectConfig.
 ///
 /// See
-/// https://cloud.google.com/sensitive-data-protection/docs/concepts-templates
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-templates
 /// to learn more.
 class GooglePrivacyDlpV2InspectTemplate {
+  /// Enables the use of \[limited-availability built-in
+  /// infoTypes\](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
+  /// in inspect_config.
+  ///
+  /// These infoTypes are supported only in specific regions and can cause
+  /// scanning errors if used elsewhere.
+  ///
+  /// Optional.
+  core.bool? allowLimitedAvailabilityInfoTypes;
+
   /// The creation timestamp of an inspectTemplate.
   ///
   /// Output only.
@@ -18042,6 +18982,7 @@ class GooglePrivacyDlpV2InspectTemplate {
   core.String? updateTime;
 
   GooglePrivacyDlpV2InspectTemplate({
+    this.allowLimitedAvailabilityInfoTypes,
     this.createTime,
     this.description,
     this.displayName,
@@ -18052,6 +18993,8 @@ class GooglePrivacyDlpV2InspectTemplate {
 
   GooglePrivacyDlpV2InspectTemplate.fromJson(core.Map json_)
     : this(
+        allowLimitedAvailabilityInfoTypes:
+            json_['allowLimitedAvailabilityInfoTypes'] as core.bool?,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -18065,6 +19008,8 @@ class GooglePrivacyDlpV2InspectTemplate {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final allowLimitedAvailabilityInfoTypes =
+        this.allowLimitedAvailabilityInfoTypes;
     final createTime = this.createTime;
     final description = this.description;
     final displayName = this.displayName;
@@ -18072,6 +19017,7 @@ class GooglePrivacyDlpV2InspectTemplate {
     final name = this.name;
     final updateTime = this.updateTime;
     return {
+      'allowLimitedAvailabilityInfoTypes': ?allowLimitedAvailabilityInfoTypes,
       'createTime': ?createTime,
       'description': ?description,
       'displayName': ?displayName,
@@ -18173,13 +19119,13 @@ class GooglePrivacyDlpV2InspectionRuleSet {
 /// Sends an email when the job completes.
 ///
 /// The email goes to IAM project owners and technical
-/// [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
+/// [Essential Contacts](https://docs.cloud.google.com/resource-manager/docs/managing-notification-contacts).
 typedef GooglePrivacyDlpV2JobNotificationEmails = $Empty;
 
 /// Contains a configuration to make API calls on a repeating basis.
 ///
 /// See
-/// https://cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers
 /// to learn more.
 class GooglePrivacyDlpV2JobTrigger {
   /// The creation timestamp of a triggeredJob.
@@ -18213,6 +19159,8 @@ class GooglePrivacyDlpV2JobTrigger {
   /// Unique resource name for the triggeredJob, assigned by the service when
   /// the triggeredJob is created, for example
   /// `projects/dlp-test-project/jobTriggers/53234423`.
+  ///
+  /// Output only.
   core.String? name;
 
   /// A status for this trigger.
@@ -18783,7 +19731,7 @@ typedef GooglePrivacyDlpV2KindExpression = $KindExpression;
 /// the following IAM permissions when sending a request to perform a crypto
 /// transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more
 /// information, see
-/// [Creating a wrapped key](https://cloud.google.com/sensitive-data-protection/docs/create-wrapped-key).
+/// [Creating a wrapped key](https://docs.cloud.google.com/sensitive-data-protection/docs/create-wrapped-key).
 /// Note: When you use Cloud KMS for cryptographic operations,
 /// [charges apply](https://cloud.google.com/kms/pricing).
 class GooglePrivacyDlpV2KmsWrappedCryptoKey {
@@ -19014,9 +19962,60 @@ class GooglePrivacyDlpV2LDiversityResult {
   }
 }
 
+/// The field values of the Google Drive label to match.
+class GooglePrivacyDlpV2LabelField {
+  /// The identifier of the Label Field.
+  core.String? id;
+
+  /// The value of the Label Field to match.
+  core.String? value;
+
+  GooglePrivacyDlpV2LabelField({this.id, this.value});
+
+  GooglePrivacyDlpV2LabelField.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final value = this.value;
+    return {'id': ?id, 'value': ?value};
+  }
+}
+
+/// The field values of the Google Drive label
+class GooglePrivacyDlpV2LabelFieldMetadata {
+  /// The identifier of the Label Field.
+  core.String? id;
+
+  /// The value of the Label Field.
+  GooglePrivacyDlpV2Value? value;
+
+  GooglePrivacyDlpV2LabelFieldMetadata({this.id, this.value});
+
+  GooglePrivacyDlpV2LabelFieldMetadata.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        value: json_.containsKey('value')
+            ? GooglePrivacyDlpV2Value.fromJson(
+                json_['value'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final value = this.value;
+    return {'id': ?id, 'value': ?value};
+  }
+}
+
 /// Configuration for a custom dictionary created from a data source of any size
 /// up to the maximum size defined in the
-/// [limits](https://cloud.google.com/sensitive-data-protection/limits) page.
+/// [limits](https://docs.cloud.google.com/sensitive-data-protection/limits)
+/// page.
 ///
 /// The artifacts of dictionary creation are stored in the specified Cloud
 /// Storage location. Consider using `CustomInfoType.Dictionary` for smaller
@@ -19207,6 +20206,43 @@ class GooglePrivacyDlpV2ListConnectionsResponse {
     final connections = this.connections;
     final nextPageToken = this.nextPageToken;
     return {'connections': ?connections, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Response message for ListContentPolicies.
+class GooglePrivacyDlpV2ListContentPoliciesResponse {
+  /// List of content policies.
+  core.List<GooglePrivacyDlpV2ContentPolicy>? contentPolicies;
+
+  /// Token to retrieve the next page of results.
+  ///
+  /// An empty value means there are no more results.
+  core.String? nextPageToken;
+
+  GooglePrivacyDlpV2ListContentPoliciesResponse({
+    this.contentPolicies,
+    this.nextPageToken,
+  });
+
+  GooglePrivacyDlpV2ListContentPoliciesResponse.fromJson(core.Map json_)
+    : this(
+        contentPolicies: (json_['contentPolicies'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2ContentPolicy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentPolicies = this.contentPolicies;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'contentPolicies': ?contentPolicies,
+      'nextPageToken': ?nextPageToken,
+    };
   }
 }
 
@@ -19657,6 +20693,72 @@ class GooglePrivacyDlpV2LocationSupport {
   }
 }
 
+/// Configuration for logging content policy actions to BigQuery.
+class GooglePrivacyDlpV2LogToBigQuery {
+  /// The ID of the dataset containing the BigQuery table to write to.
+  ///
+  /// Required.
+  core.String? datasetId;
+
+  /// The ID of the project containing the BigQuery table to write to.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  /// The ID of the BigQuery table to write to.
+  ///
+  /// Required.
+  core.String? tableId;
+
+  GooglePrivacyDlpV2LogToBigQuery({
+    this.datasetId,
+    this.projectId,
+    this.tableId,
+  });
+
+  GooglePrivacyDlpV2LogToBigQuery.fromJson(core.Map json_)
+    : this(
+        datasetId: json_['datasetId'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        tableId: json_['tableId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final datasetId = this.datasetId;
+    final projectId = this.projectId;
+    final tableId = this.tableId;
+    return {
+      'datasetId': ?datasetId,
+      'projectId': ?projectId,
+      'tableId': ?tableId,
+    };
+  }
+}
+
+/// A single logging configuration.
+class GooglePrivacyDlpV2LoggingConfig {
+  /// Log the actions taken to a BigQuery table.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2LogToBigQuery? logToBigQuery;
+
+  GooglePrivacyDlpV2LoggingConfig({this.logToBigQuery});
+
+  GooglePrivacyDlpV2LoggingConfig.fromJson(core.Map json_)
+    : this(
+        logToBigQuery: json_.containsKey('logToBigQuery')
+            ? GooglePrivacyDlpV2LogToBigQuery.fromJson(
+                json_['logToBigQuery'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final logToBigQuery = this.logToBigQuery;
+    return {'logToBigQuery': ?logToBigQuery};
+  }
+}
+
 /// Job trigger option for hybrid jobs.
 ///
 /// Jobs must be manually created and finished.
@@ -19908,7 +21010,7 @@ class GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation {
 /// Target used to match against for discovery of resources from other clouds.
 ///
 /// An \[AWS connector in Security Command Center
-/// (Enterprise\](https://cloud.google.com/security-command-center/docs/connect-scc-to-aws)
+/// (Enterprise\](https://docs.cloud.google.com/security-command-center/docs/connect-scc-to-aws)
 /// is required to use this feature.
 class GooglePrivacyDlpV2OtherCloudDiscoveryTarget {
   /// In addition to matching the filter, these conditions must be true before a
@@ -20285,6 +21387,121 @@ class GooglePrivacyDlpV2PathElement {
     final kind = this.kind;
     final name = this.name;
     return {'id': ?id, 'kind': ?kind, 'name': ?name};
+  }
+}
+
+/// A possible action to take when applying a content policy.
+class GooglePrivacyDlpV2PolicyAction {
+  /// If set, the verdict will be returned to the user.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONTENT_POLICY_VERDICT_UNSPECIFIED" : Not used.
+  /// - "ALLOW" : The policy allows the provided content to be used.
+  /// - "BLOCK" : The policy prevents the provided content from being used. This
+  /// should result in a blocked file upload, exclusion from training dataset,
+  /// or other similar block action. (specific action will depend on the
+  /// caller).
+  core.String? returnVerdict;
+
+  GooglePrivacyDlpV2PolicyAction({this.returnVerdict});
+
+  GooglePrivacyDlpV2PolicyAction.fromJson(core.Map json_)
+    : this(returnVerdict: json_['returnVerdict'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final returnVerdict = this.returnVerdict;
+    return {'returnVerdict': ?returnVerdict};
+  }
+}
+
+/// A condition that must match for this rule to apply.
+class GooglePrivacyDlpV2PolicyCondition {
+  /// A condition based on info types.
+  GooglePrivacyDlpV2InfoTypeCondition? infoTypeCondition;
+
+  GooglePrivacyDlpV2PolicyCondition({this.infoTypeCondition});
+
+  GooglePrivacyDlpV2PolicyCondition.fromJson(core.Map json_)
+    : this(
+        infoTypeCondition: json_.containsKey('infoTypeCondition')
+            ? GooglePrivacyDlpV2InfoTypeCondition.fromJson(
+                json_['infoTypeCondition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final infoTypeCondition = this.infoTypeCondition;
+    return {'infoTypeCondition': ?infoTypeCondition};
+  }
+}
+
+/// A single policy rule.
+///
+/// The first rule to match from the list above controls the result.
+class GooglePrivacyDlpV2PolicyRule {
+  /// Action to take if this rule applies.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2PolicyAction? action;
+
+  /// Conditions that must match for this rule to apply.
+  ///
+  /// All conditions must match (`AND`). For `OR` conditions, use multiple
+  /// rules.
+  ///
+  /// Optional.
+  core.List<GooglePrivacyDlpV2PolicyCondition>? conditions;
+
+  /// If set, the verdict will be returned to the user.
+  ///
+  /// Deprecated: Use `action` instead.
+  /// Possible string values are:
+  /// - "CONTENT_POLICY_VERDICT_UNSPECIFIED" : Not used.
+  /// - "ALLOW" : The policy allows the provided content to be used.
+  /// - "BLOCK" : The policy prevents the provided content from being used. This
+  /// should result in a blocked file upload, exclusion from training dataset,
+  /// or other similar block action. (specific action will depend on the
+  /// caller).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? returnVerdict;
+
+  GooglePrivacyDlpV2PolicyRule({
+    this.action,
+    this.conditions,
+    this.returnVerdict,
+  });
+
+  GooglePrivacyDlpV2PolicyRule.fromJson(core.Map json_)
+    : this(
+        action: json_.containsKey('action')
+            ? GooglePrivacyDlpV2PolicyAction.fromJson(
+                json_['action'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        conditions: (json_['conditions'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2PolicyCondition.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        returnVerdict: json_['returnVerdict'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final conditions = this.conditions;
+    final returnVerdict = this.returnVerdict;
+    return {
+      'action': ?action,
+      'conditions': ?conditions,
+      'returnVerdict': ?returnVerdict,
+    };
   }
 }
 
@@ -20704,7 +21921,7 @@ class GooglePrivacyDlpV2Proximity {
   /// For tabular data, if you want to modify the likelihood of an entire column
   /// of findngs, set this to 1. For more information, see \[Hotword example:
   /// Set the match likelihood of a table
-  /// column\](https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
+  /// column\](https://docs.cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
   core.int? windowBefore;
 
   GooglePrivacyDlpV2Proximity({this.windowAfter, this.windowBefore});
@@ -20889,7 +22106,7 @@ typedef GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog = $Empty;
 /// `sensitive-data-protection-job-result` aspect.
 ///
 /// For more information, see
-/// [Send inspection results to Dataplex Universal Catalog as aspects](https://cloud.google.com/sensitive-data-protection/docs/add-aspects-inspection-job).
+/// [Send inspection results to Dataplex Universal Catalog as aspects](https://docs.cloud.google.com/sensitive-data-protection/docs/add-aspects-inspection-job).
 /// Aspects are stored in Dataplex Universal Catalog storage and are governed by
 /// service-specific policies for Dataplex Universal Catalog. For more
 /// information, see
@@ -20917,7 +22134,7 @@ typedef GooglePrivacyDlpV2PublishToChronicle = $Empty;
 /// aspect type Sensitive Data Protection Profile.
 ///
 /// To learn more about aspects, see
-/// https://cloud.google.com/sensitive-data-protection/docs/add-aspects.
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/add-aspects.
 class GooglePrivacyDlpV2PublishToDataplexCatalog {
   /// Whether creating a Dataplex Universal Catalog aspect for a profiled
   /// resource should lower the risk of the profile for that resource.
@@ -20943,7 +22160,7 @@ class GooglePrivacyDlpV2PublishToDataplexCatalog {
 ///
 /// The message contains a single field, `DlpJobName`, which is equal to the
 /// finished job's
-/// \[`DlpJob.name`\](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/projects.dlpJobs#DlpJob).
+/// \[`DlpJob.name`\](https://docs.cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/projects.dlpJobs#DlpJob).
 /// Compatible with: Inspect, Risk
 class GooglePrivacyDlpV2PublishToPubSub {
   /// Cloud Pub/Sub topic to send notifications to.
@@ -21668,7 +22885,8 @@ class GooglePrivacyDlpV2RelatedResource {
 class GooglePrivacyDlpV2ReplaceDictionaryConfig {
   /// A list of words to select from for random replacement.
   ///
-  /// The [limits](https://cloud.google.com/sensitive-data-protection/limits)
+  /// The
+  /// [limits](https://docs.cloud.google.com/sensitive-data-protection/limits)
   /// page contains details about the size limits of dictionaries.
   GooglePrivacyDlpV2WordList? wordList;
 
@@ -21780,6 +22998,8 @@ class GooglePrivacyDlpV2RequestedOptions {
 
   /// If run with an InspectTemplate, a snapshot of its state at the time of
   /// this run.
+  ///
+  /// Output only.
   GooglePrivacyDlpV2InspectTemplate? snapshotInspectTemplate;
 
   GooglePrivacyDlpV2RequestedOptions({
@@ -21899,7 +23119,7 @@ class GooglePrivacyDlpV2Result {
 /// Configuration for a risk analysis job.
 ///
 /// See
-/// https://cloud.google.com/sensitive-data-protection/docs/concepts-risk-analysis
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-risk-analysis
 /// to learn more.
 class GooglePrivacyDlpV2RiskAnalysisJobConfig {
   /// Actions to execute at the completion of the job.
@@ -22147,7 +23367,7 @@ class GooglePrivacyDlpV2SecretManagerCredential {
 /// should be included in the discovery config for a security benchmarks scan.
 /// Instead, the built-in list of secrets and credentials infoTypes will be used
 /// (see
-/// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#credentials_and_secrets).
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#credentials_and_secrets).
 /// Credentials and secrets discovered will be reported as vulnerabilities to
 /// Security Command Center.
 typedef GooglePrivacyDlpV2SecretsDiscoveryTarget = $Empty;
@@ -22178,6 +23398,40 @@ class GooglePrivacyDlpV2SelectedInfoTypes {
   core.Map<core.String, core.dynamic> toJson() {
     final infoTypes = this.infoTypes;
     return {'infoTypes': ?infoTypes};
+  }
+}
+
+/// Sensitivity labels published by Microsoft.
+class GooglePrivacyDlpV2SensitivityLabel {
+  /// The GUID of the sensitivity label.
+  core.String? guid;
+
+  GooglePrivacyDlpV2SensitivityLabel({this.guid});
+
+  GooglePrivacyDlpV2SensitivityLabel.fromJson(core.Map json_)
+    : this(guid: json_['guid'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final guid = this.guid;
+    return {'guid': ?guid};
+  }
+}
+
+/// Sensitivity labels published by Microsoft.
+class GooglePrivacyDlpV2SensitivityLabelMetadata {
+  /// The GUID of the sensitivity label.
+  ///
+  /// Required.
+  core.String? guid;
+
+  GooglePrivacyDlpV2SensitivityLabelMetadata({this.guid});
+
+  GooglePrivacyDlpV2SensitivityLabelMetadata.fromJson(core.Map json_)
+    : this(guid: json_['guid'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final guid = this.guid;
+    return {'guid': ?guid};
   }
 }
 
@@ -22374,6 +23628,8 @@ class GooglePrivacyDlpV2StoredInfoType {
   GooglePrivacyDlpV2StoredInfoTypeVersion? currentVersion;
 
   /// Resource name.
+  ///
+  /// Output only.
   core.String? name;
 
   /// Pending versions of the stored info type.
@@ -22419,7 +23675,7 @@ class GooglePrivacyDlpV2StoredInfoType {
 /// Configuration for stored infoTypes.
 ///
 /// All fields and subfield are provided by the user. For more information, see
-/// https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes.
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes.
 class GooglePrivacyDlpV2StoredInfoTypeConfig {
   /// Description of the StoredInfoType (max 256 characters).
   core.String? description;
@@ -22514,6 +23770,8 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
   /// Create timestamp of the version.
   ///
   /// Read-only, determined by the system when the version is created.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// Errors that occurred when creating this storedInfoType version, or
@@ -22527,11 +23785,15 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
   /// error message and use the UpdateStoredInfoType API method to create
   /// another version of the storedInfoType to continue using it, reusing the
   /// same `config` if it was not the source of the error.
+  ///
+  /// Output only.
   core.List<GooglePrivacyDlpV2Error>? errors;
 
   /// Stored info type version state.
   ///
   /// Read-only, updated by the system during dictionary creation.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STORED_INFO_TYPE_STATE_UNSPECIFIED" : Unused
   /// - "PENDING" : StoredInfoType version is being created.
@@ -22545,6 +23807,8 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
   core.String? state;
 
   /// Statistics about this storedInfoType version.
+  ///
+  /// Output only.
   GooglePrivacyDlpV2StoredInfoTypeStats? stats;
 
   GooglePrivacyDlpV2StoredInfoTypeVersion({
@@ -22622,6 +23886,28 @@ class GooglePrivacyDlpV2StoredType {
   }
 }
 
+/// Represents a batch of string values to inspect or redact.
+class GooglePrivacyDlpV2StringValueBatch {
+  /// Represents string data to inspect or redact.
+  ///
+  /// Optional.
+  core.List<core.String>? values;
+
+  GooglePrivacyDlpV2StringValueBatch({this.values});
+
+  GooglePrivacyDlpV2StringValueBatch.fromJson(core.Map json_)
+    : this(
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
+}
+
 /// A collection that informs the user the number of times a particular
 /// `TransformationResultCode` and error details occurred.
 class GooglePrivacyDlpV2SummaryResult {
@@ -22657,7 +23943,7 @@ class GooglePrivacyDlpV2SummaryResult {
 }
 
 /// Message for detecting output from deidentification transformations such as
-/// \[`CryptoReplaceFfxFpeConfig`\](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).
+/// \[`CryptoReplaceFfxFpeConfig`\](https://docs.cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).
 ///
 /// These types of transformations are those that perform pseudonymization,
 /// thereby producing a "surrogate" as output. This should be used in
@@ -22669,7 +23955,7 @@ typedef GooglePrivacyDlpV2SurrogateType = $Empty;
 /// Structured content to inspect.
 ///
 /// Up to 50,000 `Value`s per request allowed. See
-/// https://cloud.google.com/sensitive-data-protection/docs/inspecting-structured-text#inspecting_a_table
+/// https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-structured-text#inspecting_a_table
 /// to learn more.
 class GooglePrivacyDlpV2Table {
   /// Headers of the table.
@@ -22724,7 +24010,7 @@ class GooglePrivacyDlpV2TableDataProfile {
 
   /// If supported, the location where the dataset's data is stored.
   ///
-  /// See https://cloud.google.com/bigquery/docs/locations for supported
+  /// See https://docs.cloud.google.com/bigquery/docs/locations for supported
   /// locations.
   core.String? datasetLocation;
 
@@ -23257,24 +24543,24 @@ class GooglePrivacyDlpV2TagFilters {
 }
 
 /// If set, attaches the
-/// [tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview)
+/// [tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-overview)
 /// provided to profiled resources.
 ///
 /// Tags support
-/// [access control](https://cloud.google.com/iam/docs/tags-access-control). You
-/// can conditionally grant or deny access to a resource based on whether the
-/// resource has a specific tag.
+/// [access control](https://docs.cloud.google.com/iam/docs/tags-access-control).
+/// You can conditionally grant or deny access to a resource based on whether
+/// the resource has a specific tag.
 class GooglePrivacyDlpV2TagResources {
   /// Whether applying a tag to a resource should lower the risk of the profile
   /// for that resource.
   ///
   /// For example, in conjunction with an
-  /// [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you
-  /// can deny all principals a permission if a tag value is present, mitigating
-  /// the risk of the resource. This also lowers the data risk of resources at
-  /// the lower levels of the resource hierarchy. For example, reducing the data
-  /// risk of a table data profile also reduces the data risk of the constituent
-  /// column data profiles.
+  /// [IAM deny policy](https://docs.cloud.google.com/iam/docs/deny-overview),
+  /// you can deny all principals a permission if a tag value is present,
+  /// mitigating the risk of the resource. This also lowers the data risk of
+  /// resources at the lower levels of the resource hierarchy. For example,
+  /// reducing the data risk of a table data profile also reduces the data risk
+  /// of the constituent column data profiles.
   core.bool? lowerDataRiskToLow;
 
   /// The profile generations for which the tag should be attached to resources.
@@ -23470,7 +24756,7 @@ class GooglePrivacyDlpV2TimespanConfig {
   /// starts. This is because streaming buffer rows are not read during
   /// inspection and reading up to the current timestamp will result in skipped
   /// rows. See the
-  /// [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#recently-streamed-data)
+  /// [known issue](https://docs.cloud.google.com/sensitive-data-protection/docs/known-issues#recently-streamed-data)
   /// related to this operation.
   core.bool? enableAutoPopulationOfTimespanConfig;
 
@@ -23493,7 +24779,7 @@ class GooglePrivacyDlpV2TimespanConfig {
   /// Rows with a `NULL` value in the provided BigQuery column are skipped.
   /// Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`,
   /// `TIMESTAMP`, and `DATETIME`. If your BigQuery table is
-  /// [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time),
+  /// [partitioned at ingestion time](https://docs.cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time),
   /// you can use any of the following pseudo-columns as your timestamp field.
   /// When used with Cloud DLP, these pseudo-column names are case sensitive. -
   /// `_PARTITIONTIME` - `_PARTITIONDATE` - `_PARTITION_LOAD_TIME` **For
@@ -23502,7 +24788,7 @@ class GooglePrivacyDlpV2TimespanConfig {
   /// provided timestamp property or contains empty or invalid values, then it
   /// is included. Valid data types of the provided timestamp property are:
   /// `TIMESTAMP`. See the
-  /// [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan)
+  /// [known issue](https://docs.cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan)
   /// related to this operation.
   GooglePrivacyDlpV2FieldId? timestampField;
 
@@ -23922,6 +25208,40 @@ class GooglePrivacyDlpV2UpdateConnectionRequest {
     final connection = this.connection;
     final updateMask = this.updateMask;
     return {'connection': ?connection, 'updateMask': ?updateMask};
+  }
+}
+
+/// Request message for UpdateContentPolicy.
+class GooglePrivacyDlpV2UpdateContentPolicyRequest {
+  /// The content_policy with new values for the relevant fields.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2ContentPolicy? contentPolicy;
+
+  /// Mask to control which fields get updated.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  GooglePrivacyDlpV2UpdateContentPolicyRequest({
+    this.contentPolicy,
+    this.updateMask,
+  });
+
+  GooglePrivacyDlpV2UpdateContentPolicyRequest.fromJson(core.Map json_)
+    : this(
+        contentPolicy: json_.containsKey('contentPolicy')
+            ? GooglePrivacyDlpV2ContentPolicy.fromJson(
+                json_['contentPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentPolicy = this.contentPolicy;
+    final updateMask = this.updateMask;
+    return {'contentPolicy': ?contentPolicy, 'updateMask': ?updateMask};
   }
 }
 

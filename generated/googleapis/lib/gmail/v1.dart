@@ -189,7 +189,10 @@ class UsersResource {
     return Profile.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Stop receiving push notifications for the given user mailbox.
+  /// Turn off push notification delivery for the given user mailbox.
+  ///
+  /// For more information, see
+  /// [Configure push notifications in Gmail API](https://developers.google.com/workspace/gmail/api/guides/push).
   ///
   /// Request parameters:
   ///
@@ -221,6 +224,9 @@ class UsersResource {
   }
 
   /// Set up or update a push notification watch on the given user mailbox.
+  ///
+  /// For more information, see
+  /// [Configure push notifications in Gmail API](https://developers.google.com/workspace/gmail/api/guides/push).
   ///
   /// [request] - The metadata request object.
   ///
@@ -269,7 +275,10 @@ class UsersDraftsResource {
 
   UsersDraftsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new draft with the `DRAFT` label.
+  /// Creates a draft with the `DRAFT` label.
+  ///
+  /// For more information, see
+  /// [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
   ///
   /// [request] - The metadata request object.
   ///
@@ -334,7 +343,8 @@ class UsersDraftsResource {
 
   /// Immediately and permanently deletes the specified draft.
   ///
-  /// Does not simply trash it.
+  /// Does not simply trash it. For more information, see
+  /// [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
   ///
   /// Request parameters:
   ///
@@ -375,6 +385,9 @@ class UsersDraftsResource {
   }
 
   /// Gets the specified draft.
+  ///
+  /// For more information, see
+  /// [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
   ///
   /// Request parameters:
   ///
@@ -432,6 +445,9 @@ class UsersDraftsResource {
   }
 
   /// Lists the drafts in the user's mailbox.
+  ///
+  /// For more information, see
+  /// [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
   ///
   /// Request parameters:
   ///
@@ -494,6 +510,9 @@ class UsersDraftsResource {
 
   /// Sends the specified, existing draft to the recipients in the `To`, `Cc`,
   /// and `Bcc` headers.
+  ///
+  /// For more information, see
+  /// [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
   ///
   /// [request] - The metadata request object.
   ///
@@ -560,6 +579,9 @@ class UsersDraftsResource {
   }
 
   /// Replaces a draft's content.
+  ///
+  /// For more information, see
+  /// [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
   ///
   /// [request] - The metadata request object.
   ///
@@ -640,7 +662,8 @@ class UsersHistoryResource {
   /// Lists the history of all changes to the given mailbox.
   ///
   /// History results are returned in chronological order (increasing
-  /// `historyId`).
+  /// `historyId`). For more information, see
+  /// [Synchronize clients with Gmail](https://developers.google.com/workspace/gmail/api/guides/sync).
   ///
   /// Request parameters:
   ///
@@ -716,7 +739,10 @@ class UsersLabelsResource {
 
   UsersLabelsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new label.
+  /// Creates a label.
+  ///
+  /// For more information, see
+  /// [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
   ///
   /// [request] - The metadata request object.
   ///
@@ -758,7 +784,10 @@ class UsersLabelsResource {
   }
 
   /// Immediately and permanently deletes the specified label and removes it
-  /// from any messages and threads that it is applied to.
+  /// from any messages and threads that it's applied to.
+  ///
+  /// For more information, see
+  /// [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
   ///
   /// Request parameters:
   ///
@@ -799,6 +828,9 @@ class UsersLabelsResource {
   }
 
   /// Gets the specified label.
+  ///
+  /// For more information, see
+  /// [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
   ///
   /// Request parameters:
   ///
@@ -842,6 +874,9 @@ class UsersLabelsResource {
 
   /// Lists all labels in the user's mailbox.
   ///
+  /// For more information, see
+  /// [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+  ///
   /// Request parameters:
   ///
   /// [userId] - The user's email address. The special value `me` can be used to
@@ -879,6 +914,9 @@ class UsersLabelsResource {
   }
 
   /// Patch the specified label.
+  ///
+  /// For more information, see
+  /// [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
   ///
   /// [request] - The metadata request object.
   ///
@@ -926,6 +964,9 @@ class UsersLabelsResource {
   }
 
   /// Updates the specified label.
+  ///
+  /// For more information, see
+  /// [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1025,7 +1066,16 @@ class UsersMessagesResource {
     );
   }
 
-  /// Modifies the labels on the specified messages.
+  /// Modifies the labels and the Classification Label values on the specified
+  /// messages.
+  ///
+  /// For administrators modifying messages for users in their organization,
+  /// requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.modify.restricted` scope.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1177,8 +1227,8 @@ class UsersMessagesResource {
   ///
   /// This method doesn't perform SPF checks, so it might not work for some spam
   /// messages, such as those attempting to perform domain spoofing. This method
-  /// does not send a message. Note that the maximum size of the message is
-  /// 150MB.
+  /// does not send a message. Note that the maximum size of the message is 150
+  /// MB.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1276,7 +1326,8 @@ class UsersMessagesResource {
   /// Directly inserts a message into only this user's mailbox similar to `IMAP
   /// APPEND`, bypassing most scanning and classification.
   ///
-  /// Does not send a message.
+  /// Does not send a message. For more information, see
+  /// [Create and send email messages](https://developers.google.com/workspace/gmail/api/guides/sending).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1359,7 +1410,7 @@ class UsersMessagesResource {
 
   /// Lists the messages in the user's mailbox.
   ///
-  /// For example usage, see
+  /// For more information, see
   /// [List Gmail messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).
   ///
   /// Request parameters:
@@ -1429,7 +1480,16 @@ class UsersMessagesResource {
     );
   }
 
-  /// Modifies the labels on the specified message.
+  /// Modifies the labels and the Classification Label values on the specified
+  /// message.
+  ///
+  /// For administrators modifying message for users in their organization,
+  /// requests require authorization with a
+  /// [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
+  /// that has \[domain-wide delegation
+  /// authority\](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority)
+  /// to impersonate users with the
+  /// `https://www.googleapis.com/auth/gmail.modify.restricted` scope.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1480,8 +1540,8 @@ class UsersMessagesResource {
   /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc`
   /// headers.
   ///
-  /// For example usage, see
-  /// [Sending email](https://developers.google.com/workspace/gmail/api/guides/sending).
+  /// For more information, see
+  /// [Create and send email messages](https://developers.google.com/workspace/gmail/api/guides/sending).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1707,6 +1767,9 @@ class UsersSettingsResource {
 
   /// Gets the auto-forwarding setting for the specified account.
   ///
+  /// For more information, see
+  /// [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+  ///
   /// Request parameters:
   ///
   /// [userId] - User's email address. The special value "me" can be used to
@@ -1746,6 +1809,9 @@ class UsersSettingsResource {
   }
 
   /// Gets IMAP settings.
+  ///
+  /// For more information, see
+  /// [Configure POP and IMAP settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
   ///
   /// Request parameters:
   ///
@@ -1787,6 +1853,9 @@ class UsersSettingsResource {
 
   /// Gets language settings.
   ///
+  /// For more information, see
+  /// [Manage language settings](https://developers.google.com/workspace/gmail/api/guides/language-settings).
+  ///
   /// Request parameters:
   ///
   /// [userId] - User's email address. The special value "me" can be used to
@@ -1827,6 +1896,9 @@ class UsersSettingsResource {
 
   /// Gets POP settings.
   ///
+  /// For more information, see
+  /// [Configure POP and IMAP settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+  ///
   /// Request parameters:
   ///
   /// [userId] - User's email address. The special value "me" can be used to
@@ -1864,6 +1936,9 @@ class UsersSettingsResource {
   }
 
   /// Gets vacation responder settings.
+  ///
+  /// For more information, see
+  /// [Manage vacation settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/vacation_settings).
   ///
   /// Request parameters:
   ///
@@ -1906,8 +1981,10 @@ class UsersSettingsResource {
   /// Updates the auto-forwarding setting for the specified account.
   ///
   /// A verified forwarding address must be specified when auto-forwarding is
-  /// enabled. This method is only available to service account clients that
-  /// have been delegated domain-wide authority.
+  /// enabled. For more information, see
+  /// [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+  /// This method is only available to service account clients that have been
+  /// delegated domain-wide authority.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1954,6 +2031,9 @@ class UsersSettingsResource {
 
   /// Updates IMAP settings.
   ///
+  /// For more information, see
+  /// [Configure POP and IMAP settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1999,6 +2079,8 @@ class UsersSettingsResource {
 
   /// Updates language settings.
   ///
+  /// For more information, see
+  /// [Manage language settings](https://developers.google.com/workspace/gmail/api/guides/language-settings).
   /// If successful, the return object contains the `displayLanguage` that was
   /// saved for the user, which may differ from the value passed into the
   /// request. This is because the requested `displayLanguage` may not be
@@ -2050,6 +2132,9 @@ class UsersSettingsResource {
 
   /// Updates POP settings.
   ///
+  /// For more information, see
+  /// [Configure POP and IMAP settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2092,6 +2177,9 @@ class UsersSettingsResource {
   }
 
   /// Updates vacation responder settings.
+  ///
+  /// For more information, see
+  /// [Manage vacation settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/vacation_settings).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2478,6 +2566,19 @@ class UsersSettingsCseKeypairsResource {
   /// [userId] - The requester's primary email address. To indicate the
   /// authenticated user, you can use the special value `me`.
   ///
+  /// [chainValidation] - The type of certificate chain validation to perform at
+  /// creation. The request will be rejected if the uploaded chain fails to
+  /// satisfy the requested validation checks. When unspecified, this parameter
+  /// defaults to `all`.
+  /// Possible string values are:
+  /// - "all" : Enable all certificate chain validation and certificate
+  /// revocation checks. Recommended for normal use.
+  /// - "none" : Disable all certificate chain validation and certificate
+  /// revocation checks. This may be useful when deliberately creating key pairs
+  /// with invalid, out-of-use certificate chains to be used only for decryption
+  /// of historical S/MIME messages. Key pairs created with invalid or revoked
+  /// certificates cannot be used in a CseIdentity object.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2491,10 +2592,12 @@ class UsersSettingsCseKeypairsResource {
   async.Future<CseKeyPair> create(
     CseKeyPair request,
     core.String userId, {
+    core.String? chainValidation,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'chainValidation': ?chainValidation == null ? null : [chainValidation],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2831,12 +2934,13 @@ class UsersSettingsDelegatesResource {
   /// without sending any verification email.
   ///
   /// The delegate user must be a member of the same Google Workspace
-  /// organization as the delegator user. Gmail imposes limitations on the
-  /// number of delegates and delegators each user in a Google Workspace
-  /// organization can have. These limits depend on your organization, but in
-  /// general each user can have up to 25 delegates and up to 10 delegators.
-  /// Note that a delegate user must be referred to by their primary email
-  /// address, and not an email alias. Also note that when a new delegate is
+  /// organization as the delegator user. For more information, see
+  /// [Manage delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings).
+  /// Gmail imposes limitations on the number of delegates and delegators each
+  /// user in a Google Workspace organization can have. These limits depend on
+  /// your organization, but in general each user can have up to 25 delegates
+  /// and up to 10 delegators. A delegate user must be referred to by their
+  /// primary email address, and not an email alias. When a new delegate is
   /// created, there may be up to a one minute delay before the new delegate is
   /// available for use. This method is only available to service account
   /// clients that have been delegated domain-wide authority.
@@ -2885,9 +2989,11 @@ class UsersSettingsDelegatesResource {
   /// Removes the specified delegate (which can be of any verification status),
   /// and revokes any verification that may have been required for using it.
   ///
-  /// Note that a delegate user must be referred to by their primary email
-  /// address, and not an email alias. This method is only available to service
-  /// account clients that have been delegated domain-wide authority.
+  /// For more information, see
+  /// [Manage delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings).
+  /// A delegate user must be referred to by their primary email address, and
+  /// not an email alias. This method is only available to service account
+  /// clients that have been delegated domain-wide authority.
   ///
   /// Request parameters:
   ///
@@ -2930,9 +3036,11 @@ class UsersSettingsDelegatesResource {
 
   /// Gets the specified delegate.
   ///
-  /// Note that a delegate user must be referred to by their primary email
-  /// address, and not an email alias. This method is only available to service
-  /// account clients that have been delegated domain-wide authority.
+  /// For more information, see
+  /// [Manage delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings).
+  /// A delegate user must be referred to by their primary email address, and
+  /// not an email alias. This method is only available to service account
+  /// clients that have been delegated domain-wide authority.
   ///
   /// Request parameters:
   ///
@@ -2977,6 +3085,8 @@ class UsersSettingsDelegatesResource {
 
   /// Lists the delegates for the specified account.
   ///
+  /// For more information, see
+  /// [Manage delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings).
   /// This method is only available to service account clients that have been
   /// delegated domain-wide authority.
   ///
@@ -3027,7 +3137,9 @@ class UsersSettingsFiltersResource {
 
   /// Creates a filter.
   ///
-  /// Note: you can only create a maximum of 1,000 filters.
+  /// Note: you can only create a maximum of 1,000 filters. For more
+  /// information, see
+  /// [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3072,6 +3184,9 @@ class UsersSettingsFiltersResource {
 
   /// Immediately and permanently deletes the specified filter.
   ///
+  /// For more information, see
+  /// [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+  ///
   /// Request parameters:
   ///
   /// [userId] - User's email address. The special value "me" can be used to
@@ -3111,6 +3226,9 @@ class UsersSettingsFiltersResource {
   }
 
   /// Gets a filter.
+  ///
+  /// For more information, see
+  /// [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
   ///
   /// Request parameters:
   ///
@@ -3153,6 +3271,9 @@ class UsersSettingsFiltersResource {
   }
 
   /// Lists the message filters of a Gmail user.
+  ///
+  /// For more information, see
+  /// [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
   ///
   /// Request parameters:
   ///
@@ -3204,8 +3325,10 @@ class UsersSettingsForwardingAddressesResource {
   /// If ownership verification is required, a message will be sent to the
   /// recipient and the resource's verification status will be set to `pending`;
   /// otherwise, the resource will be created with verification status set to
-  /// `accepted`. This method is only available to service account clients that
-  /// have been delegated domain-wide authority.
+  /// `accepted`. For more information, see
+  /// [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+  /// This method is only available to service account clients that have been
+  /// delegated domain-wide authority.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3253,6 +3376,8 @@ class UsersSettingsForwardingAddressesResource {
   /// Deletes the specified forwarding address and revokes any verification that
   /// may have been required.
   ///
+  /// For more information, see
+  /// [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
   /// This method is only available to service account clients that have been
   /// delegated domain-wide authority.
   ///
@@ -3295,6 +3420,9 @@ class UsersSettingsForwardingAddressesResource {
   }
 
   /// Gets the specified forwarding address.
+  ///
+  /// For more information, see
+  /// [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
   ///
   /// Request parameters:
   ///
@@ -3339,6 +3467,9 @@ class UsersSettingsForwardingAddressesResource {
   }
 
   /// Lists the forwarding addresses for the specified account.
+  ///
+  /// For more information, see
+  /// [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
   ///
   /// Request parameters:
   ///
@@ -3396,8 +3527,10 @@ class UsersSettingsSendAsResource {
   /// to the email address and the resource's verification status will be set to
   /// `pending`; otherwise, the resource will be created with verification
   /// status set to `accepted`. If a signature is provided, Gmail will sanitize
-  /// the HTML before saving it with the alias. This method is only available to
-  /// service account clients that have been delegated domain-wide authority.
+  /// the HTML before saving it with the alias. For more information, see
+  /// [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+  /// This method is only available to service account clients that have been
+  /// delegated domain-wide authority.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3442,8 +3575,10 @@ class UsersSettingsSendAsResource {
 
   /// Deletes the specified send-as alias.
   ///
-  /// Revokes any verification that may have been required for using it. This
-  /// method is only available to service account clients that have been
+  /// Revokes any verification that may have been required for using it. For
+  /// more information, see
+  /// [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+  /// This method is only available to service account clients that have been
   /// delegated domain-wide authority.
   ///
   /// Request parameters:
@@ -3487,7 +3622,8 @@ class UsersSettingsSendAsResource {
   /// Gets the specified send-as alias.
   ///
   /// Fails with an HTTP 404 error if the specified address is not a member of
-  /// the collection.
+  /// the collection. For more information, see
+  /// [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
   ///
   /// Request parameters:
   ///
@@ -3532,7 +3668,8 @@ class UsersSettingsSendAsResource {
   /// Lists the send-as aliases for the specified account.
   ///
   /// The result includes the primary send-as address associated with the
-  /// account as well as any custom "from" aliases.
+  /// account as well as any custom "from" aliases. For more information, see
+  /// [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
   ///
   /// Request parameters:
   ///
@@ -3573,6 +3710,9 @@ class UsersSettingsSendAsResource {
   }
 
   /// Patch the specified send-as alias.
+  ///
+  /// For more information, see
+  /// [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3622,9 +3762,11 @@ class UsersSettingsSendAsResource {
   /// Updates a send-as alias.
   ///
   /// If a signature is provided, Gmail will sanitize the HTML before saving it
-  /// with the alias. Addresses other than the primary address for the account
-  /// can only be updated by service account clients that have been delegated
-  /// domain-wide authority.
+  /// with the alias. For more information, see
+  /// [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+  /// Addresses other than the primary address for the account can only be
+  /// updated by service account clients that have been delegated domain-wide
+  /// authority.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3673,8 +3815,10 @@ class UsersSettingsSendAsResource {
 
   /// Sends a verification email to the specified send-as alias address.
   ///
-  /// The verification status must be `pending`. This method is only available
-  /// to service account clients that have been delegated domain-wide authority.
+  /// The verification status must be `pending`. For more information, see
+  /// [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+  /// This method is only available to service account clients that have been
+  /// delegated domain-wide authority.
   ///
   /// Request parameters:
   ///
@@ -3724,6 +3868,9 @@ class UsersSettingsSendAsSmimeInfoResource {
 
   /// Deletes the specified S/MIME config for the specified send-as alias.
   ///
+  /// For more information, see
+  /// [Manage S/MIME certificates with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+  ///
   /// Request parameters:
   ///
   /// [userId] - The user's email address. The special value `me` can be used to
@@ -3769,6 +3916,9 @@ class UsersSettingsSendAsSmimeInfoResource {
   }
 
   /// Gets the specified S/MIME config for the specified send-as alias.
+  ///
+  /// For more information, see
+  /// [Manage S/MIME certificates with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
   ///
   /// Request parameters:
   ///
@@ -3818,7 +3968,9 @@ class UsersSettingsSendAsSmimeInfoResource {
 
   /// Insert (upload) the given S/MIME config for the specified send-as alias.
   ///
-  /// Note that pkcs12 format is required for the key.
+  /// Note that `pkcs12` format is required for the key. For more information,
+  /// see
+  /// [Manage S/MIME certificates with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3869,6 +4021,9 @@ class UsersSettingsSendAsSmimeInfoResource {
 
   /// Lists S/MIME configs for the specified send-as alias.
   ///
+  /// For more information, see
+  /// [Manage S/MIME certificates with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+  ///
   /// Request parameters:
   ///
   /// [userId] - The user's email address. The special value `me` can be used to
@@ -3914,6 +4069,9 @@ class UsersSettingsSendAsSmimeInfoResource {
   }
 
   /// Sets the default S/MIME config for the specified send-as alias.
+  ///
+  /// For more information, see
+  /// [Manage S/MIME certificates with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
   ///
   /// Request parameters:
   ///
@@ -3969,7 +4127,9 @@ class UsersThreadsResource {
   /// Immediately and permanently deletes the specified thread.
   ///
   /// Any messages that belong to the thread are also deleted. This operation
-  /// cannot be undone. Prefer `threads.trash` instead.
+  /// cannot be undone. Prefer `threads.trash` instead. For more information,
+  /// see
+  /// [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
   ///
   /// Request parameters:
   ///
@@ -4010,6 +4170,9 @@ class UsersThreadsResource {
   }
 
   /// Gets the specified thread.
+  ///
+  /// For more information, see
+  /// [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
   ///
   /// Request parameters:
   ///
@@ -4068,6 +4231,9 @@ class UsersThreadsResource {
   }
 
   /// Lists the threads in the user's mailbox.
+  ///
+  /// For more information, see
+  /// [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
   ///
   /// Request parameters:
   ///
@@ -4136,7 +4302,8 @@ class UsersThreadsResource {
 
   /// Modifies the labels applied to the thread.
   ///
-  /// This applies to all messages in the thread.
+  /// This applies to all messages in the thread. For more information, see
+  /// [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4186,7 +4353,9 @@ class UsersThreadsResource {
 
   /// Moves the specified thread to the trash.
   ///
-  /// Any messages that belong to the thread are also moved to the trash.
+  /// Any messages that belong to the thread are also moved to the trash. For
+  /// more information, see
+  /// [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
   ///
   /// Request parameters:
   ///
@@ -4232,6 +4401,8 @@ class UsersThreadsResource {
   /// Removes the specified thread from the trash.
   ///
   /// Any messages that belong to the thread are also removed from the trash.
+  /// For more information, see
+  /// [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
   ///
   /// Request parameters:
   ///
@@ -4335,6 +4506,16 @@ class BatchDeleteMessagesRequest {
 }
 
 class BatchModifyMessagesRequest {
+  /// A list of Classification Label values to add.
+  ///
+  /// If a Classification Label with the same label ID is already applied to the
+  /// message, fields with existing field IDs will be updated and fields with
+  /// new field IDs will be added. There's a limit of 20 Classification Label
+  /// values per request. If the message is already classified and the final
+  /// total number of Classification Label values exceeds the maximum allowed
+  /// number of Classification Label values per message, the modification fails.
+  core.List<ClassificationLabelValue>? addClassificationLabels;
+
   /// A list of label IDs to add to messages.
   core.List<core.String>? addLabelIds;
 
@@ -4343,31 +4524,56 @@ class BatchModifyMessagesRequest {
   /// There is a limit of 1000 ids per request.
   core.List<core.String>? ids;
 
+  /// A list of Classification Label values to remove from messages.
+  core.List<core.String>? removeClassificationLabelIds;
+
   /// A list of label IDs to remove from messages.
   core.List<core.String>? removeLabelIds;
 
-  BatchModifyMessagesRequest({this.addLabelIds, this.ids, this.removeLabelIds});
+  BatchModifyMessagesRequest({
+    this.addClassificationLabels,
+    this.addLabelIds,
+    this.ids,
+    this.removeClassificationLabelIds,
+    this.removeLabelIds,
+  });
 
   BatchModifyMessagesRequest.fromJson(core.Map json_)
     : this(
+        addClassificationLabels:
+            (json_['addClassificationLabels'] as core.List?)
+                ?.map(
+                  (value) => ClassificationLabelValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         addLabelIds: (json_['addLabelIds'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
         ids: (json_['ids'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        removeClassificationLabelIds:
+            (json_['removeClassificationLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         removeLabelIds: (json_['removeLabelIds'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final addClassificationLabels = this.addClassificationLabels;
     final addLabelIds = this.addLabelIds;
     final ids = this.ids;
+    final removeClassificationLabelIds = this.removeClassificationLabelIds;
     final removeLabelIds = this.removeLabelIds;
     return {
+      'addClassificationLabels': ?addClassificationLabels,
       'addLabelIds': ?addLabelIds,
       'ids': ?ids,
+      'removeClassificationLabelIds': ?removeClassificationLabelIds,
       'removeLabelIds': ?removeLabelIds,
     };
   }
@@ -4785,6 +4991,9 @@ class FilterAction {
   core.List<core.String>? addLabelIds;
 
   /// Email address that the message should be forwarded to.
+  ///
+  /// This effectively redirects the message to the address specified in this
+  /// field, maintaining the original sender in the "From" field.
   core.String? forward;
 
   /// List of labels to remove from the message.
@@ -5371,7 +5580,8 @@ class LabelColor {
   /// #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983,
   /// #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7,
   /// #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde,
-  /// #cca6ac, #094228, #42d692, #16a765
+  /// #cca6ac, #094228, #42d692, #16a765, #757575, #1e53b8, \#007286, #7858c3,
+  /// #c2185b, #d93025, #54240e, #633e04, #521d28, #202124, \#083018
   core.String? backgroundColor;
 
   /// The text color of the label, represented as hex string.
@@ -5390,7 +5600,8 @@ class LabelColor {
   /// #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983,
   /// #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7,
   /// #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde,
-  /// #cca6ac, #094228, #42d692, #16a765
+  /// #cca6ac, #094228, #42d692, #16a765, #757575, #1e53b8, \#007286, #7858c3,
+  /// #c2185b, #d93025, #54240e, #633e04, #521d28, #202124, \#083018
   core.String? textColor;
 
   LabelColor({this.backgroundColor, this.textColor});
@@ -5829,7 +6040,9 @@ class Message {
   /// Available Classification Label schemas can be queried using the Google
   /// Drive Labels API. Each classification label ID must be unique. If
   /// duplicate IDs are provided, only one will be retained, and the selection
-  /// is arbitrary. Only used for Google Workspace accounts.
+  /// is arbitrary. Only used for Google Workspace accounts. There's a limit of
+  /// 20 Classification Label values per request. If the Classification Label
+  /// values exceeds the maximum allowed number, the request fails.
   core.List<ClassificationLabelValue>? classificationLabelValues;
 
   /// The ID of the last history record that modified this message.
@@ -5857,7 +6070,8 @@ class Message {
   /// string.
   ///
   /// Returned in `messages.get` and `drafts.get` responses when the
-  /// `format=RAW` parameter is supplied.
+  /// `format=RAW` parameter is supplied. @required gmail.users.drafts.create
+  /// gmail.users.drafts.update
   core.String? raw;
   core.List<core.int> get rawAsBytes => convert.base64.decode(raw!);
 
@@ -6105,32 +6319,69 @@ class MessagePartHeader {
 }
 
 class ModifyMessageRequest {
+  /// A list of classification label values to add.
+  ///
+  /// If a Classification Label with the same label ID is already applied to the
+  /// message, fields with existing field IDs will be updated and fields with
+  /// new field IDs will be added. There's a limit of 20 Classification Label
+  /// values per request. If the message is already classified and the final
+  /// total number of Classification Label values exceeds the maximum allowed
+  /// number of Classification Label values per message, the modification fails.
+  core.List<ClassificationLabelValue>? addClassificationLabels;
+
   /// A list of IDs of labels to add to this message.
   ///
   /// You can add up to 100 labels with each update.
   core.List<core.String>? addLabelIds;
+
+  /// A list of Classification Label values to remove from this message.
+  core.List<core.String>? removeClassificationLabelIds;
 
   /// A list IDs of labels to remove from this message.
   ///
   /// You can remove up to 100 labels with each update.
   core.List<core.String>? removeLabelIds;
 
-  ModifyMessageRequest({this.addLabelIds, this.removeLabelIds});
+  ModifyMessageRequest({
+    this.addClassificationLabels,
+    this.addLabelIds,
+    this.removeClassificationLabelIds,
+    this.removeLabelIds,
+  });
 
   ModifyMessageRequest.fromJson(core.Map json_)
     : this(
+        addClassificationLabels:
+            (json_['addClassificationLabels'] as core.List?)
+                ?.map(
+                  (value) => ClassificationLabelValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         addLabelIds: (json_['addLabelIds'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        removeClassificationLabelIds:
+            (json_['removeClassificationLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         removeLabelIds: (json_['removeLabelIds'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final addClassificationLabels = this.addClassificationLabels;
     final addLabelIds = this.addLabelIds;
+    final removeClassificationLabelIds = this.removeClassificationLabelIds;
     final removeLabelIds = this.removeLabelIds;
-    return {'addLabelIds': ?addLabelIds, 'removeLabelIds': ?removeLabelIds};
+    return {
+      'addClassificationLabels': ?addClassificationLabels,
+      'addLabelIds': ?addLabelIds,
+      'removeClassificationLabelIds': ?removeClassificationLabelIds,
+      'removeLabelIds': ?removeLabelIds,
+    };
   }
 }
 
@@ -6251,7 +6502,7 @@ class Profile {
 /// login address associated with the account or a custom "from" address.
 ///
 /// Send-as aliases correspond to the "Send Mail As" feature in the web
-/// interface.
+/// interface. The send-as alias must be a valid email address.
 class SendAs {
   /// A name that appears in the "From:" header for mail sent using this alias.
   ///

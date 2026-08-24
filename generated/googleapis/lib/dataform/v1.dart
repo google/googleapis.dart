@@ -174,7 +174,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -189,9 +189,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -4210,9 +4209,9 @@ class ProjectsLocationsTeamFoldersResource {
   /// keywords: `display_name` (default), `create_time`, `last_modified_time`.
   /// Examples: * `orderBy="display_name"` * `orderBy="display_name desc"`
   ///
-  /// [pageSize] - Optional. Maximum number of TeamFolders to return. The server
-  /// may return fewer items than requested. If unspecified, the server will
-  /// pick an appropriate default.
+  /// [pageSize] - Optional. Maximum number of `TeamFolders` to return. The
+  /// server may return fewer items than requested. If unspecified, the server
+  /// will pick a default of `page_size` = 50.
   ///
   /// [pageToken] - Optional. Page token received from a previous
   /// `SearchTeamFolders` call. Provide this to retrieve the subsequent page.
@@ -4751,6 +4750,12 @@ class CodeCompilationConfig {
   /// Optional.
   core.String? defaultSchema;
 
+  /// The pipeline options which defines the pipeline type and path within the
+  /// Git repository.
+  ///
+  /// Optional.
+  PipelineConfig? pipelineConfig;
+
   /// The suffix that should be appended to all schema (BigQuery dataset ID)
   /// names.
   ///
@@ -4776,6 +4781,7 @@ class CodeCompilationConfig {
     this.defaultLocation,
     this.defaultNotebookRuntimeOptions,
     this.defaultSchema,
+    this.pipelineConfig,
     this.schemaSuffix,
     this.tablePrefix,
     this.vars,
@@ -4797,6 +4803,11 @@ class CodeCompilationConfig {
               )
             : null,
         defaultSchema: json_['defaultSchema'] as core.String?,
+        pipelineConfig: json_.containsKey('pipelineConfig')
+            ? PipelineConfig.fromJson(
+                json_['pipelineConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         schemaSuffix: json_['schemaSuffix'] as core.String?,
         tablePrefix: json_['tablePrefix'] as core.String?,
         vars: (json_['vars'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -4812,6 +4823,7 @@ class CodeCompilationConfig {
     final defaultLocation = this.defaultLocation;
     final defaultNotebookRuntimeOptions = this.defaultNotebookRuntimeOptions;
     final defaultSchema = this.defaultSchema;
+    final pipelineConfig = this.pipelineConfig;
     final schemaSuffix = this.schemaSuffix;
     final tablePrefix = this.tablePrefix;
     final vars = this.vars;
@@ -4823,6 +4835,7 @@ class CodeCompilationConfig {
       'defaultLocation': ?defaultLocation,
       'defaultNotebookRuntimeOptions': ?defaultNotebookRuntimeOptions,
       'defaultSchema': ?defaultSchema,
+      'pipelineConfig': ?pipelineConfig,
       'schemaSuffix': ?schemaSuffix,
       'tablePrefix': ?tablePrefix,
       'vars': ?vars,
@@ -5177,6 +5190,11 @@ class CompilationResult {
   /// Output only.
   core.String? dataformCoreVersion;
 
+  /// Metadata about the repository snapshot used by scheduled notebooks.
+  ///
+  /// Output only.
+  GcsRepositorySnapshotMetadata? gcsRepositorySnapshotMetadata;
+
   /// Git commit/tag/branch name at which the repository should be compiled.
   ///
   /// Must exist in the remote repository. Examples: - a commit SHA: `12ade345`
@@ -5236,6 +5254,7 @@ class CompilationResult {
     this.createTime,
     this.dataEncryptionState,
     this.dataformCoreVersion,
+    this.gcsRepositorySnapshotMetadata,
     this.gitCommitish,
     this.internalMetadata,
     this.name,
@@ -5268,6 +5287,13 @@ class CompilationResult {
               )
             : null,
         dataformCoreVersion: json_['dataformCoreVersion'] as core.String?,
+        gcsRepositorySnapshotMetadata:
+            json_.containsKey('gcsRepositorySnapshotMetadata')
+            ? GcsRepositorySnapshotMetadata.fromJson(
+                json_['gcsRepositorySnapshotMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gitCommitish: json_['gitCommitish'] as core.String?,
         internalMetadata: json_['internalMetadata'] as core.String?,
         name: json_['name'] as core.String?,
@@ -5288,6 +5314,7 @@ class CompilationResult {
     final createTime = this.createTime;
     final dataEncryptionState = this.dataEncryptionState;
     final dataformCoreVersion = this.dataformCoreVersion;
+    final gcsRepositorySnapshotMetadata = this.gcsRepositorySnapshotMetadata;
     final gitCommitish = this.gitCommitish;
     final internalMetadata = this.internalMetadata;
     final name = this.name;
@@ -5301,6 +5328,7 @@ class CompilationResult {
       'createTime': ?createTime,
       'dataEncryptionState': ?dataEncryptionState,
       'dataformCoreVersion': ?dataformCoreVersion,
+      'gcsRepositorySnapshotMetadata': ?gcsRepositorySnapshotMetadata,
       'gitCommitish': ?gitCommitish,
       'internalMetadata': ?internalMetadata,
       'name': ?name,
@@ -5691,9 +5719,13 @@ typedef DeleteTeamFolderTreeRequest = $FolderTreeRequest;
 /// Represents a single entry in a directory.
 class DirectoryEntry {
   /// A child directory in the directory.
+  ///
+  /// The path is returned including the full folder structure from the root.
   core.String? directory;
 
   /// A file in the directory.
+  ///
+  /// The path is returned including the full folder structure from the root.
   core.String? file;
 
   /// Entry with metadata.
@@ -6095,6 +6127,72 @@ class FolderContentsEntry {
   }
 }
 
+/// Configures the destination for a repository snapshot.
+class GcsRepositorySnapshotDestination {
+  /// The Google Cloud Storage destination to upload the repository snapshot to.
+  ///
+  /// Format: `gs://bucket-name/path/`.
+  ///
+  /// Optional.
+  core.String? repositorySnapshotUri;
+
+  GcsRepositorySnapshotDestination({this.repositorySnapshotUri});
+
+  GcsRepositorySnapshotDestination.fromJson(core.Map json_)
+    : this(
+        repositorySnapshotUri: json_['repositorySnapshotUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final repositorySnapshotUri = this.repositorySnapshotUri;
+    return {'repositorySnapshotUri': ?repositorySnapshotUri};
+  }
+}
+
+/// Metadata about a repository snapshot stored in Google Cloud Storage.
+class GcsRepositorySnapshotMetadata {
+  /// The crc32c checksum of the repository snapshot, big-endian base64 encoded.
+  ///
+  /// Output only.
+  core.String? crc32cChecksum;
+
+  /// The generation number of the Cloud Storage object.
+  ///
+  /// See https://cloud.google.com/storage/docs/metadata#generation-number.
+  ///
+  /// Output only.
+  core.String? generation;
+
+  /// The Google Cloud Storage URI of the repository snapshot.
+  ///
+  /// Output only.
+  core.String? repositorySnapshotUri;
+
+  GcsRepositorySnapshotMetadata({
+    this.crc32cChecksum,
+    this.generation,
+    this.repositorySnapshotUri,
+  });
+
+  GcsRepositorySnapshotMetadata.fromJson(core.Map json_)
+    : this(
+        crc32cChecksum: json_['crc32cChecksum'] as core.String?,
+        generation: json_['generation'] as core.String?,
+        repositorySnapshotUri: json_['repositorySnapshotUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final crc32cChecksum = this.crc32cChecksum;
+    final generation = this.generation;
+    final repositorySnapshotUri = this.repositorySnapshotUri;
+    return {
+      'crc32cChecksum': ?crc32cChecksum,
+      'generation': ?generation,
+      'repositorySnapshotUri': ?repositorySnapshotUri,
+    };
+  }
+}
+
 /// Controls Git remote configuration for a repository.
 class GitRemoteSettings {
   /// The name of the Secret Manager secret version to use as an authentication
@@ -6107,10 +6205,26 @@ class GitRemoteSettings {
 
   /// The Git remote's default branch name.
   ///
-  /// If not set, `main` will be used and stored for the repository.
+  /// If not set, `main` will be used.
   ///
-  /// Required.
+  /// Optional.
   core.String? defaultBranch;
+
+  /// The Git remote's effective default branch name.
+  ///
+  /// This is the default branch name of the Git remote if it is set, otherwise
+  /// it is `main`.
+  ///
+  /// Output only.
+  core.String? effectiveDefaultBranch;
+
+  /// Resource name for the `GitRepositoryLink` used for machine credentials.
+  ///
+  /// Must be in the format `projects / * /locations / * /connections / *
+  /// /gitRepositoryLinks / * `
+  ///
+  /// Optional.
+  core.String? gitRepositoryLink;
 
   /// Authentication fields for remote uris using SSH protocol.
   ///
@@ -6141,6 +6255,8 @@ class GitRemoteSettings {
   GitRemoteSettings({
     this.authenticationTokenSecretVersion,
     this.defaultBranch,
+    this.effectiveDefaultBranch,
+    this.gitRepositoryLink,
     this.sshAuthenticationConfig,
     this.tokenStatus,
     this.url,
@@ -6151,6 +6267,8 @@ class GitRemoteSettings {
         authenticationTokenSecretVersion:
             json_['authenticationTokenSecretVersion'] as core.String?,
         defaultBranch: json_['defaultBranch'] as core.String?,
+        effectiveDefaultBranch: json_['effectiveDefaultBranch'] as core.String?,
+        gitRepositoryLink: json_['gitRepositoryLink'] as core.String?,
         sshAuthenticationConfig: json_.containsKey('sshAuthenticationConfig')
             ? SshAuthenticationConfig.fromJson(
                 json_['sshAuthenticationConfig']
@@ -6165,12 +6283,16 @@ class GitRemoteSettings {
     final authenticationTokenSecretVersion =
         this.authenticationTokenSecretVersion;
     final defaultBranch = this.defaultBranch;
+    final effectiveDefaultBranch = this.effectiveDefaultBranch;
+    final gitRepositoryLink = this.gitRepositoryLink;
     final sshAuthenticationConfig = this.sshAuthenticationConfig;
     final tokenStatus = this.tokenStatus;
     final url = this.url;
     return {
       'authenticationTokenSecretVersion': ?authenticationTokenSecretVersion,
       'defaultBranch': ?defaultBranch,
+      'effectiveDefaultBranch': ?effectiveDefaultBranch,
+      'gitRepositoryLink': ?gitRepositoryLink,
       'sshAuthenticationConfig': ?sshAuthenticationConfig,
       'tokenStatus': ?tokenStatus,
       'url': ?url,
@@ -6254,7 +6376,29 @@ class IncrementalTableConfig {
 }
 
 /// `InstallNpmPackages` request message.
-typedef InstallNpmPackagesRequest = $Empty;
+class InstallNpmPackagesRequest {
+  /// The pipeline options which defines the pipeline type and path within the
+  /// Git repository.
+  ///
+  /// Optional.
+  PipelineConfig? pipelineConfig;
+
+  InstallNpmPackagesRequest({this.pipelineConfig});
+
+  InstallNpmPackagesRequest.fromJson(core.Map json_)
+    : this(
+        pipelineConfig: json_.containsKey('pipelineConfig')
+            ? PipelineConfig.fromJson(
+                json_['pipelineConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final pipelineConfig = this.pipelineConfig;
+    return {'pipelineConfig': ?pipelineConfig};
+  }
+}
 
 /// `InstallNpmPackages` response message.
 typedef InstallNpmPackagesResponse = $Empty;
@@ -6958,26 +7102,34 @@ class NotebookAction {
   /// Output only.
   core.String? contents;
 
-  /// The ID of the Vertex job that executed the notebook in contents and also
-  /// the ID used for the outputs created in Google Cloud Storage buckets.
+  /// The path to the notebook file in the repository.
+  ///
+  /// Output only.
+  core.String? filePath;
+
+  /// The ID of the Gemini Enterprise Agent Platform job that executed the
+  /// notebook in contents and also the ID used for the outputs created in
+  /// Google Cloud Storage buckets.
   ///
   /// Only set once the job has started to run.
   ///
   /// Output only.
   core.String? jobId;
 
-  NotebookAction({this.contents, this.jobId});
+  NotebookAction({this.contents, this.filePath, this.jobId});
 
   NotebookAction.fromJson(core.Map json_)
     : this(
         contents: json_['contents'] as core.String?,
+        filePath: json_['filePath'] as core.String?,
         jobId: json_['jobId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final contents = this.contents;
+    final filePath = this.filePath;
     final jobId = this.jobId;
-    return {'contents': ?contents, 'jobId': ?jobId};
+    return {'contents': ?contents, 'filePath': ?filePath, 'jobId': ?jobId};
   }
 }
 
@@ -7000,9 +7152,18 @@ class NotebookRuntimeOptions {
   /// Optional.
   core.String? gcsOutputBucket;
 
+  /// The Google Cloud Storage destination to upload the snapshot to.
+  ///
+  /// For empty URI it defaults to the provided gcs_output_bucket. Format:
+  /// `gs://bucket-name/path/`.
+  ///
+  /// Optional.
+  GcsRepositorySnapshotDestination? gcsRepositorySnapshotDestination;
+
   NotebookRuntimeOptions({
     this.aiPlatformNotebookRuntimeTemplate,
     this.gcsOutputBucket,
+    this.gcsRepositorySnapshotDestination,
   });
 
   NotebookRuntimeOptions.fromJson(core.Map json_)
@@ -7010,15 +7171,25 @@ class NotebookRuntimeOptions {
         aiPlatformNotebookRuntimeTemplate:
             json_['aiPlatformNotebookRuntimeTemplate'] as core.String?,
         gcsOutputBucket: json_['gcsOutputBucket'] as core.String?,
+        gcsRepositorySnapshotDestination:
+            json_.containsKey('gcsRepositorySnapshotDestination')
+            ? GcsRepositorySnapshotDestination.fromJson(
+                json_['gcsRepositorySnapshotDestination']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final aiPlatformNotebookRuntimeTemplate =
         this.aiPlatformNotebookRuntimeTemplate;
     final gcsOutputBucket = this.gcsOutputBucket;
+    final gcsRepositorySnapshotDestination =
+        this.gcsRepositorySnapshotDestination;
     return {
       'aiPlatformNotebookRuntimeTemplate': ?aiPlatformNotebookRuntimeTemplate,
       'gcsOutputBucket': ?gcsOutputBucket,
+      'gcsRepositorySnapshotDestination': ?gcsRepositorySnapshotDestination,
     };
   }
 }
@@ -7172,6 +7343,41 @@ class Operations {
       'relationDescriptor': ?relationDescriptor,
       'tags': ?tags,
     };
+  }
+}
+
+/// Defines the pipeline type and path within the Git repository.
+class PipelineConfig {
+  /// The relative path within the Git repository where the pipeline is defined.
+  ///
+  /// For example, for a Dataform pipeline, it is a path to the folder where
+  /// `workflow_settings.yaml` or `dataform.json` is located.
+  ///
+  /// Required.
+  core.String? path;
+
+  /// The type of the pipeline.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PIPELINE_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "DATAFORM" : Regular Dataform pipeline.
+  /// - "SQL" : SQL single file asset.
+  /// - "NOTEBOOK" : Notebook single file asset.
+  core.String? pipelineType;
+
+  PipelineConfig({this.path, this.pipelineType});
+
+  PipelineConfig.fromJson(core.Map json_)
+    : this(
+        path: json_['path'] as core.String?,
+        pipelineType: json_['pipelineType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final path = this.path;
+    final pipelineType = this.pipelineType;
+    return {'path': ?path, 'pipelineType': ?pipelineType};
   }
 }
 
@@ -7938,9 +8144,9 @@ class ReleaseConfig {
 
   /// Specifies the time zone to be used when interpreting cron_schedule.
   ///
-  /// Must be a time zone name from the time zone database
-  /// (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left
-  /// unspecified, the default is UTC.
+  /// Must be a time zone name from the
+  /// [time zone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+  /// If left unspecified, the default is `UTC`.
   ///
   /// Optional.
   core.String? timeZone;
@@ -8859,9 +9065,9 @@ class WorkflowConfig {
 
   /// Specifies the time zone to be used when interpreting cron_schedule.
   ///
-  /// Must be a time zone name from the time zone database
-  /// (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left
-  /// unspecified, the default is UTC.
+  /// Must be a time zone name from the
+  /// [time zone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+  /// If left unspecified, the default is `UTC`.
   ///
   /// Optional.
   core.String? timeZone;
@@ -8976,6 +9182,12 @@ class WorkflowInvocation {
   /// Output only.
   core.String? name;
 
+  /// The pipeline options which defines the pipeline type and path within the
+  /// Git repository.
+  ///
+  /// Output only.
+  PipelineConfig? pipelineConfig;
+
   /// Metadata indicating whether this resource is user-scoped.
   ///
   /// `WorkflowInvocation` resource is `user_scoped` only if it is sourced from
@@ -9020,6 +9232,7 @@ class WorkflowInvocation {
     this.invocationConfig,
     this.invocationTiming,
     this.name,
+    this.pipelineConfig,
     this.privateResourceMetadata,
     this.resolvedCompilationResult,
     this.state,
@@ -9049,6 +9262,11 @@ class WorkflowInvocation {
               )
             : null,
         name: json_['name'] as core.String?,
+        pipelineConfig: json_.containsKey('pipelineConfig')
+            ? PipelineConfig.fromJson(
+                json_['pipelineConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         privateResourceMetadata: json_.containsKey('privateResourceMetadata')
             ? PrivateResourceMetadata.fromJson(
                 json_['privateResourceMetadata']
@@ -9068,6 +9286,7 @@ class WorkflowInvocation {
     final invocationConfig = this.invocationConfig;
     final invocationTiming = this.invocationTiming;
     final name = this.name;
+    final pipelineConfig = this.pipelineConfig;
     final privateResourceMetadata = this.privateResourceMetadata;
     final resolvedCompilationResult = this.resolvedCompilationResult;
     final state = this.state;
@@ -9079,6 +9298,7 @@ class WorkflowInvocation {
       'invocationConfig': ?invocationConfig,
       'invocationTiming': ?invocationTiming,
       'name': ?name,
+      'pipelineConfig': ?pipelineConfig,
       'privateResourceMetadata': ?privateResourceMetadata,
       'resolvedCompilationResult': ?resolvedCompilationResult,
       'state': ?state,

@@ -109,7 +109,7 @@ class ActivitiesResource {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// `(access_evaluation)|(access_transparency)|(admin)|(admin_data_action)|(assignments)|(calendar)|(chat)|(chrome)|(classroom)|(cloud_search)|(contacts)|(context_aware_access)|(data_studio)|(data_migration)|(directory_sync)|(drive)|(gcp)|(gmail)|(gplus)|(graduation)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(ldap)|(login)|(meet)|(meet_hardware)|(mobile)|(profile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)|(tasks)|(takeout)`.
+  /// `(access_evaluation)|(access_transparency)|(admin)|(admin_data_action)|(assignments)|(calendar)|(chat)|(chrome)|(classroom)|(cloud_search)|(contacts)|(context_aware_access)|(data_studio)|(data_migration)|(directory_sync)|(drive)|(gcp)|(gmail)|(gplus)|(graduation)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(ldap)|(login)|(meet)|(meet_hardware)|(mobile)|(profile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)|(tasks)|(takeout)|(voice)|(chrome_sync)|(workspace_studio)`.
   /// Possible string values are:
   /// - "access_transparency" : The Google Workspace Access Transparency
   /// activity reports return information about different types of Access
@@ -198,6 +198,13 @@ class ActivitiesResource {
   /// information about various types of Takeout activity events.
   /// - "graduation" : The Graduation application's activity reports return
   /// information about various types of Graduation activity events.
+  /// - "voice" : The Voice application's activity reports return information
+  /// about various types of Voice activity events.
+  /// - "chrome_sync" : The Chrome Sync application's activity reports return
+  /// information about various types of Chrome Sync activity events.
+  /// - "workspace_studio" : The Workspace Studio application's activity reports
+  /// return information about various types of Workspace Studio activity
+  /// events.
   ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
@@ -207,6 +214,11 @@ class ActivitiesResource {
   /// virtual private network (VPN) address. This parameter supports both IPv4
   /// and IPv6 address versions.
   ///
+  /// [agentInfoFilter] - Optional. Filters on agent info fields in the
+  /// activity. This filter gets applied in conjunction(AND) with other filters.
+  /// Example: "agentInfoFilter=agentId=\"agent-id\" AND
+  /// agentName=\"agent-name\" AND agentOwnerEmail=\"agent-owner-email\""
+  ///
   /// [applicationInfoFilter] - Optional. Used to filter on the `oAuthClientId`
   /// field present in \[`ApplicationInfo`\](#applicationinfo) message.
   /// **Usage** ``` GET...&applicationInfoFilter=oAuthClientId="clientId"
@@ -214,6 +226,13 @@ class ActivitiesResource {
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
   /// Value must have pattern `C.+|my_customer`.
+  ///
+  /// [deviceFilter] - Optional. Used to filter on the fields present in
+  /// \[`UserDeviceInfo`\](#userdeviceinfo) message like `deviceId`,
+  /// `deviceType`, and `deviceOsVersion`. **Usage** ```
+  /// GET...&deviceFilter=deviceId="123"
+  /// GET...&deviceFilter=deviceType="ANDROID"
+  /// GET...&deviceFilter=deviceOsVersion="14.0" ```
   ///
   /// [endTime] - Sets the end of the range of time shown in the report. The
   /// date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The
@@ -389,8 +408,10 @@ class ActivitiesResource {
     core.String userKey,
     core.String applicationName, {
     core.String? actorIpAddress,
+    core.String? agentInfoFilter,
     core.String? applicationInfoFilter,
     core.String? customerId,
+    core.String? deviceFilter,
     core.String? endTime,
     core.String? eventName,
     core.String? filters,
@@ -407,10 +428,12 @@ class ActivitiesResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'actorIpAddress': ?actorIpAddress == null ? null : [actorIpAddress],
+      'agentInfoFilter': ?agentInfoFilter == null ? null : [agentInfoFilter],
       'applicationInfoFilter': ?applicationInfoFilter == null
           ? null
           : [applicationInfoFilter],
       'customerId': ?customerId == null ? null : [customerId],
+      'deviceFilter': ?deviceFilter == null ? null : [deviceFilter],
       'endTime': ?endTime == null ? null : [endTime],
       'eventName': ?eventName == null ? null : [eventName],
       'filters': ?filters == null ? null : [filters],
@@ -1162,6 +1185,9 @@ class ActivityActorApplicationInfo {
 
 /// User doing the action.
 class ActivityActor {
+  /// Details of the AI agent that was the actor for the activity.
+  AgentAttributionInfo? agentAttributionInfo;
+
   /// Details of the application that was the actor for the activity.
   ActivityActorApplicationInfo? applicationInfo;
 
@@ -1186,6 +1212,7 @@ class ActivityActor {
   core.String? profileId;
 
   ActivityActor({
+    this.agentAttributionInfo,
     this.applicationInfo,
     this.callerType,
     this.email,
@@ -1195,6 +1222,12 @@ class ActivityActor {
 
   ActivityActor.fromJson(core.Map json_)
     : this(
+        agentAttributionInfo: json_.containsKey('agentAttributionInfo')
+            ? AgentAttributionInfo.fromJson(
+                json_['agentAttributionInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         applicationInfo: json_.containsKey('applicationInfo')
             ? ActivityActorApplicationInfo.fromJson(
                 json_['applicationInfo'] as core.Map<core.String, core.dynamic>,
@@ -1207,12 +1240,14 @@ class ActivityActor {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final agentAttributionInfo = this.agentAttributionInfo;
     final applicationInfo = this.applicationInfo;
     final callerType = this.callerType;
     final email = this.email;
     final key = this.key;
     final profileId = this.profileId;
     return {
+      'agentAttributionInfo': ?agentAttributionInfo,
       'applicationInfo': ?applicationInfo,
       'callerType': ?callerType,
       'email': ?email,
@@ -1669,6 +1704,9 @@ class Activity {
   /// and IPv6.
   core.String? ipAddress;
 
+  /// Whether the activity was performed by an agent.
+  core.bool? isAgenticAction;
+
   /// The type of API resource.
   ///
   /// For an activity report, the value is `audit#activity`.
@@ -1686,16 +1724,21 @@ class Activity {
   /// Details of the resource on which the action was performed.
   core.List<ResourceDetails>? resourceDetails;
 
+  /// Device details of the user doing the action.
+  ActivityUserDeviceInfo? userDeviceInfo;
+
   Activity({
     this.actor,
     this.etag,
     this.events,
     this.id,
     this.ipAddress,
+    this.isAgenticAction,
     this.kind,
     this.networkInfo,
     this.ownerDomain,
     this.resourceDetails,
+    this.userDeviceInfo,
   });
 
   Activity.fromJson(core.Map json_)
@@ -1719,6 +1762,7 @@ class Activity {
               )
             : null,
         ipAddress: json_['ipAddress'] as core.String?,
+        isAgenticAction: json_['isAgenticAction'] as core.bool?,
         kind: json_['kind'] as core.String?,
         networkInfo: json_.containsKey('networkInfo')
             ? ActivityNetworkInfo.fromJson(
@@ -1733,6 +1777,11 @@ class Activity {
               ),
             )
             .toList(),
+        userDeviceInfo: json_.containsKey('userDeviceInfo')
+            ? ActivityUserDeviceInfo.fromJson(
+                json_['userDeviceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -1741,20 +1790,24 @@ class Activity {
     final events = this.events;
     final id = this.id;
     final ipAddress = this.ipAddress;
+    final isAgenticAction = this.isAgenticAction;
     final kind = this.kind;
     final networkInfo = this.networkInfo;
     final ownerDomain = this.ownerDomain;
     final resourceDetails = this.resourceDetails;
+    final userDeviceInfo = this.userDeviceInfo;
     return {
       'actor': ?actor,
       'etag': ?etag,
       'events': ?events,
       'id': ?id,
       'ipAddress': ?ipAddress,
+      'isAgenticAction': ?isAgenticAction,
       'kind': ?kind,
       'networkInfo': ?networkInfo,
       'ownerDomain': ?ownerDomain,
       'resourceDetails': ?resourceDetails,
+      'userDeviceInfo': ?userDeviceInfo,
     };
   }
 }
@@ -1845,6 +1898,111 @@ class ActivityNetworkInfo {
       'regionCode': ?regionCode,
       'subdivisionCode': ?subdivisionCode,
     };
+  }
+}
+
+/// Device details of the user doing the action.
+class ActivityUserDeviceInfo {
+  /// Device ID of the user's device.
+  ///
+  /// Output only.
+  core.String? deviceId;
+
+  /// Device OS version of the user's device.
+  ///
+  /// Output only.
+  core.String? deviceOsVersion;
+
+  /// The type of the user's device.
+  ///
+  /// Output only.
+  core.String? deviceType;
+
+  ActivityUserDeviceInfo({
+    this.deviceId,
+    this.deviceOsVersion,
+    this.deviceType,
+  });
+
+  ActivityUserDeviceInfo.fromJson(core.Map json_)
+    : this(
+        deviceId: json_['deviceId'] as core.String?,
+        deviceOsVersion: json_['deviceOsVersion'] as core.String?,
+        deviceType: json_['deviceType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceId = this.deviceId;
+    final deviceOsVersion = this.deviceOsVersion;
+    final deviceType = this.deviceType;
+    return {
+      'deviceId': ?deviceId,
+      'deviceOsVersion': ?deviceOsVersion,
+      'deviceType': ?deviceType,
+    };
+  }
+}
+
+/// Details of the AI agent that was the actor for the activity.
+class AgentAttributionInfo {
+  /// The ID of the agent.
+  core.String? agentId;
+
+  /// The user visible name of the agent.
+  core.String? agentName;
+
+  /// The owner of the agent.
+  AgentAttributionInfoAgentOwner? agentOwner;
+
+  /// Type of the agent.
+  core.String? agentType;
+
+  AgentAttributionInfo({
+    this.agentId,
+    this.agentName,
+    this.agentOwner,
+    this.agentType,
+  });
+
+  AgentAttributionInfo.fromJson(core.Map json_)
+    : this(
+        agentId: json_['agentId'] as core.String?,
+        agentName: json_['agentName'] as core.String?,
+        agentOwner: json_.containsKey('agentOwner')
+            ? AgentAttributionInfoAgentOwner.fromJson(
+                json_['agentOwner'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        agentType: json_['agentType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentId = this.agentId;
+    final agentName = this.agentName;
+    final agentOwner = this.agentOwner;
+    final agentType = this.agentType;
+    return {
+      'agentId': ?agentId,
+      'agentName': ?agentName,
+      'agentOwner': ?agentOwner,
+      'agentType': ?agentType,
+    };
+  }
+}
+
+/// Details of the owner of the AI agent.
+class AgentAttributionInfoAgentOwner {
+  /// The email of the agent owner.
+  core.String? email;
+
+  AgentAttributionInfoAgentOwner({this.email});
+
+  AgentAttributionInfoAgentOwner.fromJson(core.Map json_)
+    : this(email: json_['email'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    return {'email': ?email};
   }
 }
 
@@ -2227,7 +2385,7 @@ class FieldValueSelectionValue {
 }
 
 /// Setting a text list value.
-typedef FieldValueTextListValue = $Shared09;
+typedef FieldValueTextListValue = $Shared12;
 
 /// Setting a user list value by selecting multiple users.
 class FieldValueUserListValue {
@@ -2399,10 +2557,18 @@ class OwnerIdentity {
   /// Identity of the group who owns the resource.
   GroupIdentity? groupIdentity;
 
+  /// Identity of the shared drive who owns the resource.
+  SharedDriveIdentity? sharedDriveIdentity;
+
   /// Identity of the user who owns the resource.
   UserIdentity? userIdentity;
 
-  OwnerIdentity({this.customerIdentity, this.groupIdentity, this.userIdentity});
+  OwnerIdentity({
+    this.customerIdentity,
+    this.groupIdentity,
+    this.sharedDriveIdentity,
+    this.userIdentity,
+  });
 
   OwnerIdentity.fromJson(core.Map json_)
     : this(
@@ -2417,6 +2583,12 @@ class OwnerIdentity {
                 json_['groupIdentity'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        sharedDriveIdentity: json_.containsKey('sharedDriveIdentity')
+            ? SharedDriveIdentity.fromJson(
+                json_['sharedDriveIdentity']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         userIdentity: json_.containsKey('userIdentity')
             ? UserIdentity.fromJson(
                 json_['userIdentity'] as core.Map<core.String, core.dynamic>,
@@ -2427,10 +2599,12 @@ class OwnerIdentity {
   core.Map<core.String, core.dynamic> toJson() {
     final customerIdentity = this.customerIdentity;
     final groupIdentity = this.groupIdentity;
+    final sharedDriveIdentity = this.sharedDriveIdentity;
     final userIdentity = this.userIdentity;
     return {
       'customerIdentity': ?customerIdentity,
       'groupIdentity': ?groupIdentity,
+      'sharedDriveIdentity': ?sharedDriveIdentity,
       'userIdentity': ?userIdentity,
     };
   }
@@ -2521,6 +2695,29 @@ class ResourceDetails {
       'title': ?title,
       'type': ?type,
     };
+  }
+}
+
+/// Identity of the shared drive who owns the resource.
+class SharedDriveIdentity {
+  /// Shared drive gaia id.
+  core.String? id;
+
+  /// Shared drive name.
+  core.String? sharedDriveName;
+
+  SharedDriveIdentity({this.id, this.sharedDriveName});
+
+  SharedDriveIdentity.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        sharedDriveName: json_['sharedDriveName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final sharedDriveName = this.sharedDriveName;
+    return {'id': ?id, 'sharedDriveName': ?sharedDriveName};
   }
 }
 

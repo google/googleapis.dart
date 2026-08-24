@@ -369,7 +369,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -384,9 +384,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -4389,6 +4388,12 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
   GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo?
   deviceInfo;
 
+  /// The dispatch information configuration.
+  ///
+  /// Optional.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo?
+  dispatchInfo;
+
   /// Group details.
   ///
   /// Optional.
@@ -4413,6 +4418,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
 
   GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders({
     this.deviceInfo,
+    this.dispatchInfo,
     this.groupInfo,
     this.outputType,
     this.userInfo,
@@ -4424,6 +4430,11 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
         deviceInfo: json_.containsKey('deviceInfo')
             ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo.fromJson(
                 json_['deviceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dispatchInfo: json_.containsKey('dispatchInfo')
+            ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo.fromJson(
+                json_['dispatchInfo'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         groupInfo: json_.containsKey('groupInfo')
@@ -4441,11 +4452,13 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
 
   core.Map<core.String, core.dynamic> toJson() {
     final deviceInfo = this.deviceInfo;
+    final dispatchInfo = this.dispatchInfo;
     final groupInfo = this.groupInfo;
     final outputType = this.outputType;
     final userInfo = this.userInfo;
     return {
       'deviceInfo': ?deviceInfo,
+      'dispatchInfo': ?dispatchInfo,
       'groupInfo': ?groupInfo,
       'outputType': ?outputType,
       'userInfo': ?userInfo,
@@ -4470,6 +4483,32 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInf
   });
 
   GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo.fromJson(
+    core.Map json_,
+  ) : this(outputType: json_['outputType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final outputType = this.outputType;
+    return {'outputType': ?outputType};
+  }
+}
+
+/// The delegated dispatch information configuration.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo {
+  /// The output type details for the delegated dispatch information.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OUTPUT_TYPE_UNSPECIFIED" : The unspecified output type.
+  /// - "PROTOBUF" : Protobuf output type.
+  /// - "JSON" : JSON output type.
+  /// - "NONE" : Explicitly disable header output.
+  core.String? outputType;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo({
+    this.outputType,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo.fromJson(
     core.Map json_,
   ) : this(outputType: json_['outputType'] as core.String?);
 

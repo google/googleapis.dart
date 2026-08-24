@@ -388,7 +388,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -403,9 +403,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2616,6 +2615,27 @@ class DataSourceParameter {
   }
 }
 
+/// Configuration for Dataplex destination.
+class DataplexConfiguration {
+  /// The Dataplex Universal Catalog entry group for importing the metadata.
+  ///
+  /// entry_group has the format of
+  /// `projects/{project_id}/locations/{region}/entryGroups/{entry_group_id}`.
+  ///
+  /// Required.
+  core.String? entryGroup;
+
+  DataplexConfiguration({this.entryGroup});
+
+  DataplexConfiguration.fromJson(core.Map json_)
+    : this(entryGroup: json_['entryGroup'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entryGroup = this.entryGroup;
+    return {'entryGroup': ?entryGroup};
+  }
+}
+
 /// Represents preferences for sending email notifications for transfer run
 /// events.
 class EmailPreferences {
@@ -2958,6 +2978,29 @@ typedef Location = $Location00;
 
 /// Options customizing manual transfers schedule.
 typedef ManualSchedule = $Empty;
+
+/// The metadata destination of the transfer config.
+class MetadataDestination {
+  /// The Dataplex Universal Catalog configuration.
+  DataplexConfiguration? dataplexConfiguration;
+
+  MetadataDestination({this.dataplexConfiguration});
+
+  MetadataDestination.fromJson(core.Map json_)
+    : this(
+        dataplexConfiguration: json_.containsKey('dataplexConfiguration')
+            ? DataplexConfiguration.fromJson(
+                json_['dataplexConfiguration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataplexConfiguration = this.dataplexConfiguration;
+    return {'dataplexConfiguration': ?dataplexConfiguration};
+  }
+}
 
 /// Partition details related to hierarchy.
 class PartitionDetail {
@@ -3383,6 +3426,9 @@ class TransferConfig {
   /// (formerly BigLake managed tables), with a BigLake configuration.
   core.String? managedTableType;
 
+  /// The metadata destination of the transfer config.
+  MetadataDestination? metadataDestination;
+
   /// Identifier.
   ///
   /// The resource name of the transfer config. Transfer config names have the
@@ -3481,6 +3527,7 @@ class TransferConfig {
     this.encryptionConfiguration,
     this.error,
     this.managedTableType,
+    this.metadataDestination,
     this.name,
     this.nextRunTime,
     this.notificationPubsubTopic,
@@ -3520,6 +3567,12 @@ class TransferConfig {
               )
             : null,
         managedTableType: json_['managedTableType'] as core.String?,
+        metadataDestination: json_.containsKey('metadataDestination')
+            ? MetadataDestination.fromJson(
+                json_['metadataDestination']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         nextRunTime: json_['nextRunTime'] as core.String?,
         notificationPubsubTopic:
@@ -3560,6 +3613,7 @@ class TransferConfig {
     final encryptionConfiguration = this.encryptionConfiguration;
     final error = this.error;
     final managedTableType = this.managedTableType;
+    final metadataDestination = this.metadataDestination;
     final name = this.name;
     final nextRunTime = this.nextRunTime;
     final notificationPubsubTopic = this.notificationPubsubTopic;
@@ -3582,6 +3636,7 @@ class TransferConfig {
       'encryptionConfiguration': ?encryptionConfiguration,
       'error': ?error,
       'managedTableType': ?managedTableType,
+      'metadataDestination': ?metadataDestination,
       'name': ?name,
       'nextRunTime': ?nextRunTime,
       'notificationPubsubTopic': ?notificationPubsubTopic,

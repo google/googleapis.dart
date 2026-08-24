@@ -2067,9 +2067,10 @@ class BigQueryDatasetSource {
 /// Configuration for a Bigtable subscription.
 ///
 /// The Pub/Sub message will be written to a Bigtable row as follows: - row key:
-/// subscription name and message ID delimited by #. - columns: message bytes
-/// written to a single column family "data" with an empty-string column
-/// qualifier. - cell timestamp: the message publish timestamp.
+/// subscription name, message ID hash, and message ID delimited by `#`. -
+/// columns: message bytes written to a single column family `data` with an
+/// empty-string column qualifier. - cell timestamp: the message publish
+/// timestamp.
 class BigtableConfig {
   /// The app profile to use for the Bigtable writes.
   ///
@@ -2387,6 +2388,10 @@ class CloudStorageConfig {
     };
   }
 }
+
+/// Configuration for compressing/decompressing message data using a
+/// user-specified compression algorithm.
+typedef Compression = $Compression;
 
 /// A data exchange is a container that lets you share data.
 ///
@@ -2995,9 +3000,9 @@ class GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMark
 /// Defines the destination Pub/Sub subscription.
 ///
 /// If none of `push_config`, `bigquery_config`, `cloud_storage_config`,
-/// `pubsub_export_config`, or `pubsublite_export_config` is set, then the
-/// subscriber will pull and ack messages using API methods. At most one of
-/// these fields may be set.
+/// `bigtable_config`, `pubsub_export_config`, or `pubsublite_export_config` is
+/// set, then the subscriber will pull and ack messages using API methods. At
+/// most one of these fields may be set.
 class GooglePubsubV1Subscription {
   /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
   /// the subscriber to acknowledge receipt before resending the message.
@@ -3863,6 +3868,11 @@ class MessageTransform {
   /// Optional.
   AIInference? aiInference;
 
+  /// Compression/Decompression.
+  ///
+  /// Optional.
+  Compression? compression;
+
   /// If true, the transform is disabled and will not be applied to messages.
   ///
   /// Defaults to `false`.
@@ -3888,6 +3898,7 @@ class MessageTransform {
 
   MessageTransform({
     this.aiInference,
+    this.compression,
     this.disabled,
     this.enabled,
     this.javascriptUdf,
@@ -3898,6 +3909,11 @@ class MessageTransform {
         aiInference: json_.containsKey('aiInference')
             ? AIInference.fromJson(
                 json_['aiInference'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        compression: json_.containsKey('compression')
+            ? Compression.fromJson(
+                json_['compression'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         disabled: json_['disabled'] as core.bool?,
@@ -3911,11 +3927,13 @@ class MessageTransform {
 
   core.Map<core.String, core.dynamic> toJson() {
     final aiInference = this.aiInference;
+    final compression = this.compression;
     final disabled = this.disabled;
     final enabled = this.enabled;
     final javascriptUdf = this.javascriptUdf;
     return {
       'aiInference': ?aiInference,
+      'compression': ?compression,
       'disabled': ?disabled,
       'enabled': ?enabled,
       'javascriptUdf': ?javascriptUdf,
@@ -4343,12 +4361,15 @@ class QueryTemplate {
   /// Optional.
   core.String? primaryContact;
 
-  /// Will be deprecated.
+  /// Deprecated: Use `primary_contact` instead.
   ///
   /// Email or URL of the primary point of contact of the QueryTemplate. Max
   /// Length: 1000 bytes.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? proposer;
 
   /// The routine associated with the QueryTemplate.

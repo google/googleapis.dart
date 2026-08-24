@@ -76,13 +76,6 @@ Manages Google Cloud Dataflow projects on Google Cloud Platform.
 - [Original documentation](https://cloud.google.com/dataflow)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/dataflow_v1b3/dataflow_v1b3-library.html)
 
-#### Data Labeling API - `datalabeling/v1beta1`
-
-Public API for Google Cloud AI Data Labeling Service.
-
-- [Original documentation](https://cloud.google.com/data-labeling/docs/)
-- [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/datalabeling_v1beta1/datalabeling_v1beta1-library.html)
-
 #### Datastream API - `datastream/v1alpha1`
 
 - [Original documentation](https://cloud.google.com/datastream/)
@@ -152,7 +145,7 @@ Note that we now highly recommend new customers to use Retail API, which incorpo
 
 #### Cloud SQL Admin API - `sqladmin/v1beta4`
 
-API for Cloud SQL database instance management
+Cloud SQL Admin API
 
 - [Original documentation](https://cloud.google.com/sql/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/sqladmin_v1beta4/sqladmin_v1beta4-library.html)

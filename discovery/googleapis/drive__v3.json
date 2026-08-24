@@ -51,7 +51,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260405",
+    "revision": "20260720",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "drive/v3/",
     "title": "Google Drive API",
@@ -271,8 +271,152 @@
         },
         "approvals": {
             "methods": {
+                "approve": {
+                    "description": "Approves an approval. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals). This is used to update the ReviewerResponse of the requesting user with a Response of `APPROVED`. If this is the last required reviewer response, this also completes the approval and sets the approval Status to `APPROVED`.",
+                    "flatPath": "files/{fileId}/approvals/{approvalId}:approve",
+                    "httpMethod": "POST",
+                    "id": "drive.approvals.approve",
+                    "parameterOrder": [
+                        "fileId",
+                        "approvalId"
+                    ],
+                    "parameters": {
+                        "approvalId": {
+                            "description": "Required. The ID of the approval to approve.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "fileId": {
+                            "description": "Required. The ID of the file that the approval is on.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "files/{fileId}/approvals/{approvalId}:approve",
+                    "request": {
+                        "$ref": "ApproveApprovalRequest"
+                    },
+                    "response": {
+                        "$ref": "Approval"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.metadata"
+                    ]
+                },
+                "cancel": {
+                    "description": "Cancels an approval. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals). Updates the approval Status to `CANCELLED`. This can be called by any user with the `writer` permission on the file while the approval Status is `IN_PROGRESS`.",
+                    "flatPath": "files/{fileId}/approvals/{approvalId}:cancel",
+                    "httpMethod": "POST",
+                    "id": "drive.approvals.cancel",
+                    "parameterOrder": [
+                        "fileId",
+                        "approvalId"
+                    ],
+                    "parameters": {
+                        "approvalId": {
+                            "description": "Required. The ID of the approval to cancel.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "fileId": {
+                            "description": "Required. The ID of the file that the approval is on.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "files/{fileId}/approvals/{approvalId}:cancel",
+                    "request": {
+                        "$ref": "CancelApprovalRequest"
+                    },
+                    "response": {
+                        "$ref": "Approval"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.metadata"
+                    ]
+                },
+                "comment": {
+                    "description": "Comments on an approval. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals). This sends a notification to both the initiator and the reviewers. Additionally, a message is also added to the approval activity log.",
+                    "flatPath": "files/{fileId}/approvals/{approvalId}:comment",
+                    "httpMethod": "POST",
+                    "id": "drive.approvals.comment",
+                    "parameterOrder": [
+                        "fileId",
+                        "approvalId"
+                    ],
+                    "parameters": {
+                        "approvalId": {
+                            "description": "Required. The ID of the approval to comment on.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "fileId": {
+                            "description": "Required. The ID of the file that the approval is on.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "files/{fileId}/approvals/{approvalId}:comment",
+                    "request": {
+                        "$ref": "CommentApprovalRequest"
+                    },
+                    "response": {
+                        "$ref": "Approval"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.metadata"
+                    ]
+                },
+                "decline": {
+                    "description": "Declines an approval. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals). This is used to update the ReviewerResponse of the requesting user with a Response of `DECLINED`. This also completes the approval and sets the approval Status to `DECLINED`.",
+                    "flatPath": "files/{fileId}/approvals/{approvalId}:decline",
+                    "httpMethod": "POST",
+                    "id": "drive.approvals.decline",
+                    "parameterOrder": [
+                        "fileId",
+                        "approvalId"
+                    ],
+                    "parameters": {
+                        "approvalId": {
+                            "description": "Required. The ID of the approval to decline.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "fileId": {
+                            "description": "Required. The ID of the file that the approval is on.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "files/{fileId}/approvals/{approvalId}:decline",
+                    "request": {
+                        "$ref": "DeclineApprovalRequest"
+                    },
+                    "response": {
+                        "$ref": "Approval"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.metadata"
+                    ]
+                },
                 "get": {
-                    "description": "Gets an Approval by ID.",
+                    "description": "Gets an approval by ID. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).",
                     "flatPath": "files/{fileId}/approvals/{approvalId}",
                     "httpMethod": "GET",
                     "id": "drive.approvals.get",
@@ -282,13 +426,13 @@
                     ],
                     "parameters": {
                         "approvalId": {
-                            "description": "Required. The ID of the Approval.",
+                            "description": "Required. The ID of the approval.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "fileId": {
-                            "description": "Required. The ID of the file the Approval is on.",
+                            "description": "Required. The ID of the file that the approval is on.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -308,7 +452,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists the Approvals on a file.",
+                    "description": "Lists the approvals on a file. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).",
                     "flatPath": "files/{fileId}/approvals",
                     "httpMethod": "GET",
                     "id": "drive.approvals.list",
@@ -317,19 +461,19 @@
                     ],
                     "parameters": {
                         "fileId": {
-                            "description": "Required. The ID of the file the Approval is on.",
+                            "description": "Required. The ID of the file that the approval is on.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "pageSize": {
-                            "description": "The maximum number of Approvals to return. When not set, at most 100 Approvals will be returned.",
+                            "description": "The maximum number of approvals to return. When not set, at most 100 approvals are returned.",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "The token for continuing a previous list request on the next page. This should be set to the value of nextPageToken from a previous response.",
+                            "description": "The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response.",
                             "location": "query",
                             "type": "string"
                         }
@@ -345,6 +489,71 @@
                         "https://www.googleapis.com/auth/drive.metadata",
                         "https://www.googleapis.com/auth/drive.metadata.readonly",
                         "https://www.googleapis.com/auth/drive.readonly"
+                    ]
+                },
+                "reassign": {
+                    "description": "Reassigns the reviewers on an approval. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals). Adds or replaces reviewers in the ReviewerResponse of the approval. This can be called by any user with the `writer` permission on the file while the approval Status is `IN_PROGRESS` and the Response for the reviewer being reassigned is `NO_RESPONSE`. A user with the `reader` permission can only reassign an approval that's assigned to themselves. Removing a reviewer isn't allowed.",
+                    "flatPath": "files/{fileId}/approvals/{approvalId}:reassign",
+                    "httpMethod": "POST",
+                    "id": "drive.approvals.reassign",
+                    "parameterOrder": [
+                        "fileId",
+                        "approvalId"
+                    ],
+                    "parameters": {
+                        "approvalId": {
+                            "description": "Required. The ID of the approval to reassign.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "fileId": {
+                            "description": "Required. The ID of the file that the approval is on.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "files/{fileId}/approvals/{approvalId}:reassign",
+                    "request": {
+                        "$ref": "ReassignApprovalRequest"
+                    },
+                    "response": {
+                        "$ref": "Approval"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.metadata"
+                    ]
+                },
+                "start": {
+                    "description": "Starts an approval on a file. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).",
+                    "flatPath": "files/{fileId}/approvals:start",
+                    "httpMethod": "POST",
+                    "id": "drive.approvals.start",
+                    "parameterOrder": [
+                        "fileId"
+                    ],
+                    "parameters": {
+                        "fileId": {
+                            "description": "Required. The ID of the file that the approval is created on.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "files/{fileId}/approvals:start",
+                    "request": {
+                        "$ref": "StartApprovalRequest"
+                    },
+                    "response": {
+                        "$ref": "Approval"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.metadata"
                     ]
                 }
             }
@@ -516,7 +725,7 @@
                         },
                         "pageSize": {
                             "default": "100",
-                            "description": "The maximum number of changes to return per page.",
+                            "description": "The maximum number of changes to return. The service may return fewer than this value. If unspecified, at most 100 changes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                             "format": "int32",
                             "location": "query",
                             "maximum": "1000",
@@ -628,7 +837,7 @@
                         },
                         "pageSize": {
                             "default": "100",
-                            "description": "The maximum number of changes to return per page.",
+                            "description": "The maximum number of changes to return. The service may return fewer than this value. If unspecified, at most 100 changes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                             "format": "int32",
                             "location": "query",
                             "maximum": "1000",
@@ -844,7 +1053,7 @@
                         },
                         "pageSize": {
                             "default": "20",
-                            "description": "The maximum number of comments to return per page.",
+                            "description": "The maximum number of comments to return. The service may return fewer than this value. If unspecified, at most 20 comments will be returned. The maximum value is 100; values above 100 will be coerced to 100.",
                             "format": "int32",
                             "location": "query",
                             "maximum": "100",
@@ -1036,7 +1245,7 @@
                     "parameters": {
                         "pageSize": {
                             "default": "10",
-                            "description": "Maximum number of shared drives to return per page.",
+                            "description": "The maximum number of shared drives to return. The service may return fewer than this value. If unspecified, at most 10 shared drives will be returned. The maximum value is 100; values above 100 will be coerced to 100.",
                             "format": "int32",
                             "location": "query",
                             "maximum": "100",
@@ -1618,13 +1827,13 @@
                             "type": "boolean"
                         },
                         "orderBy": {
-                            "description": "A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the file was created. Avoid using this key for queries on large item collections as it might result in timeouts or other issues. For time-related sorting on large item collections, use `modifiedTime` instead. * `folder`: The folder ID. This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The last time the file was modified by the user. * `modifiedTime`: The last time the file was modified by anyone. * `name`: The name of the file. This field is sorted using alphabetical ordering, so 1, 12, 2, 22. * `name_natural`: The name of the file. This field is sorted using natural sort ordering, so 1, 2, 12, 22. * `quotaBytesUsed`: The number of storage quota bytes used by the file. * `recency`: The most recent timestamp from the file's date-time fields. * `sharedWithMeTime`: When the file was shared with the user, if applicable. * `starred`: Whether the user has starred the file. * `viewedByMeTime`: The last time the file was viewed by the user. Each key sorts ascending by default, but can be reversed with the `desc` modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.",
+                            "description": "A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the file was created. Avoid using this key for queries on large item collections as it might result in timeouts or other issues. For time-related sorting on large item collections, use `modifiedTime desc` instead. * `folder`: The folder ID. This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The last time the file was modified by the user. * `modifiedTime`: The last time the file was modified by anyone. * `name`: The name of the file. This field is sorted using alphabetical ordering, so 1, 12, 2, 22. * `name_natural`: The name of the file. This field is sorted using natural sort ordering, so 1, 2, 12, 22. * `quotaBytesUsed`: The number of storage quota bytes used by the file. * `recency`: The most recent timestamp from the file's date-time fields. * `sharedWithMeTime`: When the file was shared with the user, if applicable. * `starred`: Whether the user has starred the file. * `viewedByMeTime`: The last time the file was viewed by the user. Each key sorts ascending by default, but can be reversed with the `desc` modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.",
                             "location": "query",
                             "type": "string"
                         },
                         "pageSize": {
                             "default": "100",
-                            "description": "The maximum number of files to return per page. Partial or empty result pages are possible even before the end of the files list has been reached.",
+                            "description": "The maximum number of files to return. The service may return fewer than this value. If unspecified, at most 100 files will be returned for shared drives, and the entire list of files for non-shared drives. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                             "format": "int32",
                             "location": "query",
                             "maximum": "1000",
@@ -2174,7 +2383,7 @@
                             "type": "string"
                         },
                         "pageSize": {
-                            "description": "The maximum number of permissions to return per page. When not set for files in a shared drive, at most 100 results will be returned. When not set for files that are not in a shared drive, the entire list will be returned.",
+                            "description": "The maximum number of permissions to return. The service may return fewer than this value. If unspecified, at most 100 permissions will be returned for shared drives, and the entire list of permissions for non-shared drives. The maximum value is 100; values above 100 will be coerced to 100.",
                             "format": "int32",
                             "location": "query",
                             "maximum": "100",
@@ -2445,7 +2654,7 @@
                         },
                         "pageSize": {
                             "default": "20",
-                            "description": "The maximum number of replies to return per page.",
+                            "description": "The maximum number of replies to return. The service may return fewer than this value. If unspecified, at most 20 replies will be returned. The maximum value is 100; values above 100 will be coerced to 100.",
                             "format": "int32",
                             "location": "query",
                             "maximum": "100",
@@ -2608,7 +2817,7 @@
                         },
                         "pageSize": {
                             "default": "200",
-                            "description": "The maximum number of revisions to return per page.",
+                            "description": "The maximum number of revisions to return. The service may return fewer than this value. If unspecified, at most 200 revisions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                             "format": "int32",
                             "location": "query",
                             "maximum": "1000",
@@ -3029,6 +3238,17 @@
             },
             "type": "object"
         },
+        "AddReviewer": {
+            "description": "Representation of a reviewer addition.",
+            "id": "AddReviewer",
+            "properties": {
+                "addedReviewerEmail": {
+                    "description": "Required. The email of the reviewer to add.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "App": {
             "description": "The `apps` resource provides a list of apps that a user has installed, with information about each app's supported MIME types, file extensions, and other details. Some resource methods (such as `apps.get`) require an `appId`. Use the `apps.list` method to retrieve the ID for an installed application.",
             "id": "App",
@@ -3198,11 +3418,11 @@
             "type": "object"
         },
         "Approval": {
-            "description": "Metadata for an approval. An approval is a review/approve process for a Drive item.",
+            "description": "Metadata for an approval. An approval is a review or approve process for a Drive item.",
             "id": "Approval",
             "properties": {
                 "approvalId": {
-                    "description": "The Approval ID.",
+                    "description": "The approval ID.",
                     "type": "string"
                 },
                 "completeTime": {
@@ -3222,9 +3442,24 @@
                     "format": "google-datetime",
                     "type": "string"
                 },
+                "fileContentChangeBehavior": {
+                    "description": "Output only. The behavior of the approval when the file content changes.",
+                    "enum": [
+                        "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED",
+                        "RESET_APPROVAL",
+                        "NO_APPROVAL_ACTION"
+                    ],
+                    "enumDescriptions": [
+                        "The behavior is unspecified.",
+                        "Any ReviewerResponse with a Response of APPROVED will be reset to NO_DECISION when the file content changes while the approval has a Status of IN_PROGRESS. When the approval has a Status of APPROVED and RESET_APPROVAL is selected, the file is locked.",
+                        "No action is taken when the file content changes."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "initiator": {
                     "$ref": "User",
-                    "description": "The user that requested the Approval."
+                    "description": "The user that requested the approval."
                 },
                 "kind": {
                     "description": "This is always drive#approval.",
@@ -3237,7 +3472,7 @@
                     "type": "string"
                 },
                 "reviewerResponses": {
-                    "description": "The responses made on the Approval by reviewers.",
+                    "description": "The responses made on the approval by reviewers.",
                     "items": {
                         "$ref": "ReviewerResponse"
                     },
@@ -3253,7 +3488,7 @@
                         "DECLINED"
                     ],
                     "enumDescriptions": [
-                        "Approval status has not been set or was set to an invalid value.",
+                        "The approval status has not been set or was set to an invalid value.",
                         "The approval process has started and not finished.",
                         "The approval process is finished and the target was approved.",
                         "The approval process was cancelled before it finished.",
@@ -3270,11 +3505,11 @@
             "type": "object"
         },
         "ApprovalList": {
-            "description": "The response of an Approvals list request.",
+            "description": "The response of an approvals list request.",
             "id": "ApprovalList",
             "properties": {
                 "items": {
-                    "description": "The list of Approvals. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
+                    "description": "The list of approvals. If `nextPageToken` is populated, then this list may be incomplete and an additional page of results should be fetched.",
                     "items": {
                         "$ref": "Approval"
                     },
@@ -3285,7 +3520,29 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "The page token for the next page of Approvals. This will be absent if the end of the Approvals list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
+                    "description": "The page token for the next page of approvals. This is absent if the end of the approvals list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ApproveApprovalRequest": {
+            "description": "Request for approving an approval as a reviewer.",
+            "id": "ApproveApprovalRequest",
+            "properties": {
+                "message": {
+                    "description": "Optional. A message to accompany the reviewer response on the approval. This message is included in notifications for the action and in the approval activity log.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CancelApprovalRequest": {
+            "description": "Request for cancelling an approval as an initiator.",
+            "id": "CancelApprovalRequest",
+            "properties": {
+                "message": {
+                    "description": "Optional. A message to accompany the cancellation of the approval. This message is included in notifications for the action and in the approval activity log.",
                     "type": "string"
                 }
             },
@@ -3531,6 +3788,17 @@
             },
             "type": "object"
         },
+        "CommentApprovalRequest": {
+            "description": "Request for commenting on an approval.",
+            "id": "CommentApprovalRequest",
+            "properties": {
+                "message": {
+                    "description": "Required. A message to comment on the approval. This message is included in notifications for the action and in the approval activity log.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "CommentList": {
             "description": "A list of comments on a file.",
             "id": "CommentList",
@@ -3590,6 +3858,17 @@
             },
             "type": "object"
         },
+        "DeclineApprovalRequest": {
+            "description": "Request for declining an approval as a reviewer.",
+            "id": "DeclineApprovalRequest",
+            "properties": {
+                "message": {
+                    "description": "Optional. A message to accompany the reviewer response on the approval. This message is included in notifications for the action and in the approval activity log.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "DecryptionMetadata": {
             "description": "Representation of the CSE DecryptionMetadata.",
             "id": "DecryptionMetadata",
@@ -3635,7 +3914,7 @@
                     "type": "boolean"
                 },
                 "restrictedForWriters": {
-                    "description": "Whether download and copy is restricted for writers. If `true`, download is also restricted for readers.",
+                    "description": "Whether download and copy is restricted for writers. If true, download is also restricted for readers.",
                     "type": "boolean"
                 }
             },
@@ -3887,6 +4166,10 @@
                             "description": "Output only. Whether the current user is the pending owner of the file. Not populated for shared drive files.",
                             "type": "boolean"
                         },
+                        "canAccessViaGenAi": {
+                            "description": "Whether the current user can access this file via Gen AI features. For more information, see [Drive MCP file eligibility](https://developers.google.com/workspace/drive/api/guides/drive-mcp-server-file-eligibility).",
+                            "type": "boolean"
+                        },
                         "canAddChildren": {
                             "description": "Output only. Whether the current user can add children to this folder. This is always `false` when the item isn't a folder.",
                             "type": "boolean"
@@ -4054,6 +4337,10 @@
                         },
                         "canShare": {
                             "description": "Output only. Whether the current user can modify the sharing settings for this file.",
+                            "type": "boolean"
+                        },
+                        "canStartApproval": {
+                            "description": "Whether the current user can start an approval on the file.",
                             "type": "boolean"
                         },
                         "canTrash": {
@@ -4303,7 +4590,7 @@
                     "type": "string"
                 },
                 "labelInfo": {
-                    "description": "Output only. An overview of the labels on the file.",
+                    "description": "Label information on the file.",
                     "properties": {
                         "labels": {
                             "description": "Output only. The set of labels on the file as requested by the label IDs in the `includeLabels` parameter. By default, no labels are returned.",
@@ -4433,7 +4720,7 @@
                     "description": "Output only. The user who shared the file with the requesting user, if applicable."
                 },
                 "shortcutDetails": {
-                    "description": "Shortcut file details. Only populated for shortcut files, which have the mimeType field set to `application/vnd.google-apps.shortcut`. Can only be set on `files.create` requests.",
+                    "description": "Information about a shortcut file.",
                     "properties": {
                         "targetId": {
                             "description": "The ID of the file that this shortcut points to. Can only be set on `files.create` requests.",
@@ -4923,11 +5210,13 @@
                     "type": "string"
                 },
                 "domain": {
-                    "description": "The domain to which this permission refers.",
+                    "description": "Output only. The domain to which this permission refers.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "emailAddress": {
-                    "description": "The email address of the user or group to which this permission refers.",
+                    "description": "Output only. The email address of the user or group to which this permission refers.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "expirationTime": {
@@ -4962,6 +5251,7 @@
                             },
                             "inheritedFrom": {
                                 "description": "Output only. The ID of the item from which this permission is inherited. This is only populated for items in shared drives.",
+                                "readOnly": true,
                                 "type": "string"
                             },
                             "permissionType": {
@@ -5057,6 +5347,46 @@
                         "$ref": "Permission"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ReassignApprovalRequest": {
+            "description": "Request for reassigning an approval. Reviewers can be added or replaced, but not removed.",
+            "id": "ReassignApprovalRequest",
+            "properties": {
+                "addReviewers": {
+                    "description": "Optional. The list of reviewers to add.",
+                    "items": {
+                        "$ref": "AddReviewer"
+                    },
+                    "type": "array"
+                },
+                "message": {
+                    "description": "Optional. A message to send to the new reviewers. This message is included in notifications for the action and in the approval activity log.",
+                    "type": "string"
+                },
+                "replaceReviewers": {
+                    "description": "Optional. The list of reviewer replacements.",
+                    "items": {
+                        "$ref": "ReplaceReviewer"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ReplaceReviewer": {
+            "description": "Representation of a reviewer replacement.",
+            "id": "ReplaceReviewer",
+            "properties": {
+                "addedReviewerEmail": {
+                    "description": "Required. The email of the reviewer to add.",
+                    "type": "string"
+                },
+                "removedReviewerEmail": {
+                    "description": "Required. The email of the reviewer to remove.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -5185,7 +5515,7 @@
             "type": "object"
         },
         "ReviewerResponse": {
-            "description": "A response on an Approval made by a specific Reviewer.",
+            "description": "A response on an approval made by a specific reviewer.",
             "id": "ReviewerResponse",
             "properties": {
                 "kind": {
@@ -5193,7 +5523,7 @@
                     "type": "string"
                 },
                 "response": {
-                    "description": "A Reviewer’s Response for the Approval.",
+                    "description": "A reviewer’s response for the approval.",
                     "enum": [
                         "RESPONSE_UNSPECIFIED",
                         "NO_RESPONSE",
@@ -5201,16 +5531,16 @@
                         "DECLINED"
                     ],
                     "enumDescriptions": [
-                        "Response was set to an unrecognized value.",
-                        "The reviewer has not yet responded",
-                        "The Reviewer has approved the item.",
-                        "The Reviewer has declined the item."
+                        "The response was set to an unrecognized value.",
+                        "The reviewer hasn't responded.",
+                        "The reviewer has approved the item.",
+                        "The reviewer has declined the item."
                     ],
                     "type": "string"
                 },
                 "reviewer": {
                     "$ref": "User",
-                    "description": "The user that is responsible for this response."
+                    "description": "The user that's responsible for this response."
                 }
             },
             "type": "object"
@@ -5307,6 +5637,47 @@
             },
             "type": "object"
         },
+        "StartApprovalRequest": {
+            "description": "Allows creating an approval on a file.",
+            "id": "StartApprovalRequest",
+            "properties": {
+                "dueTime": {
+                    "description": "Optional. The time that the approval is due.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "fileContentChangeBehavior": {
+                    "description": "Optional. The behavior of the approval when the file content changes.",
+                    "enum": [
+                        "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED",
+                        "RESET_APPROVAL",
+                        "NO_APPROVAL_ACTION"
+                    ],
+                    "enumDescriptions": [
+                        "The behavior is unspecified.",
+                        "Any ReviewerResponse with a Response of APPROVED will be reset to NO_DECISION when the file content changes while the approval has a Status of IN_PROGRESS. When the approval has a Status of APPROVED and RESET_APPROVAL is selected, the file is locked.",
+                        "No action is taken when the file content changes."
+                    ],
+                    "type": "string"
+                },
+                "lockFile": {
+                    "description": "Optional. Whether to lock the file when starting the approval.",
+                    "type": "boolean"
+                },
+                "message": {
+                    "description": "Optional. A message to send to reviewers when notifying them of the approval request.",
+                    "type": "string"
+                },
+                "reviewerEmails": {
+                    "description": "Required. The emails of the users who are set to review the approval.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "StartPageToken": {
             "id": "StartPageToken",
             "properties": {
@@ -5350,11 +5721,11 @@
             "type": "object"
         },
         "TeamDrive": {
-            "description": "Deprecated: use the drive collection instead.",
+            "description": "Deprecated: use the drive collection instead. Next ID: 33",
             "id": "TeamDrive",
             "properties": {
                 "backgroundImageFile": {
-                    "description": "An image file and cropping parameters from which a background image for this Team Drive is set. This is a write only field; it can only be set on `drive.teamdrives.update` requests that don't set `themeId`. When specified, all fields of the `backgroundImageFile` must be set.",
+                    "description": "The background image file for a Team Drive.",
                     "properties": {
                         "id": {
                             "description": "The ID of an image file in Drive to use for the background image.",
@@ -5398,7 +5769,8 @@
                             "type": "boolean"
                         },
                         "canChangeDownloadRestriction": {
-                            "description": "Whether the current user can change organizer-applied download restrictions of this shared drive.",
+                            "description": "Output only. Whether the current user can change organizer-applied download restrictions of this shared drive.",
+                            "readOnly": true,
                             "type": "boolean"
                         },
                         "canChangeSharingFoldersRequiresOrganizerPermissionRestriction": {

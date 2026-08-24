@@ -229,20 +229,24 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
-  /// This method can be called in two ways: * **List all public locations:**
-  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
-  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
-  /// public locations as well as private or other locations specifically
-  /// visible to the project.
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -4070,6 +4074,78 @@ class ProjectsLocationsProvidersConnectorsVersionsEventtypesResource {
   }
 }
 
+/// * AdminFilters defines a set of filters that can be applied to a connection.
+///
+/// These are currently used by Gemini Enterprise connections.
+class AdminFilters {
+  /// Unique name for the filter, e.g., "SharePointSiteURL", "DocumentType",
+  /// "ChatSpaceName".
+  ///
+  /// Required.
+  core.String? filterKey;
+
+  /// Type of the filter.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILTER_TYPE_UNSPECIFIED" : Filter type is not specified.
+  /// - "INCLUSION" : Only allow items matching the configured values.
+  /// - "EXCLUSION" : Disallow items matching the configured values.
+  core.String? filterType;
+
+  /// A single integer value.
+  ///
+  /// Optional.
+  core.String? intValue;
+
+  /// List of string values.
+  ///
+  /// Optional.
+  StringListValues? stringListValues;
+
+  /// A single string value.
+  ///
+  /// Optional.
+  core.String? stringValue;
+
+  AdminFilters({
+    this.filterKey,
+    this.filterType,
+    this.intValue,
+    this.stringListValues,
+    this.stringValue,
+  });
+
+  AdminFilters.fromJson(core.Map json_)
+    : this(
+        filterKey: json_['filterKey'] as core.String?,
+        filterType: json_['filterType'] as core.String?,
+        intValue: json_['intValue'] as core.String?,
+        stringListValues: json_.containsKey('stringListValues')
+            ? StringListValues.fromJson(
+                json_['stringListValues']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stringValue: json_['stringValue'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final filterKey = this.filterKey;
+    final filterType = this.filterType;
+    final intValue = this.intValue;
+    final stringListValues = this.stringListValues;
+    final stringValue = this.stringValue;
+    return {
+      'filterKey': ?filterKey,
+      'filterType': ?filterType,
+      'intValue': ?intValue,
+      'stringListValues': ?stringListValues,
+      'stringValue': ?stringValue,
+    };
+  }
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -4612,7 +4688,26 @@ class AuthorizationCodeLink {
 }
 
 /// Billing config for the connection.
-typedef BillingConfig = $BillingConfig;
+class BillingConfig {
+  /// Billing category for the connector.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BILLING_CATEGORY_UNSPECIFIED" : Billing category is not specified.
+  /// - "GCP_AND_TECHNICAL_CONNECTOR" : GCP/Technical connector.
+  /// - "NON_GCP_CONNECTOR" : Non-GCP connector.
+  core.String? billingCategory;
+
+  BillingConfig({this.billingCategory});
+
+  BillingConfig.fromJson(core.Map json_)
+    : this(billingCategory: json_['billingCategory'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final billingCategory = this.billingCategory;
+    return {'billingCategory': ?billingCategory};
+  }
+}
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -5012,6 +5107,13 @@ class ConfigVariableTemplate {
 
 /// Connection represents an instance of connector.
 class Connection {
+  /// Admin filters for the connection.
+  ///
+  /// These are used by Gemini Enterprise.
+  ///
+  /// Optional.
+  core.List<AdminFilters>? adminFilters;
+
   /// Async operations enabled for the connection.
   ///
   /// If Async Operations is enabled, Connection allows the customers to
@@ -5242,6 +5344,7 @@ class Connection {
   core.String? updateTime;
 
   Connection({
+    this.adminFilters,
     this.asyncOperationsEnabled,
     this.authConfig,
     this.authOverrideEnabled,
@@ -5281,6 +5384,13 @@ class Connection {
 
   Connection.fromJson(core.Map json_)
     : this(
+        adminFilters: (json_['adminFilters'] as core.List?)
+            ?.map(
+              (value) => AdminFilters.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         asyncOperationsEnabled: json_['asyncOperationsEnabled'] as core.bool?,
         authConfig: json_.containsKey('authConfig')
             ? AuthConfig.fromJson(
@@ -5389,6 +5499,7 @@ class Connection {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final adminFilters = this.adminFilters;
     final asyncOperationsEnabled = this.asyncOperationsEnabled;
     final authConfig = this.authConfig;
     final authOverrideEnabled = this.authOverrideEnabled;
@@ -5425,6 +5536,7 @@ class Connection {
     final trafficShapingConfigs = this.trafficShapingConfigs;
     final updateTime = this.updateTime;
     return {
+      'adminFilters': ?adminFilters,
       'asyncOperationsEnabled': ?asyncOperationsEnabled,
       'authConfig': ?authConfig,
       'authOverrideEnabled': ?authOverrideEnabled,
@@ -5561,7 +5673,42 @@ class ConnectionSchemaMetadata {
 }
 
 /// ConnectionStatus indicates the state of the connection.
-typedef ConnectionStatus = $ConnectionStatus;
+class ConnectionStatus {
+  /// Description.
+  core.String? description;
+
+  /// State.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Connection does not have a state yet.
+  /// - "CREATING" : Connection is being created.
+  /// - "ACTIVE" : Connection is running and ready for requests.
+  /// - "INACTIVE" : Connection is stopped.
+  /// - "DELETING" : Connection is being deleted.
+  /// - "UPDATING" : Connection is being updated.
+  /// - "ERROR" : Connection is not running due to an error.
+  /// - "AUTHORIZATION_REQUIRED" : Connection is not running because the
+  /// authorization configuration is not complete.
+  core.String? state;
+
+  /// Status provides detailed information for the state.
+  core.String? status;
+
+  ConnectionStatus({this.description, this.state, this.status});
+
+  ConnectionStatus.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        state: json_['state'] as core.String?,
+        status: json_['status'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final state = this.state;
+    final status = this.status;
+    return {'description': ?description, 'state': ?state, 'status': ?status};
+  }
+}
 
 /// Connectors indicates a specific connector type, e.x. Salesforce, SAP etc.
 class Connector {
@@ -6418,7 +6565,36 @@ class ConnectorVersionInfraConfig {
 }
 
 /// Log configuration for the connection.
-typedef ConnectorsLogConfig = $LogConfig;
+class ConnectorsLogConfig {
+  /// Enabled represents whether logging is enabled or not for a connection.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// Log configuration level.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOG_LEVEL_UNSPECIFIED" : Log level unspecified.
+  /// - "ERROR" : Only error logs are enabled.
+  /// - "INFO" : Info and error logs are enabled.
+  /// - "DEBUG" : Debug and high verbosity logs are enabled.
+  core.String? level;
+
+  ConnectorsLogConfig({this.enabled, this.level});
+
+  ConnectorsLogConfig.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        level: json_['level'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final level = this.level;
+    return {'enabled': ?enabled, 'level': ?level};
+  }
+}
 
 /// CustomConnector represents the custom connector defined by the customer as
 /// part of byoc.
@@ -6805,11 +6981,72 @@ class CustomConnectorVersion {
 }
 
 /// Dead Letter configuration details provided by the user.
-typedef DeadLetterConfig = $DeadLetterConfig;
+class DeadLetterConfig {
+  /// Project which has the topic given.
+  ///
+  /// Optional.
+  core.String? projectId;
+
+  /// Topic to push events which couldn't be processed.
+  ///
+  /// Optional.
+  core.String? topic;
+
+  DeadLetterConfig({this.projectId, this.topic});
+
+  DeadLetterConfig.fromJson(core.Map json_)
+    : this(
+        projectId: json_['projectId'] as core.String?,
+        topic: json_['topic'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final projectId = this.projectId;
+    final topic = this.topic;
+    return {'projectId': ?projectId, 'topic': ?topic};
+  }
+}
 
 /// Request message for ConnectorsService.DeprecateCustomConnectorVersion
 typedef DeprecateCustomConnectorVersionRequest = $Empty;
-typedef Destination = $Destination;
+
+class Destination {
+  /// For publicly routable host.
+  core.String? host;
+
+  /// The port is the target port number that is accepted by the destination.
+  ///
+  /// Optional.
+  core.int? port;
+
+  /// PSC service attachments.
+  ///
+  /// Format: projects / * /regions / * /serviceAttachments / *
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? serviceAttachment;
+
+  Destination({this.host, this.port, this.serviceAttachment});
+
+  Destination.fromJson(core.Map json_)
+    : this(
+        host: json_['host'] as core.String?,
+        port: json_['port'] as core.int?,
+        serviceAttachment: json_['serviceAttachment'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final host = this.host;
+    final port = this.port;
+    final serviceAttachment = this.serviceAttachment;
+    return {
+      'host': ?host,
+      'port': ?port,
+      'serviceAttachment': ?serviceAttachment,
+    };
+  }
+}
 
 /// Define the Connectors target endpoint.
 class DestinationConfig {
@@ -7116,7 +7353,38 @@ class EncryptionConfig {
 }
 
 /// Encryption Key value.
-typedef EncryptionKey = $EncryptionKey;
+class EncryptionKey {
+  /// The \[KMS key name\] with which the content of the Operation is encrypted.
+  ///
+  /// The expected format: `projects / * /locations / * /keyRings / *
+  /// /cryptoKeys / * `. Will be empty string if google managed.
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  /// Specifies the type of the encryption key.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Value type is not specified.
+  /// - "GOOGLE_MANAGED" : Google Managed.
+  /// - "CUSTOMER_MANAGED" : Customer Managed.
+  core.String? type;
+
+  EncryptionKey({this.kmsKeyName, this.type});
+
+  EncryptionKey.fromJson(core.Map json_)
+    : this(
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKeyName = this.kmsKeyName;
+    final type = this.type;
+    return {'kmsKeyName': ?kmsKeyName, 'type': ?type};
+  }
+}
 
 /// Endpoint message includes details of the Destination endpoint.
 class EndPoint {
@@ -8126,7 +8394,22 @@ class EndpointAttachment {
 }
 
 /// Data enrichment configuration.
-typedef EnrichmentConfig = $EnrichmentConfig;
+class EnrichmentConfig {
+  /// Append ACL to the event.
+  ///
+  /// Optional.
+  core.bool? appendAcl;
+
+  EnrichmentConfig({this.appendAcl});
+
+  EnrichmentConfig.fromJson(core.Map json_)
+    : this(appendAcl: json_['appendAcl'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final appendAcl = this.appendAcl;
+    return {'appendAcl': ?appendAcl};
+  }
+}
 
 /// EnumOption definition
 class EnumOption {
@@ -8485,7 +8768,7 @@ class EventType {
   }
 }
 
-/// Eventing Configuration of a connection next: 20
+/// Eventing Configuration of a connection next: 21
 class EventingConfig {
   /// Additional eventing related field values
   ///
@@ -8523,6 +8806,11 @@ class EventingConfig {
   ///
   /// Output only.
   core.String? eventsListenerIngressEndpoint;
+
+  /// Filter to be applied on the events to be received by the connection.
+  ///
+  /// Optional.
+  core.String? globalEventFilter;
 
   /// Auth details for the event listener.
   ///
@@ -8563,6 +8851,7 @@ class EventingConfig {
     this.enrichmentConfig,
     this.enrichmentEnabled,
     this.eventsListenerIngressEndpoint,
+    this.globalEventFilter,
     this.listenerAuthConfig,
     this.privateConnectivityAllowlistedProjects,
     this.privateConnectivityEnabled,
@@ -8603,6 +8892,7 @@ class EventingConfig {
         enrichmentEnabled: json_['enrichmentEnabled'] as core.bool?,
         eventsListenerIngressEndpoint:
             json_['eventsListenerIngressEndpoint'] as core.String?,
+        globalEventFilter: json_['globalEventFilter'] as core.String?,
         listenerAuthConfig: json_.containsKey('listenerAuthConfig')
             ? AuthConfig.fromJson(
                 json_['listenerAuthConfig']
@@ -8643,6 +8933,7 @@ class EventingConfig {
     final enrichmentConfig = this.enrichmentConfig;
     final enrichmentEnabled = this.enrichmentEnabled;
     final eventsListenerIngressEndpoint = this.eventsListenerIngressEndpoint;
+    final globalEventFilter = this.globalEventFilter;
     final listenerAuthConfig = this.listenerAuthConfig;
     final privateConnectivityAllowlistedProjects =
         this.privateConnectivityAllowlistedProjects;
@@ -8658,6 +8949,7 @@ class EventingConfig {
       'enrichmentConfig': ?enrichmentConfig,
       'enrichmentEnabled': ?enrichmentEnabled,
       'eventsListenerIngressEndpoint': ?eventsListenerIngressEndpoint,
+      'globalEventFilter': ?globalEventFilter,
       'listenerAuthConfig': ?listenerAuthConfig,
       'privateConnectivityAllowlistedProjects':
           ?privateConnectivityAllowlistedProjects,
@@ -8874,6 +9166,15 @@ class EventingDetails {
   /// Output only.
   core.List<core.String>? searchTags;
 
+  /// The webhook model supported by this connector.
+  /// Possible string values are:
+  /// - "SUBSCRIPTION_TYPE_UNSPECIFIED" : Default value.
+  /// - "SHARED" : Managed via admin credentials. Handles global or system-wide
+  /// events.
+  /// - "USER_SPECIFIC" : Managed via individual user credentials. Isolates data
+  /// per user.
+  core.String? subscriptionType;
+
   /// The type of the event listener for a specific connector.
   ///
   /// Output only.
@@ -8891,6 +9192,7 @@ class EventingDetails {
     this.launchStage,
     this.name,
     this.searchTags,
+    this.subscriptionType,
     this.type,
   });
 
@@ -8905,6 +9207,7 @@ class EventingDetails {
         searchTags: (json_['searchTags'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        subscriptionType: json_['subscriptionType'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
@@ -8916,6 +9219,7 @@ class EventingDetails {
     final launchStage = this.launchStage;
     final name = this.name;
     final searchTags = this.searchTags;
+    final subscriptionType = this.subscriptionType;
     final type = this.type;
     return {
       'customEventTypes': ?customEventTypes,
@@ -8925,6 +9229,7 @@ class EventingDetails {
       'launchStage': ?launchStage,
       'name': ?name,
       'searchTags': ?searchTags,
+      'subscriptionType': ?subscriptionType,
       'type': ?type,
     };
   }
@@ -9010,7 +9315,36 @@ class EventingRuntimeData {
 }
 
 /// EventingStatus indicates the state of eventing.
-typedef EventingStatus = $EventingStatus;
+class EventingStatus {
+  /// Description of error if State is set to "ERROR".
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// State.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default state.
+  /// - "ACTIVE" : Eventing is enabled and ready to receive events.
+  /// - "ERROR" : Eventing is not active due to an error.
+  /// - "INGRESS_ENDPOINT_REQUIRED" : Ingress endpoint required.
+  core.String? state;
+
+  EventingStatus({this.description, this.state});
+
+  EventingStatus.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final state = this.state;
+    return {'description': ?description, 'state': ?state};
+  }
+}
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -9432,7 +9766,36 @@ class GenerateConnectionToolspecOverrideResponse {
 }
 
 /// Autoscaling config for connector deployment system metrics.
-typedef HPAConfig = $HPAConfig;
+class HPAConfig {
+  /// Percent CPU utilization where HPA triggers autoscaling.
+  ///
+  /// Output only.
+  core.String? cpuUtilizationThreshold;
+
+  /// Percent Memory utilization where HPA triggers autoscaling.
+  ///
+  /// Output only.
+  core.String? memoryUtilizationThreshold;
+
+  HPAConfig({this.cpuUtilizationThreshold, this.memoryUtilizationThreshold});
+
+  HPAConfig.fromJson(core.Map json_)
+    : this(
+        cpuUtilizationThreshold:
+            json_['cpuUtilizationThreshold'] as core.String?,
+        memoryUtilizationThreshold:
+            json_['memoryUtilizationThreshold'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpuUtilizationThreshold = this.cpuUtilizationThreshold;
+    final memoryUtilizationThreshold = this.memoryUtilizationThreshold;
+    return {
+      'cpuUtilizationThreshold': ?cpuUtilizationThreshold,
+      'memoryUtilizationThreshold': ?memoryUtilizationThreshold,
+    };
+  }
+}
 
 /// Header details for a given header to be added to Endpoint.
 class Header {
@@ -9641,6 +10004,21 @@ class JsonAuthSchema {
 
 /// JsonSchema representation of schema metadata
 class JsonSchema {
+  /// A comment on the schema.
+  core.String? P_comment;
+
+  /// Definitions for the schema.
+  core.Map<core.String, JsonSchema>? P_defs;
+
+  /// The URI defining the core schema meta-schema.
+  core.String? P_id;
+
+  /// A reference to another schema.
+  core.String? P_ref;
+
+  /// The URI defining the schema.
+  core.String? P_schema;
+
   /// Additional details apart from standard json schema fields, this gives
   /// flexibility to store metadata about the schema
   ///
@@ -9648,14 +10026,53 @@ class JsonSchema {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? additionalDetails;
 
+  /// Schema for additional items.
+  JsonSchema? additionalItems;
+
+  /// Schema for additional properties.
+  JsonSchema? additionalProperties;
+
+  /// Schema that must be valid against all of the sub-schemas.
+  core.List<JsonSchema>? allOf;
+
+  /// Schema that must be valid against at least one of the sub-schemas.
+  core.List<JsonSchema>? anyOf;
+
+  /// Const value that the data must match.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? const_;
+
+  /// Schema that applies to at least one item in an array.
+  JsonSchema? contains;
+
+  /// Encoding of the content.
+  core.String? contentEncoding;
+
+  /// Media type of the content.
+  core.String? contentMediaType;
+
   /// The default value of the field or object described by this schema.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? default_;
 
+  /// Definitions for the schema.
+  core.Map<core.String, JsonSchema>? definitions;
+
+  /// Dependencies for the schema.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? dependencies;
+
   /// A description of this schema.
   core.String? description;
+
+  /// Schema that must be valid if the "if" schema is invalid.
+  JsonSchema? else_;
 
   /// Possible values for an enumeration.
   ///
@@ -9666,15 +10083,30 @@ class JsonSchema {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object?>? enum_;
 
+  /// Examples of the value.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? examples;
+
   /// Whether the maximum number value is exclusive.
-  core.bool? exclusiveMaximum;
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? exclusiveMaximum;
 
   /// Whether the minimum number value is exclusive.
-  core.bool? exclusiveMinimum;
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? exclusiveMinimum;
 
   /// Format of the value as per
   /// https://json-schema.org/understanding-json-schema/reference/string.html#format
   core.String? format;
+
+  /// Schema that must be valid if the "if" schema is valid.
+  JsonSchema? if_;
 
   /// Schema that applies to array values, applicable only if this is of type
   /// `array`.
@@ -9738,6 +10170,9 @@ class JsonSchema {
   /// Maximum length of the string field.
   core.int? maxLength;
 
+  /// Maximum number of properties.
+  core.int? maxProperties;
+
   /// Maximum value of the number field.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -9750,11 +10185,23 @@ class JsonSchema {
   /// Minimum length of the string field.
   core.int? minLength;
 
+  /// Minimum number of properties.
+  core.int? minProperties;
+
   /// Minimum value of the number field.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? minimum;
+
+  /// Number must be a multiple of this value.
+  core.double? multipleOf;
+
+  /// Schema that must not be valid.
+  JsonSchema? not;
+
+  /// Schema that must be valid against at least one of the sub-schemas.
+  core.List<JsonSchema>? oneOf;
 
   /// Regex pattern of the string field.
   ///
@@ -9762,14 +10209,29 @@ class JsonSchema {
   /// string value should match.
   core.String? pattern;
 
+  /// Pattern properties for the schema.
+  core.Map<core.String, JsonSchema>? patternProperties;
+
   /// The child schemas, applicable only if this is of type `object`.
   ///
   /// The key is the name of the property and the value is the json schema that
   /// describes that property
   core.Map<core.String, JsonSchema>? properties;
 
+  /// Schema for property names.
+  JsonSchema? propertyNames;
+
+  /// Whether the value is read-only.
+  core.bool? readOnly;
+
   /// Whether this property is required.
   core.List<core.String>? required;
+
+  /// Schema that must be valid if the "if" schema is valid.
+  JsonSchema? then;
+
+  /// A title of the schema.
+  core.String? title;
 
   /// JSON Schema Validation: A Vocabulary for Structural Validation of JSON
   core.List<core.String>? type;
@@ -9777,40 +10239,140 @@ class JsonSchema {
   /// Whether the items in the array field are unique.
   core.bool? uniqueItems;
 
+  /// Whether the value is write-only.
+  core.bool? writeOnly;
+
   JsonSchema({
+    this.P_comment,
+    this.P_defs,
+    this.P_id,
+    this.P_ref,
+    this.P_schema,
     this.additionalDetails,
+    this.additionalItems,
+    this.additionalProperties,
+    this.allOf,
+    this.anyOf,
+    this.const_,
+    this.contains,
+    this.contentEncoding,
+    this.contentMediaType,
     this.default_,
+    this.definitions,
+    this.dependencies,
     this.description,
+    this.else_,
     this.enum_,
+    this.examples,
     this.exclusiveMaximum,
     this.exclusiveMinimum,
     this.format,
+    this.if_,
     this.items,
     this.jdbcType,
     this.maxItems,
     this.maxLength,
+    this.maxProperties,
     this.maximum,
     this.minItems,
     this.minLength,
+    this.minProperties,
     this.minimum,
+    this.multipleOf,
+    this.not,
+    this.oneOf,
     this.pattern,
+    this.patternProperties,
     this.properties,
+    this.propertyNames,
+    this.readOnly,
     this.required,
+    this.then,
+    this.title,
     this.type,
     this.uniqueItems,
+    this.writeOnly,
   });
 
   JsonSchema.fromJson(core.Map json_)
     : this(
+        P_comment: json_[r'$comment'] as core.String?,
+        P_defs: (json_[r'$defs'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+          ),
+        ),
+        P_id: json_[r'$id'] as core.String?,
+        P_ref: json_[r'$ref'] as core.String?,
+        P_schema: json_[r'$schema'] as core.String?,
         additionalDetails: json_.containsKey('additionalDetails')
             ? json_['additionalDetails'] as core.Map<core.String, core.dynamic>
             : null,
+        additionalItems: json_.containsKey('additionalItems')
+            ? JsonSchema.fromJson(
+                json_['additionalItems'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        additionalProperties: json_.containsKey('additionalProperties')
+            ? JsonSchema.fromJson(
+                json_['additionalProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        allOf: (json_['allOf'] as core.List?)
+            ?.map(
+              (value) => JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        anyOf: (json_['anyOf'] as core.List?)
+            ?.map(
+              (value) => JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        const_: json_['const'],
+        contains: json_.containsKey('contains')
+            ? JsonSchema.fromJson(
+                json_['contains'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contentEncoding: json_['contentEncoding'] as core.String?,
+        contentMediaType: json_['contentMediaType'] as core.String?,
         default_: json_['default'],
+        definitions:
+            (json_['definitions'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                JsonSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        dependencies: json_.containsKey('dependencies')
+            ? json_['dependencies'] as core.Map<core.String, core.dynamic>
+            : null,
         description: json_['description'] as core.String?,
+        else_: json_.containsKey('else')
+            ? JsonSchema.fromJson(
+                json_['else'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
-        exclusiveMaximum: json_['exclusiveMaximum'] as core.bool?,
-        exclusiveMinimum: json_['exclusiveMinimum'] as core.bool?,
+        examples: json_.containsKey('examples')
+            ? json_['examples'] as core.List
+            : null,
+        exclusiveMaximum: json_['exclusiveMaximum'],
+        exclusiveMinimum: json_['exclusiveMinimum'],
         format: json_['format'] as core.String?,
+        if_: json_.containsKey('if')
+            ? JsonSchema.fromJson(
+                json_['if'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         items: json_.containsKey('items')
             ? JsonSchema.fromJson(
                 json_['items'] as core.Map<core.String, core.dynamic>,
@@ -9819,11 +10381,36 @@ class JsonSchema {
         jdbcType: json_['jdbcType'] as core.String?,
         maxItems: json_['maxItems'] as core.int?,
         maxLength: json_['maxLength'] as core.int?,
+        maxProperties: json_['maxProperties'] as core.int?,
         maximum: json_['maximum'],
         minItems: json_['minItems'] as core.int?,
         minLength: json_['minLength'] as core.int?,
+        minProperties: json_['minProperties'] as core.int?,
         minimum: json_['minimum'],
+        multipleOf: (json_['multipleOf'] as core.num?)?.toDouble(),
+        not: json_.containsKey('not')
+            ? JsonSchema.fromJson(
+                json_['not'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oneOf: (json_['oneOf'] as core.List?)
+            ?.map(
+              (value) => JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         pattern: json_['pattern'] as core.String?,
+        patternProperties:
+            (json_['patternProperties'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    JsonSchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
         properties:
             (json_['properties'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(
@@ -9833,63 +10420,165 @@ class JsonSchema {
                 ),
               ),
             ),
+        propertyNames: json_.containsKey('propertyNames')
+            ? JsonSchema.fromJson(
+                json_['propertyNames'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        readOnly: json_['readOnly'] as core.bool?,
         required: (json_['required'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        then: json_.containsKey('then')
+            ? JsonSchema.fromJson(
+                json_['then'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        title: json_['title'] as core.String?,
         type: (json_['type'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
         uniqueItems: json_['uniqueItems'] as core.bool?,
+        writeOnly: json_['writeOnly'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final P_comment = this.P_comment;
+    final P_defs = this.P_defs;
+    final P_id = this.P_id;
+    final P_ref = this.P_ref;
+    final P_schema = this.P_schema;
     final additionalDetails = this.additionalDetails;
+    final additionalItems = this.additionalItems;
+    final additionalProperties = this.additionalProperties;
+    final allOf = this.allOf;
+    final anyOf = this.anyOf;
+    final const_ = this.const_;
+    final contains = this.contains;
+    final contentEncoding = this.contentEncoding;
+    final contentMediaType = this.contentMediaType;
     final default_ = this.default_;
+    final definitions = this.definitions;
+    final dependencies = this.dependencies;
     final description = this.description;
+    final else_ = this.else_;
     final enum_ = this.enum_;
+    final examples = this.examples;
     final exclusiveMaximum = this.exclusiveMaximum;
     final exclusiveMinimum = this.exclusiveMinimum;
     final format = this.format;
+    final if_ = this.if_;
     final items = this.items;
     final jdbcType = this.jdbcType;
     final maxItems = this.maxItems;
     final maxLength = this.maxLength;
+    final maxProperties = this.maxProperties;
     final maximum = this.maximum;
     final minItems = this.minItems;
     final minLength = this.minLength;
+    final minProperties = this.minProperties;
     final minimum = this.minimum;
+    final multipleOf = this.multipleOf;
+    final not = this.not;
+    final oneOf = this.oneOf;
     final pattern = this.pattern;
+    final patternProperties = this.patternProperties;
     final properties = this.properties;
+    final propertyNames = this.propertyNames;
+    final readOnly = this.readOnly;
     final required = this.required;
+    final then = this.then;
+    final title = this.title;
     final type = this.type;
     final uniqueItems = this.uniqueItems;
+    final writeOnly = this.writeOnly;
     return {
+      r'$comment': ?P_comment,
+      r'$defs': ?P_defs,
+      r'$id': ?P_id,
+      r'$ref': ?P_ref,
+      r'$schema': ?P_schema,
       'additionalDetails': ?additionalDetails,
+      'additionalItems': ?additionalItems,
+      'additionalProperties': ?additionalProperties,
+      'allOf': ?allOf,
+      'anyOf': ?anyOf,
+      'const': ?const_,
+      'contains': ?contains,
+      'contentEncoding': ?contentEncoding,
+      'contentMediaType': ?contentMediaType,
       'default': ?default_,
+      'definitions': ?definitions,
+      'dependencies': ?dependencies,
       'description': ?description,
+      'else': ?else_,
       'enum': ?enum_,
+      'examples': ?examples,
       'exclusiveMaximum': ?exclusiveMaximum,
       'exclusiveMinimum': ?exclusiveMinimum,
       'format': ?format,
+      'if': ?if_,
       'items': ?items,
       'jdbcType': ?jdbcType,
       'maxItems': ?maxItems,
       'maxLength': ?maxLength,
+      'maxProperties': ?maxProperties,
       'maximum': ?maximum,
       'minItems': ?minItems,
       'minLength': ?minLength,
+      'minProperties': ?minProperties,
       'minimum': ?minimum,
+      'multipleOf': ?multipleOf,
+      'not': ?not,
+      'oneOf': ?oneOf,
       'pattern': ?pattern,
+      'patternProperties': ?patternProperties,
       'properties': ?properties,
+      'propertyNames': ?propertyNames,
+      'readOnly': ?readOnly,
       'required': ?required,
+      'then': ?then,
+      'title': ?title,
       'type': ?type,
       'uniqueItems': ?uniqueItems,
+      'writeOnly': ?writeOnly,
     };
   }
 }
 
 /// JWT claims used for the jwt-bearer authorization grant.
-typedef JwtClaims = $JwtClaims;
+class JwtClaims {
+  /// Value for the "aud" claim.
+  ///
+  /// Optional.
+  core.String? audience;
+
+  /// Value for the "iss" claim.
+  ///
+  /// Optional.
+  core.String? issuer;
+
+  /// Value for the "sub" claim.
+  ///
+  /// Optional.
+  core.String? subject;
+
+  JwtClaims({this.audience, this.issuer, this.subject});
+
+  JwtClaims.fromJson(core.Map json_)
+    : this(
+        audience: json_['audience'] as core.String?,
+        issuer: json_['issuer'] as core.String?,
+        subject: json_['subject'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final audience = this.audience;
+    final issuer = this.issuer;
+    final subject = this.subject;
+    return {'audience': ?audience, 'issuer': ?issuer, 'subject': ?subject};
+  }
+}
 
 /// Response message for ListActions API
 class ListActionsResponse {
@@ -10597,7 +11286,31 @@ typedef Location = $Location00;
 /// Determines whether or no a connection is locked.
 ///
 /// If locked, a reason must be specified.
-typedef LockConfig = $LockConfig;
+class LockConfig {
+  /// Indicates whether or not the connection is locked.
+  ///
+  /// Optional.
+  core.bool? locked;
+
+  /// Describes why a connection is locked.
+  ///
+  /// Optional.
+  core.String? reason;
+
+  LockConfig({this.locked, this.reason});
+
+  LockConfig.fromJson(core.Map json_)
+    : this(
+        locked: json_['locked'] as core.bool?,
+        reason: json_['reason'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final locked = this.locked;
+    final reason = this.reason;
+    return {'locked': ?locked, 'reason': ?reason};
+  }
+}
 
 /// Struct for representing boolean expressions.
 class LogicalExpression {
@@ -11022,7 +11735,31 @@ class NetworkEgressModeOverride {
 }
 
 /// Node configuration for the connection.
-typedef NodeConfig = $NodeConfig;
+class NodeConfig {
+  /// Maximum number of nodes in the runtime nodes.
+  ///
+  /// Optional.
+  core.int? maxNodeCount;
+
+  /// Minimum number of nodes in the runtime nodes.
+  ///
+  /// Optional.
+  core.int? minNodeCount;
+
+  NodeConfig({this.maxNodeCount, this.minNodeCount});
+
+  NodeConfig.fromJson(core.Map json_)
+    : this(
+        maxNodeCount: json_['maxNodeCount'] as core.int?,
+        minNodeCount: json_['minNodeCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxNodeCount = this.maxNodeCount;
+    final minNodeCount = this.minNodeCount;
+    return {'maxNodeCount': ?maxNodeCount, 'minNodeCount': ?minNodeCount};
+  }
+}
 
 /// pass only at create and not update using updateMask Auth Code Data
 class OAuthTokenData {
@@ -11183,7 +11920,49 @@ class Oauth2AuthCodeFlow {
 /// Provided OAuth Client.
 ///
 /// See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details.
-typedef Oauth2AuthCodeFlowGoogleManaged = $Oauth2AuthCodeFlowGoogleManaged;
+class Oauth2AuthCodeFlowGoogleManaged {
+  /// Authorization code to be exchanged for access and refresh tokens.
+  ///
+  /// Optional.
+  core.String? authCode;
+
+  /// Redirect URI to be provided during the auth code exchange.
+  ///
+  /// Optional.
+  core.String? redirectUri;
+
+  /// Scopes the connection will request when the user performs the auth code
+  /// flow.
+  ///
+  /// Required.
+  core.List<core.String>? scopes;
+
+  Oauth2AuthCodeFlowGoogleManaged({
+    this.authCode,
+    this.redirectUri,
+    this.scopes,
+  });
+
+  Oauth2AuthCodeFlowGoogleManaged.fromJson(core.Map json_)
+    : this(
+        authCode: json_['authCode'] as core.String?,
+        redirectUri: json_['redirectUri'] as core.String?,
+        scopes: (json_['scopes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authCode = this.authCode;
+    final redirectUri = this.redirectUri;
+    final scopes = this.scopes;
+    return {
+      'authCode': ?authCode,
+      'redirectUri': ?redirectUri,
+      'scopes': ?scopes,
+    };
+  }
+}
 
 /// Parameters to support Oauth 2.0 Client Credentials Grant Authentication.
 ///
@@ -11915,6 +12694,11 @@ typedef RefreshConnectionSchemaMetadataRequest = $Empty;
 
 /// Regional Settings details.
 class RegionalSettings {
+  /// Client type for the regional settings.
+  ///
+  /// Optional.
+  core.String? client;
+
   /// Regional encryption config to hold CMEK details.
   ///
   /// Optional.
@@ -11938,6 +12722,7 @@ class RegionalSettings {
   core.bool? provisioned;
 
   RegionalSettings({
+    this.client,
     this.encryptionConfig,
     this.name,
     this.networkConfig,
@@ -11946,6 +12731,7 @@ class RegionalSettings {
 
   RegionalSettings.fromJson(core.Map json_)
     : this(
+        client: json_['client'] as core.String?,
         encryptionConfig: json_.containsKey('encryptionConfig')
             ? EncryptionConfig.fromJson(
                 json_['encryptionConfig']
@@ -11962,11 +12748,13 @@ class RegionalSettings {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final client = this.client;
     final encryptionConfig = this.encryptionConfig;
     final name = this.name;
     final networkConfig = this.networkConfig;
     final provisioned = this.provisioned;
     return {
+      'client': ?client,
       'encryptionConfig': ?encryptionConfig,
       'name': ?name,
       'networkConfig': ?networkConfig,
@@ -12019,10 +12807,58 @@ class Resource {
 }
 
 /// Resource limits defined for connection pods of a given connector type.
-typedef ResourceLimits = $ResourceLimits;
+class ResourceLimits {
+  /// CPU limit.
+  ///
+  /// Output only.
+  core.String? cpu;
+
+  /// Memory limit.
+  ///
+  /// Output only.
+  core.String? memory;
+
+  ResourceLimits({this.cpu, this.memory});
+
+  ResourceLimits.fromJson(core.Map json_)
+    : this(
+        cpu: json_['cpu'] as core.String?,
+        memory: json_['memory'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpu = this.cpu;
+    final memory = this.memory;
+    return {'cpu': ?cpu, 'memory': ?memory};
+  }
+}
 
 /// Resource requests defined for connection pods of a given connector type.
-typedef ResourceRequests = $ResourceRequests;
+class ResourceRequests {
+  /// CPU request.
+  ///
+  /// Output only.
+  core.String? cpu;
+
+  /// Memory request.
+  ///
+  /// Output only.
+  core.String? memory;
+
+  ResourceRequests({this.cpu, this.memory});
+
+  ResourceRequests.fromJson(core.Map json_)
+    : this(
+        cpu: json_['cpu'] as core.String?,
+        memory: json_['memory'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpu = this.cpu;
+    final memory = this.memory;
+    return {'cpu': ?cpu, 'memory': ?memory};
+  }
+}
 
 /// Metadata of result field.
 class ResultMetadata {
@@ -12648,7 +13484,23 @@ class SearchConnectionsResponse {
 }
 
 /// Secret provides a reference to entries in Secret Manager.
-typedef Secret = $Secret;
+class Secret {
+  /// The resource name of the secret version in the format, format as:
+  /// `projects / * /secrets / * /versions / * `.
+  ///
+  /// Optional.
+  core.String? secretVersion;
+
+  Secret({this.secretVersion});
+
+  Secret.fromJson(core.Map json_)
+    : this(secretVersion: json_['secretVersion'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final secretVersion = this.secretVersion;
+    return {'secretVersion': ?secretVersion};
+  }
+}
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -13079,6 +13931,28 @@ class StandardEntity {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
 
+/// StringListValues is a message to store a list of string values.
+class StringListValues {
+  /// The list of string values.
+  ///
+  /// Required.
+  core.List<core.String>? listValues;
+
+  StringListValues({this.listValues});
+
+  StringListValues.fromJson(core.Map json_)
+    : this(
+        listValues: (json_['listValues'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final listValues = this.listValues;
+    return {'listValues': ?listValues};
+  }
+}
+
 /// Supported runtime features of a connector version.
 class SupportedRuntimeFeatures {
   /// Specifies if the connector supports action apis like 'executeAction'.
@@ -13172,6 +14046,12 @@ class ToolName {
 /// Toolspec overrides for a connection only holds the information that is to be
 /// displayed in the UI for admins.
 class ToolspecOverride {
+  /// Represents the base version of the toolspec for which admin has added
+  /// overrides.
+  ///
+  /// Required.
+  core.String? baseVersion;
+
   /// Created time.
   ///
   /// Output only.
@@ -13193,10 +14073,16 @@ class ToolspecOverride {
   /// Output only.
   core.String? updateTime;
 
-  ToolspecOverride({this.createTime, this.tools, this.updateTime});
+  ToolspecOverride({
+    this.baseVersion,
+    this.createTime,
+    this.tools,
+    this.updateTime,
+  });
 
   ToolspecOverride.fromJson(core.Map json_)
     : this(
+        baseVersion: json_['baseVersion'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         tools: (json_['tools'] as core.List?)
             ?.map((value) => value as core.Map<core.String, core.dynamic>)
@@ -13205,10 +14091,12 @@ class ToolspecOverride {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final baseVersion = this.baseVersion;
     final createTime = this.createTime;
     final tools = this.tools;
     final updateTime = this.updateTime;
     return {
+      'baseVersion': ?baseVersion,
       'createTime': ?createTime,
       'tools': ?tools,
       'updateTime': ?updateTime,
@@ -13227,7 +14115,42 @@ class ToolspecOverride {
 /// 100 duration: { seconds: 300 } } - if the quota limit is 10000 calls per
 /// day, then the message would be: { quota_limit: 10000 duration: { seconds:
 /// 86400 } and so on.
-typedef TrafficShapingConfig = $TrafficShapingConfig;
+class TrafficShapingConfig {
+  /// Specifies the duration over which the API call quota limits are
+  /// calculated.
+  ///
+  /// This duration is used to define the time window for evaluating if the
+  /// number of API calls made by a user is within the allowed quota limits. For
+  /// example: - To define a quota sampled over 16 seconds, set `seconds` to 16
+  /// - To define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60)
+  /// - To define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 *
+  /// 60) and so on. It is important to note that this duration is not the time
+  /// the quota is valid for, but rather the time window over which the quota is
+  /// evaluated. For example, if the quota is 100 calls per 10 seconds, then
+  /// this duration field would be set to 10 seconds.
+  ///
+  /// Required.
+  core.String? duration;
+
+  /// Maximum number of api calls allowed.
+  ///
+  /// Required.
+  core.String? quotaLimit;
+
+  TrafficShapingConfig({this.duration, this.quotaLimit});
+
+  TrafficShapingConfig.fromJson(core.Map json_)
+    : this(
+        duration: json_['duration'] as core.String?,
+        quotaLimit: json_['quotaLimit'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final duration = this.duration;
+    final quotaLimit = this.quotaLimit;
+    return {'duration': ?duration, 'quotaLimit': ?quotaLimit};
+  }
+}
 
 /// Parameters to support Username and Password Authentication.
 class UserPassword {
@@ -13369,6 +14292,18 @@ class WebhookData {
   /// Output only.
   core.String? createTime;
 
+  /// List of event subscriptions which are using the webhook.
+  ///
+  /// Output only.
+  core.List<core.String>? eventSubscriptions;
+
+  /// List of event types for the webhook.
+  ///
+  /// This is the event types subscribed by the current webhook.
+  ///
+  /// Output only.
+  core.List<core.String>? eventTypes;
+
   /// ID to uniquely identify webhook.
   ///
   /// Output only.
@@ -13394,6 +14329,8 @@ class WebhookData {
   WebhookData({
     this.additionalVariables,
     this.createTime,
+    this.eventSubscriptions,
+    this.eventTypes,
     this.id,
     this.name,
     this.nextRefreshTime,
@@ -13410,6 +14347,12 @@ class WebhookData {
             )
             .toList(),
         createTime: json_['createTime'] as core.String?,
+        eventSubscriptions: (json_['eventSubscriptions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        eventTypes: (json_['eventTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         id: json_['id'] as core.String?,
         name: json_['name'] as core.String?,
         nextRefreshTime: json_['nextRefreshTime'] as core.String?,
@@ -13419,6 +14362,8 @@ class WebhookData {
   core.Map<core.String, core.dynamic> toJson() {
     final additionalVariables = this.additionalVariables;
     final createTime = this.createTime;
+    final eventSubscriptions = this.eventSubscriptions;
+    final eventTypes = this.eventTypes;
     final id = this.id;
     final name = this.name;
     final nextRefreshTime = this.nextRefreshTime;
@@ -13426,6 +14371,8 @@ class WebhookData {
     return {
       'additionalVariables': ?additionalVariables,
       'createTime': ?createTime,
+      'eventSubscriptions': ?eventSubscriptions,
+      'eventTypes': ?eventTypes,
       'id': ?id,
       'name': ?name,
       'nextRefreshTime': ?nextRefreshTime,

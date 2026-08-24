@@ -672,6 +672,9 @@ class CalendarListResource {
   /// - "owner" : The user can read and modify events and access control lists.
   /// - "reader" : The user can read events that are not private.
   /// - "writer" : The user can read and modify events.
+  /// - "writerWithoutPrivateAccess" : The user can read and modify events that
+  /// aren't private. The user can read free/busy information about private
+  /// events. The user can't modify private events.
   ///
   /// [pageToken] - Token specifying which result page to return. Optional.
   ///
@@ -681,6 +684,10 @@ class CalendarListResource {
   /// [showHidden] - Whether to show hidden entries. Optional. The default is
   /// False.
   ///
+  /// [showOwnOrganizationOnly] - Whether to show only entries for calendars
+  /// from the organization. This parameter is only applicable to Google
+  /// Workspace users. Optional. The default is False.
+  ///
   /// [syncToken] - Token obtained from the nextSyncToken field returned on the
   /// last page of results from the previous list request. It makes the result
   /// of this list request contain only entries that have changed since then. If
@@ -688,8 +695,9 @@ class CalendarListResource {
   /// the entry won't be returned. All entries deleted and hidden since the
   /// previous list request will always be in the result set and it is not
   /// allowed to set showDeleted neither showHidden to False.
-  /// To ensure client state consistency minAccessRole query parameter cannot be
-  /// specified together with nextSyncToken.
+  /// To ensure client state consistency minAccessRole and
+  /// showOwnOrganizationOnly query parameters cannot be specified together with
+  /// nextSyncToken.
   /// If the syncToken expires, the server will respond with a 410 GONE response
   /// code and the client should clear its storage and perform a full
   /// synchronization without any syncToken.
@@ -712,6 +720,7 @@ class CalendarListResource {
     core.String? pageToken,
     core.bool? showDeleted,
     core.bool? showHidden,
+    core.bool? showOwnOrganizationOnly,
     core.String? syncToken,
     core.String? $fields,
   }) async {
@@ -721,6 +730,9 @@ class CalendarListResource {
       'pageToken': ?pageToken == null ? null : [pageToken],
       'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
       'showHidden': ?showHidden == null ? null : ['${showHidden}'],
+      'showOwnOrganizationOnly': ?showOwnOrganizationOnly == null
+          ? null
+          : ['${showOwnOrganizationOnly}'],
       'syncToken': ?syncToken == null ? null : [syncToken],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -858,6 +870,9 @@ class CalendarListResource {
   /// - "owner" : The user can read and modify events and access control lists.
   /// - "reader" : The user can read events that are not private.
   /// - "writer" : The user can read and modify events.
+  /// - "writerWithoutPrivateAccess" : The user can read and modify events that
+  /// aren't private. The user can read free/busy information about private
+  /// events. The user can't modify private events.
   ///
   /// [pageToken] - Token specifying which result page to return. Optional.
   ///
@@ -867,6 +882,10 @@ class CalendarListResource {
   /// [showHidden] - Whether to show hidden entries. Optional. The default is
   /// False.
   ///
+  /// [showOwnOrganizationOnly] - Whether to show only entries for calendars
+  /// from the organization. This parameter is only applicable to Google
+  /// Workspace users. Optional. The default is False.
+  ///
   /// [syncToken] - Token obtained from the nextSyncToken field returned on the
   /// last page of results from the previous list request. It makes the result
   /// of this list request contain only entries that have changed since then. If
@@ -874,8 +893,9 @@ class CalendarListResource {
   /// the entry won't be returned. All entries deleted and hidden since the
   /// previous list request will always be in the result set and it is not
   /// allowed to set showDeleted neither showHidden to False.
-  /// To ensure client state consistency minAccessRole query parameter cannot be
-  /// specified together with nextSyncToken.
+  /// To ensure client state consistency minAccessRole and
+  /// showOwnOrganizationOnly query parameters cannot be specified together with
+  /// nextSyncToken.
   /// If the syncToken expires, the server will respond with a 410 GONE response
   /// code and the client should clear its storage and perform a full
   /// synchronization without any syncToken.
@@ -899,6 +919,7 @@ class CalendarListResource {
     core.String? pageToken,
     core.bool? showDeleted,
     core.bool? showHidden,
+    core.bool? showOwnOrganizationOnly,
     core.String? syncToken,
     core.String? $fields,
   }) async {
@@ -909,6 +930,9 @@ class CalendarListResource {
       'pageToken': ?pageToken == null ? null : [pageToken],
       'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
       'showHidden': ?showHidden == null ? null : ['${showHidden}'],
+      'showOwnOrganizationOnly': ?showOwnOrganizationOnly == null
+          ? null
+          : ['${showOwnOrganizationOnly}'],
       'syncToken': ?syncToken == null ? null : [syncToken],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -1129,6 +1153,63 @@ class CalendarsResource {
       queryParams: queryParams_,
     );
     return Calendar.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Transfers a secondary calendar between users within a Google Workspace
+  /// organization.
+  ///
+  /// Requires user authentication with Manage Calendars administrator
+  /// privilege, and one of the following authorization scopes:
+  /// - https://www.googleapis.com/auth/calendar
+  /// - https://www.googleapis.com/auth/calendar.calendars In the request, set
+  /// useAdminAccess to true. The secondary calendar must be active to be
+  /// transferred. Transferring disabled or deleted calendars isn't supported.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs, call the
+  /// calendarList.list method.
+  ///
+  /// [newDataOwner] - The email address of a user who will become the data
+  /// owner of the calendar.
+  ///
+  /// [useAdminAccess] - When true, the method runs using the user's Google
+  /// Workspace administrator privileges. The calling user must be a Google
+  /// Workspace administrator with the Manage Calendars privilege. This method
+  /// currently only supports admin access, thus only true is accepted for this
+  /// field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> transferOwnership(
+    core.String calendarId,
+    core.String newDataOwner,
+    core.bool useAdminAccess, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'newDataOwner': [newDataOwner],
+      'useAdminAccess': ['${useAdminAccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'calendars/' +
+        commons.escapeVariable('$calendarId') +
+        '/transferOwnership';
+
+    await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
   }
 
   /// Updates metadata for a calendar.
@@ -1401,6 +1482,13 @@ class EventsResource {
   /// createRequest field of conferenceData. The default is 0.
   /// Value must be between "0" and "1".
   ///
+  /// [eventLabelVersion] - Version number of the event label feature supported
+  /// by the API client. Version 0 assumes no event label support and processes
+  /// the colorId field for color management. Version 1 enables support for
+  /// event labels, and processes the eventLabelId in the event's body. In this
+  /// case, the colorId field is ignored. The default is 0.
+  /// Value must be between "0" and "1".
+  ///
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
   ///
@@ -1418,6 +1506,7 @@ class EventsResource {
     Event request,
     core.String calendarId, {
     core.int? conferenceDataVersion,
+    core.int? eventLabelVersion,
     core.bool? supportsAttachments,
     core.String? $fields,
   }) async {
@@ -1426,6 +1515,9 @@ class EventsResource {
       'conferenceDataVersion': ?conferenceDataVersion == null
           ? null
           : ['${conferenceDataVersion}'],
+      'eventLabelVersion': ?eventLabelVersion == null
+          ? null
+          : ['${eventLabelVersion}'],
       'supportsAttachments': ?supportsAttachments == null
           ? null
           : ['${supportsAttachments}'],
@@ -1459,6 +1551,13 @@ class EventsResource {
   /// conference data in the event's body. Version 1 enables support for copying
   /// of ConferenceData as well as for creating new conferences using the
   /// createRequest field of conferenceData. The default is 0.
+  /// Value must be between "0" and "1".
+  ///
+  /// [eventLabelVersion] - Version number of the event label feature supported
+  /// by the API client. Version 0 assumes no event label support and processes
+  /// the colorId field for color management. Version 1 enables support for
+  /// event labels, and processes the eventLabelId in the event's body. In this
+  /// case, the colorId field is ignored. The default is 0.
   /// Value must be between "0" and "1".
   ///
   /// [maxAttendees] - The maximum number of attendees to include in the
@@ -1500,6 +1599,7 @@ class EventsResource {
     Event request,
     core.String calendarId, {
     core.int? conferenceDataVersion,
+    core.int? eventLabelVersion,
     core.int? maxAttendees,
     core.bool? sendNotifications,
     core.String? sendUpdates,
@@ -1511,6 +1611,9 @@ class EventsResource {
       'conferenceDataVersion': ?conferenceDataVersion == null
           ? null
           : ['${conferenceDataVersion}'],
+      'eventLabelVersion': ?eventLabelVersion == null
+          ? null
+          : ['${eventLabelVersion}'],
       'maxAttendees': ?maxAttendees == null ? null : ['${maxAttendees}'],
       'sendNotifications': ?sendNotifications == null
           ? null
@@ -1931,6 +2034,13 @@ class EventsResource {
   /// createRequest field of conferenceData. The default is 0.
   /// Value must be between "0" and "1".
   ///
+  /// [eventLabelVersion] - Version number of the event label feature supported
+  /// by the API client. Version 0 assumes no event label support and processes
+  /// the colorId field for color management. Version 1 enables support for
+  /// event labels, and processes the eventLabelId in the event's body. In this
+  /// case, the colorId field is ignored. The default is 0.
+  /// Value must be between "0" and "1".
+  ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
   /// the participant is returned. Optional.
@@ -1969,6 +2079,7 @@ class EventsResource {
     core.String eventId, {
     core.bool? alwaysIncludeEmail,
     core.int? conferenceDataVersion,
+    core.int? eventLabelVersion,
     core.int? maxAttendees,
     core.bool? sendNotifications,
     core.String? sendUpdates,
@@ -1983,6 +2094,9 @@ class EventsResource {
       'conferenceDataVersion': ?conferenceDataVersion == null
           ? null
           : ['${conferenceDataVersion}'],
+      'eventLabelVersion': ?eventLabelVersion == null
+          ? null
+          : ['${eventLabelVersion}'],
       'maxAttendees': ?maxAttendees == null ? null : ['${maxAttendees}'],
       'sendNotifications': ?sendNotifications == null
           ? null
@@ -2097,6 +2211,13 @@ class EventsResource {
   /// createRequest field of conferenceData. The default is 0.
   /// Value must be between "0" and "1".
   ///
+  /// [eventLabelVersion] - Version number of the event label feature supported
+  /// by the API client. Version 0 assumes no event label support and processes
+  /// the colorId field for color management. Version 1 enables support for
+  /// event labels, and processes the eventLabelId in the event's body. In this
+  /// case, the colorId field is ignored. The default is 0.
+  /// Value must be between "0" and "1".
+  ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
   /// the participant is returned. Optional.
@@ -2135,6 +2256,7 @@ class EventsResource {
     core.String eventId, {
     core.bool? alwaysIncludeEmail,
     core.int? conferenceDataVersion,
+    core.int? eventLabelVersion,
     core.int? maxAttendees,
     core.bool? sendNotifications,
     core.String? sendUpdates,
@@ -2149,6 +2271,9 @@ class EventsResource {
       'conferenceDataVersion': ?conferenceDataVersion == null
           ? null
           : ['${conferenceDataVersion}'],
+      'eventLabelVersion': ?eventLabelVersion == null
+          ? null
+          : ['${eventLabelVersion}'],
       'maxAttendees': ?maxAttendees == null ? null : ['${maxAttendees}'],
       'sendNotifications': ?sendNotifications == null
           ? null
@@ -2687,6 +2812,9 @@ class AclRule {
   /// - "freeBusyReader" - Provides read access to free/busy information.
   /// - "reader" - Provides read access to the calendar. Private events will
   /// appear to users with reader access, but event details will be hidden.
+  /// - "writerWithoutPrivateAccess" - Provides read and write access to the
+  /// calendar. Private events will appear to users with
+  /// writerWithoutPrivateAccess access, but event details will be hidden.
   /// - "writer" - Provides read and write access to the calendar. Private
   /// events will appear to users with writer access, and event details will be
   /// visible. Provides read access to the calendar's ACLs.
@@ -2763,6 +2891,12 @@ class Calendar {
   /// Type of the resource ("calendar#calendar").
   core.String? kind;
 
+  /// Label properties defined on this calendar.
+  ///
+  /// If specified, overwrites the existing label properties. If not specified,
+  /// the label properties remain unchanged.
+  LabelProperties? labelProperties;
+
   /// Geographic location of the calendar as free-form text.
   ///
   /// Optional.
@@ -2785,6 +2919,7 @@ class Calendar {
     this.etag,
     this.id,
     this.kind,
+    this.labelProperties,
     this.location,
     this.summary,
     this.timeZone,
@@ -2804,6 +2939,11 @@ class Calendar {
         etag: json_['etag'] as core.String?,
         id: json_['id'] as core.String?,
         kind: json_['kind'] as core.String?,
+        labelProperties: json_.containsKey('labelProperties')
+            ? LabelProperties.fromJson(
+                json_['labelProperties'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         location: json_['location'] as core.String?,
         summary: json_['summary'] as core.String?,
         timeZone: json_['timeZone'] as core.String?,
@@ -2817,6 +2957,7 @@ class Calendar {
     final etag = this.etag;
     final id = this.id;
     final kind = this.kind;
+    final labelProperties = this.labelProperties;
     final location = this.location;
     final summary = this.summary;
     final timeZone = this.timeZone;
@@ -2828,6 +2969,7 @@ class Calendar {
       'etag': ?etag,
       'id': ?id,
       'kind': ?kind,
+      'labelProperties': ?labelProperties,
       'location': ?location,
       'summary': ?summary,
       'timeZone': ?timeZone,
@@ -2929,6 +3071,9 @@ class CalendarListEntry {
   /// - "freeBusyReader" - Provides read access to free/busy information.
   /// - "reader" - Provides read access to the calendar. Private events will
   /// appear to users with reader access, but event details will be hidden.
+  /// - "writerWithoutPrivateAccess" - Provides read and write access to the
+  /// calendar. Private events will appear to users with
+  /// writerWithoutPrivateAccess access, but event details will be hidden.
   /// - "writer" - Provides read and write access to the calendar. Private
   /// events will appear to users with writer access, and event details will be
   /// visible.
@@ -4231,6 +4376,18 @@ class Event {
   /// ETag of the resource.
   core.String? etag;
 
+  /// The ID of the event label assigned to the event.
+  ///
+  /// Optional. This refers to the ID of an entry in the
+  /// labelProperties.eventLabels property of the calendar (see the
+  /// Calendars.get endpoint.)
+  /// This property supersedes the index-based colorId property. To set or
+  /// change this property, you need to specify eventLabelVersion=1 in the
+  /// parameters of the insert, import, update, and patch methods.
+  /// Setting an empty string, or not setting this field at all, will remove the
+  /// existing label from the event.
+  core.String? eventLabelId;
+
   /// Specific type of the event.
   ///
   /// This cannot be modified after the event is created. Possible values are:
@@ -4450,6 +4607,12 @@ class Event {
   /// details.
   /// - "confidential" - The event is private. This value is provided for
   /// compatibility reasons.
+  /// Note on recurring events: Changing the visibility of a single instance of
+  /// a recurring event can affect all instances of the series. If the new
+  /// setting is more restrictive (e.g. from public to private), it is applied
+  /// to all instances. If the new setting is less restrictive (e.g. from
+  /// private to public), the change is ignored. To make a recurring event less
+  /// restrictive, you must update the parent recurring event.
   core.String? visibility;
 
   /// Working location event data.
@@ -4469,6 +4632,7 @@ class Event {
     this.end,
     this.endTimeUnspecified,
     this.etag,
+    this.eventLabelId,
     this.eventType,
     this.extendedProperties,
     this.focusTimeProperties,
@@ -4547,6 +4711,7 @@ class Event {
             : null,
         endTimeUnspecified: json_['endTimeUnspecified'] as core.bool?,
         etag: json_['etag'] as core.String?,
+        eventLabelId: json_['eventLabelId'] as core.String?,
         eventType: json_['eventType'] as core.String?,
         extendedProperties: json_.containsKey('extendedProperties')
             ? EventExtendedProperties.fromJson(
@@ -4643,6 +4808,7 @@ class Event {
     final end = this.end;
     final endTimeUnspecified = this.endTimeUnspecified;
     final etag = this.etag;
+    final eventLabelId = this.eventLabelId;
     final eventType = this.eventType;
     final extendedProperties = this.extendedProperties;
     final focusTimeProperties = this.focusTimeProperties;
@@ -4687,6 +4853,7 @@ class Event {
       'end': ?end,
       'endTimeUnspecified': ?endTimeUnspecified,
       'etag': ?etag,
+      'eventLabelId': ?eventLabelId,
       'eventType': ?eventType,
       'extendedProperties': ?extendedProperties,
       'focusTimeProperties': ?focusTimeProperties,
@@ -4785,6 +4952,15 @@ class EventAttendee {
   /// Optional. The default is 0.
   core.int? additionalGuests;
 
+  /// If present, indicates the status of an asynchronous operation ongoing for
+  /// this attendee (e.g. listing of members of large attendee groups).
+  ///
+  /// Read-only. The default is to not be present.
+  /// Possible values are:
+  /// - "inProgress" - The asynchronous operation is in progress.
+  /// - (not present) - Otherwise.
+  core.String? asyncOperation;
+
   /// The attendee's response comment.
   ///
   /// Optional.
@@ -4847,6 +5023,7 @@ class EventAttendee {
 
   EventAttendee({
     this.additionalGuests,
+    this.asyncOperation,
     this.comment,
     this.displayName,
     this.email,
@@ -4861,6 +5038,7 @@ class EventAttendee {
   EventAttendee.fromJson(core.Map json_)
     : this(
         additionalGuests: json_['additionalGuests'] as core.int?,
+        asyncOperation: json_['asyncOperation'] as core.String?,
         comment: json_['comment'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         email: json_['email'] as core.String?,
@@ -4874,6 +5052,7 @@ class EventAttendee {
 
   core.Map<core.String, core.dynamic> toJson() {
     final additionalGuests = this.additionalGuests;
+    final asyncOperation = this.asyncOperation;
     final comment = this.comment;
     final displayName = this.displayName;
     final email = this.email;
@@ -4885,6 +5064,7 @@ class EventAttendee {
     final self = this.self;
     return {
       'additionalGuests': ?additionalGuests,
+      'asyncOperation': ?asyncOperation,
       'comment': ?comment,
       'displayName': ?displayName,
       'email': ?email,
@@ -5034,6 +5214,43 @@ class EventFocusTimeProperties {
       'chatStatus': ?chatStatus,
       'declineMessage': ?declineMessage,
     };
+  }
+}
+
+class EventLabel {
+  /// Background color of the label in hexadecimal format, such as "#039be5".
+  ///
+  /// Events with this label are displayed in this color. Required.
+  core.String? backgroundColor;
+
+  /// The ID of the label.
+  ///
+  /// Optional when inserting a new label. If not provided, a unique ID will be
+  /// generated. Required when updating a label.
+  /// If provided, the ID must be unique within the calendar and follow UUID
+  /// format.
+  core.String? id;
+
+  /// Name of the label.
+  ///
+  /// Optional.
+  /// If provided this must have at most 50 characters.
+  core.String? name;
+
+  EventLabel({this.backgroundColor, this.id, this.name});
+
+  EventLabel.fromJson(core.Map json_)
+    : this(
+        backgroundColor: json_['backgroundColor'] as core.String?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backgroundColor = this.backgroundColor;
+    final id = this.id;
+    final name = this.name;
+    return {'backgroundColor': ?backgroundColor, 'id': ?id, 'name': ?name};
   }
 }
 
@@ -5242,6 +5459,9 @@ class Events {
   /// - "freeBusyReader" - The user has read access to free/busy information.
   /// - "reader" - The user has read access to the calendar. Private events will
   /// appear to users with reader access, but event details will be hidden.
+  /// - "writerWithoutPrivateAccess" - The user has read and write access to the
+  /// calendar. Private events will appear to users with
+  /// writerWithoutPrivateAccess access, but event details will be hidden.
   /// - "writer" - The user has read and write access to the calendar. Private
   /// events will appear to users with writer access, and event details will be
   /// visible.
@@ -5588,6 +5808,35 @@ class FreeBusyResponse {
       'timeMax': ?timeMax?.toUtc().toIso8601String(),
       'timeMin': ?timeMin?.toUtc().toIso8601String(),
     };
+  }
+}
+
+class LabelProperties {
+  /// Event labels defined on this calendar.
+  ///
+  /// If this is present when updating the calendar, it will replace the
+  /// existing event labels.
+  /// Extend the list to add a new event label, and remove entities from the
+  /// list to delete a label from calendar.
+  /// Each calendar can have a maximum of 200 labels.
+  core.List<EventLabel>? eventLabels;
+
+  LabelProperties({this.eventLabels});
+
+  LabelProperties.fromJson(core.Map json_)
+    : this(
+        eventLabels: (json_['eventLabels'] as core.List?)
+            ?.map(
+              (value) => EventLabel.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final eventLabels = this.eventLabels;
+    return {'eventLabels': ?eventLabels};
   }
 }
 

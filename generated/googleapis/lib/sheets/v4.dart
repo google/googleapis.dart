@@ -5870,7 +5870,7 @@ class CopyPasteRequest {
   /// - "PASTE_NORMAL" : Paste values, formulas, formats, and merges.
   /// - "PASTE_VALUES" : Paste the values ONLY without formats, formulas, or
   /// merges.
-  /// - "PASTE_FORMAT" : Paste the format and data validation only.
+  /// - "PASTE_FORMAT" : Paste the format only, excluding data validation.
   /// - "PASTE_NO_BORDERS" : Like `PASTE_NORMAL` but without borders.
   /// - "PASTE_FORMULA" : Paste the formulas only.
   /// - "PASTE_DATA_VALIDATION" : Paste the data validation only.
@@ -5995,7 +5995,7 @@ class CutPasteRequest {
   /// - "PASTE_NORMAL" : Paste values, formulas, formats, and merges.
   /// - "PASTE_VALUES" : Paste the values ONLY without formats, formulas, or
   /// merges.
-  /// - "PASTE_FORMAT" : Paste the format and data validation only.
+  /// - "PASTE_FORMAT" : Paste the format only, excluding data validation.
   /// - "PASTE_NO_BORDERS" : Like `PASTE_NORMAL` but without borders.
   /// - "PASTE_FORMULA" : Paste the formulas only.
   /// - "PASTE_DATA_VALIDATION" : Paste the data validation only.
@@ -10123,7 +10123,7 @@ class PasteDataRequest {
   /// - "PASTE_NORMAL" : Paste values, formulas, formats, and merges.
   /// - "PASTE_VALUES" : Paste the values ONLY without formats, formulas, or
   /// merges.
-  /// - "PASTE_FORMAT" : Paste the format and data validation only.
+  /// - "PASTE_FORMAT" : Paste the format only, excluding data validation.
   /// - "PASTE_NO_BORDERS" : Like `PASTE_NORMAL` but without borders.
   /// - "PASTE_FORMULA" : Paste the formulas only.
   /// - "PASTE_DATA_VALIDATION" : Paste the data validation only.

@@ -225,7 +225,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -240,9 +240,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -360,7 +359,7 @@ class ProjectsLocationsResource {
   /// request ID must be a valid UUID with the exception that zero UUID is not
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
-  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
   /// overwritten in the Boundary resource by the update. The fields specified
   /// in the update_mask are relative to the resource, not the full request. A
   /// field will be overwritten if it is in the mask. If the user does not
@@ -703,7 +702,7 @@ class ProjectsLocationsApplicationsResource {
   /// request ID must be a valid UUID with the exception that zero UUID is not
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
-  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
   /// overwritten in the Application resource by the update. The fields
   /// specified in the update_mask are relative to the resource, not the full
   /// request. The API changes the values of the fields as specified in the
@@ -1084,7 +1083,7 @@ class ProjectsLocationsApplicationsServicesResource {
   /// request ID must be a valid UUID with the exception that zero UUID is not
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
-  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
   /// overwritten in the Service resource by the update. The fields specified in
   /// the update_mask are relative to the resource, not the full request. The
   /// API changes the values of the fields as specified in the update_mask. The
@@ -1366,7 +1365,7 @@ class ProjectsLocationsApplicationsWorkloadsResource {
   /// request ID must be a valid UUID with the exception that zero UUID is not
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
-  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
   /// overwritten in the Workload resource by the update. The fields specified
   /// in the update_mask are relative to the resource, not the full request. The
   /// API changes the values of the fields as specified in the update_mask. The

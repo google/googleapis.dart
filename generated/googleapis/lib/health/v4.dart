@@ -29,9 +29,14 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsSubscribersResource]
+///     - [ProjectsSubscribersSubscriptionsResource]
+/// - [ShlResource]
+///   - [ShlMResource]
+///   - [ShlRResource]
 /// - [UsersResource]
 ///   - [UsersDataTypesResource]
 ///     - [UsersDataTypesDataPointsResource]
+///   - [UsersPairedDevicesResource]
 library;
 
 import 'dart:async' as async;
@@ -63,9 +68,82 @@ class GoogleHealthApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See your Google Health activity and fitness data
+  static const googlehealthActivityAndFitnessReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly';
+
+  /// Add activity and fitness data to Google Health, and edit or delete the
+  /// data it adds.
+  static const googlehealthActivityAndFitnessWriteonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.activity_and_fitness.writeonly';
+
+  /// See your Google Health ECG data
+  static const googlehealthEcgReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.ecg.readonly';
+
+  /// See your Google Health health metrics and measurement data
+  static const googlehealthHealthMetricsAndMeasurementsReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly';
+
+  /// Add health metric and measurements data to Google Health, and edit or
+  /// delete the data it adds.
+  static const googlehealthHealthMetricsAndMeasurementsWriteonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.writeonly';
+
+  /// See your Google Health Irregular Rhythm Notifications data
+  static const googlehealthIrnReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.irn.readonly';
+
+  /// See exercise GPS location data in Google Health
+  static const googlehealthLocationReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.location.readonly';
+
+  /// Add logged symptoms data to Google Health, and edit or delete the data it
+  /// adds
+  static const googlehealthLoggedSymptomsWriteonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.logged_symptoms.writeonly';
+
+  /// Add mindfulness data to Google Health, and edit or delete the data it adds
+  static const googlehealthMindfulnessWriteonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.mindfulness.writeonly';
+
+  /// Add nutrition data to Google Health, and edit or delete the data it adds.
+  static const googlehealthNutritionWriteonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.nutrition.writeonly';
+
+  /// See your Google Health profile data
+  static const googlehealthProfileReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.profile.readonly';
+
+  /// Add profile data to Google Health, and edit or delete the data it adds.
+  static const googlehealthProfileWriteonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.profile.writeonly';
+
+  /// Add reproductive health data to Google Health, and edit or delete the data
+  /// it adds
+  static const googlehealthReproductiveHealthWriteonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.reproductive_health.writeonly';
+
+  /// See your Google Health settings
+  static const googlehealthSettingsReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.settings.readonly';
+
+  /// Add settings data to Google Health, and edit or delete the data it adds.
+  static const googlehealthSettingsWriteonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.settings.writeonly';
+
+  /// See your Google Health sleep data
+  static const googlehealthSleepReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.sleep.readonly';
+
+  /// Add sleep data to Google Health, and edit or delete the data it adds.
+  static const googlehealthSleepWriteonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.sleep.writeonly';
+
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
+  ShlResource get shl => ShlResource(_requester);
   UsersResource get users => UsersResource(_requester);
 
   GoogleHealthApi(
@@ -91,6 +169,9 @@ class ProjectsResource {
 
 class ProjectsSubscribersResource {
   final commons.ApiRequester _requester;
+
+  ProjectsSubscribersSubscriptionsResource get subscriptions =>
+      ProjectsSubscribersSubscriptionsResource(_requester);
 
   ProjectsSubscribersResource(commons.ApiRequester client)
     : _requester = client;
@@ -119,7 +200,7 @@ class ProjectsSubscribersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource where this subscriber will be
-  /// created. Format: projects/{project} Example: projects/my-project-123
+  /// created. Format: projects/{project_number} Example: projects/1234567890
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [subscriberId] - Optional. The ID to use for the subscriber, which will
@@ -329,10 +410,347 @@ class ProjectsSubscribersResource {
   }
 }
 
+class ProjectsSubscribersSubscriptionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSubscribersSubscriptionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a subscription for a specific user to a specific subscriber.
+  ///
+  /// This method requires the subscriber to have a `SubscriptionCreatePolicy`
+  /// set to `MANUAL` for the given data types.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent subscriber. Format:
+  /// projects/{project}/subscribers/{subscriber} The {subscriber} ID is
+  /// user-settable (4-36 characters, matching
+  /// /\[a-z\](\[a-z0-9-\]{2,34}\[a-z0-9\])/) if provided during creation, or
+  /// system-generated otherwise.
+  /// Value must have pattern `^projects/\[^/\]+/subscribers/\[^/\]+$`.
+  ///
+  /// [subscriptionId] - Optional. The {subscription_id} is user-settable (4-36
+  /// chars, matching /\[a-z\](\[a-z0-9-\]{2,34}\[a-z0-9\])/) or
+  /// system-generated otherwise. If provided, the ID must be unique within the
+  /// parent subscriber.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Subscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Subscription> create(
+    CreateSubscriptionPayload request,
+    core.String parent, {
+    core.String? subscriptionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'subscriptionId': ?subscriptionId == null ? null : [subscriptionId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/subscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Subscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a specific user subscription, stopping notifications for this user
+  /// to this subscriber.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the subscription to delete.
+  /// Format:
+  /// `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}`
+  /// Example:
+  /// `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456`
+  /// The {subscriber} ID is user-settable (4-36 characters, matching
+  /// /\[a-z\](\[a-z0-9-\]{2,34}\[a-z0-9\])/) if provided during creation, or
+  /// system-generated otherwise. The {subscription} ID is user-settable (4-36
+  /// characters, matching /\[a-z\](\[a-z0-9-\]{2,34}\[a-z0-9\])/) or
+  /// system-generated if not provided during creation.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/subscribers/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v4/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all active subscriptions for a given subscriber.
+  ///
+  /// This can be filtered, for example, by user or data type.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent subscriber. Format:
+  /// projects/{project}/subscribers/{subscriber} The {subscriber} ID is
+  /// user-settable (4-36 characters, matching
+  /// /\[a-z\](\[a-z0-9-\]{2,34}\[a-z0-9\])/) if provided during creation, or
+  /// system-generated otherwise.
+  /// Value must have pattern `^projects/\[^/\]+/subscribers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter to apply to the list of subscriptions. The
+  /// filter syntax is described in https://google.aip.dev/160. The filter can
+  /// be applied to the following fields: - `user` - `data_type` The `user`
+  /// identifier (e.g., `user1` in `users/user1`) refers to the public
+  /// `health_user_id` Example: user = "users/user1" Example: user =
+  /// "users/user1" OR user = "users/user2" Example: user = "users/user1" AND
+  /// (data_type = "sleep" OR data_type = "weight")
+  ///
+  /// [pageSize] - Optional. The maximum number of subscriptions to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// subscriptions will be returned. The maximum value is 1000; values above
+  /// 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSubscriptions` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListSubscriptions` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSubscriptionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/subscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSubscriptionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the data types for an existing user subscription.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the Subscription. Format:
+  /// `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}`
+  /// Example:
+  /// `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456`
+  /// The {project} ID is mandatory (6-30 characters, matching /a-z{6,30}/) The
+  /// {subscriber} ID is user-settable (4-36 characters, matching
+  /// /\[a-z\](\[a-z0-9-\]{2,34}\[a-z0-9\])/) if provided during creation, or
+  /// system-generated otherwise. The {subscription} ID is user-settable (4-36
+  /// chars, matching /\[a-z\](\[a-z0-9-\]{2,34}\[a-z0-9\])/) or
+  /// system-generated otherwise.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/subscribers/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Subscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Subscription> patch(
+    Subscription request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v4/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Subscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ShlResource {
+  final commons.ApiRequester _requester;
+
+  ShlMResource get m => ShlMResource(_requester);
+  ShlRResource get r => ShlRResource(_requester);
+
+  ShlResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ShlMResource {
+  final commons.ApiRequester _requester;
+
+  ShlMResource(commons.ApiRequester client) : _requester = client;
+
+  /// Forward a manifest request for a given SHL
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [externalShlId] - Required. External ID mapping to a
+  /// ShlSharedLinkCapabilityToken object See
+  /// https://docs.google.com/document/d/1Pch20pxJHRbsaMxp0EYgs3ZU0Gu7QTUznk8LhvbQvfY/edit?tab=t.0#heading=h.17wg41voij6q
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> getShlManifest(
+    ManifestParams request,
+    core.String externalShlId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v4/shl/m/' + commons.escapeVariable('$externalShlId');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ShlRResource {
+  final commons.ApiRequester _requester;
+
+  ShlRResource(commons.ApiRequester client) : _requester = client;
+
+  /// Forward a resource request for a given SHL
+  ///
+  /// Request parameters:
+  ///
+  /// [externalShlId] - Required. External ID mapping to a
+  /// ShlSharedLinkCapabilityToken object See
+  /// https://docs.google.com/document/d/1Pch20pxJHRbsaMxp0EYgs3ZU0Gu7QTUznk8LhvbQvfY/edit?tab=t.0#heading=h.17wg41voij6q
+  ///
+  /// [resourceToken] - Required. Encoded, encrypted message containing resource
+  /// access details
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> get(
+    core.String externalShlId,
+    core.String resourceToken, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v4/shl/r/' +
+        commons.escapeVariable('$externalShlId') +
+        '/' +
+        commons.escapeVariable('$resourceToken');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class UsersResource {
   final commons.ApiRequester _requester;
 
   UsersDataTypesResource get dataTypes => UsersDataTypesResource(_requester);
+  UsersPairedDevicesResource get pairedDevices =>
+      UsersPairedDevicesResource(_requester);
 
   UsersResource(commons.ApiRequester client) : _requester = client;
 
@@ -373,6 +791,48 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return Identity.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns user's IRN Profile details.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the IRN Profile. Format:
+  /// `users/{user}/irnProfile` Example: `users/1234567890/irnProfile` or
+  /// `users/me/irnProfile` The {user} ID is a system-generated Google Health
+  /// API user ID, a string of 1-63 characters consisting of lowercase and
+  /// uppercase letters, numbers, and hyphens. The literal `me` can also be used
+  /// to refer to the authenticated user.
+  /// Value must have pattern `^users/\[^/\]+/irnProfile$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [IrnProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<IrnProfile> getIrnProfile(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v4/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return IrnProfile.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns user Profile details.
@@ -695,9 +1155,14 @@ class UsersDataTypesDataPointsResource {
 
   /// Exports exercise data in TCX format.
   ///
-  /// Note: While the Authorization section below states that any one of the
-  /// listed scopes is accepted, this specific method requires the user to
-  /// provide both one of the `activity_and_fitness` scopes (`normal` or
+  /// **IMPORTANT:** HTTP clients must append `?alt=media` to the request URL to
+  /// download the raw TCX file. Example:
+  /// `https://health.googleapis.com/v4/users/me/dataTypes/exercise/dataPoints/EXERCISE_ID:exportExerciseTcx?alt=media`
+  /// Without `alt=media`, the server returns a JSON response
+  /// (`ExportExerciseTcxResponse`) which is intended primarily for gRPC
+  /// clients. **Note:** While the Authorization section below states that any
+  /// one of the listed scopes is accepted, this specific method requires the
+  /// user to provide both one of the `activity_and_fitness` scopes (`normal` or
   /// `readonly`) AND one of the `location` scopes (`normal` or `readonly`) in
   /// their access token to succeed.
   ///
@@ -839,15 +1304,20 @@ class UsersDataTypesDataPointsResource {
   /// date: - Pattern: `{daily_summary_data_type}.date` - Supported comparison
   /// operators: `>=`, `<` - Date literal expected in ISO 8601 `YYYY-MM-DD`
   /// format - Supported logical operators: `AND` - Example: -
-  /// `daily_resting_heart_rate.date >= "2024-08-14"` -
   /// `daily_heart_rate_variability.date < "2024-08-15"` - Session civil start
-  /// time (**Excluding Sleep**): - Pattern:
+  /// time (**Excluding Sleep and ECG**): - Pattern:
   /// `{session_data_type}.interval.civil_start_time` - Supported comparison
   /// operators: `>=`, `<` - Date with optional time literal expected in ISO
   /// 8601 `YYYY-MM-DD[THH:mm:ss]` format - Supported logical operators: `AND` -
   /// Example: - `exercise.interval.civil_start_time >= "2023-11-24" AND
   /// exercise.interval.civil_start_time < "2023-11-25"` -
   /// `exercise.interval.civil_start_time >= "2024-08-14T12:34:56"` - Session
+  /// start time (**ECG specific**): - Pattern:
+  /// `electrocardiogram.interval.start_time` - Supported comparison operators:
+  /// `>=` - Timestamp literal expected in RFC-3339 format - Example: -
+  /// `electrocardiogram.interval.start_time >= "2024-08-14T12:34:56Z"` - Note:
+  /// Only filtering by start time is supported for ECG. Filtering by end time
+  /// (e.g., `electrocardiogram.interval.end_time`) is not supported. - Session
   /// end time (**Sleep specific**): - Pattern: `sleep.interval.end_time` -
   /// Supported comparison operators: `>=`, `<` - Timestamp literal expected in
   /// RFC-3339 format - Supported logical operators: `AND`, `OR` - Example: -
@@ -924,10 +1394,10 @@ class UsersDataTypesDataPointsResource {
   /// The `{user}` ID is a system-generated identifier, as described in
   /// Identity.health_user_id. The `{data_type}` ID corresponds to the
   /// kebab-case version of the field names in the DataPoint data union field,
-  /// e.g. `total-calories` for the `total_calories` field. The `{data_point}`
-  /// ID can be client-provided or system-generated. If client-provided, it must
-  /// be a string of 4-63 characters, containing only lowercase letters,
-  /// numbers, and hyphens.
+  /// e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be
+  /// client-provided or system-generated. If client-provided, it must be a
+  /// string of 4-63 characters, containing only lowercase letters, numbers, and
+  /// hyphens.
   /// Value must have pattern
   /// `^users/\[^/\]+/dataTypes/\[^/\]+/dataPoints/\[^/\]+$`.
   ///
@@ -975,10 +1445,15 @@ class UsersDataTypesDataPointsResource {
   ///
   /// [dataSourceFamily] - Optional. The data source family name to reconcile.
   /// If empty, data points from all data sources will be reconciled. Format:
-  /// `users/me/dataSourceFamilies/{data_source_family}` The supported values
-  /// are: - `users/me/dataSourceFamilies/all-sources` - default value -
-  /// `users/me/dataSourceFamilies/google-wearables` - tracker devices -
-  /// `users/me/dataSourceFamilies/google-sources` - Google first party sources
+  /// `users/me/dataSourceFamilies/{data_source_family}` -
+  /// `users/me/dataSourceFamilies/all-sources` - Default value. Includes data
+  /// from all available data sources. -
+  /// `users/me/dataSourceFamilies/google-wearables` - Includes data from Google
+  /// and Fitbit tracker devices (such as Fitbit trackers and Pixel Watch).
+  /// Excludes manually logged data. -
+  /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google
+  /// data, such as data from tracker devices, manually logged data, and Health
+  /// Connect.
   ///
   /// [filter] - Optional. Filter expression based on https://aip.dev/160. A
   /// time range, either physical or civil, can be specified. See the
@@ -1075,6 +1550,151 @@ class UsersDataTypesDataPointsResource {
     return RollUpDataPointsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+}
+
+class UsersPairedDevicesResource {
+  final commons.ApiRequester _requester;
+
+  UsersPairedDevicesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns user's Device.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the device to retrieve. Format:
+  /// users/{user}/devices/{device}
+  /// Value must have pattern `^users/\[^/\]+/pairedDevices/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PairedDevice].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PairedDevice> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v4/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return PairedDevice.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns the user's list of paired 1P trackers and smartwatches.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of devices.
+  /// Format: users/{user}
+  /// Value must have pattern `^users/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of devices to return. The
+  /// service may return fewer than this value. If unspecified, at most 5
+  /// devices will be returned. The maximum value is 100. values above 100 will
+  /// be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListPairedDevices` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListPairedDevices` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPairedDevicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPairedDevicesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v4/' + core.Uri.encodeFull('$parent') + '/pairedDevices';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPairedDevicesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+/// Energy burned as part of an activity, excluding the basal energy burn.
+class ActiveEnergyBurned {
+  /// Observed interval
+  ///
+  /// Required.
+  ObservationTimeInterval? interval;
+
+  /// Energy burned during an activity, measured in kilocalories.
+  ///
+  /// Required.
+  core.double? kcal;
+
+  ActiveEnergyBurned({this.interval, this.kcal});
+
+  ActiveEnergyBurned.fromJson(core.Map json_)
+    : this(
+        interval: json_.containsKey('interval')
+            ? ObservationTimeInterval.fromJson(
+                json_['interval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        kcal: (json_['kcal'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final interval = this.interval;
+    final kcal = this.kcal;
+    return {'interval': ?interval, 'kcal': ?kcal};
+  }
+}
+
+/// Represents the result of the rollup of active energy burned.
+class ActiveEnergyBurnedRollupValue {
+  /// Sum of the active energy burned in kilocalories.
+  ///
+  /// Output only.
+  core.double? kcalSum;
+
+  ActiveEnergyBurnedRollupValue({this.kcalSum});
+
+  ActiveEnergyBurnedRollupValue.fromJson(core.Map json_)
+    : this(kcalSum: (json_['kcalSum'] as core.num?)?.toDouble());
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kcalSum = this.kcalSum;
+    return {'kcalSum': ?kcalSum};
   }
 }
 
@@ -1411,6 +2031,120 @@ class ActivityLevelRollupValue {
   }
 }
 
+/// An analysis window evaluated for AFib.
+///
+/// Note: The current version of the algorithm will only produce alerts if all
+/// windows are positive. So anything returned from the API will always have the
+/// positive bit set to true. Internally, windows can be negative, however. We
+/// never save "inconclusive" windows (they aren't produced by the algorithm).
+class AlertWindow {
+  /// Observed interval end time in civil time in the timezone the subject is in
+  /// at the end of the observed interval
+  ///
+  /// Output only.
+  CivilDateTime? civilEndTime;
+
+  /// Observed interval start time in civil time in the timezone the subject is
+  /// in at the start of the observed interval
+  ///
+  /// Output only.
+  CivilDateTime? civilStartTime;
+
+  /// The end time of the analysis window.
+  ///
+  /// Required.
+  core.String? endTime;
+
+  /// The UTC offset of the user's timezone when the analysis window ended.
+  ///
+  /// Required.
+  core.String? endUtcOffset;
+
+  /// All heart beats in the interval contained in this analysis window.
+  ///
+  /// Optional.
+  core.List<HeartBeat>? heartBeats;
+
+  /// Flag indicating whether the window was positive for AFib or not.
+  ///
+  /// A `true` value indicates that AFib was detected in this window. A `false`
+  /// value means AFib was not detected, but does not guarantee the absence of
+  /// AFib.
+  ///
+  /// Optional.
+  core.bool? positive;
+
+  /// Observed interval.
+  ///
+  /// The start time of the analysis window.
+  ///
+  /// Required.
+  core.String? startTime;
+
+  /// The UTC offset of the user's timezone when the analysis window started.
+  ///
+  /// Required.
+  core.String? startUtcOffset;
+
+  AlertWindow({
+    this.civilEndTime,
+    this.civilStartTime,
+    this.endTime,
+    this.endUtcOffset,
+    this.heartBeats,
+    this.positive,
+    this.startTime,
+    this.startUtcOffset,
+  });
+
+  AlertWindow.fromJson(core.Map json_)
+    : this(
+        civilEndTime: json_.containsKey('civilEndTime')
+            ? CivilDateTime.fromJson(
+                json_['civilEndTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        civilStartTime: json_.containsKey('civilStartTime')
+            ? CivilDateTime.fromJson(
+                json_['civilStartTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        endTime: json_['endTime'] as core.String?,
+        endUtcOffset: json_['endUtcOffset'] as core.String?,
+        heartBeats: (json_['heartBeats'] as core.List?)
+            ?.map(
+              (value) => HeartBeat.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        positive: json_['positive'] as core.bool?,
+        startTime: json_['startTime'] as core.String?,
+        startUtcOffset: json_['startUtcOffset'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final civilEndTime = this.civilEndTime;
+    final civilStartTime = this.civilStartTime;
+    final endTime = this.endTime;
+    final endUtcOffset = this.endUtcOffset;
+    final heartBeats = this.heartBeats;
+    final positive = this.positive;
+    final startTime = this.startTime;
+    final startUtcOffset = this.startUtcOffset;
+    return {
+      'civilEndTime': ?civilEndTime,
+      'civilStartTime': ?civilStartTime,
+      'endTime': ?endTime,
+      'endUtcOffset': ?endUtcOffset,
+      'heartBeats': ?heartBeats,
+      'positive': ?positive,
+      'startTime': ?startTime,
+      'startUtcOffset': ?startUtcOffset,
+    };
+  }
+}
+
 /// Captures the altitude gain (i.e. deltas), and not level above sea, for a
 /// user in millimeters.
 class Altitude {
@@ -1515,6 +2249,39 @@ class Application {
   }
 }
 
+/// Number of calories burned due to basal metabolic rate (BMR) over a period of
+/// time.
+class BasalEnergyBurned {
+  /// Observed interval.
+  ///
+  /// Required.
+  ObservationTimeInterval? interval;
+
+  /// Number of calories burned due to basal metabolic rate in kilocalories over
+  /// the observed interval.
+  ///
+  /// Required.
+  core.double? kcal;
+
+  BasalEnergyBurned({this.interval, this.kcal});
+
+  BasalEnergyBurned.fromJson(core.Map json_)
+    : this(
+        interval: json_.containsKey('interval')
+            ? ObservationTimeInterval.fromJson(
+                json_['interval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        kcal: (json_['kcal'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final interval = this.interval;
+    final kcal = this.kcal;
+    return {'interval': ?interval, 'kcal': ?kcal};
+  }
+}
+
 /// Request to delete a batch of identifiable data points.
 class BatchDeleteDataPointsRequest {
   /// The names of the DataPoints to delete.
@@ -1536,6 +2303,148 @@ class BatchDeleteDataPointsRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final names = this.names;
     return {'names': ?names};
+  }
+}
+
+/// Represents a blood glucose level measurement.
+///
+/// LINT: LEGACY_NAMES
+class BloodGlucose {
+  /// Blood glucose level concentration in mg/dL.
+  ///
+  /// Required.
+  core.double? bloodGlucoseMilligramsPerDeciliter;
+
+  /// Meal type of the measurement.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MEAL_TYPE_UNSPECIFIED" : Unspecified meal type.
+  /// - "BREAKFAST" : Breakfast.
+  /// - "LUNCH" : Lunch.
+  /// - "DINNER" : Dinner.
+  /// - "SNACK" : Snack.
+  core.String? mealType;
+
+  /// Source of the measurement.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MEASUREMENT_SOURCE_UNSPECIFIED" : Unspecified measurement source.
+  /// - "SELF_MONITORING_BLOOD_GLUCOSE" : Self-monitoring of blood glucose
+  /// (Blood glucose meter)
+  /// - "CONTINUOUS_GLUCOSE_MONITORING" : Continuous glucose monitoring device
+  /// - "LAB_TEST" : Laboratory test
+  core.String? measurementSource;
+
+  /// Timing of the measurement.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MEASUREMENT_TIMING_UNSPECIFIED" : Unspecified measurement timing.
+  /// - "AFTER_MEAL" : Measurement taken after meal.
+  /// - "BEFORE_MEAL" : Measurement taken before meal.
+  /// - "FASTING" : Measurement taken while fasting.
+  /// - "GENERAL" : General measurement (not associated with a meal or time of
+  /// day).
+  /// - "BEFORE_BED" : Measurement taken before bed.
+  /// - "OVER_NIGHT" : Measurement taken over night.
+  core.String? measurementTiming;
+
+  /// Standard free-form notes captured at manual logging.
+  ///
+  /// Optional.
+  core.String? notes;
+
+  /// The time at which blood glucose was measured.
+  ///
+  /// Required.
+  ObservationSampleTime? sampleTime;
+
+  /// Type of body fluid used to measure the blood glucose.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SPECIMEN_UNSPECIFIED" : Unspecified specimen.
+  /// - "CAPILLARY_BLOOD" : Capillary blood.
+  /// - "INTERSTITIAL_FLUID" : Interstitial fluid.
+  /// - "PLASMA" : Plasma.
+  /// - "SERUM" : Serum.
+  /// - "TEARS" : Tears.
+  /// - "WHOLE_BLOOD" : Whole blood.
+  core.String? specimen;
+
+  BloodGlucose({
+    this.bloodGlucoseMilligramsPerDeciliter,
+    this.mealType,
+    this.measurementSource,
+    this.measurementTiming,
+    this.notes,
+    this.sampleTime,
+    this.specimen,
+  });
+
+  BloodGlucose.fromJson(core.Map json_)
+    : this(
+        bloodGlucoseMilligramsPerDeciliter:
+            (json_['bloodGlucoseMilligramsPerDeciliter'] as core.num?)
+                ?.toDouble(),
+        mealType: json_['mealType'] as core.String?,
+        measurementSource: json_['measurementSource'] as core.String?,
+        measurementTiming: json_['measurementTiming'] as core.String?,
+        notes: json_['notes'] as core.String?,
+        sampleTime: json_.containsKey('sampleTime')
+            ? ObservationSampleTime.fromJson(
+                json_['sampleTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        specimen: json_['specimen'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bloodGlucoseMilligramsPerDeciliter =
+        this.bloodGlucoseMilligramsPerDeciliter;
+    final mealType = this.mealType;
+    final measurementSource = this.measurementSource;
+    final measurementTiming = this.measurementTiming;
+    final notes = this.notes;
+    final sampleTime = this.sampleTime;
+    final specimen = this.specimen;
+    return {
+      'bloodGlucoseMilligramsPerDeciliter': ?bloodGlucoseMilligramsPerDeciliter,
+      'mealType': ?mealType,
+      'measurementSource': ?measurementSource,
+      'measurementTiming': ?measurementTiming,
+      'notes': ?notes,
+      'sampleTime': ?sampleTime,
+      'specimen': ?specimen,
+    };
+  }
+}
+
+/// Represents the result of the rollup of the blood glucose data type.
+///
+/// LINT: LEGACY_NAMES
+class BloodGlucoseRollupValue {
+  /// Average blood glucose level in mg/dL.
+  core.double? bloodGlucoseMilligramsPerDeciliterAvg;
+
+  BloodGlucoseRollupValue({this.bloodGlucoseMilligramsPerDeciliterAvg});
+
+  BloodGlucoseRollupValue.fromJson(core.Map json_)
+    : this(
+        bloodGlucoseMilligramsPerDeciliterAvg:
+            (json_['bloodGlucoseMilligramsPerDeciliterAvg'] as core.num?)
+                ?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bloodGlucoseMilligramsPerDeciliterAvg =
+        this.bloodGlucoseMilligramsPerDeciliterAvg;
+    return {
+      'bloodGlucoseMilligramsPerDeciliterAvg':
+          ?bloodGlucoseMilligramsPerDeciliterAvg,
+    };
   }
 }
 
@@ -1718,6 +2627,122 @@ class CivilTimeInterval {
   }
 }
 
+/// Core body temperature measurement, distinct from peripheral body
+/// temperature, reflects the temperature of the body's internal organs.
+class CoreBodyTemperature {
+  /// The unique identifier of the core body temperature measurement.
+  ///
+  /// Optional.
+  core.String? id;
+
+  /// The location of the core body temperature measurement.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MEASUREMENT_LOCATION_UNSPECIFIED" : Measurement location is
+  /// unspecified.
+  /// - "OTHER" : Other measurement location.
+  /// - "ARMPIT" : Armpit measurement location.
+  /// - "BODY" : Body measurement location.
+  /// - "EAR" : Ear measurement location.
+  /// - "FINGER" : Finger measurement location.
+  /// - "GASTRO_INTESTINAL" : Gastro-intestinal measurement location.
+  /// - "MOUTH" : Mouth measurement location.
+  /// - "RECTUM" : Rectum measurement location.
+  /// - "TOE" : Toe measurement location.
+  /// - "EAR_DRUM" : Ear drum measurement location.
+  /// - "TEMPORAL_ARTERY" : Temporal artery measurement location.
+  /// - "FOREHEAD" : Forehead measurement location.
+  /// - "URINARY_BLADDER" : Urinary bladder measurement location.
+  /// - "NASAL" : Nasal measurement location.
+  /// - "NASOPHARYNGEAL" : Nasopharyngeal measurement location.
+  /// - "WRIST" : Wrist measurement location.
+  /// - "VAGINA" : Vagina measurement location.
+  core.String? measurementLocation;
+
+  /// The time at which core body temperature was measured.
+  ///
+  /// Required.
+  ObservationSampleTime? sampleTime;
+
+  /// The core body temperature in Celsius.
+  ///
+  /// Required.
+  core.double? temperatureCelsius;
+
+  CoreBodyTemperature({
+    this.id,
+    this.measurementLocation,
+    this.sampleTime,
+    this.temperatureCelsius,
+  });
+
+  CoreBodyTemperature.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        measurementLocation: json_['measurementLocation'] as core.String?,
+        sampleTime: json_.containsKey('sampleTime')
+            ? ObservationSampleTime.fromJson(
+                json_['sampleTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        temperatureCelsius: (json_['temperatureCelsius'] as core.num?)
+            ?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final measurementLocation = this.measurementLocation;
+    final sampleTime = this.sampleTime;
+    final temperatureCelsius = this.temperatureCelsius;
+    return {
+      'id': ?id,
+      'measurementLocation': ?measurementLocation,
+      'sampleTime': ?sampleTime,
+      'temperatureCelsius': ?temperatureCelsius,
+    };
+  }
+}
+
+/// Represents the result of the rollup of the core body temperature data type.
+class CoreBodyTemperatureRollupValue {
+  /// Average core body temperature in Celsius.
+  core.double? temperatureCelsiusAvg;
+
+  /// Maximum core body temperature in Celsius.
+  core.double? temperatureCelsiusMax;
+
+  /// Minimum core body temperature in Celsius.
+  core.double? temperatureCelsiusMin;
+
+  CoreBodyTemperatureRollupValue({
+    this.temperatureCelsiusAvg,
+    this.temperatureCelsiusMax,
+    this.temperatureCelsiusMin,
+  });
+
+  CoreBodyTemperatureRollupValue.fromJson(core.Map json_)
+    : this(
+        temperatureCelsiusAvg: (json_['temperatureCelsiusAvg'] as core.num?)
+            ?.toDouble(),
+        temperatureCelsiusMax: (json_['temperatureCelsiusMax'] as core.num?)
+            ?.toDouble(),
+        temperatureCelsiusMin: (json_['temperatureCelsiusMin'] as core.num?)
+            ?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final temperatureCelsiusAvg = this.temperatureCelsiusAvg;
+    final temperatureCelsiusMax = this.temperatureCelsiusMax;
+    final temperatureCelsiusMin = this.temperatureCelsiusMin;
+    return {
+      'temperatureCelsiusAvg': ?temperatureCelsiusAvg,
+      'temperatureCelsiusMax': ?temperatureCelsiusMax,
+      'temperatureCelsiusMin': ?temperatureCelsiusMin,
+    };
+  }
+}
+
 /// Payload for creating a subscriber.
 class CreateSubscriberPayload {
   /// Authorization mechanism for the subscriber endpoint.
@@ -1775,6 +2800,39 @@ class CreateSubscriberPayload {
       'endpointUri': ?endpointUri,
       'subscriberConfigs': ?subscriberConfigs,
     };
+  }
+}
+
+/// Payload for creating a subscription.
+class CreateSubscriptionPayload {
+  /// Data types subscribed to.
+  ///
+  /// Optional.
+  core.List<core.String>? dataTypes;
+
+  /// The resource name of the user for whom this subscription is active.
+  ///
+  /// Format: `users/{user}` where `{user}` is the public `healthUserId` as
+  /// returned by the `GetIdentity` action in the profile PAPI (see
+  /// `google.devicesandservices.health.v4main.HealthProfileService.GetIdentity`).
+  ///
+  /// Required. Immutable.
+  core.String? user;
+
+  CreateSubscriptionPayload({this.dataTypes, this.user});
+
+  CreateSubscriptionPayload.fromJson(core.Map json_)
+    : this(
+        dataTypes: (json_['dataTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        user: json_['user'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataTypes = this.dataTypes;
+    final user = this.user;
+    return {'dataTypes': ?dataTypes, 'user': ?user};
   }
 }
 
@@ -2092,9 +3150,14 @@ class DailyRollUpDataPointsRequest {
   ///
   /// If empty, data points from all available data sources will be rolled up.
   /// Format: `users/me/dataSourceFamilies/{data_source_family}` The supported
-  /// values are: - `users/me/dataSourceFamilies/all-sources` - default value -
-  /// `users/me/dataSourceFamilies/google-wearables` - tracker devices -
-  /// `users/me/dataSourceFamilies/google-sources` - Google first party sources
+  /// values are: - `users/me/dataSourceFamilies/all-sources` - Default value.
+  /// Includes data from all available data sources. -
+  /// `users/me/dataSourceFamilies/google-wearables` - Includes data from Google
+  /// and Fitbit tracker devices (such as Fitbit trackers and Pixel Watch).
+  /// Excludes manually logged data. -
+  /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google
+  /// data, such as data from tracker devices, manually logged data, and Health
+  /// Connect.
   ///
   /// Optional.
   core.String? dataSourceFamily;
@@ -2194,8 +3257,14 @@ class DailyRollUpDataPointsResponse {
 }
 
 /// Value of a daily rollup for a single civil time interval (aggregation
-/// window)
+/// window) of reconciled data points from all data sources, excluding those
+/// data points that are identified as recorded by wearables in intervals when
+/// they were not actually worn.
 class DailyRollupDataPoint {
+  /// Returned by default when rolling up data points from the
+  /// `active-energy-burned` data type.
+  ActiveEnergyBurnedRollupValue? activeEnergyBurned;
+
   /// Returned by default when rolling up data points from the `active-minutes`
   /// data type, or when requested explicitly using the `active-minutes` rollup
   /// type identifier.
@@ -2216,6 +3285,10 @@ class DailyRollupDataPoint {
   /// identifier.
   AltitudeRollupValue? altitude;
 
+  /// Returned by default when rolling up data points from the `blood-glucose`
+  /// data type.
+  BloodGlucoseRollupValue? bloodGlucose;
+
   /// Returned by default when rolling up data points from the `body-fat` data
   /// type, or when requested explicitly using the `body-fat` rollup type
   /// identifier.
@@ -2231,6 +3304,11 @@ class DailyRollupDataPoint {
 
   /// Start time of the window this value aggregates over
   CivilDateTime? civilStartTime;
+
+  /// Returned by default when rolling up data points from the
+  /// `core-body-temperature` data type, or when requested explicitly using the
+  /// `core-body-temperature` rollup type identifier.
+  CoreBodyTemperatureRollupValue? coreBodyTemperature;
 
   /// Returned by default when rolling up data points from the `distance` data
   /// type, or when requested explicitly using the `distance` rollup type
@@ -2257,6 +3335,11 @@ class DailyRollupDataPoint {
   /// data type, or when requested explicitly using the `hydration-log` rollup
   /// type identifier.
   HydrationLogRollupValue? hydrationLog;
+
+  /// Returned by default when rolling up data points from the `nutrition-log`
+  /// data type, or when requested explicitly using the `nutrition-log` rollup
+  /// type identifier.
+  NutritionLogRollupValue? nutritionLog;
 
   /// Returned by default when rolling up data points from the
   /// `daily-resting-heart-rate` data type, or when requested explicitly using
@@ -2299,19 +3382,23 @@ class DailyRollupDataPoint {
   WeightRollupValue? weight;
 
   DailyRollupDataPoint({
+    this.activeEnergyBurned,
     this.activeMinutes,
     this.activeZoneMinutes,
     this.activityLevel,
     this.altitude,
+    this.bloodGlucose,
     this.bodyFat,
     this.caloriesInHeartRateZone,
     this.civilEndTime,
     this.civilStartTime,
+    this.coreBodyTemperature,
     this.distance,
     this.floors,
     this.heartRate,
     this.heartRateVariabilityPersonalRange,
     this.hydrationLog,
+    this.nutritionLog,
     this.restingHeartRatePersonalRange,
     this.runVo2Max,
     this.sedentaryPeriod,
@@ -2324,6 +3411,12 @@ class DailyRollupDataPoint {
 
   DailyRollupDataPoint.fromJson(core.Map json_)
     : this(
+        activeEnergyBurned: json_.containsKey('activeEnergyBurned')
+            ? ActiveEnergyBurnedRollupValue.fromJson(
+                json_['activeEnergyBurned']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         activeMinutes: json_.containsKey('activeMinutes')
             ? ActiveMinutesRollupValue.fromJson(
                 json_['activeMinutes'] as core.Map<core.String, core.dynamic>,
@@ -2345,6 +3438,11 @@ class DailyRollupDataPoint {
                 json_['altitude'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        bloodGlucose: json_.containsKey('bloodGlucose')
+            ? BloodGlucoseRollupValue.fromJson(
+                json_['bloodGlucose'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         bodyFat: json_.containsKey('bodyFat')
             ? BodyFatRollupValue.fromJson(
                 json_['bodyFat'] as core.Map<core.String, core.dynamic>,
@@ -2364,6 +3462,12 @@ class DailyRollupDataPoint {
         civilStartTime: json_.containsKey('civilStartTime')
             ? CivilDateTime.fromJson(
                 json_['civilStartTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        coreBodyTemperature: json_.containsKey('coreBodyTemperature')
+            ? CoreBodyTemperatureRollupValue.fromJson(
+                json_['coreBodyTemperature']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         distance: json_.containsKey('distance')
@@ -2391,6 +3495,11 @@ class DailyRollupDataPoint {
         hydrationLog: json_.containsKey('hydrationLog')
             ? HydrationLogRollupValue.fromJson(
                 json_['hydrationLog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nutritionLog: json_.containsKey('nutritionLog')
+            ? NutritionLogRollupValue.fromJson(
+                json_['nutritionLog'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         restingHeartRatePersonalRange:
@@ -2439,20 +3548,24 @@ class DailyRollupDataPoint {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final activeEnergyBurned = this.activeEnergyBurned;
     final activeMinutes = this.activeMinutes;
     final activeZoneMinutes = this.activeZoneMinutes;
     final activityLevel = this.activityLevel;
     final altitude = this.altitude;
+    final bloodGlucose = this.bloodGlucose;
     final bodyFat = this.bodyFat;
     final caloriesInHeartRateZone = this.caloriesInHeartRateZone;
     final civilEndTime = this.civilEndTime;
     final civilStartTime = this.civilStartTime;
+    final coreBodyTemperature = this.coreBodyTemperature;
     final distance = this.distance;
     final floors = this.floors;
     final heartRate = this.heartRate;
     final heartRateVariabilityPersonalRange =
         this.heartRateVariabilityPersonalRange;
     final hydrationLog = this.hydrationLog;
+    final nutritionLog = this.nutritionLog;
     final restingHeartRatePersonalRange = this.restingHeartRatePersonalRange;
     final runVo2Max = this.runVo2Max;
     final sedentaryPeriod = this.sedentaryPeriod;
@@ -2462,19 +3575,23 @@ class DailyRollupDataPoint {
     final totalCalories = this.totalCalories;
     final weight = this.weight;
     return {
+      'activeEnergyBurned': ?activeEnergyBurned,
       'activeMinutes': ?activeMinutes,
       'activeZoneMinutes': ?activeZoneMinutes,
       'activityLevel': ?activityLevel,
       'altitude': ?altitude,
+      'bloodGlucose': ?bloodGlucose,
       'bodyFat': ?bodyFat,
       'caloriesInHeartRateZone': ?caloriesInHeartRateZone,
       'civilEndTime': ?civilEndTime,
       'civilStartTime': ?civilStartTime,
+      'coreBodyTemperature': ?coreBodyTemperature,
       'distance': ?distance,
       'floors': ?floors,
       'heartRate': ?heartRate,
       'heartRateVariabilityPersonalRange': ?heartRateVariabilityPersonalRange,
       'hydrationLog': ?hydrationLog,
+      'nutritionLog': ?nutritionLog,
       'restingHeartRatePersonalRange': ?restingHeartRatePersonalRange,
       'runVo2Max': ?runVo2Max,
       'sedentaryPeriod': ?sedentaryPeriod,
@@ -2630,6 +3747,12 @@ class DailyVO2Max {
 
 /// A computed or recorded metric.
 class DataPoint {
+  /// Data for points in the `active-energy-burned` interval data type
+  /// collection.
+  ///
+  /// Optional.
+  ActiveEnergyBurned? activeEnergyBurned;
+
   /// Data for points in the `active-minutes` interval data type collection.
   ///
   /// Optional.
@@ -2651,10 +3774,27 @@ class DataPoint {
   /// Optional.
   Altitude? altitude;
 
+  /// Data for points in the `basal-energy-burned` interval data type
+  /// collection.
+  ///
+  /// Optional.
+  BasalEnergyBurned? basalEnergyBurned;
+
+  /// Data for points in the `blood-glucose` sample data type collection.
+  ///
+  /// Optional.
+  BloodGlucose? bloodGlucose;
+
   /// Data for points in the `body-fat` sample data type collection.
   ///
   /// Optional.
   BodyFat? bodyFat;
+
+  /// Data for points in the `core-body-temperature` sample data type
+  /// collection.
+  ///
+  /// Optional.
+  CoreBodyTemperature? coreBodyTemperature;
 
   /// Data for points in the `daily-heart-rate-variability` daily data type
   /// collection.
@@ -2707,6 +3847,11 @@ class DataPoint {
   /// Optional.
   Distance? distance;
 
+  /// Data for points in the `electrocardiogram` session data type collection.
+  ///
+  /// Optional.
+  Electrocardiogram? electrocardiogram;
+
   /// Data for points in the `exercise` session data type collection.
   ///
   /// Optional.
@@ -2716,6 +3861,16 @@ class DataPoint {
   ///
   /// Optional.
   Floors? floors;
+
+  /// The food details.
+  ///
+  /// Optional.
+  Food? food;
+
+  /// The food measurement unit details.
+  ///
+  /// Optional.
+  FoodMeasurementUnit? foodMeasurementUnit;
 
   /// Data for points in the `heart-rate` sample data type collection.
   ///
@@ -2738,6 +3893,22 @@ class DataPoint {
   /// Optional.
   HydrationLog? hydrationLog;
 
+  /// Data for points in the `irregular-rhythm-notification` session data type
+  /// collection.
+  ///
+  /// Optional.
+  IrregularRhythmNotification? irregularRhythmNotification;
+
+  /// Data for points in the `menstrual-period` interval data type collection.
+  ///
+  /// Optional.
+  MenstrualPeriod? menstrualPeriod;
+
+  /// Data for points in the `moods` sample data type collection.
+  ///
+  /// Optional.
+  Moods? moods;
+
   /// Identifier.
   ///
   /// Data point name, only supported for the subset of identifiable data types.
@@ -2748,11 +3919,21 @@ class DataPoint {
   /// The `{user}` ID is a system-generated identifier, as described in
   /// Identity.health_user_id. The `{data_type}` ID corresponds to the
   /// kebab-case version of the field names in the DataPoint data union field,
-  /// e.g. `total-calories` for the `total_calories` field. The `{data_point}`
-  /// ID can be client-provided or system-generated. If client-provided, it must
-  /// be a string of 4-63 characters, containing only lowercase letters,
-  /// numbers, and hyphens.
+  /// e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be
+  /// client-provided or system-generated. If client-provided, it must be a
+  /// string of 4-63 characters, containing only lowercase letters, numbers, and
+  /// hyphens.
   core.String? name;
+
+  /// Data for points in the `nutrition-log` session data type collection.
+  ///
+  /// Optional.
+  NutritionLog? nutritionLog;
+
+  /// Data for points in the `ovulation-test` sample data type collection.
+  ///
+  /// Optional.
+  OvulationTest? ovulationTest;
 
   /// Data for points in the `oxygen-saturation` sample data type collection.
   ///
@@ -2790,6 +3971,11 @@ class DataPoint {
   /// Optional.
   SwimLengthsData? swimLengthsData;
 
+  /// Data for points in the `symptoms` sample data type collection.
+  ///
+  /// Optional.
+  Symptoms? symptoms;
+
   /// Data for points in the `time-in-heart-rate-zone` interval data type
   /// collection.
   ///
@@ -2807,11 +3993,15 @@ class DataPoint {
   Weight? weight;
 
   DataPoint({
+    this.activeEnergyBurned,
     this.activeMinutes,
     this.activeZoneMinutes,
     this.activityLevel,
     this.altitude,
+    this.basalEnergyBurned,
+    this.bloodGlucose,
     this.bodyFat,
+    this.coreBodyTemperature,
     this.dailyHeartRateVariability,
     this.dailyHeartRateZones,
     this.dailyOxygenSaturation,
@@ -2821,13 +4011,21 @@ class DataPoint {
     this.dailyVo2Max,
     this.dataSource,
     this.distance,
+    this.electrocardiogram,
     this.exercise,
     this.floors,
+    this.food,
+    this.foodMeasurementUnit,
     this.heartRate,
     this.heartRateVariability,
     this.height,
     this.hydrationLog,
+    this.irregularRhythmNotification,
+    this.menstrualPeriod,
+    this.moods,
     this.name,
+    this.nutritionLog,
+    this.ovulationTest,
     this.oxygenSaturation,
     this.respiratoryRateSleepSummary,
     this.runVo2Max,
@@ -2835,6 +4033,7 @@ class DataPoint {
     this.sleep,
     this.steps,
     this.swimLengthsData,
+    this.symptoms,
     this.timeInHeartRateZone,
     this.vo2Max,
     this.weight,
@@ -2842,6 +4041,12 @@ class DataPoint {
 
   DataPoint.fromJson(core.Map json_)
     : this(
+        activeEnergyBurned: json_.containsKey('activeEnergyBurned')
+            ? ActiveEnergyBurned.fromJson(
+                json_['activeEnergyBurned']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         activeMinutes: json_.containsKey('activeMinutes')
             ? ActiveMinutes.fromJson(
                 json_['activeMinutes'] as core.Map<core.String, core.dynamic>,
@@ -2863,9 +4068,26 @@ class DataPoint {
                 json_['altitude'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        basalEnergyBurned: json_.containsKey('basalEnergyBurned')
+            ? BasalEnergyBurned.fromJson(
+                json_['basalEnergyBurned']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bloodGlucose: json_.containsKey('bloodGlucose')
+            ? BloodGlucose.fromJson(
+                json_['bloodGlucose'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         bodyFat: json_.containsKey('bodyFat')
             ? BodyFat.fromJson(
                 json_['bodyFat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        coreBodyTemperature: json_.containsKey('coreBodyTemperature')
+            ? CoreBodyTemperature.fromJson(
+                json_['coreBodyTemperature']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         dailyHeartRateVariability:
@@ -2921,6 +4143,12 @@ class DataPoint {
                 json_['distance'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        electrocardiogram: json_.containsKey('electrocardiogram')
+            ? Electrocardiogram.fromJson(
+                json_['electrocardiogram']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         exercise: json_.containsKey('exercise')
             ? Exercise.fromJson(
                 json_['exercise'] as core.Map<core.String, core.dynamic>,
@@ -2929,6 +4157,17 @@ class DataPoint {
         floors: json_.containsKey('floors')
             ? Floors.fromJson(
                 json_['floors'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        food: json_.containsKey('food')
+            ? Food.fromJson(
+                json_['food'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        foodMeasurementUnit: json_.containsKey('foodMeasurementUnit')
+            ? FoodMeasurementUnit.fromJson(
+                json_['foodMeasurementUnit']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         heartRate: json_.containsKey('heartRate')
@@ -2952,7 +4191,34 @@ class DataPoint {
                 json_['hydrationLog'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        irregularRhythmNotification:
+            json_.containsKey('irregularRhythmNotification')
+            ? IrregularRhythmNotification.fromJson(
+                json_['irregularRhythmNotification']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        menstrualPeriod: json_.containsKey('menstrualPeriod')
+            ? MenstrualPeriod.fromJson(
+                json_['menstrualPeriod'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        moods: json_.containsKey('moods')
+            ? Moods.fromJson(
+                json_['moods'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
+        nutritionLog: json_.containsKey('nutritionLog')
+            ? NutritionLog.fromJson(
+                json_['nutritionLog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ovulationTest: json_.containsKey('ovulationTest')
+            ? OvulationTest.fromJson(
+                json_['ovulationTest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         oxygenSaturation: json_.containsKey('oxygenSaturation')
             ? OxygenSaturation.fromJson(
                 json_['oxygenSaturation']
@@ -2991,6 +4257,11 @@ class DataPoint {
                 json_['swimLengthsData'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        symptoms: json_.containsKey('symptoms')
+            ? Symptoms.fromJson(
+                json_['symptoms'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         timeInHeartRateZone: json_.containsKey('timeInHeartRateZone')
             ? TimeInHeartRateZone.fromJson(
                 json_['timeInHeartRateZone']
@@ -3010,11 +4281,15 @@ class DataPoint {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final activeEnergyBurned = this.activeEnergyBurned;
     final activeMinutes = this.activeMinutes;
     final activeZoneMinutes = this.activeZoneMinutes;
     final activityLevel = this.activityLevel;
     final altitude = this.altitude;
+    final basalEnergyBurned = this.basalEnergyBurned;
+    final bloodGlucose = this.bloodGlucose;
     final bodyFat = this.bodyFat;
+    final coreBodyTemperature = this.coreBodyTemperature;
     final dailyHeartRateVariability = this.dailyHeartRateVariability;
     final dailyHeartRateZones = this.dailyHeartRateZones;
     final dailyOxygenSaturation = this.dailyOxygenSaturation;
@@ -3025,13 +4300,21 @@ class DataPoint {
     final dailyVo2Max = this.dailyVo2Max;
     final dataSource = this.dataSource;
     final distance = this.distance;
+    final electrocardiogram = this.electrocardiogram;
     final exercise = this.exercise;
     final floors = this.floors;
+    final food = this.food;
+    final foodMeasurementUnit = this.foodMeasurementUnit;
     final heartRate = this.heartRate;
     final heartRateVariability = this.heartRateVariability;
     final height = this.height;
     final hydrationLog = this.hydrationLog;
+    final irregularRhythmNotification = this.irregularRhythmNotification;
+    final menstrualPeriod = this.menstrualPeriod;
+    final moods = this.moods;
     final name = this.name;
+    final nutritionLog = this.nutritionLog;
+    final ovulationTest = this.ovulationTest;
     final oxygenSaturation = this.oxygenSaturation;
     final respiratoryRateSleepSummary = this.respiratoryRateSleepSummary;
     final runVo2Max = this.runVo2Max;
@@ -3039,15 +4322,20 @@ class DataPoint {
     final sleep = this.sleep;
     final steps = this.steps;
     final swimLengthsData = this.swimLengthsData;
+    final symptoms = this.symptoms;
     final timeInHeartRateZone = this.timeInHeartRateZone;
     final vo2Max = this.vo2Max;
     final weight = this.weight;
     return {
+      'activeEnergyBurned': ?activeEnergyBurned,
       'activeMinutes': ?activeMinutes,
       'activeZoneMinutes': ?activeZoneMinutes,
       'activityLevel': ?activityLevel,
       'altitude': ?altitude,
+      'basalEnergyBurned': ?basalEnergyBurned,
+      'bloodGlucose': ?bloodGlucose,
       'bodyFat': ?bodyFat,
+      'coreBodyTemperature': ?coreBodyTemperature,
       'dailyHeartRateVariability': ?dailyHeartRateVariability,
       'dailyHeartRateZones': ?dailyHeartRateZones,
       'dailyOxygenSaturation': ?dailyOxygenSaturation,
@@ -3057,13 +4345,21 @@ class DataPoint {
       'dailyVo2Max': ?dailyVo2Max,
       'dataSource': ?dataSource,
       'distance': ?distance,
+      'electrocardiogram': ?electrocardiogram,
       'exercise': ?exercise,
       'floors': ?floors,
+      'food': ?food,
+      'foodMeasurementUnit': ?foodMeasurementUnit,
       'heartRate': ?heartRate,
       'heartRateVariability': ?heartRateVariability,
       'height': ?height,
       'hydrationLog': ?hydrationLog,
+      'irregularRhythmNotification': ?irregularRhythmNotification,
+      'menstrualPeriod': ?menstrualPeriod,
+      'moods': ?moods,
       'name': ?name,
+      'nutritionLog': ?nutritionLog,
+      'ovulationTest': ?ovulationTest,
       'oxygenSaturation': ?oxygenSaturation,
       'respiratoryRateSleepSummary': ?respiratoryRateSleepSummary,
       'runVo2Max': ?runVo2Max,
@@ -3071,6 +4367,7 @@ class DataPoint {
       'sleep': ?sleep,
       'steps': ?steps,
       'swimLengthsData': ?swimLengthsData,
+      'symptoms': ?symptoms,
       'timeInHeartRateZone': ?timeInHeartRateZone,
       'vo2Max': ?vo2Max,
       'weight': ?weight,
@@ -3272,13 +4569,154 @@ class DistanceRollupValue {
   }
 }
 
+/// Represents an Electrocardiogram (ECG) measurement session.
+///
+/// This data type is based on SaMD feature and any changes to it may require
+/// additional review.
+class Electrocardiogram {
+  /// Average heart rate recorded during ECG reading in beats per minute.
+  ///
+  /// Optional.
+  core.String? beatsPerMinuteAvg;
+
+  /// Observed interval.
+  ///
+  /// NOTE: Historical ECG data lacks timezone offsets, so `start_utc_offset`
+  /// and `end_utc_offset` will be missing or default to zero. As a result, the
+  /// civil time fields within this interval will default to UTC. It is
+  /// recommended to use physical time fields instead for accurate time
+  /// referencing. NOTE: The `start_time` and `end_time` of the interval are
+  /// equal, representing the reading time.
+  ///
+  /// Required.
+  SessionTimeInterval? interval;
+
+  /// The number of leads used for ECG reading.
+  ///
+  /// Optional.
+  core.int? leadNumber;
+
+  /// The meta information for the compatible device used to conduct the
+  /// measurement.
+  ///
+  /// ECG measurements typically populate `firmware_version`, `feature_version`,
+  /// and `device_model`.
+  ///
+  /// Output only.
+  MedicalDeviceInfo? medicalDeviceInfo;
+
+  /// The factor by which to divide waveform samples to get voltage in
+  /// millivolts: millivolts = waveform_sample / millivolts_scaling_factor.
+  ///
+  /// Optional.
+  core.int? millivoltsScalingFactor;
+
+  /// The result classification of the ECG reading.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RESULT_CLASSIFICATION_UNSPECIFIED" : Unspecified result classification.
+  /// - "NORMAL_SINUS_RHYTHM" : Heart rhythm appears normal. Corresponds to
+  /// result "Normal Sinus Rhythm".
+  /// - "ATRIAL_FIBRILLATION" : Signs of Atrial Fibrillation detected.
+  /// Corresponds to result "Atrial Fibrillation".
+  /// - "INCONCLUSIVE" : The reading is inconclusive as it could not be
+  /// classified. Corresponds to result "Inconclusive".
+  /// - "INCONCLUSIVE_HIGH_HEART_RATE" : The reading is inconclusive as it could
+  /// not be classified because heart rate is high (\>120bpm). Corresponds to
+  /// result "Inconclusive: High heart rate".
+  /// - "INCONCLUSIVE_LOW_HEART_RATE" : The reading is inconclusive as it could
+  /// not be classified because heart rate is low (\<50bpm). Corresponds to
+  /// result "Inconclusive: Low heart rate".
+  /// - "UNREADABLE" : The reading is unreadable.
+  /// - "NOT_ANALYZED" : The reading was not analyzed.
+  core.String? resultClassification;
+
+  /// The sampling frequency of waveform samples in hertz.
+  ///
+  /// Optional.
+  core.int? samplingFrequencyHertz;
+
+  /// An array of voltage values representing lead I ECG values.
+  ///
+  /// Each sample represents voltage difference in ECG graph. The first value in
+  /// array corresponds to the start of the reading.
+  ///
+  /// Optional.
+  core.List<core.int>? waveformSamples;
+
+  Electrocardiogram({
+    this.beatsPerMinuteAvg,
+    this.interval,
+    this.leadNumber,
+    this.medicalDeviceInfo,
+    this.millivoltsScalingFactor,
+    this.resultClassification,
+    this.samplingFrequencyHertz,
+    this.waveformSamples,
+  });
+
+  Electrocardiogram.fromJson(core.Map json_)
+    : this(
+        beatsPerMinuteAvg: json_['beatsPerMinuteAvg'] as core.String?,
+        interval: json_.containsKey('interval')
+            ? SessionTimeInterval.fromJson(
+                json_['interval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        leadNumber: json_['leadNumber'] as core.int?,
+        medicalDeviceInfo: json_.containsKey('medicalDeviceInfo')
+            ? MedicalDeviceInfo.fromJson(
+                json_['medicalDeviceInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        millivoltsScalingFactor: json_['millivoltsScalingFactor'] as core.int?,
+        resultClassification: json_['resultClassification'] as core.String?,
+        samplingFrequencyHertz: json_['samplingFrequencyHertz'] as core.int?,
+        waveformSamples: (json_['waveformSamples'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final beatsPerMinuteAvg = this.beatsPerMinuteAvg;
+    final interval = this.interval;
+    final leadNumber = this.leadNumber;
+    final medicalDeviceInfo = this.medicalDeviceInfo;
+    final millivoltsScalingFactor = this.millivoltsScalingFactor;
+    final resultClassification = this.resultClassification;
+    final samplingFrequencyHertz = this.samplingFrequencyHertz;
+    final waveformSamples = this.waveformSamples;
+    return {
+      'beatsPerMinuteAvg': ?beatsPerMinuteAvg,
+      'interval': ?interval,
+      'leadNumber': ?leadNumber,
+      'medicalDeviceInfo': ?medicalDeviceInfo,
+      'millivoltsScalingFactor': ?millivoltsScalingFactor,
+      'resultClassification': ?resultClassification,
+      'samplingFrequencyHertz': ?samplingFrequencyHertz,
+      'waveformSamples': ?waveformSamples,
+    };
+  }
+}
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
 /// Authorization mechanism for a subscriber endpoint.
 ///
 /// For all requests sent by the Webhooks service, the JSON payload is
 /// cryptographically signed. The signature is delivered in the
-/// `X-HEALTHAPI-SIGNATURE` HTTP header. This is an ECDSA (NIST P256) signature
-/// of the JSON payload. Clients must verify this signature using Google Health
-/// API's public key to confirm the payload was sent by the Health API.
+/// `GOOGLE-HEALTH-API-SIGNATURE` HTTP header. This is an ECDSA (NIST P256)
+/// signature of the JSON payload. Clients must verify this signature using
+/// Google Health API's public key to confirm the payload was sent by the Health
+/// API.
 class EndpointAuthorization {
   /// Input only.
   ///
@@ -3313,6 +4751,74 @@ class EndpointAuthorization {
   }
 }
 
+/// Represents the energy quantity.
+class EnergyQuantity {
+  /// The energy value in kilocalories.
+  ///
+  /// Required.
+  core.double? kcal;
+
+  /// Value representing the user provided unit.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENERGY_UNIT_UNSPECIFIED" : Unspecified energy unit.
+  /// - "JOULE" : Value representing joule.
+  /// - "KILOJOULE" : Value representing kilojoule.
+  /// - "KILOCALORIE" : Value representing kilocalorie.
+  /// - "SMALL_CALORIE" : Value representing small calorie.
+  /// - "CALORIE" : Value representing calorie.
+  core.String? userProvidedUnit;
+
+  EnergyQuantity({this.kcal, this.userProvidedUnit});
+
+  EnergyQuantity.fromJson(core.Map json_)
+    : this(
+        kcal: (json_['kcal'] as core.num?)?.toDouble(),
+        userProvidedUnit: json_['userProvidedUnit'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kcal = this.kcal;
+    final userProvidedUnit = this.userProvidedUnit;
+    return {'kcal': ?kcal, 'userProvidedUnit': ?userProvidedUnit};
+  }
+}
+
+/// Rollup for the energy quantity.
+class EnergyQuantityRollup {
+  /// The sum of the energy in kilocalories.
+  ///
+  /// Required.
+  core.double? kcalSum;
+
+  /// The user provided unit on the last element.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENERGY_UNIT_UNSPECIFIED" : Unspecified energy unit.
+  /// - "JOULE" : Value representing joule.
+  /// - "KILOJOULE" : Value representing kilojoule.
+  /// - "KILOCALORIE" : Value representing kilocalorie.
+  /// - "SMALL_CALORIE" : Value representing small calorie.
+  /// - "CALORIE" : Value representing calorie.
+  core.String? userProvidedUnitLast;
+
+  EnergyQuantityRollup({this.kcalSum, this.userProvidedUnitLast});
+
+  EnergyQuantityRollup.fromJson(core.Map json_)
+    : this(
+        kcalSum: (json_['kcalSum'] as core.num?)?.toDouble(),
+        userProvidedUnitLast: json_['userProvidedUnitLast'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kcalSum = this.kcalSum;
+    final userProvidedUnitLast = this.userProvidedUnitLast;
+    return {'kcalSum': ?kcalSum, 'userProvidedUnitLast': ?userProvidedUnitLast};
+  }
+}
+
 /// An exercise that stores information about a physical activity.
 class Exercise {
   /// Duration excluding pauses.
@@ -3325,7 +4831,12 @@ class Exercise {
   /// Output only.
   core.String? createTime;
 
-  /// Exercise display name.
+  /// The localized, human-readable name of the exercise.
+  ///
+  /// For all exercise types other than `OTHER`, the system ignores client input
+  /// and overrides this field with a generated name based on `exercise_type`
+  /// (e.g., "Walking" for `WALKING`). If `exercise_type` is `OTHER`, this field
+  /// can contain the user's custom, free-form display name.
   ///
   /// Required.
   core.String? displayName;
@@ -3345,18 +4856,187 @@ class Exercise {
   /// Required.
   /// Possible string values are:
   /// - "EXERCISE_TYPE_UNSPECIFIED" : Exercise type is unspecified.
-  /// - "RUNNING" : Running type.
-  /// - "WALKING" : Walking type.
+  /// - "AEROBIC_WORKOUT" : Aerobic workout type.
+  /// - "ARCHERY" : Archery type.
+  /// - "ASSAULT_BIKE" : Assault bike type.
+  /// - "BACKPACKING" : Backpacking type.
+  /// - "BADMINTON" : Badminton type.
+  /// - "BALLET" : Ballet type.
+  /// - "BALLROOM_DANCE" : Ballroom dance type.
+  /// - "BARRE_CLASS" : Barre class type.
+  /// - "BASEBALL" : Baseball type.
+  /// - "BASKETBALL" : Basketball type.
   /// - "BIKING" : Biking type.
-  /// - "SWIMMING" : Swimming type.
+  /// - "BILLIARDS" : Billiards type.
+  /// - "BODY_WEIGHT" : Body weight type.
+  /// - "BOOTCAMP" : Bootcamp type.
+  /// - "BOWLING" : Bowling type.
+  /// - "BOXING" : Boxing type.
+  /// - "BREAKDANCING" : Breakdancing type.
+  /// - "CALISTHENICS" : Calisthenics type.
+  /// - "CANOEING" : Canoeing type.
+  /// - "CARDIO_SCULPT" : Cardio sculpt type.
+  /// - "CARDIO_WORKOUT" : Cardio workout type.
+  /// - "CARPENTRY" : Carpentry type.
+  /// - "CHEERLEADING" : Cheerleading type.
+  /// - "CIRCUIT_TRAINING" : Circuit training type.
+  /// - "CLEANING" : Cleaning type.
+  /// - "CLIMBING" : Climbing type.
+  /// - "CORE_TRAINING" : Core training type.
+  /// - "CRICKET" : Cricket type.
+  /// - "CROQUET" : Croquet type.
+  /// - "CROSS_COUNTRY_SKI" : Cross country ski type.
+  /// - "CROSS_TRAINING" : Cross training type.
+  /// - "CROSSFIT" : Crossfit type.
+  /// - "CURLING" : Curling type.
+  /// - "DANCING" : Dancing type.
+  /// - "DIVING" : Diving type.
+  /// - "ELECTRIC_BIKE" : Electric bike type.
+  /// - "ELECTRIC_SCOOTER" : Electric scooter type.
+  /// - "ELLIPTICAL" : Elliptical type.
+  /// - "EQUESTRIAN_SPORTS" : Equestrian sports type.
+  /// - "EXERCISE_CLASS" : Exercise class type.
+  /// - "FENCING" : Fencing type.
+  /// - "FIELD_HOCKEY" : Field hockey type.
+  /// - "FISHING" : Fishing type.
+  /// - "FITNESS_GAMING" : Fitness gaming type.
+  /// - "FOILING" : Foiling type.
+  /// - "FOOTBALL_AMERICAN" : Football american type.
+  /// - "FOOTBALL_AUSTRALIAN" : Football australian type.
+  /// - "FREE_WEIGHTS" : Free weights type.
+  /// - "FRISBEE_PLAYING_GENERAL" : Frisbee playing general type.
+  /// - "FUNCTIONAL_STRENGTH_TRAINING" : Functional strength training type.
+  /// - "GARDENING" : Gardening type.
+  /// - "GOLF" : Golf type.
+  /// - "GYMNASTICS" : Gymnastics type.
+  /// - "HANDBALL" : Handball type.
+  /// - "HAND_CYCLING" : Hand cycling type.
+  /// - "HIIT" : Hiit type.
   /// - "HIKING" : Hiking type.
-  /// - "YOGA" : Yoga type.
-  /// - "PILATES" : Pilates type.
-  /// - "WORKOUT" : Workout type.
-  /// - "HIIT" : HIIT type.
-  /// - "WEIGHTLIFTING" : Weightlifting type.
-  /// - "STRENGTH_TRAINING" : Strength training type.
+  /// - "HIP_HOP" : Hip hop type.
+  /// - "HOCKEY" : Hockey type.
+  /// - "HOEING" : Hoeing type.
+  /// - "HOUSEHOLD_CHORES" : Household chores type.
+  /// - "HUNTING" : Hunting type.
+  /// - "ICE_SKATING" : Ice skating type.
+  /// - "INCLINE_RUN" : Incline run type.
+  /// - "INCLINE_WALK" : Incline walk type.
+  /// - "INDOOR_CLIMBING" : Indoor climbing type.
+  /// - "INTERVAL_WORKOUT" : Interval workout type.
+  /// - "JAZZ_DANCE" : Jazz dance type.
+  /// - "JIU_JITSU" : Jiu jitsu type.
+  /// - "JUMPING_ROPE" : Jumping rope type.
+  /// - "KARATE" : Karate type.
+  /// - "KAYAKING" : Kayaking type.
+  /// - "KICKBOXING" : Kickboxing type.
+  /// - "KITESURFING" : Kitesurfing type.
+  /// - "LACROSSE" : Lacrosse type.
+  /// - "MARTIAL_ARTS" : Martial arts type.
+  /// - "MEDITATE" : Meditate type.
+  /// - "MODERN_DANCE" : Modern dance type.
+  /// - "MOTOCROSS" : Motocross type.
+  /// - "MOTORCYCLE" : Motorcycle type.
+  /// - "MOUNTAIN_BIKE" : Mountain bike type.
+  /// - "MOWING_LAWN" : Mowing lawn type.
+  /// - "MUAY_THAI" : Muay thai type.
+  /// - "MULTISPORT" : Multisport type.
+  /// - "MUSICAL_PERFORMANCE" : Musical performance type.
+  /// - "NORDIC_WALKING" : Nordic walking type.
+  /// - "ORIENTEERING" : Orienteering type.
   /// - "OTHER" : Other type.
+  /// - "OUTDOOR_BIKE" : Outdoor bike type.
+  /// - "OUTDOOR_WORKOUT" : Outdoor workout type.
+  /// - "PADDLEBOARDING" : Paddleboarding type.
+  /// - "PADEL" : Padel type.
+  /// - "PAINTING" : Painting type.
+  /// - "PARAGLIDING" : Paragliding type.
+  /// - "PARKOUR" : Parkour type.
+  /// - "PICKELBALL" : Pickelball type.
+  /// - "PILATES" : Pilates type.
+  /// - "POLO" : Polo type.
+  /// - "POWERLIFTING" : Powerlifting type.
+  /// - "POWER_WALKING" : Power walking type.
+  /// - "RACKET_SPORTS" : Racket sports type.
+  /// - "RACQUETBALL" : Racquetball type.
+  /// - "RESISTANCE_BANDS" : Resistance bands type.
+  /// - "ROCK_CLIMBING" : Rock climbing type.
+  /// - "ROLLERBLADING" : Rollerblading type.
+  /// - "ROLLER_SKATING" : Roller skating type.
+  /// - "ROWING" : Rowing type.
+  /// - "ROWING_MACHINE" : Rowing machine type.
+  /// - "RUCKING" : Rucking type.
+  /// - "RUGBY" : Rugby type.
+  /// - "RUNNING" : Running type.
+  /// - "SAILING" : Sailing type.
+  /// - "SCOOTERING" : Scootering type.
+  /// - "SCUBA_DIVING" : Scuba diving type.
+  /// - "SHOOTING" : Shooting type.
+  /// - "SHOVELING" : Shoveling type.
+  /// - "SKATEBOARDING" : Skateboarding type.
+  /// - "SKATING" : Skating type.
+  /// - "SKIING" : Skiing type.
+  /// - "SKYDIVING" : Skydiving type.
+  /// - "SNORKELING" : Snorkeling type.
+  /// - "SNOWBOARDING" : Snowboarding type.
+  /// - "SNOWMOBILING" : Snowmobiling type.
+  /// - "SNOWSHOEING" : Snowshoeing type.
+  /// - "SNOW_SPORT" : Snow sport type.
+  /// - "SOCCER" : Soccer type.
+  /// - "SOFTBALL" : Softball type.
+  /// - "SPEED_SKATING" : Speed skating type.
+  /// - "SPINNING" : Spinning type.
+  /// - "SPORT" : Sport type.
+  /// - "SQUASH" : Squash type.
+  /// - "STAIRCLIMBER" : Stairclimber type.
+  /// - "STATIONARY_BIKE" : Stationary bike type.
+  /// - "STEP_TRAINING" : Step training type.
+  /// - "STRENGTH_TRAINING" : Strength training type.
+  /// - "STRETCHING" : Stretching type.
+  /// - "STROLLER_WALK" : Stroller walk type.
+  /// - "SURFING" : Surfing type.
+  /// - "SWIMMING" : Swimming type.
+  /// - "SWIMMING_OPEN_WATER" : Swimming open water type.
+  /// - "SWIMMING_POOL" : Swimming pool type.
+  /// - "SYNCHRONIZED_SWIMMING" : Synchronized swimming type.
+  /// - "TABATA_WORKOUT" : Tabata workout type.
+  /// - "TABLE_TENNIS" : Table tennis type.
+  /// - "TAEKWONDO" : Taekwondo type.
+  /// - "TAI_CHI" : Tai chi type.
+  /// - "TANGO" : Tango type.
+  /// - "TENNIS" : Tennis type.
+  /// - "TRACK_AND_FIELD" : Track and field type.
+  /// - "TRAIL_RUN" : Trail run type.
+  /// - "TRAMPOLINE" : Trampoline type.
+  /// - "TREADMILL" : Treadmill type.
+  /// - "TREADMILL_WALK" : Treadmill walk type.
+  /// - "TRX" : Trx type.
+  /// - "ULTIMATE_FRISBEE" : Ultimate frisbee type.
+  /// - "UNICYCLING" : Unicycling type.
+  /// - "VOLLEYBALL" : Volleyball type.
+  /// - "VOLLEYBALL_BEACH" : Volleyball beach type.
+  /// - "WAKEBOARDING" : Wakeboarding type.
+  /// - "WALKING" : Walking type.
+  /// - "WALK_WITH_WEIGHTS" : Walk with weights type.
+  /// - "WATER_AEROBICS" : Water aerobics type.
+  /// - "WATER_JOGGING" : Water jogging type.
+  /// - "WATER_POLO" : Water polo type.
+  /// - "WATER_SKIING" : Water skiing type.
+  /// - "WATER_SPORT" : Water sport type.
+  /// - "WATER_VOLLEYBALL" : Water volleyball type.
+  /// - "WEEDING" : Weeding type.
+  /// - "WEIGHTLIFTING" : Weightlifting type.
+  /// - "WEIGHT_MACHINES" : Weight machines type.
+  /// - "WEIGHTS" : Weights type.
+  /// - "WHEELCHAIR" : Wheelchair type.
+  /// - "WINDSURFING" : Windsurfing type.
+  /// - "WORKOUT" : Workout type.
+  /// - "WRESTLING" : Wrestling type.
+  /// - "YOGA" : Yoga type.
+  /// - "YOGA_BIKRAM" : Yoga bikram type.
+  /// - "YOGA_HATHA" : Yoga hatha type.
+  /// - "YOGA_POWER" : Yoga power type.
+  /// - "YOGA_VINYASA" : Yoga vinyasa type.
+  /// - "ZUMBA" : Zumba type.
   core.String? exerciseType;
 
   /// Observed exercise interval
@@ -3567,6 +5247,10 @@ class ExerciseMetadata {
 /// Represents a Response for exporting exercise data in TCX format.
 class ExportExerciseTcxResponse {
   /// Contains the exported TCX data.
+  ///
+  /// This field is intended for gRPC clients, as media download integration is
+  /// not supported for gRPC. HTTP clients should instead use the `alt=media`
+  /// query parameter to download the raw binary TCX file.
   core.String? tcxData;
 
   ExportExerciseTcxResponse({this.tcxData});
@@ -3624,6 +5308,377 @@ class FloorsRollupValue {
   core.Map<core.String, core.dynamic> toJson() {
     final countSum = this.countSum;
     return {'countSum': ?countSum};
+  }
+}
+
+/// Represents a food item.
+class Food {
+  /// The access level of the food.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FOOD_ACCESS_LEVEL_UNSPECIFIED" : Unspecified food access level.
+  /// - "FOOD_ACCESS_LEVEL_PUBLIC" : Public food access level.
+  /// - "FOOD_ACCESS_LEVEL_PRIVATE" : Private food access level.
+  core.String? accessLevel;
+
+  /// The brand of the food.
+  ///
+  /// Optional.
+  core.String? brand;
+
+  /// Value representing the default serving of the food.
+  ///
+  /// Required.
+  FoodServing? defaultServing;
+
+  /// The description of the food.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The display name of the food.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Value representing the average energy of the food for the default serving.
+  ///
+  /// Optional.
+  EnergyQuantity? energyAvg;
+
+  /// Value representing the energy from fat of the food for the default
+  /// serving.
+  ///
+  /// Optional.
+  EnergyQuantity? energyFromFat;
+
+  /// Value representing the maximum energy of the food for the default serving.
+  ///
+  /// Optional.
+  EnergyQuantity? energyMax;
+
+  /// Value representing the minimum energy of the food for the default serving.
+  ///
+  /// Optional.
+  EnergyQuantity? energyMin;
+
+  /// The language code where the food is available in format xx-XX.
+  ///
+  /// Supported values are defined in Settings.food_language_code.
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// The meal type associated with this food.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MEAL_TYPE_UNSPECIFIED" : Unspecified meal type.
+  /// - "BEFORE_BREAKFAST" : Value representing a meal before breakfast.
+  /// - "BREAKFAST" : Value representing a breakfast.
+  /// - "BEFORE_LUNCH" : Value representing a morning snack.
+  /// - "LUNCH" : Value representing a lunch.
+  /// - "BEFORE_DINNER" : Value representing an afternoon snack.
+  /// - "DINNER" : Value representing dinner.
+  /// - "AFTER_DINNER" : Value representing an evening snack.
+  /// - "SNACK" : Value representing any meal outside of the usual three meals
+  /// per day.
+  /// - "ANYTIME" : Value representing any time (legacy NA).
+  core.String? mealType;
+
+  /// Value representing the nutrients of the food for the default serving.
+  ///
+  /// Optional.
+  core.List<NutrientQuantity>? nutrients;
+
+  /// The serving of the food.
+  ///
+  /// Optional.
+  core.List<FoodServing>? servings;
+
+  /// Value representing the total carbohydrate of the food for the default
+  /// serving.
+  ///
+  /// Optional.
+  WeightQuantity? totalCarbohydrate;
+
+  /// Value representing the total fat of the food for the default serving.
+  ///
+  /// Optional.
+  WeightQuantity? totalFat;
+
+  Food({
+    this.accessLevel,
+    this.brand,
+    this.defaultServing,
+    this.description,
+    this.displayName,
+    this.energyAvg,
+    this.energyFromFat,
+    this.energyMax,
+    this.energyMin,
+    this.languageCode,
+    this.mealType,
+    this.nutrients,
+    this.servings,
+    this.totalCarbohydrate,
+    this.totalFat,
+  });
+
+  Food.fromJson(core.Map json_)
+    : this(
+        accessLevel: json_['accessLevel'] as core.String?,
+        brand: json_['brand'] as core.String?,
+        defaultServing: json_.containsKey('defaultServing')
+            ? FoodServing.fromJson(
+                json_['defaultServing'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        energyAvg: json_.containsKey('energyAvg')
+            ? EnergyQuantity.fromJson(
+                json_['energyAvg'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        energyFromFat: json_.containsKey('energyFromFat')
+            ? EnergyQuantity.fromJson(
+                json_['energyFromFat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        energyMax: json_.containsKey('energyMax')
+            ? EnergyQuantity.fromJson(
+                json_['energyMax'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        energyMin: json_.containsKey('energyMin')
+            ? EnergyQuantity.fromJson(
+                json_['energyMin'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        languageCode: json_['languageCode'] as core.String?,
+        mealType: json_['mealType'] as core.String?,
+        nutrients: (json_['nutrients'] as core.List?)
+            ?.map(
+              (value) => NutrientQuantity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        servings: (json_['servings'] as core.List?)
+            ?.map(
+              (value) => FoodServing.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        totalCarbohydrate: json_.containsKey('totalCarbohydrate')
+            ? WeightQuantity.fromJson(
+                json_['totalCarbohydrate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        totalFat: json_.containsKey('totalFat')
+            ? WeightQuantity.fromJson(
+                json_['totalFat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessLevel = this.accessLevel;
+    final brand = this.brand;
+    final defaultServing = this.defaultServing;
+    final description = this.description;
+    final displayName = this.displayName;
+    final energyAvg = this.energyAvg;
+    final energyFromFat = this.energyFromFat;
+    final energyMax = this.energyMax;
+    final energyMin = this.energyMin;
+    final languageCode = this.languageCode;
+    final mealType = this.mealType;
+    final nutrients = this.nutrients;
+    final servings = this.servings;
+    final totalCarbohydrate = this.totalCarbohydrate;
+    final totalFat = this.totalFat;
+    return {
+      'accessLevel': ?accessLevel,
+      'brand': ?brand,
+      'defaultServing': ?defaultServing,
+      'description': ?description,
+      'displayName': ?displayName,
+      'energyAvg': ?energyAvg,
+      'energyFromFat': ?energyFromFat,
+      'energyMax': ?energyMax,
+      'energyMin': ?energyMin,
+      'languageCode': ?languageCode,
+      'mealType': ?mealType,
+      'nutrients': ?nutrients,
+      'servings': ?servings,
+      'totalCarbohydrate': ?totalCarbohydrate,
+      'totalFat': ?totalFat,
+    };
+  }
+}
+
+/// Represents a food measurement unit.
+class FoodMeasurementUnit {
+  /// The display name of the food measurement unit (e.g., "gram", "piece").
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The plural display name of the food measurement unit (e.g., "grams",
+  /// "pieces").
+  ///
+  /// Optional.
+  core.String? pluralDisplayName;
+
+  FoodMeasurementUnit({this.displayName, this.pluralDisplayName});
+
+  FoodMeasurementUnit.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        pluralDisplayName: json_['pluralDisplayName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final pluralDisplayName = this.pluralDisplayName;
+    return {
+      'displayName': ?displayName,
+      'pluralDisplayName': ?pluralDisplayName,
+    };
+  }
+}
+
+/// Represents different properties and information about the serving of a
+/// specific food.
+class FoodServing {
+  /// Amount of food consumed, fractional values are supported.
+  ///
+  /// Optional.
+  core.double? amount;
+
+  /// Food measurement unit
+  ///
+  /// Required.
+  core.String? foodMeasurementUnit;
+
+  /// Legacy measurement unit for serving size in singular form (e.g. "piece",
+  /// "gram").
+  ///
+  /// Output only.
+  core.String? foodMeasurementUnitDisplayName;
+
+  /// Legacy measurement unit for serving size in plural form (e.g. "pieces",
+  /// "grams").
+  ///
+  /// Output only.
+  core.String? foodMeasurementUnitDisplayNamePlural;
+
+  /// Value representing the multiplier used to compute the energy when using
+  /// this serving instead of the default serving.
+  ///
+  /// Optional.
+  core.double? multiplier;
+
+  FoodServing({
+    this.amount,
+    this.foodMeasurementUnit,
+    this.foodMeasurementUnitDisplayName,
+    this.foodMeasurementUnitDisplayNamePlural,
+    this.multiplier,
+  });
+
+  FoodServing.fromJson(core.Map json_)
+    : this(
+        amount: (json_['amount'] as core.num?)?.toDouble(),
+        foodMeasurementUnit: json_['foodMeasurementUnit'] as core.String?,
+        foodMeasurementUnitDisplayName:
+            json_['foodMeasurementUnitDisplayName'] as core.String?,
+        foodMeasurementUnitDisplayNamePlural:
+            json_['foodMeasurementUnitDisplayNamePlural'] as core.String?,
+        multiplier: (json_['multiplier'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final amount = this.amount;
+    final foodMeasurementUnit = this.foodMeasurementUnit;
+    final foodMeasurementUnitDisplayName = this.foodMeasurementUnitDisplayName;
+    final foodMeasurementUnitDisplayNamePlural =
+        this.foodMeasurementUnitDisplayNamePlural;
+    final multiplier = this.multiplier;
+    return {
+      'amount': ?amount,
+      'foodMeasurementUnit': ?foodMeasurementUnit,
+      'foodMeasurementUnitDisplayName': ?foodMeasurementUnitDisplayName,
+      'foodMeasurementUnitDisplayNamePlural':
+          ?foodMeasurementUnitDisplayNamePlural,
+      'multiplier': ?multiplier,
+    };
+  }
+}
+
+/// A single heart beat measurement.
+class HeartBeat {
+  /// The beats-per-minute value extrapolated from the time before the following
+  /// heart beat.
+  ///
+  /// This is calculated as 60000 / rr, where rr is the gap between heart beats
+  /// in milliseconds (IBI - Interbeat Interval).
+  ///
+  /// Required.
+  core.int? beatsPerMinute;
+
+  /// The civil time in the timezone the subject is in at the time of the
+  /// observation.
+  ///
+  /// Output only.
+  CivilDateTime? civilTime;
+
+  /// The time of the heart beat measurement.
+  ///
+  /// Required.
+  core.String? physicalTime;
+
+  /// The UTC offset of the user's timezone when the heart beat measurement
+  /// occurred.
+  ///
+  /// Required.
+  core.String? utcOffset;
+
+  HeartBeat({
+    this.beatsPerMinute,
+    this.civilTime,
+    this.physicalTime,
+    this.utcOffset,
+  });
+
+  HeartBeat.fromJson(core.Map json_)
+    : this(
+        beatsPerMinute: json_['beatsPerMinute'] as core.int?,
+        civilTime: json_.containsKey('civilTime')
+            ? CivilDateTime.fromJson(
+                json_['civilTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        physicalTime: json_['physicalTime'] as core.String?,
+        utcOffset: json_['utcOffset'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final beatsPerMinute = this.beatsPerMinute;
+    final civilTime = this.civilTime;
+    final physicalTime = this.physicalTime;
+    final utcOffset = this.utcOffset;
+    return {
+      'beatsPerMinute': ?beatsPerMinute,
+      'civilTime': ?civilTime,
+      'physicalTime': ?physicalTime,
+      'utcOffset': ?utcOffset,
+    };
   }
 }
 
@@ -3760,7 +5815,7 @@ class HeartRateRollupValue {
 class HeartRateVariability {
   /// The root mean square of successive differences between normal heartbeats.
   ///
-  /// This is a measure of heart rate variability used by Fitbit.
+  /// This is a measure of heart rate variability used by Google Health.
   ///
   /// Optional.
   core.double? rootMeanSquareOfSuccessiveDifferencesMilliseconds;
@@ -3929,6 +5984,26 @@ class Height {
   }
 }
 
+/// Message that represents an arbitrary HTTP body.
+///
+/// It should only be used for payload formats that can't be represented as
+/// JSON, such as raw binary or an HTML page. This message can be used both in
+/// streaming and non-streaming API methods in the request as well as the
+/// response. It can be used as a top-level request field, which is convenient
+/// if one wants to extract parameters from either the URL or HTTP template into
+/// the request fields and also want access to the raw HTTP body. Example:
+/// message GetResourceRequest { // A unique request id. string request_id = 1;
+/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
+/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
+/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
+/// (google.protobuf.Empty); } Example with streaming methods: service
+/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
+/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
+/// (stream google.api.HttpBody); } Use of this type only changes how the
+/// request and response bodies are handled, all other features will continue to
+/// work unchanged.
+typedef HttpBody = $HttpBody;
+
 /// Holds information about a user logged hydration.
 class HydrationLog {
   /// Amount of liquid (ex.
@@ -4046,6 +6121,135 @@ class Identity {
 /// unspecified, the interval matches any time.
 typedef Interval = $Interval;
 
+/// Irregular Rhythm Notifications (IRN) Profile details.
+///
+/// The Irregular Rhythm Notifications (IRN) feature checks for signs of atrial
+/// fibrillation (AFib). The IrnProfile details include information about the
+/// user's onboarding status, enrollment status, and the last update time of
+/// analyzable data for this feature.
+class IrnProfile {
+  /// Whether or not the user is currently enrolled in having their data
+  /// processed for IRN alerts.
+  ///
+  /// Required.
+  core.bool? enrollmentStatus;
+
+  /// Identifier.
+  ///
+  /// The resource name of this IrnProfile resource. Format:
+  /// `users/{user}/irnProfile` Example: `users/1234567890/irnProfile` or
+  /// `users/me/irnProfile` The {user} ID is a system-generated Google Health
+  /// API user ID, a string of 1-63 characters consisting of lowercase and
+  /// uppercase letters, numbers, and hyphens. The literal `me` can also be used
+  /// to refer to the authenticated user.
+  core.String? name;
+
+  /// Whether or not the user has onboarded onto the IRN feature.
+  ///
+  /// Required.
+  core.bool? onboardingStatus;
+
+  /// The timestamp of the last piece of analyzable data synced by the user.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  IrnProfile({
+    this.enrollmentStatus,
+    this.name,
+    this.onboardingStatus,
+    this.updateTime,
+  });
+
+  IrnProfile.fromJson(core.Map json_)
+    : this(
+        enrollmentStatus: json_['enrollmentStatus'] as core.bool?,
+        name: json_['name'] as core.String?,
+        onboardingStatus: json_['onboardingStatus'] as core.bool?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enrollmentStatus = this.enrollmentStatus;
+    final name = this.name;
+    final onboardingStatus = this.onboardingStatus;
+    final updateTime = this.updateTime;
+    return {
+      'enrollmentStatus': ?enrollmentStatus,
+      'name': ?name,
+      'onboardingStatus': ?onboardingStatus,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Represents an Irregular Rhythm Notification alert, indicating a potential
+/// sign of atrial fibrillation (AFib).
+///
+/// This data type is based on SaMD feature and any changes to it may require
+/// additional review.
+class IrregularRhythmNotification {
+  /// The overlapping analysis windows that were used to evaluate rhythm for
+  /// potential AFib, containing specific information about the user's heart
+  /// rhythm.
+  ///
+  /// Optional.
+  core.List<AlertWindow>? alertWindows;
+
+  /// Observed interval.
+  ///
+  /// Required.
+  SessionTimeInterval? interval;
+
+  /// The meta information for the compatible device used to conduct the
+  /// measurement.
+  ///
+  /// Irregular Rhythm Notification measurements typically populate
+  /// `algorithm_version`, `service_version`, and `device_model`.
+  ///
+  /// Output only.
+  MedicalDeviceInfo? medicalDeviceInfo;
+
+  IrregularRhythmNotification({
+    this.alertWindows,
+    this.interval,
+    this.medicalDeviceInfo,
+  });
+
+  IrregularRhythmNotification.fromJson(core.Map json_)
+    : this(
+        alertWindows: (json_['alertWindows'] as core.List?)
+            ?.map(
+              (value) => AlertWindow.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        interval: json_.containsKey('interval')
+            ? SessionTimeInterval.fromJson(
+                json_['interval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        medicalDeviceInfo: json_.containsKey('medicalDeviceInfo')
+            ? MedicalDeviceInfo.fromJson(
+                json_['medicalDeviceInfo']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alertWindows = this.alertWindows;
+    final interval = this.interval;
+    final medicalDeviceInfo = this.medicalDeviceInfo;
+    return {
+      'alertWindows': ?alertWindows,
+      'interval': ?interval,
+      'medicalDeviceInfo': ?medicalDeviceInfo,
+    };
+  }
+}
+
 /// Response containing raw data points matching the query
 class ListDataPointsResponse {
   /// Data points matching the query
@@ -4072,6 +6276,37 @@ class ListDataPointsResponse {
     final dataPoints = this.dataPoints;
     final nextPageToken = this.nextPageToken;
     return {'dataPoints': ?dataPoints, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Response message for ListPairedDevices.
+class ListPairedDevicesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The paired devices of the user.
+  core.List<PairedDevice>? pairedDevices;
+
+  ListPairedDevicesResponse({this.nextPageToken, this.pairedDevices});
+
+  ListPairedDevicesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pairedDevices: (json_['pairedDevices'] as core.List?)
+            ?.map(
+              (value) => PairedDevice.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final pairedDevices = this.pairedDevices;
+    return {'nextPageToken': ?nextPageToken, 'pairedDevices': ?pairedDevices};
   }
 }
 
@@ -4116,6 +6351,173 @@ class ListSubscribersResponse {
       'subscribers': ?subscribers,
       'totalSize': ?totalSize,
     };
+  }
+}
+
+/// Response message for ListSubscriptions.
+class ListSubscriptionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The subscriptions from the specified subscriber.
+  core.List<Subscription>? subscriptions;
+
+  ListSubscriptionsResponse({this.nextPageToken, this.subscriptions});
+
+  ListSubscriptionsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        subscriptions: (json_['subscriptions'] as core.List?)
+            ?.map(
+              (value) => Subscription.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final subscriptions = this.subscriptions;
+    return {'nextPageToken': ?nextPageToken, 'subscriptions': ?subscriptions};
+  }
+}
+
+/// Represents the POST body contained in a GetShlManifestRequest This message
+/// is nested to represent that See
+/// https://build.fhir.org/ig/HL7/smart-health-cards-and-links/links-specification.html#smart-health-link-manifest-request
+class ManifestParams {
+  /// Integer upper bound on the length of embedded payloads
+  ///
+  /// Optional.
+  core.int? embeddedLengthMax;
+
+  ///
+  ///
+  /// Optional.
+  core.String? passcode;
+
+  /// A string describing the recipient (e.g.,the name of an organization or
+  /// person) suitable for display to the Receiving User
+  ///
+  /// Required.
+  core.String? recipient;
+
+  ManifestParams({this.embeddedLengthMax, this.passcode, this.recipient});
+
+  ManifestParams.fromJson(core.Map json_)
+    : this(
+        embeddedLengthMax: json_['embeddedLengthMax'] as core.int?,
+        passcode: json_['passcode'] as core.String?,
+        recipient: json_['recipient'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final embeddedLengthMax = this.embeddedLengthMax;
+    final passcode = this.passcode;
+    final recipient = this.recipient;
+    return {
+      'embeddedLengthMax': ?embeddedLengthMax,
+      'passcode': ?passcode,
+      'recipient': ?recipient,
+    };
+  }
+}
+
+/// Software as Medical Device (SaMD) metadata.
+///
+/// Used to construct the Unique Device Identifier (UDI).
+class MedicalDeviceInfo {
+  /// The algorithm version used by the feature.
+  ///
+  /// Output only.
+  core.String? algorithmVersion;
+
+  /// The model name or device type of the compatible device used to collect the
+  /// data.
+  ///
+  /// Output only.
+  core.String? deviceModel;
+
+  /// The version of the feature/app running on the device.
+  ///
+  /// Output only.
+  core.String? featureVersion;
+
+  /// The firmware version running on the compatible device used to collect the
+  /// data.
+  ///
+  /// Output only.
+  core.String? firmwareVersion;
+
+  /// The service version used by the feature.
+  ///
+  /// Output only.
+  core.String? serviceVersion;
+
+  MedicalDeviceInfo({
+    this.algorithmVersion,
+    this.deviceModel,
+    this.featureVersion,
+    this.firmwareVersion,
+    this.serviceVersion,
+  });
+
+  MedicalDeviceInfo.fromJson(core.Map json_)
+    : this(
+        algorithmVersion: json_['algorithmVersion'] as core.String?,
+        deviceModel: json_['deviceModel'] as core.String?,
+        featureVersion: json_['featureVersion'] as core.String?,
+        firmwareVersion: json_['firmwareVersion'] as core.String?,
+        serviceVersion: json_['serviceVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final algorithmVersion = this.algorithmVersion;
+    final deviceModel = this.deviceModel;
+    final featureVersion = this.featureVersion;
+    final firmwareVersion = this.firmwareVersion;
+    final serviceVersion = this.serviceVersion;
+    return {
+      'algorithmVersion': ?algorithmVersion,
+      'deviceModel': ?deviceModel,
+      'featureVersion': ?featureVersion,
+      'firmwareVersion': ?firmwareVersion,
+      'serviceVersion': ?serviceVersion,
+    };
+  }
+}
+
+/// Menstrual period record.
+class MenstrualPeriod {
+  /// Observed interval.
+  ///
+  /// Required.
+  ObservationTimeInterval? interval;
+
+  /// Standard free-form notes captured at manual logging.
+  ///
+  /// Optional.
+  core.String? notes;
+
+  MenstrualPeriod({this.interval, this.notes});
+
+  MenstrualPeriod.fromJson(core.Map json_)
+    : this(
+        interval: json_.containsKey('interval')
+            ? ObservationTimeInterval.fromJson(
+                json_['interval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        notes: json_['notes'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final interval = this.interval;
+    final notes = this.notes;
+    return {'interval': ?interval, 'notes': ?notes};
   }
 }
 
@@ -4331,6 +6733,429 @@ class MobilityMetrics {
       'avgStrideLengthMillimeters': ?avgStrideLengthMillimeters,
       'avgVerticalOscillationMillimeters': ?avgVerticalOscillationMillimeters,
       'avgVerticalRatio': ?avgVerticalRatio,
+    };
+  }
+}
+
+/// Moods record.
+class Moods {
+  /// The moods logged.
+  ///
+  /// Required.
+  core.List<core.String>? moods;
+
+  /// The time at which moods were measured.
+  ///
+  /// Required.
+  ObservationSampleTime? sampleTime;
+
+  /// The valences.
+  ///
+  /// Optional.
+  core.List<core.String>? valences;
+
+  Moods({this.moods, this.sampleTime, this.valences});
+
+  Moods.fromJson(core.Map json_)
+    : this(
+        moods: (json_['moods'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        sampleTime: json_.containsKey('sampleTime')
+            ? ObservationSampleTime.fromJson(
+                json_['sampleTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        valences: (json_['valences'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final moods = this.moods;
+    final sampleTime = this.sampleTime;
+    final valences = this.valences;
+    return {'moods': ?moods, 'sampleTime': ?sampleTime, 'valences': ?valences};
+  }
+}
+
+/// Represents the quantity of a nutrient.
+class NutrientQuantity {
+  /// The nutrient type.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "NUTRIENT_UNSPECIFIED" : Unspecified nutrient.
+  /// - "BIOTIN" : Value representing biotin nutrient.
+  /// - "CAFFEINE" : Value representing caffeine nutrient.
+  /// - "CALCIUM" : Value representing calcium nutrient.
+  /// - "CHLORIDE" : Value representing chloride nutrient.
+  /// - "CARBOHYDRATES" : Value representing carbohydrates nutrient.
+  /// - "CHOLESTEROL" : Value representing cholesterol nutrient.
+  /// - "CHROMIUM" : Value representing chromium nutrient.
+  /// - "COPPER" : Value representing copper nutrient.
+  /// - "DIETARY_FIBER" : Value representing dietary fiber nutrient.
+  /// - "FOLIC_ACID" : Value representing folic acid nutrient.
+  /// - "IODINE" : Value representing iodine nutrient.
+  /// - "IRON" : Value representing iron nutrient.
+  /// - "MAGNESIUM" : Value representing magnesium nutrient.
+  /// - "MANGANESE" : Value representing manganese nutrient.
+  /// - "MOLYBDENUM" : Value representing molybdenum nutrient.
+  /// - "MONOUNSATURATED_FAT" : Value representing monounsaturated fat nutrient.
+  /// - "NIACIN" : Value representing niacin nutrient.
+  /// - "PANTOTHENIC_ACID" : Value representing pantothenic acid nutrient.
+  /// - "PHOSPHORUS" : Value representing phosphorus nutrient.
+  /// - "POLYUNSATURATED_FAT" : Value representing polyunsaturated fat nutrient.
+  /// - "POTASSIUM" : Value representing potassium nutrient.
+  /// - "PROTEIN" : Value representing protein nutrient.
+  /// - "RIBOFLAVIN" : Value representing riboflavin nutrient.
+  /// - "SATURATED_FAT" : Value representing saturated fat nutrient.
+  /// - "SELENIUM" : Value representing selenium nutrient.
+  /// - "SODIUM" : Value representing sodium nutrient.
+  /// - "SUGAR" : Value representing sugar nutrient.
+  /// - "THIAMIN" : Value representing thiamin nutrient.
+  /// - "TRANS_FAT" : Value representing trans fat nutrient.
+  /// - "UNSATURATED_FAT" : Value representing unsaturated fat nutrient.
+  /// - "VITAMIN_A" : Value representing vitamin A nutrient.
+  /// - "VITAMIN_B12" : Value representing vitamin B12 nutrient.
+  /// - "VITAMIN_B6" : Value representing vitamin B6 nutrient.
+  /// - "VITAMIN_C" : Value representing vitamin C nutrient.
+  /// - "VITAMIN_D" : Value representing vitamin D nutrient.
+  /// - "VITAMIN_E" : Value representing vitamin E nutrient.
+  /// - "VITAMIN_K" : Value representing vitamin K nutrient.
+  /// - "ZINC" : Value representing zinc nutrient.
+  /// - "FOLATE" : Value representing folate nutrient.
+  core.String? nutrient;
+
+  /// The quantity of the nutrient, measured in grams.
+  ///
+  /// Required.
+  WeightQuantity? quantity;
+
+  NutrientQuantity({this.nutrient, this.quantity});
+
+  NutrientQuantity.fromJson(core.Map json_)
+    : this(
+        nutrient: json_['nutrient'] as core.String?,
+        quantity: json_.containsKey('quantity')
+            ? WeightQuantity.fromJson(
+                json_['quantity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nutrient = this.nutrient;
+    final quantity = this.quantity;
+    return {'nutrient': ?nutrient, 'quantity': ?quantity};
+  }
+}
+
+/// Nutrient quantity rollup.
+class NutrientQuantityRollup {
+  /// Aggregated nutrient.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "NUTRIENT_UNSPECIFIED" : Unspecified nutrient.
+  /// - "BIOTIN" : Value representing biotin nutrient.
+  /// - "CAFFEINE" : Value representing caffeine nutrient.
+  /// - "CALCIUM" : Value representing calcium nutrient.
+  /// - "CHLORIDE" : Value representing chloride nutrient.
+  /// - "CARBOHYDRATES" : Value representing carbohydrates nutrient.
+  /// - "CHOLESTEROL" : Value representing cholesterol nutrient.
+  /// - "CHROMIUM" : Value representing chromium nutrient.
+  /// - "COPPER" : Value representing copper nutrient.
+  /// - "DIETARY_FIBER" : Value representing dietary fiber nutrient.
+  /// - "FOLIC_ACID" : Value representing folic acid nutrient.
+  /// - "IODINE" : Value representing iodine nutrient.
+  /// - "IRON" : Value representing iron nutrient.
+  /// - "MAGNESIUM" : Value representing magnesium nutrient.
+  /// - "MANGANESE" : Value representing manganese nutrient.
+  /// - "MOLYBDENUM" : Value representing molybdenum nutrient.
+  /// - "MONOUNSATURATED_FAT" : Value representing monounsaturated fat nutrient.
+  /// - "NIACIN" : Value representing niacin nutrient.
+  /// - "PANTOTHENIC_ACID" : Value representing pantothenic acid nutrient.
+  /// - "PHOSPHORUS" : Value representing phosphorus nutrient.
+  /// - "POLYUNSATURATED_FAT" : Value representing polyunsaturated fat nutrient.
+  /// - "POTASSIUM" : Value representing potassium nutrient.
+  /// - "PROTEIN" : Value representing protein nutrient.
+  /// - "RIBOFLAVIN" : Value representing riboflavin nutrient.
+  /// - "SATURATED_FAT" : Value representing saturated fat nutrient.
+  /// - "SELENIUM" : Value representing selenium nutrient.
+  /// - "SODIUM" : Value representing sodium nutrient.
+  /// - "SUGAR" : Value representing sugar nutrient.
+  /// - "THIAMIN" : Value representing thiamin nutrient.
+  /// - "TRANS_FAT" : Value representing trans fat nutrient.
+  /// - "UNSATURATED_FAT" : Value representing unsaturated fat nutrient.
+  /// - "VITAMIN_A" : Value representing vitamin A nutrient.
+  /// - "VITAMIN_B12" : Value representing vitamin B12 nutrient.
+  /// - "VITAMIN_B6" : Value representing vitamin B6 nutrient.
+  /// - "VITAMIN_C" : Value representing vitamin C nutrient.
+  /// - "VITAMIN_D" : Value representing vitamin D nutrient.
+  /// - "VITAMIN_E" : Value representing vitamin E nutrient.
+  /// - "VITAMIN_K" : Value representing vitamin K nutrient.
+  /// - "ZINC" : Value representing zinc nutrient.
+  /// - "FOLATE" : Value representing folate nutrient.
+  core.String? nutrient;
+
+  /// Aggregated nutrient weight.
+  ///
+  /// Required.
+  WeightQuantityRollup? quantity;
+
+  NutrientQuantityRollup({this.nutrient, this.quantity});
+
+  NutrientQuantityRollup.fromJson(core.Map json_)
+    : this(
+        nutrient: json_['nutrient'] as core.String?,
+        quantity: json_.containsKey('quantity')
+            ? WeightQuantityRollup.fromJson(
+                json_['quantity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nutrient = this.nutrient;
+    final quantity = this.quantity;
+    return {'nutrient': ?nutrient, 'quantity': ?quantity};
+  }
+}
+
+/// Holds information about food logged by a user.
+///
+/// There are two ways of creating a nutrition log based on the food type: 1.
+/// Identified food: Using the food field, which is a reference to a Food
+/// resource. In this case fields `nutrients`, `energy`, `energy_from_fat`,
+/// `total_carbohydrate`, `total_fat`, `food_display_name` will be populated
+/// based on the referenced food. 2. Anonymous food: Using the
+/// `food_display_name` field and setting the `nutrients`, `energy`,
+/// `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The
+/// identified food is preferred over the anonymous food. Nutrition logs created
+/// from anonymous food are not editable.
+class NutritionLog {
+  /// The total energy of the food, measured in kilocalories (`kcal`).
+  ///
+  /// Optional.
+  EnergyQuantity? energy;
+
+  /// The energy from fat, measured in kilocalories (`kcal`).
+  ///
+  /// Optional.
+  EnergyQuantity? energyFromFat;
+
+  /// The resource name of the Food item.
+  ///
+  /// Required when creating a nutrition log from an identified food. For
+  /// anonymous food logs, use the `food_display_name` field instead.
+  ///
+  /// Optional.
+  core.String? food;
+
+  /// The display name of the food.
+  ///
+  /// For identified food logs, this is populated automatically from the
+  /// referenced food.
+  core.String? foodDisplayName;
+
+  /// The time window when the food was logged.
+  ///
+  /// Required.
+  SessionTimeInterval? interval;
+
+  /// The meal category.
+  ///
+  /// One of `BREAKFAST`, `LUNCH`, `DINNER`, or `SNACK`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MEAL_TYPE_UNSPECIFIED" : Unspecified meal type.
+  /// - "BEFORE_BREAKFAST" : Value representing a meal before breakfast.
+  /// - "BREAKFAST" : Value representing a breakfast.
+  /// - "BEFORE_LUNCH" : Value representing a morning snack.
+  /// - "LUNCH" : Value representing a lunch.
+  /// - "BEFORE_DINNER" : Value representing an afternoon snack.
+  /// - "DINNER" : Value representing dinner.
+  /// - "AFTER_DINNER" : Value representing an evening snack.
+  /// - "SNACK" : Value representing any meal outside of the usual three meals
+  /// per day.
+  /// - "ANYTIME" : Value representing any time (legacy NA).
+  core.String? mealType;
+
+  /// An array of individual nutrient values for the nutrition log.
+  ///
+  /// Optional.
+  core.List<NutrientQuantity>? nutrients;
+
+  /// The serving information for the logged food.
+  ///
+  /// Optional.
+  Serving? serving;
+
+  /// The total carbohydrate content, measured in grams.
+  ///
+  /// Optional.
+  WeightQuantity? totalCarbohydrate;
+
+  /// The total fat content, measured in grams.
+  ///
+  /// Optional.
+  WeightQuantity? totalFat;
+
+  NutritionLog({
+    this.energy,
+    this.energyFromFat,
+    this.food,
+    this.foodDisplayName,
+    this.interval,
+    this.mealType,
+    this.nutrients,
+    this.serving,
+    this.totalCarbohydrate,
+    this.totalFat,
+  });
+
+  NutritionLog.fromJson(core.Map json_)
+    : this(
+        energy: json_.containsKey('energy')
+            ? EnergyQuantity.fromJson(
+                json_['energy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        energyFromFat: json_.containsKey('energyFromFat')
+            ? EnergyQuantity.fromJson(
+                json_['energyFromFat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        food: json_['food'] as core.String?,
+        foodDisplayName: json_['foodDisplayName'] as core.String?,
+        interval: json_.containsKey('interval')
+            ? SessionTimeInterval.fromJson(
+                json_['interval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mealType: json_['mealType'] as core.String?,
+        nutrients: (json_['nutrients'] as core.List?)
+            ?.map(
+              (value) => NutrientQuantity.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        serving: json_.containsKey('serving')
+            ? Serving.fromJson(
+                json_['serving'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        totalCarbohydrate: json_.containsKey('totalCarbohydrate')
+            ? WeightQuantity.fromJson(
+                json_['totalCarbohydrate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        totalFat: json_.containsKey('totalFat')
+            ? WeightQuantity.fromJson(
+                json_['totalFat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final energy = this.energy;
+    final energyFromFat = this.energyFromFat;
+    final food = this.food;
+    final foodDisplayName = this.foodDisplayName;
+    final interval = this.interval;
+    final mealType = this.mealType;
+    final nutrients = this.nutrients;
+    final serving = this.serving;
+    final totalCarbohydrate = this.totalCarbohydrate;
+    final totalFat = this.totalFat;
+    return {
+      'energy': ?energy,
+      'energyFromFat': ?energyFromFat,
+      'food': ?food,
+      'foodDisplayName': ?foodDisplayName,
+      'interval': ?interval,
+      'mealType': ?mealType,
+      'nutrients': ?nutrients,
+      'serving': ?serving,
+      'totalCarbohydrate': ?totalCarbohydrate,
+      'totalFat': ?totalFat,
+    };
+  }
+}
+
+/// Represents the result of the rollup of the nutrition log data type.
+class NutritionLogRollupValue {
+  /// Energy rollup.
+  EnergyQuantityRollup? energy;
+
+  /// Value Energy from fat rollup.
+  EnergyQuantityRollup? energyFromFat;
+
+  /// List of the nutrient roll-ups by the nutrient type.
+  core.List<NutrientQuantityRollup>? nutrients;
+
+  /// Total carbohydrate rollup.
+  WeightQuantityRollup? totalCarbohydrate;
+
+  /// Total fat rollup.
+  WeightQuantityRollup? totalFat;
+
+  NutritionLogRollupValue({
+    this.energy,
+    this.energyFromFat,
+    this.nutrients,
+    this.totalCarbohydrate,
+    this.totalFat,
+  });
+
+  NutritionLogRollupValue.fromJson(core.Map json_)
+    : this(
+        energy: json_.containsKey('energy')
+            ? EnergyQuantityRollup.fromJson(
+                json_['energy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        energyFromFat: json_.containsKey('energyFromFat')
+            ? EnergyQuantityRollup.fromJson(
+                json_['energyFromFat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nutrients: (json_['nutrients'] as core.List?)
+            ?.map(
+              (value) => NutrientQuantityRollup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        totalCarbohydrate: json_.containsKey('totalCarbohydrate')
+            ? WeightQuantityRollup.fromJson(
+                json_['totalCarbohydrate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        totalFat: json_.containsKey('totalFat')
+            ? WeightQuantityRollup.fromJson(
+                json_['totalFat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final energy = this.energy;
+    final energyFromFat = this.energyFromFat;
+    final nutrients = this.nutrients;
+    final totalCarbohydrate = this.totalCarbohydrate;
+    final totalFat = this.totalFat;
+    return {
+      'energy': ?energy,
+      'energyFromFat': ?energyFromFat,
+      'nutrients': ?nutrients,
+      'totalCarbohydrate': ?totalCarbohydrate,
+      'totalFat': ?totalFat,
     };
   }
 }
@@ -4591,6 +7416,44 @@ class OutOfBedSegment {
   }
 }
 
+/// Ovulation test record.
+class OvulationTest {
+  /// The result of the ovulation test.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OVULATION_TEST_RESULT_UNSPECIFIED" : Unspecified result.
+  /// - "NEGATIVE" : Negative result.
+  /// - "LUTEINIZING_HORMONE_SURGE" : Luteinizing hormone surge.
+  /// - "ESTROGEN_SURGE" : Estrogen surge.
+  /// - "POSITIVE" : Positive result.
+  /// - "INDETERMINATE" : Indeterminate result.
+  core.String? result;
+
+  /// The time at which ovulation test was measured.
+  ///
+  /// Required.
+  ObservationSampleTime? sampleTime;
+
+  OvulationTest({this.result, this.sampleTime});
+
+  OvulationTest.fromJson(core.Map json_)
+    : this(
+        result: json_['result'] as core.String?,
+        sampleTime: json_.containsKey('sampleTime')
+            ? ObservationSampleTime.fromJson(
+                json_['sampleTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final result = this.result;
+    final sampleTime = this.sampleTime;
+    return {'result': ?result, 'sampleTime': ?sampleTime};
+  }
+}
+
 /// Captures the user's instantaneous oxygen saturation percentage (SpO2).
 class OxygenSaturation {
   /// The oxygen saturation percentage.
@@ -4621,6 +7484,160 @@ class OxygenSaturation {
     final percentage = this.percentage;
     final sampleTime = this.sampleTime;
     return {'percentage': ?percentage, 'sampleTime': ?sampleTime};
+  }
+}
+
+/// User's Paired 1P Device The PairedDevice details include information about
+/// the device type, battery status, battery level, last sync time, device
+/// version, mac address, and features.
+class PairedDevice {
+  /// The battery level of the device.
+  ///
+  /// Output only.
+  core.int? batteryLevel;
+
+  /// The battery status of the device.
+  ///
+  /// Supported: High | Medium | Low | Empty
+  ///
+  /// Output only.
+  core.String? batteryStatus;
+
+  /// The device type.
+  ///
+  /// Supported: TRACKER | SCALE
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEVICE_TYPE_UNSPECIFIED" : Device type is not specified.
+  /// - "TRACKER" : Device type is tracker.
+  /// - "SCALE" : Device type is scale.
+  core.String? deviceType;
+
+  /// The product name of the device
+  ///
+  /// Output only.
+  core.String? deviceVersion;
+
+  /// Lists of unique features supported by the device.
+  ///
+  /// Comprehensive list of supported features: **Fitness Tracking** -
+  /// `ACTIVE_MINUTES`: Legacy active minutes. - `AUTOSTRIDE`: Automatic stride
+  /// length calculation. - `BIKE_ONBOARDING`: Cycling UI support. - `CALORIES`:
+  /// Daily burned calories. - `DISTANCE`: Daily distance tracking. -
+  /// `ELEVATION`: Floors climbed. - `INACTIVITY_ALERTS`: Reminders to move. -
+  /// `SEDENTARY_TIME`: Tracks inactive time. - `STEPS`: Daily steps. - `SWIM`:
+  /// Swim tracking (laps/strokes). - `AUTORUN`: Automatic run detection. -
+  /// `ACTIVE_ZONE_MINUTES`: Active Zone Minutes (AZM). **Heart Rate & Health**
+  /// - `HEART_RATE`: Continuous heart rate (PPG). - `BAT_SIGNAL`: High/Low
+  /// Heart Rate Alerts. **Advanced Sensors** - `SPO2`: Blood oxygen saturation.
+  /// - `NIGHTTIME_OXYGEN_SATURATION`: Sleep SpO2. -
+  /// `ESTIMATED_OXYGEN_VARIATION`: Estimated Oxygen Variation. - `EDA`:
+  /// Electrodermal Activity (stress). - `SKIN_TEMPERATURE`: Skin temperature
+  /// variation. - `INTERNAL_DEVICE_TEMPERATURE`: Internal device temperature.
+  /// **Sleep & Wellness** - `SLEEP`: Basic sleep tracking. - `SMART_SLEEP`:
+  /// Advanced sleep tracking (stages/score). - `BEDTIME_REMINDER`: Bedtime
+  /// reminders. - `SOUNDSCAPE`: Snore and noise detection. **Advanced
+  /// Workouts** - `WB`: Custom Workout Builder. - `AUTOCUES`: Auto Cues / Auto
+  /// Lap. - `DWR_RUN`: Daily Run Recommendations. - `ADVANCED_RUNNING`:
+  /// Advanced Running Dynamics (e.g., GCT, VO). **GPS & Location** - `GPS`:
+  /// Built-in GPS. - `CONNECTED_GPS`: Connected GPS (uses phone). -
+  /// `LOCATION_HINT`: Location helper. **Payments & NFC** - `PAYMENTS`: NFC
+  /// payments (Fitbit Pay/Google Wallet). - `FELICA`: FeliCa support (Japan
+  /// payments/transit). **Activity Detection** - `GROK`: SmartTrack automatic
+  /// activity detection. - `RETRO_AR`: Retroactive Activity Recognition
+  /// prompts. **Smart Features & UI** - `ALARMS`: Silent alarms. -
+  /// `BLE_MUSIC_CONTROL`: BLE music control. - `MUSIC`: Direct music
+  /// storage/control. - `YOUTUBE_MUSIC_SUPPORTED`: YouTube Music support. -
+  /// `GALLERY`: App Gallery. - `TUTORIAL_SUPPORTED`: On-screen tutorials. -
+  /// `SMILEY_EMOTE`: Legacy Zip face. - `MOBILE_TO_DEVICE_DEEPLINK`: Mobile to
+  /// device settings deep link. - `HIDE_GALLERY`: Option to hide Gallery. -
+  /// `HIDE_GOAL_SELECTION`: Option to hide goal selection. -
+  /// `DIGITAL_WARRANTY_SUPPORTED`: Digital warranty display. -
+  /// `DIRECT_DEVICE_SETTINGS_SUPPORTED`: Direct device settings management.
+  /// **Gym HR Broadcasting** - `ASPEN_SUPPORTED`: Broadcast HR to gym
+  /// equipment. - `ASPEN_REMOTE_UI_SUPPORTED`: Remote UI for HR sharing.
+  /// **Privacy & Security** - `FINITE_IMPROBABILITY`: BLE Resolvable Private
+  /// Address (RPA) privacy. - `DOMAIN_KEY_SYNC`: Domain key synchronization.
+  /// **BLE Protocol** - `BONDING`: Secure BLE bonding. - `ADVERTISES_SERIAL`:
+  /// Advertises serial number. - `STATUS_CHARACTERISTIC`: BLE Status
+  /// Characteristic. - `TRACKER_CHANNEL_CHARACTERISTIC`: BLE Tracker Channel
+  /// Characteristic. - `PING_CHARACTERISTIC`: BLE Ping Characteristic.
+  /// **Cellular & Wi-Fi** - `MOBILE_DATA`: LTE cellular support. -
+  /// `SINGLE_AP_WIFI`: Single AP Wi-Fi. - `MULTI_AP_WIFI`: Multi AP Wi-Fi. -
+  /// `WIFI_FWUP`: Firmware updates over Wi-Fi. **Data Sync & Transfer** -
+  /// `APP_SYNC`: Background app sync. - `LIVE_DATA`: Real-time data streaming.
+  /// - `EVENT_BASED_SYNC_SUPPORTED`: Event-based sync. - `TIME_SERVICE`: Time
+  /// synchronization service. - `REMOTE_FILE_PROVIDER`: Remote file transfer. -
+  /// `DIRECT_COMMS_ALARMS`: Direct communication for alarms. -
+  /// `DIRECT_COMMS_EXERCISE`: Direct communication for exercise. -
+  /// `DIRECT_COMMS_BATTERY_ALERTS`: Direct communication for battery alerts.
+  /// **Google Integrations** - `PARROT_TREE_SUPPORTED`: Find My Device support.
+  ///
+  /// Output only.
+  core.List<core.String>? features;
+
+  /// The time of last sync with the Fitbit mobile application.
+  ///
+  /// Output only.
+  core.String? lastSyncTime;
+
+  /// Mac ID number of the device.
+  ///
+  /// Output only.
+  core.String? macAddress;
+
+  /// Identifier.
+  ///
+  /// The resource name of this Device resource. Format:
+  /// `users/{user}/pairedDevices/{paired_device}` Example:
+  /// `users/1234567890/pairedDevices/123` or `users/me/pairedDevices/123`
+  core.String? name;
+
+  PairedDevice({
+    this.batteryLevel,
+    this.batteryStatus,
+    this.deviceType,
+    this.deviceVersion,
+    this.features,
+    this.lastSyncTime,
+    this.macAddress,
+    this.name,
+  });
+
+  PairedDevice.fromJson(core.Map json_)
+    : this(
+        batteryLevel: json_['batteryLevel'] as core.int?,
+        batteryStatus: json_['batteryStatus'] as core.String?,
+        deviceType: json_['deviceType'] as core.String?,
+        deviceVersion: json_['deviceVersion'] as core.String?,
+        features: (json_['features'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        lastSyncTime: json_['lastSyncTime'] as core.String?,
+        macAddress: json_['macAddress'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final batteryLevel = this.batteryLevel;
+    final batteryStatus = this.batteryStatus;
+    final deviceType = this.deviceType;
+    final deviceVersion = this.deviceVersion;
+    final features = this.features;
+    final lastSyncTime = this.lastSyncTime;
+    final macAddress = this.macAddress;
+    final name = this.name;
+    return {
+      'batteryLevel': ?batteryLevel,
+      'batteryStatus': ?batteryStatus,
+      'deviceType': ?deviceType,
+      'deviceVersion': ?deviceVersion,
+      'features': ?features,
+      'lastSyncTime': ?lastSyncTime,
+      'macAddress': ?macAddress,
+      'name': ?name,
+    };
   }
 }
 
@@ -4774,6 +7791,10 @@ class ReconcileDataPointsResponse {
 
 /// A reconciled computed or recorded metric.
 class ReconciledDataPoint {
+  /// Data for points in the `active-energy-burned` interval data type
+  /// collection.
+  ActiveEnergyBurned? activeEnergyBurned;
+
   /// Data for points in the `active-minutes` interval data type collection.
   ActiveMinutes? activeMinutes;
 
@@ -4787,8 +7808,19 @@ class ReconciledDataPoint {
   /// Data for points in the `altitude` interval data type collection.
   Altitude? altitude;
 
+  /// Data for points in the `basal-energy-burned` interval data type
+  /// collection.
+  BasalEnergyBurned? basalEnergyBurned;
+
+  /// Data for points in the `blood-glucose` sample data type collection.
+  BloodGlucose? bloodGlucose;
+
   /// Data for points in the `body-fat` sample data type collection.
   BodyFat? bodyFat;
+
+  /// Data for points in the `core-body-temperature` sample data type
+  /// collection.
+  CoreBodyTemperature? coreBodyTemperature;
 
   /// Data for points in the `daily-heart-rate-variability` daily data type
   /// collection.
@@ -4827,10 +7859,10 @@ class ReconciledDataPoint {
   /// The `{user}` ID is a system-generated identifier, as described in
   /// Identity.health_user_id. The `{data_type}` ID corresponds to the
   /// kebab-case version of the field names in the DataPoint data union field,
-  /// e.g. `total-calories` for the `total_calories` field. The `{data_point}`
-  /// ID can be client-provided or system-generated. If client-provided, it must
-  /// be a string of 4-63 characters, containing only lowercase letters,
-  /// numbers, and hyphens.
+  /// e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be
+  /// client-provided or system-generated. If client-provided, it must be a
+  /// string of 4-63 characters, containing only lowercase letters, numbers, and
+  /// hyphens.
   core.String? dataPointName;
 
   /// Data for points in the `distance` interval data type collection.
@@ -4854,6 +7886,9 @@ class ReconciledDataPoint {
 
   /// Data for points in the `hydration-log` session data type collection.
   HydrationLog? hydrationLog;
+
+  /// Data for points in the `nutrition-log` session data type collection.
+  NutritionLog? nutritionLog;
 
   /// Data for points in the `oxygen-saturation` sample data type collection.
   OxygenSaturation? oxygenSaturation;
@@ -4888,11 +7923,15 @@ class ReconciledDataPoint {
   Weight? weight;
 
   ReconciledDataPoint({
+    this.activeEnergyBurned,
     this.activeMinutes,
     this.activeZoneMinutes,
     this.activityLevel,
     this.altitude,
+    this.basalEnergyBurned,
+    this.bloodGlucose,
     this.bodyFat,
+    this.coreBodyTemperature,
     this.dailyHeartRateVariability,
     this.dailyHeartRateZones,
     this.dailyOxygenSaturation,
@@ -4908,6 +7947,7 @@ class ReconciledDataPoint {
     this.heartRateVariability,
     this.height,
     this.hydrationLog,
+    this.nutritionLog,
     this.oxygenSaturation,
     this.respiratoryRateSleepSummary,
     this.runVo2Max,
@@ -4922,6 +7962,12 @@ class ReconciledDataPoint {
 
   ReconciledDataPoint.fromJson(core.Map json_)
     : this(
+        activeEnergyBurned: json_.containsKey('activeEnergyBurned')
+            ? ActiveEnergyBurned.fromJson(
+                json_['activeEnergyBurned']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         activeMinutes: json_.containsKey('activeMinutes')
             ? ActiveMinutes.fromJson(
                 json_['activeMinutes'] as core.Map<core.String, core.dynamic>,
@@ -4943,9 +7989,26 @@ class ReconciledDataPoint {
                 json_['altitude'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        basalEnergyBurned: json_.containsKey('basalEnergyBurned')
+            ? BasalEnergyBurned.fromJson(
+                json_['basalEnergyBurned']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bloodGlucose: json_.containsKey('bloodGlucose')
+            ? BloodGlucose.fromJson(
+                json_['bloodGlucose'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         bodyFat: json_.containsKey('bodyFat')
             ? BodyFat.fromJson(
                 json_['bodyFat'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        coreBodyTemperature: json_.containsKey('coreBodyTemperature')
+            ? CoreBodyTemperature.fromJson(
+                json_['coreBodyTemperature']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         dailyHeartRateVariability:
@@ -5028,6 +8091,11 @@ class ReconciledDataPoint {
                 json_['hydrationLog'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        nutritionLog: json_.containsKey('nutritionLog')
+            ? NutritionLog.fromJson(
+                json_['nutritionLog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         oxygenSaturation: json_.containsKey('oxygenSaturation')
             ? OxygenSaturation.fromJson(
                 json_['oxygenSaturation']
@@ -5085,11 +8153,15 @@ class ReconciledDataPoint {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final activeEnergyBurned = this.activeEnergyBurned;
     final activeMinutes = this.activeMinutes;
     final activeZoneMinutes = this.activeZoneMinutes;
     final activityLevel = this.activityLevel;
     final altitude = this.altitude;
+    final basalEnergyBurned = this.basalEnergyBurned;
+    final bloodGlucose = this.bloodGlucose;
     final bodyFat = this.bodyFat;
+    final coreBodyTemperature = this.coreBodyTemperature;
     final dailyHeartRateVariability = this.dailyHeartRateVariability;
     final dailyHeartRateZones = this.dailyHeartRateZones;
     final dailyOxygenSaturation = this.dailyOxygenSaturation;
@@ -5106,6 +8178,7 @@ class ReconciledDataPoint {
     final heartRateVariability = this.heartRateVariability;
     final height = this.height;
     final hydrationLog = this.hydrationLog;
+    final nutritionLog = this.nutritionLog;
     final oxygenSaturation = this.oxygenSaturation;
     final respiratoryRateSleepSummary = this.respiratoryRateSleepSummary;
     final runVo2Max = this.runVo2Max;
@@ -5117,11 +8190,15 @@ class ReconciledDataPoint {
     final vo2Max = this.vo2Max;
     final weight = this.weight;
     return {
+      'activeEnergyBurned': ?activeEnergyBurned,
       'activeMinutes': ?activeMinutes,
       'activeZoneMinutes': ?activeZoneMinutes,
       'activityLevel': ?activityLevel,
       'altitude': ?altitude,
+      'basalEnergyBurned': ?basalEnergyBurned,
+      'bloodGlucose': ?bloodGlucose,
       'bodyFat': ?bodyFat,
+      'coreBodyTemperature': ?coreBodyTemperature,
       'dailyHeartRateVariability': ?dailyHeartRateVariability,
       'dailyHeartRateZones': ?dailyHeartRateZones,
       'dailyOxygenSaturation': ?dailyOxygenSaturation,
@@ -5137,6 +8214,7 @@ class ReconciledDataPoint {
       'heartRateVariability': ?heartRateVariability,
       'height': ?height,
       'hydrationLog': ?hydrationLog,
+      'nutritionLog': ?nutritionLog,
       'oxygenSaturation': ?oxygenSaturation,
       'respiratoryRateSleepSummary': ?respiratoryRateSleepSummary,
       'runVo2Max': ?runVo2Max,
@@ -5313,9 +8391,14 @@ class RollUpDataPointsRequest {
   ///
   /// If empty, data points from all available data sources will be rolled up.
   /// Format: `users/me/dataSourceFamilies/{data_source_family}` The supported
-  /// values are: - `users/me/dataSourceFamilies/all-sources` - default value -
-  /// `users/me/dataSourceFamilies/google-wearables` - tracker devices -
-  /// `users/me/dataSourceFamilies/google-sources` - Google first party sources
+  /// values are: - `users/me/dataSourceFamilies/all-sources` - Default value.
+  /// Includes data from all available data sources. -
+  /// `users/me/dataSourceFamilies/google-wearables` - Includes data from Google
+  /// and Fitbit tracker devices (such as Fitbit trackers and Pixel Watch).
+  /// Excludes manually logged data. -
+  /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google
+  /// data, such as data from tracker devices, manually logged data, and Health
+  /// Connect.
   ///
   /// Optional.
   core.String? dataSourceFamily;
@@ -5347,6 +8430,8 @@ class RollUpDataPointsRequest {
 
   /// The size of the time window to group data points into before applying the
   /// aggregation functions.
+  ///
+  /// Must be at least 1 second.
   ///
   /// Required.
   core.String? windowSize;
@@ -5423,7 +8508,14 @@ class RollUpDataPointsResponse {
 }
 
 /// Value of a rollup for a single physical time interval (aggregation window)
+/// of reconciled data points from all data sources, excluding those data points
+/// that are identified as recorded by wearables in intervals when they were not
+/// actually worn.
 class RollupDataPoint {
+  /// Returned by default when rolling up data points from the
+  /// `active-energy-burned` data type.
+  ActiveEnergyBurnedRollupValue? activeEnergyBurned;
+
   /// Returned by default when rolling up data points from the `active-minutes`
   /// data type, or when requested explicitly using the `active-minutes` rollup
   /// type identifier.
@@ -5444,6 +8536,10 @@ class RollupDataPoint {
   /// identifier.
   AltitudeRollupValue? altitude;
 
+  /// Returned by default when rolling up data points from the `blood-glucose`
+  /// data type.
+  BloodGlucoseRollupValue? bloodGlucose;
+
   /// Returned by default when rolling up data points from the `body-fat` data
   /// type, or when requested explicitly using the `body-fat` rollup type
   /// identifier.
@@ -5453,6 +8549,11 @@ class RollupDataPoint {
   /// `calories-in-heart-rate-zone` data type, or when requested explicitly
   /// using the `calories-in-heart-rate-zone` rollup type identifier.
   CaloriesInHeartRateZoneRollupValue? caloriesInHeartRateZone;
+
+  /// Returned by default when rolling up data points from the
+  /// `core-body-temperature` data type, or when requested explicitly using the
+  /// `core-body-temperature` rollup type identifier.
+  CoreBodyTemperatureRollupValue? coreBodyTemperature;
 
   /// Returned by default when rolling up data points from the `distance` data
   /// type, or when requested explicitly using the `distance` rollup type
@@ -5476,6 +8577,11 @@ class RollupDataPoint {
   /// data type, or when requested explicitly using the `hydration-log` rollup
   /// type identifier.
   HydrationLogRollupValue? hydrationLog;
+
+  /// Returned by default when rolling up data points from the `nutrition-log`
+  /// data type, or when requested explicitly using the `nutrition-log` rollup
+  /// type identifier.
+  NutritionLogRollupValue? nutritionLog;
 
   /// Returned by default when rolling up data points from the `run-vo2-max`
   /// data type, or when requested explicitly using the `run-vo2-max` rollup
@@ -5516,17 +8622,21 @@ class RollupDataPoint {
   WeightRollupValue? weight;
 
   RollupDataPoint({
+    this.activeEnergyBurned,
     this.activeMinutes,
     this.activeZoneMinutes,
     this.activityLevel,
     this.altitude,
+    this.bloodGlucose,
     this.bodyFat,
     this.caloriesInHeartRateZone,
+    this.coreBodyTemperature,
     this.distance,
     this.endTime,
     this.floors,
     this.heartRate,
     this.hydrationLog,
+    this.nutritionLog,
     this.runVo2Max,
     this.sedentaryPeriod,
     this.startTime,
@@ -5539,6 +8649,12 @@ class RollupDataPoint {
 
   RollupDataPoint.fromJson(core.Map json_)
     : this(
+        activeEnergyBurned: json_.containsKey('activeEnergyBurned')
+            ? ActiveEnergyBurnedRollupValue.fromJson(
+                json_['activeEnergyBurned']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         activeMinutes: json_.containsKey('activeMinutes')
             ? ActiveMinutesRollupValue.fromJson(
                 json_['activeMinutes'] as core.Map<core.String, core.dynamic>,
@@ -5560,6 +8676,11 @@ class RollupDataPoint {
                 json_['altitude'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        bloodGlucose: json_.containsKey('bloodGlucose')
+            ? BloodGlucoseRollupValue.fromJson(
+                json_['bloodGlucose'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         bodyFat: json_.containsKey('bodyFat')
             ? BodyFatRollupValue.fromJson(
                 json_['bodyFat'] as core.Map<core.String, core.dynamic>,
@@ -5568,6 +8689,12 @@ class RollupDataPoint {
         caloriesInHeartRateZone: json_.containsKey('caloriesInHeartRateZone')
             ? CaloriesInHeartRateZoneRollupValue.fromJson(
                 json_['caloriesInHeartRateZone']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        coreBodyTemperature: json_.containsKey('coreBodyTemperature')
+            ? CoreBodyTemperatureRollupValue.fromJson(
+                json_['coreBodyTemperature']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -5590,6 +8717,11 @@ class RollupDataPoint {
         hydrationLog: json_.containsKey('hydrationLog')
             ? HydrationLogRollupValue.fromJson(
                 json_['hydrationLog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nutritionLog: json_.containsKey('nutritionLog')
+            ? NutritionLogRollupValue.fromJson(
+                json_['nutritionLog'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         runVo2Max: json_.containsKey('runVo2Max')
@@ -5632,17 +8764,21 @@ class RollupDataPoint {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final activeEnergyBurned = this.activeEnergyBurned;
     final activeMinutes = this.activeMinutes;
     final activeZoneMinutes = this.activeZoneMinutes;
     final activityLevel = this.activityLevel;
     final altitude = this.altitude;
+    final bloodGlucose = this.bloodGlucose;
     final bodyFat = this.bodyFat;
     final caloriesInHeartRateZone = this.caloriesInHeartRateZone;
+    final coreBodyTemperature = this.coreBodyTemperature;
     final distance = this.distance;
     final endTime = this.endTime;
     final floors = this.floors;
     final heartRate = this.heartRate;
     final hydrationLog = this.hydrationLog;
+    final nutritionLog = this.nutritionLog;
     final runVo2Max = this.runVo2Max;
     final sedentaryPeriod = this.sedentaryPeriod;
     final startTime = this.startTime;
@@ -5652,17 +8788,21 @@ class RollupDataPoint {
     final totalCalories = this.totalCalories;
     final weight = this.weight;
     return {
+      'activeEnergyBurned': ?activeEnergyBurned,
       'activeMinutes': ?activeMinutes,
       'activeZoneMinutes': ?activeZoneMinutes,
       'activityLevel': ?activityLevel,
       'altitude': ?altitude,
+      'bloodGlucose': ?bloodGlucose,
       'bodyFat': ?bodyFat,
       'caloriesInHeartRateZone': ?caloriesInHeartRateZone,
+      'coreBodyTemperature': ?coreBodyTemperature,
       'distance': ?distance,
       'endTime': ?endTime,
       'floors': ?floors,
       'heartRate': ?heartRate,
       'hydrationLog': ?hydrationLog,
+      'nutritionLog': ?nutritionLog,
       'runVo2Max': ?runVo2Max,
       'sedentaryPeriod': ?sedentaryPeriod,
       'startTime': ?startTime,
@@ -5778,6 +8918,51 @@ class SedentaryPeriodRollupValue {
   }
 }
 
+/// Represents different properties and information about the serving of a
+/// specific food.
+class Serving {
+  /// The number of servings.
+  ///
+  /// Optional.
+  core.double? amount;
+
+  /// Food measurement unit
+  ///
+  /// Required.
+  core.String? foodMeasurementUnit;
+
+  /// Legacy measurement unit for serving size in singular form (e.g. "piece",
+  /// "gram").
+  ///
+  /// Output only.
+  core.String? foodMeasurementUnitDisplayName;
+
+  Serving({
+    this.amount,
+    this.foodMeasurementUnit,
+    this.foodMeasurementUnitDisplayName,
+  });
+
+  Serving.fromJson(core.Map json_)
+    : this(
+        amount: (json_['amount'] as core.num?)?.toDouble(),
+        foodMeasurementUnit: json_['foodMeasurementUnit'] as core.String?,
+        foodMeasurementUnitDisplayName:
+            json_['foodMeasurementUnitDisplayName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final amount = this.amount;
+    final foodMeasurementUnit = this.foodMeasurementUnit;
+    final foodMeasurementUnitDisplayName = this.foodMeasurementUnitDisplayName;
+    return {
+      'amount': ?amount,
+      'foodMeasurementUnit': ?foodMeasurementUnit,
+      'foodMeasurementUnitDisplayName': ?foodMeasurementUnitDisplayName,
+    };
+  }
+}
+
 /// Represents a time interval of session data point, which bundles multiple
 /// observed metrics together.
 class SessionTimeInterval {
@@ -5871,14 +9056,22 @@ class Settings {
 
   /// The measurement unit defined in the user's account settings.
   ///
-  /// Updates to this field are currently not supported.
-  ///
   /// Optional.
   /// Possible string values are:
   /// - "DISTANCE_UNIT_UNSPECIFIED" : Distance unit is not specified.
   /// - "DISTANCE_UNIT_MILES" : Distance unit is miles.
   /// - "DISTANCE_UNIT_KILOMETERS" : Distance unit is kilometers.
   core.String? distanceUnit;
+
+  /// The food language code derived from the user's food database.
+  ///
+  /// Possible values: `'en-US'`, `'en-GB'`, `'de-DE'`, `'es-ES'`, `'fr-FR'`,
+  /// `'zh-CN'`, `'zh-TW'`, `'ja-JP'`, `'en-AU'`, `'en-CA'`, `'it-IT'`,
+  /// `'ko-KR'`, `'es-MX'`, `'en-IN'`, `'en-SG'`, `'en-PH'`, `'en-IE'`,
+  /// `'fr-CA'`. Updates to this field are currently not supported.
+  ///
+  /// Output only.
+  core.String? foodLanguageCode;
 
   /// The measurement unit defined in the user's account settings.
   ///
@@ -6002,6 +9195,7 @@ class Settings {
   Settings({
     this.autoStrideEnabled,
     this.distanceUnit,
+    this.foodLanguageCode,
     this.glucoseUnit,
     this.heightUnit,
     this.languageLocale,
@@ -6020,6 +9214,7 @@ class Settings {
     : this(
         autoStrideEnabled: json_['autoStrideEnabled'] as core.bool?,
         distanceUnit: json_['distanceUnit'] as core.String?,
+        foodLanguageCode: json_['foodLanguageCode'] as core.String?,
         glucoseUnit: json_['glucoseUnit'] as core.String?,
         heightUnit: json_['heightUnit'] as core.String?,
         languageLocale: json_['languageLocale'] as core.String?,
@@ -6039,6 +9234,7 @@ class Settings {
   core.Map<core.String, core.dynamic> toJson() {
     final autoStrideEnabled = this.autoStrideEnabled;
     final distanceUnit = this.distanceUnit;
+    final foodLanguageCode = this.foodLanguageCode;
     final glucoseUnit = this.glucoseUnit;
     final heightUnit = this.heightUnit;
     final languageLocale = this.languageLocale;
@@ -6054,6 +9250,7 @@ class Settings {
     return {
       'autoStrideEnabled': ?autoStrideEnabled,
       'distanceUnit': ?distanceUnit,
+      'foodLanguageCode': ?foodLanguageCode,
       'glucoseUnit': ?glucoseUnit,
       'heightUnit': ?heightUnit,
       'languageLocale': ?languageLocale,
@@ -6082,7 +9279,8 @@ class Sleep {
   /// Required.
   SessionTimeInterval? interval;
 
-  /// Sleep metadata: processing, main, manually edited, stages status.
+  /// Sleep metadata: `processed`, `main_sleep`, `manually_edited`, and
+  /// `stages_status`.
   ///
   /// Optional.
   SleepMetadata? metadata;
@@ -6091,6 +9289,14 @@ class Sleep {
   ///
   /// Optional.
   core.List<OutOfBedSegment>? outOfBedSegments;
+
+  /// List of short awake segments (under a set threshold) that are part of the
+  /// sleep session.
+  ///
+  /// These can overlap with sleep stages.
+  ///
+  /// Output only.
+  core.List<SleepStage>? shortAwakenings;
 
   /// List of non-overlapping contiguous sleep stage segments that cover the
   /// sleep period.
@@ -6125,6 +9331,7 @@ class Sleep {
     this.interval,
     this.metadata,
     this.outOfBedSegments,
+    this.shortAwakenings,
     this.stages,
     this.summary,
     this.type,
@@ -6151,6 +9358,13 @@ class Sleep {
               ),
             )
             .toList(),
+        shortAwakenings: (json_['shortAwakenings'] as core.List?)
+            ?.map(
+              (value) => SleepStage.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         stages: (json_['stages'] as core.List?)
             ?.map(
               (value) => SleepStage.fromJson(
@@ -6172,6 +9386,7 @@ class Sleep {
     final interval = this.interval;
     final metadata = this.metadata;
     final outOfBedSegments = this.outOfBedSegments;
+    final shortAwakenings = this.shortAwakenings;
     final stages = this.stages;
     final summary = this.summary;
     final type = this.type;
@@ -6181,6 +9396,7 @@ class Sleep {
       'interval': ?interval,
       'metadata': ?metadata,
       'outOfBedSegments': ?outOfBedSegments,
+      'shortAwakenings': ?shortAwakenings,
       'stages': ?stages,
       'summary': ?summary,
       'type': ?type,
@@ -6196,6 +9412,15 @@ class SleepMetadata {
   /// Optional.
   core.String? externalId;
 
+  /// `main_sleep`: the longest sleep session with stages within one day.
+  ///
+  /// If no sleep session has stages, then the longest sleep is the
+  /// `main_sleep`. If there are multiple days of sleep in the response, there
+  /// is one `main_sleep` per day.
+  ///
+  /// Output only.
+  core.bool? mainSleep;
+
   /// Some sleeps autodetected by algorithms can be manually edited by users.
   ///
   /// Output only.
@@ -6207,6 +9432,10 @@ class SleepMetadata {
   core.bool? nap;
 
   /// Sleep and sleep stages algorithms finished processing.
+  ///
+  /// A `true` value indicates whether all data processing for the session is
+  /// complete. A `false` value means sleep period is detected but sleep stages
+  /// is still processing.
   ///
   /// Output only.
   core.bool? processed;
@@ -6238,6 +9467,7 @@ class SleepMetadata {
 
   SleepMetadata({
     this.externalId,
+    this.mainSleep,
     this.manuallyEdited,
     this.nap,
     this.processed,
@@ -6247,6 +9477,7 @@ class SleepMetadata {
   SleepMetadata.fromJson(core.Map json_)
     : this(
         externalId: json_['externalId'] as core.String?,
+        mainSleep: json_['mainSleep'] as core.bool?,
         manuallyEdited: json_['manuallyEdited'] as core.bool?,
         nap: json_['nap'] as core.bool?,
         processed: json_['processed'] as core.bool?,
@@ -6255,12 +9486,14 @@ class SleepMetadata {
 
   core.Map<core.String, core.dynamic> toJson() {
     final externalId = this.externalId;
+    final mainSleep = this.mainSleep;
     final manuallyEdited = this.manuallyEdited;
     final nap = this.nap;
     final processed = this.processed;
     final stagesStatus = this.stagesStatus;
     return {
       'externalId': ?externalId,
+      'mainSleep': ?mainSleep,
       'manuallyEdited': ?manuallyEdited,
       'nap': ?nap,
       'processed': ?processed,
@@ -6750,8 +9983,9 @@ class Subscriber {
 /// A notification is sent to a subscription ONLY if the subscriber has a config
 /// for the data type.
 class SubscriberConfig {
-  /// Supported data types are: "altitude", "distance", "floors", "sleep",
-  /// "steps", "weight".
+  /// See
+  /// [Google Health API data types](https://developers.google.com/health/data-types)
+  /// for the list of supported data types.
   ///
   /// Values should be in kebab-case.
   ///
@@ -6796,6 +10030,62 @@ class SubscriberConfig {
       'dataTypes': ?dataTypes,
       'subscriptionCreatePolicy': ?subscriptionCreatePolicy,
     };
+  }
+}
+
+/// A subscription to a data collection for a specific user, to be delivered to
+/// a subscriber.
+class Subscription {
+  /// Data types subscribed to.
+  ///
+  /// A subscriber will only receive notifications for data types that are
+  /// declared here. A subscription can only subscribe to the data types of the
+  /// subscriber. The values should be in the format
+  /// "users/{health_user_id}/dataTypes/{data_type}" where `{data_type}` is one
+  /// of "altitude", "distance", "floors", "sleep", "steps", "weight".
+  ///
+  /// Optional.
+  core.List<core.String>? dataTypes;
+
+  /// Identifier.
+  ///
+  /// The resource name of the Subscription. Format:
+  /// `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}`
+  /// Example:
+  /// `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456`
+  /// The {project} ID is mandatory (6-30 characters, matching /a-z{6,30}/) The
+  /// {subscriber} ID is user-settable (4-36 characters, matching
+  /// /\[a-z\](\[a-z0-9-\]{2,34}\[a-z0-9\])/) if provided during creation, or
+  /// system-generated otherwise. The {subscription} ID is user-settable (4-36
+  /// chars, matching /\[a-z\](\[a-z0-9-\]{2,34}\[a-z0-9\])/) or
+  /// system-generated otherwise.
+  core.String? name;
+
+  /// The resource name of the user for whom this subscription is active.
+  ///
+  /// Format: `users/{user}` where `{user}` is the public `healthUserId` as
+  /// returned by the `GetIdentity` action in the profile PAPI (see
+  /// `google.devicesandservices.health.v4main.HealthProfileService.GetIdentity`).
+  ///
+  /// Immutable.
+  core.String? user;
+
+  Subscription({this.dataTypes, this.name, this.user});
+
+  Subscription.fromJson(core.Map json_)
+    : this(
+        dataTypes: (json_['dataTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        name: json_['name'] as core.String?,
+        user: json_['user'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataTypes = this.dataTypes;
+    final name = this.name;
+    final user = this.user;
+    return {'dataTypes': ?dataTypes, 'name': ?name, 'user': ?user};
   }
 }
 
@@ -6860,6 +10150,39 @@ class SwimLengthsDataRollupValue {
   core.Map<core.String, core.dynamic> toJson() {
     final strokeCountSum = this.strokeCountSum;
     return {'strokeCountSum': ?strokeCountSum};
+  }
+}
+
+/// Symptoms logged by the user.
+class Symptoms {
+  /// Time when the symptoms were logged.
+  ///
+  /// Required.
+  ObservationSampleTime? sampleTime;
+
+  /// List of symptoms experienced.
+  ///
+  /// Required.
+  core.List<core.String>? symptoms;
+
+  Symptoms({this.sampleTime, this.symptoms});
+
+  Symptoms.fromJson(core.Map json_)
+    : this(
+        sampleTime: json_.containsKey('sampleTime')
+            ? ObservationSampleTime.fromJson(
+                json_['sampleTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        symptoms: (json_['symptoms'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sampleTime = this.sampleTime;
+    final symptoms = this.symptoms;
+    return {'sampleTime': ?sampleTime, 'symptoms': ?symptoms};
   }
 }
 
@@ -7015,6 +10338,13 @@ class TimeInHeartRateZones {
 typedef TimeOfDay = $TimeOfDay;
 
 /// Represents the result of the rollup of the user's total calories.
+///
+/// Note: Queries for the `total-calories` data type must include a time
+/// interval filter (such as `total_calories.interval.start_time` or
+/// `total_calories.interval.civil_start_time`). The maximum range is 14 days.
+/// Example filter query: `total_calories.interval.start_time >=
+/// "2026-04-20T00:00:00Z" AND total_calories.interval.start_time <
+/// "2026-04-21T00:00:00Z"`
 class TotalCaloriesRollupValue {
   /// Sum of the total calories in kilocalories.
   core.double? kcalSum;
@@ -7100,7 +10430,10 @@ class VolumeQuantity {
   /// Required.
   core.double? milliliters;
 
-  /// Value representing the user provided unit.
+  /// Value representing the user provided unit, used only for user-facing input
+  /// and display purposes.
+  ///
+  /// In the API format, all volume quantities are converted to milliliters.
   ///
   /// Optional.
   /// Possible string values are:
@@ -7208,6 +10541,83 @@ class Weight {
       'notes': ?notes,
       'sampleTime': ?sampleTime,
       'weightGrams': ?weightGrams,
+    };
+  }
+}
+
+/// Represents the weight quantity.
+class WeightQuantity {
+  /// The weight value in grams.
+  ///
+  /// Required.
+  core.double? grams;
+
+  /// Value representing the user provided unit.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WEIGHT_UNIT_UNSPECIFIED" : Unspecified weight unit.
+  /// - "GRAM" : Value representing gram.
+  /// - "KILOGRAM" : Value representing kilogram.
+  /// - "OUNCE" : Value representing ounce.
+  /// - "POUND" : Value representing pound.
+  /// - "STONE" : Value representing stone.
+  /// - "MILLIGRAM" : Value representing milligram.
+  /// - "MICROGRAM" : Value representing microgram.
+  /// - "NANOGRAM" : Value representing nanogram.
+  core.String? userProvidedUnit;
+
+  WeightQuantity({this.grams, this.userProvidedUnit});
+
+  WeightQuantity.fromJson(core.Map json_)
+    : this(
+        grams: (json_['grams'] as core.num?)?.toDouble(),
+        userProvidedUnit: json_['userProvidedUnit'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final grams = this.grams;
+    final userProvidedUnit = this.userProvidedUnit;
+    return {'grams': ?grams, 'userProvidedUnit': ?userProvidedUnit};
+  }
+}
+
+/// Rollup for the weight.
+class WeightQuantityRollup {
+  /// The sum of the weight in grams.
+  ///
+  /// Required.
+  core.double? gramsSum;
+
+  /// The user provided unit on the last element.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WEIGHT_UNIT_UNSPECIFIED" : Unspecified weight unit.
+  /// - "GRAM" : Value representing gram.
+  /// - "KILOGRAM" : Value representing kilogram.
+  /// - "OUNCE" : Value representing ounce.
+  /// - "POUND" : Value representing pound.
+  /// - "STONE" : Value representing stone.
+  /// - "MILLIGRAM" : Value representing milligram.
+  /// - "MICROGRAM" : Value representing microgram.
+  /// - "NANOGRAM" : Value representing nanogram.
+  core.String? userProvidedUnitLast;
+
+  WeightQuantityRollup({this.gramsSum, this.userProvidedUnitLast});
+
+  WeightQuantityRollup.fromJson(core.Map json_)
+    : this(
+        gramsSum: (json_['gramsSum'] as core.num?)?.toDouble(),
+        userProvidedUnitLast: json_['userProvidedUnitLast'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final gramsSum = this.gramsSum;
+    final userProvidedUnitLast = this.userProvidedUnitLast;
+    return {
+      'gramsSum': ?gramsSum,
+      'userProvidedUnitLast': ?userProvidedUnitLast,
     };
   }
 }

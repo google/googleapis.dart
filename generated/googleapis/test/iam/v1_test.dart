@@ -299,10 +299,7 @@ core.int buildCounterDisableServiceAccountKeyRequest = 0;
 api.DisableServiceAccountKeyRequest buildDisableServiceAccountKeyRequest() {
   final o = api.DisableServiceAccountKeyRequest();
   buildCounterDisableServiceAccountKeyRequest++;
-  if (buildCounterDisableServiceAccountKeyRequest < 3) {
-    o.extendedStatusMessage = 'foo';
-    o.serviceAccountKeyDisableReason = 'foo';
-  }
+  if (buildCounterDisableServiceAccountKeyRequest < 3) {}
   buildCounterDisableServiceAccountKeyRequest--;
   return o;
 }
@@ -311,10 +308,7 @@ void checkDisableServiceAccountKeyRequest(
   api.DisableServiceAccountKeyRequest o,
 ) {
   buildCounterDisableServiceAccountKeyRequest++;
-  if (buildCounterDisableServiceAccountKeyRequest < 3) {
-    unittest.expect(o.extendedStatusMessage!, unittest.equals('foo'));
-    unittest.expect(o.serviceAccountKeyDisableReason!, unittest.equals('foo'));
-  }
+  if (buildCounterDisableServiceAccountKeyRequest < 3) {}
   buildCounterDisableServiceAccountKeyRequest--;
 }
 

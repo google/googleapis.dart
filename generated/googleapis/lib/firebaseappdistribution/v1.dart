@@ -357,18 +357,27 @@ class ProjectsAppsReleasesResource {
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [filter] - Optional. The expression to filter releases listed in the
-  /// response. To learn more about filtering, refer to \[Google's AIP-160
-  /// standard\](http://aip.dev/160). Supported fields: - `releaseNotes.text`
-  /// supports `=` (can contain a wildcard character (`*`) at the beginning or
-  /// end of the string) - `createTime` supports `<`, `<=`, `>` and `>=`, and
-  /// expects an RFC-3339 formatted string Examples: - `createTime <=
-  /// "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime
-  /// >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
+  /// response. To learn more about filtering, refer to the \[AIP-160
+  /// standard\](http://aip.dev/160). Supported fields: - Time fields supporting
+  /// \`\<\`, \`\<=\`, \`\>\` and \`\>=\`; expecting an RFC-3339 formatted
+  /// string: - \`create_time\` (or \`createTime\`) - \`update_time\` (or
+  /// \`updateTime\`) - \`expire_time\` (or \`expireTime\`) - Text fields
+  /// supporting \`=\`. The compared text can contain a wildcard character
+  /// (\`*\`) at the beginning and/or end of the string which also enables
+  /// case-insensitive matching: - \`release_notes.text\` (or
+  /// \`releaseNotes.text\`) - \`display_version\` (or \`displayVersion\`) -
+  /// \`build_version\` (or \`buildVersion\`). Examples: - \`createTime \<=
+  /// "2021-09-08T00:00:00+04:00"\` - \`expire_time \>
+  /// "2021-09-08T00:00:00+04:00"\` - \`releaseNotes.text="fixes" AND createTime
+  /// \>= "2021-09-08T00:00:00.0Z"\` - \`releaseNotes.text="*v1.0.0-rc*"\` -
+  /// \`(display_version = "v1.0.0-rc2" AND \`build_version = "123") OR
+  /// release_notes = "*v1.0.0-rc2 (123)*"\`
   ///
   /// [orderBy] - Optional. The fields used to order releases. Supported fields:
-  /// - `createTime` To specify descending order for a field, append a "desc"
-  /// suffix, for example, `createTime desc`. If this parameter is not set,
-  /// releases are ordered by `createTime` in descending order.
+  /// - `create_time` (or `createTime`) - `update_time` (or `updateTime`) -
+  /// `expire_time` (or `expireTime`) To specify descending order for a field,
+  /// append a "desc" suffix, for example, `createTime desc`. If this parameter
+  /// is not set, releases are ordered by `createTime` in descending order.
   ///
   /// [pageSize] - Optional. The maximum number of releases to return. The
   /// service may return fewer than this value. The valid range is \[1-100\]; If
@@ -2013,6 +2022,18 @@ class GdataMedia {
         .replaceAll('+', '-');
   }
 
+  /// Scotty-provided SHA512 hash for an upload.
+  core.String? sha512Hash;
+  core.List<core.int> get sha512HashAsBytes =>
+      convert.base64.decode(sha512Hash!);
+
+  set sha512HashAsBytes(core.List<core.int> bytes_) {
+    sha512Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
   /// Time at which the media data was last updated, in milliseconds since UNIX
   /// epoch
   core.String? timestamp;
@@ -2049,6 +2070,7 @@ class GdataMedia {
     this.referenceType,
     this.sha1Hash,
     this.sha256Hash,
+    this.sha512Hash,
     this.timestamp,
     this.token,
   });
@@ -2131,6 +2153,7 @@ class GdataMedia {
         referenceType: json_['referenceType'] as core.String?,
         sha1Hash: json_['sha1Hash'] as core.String?,
         sha256Hash: json_['sha256Hash'] as core.String?,
+        sha512Hash: json_['sha512Hash'] as core.String?,
         timestamp: json_['timestamp'] as core.String?,
         token: json_['token'] as core.String?,
       );
@@ -2164,6 +2187,7 @@ class GdataMedia {
     final referenceType = this.referenceType;
     final sha1Hash = this.sha1Hash;
     final sha256Hash = this.sha256Hash;
+    final sha512Hash = this.sha512Hash;
     final timestamp = this.timestamp;
     final token = this.token;
     return {
@@ -2195,6 +2219,7 @@ class GdataMedia {
       'referenceType': ?referenceType,
       'sha1Hash': ?sha1Hash,
       'sha256Hash': ?sha256Hash,
+      'sha512Hash': ?sha512Hash,
       'timestamp': ?timestamp,
       'token': ?token,
     };
@@ -2212,16 +2237,25 @@ class GoogleFirebaseAppdistroV1AabInfo {
   ///
   /// Only valid for android apps.
   /// Possible string values are:
-  /// - "AAB_INTEGRATION_STATE_UNSPECIFIED" : Aab integration state unspecified
-  /// - "INTEGRATED" : App can receive app bundle uploads
+  /// - "AAB_INTEGRATION_STATE_UNSPECIFIED" : AAB integration state unspecified.
+  /// - "INTEGRATED" : App can receive app bundle uploads.
   /// - "PLAY_ACCOUNT_NOT_LINKED" : Firebase project is not linked to a Play
-  /// developer account
-  /// - "NO_APP_WITH_GIVEN_BUNDLE_ID_IN_PLAY_ACCOUNT" : There is no app in
-  /// linked Play developer account with the same bundle id
-  /// - "APP_NOT_PUBLISHED" : The app in Play developer account is not in a
-  /// published state
-  /// - "AAB_STATE_UNAVAILABLE" : Play App status is unavailable
-  /// - "PLAY_IAS_TERMS_NOT_ACCEPTED" : Play IAS terms not accepted
+  /// developer account.
+  /// - "NO_APP_WITH_GIVEN_BUNDLE_ID_IN_PLAY_ACCOUNT" : There is no app in the
+  /// linked Play developer account with the same bundle ID.
+  /// - "APP_NOT_PUBLISHED" : The app in the Play developer account is not in a
+  /// published state.
+  /// - "AAB_STATE_UNAVAILABLE" : Play App status is unavailable.
+  /// - "PLAY_IAS_TERMS_NOT_ACCEPTED" : Play in-app sharing terms not accepted.
+  /// - "ADHOC_SHARING_KEY_NOT_GENERATED" : The ad-hoc sharing key has not been
+  /// generated for this app.
+  /// - "ADHOC_SHARING_KEY_NOT_REGISTERED" : The ad-hoc sharing key is not yet
+  /// registered in Android Developer Verification for this app.
+  /// - "PLAY_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND" : The linked Play
+  /// developer account was not found or is not fully set up in Android
+  /// Developer Console.
+  /// - "PLAY_ANDROID_DEVELOPER_CONSOLE_PACKAGE_NOT_FOUND" : The package was not
+  /// found in the Android Developer Console.
   core.String? integrationState;
 
   /// The name of the `AabInfo` resource.
@@ -2697,9 +2731,13 @@ class GoogleFirebaseAppdistroV1ListReleasesResponse {
   /// The releases
   core.List<GoogleFirebaseAppdistroV1Release>? releases;
 
+  /// The total number of releases.
+  core.int? totalSize;
+
   GoogleFirebaseAppdistroV1ListReleasesResponse({
     this.nextPageToken,
     this.releases,
+    this.totalSize,
   });
 
   GoogleFirebaseAppdistroV1ListReleasesResponse.fromJson(core.Map json_)
@@ -2712,12 +2750,18 @@ class GoogleFirebaseAppdistroV1ListReleasesResponse {
               ),
             )
             .toList(),
+        totalSize: json_['totalSize'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final nextPageToken = this.nextPageToken;
     final releases = this.releases;
-    return {'nextPageToken': ?nextPageToken, 'releases': ?releases};
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'releases': ?releases,
+      'totalSize': ?totalSize,
+    };
   }
 }
 
@@ -2758,11 +2802,39 @@ class GoogleFirebaseAppdistroV1ListTestersResponse {
 
 /// A release of a Firebase app.
 class GoogleFirebaseAppdistroV1Release {
+  /// Number of testers with accepted invitations.
+  ///
+  /// Output only.
+  core.int? acceptedInvitationCount;
+
+  /// Registration state of the Android package (BinaryType.APK).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ANDROID_PACKAGE_REGISTRATION_STATE_UNSPECIFIED" : Default value.
+  /// - "REGISTERED" : Package is registered with the release binary's
+  /// certificate fingerprint.
+  /// - "NOT_REGISTERED" : Package is not registered with any public
+  /// certificate.
+  /// - "REGISTERED_WITH_ANOTHER_CERTIFICATE_FINGERPRINT" : Package is
+  /// registered with another public certificate fingerprint.
+  core.String? androidPackageRegistrationState;
+
   /// A signed link (which expires in one hour) to directly download the app
   /// binary (IPA/APK/AAB) file.
   ///
   /// Output only.
   core.String? binaryDownloadUri;
+
+  /// Type of binary.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BINARY_TYPE_UNSPECIFIED" : unspecified binary type
+  /// - "IPA" : iOS App Store package
+  /// - "APK" : Android Application package
+  /// - "AAB" : Android App Bundle
+  core.String? binaryType;
 
   /// Build version of the release.
   ///
@@ -2790,18 +2862,48 @@ class GoogleFirebaseAppdistroV1Release {
   /// Output only.
   core.String? expireTime;
 
+  /// Number of feedback reports left by testers.
+  ///
+  /// Output only.
+  core.int? feedbackCount;
+
   /// A link to the Firebase console displaying a single release.
   ///
   /// Output only.
   core.String? firebaseConsoleUri;
+
+  /// Number of testers who have downloaded this release.
+  ///
+  /// Output only.
+  core.int? installationCount;
 
   /// The name of the release resource.
   ///
   /// Format: `projects/{project_number}/apps/{app}/releases/{release}`
   core.String? name;
 
-  /// Notes of the release.
+  /// Number of testers who were invited (incl.
+  ///
+  /// expired invitations), but did not (yet) accept the invitation.
+  ///
+  /// Output only.
+  core.int? openInvitationCount;
+
+  /// Notes about the release.
   GoogleFirebaseAppdistroV1ReleaseNotes? releaseNotes;
+
+  /// The overall state of tests run on this release
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TEST_STATE_UNSPECIFIED" : No test state specified
+  /// - "NO_TESTS_REQUESTED" : No tests have been requested for this release
+  /// - "IN_PROGRESS" : One or more device executions are in progress
+  /// - "PASSED" : All device executions passed during the most recent test
+  /// - "FAILED" : Some device executions failed during the most recent test
+  /// - "INCONCLUSIVE" : Some device executions were inconclusive, but none
+  /// failed, during the most recent test
+  core.String? testState;
 
   /// A link to the release in the tester web clip or Android app that lets
   /// testers (which were granted access to the app) view release notes and
@@ -2816,56 +2918,86 @@ class GoogleFirebaseAppdistroV1Release {
   core.String? updateTime;
 
   GoogleFirebaseAppdistroV1Release({
+    this.acceptedInvitationCount,
+    this.androidPackageRegistrationState,
     this.binaryDownloadUri,
+    this.binaryType,
     this.buildVersion,
     this.createTime,
     this.displayVersion,
     this.expireTime,
+    this.feedbackCount,
     this.firebaseConsoleUri,
+    this.installationCount,
     this.name,
+    this.openInvitationCount,
     this.releaseNotes,
+    this.testState,
     this.testingUri,
     this.updateTime,
   });
 
   GoogleFirebaseAppdistroV1Release.fromJson(core.Map json_)
     : this(
+        acceptedInvitationCount: json_['acceptedInvitationCount'] as core.int?,
+        androidPackageRegistrationState:
+            json_['androidPackageRegistrationState'] as core.String?,
         binaryDownloadUri: json_['binaryDownloadUri'] as core.String?,
+        binaryType: json_['binaryType'] as core.String?,
         buildVersion: json_['buildVersion'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         displayVersion: json_['displayVersion'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
+        feedbackCount: json_['feedbackCount'] as core.int?,
         firebaseConsoleUri: json_['firebaseConsoleUri'] as core.String?,
+        installationCount: json_['installationCount'] as core.int?,
         name: json_['name'] as core.String?,
+        openInvitationCount: json_['openInvitationCount'] as core.int?,
         releaseNotes: json_.containsKey('releaseNotes')
             ? GoogleFirebaseAppdistroV1ReleaseNotes.fromJson(
                 json_['releaseNotes'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        testState: json_['testState'] as core.String?,
         testingUri: json_['testingUri'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final acceptedInvitationCount = this.acceptedInvitationCount;
+    final androidPackageRegistrationState =
+        this.androidPackageRegistrationState;
     final binaryDownloadUri = this.binaryDownloadUri;
+    final binaryType = this.binaryType;
     final buildVersion = this.buildVersion;
     final createTime = this.createTime;
     final displayVersion = this.displayVersion;
     final expireTime = this.expireTime;
+    final feedbackCount = this.feedbackCount;
     final firebaseConsoleUri = this.firebaseConsoleUri;
+    final installationCount = this.installationCount;
     final name = this.name;
+    final openInvitationCount = this.openInvitationCount;
     final releaseNotes = this.releaseNotes;
+    final testState = this.testState;
     final testingUri = this.testingUri;
     final updateTime = this.updateTime;
     return {
+      'acceptedInvitationCount': ?acceptedInvitationCount,
+      'androidPackageRegistrationState': ?androidPackageRegistrationState,
       'binaryDownloadUri': ?binaryDownloadUri,
+      'binaryType': ?binaryType,
       'buildVersion': ?buildVersion,
       'createTime': ?createTime,
       'displayVersion': ?displayVersion,
       'expireTime': ?expireTime,
+      'feedbackCount': ?feedbackCount,
       'firebaseConsoleUri': ?firebaseConsoleUri,
+      'installationCount': ?installationCount,
       'name': ?name,
+      'openInvitationCount': ?openInvitationCount,
       'releaseNotes': ?releaseNotes,
+      'testState': ?testState,
       'testingUri': ?testingUri,
       'updateTime': ?updateTime,
     };

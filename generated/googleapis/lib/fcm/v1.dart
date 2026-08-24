@@ -306,6 +306,15 @@ class AndroidNotification {
   /// See [String Resources](https://goo.gl/NdFZGI) for more information.
   core.String? bodyLocKey;
 
+  /// If set, display notifications delivered to the device will be handled by
+  /// the app instead of the proxy.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? bypassProxyNotification;
+
   /// The
   /// [notification's channel id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)
   /// (new in Android O).
@@ -517,6 +526,7 @@ class AndroidNotification {
     this.body,
     this.bodyLocArgs,
     this.bodyLocKey,
+    this.bypassProxyNotification,
     this.channelId,
     this.clickAction,
     this.color,
@@ -549,6 +559,7 @@ class AndroidNotification {
             ?.map((value) => value as core.String)
             .toList(),
         bodyLocKey: json_['bodyLocKey'] as core.String?,
+        bypassProxyNotification: json_['bypassProxyNotification'] as core.bool?,
         channelId: json_['channelId'] as core.String?,
         clickAction: json_['clickAction'] as core.String?,
         color: json_['color'] as core.String?,
@@ -586,6 +597,7 @@ class AndroidNotification {
     final body = this.body;
     final bodyLocArgs = this.bodyLocArgs;
     final bodyLocKey = this.bodyLocKey;
+    final bypassProxyNotification = this.bypassProxyNotification;
     final channelId = this.channelId;
     final clickAction = this.clickAction;
     final color = this.color;
@@ -613,6 +625,7 @@ class AndroidNotification {
       'body': ?body,
       'bodyLocArgs': ?bodyLocArgs,
       'bodyLocKey': ?bodyLocKey,
+      'bypassProxyNotification': ?bypassProxyNotification,
       'channelId': ?channelId,
       'clickAction': ?clickAction,
       'color': ?color,
@@ -805,7 +818,7 @@ class LightSettings {
   /// Required.
   Color? color;
 
-  /// Along with `light_on_duration `, define the blink rate of LED flashes.
+  /// Along with `light_on_duration`, define the blink rate of LED flashes.
   ///
   /// Resolution defined by
   /// [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
@@ -877,6 +890,9 @@ class Message {
   /// Template for FCM SDK feature options to use across all platforms.
   FcmOptions? fcmOptions;
 
+  /// Firebase Installation ID to send a message to.
+  core.String? fid;
+
   /// The identifier of the message sent, in the format of `projects / *
   /// /messages/{message_id}`.
   ///
@@ -888,7 +904,13 @@ class Message {
   /// Basic notification template to use across all platforms.
   Notification? notification;
 
-  /// Registration token to send a message to.
+  /// Deprecated: Use `fid` instead.
+  ///
+  /// Registration token to send a message to. During the transition period,
+  /// this field also accepts a Firebase Installation ID (FID).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? token;
 
   /// Topic name to send a message to, e.g. "weather".
@@ -907,6 +929,7 @@ class Message {
     this.condition,
     this.data,
     this.fcmOptions,
+    this.fid,
     this.name,
     this.notification,
     this.token,
@@ -935,6 +958,7 @@ class Message {
                 json_['fcmOptions'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        fid: json_['fid'] as core.String?,
         name: json_['name'] as core.String?,
         notification: json_.containsKey('notification')
             ? Notification.fromJson(
@@ -956,6 +980,7 @@ class Message {
     final condition = this.condition;
     final data = this.data;
     final fcmOptions = this.fcmOptions;
+    final fid = this.fid;
     final name = this.name;
     final notification = this.notification;
     final token = this.token;
@@ -967,6 +992,7 @@ class Message {
       'condition': ?condition,
       'data': ?data,
       'fcmOptions': ?fcmOptions,
+      'fid': ?fid,
       'name': ?name,
       'notification': ?notification,
       'token': ?token,

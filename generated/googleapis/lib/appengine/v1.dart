@@ -1297,9 +1297,8 @@ class AppsLocationsResource {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -6877,6 +6876,10 @@ class Version {
   /// services.
   core.bool? appEngineApis;
 
+  /// List of specific App Engine Bundled Services that are enabled for this
+  /// Version.
+  core.List<core.String>? appEngineBundledServices;
+
   /// Automatic scaling is based on request rate, response latencies, and other
   /// application metrics.
   ///
@@ -7095,6 +7098,7 @@ class Version {
   Version({
     this.apiConfig,
     this.appEngineApis,
+    this.appEngineBundledServices,
     this.automaticScaling,
     this.basicScaling,
     this.betaSettings,
@@ -7145,6 +7149,10 @@ class Version {
               )
             : null,
         appEngineApis: json_['appEngineApis'] as core.bool?,
+        appEngineBundledServices:
+            (json_['appEngineBundledServices'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         automaticScaling: json_.containsKey('automaticScaling')
             ? AutomaticScaling.fromJson(
                 json_['automaticScaling']
@@ -7278,6 +7286,7 @@ class Version {
   core.Map<core.String, core.dynamic> toJson() {
     final apiConfig = this.apiConfig;
     final appEngineApis = this.appEngineApis;
+    final appEngineBundledServices = this.appEngineBundledServices;
     final automaticScaling = this.automaticScaling;
     final basicScaling = this.basicScaling;
     final betaSettings = this.betaSettings;
@@ -7321,6 +7330,7 @@ class Version {
     return {
       'apiConfig': ?apiConfig,
       'appEngineApis': ?appEngineApis,
+      'appEngineBundledServices': ?appEngineBundledServices,
       'automaticScaling': ?automaticScaling,
       'basicScaling': ?basicScaling,
       'betaSettings': ?betaSettings,

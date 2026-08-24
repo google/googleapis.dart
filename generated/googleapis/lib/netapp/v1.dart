@@ -38,6 +38,7 @@
 ///     - [ProjectsLocationsKmsConfigsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsStoragePoolsResource]
+///       - [ProjectsLocationsStoragePoolsBackupConfigsResource]
 ///       - [ProjectsLocationsStoragePoolsOntapResource]
 ///     - [ProjectsLocationsVolumesResource]
 ///       - [ProjectsLocationsVolumesQuotaRulesResource]
@@ -149,7 +150,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -164,9 +165,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1632,7 +1632,7 @@ class ProjectsLocationsKmsConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. Name of the KmsConfig. Format:
+  /// [name] - Identifier. Name of the `KmsConfig`. Format:
   /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/kmsConfigs/\[^/\]+$`.
@@ -1923,6 +1923,8 @@ class ProjectsLocationsOperationsResource {
 class ProjectsLocationsStoragePoolsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsStoragePoolsBackupConfigsResource get backupConfigs =>
+      ProjectsLocationsStoragePoolsBackupConfigsResource(_requester);
   ProjectsLocationsStoragePoolsOntapResource get ontap =>
       ProjectsLocationsStoragePoolsOntapResource(_requester);
 
@@ -2154,6 +2156,49 @@ class ProjectsLocationsStoragePoolsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Restores a backup to an ONTAP-mode volume.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the ONTAP mode storage pool, in
+  /// the format of
+  /// `projects/{project}/locations/{location}/storagePools/{storage_pool}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storagePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> restoreVolume(
+    RestoreVolumeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restoreVolume';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// This operation will switch the active/replica zone for a regional
   /// storagePool.
   ///
@@ -2186,6 +2231,48 @@ class ProjectsLocationsStoragePoolsResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':switch';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the backup configuration for an ONTAP-mode volume.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the StoragePool, in the format:
+  /// projects/{projectNumber}/locations/{locationId}/storagePools/{poolId}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storagePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateBackupConfig(
+    UpdateBackupConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':updateBackupConfig';
 
     final response_ = await _requester.request(
       url_,
@@ -2240,14 +2327,82 @@ class ProjectsLocationsStoragePoolsResource {
   }
 }
 
+class ProjectsLocationsStoragePoolsBackupConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsStoragePoolsBackupConfigsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists backup configurations for all volumes in an ONTAP-mode Storage Pool.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The ONTAP StoragePool for which to retrieve backup
+  /// configuration information, in the format
+  /// `projects/{project}/locations/{location}/storagePools/{storage_pool}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storagePools/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The standard list filter.
+  ///
+  /// [orderBy] - Optional. Sort results. Supported values are "volume_id" or ""
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. The service
+  /// may return fewer than this value. The maximum value is 1000; values above
+  /// 1000 will be coerced to 1000. If unspecified or set to 0, a default of 50
+  /// will be used.
+  ///
+  /// [pageToken] - Optional. The next_page_token value to use if there are
+  /// additional results to retrieve for this list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBackupConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsStoragePoolsOntapResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsStoragePoolsOntapResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the
-  /// `StoragePool` cluster.
+  /// `ExecuteOntapDelete` sends the ONTAP `DELETE` request to the `StoragePool`
+  /// cluster.
   ///
   /// Request parameters:
   ///
@@ -2288,7 +2443,7 @@ class ProjectsLocationsStoragePoolsOntapResource {
     );
   }
 
-  /// `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool`
+  /// `ExecuteOntapGet` sends the ONTAP `GET` request to the `StoragePool`
   /// cluster.
   ///
   /// Request parameters:
@@ -2330,8 +2485,8 @@ class ProjectsLocationsStoragePoolsOntapResource {
     );
   }
 
-  /// `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the
-  /// `StoragePool` cluster.
+  /// `ExecuteOntapPatch` sends the ONTAP `PATCH` request to the `StoragePool`
+  /// cluster.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2377,14 +2532,14 @@ class ProjectsLocationsStoragePoolsOntapResource {
     );
   }
 
-  /// `ExecuteOntapPost` dispatches the ONTAP `POST` request to the
-  /// `StoragePool` cluster.
+  /// `ExecuteOntapPost` sends the ONTAP `POST` request to the `StoragePool`
+  /// cluster.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [ontapPath] - Required. The resource path of the ONTAP resource. Format:
+  /// [ontapPath] - Required. The path of the ONTAP resource. Format:
   /// `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`.
   /// For example:
   /// `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`.
@@ -2605,6 +2760,49 @@ class ProjectsLocationsVolumesResource {
     return Volume.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves the current state, progress, and details of a split operation
+  /// for a volume.
+  ///
+  /// This method is relevant when the volume is a clone. For volumes that are
+  /// not clones, this method will return an error.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the volume. Format:
+  /// projects/{project_number}/locations/{location}/volumes/{volume_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SplitStatus].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SplitStatus> getSplitStatus(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getSplitStatus';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SplitStatus.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists Volumes in a given project.
   ///
   /// Request parameters:
@@ -2786,6 +2984,53 @@ class ProjectsLocationsVolumesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':revert';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Splits a clone volume from its source volume.
+  ///
+  /// This operation will only work for volumes which have clone_details
+  /// set(clones). For volumes that are not clones, this operation will return
+  /// an error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the clone volume to be split from its
+  /// source. Format:
+  /// projects/{project_number}/locations/{location}/volumes/{volume_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> startSplit(
+    StartSplitRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':startSplit';
 
     final response_ = await _requester.request(
       url_,
@@ -3979,6 +4224,13 @@ class Backup {
   /// `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}`.
   core.String? name;
 
+  /// Represents source details for ONTAP backups.
+  ///
+  /// Either source_volume or ontap_source should be provided.
+  ///
+  /// Optional.
+  OntapSource? ontapSource;
+
   /// Reserved for future use
   ///
   /// Output only.
@@ -3996,10 +4248,10 @@ class Backup {
   /// `projects/{project_id}/locations/{location}/volumes/{volume_id}/snapshots/{snapshot_id}`
   core.String? sourceSnapshot;
 
-  /// Volume full name of this backup belongs to.
+  /// The resource name of the volume that this backup belongs to.
   ///
-  /// Either source_volume or ontap_source should be provided. Format:
-  /// `projects/{projects_id}/locations/{location}/volumes/{volume_id}`
+  /// You must provide either `source_volume` or `ontap_source`. Format:
+  /// `projects/{project_id}/locations/{location}/volumes/{volume_id}`
   core.String? sourceVolume;
 
   /// The backup state.
@@ -4043,6 +4295,7 @@ class Backup {
     this.enforcedRetentionEndTime,
     this.labels,
     this.name,
+    this.ontapSource,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.sourceSnapshot,
@@ -4065,6 +4318,11 @@ class Backup {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        ontapSource: json_.containsKey('ontapSource')
+            ? OntapSource.fromJson(
+                json_['ontapSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         sourceSnapshot: json_['sourceSnapshot'] as core.String?,
@@ -4083,6 +4341,7 @@ class Backup {
     final enforcedRetentionEndTime = this.enforcedRetentionEndTime;
     final labels = this.labels;
     final name = this.name;
+    final ontapSource = this.ontapSource;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
     final sourceSnapshot = this.sourceSnapshot;
@@ -4099,6 +4358,7 @@ class Backup {
       'enforcedRetentionEndTime': ?enforcedRetentionEndTime,
       'labels': ?labels,
       'name': ?name,
+      'ontapSource': ?ontapSource,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
       'sourceSnapshot': ?sourceSnapshot,
@@ -4358,6 +4618,39 @@ class BackupRetentionPolicy {
   }
 }
 
+/// Represents the backup source of the restore operation.
+class BackupSource {
+  /// The backup resource name.
+  ///
+  /// Required.
+  core.String? backup;
+
+  /// List of files to be restored in the form of their absolute path as in
+  /// source volume.
+  ///
+  /// If provided, only these files will be restored. If not provided, the
+  /// entire backup will be restored (Full Backup Restore)
+  ///
+  /// Optional.
+  core.List<core.String>? fileList;
+
+  BackupSource({this.backup, this.fileList});
+
+  BackupSource.fromJson(core.Map json_)
+    : this(
+        backup: json_['backup'] as core.String?,
+        fileList: (json_['fileList'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backup = this.backup;
+    final fileList = this.fileList;
+    return {'backup': ?backup, 'fileList': ?fileList};
+  }
+}
+
 /// A NetApp BackupVault.
 class BackupVault {
   /// Region where the backups are stored.
@@ -4447,7 +4740,7 @@ class BackupVault {
   ///
   /// Format: `projects/{project_id}/locations/{location}`
   ///
-  /// Output only.
+  /// Optional.
   core.String? sourceRegion;
 
   /// The backup vault state.
@@ -4896,23 +5189,43 @@ class CloneDetails {
   /// Output only.
   core.String? sourceVolume;
 
-  CloneDetails({this.sharedSpaceGib, this.sourceSnapshot, this.sourceVolume});
+  /// The current state of the clone split operation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SPLIT_STATE_UNSPECIFIED" : State is not specified.
+  /// - "SPLIT_STATE_NOT_SPLITTING" : The volume is a thin clone, sharing blocks
+  /// with its source.
+  /// - "SPLIT_STATE_IN_PROGRESS" : A split operation is currently active and in
+  /// progress.
+  /// - "SPLIT_STATE_FAILED" : The attempt to split the volume failed.
+  core.String? splitState;
+
+  CloneDetails({
+    this.sharedSpaceGib,
+    this.sourceSnapshot,
+    this.sourceVolume,
+    this.splitState,
+  });
 
   CloneDetails.fromJson(core.Map json_)
     : this(
         sharedSpaceGib: json_['sharedSpaceGib'] as core.String?,
         sourceSnapshot: json_['sourceSnapshot'] as core.String?,
         sourceVolume: json_['sourceVolume'] as core.String?,
+        splitState: json_['splitState'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final sharedSpaceGib = this.sharedSpaceGib;
     final sourceSnapshot = this.sourceSnapshot;
     final sourceVolume = this.sourceVolume;
+    final splitState = this.splitState;
     return {
       'sharedSpaceGib': ?sharedSpaceGib,
       'sourceSnapshot': ?sourceSnapshot,
       'sourceVolume': ?sourceVolume,
+      'splitState': ?splitState,
     };
   }
 }
@@ -5020,11 +5333,117 @@ typedef EncryptVolumesRequest = $Empty;
 
 /// EstablishPeeringRequest establishes cluster and svm peerings between the
 /// source and the destination replications.
-typedef EstablishPeeringRequest = $PeeringRequest;
+class EstablishPeeringRequest {
+  /// Name of the user's local source cluster to be peered with the destination
+  /// cluster.
+  ///
+  /// Required.
+  core.String? peerClusterName;
+
+  /// List of IPv4 ip addresses to be used for peering.
+  ///
+  /// Optional.
+  core.List<core.String>? peerIpAddresses;
+
+  /// Name of the user's local source vserver svm to be peered with the
+  /// destination vserver svm.
+  ///
+  /// Required.
+  core.String? peerSvmName;
+
+  /// Name of the user's local source volume to be peered with the destination
+  /// volume.
+  ///
+  /// Required.
+  core.String? peerVolumeName;
+
+  EstablishPeeringRequest({
+    this.peerClusterName,
+    this.peerIpAddresses,
+    this.peerSvmName,
+    this.peerVolumeName,
+  });
+
+  EstablishPeeringRequest.fromJson(core.Map json_)
+    : this(
+        peerClusterName: json_['peerClusterName'] as core.String?,
+        peerIpAddresses: (json_['peerIpAddresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        peerSvmName: json_['peerSvmName'] as core.String?,
+        peerVolumeName: json_['peerVolumeName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final peerClusterName = this.peerClusterName;
+    final peerIpAddresses = this.peerIpAddresses;
+    final peerSvmName = this.peerSvmName;
+    final peerVolumeName = this.peerVolumeName;
+    return {
+      'peerClusterName': ?peerClusterName,
+      'peerIpAddresses': ?peerIpAddresses,
+      'peerSvmName': ?peerSvmName,
+      'peerVolumeName': ?peerVolumeName,
+    };
+  }
+}
 
 /// EstablishVolumePeeringRequest establishes cluster and svm peerings between
 /// the source and destination clusters.
-typedef EstablishVolumePeeringRequest = $PeeringRequest;
+class EstablishVolumePeeringRequest {
+  /// Name of the user's local source cluster to be peered with the destination
+  /// cluster.
+  ///
+  /// Required.
+  core.String? peerClusterName;
+
+  /// List of IPv4 IP addresses to be used for peering.
+  ///
+  /// Optional.
+  core.List<core.String>? peerIpAddresses;
+
+  /// Name of the user's local source vserver svm to be peered with the
+  /// destination vserver svm.
+  ///
+  /// Required.
+  core.String? peerSvmName;
+
+  /// Name of the user's local source volume to be peered with the destination
+  /// volume.
+  ///
+  /// Required.
+  core.String? peerVolumeName;
+
+  EstablishVolumePeeringRequest({
+    this.peerClusterName,
+    this.peerIpAddresses,
+    this.peerSvmName,
+    this.peerVolumeName,
+  });
+
+  EstablishVolumePeeringRequest.fromJson(core.Map json_)
+    : this(
+        peerClusterName: json_['peerClusterName'] as core.String?,
+        peerIpAddresses: (json_['peerIpAddresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        peerSvmName: json_['peerSvmName'] as core.String?,
+        peerVolumeName: json_['peerVolumeName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final peerClusterName = this.peerClusterName;
+    final peerIpAddresses = this.peerIpAddresses;
+    final peerSvmName = this.peerSvmName;
+    final peerVolumeName = this.peerVolumeName;
+    return {
+      'peerClusterName': ?peerClusterName,
+      'peerIpAddresses': ?peerIpAddresses,
+      'peerSvmName': ?peerSvmName,
+      'peerVolumeName': ?peerVolumeName,
+    };
+  }
+}
 
 /// Response message for `ExecuteOntapDelete` API.
 typedef ExecuteOntapDeleteResponse = $Response00;
@@ -5033,13 +5452,13 @@ typedef ExecuteOntapDeleteResponse = $Response00;
 typedef ExecuteOntapGetResponse = $Response00;
 
 /// Request message for `ExecuteOntapPatch` API.
-typedef ExecuteOntapPatchRequest = $Request11;
+typedef ExecuteOntapPatchRequest = $Request12;
 
 /// Response message for `ExecuteOntapPatch` API.
 typedef ExecuteOntapPatchResponse = $Response00;
 
 /// Request message for `ExecuteOntapPost` API.
-typedef ExecuteOntapPostRequest = $Request11;
+typedef ExecuteOntapPostRequest = $Request12;
 
 /// Response message for `ExecuteOntapPost` API.
 typedef ExecuteOntapPostResponse = $Response00;
@@ -5465,7 +5884,7 @@ class KmsConfig {
 
   /// Identifier.
   ///
-  /// Name of the KmsConfig. Format:
+  /// Name of the `KmsConfig`. Format:
   /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
   core.String? name;
 
@@ -5554,7 +5973,7 @@ class KmsConfig {
 
 /// Configuration for a Large Capacity Volume.
 ///
-/// A Large Capacity Volume supports sizes ranging from 4.8 TiB to 20 PiB, it is
+/// A Large Capacity Volume supports sizes ranging from 4.8 TiB to 20 PiB; it is
 /// composed of multiple internal constituents, and must be created in a large
 /// capacity pool.
 class LargeCapacityConfig {
@@ -5617,6 +6036,54 @@ class ListActiveDirectoriesResponse {
       'activeDirectories': ?activeDirectories,
       'nextPageToken': ?nextPageToken,
       'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Message for response to listing BackupConfigs in an ONTAP StoragePool.
+class ListBackupConfigsResponse {
+  /// The token you can use to retrieve the next page of results.
+  ///
+  /// Not returned if there are no more results in the list.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  /// A list of backup configurations for volumes in the pool.
+  core.List<VolumeBackupConfig>? volumeBackupConfigs;
+
+  ListBackupConfigsResponse({
+    this.nextPageToken,
+    this.unreachable,
+    this.volumeBackupConfigs,
+  });
+
+  ListBackupConfigsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        volumeBackupConfigs: (json_['volumeBackupConfigs'] as core.List?)
+            ?.map(
+              (value) => VolumeBackupConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    final volumeBackupConfigs = this.volumeBackupConfigs;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+      'volumeBackupConfigs': ?volumeBackupConfigs,
     };
   }
 }
@@ -6205,6 +6672,7 @@ class MountOption {
   /// - "NFSV4" : NFS V4 protocol
   /// - "SMB" : SMB protocol
   /// - "ISCSI" : ISCSI protocol
+  /// - "NVME" : NVMe protocol
   core.String? protocol;
 
   MountOption({
@@ -6236,6 +6704,78 @@ class MountOption {
       'instructions': ?instructions,
       'ipAddress': ?ipAddress,
       'protocol': ?protocol,
+    };
+  }
+}
+
+/// Represents ONTAP source details.
+class OntapSource {
+  /// The UUID of the ONTAP source snapshot.
+  ///
+  /// Optional.
+  core.String? snapshotUuid;
+
+  /// Name of the storage pool.
+  ///
+  /// This must be specified for creating backups for ONTAP mode volumes.
+  /// Format:
+  /// `projects/{projects_id}/locations/{location}/storagePools/{storage_pool_id}`
+  ///
+  /// Required.
+  core.String? storagePool;
+
+  /// The UUID of the ONTAP source volume.
+  ///
+  /// Required.
+  core.String? volumeUuid;
+
+  OntapSource({this.snapshotUuid, this.storagePool, this.volumeUuid});
+
+  OntapSource.fromJson(core.Map json_)
+    : this(
+        snapshotUuid: json_['snapshotUuid'] as core.String?,
+        storagePool: json_['storagePool'] as core.String?,
+        volumeUuid: json_['volumeUuid'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final snapshotUuid = this.snapshotUuid;
+    final storagePool = this.storagePool;
+    final volumeUuid = this.volumeUuid;
+    return {
+      'snapshotUuid': ?snapshotUuid,
+      'storagePool': ?storagePool,
+      'volumeUuid': ?volumeUuid,
+    };
+  }
+}
+
+/// Represents the ONTAP volume target of the restore operation.
+class OntapVolumeTarget {
+  /// Absolute directory path in the destination volume.
+  ///
+  /// Optional.
+  core.String? restoreDestinationPath;
+
+  /// The UUID of the ONTAP volume to restore to.
+  ///
+  /// Required.
+  core.String? volumeUuid;
+
+  OntapVolumeTarget({this.restoreDestinationPath, this.volumeUuid});
+
+  OntapVolumeTarget.fromJson(core.Map json_)
+    : this(
+        restoreDestinationPath: json_['restoreDestinationPath'] as core.String?,
+        volumeUuid: json_['volumeUuid'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final restoreDestinationPath = this.restoreDestinationPath;
+    final volumeUuid = this.volumeUuid;
+    return {
+      'restoreDestinationPath': ?restoreDestinationPath,
+      'volumeUuid': ?volumeUuid,
     };
   }
 }
@@ -6743,7 +7283,7 @@ class RestoreParameters {
   /// Full name of the backup resource.
   ///
   /// Format for standard backup:
-  /// projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}
+  /// projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}.
   /// Format for BackupDR backup:
   /// projects/{project}/locations/{location}/backupVaults/{backup_vault}/dataSources/{data_source}/backups/{backup}
   core.String? sourceBackup;
@@ -6766,6 +7306,41 @@ class RestoreParameters {
     final sourceBackup = this.sourceBackup;
     final sourceSnapshot = this.sourceSnapshot;
     return {'sourceBackup': ?sourceBackup, 'sourceSnapshot': ?sourceSnapshot};
+  }
+}
+
+/// Request message for `RestoreVolume` API.
+class RestoreVolumeRequest {
+  /// The backup source of the restore operation.
+  BackupSource? backupSource;
+
+  /// The ONTAP volume target of the restore operation.
+  OntapVolumeTarget? ontapVolumeTarget;
+
+  RestoreVolumeRequest({this.backupSource, this.ontapVolumeTarget});
+
+  RestoreVolumeRequest.fromJson(core.Map json_)
+    : this(
+        backupSource: json_.containsKey('backupSource')
+            ? BackupSource.fromJson(
+                json_['backupSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ontapVolumeTarget: json_.containsKey('ontapVolumeTarget')
+            ? OntapVolumeTarget.fromJson(
+                json_['ontapVolumeTarget']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupSource = this.backupSource;
+    final ontapVolumeTarget = this.ontapVolumeTarget;
+    return {
+      'backupSource': ?backupSource,
+      'ontapVolumeTarget': ?ontapVolumeTarget,
+    };
   }
 }
 
@@ -7102,6 +7677,59 @@ class SnapshotPolicy {
   }
 }
 
+/// Message for SplitStatus.
+class SplitStatus {
+  /// The estimated progress percentage of the split operation (0-100).
+  ///
+  /// This is meaningful primarily when split_state is IN_PROGRESS.
+  ///
+  /// Output only.
+  core.int? progressPercent;
+
+  /// The current state of the clone split operation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SPLIT_STATE_UNSPECIFIED" : State is not specified.
+  /// - "SPLIT_STATE_NOT_SPLITTING" : The volume is a thin clone, sharing blocks
+  /// with its source.
+  /// - "SPLIT_STATE_IN_PROGRESS" : A split operation is currently active and in
+  /// progress.
+  /// - "SPLIT_STATE_FAILED" : The attempt to split the volume failed.
+  core.String? splitState;
+
+  /// Human-readable details about the current state.
+  ///
+  /// Mostly used for displaying error messages during split failure Examples:
+  /// "Split in progress", "Error: insufficient capacity".
+  ///
+  /// Output only.
+  core.String? stateDetails;
+
+  SplitStatus({this.progressPercent, this.splitState, this.stateDetails});
+
+  SplitStatus.fromJson(core.Map json_)
+    : this(
+        progressPercent: json_['progressPercent'] as core.int?,
+        splitState: json_['splitState'] as core.String?,
+        stateDetails: json_['stateDetails'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final progressPercent = this.progressPercent;
+    final splitState = this.splitState;
+    final stateDetails = this.stateDetails;
+    return {
+      'progressPercent': ?progressPercent,
+      'splitState': ?splitState,
+      'stateDetails': ?stateDetails,
+    };
+  }
+}
+
+/// Request message for splitting a volume.
+typedef StartSplitRequest = $Empty;
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -7242,7 +7870,7 @@ class StoragePool {
 
   /// Mode of the storage pool.
   ///
-  /// This field is used to control whether the user can perform the ONTAP
+  /// This field is used to control whether the user can perform ONTAP
   /// operations on the storage pool using the GCNV ONTAP Mode APIs. If not
   /// specified during creation, it defaults to `DEFAULT`.
   ///
@@ -7662,6 +8290,56 @@ class TransferStats {
       'totalTransferDuration': ?totalTransferDuration,
       'transferBytes': ?transferBytes,
       'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Request message for UpdateBackupConfig
+class UpdateBackupConfigRequest {
+  /// Backup configuration to apply.
+  ///
+  /// Required.
+  BackupConfig? backupConfig;
+
+  /// Field mask is used to specify the fields to be overwritten in the
+  /// BackupConfig for the Volume.
+  ///
+  /// The fields specified in the update_mask are relative to the resource, not
+  /// the full request. A field will be overwritten if it is in the mask.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  /// The UUID of the ONTAP-mode volume.
+  ///
+  /// Required.
+  core.String? volumeUuid;
+
+  UpdateBackupConfigRequest({
+    this.backupConfig,
+    this.updateMask,
+    this.volumeUuid,
+  });
+
+  UpdateBackupConfigRequest.fromJson(core.Map json_)
+    : this(
+        backupConfig: json_.containsKey('backupConfig')
+            ? BackupConfig.fromJson(
+                json_['backupConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateMask: json_['updateMask'] as core.String?,
+        volumeUuid: json_['volumeUuid'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupConfig = this.backupConfig;
+    final updateMask = this.updateMask;
+    final volumeUuid = this.volumeUuid;
+    return {
+      'backupConfig': ?backupConfig,
+      'updateMask': ?updateMask,
+      'volumeUuid': ?volumeUuid,
     };
   }
 }
@@ -8280,6 +8958,33 @@ class Volume {
       'usedGib': ?usedGib,
       'zone': ?zone,
     };
+  }
+}
+
+/// Backup configuration for a volume in a pool.
+class VolumeBackupConfig {
+  /// Backup configuration for the volume.
+  BackupConfig? backupConfig;
+
+  /// Provides the Ontap UUID of the volume within the pool.
+  core.String? volumeUuid;
+
+  VolumeBackupConfig({this.backupConfig, this.volumeUuid});
+
+  VolumeBackupConfig.fromJson(core.Map json_)
+    : this(
+        backupConfig: json_.containsKey('backupConfig')
+            ? BackupConfig.fromJson(
+                json_['backupConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        volumeUuid: json_['volumeUuid'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupConfig = this.backupConfig;
+    final volumeUuid = this.volumeUuid;
+    return {'backupConfig': ?backupConfig, 'volumeUuid': ?volumeUuid};
   }
 }
 

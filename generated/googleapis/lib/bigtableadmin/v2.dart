@@ -2269,6 +2269,9 @@ class ProjectsInstancesMaterializedViewsResource {
   /// be created. Format: `projects/{project}/instances/{instance}`.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
+  /// [ignoreWarnings] - Optional. If true, ignore optional safety checks when
+  /// creating the materialized view.
+  ///
   /// [materializedViewId] - Required. The ID to use for the materialized view,
   /// which will become the final component of the materialized view's resource
   /// name.
@@ -2286,11 +2289,13 @@ class ProjectsInstancesMaterializedViewsResource {
   async.Future<Operation> create(
     MaterializedView request,
     core.String parent, {
+    core.bool? ignoreWarnings,
     core.String? materializedViewId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'ignoreWarnings': ?ignoreWarnings == null ? null : ['${ignoreWarnings}'],
       'materializedViewId': ?materializedViewId == null
           ? null
           : [materializedViewId],
@@ -3141,9 +3146,9 @@ class ProjectsInstancesTablesResource {
   /// `change_stream_config` * `change_stream_config.retention_period` *
   /// `deletion_protection` * `automated_backup_policy` *
   /// `automated_backup_policy.retention_period` *
-  /// `automated_backup_policy.frequency` * `row_key_schema` If
-  /// `column_families` is set in `update_mask`, it will return an UNIMPLEMENTED
-  /// error.
+  /// `automated_backup_policy.frequency` * `automated_backup_policy.locations`
+  /// * `row_key_schema` If `column_families` is set in `update_mask`, it will
+  /// return an UNIMPLEMENTED error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4187,7 +4192,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -4202,9 +4207,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -4498,8 +4502,8 @@ class AutomatedBackupPolicy {
   /// created.
   ///
   /// If empty, automated backups will be created in all zones of the instance.
-  /// Locations are in the format `projects/{project}/locations/{zone}`. This
-  /// field can only set for tables in Enterprise Plus instances.
+  /// Locations are in the format `projects/{project}/locations/{zone}`. You can
+  /// set this field only for tables in Enterprise Plus instances.
   ///
   /// Optional.
   core.List<core.String>? locations;
@@ -5359,10 +5363,22 @@ class ColumnFamilyStats {
   /// entire column family (e.g. by streaming all contents out).
   core.String? logicalDataBytes;
 
+  /// The logical data bytes of the column family stored on HDD.
+  ///
+  /// Output only.
+  core.String? logicalDataHddBytes;
+
+  /// The logical data bytes of the column family stored on SSD.
+  ///
+  /// Output only.
+  core.String? logicalDataSsdBytes;
+
   ColumnFamilyStats({
     this.averageCellsPerColumn,
     this.averageColumnsPerRow,
     this.logicalDataBytes,
+    this.logicalDataHddBytes,
+    this.logicalDataSsdBytes,
   });
 
   ColumnFamilyStats.fromJson(core.Map json_)
@@ -5372,16 +5388,22 @@ class ColumnFamilyStats {
         averageColumnsPerRow: (json_['averageColumnsPerRow'] as core.num?)
             ?.toDouble(),
         logicalDataBytes: json_['logicalDataBytes'] as core.String?,
+        logicalDataHddBytes: json_['logicalDataHddBytes'] as core.String?,
+        logicalDataSsdBytes: json_['logicalDataSsdBytes'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final averageCellsPerColumn = this.averageCellsPerColumn;
     final averageColumnsPerRow = this.averageColumnsPerRow;
     final logicalDataBytes = this.logicalDataBytes;
+    final logicalDataHddBytes = this.logicalDataHddBytes;
+    final logicalDataSsdBytes = this.logicalDataSsdBytes;
     return {
       'averageCellsPerColumn': ?averageCellsPerColumn,
       'averageColumnsPerRow': ?averageColumnsPerRow,
       'logicalDataBytes': ?logicalDataBytes,
+      'logicalDataHddBytes': ?logicalDataHddBytes,
+      'logicalDataSsdBytes': ?logicalDataSsdBytes,
     };
   }
 }
@@ -6567,7 +6589,7 @@ class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
 }
 
 /// Deprecated: prefer the equivalent `Utf8Bytes`.
-typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared00;
+typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared01;
 
 /// A structured data value, consisting of fields which map to dynamically typed
 /// values.
@@ -6929,6 +6951,12 @@ class Instance {
   /// Enterprise.
   core.String? edition;
 
+  /// The region where Knowledge Catalog data is synced to and stored, including
+  /// user-created aspects.
+  ///
+  /// Output only.
+  core.String? knowledgeCatalogRegion;
+
   /// Labels are a flexible and lightweight mechanism for organizing cloud
   /// resources into groups that reflect a customer's organizational needs and
   /// deployment strategies.
@@ -6996,6 +7024,7 @@ class Instance {
     this.createTime,
     this.displayName,
     this.edition,
+    this.knowledgeCatalogRegion,
     this.labels,
     this.name,
     this.satisfiesPzi,
@@ -7010,6 +7039,7 @@ class Instance {
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         edition: json_['edition'] as core.String?,
+        knowledgeCatalogRegion: json_['knowledgeCatalogRegion'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -7027,6 +7057,7 @@ class Instance {
     final createTime = this.createTime;
     final displayName = this.displayName;
     final edition = this.edition;
+    final knowledgeCatalogRegion = this.knowledgeCatalogRegion;
     final labels = this.labels;
     final name = this.name;
     final satisfiesPzi = this.satisfiesPzi;
@@ -7038,6 +7069,7 @@ class Instance {
       'createTime': ?createTime,
       'displayName': ?displayName,
       'edition': ?edition,
+      'knowledgeCatalogRegion': ?knowledgeCatalogRegion,
       'labels': ?labels,
       'name': ?name,
       'satisfiesPzi': ?satisfiesPzi,
@@ -8146,7 +8178,7 @@ class Policy {
   }
 }
 
-/// Represents a protobuf schema.
+/// Represents a collection of protobuf schemas.
 class ProtoSchema {
   /// Contains a protobuf-serialized
   /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto),
@@ -8485,7 +8517,8 @@ class Table {
   /// Immutable.
   /// Possible string values are:
   /// - "TIMESTAMP_GRANULARITY_UNSPECIFIED" : The user did not specify a
-  /// granularity. Should not be returned.
+  /// granularity. Should not be returned. When specified during table creation,
+  /// MILLIS will be used.
   /// - "MILLIS" : The table keeps data versioned at a granularity of 1ms.
   core.String? granularity;
 

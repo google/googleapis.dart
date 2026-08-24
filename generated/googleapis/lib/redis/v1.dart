@@ -29,6 +29,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAclPoliciesResource]
+///       - [ProjectsLocationsAclPoliciesRevisionsResource]
 ///     - [ProjectsLocationsBackupCollectionsResource]
 ///       - [ProjectsLocationsBackupCollectionsBackupsResource]
 ///     - [ProjectsLocationsClustersResource]
@@ -187,7 +188,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -202,9 +203,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -258,10 +258,13 @@ class ProjectsLocationsResource {
 class ProjectsLocationsAclPoliciesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAclPoliciesRevisionsResource get revisions =>
+      ProjectsLocationsAclPoliciesRevisionsResource(_requester);
+
   ProjectsLocationsAclPoliciesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates an ACL Policy.
+  /// Creates an ACL policy.
   ///
   /// The creation is executed synchronously and the policy is available for use
   /// immediately after the RPC returns.
@@ -275,7 +278,7 @@ class ProjectsLocationsAclPoliciesResource {
   /// refers to a Google Cloud region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [aclPolicyId] - Required. The logical name of the ACL Policy in the
+  /// [aclPolicyId] - Required. The logical name of the ACL policy in the
   /// customer project with the following restrictions: * Must contain only
   /// lowercase letters, numbers, and hyphens. * Must start with a letter. *
   /// Must be between 1-63 characters. * Must end with a number or a letter. *
@@ -318,16 +321,16 @@ class ProjectsLocationsAclPoliciesResource {
     return AclPolicy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a specific Acl Policy.
+  /// Deletes a specific ACL policy.
   ///
-  /// This action will delete the Acl Policy and all the rules associated with
+  /// This action will delete the ACL policy and all the rules associated with
   /// it. An ACL policy cannot be deleted if it is attached to a cluster.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Redis ACL Policy resource name using the form:
+  /// [name] - Required. Redis ACL policy resource name using the form:
   /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}`
-  /// where `location_id` refers to a GCP region.
+  /// where `location_id` refers to a Google Cloud region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/aclPolicies/\[^/\]+$`.
   ///
@@ -368,13 +371,13 @@ class ProjectsLocationsAclPoliciesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the details of a specific Redis Cluster ACL Policy.
+  /// Gets the details of a specific Redis Cluster ACL policy.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Redis ACL Policy resource name using the form:
+  /// [name] - Required. Redis ACL policy resource name using the form:
   /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}`
-  /// where `location_id` refers to a GCP region.
+  /// where `location_id` refers to a Google Cloud region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/aclPolicies/\[^/\]+$`.
   ///
@@ -403,7 +406,7 @@ class ProjectsLocationsAclPoliciesResource {
     return AclPolicy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all ACL Policies owned by a project in either the specified location
+  /// Lists all ACL policies owned by a project in either the specified location
   /// (region) or all locations.
   ///
   /// The location should have the following format: *
@@ -413,9 +416,9 @@ class ProjectsLocationsAclPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the cluster location using the
-  /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
-  /// refers to a Google Cloud region.
+  /// [parent] - Required. The resource name of the ACL policy location using
+  /// the form: `projects/{project_id}/locations/{location_id}` where
+  /// `location_id` refers to a Google Cloud region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If not
@@ -469,7 +472,7 @@ class ProjectsLocationsAclPoliciesResource {
   /// operation returns a SUCCESS status. If Memorystore can't apply the policy
   /// to all clusters, then to ensure eventual consistency, Memorystore uses
   /// reconciliation to apply the policy to the failed clusters. Completed
-  /// longrunning.Operation will contain the new ACL Policy object in the
+  /// longrunning.Operation will contain the new ACL policy object in the
   /// response field.
   ///
   /// [request] - The metadata request object.
@@ -519,6 +522,102 @@ class ProjectsLocationsAclPoliciesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAclPoliciesRevisionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAclPoliciesRevisionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets details of a specific ACL policy revision.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis ACL policy revision resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}/revisions/{revision_id}`
+  /// where `location_id` refers to a Google Cloud region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aclPolicies/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AclPolicyRevision].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AclPolicyRevision> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AclPolicyRevision.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all ACL policy revisions in a given ACL policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the ACL policy to list revisions for.
+  /// Format:
+  /// "projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/aclPolicies/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return.
+  ///
+  /// [pageToken] - Optional. The `next_page_token` value returned from a
+  /// previous `ListAclPolicyRevisions` request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAclPolicyRevisionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAclPolicyRevisionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/revisions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAclPolicyRevisionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2352,6 +2451,16 @@ class AOFConfig {
 
 /// The ACL policy resource.
 class AclPolicy {
+  /// The ACL policy attachment status for each attached cluster.
+  ///
+  /// Output only.
+  core.List<ClusterAclPolicyAttachment>? clusterAclPolicyAttachments;
+
+  /// The timestamp that the ACL policy was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
   /// Etag for the ACL policy.
   ///
   /// Output only.
@@ -2372,23 +2481,47 @@ class AclPolicy {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Not set.
-  /// - "ACTIVE" : ACL Policy has been created and is fully usable. Since ACL
-  /// Policy creation is synchronous and not an LRO, there is no CREATING state.
-  /// - "UPDATING" : ACL Policy is being updated.
-  /// - "DELETING" : ACL Policy is being deleted.
+  /// - "ACTIVE" : ACL policy has been created and is fully usable. Since ACL
+  /// policy creation is synchronous and not an LRO, there is no CREATING state.
+  /// - "UPDATING" : ACL policy is being updated.
+  /// - "DELETING" : ACL policy is being deleted.
   core.String? state;
 
-  /// The version of the ACL policy.
-  ///
-  /// Used in drift resolution.
+  /// The timestamp that the ACL policy was last updated.
   ///
   /// Output only.
+  core.String? updateTime;
+
+  /// Deprecated: Used in drift resolution.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? version;
 
-  AclPolicy({this.etag, this.name, this.rules, this.state, this.version});
+  AclPolicy({
+    this.clusterAclPolicyAttachments,
+    this.createTime,
+    this.etag,
+    this.name,
+    this.rules,
+    this.state,
+    this.updateTime,
+    this.version,
+  });
 
   AclPolicy.fromJson(core.Map json_)
     : this(
+        clusterAclPolicyAttachments:
+            (json_['clusterAclPolicyAttachments'] as core.List?)
+                ?.map(
+                  (value) => ClusterAclPolicyAttachment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
         etag: json_['etag'] as core.String?,
         name: json_['name'] as core.String?,
         rules: (json_['rules'] as core.List?)
@@ -2399,21 +2532,221 @@ class AclPolicy {
             )
             .toList(),
         state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
         version: json_['version'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final clusterAclPolicyAttachments = this.clusterAclPolicyAttachments;
+    final createTime = this.createTime;
     final etag = this.etag;
     final name = this.name;
     final rules = this.rules;
     final state = this.state;
+    final updateTime = this.updateTime;
     final version = this.version;
     return {
+      'clusterAclPolicyAttachments': ?clusterAclPolicyAttachments,
+      'createTime': ?createTime,
       'etag': ?etag,
       'name': ?name,
       'rules': ?rules,
       'state': ?state,
+      'updateTime': ?updateTime,
       'version': ?version,
+    };
+  }
+}
+
+/// Details of the applied ACL policy.
+class AclPolicyInfo {
+  /// A list of status for various revisions of this ACL policy on the cluster.
+  ///
+  /// Output only.
+  core.List<AclPolicyRevisionStatus>? aclPolicyRevisionStatuses;
+
+  /// The resource name of the applied ACL policy.
+  ///
+  /// Format: "projects/{project}/locations/{location}/aclPolicies/{acl_policy}"
+  ///
+  /// Output only.
+  core.String? appliedAclPolicy;
+
+  /// The resource name of the applied ACL policy revision.
+  ///
+  /// Format:
+  /// "projects/{project}/locations/{location}/aclPolicies/{acl_policy}/revisions/{revision}"
+  ///
+  /// Output only.
+  core.String? appliedAclPolicyRevision;
+
+  /// The revision number of the applied ACL policy revision.
+  ///
+  /// Output only.
+  core.String? appliedAclPolicyRevisionNumber;
+
+  AclPolicyInfo({
+    this.aclPolicyRevisionStatuses,
+    this.appliedAclPolicy,
+    this.appliedAclPolicyRevision,
+    this.appliedAclPolicyRevisionNumber,
+  });
+
+  AclPolicyInfo.fromJson(core.Map json_)
+    : this(
+        aclPolicyRevisionStatuses:
+            (json_['aclPolicyRevisionStatuses'] as core.List?)
+                ?.map(
+                  (value) => AclPolicyRevisionStatus.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        appliedAclPolicy: json_['appliedAclPolicy'] as core.String?,
+        appliedAclPolicyRevision:
+            json_['appliedAclPolicyRevision'] as core.String?,
+        appliedAclPolicyRevisionNumber:
+            json_['appliedAclPolicyRevisionNumber'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aclPolicyRevisionStatuses = this.aclPolicyRevisionStatuses;
+    final appliedAclPolicy = this.appliedAclPolicy;
+    final appliedAclPolicyRevision = this.appliedAclPolicyRevision;
+    final appliedAclPolicyRevisionNumber = this.appliedAclPolicyRevisionNumber;
+    return {
+      'aclPolicyRevisionStatuses': ?aclPolicyRevisionStatuses,
+      'appliedAclPolicy': ?appliedAclPolicy,
+      'appliedAclPolicyRevision': ?appliedAclPolicyRevision,
+      'appliedAclPolicyRevisionNumber': ?appliedAclPolicyRevisionNumber,
+    };
+  }
+}
+
+/// The ACL policy revision resource.
+class AclPolicyRevision {
+  /// A list of clusters that are attached to this ACL policy revision.
+  ///
+  /// Output only.
+  core.List<core.String>? attachedClusters;
+
+  /// The timestamp that the revision was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The name of the ACL policy revision. Format:
+  /// "projects/{project}/locations/{location}/aclPolicies/{acl_policy}/revisions/{revision}"
+  core.String? name;
+
+  /// The revision number of the ACL policy revision.
+  ///
+  /// Output only.
+  core.String? revisionNumber;
+
+  /// The snapshot of the ACL policy at the time of revision creation.
+  ///
+  /// Output only.
+  AclPolicy? snapshot;
+
+  AclPolicyRevision({
+    this.attachedClusters,
+    this.createTime,
+    this.name,
+    this.revisionNumber,
+    this.snapshot,
+  });
+
+  AclPolicyRevision.fromJson(core.Map json_)
+    : this(
+        attachedClusters: (json_['attachedClusters'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        revisionNumber: json_['revisionNumber'] as core.String?,
+        snapshot: json_.containsKey('snapshot')
+            ? AclPolicy.fromJson(
+                json_['snapshot'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final attachedClusters = this.attachedClusters;
+    final createTime = this.createTime;
+    final name = this.name;
+    final revisionNumber = this.revisionNumber;
+    final snapshot = this.snapshot;
+    return {
+      'attachedClusters': ?attachedClusters,
+      'createTime': ?createTime,
+      'name': ?name,
+      'revisionNumber': ?revisionNumber,
+      'snapshot': ?snapshot,
+    };
+  }
+}
+
+/// AclPolicyRevisionStatus stores the per-revision status for an attached
+/// cluster.
+class AclPolicyRevisionStatus {
+  /// The resource name of the ACL policy revision this status refers to.
+  ///
+  /// Format:
+  /// "projects/{project}/locations/{location}/aclPolicies/{acl_policy}/revisions/{revision}"
+  ///
+  /// Output only.
+  core.String? aclPolicyRevision;
+
+  /// The revision number of the ACL policy revision this status refers to.
+  ///
+  /// Output only.
+  core.String? aclPolicyRevisionNumber;
+
+  /// Human-readable error message providing more details for FAILED states.
+  ///
+  /// Output only.
+  core.String? errorMessage;
+
+  /// AclPolicyRevision state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "APPLYING" : The cluster is attempting to apply this revision.
+  /// - "APPLIED" : The cluster has successfully applied this revision.
+  /// - "FAILED" : The cluster failed to apply this revision.
+  core.String? state;
+
+  AclPolicyRevisionStatus({
+    this.aclPolicyRevision,
+    this.aclPolicyRevisionNumber,
+    this.errorMessage,
+    this.state,
+  });
+
+  AclPolicyRevisionStatus.fromJson(core.Map json_)
+    : this(
+        aclPolicyRevision: json_['aclPolicyRevision'] as core.String?,
+        aclPolicyRevisionNumber:
+            json_['aclPolicyRevisionNumber'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aclPolicyRevision = this.aclPolicyRevision;
+    final aclPolicyRevisionNumber = this.aclPolicyRevisionNumber;
+    final errorMessage = this.errorMessage;
+    final state = this.state;
+    return {
+      'aclPolicyRevision': ?aclPolicyRevision,
+      'aclPolicyRevisionNumber': ?aclPolicyRevisionNumber,
+      'errorMessage': ?errorMessage,
+      'state': ?state,
     };
   }
 }
@@ -2993,13 +3326,19 @@ class Cluster {
   /// Optional.
   core.String? aclPolicy;
 
-  /// Indicates whether the ACL rules applied to the cluster are in sync with
-  /// the latest ACL policy rules.
-  ///
-  /// This field is only applicable if the ACL policy is set for the cluster.
+  /// Deprecated: Indicates whether the ACL rules applied to the cluster are in
+  /// sync.
   ///
   /// Optional. Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? aclPolicyInSync;
+
+  /// Details of the applied ACL policy.
+  ///
+  /// Output only.
+  AclPolicyInfo? aclPolicyInfo;
 
   /// Deprecated, do not use.
   ///
@@ -3306,6 +3645,7 @@ class Cluster {
   Cluster({
     this.aclPolicy,
     this.aclPolicyInSync,
+    this.aclPolicyInfo,
     this.allowFewerZonesDeployment,
     this.asyncClusterEndpointsDeletionEnabled,
     this.authorizationMode,
@@ -3355,6 +3695,11 @@ class Cluster {
     : this(
         aclPolicy: json_['aclPolicy'] as core.String?,
         aclPolicyInSync: json_['aclPolicyInSync'] as core.bool?,
+        aclPolicyInfo: json_.containsKey('aclPolicyInfo')
+            ? AclPolicyInfo.fromJson(
+                json_['aclPolicyInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         allowFewerZonesDeployment:
             json_['allowFewerZonesDeployment'] as core.bool?,
         asyncClusterEndpointsDeletionEnabled:
@@ -3493,6 +3838,7 @@ class Cluster {
   core.Map<core.String, core.dynamic> toJson() {
     final aclPolicy = this.aclPolicy;
     final aclPolicyInSync = this.aclPolicyInSync;
+    final aclPolicyInfo = this.aclPolicyInfo;
     final allowFewerZonesDeployment = this.allowFewerZonesDeployment;
     final asyncClusterEndpointsDeletionEnabled =
         this.asyncClusterEndpointsDeletionEnabled;
@@ -3540,6 +3886,7 @@ class Cluster {
     return {
       'aclPolicy': ?aclPolicy,
       'aclPolicyInSync': ?aclPolicyInSync,
+      'aclPolicyInfo': ?aclPolicyInfo,
       'allowFewerZonesDeployment': ?allowFewerZonesDeployment,
       'asyncClusterEndpointsDeletionEnabled':
           ?asyncClusterEndpointsDeletionEnabled,
@@ -3584,6 +3931,46 @@ class Cluster {
       'transitEncryptionMode': ?transitEncryptionMode,
       'uid': ?uid,
       'zoneDistributionConfig': ?zoneDistributionConfig,
+    };
+  }
+}
+
+/// ClusterAclPolicyAttachment stores the ACL policy status for an attached
+/// cluster for the revisions successfully applied, under application or failed.
+class ClusterAclPolicyAttachment {
+  /// A list of status for various revisions of this ACL policy on the cluster.
+  ///
+  /// Output only.
+  core.List<AclPolicyRevisionStatus>? aclPolicyRevisionStatuses;
+
+  /// The resource name of the attached Cluster.
+  ///
+  /// Format: "projects/{project}/locations/{location}/clusters/{cluster}"
+  ///
+  /// Output only.
+  core.String? cluster;
+
+  ClusterAclPolicyAttachment({this.aclPolicyRevisionStatuses, this.cluster});
+
+  ClusterAclPolicyAttachment.fromJson(core.Map json_)
+    : this(
+        aclPolicyRevisionStatuses:
+            (json_['aclPolicyRevisionStatuses'] as core.List?)
+                ?.map(
+                  (value) => AclPolicyRevisionStatus.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        cluster: json_['cluster'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aclPolicyRevisionStatuses = this.aclPolicyRevisionStatuses;
+    final cluster = this.cluster;
+    return {
+      'aclPolicyRevisionStatuses': ?aclPolicyRevisionStatuses,
+      'cluster': ?cluster,
     };
   }
 }
@@ -4802,6 +5189,8 @@ class ListAclPoliciesResponse {
   /// results in the list.
   core.String? nextPageToken;
 
+  /// Unordered list.
+  ///
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
@@ -4832,6 +5221,53 @@ class ListAclPoliciesResponse {
     final unreachable = this.unreachable;
     return {
       'aclPolicies': ?aclPolicies,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Response for `ListAclPolicyRevisions`.
+class ListAclPolicyRevisionsResponse {
+  /// A list of ACL policy revisions.
+  core.List<AclPolicyRevision>? aclPolicyRevisions;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAclPolicyRevisionsResponse({
+    this.aclPolicyRevisions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAclPolicyRevisionsResponse.fromJson(core.Map json_)
+    : this(
+        aclPolicyRevisions: (json_['aclPolicyRevisions'] as core.List?)
+            ?.map(
+              (value) => AclPolicyRevision.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aclPolicyRevisions = this.aclPolicyRevisions;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'aclPolicyRevisions': ?aclPolicyRevisions,
       'nextPageToken': ?nextPageToken,
       'unreachable': ?unreachable,
     };
@@ -6450,17 +6886,29 @@ class ZoneDistributionConfig {
   /// Optional.
   core.String? zone;
 
-  ZoneDistributionConfig({this.mode, this.zone});
+  /// Specify the zones of a multi-zone cluster where Redis Cluster allocates
+  /// resources.
+  ///
+  /// This flag isn't applicable for single-zone clusters.
+  ///
+  /// Optional.
+  core.List<core.String>? zones;
+
+  ZoneDistributionConfig({this.mode, this.zone, this.zones});
 
   ZoneDistributionConfig.fromJson(core.Map json_)
     : this(
         mode: json_['mode'] as core.String?,
         zone: json_['zone'] as core.String?,
+        zones: (json_['zones'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final mode = this.mode;
     final zone = this.zone;
-    return {'mode': ?mode, 'zone': ?zone};
+    final zones = this.zones;
+    return {'mode': ?mode, 'zone': ?zone, 'zones': ?zones};
   }
 }

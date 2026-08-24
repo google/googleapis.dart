@@ -2552,6 +2552,7 @@ class PkixPublicKey {
   /// digest.
   /// - "EC_SIGN_P521_SHA512" : ECDSA on the NIST P-521 curve with a SHA512
   /// digest.
+  /// - "ML_DSA_65" : ML-DSA-65 Post-Quantum Cryptography signature algorithm.
   core.String? signatureAlgorithm;
 
   PkixPublicKey({this.keyId, this.publicKeyPem, this.signatureAlgorithm});

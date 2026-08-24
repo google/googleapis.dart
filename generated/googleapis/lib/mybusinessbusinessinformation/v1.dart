@@ -151,10 +151,14 @@ class AccountsLocationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the account to fetch locations from. If
-  /// the parent Account is of AccountType PERSONAL, only Locations that are
-  /// directly owned by the Account are returned, otherwise it will return all
-  /// accessible locations from the Account, either directly or indirectly.
+  /// [parent] - Required. The name of the account to fetch locations from. *
+  /// **Specific Account ID**: If the account is of type `AccountType.PERSONAL`,
+  /// the response returns only locations directly owned by that account. For
+  /// all other types (e.g., `AccountType.LOCATION_GROUP`), it returns all
+  /// accessible locations. * **Wildcard (`-`)**: Using `accounts/-` identifies
+  /// the authenticated user. This scope defaults to `AccountType.PERSONAL` but
+  /// includes both directly and indirectly owned locations (e.g., those
+  /// accessible via member groups).
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [filter] - Optional. A filter constraining the locations to return. The
@@ -231,12 +235,14 @@ class AttributesResource {
   ///
   /// Request parameters:
   ///
-  /// [categoryName] - The primary category stable ID to find available
-  /// attributes. Must be of the format categories/{category_id}.
+  /// [categoryName] - Optional. The primary category stable ID to find
+  /// available attributes. Must be of the format `categories/{category_id}`
+  /// (e.g., `categories/gcid:restaurant`). Required if `parent` is not set and
+  /// `show_all` is false.
   ///
-  /// [languageCode] - The BCP 47 code of language to get attribute display
-  /// names in. If this language is not available, they will be provided in
-  /// English.
+  /// [languageCode] - Optional. The BCP 47 code of language to get attribute
+  /// display names in. If this language is not available, they will be provided
+  /// in English.
   ///
   /// [pageSize] - How many attributes to include per page. Default is 200,
   /// minimum is 1.
@@ -244,16 +250,18 @@ class AttributesResource {
   /// [pageToken] - If specified, the next page of attribute metadata is
   /// retrieved.
   ///
-  /// [parent] - Resource name of the location to look up available attributes.
-  /// If this field is set, category_name, region_code, language_code and
-  /// show_all are not required and must not be set.
+  /// [parent] - Optional. Resource name of the location to look up available
+  /// attributes. If this field is set, `category_name`, `region_code`,
+  /// `language_code` and `show_all` are not required and must not be set.
+  /// Format: `locations/{location_id}` (e.g., `locations/1234567890`).
   ///
-  /// [regionCode] - The ISO 3166-1 alpha-2 country code to find available
-  /// attributes.
+  /// [regionCode] - Optional. The ISO 3166-1 alpha-2 country code to find
+  /// available attributes. Required if `parent` is not set.
   ///
-  /// [showAll] - Metadata for all available attributes are returned when this
-  /// field is set to true, disregarding parent and category_name fields.
-  /// language_code and region_code are required when show_all is set to true.
+  /// [showAll] - Optional. If set to true, metadata for all available
+  /// attributes are returned, disregarding `parent` and `category_name` fields.
+  /// `language_code` and `region_code` are required when `show_all` is set to
+  /// true.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2894,15 +2902,17 @@ class ServiceType {
 /// close_time=12:00 start_date=2015-11-23, end_date=2015-11-25,
 /// open_time=08:00, close_time=18:00
 class SpecialHourPeriod {
-  /// Valid values are 00:00-24:00, where 24:00 represents midnight at the end
-  /// of the specified day field.
+  /// Valid values are `00:00-24:00`, where `24:00` represents midnight at the
+  /// end of the specified day field.
   ///
-  /// Must be specified if `closed` is false.
+  /// It must be specified if `closed` is `false`. Note: In Proto3 JSON mapping,
+  /// default zero values (`00:00`) are omitted, producing `{}` for
+  /// `close_time`.
   ///
   /// Optional.
   TimeOfDay? closeTime;
 
-  /// If true, `end_date`, `open_time`, and `close_time` are ignored, and the
+  /// If `true`, `end_date`, `open_time`, and `close_time` are ignored, and the
   /// date specified in `start_date` is treated as the location being closed for
   /// the entire day.
   ///
@@ -2918,10 +2928,11 @@ class SpecialHourPeriod {
   /// Optional.
   Date? endDate;
 
-  /// Valid values are 00:00-24:00 where 24:00 represents midnight at the end of
-  /// the specified day field.
+  /// Valid values are `00:00-24:00`, where `24:00` represents midnight at the
+  /// end of the specified day field.
   ///
-  /// Must be specified if `closed` is false.
+  /// It must be specified if `closed` is `false`. Note: In Proto3 JSON mapping,
+  /// default zero values (`00:00`) are omitted, producing `{}` for `open_time`.
   ///
   /// Optional.
   TimeOfDay? openTime;
@@ -3068,8 +3079,11 @@ class TimePeriod {
   /// - "SUNDAY" : Sunday
   core.String? closeDay;
 
-  /// Valid values are 00:00-24:00, where 24:00 represents midnight at the end
-  /// of the specified day field.
+  /// Valid values are `00:00-24:00`, where `24:00` represents midnight at the
+  /// end of the specified day field.
+  ///
+  /// Note: In Proto3 JSON mapping, default zero values (`00:00`) are omitted,
+  /// producing `{}` for `close_time`.
   ///
   /// Required.
   TimeOfDay? closeTime;
@@ -3088,8 +3102,11 @@ class TimePeriod {
   /// - "SUNDAY" : Sunday
   core.String? openDay;
 
-  /// Valid values are 00:00-24:00, where 24:00 represents midnight at the end
-  /// of the specified day field.
+  /// Valid values are `00:00-24:00`, where `24:00` represents midnight at the
+  /// end of the specified day field.
+  ///
+  /// Note: In Proto3 JSON mapping, default zero values (`00:00`) are omitted,
+  /// producing `{}` for `open_time`.
   ///
   /// Required.
   TimeOfDay? openTime;

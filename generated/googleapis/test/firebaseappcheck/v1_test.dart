@@ -267,49 +267,13 @@ void checkGoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse(
   buildCounterGoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1SafetyNetConfig> buildUnnamed5() => [
-  buildGoogleFirebaseAppcheckV1SafetyNetConfig(),
-  buildGoogleFirebaseAppcheckV1SafetyNetConfig(),
-];
-
-void checkUnnamed5(core.List<api.GoogleFirebaseAppcheckV1SafetyNetConfig> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleFirebaseAppcheckV1SafetyNetConfig(o[0]);
-  checkGoogleFirebaseAppcheckV1SafetyNetConfig(o[1]);
-}
-
-core.int buildCounterGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse =
-    0;
-api.GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse
-buildGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse() {
-  final o = api.GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse();
-  buildCounterGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse++;
-  if (buildCounterGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse <
-      3) {
-    o.configs = buildUnnamed5();
-  }
-  buildCounterGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse--;
-  return o;
-}
-
-void checkGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse(
-  api.GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse o,
-) {
-  buildCounterGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse++;
-  if (buildCounterGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse <
-      3) {
-    checkUnnamed5(o.configs!);
-  }
-  buildCounterGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse--;
-}
-
 core.List<api.GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest>
-buildUnnamed6() => [
+buildUnnamed5() => [
   buildGoogleFirebaseAppcheckV1UpdateResourcePolicyRequest(),
   buildGoogleFirebaseAppcheckV1UpdateResourcePolicyRequest(),
 ];
 
-void checkUnnamed6(
+void checkUnnamed5(
   core.List<api.GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -325,7 +289,7 @@ buildGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest() {
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest <
       3) {
-    o.requests = buildUnnamed6();
+    o.requests = buildUnnamed5();
     o.updateMask = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest--;
@@ -338,18 +302,18 @@ void checkGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest(
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest <
       3) {
-    checkUnnamed6(o.requests!);
+    checkUnnamed5(o.requests!);
     unittest.expect(o.updateMask!, unittest.equals('foo'));
   }
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1ResourcePolicy> buildUnnamed7() => [
+core.List<api.GoogleFirebaseAppcheckV1ResourcePolicy> buildUnnamed6() => [
   buildGoogleFirebaseAppcheckV1ResourcePolicy(),
   buildGoogleFirebaseAppcheckV1ResourcePolicy(),
 ];
 
-void checkUnnamed7(core.List<api.GoogleFirebaseAppcheckV1ResourcePolicy> o) {
+void checkUnnamed6(core.List<api.GoogleFirebaseAppcheckV1ResourcePolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirebaseAppcheckV1ResourcePolicy(o[0]);
   checkGoogleFirebaseAppcheckV1ResourcePolicy(o[1]);
@@ -363,7 +327,7 @@ buildGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse() {
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse <
       3) {
-    o.resourcePolicies = buildUnnamed7();
+    o.resourcePolicies = buildUnnamed6();
   }
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse--;
   return o;
@@ -375,17 +339,17 @@ void checkGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse(
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse <
       3) {
-    checkUnnamed7(o.resourcePolicies!);
+    checkUnnamed6(o.resourcePolicies!);
   }
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1UpdateServiceRequest> buildUnnamed8() => [
+core.List<api.GoogleFirebaseAppcheckV1UpdateServiceRequest> buildUnnamed7() => [
   buildGoogleFirebaseAppcheckV1UpdateServiceRequest(),
   buildGoogleFirebaseAppcheckV1UpdateServiceRequest(),
 ];
 
-void checkUnnamed8(
+void checkUnnamed7(
   core.List<api.GoogleFirebaseAppcheckV1UpdateServiceRequest> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -399,7 +363,7 @@ buildGoogleFirebaseAppcheckV1BatchUpdateServicesRequest() {
   final o = api.GoogleFirebaseAppcheckV1BatchUpdateServicesRequest();
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesRequest < 3) {
-    o.requests = buildUnnamed8();
+    o.requests = buildUnnamed7();
     o.updateMask = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesRequest--;
@@ -411,18 +375,18 @@ void checkGoogleFirebaseAppcheckV1BatchUpdateServicesRequest(
 ) {
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesRequest < 3) {
-    checkUnnamed8(o.requests!);
+    checkUnnamed7(o.requests!);
     unittest.expect(o.updateMask!, unittest.equals('foo'));
   }
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesRequest--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1Service> buildUnnamed9() => [
+core.List<api.GoogleFirebaseAppcheckV1Service> buildUnnamed8() => [
   buildGoogleFirebaseAppcheckV1Service(),
   buildGoogleFirebaseAppcheckV1Service(),
 ];
 
-void checkUnnamed9(core.List<api.GoogleFirebaseAppcheckV1Service> o) {
+void checkUnnamed8(core.List<api.GoogleFirebaseAppcheckV1Service> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirebaseAppcheckV1Service(o[0]);
   checkGoogleFirebaseAppcheckV1Service(o[1]);
@@ -434,7 +398,7 @@ buildGoogleFirebaseAppcheckV1BatchUpdateServicesResponse() {
   final o = api.GoogleFirebaseAppcheckV1BatchUpdateServicesResponse();
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesResponse < 3) {
-    o.services = buildUnnamed9();
+    o.services = buildUnnamed8();
   }
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesResponse--;
   return o;
@@ -445,7 +409,7 @@ void checkGoogleFirebaseAppcheckV1BatchUpdateServicesResponse(
 ) {
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesResponse < 3) {
-    checkUnnamed9(o.services!);
+    checkUnnamed8(o.services!);
   }
   buildCounterGoogleFirebaseAppcheckV1BatchUpdateServicesResponse--;
 }
@@ -606,6 +570,7 @@ buildGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest() {
   buildCounterGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest < 3) {
     o.customToken = 'foo';
+    o.jti = 'foo';
     o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest--;
@@ -618,6 +583,7 @@ void checkGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest(
   buildCounterGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest < 3) {
     unittest.expect(o.customToken!, unittest.equals('foo'));
+    unittest.expect(o.jti!, unittest.equals('foo'));
     unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest--;
@@ -752,28 +718,6 @@ void checkGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest(
   buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest--;
 }
 
-core.int buildCounterGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest = 0;
-api.GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest
-buildGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest() {
-  final o = api.GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest();
-  buildCounterGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest++;
-  if (buildCounterGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest < 3) {
-    o.safetyNetToken = 'foo';
-  }
-  buildCounterGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest--;
-  return o;
-}
-
-void checkGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest(
-  api.GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest o,
-) {
-  buildCounterGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest++;
-  if (buildCounterGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest < 3) {
-    unittest.expect(o.safetyNetToken!, unittest.equals('foo'));
-  }
-  buildCounterGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest--;
-}
-
 core.int buildCounterGoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest =
     0;
 api.GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest
@@ -871,12 +815,12 @@ void checkGoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse(
   buildCounterGoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1DebugToken> buildUnnamed10() => [
+core.List<api.GoogleFirebaseAppcheckV1DebugToken> buildUnnamed9() => [
   buildGoogleFirebaseAppcheckV1DebugToken(),
   buildGoogleFirebaseAppcheckV1DebugToken(),
 ];
 
-void checkUnnamed10(core.List<api.GoogleFirebaseAppcheckV1DebugToken> o) {
+void checkUnnamed9(core.List<api.GoogleFirebaseAppcheckV1DebugToken> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirebaseAppcheckV1DebugToken(o[0]);
   checkGoogleFirebaseAppcheckV1DebugToken(o[1]);
@@ -888,7 +832,7 @@ buildGoogleFirebaseAppcheckV1ListDebugTokensResponse() {
   final o = api.GoogleFirebaseAppcheckV1ListDebugTokensResponse();
   buildCounterGoogleFirebaseAppcheckV1ListDebugTokensResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1ListDebugTokensResponse < 3) {
-    o.debugTokens = buildUnnamed10();
+    o.debugTokens = buildUnnamed9();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1ListDebugTokensResponse--;
@@ -900,18 +844,18 @@ void checkGoogleFirebaseAppcheckV1ListDebugTokensResponse(
 ) {
   buildCounterGoogleFirebaseAppcheckV1ListDebugTokensResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1ListDebugTokensResponse < 3) {
-    checkUnnamed10(o.debugTokens!);
+    checkUnnamed9(o.debugTokens!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleFirebaseAppcheckV1ListDebugTokensResponse--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1ResourcePolicy> buildUnnamed11() => [
+core.List<api.GoogleFirebaseAppcheckV1ResourcePolicy> buildUnnamed10() => [
   buildGoogleFirebaseAppcheckV1ResourcePolicy(),
   buildGoogleFirebaseAppcheckV1ResourcePolicy(),
 ];
 
-void checkUnnamed11(core.List<api.GoogleFirebaseAppcheckV1ResourcePolicy> o) {
+void checkUnnamed10(core.List<api.GoogleFirebaseAppcheckV1ResourcePolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirebaseAppcheckV1ResourcePolicy(o[0]);
   checkGoogleFirebaseAppcheckV1ResourcePolicy(o[1]);
@@ -924,7 +868,7 @@ buildGoogleFirebaseAppcheckV1ListResourcePoliciesResponse() {
   buildCounterGoogleFirebaseAppcheckV1ListResourcePoliciesResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1ListResourcePoliciesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.resourcePolicies = buildUnnamed11();
+    o.resourcePolicies = buildUnnamed10();
   }
   buildCounterGoogleFirebaseAppcheckV1ListResourcePoliciesResponse--;
   return o;
@@ -936,17 +880,17 @@ void checkGoogleFirebaseAppcheckV1ListResourcePoliciesResponse(
   buildCounterGoogleFirebaseAppcheckV1ListResourcePoliciesResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1ListResourcePoliciesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed11(o.resourcePolicies!);
+    checkUnnamed10(o.resourcePolicies!);
   }
   buildCounterGoogleFirebaseAppcheckV1ListResourcePoliciesResponse--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1Service> buildUnnamed12() => [
+core.List<api.GoogleFirebaseAppcheckV1Service> buildUnnamed11() => [
   buildGoogleFirebaseAppcheckV1Service(),
   buildGoogleFirebaseAppcheckV1Service(),
 ];
 
-void checkUnnamed12(core.List<api.GoogleFirebaseAppcheckV1Service> o) {
+void checkUnnamed11(core.List<api.GoogleFirebaseAppcheckV1Service> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirebaseAppcheckV1Service(o[0]);
   checkGoogleFirebaseAppcheckV1Service(o[1]);
@@ -959,7 +903,7 @@ buildGoogleFirebaseAppcheckV1ListServicesResponse() {
   buildCounterGoogleFirebaseAppcheckV1ListServicesResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1ListServicesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.services = buildUnnamed12();
+    o.services = buildUnnamed11();
   }
   buildCounterGoogleFirebaseAppcheckV1ListServicesResponse--;
   return o;
@@ -971,7 +915,7 @@ void checkGoogleFirebaseAppcheckV1ListServicesResponse(
   buildCounterGoogleFirebaseAppcheckV1ListServicesResponse++;
   if (buildCounterGoogleFirebaseAppcheckV1ListServicesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed12(o.services!);
+    checkUnnamed11(o.services!);
   }
   buildCounterGoogleFirebaseAppcheckV1ListServicesResponse--;
 }
@@ -1119,12 +1063,12 @@ void checkGoogleFirebaseAppcheckV1PublicJwk(
   buildCounterGoogleFirebaseAppcheckV1PublicJwk--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1PublicJwk> buildUnnamed13() => [
+core.List<api.GoogleFirebaseAppcheckV1PublicJwk> buildUnnamed12() => [
   buildGoogleFirebaseAppcheckV1PublicJwk(),
   buildGoogleFirebaseAppcheckV1PublicJwk(),
 ];
 
-void checkUnnamed13(core.List<api.GoogleFirebaseAppcheckV1PublicJwk> o) {
+void checkUnnamed12(core.List<api.GoogleFirebaseAppcheckV1PublicJwk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirebaseAppcheckV1PublicJwk(o[0]);
   checkGoogleFirebaseAppcheckV1PublicJwk(o[1]);
@@ -1136,7 +1080,7 @@ buildGoogleFirebaseAppcheckV1PublicJwkSet() {
   final o = api.GoogleFirebaseAppcheckV1PublicJwkSet();
   buildCounterGoogleFirebaseAppcheckV1PublicJwkSet++;
   if (buildCounterGoogleFirebaseAppcheckV1PublicJwkSet < 3) {
-    o.keys = buildUnnamed13();
+    o.keys = buildUnnamed12();
   }
   buildCounterGoogleFirebaseAppcheckV1PublicJwkSet--;
   return o;
@@ -1147,7 +1091,7 @@ void checkGoogleFirebaseAppcheckV1PublicJwkSet(
 ) {
   buildCounterGoogleFirebaseAppcheckV1PublicJwkSet++;
   if (buildCounterGoogleFirebaseAppcheckV1PublicJwkSet < 3) {
-    checkUnnamed13(o.keys!);
+    checkUnnamed12(o.keys!);
   }
   buildCounterGoogleFirebaseAppcheckV1PublicJwkSet--;
 }
@@ -1268,30 +1212,6 @@ void checkGoogleFirebaseAppcheckV1ResourcePolicy(
   buildCounterGoogleFirebaseAppcheckV1ResourcePolicy--;
 }
 
-core.int buildCounterGoogleFirebaseAppcheckV1SafetyNetConfig = 0;
-api.GoogleFirebaseAppcheckV1SafetyNetConfig
-buildGoogleFirebaseAppcheckV1SafetyNetConfig() {
-  final o = api.GoogleFirebaseAppcheckV1SafetyNetConfig();
-  buildCounterGoogleFirebaseAppcheckV1SafetyNetConfig++;
-  if (buildCounterGoogleFirebaseAppcheckV1SafetyNetConfig < 3) {
-    o.name = 'foo';
-    o.tokenTtl = 'foo';
-  }
-  buildCounterGoogleFirebaseAppcheckV1SafetyNetConfig--;
-  return o;
-}
-
-void checkGoogleFirebaseAppcheckV1SafetyNetConfig(
-  api.GoogleFirebaseAppcheckV1SafetyNetConfig o,
-) {
-  buildCounterGoogleFirebaseAppcheckV1SafetyNetConfig++;
-  if (buildCounterGoogleFirebaseAppcheckV1SafetyNetConfig < 3) {
-    unittest.expect(o.name!, unittest.equals('foo'));
-    unittest.expect(o.tokenTtl!, unittest.equals('foo'));
-  }
-  buildCounterGoogleFirebaseAppcheckV1SafetyNetConfig--;
-}
-
 core.int buildCounterGoogleFirebaseAppcheckV1Service = 0;
 api.GoogleFirebaseAppcheckV1Service buildGoogleFirebaseAppcheckV1Service() {
   final o = api.GoogleFirebaseAppcheckV1Service();
@@ -1384,6 +1304,14 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
+core.List<core.String> buildUnnamed13() => ['foo', 'foo'];
+
+void checkUnnamed13(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
 
 void checkUnnamed14(core.List<core.String> o) {
@@ -1411,22 +1339,6 @@ void checkUnnamed16(core.List<core.String> o) {
 core.List<core.String> buildUnnamed17() => ['foo', 'foo'];
 
 void checkUnnamed17(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed18() => ['foo', 'foo'];
-
-void checkUnnamed18(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed19() => ['foo', 'foo'];
-
-void checkUnnamed19(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1533,22 +1445,6 @@ void main() {
               oJson as core.Map<core.String, core.dynamic>,
             );
         checkGoogleFirebaseAppcheckV1BatchGetRecaptchaV3ConfigsResponse(od);
-      });
-    },
-  );
-
-  unittest.group(
-    'obj-schema-GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o =
-            buildGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>,
-            );
-        checkGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse(od);
       });
     },
   );
@@ -1777,21 +1673,6 @@ void main() {
               oJson as core.Map<core.String, core.dynamic>,
             );
         checkGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest(od);
-      });
-    },
-  );
-
-  unittest.group(
-    'obj-schema-GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest',
-    () {
-      unittest.test('to-json--from-json', () async {
-        final o = buildGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest();
-        final oJson = convert.jsonDecode(convert.jsonEncode(o));
-        final od =
-            api.GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest.fromJson(
-              oJson as core.Map<core.String, core.dynamic>,
-            );
-        checkGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest(od);
       });
     },
   );
@@ -2031,17 +1912,6 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkGoogleFirebaseAppcheckV1ResourcePolicy(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleFirebaseAppcheckV1SafetyNetConfig', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleFirebaseAppcheckV1SafetyNetConfig();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
-      checkGoogleFirebaseAppcheckV1SafetyNetConfig(od);
     });
   });
 
@@ -2988,75 +2858,6 @@ void main() {
       );
     });
 
-    unittest.test('method--exchangeSafetyNetToken', () async {
-      final mock = HttpServerMock();
-      final res = api.FirebaseappcheckApi(mock).projects.apps;
-      final arg_request =
-          buildGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest();
-      final arg_app = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj =
-              api.GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest.fromJson(
-                json as core.Map<core.String, core.dynamic>,
-              );
-          checkGoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest(obj);
-
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
-
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
-          }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
-
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGoogleFirebaseAppcheckV1AppCheckToken(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.exchangeSafetyNetToken(
-        arg_request,
-        arg_app,
-        $fields: arg_$fields,
-      );
-      checkGoogleFirebaseAppcheckV1AppCheckToken(
-        response as api.GoogleFirebaseAppcheckV1AppCheckToken,
-      );
-    });
-
     unittest.test('method--generateAppAttestChallenge', () async {
       final mock = HttpServerMock();
       final res = api.FirebaseappcheckApi(mock).projects.apps;
@@ -3205,7 +3006,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FirebaseappcheckApi(mock).projects.apps.appAttestConfig;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed14();
+      final arg_names = buildUnnamed13();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3731,7 +3532,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FirebaseappcheckApi(mock).projects.apps.deviceCheckConfig;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed15();
+      final arg_names = buildUnnamed14();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3929,7 +3730,7 @@ void main() {
         mock,
       ).projects.apps.playIntegrityConfig;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed16();
+      final arg_names = buildUnnamed15();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4131,7 +3932,7 @@ void main() {
         mock,
       ).projects.apps.recaptchaEnterpriseConfig;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed17();
+      final arg_names = buildUnnamed16();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4333,7 +4134,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FirebaseappcheckApi(mock).projects.apps.recaptchaV3Config;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed18();
+      final arg_names = buildUnnamed17();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4520,202 +4321,6 @@ void main() {
       );
       checkGoogleFirebaseAppcheckV1RecaptchaV3Config(
         response as api.GoogleFirebaseAppcheckV1RecaptchaV3Config,
-      );
-    });
-  });
-
-  unittest.group('resource-ProjectsAppsSafetyNetConfigResource', () {
-    unittest.test('method--batchGet', () async {
-      final mock = HttpServerMock();
-      final res = api.FirebaseappcheckApi(mock).projects.apps.safetyNetConfig;
-      final arg_parent = 'foo';
-      final arg_names = buildUnnamed19();
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
-
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
-          }
-          unittest.expect(queryMap['names']!, unittest.equals(arg_names));
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
-
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.batchGet(
-        arg_parent,
-        names: arg_names,
-        $fields: arg_$fields,
-      );
-      checkGoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse(
-        response
-            as api.GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse,
-      );
-    });
-
-    unittest.test('method--get', () async {
-      final mock = HttpServerMock();
-      final res = api.FirebaseappcheckApi(mock).projects.apps.safetyNetConfig;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
-
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
-          }
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
-
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGoogleFirebaseAppcheckV1SafetyNetConfig(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.get(arg_name, $fields: arg_$fields);
-      checkGoogleFirebaseAppcheckV1SafetyNetConfig(
-        response as api.GoogleFirebaseAppcheckV1SafetyNetConfig,
-      );
-    });
-
-    unittest.test('method--patch', () async {
-      final mock = HttpServerMock();
-      final res = api.FirebaseappcheckApi(mock).projects.apps.safetyNetConfig;
-      final arg_request = buildGoogleFirebaseAppcheckV1SafetyNetConfig();
-      final arg_name = 'foo';
-      final arg_updateMask = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final obj = api.GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(
-            json as core.Map<core.String, core.dynamic>,
-          );
-          checkGoogleFirebaseAppcheckV1SafetyNetConfig(obj);
-
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
-
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
-          }
-          unittest.expect(
-            queryMap['updateMask']!.first,
-            unittest.equals(arg_updateMask),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
-
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(
-            buildGoogleFirebaseAppcheckV1SafetyNetConfig(),
-          );
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.patch(
-        arg_request,
-        arg_name,
-        updateMask: arg_updateMask,
-        $fields: arg_$fields,
-      );
-      checkGoogleFirebaseAppcheckV1SafetyNetConfig(
-        response as api.GoogleFirebaseAppcheckV1SafetyNetConfig,
       );
     });
   });

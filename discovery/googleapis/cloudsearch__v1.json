@@ -49,7 +49,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260318",
+    "revision": "20260729",
     "rootUrl": "https://cloudsearch.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Search API",
@@ -1016,6 +1016,16 @@
                             "parameters": {
                                 "pageToken": {
                                     "description": "Number of sources to return in the response.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "requestOptions.clientDisplayLanguageCode": {
+                                    "description": "The BCP-47 language code, such as \"pt\" or \"en\". It represents the user's preferred Display Language.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "requestOptions.countryCode": {
+                                    "description": "Optional. Specifies the country/region where the query originated, as a lowercase ISO 3166-1 alpha-2 region code (using 'uk' instead of 'gb' for the United Kingdom).",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -6790,7 +6800,6 @@
             "type": "object"
         },
         "QuerySuggestion": {
-            "description": "This field does not contain anything as of now and is just used as an indicator that the suggest result was a phrase completion.",
             "id": "QuerySuggestion",
             "properties": {
                 "lastQueryTime": {
@@ -6888,6 +6897,14 @@
             "description": "Shared request options for all RPC methods.",
             "id": "RequestOptions",
             "properties": {
+                "clientDisplayLanguageCode": {
+                    "description": "The BCP-47 language code, such as \"pt\" or \"en\". It represents the user's preferred Display Language.",
+                    "type": "string"
+                },
+                "countryCode": {
+                    "description": "Optional. Specifies the country/region where the query originated, as a lowercase ISO 3166-1 alpha-2 region code (using 'uk' instead of 'gb' for the United Kingdom).",
+                    "type": "string"
+                },
                 "debugOptions": {
                     "$ref": "DebugOptions",
                     "description": "Debug options of the request"
@@ -7276,7 +7293,7 @@
             "type": "object"
         },
         "SearchRequest": {
-            "description": "The search API request. NEXT ID: 25",
+            "description": "The search API request. NEXT ID: 26",
             "id": "SearchRequest",
             "properties": {
                 "contextAttributes": {
@@ -7329,7 +7346,7 @@
             "type": "object"
         },
         "SearchResponse": {
-            "description": "The search API response. NEXT ID: 19",
+            "description": "The search API response. NEXT ID: 20",
             "id": "SearchResponse",
             "properties": {
                 "debugInfo": {
@@ -7394,7 +7411,7 @@
             "type": "object"
         },
         "SearchResult": {
-            "description": "Results containing indexed information for a document. Next ID: 16",
+            "description": "Results containing indexed information for a document. Next ID: 17",
             "id": "SearchResult",
             "properties": {
                 "clusteredResults": {

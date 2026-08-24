@@ -33,6 +33,11 @@
 ///   - [ApplicationsTracksResource]
 ///     - [ApplicationsTracksReleasesResource]
 /// - [ApprecoveryResource]
+/// - [AppsigningResource]
+/// - [AppstoreappsreviewResource]
+/// - [AppstorecatalogResource]
+///   - [AppstorecatalogRecentappviewsResource]
+///   - [AppstorecatalogRecentupdateeventsResource]
 /// - [EditsResource]
 ///   - [EditsApksResource]
 ///   - [EditsBundlesResource]
@@ -103,6 +108,11 @@ class AndroidPublisherApi {
 
   ApplicationsResource get applications => ApplicationsResource(_requester);
   ApprecoveryResource get apprecovery => ApprecoveryResource(_requester);
+  AppsigningResource get appsigning => AppsigningResource(_requester);
+  AppstoreappsreviewResource get appstoreappsreview =>
+      AppstoreappsreviewResource(_requester);
+  AppstorecatalogResource get appstorecatalog =>
+      AppstorecatalogResource(_requester);
   EditsResource get edits => EditsResource(_requester);
   ExternaltransactionsResource get externaltransactions =>
       ExternaltransactionsResource(_requester);
@@ -649,6 +659,645 @@ class ApprecoveryResource {
       queryParams: queryParams_,
     );
     return ListAppRecoveriesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AppsigningResource {
+  final commons.ApiRequester _requester;
+
+  AppsigningResource(commons.ApiRequester client) : _requester = client;
+
+  /// Enrolls an app in Play App Signing using a self-hosted Google Cloud KMS
+  /// key.
+  ///
+  /// Warning: Do not use this method for standard Play App Signing enrollment.
+  /// * Standard enrollment with Google-generated or Google-managed keys cannot
+  /// be done via API. * This advanced API is strictly for enterprise
+  /// organizations with mandatory compliance, regulatory, or policy
+  /// requirements to retain key custody in an external Google Cloud KMS
+  /// instance. * Prerequisites: Requires an active, properly configured Google
+  /// Cloud KMS key with appropriate IAM permissions granted to Google Play
+  /// before calling this method. See Help Center:
+  /// https://support.google.com/googleplay/android-developer/answer/9842756
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Either package name or app ID of the app enrolling in
+  /// Play Signing.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EnrollAppResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EnrollAppResponse> enrollApp(
+    EnrollAppRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$name') +
+        '/appSigning:enrollApp';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return EnrollAppResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Rotates an app's signing key to a new self-hosted Google Cloud KMS key.
+  ///
+  /// Warning: This method only applies to apps enrolled with self-hosted Cloud
+  /// KMS keys. For apps using standard Google-managed Play App Signing, key
+  /// rotation requests must be initiated through the Google Play Console UI.
+  /// See Help Center:
+  /// https://support.google.com/googleplay/android-developer/answer/9842756
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Either package name or app ID of the app rotating the
+  /// signing key.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RotateAppSigningKeyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RotateAppSigningKeyResponse> rotateAppSigningKey(
+    RotateAppSigningKeyRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$name') +
+        '/appSigning:rotateAppSigningKey';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RotateAppSigningKeyResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AppstoreappsreviewResource {
+  final commons.ApiRequester _requester;
+
+  AppstoreappsreviewResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates an app store hosted app.
+  ///
+  /// This must be called before any other RPCs for this hosted app.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [appStorePackageName] - Required. Package name of the third-party app
+  /// store.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CreateAppStoreHostedAppResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CreateAppStoreHostedAppResponse> createappstorehostedapp(
+    CreateAppStoreHostedAppRequest request,
+    core.String appStorePackageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/appstore/' +
+        commons.escapeVariable('$appStorePackageName') +
+        '/apps:create';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CreateAppStoreHostedAppResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates details for an app hosted on an app store.
+  ///
+  /// Use this to provide details for a new app, or to update details for an
+  /// existing app. The update will be sent for review immediately after
+  /// creation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [appStorePackageName] - Required. Package name of the third-party app
+  /// store.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UpdateAppStoreHostedAppResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UpdateAppStoreHostedAppResponse> updateappstorehostedapp(
+    UpdateAppStoreHostedAppRequest request,
+    core.String appStorePackageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/appstore/' +
+        commons.escapeVariable('$appStorePackageName') +
+        '/apps:update';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UpdateAppStoreHostedAppResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the publish status of an app store hosted app.
+  ///
+  /// The default state after calling UpdateAppStoreHostedApp is PUBLISHED. It
+  /// is not necessary to call this RPC explicitly to set an app to PUBLISHED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [appStorePackageName] - Required. Package name of the third-party app
+  /// store.
+  ///
+  /// [packageName] - Required. Package name of the app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UpdateAppStoreHostedAppPublishStatusResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UpdateAppStoreHostedAppPublishStatusResponse>
+  updateappstorehostedapppublishstatus(
+    UpdateAppStoreHostedAppPublishStatusRequest request,
+    core.String appStorePackageName,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/appstore/' +
+        commons.escapeVariable('$appStorePackageName') +
+        '/apps/' +
+        commons.escapeVariable('$packageName') +
+        ':updateAppStoreHostedAppPublishStatus';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UpdateAppStoreHostedAppPublishStatusResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Upload an APK file for the hosted app.
+  ///
+  /// Returns an ID to track this APK.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [appStorePackageName] - Required. Package name of the third-party app
+  /// store.
+  ///
+  /// [packageName] - Required. Package name of the app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [UploadApkResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadApkResponse> uploadapk(
+    UploadApkRequest request,
+    core.String appStorePackageName,
+    core.String packageName, {
+    core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ =
+          'androidpublisher/v3/appstore/' +
+          commons.escapeVariable('$appStorePackageName') +
+          '/apps/' +
+          commons.escapeVariable('$packageName') +
+          '/apks:upload';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ =
+          '/resumable/upload/androidpublisher/v3/appstore/' +
+          commons.escapeVariable('$appStorePackageName') +
+          '/apps/' +
+          commons.escapeVariable('$packageName') +
+          '/apks:upload';
+    } else {
+      url_ =
+          '/upload/androidpublisher/v3/appstore/' +
+          commons.escapeVariable('$appStorePackageName') +
+          '/apps/' +
+          commons.escapeVariable('$packageName') +
+          '/apks:upload';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
+    );
+    return UploadApkResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Upload a policy declaration file for the hosted app.
+  ///
+  /// Returns an ID to track the file.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [appStorePackageName] - Required. Package name of the third-party app
+  /// store.
+  ///
+  /// [packageName] - Required. Package name of the app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [UploadAppStoreAppPolicyDeclarationFileResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadAppStoreAppPolicyDeclarationFileResponse>
+  uploadappstoreapppolicydeclarationfile(
+    UploadAppStoreAppPolicyDeclarationFileRequest request,
+    core.String appStorePackageName,
+    core.String packageName, {
+    core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ =
+          'androidpublisher/v3/appstore/' +
+          commons.escapeVariable('$appStorePackageName') +
+          '/apps/' +
+          commons.escapeVariable('$packageName') +
+          '/policyDeclarationFiles:upload';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ =
+          '/resumable/upload/androidpublisher/v3/appstore/' +
+          commons.escapeVariable('$appStorePackageName') +
+          '/apps/' +
+          commons.escapeVariable('$packageName') +
+          '/policyDeclarationFiles:upload';
+    } else {
+      url_ =
+          '/upload/androidpublisher/v3/appstore/' +
+          commons.escapeVariable('$appStorePackageName') +
+          '/apps/' +
+          commons.escapeVariable('$packageName') +
+          '/policyDeclarationFiles:upload';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
+    );
+    return UploadAppStoreAppPolicyDeclarationFileResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Upload a screenshot or app icon for the hosted app.
+  ///
+  /// Returns an ID to track the image.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [appStorePackageName] - Required. Package name of the third-party app
+  /// store.
+  ///
+  /// [packageName] - Required. Package name of the app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [UploadImageResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadImageResponse> uploadimage(
+    UploadImageRequest request,
+    core.String appStorePackageName,
+    core.String packageName, {
+    core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ =
+          'androidpublisher/v3/appstore/' +
+          commons.escapeVariable('$appStorePackageName') +
+          '/apps/' +
+          commons.escapeVariable('$packageName') +
+          '/images:upload';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ =
+          '/resumable/upload/androidpublisher/v3/appstore/' +
+          commons.escapeVariable('$appStorePackageName') +
+          '/apps/' +
+          commons.escapeVariable('$packageName') +
+          '/images:upload';
+    } else {
+      url_ =
+          '/upload/androidpublisher/v3/appstore/' +
+          commons.escapeVariable('$appStorePackageName') +
+          '/apps/' +
+          commons.escapeVariable('$packageName') +
+          '/images:upload';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
+    );
+    return UploadImageResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AppstorecatalogResource {
+  final commons.ApiRequester _requester;
+
+  AppstorecatalogRecentappviewsResource get recentappviews =>
+      AppstorecatalogRecentappviewsResource(_requester);
+  AppstorecatalogRecentupdateeventsResource get recentupdateevents =>
+      AppstorecatalogRecentupdateeventsResource(_requester);
+
+  AppstorecatalogResource(commons.ApiRequester client) : _requester = client;
+}
+
+class AppstorecatalogRecentappviewsResource {
+  final commons.ApiRequester _requester;
+
+  AppstorecatalogRecentappviewsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Returns metadata about a recently updated app.
+  ///
+  /// Request parameters:
+  ///
+  /// [appStorePackageName] - Required. The package name of the app store on
+  /// behalf of which the request is made.
+  ///
+  /// [playAppPackageName] - Required. The package name of the requested Play
+  /// app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RecentAppView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RecentAppView> get(
+    core.String appStorePackageName,
+    core.String playAppPackageName, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/appstorecatalog/' +
+        commons.escapeVariable('$appStorePackageName') +
+        '/recentAppViews/' +
+        commons.escapeVariable('$playAppPackageName');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RecentAppView.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class AppstorecatalogRecentupdateeventsResource {
+  final commons.ApiRequester _requester;
+
+  AppstorecatalogRecentupdateeventsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Lists update events for eligible apps in the given time range.
+  ///
+  /// Request parameters:
+  ///
+  /// [appStorePackageName] - Required. The package name of the app store on
+  /// behalf of which the request is made.
+  ///
+  /// [endTime] - Required. The end time of the range (exclusive).
+  ///
+  /// [pageSize] - Optional. The maximum number of update events to return. The
+  /// service may return fewer than this value. If unspecified, at most 100
+  /// update events will be returned. The maximum value is 1000; values above
+  /// 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListRecentUpdateEvents` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListRecentUpdateEvents` must match the call that provided the page token.
+  ///
+  /// [startTime] - Required. The start time of the range (inclusive).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRecentUpdateEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRecentUpdateEventsResponse> list(
+    core.String appStorePackageName, {
+    core.String? endTime,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? startTime,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'endTime': ?endTime == null ? null : [endTime],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'startTime': ?startTime == null ? null : [startTime],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/appstorecatalog/' +
+        commons.escapeVariable('$appStorePackageName') +
+        '/recentUpdateEvents';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRecentUpdateEventsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2048,6 +2697,15 @@ class EditsImagesResource {
   /// - "featureGraphic" : Feature graphic.
   /// - "tvBanner" : TV banner.
   ///
+  /// [aiGeneratedState] - Optional. Whether the image was generated by AI.
+  /// Attested by the developer.
+  /// Possible string values are:
+  /// - "aiGeneratedStateUnspecified" : Catch-all for unrecognized enum values.
+  /// See go/protodosdonts.
+  /// - "aiGeneratedStateNotAiGenerated" : The content is not generated by AI.
+  /// - "aiGeneratedStateAiGeneratedDeveloperAttested" : The content is
+  /// generated by AI and attested by the developer.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2069,11 +2727,13 @@ class EditsImagesResource {
     core.String editId,
     core.String language,
     core.String imageType, {
+    core.String? aiGeneratedState,
     core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'aiGeneratedState': ?aiGeneratedState == null ? null : [aiGeneratedState],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -6587,6 +7247,54 @@ class OrdersResource {
       downloadOptions: null,
     );
   }
+
+  /// Provide refund preference and purchase usage for a chargeback request
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The package name of the application for which
+  /// this subscription or in-app item was purchased (for example,
+  /// 'com.some.thing').
+  ///
+  /// [orderId] - Required. The order ID provided to the user when the
+  /// subscription or in-app order was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> reviewrefund(
+    OrdersReviewRefundRequest request,
+    core.String packageName,
+    core.String orderId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/orders/' +
+        commons.escapeVariable('$orderId') +
+        ':reviewrefund';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
 }
 
 class PurchasesResource {
@@ -6876,11 +7584,11 @@ class PurchasesSubscriptionsResource {
     );
   }
 
-  /// Cancels a user's subscription purchase.
+  /// Deprecated: Use purchases.subscriptionsv2.cancel instead.
   ///
-  /// The subscription remains valid until its expiration time. Newer version is
-  /// available at purchases.subscriptionsv2.cancel for better client library
-  /// support.
+  /// Cancels a user's subscription purchase. The subscription remains valid
+  /// until its expiration time. Newer version is available at
+  /// purchases.subscriptionsv2.cancel for better client library support.
   ///
   /// Request parameters:
   ///
@@ -6902,6 +7610,9 @@ class PurchasesSubscriptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<void> cancel(
     core.String packageName,
     core.String subscriptionId,
@@ -6929,6 +7640,8 @@ class PurchasesSubscriptionsResource {
     );
   }
 
+  /// Deprecated: Use purchases.subscriptionsv2.defer instead.
+  ///
   /// Defers a user's subscription purchase until a specified future expiration
   /// time.
   ///
@@ -6955,6 +7668,9 @@ class PurchasesSubscriptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<SubscriptionPurchasesDeferResponse> defer(
     SubscriptionPurchasesDeferRequest request,
     core.String packageName,
@@ -6984,172 +7700,6 @@ class PurchasesSubscriptionsResource {
     );
     return SubscriptionPurchasesDeferResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Deprecated: Use purchases.subscriptionsv2.get instead.
-  ///
-  /// Checks whether a user's subscription purchase is valid and returns its
-  /// expiry time.
-  ///
-  /// Request parameters:
-  ///
-  /// [packageName] - The package name of the application for which this
-  /// subscription was purchased (for example, 'com.some.thing').
-  ///
-  /// [subscriptionId] - The purchased subscription ID (for example,
-  /// 'monthly001').
-  ///
-  /// [token] - The token provided to the user's device when the subscription
-  /// was purchased.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SubscriptionPurchase].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  async.Future<SubscriptionPurchase> get(
-    core.String packageName,
-    core.String subscriptionId,
-    core.String token, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'androidpublisher/v3/applications/' +
-        commons.escapeVariable('$packageName') +
-        '/purchases/subscriptions/' +
-        commons.escapeVariable('$subscriptionId') +
-        '/tokens/' +
-        commons.escapeVariable('$token');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return SubscriptionPurchase.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Deprecated: Use orders.refund instead.
-  ///
-  /// Refunds a user's subscription purchase, but the subscription remains valid
-  /// until its expiration time and it will continue to recur.
-  ///
-  /// Request parameters:
-  ///
-  /// [packageName] - The package name of the application for which this
-  /// subscription was purchased (for example, 'com.some.thing').
-  ///
-  /// [subscriptionId] - "The purchased subscription ID (for example,
-  /// 'monthly001').
-  ///
-  /// [token] - The token provided to the user's device when the subscription
-  /// was purchased.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  async.Future<void> refund(
-    core.String packageName,
-    core.String subscriptionId,
-    core.String token, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'androidpublisher/v3/applications/' +
-        commons.escapeVariable('$packageName') +
-        '/purchases/subscriptions/' +
-        commons.escapeVariable('$subscriptionId') +
-        '/tokens/' +
-        commons.escapeVariable('$token') +
-        ':refund';
-
-    await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-      downloadOptions: null,
-    );
-  }
-
-  /// Deprecated: Use purchases.subscriptionsv2.revoke instead.
-  ///
-  /// Refunds and immediately revokes a user's subscription purchase. Access to
-  /// the subscription will be terminated immediately and it will stop
-  /// recurring.
-  ///
-  /// Request parameters:
-  ///
-  /// [packageName] - The package name of the application for which this
-  /// subscription was purchased (for example, 'com.some.thing').
-  ///
-  /// [subscriptionId] - The purchased subscription ID (for example,
-  /// 'monthly001').
-  ///
-  /// [token] - The token provided to the user's device when the subscription
-  /// was purchased.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  async.Future<void> revoke(
-    core.String packageName,
-    core.String subscriptionId,
-    core.String token, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ =
-        'androidpublisher/v3/applications/' +
-        commons.escapeVariable('$packageName') +
-        '/purchases/subscriptions/' +
-        commons.escapeVariable('$subscriptionId') +
-        '/tokens/' +
-        commons.escapeVariable('$token') +
-        ':revoke';
-
-    await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-      downloadOptions: null,
     );
   }
 }
@@ -8758,6 +9308,44 @@ class ApksListResponse {
   }
 }
 
+/// Contact information for the app.
+class AppContactInformation {
+  /// The contact email for this app.
+  ///
+  /// Always set.
+  core.String? contactEmail;
+
+  /// The contact phone for this app.
+  ///
+  /// Optionally provided by the developer.
+  core.String? phoneNumber;
+
+  /// The contact website url for this app.
+  ///
+  /// Optionally provided by the developer.
+  core.String? websiteUrl;
+
+  AppContactInformation({this.contactEmail, this.phoneNumber, this.websiteUrl});
+
+  AppContactInformation.fromJson(core.Map json_)
+    : this(
+        contactEmail: json_['contactEmail'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        websiteUrl: json_['websiteUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contactEmail = this.contactEmail;
+    final phoneNumber = this.phoneNumber;
+    final websiteUrl = this.websiteUrl;
+    return {
+      'contactEmail': ?contactEmail,
+      'phoneNumber': ?phoneNumber,
+      'websiteUrl': ?websiteUrl,
+    };
+  }
+}
+
 /// The app details.
 ///
 /// The resource for DetailsService.
@@ -8940,6 +9528,234 @@ class AppRecoveryAction {
   }
 }
 
+/// An installable set of active APKs.
+///
+/// A set of APKs might only contain 1 APK if the app in question publishes
+/// using APKs. If the app uses app bundles (or a similar technology), this set
+/// should contain all APKs (even optional ones) that might be installed for
+/// this app. A set of APKs should be installable together. If certain APKs are
+/// exclusive to one another and cannot be installed together, then a separate
+/// AppStoreAppActiveApkSet should be created.
+class AppStoreAppActiveApkSet {
+  /// The ID for the main base application module.
+  ///
+  /// Example: base.apk or app.apk.
+  ///
+  /// Required.
+  core.String? baseApkId;
+
+  /// IDs for split modules that might be installed in combination with the base
+  /// APK.
+  ///
+  /// Can be empty if app bundles (or a similar technology) are not used.
+  /// Example: config.en.apk.
+  ///
+  /// Optional.
+  core.List<core.String>? splitApkId;
+
+  AppStoreAppActiveApkSet({this.baseApkId, this.splitApkId});
+
+  AppStoreAppActiveApkSet.fromJson(core.Map json_)
+    : this(
+        baseApkId: json_['baseApkId'] as core.String?,
+        splitApkId: (json_['splitApkId'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final baseApkId = this.baseApkId;
+    final splitApkId = this.splitApkId;
+    return {'baseApkId': ?baseApkId, 'splitApkId': ?splitApkId};
+  }
+}
+
+/// Information about active APKs of an app store hosted app.
+class AppStoreAppActiveApks {
+  /// List specifying which APK sets are distributed together.
+  ///
+  /// This list should contain all APKs that you're distributing for this app.
+  /// Add an entry for each individual installable set of APKs.
+  ///
+  /// Required.
+  core.List<AppStoreAppActiveApkSet>? activeApkSets;
+
+  AppStoreAppActiveApks({this.activeApkSets});
+
+  AppStoreAppActiveApks.fromJson(core.Map json_)
+    : this(
+        activeApkSets: (json_['activeApkSets'] as core.List?)
+            ?.map(
+              (value) => AppStoreAppActiveApkSet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeApkSets = this.activeApkSets;
+    return {'activeApkSets': ?activeApkSets};
+  }
+}
+
+/// Details about the app.
+class AppStoreAppDetails {
+  /// The app developer's contact email address.
+  ///
+  /// Required.
+  core.String? contactEmail;
+
+  /// The app developer's name.
+  ///
+  /// Required.
+  core.String? developerName;
+
+  /// Website link for the developer or app.
+  ///
+  /// Optional.
+  core.String? developerWebsite;
+
+  AppStoreAppDetails({
+    this.contactEmail,
+    this.developerName,
+    this.developerWebsite,
+  });
+
+  AppStoreAppDetails.fromJson(core.Map json_)
+    : this(
+        contactEmail: json_['contactEmail'] as core.String?,
+        developerName: json_['developerName'] as core.String?,
+        developerWebsite: json_['developerWebsite'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contactEmail = this.contactEmail;
+    final developerName = this.developerName;
+    final developerWebsite = this.developerWebsite;
+    return {
+      'contactEmail': ?contactEmail,
+      'developerName': ?developerName,
+      'developerWebsite': ?developerWebsite,
+    };
+  }
+}
+
+/// A policy declaration with its responses.
+class AppStoreAppPolicyDeclaration {
+  /// ID of the policy declaration.
+  ///
+  /// Required.
+  core.String? declarationId;
+
+  /// Responses provided for this declaration.
+  ///
+  /// Required.
+  core.List<PolicyResponse>? responses;
+
+  AppStoreAppPolicyDeclaration({this.declarationId, this.responses});
+
+  AppStoreAppPolicyDeclaration.fromJson(core.Map json_)
+    : this(
+        declarationId: json_['declarationId'] as core.String?,
+        responses: (json_['responses'] as core.List?)
+            ?.map(
+              (value) => PolicyResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final declarationId = this.declarationId;
+    final responses = this.responses;
+    return {'declarationId': ?declarationId, 'responses': ?responses};
+  }
+}
+
+/// A localized store listing.
+///
+/// These are the details about the app as shown in your app store.
+class AppStoreAppStoreListing {
+  /// Image ID generated from UploadImage for the main app icon.
+  ///
+  /// Required.
+  core.String? appIconId;
+
+  /// The title of the app.
+  ///
+  /// Required.
+  core.String? appName;
+
+  /// Comprehensive description text about the app.
+  ///
+  /// Required.
+  core.String? fullDescription;
+
+  /// Language code (e.g., "en-US") of the listing.
+  ///
+  /// Required.
+  core.String? languageCode;
+
+  /// Multiple image IDs for screenshot galleries.
+  ///
+  /// Required.
+  core.List<core.String>? screenshotId;
+
+  /// Quick summary about the app.
+  ///
+  /// Optional.
+  core.String? shortDescription;
+
+  /// Link to a video about the app.
+  ///
+  /// Optional.
+  core.String? videoLink;
+
+  AppStoreAppStoreListing({
+    this.appIconId,
+    this.appName,
+    this.fullDescription,
+    this.languageCode,
+    this.screenshotId,
+    this.shortDescription,
+    this.videoLink,
+  });
+
+  AppStoreAppStoreListing.fromJson(core.Map json_)
+    : this(
+        appIconId: json_['appIconId'] as core.String?,
+        appName: json_['appName'] as core.String?,
+        fullDescription: json_['fullDescription'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        screenshotId: (json_['screenshotId'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        shortDescription: json_['shortDescription'] as core.String?,
+        videoLink: json_['videoLink'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final appIconId = this.appIconId;
+    final appName = this.appName;
+    final fullDescription = this.fullDescription;
+    final languageCode = this.languageCode;
+    final screenshotId = this.screenshotId;
+    final shortDescription = this.shortDescription;
+    final videoLink = this.videoLink;
+    return {
+      'appIconId': ?appIconId,
+      'appName': ?appName,
+      'fullDescription': ?fullDescription,
+      'languageCode': ?languageCode,
+      'screenshotId': ?screenshotId,
+      'shortDescription': ?shortDescription,
+      'videoLink': ?videoLink,
+    };
+  }
+}
+
 /// Data format for a list of app versions.
 class AppVersionList {
   /// List of app version codes.
@@ -8987,7 +9803,7 @@ class AppVersionRange {
 }
 
 /// Deprecated: subscription archiving is not supported.
-typedef ArchiveSubscriptionRequest = $Shared00;
+typedef ArchiveSubscriptionRequest = $Shared01;
 
 /// Summary of an artifact.
 class ArtifactSummary {
@@ -9210,7 +10026,7 @@ class AutoRenewingPlan {
   /// The current recurring price of the auto renewing plan.
   ///
   /// Note that the price does not take into account discounts and does not
-  /// include taxes for tax-exclusive pricing, please call orders.get API
+  /// include taxes. For tax-exclusive pricing, please call orders.get API
   /// instead if transaction details are needed.
   Money? recurringPrice;
 
@@ -10495,6 +11311,562 @@ class CancellationEvent {
   }
 }
 
+/// LINT.IfChange A view of a Google Play app within the Catalog Export for app
+/// stores.
+class CatalogAppView {
+  /// Active versions of the app mapped from `android:versionName` manifest
+  /// attributes.
+  core.List<core.String>? activeVersionNames;
+
+  /// The category of the app.
+  /// Possible string values are:
+  /// - "APP_CATEGORY_UNSPECIFIED" : Unspecified category.
+  /// - "GAME" : Game app.
+  /// - "APP" : General app.
+  core.String? appCategory;
+
+  /// Developer-provided contact information for the app.
+  AppContactInformation? appContactInformation;
+
+  /// The subcategory of the app e.g. "GAME_ACTION".
+  core.String? appSubcategory;
+
+  /// The token used for delivery of the app with the Google Play Inline Install
+  /// API.
+  core.String? deliveryToken;
+
+  /// The developer details of the app.
+  DeveloperDetails? developerDetails;
+
+  /// The app may specify multiple sets of device compatibility requirements,
+  /// and a device is considered compatible with the app if it satisfies at
+  /// least one of `DeviceCompatibilityRequirements`.
+  core.List<DeviceCompatibilityRequirements>? deviceCompatibilityRequirements;
+
+  /// List of devices excluded from the app's distribution even if they are
+  /// otherwise compatible with the requirements from
+  /// device_compatibility_requirements.
+  ///
+  /// These are OR-ed, i.e. a device is excluded if it matches any of the
+  /// identifiers.
+  core.List<DeviceIdentifier>? excludedDevicesByIdentifier;
+
+  /// List of devices excluded from the app's distribution even if they are
+  /// otherwise compatible with the requirements from
+  /// device_compatibility_requirements.
+  ///
+  /// A device is excluded if it matches any of given the selectors.
+  core.List<CatalogDeviceSelector>? excludedDevicesBySelector;
+
+  /// The date when the app was first released.
+  Date? firstReleaseDate;
+
+  /// Whether the app has ads.
+  core.bool? hasInAppAds;
+
+  /// Whether the app has in-app purchases through Google Play.
+  core.bool? hasInAppPurchases;
+
+  /// The IARC certificate ID for the app.
+  core.String? iarcCertificateId;
+
+  /// Whether the app is targeted to an adult-only (18+) audience.
+  core.bool? isAdultOnlyAudience;
+
+  /// The timestamp when the app was last published.
+  core.String? lastPublishTime;
+
+  /// The localized store listings of the app which are shown on Google Play.
+  LocalizedStoreListings? localizedStoreListings;
+
+  /// The package name of the app.
+  core.String? packageName;
+
+  /// Required permissions declared by the app which apply for all Android SDK
+  /// versions.
+  core.List<CatalogPermission>? permissions;
+
+  /// Required permissions declared by the app which apply for Android SDK
+  /// versions SDK 23 and above.
+  core.List<CatalogPermission>? permissionsSdk23;
+
+  /// The price of the app in the United States.
+  ///
+  /// Empty if the app is free.
+  Money? priceInTheUnitedStates;
+
+  /// The URL of the app's privacy policy.
+  core.String? privacyPolicyUrl;
+
+  /// The sale price of the app in the United States.
+  ///
+  /// Only populated for paid apps with an active US sale.
+  Money? salePriceInTheUnitedStates;
+
+  CatalogAppView({
+    this.activeVersionNames,
+    this.appCategory,
+    this.appContactInformation,
+    this.appSubcategory,
+    this.deliveryToken,
+    this.developerDetails,
+    this.deviceCompatibilityRequirements,
+    this.excludedDevicesByIdentifier,
+    this.excludedDevicesBySelector,
+    this.firstReleaseDate,
+    this.hasInAppAds,
+    this.hasInAppPurchases,
+    this.iarcCertificateId,
+    this.isAdultOnlyAudience,
+    this.lastPublishTime,
+    this.localizedStoreListings,
+    this.packageName,
+    this.permissions,
+    this.permissionsSdk23,
+    this.priceInTheUnitedStates,
+    this.privacyPolicyUrl,
+    this.salePriceInTheUnitedStates,
+  });
+
+  CatalogAppView.fromJson(core.Map json_)
+    : this(
+        activeVersionNames: (json_['activeVersionNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        appCategory: json_['appCategory'] as core.String?,
+        appContactInformation: json_.containsKey('appContactInformation')
+            ? AppContactInformation.fromJson(
+                json_['appContactInformation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        appSubcategory: json_['appSubcategory'] as core.String?,
+        deliveryToken: json_['deliveryToken'] as core.String?,
+        developerDetails: json_.containsKey('developerDetails')
+            ? DeveloperDetails.fromJson(
+                json_['developerDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deviceCompatibilityRequirements:
+            (json_['deviceCompatibilityRequirements'] as core.List?)
+                ?.map(
+                  (value) => DeviceCompatibilityRequirements.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        excludedDevicesByIdentifier:
+            (json_['excludedDevicesByIdentifier'] as core.List?)
+                ?.map(
+                  (value) => DeviceIdentifier.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        excludedDevicesBySelector:
+            (json_['excludedDevicesBySelector'] as core.List?)
+                ?.map(
+                  (value) => CatalogDeviceSelector.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        firstReleaseDate: json_.containsKey('firstReleaseDate')
+            ? Date.fromJson(
+                json_['firstReleaseDate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        hasInAppAds: json_['hasInAppAds'] as core.bool?,
+        hasInAppPurchases: json_['hasInAppPurchases'] as core.bool?,
+        iarcCertificateId: json_['iarcCertificateId'] as core.String?,
+        isAdultOnlyAudience: json_['isAdultOnlyAudience'] as core.bool?,
+        lastPublishTime: json_['lastPublishTime'] as core.String?,
+        localizedStoreListings: json_.containsKey('localizedStoreListings')
+            ? LocalizedStoreListings.fromJson(
+                json_['localizedStoreListings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        packageName: json_['packageName'] as core.String?,
+        permissions: (json_['permissions'] as core.List?)
+            ?.map(
+              (value) => CatalogPermission.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        permissionsSdk23: (json_['permissionsSdk23'] as core.List?)
+            ?.map(
+              (value) => CatalogPermission.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        priceInTheUnitedStates: json_.containsKey('priceInTheUnitedStates')
+            ? Money.fromJson(
+                json_['priceInTheUnitedStates']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        privacyPolicyUrl: json_['privacyPolicyUrl'] as core.String?,
+        salePriceInTheUnitedStates:
+            json_.containsKey('salePriceInTheUnitedStates')
+            ? Money.fromJson(
+                json_['salePriceInTheUnitedStates']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeVersionNames = this.activeVersionNames;
+    final appCategory = this.appCategory;
+    final appContactInformation = this.appContactInformation;
+    final appSubcategory = this.appSubcategory;
+    final deliveryToken = this.deliveryToken;
+    final developerDetails = this.developerDetails;
+    final deviceCompatibilityRequirements =
+        this.deviceCompatibilityRequirements;
+    final excludedDevicesByIdentifier = this.excludedDevicesByIdentifier;
+    final excludedDevicesBySelector = this.excludedDevicesBySelector;
+    final firstReleaseDate = this.firstReleaseDate;
+    final hasInAppAds = this.hasInAppAds;
+    final hasInAppPurchases = this.hasInAppPurchases;
+    final iarcCertificateId = this.iarcCertificateId;
+    final isAdultOnlyAudience = this.isAdultOnlyAudience;
+    final lastPublishTime = this.lastPublishTime;
+    final localizedStoreListings = this.localizedStoreListings;
+    final packageName = this.packageName;
+    final permissions = this.permissions;
+    final permissionsSdk23 = this.permissionsSdk23;
+    final priceInTheUnitedStates = this.priceInTheUnitedStates;
+    final privacyPolicyUrl = this.privacyPolicyUrl;
+    final salePriceInTheUnitedStates = this.salePriceInTheUnitedStates;
+    return {
+      'activeVersionNames': ?activeVersionNames,
+      'appCategory': ?appCategory,
+      'appContactInformation': ?appContactInformation,
+      'appSubcategory': ?appSubcategory,
+      'deliveryToken': ?deliveryToken,
+      'developerDetails': ?developerDetails,
+      'deviceCompatibilityRequirements': ?deviceCompatibilityRequirements,
+      'excludedDevicesByIdentifier': ?excludedDevicesByIdentifier,
+      'excludedDevicesBySelector': ?excludedDevicesBySelector,
+      'firstReleaseDate': ?firstReleaseDate,
+      'hasInAppAds': ?hasInAppAds,
+      'hasInAppPurchases': ?hasInAppPurchases,
+      'iarcCertificateId': ?iarcCertificateId,
+      'isAdultOnlyAudience': ?isAdultOnlyAudience,
+      'lastPublishTime': ?lastPublishTime,
+      'localizedStoreListings': ?localizedStoreListings,
+      'packageName': ?packageName,
+      'permissions': ?permissions,
+      'permissionsSdk23': ?permissionsSdk23,
+      'priceInTheUnitedStates': ?priceInTheUnitedStates,
+      'privacyPolicyUrl': ?privacyPolicyUrl,
+      'salePriceInTheUnitedStates': ?salePriceInTheUnitedStates,
+    };
+  }
+}
+
+/// Defines a device selector for a device.
+///
+/// A device is considered matched if it matches any of given the selectors.
+class CatalogDeviceSelector {
+  /// The device type selector.
+  /// Possible string values are:
+  /// - "DEVICE_TYPE_SELECTOR_UNSPECIFIED" : Unspecified device type selector.
+  /// - "ANDROID_GO" : Android Go device type.
+  core.String? deviceTypeSelector;
+
+  /// Defines a RAM selector for a device.
+  RamSelector? ramSelector;
+
+  /// The SOC selectors.
+  ///
+  /// A device matches the device selector if it matches any of the SOC
+  /// selectors.
+  core.List<SocSelector>? socSelectors;
+
+  CatalogDeviceSelector({
+    this.deviceTypeSelector,
+    this.ramSelector,
+    this.socSelectors,
+  });
+
+  CatalogDeviceSelector.fromJson(core.Map json_)
+    : this(
+        deviceTypeSelector: json_['deviceTypeSelector'] as core.String?,
+        ramSelector: json_.containsKey('ramSelector')
+            ? RamSelector.fromJson(
+                json_['ramSelector'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        socSelectors: (json_['socSelectors'] as core.List?)
+            ?.map(
+              (value) => SocSelector.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceTypeSelector = this.deviceTypeSelector;
+    final ramSelector = this.ramSelector;
+    final socSelectors = this.socSelectors;
+    return {
+      'deviceTypeSelector': ?deviceTypeSelector,
+      'ramSelector': ?ramSelector,
+      'socSelectors': ?socSelectors,
+    };
+  }
+}
+
+/// A permission declared by an app.
+class CatalogPermission {
+  /// The `maxSdkVersion` attribute indicating up to which Android SDK version
+  /// the permission is requested.
+  core.int? maxSdkVersion;
+
+  /// The `name` attribute indicating the permission name.
+  core.String? name;
+
+  CatalogPermission({this.maxSdkVersion, this.name});
+
+  CatalogPermission.fromJson(core.Map json_)
+    : this(
+        maxSdkVersion: json_['maxSdkVersion'] as core.int?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxSdkVersion = this.maxSdkVersion;
+    final name = this.name;
+    return {'maxSdkVersion': ?maxSdkVersion, 'name': ?name};
+  }
+}
+
+/// Defines a range of SDK versions.
+///
+/// A device is considered compatible uf its\ SDK version falls within the
+/// min_sdk_version and max_sdk_version range.
+class CatalogSdkVersion {
+  /// The maximum SDK version required for the app (inclusive).
+  core.String? maxSdkVersion;
+
+  /// The minimum SDK version required for the app (inclusive).
+  core.String? minSdkVersion;
+
+  /// The target SDK version for the app.
+  core.String? targetSdkVersion;
+
+  CatalogSdkVersion({
+    this.maxSdkVersion,
+    this.minSdkVersion,
+    this.targetSdkVersion,
+  });
+
+  CatalogSdkVersion.fromJson(core.Map json_)
+    : this(
+        maxSdkVersion: json_['maxSdkVersion'] as core.String?,
+        minSdkVersion: json_['minSdkVersion'] as core.String?,
+        targetSdkVersion: json_['targetSdkVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxSdkVersion = this.maxSdkVersion;
+    final minSdkVersion = this.minSdkVersion;
+    final targetSdkVersion = this.targetSdkVersion;
+    return {
+      'maxSdkVersion': ?maxSdkVersion,
+      'minSdkVersion': ?minSdkVersion,
+      'targetSdkVersion': ?targetSdkVersion,
+    };
+  }
+}
+
+/// Hash digests of a certificate.
+class CertificateHashes {
+  /// Hex-encoded MD5 hash of the certificate.
+  ///
+  /// example: `43:51:43:A1:B5:FC:8B:B7:0A:3A:A9:B1:0F:66:73:A8`
+  core.String? certificateHashMd5;
+
+  /// Hex-encoded SHA1 hash of the certificate.
+  ///
+  /// example: `86:61:97:1A:D5:EF:E5:74:1E:A7:5B:84:7C:68:37:65:CD:94:16:DE`
+  core.String? certificateHashSha1;
+
+  /// Hex-encoded SHA256 hash of the certificate.
+  ///
+  /// example:
+  /// `94:49:C7:F3:A9:3C:F0:C5:5A:67:5D:DF:1C:83:73:2D:87:D5:62:55:E7:0B:15:0D:9E:6F:3C:F8:63:BB:7F:C1`
+  core.String? certificateHashSha256;
+
+  CertificateHashes({
+    this.certificateHashMd5,
+    this.certificateHashSha1,
+    this.certificateHashSha256,
+  });
+
+  CertificateHashes.fromJson(core.Map json_)
+    : this(
+        certificateHashMd5: json_['certificateHashMd5'] as core.String?,
+        certificateHashSha1: json_['certificateHashSha1'] as core.String?,
+        certificateHashSha256: json_['certificateHashSha256'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final certificateHashMd5 = this.certificateHashMd5;
+    final certificateHashSha1 = this.certificateHashSha1;
+    final certificateHashSha256 = this.certificateHashSha256;
+    return {
+      'certificateHashMd5': ?certificateHashMd5,
+      'certificateHashSha1': ?certificateHashSha1,
+      'certificateHashSha256': ?certificateHashSha256,
+    };
+  }
+}
+
+/// Reference to a private key hosted in developer-managed Google Cloud KMS.
+class CloudKmsKey {
+  /// Resource identifier of the private key hosted in Google Cloud KMS.
+  ///
+  /// The Google Play service account must be granted Decrypt and Sign
+  /// permissions on this resource. Format:
+  /// projects//locations//keyRings//cryptoKeys//cryptoKeyVersions/
+  ///
+  /// Required.
+  core.String? cryptoKeyVersionResource;
+
+  CloudKmsKey({this.cryptoKeyVersionResource});
+
+  CloudKmsKey.fromJson(core.Map json_)
+    : this(
+        cryptoKeyVersionResource:
+            json_['cryptoKeyVersionResource'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cryptoKeyVersionResource = this.cryptoKeyVersionResource;
+    return {'cryptoKeyVersionResource': ?cryptoKeyVersionResource};
+  }
+}
+
+/// Cloud KMS key and the certificate associated with the key.
+class CloudKmsKeyAndCert {
+  /// Cloud KMS key.
+  ///
+  /// Required.
+  CloudKmsKey? cloudKmsKey;
+
+  /// Certificate associated with the key.
+  ///
+  /// The bytes must contain the certificate in PEM format.
+  ///
+  /// Required.
+  core.String? pemCertificate;
+  core.List<core.int> get pemCertificateAsBytes =>
+      convert.base64.decode(pemCertificate!);
+
+  set pemCertificateAsBytes(core.List<core.int> bytes_) {
+    pemCertificate = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  CloudKmsKeyAndCert({this.cloudKmsKey, this.pemCertificate});
+
+  CloudKmsKeyAndCert.fromJson(core.Map json_)
+    : this(
+        cloudKmsKey: json_.containsKey('cloudKmsKey')
+            ? CloudKmsKey.fromJson(
+                json_['cloudKmsKey'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pemCertificate: json_['pemCertificate'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudKmsKey = this.cloudKmsKey;
+    final pemCertificate = this.pemCertificate;
+    return {'cloudKmsKey': ?cloudKmsKey, 'pemCertificate': ?pemCertificate};
+  }
+}
+
+/// Coarse Geographic location details for where the consumption happened.
+class CoarseLocation {
+  /// Highest administrative subdivision which is used for postal addresses of a
+  /// country or region.
+  ///
+  /// For example, this can be a state, a province, an oblast, or a prefecture.
+  /// For Spain, this is the province and not the autonomous community (for
+  /// example, "Barcelona" and not "Catalonia"). Many countries don't use an
+  /// administrative area in postal addresses. For example, in Switzerland, this
+  /// should be left unpopulated.
+  ///
+  /// Optional.
+  core.String? administrativeArea;
+
+  /// Generally refers to the city or town portion of the address.
+  ///
+  /// Examples: US city, IT comune, UK post town. In regions of the world where
+  /// localities are not well defined or do not fit into this structure well,
+  /// leave `locality` empty.
+  ///
+  /// Optional.
+  core.String? locality;
+
+  /// [CLDR region code](https://cldr.unicode.org/) of the country/region of the
+  /// address.
+  ///
+  /// This value is never inferred and you must ensure the value is correct.
+  /// Example: "CH" for Switzerland.
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  /// Sublocality of the address.
+  ///
+  /// For example, this can be a neighborhood, borough, or district. For most
+  /// addresses, you can omit this.
+  ///
+  /// Optional.
+  core.String? sublocality;
+
+  CoarseLocation({
+    this.administrativeArea,
+    this.locality,
+    this.regionCode,
+    this.sublocality,
+  });
+
+  CoarseLocation.fromJson(core.Map json_)
+    : this(
+        administrativeArea: json_['administrativeArea'] as core.String?,
+        locality: json_['locality'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+        sublocality: json_['sublocality'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final administrativeArea = this.administrativeArea;
+    final locality = this.locality;
+    final regionCode = this.regionCode;
+    final sublocality = this.sublocality;
+    return {
+      'administrativeArea': ?administrativeArea,
+      'locality': ?locality,
+      'regionCode': ?regionCode,
+      'sublocality': ?sublocality,
+    };
+  }
+}
+
 /// An entry of conversation between user and developer.
 class Comment {
   /// A comment from a developer.
@@ -10524,6 +11896,135 @@ class Comment {
     final developerComment = this.developerComment;
     final userComment = this.userComment;
     return {'developerComment': ?developerComment, 'userComment': ?userComment};
+  }
+}
+
+/// Compatible screens as listed in the `compatible-screens` Manifest tag.
+class CompatibleScreen {
+  /// Screen density.
+  /// Possible string values are:
+  /// - "DENSITY_UNSPECIFIED" : Unspecified density.
+  /// - "DENSITY_NODPI" : No density.
+  /// - "DENSITY_LDPI" : Low density.
+  /// - "DENSITY_MDPI" : Medium density.
+  /// - "DENSITY_TVDPI" : TV density.
+  /// - "DENSITY_HDPI" : High density.
+  /// - "DENSITY_280" : 280 dpi.
+  /// - "DENSITY_XHDPI" : Extra high density.
+  /// - "DENSITY_360" : 360 dpi.
+  /// - "DENSITY_400" : 400 dpi.
+  /// - "DENSITY_420" : 420 dpi.
+  /// - "DENSITY_XXHDPI" : Extra extra high density.
+  /// - "DENSITY_560" : 560 dpi.
+  /// - "DENSITY_XXXHDPI" : Extra extra extra high density.
+  core.String? density;
+
+  /// The screen size.
+  /// Possible string values are:
+  /// - "SCREEN_SIZE_UNSPECIFIED" : Unspecified screen size.
+  /// - "SCREEN_SIZE_SMALL" : Small screen size.
+  /// - "SCREEN_SIZE_NORMAL" : Normal screen size.
+  /// - "SCREEN_SIZE_LARGE" : Large screen size.
+  /// - "SCREEN_SIZE_EXTRA_LARGE" : Extra large screen size.
+  core.String? screenSize;
+
+  CompatibleScreen({this.density, this.screenSize});
+
+  CompatibleScreen.fromJson(core.Map json_)
+    : this(
+        density: json_['density'] as core.String?,
+        screenSize: json_['screenSize'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final density = this.density;
+    final screenSize = this.screenSize;
+    return {'density': ?density, 'screenSize': ?screenSize};
+  }
+}
+
+/// List of events, each representing an instance where the user consumed or
+/// used the purchased item or service.
+class ConsumptionUsageEvent {
+  /// Free form text that allows developers to provide more info on the item
+  /// consumed.
+  ///
+  /// Maximum length is 5000 characters.
+  ///
+  /// Optional.
+  core.String? consumptionItemDescription;
+
+  /// Time when the user consumed, used, downloaded, opened, or streamed the
+  /// content.
+  ///
+  /// Optional.
+  core.String? consumptionTime;
+
+  /// The IP address from which the consumption occurred.
+  ///
+  /// Optional.
+  core.String? ipAddress;
+
+  /// Geographic location where the consumption occurred.
+  ///
+  /// Optional.
+  CoarseLocation? location;
+
+  /// Obfuscated string that is uniquely associated with the purchaser's user
+  /// account in the app.
+  ///
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setObfuscatedAccountId(java.lang.String)
+  ///
+  /// Optional.
+  core.String? obfuscatedAccountId;
+
+  /// Obfuscated string that is uniquely associated with the purchaser's user
+  /// profile in the app.
+  ///
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setObfuscatedProfileId(java.lang.String)
+  ///
+  /// Optional.
+  core.String? obfuscatedProfileId;
+
+  ConsumptionUsageEvent({
+    this.consumptionItemDescription,
+    this.consumptionTime,
+    this.ipAddress,
+    this.location,
+    this.obfuscatedAccountId,
+    this.obfuscatedProfileId,
+  });
+
+  ConsumptionUsageEvent.fromJson(core.Map json_)
+    : this(
+        consumptionItemDescription:
+            json_['consumptionItemDescription'] as core.String?,
+        consumptionTime: json_['consumptionTime'] as core.String?,
+        ipAddress: json_['ipAddress'] as core.String?,
+        location: json_.containsKey('location')
+            ? CoarseLocation.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        obfuscatedAccountId: json_['obfuscatedAccountId'] as core.String?,
+        obfuscatedProfileId: json_['obfuscatedProfileId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumptionItemDescription = this.consumptionItemDescription;
+    final consumptionTime = this.consumptionTime;
+    final ipAddress = this.ipAddress;
+    final location = this.location;
+    final obfuscatedAccountId = this.obfuscatedAccountId;
+    final obfuscatedProfileId = this.obfuscatedProfileId;
+    return {
+      'consumptionItemDescription': ?consumptionItemDescription,
+      'consumptionTime': ?consumptionTime,
+      'ipAddress': ?ipAddress,
+      'location': ?location,
+      'obfuscatedAccountId': ?obfuscatedAccountId,
+      'obfuscatedProfileId': ?obfuscatedProfileId,
+    };
   }
 }
 
@@ -10718,6 +12219,27 @@ class CountryTargeting {
   }
 }
 
+/// Request to create a new app record for an app store hosted app.
+class CreateAppStoreHostedAppRequest {
+  /// Package name of the app.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  CreateAppStoreHostedAppRequest({this.packageName});
+
+  CreateAppStoreHostedAppRequest.fromJson(core.Map json_)
+    : this(packageName: json_['packageName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final packageName = this.packageName;
+    return {'packageName': ?packageName};
+  }
+}
+
+/// Response for creating a new app record for an app store hosted app.
+typedef CreateAppStoreHostedAppResponse = $Empty;
+
 /// Request message for CreateDraftAppRecovery.
 class CreateDraftAppRecoveryRequest {
   /// Action type is remote in-app update.
@@ -10753,6 +12275,18 @@ class CreateDraftAppRecoveryRequest {
     return {'remoteInAppUpdate': ?remoteInAppUpdate, 'targeting': ?targeting};
   }
 }
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
+typedef Date = $Date;
 
 /// Request message for DeactivateBasePlan.
 class DeactivateBasePlanRequest {
@@ -11411,8 +12945,203 @@ class DeveloperComment {
   }
 }
 
+/// The developer details of a Google Play app.
+class DeveloperDetails {
+  /// The physical address of the developer.
+  core.String? address;
+
+  /// The contact email of the developer.
+  core.String? contactEmail;
+
+  /// The developer name of the app.
+  core.String? developerName;
+
+  /// The phone number of the developer.
+  core.String? phoneNumber;
+
+  /// The website of the developer.
+  core.String? website;
+
+  DeveloperDetails({
+    this.address,
+    this.contactEmail,
+    this.developerName,
+    this.phoneNumber,
+    this.website,
+  });
+
+  DeveloperDetails.fromJson(core.Map json_)
+    : this(
+        address: json_['address'] as core.String?,
+        contactEmail: json_['contactEmail'] as core.String?,
+        developerName: json_['developerName'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        website: json_['website'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final address = this.address;
+    final contactEmail = this.contactEmail;
+    final developerName = this.developerName;
+    final phoneNumber = this.phoneNumber;
+    final website = this.website;
+    return {
+      'address': ?address,
+      'contactEmail': ?contactEmail,
+      'developerName': ?developerName,
+      'phoneNumber': ?phoneNumber,
+      'website': ?website,
+    };
+  }
+}
+
 /// Information specific to cancellations initiated by developers.
 typedef DeveloperInitiatedCancellation = $Empty;
+
+/// Defines a set of device compatibility requirements for the app.
+///
+/// A device must satisfy all of the requirements in a set to be considered
+/// compatible with the app.
+class DeviceCompatibilityRequirements {
+  /// Compatible screens as listed in the `compatible-screens` Manifest tag.
+  core.List<CompatibleScreen>? compatibleScreens;
+
+  /// Required version of OpenGL ES.
+  core.int? glEsVersion;
+
+  /// Specifies if the app requires a screen.
+  core.bool? isScreenRequired;
+
+  /// List of required ABIs (Application Binary Interface), e.g. `armeabi` or
+  /// `x86`.
+  core.List<core.String>? nativePlatforms;
+
+  /// List of required libraries as declared in the `uses-library` manifest tag.
+  core.List<core.String>? requiredSoftwareLibraries;
+
+  /// The system features that the app requires.
+  ///
+  /// A device must have all of the system features to be considered compatible
+  /// with the app.
+  core.List<core.String>? requiredSystemFeatures;
+
+  /// Specifies the minimum smallest width required of the screen.
+  core.String? requiresSmallestWidthDp;
+
+  /// Defines a range of SDK versions that the app is compatible with.
+  CatalogSdkVersion? sdkVersion;
+
+  /// Supported gl textures as specified by the `supported-gl-texture` Manifest
+  /// tag.
+  core.List<core.String>? supportedGlTextures;
+
+  /// Compatible screens as listed in the `supports-screens` Manifest tag.
+  core.List<core.String>? supportedScreens;
+
+  /// Value of `android:use32BitAbi` flag retrieved from the Manifest.
+  /// Possible string values are:
+  /// - "USE_32_BIT_ABI_UNSPECIFIED" : Unspecified 32-bit ABI usage.
+  /// - "USE_32_BIT_ABI_TRUE" : Value of use32BitAbi is set to "true".
+  /// - "USE_32_BIT_ABI_OTHER" : Value of use32BitAbi is not set or set to
+  /// something other than "true".
+  core.String? use32BitAbi;
+
+  /// Lists all configurations marked as required by use of the
+  /// `uses-configuration` manifest tag.
+  ///
+  /// Each instance of this proto represents a single `uses-configuration`
+  /// entry. See
+  /// http://developer.android.com/guide/topics/manifest/uses-configuration-element.html
+  core.List<UsesConfiguration>? usesConfigurations;
+
+  DeviceCompatibilityRequirements({
+    this.compatibleScreens,
+    this.glEsVersion,
+    this.isScreenRequired,
+    this.nativePlatforms,
+    this.requiredSoftwareLibraries,
+    this.requiredSystemFeatures,
+    this.requiresSmallestWidthDp,
+    this.sdkVersion,
+    this.supportedGlTextures,
+    this.supportedScreens,
+    this.use32BitAbi,
+    this.usesConfigurations,
+  });
+
+  DeviceCompatibilityRequirements.fromJson(core.Map json_)
+    : this(
+        compatibleScreens: (json_['compatibleScreens'] as core.List?)
+            ?.map(
+              (value) => CompatibleScreen.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        glEsVersion: json_['glEsVersion'] as core.int?,
+        isScreenRequired: json_['isScreenRequired'] as core.bool?,
+        nativePlatforms: (json_['nativePlatforms'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        requiredSoftwareLibraries:
+            (json_['requiredSoftwareLibraries'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        requiredSystemFeatures: (json_['requiredSystemFeatures'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        requiresSmallestWidthDp:
+            json_['requiresSmallestWidthDp'] as core.String?,
+        sdkVersion: json_.containsKey('sdkVersion')
+            ? CatalogSdkVersion.fromJson(
+                json_['sdkVersion'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        supportedGlTextures: (json_['supportedGlTextures'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        supportedScreens: (json_['supportedScreens'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        use32BitAbi: json_['use32BitAbi'] as core.String?,
+        usesConfigurations: (json_['usesConfigurations'] as core.List?)
+            ?.map(
+              (value) => UsesConfiguration.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final compatibleScreens = this.compatibleScreens;
+    final glEsVersion = this.glEsVersion;
+    final isScreenRequired = this.isScreenRequired;
+    final nativePlatforms = this.nativePlatforms;
+    final requiredSoftwareLibraries = this.requiredSoftwareLibraries;
+    final requiredSystemFeatures = this.requiredSystemFeatures;
+    final requiresSmallestWidthDp = this.requiresSmallestWidthDp;
+    final sdkVersion = this.sdkVersion;
+    final supportedGlTextures = this.supportedGlTextures;
+    final supportedScreens = this.supportedScreens;
+    final use32BitAbi = this.use32BitAbi;
+    final usesConfigurations = this.usesConfigurations;
+    return {
+      'compatibleScreens': ?compatibleScreens,
+      'glEsVersion': ?glEsVersion,
+      'isScreenRequired': ?isScreenRequired,
+      'nativePlatforms': ?nativePlatforms,
+      'requiredSoftwareLibraries': ?requiredSoftwareLibraries,
+      'requiredSystemFeatures': ?requiredSystemFeatures,
+      'requiresSmallestWidthDp': ?requiresSmallestWidthDp,
+      'sdkVersion': ?sdkVersion,
+      'supportedGlTextures': ?supportedGlTextures,
+      'supportedScreens': ?supportedScreens,
+      'use32BitAbi': ?use32BitAbi,
+      'usesConfigurations': ?usesConfigurations,
+    };
+  }
+}
 
 /// Represents a device feature.
 class DeviceFeature {
@@ -11514,6 +13243,29 @@ class DeviceId {
     final buildBrand = this.buildBrand;
     final buildDevice = this.buildDevice;
     return {'buildBrand': ?buildBrand, 'buildDevice': ?buildDevice};
+  }
+}
+
+/// Defines a device identifier for a device.
+class DeviceIdentifier {
+  /// The brand of the device.
+  core.String? deviceBrand;
+
+  /// The model of the device.
+  core.String? deviceModel;
+
+  DeviceIdentifier({this.deviceBrand, this.deviceModel});
+
+  DeviceIdentifier.fromJson(core.Map json_)
+    : this(
+        deviceBrand: json_['deviceBrand'] as core.String?,
+        deviceModel: json_['deviceModel'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceBrand = this.deviceBrand;
+    final deviceModel = this.deviceModel;
+    return {'deviceBrand': ?deviceBrand, 'deviceModel': ?deviceModel};
   }
 }
 
@@ -11907,6 +13659,156 @@ class DeviceTierSet {
   core.Map<core.String, core.dynamic> toJson() {
     final deviceTiers = this.deviceTiers;
     return {'deviceTiers': ?deviceTiers};
+  }
+}
+
+/// Request to enroll an app into Play App Signing using a self-hosted Cloud KMS
+/// key.
+class EnrollAppRequest {
+  /// Enrolls an existing app into Play signing using an external Cloud KMS key.
+  EnrollExistingApp? enrollExistingApp;
+
+  /// Changes the signing key of a new app to an external Cloud KMS key.
+  ///
+  /// The app must not have published to Open testing or Production tracks.
+  EnrollNewApp? enrollNewApp;
+
+  /// The certificate associated with the upload key, in PEM format.
+  core.String? pemUploadCertificate;
+  core.List<core.int> get pemUploadCertificateAsBytes =>
+      convert.base64.decode(pemUploadCertificate!);
+
+  set pemUploadCertificateAsBytes(core.List<core.int> bytes_) {
+    pemUploadCertificate = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  EnrollAppRequest({
+    this.enrollExistingApp,
+    this.enrollNewApp,
+    this.pemUploadCertificate,
+  });
+
+  EnrollAppRequest.fromJson(core.Map json_)
+    : this(
+        enrollExistingApp: json_.containsKey('enrollExistingApp')
+            ? EnrollExistingApp.fromJson(
+                json_['enrollExistingApp']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        enrollNewApp: json_.containsKey('enrollNewApp')
+            ? EnrollNewApp.fromJson(
+                json_['enrollNewApp'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pemUploadCertificate: json_['pemUploadCertificate'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enrollExistingApp = this.enrollExistingApp;
+    final enrollNewApp = this.enrollNewApp;
+    final pemUploadCertificate = this.pemUploadCertificate;
+    return {
+      'enrollExistingApp': ?enrollExistingApp,
+      'enrollNewApp': ?enrollNewApp,
+      'pemUploadCertificate': ?pemUploadCertificate,
+    };
+  }
+}
+
+/// Response to enroll an app into Play signing.
+class EnrollAppResponse {
+  /// The signing certificate hashes for the app.
+  ///
+  /// Always set.
+  CertificateHashes? signingCertificate;
+
+  /// The upload certificate hashes for the app.
+  ///
+  /// Set iff pem_upload_certificate was set in the request.
+  CertificateHashes? uploadCertificate;
+
+  EnrollAppResponse({this.signingCertificate, this.uploadCertificate});
+
+  EnrollAppResponse.fromJson(core.Map json_)
+    : this(
+        signingCertificate: json_.containsKey('signingCertificate')
+            ? CertificateHashes.fromJson(
+                json_['signingCertificate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uploadCertificate: json_.containsKey('uploadCertificate')
+            ? CertificateHashes.fromJson(
+                json_['uploadCertificate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final signingCertificate = this.signingCertificate;
+    final uploadCertificate = this.uploadCertificate;
+    return {
+      'signingCertificate': ?signingCertificate,
+      'uploadCertificate': ?uploadCertificate,
+    };
+  }
+}
+
+/// Enroll an existing app into Play signing.
+class EnrollExistingApp {
+  /// Self-hosted key.
+  ///
+  /// Once enrolled, this key will be used to sign your app.
+  ///
+  /// Required.
+  CloudKmsKey? cloudKmsKey;
+
+  EnrollExistingApp({this.cloudKmsKey});
+
+  EnrollExistingApp.fromJson(core.Map json_)
+    : this(
+        cloudKmsKey: json_.containsKey('cloudKmsKey')
+            ? CloudKmsKey.fromJson(
+                json_['cloudKmsKey'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudKmsKey = this.cloudKmsKey;
+    return {'cloudKmsKey': ?cloudKmsKey};
+  }
+}
+
+/// Enroll a new app into Play signing.
+class EnrollNewApp {
+  /// Self-hosted key.
+  ///
+  /// Once enrolled, this key will be used to sign your app.
+  ///
+  /// Required.
+  CloudKmsKeyAndCert? cloudKmsKeyAndCert;
+
+  EnrollNewApp({this.cloudKmsKeyAndCert});
+
+  EnrollNewApp.fromJson(core.Map json_)
+    : this(
+        cloudKmsKeyAndCert: json_.containsKey('cloudKmsKeyAndCert')
+            ? CloudKmsKeyAndCert.fromJson(
+                json_['cloudKmsKeyAndCert']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudKmsKeyAndCert = this.cloudKmsKeyAndCert;
+    return {'cloudKmsKeyAndCert': ?cloudKmsKeyAndCert};
   }
 }
 
@@ -12643,6 +14545,22 @@ class GeneratedApksPerSigningKey {
   /// Contains targeting information about the generated apks.
   TargetingInfo? targetingInfo;
 
+  /// List of generated split APKs without automatic protection, signed with a
+  /// key corresponding to certificate_sha256_hash.
+  ///
+  /// This field is only present if the app uses automatic protection. In this
+  /// case, `generated_split_apks` contains APKs with automatic protection
+  /// enabled, whereas this field contains APKs without automatic protection.
+  core.List<GeneratedSplitApk>? unprotectedGeneratedSplitApks;
+
+  /// List of generated standalone APKs without automatic protection, signed
+  /// with a key corresponding to certificate_sha256_hash.
+  ///
+  /// This field is only present if the app uses automatic protection. In this
+  /// case, `generated_standalone_apks` contains APKs with automatic protection
+  /// enabled, whereas this field contains APKs without automatic protection.
+  core.List<GeneratedStandaloneApk>? unprotectedGeneratedStandaloneApks;
+
   GeneratedApksPerSigningKey({
     this.certificateSha256Hash,
     this.generatedAssetPackSlices,
@@ -12651,6 +14569,8 @@ class GeneratedApksPerSigningKey {
     this.generatedStandaloneApks,
     this.generatedUniversalApk,
     this.targetingInfo,
+    this.unprotectedGeneratedSplitApks,
+    this.unprotectedGeneratedStandaloneApks,
   });
 
   GeneratedApksPerSigningKey.fromJson(core.Map json_)
@@ -12698,6 +14618,22 @@ class GeneratedApksPerSigningKey {
                 json_['targetingInfo'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        unprotectedGeneratedSplitApks:
+            (json_['unprotectedGeneratedSplitApks'] as core.List?)
+                ?.map(
+                  (value) => GeneratedSplitApk.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unprotectedGeneratedStandaloneApks:
+            (json_['unprotectedGeneratedStandaloneApks'] as core.List?)
+                ?.map(
+                  (value) => GeneratedStandaloneApk.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -12708,6 +14644,9 @@ class GeneratedApksPerSigningKey {
     final generatedStandaloneApks = this.generatedStandaloneApks;
     final generatedUniversalApk = this.generatedUniversalApk;
     final targetingInfo = this.targetingInfo;
+    final unprotectedGeneratedSplitApks = this.unprotectedGeneratedSplitApks;
+    final unprotectedGeneratedStandaloneApks =
+        this.unprotectedGeneratedStandaloneApks;
     return {
       'certificateSha256Hash': ?certificateSha256Hash,
       'generatedAssetPackSlices': ?generatedAssetPackSlices,
@@ -12716,6 +14655,8 @@ class GeneratedApksPerSigningKey {
       'generatedStandaloneApks': ?generatedStandaloneApks,
       'generatedUniversalApk': ?generatedUniversalApk,
       'targetingInfo': ?targetingInfo,
+      'unprotectedGeneratedSplitApks': ?unprotectedGeneratedSplitApks,
+      'unprotectedGeneratedStandaloneApks': ?unprotectedGeneratedStandaloneApks,
     };
   }
 }
@@ -13058,10 +14999,49 @@ class Grant {
   }
 }
 
+/// A group of responses.
+class Group {
+  /// Responses within a group.
+  ///
+  /// Required.
+  core.List<NestedPolicyResponse>? responses;
+
+  Group({this.responses});
+
+  Group.fromJson(core.Map json_)
+    : this(
+        responses: (json_['responses'] as core.List?)
+            ?.map(
+              (value) => NestedPolicyResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final responses = this.responses;
+    return {'responses': ?responses};
+  }
+}
+
 /// An uploaded image.
 ///
 /// The resource for ImagesService.
 class Image {
+  /// Whether the image was generated by AI.
+  ///
+  /// Attested by the developer.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "aiGeneratedStateUnspecified" : Catch-all for unrecognized enum values.
+  /// See go/protodosdonts.
+  /// - "aiGeneratedStateNotAiGenerated" : The content is not generated by AI.
+  /// - "aiGeneratedStateAiGeneratedDeveloperAttested" : The content is
+  /// generated by AI and attested by the developer.
+  core.String? aiGeneratedState;
+
   /// A unique id representing this image.
   core.String? id;
 
@@ -13074,10 +15054,11 @@ class Image {
   /// A URL that will serve a preview of the image.
   core.String? url;
 
-  Image({this.id, this.sha1, this.sha256, this.url});
+  Image({this.aiGeneratedState, this.id, this.sha1, this.sha256, this.url});
 
   Image.fromJson(core.Map json_)
     : this(
+        aiGeneratedState: json_['aiGeneratedState'] as core.String?,
         id: json_['id'] as core.String?,
         sha1: json_['sha1'] as core.String?,
         sha256: json_['sha256'] as core.String?,
@@ -13085,11 +15066,34 @@ class Image {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final aiGeneratedState = this.aiGeneratedState;
     final id = this.id;
     final sha1 = this.sha1;
     final sha256 = this.sha256;
     final url = this.url;
-    return {'id': ?id, 'sha1': ?sha1, 'sha256': ?sha256, 'url': ?url};
+    return {
+      'aiGeneratedState': ?aiGeneratedState,
+      'id': ?id,
+      'sha1': ?sha1,
+      'sha256': ?sha256,
+      'url': ?url,
+    };
+  }
+}
+
+/// An image asset.
+class ImageAsset {
+  /// The URL of the image asset.
+  core.String? imageUrl;
+
+  ImageAsset({this.imageUrl});
+
+  ImageAsset.fromJson(core.Map json_)
+    : this(imageUrl: json_['imageUrl'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageUrl = this.imageUrl;
+    return {'imageUrl': ?imageUrl};
   }
 }
 
@@ -13369,6 +15373,30 @@ class InAppProductListing {
       'description': ?description,
       'title': ?title,
     };
+  }
+}
+
+/// Additional context around subscriptions in IN_GRACE_PERIOD state.
+class InGracePeriodStateContext {
+  /// The payment for the renewal was declined.
+  ///
+  /// Optional.
+  RenewalDeclinedContext? renewalDeclined;
+
+  InGracePeriodStateContext({this.renewalDeclined});
+
+  InGracePeriodStateContext.fromJson(core.Map json_)
+    : this(
+        renewalDeclined: json_.containsKey('renewalDeclined')
+            ? RenewalDeclinedContext.fromJson(
+                json_['renewalDeclined'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final renewalDeclined = this.renewalDeclined;
+    return {'renewalDeclined': ?renewalDeclined};
   }
 }
 
@@ -13890,63 +15918,6 @@ class InternalAppSharingArtifact {
 /// Details of an introductory price pricing phase.
 typedef IntroductoryPriceDetails = $Empty;
 
-/// Contains the introductory price information for a subscription.
-class IntroductoryPriceInfo {
-  /// Introductory price of the subscription, not including tax.
-  ///
-  /// The currency is the same as price_currency_code. Price is expressed in
-  /// micro-units, where 1,000,000 micro-units represents one unit of the
-  /// currency. For example, if the subscription price is €1.99,
-  /// price_amount_micros is 1990000.
-  core.String? introductoryPriceAmountMicros;
-
-  /// ISO 4217 currency code for the introductory subscription price.
-  ///
-  /// For example, if the price is specified in British pounds sterling,
-  /// price_currency_code is "GBP".
-  core.String? introductoryPriceCurrencyCode;
-
-  /// The number of billing period to offer introductory pricing.
-  core.int? introductoryPriceCycles;
-
-  /// Introductory price period, specified in ISO 8601 format.
-  ///
-  /// Common values are (but not limited to) "P1W" (one week), "P1M" (one
-  /// month), "P3M" (three months), "P6M" (six months), and "P1Y" (one year).
-  core.String? introductoryPricePeriod;
-
-  IntroductoryPriceInfo({
-    this.introductoryPriceAmountMicros,
-    this.introductoryPriceCurrencyCode,
-    this.introductoryPriceCycles,
-    this.introductoryPricePeriod,
-  });
-
-  IntroductoryPriceInfo.fromJson(core.Map json_)
-    : this(
-        introductoryPriceAmountMicros:
-            json_['introductoryPriceAmountMicros'] as core.String?,
-        introductoryPriceCurrencyCode:
-            json_['introductoryPriceCurrencyCode'] as core.String?,
-        introductoryPriceCycles: json_['introductoryPriceCycles'] as core.int?,
-        introductoryPricePeriod:
-            json_['introductoryPricePeriod'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final introductoryPriceAmountMicros = this.introductoryPriceAmountMicros;
-    final introductoryPriceCurrencyCode = this.introductoryPriceCurrencyCode;
-    final introductoryPriceCycles = this.introductoryPriceCycles;
-    final introductoryPricePeriod = this.introductoryPricePeriod;
-    return {
-      'introductoryPriceAmountMicros': ?introductoryPriceAmountMicros,
-      'introductoryPriceCurrencyCode': ?introductoryPriceCurrencyCode,
-      'introductoryPriceCycles': ?introductoryPriceCycles,
-      'introductoryPricePeriod': ?introductoryPricePeriod,
-    };
-  }
-}
-
 /// Details about introductory price offer phase.
 typedef IntroductoryPriceOfferPhase = $Empty;
 
@@ -14026,6 +15997,39 @@ class ItemReplacement {
       'productId': ?productId,
       'replacementMode': ?replacementMode,
     };
+  }
+}
+
+/// A group of responses, with a key.
+class KeyedGroup {
+  /// Key for this group.
+  ///
+  /// Required.
+  core.String? key;
+
+  /// Responses in this group.
+  ///
+  /// Required.
+  core.List<NestedPolicyResponse>? responses;
+
+  KeyedGroup({this.key, this.responses});
+
+  KeyedGroup.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        responses: (json_['responses'] as core.List?)
+            ?.map(
+              (value) => NestedPolicyResponse.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final responses = this.responses;
+    return {'key': ?key, 'responses': ?responses};
   }
 }
 
@@ -14290,6 +16294,40 @@ class ListOneTimeProductsResponse {
   }
 }
 
+/// Response message for ListRecentUpdateEvents.
+class ListRecentUpdateEventsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of recent update events.
+  core.List<RecentUpdateEvent>? recentUpdateEvents;
+
+  ListRecentUpdateEventsResponse({this.nextPageToken, this.recentUpdateEvents});
+
+  ListRecentUpdateEventsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        recentUpdateEvents: (json_['recentUpdateEvents'] as core.List?)
+            ?.map(
+              (value) => RecentUpdateEvent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final recentUpdateEvents = this.recentUpdateEvents;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'recentUpdateEvents': ?recentUpdateEvents,
+    };
+  }
+}
+
 /// Response listing all releases for a given track that are either ready to be
 /// sent for review, in review, approved, not approved or available.
 class ListReleaseSummariesResponse {
@@ -14492,6 +16530,154 @@ class ListingsListResponse {
     final kind = this.kind;
     final listings = this.listings;
     return {'kind': ?kind, 'listings': ?listings};
+  }
+}
+
+/// A localized store listings of the app.
+class LocalizedStoreListing {
+  /// The name of the app in this localization.
+  core.String? appName;
+
+  /// The feature graphic of the app.
+  ImageAsset? featureGraphic;
+
+  /// A longer description of the app in this localization.
+  core.String? fullDescription;
+
+  /// The icon of the app.
+  ImageAsset? icon;
+
+  /// The BCP-47 language code for this localization.
+  core.String? languageCode;
+
+  /// The phone screenshots of the app.
+  ScreenshotSet? phoneScreenshots;
+
+  /// A short description of the app in this localization.
+  core.String? shortDescription;
+
+  /// The regular tablet screenshots of the app.
+  ScreenshotSet? tabletRegularScreenshots;
+
+  /// The small tablet screenshots of the app.
+  ScreenshotSet? tabletSmallScreenshots;
+
+  /// The video of the app.
+  VideoAsset? video;
+
+  LocalizedStoreListing({
+    this.appName,
+    this.featureGraphic,
+    this.fullDescription,
+    this.icon,
+    this.languageCode,
+    this.phoneScreenshots,
+    this.shortDescription,
+    this.tabletRegularScreenshots,
+    this.tabletSmallScreenshots,
+    this.video,
+  });
+
+  LocalizedStoreListing.fromJson(core.Map json_)
+    : this(
+        appName: json_['appName'] as core.String?,
+        featureGraphic: json_.containsKey('featureGraphic')
+            ? ImageAsset.fromJson(
+                json_['featureGraphic'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fullDescription: json_['fullDescription'] as core.String?,
+        icon: json_.containsKey('icon')
+            ? ImageAsset.fromJson(
+                json_['icon'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        languageCode: json_['languageCode'] as core.String?,
+        phoneScreenshots: json_.containsKey('phoneScreenshots')
+            ? ScreenshotSet.fromJson(
+                json_['phoneScreenshots']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        shortDescription: json_['shortDescription'] as core.String?,
+        tabletRegularScreenshots: json_.containsKey('tabletRegularScreenshots')
+            ? ScreenshotSet.fromJson(
+                json_['tabletRegularScreenshots']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tabletSmallScreenshots: json_.containsKey('tabletSmallScreenshots')
+            ? ScreenshotSet.fromJson(
+                json_['tabletSmallScreenshots']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        video: json_.containsKey('video')
+            ? VideoAsset.fromJson(
+                json_['video'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final appName = this.appName;
+    final featureGraphic = this.featureGraphic;
+    final fullDescription = this.fullDescription;
+    final icon = this.icon;
+    final languageCode = this.languageCode;
+    final phoneScreenshots = this.phoneScreenshots;
+    final shortDescription = this.shortDescription;
+    final tabletRegularScreenshots = this.tabletRegularScreenshots;
+    final tabletSmallScreenshots = this.tabletSmallScreenshots;
+    final video = this.video;
+    return {
+      'appName': ?appName,
+      'featureGraphic': ?featureGraphic,
+      'fullDescription': ?fullDescription,
+      'icon': ?icon,
+      'languageCode': ?languageCode,
+      'phoneScreenshots': ?phoneScreenshots,
+      'shortDescription': ?shortDescription,
+      'tabletRegularScreenshots': ?tabletRegularScreenshots,
+      'tabletSmallScreenshots': ?tabletSmallScreenshots,
+      'video': ?video,
+    };
+  }
+}
+
+/// The localized store listings of an app.
+class LocalizedStoreListings {
+  /// The default language code of the app.
+  ///
+  /// If a localized store listing is not available for a given language, assets
+  /// from the default language are used instead.
+  core.String? defaultLanguageCode;
+  core.List<LocalizedStoreListing>? localizedStoreListings;
+
+  LocalizedStoreListings({
+    this.defaultLanguageCode,
+    this.localizedStoreListings,
+  });
+
+  LocalizedStoreListings.fromJson(core.Map json_)
+    : this(
+        defaultLanguageCode: json_['defaultLanguageCode'] as core.String?,
+        localizedStoreListings: (json_['localizedStoreListings'] as core.List?)
+            ?.map(
+              (value) => LocalizedStoreListing.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultLanguageCode = this.defaultLanguageCode;
+    final localizedStoreListings = this.localizedStoreListings;
+    return {
+      'defaultLanguageCode': ?defaultLanguageCode,
+      'localizedStoreListings': ?localizedStoreListings,
+    };
   }
 }
 
@@ -14894,6 +17080,100 @@ class MultiAbiTargeting {
   }
 }
 
+/// An individual nested response to a policy question about an app.
+///
+/// Nested responses are like regular responses but without groups.
+class NestedPolicyResponse {
+  /// A boolean response.
+  ///
+  /// Optional.
+  PolicyBooleanResponse? booleanResponse;
+
+  /// A document response.
+  ///
+  /// Optional.
+  PolicyDocumentResponse? documentResponse;
+
+  /// A multiple choice response.
+  ///
+  /// Optional.
+  PolicyMultipleChoiceResponse? multipleChoiceResponse;
+
+  /// ID of the question being answered.
+  ///
+  /// Required.
+  core.String? questionId;
+
+  /// A single choice response.
+  ///
+  /// Optional.
+  PolicySingleChoiceResponse? singleChoiceResponse;
+
+  /// A string response.
+  ///
+  /// Optional.
+  PolicyStringResponse? stringResponse;
+
+  NestedPolicyResponse({
+    this.booleanResponse,
+    this.documentResponse,
+    this.multipleChoiceResponse,
+    this.questionId,
+    this.singleChoiceResponse,
+    this.stringResponse,
+  });
+
+  NestedPolicyResponse.fromJson(core.Map json_)
+    : this(
+        booleanResponse: json_.containsKey('booleanResponse')
+            ? PolicyBooleanResponse.fromJson(
+                json_['booleanResponse'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        documentResponse: json_.containsKey('documentResponse')
+            ? PolicyDocumentResponse.fromJson(
+                json_['documentResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        multipleChoiceResponse: json_.containsKey('multipleChoiceResponse')
+            ? PolicyMultipleChoiceResponse.fromJson(
+                json_['multipleChoiceResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        questionId: json_['questionId'] as core.String?,
+        singleChoiceResponse: json_.containsKey('singleChoiceResponse')
+            ? PolicySingleChoiceResponse.fromJson(
+                json_['singleChoiceResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stringResponse: json_.containsKey('stringResponse')
+            ? PolicyStringResponse.fromJson(
+                json_['stringResponse'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final booleanResponse = this.booleanResponse;
+    final documentResponse = this.documentResponse;
+    final multipleChoiceResponse = this.multipleChoiceResponse;
+    final questionId = this.questionId;
+    final singleChoiceResponse = this.singleChoiceResponse;
+    final stringResponse = this.stringResponse;
+    return {
+      'booleanResponse': ?booleanResponse,
+      'documentResponse': ?documentResponse,
+      'multipleChoiceResponse': ?multipleChoiceResponse,
+      'questionId': ?questionId,
+      'singleChoiceResponse': ?singleChoiceResponse,
+      'stringResponse': ?stringResponse,
+    };
+  }
+}
+
 /// Offer details information related to a purchase line item.
 class OfferDetails {
   /// The base plan ID.
@@ -15071,6 +17351,30 @@ class OfferTag {
   core.Map<core.String, core.dynamic> toJson() {
     final tag = this.tag;
     return {'tag': ?tag};
+  }
+}
+
+/// Additional context around subscriptions in ON_HOLD state.
+class OnHoldStateContext {
+  /// The payment for the renewal was declined.
+  ///
+  /// Optional.
+  RenewalDeclinedContext? renewalDeclined;
+
+  OnHoldStateContext({this.renewalDeclined});
+
+  OnHoldStateContext.fromJson(core.Map json_)
+    : this(
+        renewalDeclined: json_.containsKey('renewalDeclined')
+            ? RenewalDeclinedContext.fromJson(
+                json_['renewalDeclined'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final renewalDeclined = this.renewalDeclined;
+    return {'renewalDeclined': ?renewalDeclined};
   }
 }
 
@@ -16348,6 +18652,90 @@ class OrderHistory {
   }
 }
 
+/// Request for the orders.reviewrefund API.
+class OrdersReviewRefundRequest {
+  /// Percentage of the In-App purchase the customer consumed, in milliunits.
+  ///
+  /// Minimum: 0 Maximum: 100,000. For paid apps, this can be omitted. Example :
+  /// 45200 represents 45.2%.
+  ///
+  /// Optional.
+  core.int? consumptionPercentageMilliunits;
+
+  /// List of events, each representing an instance where the user consumed or
+  /// used the purchased item or service.
+  ///
+  /// Lists with over 1000 items will be rejected.
+  ///
+  /// Optional.
+  core.List<ConsumptionUsageEvent>? consumptionUsageEvents;
+
+  /// The pending refund token included in the pending refund review
+  /// notification.
+  ///
+  /// Required.
+  core.String? pendingRefundToken;
+
+  /// Indicates your preference, based on your operational logic, as to whether
+  /// the Play Store should grant the refund.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "REFUND_PREFERENCE_UNSPECIFIED" : Refund preference unspecified. This
+  /// value is not used.
+  /// - "DECLINE" : Developer prefers that Play declines the refund.
+  /// - "APPROVE" : Developer prefers that Play grants the refund in full.
+  /// - "NEUTRAL" : Developer has no preference about Google Play's decision to
+  /// issue a refund
+  core.String? refundPreference;
+
+  /// Indicates whether you provided a free sample, trial, or information about
+  /// the functionality prior to the purchase.
+  ///
+  /// Required.
+  core.bool? sampleContentProvided;
+
+  OrdersReviewRefundRequest({
+    this.consumptionPercentageMilliunits,
+    this.consumptionUsageEvents,
+    this.pendingRefundToken,
+    this.refundPreference,
+    this.sampleContentProvided,
+  });
+
+  OrdersReviewRefundRequest.fromJson(core.Map json_)
+    : this(
+        consumptionPercentageMilliunits:
+            json_['consumptionPercentageMilliunits'] as core.int?,
+        consumptionUsageEvents: (json_['consumptionUsageEvents'] as core.List?)
+            ?.map(
+              (value) => ConsumptionUsageEvent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        pendingRefundToken: json_['pendingRefundToken'] as core.String?,
+        refundPreference: json_['refundPreference'] as core.String?,
+        sampleContentProvided: json_['sampleContentProvided'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final consumptionPercentageMilliunits =
+        this.consumptionPercentageMilliunits;
+    final consumptionUsageEvents = this.consumptionUsageEvents;
+    final pendingRefundToken = this.pendingRefundToken;
+    final refundPreference = this.refundPreference;
+    final sampleContentProvided = this.sampleContentProvided;
+    return {
+      'consumptionPercentageMilliunits': ?consumptionPercentageMilliunits,
+      'consumptionUsageEvents': ?consumptionUsageEvents,
+      'pendingRefundToken': ?pendingRefundToken,
+      'refundPreference': ?refundPreference,
+      'sampleContentProvided': ?sampleContentProvided,
+    };
+  }
+}
+
 /// Details of a recurring external transaction product which doesn't belong to
 /// any other more specific category.
 typedef OtherRecurringProduct = $Empty;
@@ -16768,6 +19156,302 @@ class PointsDetails {
       'pointsOfferId': ?pointsOfferId,
       'pointsSpent': ?pointsSpent,
     };
+  }
+}
+
+/// Responses that will only ever be a boolean.
+class PolicyBooleanResponse {
+  /// Provided boolean value.
+  ///
+  /// Required.
+  core.bool? value;
+
+  PolicyBooleanResponse({this.value});
+
+  PolicyBooleanResponse.fromJson(core.Map json_)
+    : this(value: json_['value'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
+  }
+}
+
+/// An uploaded document.
+///
+/// Must be a single logical document (e.g. a financial license).
+class PolicyDocumentResponse {
+  /// ID of the uploaded document.
+  ///
+  /// Required.
+  core.String? documentId;
+
+  /// Expiry date for the document.
+  ///
+  /// Optional.
+  Date? expiryDate;
+
+  /// True if confirmed that the document does not have an expiry date.
+  ///
+  /// Optional.
+  core.bool? nonExpiring;
+
+  PolicyDocumentResponse({this.documentId, this.expiryDate, this.nonExpiring});
+
+  PolicyDocumentResponse.fromJson(core.Map json_)
+    : this(
+        documentId: json_['documentId'] as core.String?,
+        expiryDate: json_.containsKey('expiryDate')
+            ? Date.fromJson(
+                json_['expiryDate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nonExpiring: json_['nonExpiring'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final documentId = this.documentId;
+    final expiryDate = this.expiryDate;
+    final nonExpiring = this.nonExpiring;
+    return {
+      'documentId': ?documentId,
+      'expiryDate': ?expiryDate,
+      'nonExpiring': ?nonExpiring,
+    };
+  }
+}
+
+/// A repeated group of responses.
+class PolicyGroupResponse {
+  /// Groups of responses to questions.
+  ///
+  /// Optional.
+  core.List<Group>? groups;
+
+  PolicyGroupResponse({this.groups});
+
+  PolicyGroupResponse.fromJson(core.Map json_)
+    : this(
+        groups: (json_['groups'] as core.List?)
+            ?.map(
+              (value) =>
+                  Group.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final groups = this.groups;
+    return {'groups': ?groups};
+  }
+}
+
+/// A group of responses each identified by a distinct key within an allowed
+/// set.
+class PolicyKeyedGroupResponse {
+  /// Groups of responses to questions.
+  ///
+  /// Each KeyedGroup.key must be unique within this list.
+  ///
+  /// Optional.
+  core.List<KeyedGroup>? groups;
+
+  PolicyKeyedGroupResponse({this.groups});
+
+  PolicyKeyedGroupResponse.fromJson(core.Map json_)
+    : this(
+        groups: (json_['groups'] as core.List?)
+            ?.map(
+              (value) => KeyedGroup.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final groups = this.groups;
+    return {'groups': ?groups};
+  }
+}
+
+/// Any response where multiple options can be chosen from several
+/// possibilities.
+class PolicyMultipleChoiceResponse {
+  /// Provided values.
+  ///
+  /// Optional.
+  core.List<core.String>? values;
+
+  PolicyMultipleChoiceResponse({this.values});
+
+  PolicyMultipleChoiceResponse.fromJson(core.Map json_)
+    : this(
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
+}
+
+/// An individual response to a policy question about an app.
+class PolicyResponse {
+  /// A boolean response.
+  ///
+  /// Optional.
+  PolicyBooleanResponse? booleanResponse;
+
+  /// A document response.
+  ///
+  /// Optional.
+  PolicyDocumentResponse? documentResponse;
+
+  /// A group response.
+  ///
+  /// Optional.
+  PolicyGroupResponse? groupResponse;
+
+  /// A keyed group response.
+  ///
+  /// Optional.
+  PolicyKeyedGroupResponse? keyedGroupResponse;
+
+  /// A multiple choice response.
+  ///
+  /// Optional.
+  PolicyMultipleChoiceResponse? multipleChoiceResponse;
+
+  /// ID of the question being answered.
+  ///
+  /// Required.
+  core.String? questionId;
+
+  /// A single choice response.
+  ///
+  /// Optional.
+  PolicySingleChoiceResponse? singleChoiceResponse;
+
+  /// A string response.
+  ///
+  /// Optional.
+  PolicyStringResponse? stringResponse;
+
+  PolicyResponse({
+    this.booleanResponse,
+    this.documentResponse,
+    this.groupResponse,
+    this.keyedGroupResponse,
+    this.multipleChoiceResponse,
+    this.questionId,
+    this.singleChoiceResponse,
+    this.stringResponse,
+  });
+
+  PolicyResponse.fromJson(core.Map json_)
+    : this(
+        booleanResponse: json_.containsKey('booleanResponse')
+            ? PolicyBooleanResponse.fromJson(
+                json_['booleanResponse'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        documentResponse: json_.containsKey('documentResponse')
+            ? PolicyDocumentResponse.fromJson(
+                json_['documentResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        groupResponse: json_.containsKey('groupResponse')
+            ? PolicyGroupResponse.fromJson(
+                json_['groupResponse'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        keyedGroupResponse: json_.containsKey('keyedGroupResponse')
+            ? PolicyKeyedGroupResponse.fromJson(
+                json_['keyedGroupResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        multipleChoiceResponse: json_.containsKey('multipleChoiceResponse')
+            ? PolicyMultipleChoiceResponse.fromJson(
+                json_['multipleChoiceResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        questionId: json_['questionId'] as core.String?,
+        singleChoiceResponse: json_.containsKey('singleChoiceResponse')
+            ? PolicySingleChoiceResponse.fromJson(
+                json_['singleChoiceResponse']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stringResponse: json_.containsKey('stringResponse')
+            ? PolicyStringResponse.fromJson(
+                json_['stringResponse'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final booleanResponse = this.booleanResponse;
+    final documentResponse = this.documentResponse;
+    final groupResponse = this.groupResponse;
+    final keyedGroupResponse = this.keyedGroupResponse;
+    final multipleChoiceResponse = this.multipleChoiceResponse;
+    final questionId = this.questionId;
+    final singleChoiceResponse = this.singleChoiceResponse;
+    final stringResponse = this.stringResponse;
+    return {
+      'booleanResponse': ?booleanResponse,
+      'documentResponse': ?documentResponse,
+      'groupResponse': ?groupResponse,
+      'keyedGroupResponse': ?keyedGroupResponse,
+      'multipleChoiceResponse': ?multipleChoiceResponse,
+      'questionId': ?questionId,
+      'singleChoiceResponse': ?singleChoiceResponse,
+      'stringResponse': ?stringResponse,
+    };
+  }
+}
+
+/// Any response where a single option is chosen from several possibilities.
+class PolicySingleChoiceResponse {
+  /// Provided value.
+  ///
+  /// Required.
+  core.String? value;
+
+  PolicySingleChoiceResponse({this.value});
+
+  PolicySingleChoiceResponse.fromJson(core.Map json_)
+    : this(value: json_['value'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
+  }
+}
+
+/// Any response best encoded as a string.
+///
+/// Includes URLs and multiline text fields.
+class PolicyStringResponse {
+  /// Provided string value.
+  ///
+  /// Required.
+  core.String? value;
+
+  PolicyStringResponse({this.value});
+
+  PolicyStringResponse.fromJson(core.Map json_)
+    : this(value: json_['value'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final value = this.value;
+    return {'value': ?value};
   }
 }
 
@@ -17500,6 +20184,82 @@ class PurchaseStateContext {
   core.Map<core.String, core.dynamic> toJson() {
     final purchaseState = this.purchaseState;
     return {'purchaseState': ?purchaseState};
+  }
+}
+
+/// Defines a RAM selector for a device.
+class RamSelector {
+  /// This will match any device that has less than or equal
+  /// ram_mb_less_than_or_equal mb of RAM.
+  core.String? ramMbLessThanOrEqual;
+
+  RamSelector({this.ramMbLessThanOrEqual});
+
+  RamSelector.fromJson(core.Map json_)
+    : this(ramMbLessThanOrEqual: json_['ramMbLessThanOrEqual'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ramMbLessThanOrEqual = this.ramMbLessThanOrEqual;
+    return {'ramMbLessThanOrEqual': ?ramMbLessThanOrEqual};
+  }
+}
+
+/// Metadata about a recently updated app.
+class RecentAppView {
+  /// Recently updated app view.
+  CatalogAppView? appView;
+
+  RecentAppView({this.appView});
+
+  RecentAppView.fromJson(core.Map json_)
+    : this(
+        appView: json_.containsKey('appView')
+            ? CatalogAppView.fromJson(
+                json_['appView'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final appView = this.appView;
+    return {'appView': ?appView};
+  }
+}
+
+/// A recent update event.
+class RecentUpdateEvent {
+  /// The timestamp of the update.
+  core.String? eventTime;
+
+  /// The package name of the app.
+  core.String? playAppPackageName;
+
+  /// The type of the update event.
+  /// Possible string values are:
+  /// - "UPDATE_TYPE_UNSPECIFIED" : Default value. This value is not used.
+  /// - "MODIFICATION" : The app was modified.
+  /// - "DELETION" : The app stopped being eligible for catalog inclusion or was
+  /// removed from the Play Store.
+  core.String? updateType;
+
+  RecentUpdateEvent({this.eventTime, this.playAppPackageName, this.updateType});
+
+  RecentUpdateEvent.fromJson(core.Map json_)
+    : this(
+        eventTime: json_['eventTime'] as core.String?,
+        playAppPackageName: json_['playAppPackageName'] as core.String?,
+        updateType: json_['updateType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final eventTime = this.eventTime;
+    final playAppPackageName = this.playAppPackageName;
+    final updateType = this.updateType;
+    return {
+      'eventTime': ?eventTime,
+      'playAppPackageName': ?playAppPackageName,
+      'updateType': ?updateType,
+    };
   }
 }
 
@@ -18334,6 +21094,24 @@ class RemoteInAppUpdateDataPerBundle {
   }
 }
 
+/// Context related to renewal declined scenario.
+class RenewalDeclinedContext {
+  /// The ID of the pending or failed order causing the state.
+  ///
+  /// Required.
+  core.String? pendingOrderId;
+
+  RenewalDeclinedContext({this.pendingOrderId});
+
+  RenewalDeclinedContext.fromJson(core.Map json_)
+    : this(pendingOrderId: json_['pendingOrderId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final pendingOrderId = this.pendingOrderId;
+    return {'pendingOrderId': ?pendingOrderId};
+  }
+}
+
 /// Offer details information related to a rental line item.
 typedef RentOfferDetails = $Empty;
 
@@ -18633,6 +21411,124 @@ class RevokeSubscriptionPurchaseRequest {
 /// Response for the purchases.subscriptionsv2.revoke API.
 typedef RevokeSubscriptionPurchaseResponse = $Empty;
 
+/// Request to rotate an app's signing key.
+class RotateAppSigningKeyRequest {
+  /// Reason for rotating the app key.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "KEY_ROTATION_REASON_UNSPECIFIED" : Unspecified key rotation reason.
+  /// Cannot be used.
+  /// - "COMPROMISED_KEY" : Key is compromised.
+  /// - "USE_STRONGER_KEY" : Stronger key is required.
+  /// - "USE_SAME_KEY_FOR_MULTIPLE_APPS" : Same key is used for multiple apps.
+  /// - "ROUTINE_KEY_UPGRADE" : Routine key upgrade.
+  /// - "OTHER" : Other reason.
+  core.String? keyRotationReason;
+
+  /// Self-hosted Cloud KMS key.
+  ///
+  /// Required.
+  RotatedCloudKmsKey? rotatedCloudKmsKey;
+
+  RotateAppSigningKeyRequest({this.keyRotationReason, this.rotatedCloudKmsKey});
+
+  RotateAppSigningKeyRequest.fromJson(core.Map json_)
+    : this(
+        keyRotationReason: json_['keyRotationReason'] as core.String?,
+        rotatedCloudKmsKey: json_.containsKey('rotatedCloudKmsKey')
+            ? RotatedCloudKmsKey.fromJson(
+                json_['rotatedCloudKmsKey']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final keyRotationReason = this.keyRotationReason;
+    final rotatedCloudKmsKey = this.rotatedCloudKmsKey;
+    return {
+      'keyRotationReason': ?keyRotationReason,
+      'rotatedCloudKmsKey': ?rotatedCloudKmsKey,
+    };
+  }
+}
+
+/// Response to rotate an app's signing key.
+class RotateAppSigningKeyResponse {
+  /// The rotated key certificate hashes for the app.
+  ///
+  /// Always set.
+  CertificateHashes? rotatedKeyCertificate;
+
+  RotateAppSigningKeyResponse({this.rotatedKeyCertificate});
+
+  RotateAppSigningKeyResponse.fromJson(core.Map json_)
+    : this(
+        rotatedKeyCertificate: json_.containsKey('rotatedKeyCertificate')
+            ? CertificateHashes.fromJson(
+                json_['rotatedKeyCertificate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final rotatedKeyCertificate = this.rotatedKeyCertificate;
+    return {'rotatedKeyCertificate': ?rotatedKeyCertificate};
+  }
+}
+
+/// Message representing rotated Cloud KMS key.
+///
+/// Consists of the Cloud KMS key and its associated proof of rotation.
+class RotatedCloudKmsKey {
+  /// Cloud KMS key and the certificate associated with the key.
+  ///
+  /// Required.
+  CloudKmsKeyAndCert? cloudKmsKeyAndCert;
+
+  /// Proof-of-rotation.
+  ///
+  /// See
+  /// [creating signing certificate lineages](https://developer.android.com/studio/command-line/apksigner#rotate_signing_keys_2).
+  ///
+  /// Required.
+  core.String? signingCertificateLineage;
+  core.List<core.int> get signingCertificateLineageAsBytes =>
+      convert.base64.decode(signingCertificateLineage!);
+
+  set signingCertificateLineageAsBytes(core.List<core.int> bytes_) {
+    signingCertificateLineage = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  RotatedCloudKmsKey({this.cloudKmsKeyAndCert, this.signingCertificateLineage});
+
+  RotatedCloudKmsKey.fromJson(core.Map json_)
+    : this(
+        cloudKmsKeyAndCert: json_.containsKey('cloudKmsKeyAndCert')
+            ? CloudKmsKeyAndCert.fromJson(
+                json_['cloudKmsKeyAndCert']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        signingCertificateLineage:
+            json_['signingCertificateLineage'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cloudKmsKeyAndCert = this.cloudKmsKeyAndCert;
+    final signingCertificateLineage = this.signingCertificateLineage;
+    return {
+      'cloudKmsKeyAndCert': ?cloudKmsKeyAndCert,
+      'signingCertificateLineage': ?signingCertificateLineage,
+    };
+  }
+}
+
 /// Request to update Safety Labels of an app.
 class SafetyLabelsUpdateRequest {
   /// Contents of the CSV file containing Data Safety responses.
@@ -18729,6 +21625,30 @@ class ScreenDensityTargeting {
   }
 }
 
+/// A set of screenshots.
+class ScreenshotSet {
+  /// The image assets of the screenshots.
+  core.List<ImageAsset>? screenshots;
+
+  ScreenshotSet({this.screenshots});
+
+  ScreenshotSet.fromJson(core.Map json_)
+    : this(
+        screenshots: (json_['screenshots'] as core.List?)
+            ?.map(
+              (value) => ImageAsset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final screenshots = this.screenshots;
+    return {'screenshots': ?screenshots};
+  }
+}
+
 /// Represents an sdk version.
 class SdkVersion {
   /// Inclusive minimum value of an sdk version.
@@ -18809,6 +21729,32 @@ class SignupPromotion {
     final oneTimeCode = this.oneTimeCode;
     final vanityCode = this.vanityCode;
     return {'oneTimeCode': ?oneTimeCode, 'vanityCode': ?vanityCode};
+  }
+}
+
+/// Defines a SOC selector for a device.
+///
+/// This will match any device whose SoC (System on Chip) matches all fields in
+/// the selector.
+class SocSelector {
+  /// The manufacturer of the SoC.
+  core.String? socMake;
+
+  /// The model of the SoC.
+  core.String? socModel;
+
+  SocSelector({this.socMake, this.socModel});
+
+  SocSelector.fromJson(core.Map json_)
+    : this(
+        socMake: json_['socMake'] as core.String?,
+        socModel: json_['socModel'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final socMake = this.socMake;
+    final socModel = this.socModel;
+    return {'socMake': ?socMake, 'socModel': ?socModel};
   }
 }
 
@@ -19066,41 +22012,6 @@ class Subscription {
   }
 }
 
-/// Information provided by the user when they complete the subscription
-/// cancellation flow (cancellation reason survey).
-class SubscriptionCancelSurveyResult {
-  /// The cancellation reason the user chose in the survey.
-  ///
-  /// Possible values are: 0. Other 1. I don't use this service enough 2.
-  /// Technical issues 3. Cost-related reasons 4. I found a better app
-  core.int? cancelSurveyReason;
-
-  /// The customized input cancel reason from the user.
-  ///
-  /// Only present when cancelReason is 0.
-  core.String? userInputCancelReason;
-
-  SubscriptionCancelSurveyResult({
-    this.cancelSurveyReason,
-    this.userInputCancelReason,
-  });
-
-  SubscriptionCancelSurveyResult.fromJson(core.Map json_)
-    : this(
-        cancelSurveyReason: json_['cancelSurveyReason'] as core.int?,
-        userInputCancelReason: json_['userInputCancelReason'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cancelSurveyReason = this.cancelSurveyReason;
-    final userInputCancelReason = this.userInputCancelReason;
-    return {
-      'cancelSurveyReason': ?cancelSurveyReason,
-      'userInputCancelReason': ?userInputCancelReason,
-    };
-  }
-}
-
 /// A SubscriptionDeferralInfo contains the data needed to defer a subscription
 /// purchase to a future expiry time.
 class SubscriptionDeferralInfo {
@@ -19148,15 +22059,18 @@ class SubscriptionDetails {
   /// The offer ID for the current subscription offer.
   core.String? offerId;
 
-  /// The pricing phase for the billing period funded by this order.
+  /// Deprecated: Use offer_phase_details instead.
   ///
-  /// Deprecated. Use offer_phase_details instead.
+  /// The pricing phase for the billing period funded by this order.
   /// Possible string values are:
   /// - "OFFER_PHASE_UNSPECIFIED" : Offer phase unspecified. This value is not
   /// used.
   /// - "BASE" : The order funds a base price period.
   /// - "INTRODUCTORY" : The order funds an introductory pricing period.
   /// - "FREE_TRIAL" : The order funds a free trial period.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? offerPhase;
 
   /// The pricing phase details for the entitlement period funded by this order.
@@ -19592,373 +22506,6 @@ class SubscriptionOfferTargeting {
   }
 }
 
-/// Contains the price change information for a subscription that can be used to
-/// control the user journey for the price change in the app.
-///
-/// This can be in the form of seeking confirmation from the user or tailoring
-/// the experience for a successful conversion.
-class SubscriptionPriceChange {
-  /// The new price the subscription will renew with if the price change is
-  /// accepted by the user.
-  Price? newPrice;
-
-  /// The current state of the price change.
-  ///
-  /// Possible values are: 0. Outstanding: State for a pending price change
-  /// waiting for the user to agree. In this state, you can optionally seek
-  /// confirmation from the user using the In-App API. 1. Accepted: State for an
-  /// accepted price change that the subscription will renew with unless it's
-  /// canceled. The price change takes effect on a future date when the
-  /// subscription renews. Note that the change might not occur when the
-  /// subscription is renewed next.
-  core.int? state;
-
-  SubscriptionPriceChange({this.newPrice, this.state});
-
-  SubscriptionPriceChange.fromJson(core.Map json_)
-    : this(
-        newPrice: json_.containsKey('newPrice')
-            ? Price.fromJson(
-                json_['newPrice'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        state: json_['state'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final newPrice = this.newPrice;
-    final state = this.state;
-    return {'newPrice': ?newPrice, 'state': ?state};
-  }
-}
-
-/// A SubscriptionPurchase resource indicates the status of a user's
-/// subscription purchase.
-class SubscriptionPurchase {
-  /// The acknowledgement state of the subscription product.
-  ///
-  /// Possible values are: 0. Yet to be acknowledged 1. Acknowledged
-  core.int? acknowledgementState;
-
-  /// Whether the subscription will automatically be renewed when it reaches its
-  /// current expiry time.
-  core.bool? autoRenewing;
-
-  /// Time at which the subscription will be automatically resumed, in
-  /// milliseconds since the Epoch.
-  ///
-  /// Only present if the user has requested to pause the subscription.
-  core.String? autoResumeTimeMillis;
-
-  /// The reason why a subscription was canceled or is not auto-renewing.
-  ///
-  /// Possible values are: 0. User canceled the subscription 1. Subscription was
-  /// canceled by the system, for example because of a billing problem 2.
-  /// Subscription was replaced with a new subscription 3. Subscription was
-  /// canceled by the developer
-  core.int? cancelReason;
-
-  /// Information provided by the user when they complete the subscription
-  /// cancellation flow (cancellation reason survey).
-  SubscriptionCancelSurveyResult? cancelSurveyResult;
-
-  /// ISO 3166-1 alpha-2 billing country/region code of the user at the time the
-  /// subscription was granted.
-  core.String? countryCode;
-
-  /// A developer-specified string that contains supplemental information about
-  /// an order.
-  core.String? developerPayload;
-
-  /// The email address of the user when the subscription was purchased.
-  ///
-  /// Only present for purchases made with 'Subscribe with Google'.
-  core.String? emailAddress;
-
-  /// Time at which the subscription will expire, in milliseconds since the
-  /// Epoch.
-  core.String? expiryTimeMillis;
-
-  /// User account identifier in the third-party service.
-  ///
-  /// Only present if account linking happened as part of the subscription
-  /// purchase flow.
-  core.String? externalAccountId;
-
-  /// The family name of the user when the subscription was purchased.
-  ///
-  /// Only present for purchases made with 'Subscribe with Google'.
-  core.String? familyName;
-
-  /// The given name of the user when the subscription was purchased.
-  ///
-  /// Only present for purchases made with 'Subscribe with Google'.
-  core.String? givenName;
-
-  /// Introductory price information of the subscription.
-  ///
-  /// This is only present when the subscription was purchased with an
-  /// introductory price. This field does not indicate the subscription is
-  /// currently in introductory price period.
-  IntroductoryPriceInfo? introductoryPriceInfo;
-
-  /// This kind represents a subscriptionPurchase object in the androidpublisher
-  /// service.
-  core.String? kind;
-
-  /// The purchase token of the originating purchase if this subscription is one
-  /// of the following: 0.
-  ///
-  /// Re-signup of a canceled but non-lapsed subscription 1. Upgrade/downgrade
-  /// from a previous subscription For example, suppose a user originally signs
-  /// up and you receive purchase token X, then the user cancels and goes
-  /// through the resignup flow (before their subscription lapses) and you
-  /// receive purchase token Y, and finally the user upgrades their subscription
-  /// and you receive purchase token Z. If you call this API with purchase token
-  /// Z, this field will be set to Y. If you call this API with purchase token
-  /// Y, this field will be set to X. If you call this API with purchase token
-  /// X, this field will not be set.
-  core.String? linkedPurchaseToken;
-
-  /// An obfuscated version of the id that is uniquely associated with the
-  /// user's account in your app.
-  ///
-  /// Present for the following purchases: * If account linking happened as part
-  /// of the subscription purchase flow. * It was specified using
-  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
-  /// when the purchase was made.
-  core.String? obfuscatedExternalAccountId;
-
-  /// An obfuscated version of the id that is uniquely associated with the
-  /// user's profile in your app.
-  ///
-  /// Only present if specified using
-  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
-  /// when the purchase was made.
-  core.String? obfuscatedExternalProfileId;
-
-  /// The order id of the latest recurring order associated with the purchase of
-  /// the subscription.
-  ///
-  /// If the subscription was canceled because payment was declined, this will
-  /// be the order id from the payment declined order.
-  core.String? orderId;
-
-  /// The payment state of the subscription.
-  ///
-  /// Possible values are: 0. Payment pending 1. Payment received 2. Free trial
-  /// 3. Pending deferred upgrade/downgrade Not present for canceled, expired
-  /// subscriptions.
-  core.int? paymentState;
-
-  /// Price of the subscription, For tax exclusive countries, the price doesn't
-  /// include tax.
-  ///
-  /// For tax inclusive countries, the price includes tax. Price is expressed in
-  /// micro-units, where 1,000,000 micro-units represents one unit of the
-  /// currency. For example, if the subscription price is €1.99,
-  /// price_amount_micros is 1990000.
-  core.String? priceAmountMicros;
-
-  /// The latest price change information available.
-  ///
-  /// This is present only when there is an upcoming price change for the
-  /// subscription yet to be applied. Once the subscription renews with the new
-  /// price or the subscription is canceled, no price change information will be
-  /// returned.
-  SubscriptionPriceChange? priceChange;
-
-  /// ISO 4217 currency code for the subscription price.
-  ///
-  /// For example, if the price is specified in British pounds sterling,
-  /// price_currency_code is "GBP".
-  core.String? priceCurrencyCode;
-
-  /// The Google profile id of the user when the subscription was purchased.
-  ///
-  /// Only present for purchases made with 'Subscribe with Google'.
-  core.String? profileId;
-
-  /// The profile name of the user when the subscription was purchased.
-  ///
-  /// Only present for purchases made with 'Subscribe with Google'.
-  core.String? profileName;
-
-  /// The promotion code applied on this purchase.
-  ///
-  /// This field is only set if a vanity code promotion is applied when the
-  /// subscription was purchased.
-  core.String? promotionCode;
-
-  /// The type of promotion applied on this purchase.
-  ///
-  /// This field is only set if a promotion is applied when the subscription was
-  /// purchased. Possible values are: 0. One time code 1. Vanity code
-  core.int? promotionType;
-
-  /// The type of purchase of the subscription.
-  ///
-  /// This field is only set if this purchase was not made using the standard
-  /// in-app billing flow. Possible values are: 0. Test (i.e. purchased from a
-  /// license testing account) 1. Promo (i.e. purchased using a promo code)
-  core.int? purchaseType;
-
-  /// Time at which the subscription was granted, in milliseconds since the
-  /// Epoch.
-  core.String? startTimeMillis;
-
-  /// The time at which the subscription was canceled by the user, in
-  /// milliseconds since the epoch.
-  ///
-  /// Only present if cancelReason is 0.
-  core.String? userCancellationTimeMillis;
-
-  SubscriptionPurchase({
-    this.acknowledgementState,
-    this.autoRenewing,
-    this.autoResumeTimeMillis,
-    this.cancelReason,
-    this.cancelSurveyResult,
-    this.countryCode,
-    this.developerPayload,
-    this.emailAddress,
-    this.expiryTimeMillis,
-    this.externalAccountId,
-    this.familyName,
-    this.givenName,
-    this.introductoryPriceInfo,
-    this.kind,
-    this.linkedPurchaseToken,
-    this.obfuscatedExternalAccountId,
-    this.obfuscatedExternalProfileId,
-    this.orderId,
-    this.paymentState,
-    this.priceAmountMicros,
-    this.priceChange,
-    this.priceCurrencyCode,
-    this.profileId,
-    this.profileName,
-    this.promotionCode,
-    this.promotionType,
-    this.purchaseType,
-    this.startTimeMillis,
-    this.userCancellationTimeMillis,
-  });
-
-  SubscriptionPurchase.fromJson(core.Map json_)
-    : this(
-        acknowledgementState: json_['acknowledgementState'] as core.int?,
-        autoRenewing: json_['autoRenewing'] as core.bool?,
-        autoResumeTimeMillis: json_['autoResumeTimeMillis'] as core.String?,
-        cancelReason: json_['cancelReason'] as core.int?,
-        cancelSurveyResult: json_.containsKey('cancelSurveyResult')
-            ? SubscriptionCancelSurveyResult.fromJson(
-                json_['cancelSurveyResult']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        countryCode: json_['countryCode'] as core.String?,
-        developerPayload: json_['developerPayload'] as core.String?,
-        emailAddress: json_['emailAddress'] as core.String?,
-        expiryTimeMillis: json_['expiryTimeMillis'] as core.String?,
-        externalAccountId: json_['externalAccountId'] as core.String?,
-        familyName: json_['familyName'] as core.String?,
-        givenName: json_['givenName'] as core.String?,
-        introductoryPriceInfo: json_.containsKey('introductoryPriceInfo')
-            ? IntroductoryPriceInfo.fromJson(
-                json_['introductoryPriceInfo']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        kind: json_['kind'] as core.String?,
-        linkedPurchaseToken: json_['linkedPurchaseToken'] as core.String?,
-        obfuscatedExternalAccountId:
-            json_['obfuscatedExternalAccountId'] as core.String?,
-        obfuscatedExternalProfileId:
-            json_['obfuscatedExternalProfileId'] as core.String?,
-        orderId: json_['orderId'] as core.String?,
-        paymentState: json_['paymentState'] as core.int?,
-        priceAmountMicros: json_['priceAmountMicros'] as core.String?,
-        priceChange: json_.containsKey('priceChange')
-            ? SubscriptionPriceChange.fromJson(
-                json_['priceChange'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        priceCurrencyCode: json_['priceCurrencyCode'] as core.String?,
-        profileId: json_['profileId'] as core.String?,
-        profileName: json_['profileName'] as core.String?,
-        promotionCode: json_['promotionCode'] as core.String?,
-        promotionType: json_['promotionType'] as core.int?,
-        purchaseType: json_['purchaseType'] as core.int?,
-        startTimeMillis: json_['startTimeMillis'] as core.String?,
-        userCancellationTimeMillis:
-            json_['userCancellationTimeMillis'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final acknowledgementState = this.acknowledgementState;
-    final autoRenewing = this.autoRenewing;
-    final autoResumeTimeMillis = this.autoResumeTimeMillis;
-    final cancelReason = this.cancelReason;
-    final cancelSurveyResult = this.cancelSurveyResult;
-    final countryCode = this.countryCode;
-    final developerPayload = this.developerPayload;
-    final emailAddress = this.emailAddress;
-    final expiryTimeMillis = this.expiryTimeMillis;
-    final externalAccountId = this.externalAccountId;
-    final familyName = this.familyName;
-    final givenName = this.givenName;
-    final introductoryPriceInfo = this.introductoryPriceInfo;
-    final kind = this.kind;
-    final linkedPurchaseToken = this.linkedPurchaseToken;
-    final obfuscatedExternalAccountId = this.obfuscatedExternalAccountId;
-    final obfuscatedExternalProfileId = this.obfuscatedExternalProfileId;
-    final orderId = this.orderId;
-    final paymentState = this.paymentState;
-    final priceAmountMicros = this.priceAmountMicros;
-    final priceChange = this.priceChange;
-    final priceCurrencyCode = this.priceCurrencyCode;
-    final profileId = this.profileId;
-    final profileName = this.profileName;
-    final promotionCode = this.promotionCode;
-    final promotionType = this.promotionType;
-    final purchaseType = this.purchaseType;
-    final startTimeMillis = this.startTimeMillis;
-    final userCancellationTimeMillis = this.userCancellationTimeMillis;
-    return {
-      'acknowledgementState': ?acknowledgementState,
-      'autoRenewing': ?autoRenewing,
-      'autoResumeTimeMillis': ?autoResumeTimeMillis,
-      'cancelReason': ?cancelReason,
-      'cancelSurveyResult': ?cancelSurveyResult,
-      'countryCode': ?countryCode,
-      'developerPayload': ?developerPayload,
-      'emailAddress': ?emailAddress,
-      'expiryTimeMillis': ?expiryTimeMillis,
-      'externalAccountId': ?externalAccountId,
-      'familyName': ?familyName,
-      'givenName': ?givenName,
-      'introductoryPriceInfo': ?introductoryPriceInfo,
-      'kind': ?kind,
-      'linkedPurchaseToken': ?linkedPurchaseToken,
-      'obfuscatedExternalAccountId': ?obfuscatedExternalAccountId,
-      'obfuscatedExternalProfileId': ?obfuscatedExternalProfileId,
-      'orderId': ?orderId,
-      'paymentState': ?paymentState,
-      'priceAmountMicros': ?priceAmountMicros,
-      'priceChange': ?priceChange,
-      'priceCurrencyCode': ?priceCurrencyCode,
-      'profileId': ?profileId,
-      'profileName': ?profileName,
-      'promotionCode': ?promotionCode,
-      'promotionType': ?promotionType,
-      'purchaseType': ?purchaseType,
-      'startTimeMillis': ?startTimeMillis,
-      'userCancellationTimeMillis': ?userCancellationTimeMillis,
-    };
-  }
-}
-
 /// Item-level info for a subscription purchase.
 class SubscriptionPurchaseLineItem {
   /// The item is auto renewing.
@@ -20124,21 +22671,17 @@ class SubscriptionPurchaseV2 {
   /// User account identifier in the third-party service.
   ExternalAccountIdentifiers? externalAccountIdentifiers;
 
+  /// Additional context around subscriptions in IN_GRACE_PERIOD state.
+  ///
+  /// Only present if the subscription currently has subscription_state
+  /// SUBSCRIPTION_STATE_IN_GRACE_PERIOD.
+  ///
+  /// Optional.
+  InGracePeriodStateContext? inGracePeriodStateContext;
+
   /// This kind represents a SubscriptionPurchaseV2 object in the
   /// androidpublisher service.
   core.String? kind;
-
-  /// Deprecated: Use line_items.latest_successful_order_id instead.
-  ///
-  /// The order id of the latest order associated with the purchase of the
-  /// subscription. For autoRenewing subscription, this is the order id of
-  /// signup order if it is not renewed yet, or the last recurring order id
-  /// (success, pending, or declined order). For prepaid subscription, this is
-  /// the order id associated with the queried purchase token.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? latestOrderId;
 
   /// Item-level info for a subscription purchase.
   ///
@@ -20153,6 +22696,14 @@ class SubscriptionPurchaseV2 {
   /// * Convert from prepaid to auto renewing subscription. * Convert from an
   /// auto renewing subscription to prepaid. * Topup a prepaid subscription.
   core.String? linkedPurchaseToken;
+
+  /// Additional context around subscriptions in ON_HOLD state.
+  ///
+  /// Only present if the subscription currently has subscription_state
+  /// SUBSCRIPTION_STATE_ON_HOLD.
+  ///
+  /// Optional.
+  OnHoldStateContext? onHoldStateContext;
 
   /// Additional context for out of app purchases.
   ///
@@ -20218,10 +22769,11 @@ class SubscriptionPurchaseV2 {
     this.canceledStateContext,
     this.etag,
     this.externalAccountIdentifiers,
+    this.inGracePeriodStateContext,
     this.kind,
-    this.latestOrderId,
     this.lineItems,
     this.linkedPurchaseToken,
+    this.onHoldStateContext,
     this.outOfAppPurchaseContext,
     this.pausedStateContext,
     this.regionCode,
@@ -20248,8 +22800,14 @@ class SubscriptionPurchaseV2 {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        inGracePeriodStateContext:
+            json_.containsKey('inGracePeriodStateContext')
+            ? InGracePeriodStateContext.fromJson(
+                json_['inGracePeriodStateContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
-        latestOrderId: json_['latestOrderId'] as core.String?,
         lineItems: (json_['lineItems'] as core.List?)
             ?.map(
               (value) => SubscriptionPurchaseLineItem.fromJson(
@@ -20258,6 +22816,12 @@ class SubscriptionPurchaseV2 {
             )
             .toList(),
         linkedPurchaseToken: json_['linkedPurchaseToken'] as core.String?,
+        onHoldStateContext: json_.containsKey('onHoldStateContext')
+            ? OnHoldStateContext.fromJson(
+                json_['onHoldStateContext']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         outOfAppPurchaseContext: json_.containsKey('outOfAppPurchaseContext')
             ? OutOfAppPurchaseContext.fromJson(
                 json_['outOfAppPurchaseContext']
@@ -20291,10 +22855,11 @@ class SubscriptionPurchaseV2 {
     final canceledStateContext = this.canceledStateContext;
     final etag = this.etag;
     final externalAccountIdentifiers = this.externalAccountIdentifiers;
+    final inGracePeriodStateContext = this.inGracePeriodStateContext;
     final kind = this.kind;
-    final latestOrderId = this.latestOrderId;
     final lineItems = this.lineItems;
     final linkedPurchaseToken = this.linkedPurchaseToken;
+    final onHoldStateContext = this.onHoldStateContext;
     final outOfAppPurchaseContext = this.outOfAppPurchaseContext;
     final pausedStateContext = this.pausedStateContext;
     final regionCode = this.regionCode;
@@ -20307,10 +22872,11 @@ class SubscriptionPurchaseV2 {
       'canceledStateContext': ?canceledStateContext,
       'etag': ?etag,
       'externalAccountIdentifiers': ?externalAccountIdentifiers,
+      'inGracePeriodStateContext': ?inGracePeriodStateContext,
       'kind': ?kind,
-      'latestOrderId': ?latestOrderId,
       'lineItems': ?lineItems,
       'linkedPurchaseToken': ?linkedPurchaseToken,
+      'onHoldStateContext': ?onHoldStateContext,
       'outOfAppPurchaseContext': ?outOfAppPurchaseContext,
       'pausedStateContext': ?pausedStateContext,
       'regionCode': ?regionCode,
@@ -21268,6 +23834,121 @@ class TracksListResponse {
   }
 }
 
+/// Request to update the publish status of an app store hosted app.
+///
+/// The default state for any app with an update is PUBLISHED. It is not
+/// necessary to call this RPC explicitly to set an app to PUBLISHED.
+class UpdateAppStoreHostedAppPublishStatusRequest {
+  /// The new publish state for the hosted app.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "APP_STORE_APP_PUBLISH_STATE_UNSPECIFIED" : Unspecified publish state.
+  /// Do not use.
+  /// - "APP_STORE_APP_PUBLISH_STATE_PUBLISHED" : The app is published and
+  /// available on the third-party app store.
+  /// - "APP_STORE_APP_PUBLISH_STATE_UNPUBLISHED" : The app is unpublished and
+  /// no longer available on the third-party app store.
+  core.String? publishState;
+
+  UpdateAppStoreHostedAppPublishStatusRequest({this.publishState});
+
+  UpdateAppStoreHostedAppPublishStatusRequest.fromJson(core.Map json_)
+    : this(publishState: json_['publishState'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final publishState = this.publishState;
+    return {'publishState': ?publishState};
+  }
+}
+
+/// Response for updating the publish status of an app store hosted app.
+typedef UpdateAppStoreHostedAppPublishStatusResponse = $Empty;
+
+/// Request to update an app record for an app store hosted app.
+class UpdateAppStoreHostedAppRequest {
+  /// Actively distributed APKs of the app.
+  ///
+  /// Required.
+  AppStoreAppActiveApks? activeApks;
+
+  /// Localized store listings details of the update.
+  ///
+  /// Required.
+  core.List<AppStoreAppStoreListing>? activeLocalizedStoreListings;
+
+  /// General developer details for the app.
+  ///
+  /// Required.
+  AppStoreAppDetails? appDetails;
+
+  /// Package name of the app.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// Policy declarations provided for the app.
+  ///
+  /// Required.
+  core.List<AppStoreAppPolicyDeclaration>? policyDeclarations;
+
+  UpdateAppStoreHostedAppRequest({
+    this.activeApks,
+    this.activeLocalizedStoreListings,
+    this.appDetails,
+    this.packageName,
+    this.policyDeclarations,
+  });
+
+  UpdateAppStoreHostedAppRequest.fromJson(core.Map json_)
+    : this(
+        activeApks: json_.containsKey('activeApks')
+            ? AppStoreAppActiveApks.fromJson(
+                json_['activeApks'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        activeLocalizedStoreListings:
+            (json_['activeLocalizedStoreListings'] as core.List?)
+                ?.map(
+                  (value) => AppStoreAppStoreListing.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        appDetails: json_.containsKey('appDetails')
+            ? AppStoreAppDetails.fromJson(
+                json_['appDetails'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        packageName: json_['packageName'] as core.String?,
+        policyDeclarations: (json_['policyDeclarations'] as core.List?)
+            ?.map(
+              (value) => AppStoreAppPolicyDeclaration.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final activeApks = this.activeApks;
+    final activeLocalizedStoreListings = this.activeLocalizedStoreListings;
+    final appDetails = this.appDetails;
+    final packageName = this.packageName;
+    final policyDeclarations = this.policyDeclarations;
+    return {
+      'activeApks': ?activeApks,
+      'activeLocalizedStoreListings': ?activeLocalizedStoreListings,
+      'appDetails': ?appDetails,
+      'packageName': ?packageName,
+      'policyDeclarations': ?policyDeclarations,
+    };
+  }
+}
+
+/// Response for updating an app record for an app store hosted app.
+typedef UpdateAppStoreHostedAppResponse = $Empty;
+
 /// Request message to update the state of a subscription base plan.
 class UpdateBasePlanStateRequest {
   /// Activates a base plan.
@@ -21862,6 +24543,82 @@ class UpgradeTargetingRule {
   }
 }
 
+/// Request to upload an APK.
+typedef UploadApkRequest = $Empty;
+
+/// Response for uploading an APK.
+class UploadApkResponse {
+  /// The unique ID of the uploaded APK.
+  core.String? apkId;
+
+  UploadApkResponse({this.apkId});
+
+  UploadApkResponse.fromJson(core.Map json_)
+    : this(apkId: json_['apkId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apkId = this.apkId;
+    return {'apkId': ?apkId};
+  }
+}
+
+/// Request to upload a policy declaration file.
+class UploadAppStoreAppPolicyDeclarationFileRequest {
+  /// Type of the policy declaration file.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DECLARATION_FILE_TYPE_UNSPECIFIED" : Unspecified file type.
+  /// - "DECLARATION_FILE_TYPE_DOCUMENT" : File type for PDF, JPEG, and PNG
+  /// documents.
+  core.String? fileType;
+
+  UploadAppStoreAppPolicyDeclarationFileRequest({this.fileType});
+
+  UploadAppStoreAppPolicyDeclarationFileRequest.fromJson(core.Map json_)
+    : this(fileType: json_['fileType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileType = this.fileType;
+    return {'fileType': ?fileType};
+  }
+}
+
+/// Response for uploading a policy declaration file.
+class UploadAppStoreAppPolicyDeclarationFileResponse {
+  /// The unique ID of the uploaded file.
+  core.String? fileId;
+
+  UploadAppStoreAppPolicyDeclarationFileResponse({this.fileId});
+
+  UploadAppStoreAppPolicyDeclarationFileResponse.fromJson(core.Map json_)
+    : this(fileId: json_['fileId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileId = this.fileId;
+    return {'fileId': ?fileId};
+  }
+}
+
+/// Request to upload an image.
+typedef UploadImageRequest = $Empty;
+
+/// Response for uploading an image.
+class UploadImageResponse {
+  /// The unique ID of the uploaded image.
+  core.String? imageId;
+
+  UploadImageResponse({this.imageId});
+
+  UploadImageResponse.fromJson(core.Map json_)
+    : this(imageId: json_['imageId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageId = this.imageId;
+    return {'imageId': ?imageId};
+  }
+}
+
 /// A user resource.
 class User {
   /// The state of the user's access to the Play Console.
@@ -22180,6 +24937,79 @@ class UserInitiatedCancellation {
   }
 }
 
+/// Represents all configurations marked as required by use of the
+/// uses-configuration manifest tag.
+class UsesConfiguration {
+  /// The type of keyboard required.
+  /// Possible string values are:
+  /// - "KEYBOARD_TYPE_UNSPECIFIED" : Unspecified keyboard type.
+  /// - "KEYBOARD_TYPE_UNDEFINED" : Undefined keyboard type.
+  /// - "KEYBOARD_TYPE_NO_KEYS" : No keys keyboard.
+  /// - "KEYBOARD_TYPE_QWERTY" : Qwerty keyboard.
+  /// - "KEYBOARD_TYPE_TWELVE_KEY" : Twelve key keyboard.
+  core.String? requiredKeyboardType;
+
+  /// The navigation device required.
+  /// Possible string values are:
+  /// - "NAVIGATION_TYPE_UNSPECIFIED" : Unspecified navigation type.
+  /// - "NAVIGATION_TYPE_UNDEFINED" : Undefined navigation type.
+  /// - "NAVIGATION_TYPE_NO_NAVIGATION" : No navigation.
+  /// - "NAVIGATION_TYPE_DPAD" : Dpad navigation.
+  /// - "NAVIGATION_TYPE_TRACKBALL" : Trackball navigation.
+  /// - "NAVIGATION_TYPE_WHEEL" : Wheel navigation.
+  core.String? requiredNavigationType;
+
+  /// The type of touchscreen required.
+  /// Possible string values are:
+  /// - "TOUCHSCREEN_TYPE_UNSPECIFIED" : Unspecified touchscreen type.
+  /// - "TOUCHSCREEN_TYPE_UNDEFINED" : Undefined touchscreen type.
+  /// - "TOUCHSCREEN_TYPE_NO_TOUCHSCREEN" : No touchscreen.
+  /// - "TOUCHSCREEN_TYPE_STYLUS" : Stylus touchscreen.
+  /// - "TOUCHSCREEN_TYPE_FINGER" : Finger touchscreen.
+  core.String? requiredTouchscreenType;
+
+  /// Whether or not the application requires a five-way navigation control.
+  core.bool? requiresFiveWayNavigation;
+
+  /// Whether or not the application requires a hardware keyboard.
+  core.bool? requiresHardwareKeyboard;
+
+  UsesConfiguration({
+    this.requiredKeyboardType,
+    this.requiredNavigationType,
+    this.requiredTouchscreenType,
+    this.requiresFiveWayNavigation,
+    this.requiresHardwareKeyboard,
+  });
+
+  UsesConfiguration.fromJson(core.Map json_)
+    : this(
+        requiredKeyboardType: json_['requiredKeyboardType'] as core.String?,
+        requiredNavigationType: json_['requiredNavigationType'] as core.String?,
+        requiredTouchscreenType:
+            json_['requiredTouchscreenType'] as core.String?,
+        requiresFiveWayNavigation:
+            json_['requiresFiveWayNavigation'] as core.bool?,
+        requiresHardwareKeyboard:
+            json_['requiresHardwareKeyboard'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requiredKeyboardType = this.requiredKeyboardType;
+    final requiredNavigationType = this.requiredNavigationType;
+    final requiredTouchscreenType = this.requiredTouchscreenType;
+    final requiresFiveWayNavigation = this.requiresFiveWayNavigation;
+    final requiresHardwareKeyboard = this.requiresHardwareKeyboard;
+    return {
+      'requiredKeyboardType': ?requiredKeyboardType,
+      'requiredNavigationType': ?requiredNavigationType,
+      'requiredTouchscreenType': ?requiredTouchscreenType,
+      'requiresFiveWayNavigation': ?requiresFiveWayNavigation,
+      'requiresHardwareKeyboard': ?requiresHardwareKeyboard,
+    };
+  }
+}
+
 /// A permission used by this APK.
 class UsesPermission {
   /// Optionally, the maximum SDK version for which the permission is required.
@@ -22338,6 +25168,22 @@ class VariantTargeting {
       'sdkVersionTargeting': ?sdkVersionTargeting,
       'textureCompressionFormatTargeting': ?textureCompressionFormatTargeting,
     };
+  }
+}
+
+/// A video asset.
+class VideoAsset {
+  /// The URL of the video asset.
+  core.String? videoUrl;
+
+  VideoAsset({this.videoUrl});
+
+  VideoAsset.fromJson(core.Map json_)
+    : this(videoUrl: json_['videoUrl'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final videoUrl = this.videoUrl;
+    return {'videoUrl': ?videoUrl};
   }
 }
 

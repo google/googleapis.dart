@@ -68,6 +68,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://trafficdirector.asia-southeast3.rep.googleapis.com/",
+            "location": "asia-southeast3"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://trafficdirector.australia-southeast1.rep.googleapis.com/",
             "location": "australia-southeast1"
         },
@@ -110,6 +115,11 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://trafficdirector.europe-west12.rep.googleapis.com/",
             "location": "europe-west12"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://trafficdirector.europe-west15.rep.googleapis.com/",
+            "location": "europe-west15"
         },
         {
             "description": "Regional Endpoint",
@@ -252,7 +262,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20251015",
+    "revision": "20260810",
     "rootUrl": "https://trafficdirector.googleapis.com/",
     "servicePath": "",
     "title": "Traffic Director API",
@@ -1347,7 +1357,7 @@
                     "type": "string"
                 },
                 "networkNamespaceFilepath": {
-                    "description": "Filepath that specifies the Linux network namespace this socket will be created in (see ``man 7 network_namespaces``). If this field is set, Envoy will create the socket in the specified network namespace. .. note:: Setting this parameter requires Envoy to run with the ``CAP_NET_ADMIN`` capability. .. attention:: Network namespaces are only configurable on Linux. Otherwise, this field has no effect.",
+                    "description": "Filepath that specifies the Linux network namespace this socket will be created in (see ``man 7 network_namespaces``). If this field is set, Envoy will create the socket in the specified network namespace. .. note:: Setting this parameter requires Envoy to run with the ``CAP_SYS_ADMIN`` capability. .. attention:: Network namespaces are only configurable on Linux. Otherwise, this field has no effect.",
                     "type": "string"
                 },
                 "portValue": {

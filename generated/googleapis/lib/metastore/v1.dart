@@ -147,9 +147,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -4642,6 +4641,11 @@ class MigrationExecution {
   /// - "FAILED" : The migration execution has failed.
   /// - "CANCELLED" : The migration execution is cancelled.
   /// - "DELETING" : The migration execution is being deleted.
+  /// - "ROLLED_BACK" : The migration execution has been rolled back. This
+  /// occurs when CancelMigration is invoked after the migration has completed
+  /// and the metastore service is in the PROXY state, returning the service to
+  /// the ACTIVE state. This enables rollback support when the customer wants to
+  /// resume using DPMS after a successful migration.
   core.String? state;
 
   /// Additional information about the current state of the migration execution.
@@ -5454,6 +5458,8 @@ class Service {
   /// - "AUTOSCALING" : The Dataproc Metastore service 2 is being scaled up or
   /// down.
   /// - "MIGRATING" : The metastore service is processing a managed migration.
+  /// - "PROXY" : The metastore service has completed managed migration and is
+  /// now proxying requests to the Lakehouse runtime catalog.
   core.String? state;
 
   /// Additional information about the current state of the metastore service,

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260422",
+    "revision": "20260527",
     "rootUrl": "https://cloudlocationfinder.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Location Finder API",
@@ -324,14 +324,12 @@
                         "CLOUD_LOCATION_TYPE_UNSPECIFIED",
                         "CLOUD_LOCATION_TYPE_REGION",
                         "CLOUD_LOCATION_TYPE_ZONE",
-                        "CLOUD_LOCATION_TYPE_REGION_EXTENSION",
                         "CLOUD_LOCATION_TYPE_GDCC_ZONE"
                     ],
                     "enumDescriptions": [
                         "Unspecified type.",
                         "CloudLocation type for region.",
                         "CloudLocation type for zone.",
-                        "CloudLocation type for region extension.",
                         "CloudLocation type for Google Distributed Cloud Connected Zone."
                     ],
                     "type": "string"

@@ -785,6 +785,39 @@ class CreateDataPolicyRequest {
   }
 }
 
+/// This is a namespaced name specifying the key and the value.
+///
+/// For example: `project-id/pii/sensitive`.
+class DataGovernanceTag {
+  /// Tag keys are globally unique.
+  ///
+  /// Tag key is expected to be in the namespaced format, for example
+  /// `parent-id/pii` where `parent-id` is the ID of the parent organization or
+  /// project resource for this tag key.
+  ///
+  /// Optional.
+  core.String? key;
+
+  /// Specifies the tag value as the short name, for example `sensitive`.
+  ///
+  /// Optional.
+  core.String? value;
+
+  DataGovernanceTag({this.key, this.value});
+
+  DataGovernanceTag.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
 /// The policy used to specify data masking rule.
 class DataMaskingPolicy {
   /// A predefined masking expression.
@@ -853,6 +886,11 @@ class DataMaskingPolicy {
 
 /// Represents the label-policy binding.
 class DataPolicy {
+  /// Data Governance tag bound to the Data Policy.
+  ///
+  /// Optional.
+  DataGovernanceTag? dataGovernanceTag;
+
   /// The data masking policy that specifies the data masking rule to use.
   ///
   /// It must be set if the data policy type is DATA_MASKING_POLICY.
@@ -930,6 +968,7 @@ class DataPolicy {
   core.String? version;
 
   DataPolicy({
+    this.dataGovernanceTag,
     this.dataMaskingPolicy,
     this.dataPolicyId,
     this.dataPolicyType,
@@ -942,6 +981,12 @@ class DataPolicy {
 
   DataPolicy.fromJson(core.Map json_)
     : this(
+        dataGovernanceTag: json_.containsKey('dataGovernanceTag')
+            ? DataGovernanceTag.fromJson(
+                json_['dataGovernanceTag']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         dataMaskingPolicy: json_.containsKey('dataMaskingPolicy')
             ? DataMaskingPolicy.fromJson(
                 json_['dataMaskingPolicy']
@@ -960,6 +1005,7 @@ class DataPolicy {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final dataGovernanceTag = this.dataGovernanceTag;
     final dataMaskingPolicy = this.dataMaskingPolicy;
     final dataPolicyId = this.dataPolicyId;
     final dataPolicyType = this.dataPolicyType;
@@ -969,6 +1015,7 @@ class DataPolicy {
     final policyTag = this.policyTag;
     final version = this.version;
     return {
+      'dataGovernanceTag': ?dataGovernanceTag,
       'dataMaskingPolicy': ?dataMaskingPolicy,
       'dataPolicyId': ?dataPolicyId,
       'dataPolicyType': ?dataPolicyType,

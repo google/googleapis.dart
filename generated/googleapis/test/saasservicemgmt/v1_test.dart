@@ -76,6 +76,25 @@ void checkBlueprint(api.Blueprint o) {
   buildCounterBlueprint--;
 }
 
+core.int buildCounterDecimal = 0;
+api.Decimal buildDecimal() {
+  final o = api.Decimal();
+  buildCounterDecimal++;
+  if (buildCounterDecimal < 3) {
+    o.value = 'foo';
+  }
+  buildCounterDecimal--;
+  return o;
+}
+
+void checkDecimal(api.Decimal o) {
+  buildCounterDecimal++;
+  if (buildCounterDecimal < 3) {
+    unittest.expect(o.value!, unittest.equals('foo'));
+  }
+  buildCounterDecimal--;
+}
+
 core.int buildCounterDependency = 0;
 api.Dependency buildDependency() {
   final o = api.Dependency();
@@ -920,6 +939,7 @@ api.RolloutKind buildRolloutKind() {
     o.uid = 'foo';
     o.unitFilter = 'foo';
     o.unitKind = 'foo';
+    o.unitUpdatePacing = buildUnitUpdatePacing();
     o.updateTime = 'foo';
     o.updateUnitKindStrategy = 'foo';
   }
@@ -940,6 +960,7 @@ void checkRolloutKind(api.RolloutKind o) {
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.unitFilter!, unittest.equals('foo'));
     unittest.expect(o.unitKind!, unittest.equals('foo'));
+    checkUnitUpdatePacing(o.unitUpdatePacing!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     unittest.expect(o.updateUnitKindStrategy!, unittest.equals('foo'));
   }
@@ -1535,6 +1556,7 @@ api.UnitKind buildUnitKind() {
   buildCounterUnitKind++;
   if (buildCounterUnitKind < 3) {
     o.annotations = buildUnnamed50();
+    o.boundaryType = 'foo';
     o.createTime = 'foo';
     o.defaultFlagRevisions = buildUnnamed51();
     o.defaultRelease = 'foo';
@@ -1556,6 +1578,7 @@ void checkUnitKind(api.UnitKind o) {
   buildCounterUnitKind++;
   if (buildCounterUnitKind < 3) {
     checkUnnamed50(o.annotations!);
+    unittest.expect(o.boundaryType!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkUnnamed51(o.defaultFlagRevisions!);
     unittest.expect(o.defaultRelease!, unittest.equals('foo'));
@@ -1685,6 +1708,27 @@ void checkUnitOperationCondition(api.UnitOperationCondition o) {
   buildCounterUnitOperationCondition--;
 }
 
+core.int buildCounterUnitUpdatePacing = 0;
+api.UnitUpdatePacing buildUnitUpdatePacing() {
+  final o = api.UnitUpdatePacing();
+  buildCounterUnitUpdatePacing++;
+  if (buildCounterUnitUpdatePacing < 3) {
+    o.maxConcurrentOperationsCount = 42;
+    o.maxConcurrentOperationsPercent = buildDecimal();
+  }
+  buildCounterUnitUpdatePacing--;
+  return o;
+}
+
+void checkUnitUpdatePacing(api.UnitUpdatePacing o) {
+  buildCounterUnitUpdatePacing++;
+  if (buildCounterUnitUpdatePacing < 3) {
+    unittest.expect(o.maxConcurrentOperationsCount!, unittest.equals(42));
+    checkDecimal(o.maxConcurrentOperationsPercent!);
+  }
+  buildCounterUnitUpdatePacing--;
+}
+
 core.int buildCounterUnitVariable = 0;
 api.UnitVariable buildUnitVariable() {
   final o = api.UnitVariable();
@@ -1791,6 +1835,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkBlueprint(od);
+    });
+  });
+
+  unittest.group('obj-schema-Decimal', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDecimal();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Decimal.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDecimal(od);
     });
   });
 
@@ -2209,6 +2264,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkUnitOperationCondition(od);
+    });
+  });
+
+  unittest.group('obj-schema-UnitUpdatePacing', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUnitUpdatePacing();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UnitUpdatePacing.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUnitUpdatePacing(od);
     });
   });
 

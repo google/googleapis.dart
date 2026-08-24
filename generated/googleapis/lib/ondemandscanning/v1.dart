@@ -441,10 +441,27 @@ class AISkillAnalysisOccurrence {
   /// Findings produced by the analysis.
   core.List<Finding>? findings;
 
+  /// Maximum severity found among findings.
+  ///
+  /// Per scanner verdict details.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity.
+  /// - "CRITICAL" : Critical severity.
+  /// - "HIGH" : High severity.
+  core.String? maxSeverity;
+
+  /// Per scanner verdict.
+  PerScannerVerdict? perScannerVerdict;
+
   /// Name of the skill that produced this analysis.
   core.String? skillName;
 
-  AISkillAnalysisOccurrence({this.findings, this.skillName});
+  AISkillAnalysisOccurrence({
+    this.findings,
+    this.maxSeverity,
+    this.perScannerVerdict,
+    this.skillName,
+  });
 
   AISkillAnalysisOccurrence.fromJson(core.Map json_)
     : this(
@@ -455,13 +472,27 @@ class AISkillAnalysisOccurrence {
               ),
             )
             .toList(),
+        maxSeverity: json_['maxSeverity'] as core.String?,
+        perScannerVerdict: json_.containsKey('perScannerVerdict')
+            ? PerScannerVerdict.fromJson(
+                json_['perScannerVerdict']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         skillName: json_['skillName'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final findings = this.findings;
+    final maxSeverity = this.maxSeverity;
+    final perScannerVerdict = this.perScannerVerdict;
     final skillName = this.skillName;
-    return {'findings': ?findings, 'skillName': ?skillName};
+    return {
+      'findings': ?findings,
+      'maxSeverity': ?maxSeverity,
+      'perScannerVerdict': ?perScannerVerdict,
+      'skillName': ?skillName,
+    };
   }
 }
 
@@ -928,7 +959,7 @@ class BuildProvenance {
   }
 }
 
-typedef BuilderConfig = $Shared03;
+typedef BuilderConfig = $Shared02;
 typedef CISAKnownExploitedVulnerabilities = $CISAKnownExploitedVulnerabilities;
 
 /// Common Vulnerability Scoring System.
@@ -1299,7 +1330,14 @@ class FileLocation {
   core.String? filePath;
   LayerDetails? layerDetails;
 
-  FileLocation({this.filePath, this.layerDetails});
+  /// Line number in the file where the package is found.
+  ///
+  /// Applies only to source repository scanning. Note: this field is marked as
+  /// `optional` in other corresponding protos, but in edition 2023, the
+  /// "optional" keyword is redundant.
+  core.int? lineNumber;
+
+  FileLocation({this.filePath, this.layerDetails, this.lineNumber});
 
   FileLocation.fromJson(core.Map json_)
     : this(
@@ -1309,12 +1347,18 @@ class FileLocation {
                 json_['layerDetails'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        lineNumber: json_['lineNumber'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final filePath = this.filePath;
     final layerDetails = this.layerDetails;
-    return {'filePath': ?filePath, 'layerDetails': ?layerDetails};
+    final lineNumber = this.lineNumber;
+    return {
+      'filePath': ?filePath,
+      'layerDetails': ?layerDetails,
+      'lineNumber': ?lineNumber,
+    };
   }
 }
 
@@ -1324,64 +1368,67 @@ class Finding {
   /// Category of the finding.
   core.String? category;
 
-  /// Detailed description of the finding.
-  core.String? description;
+  /// Description of the finding category.
+  core.String? details;
 
-  /// Path to the file where the finding was detected.
-  core.String? filePath;
+  /// Location (path and line) where the finding was detected.
+  FindingLocation? location;
 
-  /// Unique identifier of the rule that produced this finding.
-  core.String? ruleId;
+  /// Scanner determines which engine (e.g. static, llm) emitted the finding.
+  /// Possible string values are:
+  /// - "SCANNER_UNSPECIFIED" : Unspecified scanner.
+  /// - "STATIC" : Static scanner.
+  /// - "LLM" : LLM scanner.
+  /// - "WS_POLICY" : WS_POLICY scanner.
+  /// - "GOOGLE_ANTIVIRUS" : Google AntiVirus Service scanner.
+  core.String? scanner;
 
   /// Severity of the finding.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity.
+  /// - "CRITICAL" : Critical severity.
+  /// - "HIGH" : High severity.
   core.String? severity;
-
-  /// Code snippet relevant to the finding.
-  core.String? snippet;
-
-  /// Title of the finding.
-  core.String? title;
 
   Finding({
     this.category,
-    this.description,
-    this.filePath,
-    this.ruleId,
+    this.details,
+    this.location,
+    this.scanner,
     this.severity,
-    this.snippet,
-    this.title,
   });
 
   Finding.fromJson(core.Map json_)
     : this(
         category: json_['category'] as core.String?,
-        description: json_['description'] as core.String?,
-        filePath: json_['filePath'] as core.String?,
-        ruleId: json_['ruleId'] as core.String?,
+        details: json_['details'] as core.String?,
+        location: json_.containsKey('location')
+            ? FindingLocation.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        scanner: json_['scanner'] as core.String?,
         severity: json_['severity'] as core.String?,
-        snippet: json_['snippet'] as core.String?,
-        title: json_['title'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final category = this.category;
-    final description = this.description;
-    final filePath = this.filePath;
-    final ruleId = this.ruleId;
+    final details = this.details;
+    final location = this.location;
+    final scanner = this.scanner;
     final severity = this.severity;
-    final snippet = this.snippet;
-    final title = this.title;
     return {
       'category': ?category,
-      'description': ?description,
-      'filePath': ?filePath,
-      'ruleId': ?ruleId,
+      'details': ?details,
+      'location': ?location,
+      'scanner': ?scanner,
       'severity': ?severity,
-      'snippet': ?snippet,
-      'title': ?title,
     };
   }
 }
+
+/// Location details with file path and line number.
+typedef FindingLocation = $FindingLocation;
 
 /// A set of properties that uniquely identify a given Docker image.
 typedef Fingerprint = $Fingerprint;
@@ -1546,7 +1593,7 @@ class GrafeasV1LayerDetails {
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
-typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared03;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared02;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -1907,6 +1954,42 @@ class InTotoStatement {
   }
 }
 
+/// Indicates where an extracted package originates from.
+class IngestionSource {
+  /// The attachment URI that this package was extracted from.
+  core.String? attachmentUri;
+
+  /// The resource URL of the resource that was scanned to find this package.
+  core.String? resourceUrl;
+
+  ///
+  /// Possible string values are:
+  /// - "SOURCE_UNSPECIFIED"
+  /// - "DOCKER_IMAGE"
+  /// - "SBOM_ATTACHMENT"
+  core.String? source;
+
+  IngestionSource({this.attachmentUri, this.resourceUrl, this.source});
+
+  IngestionSource.fromJson(core.Map json_)
+    : this(
+        attachmentUri: json_['attachmentUri'] as core.String?,
+        resourceUrl: json_['resourceUrl'] as core.String?,
+        source: json_['source'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final attachmentUri = this.attachmentUri;
+    final resourceUrl = this.resourceUrl;
+    final source = this.source;
+    return {
+      'attachmentUri': ?attachmentUri,
+      'resourceUrl': ?resourceUrl,
+      'source': ?source,
+    };
+  }
+}
+
 /// Justification provides the justification when the state of the assessment if
 /// NOT_AFFECTED.
 typedef Justification = $Justification;
@@ -2144,6 +2227,14 @@ class Maintainer {
   }
 }
 
+/// Result of Malicious Content LLM scan.
+typedef MaliciousContentLLMResult = $Result01;
+
+/// Result of Malicious Content Static scan.
+typedef MaliciousContentStaticResult = $Result01;
+
+/// Result of Malware scan.
+typedef MalwareScanResult = $Result02;
 typedef Material = $Material;
 
 /// Other properties of the build.
@@ -2586,6 +2677,11 @@ class PackageData {
   ///
   /// This field will be unset for non Maven packages.
   core.String? hashDigest;
+
+  /// The list of sources that were scanned to find this package.
+  ///
+  /// This can be a Docker image, an SBOM attachment, or both, for example.
+  core.List<IngestionSource>? ingestionSources;
   LayerDetails? layerDetails;
 
   /// The list of licenses found that are related to a given package.
@@ -2644,6 +2740,7 @@ class PackageData {
     this.dependencyChain,
     this.fileLocation,
     this.hashDigest,
+    this.ingestionSources,
     this.layerDetails,
     this.licenses,
     this.maintainer,
@@ -2688,6 +2785,13 @@ class PackageData {
             )
             .toList(),
         hashDigest: json_['hashDigest'] as core.String?,
+        ingestionSources: (json_['ingestionSources'] as core.List?)
+            ?.map(
+              (value) => IngestionSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         layerDetails: json_.containsKey('layerDetails')
             ? LayerDetails.fromJson(
                 json_['layerDetails'] as core.Map<core.String, core.dynamic>,
@@ -2725,6 +2829,7 @@ class PackageData {
     final dependencyChain = this.dependencyChain;
     final fileLocation = this.fileLocation;
     final hashDigest = this.hashDigest;
+    final ingestionSources = this.ingestionSources;
     final layerDetails = this.layerDetails;
     final licenses = this.licenses;
     final maintainer = this.maintainer;
@@ -2744,6 +2849,7 @@ class PackageData {
       'dependencyChain': ?dependencyChain,
       'fileLocation': ?fileLocation,
       'hashDigest': ?hashDigest,
+      'ingestionSources': ?ingestionSources,
       'layerDetails': ?layerDetails,
       'licenses': ?licenses,
       'maintainer': ?maintainer,
@@ -3016,6 +3122,68 @@ class PackageVersion {
     final name = this.name;
     final version = this.version;
     return {'licenses': ?licenses, 'name': ?name, 'version': ?version};
+  }
+}
+
+class PerScannerVerdict {
+  /// Malicious Content LLM scan result.
+  MaliciousContentLLMResult? maliciousContentLlmResult;
+
+  /// Malicious Content Static scan result.
+  MaliciousContentStaticResult? maliciousContentStaticResult;
+
+  /// Malware scan result.
+  MalwareScanResult? malwareScan;
+
+  /// Workspace Policy scan result.
+  WorkspacePolicyResult? workspacePolicy;
+
+  PerScannerVerdict({
+    this.maliciousContentLlmResult,
+    this.maliciousContentStaticResult,
+    this.malwareScan,
+    this.workspacePolicy,
+  });
+
+  PerScannerVerdict.fromJson(core.Map json_)
+    : this(
+        maliciousContentLlmResult:
+            json_.containsKey('maliciousContentLlmResult')
+            ? MaliciousContentLLMResult.fromJson(
+                json_['maliciousContentLlmResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        maliciousContentStaticResult:
+            json_.containsKey('maliciousContentStaticResult')
+            ? MaliciousContentStaticResult.fromJson(
+                json_['maliciousContentStaticResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        malwareScan: json_.containsKey('malwareScan')
+            ? MalwareScanResult.fromJson(
+                json_['malwareScan'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        workspacePolicy: json_.containsKey('workspacePolicy')
+            ? WorkspacePolicyResult.fromJson(
+                json_['workspacePolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maliciousContentLlmResult = this.maliciousContentLlmResult;
+    final maliciousContentStaticResult = this.maliciousContentStaticResult;
+    final malwareScan = this.malwareScan;
+    final workspacePolicy = this.workspacePolicy;
+    return {
+      'maliciousContentLlmResult': ?maliciousContentLlmResult,
+      'maliciousContentStaticResult': ?maliciousContentStaticResult,
+      'malwareScan': ?malwareScan,
+      'workspacePolicy': ?workspacePolicy,
+    };
   }
 }
 
@@ -3453,7 +3621,7 @@ typedef SecretStatus = $SecretStatus;
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared03;
+typedef SlsaBuilder = $Shared02;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -4030,13 +4198,17 @@ class VulnerabilityOccurrence {
   /// The cvss v2 score for the vulnerability.
   CVSS? cvssV2;
 
+  /// The cvss v4 score for the vulnerability.
+  CVSS? cvssV4;
+
   /// CVSS version used to populate cvss_score and severity.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "CVSS_VERSION_UNSPECIFIED"
-  /// - "CVSS_VERSION_2"
-  /// - "CVSS_VERSION_3"
+  /// - "CVSS_VERSION_UNSPECIFIED" : Unspecified.
+  /// - "CVSS_VERSION_2" : CVSS v2.
+  /// - "CVSS_VERSION_3" : CVSS v3.
+  /// - "CVSS_VERSION_4" : CVSS v4.
   core.String? cvssVersion;
 
   /// The cvss v3 score for the vulnerability.
@@ -4113,6 +4285,7 @@ class VulnerabilityOccurrence {
   VulnerabilityOccurrence({
     this.cvssScore,
     this.cvssV2,
+    this.cvssV4,
     this.cvssVersion,
     this.cvssv3,
     this.effectiveSeverity,
@@ -4134,6 +4307,11 @@ class VulnerabilityOccurrence {
         cvssV2: json_.containsKey('cvssV2')
             ? CVSS.fromJson(
                 json_['cvssV2'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cvssV4: json_.containsKey('cvssV4')
+            ? CVSS.fromJson(
+                json_['cvssV4'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         cvssVersion: json_['cvssVersion'] as core.String?,
@@ -4178,6 +4356,7 @@ class VulnerabilityOccurrence {
   core.Map<core.String, core.dynamic> toJson() {
     final cvssScore = this.cvssScore;
     final cvssV2 = this.cvssV2;
+    final cvssV4 = this.cvssV4;
     final cvssVersion = this.cvssVersion;
     final cvssv3 = this.cvssv3;
     final effectiveSeverity = this.effectiveSeverity;
@@ -4194,6 +4373,7 @@ class VulnerabilityOccurrence {
     return {
       'cvssScore': ?cvssScore,
       'cvssV2': ?cvssV2,
+      'cvssV4': ?cvssV4,
       'cvssVersion': ?cvssVersion,
       'cvssv3': ?cvssv3,
       'effectiveSeverity': ?effectiveSeverity,
@@ -4291,3 +4471,6 @@ class WindowsUpdate {
     };
   }
 }
+
+/// Result of Workspace Policy scan.
+typedef WorkspacePolicyResult = $Result02;

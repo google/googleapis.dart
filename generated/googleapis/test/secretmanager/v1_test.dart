@@ -202,6 +202,29 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
+core.int buildCounterCloudSQLSingleUserCredentials = 0;
+api.CloudSQLSingleUserCredentials buildCloudSQLSingleUserCredentials() {
+  final o = api.CloudSQLSingleUserCredentials();
+  buildCounterCloudSQLSingleUserCredentials++;
+  if (buildCounterCloudSQLSingleUserCredentials < 3) {
+    o.instanceId = 'foo';
+    o.password = 'foo';
+    o.username = 'foo';
+  }
+  buildCounterCloudSQLSingleUserCredentials--;
+  return o;
+}
+
+void checkCloudSQLSingleUserCredentials(api.CloudSQLSingleUserCredentials o) {
+  buildCounterCloudSQLSingleUserCredentials++;
+  if (buildCounterCloudSQLSingleUserCredentials < 3) {
+    unittest.expect(o.instanceId!, unittest.equals('foo'));
+    unittest.expect(o.password!, unittest.equals('foo'));
+    unittest.expect(o.username!, unittest.equals('foo'));
+  }
+  buildCounterCloudSQLSingleUserCredentials--;
+}
+
 core.int buildCounterCustomerManagedEncryption = 0;
 api.CustomerManagedEncryption buildCustomerManagedEncryption() {
   final o = api.CustomerManagedEncryption();
@@ -293,6 +316,25 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
+}
+
+core.int buildCounterEnableManagedRotationRequest = 0;
+api.EnableManagedRotationRequest buildEnableManagedRotationRequest() {
+  final o = api.EnableManagedRotationRequest();
+  buildCounterEnableManagedRotationRequest++;
+  if (buildCounterEnableManagedRotationRequest < 3) {
+    o.cloudSqlSingleUserCredentials = buildCloudSQLSingleUserCredentials();
+  }
+  buildCounterEnableManagedRotationRequest--;
+  return o;
+}
+
+void checkEnableManagedRotationRequest(api.EnableManagedRotationRequest o) {
+  buildCounterEnableManagedRotationRequest++;
+  if (buildCounterEnableManagedRotationRequest < 3) {
+    checkCloudSQLSingleUserCredentials(o.cloudSqlSingleUserCredentials!);
+  }
+  buildCounterEnableManagedRotationRequest--;
 }
 
 core.int buildCounterEnableSecretVersionRequest = 0;
@@ -495,6 +537,27 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
+core.int buildCounterManagedRotationStatus = 0;
+api.ManagedRotationStatus buildManagedRotationStatus() {
+  final o = api.ManagedRotationStatus();
+  buildCounterManagedRotationStatus++;
+  if (buildCounterManagedRotationStatus < 3) {
+    o.error = buildStatus();
+    o.state = 'foo';
+  }
+  buildCounterManagedRotationStatus--;
+  return o;
+}
+
+void checkManagedRotationStatus(api.ManagedRotationStatus o) {
+  buildCounterManagedRotationStatus++;
+  if (buildCounterManagedRotationStatus < 3) {
+    checkStatus(o.error!);
+    unittest.expect(o.state!, unittest.equals('foo'));
+  }
+  buildCounterManagedRotationStatus--;
+}
+
 core.List<api.AuditConfig> buildUnnamed8() => [
   buildAuditConfig(),
   buildAuditConfig(),
@@ -623,11 +686,48 @@ void checkReplicationStatus(api.ReplicationStatus o) {
   buildCounterReplicationStatus--;
 }
 
+core.int buildCounterResourcePolicyMember = 0;
+api.ResourcePolicyMember buildResourcePolicyMember() {
+  final o = api.ResourcePolicyMember();
+  buildCounterResourcePolicyMember++;
+  if (buildCounterResourcePolicyMember < 3) {
+    o.iamPolicyNamePrincipal = 'foo';
+    o.iamPolicyUidPrincipal = 'foo';
+  }
+  buildCounterResourcePolicyMember--;
+  return o;
+}
+
+void checkResourcePolicyMember(api.ResourcePolicyMember o) {
+  buildCounterResourcePolicyMember++;
+  if (buildCounterResourcePolicyMember < 3) {
+    unittest.expect(o.iamPolicyNamePrincipal!, unittest.equals('foo'));
+    unittest.expect(o.iamPolicyUidPrincipal!, unittest.equals('foo'));
+  }
+  buildCounterResourcePolicyMember--;
+}
+
+core.int buildCounterRotateSecretRequest = 0;
+api.RotateSecretRequest buildRotateSecretRequest() {
+  final o = api.RotateSecretRequest();
+  buildCounterRotateSecretRequest++;
+  if (buildCounterRotateSecretRequest < 3) {}
+  buildCounterRotateSecretRequest--;
+  return o;
+}
+
+void checkRotateSecretRequest(api.RotateSecretRequest o) {
+  buildCounterRotateSecretRequest++;
+  if (buildCounterRotateSecretRequest < 3) {}
+  buildCounterRotateSecretRequest--;
+}
+
 core.int buildCounterRotation = 0;
 api.Rotation buildRotation() {
   final o = api.Rotation();
   buildCounterRotation++;
   if (buildCounterRotation < 3) {
+    o.managedRotationStatus = buildManagedRotationStatus();
     o.nextRotationTime = 'foo';
     o.rotationPeriod = 'foo';
   }
@@ -638,6 +738,7 @@ api.Rotation buildRotation() {
 void checkRotation(api.Rotation o) {
   buildCounterRotation++;
   if (buildCounterRotation < 3) {
+    checkManagedRotationStatus(o.managedRotationStatus!);
     unittest.expect(o.nextRotationTime!, unittest.equals('foo'));
     unittest.expect(o.rotationPeriod!, unittest.equals('foo'));
   }
@@ -696,8 +797,10 @@ api.Secret buildSecret() {
     o.expireTime = 'foo';
     o.labels = buildUnnamed11();
     o.name = 'foo';
+    o.policyMember = buildResourcePolicyMember();
     o.replication = buildReplication();
     o.rotation = buildRotation();
+    o.secretType = 'foo';
     o.tags = buildUnnamed12();
     o.topics = buildUnnamed13();
     o.ttl = 'foo';
@@ -718,8 +821,10 @@ void checkSecret(api.Secret o) {
     unittest.expect(o.expireTime!, unittest.equals('foo'));
     checkUnnamed11(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkResourcePolicyMember(o.policyMember!);
     checkReplication(o.replication!);
     checkRotation(o.rotation!);
+    unittest.expect(o.secretType!, unittest.equals('foo'));
     checkUnnamed12(o.tags!);
     checkUnnamed13(o.topics!);
     unittest.expect(o.ttl!, unittest.equals('foo'));
@@ -806,9 +911,70 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed15() => ['foo', 'foo'];
+core.Map<core.String, core.Object?> buildUnnamed15() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
-void checkUnnamed15(core.List<core.String> o) {
+void checkUnnamed15(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted3 = (o['x']!) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']!) as core.Map;
+  unittest.expect(casted4, unittest.hasLength(3));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
+}
+
+core.List<core.Map<core.String, core.Object?>> buildUnnamed16() => [
+  buildUnnamed15(),
+  buildUnnamed15(),
+];
+
+void checkUnnamed16(core.List<core.Map<core.String, core.Object?>> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUnnamed15(o[0]);
+  checkUnnamed15(o[1]);
+}
+
+core.int buildCounterStatus = 0;
+api.Status buildStatus() {
+  final o = api.Status();
+  buildCounterStatus++;
+  if (buildCounterStatus < 3) {
+    o.code = 42;
+    o.details = buildUnnamed16();
+    o.message = 'foo';
+  }
+  buildCounterStatus--;
+  return o;
+}
+
+void checkStatus(api.Status o) {
+  buildCounterStatus++;
+  if (buildCounterStatus < 3) {
+    unittest.expect(o.code!, unittest.equals(42));
+    checkUnnamed16(o.details!);
+    unittest.expect(o.message!, unittest.equals('foo'));
+  }
+  buildCounterStatus--;
+}
+
+core.List<core.String> buildUnnamed17() => ['foo', 'foo'];
+
+void checkUnnamed17(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -819,7 +985,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed15();
+    o.permissions = buildUnnamed17();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -828,14 +994,14 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed15(o.permissions!);
+    checkUnnamed17(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed16() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed18() => ['foo', 'foo'];
 
-void checkUnnamed16(core.List<core.String> o) {
+void checkUnnamed18(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -846,7 +1012,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed16();
+    o.permissions = buildUnnamed18();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -855,7 +1021,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed16(o.permissions!);
+    checkUnnamed18(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -879,9 +1045,9 @@ void checkTopic(api.Topic o) {
   buildCounterTopic--;
 }
 
-core.List<api.Replica> buildUnnamed17() => [buildReplica(), buildReplica()];
+core.List<api.Replica> buildUnnamed19() => [buildReplica(), buildReplica()];
 
-void checkUnnamed17(core.List<api.Replica> o) {
+void checkUnnamed19(core.List<api.Replica> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReplica(o[0]);
   checkReplica(o[1]);
@@ -892,7 +1058,7 @@ api.UserManaged buildUserManaged() {
   final o = api.UserManaged();
   buildCounterUserManaged++;
   if (buildCounterUserManaged < 3) {
-    o.replicas = buildUnnamed17();
+    o.replicas = buildUnnamed19();
   }
   buildCounterUserManaged--;
   return o;
@@ -901,17 +1067,17 @@ api.UserManaged buildUserManaged() {
 void checkUserManaged(api.UserManaged o) {
   buildCounterUserManaged++;
   if (buildCounterUserManaged < 3) {
-    checkUnnamed17(o.replicas!);
+    checkUnnamed19(o.replicas!);
   }
   buildCounterUserManaged--;
 }
 
-core.List<api.ReplicaStatus> buildUnnamed18() => [
+core.List<api.ReplicaStatus> buildUnnamed20() => [
   buildReplicaStatus(),
   buildReplicaStatus(),
 ];
 
-void checkUnnamed18(core.List<api.ReplicaStatus> o) {
+void checkUnnamed20(core.List<api.ReplicaStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReplicaStatus(o[0]);
   checkReplicaStatus(o[1]);
@@ -922,7 +1088,7 @@ api.UserManagedStatus buildUserManagedStatus() {
   final o = api.UserManagedStatus();
   buildCounterUserManagedStatus++;
   if (buildCounterUserManagedStatus < 3) {
-    o.replicas = buildUnnamed18();
+    o.replicas = buildUnnamed20();
   }
   buildCounterUserManagedStatus--;
   return o;
@@ -931,14 +1097,14 @@ api.UserManagedStatus buildUserManagedStatus() {
 void checkUserManagedStatus(api.UserManagedStatus o) {
   buildCounterUserManagedStatus++;
   if (buildCounterUserManagedStatus < 3) {
-    checkUnnamed18(o.replicas!);
+    checkUnnamed20(o.replicas!);
   }
   buildCounterUserManagedStatus--;
 }
 
-core.List<core.String> buildUnnamed19() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed21() => ['foo', 'foo'];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed21(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1022,6 +1188,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CloudSQLSingleUserCredentials', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCloudSQLSingleUserCredentials();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CloudSQLSingleUserCredentials.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCloudSQLSingleUserCredentials(od);
+    });
+  });
+
   unittest.group('obj-schema-CustomerManagedEncryption', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCustomerManagedEncryption();
@@ -1074,6 +1251,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-EnableManagedRotationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnableManagedRotationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnableManagedRotationRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEnableManagedRotationRequest(od);
     });
   });
 
@@ -1143,6 +1331,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ManagedRotationStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildManagedRotationStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ManagedRotationStatus.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkManagedRotationStatus(od);
+    });
+  });
+
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPolicy();
@@ -1198,6 +1397,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ResourcePolicyMember', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildResourcePolicyMember();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResourcePolicyMember.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkResourcePolicyMember(od);
+    });
+  });
+
+  unittest.group('obj-schema-RotateSecretRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRotateSecretRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RotateSecretRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRotateSecretRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-Rotation', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRotation();
@@ -1250,6 +1471,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSetIamPolicyRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Status.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkStatus(od);
     });
   });
 
@@ -1366,7 +1598,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.SecretManagerApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed19();
+      final arg_extraLocationTypes = buildUnnamed21();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1635,6 +1867,69 @@ void main() {
       checkEmpty(response as api.Empty);
     });
 
+    unittest.test('method--enableManagedRotation', () async {
+      final mock = HttpServerMock();
+      final res = api.SecretManagerApi(mock).projects.locations.secrets;
+      final arg_request = buildEnableManagedRotationRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.EnableManagedRotationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkEnableManagedRotationRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSecretVersion());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.enableManagedRotation(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkSecretVersion(response as api.SecretVersion);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.SecretManagerApi(mock).projects.locations.secrets;
@@ -1891,6 +2186,69 @@ void main() {
         $fields: arg_$fields,
       );
       checkSecret(response as api.Secret);
+    });
+
+    unittest.test('method--rotateSecret', () async {
+      final mock = HttpServerMock();
+      final res = api.SecretManagerApi(mock).projects.locations.secrets;
+      final arg_request = buildRotateSecretRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.RotateSecretRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkRotateSecretRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSecretVersion());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.rotateSecret(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkSecretVersion(response as api.SecretVersion);
     });
 
     unittest.test('method--setIamPolicy', () async {
@@ -2601,6 +2959,69 @@ void main() {
       checkEmpty(response as api.Empty);
     });
 
+    unittest.test('method--enableManagedRotation', () async {
+      final mock = HttpServerMock();
+      final res = api.SecretManagerApi(mock).projects.secrets;
+      final arg_request = buildEnableManagedRotationRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.EnableManagedRotationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkEnableManagedRotationRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSecretVersion());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.enableManagedRotation(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkSecretVersion(response as api.SecretVersion);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.SecretManagerApi(mock).projects.secrets;
@@ -2857,6 +3278,69 @@ void main() {
         $fields: arg_$fields,
       );
       checkSecret(response as api.Secret);
+    });
+
+    unittest.test('method--rotateSecret', () async {
+      final mock = HttpServerMock();
+      final res = api.SecretManagerApi(mock).projects.secrets;
+      final arg_request = buildRotateSecretRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.RotateSecretRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkRotateSecretRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSecretVersion());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.rotateSecret(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkSecretVersion(response as api.SecretVersion);
     });
 
     unittest.test('method--setIamPolicy', () async {

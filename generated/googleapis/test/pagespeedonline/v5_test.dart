@@ -96,6 +96,7 @@ api.Categories buildCategories() {
   buildCounterCategories++;
   if (buildCounterCategories < 3) {
     o.accessibility = buildLighthouseCategoryV5();
+    o.agenticBrowsing = buildLighthouseCategoryV5();
     o.bestPractices = buildLighthouseCategoryV5();
     o.performance = buildLighthouseCategoryV5();
     o.pwa = buildLighthouseCategoryV5();
@@ -109,6 +110,7 @@ void checkCategories(api.Categories o) {
   buildCounterCategories++;
   if (buildCounterCategories < 3) {
     checkLighthouseCategoryV5(o.accessibility!);
+    checkLighthouseCategoryV5(o.agenticBrowsing!);
     checkLighthouseCategoryV5(o.bestPractices!);
     checkLighthouseCategoryV5(o.performance!);
     checkLighthouseCategoryV5(o.pwa!);
@@ -365,6 +367,7 @@ api.LighthouseCategoryV5 buildLighthouseCategoryV5() {
   buildCounterLighthouseCategoryV5++;
   if (buildCounterLighthouseCategoryV5 < 3) {
     o.auditRefs = buildUnnamed4();
+    o.categoryScoreDisplayMode = 'foo';
     o.description = 'foo';
     o.id = 'foo';
     o.manualDescription = 'foo';
@@ -383,6 +386,7 @@ void checkLighthouseCategoryV5(api.LighthouseCategoryV5 o) {
   buildCounterLighthouseCategoryV5++;
   if (buildCounterLighthouseCategoryV5 < 3) {
     checkUnnamed4(o.auditRefs!);
+    unittest.expect(o.categoryScoreDisplayMode!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.manualDescription!, unittest.equals('foo'));

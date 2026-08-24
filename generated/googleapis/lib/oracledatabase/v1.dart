@@ -49,6 +49,13 @@
 ///     - [ProjectsLocationsExascaleDbStorageVaultsResource]
 ///     - [ProjectsLocationsGiVersionsResource]
 ///       - [ProjectsLocationsGiVersionsMinorVersionsResource]
+///     - [ProjectsLocationsGoldengateConnectionAssignmentsResource]
+///     - [ProjectsLocationsGoldengateConnectionTypesResource]
+///     - [ProjectsLocationsGoldengateConnectionsResource]
+///     - [ProjectsLocationsGoldengateDeploymentEnvironmentsResource]
+///     - [ProjectsLocationsGoldengateDeploymentTypesResource]
+///     - [ProjectsLocationsGoldengateDeploymentVersionsResource]
+///     - [ProjectsLocationsGoldengateDeploymentsResource]
 ///     - [ProjectsLocationsOdbNetworksResource]
 ///       - [ProjectsLocationsOdbNetworksOdbSubnetsResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -141,6 +148,25 @@ class ProjectsLocationsResource {
       ProjectsLocationsExascaleDbStorageVaultsResource(_requester);
   ProjectsLocationsGiVersionsResource get giVersions =>
       ProjectsLocationsGiVersionsResource(_requester);
+  ProjectsLocationsGoldengateConnectionAssignmentsResource
+  get goldengateConnectionAssignments =>
+      ProjectsLocationsGoldengateConnectionAssignmentsResource(_requester);
+  ProjectsLocationsGoldengateConnectionTypesResource
+  get goldengateConnectionTypes =>
+      ProjectsLocationsGoldengateConnectionTypesResource(_requester);
+  ProjectsLocationsGoldengateConnectionsResource get goldengateConnections =>
+      ProjectsLocationsGoldengateConnectionsResource(_requester);
+  ProjectsLocationsGoldengateDeploymentEnvironmentsResource
+  get goldengateDeploymentEnvironments =>
+      ProjectsLocationsGoldengateDeploymentEnvironmentsResource(_requester);
+  ProjectsLocationsGoldengateDeploymentTypesResource
+  get goldengateDeploymentTypes =>
+      ProjectsLocationsGoldengateDeploymentTypesResource(_requester);
+  ProjectsLocationsGoldengateDeploymentVersionsResource
+  get goldengateDeploymentVersions =>
+      ProjectsLocationsGoldengateDeploymentVersionsResource(_requester);
+  ProjectsLocationsGoldengateDeploymentsResource get goldengateDeployments =>
+      ProjectsLocationsGoldengateDeploymentsResource(_requester);
   ProjectsLocationsOdbNetworksResource get odbNetworks =>
       ProjectsLocationsOdbNetworksResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -631,6 +657,46 @@ class ProjectsLocationsAutonomousDatabasesResource {
     );
   }
 
+  /// Gets the refreshable clones for a given Autonomous Database.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The Autonomous Database resource whose refreshable
+  /// clones are to be listed. Format:
+  /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autonomousDatabases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutonomousDatabaseRefreshableClones].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutonomousDatabaseRefreshableClones> getRefreshableClones(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getRefreshableClones';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AutonomousDatabaseRefreshableClones.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists the Autonomous Databases in a given project and location.
   ///
   /// Request parameters:
@@ -746,6 +812,48 @@ class ProjectsLocationsAutonomousDatabasesResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Refreshes the refreshable clone of an Autonomous Database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the AutonomousDatabase resource. Format:
+  /// projects/{project}/location/{location}/autonomousDatabases/{autonomous_database}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autonomousDatabases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> refresh(
+    RefreshAutonomousDatabaseRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':refresh';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -1036,6 +1144,49 @@ class ProjectsLocationsCloudExadataInfrastructuresResource {
   ProjectsLocationsCloudExadataInfrastructuresResource(
     commons.ApiRequester client,
   ) : _requester = client;
+
+  /// Configures Exascale for a single Exadata Infrastructure.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Cloud Exadata Infrastructure in the
+  /// following format:
+  /// projects/{project}/locations/{location}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/cloudExadataInfrastructures/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> configureExascale(
+    ConfigureExascaleCloudExadataInfrastructureRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':configureExascale';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates a new Exadata Infrastructure in a given project and location.
   ///
@@ -1829,8 +1980,10 @@ class ProjectsLocationsDbSystemShapesResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. An expression for filtering the results of the
-  /// request. Only the gcp_oracle_zone_id field is supported in this format:
-  /// `gcp_oracle_zone_id="{gcp_oracle_zone_id}"`.
+  /// request. The `gcp_oracle_zone_id`, `shape_family`, and `database_edition`
+  /// fields are supported in the following format:
+  /// `gcp_oracle_zone_id="{gcp_oracle_zone_id}" AND
+  /// shape_family="{shape_family}" AND database_edition="{database_edition}"`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
   /// unspecified, at most 50 database system shapes will be returned. The
@@ -2828,8 +2981,9 @@ class ProjectsLocationsGiVersionsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. An expression for filtering the results of the
-  /// request. Only the shape, gcp_oracle_zone and gi_version fields are
-  /// supported in this format: `shape="{shape}"`.
+  /// request. Only the `shape` and `gcp_oracle_zone_id` fields are supported in
+  /// the following format: `shape="{shape}" AND
+  /// gcp_oracle_zone_id="{gcp_oracle_zone_id}"`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
   /// unspecified, a maximum of 50 Oracle Grid Infrastructure (GI) versions will
@@ -2894,8 +3048,8 @@ class ProjectsLocationsGiVersionsMinorVersionsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/giVersions/\[^/\]+$`.
   ///
   /// [filter] - Optional. An expression for filtering the results of the
-  /// request. Only shapeFamily and gcp_oracle_zone_id are supported in this
-  /// format: `shape_family="{shapeFamily}" AND
+  /// request. Only the `shape_family` and `gcp_oracle_zone_id` fields are
+  /// supported in the following format: `shape_family="{shape_family}" AND
   /// gcp_oracle_zone_id="{gcp_oracle_zone_id}"`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
@@ -2940,6 +3094,1080 @@ class ProjectsLocationsGiVersionsMinorVersionsResource {
     return ListMinorVersionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+}
+
+class ProjectsLocationsGoldengateConnectionAssignmentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGoldengateConnectionAssignmentsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a new GoldengateConnectionAssignment in a given project and
+  /// location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this
+  /// GoldengateConnectionAssignment will be created. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [goldengateConnectionAssignmentId] - Required. The ID of the
+  /// GoldengateConnectionAssignment to create.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    GoldengateConnectionAssignment request,
+    core.String parent, {
+    core.String? goldengateConnectionAssignmentId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'goldengateConnectionAssignmentId':
+          ?goldengateConnectionAssignmentId == null
+          ? null
+          : [goldengateConnectionAssignmentId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/goldengateConnectionAssignments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single GoldengateConnectionAssignment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the GoldengateConnectionAssignment to
+  /// delete. Format:
+  /// projects/{project}/locations/{location}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateConnectionAssignments/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single GoldengateConnectionAssignment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the GoldengateConnectionAssignment to
+  /// retrieve. Format:
+  /// projects/{project}/locations/{location}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateConnectionAssignments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoldengateConnectionAssignment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoldengateConnectionAssignment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoldengateConnectionAssignment.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists GoldengateConnectionAssignments in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the
+  /// GoldengateConnectionAssignments. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters
+  /// GoldengateConnectionAssignments listed in the response.
+  ///
+  /// [orderBy] - Optional. A comma-separated list of fields to order by, sorted
+  /// in ascending order. Use "DESC" after a field name for descending.
+  ///
+  /// [pageSize] - Optional. The maximum number of
+  /// GoldengateConnectionAssignments to return. The service may return fewer
+  /// than this value. If unspecified, at most 50
+  /// GoldengateConnectionAssignments will be returned. The maximum value is
+  /// 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListGoldengateConnectionAssignments` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListGoldengateConnectionAssignments` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGoldengateConnectionAssignmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGoldengateConnectionAssignmentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/goldengateConnectionAssignments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGoldengateConnectionAssignmentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Tests a single GoldengateConnectionAssignment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the connection assignment for which to test
+  /// connection.
+  /// projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateConnectionAssignments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestGoldengateConnectionAssignmentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestGoldengateConnectionAssignmentResponse> test(
+    TestGoldengateConnectionAssignmentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':test';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestGoldengateConnectionAssignmentResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsGoldengateConnectionTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGoldengateConnectionTypesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists GoldengateConnectionTypes in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListGoldengateConnectionTypesRequest
+  /// Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. The connection_type field must be specified in the format:
+  /// `connection_type="ORACLE"`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGoldengateConnectionTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGoldengateConnectionTypesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/goldengateConnectionTypes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGoldengateConnectionTypesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsGoldengateConnectionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGoldengateConnectionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new GoldengateConnection in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The value for parent of the GoldengateConnection in
+  /// the following format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [goldengateConnectionId] - Required. The ID of the GoldengateConnection to
+  /// create. This value is restricted to
+  /// (^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$) and must be a maximum of 63
+  /// characters in length. The value must start with a letter and end with a
+  /// letter or a number.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    GoldengateConnection request,
+    core.String parent, {
+    core.String? goldengateConnectionId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'goldengateConnectionId': ?goldengateConnectionId == null
+          ? null
+          : [goldengateConnectionId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/goldengateConnections';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single GoldengateConnection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the GoldengateConnection in the following
+  /// format:
+  /// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateConnections/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single GoldengateConnection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the GoldengateConnection in the following
+  /// format:
+  /// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoldengateConnection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoldengateConnection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoldengateConnection.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all the GoldengateConnections for the given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for GoldengateConnections in the
+  /// following format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request.
+  ///
+  /// [orderBy] - Optional. An expression for ordering the results of the
+  /// request.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, at most 50 GoldengateConnections will be returned. The
+  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// ListGoldengateConnections call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGoldengateConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGoldengateConnectionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/goldengateConnections';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGoldengateConnectionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsGoldengateDeploymentEnvironmentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGoldengateDeploymentEnvironmentsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists GoldengateDeploymentEnvironments in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// GoldengateDeploymentEnvironments. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, at most 50 deployment environments will be returned. The
+  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGoldengateDeploymentEnvironmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGoldengateDeploymentEnvironmentsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/goldengateDeploymentEnvironments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGoldengateDeploymentEnvironmentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsGoldengateDeploymentTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGoldengateDeploymentTypesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists GoldenGateDeploymentTypes in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Either the deployment_type and ogg_version fields must be
+  /// specified in the format: `deployment_type="DATABASE_ORACLE"` or
+  /// `ogg_version="version"`. Allowed values for deployment_type are:
+  /// `DATABASE_ORACLE`, `BIGDATA`, `DATABASE_MICROSOFT_SQLSERVER`,
+  /// `DATABASE_MYSQL`, `DATABASE_POSTGRESQL`, `DATABASE_DB2ZOS`,
+  /// `DATABASE_DB2I`, `GGSA`, `DATA_TRANSFORMS`.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGoldengateDeploymentTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGoldengateDeploymentTypesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/goldengateDeploymentTypes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGoldengateDeploymentTypesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsGoldengateDeploymentVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGoldengateDeploymentVersionsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists GoldengateDeploymentVersions in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for
+  /// ListGoldengateDeploymentVersionsRequest Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Either the deployment_id and deployment_type fields must be
+  /// specified in the format: `deployment_id="id"` or
+  /// `deployment_type="DATABASE_ORACLE"`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  /// The maximum value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGoldengateDeploymentVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGoldengateDeploymentVersionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/goldengateDeploymentVersions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGoldengateDeploymentVersionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsGoldengateDeploymentsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGoldengateDeploymentsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new GoldengateDeployment in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The value for parent of the GoldengateDeployment in
+  /// the following format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [goldengateDeploymentId] - Required. The ID of the GoldengateDeployment to
+  /// create. This value is restricted to
+  /// (^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$) and must be a maximum of 63
+  /// characters in length. The value must start with a letter and end with a
+  /// letter or a number.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    GoldengateDeployment request,
+    core.String parent, {
+    core.String? goldengateDeploymentId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'goldengateDeploymentId': ?goldengateDeploymentId == null
+          ? null
+          : [goldengateDeploymentId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/goldengateDeployments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single GoldengateDeployment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the GoldengateDeployment in the following
+  /// format:
+  /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateDeployments/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single GoldengateDeployment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the GoldengateDeployment in the following
+  /// format:
+  /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoldengateDeployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoldengateDeployment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoldengateDeployment.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all the GoldengateDeployments for the given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for GoldengateDeployments in the
+  /// following format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request.
+  ///
+  /// [orderBy] - Optional. An expression for ordering the results of the
+  /// request.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, at most 50 GoldengateDeployments will be returned. The
+  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// ListGoldengateDeployments call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGoldengateDeploymentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGoldengateDeploymentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/goldengateDeployments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGoldengateDeploymentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Starts a single GoldengateDeployment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Goldengate Deployment in the following
+  /// format:
+  /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> start(
+    StartGoldengateDeploymentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':start';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stops a single GoldengateDeployment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Goldengate Deployment in the following
+  /// format:
+  /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/goldengateDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> stop(
+    StopGoldengateDeploymentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':stop';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3693,6 +4921,79 @@ class AllConnectionStrings {
     final low = this.low;
     final medium = this.medium;
     return {'high': ?high, 'low': ?low, 'medium': ?medium};
+  }
+}
+
+/// The Amazon S3 Iceberg storage.
+class AmazonS3IcebergStorage {
+  /// The access key ID of Amazon S3.
+  ///
+  /// Required.
+  core.String? accessKeyId;
+
+  /// The bucket of Amazon S3.
+  ///
+  /// Required.
+  core.String? bucket;
+
+  /// The endpoint of Amazon S3.
+  ///
+  /// Optional.
+  core.String? endpoint;
+
+  /// The region of Amazon S3.
+  ///
+  /// Required.
+  core.String? region;
+
+  /// The scheme type of Amazon S3.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SCHEME_TYPE_UNSPECIFIED" : Scheme type not specified.
+  /// - "S3" : S3 scheme.
+  /// - "S3A" : S3A scheme.
+  core.String? schemeType;
+
+  /// The secret access key of Amazon S3.
+  ///
+  /// Optional.
+  core.String? secretAccessKeySecret;
+
+  AmazonS3IcebergStorage({
+    this.accessKeyId,
+    this.bucket,
+    this.endpoint,
+    this.region,
+    this.schemeType,
+    this.secretAccessKeySecret,
+  });
+
+  AmazonS3IcebergStorage.fromJson(core.Map json_)
+    : this(
+        accessKeyId: json_['accessKeyId'] as core.String?,
+        bucket: json_['bucket'] as core.String?,
+        endpoint: json_['endpoint'] as core.String?,
+        region: json_['region'] as core.String?,
+        schemeType: json_['schemeType'] as core.String?,
+        secretAccessKeySecret: json_['secretAccessKeySecret'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessKeyId = this.accessKeyId;
+    final bucket = this.bucket;
+    final endpoint = this.endpoint;
+    final region = this.region;
+    final schemeType = this.schemeType;
+    final secretAccessKeySecret = this.secretAccessKeySecret;
+    return {
+      'accessKeyId': ?accessKeyId,
+      'bucket': ?bucket,
+      'endpoint': ?endpoint,
+      'region': ?region,
+      'schemeType': ?schemeType,
+      'secretAccessKeySecret': ?secretAccessKeySecret,
+    };
   }
 }
 
@@ -4835,6 +6136,14 @@ class AutonomousDatabaseProperties {
   /// Optional. Immutable.
   core.String? privateEndpointLabel;
 
+  /// Indicates if the Autonomous Database is a refreshable clone.
+  ///
+  /// This field is used in update flow to connect / disconnect a refreshable
+  /// clone from its source database.
+  ///
+  /// Optional.
+  core.bool? refreshableClone;
+
   /// The refresh mode of the cloned Autonomous Database.
   ///
   /// Output only.
@@ -5012,6 +6321,7 @@ class AutonomousDatabaseProperties {
     this.privateEndpoint,
     this.privateEndpointIp,
     this.privateEndpointLabel,
+    this.refreshableClone,
     this.refreshableMode,
     this.refreshableState,
     this.role,
@@ -5138,6 +6448,7 @@ class AutonomousDatabaseProperties {
         privateEndpoint: json_['privateEndpoint'] as core.String?,
         privateEndpointIp: json_['privateEndpointIp'] as core.String?,
         privateEndpointLabel: json_['privateEndpointLabel'] as core.String?,
+        refreshableClone: json_['refreshableClone'] as core.bool?,
         refreshableMode: json_['refreshableMode'] as core.String?,
         refreshableState: json_['refreshableState'] as core.String?,
         role: json_['role'] as core.String?,
@@ -5219,6 +6530,7 @@ class AutonomousDatabaseProperties {
     final privateEndpoint = this.privateEndpoint;
     final privateEndpointIp = this.privateEndpointIp;
     final privateEndpointLabel = this.privateEndpointLabel;
+    final refreshableClone = this.refreshableClone;
     final refreshableMode = this.refreshableMode;
     final refreshableState = this.refreshableState;
     final role = this.role;
@@ -5287,6 +6599,7 @@ class AutonomousDatabaseProperties {
       'privateEndpoint': ?privateEndpoint,
       'privateEndpointIp': ?privateEndpointIp,
       'privateEndpointLabel': ?privateEndpointLabel,
+      'refreshableClone': ?refreshableClone,
       'refreshableMode': ?refreshableMode,
       'refreshableState': ?refreshableState,
       'role': ?role,
@@ -5299,6 +6612,65 @@ class AutonomousDatabaseProperties {
       'totalAutoBackupStorageSizeGbs': ?totalAutoBackupStorageSizeGbs,
       'usedDataStorageSizeTbs': ?usedDataStorageSizeTbs,
       'vaultId': ?vaultId,
+    };
+  }
+}
+
+/// An Autonomous Database refreshable clone
+class AutonomousDatabaseRefreshableClone {
+  /// The GCP resource name of the Autonomous Database.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The Google Cloud region where the refreshable clone exists.
+  ///
+  /// Output only.
+  core.String? region;
+
+  AutonomousDatabaseRefreshableClone({this.name, this.region});
+
+  AutonomousDatabaseRefreshableClone.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        region: json_['region'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final region = this.region;
+    return {'name': ?name, 'region': ?region};
+  }
+}
+
+/// Response message for getting the Autonomous Database refreshable clones.
+class AutonomousDatabaseRefreshableClones {
+  /// The list of Autonomous Database refreshable clones.
+  core.List<AutonomousDatabaseRefreshableClone>?
+  autonomousDatabaseRefreshableClones;
+
+  AutonomousDatabaseRefreshableClones({
+    this.autonomousDatabaseRefreshableClones,
+  });
+
+  AutonomousDatabaseRefreshableClones.fromJson(core.Map json_)
+    : this(
+        autonomousDatabaseRefreshableClones:
+            (json_['autonomousDatabaseRefreshableClones'] as core.List?)
+                ?.map(
+                  (value) => AutonomousDatabaseRefreshableClone.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final autonomousDatabaseRefreshableClones =
+        this.autonomousDatabaseRefreshableClones;
+    return {
+      'autonomousDatabaseRefreshableClones':
+          ?autonomousDatabaseRefreshableClones,
     };
   }
 }
@@ -5472,6 +6844,57 @@ class AutonomousDbVersion {
       'name': ?name,
       'version': ?version,
       'workloadUri': ?workloadUri,
+    };
+  }
+}
+
+/// The Azure Data Lake Storage Iceberg storage.
+class AzureDataLakeStorageIcebergStorage {
+  /// The account key of Azure Data Lake Storage.
+  ///
+  /// Optional.
+  core.String? accountKeySecret;
+
+  /// The account of Azure Data Lake Storage.
+  ///
+  /// Required.
+  core.String? azureAccount;
+
+  /// The container of Azure Data Lake Storage.
+  ///
+  /// Required.
+  core.String? container;
+
+  /// The endpoint of Azure Data Lake Storage.
+  ///
+  /// Optional.
+  core.String? endpoint;
+
+  AzureDataLakeStorageIcebergStorage({
+    this.accountKeySecret,
+    this.azureAccount,
+    this.container,
+    this.endpoint,
+  });
+
+  AzureDataLakeStorageIcebergStorage.fromJson(core.Map json_)
+    : this(
+        accountKeySecret: json_['accountKeySecret'] as core.String?,
+        azureAccount: json_['azureAccount'] as core.String?,
+        container: json_['container'] as core.String?,
+        endpoint: json_['endpoint'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accountKeySecret = this.accountKeySecret;
+    final azureAccount = this.azureAccount;
+    final container = this.container;
+    final endpoint = this.endpoint;
+    return {
+      'accountKeySecret': ?accountKeySecret,
+      'azureAccount': ?azureAccount,
+      'container': ?container,
+      'endpoint': ?endpoint,
     };
   }
 }
@@ -5700,7 +7123,7 @@ class CloudExadataInfrastructureProperties {
 
   /// The database server type of the Exadata Infrastructure.
   ///
-  /// Output only.
+  /// Optional.
   core.String? databaseServerType;
 
   /// The local node storage allocated in GBs.
@@ -5713,6 +7136,11 @@ class CloudExadataInfrastructureProperties {
   ///
   /// Output only.
   core.String? dbServerVersion;
+
+  /// The Exascale configuration for the Exadata Infrastructure.
+  ///
+  /// Output only.
+  ExascaleConfig? exascaleConfig;
 
   /// Maintenance window for repair.
   ///
@@ -5818,7 +7246,7 @@ class CloudExadataInfrastructureProperties {
 
   /// The storage server type of the Exadata Infrastructure.
   ///
-  /// Output only.
+  /// Optional.
   core.String? storageServerType;
 
   /// The software version of the storage servers (cells) in the Exadata
@@ -5845,6 +7273,7 @@ class CloudExadataInfrastructureProperties {
     this.databaseServerType,
     this.dbNodeStorageSizeGb,
     this.dbServerVersion,
+    this.exascaleConfig,
     this.maintenanceWindow,
     this.maxCpuCount,
     this.maxDataStorageTb,
@@ -5886,6 +7315,11 @@ class CloudExadataInfrastructureProperties {
         databaseServerType: json_['databaseServerType'] as core.String?,
         dbNodeStorageSizeGb: json_['dbNodeStorageSizeGb'] as core.int?,
         dbServerVersion: json_['dbServerVersion'] as core.String?,
+        exascaleConfig: json_.containsKey('exascaleConfig')
+            ? ExascaleConfig.fromJson(
+                json_['exascaleConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maintenanceWindow: json_.containsKey('maintenanceWindow')
             ? MaintenanceWindow.fromJson(
                 json_['maintenanceWindow']
@@ -5926,6 +7360,7 @@ class CloudExadataInfrastructureProperties {
     final databaseServerType = this.databaseServerType;
     final dbNodeStorageSizeGb = this.dbNodeStorageSizeGb;
     final dbServerVersion = this.dbServerVersion;
+    final exascaleConfig = this.exascaleConfig;
     final maintenanceWindow = this.maintenanceWindow;
     final maxCpuCount = this.maxCpuCount;
     final maxDataStorageTb = this.maxDataStorageTb;
@@ -5957,6 +7392,7 @@ class CloudExadataInfrastructureProperties {
       'databaseServerType': ?databaseServerType,
       'dbNodeStorageSizeGb': ?dbNodeStorageSizeGb,
       'dbServerVersion': ?dbServerVersion,
+      'exascaleConfig': ?exascaleConfig,
       'maintenanceWindow': ?maintenanceWindow,
       'maxCpuCount': ?maxCpuCount,
       'maxDataStorageTb': ?maxDataStorageTb,
@@ -6021,6 +7457,14 @@ class CloudVmCluster {
   /// Required.
   core.String? exadataInfrastructure;
 
+  /// The name of ExascaleDbStorageVault associated with the VM Cluster.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+  ///
+  /// Optional.
+  core.String? exascaleDbStorageVault;
+
   /// The GCP Oracle zone where Oracle CloudVmCluster is hosted.
   ///
   /// This will be the same as the gcp_oracle_zone of the
@@ -6083,6 +7527,7 @@ class CloudVmCluster {
     this.createTime,
     this.displayName,
     this.exadataInfrastructure,
+    this.exascaleDbStorageVault,
     this.gcpOracleZone,
     this.identityConnector,
     this.labels,
@@ -6101,6 +7546,7 @@ class CloudVmCluster {
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         exadataInfrastructure: json_['exadataInfrastructure'] as core.String?,
+        exascaleDbStorageVault: json_['exascaleDbStorageVault'] as core.String?,
         gcpOracleZone: json_['gcpOracleZone'] as core.String?,
         identityConnector: json_.containsKey('identityConnector')
             ? IdentityConnector.fromJson(
@@ -6129,6 +7575,7 @@ class CloudVmCluster {
     final createTime = this.createTime;
     final displayName = this.displayName;
     final exadataInfrastructure = this.exadataInfrastructure;
+    final exascaleDbStorageVault = this.exascaleDbStorageVault;
     final gcpOracleZone = this.gcpOracleZone;
     final identityConnector = this.identityConnector;
     final labels = this.labels;
@@ -6144,6 +7591,7 @@ class CloudVmCluster {
       'createTime': ?createTime,
       'displayName': ?displayName,
       'exadataInfrastructure': ?exadataInfrastructure,
+      'exascaleDbStorageVault': ?exascaleDbStorageVault,
       'gcpOracleZone': ?gcpOracleZone,
       'identityConnector': ?identityConnector,
       'labels': ?labels,
@@ -6304,12 +7752,12 @@ class CloudVmClusterProperties {
 
   /// SCAN listener port - TCP
   ///
-  /// Output only.
+  /// Optional.
   core.int? scanListenerPortTcp;
 
   /// SCAN listener port - TLS
   ///
-  /// Output only.
+  /// Optional.
   core.int? scanListenerPortTcpSsl;
 
   /// Shape of VM Cluster.
@@ -6342,6 +7790,16 @@ class CloudVmClusterProperties {
   /// maintenance in progress state.
   core.String? state;
 
+  /// The storage management type of the VM Cluster.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STORAGE_MANAGEMENT_TYPE_UNSPECIFIED" : Unspecified storage management
+  /// type.
+  /// - "ASM" : Automatic Storage Management.
+  /// - "EXASCALE" : Exascale storage management.
+  core.String? storageManagementType;
+
   /// The storage allocation for the disk group, in gigabytes (GB).
   ///
   /// Output only.
@@ -6358,6 +7816,26 @@ class CloudVmClusterProperties {
   ///
   /// Optional.
   TimeZone? timeZone;
+
+  /// Specifies whether VM backups are stored on local DB server storage or
+  /// Exascale storage.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "VM_BACKUP_STORAGE_TYPE_UNSPECIFIED" : Unspecified storage type.
+  /// - "VM_BACKUP_STORAGE_TYPE_LOCAL" : Local DB server storage.
+  /// - "VM_BACKUP_STORAGE_TYPE_EXASCALE" : Exascale storage.
+  core.String? vmBackupStorageType;
+
+  /// Specifies whether VM file system storage / VM images are stored on local
+  /// DB server storage or Exascale storage.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED" : Unspecified storage type.
+  /// - "VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL" : Local DB server storage.
+  /// - "VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE" : Exascale storage.
+  core.String? vmFileSystemStorageType;
 
   CloudVmClusterProperties({
     this.clusterName,
@@ -6390,9 +7868,12 @@ class CloudVmClusterProperties {
     this.sparseDiskgroupEnabled,
     this.sshPublicKeys,
     this.state,
+    this.storageManagementType,
     this.storageSizeGb,
     this.systemVersion,
     this.timeZone,
+    this.vmBackupStorageType,
+    this.vmFileSystemStorageType,
   });
 
   CloudVmClusterProperties.fromJson(core.Map json_)
@@ -6440,6 +7921,7 @@ class CloudVmClusterProperties {
             ?.map((value) => value as core.String)
             .toList(),
         state: json_['state'] as core.String?,
+        storageManagementType: json_['storageManagementType'] as core.String?,
         storageSizeGb: json_['storageSizeGb'] as core.int?,
         systemVersion: json_['systemVersion'] as core.String?,
         timeZone: json_.containsKey('timeZone')
@@ -6447,6 +7929,9 @@ class CloudVmClusterProperties {
                 json_['timeZone'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        vmBackupStorageType: json_['vmBackupStorageType'] as core.String?,
+        vmFileSystemStorageType:
+            json_['vmFileSystemStorageType'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -6481,9 +7966,12 @@ class CloudVmClusterProperties {
     final sparseDiskgroupEnabled = this.sparseDiskgroupEnabled;
     final sshPublicKeys = this.sshPublicKeys;
     final state = this.state;
+    final storageManagementType = this.storageManagementType;
     final storageSizeGb = this.storageSizeGb;
     final systemVersion = this.systemVersion;
     final timeZone = this.timeZone;
+    final vmBackupStorageType = this.vmBackupStorageType;
+    final vmFileSystemStorageType = this.vmFileSystemStorageType;
     return {
       'clusterName': ?clusterName,
       'compartmentId': ?compartmentId,
@@ -6515,9 +8003,54 @@ class CloudVmClusterProperties {
       'sparseDiskgroupEnabled': ?sparseDiskgroupEnabled,
       'sshPublicKeys': ?sshPublicKeys,
       'state': ?state,
+      'storageManagementType': ?storageManagementType,
       'storageSizeGb': ?storageSizeGb,
       'systemVersion': ?systemVersion,
       'timeZone': ?timeZone,
+      'vmBackupStorageType': ?vmBackupStorageType,
+      'vmFileSystemStorageType': ?vmFileSystemStorageType,
+    };
+  }
+}
+
+/// The request for `CloudExadataInfrastructure.ConfigureExascale`.
+class ConfigureExascaleCloudExadataInfrastructureRequest {
+  /// An optional ID to identify the request.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The total storage to be allocated to Exascale in GBs.
+  ///
+  /// Required.
+  core.int? totalStorageSizeGb;
+
+  /// Storage size needed for VM storage on Exascale in GBs.
+  ///
+  /// Optional.
+  core.int? totalVmStorageSizeGb;
+
+  ConfigureExascaleCloudExadataInfrastructureRequest({
+    this.requestId,
+    this.totalStorageSizeGb,
+    this.totalVmStorageSizeGb,
+  });
+
+  ConfigureExascaleCloudExadataInfrastructureRequest.fromJson(core.Map json_)
+    : this(
+        requestId: json_['requestId'] as core.String?,
+        totalStorageSizeGb: json_['totalStorageSizeGb'] as core.int?,
+        totalVmStorageSizeGb: json_['totalVmStorageSizeGb'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestId = this.requestId;
+    final totalStorageSizeGb = this.totalStorageSizeGb;
+    final totalVmStorageSizeGb = this.totalVmStorageSizeGb;
+    return {
+      'requestId': ?requestId,
+      'totalStorageSizeGb': ?totalStorageSizeGb,
+      'totalVmStorageSizeGb': ?totalVmStorageSizeGb,
     };
   }
 }
@@ -7915,7 +9448,8 @@ class DbSystemOptions {
   /// Possible string values are:
   /// - "STORAGE_MANAGEMENT_UNSPECIFIED" : The storage management is
   /// unspecified.
-  /// - "ASM" : Automatic storage management.
+  /// - "ASM" : Automatic storage management. This option is not supported. Only
+  /// LVM is supported.
   /// - "LVM" : Logical Volume management.
   core.String? storageManagement;
 
@@ -7943,7 +9477,8 @@ class DbSystemProperties {
   /// Possible string values are:
   /// - "COMPUTE_MODEL_UNSPECIFIED" : The compute model is unspecified.
   /// - "ECPU" : The compute model is virtual.
-  /// - "OCPU" : The compute model is physical.
+  /// - "OCPU" : Deprecated: This option is not supported. Please use ECPU
+  /// instead. The compute model is physical.
   core.String? computeModel;
 
   /// Data collection options for diagnostics.
@@ -7952,6 +9487,9 @@ class DbSystemProperties {
   DataCollectionOptionsDbSystem? dataCollectionOptions;
 
   /// The data storage size in GB that is currently available to DbSystems.
+  ///
+  /// The value is same as initial_data_storage_size_gb. This can be modified
+  /// from OCI console.
   ///
   /// Optional.
   core.int? dataStorageSizeGb;
@@ -8027,10 +9565,15 @@ class DbSystemProperties {
 
   /// The memory size in GB.
   ///
+  /// This value can not be set and is automatically calculated based on the
+  /// number of ECPUs allocated to the DbSystem.
+  ///
   /// Optional.
   core.int? memorySizeGb;
 
-  /// The number of nodes in the DbSystem.
+  /// The number of nodes to launch for a virtual machine DbSystem.
+  ///
+  /// By default this will be set to 1.
   ///
   /// Optional.
   core.int? nodeCount;
@@ -8046,6 +9589,9 @@ class DbSystemProperties {
   core.String? privateIp;
 
   /// The reco/redo storage size in GB.
+  ///
+  /// The value for recovery storage size is based on the available data storage
+  /// size.
   ///
   /// Optional.
   core.int? recoStorageSizeGb;
@@ -8186,6 +9732,11 @@ class DbSystemProperties {
 ///
 /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/DbSystemShapeSummary/
 class DbSystemShape {
+  /// Available core count.
+  ///
+  /// Optional.
+  core.int? availableCoreCount;
+
   /// Number of cores per node.
   ///
   /// Optional.
@@ -8200,6 +9751,11 @@ class DbSystemShape {
   ///
   /// Optional.
   core.int? availableMemoryPerNodeGb;
+
+  /// Core count increment.
+  ///
+  /// Optional.
+  core.int? coreCountIncrement;
 
   /// Maximum number of database servers.
   ///
@@ -8236,6 +9792,11 @@ class DbSystemShape {
   /// Optional.
   core.int? minStorageCount;
 
+  /// Minimum core count per node.
+  ///
+  /// Optional.
+  core.int? minimumCoreCount;
+
   /// Identifier.
   ///
   /// The name of the Database System Shape resource with the format:
@@ -8248,9 +9809,11 @@ class DbSystemShape {
   core.String? shape;
 
   DbSystemShape({
+    this.availableCoreCount,
     this.availableCoreCountPerNode,
     this.availableDataStorageTb,
     this.availableMemoryPerNodeGb,
+    this.coreCountIncrement,
     this.maxNodeCount,
     this.maxStorageCount,
     this.minCoreCountPerNode,
@@ -8258,17 +9821,20 @@ class DbSystemShape {
     this.minMemoryPerNodeGb,
     this.minNodeCount,
     this.minStorageCount,
+    this.minimumCoreCount,
     this.name,
     this.shape,
   });
 
   DbSystemShape.fromJson(core.Map json_)
     : this(
+        availableCoreCount: json_['availableCoreCount'] as core.int?,
         availableCoreCountPerNode:
             json_['availableCoreCountPerNode'] as core.int?,
         availableDataStorageTb: json_['availableDataStorageTb'] as core.int?,
         availableMemoryPerNodeGb:
             json_['availableMemoryPerNodeGb'] as core.int?,
+        coreCountIncrement: json_['coreCountIncrement'] as core.int?,
         maxNodeCount: json_['maxNodeCount'] as core.int?,
         maxStorageCount: json_['maxStorageCount'] as core.int?,
         minCoreCountPerNode: json_['minCoreCountPerNode'] as core.int?,
@@ -8277,14 +9843,17 @@ class DbSystemShape {
         minMemoryPerNodeGb: json_['minMemoryPerNodeGb'] as core.int?,
         minNodeCount: json_['minNodeCount'] as core.int?,
         minStorageCount: json_['minStorageCount'] as core.int?,
+        minimumCoreCount: json_['minimumCoreCount'] as core.int?,
         name: json_['name'] as core.String?,
         shape: json_['shape'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final availableCoreCount = this.availableCoreCount;
     final availableCoreCountPerNode = this.availableCoreCountPerNode;
     final availableDataStorageTb = this.availableDataStorageTb;
     final availableMemoryPerNodeGb = this.availableMemoryPerNodeGb;
+    final coreCountIncrement = this.coreCountIncrement;
     final maxNodeCount = this.maxNodeCount;
     final maxStorageCount = this.maxStorageCount;
     final minCoreCountPerNode = this.minCoreCountPerNode;
@@ -8292,12 +9861,15 @@ class DbSystemShape {
     final minMemoryPerNodeGb = this.minMemoryPerNodeGb;
     final minNodeCount = this.minNodeCount;
     final minStorageCount = this.minStorageCount;
+    final minimumCoreCount = this.minimumCoreCount;
     final name = this.name;
     final shape = this.shape;
     return {
+      'availableCoreCount': ?availableCoreCount,
       'availableCoreCountPerNode': ?availableCoreCountPerNode,
       'availableDataStorageTb': ?availableDataStorageTb,
       'availableMemoryPerNodeGb': ?availableMemoryPerNodeGb,
+      'coreCountIncrement': ?coreCountIncrement,
       'maxNodeCount': ?maxNodeCount,
       'maxStorageCount': ?maxStorageCount,
       'minCoreCountPerNode': ?minCoreCountPerNode,
@@ -8305,6 +9877,7 @@ class DbSystemShape {
       'minMemoryPerNodeGb': ?minMemoryPerNodeGb,
       'minNodeCount': ?minNodeCount,
       'minStorageCount': ?minStorageCount,
+      'minimumCoreCount': ?minimumCoreCount,
       'name': ?name,
       'shape': ?shape,
     };
@@ -8424,6 +9997,80 @@ class DefinedTagValue {
   core.Map<core.String, core.dynamic> toJson() {
     final tags = this.tags;
     return {'tags': ?tags};
+  }
+}
+
+/// The deployment diagnostic data.
+class DeploymentDiagnosticData {
+  /// The bucket name.
+  ///
+  /// Output only.
+  core.String? bucket;
+
+  /// The time diagnostic end.
+  ///
+  /// Output only.
+  core.String? diagnosticEndTime;
+
+  /// The time diagnostic start.
+  ///
+  /// Output only.
+  core.String? diagnosticStartTime;
+
+  /// The diagnostic state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DIAGNOSTIC_STATE_UNSPECIFIED" : The diagnostic state is unspecified.
+  /// - "IN_PROGRESS" : The diagnostic is in progress.
+  /// - "SUCCEEDED" : The diagnostic completed successfully.
+  /// - "FAILED" : The diagnostic failed.
+  core.String? diagnosticState;
+
+  /// The namespace name.
+  ///
+  /// Output only.
+  core.String? namespace;
+
+  /// The object name.
+  ///
+  /// Output only.
+  core.String? object;
+
+  DeploymentDiagnosticData({
+    this.bucket,
+    this.diagnosticEndTime,
+    this.diagnosticStartTime,
+    this.diagnosticState,
+    this.namespace,
+    this.object,
+  });
+
+  DeploymentDiagnosticData.fromJson(core.Map json_)
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        diagnosticEndTime: json_['diagnosticEndTime'] as core.String?,
+        diagnosticStartTime: json_['diagnosticStartTime'] as core.String?,
+        diagnosticState: json_['diagnosticState'] as core.String?,
+        namespace: json_['namespace'] as core.String?,
+        object: json_['object'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    final diagnosticEndTime = this.diagnosticEndTime;
+    final diagnosticStartTime = this.diagnosticStartTime;
+    final diagnosticState = this.diagnosticState;
+    final namespace = this.namespace;
+    final object = this.object;
+    return {
+      'bucket': ?bucket,
+      'diagnosticEndTime': ?diagnosticEndTime,
+      'diagnosticStartTime': ?diagnosticStartTime,
+      'diagnosticState': ?diagnosticState,
+      'namespace': ?namespace,
+      'object': ?object,
+    };
   }
 }
 
@@ -8605,6 +10252,12 @@ class ExadbVmCluster {
   /// Output only. Immutable.
   core.String? gcpOracleZone;
 
+  /// The identity connector details which will allow OCI to securely access the
+  /// resources in the customer project.
+  ///
+  /// Output only.
+  IdentityConnector? identityConnector;
+
   /// The labels or tags associated with the ExadbVmCluster.
   ///
   /// Optional.
@@ -8645,6 +10298,7 @@ class ExadbVmCluster {
     this.displayName,
     this.entitlementId,
     this.gcpOracleZone,
+    this.identityConnector,
     this.labels,
     this.name,
     this.odbNetwork,
@@ -8659,6 +10313,12 @@ class ExadbVmCluster {
         displayName: json_['displayName'] as core.String?,
         entitlementId: json_['entitlementId'] as core.String?,
         gcpOracleZone: json_['gcpOracleZone'] as core.String?,
+        identityConnector: json_.containsKey('identityConnector')
+            ? IdentityConnector.fromJson(
+                json_['identityConnector']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -8678,6 +10338,7 @@ class ExadbVmCluster {
     final displayName = this.displayName;
     final entitlementId = this.entitlementId;
     final gcpOracleZone = this.gcpOracleZone;
+    final identityConnector = this.identityConnector;
     final labels = this.labels;
     final name = this.name;
     final odbNetwork = this.odbNetwork;
@@ -8689,6 +10350,7 @@ class ExadbVmCluster {
       'displayName': ?displayName,
       'entitlementId': ?entitlementId,
       'gcpOracleZone': ?gcpOracleZone,
+      'identityConnector': ?identityConnector,
       'labels': ?labels,
       'name': ?name,
       'odbNetwork': ?odbNetwork,
@@ -8958,6 +10620,58 @@ class ExadbVmClusterStorageDetails {
   }
 }
 
+/// Details of the Exascale configuration for the Exadata Infrastructure.
+class ExascaleConfig {
+  /// Available storage size for Exascale in GBs.
+  ///
+  /// Output only.
+  core.int? availableStorageSizeGb;
+
+  /// Available storage size for VM storage on Exascale in GBs.
+  ///
+  /// Output only.
+  core.int? availableVmStorageSizeGb;
+
+  /// Total storage size needed for Exascale in GBs.
+  ///
+  /// Output only.
+  core.int? totalStorageSizeGb;
+
+  /// Storage size needed for VM storage on Exascale in GBs.
+  ///
+  /// Output only.
+  core.int? totalVmStorageSizeGb;
+
+  ExascaleConfig({
+    this.availableStorageSizeGb,
+    this.availableVmStorageSizeGb,
+    this.totalStorageSizeGb,
+    this.totalVmStorageSizeGb,
+  });
+
+  ExascaleConfig.fromJson(core.Map json_)
+    : this(
+        availableStorageSizeGb: json_['availableStorageSizeGb'] as core.int?,
+        availableVmStorageSizeGb:
+            json_['availableVmStorageSizeGb'] as core.int?,
+        totalStorageSizeGb: json_['totalStorageSizeGb'] as core.int?,
+        totalVmStorageSizeGb: json_['totalVmStorageSizeGb'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final availableStorageSizeGb = this.availableStorageSizeGb;
+    final availableVmStorageSizeGb = this.availableVmStorageSizeGb;
+    final totalStorageSizeGb = this.totalStorageSizeGb;
+    final totalVmStorageSizeGb = this.totalVmStorageSizeGb;
+    return {
+      'availableStorageSizeGb': ?availableStorageSizeGb,
+      'availableVmStorageSizeGb': ?availableVmStorageSizeGb,
+      'totalStorageSizeGb': ?totalStorageSizeGb,
+      'totalVmStorageSizeGb': ?totalVmStorageSizeGb,
+    };
+  }
+}
+
 /// The storage details of the ExascaleDbStorageVault.
 class ExascaleDbStorageDetails {
   /// The available storage capacity for the ExascaleDbStorageVault, in
@@ -9013,6 +10727,13 @@ class ExascaleDbStorageVault {
   /// Output only.
   core.String? entitlementId;
 
+  /// The Exadata Infrastructure resource on which ExascaleDbStorageVault
+  /// resource is created, in the following format:
+  /// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
+  ///
+  /// Optional.
+  core.String? exadataInfrastructure;
+
   /// The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
   ///
   /// Example: us-east4-b-r2. If not specified, the system will pick a zone
@@ -9041,6 +10762,7 @@ class ExascaleDbStorageVault {
     this.createTime,
     this.displayName,
     this.entitlementId,
+    this.exadataInfrastructure,
     this.gcpOracleZone,
     this.labels,
     this.name,
@@ -9052,6 +10774,7 @@ class ExascaleDbStorageVault {
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         entitlementId: json_['entitlementId'] as core.String?,
+        exadataInfrastructure: json_['exadataInfrastructure'] as core.String?,
         gcpOracleZone: json_['gcpOracleZone'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -9068,6 +10791,7 @@ class ExascaleDbStorageVault {
     final createTime = this.createTime;
     final displayName = this.displayName;
     final entitlementId = this.entitlementId;
+    final exadataInfrastructure = this.exadataInfrastructure;
     final gcpOracleZone = this.gcpOracleZone;
     final labels = this.labels;
     final name = this.name;
@@ -9076,6 +10800,7 @@ class ExascaleDbStorageVault {
       'createTime': ?createTime,
       'displayName': ?displayName,
       'entitlementId': ?entitlementId,
+      'exadataInfrastructure': ?exadataInfrastructure,
       'gcpOracleZone': ?gcpOracleZone,
       'labels': ?labels,
       'name': ?name,
@@ -9357,6 +11082,5737 @@ class GiVersion {
   }
 }
 
+/// The Glue Iceberg catalog.
+class GlueIcebergCatalog {
+  /// The catalog ID of Glue.
+  ///
+  /// Required.
+  core.String? glueId;
+
+  GlueIcebergCatalog({this.glueId});
+
+  GlueIcebergCatalog.fromJson(core.Map json_)
+    : this(glueId: json_['glueId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final glueId = this.glueId;
+    return {'glueId': ?glueId};
+  }
+}
+
+/// The properties of GoldengateAmazonKinesisConnection.
+class GoldengateAmazonKinesisConnectionProperties {
+  /// Access key ID to access the Amazon Kinesis.
+  ///
+  /// Optional.
+  core.String? accessKeyId;
+
+  /// The name of the AWS region.
+  ///
+  /// If not provided, Goldengate will default to 'us-west-1'.
+  ///
+  /// Optional.
+  core.String? awsRegion;
+
+  /// The endpoint URL of the Amazon Kinesis service.
+  ///
+  /// e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided,
+  /// Goldengate will default to 'https://kinesis..amazonaws.com'.
+  ///
+  /// Optional.
+  core.String? endpoint;
+
+  /// Secret access key to access the Amazon Kinesis.
+  ///
+  /// Optional.
+  core.String? secretAccessKeySecret;
+
+  /// The technology type of AmazonKinesisConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  GoldengateAmazonKinesisConnectionProperties({
+    this.accessKeyId,
+    this.awsRegion,
+    this.endpoint,
+    this.secretAccessKeySecret,
+    this.technologyType,
+  });
+
+  GoldengateAmazonKinesisConnectionProperties.fromJson(core.Map json_)
+    : this(
+        accessKeyId: json_['accessKeyId'] as core.String?,
+        awsRegion: json_['awsRegion'] as core.String?,
+        endpoint: json_['endpoint'] as core.String?,
+        secretAccessKeySecret: json_['secretAccessKeySecret'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessKeyId = this.accessKeyId;
+    final awsRegion = this.awsRegion;
+    final endpoint = this.endpoint;
+    final secretAccessKeySecret = this.secretAccessKeySecret;
+    final technologyType = this.technologyType;
+    return {
+      'accessKeyId': ?accessKeyId,
+      'awsRegion': ?awsRegion,
+      'endpoint': ?endpoint,
+      'secretAccessKeySecret': ?secretAccessKeySecret,
+      'technologyType': ?technologyType,
+    };
+  }
+}
+
+/// The properties of GoldengateAmazonRedshiftConnection.
+class GoldengateAmazonRedshiftConnectionProperties {
+  /// Connection URL.
+  ///
+  /// e.g.:
+  /// 'jdbc:redshift://aws-redshift-instance.aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
+  ///
+  /// Optional.
+  core.String? connectionUrl;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses for Amazon Redshift connection in
+  /// plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses for Amazon Redshift connection. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The technology type of AmazonRedshiftConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The username Oracle Goldengate uses to connect the associated system of
+  /// the given technology.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateAmazonRedshiftConnectionProperties({
+    this.connectionUrl,
+    this.password,
+    this.passwordSecretVersion,
+    this.technologyType,
+    this.username,
+  });
+
+  GoldengateAmazonRedshiftConnectionProperties.fromJson(core.Map json_)
+    : this(
+        connectionUrl: json_['connectionUrl'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionUrl = this.connectionUrl;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final technologyType = this.technologyType;
+    final username = this.username;
+    return {
+      'connectionUrl': ?connectionUrl,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'technologyType': ?technologyType,
+      'username': ?username,
+    };
+  }
+}
+
+/// The properties of GoldengateAmazonS3Connection.
+class GoldengateAmazonS3ConnectionProperties {
+  /// Access key ID to access the Amazon S3 bucket.
+  ///
+  /// Optional.
+  core.String? accessKeyId;
+
+  /// The Amazon Endpoint for S3.
+  ///
+  /// Optional.
+  core.String? endpoint;
+
+  /// The name of the AWS region where the bucket is created.
+  ///
+  /// Optional.
+  core.String? region;
+
+  /// Secret access key to access the Amazon S3 bucket.
+  ///
+  /// Optional.
+  core.String? secretAccessKeySecret;
+
+  /// The technology type of AmazonS3Connection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  GoldengateAmazonS3ConnectionProperties({
+    this.accessKeyId,
+    this.endpoint,
+    this.region,
+    this.secretAccessKeySecret,
+    this.technologyType,
+  });
+
+  GoldengateAmazonS3ConnectionProperties.fromJson(core.Map json_)
+    : this(
+        accessKeyId: json_['accessKeyId'] as core.String?,
+        endpoint: json_['endpoint'] as core.String?,
+        region: json_['region'] as core.String?,
+        secretAccessKeySecret: json_['secretAccessKeySecret'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessKeyId = this.accessKeyId;
+    final endpoint = this.endpoint;
+    final region = this.region;
+    final secretAccessKeySecret = this.secretAccessKeySecret;
+    final technologyType = this.technologyType;
+    return {
+      'accessKeyId': ?accessKeyId,
+      'endpoint': ?endpoint,
+      'region': ?region,
+      'secretAccessKeySecret': ?secretAccessKeySecret,
+      'technologyType': ?technologyType,
+    };
+  }
+}
+
+/// The properties of GoldengateAzureDataLakeStorageConnection.
+class GoldengateAzureDataLakeStorageConnectionProperties {
+  /// Sets the Azure storage account name.
+  ///
+  /// Optional.
+  core.String? account;
+
+  /// Azure storage account key.
+  ///
+  /// This property is required when 'authentication_type' is set to
+  /// 'SHARED_KEY'.
+  ///
+  /// Optional.
+  core.String? accountKeySecret;
+
+  /// Authentication mechanism to access Azure Data Lake Storage.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTHENTICATION_TYPE_UNSPECIFIED" : Authentication type not specified.
+  /// - "SHARED_KEY" : Shared key authentication.
+  /// - "SHARED_ACCESS_SIGNATURE" : Shared access signature authentication.
+  /// - "AZURE_ACTIVE_DIRECTORY" : Azure active directory authentication.
+  core.String? authenticationType;
+
+  /// The endpoint used for authentication with Microsoft Entra ID (formerly
+  /// Azure Active Directory).
+  ///
+  /// Default value: https://login.microsoftonline.com
+  ///
+  /// Optional.
+  core.String? azureAuthorityHost;
+
+  /// Azure tenant ID of the application.
+  ///
+  /// This property is required when 'authentication_type' is set to
+  /// 'AZURE_ACTIVE_DIRECTORY'.
+  ///
+  /// Optional.
+  core.String? azureTenantId;
+
+  /// Azure client ID of the application.
+  ///
+  /// This property is required when 'authentication_type' is set to
+  /// 'AZURE_ACTIVE_DIRECTORY'.
+  ///
+  /// Optional.
+  core.String? clientId;
+
+  /// Azure client secret (aka application password) for authentication.
+  ///
+  /// Optional.
+  core.String? clientSecret;
+
+  /// Azure Storage service endpoint.
+  ///
+  /// e.g: https://test.blob.core.windows.net
+  ///
+  /// Optional.
+  core.String? endpoint;
+
+  /// Credential that uses a shared access signature (SAS) to authenticate to an
+  /// Azure Service.
+  ///
+  /// Optional.
+  core.String? sasTokenSecret;
+
+  /// The technology type of AzureDataLakeStorageConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  GoldengateAzureDataLakeStorageConnectionProperties({
+    this.account,
+    this.accountKeySecret,
+    this.authenticationType,
+    this.azureAuthorityHost,
+    this.azureTenantId,
+    this.clientId,
+    this.clientSecret,
+    this.endpoint,
+    this.sasTokenSecret,
+    this.technologyType,
+  });
+
+  GoldengateAzureDataLakeStorageConnectionProperties.fromJson(core.Map json_)
+    : this(
+        account: json_['account'] as core.String?,
+        accountKeySecret: json_['accountKeySecret'] as core.String?,
+        authenticationType: json_['authenticationType'] as core.String?,
+        azureAuthorityHost: json_['azureAuthorityHost'] as core.String?,
+        azureTenantId: json_['azureTenantId'] as core.String?,
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        endpoint: json_['endpoint'] as core.String?,
+        sasTokenSecret: json_['sasTokenSecret'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final account = this.account;
+    final accountKeySecret = this.accountKeySecret;
+    final authenticationType = this.authenticationType;
+    final azureAuthorityHost = this.azureAuthorityHost;
+    final azureTenantId = this.azureTenantId;
+    final clientId = this.clientId;
+    final clientSecret = this.clientSecret;
+    final endpoint = this.endpoint;
+    final sasTokenSecret = this.sasTokenSecret;
+    final technologyType = this.technologyType;
+    return {
+      'account': ?account,
+      'accountKeySecret': ?accountKeySecret,
+      'authenticationType': ?authenticationType,
+      'azureAuthorityHost': ?azureAuthorityHost,
+      'azureTenantId': ?azureTenantId,
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+      'endpoint': ?endpoint,
+      'sasTokenSecret': ?sasTokenSecret,
+      'technologyType': ?technologyType,
+    };
+  }
+}
+
+/// The properties of GoldengateAzureSynapseAnalyticsConnection.
+class GoldengateAzureSynapseAnalyticsConnectionProperties {
+  /// JDBC connection string.
+  ///
+  /// e.g.:
+  /// 'jdbc:sqlserver://.sql.azuresynapse.net:1433;database=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
+  ///
+  /// Optional.
+  core.String? connectionString;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses for Azure Synapse Analytics connection
+  /// in plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses for Azure Synapse Analytics connection.
+  /// Format: projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The technology type of AzureSynapseAnalyticsConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The username Oracle Goldengate uses to connect the associated system of
+  /// the given technology.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateAzureSynapseAnalyticsConnectionProperties({
+    this.connectionString,
+    this.password,
+    this.passwordSecretVersion,
+    this.technologyType,
+    this.username,
+  });
+
+  GoldengateAzureSynapseAnalyticsConnectionProperties.fromJson(core.Map json_)
+    : this(
+        connectionString: json_['connectionString'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionString = this.connectionString;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final technologyType = this.technologyType;
+    final username = this.username;
+    return {
+      'connectionString': ?connectionString,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'technologyType': ?technologyType,
+      'username': ?username,
+    };
+  }
+}
+
+/// The backup schedule of the GoldengateDeployment.
+class GoldengateBackupSchedule {
+  /// The timestamp of when the backup was scheduled.
+  ///
+  /// Output only.
+  core.String? backupScheduledTime;
+
+  /// The bucket name.
+  ///
+  /// Output only.
+  core.String? bucket;
+
+  /// The compartment id.
+  ///
+  /// Output only.
+  core.String? compartmentId;
+
+  /// The frequency backup scheduled.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FREQUENCY_BACKUP_SCHEDULED_UNSPECIFIED" : The frequency backup
+  /// scheduled is unspecified.
+  /// - "DAILY" : The frequency backup scheduled is daily.
+  /// - "WEEKLY" : The frequency backup scheduled is weekly.
+  /// - "MONTHLY" : The frequency backup scheduled is monthly.
+  core.String? frequencyBackupScheduled;
+
+  /// If metadata only.
+  ///
+  /// Output only.
+  core.bool? metadataOnly;
+
+  /// The namespace name.
+  ///
+  /// Output only.
+  core.String? namespace;
+
+  GoldengateBackupSchedule({
+    this.backupScheduledTime,
+    this.bucket,
+    this.compartmentId,
+    this.frequencyBackupScheduled,
+    this.metadataOnly,
+    this.namespace,
+  });
+
+  GoldengateBackupSchedule.fromJson(core.Map json_)
+    : this(
+        backupScheduledTime: json_['backupScheduledTime'] as core.String?,
+        bucket: json_['bucket'] as core.String?,
+        compartmentId: json_['compartmentId'] as core.String?,
+        frequencyBackupScheduled:
+            json_['frequencyBackupScheduled'] as core.String?,
+        metadataOnly: json_['metadataOnly'] as core.bool?,
+        namespace: json_['namespace'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupScheduledTime = this.backupScheduledTime;
+    final bucket = this.bucket;
+    final compartmentId = this.compartmentId;
+    final frequencyBackupScheduled = this.frequencyBackupScheduled;
+    final metadataOnly = this.metadataOnly;
+    final namespace = this.namespace;
+    return {
+      'backupScheduledTime': ?backupScheduledTime,
+      'bucket': ?bucket,
+      'compartmentId': ?compartmentId,
+      'frequencyBackupScheduled': ?frequencyBackupScheduled,
+      'metadataOnly': ?metadataOnly,
+      'namespace': ?namespace,
+    };
+  }
+}
+
+/// Details of the GoldengateConnection resource.
+class GoldengateConnection {
+  /// The date and time that the GoldengateConnection was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The ID of the subscription entitlement associated with the
+  /// GoldengateConnection.
+  ///
+  /// Output only.
+  core.String? entitlementId;
+
+  /// The GCP Oracle zone where Oracle GoldengateConnection is hosted.
+  ///
+  /// Example: us-east4-b-r2. If not specified, the system will pick a zone
+  /// based on availability.
+  ///
+  /// Optional.
+  core.String? gcpOracleZone;
+
+  /// The labels or tags associated with the GoldengateConnection.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the GoldengateConnection resource in the following format:
+  /// projects/{project}/locations/{region}/goldengateConnections/{goldengate_connection}
+  core.String? name;
+
+  /// HTTPS link to OCI resources exposed to Customer via UI Interface.
+  ///
+  /// Output only.
+  core.String? ociUrl;
+
+  /// The name of the OdbNetwork associated with the GoldengateConnection.
+  ///
+  /// The format is
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}. It is
+  /// optional but if specified, this should match the parent ODBNetwork of the
+  /// OdbSubnet.
+  ///
+  /// Optional.
+  core.String? odbNetwork;
+
+  /// The name of the OdbSubnet associated with the GoldengateConnection for IP
+  /// allocation.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+  ///
+  /// Optional.
+  core.String? odbSubnet;
+
+  /// The properties of the GoldengateConnection.
+  ///
+  /// Required.
+  GoldengateConnectionProperties? properties;
+
+  GoldengateConnection({
+    this.createTime,
+    this.entitlementId,
+    this.gcpOracleZone,
+    this.labels,
+    this.name,
+    this.ociUrl,
+    this.odbNetwork,
+    this.odbSubnet,
+    this.properties,
+  });
+
+  GoldengateConnection.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        entitlementId: json_['entitlementId'] as core.String?,
+        gcpOracleZone: json_['gcpOracleZone'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        ociUrl: json_['ociUrl'] as core.String?,
+        odbNetwork: json_['odbNetwork'] as core.String?,
+        odbSubnet: json_['odbSubnet'] as core.String?,
+        properties: json_.containsKey('properties')
+            ? GoldengateConnectionProperties.fromJson(
+                json_['properties'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final entitlementId = this.entitlementId;
+    final gcpOracleZone = this.gcpOracleZone;
+    final labels = this.labels;
+    final name = this.name;
+    final ociUrl = this.ociUrl;
+    final odbNetwork = this.odbNetwork;
+    final odbSubnet = this.odbSubnet;
+    final properties = this.properties;
+    return {
+      'createTime': ?createTime,
+      'entitlementId': ?entitlementId,
+      'gcpOracleZone': ?gcpOracleZone,
+      'labels': ?labels,
+      'name': ?name,
+      'ociUrl': ?ociUrl,
+      'odbNetwork': ?odbNetwork,
+      'odbSubnet': ?odbSubnet,
+      'properties': ?properties,
+    };
+  }
+}
+
+/// Represents the metadata of a Goldengate Connection Assignment.
+class GoldengateConnectionAssignment {
+  /// The time when the connection assignment was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The display name for the GoldengateConnectionAssignment.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// The OCID of the entitlement linked to this resource.
+  ///
+  /// Output only.
+  core.String? entitlementId;
+
+  /// The labels or tags associated with the GoldengateConnectionAssignment.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the GoldengateConnectionAssignment resource in the following
+  /// format:
+  /// projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+  core.String? name;
+
+  /// The properties of the GoldengateConnectionAssignment.
+  ///
+  /// Required.
+  GoldengateConnectionAssignmentProperties? properties;
+
+  GoldengateConnectionAssignment({
+    this.createTime,
+    this.displayName,
+    this.entitlementId,
+    this.labels,
+    this.name,
+    this.properties,
+  });
+
+  GoldengateConnectionAssignment.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        entitlementId: json_['entitlementId'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        properties: json_.containsKey('properties')
+            ? GoldengateConnectionAssignmentProperties.fromJson(
+                json_['properties'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final entitlementId = this.entitlementId;
+    final labels = this.labels;
+    final name = this.name;
+    final properties = this.properties;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'entitlementId': ?entitlementId,
+      'labels': ?labels,
+      'name': ?name,
+      'properties': ?properties,
+    };
+  }
+}
+
+/// The properties of a GoldengateConnectionAssignment.
+class GoldengateConnectionAssignmentProperties {
+  /// Credential store alias.
+  ///
+  /// Output only.
+  core.String? alias;
+
+  /// The GoldengateConnection resource to be assigned.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}
+  ///
+  /// Required.
+  core.String? goldengateConnection;
+
+  /// The GoldenGateDeployment to assign the connection to.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+  ///
+  /// Required.
+  core.String? goldengateDeployment;
+
+  /// The
+  /// [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+  /// of the connection assignment being referenced.
+  ///
+  /// Output only.
+  core.String? ocid;
+
+  /// The lifecycle state of the connection assignment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Lifecycle state is unspecified.
+  /// - "CREATING" : Connection assignment is being created.
+  /// - "ACTIVE" : Connection assignment is active.
+  /// - "FAILED" : Connection assignment failed.
+  /// - "UPDATING" : Connection assignment is being updated.
+  /// - "DELETING" : Connection assignment is being deleted.
+  core.String? state;
+
+  GoldengateConnectionAssignmentProperties({
+    this.alias,
+    this.goldengateConnection,
+    this.goldengateDeployment,
+    this.ocid,
+    this.state,
+  });
+
+  GoldengateConnectionAssignmentProperties.fromJson(core.Map json_)
+    : this(
+        alias: json_['alias'] as core.String?,
+        goldengateConnection: json_['goldengateConnection'] as core.String?,
+        goldengateDeployment: json_['goldengateDeployment'] as core.String?,
+        ocid: json_['ocid'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alias = this.alias;
+    final goldengateConnection = this.goldengateConnection;
+    final goldengateDeployment = this.goldengateDeployment;
+    final ocid = this.ocid;
+    final state = this.state;
+    return {
+      'alias': ?alias,
+      'goldengateConnection': ?goldengateConnection,
+      'goldengateDeployment': ?goldengateDeployment,
+      'ocid': ?ocid,
+      'state': ?state,
+    };
+  }
+}
+
+/// The properties of a GoldengateConnection.
+class GoldengateConnectionProperties {
+  /// Properties for an Amazon Kinesis connection.
+  GoldengateAmazonKinesisConnectionProperties?
+  amazonKinesisConnectionProperties;
+
+  /// Properties for an Amazon Redshift connection.
+  GoldengateAmazonRedshiftConnectionProperties?
+  amazonRedshiftConnectionProperties;
+
+  /// Properties for an Amazon S3 connection.
+  GoldengateAmazonS3ConnectionProperties? amazonS3ConnectionProperties;
+
+  /// Properties for an Azure Data Lake Storage Connection.
+  GoldengateAzureDataLakeStorageConnectionProperties?
+  azureDataLakeStorageConnectionProperties;
+
+  /// Properties for an Azure Synapse Analytics connection.
+  GoldengateAzureSynapseAnalyticsConnectionProperties?
+  azureSynapseAnalyticsConnectionProperties;
+
+  /// The connection type.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "GOLDENGATE_CONNECTION_TYPE_UNSPECIFIED" : Connection type unspecified.
+  /// - "GOLDENGATE" : Goldengate connection type.
+  /// - "KAFKA" : Kafka connection type.
+  /// - "KAFKA_SCHEMA_REGISTRY" : Kafka schema registry connection type.
+  /// - "MYSQL" : MySQL connection type.
+  /// - "JAVA_MESSAGE_SERVICE" : Java message service connection type.
+  /// - "MICROSOFT_SQLSERVER" : Microsoft SQL Server connection type.
+  /// - "OCI_OBJECT_STORAGE" : OCI object storage connection type.
+  /// - "ORACLE" : Oracle connection type.
+  /// - "AZURE_DATA_LAKE_STORAGE" : Azure data lake storage connection type.
+  /// - "POSTGRESQL" : PostgreSQL connection type.
+  /// - "AZURE_SYNAPSE_ANALYTICS" : Azure synapse analytics connection type.
+  /// - "SNOWFLAKE" : Snowflake connection type.
+  /// - "AMAZON_S3" : Amazon S3 connection type.
+  /// - "HDFS" : HDFS connection type.
+  /// - "ORACLE_AI_DATA_PLATFORM" : Oracle AI data platform connection type.
+  /// - "ORACLE_NOSQL" : Oracle NoSQL connection type.
+  /// - "MONGODB" : MongoDB connection type.
+  /// - "AMAZON_KINESIS" : Amazon Kinesis connection type.
+  /// - "AMAZON_REDSHIFT" : Amazon Redshift connection type.
+  /// - "DB2" : DB2 connection type.
+  /// - "REDIS" : Redis connection type.
+  /// - "ELASTICSEARCH" : Elasticsearch connection type.
+  /// - "GENERIC" : Generic connection type.
+  /// - "GOOGLE_CLOUD_STORAGE" : Google Cloud Storage connection type.
+  /// - "GOOGLE_BIGQUERY" : Google BigQuery connection type.
+  /// - "DATABRICKS" : Databricks connection type.
+  /// - "GOOGLE_PUBSUB" : Google Pub/Sub connection type.
+  /// - "MICROSOFT_FABRIC" : Microsoft Fabric connection type.
+  /// - "ICEBERG" : Iceberg connection type.
+  core.String? connectionType;
+
+  /// Properties for a Databricks connection.
+  GoldengateDatabricksConnectionProperties? databricksConnectionProperties;
+
+  /// Properties for a DB2 connection.
+  GoldengateDb2ConnectionProperties? db2ConnectionProperties;
+
+  /// Metadata about this specific object.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// An object's Display Name.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Properties for an Elasticsearch connection.
+  GoldengateElasticsearchConnectionProperties?
+  elasticsearchConnectionProperties;
+
+  /// Properties for a Generic Connection.
+  GoldengateGenericConnectionProperties? genericConnectionProperties;
+
+  /// Properties for a Goldengate Connection.
+  GoldengateGoldengateConnectionProperties? goldengateConnectionProperties;
+
+  /// Properties for a Google BigQuery Connection.
+  GoldengateGoogleBigQueryConnectionProperties?
+  googleBigQueryConnectionProperties;
+
+  /// Properties for a Google Cloud Storage Connection.
+  GoldengateGoogleCloudStorageConnectionProperties?
+  googleCloudStorageConnectionProperties;
+
+  /// Properties for a Google Pub/Sub connection.
+  GoldengateGooglePubsubConnectionProperties? googlePubsubConnectionProperties;
+
+  /// Properties for an HDFS connection.
+  GoldengateHdfsConnectionProperties? hdfsConnectionProperties;
+
+  /// Properties for an Iceberg connection.
+  GoldengateIcebergConnectionProperties? icebergConnectionProperties;
+
+  /// The Ingress IPs of the GoldengateConnection.
+  ///
+  /// Output only.
+  core.List<core.String>? ingressIpAddresses;
+
+  /// Properties for a Java Message Service connection.
+  GoldengateJavaMessageServiceConnectionProperties?
+  javaMessageServiceConnectionProperties;
+
+  /// Properties for a Kafka Connection.
+  GoldengateKafkaConnectionProperties? kafkaConnectionProperties;
+
+  /// Properties for a Kafka Schema Registry Connection.
+  GoldengateKafkaSchemaRegistryConnectionProperties?
+  kafkaSchemaRegistryConnectionProperties;
+
+  /// Describes the object's current state in detail.
+  ///
+  /// For example, it can be used to provide actionable information for a
+  /// resource in a Failed state.
+  ///
+  /// Output only.
+  core.String? lifecycleDetails;
+
+  /// The lifecycle state of the connection.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GOLDENGATE_CONNECTION_LIFECYCLE_STATE_UNSPECIFIED" : Default
+  /// unspecified value.
+  /// - "CREATING" : Indicates that the resource is in provisioning state.
+  /// - "ACTIVE" : Indicates that the resource is in active state.
+  /// - "UPDATING" : Indicates that the resource is in updating state.
+  /// - "DELETING" : Indicates that the resource is in deleting state.
+  /// - "DELETED" : Indicates that the resource is in deleted state.
+  /// - "FAILED" : Indicates that the resource is in failed state.
+  core.String? lifecycleState;
+
+  /// Properties for a Microsoft Fabric connection.
+  GoldengateMicrosoftFabricConnectionProperties?
+  microsoftFabricConnectionProperties;
+
+  /// Properties for a Microsoft SQL Server connection.
+  GoldengateMicrosoftSqlserverConnectionProperties?
+  microsoftSqlserverConnectionProperties;
+
+  /// Properties for a MongoDB connection.
+  GoldengateMongodbConnectionProperties? mongodbConnectionProperties;
+
+  /// Properties for a Mysql Connection.
+  GoldengateMysqlConnectionProperties? mysqlConnectionProperties;
+
+  /// Properties for an OCI Object Storage Connection.
+  GoldengateOciObjectStorageConnectionProperties?
+  ociObjectStorageConnectionProperties;
+
+  /// The \[OCID\] of the connection being referenced.
+  ///
+  /// Output only.
+  core.String? ocid;
+
+  /// Properties for an Oracle AI Data Platform connection.
+  GoldengateOracleAIDataPlatformConnectionProperties?
+  oracleAiDataPlatformConnectionProperties;
+
+  /// Properties for an Oracle Database Connection.
+  GoldengateOracleConnectionProperties? oracleConnectionProperties;
+
+  /// Properties for an Oracle NoSQL connection.
+  GoldengateOracleNosqlConnectionProperties? oracleNosqlConnectionProperties;
+
+  /// Properties for a PostgreSQL connection.
+  GoldengatePostgresqlConnectionProperties? postgresqlConnectionProperties;
+
+  /// Properties for a Redis connection.
+  GoldengateRedisConnectionProperties? redisConnectionProperties;
+
+  /// The routing method for the GoldengateConnection.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GOLDENGATE_CONNECTION_ROUTING_METHOD_UNSPECIFIED" : Default unspecified
+  /// value.
+  /// - "SHARED_DEPLOYMENT_ENDPOINT" : Network traffic flows from the assigned
+  /// deployment's private endpoint through the deployment's subnet.
+  /// - "DEDICATED_ENDPOINT" : A dedicated private endpoint is created in the
+  /// target VCN subnet for the connection.
+  core.String? routingMethod;
+
+  /// Properties for a Snowflake connection.
+  GoldengateSnowflakeConnectionProperties? snowflakeConnectionProperties;
+
+  /// The time the resource was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoldengateConnectionProperties({
+    this.amazonKinesisConnectionProperties,
+    this.amazonRedshiftConnectionProperties,
+    this.amazonS3ConnectionProperties,
+    this.azureDataLakeStorageConnectionProperties,
+    this.azureSynapseAnalyticsConnectionProperties,
+    this.connectionType,
+    this.databricksConnectionProperties,
+    this.db2ConnectionProperties,
+    this.description,
+    this.displayName,
+    this.elasticsearchConnectionProperties,
+    this.genericConnectionProperties,
+    this.goldengateConnectionProperties,
+    this.googleBigQueryConnectionProperties,
+    this.googleCloudStorageConnectionProperties,
+    this.googlePubsubConnectionProperties,
+    this.hdfsConnectionProperties,
+    this.icebergConnectionProperties,
+    this.ingressIpAddresses,
+    this.javaMessageServiceConnectionProperties,
+    this.kafkaConnectionProperties,
+    this.kafkaSchemaRegistryConnectionProperties,
+    this.lifecycleDetails,
+    this.lifecycleState,
+    this.microsoftFabricConnectionProperties,
+    this.microsoftSqlserverConnectionProperties,
+    this.mongodbConnectionProperties,
+    this.mysqlConnectionProperties,
+    this.ociObjectStorageConnectionProperties,
+    this.ocid,
+    this.oracleAiDataPlatformConnectionProperties,
+    this.oracleConnectionProperties,
+    this.oracleNosqlConnectionProperties,
+    this.postgresqlConnectionProperties,
+    this.redisConnectionProperties,
+    this.routingMethod,
+    this.snowflakeConnectionProperties,
+    this.updateTime,
+  });
+
+  GoldengateConnectionProperties.fromJson(core.Map json_)
+    : this(
+        amazonKinesisConnectionProperties:
+            json_.containsKey('amazonKinesisConnectionProperties')
+            ? GoldengateAmazonKinesisConnectionProperties.fromJson(
+                json_['amazonKinesisConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        amazonRedshiftConnectionProperties:
+            json_.containsKey('amazonRedshiftConnectionProperties')
+            ? GoldengateAmazonRedshiftConnectionProperties.fromJson(
+                json_['amazonRedshiftConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        amazonS3ConnectionProperties:
+            json_.containsKey('amazonS3ConnectionProperties')
+            ? GoldengateAmazonS3ConnectionProperties.fromJson(
+                json_['amazonS3ConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        azureDataLakeStorageConnectionProperties:
+            json_.containsKey('azureDataLakeStorageConnectionProperties')
+            ? GoldengateAzureDataLakeStorageConnectionProperties.fromJson(
+                json_['azureDataLakeStorageConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        azureSynapseAnalyticsConnectionProperties:
+            json_.containsKey('azureSynapseAnalyticsConnectionProperties')
+            ? GoldengateAzureSynapseAnalyticsConnectionProperties.fromJson(
+                json_['azureSynapseAnalyticsConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        connectionType: json_['connectionType'] as core.String?,
+        databricksConnectionProperties:
+            json_.containsKey('databricksConnectionProperties')
+            ? GoldengateDatabricksConnectionProperties.fromJson(
+                json_['databricksConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        db2ConnectionProperties: json_.containsKey('db2ConnectionProperties')
+            ? GoldengateDb2ConnectionProperties.fromJson(
+                json_['db2ConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        elasticsearchConnectionProperties:
+            json_.containsKey('elasticsearchConnectionProperties')
+            ? GoldengateElasticsearchConnectionProperties.fromJson(
+                json_['elasticsearchConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        genericConnectionProperties:
+            json_.containsKey('genericConnectionProperties')
+            ? GoldengateGenericConnectionProperties.fromJson(
+                json_['genericConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        goldengateConnectionProperties:
+            json_.containsKey('goldengateConnectionProperties')
+            ? GoldengateGoldengateConnectionProperties.fromJson(
+                json_['goldengateConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleBigQueryConnectionProperties:
+            json_.containsKey('googleBigQueryConnectionProperties')
+            ? GoldengateGoogleBigQueryConnectionProperties.fromJson(
+                json_['googleBigQueryConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleCloudStorageConnectionProperties:
+            json_.containsKey('googleCloudStorageConnectionProperties')
+            ? GoldengateGoogleCloudStorageConnectionProperties.fromJson(
+                json_['googleCloudStorageConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googlePubsubConnectionProperties:
+            json_.containsKey('googlePubsubConnectionProperties')
+            ? GoldengateGooglePubsubConnectionProperties.fromJson(
+                json_['googlePubsubConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        hdfsConnectionProperties: json_.containsKey('hdfsConnectionProperties')
+            ? GoldengateHdfsConnectionProperties.fromJson(
+                json_['hdfsConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        icebergConnectionProperties:
+            json_.containsKey('icebergConnectionProperties')
+            ? GoldengateIcebergConnectionProperties.fromJson(
+                json_['icebergConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ingressIpAddresses: (json_['ingressIpAddresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        javaMessageServiceConnectionProperties:
+            json_.containsKey('javaMessageServiceConnectionProperties')
+            ? GoldengateJavaMessageServiceConnectionProperties.fromJson(
+                json_['javaMessageServiceConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        kafkaConnectionProperties:
+            json_.containsKey('kafkaConnectionProperties')
+            ? GoldengateKafkaConnectionProperties.fromJson(
+                json_['kafkaConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        kafkaSchemaRegistryConnectionProperties:
+            json_.containsKey('kafkaSchemaRegistryConnectionProperties')
+            ? GoldengateKafkaSchemaRegistryConnectionProperties.fromJson(
+                json_['kafkaSchemaRegistryConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lifecycleDetails: json_['lifecycleDetails'] as core.String?,
+        lifecycleState: json_['lifecycleState'] as core.String?,
+        microsoftFabricConnectionProperties:
+            json_.containsKey('microsoftFabricConnectionProperties')
+            ? GoldengateMicrosoftFabricConnectionProperties.fromJson(
+                json_['microsoftFabricConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        microsoftSqlserverConnectionProperties:
+            json_.containsKey('microsoftSqlserverConnectionProperties')
+            ? GoldengateMicrosoftSqlserverConnectionProperties.fromJson(
+                json_['microsoftSqlserverConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mongodbConnectionProperties:
+            json_.containsKey('mongodbConnectionProperties')
+            ? GoldengateMongodbConnectionProperties.fromJson(
+                json_['mongodbConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mysqlConnectionProperties:
+            json_.containsKey('mysqlConnectionProperties')
+            ? GoldengateMysqlConnectionProperties.fromJson(
+                json_['mysqlConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ociObjectStorageConnectionProperties:
+            json_.containsKey('ociObjectStorageConnectionProperties')
+            ? GoldengateOciObjectStorageConnectionProperties.fromJson(
+                json_['ociObjectStorageConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ocid: json_['ocid'] as core.String?,
+        oracleAiDataPlatformConnectionProperties:
+            json_.containsKey('oracleAiDataPlatformConnectionProperties')
+            ? GoldengateOracleAIDataPlatformConnectionProperties.fromJson(
+                json_['oracleAiDataPlatformConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oracleConnectionProperties:
+            json_.containsKey('oracleConnectionProperties')
+            ? GoldengateOracleConnectionProperties.fromJson(
+                json_['oracleConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oracleNosqlConnectionProperties:
+            json_.containsKey('oracleNosqlConnectionProperties')
+            ? GoldengateOracleNosqlConnectionProperties.fromJson(
+                json_['oracleNosqlConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        postgresqlConnectionProperties:
+            json_.containsKey('postgresqlConnectionProperties')
+            ? GoldengatePostgresqlConnectionProperties.fromJson(
+                json_['postgresqlConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        redisConnectionProperties:
+            json_.containsKey('redisConnectionProperties')
+            ? GoldengateRedisConnectionProperties.fromJson(
+                json_['redisConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        routingMethod: json_['routingMethod'] as core.String?,
+        snowflakeConnectionProperties:
+            json_.containsKey('snowflakeConnectionProperties')
+            ? GoldengateSnowflakeConnectionProperties.fromJson(
+                json_['snowflakeConnectionProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final amazonKinesisConnectionProperties =
+        this.amazonKinesisConnectionProperties;
+    final amazonRedshiftConnectionProperties =
+        this.amazonRedshiftConnectionProperties;
+    final amazonS3ConnectionProperties = this.amazonS3ConnectionProperties;
+    final azureDataLakeStorageConnectionProperties =
+        this.azureDataLakeStorageConnectionProperties;
+    final azureSynapseAnalyticsConnectionProperties =
+        this.azureSynapseAnalyticsConnectionProperties;
+    final connectionType = this.connectionType;
+    final databricksConnectionProperties = this.databricksConnectionProperties;
+    final db2ConnectionProperties = this.db2ConnectionProperties;
+    final description = this.description;
+    final displayName = this.displayName;
+    final elasticsearchConnectionProperties =
+        this.elasticsearchConnectionProperties;
+    final genericConnectionProperties = this.genericConnectionProperties;
+    final goldengateConnectionProperties = this.goldengateConnectionProperties;
+    final googleBigQueryConnectionProperties =
+        this.googleBigQueryConnectionProperties;
+    final googleCloudStorageConnectionProperties =
+        this.googleCloudStorageConnectionProperties;
+    final googlePubsubConnectionProperties =
+        this.googlePubsubConnectionProperties;
+    final hdfsConnectionProperties = this.hdfsConnectionProperties;
+    final icebergConnectionProperties = this.icebergConnectionProperties;
+    final ingressIpAddresses = this.ingressIpAddresses;
+    final javaMessageServiceConnectionProperties =
+        this.javaMessageServiceConnectionProperties;
+    final kafkaConnectionProperties = this.kafkaConnectionProperties;
+    final kafkaSchemaRegistryConnectionProperties =
+        this.kafkaSchemaRegistryConnectionProperties;
+    final lifecycleDetails = this.lifecycleDetails;
+    final lifecycleState = this.lifecycleState;
+    final microsoftFabricConnectionProperties =
+        this.microsoftFabricConnectionProperties;
+    final microsoftSqlserverConnectionProperties =
+        this.microsoftSqlserverConnectionProperties;
+    final mongodbConnectionProperties = this.mongodbConnectionProperties;
+    final mysqlConnectionProperties = this.mysqlConnectionProperties;
+    final ociObjectStorageConnectionProperties =
+        this.ociObjectStorageConnectionProperties;
+    final ocid = this.ocid;
+    final oracleAiDataPlatformConnectionProperties =
+        this.oracleAiDataPlatformConnectionProperties;
+    final oracleConnectionProperties = this.oracleConnectionProperties;
+    final oracleNosqlConnectionProperties =
+        this.oracleNosqlConnectionProperties;
+    final postgresqlConnectionProperties = this.postgresqlConnectionProperties;
+    final redisConnectionProperties = this.redisConnectionProperties;
+    final routingMethod = this.routingMethod;
+    final snowflakeConnectionProperties = this.snowflakeConnectionProperties;
+    final updateTime = this.updateTime;
+    return {
+      'amazonKinesisConnectionProperties': ?amazonKinesisConnectionProperties,
+      'amazonRedshiftConnectionProperties': ?amazonRedshiftConnectionProperties,
+      'amazonS3ConnectionProperties': ?amazonS3ConnectionProperties,
+      'azureDataLakeStorageConnectionProperties':
+          ?azureDataLakeStorageConnectionProperties,
+      'azureSynapseAnalyticsConnectionProperties':
+          ?azureSynapseAnalyticsConnectionProperties,
+      'connectionType': ?connectionType,
+      'databricksConnectionProperties': ?databricksConnectionProperties,
+      'db2ConnectionProperties': ?db2ConnectionProperties,
+      'description': ?description,
+      'displayName': ?displayName,
+      'elasticsearchConnectionProperties': ?elasticsearchConnectionProperties,
+      'genericConnectionProperties': ?genericConnectionProperties,
+      'goldengateConnectionProperties': ?goldengateConnectionProperties,
+      'googleBigQueryConnectionProperties': ?googleBigQueryConnectionProperties,
+      'googleCloudStorageConnectionProperties':
+          ?googleCloudStorageConnectionProperties,
+      'googlePubsubConnectionProperties': ?googlePubsubConnectionProperties,
+      'hdfsConnectionProperties': ?hdfsConnectionProperties,
+      'icebergConnectionProperties': ?icebergConnectionProperties,
+      'ingressIpAddresses': ?ingressIpAddresses,
+      'javaMessageServiceConnectionProperties':
+          ?javaMessageServiceConnectionProperties,
+      'kafkaConnectionProperties': ?kafkaConnectionProperties,
+      'kafkaSchemaRegistryConnectionProperties':
+          ?kafkaSchemaRegistryConnectionProperties,
+      'lifecycleDetails': ?lifecycleDetails,
+      'lifecycleState': ?lifecycleState,
+      'microsoftFabricConnectionProperties':
+          ?microsoftFabricConnectionProperties,
+      'microsoftSqlserverConnectionProperties':
+          ?microsoftSqlserverConnectionProperties,
+      'mongodbConnectionProperties': ?mongodbConnectionProperties,
+      'mysqlConnectionProperties': ?mysqlConnectionProperties,
+      'ociObjectStorageConnectionProperties':
+          ?ociObjectStorageConnectionProperties,
+      'ocid': ?ocid,
+      'oracleAiDataPlatformConnectionProperties':
+          ?oracleAiDataPlatformConnectionProperties,
+      'oracleConnectionProperties': ?oracleConnectionProperties,
+      'oracleNosqlConnectionProperties': ?oracleNosqlConnectionProperties,
+      'postgresqlConnectionProperties': ?postgresqlConnectionProperties,
+      'redisConnectionProperties': ?redisConnectionProperties,
+      'routingMethod': ?routingMethod,
+      'snowflakeConnectionProperties': ?snowflakeConnectionProperties,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Details of the Goldengate Connection Type resource.
+class GoldengateConnectionType {
+  /// The connection type of the Goldengate Connection Type resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONNECTION_TYPE_UNSPECIFIED" : Default unspecified value.
+  /// - "GOLDENGATE" : Goldengate Connection Type category is GOLDENGATE.
+  /// - "KAFKA" : Goldengate Connection Type category is KAFKA.
+  /// - "KAFKA_SCHEMA_REGISTRY" : Goldengate Connection Type category is
+  /// KAFKA_SCHEMA_REGISTRY.
+  /// - "MYSQL" : Goldengate Connection Type category is MYSQL.
+  /// - "JAVA_MESSAGE_SERVICE" : Goldengate Connection Type category is
+  /// JAVA_MESSAGE_SERVICE.
+  /// - "MICROSOFT_SQLSERVER" : Goldengate Connection Type category is
+  /// MICROSOFT_SQLSERVER.
+  /// - "OCI_OBJECT_STORAGE" : Goldengate Connection Type category is
+  /// OCI_OBJECT_STORAGE.
+  /// - "ORACLE" : Goldengate Connection Type category is ORACLE.
+  /// - "AZURE_DATA_LAKE_STORAGE" : Goldengate Connection Type category is
+  /// AZURE_DATA_LAKE_STORAGE.
+  /// - "POSTGRESQL" : Goldengate Connection Type category is POSTGRESQL.
+  /// - "AZURE_SYNAPSE_ANALYTICS" : Goldengate Connection Type category is
+  /// AZURE_SYNAPSE_ANALYTICS.
+  /// - "SNOWFLAKE" : Goldengate Connection Type category is SNOWFLAKE.
+  /// - "AMAZON_S3" : Goldengate Connection Type category is AMAZON_S3.
+  /// - "HDFS" : Goldengate Connection Type category is HDFS.
+  /// - "ORACLE_AI_DATA_PLATFORM" : Goldengate Connection Type category is
+  /// ORACLE_AI_DATA_PLATFORM.
+  /// - "ORACLE_NOSQL" : Goldengate Connection Type category is ORACLE_NOSQL.
+  /// - "MONGODB" : Goldengate Connection Type category is MONGODB.
+  /// - "AMAZON_KINESIS" : Goldengate Connection Type category is
+  /// AMAZON_KINESIS.
+  /// - "AMAZON_REDSHIFT" : Goldengate Connection Type category is
+  /// AMAZON_REDSHIFT.
+  /// - "DB2" : Goldengate Connection Type category is DB2.
+  /// - "REDIS" : Goldengate Connection Type category is REDIS.
+  /// - "ELASTICSEARCH" : Goldengate Connection Type category is ELASTICSEARCH.
+  /// - "GENERIC" : Goldengate Connection Type category is GENERIC.
+  /// - "GOOGLE_CLOUD_STORAGE" : Goldengate Connection Type category is
+  /// GOOGLE_CLOUD_STORAGE.
+  /// - "GOOGLE_BIGQUERY" : Goldengate Connection Type category is
+  /// GOOGLE_BIGQUERY.
+  /// - "DATABRICKS" : Goldengate Connection Type category is DATABRICKS.
+  /// - "GOOGLE_PUBSUB" : Goldengate Connection Type category is GOOGLE_PUBSUB.
+  /// - "MICROSOFT_FABRIC" : Goldengate Connection Type category is
+  /// MICROSOFT_FABRIC.
+  /// - "ICEBERG" : Goldengate Connection Type category is ICEBERG.
+  core.String? connectionType;
+
+  /// Identifier.
+  ///
+  /// The name of the Goldengate Connection Type resource with the format:
+  /// projects/{project}/locations/{region}/goldengateConnectionTypes/{goldengate_connection_type}
+  core.String? name;
+
+  /// The technology type of the Goldengate Connection Type resource.
+  ///
+  /// Output only.
+  core.List<core.String>? technologyTypes;
+
+  GoldengateConnectionType({
+    this.connectionType,
+    this.name,
+    this.technologyTypes,
+  });
+
+  GoldengateConnectionType.fromJson(core.Map json_)
+    : this(
+        connectionType: json_['connectionType'] as core.String?,
+        name: json_['name'] as core.String?,
+        technologyTypes: (json_['technologyTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionType = this.connectionType;
+    final name = this.name;
+    final technologyTypes = this.technologyTypes;
+    return {
+      'connectionType': ?connectionType,
+      'name': ?name,
+      'technologyTypes': ?technologyTypes,
+    };
+  }
+}
+
+/// The properties of GoldengateDatabricksConnection.
+class GoldengateDatabricksConnectionProperties {
+  /// Authentication type for Databricks.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATABRICKS_AUTHENTICATION_TYPE_UNSPECIFIED" : Authentication type not
+  /// specified.
+  /// - "PERSONAL_ACCESS_TOKEN" : Personal access token authentication.
+  /// - "OAUTH_M2M" : OAuth M2M authentication.
+  core.String? authenticationType;
+
+  /// OAuth client id, only applicable for authentication_type == OAUTH_M2M
+  ///
+  /// Optional.
+  core.String? clientId;
+
+  /// OAuth client secret, only applicable for authentication_type == OAUTH_M2M
+  ///
+  /// Optional.
+  core.String? clientSecret;
+
+  /// Connection URL.
+  ///
+  /// e.g.:
+  /// 'jdbc:databricks://adb-33934.4.azuredatabricks.net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########44/0##3-7-hlrb'
+  ///
+  /// Optional.
+  core.String? connectionUrl;
+
+  /// Input only.
+  ///
+  /// The password used to connect to Databricks in plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password used to connect to Databricks. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// External storage credential name to access files on object storage such as
+  /// ADLS Gen2, S3 or Cloud Storage.
+  ///
+  /// Optional.
+  core.String? storageCredential;
+
+  /// The technology type of DatabricksConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  GoldengateDatabricksConnectionProperties({
+    this.authenticationType,
+    this.clientId,
+    this.clientSecret,
+    this.connectionUrl,
+    this.password,
+    this.passwordSecretVersion,
+    this.storageCredential,
+    this.technologyType,
+  });
+
+  GoldengateDatabricksConnectionProperties.fromJson(core.Map json_)
+    : this(
+        authenticationType: json_['authenticationType'] as core.String?,
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        connectionUrl: json_['connectionUrl'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        storageCredential: json_['storageCredential'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authenticationType = this.authenticationType;
+    final clientId = this.clientId;
+    final clientSecret = this.clientSecret;
+    final connectionUrl = this.connectionUrl;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final storageCredential = this.storageCredential;
+    final technologyType = this.technologyType;
+    return {
+      'authenticationType': ?authenticationType,
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+      'connectionUrl': ?connectionUrl,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'storageCredential': ?storageCredential,
+      'technologyType': ?technologyType,
+    };
+  }
+}
+
+/// The properties of GoldengateDb2Connection.
+class GoldengateDb2ConnectionProperties {
+  /// An array of name-value pair attribute entries.
+  ///
+  /// Used as additional parameters in connection string.
+  ///
+  /// Optional.
+  core.List<NameValuePair>? additionalAttributes;
+
+  /// The name of the database.
+  ///
+  /// Optional.
+  core.String? database;
+
+  /// The name or address of a host.
+  ///
+  /// Optional.
+  core.String? host;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses for Db2 connection in plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses for Db2 connection. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The port of an endpoint usually specified for a connection.
+  ///
+  /// Optional.
+  core.int? port;
+
+  /// Security protocol for the DB2 database.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DB2_SECURITY_PROTOCOL_UNSPECIFIED" : Security protocol not specified.
+  /// - "PLAIN" : Plain text communication.
+  /// - "TLS" : Transport Layer Security.
+  core.String? securityProtocol;
+
+  /// The keystash file which contains the encrypted password to the key
+  /// database file.
+  ///
+  /// Not supported for IBM Db2 for i.
+  ///
+  /// Optional.
+  core.String? sslClientKeystashFile;
+
+  /// The keystore file created at the client containing the server certificate
+  /// / CA root certificate.
+  ///
+  /// Not supported for IBM Db2 for i.
+  ///
+  /// Optional.
+  core.String? sslClientKeystoredbFile;
+
+  /// The file which contains the self-signed server certificate / Certificate
+  /// Authority (CA) certificate.
+  ///
+  /// Optional.
+  core.String? sslServerCertificateFile;
+
+  /// The technology type of Db2Connection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The username Oracle Goldengate uses to connect to the DB2 database.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateDb2ConnectionProperties({
+    this.additionalAttributes,
+    this.database,
+    this.host,
+    this.password,
+    this.passwordSecretVersion,
+    this.port,
+    this.securityProtocol,
+    this.sslClientKeystashFile,
+    this.sslClientKeystoredbFile,
+    this.sslServerCertificateFile,
+    this.technologyType,
+    this.username,
+  });
+
+  GoldengateDb2ConnectionProperties.fromJson(core.Map json_)
+    : this(
+        additionalAttributes: (json_['additionalAttributes'] as core.List?)
+            ?.map(
+              (value) => NameValuePair.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        database: json_['database'] as core.String?,
+        host: json_['host'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        port: json_['port'] as core.int?,
+        securityProtocol: json_['securityProtocol'] as core.String?,
+        sslClientKeystashFile: json_['sslClientKeystashFile'] as core.String?,
+        sslClientKeystoredbFile:
+            json_['sslClientKeystoredbFile'] as core.String?,
+        sslServerCertificateFile:
+            json_['sslServerCertificateFile'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalAttributes = this.additionalAttributes;
+    final database = this.database;
+    final host = this.host;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final port = this.port;
+    final securityProtocol = this.securityProtocol;
+    final sslClientKeystashFile = this.sslClientKeystashFile;
+    final sslClientKeystoredbFile = this.sslClientKeystoredbFile;
+    final sslServerCertificateFile = this.sslServerCertificateFile;
+    final technologyType = this.technologyType;
+    final username = this.username;
+    return {
+      'additionalAttributes': ?additionalAttributes,
+      'database': ?database,
+      'host': ?host,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'port': ?port,
+      'securityProtocol': ?securityProtocol,
+      'sslClientKeystashFile': ?sslClientKeystashFile,
+      'sslClientKeystoredbFile': ?sslClientKeystoredbFile,
+      'sslServerCertificateFile': ?sslServerCertificateFile,
+      'technologyType': ?technologyType,
+      'username': ?username,
+    };
+  }
+}
+
+/// GoldengateDeployment Goldengate Deployment resource model.
+class GoldengateDeployment {
+  /// The date and time that the GoldengateDeployment was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The display name for the GoldengateDeployment.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The ID of the subscription entitlement associated with the
+  /// GoldengateDeployment
+  ///
+  /// Output only.
+  core.String? entitlementId;
+
+  /// The GCP Oracle zone where Oracle GoldengateDeployment is hosted.
+  ///
+  /// Example: us-east4-b-r2. If not specified, the system will pick a zone
+  /// based on availability.
+  ///
+  /// Optional.
+  core.String? gcpOracleZone;
+
+  /// The labels or tags associated with the GoldengateDeployment.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the GoldengateDeployment resource in the following format:
+  /// projects/{project}/locations/{region}/goldengateDeployments/{goldengate_deployment}
+  core.String? name;
+
+  /// HTTPS link to OCI resources exposed to Customer via UI Interface.
+  ///
+  /// Output only.
+  core.String? ociUrl;
+
+  /// The name of the OdbNetwork associated with the GoldengateDeployment.
+  ///
+  /// Optional.
+  core.String? odbNetwork;
+
+  /// The name of the OdbSubnet associated with the GoldengateDeployment for IP
+  /// allocation.
+  ///
+  /// Required.
+  core.String? odbSubnet;
+
+  /// The properties of the GoldengateDeployment.
+  ///
+  /// Required.
+  GoldengateDeploymentProperties? properties;
+
+  GoldengateDeployment({
+    this.createTime,
+    this.displayName,
+    this.entitlementId,
+    this.gcpOracleZone,
+    this.labels,
+    this.name,
+    this.ociUrl,
+    this.odbNetwork,
+    this.odbSubnet,
+    this.properties,
+  });
+
+  GoldengateDeployment.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        entitlementId: json_['entitlementId'] as core.String?,
+        gcpOracleZone: json_['gcpOracleZone'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        ociUrl: json_['ociUrl'] as core.String?,
+        odbNetwork: json_['odbNetwork'] as core.String?,
+        odbSubnet: json_['odbSubnet'] as core.String?,
+        properties: json_.containsKey('properties')
+            ? GoldengateDeploymentProperties.fromJson(
+                json_['properties'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final entitlementId = this.entitlementId;
+    final gcpOracleZone = this.gcpOracleZone;
+    final labels = this.labels;
+    final name = this.name;
+    final ociUrl = this.ociUrl;
+    final odbNetwork = this.odbNetwork;
+    final odbSubnet = this.odbSubnet;
+    final properties = this.properties;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'entitlementId': ?entitlementId,
+      'gcpOracleZone': ?gcpOracleZone,
+      'labels': ?labels,
+      'name': ?name,
+      'ociUrl': ?ociUrl,
+      'odbNetwork': ?odbNetwork,
+      'odbSubnet': ?odbSubnet,
+      'properties': ?properties,
+    };
+  }
+}
+
+/// Details of the Goldengate Deployment Environment resource.
+class GoldengateDeploymentEnvironment {
+  /// Whether auto scaling is enabled by default for the Goldengate Deployment
+  /// Environment resource.
+  ///
+  /// Output only.
+  core.bool? autoScalingEnabled;
+
+  /// The category of the Goldengate Deployment Environment resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_CATEGORY_UNSPECIFIED" : Default unspecified value.
+  /// - "DATA_REPLICATION_CATEGORY" : Goldengate Deployment Environment category
+  /// is DATA_REPLICATION_CATEGORY.
+  /// - "DATA_TRANSFORMS_CATEGORY" : Goldengate Deployment Environment category
+  /// is DATA_TRANSFORMS_CATEGORY.
+  core.String? category;
+
+  /// The default CPU core count of the Goldengate Deployment Environment
+  /// resource.
+  ///
+  /// Output only.
+  core.int? defaultCpuCoreCount;
+
+  /// The display name of the Goldengate Deployment Environment resource.
+  core.String? displayName;
+
+  /// The environment type of the Goldengate Deployment Environment resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_ENVIRONMENT_TYPE_UNSPECIFIED" : Default unspecified value.
+  /// - "PRODUCTION" : Goldengate Deployment Environment type is PRODUCTION.
+  /// - "DEVELOPMENT_OR_TESTING" : Goldengate Deployment Environment type is
+  /// DEVELOPMENT_OR_TESTING.
+  core.String? environmentType;
+
+  /// The max CPU core count of the Goldengate Deployment Environment resource.
+  ///
+  /// Output only.
+  core.int? maxCpuCoreCount;
+
+  /// The memory per CPU core in GBs of the Goldengate Deployment Environment
+  /// resource.
+  ///
+  /// Output only.
+  core.int? memoryGbPerCpuCore;
+
+  /// The min CPU core count of the Goldengate Deployment Environment resource.
+  ///
+  /// Output only.
+  core.int? minCpuCoreCount;
+
+  /// Identifier.
+  ///
+  /// The name of the Goldengate Deployment Environment resource with the
+  /// format:
+  /// projects/{project}/locations/{location}/goldengateDeploymentEnvironments/{goldengate_deployment_environment}
+  core.String? name;
+
+  /// The network bandwidth per CPU core in Gbps of the Goldengate Deployment
+  /// Environment resource.
+  ///
+  /// Output only.
+  core.int? networkBandwidthGbpsPerCpuCore;
+
+  /// The storage usage limit per CPU core in GBs of the Goldengate Deployment
+  /// Environment resource.
+  ///
+  /// Output only.
+  core.int? storageUsageLimitGbPerCpuCore;
+
+  GoldengateDeploymentEnvironment({
+    this.autoScalingEnabled,
+    this.category,
+    this.defaultCpuCoreCount,
+    this.displayName,
+    this.environmentType,
+    this.maxCpuCoreCount,
+    this.memoryGbPerCpuCore,
+    this.minCpuCoreCount,
+    this.name,
+    this.networkBandwidthGbpsPerCpuCore,
+    this.storageUsageLimitGbPerCpuCore,
+  });
+
+  GoldengateDeploymentEnvironment.fromJson(core.Map json_)
+    : this(
+        autoScalingEnabled: json_['autoScalingEnabled'] as core.bool?,
+        category: json_['category'] as core.String?,
+        defaultCpuCoreCount: json_['defaultCpuCoreCount'] as core.int?,
+        displayName: json_['displayName'] as core.String?,
+        environmentType: json_['environmentType'] as core.String?,
+        maxCpuCoreCount: json_['maxCpuCoreCount'] as core.int?,
+        memoryGbPerCpuCore: json_['memoryGbPerCpuCore'] as core.int?,
+        minCpuCoreCount: json_['minCpuCoreCount'] as core.int?,
+        name: json_['name'] as core.String?,
+        networkBandwidthGbpsPerCpuCore:
+            json_['networkBandwidthGbpsPerCpuCore'] as core.int?,
+        storageUsageLimitGbPerCpuCore:
+            json_['storageUsageLimitGbPerCpuCore'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoScalingEnabled = this.autoScalingEnabled;
+    final category = this.category;
+    final defaultCpuCoreCount = this.defaultCpuCoreCount;
+    final displayName = this.displayName;
+    final environmentType = this.environmentType;
+    final maxCpuCoreCount = this.maxCpuCoreCount;
+    final memoryGbPerCpuCore = this.memoryGbPerCpuCore;
+    final minCpuCoreCount = this.minCpuCoreCount;
+    final name = this.name;
+    final networkBandwidthGbpsPerCpuCore = this.networkBandwidthGbpsPerCpuCore;
+    final storageUsageLimitGbPerCpuCore = this.storageUsageLimitGbPerCpuCore;
+    return {
+      'autoScalingEnabled': ?autoScalingEnabled,
+      'category': ?category,
+      'defaultCpuCoreCount': ?defaultCpuCoreCount,
+      'displayName': ?displayName,
+      'environmentType': ?environmentType,
+      'maxCpuCoreCount': ?maxCpuCoreCount,
+      'memoryGbPerCpuCore': ?memoryGbPerCpuCore,
+      'minCpuCoreCount': ?minCpuCoreCount,
+      'name': ?name,
+      'networkBandwidthGbpsPerCpuCore': ?networkBandwidthGbpsPerCpuCore,
+      'storageUsageLimitGbPerCpuCore': ?storageUsageLimitGbPerCpuCore,
+    };
+  }
+}
+
+/// The lock of the GoldengateDeployment.
+class GoldengateDeploymentLock {
+  /// The compartment id.
+  ///
+  /// Output only.
+  core.String? compartmentId;
+
+  /// The time created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The message.
+  ///
+  /// Output only.
+  core.String? message;
+
+  /// The related resource id.
+  ///
+  /// Output only.
+  core.String? relatedResourceId;
+
+  /// The type of lock.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LOCK_TYPE_UNSPECIFIED" : The lock type is unspecified.
+  /// - "FULL" : The lock type is full.
+  /// - "DELETE" : The lock type is delete.
+  core.String? type;
+
+  GoldengateDeploymentLock({
+    this.compartmentId,
+    this.createTime,
+    this.message,
+    this.relatedResourceId,
+    this.type,
+  });
+
+  GoldengateDeploymentLock.fromJson(core.Map json_)
+    : this(
+        compartmentId: json_['compartmentId'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        message: json_['message'] as core.String?,
+        relatedResourceId: json_['relatedResourceId'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final compartmentId = this.compartmentId;
+    final createTime = this.createTime;
+    final message = this.message;
+    final relatedResourceId = this.relatedResourceId;
+    final type = this.type;
+    return {
+      'compartmentId': ?compartmentId,
+      'createTime': ?createTime,
+      'message': ?message,
+      'relatedResourceId': ?relatedResourceId,
+      'type': ?type,
+    };
+  }
+}
+
+/// Properties of GoldengateDeployment.
+class GoldengateDeploymentProperties {
+  /// The backup schedule of the GoldengateDeployment.
+  ///
+  /// Output only.
+  GoldengateBackupSchedule? backupSchedule;
+
+  /// The category of the GoldengateDeployment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GOLDENGATE_DEPLOYMENT_CATEGORY_UNSPECIFIED" : The category is
+  /// unspecified.
+  /// - "DATA_REPLICATION" : The deployment is data replication.
+  /// - "DATA_TRANSFORMS" : The deployment is data transforms.
+  core.String? category;
+
+  /// The Minimum number of OCPUs to be made available for this Deployment.
+  ///
+  /// Optional.
+  core.int? cpuCoreCount;
+
+  /// The deployment backup id of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? deploymentBackupId;
+
+  /// The deployment diagnostic data of the GoldengateDeployment.
+  ///
+  /// Output only.
+  DeploymentDiagnosticData? deploymentDiagnosticData;
+
+  /// The deployment role of the GoldengateDeployment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GOLDENGATE_DEPLOYMENT_ROLE_TYPE_UNSPECIFIED" : The deployment role type
+  /// is unspecified.
+  /// - "PRIMARY" : The deployment role type is primary.
+  /// - "STANDBY" : The deployment role type is standby.
+  core.String? deploymentRole;
+
+  /// A valid Goldengate Deployment type.
+  ///
+  /// For a list of supported types, use the `ListGoldengateDeploymentTypes`
+  /// operation.
+  ///
+  /// Required.
+  core.String? deploymentType;
+
+  /// The deployment url of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? deploymentUrl;
+
+  /// The description of the GoldengateDeployment.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The environment type of the GoldengateDeployment.
+  ///
+  /// Optional.
+  core.String? environmentType;
+
+  /// The Fully Qualified Domain Name of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? fqdn;
+
+  /// Whether the GoldengateDeployment is healthy.
+  ///
+  /// Output only.
+  core.bool? healthy;
+
+  /// The ingress ips of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.List<IngressIp>? ingressIps;
+
+  /// Indicates if auto scaling is enabled for the Deployment's CPU core count.
+  ///
+  /// Optional.
+  core.bool? isAutoScalingEnabled;
+
+  /// Whether the GoldengateDeployment is of the latest version.
+  ///
+  /// Output only.
+  core.bool? isLatestVersion;
+
+  /// Whether the GoldengateDeployment is public.
+  ///
+  /// Output only.
+  core.bool? isPublic;
+
+  /// Whether storage utilization limit is exceeded of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.bool? isStorageUtilizationLimitExceeded;
+
+  /// The time last backup scheduled of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? lastBackupScheduleTime;
+
+  /// The Oracle license model that applies to a Deployment.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LICENSE_MODEL_UNSPECIFIED" : The license model is unspecified.
+  /// - "LICENSE_INCLUDED" : The license model is included.
+  /// - "BRING_YOUR_OWN_LICENSE" : The license model is bring your own license.
+  core.String? licenseModel;
+
+  /// The lifecycle details of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? lifecycleDetails;
+
+  /// State of the GoldengateDeployment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GOLDENGATE_DEPLOYMENT_LIFECYCLE_STATE_UNSPECIFIED" : Default
+  /// unspecified value.
+  /// - "CREATING" : The deployment is being created.
+  /// - "UPDATING" : The deployment is being updated.
+  /// - "ACTIVE" : The deployment is active.
+  /// - "INACTIVE" : The deployment is inactive.
+  /// - "DELETING" : The deployment is being deleted.
+  /// - "DELETED" : The deployment is deleted.
+  /// - "FAILED" : The deployment failed.
+  /// - "NEEDS_ATTENTION" : The deployment needs attention.
+  /// - "IN_PROGRESS" : The deployment is in progress.
+  /// - "CANCELLING" : The deployment is canceling.
+  /// - "CANCELLED" : The deployment is canceled.
+  /// - "SUCCEEDED" : The deployment succeeded.
+  /// - "WAITING" : The deployment is waiting.
+  core.String? lifecycleState;
+
+  /// The lifecycle sub-state of the GoldengateDeployment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "GOLDENGATE_DEPLOYMENT_LIFECYCLE_SUB_STATE_UNSPECIFIED" : The lifecycle
+  /// sub-state is unspecified.
+  /// - "RECOVERING" : The deployment is recovering.
+  /// - "STARTING" : The deployment is starting.
+  /// - "STOPPING" : The deployment is stopping.
+  /// - "MOVING" : The deployment is moving.
+  /// - "UPGRADING" : The deployment is upgrading.
+  /// - "RESTORING" : The deployment is restoring.
+  /// - "BACKING_UP" : The deployment is backing up.
+  /// - "ROLLING_BACK" : The deployment is rolling back.
+  core.String? lifecycleSubState;
+
+  /// The load balancer id of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? loadBalancerId;
+
+  /// The load balancer subnet id of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? loadBalancerSubnetId;
+
+  /// The locks of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.List<GoldengateDeploymentLock>? locks;
+
+  /// The maintenance configuration of the GoldengateDeployment.
+  ///
+  /// Optional.
+  GoldengateMaintenanceConfig? maintenanceConfig;
+
+  /// The maintenance window of the GoldengateDeployment.
+  ///
+  /// Optional.
+  GoldengateMaintenanceWindow? maintenanceWindow;
+
+  /// The time next backup scheduled of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? nextBackupScheduleTime;
+
+  /// The next maintenance action type of the GoldengateDeployment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "NEXT_MAINTENANCE_ACTION_TYPE_UNSPECIFIED" : The next maintenance action
+  /// type is unspecified.
+  /// - "UPGRADE" : The next maintenance action type is upgrade.
+  core.String? nextMaintenanceActionType;
+
+  /// The next maintenance description of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? nextMaintenanceDescription;
+
+  /// The time of next maintenance of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? nextMaintenanceTime;
+
+  /// The nsg ids of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.List<core.String>? nsgIds;
+
+  /// OCID of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? ocid;
+
+  /// The ogg data of the GoldengateDeployment.
+  ///
+  /// Required.
+  GoldengateOggDeployment? oggData;
+
+  /// The time ogg version supported until of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? oggVersionSupportEndTime;
+
+  /// The placements of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.List<GoldengatePlacement>? placements;
+
+  /// The private ip address of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? privateIpAddress;
+
+  /// The public ip address of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? publicIpAddress;
+
+  /// The time when the role of the GoldengateDeployment was changed.
+  ///
+  /// Output only.
+  core.String? roleChangeTime;
+
+  /// The storage utilization in bytes of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? storageUtilizationBytes;
+
+  /// The time the GoldengateDeployment was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The time upgrade required of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? upgradeRequiredTime;
+
+  GoldengateDeploymentProperties({
+    this.backupSchedule,
+    this.category,
+    this.cpuCoreCount,
+    this.deploymentBackupId,
+    this.deploymentDiagnosticData,
+    this.deploymentRole,
+    this.deploymentType,
+    this.deploymentUrl,
+    this.description,
+    this.environmentType,
+    this.fqdn,
+    this.healthy,
+    this.ingressIps,
+    this.isAutoScalingEnabled,
+    this.isLatestVersion,
+    this.isPublic,
+    this.isStorageUtilizationLimitExceeded,
+    this.lastBackupScheduleTime,
+    this.licenseModel,
+    this.lifecycleDetails,
+    this.lifecycleState,
+    this.lifecycleSubState,
+    this.loadBalancerId,
+    this.loadBalancerSubnetId,
+    this.locks,
+    this.maintenanceConfig,
+    this.maintenanceWindow,
+    this.nextBackupScheduleTime,
+    this.nextMaintenanceActionType,
+    this.nextMaintenanceDescription,
+    this.nextMaintenanceTime,
+    this.nsgIds,
+    this.ocid,
+    this.oggData,
+    this.oggVersionSupportEndTime,
+    this.placements,
+    this.privateIpAddress,
+    this.publicIpAddress,
+    this.roleChangeTime,
+    this.storageUtilizationBytes,
+    this.updateTime,
+    this.upgradeRequiredTime,
+  });
+
+  GoldengateDeploymentProperties.fromJson(core.Map json_)
+    : this(
+        backupSchedule: json_.containsKey('backupSchedule')
+            ? GoldengateBackupSchedule.fromJson(
+                json_['backupSchedule'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        category: json_['category'] as core.String?,
+        cpuCoreCount: json_['cpuCoreCount'] as core.int?,
+        deploymentBackupId: json_['deploymentBackupId'] as core.String?,
+        deploymentDiagnosticData: json_.containsKey('deploymentDiagnosticData')
+            ? DeploymentDiagnosticData.fromJson(
+                json_['deploymentDiagnosticData']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deploymentRole: json_['deploymentRole'] as core.String?,
+        deploymentType: json_['deploymentType'] as core.String?,
+        deploymentUrl: json_['deploymentUrl'] as core.String?,
+        description: json_['description'] as core.String?,
+        environmentType: json_['environmentType'] as core.String?,
+        fqdn: json_['fqdn'] as core.String?,
+        healthy: json_['healthy'] as core.bool?,
+        ingressIps: (json_['ingressIps'] as core.List?)
+            ?.map(
+              (value) => IngressIp.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        isAutoScalingEnabled: json_['isAutoScalingEnabled'] as core.bool?,
+        isLatestVersion: json_['isLatestVersion'] as core.bool?,
+        isPublic: json_['isPublic'] as core.bool?,
+        isStorageUtilizationLimitExceeded:
+            json_['isStorageUtilizationLimitExceeded'] as core.bool?,
+        lastBackupScheduleTime: json_['lastBackupScheduleTime'] as core.String?,
+        licenseModel: json_['licenseModel'] as core.String?,
+        lifecycleDetails: json_['lifecycleDetails'] as core.String?,
+        lifecycleState: json_['lifecycleState'] as core.String?,
+        lifecycleSubState: json_['lifecycleSubState'] as core.String?,
+        loadBalancerId: json_['loadBalancerId'] as core.String?,
+        loadBalancerSubnetId: json_['loadBalancerSubnetId'] as core.String?,
+        locks: (json_['locks'] as core.List?)
+            ?.map(
+              (value) => GoldengateDeploymentLock.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        maintenanceConfig: json_.containsKey('maintenanceConfig')
+            ? GoldengateMaintenanceConfig.fromJson(
+                json_['maintenanceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        maintenanceWindow: json_.containsKey('maintenanceWindow')
+            ? GoldengateMaintenanceWindow.fromJson(
+                json_['maintenanceWindow']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nextBackupScheduleTime: json_['nextBackupScheduleTime'] as core.String?,
+        nextMaintenanceActionType:
+            json_['nextMaintenanceActionType'] as core.String?,
+        nextMaintenanceDescription:
+            json_['nextMaintenanceDescription'] as core.String?,
+        nextMaintenanceTime: json_['nextMaintenanceTime'] as core.String?,
+        nsgIds: (json_['nsgIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        ocid: json_['ocid'] as core.String?,
+        oggData: json_.containsKey('oggData')
+            ? GoldengateOggDeployment.fromJson(
+                json_['oggData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oggVersionSupportEndTime:
+            json_['oggVersionSupportEndTime'] as core.String?,
+        placements: (json_['placements'] as core.List?)
+            ?.map(
+              (value) => GoldengatePlacement.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        privateIpAddress: json_['privateIpAddress'] as core.String?,
+        publicIpAddress: json_['publicIpAddress'] as core.String?,
+        roleChangeTime: json_['roleChangeTime'] as core.String?,
+        storageUtilizationBytes:
+            json_['storageUtilizationBytes'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        upgradeRequiredTime: json_['upgradeRequiredTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backupSchedule = this.backupSchedule;
+    final category = this.category;
+    final cpuCoreCount = this.cpuCoreCount;
+    final deploymentBackupId = this.deploymentBackupId;
+    final deploymentDiagnosticData = this.deploymentDiagnosticData;
+    final deploymentRole = this.deploymentRole;
+    final deploymentType = this.deploymentType;
+    final deploymentUrl = this.deploymentUrl;
+    final description = this.description;
+    final environmentType = this.environmentType;
+    final fqdn = this.fqdn;
+    final healthy = this.healthy;
+    final ingressIps = this.ingressIps;
+    final isAutoScalingEnabled = this.isAutoScalingEnabled;
+    final isLatestVersion = this.isLatestVersion;
+    final isPublic = this.isPublic;
+    final isStorageUtilizationLimitExceeded =
+        this.isStorageUtilizationLimitExceeded;
+    final lastBackupScheduleTime = this.lastBackupScheduleTime;
+    final licenseModel = this.licenseModel;
+    final lifecycleDetails = this.lifecycleDetails;
+    final lifecycleState = this.lifecycleState;
+    final lifecycleSubState = this.lifecycleSubState;
+    final loadBalancerId = this.loadBalancerId;
+    final loadBalancerSubnetId = this.loadBalancerSubnetId;
+    final locks = this.locks;
+    final maintenanceConfig = this.maintenanceConfig;
+    final maintenanceWindow = this.maintenanceWindow;
+    final nextBackupScheduleTime = this.nextBackupScheduleTime;
+    final nextMaintenanceActionType = this.nextMaintenanceActionType;
+    final nextMaintenanceDescription = this.nextMaintenanceDescription;
+    final nextMaintenanceTime = this.nextMaintenanceTime;
+    final nsgIds = this.nsgIds;
+    final ocid = this.ocid;
+    final oggData = this.oggData;
+    final oggVersionSupportEndTime = this.oggVersionSupportEndTime;
+    final placements = this.placements;
+    final privateIpAddress = this.privateIpAddress;
+    final publicIpAddress = this.publicIpAddress;
+    final roleChangeTime = this.roleChangeTime;
+    final storageUtilizationBytes = this.storageUtilizationBytes;
+    final updateTime = this.updateTime;
+    final upgradeRequiredTime = this.upgradeRequiredTime;
+    return {
+      'backupSchedule': ?backupSchedule,
+      'category': ?category,
+      'cpuCoreCount': ?cpuCoreCount,
+      'deploymentBackupId': ?deploymentBackupId,
+      'deploymentDiagnosticData': ?deploymentDiagnosticData,
+      'deploymentRole': ?deploymentRole,
+      'deploymentType': ?deploymentType,
+      'deploymentUrl': ?deploymentUrl,
+      'description': ?description,
+      'environmentType': ?environmentType,
+      'fqdn': ?fqdn,
+      'healthy': ?healthy,
+      'ingressIps': ?ingressIps,
+      'isAutoScalingEnabled': ?isAutoScalingEnabled,
+      'isLatestVersion': ?isLatestVersion,
+      'isPublic': ?isPublic,
+      'isStorageUtilizationLimitExceeded': ?isStorageUtilizationLimitExceeded,
+      'lastBackupScheduleTime': ?lastBackupScheduleTime,
+      'licenseModel': ?licenseModel,
+      'lifecycleDetails': ?lifecycleDetails,
+      'lifecycleState': ?lifecycleState,
+      'lifecycleSubState': ?lifecycleSubState,
+      'loadBalancerId': ?loadBalancerId,
+      'loadBalancerSubnetId': ?loadBalancerSubnetId,
+      'locks': ?locks,
+      'maintenanceConfig': ?maintenanceConfig,
+      'maintenanceWindow': ?maintenanceWindow,
+      'nextBackupScheduleTime': ?nextBackupScheduleTime,
+      'nextMaintenanceActionType': ?nextMaintenanceActionType,
+      'nextMaintenanceDescription': ?nextMaintenanceDescription,
+      'nextMaintenanceTime': ?nextMaintenanceTime,
+      'nsgIds': ?nsgIds,
+      'ocid': ?ocid,
+      'oggData': ?oggData,
+      'oggVersionSupportEndTime': ?oggVersionSupportEndTime,
+      'placements': ?placements,
+      'privateIpAddress': ?privateIpAddress,
+      'publicIpAddress': ?publicIpAddress,
+      'roleChangeTime': ?roleChangeTime,
+      'storageUtilizationBytes': ?storageUtilizationBytes,
+      'updateTime': ?updateTime,
+      'upgradeRequiredTime': ?upgradeRequiredTime,
+    };
+  }
+}
+
+/// Details of the Goldengate Deployment Type resource.
+class GoldengateDeploymentType {
+  /// The category of the Goldengate Deployment Type resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_CATEGORY_UNSPECIFIED" : Default unspecified value.
+  /// - "DATA_REPLICATION_CATEGORY" : Goldengate Deployment Type category is
+  /// DATA_REPLICATION_CATEGORY.
+  /// - "DATA_TRANSFORMS_CATEGORY" : Goldengate Deployment Type category is
+  /// DATA_TRANSFORMS_CATEGORY.
+  core.String? category;
+
+  /// The connection types of the Goldengate Deployment Type resource.
+  ///
+  /// Output only.
+  core.List<core.String>? connectionTypes;
+
+  /// The default username of the Goldengate Deployment Type resource.
+  ///
+  /// Output only.
+  core.String? defaultUsername;
+
+  /// The deployment type of the Goldengate Deployment Type resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_TYPE_UNSPECIFIED" : Default unspecified value.
+  /// - "OGG" : Goldengate Deployment Type category is OGG.
+  /// - "DATABASE_ORACLE" : Goldengate Deployment Type category is
+  /// DATABASE_ORACLE.
+  /// - "BIGDATA" : Goldengate Deployment Type category is BIGDATA.
+  /// - "DATABASE_MICROSOFT_SQLSERVER" : Goldengate Deployment Type category is
+  /// DATABASE_MICROSOFT_SQLSERVER.
+  /// - "DATABASE_MYSQL" : Goldengate Deployment Type category is
+  /// DATABASE_MYSQL.
+  /// - "DATABASE_POSTGRESQL" : Goldengate Deployment Type category is
+  /// DATABASE_POSTGRESQL.
+  /// - "DATABASE_DB2ZOS" : Goldengate Deployment Type category is
+  /// DATABASE_DB2ZOS.
+  /// - "DATABASE_DB2I" : Goldengate Deployment Type category is DATABASE_DB2I.
+  /// - "GGSA" : Goldengate Deployment Type category is GGSA.
+  /// - "DATA_TRANSFORMS" : Goldengate Deployment Type category is
+  /// DATA_TRANSFORMS.
+  core.String? deploymentType;
+
+  /// The display name of the Goldengate Deployment Type resource.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// The name of the Goldengate Deployment Type resource with the format:
+  /// projects/{project}/locations/{region}/goldengateDeploymentTypes/{goldengate_deployment_type}
+  core.String? name;
+
+  /// The Ogg version of the Goldengate Deployment Type resource.
+  ///
+  /// Output only.
+  core.String? oggVersion;
+
+  /// The source technologies of the Goldengate Deployment Type resource.
+  ///
+  /// Output only.
+  core.List<core.String>? sourceTechnologies;
+
+  /// The supported capabilities of the Goldengate Deployment Type resource.
+  ///
+  /// Output only.
+  core.List<core.String>? supportedCapabilities;
+
+  /// The supported technologies URL of the Goldengate Deployment Type resource.
+  ///
+  /// Output only.
+  core.String? supportedTechnologiesUrl;
+
+  /// The target technologies of the Goldengate Deployment Type resource.
+  ///
+  /// Output only.
+  core.List<core.String>? targetTechnologies;
+
+  GoldengateDeploymentType({
+    this.category,
+    this.connectionTypes,
+    this.defaultUsername,
+    this.deploymentType,
+    this.displayName,
+    this.name,
+    this.oggVersion,
+    this.sourceTechnologies,
+    this.supportedCapabilities,
+    this.supportedTechnologiesUrl,
+    this.targetTechnologies,
+  });
+
+  GoldengateDeploymentType.fromJson(core.Map json_)
+    : this(
+        category: json_['category'] as core.String?,
+        connectionTypes: (json_['connectionTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        defaultUsername: json_['defaultUsername'] as core.String?,
+        deploymentType: json_['deploymentType'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        oggVersion: json_['oggVersion'] as core.String?,
+        sourceTechnologies: (json_['sourceTechnologies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        supportedCapabilities: (json_['supportedCapabilities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        supportedTechnologiesUrl:
+            json_['supportedTechnologiesUrl'] as core.String?,
+        targetTechnologies: (json_['targetTechnologies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final connectionTypes = this.connectionTypes;
+    final defaultUsername = this.defaultUsername;
+    final deploymentType = this.deploymentType;
+    final displayName = this.displayName;
+    final name = this.name;
+    final oggVersion = this.oggVersion;
+    final sourceTechnologies = this.sourceTechnologies;
+    final supportedCapabilities = this.supportedCapabilities;
+    final supportedTechnologiesUrl = this.supportedTechnologiesUrl;
+    final targetTechnologies = this.targetTechnologies;
+    return {
+      'category': ?category,
+      'connectionTypes': ?connectionTypes,
+      'defaultUsername': ?defaultUsername,
+      'deploymentType': ?deploymentType,
+      'displayName': ?displayName,
+      'name': ?name,
+      'oggVersion': ?oggVersion,
+      'sourceTechnologies': ?sourceTechnologies,
+      'supportedCapabilities': ?supportedCapabilities,
+      'supportedTechnologiesUrl': ?supportedTechnologiesUrl,
+      'targetTechnologies': ?targetTechnologies,
+    };
+  }
+}
+
+/// Details of the Goldengate Deployment Version resource.
+class GoldengateDeploymentVersion {
+  /// Identifier.
+  ///
+  /// The name of the Goldengate Deployment Version resource with the format:
+  /// projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}
+  core.String? name;
+
+  /// The deployment version ocid of the Goldengate Deployment Version resource.
+  ///
+  /// Output only.
+  core.String? ocid;
+
+  /// The technology type of the Goldengate Deployment Version resource.
+  ///
+  /// Output only.
+  GoldengateDeploymentVersionProperties? properties;
+
+  GoldengateDeploymentVersion({this.name, this.ocid, this.properties});
+
+  GoldengateDeploymentVersion.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        ocid: json_['ocid'] as core.String?,
+        properties: json_.containsKey('properties')
+            ? GoldengateDeploymentVersionProperties.fromJson(
+                json_['properties'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final ocid = this.ocid;
+    final properties = this.properties;
+    return {'name': ?name, 'ocid': ?ocid, 'properties': ?properties};
+  }
+}
+
+/// Properties of GoldengateDeploymentVersion.
+class GoldengateDeploymentVersionProperties {
+  /// The deployment type of the Goldengate Deployment Version resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_TYPE_UNSPECIFIED" : Default unspecified value.
+  /// - "OGG" : Goldengate Deployment Type category is OGG.
+  /// - "DATABASE_ORACLE" : Goldengate Deployment Type category is
+  /// DATABASE_ORACLE.
+  /// - "BIGDATA" : Goldengate Deployment Type category is BIGDATA.
+  /// - "DATABASE_MICROSOFT_SQLSERVER" : Goldengate Deployment Type category is
+  /// DATABASE_MICROSOFT_SQLSERVER.
+  /// - "DATABASE_MYSQL" : Goldengate Deployment Type category is
+  /// DATABASE_MYSQL.
+  /// - "DATABASE_POSTGRESQL" : Goldengate Deployment Type category is
+  /// DATABASE_POSTGRESQL.
+  /// - "DATABASE_DB2ZOS" : Goldengate Deployment Type category is
+  /// DATABASE_DB2ZOS.
+  /// - "DATABASE_DB2I" : Goldengate Deployment Type category is DATABASE_DB2I.
+  /// - "GGSA" : Goldengate Deployment Type category is GGSA.
+  /// - "DATA_TRANSFORMS" : Goldengate Deployment Type category is
+  /// DATA_TRANSFORMS.
+  core.String? deploymentType;
+
+  /// The OGG version of the Goldengate Deployment Version resource.
+  ///
+  /// Output only.
+  core.String? oggVersion;
+
+  /// The release time of the Goldengate Deployment Version resource.
+  ///
+  /// Output only.
+  core.String? releaseTime;
+
+  /// The release type of the Goldengate Deployment Version resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_RELEASE_TYPE_UNSPECIFIED" : Default unspecified value.
+  /// - "MAJOR" : Goldengate Deployment Version release type is MAJOR.
+  /// - "BUNDLE" : Goldengate Deployment Version release type is BUNDLE.
+  /// - "MINOR" : Goldengate Deployment Version release type is MINOR.
+  core.String? releaseType;
+
+  /// Whether the Goldengate Deployment Version resource is a security fix.
+  ///
+  /// Optional.
+  core.bool? securityFix;
+
+  /// The support end time of the Goldengate Deployment Version resource.
+  ///
+  /// Output only.
+  core.String? supportEndTime;
+
+  GoldengateDeploymentVersionProperties({
+    this.deploymentType,
+    this.oggVersion,
+    this.releaseTime,
+    this.releaseType,
+    this.securityFix,
+    this.supportEndTime,
+  });
+
+  GoldengateDeploymentVersionProperties.fromJson(core.Map json_)
+    : this(
+        deploymentType: json_['deploymentType'] as core.String?,
+        oggVersion: json_['oggVersion'] as core.String?,
+        releaseTime: json_['releaseTime'] as core.String?,
+        releaseType: json_['releaseType'] as core.String?,
+        securityFix: json_['securityFix'] as core.bool?,
+        supportEndTime: json_['supportEndTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deploymentType = this.deploymentType;
+    final oggVersion = this.oggVersion;
+    final releaseTime = this.releaseTime;
+    final releaseType = this.releaseType;
+    final securityFix = this.securityFix;
+    final supportEndTime = this.supportEndTime;
+    return {
+      'deploymentType': ?deploymentType,
+      'oggVersion': ?oggVersion,
+      'releaseTime': ?releaseTime,
+      'releaseType': ?releaseType,
+      'securityFix': ?securityFix,
+      'supportEndTime': ?supportEndTime,
+    };
+  }
+}
+
+/// The properties of GoldengateElasticsearchConnection.
+class GoldengateElasticsearchConnectionProperties {
+  /// Authentication type for Elasticsearch.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ELASTICSEARCH_AUTHENTICATION_TYPE_UNSPECIFIED" : Authentication type
+  /// not specified.
+  /// - "NONE" : No authentication.
+  /// - "BASIC" : Basic authentication.
+  core.String? authenticationType;
+
+  /// Fingerprint required by TLS security protocol.
+  ///
+  /// Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
+  ///
+  /// Optional.
+  core.String? fingerprint;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses for Elastic Search connection in plain
+  /// text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses for Elastic Search connection. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// Security protocol for Elasticsearch.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ELASTICSEARCH_SECURITY_PROTOCOL_UNSPECIFIED" : Security protocol not
+  /// specified.
+  /// - "PLAIN" : Plain text communication.
+  /// - "TLS" : Transport Layer Security.
+  core.String? securityProtocol;
+
+  /// Comma separated list of Elasticsearch server addresses, specified as
+  /// host:port entries, where :port is optional.
+  ///
+  /// If port is not specified, it defaults to 9200. Example:
+  /// "server1.example.com:4000,server2.example.com:4000"
+  ///
+  /// Optional.
+  core.String? servers;
+
+  /// The technology type of ElasticsearchConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The username Oracle Goldengate uses to connect the associated system of
+  /// the given technology.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateElasticsearchConnectionProperties({
+    this.authenticationType,
+    this.fingerprint,
+    this.password,
+    this.passwordSecretVersion,
+    this.securityProtocol,
+    this.servers,
+    this.technologyType,
+    this.username,
+  });
+
+  GoldengateElasticsearchConnectionProperties.fromJson(core.Map json_)
+    : this(
+        authenticationType: json_['authenticationType'] as core.String?,
+        fingerprint: json_['fingerprint'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        securityProtocol: json_['securityProtocol'] as core.String?,
+        servers: json_['servers'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authenticationType = this.authenticationType;
+    final fingerprint = this.fingerprint;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final securityProtocol = this.securityProtocol;
+    final servers = this.servers;
+    final technologyType = this.technologyType;
+    final username = this.username;
+    return {
+      'authenticationType': ?authenticationType,
+      'fingerprint': ?fingerprint,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'securityProtocol': ?securityProtocol,
+      'servers': ?servers,
+      'technologyType': ?technologyType,
+      'username': ?username,
+    };
+  }
+}
+
+/// The properties of GoldengateGenericConnectionProperties.
+class GoldengateGenericConnectionProperties {
+  /// The host of the GenericConnection.
+  ///
+  /// Optional.
+  core.String? host;
+
+  /// The technology type.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  GoldengateGenericConnectionProperties({this.host, this.technologyType});
+
+  GoldengateGenericConnectionProperties.fromJson(core.Map json_)
+    : this(
+        host: json_['host'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final host = this.host;
+    final technologyType = this.technologyType;
+    return {'host': ?host, 'technologyType': ?technologyType};
+  }
+}
+
+/// The properties of GoldengateGoldengateConnectionProperties.
+class GoldengateGoldengateConnectionProperties {
+  /// The name of the GoldengateDeployment associated with the
+  /// GoldengateConnection.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+  ///
+  /// Optional.
+  core.String? goldengateDeploymentId;
+
+  /// The host of the GoldengateConnection.
+  ///
+  /// Optional.
+  core.String? host;
+
+  /// Input only.
+  ///
+  /// The password used to connect to the Oracle Goldengate in plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password used to connect to the Oracle Goldengate. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The port of the GoldengateConnection.
+  ///
+  /// Optional.
+  core.int? port;
+
+  /// The technology type.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The username credential.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateGoldengateConnectionProperties({
+    this.goldengateDeploymentId,
+    this.host,
+    this.password,
+    this.passwordSecretVersion,
+    this.port,
+    this.technologyType,
+    this.username,
+  });
+
+  GoldengateGoldengateConnectionProperties.fromJson(core.Map json_)
+    : this(
+        goldengateDeploymentId: json_['goldengateDeploymentId'] as core.String?,
+        host: json_['host'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        port: json_['port'] as core.int?,
+        technologyType: json_['technologyType'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final goldengateDeploymentId = this.goldengateDeploymentId;
+    final host = this.host;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final port = this.port;
+    final technologyType = this.technologyType;
+    final username = this.username;
+    return {
+      'goldengateDeploymentId': ?goldengateDeploymentId,
+      'host': ?host,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'port': ?port,
+      'technologyType': ?technologyType,
+      'username': ?username,
+    };
+  }
+}
+
+/// The properties of GoldengateGoogleBigQueryConnectionProperties.
+class GoldengateGoogleBigQueryConnectionProperties {
+  /// The base64 encoded content of the service account key file containing the
+  /// credentials required to use Google BigQuery.
+  ///
+  /// Optional.
+  core.String? serviceAccountKeyFile;
+
+  /// The technology type.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  GoldengateGoogleBigQueryConnectionProperties({
+    this.serviceAccountKeyFile,
+    this.technologyType,
+  });
+
+  GoldengateGoogleBigQueryConnectionProperties.fromJson(core.Map json_)
+    : this(
+        serviceAccountKeyFile: json_['serviceAccountKeyFile'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final serviceAccountKeyFile = this.serviceAccountKeyFile;
+    final technologyType = this.technologyType;
+    return {
+      'serviceAccountKeyFile': ?serviceAccountKeyFile,
+      'technologyType': ?technologyType,
+    };
+  }
+}
+
+/// The properties of GoldengateGoogleCloudStorageConnectionProperties.
+class GoldengateGoogleCloudStorageConnectionProperties {
+  /// The base64 encoded content of the service account key file containing the
+  /// credentials required to use Google Cloud Storage.
+  ///
+  /// Optional.
+  core.String? serviceAccountKeyFile;
+
+  /// The technology type.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  GoldengateGoogleCloudStorageConnectionProperties({
+    this.serviceAccountKeyFile,
+    this.technologyType,
+  });
+
+  GoldengateGoogleCloudStorageConnectionProperties.fromJson(core.Map json_)
+    : this(
+        serviceAccountKeyFile: json_['serviceAccountKeyFile'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final serviceAccountKeyFile = this.serviceAccountKeyFile;
+    final technologyType = this.technologyType;
+    return {
+      'serviceAccountKeyFile': ?serviceAccountKeyFile,
+      'technologyType': ?technologyType,
+    };
+  }
+}
+
+/// The properties of GoldengateGooglePubsubConnection.
+class GoldengateGooglePubsubConnectionProperties {
+  /// The base64 encoded content of the service account key file containing the
+  /// credentials required to use Google Pub/Sub.
+  ///
+  /// Optional.
+  core.String? serviceAccountKeyFile;
+
+  /// The technology type of GooglePubsubConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  GoldengateGooglePubsubConnectionProperties({
+    this.serviceAccountKeyFile,
+    this.technologyType,
+  });
+
+  GoldengateGooglePubsubConnectionProperties.fromJson(core.Map json_)
+    : this(
+        serviceAccountKeyFile: json_['serviceAccountKeyFile'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final serviceAccountKeyFile = this.serviceAccountKeyFile;
+    final technologyType = this.technologyType;
+    return {
+      'serviceAccountKeyFile': ?serviceAccountKeyFile,
+      'technologyType': ?technologyType,
+    };
+  }
+}
+
+/// The group to roles mapping of the GoldengateDeployment.
+class GoldengateGroupToRolesMapping {
+  /// The administrator group id.
+  ///
+  /// Output only.
+  core.String? administratorGroupId;
+
+  /// The operator group id.
+  ///
+  /// Output only.
+  core.String? operatorGroupId;
+
+  /// The security group id.
+  ///
+  /// Output only.
+  core.String? securityGroupId;
+
+  /// The user group id.
+  ///
+  /// Output only.
+  core.String? userGroupId;
+
+  GoldengateGroupToRolesMapping({
+    this.administratorGroupId,
+    this.operatorGroupId,
+    this.securityGroupId,
+    this.userGroupId,
+  });
+
+  GoldengateGroupToRolesMapping.fromJson(core.Map json_)
+    : this(
+        administratorGroupId: json_['administratorGroupId'] as core.String?,
+        operatorGroupId: json_['operatorGroupId'] as core.String?,
+        securityGroupId: json_['securityGroupId'] as core.String?,
+        userGroupId: json_['userGroupId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final administratorGroupId = this.administratorGroupId;
+    final operatorGroupId = this.operatorGroupId;
+    final securityGroupId = this.securityGroupId;
+    final userGroupId = this.userGroupId;
+    return {
+      'administratorGroupId': ?administratorGroupId,
+      'operatorGroupId': ?operatorGroupId,
+      'securityGroupId': ?securityGroupId,
+      'userGroupId': ?userGroupId,
+    };
+  }
+}
+
+/// The properties of GoldengateHdfsConnection.
+class GoldengateHdfsConnectionProperties {
+  /// The content of the Hadoop Distributed File System configuration file
+  /// (core-site.xml).
+  ///
+  /// Optional.
+  core.String? coreSiteXml;
+
+  /// The technology type of HdfsConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  GoldengateHdfsConnectionProperties({this.coreSiteXml, this.technologyType});
+
+  GoldengateHdfsConnectionProperties.fromJson(core.Map json_)
+    : this(
+        coreSiteXml: json_['coreSiteXml'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final coreSiteXml = this.coreSiteXml;
+    final technologyType = this.technologyType;
+    return {'coreSiteXml': ?coreSiteXml, 'technologyType': ?technologyType};
+  }
+}
+
+/// The properties of GoldengateIcebergConnection.
+class GoldengateIcebergConnectionProperties {
+  /// The Iceberg catalog.
+  ///
+  /// Required.
+  IcebergCatalog? catalog;
+
+  /// The Iceberg storage.
+  ///
+  /// Required.
+  IcebergStorage? storage;
+
+  /// The technology type of Iceberg connection.
+  ///
+  /// Required.
+  core.String? technologyType;
+
+  GoldengateIcebergConnectionProperties({
+    this.catalog,
+    this.storage,
+    this.technologyType,
+  });
+
+  GoldengateIcebergConnectionProperties.fromJson(core.Map json_)
+    : this(
+        catalog: json_.containsKey('catalog')
+            ? IcebergCatalog.fromJson(
+                json_['catalog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        storage: json_.containsKey('storage')
+            ? IcebergStorage.fromJson(
+                json_['storage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        technologyType: json_['technologyType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final catalog = this.catalog;
+    final storage = this.storage;
+    final technologyType = this.technologyType;
+    return {
+      'catalog': ?catalog,
+      'storage': ?storage,
+      'technologyType': ?technologyType,
+    };
+  }
+}
+
+/// The properties of GoldengateJavaMessageServiceConnection.
+class GoldengateJavaMessageServiceConnectionProperties {
+  /// Authentication type for Java Message Service.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "JMS_AUTHENTICATION_TYPE_UNSPECIFIED" : Authentication type not
+  /// specified.
+  /// - "NONE" : No authentication.
+  /// - "BASIC" : Basic authentication.
+  core.String? authenticationType;
+
+  /// The Java class implementing javax.jms.ConnectionFactory interface supplied
+  /// by the JMS provider.
+  ///
+  /// Optional.
+  core.String? connectionFactory;
+
+  /// Connection URL of the Java Message Service, specifying the protocol, host,
+  /// and port.
+  ///
+  /// e.g.: 'mq://myjms.host.domain:7676'
+  ///
+  /// Optional.
+  core.String? connectionUrl;
+
+  /// The Connection Factory can be looked up using this name.
+  ///
+  /// e.g.: 'ConnectionFactory'
+  ///
+  /// Optional.
+  core.String? jndiConnectionFactory;
+
+  /// The implementation of javax.naming.spi.InitialContextFactory interface
+  /// used to obtain initial naming context.
+  ///
+  /// Optional.
+  core.String? jndiInitialContextFactory;
+
+  /// The URL that Java Message Service will use to contact the JNDI provider.
+  ///
+  /// e.g.: 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
+  ///
+  /// Optional.
+  core.String? jndiProviderUrl;
+
+  /// The password associated to the principal.
+  ///
+  /// Optional.
+  core.String? jndiSecurityCredentialsSecret;
+
+  /// Specifies the identity of the principal (user) to be authenticated.
+  ///
+  /// Optional.
+  core.String? jndiSecurityPrincipal;
+
+  /// The base64 encoded content of the KeyStore file.
+  ///
+  /// Optional.
+  core.String? keyStoreFile;
+
+  /// Input only.
+  ///
+  /// The KeyStore password in plain text.
+  ///
+  /// Optional.
+  core.String? keyStorePassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// KeyStore password. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? keyStorePasswordSecretVersion;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses to connect the Java Message Service in
+  /// plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses to connect the associated Java Message
+  /// Service. Format: projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// Security protocol for Java Message Service.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "JMS_SECURITY_PROTOCOL_UNSPECIFIED" : Security protocol not specified.
+  /// - "PLAIN" : Plain text communication.
+  /// - "TLS" : Transport Layer Security.
+  /// - "MTLS" : Mutual Transport Layer Security.
+  core.String? securityProtocol;
+
+  /// Input only.
+  ///
+  /// The password for the cert inside of the KeyStore in plain text.
+  ///
+  /// Optional.
+  core.String? sslKeyPassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password for the cert inside of the KeyStore. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? sslKeyPasswordSecretVersion;
+
+  /// The technology type of JavaMessageServiceConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The base64 encoded content of the TrustStore file.
+  ///
+  /// Optional.
+  core.String? trustStoreFile;
+
+  /// Input only.
+  ///
+  /// The TrustStore password in plain text.
+  ///
+  /// Optional.
+  core.String? trustStorePassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// TrustStore password. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? trustStorePasswordSecretVersion;
+
+  /// If set to true, Java Naming and Directory Interface (JNDI) properties
+  /// should be provided.
+  ///
+  /// Optional.
+  core.bool? useJndi;
+
+  /// The username Oracle Goldengate uses to connect to the Java Message
+  /// Service.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateJavaMessageServiceConnectionProperties({
+    this.authenticationType,
+    this.connectionFactory,
+    this.connectionUrl,
+    this.jndiConnectionFactory,
+    this.jndiInitialContextFactory,
+    this.jndiProviderUrl,
+    this.jndiSecurityCredentialsSecret,
+    this.jndiSecurityPrincipal,
+    this.keyStoreFile,
+    this.keyStorePassword,
+    this.keyStorePasswordSecretVersion,
+    this.password,
+    this.passwordSecretVersion,
+    this.securityProtocol,
+    this.sslKeyPassword,
+    this.sslKeyPasswordSecretVersion,
+    this.technologyType,
+    this.trustStoreFile,
+    this.trustStorePassword,
+    this.trustStorePasswordSecretVersion,
+    this.useJndi,
+    this.username,
+  });
+
+  GoldengateJavaMessageServiceConnectionProperties.fromJson(core.Map json_)
+    : this(
+        authenticationType: json_['authenticationType'] as core.String?,
+        connectionFactory: json_['connectionFactory'] as core.String?,
+        connectionUrl: json_['connectionUrl'] as core.String?,
+        jndiConnectionFactory: json_['jndiConnectionFactory'] as core.String?,
+        jndiInitialContextFactory:
+            json_['jndiInitialContextFactory'] as core.String?,
+        jndiProviderUrl: json_['jndiProviderUrl'] as core.String?,
+        jndiSecurityCredentialsSecret:
+            json_['jndiSecurityCredentialsSecret'] as core.String?,
+        jndiSecurityPrincipal: json_['jndiSecurityPrincipal'] as core.String?,
+        keyStoreFile: json_['keyStoreFile'] as core.String?,
+        keyStorePassword: json_['keyStorePassword'] as core.String?,
+        keyStorePasswordSecretVersion:
+            json_['keyStorePasswordSecretVersion'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        securityProtocol: json_['securityProtocol'] as core.String?,
+        sslKeyPassword: json_['sslKeyPassword'] as core.String?,
+        sslKeyPasswordSecretVersion:
+            json_['sslKeyPasswordSecretVersion'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        trustStoreFile: json_['trustStoreFile'] as core.String?,
+        trustStorePassword: json_['trustStorePassword'] as core.String?,
+        trustStorePasswordSecretVersion:
+            json_['trustStorePasswordSecretVersion'] as core.String?,
+        useJndi: json_['useJndi'] as core.bool?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authenticationType = this.authenticationType;
+    final connectionFactory = this.connectionFactory;
+    final connectionUrl = this.connectionUrl;
+    final jndiConnectionFactory = this.jndiConnectionFactory;
+    final jndiInitialContextFactory = this.jndiInitialContextFactory;
+    final jndiProviderUrl = this.jndiProviderUrl;
+    final jndiSecurityCredentialsSecret = this.jndiSecurityCredentialsSecret;
+    final jndiSecurityPrincipal = this.jndiSecurityPrincipal;
+    final keyStoreFile = this.keyStoreFile;
+    final keyStorePassword = this.keyStorePassword;
+    final keyStorePasswordSecretVersion = this.keyStorePasswordSecretVersion;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final securityProtocol = this.securityProtocol;
+    final sslKeyPassword = this.sslKeyPassword;
+    final sslKeyPasswordSecretVersion = this.sslKeyPasswordSecretVersion;
+    final technologyType = this.technologyType;
+    final trustStoreFile = this.trustStoreFile;
+    final trustStorePassword = this.trustStorePassword;
+    final trustStorePasswordSecretVersion =
+        this.trustStorePasswordSecretVersion;
+    final useJndi = this.useJndi;
+    final username = this.username;
+    return {
+      'authenticationType': ?authenticationType,
+      'connectionFactory': ?connectionFactory,
+      'connectionUrl': ?connectionUrl,
+      'jndiConnectionFactory': ?jndiConnectionFactory,
+      'jndiInitialContextFactory': ?jndiInitialContextFactory,
+      'jndiProviderUrl': ?jndiProviderUrl,
+      'jndiSecurityCredentialsSecret': ?jndiSecurityCredentialsSecret,
+      'jndiSecurityPrincipal': ?jndiSecurityPrincipal,
+      'keyStoreFile': ?keyStoreFile,
+      'keyStorePassword': ?keyStorePassword,
+      'keyStorePasswordSecretVersion': ?keyStorePasswordSecretVersion,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'securityProtocol': ?securityProtocol,
+      'sslKeyPassword': ?sslKeyPassword,
+      'sslKeyPasswordSecretVersion': ?sslKeyPasswordSecretVersion,
+      'technologyType': ?technologyType,
+      'trustStoreFile': ?trustStoreFile,
+      'trustStorePassword': ?trustStorePassword,
+      'trustStorePasswordSecretVersion': ?trustStorePasswordSecretVersion,
+      'useJndi': ?useJndi,
+      'username': ?username,
+    };
+  }
+}
+
+/// The properties of GoldengateKafkaConnection.
+class GoldengateKafkaConnectionProperties {
+  /// Kafka bootstrap.
+  ///
+  /// Equivalent of bootstrap.servers configuration property in Kafka: list of
+  /// KafkaBootstrapServer objects specified by host/port. Used for establishing
+  /// the initial connection to the Kafka cluster. Example:
+  /// "server1.example.com:9092,server2.example.com:9092"
+  ///
+  /// Optional.
+  core.List<KafkaBootstrapServer>? bootstrapServers;
+
+  /// The OCID of the Kafka cluster being referenced from OCI Streaming with
+  /// Apache Kafka.
+  ///
+  /// Optional.
+  core.String? clusterId;
+
+  /// The base64 encoded content of the consumer.properties file.
+  ///
+  /// Optional.
+  core.String? consumerPropertiesFile;
+
+  /// The base64 encoded content of the KeyStore file.
+  ///
+  /// Optional.
+  core.String? keyStoreFile;
+
+  /// Input only.
+  ///
+  /// The KeyStore password in plain text.
+  ///
+  /// Optional.
+  core.String? keyStorePassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// KeyStore password. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? keyStorePasswordSecretVersion;
+
+  /// Input only.
+  ///
+  /// The password for Kafka basic/SASL auth in plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password for Kafka basic/SASL auth. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The base64 encoded content of the producer.properties file.
+  ///
+  /// Optional.
+  core.String? producerPropertiesFile;
+
+  /// Security Type for Kafka.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "KAFKA_SECURITY_PROTOCOL_UNSPECIFIED" : Security type not specified.
+  /// - "SSL" : SSL security protocol.
+  /// - "SASL_SSL" : SASL SSL security protocol.
+  /// - "PLAINTEXT" : Plaintext security protocol.
+  /// - "SASL_PLAINTEXT" : SASL Plaintext security protocol.
+  core.String? securityProtocol;
+
+  /// Input only.
+  ///
+  /// The password for the cert inside of the KeyStore in plain text.
+  ///
+  /// Optional.
+  core.String? sslKeyPassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password for the cert inside of the KeyStore. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? sslKeyPasswordSecretVersion;
+
+  /// The OCID of the stream pool being referenced.
+  ///
+  /// Optional.
+  core.String? streamPoolId;
+
+  /// The technology type of KafkaConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The base64 encoded content of the TrustStore file.
+  ///
+  /// Optional.
+  core.String? trustStoreFile;
+
+  /// Input only.
+  ///
+  /// The TrustStore password in plain text.
+  ///
+  /// Optional.
+  core.String? trustStorePassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// TrustStore password. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? trustStorePasswordSecretVersion;
+
+  /// Specifies that the user intends to authenticate to the instance using a
+  /// resource principal.
+  ///
+  /// Applicable only for OCI Streaming connections.
+  ///
+  /// Optional.
+  core.bool? useResourcePrincipal;
+
+  /// The username Oracle Goldengate uses to connect the associated system of
+  /// the given technology.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateKafkaConnectionProperties({
+    this.bootstrapServers,
+    this.clusterId,
+    this.consumerPropertiesFile,
+    this.keyStoreFile,
+    this.keyStorePassword,
+    this.keyStorePasswordSecretVersion,
+    this.password,
+    this.passwordSecretVersion,
+    this.producerPropertiesFile,
+    this.securityProtocol,
+    this.sslKeyPassword,
+    this.sslKeyPasswordSecretVersion,
+    this.streamPoolId,
+    this.technologyType,
+    this.trustStoreFile,
+    this.trustStorePassword,
+    this.trustStorePasswordSecretVersion,
+    this.useResourcePrincipal,
+    this.username,
+  });
+
+  GoldengateKafkaConnectionProperties.fromJson(core.Map json_)
+    : this(
+        bootstrapServers: (json_['bootstrapServers'] as core.List?)
+            ?.map(
+              (value) => KafkaBootstrapServer.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        clusterId: json_['clusterId'] as core.String?,
+        consumerPropertiesFile: json_['consumerPropertiesFile'] as core.String?,
+        keyStoreFile: json_['keyStoreFile'] as core.String?,
+        keyStorePassword: json_['keyStorePassword'] as core.String?,
+        keyStorePasswordSecretVersion:
+            json_['keyStorePasswordSecretVersion'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        producerPropertiesFile: json_['producerPropertiesFile'] as core.String?,
+        securityProtocol: json_['securityProtocol'] as core.String?,
+        sslKeyPassword: json_['sslKeyPassword'] as core.String?,
+        sslKeyPasswordSecretVersion:
+            json_['sslKeyPasswordSecretVersion'] as core.String?,
+        streamPoolId: json_['streamPoolId'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        trustStoreFile: json_['trustStoreFile'] as core.String?,
+        trustStorePassword: json_['trustStorePassword'] as core.String?,
+        trustStorePasswordSecretVersion:
+            json_['trustStorePasswordSecretVersion'] as core.String?,
+        useResourcePrincipal: json_['useResourcePrincipal'] as core.bool?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bootstrapServers = this.bootstrapServers;
+    final clusterId = this.clusterId;
+    final consumerPropertiesFile = this.consumerPropertiesFile;
+    final keyStoreFile = this.keyStoreFile;
+    final keyStorePassword = this.keyStorePassword;
+    final keyStorePasswordSecretVersion = this.keyStorePasswordSecretVersion;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final producerPropertiesFile = this.producerPropertiesFile;
+    final securityProtocol = this.securityProtocol;
+    final sslKeyPassword = this.sslKeyPassword;
+    final sslKeyPasswordSecretVersion = this.sslKeyPasswordSecretVersion;
+    final streamPoolId = this.streamPoolId;
+    final technologyType = this.technologyType;
+    final trustStoreFile = this.trustStoreFile;
+    final trustStorePassword = this.trustStorePassword;
+    final trustStorePasswordSecretVersion =
+        this.trustStorePasswordSecretVersion;
+    final useResourcePrincipal = this.useResourcePrincipal;
+    final username = this.username;
+    return {
+      'bootstrapServers': ?bootstrapServers,
+      'clusterId': ?clusterId,
+      'consumerPropertiesFile': ?consumerPropertiesFile,
+      'keyStoreFile': ?keyStoreFile,
+      'keyStorePassword': ?keyStorePassword,
+      'keyStorePasswordSecretVersion': ?keyStorePasswordSecretVersion,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'producerPropertiesFile': ?producerPropertiesFile,
+      'securityProtocol': ?securityProtocol,
+      'sslKeyPassword': ?sslKeyPassword,
+      'sslKeyPasswordSecretVersion': ?sslKeyPasswordSecretVersion,
+      'streamPoolId': ?streamPoolId,
+      'technologyType': ?technologyType,
+      'trustStoreFile': ?trustStoreFile,
+      'trustStorePassword': ?trustStorePassword,
+      'trustStorePasswordSecretVersion': ?trustStorePasswordSecretVersion,
+      'useResourcePrincipal': ?useResourcePrincipal,
+      'username': ?username,
+    };
+  }
+}
+
+/// The properties of GoldengateKafkaSchemaRegistryConnection.
+class GoldengateKafkaSchemaRegistryConnectionProperties {
+  /// Used authentication mechanism to access Schema Registry.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTHENTICATION_TYPE_UNSPECIFIED" : Authentication type not specified.
+  /// - "NONE" : No authentication.
+  /// - "BASIC" : Basic authentication.
+  /// - "MUTUAL" : Mutual authentication.
+  core.String? authenticationType;
+
+  /// The base64 encoded content of the KeyStore file.
+  ///
+  /// Optional.
+  core.String? keyStoreFile;
+
+  /// Input only.
+  ///
+  /// The KeyStore password in plain text.
+  ///
+  /// Optional.
+  core.String? keyStorePassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// KeyStore password. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? keyStorePasswordSecretVersion;
+
+  /// Input only.
+  ///
+  /// The password to access Schema Registry in plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password to access Schema Registry using basic authentication. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// Input only.
+  ///
+  /// The password for the cert inside the KeyStore in plain text.
+  ///
+  /// Optional.
+  core.String? sslKeyPassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password for the cert inside the KeyStore. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? sslKeyPasswordSecretVersion;
+
+  /// The technology type of KafkaSchemaRegistryConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The base64 encoded content of the TrustStore file.
+  ///
+  /// Optional.
+  core.String? trustStoreFile;
+
+  /// Input only.
+  ///
+  /// The TrustStore password in plain text.
+  ///
+  /// Optional.
+  core.String? trustStorePassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// TrustStore password. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? trustStorePasswordSecretVersion;
+
+  /// Kafka Schema Registry URL.
+  ///
+  /// e.g.: 'https://server1.us.oracle.com:8081'
+  ///
+  /// Optional.
+  core.String? url;
+
+  /// The username to access Schema Registry using basic authentication.
+  ///
+  /// This value is injected into
+  /// 'schema.registry.basic.auth.user.info=user:password' configuration
+  /// property.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateKafkaSchemaRegistryConnectionProperties({
+    this.authenticationType,
+    this.keyStoreFile,
+    this.keyStorePassword,
+    this.keyStorePasswordSecretVersion,
+    this.password,
+    this.passwordSecretVersion,
+    this.sslKeyPassword,
+    this.sslKeyPasswordSecretVersion,
+    this.technologyType,
+    this.trustStoreFile,
+    this.trustStorePassword,
+    this.trustStorePasswordSecretVersion,
+    this.url,
+    this.username,
+  });
+
+  GoldengateKafkaSchemaRegistryConnectionProperties.fromJson(core.Map json_)
+    : this(
+        authenticationType: json_['authenticationType'] as core.String?,
+        keyStoreFile: json_['keyStoreFile'] as core.String?,
+        keyStorePassword: json_['keyStorePassword'] as core.String?,
+        keyStorePasswordSecretVersion:
+            json_['keyStorePasswordSecretVersion'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        sslKeyPassword: json_['sslKeyPassword'] as core.String?,
+        sslKeyPasswordSecretVersion:
+            json_['sslKeyPasswordSecretVersion'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        trustStoreFile: json_['trustStoreFile'] as core.String?,
+        trustStorePassword: json_['trustStorePassword'] as core.String?,
+        trustStorePasswordSecretVersion:
+            json_['trustStorePasswordSecretVersion'] as core.String?,
+        url: json_['url'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authenticationType = this.authenticationType;
+    final keyStoreFile = this.keyStoreFile;
+    final keyStorePassword = this.keyStorePassword;
+    final keyStorePasswordSecretVersion = this.keyStorePasswordSecretVersion;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final sslKeyPassword = this.sslKeyPassword;
+    final sslKeyPasswordSecretVersion = this.sslKeyPasswordSecretVersion;
+    final technologyType = this.technologyType;
+    final trustStoreFile = this.trustStoreFile;
+    final trustStorePassword = this.trustStorePassword;
+    final trustStorePasswordSecretVersion =
+        this.trustStorePasswordSecretVersion;
+    final url = this.url;
+    final username = this.username;
+    return {
+      'authenticationType': ?authenticationType,
+      'keyStoreFile': ?keyStoreFile,
+      'keyStorePassword': ?keyStorePassword,
+      'keyStorePasswordSecretVersion': ?keyStorePasswordSecretVersion,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'sslKeyPassword': ?sslKeyPassword,
+      'sslKeyPasswordSecretVersion': ?sslKeyPasswordSecretVersion,
+      'technologyType': ?technologyType,
+      'trustStoreFile': ?trustStoreFile,
+      'trustStorePassword': ?trustStorePassword,
+      'trustStorePasswordSecretVersion': ?trustStorePasswordSecretVersion,
+      'url': ?url,
+      'username': ?username,
+    };
+  }
+}
+
+/// The maintenance configuration of the GoldengateDeployment.
+class GoldengateMaintenanceConfig {
+  /// Defines auto upgrade period for bundle releases.
+  ///
+  /// Manually configured period cannot be longer than service defined period
+  /// for bundle releases. This period must be shorter or equal to major release
+  /// upgrade period. Not passing this field during create will equate to using
+  /// the service default.
+  ///
+  /// Optional.
+  core.int? bundleReleaseUpgradePeriodDays;
+
+  /// Defines auto upgrade period for interim releases.
+  ///
+  /// This period must be shorter or equal to bundle release upgrade period.
+  ///
+  /// Optional.
+  core.int? interimReleaseUpgradePeriodDays;
+
+  /// By default auto upgrade for interim releases are not enabled.
+  ///
+  /// If auto-upgrade is enabled for interim release, you have to specify
+  /// interim_release_upgrade_period_days too.
+  ///
+  /// Optional.
+  core.bool? isInterimReleaseAutoUpgradeEnabled;
+
+  /// Defines auto upgrade period for major releases.
+  ///
+  /// Manually configured period cannot be longer than service defined period
+  /// for major releases. Not passing this field during create will equate to
+  /// using the service default.
+  ///
+  /// Optional.
+  core.int? majorReleaseUpgradePeriodDays;
+
+  /// Defines auto upgrade period for releases with security fix.
+  ///
+  /// Manually configured period cannot be longer than service defined period
+  /// for security releases. Not passing this field during create will equate to
+  /// using the service default.
+  ///
+  /// Optional.
+  core.int? securityPatchUpgradePeriodDays;
+
+  GoldengateMaintenanceConfig({
+    this.bundleReleaseUpgradePeriodDays,
+    this.interimReleaseUpgradePeriodDays,
+    this.isInterimReleaseAutoUpgradeEnabled,
+    this.majorReleaseUpgradePeriodDays,
+    this.securityPatchUpgradePeriodDays,
+  });
+
+  GoldengateMaintenanceConfig.fromJson(core.Map json_)
+    : this(
+        bundleReleaseUpgradePeriodDays:
+            json_['bundleReleaseUpgradePeriodDays'] as core.int?,
+        interimReleaseUpgradePeriodDays:
+            json_['interimReleaseUpgradePeriodDays'] as core.int?,
+        isInterimReleaseAutoUpgradeEnabled:
+            json_['isInterimReleaseAutoUpgradeEnabled'] as core.bool?,
+        majorReleaseUpgradePeriodDays:
+            json_['majorReleaseUpgradePeriodDays'] as core.int?,
+        securityPatchUpgradePeriodDays:
+            json_['securityPatchUpgradePeriodDays'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bundleReleaseUpgradePeriodDays = this.bundleReleaseUpgradePeriodDays;
+    final interimReleaseUpgradePeriodDays =
+        this.interimReleaseUpgradePeriodDays;
+    final isInterimReleaseAutoUpgradeEnabled =
+        this.isInterimReleaseAutoUpgradeEnabled;
+    final majorReleaseUpgradePeriodDays = this.majorReleaseUpgradePeriodDays;
+    final securityPatchUpgradePeriodDays = this.securityPatchUpgradePeriodDays;
+    return {
+      'bundleReleaseUpgradePeriodDays': ?bundleReleaseUpgradePeriodDays,
+      'interimReleaseUpgradePeriodDays': ?interimReleaseUpgradePeriodDays,
+      'isInterimReleaseAutoUpgradeEnabled': ?isInterimReleaseAutoUpgradeEnabled,
+      'majorReleaseUpgradePeriodDays': ?majorReleaseUpgradePeriodDays,
+      'securityPatchUpgradePeriodDays': ?securityPatchUpgradePeriodDays,
+    };
+  }
+}
+
+/// The maintenance window of the GoldengateDeployment.
+class GoldengateMaintenanceWindow {
+  /// Days of the week.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? day;
+
+  /// Start hour for maintenance period.
+  ///
+  /// Hour is in UTC.
+  ///
+  /// Required.
+  core.int? startHour;
+
+  GoldengateMaintenanceWindow({this.day, this.startHour});
+
+  GoldengateMaintenanceWindow.fromJson(core.Map json_)
+    : this(
+        day: json_['day'] as core.String?,
+        startHour: json_['startHour'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final day = this.day;
+    final startHour = this.startHour;
+    return {'day': ?day, 'startHour': ?startHour};
+  }
+}
+
+/// The properties of GoldengateMicrosoftFabricConnection.
+class GoldengateMicrosoftFabricConnectionProperties {
+  /// Azure client ID of the application.
+  ///
+  /// Optional.
+  core.String? clientId;
+
+  /// Client secret associated with the client id.
+  ///
+  /// Optional.
+  core.String? clientSecret;
+
+  /// Optional Microsoft Fabric service endpoint.
+  ///
+  /// Default value: https://onelake.dfs.fabric.microsoft.com
+  ///
+  /// Optional.
+  core.String? endpoint;
+
+  /// The technology type of MicrosoftFabricConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// Azure tenant ID of the application.
+  ///
+  /// Optional.
+  core.String? tenantId;
+
+  GoldengateMicrosoftFabricConnectionProperties({
+    this.clientId,
+    this.clientSecret,
+    this.endpoint,
+    this.technologyType,
+    this.tenantId,
+  });
+
+  GoldengateMicrosoftFabricConnectionProperties.fromJson(core.Map json_)
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        endpoint: json_['endpoint'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        tenantId: json_['tenantId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientId = this.clientId;
+    final clientSecret = this.clientSecret;
+    final endpoint = this.endpoint;
+    final technologyType = this.technologyType;
+    final tenantId = this.tenantId;
+    return {
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+      'endpoint': ?endpoint,
+      'technologyType': ?technologyType,
+      'tenantId': ?tenantId,
+    };
+  }
+}
+
+/// The properties of GoldengateMicrosoftSqlserverConnection.
+class GoldengateMicrosoftSqlserverConnectionProperties {
+  /// An array of name-value pair attribute entries.
+  ///
+  /// Used as additional parameters in connection string.
+  ///
+  /// Optional.
+  core.List<NameValuePair>? additionalAttributes;
+
+  /// The name of the database.
+  ///
+  /// Optional.
+  core.String? database;
+
+  /// The name or address of a host.
+  ///
+  /// Optional.
+  core.String? host;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses for Microsoft SQL Server connection in
+  /// plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses for Microsoft SQL Server connection.
+  /// Format: projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The port of an endpoint usually specified for a connection.
+  ///
+  /// Optional.
+  core.int? port;
+
+  /// Security Type for Microsoft SQL Server.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MICROSOFT_SQLSERVER_SECURITY_PROTOCOL_UNSPECIFIED" : Security type not
+  /// specified.
+  /// - "PLAIN" : Plain text communication.
+  /// - "TLS" : Transport Layer Security.
+  core.String? securityProtocol;
+
+  /// If set to true, the driver validates the certificate that is sent by the
+  /// database server.
+  ///
+  /// Optional.
+  core.bool? serverCertificateValidationRequired;
+
+  /// Database Certificate - The base64 encoded content of a .pem or .crt file
+  /// containing the server public key (for 1-way SSL).
+  ///
+  /// Optional.
+  core.String? sslCaFile;
+
+  /// The technology type of MicrosoftSqlserverConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The username Oracle Goldengate uses to connect to the Microsoft SQL
+  /// Server.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateMicrosoftSqlserverConnectionProperties({
+    this.additionalAttributes,
+    this.database,
+    this.host,
+    this.password,
+    this.passwordSecretVersion,
+    this.port,
+    this.securityProtocol,
+    this.serverCertificateValidationRequired,
+    this.sslCaFile,
+    this.technologyType,
+    this.username,
+  });
+
+  GoldengateMicrosoftSqlserverConnectionProperties.fromJson(core.Map json_)
+    : this(
+        additionalAttributes: (json_['additionalAttributes'] as core.List?)
+            ?.map(
+              (value) => NameValuePair.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        database: json_['database'] as core.String?,
+        host: json_['host'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        port: json_['port'] as core.int?,
+        securityProtocol: json_['securityProtocol'] as core.String?,
+        serverCertificateValidationRequired:
+            json_['serverCertificateValidationRequired'] as core.bool?,
+        sslCaFile: json_['sslCaFile'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalAttributes = this.additionalAttributes;
+    final database = this.database;
+    final host = this.host;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final port = this.port;
+    final securityProtocol = this.securityProtocol;
+    final serverCertificateValidationRequired =
+        this.serverCertificateValidationRequired;
+    final sslCaFile = this.sslCaFile;
+    final technologyType = this.technologyType;
+    final username = this.username;
+    return {
+      'additionalAttributes': ?additionalAttributes,
+      'database': ?database,
+      'host': ?host,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'port': ?port,
+      'securityProtocol': ?securityProtocol,
+      'serverCertificateValidationRequired':
+          ?serverCertificateValidationRequired,
+      'sslCaFile': ?sslCaFile,
+      'technologyType': ?technologyType,
+      'username': ?username,
+    };
+  }
+}
+
+/// The properties of GoldengateMongodbConnection.
+class GoldengateMongodbConnectionProperties {
+  /// MongoDB connection string.
+  ///
+  /// e.g.: 'mongodb://mongodb0.example.com:27017/recordsrecords'
+  ///
+  /// Optional.
+  core.String? connectionString;
+
+  /// The OCID of the Oracle Autonomous Json Database.
+  ///
+  /// Optional.
+  core.String? databaseId;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses to connect the Mongodb connection in
+  /// plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses to connect the Mongodb connection. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// Security Type for MongoDB.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MONGODB_SECURITY_PROTOCOL_UNSPECIFIED" : Security type not specified.
+  /// - "PLAIN" : Plain text communication.
+  /// - "TLS" : Transport Layer Security.
+  /// - "MTLS" : Mutual Transport Layer Security.
+  core.String? securityProtocol;
+
+  /// The technology type of MongodbConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// Database Certificate - The base64 encoded content of a .pem file,
+  /// containing the server public key (for 1 and 2-way SSL).
+  ///
+  /// Optional.
+  core.String? tlsCaFile;
+
+  /// Client Certificate - The base64 encoded content of a .pem file, containing
+  /// the client public key (for 2-way SSL).
+  ///
+  /// Optional.
+  core.String? tlsCertificateKeyFile;
+
+  /// Input only.
+  ///
+  /// The Client Certificate key file password in plain text.
+  ///
+  /// Optional.
+  core.String? tlsCertificateKeyFilePassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// Client Certificate key file password in Secret Manager. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? tlsCertificateKeyFilePasswordSecretVersion;
+
+  /// The username Oracle Goldengate uses to connect to the database.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateMongodbConnectionProperties({
+    this.connectionString,
+    this.databaseId,
+    this.password,
+    this.passwordSecretVersion,
+    this.securityProtocol,
+    this.technologyType,
+    this.tlsCaFile,
+    this.tlsCertificateKeyFile,
+    this.tlsCertificateKeyFilePassword,
+    this.tlsCertificateKeyFilePasswordSecretVersion,
+    this.username,
+  });
+
+  GoldengateMongodbConnectionProperties.fromJson(core.Map json_)
+    : this(
+        connectionString: json_['connectionString'] as core.String?,
+        databaseId: json_['databaseId'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        securityProtocol: json_['securityProtocol'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        tlsCaFile: json_['tlsCaFile'] as core.String?,
+        tlsCertificateKeyFile: json_['tlsCertificateKeyFile'] as core.String?,
+        tlsCertificateKeyFilePassword:
+            json_['tlsCertificateKeyFilePassword'] as core.String?,
+        tlsCertificateKeyFilePasswordSecretVersion:
+            json_['tlsCertificateKeyFilePasswordSecretVersion'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionString = this.connectionString;
+    final databaseId = this.databaseId;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final securityProtocol = this.securityProtocol;
+    final technologyType = this.technologyType;
+    final tlsCaFile = this.tlsCaFile;
+    final tlsCertificateKeyFile = this.tlsCertificateKeyFile;
+    final tlsCertificateKeyFilePassword = this.tlsCertificateKeyFilePassword;
+    final tlsCertificateKeyFilePasswordSecretVersion =
+        this.tlsCertificateKeyFilePasswordSecretVersion;
+    final username = this.username;
+    return {
+      'connectionString': ?connectionString,
+      'databaseId': ?databaseId,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'securityProtocol': ?securityProtocol,
+      'technologyType': ?technologyType,
+      'tlsCaFile': ?tlsCaFile,
+      'tlsCertificateKeyFile': ?tlsCertificateKeyFile,
+      'tlsCertificateKeyFilePassword': ?tlsCertificateKeyFilePassword,
+      'tlsCertificateKeyFilePasswordSecretVersion':
+          ?tlsCertificateKeyFilePasswordSecretVersion,
+      'username': ?username,
+    };
+  }
+}
+
+/// Properties of GoldengateMysqlConnection.
+class GoldengateMysqlConnectionProperties {
+  /// An array of name-value pair attribute entries.
+  ///
+  /// Used as additional parameters in connection string.
+  ///
+  /// Optional.
+  core.List<NameValuePair>? additionalAttributes;
+
+  /// The name of the database.
+  ///
+  /// Optional.
+  core.String? database;
+
+  /// The OCID of the database system being referenced.
+  ///
+  /// Optional.
+  core.String? dbSystemId;
+
+  /// The name or address of a host.
+  ///
+  /// Optional.
+  core.String? host;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses to connect to MySQL in plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses to connect to MySQL. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The port of an endpoint usually specified for a connection.
+  ///
+  /// Optional.
+  core.int? port;
+
+  /// Security Type for MySQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MYSQL_SECURITY_PROTOCOL_UNSPECIFIED" : Security type not specified.
+  /// - "PLAIN" : Plain text communication.
+  /// - "TLS" : Transport Layer Security.
+  /// - "MTLS" : Mutual Transport Layer Security.
+  core.String? securityProtocol;
+
+  /// Database Certificate - The base64 encoded content of a .pem or .crt file
+  /// containing the server public key (for 1 and 2-way SSL).
+  ///
+  /// Optional.
+  core.String? sslCaFile;
+
+  /// Client Certificate - The base64 encoded content of a .pem or .crt file
+  /// containing the client public key (for 2-way SSL).
+  ///
+  /// Optional.
+  core.String? sslCertFile;
+
+  /// The base64 encoded list of certificates revoked by the trusted certificate
+  /// authorities (Trusted CA).
+  ///
+  /// Optional.
+  core.String? sslCrlFile;
+
+  /// Client Key - The base64 encoded content of a .pem or .crt file containing
+  /// the client private key (for 2-way SSL).
+  ///
+  /// Optional.
+  core.String? sslKeyFile;
+
+  /// SSL modes for MySQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SSL_MODE_UNSPECIFIED" : SSL mode not specified.
+  /// - "DISABLED" : SSL is disabled.
+  /// - "PREFERRED" : SSL is preferred.
+  /// - "REQUIRED" : SSL is required.
+  /// - "VERIFY_CA" : SSL is required and certificate is verified.
+  /// - "VERIFY_IDENTITY" : SSL is required and certificate and hostname are
+  /// verified.
+  core.String? sslMode;
+
+  /// The technology type of MysqlConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The username Oracle Goldengate uses to connect the associated system of
+  /// the given technology.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateMysqlConnectionProperties({
+    this.additionalAttributes,
+    this.database,
+    this.dbSystemId,
+    this.host,
+    this.password,
+    this.passwordSecretVersion,
+    this.port,
+    this.securityProtocol,
+    this.sslCaFile,
+    this.sslCertFile,
+    this.sslCrlFile,
+    this.sslKeyFile,
+    this.sslMode,
+    this.technologyType,
+    this.username,
+  });
+
+  GoldengateMysqlConnectionProperties.fromJson(core.Map json_)
+    : this(
+        additionalAttributes: (json_['additionalAttributes'] as core.List?)
+            ?.map(
+              (value) => NameValuePair.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        database: json_['database'] as core.String?,
+        dbSystemId: json_['dbSystemId'] as core.String?,
+        host: json_['host'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        port: json_['port'] as core.int?,
+        securityProtocol: json_['securityProtocol'] as core.String?,
+        sslCaFile: json_['sslCaFile'] as core.String?,
+        sslCertFile: json_['sslCertFile'] as core.String?,
+        sslCrlFile: json_['sslCrlFile'] as core.String?,
+        sslKeyFile: json_['sslKeyFile'] as core.String?,
+        sslMode: json_['sslMode'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalAttributes = this.additionalAttributes;
+    final database = this.database;
+    final dbSystemId = this.dbSystemId;
+    final host = this.host;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final port = this.port;
+    final securityProtocol = this.securityProtocol;
+    final sslCaFile = this.sslCaFile;
+    final sslCertFile = this.sslCertFile;
+    final sslCrlFile = this.sslCrlFile;
+    final sslKeyFile = this.sslKeyFile;
+    final sslMode = this.sslMode;
+    final technologyType = this.technologyType;
+    final username = this.username;
+    return {
+      'additionalAttributes': ?additionalAttributes,
+      'database': ?database,
+      'dbSystemId': ?dbSystemId,
+      'host': ?host,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'port': ?port,
+      'securityProtocol': ?securityProtocol,
+      'sslCaFile': ?sslCaFile,
+      'sslCertFile': ?sslCertFile,
+      'sslCrlFile': ?sslCrlFile,
+      'sslKeyFile': ?sslKeyFile,
+      'sslMode': ?sslMode,
+      'technologyType': ?technologyType,
+      'username': ?username,
+    };
+  }
+}
+
+/// The properties of GoldengateOciObjectStorageConnection.
+class GoldengateOciObjectStorageConnectionProperties {
+  /// The content of the private key file (PEM file) corresponding to the API
+  /// key of the fingerprint.
+  ///
+  /// Optional.
+  core.String? privateKeyFile;
+
+  /// The passphrase of the private key.
+  ///
+  /// Optional.
+  core.String? privateKeyPassphraseSecret;
+
+  /// The fingerprint of the API Key of the user specified by the userId.
+  ///
+  /// Optional.
+  core.String? publicKeyFingerprint;
+
+  /// The name of the region of OCI Object Storage.
+  ///
+  /// e.g.: us-ashburn-1 If the region is not provided, backend will default to
+  /// the default region.
+  ///
+  /// Optional.
+  core.String? region;
+
+  /// The technology type of OciObjectStorageConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The OCID of the related OCI tenancy.
+  ///
+  /// Optional.
+  core.String? tenancyId;
+
+  /// Specifies that the user intends to authenticate to the instance using a
+  /// resource principal.
+  ///
+  /// Optional.
+  core.bool? useResourcePrincipal;
+
+  /// The OCID of the OCI user who will access the Object Storage.
+  ///
+  /// The user must have write access to the bucket they want to connect to.
+  ///
+  /// Optional.
+  core.String? userId;
+
+  GoldengateOciObjectStorageConnectionProperties({
+    this.privateKeyFile,
+    this.privateKeyPassphraseSecret,
+    this.publicKeyFingerprint,
+    this.region,
+    this.technologyType,
+    this.tenancyId,
+    this.useResourcePrincipal,
+    this.userId,
+  });
+
+  GoldengateOciObjectStorageConnectionProperties.fromJson(core.Map json_)
+    : this(
+        privateKeyFile: json_['privateKeyFile'] as core.String?,
+        privateKeyPassphraseSecret:
+            json_['privateKeyPassphraseSecret'] as core.String?,
+        publicKeyFingerprint: json_['publicKeyFingerprint'] as core.String?,
+        region: json_['region'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        tenancyId: json_['tenancyId'] as core.String?,
+        useResourcePrincipal: json_['useResourcePrincipal'] as core.bool?,
+        userId: json_['userId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final privateKeyFile = this.privateKeyFile;
+    final privateKeyPassphraseSecret = this.privateKeyPassphraseSecret;
+    final publicKeyFingerprint = this.publicKeyFingerprint;
+    final region = this.region;
+    final technologyType = this.technologyType;
+    final tenancyId = this.tenancyId;
+    final useResourcePrincipal = this.useResourcePrincipal;
+    final userId = this.userId;
+    return {
+      'privateKeyFile': ?privateKeyFile,
+      'privateKeyPassphraseSecret': ?privateKeyPassphraseSecret,
+      'publicKeyFingerprint': ?publicKeyFingerprint,
+      'region': ?region,
+      'technologyType': ?technologyType,
+      'tenancyId': ?tenancyId,
+      'useResourcePrincipal': ?useResourcePrincipal,
+      'userId': ?userId,
+    };
+  }
+}
+
+/// The Ogg data of the GoldengateDeployment.
+class GoldengateOggDeployment {
+  /// The Goldengate deployment console password in plain text.
+  ///
+  /// Optional.
+  core.String? adminPassword;
+
+  /// Input only.
+  ///
+  /// The Goldengate deployment console password secret version.
+  ///
+  /// Optional.
+  core.String? adminPasswordSecretVersion;
+
+  /// The Goldengate deployment console username.
+  ///
+  /// Required.
+  core.String? adminUsername;
+
+  /// The certificate of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? certificate;
+
+  /// The credential store of the GoldengateDeployment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CREDENTIAL_STORE_UNSPECIFIED" : The credential store is unspecified.
+  /// - "GOLDENGATE" : The credential store is Goldengate.
+  /// - "IAM" : The credential store is IAM.
+  core.String? credentialStore;
+
+  /// The name given to the Goldengate service deployment.
+  ///
+  /// The name must be 1 to 32 characters long, must contain only alphanumeric
+  /// characters and must start with a letter.
+  ///
+  /// Required.
+  core.String? deployment;
+
+  /// The group to roles mapping of the GoldengateDeployment.
+  ///
+  /// Output only.
+  GoldengateGroupToRolesMapping? groupRolesMapping;
+
+  /// The identity domain id of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? identityDomainId;
+
+  /// Version of OGG
+  ///
+  /// Optional.
+  core.String? oggVersion;
+
+  /// The password secret id of the GoldengateDeployment.
+  ///
+  /// Output only.
+  core.String? passwordSecretId;
+
+  GoldengateOggDeployment({
+    this.adminPassword,
+    this.adminPasswordSecretVersion,
+    this.adminUsername,
+    this.certificate,
+    this.credentialStore,
+    this.deployment,
+    this.groupRolesMapping,
+    this.identityDomainId,
+    this.oggVersion,
+    this.passwordSecretId,
+  });
+
+  GoldengateOggDeployment.fromJson(core.Map json_)
+    : this(
+        adminPassword: json_['adminPassword'] as core.String?,
+        adminPasswordSecretVersion:
+            json_['adminPasswordSecretVersion'] as core.String?,
+        adminUsername: json_['adminUsername'] as core.String?,
+        certificate: json_['certificate'] as core.String?,
+        credentialStore: json_['credentialStore'] as core.String?,
+        deployment: json_['deployment'] as core.String?,
+        groupRolesMapping: json_.containsKey('groupRolesMapping')
+            ? GoldengateGroupToRolesMapping.fromJson(
+                json_['groupRolesMapping']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        identityDomainId: json_['identityDomainId'] as core.String?,
+        oggVersion: json_['oggVersion'] as core.String?,
+        passwordSecretId: json_['passwordSecretId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final adminPassword = this.adminPassword;
+    final adminPasswordSecretVersion = this.adminPasswordSecretVersion;
+    final adminUsername = this.adminUsername;
+    final certificate = this.certificate;
+    final credentialStore = this.credentialStore;
+    final deployment = this.deployment;
+    final groupRolesMapping = this.groupRolesMapping;
+    final identityDomainId = this.identityDomainId;
+    final oggVersion = this.oggVersion;
+    final passwordSecretId = this.passwordSecretId;
+    return {
+      'adminPassword': ?adminPassword,
+      'adminPasswordSecretVersion': ?adminPasswordSecretVersion,
+      'adminUsername': ?adminUsername,
+      'certificate': ?certificate,
+      'credentialStore': ?credentialStore,
+      'deployment': ?deployment,
+      'groupRolesMapping': ?groupRolesMapping,
+      'identityDomainId': ?identityDomainId,
+      'oggVersion': ?oggVersion,
+      'passwordSecretId': ?passwordSecretId,
+    };
+  }
+}
+
+/// The properties of GoldengateOracleAIDataPlatformConnection.
+class GoldengateOracleAIDataPlatformConnectionProperties {
+  /// Connection URL.
+  ///
+  /// It must start with 'jdbc:spark://'
+  ///
+  /// Optional.
+  core.String? connectionUrl;
+
+  /// The content of the private key file (PEM file) corresponding to the API
+  /// key of the fingerprint.
+  ///
+  /// Optional.
+  core.String? privateKeyFile;
+
+  /// The passphrase of the private key.
+  ///
+  /// Optional.
+  core.String? privateKeyPassphraseSecret;
+
+  /// The fingerprint of the API Key of the user specified by the user_id.
+  ///
+  /// Optional.
+  core.String? publicKeyFingerprint;
+
+  /// The name of the region.
+  ///
+  /// e.g.: us-ashburn-1
+  ///
+  /// Optional.
+  core.String? region;
+
+  /// The technology type of OracleAiDataPlatformConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The OCID of the related OCI tenancy.
+  ///
+  /// Optional.
+  core.String? tenancyId;
+
+  /// Specifies that the user intends to authenticate to the instance using a
+  /// resource principal.
+  ///
+  /// Optional.
+  core.bool? useResourcePrincipal;
+
+  /// The OCID of the OCI user who will access.
+  ///
+  /// Optional.
+  core.String? userId;
+
+  GoldengateOracleAIDataPlatformConnectionProperties({
+    this.connectionUrl,
+    this.privateKeyFile,
+    this.privateKeyPassphraseSecret,
+    this.publicKeyFingerprint,
+    this.region,
+    this.technologyType,
+    this.tenancyId,
+    this.useResourcePrincipal,
+    this.userId,
+  });
+
+  GoldengateOracleAIDataPlatformConnectionProperties.fromJson(core.Map json_)
+    : this(
+        connectionUrl: json_['connectionUrl'] as core.String?,
+        privateKeyFile: json_['privateKeyFile'] as core.String?,
+        privateKeyPassphraseSecret:
+            json_['privateKeyPassphraseSecret'] as core.String?,
+        publicKeyFingerprint: json_['publicKeyFingerprint'] as core.String?,
+        region: json_['region'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        tenancyId: json_['tenancyId'] as core.String?,
+        useResourcePrincipal: json_['useResourcePrincipal'] as core.bool?,
+        userId: json_['userId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final connectionUrl = this.connectionUrl;
+    final privateKeyFile = this.privateKeyFile;
+    final privateKeyPassphraseSecret = this.privateKeyPassphraseSecret;
+    final publicKeyFingerprint = this.publicKeyFingerprint;
+    final region = this.region;
+    final technologyType = this.technologyType;
+    final tenancyId = this.tenancyId;
+    final useResourcePrincipal = this.useResourcePrincipal;
+    final userId = this.userId;
+    return {
+      'connectionUrl': ?connectionUrl,
+      'privateKeyFile': ?privateKeyFile,
+      'privateKeyPassphraseSecret': ?privateKeyPassphraseSecret,
+      'publicKeyFingerprint': ?publicKeyFingerprint,
+      'region': ?region,
+      'technologyType': ?technologyType,
+      'tenancyId': ?tenancyId,
+      'useResourcePrincipal': ?useResourcePrincipal,
+      'userId': ?userId,
+    };
+  }
+}
+
+/// The properties of Goldengate Oracle Database Connection.
+class GoldengateOracleConnectionProperties {
+  /// Authentication mode.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ORACLE_AUTHENTICATION_MODE_UNSPECIFIED" : Authentication mode not
+  /// specified.
+  /// - "TLS" : TLS authentication mode.
+  /// - "MTLS" : MTLS authentication mode.
+  core.String? authenticationMode;
+
+  /// Connect descriptor or Easy Connect Naming method used to connect to a
+  /// database.
+  ///
+  /// Optional.
+  core.String? connectionString;
+
+  /// Autonomous AI Database instance id of database in Oracle Database @ Google
+  /// Cloud.
+  ///
+  /// If gcp_oracle_database_id is provided, connection_string must be empty.
+  /// Format:
+  /// projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}
+  ///
+  /// Optional.
+  core.String? gcpOracleDatabaseId;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses in plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The mode of the database connection session to be established by the data
+  /// client.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SESSION_MODE_UNSPECIFIED" : Default unspecified value.
+  /// - "DIRECT" : Indicates that the resource is using direct session mode.
+  /// - "REDIRECT" : Indicates that the resource is using redirect session mode.
+  core.String? sessionMode;
+
+  /// The technology type.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The username Oracle Goldengate uses to connect.
+  ///
+  /// Optional.
+  core.String? username;
+
+  /// The wallet contents Oracle Goldengate uses to make connections to a
+  /// database.
+  ///
+  /// This attribute is expected to be base64 encoded.
+  ///
+  /// Optional.
+  core.String? walletFile;
+
+  GoldengateOracleConnectionProperties({
+    this.authenticationMode,
+    this.connectionString,
+    this.gcpOracleDatabaseId,
+    this.password,
+    this.passwordSecretVersion,
+    this.sessionMode,
+    this.technologyType,
+    this.username,
+    this.walletFile,
+  });
+
+  GoldengateOracleConnectionProperties.fromJson(core.Map json_)
+    : this(
+        authenticationMode: json_['authenticationMode'] as core.String?,
+        connectionString: json_['connectionString'] as core.String?,
+        gcpOracleDatabaseId: json_['gcpOracleDatabaseId'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        sessionMode: json_['sessionMode'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        username: json_['username'] as core.String?,
+        walletFile: json_['walletFile'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authenticationMode = this.authenticationMode;
+    final connectionString = this.connectionString;
+    final gcpOracleDatabaseId = this.gcpOracleDatabaseId;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final sessionMode = this.sessionMode;
+    final technologyType = this.technologyType;
+    final username = this.username;
+    final walletFile = this.walletFile;
+    return {
+      'authenticationMode': ?authenticationMode,
+      'connectionString': ?connectionString,
+      'gcpOracleDatabaseId': ?gcpOracleDatabaseId,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'sessionMode': ?sessionMode,
+      'technologyType': ?technologyType,
+      'username': ?username,
+      'walletFile': ?walletFile,
+    };
+  }
+}
+
+/// The properties of GoldengateOracleNosqlConnection.
+class GoldengateOracleNosqlConnectionProperties {
+  /// The content of the private key file (PEM file) corresponding to the API
+  /// key of the fingerprint.
+  ///
+  /// Optional.
+  core.String? privateKeyFile;
+
+  /// The passphrase of the private key.
+  ///
+  /// Optional.
+  core.String? privateKeyPassphraseSecret;
+
+  /// The fingerprint of the API Key of the user specified by the userId.
+  ///
+  /// Optional.
+  core.String? publicKeyFingerprint;
+
+  /// The name of the region.
+  ///
+  /// e.g.: us-ashburn-1
+  ///
+  /// Optional.
+  core.String? region;
+
+  /// The technology type of OracleNosqlConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The OCID of the OCI tenancy.
+  ///
+  /// Optional.
+  core.String? tenancyId;
+
+  /// Specifies that the user intends to authenticate to the instance using a
+  /// resource principal.
+  ///
+  /// Optional.
+  core.bool? useResourcePrincipal;
+
+  /// The OCID of the OCI user who will access the Oracle NoSQL database.
+  ///
+  /// Optional.
+  core.String? userId;
+
+  GoldengateOracleNosqlConnectionProperties({
+    this.privateKeyFile,
+    this.privateKeyPassphraseSecret,
+    this.publicKeyFingerprint,
+    this.region,
+    this.technologyType,
+    this.tenancyId,
+    this.useResourcePrincipal,
+    this.userId,
+  });
+
+  GoldengateOracleNosqlConnectionProperties.fromJson(core.Map json_)
+    : this(
+        privateKeyFile: json_['privateKeyFile'] as core.String?,
+        privateKeyPassphraseSecret:
+            json_['privateKeyPassphraseSecret'] as core.String?,
+        publicKeyFingerprint: json_['publicKeyFingerprint'] as core.String?,
+        region: json_['region'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        tenancyId: json_['tenancyId'] as core.String?,
+        useResourcePrincipal: json_['useResourcePrincipal'] as core.bool?,
+        userId: json_['userId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final privateKeyFile = this.privateKeyFile;
+    final privateKeyPassphraseSecret = this.privateKeyPassphraseSecret;
+    final publicKeyFingerprint = this.publicKeyFingerprint;
+    final region = this.region;
+    final technologyType = this.technologyType;
+    final tenancyId = this.tenancyId;
+    final useResourcePrincipal = this.useResourcePrincipal;
+    final userId = this.userId;
+    return {
+      'privateKeyFile': ?privateKeyFile,
+      'privateKeyPassphraseSecret': ?privateKeyPassphraseSecret,
+      'publicKeyFingerprint': ?publicKeyFingerprint,
+      'region': ?region,
+      'technologyType': ?technologyType,
+      'tenancyId': ?tenancyId,
+      'useResourcePrincipal': ?useResourcePrincipal,
+      'userId': ?userId,
+    };
+  }
+}
+
+/// The placement of the GoldengateDeployment.
+class GoldengatePlacement {
+  /// The availability domain.
+  ///
+  /// Output only.
+  core.String? availabilityDomain;
+
+  /// The fault domain.
+  ///
+  /// Output only.
+  core.String? faultDomain;
+
+  GoldengatePlacement({this.availabilityDomain, this.faultDomain});
+
+  GoldengatePlacement.fromJson(core.Map json_)
+    : this(
+        availabilityDomain: json_['availabilityDomain'] as core.String?,
+        faultDomain: json_['faultDomain'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final availabilityDomain = this.availabilityDomain;
+    final faultDomain = this.faultDomain;
+    return {
+      'availabilityDomain': ?availabilityDomain,
+      'faultDomain': ?faultDomain,
+    };
+  }
+}
+
+/// The properties of GoldengatePostgresqlConnection.
+class GoldengatePostgresqlConnectionProperties {
+  /// An array of name-value pair attribute entries.
+  ///
+  /// Used as additional parameters in connection string.
+  ///
+  /// Optional.
+  core.List<NameValuePair>? additionalAttributes;
+
+  /// The name of the database.
+  ///
+  /// Optional.
+  core.String? database;
+
+  /// The OCID of the database system being referenced.
+  ///
+  /// Optional.
+  core.String? dbSystemId;
+
+  /// The name or address of a host.
+  ///
+  /// Optional.
+  core.String? host;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses for PostgreSQL connection in plain
+  /// text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses for PostgreSQL connection. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The port of an endpoint usually specified for a connection.
+  ///
+  /// Optional.
+  core.int? port;
+
+  /// Security protocol for PostgreSQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POSTGRESQL_SECURITY_PROTOCOL_UNSPECIFIED" : Security protocol not
+  /// specified.
+  /// - "PLAIN" : Plain text communication.
+  /// - "TLS" : Transport Layer Security.
+  /// - "MTLS" : Mutual Transport Layer Security.
+  core.String? securityProtocol;
+
+  /// The base64 encoded certificate of the trusted certificate authorities
+  /// (Trusted CA) for PostgreSQL.
+  ///
+  /// Optional.
+  core.String? sslCaFile;
+
+  /// The base64 encoded certificate of the PostgreSQL server.
+  ///
+  /// Optional.
+  core.String? sslCertFile;
+
+  /// The base64 encoded list of certificates revoked by the trusted certificate
+  /// authorities (Trusted CA).
+  ///
+  /// Optional.
+  core.String? sslCrlFile;
+
+  /// The base64 encoded private key of the PostgreSQL server.
+  ///
+  /// Optional.
+  core.String? sslKeyFile;
+
+  /// SSL modes for PostgreSQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POSTGRESQL_SSL_MODE_UNSPECIFIED" : SSL mode not specified.
+  /// - "PREFER" : Prefer SSL.
+  /// - "REQUIRE" : Require SSL.
+  /// - "VERIFY_CA" : Verify Certificate Authority.
+  /// - "VERIFY_FULL" : Verify Full.
+  core.String? sslMode;
+
+  /// The technology type of PostgresqlConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The username Oracle Goldengate uses to connect the associated system of
+  /// the given technology.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengatePostgresqlConnectionProperties({
+    this.additionalAttributes,
+    this.database,
+    this.dbSystemId,
+    this.host,
+    this.password,
+    this.passwordSecretVersion,
+    this.port,
+    this.securityProtocol,
+    this.sslCaFile,
+    this.sslCertFile,
+    this.sslCrlFile,
+    this.sslKeyFile,
+    this.sslMode,
+    this.technologyType,
+    this.username,
+  });
+
+  GoldengatePostgresqlConnectionProperties.fromJson(core.Map json_)
+    : this(
+        additionalAttributes: (json_['additionalAttributes'] as core.List?)
+            ?.map(
+              (value) => NameValuePair.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        database: json_['database'] as core.String?,
+        dbSystemId: json_['dbSystemId'] as core.String?,
+        host: json_['host'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        port: json_['port'] as core.int?,
+        securityProtocol: json_['securityProtocol'] as core.String?,
+        sslCaFile: json_['sslCaFile'] as core.String?,
+        sslCertFile: json_['sslCertFile'] as core.String?,
+        sslCrlFile: json_['sslCrlFile'] as core.String?,
+        sslKeyFile: json_['sslKeyFile'] as core.String?,
+        sslMode: json_['sslMode'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalAttributes = this.additionalAttributes;
+    final database = this.database;
+    final dbSystemId = this.dbSystemId;
+    final host = this.host;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final port = this.port;
+    final securityProtocol = this.securityProtocol;
+    final sslCaFile = this.sslCaFile;
+    final sslCertFile = this.sslCertFile;
+    final sslCrlFile = this.sslCrlFile;
+    final sslKeyFile = this.sslKeyFile;
+    final sslMode = this.sslMode;
+    final technologyType = this.technologyType;
+    final username = this.username;
+    return {
+      'additionalAttributes': ?additionalAttributes,
+      'database': ?database,
+      'dbSystemId': ?dbSystemId,
+      'host': ?host,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'port': ?port,
+      'securityProtocol': ?securityProtocol,
+      'sslCaFile': ?sslCaFile,
+      'sslCertFile': ?sslCertFile,
+      'sslCrlFile': ?sslCrlFile,
+      'sslKeyFile': ?sslKeyFile,
+      'sslMode': ?sslMode,
+      'technologyType': ?technologyType,
+      'username': ?username,
+    };
+  }
+}
+
+/// The properties of GoldengateRedisConnection.
+class GoldengateRedisConnectionProperties {
+  /// Authentication type for Redis.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "REDIS_AUTHENTICATION_TYPE_UNSPECIFIED" : Authentication type not
+  /// specified.
+  /// - "NONE" : No authentication.
+  /// - "BASIC" : Basic authentication.
+  core.String? authenticationType;
+
+  /// The base64 encoded content of the KeyStore file.
+  ///
+  /// Optional.
+  core.String? keyStoreFile;
+
+  /// Input only.
+  ///
+  /// The KeyStore password in plain text.
+  ///
+  /// Optional.
+  core.String? keyStorePassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// KeyStore password. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? keyStorePasswordSecretVersion;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses for Redis connection in plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses for Redis connection. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The OCID of the Redis cluster.
+  ///
+  /// Optional.
+  core.String? redisClusterId;
+
+  /// Security protocol for Redis.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "REDIS_SECURITY_PROTOCOL_UNSPECIFIED" : Security protocol not specified.
+  /// - "PLAIN" : Plain text communication.
+  /// - "TLS" : Transport Layer Security.
+  /// - "MTLS" : Mutual Transport Layer Security.
+  core.String? securityProtocol;
+
+  /// Comma separated list of Redis server addresses, specified as host:port
+  /// entries, where :port is optional.
+  ///
+  /// If port is not specified, it defaults to 6379. Example:
+  /// "server1.example.com:6379,server2.example.com:6379"
+  ///
+  /// Optional.
+  core.String? servers;
+
+  /// The technology type of RedisConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The base64 encoded content of the TrustStore file.
+  ///
+  /// Optional.
+  core.String? trustStoreFile;
+
+  /// Input only.
+  ///
+  /// The TrustStore password in plain text.
+  ///
+  /// Optional.
+  core.String? trustStorePassword;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// TrustStore password. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? trustStorePasswordSecretVersion;
+
+  /// The username Oracle Goldengate uses to connect the associated system of
+  /// the given technology.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateRedisConnectionProperties({
+    this.authenticationType,
+    this.keyStoreFile,
+    this.keyStorePassword,
+    this.keyStorePasswordSecretVersion,
+    this.password,
+    this.passwordSecretVersion,
+    this.redisClusterId,
+    this.securityProtocol,
+    this.servers,
+    this.technologyType,
+    this.trustStoreFile,
+    this.trustStorePassword,
+    this.trustStorePasswordSecretVersion,
+    this.username,
+  });
+
+  GoldengateRedisConnectionProperties.fromJson(core.Map json_)
+    : this(
+        authenticationType: json_['authenticationType'] as core.String?,
+        keyStoreFile: json_['keyStoreFile'] as core.String?,
+        keyStorePassword: json_['keyStorePassword'] as core.String?,
+        keyStorePasswordSecretVersion:
+            json_['keyStorePasswordSecretVersion'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        redisClusterId: json_['redisClusterId'] as core.String?,
+        securityProtocol: json_['securityProtocol'] as core.String?,
+        servers: json_['servers'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        trustStoreFile: json_['trustStoreFile'] as core.String?,
+        trustStorePassword: json_['trustStorePassword'] as core.String?,
+        trustStorePasswordSecretVersion:
+            json_['trustStorePasswordSecretVersion'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authenticationType = this.authenticationType;
+    final keyStoreFile = this.keyStoreFile;
+    final keyStorePassword = this.keyStorePassword;
+    final keyStorePasswordSecretVersion = this.keyStorePasswordSecretVersion;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final redisClusterId = this.redisClusterId;
+    final securityProtocol = this.securityProtocol;
+    final servers = this.servers;
+    final technologyType = this.technologyType;
+    final trustStoreFile = this.trustStoreFile;
+    final trustStorePassword = this.trustStorePassword;
+    final trustStorePasswordSecretVersion =
+        this.trustStorePasswordSecretVersion;
+    final username = this.username;
+    return {
+      'authenticationType': ?authenticationType,
+      'keyStoreFile': ?keyStoreFile,
+      'keyStorePassword': ?keyStorePassword,
+      'keyStorePasswordSecretVersion': ?keyStorePasswordSecretVersion,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'redisClusterId': ?redisClusterId,
+      'securityProtocol': ?securityProtocol,
+      'servers': ?servers,
+      'technologyType': ?technologyType,
+      'trustStoreFile': ?trustStoreFile,
+      'trustStorePassword': ?trustStorePassword,
+      'trustStorePasswordSecretVersion': ?trustStorePasswordSecretVersion,
+      'username': ?username,
+    };
+  }
+}
+
+/// The properties of GoldengateSnowflakeConnection.
+class GoldengateSnowflakeConnectionProperties {
+  /// Used authentication mechanism to access Snowflake.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTHENTICATION_TYPE_UNSPECIFIED" : Authentication type not specified.
+  /// - "BASIC" : Basic authentication.
+  /// - "KEY_PAIR" : Key pair authentication.
+  core.String? authenticationType;
+
+  /// JDBC connection URL.
+  ///
+  /// e.g.: 'jdbc:snowflake://.snowflakecomputing.com/?warehouse=&db='
+  ///
+  /// Optional.
+  core.String? connectionUrl;
+
+  /// Input only.
+  ///
+  /// The password Oracle Goldengate uses to connect to Snowflake platform in
+  /// plain text.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Input only.
+  ///
+  /// The resource name of a secret version in Secret Manager which contains the
+  /// password Oracle Goldengate uses to connect to Snowflake platform. Format:
+  /// projects/{project}/secrets/{secret}/versions/{version}.
+  ///
+  /// Optional.
+  core.String? passwordSecretVersion;
+
+  /// The content of private key file in PEM format.
+  ///
+  /// Optional.
+  core.String? privateKeyFile;
+
+  /// Password if the private key file is encrypted.
+  ///
+  /// Optional.
+  core.String? privateKeyPassphraseSecret;
+
+  /// The technology type of SnowflakeConnection.
+  ///
+  /// Optional.
+  core.String? technologyType;
+
+  /// The username Oracle Goldengate uses to connect to Snowflake.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoldengateSnowflakeConnectionProperties({
+    this.authenticationType,
+    this.connectionUrl,
+    this.password,
+    this.passwordSecretVersion,
+    this.privateKeyFile,
+    this.privateKeyPassphraseSecret,
+    this.technologyType,
+    this.username,
+  });
+
+  GoldengateSnowflakeConnectionProperties.fromJson(core.Map json_)
+    : this(
+        authenticationType: json_['authenticationType'] as core.String?,
+        connectionUrl: json_['connectionUrl'] as core.String?,
+        password: json_['password'] as core.String?,
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        privateKeyFile: json_['privateKeyFile'] as core.String?,
+        privateKeyPassphraseSecret:
+            json_['privateKeyPassphraseSecret'] as core.String?,
+        technologyType: json_['technologyType'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authenticationType = this.authenticationType;
+    final connectionUrl = this.connectionUrl;
+    final password = this.password;
+    final passwordSecretVersion = this.passwordSecretVersion;
+    final privateKeyFile = this.privateKeyFile;
+    final privateKeyPassphraseSecret = this.privateKeyPassphraseSecret;
+    final technologyType = this.technologyType;
+    final username = this.username;
+    return {
+      'authenticationType': ?authenticationType,
+      'connectionUrl': ?connectionUrl,
+      'password': ?password,
+      'passwordSecretVersion': ?passwordSecretVersion,
+      'privateKeyFile': ?privateKeyFile,
+      'privateKeyPassphraseSecret': ?privateKeyPassphraseSecret,
+      'technologyType': ?technologyType,
+      'username': ?username,
+    };
+  }
+}
+
+/// The Google Cloud Storage Iceberg storage.
+class GoogleCloudStorageIcebergStorage {
+  /// The bucket of Google Cloud Storage.
+  ///
+  /// Required.
+  core.String? bucket;
+
+  /// The project ID of Google Cloud Storage.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  /// The base64 encoded content of the service account key file of Google Cloud
+  /// Storage.
+  ///
+  /// Optional.
+  core.String? serviceAccountKeyFile;
+
+  GoogleCloudStorageIcebergStorage({
+    this.bucket,
+    this.projectId,
+    this.serviceAccountKeyFile,
+  });
+
+  GoogleCloudStorageIcebergStorage.fromJson(core.Map json_)
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        serviceAccountKeyFile: json_['serviceAccountKeyFile'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    final projectId = this.projectId;
+    final serviceAccountKeyFile = this.serviceAccountKeyFile;
+    return {
+      'bucket': ?bucket,
+      'projectId': ?projectId,
+      'serviceAccountKeyFile': ?serviceAccountKeyFile,
+    };
+  }
+}
+
+/// The Iceberg catalog details.
+class IcebergCatalog {
+  /// The type of Iceberg catalog.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CATALOG_TYPE_UNSPECIFIED" : Catalog type not specified.
+  /// - "GLUE" : Glue catalog.
+  /// - "HADOOP" : Hadoop catalog.
+  /// - "NESSIE" : Nessie catalog.
+  /// - "POLARIS" : Polaris catalog.
+  /// - "REST" : REST catalog.
+  core.String? catalogType;
+
+  /// The Glue Iceberg catalog.
+  GlueIcebergCatalog? glueIcebergCatalog;
+
+  /// The Nessie Iceberg catalog.
+  NessieIcebergCatalog? nessieIcebergCatalog;
+
+  /// The Polaris Iceberg catalog.
+  PolarisIcebergCatalog? polarisIcebergCatalog;
+
+  /// The REST Iceberg catalog.
+  RestIcebergCatalog? restIcebergCatalog;
+
+  IcebergCatalog({
+    this.catalogType,
+    this.glueIcebergCatalog,
+    this.nessieIcebergCatalog,
+    this.polarisIcebergCatalog,
+    this.restIcebergCatalog,
+  });
+
+  IcebergCatalog.fromJson(core.Map json_)
+    : this(
+        catalogType: json_['catalogType'] as core.String?,
+        glueIcebergCatalog: json_.containsKey('glueIcebergCatalog')
+            ? GlueIcebergCatalog.fromJson(
+                json_['glueIcebergCatalog']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nessieIcebergCatalog: json_.containsKey('nessieIcebergCatalog')
+            ? NessieIcebergCatalog.fromJson(
+                json_['nessieIcebergCatalog']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        polarisIcebergCatalog: json_.containsKey('polarisIcebergCatalog')
+            ? PolarisIcebergCatalog.fromJson(
+                json_['polarisIcebergCatalog']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        restIcebergCatalog: json_.containsKey('restIcebergCatalog')
+            ? RestIcebergCatalog.fromJson(
+                json_['restIcebergCatalog']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final catalogType = this.catalogType;
+    final glueIcebergCatalog = this.glueIcebergCatalog;
+    final nessieIcebergCatalog = this.nessieIcebergCatalog;
+    final polarisIcebergCatalog = this.polarisIcebergCatalog;
+    final restIcebergCatalog = this.restIcebergCatalog;
+    return {
+      'catalogType': ?catalogType,
+      'glueIcebergCatalog': ?glueIcebergCatalog,
+      'nessieIcebergCatalog': ?nessieIcebergCatalog,
+      'polarisIcebergCatalog': ?polarisIcebergCatalog,
+      'restIcebergCatalog': ?restIcebergCatalog,
+    };
+  }
+}
+
+/// The Iceberg storage details.
+class IcebergStorage {
+  /// The Amazon S3 Iceberg storage.
+  AmazonS3IcebergStorage? amazonS3IcebergStorage;
+
+  /// The Azure Data Lake Storage Iceberg storage.
+  AzureDataLakeStorageIcebergStorage? azureDataLakeStorageIcebergStorage;
+
+  /// The Google Cloud Storage Iceberg storage.
+  GoogleCloudStorageIcebergStorage? googleCloudStorageIcebergStorage;
+
+  /// The type of Iceberg storage.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "STORAGE_TYPE_UNSPECIFIED" : Storage type not specified.
+  /// - "AMAZON_S3" : Amazon S3 storage.
+  /// - "GOOGLE_CLOUD_STORAGE" : Google Cloud Storage storage.
+  /// - "AZURE_DATA_LAKE_STORAGE" : Azure Data Lake Storage storage.
+  core.String? storageType;
+
+  IcebergStorage({
+    this.amazonS3IcebergStorage,
+    this.azureDataLakeStorageIcebergStorage,
+    this.googleCloudStorageIcebergStorage,
+    this.storageType,
+  });
+
+  IcebergStorage.fromJson(core.Map json_)
+    : this(
+        amazonS3IcebergStorage: json_.containsKey('amazonS3IcebergStorage')
+            ? AmazonS3IcebergStorage.fromJson(
+                json_['amazonS3IcebergStorage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        azureDataLakeStorageIcebergStorage:
+            json_.containsKey('azureDataLakeStorageIcebergStorage')
+            ? AzureDataLakeStorageIcebergStorage.fromJson(
+                json_['azureDataLakeStorageIcebergStorage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleCloudStorageIcebergStorage:
+            json_.containsKey('googleCloudStorageIcebergStorage')
+            ? GoogleCloudStorageIcebergStorage.fromJson(
+                json_['googleCloudStorageIcebergStorage']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        storageType: json_['storageType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final amazonS3IcebergStorage = this.amazonS3IcebergStorage;
+    final azureDataLakeStorageIcebergStorage =
+        this.azureDataLakeStorageIcebergStorage;
+    final googleCloudStorageIcebergStorage =
+        this.googleCloudStorageIcebergStorage;
+    final storageType = this.storageType;
+    return {
+      'amazonS3IcebergStorage': ?amazonS3IcebergStorage,
+      'azureDataLakeStorageIcebergStorage': ?azureDataLakeStorageIcebergStorage,
+      'googleCloudStorageIcebergStorage': ?googleCloudStorageIcebergStorage,
+      'storageType': ?storageType,
+    };
+  }
+}
+
 /// The identity connector details which will allow OCI to securely access the
 /// resources in the customer project.
 class IdentityConnector {
@@ -9395,6 +16851,71 @@ class IdentityConnector {
     return {
       'connectionState': ?connectionState,
       'serviceAgentEmail': ?serviceAgentEmail,
+    };
+  }
+}
+
+/// The ingress IPs of the GoldengateDeployment.
+class IngressIp {
+  /// The ingress IP.
+  ///
+  /// Output only.
+  core.String? ingressIpAddress;
+
+  IngressIp({this.ingressIpAddress});
+
+  IngressIp.fromJson(core.Map json_)
+    : this(ingressIpAddress: json_['ingressIpAddress'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ingressIpAddress = this.ingressIpAddress;
+    return {'ingressIpAddress': ?ingressIpAddress};
+  }
+}
+
+/// Represents a Kafka bootstrap server with host name, optional port defaults
+/// to 9092, and an optional private ip.
+class KafkaBootstrapServer {
+  /// The name or address of a host.
+  ///
+  /// Required.
+  core.String? host;
+
+  /// The port of an endpoint usually specified for a connection.
+  ///
+  /// Optional.
+  core.int? port;
+
+  /// The private IP address of the connection's endpoint in the customer's VCN,
+  /// typically a database endpoint or a big data endpoint (e.g. Kafka bootstrap
+  /// server).
+  ///
+  /// In case the privateIp is provided, the subnetId must also be provided. In
+  /// case the privateIp (and the subnetId) is not provided it is assumed the
+  /// datasource is publicly accessible. In case the connection is accessible
+  /// only privately, the lack of privateIp will result in not being able to
+  /// access the connection.
+  ///
+  /// Optional.
+  core.String? privateIpAddress;
+
+  KafkaBootstrapServer({this.host, this.port, this.privateIpAddress});
+
+  KafkaBootstrapServer.fromJson(core.Map json_)
+    : this(
+        host: json_['host'] as core.String?,
+        port: json_['port'] as core.int?,
+        privateIpAddress: json_['privateIpAddress'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final host = this.host;
+    final port = this.port;
+    final privateIpAddress = this.privateIpAddress;
+    return {
+      'host': ?host,
+      'port': ?port,
+      'privateIpAddress': ?privateIpAddress,
     };
   }
 }
@@ -10052,6 +17573,344 @@ class ListGiVersionsResponse {
   }
 }
 
+/// Response message for listing GoldengateConnectionAssignments.
+class ListGoldengateConnectionAssignmentsResponse {
+  /// The list of GoldengateConnectionAssignments.
+  core.List<GoldengateConnectionAssignment>? goldengateConnectionAssignments;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unreachable locations when listing resources across all locations using
+  /// wildcard location '-'.
+  core.List<core.String>? unreachable;
+
+  ListGoldengateConnectionAssignmentsResponse({
+    this.goldengateConnectionAssignments,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGoldengateConnectionAssignmentsResponse.fromJson(core.Map json_)
+    : this(
+        goldengateConnectionAssignments:
+            (json_['goldengateConnectionAssignments'] as core.List?)
+                ?.map(
+                  (value) => GoldengateConnectionAssignment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final goldengateConnectionAssignments =
+        this.goldengateConnectionAssignments;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'goldengateConnectionAssignments': ?goldengateConnectionAssignments,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Message for response to listing GoldengateConnectionTypes
+class ListGoldengateConnectionTypesResponse {
+  /// The list of GoldengateConnectionType
+  core.List<GoldengateConnectionType>? goldengateConnectionTypes;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListGoldengateConnectionTypesResponse({
+    this.goldengateConnectionTypes,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGoldengateConnectionTypesResponse.fromJson(core.Map json_)
+    : this(
+        goldengateConnectionTypes:
+            (json_['goldengateConnectionTypes'] as core.List?)
+                ?.map(
+                  (value) => GoldengateConnectionType.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final goldengateConnectionTypes = this.goldengateConnectionTypes;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'goldengateConnectionTypes': ?goldengateConnectionTypes,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// The response for `GoldengateConnection.List`.
+class ListGoldengateConnectionsResponse {
+  /// The list of GoldengateConnections.
+  core.List<GoldengateConnection>? goldengateConnections;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  ///
+  /// Optional.
+  core.List<core.String>? unreachable;
+
+  ListGoldengateConnectionsResponse({
+    this.goldengateConnections,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGoldengateConnectionsResponse.fromJson(core.Map json_)
+    : this(
+        goldengateConnections: (json_['goldengateConnections'] as core.List?)
+            ?.map(
+              (value) => GoldengateConnection.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final goldengateConnections = this.goldengateConnections;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'goldengateConnections': ?goldengateConnections,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Message for response to listing GoldengateDeploymentEnvironments
+class ListGoldengateDeploymentEnvironmentsResponse {
+  /// The list of GoldengateDeploymentEnvironment
+  core.List<GoldengateDeploymentEnvironment>? goldengateDeploymentEnvironments;
+
+  /// A token identifying a page of results the server should return.
+  ///
+  /// If this field is empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListGoldengateDeploymentEnvironmentsResponse({
+    this.goldengateDeploymentEnvironments,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGoldengateDeploymentEnvironmentsResponse.fromJson(core.Map json_)
+    : this(
+        goldengateDeploymentEnvironments:
+            (json_['goldengateDeploymentEnvironments'] as core.List?)
+                ?.map(
+                  (value) => GoldengateDeploymentEnvironment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final goldengateDeploymentEnvironments =
+        this.goldengateDeploymentEnvironments;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'goldengateDeploymentEnvironments': ?goldengateDeploymentEnvironments,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Message for response to listing GoldengateDeploymentTypes
+class ListGoldengateDeploymentTypesResponse {
+  /// The list of GoldengateDeploymentType
+  core.List<GoldengateDeploymentType>? goldengateDeploymentTypes;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// The resource names of locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListGoldengateDeploymentTypesResponse({
+    this.goldengateDeploymentTypes,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGoldengateDeploymentTypesResponse.fromJson(core.Map json_)
+    : this(
+        goldengateDeploymentTypes:
+            (json_['goldengateDeploymentTypes'] as core.List?)
+                ?.map(
+                  (value) => GoldengateDeploymentType.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final goldengateDeploymentTypes = this.goldengateDeploymentTypes;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'goldengateDeploymentTypes': ?goldengateDeploymentTypes,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Message for response to listing GoldengateDeploymentVersions
+class ListGoldengateDeploymentVersionsResponse {
+  /// The list of GoldengateDeploymentVersion
+  core.List<GoldengateDeploymentVersion>? goldengateDeploymentVersions;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListGoldengateDeploymentVersionsResponse({
+    this.goldengateDeploymentVersions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGoldengateDeploymentVersionsResponse.fromJson(core.Map json_)
+    : this(
+        goldengateDeploymentVersions:
+            (json_['goldengateDeploymentVersions'] as core.List?)
+                ?.map(
+                  (value) => GoldengateDeploymentVersion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final goldengateDeploymentVersions = this.goldengateDeploymentVersions;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'goldengateDeploymentVersions': ?goldengateDeploymentVersions,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// The response for `GoldengateDeployment.List`.
+class ListGoldengateDeploymentsResponse {
+  /// The list of GoldengateDeployments.
+  core.List<GoldengateDeployment>? goldengateDeployments;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  ///
+  /// Optional.
+  core.List<core.String>? unreachable;
+
+  ListGoldengateDeploymentsResponse({
+    this.goldengateDeployments,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGoldengateDeploymentsResponse.fromJson(core.Map json_)
+    : this(
+        goldengateDeployments: (json_['goldengateDeployments'] as core.List?)
+            ?.map(
+              (value) => GoldengateDeployment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final goldengateDeployments = this.goldengateDeployments;
+    final nextPageToken = this.nextPageToken;
+    final unreachable = this.unreachable;
+    return {
+      'goldengateDeployments': ?goldengateDeployments,
+      'nextPageToken': ?nextPageToken,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -10457,6 +18316,61 @@ class MinorVersion {
     final name = this.name;
     final version = this.version;
     return {'gridImageId': ?gridImageId, 'name': ?name, 'version': ?version};
+  }
+}
+
+/// A name-value pair representing an attribute entry usable in a list of
+/// attributes.
+class NameValuePair {
+  /// The name of the property entry.
+  ///
+  /// Required.
+  core.String? key;
+
+  /// The value of the property entry.
+  ///
+  /// Required.
+  core.String? value;
+
+  NameValuePair({this.key, this.value});
+
+  NameValuePair.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// The Nessie Iceberg catalog.
+class NessieIcebergCatalog {
+  /// The Nessie branch.
+  ///
+  /// Required.
+  core.String? branch;
+
+  /// The Nessie uri.
+  ///
+  /// Required.
+  core.String? uri;
+
+  NessieIcebergCatalog({this.branch, this.uri});
+
+  NessieIcebergCatalog.fromJson(core.Map json_)
+    : this(
+        branch: json_['branch'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final branch = this.branch;
+    final uri = this.uri;
+    return {'branch': ?branch, 'uri': ?uri};
   }
 }
 
@@ -11050,6 +18964,88 @@ class PluggableDatabaseProperties {
   }
 }
 
+/// The Polaris Iceberg catalog.
+class PolarisIcebergCatalog {
+  /// The Polaris client ID.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  /// The Polaris client secret.
+  ///
+  /// Optional.
+  core.String? clientSecret;
+
+  /// The catalog name within Polaris.
+  ///
+  /// Required.
+  core.String? polarisCatalog;
+
+  /// The Polaris principal role.
+  ///
+  /// Required.
+  core.String? principalRole;
+
+  /// The Polaris uri.
+  ///
+  /// Required.
+  core.String? uri;
+
+  PolarisIcebergCatalog({
+    this.clientId,
+    this.clientSecret,
+    this.polarisCatalog,
+    this.principalRole,
+    this.uri,
+  });
+
+  PolarisIcebergCatalog.fromJson(core.Map json_)
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        polarisCatalog: json_['polarisCatalog'] as core.String?,
+        principalRole: json_['principalRole'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientId = this.clientId;
+    final clientSecret = this.clientSecret;
+    final polarisCatalog = this.polarisCatalog;
+    final principalRole = this.principalRole;
+    final uri = this.uri;
+    return {
+      'clientId': ?clientId,
+      'clientSecret': ?clientSecret,
+      'polarisCatalog': ?polarisCatalog,
+      'principalRole': ?principalRole,
+      'uri': ?uri,
+    };
+  }
+}
+
+/// Request message for RefreshAutonomousDatabase method.
+class RefreshAutonomousDatabaseRequest {
+  /// The timestamp to which the Autonomous Database refreshable clone will be
+  /// refreshed.
+  ///
+  /// Changes made in the primary database after this timestamp are not part of
+  /// the data refresh.
+  ///
+  /// Required.
+  core.String? refreshCutoffTime;
+
+  RefreshAutonomousDatabaseRequest({this.refreshCutoffTime});
+
+  RefreshAutonomousDatabaseRequest.fromJson(core.Map json_)
+    : this(refreshCutoffTime: json_['refreshCutoffTime'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final refreshCutoffTime = this.refreshCutoffTime;
+    return {'refreshCutoffTime': ?refreshCutoffTime};
+  }
+}
+
 /// The request for `ExadbVmCluster.RemoveVirtualMachine`.
 class RemoveVirtualMachineExadbVmClusterRequest {
   /// The list of host names of db nodes to be removed from the ExadbVmCluster.
@@ -11083,6 +19079,34 @@ class RemoveVirtualMachineExadbVmClusterRequest {
     final hostnames = this.hostnames;
     final requestId = this.requestId;
     return {'hostnames': ?hostnames, 'requestId': ?requestId};
+  }
+}
+
+/// The REST Iceberg catalog.
+class RestIcebergCatalog {
+  /// The base64 encoded content of the configuration file containing additional
+  /// properties for the REST catalog.
+  ///
+  /// Optional.
+  core.String? properties;
+
+  /// The REST uri.
+  ///
+  /// Required.
+  core.String? uri;
+
+  RestIcebergCatalog({this.properties, this.uri});
+
+  RestIcebergCatalog.fromJson(core.Map json_)
+    : this(
+        properties: json_['properties'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final properties = this.properties;
+    final uri = this.uri;
+    return {'properties': ?properties, 'uri': ?uri};
   }
 }
 
@@ -11166,6 +19190,26 @@ class ScheduledOperationDetails {
 
 /// The source configuration for the standby Autonomous Database.
 class SourceConfig {
+  /// The frequency in seconds a refreshable clone is refreshed after
+  /// auto-refresh is enabled.
+  ///
+  /// Optional.
+  core.int? autoRefreshFrequencySeconds;
+
+  /// The time, in seconds, the data of the automatic refreshable clone lags the
+  /// primary database at the point of refresh.
+  ///
+  /// Optional.
+  core.int? autoRefreshPointLagSeconds;
+
+  /// The date and time that auto-refreshing will begin for an Autonomous
+  /// Database refreshable clone.
+  ///
+  /// This value controls only the start time for the first refresh operation.
+  ///
+  /// Optional.
+  core.String? autoRefreshStartTime;
+
   /// This field specifies if the replication of automatic backups is enabled
   /// when creating a Data Guard.
   ///
@@ -11178,31 +19222,138 @@ class SourceConfig {
   /// Optional.
   core.String? autonomousDatabase;
 
+  /// The name of the Autonomous Database Backup resource with the format:
+  /// projects/{project}/locations/{region}/autonomousDatabaseBackups/{autonomous_database_backup}
+  /// Required when source_type is BACKUP_FROM_ID.
+  ///
+  /// Optional.
+  core.String? autonomousDatabaseBackup;
+
+  /// The timestamp specified for the point-in-time clone of the source
+  /// Autonomous Database.
+  ///
+  /// This field is only applicable in case of BACKUP_FROM_TIMESTAMP source type
+  /// and when use_latest_available_backup is false.
+  ///
+  /// Optional.
+  core.String? backupTime;
+
+  /// The clone type of the Autonomous Database.
+  ///
+  /// This field is only applicable in case of cloning
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CLONE_TYPE_UNSPECIFIED" : Default unspecified value.
+  /// - "FULL" : Creates a new database with the source database's data and
+  /// metadata.
+  /// - "METADATA" : Creates a new database that includes all the source
+  /// database schema metadata, but none of the source database data.
+  core.String? cloneType;
+
+  /// The refresh mode of the clone.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "REFRESHABLE_MODE_UNSPECIFIED" : Default unspecified value.
+  /// - "AUTOMATIC" : Automatic refresh.
+  /// - "MANUAL" : Manual refresh.
+  core.String? refreshableMode;
+
+  /// The source type of the Autonomous Database.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SOURCE_TYPE_UNSPECIFIED" : Default unspecified value.
+  /// - "CLONE_DATABASE" : Clone database from an existing database specified in
+  /// autonomous_database field.
+  /// - "CROSS_REGION_DISASTER_RECOVERY" : Create a cross-region disaster
+  /// recovery peer adb from an existing adb.
+  /// - "CLONE_TO_REFRESHABLE" : Create a refreshable clone from an existing
+  /// database specified in autonomous_database field.
+  /// - "BACKUP_FROM_ID" : Create clone from the backup resource.
+  /// - "BACKUP_FROM_TIMESTAMP" : Create clone from backup specified by
+  /// backup_time field, or use latest available backup if
+  /// use_latest_available_backup is true. The autonomous_database field must
+  /// specify the source database to clone from.
+  core.String? sourceType;
+
+  /// Clone from latest available backup timestamp.
+  ///
+  /// This field is only applicable in case of BACKUP_FROM_TIMESTAMP source
+  /// type.
+  ///
+  /// Optional.
+  core.bool? useLatestAvailableBackup;
+
   SourceConfig({
+    this.autoRefreshFrequencySeconds,
+    this.autoRefreshPointLagSeconds,
+    this.autoRefreshStartTime,
     this.automaticBackupsReplicationEnabled,
     this.autonomousDatabase,
+    this.autonomousDatabaseBackup,
+    this.backupTime,
+    this.cloneType,
+    this.refreshableMode,
+    this.sourceType,
+    this.useLatestAvailableBackup,
   });
 
   SourceConfig.fromJson(core.Map json_)
     : this(
+        autoRefreshFrequencySeconds:
+            json_['autoRefreshFrequencySeconds'] as core.int?,
+        autoRefreshPointLagSeconds:
+            json_['autoRefreshPointLagSeconds'] as core.int?,
+        autoRefreshStartTime: json_['autoRefreshStartTime'] as core.String?,
         automaticBackupsReplicationEnabled:
             json_['automaticBackupsReplicationEnabled'] as core.bool?,
         autonomousDatabase: json_['autonomousDatabase'] as core.String?,
+        autonomousDatabaseBackup:
+            json_['autonomousDatabaseBackup'] as core.String?,
+        backupTime: json_['backupTime'] as core.String?,
+        cloneType: json_['cloneType'] as core.String?,
+        refreshableMode: json_['refreshableMode'] as core.String?,
+        sourceType: json_['sourceType'] as core.String?,
+        useLatestAvailableBackup:
+            json_['useLatestAvailableBackup'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final autoRefreshFrequencySeconds = this.autoRefreshFrequencySeconds;
+    final autoRefreshPointLagSeconds = this.autoRefreshPointLagSeconds;
+    final autoRefreshStartTime = this.autoRefreshStartTime;
     final automaticBackupsReplicationEnabled =
         this.automaticBackupsReplicationEnabled;
     final autonomousDatabase = this.autonomousDatabase;
+    final autonomousDatabaseBackup = this.autonomousDatabaseBackup;
+    final backupTime = this.backupTime;
+    final cloneType = this.cloneType;
+    final refreshableMode = this.refreshableMode;
+    final sourceType = this.sourceType;
+    final useLatestAvailableBackup = this.useLatestAvailableBackup;
     return {
+      'autoRefreshFrequencySeconds': ?autoRefreshFrequencySeconds,
+      'autoRefreshPointLagSeconds': ?autoRefreshPointLagSeconds,
+      'autoRefreshStartTime': ?autoRefreshStartTime,
       'automaticBackupsReplicationEnabled': ?automaticBackupsReplicationEnabled,
       'autonomousDatabase': ?autonomousDatabase,
+      'autonomousDatabaseBackup': ?autonomousDatabaseBackup,
+      'backupTime': ?backupTime,
+      'cloneType': ?cloneType,
+      'refreshableMode': ?refreshableMode,
+      'sourceType': ?sourceType,
+      'useLatestAvailableBackup': ?useLatestAvailableBackup,
     };
   }
 }
 
 /// The request for `AutonomousDatabase.Start`.
 typedef StartAutonomousDatabaseRequest = $Empty;
+
+/// The request for `GoldengateDeployment.Start`.
+typedef StartGoldengateDeploymentRequest = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -11215,6 +19366,9 @@ typedef Status = $Status00;
 
 /// The request for `AutonomousDatabase.Stop`.
 typedef StopAutonomousDatabaseRequest = $Empty;
+
+/// The request for `GoldengateDeployment.Stop`.
+typedef StopGoldengateDeploymentRequest = $Empty;
 
 /// The initial storage size, in gigabytes, that is applicable for virtual
 /// machine DBSystem.
@@ -11269,6 +19423,120 @@ class SwitchoverAutonomousDatabaseRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final peerAutonomousDatabase = this.peerAutonomousDatabase;
     return {'peerAutonomousDatabase': ?peerAutonomousDatabase};
+  }
+}
+
+/// Error details for TestGoldengateConnectionAssignment.
+class TestConnectionAssignmentError {
+  /// The text describing the action required to fix the issue.
+  core.String? action;
+
+  /// A short error code that defines the error, meant for programmatic parsing.
+  core.String? code;
+
+  /// The text describing the root cause of the reported issue.
+  core.String? issue;
+
+  /// A human-readable error message.
+  core.String? message;
+
+  TestConnectionAssignmentError({
+    this.action,
+    this.code,
+    this.issue,
+    this.message,
+  });
+
+  TestConnectionAssignmentError.fromJson(core.Map json_)
+    : this(
+        action: json_['action'] as core.String?,
+        code: json_['code'] as core.String?,
+        issue: json_['issue'] as core.String?,
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final code = this.code;
+    final issue = this.issue;
+    final message = this.message;
+    return {
+      'action': ?action,
+      'code': ?code,
+      'issue': ?issue,
+      'message': ?message,
+    };
+  }
+}
+
+/// Request message for TestGoldengateConnectionAssignment.
+class TestGoldengateConnectionAssignmentRequest {
+  /// The type of the test of the assigned connection.
+  ///
+  /// The only type actually supported is DEFAULT.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TEST_TYPE_UNSPECIFIED" : The default value. This value is unused.
+  /// - "DEFAULT" : The default connection test.
+  core.String? type;
+
+  TestGoldengateConnectionAssignmentRequest({this.type});
+
+  TestGoldengateConnectionAssignmentRequest.fromJson(core.Map json_)
+    : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
+  }
+}
+
+/// The result of the connectivity test performed between the Goldengate
+/// deployment and the associated database / service.
+class TestGoldengateConnectionAssignmentResponse {
+  /// Error details if test connection failed.
+  TestConnectionAssignmentError? error;
+
+  /// List of test connection assignment error objects.
+  core.List<TestConnectionAssignmentError>? errors;
+
+  /// Type of the result i.e. Success, Failure or Timeout.
+  /// Possible string values are:
+  /// - "RESULT_TYPE_UNSPECIFIED" : Result type is unspecified.
+  /// - "SUCCEEDED" : Test connection succeeded.
+  /// - "FAILED" : Test connection failed.
+  /// - "TIMED_OUT" : Test connection timed out.
+  core.String? resultType;
+
+  TestGoldengateConnectionAssignmentResponse({
+    this.error,
+    this.errors,
+    this.resultType,
+  });
+
+  TestGoldengateConnectionAssignmentResponse.fromJson(core.Map json_)
+    : this(
+        error: json_.containsKey('error')
+            ? TestConnectionAssignmentError.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) => TestConnectionAssignmentError.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        resultType: json_['resultType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final errors = this.errors;
+    final resultType = this.resultType;
+    return {'error': ?error, 'errors': ?errors, 'resultType': ?resultType};
   }
 }
 

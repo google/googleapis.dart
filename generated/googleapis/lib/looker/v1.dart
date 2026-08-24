@@ -121,7 +121,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -136,9 +136,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -415,6 +414,9 @@ class ProjectsLocationsInstancesResource {
   ///
   /// [pageToken] - A page token received from a previous ListInstancesRequest.
   ///
+  /// [showDeleted] - Optional. Whether to include deleted instances in the
+  /// response.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -429,11 +431,13 @@ class ProjectsLocationsInstancesResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showDeleted,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
+      'showDeleted': ?showDeleted == null ? null : ['${showDeleted}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -572,6 +576,48 @@ class ProjectsLocationsInstancesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes Looker instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// projects/{project}/locations/{location}/instances/{instance}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final response_ = await _requester.request(
       url_,
@@ -1313,6 +1359,11 @@ class IngressIpAllowlistRule {
 
 /// A Looker instance.
 class Instance {
+  /// Accelerated security patch enabled for the instance.
+  ///
+  /// Optional.
+  core.bool? acceleratedSecurityPatchEnabled;
+
   /// Looker Instance Admin settings.
   AdminSettings? adminSettings;
 
@@ -1434,19 +1485,28 @@ class Instance {
 
   /// Platform edition.
   /// Possible string values are:
-  /// - "PLATFORM_EDITION_UNSPECIFIED" : Platform edition is unspecified.
-  /// - "LOOKER_CORE_TRIAL" : Trial.
-  /// - "LOOKER_CORE_STANDARD" : Standard.
-  /// - "LOOKER_CORE_STANDARD_ANNUAL" : Subscription Standard.
-  /// - "LOOKER_CORE_ENTERPRISE_ANNUAL" : Subscription Enterprise.
-  /// - "LOOKER_CORE_EMBED_ANNUAL" : Subscription Embed.
-  /// - "LOOKER_CORE_NONPROD_STANDARD_ANNUAL" : Nonprod Subscription Standard.
-  /// - "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL" : Nonprod Subscription
-  /// Enterprise.
-  /// - "LOOKER_CORE_NONPROD_EMBED_ANNUAL" : Nonprod Subscription Embed.
-  /// - "LOOKER_CORE_TRIAL_STANDARD" : Trial Standard.
-  /// - "LOOKER_CORE_TRIAL_ENTERPRISE" : Trial Enterprise.
-  /// - "LOOKER_CORE_TRIAL_EMBED" : Trial Embed.
+  /// - "PLATFORM_EDITION_UNSPECIFIED" : Represents an unspecified platform
+  /// edition.
+  /// - "LOOKER_CORE_TRIAL" : Represents the Looker Core Trial edition.
+  /// - "LOOKER_CORE_STANDARD" : Represents the Looker Core Standard edition.
+  /// - "LOOKER_CORE_STANDARD_ANNUAL" : Represents the Looker Core Standard
+  /// Annual edition.
+  /// - "LOOKER_CORE_ENTERPRISE_ANNUAL" : Represents the Looker Core Enterprise
+  /// Annual edition.
+  /// - "LOOKER_CORE_EMBED_ANNUAL" : Represents the Looker Core Embed Annual
+  /// edition.
+  /// - "LOOKER_CORE_NONPROD_STANDARD_ANNUAL" : Represents the Looker Core
+  /// Nonprod Standard Annual edition.
+  /// - "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL" : Represents the Looker Core
+  /// Nonprod Enterprise Annual edition.
+  /// - "LOOKER_CORE_NONPROD_EMBED_ANNUAL" : Represents the Looker Core Nonprod
+  /// Embed Annual edition.
+  /// - "LOOKER_CORE_TRIAL_STANDARD" : Represents the Looker Core Trial Standard
+  /// edition.
+  /// - "LOOKER_CORE_TRIAL_ENTERPRISE" : Represents the Looker Core Trial
+  /// Enterprise edition.
+  /// - "LOOKER_CORE_TRIAL_EMBED" : Represents the Looker Core Trial Embed
+  /// edition.
   core.String? platformEdition;
 
   /// Whether private IP is enabled on the Looker instance.
@@ -1469,6 +1529,16 @@ class Instance {
   /// Whether public IP is enabled on the Looker instance.
   core.bool? publicIpEnabled;
 
+  /// The selected release channel for the instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RELEASE_CHANNEL_UNSPECIFIED" : Unspecified release channel.
+  /// - "RAPID" : Rapid: Most frequent updates.
+  /// - "REGULAR" : Regular: Balanced, default for production.
+  /// - "STABLE" : Stable: Least frequent, for maximum stability.
+  core.String? releaseChannel;
+
   /// Name of a reserved IP address range within the Instance.consumer_network,
   /// to be used for private services access connection.
   ///
@@ -1485,6 +1555,18 @@ class Instance {
   /// Output only.
   core.bool? satisfiesPzs;
 
+  /// The reason for the instance being in a soft-deleted state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SOFT_DELETE_REASON_UNSPECIFIED" : Soft delete reason is unspecified.
+  /// This is the default value.
+  /// - "BILLING_ACCOUNT_ISSUE" : Instance is soft deleted due to billing
+  /// account issues.
+  /// - "TRIAL_EXPIRED" : Instance is soft deleted due to trial expiration.
+  /// - "CUSTOMER_REQUEST" : Instance is soft deleted by the customer.
+  core.String? softDeleteReason;
+
   /// The state of the instance.
   ///
   /// Output only.
@@ -1500,6 +1582,11 @@ class Instance {
   /// - "IMPORTING" : Instance is importing data.
   core.String? state;
 
+  /// The time when the Looker instance was suspended (soft deleted).
+  ///
+  /// Output only.
+  core.String? suspendedTime;
+
   /// The time when the Looker instance was last updated.
   ///
   /// Output only.
@@ -1511,6 +1598,7 @@ class Instance {
   UserMetadata? userMetadata;
 
   Instance({
+    this.acceleratedSecurityPatchEnabled,
     this.adminSettings,
     this.catalogIntegrationOptOut,
     this.classType,
@@ -1541,16 +1629,21 @@ class Instance {
     this.pscConfig,
     this.pscEnabled,
     this.publicIpEnabled,
+    this.releaseChannel,
     this.reservedRange,
     this.satisfiesPzi,
     this.satisfiesPzs,
+    this.softDeleteReason,
     this.state,
+    this.suspendedTime,
     this.updateTime,
     this.userMetadata,
   });
 
   Instance.fromJson(core.Map json_)
     : this(
+        acceleratedSecurityPatchEnabled:
+            json_['acceleratedSecurityPatchEnabled'] as core.bool?,
         adminSettings: json_.containsKey('adminSettings')
             ? AdminSettings.fromJson(
                 json_['adminSettings'] as core.Map<core.String, core.dynamic>,
@@ -1639,10 +1732,13 @@ class Instance {
             : null,
         pscEnabled: json_['pscEnabled'] as core.bool?,
         publicIpEnabled: json_['publicIpEnabled'] as core.bool?,
+        releaseChannel: json_['releaseChannel'] as core.String?,
         reservedRange: json_['reservedRange'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        softDeleteReason: json_['softDeleteReason'] as core.String?,
         state: json_['state'] as core.String?,
+        suspendedTime: json_['suspendedTime'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         userMetadata: json_.containsKey('userMetadata')
             ? UserMetadata.fromJson(
@@ -1652,6 +1748,8 @@ class Instance {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final acceleratedSecurityPatchEnabled =
+        this.acceleratedSecurityPatchEnabled;
     final adminSettings = this.adminSettings;
     final catalogIntegrationOptOut = this.catalogIntegrationOptOut;
     final classType = this.classType;
@@ -1682,13 +1780,17 @@ class Instance {
     final pscConfig = this.pscConfig;
     final pscEnabled = this.pscEnabled;
     final publicIpEnabled = this.publicIpEnabled;
+    final releaseChannel = this.releaseChannel;
     final reservedRange = this.reservedRange;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
+    final softDeleteReason = this.softDeleteReason;
     final state = this.state;
+    final suspendedTime = this.suspendedTime;
     final updateTime = this.updateTime;
     final userMetadata = this.userMetadata;
     return {
+      'acceleratedSecurityPatchEnabled': ?acceleratedSecurityPatchEnabled,
       'adminSettings': ?adminSettings,
       'catalogIntegrationOptOut': ?catalogIntegrationOptOut,
       'classType': ?classType,
@@ -1719,10 +1821,13 @@ class Instance {
       'pscConfig': ?pscConfig,
       'pscEnabled': ?pscEnabled,
       'publicIpEnabled': ?publicIpEnabled,
+      'releaseChannel': ?releaseChannel,
       'reservedRange': ?reservedRange,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
+      'softDeleteReason': ?softDeleteReason,
       'state': ?state,
+      'suspendedTime': ?suspendedTime,
       'updateTime': ?updateTime,
       'userMetadata': ?userMetadata,
     };
@@ -1851,11 +1956,10 @@ class ListInstanceBackupsResponse {
 /// Response from ListInstances.
 class ListInstancesResponse {
   /// The list of instances matching the request filters, up to the requested
-  /// ListInstancesRequest.pageSize.
+  /// `pageSize`.
   core.List<Instance>? instances;
 
-  /// If provided, a page token that can look up the next
-  /// ListInstancesRequest.pageSize results.
+  /// If provided, a page token that can look up the next `pageSize` results.
   ///
   /// If empty, the results list is exhausted.
   core.String? nextPageToken;
@@ -2379,6 +2483,9 @@ typedef Status = $Status00;
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
 typedef TimeOfDay = $TimeOfDay;
+
+/// Request options for undeleting an instance.
+typedef UndeleteInstanceRequest = $Empty;
 
 /// Metadata about users for a Looker instance.
 class UserMetadata {

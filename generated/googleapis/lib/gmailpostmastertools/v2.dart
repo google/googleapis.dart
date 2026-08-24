@@ -32,6 +32,7 @@
 /// - [DomainStatsResource]
 /// - [DomainsResource]
 ///   - [DomainsDomainStatsResource]
+///   - [DomainsUsersResource]
 library;
 
 import 'dart:async' as async;
@@ -63,6 +64,11 @@ class PostmasterToolsApi {
   /// Postmaster Tools
   static const postmasterTrafficReadonlyScope =
       'https://www.googleapis.com/auth/postmaster.traffic.readonly';
+
+  /// View and manage users for the domains you have registered with Postmaster
+  /// Tools
+  static const postmasterUserScope =
+      'https://www.googleapis.com/auth/postmaster.user';
 
   final commons.ApiRequester _requester;
 
@@ -133,8 +139,84 @@ class DomainsResource {
 
   DomainsDomainStatsResource get domainStats =>
       DomainsDomainStatsResource(_requester);
+  DomainsUsersResource get users => DomainsUsersResource(_requester);
 
   DomainsResource(commons.ApiRequester client) : _requester = client;
+
+  /// [Developer Preview](https://developers.google.com/workspace/preview): Adds
+  /// a domain to the user's account.
+  ///
+  /// Returns INVALID_ARGUMENT if a domain is not provided. Returns
+  /// ALREADY_EXISTS if the domain is already registered by the user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Domain].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Domain> create(
+    CreateDomainRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v2/domains';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Domain.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// [Developer Preview](https://developers.google.com/workspace/preview):
+  /// Deletes a domain from the user's account.
+  ///
+  /// Returns NOT_FOUND if the domain is not registered by the user.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The domain to delete.
+  /// Value must have pattern `^domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Retrieves detailed information about a domain registered by you.
   ///
@@ -215,6 +297,56 @@ class DomainsResource {
     );
   }
 
+  /// [Developer Preview](https://developers.google.com/workspace/preview): Gets
+  /// a verification token used for verifying a user's ownership over a domain.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the verification token to
+  /// retrieve. Format: `domains/{domain}/verificationToken`
+  /// Value must have pattern `^domains/\[^/\]+/verificationToken$`.
+  ///
+  /// [verificationMethod] - Required. The verification method used. Must be
+  /// specified, i.e. TXT or CNAME.
+  /// Possible string values are:
+  /// - "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED" : Unspecified.
+  /// - "TXT" : Generate a DNS TXT verification token.
+  /// - "CNAME" : Generate a DNS CNAME verification token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DomainVerificationToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DomainVerificationToken> getVerificationToken(
+    core.String name, {
+    core.String? verificationMethod,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'verificationMethod': ?verificationMethod == null
+          ? null
+          : [verificationMethod],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DomainVerificationToken.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Retrieves a list of all domains registered by you, along with their
   /// corresponding metadata.
   ///
@@ -260,6 +392,52 @@ class DomainsResource {
       queryParams: queryParams_,
     );
     return ListDomainsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// [Developer Preview](https://developers.google.com/workspace/preview):
+  /// Verifies a user's ownership of a domain at the DNS level.
+  ///
+  /// Note that this is distinct from checking if the user has OWNER status
+  /// within IRDB.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The domain to verify.
+  /// Value must have pattern `^domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VerifyDomainResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VerifyDomainResponse> verify(
+    VerifyDomainRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':verify';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return VerifyDomainResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -318,6 +496,229 @@ class DomainsDomainStatsResource {
   }
 }
 
+class DomainsUsersResource {
+  final commons.ApiRequester _requester;
+
+  DomainsUsersResource(commons.ApiRequester client) : _requester = client;
+
+  /// [Developer Preview](https://developers.google.com/workspace/preview):
+  /// Creates a user, who has access to a domain.
+  ///
+  /// Returns INVALID_ARGUMENT if a user is not provided.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this user will be created.
+  /// Format: domains/{domain}
+  /// Value must have pattern `^domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [User].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<User> create(
+    CreateUserRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/users';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// [Developer Preview](https://developers.google.com/workspace/preview):
+  /// Deletes a user from a domain.
+  ///
+  /// Returns NOT_FOUND if the user does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the user to delete. Format:
+  /// domains/{domain}/users/{user}
+  /// Value must have pattern `^domains/\[^/\]+/users/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// [Developer Preview](https://developers.google.com/workspace/preview):
+  /// Retrieves detailed information about a user that has access to a domain.
+  ///
+  /// Returns NOT_FOUND if the user does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the user to retrieve. Format:
+  /// `domains/{domain}/users/{user}`
+  /// Value must have pattern `^domains/\[^/\]+/users/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [User].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<User> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// [Developer Preview](https://developers.google.com/workspace/preview):
+  /// Lists the users that have access to a domain.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name for which to list users.
+  /// Format: `domains/{domain}`
+  /// Value must have pattern `^domains/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer users
+  /// than requested. If unspecified, the default value for this field is 10.
+  /// The maximum value for this field is 200.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUsersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUsersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/users';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListUsersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// [Developer Preview](https://developers.google.com/workspace/preview):
+  /// Updates a user for a domain.
+  ///
+  /// Only Owners and Admins can execute this RPC, only a user's domain
+  /// permission will be allowed to be updated. Returns NOT_FOUND if the user
+  /// does not exist. Returns INVALID_ARGUMENT if a permission is not provided
+  /// or is PERMISSION_UNSPECIFIED, NONE, or OWNER.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the user. Format: users/{user}
+  /// Note: {user} is the user's email address.
+  /// Value must have pattern `^domains/\[^/\]+/users/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [User].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<User> patch(
+    User request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Specifies the base metric to query, which can be a predefined standard
 /// metric or a user-defined custom metric (if supported in the future).
 class BaseMetric {
@@ -325,10 +726,21 @@ class BaseMetric {
   /// Possible string values are:
   /// - "STANDARD_METRIC_UNSPECIFIED" : Unspecified standard metric. This value
   /// should not be used directly.
-  /// - "FEEDBACK_LOOP_ID" : Predefined metric for Feedback Loop (FBL) id.
+  /// - "FEEDBACK_LOOP_ID" : Predefined metric for Feedback Loop (FBL) id. The
+  /// `filter` field supports selecting the aggregation key type. Supported
+  /// format: `aggregation_key_type` = "". Supported values: * `FROM_HEADER`:
+  /// (Default) The metric includes messages with From: header domain matching
+  /// the requested domain. * `ALL_DKIM`: The metric includes messages with one
+  /// of the signed DKIM domains matching the requested domain.
   /// - "FEEDBACK_LOOP_SPAM_RATE" : Predefined metric for Feedback Loop (FBL)
-  /// spam rate. Filter must be of type feedback_loop_id = "" where is one valid
-  /// feedback loop ids.
+  /// spam rate. The `filter` field requires a `feedback_loop_id` and optionally
+  /// accepts an `aggregation_key_type`. Supported formats are: *
+  /// `feedback_loop_id` = "" * `feedback_loop_id` = "" AND
+  /// `aggregation_key_type` = "" If `aggregation_key_type` is omitted, it
+  /// defaults to `FROM_HEADER`. Supported values: * `FROM_HEADER`: (Default)
+  /// The metric includes messages with From: header domain matching the
+  /// requested domain. * `ALL_DKIM`: The metric includes messages with one of
+  /// the signed DKIM domains matching the requested domain.
   /// - "SPAM_RATE" : Predefined metric for spam rate.
   /// - "AUTH_SUCCESS_RATE" : The success rate of authentication mechanisms
   /// (DKIM, SPF, DMARC). Filter must be of type auth_type = "" where is one of:
@@ -533,6 +945,63 @@ class ComplianceStatus {
   }
 }
 
+/// [Developer Preview](https://developers.google.com/workspace/preview):
+/// Request message for CreateDomain.
+class CreateDomainRequest {
+  /// The domain to add.
+  ///
+  /// e.g., "example.com"
+  ///
+  /// Required.
+  core.String? domainId;
+
+  CreateDomainRequest({this.domainId});
+
+  CreateDomainRequest.fromJson(core.Map json_)
+    : this(domainId: json_['domainId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final domainId = this.domainId;
+    return {'domainId': ?domainId};
+  }
+}
+
+/// [Developer Preview](https://developers.google.com/workspace/preview):
+/// Request message for CreateUser.
+class CreateUserRequest {
+  /// Specifies the permission level to give the user for the specified domain.
+  ///
+  /// If not specified, the default value for this field is READER.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PERMISSION_UNSPECIFIED" : Unspecified permission.
+  /// - "READER" : User has read access to the domain.
+  /// - "ADMIN" : User has admin access to the domain.
+  /// - "OWNER" : User has owner access to the domain.
+  /// - "NONE" : User has no access to the domain.
+  core.String? permission;
+
+  /// The user to create.
+  ///
+  /// Required.
+  core.String? userId;
+
+  CreateUserRequest({this.permission, this.userId});
+
+  CreateUserRequest.fromJson(core.Map json_)
+    : this(
+        permission: json_['permission'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final permission = this.permission;
+    final userId = this.userId;
+    return {'permission': ?permission, 'userId': ?userId};
+  }
+}
+
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
 /// The time of day and time zone are either specified elsewhere or are
@@ -629,6 +1098,50 @@ class DateRanges {
   }
 }
 
+/// [Developer Preview](https://developers.google.com/workspace/preview):
+/// Verdict of domain deliverability status.
+class DeliverabilityStatusVerdict {
+  /// The specific reason for the compliance verdict.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REASON_UNSPECIFIED" : Unspecified.
+  /// - "MESSAGE_VOLUME_LOW" : Not enough outgoing email.
+  /// - "SMTP_ERRORS_HIGH" : Many messages with delivery errors.
+  /// - "SENDER_NOT_COMPLIANT" : The sender does not meet the sender
+  /// requirements.
+  /// - "SPAM_RATE_HIGH" : The spam rate is above 0.1%.
+  /// - "USER_FEEDBACK_NEGATIVE" : Indicates users do not want to receive email
+  /// messages.
+  /// - "USER_FEEDBACK_LOW" : Users do not take action on messages.
+  /// - "USER_FEEDBACK_POSITIVE" : Users signal they want to receive email
+  /// messages.
+  core.String? reason;
+
+  /// The compliance state.
+  ///
+  /// Output only.
+  ComplianceStatus? state;
+
+  DeliverabilityStatusVerdict({this.reason, this.state});
+
+  DeliverabilityStatusVerdict.fromJson(core.Map json_)
+    : this(
+        reason: json_['reason'] as core.String?,
+        state: json_.containsKey('state')
+            ? ComplianceStatus.fromJson(
+                json_['state'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reason = this.reason;
+    final state = this.state;
+    return {'reason': ?reason, 'state': ?state};
+  }
+}
+
 /// Information about a domain registered by the user.
 class Domain {
   /// The timestamp at which the domain was added to the user's account.
@@ -652,6 +1165,7 @@ class Domain {
   /// Possible string values are:
   /// - "PERMISSION_UNSPECIFIED" : Unspecified permission.
   /// - "READER" : User has read access to the domain.
+  /// - "ADMIN" : User has admin access to the domain.
   /// - "OWNER" : User has owner access to the domain.
   /// - "NONE" : User has no access to the domain.
   core.String? permission;
@@ -701,6 +1215,11 @@ class Domain {
 
 /// Compliance data for a given domain.
 class DomainComplianceData {
+  /// Deliverability status verdict.
+  ///
+  /// Output only.
+  DeliverabilityStatusVerdict? deliverabilityStatusVerdict;
+
   /// Domain that this data is for.
   core.String? domainId;
 
@@ -716,6 +1235,7 @@ class DomainComplianceData {
   core.List<ComplianceRowData>? rowData;
 
   DomainComplianceData({
+    this.deliverabilityStatusVerdict,
     this.domainId,
     this.honorUnsubscribeVerdict,
     this.oneClickUnsubscribeVerdict,
@@ -724,6 +1244,13 @@ class DomainComplianceData {
 
   DomainComplianceData.fromJson(core.Map json_)
     : this(
+        deliverabilityStatusVerdict:
+            json_.containsKey('deliverabilityStatusVerdict')
+            ? DeliverabilityStatusVerdict.fromJson(
+                json_['deliverabilityStatusVerdict']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         domainId: json_['domainId'] as core.String?,
         honorUnsubscribeVerdict: json_.containsKey('honorUnsubscribeVerdict')
             ? HonorUnsubscribeVerdict.fromJson(
@@ -748,11 +1275,13 @@ class DomainComplianceData {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final deliverabilityStatusVerdict = this.deliverabilityStatusVerdict;
     final domainId = this.domainId;
     final honorUnsubscribeVerdict = this.honorUnsubscribeVerdict;
     final oneClickUnsubscribeVerdict = this.oneClickUnsubscribeVerdict;
     final rowData = this.rowData;
     return {
+      'deliverabilityStatusVerdict': ?deliverabilityStatusVerdict,
       'domainId': ?domainId,
       'honorUnsubscribeVerdict': ?honorUnsubscribeVerdict,
       'oneClickUnsubscribeVerdict': ?oneClickUnsubscribeVerdict,
@@ -869,6 +1398,54 @@ class DomainStat {
   }
 }
 
+/// [Developer Preview](https://developers.google.com/workspace/preview): The
+/// DNS token a user can use to verify ownership of a domain.
+class DomainVerificationToken {
+  /// Identifier.
+  ///
+  /// The resource name of the domain verification token. Format:
+  /// domains/{domain}/verificationToken
+  core.String? name;
+
+  /// The verification token.
+  core.String? token;
+
+  /// The verification method used.
+  /// Possible string values are:
+  /// - "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED" : Unspecified.
+  /// - "TXT" : Generate a DNS TXT verification token.
+  /// - "CNAME" : Generate a DNS CNAME verification token.
+  core.String? verificationMethod;
+
+  DomainVerificationToken({this.name, this.token, this.verificationMethod});
+
+  DomainVerificationToken.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        token: json_['token'] as core.String?,
+        verificationMethod: json_['verificationMethod'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final token = this.token;
+    final verificationMethod = this.verificationMethod;
+    return {
+      'name': ?name,
+      'token': ?token,
+      'verificationMethod': ?verificationMethod,
+    };
+  }
+}
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
 /// Compliance verdict for whether a sender meets the unsubscribe honoring
 /// compliance requirement.
 class HonorUnsubscribeVerdict {
@@ -933,6 +1510,36 @@ class ListDomainsResponse {
     final domains = this.domains;
     final nextPageToken = this.nextPageToken;
     return {'domains': ?domains, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// [Developer Preview](https://developers.google.com/workspace/preview):
+/// Response message for ListUsers.
+class ListUsersResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// The users that have access to the domain.
+  core.List<User>? users;
+
+  ListUsersResponse({this.nextPageToken, this.users});
+
+  ListUsersResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        users: (json_['users'] as core.List?)
+            ?.map(
+              (value) =>
+                  User.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final users = this.users;
+    return {'nextPageToken': ?nextPageToken, 'users': ?users};
   }
 }
 
@@ -1247,3 +1854,96 @@ class TimeQuery {
     return {'dateList': ?dateList, 'dateRanges': ?dateRanges};
   }
 }
+
+/// [Developer Preview](https://developers.google.com/workspace/preview):
+/// Information about a user's access to a domain.
+class User {
+  /// The user that added the current user.
+  ///
+  /// Output only.
+  core.String? accessGranter;
+
+  /// The time the user was granted access.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The resource name of the user. Format: users/{user} Note: {user} is the
+  /// user's email address.
+  core.String? name;
+
+  /// The permission level that the user has for the specified domain.
+  /// Possible string values are:
+  /// - "PERMISSION_UNSPECIFIED" : Unspecified permission.
+  /// - "READER" : User has read access to the domain.
+  /// - "ADMIN" : User has admin access to the domain.
+  /// - "OWNER" : User has owner access to the domain.
+  /// - "NONE" : User has no access to the domain.
+  core.String? permission;
+
+  /// The user's email address.
+  core.String? user;
+
+  User({
+    this.accessGranter,
+    this.createTime,
+    this.name,
+    this.permission,
+    this.user,
+  });
+
+  User.fromJson(core.Map json_)
+    : this(
+        accessGranter: json_['accessGranter'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        permission: json_['permission'] as core.String?,
+        user: json_['user'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final accessGranter = this.accessGranter;
+    final createTime = this.createTime;
+    final name = this.name;
+    final permission = this.permission;
+    final user = this.user;
+    return {
+      'accessGranter': ?accessGranter,
+      'createTime': ?createTime,
+      'name': ?name,
+      'permission': ?permission,
+      'user': ?user,
+    };
+  }
+}
+
+/// [Developer Preview](https://developers.google.com/workspace/preview):
+/// Request message for VerifyDomain.
+class VerifyDomainRequest {
+  /// The verification method used.
+  ///
+  /// Must be specified, i.e. TXT or CNAME.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED" : Unspecified.
+  /// - "TXT" : Generate a DNS TXT verification token.
+  /// - "CNAME" : Generate a DNS CNAME verification token.
+  core.String? verificationMethod;
+
+  VerifyDomainRequest({this.verificationMethod});
+
+  VerifyDomainRequest.fromJson(core.Map json_)
+    : this(verificationMethod: json_['verificationMethod'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final verificationMethod = this.verificationMethod;
+    return {'verificationMethod': ?verificationMethod};
+  }
+}
+
+/// [Developer Preview](https://developers.google.com/workspace/preview):
+/// Response message for VerifyDomain.
+typedef VerifyDomainResponse = $Empty;

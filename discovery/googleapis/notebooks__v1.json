@@ -4,6 +4,9 @@
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+                },
+                "https://www.googleapis.com/auth/notebooks": {
+                    "description": "See, edit, configure, and delete your Google Cloud Agent Platform Workbench Instances data and see the email address for your Google Account"
                 }
             }
         }
@@ -25,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260401",
+    "revision": "20260812",
     "rootUrl": "https://notebooks.googleapis.com/",
     "servicePath": "",
     "title": "Notebooks API",
@@ -135,11 +138,12 @@
                                 "$ref": "Location"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/notebooks"
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "notebooks.projects.locations.list",
@@ -148,7 +152,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -182,7 +186,8 @@
                                 "$ref": "ListLocationsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/notebooks"
                             ]
                         }
                     },
@@ -219,7 +224,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "delete": {
@@ -244,7 +250,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "get": {
@@ -269,7 +276,8 @@
                                         "$ref": "Environment"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "list": {
@@ -305,7 +313,8 @@
                                         "$ref": "ListEnvironmentsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 }
                             }
@@ -342,7 +351,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "delete": {
@@ -367,7 +377,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "get": {
@@ -392,7 +403,8 @@
                                         "$ref": "Execution"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "list": {
@@ -438,7 +450,8 @@
                                         "$ref": "ListExecutionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 }
                             }
@@ -475,7 +488,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "delete": {
@@ -500,7 +514,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "diagnose": {
@@ -528,7 +543,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "get": {
@@ -553,7 +569,8 @@
                                         "$ref": "Instance"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "getIamPolicy": {
@@ -584,7 +601,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "getInstanceHealth": {
@@ -609,7 +627,8 @@
                                         "$ref": "GetInstanceHealthResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "isUpgradeable": {
@@ -653,7 +672,8 @@
                                         "$ref": "IsInstanceUpgradeableResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "list": {
@@ -699,7 +719,8 @@
                                         "$ref": "ListInstancesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "migrate": {
@@ -727,7 +748,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "register": {
@@ -755,7 +777,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "report": {
@@ -783,7 +806,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "reportEvent": {
@@ -811,7 +835,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "reset": {
@@ -839,7 +864,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "rollback": {
@@ -867,7 +893,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "setAccelerator": {
@@ -895,7 +922,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "setIamPolicy": {
@@ -923,7 +951,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "setLabels": {
@@ -951,7 +980,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "setMachineType": {
@@ -979,7 +1009,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "start": {
@@ -1007,7 +1038,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "stop": {
@@ -1035,7 +1067,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "testIamPermissions": {
@@ -1063,7 +1096,8 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "updateConfig": {
@@ -1091,7 +1125,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "updateMetadataItems": {
@@ -1119,7 +1154,8 @@
                                         "$ref": "UpdateInstanceMetadataItemsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "updateShieldedInstanceConfig": {
@@ -1147,7 +1183,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "upgrade": {
@@ -1175,7 +1212,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "upgradeInternal": {
@@ -1203,7 +1241,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 }
                             }
@@ -1235,7 +1274,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "delete": {
@@ -1260,7 +1300,8 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "get": {
@@ -1285,7 +1326,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "list": {
@@ -1331,7 +1373,8 @@
                                         "$ref": "ListOperationsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 }
                             }
@@ -1373,7 +1416,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "delete": {
@@ -1403,7 +1447,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "diagnose": {
@@ -1431,7 +1476,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "get": {
@@ -1456,7 +1502,8 @@
                                         "$ref": "Runtime"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "getIamPolicy": {
@@ -1487,7 +1534,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "list": {
@@ -1533,7 +1581,8 @@
                                         "$ref": "ListRuntimesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "migrate": {
@@ -1561,7 +1610,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "patch": {
@@ -1600,7 +1650,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "refreshRuntimeTokenInternal": {
@@ -1628,7 +1679,8 @@
                                         "$ref": "RefreshRuntimeTokenInternalResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "reportEvent": {
@@ -1656,7 +1708,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "reset": {
@@ -1684,7 +1737,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "setIamPolicy": {
@@ -1712,7 +1766,8 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "start": {
@@ -1740,7 +1795,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "stop": {
@@ -1768,7 +1824,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "switch": {
@@ -1796,7 +1853,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "testIamPermissions": {
@@ -1824,7 +1882,8 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "upgrade": {
@@ -1852,7 +1911,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 }
                             }
@@ -1889,7 +1949,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "delete": {
@@ -1914,7 +1975,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "get": {
@@ -1939,7 +2001,8 @@
                                         "$ref": "Schedule"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "list": {
@@ -1985,7 +2048,8 @@
                                         "$ref": "ListSchedulesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 },
                                 "trigger": {
@@ -2013,7 +2077,8 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/notebooks"
                                     ]
                                 }
                             }

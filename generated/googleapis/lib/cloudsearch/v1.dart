@@ -1500,6 +1500,13 @@ class QuerySourcesResource {
   ///
   /// [pageToken] - Number of sources to return in the response.
   ///
+  /// [requestOptions_clientDisplayLanguageCode] - The BCP-47 language code,
+  /// such as "pt" or "en". It represents the user's preferred Display Language.
+  ///
+  /// [requestOptions_countryCode] - Optional. Specifies the country/region
+  /// where the query originated, as a lowercase ISO 3166-1 alpha-2 region code
+  /// (using 'uk' instead of 'gb' for the United Kingdom).
+  ///
   /// [requestOptions_debugOptions_enableDebugging] - If you are asked by Google
   /// to help with debugging, set this field. Otherwise, ignore this field.
   ///
@@ -1536,6 +1543,8 @@ class QuerySourcesResource {
   /// this method will complete with the same error.
   async.Future<ListQuerySourcesResponse> list({
     core.String? pageToken,
+    core.String? requestOptions_clientDisplayLanguageCode,
+    core.String? requestOptions_countryCode,
     core.bool? requestOptions_debugOptions_enableDebugging,
     core.String? requestOptions_languageCode,
     core.String? requestOptions_searchApplicationId,
@@ -1544,6 +1553,13 @@ class QuerySourcesResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'pageToken': ?pageToken == null ? null : [pageToken],
+      'requestOptions.clientDisplayLanguageCode':
+          ?requestOptions_clientDisplayLanguageCode == null
+          ? null
+          : [requestOptions_clientDisplayLanguageCode],
+      'requestOptions.countryCode': ?requestOptions_countryCode == null
+          ? null
+          : [requestOptions_countryCode],
       'requestOptions.debugOptions.enableDebugging':
           ?requestOptions_debugOptions_enableDebugging == null
           ? null
@@ -3856,7 +3872,23 @@ class DoublePropertyOptions {
 }
 
 /// List of double values.
-typedef DoubleValues = $Shared11;
+class DoubleValues {
+  core.List<core.double>? values;
+
+  DoubleValues({this.values});
+
+  DoubleValues.fromJson(core.Map json_)
+    : this(
+        values: (json_['values'] as core.List?)
+            ?.map((value) => (value as core.num).toDouble())
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
+}
 
 /// A person's email address.
 class EmailAddress {
@@ -5081,7 +5113,23 @@ class IntegerPropertyOptions {
 }
 
 /// List of integer values.
-typedef IntegerValues = $Shared12;
+class IntegerValues {
+  core.List<core.String>? values;
+
+  IntegerValues({this.values});
+
+  IntegerValues.fromJson(core.Map json_)
+    : this(
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
+}
 
 /// Represents an interaction between a user and an item.
 class Interaction {
@@ -7608,8 +7656,6 @@ class QuerySource {
   }
 }
 
-/// This field does not contain anything as of now and is just used as an
-/// indicator that the suggest result was a phrase completion.
 class QuerySuggestion {
   /// Last query time of the suggestion for query history suggestions.
   core.String? lastQueryTime;
@@ -7726,6 +7772,18 @@ class RepositoryError {
 
 /// Shared request options for all RPC methods.
 class RequestOptions {
+  /// The BCP-47 language code, such as "pt" or "en".
+  ///
+  /// It represents the user's preferred Display Language.
+  core.String? clientDisplayLanguageCode;
+
+  /// Specifies the country/region where the query originated, as a lowercase
+  /// ISO 3166-1 alpha-2 region code (using 'uk' instead of 'gb' for the United
+  /// Kingdom).
+  ///
+  /// Optional.
+  core.String? countryCode;
+
   /// Debug options of the request
   DebugOptions? debugOptions;
 
@@ -7756,6 +7814,8 @@ class RequestOptions {
   core.String? timeZone;
 
   RequestOptions({
+    this.clientDisplayLanguageCode,
+    this.countryCode,
     this.debugOptions,
     this.languageCode,
     this.searchApplicationId,
@@ -7764,6 +7824,9 @@ class RequestOptions {
 
   RequestOptions.fromJson(core.Map json_)
     : this(
+        clientDisplayLanguageCode:
+            json_['clientDisplayLanguageCode'] as core.String?,
+        countryCode: json_['countryCode'] as core.String?,
         debugOptions: json_.containsKey('debugOptions')
             ? DebugOptions.fromJson(
                 json_['debugOptions'] as core.Map<core.String, core.dynamic>,
@@ -7775,11 +7838,15 @@ class RequestOptions {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final clientDisplayLanguageCode = this.clientDisplayLanguageCode;
+    final countryCode = this.countryCode;
     final debugOptions = this.debugOptions;
     final languageCode = this.languageCode;
     final searchApplicationId = this.searchApplicationId;
     final timeZone = this.timeZone;
     return {
+      'clientDisplayLanguageCode': ?clientDisplayLanguageCode,
+      'countryCode': ?countryCode,
       'debugOptions': ?debugOptions,
       'languageCode': ?languageCode,
       'searchApplicationId': ?searchApplicationId,
@@ -8403,7 +8470,7 @@ class SearchQualityMetadata {
 
 /// The search API request.
 ///
-/// NEXT ID: 25
+/// NEXT ID: 26
 class SearchRequest {
   /// Context attributes for the request which will be used to adjust ranking of
   /// search results.
@@ -8525,7 +8592,7 @@ class SearchRequest {
 
 /// The search API response.
 ///
-/// NEXT ID: 19
+/// NEXT ID: 20
 class SearchResponse {
   /// Debugging information about the response.
   ResponseDebugInfo? debugInfo;
@@ -8664,7 +8731,7 @@ class SearchResponse {
 
 /// Results containing indexed information for a document.
 ///
-/// Next ID: 16
+/// Next ID: 17
 class SearchResult {
   /// If source is clustered, provide list of clustered results.
   ///

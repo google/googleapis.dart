@@ -518,6 +518,8 @@ api.ColumnFamilyStats buildColumnFamilyStats() {
     o.averageCellsPerColumn = 42.0;
     o.averageColumnsPerRow = 42.0;
     o.logicalDataBytes = 'foo';
+    o.logicalDataHddBytes = 'foo';
+    o.logicalDataSsdBytes = 'foo';
   }
   buildCounterColumnFamilyStats--;
   return o;
@@ -529,6 +531,8 @@ void checkColumnFamilyStats(api.ColumnFamilyStats o) {
     unittest.expect(o.averageCellsPerColumn!, unittest.equals(42.0));
     unittest.expect(o.averageColumnsPerRow!, unittest.equals(42.0));
     unittest.expect(o.logicalDataBytes!, unittest.equals('foo'));
+    unittest.expect(o.logicalDataHddBytes!, unittest.equals('foo'));
+    unittest.expect(o.logicalDataSsdBytes!, unittest.equals('foo'));
   }
   buildCounterColumnFamilyStats--;
 }
@@ -1861,6 +1865,7 @@ api.Instance buildInstance() {
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.edition = 'foo';
+    o.knowledgeCatalogRegion = 'foo';
     o.labels = buildUnnamed12();
     o.name = 'foo';
     o.satisfiesPzi = true;
@@ -1879,6 +1884,7 @@ void checkInstance(api.Instance o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.edition!, unittest.equals('foo'));
+    unittest.expect(o.knowledgeCatalogRegion!, unittest.equals('foo'));
     checkUnnamed12(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
@@ -7475,6 +7481,7 @@ void main() {
       ).projects.instances.materializedViews;
       final arg_request = buildMaterializedView();
       final arg_parent = 'foo';
+      final arg_ignoreWarnings = true;
       final arg_materializedViewId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -7516,6 +7523,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['ignoreWarnings']!.first,
+            unittest.equals('$arg_ignoreWarnings'),
+          );
+          unittest.expect(
             queryMap['materializedViewId']!.first,
             unittest.equals(arg_materializedViewId),
           );
@@ -7533,6 +7544,7 @@ void main() {
       final response = await res.create(
         arg_request,
         arg_parent,
+        ignoreWarnings: arg_ignoreWarnings,
         materializedViewId: arg_materializedViewId,
         $fields: arg_$fields,
       );

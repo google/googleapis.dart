@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260331",
+    "revision": "20260802",
     "rootUrl": "https://analyticsadmin.googleapis.com/",
     "servicePath": "",
     "title": "Google Analytics Admin API",
@@ -224,7 +224,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Returns all accounts accessible by the caller. Note that these accounts might not currently have GA properties. Soft-deleted (ie: \"trashed\") accounts are excluded by default. Returns an empty list if no relevant accounts are found.",
+                    "description": "Returns all accounts accessible by the caller. Note that these accounts might not currently have GA properties. Soft-deleted (ie: \"trashed\") accounts are excluded by default. Returns an empty list if no relevant accounts are found. Note: The easiest way to retrieve a list of all properties you have access to is by using `ListAccountSummaries`.",
                     "flatPath": "v1beta/accounts",
                     "httpMethod": "GET",
                     "id": "analyticsadmin.accounts.list",
@@ -820,7 +820,7 @@
                             ]
                         },
                         "create": {
-                            "description": "Creates a CustomDimension.",
+                            "description": "Creates a CustomDimension. Warning: It's not permissible to use this method to collect data on individual users. In particular, sending user IDs in custom dimensions violates the [Google Analytics Terms of Service](https://www.google.com/analytics/terms/).",
                             "flatPath": "v1beta/properties/{propertiesId}/customDimensions",
                             "httpMethod": "POST",
                             "id": "analyticsadmin.properties.customDimensions.create",
@@ -3278,6 +3278,10 @@
             "description": "A virtual resource representing metadata for a Google Analytics property.",
             "id": "GoogleAnalyticsAdminV1betaPropertySummary",
             "properties": {
+                "canEdit": {
+                    "description": "If true, then the user has a Google Analytics role that permits them to edit the property.",
+                    "type": "boolean"
+                },
                 "displayName": {
                     "description": "Display name for the property referred to in this property summary.",
                     "type": "string"

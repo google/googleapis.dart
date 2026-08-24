@@ -366,6 +366,7 @@ api.TargetLocation buildTargetLocation() {
   if (buildCounterTargetLocation < 3) {
     o.address = 'foo';
     o.locationName = 'foo';
+    o.placeId = 'foo';
   }
   buildCounterTargetLocation--;
   return o;
@@ -376,6 +377,7 @@ void checkTargetLocation(api.TargetLocation o) {
   if (buildCounterTargetLocation < 3) {
     unittest.expect(o.address!, unittest.equals('foo'));
     unittest.expect(o.locationName!, unittest.equals('foo'));
+    unittest.expect(o.placeId!, unittest.equals('foo'));
   }
   buildCounterTargetLocation--;
 }

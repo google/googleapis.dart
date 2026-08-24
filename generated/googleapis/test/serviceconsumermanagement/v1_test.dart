@@ -631,6 +631,7 @@ api.TenantResource buildTenantResource() {
   if (buildCounterTenantResource < 3) {
     o.migratedTenantProject = 'foo';
     o.resource = 'foo';
+    o.sourceTenantProject = 'foo';
     o.status = 'foo';
     o.tag = 'foo';
   }
@@ -643,6 +644,7 @@ void checkTenantResource(api.TenantResource o) {
   if (buildCounterTenantResource < 3) {
     unittest.expect(o.migratedTenantProject!, unittest.equals('foo'));
     unittest.expect(o.resource!, unittest.equals('foo'));
+    unittest.expect(o.sourceTenantProject!, unittest.equals('foo'));
     unittest.expect(o.status!, unittest.equals('foo'));
     unittest.expect(o.tag!, unittest.equals('foo'));
   }

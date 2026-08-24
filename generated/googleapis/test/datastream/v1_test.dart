@@ -71,6 +71,7 @@ api.BackfillAllStrategy buildBackfillAllStrategy() {
     o.mysqlExcludedObjects = buildMysqlRdbms();
     o.oracleExcludedObjects = buildOracleRdbms();
     o.postgresqlExcludedObjects = buildPostgresqlRdbms();
+    o.saasExcludedObjects = buildSourceCatalog();
     o.salesforceExcludedObjects = buildSalesforceOrg();
     o.spannerExcludedObjects = buildSpannerDatabase();
     o.sqlServerExcludedObjects = buildSqlServerRdbms();
@@ -86,6 +87,7 @@ void checkBackfillAllStrategy(api.BackfillAllStrategy o) {
     checkMysqlRdbms(o.mysqlExcludedObjects!);
     checkOracleRdbms(o.oracleExcludedObjects!);
     checkPostgresqlRdbms(o.postgresqlExcludedObjects!);
+    checkSourceCatalog(o.saasExcludedObjects!);
     checkSalesforceOrg(o.salesforceExcludedObjects!);
     checkSpannerDatabase(o.spannerExcludedObjects!);
     checkSqlServerRdbms(o.sqlServerExcludedObjects!);
@@ -107,6 +109,7 @@ api.BackfillJob buildBackfillJob() {
   buildCounterBackfillJob++;
   if (buildCounterBackfillJob < 3) {
     o.errors = buildUnnamed0();
+    o.eventFilter = buildEventFilter();
     o.lastEndTime = 'foo';
     o.lastStartTime = 'foo';
     o.state = 'foo';
@@ -120,6 +123,7 @@ void checkBackfillJob(api.BackfillJob o) {
   buildCounterBackfillJob++;
   if (buildCounterBackfillJob < 3) {
     checkUnnamed0(o.errors!);
+    checkEventFilter(o.eventFilter!);
     unittest.expect(o.lastEndTime!, unittest.equals('foo'));
     unittest.expect(o.lastStartTime!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
@@ -370,6 +374,7 @@ api.ConnectionProfile buildConnectionProfile() {
   if (buildCounterConnectionProfile < 3) {
     o.bigqueryProfile = buildBigQueryProfile();
     o.createTime = 'foo';
+    o.dataverseProfile = buildDataverseProfile();
     o.displayName = 'foo';
     o.forwardSshConnectivity = buildForwardSshTunnelConnectivity();
     o.gcsProfile = buildGcsProfile();
@@ -380,13 +385,16 @@ api.ConnectionProfile buildConnectionProfile() {
     o.oracleProfile = buildOracleProfile();
     o.postgresqlProfile = buildPostgresqlProfile();
     o.privateConnectivity = buildPrivateConnectivity();
+    o.salesforceMarketingCloudProfile = buildSalesforceMarketingCloudProfile();
     o.salesforceProfile = buildSalesforceProfile();
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
+    o.serviceNowProfile = buildServiceNowProfile();
     o.spannerProfile = buildSpannerProfile();
     o.sqlServerProfile = buildSqlServerProfile();
     o.staticServiceIpConnectivity = buildStaticServiceIpConnectivity();
     o.updateTime = 'foo';
+    o.workdayProfile = buildWorkdayProfile();
   }
   buildCounterConnectionProfile--;
   return o;
@@ -397,6 +405,7 @@ void checkConnectionProfile(api.ConnectionProfile o) {
   if (buildCounterConnectionProfile < 3) {
     checkBigQueryProfile(o.bigqueryProfile!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
+    checkDataverseProfile(o.dataverseProfile!);
     unittest.expect(o.displayName!, unittest.equals('foo'));
     checkForwardSshTunnelConnectivity(o.forwardSshConnectivity!);
     checkGcsProfile(o.gcsProfile!);
@@ -407,13 +416,16 @@ void checkConnectionProfile(api.ConnectionProfile o) {
     checkOracleProfile(o.oracleProfile!);
     checkPostgresqlProfile(o.postgresqlProfile!);
     checkPrivateConnectivity(o.privateConnectivity!);
+    checkSalesforceMarketingCloudProfile(o.salesforceMarketingCloudProfile!);
     checkSalesforceProfile(o.salesforceProfile!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
+    checkServiceNowProfile(o.serviceNowProfile!);
     checkSpannerProfile(o.spannerProfile!);
     checkSqlServerProfile(o.sqlServerProfile!);
     checkStaticServiceIpConnectivity(o.staticServiceIpConnectivity!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
+    checkWorkdayProfile(o.workdayProfile!);
   }
   buildCounterConnectionProfile--;
 }
@@ -462,6 +474,52 @@ void checkDatasetTemplate(api.DatasetTemplate o) {
   buildCounterDatasetTemplate--;
 }
 
+core.int buildCounterDataverseProfile = 0;
+api.DataverseProfile buildDataverseProfile() {
+  final o = api.DataverseProfile();
+  buildCounterDataverseProfile++;
+  if (buildCounterDataverseProfile < 3) {
+    o.environmentUrl = 'foo';
+    o.oauthClientCredentials = buildOauthClientCredentials();
+    o.tenantId = 'foo';
+  }
+  buildCounterDataverseProfile--;
+  return o;
+}
+
+void checkDataverseProfile(api.DataverseProfile o) {
+  buildCounterDataverseProfile++;
+  if (buildCounterDataverseProfile < 3) {
+    unittest.expect(o.environmentUrl!, unittest.equals('foo'));
+    checkOauthClientCredentials(o.oauthClientCredentials!);
+    unittest.expect(o.tenantId!, unittest.equals('foo'));
+  }
+  buildCounterDataverseProfile--;
+}
+
+core.int buildCounterDataverseSourceConfig = 0;
+api.DataverseSourceConfig buildDataverseSourceConfig() {
+  final o = api.DataverseSourceConfig();
+  buildCounterDataverseSourceConfig++;
+  if (buildCounterDataverseSourceConfig < 3) {
+    o.excludeObjects = buildSourceCatalog();
+    o.includeObjects = buildSourceCatalog();
+    o.pollingInterval = 'foo';
+  }
+  buildCounterDataverseSourceConfig--;
+  return o;
+}
+
+void checkDataverseSourceConfig(api.DataverseSourceConfig o) {
+  buildCounterDataverseSourceConfig++;
+  if (buildCounterDataverseSourceConfig < 3) {
+    checkSourceCatalog(o.excludeObjects!);
+    checkSourceCatalog(o.includeObjects!);
+    unittest.expect(o.pollingInterval!, unittest.equals('foo'));
+  }
+  buildCounterDataverseSourceConfig--;
+}
+
 core.int buildCounterDestinationConfig = 0;
 api.DestinationConfig buildDestinationConfig() {
   final o = api.DestinationConfig();
@@ -499,6 +557,7 @@ api.DiscoverConnectionProfileRequest buildDiscoverConnectionProfileRequest() {
     o.oracleRdbms = buildOracleRdbms();
     o.postgresqlRdbms = buildPostgresqlRdbms();
     o.salesforceOrg = buildSalesforceOrg();
+    o.sourceCatalog = buildSourceCatalog();
     o.spannerDatabase = buildSpannerDatabase();
     o.sqlServerRdbms = buildSqlServerRdbms();
   }
@@ -520,6 +579,7 @@ void checkDiscoverConnectionProfileRequest(
     checkOracleRdbms(o.oracleRdbms!);
     checkPostgresqlRdbms(o.postgresqlRdbms!);
     checkSalesforceOrg(o.salesforceOrg!);
+    checkSourceCatalog(o.sourceCatalog!);
     checkSpannerDatabase(o.spannerDatabase!);
     checkSqlServerRdbms(o.sqlServerRdbms!);
   }
@@ -536,6 +596,7 @@ api.DiscoverConnectionProfileResponse buildDiscoverConnectionProfileResponse() {
     o.oracleRdbms = buildOracleRdbms();
     o.postgresqlRdbms = buildPostgresqlRdbms();
     o.salesforceOrg = buildSalesforceOrg();
+    o.sourceCatalog = buildSourceCatalog();
     o.spannerDatabase = buildSpannerDatabase();
     o.sqlServerRdbms = buildSqlServerRdbms();
   }
@@ -553,6 +614,7 @@ void checkDiscoverConnectionProfileResponse(
     checkOracleRdbms(o.oracleRdbms!);
     checkPostgresqlRdbms(o.postgresqlRdbms!);
     checkSalesforceOrg(o.salesforceOrg!);
+    checkSourceCatalog(o.sourceCatalog!);
     checkSpannerDatabase(o.spannerDatabase!);
     checkSqlServerRdbms(o.sqlServerRdbms!);
   }
@@ -1874,6 +1936,48 @@ void checkOauth2ClientCredentials(api.Oauth2ClientCredentials o) {
   buildCounterOauth2ClientCredentials--;
 }
 
+core.int buildCounterOauthClientCredentials = 0;
+api.OauthClientCredentials buildOauthClientCredentials() {
+  final o = api.OauthClientCredentials();
+  buildCounterOauthClientCredentials++;
+  if (buildCounterOauthClientCredentials < 3) {
+    o.clientId = 'foo';
+    o.clientSecret = buildSecret();
+  }
+  buildCounterOauthClientCredentials--;
+  return o;
+}
+
+void checkOauthClientCredentials(api.OauthClientCredentials o) {
+  buildCounterOauthClientCredentials++;
+  if (buildCounterOauthClientCredentials < 3) {
+    unittest.expect(o.clientId!, unittest.equals('foo'));
+    checkSecret(o.clientSecret!);
+  }
+  buildCounterOauthClientCredentials--;
+}
+
+core.int buildCounterOauthRefreshTokenCredentials = 0;
+api.OauthRefreshTokenCredentials buildOauthRefreshTokenCredentials() {
+  final o = api.OauthRefreshTokenCredentials();
+  buildCounterOauthRefreshTokenCredentials++;
+  if (buildCounterOauthRefreshTokenCredentials < 3) {
+    o.oauthClientCredentials = buildOauthClientCredentials();
+    o.refreshToken = buildSecret();
+  }
+  buildCounterOauthRefreshTokenCredentials--;
+  return o;
+}
+
+void checkOauthRefreshTokenCredentials(api.OauthRefreshTokenCredentials o) {
+  buildCounterOauthRefreshTokenCredentials++;
+  if (buildCounterOauthRefreshTokenCredentials < 3) {
+    checkOauthClientCredentials(o.oauthClientCredentials!);
+    checkSecret(o.refreshToken!);
+  }
+  buildCounterOauthRefreshTokenCredentials--;
+}
+
 core.int buildCounterObjectFilter = 0;
 api.ObjectFilter buildObjectFilter() {
   final o = api.ObjectFilter();
@@ -2728,6 +2832,57 @@ void checkSalesforceField(api.SalesforceField o) {
   buildCounterSalesforceField--;
 }
 
+core.int buildCounterSalesforceMarketingCloudProfile = 0;
+api.SalesforceMarketingCloudProfile buildSalesforceMarketingCloudProfile() {
+  final o = api.SalesforceMarketingCloudProfile();
+  buildCounterSalesforceMarketingCloudProfile++;
+  if (buildCounterSalesforceMarketingCloudProfile < 3) {
+    o.oauthClientCredentials = buildOauthClientCredentials();
+    o.subdomain = 'foo';
+  }
+  buildCounterSalesforceMarketingCloudProfile--;
+  return o;
+}
+
+void checkSalesforceMarketingCloudProfile(
+  api.SalesforceMarketingCloudProfile o,
+) {
+  buildCounterSalesforceMarketingCloudProfile++;
+  if (buildCounterSalesforceMarketingCloudProfile < 3) {
+    checkOauthClientCredentials(o.oauthClientCredentials!);
+    unittest.expect(o.subdomain!, unittest.equals('foo'));
+  }
+  buildCounterSalesforceMarketingCloudProfile--;
+}
+
+core.int buildCounterSalesforceMarketingCloudSourceConfig = 0;
+api.SalesforceMarketingCloudSourceConfig
+buildSalesforceMarketingCloudSourceConfig() {
+  final o = api.SalesforceMarketingCloudSourceConfig();
+  buildCounterSalesforceMarketingCloudSourceConfig++;
+  if (buildCounterSalesforceMarketingCloudSourceConfig < 3) {
+    o.excludeObjects = buildSourceCatalog();
+    o.fullRefreshPollingInterval = 'foo';
+    o.includeObjects = buildSourceCatalog();
+    o.pollingInterval = 'foo';
+  }
+  buildCounterSalesforceMarketingCloudSourceConfig--;
+  return o;
+}
+
+void checkSalesforceMarketingCloudSourceConfig(
+  api.SalesforceMarketingCloudSourceConfig o,
+) {
+  buildCounterSalesforceMarketingCloudSourceConfig++;
+  if (buildCounterSalesforceMarketingCloudSourceConfig < 3) {
+    checkSourceCatalog(o.excludeObjects!);
+    unittest.expect(o.fullRefreshPollingInterval!, unittest.equals('foo'));
+    checkSourceCatalog(o.includeObjects!);
+    unittest.expect(o.pollingInterval!, unittest.equals('foo'));
+  }
+  buildCounterSalesforceMarketingCloudSourceConfig--;
+}
+
 core.List<api.SalesforceField> buildUnnamed40() => [
   buildSalesforceField(),
   buildSalesforceField(),
@@ -2855,6 +3010,27 @@ void checkSalesforceSourceConfig(api.SalesforceSourceConfig o) {
   buildCounterSalesforceSourceConfig--;
 }
 
+core.int buildCounterSecret = 0;
+api.Secret buildSecret() {
+  final o = api.Secret();
+  buildCounterSecret++;
+  if (buildCounterSecret < 3) {
+    o.rawValue = 'foo';
+    o.secretVersion = 'foo';
+  }
+  buildCounterSecret--;
+  return o;
+}
+
+void checkSecret(api.Secret o) {
+  buildCounterSecret++;
+  if (buildCounterSecret < 3) {
+    unittest.expect(o.rawValue!, unittest.equals('foo'));
+    unittest.expect(o.secretVersion!, unittest.equals('foo'));
+  }
+  buildCounterSecret--;
+}
+
 core.int buildCounterServerAndClientVerification = 0;
 api.ServerAndClientVerification buildServerAndClientVerification() {
   final o = api.ServerAndClientVerification();
@@ -2901,6 +3077,52 @@ void checkServerVerification(api.ServerVerification o) {
   buildCounterServerVerification--;
 }
 
+core.int buildCounterServiceNowProfile = 0;
+api.ServiceNowProfile buildServiceNowProfile() {
+  final o = api.ServiceNowProfile();
+  buildCounterServiceNowProfile++;
+  if (buildCounterServiceNowProfile < 3) {
+    o.instance = 'foo';
+    o.oauthClientCredentials = buildOauthClientCredentials();
+    o.userPasswordCredentials = buildUserPasswordCredentials();
+  }
+  buildCounterServiceNowProfile--;
+  return o;
+}
+
+void checkServiceNowProfile(api.ServiceNowProfile o) {
+  buildCounterServiceNowProfile++;
+  if (buildCounterServiceNowProfile < 3) {
+    unittest.expect(o.instance!, unittest.equals('foo'));
+    checkOauthClientCredentials(o.oauthClientCredentials!);
+    checkUserPasswordCredentials(o.userPasswordCredentials!);
+  }
+  buildCounterServiceNowProfile--;
+}
+
+core.int buildCounterServiceNowSourceConfig = 0;
+api.ServiceNowSourceConfig buildServiceNowSourceConfig() {
+  final o = api.ServiceNowSourceConfig();
+  buildCounterServiceNowSourceConfig++;
+  if (buildCounterServiceNowSourceConfig < 3) {
+    o.excludeObjects = buildSourceCatalog();
+    o.includeObjects = buildSourceCatalog();
+    o.pollingInterval = 'foo';
+  }
+  buildCounterServiceNowSourceConfig--;
+  return o;
+}
+
+void checkServiceNowSourceConfig(api.ServiceNowSourceConfig o) {
+  buildCounterServiceNowSourceConfig++;
+  if (buildCounterServiceNowSourceConfig < 3) {
+    checkSourceCatalog(o.excludeObjects!);
+    checkSourceCatalog(o.includeObjects!);
+    unittest.expect(o.pollingInterval!, unittest.equals('foo'));
+  }
+  buildCounterServiceNowSourceConfig--;
+}
+
 core.int buildCounterSingleTargetDataset = 0;
 api.SingleTargetDataset buildSingleTargetDataset() {
   final o = api.SingleTargetDataset();
@@ -2920,19 +3142,54 @@ void checkSingleTargetDataset(api.SingleTargetDataset o) {
   buildCounterSingleTargetDataset--;
 }
 
+core.List<api.SourceObject> buildUnnamed42() => [
+  buildSourceObject(),
+  buildSourceObject(),
+];
+
+void checkUnnamed42(core.List<api.SourceObject> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSourceObject(o[0]);
+  checkSourceObject(o[1]);
+}
+
+core.int buildCounterSourceCatalog = 0;
+api.SourceCatalog buildSourceCatalog() {
+  final o = api.SourceCatalog();
+  buildCounterSourceCatalog++;
+  if (buildCounterSourceCatalog < 3) {
+    o.objects = buildUnnamed42();
+  }
+  buildCounterSourceCatalog--;
+  return o;
+}
+
+void checkSourceCatalog(api.SourceCatalog o) {
+  buildCounterSourceCatalog++;
+  if (buildCounterSourceCatalog < 3) {
+    checkUnnamed42(o.objects!);
+  }
+  buildCounterSourceCatalog--;
+}
+
 core.int buildCounterSourceConfig = 0;
 api.SourceConfig buildSourceConfig() {
   final o = api.SourceConfig();
   buildCounterSourceConfig++;
   if (buildCounterSourceConfig < 3) {
+    o.dataverseSourceConfig = buildDataverseSourceConfig();
     o.mongodbSourceConfig = buildMongodbSourceConfig();
     o.mysqlSourceConfig = buildMysqlSourceConfig();
     o.oracleSourceConfig = buildOracleSourceConfig();
     o.postgresqlSourceConfig = buildPostgresqlSourceConfig();
+    o.salesforceMarketingCloudSourceConfig =
+        buildSalesforceMarketingCloudSourceConfig();
     o.salesforceSourceConfig = buildSalesforceSourceConfig();
+    o.serviceNowSourceConfig = buildServiceNowSourceConfig();
     o.sourceConnectionProfile = 'foo';
     o.spannerSourceConfig = buildSpannerSourceConfig();
     o.sqlServerSourceConfig = buildSqlServerSourceConfig();
+    o.workdaySourceConfig = buildWorkdaySourceConfig();
   }
   buildCounterSourceConfig--;
   return o;
@@ -2941,14 +3198,20 @@ api.SourceConfig buildSourceConfig() {
 void checkSourceConfig(api.SourceConfig o) {
   buildCounterSourceConfig++;
   if (buildCounterSourceConfig < 3) {
+    checkDataverseSourceConfig(o.dataverseSourceConfig!);
     checkMongodbSourceConfig(o.mongodbSourceConfig!);
     checkMysqlSourceConfig(o.mysqlSourceConfig!);
     checkOracleSourceConfig(o.oracleSourceConfig!);
     checkPostgresqlSourceConfig(o.postgresqlSourceConfig!);
+    checkSalesforceMarketingCloudSourceConfig(
+      o.salesforceMarketingCloudSourceConfig!,
+    );
     checkSalesforceSourceConfig(o.salesforceSourceConfig!);
+    checkServiceNowSourceConfig(o.serviceNowSourceConfig!);
     unittest.expect(o.sourceConnectionProfile!, unittest.equals('foo'));
     checkSpannerSourceConfig(o.spannerSourceConfig!);
     checkSqlServerSourceConfig(o.sqlServerSourceConfig!);
+    checkWorkdaySourceConfig(o.workdaySourceConfig!);
   }
   buildCounterSourceConfig--;
 }
@@ -2972,6 +3235,38 @@ void checkSourceHierarchyDatasets(api.SourceHierarchyDatasets o) {
     unittest.expect(o.projectId!, unittest.equals('foo'));
   }
   buildCounterSourceHierarchyDatasets--;
+}
+
+core.List<api.SourceProperty> buildUnnamed43() => [
+  buildSourceProperty(),
+  buildSourceProperty(),
+];
+
+void checkUnnamed43(core.List<api.SourceProperty> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSourceProperty(o[0]);
+  checkSourceProperty(o[1]);
+}
+
+core.int buildCounterSourceObject = 0;
+api.SourceObject buildSourceObject() {
+  final o = api.SourceObject();
+  buildCounterSourceObject++;
+  if (buildCounterSourceObject < 3) {
+    o.objectName = 'foo';
+    o.properties = buildUnnamed43();
+  }
+  buildCounterSourceObject--;
+  return o;
+}
+
+void checkSourceObject(api.SourceObject o) {
+  buildCounterSourceObject++;
+  if (buildCounterSourceObject < 3) {
+    unittest.expect(o.objectName!, unittest.equals('foo'));
+    checkUnnamed43(o.properties!);
+  }
+  buildCounterSourceObject--;
 }
 
 core.int buildCounterSourceObjectIdentifier = 0;
@@ -3005,6 +3300,59 @@ void checkSourceObjectIdentifier(api.SourceObjectIdentifier o) {
   buildCounterSourceObjectIdentifier--;
 }
 
+core.List<api.SourceProperty> buildUnnamed44() => [
+  buildSourceProperty(),
+  buildSourceProperty(),
+];
+
+void checkUnnamed44(core.List<api.SourceProperty> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSourceProperty(o[0]);
+  checkSourceProperty(o[1]);
+}
+
+core.int buildCounterSourceProperty = 0;
+api.SourceProperty buildSourceProperty() {
+  final o = api.SourceProperty();
+  buildCounterSourceProperty++;
+  if (buildCounterSourceProperty < 3) {
+    o.primaryKey = true;
+    o.properties = buildUnnamed44();
+    o.propertyName = 'foo';
+  }
+  buildCounterSourceProperty--;
+  return o;
+}
+
+void checkSourceProperty(api.SourceProperty o) {
+  buildCounterSourceProperty++;
+  if (buildCounterSourceProperty < 3) {
+    unittest.expect(o.primaryKey!, unittest.isTrue);
+    checkUnnamed44(o.properties!);
+    unittest.expect(o.propertyName!, unittest.equals('foo'));
+  }
+  buildCounterSourceProperty--;
+}
+
+core.int buildCounterSpannerChangeStreamPosition = 0;
+api.SpannerChangeStreamPosition buildSpannerChangeStreamPosition() {
+  final o = api.SpannerChangeStreamPosition();
+  buildCounterSpannerChangeStreamPosition++;
+  if (buildCounterSpannerChangeStreamPosition < 3) {
+    o.startTime = 'foo';
+  }
+  buildCounterSpannerChangeStreamPosition--;
+  return o;
+}
+
+void checkSpannerChangeStreamPosition(api.SpannerChangeStreamPosition o) {
+  buildCounterSpannerChangeStreamPosition++;
+  if (buildCounterSpannerChangeStreamPosition < 3) {
+    unittest.expect(o.startTime!, unittest.equals('foo'));
+  }
+  buildCounterSpannerChangeStreamPosition--;
+}
+
 core.int buildCounterSpannerColumn = 0;
 api.SpannerColumn buildSpannerColumn() {
   final o = api.SpannerColumn();
@@ -3030,12 +3378,12 @@ void checkSpannerColumn(api.SpannerColumn o) {
   buildCounterSpannerColumn--;
 }
 
-core.List<api.SpannerSchema> buildUnnamed42() => [
+core.List<api.SpannerSchema> buildUnnamed45() => [
   buildSpannerSchema(),
   buildSpannerSchema(),
 ];
 
-void checkUnnamed42(core.List<api.SpannerSchema> o) {
+void checkUnnamed45(core.List<api.SpannerSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpannerSchema(o[0]);
   checkSpannerSchema(o[1]);
@@ -3046,7 +3394,7 @@ api.SpannerDatabase buildSpannerDatabase() {
   final o = api.SpannerDatabase();
   buildCounterSpannerDatabase++;
   if (buildCounterSpannerDatabase < 3) {
-    o.schemas = buildUnnamed42();
+    o.schemas = buildUnnamed45();
   }
   buildCounterSpannerDatabase--;
   return o;
@@ -3055,7 +3403,7 @@ api.SpannerDatabase buildSpannerDatabase() {
 void checkSpannerDatabase(api.SpannerDatabase o) {
   buildCounterSpannerDatabase++;
   if (buildCounterSpannerDatabase < 3) {
-    checkUnnamed42(o.schemas!);
+    checkUnnamed45(o.schemas!);
   }
   buildCounterSpannerDatabase--;
 }
@@ -3102,12 +3450,12 @@ void checkSpannerProfile(api.SpannerProfile o) {
   buildCounterSpannerProfile--;
 }
 
-core.List<api.SpannerTable> buildUnnamed43() => [
+core.List<api.SpannerTable> buildUnnamed46() => [
   buildSpannerTable(),
   buildSpannerTable(),
 ];
 
-void checkUnnamed43(core.List<api.SpannerTable> o) {
+void checkUnnamed46(core.List<api.SpannerTable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpannerTable(o[0]);
   checkSpannerTable(o[1]);
@@ -3119,7 +3467,7 @@ api.SpannerSchema buildSpannerSchema() {
   buildCounterSpannerSchema++;
   if (buildCounterSpannerSchema < 3) {
     o.schema = 'foo';
-    o.tables = buildUnnamed43();
+    o.tables = buildUnnamed46();
   }
   buildCounterSpannerSchema--;
   return o;
@@ -3129,7 +3477,7 @@ void checkSpannerSchema(api.SpannerSchema o) {
   buildCounterSpannerSchema++;
   if (buildCounterSpannerSchema < 3) {
     unittest.expect(o.schema!, unittest.equals('foo'));
-    checkUnnamed43(o.tables!);
+    checkUnnamed46(o.tables!);
   }
   buildCounterSpannerSchema--;
 }
@@ -3167,12 +3515,12 @@ void checkSpannerSourceConfig(api.SpannerSourceConfig o) {
   buildCounterSpannerSourceConfig--;
 }
 
-core.List<api.SpannerColumn> buildUnnamed44() => [
+core.List<api.SpannerColumn> buildUnnamed47() => [
   buildSpannerColumn(),
   buildSpannerColumn(),
 ];
 
-void checkUnnamed44(core.List<api.SpannerColumn> o) {
+void checkUnnamed47(core.List<api.SpannerColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpannerColumn(o[0]);
   checkSpannerColumn(o[1]);
@@ -3183,7 +3531,7 @@ api.SpannerTable buildSpannerTable() {
   final o = api.SpannerTable();
   buildCounterSpannerTable++;
   if (buildCounterSpannerTable < 3) {
-    o.columns = buildUnnamed44();
+    o.columns = buildUnnamed47();
     o.table = 'foo';
   }
   buildCounterSpannerTable--;
@@ -3193,7 +3541,7 @@ api.SpannerTable buildSpannerTable() {
 void checkSpannerTable(api.SpannerTable o) {
   buildCounterSpannerTable++;
   if (buildCounterSpannerTable < 3) {
-    checkUnnamed44(o.columns!);
+    checkUnnamed47(o.columns!);
     unittest.expect(o.table!, unittest.equals('foo'));
   }
   buildCounterSpannerTable--;
@@ -3208,6 +3556,7 @@ api.SpecificStartPosition buildSpecificStartPosition() {
     o.mysqlGtidPosition = buildMysqlGtidPosition();
     o.mysqlLogPosition = buildMysqlLogPosition();
     o.oracleScnPosition = buildOracleScnPosition();
+    o.spannerChangeStreamPosition = buildSpannerChangeStreamPosition();
     o.sqlServerLsnPosition = buildSqlServerLsnPosition();
   }
   buildCounterSpecificStartPosition--;
@@ -3221,6 +3570,7 @@ void checkSpecificStartPosition(api.SpecificStartPosition o) {
     checkMysqlGtidPosition(o.mysqlGtidPosition!);
     checkMysqlLogPosition(o.mysqlLogPosition!);
     checkOracleScnPosition(o.oracleScnPosition!);
+    checkSpannerChangeStreamPosition(o.spannerChangeStreamPosition!);
     checkSqlServerLsnPosition(o.sqlServerLsnPosition!);
   }
   buildCounterSpecificStartPosition--;
@@ -3345,12 +3695,12 @@ void checkSqlServerProfile(api.SqlServerProfile o) {
   buildCounterSqlServerProfile--;
 }
 
-core.List<api.SqlServerSchema> buildUnnamed45() => [
+core.List<api.SqlServerSchema> buildUnnamed48() => [
   buildSqlServerSchema(),
   buildSqlServerSchema(),
 ];
 
-void checkUnnamed45(core.List<api.SqlServerSchema> o) {
+void checkUnnamed48(core.List<api.SqlServerSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlServerSchema(o[0]);
   checkSqlServerSchema(o[1]);
@@ -3361,7 +3711,7 @@ api.SqlServerRdbms buildSqlServerRdbms() {
   final o = api.SqlServerRdbms();
   buildCounterSqlServerRdbms++;
   if (buildCounterSqlServerRdbms < 3) {
-    o.schemas = buildUnnamed45();
+    o.schemas = buildUnnamed48();
   }
   buildCounterSqlServerRdbms--;
   return o;
@@ -3370,17 +3720,17 @@ api.SqlServerRdbms buildSqlServerRdbms() {
 void checkSqlServerRdbms(api.SqlServerRdbms o) {
   buildCounterSqlServerRdbms++;
   if (buildCounterSqlServerRdbms < 3) {
-    checkUnnamed45(o.schemas!);
+    checkUnnamed48(o.schemas!);
   }
   buildCounterSqlServerRdbms--;
 }
 
-core.List<api.SqlServerTable> buildUnnamed46() => [
+core.List<api.SqlServerTable> buildUnnamed49() => [
   buildSqlServerTable(),
   buildSqlServerTable(),
 ];
 
-void checkUnnamed46(core.List<api.SqlServerTable> o) {
+void checkUnnamed49(core.List<api.SqlServerTable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlServerTable(o[0]);
   checkSqlServerTable(o[1]);
@@ -3392,7 +3742,7 @@ api.SqlServerSchema buildSqlServerSchema() {
   buildCounterSqlServerSchema++;
   if (buildCounterSqlServerSchema < 3) {
     o.schema = 'foo';
-    o.tables = buildUnnamed46();
+    o.tables = buildUnnamed49();
   }
   buildCounterSqlServerSchema--;
   return o;
@@ -3402,7 +3752,7 @@ void checkSqlServerSchema(api.SqlServerSchema o) {
   buildCounterSqlServerSchema++;
   if (buildCounterSqlServerSchema < 3) {
     unittest.expect(o.schema!, unittest.equals('foo'));
-    checkUnnamed46(o.tables!);
+    checkUnnamed49(o.tables!);
   }
   buildCounterSqlServerSchema--;
 }
@@ -3459,12 +3809,12 @@ void checkSqlServerSslConfig(api.SqlServerSslConfig o) {
   buildCounterSqlServerSslConfig--;
 }
 
-core.List<api.SqlServerColumn> buildUnnamed47() => [
+core.List<api.SqlServerColumn> buildUnnamed50() => [
   buildSqlServerColumn(),
   buildSqlServerColumn(),
 ];
 
-void checkUnnamed47(core.List<api.SqlServerColumn> o) {
+void checkUnnamed50(core.List<api.SqlServerColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlServerColumn(o[0]);
   checkSqlServerColumn(o[1]);
@@ -3475,7 +3825,7 @@ api.SqlServerTable buildSqlServerTable() {
   final o = api.SqlServerTable();
   buildCounterSqlServerTable++;
   if (buildCounterSqlServerTable < 3) {
-    o.columns = buildUnnamed47();
+    o.columns = buildUnnamed50();
     o.table = 'foo';
   }
   buildCounterSqlServerTable--;
@@ -3485,7 +3835,7 @@ api.SqlServerTable buildSqlServerTable() {
 void checkSqlServerTable(api.SqlServerTable o) {
   buildCounterSqlServerTable++;
   if (buildCounterSqlServerTable < 3) {
-    checkUnnamed47(o.columns!);
+    checkUnnamed50(o.columns!);
     unittest.expect(o.table!, unittest.equals('foo'));
   }
   buildCounterSqlServerTable--;
@@ -3593,7 +3943,7 @@ void checkStaticServiceIpConnectivity(api.StaticServiceIpConnectivity o) {
   buildCounterStaticServiceIpConnectivity--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed48() => {
+core.Map<core.String, core.Object?> buildUnnamed51() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -3606,7 +3956,7 @@ core.Map<core.String, core.Object?> buildUnnamed48() => {
   },
 };
 
-void checkUnnamed48(core.Map<core.String, core.Object?> o) {
+void checkUnnamed51(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -3620,15 +3970,15 @@ void checkUnnamed48(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed49() => [
-  buildUnnamed48(),
-  buildUnnamed48(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed52() => [
+  buildUnnamed51(),
+  buildUnnamed51(),
 ];
 
-void checkUnnamed49(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed52(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed48(o[0]);
-  checkUnnamed48(o[1]);
+  checkUnnamed51(o[0]);
+  checkUnnamed51(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -3637,7 +3987,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed49();
+    o.details = buildUnnamed52();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -3648,7 +3998,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed49(o.details!);
+    checkUnnamed52(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -3688,25 +4038,25 @@ void checkStopBackfillJobResponse(api.StopBackfillJobResponse o) {
   buildCounterStopBackfillJobResponse--;
 }
 
-core.List<api.Error> buildUnnamed50() => [buildError(), buildError()];
+core.List<api.Error> buildUnnamed53() => [buildError(), buildError()];
 
-void checkUnnamed50(core.List<api.Error> o) {
+void checkUnnamed53(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed51() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed54() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed51(core.Map<core.String, core.String> o) {
+void checkUnnamed54(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.RuleSet> buildUnnamed52() => [buildRuleSet(), buildRuleSet()];
+core.List<api.RuleSet> buildUnnamed55() => [buildRuleSet(), buildRuleSet()];
 
-void checkUnnamed52(core.List<api.RuleSet> o) {
+void checkUnnamed55(core.List<api.RuleSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRuleSet(o[0]);
   checkRuleSet(o[1]);
@@ -3723,11 +4073,11 @@ api.Stream buildStream() {
     o.customerManagedEncryptionKey = 'foo';
     o.destinationConfig = buildDestinationConfig();
     o.displayName = 'foo';
-    o.errors = buildUnnamed50();
-    o.labels = buildUnnamed51();
+    o.errors = buildUnnamed53();
+    o.labels = buildUnnamed54();
     o.lastRecoveryTime = 'foo';
     o.name = 'foo';
-    o.ruleSets = buildUnnamed52();
+    o.ruleSets = buildUnnamed55();
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
     o.sourceConfig = buildSourceConfig();
@@ -3747,11 +4097,11 @@ void checkStream(api.Stream o) {
     unittest.expect(o.customerManagedEncryptionKey!, unittest.equals('foo'));
     checkDestinationConfig(o.destinationConfig!);
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed50(o.errors!);
-    checkUnnamed51(o.labels!);
+    checkUnnamed53(o.errors!);
+    checkUnnamed54(o.labels!);
     unittest.expect(o.lastRecoveryTime!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed52(o.ruleSets!);
+    checkUnnamed55(o.ruleSets!);
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkSourceConfig(o.sourceConfig!);
@@ -3776,20 +4126,20 @@ void checkStreamLargeObjects(api.StreamLargeObjects o) {
   buildCounterStreamLargeObjects--;
 }
 
-core.List<api.CustomizationRule> buildUnnamed53() => [
+core.List<api.CustomizationRule> buildUnnamed56() => [
   buildCustomizationRule(),
   buildCustomizationRule(),
 ];
 
-void checkUnnamed53(core.List<api.CustomizationRule> o) {
+void checkUnnamed56(core.List<api.CustomizationRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomizationRule(o[0]);
   checkCustomizationRule(o[1]);
 }
 
-core.List<api.Error> buildUnnamed54() => [buildError(), buildError()];
+core.List<api.Error> buildUnnamed57() => [buildError(), buildError()];
 
-void checkUnnamed54(core.List<api.Error> o) {
+void checkUnnamed57(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkError(o[0]);
   checkError(o[1]);
@@ -3802,9 +4152,9 @@ api.StreamObject buildStreamObject() {
   if (buildCounterStreamObject < 3) {
     o.backfillJob = buildBackfillJob();
     o.createTime = 'foo';
-    o.customizationRules = buildUnnamed53();
+    o.customizationRules = buildUnnamed56();
     o.displayName = 'foo';
-    o.errors = buildUnnamed54();
+    o.errors = buildUnnamed57();
     o.name = 'foo';
     o.sourceObject = buildSourceObjectIdentifier();
     o.updateTime = 'foo';
@@ -3818,9 +4168,9 @@ void checkStreamObject(api.StreamObject o) {
   if (buildCounterStreamObject < 3) {
     checkBackfillJob(o.backfillJob!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
-    checkUnnamed53(o.customizationRules!);
+    checkUnnamed56(o.customizationRules!);
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed54(o.errors!);
+    checkUnnamed57(o.errors!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkSourceObjectIdentifier(o.sourceObject!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -3879,6 +4229,27 @@ void checkUserCredentials(api.UserCredentials o) {
   buildCounterUserCredentials--;
 }
 
+core.int buildCounterUserPasswordCredentials = 0;
+api.UserPasswordCredentials buildUserPasswordCredentials() {
+  final o = api.UserPasswordCredentials();
+  buildCounterUserPasswordCredentials++;
+  if (buildCounterUserPasswordCredentials < 3) {
+    o.password = buildSecret();
+    o.username = 'foo';
+  }
+  buildCounterUserPasswordCredentials--;
+  return o;
+}
+
+void checkUserPasswordCredentials(api.UserPasswordCredentials o) {
+  buildCounterUserPasswordCredentials++;
+  if (buildCounterUserPasswordCredentials < 3) {
+    checkSecret(o.password!);
+    unittest.expect(o.username!, unittest.equals('foo'));
+  }
+  buildCounterUserPasswordCredentials--;
+}
+
 core.int buildCounterVpcPeeringConfig = 0;
 api.VpcPeeringConfig buildVpcPeeringConfig() {
   final o = api.VpcPeeringConfig();
@@ -3900,9 +4271,55 @@ void checkVpcPeeringConfig(api.VpcPeeringConfig o) {
   buildCounterVpcPeeringConfig--;
 }
 
-core.List<core.String> buildUnnamed55() => ['foo', 'foo'];
+core.int buildCounterWorkdayProfile = 0;
+api.WorkdayProfile buildWorkdayProfile() {
+  final o = api.WorkdayProfile();
+  buildCounterWorkdayProfile++;
+  if (buildCounterWorkdayProfile < 3) {
+    o.host = 'foo';
+    o.oauthRefreshTokenCredentials = buildOauthRefreshTokenCredentials();
+    o.tenant = 'foo';
+  }
+  buildCounterWorkdayProfile--;
+  return o;
+}
 
-void checkUnnamed55(core.List<core.String> o) {
+void checkWorkdayProfile(api.WorkdayProfile o) {
+  buildCounterWorkdayProfile++;
+  if (buildCounterWorkdayProfile < 3) {
+    unittest.expect(o.host!, unittest.equals('foo'));
+    checkOauthRefreshTokenCredentials(o.oauthRefreshTokenCredentials!);
+    unittest.expect(o.tenant!, unittest.equals('foo'));
+  }
+  buildCounterWorkdayProfile--;
+}
+
+core.int buildCounterWorkdaySourceConfig = 0;
+api.WorkdaySourceConfig buildWorkdaySourceConfig() {
+  final o = api.WorkdaySourceConfig();
+  buildCounterWorkdaySourceConfig++;
+  if (buildCounterWorkdaySourceConfig < 3) {
+    o.excludeObjects = buildSourceCatalog();
+    o.includeObjects = buildSourceCatalog();
+    o.pollingInterval = 'foo';
+  }
+  buildCounterWorkdaySourceConfig--;
+  return o;
+}
+
+void checkWorkdaySourceConfig(api.WorkdaySourceConfig o) {
+  buildCounterWorkdaySourceConfig++;
+  if (buildCounterWorkdaySourceConfig < 3) {
+    checkSourceCatalog(o.excludeObjects!);
+    checkSourceCatalog(o.includeObjects!);
+    unittest.expect(o.pollingInterval!, unittest.equals('foo'));
+  }
+  buildCounterWorkdaySourceConfig--;
+}
+
+core.List<core.String> buildUnnamed58() => ['foo', 'foo'];
+
+void checkUnnamed58(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4104,6 +4521,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkDatasetTemplate(od);
+    });
+  });
+
+  unittest.group('obj-schema-DataverseProfile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataverseProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataverseProfile.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDataverseProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-DataverseSourceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataverseSourceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataverseSourceConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDataverseSourceConfig(od);
     });
   });
 
@@ -4679,6 +5118,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-OauthClientCredentials', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOauthClientCredentials();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OauthClientCredentials.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkOauthClientCredentials(od);
+    });
+  });
+
+  unittest.group('obj-schema-OauthRefreshTokenCredentials', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOauthRefreshTokenCredentials();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OauthRefreshTokenCredentials.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkOauthRefreshTokenCredentials(od);
+    });
+  });
+
   unittest.group('obj-schema-ObjectFilter', () {
     unittest.test('to-json--from-json', () async {
       final o = buildObjectFilter();
@@ -4987,6 +5448,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SalesforceMarketingCloudProfile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSalesforceMarketingCloudProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SalesforceMarketingCloudProfile.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSalesforceMarketingCloudProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-SalesforceMarketingCloudSourceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSalesforceMarketingCloudSourceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SalesforceMarketingCloudSourceConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSalesforceMarketingCloudSourceConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-SalesforceObject', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSalesforceObject();
@@ -5042,6 +5525,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Secret', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSecret();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Secret.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSecret(od);
+    });
+  });
+
   unittest.group('obj-schema-ServerAndClientVerification', () {
     unittest.test('to-json--from-json', () async {
       final o = buildServerAndClientVerification();
@@ -5064,6 +5558,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ServiceNowProfile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServiceNowProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServiceNowProfile.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkServiceNowProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServiceNowSourceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServiceNowSourceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServiceNowSourceConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkServiceNowSourceConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-SingleTargetDataset', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSingleTargetDataset();
@@ -5072,6 +5588,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSingleTargetDataset(od);
+    });
+  });
+
+  unittest.group('obj-schema-SourceCatalog', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSourceCatalog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SourceCatalog.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSourceCatalog(od);
     });
   });
 
@@ -5097,6 +5624,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SourceObject', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSourceObject();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SourceObject.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSourceObject(od);
+    });
+  });
+
   unittest.group('obj-schema-SourceObjectIdentifier', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSourceObjectIdentifier();
@@ -5105,6 +5643,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSourceObjectIdentifier(od);
+    });
+  });
+
+  unittest.group('obj-schema-SourceProperty', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSourceProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SourceProperty.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSourceProperty(od);
+    });
+  });
+
+  unittest.group('obj-schema-SpannerChangeStreamPosition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpannerChangeStreamPosition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpannerChangeStreamPosition.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSpannerChangeStreamPosition(od);
     });
   });
 
@@ -5460,6 +6020,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-UserPasswordCredentials', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserPasswordCredentials();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserPasswordCredentials.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUserPasswordCredentials(od);
+    });
+  });
+
   unittest.group('obj-schema-VpcPeeringConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildVpcPeeringConfig();
@@ -5468,6 +6039,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkVpcPeeringConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkdayProfile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkdayProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkdayProfile.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWorkdayProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkdaySourceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkdaySourceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkdaySourceConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWorkdaySourceConfig(od);
     });
   });
 
@@ -5597,7 +6190,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DatastreamApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed55();
+      final arg_extraLocationTypes = buildUnnamed58();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

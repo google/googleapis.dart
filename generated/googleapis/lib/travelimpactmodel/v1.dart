@@ -66,10 +66,65 @@ class FlightsResource {
 
   FlightsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Stateless method to retrieve emission estimates.
+  /// Retrieves detailed emission estimates.
+  ///
+  /// Detailed Flight Emissions are transparent per-passenger greenhouse gas
+  /// emission estimates supplemented by comprehensive metadata detailing the
+  /// calculation methodology, emissions breakdown, contrail impact, and data
+  /// provenance. Details on how emission estimates are computed are in
+  /// [GitHub](https://github.com/google/travel-impact-model). The response will
+  /// contain all entries that match the input flight legs, in the same order.
+  /// If there are no estimates available for a certain flight leg, the response
+  /// will return the flight leg object with empty emission fields. The request
+  /// will still be considered successful. Reasons for missing emission
+  /// estimates include: * The flight is unknown to the server. * The input
+  /// flight leg is missing one or more identifiers. * The flight date is in the
+  /// past. * The aircraft type is not supported by the model. * Missing seat
+  /// configuration. The request can contain up to 100 flight legs. If the
+  /// request has more than 100 flight legs, it will fail with an
+  /// INVALID_ARGUMENT error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ComputeDetailedFlightEmissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ComputeDetailedFlightEmissionsResponse>
+  computeDetailedFlightEmissions(
+    ComputeDetailedFlightEmissionsRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/flights:computeDetailedFlightEmissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ComputeDetailedFlightEmissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves emission estimates.
   ///
   /// Details on how emission estimates are computed are in
-  /// [GitHub](https://github.com/google/travel-impact-model) The response will
+  /// [GitHub](https://github.com/google/travel-impact-model). The response will
   /// contain all entries that match the input flight legs, in the same order.
   /// If there are no estimates available for a certain flight leg, the response
   /// will return the flight leg object with empty emission fields. The request
@@ -117,8 +172,8 @@ class FlightsResource {
     );
   }
 
-  /// Stateless method to retrieve GHG emissions estimates for a set of flight
-  /// segments for Scope 3 reporting.
+  /// Retrieves GHG emissions estimates for a set of flight segments for Scope 3
+  /// reporting.
   ///
   /// The response will contain all entries that match the input
   /// Scope3FlightSegment flight segments, in the same order provided. The
@@ -240,6 +295,72 @@ class FlightsResource {
     return ComputeTypicalFlightEmissionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+}
+
+/// Input definition for the ComputeDetailedFlightEmissions request.
+class ComputeDetailedFlightEmissionsRequest {
+  /// Direct flights to return emission estimates for.
+  ///
+  /// Required.
+  core.List<Flight>? flights;
+
+  ComputeDetailedFlightEmissionsRequest({this.flights});
+
+  ComputeDetailedFlightEmissionsRequest.fromJson(core.Map json_)
+    : this(
+        flights: (json_['flights'] as core.List?)
+            ?.map(
+              (value) =>
+                  Flight.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final flights = this.flights;
+    return {'flights': ?flights};
+  }
+}
+
+/// Output definition for the ComputeDetailedFlightEmissions response.
+class ComputeDetailedFlightEmissionsResponse {
+  /// List of flight legs with emission estimates.
+  core.List<FlightWithDetailedEmissions>? flightsWithDetailedEmissions;
+
+  /// The model version under which emission estimates for all flights in this
+  /// response were computed.
+  ModelVersion? modelVersion;
+
+  ComputeDetailedFlightEmissionsResponse({
+    this.flightsWithDetailedEmissions,
+    this.modelVersion,
+  });
+
+  ComputeDetailedFlightEmissionsResponse.fromJson(core.Map json_)
+    : this(
+        flightsWithDetailedEmissions:
+            (json_['flightsWithDetailedEmissions'] as core.List?)
+                ?.map(
+                  (value) => FlightWithDetailedEmissions.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        modelVersion: json_.containsKey('modelVersion')
+            ? ModelVersion.fromJson(
+                json_['modelVersion'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final flightsWithDetailedEmissions = this.flightsWithDetailedEmissions;
+    final modelVersion = this.modelVersion;
+    return {
+      'flightsWithDetailedEmissions': ?flightsWithDetailedEmissions,
+      'modelVersion': ?modelVersion,
+    };
   }
 }
 
@@ -516,6 +637,55 @@ class EasaLabelMetadata {
   }
 }
 
+/// Details about the various emissions portions of the total
+/// emissions_grams_per_pax value.
+///
+/// The value of the summed breakdowns should always equal
+/// emissions_grams_per_pax.
+class EmissionsBreakdown {
+  /// Per-passenger tank-to-wake emission estimate numbers.
+  ///
+  /// Will not be present if emissions could not be computed. For the list of
+  /// reasons why emissions could not be computed, see ComputeFlightEmissions.
+  EmissionsGramsPerPax? ttwEmissionsGramsPerPax;
+
+  /// Per-passenger well-to-tank emission estimate numbers.
+  ///
+  /// Will not be present if emissions could not be computed. For the list of
+  /// reasons why emissions could not be computed, see ComputeFlightEmissions.
+  EmissionsGramsPerPax? wttEmissionsGramsPerPax;
+
+  EmissionsBreakdown({
+    this.ttwEmissionsGramsPerPax,
+    this.wttEmissionsGramsPerPax,
+  });
+
+  EmissionsBreakdown.fromJson(core.Map json_)
+    : this(
+        ttwEmissionsGramsPerPax: json_.containsKey('ttwEmissionsGramsPerPax')
+            ? EmissionsGramsPerPax.fromJson(
+                json_['ttwEmissionsGramsPerPax']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wttEmissionsGramsPerPax: json_.containsKey('wttEmissionsGramsPerPax')
+            ? EmissionsGramsPerPax.fromJson(
+                json_['wttEmissionsGramsPerPax']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ttwEmissionsGramsPerPax = this.ttwEmissionsGramsPerPax;
+    final wttEmissionsGramsPerPax = this.wttEmissionsGramsPerPax;
+    return {
+      'ttwEmissionsGramsPerPax': ?ttwEmissionsGramsPerPax,
+      'wttEmissionsGramsPerPax': ?wttEmissionsGramsPerPax,
+    };
+  }
+}
+
 /// Grouped emissions per seating class results.
 class EmissionsGramsPerPax {
   /// Emissions for one passenger in business class in grams.
@@ -567,6 +737,325 @@ class EmissionsGramsPerPax {
       'economy': ?economy,
       'first': ?first,
       'premiumEconomy': ?premiumEconomy,
+    };
+  }
+}
+
+/// All additional metadata.
+class EmissionsMetadata {
+  /// Metadata about the EASA Flight Emissions Label.
+  ///
+  /// Only set when the emissions data source is EASA.
+  ///
+  /// Output only.
+  EasaLabelMetadata? easaLabelMetadata;
+
+  /// Details about the provenance of data used to calculate the emissions data,
+  /// including the contributing factors with their data sources.
+  ///
+  /// Output only.
+  EmissionsProvenance? emissionsProvenance;
+
+  /// Link to the `travelimpactmodel.org` Emissions Calculator website.
+  ///
+  /// Example:
+  /// https://travelimpactmodel.org/lookup/flight?itinerary=ZRH-BOS-LX-52-20261225.
+  ///
+  /// Output only.
+  core.String? timWebsiteEmissionsCalculatorUrl;
+
+  EmissionsMetadata({
+    this.easaLabelMetadata,
+    this.emissionsProvenance,
+    this.timWebsiteEmissionsCalculatorUrl,
+  });
+
+  EmissionsMetadata.fromJson(core.Map json_)
+    : this(
+        easaLabelMetadata: json_.containsKey('easaLabelMetadata')
+            ? EasaLabelMetadata.fromJson(
+                json_['easaLabelMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        emissionsProvenance: json_.containsKey('emissionsProvenance')
+            ? EmissionsProvenance.fromJson(
+                json_['emissionsProvenance']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timWebsiteEmissionsCalculatorUrl:
+            json_['timWebsiteEmissionsCalculatorUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final easaLabelMetadata = this.easaLabelMetadata;
+    final emissionsProvenance = this.emissionsProvenance;
+    final timWebsiteEmissionsCalculatorUrl =
+        this.timWebsiteEmissionsCalculatorUrl;
+    return {
+      'easaLabelMetadata': ?easaLabelMetadata,
+      'emissionsProvenance': ?emissionsProvenance,
+      'timWebsiteEmissionsCalculatorUrl': ?timWebsiteEmissionsCalculatorUrl,
+    };
+  }
+}
+
+/// Information about the provenance of the data used to calculate emissions
+/// estimates, including contributing factors and their data sources.
+///
+/// In `provenance_entries`, `provenance_entry_type` acts as the "key"
+/// identifying the contributing factor, and there is always only one entry per
+/// entry type. The remaining fields in each entry describe that specific entry
+/// type and may or may not be populated depending on the contributing factor
+/// and available data.
+class EmissionsProvenance {
+  /// All contributing factors used to calculate emissions.
+  ///
+  /// Each entry type (`provenance_entry_type`) acts as a "key" identifying the
+  /// factor, with always only one entry per entry type. The remaining fields
+  /// describe that specific factor and may or may not be populated.
+  ///
+  /// Output only.
+  core.List<EmissionsProvenanceEntry>? provenanceEntries;
+
+  EmissionsProvenance({this.provenanceEntries});
+
+  EmissionsProvenance.fromJson(core.Map json_)
+    : this(
+        provenanceEntries: (json_['provenanceEntries'] as core.List?)
+            ?.map(
+              (value) => EmissionsProvenanceEntry.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final provenanceEntries = this.provenanceEntries;
+    return {'provenanceEntries': ?provenanceEntries};
+  }
+}
+
+/// Details about a single contributing factor in emissions calculations.
+///
+/// Each entry represents a single factor where `provenance_entry_type` acts as
+/// the key identifying the factor, and the other fields describe it and may or
+/// may not be populated.
+class EmissionsProvenanceEntry {
+  /// The cargo mass fraction value.
+  ///
+  /// If not set, the cargo mass fraction value is not available.
+  ///
+  /// Output only.
+  core.double? cargoMassFractionData;
+
+  /// Strategy for T100 cargo mass fraction.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STRATEGY_UNSPECIFIED" : Strategy unspecified.
+  /// - "CARRIER_ROUTE_AIRCRAFT_CLASS" : Data by carrier, route, and aircraft
+  /// class.
+  /// - "ROUTE_AIRCRAFT_CLASS" : Data by route and aircraft class.
+  /// - "DISTANCE_AIRCRAFT_CLASS" : Data by distance band and aircraft class.
+  /// - "ACTUAL_CARRIER_ROUTE_YEAR_MONTH_AIRCRAFT_CLASS" : Historical data
+  /// matching carrier, route, year, month, and aircraft class.
+  core.String? cargoMassFractionT100Strategy;
+
+  /// Data category of the data source.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DATA_CATEGORY_UNSPECIFIED" : Data category unspecified.
+  /// - "PRIMARY" : Primary data, as defined in ISO 14083.
+  /// - "MODELED" : Modeled data, as defined in ISO 14083.
+  /// - "DEFAULT" : Default value data, as defined in ISO 14083.
+  core.String? dataCategory;
+
+  /// Strategy for distance adjustment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STRATEGY_UNSPECIFIED" : Strategy unspecified.
+  /// - "ORIGIN_DESTINATION" : Distance adjustment factor determined by origin
+  /// and destination airport pair.
+  /// - "COUNTRY_PAIR" : Distance adjustment factor determined by origin and
+  /// destination country pair.
+  /// - "DEFAULT" : The distance adjustment factor is based on the default value
+  /// because we did not find an airport- or country-specific adjustment factor.
+  core.String? distanceAdjustmentStrategy;
+
+  /// The estimated distance flown in CCD flight phase in kilometers value
+  /// calculated using the distance adjustment factor (DAF).
+  ///
+  /// If not set, the estimated flight distance value is not available.
+  ///
+  /// Output only.
+  core.int? estimatedFlightDistanceKm;
+
+  /// Strategy for EEA fuel burn.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STRATEGY_UNSPECIFIED" : Strategy unspecified.
+  /// - "AIRCRAFT_MAPPING_FALLBACK_WITH_CORRECTION_FACTOR" : A static correction
+  /// factor was applied.
+  /// - "AIRCRAFT_MAPPING_EXACT" : Exact aircraft mapping was used.
+  /// - "AIRCRAFT_MAPPING_FALLBACK" : Fallback aircraft mapping was used.
+  core.String? fuelBurnEeaStrategy;
+
+  /// Strategy for CH Aviation load factors.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STRATEGY_UNSPECIFIED" : Strategy unspecified.
+  /// - "CARRIER_MONTH" : Data by carrier and month of travel.
+  /// - "ACTUAL_CARRIER_YEAR_MONTH" : Historical data matching carrier, year,
+  /// and month.
+  core.String? loadFactorsChAviationStrategy;
+
+  /// The load factors data value.
+  ///
+  /// If not set, the load factors value is not available.
+  ///
+  /// Output only.
+  core.double? loadFactorsData;
+
+  /// Strategy for T100 load factors.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STRATEGY_UNSPECIFIED" : Strategy unspecified.
+  /// - "CARRIER_ROUTE_MONTH" : Data by carrier, route, and month of travel.
+  /// - "CARRIER_MONTH" : Data by carrier and month of travel.
+  /// - "ACTUAL_CARRIER_ROUTE_YEAR_MONTH" : Historical data matching carrier,
+  /// route, year, and month.
+  core.String? loadFactorsT100Strategy;
+
+  /// The type of the provenance entry.
+  ///
+  /// Acts as the "key" identifying the contributing factor; the remaining
+  /// fields in this message describe it and may or may not be populated.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EMISSIONS_PROVENANCE_ENTRY_TYPE_UNSPECIFIED" : Unspecified provenance
+  /// entry type.
+  /// - "FUEL_BURN" : Fuel burn entry type.
+  /// - "LOAD_FACTORS" : Load factors entry type.
+  /// - "CARGO_MASS_FRACTION" : Cargo mass fraction entry type.
+  /// - "SEATING_CONFIG" : Seating configuration entry type.
+  /// - "SEAT_AREA_RATIOS" : Seat area ratios entry type.
+  /// - "DISTANCE_ADJUSTMENT" : Distance adjustment entry type.
+  core.String? provenanceEntryType;
+
+  /// Strategy for IATA seat area ratios.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STRATEGY_UNSPECIFIED" : Strategy unspecified.
+  /// - "NARROW_AIRCRAFT_BODY" : Seat area ratios for narrow body aircraft were
+  /// used.
+  /// - "WIDE_AIRCRAFT_BODY" : Seat area ratios for wide body aircraft were
+  /// used.
+  core.String? seatAreaRatioIataStrategy;
+
+  /// The source of the data.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DATA_SOURCE_UNSPECIFIED" : Data source unspecified.
+  /// - "EEA" : Data provided by the European Environment Agency (EEA).
+  /// - "T100" : Data from the T-100 dataset, provided by the US Bureau of
+  /// Transportation Statistics.
+  /// - "CH_AVIATION" : Data provided by ch-aviation.
+  /// - "OAG" : Data provided by the Official Aviation Guide (OAG).
+  /// - "OPERATING_CARRIER" : Data provided by the operating carrier.
+  /// - "AIRCRAFT_MODEL_TYPICAL" : Typical data based on the aircraft model.
+  /// - "GLOBAL_DEFAULT" : A global default value, used when no other data
+  /// source is available.
+  /// - "IATA" : Data provided by the International Air Transport Association
+  /// (IATA).
+  /// - "ICL" : Data provided by Imperial College London.
+  core.String? source;
+
+  /// The version of the source data.
+  ///
+  /// For example, "2025/04".
+  ///
+  /// Output only.
+  core.String? sourceVersion;
+
+  EmissionsProvenanceEntry({
+    this.cargoMassFractionData,
+    this.cargoMassFractionT100Strategy,
+    this.dataCategory,
+    this.distanceAdjustmentStrategy,
+    this.estimatedFlightDistanceKm,
+    this.fuelBurnEeaStrategy,
+    this.loadFactorsChAviationStrategy,
+    this.loadFactorsData,
+    this.loadFactorsT100Strategy,
+    this.provenanceEntryType,
+    this.seatAreaRatioIataStrategy,
+    this.source,
+    this.sourceVersion,
+  });
+
+  EmissionsProvenanceEntry.fromJson(core.Map json_)
+    : this(
+        cargoMassFractionData: (json_['cargoMassFractionData'] as core.num?)
+            ?.toDouble(),
+        cargoMassFractionT100Strategy:
+            json_['cargoMassFractionT100Strategy'] as core.String?,
+        dataCategory: json_['dataCategory'] as core.String?,
+        distanceAdjustmentStrategy:
+            json_['distanceAdjustmentStrategy'] as core.String?,
+        estimatedFlightDistanceKm:
+            json_['estimatedFlightDistanceKm'] as core.int?,
+        fuelBurnEeaStrategy: json_['fuelBurnEeaStrategy'] as core.String?,
+        loadFactorsChAviationStrategy:
+            json_['loadFactorsChAviationStrategy'] as core.String?,
+        loadFactorsData: (json_['loadFactorsData'] as core.num?)?.toDouble(),
+        loadFactorsT100Strategy:
+            json_['loadFactorsT100Strategy'] as core.String?,
+        provenanceEntryType: json_['provenanceEntryType'] as core.String?,
+        seatAreaRatioIataStrategy:
+            json_['seatAreaRatioIataStrategy'] as core.String?,
+        source: json_['source'] as core.String?,
+        sourceVersion: json_['sourceVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cargoMassFractionData = this.cargoMassFractionData;
+    final cargoMassFractionT100Strategy = this.cargoMassFractionT100Strategy;
+    final dataCategory = this.dataCategory;
+    final distanceAdjustmentStrategy = this.distanceAdjustmentStrategy;
+    final estimatedFlightDistanceKm = this.estimatedFlightDistanceKm;
+    final fuelBurnEeaStrategy = this.fuelBurnEeaStrategy;
+    final loadFactorsChAviationStrategy = this.loadFactorsChAviationStrategy;
+    final loadFactorsData = this.loadFactorsData;
+    final loadFactorsT100Strategy = this.loadFactorsT100Strategy;
+    final provenanceEntryType = this.provenanceEntryType;
+    final seatAreaRatioIataStrategy = this.seatAreaRatioIataStrategy;
+    final source = this.source;
+    final sourceVersion = this.sourceVersion;
+    return {
+      'cargoMassFractionData': ?cargoMassFractionData,
+      'cargoMassFractionT100Strategy': ?cargoMassFractionT100Strategy,
+      'dataCategory': ?dataCategory,
+      'distanceAdjustmentStrategy': ?distanceAdjustmentStrategy,
+      'estimatedFlightDistanceKm': ?estimatedFlightDistanceKm,
+      'fuelBurnEeaStrategy': ?fuelBurnEeaStrategy,
+      'loadFactorsChAviationStrategy': ?loadFactorsChAviationStrategy,
+      'loadFactorsData': ?loadFactorsData,
+      'loadFactorsT100Strategy': ?loadFactorsT100Strategy,
+      'provenanceEntryType': ?provenanceEntryType,
+      'seatAreaRatioIataStrategy': ?seatAreaRatioIataStrategy,
+      'source': ?source,
+      'sourceVersion': ?sourceVersion,
     };
   }
 }
@@ -634,6 +1123,146 @@ class Flight {
       'flightNumber': ?flightNumber,
       'operatingCarrierCode': ?operatingCarrierCode,
       'origin': ?origin,
+    };
+  }
+}
+
+/// Details about the specific flight's emissions.
+class FlightEmissionsDetails {
+  /// The significance of contrails warming impact compared to the total CO2e
+  /// emissions impact.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONTRAILS_IMPACT_UNSPECIFIED" : The contrails impact is unspecified.
+  /// - "CONTRAILS_IMPACT_NEGLIGIBLE" : The contrails impact is negligible
+  /// compared to the total CO2e emissions.
+  /// - "CONTRAILS_IMPACT_MODERATE" : The contrails impact is comparable to the
+  /// total CO2e emissions.
+  /// - "CONTRAILS_IMPACT_SEVERE" : The contrails impact is higher than the
+  /// total CO2e emissions impact.
+  core.String? contrailsImpactBucket;
+
+  /// Details about the various emissions portions of the total
+  /// emissions_grams_per_pax value.
+  ///
+  /// The value of the summed breakdowns should always equal
+  /// emissions_grams_per_pax.
+  ///
+  /// Output only.
+  EmissionsBreakdown? emissionsBreakdown;
+
+  /// Per-passenger emission estimate numbers.
+  ///
+  /// Will not be present if emissions could not be computed. For the list of
+  /// reasons why emissions could not be computed, see
+  /// ComputeDetailedFlightEmissions
+  ///
+  /// Output only.
+  EmissionsGramsPerPax? emissionsGramsPerPax;
+
+  /// The source of the emissions data.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SOURCE_UNSPECIFIED" : The source of the emissions data is unspecified.
+  /// - "TIM" : The emissions data is from the Travel Impact Model.
+  /// - "EASA" : The emissions data is from the EASA environmental labels.
+  core.String? source;
+
+  FlightEmissionsDetails({
+    this.contrailsImpactBucket,
+    this.emissionsBreakdown,
+    this.emissionsGramsPerPax,
+    this.source,
+  });
+
+  FlightEmissionsDetails.fromJson(core.Map json_)
+    : this(
+        contrailsImpactBucket: json_['contrailsImpactBucket'] as core.String?,
+        emissionsBreakdown: json_.containsKey('emissionsBreakdown')
+            ? EmissionsBreakdown.fromJson(
+                json_['emissionsBreakdown']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        emissionsGramsPerPax: json_.containsKey('emissionsGramsPerPax')
+            ? EmissionsGramsPerPax.fromJson(
+                json_['emissionsGramsPerPax']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        source: json_['source'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contrailsImpactBucket = this.contrailsImpactBucket;
+    final emissionsBreakdown = this.emissionsBreakdown;
+    final emissionsGramsPerPax = this.emissionsGramsPerPax;
+    final source = this.source;
+    return {
+      'contrailsImpactBucket': ?contrailsImpactBucket,
+      'emissionsBreakdown': ?emissionsBreakdown,
+      'emissionsGramsPerPax': ?emissionsGramsPerPax,
+      'source': ?source,
+    };
+  }
+}
+
+/// Direct flight with emission estimates details.
+class FlightWithDetailedEmissions {
+  /// Additional metadata about the flight emissions calculation.
+  ///
+  /// Output only.
+  EmissionsMetadata? emissionsMetadata;
+
+  /// Matches the flight identifiers in the request.
+  ///
+  /// Note: all IATA codes are capitalized.
+  ///
+  /// Output only.
+  Flight? flight;
+
+  /// All the flight emissions data.
+  ///
+  /// Output only.
+  FlightEmissionsDetails? flightEmissionsDetails;
+
+  FlightWithDetailedEmissions({
+    this.emissionsMetadata,
+    this.flight,
+    this.flightEmissionsDetails,
+  });
+
+  FlightWithDetailedEmissions.fromJson(core.Map json_)
+    : this(
+        emissionsMetadata: json_.containsKey('emissionsMetadata')
+            ? EmissionsMetadata.fromJson(
+                json_['emissionsMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        flight: json_.containsKey('flight')
+            ? Flight.fromJson(
+                json_['flight'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        flightEmissionsDetails: json_.containsKey('flightEmissionsDetails')
+            ? FlightEmissionsDetails.fromJson(
+                json_['flightEmissionsDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final emissionsMetadata = this.emissionsMetadata;
+    final flight = this.flight;
+    final flightEmissionsDetails = this.flightEmissionsDetails;
+    return {
+      'emissionsMetadata': ?emissionsMetadata,
+      'flight': ?flight,
+      'flightEmissionsDetails': ?flightEmissionsDetails,
     };
   }
 }

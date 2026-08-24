@@ -208,6 +208,25 @@ void checkDataSourceParameter(api.DataSourceParameter o) {
   buildCounterDataSourceParameter--;
 }
 
+core.int buildCounterDataplexConfiguration = 0;
+api.DataplexConfiguration buildDataplexConfiguration() {
+  final o = api.DataplexConfiguration();
+  buildCounterDataplexConfiguration++;
+  if (buildCounterDataplexConfiguration < 3) {
+    o.entryGroup = 'foo';
+  }
+  buildCounterDataplexConfiguration--;
+  return o;
+}
+
+void checkDataplexConfiguration(api.DataplexConfiguration o) {
+  buildCounterDataplexConfiguration++;
+  if (buildCounterDataplexConfiguration < 3) {
+    unittest.expect(o.entryGroup!, unittest.equals('foo'));
+  }
+  buildCounterDataplexConfiguration--;
+}
+
 core.int buildCounterEmailPreferences = 0;
 api.EmailPreferences buildEmailPreferences() {
   final o = api.EmailPreferences();
@@ -594,6 +613,25 @@ void checkManualSchedule(api.ManualSchedule o) {
   buildCounterManualSchedule--;
 }
 
+core.int buildCounterMetadataDestination = 0;
+api.MetadataDestination buildMetadataDestination() {
+  final o = api.MetadataDestination();
+  buildCounterMetadataDestination++;
+  if (buildCounterMetadataDestination < 3) {
+    o.dataplexConfiguration = buildDataplexConfiguration();
+  }
+  buildCounterMetadataDestination--;
+  return o;
+}
+
+void checkMetadataDestination(api.MetadataDestination o) {
+  buildCounterMetadataDestination++;
+  if (buildCounterMetadataDestination < 3) {
+    checkDataplexConfiguration(o.dataplexConfiguration!);
+  }
+  buildCounterMetadataDestination--;
+}
+
 core.int buildCounterPartitionDetail = 0;
 api.PartitionDetail buildPartitionDetail() {
   final o = api.PartitionDetail();
@@ -929,6 +967,7 @@ api.TransferConfig buildTransferConfig() {
     o.encryptionConfiguration = buildEncryptionConfiguration();
     o.error = buildStatus();
     o.managedTableType = 'foo';
+    o.metadataDestination = buildMetadataDestination();
     o.name = 'foo';
     o.nextRunTime = 'foo';
     o.notificationPubsubTopic = 'foo';
@@ -958,6 +997,7 @@ void checkTransferConfig(api.TransferConfig o) {
     checkEncryptionConfiguration(o.encryptionConfiguration!);
     checkStatus(o.error!);
     unittest.expect(o.managedTableType!, unittest.equals('foo'));
+    checkMetadataDestination(o.metadataDestination!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.nextRunTime!, unittest.equals('foo'));
     unittest.expect(o.notificationPubsubTopic!, unittest.equals('foo'));
@@ -1355,6 +1395,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DataplexConfiguration', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataplexConfiguration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataplexConfiguration.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDataplexConfiguration(od);
+    });
+  });
+
   unittest.group('obj-schema-EmailPreferences', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmailPreferences();
@@ -1506,6 +1557,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkManualSchedule(od);
+    });
+  });
+
+  unittest.group('obj-schema-MetadataDestination', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMetadataDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MetadataDestination.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMetadataDestination(od);
     });
   });
 

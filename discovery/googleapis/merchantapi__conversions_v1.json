@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260223",
+    "revision": "20260527",
     "rootUrl": "https://merchantapi.googleapis.com/",
     "servicePath": "",
     "title": "Merchant API",
@@ -630,11 +630,13 @@
                     "description": "The resource that changed, in this case it will always be `Product`.",
                     "enum": [
                         "RESOURCE_UNSPECIFIED",
-                        "PRODUCT"
+                        "PRODUCT",
+                        "ACCOUNT_SERVICE"
                     ],
                     "enumDescriptions": [
                         "Unspecified resource",
-                        "Resource type : product"
+                        "Resource type : product",
+                        "Account service"
                     ],
                     "type": "string"
                 }

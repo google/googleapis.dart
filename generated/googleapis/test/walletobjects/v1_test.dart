@@ -3088,6 +3088,25 @@ void checkIssuerToUserInfo(api.IssuerToUserInfo o) {
   buildCounterIssuerToUserInfo--;
 }
 
+core.int buildCounterJsonResource = 0;
+api.JsonResource buildJsonResource() {
+  final o = api.JsonResource();
+  buildCounterJsonResource++;
+  if (buildCounterJsonResource < 3) {
+    o.json = 'foo';
+  }
+  buildCounterJsonResource--;
+  return o;
+}
+
+void checkJsonResource(api.JsonResource o) {
+  buildCounterJsonResource++;
+  if (buildCounterJsonResource < 3) {
+    unittest.expect(o.json!, unittest.equals('foo'));
+  }
+  buildCounterJsonResource--;
+}
+
 core.int buildCounterJwtInsertResponse = 0;
 api.JwtInsertResponse buildJwtInsertResponse() {
   final o = api.JwtInsertResponse();
@@ -3126,6 +3145,42 @@ void checkJwtResource(api.JwtResource o) {
     unittest.expect(o.jwt!, unittest.equals('foo'));
   }
   buildCounterJwtResource--;
+}
+
+core.int buildCounterJwtValidateRequest = 0;
+api.JwtValidateRequest buildJwtValidateRequest() {
+  final o = api.JwtValidateRequest();
+  buildCounterJwtValidateRequest++;
+  if (buildCounterJwtValidateRequest < 3) {
+    o.jsonResource = buildJsonResource();
+    o.jwtResource = buildJwtResource();
+  }
+  buildCounterJwtValidateRequest--;
+  return o;
+}
+
+void checkJwtValidateRequest(api.JwtValidateRequest o) {
+  buildCounterJwtValidateRequest++;
+  if (buildCounterJwtValidateRequest < 3) {
+    checkJsonResource(o.jsonResource!);
+    checkJwtResource(o.jwtResource!);
+  }
+  buildCounterJwtValidateRequest--;
+}
+
+core.int buildCounterJwtValidateResponse = 0;
+api.JwtValidateResponse buildJwtValidateResponse() {
+  final o = api.JwtValidateResponse();
+  buildCounterJwtValidateResponse++;
+  if (buildCounterJwtValidateResponse < 3) {}
+  buildCounterJwtValidateResponse--;
+  return o;
+}
+
+void checkJwtValidateResponse(api.JwtValidateResponse o) {
+  buildCounterJwtValidateResponse++;
+  if (buildCounterJwtValidateResponse < 3) {}
+  buildCounterJwtValidateResponse--;
 }
 
 core.int buildCounterLabelValue = 0;
@@ -3833,6 +3888,7 @@ api.Media buildMedia() {
     o.referenceType = 'foo';
     o.sha1Hash = 'foo';
     o.sha256Hash = 'foo';
+    o.sha512Hash = 'foo';
     o.timestamp = 'foo';
     o.token = 'foo';
   }
@@ -3871,6 +3927,7 @@ void checkMedia(api.Media o) {
     unittest.expect(o.referenceType!, unittest.equals('foo'));
     unittest.expect(o.sha1Hash!, unittest.equals('foo'));
     unittest.expect(o.sha256Hash!, unittest.equals('foo'));
+    unittest.expect(o.sha512Hash!, unittest.equals('foo'));
     unittest.expect(o.timestamp!, unittest.equals('foo'));
     unittest.expect(o.token!, unittest.equals('foo'));
   }
@@ -6917,6 +6974,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-JsonResource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildJsonResource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.JsonResource.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkJsonResource(od);
+    });
+  });
+
   unittest.group('obj-schema-JwtInsertResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildJwtInsertResponse();
@@ -6936,6 +7004,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkJwtResource(od);
+    });
+  });
+
+  unittest.group('obj-schema-JwtValidateRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildJwtValidateRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.JwtValidateRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkJwtValidateRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-JwtValidateResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildJwtValidateResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.JwtValidateResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkJwtValidateResponse(od);
     });
   });
 
@@ -11245,6 +11335,63 @@ void main() {
       );
       final response = await res.insert(arg_request, $fields: arg_$fields);
       checkJwtInsertResponse(response as api.JwtInsertResponse);
+    });
+
+    unittest.test('method--validate', () async {
+      final mock = HttpServerMock();
+      final res = api.WalletobjectsApi(mock).jwt;
+      final arg_request = buildJwtValidateRequest();
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.JwtValidateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkJwtValidateRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 29),
+            unittest.equals('walletobjects/v1/jwt/validate'),
+          );
+          pathOffset += 29;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildJwtValidateResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.validate(arg_request, $fields: arg_$fields);
+      checkJwtValidateResponse(response as api.JwtValidateResponse);
     });
   });
 

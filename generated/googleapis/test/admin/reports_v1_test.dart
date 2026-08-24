@@ -93,6 +93,7 @@ api.ActivityActor buildActivityActor() {
   final o = api.ActivityActor();
   buildCounterActivityActor++;
   if (buildCounterActivityActor < 3) {
+    o.agentAttributionInfo = buildAgentAttributionInfo();
     o.applicationInfo = buildActivityActorApplicationInfo();
     o.callerType = 'foo';
     o.email = 'foo';
@@ -106,6 +107,7 @@ api.ActivityActor buildActivityActor() {
 void checkActivityActor(api.ActivityActor o) {
   buildCounterActivityActor++;
   if (buildCounterActivityActor < 3) {
+    checkAgentAttributionInfo(o.agentAttributionInfo!);
     checkActivityActorApplicationInfo(o.applicationInfo!);
     unittest.expect(o.callerType!, unittest.equals('foo'));
     unittest.expect(o.email!, unittest.equals('foo'));
@@ -491,10 +493,12 @@ api.Activity buildActivity() {
     o.events = buildUnnamed14();
     o.id = buildActivityId();
     o.ipAddress = 'foo';
+    o.isAgenticAction = true;
     o.kind = 'foo';
     o.networkInfo = buildActivityNetworkInfo();
     o.ownerDomain = 'foo';
     o.resourceDetails = buildUnnamed15();
+    o.userDeviceInfo = buildActivityUserDeviceInfo();
   }
   buildCounterActivity--;
   return o;
@@ -508,10 +512,12 @@ void checkActivity(api.Activity o) {
     checkUnnamed14(o.events!);
     checkActivityId(o.id!);
     unittest.expect(o.ipAddress!, unittest.equals('foo'));
+    unittest.expect(o.isAgenticAction!, unittest.isTrue);
     unittest.expect(o.kind!, unittest.equals('foo'));
     checkActivityNetworkInfo(o.networkInfo!);
     unittest.expect(o.ownerDomain!, unittest.equals('foo'));
     checkUnnamed15(o.resourceDetails!);
+    checkActivityUserDeviceInfo(o.userDeviceInfo!);
   }
   buildCounterActivity--;
 }
@@ -570,6 +576,73 @@ void checkActivityNetworkInfo(api.ActivityNetworkInfo o) {
     unittest.expect(o.subdivisionCode!, unittest.equals('foo'));
   }
   buildCounterActivityNetworkInfo--;
+}
+
+core.int buildCounterActivityUserDeviceInfo = 0;
+api.ActivityUserDeviceInfo buildActivityUserDeviceInfo() {
+  final o = api.ActivityUserDeviceInfo();
+  buildCounterActivityUserDeviceInfo++;
+  if (buildCounterActivityUserDeviceInfo < 3) {
+    o.deviceId = 'foo';
+    o.deviceOsVersion = 'foo';
+    o.deviceType = 'foo';
+  }
+  buildCounterActivityUserDeviceInfo--;
+  return o;
+}
+
+void checkActivityUserDeviceInfo(api.ActivityUserDeviceInfo o) {
+  buildCounterActivityUserDeviceInfo++;
+  if (buildCounterActivityUserDeviceInfo < 3) {
+    unittest.expect(o.deviceId!, unittest.equals('foo'));
+    unittest.expect(o.deviceOsVersion!, unittest.equals('foo'));
+    unittest.expect(o.deviceType!, unittest.equals('foo'));
+  }
+  buildCounterActivityUserDeviceInfo--;
+}
+
+core.int buildCounterAgentAttributionInfo = 0;
+api.AgentAttributionInfo buildAgentAttributionInfo() {
+  final o = api.AgentAttributionInfo();
+  buildCounterAgentAttributionInfo++;
+  if (buildCounterAgentAttributionInfo < 3) {
+    o.agentId = 'foo';
+    o.agentName = 'foo';
+    o.agentOwner = buildAgentAttributionInfoAgentOwner();
+    o.agentType = 'foo';
+  }
+  buildCounterAgentAttributionInfo--;
+  return o;
+}
+
+void checkAgentAttributionInfo(api.AgentAttributionInfo o) {
+  buildCounterAgentAttributionInfo++;
+  if (buildCounterAgentAttributionInfo < 3) {
+    unittest.expect(o.agentId!, unittest.equals('foo'));
+    unittest.expect(o.agentName!, unittest.equals('foo'));
+    checkAgentAttributionInfoAgentOwner(o.agentOwner!);
+    unittest.expect(o.agentType!, unittest.equals('foo'));
+  }
+  buildCounterAgentAttributionInfo--;
+}
+
+core.int buildCounterAgentAttributionInfoAgentOwner = 0;
+api.AgentAttributionInfoAgentOwner buildAgentAttributionInfoAgentOwner() {
+  final o = api.AgentAttributionInfoAgentOwner();
+  buildCounterAgentAttributionInfoAgentOwner++;
+  if (buildCounterAgentAttributionInfoAgentOwner < 3) {
+    o.email = 'foo';
+  }
+  buildCounterAgentAttributionInfoAgentOwner--;
+  return o;
+}
+
+void checkAgentAttributionInfoAgentOwner(api.AgentAttributionInfoAgentOwner o) {
+  buildCounterAgentAttributionInfoAgentOwner++;
+  if (buildCounterAgentAttributionInfoAgentOwner < 3) {
+    unittest.expect(o.email!, unittest.equals('foo'));
+  }
+  buildCounterAgentAttributionInfoAgentOwner--;
 }
 
 core.List<api.FieldValue> buildUnnamed17() => [
@@ -984,6 +1057,7 @@ api.OwnerIdentity buildOwnerIdentity() {
   if (buildCounterOwnerIdentity < 3) {
     o.customerIdentity = buildCustomerIdentity();
     o.groupIdentity = buildGroupIdentity();
+    o.sharedDriveIdentity = buildSharedDriveIdentity();
     o.userIdentity = buildUserIdentity();
   }
   buildCounterOwnerIdentity--;
@@ -995,6 +1069,7 @@ void checkOwnerIdentity(api.OwnerIdentity o) {
   if (buildCounterOwnerIdentity < 3) {
     checkCustomerIdentity(o.customerIdentity!);
     checkGroupIdentity(o.groupIdentity!);
+    checkSharedDriveIdentity(o.sharedDriveIdentity!);
     checkUserIdentity(o.userIdentity!);
   }
   buildCounterOwnerIdentity--;
@@ -1057,6 +1132,27 @@ void checkResourceDetails(api.ResourceDetails o) {
     unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterResourceDetails--;
+}
+
+core.int buildCounterSharedDriveIdentity = 0;
+api.SharedDriveIdentity buildSharedDriveIdentity() {
+  final o = api.SharedDriveIdentity();
+  buildCounterSharedDriveIdentity++;
+  if (buildCounterSharedDriveIdentity < 3) {
+    o.id = 'foo';
+    o.sharedDriveName = 'foo';
+  }
+  buildCounterSharedDriveIdentity--;
+  return o;
+}
+
+void checkSharedDriveIdentity(api.SharedDriveIdentity o) {
+  buildCounterSharedDriveIdentity++;
+  if (buildCounterSharedDriveIdentity < 3) {
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.sharedDriveName!, unittest.equals('foo'));
+  }
+  buildCounterSharedDriveIdentity--;
 }
 
 core.int buildCounterUsageReportEntity = 0;
@@ -1481,6 +1577,39 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ActivityUserDeviceInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildActivityUserDeviceInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ActivityUserDeviceInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkActivityUserDeviceInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-AgentAttributionInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAgentAttributionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AgentAttributionInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAgentAttributionInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-AgentAttributionInfoAgentOwner', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAgentAttributionInfoAgentOwner();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AgentAttributionInfoAgentOwner.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAgentAttributionInfoAgentOwner(od);
+    });
+  });
+
   unittest.group('obj-schema-AppliedLabel', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAppliedLabel();
@@ -1657,6 +1786,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SharedDriveIdentity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSharedDriveIdentity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SharedDriveIdentity.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSharedDriveIdentity(od);
+    });
+  });
+
   unittest.group('obj-schema-UsageReportEntity', () {
     unittest.test('to-json--from-json', () async {
       final o = buildUsageReportEntity();
@@ -1741,8 +1881,10 @@ void main() {
       final arg_userKey = 'foo';
       final arg_applicationName = 'foo';
       final arg_actorIpAddress = 'foo';
+      final arg_agentInfoFilter = 'foo';
       final arg_applicationInfoFilter = 'foo';
       final arg_customerId = 'foo';
+      final arg_deviceFilter = 'foo';
       final arg_endTime = 'foo';
       final arg_eventName = 'foo';
       final arg_filters = 'foo';
@@ -1808,12 +1950,20 @@ void main() {
             unittest.equals(arg_actorIpAddress),
           );
           unittest.expect(
+            queryMap['agentInfoFilter']!.first,
+            unittest.equals(arg_agentInfoFilter),
+          );
+          unittest.expect(
             queryMap['applicationInfoFilter']!.first,
             unittest.equals(arg_applicationInfoFilter),
           );
           unittest.expect(
             queryMap['customerId']!.first,
             unittest.equals(arg_customerId),
+          );
+          unittest.expect(
+            queryMap['deviceFilter']!.first,
+            unittest.equals(arg_deviceFilter),
           );
           unittest.expect(
             queryMap['endTime']!.first,
@@ -1878,8 +2028,10 @@ void main() {
         arg_userKey,
         arg_applicationName,
         actorIpAddress: arg_actorIpAddress,
+        agentInfoFilter: arg_agentInfoFilter,
         applicationInfoFilter: arg_applicationInfoFilter,
         customerId: arg_customerId,
+        deviceFilter: arg_deviceFilter,
         endTime: arg_endTime,
         eventName: arg_eventName,
         filters: arg_filters,

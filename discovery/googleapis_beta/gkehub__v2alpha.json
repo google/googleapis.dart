@@ -25,6 +25,66 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://gkehub.asia-south2.rep.googleapis.com/",
             "location": "asia-south2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-central2.rep.googleapis.com/",
+            "location": "us-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-east1.rep.googleapis.com/",
+            "location": "us-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-east4.rep.googleapis.com/",
+            "location": "us-east4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-east5.rep.googleapis.com/",
+            "location": "us-east5"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-east7.rep.googleapis.com/",
+            "location": "us-east7"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-south1.rep.googleapis.com/",
+            "location": "us-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-west2.rep.googleapis.com/",
+            "location": "us-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-west3.rep.googleapis.com/",
+            "location": "us-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-west4.rep.googleapis.com/",
+            "location": "us-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkehub.us-west8.rep.googleapis.com/",
+            "location": "us-west8"
         }
     ],
     "icons": {
@@ -37,7 +97,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260324",
+    "revision": "20260719",
     "rootUrl": "https://gkehub.googleapis.com/",
     "servicePath": "",
     "title": "GKE Hub API",
@@ -151,7 +211,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v2alpha/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "gkehub.projects.locations.list",
@@ -160,7 +220,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -1609,7 +1669,7 @@
                 },
                 "management": {
                     "deprecated": true,
-                    "description": "Optional. Deprecated: From version 1.21.0, automatic Feature management is unavailable, and Config Sync only supports manual upgrades.",
+                    "description": "Optional. Deprecated: Automatic Feature management is in Preview and is unavailable in version 1.21.0 and later, after which Config Sync only supports manual upgrades. If set to manual upgrades, clear this field instead, which is behaviorally equivalent but helps prevent compatibility issues with newer fields.",
                     "enum": [
                         "MANAGEMENT_UNSPECIFIED",
                         "MANAGEMENT_AUTOMATIC",
@@ -3096,6 +3156,12 @@
                         "NON_STANDARD_BINARY_USAGE",
                         "UNSUPPORTED_GATEWAY_CLASS",
                         "MANAGED_CNI_NOT_ENABLED",
+                        "MISSING_CONTROL_PLANE_CONFIG",
+                        "SHARED_VPC_MISSING_PERMISSIONS",
+                        "REQUIRED_ORG_POLICY_DISABLED",
+                        "MODERNIZATION_INCOMPATIBLE_POD_ANNOTATION",
+                        "MODERNIZATION_INCOMPATIBLE_CONFIG",
+                        "MODERNIZATION_INCOMPATIBLE_GATEWAY_POD_SCALE",
                         "MODERNIZATION_SCHEDULED",
                         "MODERNIZATION_IN_PROGRESS",
                         "MODERNIZATION_COMPLETED",
@@ -3111,7 +3177,12 @@
                         "MODERNIZATION_MODERNIZING",
                         "MODERNIZATION_MODERNIZED_SOAKING",
                         "MODERNIZATION_FINALIZED",
-                        "MODERNIZATION_ROLLING_BACK_FLEET"
+                        "MODERNIZATION_ROLLING_BACK_FLEET",
+                        "MODERNIZATION_MODERNIZED",
+                        "MODERNIZATION_COMPATIBLE",
+                        "MODERNIZATION_INCOMPATIBLE",
+                        "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE",
+                        "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA"
                     ],
                     "enumDescriptions": [
                         "Default Unspecified code",
@@ -3152,6 +3223,12 @@
                         "Non-standard binary usage error code",
                         "Unsupported gateway class error code",
                         "Managed CNI not enabled error code",
+                        "Missing control plane configuration error code",
+                        "Shared VPC missing permissions error code",
+                        "Required org policy disabled error code",
+                        "One or more Pods have unsupported annotations.",
+                        "Incompatible config found in the cluster.",
+                        "Gateway pods per cluster limit exceeded.",
                         "Modernization is scheduled for a cluster.",
                         "Modernization is in progress for a cluster.",
                         "Modernization is completed for a cluster.",
@@ -3167,7 +3244,12 @@
                         "Modernization of one or more clusters in a fleet is in progress.",
                         "Modernization of all the fleet's clusters is complete. Soaking before finalizing the modernization.",
                         "Modernization is finalized for all clusters in a fleet. Rollback is no longer allowed.",
-                        "Rollback is in progress for modernization of all clusters in a fleet."
+                        "Rollback is in progress for modernization of all clusters in a fleet.",
+                        "Modernization of all the fleet's clusters is complete. Soaking before finalizing the modernization.",
+                        "Fleet is compatible for modernization.",
+                        "Fleet is not yet compatible for modernization.",
+                        "Fleet exceeds service mesh fleet-level scalability limits.",
+                        "Fleet exceeds service mesh fleet-level quota limits."
                     ],
                     "type": "string"
                 },

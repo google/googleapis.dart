@@ -324,6 +324,7 @@ api.GdataMedia buildGdataMedia() {
     o.referenceType = 'foo';
     o.sha1Hash = 'foo';
     o.sha256Hash = 'foo';
+    o.sha512Hash = 'foo';
     o.timestamp = 'foo';
     o.token = 'foo';
   }
@@ -362,6 +363,7 @@ void checkGdataMedia(api.GdataMedia o) {
     unittest.expect(o.referenceType!, unittest.equals('foo'));
     unittest.expect(o.sha1Hash!, unittest.equals('foo'));
     unittest.expect(o.sha256Hash!, unittest.equals('foo'));
+    unittest.expect(o.sha512Hash!, unittest.equals('foo'));
     unittest.expect(o.timestamp!, unittest.equals('foo'));
     unittest.expect(o.token!, unittest.equals('foo'));
   }

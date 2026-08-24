@@ -1394,7 +1394,7 @@ class ProjectsInstancesBackupOperationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The instance of the backup operations. Values are of
-  /// the form `projects//instances/`.
+  /// the form `projects/{project}/instances/{instance}`.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [filter] - An expression that filters the list of returned backup
@@ -1511,7 +1511,8 @@ class ProjectsInstancesBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the destination instance that will
-  /// contain the backup copy. Values are of the form: `projects//instances/`.
+  /// contain the backup copy. Values are of the form:
+  /// `projects/{project}/instances/{instance}`.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1563,12 +1564,12 @@ class ProjectsInstancesBackupsResource {
   /// created. This must be the same instance that contains the database the
   /// backup is created from. The backup will be stored in the locations
   /// specified in the instance configuration of this instance. Values are of
-  /// the form `projects//instances/`.
+  /// the form `projects/{project}/instances/{instance}`.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [backupId] - Required. The id of the backup to be created. The `backup_id`
   /// appended to `parent` forms the full backup name of the form
-  /// `projects//instances//backups/`.
+  /// `projects/{project}/instances/{instance}/backups/{backup_id}`.
   ///
   /// [encryptionConfig_encryptionType] - Required. The encryption type of the
   /// backup.
@@ -1591,21 +1592,22 @@ class ProjectsInstancesBackupsResource {
   /// `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
   /// database. Set this field only when encryption_type is
   /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
-  /// `projects//locations//keyRings//cryptoKeys/`.
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`.
   ///
   /// [encryptionConfig_kmsKeyNames] - Optional. Specifies the KMS configuration
   /// for the one or more keys used to protect the backup. Values are of the
-  /// form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by
-  /// `kms_key_names` must fully cover all regions of the backup's instance
-  /// configuration. Some examples: * For regional (single-region) instance
-  /// configurations, specify a regional location KMS key. * For multi-region
-  /// instance configurations of type `GOOGLE_MANAGED`, either specify a
-  /// multi-region location KMS key or multiple regional location KMS keys that
-  /// cover all regions in the instance configuration. * For an instance
-  /// configuration of type `USER_MANAGED`, specify only regional location KMS
-  /// keys to cover each region in the instance configuration. Multi-region
-  /// location KMS keys aren't supported for `USER_MANAGED` type instance
-  /// configurations.
+  /// form
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`.
+  /// The keys referenced by `kms_key_names` must fully cover all regions of the
+  /// backup's instance configuration. Some examples: * For regional
+  /// (single-region) instance configurations, specify a regional location KMS
+  /// key. * For multi-region instance configurations of type `GOOGLE_MANAGED`,
+  /// either specify a multi-region location KMS key or multiple regional
+  /// location KMS keys that cover all regions in the instance configuration. *
+  /// For an instance configuration of type `USER_MANAGED`, specify only
+  /// regional location KMS keys to cover each region in the instance
+  /// configuration. Multi-region location KMS keys aren't supported for
+  /// `USER_MANAGED` type instance configurations.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1656,7 +1658,7 @@ class ProjectsInstancesBackupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the backup to delete. Values are of the form
-  /// `projects//instances//backups/`.
+  /// `projects/{project}/instances/{instance}/backups/{backup}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -1690,7 +1692,7 @@ class ProjectsInstancesBackupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the backup. Values are of the form
-  /// `projects//instances//backups/`.
+  /// `projects/{project}/instances/{instance}/backups/{backup}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -1777,7 +1779,7 @@ class ProjectsInstancesBackupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The instance to list backups from. Values are of the
-  /// form `projects//instances/`.
+  /// form `projects/{project}/instances/{instance}`.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [filter] - An expression that filters the list of returned backups. A
@@ -1856,11 +1858,12 @@ class ProjectsInstancesBackupsResource {
   /// [name] - Output only for the CreateBackup operation. Required for the
   /// UpdateBackup operation. A globally unique identifier for the backup which
   /// cannot be changed. Values are of the form
-  /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name
-  /// must be between 2 and 60 characters in length. The backup is stored in the
-  /// location(s) specified in the instance configuration of the instance
-  /// containing the backup, identified by the prefix of the backup name of the
-  /// form `projects//instances/`.
+  /// `projects/{project}/instances/{instance}/backups/a-z*[a-z0-9]` The final
+  /// segment of the name must be between 2 and 60 characters in length. The
+  /// backup is stored in the location(s) specified in the instance
+  /// configuration of the instance containing the backup, identified by the
+  /// prefix of the backup name of the form
+  /// `projects/{project}/instances/{instance}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -5983,7 +5986,7 @@ class Backup {
   ///
   /// Name of the database from which this backup was created. This needs to be
   /// in the same instance as the backup. Values are of the form
-  /// `projects//instances//databases/`.
+  /// `projects/{project}/instances/{instance}/databases/{database}`.
   core.String? database;
 
   /// The database dialect information for the backup.
@@ -6090,11 +6093,12 @@ class Backup {
   ///
   /// Required for the UpdateBackup operation. A globally unique identifier for
   /// the backup which cannot be changed. Values are of the form
-  /// `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name
-  /// must be between 2 and 60 characters in length. The backup is stored in the
-  /// location(s) specified in the instance configuration of the instance
-  /// containing the backup, identified by the prefix of the backup name of the
-  /// form `projects//instances/`.
+  /// `projects/{project}/instances/{instance}/backups/a-z*[a-z0-9]` The final
+  /// segment of the name must be between 2 and 60 characters in length. The
+  /// backup is stored in the location(s) specified in the instance
+  /// configuration of the instance containing the backup, identified by the
+  /// prefix of the backup name of the form
+  /// `projects/{project}/instances/{instance}`.
   core.String? name;
 
   /// Data deleted at a time older than this is guaranteed not to be retained in
@@ -6111,18 +6115,20 @@ class Backup {
   /// The names of the destination backups being created by copying this source
   /// backup.
   ///
-  /// The backup names are of the form `projects//instances//backups/`.
-  /// Referencing backups may exist in different instances. The existence of any
-  /// referencing backup prevents the backup from being deleted. When the copy
-  /// operation is done (either successfully completed or cancelled or the
-  /// destination backup is deleted), the reference to the backup is removed.
+  /// The backup names are of the form
+  /// `projects/{project}/instances/{instance}/backups/{backup}`. Referencing
+  /// backups may exist in different instances. The existence of any referencing
+  /// backup prevents the backup from being deleted. When the copy operation is
+  /// done (either successfully completed or cancelled or the destination backup
+  /// is deleted), the reference to the backup is removed.
   ///
   /// Output only.
   core.List<core.String>? referencingBackups;
 
   /// The names of the restored databases that reference the backup.
   ///
-  /// The database names are of the form `projects//instances//databases/`.
+  /// The database names are of the form
+  /// `projects/{project}/instances/{instance}/databases/{database}`.
   /// Referencing databases may exist in different instances. The existence of
   /// any referencing database prevents the backup from being deleted. When a
   /// restored database from the backup enters the `READY` state, the reference
@@ -6324,7 +6330,8 @@ class BackupInfo {
 class BackupInstancePartition {
   /// A unique identifier for the instance partition.
   ///
-  /// Values are of the form `projects//instances//instancePartitions/`
+  /// Values are of the form
+  /// `projects/{project}/instances/{instance}/instancePartitions/{instance_partition_id}`
   core.String? instancePartition;
 
   BackupInstancePartition({this.instancePartition});
@@ -7034,10 +7041,55 @@ class CommitResponse {
   /// The Cloud Spanner timestamp at which the transaction committed.
   core.String? commitTimestamp;
 
+  /// The isolation level used for the read-write transaction.
+  /// Possible string values are:
+  /// - "ISOLATION_LEVEL_UNSPECIFIED" : Default value. If the value is not
+  /// specified, the `SERIALIZABLE` isolation level is used.
+  /// - "SERIALIZABLE" : All transactions appear as if they executed in a serial
+  /// order, even if some of the reads, writes, and other operations of distinct
+  /// transactions actually occurred in parallel. Spanner assigns commit
+  /// timestamps that reflect the order of committed transactions to implement
+  /// this property. Spanner offers a stronger guarantee than serializability
+  /// called external consistency. For more information, see
+  /// [TrueTime and external consistency](https://cloud.google.com/spanner/docs/true-time-external-consistency#serializability).
+  /// - "REPEATABLE_READ" : All reads performed during the transaction observe a
+  /// consistent snapshot of the database, and the transaction is only
+  /// successfully committed in the absence of conflicts between its updates and
+  /// any concurrent updates that have occurred since that snapshot.
+  /// Consequently, in contrast to `SERIALIZABLE` transactions, only write-write
+  /// conflicts are detected in snapshot transactions. This isolation level does
+  /// not support read-only and partitioned DML transactions. When
+  /// `REPEATABLE_READ` is specified on a read-write transaction, the locking
+  /// semantics default to `OPTIMISTIC`.
+  core.String? isolationLevel;
+
   /// If specified, transaction has not committed yet.
   ///
   /// You must retry the commit with the new precommit token.
   MultiplexedSessionPrecommitToken? precommitToken;
+
+  /// The read lock mode used for the read-write transaction.
+  /// Possible string values are:
+  /// - "READ_LOCK_MODE_UNSPECIFIED" : Default value. * If isolation level is
+  /// SERIALIZABLE, locking semantics default to `PESSIMISTIC`. * If isolation
+  /// level is REPEATABLE_READ, locking semantics default to `OPTIMISTIC`. * See
+  /// [Concurrency control](https://cloud.google.com/spanner/docs/concurrency-control)
+  /// for more details.
+  /// - "PESSIMISTIC" : Pessimistic lock mode. Lock acquisition behavior depends
+  /// on the isolation level in use. In SERIALIZABLE isolation, reads and writes
+  /// acquire necessary locks during transaction statement execution. In
+  /// REPEATABLE_READ isolation, reads that explicitly request to be locked and
+  /// writes acquire locks. See
+  /// [Concurrency control](https://cloud.google.com/spanner/docs/concurrency-control)
+  /// for details on the types of locks acquired at each transaction step.
+  /// - "OPTIMISTIC" : Optimistic lock mode. Lock acquisition behavior depends
+  /// on the isolation level in use. In both SERIALIZABLE and REPEATABLE_READ
+  /// isolation, reads and writes do not acquire locks during transaction
+  /// statement execution. See
+  /// [Concurrency control](https://cloud.google.com/spanner/docs/concurrency-control)
+  /// for details on how the guarantees of each isolation level are provided at
+  /// commit time.
+  core.String? readLockMode;
 
   /// If `TransactionOptions.isolation_level` is set to
   /// `IsolationLevel.REPEATABLE_READ`, then the snapshot timestamp is the
@@ -7049,7 +7101,9 @@ class CommitResponse {
   CommitResponse({
     this.commitStats,
     this.commitTimestamp,
+    this.isolationLevel,
     this.precommitToken,
+    this.readLockMode,
     this.snapshotTimestamp,
   });
 
@@ -7061,23 +7115,29 @@ class CommitResponse {
               )
             : null,
         commitTimestamp: json_['commitTimestamp'] as core.String?,
+        isolationLevel: json_['isolationLevel'] as core.String?,
         precommitToken: json_.containsKey('precommitToken')
             ? MultiplexedSessionPrecommitToken.fromJson(
                 json_['precommitToken'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        readLockMode: json_['readLockMode'] as core.String?,
         snapshotTimestamp: json_['snapshotTimestamp'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final commitStats = this.commitStats;
     final commitTimestamp = this.commitTimestamp;
+    final isolationLevel = this.isolationLevel;
     final precommitToken = this.precommitToken;
+    final readLockMode = this.readLockMode;
     final snapshotTimestamp = this.snapshotTimestamp;
     return {
       'commitStats': ?commitStats,
       'commitTimestamp': ?commitTimestamp,
+      'isolationLevel': ?isolationLevel,
       'precommitToken': ?precommitToken,
+      'readLockMode': ?readLockMode,
       'snapshotTimestamp': ?snapshotTimestamp,
     };
   }
@@ -7184,7 +7244,7 @@ class CopyBackupEncryptionConfig {
   /// must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to
   /// encrypt and decrypt the restored database. Set this field only when
   /// encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
-  /// `projects//locations//keyRings//cryptoKeys/`.
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`.
   ///
   /// Optional.
   core.String? kmsKeyName;
@@ -7192,17 +7252,19 @@ class CopyBackupEncryptionConfig {
   /// Specifies the KMS configuration for the one or more keys used to protect
   /// the backup.
   ///
-  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. KMS
-  /// keys specified can be in any order. The keys referenced by `kms_key_names`
-  /// must fully cover all regions of the backup's instance configuration. Some
-  /// examples: * For regional (single-region) instance configurations, specify
-  /// a regional location KMS key. * For multi-region instance configurations of
-  /// type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or
-  /// multiple regional location KMS keys that cover all regions in the instance
-  /// configuration. * For an instance configuration of type `USER_MANAGED`,
-  /// specify only regional location KMS keys to cover each region in the
-  /// instance configuration. Multi-region location KMS keys aren't supported
-  /// for `USER_MANAGED` type instance configurations.
+  /// Values are of the form
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`.
+  /// KMS keys specified can be in any order. The keys referenced by
+  /// `kms_key_names` must fully cover all regions of the backup's instance
+  /// configuration. Some examples: * For regional (single-region) instance
+  /// configurations, specify a regional location KMS key. * For multi-region
+  /// instance configurations of type `GOOGLE_MANAGED`, either specify a
+  /// multi-region location KMS key or multiple regional location KMS keys that
+  /// cover all regions in the instance configuration. * For an instance
+  /// configuration of type `USER_MANAGED`, specify only regional location KMS
+  /// keys to cover each region in the instance configuration. Multi-region
+  /// location KMS keys aren't supported for `USER_MANAGED` type instance
+  /// configurations.
   ///
   /// Optional.
   core.List<core.String>? kmsKeyNames;
@@ -7239,7 +7301,7 @@ class CopyBackupRequest {
   /// The id of the backup copy.
   ///
   /// The `backup_id` appended to `parent` forms the full backup_uri of the form
-  /// `projects//instances//backups/`.
+  /// `projects/{project}/instances/{instance}/backups/{backup}`.
   ///
   /// Required.
   core.String? backupId;
@@ -7268,7 +7330,7 @@ class CopyBackupRequest {
   /// The source backup needs to be in READY state for it to be copied. Once
   /// CopyBackup is in progress, the source backup cannot be deleted or cleaned
   /// up on expiration until CopyBackup is finished. Values are of the form:
-  /// `projects//instances//backups/`.
+  /// `projects/{project}/instances/{instance}/backups/{backup}`.
   ///
   /// Required.
   core.String? sourceBackup;
@@ -7332,7 +7394,7 @@ class CreateBackupEncryptionConfig {
   /// must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to
   /// encrypt and decrypt the restored database. Set this field only when
   /// encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
-  /// `projects//locations//keyRings//cryptoKeys/`.
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`.
   ///
   /// Optional.
   core.String? kmsKeyName;
@@ -7340,8 +7402,9 @@ class CreateBackupEncryptionConfig {
   /// Specifies the KMS configuration for the one or more keys used to protect
   /// the backup.
   ///
-  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. The
-  /// keys referenced by `kms_key_names` must fully cover all regions of the
+  /// Values are of the form
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`.
+  /// The keys referenced by `kms_key_names` must fully cover all regions of the
   /// backup's instance configuration. Some examples: * For regional
   /// (single-region) instance configurations, specify a regional location KMS
   /// key. * For multi-region instance configurations of type `GOOGLE_MANAGED`,
@@ -9632,16 +9695,20 @@ class InstancePartition {
   /// The number of nodes allocated to this instance partition.
   ///
   /// Users can set the `node_count` field to specify the target number of nodes
-  /// allocated to the instance partition. This may be zero in API responses for
-  /// instance partitions that are not yet in state `READY`.
+  /// allocated to the instance partition. If autoscaling is enabled, node_count
+  /// is treated as an OUTPUT_ONLY field and reflects the current number of
+  /// nodes allocated to the instance partition. This may be zero in API
+  /// responses for instance partitions that are not yet in state `READY`.
   core.int? nodeCount;
 
   /// The number of processing units allocated to this instance partition.
   ///
   /// Users can set the `processing_units` field to specify the target number of
-  /// processing units allocated to the instance partition. This might be zero
-  /// in API responses for instance partitions that are not yet in the `READY`
-  /// state.
+  /// processing units allocated to the instance partition. If autoscaling is
+  /// enabled, processing_units is treated as an OUTPUT_ONLY field and reflects
+  /// the current number of processing units allocated to the instance
+  /// partition. This might be zero in API responses for instance partitions
+  /// that are not yet in the `READY` state.
   core.int? processingUnits;
 
   /// Deprecated: This field is not populated.

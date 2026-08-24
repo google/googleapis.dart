@@ -426,7 +426,7 @@ class AdUnit {
   core.List<core.String>? adTypes;
 
   /// The externally visible ID of the ad unit which can be used to integrate
-  /// with the AdMob SDK.
+  /// with AdMob.
   ///
   /// This is a read only property. Example:
   /// ca-app-pub-9876543210987654/0123456789
@@ -507,7 +507,7 @@ class App {
   core.String? appApprovalState;
 
   /// The externally visible ID of the app which can be used to integrate with
-  /// the AdMob SDK.
+  /// AdMob.
   ///
   /// This is a read only property. Example:
   /// ca-app-pub-9876543210987654~0123456789

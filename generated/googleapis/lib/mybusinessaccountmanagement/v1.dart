@@ -1325,18 +1325,31 @@ class TargetLocation {
   /// The name of the location to which the user is invited.
   core.String? locationName;
 
-  TargetLocation({this.address, this.locationName});
+  /// The Place ID of the location to which the user is invited.
+  ///
+  /// Not always populated.
+  ///
+  /// Output only.
+  core.String? placeId;
+
+  TargetLocation({this.address, this.locationName, this.placeId});
 
   TargetLocation.fromJson(core.Map json_)
     : this(
         address: json_['address'] as core.String?,
         locationName: json_['locationName'] as core.String?,
+        placeId: json_['placeId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final address = this.address;
     final locationName = this.locationName;
-    return {'address': ?address, 'locationName': ?locationName};
+    final placeId = this.placeId;
+    return {
+      'address': ?address,
+      'locationName': ?locationName,
+      'placeId': ?placeId,
+    };
   }
 }
 

@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260331",
+    "revision": "20260806",
     "rootUrl": "https://healthcare.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Healthcare API",
@@ -143,7 +143,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "healthcare.projects.locations.list",
@@ -152,7 +152,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -5623,6 +5623,10 @@
                     "$ref": "GoogleCloudHealthcareV1FhirGcsDestination",
                     "description": "Optional. The Cloud Storage output destination. The Healthcare Service Agent account requires the `roles/storage.objectAdmin` role on the Cloud Storage location. The deleted resources outputs are organized by FHIR resource types. The server creates one or more objects per resource type. Each object contains newline delimited strings in the format {resourceType}/{resourceId}."
                 },
+                "gcsSource": {
+                    "$ref": "GoogleCloudHealthcareV1FhirGcsSource",
+                    "description": "Optional. Specifies the Cloud Storage source data location containing the list of resource IDs to delete. Each file inside `gcs_source` must contain newline-delimited strings in the format `{resourceType}/{resourceId}`. This field is mutually exclusive with filter parameters such as `type` and `until`."
+                },
                 "type": {
                     "description": "Optional. String of comma-delimited FHIR resource types. If provided, only resources of the specified resource type(s) will be deleted.",
                     "type": "string"
@@ -5630,6 +5634,10 @@
                 "until": {
                     "description": "Optional. If provided, only resources updated before or atthis time are deleted. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified to the second and include a time zone.",
                     "type": "string"
+                },
+                "validateOnly": {
+                    "description": "Optional. If set to true, the request will only perform a dry run. By default (once the behavior change is fully rolled out), this will default to true. During the transition period, the default depends on the Mendel flag status for the project.",
+                    "type": "boolean"
                 },
                 "versionConfig": {
                     "description": "Optional. Specifies which version of the resources to delete.",
@@ -7222,7 +7230,7 @@
             "id": "GoogleCloudHealthcareV1FhirGcsSource",
             "properties": {
                 "uri": {
-                    "description": "Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson` imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1 character Files matching the wildcard are expected to contain content only, no metadata.",
+                    "description": "Required. Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson` imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1 character Files matching the wildcard are expected to contain content only, no metadata.",
                     "type": "string"
                 }
             },

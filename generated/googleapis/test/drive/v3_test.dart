@@ -285,6 +285,25 @@ void checkAccessProposalRoleAndView(api.AccessProposalRoleAndView o) {
   buildCounterAccessProposalRoleAndView--;
 }
 
+core.int buildCounterAddReviewer = 0;
+api.AddReviewer buildAddReviewer() {
+  final o = api.AddReviewer();
+  buildCounterAddReviewer++;
+  if (buildCounterAddReviewer < 3) {
+    o.addedReviewerEmail = 'foo';
+  }
+  buildCounterAddReviewer--;
+  return o;
+}
+
+void checkAddReviewer(api.AddReviewer o) {
+  buildCounterAddReviewer++;
+  if (buildCounterAddReviewer < 3) {
+    unittest.expect(o.addedReviewerEmail!, unittest.equals('foo'));
+  }
+  buildCounterAddReviewer--;
+}
+
 core.List<api.AppIcons> buildUnnamed9() => [buildAppIcons(), buildAppIcons()];
 
 void checkUnnamed9(core.List<api.AppIcons> o) {
@@ -474,6 +493,7 @@ api.Approval buildApproval() {
     o.completeTime = 'foo';
     o.createTime = 'foo';
     o.dueTime = 'foo';
+    o.fileContentChangeBehavior = 'foo';
     o.initiator = buildUser();
     o.kind = 'foo';
     o.modifyTime = 'foo';
@@ -492,6 +512,7 @@ void checkApproval(api.Approval o) {
     unittest.expect(o.completeTime!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.dueTime!, unittest.equals('foo'));
+    unittest.expect(o.fileContentChangeBehavior!, unittest.equals('foo'));
     checkUser(o.initiator!);
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.modifyTime!, unittest.equals('foo'));
@@ -531,6 +552,44 @@ void checkApprovalList(api.ApprovalList o) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterApprovalList--;
+}
+
+core.int buildCounterApproveApprovalRequest = 0;
+api.ApproveApprovalRequest buildApproveApprovalRequest() {
+  final o = api.ApproveApprovalRequest();
+  buildCounterApproveApprovalRequest++;
+  if (buildCounterApproveApprovalRequest < 3) {
+    o.message = 'foo';
+  }
+  buildCounterApproveApprovalRequest--;
+  return o;
+}
+
+void checkApproveApprovalRequest(api.ApproveApprovalRequest o) {
+  buildCounterApproveApprovalRequest++;
+  if (buildCounterApproveApprovalRequest < 3) {
+    unittest.expect(o.message!, unittest.equals('foo'));
+  }
+  buildCounterApproveApprovalRequest--;
+}
+
+core.int buildCounterCancelApprovalRequest = 0;
+api.CancelApprovalRequest buildCancelApprovalRequest() {
+  final o = api.CancelApprovalRequest();
+  buildCounterCancelApprovalRequest++;
+  if (buildCounterCancelApprovalRequest < 3) {
+    o.message = 'foo';
+  }
+  buildCounterCancelApprovalRequest--;
+  return o;
+}
+
+void checkCancelApprovalRequest(api.CancelApprovalRequest o) {
+  buildCounterCancelApprovalRequest++;
+  if (buildCounterCancelApprovalRequest < 3) {
+    unittest.expect(o.message!, unittest.equals('foo'));
+  }
+  buildCounterCancelApprovalRequest--;
 }
 
 core.int buildCounterChange = 0;
@@ -762,6 +821,25 @@ void checkComment(api.Comment o) {
   buildCounterComment--;
 }
 
+core.int buildCounterCommentApprovalRequest = 0;
+api.CommentApprovalRequest buildCommentApprovalRequest() {
+  final o = api.CommentApprovalRequest();
+  buildCounterCommentApprovalRequest++;
+  if (buildCounterCommentApprovalRequest < 3) {
+    o.message = 'foo';
+  }
+  buildCounterCommentApprovalRequest--;
+  return o;
+}
+
+void checkCommentApprovalRequest(api.CommentApprovalRequest o) {
+  buildCounterCommentApprovalRequest++;
+  if (buildCounterCommentApprovalRequest < 3) {
+    unittest.expect(o.message!, unittest.equals('foo'));
+  }
+  buildCounterCommentApprovalRequest--;
+}
+
 core.List<api.Comment> buildUnnamed22() => [buildComment(), buildComment()];
 
 void checkUnnamed22(core.List<api.Comment> o) {
@@ -825,6 +903,25 @@ void checkContentRestriction(api.ContentRestriction o) {
     unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterContentRestriction--;
+}
+
+core.int buildCounterDeclineApprovalRequest = 0;
+api.DeclineApprovalRequest buildDeclineApprovalRequest() {
+  final o = api.DeclineApprovalRequest();
+  buildCounterDeclineApprovalRequest++;
+  if (buildCounterDeclineApprovalRequest < 3) {
+    o.message = 'foo';
+  }
+  buildCounterDeclineApprovalRequest--;
+  return o;
+}
+
+void checkDeclineApprovalRequest(api.DeclineApprovalRequest o) {
+  buildCounterDeclineApprovalRequest++;
+  if (buildCounterDeclineApprovalRequest < 3) {
+    unittest.expect(o.message!, unittest.equals('foo'));
+  }
+  buildCounterDeclineApprovalRequest--;
 }
 
 core.int buildCounterDecryptionMetadata = 0;
@@ -1114,6 +1211,7 @@ api.FileCapabilities buildFileCapabilities() {
   buildCounterFileCapabilities++;
   if (buildCounterFileCapabilities < 3) {
     o.canAcceptOwnership = true;
+    o.canAccessViaGenAi = true;
     o.canAddChildren = true;
     o.canAddFolderFromAnotherDrive = true;
     o.canAddMyDriveParent = true;
@@ -1154,6 +1252,7 @@ api.FileCapabilities buildFileCapabilities() {
     o.canRemoveMyDriveParent = true;
     o.canRename = true;
     o.canShare = true;
+    o.canStartApproval = true;
     o.canTrash = true;
     o.canTrashChildren = true;
     o.canUntrash = true;
@@ -1166,6 +1265,7 @@ void checkFileCapabilities(api.FileCapabilities o) {
   buildCounterFileCapabilities++;
   if (buildCounterFileCapabilities < 3) {
     unittest.expect(o.canAcceptOwnership!, unittest.isTrue);
+    unittest.expect(o.canAccessViaGenAi!, unittest.isTrue);
     unittest.expect(o.canAddChildren!, unittest.isTrue);
     unittest.expect(o.canAddFolderFromAnotherDrive!, unittest.isTrue);
     unittest.expect(o.canAddMyDriveParent!, unittest.isTrue);
@@ -1206,6 +1306,7 @@ void checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canRemoveMyDriveParent!, unittest.isTrue);
     unittest.expect(o.canRename!, unittest.isTrue);
     unittest.expect(o.canShare!, unittest.isTrue);
+    unittest.expect(o.canStartApproval!, unittest.isTrue);
     unittest.expect(o.canTrash!, unittest.isTrue);
     unittest.expect(o.canTrashChildren!, unittest.isTrue);
     unittest.expect(o.canUntrash!, unittest.isTrue);
@@ -2362,9 +2463,75 @@ void checkPermissionList(api.PermissionList o) {
   buildCounterPermissionList--;
 }
 
-core.List<core.String> buildUnnamed57() => ['foo', 'foo'];
+core.List<api.AddReviewer> buildUnnamed57() => [
+  buildAddReviewer(),
+  buildAddReviewer(),
+];
 
-void checkUnnamed57(core.List<core.String> o) {
+void checkUnnamed57(core.List<api.AddReviewer> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAddReviewer(o[0]);
+  checkAddReviewer(o[1]);
+}
+
+core.List<api.ReplaceReviewer> buildUnnamed58() => [
+  buildReplaceReviewer(),
+  buildReplaceReviewer(),
+];
+
+void checkUnnamed58(core.List<api.ReplaceReviewer> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkReplaceReviewer(o[0]);
+  checkReplaceReviewer(o[1]);
+}
+
+core.int buildCounterReassignApprovalRequest = 0;
+api.ReassignApprovalRequest buildReassignApprovalRequest() {
+  final o = api.ReassignApprovalRequest();
+  buildCounterReassignApprovalRequest++;
+  if (buildCounterReassignApprovalRequest < 3) {
+    o.addReviewers = buildUnnamed57();
+    o.message = 'foo';
+    o.replaceReviewers = buildUnnamed58();
+  }
+  buildCounterReassignApprovalRequest--;
+  return o;
+}
+
+void checkReassignApprovalRequest(api.ReassignApprovalRequest o) {
+  buildCounterReassignApprovalRequest++;
+  if (buildCounterReassignApprovalRequest < 3) {
+    checkUnnamed57(o.addReviewers!);
+    unittest.expect(o.message!, unittest.equals('foo'));
+    checkUnnamed58(o.replaceReviewers!);
+  }
+  buildCounterReassignApprovalRequest--;
+}
+
+core.int buildCounterReplaceReviewer = 0;
+api.ReplaceReviewer buildReplaceReviewer() {
+  final o = api.ReplaceReviewer();
+  buildCounterReplaceReviewer++;
+  if (buildCounterReplaceReviewer < 3) {
+    o.addedReviewerEmail = 'foo';
+    o.removedReviewerEmail = 'foo';
+  }
+  buildCounterReplaceReviewer--;
+  return o;
+}
+
+void checkReplaceReviewer(api.ReplaceReviewer o) {
+  buildCounterReplaceReviewer++;
+  if (buildCounterReplaceReviewer < 3) {
+    unittest.expect(o.addedReviewerEmail!, unittest.equals('foo'));
+    unittest.expect(o.removedReviewerEmail!, unittest.equals('foo'));
+  }
+  buildCounterReplaceReviewer--;
+}
+
+core.List<core.String> buildUnnamed59() => ['foo', 'foo'];
+
+void checkUnnamed59(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2384,7 +2551,7 @@ api.Reply buildReply() {
     o.htmlContent = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.mentionedEmailAddresses = buildUnnamed57();
+    o.mentionedEmailAddresses = buildUnnamed59();
     o.modifiedTime = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterReply--;
@@ -2406,7 +2573,7 @@ void checkReply(api.Reply o) {
     unittest.expect(o.htmlContent!, unittest.equals('foo'));
     unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.kind!, unittest.equals('foo'));
-    checkUnnamed57(o.mentionedEmailAddresses!);
+    checkUnnamed59(o.mentionedEmailAddresses!);
     unittest.expect(
       o.modifiedTime!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
@@ -2415,9 +2582,9 @@ void checkReply(api.Reply o) {
   buildCounterReply--;
 }
 
-core.List<api.Reply> buildUnnamed58() => [buildReply(), buildReply()];
+core.List<api.Reply> buildUnnamed60() => [buildReply(), buildReply()];
 
-void checkUnnamed58(core.List<api.Reply> o) {
+void checkUnnamed60(core.List<api.Reply> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReply(o[0]);
   checkReply(o[1]);
@@ -2430,7 +2597,7 @@ api.ReplyList buildReplyList() {
   if (buildCounterReplyList < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.replies = buildUnnamed58();
+    o.replies = buildUnnamed60();
   }
   buildCounterReplyList--;
   return o;
@@ -2441,14 +2608,14 @@ void checkReplyList(api.ReplyList o) {
   if (buildCounterReplyList < 3) {
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed58(o.replies!);
+    checkUnnamed60(o.replies!);
   }
   buildCounterReplyList--;
 }
 
-core.List<core.String> buildUnnamed59() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed61() => ['foo', 'foo'];
 
-void checkUnnamed59(core.List<core.String> o) {
+void checkUnnamed61(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2460,7 +2627,7 @@ api.ResolveAccessProposalRequest buildResolveAccessProposalRequest() {
   buildCounterResolveAccessProposalRequest++;
   if (buildCounterResolveAccessProposalRequest < 3) {
     o.action = 'foo';
-    o.role = buildUnnamed59();
+    o.role = buildUnnamed61();
     o.sendNotification = true;
     o.view = 'foo';
   }
@@ -2472,7 +2639,7 @@ void checkResolveAccessProposalRequest(api.ResolveAccessProposalRequest o) {
   buildCounterResolveAccessProposalRequest++;
   if (buildCounterResolveAccessProposalRequest < 3) {
     unittest.expect(o.action!, unittest.equals('foo'));
-    checkUnnamed59(o.role!);
+    checkUnnamed61(o.role!);
     unittest.expect(o.sendNotification!, unittest.isTrue);
     unittest.expect(o.view!, unittest.equals('foo'));
   }
@@ -2502,9 +2669,9 @@ void checkReviewerResponse(api.ReviewerResponse o) {
   buildCounterReviewerResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed60() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed62() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed60(core.Map<core.String, core.String> o) {
+void checkUnnamed62(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -2515,7 +2682,7 @@ api.Revision buildRevision() {
   final o = api.Revision();
   buildCounterRevision++;
   if (buildCounterRevision < 3) {
-    o.exportLinks = buildUnnamed60();
+    o.exportLinks = buildUnnamed62();
     o.id = 'foo';
     o.keepForever = true;
     o.kind = 'foo';
@@ -2537,7 +2704,7 @@ api.Revision buildRevision() {
 void checkRevision(api.Revision o) {
   buildCounterRevision++;
   if (buildCounterRevision < 3) {
-    checkUnnamed60(o.exportLinks!);
+    checkUnnamed62(o.exportLinks!);
     unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.keepForever!, unittest.isTrue);
     unittest.expect(o.kind!, unittest.equals('foo'));
@@ -2558,9 +2725,9 @@ void checkRevision(api.Revision o) {
   buildCounterRevision--;
 }
 
-core.List<api.Revision> buildUnnamed61() => [buildRevision(), buildRevision()];
+core.List<api.Revision> buildUnnamed63() => [buildRevision(), buildRevision()];
 
-void checkUnnamed61(core.List<api.Revision> o) {
+void checkUnnamed63(core.List<api.Revision> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRevision(o[0]);
   checkRevision(o[1]);
@@ -2573,7 +2740,7 @@ api.RevisionList buildRevisionList() {
   if (buildCounterRevisionList < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.revisions = buildUnnamed61();
+    o.revisions = buildUnnamed63();
   }
   buildCounterRevisionList--;
   return o;
@@ -2584,9 +2751,44 @@ void checkRevisionList(api.RevisionList o) {
   if (buildCounterRevisionList < 3) {
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed61(o.revisions!);
+    checkUnnamed63(o.revisions!);
   }
   buildCounterRevisionList--;
+}
+
+core.List<core.String> buildUnnamed64() => ['foo', 'foo'];
+
+void checkUnnamed64(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterStartApprovalRequest = 0;
+api.StartApprovalRequest buildStartApprovalRequest() {
+  final o = api.StartApprovalRequest();
+  buildCounterStartApprovalRequest++;
+  if (buildCounterStartApprovalRequest < 3) {
+    o.dueTime = 'foo';
+    o.fileContentChangeBehavior = 'foo';
+    o.lockFile = true;
+    o.message = 'foo';
+    o.reviewerEmails = buildUnnamed64();
+  }
+  buildCounterStartApprovalRequest--;
+  return o;
+}
+
+void checkStartApprovalRequest(api.StartApprovalRequest o) {
+  buildCounterStartApprovalRequest++;
+  if (buildCounterStartApprovalRequest < 3) {
+    unittest.expect(o.dueTime!, unittest.equals('foo'));
+    unittest.expect(o.fileContentChangeBehavior!, unittest.equals('foo'));
+    unittest.expect(o.lockFile!, unittest.isTrue);
+    unittest.expect(o.message!, unittest.equals('foo'));
+    checkUnnamed64(o.reviewerEmails!);
+  }
+  buildCounterStartApprovalRequest--;
 }
 
 core.int buildCounterStartPageToken = 0;
@@ -2610,7 +2812,7 @@ void checkStartPageToken(api.StartPageToken o) {
   buildCounterStartPageToken--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed62() => {
+core.Map<core.String, core.Object?> buildUnnamed65() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -2623,7 +2825,7 @@ core.Map<core.String, core.Object?> buildUnnamed62() => {
   },
 };
 
-void checkUnnamed62(core.Map<core.String, core.Object?> o) {
+void checkUnnamed65(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -2637,15 +2839,15 @@ void checkUnnamed62(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed63() => [
-  buildUnnamed62(),
-  buildUnnamed62(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed66() => [
+  buildUnnamed65(),
+  buildUnnamed65(),
 ];
 
-void checkUnnamed63(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed66(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed62(o[0]);
-  checkUnnamed62(o[1]);
+  checkUnnamed65(o[0]);
+  checkUnnamed65(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2654,7 +2856,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed63();
+    o.details = buildUnnamed66();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2665,7 +2867,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed63(o.details!);
+    checkUnnamed66(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -2837,12 +3039,12 @@ void checkTeamDrive(api.TeamDrive o) {
   buildCounterTeamDrive--;
 }
 
-core.List<api.TeamDrive> buildUnnamed64() => [
+core.List<api.TeamDrive> buildUnnamed67() => [
   buildTeamDrive(),
   buildTeamDrive(),
 ];
 
-void checkUnnamed64(core.List<api.TeamDrive> o) {
+void checkUnnamed67(core.List<api.TeamDrive> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeamDrive(o[0]);
   checkTeamDrive(o[1]);
@@ -2855,7 +3057,7 @@ api.TeamDriveList buildTeamDriveList() {
   if (buildCounterTeamDriveList < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.teamDrives = buildUnnamed64();
+    o.teamDrives = buildUnnamed67();
   }
   buildCounterTeamDriveList--;
   return o;
@@ -2866,7 +3068,7 @@ void checkTeamDriveList(api.TeamDriveList o) {
   if (buildCounterTeamDriveList < 3) {
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed64(o.teamDrives!);
+    checkUnnamed67(o.teamDrives!);
   }
   buildCounterTeamDriveList--;
 }
@@ -2967,6 +3169,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AddReviewer', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAddReviewer();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddReviewer.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAddReviewer(od);
+    });
+  });
+
   unittest.group('obj-schema-App', () {
     unittest.test('to-json--from-json', () async {
       final o = buildApp();
@@ -3017,6 +3230,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkApprovalList(od);
+    });
+  });
+
+  unittest.group('obj-schema-ApproveApprovalRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildApproveApprovalRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ApproveApprovalRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkApproveApprovalRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-CancelApprovalRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCancelApprovalRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancelApprovalRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCancelApprovalRequest(od);
     });
   });
 
@@ -3086,6 +3321,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CommentApprovalRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCommentApprovalRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CommentApprovalRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCommentApprovalRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-CommentList', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCommentList();
@@ -3105,6 +3351,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkContentRestriction(od);
+    });
+  });
+
+  unittest.group('obj-schema-DeclineApprovalRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeclineApprovalRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeclineApprovalRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDeclineApprovalRequest(od);
     });
   });
 
@@ -3482,6 +3739,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ReassignApprovalRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReassignApprovalRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReassignApprovalRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkReassignApprovalRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReplaceReviewer', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReplaceReviewer();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplaceReviewer.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkReplaceReviewer(od);
+    });
+  });
+
   unittest.group('obj-schema-Reply', () {
     unittest.test('to-json--from-json', () async {
       final o = buildReply();
@@ -3545,6 +3824,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkRevisionList(od);
+    });
+  });
+
+  unittest.group('obj-schema-StartApprovalRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStartApprovalRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StartApprovalRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkStartApprovalRequest(od);
     });
   });
 
@@ -3952,6 +4242,378 @@ void main() {
   });
 
   unittest.group('resource-ApprovalsResource', () {
+    unittest.test('method--approve', () async {
+      final mock = HttpServerMock();
+      final res = api.DriveApi(mock).approvals;
+      final arg_request = buildApproveApprovalRequest();
+      final arg_fileId = 'foo';
+      final arg_approvalId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ApproveApprovalRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkApproveApprovalRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('drive/v3/'),
+          );
+          pathOffset += 9;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 6),
+            unittest.equals('files/'),
+          );
+          pathOffset += 6;
+          index = path.indexOf('/approvals/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_fileId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/approvals/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf(':approve', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_approvalId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals(':approve'),
+          );
+          pathOffset += 8;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildApproval());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.approve(
+        arg_request,
+        arg_fileId,
+        arg_approvalId,
+        $fields: arg_$fields,
+      );
+      checkApproval(response as api.Approval);
+    });
+
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.DriveApi(mock).approvals;
+      final arg_request = buildCancelApprovalRequest();
+      final arg_fileId = 'foo';
+      final arg_approvalId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.CancelApprovalRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkCancelApprovalRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('drive/v3/'),
+          );
+          pathOffset += 9;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 6),
+            unittest.equals('files/'),
+          );
+          pathOffset += 6;
+          index = path.indexOf('/approvals/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_fileId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/approvals/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf(':cancel', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_approvalId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(':cancel'),
+          );
+          pathOffset += 7;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildApproval());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.cancel(
+        arg_request,
+        arg_fileId,
+        arg_approvalId,
+        $fields: arg_$fields,
+      );
+      checkApproval(response as api.Approval);
+    });
+
+    unittest.test('method--comment', () async {
+      final mock = HttpServerMock();
+      final res = api.DriveApi(mock).approvals;
+      final arg_request = buildCommentApprovalRequest();
+      final arg_fileId = 'foo';
+      final arg_approvalId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.CommentApprovalRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkCommentApprovalRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('drive/v3/'),
+          );
+          pathOffset += 9;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 6),
+            unittest.equals('files/'),
+          );
+          pathOffset += 6;
+          index = path.indexOf('/approvals/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_fileId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/approvals/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf(':comment', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_approvalId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals(':comment'),
+          );
+          pathOffset += 8;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildApproval());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.comment(
+        arg_request,
+        arg_fileId,
+        arg_approvalId,
+        $fields: arg_$fields,
+      );
+      checkApproval(response as api.Approval);
+    });
+
+    unittest.test('method--decline', () async {
+      final mock = HttpServerMock();
+      final res = api.DriveApi(mock).approvals;
+      final arg_request = buildDeclineApprovalRequest();
+      final arg_fileId = 'foo';
+      final arg_approvalId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.DeclineApprovalRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkDeclineApprovalRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('drive/v3/'),
+          );
+          pathOffset += 9;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 6),
+            unittest.equals('files/'),
+          );
+          pathOffset += 6;
+          index = path.indexOf('/approvals/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_fileId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/approvals/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf(':decline', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_approvalId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 8),
+            unittest.equals(':decline'),
+          );
+          pathOffset += 8;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildApproval());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.decline(
+        arg_request,
+        arg_fileId,
+        arg_approvalId,
+        $fields: arg_$fields,
+      );
+      checkApproval(response as api.Approval);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.DriveApi(mock).approvals;
@@ -4111,6 +4773,178 @@ void main() {
         $fields: arg_$fields,
       );
       checkApprovalList(response as api.ApprovalList);
+    });
+
+    unittest.test('method--reassign', () async {
+      final mock = HttpServerMock();
+      final res = api.DriveApi(mock).approvals;
+      final arg_request = buildReassignApprovalRequest();
+      final arg_fileId = 'foo';
+      final arg_approvalId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ReassignApprovalRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkReassignApprovalRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('drive/v3/'),
+          );
+          pathOffset += 9;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 6),
+            unittest.equals('files/'),
+          );
+          pathOffset += 6;
+          index = path.indexOf('/approvals/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_fileId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/approvals/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf(':reassign', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_approvalId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals(':reassign'),
+          );
+          pathOffset += 9;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildApproval());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.reassign(
+        arg_request,
+        arg_fileId,
+        arg_approvalId,
+        $fields: arg_$fields,
+      );
+      checkApproval(response as api.Approval);
+    });
+
+    unittest.test('method--start', () async {
+      final mock = HttpServerMock();
+      final res = api.DriveApi(mock).approvals;
+      final arg_request = buildStartApprovalRequest();
+      final arg_fileId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.StartApprovalRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkStartApprovalRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('drive/v3/'),
+          );
+          pathOffset += 9;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 6),
+            unittest.equals('files/'),
+          );
+          pathOffset += 6;
+          index = path.indexOf('/approvals:start', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_fileId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 16),
+            unittest.equals('/approvals:start'),
+          );
+          pathOffset += 16;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildApproval());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.start(
+        arg_request,
+        arg_fileId,
+        $fields: arg_$fields,
+      );
+      checkApproval(response as api.Approval);
     });
   });
 

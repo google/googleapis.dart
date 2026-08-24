@@ -4201,6 +4201,11 @@ class WebAppConfig {
   /// Optional.
   core.String? realtimeDatabaseUrl;
 
+  /// Recaptcha Enterprise site key associated with the Firebase App.
+  ///
+  /// Optional.
+  core.String? recaptchaSiteKey;
+
   /// **DEPRECATED.** _Instead, find the name of the default Cloud Storage for
   /// Firebase bucket using the
   /// [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list)
@@ -4230,6 +4235,7 @@ class WebAppConfig {
     this.projectId,
     this.projectNumber,
     this.realtimeDatabaseUrl,
+    this.recaptchaSiteKey,
     this.storageBucket,
     this.version,
   });
@@ -4246,6 +4252,7 @@ class WebAppConfig {
         projectId: json_['projectId'] as core.String?,
         projectNumber: json_['projectNumber'] as core.String?,
         realtimeDatabaseUrl: json_['realtimeDatabaseUrl'] as core.String?,
+        recaptchaSiteKey: json_['recaptchaSiteKey'] as core.String?,
         storageBucket: json_['storageBucket'] as core.String?,
         version: json_['version'] as core.String?,
       );
@@ -4261,6 +4268,7 @@ class WebAppConfig {
     final projectId = this.projectId;
     final projectNumber = this.projectNumber;
     final realtimeDatabaseUrl = this.realtimeDatabaseUrl;
+    final recaptchaSiteKey = this.recaptchaSiteKey;
     final storageBucket = this.storageBucket;
     final version = this.version;
     return {
@@ -4274,6 +4282,7 @@ class WebAppConfig {
       'projectId': ?projectId,
       'projectNumber': ?projectNumber,
       'realtimeDatabaseUrl': ?realtimeDatabaseUrl,
+      'recaptchaSiteKey': ?recaptchaSiteKey,
       'storageBucket': ?storageBucket,
       'version': ?version,
     };

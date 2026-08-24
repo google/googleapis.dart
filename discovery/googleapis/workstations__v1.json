@@ -15,6 +15,13 @@
     "description": "Allows administrators to create managed developer environments in the cloud. ",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/workstations",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://workstations.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,7 +32,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260413",
+    "revision": "20260807",
     "rootUrl": "https://workstations.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Workstations API",
@@ -139,7 +146,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "workstations.projects.locations.list",
@@ -148,7 +155,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -1490,6 +1497,11 @@
                     "format": "google-duration",
                     "type": "string"
                 },
+                "maxSizeGb": {
+                    "description": "Optional. Maximum size in GB to which this persistent directory can be resized. Defaults to `0`, which indicates no maximum limit is enforced by this configuration. Resizing is still subject to the quotas and limits of the underlying disk type.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "reclaimPolicy": {
                     "description": "Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.",
                     "enum": [
@@ -1674,6 +1686,11 @@
                 "fsType": {
                     "description": "Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `\"ext4\"`.",
                     "type": "string"
+                },
+                "maxSizeGb": {
+                    "description": "Optional. Maximum size in GB to which this persistent directory can be resized. Defaults to `0`, which indicates no maximum limit is enforced by this configuration. Resizing is still subject to the quotas and limits of the underlying disk type.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "reclaimPolicy": {
                     "description": "Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.",
@@ -2342,6 +2359,13 @@
                     "description": "Identifier. Full name of this workstation.",
                     "type": "string"
                 },
+                "persistentDirectories": {
+                    "description": "Optional. Directories to persist across workstation sessions.",
+                    "items": {
+                        "$ref": "WorkstationPersistentDirectory"
+                    },
+                    "type": "array"
+                },
                 "reconciling": {
                     "description": "Output only. Indicates whether this workstation is currently being updated to match its intended state.",
                     "readOnly": true,
@@ -2639,7 +2663,7 @@
                     "type": "array"
                 },
                 "runningTimeout": {
-                    "description": "Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend that workstations be shut down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s` for seconds—for example, `\"54000s\"` (15 hours). Defaults to `\"43200s\"` (12 hours). A value of `\"0s\"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `\"0s\"` and less than `\"86400s\"` (24 hours). Warning: A value of `\"0s\"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.",
+                    "description": "Optional. Number of seconds to wait before automatically stopping a workstation. We recommend that workstations be stopped daily so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field stops workstations after the specified time, regardless of whether or not the workstations are idle. Provide duration terminated by `s` for seconds—for example, `\"54000s\"` (15 hours). Defaults to `\"43200s\"` (12 hours). A value of `\"0s\"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `\"0s\"` and less than `\"86400s\"` (24 hours). Warning: A value of `\"0s\"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.",
                     "format": "google-duration",
                     "type": "string"
                 },
@@ -2653,6 +2677,22 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "WorkstationPersistentDirectory": {
+            "description": "A directory to persist across workstation sessions. Updates to this field will only take effect on this workstation after it is restarted.",
+            "id": "WorkstationPersistentDirectory",
+            "properties": {
+                "mountPath": {
+                    "description": "Optional. The mount path of the persistent directory.",
+                    "type": "string"
+                },
+                "sizeGb": {
+                    "description": "Optional. Size of the persistent directory in GB. If specified in an update request, this is the desired size of the directory.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"

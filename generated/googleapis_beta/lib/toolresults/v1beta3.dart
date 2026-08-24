@@ -5419,6 +5419,9 @@ class TestIssue {
   /// - "detectedAppSplashScreen" : Robo detected a splash screen provided by
   /// app (vs. Android OS splash screen).
   /// - "assetIssue" : There was an issue with the assets in this test.
+  /// - "licensingProtectionTermination" : Licensing protection termination
+  /// (Pairip) was detected.
+  /// - "antiTamperingTermination" : Anti-tampering termination was detected.
   core.String? type;
 
   /// Warning message with additional details of the issue.

@@ -2010,12 +2010,12 @@ void checkUrlMap(api.UrlMap o) {
   buildCounterUrlMap--;
 }
 
-core.Map<core.String, core.String> buildUnnamed33() => {'x': 'foo', 'y': 'foo'};
+core.List<core.String> buildUnnamed33() => ['foo', 'foo'];
 
-void checkUnnamed33(core.Map<core.String, core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.String> buildUnnamed34() => {'x': 'foo', 'y': 'foo'};
@@ -2034,18 +2034,26 @@ void checkUnnamed35(core.Map<core.String, core.String> o) {
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.ErrorHandler> buildUnnamed36() => [
+core.Map<core.String, core.String> buildUnnamed36() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed36(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
+core.List<api.ErrorHandler> buildUnnamed37() => [
   buildErrorHandler(),
   buildErrorHandler(),
 ];
 
-void checkUnnamed36(core.List<api.ErrorHandler> o) {
+void checkUnnamed37(core.List<api.ErrorHandler> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkErrorHandler(o[0]);
   checkErrorHandler(o[1]);
 }
 
-core.Map<core.String, core.Object?> buildUnnamed37() => {
+core.Map<core.String, core.Object?> buildUnnamed38() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -2058,7 +2066,7 @@ core.Map<core.String, core.Object?> buildUnnamed37() => {
   },
 };
 
-void checkUnnamed37(core.Map<core.String, core.Object?> o) {
+void checkUnnamed38(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
@@ -2072,33 +2080,33 @@ void checkUnnamed37(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted14['string'], unittest.equals('foo'));
 }
 
-core.List<api.UrlMap> buildUnnamed38() => [buildUrlMap(), buildUrlMap()];
+core.List<api.UrlMap> buildUnnamed39() => [buildUrlMap(), buildUrlMap()];
 
-void checkUnnamed38(core.List<api.UrlMap> o) {
+void checkUnnamed39(core.List<api.UrlMap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlMap(o[0]);
   checkUrlMap(o[1]);
 }
 
-core.List<core.String> buildUnnamed39() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed40() => ['foo', 'foo'];
 
-void checkUnnamed39(core.List<core.String> o) {
+void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.Library> buildUnnamed40() => [buildLibrary(), buildLibrary()];
+core.List<api.Library> buildUnnamed41() => [buildLibrary(), buildLibrary()];
 
-void checkUnnamed40(core.List<api.Library> o) {
+void checkUnnamed41(core.List<api.Library> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLibrary(o[0]);
   checkLibrary(o[1]);
 }
 
-core.List<core.String> buildUnnamed41() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed42() => ['foo', 'foo'];
 
-void checkUnnamed41(core.List<core.String> o) {
+void checkUnnamed42(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2111,10 +2119,11 @@ api.Version buildVersion() {
   if (buildCounterVersion < 3) {
     o.apiConfig = buildApiConfigHandler();
     o.appEngineApis = true;
+    o.appEngineBundledServices = buildUnnamed33();
     o.automaticScaling = buildAutomaticScaling();
     o.basicScaling = buildBasicScaling();
-    o.betaSettings = buildUnnamed33();
-    o.buildEnvVariables = buildUnnamed34();
+    o.betaSettings = buildUnnamed34();
+    o.buildEnvVariables = buildUnnamed35();
     o.createTime = 'foo';
     o.createdBy = 'foo';
     o.defaultExpiration = 'foo';
@@ -2123,16 +2132,16 @@ api.Version buildVersion() {
     o.endpointsApiService = buildEndpointsApiService();
     o.entrypoint = buildEntrypoint();
     o.env = 'foo';
-    o.envVariables = buildUnnamed35();
-    o.errorHandlers = buildUnnamed36();
+    o.envVariables = buildUnnamed36();
+    o.errorHandlers = buildUnnamed37();
     o.flexibleRuntimeSettings = buildFlexibleRuntimeSettings();
-    o.generatedCustomerMetadata = buildUnnamed37();
-    o.handlers = buildUnnamed38();
+    o.generatedCustomerMetadata = buildUnnamed38();
+    o.handlers = buildUnnamed39();
     o.healthCheck = buildHealthCheck();
     o.id = 'foo';
-    o.inboundServices = buildUnnamed39();
+    o.inboundServices = buildUnnamed40();
     o.instanceClass = 'foo';
-    o.libraries = buildUnnamed40();
+    o.libraries = buildUnnamed41();
     o.livenessCheck = buildLivenessCheck();
     o.manualScaling = buildManualScaling();
     o.name = 'foo';
@@ -2150,7 +2159,7 @@ api.Version buildVersion() {
     o.versionUrl = 'foo';
     o.vm = true;
     o.vpcAccessConnector = buildVpcAccessConnector();
-    o.zones = buildUnnamed41();
+    o.zones = buildUnnamed42();
   }
   buildCounterVersion--;
   return o;
@@ -2161,10 +2170,11 @@ void checkVersion(api.Version o) {
   if (buildCounterVersion < 3) {
     checkApiConfigHandler(o.apiConfig!);
     unittest.expect(o.appEngineApis!, unittest.isTrue);
+    checkUnnamed33(o.appEngineBundledServices!);
     checkAutomaticScaling(o.automaticScaling!);
     checkBasicScaling(o.basicScaling!);
-    checkUnnamed33(o.betaSettings!);
-    checkUnnamed34(o.buildEnvVariables!);
+    checkUnnamed34(o.betaSettings!);
+    checkUnnamed35(o.buildEnvVariables!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.createdBy!, unittest.equals('foo'));
     unittest.expect(o.defaultExpiration!, unittest.equals('foo'));
@@ -2173,16 +2183,16 @@ void checkVersion(api.Version o) {
     checkEndpointsApiService(o.endpointsApiService!);
     checkEntrypoint(o.entrypoint!);
     unittest.expect(o.env!, unittest.equals('foo'));
-    checkUnnamed35(o.envVariables!);
-    checkUnnamed36(o.errorHandlers!);
+    checkUnnamed36(o.envVariables!);
+    checkUnnamed37(o.errorHandlers!);
     checkFlexibleRuntimeSettings(o.flexibleRuntimeSettings!);
-    checkUnnamed37(o.generatedCustomerMetadata!);
-    checkUnnamed38(o.handlers!);
+    checkUnnamed38(o.generatedCustomerMetadata!);
+    checkUnnamed39(o.handlers!);
     checkHealthCheck(o.healthCheck!);
     unittest.expect(o.id!, unittest.equals('foo'));
-    checkUnnamed39(o.inboundServices!);
+    checkUnnamed40(o.inboundServices!);
     unittest.expect(o.instanceClass!, unittest.equals('foo'));
-    checkUnnamed40(o.libraries!);
+    checkUnnamed41(o.libraries!);
     checkLivenessCheck(o.livenessCheck!);
     checkManualScaling(o.manualScaling!);
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -2200,7 +2210,7 @@ void checkVersion(api.Version o) {
     unittest.expect(o.versionUrl!, unittest.equals('foo'));
     unittest.expect(o.vm!, unittest.isTrue);
     checkVpcAccessConnector(o.vpcAccessConnector!);
-    checkUnnamed41(o.zones!);
+    checkUnnamed42(o.zones!);
   }
   buildCounterVersion--;
 }
@@ -2270,9 +2280,9 @@ void checkZipInfo(api.ZipInfo o) {
   buildCounterZipInfo--;
 }
 
-core.List<core.String> buildUnnamed42() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed43() => ['foo', 'foo'];
 
-void checkUnnamed42(core.List<core.String> o) {
+void checkUnnamed43(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4796,7 +4806,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AppengineApi(mock).apps.locations;
       final arg_appsId = 'foo';
-      final arg_extraLocationTypes = buildUnnamed42();
+      final arg_extraLocationTypes = buildUnnamed43();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

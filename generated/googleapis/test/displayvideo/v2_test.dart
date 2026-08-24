@@ -135,6 +135,8 @@ api.Advertiser buildAdvertiser() {
     o.containsEuPoliticalAds = 'foo';
     o.creativeConfig = buildAdvertiserCreativeConfig();
     o.dataAccessConfig = buildAdvertiserDataAccessConfig();
+    o.defaultBusinessName = 'foo';
+    o.defaultLogoAssetId = 'foo';
     o.displayName = 'foo';
     o.entityStatus = 'foo';
     o.generalConfig = buildAdvertiserGeneralConfig();
@@ -157,6 +159,8 @@ void checkAdvertiser(api.Advertiser o) {
     unittest.expect(o.containsEuPoliticalAds!, unittest.equals('foo'));
     checkAdvertiserCreativeConfig(o.creativeConfig!);
     checkAdvertiserDataAccessConfig(o.dataAccessConfig!);
+    unittest.expect(o.defaultBusinessName!, unittest.equals('foo'));
+    unittest.expect(o.defaultLogoAssetId!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.entityStatus!, unittest.equals('foo'));
     checkAdvertiserGeneralConfig(o.generalConfig!);
@@ -582,6 +586,8 @@ api.AssignedTargetingOption buildAssignedTargetingOption() {
     o.viewabilityDetails = buildViewabilityAssignedTargetingOptionDetails();
     o.youtubeChannelDetails =
         buildYoutubeChannelAssignedTargetingOptionDetails();
+    o.youtubeChannelPackDetails =
+        buildYoutubeChannelPackAssignedTargetingOptionDetails();
     o.youtubeVideoDetails = buildYoutubeVideoAssignedTargetingOptionDetails();
   }
   buildCounterAssignedTargetingOption--;
@@ -687,6 +693,9 @@ void checkAssignedTargetingOption(api.AssignedTargetingOption o) {
     );
     checkViewabilityAssignedTargetingOptionDetails(o.viewabilityDetails!);
     checkYoutubeChannelAssignedTargetingOptionDetails(o.youtubeChannelDetails!);
+    checkYoutubeChannelPackAssignedTargetingOptionDetails(
+      o.youtubeChannelPackDetails!,
+    );
     checkYoutubeVideoAssignedTargetingOptionDetails(o.youtubeVideoDetails!);
   }
   buildCounterAssignedTargetingOption--;
@@ -2923,6 +2932,7 @@ api.Creative buildCreative() {
     o.reviewStatus = buildReviewStatusInfo();
     o.skipOffset = buildAudioVideoOffset();
     o.skippable = true;
+    o.syntheticContentAttestationStatus = 'foo';
     o.thirdPartyTag = 'foo';
     o.thirdPartyUrls = buildUnnamed49();
     o.timerEvents = buildUnnamed50();
@@ -2978,6 +2988,10 @@ void checkCreative(api.Creative o) {
     checkReviewStatusInfo(o.reviewStatus!);
     checkAudioVideoOffset(o.skipOffset!);
     unittest.expect(o.skippable!, unittest.isTrue);
+    unittest.expect(
+      o.syntheticContentAttestationStatus!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.thirdPartyTag!, unittest.equals('foo'));
     checkUnnamed49(o.thirdPartyUrls!);
     checkUnnamed50(o.timerEvents!);
@@ -9071,6 +9085,30 @@ void checkYoutubeChannelAssignedTargetingOptionDetails(
   buildCounterYoutubeChannelAssignedTargetingOptionDetails--;
 }
 
+core.int buildCounterYoutubeChannelPackAssignedTargetingOptionDetails = 0;
+api.YoutubeChannelPackAssignedTargetingOptionDetails
+buildYoutubeChannelPackAssignedTargetingOptionDetails() {
+  final o = api.YoutubeChannelPackAssignedTargetingOptionDetails();
+  buildCounterYoutubeChannelPackAssignedTargetingOptionDetails++;
+  if (buildCounterYoutubeChannelPackAssignedTargetingOptionDetails < 3) {
+    o.channelPackId = 'foo';
+    o.negative = true;
+  }
+  buildCounterYoutubeChannelPackAssignedTargetingOptionDetails--;
+  return o;
+}
+
+void checkYoutubeChannelPackAssignedTargetingOptionDetails(
+  api.YoutubeChannelPackAssignedTargetingOptionDetails o,
+) {
+  buildCounterYoutubeChannelPackAssignedTargetingOptionDetails++;
+  if (buildCounterYoutubeChannelPackAssignedTargetingOptionDetails < 3) {
+    unittest.expect(o.channelPackId!, unittest.equals('foo'));
+    unittest.expect(o.negative!, unittest.isTrue);
+  }
+  buildCounterYoutubeChannelPackAssignedTargetingOptionDetails--;
+}
+
 core.int buildCounterYoutubeVideoAssignedTargetingOptionDetails = 0;
 api.YoutubeVideoAssignedTargetingOptionDetails
 buildYoutubeVideoAssignedTargetingOptionDetails() {
@@ -12504,6 +12542,21 @@ void main() {
       checkYoutubeChannelAssignedTargetingOptionDetails(od);
     });
   });
+
+  unittest.group(
+    'obj-schema-YoutubeChannelPackAssignedTargetingOptionDetails',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildYoutubeChannelPackAssignedTargetingOptionDetails();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.YoutubeChannelPackAssignedTargetingOptionDetails.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkYoutubeChannelPackAssignedTargetingOptionDetails(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-YoutubeVideoAssignedTargetingOptionDetails', () {
     unittest.test('to-json--from-json', () async {

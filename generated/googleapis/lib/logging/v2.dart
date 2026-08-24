@@ -584,9 +584,8 @@ class BillingAccountsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -3446,9 +3445,8 @@ class FoldersLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -5891,9 +5889,8 @@ class LocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -7819,9 +7816,8 @@ class OrganizationsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -10626,9 +10622,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -14410,8 +14405,11 @@ typedef Exponential = $Exponential;
 /// information.
 typedef Expr = $Expr;
 
-/// A source that can be used to represent a field within various parts of a
-/// structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+/// A source that can be used to represent a "field of data" within various
+/// parts of a structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+///
+/// The term "field of data" is used here because it is not limited to literal
+/// fields in the underlying data schema.
 class FieldSource {
   /// The alias name for a field that has already been aliased within a
   /// different ProjectedField type elsewhere in the query model.
@@ -15883,10 +15881,12 @@ class LogEntry {
   /// groups associated with this LogEntry.
   ///
   /// Error Reporting sets the values for this field during error group
-  /// creation.For more information, see View error details(
-  /// https://cloud.google.com/error-reporting/docs/viewing-errors#view_error_details)This
-  /// field isn't available during log routing
-  /// (https://cloud.google.com/logging/docs/routing/overview)
+  /// creation.This field is populated only when log entries are stored in Cloud
+  /// Logging storage (Logs Explorer and Observability Analytics). It is not
+  /// available for use in log sink filters, log-based metrics, or log-based
+  /// alerts, and it is excluded from log exports (Cloud Storage, BigQuery, and
+  /// Pub/Sub).For more information, see View error details(
+  /// https://cloud.google.com/error-reporting/docs/viewing-errors#view_error_details)
   ///
   /// Output only.
   core.List<LogErrorGroup>? errorGroups;
@@ -16359,10 +16359,12 @@ class LogErrorGroup {
   /// part of the error group resource name:
   /// /project/\[PROJECT_ID\]/errors/\[ERROR_GROUP_ID\].
   ///
-  /// Example: COShysOX0r_51QE. The id is derived from key parts of the
-  /// error-log content and is treated as Service Data. For information about
-  /// how Service Data is handled, see Google Cloud Privacy Notice
-  /// (https://cloud.google.com/terms/cloud-privacy-notice).
+  /// Example: COShysOX0r_51QE.This field can be used to search for log entries
+  /// belonging to a specific error group in Logs Explorer (e.g.,
+  /// error_groups.id = "ID") or Observability Analytics.The id is derived from
+  /// key parts of the error-log content and is treated as Service Data. For
+  /// information about how Service Data is handled, see Google Cloud Privacy
+  /// Notice (https://cloud.google.com/terms/cloud-privacy-notice).
   core.String? id;
 
   LogErrorGroup({this.id});
@@ -17821,7 +17823,9 @@ class Policy {
 /// ProjectedField when you need more than just the raw source field name (for
 /// which you might use FieldSource directly in QueryBuilderConfig's
 /// field_sources list if no transformations or specific operation type are
-/// needed).
+/// needed).A ProjectedField can represent either a field present in the data
+/// schema (specified via the field property) or a virtual field that is
+/// computed from other fields (specified via the virtual_field property).
 class ProjectedField {
   /// The alias name for the field.
   ///
@@ -17841,6 +17845,8 @@ class ProjectedField {
   ///
   /// This will be the field that is selected using the dot notation to display
   /// the drill down value.
+  ///
+  /// Optional.
   core.String? field;
 
   /// Specifies the role of this field (direct selection, grouping, or
@@ -17883,6 +17889,15 @@ class ProjectedField {
   /// respectively.
   core.String? truncationGranularity;
 
+  /// A virtual field definition, used in place of field to define a field that
+  /// is computed from other fields rather than being directly present in the
+  /// data schema.For example, a virtual field can be defined using COALESCE to
+  /// select the first non-null value from a list of fields.If virtual_field is
+  /// set, field must not be set.
+  ///
+  /// Optional.
+  VirtualField? virtualField;
+
   ProjectedField({
     this.alias,
     this.cast,
@@ -17891,6 +17906,7 @@ class ProjectedField {
     this.regexExtraction,
     this.sqlAggregationFunction,
     this.truncationGranularity,
+    this.virtualField,
   });
 
   ProjectedField.fromJson(core.Map json_)
@@ -17907,6 +17923,11 @@ class ProjectedField {
               )
             : null,
         truncationGranularity: json_['truncationGranularity'] as core.String?,
+        virtualField: json_.containsKey('virtualField')
+            ? VirtualField.fromJson(
+                json_['virtualField'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -17917,6 +17938,7 @@ class ProjectedField {
     final regexExtraction = this.regexExtraction;
     final sqlAggregationFunction = this.sqlAggregationFunction;
     final truncationGranularity = this.truncationGranularity;
+    final virtualField = this.virtualField;
     return {
       'alias': ?alias,
       'cast': ?cast,
@@ -17925,6 +17947,7 @@ class ProjectedField {
       'regexExtraction': ?regexExtraction,
       'sqlAggregationFunction': ?sqlAggregationFunction,
       'truncationGranularity': ?truncationGranularity,
+      'virtualField': ?virtualField,
     };
   }
 }
@@ -18423,6 +18446,57 @@ typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
 
 /// The parameters to UndeleteBucket.
 typedef UndeleteBucketRequest = $Empty;
+
+/// A virtual field is a field that is not physically present in the underlying
+/// data schema, but is created through specific operations within the query
+/// builder model based on other fields in the schema.
+class VirtualField {
+  /// The field sources that will be used to create the virtual field, based on
+  /// the semantics of the virtual field type.The field sources must follow
+  /// these rules, based on the virtual field type: - For
+  /// VIRTUAL_FIELD_TYPE_UNSPECIFIED, this field must be empty.
+  ///
+  /// - For COALESCE, this field must be non-empty and include a minimum of two
+  /// field sources. The underlying field sources must be actual projected
+  /// fields that represent actual schema fields and that must not be
+  /// transformed and aggregated in any way, except for casting. The type of all
+  /// the underlying field sources must be equivalent so that picking one of
+  /// them would result in the same value type.
+  core.List<FieldSource>? underlyingFieldSources;
+
+  /// The type of the virtual field.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VIRTUAL_FIELD_TYPE_UNSPECIFIED" : Invalid value, do not use.
+  /// - "COALESCE" : Creates a virtual field by selecting the first non-null
+  /// value from the list of fields specified in underlying_field_sources,
+  /// similar to a COALESCE function in SQL.
+  core.String? virtualFieldType;
+
+  VirtualField({this.underlyingFieldSources, this.virtualFieldType});
+
+  VirtualField.fromJson(core.Map json_)
+    : this(
+        underlyingFieldSources: (json_['underlyingFieldSources'] as core.List?)
+            ?.map(
+              (value) => FieldSource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        virtualFieldType: json_['virtualFieldType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final underlyingFieldSources = this.underlyingFieldSources;
+    final virtualFieldType = this.virtualFieldType;
+    return {
+      'underlyingFieldSources': ?underlyingFieldSources,
+      'virtualFieldType': ?virtualFieldType,
+    };
+  }
+}
 
 /// The parameters to WriteLogEntries.
 class WriteLogEntriesRequest {

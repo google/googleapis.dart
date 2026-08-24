@@ -848,7 +848,9 @@ api.CommitResponse buildCommitResponse() {
   if (buildCounterCommitResponse < 3) {
     o.commitStats = buildCommitStats();
     o.commitTimestamp = 'foo';
+    o.isolationLevel = 'foo';
     o.precommitToken = buildMultiplexedSessionPrecommitToken();
+    o.readLockMode = 'foo';
     o.snapshotTimestamp = 'foo';
   }
   buildCounterCommitResponse--;
@@ -860,7 +862,9 @@ void checkCommitResponse(api.CommitResponse o) {
   if (buildCounterCommitResponse < 3) {
     checkCommitStats(o.commitStats!);
     unittest.expect(o.commitTimestamp!, unittest.equals('foo'));
+    unittest.expect(o.isolationLevel!, unittest.equals('foo'));
     checkMultiplexedSessionPrecommitToken(o.precommitToken!);
+    unittest.expect(o.readLockMode!, unittest.equals('foo'));
     unittest.expect(o.snapshotTimestamp!, unittest.equals('foo'));
   }
   buildCounterCommitResponse--;

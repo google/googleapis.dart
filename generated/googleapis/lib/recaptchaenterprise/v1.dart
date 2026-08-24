@@ -671,6 +671,44 @@ class ProjectsKeysResource {
     );
   }
 
+  /// Get the policy for a key.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the policy to get, in the format
+  /// `projects/{project}/keys/{key}/policy`.
+  /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+/policy$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecaptchaenterpriseV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1Policy> getPolicy(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Returns the list of all keys that belong to a project.
   ///
   /// Request parameters:
@@ -957,6 +995,54 @@ class ProjectsKeysResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Updates the policy for a key.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name for this policy. Format:
+  /// "projects/{project}/keys/{key}/policy" for a policy under a key.
+  /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+/policy$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields of the policy
+  /// get updated. If the mask is not present, all fields are updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecaptchaenterpriseV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1Policy> updatePolicy(
+    GoogleCloudRecaptchaenterpriseV1Policy request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsRelatedaccountgroupmembershipsResource {
@@ -1148,7 +1234,7 @@ class ProjectsRelatedaccountgroupsMembershipsResource {
   }
 }
 
-/// Account defender risk assessment.
+/// Account defense risk assessment.
 class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
   /// Account takeover risk assessment for this request.
   ///
@@ -1190,7 +1276,7 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
   }
 }
 
-/// Risk explainability reasons for account defender.
+/// Risk explainability reasons for Account defense.
 class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason {
   /// A risk reason associated with this request.
   ///
@@ -1207,6 +1293,8 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason
   /// patterns and request characteristics.
   /// - "CLIENT_ACCESSED_MANY_ACCOUNTS" : The client has been observed accessing
   /// many accounts on this site.
+  /// - "DISPOSABLE_EMAIL_DOMAIN" : This email domain is a suspected provider of
+  /// disposable email addresses.
   core.String? reason;
 
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason({
@@ -1296,7 +1384,7 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVe
   }
 }
 
-/// Trust explainability reasons for account defender.
+/// Trust explainability reasons for Account defense.
 class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason {
   /// A trust reason associated with this request.
   ///
@@ -1308,6 +1396,12 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReaso
   /// - "ACCOUNT_HISTORY_REPUTABLE" : The account's historical activity is
   /// reputable. It is unlikely that the account has been compromised in the
   /// past.
+  /// - "IDENTITY_GLOBAL_ACTIVITY_REPUTABLE" : The identity shows a global
+  /// pattern of reputable activity based on `userInfo` and associated
+  /// identifiers.
+  /// - "IDENTITY_HISTORY_REPUTABLE" : The identity shows a long-standing
+  /// history of reputable activity based on `userInfo` and associated
+  /// identifiers.
   core.String? reason;
 
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason({
@@ -1661,7 +1755,7 @@ class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
 
 /// A reCAPTCHA Enterprise assessment resource.
 class GoogleCloudRecaptchaenterpriseV1Assessment {
-  /// Assessment returned by account defender when an account identifier is
+  /// Assessment returned by Account defense when an account identifier is
   /// provided.
   ///
   /// Output only.
@@ -1718,10 +1812,15 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// Assessment returned when a site key, a token, and a phone number as
   /// `user_id` are provided.
   ///
-  /// Account defender and SMS toll fraud protection need to be enabled.
+  /// SMS defense needs to be enabled.
   ///
   /// Output only.
   GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment? phoneFraudAssessment;
+
+  /// Provides information about the policy evaluation for this assessment.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1PolicyEvaluation? policyEvaluation;
 
   /// The private password leak verification field contains the parameters that
   /// are used to to check for leaks privately without sharing user credentials.
@@ -1750,6 +1849,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
     this.fraudSignals,
     this.name,
     this.phoneFraudAssessment,
+    this.policyEvaluation,
     this.privatePasswordLeakVerification,
     this.riskAnalysis,
     this.tokenProperties,
@@ -1806,6 +1906,12 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        policyEvaluation: json_.containsKey('policyEvaluation')
+            ? GoogleCloudRecaptchaenterpriseV1PolicyEvaluation.fromJson(
+                json_['policyEvaluation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         privatePasswordLeakVerification:
             json_.containsKey('privatePasswordLeakVerification')
             ? GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification.fromJson(
@@ -1835,6 +1941,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
     final fraudSignals = this.fraudSignals;
     final name = this.name;
     final phoneFraudAssessment = this.phoneFraudAssessment;
+    final policyEvaluation = this.policyEvaluation;
     final privatePasswordLeakVerification =
         this.privatePasswordLeakVerification;
     final riskAnalysis = this.riskAnalysis;
@@ -1849,6 +1956,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
       'fraudSignals': ?fraudSignals,
       'name': ?name,
       'phoneFraudAssessment': ?phoneFraudAssessment,
+      'policyEvaluation': ?policyEvaluation,
       'privatePasswordLeakVerification': ?privatePasswordLeakVerification,
       'riskAnalysis': ?riskAnalysis,
       'tokenProperties': ?tokenProperties,
@@ -1912,6 +2020,17 @@ class GoogleCloudRecaptchaenterpriseV1Bot {
 
   /// Enumerated string value that indicates the identity of the bot, formatted
   /// in kebab-case.
+  ///
+  /// Current example values include the following: * google-agent - AI_AGENT *
+  /// browser-base - AI_AGENT * chat-gpt - AI_AGENT * aws-bedrock - AI_AGENT *
+  /// cybaa-bot - AI_AGENT * cloudflare - AI_AGENT * payhawk - AI_AGENT *
+  /// duck-duck-go - SEARCH_INDEXER * mediaboard - CONTENT_SCRAPER * marker-io -
+  /// AI_AGENT * broadcom - AI_AGENT * anchor-browser - AI_AGENT * shopify -
+  /// AI_AGENT * stackscope - CONTENT_SCRAPER * manus - AI_AGENT * kernel-sh -
+  /// AI_AGENT * zvelo - SEARCH_INDEXER Ensure that your applications can handle
+  /// identifier values not explicitly listed here. Deprecated values might take
+  /// some time to stop showing up in responses. New values can be pushed so
+  /// this list should be taken as non exhaustive.
   ///
   /// Optional.
   core.String? name;
@@ -1980,6 +2099,206 @@ class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics {
   }
 }
 
+/// A rule to configure the behavior of reCAPTCHA for conditionally presenting a
+/// challenge.
+class GoogleCloudRecaptchaenterpriseV1ChallengeRule {
+  /// Present a challenge to the user.
+  GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome? challenge;
+
+  /// A CEL condition that must be met for this rule to apply.
+  ///
+  /// If unspecified, the rule applies unconditionally. The following fields can
+  /// be referenced in the condition: * `score` * `user_ip_address` * `user_asn`
+  /// * `user_agent` * `verified_bots.name` * `verified_bots.bot_type` Examples:
+  /// * `score < 0.5` * `user_ip_address == "123.45.67.89"` *
+  /// `user_agent.contains("Chrome")` * `score < 0.5 && user_ip_address ==
+  /// "123.45.67.89"`
+  ///
+  /// Optional.
+  core.String? condition;
+
+  /// Do not present a challenge to the user.
+  GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome? noChallenge;
+
+  GoogleCloudRecaptchaenterpriseV1ChallengeRule({
+    this.challenge,
+    this.condition,
+    this.noChallenge,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ChallengeRule.fromJson(core.Map json_)
+    : this(
+        challenge: json_.containsKey('challenge')
+            ? GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome.fromJson(
+                json_['challenge'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        condition: json_['condition'] as core.String?,
+        noChallenge: json_.containsKey('noChallenge')
+            ? GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome.fromJson(
+                json_['noChallenge'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final challenge = this.challenge;
+    final condition = this.condition;
+    final noChallenge = this.noChallenge;
+    return {
+      'challenge': ?challenge,
+      'condition': ?condition,
+      'noChallenge': ?noChallenge,
+    };
+  }
+}
+
+/// An outcome that indicates that a challenge of a specified difficulty should
+/// be presented to the user.
+class GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome {
+  /// The difficulty of the challenge to present to the user.
+  ///
+  /// If unspecified, `BALANCE` is used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED" : Default type that
+  /// indicates this enum hasn't been specified.
+  /// - "USABILITY" : Key tends to show fewer and easier challenges.
+  /// - "BALANCE" : Key tends to show balanced (in amount and difficulty)
+  /// challenges.
+  /// - "SECURITY" : Key tends to show more and harder challenges.
+  core.String? difficulty;
+
+  GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome({
+    this.difficulty,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome.fromJson(
+    core.Map json_,
+  ) : this(difficulty: json_['difficulty'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final difficulty = this.difficulty;
+    return {'difficulty': ?difficulty};
+  }
+}
+
+/// Information about the evaluation of a `ChallengeRule`.
+typedef GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation = $Empty;
+
+/// A collection of challenge rules that applies to one or more actions.
+class GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup {
+  /// Action name provided at token generation.
+  ///
+  /// The action name is not case-sensitive and can only contain alphanumeric
+  /// characters, slashes, and underscores. If "*" is provided, the rule group
+  /// applies to all actions. If multiple actions are provided, the rule group
+  /// is applied to all of them. This field is required.
+  ///
+  /// Required.
+  core.List<core.String>? actions;
+
+  /// A list of rules that configure when and how reCAPTCHA presents a
+  /// challenge.
+  ///
+  /// reCAPTCHA evaluates these rules in order and applies the first one that
+  /// matches.
+  ///
+  /// Required.
+  core.List<GoogleCloudRecaptchaenterpriseV1ChallengeRule>? challengeRules;
+
+  GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup({
+    this.actions,
+    this.challengeRules,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup.fromJson(core.Map json_)
+    : this(
+        actions: (json_['actions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        challengeRules: (json_['challengeRules'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudRecaptchaenterpriseV1ChallengeRule.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final actions = this.actions;
+    final challengeRules = this.challengeRules;
+    return {'actions': ?actions, 'challengeRules': ?challengeRules};
+  }
+}
+
+/// An outcome that indicates that no challenge should be presented to the user.
+typedef GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome =
+    $Empty;
+
+/// Configuration for clients to protect with reCAPTCHA.
+class GoogleCloudRecaptchaenterpriseV1ClientSettings {
+  /// If set to true, it means allowed_domains are not enforced.
+  ///
+  /// Optional.
+  core.bool? allowAllDomains;
+
+  /// Domains or subdomains of websites allowed to use the policy.
+  ///
+  /// All subdomains of an allowed domain are automatically allowed. A valid
+  /// domain requires a host and must not include any path, port, query or
+  /// fragment. Examples: 'example.com' or 'subdomain.example.com' Each policy
+  /// supports a maximum of 250 domains. To use a policy on more domains, set
+  /// `allow_all_domains` to true. When this is set, you are responsible for
+  /// validating the hostname by checking the `token_properties.hostname` field
+  /// in each assessment response against your list of allowed domains.
+  ///
+  /// Optional.
+  core.List<core.String>? allowedDomains;
+
+  /// Configuration for all API endpoints to protect with reCAPTCHA.
+  ///
+  /// If this field is not set, reCAPTCHA will not automatically request tokens
+  /// on any API endpoints.
+  ///
+  /// Optional.
+  GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup?
+  protectedEndpointGroup;
+
+  GoogleCloudRecaptchaenterpriseV1ClientSettings({
+    this.allowAllDomains,
+    this.allowedDomains,
+    this.protectedEndpointGroup,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ClientSettings.fromJson(core.Map json_)
+    : this(
+        allowAllDomains: json_['allowAllDomains'] as core.bool?,
+        allowedDomains: (json_['allowedDomains'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        protectedEndpointGroup: json_.containsKey('protectedEndpointGroup')
+            ? GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup.fromJson(
+                json_['protectedEndpointGroup']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowAllDomains = this.allowAllDomains;
+    final allowedDomains = this.allowedDomains;
+    final protectedEndpointGroup = this.protectedEndpointGroup;
+    return {
+      'allowAllDomains': ?allowAllDomains,
+      'allowedDomains': ?allowedDomains,
+      'protectedEndpointGroup': ?protectedEndpointGroup,
+    };
+  }
+}
+
 /// Information about a verification endpoint that can be used for 2FA.
 class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo {
   /// Email address for which to trigger a verification request.
@@ -2038,6 +2357,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   ///
   /// This should be the same action provided at token generation time on
   /// client-side platforms already integrated with recaptcha enterprise.
+  /// Required for Universal keys.
   ///
   /// Optional.
   core.String? expectedAction;
@@ -2995,6 +3315,9 @@ class GoogleCloudRecaptchaenterpriseV1Key {
   /// Optional.
   GoogleCloudRecaptchaenterpriseV1TestingOptions? testingOptions;
 
+  /// Settings for keys that are configured through their Policy.
+  GoogleCloudRecaptchaenterpriseV1UniversalKeySettings? universalSettings;
+
   /// Settings for Web Application Firewall (WAF).
   ///
   /// Optional.
@@ -3012,6 +3335,7 @@ class GoogleCloudRecaptchaenterpriseV1Key {
     this.labels,
     this.name,
     this.testingOptions,
+    this.universalSettings,
     this.wafSettings,
     this.webSettings,
   });
@@ -3044,6 +3368,12 @@ class GoogleCloudRecaptchaenterpriseV1Key {
                 json_['testingOptions'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        universalSettings: json_.containsKey('universalSettings')
+            ? GoogleCloudRecaptchaenterpriseV1UniversalKeySettings.fromJson(
+                json_['universalSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         wafSettings: json_.containsKey('wafSettings')
             ? GoogleCloudRecaptchaenterpriseV1WafSettings.fromJson(
                 json_['wafSettings'] as core.Map<core.String, core.dynamic>,
@@ -3065,6 +3395,7 @@ class GoogleCloudRecaptchaenterpriseV1Key {
     final labels = this.labels;
     final name = this.name;
     final testingOptions = this.testingOptions;
+    final universalSettings = this.universalSettings;
     final wafSettings = this.wafSettings;
     final webSettings = this.webSettings;
     return {
@@ -3076,6 +3407,7 @@ class GoogleCloudRecaptchaenterpriseV1Key {
       'labels': ?labels,
       'name': ?name,
       'testingOptions': ?testingOptions,
+      'universalSettings': ?universalSettings,
       'wafSettings': ?wafSettings,
       'webSettings': ?webSettings,
     };
@@ -3426,6 +3758,96 @@ class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment {
   }
 }
 
+/// A complete configuration set containing multiple grouped rules defining the
+/// behavior of reCAPTCHA for fraud detection and prevention.
+class GoogleCloudRecaptchaenterpriseV1Policy {
+  /// Rules to configure the behavior of reCAPTCHA for showing a challenge.
+  ///
+  /// Rule groups are evaluated in order. Evaluation stops when the first
+  /// matching rule group is found.
+  ///
+  /// Optional.
+  core.List<GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup>?
+  challengeRuleGroups;
+
+  /// Configuration for clients protected by this policy.
+  ///
+  /// Required.
+  GoogleCloudRecaptchaenterpriseV1ClientSettings? clientSettings;
+
+  /// Identifier.
+  ///
+  /// Resource name for this policy. Format:
+  /// "projects/{project}/keys/{key}/policy" for a policy under a key.
+  core.String? name;
+
+  GoogleCloudRecaptchaenterpriseV1Policy({
+    this.challengeRuleGroups,
+    this.clientSettings,
+    this.name,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1Policy.fromJson(core.Map json_)
+    : this(
+        challengeRuleGroups: (json_['challengeRuleGroups'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        clientSettings: json_.containsKey('clientSettings')
+            ? GoogleCloudRecaptchaenterpriseV1ClientSettings.fromJson(
+                json_['clientSettings'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final challengeRuleGroups = this.challengeRuleGroups;
+    final clientSettings = this.clientSettings;
+    final name = this.name;
+    return {
+      'challengeRuleGroups': ?challengeRuleGroups,
+      'clientSettings': ?clientSettings,
+      'name': ?name,
+    };
+  }
+}
+
+/// Information about the policy evaluation.
+class GoogleCloudRecaptchaenterpriseV1PolicyEvaluation {
+  /// Populated if one or more Challenge rules were matched.
+  ///
+  /// Its presence in the assessment indicates that at least one challenge rule
+  /// was matched and determined whether a challenge was presented to the user.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation?
+  challengeRuleEvaluation;
+
+  GoogleCloudRecaptchaenterpriseV1PolicyEvaluation({
+    this.challengeRuleEvaluation,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1PolicyEvaluation.fromJson(core.Map json_)
+    : this(
+        challengeRuleEvaluation: json_.containsKey('challengeRuleEvaluation')
+            ? GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation.fromJson(
+                json_['challengeRuleEvaluation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final challengeRuleEvaluation = this.challengeRuleEvaluation;
+    return {'challengeRuleEvaluation': ?challengeRuleEvaluation};
+  }
+}
+
 /// Private password leak verification info.
 class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
   /// List of prefixes of the encrypted potential password leaks that matched
@@ -3520,6 +3942,82 @@ class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
       'lookupHashPrefix': ?lookupHashPrefix,
       'reencryptedUserCredentialsHash': ?reencryptedUserCredentialsHash,
     };
+  }
+}
+
+/// Configuration for an API endpoint to protect with reCAPTCHA.
+class GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint {
+  /// Action name to be used for token generation for this endpoint.
+  ///
+  /// The action name can only contain alphanumeric characters, slashes, and
+  /// underscores.
+  ///
+  /// Required.
+  core.String? action;
+
+  /// URI path of the API endpoint to protect.
+  ///
+  /// Must start with '/'. Supports glob characters '*' to match a single path
+  /// segment and '**' to match multiple path segments. Standalone root
+  /// catch-alls (' / * ' and ' / * *') are invalid because it can negatively
+  /// impact performance to trigger reCAPTCHA on every single request to your
+  /// backend. Matching is evaluated against the URL path only (domain, scheme,
+  /// and query parameters are ignored). Examples: - `/login` matches `/login`,
+  /// `https://example.com/login`, and `/login?query=1`, but not `/login/step1`.
+  /// - `/products / * ` matches `/products/123`, but not `/products/123/456`. -
+  /// `/content / * *` matches `/content/articles/2024/01/01`.
+  ///
+  /// Required.
+  core.String? path;
+
+  GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint({this.action, this.path});
+
+  GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint.fromJson(core.Map json_)
+    : this(
+        action: json_['action'] as core.String?,
+        path: json_['path'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final action = this.action;
+    final path = this.path;
+    return {'action': ?action, 'path': ?path};
+  }
+}
+
+/// Configuration for API endpoints to protect with reCAPTCHA.
+class GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup {
+  /// List of API endpoints to automatically protect with reCAPTCHA.
+  ///
+  /// If any of these endpoints is invoked from a page where a key bound to this
+  /// policy is installed, a reCAPTCHA token is automatically generated and
+  /// attached to the request. If multiple protected endpoints match a given API
+  /// endpoint, the first one in the list is used.
+  ///
+  /// Optional.
+  core.List<GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint>?
+  protectedEndpoints;
+
+  GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup({
+    this.protectedEndpoints,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup.fromJson(
+    core.Map json_,
+  ) : this(
+        protectedEndpoints: (json_['protectedEndpoints'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final protectedEndpoints = this.protectedEndpoints;
+    return {'protectedEndpoints': ?protectedEndpoints};
   }
 }
 
@@ -3692,7 +4190,8 @@ class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse {
 
 /// Risk analysis result for an event.
 class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
-  /// Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE keys.
+  /// Challenge information for Universal, `POLICY_BASED_CHALLENGE` and
+  /// `INVISIBLE` keys.
   ///
   /// Output only.
   /// Possible string values are:
@@ -3710,6 +4209,18 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   ///
   /// Output only.
   core.List<core.String>? extendedVerdictReasons;
+
+  /// Type of the last challenge presented to the user for Universal,
+  /// `POLICY_BASED_CHALLENGE` and `INVISIBLE` keys.
+  ///
+  /// The field is only set when a challenge was presented to the user.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CHALLENGE_TYPE_UNSPECIFIED" : Default unspecified type.
+  /// - "CHALLENGE_TYPE_VISUAL" : A visual challenge.
+  /// - "CHALLENGE_TYPE_AUDIO" : An audio challenge.
+  core.String? lastChallengeType;
 
   /// Reasons contributing to the risk analysis verdict.
   ///
@@ -3733,6 +4244,7 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   GoogleCloudRecaptchaenterpriseV1RiskAnalysis({
     this.challenge,
     this.extendedVerdictReasons,
+    this.lastChallengeType,
     this.reasons,
     this.score,
     this.verifiedBots,
@@ -3744,6 +4256,7 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
         extendedVerdictReasons: (json_['extendedVerdictReasons'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        lastChallengeType: json_['lastChallengeType'] as core.String?,
         reasons: (json_['reasons'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -3760,12 +4273,14 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   core.Map<core.String, core.dynamic> toJson() {
     final challenge = this.challenge;
     final extendedVerdictReasons = this.extendedVerdictReasons;
+    final lastChallengeType = this.lastChallengeType;
     final reasons = this.reasons;
     final score = this.score;
     final verifiedBots = this.verifiedBots;
     return {
       'challenge': ?challenge,
       'extendedVerdictReasons': ?extendedVerdictReasons,
+      'lastChallengeType': ?lastChallengeType,
       'reasons': ?reasons,
       'score': ?score,
       'verifiedBots': ?verifiedBots,
@@ -4096,12 +4611,10 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// Output only.
   core.String? iosBundleId;
 
-  /// Whether the provided user response token is valid.
+  /// Indicates whether the provided user response token is valid.
   ///
-  /// When valid = false, the reason could be specified in invalid_reason or it
-  /// could also be due to a user failing to solve a challenge or a sitekey
-  /// mismatch (i.e the sitekey used to generate the token was different than
-  /// the one specified in the assessment).
+  /// If `false`, the token is invalid, either because the user failed the
+  /// challenge or for a reason provided in the `invalid_reason` field.
   ///
   /// Output only.
   core.bool? valid;
@@ -4507,7 +5020,7 @@ class GoogleCloudRecaptchaenterpriseV1TransactionDataItem {
 class GoogleCloudRecaptchaenterpriseV1TransactionDataUser {
   /// Unique account identifier for this user.
   ///
-  /// If using account defender, this should match the hashed_account_id field.
+  /// If using Account defense, this should match the hashed_account_id field.
   /// Otherwise, a unique and persistent identifier for this account.
   ///
   /// Optional.
@@ -4698,6 +5211,9 @@ class GoogleCloudRecaptchaenterpriseV1TransactionEvent {
     };
   }
 }
+
+/// Settings for keys that are configured through their Policy.
+typedef GoogleCloudRecaptchaenterpriseV1UniversalKeySettings = $Empty;
 
 /// An identifier associated with a user.
 class GoogleCloudRecaptchaenterpriseV1UserId {

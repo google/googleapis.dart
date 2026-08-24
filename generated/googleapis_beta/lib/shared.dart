@@ -306,39 +306,6 @@ class $AcknowledgeUserDataCollectionRequest {
 
 /// Used by:
 ///
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1BoundingPolyConfig
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1PolylineConfig
-class $Config {
-  /// Annotation spec set resource name.
-  ///
-  /// Required.
-  core.String? annotationSpecSet;
-
-  /// Instruction message showed on contributors UI.
-  ///
-  /// Optional.
-  core.String? instructionMessage;
-
-  $Config({this.annotationSpecSet, this.instructionMessage});
-
-  $Config.fromJson(core.Map json_)
-    : this(
-        annotationSpecSet: json_['annotationSpecSet'] as core.String?,
-        instructionMessage: json_['instructionMessage'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final annotationSpecSet = this.annotationSpecSet;
-    final instructionMessage = this.instructionMessage;
-    return {
-      'annotationSpecSet': ?annotationSpecSet,
-      'instructionMessage': ?instructionMessage,
-    };
-  }
-}
-
-/// Used by:
-///
 /// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue
 /// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue
 class $ConversionEventDefaultConversionValue {
@@ -970,7 +937,6 @@ class $DimensionValue {
 /// Used by:
 ///
 /// - adexchangebuyer2:v2beta1 : CancelNegotiationRequest
-/// - adexchangebuyer2:v2beta1 : CompleteSetupRequest
 /// - adexchangebuyer2:v2beta1 : Empty
 /// - adexchangebuyer2:v2beta1 : ResumeProposalRequest
 /// - adexchangebuyer2:v2beta1 : StopWatchingCreativeRequest
@@ -991,15 +957,13 @@ class $DimensionValue {
 /// - clouderrorreporting:v1beta1 : DeleteEventsResponse
 /// - clouderrorreporting:v1beta1 : ReportErrorEventResponse
 /// - cloudsupport:v2beta : CloseCaseRequest
+/// - cloudsupport:v2beta : Empty
+/// - cloudsupport:v2beta : ExpungeSupportEventSubscriptionRequest
+/// - cloudsupport:v2beta : UndeleteSupportEventSubscriptionRequest
 /// - dataflow:v1b3 : DeleteSnapshotResponse
 /// - dataflow:v1b3 : ResourceUtilizationReportResponse
 /// - dataflow:v1b3 : SendDebugCaptureResponse
 /// - dataflow:v1b3 : WorkerShutdownNoticeResponse
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest
-/// - datalabeling:v1beta1 : GoogleProtobufEmpty
 /// - datastream:v1alpha1 : AvroFileFormat
 /// - datastream:v1alpha1 : BackfillNoneStrategy
 /// - datastream:v1alpha1 : CancelOperationRequest
@@ -1628,6 +1592,10 @@ class $Property {
 /// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaPropertySummary
 /// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaPropertySummary
 class $PropertySummary {
+  /// If true, then the user has a Google Analytics role that permits them to
+  /// edit the property.
+  core.bool? canEdit;
+
   /// Display name for the property referred to in this property summary.
   core.String? displayName;
 
@@ -1651,6 +1619,7 @@ class $PropertySummary {
   core.String? propertyType;
 
   $PropertySummary({
+    this.canEdit,
     this.displayName,
     this.parent,
     this.property,
@@ -1659,6 +1628,7 @@ class $PropertySummary {
 
   $PropertySummary.fromJson(core.Map json_)
     : this(
+        canEdit: json_['canEdit'] as core.bool?,
         displayName: json_['displayName'] as core.String?,
         parent: json_['parent'] as core.String?,
         property: json_['property'] as core.String?,
@@ -1666,11 +1636,13 @@ class $PropertySummary {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final canEdit = this.canEdit;
     final displayName = this.displayName;
     final parent = this.parent;
     final property = this.property;
     final propertyType = this.propertyType;
     return {
+      'canEdit': ?canEdit,
       'displayName': ?displayName,
       'parent': ?parent,
       'property': ?property,
@@ -2719,7 +2691,6 @@ class $Shared {
 /// - alertcenter:v1beta1 : Status
 /// - analyticsdata:v1beta : Status
 /// - dataflow:v1b3 : Status
-/// - datalabeling:v1beta1 : GoogleRpcStatus
 /// - datastream:v1alpha1 : Status
 /// - firebase:v1beta1 : Status
 /// - gkehub:v2alpha : GoogleRpcStatus

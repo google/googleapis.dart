@@ -47,7 +47,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260327",
+    "revision": "20260807",
     "rootUrl": "https://apigee.googleapis.com/",
     "servicePath": "",
     "title": "Apigee API",
@@ -547,7 +547,7 @@
                             "type": "string"
                         },
                         "updateMask": {
-                            "description": "List of fields to be updated. Fields that can be updated: synchronizer_identities, publisher_identities.",
+                            "description": "List of fields to be updated. Fields that can be updated: synchronizer_identities, analytics_publisher_identities, watcher_identities.",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -1127,7 +1127,7 @@
                             ]
                         },
                         "update": {
-                            "description": "Updates an existing API product. You must include all required values, whether or not you are updating them, as well as any optional values that you are updating. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via UI or API. View the list of API products to identify their internal names.",
+                            "description": "Updates an existing API product. You must include all required values, whether or not you are updating them, as well as any optional values that you are updating. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via UI or API. View the list of API products to identify their internal names. **Note:** We recommend that you avoid making concurrent update requests for the same resource. Near-simultaneous writes to the same entity can result in conflicts and unexpected behavior. Ensure operations are sequential when modifying a single resource.",
                             "flatPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}",
                             "httpMethod": "PUT",
                             "id": "apigee.organizations.apiproducts.update",
@@ -2264,7 +2264,7 @@
                             ]
                         },
                         "update": {
-                            "description": "Updates an AppGroup. This API replaces the existing AppGroup details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. Note that the state of the AppGroup should be updated using `action`, and not via AppGroup.",
+                            "description": "Updates an AppGroup. This API replaces the existing AppGroup details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. Note that the state of the AppGroup should be updated using `action`, and not via AppGroup. **Note:** We recommend that you avoid making concurrent update requests for the same resource. Near-simultaneous writes to the same entity can result in conflicts and unexpected behavior. Ensure operations are sequential when modifying a single resource.",
                             "flatPath": "v1/organizations/{organizationsId}/appgroups/{appgroupsId}",
                             "httpMethod": "PUT",
                             "id": "apigee.organizations.appgroups.update",
@@ -2297,7 +2297,7 @@
                             ]
                         },
                         "updateMonetizationConfig": {
-                            "description": "Updates the monetization configuration for the AppGroup.",
+                            "description": "Updates the monetization configuration for the AppGroup. **Note:** We recommend that you avoid making concurrent update requests for the same resource. Near-simultaneous writes to the same entity can result in conflicts and unexpected behavior. Ensure operations are sequential when modifying a single resource.",
                             "flatPath": "v1/organizations/{organizationsId}/appgroups/{appgroupsId}/monetizationConfig",
                             "httpMethod": "PUT",
                             "id": "apigee.organizations.appgroups.updateMonetizationConfig",
@@ -2443,7 +2443,7 @@
                                     ]
                                 },
                                 "update": {
-                                    "description": "Updates the details for an AppGroup app. In addition, you can add an API product to an AppGroup app and automatically generate an API key for the app to use when calling APIs in the API product. If you want to use an existing API key for the API product, add the API product to the API key using the UpdateAppGroupAppKey API. Using this API, you cannot update the app name, as it is the primary key used to identify the app and cannot be changed. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively.",
+                                    "description": "Updates the details for an AppGroup app. In addition, you can add an API product to an AppGroup app and automatically generate an API key for the app to use when calling APIs in the API product. If you want to use an existing API key for the API product, add the API product to the API key using the UpdateAppGroupAppKey API. Using this API, you cannot update the app name, as it is the primary key used to identify the app and cannot be changed. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively. **Note:** We recommend that you avoid making concurrent update requests for the same resource. Near-simultaneous writes to the same entity can result in conflicts and unexpected behavior. Ensure operations are sequential when modifying a single resource.",
                                     "flatPath": "v1/organizations/{organizationsId}/appgroups/{appgroupsId}/apps/{appsId}",
                                     "httpMethod": "PUT",
                                     "id": "apigee.organizations.appgroups.apps.update",
@@ -3390,7 +3390,7 @@
                             ]
                         },
                         "update": {
-                            "description": "Updates a developer. This API replaces the existing developer details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. The custom attribute limit is 18. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds.",
+                            "description": "Updates a developer. This API replaces the existing developer details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. The custom attribute limit is 18. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds. **Note:** We recommend that you avoid making concurrent update requests for the same resource. Near-simultaneous writes to the same entity can result in conflicts and unexpected behavior. Ensure operations are sequential when modifying a single resource.",
                             "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}",
                             "httpMethod": "PUT",
                             "id": "apigee.organizations.developers.update",
@@ -3645,7 +3645,7 @@
                                     ]
                                 },
                                 "update": {
-                                    "description": "Updates the details for a developer app. In addition, you can add an API product to a developer app and automatically generate an API key for the app to use when calling APIs in the API product. If you want to use an existing API key for the API product, add the API product to the API key using the UpdateDeveloperAppKey API. Using this API, you cannot update the following: * App name as it is the primary key used to identify the app and cannot be changed. * Scopes associated with the app. Instead, use the ReplaceDeveloperAppKey API. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively.",
+                                    "description": "Updates the details for a developer app. In addition, you can add an API product to a developer app and automatically generate an API key for the app to use when calling APIs in the API product. If you want to use an existing API key for the API product, add the API product to the API key using the UpdateDeveloperAppKey API. Using this API, you cannot update the following: * App name as it is the primary key used to identify the app and cannot be changed. * Scopes associated with the app. Instead, use the ReplaceDeveloperAppKey API. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively. **Note:** We recommend that you avoid making concurrent update requests for the same resource. Near-simultaneous writes to the same entity can result in conflicts and unexpected behavior. Ensure operations are sequential when modifying a single resource.",
                                     "flatPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}",
                                     "httpMethod": "PUT",
                                     "id": "apigee.organizations.developers.apps.update",
@@ -12598,6 +12598,10 @@
                     "$ref": "GoogleCloudApigeeV1OperationGroup",
                     "description": "Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail."
                 },
+                "payloadOperationGroup": {
+                    "$ref": "GoogleCloudApigeeV1PayloadOperationGroup",
+                    "description": "Optional. Configuration used to group Apigee proxies with payload-based operations and quotas. Unlike `operation_group`, which matches on the URL path, this grouping matches on operation identifiers extracted from the request payload (for example, JSON-RPC method and tool names). This enables fine-grained authorization and quota enforcement for protocols such as MCP where multiple operations share a single endpoint. **Note:** The `proxies` and `api_resources` settings cannot be specified for both the API product and payload operation group; otherwise the call will fail."
+                },
                 "proxies": {
                     "description": "Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.",
                     "items": {
@@ -12782,6 +12786,11 @@
                     "description": "Time that the API proxy revision was last modified in milliseconds since epoch.",
                     "format": "int64",
                     "type": "string"
+                },
+                "mcp": {
+                    "description": "Output only. Whether this proxy revision is detected as an MCP (Model Context Protocol) proxy. A proxy revision is identified as MCP if it has a proxy endpoint with the `/mcp` base path that routes to the MCP target URL.",
+                    "readOnly": true,
+                    "type": "boolean"
                 },
                 "name": {
                     "description": "Name of the API proxy.",
@@ -18062,6 +18071,60 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1PayloadOperation": {
+            "description": "Represents a single operation identifier extracted from the request payload.",
+            "id": "GoogleCloudApigeeV1PayloadOperation",
+            "properties": {
+                "operation": {
+                    "description": "Required. The operation name extracted from the request payload at runtime by the ParsePayload policy. For example, for MCP protocol requests, this could be `\"tools/list\"` or `\"tools/call/get_weather\"`. Wildcards are not supported.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1PayloadOperationConfig": {
+            "description": "Binds the payload operations in an API proxy with the associated quota enforcement.",
+            "id": "GoogleCloudApigeeV1PayloadOperationConfig",
+            "properties": {
+                "apiSource": {
+                    "description": "Required. Name of the API proxy with which the payload operations and quota are associated.",
+                    "type": "string"
+                },
+                "attributes": {
+                    "description": "Optional. Custom attributes associated with the operation.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1Attribute"
+                    },
+                    "type": "array"
+                },
+                "operations": {
+                    "description": "Required. List of payload operations for the API proxy to which quota will be applied.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1PayloadOperation"
+                    },
+                    "type": "array"
+                },
+                "quota": {
+                    "$ref": "GoogleCloudApigeeV1Quota",
+                    "description": "Optional. Quota parameters to be enforced for the operations and API source combination. If none are specified, quota enforcement will not be done unless a quota is defined at the API product level."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1PayloadOperationGroup": {
+            "description": "List of payload operation configuration details associated with Apigee API proxies. Payload operations enable governance of protocols where operations are embedded in the request body (such as JSON-RPC) rather than defined by the URL path.",
+            "id": "GoogleCloudApigeeV1PayloadOperationGroup",
+            "properties": {
+                "operationConfigs": {
+                    "description": "Required. List of payload operation configurations for Apigee API proxies that are associated with this API product.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1PayloadOperationConfig"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1PodStatus": {
             "id": "GoogleCloudApigeeV1PodStatus",
             "properties": {
@@ -19069,6 +19132,10 @@
                     "description": "Revision number used by the runtime to detect config changes.",
                     "type": "string"
                 },
+                "specGenerationConfig": {
+                    "$ref": "GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig",
+                    "description": "Runtime configuration for Spec Generation add-on."
+                },
                 "uid": {
                     "description": "UID is to detect if config is recreated after deletion. The add-on config will only be deleted when the environment itself gets deleted, thus it will always be the same as the UID of EnvironmentConfig.",
                     "type": "string"
@@ -19126,8 +19193,36 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig": {
+            "description": "Runtime configuration for the Spec Generation add-on. All fields are proto3 primitives (bool, string, double) rather than google.protobuf.*Value wrappers because the runtime consumer deserializes the JSON via Gson field reflection with no registered type adapters. Wrapper types would serialize as JSON objects/null that Gson cannot bind to Java primitive fields.",
+            "id": "GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig",
+            "properties": {
+                "apiObservationsPubsubTopic": {
+                    "description": "Full Pub/Sub topic path in the Apigee Runtime Tenant Project where the Schema Inferring Engine publishes inferred ApiObservation messages. Format: projects/{project}/topics/{topic}. Same sentinel semantics as raw_observations_pubsub_topic. Default: empty string.",
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "Whether the Spec Generation add-on is active for this environment. Default: false.",
+                    "type": "boolean"
+                },
+                "enabledUntil": {
+                    "description": "ISO-8601 timestamp until which Spec Generation remains active (e.g. \"2026-12-31T23:59:59Z\"). Empty string is the canonical \"not configured\" sentinel and MUST be treated by the consumer as \"expired\" (short-circuit before parsing). Default: empty string.",
+                    "type": "string"
+                },
+                "rawObservationsPubsubTopic": {
+                    "description": "Full Pub/Sub topic path in the Apigee Runtime Tenant Project where the message processor publishes captured RawObservation messages. Format: projects/{project}/topics/{topic}. Empty string is the \"not configured\" sentinel; the consumer short-circuits publishing when empty. Default: empty string.",
+                    "type": "string"
+                },
+                "samplingRate": {
+                    "description": "Fraction of eligible transactions to capture, in [0.0, 1.0]. The consumer enforces an internal upper-bound clamp independently of this field. Default: 0.0 (omitted from JSON per proto3 default-scalar-omission; the consumer's field initializer supplies the effective 0.01 fallback).",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1RuntimeTraceConfig": {
-            "description": "NEXT ID: 10 RuntimeTraceConfig defines the configurations for distributed trace in an environment.",
+            "description": "NEXT ID: 13 RuntimeTraceConfig defines the configurations for distributed trace in an environment.",
             "id": "GoogleCloudApigeeV1RuntimeTraceConfig",
             "properties": {
                 "endpoint": {
@@ -19152,6 +19247,10 @@
                     ],
                     "type": "string"
                 },
+                "mTlsConfig": {
+                    "$ref": "GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig",
+                    "description": "Optional. mTLS configuration for the OTel Collector endpoint. Required when `otel_collector_security_scheme` is `MTLS`; must be absent otherwise."
+                },
                 "name": {
                     "description": "Name of the trace config in the following format: `organizations/{org}/environment/{env}/traceConfig`",
                     "type": "string"
@@ -19160,6 +19259,20 @@
                     "deprecated": true,
                     "description": "Optional. If `true`, the runtime uses OpenTelemetry Protocol (OTLP) to send trace data. Configuration Requirements (if `open_telemetry_protocol_enabled` is `true`): - Allowed `Exporter`s: `CLOUD_TRACE` or `OPEN_TELEMETRY_COLLECTOR`. - If `Exporter` is `OPEN_TELEMETRY_COLLECTOR`: - `endpoint` refers to a valid OTLP collector URL. - If `Exporter` is `CLOUD_TRACE`: - `endpoint` refers to a valid project ID Deprecated: Use trace_protocol instead.",
                     "type": "boolean"
+                },
+                "otelCollectorSecurityScheme": {
+                    "description": "Optional. Security scheme for the outbound connection to the customer-owned OpenTelemetry Collector. Only meaningful when `exporter` is `OPEN_TELEMETRY_COLLECTOR`. Runtime consumers unaware of a value should treat it as `OTEL_COLLECTOR_SECURITY_SCHEME_UNSPECIFIED` (== NONE).",
+                    "enum": [
+                        "OTEL_COLLECTOR_SECURITY_SCHEME_UNSPECIFIED",
+                        "NONE",
+                        "MTLS"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Behavior is identical to NONE.",
+                        "Default. Unauthenticated OTLP/HTTP export. Preserves today's behavior byte-for-byte for existing configurations.",
+                        "Mutual TLS via customer PKI. Cert material is stored in Apigee Keystores/Truststores and referenced by resource ID in `mtls_config` (same mechanism as TargetServer.tls_info)."
+                    ],
+                    "type": "string"
                 },
                 "overrides": {
                     "description": "List of trace configuration overrides for spicific API proxies.",
@@ -19181,6 +19294,20 @@
                     "$ref": "GoogleCloudApigeeV1RuntimeTraceSamplingConfig",
                     "description": "Trace configuration for all API proxies in an environment."
                 },
+                "spanSemantics": {
+                    "description": "Optional. The span semantics to use. Configuration Requirements (if `span_semantics` is `OTEL`): - `trace_protocol` must be `OTLP`.",
+                    "enum": [
+                        "SPAN_SEMANTICS_UNSPECIFIED",
+                        "LEGACY",
+                        "OTEL"
+                    ],
+                    "enumDescriptions": [
+                        "Semantics unspecified. Defaults to LEGACY.",
+                        "Uses Apigee legacy span and attribute names.",
+                        "Uses OpenTelemetry semantic-convention-aligned span and attribute names."
+                    ],
+                    "type": "string"
+                },
                 "traceProtocol": {
                     "description": "Optional. The trace protocol to use.",
                     "enum": [
@@ -19198,8 +19325,27 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig": {
+            "description": "Runtime-side view of `TraceConfig.OtelMtlsConfig` for the outbound OTel Collector mTLS connection. Shape mirrors `TlsInfoConfig` (in this same file, above) exactly. The oneof discriminates between a direct keystore reference and a `ref://`-indirected reference; both are surfaced on the wire without flattening. The referenced keystore must also appear in `EnvironmentConfig.keystores[]` so the underlying alias bytes are available at runtime. Referential integrity is enforced at trace-config update time: any PATCH that references a keystore not already present is rejected in the same transaction that would persist the update, and keystore/alias/reference deletion is blocked while a trace-config references it.",
+            "id": "GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig",
+            "properties": {
+                "keyAlias": {
+                    "description": "Full alias resource name of the client-side key/cert alias. Format: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}` Set when the customer supplied a plain keystore ID in `TraceConfig.OtelMtlsConfig.key_store`.",
+                    "type": "string"
+                },
+                "keyAliasReference": {
+                    "$ref": "GoogleCloudApigeeV1KeyAliasReference",
+                    "description": "Reference name and alias-id pair. Set when the customer supplied a `ref://{referenceID}` URI in `TraceConfig.OtelMtlsConfig.key_store`. Resolved via the References catalog the same way as `TlsInfoConfig.key_alias_reference` in target-server TLS. Reuses the top-level `KeyAliasReference` message defined for `TlsInfoConfig` above; no new message."
+                },
+                "trustStore": {
+                    "description": "Full resource name of the truststore holding the CA(s) that signed the OTel Collector's server certificate. Either a keystore or a reference resource name, mirroring `TlsInfoConfig.trust_store` above: `organizations/{org}/environments/{env}/keystores/{keystore}` `organizations/{org}/environments/{env}/references/{reference}`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1RuntimeTraceConfigOverride": {
-            "description": "NEXT ID: 9 Trace configuration override for a specific API proxy in an environment.",
+            "description": "NEXT ID: 10 Trace configuration override for a specific API proxy in an environment.",
             "id": "GoogleCloudApigeeV1RuntimeTraceConfigOverride",
             "properties": {
                 "apiProxy": {
@@ -19227,6 +19373,20 @@
                 "samplingConfig": {
                     "$ref": "GoogleCloudApigeeV1RuntimeTraceSamplingConfig",
                     "description": "Trace configuration override for a specific API proxy in an environment."
+                },
+                "spanSemantics": {
+                    "description": "Optional. The span semantics to use. Configuration Requirements (if `span_semantics` is `OTEL`): - `trace_protocol` must be `OTLP`.",
+                    "enum": [
+                        "SPAN_SEMANTICS_UNSPECIFIED",
+                        "LEGACY",
+                        "OTEL"
+                    ],
+                    "enumDescriptions": [
+                        "Semantics unspecified. Defaults to LEGACY.",
+                        "Uses Apigee legacy span and attribute names.",
+                        "Uses OpenTelemetry semantic-convention-aligned span and attribute names."
+                    ],
+                    "type": "string"
                 },
                 "traceProtocol": {
                     "description": "Optional. The trace protocol to use.",
@@ -21237,9 +21397,74 @@
                     ],
                     "type": "string"
                 },
+                "mtlsConfig": {
+                    "$ref": "GoogleCloudApigeeV1TraceConfigOtelMtlsConfig",
+                    "description": "Optional. mTLS configuration for the OTel Collector endpoint. Required when `otel_collector_security_scheme` == MTLS; must not be set otherwise."
+                },
+                "otelCollectorSecurityScheme": {
+                    "description": "Optional. The security scheme for the OTel Collector endpoint. Defaults to NONE (unauthenticated OTLP/HTTP), preserving today's behavior for existing configurations. Only applicable when `exporter` == OPEN_TELEMETRY_COLLECTOR.",
+                    "enum": [
+                        "OTEL_COLLECTOR_SECURITY_SCHEME_UNSPECIFIED",
+                        "NONE",
+                        "MTLS"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Behavior is identical to NONE.",
+                        "Default. Unauthenticated OTLP/HTTP export. Preserves today's behavior byte-for-byte for existing configurations.",
+                        "Mutual TLS via customer PKI. Cert material is stored in Apigee Keystores/Truststores and referenced by resource ID in `mtls_config` (same mechanism as TargetServer.tls_info)."
+                    ],
+                    "type": "string"
+                },
                 "samplingConfig": {
                     "$ref": "GoogleCloudApigeeV1TraceSamplingConfig",
                     "description": "Distributed trace configuration for all API proxies in an environment. You can also override the configuration for a specific API proxy using the distributed trace configuration overrides API."
+                },
+                "spanSemantics": {
+                    "description": "Optional. The span semantics to use. Configuration Requirements (if span_semantics is OTEL): - trace_protocol must be OTLP.",
+                    "enum": [
+                        "SPAN_SEMANTICS_UNSPECIFIED",
+                        "LEGACY",
+                        "OTEL"
+                    ],
+                    "enumDescriptions": [
+                        "Semantics unspecified. Defaults to LEGACY.",
+                        "Uses Apigee legacy span and attribute names.",
+                        "Uses OpenTelemetry semantic-convention-aligned span and attribute names."
+                    ],
+                    "type": "string"
+                },
+                "traceProtocol": {
+                    "description": "Optional. The trace protocol to use. Configuration Requirements (if trace_protocol is OTLP): - Allowed Exporters: CLOUD_TRACE or OPEN_TELEMETRY_COLLECTOR. - If Exporter is OPEN_TELEMETRY_COLLECTOR: - endpoint refers to a valid OTLP collector URL. - If Exporter is CLOUD_TRACE: - endpoint refers to a valid project ID.",
+                    "enum": [
+                        "TRACE_PROTOCOL_UNSPECIFIED",
+                        "OPEN_CENSUS",
+                        "OTLP"
+                    ],
+                    "enumDescriptions": [
+                        "Protocol unspecified. Defaults to OPEN_CENSUS.",
+                        "Uses OpenCensus protocol.",
+                        "Uses OpenTelemetry Protocol (OTLP)."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1TraceConfigOtelMtlsConfig": {
+            "description": "OtelMtlsConfig configures mutual TLS for the outbound OTel Collector connection by referencing already-uploaded Keystore/Truststore aliases. Key/cert material is uploaded via the existing Keystore Alias APIs (POST .../keystores/{ks}/aliases), the same APIs used to configure mTLS for `TargetServer.tls_info`. Only the resource IDs of those aliases live in this message; no secret material is inlined into TraceConfig. Field shape mirrors `TlsInfo` used by `TargetServer.tls_info`: - `key_store` and `trust_store` accept either a plain keystore ID or a `ref://{referenceID}` URI (an environment-scoped Reference whose `resource_type` is `KeyStore`/`TrustStore`). References enable rotation without editing the TraceConfig itself. - `key_alias` is the plain alias ID within `key_store`. Fields that would normally appear on `TlsInfo` (enabled, client_auth_enabled, protocols, enforce, ignore_validation_errors) are intentionally omitted from this customer surface. The runtime enforces secure defaults: - Mutual TLS is always required (both server AND client cert exchanged). - Server certificate validation is always strict (no ignoring errors). - TLS 1.2 and TLS 1.3 are enabled; older versions are rejected.",
+            "id": "GoogleCloudApigeeV1TraceConfigOtelMtlsConfig",
+            "properties": {
+                "keyAlias": {
+                    "description": "Required. Plain alias ID within `key_store` that contains the client key/cert used for mTLS.",
+                    "type": "string"
+                },
+                "keyStore": {
+                    "description": "Required. Keystore holding the client-side key/cert alias. Accepts either a plain keystore ID (e.g. `my-keystore`) resolving to `organizations/{org}/environments/{env}/keystores/{key_store}`, or a reference URI of the form `ref://{referenceID}` that points to a Reference whose `resource_type` is `KeyStore`.",
+                    "type": "string"
+                },
+                "trustStore": {
+                    "description": "Required. Truststore holding the CA(s) that signed the OTel Collector's server certificate. Accepts either a plain keystore ID (e.g. `my-truststore`) resolving to `organizations/{org}/environments/{env}/keystores/{trust_store}`, or a reference URI of the form `ref://{referenceID}` that points to a Reference whose `resource_type` is `KeyStore` (used as a truststore).",
+                    "type": "string"
                 }
             },
             "type": "object"

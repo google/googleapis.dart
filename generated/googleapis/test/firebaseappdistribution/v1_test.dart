@@ -309,6 +309,7 @@ api.GdataMedia buildGdataMedia() {
     o.referenceType = 'foo';
     o.sha1Hash = 'foo';
     o.sha256Hash = 'foo';
+    o.sha512Hash = 'foo';
     o.timestamp = 'foo';
     o.token = 'foo';
   }
@@ -347,6 +348,7 @@ void checkGdataMedia(api.GdataMedia o) {
     unittest.expect(o.referenceType!, unittest.equals('foo'));
     unittest.expect(o.sha1Hash!, unittest.equals('foo'));
     unittest.expect(o.sha256Hash!, unittest.equals('foo'));
+    unittest.expect(o.sha512Hash!, unittest.equals('foo'));
     unittest.expect(o.timestamp!, unittest.equals('foo'));
     unittest.expect(o.token!, unittest.equals('foo'));
   }
@@ -822,6 +824,7 @@ buildGoogleFirebaseAppdistroV1ListReleasesResponse() {
   if (buildCounterGoogleFirebaseAppdistroV1ListReleasesResponse < 3) {
     o.nextPageToken = 'foo';
     o.releases = buildUnnamed12();
+    o.totalSize = 42;
   }
   buildCounterGoogleFirebaseAppdistroV1ListReleasesResponse--;
   return o;
@@ -834,6 +837,7 @@ void checkGoogleFirebaseAppdistroV1ListReleasesResponse(
   if (buildCounterGoogleFirebaseAppdistroV1ListReleasesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed12(o.releases!);
+    unittest.expect(o.totalSize!, unittest.equals(42));
   }
   buildCounterGoogleFirebaseAppdistroV1ListReleasesResponse--;
 }
@@ -878,14 +882,21 @@ api.GoogleFirebaseAppdistroV1Release buildGoogleFirebaseAppdistroV1Release() {
   final o = api.GoogleFirebaseAppdistroV1Release();
   buildCounterGoogleFirebaseAppdistroV1Release++;
   if (buildCounterGoogleFirebaseAppdistroV1Release < 3) {
+    o.acceptedInvitationCount = 42;
+    o.androidPackageRegistrationState = 'foo';
     o.binaryDownloadUri = 'foo';
+    o.binaryType = 'foo';
     o.buildVersion = 'foo';
     o.createTime = 'foo';
     o.displayVersion = 'foo';
     o.expireTime = 'foo';
+    o.feedbackCount = 42;
     o.firebaseConsoleUri = 'foo';
+    o.installationCount = 42;
     o.name = 'foo';
+    o.openInvitationCount = 42;
     o.releaseNotes = buildGoogleFirebaseAppdistroV1ReleaseNotes();
+    o.testState = 'foo';
     o.testingUri = 'foo';
     o.updateTime = 'foo';
   }
@@ -898,14 +909,21 @@ void checkGoogleFirebaseAppdistroV1Release(
 ) {
   buildCounterGoogleFirebaseAppdistroV1Release++;
   if (buildCounterGoogleFirebaseAppdistroV1Release < 3) {
+    unittest.expect(o.acceptedInvitationCount!, unittest.equals(42));
+    unittest.expect(o.androidPackageRegistrationState!, unittest.equals('foo'));
     unittest.expect(o.binaryDownloadUri!, unittest.equals('foo'));
+    unittest.expect(o.binaryType!, unittest.equals('foo'));
     unittest.expect(o.buildVersion!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.displayVersion!, unittest.equals('foo'));
     unittest.expect(o.expireTime!, unittest.equals('foo'));
+    unittest.expect(o.feedbackCount!, unittest.equals(42));
     unittest.expect(o.firebaseConsoleUri!, unittest.equals('foo'));
+    unittest.expect(o.installationCount!, unittest.equals(42));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.openInvitationCount!, unittest.equals(42));
     checkGoogleFirebaseAppdistroV1ReleaseNotes(o.releaseNotes!);
+    unittest.expect(o.testState!, unittest.equals('foo'));
     unittest.expect(o.testingUri!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }

@@ -233,7 +233,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -248,9 +248,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2271,6 +2270,15 @@ typedef GoogleCloudDocumentaiV1DisableProcessorRequest = $Empty;
 /// for collaboration between users and Document AI to iterate and optimize for
 /// quality.
 class GoogleCloudDocumentaiV1Document {
+  /// The blob assets in this document.
+  ///
+  /// This is used to store the content of the inline blobs in this document,
+  /// for example, image bytes, such that it can be referenced by other fields
+  /// in the document via asset ID.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDocumentaiV1DocumentBlobAsset>? blobAssets;
+
   /// Document chunked based on chunking config.
   GoogleCloudDocumentaiV1DocumentChunkedDocument? chunkedDocument;
 
@@ -2307,9 +2315,9 @@ class GoogleCloudDocumentaiV1Document {
 
   /// The entity revision ID that `document.entities` field is based on.
   ///
-  /// If this field is set and `entities_revisions` is not empty, the entities
-  /// in `document.entities` field are the entities in the entity revision with
-  /// this id and `document.entity_validation_output` field is the
+  /// If this field and `entities_revisions` are set, the entities in
+  /// `document.entities` are the entities in the entity revision with this ID.
+  /// The `document.entity_validation_output` field is the
   /// `entity_validation_output` field in this entity revision.
   core.String? entitiesRevisionId;
 
@@ -2379,6 +2387,7 @@ class GoogleCloudDocumentaiV1Document {
   core.String? uri;
 
   GoogleCloudDocumentaiV1Document({
+    this.blobAssets,
     this.chunkedDocument,
     this.content,
     this.docid,
@@ -2401,6 +2410,13 @@ class GoogleCloudDocumentaiV1Document {
 
   GoogleCloudDocumentaiV1Document.fromJson(core.Map json_)
     : this(
+        blobAssets: (json_['blobAssets'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudDocumentaiV1DocumentBlobAsset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         chunkedDocument: json_.containsKey('chunkedDocument')
             ? GoogleCloudDocumentaiV1DocumentChunkedDocument.fromJson(
                 json_['chunkedDocument'] as core.Map<core.String, core.dynamic>,
@@ -2486,6 +2502,7 @@ class GoogleCloudDocumentaiV1Document {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final blobAssets = this.blobAssets;
     final chunkedDocument = this.chunkedDocument;
     final content = this.content;
     final docid = this.docid;
@@ -2505,6 +2522,7 @@ class GoogleCloudDocumentaiV1Document {
     final textStyles = this.textStyles;
     final uri = this.uri;
     return {
+      'blobAssets': ?blobAssets,
       'chunkedDocument': ?chunkedDocument,
       'content': ?content,
       'docid': ?docid,
@@ -2524,6 +2542,73 @@ class GoogleCloudDocumentaiV1Document {
       'textStyles': ?textStyles,
       'uri': ?uri,
     };
+  }
+}
+
+/// Represents the annotation of a block or a chunk.
+class GoogleCloudDocumentaiV1DocumentAnnotations {
+  /// The description of the content with this annotation.
+  core.String? description;
+
+  GoogleCloudDocumentaiV1DocumentAnnotations({this.description});
+
+  GoogleCloudDocumentaiV1DocumentAnnotations.fromJson(core.Map json_)
+    : this(description: json_['description'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    return {'description': ?description};
+  }
+}
+
+/// Represents a blob asset.
+///
+/// It's used to store the content of the inline blob in this document, for
+/// example, image bytes, such that it can be referenced by other fields in the
+/// document via asset ID.
+class GoogleCloudDocumentaiV1DocumentBlobAsset {
+  /// The ID of the blob asset.
+  ///
+  /// Optional.
+  core.String? assetId;
+
+  /// The content of the blob asset, for example, image bytes.
+  ///
+  /// Optional.
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> bytes_) {
+    content = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// The mime type of the blob asset.
+  ///
+  /// An IANA published \[media type (MIME
+  /// type)\](https://www.iana.org/assignments/media-types/media-types.xhtml).
+  core.String? mimeType;
+
+  GoogleCloudDocumentaiV1DocumentBlobAsset({
+    this.assetId,
+    this.content,
+    this.mimeType,
+  });
+
+  GoogleCloudDocumentaiV1DocumentBlobAsset.fromJson(core.Map json_)
+    : this(
+        assetId: json_['assetId'] as core.String?,
+        content: json_['content'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final assetId = this.assetId;
+    final content = this.content;
+    final mimeType = this.mimeType;
+    return {'assetId': ?assetId, 'content': ?content, 'mimeType': ?mimeType};
   }
 }
 
@@ -2554,6 +2639,10 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocument {
 
 /// Represents a chunk.
 class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
+  /// Chunk fields inside this chunk.
+  core.List<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField>?
+  chunkFields;
+
   /// ID of the chunk.
   core.String? chunkId;
 
@@ -2575,6 +2664,7 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
   core.List<core.String>? sourceBlockIds;
 
   GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk({
+    this.chunkFields,
     this.chunkId,
     this.content,
     this.pageFooters,
@@ -2585,6 +2675,14 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
 
   GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk.fromJson(core.Map json_)
     : this(
+        chunkFields: (json_['chunkFields'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         chunkId: json_['chunkId'] as core.String?,
         content: json_['content'] as core.String?,
         pageFooters: (json_['pageFooters'] as core.List?)
@@ -2614,6 +2712,7 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final chunkFields = this.chunkFields;
     final chunkId = this.chunkId;
     final content = this.content;
     final pageFooters = this.pageFooters;
@@ -2621,12 +2720,56 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
     final pageSpan = this.pageSpan;
     final sourceBlockIds = this.sourceBlockIds;
     return {
+      'chunkFields': ?chunkFields,
       'chunkId': ?chunkId,
       'content': ?content,
       'pageFooters': ?pageFooters,
       'pageHeaders': ?pageHeaders,
       'pageSpan': ?pageSpan,
       'sourceBlockIds': ?sourceBlockIds,
+    };
+  }
+}
+
+/// The chunk field in the chunk.
+///
+/// A chunk field could be one of the various types (for example, image, table)
+/// supported.
+class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField {
+  /// The image chunk field in the chunk.
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField?
+  imageChunkField;
+
+  /// The table chunk field in the chunk.
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField?
+  tableChunkField;
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField({
+    this.imageChunkField,
+    this.tableChunkField,
+  });
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField.fromJson(
+    core.Map json_,
+  ) : this(
+        imageChunkField: json_.containsKey('imageChunkField')
+            ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField.fromJson(
+                json_['imageChunkField'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tableChunkField: json_.containsKey('tableChunkField')
+            ? GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField.fromJson(
+                json_['tableChunkField'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageChunkField = this.imageChunkField;
+    final tableChunkField = this.tableChunkField;
+    return {
+      'imageChunkField': ?imageChunkField,
+      'tableChunkField': ?tableChunkField,
     };
   }
 }
@@ -2697,6 +2840,91 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader {
 typedef GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan =
     $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan;
 
+/// The image chunk field in the chunk.
+class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField {
+  /// Annotation of the image chunk field.
+  GoogleCloudDocumentaiV1DocumentAnnotations? annotations;
+
+  /// Asset ID of the inline image.
+  ///
+  /// If set, find the image content in the blob_assets field.
+  ///
+  /// Optional.
+  core.String? blobAssetId;
+
+  /// Data URI of the image.
+  ///
+  /// It is composed of four parts: a prefix (data:), a MIME type indicating the
+  /// type of data, an optional base64 token if non-textual, and the data
+  /// itself: data:,
+  ///
+  /// Optional.
+  core.String? dataUri;
+
+  /// Google Cloud Storage URI of the image.
+  ///
+  /// Optional.
+  core.String? gcsUri;
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField({
+    this.annotations,
+    this.blobAssetId,
+    this.dataUri,
+    this.gcsUri,
+  });
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField.fromJson(
+    core.Map json_,
+  ) : this(
+        annotations: json_.containsKey('annotations')
+            ? GoogleCloudDocumentaiV1DocumentAnnotations.fromJson(
+                json_['annotations'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        blobAssetId: json_['blobAssetId'] as core.String?,
+        dataUri: json_['dataUri'] as core.String?,
+        gcsUri: json_['gcsUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final blobAssetId = this.blobAssetId;
+    final dataUri = this.dataUri;
+    final gcsUri = this.gcsUri;
+    return {
+      'annotations': ?annotations,
+      'blobAssetId': ?blobAssetId,
+      'dataUri': ?dataUri,
+      'gcsUri': ?gcsUri,
+    };
+  }
+}
+
+/// The table chunk field in the chunk.
+class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField {
+  /// Annotation of the table chunk field.
+  GoogleCloudDocumentaiV1DocumentAnnotations? annotations;
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField({
+    this.annotations,
+  });
+
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField.fromJson(
+    core.Map json_,
+  ) : this(
+        annotations: json_.containsKey('annotations')
+            ? GoogleCloudDocumentaiV1DocumentAnnotations.fromJson(
+                json_['annotations'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    return {'annotations': ?annotations};
+  }
+}
+
 /// Represents the parsed layout of a document as a collection of blocks that
 /// the document is divided into.
 class GoogleCloudDocumentaiV1DocumentDocumentLayout {
@@ -2734,6 +2962,10 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
   /// Identifies the bounding box for the block.
   GoogleCloudDocumentaiV1BoundingPoly? boundingBox;
 
+  /// Block consisting of image content.
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock?
+  imageBlock;
+
   /// Block consisting of list content/structure.
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock?
   listBlock;
@@ -2753,6 +2985,7 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock({
     this.blockId,
     this.boundingBox,
+    this.imageBlock,
     this.listBlock,
     this.pageSpan,
     this.tableBlock,
@@ -2766,6 +2999,11 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
         boundingBox: json_.containsKey('boundingBox')
             ? GoogleCloudDocumentaiV1BoundingPoly.fromJson(
                 json_['boundingBox'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageBlock: json_.containsKey('imageBlock')
+            ? GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock.fromJson(
+                json_['imageBlock'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         listBlock: json_.containsKey('listBlock')
@@ -2793,6 +3031,7 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
   core.Map<core.String, core.dynamic> toJson() {
     final blockId = this.blockId;
     final boundingBox = this.boundingBox;
+    final imageBlock = this.imageBlock;
     final listBlock = this.listBlock;
     final pageSpan = this.pageSpan;
     final tableBlock = this.tableBlock;
@@ -2800,10 +3039,88 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
     return {
       'blockId': ?blockId,
       'boundingBox': ?boundingBox,
+      'imageBlock': ?imageBlock,
       'listBlock': ?listBlock,
       'pageSpan': ?pageSpan,
       'tableBlock': ?tableBlock,
       'textBlock': ?textBlock,
+    };
+  }
+}
+
+/// Represents an image type block.
+class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock {
+  /// Annotation of the image block.
+  GoogleCloudDocumentaiV1DocumentAnnotations? annotations;
+
+  /// Asset ID of the inline image.
+  ///
+  /// If set, find the image content in the blob_assets field.
+  ///
+  /// Optional.
+  core.String? blobAssetId;
+
+  /// Data URI of the image.
+  ///
+  /// It is composed of four parts: a prefix (data:), a MIME type indicating the
+  /// type of data, an optional base64 token if non-textual, and the data
+  /// itself: data:,
+  ///
+  /// Optional.
+  core.String? dataUri;
+
+  /// Google Cloud Storage URI of the image.
+  ///
+  /// Optional.
+  core.String? gcsUri;
+
+  /// Text extracted from the image using OCR or alt text describing the image.
+  core.String? imageText;
+
+  /// Mime type of the image.
+  ///
+  /// An IANA published \[media type (MIME
+  /// type)\](https://www.iana.org/assignments/media-types/media-types.xhtml).
+  core.String? mimeType;
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock({
+    this.annotations,
+    this.blobAssetId,
+    this.dataUri,
+    this.gcsUri,
+    this.imageText,
+    this.mimeType,
+  });
+
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock.fromJson(
+    core.Map json_,
+  ) : this(
+        annotations: json_.containsKey('annotations')
+            ? GoogleCloudDocumentaiV1DocumentAnnotations.fromJson(
+                json_['annotations'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        blobAssetId: json_['blobAssetId'] as core.String?,
+        dataUri: json_['dataUri'] as core.String?,
+        gcsUri: json_['gcsUri'] as core.String?,
+        imageText: json_['imageText'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final blobAssetId = this.blobAssetId;
+    final dataUri = this.dataUri;
+    final gcsUri = this.gcsUri;
+    final imageText = this.imageText;
+    final mimeType = this.mimeType;
+    return {
+      'annotations': ?annotations,
+      'blobAssetId': ?blobAssetId,
+      'dataUri': ?dataUri,
+      'gcsUri': ?gcsUri,
+      'imageText': ?imageText,
+      'mimeType': ?mimeType,
     };
   }
 }
@@ -2884,6 +3201,9 @@ typedef GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPa
 
 /// Represents a table type block.
 class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock {
+  /// Annotation of the table block.
+  GoogleCloudDocumentaiV1DocumentAnnotations? annotations;
+
   /// Body rows containing main table content.
   core.List<
     GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow
@@ -2900,6 +3220,7 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTabl
   headerRows;
 
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock({
+    this.annotations,
     this.bodyRows,
     this.caption,
     this.headerRows,
@@ -2908,6 +3229,11 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTabl
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock.fromJson(
     core.Map json_,
   ) : this(
+        annotations: json_.containsKey('annotations')
+            ? GoogleCloudDocumentaiV1DocumentAnnotations.fromJson(
+                json_['annotations'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         bodyRows: (json_['bodyRows'] as core.List?)
             ?.map(
               (value) =>
@@ -2928,10 +3254,12 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTabl
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
     final bodyRows = this.bodyRows;
     final caption = this.caption;
     final headerRows = this.headerRows;
     return {
+      'annotations': ?annotations,
       'bodyRows': ?bodyRows,
       'caption': ?caption,
       'headerRows': ?headerRows,
@@ -3015,6 +3343,9 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTabl
 
 /// Represents a text type block.
 class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock {
+  /// Annotation of the text block.
+  GoogleCloudDocumentaiV1DocumentAnnotations? annotations;
+
   /// A text block could further have child blocks.
   ///
   /// Repeated blocks support further hierarchies and nested blocks.
@@ -3031,6 +3362,7 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutText
   core.String? type;
 
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock({
+    this.annotations,
     this.blocks,
     this.text,
     this.type,
@@ -3039,6 +3371,11 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutText
   GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock.fromJson(
     core.Map json_,
   ) : this(
+        annotations: json_.containsKey('annotations')
+            ? GoogleCloudDocumentaiV1DocumentAnnotations.fromJson(
+                json_['annotations'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         blocks: (json_['blocks'] as core.List?)
             ?.map(
               (value) =>
@@ -3052,10 +3389,16 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutText
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
     final blocks = this.blocks;
     final text = this.text;
     final type = this.type;
-    return {'blocks': ?blocks, 'text': ?text, 'type': ?type};
+    return {
+      'annotations': ?annotations,
+      'blocks': ?blocks,
+      'text': ?text,
+      'type': ?type,
+    };
   }
 }
 
@@ -3324,8 +3667,8 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
   /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
   GoogleTypeMoney? moneyValue;
 
-  /// A signature - a graphical representation of a person's name, often used to
-  /// sign a document.
+  /// A signature, which is a graphical representation of a person's name, often
+  /// used to sign a document.
   core.bool? signatureValue;
 
   /// An optional field to store a normalized string.
@@ -4877,7 +5220,7 @@ class GoogleCloudDocumentaiV1DocumentPageVisualElement {
 /// Structure to identify provenance relationships between annotations in
 /// different revisions.
 class GoogleCloudDocumentaiV1DocumentProvenance {
-  /// The Id of this operation.
+  /// The ID of this operation.
   ///
   /// Needs to be unique within the scope of the revision.
   @core.Deprecated(
@@ -4953,12 +5296,46 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
 /// The parent element the current element is based on.
 ///
 /// Used for referencing/aligning, removal and replacement operations.
-typedef GoogleCloudDocumentaiV1DocumentProvenanceParent =
-    $GoogleCloudDocumentaiV1DocumentProvenanceParent;
+class GoogleCloudDocumentaiV1DocumentProvenanceParent {
+  /// The ID of the parent provenance.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.int? id;
+
+  /// The index of the parent item in the corresponding item list (eg.
+  ///
+  /// list of entities, properties within entities, etc.) in the parent
+  /// revision.
+  core.int? index;
+
+  /// The index of the index into current revision's parent_ids list.
+  core.int? revision;
+
+  GoogleCloudDocumentaiV1DocumentProvenanceParent({
+    this.id,
+    this.index,
+    this.revision,
+  });
+
+  GoogleCloudDocumentaiV1DocumentProvenanceParent.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.int?,
+        index: json_['index'] as core.int?,
+        revision: json_['revision'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final index = this.index;
+    final revision = this.revision;
+    return {'id': ?id, 'index': ?index, 'revision': ?revision};
+  }
+}
 
 /// Contains past or forward revisions of this document.
 class GoogleCloudDocumentaiV1DocumentRevision {
-  /// If the change was made by a person specify the name or id of that person.
+  /// If the change was made by a person specify the name or ID of that person.
   core.String? agent;
 
   /// The time that the revision was created, internally generated by doc proto
@@ -4968,7 +5345,7 @@ class GoogleCloudDocumentaiV1DocumentRevision {
   /// Human Review information of this revision.
   GoogleCloudDocumentaiV1DocumentRevisionHumanReview? humanReview;
 
-  /// Id of the revision, internally generated by doc proto storage.
+  /// ID of the revision, internally generated by doc proto storage.
   ///
   /// Unique within the context of the document.
   core.String? id;
@@ -5079,7 +5456,7 @@ class GoogleCloudDocumentaiV1DocumentSchema {
   /// Display name to show users.
   core.String? displayName;
 
-  /// Document level prompt provided by the user.
+  /// Document-level prompt provided by the user.
   ///
   /// This custom text is injected into the AI model's prompt to provide extra,
   /// document-wide guidance for processing.
@@ -5165,7 +5542,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
   /// letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
   /// compatibility, internal infrastructure and tooling can handle any ASCII
   /// character.) - The `/` is sometimes used to denote a property of a type.
-  /// For example `line_item/amount`. This convention is deprecated, but will
+  /// For example, `line_item/amount`. This convention is deprecated, but will
   /// still be honored for backward compatibility.
   core.String? name;
 
@@ -7247,7 +7624,7 @@ class GoogleCloudDocumentaiV1Processor {
   /// SchemaVersion used by the Processor.
   ///
   /// It is the same as Processor's DatasetSchema.schema_version Format is
-  /// \`projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
+  /// \`projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}.
   ///
   /// Optional.
   core.String? activeSchemaVersion;
@@ -8307,7 +8684,7 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOp
   /// Optional.
   core.double? learningRateMultiplier;
 
-  /// Resource name of a previously fine tuned version id to copy the
+  /// Resource name of a previously fine tuned version ID to copy the
   /// overwritten configs from.
   ///
   /// The base_processor_version should be newer than the base processor version

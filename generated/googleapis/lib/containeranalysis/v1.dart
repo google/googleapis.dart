@@ -2203,6 +2203,70 @@ class ProjectsResourcesResource {
   }
 }
 
+/// AISkillAnalysisNote provides the metadata of an AI-based skill analysis.
+typedef AISkillAnalysisNote = $Empty;
+
+/// AISkillAnalysisOccurrence provides the results of an AI-based skill
+/// analysis.
+class AISkillAnalysisOccurrence {
+  /// Findings produced by the analysis.
+  core.List<Finding>? findings;
+
+  /// Maximum severity found among findings.
+  ///
+  /// Per scanner verdict details.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity.
+  /// - "CRITICAL" : Critical severity.
+  /// - "HIGH" : High severity.
+  core.String? maxSeverity;
+
+  /// Per scanner verdict.
+  PerScannerVerdict? perScannerVerdict;
+
+  /// Name of the skill that produced this analysis.
+  core.String? skillName;
+
+  AISkillAnalysisOccurrence({
+    this.findings,
+    this.maxSeverity,
+    this.perScannerVerdict,
+    this.skillName,
+  });
+
+  AISkillAnalysisOccurrence.fromJson(core.Map json_)
+    : this(
+        findings: (json_['findings'] as core.List?)
+            ?.map(
+              (value) => Finding.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        maxSeverity: json_['maxSeverity'] as core.String?,
+        perScannerVerdict: json_.containsKey('perScannerVerdict')
+            ? PerScannerVerdict.fromJson(
+                json_['perScannerVerdict']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        skillName: json_['skillName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final findings = this.findings;
+    final maxSeverity = this.maxSeverity;
+    final perScannerVerdict = this.perScannerVerdict;
+    final skillName = this.skillName;
+    return {
+      'findings': ?findings,
+      'maxSeverity': ?maxSeverity,
+      'perScannerVerdict': ?perScannerVerdict,
+      'skillName': ?skillName,
+    };
+  }
+}
+
 /// An alias to a repo revision.
 typedef AliasContext = $AliasContext;
 
@@ -2948,7 +3012,7 @@ class BuildProvenance {
   }
 }
 
-typedef BuilderConfig = $Shared03;
+typedef BuilderConfig = $Shared02;
 typedef CISAKnownExploitedVulnerabilities = $CISAKnownExploitedVulnerabilities;
 
 /// Common Vulnerability Scoring System.
@@ -3634,6 +3698,7 @@ class DiscoveryNote {
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   /// - "SECRET" : This represents a secret.
+  /// - "AI_SKILL_ANALYSIS" : This represents an AI skill analysis.
   core.String? analysisKind;
 
   DiscoveryNote({this.analysisKind});
@@ -4003,6 +4068,74 @@ class FileHashes {
   }
 }
 
+/// Finding provides details for a single finding within an
+/// AISkillAnalysisOccurrence.
+class Finding {
+  /// Category of the finding.
+  core.String? category;
+
+  /// Description of the finding category.
+  core.String? details;
+
+  /// Location (path and line) where the finding was detected.
+  FindingLocation? location;
+
+  /// Scanner determines which engine (e.g. static, llm) emitted the finding.
+  /// Possible string values are:
+  /// - "SCANNER_UNSPECIFIED" : Unspecified scanner.
+  /// - "STATIC" : Static scanner.
+  /// - "LLM" : LLM scanner.
+  /// - "WS_POLICY" : WS_POLICY scanner.
+  /// - "GOOGLE_ANTIVIRUS" : Google AntiVirus Service scanner.
+  core.String? scanner;
+
+  /// Severity of the finding.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity.
+  /// - "CRITICAL" : Critical severity.
+  /// - "HIGH" : High severity.
+  core.String? severity;
+
+  Finding({
+    this.category,
+    this.details,
+    this.location,
+    this.scanner,
+    this.severity,
+  });
+
+  Finding.fromJson(core.Map json_)
+    : this(
+        category: json_['category'] as core.String?,
+        details: json_['details'] as core.String?,
+        location: json_.containsKey('location')
+            ? FindingLocation.fromJson(
+                json_['location'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        scanner: json_['scanner'] as core.String?,
+        severity: json_['severity'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final category = this.category;
+    final details = this.details;
+    final location = this.location;
+    final scanner = this.scanner;
+    final severity = this.severity;
+    return {
+      'category': ?category,
+      'details': ?details,
+      'location': ?location,
+      'scanner': ?scanner,
+      'severity': ?severity,
+    };
+  }
+}
+
+/// Location details with file path and line number.
+typedef FindingLocation = $FindingLocation;
+
 /// A set of properties that uniquely identify a given Docker image.
 typedef Fingerprint = $Fingerprint;
 
@@ -4180,7 +4313,7 @@ class GrafeasV1FileLocation {
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
-typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared03;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared02;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -4862,6 +4995,14 @@ class Location {
   }
 }
 
+/// Result of Malicious Content LLM scan.
+typedef MaliciousContentLLMResult = $Result01;
+
+/// Result of Malicious Content Static scan.
+typedef MaliciousContentStaticResult = $Result01;
+
+/// Result of Malware scan.
+typedef MalwareScanResult = $Result02;
 typedef Material = $Material;
 
 /// Other properties of the build.
@@ -4932,6 +5073,9 @@ typedef NonCompliantFile = $NonCompliantFile;
 
 /// A type of analysis that can be done for a resource.
 class Note {
+  /// A note describing an AI skill analysis.
+  AISkillAnalysisNote? aiSkillAnalysis;
+
   /// A note describing an attestation role.
   AttestationNote? attestation;
 
@@ -4988,6 +5132,7 @@ class Note {
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   /// - "SECRET" : This represents a secret.
+  /// - "AI_SKILL_ANALYSIS" : This represents an AI skill analysis.
   core.String? kind;
 
   /// A detailed description of this note.
@@ -5034,6 +5179,7 @@ class Note {
   VulnerabilityAssessmentNote? vulnerabilityAssessment;
 
   Note({
+    this.aiSkillAnalysis,
     this.attestation,
     this.build,
     this.compliance,
@@ -5060,6 +5206,11 @@ class Note {
 
   Note.fromJson(core.Map json_)
     : this(
+        aiSkillAnalysis: json_.containsKey('aiSkillAnalysis')
+            ? AISkillAnalysisNote.fromJson(
+                json_['aiSkillAnalysis'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         attestation: json_.containsKey('attestation')
             ? AttestationNote.fromJson(
                 json_['attestation'] as core.Map<core.String, core.dynamic>,
@@ -5146,6 +5297,7 @@ class Note {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final aiSkillAnalysis = this.aiSkillAnalysis;
     final attestation = this.attestation;
     final build = this.build;
     final compliance = this.compliance;
@@ -5169,6 +5321,7 @@ class Note {
     final vulnerability = this.vulnerability;
     final vulnerabilityAssessment = this.vulnerabilityAssessment;
     return {
+      'aiSkillAnalysis': ?aiSkillAnalysis,
       'attestation': ?attestation,
       'build': ?build,
       'compliance': ?compliance,
@@ -5199,6 +5352,9 @@ class Note {
 class Occurrence {
   /// The time this advisory was published by the source.
   core.String? advisoryPublishTime;
+
+  /// Describes an AI skill analysis.
+  AISkillAnalysisOccurrence? aiSkillAnalysis;
 
   /// Describes an attestation of an artifact.
   AttestationOccurrence? attestation;
@@ -5252,6 +5408,7 @@ class Occurrence {
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   /// - "SECRET" : This represents a secret.
+  /// - "AI_SKILL_ANALYSIS" : This represents an AI skill analysis.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -5301,6 +5458,7 @@ class Occurrence {
 
   Occurrence({
     this.advisoryPublishTime,
+    this.aiSkillAnalysis,
     this.attestation,
     this.build,
     this.compliance,
@@ -5326,6 +5484,11 @@ class Occurrence {
   Occurrence.fromJson(core.Map json_)
     : this(
         advisoryPublishTime: json_['advisoryPublishTime'] as core.String?,
+        aiSkillAnalysis: json_.containsKey('aiSkillAnalysis')
+            ? AISkillAnalysisOccurrence.fromJson(
+                json_['aiSkillAnalysis'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         attestation: json_.containsKey('attestation')
             ? AttestationOccurrence.fromJson(
                 json_['attestation'] as core.Map<core.String, core.dynamic>,
@@ -5402,6 +5565,7 @@ class Occurrence {
 
   core.Map<core.String, core.dynamic> toJson() {
     final advisoryPublishTime = this.advisoryPublishTime;
+    final aiSkillAnalysis = this.aiSkillAnalysis;
     final attestation = this.attestation;
     final build = this.build;
     final compliance = this.compliance;
@@ -5424,6 +5588,7 @@ class Occurrence {
     final vulnerability = this.vulnerability;
     return {
       'advisoryPublishTime': ?advisoryPublishTime,
+      'aiSkillAnalysis': ?aiSkillAnalysis,
       'attestation': ?attestation,
       'build': ?build,
       'compliance': ?compliance,
@@ -5801,6 +5966,68 @@ class PackageOccurrence {
       'name': ?name,
       'packageType': ?packageType,
       'version': ?version,
+    };
+  }
+}
+
+class PerScannerVerdict {
+  /// Malicious Content LLM scan result.
+  MaliciousContentLLMResult? maliciousContentLlmResult;
+
+  /// Malicious Content Static scan result.
+  MaliciousContentStaticResult? maliciousContentStaticResult;
+
+  /// Malware scan result.
+  MalwareScanResult? malwareScan;
+
+  /// Workspace Policy scan result.
+  WorkspacePolicyResult? workspacePolicy;
+
+  PerScannerVerdict({
+    this.maliciousContentLlmResult,
+    this.maliciousContentStaticResult,
+    this.malwareScan,
+    this.workspacePolicy,
+  });
+
+  PerScannerVerdict.fromJson(core.Map json_)
+    : this(
+        maliciousContentLlmResult:
+            json_.containsKey('maliciousContentLlmResult')
+            ? MaliciousContentLLMResult.fromJson(
+                json_['maliciousContentLlmResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        maliciousContentStaticResult:
+            json_.containsKey('maliciousContentStaticResult')
+            ? MaliciousContentStaticResult.fromJson(
+                json_['maliciousContentStaticResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        malwareScan: json_.containsKey('malwareScan')
+            ? MalwareScanResult.fromJson(
+                json_['malwareScan'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        workspacePolicy: json_.containsKey('workspacePolicy')
+            ? WorkspacePolicyResult.fromJson(
+                json_['workspacePolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maliciousContentLlmResult = this.maliciousContentLlmResult;
+    final maliciousContentStaticResult = this.maliciousContentStaticResult;
+    final malwareScan = this.malwareScan;
+    final workspacePolicy = this.workspacePolicy;
+    return {
+      'maliciousContentLlmResult': ?maliciousContentLlmResult,
+      'maliciousContentStaticResult': ?maliciousContentStaticResult,
+      'malwareScan': ?malwareScan,
+      'workspacePolicy': ?workspacePolicy,
     };
   }
 }
@@ -6478,7 +6705,7 @@ class SetIamPolicyRequest {
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared03;
+typedef SlsaBuilder = $Shared02;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -7213,11 +7440,15 @@ class VulnerabilityNote {
   /// The full description of the CVSSv3 for this vulnerability.
   CVSSv3? cvssV3;
 
+  /// The full description of the v4 CVSS for this vulnerability.
+  CVSS? cvssV4;
+
   /// CVSS version used to populate cvss_score and severity.
   /// Possible string values are:
-  /// - "CVSS_VERSION_UNSPECIFIED"
-  /// - "CVSS_VERSION_2"
-  /// - "CVSS_VERSION_3"
+  /// - "CVSS_VERSION_UNSPECIFIED" : Unspecified.
+  /// - "CVSS_VERSION_2" : CVSS v2.
+  /// - "CVSS_VERSION_3" : CVSS v3.
+  /// - "CVSS_VERSION_4" : CVSS v4.
   core.String? cvssVersion;
 
   /// Details of all known distros and packages affected by this vulnerability.
@@ -7252,6 +7483,7 @@ class VulnerabilityNote {
     this.cvssScore,
     this.cvssV2,
     this.cvssV3,
+    this.cvssV4,
     this.cvssVersion,
     this.details,
     this.severity,
@@ -7271,6 +7503,11 @@ class VulnerabilityNote {
         cvssV3: json_.containsKey('cvssV3')
             ? CVSSv3.fromJson(
                 json_['cvssV3'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cvssV4: json_.containsKey('cvssV4')
+            ? CVSS.fromJson(
+                json_['cvssV4'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         cvssVersion: json_['cvssVersion'] as core.String?,
@@ -7296,6 +7533,7 @@ class VulnerabilityNote {
     final cvssScore = this.cvssScore;
     final cvssV2 = this.cvssV2;
     final cvssV3 = this.cvssV3;
+    final cvssV4 = this.cvssV4;
     final cvssVersion = this.cvssVersion;
     final details = this.details;
     final severity = this.severity;
@@ -7306,6 +7544,7 @@ class VulnerabilityNote {
       'cvssScore': ?cvssScore,
       'cvssV2': ?cvssV2,
       'cvssV3': ?cvssV3,
+      'cvssV4': ?cvssV4,
       'cvssVersion': ?cvssVersion,
       'details': ?details,
       'severity': ?severity,
@@ -7328,13 +7567,17 @@ class VulnerabilityOccurrence {
   /// The cvss v2 score for the vulnerability.
   CVSS? cvssV2;
 
+  /// The cvss v4 score for the vulnerability.
+  CVSS? cvssV4;
+
   /// CVSS version used to populate cvss_score and severity.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "CVSS_VERSION_UNSPECIFIED"
-  /// - "CVSS_VERSION_2"
-  /// - "CVSS_VERSION_3"
+  /// - "CVSS_VERSION_UNSPECIFIED" : Unspecified.
+  /// - "CVSS_VERSION_2" : CVSS v2.
+  /// - "CVSS_VERSION_3" : CVSS v3.
+  /// - "CVSS_VERSION_4" : CVSS v4.
   core.String? cvssVersion;
 
   /// The cvss v3 score for the vulnerability.
@@ -7411,6 +7654,7 @@ class VulnerabilityOccurrence {
   VulnerabilityOccurrence({
     this.cvssScore,
     this.cvssV2,
+    this.cvssV4,
     this.cvssVersion,
     this.cvssv3,
     this.effectiveSeverity,
@@ -7432,6 +7676,11 @@ class VulnerabilityOccurrence {
         cvssV2: json_.containsKey('cvssV2')
             ? CVSS.fromJson(
                 json_['cvssV2'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cvssV4: json_.containsKey('cvssV4')
+            ? CVSS.fromJson(
+                json_['cvssV4'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         cvssVersion: json_['cvssVersion'] as core.String?,
@@ -7476,6 +7725,7 @@ class VulnerabilityOccurrence {
   core.Map<core.String, core.dynamic> toJson() {
     final cvssScore = this.cvssScore;
     final cvssV2 = this.cvssV2;
+    final cvssV4 = this.cvssV4;
     final cvssVersion = this.cvssVersion;
     final cvssv3 = this.cvssv3;
     final effectiveSeverity = this.effectiveSeverity;
@@ -7492,6 +7742,7 @@ class VulnerabilityOccurrence {
     return {
       'cvssScore': ?cvssScore,
       'cvssV2': ?cvssV2,
+      'cvssV4': ?cvssV4,
       'cvssVersion': ?cvssVersion,
       'cvssv3': ?cvssv3,
       'effectiveSeverity': ?effectiveSeverity,
@@ -7679,3 +7930,6 @@ class WindowsUpdate {
     };
   }
 }
+
+/// Result of Workspace Policy scan.
+typedef WorkspacePolicyResult = $Result02;

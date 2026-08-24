@@ -1040,7 +1040,6 @@ api.GoogleAuthenticationSettings buildGoogleAuthenticationSettings() {
   final o = api.GoogleAuthenticationSettings();
   buildCounterGoogleAuthenticationSettings++;
   if (buildCounterGoogleAuthenticationSettings < 3) {
-    o.dedicatedDevicesAllowed = 'foo';
     o.googleAuthenticationRequired = 'foo';
   }
   buildCounterGoogleAuthenticationSettings--;
@@ -1050,7 +1049,6 @@ api.GoogleAuthenticationSettings buildGoogleAuthenticationSettings() {
 void checkGoogleAuthenticationSettings(api.GoogleAuthenticationSettings o) {
   buildCounterGoogleAuthenticationSettings++;
   if (buildCounterGoogleAuthenticationSettings < 3) {
-    unittest.expect(o.dedicatedDevicesAllowed!, unittest.equals('foo'));
     unittest.expect(o.googleAuthenticationRequired!, unittest.equals('foo'));
   }
   buildCounterGoogleAuthenticationSettings--;

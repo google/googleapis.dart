@@ -26,6 +26,7 @@
 ///
 /// Create an instance of [CloudIdentityApi] to access these resources:
 ///
+/// - [AllowlistedDomainsResource]
 /// - [CustomersResource]
 ///   - [CustomersUserinvitationsResource]
 /// - [DevicesResource]
@@ -55,6 +56,14 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// API for provisioning and managing identity resources.
 class CloudIdentityApi {
+  /// See and edit allowlisted domains in your Cloud Identity Organization
+  static const cloudIdentityAllowlisteddomainsScope =
+      'https://www.googleapis.com/auth/cloud-identity.allowlisteddomains';
+
+  /// See allowlisted domains in your Cloud Identity Organization
+  static const cloudIdentityAllowlisteddomainsReadonlyScope =
+      'https://www.googleapis.com/auth/cloud-identity.allowlisteddomains.readonly';
+
   /// Private Service: https://www.googleapis.com/auth/cloud-identity.devices
   static const cloudIdentityDevicesScope =
       'https://www.googleapis.com/auth/cloud-identity.devices';
@@ -103,6 +112,8 @@ class CloudIdentityApi {
 
   final commons.ApiRequester _requester;
 
+  AllowlistedDomainsResource get allowlistedDomains =>
+      AllowlistedDomainsResource(_requester);
   CustomersResource get customers => CustomersResource(_requester);
   DevicesResource get devices => DevicesResource(_requester);
   GroupsResource get groups => GroupsResource(_requester);
@@ -124,6 +135,172 @@ class CloudIdentityApi {
          servicePath,
          requestHeaders,
        );
+}
+
+class AllowlistedDomainsResource {
+  final commons.ApiRequester _requester;
+
+  AllowlistedDomainsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Adds a domain to the allowlist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AllowlistedDomain request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/allowlistedDomains';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes a domain from the allowlist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Specifies the
+  /// [resource name](https://google.aip.dev/122) of the domain to delete.
+  /// Value must have pattern `^allowlistedDomains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a specific domain from the allowlist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Specifies the
+  /// [resource name](https://google.aip.dev/122) of the domain to retrieve.
+  /// Value must have pattern `^allowlistedDomains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AllowlistedDomain].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AllowlistedDomain> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AllowlistedDomain.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists the domains in the allowlist.
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - Optional. Provides an optional filter for list results.
+  /// Currently, only exact matches on the domain are supported, such as "domain
+  /// = 'google.com'", with no composite conditions.
+  ///
+  /// [pageSize] - Optional. Specifies the requested page size. If unspecified,
+  /// the service returns at most 5000 domains. The maximum value is 5000;
+  /// values above 5000 coerce to 5000. The limits can change over time.
+  ///
+  /// [pageToken] - Optional. Identifies a token from a previous page of
+  /// results, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAllowlistedDomainsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAllowlistedDomainsResponse> list({
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/allowlistedDomains';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAllowlistedDomainsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class CustomersResource {
@@ -2274,6 +2451,9 @@ class GroupsMembershipsResource {
 
   /// Searches direct groups of a member.
   ///
+  /// Groups for which the actor does not have the permission to view
+  /// memberships are silently filtered out.
+  ///
   /// Request parameters:
   ///
   /// [parent] -
@@ -3383,6 +3563,75 @@ class PoliciesResource {
 
   PoliciesResource(commons.ApiRequester client) : _requester = client;
 
+  /// Create a policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(Policy request, {core.String? $fields}) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/policies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the policy to delete. Format:
+  /// `policies/{policy}`.
+  /// Value must have pattern `^policies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Get a policy.
   ///
   /// Request parameters:
@@ -3421,23 +3670,24 @@ class PoliciesResource {
   /// Request parameters:
   ///
   /// [filter] - Optional. A CEL expression for filtering the results. Policies
-  /// can be filtered by application with this expression:
-  /// setting.type.matches('^settings/gmail\\..*$') Policies can be filtered by
-  /// setting type with this expression:
-  /// setting.type.matches('^.*\\.service_status$') A maximum of one of the
-  /// above setting.type clauses can be used. Policies can be filtered by
-  /// customer with this expression: customer == "customers/{customer}" Where
-  /// `customer` is the `id` from the \[Admin SDK `Customer`
+  /// can be filtered using the expression in the following ways: - Filter by
+  /// application: `setting.type.matches('^settings/gmail\\..*$')` - Filter by
+  /// setting type: `setting.type.matches('^.*\\.service_status$')` - Filter by
+  /// customer: `customer == "customers/{customer}"` Where `customer` is the
+  /// `id` from the \[Admin SDK `Customer`
   /// resource\](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
   /// You may use `customers/my_customer` to specify your own organization. When
-  /// no customer is mentioned it will be default to customers/my_customer. A
-  /// maximum of one customer clause can be used. The above clauses can only be
-  /// combined together in a single filter expression with the `&&` operator.
+  /// no `customer` is mentioned it will be default to `customers/my_customer`.
+  /// You may only filter on policies for a single customer at a time. The above
+  /// clauses can be combined together in a single filter expression with the
+  /// `&&` and `||` operators, like in the following example: `customer ==
+  /// "customers/my_customer" && ( setting.type.matches('^settings/gmail\\..*$')
+  /// || setting.type.matches('^.*\\.service_status$') )`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return. The
-  /// service can return fewer than this number. If omitted or set to 0, the
-  /// default is 50 results per page. The maximum allowed value is 100.
-  /// `page_size` values greater than 100 default to 100.
+  /// service can return fewer than this number. If omitted or set to `0`, the
+  /// default is `50` results per page. The maximum allowed value is `100`.
+  /// `page_size` values greater than `100` default to `100`.
   ///
   /// [pageToken] - Optional. The pagination token received from a prior call to
   /// PoliciesService.ListPolicies to retrieve the next page of results. When
@@ -3478,6 +3728,48 @@ class PoliciesResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Update a policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Policy. Format: policies/{policy}.
+  /// Value must have pattern `^policies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Policy request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 /// The request for creating an IdpCredential with its associated payload.
@@ -3496,6 +3788,39 @@ class AddIdpCredentialRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final pemData = this.pemData;
     return {'pemData': ?pemData};
+  }
+}
+
+/// This resource object defines a domain that has been designated as
+/// allowlisted.
+class AllowlistedDomain {
+  /// Name of the domain that is in the allowlist.
+  ///
+  /// e.g. "google.com"
+  ///
+  /// Required. Immutable.
+  core.String? domain;
+
+  /// Identifier.
+  ///
+  /// Resource name of the domain in the allowlist e.g.
+  /// "allowlistedDomains/0184mhaj1smlusv"
+  ///
+  /// Output only.
+  core.String? name;
+
+  AllowlistedDomain({this.domain, this.name});
+
+  AllowlistedDomain.fromJson(core.Map json_)
+    : this(
+        domain: json_['domain'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final domain = this.domain;
+    final name = this.name;
+    return {'domain': ?domain, 'name': ?name};
   }
 }
 
@@ -5687,6 +6012,42 @@ class IsInvitableUserResponse {
   }
 }
 
+/// Response message for AllowlistedDomainsService.ListAllowlistedDomains.
+class ListAllowlistedDomainsResponse {
+  /// Contains the list of domains in the allowlist.
+  ///
+  /// There is no defined ordering of domains within a result.
+  core.List<AllowlistedDomain>? allowlistedDomains;
+
+  /// Contains the next page token if the result is not exhaustive.
+  ///
+  /// If there are no more results, this token is empty.
+  core.String? nextPageToken;
+
+  ListAllowlistedDomainsResponse({this.allowlistedDomains, this.nextPageToken});
+
+  ListAllowlistedDomainsResponse.fromJson(core.Map json_)
+    : this(
+        allowlistedDomains: (json_['allowlistedDomains'] as core.List?)
+            ?.map(
+              (value) => AllowlistedDomain.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowlistedDomains = this.allowlistedDomains;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'allowlistedDomains': ?allowlistedDomains,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
 /// Response message for ListGroups operation.
 class ListGroupsResponse {
   /// Groups returned in response to list request.
@@ -6152,6 +6513,7 @@ class Membership {
   /// - "GROUP" : Represents group type.
   /// - "SHARED_DRIVE" : Represents Shared drive.
   /// - "CBCM_BROWSER" : Represents a CBCM-managed Chrome Browser type.
+  /// - "CHROME_OS_DEVICE" : Represents a ChromeOS-managed ChromeOS device type.
   /// - "OTHER" : Represents other type.
   core.String? type;
 
@@ -6731,11 +7093,11 @@ class PolicyQuery {
   /// by a clause like so: entity.groups.exists(group, group.group_id ==
   /// groupId('{groupId}')) The Licenses the Policy applies to are represented
   /// by a clause like so: entity.licenses.exists(license, license in
-  /// \['/product/{productId}/sku/{skuId}'\]) The above clauses can be present
-  /// in any combination, and used in conjunction with the &&, || and !
-  /// operators. The org_unit and group fields below are helper fields that
-  /// contain the corresponding value(s) as the query to make the query easier
-  /// to use.
+  /// \['/product/{productId}/sku/{skuId}'\]) **Note:** The licenses clause is
+  /// not supported in mutate endpoints. The above clauses can be present in any
+  /// combination, and used in conjunction with the &&, || and ! operators. The
+  /// org_unit and group fields below are helper fields that contain the
+  /// corresponding value(s) as the query to make the query easier to use.
   ///
   /// Immutable.
   core.String? query;
@@ -7115,8 +7477,6 @@ typedef SendUserInvitationRequest = $Empty;
 /// Setting
 class Setting {
   /// The type of the Setting.
-  ///
-  /// .
   ///
   /// Required. Immutable.
   core.String? type;

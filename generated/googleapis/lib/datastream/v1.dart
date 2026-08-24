@@ -176,7 +176,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -191,9 +191,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1816,6 +1815,11 @@ class BackfillAllStrategy {
   /// PostgreSQL data source objects to avoid backfilling.
   PostgresqlRdbms? postgresqlExcludedObjects;
 
+  /// Source catalog data source objects to avoid backfilling.
+  ///
+  /// This is mainly used to represent SaaS applications objects.
+  SourceCatalog? saasExcludedObjects;
+
   /// Salesforce data source objects to avoid backfilling
   SalesforceOrg? salesforceExcludedObjects;
 
@@ -1830,6 +1834,7 @@ class BackfillAllStrategy {
     this.mysqlExcludedObjects,
     this.oracleExcludedObjects,
     this.postgresqlExcludedObjects,
+    this.saasExcludedObjects,
     this.salesforceExcludedObjects,
     this.spannerExcludedObjects,
     this.sqlServerExcludedObjects,
@@ -1862,6 +1867,12 @@ class BackfillAllStrategy {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        saasExcludedObjects: json_.containsKey('saasExcludedObjects')
+            ? SourceCatalog.fromJson(
+                json_['saasExcludedObjects']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         salesforceExcludedObjects:
             json_.containsKey('salesforceExcludedObjects')
             ? SalesforceOrg.fromJson(
@@ -1888,6 +1899,7 @@ class BackfillAllStrategy {
     final mysqlExcludedObjects = this.mysqlExcludedObjects;
     final oracleExcludedObjects = this.oracleExcludedObjects;
     final postgresqlExcludedObjects = this.postgresqlExcludedObjects;
+    final saasExcludedObjects = this.saasExcludedObjects;
     final salesforceExcludedObjects = this.salesforceExcludedObjects;
     final spannerExcludedObjects = this.spannerExcludedObjects;
     final sqlServerExcludedObjects = this.sqlServerExcludedObjects;
@@ -1896,6 +1908,7 @@ class BackfillAllStrategy {
       'mysqlExcludedObjects': ?mysqlExcludedObjects,
       'oracleExcludedObjects': ?oracleExcludedObjects,
       'postgresqlExcludedObjects': ?postgresqlExcludedObjects,
+      'saasExcludedObjects': ?saasExcludedObjects,
       'salesforceExcludedObjects': ?salesforceExcludedObjects,
       'spannerExcludedObjects': ?spannerExcludedObjects,
       'sqlServerExcludedObjects': ?sqlServerExcludedObjects,
@@ -1909,6 +1922,11 @@ class BackfillJob {
   ///
   /// Output only.
   core.List<Error>? errors;
+
+  /// The filter for performing a partial backfill.
+  ///
+  /// Output only.
+  EventFilter? eventFilter;
 
   /// Backfill job's end time.
   ///
@@ -1949,6 +1967,7 @@ class BackfillJob {
 
   BackfillJob({
     this.errors,
+    this.eventFilter,
     this.lastEndTime,
     this.lastStartTime,
     this.state,
@@ -1963,6 +1982,11 @@ class BackfillJob {
                   Error.fromJson(value as core.Map<core.String, core.dynamic>),
             )
             .toList(),
+        eventFilter: json_.containsKey('eventFilter')
+            ? EventFilter.fromJson(
+                json_['eventFilter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         lastEndTime: json_['lastEndTime'] as core.String?,
         lastStartTime: json_['lastStartTime'] as core.String?,
         state: json_['state'] as core.String?,
@@ -1971,12 +1995,14 @@ class BackfillJob {
 
   core.Map<core.String, core.dynamic> toJson() {
     final errors = this.errors;
+    final eventFilter = this.eventFilter;
     final lastEndTime = this.lastEndTime;
     final lastStartTime = this.lastStartTime;
     final state = this.state;
     final trigger = this.trigger;
     return {
       'errors': ?errors,
+      'eventFilter': ?eventFilter,
       'lastEndTime': ?lastEndTime,
       'lastStartTime': ?lastStartTime,
       'state': ?state,
@@ -2342,6 +2368,9 @@ class ConnectionProfile {
   /// Output only.
   core.String? createTime;
 
+  /// Profile for connecting to a Dataverse source.
+  DataverseProfile? dataverseProfile;
+
   /// Display name.
   ///
   /// Required.
@@ -2378,6 +2407,9 @@ class ConnectionProfile {
   /// Private connectivity.
   PrivateConnectivity? privateConnectivity;
 
+  /// Profile for connecting to a Salesforce Marketing Cloud source.
+  SalesforceMarketingCloudProfile? salesforceMarketingCloudProfile;
+
   /// Profile for connecting to a Salesforce source.
   SalesforceProfile? salesforceProfile;
 
@@ -2390,6 +2422,9 @@ class ConnectionProfile {
   ///
   /// Output only.
   core.bool? satisfiesPzs;
+
+  /// Profile for connecting to a ServiceNow source.
+  ServiceNowProfile? serviceNowProfile;
 
   /// Profile for connecting to a Spanner source.
   SpannerProfile? spannerProfile;
@@ -2405,9 +2440,15 @@ class ConnectionProfile {
   /// Output only.
   core.String? updateTime;
 
+  /// Profile for connecting to a Workday source.
+  ///
+  /// Optional.
+  WorkdayProfile? workdayProfile;
+
   ConnectionProfile({
     this.bigqueryProfile,
     this.createTime,
+    this.dataverseProfile,
     this.displayName,
     this.forwardSshConnectivity,
     this.gcsProfile,
@@ -2418,13 +2459,16 @@ class ConnectionProfile {
     this.oracleProfile,
     this.postgresqlProfile,
     this.privateConnectivity,
+    this.salesforceMarketingCloudProfile,
     this.salesforceProfile,
     this.satisfiesPzi,
     this.satisfiesPzs,
+    this.serviceNowProfile,
     this.spannerProfile,
     this.sqlServerProfile,
     this.staticServiceIpConnectivity,
     this.updateTime,
+    this.workdayProfile,
   });
 
   ConnectionProfile.fromJson(core.Map json_)
@@ -2435,6 +2479,12 @@ class ConnectionProfile {
               )
             : null,
         createTime: json_['createTime'] as core.String?,
+        dataverseProfile: json_.containsKey('dataverseProfile')
+            ? DataverseProfile.fromJson(
+                json_['dataverseProfile']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         displayName: json_['displayName'] as core.String?,
         forwardSshConnectivity: json_.containsKey('forwardSshConnectivity')
             ? ForwardSshTunnelConnectivity.fromJson(
@@ -2478,6 +2528,13 @@ class ConnectionProfile {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        salesforceMarketingCloudProfile:
+            json_.containsKey('salesforceMarketingCloudProfile')
+            ? SalesforceMarketingCloudProfile.fromJson(
+                json_['salesforceMarketingCloudProfile']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         salesforceProfile: json_.containsKey('salesforceProfile')
             ? SalesforceProfile.fromJson(
                 json_['salesforceProfile']
@@ -2486,6 +2543,12 @@ class ConnectionProfile {
             : null,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        serviceNowProfile: json_.containsKey('serviceNowProfile')
+            ? ServiceNowProfile.fromJson(
+                json_['serviceNowProfile']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         spannerProfile: json_.containsKey('spannerProfile')
             ? SpannerProfile.fromJson(
                 json_['spannerProfile'] as core.Map<core.String, core.dynamic>,
@@ -2505,11 +2568,17 @@ class ConnectionProfile {
               )
             : null,
         updateTime: json_['updateTime'] as core.String?,
+        workdayProfile: json_.containsKey('workdayProfile')
+            ? WorkdayProfile.fromJson(
+                json_['workdayProfile'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final bigqueryProfile = this.bigqueryProfile;
     final createTime = this.createTime;
+    final dataverseProfile = this.dataverseProfile;
     final displayName = this.displayName;
     final forwardSshConnectivity = this.forwardSshConnectivity;
     final gcsProfile = this.gcsProfile;
@@ -2520,16 +2589,21 @@ class ConnectionProfile {
     final oracleProfile = this.oracleProfile;
     final postgresqlProfile = this.postgresqlProfile;
     final privateConnectivity = this.privateConnectivity;
+    final salesforceMarketingCloudProfile =
+        this.salesforceMarketingCloudProfile;
     final salesforceProfile = this.salesforceProfile;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
+    final serviceNowProfile = this.serviceNowProfile;
     final spannerProfile = this.spannerProfile;
     final sqlServerProfile = this.sqlServerProfile;
     final staticServiceIpConnectivity = this.staticServiceIpConnectivity;
     final updateTime = this.updateTime;
+    final workdayProfile = this.workdayProfile;
     return {
       'bigqueryProfile': ?bigqueryProfile,
       'createTime': ?createTime,
+      'dataverseProfile': ?dataverseProfile,
       'displayName': ?displayName,
       'forwardSshConnectivity': ?forwardSshConnectivity,
       'gcsProfile': ?gcsProfile,
@@ -2540,13 +2614,16 @@ class ConnectionProfile {
       'oracleProfile': ?oracleProfile,
       'postgresqlProfile': ?postgresqlProfile,
       'privateConnectivity': ?privateConnectivity,
+      'salesforceMarketingCloudProfile': ?salesforceMarketingCloudProfile,
       'salesforceProfile': ?salesforceProfile,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
+      'serviceNowProfile': ?serviceNowProfile,
       'spannerProfile': ?spannerProfile,
       'sqlServerProfile': ?sqlServerProfile,
       'staticServiceIpConnectivity': ?staticServiceIpConnectivity,
       'updateTime': ?updateTime,
+      'workdayProfile': ?workdayProfile,
     };
   }
 }
@@ -2630,6 +2707,108 @@ class DatasetTemplate {
       'datasetIdPrefix': ?datasetIdPrefix,
       'kmsKeyName': ?kmsKeyName,
       'location': ?location,
+    };
+  }
+}
+
+/// Profile for connecting to a Dataverse source.
+class DataverseProfile {
+  /// Environment URL of the Microsoft Dataverse instance.
+  ///
+  /// Example: `.crm.dynamics.com`
+  ///
+  /// Required.
+  core.String? environmentUrl;
+
+  /// Credentials for authenticating with the Dataverse API.
+  ///
+  /// Required.
+  OauthClientCredentials? oauthClientCredentials;
+
+  /// Tenant id of the Microsoft Dataverse instance.
+  ///
+  /// Required.
+  core.String? tenantId;
+
+  DataverseProfile({
+    this.environmentUrl,
+    this.oauthClientCredentials,
+    this.tenantId,
+  });
+
+  DataverseProfile.fromJson(core.Map json_)
+    : this(
+        environmentUrl: json_['environmentUrl'] as core.String?,
+        oauthClientCredentials: json_.containsKey('oauthClientCredentials')
+            ? OauthClientCredentials.fromJson(
+                json_['oauthClientCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tenantId: json_['tenantId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final environmentUrl = this.environmentUrl;
+    final oauthClientCredentials = this.oauthClientCredentials;
+    final tenantId = this.tenantId;
+    return {
+      'environmentUrl': ?environmentUrl,
+      'oauthClientCredentials': ?oauthClientCredentials,
+      'tenantId': ?tenantId,
+    };
+  }
+}
+
+/// Configuration for syncing data from a Dataverse source.
+class DataverseSourceConfig {
+  /// The objects to exclude from the stream.
+  ///
+  /// Optional.
+  SourceCatalog? excludeObjects;
+
+  /// The objects to retrieve from the source.
+  ///
+  /// Optional.
+  SourceCatalog? includeObjects;
+
+  /// Incremental sync polling interval for all objects.
+  ///
+  /// If not set, a default value of `5 minutes` is used. The duration must be
+  /// from `5 minutes` to `24 hours`, inclusive.
+  ///
+  /// Required.
+  core.String? pollingInterval;
+
+  DataverseSourceConfig({
+    this.excludeObjects,
+    this.includeObjects,
+    this.pollingInterval,
+  });
+
+  DataverseSourceConfig.fromJson(core.Map json_)
+    : this(
+        excludeObjects: json_.containsKey('excludeObjects')
+            ? SourceCatalog.fromJson(
+                json_['excludeObjects'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        includeObjects: json_.containsKey('includeObjects')
+            ? SourceCatalog.fromJson(
+                json_['includeObjects'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pollingInterval: json_['pollingInterval'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final excludeObjects = this.excludeObjects;
+    final includeObjects = this.includeObjects;
+    final pollingInterval = this.pollingInterval;
+    return {
+      'excludeObjects': ?excludeObjects,
+      'includeObjects': ?includeObjects,
+      'pollingInterval': ?pollingInterval,
     };
   }
 }
@@ -2735,6 +2914,13 @@ class DiscoverConnectionProfileRequest {
   /// Optional.
   SalesforceOrg? salesforceOrg;
 
+  /// Source catalog to enrich with child data objects and metadata.
+  ///
+  /// This is mainly used to represent SaaS sources databases.
+  ///
+  /// Optional.
+  SourceCatalog? sourceCatalog;
+
   /// Spanner database to enrich with child data objects and metadata.
   ///
   /// Optional.
@@ -2755,6 +2941,7 @@ class DiscoverConnectionProfileRequest {
     this.oracleRdbms,
     this.postgresqlRdbms,
     this.salesforceOrg,
+    this.sourceCatalog,
     this.spannerDatabase,
     this.sqlServerRdbms,
   });
@@ -2795,6 +2982,11 @@ class DiscoverConnectionProfileRequest {
                 json_['salesforceOrg'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        sourceCatalog: json_.containsKey('sourceCatalog')
+            ? SourceCatalog.fromJson(
+                json_['sourceCatalog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         spannerDatabase: json_.containsKey('spannerDatabase')
             ? SpannerDatabase.fromJson(
                 json_['spannerDatabase'] as core.Map<core.String, core.dynamic>,
@@ -2817,6 +3009,7 @@ class DiscoverConnectionProfileRequest {
     final oracleRdbms = this.oracleRdbms;
     final postgresqlRdbms = this.postgresqlRdbms;
     final salesforceOrg = this.salesforceOrg;
+    final sourceCatalog = this.sourceCatalog;
     final spannerDatabase = this.spannerDatabase;
     final sqlServerRdbms = this.sqlServerRdbms;
     return {
@@ -2829,6 +3022,7 @@ class DiscoverConnectionProfileRequest {
       'oracleRdbms': ?oracleRdbms,
       'postgresqlRdbms': ?postgresqlRdbms,
       'salesforceOrg': ?salesforceOrg,
+      'sourceCatalog': ?sourceCatalog,
       'spannerDatabase': ?spannerDatabase,
       'sqlServerRdbms': ?sqlServerRdbms,
     };
@@ -2852,6 +3046,11 @@ class DiscoverConnectionProfileResponse {
   /// Enriched Salesforce organization.
   SalesforceOrg? salesforceOrg;
 
+  /// Enriched source catalog.
+  ///
+  /// This is mainly used to represent SaaS sources databases.
+  SourceCatalog? sourceCatalog;
+
   /// Enriched Spanner database.
   SpannerDatabase? spannerDatabase;
 
@@ -2864,6 +3063,7 @@ class DiscoverConnectionProfileResponse {
     this.oracleRdbms,
     this.postgresqlRdbms,
     this.salesforceOrg,
+    this.sourceCatalog,
     this.spannerDatabase,
     this.sqlServerRdbms,
   });
@@ -2895,6 +3095,11 @@ class DiscoverConnectionProfileResponse {
                 json_['salesforceOrg'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        sourceCatalog: json_.containsKey('sourceCatalog')
+            ? SourceCatalog.fromJson(
+                json_['sourceCatalog'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         spannerDatabase: json_.containsKey('spannerDatabase')
             ? SpannerDatabase.fromJson(
                 json_['spannerDatabase'] as core.Map<core.String, core.dynamic>,
@@ -2913,6 +3118,7 @@ class DiscoverConnectionProfileResponse {
     final oracleRdbms = this.oracleRdbms;
     final postgresqlRdbms = this.postgresqlRdbms;
     final salesforceOrg = this.salesforceOrg;
+    final sourceCatalog = this.sourceCatalog;
     final spannerDatabase = this.spannerDatabase;
     final sqlServerRdbms = this.sqlServerRdbms;
     return {
@@ -2921,6 +3127,7 @@ class DiscoverConnectionProfileResponse {
       'oracleRdbms': ?oracleRdbms,
       'postgresqlRdbms': ?postgresqlRdbms,
       'salesforceOrg': ?salesforceOrg,
+      'sourceCatalog': ?sourceCatalog,
       'spannerDatabase': ?spannerDatabase,
       'sqlServerRdbms': ?sqlServerRdbms,
     };
@@ -4608,6 +4815,79 @@ class Oauth2ClientCredentials {
   }
 }
 
+/// OAuth Client Credentials.
+class OauthClientCredentials {
+  /// Client ID for OAuth Client Credentials.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  /// Client secret for OAuth Client Credentials.
+  ///
+  /// Required.
+  Secret? clientSecret;
+
+  OauthClientCredentials({this.clientId, this.clientSecret});
+
+  OauthClientCredentials.fromJson(core.Map json_)
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_.containsKey('clientSecret')
+            ? Secret.fromJson(
+                json_['clientSecret'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientId = this.clientId;
+    final clientSecret = this.clientSecret;
+    return {'clientId': ?clientId, 'clientSecret': ?clientSecret};
+  }
+}
+
+/// OAuth Refresh Token Credentials.
+class OauthRefreshTokenCredentials {
+  /// Specifies the OAuth Client Credentials.
+  ///
+  /// Required.
+  OauthClientCredentials? oauthClientCredentials;
+
+  /// Specifies the OAuth Refresh Token.
+  ///
+  /// Required.
+  Secret? refreshToken;
+
+  OauthRefreshTokenCredentials({
+    this.oauthClientCredentials,
+    this.refreshToken,
+  });
+
+  OauthRefreshTokenCredentials.fromJson(core.Map json_)
+    : this(
+        oauthClientCredentials: json_.containsKey('oauthClientCredentials')
+            ? OauthClientCredentials.fromJson(
+                json_['oauthClientCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        refreshToken: json_.containsKey('refreshToken')
+            ? Secret.fromJson(
+                json_['refreshToken'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final oauthClientCredentials = this.oauthClientCredentials;
+    final refreshToken = this.refreshToken;
+    return {
+      'oauthClientCredentials': ?oauthClientCredentials,
+      'refreshToken': ?refreshToken,
+    };
+  }
+}
+
 /// Object filter to apply the rules to.
 class ObjectFilter {
   /// Specific source object identifier.
@@ -5980,6 +6260,119 @@ class SalesforceField {
   }
 }
 
+/// Profile for connecting to a Salesforce Marketing Cloud source.
+class SalesforceMarketingCloudProfile {
+  /// Input only.
+  ///
+  /// Credentials for authenticating with the Salesforce Marketing Cloud API.
+  ///
+  /// Required.
+  OauthClientCredentials? oauthClientCredentials;
+
+  /// Subdomain for the Salesforce Marketing Cloud connection.
+  ///
+  /// Example: if your specific endpoint is
+  /// `https://{your-specific-subdomain}.rest.marketingcloudapis.com/`, the
+  /// subdomain is `{your-specific-subdomain}`. Must be 1-63 characters, start
+  /// and end with an alphanumeric character, and contain only lowercase
+  /// letters, numbers, and hyphens (-).
+  ///
+  /// Required.
+  core.String? subdomain;
+
+  SalesforceMarketingCloudProfile({
+    this.oauthClientCredentials,
+    this.subdomain,
+  });
+
+  SalesforceMarketingCloudProfile.fromJson(core.Map json_)
+    : this(
+        oauthClientCredentials: json_.containsKey('oauthClientCredentials')
+            ? OauthClientCredentials.fromJson(
+                json_['oauthClientCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        subdomain: json_['subdomain'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final oauthClientCredentials = this.oauthClientCredentials;
+    final subdomain = this.subdomain;
+    return {
+      'oauthClientCredentials': ?oauthClientCredentials,
+      'subdomain': ?subdomain,
+    };
+  }
+}
+
+/// Configuration for syncing data from a Salesforce Marketing Cloud source.
+class SalesforceMarketingCloudSourceConfig {
+  /// The objects to exclude from the stream.
+  ///
+  /// Optional.
+  SourceCatalog? excludeObjects;
+
+  /// Specifies the polling interval for a full refresh of objects that do not
+  /// support incremental sync.
+  ///
+  /// If not set, a default value of 24 hours is used. The duration must be
+  /// between 1 and 24 hours, inclusive.
+  ///
+  /// Required.
+  core.String? fullRefreshPollingInterval;
+
+  /// The objects to retrieve from the source.
+  ///
+  /// Optional.
+  SourceCatalog? includeObjects;
+
+  /// Incremental sync polling interval for all objects.
+  ///
+  /// If not set, a default value of `5 minutes` is used. The duration must be
+  /// from `5 minutes` to `24 hours`, inclusive.
+  ///
+  /// Required.
+  core.String? pollingInterval;
+
+  SalesforceMarketingCloudSourceConfig({
+    this.excludeObjects,
+    this.fullRefreshPollingInterval,
+    this.includeObjects,
+    this.pollingInterval,
+  });
+
+  SalesforceMarketingCloudSourceConfig.fromJson(core.Map json_)
+    : this(
+        excludeObjects: json_.containsKey('excludeObjects')
+            ? SourceCatalog.fromJson(
+                json_['excludeObjects'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fullRefreshPollingInterval:
+            json_['fullRefreshPollingInterval'] as core.String?,
+        includeObjects: json_.containsKey('includeObjects')
+            ? SourceCatalog.fromJson(
+                json_['includeObjects'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pollingInterval: json_['pollingInterval'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final excludeObjects = this.excludeObjects;
+    final fullRefreshPollingInterval = this.fullRefreshPollingInterval;
+    final includeObjects = this.includeObjects;
+    final pollingInterval = this.pollingInterval;
+    return {
+      'excludeObjects': ?excludeObjects,
+      'fullRefreshPollingInterval': ?fullRefreshPollingInterval,
+      'includeObjects': ?includeObjects,
+      'pollingInterval': ?pollingInterval,
+    };
+  }
+}
+
 /// Salesforce object.
 class SalesforceObject {
   /// Salesforce fields.
@@ -6064,7 +6457,12 @@ class SalesforceProfile {
   /// Connected app authentication.
   Oauth2ClientCredentials? oauth2ClientCredentials;
 
-  /// User-password authentication.
+  /// Deprecated: Salesforce is retiring Username-Password authentication.
+  ///
+  /// Use `oauth2_client_credentials` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   UserCredentials? userCredentials;
 
   SalesforceProfile({
@@ -6147,6 +6545,41 @@ class SalesforceSourceConfig {
       'includeObjects': ?includeObjects,
       'pollingInterval': ?pollingInterval,
     };
+  }
+}
+
+/// A confidential piece of information where the actual value is either
+/// directly specified in the message as a raw string or stored in GCP secret
+/// manager.
+class Secret {
+  /// Input only.
+  ///
+  /// The actual raw value of the secret as plain text.
+  ///
+  /// Optional.
+  core.String? rawValue;
+
+  /// A Secret Manager resource name storing the actual value of the secret.
+  ///
+  /// Supported formats: *
+  /// projects/{project}/locations/{location}/secrets/{secret}/versions/{version}
+  /// * projects/{project}/secrets/{secret}/versions/{version}
+  ///
+  /// Optional.
+  core.String? secretVersion;
+
+  Secret({this.rawValue, this.secretVersion});
+
+  Secret.fromJson(core.Map json_)
+    : this(
+        rawValue: json_['rawValue'] as core.String?,
+        secretVersion: json_['secretVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final rawValue = this.rawValue;
+    final secretVersion = this.secretVersion;
+    return {'rawValue': ?rawValue, 'secretVersion': ?secretVersion};
   }
 }
 
@@ -6262,6 +6695,109 @@ class ServerVerification {
   }
 }
 
+/// Profile for connecting to a ServiceNow source.
+class ServiceNowProfile {
+  /// The instance of the ServiceNow account.
+  ///
+  /// This is the `` part of the URL `https://.service-now.com`.
+  ///
+  /// Required.
+  core.String? instance;
+
+  /// Credentials for authenticating with the ServiceNow API.
+  OauthClientCredentials? oauthClientCredentials;
+
+  /// User-password authentication.
+  UserPasswordCredentials? userPasswordCredentials;
+
+  ServiceNowProfile({
+    this.instance,
+    this.oauthClientCredentials,
+    this.userPasswordCredentials,
+  });
+
+  ServiceNowProfile.fromJson(core.Map json_)
+    : this(
+        instance: json_['instance'] as core.String?,
+        oauthClientCredentials: json_.containsKey('oauthClientCredentials')
+            ? OauthClientCredentials.fromJson(
+                json_['oauthClientCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userPasswordCredentials: json_.containsKey('userPasswordCredentials')
+            ? UserPasswordCredentials.fromJson(
+                json_['userPasswordCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final instance = this.instance;
+    final oauthClientCredentials = this.oauthClientCredentials;
+    final userPasswordCredentials = this.userPasswordCredentials;
+    return {
+      'instance': ?instance,
+      'oauthClientCredentials': ?oauthClientCredentials,
+      'userPasswordCredentials': ?userPasswordCredentials,
+    };
+  }
+}
+
+/// Configuration for syncing data from a ServiceNow source.
+class ServiceNowSourceConfig {
+  /// The objects to exclude from the stream.
+  ///
+  /// Optional.
+  SourceCatalog? excludeObjects;
+
+  /// The objects to retrieve from the source.
+  ///
+  /// Optional.
+  SourceCatalog? includeObjects;
+
+  /// Incremental sync polling interval for all objects.
+  ///
+  /// If not set, a default value of `5 minutes` is used. The duration must be
+  /// from `5 minutes` to `24 hours`, inclusive.
+  ///
+  /// Required.
+  core.String? pollingInterval;
+
+  ServiceNowSourceConfig({
+    this.excludeObjects,
+    this.includeObjects,
+    this.pollingInterval,
+  });
+
+  ServiceNowSourceConfig.fromJson(core.Map json_)
+    : this(
+        excludeObjects: json_.containsKey('excludeObjects')
+            ? SourceCatalog.fromJson(
+                json_['excludeObjects'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        includeObjects: json_.containsKey('includeObjects')
+            ? SourceCatalog.fromJson(
+                json_['includeObjects'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pollingInterval: json_['pollingInterval'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final excludeObjects = this.excludeObjects;
+    final includeObjects = this.includeObjects;
+    final pollingInterval = this.pollingInterval;
+    return {
+      'excludeObjects': ?excludeObjects,
+      'includeObjects': ?includeObjects,
+      'pollingInterval': ?pollingInterval,
+    };
+  }
+}
+
 /// A single target dataset to which all data will be streamed.
 class SingleTargetDataset {
   /// The dataset ID of the target dataset.
@@ -6281,8 +6817,37 @@ class SingleTargetDataset {
   }
 }
 
+/// Source catalog.
+class SourceCatalog {
+  /// Source objects in the catalog.
+  ///
+  /// Optional.
+  core.List<SourceObject>? objects;
+
+  SourceCatalog({this.objects});
+
+  SourceCatalog.fromJson(core.Map json_)
+    : this(
+        objects: (json_['objects'] as core.List?)
+            ?.map(
+              (value) => SourceObject.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final objects = this.objects;
+    return {'objects': ?objects};
+  }
+}
+
 /// The configuration of the stream source.
 class SourceConfig {
+  /// Dataverse data source configuration.
+  DataverseSourceConfig? dataverseSourceConfig;
+
   /// MongoDB data source configuration.
   MongodbSourceConfig? mongodbSourceConfig;
 
@@ -6295,8 +6860,14 @@ class SourceConfig {
   /// PostgreSQL data source configuration.
   PostgresqlSourceConfig? postgresqlSourceConfig;
 
+  /// Salesforce Marketing Cloud data source configuration.
+  SalesforceMarketingCloudSourceConfig? salesforceMarketingCloudSourceConfig;
+
   /// Salesforce data source configuration.
   SalesforceSourceConfig? salesforceSourceConfig;
+
+  /// ServiceNow data source configuration.
+  ServiceNowSourceConfig? serviceNowSourceConfig;
 
   /// Source connection profile resource.
   ///
@@ -6312,19 +6883,34 @@ class SourceConfig {
   /// SQLServer data source configuration.
   SqlServerSourceConfig? sqlServerSourceConfig;
 
+  /// Workday data source configuration.
+  ///
+  /// Optional.
+  WorkdaySourceConfig? workdaySourceConfig;
+
   SourceConfig({
+    this.dataverseSourceConfig,
     this.mongodbSourceConfig,
     this.mysqlSourceConfig,
     this.oracleSourceConfig,
     this.postgresqlSourceConfig,
+    this.salesforceMarketingCloudSourceConfig,
     this.salesforceSourceConfig,
+    this.serviceNowSourceConfig,
     this.sourceConnectionProfile,
     this.spannerSourceConfig,
     this.sqlServerSourceConfig,
+    this.workdaySourceConfig,
   });
 
   SourceConfig.fromJson(core.Map json_)
     : this(
+        dataverseSourceConfig: json_.containsKey('dataverseSourceConfig')
+            ? DataverseSourceConfig.fromJson(
+                json_['dataverseSourceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         mongodbSourceConfig: json_.containsKey('mongodbSourceConfig')
             ? MongodbSourceConfig.fromJson(
                 json_['mongodbSourceConfig']
@@ -6349,9 +6935,22 @@ class SourceConfig {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        salesforceMarketingCloudSourceConfig:
+            json_.containsKey('salesforceMarketingCloudSourceConfig')
+            ? SalesforceMarketingCloudSourceConfig.fromJson(
+                json_['salesforceMarketingCloudSourceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         salesforceSourceConfig: json_.containsKey('salesforceSourceConfig')
             ? SalesforceSourceConfig.fromJson(
                 json_['salesforceSourceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceNowSourceConfig: json_.containsKey('serviceNowSourceConfig')
+            ? ServiceNowSourceConfig.fromJson(
+                json_['serviceNowSourceConfig']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -6369,26 +6968,42 @@ class SourceConfig {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        workdaySourceConfig: json_.containsKey('workdaySourceConfig')
+            ? WorkdaySourceConfig.fromJson(
+                json_['workdaySourceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final dataverseSourceConfig = this.dataverseSourceConfig;
     final mongodbSourceConfig = this.mongodbSourceConfig;
     final mysqlSourceConfig = this.mysqlSourceConfig;
     final oracleSourceConfig = this.oracleSourceConfig;
     final postgresqlSourceConfig = this.postgresqlSourceConfig;
+    final salesforceMarketingCloudSourceConfig =
+        this.salesforceMarketingCloudSourceConfig;
     final salesforceSourceConfig = this.salesforceSourceConfig;
+    final serviceNowSourceConfig = this.serviceNowSourceConfig;
     final sourceConnectionProfile = this.sourceConnectionProfile;
     final spannerSourceConfig = this.spannerSourceConfig;
     final sqlServerSourceConfig = this.sqlServerSourceConfig;
+    final workdaySourceConfig = this.workdaySourceConfig;
     return {
+      'dataverseSourceConfig': ?dataverseSourceConfig,
       'mongodbSourceConfig': ?mongodbSourceConfig,
       'mysqlSourceConfig': ?mysqlSourceConfig,
       'oracleSourceConfig': ?oracleSourceConfig,
       'postgresqlSourceConfig': ?postgresqlSourceConfig,
+      'salesforceMarketingCloudSourceConfig':
+          ?salesforceMarketingCloudSourceConfig,
       'salesforceSourceConfig': ?salesforceSourceConfig,
+      'serviceNowSourceConfig': ?serviceNowSourceConfig,
       'sourceConnectionProfile': ?sourceConnectionProfile,
       'spannerSourceConfig': ?spannerSourceConfig,
       'sqlServerSourceConfig': ?sqlServerSourceConfig,
+      'workdaySourceConfig': ?workdaySourceConfig,
     };
   }
 }
@@ -6422,6 +7037,42 @@ class SourceHierarchyDatasets {
     final datasetTemplate = this.datasetTemplate;
     final projectId = this.projectId;
     return {'datasetTemplate': ?datasetTemplate, 'projectId': ?projectId};
+  }
+}
+
+/// Source object.
+class SourceObject {
+  /// The object name.
+  ///
+  /// Required.
+  core.String? objectName;
+
+  /// Source properties.
+  ///
+  /// When unspecified as part of include objects, includes everything, when
+  /// unspecified as part of exclude objects, excludes nothing.
+  ///
+  /// Optional.
+  core.List<SourceProperty>? properties;
+
+  SourceObject({this.objectName, this.properties});
+
+  SourceObject.fromJson(core.Map json_)
+    : this(
+        objectName: json_['objectName'] as core.String?,
+        properties: (json_['properties'] as core.List?)
+            ?.map(
+              (value) => SourceProperty.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final objectName = this.objectName;
+    final properties = this.properties;
+    return {'objectName': ?objectName, 'properties': ?properties};
   }
 }
 
@@ -6520,6 +7171,76 @@ class SourceObjectIdentifier {
       'spannerIdentifier': ?spannerIdentifier,
       'sqlServerIdentifier': ?sqlServerIdentifier,
     };
+  }
+}
+
+/// Source property.
+class SourceProperty {
+  /// Whether or not the property is a primary key.
+  ///
+  /// Optional.
+  core.bool? primaryKey;
+
+  /// Source properties.
+  ///
+  /// When specified, it means that the current property contains nested
+  /// properties of its own. When unspecified as part of include objects,
+  /// includes everything, when unspecified as part of exclude objects, excludes
+  /// nothing.
+  ///
+  /// Optional.
+  core.List<SourceProperty>? properties;
+
+  /// The property name.
+  ///
+  /// Required.
+  core.String? propertyName;
+
+  SourceProperty({this.primaryKey, this.properties, this.propertyName});
+
+  SourceProperty.fromJson(core.Map json_)
+    : this(
+        primaryKey: json_['primaryKey'] as core.bool?,
+        properties: (json_['properties'] as core.List?)
+            ?.map(
+              (value) => SourceProperty.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        propertyName: json_['propertyName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final primaryKey = this.primaryKey;
+    final properties = this.properties;
+    final propertyName = this.propertyName;
+    return {
+      'primaryKey': ?primaryKey,
+      'properties': ?properties,
+      'propertyName': ?propertyName,
+    };
+  }
+}
+
+/// Represents a position in a Spanner change stream from which to start
+/// replicating.
+class SpannerChangeStreamPosition {
+  /// The timestamp to start change stream queries from.
+  ///
+  /// The timestamp must be a positive value.
+  ///
+  /// Required.
+  core.String? startTime;
+
+  SpannerChangeStreamPosition({this.startTime});
+
+  SpannerChangeStreamPosition.fromJson(core.Map json_)
+    : this(startTime: json_['startTime'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final startTime = this.startTime;
+    return {'startTime': ?startTime};
   }
 }
 
@@ -6848,6 +7569,11 @@ class SpecificStartPosition {
   /// Oracle SCN to start replicating from.
   OracleScnPosition? oracleScnPosition;
 
+  /// Spanner change stream position to start replicating from.
+  ///
+  /// Optional.
+  SpannerChangeStreamPosition? spannerChangeStreamPosition;
+
   /// SqlServer LSN to start replicating from.
   SqlServerLsnPosition? sqlServerLsnPosition;
 
@@ -6856,6 +7582,7 @@ class SpecificStartPosition {
     this.mysqlGtidPosition,
     this.mysqlLogPosition,
     this.oracleScnPosition,
+    this.spannerChangeStreamPosition,
     this.sqlServerLsnPosition,
   });
 
@@ -6886,6 +7613,13 @@ class SpecificStartPosition {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        spannerChangeStreamPosition:
+            json_.containsKey('spannerChangeStreamPosition')
+            ? SpannerChangeStreamPosition.fromJson(
+                json_['spannerChangeStreamPosition']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sqlServerLsnPosition: json_.containsKey('sqlServerLsnPosition')
             ? SqlServerLsnPosition.fromJson(
                 json_['sqlServerLsnPosition']
@@ -6899,12 +7633,14 @@ class SpecificStartPosition {
     final mysqlGtidPosition = this.mysqlGtidPosition;
     final mysqlLogPosition = this.mysqlLogPosition;
     final oracleScnPosition = this.oracleScnPosition;
+    final spannerChangeStreamPosition = this.spannerChangeStreamPosition;
     final sqlServerLsnPosition = this.sqlServerLsnPosition;
     return {
       'mongodbChangeStreamPosition': ?mongodbChangeStreamPosition,
       'mysqlGtidPosition': ?mysqlGtidPosition,
       'mysqlLogPosition': ?mysqlLogPosition,
       'oracleScnPosition': ?oracleScnPosition,
+      'spannerChangeStreamPosition': ?spannerChangeStreamPosition,
       'sqlServerLsnPosition': ?sqlServerLsnPosition,
     };
   }
@@ -7346,7 +8082,7 @@ class StartBackfillJobRequest {
   ///
   /// If not set, or empty, the backfill will be performed on the entire object.
   /// This is currently used for partial backfill and only supported for SQL
-  /// Server sources.
+  /// sources.
   ///
   /// Optional.
   EventFilter? eventFilter;
@@ -7791,7 +8527,9 @@ class TimeUnitPartition {
   }
 }
 
-/// Username-password credentials.
+/// Deprecated: Salesforce is retiring Username-Password authentication.
+///
+/// Use `Oauth2ClientCredentials` instead.
 class UserCredentials {
   /// Password for the Salesforce connection.
   ///
@@ -7864,6 +8602,37 @@ class UserCredentials {
   }
 }
 
+/// User-password credentials.
+class UserPasswordCredentials {
+  /// Password for the connection.
+  ///
+  /// Required.
+  Secret? password;
+
+  /// Username for the connection.
+  ///
+  /// Required.
+  core.String? username;
+
+  UserPasswordCredentials({this.password, this.username});
+
+  UserPasswordCredentials.fromJson(core.Map json_)
+    : this(
+        password: json_.containsKey('password')
+            ? Secret.fromJson(
+                json_['password'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final password = this.password;
+    final username = this.username;
+    return {'password': ?password, 'username': ?username};
+  }
+}
+
 /// The VPC Peering configuration is used to create VPC peering between
 /// Datastream and the consumer's VPC.
 class VpcPeeringConfig {
@@ -7893,5 +8662,106 @@ class VpcPeeringConfig {
     final subnet = this.subnet;
     final vpc = this.vpc;
     return {'subnet': ?subnet, 'vpc': ?vpc};
+  }
+}
+
+/// Profile for connecting to a Workday source.
+class WorkdayProfile {
+  /// Host for the Workday connection.
+  ///
+  /// Must be a valid hostname (e.g., `wd3-impl-services1.workday.com`).
+  ///
+  /// Required.
+  core.String? host;
+
+  /// Credentials for authenticating with the Workday API.
+  ///
+  /// OAuth Refresh Token credentials for authenticating with the Workday API.
+  ///
+  /// Required.
+  OauthRefreshTokenCredentials? oauthRefreshTokenCredentials;
+
+  /// Tenant for the Workday connection (e.g., `google12`).
+  ///
+  /// Required.
+  core.String? tenant;
+
+  WorkdayProfile({this.host, this.oauthRefreshTokenCredentials, this.tenant});
+
+  WorkdayProfile.fromJson(core.Map json_)
+    : this(
+        host: json_['host'] as core.String?,
+        oauthRefreshTokenCredentials:
+            json_.containsKey('oauthRefreshTokenCredentials')
+            ? OauthRefreshTokenCredentials.fromJson(
+                json_['oauthRefreshTokenCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tenant: json_['tenant'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final host = this.host;
+    final oauthRefreshTokenCredentials = this.oauthRefreshTokenCredentials;
+    final tenant = this.tenant;
+    return {
+      'host': ?host,
+      'oauthRefreshTokenCredentials': ?oauthRefreshTokenCredentials,
+      'tenant': ?tenant,
+    };
+  }
+}
+
+/// Configuration for syncing data from a Workday source.
+class WorkdaySourceConfig {
+  /// The objects to exclude from the stream.
+  ///
+  /// Optional.
+  SourceCatalog? excludeObjects;
+
+  /// The objects to retrieve from the source.
+  ///
+  /// Optional.
+  SourceCatalog? includeObjects;
+
+  /// Incremental sync polling interval for all objects.
+  ///
+  /// If not set, a default value of `5 minutes` is used. The duration must be
+  /// from `5 minutes` to `24 hours`, inclusive.
+  ///
+  /// Required.
+  core.String? pollingInterval;
+
+  WorkdaySourceConfig({
+    this.excludeObjects,
+    this.includeObjects,
+    this.pollingInterval,
+  });
+
+  WorkdaySourceConfig.fromJson(core.Map json_)
+    : this(
+        excludeObjects: json_.containsKey('excludeObjects')
+            ? SourceCatalog.fromJson(
+                json_['excludeObjects'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        includeObjects: json_.containsKey('includeObjects')
+            ? SourceCatalog.fromJson(
+                json_['includeObjects'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        pollingInterval: json_['pollingInterval'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final excludeObjects = this.excludeObjects;
+    final includeObjects = this.includeObjects;
+    final pollingInterval = this.pollingInterval;
+    return {
+      'excludeObjects': ?excludeObjects,
+      'includeObjects': ?includeObjects,
+      'pollingInterval': ?pollingInterval,
+    };
   }
 }

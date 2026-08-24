@@ -153,6 +153,86 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.asia-northeast1.rep.googleapis.com/",
+            "location": "asia-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.asia-southeast1.rep.googleapis.com/",
+            "location": "asia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.australia-southeast1.rep.googleapis.com/",
+            "location": "australia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-central2.rep.googleapis.com/",
+            "location": "europe-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-north1.rep.googleapis.com/",
+            "location": "europe-north1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-southwest1.rep.googleapis.com/",
+            "location": "europe-southwest1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-west10.rep.googleapis.com/",
+            "location": "europe-west10"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-west12.rep.googleapis.com/",
+            "location": "europe-west12"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-west2.rep.googleapis.com/",
+            "location": "europe-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.europe-west9.rep.googleapis.com/",
+            "location": "europe-west9"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.me-central2.rep.googleapis.com/",
+            "location": "me-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.me-west1.rep.googleapis.com/",
+            "location": "me-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.northamerica-northeast1.rep.googleapis.com/",
+            "location": "northamerica-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.southamerica-east1.rep.googleapis.com/",
+            "location": "southamerica-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.us-east4.rep.googleapis.com/",
+            "location": "us-east4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://observability.us-west4.rep.googleapis.com/",
+            "location": "us-west4"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://observability.us.rep.googleapis.com/",
             "location": "us"
         },
@@ -172,7 +252,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260409",
+    "revision": "20260817",
     "rootUrl": "https://observability.googleapis.com/",
     "servicePath": "",
     "title": "Observability API",
@@ -311,7 +391,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/folders/{foldersId}/locations",
                             "httpMethod": "GET",
                             "id": "observability.folders.locations.list",
@@ -320,7 +400,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -580,7 +660,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/organizations/{organizationsId}/locations",
                             "httpMethod": "GET",
                             "id": "observability.organizations.locations.list",
@@ -589,7 +669,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -849,7 +929,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "observability.projects.locations.list",
@@ -858,7 +938,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -933,6 +1013,39 @@
                     "resources": {
                         "buckets": {
                             "methods": {
+                                "create": {
+                                    "description": "Create a new bucket.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets",
+                                    "httpMethod": "POST",
+                                    "id": "observability.projects.locations.buckets.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "bucketId": {
+                                            "description": "Required. Id of the bucket to create.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. Name of the project and location for the bucket. The format is: projects/[PROJECT_ID]/locations/[LOCATION]",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/buckets",
+                                    "request": {
+                                        "$ref": "Bucket"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "get": {
                                     "description": "Get bucket resource.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}",
@@ -994,6 +1107,40 @@
                                     "path": "v1/{+parent}/buckets",
                                     "response": {
                                         "$ref": "ListBucketsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Update a bucket.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "observability.projects.locations.buckets.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Identifier. Name of the bucket. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "Optional. The list of fields to update.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "Bucket"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"

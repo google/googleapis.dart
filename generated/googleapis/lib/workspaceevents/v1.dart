@@ -50,6 +50,30 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Google Workspace Events API lets you subscribe to events and manage
 /// change notifications across Google Workspace applications.
 class WorkspaceEventsApi {
+  /// On their own behalf, apps in Google Chat can see all members in Google
+  /// Chat spaces and conversations throughout your Workspace organization, even
+  /// when the Chat app isn't a member
+  static const chatAppAllMembershipsReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.all.memberships.readonly';
+
+  /// On their own behalf, apps in Google Chat can see all messages and
+  /// reactions throughout your Workspace organization, even when the Chat app
+  /// isn't a member of a space or conversation
+  static const chatAppAllMessagesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.all.messages.readonly';
+
+  /// On their own behalf, apps in Google Chat can see metadata about all spaces
+  /// and conversations in Google Chat throughout your Workspace organization,
+  /// even when the Chat app isn't a member
+  static const chatAppAllSpacesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.all.spaces.readonly';
+
+  /// On their own behalf, apps in Google Chat can see the last read time for
+  /// all users in all spaces and conversations throughout your Workspace
+  /// organization, even when the Chat app isn't a member.
+  static const chatAppAllUsersReadstateReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.all.users.readstate.readonly';
+
   /// On their own behalf, apps in Google Chat can see, add, update, and remove
   /// members from conversations and spaces
   static const chatAppMembershipsScope =
@@ -114,6 +138,14 @@ class WorkspaceEventsApi {
   /// View chat and spaces in Google Chat
   static const chatSpacesReadonlyScope =
       'https://www.googleapis.com/auth/chat.spaces.readonly';
+
+  /// See and change your availability status in Google Chat.
+  static const chatUsersAvailabilityScope =
+      'https://www.googleapis.com/auth/chat.users.availability';
+
+  /// See your availability status in Google Chat.
+  static const chatUsersAvailabilityReadonlyScope =
+      'https://www.googleapis.com/auth/chat.users.availability.readonly';
 
   /// View and modify last read time for Google Chat conversations
   static const chatUsersReadstateScope =
@@ -267,10 +299,16 @@ class SubscriptionsResource {
   /// [Create a Google Workspace subscription](https://developers.google.com/workspace/events/guides/create-subscription).
   /// For a subscription on a
   /// [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
-  /// you can create a subscription as: - A Chat app by specifying an
-  /// authorization scope that begins with `chat.app` and getting one-time
-  /// administrator approval. To learn more, see
+  /// you can create a subscription as: - A Chat app subscribing to space events
+  /// where the app is a member by specifying an authorization scope that begins
+  /// with `chat.app` and getting one-time administrator approval. To learn
+  /// more, see
   /// [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  /// - [Developer Preview](https://developers.google.com/workspace/preview): A
+  /// Chat app subscribing to all events in a Google Workspace organization by
+  /// specifying an authorization scope that begins with `chat.app.all` and
+  /// obtaining one-time administrator approval. To learn more, see
+  /// [Subscribe to all Google Chat events in a Workspace organization ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription).
   /// - A user by specifying an authorization scope that doesn't include `app`
   /// in its name. To learn more, see
   /// [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
@@ -430,8 +468,12 @@ class SubscriptionsResource {
   /// target_resource="//chat.googleapis.com/spaces/{space}" (
   /// event_types:"google.workspace.chat.membership.v1.updated" OR
   /// event_types:"google.workspace.chat.message.v1.created" ) AND
-  /// target_resource="//chat.googleapis.com/spaces/{space}" ``` The server
-  /// rejects invalid queries with an `INVALID_ARGUMENT` error.
+  /// target_resource="//chat.googleapis.com/spaces/{space}" ``` The following
+  /// query is available in
+  /// [Developer Preview](https://developers.google.com/workspace/preview): ```
+  /// event_types:"google.workspace.chat.message.v1.created" AND
+  /// target_resource="//admin.googleapis.com/customers/my_customer" ``` The
+  /// server rejects invalid queries with an `INVALID_ARGUMENT` error.
   ///
   /// [pageSize] - Optional. The maximum number of subscriptions to return. The
   /// service might return fewer than this value. If unspecified or set to `0`,
@@ -485,10 +527,16 @@ class SubscriptionsResource {
   /// [Update or renew a Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription).
   /// For a subscription on a
   /// [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
-  /// you can update a subscription as: - A Chat app by specifying an
-  /// authorization scope that begins with `chat.app` and getting one-time
-  /// administrator approval. To learn more, see
+  /// you can update a subscription as: - A Chat app subscribing to space events
+  /// where the app is a member by specifying an authorization scope that begins
+  /// with `chat.app` and getting one-time administrator approval. To learn
+  /// more, see
   /// [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  /// - [Developer Preview](https://developers.google.com/workspace/preview): A
+  /// Chat app subscribing to all events in a Google Workspace organization by
+  /// specifying an authorization scope that begins with `chat.app.all` and
+  /// getting one-time administrator approval. To learn more, see
+  /// [Subscribe to all Google Chat events in a Workspace organization ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription).
   /// - A user by specifying an authorization scope that doesn't include `app`
   /// in its name. To learn more, see
   /// [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
@@ -556,10 +604,16 @@ class SubscriptionsResource {
   /// [Reactivate a Google Workspace subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription).
   /// For a subscription on a
   /// [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
-  /// you can reactivate a subscription as: - A Chat app by specifying an
-  /// authorization scope that begins with `chat.app` and getting one-time
-  /// administrator approval. To learn more, see
+  /// you can reactivate a subscription as: - A Chat app subscribing to space
+  /// events where the app is a member by specifying an authorization scope that
+  /// begins with `chat.app` and getting one-time administrator approval. To
+  /// learn more, see
   /// [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  /// - [Developer Preview](https://developers.google.com/workspace/preview): A
+  /// Chat app subscribing to all events in a Google Workspace organization by
+  /// specifying an authorization scope that begins with `chat.app.all` and
+  /// getting one-time administrator approval. To learn more, see
+  /// [Subscribe to all Google Chat events in a Workspace organization ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription).
   /// - A user by specifying an authorization scope that doesn't include `app`
   /// in its name. To learn more, see
   /// [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
@@ -1086,6 +1140,32 @@ class DataPart {
   core.Map<core.String, core.dynamic> toJson() {
     final data = this.data;
     return {'data': ?data};
+  }
+}
+
+/// Additional supported options for serving Drive events.
+class DriveOptions {
+  /// For subscriptions to Google Drive events, whether to receive events about
+  /// Drive files that are children of the target folder or shared drive.
+  ///
+  /// This field must be `true` for subscriptions on shared drives. * If
+  /// `false`, the subscription only receives events about changes to the folder
+  /// or shared drive that's specified as the `targetResource`. * If `true`, the
+  /// `mimeType` field of the `file` resource must be set to
+  /// `application/vnd.google-apps.folder`. For details, see
+  /// [Google Drive event types](https://developers.google.com/workspace/events/guides/events-drive#event-types).
+  ///
+  /// Optional. Immutable.
+  core.bool? includeDescendants;
+
+  DriveOptions({this.includeDescendants});
+
+  DriveOptions.fromJson(core.Map json_)
+    : this(includeDescendants: json_['includeDescendants'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final includeDescendants = this.includeDescendants;
+    return {'includeDescendants': ?includeDescendants};
   }
 }
 
@@ -1746,6 +1826,11 @@ class Subscription {
   /// Output only.
   core.String? createTime;
 
+  /// Features that are supported only for subscriptions on Drive resources.
+  ///
+  /// Optional.
+  DriveOptions? driveOptions;
+
   /// This checksum is computed by the server based on the value of other
   /// fields, and might be sent on update requests to ensure the client has an
   /// up-to-date value before proceeding.
@@ -1898,6 +1983,7 @@ class Subscription {
   Subscription({
     this.authority,
     this.createTime,
+    this.driveOptions,
     this.etag,
     this.eventTypes,
     this.expireTime,
@@ -1919,6 +2005,11 @@ class Subscription {
     : this(
         authority: json_['authority'] as core.String?,
         createTime: json_['createTime'] as core.String?,
+        driveOptions: json_.containsKey('driveOptions')
+            ? DriveOptions.fromJson(
+                json_['driveOptions'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
         eventTypes: (json_['eventTypes'] as core.List?)
             ?.map((value) => value as core.String)
@@ -1951,6 +2042,7 @@ class Subscription {
   core.Map<core.String, core.dynamic> toJson() {
     final authority = this.authority;
     final createTime = this.createTime;
+    final driveOptions = this.driveOptions;
     final etag = this.etag;
     final eventTypes = this.eventTypes;
     final expireTime = this.expireTime;
@@ -1969,6 +2061,7 @@ class Subscription {
     return {
       'authority': ?authority,
       'createTime': ?createTime,
+      'driveOptions': ?driveOptions,
       'etag': ?etag,
       'eventTypes': ?eventTypes,
       'expireTime': ?expireTime,

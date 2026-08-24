@@ -34,6 +34,8 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsParametersResource]
 ///       - [ProjectsLocationsParametersVersionsResource]
+///     - [ProjectsLocationsTemplatesResource]
+///       - [ProjectsLocationsTemplatesVersionsResource]
 library;
 
 import 'dart:async' as async;
@@ -90,6 +92,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsParametersResource get parameters =>
       ProjectsLocationsParametersResource(_requester);
+  ProjectsLocationsTemplatesResource get templates =>
+      ProjectsLocationsTemplatesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -128,7 +132,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -143,9 +147,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -812,6 +815,625 @@ class ProjectsLocationsParametersVersionsResource {
   }
 }
 
+class ProjectsLocationsTemplatesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTemplatesVersionsResource get versions =>
+      ProjectsLocationsTemplatesVersionsResource(_requester);
+
+  ProjectsLocationsTemplatesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new Template in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent in the format `projects / *
+  /// /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [templateId] - Required. Id of the Template resource
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Template].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Template> create(
+    Template request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? templateId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'templateId': ?templateId == null ? null : [templateId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/templates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Template.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Template.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource in the format `projects / *
+  /// /locations / * /templates / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Template.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource in the format `projects / *
+  /// /locations / * /templates / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Template].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Template> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Template.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Templates in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListTemplatesRequest in the format
+  /// `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListTemplates` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListTemplates` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTemplatesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/templates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTemplatesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a single Template.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the Template in the format
+  /// `projects / * /locations / * /templates / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Template resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// mutable field will be overwritten if it is in the mask. If the user does
+  /// not provide a mask then all mutable fields present in the request will be
+  /// overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Template].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Template> patch(
+    Template request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Template.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsTemplatesVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTemplatesVersionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new TemplateVersion in a given project, location, and template.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent in the format `projects / *
+  /// /locations / * /templates / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [templateVersionId] - Required. Id of the TemplateVersion resource
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TemplateVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TemplateVersion> create(
+    TemplateVersion request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? templateVersionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'templateVersionId': ?templateVersionId == null
+          ? null
+          : [templateVersionId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TemplateVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a single TemplateVersion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource in the format `projects / *
+  /// /locations / * /templates / * /versions / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single TemplateVersion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource in the format `projects / *
+  /// /locations / * /templates / * /versions / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [view] - Optional. Specifies the view of the TemplateVersion to return. In
+  /// the default FULL view, all metadata & payload associated with the
+  /// TemplateVersion will be returned.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : The default / unset value. The API will default to
+  /// the FULL view.
+  /// - "BASIC" : Include only the metadata for the resource.
+  /// - "FULL" : Include metadata & other relevant payload data as well. This is
+  /// the default view.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TemplateVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TemplateVersion> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TemplateVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists TemplateVersions in a given project, location, and template.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListTemplateVersionsRequest in the
+  /// format `projects / * /locations / * /templates / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListTemplateVersions` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListTemplateVersions`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTemplateVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTemplateVersionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/versions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTemplateVersionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a single TemplateVersion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the TemplateVersion in the
+  /// format `projects / * /locations / * /templates / * /versions / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the TemplateVersion resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A mutable field will be overwritten if it is in the mask. If the
+  /// user does not provide a mask then all mutable fields present in the
+  /// request will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TemplateVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TemplateVersion> patch(
+    TemplateVersion request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TemplateVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets rendered version of a TemplateVersion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/templates/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [parameterVersion] - Required. Parameter version used to render the
+  /// template version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RenderTemplateVersionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RenderTemplateVersionResponse> render(
+    core.String name, {
+    core.String? parameterVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'parameterVersion': ?parameterVersion == null ? null : [parameterVersion],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':render';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RenderTemplateVersionResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -936,6 +1558,94 @@ class ListParametersResponse {
     return {
       'nextPageToken': ?nextPageToken,
       'parameters': ?parameters,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Message for response to listing TemplateVersions
+class ListTemplateVersionsResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of TemplateVersions
+  core.List<TemplateVersion>? templateVersions;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListTemplateVersionsResponse({
+    this.nextPageToken,
+    this.templateVersions,
+    this.unreachable,
+  });
+
+  ListTemplateVersionsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        templateVersions: (json_['templateVersions'] as core.List?)
+            ?.map(
+              (value) => TemplateVersion.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final templateVersions = this.templateVersions;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'templateVersions': ?templateVersions,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// Message for response to listing Templates
+class ListTemplatesResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of Templates
+  core.List<Template>? templates;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListTemplatesResponse({this.nextPageToken, this.templates, this.unreachable});
+
+  ListTemplatesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        templates: (json_['templates'] as core.List?)
+            ?.map(
+              (value) => Template.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final templates = this.templates;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'templates': ?templates,
       'unreachable': ?unreachable,
     };
   }
@@ -1128,30 +1838,7 @@ class ParameterVersion {
 }
 
 /// Message for storing a ParameterVersion resource's payload data
-class ParameterVersionPayload {
-  /// bytes data for storing payload.
-  ///
-  /// Required.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> bytes_) {
-    data = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  ParameterVersionPayload({this.data});
-
-  ParameterVersionPayload.fromJson(core.Map json_)
-    : this(data: json_['data'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final data = this.data;
-    return {'data': ?data};
-  }
-}
+typedef ParameterVersionPayload = $VersionPayload;
 
 /// Message describing RenderParameterVersionResponse resource
 class RenderParameterVersionResponse {
@@ -1212,46 +1899,222 @@ class RenderParameterVersionResponse {
   }
 }
 
-/// Output-only policy member strings of a Google Cloud resource's built-in
-/// identity.
-class ResourcePolicyMember {
-  /// IAM policy binding member referring to a Google Cloud resource by
-  /// user-assigned name (https://google.aip.dev/122).
-  ///
-  /// If a resource is deleted and recreated with the same name, the binding
-  /// will be applicable to the new resource. Example:
-  /// `principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter`
+/// Message describing RenderTemplateVersionResponse resource
+class RenderTemplateVersionResponse {
+  /// The resource name of the ParameterVersion used to render the template
+  /// version in the format `projects / * /locations / * /parameters / *
+  /// /versions / * `.
   ///
   /// Output only.
-  core.String? iamPolicyNamePrincipal;
+  core.String? parameterVersion;
 
-  /// IAM policy binding member referring to a Google Cloud resource by
-  /// system-assigned unique identifier (https://google.aip.dev/148#uid).
-  ///
-  /// If a resource is deleted and recreated with the same name, the binding
-  /// will not be applicable to the new resource Example:
-  /// `principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5`
+  /// Payload content of a TemplateVersion resource.
+  TemplateVersionPayload? payload;
+
+  /// Server generated rendered version of the user provided payload data
+  /// (TemplateVersionPayload) which has all the variables resolved using the
+  /// provided parameter version.
   ///
   /// Output only.
-  core.String? iamPolicyUidPrincipal;
+  core.String? renderedPayload;
+  core.List<core.int> get renderedPayloadAsBytes =>
+      convert.base64.decode(renderedPayload!);
 
-  ResourcePolicyMember({
-    this.iamPolicyNamePrincipal,
-    this.iamPolicyUidPrincipal,
+  set renderedPayloadAsBytes(core.List<core.int> bytes_) {
+    renderedPayload = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Format of the template version.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TEMPLATE_FORMAT_UNSPECIFIED" : The default / unset value. The API will
+  /// default to the YAML format.
+  /// - "TEMPLATE_FORMAT_YAML" : YAML format.
+  /// - "TEMPLATE_FORMAT_JSON" : JSON format.
+  core.String? templateFormat;
+
+  /// Resource identifier of a TemplateVersion in the format `projects / *
+  /// /locations / * /templates / * /versions / * `.
+  core.String? templateVersion;
+
+  RenderTemplateVersionResponse({
+    this.parameterVersion,
+    this.payload,
+    this.renderedPayload,
+    this.templateFormat,
+    this.templateVersion,
   });
 
-  ResourcePolicyMember.fromJson(core.Map json_)
+  RenderTemplateVersionResponse.fromJson(core.Map json_)
     : this(
-        iamPolicyNamePrincipal: json_['iamPolicyNamePrincipal'] as core.String?,
-        iamPolicyUidPrincipal: json_['iamPolicyUidPrincipal'] as core.String?,
+        parameterVersion: json_['parameterVersion'] as core.String?,
+        payload: json_.containsKey('payload')
+            ? TemplateVersionPayload.fromJson(
+                json_['payload'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        renderedPayload: json_['renderedPayload'] as core.String?,
+        templateFormat: json_['templateFormat'] as core.String?,
+        templateVersion: json_['templateVersion'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final iamPolicyNamePrincipal = this.iamPolicyNamePrincipal;
-    final iamPolicyUidPrincipal = this.iamPolicyUidPrincipal;
+    final parameterVersion = this.parameterVersion;
+    final payload = this.payload;
+    final renderedPayload = this.renderedPayload;
+    final templateFormat = this.templateFormat;
+    final templateVersion = this.templateVersion;
     return {
-      'iamPolicyNamePrincipal': ?iamPolicyNamePrincipal,
-      'iamPolicyUidPrincipal': ?iamPolicyUidPrincipal,
+      'parameterVersion': ?parameterVersion,
+      'payload': ?payload,
+      'renderedPayload': ?renderedPayload,
+      'templateFormat': ?templateFormat,
+      'templateVersion': ?templateVersion,
     };
   }
 }
+
+/// Output-only policy member strings of a Google Cloud resource's built-in
+/// identity.
+typedef ResourcePolicyMember = $ResourcePolicyMember;
+
+/// Message describing Template resource
+class Template {
+  /// Create time stamp
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Specifies the format of a Template.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TEMPLATE_FORMAT_UNSPECIFIED" : The default / unset value. The API will
+  /// default to the YAML format.
+  /// - "TEMPLATE_FORMAT_YAML" : YAML format.
+  /// - "TEMPLATE_FORMAT_JSON" : JSON format.
+  core.String? format;
+
+  /// Labels as key value pairs
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of the Template in the format `projects / * /locations /
+  /// * /templates / * `.
+  core.String? name;
+
+  /// Update time stamp
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Template({
+    this.createTime,
+    this.format,
+    this.labels,
+    this.name,
+    this.updateTime,
+  });
+
+  Template.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        format: json_['format'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final format = this.format;
+    final labels = this.labels;
+    final name = this.name;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'format': ?format,
+      'labels': ?labels,
+      'name': ?name,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Message describing TemplateVersion resource
+class TemplateVersion {
+  /// Create time stamp
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Disabled boolean to determine if a TemplateVersion acts as a metadata only
+  /// resource (payload is never returned if disabled is true).
+  ///
+  /// Optional.
+  core.bool? disabled;
+
+  /// Identifier.
+  ///
+  /// The resource name of the TemplateVersion in the format `projects / *
+  /// /locations / * /templates / * /versions / * `.
+  core.String? name;
+
+  /// Payload content of a TemplateVersion resource.
+  ///
+  /// Required. Immutable.
+  TemplateVersionPayload? payload;
+
+  /// Update time stamp
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  TemplateVersion({
+    this.createTime,
+    this.disabled,
+    this.name,
+    this.payload,
+    this.updateTime,
+  });
+
+  TemplateVersion.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        name: json_['name'] as core.String?,
+        payload: json_.containsKey('payload')
+            ? TemplateVersionPayload.fromJson(
+                json_['payload'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final disabled = this.disabled;
+    final name = this.name;
+    final payload = this.payload;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'disabled': ?disabled,
+      'name': ?name,
+      'payload': ?payload,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Message for storing a TemplateVersion resource's payload data
+typedef TemplateVersionPayload = $VersionPayload;

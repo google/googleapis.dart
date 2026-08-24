@@ -384,6 +384,7 @@ buildGceHyperdiskBalancedHighAvailability() {
   buildCounterGceHyperdiskBalancedHighAvailability++;
   if (buildCounterGceHyperdiskBalancedHighAvailability < 3) {
     o.archiveTimeout = 'foo';
+    o.maxSizeGb = 42;
     o.reclaimPolicy = 'foo';
     o.sizeGb = 42;
     o.sourceSnapshot = 'foo';
@@ -398,6 +399,7 @@ void checkGceHyperdiskBalancedHighAvailability(
   buildCounterGceHyperdiskBalancedHighAvailability++;
   if (buildCounterGceHyperdiskBalancedHighAvailability < 3) {
     unittest.expect(o.archiveTimeout!, unittest.equals('foo'));
+    unittest.expect(o.maxSizeGb!, unittest.equals(42));
     unittest.expect(o.reclaimPolicy!, unittest.equals('foo'));
     unittest.expect(o.sizeGb!, unittest.equals(42));
     unittest.expect(o.sourceSnapshot!, unittest.equals('foo'));
@@ -566,6 +568,7 @@ api.GceRegionalPersistentDisk buildGceRegionalPersistentDisk() {
     o.archiveTimeout = 'foo';
     o.diskType = 'foo';
     o.fsType = 'foo';
+    o.maxSizeGb = 42;
     o.reclaimPolicy = 'foo';
     o.sizeGb = 42;
     o.sourceSnapshot = 'foo';
@@ -580,6 +583,7 @@ void checkGceRegionalPersistentDisk(api.GceRegionalPersistentDisk o) {
     unittest.expect(o.archiveTimeout!, unittest.equals('foo'));
     unittest.expect(o.diskType!, unittest.equals('foo'));
     unittest.expect(o.fsType!, unittest.equals('foo'));
+    unittest.expect(o.maxSizeGb!, unittest.equals(42));
     unittest.expect(o.reclaimPolicy!, unittest.equals('foo'));
     unittest.expect(o.sizeGb!, unittest.equals(42));
     unittest.expect(o.sourceSnapshot!, unittest.equals('foo'));
@@ -1482,6 +1486,17 @@ void checkUnnamed39(core.Map<core.String, core.String> o) {
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
+core.List<api.WorkstationPersistentDirectory> buildUnnamed40() => [
+  buildWorkstationPersistentDirectory(),
+  buildWorkstationPersistentDirectory(),
+];
+
+void checkUnnamed40(core.List<api.WorkstationPersistentDirectory> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWorkstationPersistentDirectory(o[0]);
+  checkWorkstationPersistentDirectory(o[1]);
+}
+
 core.int buildCounterWorkstation = 0;
 api.Workstation buildWorkstation() {
   final o = api.Workstation();
@@ -1497,6 +1512,7 @@ api.Workstation buildWorkstation() {
     o.kmsKey = 'foo';
     o.labels = buildUnnamed39();
     o.name = 'foo';
+    o.persistentDirectories = buildUnnamed40();
     o.reconciling = true;
     o.runtimeHost = buildRuntimeHost();
     o.sourceWorkstation = 'foo';
@@ -1522,6 +1538,7 @@ void checkWorkstation(api.Workstation o) {
     unittest.expect(o.kmsKey!, unittest.equals('foo'));
     checkUnnamed39(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkUnnamed40(o.persistentDirectories!);
     unittest.expect(o.reconciling!, unittest.isTrue);
     checkRuntimeHost(o.runtimeHost!);
     unittest.expect(o.sourceWorkstation!, unittest.equals('foo'));
@@ -1533,28 +1550,20 @@ void checkWorkstation(api.Workstation o) {
   buildCounterWorkstation--;
 }
 
-core.Map<core.String, core.String> buildUnnamed40() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed41() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed40(core.Map<core.String, core.String> o) {
+void checkUnnamed41(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.Status> buildUnnamed41() => [buildStatus(), buildStatus()];
+core.List<api.Status> buildUnnamed42() => [buildStatus(), buildStatus()];
 
-void checkUnnamed41(core.List<api.Status> o) {
+void checkUnnamed42(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatus(o[0]);
   checkStatus(o[1]);
-}
-
-core.Map<core.String, core.String> buildUnnamed42() => {'x': 'foo', 'y': 'foo'};
-
-void checkUnnamed42(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.Map<core.String, core.String> buildUnnamed43() => {'x': 'foo', 'y': 'foo'};
@@ -1565,13 +1574,21 @@ void checkUnnamed43(core.Map<core.String, core.String> o) {
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
+core.Map<core.String, core.String> buildUnnamed44() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed44(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
 core.int buildCounterWorkstationCluster = 0;
 api.WorkstationCluster buildWorkstationCluster() {
   final o = api.WorkstationCluster();
   buildCounterWorkstationCluster++;
   if (buildCounterWorkstationCluster < 3) {
-    o.annotations = buildUnnamed40();
-    o.conditions = buildUnnamed41();
+    o.annotations = buildUnnamed41();
+    o.conditions = buildUnnamed42();
     o.controlPlaneIp = 'foo';
     o.createTime = 'foo';
     o.degraded = true;
@@ -1580,13 +1597,13 @@ api.WorkstationCluster buildWorkstationCluster() {
     o.domainConfig = buildDomainConfig();
     o.etag = 'foo';
     o.gatewayConfig = buildGatewayConfig();
-    o.labels = buildUnnamed42();
+    o.labels = buildUnnamed43();
     o.name = 'foo';
     o.network = 'foo';
     o.privateClusterConfig = buildPrivateClusterConfig();
     o.reconciling = true;
     o.subnetwork = 'foo';
-    o.tags = buildUnnamed43();
+    o.tags = buildUnnamed44();
     o.uid = 'foo';
     o.updateTime = 'foo';
     o.workstationAuthorizationUrl = 'foo';
@@ -1599,8 +1616,8 @@ api.WorkstationCluster buildWorkstationCluster() {
 void checkWorkstationCluster(api.WorkstationCluster o) {
   buildCounterWorkstationCluster++;
   if (buildCounterWorkstationCluster < 3) {
-    checkUnnamed40(o.annotations!);
-    checkUnnamed41(o.conditions!);
+    checkUnnamed41(o.annotations!);
+    checkUnnamed42(o.conditions!);
     unittest.expect(o.controlPlaneIp!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.degraded!, unittest.isTrue);
@@ -1609,13 +1626,13 @@ void checkWorkstationCluster(api.WorkstationCluster o) {
     checkDomainConfig(o.domainConfig!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     checkGatewayConfig(o.gatewayConfig!);
-    checkUnnamed42(o.labels!);
+    checkUnnamed43(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.network!, unittest.equals('foo'));
     checkPrivateClusterConfig(o.privateClusterConfig!);
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.subnetwork!, unittest.equals('foo'));
-    checkUnnamed43(o.tags!);
+    checkUnnamed44(o.tags!);
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     unittest.expect(o.workstationAuthorizationUrl!, unittest.equals('foo'));
@@ -1624,77 +1641,77 @@ void checkWorkstationCluster(api.WorkstationCluster o) {
   buildCounterWorkstationCluster--;
 }
 
-core.List<api.PortRange> buildUnnamed44() => [
+core.List<api.PortRange> buildUnnamed45() => [
   buildPortRange(),
   buildPortRange(),
 ];
 
-void checkUnnamed44(core.List<api.PortRange> o) {
+void checkUnnamed45(core.List<api.PortRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPortRange(o[0]);
   checkPortRange(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed45() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed46() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed45(core.Map<core.String, core.String> o) {
+void checkUnnamed46(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.Status> buildUnnamed46() => [buildStatus(), buildStatus()];
+core.List<api.Status> buildUnnamed47() => [buildStatus(), buildStatus()];
 
-void checkUnnamed46(core.List<api.Status> o) {
+void checkUnnamed47(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatus(o[0]);
   checkStatus(o[1]);
 }
 
-core.List<api.EphemeralDirectory> buildUnnamed47() => [
+core.List<api.EphemeralDirectory> buildUnnamed48() => [
   buildEphemeralDirectory(),
   buildEphemeralDirectory(),
 ];
 
-void checkUnnamed47(core.List<api.EphemeralDirectory> o) {
+void checkUnnamed48(core.List<api.EphemeralDirectory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEphemeralDirectory(o[0]);
   checkEphemeralDirectory(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed48() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed49() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed48(core.Map<core.String, core.String> o) {
+void checkUnnamed49(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.PersistentDirectory> buildUnnamed49() => [
+core.List<api.PersistentDirectory> buildUnnamed50() => [
   buildPersistentDirectory(),
   buildPersistentDirectory(),
 ];
 
-void checkUnnamed49(core.List<api.PersistentDirectory> o) {
+void checkUnnamed50(core.List<api.PersistentDirectory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersistentDirectory(o[0]);
   checkPersistentDirectory(o[1]);
 }
 
-core.List<api.ReadinessCheck> buildUnnamed50() => [
+core.List<api.ReadinessCheck> buildUnnamed51() => [
   buildReadinessCheck(),
   buildReadinessCheck(),
 ];
 
-void checkUnnamed50(core.List<api.ReadinessCheck> o) {
+void checkUnnamed51(core.List<api.ReadinessCheck> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReadinessCheck(o[0]);
   checkReadinessCheck(o[1]);
 }
 
-core.List<core.String> buildUnnamed51() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed52() => ['foo', 'foo'];
 
-void checkUnnamed51(core.List<core.String> o) {
+void checkUnnamed52(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1705,9 +1722,9 @@ api.WorkstationConfig buildWorkstationConfig() {
   final o = api.WorkstationConfig();
   buildCounterWorkstationConfig++;
   if (buildCounterWorkstationConfig < 3) {
-    o.allowedPorts = buildUnnamed44();
-    o.annotations = buildUnnamed45();
-    o.conditions = buildUnnamed46();
+    o.allowedPorts = buildUnnamed45();
+    o.annotations = buildUnnamed46();
+    o.conditions = buildUnnamed47();
     o.container = buildContainer();
     o.createTime = 'foo';
     o.degraded = true;
@@ -1716,18 +1733,18 @@ api.WorkstationConfig buildWorkstationConfig() {
     o.displayName = 'foo';
     o.enableAuditAgent = true;
     o.encryptionKey = buildCustomerEncryptionKey();
-    o.ephemeralDirectories = buildUnnamed47();
+    o.ephemeralDirectories = buildUnnamed48();
     o.etag = 'foo';
     o.grantWorkstationAdminRoleOnCreate = true;
     o.host = buildHost();
     o.idleTimeout = 'foo';
-    o.labels = buildUnnamed48();
+    o.labels = buildUnnamed49();
     o.maxUsableWorkstations = 42;
     o.name = 'foo';
-    o.persistentDirectories = buildUnnamed49();
-    o.readinessChecks = buildUnnamed50();
+    o.persistentDirectories = buildUnnamed50();
+    o.readinessChecks = buildUnnamed51();
     o.reconciling = true;
-    o.replicaZones = buildUnnamed51();
+    o.replicaZones = buildUnnamed52();
     o.runningTimeout = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
@@ -1739,9 +1756,9 @@ api.WorkstationConfig buildWorkstationConfig() {
 void checkWorkstationConfig(api.WorkstationConfig o) {
   buildCounterWorkstationConfig++;
   if (buildCounterWorkstationConfig < 3) {
-    checkUnnamed44(o.allowedPorts!);
-    checkUnnamed45(o.annotations!);
-    checkUnnamed46(o.conditions!);
+    checkUnnamed45(o.allowedPorts!);
+    checkUnnamed46(o.annotations!);
+    checkUnnamed47(o.conditions!);
     checkContainer(o.container!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.degraded!, unittest.isTrue);
@@ -1750,18 +1767,18 @@ void checkWorkstationConfig(api.WorkstationConfig o) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.enableAuditAgent!, unittest.isTrue);
     checkCustomerEncryptionKey(o.encryptionKey!);
-    checkUnnamed47(o.ephemeralDirectories!);
+    checkUnnamed48(o.ephemeralDirectories!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.grantWorkstationAdminRoleOnCreate!, unittest.isTrue);
     checkHost(o.host!);
     unittest.expect(o.idleTimeout!, unittest.equals('foo'));
-    checkUnnamed48(o.labels!);
+    checkUnnamed49(o.labels!);
     unittest.expect(o.maxUsableWorkstations!, unittest.equals(42));
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed49(o.persistentDirectories!);
-    checkUnnamed50(o.readinessChecks!);
+    checkUnnamed50(o.persistentDirectories!);
+    checkUnnamed51(o.readinessChecks!);
     unittest.expect(o.reconciling!, unittest.isTrue);
-    checkUnnamed51(o.replicaZones!);
+    checkUnnamed52(o.replicaZones!);
     unittest.expect(o.runningTimeout!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -1769,9 +1786,30 @@ void checkWorkstationConfig(api.WorkstationConfig o) {
   buildCounterWorkstationConfig--;
 }
 
-core.List<core.String> buildUnnamed52() => ['foo', 'foo'];
+core.int buildCounterWorkstationPersistentDirectory = 0;
+api.WorkstationPersistentDirectory buildWorkstationPersistentDirectory() {
+  final o = api.WorkstationPersistentDirectory();
+  buildCounterWorkstationPersistentDirectory++;
+  if (buildCounterWorkstationPersistentDirectory < 3) {
+    o.mountPath = 'foo';
+    o.sizeGb = 42;
+  }
+  buildCounterWorkstationPersistentDirectory--;
+  return o;
+}
 
-void checkUnnamed52(core.List<core.String> o) {
+void checkWorkstationPersistentDirectory(api.WorkstationPersistentDirectory o) {
+  buildCounterWorkstationPersistentDirectory++;
+  if (buildCounterWorkstationPersistentDirectory < 3) {
+    unittest.expect(o.mountPath!, unittest.equals('foo'));
+    unittest.expect(o.sizeGb!, unittest.equals(42));
+  }
+  buildCounterWorkstationPersistentDirectory--;
+}
+
+core.List<core.String> buildUnnamed53() => ['foo', 'foo'];
+
+void checkUnnamed53(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2295,6 +2333,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-WorkstationPersistentDirectory', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkstationPersistentDirectory();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkstationPersistentDirectory.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWorkstationPersistentDirectory(od);
+    });
+  });
+
   unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
@@ -2353,7 +2402,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudWorkstationsApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed52();
+      final arg_extraLocationTypes = buildUnnamed53();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

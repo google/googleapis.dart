@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260310",
+    "revision": "20260713",
     "rootUrl": "https://css.googleapis.com/",
     "servicePath": "",
     "title": "CSS API",
@@ -1419,7 +1419,7 @@
                     "type": "string"
                 },
                 "quotaUsage": {
-                    "description": "Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at at 12:00 PM midday UTC.",
+                    "description": "Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at 12:00 PM midday UTC.",
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"

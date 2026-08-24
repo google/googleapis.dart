@@ -41,6 +41,7 @@
 /// - [TagKeysResource]
 /// - [TagValuesResource]
 ///   - [TagValuesTagHoldsResource]
+/// - [V3Resource]
 library;
 
 import 'dart:async' as async;
@@ -81,6 +82,7 @@ class CloudResourceManagerApi {
   TagBindingsResource get tagBindings => TagBindingsResource(_requester);
   TagKeysResource get tagKeys => TagKeysResource(_requester);
   TagValuesResource get tagValues => TagValuesResource(_requester);
+  V3Resource get v3 => V3Resource(_requester);
 
   CloudResourceManagerApi(
     http.Client client, {
@@ -3198,6 +3200,52 @@ class TagValuesTagHoldsResource {
   }
 }
 
+class V3Resource {
+  final commons.ApiRequester _requester;
+
+  V3Resource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the semantics associated with the specified resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [fullResourceName] - Required. The full resource name of the GCP resource
+  /// to retrieve semantics for. Examples:
+  /// "//compute.googleapis.com/projects/123/zones/us-central1-a/instances/my-instance"
+  /// "//storage.googleapis.com/projects/_/buckets/my_bucket"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchResourceSemanticsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchResourceSemanticsResponse> fetchResourceSemantics({
+    core.String? fullResourceName,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fullResourceName': ?fullResourceName == null ? null : [fullResourceName],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v3:fetchResourceSemantics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchResourceSemanticsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -3546,6 +3594,34 @@ typedef Empty = $Empty;
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// Response message for FetchResourceSemantics.
+class FetchResourceSemanticsResponse {
+  /// The full resource name for which semantics are returned.
+  ///
+  /// Examples:
+  /// "//compute.googleapis.com/projects/123/zones/us-central1-a/instances/my-instance"
+  /// "//storage.googleapis.com/projects/_/buckets/my_bucket"
+  core.String? fullResourceName;
+
+  /// Map of resource semantics (e.g., `"ENVIRONMENT": "PRODUCTION"`).
+  core.Map<core.String, core.String>? semantics;
+
+  FetchResourceSemanticsResponse({this.fullResourceName, this.semantics});
+
+  FetchResourceSemanticsResponse.fromJson(core.Map json_)
+    : this(
+        fullResourceName: json_['fullResourceName'] as core.String?,
+        semantics: (json_['semantics'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fullResourceName = this.fullResourceName;
+    final semantics = this.semantics;
+    return {'fullResourceName': ?fullResourceName, 'semantics': ?semantics};
+  }
+}
 
 /// A folder in an organization's resource hierarchy, used to organize that
 /// organization's resources.

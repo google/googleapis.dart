@@ -62,6 +62,15 @@ class ContainerApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
+  /// See, edit, configure, and delete your Google Kubernetes Engine data and
+  /// see the email address for your Google Account
+  static const containerScope = 'https://www.googleapis.com/auth/container';
+
+  /// See your Google Kubernetes Engine data and the email address of your
+  /// Google Account
+  static const containerReadOnlyScope =
+      'https://www.googleapis.com/auth/container.read-only';
+
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -279,6 +288,51 @@ class ProjectsLocationsClustersResource {
     return CheckAutopilotCompatibilityResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// CompleteControlPlaneUpgrade completes the rollback-safe upgrade by
+  /// performing the step two upgrade for a specific cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name (project, location, cluster) of the cluster to
+  /// complete upgrade. Specified in the format `projects / * /locations / *
+  /// /clusters / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> completeControlPlaneUpgrade(
+    CompleteControlPlaneUpgradeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':completeControlPlaneUpgrade';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Completes master IP rotation.
@@ -2026,6 +2080,51 @@ class ProjectsZonesClustersResource {
         '/clusters/' +
         commons.escapeVariable('$clusterId') +
         '/addons';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// CompleteControlPlaneUpgrade completes the rollback-safe upgrade by
+  /// performing the step two upgrade for a specific cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name (project, location, cluster) of the cluster to
+  /// complete upgrade. Specified in the format `projects / * /locations / *
+  /// /clusters / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/zones/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> completeControlPlaneUpgrade(
+    CompleteControlPlaneUpgradeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':completeControlPlaneUpgrade';
 
     final response_ = await _requester.request(
       url_,
@@ -4072,6 +4171,11 @@ class AdditionalPodRangesConfig {
 /// Configuration for the addons that can be automatically spun up in the
 /// cluster, enabling additional functionality.
 class AddonsConfig {
+  /// Configuration for the AgentSandbox addon.
+  ///
+  /// Optional.
+  AgentSandboxConfig? agentSandboxConfig;
+
   /// Configuration for the Cloud Run addon, which allows the user to use a
   /// managed Knative service.
   CloudRunConfig? cloudRunConfig;
@@ -4127,6 +4231,11 @@ class AddonsConfig {
   /// does not track whether network policy is enabled for the nodes.
   NetworkPolicyConfig? networkPolicyConfig;
 
+  /// Configuration for NodeReadinessController add-on.
+  ///
+  /// Optional.
+  NodeReadinessConfig? nodeReadinessConfig;
+
   /// Configuration for the Cloud Storage Parallelstore CSI driver.
   ParallelstoreCsiDriverConfig? parallelstoreCsiDriverConfig;
 
@@ -4154,6 +4263,7 @@ class AddonsConfig {
   StatefulHAConfig? statefulHaConfig;
 
   AddonsConfig({
+    this.agentSandboxConfig,
     this.cloudRunConfig,
     this.configConnectorConfig,
     this.dnsCacheConfig,
@@ -4167,6 +4277,7 @@ class AddonsConfig {
     this.kubernetesDashboard,
     this.lustreCsiDriverConfig,
     this.networkPolicyConfig,
+    this.nodeReadinessConfig,
     this.parallelstoreCsiDriverConfig,
     this.podSnapshotConfig,
     this.rayOperatorConfig,
@@ -4177,6 +4288,12 @@ class AddonsConfig {
 
   AddonsConfig.fromJson(core.Map json_)
     : this(
+        agentSandboxConfig: json_.containsKey('agentSandboxConfig')
+            ? AgentSandboxConfig.fromJson(
+                json_['agentSandboxConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         cloudRunConfig: json_.containsKey('cloudRunConfig')
             ? CloudRunConfig.fromJson(
                 json_['cloudRunConfig'] as core.Map<core.String, core.dynamic>,
@@ -4256,6 +4373,12 @@ class AddonsConfig {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        nodeReadinessConfig: json_.containsKey('nodeReadinessConfig')
+            ? NodeReadinessConfig.fromJson(
+                json_['nodeReadinessConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         parallelstoreCsiDriverConfig:
             json_.containsKey('parallelstoreCsiDriverConfig')
             ? ParallelstoreCsiDriverConfig.fromJson(
@@ -4296,6 +4419,7 @@ class AddonsConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final agentSandboxConfig = this.agentSandboxConfig;
     final cloudRunConfig = this.cloudRunConfig;
     final configConnectorConfig = this.configConnectorConfig;
     final dnsCacheConfig = this.dnsCacheConfig;
@@ -4310,6 +4434,7 @@ class AddonsConfig {
     final kubernetesDashboard = this.kubernetesDashboard;
     final lustreCsiDriverConfig = this.lustreCsiDriverConfig;
     final networkPolicyConfig = this.networkPolicyConfig;
+    final nodeReadinessConfig = this.nodeReadinessConfig;
     final parallelstoreCsiDriverConfig = this.parallelstoreCsiDriverConfig;
     final podSnapshotConfig = this.podSnapshotConfig;
     final rayOperatorConfig = this.rayOperatorConfig;
@@ -4317,6 +4442,7 @@ class AddonsConfig {
     final slurmOperatorConfig = this.slurmOperatorConfig;
     final statefulHaConfig = this.statefulHaConfig;
     return {
+      'agentSandboxConfig': ?agentSandboxConfig,
       'cloudRunConfig': ?cloudRunConfig,
       'configConnectorConfig': ?configConnectorConfig,
       'dnsCacheConfig': ?dnsCacheConfig,
@@ -4330,6 +4456,7 @@ class AddonsConfig {
       'kubernetesDashboard': ?kubernetesDashboard,
       'lustreCsiDriverConfig': ?lustreCsiDriverConfig,
       'networkPolicyConfig': ?networkPolicyConfig,
+      'nodeReadinessConfig': ?nodeReadinessConfig,
       'parallelstoreCsiDriverConfig': ?parallelstoreCsiDriverConfig,
       'podSnapshotConfig': ?podSnapshotConfig,
       'rayOperatorConfig': ?rayOperatorConfig,
@@ -4429,6 +4556,24 @@ class AdvancedMachineFeatures {
       'performanceMonitoringUnit': ?performanceMonitoringUnit,
       'threadsPerCore': ?threadsPerCore,
     };
+  }
+}
+
+/// Configuration for the AgentSandbox addon.
+class AgentSandboxConfig {
+  /// Whether AgentSandbox is enabled for this cluster.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  AgentSandboxConfig({this.enabled});
+
+  AgentSandboxConfig.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
   }
 }
 
@@ -5471,6 +5616,14 @@ class Cluster {
   /// Output only.
   core.String? createTime;
 
+  /// The current emulated version of the master endpoint.
+  ///
+  /// The version is in minor version format, e.g. 1.30. No value or empty
+  /// string means the cluster has no emulated version.
+  ///
+  /// Output only.
+  core.String? currentEmulatedVersion;
+
   /// The current software version of the master endpoint.
   ///
   /// Output only.
@@ -5736,6 +5889,11 @@ class Cluster {
   )
   NodeConfig? nodeConfig;
 
+  /// Configuration for Node Creation Mode.
+  ///
+  /// Optional.
+  NodeCreationConfig? nodeCreationConfig;
+
   /// The size of the address space on each node for hosting containers.
   ///
   /// This is provisioned from within the `container_ipv4_cidr` range. This
@@ -5797,6 +5955,13 @@ class Cluster {
   ///
   /// Resource usage export is disabled when this config is unspecified.
   ResourceUsageExportConfig? resourceUsageExportConfig;
+
+  /// The rollback safe upgrade information of the cluster.
+  ///
+  /// This field is used when user manually triggers a rollback safe upgrade.
+  ///
+  /// Optional.
+  RollbackSafeUpgrade? rollbackSafeUpgrade;
 
   /// Reserved for future use.
   ///
@@ -5928,6 +6093,7 @@ class Cluster {
     this.controlPlaneEndpointsConfig,
     this.costManagementConfig,
     this.createTime,
+    this.currentEmulatedVersion,
     this.currentMasterVersion,
     this.currentNodeCount,
     this.currentNodeVersion,
@@ -5968,6 +6134,7 @@ class Cluster {
     this.networkConfig,
     this.networkPolicy,
     this.nodeConfig,
+    this.nodeCreationConfig,
     this.nodeIpv4CidrSize,
     this.nodePoolAutoConfig,
     this.nodePoolDefaults,
@@ -5980,6 +6147,7 @@ class Cluster {
     this.releaseChannel,
     this.resourceLabels,
     this.resourceUsageExportConfig,
+    this.rollbackSafeUpgrade,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.scheduleUpgradeConfig,
@@ -6080,6 +6248,7 @@ class Cluster {
               )
             : null,
         createTime: json_['createTime'] as core.String?,
+        currentEmulatedVersion: json_['currentEmulatedVersion'] as core.String?,
         currentMasterVersion: json_['currentMasterVersion'] as core.String?,
         currentNodeCount: json_['currentNodeCount'] as core.int?,
         currentNodeVersion: json_['currentNodeVersion'] as core.String?,
@@ -6220,6 +6389,12 @@ class Cluster {
                 json_['nodeConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        nodeCreationConfig: json_.containsKey('nodeCreationConfig')
+            ? NodeCreationConfig.fromJson(
+                json_['nodeCreationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         nodeIpv4CidrSize: json_['nodeIpv4CidrSize'] as core.int?,
         nodePoolAutoConfig: json_.containsKey('nodePoolAutoConfig')
             ? NodePoolAutoConfig.fromJson(
@@ -6281,6 +6456,12 @@ class Cluster {
             json_.containsKey('resourceUsageExportConfig')
             ? ResourceUsageExportConfig.fromJson(
                 json_['resourceUsageExportConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rollbackSafeUpgrade: json_.containsKey('rollbackSafeUpgrade')
+            ? RollbackSafeUpgrade.fromJson(
+                json_['rollbackSafeUpgrade']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -6358,6 +6539,7 @@ class Cluster {
     final controlPlaneEndpointsConfig = this.controlPlaneEndpointsConfig;
     final costManagementConfig = this.costManagementConfig;
     final createTime = this.createTime;
+    final currentEmulatedVersion = this.currentEmulatedVersion;
     final currentMasterVersion = this.currentMasterVersion;
     final currentNodeCount = this.currentNodeCount;
     final currentNodeVersion = this.currentNodeVersion;
@@ -6399,6 +6581,7 @@ class Cluster {
     final networkConfig = this.networkConfig;
     final networkPolicy = this.networkPolicy;
     final nodeConfig = this.nodeConfig;
+    final nodeCreationConfig = this.nodeCreationConfig;
     final nodeIpv4CidrSize = this.nodeIpv4CidrSize;
     final nodePoolAutoConfig = this.nodePoolAutoConfig;
     final nodePoolDefaults = this.nodePoolDefaults;
@@ -6411,6 +6594,7 @@ class Cluster {
     final releaseChannel = this.releaseChannel;
     final resourceLabels = this.resourceLabels;
     final resourceUsageExportConfig = this.resourceUsageExportConfig;
+    final rollbackSafeUpgrade = this.rollbackSafeUpgrade;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
     final scheduleUpgradeConfig = this.scheduleUpgradeConfig;
@@ -6444,6 +6628,7 @@ class Cluster {
       'controlPlaneEndpointsConfig': ?controlPlaneEndpointsConfig,
       'costManagementConfig': ?costManagementConfig,
       'createTime': ?createTime,
+      'currentEmulatedVersion': ?currentEmulatedVersion,
       'currentMasterVersion': ?currentMasterVersion,
       'currentNodeCount': ?currentNodeCount,
       'currentNodeVersion': ?currentNodeVersion,
@@ -6485,6 +6670,7 @@ class Cluster {
       'networkConfig': ?networkConfig,
       'networkPolicy': ?networkPolicy,
       'nodeConfig': ?nodeConfig,
+      'nodeCreationConfig': ?nodeCreationConfig,
       'nodeIpv4CidrSize': ?nodeIpv4CidrSize,
       'nodePoolAutoConfig': ?nodePoolAutoConfig,
       'nodePoolDefaults': ?nodePoolDefaults,
@@ -6497,6 +6683,7 @@ class Cluster {
       'releaseChannel': ?releaseChannel,
       'resourceLabels': ?resourceLabels,
       'resourceUsageExportConfig': ?resourceUsageExportConfig,
+      'rollbackSafeUpgrade': ?rollbackSafeUpgrade,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
       'scheduleUpgradeConfig': ?scheduleUpgradeConfig,
@@ -6774,6 +6961,11 @@ class ClusterUpdate {
   /// DNSConfig contains clusterDNS config for this cluster.
   DNSConfig? desiredDnsConfig;
 
+  /// The desired emulated version for the cluster.
+  ///
+  /// Optional.
+  core.String? desiredEmulatedVersion;
+
   /// Enable/Disable Cilium Clusterwide Network Policy for the cluster.
   core.bool? desiredEnableCiliumClusterwideNetworkPolicy;
 
@@ -6815,6 +7007,18 @@ class ClusterUpdate {
 
   /// The desired Identity Service component configuration.
   IdentityServiceConfig? desiredIdentityServiceConfig;
+
+  /// The desired name of the image to use for this node.
+  ///
+  /// This is used to create clusters using a custom image. NOTE: Set the
+  /// "desired_node_pool" field as well.
+  core.String? desiredImage;
+
+  /// The project containing the desired image to use for this node.
+  ///
+  /// This is used to create clusters using a custom image. NOTE: Set the
+  /// "desired_node_pool" field as well.
+  core.String? desiredImageProject;
 
   /// The desired image type for the node pool.
   ///
@@ -6913,6 +7117,11 @@ class ClusterUpdate {
   /// The desired network tier configuration for the cluster.
   NetworkTierConfig? desiredNetworkTierConfig;
 
+  /// The desired NodeCreationConfig for the cluster.
+  ///
+  /// Optional.
+  NodeCreationConfig? desiredNodeCreationConfig;
+
   /// The desired node kubelet config for the cluster.
   NodeKubeletConfig? desiredNodeKubeletConfig;
 
@@ -7007,6 +7216,11 @@ class ClusterUpdate {
   /// The desired configuration for exporting resource usage.
   ResourceUsageExportConfig? desiredResourceUsageExportConfig;
 
+  /// The desired rollback safe upgrade configuration.
+  ///
+  /// Optional.
+  RollbackSafeUpgrade? desiredRollbackSafeUpgrade;
+
   /// Enable/Disable Secret Manager Config.
   SecretManagerConfig? desiredSecretManagerConfig;
 
@@ -7093,6 +7307,7 @@ class ClusterUpdate {
     this.desiredDefaultSnatStatus,
     this.desiredDisableL4LbFirewallReconciliation,
     this.desiredDnsConfig,
+    this.desiredEmulatedVersion,
     this.desiredEnableCiliumClusterwideNetworkPolicy,
     this.desiredEnableFqdnNetworkPolicy,
     this.desiredEnableMultiNetworking,
@@ -7102,6 +7317,8 @@ class ClusterUpdate {
     this.desiredGatewayApiConfig,
     this.desiredGcfsConfig,
     this.desiredIdentityServiceConfig,
+    this.desiredImage,
+    this.desiredImageProject,
     this.desiredImageType,
     this.desiredInTransitEncryptionConfig,
     this.desiredIntraNodeVisibilityConfig,
@@ -7119,6 +7336,7 @@ class ClusterUpdate {
     this.desiredMonitoringService,
     this.desiredNetworkPerformanceConfig,
     this.desiredNetworkTierConfig,
+    this.desiredNodeCreationConfig,
     this.desiredNodeKubeletConfig,
     this.desiredNodePoolAutoConfigKubeletConfig,
     this.desiredNodePoolAutoConfigLinuxNodeConfig,
@@ -7137,6 +7355,7 @@ class ClusterUpdate {
     this.desiredRbacBindingConfig,
     this.desiredReleaseChannel,
     this.desiredResourceUsageExportConfig,
+    this.desiredRollbackSafeUpgrade,
     this.desiredSecretManagerConfig,
     this.desiredSecretSyncConfig,
     this.desiredSecurityPostureConfig,
@@ -7282,6 +7501,7 @@ class ClusterUpdate {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        desiredEmulatedVersion: json_['desiredEmulatedVersion'] as core.String?,
         desiredEnableCiliumClusterwideNetworkPolicy:
             json_['desiredEnableCiliumClusterwideNetworkPolicy'] as core.bool?,
         desiredEnableFqdnNetworkPolicy:
@@ -7320,6 +7540,8 @@ class ClusterUpdate {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        desiredImage: json_['desiredImage'] as core.String?,
+        desiredImageProject: json_['desiredImageProject'] as core.String?,
         desiredImageType: json_['desiredImageType'] as core.String?,
         desiredInTransitEncryptionConfig:
             json_['desiredInTransitEncryptionConfig'] as core.String?,
@@ -7399,6 +7621,13 @@ class ClusterUpdate {
         desiredNetworkTierConfig: json_.containsKey('desiredNetworkTierConfig')
             ? NetworkTierConfig.fromJson(
                 json_['desiredNetworkTierConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        desiredNodeCreationConfig:
+            json_.containsKey('desiredNodeCreationConfig')
+            ? NodeCreationConfig.fromJson(
+                json_['desiredNodeCreationConfig']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -7504,6 +7733,13 @@ class ClusterUpdate {
             json_.containsKey('desiredResourceUsageExportConfig')
             ? ResourceUsageExportConfig.fromJson(
                 json_['desiredResourceUsageExportConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        desiredRollbackSafeUpgrade:
+            json_.containsKey('desiredRollbackSafeUpgrade')
+            ? RollbackSafeUpgrade.fromJson(
+                json_['desiredRollbackSafeUpgrade']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -7620,6 +7856,7 @@ class ClusterUpdate {
     final desiredDisableL4LbFirewallReconciliation =
         this.desiredDisableL4LbFirewallReconciliation;
     final desiredDnsConfig = this.desiredDnsConfig;
+    final desiredEmulatedVersion = this.desiredEmulatedVersion;
     final desiredEnableCiliumClusterwideNetworkPolicy =
         this.desiredEnableCiliumClusterwideNetworkPolicy;
     final desiredEnableFqdnNetworkPolicy = this.desiredEnableFqdnNetworkPolicy;
@@ -7630,6 +7867,8 @@ class ClusterUpdate {
     final desiredGatewayApiConfig = this.desiredGatewayApiConfig;
     final desiredGcfsConfig = this.desiredGcfsConfig;
     final desiredIdentityServiceConfig = this.desiredIdentityServiceConfig;
+    final desiredImage = this.desiredImage;
+    final desiredImageProject = this.desiredImageProject;
     final desiredImageType = this.desiredImageType;
     final desiredInTransitEncryptionConfig =
         this.desiredInTransitEncryptionConfig;
@@ -7653,6 +7892,7 @@ class ClusterUpdate {
     final desiredNetworkPerformanceConfig =
         this.desiredNetworkPerformanceConfig;
     final desiredNetworkTierConfig = this.desiredNetworkTierConfig;
+    final desiredNodeCreationConfig = this.desiredNodeCreationConfig;
     final desiredNodeKubeletConfig = this.desiredNodeKubeletConfig;
     final desiredNodePoolAutoConfigKubeletConfig =
         this.desiredNodePoolAutoConfigKubeletConfig;
@@ -7677,6 +7917,7 @@ class ClusterUpdate {
     final desiredReleaseChannel = this.desiredReleaseChannel;
     final desiredResourceUsageExportConfig =
         this.desiredResourceUsageExportConfig;
+    final desiredRollbackSafeUpgrade = this.desiredRollbackSafeUpgrade;
     final desiredSecretManagerConfig = this.desiredSecretManagerConfig;
     final desiredSecretSyncConfig = this.desiredSecretSyncConfig;
     final desiredSecurityPostureConfig = this.desiredSecurityPostureConfig;
@@ -7719,6 +7960,7 @@ class ClusterUpdate {
       'desiredDisableL4LbFirewallReconciliation':
           ?desiredDisableL4LbFirewallReconciliation,
       'desiredDnsConfig': ?desiredDnsConfig,
+      'desiredEmulatedVersion': ?desiredEmulatedVersion,
       'desiredEnableCiliumClusterwideNetworkPolicy':
           ?desiredEnableCiliumClusterwideNetworkPolicy,
       'desiredEnableFqdnNetworkPolicy': ?desiredEnableFqdnNetworkPolicy,
@@ -7729,6 +7971,8 @@ class ClusterUpdate {
       'desiredGatewayApiConfig': ?desiredGatewayApiConfig,
       'desiredGcfsConfig': ?desiredGcfsConfig,
       'desiredIdentityServiceConfig': ?desiredIdentityServiceConfig,
+      'desiredImage': ?desiredImage,
+      'desiredImageProject': ?desiredImageProject,
       'desiredImageType': ?desiredImageType,
       'desiredInTransitEncryptionConfig': ?desiredInTransitEncryptionConfig,
       'desiredIntraNodeVisibilityConfig': ?desiredIntraNodeVisibilityConfig,
@@ -7748,6 +7992,7 @@ class ClusterUpdate {
       'desiredMonitoringService': ?desiredMonitoringService,
       'desiredNetworkPerformanceConfig': ?desiredNetworkPerformanceConfig,
       'desiredNetworkTierConfig': ?desiredNetworkTierConfig,
+      'desiredNodeCreationConfig': ?desiredNodeCreationConfig,
       'desiredNodeKubeletConfig': ?desiredNodeKubeletConfig,
       'desiredNodePoolAutoConfigKubeletConfig':
           ?desiredNodePoolAutoConfigKubeletConfig,
@@ -7770,6 +8015,7 @@ class ClusterUpdate {
       'desiredRbacBindingConfig': ?desiredRbacBindingConfig,
       'desiredReleaseChannel': ?desiredReleaseChannel,
       'desiredResourceUsageExportConfig': ?desiredResourceUsageExportConfig,
+      'desiredRollbackSafeUpgrade': ?desiredRollbackSafeUpgrade,
       'desiredSecretManagerConfig': ?desiredSecretManagerConfig,
       'desiredSecretSyncConfig': ?desiredSecretSyncConfig,
       'desiredSecurityPostureConfig': ?desiredSecurityPostureConfig,
@@ -7808,6 +8054,11 @@ class ClusterUpgradeInfo {
   /// The auto upgrade paused reason.
   core.List<core.String>? pausedReason;
 
+  /// The cluster's rollback-safe upgrade status.
+  ///
+  /// Output only.
+  RollbackSafeUpgradeStatus? rollbackSafeUpgradeStatus;
+
   /// The list of past auto upgrades.
   core.List<UpgradeDetails>? upgradeDetails;
 
@@ -7818,6 +8069,7 @@ class ClusterUpgradeInfo {
     this.minorTargetVersion,
     this.patchTargetVersion,
     this.pausedReason,
+    this.rollbackSafeUpgradeStatus,
     this.upgradeDetails,
   });
 
@@ -7835,6 +8087,13 @@ class ClusterUpgradeInfo {
         pausedReason: (json_['pausedReason'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        rollbackSafeUpgradeStatus:
+            json_.containsKey('rollbackSafeUpgradeStatus')
+            ? RollbackSafeUpgradeStatus.fromJson(
+                json_['rollbackSafeUpgradeStatus']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         upgradeDetails: (json_['upgradeDetails'] as core.List?)
             ?.map(
               (value) => UpgradeDetails.fromJson(
@@ -7851,6 +8110,7 @@ class ClusterUpgradeInfo {
     final minorTargetVersion = this.minorTargetVersion;
     final patchTargetVersion = this.patchTargetVersion;
     final pausedReason = this.pausedReason;
+    final rollbackSafeUpgradeStatus = this.rollbackSafeUpgradeStatus;
     final upgradeDetails = this.upgradeDetails;
     return {
       'autoUpgradeStatus': ?autoUpgradeStatus,
@@ -7859,8 +8119,28 @@ class ClusterUpgradeInfo {
       'minorTargetVersion': ?minorTargetVersion,
       'patchTargetVersion': ?patchTargetVersion,
       'pausedReason': ?pausedReason,
+      'rollbackSafeUpgradeStatus': ?rollbackSafeUpgradeStatus,
       'upgradeDetails': ?upgradeDetails,
     };
+  }
+}
+
+/// CompleteControlPlaneUpgradeRequest sets the name of target cluster to
+/// complete upgrade.
+class CompleteControlPlaneUpgradeRequest {
+  /// API request version that initiates this operation.
+  ///
+  /// Optional.
+  core.String? version;
+
+  CompleteControlPlaneUpgradeRequest({this.version});
+
+  CompleteControlPlaneUpgradeRequest.fromJson(core.Map json_)
+    : this(version: json_['version'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final version = this.version;
+    return {'version': ?version};
   }
 }
 
@@ -8358,6 +8638,71 @@ class CreateNodePoolRequest {
   }
 }
 
+/// CustomImageConfig contains the information r
+class CustomImageConfig {
+  /// The name of the image to use for this node.
+  core.String? image;
+
+  /// The project containing the image to use for this node.
+  core.String? imageProject;
+
+  CustomImageConfig({this.image, this.imageProject});
+
+  CustomImageConfig.fromJson(core.Map json_)
+    : this(
+        image: json_['image'] as core.String?,
+        imageProject: json_['imageProject'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final image = this.image;
+    final imageProject = this.imageProject;
+    return {'image': ?image, 'imageProject': ?imageProject};
+  }
+}
+
+/// Contains the custom image info for a node pool.
+class CustomImageInfo {
+  /// The human-readable upgrade message for the custom image.
+  ///
+  /// Output only.
+  core.String? upgradeMessage;
+
+  CustomImageInfo({this.upgradeMessage});
+
+  CustomImageInfo.fromJson(core.Map json_)
+    : this(upgradeMessage: json_['upgradeMessage'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final upgradeMessage = this.upgradeMessage;
+    return {'upgradeMessage': ?upgradeMessage};
+  }
+}
+
+/// Support for running custom init code while bootstrapping nodes.
+class CustomNodeInit {
+  /// The init script to be executed on the node.
+  ///
+  /// Optional.
+  InitScript? initScript;
+
+  CustomNodeInit({this.initScript});
+
+  CustomNodeInit.fromJson(core.Map json_)
+    : this(
+        initScript: json_.containsKey('initScript')
+            ? InitScript.fromJson(
+                json_['initScript'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final initScript = this.initScript;
+    return {'initScript': ?initScript};
+  }
+}
+
 /// DNSConfig contains the desired set of options for configuring clusterDNS.
 class DNSConfig {
   /// The domain used in Additive VPC scope.
@@ -8598,6 +8943,40 @@ class DatabaseEncryption {
   }
 }
 
+/// DataplaneV2Config is the configuration for DPv2.
+class DataplaneV2Config {
+  /// Scalability mode for the cluster.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SCALABILITY_MODE_UNSPECIFIED" : Default value.
+  /// - "DISABLED" : Disables the scale optimized mode for DPv2.
+  /// - "SCALE_OPTIMIZED" : Enables the scale optimized mode for DPv2.
+  core.String? scalabilityMode;
+
+  DataplaneV2Config({this.scalabilityMode});
+
+  DataplaneV2Config.fromJson(core.Map json_)
+    : this(scalabilityMode: json_['scalabilityMode'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final scalabilityMode = this.scalabilityMode;
+    return {'scalabilityMode': ?scalabilityMode};
+  }
+}
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
+typedef Date = $Date;
+
 /// Provisions a new, separate local NVMe SSD exclusively for swap.
 class DedicatedLocalSsdProfile {
   /// The number of physical local NVMe SSD disks to attach.
@@ -8695,6 +9074,45 @@ class DesiredEnterpriseConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final desiredTier = this.desiredTier;
     return {'desiredTier': ?desiredTier};
+  }
+}
+
+/// DiskIoScheduler contains the configuration for the disk IO scheduler.
+class DiskIoScheduler {
+  /// Configures the IO scheduler for the attached disks.
+  ///
+  /// Supported values are `mq-deadline`, `bfq`, `kyber`, `none`.
+  ///
+  /// Optional.
+  core.String? nodeAttachedDiskIoScheduler;
+
+  /// Configures the IO scheduler for the boot disk or ephemeral lssd that runs
+  /// node system workloads.
+  ///
+  /// Supported values are `mq-deadline`, `bfq`, `kyber`, `none`.
+  ///
+  /// Optional.
+  core.String? nodeSystemIoScheduler;
+
+  DiskIoScheduler({
+    this.nodeAttachedDiskIoScheduler,
+    this.nodeSystemIoScheduler,
+  });
+
+  DiskIoScheduler.fromJson(core.Map json_)
+    : this(
+        nodeAttachedDiskIoScheduler:
+            json_['nodeAttachedDiskIoScheduler'] as core.String?,
+        nodeSystemIoScheduler: json_['nodeSystemIoScheduler'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nodeAttachedDiskIoScheduler = this.nodeAttachedDiskIoScheduler;
+    final nodeSystemIoScheduler = this.nodeSystemIoScheduler;
+    return {
+      'nodeAttachedDiskIoScheduler': ?nodeAttachedDiskIoScheduler,
+      'nodeSystemIoScheduler': ?nodeSystemIoScheduler,
+    };
   }
 }
 
@@ -9190,6 +9608,46 @@ class EvictionSignals {
       'nodefsInodesFree': ?nodefsInodesFree,
       'pidAvailable': ?pidAvailable,
     };
+  }
+}
+
+/// Defines the maintenance exclusion for the node pool.
+class ExclusionUntilEndOfSupport {
+  /// Indicates whether the exclusion is enabled.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// The end time of the maintenance exclusion.
+  ///
+  /// It is output only. It is the cluster control plane version's end of
+  /// support time, or end of extended support time when the cluster is on
+  /// extended support channel.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// The start time of the maintenance exclusion.
+  ///
+  /// It is output only. It is the exclusion creation time.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  ExclusionUntilEndOfSupport({this.enabled, this.endTime, this.startTime});
+
+  ExclusionUntilEndOfSupport.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final endTime = this.endTime;
+    final startTime = this.startTime;
+    return {'enabled': ?enabled, 'endTime': ?endTime, 'startTime': ?startTime};
   }
 }
 
@@ -10301,6 +10759,71 @@ class IdentityServiceConfig {
   }
 }
 
+/// InitScript provide a simply bash script to be executed on the node.
+class InitScript {
+  /// The optional arguments line to be passed to the init script.
+  ///
+  /// Optional.
+  core.List<core.String>? args;
+
+  /// The resource name of the secret manager secret hosting the init script.
+  ///
+  /// Both global and regional secrets are supported with format below: Global
+  /// secret: projects/{project}/secrets/{secret}/versions/{version} Regional
+  /// secret:
+  /// projects/{project}/locations/{location}/secrets/{secret}/versions/{version}
+  /// Example: projects/1234567890/secrets/script_1/versions/1. Accept version
+  /// number only, not support version alias. User can't configure both
+  /// gcp_secret_manager_secret_uri and gcs_uri.
+  core.String? gcpSecretManagerSecretUri;
+
+  /// The generation of the init script stored in Gloud Storage.
+  ///
+  /// This is the required field to identify the version of the init script.
+  /// User can get the genetaion from `gcloud storage objects describe
+  /// gs://BUCKET_NAME/OBJECT_NAME --format="value(generation)"` or from the
+  /// "Version history" tab of the object in the Cloud Console UI.
+  core.String? gcsGeneration;
+
+  /// The Cloud Storage URI for storing the init script.
+  ///
+  /// Format: gs://BUCKET_NAME/OBJECT_NAME The service account on the node pool
+  /// must have read access to the object. User can't configure both gcs_uri and
+  /// gcp_secret_manager_secret_uri.
+  core.String? gcsUri;
+
+  InitScript({
+    this.args,
+    this.gcpSecretManagerSecretUri,
+    this.gcsGeneration,
+    this.gcsUri,
+  });
+
+  InitScript.fromJson(core.Map json_)
+    : this(
+        args: (json_['args'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        gcpSecretManagerSecretUri:
+            json_['gcpSecretManagerSecretUri'] as core.String?,
+        gcsGeneration: json_['gcsGeneration'] as core.String?,
+        gcsUri: json_['gcsUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final args = this.args;
+    final gcpSecretManagerSecretUri = this.gcpSecretManagerSecretUri;
+    final gcsGeneration = this.gcsGeneration;
+    final gcsUri = this.gcsUri;
+    return {
+      'args': ?args,
+      'gcpSecretManagerSecretUri': ?gcpSecretManagerSecretUri,
+      'gcsGeneration': ?gcsGeneration,
+      'gcsUri': ?gcsUri,
+    };
+  }
+}
+
 /// IntraNodeVisibilityConfig contains the desired config of the intra-node
 /// visibility on this cluster.
 class IntraNodeVisibilityConfig {
@@ -10416,6 +10939,37 @@ class K8sBetaAPIConfig {
   }
 }
 
+/// Contains expiry information about the kubelet certificate.
+class KubeletCertInfo {
+  /// Output only.
+  core.String? nonTpmBootstrapCertExpireTime;
+
+  /// Output only.
+  core.String? tpmBootstrapCertExpireTime;
+
+  KubeletCertInfo({
+    this.nonTpmBootstrapCertExpireTime,
+    this.tpmBootstrapCertExpireTime,
+  });
+
+  KubeletCertInfo.fromJson(core.Map json_)
+    : this(
+        nonTpmBootstrapCertExpireTime:
+            json_['nonTpmBootstrapCertExpireTime'] as core.String?,
+        tpmBootstrapCertExpireTime:
+            json_['tpmBootstrapCertExpireTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nonTpmBootstrapCertExpireTime = this.nonTpmBootstrapCertExpireTime;
+    final tpmBootstrapCertExpireTime = this.tpmBootstrapCertExpireTime;
+    return {
+      'nonTpmBootstrapCertExpireTime': ?nonTpmBootstrapCertExpireTime,
+      'tpmBootstrapCertExpireTime': ?tpmBootstrapCertExpireTime,
+    };
+  }
+}
+
 /// Configuration for the Kubernetes Dashboard.
 class KubernetesDashboard {
   /// Whether the Kubernetes Dashboard is enabled for this cluster.
@@ -10471,6 +11025,16 @@ class LinuxNodeConfig {
   /// cgroup configuration on the node image.
   core.String? cgroupMode;
 
+  /// Allow users to run arbitrary bash script or container on the node.
+  ///
+  /// Optional.
+  CustomNodeInit? customNodeInit;
+
+  /// Controls the configuration for the disk IO scheduler.
+  ///
+  /// Optional.
+  DiskIoScheduler? diskIoScheduler;
+
   /// Amounts for 2M and 1G hugepages
   ///
   /// Optional.
@@ -10483,6 +11047,11 @@ class LinuxNodeConfig {
   ///
   /// Optional.
   NodeKernelModuleLoading? nodeKernelModuleLoading;
+
+  /// Contains VFIO-related configurations for this node.
+  ///
+  /// Optional.
+  NodeVfioConfig? nodeVfioConfig;
 
   /// Enables and configures swap space on nodes.
   ///
@@ -10497,15 +11066,18 @@ class LinuxNodeConfig {
   /// The following parameters are supported. net.core.busy_poll
   /// net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max
   /// net.core.rmem_default net.core.wmem_default net.core.wmem_max
-  /// net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
-  /// net.ipv4.tcp_tw_reuse net.ipv4.tcp_mtu_probing net.ipv4.tcp_max_orphans
+  /// net.core.optmem_max net.core.somaxconn net.ipv4.neigh.default.gc_thresh1
+  /// net.ipv4.neigh.default.gc_thresh2 net.ipv4.neigh.default.gc_thresh3
+  /// net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+  /// net.ipv4.tcp_mtu_probing net.ipv4.tcp_max_orphans
   /// net.ipv4.tcp_max_tw_buckets net.ipv4.tcp_syn_retries net.ipv4.tcp_ecn
   /// net.ipv4.tcp_congestion_control net.netfilter.nf_conntrack_max
   /// net.netfilter.nf_conntrack_buckets
   /// net.netfilter.nf_conntrack_tcp_timeout_close_wait
   /// net.netfilter.nf_conntrack_tcp_timeout_time_wait
   /// net.netfilter.nf_conntrack_tcp_timeout_established
-  /// net.netfilter.nf_conntrack_acct kernel.shmmni kernel.shmmax kernel.shmall
+  /// net.netfilter.nf_conntrack_acct kernel.keys.maxkeys kernel.keys.maxbytes
+  /// kernel.shmmni kernel.shmmax kernel.shmall kernel.core_pattern
   /// kernel.perf_event_paranoid kernel.sched_rt_runtime_us
   /// kernel.softlockup_panic kernel.yama.ptrace_scope kernel.kptr_restrict
   /// kernel.dmesg_restrict kernel.sysrq fs.aio-max-nr fs.file-max
@@ -10571,8 +11143,11 @@ class LinuxNodeConfig {
   LinuxNodeConfig({
     this.accurateTimeConfig,
     this.cgroupMode,
+    this.customNodeInit,
+    this.diskIoScheduler,
     this.hugepages,
     this.nodeKernelModuleLoading,
+    this.nodeVfioConfig,
     this.swapConfig,
     this.sysctls,
     this.transparentHugepageDefrag,
@@ -10588,6 +11163,16 @@ class LinuxNodeConfig {
               )
             : null,
         cgroupMode: json_['cgroupMode'] as core.String?,
+        customNodeInit: json_.containsKey('customNodeInit')
+            ? CustomNodeInit.fromJson(
+                json_['customNodeInit'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        diskIoScheduler: json_.containsKey('diskIoScheduler')
+            ? DiskIoScheduler.fromJson(
+                json_['diskIoScheduler'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         hugepages: json_.containsKey('hugepages')
             ? HugepagesConfig.fromJson(
                 json_['hugepages'] as core.Map<core.String, core.dynamic>,
@@ -10597,6 +11182,11 @@ class LinuxNodeConfig {
             ? NodeKernelModuleLoading.fromJson(
                 json_['nodeKernelModuleLoading']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nodeVfioConfig: json_.containsKey('nodeVfioConfig')
+            ? NodeVfioConfig.fromJson(
+                json_['nodeVfioConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         swapConfig: json_.containsKey('swapConfig')
@@ -10615,8 +11205,11 @@ class LinuxNodeConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final accurateTimeConfig = this.accurateTimeConfig;
     final cgroupMode = this.cgroupMode;
+    final customNodeInit = this.customNodeInit;
+    final diskIoScheduler = this.diskIoScheduler;
     final hugepages = this.hugepages;
     final nodeKernelModuleLoading = this.nodeKernelModuleLoading;
+    final nodeVfioConfig = this.nodeVfioConfig;
     final swapConfig = this.swapConfig;
     final sysctls = this.sysctls;
     final transparentHugepageDefrag = this.transparentHugepageDefrag;
@@ -10624,8 +11217,11 @@ class LinuxNodeConfig {
     return {
       'accurateTimeConfig': ?accurateTimeConfig,
       'cgroupMode': ?cgroupMode,
+      'customNodeInit': ?customNodeInit,
+      'diskIoScheduler': ?diskIoScheduler,
       'hugepages': ?hugepages,
       'nodeKernelModuleLoading': ?nodeKernelModuleLoading,
+      'nodeVfioConfig': ?nodeVfioConfig,
       'swapConfig': ?swapConfig,
       'sysctls': ?sysctls,
       'transparentHugepageDefrag': ?transparentHugepageDefrag,
@@ -11004,6 +11600,14 @@ class MaintenanceWindow {
   /// Non-emergency maintenance should not occur in these windows.
   core.Map<core.String, TimeWindow>? maintenanceExclusions;
 
+  /// RecurringMaintenanceWindow specifies some number of recurring time periods
+  /// for maintenance to occur.
+  ///
+  /// The time windows may be overlapping. If no maintenance windows are set,
+  /// maintenance can occur at any time. Alternative to RecurringWindow, with
+  /// renamed fields.
+  RecurringMaintenanceWindow? recurringMaintenanceWindow;
+
   /// RecurringWindow specifies some number of recurring time periods for
   /// maintenance to occur.
   ///
@@ -11014,6 +11618,7 @@ class MaintenanceWindow {
   MaintenanceWindow({
     this.dailyMaintenanceWindow,
     this.maintenanceExclusions,
+    this.recurringMaintenanceWindow,
     this.recurringWindow,
   });
 
@@ -11036,6 +11641,13 @@ class MaintenanceWindow {
                     ),
                   ),
                 ),
+        recurringMaintenanceWindow:
+            json_.containsKey('recurringMaintenanceWindow')
+            ? RecurringMaintenanceWindow.fromJson(
+                json_['recurringMaintenanceWindow']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         recurringWindow: json_.containsKey('recurringWindow')
             ? RecurringTimeWindow.fromJson(
                 json_['recurringWindow'] as core.Map<core.String, core.dynamic>,
@@ -11046,10 +11658,12 @@ class MaintenanceWindow {
   core.Map<core.String, core.dynamic> toJson() {
     final dailyMaintenanceWindow = this.dailyMaintenanceWindow;
     final maintenanceExclusions = this.maintenanceExclusions;
+    final recurringMaintenanceWindow = this.recurringMaintenanceWindow;
     final recurringWindow = this.recurringWindow;
     return {
       'dailyMaintenanceWindow': ?dailyMaintenanceWindow,
       'maintenanceExclusions': ?maintenanceExclusions,
+      'recurringMaintenanceWindow': ?recurringMaintenanceWindow,
       'recurringWindow': ?recurringWindow,
     };
   }
@@ -11471,6 +12085,11 @@ class NetworkConfig {
   /// for more.
   core.String? datapathProvider;
 
+  /// DataplaneV2Config specifies the DPv2 configuration.
+  ///
+  /// Optional.
+  DataplaneV2Config? dataplaneV2Config;
+
   /// Controls whether by default nodes have private IP addresses only.
   ///
   /// It is invalid to specify both PrivateClusterConfig.enablePrivateNodes and
@@ -11565,6 +12184,7 @@ class NetworkConfig {
 
   NetworkConfig({
     this.datapathProvider,
+    this.dataplaneV2Config,
     this.defaultEnablePrivateNodes,
     this.defaultSnatStatus,
     this.disableL4LbFirewallReconciliation,
@@ -11586,6 +12206,12 @@ class NetworkConfig {
   NetworkConfig.fromJson(core.Map json_)
     : this(
         datapathProvider: json_['datapathProvider'] as core.String?,
+        dataplaneV2Config: json_.containsKey('dataplaneV2Config')
+            ? DataplaneV2Config.fromJson(
+                json_['dataplaneV2Config']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         defaultEnablePrivateNodes:
             json_['defaultEnablePrivateNodes'] as core.bool?,
         defaultSnatStatus: json_.containsKey('defaultSnatStatus')
@@ -11636,6 +12262,7 @@ class NetworkConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final datapathProvider = this.datapathProvider;
+    final dataplaneV2Config = this.dataplaneV2Config;
     final defaultEnablePrivateNodes = this.defaultEnablePrivateNodes;
     final defaultSnatStatus = this.defaultSnatStatus;
     final disableL4LbFirewallReconciliation =
@@ -11656,6 +12283,7 @@ class NetworkConfig {
     final subnetwork = this.subnetwork;
     return {
       'datapathProvider': ?datapathProvider,
+      'dataplaneV2Config': ?dataplaneV2Config,
       'defaultEnablePrivateNodes': ?defaultEnablePrivateNodes,
       'defaultSnatStatus': ?defaultSnatStatus,
       'disableL4LbFirewallReconciliation': ?disableL4LbFirewallReconciliation,
@@ -12024,6 +12652,11 @@ class NodeConfig {
   /// [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
   core.String? nodeGroup;
 
+  /// The node image configuration to use for this node pool.
+  ///
+  /// Note that this is only applicable for node pools using image_type=CUSTOM.
+  CustomImageConfig? nodeImageConfig;
+
   /// The set of Google API scopes to be made available on all of the node VMs
   /// under the "default" service account.
   ///
@@ -12140,6 +12773,7 @@ class NodeConfig {
     this.metadata,
     this.minCpuPlatform,
     this.nodeGroup,
+    this.nodeImageConfig,
     this.oauthScopes,
     this.preemptible,
     this.reservationAffinity,
@@ -12260,6 +12894,11 @@ class NodeConfig {
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         minCpuPlatform: json_['minCpuPlatform'] as core.String?,
         nodeGroup: json_['nodeGroup'] as core.String?,
+        nodeImageConfig: json_.containsKey('nodeImageConfig')
+            ? CustomImageConfig.fromJson(
+                json_['nodeImageConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         oauthScopes: (json_['oauthScopes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -12375,6 +13014,7 @@ class NodeConfig {
     final metadata = this.metadata;
     final minCpuPlatform = this.minCpuPlatform;
     final nodeGroup = this.nodeGroup;
+    final nodeImageConfig = this.nodeImageConfig;
     final oauthScopes = this.oauthScopes;
     final preemptible = this.preemptible;
     final reservationAffinity = this.reservationAffinity;
@@ -12425,6 +13065,7 @@ class NodeConfig {
       'metadata': ?metadata,
       'minCpuPlatform': ?minCpuPlatform,
       'nodeGroup': ?nodeGroup,
+      'nodeImageConfig': ?nodeImageConfig,
       'oauthScopes': ?oauthScopes,
       'preemptible': ?preemptible,
       'reservationAffinity': ?reservationAffinity,
@@ -12510,24 +13151,62 @@ class NodeConfigDefaults {
   }
 }
 
+/// NodeCreationConfig defines the settings of node creation mode.
+class NodeCreationConfig {
+  /// The mode of node creation.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : When no user input is provided.
+  /// - "VIA_KUBELET" : Kubelet registers itself.
+  /// - "VIA_CONTROL_PLANE" : gcp-controller-manager automatically creates the
+  /// node object after CSR approval.
+  core.String? nodeCreationMode;
+
+  NodeCreationConfig({this.nodeCreationMode});
+
+  NodeCreationConfig.fromJson(core.Map json_)
+    : this(nodeCreationMode: json_['nodeCreationMode'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nodeCreationMode = this.nodeCreationMode;
+    return {'nodeCreationMode': ?nodeCreationMode};
+  }
+}
+
 /// NodeDrainConfig contains the node drain related configurations for this node
 /// pool.
 class NodeDrainConfig {
+  /// The duration of the grace termination period for node drain.
+  core.String? graceTerminationDuration;
+
+  /// The duration of the PDB timeout period for node drain.
+  core.String? pdbTimeoutDuration;
+
   /// Whether to respect PDB during node pool deletion.
   core.bool? respectPdbDuringNodePoolDeletion;
 
-  NodeDrainConfig({this.respectPdbDuringNodePoolDeletion});
+  NodeDrainConfig({
+    this.graceTerminationDuration,
+    this.pdbTimeoutDuration,
+    this.respectPdbDuringNodePoolDeletion,
+  });
 
   NodeDrainConfig.fromJson(core.Map json_)
     : this(
+        graceTerminationDuration:
+            json_['graceTerminationDuration'] as core.String?,
+        pdbTimeoutDuration: json_['pdbTimeoutDuration'] as core.String?,
         respectPdbDuringNodePoolDeletion:
             json_['respectPdbDuringNodePoolDeletion'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final graceTerminationDuration = this.graceTerminationDuration;
+    final pdbTimeoutDuration = this.pdbTimeoutDuration;
     final respectPdbDuringNodePoolDeletion =
         this.respectPdbDuringNodePoolDeletion;
     return {
+      'graceTerminationDuration': ?graceTerminationDuration,
+      'pdbTimeoutDuration': ?pdbTimeoutDuration,
       'respectPdbDuringNodePoolDeletion': ?respectPdbDuringNodePoolDeletion,
     };
   }
@@ -13023,6 +13702,11 @@ class NodeNetworkConfig {
   /// Cluster.NetworkConfig.default_enable_private_nodes
   core.bool? enablePrivateNodes;
 
+  /// The VPC network for the node pool.
+  ///
+  /// Optional. Immutable.
+  core.String? network;
+
   /// Network bandwidth tier configuration.
   NetworkPerformanceConfig? networkPerformanceConfig;
 
@@ -13092,6 +13776,7 @@ class NodeNetworkConfig {
     this.additionalPodNetworkConfigs,
     this.createPodRange,
     this.enablePrivateNodes,
+    this.network,
     this.networkPerformanceConfig,
     this.networkTierConfig,
     this.podCidrOverprovisionConfig,
@@ -13123,6 +13808,7 @@ class NodeNetworkConfig {
                 .toList(),
         createPodRange: json_['createPodRange'] as core.bool?,
         enablePrivateNodes: json_['enablePrivateNodes'] as core.bool?,
+        network: json_['network'] as core.String?,
         networkPerformanceConfig: json_.containsKey('networkPerformanceConfig')
             ? NetworkPerformanceConfig.fromJson(
                 json_['networkPerformanceConfig']
@@ -13155,6 +13841,7 @@ class NodeNetworkConfig {
     final additionalPodNetworkConfigs = this.additionalPodNetworkConfigs;
     final createPodRange = this.createPodRange;
     final enablePrivateNodes = this.enablePrivateNodes;
+    final network = this.network;
     final networkPerformanceConfig = this.networkPerformanceConfig;
     final networkTierConfig = this.networkTierConfig;
     final podCidrOverprovisionConfig = this.podCidrOverprovisionConfig;
@@ -13168,6 +13855,7 @@ class NodeNetworkConfig {
       'additionalPodNetworkConfigs': ?additionalPodNetworkConfigs,
       'createPodRange': ?createPodRange,
       'enablePrivateNodes': ?enablePrivateNodes,
+      'network': ?network,
       'networkPerformanceConfig': ?networkPerformanceConfig,
       'networkTierConfig': ?networkTierConfig,
       'podCidrOverprovisionConfig': ?podCidrOverprovisionConfig,
@@ -13201,6 +13889,8 @@ class NodePool {
   BestEffortProvisioning? bestEffortProvisioning;
 
   /// Which conditions caused the current node pool state.
+  ///
+  /// Output only.
   core.List<StatusCondition>? conditions;
 
   /// The node configuration of the pool.
@@ -13209,6 +13899,8 @@ class NodePool {
   /// This checksum is computed by the server based on the value of node pool
   /// fields, and may be sent on update requests to ensure the client has an
   /// up-to-date value before proceeding.
+  ///
+  /// Output only.
   core.String? etag;
 
   /// The initial node count for the pool.
@@ -13229,6 +13921,11 @@ class NodePool {
   /// Output only.
   core.List<core.String>? instanceGroupUrls;
 
+  /// Contains expiry information about the kubelet certificate.
+  ///
+  /// Output only.
+  KubeletCertInfo? kubeletCertInfo;
+
   /// The list of Google Compute Engine
   /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
   /// the NodePool's nodes should be located.
@@ -13238,6 +13935,11 @@ class NodePool {
   /// value will be used, instead. Warning: changing node pool locations will
   /// result in nodes being added and/or removed.
   core.List<core.String>? locations;
+
+  /// Specifies the maintenance policy for the node pool.
+  ///
+  /// Optional.
+  NodePoolMaintenancePolicy? maintenancePolicy;
 
   /// NodeManagement configuration for this NodePool.
   NodeManagement? management;
@@ -13329,7 +14031,9 @@ class NodePool {
     this.etag,
     this.initialNodeCount,
     this.instanceGroupUrls,
+    this.kubeletCertInfo,
     this.locations,
+    this.maintenancePolicy,
     this.management,
     this.maxPodsConstraint,
     this.name,
@@ -13381,9 +14085,20 @@ class NodePool {
         instanceGroupUrls: (json_['instanceGroupUrls'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        kubeletCertInfo: json_.containsKey('kubeletCertInfo')
+            ? KubeletCertInfo.fromJson(
+                json_['kubeletCertInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         locations: (json_['locations'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        maintenancePolicy: json_.containsKey('maintenancePolicy')
+            ? NodePoolMaintenancePolicy.fromJson(
+                json_['maintenancePolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         management: json_.containsKey('management')
             ? NodeManagement.fromJson(
                 json_['management'] as core.Map<core.String, core.dynamic>,
@@ -13443,7 +14158,9 @@ class NodePool {
     final etag = this.etag;
     final initialNodeCount = this.initialNodeCount;
     final instanceGroupUrls = this.instanceGroupUrls;
+    final kubeletCertInfo = this.kubeletCertInfo;
     final locations = this.locations;
+    final maintenancePolicy = this.maintenancePolicy;
     final management = this.management;
     final maxPodsConstraint = this.maxPodsConstraint;
     final name = this.name;
@@ -13467,7 +14184,9 @@ class NodePool {
       'etag': ?etag,
       'initialNodeCount': ?initialNodeCount,
       'instanceGroupUrls': ?instanceGroupUrls,
+      'kubeletCertInfo': ?kubeletCertInfo,
       'locations': ?locations,
+      'maintenancePolicy': ?maintenancePolicy,
       'management': ?management,
       'maxPodsConstraint': ?maxPodsConstraint,
       'name': ?name,
@@ -13686,10 +14405,41 @@ class NodePoolLoggingConfig {
   }
 }
 
+/// Defines the maintenance policy for the node pool.
+class NodePoolMaintenancePolicy {
+  /// The exclusion until end of support for the node pool.
+  ///
+  /// Optional.
+  ExclusionUntilEndOfSupport? exclusionUntilEndOfSupport;
+
+  NodePoolMaintenancePolicy({this.exclusionUntilEndOfSupport});
+
+  NodePoolMaintenancePolicy.fromJson(core.Map json_)
+    : this(
+        exclusionUntilEndOfSupport:
+            json_.containsKey('exclusionUntilEndOfSupport')
+            ? ExclusionUntilEndOfSupport.fromJson(
+                json_['exclusionUntilEndOfSupport']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final exclusionUntilEndOfSupport = this.exclusionUntilEndOfSupport;
+    return {'exclusionUntilEndOfSupport': ?exclusionUntilEndOfSupport};
+  }
+}
+
 /// NodePoolUpgradeInfo contains the upgrade information of a node pool.
 class NodePoolUpgradeInfo {
   /// The auto upgrade status.
   core.List<core.String>? autoUpgradeStatus;
+
+  /// Upgrade info for the node pool specific to the usage of custom images.
+  ///
+  /// Output only.
+  CustomImageInfo? customImageInfo;
 
   /// The node pool's current minor version's end of extended support timestamp.
   core.String? endOfExtendedSupportTimestamp;
@@ -13711,6 +14461,7 @@ class NodePoolUpgradeInfo {
 
   NodePoolUpgradeInfo({
     this.autoUpgradeStatus,
+    this.customImageInfo,
     this.endOfExtendedSupportTimestamp,
     this.endOfStandardSupportTimestamp,
     this.minorTargetVersion,
@@ -13724,6 +14475,11 @@ class NodePoolUpgradeInfo {
         autoUpgradeStatus: (json_['autoUpgradeStatus'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        customImageInfo: json_.containsKey('customImageInfo')
+            ? CustomImageInfo.fromJson(
+                json_['customImageInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         endOfExtendedSupportTimestamp:
             json_['endOfExtendedSupportTimestamp'] as core.String?,
         endOfStandardSupportTimestamp:
@@ -13744,6 +14500,7 @@ class NodePoolUpgradeInfo {
 
   core.Map<core.String, core.dynamic> toJson() {
     final autoUpgradeStatus = this.autoUpgradeStatus;
+    final customImageInfo = this.customImageInfo;
     final endOfExtendedSupportTimestamp = this.endOfExtendedSupportTimestamp;
     final endOfStandardSupportTimestamp = this.endOfStandardSupportTimestamp;
     final minorTargetVersion = this.minorTargetVersion;
@@ -13752,6 +14509,7 @@ class NodePoolUpgradeInfo {
     final upgradeDetails = this.upgradeDetails;
     return {
       'autoUpgradeStatus': ?autoUpgradeStatus,
+      'customImageInfo': ?customImageInfo,
       'endOfExtendedSupportTimestamp': ?endOfExtendedSupportTimestamp,
       'endOfStandardSupportTimestamp': ?endOfStandardSupportTimestamp,
       'minorTargetVersion': ?minorTargetVersion,
@@ -13759,6 +14517,24 @@ class NodePoolUpgradeInfo {
       'pausedReason': ?pausedReason,
       'upgradeDetails': ?upgradeDetails,
     };
+  }
+}
+
+/// Configuration for the GKE Node Readiness Controller.
+class NodeReadinessConfig {
+  /// Whether the GKE Node Readiness Controller is enabled for this cluster.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  NodeReadinessConfig({this.enabled});
+
+  NodeReadinessConfig.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
   }
 }
 
@@ -13822,6 +14598,35 @@ class NodeTaints {
   core.Map<core.String, core.dynamic> toJson() {
     final taints = this.taints;
     return {'taints': ?taints};
+  }
+}
+
+/// Configuration settings for VFIO (Virtual Function I/O) on a node.
+///
+/// VFIO allows safe, unprivileged, userspace drivers to access I/O devices.
+class NodeVfioConfig {
+  /// Specifies the maximum number of DMA entries (pages) that can be mapped by
+  /// the VFIO IOMMU type 1 driver for a container.
+  ///
+  /// This limit affects the total amount of host memory that can be pinned for
+  /// direct device access, which is often critical for high-performance devices
+  /// like TPUs and GPUs. This setting corresponds to the kernel parameter at:
+  /// `/sys/module/vfio_iommu_type1/parameters/dma_entry_limit`. The default
+  /// value in the kernel is `65535`. Higher values may be needed for workloads
+  /// mapping large memory regions. Supported values are integers between
+  /// `65535` and `4194304`.
+  ///
+  /// Optional.
+  core.int? dmaEntryLimit;
+
+  NodeVfioConfig({this.dmaEntryLimit});
+
+  NodeVfioConfig.fromJson(core.Map json_)
+    : this(dmaEntryLimit: json_['dmaEntryLimit'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dmaEntryLimit = this.dmaEntryLimit;
+    return {'dmaEntryLimit': ?dmaEntryLimit};
   }
 }
 
@@ -14793,6 +15598,79 @@ class RayOperatorConfig {
 }
 
 /// Represents an arbitrary window of time that recurs.
+///
+/// Will replace RecurringTimeWindow.
+class RecurringMaintenanceWindow {
+  /// Specifies the date before which will not be scheduled.
+  ///
+  /// Depending on the recurrence, this may be the date the first window
+  /// appears. Days are measured in the UTC timezone. This setting must be used
+  /// when INTERVAL\>1 or FREQ=WEEKLY/MONTHLY and no BYDAY specified.
+  ///
+  /// Optional.
+  Date? delayUntil;
+
+  /// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+  /// this window recurs.
+  ///
+  /// For example, to have something repeat every weekday, you'd use:
+  /// `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR` To repeat some window daily (equivalent
+  /// to the DailyMaintenanceWindow): `FREQ=DAILY` For the first weekend of
+  /// every month: `FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU` The FREQ values of
+  /// HOURLY, MINUTELY, and SECONDLY are not supported.
+  ///
+  /// Required.
+  core.String? recurrence;
+
+  /// Duration of the window.
+  ///
+  /// Required.
+  core.String? windowDuration;
+
+  /// Start time of the window on days that it is scheduled, assuming UTC
+  /// timezone.
+  ///
+  /// Required.
+  TimeOfDay? windowStartTime;
+
+  RecurringMaintenanceWindow({
+    this.delayUntil,
+    this.recurrence,
+    this.windowDuration,
+    this.windowStartTime,
+  });
+
+  RecurringMaintenanceWindow.fromJson(core.Map json_)
+    : this(
+        delayUntil: json_.containsKey('delayUntil')
+            ? Date.fromJson(
+                json_['delayUntil'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        recurrence: json_['recurrence'] as core.String?,
+        windowDuration: json_['windowDuration'] as core.String?,
+        windowStartTime: json_.containsKey('windowStartTime')
+            ? TimeOfDay.fromJson(
+                json_['windowStartTime'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final delayUntil = this.delayUntil;
+    final recurrence = this.recurrence;
+    final windowDuration = this.windowDuration;
+    final windowStartTime = this.windowStartTime;
+    return {
+      'delayUntil': ?delayUntil,
+      'recurrence': ?recurrence,
+      'windowDuration': ?windowDuration,
+      'windowStartTime': ?windowStartTime,
+    };
+  }
+}
+
+/// Represents an arbitrary window of time that recurs.
 class RecurringTimeWindow {
   /// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
   /// this window recurs.
@@ -14911,7 +15789,8 @@ class RegistryHostConfig {
 class ReleaseChannel {
   /// channel specifies which release channel the cluster is subscribed to.
   /// Possible string values are:
-  /// - "UNSPECIFIED" : No channel specified.
+  /// - "UNSPECIFIED" : Deprecated: No channel specified. it will be removed in
+  /// the future, use RAPID, REGULAR, STABLE or EXTENDED instead.
   /// - "RAPID" : RAPID channel is offered on an early access basis for
   /// customers who want to test new releases. WARNING: Versions available in
   /// the RAPID Channel may be subject to unresolved issues with no known
@@ -14941,7 +15820,8 @@ class ReleaseChannel {
 class ReleaseChannelConfig {
   /// The release channel this configuration applies to.
   /// Possible string values are:
-  /// - "UNSPECIFIED" : No channel specified.
+  /// - "UNSPECIFIED" : Deprecated: No channel specified. it will be removed in
+  /// the future, use RAPID, REGULAR, STABLE or EXTENDED instead.
   /// - "RAPID" : RAPID channel is offered on an early access basis for
   /// customers who want to test new releases. WARNING: Versions available in
   /// the RAPID Channel may be subject to unresolved issues with no known
@@ -14956,6 +15836,11 @@ class ReleaseChannelConfig {
   /// production.
   core.String? channel;
 
+  /// List of custom versions for the channel.
+  ///
+  /// Output only.
+  core.List<core.String>? customVersions;
+
   /// The default version for newly created clusters on the channel.
   core.String? defaultVersion;
 
@@ -14967,6 +15852,7 @@ class ReleaseChannelConfig {
 
   ReleaseChannelConfig({
     this.channel,
+    this.customVersions,
     this.defaultVersion,
     this.upgradeTargetVersion,
     this.validVersions,
@@ -14975,6 +15861,9 @@ class ReleaseChannelConfig {
   ReleaseChannelConfig.fromJson(core.Map json_)
     : this(
         channel: json_['channel'] as core.String?,
+        customVersions: (json_['customVersions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         defaultVersion: json_['defaultVersion'] as core.String?,
         upgradeTargetVersion: json_['upgradeTargetVersion'] as core.String?,
         validVersions: (json_['validVersions'] as core.List?)
@@ -14984,11 +15873,13 @@ class ReleaseChannelConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final channel = this.channel;
+    final customVersions = this.customVersions;
     final defaultVersion = this.defaultVersion;
     final upgradeTargetVersion = this.upgradeTargetVersion;
     final validVersions = this.validVersions;
     return {
       'channel': ?channel,
+      'customVersions': ?customVersions,
       'defaultVersion': ?defaultVersion,
       'upgradeTargetVersion': ?upgradeTargetVersion,
       'validVersions': ?validVersions,
@@ -15007,6 +15898,8 @@ class ReservationAffinity {
   /// - "ANY_RESERVATION" : Consume any reservation available.
   /// - "SPECIFIC_RESERVATION" : Must consume from a specific reservation. Must
   /// specify key value fields for specifying the reservations.
+  /// - "ANY_RESERVATION_THEN_FAIL" : Consume any reservation available. If no
+  /// reservation is available, fail the node creation.
   core.String? consumeReservationType;
 
   /// Corresponds to the label key of a reservation resource.
@@ -15254,6 +16147,80 @@ class RollbackNodePoolUpgradeRequest {
       'projectId': ?projectId,
       'respectPdb': ?respectPdb,
       'zone': ?zone,
+    };
+  }
+}
+
+/// RollbackSafeUpgrade is the configuration for the rollback safe upgrade.
+class RollbackSafeUpgrade {
+  /// A user-defined period for the cluster remains in the rollbackable state.
+  ///
+  /// ex: {seconds: 21600}.
+  ///
+  /// Optional.
+  core.String? controlPlaneSoakDuration;
+
+  RollbackSafeUpgrade({this.controlPlaneSoakDuration});
+
+  RollbackSafeUpgrade.fromJson(core.Map json_)
+    : this(
+        controlPlaneSoakDuration:
+            json_['controlPlaneSoakDuration'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlPlaneSoakDuration = this.controlPlaneSoakDuration;
+    return {'controlPlaneSoakDuration': ?controlPlaneSoakDuration};
+  }
+}
+
+/// RollbackSafeUpgradeStatus contains the rollback-safe upgrade status of a
+/// cluster.
+class RollbackSafeUpgradeStatus {
+  /// The rollback-safe mode expiration time.
+  ///
+  /// Output only.
+  core.String? controlPlaneUpgradeRollbackEndTime;
+
+  /// The mode of the rollback-safe upgrade.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : MODE_UNSPECIFIED means it's in regular upgrade
+  /// mode.
+  /// - "KCP_MINOR_UPGRADE_ROLLBACK_SAFE_MODE" :
+  /// KCP_MINOR_UPGRADE_ROLLBACK_SAFE_MODE means it's in rollback-safe mode
+  /// after a KCP minor version step-one upgrade.
+  core.String? mode;
+
+  /// The GKE version that the cluster previously used before step-one upgrade.
+  ///
+  /// Output only.
+  core.String? previousVersion;
+
+  RollbackSafeUpgradeStatus({
+    this.controlPlaneUpgradeRollbackEndTime,
+    this.mode,
+    this.previousVersion,
+  });
+
+  RollbackSafeUpgradeStatus.fromJson(core.Map json_)
+    : this(
+        controlPlaneUpgradeRollbackEndTime:
+            json_['controlPlaneUpgradeRollbackEndTime'] as core.String?,
+        mode: json_['mode'] as core.String?,
+        previousVersion: json_['previousVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final controlPlaneUpgradeRollbackEndTime =
+        this.controlPlaneUpgradeRollbackEndTime;
+    final mode = this.mode;
+    final previousVersion = this.previousVersion;
+    return {
+      'controlPlaneUpgradeRollbackEndTime': ?controlPlaneUpgradeRollbackEndTime,
+      'mode': ?mode,
+      'previousVersion': ?previousVersion,
     };
   }
 }
@@ -17042,6 +18009,13 @@ class TaintConfig {
   }
 }
 
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
+typedef TimeOfDay = $TimeOfDay;
+
 /// Represents an arbitrary window of time.
 class TimeWindow {
   /// The time that the window ends.
@@ -17083,10 +18057,13 @@ class TimeWindow {
   }
 }
 
-/// TopologyManager defines the configuration options for Topology Manager
-/// feature.
+/// TopologyManager defines the configuration options for the \[`kubelet`
+/// Topology Manager
+/// component\](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/).
 ///
-/// See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
+/// For more information about the supported machine types and versions for the
+/// Topology Manager in GKE, see
+/// [Customizing node system configuration](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-resource-managers).
 class TopologyManager {
   /// Configures the strategy for resource alignment.
   ///
@@ -17395,6 +18372,16 @@ class UpdateNodePoolRequest {
   /// Enable or disable gvnic on the node pool.
   VirtualNIC? gvnic;
 
+  /// The desired name of the image name to use for this node.
+  ///
+  /// This is used to create clusters using a custom image.
+  core.String? image;
+
+  /// The project containing the desired image to use for this node pool.
+  ///
+  /// This is used to create clusters using a custom image.
+  core.String? imageProject;
+
   /// The desired image type for the node pool.
   ///
   /// Please see
@@ -17443,6 +18430,12 @@ class UpdateNodePoolRequest {
   ///
   /// Optional.
   core.String? machineType;
+
+  /// Specifies the maintenance policy for the node pool, including maintenance
+  /// exclusion options.
+  ///
+  /// Optional.
+  NodePoolMaintenancePolicy? maintenancePolicy;
 
   /// The maximum duration for the nodes to exist.
   ///
@@ -17519,6 +18512,9 @@ class UpdateNodePoolRequest {
   /// existing network tags will be *replaced* with the provided tags.
   NetworkTags? tags;
 
+  /// The taint configuration for the node pool.
+  TaintConfig? taintConfig;
+
   /// The desired node taints to be applied to all nodes in the node pool.
   ///
   /// If this field is not present, the taints will not be changed. Otherwise,
@@ -17560,6 +18556,8 @@ class UpdateNodePoolRequest {
     this.flexStart,
     this.gcfsConfig,
     this.gvnic,
+    this.image,
+    this.imageProject,
     this.imageType,
     this.kubeletConfig,
     this.labels,
@@ -17567,6 +18565,7 @@ class UpdateNodePoolRequest {
     this.locations,
     this.loggingConfig,
     this.machineType,
+    this.maintenancePolicy,
     this.maxRunDuration,
     this.name,
     this.nodeDrainConfig,
@@ -17579,6 +18578,7 @@ class UpdateNodePoolRequest {
     this.resourceManagerTags,
     this.storagePools,
     this.tags,
+    this.taintConfig,
     this.taints,
     this.upgradeSettings,
     this.windowsNodeConfig,
@@ -17633,6 +18633,8 @@ class UpdateNodePoolRequest {
                 json_['gvnic'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        image: json_['image'] as core.String?,
+        imageProject: json_['imageProject'] as core.String?,
         imageType: json_['imageType'] as core.String?,
         kubeletConfig: json_.containsKey('kubeletConfig')
             ? NodeKubeletConfig.fromJson(
@@ -17658,6 +18660,12 @@ class UpdateNodePoolRequest {
               )
             : null,
         machineType: json_['machineType'] as core.String?,
+        maintenancePolicy: json_.containsKey('maintenancePolicy')
+            ? NodePoolMaintenancePolicy.fromJson(
+                json_['maintenancePolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maxRunDuration: json_['maxRunDuration'] as core.String?,
         name: json_['name'] as core.String?,
         nodeDrainConfig: json_.containsKey('nodeDrainConfig')
@@ -17699,6 +18707,11 @@ class UpdateNodePoolRequest {
                 json_['tags'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        taintConfig: json_.containsKey('taintConfig')
+            ? TaintConfig.fromJson(
+                json_['taintConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         taints: json_.containsKey('taints')
             ? NodeTaints.fromJson(
                 json_['taints'] as core.Map<core.String, core.dynamic>,
@@ -17738,6 +18751,8 @@ class UpdateNodePoolRequest {
     final flexStart = this.flexStart;
     final gcfsConfig = this.gcfsConfig;
     final gvnic = this.gvnic;
+    final image = this.image;
+    final imageProject = this.imageProject;
     final imageType = this.imageType;
     final kubeletConfig = this.kubeletConfig;
     final labels = this.labels;
@@ -17745,6 +18760,7 @@ class UpdateNodePoolRequest {
     final locations = this.locations;
     final loggingConfig = this.loggingConfig;
     final machineType = this.machineType;
+    final maintenancePolicy = this.maintenancePolicy;
     final maxRunDuration = this.maxRunDuration;
     final name = this.name;
     final nodeDrainConfig = this.nodeDrainConfig;
@@ -17757,6 +18773,7 @@ class UpdateNodePoolRequest {
     final resourceManagerTags = this.resourceManagerTags;
     final storagePools = this.storagePools;
     final tags = this.tags;
+    final taintConfig = this.taintConfig;
     final taints = this.taints;
     final upgradeSettings = this.upgradeSettings;
     final windowsNodeConfig = this.windowsNodeConfig;
@@ -17776,6 +18793,8 @@ class UpdateNodePoolRequest {
       'flexStart': ?flexStart,
       'gcfsConfig': ?gcfsConfig,
       'gvnic': ?gvnic,
+      'image': ?image,
+      'imageProject': ?imageProject,
       'imageType': ?imageType,
       'kubeletConfig': ?kubeletConfig,
       'labels': ?labels,
@@ -17783,6 +18802,7 @@ class UpdateNodePoolRequest {
       'locations': ?locations,
       'loggingConfig': ?loggingConfig,
       'machineType': ?machineType,
+      'maintenancePolicy': ?maintenancePolicy,
       'maxRunDuration': ?maxRunDuration,
       'name': ?name,
       'nodeDrainConfig': ?nodeDrainConfig,
@@ -17795,6 +18815,7 @@ class UpdateNodePoolRequest {
       'resourceManagerTags': ?resourceManagerTags,
       'storagePools': ?storagePools,
       'tags': ?tags,
+      'taintConfig': ?taintConfig,
       'taints': ?taints,
       'upgradeSettings': ?upgradeSettings,
       'windowsNodeConfig': ?windowsNodeConfig,
@@ -17809,6 +18830,11 @@ class UpdateNodePoolRequest {
 class UpgradeDetails {
   /// The end timestamp of the upgrade.
   core.String? endTime;
+
+  /// The emulated version before the upgrade.
+  ///
+  /// Output only.
+  core.String? initialEmulatedVersion;
 
   /// The version before the upgrade.
   core.String? initialVersion;
@@ -17834,41 +18860,54 @@ class UpgradeDetails {
   /// - "RUNNING" : Upgrade is running.
   core.String? state;
 
+  /// The emulated version after the upgrade.
+  ///
+  /// Output only.
+  core.String? targetEmulatedVersion;
+
   /// The version after the upgrade.
   core.String? targetVersion;
 
   UpgradeDetails({
     this.endTime,
+    this.initialEmulatedVersion,
     this.initialVersion,
     this.startTime,
     this.startType,
     this.state,
+    this.targetEmulatedVersion,
     this.targetVersion,
   });
 
   UpgradeDetails.fromJson(core.Map json_)
     : this(
         endTime: json_['endTime'] as core.String?,
+        initialEmulatedVersion: json_['initialEmulatedVersion'] as core.String?,
         initialVersion: json_['initialVersion'] as core.String?,
         startTime: json_['startTime'] as core.String?,
         startType: json_['startType'] as core.String?,
         state: json_['state'] as core.String?,
+        targetEmulatedVersion: json_['targetEmulatedVersion'] as core.String?,
         targetVersion: json_['targetVersion'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final endTime = this.endTime;
+    final initialEmulatedVersion = this.initialEmulatedVersion;
     final initialVersion = this.initialVersion;
     final startTime = this.startTime;
     final startType = this.startType;
     final state = this.state;
+    final targetEmulatedVersion = this.targetEmulatedVersion;
     final targetVersion = this.targetVersion;
     return {
       'endTime': ?endTime,
+      'initialEmulatedVersion': ?initialEmulatedVersion,
       'initialVersion': ?initialVersion,
       'startTime': ?startTime,
       'startType': ?startType,
       'state': ?state,
+      'targetEmulatedVersion': ?targetEmulatedVersion,
       'targetVersion': ?targetVersion,
     };
   }

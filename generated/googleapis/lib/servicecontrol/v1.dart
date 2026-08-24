@@ -2525,4 +2525,32 @@ class TraceSpan {
 }
 
 /// Represents a string that might be shortened to a specified length.
-typedef TruncatableString = $TruncatableString;
+class TruncatableString {
+  /// The number of bytes removed from the original string.
+  ///
+  /// If this value is 0, then the string was not shortened.
+  core.int? truncatedByteCount;
+
+  /// The shortened string.
+  ///
+  /// For example, if the original string is 500 bytes long and the limit of the
+  /// string is 128 bytes, then `value` contains the first 128 bytes of the
+  /// 500-byte string. Truncation always happens on a UTF8 character boundary.
+  /// If there are multi-byte characters in the string, then the length of the
+  /// shortened string might be less than the size limit.
+  core.String? value;
+
+  TruncatableString({this.truncatedByteCount, this.value});
+
+  TruncatableString.fromJson(core.Map json_)
+    : this(
+        truncatedByteCount: json_['truncatedByteCount'] as core.int?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final truncatedByteCount = this.truncatedByteCount;
+    final value = this.value;
+    return {'truncatedByteCount': ?truncatedByteCount, 'value': ?value};
+  }
+}

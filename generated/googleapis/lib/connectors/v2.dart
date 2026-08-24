@@ -245,6 +245,53 @@ class ProjectsLocationsConnectionsResource {
     );
   }
 
+  /// Executes a generic HTTP request.
+  ///
+  /// This supports all payload formats including REST/JSON, GraphQL, XML, SOAP,
+  /// and Multipart by passing the rendered payload as raw bytes.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Connection. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteHttpRequestResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteHttpRequestResponse> executeHttpRequest(
+    ExecuteHttpRequestRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':executeHttpRequest';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExecuteHttpRequestResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Executes a SQL statement specified in the body of the request.
   ///
   /// An example of this SQL statement in the case of Salesforce connector would
@@ -1422,6 +1469,8 @@ class ProjectsLocationsConnectionsToolsResource {
   ///
   /// [pageToken] - Page token.
   ///
+  /// [toolNames] - List of tool names for selective tool fetching.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1437,6 +1486,7 @@ class ProjectsLocationsConnectionsToolsResource {
     core.String? executionConfig_headers,
     core.int? pageSize,
     core.String? pageToken,
+    core.List<core.String>? toolNames,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -1445,6 +1495,7 @@ class ProjectsLocationsConnectionsToolsResource {
           : [executionConfig_headers],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
+      'toolNames': ?toolNames,
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2016,6 +2067,145 @@ class ExecuteActionResponse {
   }
 }
 
+class ExecuteHttpRequestRequest {
+  /// HTTP headers to send with the request (e.g., Content-Type:
+  /// application/json).
+  ///
+  /// Order is preserved and duplicate keys are allowed.
+  core.List<HttpHeader>? headers;
+
+  /// The HTTP method to use for the request.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "HTTP_METHOD_UNSPECIFIED"
+  /// - "HTTP_METHOD_GET"
+  /// - "HTTP_METHOD_POST"
+  /// - "HTTP_METHOD_PUT"
+  /// - "HTTP_METHOD_PATCH"
+  /// - "HTTP_METHOD_DELETE"
+  /// - "HTTP_METHOD_HEAD"
+  /// - "HTTP_METHOD_OPTIONS"
+  core.String? httpMethod;
+
+  /// Raw byte payload.
+  ///
+  /// Used for all pre-serialized formats including JSON, XML, GraphQL, and
+  /// Multipart.
+  core.String? rawBody;
+  core.List<core.int> get rawBodyAsBytes => convert.base64.decode(rawBody!);
+
+  set rawBodyAsBytes(core.List<core.int> bytes_) {
+    rawBody = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// The fully resolved absolute target URL.
+  ///
+  /// Callers must pre-encode any query parameters.
+  ///
+  /// Required.
+  core.String? url;
+
+  ExecuteHttpRequestRequest({
+    this.headers,
+    this.httpMethod,
+    this.rawBody,
+    this.url,
+  });
+
+  ExecuteHttpRequestRequest.fromJson(core.Map json_)
+    : this(
+        headers: (json_['headers'] as core.List?)
+            ?.map(
+              (value) => HttpHeader.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        httpMethod: json_['httpMethod'] as core.String?,
+        rawBody: json_['rawBody'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final headers = this.headers;
+    final httpMethod = this.httpMethod;
+    final rawBody = this.rawBody;
+    final url = this.url;
+    return {
+      'headers': ?headers,
+      'httpMethod': ?httpMethod,
+      'rawBody': ?rawBody,
+      'url': ?url,
+    };
+  }
+}
+
+class ExecuteHttpRequestResponse {
+  /// The raw response body.
+  core.String? body;
+  core.List<core.int> get bodyAsBytes => convert.base64.decode(body!);
+
+  set bodyAsBytes(core.List<core.int> bytes_) {
+    body = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// HTTP headers received in the response.
+  ///
+  /// Order is preserved and duplicate keys are allowed (e.g., multiple
+  /// Set-Cookie headers).
+  core.List<HttpHeader>? headers;
+
+  /// The HTTP status reason phrase received from the backend (e.g., "Not
+  /// Found").
+  ///
+  /// May be empty if the backend did not provide one.
+  core.String? reason;
+
+  /// The HTTP status code received from the backend.
+  core.int? statusCode;
+
+  ExecuteHttpRequestResponse({
+    this.body,
+    this.headers,
+    this.reason,
+    this.statusCode,
+  });
+
+  ExecuteHttpRequestResponse.fromJson(core.Map json_)
+    : this(
+        body: json_['body'] as core.String?,
+        headers: (json_['headers'] as core.List?)
+            ?.map(
+              (value) => HttpHeader.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        reason: json_['reason'] as core.String?,
+        statusCode: json_['statusCode'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final body = this.body;
+    final headers = this.headers;
+    final reason = this.reason;
+    final statusCode = this.statusCode;
+    return {
+      'body': ?body,
+      'headers': ?headers,
+      'reason': ?reason,
+      'statusCode': ?statusCode,
+    };
+  }
+}
+
 /// An execute sql query request containing the query and the connection to
 /// execute it on.
 class ExecuteSqlQueryRequest {
@@ -2466,6 +2656,32 @@ class GetResourceResponse {
   }
 }
 
+/// A single HTTP header.
+///
+/// Keys are case-insensitive. Multiple headers with the same key may be
+/// present.
+class HttpHeader {
+  /// The header name.
+  core.String? key;
+
+  /// The header value.
+  core.String? value;
+
+  HttpHeader({this.key, this.value});
+
+  HttpHeader.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
 /// Input Parameter message contains metadata about the parameters required for
 /// executing an Action.
 class InputParameter {
@@ -2594,6 +2810,21 @@ class InputParameter {
 
 /// JsonSchema representation of schema metadata
 class JsonSchema {
+  /// A comment on the schema.
+  core.String? P_comment;
+
+  /// Definitions for the schema.
+  core.Map<core.String, JsonSchema>? P_defs;
+
+  /// The URI defining the core schema meta-schema.
+  core.String? P_id;
+
+  /// A reference to another schema.
+  core.String? P_ref;
+
+  /// The URI defining the schema.
+  core.String? P_schema;
+
   /// Additional details apart from standard json schema fields, this gives
   /// flexibility to store metadata about the schema
   ///
@@ -2601,14 +2832,53 @@ class JsonSchema {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? additionalDetails;
 
+  /// Schema for additional items.
+  JsonSchema? additionalItems;
+
+  /// Schema for additional properties.
+  JsonSchema? additionalProperties;
+
+  /// Schema that must be valid against all of the sub-schemas.
+  core.List<JsonSchema>? allOf;
+
+  /// Schema that must be valid against at least one of the sub-schemas.
+  core.List<JsonSchema>? anyOf;
+
+  /// Const value that the data must match.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? const_;
+
+  /// Schema that applies to at least one item in an array.
+  JsonSchema? contains;
+
+  /// Encoding of the content.
+  core.String? contentEncoding;
+
+  /// Media type of the content.
+  core.String? contentMediaType;
+
   /// The default value of the field or object described by this schema.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? default_;
 
+  /// Definitions for the schema.
+  core.Map<core.String, JsonSchema>? definitions;
+
+  /// Dependencies for the schema.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? dependencies;
+
   /// A description of this schema.
   core.String? description;
+
+  /// Schema that must be valid if the "if" schema is invalid.
+  JsonSchema? else_;
 
   /// Possible values for an enumeration.
   ///
@@ -2619,15 +2889,30 @@ class JsonSchema {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object?>? enum_;
 
+  /// Examples of the value.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? examples;
+
   /// Whether the maximum number value is exclusive.
-  core.bool? exclusiveMaximum;
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? exclusiveMaximum;
 
   /// Whether the minimum number value is exclusive.
-  core.bool? exclusiveMinimum;
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? exclusiveMinimum;
 
   /// Format of the value as per
   /// https://json-schema.org/understanding-json-schema/reference/string.html#format
   core.String? format;
+
+  /// Schema that must be valid if the "if" schema is valid.
+  JsonSchema? if_;
 
   /// Schema that applies to array values, applicable only if this is of type
   /// `array`.
@@ -2688,6 +2973,9 @@ class JsonSchema {
   /// Maximum length of the string field.
   core.int? maxLength;
 
+  /// Maximum number of properties.
+  core.int? maxProperties;
+
   /// Maximum value of the number field.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -2700,11 +2988,23 @@ class JsonSchema {
   /// Minimum length of the string field.
   core.int? minLength;
 
+  /// Minimum number of properties.
+  core.int? minProperties;
+
   /// Minimum value of the number field.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? minimum;
+
+  /// Number must be a multiple of this value.
+  core.double? multipleOf;
+
+  /// Schema that must not be valid.
+  JsonSchema? not;
+
+  /// Schema that must be valid against at least one of the sub-schemas.
+  core.List<JsonSchema>? oneOf;
 
   /// Regex pattern of the string field.
   ///
@@ -2712,14 +3012,29 @@ class JsonSchema {
   /// string value should match.
   core.String? pattern;
 
+  /// Pattern properties for the schema.
+  core.Map<core.String, JsonSchema>? patternProperties;
+
   /// The child schemas, applicable only if this is of type `object`.
   ///
   /// The key is the name of the property and the value is the json schema that
   /// describes that property
   core.Map<core.String, JsonSchema>? properties;
 
+  /// Schema for property names.
+  JsonSchema? propertyNames;
+
+  /// Whether the value is read-only.
+  core.bool? readOnly;
+
   /// Whether this property is required.
   core.List<core.String>? required;
+
+  /// Schema that must be valid if the "if" schema is valid.
+  JsonSchema? then;
+
+  /// A title of the schema.
+  core.String? title;
 
   /// JSON Schema Validation: A Vocabulary for Structural Validation of JSON
   core.List<core.String>? type;
@@ -2727,40 +3042,140 @@ class JsonSchema {
   /// Whether the items in the array field are unique.
   core.bool? uniqueItems;
 
+  /// Whether the value is write-only.
+  core.bool? writeOnly;
+
   JsonSchema({
+    this.P_comment,
+    this.P_defs,
+    this.P_id,
+    this.P_ref,
+    this.P_schema,
     this.additionalDetails,
+    this.additionalItems,
+    this.additionalProperties,
+    this.allOf,
+    this.anyOf,
+    this.const_,
+    this.contains,
+    this.contentEncoding,
+    this.contentMediaType,
     this.default_,
+    this.definitions,
+    this.dependencies,
     this.description,
+    this.else_,
     this.enum_,
+    this.examples,
     this.exclusiveMaximum,
     this.exclusiveMinimum,
     this.format,
+    this.if_,
     this.items,
     this.jdbcType,
     this.maxItems,
     this.maxLength,
+    this.maxProperties,
     this.maximum,
     this.minItems,
     this.minLength,
+    this.minProperties,
     this.minimum,
+    this.multipleOf,
+    this.not,
+    this.oneOf,
     this.pattern,
+    this.patternProperties,
     this.properties,
+    this.propertyNames,
+    this.readOnly,
     this.required,
+    this.then,
+    this.title,
     this.type,
     this.uniqueItems,
+    this.writeOnly,
   });
 
   JsonSchema.fromJson(core.Map json_)
     : this(
+        P_comment: json_[r'$comment'] as core.String?,
+        P_defs: (json_[r'$defs'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+          ),
+        ),
+        P_id: json_[r'$id'] as core.String?,
+        P_ref: json_[r'$ref'] as core.String?,
+        P_schema: json_[r'$schema'] as core.String?,
         additionalDetails: json_.containsKey('additionalDetails')
             ? json_['additionalDetails'] as core.Map<core.String, core.dynamic>
             : null,
+        additionalItems: json_.containsKey('additionalItems')
+            ? JsonSchema.fromJson(
+                json_['additionalItems'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        additionalProperties: json_.containsKey('additionalProperties')
+            ? JsonSchema.fromJson(
+                json_['additionalProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        allOf: (json_['allOf'] as core.List?)
+            ?.map(
+              (value) => JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        anyOf: (json_['anyOf'] as core.List?)
+            ?.map(
+              (value) => JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        const_: json_['const'],
+        contains: json_.containsKey('contains')
+            ? JsonSchema.fromJson(
+                json_['contains'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contentEncoding: json_['contentEncoding'] as core.String?,
+        contentMediaType: json_['contentMediaType'] as core.String?,
         default_: json_['default'],
+        definitions:
+            (json_['definitions'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                JsonSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        dependencies: json_.containsKey('dependencies')
+            ? json_['dependencies'] as core.Map<core.String, core.dynamic>
+            : null,
         description: json_['description'] as core.String?,
+        else_: json_.containsKey('else')
+            ? JsonSchema.fromJson(
+                json_['else'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
-        exclusiveMaximum: json_['exclusiveMaximum'] as core.bool?,
-        exclusiveMinimum: json_['exclusiveMinimum'] as core.bool?,
+        examples: json_.containsKey('examples')
+            ? json_['examples'] as core.List
+            : null,
+        exclusiveMaximum: json_['exclusiveMaximum'],
+        exclusiveMinimum: json_['exclusiveMinimum'],
         format: json_['format'] as core.String?,
+        if_: json_.containsKey('if')
+            ? JsonSchema.fromJson(
+                json_['if'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         items: json_.containsKey('items')
             ? JsonSchema.fromJson(
                 json_['items'] as core.Map<core.String, core.dynamic>,
@@ -2769,11 +3184,36 @@ class JsonSchema {
         jdbcType: json_['jdbcType'] as core.String?,
         maxItems: json_['maxItems'] as core.int?,
         maxLength: json_['maxLength'] as core.int?,
+        maxProperties: json_['maxProperties'] as core.int?,
         maximum: json_['maximum'],
         minItems: json_['minItems'] as core.int?,
         minLength: json_['minLength'] as core.int?,
+        minProperties: json_['minProperties'] as core.int?,
         minimum: json_['minimum'],
+        multipleOf: (json_['multipleOf'] as core.num?)?.toDouble(),
+        not: json_.containsKey('not')
+            ? JsonSchema.fromJson(
+                json_['not'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oneOf: (json_['oneOf'] as core.List?)
+            ?.map(
+              (value) => JsonSchema.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         pattern: json_['pattern'] as core.String?,
+        patternProperties:
+            (json_['patternProperties'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    JsonSchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
         properties:
             (json_['properties'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(
@@ -2783,57 +3223,128 @@ class JsonSchema {
                 ),
               ),
             ),
+        propertyNames: json_.containsKey('propertyNames')
+            ? JsonSchema.fromJson(
+                json_['propertyNames'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        readOnly: json_['readOnly'] as core.bool?,
         required: (json_['required'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        then: json_.containsKey('then')
+            ? JsonSchema.fromJson(
+                json_['then'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        title: json_['title'] as core.String?,
         type: (json_['type'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
         uniqueItems: json_['uniqueItems'] as core.bool?,
+        writeOnly: json_['writeOnly'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final P_comment = this.P_comment;
+    final P_defs = this.P_defs;
+    final P_id = this.P_id;
+    final P_ref = this.P_ref;
+    final P_schema = this.P_schema;
     final additionalDetails = this.additionalDetails;
+    final additionalItems = this.additionalItems;
+    final additionalProperties = this.additionalProperties;
+    final allOf = this.allOf;
+    final anyOf = this.anyOf;
+    final const_ = this.const_;
+    final contains = this.contains;
+    final contentEncoding = this.contentEncoding;
+    final contentMediaType = this.contentMediaType;
     final default_ = this.default_;
+    final definitions = this.definitions;
+    final dependencies = this.dependencies;
     final description = this.description;
+    final else_ = this.else_;
     final enum_ = this.enum_;
+    final examples = this.examples;
     final exclusiveMaximum = this.exclusiveMaximum;
     final exclusiveMinimum = this.exclusiveMinimum;
     final format = this.format;
+    final if_ = this.if_;
     final items = this.items;
     final jdbcType = this.jdbcType;
     final maxItems = this.maxItems;
     final maxLength = this.maxLength;
+    final maxProperties = this.maxProperties;
     final maximum = this.maximum;
     final minItems = this.minItems;
     final minLength = this.minLength;
+    final minProperties = this.minProperties;
     final minimum = this.minimum;
+    final multipleOf = this.multipleOf;
+    final not = this.not;
+    final oneOf = this.oneOf;
     final pattern = this.pattern;
+    final patternProperties = this.patternProperties;
     final properties = this.properties;
+    final propertyNames = this.propertyNames;
+    final readOnly = this.readOnly;
     final required = this.required;
+    final then = this.then;
+    final title = this.title;
     final type = this.type;
     final uniqueItems = this.uniqueItems;
+    final writeOnly = this.writeOnly;
     return {
+      r'$comment': ?P_comment,
+      r'$defs': ?P_defs,
+      r'$id': ?P_id,
+      r'$ref': ?P_ref,
+      r'$schema': ?P_schema,
       'additionalDetails': ?additionalDetails,
+      'additionalItems': ?additionalItems,
+      'additionalProperties': ?additionalProperties,
+      'allOf': ?allOf,
+      'anyOf': ?anyOf,
+      'const': ?const_,
+      'contains': ?contains,
+      'contentEncoding': ?contentEncoding,
+      'contentMediaType': ?contentMediaType,
       'default': ?default_,
+      'definitions': ?definitions,
+      'dependencies': ?dependencies,
       'description': ?description,
+      'else': ?else_,
       'enum': ?enum_,
+      'examples': ?examples,
       'exclusiveMaximum': ?exclusiveMaximum,
       'exclusiveMinimum': ?exclusiveMinimum,
       'format': ?format,
+      'if': ?if_,
       'items': ?items,
       'jdbcType': ?jdbcType,
       'maxItems': ?maxItems,
       'maxLength': ?maxLength,
+      'maxProperties': ?maxProperties,
       'maximum': ?maximum,
       'minItems': ?minItems,
       'minLength': ?minLength,
+      'minProperties': ?minProperties,
       'minimum': ?minimum,
+      'multipleOf': ?multipleOf,
+      'not': ?not,
+      'oneOf': ?oneOf,
       'pattern': ?pattern,
+      'patternProperties': ?patternProperties,
       'properties': ?properties,
+      'propertyNames': ?propertyNames,
+      'readOnly': ?readOnly,
       'required': ?required,
+      'then': ?then,
+      'title': ?title,
       'type': ?type,
       'uniqueItems': ?uniqueItems,
+      'writeOnly': ?writeOnly,
     };
   }
 }
@@ -3087,6 +3598,9 @@ class ListToolsPostRequest {
   /// Page token.
   core.String? pageToken;
 
+  /// List of tool names to for selective tool fetching.
+  core.List<core.String>? toolNames;
+
   /// List of tool specifications.
   ToolSpec? toolSpec;
 
@@ -3094,6 +3608,7 @@ class ListToolsPostRequest {
     this.executionConfig,
     this.pageSize,
     this.pageToken,
+    this.toolNames,
     this.toolSpec,
   });
 
@@ -3106,6 +3621,9 @@ class ListToolsPostRequest {
             : null,
         pageSize: json_['pageSize'] as core.int?,
         pageToken: json_['pageToken'] as core.String?,
+        toolNames: (json_['toolNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         toolSpec: json_.containsKey('toolSpec')
             ? ToolSpec.fromJson(
                 json_['toolSpec'] as core.Map<core.String, core.dynamic>,
@@ -3117,11 +3635,13 @@ class ListToolsPostRequest {
     final executionConfig = this.executionConfig;
     final pageSize = this.pageSize;
     final pageToken = this.pageToken;
+    final toolNames = this.toolNames;
     final toolSpec = this.toolSpec;
     return {
       'executionConfig': ?executionConfig,
       'pageSize': ?pageSize,
       'pageToken': ?pageToken,
+      'toolNames': ?toolNames,
       'toolSpec': ?toolSpec,
     };
   }

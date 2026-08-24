@@ -2827,7 +2827,7 @@ class ProjectsLocationsReportConfigsResource {
   /// will become the last component of the report config name. The ID must be
   /// unique within the project, must conform with RFC-1034, is restricted to
   /// lower-cased letters, and has a maximum length of 63 characters. The ID
-  /// must match the regular expression: \[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?.
+  /// must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
@@ -3047,7 +3047,7 @@ class ProjectsLocationsReportConfigsReportsResource {
   /// the last component of the report name. The id must be unique within the
   /// project, must conform with RFC-1034, is restricted to lower-cased letters,
   /// and has a maximum length of 63 characters. The id must match the regular
-  /// expression: \[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?.
+  /// expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the

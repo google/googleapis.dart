@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260401",
+    "revision": "20260722",
     "rootUrl": "https://beyondcorp.googleapis.com/",
     "servicePath": "",
     "title": "BeyondCorp API",
@@ -275,7 +275,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "beyondcorp.projects.locations.list",
@@ -284,7 +284,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -3255,6 +3255,10 @@
                     "$ref": "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo",
                     "description": "Optional. The device information configuration."
                 },
+                "dispatchInfo": {
+                    "$ref": "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo",
+                    "description": "Optional. The dispatch information configuration."
+                },
                 "groupInfo": {
                     "$ref": "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo",
                     "description": "Optional. Group details."
@@ -3288,6 +3292,29 @@
             "properties": {
                 "outputType": {
                     "description": "Optional. The output type details for the delegated device.",
+                    "enum": [
+                        "OUTPUT_TYPE_UNSPECIFIED",
+                        "PROTOBUF",
+                        "JSON",
+                        "NONE"
+                    ],
+                    "enumDescriptions": [
+                        "The unspecified output type.",
+                        "Protobuf output type.",
+                        "JSON output type.",
+                        "Explicitly disable header output."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo": {
+            "description": "The delegated dispatch information configuration.",
+            "id": "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo",
+            "properties": {
+                "outputType": {
+                    "description": "Optional. The output type details for the delegated dispatch information.",
                     "enum": [
                         "OUTPUT_TYPE_UNSPECIFIED",
                         "PROTOBUF",

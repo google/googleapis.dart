@@ -87,7 +87,8 @@ class AccountsReportsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Id of the account making the call. Must be a
-  /// standalone account or an MCA subaccount. Format: accounts/{account}
+  /// standalone account or a subaccount of an advanced account. Format:
+  /// accounts/{account}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1133,7 +1134,7 @@ class NonProductPerformanceView {
   /// Metric.
   core.String? clicks;
 
-  /// Date in the merchant timezone to which metrics apply.
+  /// Date in the Merchant Center account timezone to which metrics apply.
   ///
   /// Segment. Condition on `date` is required in the `WHERE` clause.
   Date? date;
@@ -1144,8 +1145,8 @@ class NonProductPerformanceView {
   /// Metric.
   core.String? impressions;
 
-  /// First day of the week (Monday) of the metrics date in the merchant
-  /// timezone.
+  /// First day of the week (Monday) of the metrics date in the Merchant Center
+  /// account timezone.
   ///
   /// Segment.
   Date? week;
@@ -1674,7 +1675,7 @@ class ProductPerformanceView {
   /// cannot be determined, a special 'ZZ' code is returned.
   core.String? customerCountryCode;
 
-  /// Date in the merchant timezone to which metrics apply.
+  /// Date in the Merchant Center account timezone to which metrics apply.
   ///
   /// Segment. Condition on `date` is required in the `WHERE` clause.
   Date? date;
@@ -1748,8 +1749,8 @@ class ProductPerformanceView {
   /// Segment.
   core.String? title;
 
-  /// First day of the week (Monday) of the metrics date in the merchant
-  /// timezone.
+  /// First day of the week (Monday) of the metrics date in the Merchant Center
+  /// account timezone.
   ///
   /// Segment.
   Date? week;

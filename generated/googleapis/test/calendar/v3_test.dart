@@ -127,6 +127,7 @@ api.Calendar buildCalendar() {
     o.etag = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
+    o.labelProperties = buildLabelProperties();
     o.location = 'foo';
     o.summary = 'foo';
     o.timeZone = 'foo';
@@ -145,6 +146,7 @@ void checkCalendar(api.Calendar o) {
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.kind!, unittest.equals('foo'));
+    checkLabelProperties(o.labelProperties!);
     unittest.expect(o.location!, unittest.equals('foo'));
     unittest.expect(o.summary!, unittest.equals('foo'));
     unittest.expect(o.timeZone!, unittest.equals('foo'));
@@ -927,6 +929,7 @@ api.Event buildEvent() {
     o.end = buildEventDateTime();
     o.endTimeUnspecified = true;
     o.etag = 'foo';
+    o.eventLabelId = 'foo';
     o.eventType = 'foo';
     o.extendedProperties = buildEventExtendedProperties();
     o.focusTimeProperties = buildEventFocusTimeProperties();
@@ -981,6 +984,7 @@ void checkEvent(api.Event o) {
     checkEventDateTime(o.end!);
     unittest.expect(o.endTimeUnspecified!, unittest.isTrue);
     unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(o.eventLabelId!, unittest.equals('foo'));
     unittest.expect(o.eventType!, unittest.equals('foo'));
     checkEventExtendedProperties(o.extendedProperties!);
     checkEventFocusTimeProperties(o.focusTimeProperties!);
@@ -1051,6 +1055,7 @@ api.EventAttendee buildEventAttendee() {
   buildCounterEventAttendee++;
   if (buildCounterEventAttendee < 3) {
     o.additionalGuests = 42;
+    o.asyncOperation = 'foo';
     o.comment = 'foo';
     o.displayName = 'foo';
     o.email = 'foo';
@@ -1069,6 +1074,7 @@ void checkEventAttendee(api.EventAttendee o) {
   buildCounterEventAttendee++;
   if (buildCounterEventAttendee < 3) {
     unittest.expect(o.additionalGuests!, unittest.equals(42));
+    unittest.expect(o.asyncOperation!, unittest.equals('foo'));
     unittest.expect(o.comment!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.email!, unittest.equals('foo'));
@@ -1155,6 +1161,29 @@ void checkEventFocusTimeProperties(api.EventFocusTimeProperties o) {
     unittest.expect(o.declineMessage!, unittest.equals('foo'));
   }
   buildCounterEventFocusTimeProperties--;
+}
+
+core.int buildCounterEventLabel = 0;
+api.EventLabel buildEventLabel() {
+  final o = api.EventLabel();
+  buildCounterEventLabel++;
+  if (buildCounterEventLabel < 3) {
+    o.backgroundColor = 'foo';
+    o.id = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterEventLabel--;
+  return o;
+}
+
+void checkEventLabel(api.EventLabel o) {
+  buildCounterEventLabel++;
+  if (buildCounterEventLabel < 3) {
+    unittest.expect(o.backgroundColor!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+  }
+  buildCounterEventLabel--;
 }
 
 core.int buildCounterEventOutOfOfficeProperties = 0;
@@ -1542,6 +1571,36 @@ void checkFreeBusyResponse(api.FreeBusyResponse o) {
   buildCounterFreeBusyResponse--;
 }
 
+core.List<api.EventLabel> buildUnnamed27() => [
+  buildEventLabel(),
+  buildEventLabel(),
+];
+
+void checkUnnamed27(core.List<api.EventLabel> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkEventLabel(o[0]);
+  checkEventLabel(o[1]);
+}
+
+core.int buildCounterLabelProperties = 0;
+api.LabelProperties buildLabelProperties() {
+  final o = api.LabelProperties();
+  buildCounterLabelProperties++;
+  if (buildCounterLabelProperties < 3) {
+    o.eventLabels = buildUnnamed27();
+  }
+  buildCounterLabelProperties--;
+  return o;
+}
+
+void checkLabelProperties(api.LabelProperties o) {
+  buildCounterLabelProperties++;
+  if (buildCounterLabelProperties < 3) {
+    checkUnnamed27(o.eventLabels!);
+  }
+  buildCounterLabelProperties--;
+}
+
 core.int buildCounterSetting = 0;
 api.Setting buildSetting() {
   final o = api.Setting();
@@ -1567,9 +1626,9 @@ void checkSetting(api.Setting o) {
   buildCounterSetting--;
 }
 
-core.List<api.Setting> buildUnnamed27() => [buildSetting(), buildSetting()];
+core.List<api.Setting> buildUnnamed28() => [buildSetting(), buildSetting()];
 
-void checkUnnamed27(core.List<api.Setting> o) {
+void checkUnnamed28(core.List<api.Setting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSetting(o[0]);
   checkSetting(o[1]);
@@ -1581,7 +1640,7 @@ api.Settings buildSettings() {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed27();
+    o.items = buildUnnamed28();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.nextSyncToken = 'foo';
@@ -1594,7 +1653,7 @@ void checkSettings(api.Settings o) {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     unittest.expect(o.etag!, unittest.equals('foo'));
-    checkUnnamed27(o.items!);
+    checkUnnamed28(o.items!);
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     unittest.expect(o.nextSyncToken!, unittest.equals('foo'));
@@ -1627,14 +1686,6 @@ void checkTimePeriod(api.TimePeriod o) {
     );
   }
   buildCounterTimePeriod--;
-}
-
-core.List<core.String> buildUnnamed28() => ['foo', 'foo'];
-
-void checkUnnamed28(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed29() => ['foo', 'foo'];
@@ -1672,6 +1723,14 @@ void checkUnnamed32(core.List<core.String> o) {
 core.List<core.String> buildUnnamed33() => ['foo', 'foo'];
 
 void checkUnnamed33(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed34() => ['foo', 'foo'];
+
+void checkUnnamed34(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2039,6 +2098,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EventLabel', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventLabel.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEventLabel(od);
+    });
+  });
+
   unittest.group('obj-schema-EventOutOfOfficeProperties', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEventOutOfOfficeProperties();
@@ -2157,6 +2227,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkFreeBusyResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-LabelProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLabelProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LabelProperties.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkLabelProperties(od);
     });
   });
 
@@ -3007,6 +3088,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_showDeleted = true;
       final arg_showHidden = true;
+      final arg_showOwnOrganizationOnly = true;
       final arg_syncToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3067,6 +3149,10 @@ void main() {
             unittest.equals('$arg_showHidden'),
           );
           unittest.expect(
+            queryMap['showOwnOrganizationOnly']!.first,
+            unittest.equals('$arg_showOwnOrganizationOnly'),
+          );
+          unittest.expect(
             queryMap['syncToken']!.first,
             unittest.equals(arg_syncToken),
           );
@@ -3087,6 +3173,7 @@ void main() {
         pageToken: arg_pageToken,
         showDeleted: arg_showDeleted,
         showHidden: arg_showHidden,
+        showOwnOrganizationOnly: arg_showOwnOrganizationOnly,
         syncToken: arg_syncToken,
         $fields: arg_$fields,
       );
@@ -3254,6 +3341,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_showDeleted = true;
       final arg_showHidden = true;
+      final arg_showOwnOrganizationOnly = true;
       final arg_syncToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -3319,6 +3407,10 @@ void main() {
             unittest.equals('$arg_showHidden'),
           );
           unittest.expect(
+            queryMap['showOwnOrganizationOnly']!.first,
+            unittest.equals('$arg_showOwnOrganizationOnly'),
+          );
+          unittest.expect(
             queryMap['syncToken']!.first,
             unittest.equals(arg_syncToken),
           );
@@ -3340,6 +3432,7 @@ void main() {
         pageToken: arg_pageToken,
         showDeleted: arg_showDeleted,
         showHidden: arg_showHidden,
+        showOwnOrganizationOnly: arg_showOwnOrganizationOnly,
         syncToken: arg_syncToken,
         $fields: arg_$fields,
       );
@@ -3665,6 +3758,89 @@ void main() {
         $fields: arg_$fields,
       );
       checkCalendar(response as api.Calendar);
+    });
+
+    unittest.test('method--transferOwnership', () async {
+      final mock = HttpServerMock();
+      final res = api.CalendarApi(mock).calendars;
+      final arg_calendarId = 'foo';
+      final arg_newDataOwner = 'foo';
+      final arg_useAdminAccess = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('calendar/v3/'),
+          );
+          pathOffset += 12;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 10),
+            unittest.equals('calendars/'),
+          );
+          pathOffset += 10;
+          index = path.indexOf('/transferOwnership', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_calendarId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 18),
+            unittest.equals('/transferOwnership'),
+          );
+          pathOffset += 18;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['newDataOwner']!.first,
+            unittest.equals(arg_newDataOwner),
+          );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = '';
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      await res.transferOwnership(
+        arg_calendarId,
+        arg_newDataOwner,
+        arg_useAdminAccess,
+        $fields: arg_$fields,
+      );
     });
 
     unittest.test('method--update', () async {
@@ -4049,6 +4225,7 @@ void main() {
       final arg_request = buildEvent();
       final arg_calendarId = 'foo';
       final arg_conferenceDataVersion = 42;
+      final arg_eventLabelVersion = 42;
       final arg_supportsAttachments = true;
       final arg_$fields = 'foo';
       mock.register(
@@ -4110,6 +4287,10 @@ void main() {
             unittest.equals(arg_conferenceDataVersion),
           );
           unittest.expect(
+            core.int.parse(queryMap['eventLabelVersion']!.first),
+            unittest.equals(arg_eventLabelVersion),
+          );
+          unittest.expect(
             queryMap['supportsAttachments']!.first,
             unittest.equals('$arg_supportsAttachments'),
           );
@@ -4128,6 +4309,7 @@ void main() {
         arg_request,
         arg_calendarId,
         conferenceDataVersion: arg_conferenceDataVersion,
+        eventLabelVersion: arg_eventLabelVersion,
         supportsAttachments: arg_supportsAttachments,
         $fields: arg_$fields,
       );
@@ -4140,6 +4322,7 @@ void main() {
       final arg_request = buildEvent();
       final arg_calendarId = 'foo';
       final arg_conferenceDataVersion = 42;
+      final arg_eventLabelVersion = 42;
       final arg_maxAttendees = 42;
       final arg_sendNotifications = true;
       final arg_sendUpdates = 'foo';
@@ -4204,6 +4387,10 @@ void main() {
             unittest.equals(arg_conferenceDataVersion),
           );
           unittest.expect(
+            core.int.parse(queryMap['eventLabelVersion']!.first),
+            unittest.equals(arg_eventLabelVersion),
+          );
+          unittest.expect(
             core.int.parse(queryMap['maxAttendees']!.first),
             unittest.equals(arg_maxAttendees),
           );
@@ -4234,6 +4421,7 @@ void main() {
         arg_request,
         arg_calendarId,
         conferenceDataVersion: arg_conferenceDataVersion,
+        eventLabelVersion: arg_eventLabelVersion,
         maxAttendees: arg_maxAttendees,
         sendNotifications: arg_sendNotifications,
         sendUpdates: arg_sendUpdates,
@@ -4388,15 +4576,15 @@ void main() {
       final res = api.CalendarApi(mock).events;
       final arg_calendarId = 'foo';
       final arg_alwaysIncludeEmail = true;
-      final arg_eventTypes = buildUnnamed28();
+      final arg_eventTypes = buildUnnamed29();
       final arg_iCalUID = 'foo';
       final arg_maxAttendees = 42;
       final arg_maxResults = 42;
       final arg_orderBy = 'foo';
       final arg_pageToken = 'foo';
-      final arg_privateExtendedProperty = buildUnnamed29();
+      final arg_privateExtendedProperty = buildUnnamed30();
       final arg_q = 'foo';
-      final arg_sharedExtendedProperty = buildUnnamed30();
+      final arg_sharedExtendedProperty = buildUnnamed31();
       final arg_showDeleted = true;
       final arg_showHiddenInvitations = true;
       final arg_singleEvents = true;
@@ -4672,6 +4860,7 @@ void main() {
       final arg_eventId = 'foo';
       final arg_alwaysIncludeEmail = true;
       final arg_conferenceDataVersion = 42;
+      final arg_eventLabelVersion = 42;
       final arg_maxAttendees = 42;
       final arg_sendNotifications = true;
       final arg_sendUpdates = 'foo';
@@ -4743,6 +4932,10 @@ void main() {
             unittest.equals(arg_conferenceDataVersion),
           );
           unittest.expect(
+            core.int.parse(queryMap['eventLabelVersion']!.first),
+            unittest.equals(arg_eventLabelVersion),
+          );
+          unittest.expect(
             core.int.parse(queryMap['maxAttendees']!.first),
             unittest.equals(arg_maxAttendees),
           );
@@ -4775,6 +4968,7 @@ void main() {
         arg_eventId,
         alwaysIncludeEmail: arg_alwaysIncludeEmail,
         conferenceDataVersion: arg_conferenceDataVersion,
+        eventLabelVersion: arg_eventLabelVersion,
         maxAttendees: arg_maxAttendees,
         sendNotifications: arg_sendNotifications,
         sendUpdates: arg_sendUpdates,
@@ -4879,6 +5073,7 @@ void main() {
       final arg_eventId = 'foo';
       final arg_alwaysIncludeEmail = true;
       final arg_conferenceDataVersion = 42;
+      final arg_eventLabelVersion = 42;
       final arg_maxAttendees = 42;
       final arg_sendNotifications = true;
       final arg_sendUpdates = 'foo';
@@ -4950,6 +5145,10 @@ void main() {
             unittest.equals(arg_conferenceDataVersion),
           );
           unittest.expect(
+            core.int.parse(queryMap['eventLabelVersion']!.first),
+            unittest.equals(arg_eventLabelVersion),
+          );
+          unittest.expect(
             core.int.parse(queryMap['maxAttendees']!.first),
             unittest.equals(arg_maxAttendees),
           );
@@ -4982,6 +5181,7 @@ void main() {
         arg_eventId,
         alwaysIncludeEmail: arg_alwaysIncludeEmail,
         conferenceDataVersion: arg_conferenceDataVersion,
+        eventLabelVersion: arg_eventLabelVersion,
         maxAttendees: arg_maxAttendees,
         sendNotifications: arg_sendNotifications,
         sendUpdates: arg_sendUpdates,
@@ -4997,15 +5197,15 @@ void main() {
       final arg_request = buildChannel();
       final arg_calendarId = 'foo';
       final arg_alwaysIncludeEmail = true;
-      final arg_eventTypes = buildUnnamed31();
+      final arg_eventTypes = buildUnnamed32();
       final arg_iCalUID = 'foo';
       final arg_maxAttendees = 42;
       final arg_maxResults = 42;
       final arg_orderBy = 'foo';
       final arg_pageToken = 'foo';
-      final arg_privateExtendedProperty = buildUnnamed32();
+      final arg_privateExtendedProperty = buildUnnamed33();
       final arg_q = 'foo';
-      final arg_sharedExtendedProperty = buildUnnamed33();
+      final arg_sharedExtendedProperty = buildUnnamed34();
       final arg_showDeleted = true;
       final arg_showHiddenInvitations = true;
       final arg_singleEvents = true;

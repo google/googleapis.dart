@@ -2889,6 +2889,8 @@ class ApplicationPolicy {
   /// governed by credentialProviderPolicyDefault.
   /// - "CREDENTIAL_PROVIDER_ALLOWED" : App is allowed to act as a credential
   /// provider.
+  /// - "CREDENTIAL_PROVIDER_DISALLOWED" : App is not allowed to act as a
+  /// credential provider.
   core.String? credentialProviderPolicy;
 
   /// Configuration for this custom app.install_type must be set to CUSTOM for
@@ -3409,13 +3411,23 @@ class ApplicationReport {
   /// number.
   core.String? packageSha256Hash;
 
+  /// Use signingKeyCerts instead.
+  ///
   /// The SHA-1 hash of each android.content.pm.Signature
   /// (https://developer.android.com/reference/android/content/pm/Signature.html)
-  /// associated with the app package.
+  /// associated with the app package. Each byte of each hash value is
+  /// represented as a two-digit hexadecimal number.
   ///
-  /// Each byte of each hash value is represented as a two-digit hexadecimal
-  /// number.
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? signingKeyCertFingerprints;
+
+  /// Signing key certificates of the app.
+  ///
+  /// Output only.
+  core.List<ApplicationSigningKeyCert>? signingKeyCerts;
 
   /// Application state.
   /// Possible string values are:
@@ -3447,6 +3459,7 @@ class ApplicationReport {
     this.packageName,
     this.packageSha256Hash,
     this.signingKeyCertFingerprints,
+    this.signingKeyCerts,
     this.state,
     this.userFacingType,
     this.versionCode,
@@ -3478,6 +3491,13 @@ class ApplicationReport {
             (json_['signingKeyCertFingerprints'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        signingKeyCerts: (json_['signingKeyCerts'] as core.List?)
+            ?.map(
+              (value) => ApplicationSigningKeyCert.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         state: json_['state'] as core.String?,
         userFacingType: json_['userFacingType'] as core.String?,
         versionCode: json_['versionCode'] as core.int?,
@@ -3493,6 +3513,7 @@ class ApplicationReport {
     final packageName = this.packageName;
     final packageSha256Hash = this.packageSha256Hash;
     final signingKeyCertFingerprints = this.signingKeyCertFingerprints;
+    final signingKeyCerts = this.signingKeyCerts;
     final state = this.state;
     final userFacingType = this.userFacingType;
     final versionCode = this.versionCode;
@@ -3506,6 +3527,7 @@ class ApplicationReport {
       'packageName': ?packageName,
       'packageSha256Hash': ?packageSha256Hash,
       'signingKeyCertFingerprints': ?signingKeyCertFingerprints,
+      'signingKeyCerts': ?signingKeyCerts,
       'state': ?state,
       'userFacingType': ?userFacingType,
       'versionCode': ?versionCode,
@@ -4297,6 +4319,67 @@ class ContentProviderEndpoint {
       'packageName': ?packageName,
       'signingCertsSha256': ?signingCertsSha256,
       'uri': ?uri,
+    };
+  }
+}
+
+/// Policies controlling cross-device communication.
+class CrossDevicePolicies {
+  /// Manages video streaming of apps on the device for fully managed devices or
+  /// in the work profile for devices with work profiles to nearby devices.
+  ///
+  /// This is supported on Android 13 and above.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "NEARBY_APP_STREAMING_UNSPECIFIED" : Unspecified. Defaults to
+  /// NEARBY_APP_STREAMING_USER_CHOICE_SAME_MANAGED_ACCOUNT.
+  /// - "NEARBY_APP_STREAMING_USER_CHOICE" : The user is allowed to choose
+  /// whether to stream apps to nearby devices.
+  /// - "NEARBY_APP_STREAMING_DISABLED" : Disables app streaming to nearby
+  /// devices.
+  /// - "NEARBY_APP_STREAMING_USER_CHOICE_SAME_MANAGED_ACCOUNT" : The user is
+  /// allowed to choose whether to stream apps to other nearby devices which are
+  /// signed in with the same authenticated managed account.
+  core.String? nearbyAppStreaming;
+
+  /// Manages streaming of notifications from apps on the device for fully
+  /// managed devices or in the work profile for devices with work profiles to
+  /// nearby devices.
+  ///
+  /// This is supported on Android 13 and above.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "NEARBY_NOTIFICATION_STREAMING_UNSPECIFIED" : Unspecified. Defaults to
+  /// NEARBY_NOTIFICATION_STREAMING_USER_CHOICE_SAME_MANAGED_ACCOUNT.
+  /// - "NEARBY_NOTIFICATION_STREAMING_USER_CHOICE" : The user is allowed to
+  /// choose whether to stream notifications to nearby devices.
+  /// - "NEARBY_NOTIFICATION_STREAMING_DISABLED" : Disables notification
+  /// streaming to nearby devices.
+  /// - "NEARBY_NOTIFICATION_STREAMING_USER_CHOICE_SAME_MANAGED_ACCOUNT" : The
+  /// user is allowed to choose whether to stream notifications to other nearby
+  /// devices which are signed in with the same authenticated managed account.
+  core.String? nearbyNotificationStreaming;
+
+  CrossDevicePolicies({
+    this.nearbyAppStreaming,
+    this.nearbyNotificationStreaming,
+  });
+
+  CrossDevicePolicies.fromJson(core.Map json_)
+    : this(
+        nearbyAppStreaming: json_['nearbyAppStreaming'] as core.String?,
+        nearbyNotificationStreaming:
+            json_['nearbyNotificationStreaming'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nearbyAppStreaming = this.nearbyAppStreaming;
+    final nearbyNotificationStreaming = this.nearbyNotificationStreaming;
+    return {
+      'nearbyAppStreaming': ?nearbyAppStreaming,
+      'nearbyNotificationStreaming': ?nearbyNotificationStreaming,
     };
   }
 }
@@ -6000,6 +6083,11 @@ class EnrollmentToken {
   /// This is a read-only field generated by the server.
   core.String? expirationTimestamp;
 
+  /// Options related to Google authentication during the enrollment.
+  ///
+  /// Optional.
+  GoogleAuthenticationOptions? googleAuthenticationOptions;
+
   /// The name of the enrollment token, which is generated by the server during
   /// creation, in the form
   /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.
@@ -6045,6 +6133,7 @@ class EnrollmentToken {
     this.allowPersonalUsage,
     this.duration,
     this.expirationTimestamp,
+    this.googleAuthenticationOptions,
     this.name,
     this.oneTimeOnly,
     this.policyName,
@@ -6059,6 +6148,13 @@ class EnrollmentToken {
         allowPersonalUsage: json_['allowPersonalUsage'] as core.String?,
         duration: json_['duration'] as core.String?,
         expirationTimestamp: json_['expirationTimestamp'] as core.String?,
+        googleAuthenticationOptions:
+            json_.containsKey('googleAuthenticationOptions')
+            ? GoogleAuthenticationOptions.fromJson(
+                json_['googleAuthenticationOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         oneTimeOnly: json_['oneTimeOnly'] as core.bool?,
         policyName: json_['policyName'] as core.String?,
@@ -6076,6 +6172,7 @@ class EnrollmentToken {
     final allowPersonalUsage = this.allowPersonalUsage;
     final duration = this.duration;
     final expirationTimestamp = this.expirationTimestamp;
+    final googleAuthenticationOptions = this.googleAuthenticationOptions;
     final name = this.name;
     final oneTimeOnly = this.oneTimeOnly;
     final policyName = this.policyName;
@@ -6087,6 +6184,7 @@ class EnrollmentToken {
       'allowPersonalUsage': ?allowPersonalUsage,
       'duration': ?duration,
       'expirationTimestamp': ?expirationTimestamp,
+      'googleAuthenticationOptions': ?googleAuthenticationOptions,
       'name': ?name,
       'oneTimeOnly': ?oneTimeOnly,
       'policyName': ?policyName,
@@ -6598,6 +6696,69 @@ class GenerateEnterpriseUpgradeUrlRequest {
 /// not generally available.
 typedef GenerateEnterpriseUpgradeUrlResponse =
     $GenerateEnterpriseUpgradeUrlResponse;
+
+/// Options for Google authentication during the enrollment.When triggering the
+/// enrollment with a SigninDetail, these options are enforced after the user
+/// completes third-party sign-in and an EnrollmentToken is created.
+///
+/// If this token's authentication_requirement is set to REQUIRED, these options
+/// interact with the SigninDetail.googleAuthenticationOptions that initiated
+/// the flow in the following ways: - If the user skipped Google sign-in earlier
+/// (permitted by SigninDetail.googleAuthenticationOptions), an error will occur
+/// and the user will be prompted to sign in again. - If required_account_email
+/// is set on this token and the user signed in with a different email earlier,
+/// an error will occur and the user will be asked to sign in again with the
+/// correct account.
+class GoogleAuthenticationOptions {
+  /// Specifies whether user should authenticate with Google during enrollment.
+  ///
+  /// If this is set to any value other than
+  /// AUTHENTICATION_REQUIREMENT_UNSPECIFIED, the enterprise-level setting
+  /// googleAuthenticationSettings is ignored for devices enrolled with this
+  /// token.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTHENTICATION_REQUIREMENT_UNSPECIFIED" : The setting
+  /// googleAuthenticationSettings for the enterprise that this enrollment token
+  /// belongs to is used to determine whether the user needs to authenticate
+  /// with Google during enrollment.
+  /// - "OPTIONAL" : Google authentication is optional for the user. This means
+  /// the user can choose to skip Google authentication during enrollment.
+  /// - "REQUIRED" : Google authentication is required for the user. This means
+  /// the user must authenticate with a Google account to proceed.
+  core.String? authenticationRequirement;
+
+  /// Specifies the managed Google account that the user must use during
+  /// enrollment.
+  ///
+  /// This field can only be set if AuthenticationRequirement is set to
+  /// REQUIRED.
+  ///
+  /// Optional.
+  core.String? requiredAccountEmail;
+
+  GoogleAuthenticationOptions({
+    this.authenticationRequirement,
+    this.requiredAccountEmail,
+  });
+
+  GoogleAuthenticationOptions.fromJson(core.Map json_)
+    : this(
+        authenticationRequirement:
+            json_['authenticationRequirement'] as core.String?,
+        requiredAccountEmail: json_['requiredAccountEmail'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authenticationRequirement = this.authenticationRequirement;
+    final requiredAccountEmail = this.requiredAccountEmail;
+    return {
+      'authenticationRequirement': ?authenticationRequirement,
+      'requiredAccountEmail': ?requiredAccountEmail,
+    };
+  }
+}
 
 /// Contains settings for Google-provided user authentication.
 class GoogleAuthenticationSettings {
@@ -7562,6 +7723,9 @@ class ManagedConfigurationTemplate {
   core.Map<core.String, core.String>? configurationVariables;
 
   /// The ID of the managed configurations template.
+  ///
+  /// This value must be a numeric string containing exactly one or more digits
+  /// (for example, "123456").
   core.String? templateId;
 
   ManagedConfigurationTemplate({this.configurationVariables, this.templateId});
@@ -9156,6 +9320,17 @@ class Policy {
   )
   core.bool? autoTimeRequired;
 
+  /// The policy for the autofill service.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTOFILL_POLICY_UNSPECIFIED" : Defaults to AUTOFILL_USER_CHOICE.
+  /// - "AUTOFILL_USER_CHOICE" : The user can choose and use an autofill
+  /// service.
+  /// - "AUTOFILL_DISABLED" : Autofill is disabled and the user is not allowed
+  /// to change this setting. This is supported only on Android 8 and above.
+  core.String? autofillPolicy;
+
   /// This field has no effect.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -9254,10 +9429,18 @@ class Policy {
   /// credential provider except for the OEM default credential providers. OEM
   /// default credential providers are always allowed to act as credential
   /// providers.
+  /// - "CREDENTIAL_PROVIDER_DEFAULT_ALLOWED" : Apps with
+  /// credentialProviderPolicy unspecified are allowed to act as a credential
+  /// provider.
   core.String? credentialProviderPolicyDefault;
 
   /// Whether configuring user credentials is disabled.
   core.bool? credentialsConfigDisabled;
+
+  /// Policies controlling cross-device communication.
+  ///
+  /// Optional.
+  CrossDevicePolicies? crossDevicePolicies;
 
   /// Cross-profile policies applied on the device.
   CrossProfilePolicies? crossProfilePolicies;
@@ -9276,7 +9459,10 @@ class Policy {
   /// If the default application is successfully set for at least one app type
   /// on a profile, users are prevented from changing any default applications
   /// on that profile.Only one DefaultApplicationSetting is allowed for each
-  /// DefaultApplicationType.See Default application settings
+  /// DefaultApplicationType.Warning: Do not configure this and
+  /// persistent_preferred_activities for the same intent domain, such as web
+  /// browsing. Setting both for the same intent domain can lead to
+  /// unpredictable behavior.See Default application settings
   /// (https://developers.google.com/android/management/default-application-settings)
   /// guide for more details.
   ///
@@ -9563,7 +9749,12 @@ class Policy {
   /// methods are permitted.
   PackageNameList? permittedInputMethods;
 
-  /// Default intent handler activities.
+  /// Default intent handler activities.Warning: Do not configure this and
+  /// default_application_settings for the same intent domain, such as web
+  /// browsing.
+  ///
+  /// Setting both for the same intent domain can lead to unpredictable
+  /// behavior.
   core.List<PersistentPreferredActivity>? persistentPreferredActivities;
 
   /// Policies managing personal usage on a company-owned device.
@@ -9817,6 +10008,7 @@ class Policy {
     this.assistContentPolicy,
     this.autoDateAndTimeZone,
     this.autoTimeRequired,
+    this.autofillPolicy,
     this.blockApplicationsEnabled,
     this.bluetoothConfigDisabled,
     this.bluetoothContactSharingDisabled,
@@ -9829,6 +10021,7 @@ class Policy {
     this.createWindowsDisabled,
     this.credentialProviderPolicyDefault,
     this.credentialsConfigDisabled,
+    this.crossDevicePolicies,
     this.crossProfilePolicies,
     this.dataRoamingDisabled,
     this.debuggingFeaturesAllowed,
@@ -9943,6 +10136,7 @@ class Policy {
         assistContentPolicy: json_['assistContentPolicy'] as core.String?,
         autoDateAndTimeZone: json_['autoDateAndTimeZone'] as core.String?,
         autoTimeRequired: json_['autoTimeRequired'] as core.bool?,
+        autofillPolicy: json_['autofillPolicy'] as core.String?,
         blockApplicationsEnabled:
             json_['blockApplicationsEnabled'] as core.bool?,
         bluetoothConfigDisabled: json_['bluetoothConfigDisabled'] as core.bool?,
@@ -9972,6 +10166,12 @@ class Policy {
             json_['credentialProviderPolicyDefault'] as core.String?,
         credentialsConfigDisabled:
             json_['credentialsConfigDisabled'] as core.bool?,
+        crossDevicePolicies: json_.containsKey('crossDevicePolicies')
+            ? CrossDevicePolicies.fromJson(
+                json_['crossDevicePolicies']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         crossProfilePolicies: json_.containsKey('crossProfilePolicies')
             ? CrossProfilePolicies.fromJson(
                 json_['crossProfilePolicies']
@@ -10218,6 +10418,7 @@ class Policy {
     final assistContentPolicy = this.assistContentPolicy;
     final autoDateAndTimeZone = this.autoDateAndTimeZone;
     final autoTimeRequired = this.autoTimeRequired;
+    final autofillPolicy = this.autofillPolicy;
     final blockApplicationsEnabled = this.blockApplicationsEnabled;
     final bluetoothConfigDisabled = this.bluetoothConfigDisabled;
     final bluetoothContactSharingDisabled =
@@ -10232,6 +10433,7 @@ class Policy {
     final credentialProviderPolicyDefault =
         this.credentialProviderPolicyDefault;
     final credentialsConfigDisabled = this.credentialsConfigDisabled;
+    final crossDevicePolicies = this.crossDevicePolicies;
     final crossProfilePolicies = this.crossProfilePolicies;
     final dataRoamingDisabled = this.dataRoamingDisabled;
     final debuggingFeaturesAllowed = this.debuggingFeaturesAllowed;
@@ -10321,6 +10523,7 @@ class Policy {
       'assistContentPolicy': ?assistContentPolicy,
       'autoDateAndTimeZone': ?autoDateAndTimeZone,
       'autoTimeRequired': ?autoTimeRequired,
+      'autofillPolicy': ?autofillPolicy,
       'blockApplicationsEnabled': ?blockApplicationsEnabled,
       'bluetoothConfigDisabled': ?bluetoothConfigDisabled,
       'bluetoothContactSharingDisabled': ?bluetoothContactSharingDisabled,
@@ -10333,6 +10536,7 @@ class Policy {
       'createWindowsDisabled': ?createWindowsDisabled,
       'credentialProviderPolicyDefault': ?credentialProviderPolicyDefault,
       'credentialsConfigDisabled': ?credentialsConfigDisabled,
+      'crossDevicePolicies': ?crossDevicePolicies,
       'crossProfilePolicies': ?crossProfilePolicies,
       'dataRoamingDisabled': ?dataRoamingDisabled,
       'debuggingFeaturesAllowed': ?debuggingFeaturesAllowed,
@@ -11393,6 +11597,11 @@ class SigninDetail {
   /// default for the enterprise.
   core.String? defaultStatus;
 
+  /// Options related to Google authentication during the enrollment.
+  ///
+  /// Optional.
+  SigninDetailGoogleAuthenticationOptions? googleAuthenticationOptions;
+
   /// A JSON string whose UTF-8 representation can be used to generate a QR code
   /// to enroll a device with this enrollment token.
   ///
@@ -11422,6 +11631,7 @@ class SigninDetail {
   SigninDetail({
     this.allowPersonalUsage,
     this.defaultStatus,
+    this.googleAuthenticationOptions,
     this.qrCode,
     this.signinEnrollmentToken,
     this.signinUrl,
@@ -11432,6 +11642,13 @@ class SigninDetail {
     : this(
         allowPersonalUsage: json_['allowPersonalUsage'] as core.String?,
         defaultStatus: json_['defaultStatus'] as core.String?,
+        googleAuthenticationOptions:
+            json_.containsKey('googleAuthenticationOptions')
+            ? SigninDetailGoogleAuthenticationOptions.fromJson(
+                json_['googleAuthenticationOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         qrCode: json_['qrCode'] as core.String?,
         signinEnrollmentToken: json_['signinEnrollmentToken'] as core.String?,
         signinUrl: json_['signinUrl'] as core.String?,
@@ -11441,6 +11658,7 @@ class SigninDetail {
   core.Map<core.String, core.dynamic> toJson() {
     final allowPersonalUsage = this.allowPersonalUsage;
     final defaultStatus = this.defaultStatus;
+    final googleAuthenticationOptions = this.googleAuthenticationOptions;
     final qrCode = this.qrCode;
     final signinEnrollmentToken = this.signinEnrollmentToken;
     final signinUrl = this.signinUrl;
@@ -11448,11 +11666,53 @@ class SigninDetail {
     return {
       'allowPersonalUsage': ?allowPersonalUsage,
       'defaultStatus': ?defaultStatus,
+      'googleAuthenticationOptions': ?googleAuthenticationOptions,
       'qrCode': ?qrCode,
       'signinEnrollmentToken': ?signinEnrollmentToken,
       'signinUrl': ?signinUrl,
       'tokenTag': ?tokenTag,
     };
+  }
+}
+
+/// Options for Google authentication during the enrollment.These options
+/// control whether the Google authentication screen is shown, and whether it
+/// can be skipped, at the start of the sign-in flow.
+///
+/// More requirements can be enforced by
+/// EnrollmentToken.googleAuthenticationOptions on the EnrollmentToken that is
+/// created later.
+class SigninDetailGoogleAuthenticationOptions {
+  /// Specifies whether user should authenticate with Google during enrollment.
+  ///
+  /// If this is set to any value other than
+  /// AUTHENTICATION_REQUIREMENT_UNSPECIFIED, the enterprise-level setting
+  /// googleAuthenticationSettings is ignored for devices enrolled with this
+  /// sign-in detail.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTHENTICATION_REQUIREMENT_UNSPECIFIED" : The setting
+  /// googleAuthenticationSettings for the enterprise that this sign-in detail
+  /// belongs to is used to determine whether the user needs to authenticate
+  /// with Google during enrollment.
+  /// - "OPTIONAL" : Google authentication is optional for the user. This means
+  /// the user can choose to skip Google authentication during enrollment.
+  /// - "REQUIRED" : Google authentication is required for the user. This means
+  /// the user must authenticate with a Google account to proceed.
+  core.String? authenticationRequirement;
+
+  SigninDetailGoogleAuthenticationOptions({this.authenticationRequirement});
+
+  SigninDetailGoogleAuthenticationOptions.fromJson(core.Map json_)
+    : this(
+        authenticationRequirement:
+            json_['authenticationRequirement'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authenticationRequirement = this.authenticationRequirement;
+    return {'authenticationRequirement': ?authenticationRequirement};
   }
 }
 
@@ -12626,7 +12886,8 @@ class WorkAccountSetupConfig {
   /// This field is only relevant if authenticationType is GOOGLE_AUTHENTICATED.
   /// This must be an enterprise account and not a consumer account. Once set
   /// and a Google authenticated account is added to the device, changing this
-  /// field will have no effect, and thus recommended to be set only once.
+  /// field will have no effect, and thus recommended to be set only once. The
+  /// email address must be all lowercase.
   ///
   /// Optional.
   core.String? requiredAccountEmail;

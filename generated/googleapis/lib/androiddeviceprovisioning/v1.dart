@@ -438,8 +438,9 @@ class CustomersDevicesResource {
   /// name in the format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern `^customers/\[^/\]+$`.
   ///
-  /// [pageSize] - Required. The maximum number of devices to show in a page of
-  /// results. Must be between 1 and 100 inclusive.
+  /// [pageSize] - Optional. The maximum number of devices to show in a page of
+  /// results. If unset or `0`, defaults to `5000`. If a value greater than
+  /// `10000` is specified, it will be coerced to `10000`.
   ///
   /// [pageToken] - A token specifying which result page to return.
   ///
@@ -1560,11 +1561,11 @@ class Company {
 
   /// Input only.
   ///
-  /// If set to true, welcome email will not be sent to the customer. It is
-  /// recommended to skip the welcome email if devices will be claimed with
-  /// additional DEVICE_PROTECTION service, as the customer will receive
-  /// separate emails at device claim time. This field is ignored if this is not
-  /// a Zero-touch customer.
+  /// Deprecated: This field is no longer supported and is ignored by the
+  /// server.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? skipWelcomeEmail;
 
   /// Whether any user from the company has accepted the latest Terms of Service
@@ -2208,7 +2209,8 @@ class DeviceIdentifier {
   /// The type of the device
   /// Possible string values are:
   /// - "DEVICE_TYPE_UNSPECIFIED" : Device type is not specified.
-  /// - "DEVICE_TYPE_ANDROID" : Android device
+  /// - "DEVICE_TYPE_ANDROID" : Android mobile and Desktop except Googlebooks
+  /// and Chromebooks
   /// - "DEVICE_TYPE_CHROME_OS" : Chrome OS device
   core.String? deviceType;
 

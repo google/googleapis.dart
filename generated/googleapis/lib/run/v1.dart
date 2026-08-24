@@ -767,16 +767,24 @@ class NamespacesInstancesResource {
   NamespacesInstancesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Create a Instance.
+  /// Create an Instance.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The namespace in which the Instance should be
-  /// created. Replace {namespace} with the project ID or number. It takes the
-  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [parent] - Required. The resource's parent. In Cloud Run, it may be one of
+  /// the following: * `{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}/instances` *
+  /// `projects/{project_id_or_number}/locations/{region}` *
+  /// `projects/{project_id_or_number}/regions/{region}` Parent resource
+  /// namespace.
   /// Value must have pattern `^namespaces/\[^/\]+$`.
+  ///
+  /// [dryRun] - Optional. Indicates that the server should validate the request
+  /// and populate default values without persisting the request. Supported
+  /// values: `all`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -791,10 +799,12 @@ class NamespacesInstancesResource {
   async.Future<Instance> create(
     Instance request,
     core.String parent, {
+    core.String? dryRun,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'dryRun': ?dryRun == null ? null : [dryRun],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -812,16 +822,25 @@ class NamespacesInstancesResource {
     return Instance.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Delete a Instance.
+  /// Delete an Instance.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Instance to delete. Replace {namespace}
-  /// with the project ID or number. It takes the form namespaces/{namespace}.
-  /// For example: namespaces/PROJECT_ID
+  /// [name] - Required. The fully qualified name of the Instance to delete. It
+  /// can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/instances/{instance_name}` (only when
+  /// the `endpoint` is regional) *
+  /// `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}`
+  /// Parent resource namespace.
   /// Value must have pattern `^namespaces/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [apiVersion] - Optional. Cloud Run currently ignores this parameter.
+  ///
+  /// [dryRun] - Optional. Indicates that the server should validate the request
+  /// and populate default values without persisting the request. Supported
+  /// values: `all`
   ///
   /// [kind] - Optional. Cloud Run currently ignores this parameter.
   ///
@@ -844,12 +863,14 @@ class NamespacesInstancesResource {
   async.Future<Status> delete(
     core.String name, {
     core.String? apiVersion,
+    core.String? dryRun,
     core.String? kind,
     core.String? propagationPolicy,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'apiVersion': ?apiVersion == null ? null : [apiVersion],
+      'dryRun': ?dryRun == null ? null : [dryRun],
       'kind': ?kind == null ? null : [kind],
       'propagationPolicy': ?propagationPolicy == null
           ? null
@@ -871,9 +892,14 @@ class NamespacesInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Instance to retrieve. It takes the form
-  /// namespaces/{namespace}/instances/{Instance_name} and the `endpoint` must
-  /// be regional. Replace {namespace} with the project ID or number.
+  /// [name] - Required. The fully qualified name of the Instance to retrieve.
+  /// It can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/instances/{instance_name}` (only when
+  /// the `endpoint` is regional) *
+  /// `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}`
+  /// Parent resource namespace.
   /// Value must have pattern `^namespaces/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -907,9 +933,13 @@ class NamespacesInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The namespace from which the Instances should be
-  /// listed. Replace {namespace} with the project ID or number. It takes the
-  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [parent] - Required. The parent from where the resources should be listed.
+  /// In Cloud Run, it may be one of the following: * `{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}` *
+  /// `namespaces/{project_id_or_number}/instances` *
+  /// `projects/{project_id_or_number}/locations/{region}` *
+  /// `projects/{project_id_or_number}/regions/{region}` Parent resource
+  /// namespace.
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional. Optional encoded string to continue paging.
@@ -982,10 +1012,19 @@ class NamespacesInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Instance being replaced. Replace
-  /// {namespace} with the project ID or number. It takes the form
-  /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// [name] - Required. The fully qualified name of the Instance being
+  /// replaced. It can be any of the following forms: *
+  /// `namespaces/{project_id_or_number}/instances/{instance_name}` (only when
+  /// the `endpoint` is regional) *
+  /// `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}`
+  /// *
+  /// `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}`
+  /// Parent resource namespace.
   /// Value must have pattern `^namespaces/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [dryRun] - Optional. Indicates that the server should validate the request
+  /// and populate default values without persisting the request. Supported
+  /// values: `all`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1000,10 +1039,12 @@ class NamespacesInstancesResource {
   async.Future<Instance> replaceInstance(
     Instance request,
     core.String name, {
+    core.String? dryRun,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'dryRun': ?dryRun == null ? null : [dryRun],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1121,6 +1162,10 @@ class NamespacesJobsResource {
   /// namespaces/{namespace}. For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
+  /// [dryRun] - Optional. Indicates that the server should validate the request
+  /// and populate default values without persisting the request. Supported
+  /// values: `all`
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1134,10 +1179,12 @@ class NamespacesJobsResource {
   async.Future<Job> create(
     Job request,
     core.String parent, {
+    core.String? dryRun,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'dryRun': ?dryRun == null ? null : [dryRun],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1166,6 +1213,10 @@ class NamespacesJobsResource {
   ///
   /// [apiVersion] - Optional. Cloud Run currently ignores this parameter.
   ///
+  /// [dryRun] - Optional. Indicates that the server should validate the request
+  /// and populate default values without persisting the request. Supported
+  /// values: `all`
+  ///
   /// [kind] - Optional. Cloud Run currently ignores this parameter.
   ///
   /// [propagationPolicy] - Optional. Specifies the propagation policy of
@@ -1187,12 +1238,14 @@ class NamespacesJobsResource {
   async.Future<Status> delete(
     core.String name, {
     core.String? apiVersion,
+    core.String? dryRun,
     core.String? kind,
     core.String? propagationPolicy,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'apiVersion': ?apiVersion == null ? null : [apiVersion],
+      'dryRun': ?dryRun == null ? null : [dryRun],
       'kind': ?kind == null ? null : [kind],
       'propagationPolicy': ?propagationPolicy == null
           ? null
@@ -1335,6 +1388,10 @@ class NamespacesJobsResource {
   /// For example: namespaces/PROJECT_ID
   /// Value must have pattern `^namespaces/\[^/\]+/jobs/\[^/\]+$`.
   ///
+  /// [dryRun] - Optional. Indicates that the server should validate the request
+  /// and populate default values without persisting the request. Supported
+  /// values: `all`
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1348,10 +1405,12 @@ class NamespacesJobsResource {
   async.Future<Job> replaceJob(
     Job request,
     core.String name, {
+    core.String? dryRun,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'dryRun': ?dryRun == null ? null : [dryRun],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2499,7 +2558,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -2514,9 +2573,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2978,7 +3036,7 @@ class ProjectsLocationsInstancesResource {
   ProjectsLocationsInstancesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Get the IAM Access Control policy currently in effect for the given
+  /// Gets the IAM Access Control policy currently in effect for the given
   /// instance.
   ///
   /// This result does not include any inherited policies.
@@ -5058,6 +5116,12 @@ class Container {
   /// Compute Resources required by this container.
   ResourceRequirements? resources;
 
+  /// Indicates that this container can act as a sandbox supervisor and launch
+  /// sandboxes.
+  ///
+  /// Optional.
+  core.bool? sandboxLauncher;
+
   /// Not supported by Cloud Run.
   SecurityContext? securityContext;
 
@@ -5111,6 +5175,7 @@ class Container {
     this.ports,
     this.readinessProbe,
     this.resources,
+    this.sandboxLauncher,
     this.securityContext,
     this.startupProbe,
     this.terminationMessagePath,
@@ -5165,6 +5230,7 @@ class Container {
                 json_['resources'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        sandboxLauncher: json_['sandboxLauncher'] as core.bool?,
         securityContext: json_.containsKey('securityContext')
             ? SecurityContext.fromJson(
                 json_['securityContext'] as core.Map<core.String, core.dynamic>,
@@ -5200,6 +5266,7 @@ class Container {
     final ports = this.ports;
     final readinessProbe = this.readinessProbe;
     final resources = this.resources;
+    final sandboxLauncher = this.sandboxLauncher;
     final securityContext = this.securityContext;
     final startupProbe = this.startupProbe;
     final terminationMessagePath = this.terminationMessagePath;
@@ -5218,6 +5285,7 @@ class Container {
       'ports': ?ports,
       'readinessProbe': ?readinessProbe,
       'resources': ?resources,
+      'sandboxLauncher': ?sandboxLauncher,
       'securityContext': ?securityContext,
       'startupProbe': ?startupProbe,
       'terminationMessagePath': ?terminationMessagePath,
@@ -5820,6 +5888,12 @@ class ExecutionReference {
 
 /// ExecutionSpec describes how the execution will look.
 class ExecutionSpec {
+  /// If true, the system will start the execution within the next 12 hours
+  /// depending on available capacity.
+  ///
+  /// Optional.
+  core.bool? delayExecution;
+
   /// Specifies the maximum desired number of tasks the execution should run at
   /// given time.
   ///
@@ -5845,10 +5919,16 @@ class ExecutionSpec {
   /// Optional.
   TaskTemplateSpec? template;
 
-  ExecutionSpec({this.parallelism, this.taskCount, this.template});
+  ExecutionSpec({
+    this.delayExecution,
+    this.parallelism,
+    this.taskCount,
+    this.template,
+  });
 
   ExecutionSpec.fromJson(core.Map json_)
     : this(
+        delayExecution: json_['delayExecution'] as core.bool?,
         parallelism: json_['parallelism'] as core.int?,
         taskCount: json_['taskCount'] as core.int?,
         template: json_.containsKey('template')
@@ -5859,10 +5939,12 @@ class ExecutionSpec {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final delayExecution = this.delayExecution;
     final parallelism = this.parallelism;
     final taskCount = this.taskCount;
     final template = this.template;
     return {
+      'delayExecution': ?delayExecution,
       'parallelism': ?parallelism,
       'taskCount': ?taskCount,
       'template': ?template,
@@ -6400,8 +6482,8 @@ class HTTPHeader {
   }
 }
 
-/// Instance represents the configuration of a single Instance, which references
-/// a container image which is run to completion.
+/// An Instance represents the configuration of a single instance that
+/// references a container image and runs to completion.
 class Instance {
   /// APIVersion defines the versioned schema of this representation of an
   /// object.
@@ -6426,12 +6508,12 @@ class Instance {
   /// Optional.
   ObjectMeta? metadata;
 
-  /// Specification of the desired behavior of a Instance.
+  /// Specification of the desired behavior of an Instance.
   ///
   /// Optional.
   InstanceSpec? spec;
 
-  /// Current status of a Instance.
+  /// Current status of an Instance.
   ///
   /// Output only.
   InstanceStatus? status;
@@ -6491,6 +6573,13 @@ class InstanceSpec {
   /// Optional.
   core.Map<core.String, core.String>? nodeSelector;
 
+  /// Restart policy for the Instance.
+  ///
+  /// Allowable values are 'Always', 'OnFailure', or 'Never'.
+  ///
+  /// Optional.
+  core.String? restartPolicy;
+
   /// Email address of the IAM service account associated with the Instance.
   ///
   /// The service account represents the identity of the running container, and
@@ -6499,11 +6588,6 @@ class InstanceSpec {
   ///
   /// Optional.
   core.String? serviceAccountName;
-
-  /// Duration the instance may be active before the system will shut it down.
-  ///
-  /// Optional.
-  core.String? timeout;
 
   /// List of volumes that can be mounted by containers belonging to the
   /// Instance.
@@ -6514,8 +6598,8 @@ class InstanceSpec {
   InstanceSpec({
     this.containers,
     this.nodeSelector,
+    this.restartPolicy,
     this.serviceAccountName,
-    this.timeout,
     this.volumes,
   });
 
@@ -6531,8 +6615,8 @@ class InstanceSpec {
         nodeSelector:
             (json_['nodeSelector'] as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        restartPolicy: json_['restartPolicy'] as core.String?,
         serviceAccountName: json_['serviceAccountName'] as core.String?,
-        timeout: json_['timeout'] as core.String?,
         volumes: (json_['volumes'] as core.List?)
             ?.map(
               (value) =>
@@ -6544,14 +6628,14 @@ class InstanceSpec {
   core.Map<core.String, core.dynamic> toJson() {
     final containers = this.containers;
     final nodeSelector = this.nodeSelector;
+    final restartPolicy = this.restartPolicy;
     final serviceAccountName = this.serviceAccountName;
-    final timeout = this.timeout;
     final volumes = this.volumes;
     return {
       'containers': ?containers,
       'nodeSelector': ?nodeSelector,
+      'restartPolicy': ?restartPolicy,
       'serviceAccountName': ?serviceAccountName,
-      'timeout': ?timeout,
       'volumes': ?volumes,
     };
   }
@@ -6600,7 +6684,7 @@ class InstanceSplit {
   }
 }
 
-/// InstanceStatus represents the current state of a Instance.
+/// InstanceStatus represents the current state of an Instance.
 class InstanceStatus {
   /// Conditions communicate information about ongoing/complete reconciliation
   /// processes that bring the "spec" inline with the observed state of the
@@ -7681,7 +7765,7 @@ class ObjectMeta {
   /// will be different depending on the resource type. *
   /// `autoscaling.knative.dev/maxScale`: Revision. *
   /// `autoscaling.knative.dev/minScale`: Revision. *
-  /// `run.googleapis.com/base-images`: Service, Revision. *
+  /// `run.googleapis.com/base-images`: Service, Revision . *
   /// `run.googleapis.com/binary-authorization-breakglass`: Service, Job, *
   /// `run.googleapis.com/binary-authorization`: Service, Job, Execution. *
   /// `run.googleapis.com/build-base-image`: Service. *
@@ -7695,14 +7779,14 @@ class ObjectMeta {
   /// `run.googleapis.com/build-source-location`: Service, Revision. *
   /// `run.googleapis.com/build-worker-pool`: Service. *
   /// `run.googleapis.com/client-name`: All resources. *
-  /// `run.googleapis.com/cloudsql-instances`: Revision, Execution. *
-  /// `run.googleapis.com/container-dependencies`: Revision . *
+  /// `run.googleapis.com/cloudsql-instances`: Revision, Execution, Instance. *
+  /// `run.googleapis.com/container-dependencies`: Revision, Instance . *
   /// `run.googleapis.com/cpu-throttling`: Revision. *
   /// `run.googleapis.com/custom-audiences`: Service. *
   /// `run.googleapis.com/default-url-disabled`: Service. *
   /// `run.googleapis.com/description`: Service. *
   /// `run.googleapis.com/encryption-key-shutdown-hours`: Revision *
-  /// `run.googleapis.com/encryption-key`: Revision, Execution. *
+  /// `run.googleapis.com/encryption-key`: Revision, Execution, Instance. *
   /// `run.googleapis.com/execution-environment`: Revision, Execution. *
   /// `run.googleapis.com/gc-traffic-tags`: Service. *
   /// `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. *
@@ -7712,14 +7796,14 @@ class ObjectMeta {
   /// `run.googleapis.com/launch-stage`: Service, Job. *
   /// `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`:
   /// Service. * `run.googleapis.com/manualInstanceCount`: Service. *
-  /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
+  /// `run.googleapis.com/network-interfaces`: Revision, Execution, Instance. *
   /// `run.googleapis.com/post-key-revocation-action-type`: Revision.
   /// `run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`:
   /// Revision, Execution. * `run.googleapis.com/secure-session-agent`:
   /// Revision. * `run.googleapis.com/sessionAffinity`: Revision. *
   /// `run.googleapis.com/startup-cpu-boost`: Revision. *
   /// `run.googleapis.com/vpc-access-connector`: Revision, Execution. *
-  /// `run.googleapis.com/vpc-access-egress`: Revision, Execution.
+  /// `run.googleapis.com/vpc-access-egress`: Revision, Execution, Instance.
   core.Map<core.String, core.String>? annotations;
 
   /// Not supported by Cloud Run
@@ -7885,6 +7969,12 @@ class Overrides {
   /// Per container override specification.
   core.List<ContainerOverride>? containerOverrides;
 
+  /// If true, the system will start the execution within the next 12 hours
+  /// depending on available capacity.
+  ///
+  /// Optional.
+  core.bool? delayExecution;
+
   /// The desired number of tasks the execution should run.
   ///
   /// Will replace existing task_count value.
@@ -7896,7 +7986,12 @@ class Overrides {
   /// Will replace existing timeout_seconds value.
   core.int? timeoutSeconds;
 
-  Overrides({this.containerOverrides, this.taskCount, this.timeoutSeconds});
+  Overrides({
+    this.containerOverrides,
+    this.delayExecution,
+    this.taskCount,
+    this.timeoutSeconds,
+  });
 
   Overrides.fromJson(core.Map json_)
     : this(
@@ -7907,16 +8002,19 @@ class Overrides {
               ),
             )
             .toList(),
+        delayExecution: json_['delayExecution'] as core.bool?,
         taskCount: json_['taskCount'] as core.int?,
         timeoutSeconds: json_['timeoutSeconds'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final containerOverrides = this.containerOverrides;
+    final delayExecution = this.delayExecution;
     final taskCount = this.taskCount;
     final timeoutSeconds = this.timeoutSeconds;
     return {
       'containerOverrides': ?containerOverrides,
+      'delayExecution': ?delayExecution,
       'taskCount': ?taskCount,
       'timeoutSeconds': ?timeoutSeconds,
     };
@@ -9307,7 +9405,7 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for starting a stopped Instance.
-typedef StartInstanceRequest = $Empty;
+typedef StartInstanceRequest = $InstanceRequest00;
 
 /// Status is a return value for calls that don't return other objects.
 class Status {
@@ -9508,7 +9606,7 @@ class StatusDetails {
 }
 
 /// Request message for stopping a running Instance.
-typedef StopInstanceRequest = $Empty;
+typedef StopInstanceRequest = $InstanceRequest00;
 
 /// TCPSocketAction describes an action based on opening a socket
 class TCPSocketAction {

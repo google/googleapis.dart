@@ -419,7 +419,7 @@ class DefaultBucket {
 
   /// Location of the default bucket.
   ///
-  /// Immutable.
+  /// Required. Immutable.
   core.String? location;
 
   /// Identifier.

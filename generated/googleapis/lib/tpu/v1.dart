@@ -1549,7 +1549,7 @@ class SchedulingConfig {
 }
 
 /// Request for StartNode.
-typedef StartNodeRequest = $Shared00;
+typedef StartNodeRequest = $Shared01;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -1561,7 +1561,7 @@ typedef StartNodeRequest = $Shared00;
 typedef Status = $Status00;
 
 /// Request for StopNode.
-typedef StopNodeRequest = $Shared00;
+typedef StopNodeRequest = $Shared01;
 
 /// A Symptom instance.
 class Symptom {

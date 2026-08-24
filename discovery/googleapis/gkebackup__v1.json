@@ -15,6 +15,228 @@
     "description": "Backup for GKE is a managed Kubernetes workload backup and restore service for GKE clusters.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.me-central1.rep.googleapis.com/",
+            "location": "me-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.me-central2.rep.googleapis.com/",
+            "location": "me-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.me-west1.rep.googleapis.com/",
+            "location": "me-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-west6.rep.googleapis.com/",
+            "location": "europe-west6"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.africa-south1.rep.googleapis.com/",
+            "location": "africa-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.asia-east1.rep.googleapis.com/",
+            "location": "asia-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.asia-east2.rep.googleapis.com/",
+            "location": "asia-east2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.asia-northeast1.rep.googleapis.com/",
+            "location": "asia-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.asia-northeast2.rep.googleapis.com/",
+            "location": "asia-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.asia-northeast3.rep.googleapis.com/",
+            "location": "asia-northeast3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.asia-south1.rep.googleapis.com/",
+            "location": "asia-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.asia-south2.rep.googleapis.com/",
+            "location": "asia-south2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.asia-southeast1.rep.googleapis.com/",
+            "location": "asia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.asia-southeast2.rep.googleapis.com/",
+            "location": "asia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.australia-southeast1.rep.googleapis.com/",
+            "location": "australia-southeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.australia-southeast2.rep.googleapis.com/",
+            "location": "australia-southeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-central2.rep.googleapis.com/",
+            "location": "europe-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-north1.rep.googleapis.com/",
+            "location": "europe-north1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-north2.rep.googleapis.com/",
+            "location": "europe-north2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-southwest1.rep.googleapis.com/",
+            "location": "europe-southwest1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-west1.rep.googleapis.com/",
+            "location": "europe-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-west10.rep.googleapis.com/",
+            "location": "europe-west10"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-west12.rep.googleapis.com/",
+            "location": "europe-west12"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-west2.rep.googleapis.com/",
+            "location": "europe-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-west3.rep.googleapis.com/",
+            "location": "europe-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-west4.rep.googleapis.com/",
+            "location": "europe-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-west8.rep.googleapis.com/",
+            "location": "europe-west8"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.europe-west9.rep.googleapis.com/",
+            "location": "europe-west9"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.northamerica-northeast1.rep.googleapis.com/",
+            "location": "northamerica-northeast1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.northamerica-northeast2.rep.googleapis.com/",
+            "location": "northamerica-northeast2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.northamerica-south1.rep.googleapis.com/",
+            "location": "northamerica-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.southamerica-east1.rep.googleapis.com/",
+            "location": "southamerica-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.southamerica-west1.rep.googleapis.com/",
+            "location": "southamerica-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-east1.rep.googleapis.com/",
+            "location": "us-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-east4.rep.googleapis.com/",
+            "location": "us-east4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-east5.rep.googleapis.com/",
+            "location": "us-east5"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-east7.rep.googleapis.com/",
+            "location": "us-east7"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-south1.rep.googleapis.com/",
+            "location": "us-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-west2.rep.googleapis.com/",
+            "location": "us-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-west3.rep.googleapis.com/",
+            "location": "us-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-west4.rep.googleapis.com/",
+            "location": "us-west4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://gkebackup.us-west8.rep.googleapis.com/",
+            "location": "us-west8"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,7 +247,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260318",
+    "revision": "20260715",
     "rootUrl": "https://gkebackup.googleapis.com/",
     "servicePath": "",
     "title": "Backup for GKE API",
@@ -139,7 +361,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "gkebackup.projects.locations.list",
@@ -148,7 +370,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
+                                    "description": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -2477,7 +2699,7 @@
             "type": "object"
         },
         "BDRBackupRestoreJobLog": {
-            "description": "Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 24",
+            "description": "Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 26",
             "id": "BDRBackupRestoreJobLog",
             "properties": {
                 "backupConsistencyTime": {
@@ -2577,6 +2799,14 @@
                 "startTime": {
                     "description": "Start time of the job.",
                     "format": "google-datetime",
+                    "type": "string"
+                },
+                "storageTier": {
+                    "description": "The storage tier associated with the backup.",
+                    "type": "string"
+                },
+                "targetResourceType": {
+                    "description": "The target resource type for restore jobs.",
                     "type": "string"
                 }
             },
@@ -3181,6 +3411,10 @@
                 },
                 "ruleName": {
                     "description": "Backup Rule Name.",
+                    "type": "string"
+                },
+                "storageTier": {
+                    "description": "The storage tier of the BackupRule.",
                     "type": "string"
                 }
             },

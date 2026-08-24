@@ -528,6 +528,7 @@ api.CryptoKeyVersion buildCryptoKeyVersion() {
     o.externalProtectionLevelOptions = buildExternalProtectionLevelOptions();
     o.generateTime = 'foo';
     o.generationFailureReason = 'foo';
+    o.hsmTrusted = true;
     o.importFailureReason = 'foo';
     o.importJob = 'foo';
     o.importTime = 'foo';
@@ -535,6 +536,7 @@ api.CryptoKeyVersion buildCryptoKeyVersion() {
     o.protectionLevel = 'foo';
     o.reimportEligible = true;
     o.state = 'foo';
+    o.trustedWrappingEnabled = true;
   }
   buildCounterCryptoKeyVersion--;
   return o;
@@ -555,6 +557,7 @@ void checkCryptoKeyVersion(api.CryptoKeyVersion o) {
     checkExternalProtectionLevelOptions(o.externalProtectionLevelOptions!);
     unittest.expect(o.generateTime!, unittest.equals('foo'));
     unittest.expect(o.generationFailureReason!, unittest.equals('foo'));
+    unittest.expect(o.hsmTrusted!, unittest.isTrue);
     unittest.expect(o.importFailureReason!, unittest.equals('foo'));
     unittest.expect(o.importJob!, unittest.equals('foo'));
     unittest.expect(o.importTime!, unittest.equals('foo'));
@@ -562,6 +565,7 @@ void checkCryptoKeyVersion(api.CryptoKeyVersion o) {
     unittest.expect(o.protectionLevel!, unittest.equals('foo'));
     unittest.expect(o.reimportEligible!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.trustedWrappingEnabled!, unittest.isTrue);
   }
   buildCounterCryptoKeyVersion--;
 }
@@ -927,6 +931,30 @@ void checkExecuteSingleTenantHsmInstanceProposalRequest(
   buildCounterExecuteSingleTenantHsmInstanceProposalRequest--;
 }
 
+core.int buildCounterExportTrustedKeyWrappedCryptoKeyVersionResponse = 0;
+api.ExportTrustedKeyWrappedCryptoKeyVersionResponse
+buildExportTrustedKeyWrappedCryptoKeyVersionResponse() {
+  final o = api.ExportTrustedKeyWrappedCryptoKeyVersionResponse();
+  buildCounterExportTrustedKeyWrappedCryptoKeyVersionResponse++;
+  if (buildCounterExportTrustedKeyWrappedCryptoKeyVersionResponse < 3) {
+    o.wrappedKey = 'foo';
+    o.wrappedKeyCrc32c = 'foo';
+  }
+  buildCounterExportTrustedKeyWrappedCryptoKeyVersionResponse--;
+  return o;
+}
+
+void checkExportTrustedKeyWrappedCryptoKeyVersionResponse(
+  api.ExportTrustedKeyWrappedCryptoKeyVersionResponse o,
+) {
+  buildCounterExportTrustedKeyWrappedCryptoKeyVersionResponse++;
+  if (buildCounterExportTrustedKeyWrappedCryptoKeyVersionResponse < 3) {
+    unittest.expect(o.wrappedKey!, unittest.equals('foo'));
+    unittest.expect(o.wrappedKeyCrc32c!, unittest.equals('foo'));
+  }
+  buildCounterExportTrustedKeyWrappedCryptoKeyVersionResponse--;
+}
+
 core.int buildCounterExpr = 0;
 api.Expr buildExpr() {
   final o = api.Expr();
@@ -957,6 +985,7 @@ api.ExternalProtectionLevelOptions buildExternalProtectionLevelOptions() {
   final o = api.ExternalProtectionLevelOptions();
   buildCounterExternalProtectionLevelOptions++;
   if (buildCounterExternalProtectionLevelOptions < 3) {
+    o.ekmConnectionBackendOverride = 'foo';
     o.ekmConnectionKeyPath = 'foo';
     o.externalKeyUri = 'foo';
   }
@@ -967,6 +996,7 @@ api.ExternalProtectionLevelOptions buildExternalProtectionLevelOptions() {
 void checkExternalProtectionLevelOptions(api.ExternalProtectionLevelOptions o) {
   buildCounterExternalProtectionLevelOptions++;
   if (buildCounterExternalProtectionLevelOptions < 3) {
+    unittest.expect(o.ekmConnectionBackendOverride!, unittest.equals('foo'));
     unittest.expect(o.ekmConnectionKeyPath!, unittest.equals('foo'));
     unittest.expect(o.externalKeyUri!, unittest.equals('foo'));
   }
@@ -1024,6 +1054,7 @@ api.ImportCryptoKeyVersionRequest buildImportCryptoKeyVersionRequest() {
     o.cryptoKeyVersion = 'foo';
     o.importJob = 'foo';
     o.rsaAesWrappedKey = 'foo';
+    o.trustedWrappingEnabled = true;
     o.wrappedKey = 'foo';
   }
   buildCounterImportCryptoKeyVersionRequest--;
@@ -1037,6 +1068,7 @@ void checkImportCryptoKeyVersionRequest(api.ImportCryptoKeyVersionRequest o) {
     unittest.expect(o.cryptoKeyVersion!, unittest.equals('foo'));
     unittest.expect(o.importJob!, unittest.equals('foo'));
     unittest.expect(o.rsaAesWrappedKey!, unittest.equals('foo'));
+    unittest.expect(o.trustedWrappingEnabled!, unittest.isTrue);
     unittest.expect(o.wrappedKey!, unittest.equals('foo'));
   }
   buildCounterImportCryptoKeyVersionRequest--;
@@ -1057,6 +1089,7 @@ api.ImportJob buildImportJob() {
     o.name = 'foo';
     o.protectionLevel = 'foo';
     o.publicKey = buildWrappingPublicKey();
+    o.publicKeyFormat = 'foo';
     o.state = 'foo';
   }
   buildCounterImportJob--;
@@ -1076,9 +1109,38 @@ void checkImportJob(api.ImportJob o) {
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.protectionLevel!, unittest.equals('foo'));
     checkWrappingPublicKey(o.publicKey!);
+    unittest.expect(o.publicKeyFormat!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
   }
   buildCounterImportJob--;
+}
+
+core.int buildCounterImportTrustedKeyWrappedCryptoKeyVersionRequest = 0;
+api.ImportTrustedKeyWrappedCryptoKeyVersionRequest
+buildImportTrustedKeyWrappedCryptoKeyVersionRequest() {
+  final o = api.ImportTrustedKeyWrappedCryptoKeyVersionRequest();
+  buildCounterImportTrustedKeyWrappedCryptoKeyVersionRequest++;
+  if (buildCounterImportTrustedKeyWrappedCryptoKeyVersionRequest < 3) {
+    o.algorithm = 'foo';
+    o.cryptoKeyVersion = 'foo';
+    o.importingKey = 'foo';
+    o.wrappedKey = 'foo';
+  }
+  buildCounterImportTrustedKeyWrappedCryptoKeyVersionRequest--;
+  return o;
+}
+
+void checkImportTrustedKeyWrappedCryptoKeyVersionRequest(
+  api.ImportTrustedKeyWrappedCryptoKeyVersionRequest o,
+) {
+  buildCounterImportTrustedKeyWrappedCryptoKeyVersionRequest++;
+  if (buildCounterImportTrustedKeyWrappedCryptoKeyVersionRequest < 3) {
+    unittest.expect(o.algorithm!, unittest.equals('foo'));
+    unittest.expect(o.cryptoKeyVersion!, unittest.equals('foo'));
+    unittest.expect(o.importingKey!, unittest.equals('foo'));
+    unittest.expect(o.wrappedKey!, unittest.equals('foo'));
+  }
+  buildCounterImportTrustedKeyWrappedCryptoKeyVersionRequest--;
 }
 
 core.int buildCounterKeyAccessJustificationsEnrollmentConfig = 0;
@@ -2388,6 +2450,8 @@ buildShowEffectiveAutokeyConfigResponse() {
   buildCounterShowEffectiveAutokeyConfigResponse++;
   if (buildCounterShowEffectiveAutokeyConfigResponse < 3) {
     o.keyProject = 'foo';
+    o.keyProjectResolutionMode = 'foo';
+    o.source = buildSource();
   }
   buildCounterShowEffectiveAutokeyConfigResponse--;
   return o;
@@ -2399,6 +2463,8 @@ void checkShowEffectiveAutokeyConfigResponse(
   buildCounterShowEffectiveAutokeyConfigResponse++;
   if (buildCounterShowEffectiveAutokeyConfigResponse < 3) {
     unittest.expect(o.keyProject!, unittest.equals('foo'));
+    unittest.expect(o.keyProjectResolutionMode!, unittest.equals('foo'));
+    checkSource(o.source!);
   }
   buildCounterShowEffectiveAutokeyConfigResponse--;
 }
@@ -2512,6 +2578,7 @@ api.SingleTenantHsmInstanceProposal buildSingleTenantHsmInstanceProposal() {
     o.requiredActionQuorumParameters = buildRequiredActionQuorumParameters();
     o.state = 'foo';
     o.ttl = 'foo';
+    o.upgradeKeyTrust = buildUpgradeKeyTrust();
   }
   buildCounterSingleTenantHsmInstanceProposal--;
   return o;
@@ -2539,8 +2606,28 @@ void checkSingleTenantHsmInstanceProposal(
     checkRequiredActionQuorumParameters(o.requiredActionQuorumParameters!);
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.ttl!, unittest.equals('foo'));
+    checkUpgradeKeyTrust(o.upgradeKeyTrust!);
   }
   buildCounterSingleTenantHsmInstanceProposal--;
+}
+
+core.int buildCounterSource = 0;
+api.Source buildSource() {
+  final o = api.Source();
+  buildCounterSource++;
+  if (buildCounterSource < 3) {
+    o.name = 'foo';
+  }
+  buildCounterSource--;
+  return o;
+}
+
+void checkSource(api.Source o) {
+  buildCounterSource++;
+  if (buildCounterSource < 3) {
+    unittest.expect(o.name!, unittest.equals('foo'));
+  }
+  buildCounterSource--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed37() => {
@@ -2680,6 +2767,27 @@ void checkUpdateCryptoKeyPrimaryVersionRequest(
   buildCounterUpdateCryptoKeyPrimaryVersionRequest--;
 }
 
+core.int buildCounterUpgradeKeyTrust = 0;
+api.UpgradeKeyTrust buildUpgradeKeyTrust() {
+  final o = api.UpgradeKeyTrust();
+  buildCounterUpgradeKeyTrust++;
+  if (buildCounterUpgradeKeyTrust < 3) {
+    o.name = 'foo';
+    o.twoFactorPublicKeyPem = 'foo';
+  }
+  buildCounterUpgradeKeyTrust--;
+  return o;
+}
+
+void checkUpgradeKeyTrust(api.UpgradeKeyTrust o) {
+  buildCounterUpgradeKeyTrust++;
+  if (buildCounterUpgradeKeyTrust < 3) {
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.twoFactorPublicKeyPem!, unittest.equals('foo'));
+  }
+  buildCounterUpgradeKeyTrust--;
+}
+
 core.int buildCounterVerifyConnectivityResponse = 0;
 api.VerifyConnectivityResponse buildVerifyConnectivityResponse() {
   final o = api.VerifyConnectivityResponse();
@@ -2700,6 +2808,7 @@ api.WrappingPublicKey buildWrappingPublicKey() {
   final o = api.WrappingPublicKey();
   buildCounterWrappingPublicKey++;
   if (buildCounterWrappingPublicKey < 3) {
+    o.data = 'foo';
     o.pem = 'foo';
   }
   buildCounterWrappingPublicKey--;
@@ -2709,6 +2818,7 @@ api.WrappingPublicKey buildWrappingPublicKey() {
 void checkWrappingPublicKey(api.WrappingPublicKey o) {
   buildCounterWrappingPublicKey++;
   if (buildCounterWrappingPublicKey < 3) {
+    unittest.expect(o.data!, unittest.equals('foo'));
     unittest.expect(o.pem!, unittest.equals('foo'));
   }
   buildCounterWrappingPublicKey--;
@@ -3106,6 +3216,20 @@ void main() {
     },
   );
 
+  unittest.group(
+    'obj-schema-ExportTrustedKeyWrappedCryptoKeyVersionResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildExportTrustedKeyWrappedCryptoKeyVersionResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.ExportTrustedKeyWrappedCryptoKeyVersionResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkExportTrustedKeyWrappedCryptoKeyVersionResponse(od);
+      });
+    },
+  );
+
   unittest.group('obj-schema-Expr', () {
     unittest.test('to-json--from-json', () async {
       final o = buildExpr();
@@ -3171,6 +3295,20 @@ void main() {
       checkImportJob(od);
     });
   });
+
+  unittest.group(
+    'obj-schema-ImportTrustedKeyWrappedCryptoKeyVersionRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildImportTrustedKeyWrappedCryptoKeyVersionRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.ImportTrustedKeyWrappedCryptoKeyVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkImportTrustedKeyWrappedCryptoKeyVersionRequest(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-KeyAccessJustificationsEnrollmentConfig', () {
     unittest.test('to-json--from-json', () async {
@@ -3677,6 +3815,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Source', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Source.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSource(od);
+    });
+  });
+
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStatus();
@@ -3718,6 +3867,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkUpdateCryptoKeyPrimaryVersionRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpgradeKeyTrust', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpgradeKeyTrust();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpgradeKeyTrust.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUpgradeKeyTrust(od);
     });
   });
 
@@ -3857,6 +4017,66 @@ void main() {
       );
       checkKeyAccessJustificationsPolicyConfig(
         response as api.KeyAccessJustificationsPolicyConfig,
+      );
+    });
+
+    unittest.test('method--showEffectiveAutokeyConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).folders;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildShowEffectiveAutokeyConfigResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.showEffectiveAutokeyConfig(
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkShowEffectiveAutokeyConfigResponse(
+        response as api.ShowEffectiveAutokeyConfigResponse,
       );
     });
 
@@ -6225,6 +6445,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_cryptoKeyId = 'foo';
       final arg_skipInitialVersionCreation = true;
+      final arg_trustedWrappingEnabled = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6273,6 +6494,10 @@ void main() {
             unittest.equals('$arg_skipInitialVersionCreation'),
           );
           unittest.expect(
+            queryMap['trustedWrappingEnabled']!.first,
+            unittest.equals('$arg_trustedWrappingEnabled'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -6288,6 +6513,7 @@ void main() {
         arg_parent,
         cryptoKeyId: arg_cryptoKeyId,
         skipInitialVersionCreation: arg_skipInitialVersionCreation,
+        trustedWrappingEnabled: arg_trustedWrappingEnabled,
         $fields: arg_$fields,
       );
       checkCryptoKey(response as api.CryptoKey);
@@ -7315,6 +7541,74 @@ void main() {
       checkCryptoKeyVersion(response as api.CryptoKeyVersion);
     });
 
+    unittest.test('method--exportTrustedKeyWrappedCryptoKeyVersion', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final arg_name = 'foo';
+      final arg_wrappingKey = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['wrappingKey']!.first,
+            unittest.equals(arg_wrappingKey),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildExportTrustedKeyWrappedCryptoKeyVersionResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.exportTrustedKeyWrappedCryptoKeyVersion(
+        arg_name,
+        wrappingKey: arg_wrappingKey,
+        $fields: arg_$fields,
+      );
+      checkExportTrustedKeyWrappedCryptoKeyVersionResponse(
+        response as api.ExportTrustedKeyWrappedCryptoKeyVersionResponse,
+      );
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.CloudKMSApi(
@@ -7492,6 +7786,72 @@ void main() {
         true,
       );
       final response = await res.import(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkCryptoKeyVersion(response as api.CryptoKeyVersion);
+    });
+
+    unittest.test('method--importTrustedKeyWrappedCryptoKeyVersion', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(
+        mock,
+      ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final arg_request = buildImportTrustedKeyWrappedCryptoKeyVersionRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.ImportTrustedKeyWrappedCryptoKeyVersionRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
+          checkImportTrustedKeyWrappedCryptoKeyVersionRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildCryptoKeyVersion());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.importTrustedKeyWrappedCryptoKeyVersion(
         arg_request,
         arg_parent,
         $fields: arg_$fields,
@@ -8059,6 +8419,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       final arg_name = 'foo';
+      final arg_publicKeyFormat = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8094,6 +8455,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['publicKeyFormat']!.first,
+            unittest.equals(arg_publicKeyFormat),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -8104,7 +8469,11 @@ void main() {
         }),
         true,
       );
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response = await res.get(
+        arg_name,
+        publicKeyFormat: arg_publicKeyFormat,
+        $fields: arg_$fields,
+      );
       checkImportJob(response as api.ImportJob);
     });
 

@@ -97,8 +97,9 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the AutokeyConfig resource, e.g.
-  /// `folders/{FOLDER_NUMBER}/autokeyConfig` or
-  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig`,
+  /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or
+  /// `projects/{PROJECT_ID}/autokeyConfig`.
   /// Value must have pattern `^folders/\[^/\]+/autokeyConfig$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -170,6 +171,53 @@ class FoldersResource {
     );
   }
 
+  /// Returns the effective Cloud KMS Autokey configuration for a given project
+  /// or folder.
+  ///
+  /// Note on permissions: - If called on a project (`projects/{project}`),
+  /// requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If called on a
+  /// folder (`folders/{folder}`), requires
+  /// `cloudkms.folders.showEffectiveAutokeyConfig`.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the resource project or folder to show the
+  /// effective Cloud KMS Autokey configuration for. This may be helpful for
+  /// evaluating the effect of nested folder configurations on a given resource
+  /// project. Format: * projects/{project} * folders/{folder}
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ShowEffectiveAutokeyConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ShowEffectiveAutokeyConfigResponse> showEffectiveAutokeyConfig(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':showEffectiveAutokeyConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ShowEffectiveAutokeyConfigResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Updates the AutokeyConfig for a folder or a project.
   ///
   /// The caller must have both `cloudkms.autokeyConfigs.update` permission on
@@ -183,8 +231,9 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the AutokeyConfig resource, e.g.
-  /// `folders/{FOLDER_NUMBER}/autokeyConfig` or
-  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig`,
+  /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or
+  /// `projects/{PROJECT_ID}/autokeyConfig`.
   /// Value must have pattern `^folders/\[^/\]+/autokeyConfig$`.
   ///
   /// [updateMask] - Required. Masks which fields of the AutokeyConfig to
@@ -382,8 +431,9 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the AutokeyConfig resource, e.g.
-  /// `folders/{FOLDER_NUMBER}/autokeyConfig` or
-  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig`,
+  /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or
+  /// `projects/{PROJECT_ID}/autokeyConfig`.
   /// Value must have pattern `^projects/\[^/\]+/autokeyConfig$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -455,13 +505,20 @@ class ProjectsResource {
     );
   }
 
-  /// Returns the effective Cloud KMS Autokey configuration for a given project.
+  /// Returns the effective Cloud KMS Autokey configuration for a given project
+  /// or folder.
+  ///
+  /// Note on permissions: - If called on a project (`projects/{project}`),
+  /// requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If called on a
+  /// folder (`folders/{folder}`), requires
+  /// `cloudkms.folders.showEffectiveAutokeyConfig`.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the resource project to the show effective
-  /// Cloud KMS Autokey configuration for. This may be helpful for interrogating
-  /// the effect of nested folder configurations on a given resource project.
+  /// [parent] - Required. Name of the resource project or folder to show the
+  /// effective Cloud KMS Autokey configuration for. This may be helpful for
+  /// evaluating the effect of nested folder configurations on a given resource
+  /// project. Format: * projects/{project} * folders/{folder}
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -597,8 +654,9 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the AutokeyConfig resource, e.g.
-  /// `folders/{FOLDER_NUMBER}/autokeyConfig` or
-  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig`,
+  /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or
+  /// `projects/{PROJECT_ID}/autokeyConfig`.
   /// Value must have pattern `^projects/\[^/\]+/autokeyConfig$`.
   ///
   /// [updateMask] - Required. Masks which fields of the AutokeyConfig to
@@ -825,7 +883,7 @@ class ProjectsLocationsResource {
   /// Lists information about the supported locations for this service.
   ///
   /// This method lists locations based on the resource scope provided in the
-  /// \[ListLocationsRequest.name\] field: * **Global locations**: If `name` is
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
   /// empty, the method lists the public locations available to all projects. *
   /// **Project-specific locations**: If `name` follows the format
   /// `projects/{project}`, the method lists locations visible to that specific
@@ -840,9 +898,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
-  /// and is ignored unless explicitly documented otherwise. This is primarily
-  /// for internal usage.
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1995,6 +2052,12 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this
   /// CryptoKey.
   ///
+  /// [trustedWrappingEnabled] - Optional. Whether trusted wrapping will be
+  /// enabled on the first CryptoKeyVersions created for this CryptoKey. This
+  /// field is only supported for keys with
+  /// CryptoKeyVersionTemplate.protection_level HSM_SINGLE_TENANT. This field is
+  /// supported for all CryptoKeyPurposes except ENCRYPT_DECRYPT.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2010,6 +2073,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String parent, {
     core.String? cryptoKeyId,
     core.bool? skipInitialVersionCreation,
+    core.bool? trustedWrappingEnabled,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -2018,6 +2082,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       'skipInitialVersionCreation': ?skipInitialVersionCreation == null
           ? null
           : ['${skipInitialVersionCreation}'],
+      'trustedWrappingEnabled': ?trustedWrappingEnabled == null
+          ? null
+          : ['${trustedWrappingEnabled}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2805,6 +2872,58 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     );
   }
 
+  /// Exports a CryptoKeyVersion with a trusted key.
+  ///
+  /// The CryptoKeyVersion must have trusted_wrapping_enabled set to true. The
+  /// CryptoKeyVersion of the \[wrapping_key\] must have the AES_WRAPPING
+  /// purpose. The \[wrapping_key\] must have the AES_256_KWP algorithm.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CryptoKeyVersion to export. The
+  /// CryptoKeyVersion must have trusted_wrapping_enabled set to true.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
+  ///
+  /// [wrappingKey] - Required. The name of the CryptoKeyVersion to use as a
+  /// wrapping key. The CryptoKeyVersion must have hsm_trusted set to true.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExportTrustedKeyWrappedCryptoKeyVersionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExportTrustedKeyWrappedCryptoKeyVersionResponse>
+  exportTrustedKeyWrappedCryptoKeyVersion(
+    core.String name, {
+    core.String? wrappingKey,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'wrappingKey': ?wrappingKey == null ? null : [wrappingKey],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$name') +
+        ':exportTrustedKeyWrappedCryptoKeyVersion';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ExportTrustedKeyWrappedCryptoKeyVersionResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Returns metadata for a given CryptoKeyVersion.
   ///
   /// Request parameters:
@@ -2948,6 +3067,58 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
 
     final url_ =
         'v1/' + core.Uri.encodeFull('$parent') + '/cryptoKeyVersions:import';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CryptoKeyVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Import wrapped key material into a CryptoKeyVersion with a trusted key.
+  ///
+  /// All requests must specify a CryptoKey. If a CryptoKeyVersion is
+  /// additionally specified in the request, key material will be reimported
+  /// into that version. Otherwise, a new version will be created, and will be
+  /// assigned the next sequential id within the CryptoKey. The CryptoKeyVersion
+  /// will have trusted_wrapping_enabled set to true.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the CryptoKey to be imported into.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CryptoKeyVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CryptoKeyVersion> importTrustedKeyWrappedCryptoKeyVersion(
+    ImportTrustedKeyWrappedCryptoKeyVersionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/cryptoKeyVersions:importTrustedKeyWrappedCryptoKeyVersion';
 
     final response_ = await _requester.request(
       url_,
@@ -3382,6 +3553,34 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/importJobs/\[^/\]+$`.
   ///
+  /// [publicKeyFormat] - Optional. Specifies the WrappingPublicKey format. If
+  /// not specified: * For RSA-based import methods, the wrapping key will be
+  /// returned in PEM format * For pure ML-KEM-based import methods, the
+  /// wrapping key will be returned in the raw bytes format specified in
+  /// FIPS-203 * For X-Wing-based import methods, the wrapping key will be
+  /// returned in the raw bytes format specified in
+  /// https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem.
+  /// Possible string values are:
+  /// - "PUBLIC_KEY_FORMAT_UNSPECIFIED" : If the public_key_format field is not
+  /// specified: - For PQC algorithms, an error will be returned. - For non-PQC
+  /// algorithms, the default format is PEM, and the field pem will be
+  /// populated. Otherwise, the public key will be exported through the
+  /// public_key field in the requested format.
+  /// - "PEM" : The returned public key will be encoded in PEM format. See the
+  /// [RFC7468](https://tools.ietf.org/html/rfc7468) sections for
+  /// [General Considerations](https://tools.ietf.org/html/rfc7468#section-2)
+  /// and
+  /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13)
+  /// for more information.
+  /// - "DER" : The returned public key will be encoded in DER format (the
+  /// PrivateKeyInfo structure from RFC 5208).
+  /// - "NIST_PQC" : This is supported only for PQC algorithms. The key material
+  /// is returned in the format defined by NIST PQC standards (FIPS 203, FIPS
+  /// 204, and FIPS 205).
+  /// - "XWING_RAW_BYTES" : The returned public key is in raw bytes format
+  /// defined in its standard
+  /// https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3392,8 +3591,13 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ImportJob> get(core.String name, {core.String? $fields}) async {
+  async.Future<ImportJob> get(
+    core.String name, {
+    core.String? publicKeyFormat,
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'publicKeyFormat': ?publicKeyFormat == null ? null : [publicKeyFormat],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -4694,7 +4898,7 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
-/// Cloud KMS Autokey configuration for a folder.
+/// Cloud KMS Autokey configuration for a project or folder.
 class AutokeyConfig {
   /// A checksum computed by the server based on the value of other fields.
   ///
@@ -4727,9 +4931,10 @@ class AutokeyConfig {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "KEY_PROJECT_RESOLUTION_MODE_UNSPECIFIED" : Default value.
-  /// KeyProjectResolutionMode when not specified will act as
-  /// `DEDICATED_KEY_PROJECT`.
+  /// - "KEY_PROJECT_RESOLUTION_MODE_UNSPECIFIED" : Default value. When
+  /// KeyProjectResolutionMode is set to KEY_PROJECT_RESOLUTION_MODE_UNSPECIFIED
+  /// for a folder and that folder has a key_project set, the folder acts like
+  /// its KeyProjectResolutionMode is DEDICATED_KEY_PROJECT.
   /// - "DEDICATED_KEY_PROJECT" : Keys are created in a dedicated project
   /// specified by `key_project`.
   /// - "RESOURCE_PROJECT" : Keys are created in the same project as the
@@ -4747,8 +4952,9 @@ class AutokeyConfig {
   /// Identifier.
   ///
   /// Name of the AutokeyConfig resource, e.g.
-  /// `folders/{FOLDER_NUMBER}/autokeyConfig` or
-  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig`,
+  /// `projects/{PROJECT_NUMBER}/autokeyConfig`, or
+  /// `projects/{PROJECT_ID}/autokeyConfig`.
   core.String? name;
 
   /// The state for the AutokeyConfig.
@@ -4761,6 +4967,8 @@ class AutokeyConfig {
   /// deleted and the current AutokeyConfig is unusable.
   /// - "UNINITIALIZED" : The AutokeyConfig is not yet initialized or has been
   /// reset to its default uninitialized state.
+  /// - "KEY_PROJECT_PERMISSION_DENIED" : Deprecated: This state is not returned
+  /// by the backend.
   core.String? state;
 
   AutokeyConfig({
@@ -5246,6 +5454,7 @@ class CryptoKey {
   /// - "MAC" : CryptoKeys with this purpose may be used with MacSign.
   /// - "KEY_ENCAPSULATION" : CryptoKeys with this purpose may be used with
   /// GetPublicKey and Decapsulate.
+  /// - "AES_WRAPPING" : CryptoKeys with this purpose may be used for AES key
   core.String? purpose;
 
   /// next_rotation_time will be advanced by this period when the service
@@ -5441,6 +5650,12 @@ class CryptoKeyVersion {
   /// - "PQ_SIGN_ML_DSA_87_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
   /// Digital Signature Algorithm, at security level 5. Randomized version
   /// supporting externally-computed message representatives.
+  /// - "KEM_ECDH_P256" : Key encapsulation: Elliptic Curve Diffie-Hellman with
+  /// NIST P-256 key that returns shared secret.
+  /// - "KEM_ECDH_P384" : Key encapsulation: Elliptic Curve Diffie-Hellman with
+  /// NIST P-384 key that returns shared secret.
+  /// - "AES_256_KWP" : AES key wrap with zero padding algorithm (RFC 5649). Can
+  /// only be used by keys with purpose AES_WRAPPING.
   core.String? algorithm;
 
   /// Statement that was generated and signed by the HSM at key creation time.
@@ -5495,6 +5710,14 @@ class CryptoKeyVersion {
   ///
   /// Output only.
   core.String? generationFailureReason;
+
+  /// Field indicating that the key wrapping key is trusted.
+  ///
+  /// This field is only valid for key purpose AES_256_WRAPPING, and protection
+  /// level HSM_SINGLE_TENANT.
+  ///
+  /// Output only.
+  core.bool? hsmTrusted;
 
   /// The root cause of the most recent import failure.
   ///
@@ -5580,6 +5803,16 @@ class CryptoKeyVersion {
   /// CryptoKeyVersion.external_destruction_failure_reason.
   core.String? state;
 
+  /// Field indicating that the key may be wrapped by a trusted key.
+  ///
+  /// This field can be set for all key purposes except ENCRYPT_DECRYPT, and is
+  /// only valid for keys with protection level HSM_SINGLE_TENANT. This field
+  /// can only be set at creation or import time via CreateCryptoKeyVersion, or
+  /// ImportCryptoKeyVersion.
+  ///
+  /// Immutable.
+  core.bool? trustedWrappingEnabled;
+
   CryptoKeyVersion({
     this.algorithm,
     this.attestation,
@@ -5590,6 +5823,7 @@ class CryptoKeyVersion {
     this.externalProtectionLevelOptions,
     this.generateTime,
     this.generationFailureReason,
+    this.hsmTrusted,
     this.importFailureReason,
     this.importJob,
     this.importTime,
@@ -5597,6 +5831,7 @@ class CryptoKeyVersion {
     this.protectionLevel,
     this.reimportEligible,
     this.state,
+    this.trustedWrappingEnabled,
   });
 
   CryptoKeyVersion.fromJson(core.Map json_)
@@ -5622,6 +5857,7 @@ class CryptoKeyVersion {
         generateTime: json_['generateTime'] as core.String?,
         generationFailureReason:
             json_['generationFailureReason'] as core.String?,
+        hsmTrusted: json_['hsmTrusted'] as core.bool?,
         importFailureReason: json_['importFailureReason'] as core.String?,
         importJob: json_['importJob'] as core.String?,
         importTime: json_['importTime'] as core.String?,
@@ -5629,6 +5865,7 @@ class CryptoKeyVersion {
         protectionLevel: json_['protectionLevel'] as core.String?,
         reimportEligible: json_['reimportEligible'] as core.bool?,
         state: json_['state'] as core.String?,
+        trustedWrappingEnabled: json_['trustedWrappingEnabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -5642,6 +5879,7 @@ class CryptoKeyVersion {
     final externalProtectionLevelOptions = this.externalProtectionLevelOptions;
     final generateTime = this.generateTime;
     final generationFailureReason = this.generationFailureReason;
+    final hsmTrusted = this.hsmTrusted;
     final importFailureReason = this.importFailureReason;
     final importJob = this.importJob;
     final importTime = this.importTime;
@@ -5649,6 +5887,7 @@ class CryptoKeyVersion {
     final protectionLevel = this.protectionLevel;
     final reimportEligible = this.reimportEligible;
     final state = this.state;
+    final trustedWrappingEnabled = this.trustedWrappingEnabled;
     return {
       'algorithm': ?algorithm,
       'attestation': ?attestation,
@@ -5659,6 +5898,7 @@ class CryptoKeyVersion {
       'externalProtectionLevelOptions': ?externalProtectionLevelOptions,
       'generateTime': ?generateTime,
       'generationFailureReason': ?generationFailureReason,
+      'hsmTrusted': ?hsmTrusted,
       'importFailureReason': ?importFailureReason,
       'importJob': ?importJob,
       'importTime': ?importTime,
@@ -5666,6 +5906,7 @@ class CryptoKeyVersion {
       'protectionLevel': ?protectionLevel,
       'reimportEligible': ?reimportEligible,
       'state': ?state,
+      'trustedWrappingEnabled': ?trustedWrappingEnabled,
     };
   }
 }
@@ -6450,6 +6691,55 @@ class EncryptResponse {
 /// Request message for HsmManagement.ExecuteSingleTenantHsmInstanceProposal.
 typedef ExecuteSingleTenantHsmInstanceProposalRequest = $Empty;
 
+/// Response message for
+/// KeyManagementService.ExportTrustedKeyWrappedCryptoKeyVersion.
+class ExportTrustedKeyWrappedCryptoKeyVersionResponse {
+  /// The wrapped key material.
+  core.String? wrappedKey;
+  core.List<core.int> get wrappedKeyAsBytes =>
+      convert.base64.decode(wrappedKey!);
+
+  set wrappedKeyAsBytes(core.List<core.int> bytes_) {
+    wrappedKey = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned
+  /// ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key. An integrity
+  /// check of ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key can
+  /// be performed by computing the CRC32C checksum of
+  /// ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key and comparing
+  /// your results to this field. Discard the response in case of non-matching
+  /// checksum values, and perform a limited number of retries. A persistent
+  /// mismatch may indicate an issue in your computation of the CRC32C checksum.
+  /// Note: This field is defined as int64 for reasons of compatibility across
+  /// different languages. However, it is a non-negative integer, which will
+  /// never exceed 2^32-1, and can be safely downconverted to uint32 in
+  /// languages that support this type.
+  core.String? wrappedKeyCrc32c;
+
+  ExportTrustedKeyWrappedCryptoKeyVersionResponse({
+    this.wrappedKey,
+    this.wrappedKeyCrc32c,
+  });
+
+  ExportTrustedKeyWrappedCryptoKeyVersionResponse.fromJson(core.Map json_)
+    : this(
+        wrappedKey: json_['wrappedKey'] as core.String?,
+        wrappedKeyCrc32c: json_['wrappedKeyCrc32c'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final wrappedKey = this.wrappedKey;
+    final wrappedKeyCrc32c = this.wrappedKeyCrc32c;
+    return {'wrappedKey': ?wrappedKey, 'wrappedKeyCrc32c': ?wrappedKeyCrc32c};
+  }
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -6649,6 +6939,12 @@ class ImportCryptoKeyVersionRequest {
   /// - "PQ_SIGN_ML_DSA_87_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
   /// Digital Signature Algorithm, at security level 5. Randomized version
   /// supporting externally-computed message representatives.
+  /// - "KEM_ECDH_P256" : Key encapsulation: Elliptic Curve Diffie-Hellman with
+  /// NIST P-256 key that returns shared secret.
+  /// - "KEM_ECDH_P384" : Key encapsulation: Elliptic Curve Diffie-Hellman with
+  /// NIST P-384 key that returns shared secret.
+  /// - "AES_256_KWP" : AES key wrap with zero padding algorithm (RFC 5649). Can
+  /// only be used by keys with purpose AES_WRAPPING.
   core.String? algorithm;
 
   /// The optional name of an existing CryptoKeyVersion to target for an import
@@ -6688,6 +6984,16 @@ class ImportCryptoKeyVersionRequest {
         .replaceAll('+', '-');
   }
 
+  /// Whether trusted wrapping will be enabled on the imported
+  /// \[CryptoKeyVersion\].
+  ///
+  /// This field is only supported for keys with
+  /// CryptoKeyVersionTemplate.protection_level HSM_SINGLE_TENANT. This field is
+  /// supported for all CryptoKeyPurposes besides ENCRYPT_DECRYPT.
+  ///
+  /// Optional.
+  core.bool? trustedWrappingEnabled;
+
   /// The wrapped key material to import.
   ///
   /// Before wrapping, key material must be formatted. If importing symmetric
@@ -6724,6 +7030,7 @@ class ImportCryptoKeyVersionRequest {
     this.cryptoKeyVersion,
     this.importJob,
     this.rsaAesWrappedKey,
+    this.trustedWrappingEnabled,
     this.wrappedKey,
   });
 
@@ -6733,6 +7040,7 @@ class ImportCryptoKeyVersionRequest {
         cryptoKeyVersion: json_['cryptoKeyVersion'] as core.String?,
         importJob: json_['importJob'] as core.String?,
         rsaAesWrappedKey: json_['rsaAesWrappedKey'] as core.String?,
+        trustedWrappingEnabled: json_['trustedWrappingEnabled'] as core.bool?,
         wrappedKey: json_['wrappedKey'] as core.String?,
       );
 
@@ -6741,12 +7049,14 @@ class ImportCryptoKeyVersionRequest {
     final cryptoKeyVersion = this.cryptoKeyVersion;
     final importJob = this.importJob;
     final rsaAesWrappedKey = this.rsaAesWrappedKey;
+    final trustedWrappingEnabled = this.trustedWrappingEnabled;
     final wrappedKey = this.wrappedKey;
     return {
       'algorithm': ?algorithm,
       'cryptoKeyVersion': ?cryptoKeyVersion,
       'importJob': ?importJob,
       'rsaAesWrappedKey': ?rsaAesWrappedKey,
+      'trustedWrappingEnabled': ?trustedWrappingEnabled,
       'wrappedKey': ?wrappedKey,
     };
   }
@@ -6854,6 +7164,30 @@ class ImportJob {
   /// 4096 bit RSA key. The key material to be imported is wrapped directly with
   /// the RSA key. Due to technical limitations of RSA wrapping, this method
   /// cannot be used to wrap RSA keys for import.
+  /// - "HPKE_KEM_ML_KEM_768_HKDF_SHA256_AES_256_GCM" : Represents the Hybrid
+  /// Public Key Encryption (HPKE) Scheme originally defined in
+  /// [RFC 9180](https://www.rfc-editor.org/rfc/rfc9180). It involves wrapping
+  /// the raw key with an ephemeral AES key, derived with HKDF-SHA256 from an
+  /// encryption context, that is, in turn obtained from the receiver’s public
+  /// key with the help of the ML-KEM-768 KEM. For more details, see the
+  /// \[ML-KEM HPKE
+  /// standard\](http://datatracker.ietf.org/doc/draft-ietf-hpke-pq/01/).
+  /// - "HPKE_KEM_ML_KEM_1024_HKDF_SHA256_AES_256_GCM" : Represents the Hybrid
+  /// Public Key Encryption (HPKE) Scheme originally defined in
+  /// [RFC 9180](https://www.rfc-editor.org/rfc/rfc9180). It involves wrapping
+  /// the raw key with an ephemeral AES key, derived with HKDF-SHA256 from an
+  /// encryption context, that is, in turn obtained from the receiver’s public
+  /// key with the help of the ML-KEM-1024 KEM. For more details, see the
+  /// \[ML-KEM HPKE
+  /// standard\](http://datatracker.ietf.org/doc/draft-ietf-hpke-pq/01/).
+  /// - "HPKE_KEM_XWING_HKDF_SHA256_AES_256_GCM" : Represents the Hybrid Public
+  /// Key Encryption (HPKE) Scheme originally defined in
+  /// [RFC 9180](https://www.rfc-editor.org/rfc/rfc9180). It involves wrapping
+  /// the raw key with an ephemeral AES key, derived with HKDF-SHA256 from an
+  /// encryption context, that is, in turn obtained from the receiver’s public
+  /// key with the help of the X-Wing hybrid KEM. For more details, see the
+  /// \[X-Wing
+  /// standard\](http://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/09/).
   core.String? importMethod;
 
   /// The resource name for this ImportJob in the format `projects / *
@@ -6886,6 +7220,32 @@ class ImportJob {
   /// Output only.
   WrappingPublicKey? publicKey;
 
+  /// Specifies the WrappingPublicKey format provided by the customer in the
+  /// KeyManagementService.GetImportJob request.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PUBLIC_KEY_FORMAT_UNSPECIFIED" : If the public_key_format field is not
+  /// specified: - For PQC algorithms, an error will be returned. - For non-PQC
+  /// algorithms, the default format is PEM, and the field pem will be
+  /// populated. Otherwise, the public key will be exported through the
+  /// public_key field in the requested format.
+  /// - "PEM" : The returned public key will be encoded in PEM format. See the
+  /// [RFC7468](https://tools.ietf.org/html/rfc7468) sections for
+  /// [General Considerations](https://tools.ietf.org/html/rfc7468#section-2)
+  /// and
+  /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13)
+  /// for more information.
+  /// - "DER" : The returned public key will be encoded in DER format (the
+  /// PrivateKeyInfo structure from RFC 5208).
+  /// - "NIST_PQC" : This is supported only for PQC algorithms. The key material
+  /// is returned in the format defined by NIST PQC standards (FIPS 203, FIPS
+  /// 204, and FIPS 205).
+  /// - "XWING_RAW_BYTES" : The returned public key is in raw bytes format
+  /// defined in its standard
+  /// https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem.
+  core.String? publicKeyFormat;
+
   /// The current state of the ImportJob, indicating if it can be used.
   ///
   /// Output only.
@@ -6911,6 +7271,7 @@ class ImportJob {
     this.name,
     this.protectionLevel,
     this.publicKey,
+    this.publicKeyFormat,
     this.state,
   });
 
@@ -6934,6 +7295,7 @@ class ImportJob {
                 json_['publicKey'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        publicKeyFormat: json_['publicKeyFormat'] as core.String?,
         state: json_['state'] as core.String?,
       );
 
@@ -6948,6 +7310,7 @@ class ImportJob {
     final name = this.name;
     final protectionLevel = this.protectionLevel;
     final publicKey = this.publicKey;
+    final publicKeyFormat = this.publicKeyFormat;
     final state = this.state;
     return {
       'attestation': ?attestation,
@@ -6960,7 +7323,179 @@ class ImportJob {
       'name': ?name,
       'protectionLevel': ?protectionLevel,
       'publicKey': ?publicKey,
+      'publicKeyFormat': ?publicKeyFormat,
       'state': ?state,
+    };
+  }
+}
+
+/// Request message for
+/// KeyManagementService.ImportTrustedKeyWrappedCryptoKeyVersion.
+class ImportTrustedKeyWrappedCryptoKeyVersionRequest {
+  /// Required - The algorithm of the key being imported.
+  ///
+  /// This does not need to match the version_template of the CryptoKey this
+  /// version imports into.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
+  /// - "AES_128_CBC" : AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+  /// - "AES_256_CBC" : AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+  /// - "AES_128_CTR" : AES-CTR (Counter Mode) using 128-bit keys.
+  /// - "AES_256_CTR" : AES-CTR (Counter Mode) using 256-bit keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level. Other hash functions can
+  /// also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_ED25519" : EdDSA on the Curve25519 in pure mode (taking data as
+  /// input).
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
+  /// - "ML_KEM_768" : ML-KEM-768 (FIPS 203)
+  /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
+  /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
+  /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
+  /// - "PQ_SIGN_ML_DSA_44" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 1. Randomized version.
+  /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_ML_DSA_87" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 5. Randomized version.
+  /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
+  /// digital signature algorithm, at security level 1. Randomized version.
+  /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
+  /// hash-based digital signature algorithm, at security level 1. Randomized
+  /// pre-hash version supporting SHA256 digests.
+  /// - "PQ_SIGN_ML_DSA_44_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 1. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "PQ_SIGN_ML_DSA_65_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 3. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "PQ_SIGN_ML_DSA_87_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
+  /// Digital Signature Algorithm, at security level 5. Randomized version
+  /// supporting externally-computed message representatives.
+  /// - "KEM_ECDH_P256" : Key encapsulation: Elliptic Curve Diffie-Hellman with
+  /// NIST P-256 key that returns shared secret.
+  /// - "KEM_ECDH_P384" : Key encapsulation: Elliptic Curve Diffie-Hellman with
+  /// NIST P-384 key that returns shared secret.
+  /// - "AES_256_KWP" : AES key wrap with zero padding algorithm (RFC 5649). Can
+  /// only be used by keys with purpose AES_WRAPPING.
+  core.String? algorithm;
+
+  /// The optional name of an existing CryptoKeyVersion to target for an import
+  /// operation.
+  ///
+  /// If this field is not present, a new CryptoKeyVersion containing the
+  /// supplied key material is created. If this field is present, the supplied
+  /// key material is imported into the existing CryptoKeyVersion. To import
+  /// into an existing CryptoKeyVersion, the CryptoKeyVersion must be a child of
+  /// ImportTrustedKeyWrappedCryptoKeyVersionRequest.parent, have been
+  /// previously created via ImportTrustedKeyWrappedCryptoKeyVersion, and be in
+  /// DESTROYED or IMPORT_FAILED state. The key material and algorithm must
+  /// match the previous CryptoKeyVersion exactly if the CryptoKeyVersion has
+  /// ever contained key material
+  ///
+  /// Optional.
+  core.String? cryptoKeyVersion;
+
+  /// Required - the CKV of the trusted key used to import.
+  ///
+  /// This can be the name of a CryptoKeyVersion or a CryptoKey.
+  ///
+  /// Required.
+  core.String? importingKey;
+
+  /// The target key pre-wrapped on premises.
+  ///
+  /// Required.
+  core.String? wrappedKey;
+  core.List<core.int> get wrappedKeyAsBytes =>
+      convert.base64.decode(wrappedKey!);
+
+  set wrappedKeyAsBytes(core.List<core.int> bytes_) {
+    wrappedKey = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ImportTrustedKeyWrappedCryptoKeyVersionRequest({
+    this.algorithm,
+    this.cryptoKeyVersion,
+    this.importingKey,
+    this.wrappedKey,
+  });
+
+  ImportTrustedKeyWrappedCryptoKeyVersionRequest.fromJson(core.Map json_)
+    : this(
+        algorithm: json_['algorithm'] as core.String?,
+        cryptoKeyVersion: json_['cryptoKeyVersion'] as core.String?,
+        importingKey: json_['importingKey'] as core.String?,
+        wrappedKey: json_['wrappedKey'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final algorithm = this.algorithm;
+    final cryptoKeyVersion = this.cryptoKeyVersion;
+    final importingKey = this.importingKey;
+    final wrappedKey = this.wrappedKey;
+    return {
+      'algorithm': ?algorithm,
+      'cryptoKeyVersion': ?cryptoKeyVersion,
+      'importingKey': ?importingKey,
+      'wrappedKey': ?wrappedKey,
     };
   }
 }
@@ -7150,6 +7685,8 @@ class KeyOperationAttestation {
   /// https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/software-key-attestation.html.
   /// - "CAVIUM_V2_COMPRESSED" : Cavium HSM attestation V2 compressed with gzip.
   /// This is a new format introduced in Cavium's version 3.2-08.
+  /// - "CAVIUM_V209" : Cavium HSM attestation V209, introduced in Cavium's
+  /// version 2.09-0702.
   core.String? format;
 
   KeyOperationAttestation({this.certChains, this.content, this.format});
@@ -8245,6 +8782,12 @@ class PublicKey {
   /// - "PQ_SIGN_ML_DSA_87_EXTERNAL_MU" : The post-quantum Module-Lattice-Based
   /// Digital Signature Algorithm, at security level 5. Randomized version
   /// supporting externally-computed message representatives.
+  /// - "KEM_ECDH_P256" : Key encapsulation: Elliptic Curve Diffie-Hellman with
+  /// NIST P-256 key that returns shared secret.
+  /// - "KEM_ECDH_P384" : Key encapsulation: Elliptic Curve Diffie-Hellman with
+  /// NIST P-384 key that returns shared secret.
+  /// - "AES_256_KWP" : AES key wrap with zero padding algorithm (RFC 5649). Can
+  /// only be used by keys with purpose AES_WRAPPING.
   core.String? algorithm;
 
   /// The name of the CryptoKeyVersion public key.
@@ -9463,20 +10006,62 @@ class SetIamPolicyRequest {
   }
 }
 
-/// Response message for ShowEffectiveAutokeyConfig.
+/// Response message for ShowEffectiveAutokeyConfig
 class ShowEffectiveAutokeyConfigResponse {
-  /// Name of the key project configured in the resource project's folder
-  /// ancestry.
+  /// Name of the key project configured in the ancestry of the project or
+  /// folder.
   core.String? keyProject;
 
-  ShowEffectiveAutokeyConfigResponse({this.keyProject});
+  /// The KeyProjectResolutionMode for the AutokeyConfig.
+  /// Possible string values are:
+  /// - "KEY_PROJECT_RESOLUTION_MODE_UNSPECIFIED" : Default value. When
+  /// KeyProjectResolutionMode is set to KEY_PROJECT_RESOLUTION_MODE_UNSPECIFIED
+  /// for a folder and that folder has a key_project set, the folder acts like
+  /// its KeyProjectResolutionMode is DEDICATED_KEY_PROJECT.
+  /// - "DEDICATED_KEY_PROJECT" : Keys are created in a dedicated project
+  /// specified by `key_project`.
+  /// - "RESOURCE_PROJECT" : Keys are created in the same project as the
+  /// resource requesting the key. The `key_project` must not be set when this
+  /// mode is used.
+  /// - "DISABLED" : Disables the AutokeyConfig. When this mode is set, any
+  /// AutokeyConfig from higher levels in the resource hierarchy are ignored for
+  /// this resource and its descendants. This setting can be overridden by a
+  /// more specific configuration at a lower level. For example, if Autokey is
+  /// disabled on a folder, it can be re-enabled on a sub-folder or project
+  /// within that folder by setting a different mode (e.g.,
+  /// DEDICATED_KEY_PROJECT or RESOURCE_PROJECT).
+  core.String? keyProjectResolutionMode;
+
+  /// Source of the effective AutokeyConfig.
+  Source? source;
+
+  ShowEffectiveAutokeyConfigResponse({
+    this.keyProject,
+    this.keyProjectResolutionMode,
+    this.source,
+  });
 
   ShowEffectiveAutokeyConfigResponse.fromJson(core.Map json_)
-    : this(keyProject: json_['keyProject'] as core.String?);
+    : this(
+        keyProject: json_['keyProject'] as core.String?,
+        keyProjectResolutionMode:
+            json_['keyProjectResolutionMode'] as core.String?,
+        source: json_.containsKey('source')
+            ? Source.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final keyProject = this.keyProject;
-    return {'keyProject': ?keyProject};
+    final keyProjectResolutionMode = this.keyProjectResolutionMode;
+    final source = this.source;
+    return {
+      'keyProject': ?keyProject,
+      'keyProjectResolutionMode': ?keyProjectResolutionMode,
+      'source': ?source,
+    };
   }
 }
 
@@ -9591,7 +10176,7 @@ class SingleTenantHsmInstance {
   /// SingleTenantHsmInstance.
   ///
   /// This can only be set at creation time. Key portability features are
-  /// disabled by default and not yet available in GA.
+  /// disabled by default.
   ///
   /// Optional. Immutable.
   core.bool? keyPortabilityEnabled;
@@ -9632,7 +10217,7 @@ class SingleTenantHsmInstance {
   /// The system-defined duration that an instance can remain unrefreshed until
   /// it is automatically disabled.
   ///
-  /// This will have a value of 120 days.
+  /// This will have a value of 730 days.
   ///
   /// Output only.
   core.String? unrefreshedDurationUntilDisable;
@@ -9809,6 +10394,11 @@ class SingleTenantHsmInstanceProposal {
   /// after this duration.
   core.String? ttl;
 
+  /// Promotes a key with the AES_WRAPPING purpose to a trusted wrapping key.
+  ///
+  /// The key must be in the ACTIVE state to perform this operation.
+  UpgradeKeyTrust? upgradeKeyTrust;
+
   SingleTenantHsmInstanceProposal({
     this.addQuorumMember,
     this.createTime,
@@ -9827,6 +10417,7 @@ class SingleTenantHsmInstanceProposal {
     this.requiredActionQuorumParameters,
     this.state,
     this.ttl,
+    this.upgradeKeyTrust,
   });
 
   SingleTenantHsmInstanceProposal.fromJson(core.Map json_)
@@ -9898,6 +10489,11 @@ class SingleTenantHsmInstanceProposal {
             : null,
         state: json_['state'] as core.String?,
         ttl: json_['ttl'] as core.String?,
+        upgradeKeyTrust: json_.containsKey('upgradeKeyTrust')
+            ? UpgradeKeyTrust.fromJson(
+                json_['upgradeKeyTrust'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -9918,6 +10514,7 @@ class SingleTenantHsmInstanceProposal {
     final requiredActionQuorumParameters = this.requiredActionQuorumParameters;
     final state = this.state;
     final ttl = this.ttl;
+    final upgradeKeyTrust = this.upgradeKeyTrust;
     return {
       'addQuorumMember': ?addQuorumMember,
       'createTime': ?createTime,
@@ -9936,7 +10533,25 @@ class SingleTenantHsmInstanceProposal {
       'requiredActionQuorumParameters': ?requiredActionQuorumParameters,
       'state': ?state,
       'ttl': ?ttl,
+      'upgradeKeyTrust': ?upgradeKeyTrust,
     };
+  }
+}
+
+/// Source of the effective AutokeyConfig.
+class Source {
+  /// Contains the resource name of the AutokeyConfig that is effective, for
+  /// example, `folders/{FOLDER_NUMBER}` or `projects/{PROJECT_NUMBER}` or
+  /// `organizations/{ORGANIZATION_NUMBER}`.
+  core.String? name;
+
+  Source({this.name});
+
+  Source.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    return {'name': ?name};
   }
 }
 
@@ -9973,6 +10588,36 @@ class UpdateCryptoKeyPrimaryVersionRequest {
   }
 }
 
+/// Promotes a key with the AES_WRAPPING purpose to a trusted wrapping key.
+///
+/// The key must be in the ACTIVE state to perform this operation.
+class UpgradeKeyTrust {
+  /// The name of the CryptoKeyVersion to promote.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The public key associated with the 2FA key that will sign the login nonce
+  /// for this operation.
+  ///
+  /// Required.
+  core.String? twoFactorPublicKeyPem;
+
+  UpgradeKeyTrust({this.name, this.twoFactorPublicKeyPem});
+
+  UpgradeKeyTrust.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        twoFactorPublicKeyPem: json_['twoFactorPublicKeyPem'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final twoFactorPublicKeyPem = this.twoFactorPublicKeyPem;
+    return {'name': ?name, 'twoFactorPublicKeyPem': ?twoFactorPublicKeyPem};
+  }
+}
+
 /// Response message for EkmService.VerifyConnectivity.
 typedef VerifyConnectivityResponse = $Empty;
 
@@ -9981,6 +10626,21 @@ typedef VerifyConnectivityResponse = $Empty;
 /// For details of the type of key this public key corresponds to, see the
 /// ImportMethod.
 class WrappingPublicKey {
+  /// Contains the public key, formatted according to the
+  /// PublicKey.PublicKeyFormat specified in the
+  /// KeyManagementService.GetImportJob request.
+  ///
+  /// Output only.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
   /// The public key, encoded in PEM format.
   ///
   /// For more information, see the
@@ -9988,15 +10648,24 @@ class WrappingPublicKey {
   /// [General Considerations](https://tools.ietf.org/html/rfc7468#section-2)
   /// and
   /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13).
+  /// This field gets populated by default for RSA-based import methods, if no
+  /// public_key_format is specified in the request. If you want to retrieve the
+  /// wrapping key of an ImportJob in some other format, use
+  /// KeyManagementService.GetImportJob and set the public_key_format to the
+  /// desired public key format.
   core.String? pem;
 
-  WrappingPublicKey({this.pem});
+  WrappingPublicKey({this.data, this.pem});
 
   WrappingPublicKey.fromJson(core.Map json_)
-    : this(pem: json_['pem'] as core.String?);
+    : this(
+        data: json_['data'] as core.String?,
+        pem: json_['pem'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
     final pem = this.pem;
-    return {'pem': ?pem};
+    return {'data': ?data, 'pem': ?pem};
   }
 }

@@ -1319,6 +1319,7 @@ api.SoftwareConfig buildSoftwareConfig() {
   buildCounterSoftwareConfig++;
   if (buildCounterSoftwareConfig < 3) {
     o.airflowConfigOverrides = buildUnnamed16();
+    o.auditLogsReplicationMode = 'foo';
     o.cloudDataLineageIntegration = buildCloudDataLineageIntegration();
     o.envVariables = buildUnnamed17();
     o.imageVersion = 'foo';
@@ -1335,6 +1336,7 @@ void checkSoftwareConfig(api.SoftwareConfig o) {
   buildCounterSoftwareConfig++;
   if (buildCounterSoftwareConfig < 3) {
     checkUnnamed16(o.airflowConfigOverrides!);
+    unittest.expect(o.auditLogsReplicationMode!, unittest.equals('foo'));
     checkCloudDataLineageIntegration(o.cloudDataLineageIntegration!);
     checkUnnamed17(o.envVariables!);
     unittest.expect(o.imageVersion!, unittest.equals('foo'));

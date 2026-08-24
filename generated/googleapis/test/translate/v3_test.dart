@@ -133,6 +133,7 @@ api.AdaptiveMtTranslateRequest buildAdaptiveMtTranslateRequest() {
     o.content = buildUnnamed0();
     o.dataset = 'foo';
     o.glossaryConfig = buildGlossaryConfig();
+    o.mimeType = 'foo';
     o.referenceSentenceConfig = buildReferenceSentenceConfig();
   }
   buildCounterAdaptiveMtTranslateRequest--;
@@ -145,6 +146,7 @@ void checkAdaptiveMtTranslateRequest(api.AdaptiveMtTranslateRequest o) {
     checkUnnamed0(o.content!);
     unittest.expect(o.dataset!, unittest.equals('foo'));
     checkGlossaryConfig(o.glossaryConfig!);
+    unittest.expect(o.mimeType!, unittest.equals('foo'));
     checkReferenceSentenceConfig(o.referenceSentenceConfig!);
   }
   buildCounterAdaptiveMtTranslateRequest--;

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260411",
+    "revision": "20260715",
     "rootUrl": "https://merchantapi.googleapis.com/",
     "servicePath": "",
     "title": "Merchant API",
@@ -123,7 +123,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. Id of the account making the call. Must be a standalone account or an MCA subaccount. Format: accounts/{account}",
+                                    "description": "Required. Id of the account making the call. Must be a standalone account or a subaccount of an advanced account. Format: accounts/{account}",
                                     "location": "path",
                                     "pattern": "^accounts/[^/]+$",
                                     "required": true,
@@ -800,7 +800,7 @@
                 },
                 "date": {
                     "$ref": "Date",
-                    "description": "Date in the merchant timezone to which metrics apply. Segment. Condition on `date` is required in the `WHERE` clause."
+                    "description": "Date in the Merchant Center account timezone to which metrics apply. Segment. Condition on `date` is required in the `WHERE` clause."
                 },
                 "impressions": {
                     "description": "Number of times images and online store links leading to your non-product pages were shown. Metric.",
@@ -809,7 +809,7 @@
                 },
                 "week": {
                     "$ref": "Date",
-                    "description": "First day of the week (Monday) of the metrics date in the merchant timezone. Segment."
+                    "description": "First day of the week (Monday) of the metrics date in the Merchant Center account timezone. Segment."
                 }
             },
             "type": "object"
@@ -1174,7 +1174,7 @@
                 },
                 "date": {
                     "$ref": "Date",
-                    "description": "Date in the merchant timezone to which metrics apply. Segment. Condition on `date` is required in the `WHERE` clause."
+                    "description": "Date in the Merchant Center account timezone to which metrics apply. Segment. Condition on `date` is required in the `WHERE` clause."
                 },
                 "impressions": {
                     "description": "Number of times merchant's products are shown. Metric.",
@@ -1239,7 +1239,7 @@
                 },
                 "week": {
                     "$ref": "Date",
-                    "description": "First day of the week (Monday) of the metrics date in the merchant timezone. Segment."
+                    "description": "First day of the week (Monday) of the metrics date in the Merchant Center account timezone. Segment."
                 }
             },
             "type": "object"
@@ -1297,11 +1297,13 @@
                     "description": "The resource that changed, in this case it will always be `Product`.",
                     "enum": [
                         "RESOURCE_UNSPECIFIED",
-                        "PRODUCT"
+                        "PRODUCT",
+                        "ACCOUNT_SERVICE"
                     ],
                     "enumDescriptions": [
                         "Unspecified resource",
-                        "Resource type : product"
+                        "Resource type : product",
+                        "Account service"
                     ],
                     "type": "string"
                 }

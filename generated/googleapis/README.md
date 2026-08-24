@@ -102,9 +102,28 @@ An API for accessing Advisory Notifications in Google Cloud
 - [Original documentation](https://cloud.google.com/advisory-notifications)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/advisorynotifications_v1/advisorynotifications_v1-library.html)
 
-#### Vertex AI API - `aiplatform/v1`
+#### Agent Identity API - `agentidentity/v1`
 
-Train high-quality custom machine learning models with minimal machine learning expertise and effort.
+- [Original documentation](https://cloud.google.com/iam/docs/)
+- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/agentidentity_v1/agentidentity_v1-library.html)
+
+#### Agent Identity Credentials API - `agentidentitycredentials/v1`
+
+The Agent Identity Credentials API retrieves and finalizes authorization credentials for auth providers.
+
+- [Original documentation](https://cloud.google.com/iam/docs/)
+- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/agentidentitycredentials_v1/agentidentitycredentials_v1-library.html)
+
+#### Agent Registry API - `agentregistry/v1`
+
+Agent Registry is a centralized, unified catalog that lets you store, discover, and govern Model Context Protocol (MCP) servers, tools, and AI agents within Google Cloud.
+
+- [Original documentation](https://docs.cloud.google.com/agent-registry/overview)
+- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/agentregistry_v1/agentregistry_v1-library.html)
+
+#### Agent Platform API - `aiplatform/v1`
+
+Build, scale, govern, and optimize sophisticated agents and models.
 
 - [Original documentation](https://cloud.google.com/vertex-ai/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/aiplatform_v1/aiplatform_v1-library.html)
@@ -123,19 +142,19 @@ AlloyDB for PostgreSQL is an open source-compatible database service that provid
 - [Original documentation](https://cloud.google.com/alloydb/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/alloydb_v1/alloydb_v1-library.html)
 
-#### ![Logo](https://www.google.com/images/icons/product/analytics-16.png) Google Analytics API - `analytics/v3`
-
-Views and manages your Google Analytics data.
-
-- [Original documentation](https://developers.google.com/analytics/)
-- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/analytics_v3/analytics_v3-library.html)
-
 #### Analytics Hub API - `analyticshub/v1`
 
 Exchange data and analytics assets securely and efficiently.
 
 - [Original documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/analyticshub_v1/analyticshub_v1-library.html)
+
+#### Android Developer ID Status API - `androiddeveloperidstatus/v1`
+
+Android Developer ID Status API.
+
+- [Original documentation](https://developer.android.com/developer-verification/guides/check-registration-status)
+- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/androiddeveloperidstatus_v1/androiddeveloperidstatus_v1-library.html)
 
 #### Android Device Provisioning Partner API - `androiddeviceprovisioning/v1`
 
@@ -176,11 +195,6 @@ Use the Apigee API to programmatically develop and manage APIs with a set of RES
 
 - [Original documentation](https://cloud.google.com/apigee-api-management/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/apigee_v1/apigee_v1-library.html)
-
-#### Apigee Registry API - `apigeeregistry/v1`
-
-- [Original documentation](https://cloud.google.com/apigee/docs/api-hub/what-is-api-hub)
-- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/apigeeregistry_v1/apigeeregistry_v1-library.html)
 
 #### API hub API - `apihub/v1`
 
@@ -267,11 +281,11 @@ Chrome Enterprise Premium is a secure enterprise browsing solution that provides
 - [Original documentation](https://cloud.google.com/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/beyondcorp_v1/beyondcorp_v1-library.html)
 
-#### BigLake API - `biglake/v1`
+#### Lakehouse API - `biglake/v1`
 
-The BigLake API provides access to BigLake Metastore, a serverless, fully managed, and highly available metastore for open-source data that can be used for querying Apache Iceberg tables in BigQuery.
+The Lakehouse API (formerly BigLake API) provides access to a serverless, fully managed, and highly available metastore that provides a single source of truth for your data lakehouse. It lets multiple engines—including Apache Spark, Google Managed Spark, Apache Flink, Trino and BigQuery—share tables and metadata for key open formats (Apache Iceberg, Apache Hive), and query the same copy of data. Plus, through the Lakehouse runtime catalog federation seamlessly unite your lakehouse ecosystem, letting Iceberg compatible engines on Google Cloud (BigQuery, Google Managed Spark) discover and analyze enterprise data across Snowflake, Databricks, and AWS Glue.
 
-- [Original documentation](https://cloud.google.com/bigquery/)
+- [Original documentation](https://cloud.google.com/products/lakehouse)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/biglake_v1/biglake_v1-library.html)
 
 #### BigQuery API - `bigquery/v2`
@@ -533,6 +547,13 @@ Manages keys and performs cryptographic operations in a central cloud service, f
 - [Original documentation](https://cloud.google.com/location-finder/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/cloudlocationfinder_v1/cloudlocationfinder_v1-library.html)
 
+#### Cloud Product Registry API - `cloudproductregistry/v1`
+
+Cloud Product Registry API provides capabilities to access all first Google Cloud products.
+
+- [Original documentation](https://docs.cloud.google.com/product-registry)
+- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/cloudproductregistry_v1/cloudproductregistry_v1-library.html)
+
 #### Cloud Profiler API - `cloudprofiler/v2`
 
 Manages continuous profiling information.
@@ -791,13 +812,6 @@ Build applications to efficiently manage large or complex trafficking, reporting
 - [Original documentation](https://developers.google.com/doubleclick-advertisers/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/dfareporting_v3_5/dfareporting_v3_5-library.html)
 
-#### Campaign Manager 360 API - `dfareporting/v4`
-
-Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.
-
-- [Original documentation](https://developers.google.com/doubleclick-advertisers/)
-- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/dfareporting_v4/dfareporting_v4-library.html)
-
 #### Campaign Manager 360 API - `dfareporting/v5`
 
 Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.
@@ -974,9 +988,9 @@ Firebase App Hosting streamlines the development and deployment of dynamic Next.
 - [Original documentation](https://firebase.google.com/docs/app-hosting)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/firebaseapphosting_v1/firebaseapphosting_v1-library.html)
 
-#### Firebase Data Connect API - `firebasedataconnect/v1`
+#### Firebase SQL Connect API - `firebasedataconnect/v1`
 
-Firebase Data Connect is a relational database service for mobile and web apps that lets you build and scale using a fully-managed PostgreSQL database powered by Cloud SQL. The REST API lets developers manage the connections to their database, change the schema of their database, and query the database.
+Firebase SQL Connect is a relational database service for mobile and web apps that lets you build and scale using a fully-managed PostgreSQL database powered by Cloud SQL. The REST API lets developers manage the connections to their database, change the schema of their database, and query the database.
 
 - [Original documentation](https://firebase.google.com/docs/data-connect)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/firebasedataconnect_v1/firebasedataconnect_v1-library.html)
@@ -1034,6 +1048,13 @@ Reads and writes Google Forms and responses.
 
 - [Original documentation](https://developers.google.com/workspace/forms/api)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/forms_v1/forms_v1-library.html)
+
+#### Cloud FTP API - `ftp/v1`
+
+A managed, cloud-native solution to move data in and out of Google Cloud by using SSH File Transfer Protocol (SFTP).
+
+- [Original documentation](https://docs.cloud.google.com/cloud-ftp)
+- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/ftp_v1/ftp_v1-library.html)
 
 #### Google Play Games Services API - `games/v1`
 
@@ -1134,7 +1155,7 @@ Manage, store, and access healthcare data in Google Cloud Platform.
 
 #### Cluster Director API - `hypercomputecluster/v1`
 
-The Cluster Director API allows you to deploy, manage, and monitor clusters that run AI, ML, or HPC workloads.
+The Cluster Director API lets you deploy, manage, and monitor clusters that run artificial intelligence (AI), machine learning (ML), or high performance computing (HPC) workloads.
 
 - [Original documentation](https://docs.cloud.google.com/cluster-director/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/hypercomputecluster_v1/hypercomputecluster_v1-library.html)
@@ -1216,11 +1237,6 @@ Notifies Google Web Search when your web pages change.
 
 - [Original documentation](https://developers.google.com/search/apis/indexing-api/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/indexing_v3/indexing_v3-library.html)
-
-#### Application Integration API - `integrations/v1`
-
-- [Original documentation](https://cloud.google.com/application-integration)
-- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/integrations_v1/integrations_v1-library.html)
 
 #### Cloud Talent Solution API - `jobs/v3`
 
@@ -1392,6 +1408,13 @@ Programmatically manage your Merchant Center Accounts.
 - [Original documentation](https://developers.google.com/merchant/api)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/merchantapi_lfp_v1/merchantapi_lfp_v1-library.html)
 
+#### Merchant API - `merchantapi/loyaltycustomers_v1`
+
+Programmatically manage your Merchant Center Accounts.
+
+- [Original documentation](https://developers.google.com/merchant/api)
+- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/merchantapi_loyaltycustomers_v1/merchantapi_loyaltycustomers_v1-library.html)
+
 #### Merchant API - `merchantapi/notifications_v1`
 
 Programmatically manage your Merchant Center Accounts.
@@ -1496,13 +1519,6 @@ The My Business Place Actions API provides an interface for managing place actio
 
 - [Original documentation](https://developers.google.com/my-business/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/mybusinessplaceactions_v1/mybusinessplaceactions_v1-library.html)
-
-#### My Business Q&A API - `mybusinessqanda/v1`
-
-The My Business Q&A API allows questions and answers to be posted for specific listings. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
-
-- [Original documentation](https://developers.google.com/my-business/)
-- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/mybusinessqanda_v1/mybusinessqanda_v1-library.html)
 
 #### My Business Verifications API - `mybusinessverifications/v1`
 
@@ -1764,9 +1780,9 @@ Perform common functions that are available on the Channel Services console at s
 - [Original documentation](https://developers.google.com/google-apps/reseller/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/reseller_v1/reseller_v1-library.html)
 
-#### Vertex AI Search for commerce API - `retail/v2`
+#### AI Commerce Search API - `retail/v2`
 
-Vertex AI Search for commerce API is made up of Retail Search, Browse and Recommendations. These discovery AI solutions help you implement personalized search, browse and recommendations, based on machine learning models, across your websites and mobile applications.
+The AI Commerce Search API is made up of Retail Search, Browse and Recommendations. These discovery AI solutions help you implement personalized search, browse and recommendations, based on machine learning models, across your websites and mobile applications.
 
 - [Original documentation](https://cloud.google.com/recommendations)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/retail_v2/retail_v2-library.html)
@@ -1819,6 +1835,13 @@ Manages and executes Google Apps Script projects.
 
 - [Original documentation](https://developers.google.com/apps-script/api/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/script_v1/script_v1-library.html)
+
+#### Search Ads 360 Reporting API - `searchads360/v23`
+
+The Search Ads 360 API allows developers to automate downloading reports from Search Ads 360.
+
+- [Original documentation](https://developers.google.com/search-ads/reporting)
+- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/searchads360_v23/searchads360_v23-library.html)
 
 #### Google Search Console API - `searchconsole/v1`
 
@@ -2145,6 +2168,13 @@ API for issuers to save and manage Google Wallet Objects.
 
 - [Original documentation](https://developers.google.com/pay/passes)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/walletobjects_v1/walletobjects_v1-library.html)
+
+#### Web Content Publisher API - `webcontentpublisher/v1`
+
+webcontentpublisher.googleapis.com API, a service for web content publishers.
+
+- [Original documentation](https://developers.google.com/news/subscribe)
+- [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/webcontentpublisher_v1/webcontentpublisher_v1-library.html)
 
 #### Web Fonts Developer API - `webfonts/v1`
 

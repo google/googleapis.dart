@@ -2644,6 +2644,45 @@ class JwtResource_1 {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Checks that the JWT or JSON string in the request represents a valid pass
+  /// to be saved.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [JwtValidateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<JwtValidateResponse> validate(
+    JwtValidateRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'walletobjects/v1/jwt/validate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return JwtValidateResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class LoyaltyclassResource {
@@ -11957,6 +11996,30 @@ class IssuerToUserInfo {
   }
 }
 
+/// A JSON representation of a pass.
+class JsonResource {
+  /// A JSON string representing the unencoded JWT payload for a pass of the
+  /// format described at
+  /// https://developers.google.com/wallet/reference/rest/v1/Jwt.
+  ///
+  /// This can be set to either the entire JSON representation described at this
+  /// link or just the contents of the payload field holding the relevant
+  /// classes and objects.
+  ///
+  /// Required.
+  core.String? json;
+
+  JsonResource({this.json});
+
+  JsonResource.fromJson(core.Map json_)
+    : this(json: json_['json'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final json = this.json;
+    return {'json': ?json};
+  }
+}
+
 class JwtInsertResponse {
   /// Data that corresponds to the ids of the provided classes and objects in
   /// the JWT.
@@ -12007,6 +12070,52 @@ class JwtResource {
     return {'jwt': ?jwt};
   }
 }
+
+/// Request to validate the JWT or JSON representation of a pass.
+class JwtValidateRequest {
+  /// A JSON representation of a pass to be validated.
+  ///
+  /// Either this or jwt_resource should be set. Requests setting both or
+  /// neither will be rejected.
+  ///
+  /// Optional.
+  JsonResource? jsonResource;
+
+  /// A JWT representation of a pass to be validated.
+  ///
+  /// Either this or json_resource should be set. Requests setting both or
+  /// neither will be rejected.
+  ///
+  /// Optional.
+  JwtResource? jwtResource;
+
+  JwtValidateRequest({this.jsonResource, this.jwtResource});
+
+  JwtValidateRequest.fromJson(core.Map json_)
+    : this(
+        jsonResource: json_.containsKey('jsonResource')
+            ? JsonResource.fromJson(
+                json_['jsonResource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        jwtResource: json_.containsKey('jwtResource')
+            ? JwtResource.fromJson(
+                json_['jwtResource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final jsonResource = this.jsonResource;
+    final jwtResource = this.jwtResource;
+    return {'jsonResource': ?jsonResource, 'jwtResource': ?jwtResource};
+  }
+}
+
+/// Empty if the resource in the request is valid.
+///
+/// Returns exception if invalid.
+typedef JwtValidateResponse = $Empty;
 
 /// A pair of text strings to be displayed in the details view.
 ///
@@ -13856,6 +13965,18 @@ class Media {
         .replaceAll('+', '-');
   }
 
+  /// Scotty-provided SHA512 hash for an upload.
+  core.String? sha512Hash;
+  core.List<core.int> get sha512HashAsBytes =>
+      convert.base64.decode(sha512Hash!);
+
+  set sha512HashAsBytes(core.List<core.int> bytes_) {
+    sha512Hash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
   /// Time at which the media data was last updated, in milliseconds since UNIX
   /// epoch
   core.String? timestamp;
@@ -13892,6 +14013,7 @@ class Media {
     this.referenceType,
     this.sha1Hash,
     this.sha256Hash,
+    this.sha512Hash,
     this.timestamp,
     this.token,
   });
@@ -13974,6 +14096,7 @@ class Media {
         referenceType: json_['referenceType'] as core.String?,
         sha1Hash: json_['sha1Hash'] as core.String?,
         sha256Hash: json_['sha256Hash'] as core.String?,
+        sha512Hash: json_['sha512Hash'] as core.String?,
         timestamp: json_['timestamp'] as core.String?,
         token: json_['token'] as core.String?,
       );
@@ -14007,6 +14130,7 @@ class Media {
     final referenceType = this.referenceType;
     final sha1Hash = this.sha1Hash;
     final sha256Hash = this.sha256Hash;
+    final sha512Hash = this.sha512Hash;
     final timestamp = this.timestamp;
     final token = this.token;
     return {
@@ -14038,6 +14162,7 @@ class Media {
       'referenceType': ?referenceType,
       'sha1Hash': ?sha1Hash,
       'sha256Hash': ?sha256Hash,
+      'sha512Hash': ?sha512Hash,
       'timestamp': ?timestamp,
       'token': ?token,
     };

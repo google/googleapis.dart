@@ -5917,7 +5917,7 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonym {
 }
 
 /// String/text values.
-typedef GoogleCloudContentwarehouseV1TextArray = $Shared09;
+typedef GoogleCloudContentwarehouseV1TextArray = $Shared12;
 
 /// Configurations for a text property.
 typedef GoogleCloudContentwarehouseV1TextTypeOptions = $Empty;
@@ -8758,8 +8758,42 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
 /// The parent element the current element is based on.
 ///
 /// Used for referencing/aligning, removal and replacement operations.
-typedef GoogleCloudDocumentaiV1DocumentProvenanceParent =
-    $GoogleCloudDocumentaiV1DocumentProvenanceParent;
+class GoogleCloudDocumentaiV1DocumentProvenanceParent {
+  /// The id of the parent provenance.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.int? id;
+
+  /// The index of the parent item in the corresponding item list (eg.
+  ///
+  /// list of entities, properties within entities, etc.) in the parent
+  /// revision.
+  core.int? index;
+
+  /// The index of the index into current revision's parent_ids list.
+  core.int? revision;
+
+  GoogleCloudDocumentaiV1DocumentProvenanceParent({
+    this.id,
+    this.index,
+    this.revision,
+  });
+
+  GoogleCloudDocumentaiV1DocumentProvenanceParent.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.int?,
+        index: json_['index'] as core.int?,
+        revision: json_['revision'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final index = this.index;
+    final revision = this.revision;
+    return {'id': ?id, 'index': ?index, 'revision': ?revision};
+  }
+}
 
 /// Contains past or forward revisions of this document.
 class GoogleCloudDocumentaiV1DocumentRevision {

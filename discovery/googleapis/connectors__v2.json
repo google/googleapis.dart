@@ -15,6 +15,53 @@
     "description": "Enables users to create and manage connections to Google Cloud services and third-party business applications using the Connectors interface.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/apigee/docs/api-platform/connectors/about-connectors",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://connectors.us-central1.rep.googleapis.com/",
+            "location": "us-central1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://connectors.us-east1.rep.googleapis.com/",
+            "location": "us-east1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://connectors.us-east4.rep.googleapis.com/",
+            "location": "us-east4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://connectors.us-east5.rep.googleapis.com/",
+            "location": "us-east5"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://connectors.us-south1.rep.googleapis.com/",
+            "location": "us-south1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://connectors.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://connectors.us-west2.rep.googleapis.com/",
+            "location": "us-west2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://connectors.us-west3.rep.googleapis.com/",
+            "location": "us-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://connectors.us-west4.rep.googleapis.com/",
+            "location": "us-west4"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -25,7 +72,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260316",
+    "revision": "20260617",
     "rootUrl": "https://connectors.googleapis.com/",
     "servicePath": "",
     "title": "Connectors API",
@@ -190,6 +237,34 @@
                                     },
                                     "response": {
                                         "$ref": "ExchangeAuthCodeResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "executeHttpRequest": {
+                                    "description": "Executes a generic HTTP request. This supports all payload formats including REST/JSON, GraphQL, XML, SOAP, and Multipart by passing the rendered payload as raw bytes.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:executeHttpRequest",
+                                    "httpMethod": "POST",
+                                    "id": "connectors.projects.locations.connections.executeHttpRequest",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}:executeHttpRequest",
+                                    "request": {
+                                        "$ref": "ExecuteHttpRequestRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "ExecuteHttpRequestResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -1003,6 +1078,12 @@
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
                                                     "required": true,
                                                     "type": "string"
+                                                },
+                                                "toolNames": {
+                                                    "description": "List of tool names for selective tool fetching.",
+                                                    "location": "query",
+                                                    "repeated": true,
+                                                    "type": "string"
                                                 }
                                             },
                                             "path": "v2/{+parent}/tools",
@@ -1408,6 +1489,79 @@
             },
             "type": "object"
         },
+        "ExecuteHttpRequestRequest": {
+            "id": "ExecuteHttpRequestRequest",
+            "properties": {
+                "headers": {
+                    "description": "HTTP headers to send with the request (e.g., Content-Type: application/json). Order is preserved and duplicate keys are allowed.",
+                    "items": {
+                        "$ref": "HttpHeader"
+                    },
+                    "type": "array"
+                },
+                "httpMethod": {
+                    "description": "Required. The HTTP method to use for the request.",
+                    "enum": [
+                        "HTTP_METHOD_UNSPECIFIED",
+                        "HTTP_METHOD_GET",
+                        "HTTP_METHOD_POST",
+                        "HTTP_METHOD_PUT",
+                        "HTTP_METHOD_PATCH",
+                        "HTTP_METHOD_DELETE",
+                        "HTTP_METHOD_HEAD",
+                        "HTTP_METHOD_OPTIONS"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "rawBody": {
+                    "description": "Raw byte payload. Used for all pre-serialized formats including JSON, XML, GraphQL, and Multipart.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "Required. The fully resolved absolute target URL. Callers must pre-encode any query parameters.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExecuteHttpRequestResponse": {
+            "id": "ExecuteHttpRequestResponse",
+            "properties": {
+                "body": {
+                    "description": "The raw response body.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "headers": {
+                    "description": "HTTP headers received in the response. Order is preserved and duplicate keys are allowed (e.g., multiple Set-Cookie headers).",
+                    "items": {
+                        "$ref": "HttpHeader"
+                    },
+                    "type": "array"
+                },
+                "reason": {
+                    "description": "The HTTP status reason phrase received from the backend (e.g., \"Not Found\"). May be empty if the backend did not provide one.",
+                    "type": "string"
+                },
+                "statusCode": {
+                    "description": "The HTTP status code received from the backend.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "ExecuteSqlQueryRequest": {
             "description": "An execute sql query request containing the query and the connection to execute it on.",
             "id": "ExecuteSqlQueryRequest",
@@ -1768,6 +1922,21 @@
             },
             "type": "object"
         },
+        "HttpHeader": {
+            "description": "A single HTTP header. Keys are case-insensitive. Multiple headers with the same key may be present.",
+            "id": "HttpHeader",
+            "properties": {
+                "key": {
+                    "description": "The header name.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The header value.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "InputParameter": {
             "description": "Input Parameter message contains metadata about the parameters required for executing an Action.",
             "id": "InputParameter",
@@ -2079,6 +2248,29 @@
             "description": "JsonSchema representation of schema metadata",
             "id": "JsonSchema",
             "properties": {
+                "$comment": {
+                    "description": "A comment on the schema.",
+                    "type": "string"
+                },
+                "$defs": {
+                    "additionalProperties": {
+                        "$ref": "JsonSchema"
+                    },
+                    "description": "Definitions for the schema.",
+                    "type": "object"
+                },
+                "$id": {
+                    "description": "The URI defining the core schema meta-schema.",
+                    "type": "string"
+                },
+                "$ref": {
+                    "description": "A reference to another schema.",
+                    "type": "string"
+                },
+                "$schema": {
+                    "description": "The URI defining the schema.",
+                    "type": "string"
+                },
                 "additionalDetails": {
                     "additionalProperties": {
                         "description": "Properties of the object.",
@@ -2087,13 +2279,69 @@
                     "description": "Additional details apart from standard json schema fields, this gives flexibility to store metadata about the schema",
                     "type": "object"
                 },
+                "additionalItems": {
+                    "$ref": "JsonSchema",
+                    "description": "Schema for additional items."
+                },
+                "additionalProperties": {
+                    "$ref": "JsonSchema",
+                    "description": "Schema for additional properties."
+                },
+                "allOf": {
+                    "description": "Schema that must be valid against all of the sub-schemas.",
+                    "items": {
+                        "$ref": "JsonSchema"
+                    },
+                    "type": "array"
+                },
+                "anyOf": {
+                    "description": "Schema that must be valid against at least one of the sub-schemas.",
+                    "items": {
+                        "$ref": "JsonSchema"
+                    },
+                    "type": "array"
+                },
+                "const": {
+                    "description": "Const value that the data must match.",
+                    "type": "any"
+                },
+                "contains": {
+                    "$ref": "JsonSchema",
+                    "description": "Schema that applies to at least one item in an array."
+                },
+                "contentEncoding": {
+                    "description": "Encoding of the content.",
+                    "type": "string"
+                },
+                "contentMediaType": {
+                    "description": "Media type of the content.",
+                    "type": "string"
+                },
                 "default": {
                     "description": "The default value of the field or object described by this schema.",
                     "type": "any"
                 },
+                "definitions": {
+                    "additionalProperties": {
+                        "$ref": "JsonSchema"
+                    },
+                    "description": "Definitions for the schema.",
+                    "type": "object"
+                },
+                "dependencies": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "description": "Dependencies for the schema.",
+                    "type": "object"
+                },
                 "description": {
                     "description": "A description of this schema.",
                     "type": "string"
+                },
+                "else": {
+                    "$ref": "JsonSchema",
+                    "description": "Schema that must be valid if the \"if\" schema is invalid."
                 },
                 "enum": {
                     "description": "Possible values for an enumeration. This works in conjunction with `type` to represent types with a fixed set of legal values",
@@ -2102,17 +2350,28 @@
                     },
                     "type": "array"
                 },
+                "examples": {
+                    "description": "Examples of the value.",
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                },
                 "exclusiveMaximum": {
                     "description": "Whether the maximum number value is exclusive.",
-                    "type": "boolean"
+                    "type": "any"
                 },
                 "exclusiveMinimum": {
                     "description": "Whether the minimum number value is exclusive.",
-                    "type": "boolean"
+                    "type": "any"
                 },
                 "format": {
                     "description": "Format of the value as per https://json-schema.org/understanding-json-schema/reference/string.html#format",
                     "type": "string"
+                },
+                "if": {
+                    "$ref": "JsonSchema",
+                    "description": "Schema that must be valid if the \"if\" schema is valid."
                 },
                 "items": {
                     "$ref": "JsonSchema",
@@ -2273,6 +2532,11 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "maxProperties": {
+                    "description": "Maximum number of properties.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "maximum": {
                     "description": "Maximum value of the number field.",
                     "type": "any"
@@ -2287,13 +2551,41 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "minProperties": {
+                    "description": "Minimum number of properties.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "minimum": {
                     "description": "Minimum value of the number field.",
                     "type": "any"
                 },
+                "multipleOf": {
+                    "description": "Number must be a multiple of this value.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "not": {
+                    "$ref": "JsonSchema",
+                    "description": "Schema that must not be valid."
+                },
+                "oneOf": {
+                    "description": "Schema that must be valid against at least one of the sub-schemas.",
+                    "items": {
+                        "$ref": "JsonSchema"
+                    },
+                    "type": "array"
+                },
                 "pattern": {
                     "description": "Regex pattern of the string field. This is a string value that describes the regular expression that the string value should match.",
                     "type": "string"
+                },
+                "patternProperties": {
+                    "additionalProperties": {
+                        "$ref": "JsonSchema"
+                    },
+                    "description": "Pattern properties for the schema.",
+                    "type": "object"
                 },
                 "properties": {
                     "additionalProperties": {
@@ -2302,12 +2594,28 @@
                     "description": "The child schemas, applicable only if this is of type `object`. The key is the name of the property and the value is the json schema that describes that property",
                     "type": "object"
                 },
+                "propertyNames": {
+                    "$ref": "JsonSchema",
+                    "description": "Schema for property names."
+                },
+                "readOnly": {
+                    "description": "Whether the value is read-only.",
+                    "type": "boolean"
+                },
                 "required": {
                     "description": "Whether this property is required.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "then": {
+                    "$ref": "JsonSchema",
+                    "description": "Schema that must be valid if the \"if\" schema is valid."
+                },
+                "title": {
+                    "description": "A title of the schema.",
+                    "type": "string"
                 },
                 "type": {
                     "description": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
@@ -2318,6 +2626,10 @@
                 },
                 "uniqueItems": {
                     "description": "Whether the items in the array field are unique.",
+                    "type": "boolean"
+                },
+                "writeOnly": {
+                    "description": "Whether the value is write-only.",
                     "type": "boolean"
                 }
             },
@@ -2481,6 +2793,13 @@
                 "pageToken": {
                     "description": "Page token.",
                     "type": "string"
+                },
+                "toolNames": {
+                    "description": "List of tool names to for selective tool fetching.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "toolSpec": {
                     "$ref": "ToolSpec",
