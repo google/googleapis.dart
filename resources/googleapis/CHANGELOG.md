@@ -15,21 +15,21 @@
 - `agentidentity` - new!
 - `agentidentitycredentials` - new!
 - `agentregistry` - new!
-- `analytics` - removed `v3`
+- `analytics` - removed
 - `androiddeveloperidstatus` - new!
-- `apigeeregistry` - removed `v1`
-- `ces` - new
+- `apigeeregistry` - removed
+- `ces` - new!
 - `cloudproductregistry` - new!
-- `developerknowledge` - new
-- `dfareporting` - removed `v4` (`v3.5`, `v5` still exist)
+- `developerknowledge` - new!
+- `dfareporting` - removed `v4`
 - `ftp` - new!
 - `gmailpostmastertools` - added `v2`
-- `health` - new
-- `integrations` - removed `v1`
+- `health` - new!
+- `integrations` - removed
 - `merchantapi` - added `loyaltycustomers_v1`
-- `mybusinessqanda` - removed `v1`
-- `saasservicemgmt` - new
-- `searchads360` - added `v23`
+- `mybusinessqanda` - removed
+- `saasservicemgmt` - new!
+- `searchads360` - new!
 - `webcontentpublisher` - new!
 
 ## 16.0.0
