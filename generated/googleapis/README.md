@@ -22,7 +22,7 @@ Views Abusive Experience Report data, and gets a list of sites that have a signi
 
 #### Accelerated Mobile Pages (AMP) URL API - `acceleratedmobilepageurl/v1`
 
-Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s). 
+Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).
 
 - [Original documentation](https://developers.google.com/amp/cache/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/acceleratedmobilepageurl_v1/acceleratedmobilepageurl_v1-library.html)
@@ -78,7 +78,7 @@ Admin SDK lets administrators of enterprise domains to view and manage resources
 
 #### AdMob API - `admob/v1`
 
-The AdMob API allows publishers to programmatically get information about their AdMob account. 
+The AdMob API allows publishers to programmatically get information about their AdMob account.
 
 - [Original documentation](https://developers.google.com/admob/api/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/admob_v1/admob_v1-library.html)
@@ -118,7 +118,7 @@ The Air Quality API.
 
 #### AlloyDB API - `alloydb/v1`
 
-AlloyDB for PostgreSQL is an open source-compatible database service that provides a powerful option for migrating, modernizing, or building commercial-grade applications. It offers full compatibility with standard PostgreSQL, and is more than 4x faster for transactional workloads and up to 100x faster for analytical queries than standard PostgreSQL in our performance tests. AlloyDB for PostgreSQL offers a 99.99 percent availability SLA inclusive of maintenance. AlloyDB is optimized for the most demanding use cases, allowing you to build new applications that require high transaction throughput, large database sizes, or multiple read resources; scale existing PostgreSQL workloads with no application changes; and modernize legacy proprietary databases. 
+AlloyDB for PostgreSQL is an open source-compatible database service that provides a powerful option for migrating, modernizing, or building commercial-grade applications. It offers full compatibility with standard PostgreSQL, and is more than 4x faster for transactional workloads and up to 100x faster for analytical queries than standard PostgreSQL in our performance tests. AlloyDB for PostgreSQL offers a 99.99 percent availability SLA inclusive of maintenance. AlloyDB is optimized for the most demanding use cases, allowing you to build new applications that require high transaction throughput, large database sizes, or multiple read resources; scale existing PostgreSQL workloads with no application changes; and modernize legacy proprietary databases.
 
 - [Original documentation](https://cloud.google.com/alloydb/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/alloydb_v1/alloydb_v1-library.html)
@@ -160,7 +160,7 @@ The Android Management API provides remote enterprise management of Android devi
 
 #### Google Play Android Developer API - `androidpublisher/v3`
 
-Lets Android application developers access their Google Play accounts. At a high level, the expected workflow is to "insert" an Edit, make changes as necessary, and then "commit" it. 
+Lets Android application developers access their Google Play accounts. At a high level, the expected workflow is to "insert" an Edit, make changes as necessary, and then "commit" it.
 
 - [Original documentation](https://developers.google.com/android-publisher)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/androidpublisher_v3/androidpublisher_v3-library.html)
@@ -210,7 +210,7 @@ App Hub lets you build, operate, and manage applications on Google Cloud.
 
 #### Google Workspace Marketplace API - `appsmarket/v2`
 
-Lets your Google Workspace Marketplace applications integrate with Google's installtion and licensing services. 
+Lets your Google Workspace Marketplace applications integrate with Google's installtion and licensing services.
 
 - [Original documentation](https://developers.google.com/workspace/marketplace)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/appsmarket_v2/appsmarket_v2-library.html)
@@ -332,7 +332,7 @@ The Cloud Billing Budget API stores Cloud Billing budgets, which define a budget
 
 #### Binary Authorization API - `binaryauthorization/v1`
 
-The management interface for Binary Authorization, a service that provides policy-based deployment validation and control for images deployed to Google Kubernetes Engine (GKE), Anthos Service Mesh, Anthos Clusters, and Cloud Run. 
+The management interface for Binary Authorization, a service that provides policy-based deployment validation and control for images deployed to Google Kubernetes Engine (GKE), Anthos Service Mesh, Anthos Clusters, and Cloud Run.
 
 - [Original documentation](https://cloud.google.com/binary-authorization/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/binaryauthorization_v1/binaryauthorization_v1-library.html)
@@ -403,7 +403,7 @@ The Chrome Policy API is a suite of services that allows Chrome administrators t
 
 #### Chrome UX Report API - `chromeuxreport/v1`
 
-The Chrome UX Report API lets you view real user experience data for millions of websites. 
+The Chrome UX Report API lets you view real user experience data for millions of websites.
 
 - [Original documentation](https://developers.google.com/web/tools/chrome-user-experience-report/api/reference)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/chromeuxreport_v1/chromeuxreport_v1-library.html)
@@ -492,12 +492,22 @@ Provides insights about your customers and their Assured Workloads based on your
 
 #### Cloud Functions API - `cloudfunctions/v1`
 
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_functions_v2`](https://pub.dev/packages/google_cloud_functions_v2)
+> instead.
+
 Manages lightweight user-provided functions executed in response to events.
 
 - [Original documentation](https://cloud.google.com/functions)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/cloudfunctions_v1/cloudfunctions_v1-library.html)
 
 #### Cloud Functions API - `cloudfunctions/v2`
+
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_functions_v2`](https://pub.dev/packages/google_cloud_functions_v2)
+> instead.
 
 Manages lightweight user-provided functions executed in response to events.
 
@@ -513,7 +523,7 @@ API for provisioning and managing identity resources.
 
 #### Cloud Key Management Service (KMS) API - `cloudkms/v1`
 
-Manages keys and performs cryptographic operations in a central cloud service, for direct use by other cloud resources and applications. 
+Manages keys and performs cryptographic operations in a central cloud service, for direct use by other cloud resources and applications.
 
 - [Original documentation](https://cloud.google.com/kms/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/cloudkms_v1/cloudkms_v1-library.html)
@@ -567,14 +577,14 @@ Cloud Search provides cloud-based search capabilities over Google Workspace data
 
 #### Cloud Shell API - `cloudshell/v1`
 
-Allows users to start, configure, and connect to interactive shell sessions running in the cloud. 
+Allows users to start, configure, and connect to interactive shell sessions running in the cloud.
 
 - [Original documentation](https://cloud.google.com/shell/docs/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/cloudshell_v1/cloudshell_v1-library.html)
 
 #### Google Cloud Support API - `cloudsupport/v2`
 
-Manages Google Cloud technical support cases for Customer Care support offerings. 
+Manages Google Cloud technical support cases for Customer Care support offerings.
 
 - [Original documentation](https://cloud.google.com/support/docs/apis)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/cloudsupport_v2/cloudsupport_v2-library.html)
@@ -588,7 +598,7 @@ Manages the execution of large numbers of distributed requests.
 
 #### Cloud Trace API - `cloudtrace/v2`
 
-Sends application trace data to Cloud Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Cloud Trace API directly. If you are looking to instrument your application for Cloud Trace, we recommend using OpenTelemetry. 
+Sends application trace data to Cloud Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Cloud Trace API directly. If you are looking to instrument your application for Cloud Trace, we recommend using OpenTelemetry.
 
 - [Original documentation](https://cloud.google.com/trace/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/cloudtrace_v2/cloudtrace_v2-library.html)
@@ -649,7 +659,7 @@ This API is a prerequisite for leveraging Artifact Analysis scanning capabilitie
 
 #### Content API for Shopping - `content/v2_1`
 
-This API is deprecated. Please use Merchant API instead: https://developers.google.com/merchant/api. 
+This API is deprecated. Please use Merchant API instead: https://developers.google.com/merchant/api.
 
 - [Original documentation](https://developers.google.com/shopping-content/v2/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/content_v2_1/content_v2_1-library.html)
@@ -675,7 +685,7 @@ Searches over a website or collection of websites
 
 #### Google Cloud Data Catalog API - `datacatalog/v1`
 
-A fully managed and highly scalable data discovery and metadata management service. 
+A fully managed and highly scalable data discovery and metadata management service.
 
 - [Original documentation](https://cloud.google.com/data-catalog/docs/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/datacatalog_v1/datacatalog_v1-library.html)
@@ -743,7 +753,7 @@ Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 
 #### Cloud Datastore API - `datastore/v1`
 
-Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application. 
+Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.
 
 - [Original documentation](https://cloud.google.com/datastore/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/datastore_v1/datastore_v1-library.html)
@@ -959,7 +969,7 @@ Firebase App Check works alongside other Firebase services to help protect your 
 
 #### Firebase App Hosting API - `firebaseapphosting/v1`
 
-Firebase App Hosting streamlines the development and deployment of dynamic Next.js and Angular applications, offering built-in framework support, GitHub integration, and integration with other Firebase products. You can use this API to intervene in the Firebase App Hosting build process and add custom functionality not supported in our default Console & CLI flows, including triggering builds from external CI/CD workflows or deploying from pre-built container images. 
+Firebase App Hosting streamlines the development and deployment of dynamic Next.js and Angular applications, offering built-in framework support, GitHub integration, and integration with other Firebase products. You can use this API to intervene in the Firebase App Hosting build process and add custom functionality not supported in our default Console & CLI flows, including triggering builds from external CI/CD workflows or deploying from pre-built container images.
 
 - [Original documentation](https://firebase.google.com/docs/app-hosting)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/firebaseapphosting_v1/firebaseapphosting_v1-library.html)
@@ -994,14 +1004,19 @@ Access custom machine learning models hosted via Firebase ML.
 
 #### Firebase Rules API - `firebaserules/v1`
 
-Creates and manages rules that determine when a Firebase Rules-enabled service should permit a request. 
+Creates and manages rules that determine when a Firebase Rules-enabled service should permit a request.
 
 - [Original documentation](https://firebase.google.com/docs/storage/security)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/firebaserules_v1/firebaserules_v1-library.html)
 
 #### Cloud Firestore API - `firestore/v1`
 
-Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development. 
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_firestore_v1`](https://pub.dev/packages/google_cloud_firestore_v1)
+> instead.
+
+Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development.
 
 - [Original documentation](https://cloud.google.com/firestore)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/firestore_v1/firestore_v1-library.html)
@@ -1126,21 +1141,36 @@ The Cluster Director API allows you to deploy, manage, and monitor clusters that
 
 #### Identity and Access Management (IAM) API - `iam/v1`
 
-Manages identity and access control for Google Cloud resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls. Enabling this API also enables the IAM Service Account Credentials API (iamcredentials.googleapis.com). However, disabling this API doesn't disable the IAM Service Account Credentials API. 
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_iam_v1`](https://pub.dev/packages/google_cloud_iam_v1)
+> instead.
+
+Manages identity and access control for Google Cloud resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls. Enabling this API also enables the IAM Service Account Credentials API (iamcredentials.googleapis.com). However, disabling this API doesn't disable the IAM Service Account Credentials API.
 
 - [Original documentation](https://cloud.google.com/iam/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/iam_v1/iam_v1-library.html)
 
 #### Identity and Access Management (IAM) API - `iam/v2`
 
-Manages identity and access control for Google Cloud resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls. Enabling this API also enables the IAM Service Account Credentials API (iamcredentials.googleapis.com). However, disabling this API doesn't disable the IAM Service Account Credentials API. 
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_iam_v1`](https://pub.dev/packages/google_cloud_iam_v1)
+> instead.
+
+Manages identity and access control for Google Cloud resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls. Enabling this API also enables the IAM Service Account Credentials API (iamcredentials.googleapis.com). However, disabling this API doesn't disable the IAM Service Account Credentials API.
 
 - [Original documentation](https://cloud.google.com/iam/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/iam_v2/iam_v2-library.html)
 
 #### IAM Service Account Credentials API - `iamcredentials/v1`
 
-Creates short-lived credentials for impersonating IAM service accounts. Disabling this API also disables the IAM API (iam.googleapis.com). However, enabling this API doesn't enable the IAM API. 
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_iam_v1`](https://pub.dev/packages/google_cloud_iam_v1)
+> instead.
+
+Creates short-lived credentials for impersonating IAM service accounts. Disabling this API also disables the IAM API (iam.googleapis.com). However, enabling this API doesn't enable the IAM API.
 
 - [Original documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/iamcredentials_v1/iamcredentials_v1-library.html)
@@ -1194,14 +1224,14 @@ Notifies Google Web Search when your web pages change.
 
 #### Cloud Talent Solution API - `jobs/v3`
 
-Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters. 
+Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters.
 
 - [Original documentation](https://cloud.google.com/talent-solution/job-search/docs/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/jobs_v3/jobs_v3-library.html)
 
 #### Cloud Talent Solution API - `jobs/v4`
 
-Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters. 
+Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters.
 
 - [Original documentation](https://cloud.google.com/talent-solution/job-search/docs/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/jobs_v4/jobs_v4-library.html)
@@ -1227,12 +1257,22 @@ Searches the Google Knowledge Graph for entities.
 
 #### Cloud Natural Language API - `language/v1`
 
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_language_v2`](https://pub.dev/packages/google_cloud_language_v2)
+> instead.
+
 Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.
 
 - [Original documentation](https://cloud.google.com/natural-language/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/language_v1/language_v1-library.html)
 
 #### Cloud Natural Language API - `language/v2`
+
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_language_v2`](https://pub.dev/packages/google_cloud_language_v2)
+> instead.
 
 Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.
 
@@ -1260,6 +1300,11 @@ The Google Enterprise License Manager API lets you manage Google Workspace and r
 
 #### Cloud Logging API - `logging/v2`
 
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_logging_v2`](https://pub.dev/packages/google_cloud_logging_v2)
+> instead.
+
 Writes log entries and manages your Cloud Logging configuration.
 
 - [Original documentation](https://cloud.google.com/logging/docs/)
@@ -1279,7 +1324,7 @@ The Managed Service for Microsoft Active Directory API is used for managing a hi
 
 #### Managed Service for Apache Kafka API - `managedkafka/v1`
 
-Manage Apache Kafka clusters and resources. 
+Manage Apache Kafka clusters and resources.
 
 - [Original documentation](https://cloud.google.com/managed-service-for-apache-kafka/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/managedkafka_v1/managedkafka_v1-library.html)
@@ -1569,7 +1614,7 @@ You can use OS Login to manage access to your VM instances using IAM roles.
 
 #### PageSpeed Insights API - `pagespeedonline/v5`
 
-The PageSpeed Insights API lets you analyze the performance of your website with a simple API. It offers tailored suggestions for how you can optimize your site, and lets you easily integrate PageSpeed Insights analysis into your development tools and workflow. 
+The PageSpeed Insights API lets you analyze the performance of your website with a simple API. It offers tailored suggestions for how you can optimize your site, and lets you easily integrate PageSpeed Insights analysis into your development tools and workflow.
 
 - [Original documentation](https://developers.google.com/speed/docs/insights/v5/about)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/pagespeedonline_v5/pagespeedonline_v5-library.html)
@@ -1641,28 +1686,28 @@ The Play Integrity API helps you check that you're interacting with your genuine
 
 #### Pollen API - `pollen/v1`
 
-The Pollen API. 
+The Pollen API.
 
 - [Original documentation](https://developers.google.com/maps/documentation/pollen)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/pollen_v1/pollen_v1-library.html)
 
 #### Certificate Authority API - `privateca/v1`
 
-The Certificate Authority Service API is a highly-available, scalable service that enables you to simplify and automate the management of private certificate authorities (CAs) while staying in control of your private keys. 
+The Certificate Authority Service API is a highly-available, scalable service that enables you to simplify and automate the management of private certificate authorities (CAs) while staying in control of your private keys.
 
 - [Original documentation](https://cloud.google.com/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/privateca_v1/privateca_v1-library.html)
 
 #### Public Certificate Authority API - `publicca/v1`
 
-The Public Certificate Authority API may be used to create and manage ACME external account binding keys associated with Google Trust Services' publicly trusted certificate authority. 
+The Public Certificate Authority API may be used to create and manage ACME external account binding keys associated with Google Trust Services' publicly trusted certificate authority.
 
 - [Original documentation](https://cloud.google.com/public-certificate-authority/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/publicca_v1/publicca_v1-library.html)
 
 #### Cloud Pub/Sub API - `pubsub/v1`
 
-Provides reliable, many-to-many, asynchronous messaging between applications. 
+Provides reliable, many-to-many, asynchronous messaging between applications.
 
 - [Original documentation](https://cloud.google.com/pubsub/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/pubsub_v1/pubsub_v1-library.html)
@@ -1749,7 +1794,7 @@ The Runtime Configurator allows you to dynamically configure and expose variable
 
 #### App Lifecycle Manager API - `saasservicemgmt/v1`
 
-Model, deploy, and operate your SaaS at scale. 
+Model, deploy, and operate your SaaS at scale.
 
 - [Original documentation](https://cloud.google.com/saas-runtime/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/saasservicemgmt_v1/saasservicemgmt_v1-library.html)
@@ -1770,7 +1815,7 @@ Enables client applications to check web resources (most commonly URLs) against 
 
 #### Apps Script API - `script/v1`
 
-Manages and executes Google Apps Script projects. 
+Manages and executes Google Apps Script projects.
 
 - [Original documentation](https://developers.google.com/apps-script/api/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/script_v1/script_v1-library.html)
@@ -1784,7 +1829,12 @@ The Search Console API provides access to both Search Console data (verified use
 
 #### Secret Manager API - `secretmanager/v1`
 
-Stores sensitive data such as API keys, passwords, and certificates. Provides convenience while improving security. 
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_secretmanager_v1`](https://pub.dev/packages/google_cloud_secretmanager_v1)
+> instead.
+
+Stores sensitive data such as API keys, passwords, and certificates. Provides convenience while improving security.
 
 - [Original documentation](https://cloud.google.com/secret-manager/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/secretmanager_v1/secretmanager_v1-library.html)
@@ -1805,7 +1855,7 @@ Security Command Center API provides access to temporal views of assets and find
 
 #### Security Posture API - `securityposture/v1`
 
-Defines, assesses, and monitors the overall status of your security in Google Cloud. You can use security postures to evaluate your current cloud security against defined benchmarks and help maintain the level of security that your organization requires. 
+Defines, assesses, and monitors the overall status of your security in Google Cloud. You can use security postures to evaluate your current cloud security against defined benchmarks and help maintain the level of security that your organization requires.
 
 - [Original documentation](https://cloud.google.com/security-command-center)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/securityposture_v1/securityposture_v1-library.html)
@@ -1819,21 +1869,21 @@ Manages the service consumers of a Service Infrastructure service.
 
 #### Service Control API - `servicecontrol/v1`
 
-Provides admission control and telemetry reporting for services integrated with Service Infrastructure. 
+Provides admission control and telemetry reporting for services integrated with Service Infrastructure.
 
 - [Original documentation](https://cloud.google.com/service-control/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/servicecontrol_v1/servicecontrol_v1-library.html)
 
 #### Service Control API - `servicecontrol/v2`
 
-Provides admission control and telemetry reporting for services integrated with Service Infrastructure. 
+Provides admission control and telemetry reporting for services integrated with Service Infrastructure.
 
 - [Original documentation](https://cloud.google.com/service-control/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/servicecontrol_v2/servicecontrol_v2-library.html)
 
 #### Service Directory API - `servicedirectory/v1`
 
-Service Directory is a platform for discovering, publishing, and connecting services. 
+Service Directory is a platform for discovering, publishing, and connecting services.
 
 - [Original documentation](https://cloud.google.com/service-directory)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/servicedirectory_v1/servicedirectory_v1-library.html)
@@ -1910,6 +1960,11 @@ Converts audio to text by applying powerful neural network models.
 
 #### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - `storage/v1`
 
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_storage`](https://pub.dev/packages/google_cloud_storage)
+> instead.
+
 Stores and retrieves potentially large, immutable data objects.
 
 - [Original documentation](https://developers.google.com/storage/docs/json_api/)
@@ -1922,14 +1977,14 @@ Stores and retrieves potentially large, immutable data objects.
 
 #### Storage Transfer API - `storagetransfer/v1`
 
-Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets. 
+Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets.
 
 - [Original documentation](https://cloud.google.com/storage-transfer/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/storagetransfer_v1/storagetransfer_v1-library.html)
 
 #### Street View Publish API - `streetviewpublish/v1`
 
-Publishes 360 photos to Google Maps, along with position, orientation, and connectivity metadata. Apps can offer an interface for positioning, connecting, and uploading user-generated Street View images. 
+Publishes 360 photos to Google Maps, along with position, orientation, and connectivity metadata. Apps can offer an interface for positioning, connecting, and uploading user-generated Street View images.
 
 - [Original documentation](https://developers.google.com/streetview/publish/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/streetviewpublish_v1/streetviewpublish_v1-library.html)
@@ -2002,7 +2057,7 @@ TPU API provides customers with access to Google TPU technology.
 
 #### Transcoder API - `transcoder/v1`
 
-This API converts video files into formats suitable for consumer distribution. For more information, see the Transcoder API overview. 
+This API converts video files into formats suitable for consumer distribution. For more information, see the Transcoder API overview.
 
 - [Original documentation](https://cloud.google.com/transcoder/docs/)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/transcoder_v1/transcoder_v1-library.html)
@@ -2023,7 +2078,7 @@ Travel Impact Model API lets you query travel carbon emission estimates.
 
 #### Google Vault API - `vault/v1`
 
-Retention and eDiscovery for Google Workspace. To work with Vault resources, the account must have the [required Vault privileges](https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must have created the matter, have the matter shared with them, or have the **View All Matters** privilege. For example, to download an export, an account needs the **Manage Exports** privilege and the matter shared with them. 
+Retention and eDiscovery for Google Workspace. To work with Vault resources, the account must have the [required Vault privileges](https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must have created the matter, have the matter shared with them, or have the **View All Matters** privilege. For example, to download an export, an account needs the **Manage Exports** privilege and the matter shared with them.
 
 - [Original documentation](https://developers.google.com/workspace/vault)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/vault_v1/vault_v1-library.html)
@@ -2065,7 +2120,7 @@ Integrates Google Vision features, including image labeling, face, logo, and lan
 
 #### VM Migration API - `vmmigration/v1`
 
-Use the Migrate to Virtual Machines API to programmatically migrate workloads. 
+Use the Migrate to Virtual Machines API to programmatically migrate workloads.
 
 - [Original documentation](https://cloud.google.com/migrate/virtual-machines)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/vmmigration_v1/vmmigration_v1-library.html)
@@ -2140,7 +2195,7 @@ The Google Workspace Events API lets you subscribe to events and manage change n
 
 #### Cloud Workstations API - `workstations/v1`
 
-Allows administrators to create managed developer environments in the cloud. 
+Allows administrators to create managed developer environments in the cloud.
 
 - [Original documentation](https://cloud.google.com/workstations)
 - [Dart package details](https://pub.dev/documentation/googleapis/17.0.0-wip/workstations_v1/workstations_v1-library.html)

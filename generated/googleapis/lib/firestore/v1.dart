@@ -18,6 +18,11 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
+/// > [!WARNING]
+/// > This API is deprecated. Use
+/// > [`package:google_cloud_firestore_v1`](https://pub.dev/packages/google_cloud_firestore_v1)
+/// > instead.
+///
 /// Cloud Firestore API - v1
 ///
 /// Accesses the NoSQL document database built for automatic scaling, high
@@ -38,6 +43,7 @@
 ///     - [ProjectsDatabasesUserCredsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBackupsResource]
+@core.Deprecated('Use package:google_cloud_firestore_v1')
 library;
 
 import 'dart:async' as async;

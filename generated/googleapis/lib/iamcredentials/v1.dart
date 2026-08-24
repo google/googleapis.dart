@@ -18,6 +18,11 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
+/// > [!WARNING]
+/// > This API is deprecated. Use
+/// > [`package:google_cloud_iam_v1`](https://pub.dev/packages/google_cloud_iam_v1)
+/// > instead.
+///
 /// IAM Service Account Credentials API - v1
 ///
 /// Creates short-lived credentials for impersonating IAM service accounts.
@@ -35,6 +40,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsWorkloadIdentityPoolsResource]
 ///   - [ProjectsServiceAccountsResource]
+@core.Deprecated('Use package:google_cloud_iam_v1')
 library;
 
 import 'dart:async' as async;

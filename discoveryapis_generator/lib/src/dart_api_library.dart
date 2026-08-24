@@ -82,12 +82,14 @@ class DartApiLibrary extends BaseApiLibrary {
   final bool isPackage;
   late final bool exposeMedia;
   late final String libraryName;
+  final String? deprecationTargetPackage;
 
   /// Generates a API library for [description].
   DartApiLibrary.build(
     RestDescription description, {
     required this.isPackage,
     super.useCorePrefixes,
+    this.deprecationTargetPackage,
   }) : super(description, 'Api') {
     libraryName = ApiLibraryNamer.libraryName(
       description.name,
@@ -114,8 +116,31 @@ class DartApiLibrary extends BaseApiLibrary {
       apiClass,
     ).asDartDoc(0).trim();
 
+    if (deprecationTargetPackage != null) {
+      final warningBlock =
+          '''
+/// > [!WARNING]
+/// > This API is deprecated. Use
+/// > [`package:$deprecationTargetPackage`](https://pub.dev/packages/$deprecationTargetPackage)
+/// > instead.
+///''';
+      if (libraryComments.isEmpty) {
+        libraryComments = warningBlock;
+      } else {
+        libraryComments = '$warningBlock\n$libraryComments';
+      }
+    }
+
     if (libraryComments.isNotEmpty) {
-      libraryComments = '$libraryComments\nlibrary;';
+      if (deprecationTargetPackage != null) {
+        libraryComments =
+            '$libraryComments\n'
+            '@${imports.core.ref()}Deprecated('
+            '\'Use package:$deprecationTargetPackage\')\n'
+            'library;';
+      } else {
+        libraryComments = '$libraryComments\nlibrary;';
+      }
     }
 
     final result = [
