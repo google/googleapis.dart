@@ -1,5 +1,15 @@
 ## 17.0.0-wip
 
+- Mark APIs as `@Deprecated` with references to replacement
+  `package:google_cloud_*` packages:
+  - `cloudfunctions` (`v1`, `v2`) -> `package:google_cloud_functions_v2`
+  - `firestore` (`v1`) -> `package:google_cloud_firestore_v1`
+  - `iam` (`v1`, `v2`), `iamcredentials` (`v1`) -> `package:google_cloud_iam_v1`
+  - `language` (`v1`, `v2`) -> `package:google_cloud_language_v2`
+  - `logging` (`v2`) -> `package:google_cloud_logging_v2`
+  - `secretmanager` (`v1`) -> `package:google_cloud_secretmanager_v1`
+  - `storage` (`v1`) -> `package:google_cloud_storage`
+
 ### APIs
 
 - `ces` - new
