@@ -7,6 +7,7 @@
 // Validating the fix related to
 // https://github.com/google/googleapis.dart/issues/211
 
+// ignore: deprecated_member_use
 import 'package:googleapis/firestore/v1.dart';
 import 'package:test/test.dart';
 import 'package:test_integration/shared.dart';

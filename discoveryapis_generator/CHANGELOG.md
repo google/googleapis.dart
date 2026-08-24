@@ -2,6 +2,8 @@
 
 - Allow latest `package:http`.
 - Generate `@Deprecated` annotations for associated members.
+- Support `deprecationMap` to emit `@Deprecated` annotations and markdown
+  deprecation notices for deprecated API libraries.
 - Add positional parameters to all schema types.
 - Package version must be provided or default is to set `publish_to: none`.
 - Added `Function` to the set of reserved names.

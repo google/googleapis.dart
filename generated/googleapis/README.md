@@ -1011,6 +1011,11 @@ Creates and manages rules that determine when a Firebase Rules-enabled service s
 
 #### Cloud Firestore API - `firestore/v1`
 
+> [!WARNING]
+> This API is deprecated. Use
+> [`package:google_cloud_firestore_v1`](https://pub.dev/packages/google_cloud_firestore_v1)
+> instead.
+
 Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development.
 
 - [Original documentation](https://cloud.google.com/firestore)

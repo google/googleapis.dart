@@ -335,6 +335,7 @@ packages:
     deprecation_map:
       cloudfunctions:v1: google_cloud_functions_v2
       cloudfunctions:v2: google_cloud_functions_v2
+      firestore:v1: google_cloud_firestore_v1
       iam:v1: google_cloud_iam_v1
       iam:v2: google_cloud_iam_v1
       iamcredentials:v1: google_cloud_iam_v1
