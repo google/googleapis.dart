@@ -29,18 +29,16 @@ are:
 - Use the `googleapis_auth` package to obtain access credentials / obtain an
   authenticated HTTP client.
 
-OAuth client types in the current console include Web application, Android,
-Chrome app, iOS, TVs and Limited Input devices, Desktop app, and Universal
-Windows Platform. There is no **Installed application > Other** option; use
-**Desktop app** for a Dart VM or command-line install.
+There is no **Installed application > Other** option in the current console;
+choose **Desktop app** for a Dart VM or command-line application.
 
-`ClientId.secret` is optional. **Desktop app** and **Web application** clients
-include a client secret. **Android** and **iOS** clients only show a client ID —
-pass that identifier and omit the secret (`ClientId('....apps.googleusercontent.com')`).
-Do not put a mobile client ID into this package's user-consent helpers; those
-platforms should use
-[package:google_sign_in](https://pub.dev/packages/google_sign_in) as described in
-the [Flutter Google APIs guide](https://docs.flutter.dev/data-and-backend/google-apis).
+**Desktop app** and **Web application** clients are issued a client secret;
+`ClientId.secret` is optional because some client types and providers omit it.
+**Android** and **iOS** clients are issued only a client ID and are not usable
+with this package's user-consent flows. Flutter applications should use
+[package:extension_google_sign_in_as_googleapis_auth](https://pub.dev/packages/extension_google_sign_in_as_googleapis_auth)
+instead, as described in the
+[Flutter Google APIs guide](https://docs.flutter.dev/data-and-backend/google-apis).
 
 Depending on the application type, there are different ways to achieve the third
 and fourth step. The following is a list of supported OAuth2 flows with a
@@ -83,7 +81,6 @@ Future<AuthClient> obtainClient() async {
   return authenticatedClient(http.Client(), credentials);
 }
 ```
-
 
 #### Installed application / Desktop
 
