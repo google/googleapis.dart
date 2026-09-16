@@ -7,7 +7,7 @@
 /// Represents the client application's credentials.
 class ClientId {
   /// The client ID that you obtain from the API Console
-  /// [Credentials page](https://console.developers.google.com/apis/credentials),
+  /// [Credentials page](https://console.cloud.google.com/apis/credentials),
   /// as described in
   /// [Obtain OAuth 2.0 credentials](https://developers.google.com/identity/protocols/oauth2/openid-connect#getcredentials).
   final String identifier;

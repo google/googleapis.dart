@@ -1,3 +1,8 @@
+## 2.3.4-wip
+
+- Updated README for the current Google Cloud Console credentials UI,
+  Desktop app OAuth clients, and optional client secrets.
+
 ## 2.3.3
 
 - `GOOGLE_CLOUD_QUOTA_PROJECT` now takes precedence over a credential's

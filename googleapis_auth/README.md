@@ -11,24 +11,34 @@ This package also provides convenience functionality for:
 >
 > Use
 > [package:extension_google_sign_in_as_googleapis_auth](https://pub.dev/packages/extension_google_sign_in_as_googleapis_auth)
-> instead.
+> instead. The Flutter walkthrough is
+> [Google APIs](https://docs.flutter.dev/data-and-backend/google-apis).
 
 ### Using this package
 
-Using this package requires creating a Google Cloud Project and obtaining
+Using this package requires creating a Google Cloud project and obtaining
 application credentials for the specific application type. The steps required
 are:
 
-- Create a new Google Cloud Project on the
-  [Google Developers Console](https://console.developers.google.com)
-- Enable all APIs that the application will use on the
-  [Google Developers Console](https://console.developers.google.com) (under
-  DevConsole -> Project -> APIs & auth -> APIs)
-- Obtain application credentials for a specific application type on the
-  [Google Developers Console](https://console.developers.google.com) (under
-  DevConsole -> Project -> APIs & auth -> Credentials)
+- Create a Google Cloud project in the
+  [Google Cloud Console](https://console.cloud.google.com/)
+- Enable every API the application will call under
+  **APIs & Services > Library**
+- Create credentials under **APIs & Services > Credentials**
+  ([Credentials](https://console.cloud.google.com/apis/credentials))
 - Use the `googleapis_auth` package to obtain access credentials / obtain an
   authenticated HTTP client.
+
+There is no **Installed application > Other** option in the current console;
+choose **Desktop app** for a Dart VM or command-line application.
+
+**Desktop app** and **Web application** clients are issued a client secret;
+`ClientId.secret` is optional because some client types and providers omit it.
+**Android** and **iOS** clients are issued only a client ID and are not usable
+with this package's user-consent flows. Flutter applications should use
+[package:extension_google_sign_in_as_googleapis_auth](https://pub.dev/packages/extension_google_sign_in_as_googleapis_auth)
+instead, as described in the
+[Flutter Google APIs guide](https://docs.flutter.dev/data-and-backend/google-apis).
 
 Depending on the application type, there are different ways to achieve the third
 and fourth step. The following is a list of supported OAuth2 flows with a
@@ -36,12 +46,12 @@ description of these two steps.
 
 #### Client-side Web Application
 
-For client-side only web applications a "Client ID" needs to be created (under
-DevConsole -> Project -> APIs & auth -> Credentials). When creating a new client
-ID, select the "Web application" type. For client-side only applications, no
-`Redirect URIs` are necessary. The `Javascript Origins` setting must be set to
-all URLs on which your application will be served (e.g. http://localhost:8080
-for local testing).
+For client-side only web applications create an OAuth client ID under
+**APIs & Services > Credentials > Create credentials > OAuth client ID**.
+Choose **Web application**. For client-side only applications, no
+`Redirect URIs` are necessary. The `Authorized JavaScript origins` setting must
+be set to all URLs on which your application will be served (e.g.
+http://localhost:8080 for local testing).
 
 After the Client ID has been created, you can obtain access credentials via
 
@@ -72,16 +82,45 @@ Future<AuthClient> obtainClient() async {
 }
 ```
 
+#### Installed application / Desktop
+
+For a Dart command-line or other installed app, create an OAuth client ID and
+choose **Desktop app**. The console shows both a client ID and a client secret.
+Use them with `ClientId` and the user-consent helpers in
+`package:googleapis_auth/auth_io.dart` (the flow listens on localhost for the
+redirect).
+
+```dart
+import 'package:googleapis_auth/auth_io.dart';
+
+Future<AuthClient> obtainAuthenticatedClient() async {
+  final clientId = ClientId(
+    '....apps.googleusercontent.com',
+    '....',
+  );
+  final client = await clientViaUserConsent(
+    clientId,
+    ['scope1', 'scope2'],
+    (url) {
+      print('Please go to the following URL and grant access:');
+      print('  => $url');
+      print('');
+    },
+  );
+  return client; // Remember to close the client when you are finished with it.
+}
+```
+
 #### Autonomous Application / Service Account
 
 If an application wants to act autonomously and access e.g. data from a Google
 Cloud Project, then a Service Account can be created. In this case no user
 authorization is involved.
 
-A service account can be created via the "Service account" application type when
-creating a Client ID (under DevConsole -> Project -> APIs & auth ->
-Credentials). It will download a JSON document which contains a private RSA key.
-That private key is used for obtaining access credentials.
+Create a service account under **IAM & Admin > Service accounts**, then add a
+JSON key (**Keys > Add key > Create new key > JSON**). That JSON document
+contains a private RSA key used for obtaining access credentials. Service
+accounts are not created from the OAuth client ID application-type list.
 
 After the service account was created, you can obtain access credentials via
 
@@ -193,14 +232,9 @@ The authenticated HTTP client can now access APIs.
 
 It is possible to access some APIs by just using an API key without OAuth2.
 
-An API key can be obtained on the Google Developers Console by creating a Key at
-the "Public API access" section (under DevConsole -> Project -> APIs & auth ->
-Credentials).
-
-A key can be created for different application types: For browser applications
-it is necessary to specify a set of referer URls from which the application
-would like to access APIs. For server applications it is possible to specify a
-list of IP ranges from which the client application would like to access APIs.
+Create an API key under **APIs & Services > Credentials > Create credentials >
+API key**. Restrict it afterwards: HTTP referrers for browser apps, or IP
+addresses for server apps. There is no separate "Public API access" section.
 
 Note that the ApiKey is used for quota and billing purposes and should not be
 disclosed to third parties.
