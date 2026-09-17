@@ -11,8 +11,10 @@ const _packageVersion = '2.3.4';
 
 const _xGoogApiClientHeader = 'x-goog-api-client';
 
+String get _dartVersion => impl.dartVersion;
+
 final _xGoogApiClientHeaderValue =
-    'gl-dart/${impl.dartVersion} auth/$_packageVersion';
+    'gl-dart/$_dartVersion auth/$_packageVersion';
 
 /// Adds the fallback `x-goog-api-client` header to [headers] if not already
 /// present, and returns [headers].
