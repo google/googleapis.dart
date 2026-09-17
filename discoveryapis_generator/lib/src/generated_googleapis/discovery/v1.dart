@@ -1,4 +1,4 @@
-// Copyright 2014 Google LLC
+// Copyright 2021 Google LLC
 //
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file or at
@@ -89,7 +89,7 @@ class ApisResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
+      if ($fields != null) 'fields': [$fields],
     };
 
     final url_ =
@@ -133,9 +133,9 @@ class ApisResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      'name': ?name == null ? null : [name],
-      'preferred': ?preferred == null ? null : ['${preferred}'],
-      'fields': ?$fields == null ? null : [$fields],
+      if (name != null) 'name': [name],
+      if (preferred != null) 'preferred': ['${preferred}'],
+      if ($fields != null) 'fields': [$fields],
     };
 
     const url_ = 'apis';
@@ -167,11 +167,7 @@ class DirectoryListItemsIcons {
         x32: json_['x32'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final x16 = this.x16;
-    final x32 = this.x32;
-    return {'x16': ?x16, 'x32': ?x32};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {'x16': ?x16, 'x32': ?x32};
 }
 
 class DirectoryListItems {
@@ -248,34 +244,20 @@ class DirectoryListItems {
         version: json_['version'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final description = this.description;
-    final discoveryLink = this.discoveryLink;
-    final discoveryRestUrl = this.discoveryRestUrl;
-    final documentationLink = this.documentationLink;
-    final icons = this.icons;
-    final id = this.id;
-    final kind = this.kind;
-    final labels = this.labels;
-    final name = this.name;
-    final preferred = this.preferred;
-    final title = this.title;
-    final version = this.version;
-    return {
-      'description': ?description,
-      'discoveryLink': ?discoveryLink,
-      'discoveryRestUrl': ?discoveryRestUrl,
-      'documentationLink': ?documentationLink,
-      'icons': ?icons,
-      'id': ?id,
-      'kind': ?kind,
-      'labels': ?labels,
-      'name': ?name,
-      'preferred': ?preferred,
-      'title': ?title,
-      'version': ?version,
-    };
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'description': ?description,
+    'discoveryLink': ?discoveryLink,
+    'discoveryRestUrl': ?discoveryRestUrl,
+    'documentationLink': ?documentationLink,
+    'icons': ?icons,
+    'id': ?id,
+    'kind': ?kind,
+    'labels': ?labels,
+    'name': ?name,
+    'preferred': ?preferred,
+    'title': ?title,
+    'version': ?version,
+  };
 }
 
 class DirectoryList {
@@ -305,16 +287,11 @@ class DirectoryList {
         kind: json_['kind'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final discoveryVersion = this.discoveryVersion;
-    final items = this.items;
-    final kind = this.kind;
-    return {
-      'discoveryVersion': ?discoveryVersion,
-      'items': ?items,
-      'kind': ?kind,
-    };
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'discoveryVersion': ?discoveryVersion,
+    'items': ?items,
+    'kind': ?kind,
+  };
 }
 
 /// Additional information about this property.
@@ -331,10 +308,7 @@ class JsonSchemaAnnotations {
             .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final required = this.required;
-    return {'required': ?required};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {'required': ?required};
 }
 
 class JsonSchemaVariantMap {
@@ -349,11 +323,10 @@ class JsonSchemaVariantMap {
         typeValue: json_['type_value'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final P_ref = this.P_ref;
-    final typeValue = this.typeValue;
-    return {r'$ref': ?P_ref, 'type_value': ?typeValue};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    r'$ref': ?P_ref,
+    'type_value': ?typeValue,
+  };
 }
 
 /// In a variant data type, the value of one property is used to determine how
@@ -381,11 +354,10 @@ class JsonSchemaVariant {
             .toList(),
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final discriminant = this.discriminant;
-    final map = this.map;
-    return {'discriminant': ?discriminant, 'map': ?map};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'discriminant': ?discriminant,
+    'map': ?map,
+  };
 }
 
 class JsonSchema {
@@ -561,54 +533,30 @@ class JsonSchema {
             : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final P_ref = this.P_ref;
-    final additionalProperties = this.additionalProperties;
-    final annotations = this.annotations;
-    final default_ = this.default_;
-    final deprecated = this.deprecated;
-    final description = this.description;
-    final enum_ = this.enum_;
-    final enumDeprecated = this.enumDeprecated;
-    final enumDescriptions = this.enumDescriptions;
-    final format = this.format;
-    final id = this.id;
-    final items = this.items;
-    final location = this.location;
-    final maximum = this.maximum;
-    final minimum = this.minimum;
-    final pattern = this.pattern;
-    final properties = this.properties;
-    final readOnly = this.readOnly;
-    final repeated = this.repeated;
-    final required = this.required;
-    final type = this.type;
-    final variant = this.variant;
-    return {
-      r'$ref': ?P_ref,
-      'additionalProperties': ?additionalProperties,
-      'annotations': ?annotations,
-      'default': ?default_,
-      'deprecated': ?deprecated,
-      'description': ?description,
-      'enum': ?enum_,
-      'enumDeprecated': ?enumDeprecated,
-      'enumDescriptions': ?enumDescriptions,
-      'format': ?format,
-      'id': ?id,
-      'items': ?items,
-      'location': ?location,
-      'maximum': ?maximum,
-      'minimum': ?minimum,
-      'pattern': ?pattern,
-      'properties': ?properties,
-      'readOnly': ?readOnly,
-      'repeated': ?repeated,
-      'required': ?required,
-      'type': ?type,
-      'variant': ?variant,
-    };
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    r'$ref': ?P_ref,
+    'additionalProperties': ?additionalProperties,
+    'annotations': ?annotations,
+    'default': ?default_,
+    'deprecated': ?deprecated,
+    'description': ?description,
+    'enum': ?enum_,
+    'enumDeprecated': ?enumDeprecated,
+    'enumDescriptions': ?enumDescriptions,
+    'format': ?format,
+    'id': ?id,
+    'items': ?items,
+    'location': ?location,
+    'maximum': ?maximum,
+    'minimum': ?minimum,
+    'pattern': ?pattern,
+    'properties': ?properties,
+    'readOnly': ?readOnly,
+    'repeated': ?repeated,
+    'required': ?required,
+    'type': ?type,
+    'variant': ?variant,
+  };
 }
 
 /// The scope value.
@@ -621,10 +569,7 @@ class RestDescriptionAuthOauth2ScopesValue {
   RestDescriptionAuthOauth2ScopesValue.fromJson(core.Map json_)
     : this(description: json_['description'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final description = this.description;
-    return {'description': ?description};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {'description': ?description};
 }
 
 /// OAuth 2.0 authentication information.
@@ -646,10 +591,7 @@ class RestDescriptionAuthOauth2 {
         ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final scopes = this.scopes;
-    return {'scopes': ?scopes};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {'scopes': ?scopes};
 }
 
 /// Authentication information.
@@ -668,10 +610,7 @@ class RestDescriptionAuth {
             : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final oauth2 = this.oauth2;
-    return {'oauth2': ?oauth2};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {'oauth2': ?oauth2};
 }
 
 /// A single endpoint object
@@ -703,18 +642,12 @@ class RestDescriptionEndpoints {
         location: json_['location'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final deprecated = this.deprecated;
-    final description = this.description;
-    final endpointUrl = this.endpointUrl;
-    final location = this.location;
-    return {
-      'deprecated': ?deprecated,
-      'description': ?description,
-      'endpointUrl': ?endpointUrl,
-      'location': ?location,
-    };
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'deprecated': ?deprecated,
+    'description': ?description,
+    'endpointUrl': ?endpointUrl,
+    'location': ?location,
+  };
 }
 
 /// Links to 16x16 and 32x32 icons representing the API.
@@ -733,11 +666,7 @@ class RestDescriptionIcons {
         x32: json_['x32'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final x16 = this.x16;
-    final x32 = this.x32;
-    return {'x16': ?x16, 'x32': ?x32};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {'x16': ?x16, 'x32': ?x32};
 }
 
 class RestDescription {
@@ -970,72 +899,39 @@ class RestDescription {
         versionModule: json_['version_module'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final auth = this.auth;
-    final basePath = this.basePath;
-    final baseUrl = this.baseUrl;
-    final batchPath = this.batchPath;
-    final canonicalName = this.canonicalName;
-    final description = this.description;
-    final discoveryVersion = this.discoveryVersion;
-    final documentationLink = this.documentationLink;
-    final endpoints = this.endpoints;
-    final etag = this.etag;
-    final exponentialBackoffDefault = this.exponentialBackoffDefault;
-    final features = this.features;
-    final icons = this.icons;
-    final id = this.id;
-    final kind = this.kind;
-    final labels = this.labels;
-    final methods = this.methods;
-    final name = this.name;
-    final ownerDomain = this.ownerDomain;
-    final ownerName = this.ownerName;
-    final packagePath = this.packagePath;
-    final parameters = this.parameters;
-    final protocol = this.protocol;
-    final resources = this.resources;
-    final revision = this.revision;
-    final rootUrl = this.rootUrl;
-    final schemas = this.schemas;
-    final servicePath = this.servicePath;
-    final title = this.title;
-    final version = this.version;
-    final versionModule = this.versionModule;
-    return {
-      'auth': ?auth,
-      'basePath': ?basePath,
-      'baseUrl': ?baseUrl,
-      'batchPath': ?batchPath,
-      'canonicalName': ?canonicalName,
-      'description': ?description,
-      'discoveryVersion': ?discoveryVersion,
-      'documentationLink': ?documentationLink,
-      'endpoints': ?endpoints,
-      'etag': ?etag,
-      'exponentialBackoffDefault': ?exponentialBackoffDefault,
-      'features': ?features,
-      'icons': ?icons,
-      'id': ?id,
-      'kind': ?kind,
-      'labels': ?labels,
-      'methods': ?methods,
-      'name': ?name,
-      'ownerDomain': ?ownerDomain,
-      'ownerName': ?ownerName,
-      'packagePath': ?packagePath,
-      'parameters': ?parameters,
-      'protocol': ?protocol,
-      'resources': ?resources,
-      'revision': ?revision,
-      'rootUrl': ?rootUrl,
-      'schemas': ?schemas,
-      'servicePath': ?servicePath,
-      'title': ?title,
-      'version': ?version,
-      'version_module': ?versionModule,
-    };
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'auth': ?auth,
+    'basePath': ?basePath,
+    'baseUrl': ?baseUrl,
+    'batchPath': ?batchPath,
+    'canonicalName': ?canonicalName,
+    'description': ?description,
+    'discoveryVersion': ?discoveryVersion,
+    'documentationLink': ?documentationLink,
+    'endpoints': ?endpoints,
+    'etag': ?etag,
+    'exponentialBackoffDefault': ?exponentialBackoffDefault,
+    'features': ?features,
+    'icons': ?icons,
+    'id': ?id,
+    'kind': ?kind,
+    'labels': ?labels,
+    'methods': ?methods,
+    'name': ?name,
+    'ownerDomain': ?ownerDomain,
+    'ownerName': ?ownerName,
+    'packagePath': ?packagePath,
+    'parameters': ?parameters,
+    'protocol': ?protocol,
+    'resources': ?resources,
+    'revision': ?revision,
+    'rootUrl': ?rootUrl,
+    'schemas': ?schemas,
+    'servicePath': ?servicePath,
+    'title': ?title,
+    'version': ?version,
+    'version_module': ?versionModule,
+  };
 }
 
 /// Supports the Resumable Media Upload protocol.
@@ -1056,11 +952,10 @@ class RestMethodMediaUploadProtocolsResumable {
         path: json_['path'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final multipart = this.multipart;
-    final path = this.path;
-    return {'multipart': ?multipart, 'path': ?path};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'multipart': ?multipart,
+    'path': ?path,
+  };
 }
 
 /// Supports uploading as a single HTTP request.
@@ -1081,11 +976,10 @@ class RestMethodMediaUploadProtocolsSimple {
         path: json_['path'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final multipart = this.multipart;
-    final path = this.path;
-    return {'multipart': ?multipart, 'path': ?path};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'multipart': ?multipart,
+    'path': ?path,
+  };
 }
 
 /// Supported upload protocols.
@@ -1112,11 +1006,10 @@ class RestMethodMediaUploadProtocols {
             : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final resumable = this.resumable;
-    final simple = this.simple;
-    return {'resumable': ?resumable, 'simple': ?simple};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'resumable': ?resumable,
+    'simple': ?simple,
+  };
 }
 
 /// Media upload parameters.
@@ -1145,12 +1038,11 @@ class RestMethodMediaUpload {
             : null,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final accept = this.accept;
-    final maxSize = this.maxSize;
-    final protocols = this.protocols;
-    return {'accept': ?accept, 'maxSize': ?maxSize, 'protocols': ?protocols};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'accept': ?accept,
+    'maxSize': ?maxSize,
+    'protocols': ?protocols,
+  };
 }
 
 /// The schema for the request.
@@ -1169,11 +1061,10 @@ class RestMethodRequest {
         parameterName: json_['parameterName'] as core.String?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final P_ref = this.P_ref;
-    final parameterName = this.parameterName;
-    return {r'$ref': ?P_ref, 'parameterName': ?parameterName};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    r'$ref': ?P_ref,
+    'parameterName': ?parameterName,
+  };
 }
 
 /// The schema for the response.
@@ -1186,10 +1077,7 @@ class RestMethodResponse {
   RestMethodResponse.fromJson(core.Map json_)
     : this(P_ref: json_[r'$ref'] as core.String?);
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final P_ref = this.P_ref;
-    return {r'$ref': ?P_ref};
-  }
+  core.Map<core.String, core.dynamic> toJson() => {r'$ref': ?P_ref};
 }
 
 class RestMethod {
@@ -1332,46 +1220,26 @@ class RestMethod {
         useMediaDownloadService: json_['useMediaDownloadService'] as core.bool?,
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final apiVersion = this.apiVersion;
-    final deprecated = this.deprecated;
-    final description = this.description;
-    final etagRequired = this.etagRequired;
-    final flatPath = this.flatPath;
-    final httpMethod = this.httpMethod;
-    final id = this.id;
-    final mediaUpload = this.mediaUpload;
-    final parameterOrder = this.parameterOrder;
-    final parameters = this.parameters;
-    final path = this.path;
-    final request = this.request;
-    final response = this.response;
-    final scopes = this.scopes;
-    final supportsMediaDownload = this.supportsMediaDownload;
-    final supportsMediaUpload = this.supportsMediaUpload;
-    final supportsSubscription = this.supportsSubscription;
-    final useMediaDownloadService = this.useMediaDownloadService;
-    return {
-      'apiVersion': ?apiVersion,
-      'deprecated': ?deprecated,
-      'description': ?description,
-      'etagRequired': ?etagRequired,
-      'flatPath': ?flatPath,
-      'httpMethod': ?httpMethod,
-      'id': ?id,
-      'mediaUpload': ?mediaUpload,
-      'parameterOrder': ?parameterOrder,
-      'parameters': ?parameters,
-      'path': ?path,
-      'request': ?request,
-      'response': ?response,
-      'scopes': ?scopes,
-      'supportsMediaDownload': ?supportsMediaDownload,
-      'supportsMediaUpload': ?supportsMediaUpload,
-      'supportsSubscription': ?supportsSubscription,
-      'useMediaDownloadService': ?useMediaDownloadService,
-    };
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'apiVersion': ?apiVersion,
+    'deprecated': ?deprecated,
+    'description': ?description,
+    'etagRequired': ?etagRequired,
+    'flatPath': ?flatPath,
+    'httpMethod': ?httpMethod,
+    'id': ?id,
+    'mediaUpload': ?mediaUpload,
+    'parameterOrder': ?parameterOrder,
+    'parameters': ?parameters,
+    'path': ?path,
+    'request': ?request,
+    'response': ?response,
+    'scopes': ?scopes,
+    'supportsMediaDownload': ?supportsMediaDownload,
+    'supportsMediaUpload': ?supportsMediaUpload,
+    'supportsSubscription': ?supportsSubscription,
+    'useMediaDownloadService': ?useMediaDownloadService,
+  };
 }
 
 class RestResource {
@@ -1409,14 +1277,9 @@ class RestResource {
             ),
       );
 
-  core.Map<core.String, core.dynamic> toJson() {
-    final deprecated = this.deprecated;
-    final methods = this.methods;
-    final resources = this.resources;
-    return {
-      'deprecated': ?deprecated,
-      'methods': ?methods,
-      'resources': ?resources,
-    };
-  }
+  core.Map<core.String, core.dynamic> toJson() => {
+    'deprecated': ?deprecated,
+    'methods': ?methods,
+    'resources': ?resources,
+  };
 }
