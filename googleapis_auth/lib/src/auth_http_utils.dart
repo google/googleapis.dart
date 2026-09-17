@@ -12,6 +12,7 @@ import 'auth_endpoints.dart';
 import 'auth_functions.dart';
 import 'http_client_base.dart';
 import 'service_account_credentials.dart';
+import 'version.dart';
 
 /// Will close the underlying `http.Client` depending on a constructor argument.
 class AuthenticatedClient extends DelegatingClient implements AuthClient {
@@ -40,6 +41,9 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
     if (quotaProject != null) {
       modifiedRequest.headers['X-Goog-User-Project'] = quotaProject!;
     }
+
+    addXGoogApiClientHeader(modifiedRequest.headers);
+
     final response = await baseClient.send(modifiedRequest);
     final wwwAuthenticate = response.headers['www-authenticate'];
     if (wwwAuthenticate != null) {
@@ -83,6 +87,7 @@ class ApiKeyClient extends DelegatingClient {
 
     final modifiedRequest = RequestImpl(request.method, url, request.finalize())
       ..headers.addAll(request.headers);
+    addXGoogApiClientHeader(modifiedRequest.headers);
     return baseClient.send(modifiedRequest);
   }
 }

@@ -12,6 +12,7 @@ import 'package:http_parser/http_parser.dart';
 import 'access_token.dart';
 import 'auth_endpoints.dart';
 import 'exceptions.dart';
+import 'version.dart';
 
 /// Due to differences of clock speed, network latency, etc. we
 /// will shorten expiry dates by 20 seconds.
@@ -101,6 +102,7 @@ extension ClientExtensions on Client {
     if (headers != null) {
       request.headers.addAll(headers);
     }
+    addXGoogApiClientHeader(request.headers);
     switch (body) {
       case null:
         break;

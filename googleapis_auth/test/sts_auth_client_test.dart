@@ -26,6 +26,7 @@ void main() {
       scopes: ['s1'],
       baseClient: mockClient(expectClose: false, (Request request) async {
         if (request.url.toString() == 'https://sts.googleapis.com/v1/token') {
+          expectXGoogApiClientHeader(request);
           final body = jsonDecode(request.body) as Map<String, dynamic>;
           expect(body['subjectToken'], 'my-token');
           expect(body['audience'], 'my-audience');

@@ -7,11 +7,22 @@
 import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/crypto/pem.dart';
 import 'package:googleapis_auth/src/utils.dart';
+import 'package:googleapis_auth/src/version.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:test/test.dart';
 
 const jsonContentType = {'content-type': 'application/json'};
+
+void expectXGoogApiClientHeader(BaseRequest request) {
+  expect(
+    request.headers,
+    containsPair(
+      'x-goog-api-client',
+      addXGoogApiClientHeader({})['x-goog-api-client'],
+    ),
+  );
+}
 
 const isServerRequestFailedException =
     TypeMatcher<ServerRequestFailedException>();

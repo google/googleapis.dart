@@ -13,11 +13,14 @@ import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:test/test.dart';
 
+import 'test_utils.dart';
+
 void main() {
   test('signBlob posts to correct URL and returns signed blob', () async {
     final client = MockClient((request) async {
       if (request.url.path.contains('signBlob')) {
         expect(request.url.toString(), contains('test-email%40example.com'));
+        expectXGoogApiClientHeader(request);
         final body = jsonDecode(request.body) as Map<String, dynamic>;
         expect(body['payload'], isNotNull);
         return Response(
