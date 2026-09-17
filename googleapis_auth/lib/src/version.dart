@@ -7,15 +7,18 @@
 import 'version_fallback.dart' if (dart.library.io) 'version_io.dart' as impl;
 
 /// Must be kept in sync with `pubspec.yaml` (verified by `test/version_test.dart`).
-const packageVersion = '2.3.4';
+const _packageVersion = '2.3.4';
 
-/// Header name for Google API client telemetry.
-const xGoogApiClientHeader = 'x-goog-api-client';
+const _xGoogApiClientHeader = 'x-goog-api-client';
 
-/// If `dart:io` is available, returns the current Dart SDK version.
-///
-/// Otherwise, returns `'unknown'`.
-String get dartVersion => impl.dartVersion;
+final _xGoogApiClientHeaderValue =
+    'gl-dart/${impl.dartVersion} auth/$_packageVersion';
 
-/// Fallback `x-goog-api-client` value for `package:googleapis_auth`.
-final xGoogApiClientHeaderValue = 'gl-dart/$dartVersion auth/$packageVersion';
+/// Adds the fallback `x-goog-api-client` header to [headers] if not already
+/// present, and returns [headers].
+Map<String, String> addXGoogApiClientHeader(Map<String, String> headers) {
+  if (!headers.keys.any((k) => k.toLowerCase() == _xGoogApiClientHeader)) {
+    headers[_xGoogApiClientHeader] = _xGoogApiClientHeaderValue;
+  }
+  return headers;
+}

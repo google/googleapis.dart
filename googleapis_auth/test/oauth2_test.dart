@@ -11,7 +11,6 @@ import 'package:googleapis_auth/auth_io.dart';
 import 'package:googleapis_auth/src/http_client_base.dart';
 import 'package:googleapis_auth/src/known_uris.dart';
 import 'package:googleapis_auth/src/utils.dart';
-import 'package:googleapis_auth/src/version.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 
@@ -335,10 +334,7 @@ void main() {
                 request.headers,
                 containsPair('Authorization', 'Bearer bar'),
               );
-              expect(
-                request.headers,
-                containsPair(xGoogApiClientHeader, xGoogApiClientHeaderValue),
-              );
+              expectXGoogApiClientHeader(request);
 
               return Response('', 204);
             }),
@@ -366,7 +362,7 @@ void main() {
               );
               expect(
                 request.headers,
-                containsPair(xGoogApiClientHeader, existingHeader),
+                containsPair('x-goog-api-client', existingHeader),
               );
 
               return Response('', 204);
@@ -397,10 +393,7 @@ void main() {
                 request.headers,
                 containsPair('x-goog-user-project', 'test-quota-project'),
               );
-              expect(
-                request.headers,
-                containsPair(xGoogApiClientHeader, xGoogApiClientHeaderValue),
-              );
+              expectXGoogApiClientHeader(request);
 
               return Response('', 204);
             }),
@@ -426,10 +419,7 @@ void main() {
                 request.headers,
                 containsPair('Authorization', 'Bearer bar'),
               );
-              expect(
-                request.headers,
-                containsPair(xGoogApiClientHeader, xGoogApiClientHeaderValue),
-              );
+              expectXGoogApiClientHeader(request);
 
               const headers = {'www-authenticate': 'foobar'};
               return Response('', 401, headers: headers);

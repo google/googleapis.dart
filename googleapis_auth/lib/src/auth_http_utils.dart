@@ -42,9 +42,7 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
       modifiedRequest.headers['X-Goog-User-Project'] = quotaProject!;
     }
 
-    if (!modifiedRequest.headers.containsKey(xGoogApiClientHeader)) {
-      modifiedRequest.headers[xGoogApiClientHeader] = xGoogApiClientHeaderValue;
-    }
+    addXGoogApiClientHeader(modifiedRequest.headers);
 
     final response = await baseClient.send(modifiedRequest);
     final wwwAuthenticate = response.headers['www-authenticate'];
@@ -89,6 +87,7 @@ class ApiKeyClient extends DelegatingClient {
 
     final modifiedRequest = RequestImpl(request.method, url, request.finalize())
       ..headers.addAll(request.headers);
+    addXGoogApiClientHeader(modifiedRequest.headers);
     return baseClient.send(modifiedRequest);
   }
 }

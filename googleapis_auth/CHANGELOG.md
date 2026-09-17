@@ -1,7 +1,8 @@
 ## 2.3.4
 
-- Added a fallback `x-goog-api-client` tracking header to `AuthenticatedClient`
-  and `signBlob` when not already set on outgoing requests.
+- Added a fallback `x-goog-api-client` tracking header to `AuthenticatedClient`,
+  `ApiKeyClient`, `signBlob`, and OAuth/STS token requests when not already set
+  on outgoing requests.
 - Updated README for the current Google Cloud Console credentials UI,
   Desktop app OAuth clients, and optional client secrets.
 

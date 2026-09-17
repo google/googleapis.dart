@@ -90,6 +90,7 @@ void main() {
     test('no-query-string adds key', () {
       final mock = mockClient((Request request) {
         expect('${request.url}', 'http://localhost/abc?$keyEncoded');
+        expectXGoogApiClientHeader(request);
         return responseF();
       });
 

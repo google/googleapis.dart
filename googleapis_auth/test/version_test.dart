@@ -14,41 +14,54 @@ import 'package:googleapis_auth/src/version.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('packageVersion matches pubspec.yaml', () async {
-    final pkgUri = await Isolate.resolvePackageUri(
-      Uri.parse('package:googleapis_auth/googleapis_auth.dart'),
-    );
-    expect(pkgUri, isNotNull, reason: 'package URI must resolve');
+  test(
+    'addXGoogApiClientHeader uses pubspec.yaml version and VM Dart version',
+    () async {
+      final pkgUri = await Isolate.resolvePackageUri(
+        Uri.parse('package:googleapis_auth/googleapis_auth.dart'),
+      );
+      expect(pkgUri, isNotNull, reason: 'package URI must resolve');
 
-    final pubspecFile = File.fromUri(pkgUri!.resolve('../pubspec.yaml'));
-    expect(pubspecFile.existsSync(), isTrue, reason: 'pubspec.yaml must exist');
+      final pubspecFile = File.fromUri(pkgUri!.resolve('../pubspec.yaml'));
+      expect(
+        pubspecFile.existsSync(),
+        isTrue,
+        reason: 'pubspec.yaml must exist',
+      );
 
-    final content = pubspecFile.readAsStringSync();
-    final match = RegExp(
-      r'^version:\s*(\S+)',
-      multiLine: true,
-    ).firstMatch(content);
-    expect(
-      match,
-      isNotNull,
-      reason: 'version must be declared in pubspec.yaml',
-    );
+      final content = pubspecFile.readAsStringSync();
+      final match = RegExp(
+        r'^version:\s*(\S+)',
+        multiLine: true,
+      ).firstMatch(content);
+      expect(
+        match,
+        isNotNull,
+        reason: 'version must be declared in pubspec.yaml',
+      );
 
-    final pubspecVersion = match!.group(1);
-    expect(
-      packageVersion,
-      pubspecVersion,
-      reason:
-          'packageVersion in lib/src/version.dart ($packageVersion) must match '
-          'version in pubspec.yaml ($pubspecVersion).',
-    );
-  });
+      final pubspecVersion = match!.group(1);
+      final expectedDartVersion = Platform.version
+          .split(RegExp('[^0-9]'))
+          .take(3)
+          .join('.');
+      expect(expectedDartVersion, matches(RegExp(r'^\d+\.\d+\.\d+$')));
 
-  test('xGoogApiClientHeaderValue is formatted properly on VM', () {
-    expect(dartVersion, matches(RegExp(r'^\d+\.\d+\.\d+$')));
-    expect(
-      xGoogApiClientHeaderValue,
-      'gl-dart/$dartVersion auth/$packageVersion',
-    );
-  });
+      final headers = addXGoogApiClientHeader({});
+      expect(headers, {
+        'x-goog-api-client':
+            'gl-dart/$expectedDartVersion auth/$pubspecVersion',
+      });
+    },
+  );
+
+  test(
+    'addXGoogApiClientHeader preserves existing header case-insensitively',
+    () {
+      final headers = addXGoogApiClientHeader({
+        'X-Goog-Api-Client': 'gl-dart/3.8.0 gdcl/17.0.0',
+      });
+      expect(headers, {'X-Goog-Api-Client': 'gl-dart/3.8.0 gdcl/17.0.0'});
+    },
+  );
 }
