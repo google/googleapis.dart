@@ -11,6 +11,7 @@ import 'package:googleapis_auth/auth_io.dart';
 import 'package:googleapis_auth/src/http_client_base.dart';
 import 'package:googleapis_auth/src/known_uris.dart';
 import 'package:googleapis_auth/src/utils.dart';
+import 'package:googleapis_auth/src/version.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 
@@ -329,9 +330,14 @@ void main() {
             expectAsync1((request) async {
               expect(request.method, 'POST');
               expect(request.url, url);
+              expect(request.headers, hasLength(2));
               expect(
                 request.headers,
                 containsPair('Authorization', 'Bearer bar'),
+              );
+              expect(
+                request.headers,
+                containsPair(xGoogApiClientHeader, xGoogApiClientHeaderValue),
               );
 
               return Response('', 204);
@@ -346,12 +352,43 @@ void main() {
         expect(response.statusCode, 204);
       });
 
+      test('preserves existing x-goog-api-client header', () async {
+        const existingHeader = 'gl-dart/3.8.0 gdcl/17.0.0';
+        final client = authenticatedClient(
+          mockClient(
+            expectAsync1((request) async {
+              expect(request.method, 'POST');
+              expect(request.url, url);
+              expect(request.headers, hasLength(2));
+              expect(
+                request.headers,
+                containsPair('Authorization', 'Bearer bar'),
+              );
+              expect(
+                request.headers,
+                containsPair(xGoogApiClientHeader, existingHeader),
+              );
+
+              return Response('', 204);
+            }),
+            expectClose: false,
+          ),
+          credentials,
+        );
+
+        final req = RequestImpl('POST', url)
+          ..headers['X-Goog-Api-Client'] = existingHeader;
+        final response = await client.send(req);
+        expect(response.statusCode, 204);
+      });
+
       test('successful request with quotaProject', () async {
         final client = authenticatedClient(
           mockClient(
             expectAsync1((request) async {
               expect(request.method, 'POST');
               expect(request.url, url);
+              expect(request.headers, hasLength(3));
               expect(
                 request.headers,
                 containsPair('Authorization', 'Bearer bar'),
@@ -359,6 +396,10 @@ void main() {
               expect(
                 request.headers,
                 containsPair('x-goog-user-project', 'test-quota-project'),
+              );
+              expect(
+                request.headers,
+                containsPair(xGoogApiClientHeader, xGoogApiClientHeaderValue),
               );
 
               return Response('', 204);
@@ -380,9 +421,14 @@ void main() {
             expectAsync1((request) async {
               expect(request.method, 'POST');
               expect(request.url, url);
+              expect(request.headers, hasLength(2));
               expect(
                 request.headers,
                 containsPair('Authorization', 'Bearer bar'),
+              );
+              expect(
+                request.headers,
+                containsPair(xGoogApiClientHeader, xGoogApiClientHeaderValue),
               );
 
               const headers = {'www-authenticate': 'foobar'};

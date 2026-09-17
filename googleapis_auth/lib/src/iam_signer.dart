@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'metadata_server_stub.dart'
     if (dart.library.io) 'metadata_server_io.dart';
 import 'utils.dart';
+import 'version.dart';
 
 /// Signs the given [data] using the IAM Credentials API.
 ///
@@ -70,7 +71,7 @@ Future<({String signedBlob, String keyId})> signBlob(
     signBlobUrl,
     headers: {
       'Content-Type': 'application/json',
-      'x-goog-api-client': 'gl-dart/ unknown auth/2.3.4-wip',
+      xGoogApiClientHeader: xGoogApiClientHeaderValue,
     },
     body: requestBody,
   );

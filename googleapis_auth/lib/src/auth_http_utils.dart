@@ -12,6 +12,7 @@ import 'auth_endpoints.dart';
 import 'auth_functions.dart';
 import 'http_client_base.dart';
 import 'service_account_credentials.dart';
+import 'version.dart';
 
 /// Will close the underlying `http.Client` depending on a constructor argument.
 class AuthenticatedClient extends DelegatingClient implements AuthClient {
@@ -41,9 +42,8 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
       modifiedRequest.headers['X-Goog-User-Project'] = quotaProject!;
     }
 
-    if (!modifiedRequest.headers.containsKey('x-goog-api-client')) {
-      modifiedRequest.headers['x-goog-api-client'] =
-          'gl-dart/ unknown auth/2.3.4-wip';
+    if (!modifiedRequest.headers.containsKey(xGoogApiClientHeader)) {
+      modifiedRequest.headers[xGoogApiClientHeader] = xGoogApiClientHeaderValue;
     }
 
     final response = await baseClient.send(modifiedRequest);

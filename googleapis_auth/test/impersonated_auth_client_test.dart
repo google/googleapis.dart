@@ -8,6 +8,7 @@ import 'dart:convert';
 
 import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/impersonated_auth_client.dart';
+import 'package:googleapis_auth/src/version.dart';
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
 
@@ -472,7 +473,7 @@ void main() {
     final customBaseClient = mockClient((request) async {
       authenticatedRequestCalled = true;
       expect(request.headers['Authorization'], 'Bearer impersonated-token');
-      expect(request.headers['x-goog-api-client'], isNotNull);
+      expect(request.headers[xGoogApiClientHeader], xGoogApiClientHeaderValue);
       return http.Response('ok', 200);
     }, expectClose: false);
 
