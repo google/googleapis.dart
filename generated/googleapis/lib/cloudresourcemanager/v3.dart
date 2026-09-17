@@ -4462,6 +4462,14 @@ class Project {
   /// Output only.
   core.String? etag;
 
+  /// If `true`, this project is a Management Project.
+  ///
+  /// A Management Project manages dedicated project groups for specific
+  /// purposes (e.g., agent management or app management).
+  ///
+  /// Output only.
+  core.bool? isManagementProject;
+
   /// The labels associated with this project.
   ///
   /// Label keys must be between 1 and 63 characters long and must conform to
@@ -4533,6 +4541,7 @@ class Project {
     this.deleteTime,
     this.displayName,
     this.etag,
+    this.isManagementProject,
     this.labels,
     this.name,
     this.parent,
@@ -4551,6 +4560,7 @@ class Project {
         deleteTime: json_['deleteTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         etag: json_['etag'] as core.String?,
+        isManagementProject: json_['isManagementProject'] as core.bool?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -4570,6 +4580,7 @@ class Project {
     final deleteTime = this.deleteTime;
     final displayName = this.displayName;
     final etag = this.etag;
+    final isManagementProject = this.isManagementProject;
     final labels = this.labels;
     final name = this.name;
     final parent = this.parent;
@@ -4583,6 +4594,7 @@ class Project {
       'deleteTime': ?deleteTime,
       'displayName': ?displayName,
       'etag': ?etag,
+      'isManagementProject': ?isManagementProject,
       'labels': ?labels,
       'name': ?name,
       'parent': ?parent,

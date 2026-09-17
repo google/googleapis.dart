@@ -245,6 +245,7 @@ api.GoogleCloudCesV1mainImage buildGoogleCloudCesV1mainImage() {
   final o = api.GoogleCloudCesV1mainImage();
   buildCounterGoogleCloudCesV1mainImage++;
   if (buildCounterGoogleCloudCesV1mainImage < 3) {
+    o.altText = 'foo';
     o.data = 'foo';
     o.mimeType = 'foo';
   }
@@ -255,6 +256,7 @@ api.GoogleCloudCesV1mainImage buildGoogleCloudCesV1mainImage() {
 void checkGoogleCloudCesV1mainImage(api.GoogleCloudCesV1mainImage o) {
   buildCounterGoogleCloudCesV1mainImage++;
   if (buildCounterGoogleCloudCesV1mainImage < 3) {
+    unittest.expect(o.altText!, unittest.equals('foo'));
     unittest.expect(o.data!, unittest.equals('foo'));
     unittest.expect(o.mimeType!, unittest.equals('foo'));
   }
@@ -2768,14 +2770,37 @@ void checkGoogleCloudContactcenterinsightsV1ConversationTranscript(
 }
 
 core.List<
-  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart
 >
 buildUnnamed41() => [
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart(),
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart(),
+];
+
+void checkUnnamed41(
+  core.List<
+    api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart
+  >
+  o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart(
+    o[0],
+  );
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart(
+    o[1],
+  );
+}
+
+core.List<
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo
+>
+buildUnnamed42() => [
   buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo(),
   buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo(),
 ];
 
-void checkUnnamed41(
+void checkUnnamed42(
   core.List<
     api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo
   >
@@ -2806,13 +2831,14 @@ buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment()
         buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata();
     o.languageCode = 'foo';
     o.messageTime = 'foo';
+    o.parts = buildUnnamed41();
     o.segmentParticipant =
         buildGoogleCloudContactcenterinsightsV1ConversationParticipant();
     o.sentiment = buildGoogleCloudContactcenterinsightsV1SentimentData();
     o.text = 'foo';
     o.turnLevelAudio =
         buildGoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio();
-    o.words = buildUnnamed41();
+    o.words = buildUnnamed42();
   }
   buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment--;
   return o;
@@ -2833,6 +2859,7 @@ checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment(
     );
     unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.messageTime!, unittest.equals('foo'));
+    checkUnnamed41(o.parts!);
     checkGoogleCloudContactcenterinsightsV1ConversationParticipant(
       o.segmentParticipant!,
     );
@@ -2841,7 +2868,7 @@ checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment(
     checkGoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio(
       o.turnLevelAudio!,
     );
-    checkUnnamed41(o.words!);
+    checkUnnamed42(o.words!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment--;
 }
@@ -2873,6 +2900,690 @@ checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDi
     unittest.expect(o.smartReplyAllowlistCovered!, unittest.isTrue);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata--;
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart <
+      3) {
+    o.citation =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart();
+    o.customPayload =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart();
+    o.image =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart();
+    o.link =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart();
+    o.list =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart();
+    o.productCollection =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart();
+    o.suggestionChips =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart();
+    o.table =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart();
+    o.text =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart();
+    o.thought =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart();
+    o.video =
+        buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart();
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart <
+      3) {
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart(
+      o.citation!,
+    );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart(
+      o.customPayload!,
+    );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart(
+      o.image!,
+    );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart(
+      o.link!,
+    );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart(
+      o.list!,
+    );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart(
+      o.productCollection!,
+    );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart(
+      o.suggestionChips!,
+    );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart(
+      o.table!,
+    );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart(
+      o.text!,
+    );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart(
+      o.thought!,
+    );
+    checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart(
+      o.video!,
+    );
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart--;
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip <
+      3) {
+    o.actionUri = 'foo';
+    o.text = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip <
+      3) {
+    unittest.expect(o.actionUri!, unittest.equals('foo'));
+    unittest.expect(o.text!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip--;
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart <
+      3) {
+    o.snippet = 'foo';
+    o.sourceTitle = 'foo';
+    o.sourceUri = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart <
+      3) {
+    unittest.expect(o.snippet!, unittest.equals('foo'));
+    unittest.expect(o.sourceTitle!, unittest.equals('foo'));
+    unittest.expect(o.sourceUri!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed43() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed43(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted15 = (o['x']!) as core.Map;
+  unittest.expect(casted15, unittest.hasLength(3));
+  unittest.expect(casted15['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted15['bool'], unittest.equals(true));
+  unittest.expect(casted15['string'], unittest.equals('foo'));
+  var casted16 = (o['y']!) as core.Map;
+  unittest.expect(casted16, unittest.hasLength(3));
+  unittest.expect(casted16['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted16['bool'], unittest.equals(true));
+  unittest.expect(casted16['string'], unittest.equals('foo'));
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart <
+      3) {
+    o.payload = buildUnnamed43();
+    o.payloadType = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart <
+      3) {
+    checkUnnamed43(o.payload!);
+    unittest.expect(o.payloadType!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart--;
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart <
+      3) {
+    o.text = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart <
+      3) {
+    unittest.expect(o.text!, unittest.equals('foo'));
+    unittest.expect(o.uri!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart--;
+}
+
+core.List<
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem
+>
+buildUnnamed44() => [
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem(),
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem(),
+];
+
+void checkUnnamed44(
+  core.List<
+    api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem
+  >
+  o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem(
+    o[0],
+  );
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem(
+    o[1],
+  );
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem <
+      3) {
+    o.subItems = buildUnnamed44();
+    o.text = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem <
+      3) {
+    checkUnnamed44(o.subItems!);
+    unittest.expect(o.text!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem--;
+}
+
+core.List<
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem
+>
+buildUnnamed45() => [
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem(),
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem(),
+];
+
+void checkUnnamed45(
+  core.List<
+    api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem
+  >
+  o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem(
+    o[0],
+  );
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem(
+    o[1],
+  );
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart <
+      3) {
+    o.items = buildUnnamed45();
+    o.listType = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart <
+      3) {
+    checkUnnamed45(o.items!);
+    unittest.expect(o.listType!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart--;
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart <
+      3) {
+    o.alternativeText = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart <
+      3) {
+    unittest.expect(o.alternativeText!, unittest.equals('foo'));
+    unittest.expect(o.uri!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart--;
+}
+
+core.List<core.String> buildUnnamed46() => ['foo', 'foo'];
+
+void checkUnnamed46(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct <
+      3) {
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.id = 'foo';
+    o.imageUris = buildUnnamed46();
+    o.price = buildGoogleTypeMoney();
+    o.uri = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct <
+      3) {
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
+    checkUnnamed46(o.imageUris!);
+    checkGoogleTypeMoney(o.price!);
+    unittest.expect(o.uri!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct--;
+}
+
+core.List<
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct
+>
+buildUnnamed47() => [
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct(),
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct(),
+];
+
+void checkUnnamed47(
+  core.List<
+    api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct
+  >
+  o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct(
+    o[0],
+  );
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct(
+    o[1],
+  );
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart <
+      3) {
+    o.products = buildUnnamed47();
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart <
+      3) {
+    checkUnnamed47(o.products!);
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart--;
+}
+
+core.List<
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip
+>
+buildUnnamed48() => [
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip(),
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip(),
+];
+
+void checkUnnamed48(
+  core.List<
+    api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip
+  >
+  o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip(
+    o[0],
+  );
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip(
+    o[1],
+  );
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart <
+      3) {
+    o.chips = buildUnnamed48();
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart <
+      3) {
+    checkUnnamed48(o.chips!);
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart--;
+}
+
+core.List<core.String> buildUnnamed49() => ['foo', 'foo'];
+
+void checkUnnamed49(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow
+>
+buildUnnamed50() => [
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow(),
+  buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow(),
+];
+
+void checkUnnamed50(
+  core.List<
+    api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow
+  >
+  o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow(
+    o[0],
+  );
+  checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow(
+    o[1],
+  );
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart <
+      3) {
+    o.headers = buildUnnamed49();
+    o.rows = buildUnnamed50();
+    o.title = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart <
+      3) {
+    checkUnnamed49(o.headers!);
+    checkUnnamed50(o.rows!);
+    unittest.expect(o.title!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart--;
+}
+
+core.List<core.String> buildUnnamed51() => ['foo', 'foo'];
+
+void checkUnnamed51(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow <
+      3) {
+    o.cells = buildUnnamed51();
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow <
+      3) {
+    checkUnnamed51(o.cells!);
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow--;
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart <
+      3) {
+    o.text = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart <
+      3) {
+    unittest.expect(o.text!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart--;
+}
+
+core.int
+buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart =
+    0;
+api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart
+buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart() {
+  final o =
+      api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart();
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart <
+      3) {
+    o.text = 'foo';
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart--;
+  return o;
+}
+
+void
+checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart(
+  api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart
+  o,
+) {
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart++;
+  if (buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart <
+      3) {
+    unittest.expect(o.text!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart--;
 }
 
 core.int
@@ -2970,12 +3681,12 @@ void checkGoogleCloudContactcenterinsightsV1CorrelationRule(
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1CorrelationRule>
-buildUnnamed42() => [
+buildUnnamed52() => [
   buildGoogleCloudContactcenterinsightsV1CorrelationRule(),
   buildGoogleCloudContactcenterinsightsV1CorrelationRule(),
 ];
 
-void checkUnnamed42(
+void checkUnnamed52(
   core.List<api.GoogleCloudContactcenterinsightsV1CorrelationRule> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2990,7 +3701,7 @@ buildGoogleCloudContactcenterinsightsV1CorrelationTypeConfig() {
   final o = api.GoogleCloudContactcenterinsightsV1CorrelationTypeConfig();
   buildCounterGoogleCloudContactcenterinsightsV1CorrelationTypeConfig++;
   if (buildCounterGoogleCloudContactcenterinsightsV1CorrelationTypeConfig < 3) {
-    o.correlationRules = buildUnnamed42();
+    o.correlationRules = buildUnnamed52();
   }
   buildCounterGoogleCloudContactcenterinsightsV1CorrelationTypeConfig--;
   return o;
@@ -3001,7 +3712,7 @@ void checkGoogleCloudContactcenterinsightsV1CorrelationTypeConfig(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1CorrelationTypeConfig++;
   if (buildCounterGoogleCloudContactcenterinsightsV1CorrelationTypeConfig < 3) {
-    checkUnnamed42(o.correlationRules!);
+    checkUnnamed52(o.correlationRules!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1CorrelationTypeConfig--;
 }
@@ -3699,9 +4410,9 @@ void checkGoogleCloudContactcenterinsightsV1EncryptionSpec(
   buildCounterGoogleCloudContactcenterinsightsV1EncryptionSpec--;
 }
 
-core.Map<core.String, core.String> buildUnnamed43() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed53() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed43(core.Map<core.String, core.String> o) {
+void checkUnnamed53(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3714,7 +4425,7 @@ buildGoogleCloudContactcenterinsightsV1Entity() {
   buildCounterGoogleCloudContactcenterinsightsV1Entity++;
   if (buildCounterGoogleCloudContactcenterinsightsV1Entity < 3) {
     o.displayName = 'foo';
-    o.metadata = buildUnnamed43();
+    o.metadata = buildUnnamed53();
     o.salience = 42.0;
     o.sentiment = buildGoogleCloudContactcenterinsightsV1SentimentData();
     o.type = 'foo';
@@ -3729,7 +4440,7 @@ void checkGoogleCloudContactcenterinsightsV1Entity(
   buildCounterGoogleCloudContactcenterinsightsV1Entity++;
   if (buildCounterGoogleCloudContactcenterinsightsV1Entity < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed43(o.metadata!);
+    checkUnnamed53(o.metadata!);
     unittest.expect(o.salience!, unittest.equals(42.0));
     checkGoogleCloudContactcenterinsightsV1SentimentData(o.sentiment!);
     unittest.expect(o.type!, unittest.equals('foo'));
@@ -3914,9 +4625,9 @@ checkGoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination(
   buildCounterGoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination--;
 }
 
-core.Map<core.String, core.String> buildUnnamed44() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed54() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed44(core.Map<core.String, core.String> o) {
+void checkUnnamed54(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3930,7 +4641,7 @@ buildGoogleCloudContactcenterinsightsV1FaqAnswerData() {
   if (buildCounterGoogleCloudContactcenterinsightsV1FaqAnswerData < 3) {
     o.answer = 'foo';
     o.confidenceScore = 42.0;
-    o.metadata = buildUnnamed44();
+    o.metadata = buildUnnamed54();
     o.queryRecord = 'foo';
     o.question = 'foo';
     o.source = 'foo';
@@ -3946,7 +4657,7 @@ void checkGoogleCloudContactcenterinsightsV1FaqAnswerData(
   if (buildCounterGoogleCloudContactcenterinsightsV1FaqAnswerData < 3) {
     unittest.expect(o.answer!, unittest.equals('foo'));
     unittest.expect(o.confidenceScore!, unittest.equals(42.0));
-    checkUnnamed44(o.metadata!);
+    checkUnnamed54(o.metadata!);
     unittest.expect(o.queryRecord!, unittest.equals('foo'));
     unittest.expect(o.question!, unittest.equals('foo'));
     unittest.expect(o.source!, unittest.equals('foo'));
@@ -4010,9 +4721,9 @@ void checkGoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest(
   buildCounterGoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest--;
 }
 
-core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed55() => ['foo', 'foo'];
 
-void checkUnnamed45(core.List<core.String> o) {
+void checkUnnamed55(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4025,7 +4736,7 @@ buildGoogleCloudContactcenterinsightsV1GcsSource() {
   buildCounterGoogleCloudContactcenterinsightsV1GcsSource++;
   if (buildCounterGoogleCloudContactcenterinsightsV1GcsSource < 3) {
     o.audioUri = 'foo';
-    o.audioUris = buildUnnamed45();
+    o.audioUris = buildUnnamed55();
     o.transcriptUri = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1GcsSource--;
@@ -4038,7 +4749,7 @@ void checkGoogleCloudContactcenterinsightsV1GcsSource(
   buildCounterGoogleCloudContactcenterinsightsV1GcsSource++;
   if (buildCounterGoogleCloudContactcenterinsightsV1GcsSource < 3) {
     unittest.expect(o.audioUri!, unittest.equals('foo'));
-    checkUnnamed45(o.audioUris!);
+    checkUnnamed55(o.audioUris!);
     unittest.expect(o.transcriptUri!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1GcsSource--;
@@ -4077,12 +4788,12 @@ checkGoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse(
 core.List<
   api.GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation
 >
-buildUnnamed46() => [
+buildUnnamed56() => [
   buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation(),
   buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation(),
 ];
 
-void checkUnnamed46(
+void checkUnnamed56(
   core.List<
     api.GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation
   >
@@ -4097,7 +4808,7 @@ void checkUnnamed46(
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed47() => {
+core.Map<core.String, core.Object?> buildUnnamed57() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -4110,34 +4821,7 @@ core.Map<core.String, core.Object?> buildUnnamed47() => {
   },
 };
 
-void checkUnnamed47(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted15 = (o['x']!) as core.Map;
-  unittest.expect(casted15, unittest.hasLength(3));
-  unittest.expect(casted15['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted15['bool'], unittest.equals(true));
-  unittest.expect(casted15['string'], unittest.equals('foo'));
-  var casted16 = (o['y']!) as core.Map;
-  unittest.expect(casted16, unittest.hasLength(3));
-  unittest.expect(casted16['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted16['bool'], unittest.equals(true));
-  unittest.expect(casted16['string'], unittest.equals('foo'));
-}
-
-core.Map<core.String, core.Object?> buildUnnamed48() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed48(core.Map<core.String, core.Object?> o) {
+void checkUnnamed57(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted17 = (o['x']!) as core.Map;
   unittest.expect(casted17, unittest.hasLength(3));
@@ -4151,6 +4835,33 @@ void checkUnnamed48(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted18['string'], unittest.equals('foo'));
 }
 
+core.Map<core.String, core.Object?> buildUnnamed58() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed58(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted19 = (o['x']!) as core.Map;
+  unittest.expect(casted19, unittest.hasLength(3));
+  unittest.expect(casted19['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted19['bool'], unittest.equals(true));
+  unittest.expect(casted19['string'], unittest.equals('foo'));
+  var casted20 = (o['y']!) as core.Map;
+  unittest.expect(casted20, unittest.hasLength(3));
+  unittest.expect(casted20['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted20['bool'], unittest.equals(true));
+  unittest.expect(casted20['string'], unittest.equals('foo'));
+}
+
 core.int buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsights = 0;
 api.GoogleCloudContactcenterinsightsV1GenerativeInsights
 buildGoogleCloudContactcenterinsightsV1GenerativeInsights() {
@@ -4159,9 +4870,9 @@ buildGoogleCloudContactcenterinsightsV1GenerativeInsights() {
   if (buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsights < 3) {
     o.chartCheckpoint =
         buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint();
-    o.chartConversations = buildUnnamed46();
-    o.chartSpec = buildUnnamed47();
-    o.request = buildUnnamed48();
+    o.chartConversations = buildUnnamed56();
+    o.chartSpec = buildUnnamed57();
+    o.request = buildUnnamed58();
     o.sqlComparisonKey = 'foo';
     o.sqlQuery = 'foo';
   }
@@ -4177,9 +4888,9 @@ void checkGoogleCloudContactcenterinsightsV1GenerativeInsights(
     checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint(
       o.chartCheckpoint!,
     );
-    checkUnnamed46(o.chartConversations!);
-    checkUnnamed47(o.chartSpec!);
-    checkUnnamed48(o.request!);
+    checkUnnamed56(o.chartConversations!);
+    checkUnnamed57(o.chartSpec!);
+    checkUnnamed58(o.request!);
     unittest.expect(o.sqlComparisonKey!, unittest.equals('foo'));
     unittest.expect(o.sqlQuery!, unittest.equals('foo'));
   }
@@ -4218,12 +4929,12 @@ void checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint(
 core.List<
   api.GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage
 >
-buildUnnamed49() => [
+buildUnnamed59() => [
   buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage(),
   buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage(),
 ];
 
-void checkUnnamed49(
+void checkUnnamed59(
   core.List<
     api.GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage
   >
@@ -4250,7 +4961,7 @@ buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation() {
       3) {
     o.conversationId = 'foo';
     o.createTime = 'foo';
-    o.messages = buildUnnamed49();
+    o.messages = buildUnnamed59();
     o.updateTime = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation--;
@@ -4265,7 +4976,7 @@ void checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation(
       3) {
     unittest.expect(o.conversationId!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
-    checkUnnamed49(o.messages!);
+    checkUnnamed59(o.messages!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation--;
@@ -4312,7 +5023,7 @@ checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessag
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed50() => {
+core.Map<core.String, core.Object?> buildUnnamed60() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -4325,18 +5036,18 @@ core.Map<core.String, core.Object?> buildUnnamed50() => {
   },
 };
 
-void checkUnnamed50(core.Map<core.String, core.Object?> o) {
+void checkUnnamed60(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted19 = (o['x']!) as core.Map;
-  unittest.expect(casted19, unittest.hasLength(3));
-  unittest.expect(casted19['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted19['bool'], unittest.equals(true));
-  unittest.expect(casted19['string'], unittest.equals('foo'));
-  var casted20 = (o['y']!) as core.Map;
-  unittest.expect(casted20, unittest.hasLength(3));
-  unittest.expect(casted20['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted20['bool'], unittest.equals(true));
-  unittest.expect(casted20['string'], unittest.equals('foo'));
+  var casted21 = (o['x']!) as core.Map;
+  unittest.expect(casted21, unittest.hasLength(3));
+  unittest.expect(casted21['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted21['bool'], unittest.equals(true));
+  unittest.expect(casted21['string'], unittest.equals('foo'));
+  var casted22 = (o['y']!) as core.Map;
+  unittest.expect(casted22, unittest.hasLength(3));
+  unittest.expect(casted22['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted22['bool'], unittest.equals(true));
+  unittest.expect(casted22['string'], unittest.equals('foo'));
 }
 
 core.int
@@ -4349,7 +5060,7 @@ buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessag
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage++;
   if (buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage <
       3) {
-    o.chartSpec = buildUnnamed50();
+    o.chartSpec = buildUnnamed60();
     o.generatedSqlQuery = 'foo';
     o.textOutput =
         buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput();
@@ -4366,7 +5077,7 @@ checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessag
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage++;
   if (buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage <
       3) {
-    checkUnnamed50(o.chartSpec!);
+    checkUnnamed60(o.chartSpec!);
     unittest.expect(o.generatedSqlQuery!, unittest.equals('foo'));
     checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput(
       o.textOutput!,
@@ -4375,9 +5086,9 @@ checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessag
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage--;
 }
 
-core.List<core.String> buildUnnamed51() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed61() => ['foo', 'foo'];
 
-void checkUnnamed51(core.List<core.String> o) {
+void checkUnnamed61(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4393,7 +5104,7 @@ buildGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessag
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput++;
   if (buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput <
       3) {
-    o.texts = buildUnnamed51();
+    o.texts = buildUnnamed61();
     o.type = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput--;
@@ -4408,7 +5119,7 @@ checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessag
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput++;
   if (buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput <
       3) {
-    checkUnnamed51(o.texts!);
+    checkUnnamed61(o.texts!);
     unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput--;
@@ -4443,7 +5154,7 @@ checkGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessag
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed52() => {
+core.Map<core.String, core.Object?> buildUnnamed62() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -4456,18 +5167,18 @@ core.Map<core.String, core.Object?> buildUnnamed52() => {
   },
 };
 
-void checkUnnamed52(core.Map<core.String, core.Object?> o) {
+void checkUnnamed62(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted21 = (o['x']!) as core.Map;
-  unittest.expect(casted21, unittest.hasLength(3));
-  unittest.expect(casted21['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted21['bool'], unittest.equals(true));
-  unittest.expect(casted21['string'], unittest.equals('foo'));
-  var casted22 = (o['y']!) as core.Map;
-  unittest.expect(casted22, unittest.hasLength(3));
-  unittest.expect(casted22['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted22['bool'], unittest.equals(true));
-  unittest.expect(casted22['string'], unittest.equals('foo'));
+  var casted23 = (o['x']!) as core.Map;
+  unittest.expect(casted23, unittest.hasLength(3));
+  unittest.expect(casted23['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted23['bool'], unittest.equals(true));
+  unittest.expect(casted23['string'], unittest.equals('foo'));
+  var casted24 = (o['y']!) as core.Map;
+  unittest.expect(casted24, unittest.hasLength(3));
+  unittest.expect(casted24['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted24['bool'], unittest.equals(true));
+  unittest.expect(casted24['string'], unittest.equals('foo'));
 }
 
 core.int
@@ -4486,7 +5197,7 @@ buildGoogleCloudContactcenterinsightsV1GenerativeInsightsRequest() {
     o.sessionId = 'foo';
     o.sqlComparisonKey = 'foo';
     o.sqlQuery = 'foo';
-    o.userProvidedChartSpec = buildUnnamed52();
+    o.userProvidedChartSpec = buildUnnamed62();
   }
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsRequest--;
   return o;
@@ -4506,7 +5217,7 @@ void checkGoogleCloudContactcenterinsightsV1GenerativeInsightsRequest(
     unittest.expect(o.sessionId!, unittest.equals('foo'));
     unittest.expect(o.sqlComparisonKey!, unittest.equals('foo'));
     unittest.expect(o.sqlQuery!, unittest.equals('foo'));
-    checkUnnamed52(o.userProvidedChartSpec!);
+    checkUnnamed62(o.userProvidedChartSpec!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1GenerativeInsightsRequest--;
 }
@@ -4668,9 +5379,9 @@ checkGoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationCon
   buildCounterGoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig--;
 }
 
-core.List<core.String> buildUnnamed53() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed63() => ['foo', 'foo'];
 
-void checkUnnamed53(core.List<core.String> o) {
+void checkUnnamed63(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4689,7 +5400,7 @@ buildGoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource() {
     o.audioBucketUri = 'foo';
     o.bucketObjectType = 'foo';
     o.bucketUri = 'foo';
-    o.customMetadataKeys = buildUnnamed53();
+    o.customMetadataKeys = buildUnnamed63();
     o.metadataBucketUri = 'foo';
     o.transcriptBucketUri = 'foo';
   }
@@ -4706,7 +5417,7 @@ void checkGoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource(
     unittest.expect(o.audioBucketUri!, unittest.equals('foo'));
     unittest.expect(o.bucketObjectType!, unittest.equals('foo'));
     unittest.expect(o.bucketUri!, unittest.equals('foo'));
-    checkUnnamed53(o.customMetadataKeys!);
+    checkUnnamed63(o.customMetadataKeys!);
     unittest.expect(o.metadataBucketUri!, unittest.equals('foo'));
     unittest.expect(o.transcriptBucketUri!, unittest.equals('foo'));
   }
@@ -4833,9 +5544,9 @@ void checkGoogleCloudContactcenterinsightsV1InterruptionData(
   buildCounterGoogleCloudContactcenterinsightsV1InterruptionData--;
 }
 
-core.List<core.String> buildUnnamed54() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed64() => ['foo', 'foo'];
 
-void checkUnnamed54(core.List<core.String> o) {
+void checkUnnamed64(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4851,7 +5562,7 @@ buildGoogleCloudContactcenterinsightsV1Issue() {
     o.displayDescription = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
-    o.sampleUtterances = buildUnnamed54();
+    o.sampleUtterances = buildUnnamed64();
     o.updateTime = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1Issue--;
@@ -4867,7 +5578,7 @@ void checkGoogleCloudContactcenterinsightsV1Issue(
     unittest.expect(o.displayDescription!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed54(o.sampleUtterances!);
+    checkUnnamed64(o.sampleUtterances!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1Issue--;
@@ -5001,12 +5712,12 @@ core.Map<
   core.String,
   api.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
 >
-buildUnnamed55() => {
+buildUnnamed65() => {
   'x': buildGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats(),
   'y': buildGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats(),
 };
 
-void checkUnnamed55(
+void checkUnnamed65(
   core.Map<
     core.String,
     api.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
@@ -5029,7 +5740,7 @@ buildGoogleCloudContactcenterinsightsV1IssueModelLabelStats() {
   buildCounterGoogleCloudContactcenterinsightsV1IssueModelLabelStats++;
   if (buildCounterGoogleCloudContactcenterinsightsV1IssueModelLabelStats < 3) {
     o.analyzedConversationsCount = 'foo';
-    o.issueStats = buildUnnamed55();
+    o.issueStats = buildUnnamed65();
     o.unclassifiedConversationsCount = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1IssueModelLabelStats--;
@@ -5042,7 +5753,7 @@ void checkGoogleCloudContactcenterinsightsV1IssueModelLabelStats(
   buildCounterGoogleCloudContactcenterinsightsV1IssueModelLabelStats++;
   if (buildCounterGoogleCloudContactcenterinsightsV1IssueModelLabelStats < 3) {
     unittest.expect(o.analyzedConversationsCount!, unittest.equals('foo'));
-    checkUnnamed55(o.issueStats!);
+    checkUnnamed65(o.issueStats!);
     unittest.expect(o.unclassifiedConversationsCount!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1IssueModelLabelStats--;
@@ -5080,12 +5791,12 @@ void checkGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats(
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1IssueAssignment>
-buildUnnamed56() => [
+buildUnnamed66() => [
   buildGoogleCloudContactcenterinsightsV1IssueAssignment(),
   buildGoogleCloudContactcenterinsightsV1IssueAssignment(),
 ];
 
-void checkUnnamed56(
+void checkUnnamed66(
   core.List<api.GoogleCloudContactcenterinsightsV1IssueAssignment> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5100,7 +5811,7 @@ buildGoogleCloudContactcenterinsightsV1IssueModelResult() {
   buildCounterGoogleCloudContactcenterinsightsV1IssueModelResult++;
   if (buildCounterGoogleCloudContactcenterinsightsV1IssueModelResult < 3) {
     o.issueModel = 'foo';
-    o.issues = buildUnnamed56();
+    o.issues = buildUnnamed66();
   }
   buildCounterGoogleCloudContactcenterinsightsV1IssueModelResult--;
   return o;
@@ -5112,18 +5823,18 @@ void checkGoogleCloudContactcenterinsightsV1IssueModelResult(
   buildCounterGoogleCloudContactcenterinsightsV1IssueModelResult++;
   if (buildCounterGoogleCloudContactcenterinsightsV1IssueModelResult < 3) {
     unittest.expect(o.issueModel!, unittest.equals('foo'));
-    checkUnnamed56(o.issues!);
+    checkUnnamed66(o.issues!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1IssueModelResult--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1FeedbackLabel>
-buildUnnamed57() => [
+buildUnnamed67() => [
   buildGoogleCloudContactcenterinsightsV1FeedbackLabel(),
   buildGoogleCloudContactcenterinsightsV1FeedbackLabel(),
 ];
 
-void checkUnnamed57(
+void checkUnnamed67(
   core.List<api.GoogleCloudContactcenterinsightsV1FeedbackLabel> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5140,7 +5851,7 @@ buildGoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse <
       3) {
-    o.feedbackLabels = buildUnnamed57();
+    o.feedbackLabels = buildUnnamed67();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse--;
@@ -5153,18 +5864,18 @@ void checkGoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse <
       3) {
-    checkUnnamed57(o.feedbackLabels!);
+    checkUnnamed67(o.feedbackLabels!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1Analysis> buildUnnamed58() => [
+core.List<api.GoogleCloudContactcenterinsightsV1Analysis> buildUnnamed68() => [
   buildGoogleCloudContactcenterinsightsV1Analysis(),
   buildGoogleCloudContactcenterinsightsV1Analysis(),
 ];
 
-void checkUnnamed58(
+void checkUnnamed68(
   core.List<api.GoogleCloudContactcenterinsightsV1Analysis> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5178,7 +5889,7 @@ buildGoogleCloudContactcenterinsightsV1ListAnalysesResponse() {
   final o = api.GoogleCloudContactcenterinsightsV1ListAnalysesResponse();
   buildCounterGoogleCloudContactcenterinsightsV1ListAnalysesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAnalysesResponse < 3) {
-    o.analyses = buildUnnamed58();
+    o.analyses = buildUnnamed68();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAnalysesResponse--;
@@ -5190,19 +5901,19 @@ void checkGoogleCloudContactcenterinsightsV1ListAnalysesResponse(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1ListAnalysesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAnalysesResponse < 3) {
-    checkUnnamed58(o.analyses!);
+    checkUnnamed68(o.analyses!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAnalysesResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1AnalysisRule>
-buildUnnamed59() => [
+buildUnnamed69() => [
   buildGoogleCloudContactcenterinsightsV1AnalysisRule(),
   buildGoogleCloudContactcenterinsightsV1AnalysisRule(),
 ];
 
-void checkUnnamed59(
+void checkUnnamed69(
   core.List<api.GoogleCloudContactcenterinsightsV1AnalysisRule> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5218,7 +5929,7 @@ buildGoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse <
       3) {
-    o.analysisRules = buildUnnamed59();
+    o.analysisRules = buildUnnamed69();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse--;
@@ -5231,19 +5942,19 @@ void checkGoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse <
       3) {
-    checkUnnamed59(o.analysisRules!);
+    checkUnnamed69(o.analysisRules!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1AssessmentRule>
-buildUnnamed60() => [
+buildUnnamed70() => [
   buildGoogleCloudContactcenterinsightsV1AssessmentRule(),
   buildGoogleCloudContactcenterinsightsV1AssessmentRule(),
 ];
 
-void checkUnnamed60(
+void checkUnnamed70(
   core.List<api.GoogleCloudContactcenterinsightsV1AssessmentRule> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5259,7 +5970,7 @@ buildGoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse <
       3) {
-    o.assessmentRules = buildUnnamed60();
+    o.assessmentRules = buildUnnamed70();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse--;
@@ -5272,19 +5983,19 @@ void checkGoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse <
       3) {
-    checkUnnamed60(o.assessmentRules!);
+    checkUnnamed70(o.assessmentRules!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1Assessment> buildUnnamed61() =>
+core.List<api.GoogleCloudContactcenterinsightsV1Assessment> buildUnnamed71() =>
     [
       buildGoogleCloudContactcenterinsightsV1Assessment(),
       buildGoogleCloudContactcenterinsightsV1Assessment(),
     ];
 
-void checkUnnamed61(
+void checkUnnamed71(
   core.List<api.GoogleCloudContactcenterinsightsV1Assessment> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5300,7 +6011,7 @@ buildGoogleCloudContactcenterinsightsV1ListAssessmentsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentsResponse <
       3) {
-    o.assessments = buildUnnamed61();
+    o.assessments = buildUnnamed71();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentsResponse--;
@@ -5313,19 +6024,19 @@ void checkGoogleCloudContactcenterinsightsV1ListAssessmentsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentsResponse <
       3) {
-    checkUnnamed61(o.assessments!);
+    checkUnnamed71(o.assessments!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAssessmentsResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1AssistantSession>
-buildUnnamed62() => [
+buildUnnamed72() => [
   buildGoogleCloudContactcenterinsightsV1AssistantSession(),
   buildGoogleCloudContactcenterinsightsV1AssistantSession(),
 ];
 
-void checkUnnamed62(
+void checkUnnamed72(
   core.List<api.GoogleCloudContactcenterinsightsV1AssistantSession> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5342,7 +6053,7 @@ buildGoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse <
       3) {
-    o.assistantSessions = buildUnnamed62();
+    o.assistantSessions = buildUnnamed72();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse--;
@@ -5355,19 +6066,19 @@ void checkGoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse <
       3) {
-    checkUnnamed62(o.assistantSessions!);
+    checkUnnamed72(o.assistantSessions!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1AuthorizedViewSet>
-buildUnnamed63() => [
+buildUnnamed73() => [
   buildGoogleCloudContactcenterinsightsV1AuthorizedViewSet(),
   buildGoogleCloudContactcenterinsightsV1AuthorizedViewSet(),
 ];
 
-void checkUnnamed63(
+void checkUnnamed73(
   core.List<api.GoogleCloudContactcenterinsightsV1AuthorizedViewSet> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5385,7 +6096,7 @@ buildGoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse <
       3) {
-    o.authorizedViewSets = buildUnnamed63();
+    o.authorizedViewSets = buildUnnamed73();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse--;
@@ -5398,19 +6109,19 @@ void checkGoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse <
       3) {
-    checkUnnamed63(o.authorizedViewSets!);
+    checkUnnamed73(o.authorizedViewSets!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1AuthorizedView>
-buildUnnamed64() => [
+buildUnnamed74() => [
   buildGoogleCloudContactcenterinsightsV1AuthorizedView(),
   buildGoogleCloudContactcenterinsightsV1AuthorizedView(),
 ];
 
-void checkUnnamed64(
+void checkUnnamed74(
   core.List<api.GoogleCloudContactcenterinsightsV1AuthorizedView> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5426,7 +6137,7 @@ buildGoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse <
       3) {
-    o.authorizedViews = buildUnnamed64();
+    o.authorizedViews = buildUnnamed74();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse--;
@@ -5439,19 +6150,19 @@ void checkGoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse <
       3) {
-    checkUnnamed64(o.authorizedViews!);
+    checkUnnamed74(o.authorizedViews!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1AutoLabelingRule>
-buildUnnamed65() => [
+buildUnnamed75() => [
   buildGoogleCloudContactcenterinsightsV1AutoLabelingRule(),
   buildGoogleCloudContactcenterinsightsV1AutoLabelingRule(),
 ];
 
-void checkUnnamed65(
+void checkUnnamed75(
   core.List<api.GoogleCloudContactcenterinsightsV1AutoLabelingRule> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5468,7 +6179,7 @@ buildGoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse <
       3) {
-    o.autoLabelingRules = buildUnnamed65();
+    o.autoLabelingRules = buildUnnamed75();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse--;
@@ -5481,18 +6192,18 @@ void checkGoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse <
       3) {
-    checkUnnamed65(o.autoLabelingRules!);
+    checkUnnamed75(o.autoLabelingRules!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1Chart> buildUnnamed66() => [
+core.List<api.GoogleCloudContactcenterinsightsV1Chart> buildUnnamed76() => [
   buildGoogleCloudContactcenterinsightsV1Chart(),
   buildGoogleCloudContactcenterinsightsV1Chart(),
 ];
 
-void checkUnnamed66(core.List<api.GoogleCloudContactcenterinsightsV1Chart> o) {
+void checkUnnamed76(core.List<api.GoogleCloudContactcenterinsightsV1Chart> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudContactcenterinsightsV1Chart(o[0]);
   checkGoogleCloudContactcenterinsightsV1Chart(o[1]);
@@ -5504,7 +6215,7 @@ buildGoogleCloudContactcenterinsightsV1ListChartsResponse() {
   final o = api.GoogleCloudContactcenterinsightsV1ListChartsResponse();
   buildCounterGoogleCloudContactcenterinsightsV1ListChartsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListChartsResponse < 3) {
-    o.charts = buildUnnamed66();
+    o.charts = buildUnnamed76();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListChartsResponse--;
@@ -5516,19 +6227,19 @@ void checkGoogleCloudContactcenterinsightsV1ListChartsResponse(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1ListChartsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListChartsResponse < 3) {
-    checkUnnamed66(o.charts!);
+    checkUnnamed76(o.charts!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListChartsResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1Conversation>
-buildUnnamed67() => [
+buildUnnamed77() => [
   buildGoogleCloudContactcenterinsightsV1Conversation(),
   buildGoogleCloudContactcenterinsightsV1Conversation(),
 ];
 
-void checkUnnamed67(
+void checkUnnamed77(
   core.List<api.GoogleCloudContactcenterinsightsV1Conversation> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5544,7 +6255,7 @@ buildGoogleCloudContactcenterinsightsV1ListConversationsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListConversationsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListConversationsResponse <
       3) {
-    o.conversations = buildUnnamed67();
+    o.conversations = buildUnnamed77();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListConversationsResponse--;
@@ -5557,18 +6268,18 @@ void checkGoogleCloudContactcenterinsightsV1ListConversationsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListConversationsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListConversationsResponse <
       3) {
-    checkUnnamed67(o.conversations!);
+    checkUnnamed77(o.conversations!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListConversationsResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1Dashboard> buildUnnamed68() => [
+core.List<api.GoogleCloudContactcenterinsightsV1Dashboard> buildUnnamed78() => [
   buildGoogleCloudContactcenterinsightsV1Dashboard(),
   buildGoogleCloudContactcenterinsightsV1Dashboard(),
 ];
 
-void checkUnnamed68(
+void checkUnnamed78(
   core.List<api.GoogleCloudContactcenterinsightsV1Dashboard> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5584,7 +6295,7 @@ buildGoogleCloudContactcenterinsightsV1ListDashboardsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListDashboardsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListDashboardsResponse <
       3) {
-    o.dashboards = buildUnnamed68();
+    o.dashboards = buildUnnamed78();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListDashboardsResponse--;
@@ -5597,18 +6308,18 @@ void checkGoogleCloudContactcenterinsightsV1ListDashboardsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListDashboardsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListDashboardsResponse <
       3) {
-    checkUnnamed68(o.dashboards!);
+    checkUnnamed78(o.dashboards!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListDashboardsResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1Dataset> buildUnnamed69() => [
+core.List<api.GoogleCloudContactcenterinsightsV1Dataset> buildUnnamed79() => [
   buildGoogleCloudContactcenterinsightsV1Dataset(),
   buildGoogleCloudContactcenterinsightsV1Dataset(),
 ];
 
-void checkUnnamed69(
+void checkUnnamed79(
   core.List<api.GoogleCloudContactcenterinsightsV1Dataset> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5622,7 +6333,7 @@ buildGoogleCloudContactcenterinsightsV1ListDatasetsResponse() {
   final o = api.GoogleCloudContactcenterinsightsV1ListDatasetsResponse();
   buildCounterGoogleCloudContactcenterinsightsV1ListDatasetsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListDatasetsResponse < 3) {
-    o.datasets = buildUnnamed69();
+    o.datasets = buildUnnamed79();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListDatasetsResponse--;
@@ -5634,19 +6345,19 @@ void checkGoogleCloudContactcenterinsightsV1ListDatasetsResponse(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1ListDatasetsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListDatasetsResponse < 3) {
-    checkUnnamed69(o.datasets!);
+    checkUnnamed79(o.datasets!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListDatasetsResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1FeedbackLabel>
-buildUnnamed70() => [
+buildUnnamed80() => [
   buildGoogleCloudContactcenterinsightsV1FeedbackLabel(),
   buildGoogleCloudContactcenterinsightsV1FeedbackLabel(),
 ];
 
-void checkUnnamed70(
+void checkUnnamed80(
   core.List<api.GoogleCloudContactcenterinsightsV1FeedbackLabel> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5662,7 +6373,7 @@ buildGoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse <
       3) {
-    o.feedbackLabels = buildUnnamed70();
+    o.feedbackLabels = buildUnnamed80();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse--;
@@ -5675,19 +6386,19 @@ void checkGoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse <
       3) {
-    checkUnnamed70(o.feedbackLabels!);
+    checkUnnamed80(o.feedbackLabels!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1IssueModel> buildUnnamed71() =>
+core.List<api.GoogleCloudContactcenterinsightsV1IssueModel> buildUnnamed81() =>
     [
       buildGoogleCloudContactcenterinsightsV1IssueModel(),
       buildGoogleCloudContactcenterinsightsV1IssueModel(),
     ];
 
-void checkUnnamed71(
+void checkUnnamed81(
   core.List<api.GoogleCloudContactcenterinsightsV1IssueModel> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5703,7 +6414,7 @@ buildGoogleCloudContactcenterinsightsV1ListIssueModelsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListIssueModelsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListIssueModelsResponse <
       3) {
-    o.issueModels = buildUnnamed71();
+    o.issueModels = buildUnnamed81();
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListIssueModelsResponse--;
   return o;
@@ -5715,17 +6426,17 @@ void checkGoogleCloudContactcenterinsightsV1ListIssueModelsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListIssueModelsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListIssueModelsResponse <
       3) {
-    checkUnnamed71(o.issueModels!);
+    checkUnnamed81(o.issueModels!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListIssueModelsResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1Issue> buildUnnamed72() => [
+core.List<api.GoogleCloudContactcenterinsightsV1Issue> buildUnnamed82() => [
   buildGoogleCloudContactcenterinsightsV1Issue(),
   buildGoogleCloudContactcenterinsightsV1Issue(),
 ];
 
-void checkUnnamed72(core.List<api.GoogleCloudContactcenterinsightsV1Issue> o) {
+void checkUnnamed82(core.List<api.GoogleCloudContactcenterinsightsV1Issue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudContactcenterinsightsV1Issue(o[0]);
   checkGoogleCloudContactcenterinsightsV1Issue(o[1]);
@@ -5737,7 +6448,7 @@ buildGoogleCloudContactcenterinsightsV1ListIssuesResponse() {
   final o = api.GoogleCloudContactcenterinsightsV1ListIssuesResponse();
   buildCounterGoogleCloudContactcenterinsightsV1ListIssuesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListIssuesResponse < 3) {
-    o.issues = buildUnnamed72();
+    o.issues = buildUnnamed82();
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListIssuesResponse--;
   return o;
@@ -5748,17 +6459,17 @@ void checkGoogleCloudContactcenterinsightsV1ListIssuesResponse(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1ListIssuesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListIssuesResponse < 3) {
-    checkUnnamed72(o.issues!);
+    checkUnnamed82(o.issues!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListIssuesResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1Note> buildUnnamed73() => [
+core.List<api.GoogleCloudContactcenterinsightsV1Note> buildUnnamed83() => [
   buildGoogleCloudContactcenterinsightsV1Note(),
   buildGoogleCloudContactcenterinsightsV1Note(),
 ];
 
-void checkUnnamed73(core.List<api.GoogleCloudContactcenterinsightsV1Note> o) {
+void checkUnnamed83(core.List<api.GoogleCloudContactcenterinsightsV1Note> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudContactcenterinsightsV1Note(o[0]);
   checkGoogleCloudContactcenterinsightsV1Note(o[1]);
@@ -5771,7 +6482,7 @@ buildGoogleCloudContactcenterinsightsV1ListNotesResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListNotesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListNotesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.notes = buildUnnamed73();
+    o.notes = buildUnnamed83();
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListNotesResponse--;
   return o;
@@ -5783,18 +6494,18 @@ void checkGoogleCloudContactcenterinsightsV1ListNotesResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListNotesResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListNotesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed73(o.notes!);
+    checkUnnamed83(o.notes!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListNotesResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1PhraseMatcher>
-buildUnnamed74() => [
+buildUnnamed84() => [
   buildGoogleCloudContactcenterinsightsV1PhraseMatcher(),
   buildGoogleCloudContactcenterinsightsV1PhraseMatcher(),
 ];
 
-void checkUnnamed74(
+void checkUnnamed84(
   core.List<api.GoogleCloudContactcenterinsightsV1PhraseMatcher> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5811,7 +6522,7 @@ buildGoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse() {
   if (buildCounterGoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.phraseMatchers = buildUnnamed74();
+    o.phraseMatchers = buildUnnamed84();
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse--;
   return o;
@@ -5824,18 +6535,18 @@ void checkGoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse(
   if (buildCounterGoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse <
       3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed74(o.phraseMatchers!);
+    checkUnnamed84(o.phraseMatchers!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1QaQuestionTag>
-buildUnnamed75() => [
+buildUnnamed85() => [
   buildGoogleCloudContactcenterinsightsV1QaQuestionTag(),
   buildGoogleCloudContactcenterinsightsV1QaQuestionTag(),
 ];
 
-void checkUnnamed75(
+void checkUnnamed85(
   core.List<api.GoogleCloudContactcenterinsightsV1QaQuestionTag> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5852,7 +6563,7 @@ buildGoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse() {
   if (buildCounterGoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.qaQuestionTags = buildUnnamed75();
+    o.qaQuestionTags = buildUnnamed85();
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse--;
   return o;
@@ -5865,18 +6576,18 @@ void checkGoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse(
   if (buildCounterGoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse <
       3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed75(o.qaQuestionTags!);
+    checkUnnamed85(o.qaQuestionTags!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1QaQuestion> buildUnnamed76() =>
+core.List<api.GoogleCloudContactcenterinsightsV1QaQuestion> buildUnnamed86() =>
     [
       buildGoogleCloudContactcenterinsightsV1QaQuestion(),
       buildGoogleCloudContactcenterinsightsV1QaQuestion(),
     ];
 
-void checkUnnamed76(
+void checkUnnamed86(
   core.List<api.GoogleCloudContactcenterinsightsV1QaQuestion> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5893,7 +6604,7 @@ buildGoogleCloudContactcenterinsightsV1ListQaQuestionsResponse() {
   if (buildCounterGoogleCloudContactcenterinsightsV1ListQaQuestionsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.qaQuestions = buildUnnamed76();
+    o.qaQuestions = buildUnnamed86();
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListQaQuestionsResponse--;
   return o;
@@ -5906,18 +6617,18 @@ void checkGoogleCloudContactcenterinsightsV1ListQaQuestionsResponse(
   if (buildCounterGoogleCloudContactcenterinsightsV1ListQaQuestionsResponse <
       3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed76(o.qaQuestions!);
+    checkUnnamed86(o.qaQuestions!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListQaQuestionsResponse--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1QaScorecardRevision>
-buildUnnamed77() => [
+buildUnnamed87() => [
   buildGoogleCloudContactcenterinsightsV1QaScorecardRevision(),
   buildGoogleCloudContactcenterinsightsV1QaScorecardRevision(),
 ];
 
-void checkUnnamed77(
+void checkUnnamed87(
   core.List<api.GoogleCloudContactcenterinsightsV1QaScorecardRevision> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5936,7 +6647,7 @@ buildGoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse() {
   if (buildCounterGoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.qaScorecardRevisions = buildUnnamed77();
+    o.qaScorecardRevisions = buildUnnamed87();
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse--;
   return o;
@@ -5949,18 +6660,18 @@ void checkGoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse(
   if (buildCounterGoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse <
       3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed77(o.qaScorecardRevisions!);
+    checkUnnamed87(o.qaScorecardRevisions!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1QaScorecard> buildUnnamed78() =>
+core.List<api.GoogleCloudContactcenterinsightsV1QaScorecard> buildUnnamed88() =>
     [
       buildGoogleCloudContactcenterinsightsV1QaScorecard(),
       buildGoogleCloudContactcenterinsightsV1QaScorecard(),
     ];
 
-void checkUnnamed78(
+void checkUnnamed88(
   core.List<api.GoogleCloudContactcenterinsightsV1QaScorecard> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5977,7 +6688,7 @@ buildGoogleCloudContactcenterinsightsV1ListQaScorecardsResponse() {
   if (buildCounterGoogleCloudContactcenterinsightsV1ListQaScorecardsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.qaScorecards = buildUnnamed78();
+    o.qaScorecards = buildUnnamed88();
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListQaScorecardsResponse--;
   return o;
@@ -5990,17 +6701,17 @@ void checkGoogleCloudContactcenterinsightsV1ListQaScorecardsResponse(
   if (buildCounterGoogleCloudContactcenterinsightsV1ListQaScorecardsResponse <
       3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed78(o.qaScorecards!);
+    checkUnnamed88(o.qaScorecards!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListQaScorecardsResponse--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1View> buildUnnamed79() => [
+core.List<api.GoogleCloudContactcenterinsightsV1View> buildUnnamed89() => [
   buildGoogleCloudContactcenterinsightsV1View(),
   buildGoogleCloudContactcenterinsightsV1View(),
 ];
 
-void checkUnnamed79(core.List<api.GoogleCloudContactcenterinsightsV1View> o) {
+void checkUnnamed89(core.List<api.GoogleCloudContactcenterinsightsV1View> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudContactcenterinsightsV1View(o[0]);
   checkGoogleCloudContactcenterinsightsV1View(o[1]);
@@ -6013,7 +6724,7 @@ buildGoogleCloudContactcenterinsightsV1ListViewsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1ListViewsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListViewsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.views = buildUnnamed79();
+    o.views = buildUnnamed89();
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListViewsResponse--;
   return o;
@@ -6025,7 +6736,7 @@ void checkGoogleCloudContactcenterinsightsV1ListViewsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1ListViewsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1ListViewsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed79(o.views!);
+    checkUnnamed89(o.views!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1ListViewsResponse--;
 }
@@ -6246,12 +6957,12 @@ void checkGoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig(
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1PhraseMatchRule>
-buildUnnamed80() => [
+buildUnnamed90() => [
   buildGoogleCloudContactcenterinsightsV1PhraseMatchRule(),
   buildGoogleCloudContactcenterinsightsV1PhraseMatchRule(),
 ];
 
-void checkUnnamed80(
+void checkUnnamed90(
   core.List<api.GoogleCloudContactcenterinsightsV1PhraseMatchRule> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6265,7 +6976,7 @@ buildGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup() {
   final o = api.GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup();
   buildCounterGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup++;
   if (buildCounterGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup < 3) {
-    o.phraseMatchRules = buildUnnamed80();
+    o.phraseMatchRules = buildUnnamed90();
     o.type = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup--;
@@ -6277,19 +6988,19 @@ void checkGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup++;
   if (buildCounterGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup < 3) {
-    checkUnnamed80(o.phraseMatchRules!);
+    checkUnnamed90(o.phraseMatchRules!);
     unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup--;
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>
-buildUnnamed81() => [
+buildUnnamed91() => [
   buildGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup(),
   buildGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup(),
 ];
 
-void checkUnnamed81(
+void checkUnnamed91(
   core.List<api.GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6307,7 +7018,7 @@ buildGoogleCloudContactcenterinsightsV1PhraseMatcher() {
     o.active = true;
     o.displayName = 'foo';
     o.name = 'foo';
-    o.phraseMatchRuleGroups = buildUnnamed81();
+    o.phraseMatchRuleGroups = buildUnnamed91();
     o.revisionCreateTime = 'foo';
     o.revisionId = 'foo';
     o.roleMatch = 'foo';
@@ -6328,7 +7039,7 @@ void checkGoogleCloudContactcenterinsightsV1PhraseMatcher(
     unittest.expect(o.active!, unittest.isTrue);
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed81(o.phraseMatchRuleGroups!);
+    checkUnnamed91(o.phraseMatchRuleGroups!);
     unittest.expect(o.revisionCreateTime!, unittest.equals('foo'));
     unittest.expect(o.revisionId!, unittest.equals('foo'));
     unittest.expect(o.roleMatch!, unittest.equals('foo'));
@@ -6361,12 +7072,12 @@ void checkGoogleCloudContactcenterinsightsV1PublishAssessmentRequest(
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>
-buildUnnamed82() => [
+buildUnnamed92() => [
   buildGoogleCloudContactcenterinsightsV1QaAnswerAnswerSource(),
   buildGoogleCloudContactcenterinsightsV1QaAnswerAnswerSource(),
 ];
 
-void checkUnnamed82(
+void checkUnnamed92(
   core.List<api.GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6374,9 +7085,9 @@ void checkUnnamed82(
   checkGoogleCloudContactcenterinsightsV1QaAnswerAnswerSource(o[1]);
 }
 
-core.List<core.String> buildUnnamed83() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed93() => ['foo', 'foo'];
 
-void checkUnnamed83(core.List<core.String> o) {
+void checkUnnamed93(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6388,13 +7099,13 @@ buildGoogleCloudContactcenterinsightsV1QaAnswer() {
   final o = api.GoogleCloudContactcenterinsightsV1QaAnswer();
   buildCounterGoogleCloudContactcenterinsightsV1QaAnswer++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QaAnswer < 3) {
-    o.answerSources = buildUnnamed82();
+    o.answerSources = buildUnnamed92();
     o.answerValue =
         buildGoogleCloudContactcenterinsightsV1QaAnswerAnswerValue();
     o.conversation = 'foo';
     o.qaQuestion = 'foo';
     o.questionBody = 'foo';
-    o.tags = buildUnnamed83();
+    o.tags = buildUnnamed93();
   }
   buildCounterGoogleCloudContactcenterinsightsV1QaAnswer--;
   return o;
@@ -6405,12 +7116,12 @@ void checkGoogleCloudContactcenterinsightsV1QaAnswer(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1QaAnswer++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QaAnswer < 3) {
-    checkUnnamed82(o.answerSources!);
+    checkUnnamed92(o.answerSources!);
     checkGoogleCloudContactcenterinsightsV1QaAnswerAnswerValue(o.answerValue!);
     unittest.expect(o.conversation!, unittest.equals('foo'));
     unittest.expect(o.qaQuestion!, unittest.equals('foo'));
     unittest.expect(o.questionBody!, unittest.equals('foo'));
-    checkUnnamed83(o.tags!);
+    checkUnnamed93(o.tags!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1QaAnswer--;
 }
@@ -6479,12 +7190,12 @@ void checkGoogleCloudContactcenterinsightsV1QaAnswerAnswerValue(
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>
-buildUnnamed84() => [
+buildUnnamed94() => [
   buildGoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice(),
   buildGoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice(),
 ];
 
-void checkUnnamed84(
+void checkUnnamed94(
   core.List<api.GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6492,9 +7203,9 @@ void checkUnnamed84(
   checkGoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice(o[1]);
 }
 
-core.List<core.String> buildUnnamed85() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed95() => ['foo', 'foo'];
 
-void checkUnnamed85(core.List<core.String> o) {
+void checkUnnamed95(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6507,7 +7218,7 @@ buildGoogleCloudContactcenterinsightsV1QaQuestion() {
   buildCounterGoogleCloudContactcenterinsightsV1QaQuestion++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QaQuestion < 3) {
     o.abbreviation = 'foo';
-    o.answerChoices = buildUnnamed84();
+    o.answerChoices = buildUnnamed94();
     o.answerInstructions = 'foo';
     o.createTime = 'foo';
     o.metrics = buildGoogleCloudContactcenterinsightsV1QaQuestionMetrics();
@@ -6519,7 +7230,7 @@ buildGoogleCloudContactcenterinsightsV1QaQuestion() {
         buildGoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions();
     o.questionBody = 'foo';
     o.questionType = 'foo';
-    o.tags = buildUnnamed85();
+    o.tags = buildUnnamed95();
     o.tuningMetadata =
         buildGoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata();
     o.updateTime = 'foo';
@@ -6534,7 +7245,7 @@ void checkGoogleCloudContactcenterinsightsV1QaQuestion(
   buildCounterGoogleCloudContactcenterinsightsV1QaQuestion++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QaQuestion < 3) {
     unittest.expect(o.abbreviation!, unittest.equals('foo'));
-    checkUnnamed84(o.answerChoices!);
+    checkUnnamed94(o.answerChoices!);
     unittest.expect(o.answerInstructions!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkGoogleCloudContactcenterinsightsV1QaQuestionMetrics(o.metrics!);
@@ -6548,7 +7259,7 @@ void checkGoogleCloudContactcenterinsightsV1QaQuestion(
     );
     unittest.expect(o.questionBody!, unittest.equals('foo'));
     unittest.expect(o.questionType!, unittest.equals('foo'));
-    checkUnnamed85(o.tags!);
+    checkUnnamed95(o.tags!);
     checkGoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata(
       o.tuningMetadata!,
     );
@@ -6671,9 +7382,9 @@ void checkGoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions(
   buildCounterGoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions--;
 }
 
-core.List<core.String> buildUnnamed86() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed96() => ['foo', 'foo'];
 
-void checkUnnamed86(core.List<core.String> o) {
+void checkUnnamed96(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6688,7 +7399,7 @@ buildGoogleCloudContactcenterinsightsV1QaQuestionTag() {
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
-    o.qaQuestionIds = buildUnnamed86();
+    o.qaQuestionIds = buildUnnamed96();
     o.updateTime = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1QaQuestionTag--;
@@ -6703,15 +7414,15 @@ void checkGoogleCloudContactcenterinsightsV1QaQuestionTag(
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed86(o.qaQuestionIds!);
+    checkUnnamed96(o.qaQuestionIds!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1QaQuestionTag--;
 }
 
-core.List<core.String> buildUnnamed87() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed97() => ['foo', 'foo'];
 
-void checkUnnamed87(core.List<core.String> o) {
+void checkUnnamed97(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6725,7 +7436,7 @@ buildGoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata() {
   buildCounterGoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata <
       3) {
-    o.datasetValidationWarnings = buildUnnamed87();
+    o.datasetValidationWarnings = buildUnnamed97();
     o.totalValidLabelCount = 'foo';
     o.tuningError = 'foo';
   }
@@ -6739,7 +7450,7 @@ void checkGoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata(
   buildCounterGoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata <
       3) {
-    checkUnnamed87(o.datasetValidationWarnings!);
+    checkUnnamed97(o.datasetValidationWarnings!);
     unittest.expect(o.totalValidLabelCount!, unittest.equals('foo'));
     unittest.expect(o.tuningError!, unittest.equals('foo'));
   }
@@ -6780,12 +7491,12 @@ void checkGoogleCloudContactcenterinsightsV1QaScorecard(
   buildCounterGoogleCloudContactcenterinsightsV1QaScorecard--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1QaAnswer> buildUnnamed88() => [
+core.List<api.GoogleCloudContactcenterinsightsV1QaAnswer> buildUnnamed98() => [
   buildGoogleCloudContactcenterinsightsV1QaAnswer(),
   buildGoogleCloudContactcenterinsightsV1QaAnswer(),
 ];
 
-void checkUnnamed88(
+void checkUnnamed98(
   core.List<api.GoogleCloudContactcenterinsightsV1QaAnswer> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6794,12 +7505,12 @@ void checkUnnamed88(
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>
-buildUnnamed89() => [
+buildUnnamed99() => [
   buildGoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult(),
   buildGoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult(),
 ];
 
-void checkUnnamed89(
+void checkUnnamed99(
   core.List<api.GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>
   o,
 ) {
@@ -6809,12 +7520,12 @@ void checkUnnamed89(
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>
-buildUnnamed90() => [
+buildUnnamed100() => [
   buildGoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource(),
   buildGoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource(),
 ];
 
-void checkUnnamed90(
+void checkUnnamed100(
   core.List<api.GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>
   o,
 ) {
@@ -6835,11 +7546,11 @@ buildGoogleCloudContactcenterinsightsV1QaScorecardResult() {
     o.name = 'foo';
     o.normalizedScore = 42.0;
     o.potentialScore = 42.0;
-    o.qaAnswers = buildUnnamed88();
+    o.qaAnswers = buildUnnamed98();
     o.qaScorecardRevision = 'foo';
-    o.qaTagResults = buildUnnamed89();
+    o.qaTagResults = buildUnnamed99();
     o.score = 42.0;
-    o.scoreSources = buildUnnamed90();
+    o.scoreSources = buildUnnamed100();
   }
   buildCounterGoogleCloudContactcenterinsightsV1QaScorecardResult--;
   return o;
@@ -6856,11 +7567,11 @@ void checkGoogleCloudContactcenterinsightsV1QaScorecardResult(
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.normalizedScore!, unittest.equals(42.0));
     unittest.expect(o.potentialScore!, unittest.equals(42.0));
-    checkUnnamed88(o.qaAnswers!);
+    checkUnnamed98(o.qaAnswers!);
     unittest.expect(o.qaScorecardRevision!, unittest.equals('foo'));
-    checkUnnamed89(o.qaTagResults!);
+    checkUnnamed99(o.qaTagResults!);
     unittest.expect(o.score!, unittest.equals(42.0));
-    checkUnnamed90(o.scoreSources!);
+    checkUnnamed100(o.scoreSources!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1QaScorecardResult--;
 }
@@ -6898,12 +7609,12 @@ void checkGoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult(
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>
-buildUnnamed91() => [
+buildUnnamed101() => [
   buildGoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult(),
   buildGoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult(),
 ];
 
-void checkUnnamed91(
+void checkUnnamed101(
   core.List<api.GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>
   o,
 ) {
@@ -6923,7 +7634,7 @@ buildGoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource() {
       3) {
     o.normalizedScore = 42.0;
     o.potentialScore = 42.0;
-    o.qaTagResults = buildUnnamed91();
+    o.qaTagResults = buildUnnamed101();
     o.score = 42.0;
     o.sourceType = 'foo';
   }
@@ -6939,16 +7650,16 @@ void checkGoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource(
       3) {
     unittest.expect(o.normalizedScore!, unittest.equals(42.0));
     unittest.expect(o.potentialScore!, unittest.equals(42.0));
-    checkUnnamed91(o.qaTagResults!);
+    checkUnnamed101(o.qaTagResults!);
     unittest.expect(o.score!, unittest.equals(42.0));
     unittest.expect(o.sourceType!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource--;
 }
 
-core.List<core.String> buildUnnamed92() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed102() => ['foo', 'foo'];
 
-void checkUnnamed92(core.List<core.String> o) {
+void checkUnnamed102(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6960,7 +7671,7 @@ buildGoogleCloudContactcenterinsightsV1QaScorecardRevision() {
   final o = api.GoogleCloudContactcenterinsightsV1QaScorecardRevision();
   buildCounterGoogleCloudContactcenterinsightsV1QaScorecardRevision++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QaScorecardRevision < 3) {
-    o.alternateIds = buildUnnamed92();
+    o.alternateIds = buildUnnamed102();
     o.createTime = 'foo';
     o.name = 'foo';
     o.snapshot = buildGoogleCloudContactcenterinsightsV1QaScorecard();
@@ -6975,7 +7686,7 @@ void checkGoogleCloudContactcenterinsightsV1QaScorecardRevision(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1QaScorecardRevision++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QaScorecardRevision < 3) {
-    checkUnnamed92(o.alternateIds!);
+    checkUnnamed102(o.alternateIds!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudContactcenterinsightsV1QaScorecard(o.snapshot!);
@@ -7008,7 +7719,7 @@ void checkGoogleCloudContactcenterinsightsV1QueryInterval(
   buildCounterGoogleCloudContactcenterinsightsV1QueryInterval--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed93() => {
+core.Map<core.String, core.Object?> buildUnnamed103() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -7021,18 +7732,18 @@ core.Map<core.String, core.Object?> buildUnnamed93() => {
   },
 };
 
-void checkUnnamed93(core.Map<core.String, core.Object?> o) {
+void checkUnnamed103(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted23 = (o['x']!) as core.Map;
-  unittest.expect(casted23, unittest.hasLength(3));
-  unittest.expect(casted23['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted23['bool'], unittest.equals(true));
-  unittest.expect(casted23['string'], unittest.equals('foo'));
-  var casted24 = (o['y']!) as core.Map;
-  unittest.expect(casted24, unittest.hasLength(3));
-  unittest.expect(casted24['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted24['bool'], unittest.equals(true));
-  unittest.expect(casted24['string'], unittest.equals('foo'));
+  var casted25 = (o['x']!) as core.Map;
+  unittest.expect(casted25, unittest.hasLength(3));
+  unittest.expect(casted25['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted25['bool'], unittest.equals(true));
+  unittest.expect(casted25['string'], unittest.equals('foo'));
+  var casted26 = (o['y']!) as core.Map;
+  unittest.expect(casted26, unittest.hasLength(3));
+  unittest.expect(casted26['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted26['bool'], unittest.equals(true));
+  unittest.expect(casted26['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudContactcenterinsightsV1QueryMetrics = 0;
@@ -7041,7 +7752,7 @@ buildGoogleCloudContactcenterinsightsV1QueryMetrics() {
   final o = api.GoogleCloudContactcenterinsightsV1QueryMetrics();
   buildCounterGoogleCloudContactcenterinsightsV1QueryMetrics++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QueryMetrics < 3) {
-    o.request = buildUnnamed93();
+    o.request = buildUnnamed103();
   }
   buildCounterGoogleCloudContactcenterinsightsV1QueryMetrics--;
   return o;
@@ -7052,17 +7763,18 @@ void checkGoogleCloudContactcenterinsightsV1QueryMetrics(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1QueryMetrics++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QueryMetrics < 3) {
-    checkUnnamed93(o.request!);
+    checkUnnamed103(o.request!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1QueryMetrics--;
 }
 
-core.List<api.GoogleCloudContactcenterinsightsV1Dimension> buildUnnamed94() => [
-  buildGoogleCloudContactcenterinsightsV1Dimension(),
-  buildGoogleCloudContactcenterinsightsV1Dimension(),
-];
+core.List<api.GoogleCloudContactcenterinsightsV1Dimension> buildUnnamed104() =>
+    [
+      buildGoogleCloudContactcenterinsightsV1Dimension(),
+      buildGoogleCloudContactcenterinsightsV1Dimension(),
+    ];
 
-void checkUnnamed94(
+void checkUnnamed104(
   core.List<api.GoogleCloudContactcenterinsightsV1Dimension> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7076,7 +7788,7 @@ buildGoogleCloudContactcenterinsightsV1QueryMetricsRequest() {
   final o = api.GoogleCloudContactcenterinsightsV1QueryMetricsRequest();
   buildCounterGoogleCloudContactcenterinsightsV1QueryMetricsRequest++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QueryMetricsRequest < 3) {
-    o.dimensions = buildUnnamed94();
+    o.dimensions = buildUnnamed104();
     o.filter = 'foo';
     o.measureMask = 'foo';
     o.timeGranularity = 'foo';
@@ -7090,7 +7802,7 @@ void checkGoogleCloudContactcenterinsightsV1QueryMetricsRequest(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1QueryMetricsRequest++;
   if (buildCounterGoogleCloudContactcenterinsightsV1QueryMetricsRequest < 3) {
-    checkUnnamed94(o.dimensions!);
+    checkUnnamed104(o.dimensions!);
     unittest.expect(o.filter!, unittest.equals('foo'));
     unittest.expect(o.measureMask!, unittest.equals('foo'));
     unittest.expect(o.timeGranularity!, unittest.equals('foo'));
@@ -7190,9 +7902,12 @@ void checkGoogleCloudContactcenterinsightsV1RedactionConfig(
   buildCounterGoogleCloudContactcenterinsightsV1RedactionConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed95() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed105() => {
+  'x': 'foo',
+  'y': 'foo',
+};
 
-void checkUnnamed95(core.Map<core.String, core.String> o) {
+void checkUnnamed105(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -7204,7 +7919,7 @@ buildGoogleCloudContactcenterinsightsV1RedirectAction() {
   final o = api.GoogleCloudContactcenterinsightsV1RedirectAction();
   buildCounterGoogleCloudContactcenterinsightsV1RedirectAction++;
   if (buildCounterGoogleCloudContactcenterinsightsV1RedirectAction < 3) {
-    o.queryParams = buildUnnamed95();
+    o.queryParams = buildUnnamed105();
     o.relativePath = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1RedirectAction--;
@@ -7216,7 +7931,7 @@ void checkGoogleCloudContactcenterinsightsV1RedirectAction(
 ) {
   buildCounterGoogleCloudContactcenterinsightsV1RedirectAction++;
   if (buildCounterGoogleCloudContactcenterinsightsV1RedirectAction < 3) {
-    checkUnnamed95(o.queryParams!);
+    checkUnnamed105(o.queryParams!);
     unittest.expect(o.relativePath!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1RedirectAction--;
@@ -7425,12 +8140,12 @@ void checkGoogleCloudContactcenterinsightsV1ScheduleInfo(
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1AuthorizedView>
-buildUnnamed96() => [
+buildUnnamed106() => [
   buildGoogleCloudContactcenterinsightsV1AuthorizedView(),
   buildGoogleCloudContactcenterinsightsV1AuthorizedView(),
 ];
 
-void checkUnnamed96(
+void checkUnnamed106(
   core.List<api.GoogleCloudContactcenterinsightsV1AuthorizedView> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7447,7 +8162,7 @@ buildGoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse() {
   buildCounterGoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse <
       3) {
-    o.authorizedViews = buildUnnamed96();
+    o.authorizedViews = buildUnnamed106();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse--;
@@ -7460,7 +8175,7 @@ void checkGoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse(
   buildCounterGoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse++;
   if (buildCounterGoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse <
       3) {
-    checkUnnamed96(o.authorizedViews!);
+    checkUnnamed106(o.authorizedViews!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse--;
@@ -7490,9 +8205,12 @@ void checkGoogleCloudContactcenterinsightsV1SentimentData(
   buildCounterGoogleCloudContactcenterinsightsV1SentimentData--;
 }
 
-core.Map<core.String, core.String> buildUnnamed97() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed107() => {
+  'x': 'foo',
+  'y': 'foo',
+};
 
-void checkUnnamed97(core.Map<core.String, core.String> o) {
+void checkUnnamed107(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -7512,7 +8230,7 @@ buildGoogleCloudContactcenterinsightsV1Settings() {
         buildGoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig();
     o.languageCode = 'foo';
     o.name = 'foo';
-    o.pubsubNotificationSettings = buildUnnamed97();
+    o.pubsubNotificationSettings = buildUnnamed107();
     o.redactionConfig =
         buildGoogleCloudContactcenterinsightsV1RedactionConfig();
     o.screenRecordingBucketUri = 'foo';
@@ -7539,7 +8257,7 @@ void checkGoogleCloudContactcenterinsightsV1Settings(
     );
     unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed97(o.pubsubNotificationSettings!);
+    checkUnnamed107(o.pubsubNotificationSettings!);
     checkGoogleCloudContactcenterinsightsV1RedactionConfig(o.redactionConfig!);
     unittest.expect(o.screenRecordingBucketUri!, unittest.equals('foo'));
     checkGoogleCloudContactcenterinsightsV1SpeechConfig(o.speechConfig!);
@@ -7588,12 +8306,12 @@ void checkGoogleCloudContactcenterinsightsV1SettingsAnalysisConfig(
 }
 
 core.Map<core.String, api.GoogleCloudContactcenterinsightsV1MetricDefinition>
-buildUnnamed98() => {
+buildUnnamed108() => {
   'x': buildGoogleCloudContactcenterinsightsV1MetricDefinition(),
   'y': buildGoogleCloudContactcenterinsightsV1MetricDefinition(),
 };
 
-void checkUnnamed98(
+void checkUnnamed108(
   core.Map<core.String, api.GoogleCloudContactcenterinsightsV1MetricDefinition>
   o,
 ) {
@@ -7612,7 +8330,7 @@ buildGoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig() {
   buildCounterGoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig++;
   if (buildCounterGoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig <
       3) {
-    o.metrics = buildUnnamed98();
+    o.metrics = buildUnnamed108();
   }
   buildCounterGoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig--;
   return o;
@@ -7624,14 +8342,14 @@ void checkGoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig(
   buildCounterGoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig++;
   if (buildCounterGoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig <
       3) {
-    checkUnnamed98(o.metrics!);
+    checkUnnamed108(o.metrics!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig--;
 }
 
-core.List<core.String> buildUnnamed99() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed109() => ['foo', 'foo'];
 
-void checkUnnamed99(core.List<core.String> o) {
+void checkUnnamed109(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -7640,12 +8358,12 @@ void checkUnnamed99(core.List<core.String> o) {
 core.List<
   api.GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio
 >
-buildUnnamed100() => [
+buildUnnamed110() => [
   buildGoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio(),
   buildGoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio(),
 ];
 
-void checkUnnamed100(
+void checkUnnamed110(
   core.List<
     api.GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio
   >
@@ -7668,8 +8386,8 @@ buildGoogleCloudContactcenterinsightsV1SignedAudioUris() {
   if (buildCounterGoogleCloudContactcenterinsightsV1SignedAudioUris < 3) {
     o.signedDialogflowAudioUri = 'foo';
     o.signedGcsAudioUri = 'foo';
-    o.signedGcsAudioUris = buildUnnamed99();
-    o.signedTurnLevelAudios = buildUnnamed100();
+    o.signedGcsAudioUris = buildUnnamed109();
+    o.signedTurnLevelAudios = buildUnnamed110();
   }
   buildCounterGoogleCloudContactcenterinsightsV1SignedAudioUris--;
   return o;
@@ -7682,8 +8400,8 @@ void checkGoogleCloudContactcenterinsightsV1SignedAudioUris(
   if (buildCounterGoogleCloudContactcenterinsightsV1SignedAudioUris < 3) {
     unittest.expect(o.signedDialogflowAudioUri!, unittest.equals('foo'));
     unittest.expect(o.signedGcsAudioUri!, unittest.equals('foo'));
-    checkUnnamed99(o.signedGcsAudioUris!);
-    checkUnnamed100(o.signedTurnLevelAudios!);
+    checkUnnamed109(o.signedGcsAudioUris!);
+    checkUnnamed110(o.signedTurnLevelAudios!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1SignedAudioUris--;
 }
@@ -7706,12 +8424,12 @@ void checkGoogleCloudContactcenterinsightsV1SilenceData(
   buildCounterGoogleCloudContactcenterinsightsV1SilenceData--;
 }
 
-core.Map<core.String, core.String> buildUnnamed101() => {
+core.Map<core.String, core.String> buildUnnamed111() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed101(core.Map<core.String, core.String> o) {
+void checkUnnamed111(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -7726,7 +8444,7 @@ buildGoogleCloudContactcenterinsightsV1SmartComposeSuggestionData() {
   if (buildCounterGoogleCloudContactcenterinsightsV1SmartComposeSuggestionData <
       3) {
     o.confidenceScore = 42.0;
-    o.metadata = buildUnnamed101();
+    o.metadata = buildUnnamed111();
     o.queryRecord = 'foo';
     o.suggestion = 'foo';
   }
@@ -7741,19 +8459,19 @@ void checkGoogleCloudContactcenterinsightsV1SmartComposeSuggestionData(
   if (buildCounterGoogleCloudContactcenterinsightsV1SmartComposeSuggestionData <
       3) {
     unittest.expect(o.confidenceScore!, unittest.equals(42.0));
-    checkUnnamed101(o.metadata!);
+    checkUnnamed111(o.metadata!);
     unittest.expect(o.queryRecord!, unittest.equals('foo'));
     unittest.expect(o.suggestion!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudContactcenterinsightsV1SmartComposeSuggestionData--;
 }
 
-core.Map<core.String, core.String> buildUnnamed102() => {
+core.Map<core.String, core.String> buildUnnamed112() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed102(core.Map<core.String, core.String> o) {
+void checkUnnamed112(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -7766,7 +8484,7 @@ buildGoogleCloudContactcenterinsightsV1SmartReplyData() {
   buildCounterGoogleCloudContactcenterinsightsV1SmartReplyData++;
   if (buildCounterGoogleCloudContactcenterinsightsV1SmartReplyData < 3) {
     o.confidenceScore = 42.0;
-    o.metadata = buildUnnamed102();
+    o.metadata = buildUnnamed112();
     o.queryRecord = 'foo';
     o.reply = 'foo';
   }
@@ -7780,7 +8498,7 @@ void checkGoogleCloudContactcenterinsightsV1SmartReplyData(
   buildCounterGoogleCloudContactcenterinsightsV1SmartReplyData++;
   if (buildCounterGoogleCloudContactcenterinsightsV1SmartReplyData < 3) {
     unittest.expect(o.confidenceScore!, unittest.equals(42.0));
-    checkUnnamed102(o.metadata!);
+    checkUnnamed112(o.metadata!);
     unittest.expect(o.queryRecord!, unittest.equals('foo'));
     unittest.expect(o.reply!, unittest.equals('foo'));
   }
@@ -7956,12 +8674,12 @@ void checkGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest(
 }
 
 core.List<api.GoogleCloudContactcenterinsightsV1Conversation>
-buildUnnamed103() => [
+buildUnnamed113() => [
   buildGoogleCloudContactcenterinsightsV1Conversation(),
   buildGoogleCloudContactcenterinsightsV1Conversation(),
 ];
 
-void checkUnnamed103(
+void checkUnnamed113(
   core.List<api.GoogleCloudContactcenterinsightsV1Conversation> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7979,7 +8697,7 @@ buildGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations
   buildCounterGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations++;
   if (buildCounterGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations <
       3) {
-    o.conversations = buildUnnamed103();
+    o.conversations = buildUnnamed113();
   }
   buildCounterGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations--;
   return o;
@@ -7993,7 +8711,7 @@ checkGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations
   buildCounterGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations++;
   if (buildCounterGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations <
       3) {
-    checkUnnamed103(o.conversations!);
+    checkUnnamed113(o.conversations!);
   }
   buildCounterGoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations--;
 }
@@ -8189,12 +8907,12 @@ void checkGoogleCloudContactcenterinsightsV1Widget(
   buildCounterGoogleCloudContactcenterinsightsV1Widget--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed104() => [
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed114() => [
   buildGoogleIamV1AuditLogConfig(),
   buildGoogleIamV1AuditLogConfig(),
 ];
 
-void checkUnnamed104(core.List<api.GoogleIamV1AuditLogConfig> o) {
+void checkUnnamed114(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -8205,7 +8923,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed104();
+    o.auditLogConfigs = buildUnnamed114();
     o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -8215,15 +8933,15 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed104(o.auditLogConfigs!);
+    checkUnnamed114(o.auditLogConfigs!);
     unittest.expect(o.service!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed105() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed115() => ['foo', 'foo'];
 
-void checkUnnamed105(core.List<core.String> o) {
+void checkUnnamed115(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -8234,7 +8952,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   final o = api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed105();
+    o.exemptedMembers = buildUnnamed115();
     o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
@@ -8244,15 +8962,15 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
 void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed105(o.exemptedMembers!);
+    checkUnnamed115(o.exemptedMembers!);
     unittest.expect(o.logType!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed106() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed116() => ['foo', 'foo'];
 
-void checkUnnamed106(core.List<core.String> o) {
+void checkUnnamed116(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -8264,7 +8982,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed106();
+    o.members = buildUnnamed116();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -8275,29 +8993,29 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed106(o.members!);
+    checkUnnamed116(o.members!);
     unittest.expect(o.role!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed107() => [
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed117() => [
   buildGoogleIamV1AuditConfig(),
   buildGoogleIamV1AuditConfig(),
 ];
 
-void checkUnnamed107(core.List<api.GoogleIamV1AuditConfig> o) {
+void checkUnnamed117(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed108() => [
+core.List<api.GoogleIamV1Binding> buildUnnamed118() => [
   buildGoogleIamV1Binding(),
   buildGoogleIamV1Binding(),
 ];
 
-void checkUnnamed108(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed118(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -8308,8 +9026,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed107();
-    o.bindings = buildUnnamed108();
+    o.auditConfigs = buildUnnamed117();
+    o.bindings = buildUnnamed118();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -8320,8 +9038,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed107(o.auditConfigs!);
-    checkUnnamed108(o.bindings!);
+    checkUnnamed117(o.auditConfigs!);
+    checkUnnamed118(o.bindings!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.version!, unittest.equals(42));
   }
@@ -8349,9 +9067,9 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed109() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed119() => ['foo', 'foo'];
 
-void checkUnnamed109(core.List<core.String> o) {
+void checkUnnamed119(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -8363,7 +9081,7 @@ buildGoogleIamV1TestIamPermissionsRequest() {
   final o = api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed109();
+    o.permissions = buildUnnamed119();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
@@ -8374,14 +9092,14 @@ void checkGoogleIamV1TestIamPermissionsRequest(
 ) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed109(o.permissions!);
+    checkUnnamed119(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed110() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed120() => ['foo', 'foo'];
 
-void checkUnnamed110(core.List<core.String> o) {
+void checkUnnamed120(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -8393,7 +9111,7 @@ buildGoogleIamV1TestIamPermissionsResponse() {
   final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed110();
+    o.permissions = buildUnnamed120();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -8404,25 +9122,25 @@ void checkGoogleIamV1TestIamPermissionsResponse(
 ) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed110(o.permissions!);
+    checkUnnamed120(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed111() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed121() => [
   buildGoogleLongrunningOperation(),
   buildGoogleLongrunningOperation(),
 ];
 
-void checkUnnamed111(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed121(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
 }
 
-core.List<core.String> buildUnnamed112() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed122() => ['foo', 'foo'];
 
-void checkUnnamed112(core.List<core.String> o) {
+void checkUnnamed122(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -8435,8 +9153,8 @@ buildGoogleLongrunningListOperationsResponse() {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed111();
-    o.unreachable = buildUnnamed112();
+    o.operations = buildUnnamed121();
+    o.unreachable = buildUnnamed122();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -8448,13 +9166,13 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed111(o.operations!);
-    checkUnnamed112(o.unreachable!);
+    checkUnnamed121(o.operations!);
+    checkUnnamed122(o.unreachable!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed113() => {
+core.Map<core.String, core.Object?> buildUnnamed123() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -8467,34 +9185,7 @@ core.Map<core.String, core.Object?> buildUnnamed113() => {
   },
 };
 
-void checkUnnamed113(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted25 = (o['x']!) as core.Map;
-  unittest.expect(casted25, unittest.hasLength(3));
-  unittest.expect(casted25['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted25['bool'], unittest.equals(true));
-  unittest.expect(casted25['string'], unittest.equals('foo'));
-  var casted26 = (o['y']!) as core.Map;
-  unittest.expect(casted26, unittest.hasLength(3));
-  unittest.expect(casted26['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted26['bool'], unittest.equals(true));
-  unittest.expect(casted26['string'], unittest.equals('foo'));
-}
-
-core.Map<core.String, core.Object?> buildUnnamed114() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed114(core.Map<core.String, core.Object?> o) {
+void checkUnnamed123(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted27 = (o['x']!) as core.Map;
   unittest.expect(casted27, unittest.hasLength(3));
@@ -8508,6 +9199,33 @@ void checkUnnamed114(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted28['string'], unittest.equals('foo'));
 }
 
+core.Map<core.String, core.Object?> buildUnnamed124() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed124(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted29 = (o['x']!) as core.Map;
+  unittest.expect(casted29, unittest.hasLength(3));
+  unittest.expect(casted29['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted29['bool'], unittest.equals(true));
+  unittest.expect(casted29['string'], unittest.equals('foo'));
+  var casted30 = (o['y']!) as core.Map;
+  unittest.expect(casted30, unittest.hasLength(3));
+  unittest.expect(casted30['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted30['bool'], unittest.equals(true));
+  unittest.expect(casted30['string'], unittest.equals('foo'));
+}
+
 core.int buildCounterGoogleLongrunningOperation = 0;
 api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   final o = api.GoogleLongrunningOperation();
@@ -8515,9 +9233,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed113();
+    o.metadata = buildUnnamed123();
     o.name = 'foo';
-    o.response = buildUnnamed114();
+    o.response = buildUnnamed124();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -8528,9 +9246,9 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed113(o.metadata!);
+    checkUnnamed123(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed114(o.response!);
+    checkUnnamed124(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -8550,7 +9268,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed115() => {
+core.Map<core.String, core.Object?> buildUnnamed125() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -8563,29 +9281,29 @@ core.Map<core.String, core.Object?> buildUnnamed115() => {
   },
 };
 
-void checkUnnamed115(core.Map<core.String, core.Object?> o) {
+void checkUnnamed125(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted29 = (o['x']!) as core.Map;
-  unittest.expect(casted29, unittest.hasLength(3));
-  unittest.expect(casted29['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted29['bool'], unittest.equals(true));
-  unittest.expect(casted29['string'], unittest.equals('foo'));
-  var casted30 = (o['y']!) as core.Map;
-  unittest.expect(casted30, unittest.hasLength(3));
-  unittest.expect(casted30['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted30['bool'], unittest.equals(true));
-  unittest.expect(casted30['string'], unittest.equals('foo'));
+  var casted31 = (o['x']!) as core.Map;
+  unittest.expect(casted31, unittest.hasLength(3));
+  unittest.expect(casted31['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted31['bool'], unittest.equals(true));
+  unittest.expect(casted31['string'], unittest.equals('foo'));
+  var casted32 = (o['y']!) as core.Map;
+  unittest.expect(casted32, unittest.hasLength(3));
+  unittest.expect(casted32['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted32['bool'], unittest.equals(true));
+  unittest.expect(casted32['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed116() => [
-  buildUnnamed115(),
-  buildUnnamed115(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed126() => [
+  buildUnnamed125(),
+  buildUnnamed125(),
 ];
 
-void checkUnnamed116(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed126(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed115(o[0]);
-  checkUnnamed115(o[1]);
+  checkUnnamed125(o[0]);
+  checkUnnamed125(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -8594,7 +9312,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed116();
+    o.details = buildUnnamed126();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -8605,7 +9323,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed116(o.details!);
+    checkUnnamed126(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
@@ -8636,17 +9354,40 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
   buildCounterGoogleTypeExpr--;
 }
 
-core.List<core.String> buildUnnamed117() => ['foo', 'foo'];
+core.int buildCounterGoogleTypeMoney = 0;
+api.GoogleTypeMoney buildGoogleTypeMoney() {
+  final o = api.GoogleTypeMoney();
+  buildCounterGoogleTypeMoney++;
+  if (buildCounterGoogleTypeMoney < 3) {
+    o.currencyCode = 'foo';
+    o.nanos = 42;
+    o.units = 'foo';
+  }
+  buildCounterGoogleTypeMoney--;
+  return o;
+}
 
-void checkUnnamed117(core.List<core.String> o) {
+void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
+  buildCounterGoogleTypeMoney++;
+  if (buildCounterGoogleTypeMoney < 3) {
+    unittest.expect(o.currencyCode!, unittest.equals('foo'));
+    unittest.expect(o.nanos!, unittest.equals(42));
+    unittest.expect(o.units!, unittest.equals('foo'));
+  }
+  buildCounterGoogleTypeMoney--;
+}
+
+core.List<core.String> buildUnnamed127() => ['foo', 'foo'];
+
+void checkUnnamed127(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed118() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed128() => ['foo', 'foo'];
 
-void checkUnnamed118(core.List<core.String> o) {
+void checkUnnamed128(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -9671,6 +10412,276 @@ void main() {
               oJson as core.Map<core.String, core.dynamic>,
             );
         checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart(
           od,
         );
       });
@@ -12144,6 +13155,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkGoogleTypeExpr(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleTypeMoney', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleTypeMoney();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleTypeMoney.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleTypeMoney(od);
     });
   });
 
@@ -24240,7 +25262,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_qaScorecardSources = buildUnnamed117();
+      final arg_qaScorecardSources = buildUnnamed127();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -24673,7 +25695,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_qaScorecardSources = buildUnnamed118();
+      final arg_qaScorecardSources = buildUnnamed128();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {

@@ -26,12 +26,19 @@
 ///
 /// Create an instance of [DataflowApi] to access these resources:
 ///
+/// - [FoldersResource]
+///   - [FoldersLocationsResource]
+///     - [FoldersLocationsConfigStoreSettingsResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsConfigStoreSettingsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsJobsResource]
 ///     - [ProjectsJobsDebugResource]
 ///     - [ProjectsJobsMessagesResource]
 ///     - [ProjectsJobsWorkItemsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsConfigStoreSettingsResource]
 ///     - [ProjectsLocationsFlexTemplatesResource]
 ///     - [ProjectsLocationsJobsResource]
 ///       - [ProjectsLocationsJobsDebugResource]
@@ -70,6 +77,8 @@ class DataflowApi {
 
   final commons.ApiRequester _requester;
 
+  FoldersResource get folders => FoldersResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   DataflowApi(
@@ -82,6 +91,479 @@ class DataflowApi {
          servicePath,
          requestHeaders,
        );
+}
+
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsResource get locations =>
+      FoldersLocationsResource(_requester);
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsConfigStoreSettingsResource get configStoreSettings =>
+      FoldersLocationsConfigStoreSettingsResource(_requester);
+
+  FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsConfigStoreSettingsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsConfigStoreSettingsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new ConfigStoreSetting.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this setting will be
+  /// created.
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [configStoreSettingId] - Required. The ID to use for the setting.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConfigStoreSetting].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConfigStoreSetting> create(
+    ConfigStoreSetting request,
+    core.String parent, {
+    core.String? configStoreSettingId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'configStoreSettingId': ?configStoreSettingId == null
+          ? null
+          : [configStoreSettingId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1b3/' + core.Uri.encodeFull('$parent') + '/configStoreSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ConfigStoreSetting.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes an existing ConfigStoreSetting.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ConfigStoreSetting to delete.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/configStoreSettings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1b3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a ConfigStoreSetting.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ConfigStoreSetting to retrieve.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/configStoreSettings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConfigStoreSetting].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConfigStoreSetting> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1b3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ConfigStoreSetting.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists ConfigStoreSettings.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose settings are being listed.
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of settings to return.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListConfigStoreSettings` call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListConfigStoreSettingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListConfigStoreSettingsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1b3/' + core.Uri.encodeFull('$parent') + '/configStoreSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListConfigStoreSettingsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Resolves effective value of a ConfigStoreSetting.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the setting to resolve.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/configStoreSettings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResolveConfigStoreSettingResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResolveConfigStoreSettingResponse> resolve(
+    ResolveConfigStoreSettingRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1b3/' + core.Uri.encodeFull('$name') + ':resolve';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ResolveConfigStoreSettingResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsConfigStoreSettingsResource get configStoreSettings =>
+      OrganizationsLocationsConfigStoreSettingsResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class OrganizationsLocationsConfigStoreSettingsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsConfigStoreSettingsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new ConfigStoreSetting.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this setting will be
+  /// created.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [configStoreSettingId] - Required. The ID to use for the setting.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConfigStoreSetting].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConfigStoreSetting> create(
+    ConfigStoreSetting request,
+    core.String parent, {
+    core.String? configStoreSettingId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'configStoreSettingId': ?configStoreSettingId == null
+          ? null
+          : [configStoreSettingId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1b3/' + core.Uri.encodeFull('$parent') + '/configStoreSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ConfigStoreSetting.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes an existing ConfigStoreSetting.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ConfigStoreSetting to delete.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/configStoreSettings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1b3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a ConfigStoreSetting.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ConfigStoreSetting to retrieve.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/configStoreSettings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConfigStoreSetting].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConfigStoreSetting> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1b3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ConfigStoreSetting.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists ConfigStoreSettings.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose settings are being listed.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of settings to return.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListConfigStoreSettings` call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListConfigStoreSettingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListConfigStoreSettingsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1b3/' + core.Uri.encodeFull('$parent') + '/configStoreSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListConfigStoreSettingsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Resolves effective value of a ConfigStoreSetting.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the setting to resolve.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/configStoreSettings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResolveConfigStoreSettingResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResolveConfigStoreSettingResponse> resolve(
+    ResolveConfigStoreSettingRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1b3/' + core.Uri.encodeFull('$name') + ':resolve';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ResolveConfigStoreSettingResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsResource {
@@ -234,6 +716,8 @@ class ProjectsJobsResource {
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response to request additional results in a long list.
   ///
+  /// [regionalFanoutRequested] - Optional.
+  ///
   /// [view] - Deprecated. ListJobs always returns summaries now. Use GetJob for
   /// other JobViews.
   /// Possible string values are:
@@ -269,6 +753,7 @@ class ProjectsJobsResource {
     core.String? name,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? regionalFanoutRequested,
     core.String? view,
     core.String? $fields,
   }) async {
@@ -278,6 +763,9 @@ class ProjectsJobsResource {
       'name': ?name == null ? null : [name],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
+      'regionalFanoutRequested': ?regionalFanoutRequested == null
+          ? null
+          : ['${regionalFanoutRequested}'],
       'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -555,6 +1043,8 @@ class ProjectsJobsResource {
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response to request additional results in a long list.
   ///
+  /// [regionalFanoutRequested] - Optional.
+  ///
   /// [view] - Deprecated. ListJobs always returns summaries now. Use GetJob for
   /// other JobViews.
   /// Possible string values are:
@@ -590,6 +1080,7 @@ class ProjectsJobsResource {
     core.String? name,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? regionalFanoutRequested,
     core.String? view,
     core.String? $fields,
   }) async {
@@ -599,6 +1090,9 @@ class ProjectsJobsResource {
       'name': ?name == null ? null : [name],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
+      'regionalFanoutRequested': ?regionalFanoutRequested == null
+          ? null
+          : ['${regionalFanoutRequested}'],
       'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -1070,6 +1564,8 @@ class ProjectsJobsWorkItemsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsConfigStoreSettingsResource get configStoreSettings =>
+      ProjectsLocationsConfigStoreSettingsResource(_requester);
   ProjectsLocationsFlexTemplatesResource get flexTemplates =>
       ProjectsLocationsFlexTemplatesResource(_requester);
   ProjectsLocationsJobsResource get jobs =>
@@ -1128,6 +1624,224 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return SendWorkerMessagesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsConfigStoreSettingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConfigStoreSettingsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new ConfigStoreSetting.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this setting will be
+  /// created.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [configStoreSettingId] - Required. The ID to use for the setting.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConfigStoreSetting].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConfigStoreSetting> create(
+    ConfigStoreSetting request,
+    core.String parent, {
+    core.String? configStoreSettingId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'configStoreSettingId': ?configStoreSettingId == null
+          ? null
+          : [configStoreSettingId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1b3/' + core.Uri.encodeFull('$parent') + '/configStoreSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ConfigStoreSetting.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes an existing ConfigStoreSetting.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ConfigStoreSetting to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/configStoreSettings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1b3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a ConfigStoreSetting.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ConfigStoreSetting to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/configStoreSettings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConfigStoreSetting].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConfigStoreSetting> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1b3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ConfigStoreSetting.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists ConfigStoreSettings.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose settings are being listed.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of settings to return.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListConfigStoreSettings` call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListConfigStoreSettingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListConfigStoreSettingsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1b3/' + core.Uri.encodeFull('$parent') + '/configStoreSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListConfigStoreSettingsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Resolves effective value of a ConfigStoreSetting.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the setting to resolve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/configStoreSettings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResolveConfigStoreSettingResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResolveConfigStoreSettingResponse> resolve(
+    ResolveConfigStoreSettingRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1b3/' + core.Uri.encodeFull('$name') + ':resolve';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ResolveConfigStoreSettingResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1544,6 +2258,8 @@ class ProjectsLocationsJobsResource {
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response to request additional results in a long list.
   ///
+  /// [regionalFanoutRequested] - Optional.
+  ///
   /// [view] - Deprecated. ListJobs always returns summaries now. Use GetJob for
   /// other JobViews.
   /// Possible string values are:
@@ -1579,6 +2295,7 @@ class ProjectsLocationsJobsResource {
     core.String? name,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? regionalFanoutRequested,
     core.String? view,
     core.String? $fields,
   }) async {
@@ -1587,6 +2304,9 @@ class ProjectsLocationsJobsResource {
       'name': ?name == null ? null : [name],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
+      'regionalFanoutRequested': ?regionalFanoutRequested == null
+          ? null
+          : ['${regionalFanoutRequested}'],
       'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -3762,6 +4482,60 @@ class ConcatPosition {
   }
 }
 
+/// A ConfigStoreSetting resource.
+class ConfigStoreSetting {
+  /// Identifier.
+  ///
+  /// The resource name of the setting.
+  core.String? name;
+
+  /// The dynamic value of the setting.
+  ///
+  /// Required.
+  ConfigStoreSettingValue? value;
+
+  ConfigStoreSetting({this.name, this.value});
+
+  ConfigStoreSetting.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_.containsKey('value')
+            ? ConfigStoreSettingValue.fromJson(
+                json_['value'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final value = this.value;
+    return {'name': ?name, 'value': ?value};
+  }
+}
+
+/// Represents a dynamically typed value.
+class ConfigStoreSettingValue {
+  /// Represents a boolean value.
+  core.bool? boolValue;
+
+  /// Represents a string value.
+  core.String? stringValue;
+
+  ConfigStoreSettingValue({this.boolValue, this.stringValue});
+
+  ConfigStoreSettingValue.fromJson(core.Map json_)
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        stringValue: json_['stringValue'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final boolValue = this.boolValue;
+    final stringValue = this.stringValue;
+    return {'boolValue': ?boolValue, 'stringValue': ?stringValue};
+  }
+}
+
 /// Container Spec.
 class ContainerSpec {
   /// Default runtime environment for the job.
@@ -4926,6 +5700,14 @@ class DynamicSourceSplit {
     return {'primary': ?primary, 'residual': ?residual};
   }
 }
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
 
 /// Describes the environment in which a Dataflow Job runs.
 class Environment {
@@ -7663,6 +8445,41 @@ class Linear {
   }
 }
 
+/// Response message for ListConfigStoreSettings.
+class ListConfigStoreSettingsResponse {
+  /// The list of ConfigStoreSettings.
+  core.List<ConfigStoreSetting>? configStoreSettings;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  core.String? nextPageToken;
+
+  ListConfigStoreSettingsResponse({
+    this.configStoreSettings,
+    this.nextPageToken,
+  });
+
+  ListConfigStoreSettingsResponse.fromJson(core.Map json_)
+    : this(
+        configStoreSettings: (json_['configStoreSettings'] as core.List?)
+            ?.map(
+              (value) => ConfigStoreSetting.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final configStoreSettings = this.configStoreSettings;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'configStoreSettings': ?configStoreSettings,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
 /// Response to a request to list job messages.
 class ListJobMessagesResponse {
   /// Autoscaling events in ascending timestamp order.
@@ -9502,6 +10319,42 @@ class ReportedParallelism {
     final isInfinite = this.isInfinite;
     final value = this.value;
     return {'isInfinite': ?isInfinite, 'value': ?value};
+  }
+}
+
+/// Request message for ResolveConfigStoreSetting.
+typedef ResolveConfigStoreSettingRequest = $Empty;
+
+/// Response message for ResolveConfigStoreSetting.
+class ResolveConfigStoreSettingResponse {
+  /// The list of settings that were considered during resolution.
+  core.List<ConfigStoreSetting>? choices;
+
+  /// The dry-run setting result.
+  ConfigStoreSetting? setting;
+
+  ResolveConfigStoreSettingResponse({this.choices, this.setting});
+
+  ResolveConfigStoreSettingResponse.fromJson(core.Map json_)
+    : this(
+        choices: (json_['choices'] as core.List?)
+            ?.map(
+              (value) => ConfigStoreSetting.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        setting: json_.containsKey('setting')
+            ? ConfigStoreSetting.fromJson(
+                json_['setting'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final choices = this.choices;
+    final setting = this.setting;
+    return {'choices': ?choices, 'setting': ?setting};
   }
 }
 

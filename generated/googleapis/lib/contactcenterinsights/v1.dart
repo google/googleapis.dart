@@ -2463,6 +2463,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
   /// - "FULL" : Populates all fields in the conversation.
   /// - "BASIC" : Populates all fields in the conversation except the
   /// transcript.
+  /// - "FULL_WITH_STRUCTURED_TRANSCRIPT" : Populates all fields in the
+  /// conversation, including the structured transcript parts.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2534,6 +2536,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
   /// - "FULL" : Populates all fields in the conversation.
   /// - "BASIC" : Populates all fields in the conversation except the
   /// transcript.
+  /// - "FULL_WITH_STRUCTURED_TRANSCRIPT" : Populates all fields in the
+  /// conversation, including the structured transcript parts.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4086,6 +4090,8 @@ class ProjectsLocationsConversationsResource {
   /// - "FULL" : Populates all fields in the conversation.
   /// - "BASIC" : Populates all fields in the conversation except the
   /// transcript.
+  /// - "FULL_WITH_STRUCTURED_TRANSCRIPT" : Populates all fields in the
+  /// conversation, including the structured transcript parts.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4200,6 +4206,8 @@ class ProjectsLocationsConversationsResource {
   /// - "FULL" : Populates all fields in the conversation.
   /// - "BASIC" : Populates all fields in the conversation except the
   /// transcript.
+  /// - "FULL_WITH_STRUCTURED_TRANSCRIPT" : Populates all fields in the
+  /// conversation, including the structured transcript parts.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6511,6 +6519,8 @@ class ProjectsLocationsDatasetsConversationsResource {
   /// - "FULL" : Populates all fields in the conversation.
   /// - "BASIC" : Populates all fields in the conversation except the
   /// transcript.
+  /// - "FULL_WITH_STRUCTURED_TRANSCRIPT" : Populates all fields in the
+  /// conversation, including the structured transcript parts.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6627,6 +6637,8 @@ class ProjectsLocationsDatasetsConversationsResource {
   /// - "FULL" : Populates all fields in the conversation.
   /// - "BASIC" : Populates all fields in the conversation except the
   /// transcript.
+  /// - "FULL_WITH_STRUCTURED_TRANSCRIPT" : Populates all fields in the
+  /// conversation, including the structured transcript parts.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13414,6 +13426,14 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
   /// The time that the message occurred, if provided.
   core.String? messageTime;
 
+  /// The structured parts that make up this transcript segment.
+  ///
+  /// Optional.
+  core.List<
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart
+  >?
+  parts;
+
   /// The participant of this segment.
   GoogleCloudContactcenterinsightsV1ConversationParticipant? segmentParticipant;
 
@@ -13439,6 +13459,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
     this.dialogflowSegmentMetadata,
     this.languageCode,
     this.messageTime,
+    this.parts,
     this.segmentParticipant,
     this.sentiment,
     this.text,
@@ -13460,6 +13481,14 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
             : null,
         languageCode: json_['languageCode'] as core.String?,
         messageTime: json_['messageTime'] as core.String?,
+        parts: (json_['parts'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         segmentParticipant: json_.containsKey('segmentParticipant')
             ? GoogleCloudContactcenterinsightsV1ConversationParticipant.fromJson(
                 json_['segmentParticipant']
@@ -13493,6 +13522,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
     final dialogflowSegmentMetadata = this.dialogflowSegmentMetadata;
     final languageCode = this.languageCode;
     final messageTime = this.messageTime;
+    final parts = this.parts;
     final segmentParticipant = this.segmentParticipant;
     final sentiment = this.sentiment;
     final text = this.text;
@@ -13504,6 +13534,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
       'dialogflowSegmentMetadata': ?dialogflowSegmentMetadata,
       'languageCode': ?languageCode,
       'messageTime': ?messageTime,
+      'parts': ?parts,
       'segmentParticipant': ?segmentParticipant,
       'sentiment': ?sentiment,
       'text': ?text,
@@ -13533,6 +13564,696 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentD
   core.Map<core.String, core.dynamic> toJson() {
     final smartReplyAllowlistCovered = this.smartReplyAllowlistCovered;
     return {'smartReplyAllowlistCovered': ?smartReplyAllowlistCovered};
+  }
+}
+
+/// A structured component/part of a transcript segment.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart {
+  /// Citation or reference to grounding material.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart?
+  citation;
+
+  /// Generic custom structured payload.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart?
+  customPayload;
+
+  /// Image media.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart?
+  image;
+
+  /// Web link or URL.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart?
+  link;
+
+  /// Ordered or unordered list.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart?
+  list;
+
+  /// Product collection or carousel.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart?
+  productCollection;
+
+  /// Suggestion chips or interactive buttons.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart?
+  suggestionChips;
+
+  /// Tabular data.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart?
+  table;
+
+  /// Plain text content.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart?
+  text;
+
+  /// Model thought or internal reasoning.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart?
+  thought;
+
+  /// Video media.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart?
+  video;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart({
+    this.citation,
+    this.customPayload,
+    this.image,
+    this.link,
+    this.list,
+    this.productCollection,
+    this.suggestionChips,
+    this.table,
+    this.text,
+    this.thought,
+    this.video,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart.fromJson(
+    core.Map json_,
+  ) : this(
+        citation: json_.containsKey('citation')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart.fromJson(
+                json_['citation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customPayload: json_.containsKey('customPayload')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart.fromJson(
+                json_['customPayload'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        image: json_.containsKey('image')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        link: json_.containsKey('link')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart.fromJson(
+                json_['link'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        list: json_.containsKey('list')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart.fromJson(
+                json_['list'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        productCollection: json_.containsKey('productCollection')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart.fromJson(
+                json_['productCollection']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        suggestionChips: json_.containsKey('suggestionChips')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart.fromJson(
+                json_['suggestionChips'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        table: json_.containsKey('table')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart.fromJson(
+                json_['table'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        text: json_.containsKey('text')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart.fromJson(
+                json_['text'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        thought: json_.containsKey('thought')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart.fromJson(
+                json_['thought'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        video: json_.containsKey('video')
+            ? GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart.fromJson(
+                json_['video'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final citation = this.citation;
+    final customPayload = this.customPayload;
+    final image = this.image;
+    final link = this.link;
+    final list = this.list;
+    final productCollection = this.productCollection;
+    final suggestionChips = this.suggestionChips;
+    final table = this.table;
+    final text = this.text;
+    final thought = this.thought;
+    final video = this.video;
+    return {
+      'citation': ?citation,
+      'customPayload': ?customPayload,
+      'image': ?image,
+      'link': ?link,
+      'list': ?list,
+      'productCollection': ?productCollection,
+      'suggestionChips': ?suggestionChips,
+      'table': ?table,
+      'text': ?text,
+      'thought': ?thought,
+      'video': ?video,
+    };
+  }
+}
+
+/// A suggestion chip.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip {
+  /// Optional action or destination URI triggered by the chip.
+  ///
+  /// Optional.
+  core.String? actionUri;
+
+  /// The chip label or text.
+  ///
+  /// Optional.
+  core.String? text;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip({
+    this.actionUri,
+    this.text,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip.fromJson(
+    core.Map json_,
+  ) : this(
+        actionUri: json_['actionUri'] as core.String?,
+        text: json_['text'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final actionUri = this.actionUri;
+    final text = this.text;
+    return {'actionUri': ?actionUri, 'text': ?text};
+  }
+}
+
+/// A citation part.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart {
+  /// Snippet of the cited text.
+  ///
+  /// Optional.
+  core.String? snippet;
+
+  /// The cited source title.
+  ///
+  /// Optional.
+  core.String? sourceTitle;
+
+  /// The cited source URI.
+  ///
+  /// Optional.
+  core.String? sourceUri;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart({
+    this.snippet,
+    this.sourceTitle,
+    this.sourceUri,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart.fromJson(
+    core.Map json_,
+  ) : this(
+        snippet: json_['snippet'] as core.String?,
+        sourceTitle: json_['sourceTitle'] as core.String?,
+        sourceUri: json_['sourceUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final snippet = this.snippet;
+    final sourceTitle = this.sourceTitle;
+    final sourceUri = this.sourceUri;
+    return {
+      'snippet': ?snippet,
+      'sourceTitle': ?sourceTitle,
+      'sourceUri': ?sourceUri,
+    };
+  }
+}
+
+/// A custom payload part.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart {
+  /// Arbitrary structured payload.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? payload;
+
+  /// Type identifier for the payload.
+  ///
+  /// Optional.
+  core.String? payloadType;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart({
+    this.payload,
+    this.payloadType,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart.fromJson(
+    core.Map json_,
+  ) : this(
+        payload: json_.containsKey('payload')
+            ? json_['payload'] as core.Map<core.String, core.dynamic>
+            : null,
+        payloadType: json_['payloadType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final payload = this.payload;
+    final payloadType = this.payloadType;
+    return {'payload': ?payload, 'payloadType': ?payloadType};
+  }
+}
+
+/// A link part.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart {
+  /// Anchor or display text.
+  ///
+  /// Optional.
+  core.String? text;
+
+  /// Target URI.
+  ///
+  /// Optional.
+  core.String? uri;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart({
+    this.text,
+    this.uri,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart.fromJson(
+    core.Map json_,
+  ) : this(
+        text: json_['text'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    final uri = this.uri;
+    return {'text': ?text, 'uri': ?uri};
+  }
+}
+
+/// An item in a list.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem {
+  /// Nested sub-items.
+  ///
+  /// Optional.
+  core.List<
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem
+  >?
+  subItems;
+
+  /// The text of the list item.
+  ///
+  /// Optional.
+  core.String? text;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem({
+    this.subItems,
+    this.text,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem.fromJson(
+    core.Map json_,
+  ) : this(
+        subItems: (json_['subItems'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        text: json_['text'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final subItems = this.subItems;
+    final text = this.text;
+    return {'subItems': ?subItems, 'text': ?text};
+  }
+}
+
+/// A list part.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart {
+  /// List items.
+  ///
+  /// Optional.
+  core.List<
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem
+  >?
+  items;
+
+  /// The type of list.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LIST_TYPE_UNSPECIFIED" : Unspecified list type.
+  /// - "UNORDERED" : Unordered list.
+  /// - "ORDERED_NUMBER" : Ordered numbered list.
+  /// - "ORDERED_ALPHA" : Ordered alphabetic list.
+  core.String? listType;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart({
+    this.items,
+    this.listType,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart.fromJson(
+    core.Map json_,
+  ) : this(
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        listType: json_['listType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final items = this.items;
+    final listType = this.listType;
+    return {'items': ?items, 'listType': ?listType};
+  }
+}
+
+/// A media part.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart {
+  /// Alternative text description.
+  ///
+  /// Optional.
+  core.String? alternativeText;
+
+  /// URI or URL to the media.
+  ///
+  /// Optional.
+  core.String? uri;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart({
+    this.alternativeText,
+    this.uri,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart.fromJson(
+    core.Map json_,
+  ) : this(
+        alternativeText: json_['alternativeText'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alternativeText = this.alternativeText;
+    final uri = this.uri;
+    return {'alternativeText': ?alternativeText, 'uri': ?uri};
+  }
+}
+
+/// A product in a product collection.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct {
+  /// Product description.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Product display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Product ID.
+  ///
+  /// Optional.
+  core.String? id;
+
+  /// Product image URLs.
+  ///
+  /// Optional.
+  core.List<core.String>? imageUris;
+
+  /// Product price.
+  ///
+  /// Optional.
+  GoogleTypeMoney? price;
+
+  /// Product URL or deep link.
+  ///
+  /// Optional.
+  core.String? uri;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct({
+    this.description,
+    this.displayName,
+    this.id,
+    this.imageUris,
+    this.price,
+    this.uri,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct.fromJson(
+    core.Map json_,
+  ) : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        imageUris: (json_['imageUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        price: json_.containsKey('price')
+            ? GoogleTypeMoney.fromJson(
+                json_['price'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final displayName = this.displayName;
+    final id = this.id;
+    final imageUris = this.imageUris;
+    final price = this.price;
+    final uri = this.uri;
+    return {
+      'description': ?description,
+      'displayName': ?displayName,
+      'id': ?id,
+      'imageUris': ?imageUris,
+      'price': ?price,
+      'uri': ?uri,
+    };
+  }
+}
+
+/// A product collection part.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart {
+  /// List of products.
+  ///
+  /// Optional.
+  core.List<
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct
+  >?
+  products;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart({
+    this.products,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart.fromJson(
+    core.Map json_,
+  ) : this(
+        products: (json_['products'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final products = this.products;
+    return {'products': ?products};
+  }
+}
+
+/// A suggestion chips part.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart {
+  /// List of suggestion chips.
+  ///
+  /// Optional.
+  core.List<
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip
+  >?
+  chips;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart({
+    this.chips,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart.fromJson(
+    core.Map json_,
+  ) : this(
+        chips: (json_['chips'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final chips = this.chips;
+    return {'chips': ?chips};
+  }
+}
+
+/// A table part.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart {
+  /// Table column headers.
+  ///
+  /// Optional.
+  core.List<core.String>? headers;
+
+  /// Table rows.
+  ///
+  /// Optional.
+  core.List<
+    GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow
+  >?
+  rows;
+
+  /// Optional title for the table.
+  ///
+  /// Optional.
+  core.String? title;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart({
+    this.headers,
+    this.rows,
+    this.title,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart.fromJson(
+    core.Map json_,
+  ) : this(
+        headers: (json_['headers'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        rows: (json_['rows'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final headers = this.headers;
+    final rows = this.rows;
+    final title = this.title;
+    return {'headers': ?headers, 'rows': ?rows, 'title': ?title};
+  }
+}
+
+/// A row in a table.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow {
+  /// The cell values in the row.
+  ///
+  /// Optional.
+  core.List<core.String>? cells;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow({
+    this.cells,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow.fromJson(
+    core.Map json_,
+  ) : this(
+        cells: (json_['cells'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cells = this.cells;
+    return {'cells': ?cells};
+  }
+}
+
+/// A text part.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart {
+  /// The text content.
+  ///
+  /// Optional.
+  core.String? text;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart({
+    this.text,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart.fromJson(
+    core.Map json_,
+  ) : this(text: json_['text'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
+}
+
+/// A thought part.
+class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart {
+  /// The thought or reasoning text.
+  ///
+  /// Optional.
+  core.String? text;
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart({
+    this.text,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart.fromJson(
+    core.Map json_,
+  ) : this(text: json_['text'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
   }
 }
 
@@ -18495,6 +19216,9 @@ class GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig {
   /// - "CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE" : A prebuilt classifier
   /// classfying the initiator of the conversation escalation. For example, if
   /// it was initiated by the customer or the agent.
+  /// - "CONVERSATION_OUTCOME_AI_AVERSION" : Classifies whether the customer
+  /// demonstrates AI aversion by instantly requesting escalation to a human
+  /// agent without attempting to work with the AI agent.
   core.String? type;
 
   GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig({
@@ -21292,3 +22016,6 @@ typedef GoogleRpcStatus = $Status00;
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef GoogleTypeExpr = $Expr;
+
+/// Represents an amount of money with its currency type.
+typedef GoogleTypeMoney = $Money;

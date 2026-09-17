@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260812",
+    "revision": "20260909",
     "rootUrl": "https://networkmanagement.googleapis.com/",
     "servicePath": "",
     "title": "Network Management API",
@@ -1853,7 +1853,10 @@
                         "NO_SERVERLESS_IP_RANGES",
                         "IP_VERSION_PROTOCOL_MISMATCH",
                         "GKE_POD_UNKNOWN_ENDPOINT_LOCATION",
-                        "RESPONSE_TOO_LARGE"
+                        "RESPONSE_TOO_LARGE",
+                        "DESTINATION_CLOUD_RUN_SERVICE_REVISION_UNSUPPORTED",
+                        "DESTINATION_CLOUD_RUN_VPC_CONNECTOR_UNSUPPORTED",
+                        "CLOUD_RUN_RESOURCE_NOT_CONNECTED_TO_VPC"
                     ],
                     "enumDeprecated": [
                         false,
@@ -1865,6 +1868,9 @@
                         true,
                         true,
                         true,
+                        false,
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -1947,7 +1953,10 @@
                         "Aborted because the source endpoint is a Cloud Run revision with direct VPC access enabled, but there are no reserved serverless IP ranges.",
                         "Aborted because the used protocol is not supported for the used IP version.",
                         "Aborted because selected GKE Pod endpoint location is unknown. This is often the case for \"Pending\" Pods, which don't have assigned IP addresses yet.",
-                        "Aborted because the response size exceeds the limit."
+                        "Aborted because the response size exceeds the limit.",
+                        "Aborted because revisions of Cloud Run Services are not supported as destinations.",
+                        "Aborted because serverless endpoints having Cloud Run VPC connectors configured are not supported as destinations.",
+                        "Aborted because Cloud Run destination resource is not connected to the VPC network."
                     ],
                     "type": "string"
                 },
@@ -2138,12 +2147,17 @@
             "id": "CloudRunRevisionEndpoint",
             "properties": {
                 "serviceUri": {
-                    "description": "Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}",
+                    "description": "Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}. Mutually exclusive with worker_pool_uri.",
                     "readOnly": true,
                     "type": "string"
                 },
                 "uri": {
                     "description": "A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}",
+                    "type": "string"
+                },
+                "workerPoolUri": {
+                    "description": "Output only. The URI of the worker pool that the revision belongs to. The format is: projects/{project}/locations/{location}/workerPools/{workerPool}. Mutually exclusive with service_uri.",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -2162,11 +2176,15 @@
                     "type": "string"
                 },
                 "serviceUri": {
-                    "description": "URI of Cloud Run service this revision belongs to. Format: `projects/{project_id}/locations/{location}/services/{service_id}`",
+                    "description": "URI of Cloud Run service this revision belongs to. Format: `projects/{project_id}/locations/{location}/services/{service_id}` Mutually exclusive with `worker_pool_uri`.",
                     "type": "string"
                 },
                 "uri": {
                     "description": "URI of the Cloud Run revision. Format: `projects/{project_id}/locations/{location}/revisions/{revision_id}`",
+                    "type": "string"
+                },
+                "workerPoolUri": {
+                    "description": "URI of Cloud Run worker pool this revision belongs to. Format: `projects/{project_id}/locations/{location}/workerPools/{worker_pool_id}`. Mutually exclusive with `service_uri`.",
                     "type": "string"
                 }
             },
@@ -2401,6 +2419,33 @@
                 },
                 "subnetworkUri": {
                     "description": "URI of the subnetwork for direct egress. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DirectVpcIngressConnectionInfo": {
+            "description": "For display only. Metadata associated with a serverless direct VPC ingress connection.",
+            "id": "DirectVpcIngressConnectionInfo",
+            "properties": {
+                "networkUri": {
+                    "description": "URI of the VPC network for direct ingress. Format: `projects/{project_id}/global/networks/{network_id}`",
+                    "type": "string"
+                },
+                "region": {
+                    "description": "Region in which the Direct VPC ingress is deployed.",
+                    "type": "string"
+                },
+                "selectedIpAddress": {
+                    "description": "Selected destination IP address, from the selected IP range.",
+                    "type": "string"
+                },
+                "selectedIpRange": {
+                    "description": "Selected IP range.",
+                    "type": "string"
+                },
+                "subnetworkUri": {
+                    "description": "URI of the subnetwork for direct ingress. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`",
                     "type": "string"
                 }
             },
@@ -5397,6 +5442,10 @@
                     "$ref": "DirectVpcEgressConnectionInfo",
                     "description": "Display information of a serverless direct VPC egress connection."
                 },
+                "directVpcIngressConnection": {
+                    "$ref": "DirectVpcIngressConnectionInfo",
+                    "description": "Display information of a serverless direct VPC ingress connection for Cloud Run."
+                },
                 "dmsPrivateConnection": {
                     "$ref": "PrivateConnectionInfo",
                     "description": "Display information of a DMS Private Connection."
@@ -5544,6 +5593,7 @@
                         "ARRIVE_AT_VPC_CONNECTOR",
                         "ARRIVE_AT_GKE_POD",
                         "DIRECT_VPC_EGRESS_CONNECTION",
+                        "ARRIVE_AT_DIRECT_VPC_INGRESS_CONNECTION",
                         "SERVERLESS_EXTERNAL_CONNECTION",
                         "NGFW_PACKET_INSPECTION",
                         "NAT",
@@ -5608,6 +5658,7 @@
                         false,
                         false,
                         false,
+                        false,
                         false
                     ],
                     "enumDescriptions": [
@@ -5646,6 +5697,7 @@
                         "Forwarding state: arriving at a VPC connector.",
                         "Forwarding state: arriving at a GKE Pod.",
                         "Forwarding state: for packets originating from a serverless endpoint forwarded through Direct VPC egress.",
+                        "Forwarding state: arriving at a direct VPC ingress connection.",
                         "Forwarding state: for packets originating from a serverless endpoint forwarded through public (external) connectivity.",
                         "Forwarding state: Layer 7 packet inspection by the firewall endpoint based on the configured security profile group.",
                         "Transition state: packet header translated. The `nat` field is populated with the translation information.",

@@ -1079,7 +1079,7 @@ api.TraitData buildTraitData() {
   buildCounterTraitData++;
   if (buildCounterTraitData < 3) {
     o.commitTime = 'foo';
-    o.providerVersionTime = 'foo';
+    o.providerUpdateTime = 'foo';
     o.trait = buildUnnamed27();
   }
   buildCounterTraitData--;
@@ -1090,7 +1090,7 @@ void checkTraitData(api.TraitData o) {
   buildCounterTraitData++;
   if (buildCounterTraitData < 3) {
     unittest.expect(o.commitTime!, unittest.equals('foo'));
-    unittest.expect(o.providerVersionTime!, unittest.equals('foo'));
+    unittest.expect(o.providerUpdateTime!, unittest.equals('foo'));
     checkUnnamed27(o.trait!);
   }
   buildCounterTraitData--;

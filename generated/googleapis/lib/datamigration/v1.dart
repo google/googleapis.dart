@@ -7662,7 +7662,7 @@ class MigrationJob {
   /// Optional.
   core.String? originalMigrationName;
 
-  /// Data dump parallelism settings used by the migration.
+  /// Data dump and load parallelism settings used by the migration.
   ///
   /// Optional.
   PerformanceConfig? performanceConfig;
@@ -8370,8 +8370,17 @@ class MySqlConnectionProfile {
   /// Required.
   core.int? port;
 
+  /// Private connectivity.
+  PrivateConnectivity? privateConnectivity;
+
+  /// Private Service Connect connectivity.
+  PrivateServiceConnectConnectivity? privateServiceConnectConnectivity;
+
   /// SSL configuration for the destination to connect to the source database.
   SslConfig? ssl;
+
+  /// Static Service IP connectivity.
+  StaticServiceIpConnectivity? staticServiceIpConnectivity;
 
   /// The username that Database Migration Service will use to connect to the
   /// database.
@@ -8387,7 +8396,10 @@ class MySqlConnectionProfile {
     this.password,
     this.passwordSet,
     this.port,
+    this.privateConnectivity,
+    this.privateServiceConnectConnectivity,
     this.ssl,
+    this.staticServiceIpConnectivity,
     this.username,
   });
 
@@ -8398,9 +8410,29 @@ class MySqlConnectionProfile {
         password: json_['password'] as core.String?,
         passwordSet: json_['passwordSet'] as core.bool?,
         port: json_['port'] as core.int?,
+        privateConnectivity: json_.containsKey('privateConnectivity')
+            ? PrivateConnectivity.fromJson(
+                json_['privateConnectivity']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        privateServiceConnectConnectivity:
+            json_.containsKey('privateServiceConnectConnectivity')
+            ? PrivateServiceConnectConnectivity.fromJson(
+                json_['privateServiceConnectConnectivity']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         ssl: json_.containsKey('ssl')
             ? SslConfig.fromJson(
                 json_['ssl'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        staticServiceIpConnectivity:
+            json_.containsKey('staticServiceIpConnectivity')
+            ? StaticServiceIpConnectivity.fromJson(
+                json_['staticServiceIpConnectivity']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         username: json_['username'] as core.String?,
@@ -8412,7 +8444,11 @@ class MySqlConnectionProfile {
     final password = this.password;
     final passwordSet = this.passwordSet;
     final port = this.port;
+    final privateConnectivity = this.privateConnectivity;
+    final privateServiceConnectConnectivity =
+        this.privateServiceConnectConnectivity;
     final ssl = this.ssl;
+    final staticServiceIpConnectivity = this.staticServiceIpConnectivity;
     final username = this.username;
     return {
       'cloudSqlId': ?cloudSqlId,
@@ -8420,7 +8456,10 @@ class MySqlConnectionProfile {
       'password': ?password,
       'passwordSet': ?passwordSet,
       'port': ?port,
+      'privateConnectivity': ?privateConnectivity,
+      'privateServiceConnectConnectivity': ?privateServiceConnectConnectivity,
       'ssl': ?ssl,
+      'staticServiceIpConnectivity': ?staticServiceIpConnectivity,
       'username': ?username,
     };
   }
@@ -8923,14 +8962,31 @@ class PerformanceConfig {
   /// - "MAX" : Maximum parallel level.
   core.String? dumpParallelLevel;
 
-  PerformanceConfig({this.dumpParallelLevel});
+  /// Initial load parallelism level.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOAD_PARALLEL_LEVEL_UNSPECIFIED" : Unknown load parallel level.
+  /// - "LOAD_MIN" : Minimal parallel level.
+  /// - "LOAD_OPTIMAL" : Optimal parallel level.
+  /// - "LOAD_MAX" : Maximum parallel level.
+  core.String? loadParallelLevel;
+
+  PerformanceConfig({this.dumpParallelLevel, this.loadParallelLevel});
 
   PerformanceConfig.fromJson(core.Map json_)
-    : this(dumpParallelLevel: json_['dumpParallelLevel'] as core.String?);
+    : this(
+        dumpParallelLevel: json_['dumpParallelLevel'] as core.String?,
+        loadParallelLevel: json_['loadParallelLevel'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final dumpParallelLevel = this.dumpParallelLevel;
-    return {'dumpParallelLevel': ?dumpParallelLevel};
+    final loadParallelLevel = this.loadParallelLevel;
+    return {
+      'dumpParallelLevel': ?dumpParallelLevel,
+      'loadParallelLevel': ?loadParallelLevel,
+    };
   }
 }
 
@@ -9162,7 +9218,7 @@ class PostgreSqlConnectionProfile {
   /// Private connectivity.
   PrivateConnectivity? privateConnectivity;
 
-  /// Private service connect connectivity.
+  /// Private Service Connect connectivity.
   PrivateServiceConnectConnectivity? privateServiceConnectConnectivity;
 
   /// SSL configuration for the destination to connect to the source database.

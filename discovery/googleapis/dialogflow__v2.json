@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260815",
+    "revision": "20260825",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
@@ -16227,6 +16227,9 @@
                 "enableWordInfo": {
                     "type": "boolean"
                 },
+                "geminiAsrConfig": {
+                    "$ref": "GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig"
+                },
                 "languageCode": {
                     "type": "string"
                 },
@@ -16276,6 +16279,9 @@
                         "$ref": "GoogleCloudDialogflowV2SpeechContext"
                     },
                     "type": "array"
+                },
+                "useGeminiAsr": {
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -19036,6 +19042,9 @@
                 "enableWordInfo": {
                     "type": "boolean"
                 },
+                "geminiAsrConfig": {
+                    "$ref": "GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig"
+                },
                 "languageCode": {
                     "type": "string"
                 },
@@ -19067,8 +19076,54 @@
                     ],
                     "type": "string"
                 },
+                "useGeminiAsr": {
+                    "type": "boolean"
+                },
                 "useTimeoutBasedEndpointing": {
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig": {
+            "id": "GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig",
+            "properties": {
+                "endOfSpeechSensitivity": {
+                    "enum": [
+                        "END_SENSITIVITY_UNSPECIFIED",
+                        "END_SENSITIVITY_HIGH",
+                        "END_SENSITIVITY_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "modelId": {
+                    "type": "string"
+                },
+                "prefixPaddingMs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "silenceDurationMs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "startOfSpeechSensitivity": {
+                    "enum": [
+                        "START_SENSITIVITY_UNSPECIFIED",
+                        "START_SENSITIVITY_HIGH",
+                        "START_SENSITIVITY_LOW"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"

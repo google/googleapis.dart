@@ -2933,6 +2933,14 @@ class Project {
   /// Read-only.
   core.String? createTime;
 
+  /// If `true`, this project is a Management Project.
+  ///
+  /// A Management Project manages dedicated project groups for specific
+  /// purposes (e.g., agent management or app management).
+  ///
+  /// Output only.
+  core.bool? isManagementProject;
+
   /// The labels associated with this Project.
   ///
   /// Label keys must be between 1 and 63 characters long and must conform to
@@ -2999,6 +3007,7 @@ class Project {
   Project({
     this.configuredCapabilities,
     this.createTime,
+    this.isManagementProject,
     this.labels,
     this.lifecycleState,
     this.name,
@@ -3014,6 +3023,7 @@ class Project {
             ?.map((value) => value as core.String)
             .toList(),
         createTime: json_['createTime'] as core.String?,
+        isManagementProject: json_['isManagementProject'] as core.bool?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -3034,6 +3044,7 @@ class Project {
   core.Map<core.String, core.dynamic> toJson() {
     final configuredCapabilities = this.configuredCapabilities;
     final createTime = this.createTime;
+    final isManagementProject = this.isManagementProject;
     final labels = this.labels;
     final lifecycleState = this.lifecycleState;
     final name = this.name;
@@ -3044,6 +3055,7 @@ class Project {
     return {
       'configuredCapabilities': ?configuredCapabilities,
       'createTime': ?createTime,
+      'isManagementProject': ?isManagementProject,
       'labels': ?labels,
       'lifecycleState': ?lifecycleState,
       'name': ?name,

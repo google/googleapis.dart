@@ -40,10 +40,12 @@
 ///   - [AccessPoliciesAccessLevelsResource]
 ///   - [AccessPoliciesAuthorizedOrgsDescsResource]
 ///   - [AccessPoliciesServicePerimetersResource]
+/// - [FoldersResource]
 /// - [OperationsResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsGcpUserAccessBindingsResource]
 /// - [PermissionsResource]
+/// - [ProjectsResource]
 /// - [ServicesResource]
 library;
 
@@ -82,9 +84,11 @@ class AccessContextManagerApi {
 
   AccessPoliciesResource get accessPolicies =>
       AccessPoliciesResource(_requester);
+  FoldersResource get folders => FoldersResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   PermissionsResource get permissions => PermissionsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
   AccessContextManagerApi(
@@ -1516,6 +1520,55 @@ class AccessPoliciesServicePerimetersResource {
   }
 }
 
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Looks up the configured service perimeter for a given resource Format:
+  /// \['projects/{projectNumber}', 'folders/{folderNumber}'\].
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The Resource to resolve (e.g. "projects/123",
+  /// "folders/456").
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LookupConfiguredServicePerimeterResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LookupConfiguredServicePerimeterResponse>
+  lookupConfiguredServicePerimeter(
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$resource') +
+        ':lookupConfiguredServicePerimeter';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LookupConfiguredServicePerimeterResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class OperationsResource {
   final commons.ApiRequester _requester;
 
@@ -2021,6 +2074,55 @@ class PermissionsResource {
       queryParams: queryParams_,
     );
     return ListSupportedPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Looks up the configured service perimeter for a given resource Format:
+  /// \['projects/{projectNumber}', 'folders/{folderNumber}'\].
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. The Resource to resolve (e.g. "projects/123",
+  /// "folders/456").
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LookupConfiguredServicePerimeterResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LookupConfiguredServicePerimeterResponse>
+  lookupConfiguredServicePerimeter(
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$resource') +
+        ':lookupConfiguredServicePerimeter';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LookupConfiguredServicePerimeterResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3275,22 +3377,8 @@ class GcpUserAccessBinding {
   /// Optional. Immutable.
   Principal? principal;
 
-  /// Deprecated: Use `scoped_access_settings` instead.
-  ///
-  /// A list of applications that are subject to this binding's restrictions. If
-  /// the list is empty, the binding restrictions will universally apply to all
-  /// applications.
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.List<Application>? restrictedClientApplications;
-
   /// A list of scoped access settings that set this binding's restrictions on a
   /// subset of applications.
-  ///
-  /// This field cannot be set if restricted_client_applications is set.
   ///
   /// Optional.
   core.List<ScopedAccessSettings>? scopedAccessSettings;
@@ -3306,7 +3394,6 @@ class GcpUserAccessBinding {
     this.groupKey,
     this.name,
     this.principal,
-    this.restrictedClientApplications,
     this.scopedAccessSettings,
     this.sessionSettings,
   });
@@ -3326,14 +3413,6 @@ class GcpUserAccessBinding {
                 json_['principal'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        restrictedClientApplications:
-            (json_['restrictedClientApplications'] as core.List?)
-                ?.map(
-                  (value) => Application.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
         scopedAccessSettings: (json_['scopedAccessSettings'] as core.List?)
             ?.map(
               (value) => ScopedAccessSettings.fromJson(
@@ -3354,7 +3433,6 @@ class GcpUserAccessBinding {
     final groupKey = this.groupKey;
     final name = this.name;
     final principal = this.principal;
-    final restrictedClientApplications = this.restrictedClientApplications;
     final scopedAccessSettings = this.scopedAccessSettings;
     final sessionSettings = this.sessionSettings;
     return {
@@ -3363,7 +3441,6 @@ class GcpUserAccessBinding {
       'groupKey': ?groupKey,
       'name': ?name,
       'principal': ?principal,
-      'restrictedClientApplications': ?restrictedClientApplications,
       'scopedAccessSettings': ?scopedAccessSettings,
       'sessionSettings': ?sessionSettings,
     };
@@ -3907,6 +3984,58 @@ class ListSupportedServicesResponse {
     return {
       'nextPageToken': ?nextPageToken,
       'supportedServices': ?supportedServices,
+    };
+  }
+}
+
+/// A configured service perimeter returned by Access Context Manager.
+class LookupConfiguredServicePerimeterResponse {
+  /// The resource (e.g. "projects/123", "folders/456") that directly owns/is
+  /// restricted by the enforced perimeter.
+  core.String? restrictedResource;
+
+  /// The resource (e.g. "projects/123", "folders/456") that directly owns/is
+  /// restricted by the dry-run perimeter.
+  core.String? restrictedResourceDryRun;
+
+  /// Fully qualified name of the configured enforced perimeter.
+  ///
+  /// Format: `accessPolicies/{policy_id}/servicePerimeters/{perimeter_name}`
+  /// This field is empty if no enforced perimeter applies.
+  core.String? servicePerimeter;
+
+  /// Fully qualified name of the configured dry-run perimeter.
+  ///
+  /// Format: `accessPolicies/{policy_id}/servicePerimeters/{perimeter_name}`
+  /// This field is empty if no dry-run perimeter configuration applies.
+  core.String? servicePerimeterDryRun;
+
+  LookupConfiguredServicePerimeterResponse({
+    this.restrictedResource,
+    this.restrictedResourceDryRun,
+    this.servicePerimeter,
+    this.servicePerimeterDryRun,
+  });
+
+  LookupConfiguredServicePerimeterResponse.fromJson(core.Map json_)
+    : this(
+        restrictedResource: json_['restrictedResource'] as core.String?,
+        restrictedResourceDryRun:
+            json_['restrictedResourceDryRun'] as core.String?,
+        servicePerimeter: json_['servicePerimeter'] as core.String?,
+        servicePerimeterDryRun: json_['servicePerimeterDryRun'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final restrictedResource = this.restrictedResource;
+    final restrictedResourceDryRun = this.restrictedResourceDryRun;
+    final servicePerimeter = this.servicePerimeter;
+    final servicePerimeterDryRun = this.servicePerimeterDryRun;
+    return {
+      'restrictedResource': ?restrictedResource,
+      'restrictedResourceDryRun': ?restrictedResourceDryRun,
+      'servicePerimeter': ?servicePerimeter,
+      'servicePerimeterDryRun': ?servicePerimeterDryRun,
     };
   }
 }

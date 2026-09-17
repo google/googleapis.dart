@@ -772,6 +772,11 @@ class Cluster {
   /// Optional.
   core.Map<core.String, StorageResource>? storageResources;
 
+  /// The globally unique identifier for this Cluster.
+  ///
+  /// Output only.
+  core.String? uid;
+
   /// Time that the cluster was most recently updated.
   ///
   /// Output only.
@@ -787,6 +792,7 @@ class Cluster {
     this.orchestrator,
     this.reconciling,
     this.storageResources,
+    this.uid,
     this.updateTime,
   });
 
@@ -834,6 +840,7 @@ class Cluster {
                     ),
                   ),
                 ),
+        uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -847,6 +854,7 @@ class Cluster {
     final orchestrator = this.orchestrator;
     final reconciling = this.reconciling;
     final storageResources = this.storageResources;
+    final uid = this.uid;
     final updateTime = this.updateTime;
     return {
       'computeResources': ?computeResources,
@@ -858,6 +866,7 @@ class Cluster {
       'orchestrator': ?orchestrator,
       'reconciling': ?reconciling,
       'storageResources': ?storageResources,
+      'uid': ?uid,
       'updateTime': ?updateTime,
     };
   }

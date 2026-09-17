@@ -290,6 +290,7 @@ api.CloudRunRevisionEndpoint buildCloudRunRevisionEndpoint() {
   if (buildCounterCloudRunRevisionEndpoint < 3) {
     o.serviceUri = 'foo';
     o.uri = 'foo';
+    o.workerPoolUri = 'foo';
   }
   buildCounterCloudRunRevisionEndpoint--;
   return o;
@@ -300,6 +301,7 @@ void checkCloudRunRevisionEndpoint(api.CloudRunRevisionEndpoint o) {
   if (buildCounterCloudRunRevisionEndpoint < 3) {
     unittest.expect(o.serviceUri!, unittest.equals('foo'));
     unittest.expect(o.uri!, unittest.equals('foo'));
+    unittest.expect(o.workerPoolUri!, unittest.equals('foo'));
   }
   buildCounterCloudRunRevisionEndpoint--;
 }
@@ -313,6 +315,7 @@ api.CloudRunRevisionInfo buildCloudRunRevisionInfo() {
     o.location = 'foo';
     o.serviceUri = 'foo';
     o.uri = 'foo';
+    o.workerPoolUri = 'foo';
   }
   buildCounterCloudRunRevisionInfo--;
   return o;
@@ -325,6 +328,7 @@ void checkCloudRunRevisionInfo(api.CloudRunRevisionInfo o) {
     unittest.expect(o.location!, unittest.equals('foo'));
     unittest.expect(o.serviceUri!, unittest.equals('foo'));
     unittest.expect(o.uri!, unittest.equals('foo'));
+    unittest.expect(o.workerPoolUri!, unittest.equals('foo'));
   }
   buildCounterCloudRunRevisionInfo--;
 }
@@ -475,6 +479,33 @@ void checkDirectVpcEgressConnectionInfo(api.DirectVpcEgressConnectionInfo o) {
     unittest.expect(o.subnetworkUri!, unittest.equals('foo'));
   }
   buildCounterDirectVpcEgressConnectionInfo--;
+}
+
+core.int buildCounterDirectVpcIngressConnectionInfo = 0;
+api.DirectVpcIngressConnectionInfo buildDirectVpcIngressConnectionInfo() {
+  final o = api.DirectVpcIngressConnectionInfo();
+  buildCounterDirectVpcIngressConnectionInfo++;
+  if (buildCounterDirectVpcIngressConnectionInfo < 3) {
+    o.networkUri = 'foo';
+    o.region = 'foo';
+    o.selectedIpAddress = 'foo';
+    o.selectedIpRange = 'foo';
+    o.subnetworkUri = 'foo';
+  }
+  buildCounterDirectVpcIngressConnectionInfo--;
+  return o;
+}
+
+void checkDirectVpcIngressConnectionInfo(api.DirectVpcIngressConnectionInfo o) {
+  buildCounterDirectVpcIngressConnectionInfo++;
+  if (buildCounterDirectVpcIngressConnectionInfo < 3) {
+    unittest.expect(o.networkUri!, unittest.equals('foo'));
+    unittest.expect(o.region!, unittest.equals('foo'));
+    unittest.expect(o.selectedIpAddress!, unittest.equals('foo'));
+    unittest.expect(o.selectedIpRange!, unittest.equals('foo'));
+    unittest.expect(o.subnetworkUri!, unittest.equals('foo'));
+  }
+  buildCounterDirectVpcIngressConnectionInfo--;
 }
 
 core.int buildCounterDropInfo = 0;
@@ -2803,6 +2834,7 @@ api.Step buildStep() {
     o.deliver = buildDeliverInfo();
     o.description = 'foo';
     o.directVpcEgressConnection = buildDirectVpcEgressConnectionInfo();
+    o.directVpcIngressConnection = buildDirectVpcIngressConnectionInfo();
     o.dmsPrivateConnection = buildPrivateConnectionInfo();
     o.drop = buildDropInfo();
     o.endpoint = buildEndpointInfo();
@@ -2855,6 +2887,7 @@ void checkStep(api.Step o) {
     checkDeliverInfo(o.deliver!);
     unittest.expect(o.description!, unittest.equals('foo'));
     checkDirectVpcEgressConnectionInfo(o.directVpcEgressConnection!);
+    checkDirectVpcIngressConnectionInfo(o.directVpcIngressConnection!);
     checkPrivateConnectionInfo(o.dmsPrivateConnection!);
     checkDropInfo(o.drop!);
     checkEndpointInfo(o.endpoint!);
@@ -3427,6 +3460,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkDirectVpcEgressConnectionInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-DirectVpcIngressConnectionInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDirectVpcIngressConnectionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DirectVpcIngressConnectionInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDirectVpcIngressConnectionInfo(od);
     });
   });
 

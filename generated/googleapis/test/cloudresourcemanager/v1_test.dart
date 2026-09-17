@@ -891,6 +891,7 @@ api.Project buildProject() {
   if (buildCounterProject < 3) {
     o.configuredCapabilities = buildUnnamed15();
     o.createTime = 'foo';
+    o.isManagementProject = true;
     o.labels = buildUnnamed16();
     o.lifecycleState = 'foo';
     o.name = 'foo';
@@ -908,6 +909,7 @@ void checkProject(api.Project o) {
   if (buildCounterProject < 3) {
     checkUnnamed15(o.configuredCapabilities!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.isManagementProject!, unittest.isTrue);
     checkUnnamed16(o.labels!);
     unittest.expect(o.lifecycleState!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));

@@ -558,6 +558,28 @@ void checkGoogleCloudAiplatformV1AgentEvent(
   buildCounterGoogleCloudAiplatformV1AgentEvent--;
 }
 
+core.int buildCounterGoogleCloudAiplatformV1AgentResponseCustomization = 0;
+api.GoogleCloudAiplatformV1AgentResponseCustomization
+buildGoogleCloudAiplatformV1AgentResponseCustomization() {
+  final o = api.GoogleCloudAiplatformV1AgentResponseCustomization();
+  buildCounterGoogleCloudAiplatformV1AgentResponseCustomization++;
+  if (buildCounterGoogleCloudAiplatformV1AgentResponseCustomization < 3) {
+    o.denialMessage = 'foo';
+  }
+  buildCounterGoogleCloudAiplatformV1AgentResponseCustomization--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1AgentResponseCustomization(
+  api.GoogleCloudAiplatformV1AgentResponseCustomization o,
+) {
+  buildCounterGoogleCloudAiplatformV1AgentResponseCustomization++;
+  if (buildCounterGoogleCloudAiplatformV1AgentResponseCustomization < 3) {
+    unittest.expect(o.denialMessage!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudAiplatformV1AgentResponseCustomization--;
+}
+
 core.Map<core.String, core.String> buildUnnamed14() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed14(core.Map<core.String, core.String> o) {
@@ -1188,7 +1210,6 @@ buildGoogleCloudAiplatformV1AudioTranscriptionConfig() {
     o.languageCodes = buildUnnamed25();
     o.languageHints =
         buildGoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints();
-    o.mode = 'foo';
     o.wordTimestamp = true;
   }
   buildCounterGoogleCloudAiplatformV1AudioTranscriptionConfig--;
@@ -1210,7 +1231,6 @@ void checkGoogleCloudAiplatformV1AudioTranscriptionConfig(
     checkGoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints(
       o.languageHints!,
     );
-    unittest.expect(o.mode!, unittest.equals('foo'));
     unittest.expect(o.wordTimestamp!, unittest.isTrue);
   }
   buildCounterGoogleCloudAiplatformV1AudioTranscriptionConfig--;
@@ -1561,6 +1581,51 @@ void checkGoogleCloudAiplatformV1AuthConfigOidcConfig(
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudAiplatformV1AuthConfigOidcConfig--;
+}
+
+core.int
+buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest = 0;
+api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest
+buildGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest() {
+  final o =
+      api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest();
+  buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest++;
+  if (buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest <
+      3) {}
+  buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest(
+  api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest o,
+) {
+  buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest++;
+  if (buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest <
+      3) {}
+  buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest--;
+}
+
+core.int
+buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse =
+    0;
+api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse
+buildGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse() {
+  final o =
+      api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse();
+  buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse++;
+  if (buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse <
+      3) {}
+  buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse(
+  api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse o,
+) {
+  buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse++;
+  if (buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse <
+      3) {}
+  buildCounterGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse--;
 }
 
 core.int buildCounterGoogleCloudAiplatformV1AutomaticResources = 0;
@@ -15142,6 +15207,7 @@ buildGoogleCloudAiplatformV1GenerationConfig() {
         buildGoogleCloudAiplatformV1GenerationConfigThinkingConfig();
     o.topK = 42.0;
     o.topP = 42.0;
+    o.translationConfig = buildGoogleCloudAiplatformV1TranslationConfig();
   }
   buildCounterGoogleCloudAiplatformV1GenerationConfig--;
   return o;
@@ -15184,6 +15250,7 @@ void checkGoogleCloudAiplatformV1GenerationConfig(
     );
     unittest.expect(o.topK!, unittest.equals(42.0));
     unittest.expect(o.topP!, unittest.equals(42.0));
+    checkGoogleCloudAiplatformV1TranslationConfig(o.translationConfig!);
   }
   buildCounterGoogleCloudAiplatformV1GenerationConfig--;
 }
@@ -20595,6 +20662,7 @@ api.GoogleCloudAiplatformV1Memory buildGoogleCloudAiplatformV1Memory() {
   final o = api.GoogleCloudAiplatformV1Memory();
   buildCounterGoogleCloudAiplatformV1Memory++;
   if (buildCounterGoogleCloudAiplatformV1Memory < 3) {
+    o.context = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
     o.disableMemoryRevisions = true;
@@ -20618,6 +20686,7 @@ api.GoogleCloudAiplatformV1Memory buildGoogleCloudAiplatformV1Memory() {
 void checkGoogleCloudAiplatformV1Memory(api.GoogleCloudAiplatformV1Memory o) {
   buildCounterGoogleCloudAiplatformV1Memory++;
   if (buildCounterGoogleCloudAiplatformV1Memory < 3) {
+    unittest.expect(o.context!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.disableMemoryRevisions!, unittest.isTrue);
@@ -21227,6 +21296,7 @@ buildGoogleCloudAiplatformV1MemoryRevision() {
   final o = api.GoogleCloudAiplatformV1MemoryRevision();
   buildCounterGoogleCloudAiplatformV1MemoryRevision++;
   if (buildCounterGoogleCloudAiplatformV1MemoryRevision < 3) {
+    o.context = 'foo';
     o.createTime = 'foo';
     o.expireTime = 'foo';
     o.extractedMemories = buildUnnamed377();
@@ -21244,6 +21314,7 @@ void checkGoogleCloudAiplatformV1MemoryRevision(
 ) {
   buildCounterGoogleCloudAiplatformV1MemoryRevision++;
   if (buildCounterGoogleCloudAiplatformV1MemoryRevision < 3) {
+    unittest.expect(o.context!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.expireTime!, unittest.equals('foo'));
     checkUnnamed377(o.extractedMemories!);
@@ -33551,7 +33622,6 @@ buildGoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig() {
   buildCounterGoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig++;
   if (buildCounterGoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig <
       3) {
-    o.customerVpcNetwork = 'foo';
     o.dnsPeeringConfigs = buildUnnamed518();
     o.internetAccess = true;
     o.networkAttachment = 'foo';
@@ -33566,7 +33636,6 @@ void checkGoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig(
   buildCounterGoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig++;
   if (buildCounterGoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig <
       3) {
-    unittest.expect(o.customerVpcNetwork!, unittest.equals('foo'));
     checkUnnamed518(o.dnsPeeringConfigs!);
     unittest.expect(o.internetAccess!, unittest.isTrue);
     unittest.expect(o.networkAttachment!, unittest.equals('foo'));
@@ -34465,6 +34534,8 @@ buildGoogleCloudAiplatformV1SemanticGovernancePolicy() {
   if (buildCounterGoogleCloudAiplatformV1SemanticGovernancePolicy < 3) {
     o.agent = 'foo';
     o.agentIdentity = 'foo';
+    o.agentResponseCustomization =
+        buildGoogleCloudAiplatformV1AgentResponseCustomization();
     o.createTime = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
@@ -34485,6 +34556,9 @@ void checkGoogleCloudAiplatformV1SemanticGovernancePolicy(
   if (buildCounterGoogleCloudAiplatformV1SemanticGovernancePolicy < 3) {
     unittest.expect(o.agent!, unittest.equals('foo'));
     unittest.expect(o.agentIdentity!, unittest.equals('foo'));
+    checkGoogleCloudAiplatformV1AgentResponseCustomization(
+      o.agentResponseCustomization!,
+    );
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
@@ -39511,6 +39585,30 @@ void checkGoogleCloudAiplatformV1Transcription(
   buildCounterGoogleCloudAiplatformV1Transcription--;
 }
 
+core.int buildCounterGoogleCloudAiplatformV1TranslationConfig = 0;
+api.GoogleCloudAiplatformV1TranslationConfig
+buildGoogleCloudAiplatformV1TranslationConfig() {
+  final o = api.GoogleCloudAiplatformV1TranslationConfig();
+  buildCounterGoogleCloudAiplatformV1TranslationConfig++;
+  if (buildCounterGoogleCloudAiplatformV1TranslationConfig < 3) {
+    o.echoTargetLanguage = true;
+    o.targetLanguageCode = 'foo';
+  }
+  buildCounterGoogleCloudAiplatformV1TranslationConfig--;
+  return o;
+}
+
+void checkGoogleCloudAiplatformV1TranslationConfig(
+  api.GoogleCloudAiplatformV1TranslationConfig o,
+) {
+  buildCounterGoogleCloudAiplatformV1TranslationConfig++;
+  if (buildCounterGoogleCloudAiplatformV1TranslationConfig < 3) {
+    unittest.expect(o.echoTargetLanguage!, unittest.isTrue);
+    unittest.expect(o.targetLanguageCode!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudAiplatformV1TranslationConfig--;
+}
+
 core.List<api.GoogleCloudAiplatformV1Measurement> buildUnnamed611() => [
   buildGoogleCloudAiplatformV1Measurement(),
   buildGoogleCloudAiplatformV1Measurement(),
@@ -41643,6 +41741,14 @@ void checkUnnamed658(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.List<core.String> buildUnnamed659() => ['foo', 'foo'];
+
+void checkUnnamed659(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 void main() {
   unittest.group('obj-schema-GoogleApiHttpBody', () {
     unittest.test('to-json--from-json', () async {
@@ -41833,6 +41939,21 @@ void main() {
       checkGoogleCloudAiplatformV1AgentEvent(od);
     });
   });
+
+  unittest.group(
+    'obj-schema-GoogleCloudAiplatformV1AgentResponseCustomization',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudAiplatformV1AgentResponseCustomization();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudAiplatformV1AgentResponseCustomization.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudAiplatformV1AgentResponseCustomization(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleCloudAiplatformV1AgentTool', () {
     unittest.test('to-json--from-json', () async {
@@ -42209,6 +42330,42 @@ void main() {
       checkGoogleCloudAiplatformV1AuthConfigOidcConfig(od);
     });
   });
+
+  unittest.group(
+    'obj-schema-GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleCloudAiplatformV1AutomaticResources', () {
     unittest.test('to-json--from-json', () async {
@@ -56780,6 +56937,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkGoogleCloudAiplatformV1Transcription(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAiplatformV1TranslationConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAiplatformV1TranslationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAiplatformV1TranslationConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudAiplatformV1TranslationConfig(od);
     });
   });
 
@@ -71554,6 +71722,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.agents;
       final arg_name = 'foo';
+      final arg_force = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -71589,6 +71758,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['force']!.first,
+            unittest.equals('$arg_force'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -71599,7 +71772,11 @@ void main() {
         }),
         true,
       );
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response = await res.delete(
+        arg_name,
+        force: arg_force,
+        $fields: arg_$fields,
+      );
       checkGoogleLongrunningOperation(
         response as api.GoogleLongrunningOperation,
       );
@@ -71660,10 +71837,73 @@ void main() {
       );
     });
 
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).projects.locations.agents;
+      final arg_resource = 'foo';
+      final arg_options_requestedPolicyVersion = 42;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+            unittest.equals(arg_options_requestedPolicyVersion),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleIamV1Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getIamPolicy(
+        arg_resource,
+        options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+        $fields: arg_$fields,
+      );
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.agents;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -71702,6 +71942,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
             queryMap['orderBy']!.first,
             unittest.equals(arg_orderBy),
           );
@@ -71728,6 +71972,7 @@ void main() {
       );
       final response = await res.list(
         arg_parent,
+        filter: arg_filter,
         orderBy: arg_orderBy,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
@@ -71806,6 +72051,135 @@ void main() {
       );
       checkGoogleCloudAiplatformV1Agent(
         response as api.GoogleCloudAiplatformV1Agent,
+      );
+    });
+
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).projects.locations.agents;
+      final arg_request = buildGoogleIamV1SetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleIamV1SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleIamV1SetIamPolicyRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleIamV1Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.setIamPolicy(
+        arg_request,
+        arg_resource,
+        $fields: arg_$fields,
+      );
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).projects.locations.agents;
+      final arg_resource = 'foo';
+      final arg_permissions = buildUnnamed647();
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['permissions']!,
+            unittest.equals(arg_permissions),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleIamV1TestIamPermissionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.testIamPermissions(
+        arg_resource,
+        permissions: arg_permissions,
+        $fields: arg_$fields,
+      );
+      checkGoogleIamV1TestIamPermissionsResponse(
+        response as api.GoogleIamV1TestIamPermissionsResponse,
       );
     });
   });
@@ -74327,7 +74701,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.datasets;
       final arg_dataset = 'foo';
-      final arg_annotationFilters = buildUnnamed647();
+      final arg_annotationFilters = buildUnnamed648();
       final arg_annotationsFilter = 'foo';
       final arg_annotationsLimit = 42;
       final arg_dataItemFilter = 'foo';
@@ -74528,7 +74902,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.datasets;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed648();
+      final arg_permissions = buildUnnamed649();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -81919,7 +82293,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.featureGroups;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed649();
+      final arg_permissions = buildUnnamed650();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -83441,7 +83815,7 @@ void main() {
         mock,
       ).projects.locations.featureOnlineStores;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed650();
+      final arg_permissions = buildUnnamed651();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -84348,7 +84722,7 @@ void main() {
         mock,
       ).projects.locations.featureOnlineStores.featureViews;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed651();
+      final arg_permissions = buildUnnamed652();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -85721,7 +86095,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.featurestores;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed652();
+      final arg_permissions = buildUnnamed653();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -86634,7 +87008,7 @@ void main() {
         mock,
       ).projects.locations.featurestores.entityTypes;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed653();
+      final arg_permissions = buildUnnamed654();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -97820,7 +98194,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.models;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed654();
+      final arg_permissions = buildUnnamed655();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -100647,7 +101021,7 @@ void main() {
         mock,
       ).projects.locations.notebookRuntimeTemplates;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed655();
+      final arg_permissions = buildUnnamed656();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -107871,7 +108245,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.reasoningEngines;
       final arg_resource = 'foo';
-      final arg_permissions = buildUnnamed656();
+      final arg_permissions = buildUnnamed657();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -110529,6 +110903,80 @@ void main() {
   );
 
   unittest.group('resource-ProjectsLocationsReasoningEnginesSandboxEnvironmentsResource', () {
+    unittest.test('method--authorizeAccess', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(
+        mock,
+      ).projects.locations.reasoningEngines.sandboxEnvironments;
+      final arg_request =
+          buildGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
+          checkGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest(
+            obj,
+          );
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.authorizeAccess(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse(
+        response
+            as api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse,
+      );
+    });
+
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(
@@ -116626,12 +117074,333 @@ void main() {
     });
   });
 
+  unittest.group('resource-ProjectsLocationsTaskStoresOperationsResource', () {
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(
+        mock,
+      ).projects.locations.taskStores.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(
+        mock,
+      ).projects.locations.taskStores.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(
+        mock,
+      ).projects.locations.taskStores.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+        response as api.GoogleLongrunningOperation,
+      );
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(
+        mock,
+      ).projects.locations.taskStores.operations;
+      final arg_name = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_returnPartialSuccess = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['returnPartialSuccess']!.first,
+            unittest.equals('$arg_returnPartialSuccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleLongrunningListOperationsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_name,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        returnPartialSuccess: arg_returnPartialSuccess,
+        $fields: arg_$fields,
+      );
+      checkGoogleLongrunningListOperationsResponse(
+        response as api.GoogleLongrunningListOperationsResponse,
+      );
+    });
+
+    unittest.test('method--wait', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(
+        mock,
+      ).projects.locations.taskStores.operations;
+      final arg_name = 'foo';
+      final arg_timeout = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['timeout']!.first,
+            unittest.equals(arg_timeout),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.wait(
+        arg_name,
+        timeout: arg_timeout,
+        $fields: arg_$fields,
+      );
+      checkGoogleLongrunningOperation(
+        response as api.GoogleLongrunningOperation,
+      );
+    });
+  });
+
   unittest.group('resource-ProjectsLocationsTensorboardsResource', () {
     unittest.test('method--batchRead', () async {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).projects.locations.tensorboards;
       final arg_tensorboard = 'foo';
-      final arg_timeSeries = buildUnnamed657();
+      final arg_timeSeries = buildUnnamed658();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -119328,7 +120097,7 @@ void main() {
         mock,
       ).projects.locations.tensorboards.experiments.runs.timeSeries;
       final arg_timeSeries = 'foo';
-      final arg_blobIds = buildUnnamed658();
+      final arg_blobIds = buildUnnamed659();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -125236,6 +126005,78 @@ void main() {
   );
 
   unittest.group('resource-ReasoningEnginesSandboxEnvironmentsResource', () {
+    unittest.test('method--authorizeAccess', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).reasoningEngines.sandboxEnvironments;
+      final arg_request =
+          buildGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
+          checkGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest(
+            obj,
+          );
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.authorizeAccess(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkGoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse(
+        response
+            as api.GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse,
+      );
+    });
+
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).reasoningEngines.sandboxEnvironments;
@@ -128424,6 +129265,317 @@ void main() {
     unittest.test('method--wait', () async {
       final mock = HttpServerMock();
       final res = api.AiplatformApi(mock).studies.trials.operations;
+      final arg_name = 'foo';
+      final arg_timeout = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['timeout']!.first,
+            unittest.equals(arg_timeout),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.wait(
+        arg_name,
+        timeout: arg_timeout,
+        $fields: arg_$fields,
+      );
+      checkGoogleLongrunningOperation(
+        response as api.GoogleLongrunningOperation,
+      );
+    });
+  });
+
+  unittest.group('resource-TaskStoresOperationsResource', () {
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).taskStores.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).taskStores.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).taskStores.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleLongrunningOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+        response as api.GoogleLongrunningOperation,
+      );
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).taskStores.operations;
+      final arg_name = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_returnPartialSuccess = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['returnPartialSuccess']!.first,
+            unittest.equals('$arg_returnPartialSuccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleLongrunningListOperationsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_name,
+        filter: arg_filter,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        returnPartialSuccess: arg_returnPartialSuccess,
+        $fields: arg_$fields,
+      );
+      checkGoogleLongrunningListOperationsResponse(
+        response as api.GoogleLongrunningListOperationsResponse,
+      );
+    });
+
+    unittest.test('method--wait', () async {
+      final mock = HttpServerMock();
+      final res = api.AiplatformApi(mock).taskStores.operations;
       final arg_name = 'foo';
       final arg_timeout = 'foo';
       final arg_$fields = 'foo';

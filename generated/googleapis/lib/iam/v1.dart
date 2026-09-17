@@ -1472,6 +1472,50 @@ class LocationsWorkforcePoolsProvidersScimTenantsResource {
     );
   }
 
+  /// Gets IAM policies on a WorkforcePool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gemini Enterprise only.
   ///
   /// Lists all non-deleted WorkforcePoolProviderScimTenants in a
@@ -1582,6 +1626,100 @@ class LocationsWorkforcePoolsProvidersScimTenantsResource {
       queryParams: queryParams_,
     );
     return WorkforcePoolProviderScimTenant.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sets IAM policies on a WorkforcePool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the caller's permissions on the WorkforcePool.
+  ///
+  /// If the pool doesn't exist, this call returns an empty set of permissions.
+  /// It doesn't return a `NOT_FOUND` error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/scimTenants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -8876,7 +9014,7 @@ class ListWorkloadIdentityPoolsResponse {
 class OauthClient {
   /// The list of OAuth grant types is allowed for the OauthClient.
   ///
-  /// Required.
+  /// Optional.
   core.List<core.String>? allowedGrantTypes;
 
   /// The list of redirect uris that is allowed to redirect back when
@@ -10932,9 +11070,11 @@ class WorkforcePoolProvider {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "SCIM_USAGE_UNSPECIFIED" : Gemini Enterprise only. Do not use SCIM data.
+  /// - "SCIM_USAGE_UNSPECIFIED" : Indicates that SCIM data is not used.
   /// - "ENABLED_FOR_GROUPS" : Gemini Enterprise only. SCIM sync is enabled and
   /// SCIM-managed groups are used for authorization checks.
+  /// - "ENABLED_FOR_USERS_GROUPS" : Looker only. SCIM sync is enabled, and
+  /// SCIM-managed user claims and groups are used for authorization checks.
   core.String? scimUsage;
 
   /// The state of the provider.

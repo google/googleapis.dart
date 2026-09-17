@@ -4108,16 +4108,19 @@ api.Transport buildTransport() {
   buildCounterTransport++;
   if (buildCounterTransport < 3) {
     o.advertisedRoutes = buildUnnamed134();
+    o.autoAccept = true;
     o.bandwidth = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
     o.generatedActivationKey = 'foo';
+    o.hub = 'foo';
     o.labels = buildUnnamed135();
     o.mtuLimit = 42;
     o.name = 'foo';
     o.network = 'foo';
     o.peeringNetwork = 'foo';
     o.providedActivationKey = 'foo';
+    o.pscRoutingEnabled = true;
     o.remoteAccountId = 'foo';
     o.remoteProfile = 'foo';
     o.stackType = 'foo';
@@ -4132,16 +4135,19 @@ void checkTransport(api.Transport o) {
   buildCounterTransport++;
   if (buildCounterTransport < 3) {
     checkUnnamed134(o.advertisedRoutes!);
+    unittest.expect(o.autoAccept!, unittest.isTrue);
     unittest.expect(o.bandwidth!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.generatedActivationKey!, unittest.equals('foo'));
+    unittest.expect(o.hub!, unittest.equals('foo'));
     checkUnnamed135(o.labels!);
     unittest.expect(o.mtuLimit!, unittest.equals(42));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.network!, unittest.equals('foo'));
     unittest.expect(o.peeringNetwork!, unittest.equals('foo'));
     unittest.expect(o.providedActivationKey!, unittest.equals('foo'));
+    unittest.expect(o.pscRoutingEnabled!, unittest.isTrue);
     unittest.expect(o.remoteAccountId!, unittest.equals('foo'));
     unittest.expect(o.remoteProfile!, unittest.equals('foo'));
     unittest.expect(o.stackType!, unittest.equals('foo'));

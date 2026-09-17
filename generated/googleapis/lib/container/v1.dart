@@ -4236,7 +4236,12 @@ class AddonsConfig {
   /// Optional.
   NodeReadinessConfig? nodeReadinessConfig;
 
+  /// Deprecated: The Parallelstore CSI driver is no longer supported.
+  ///
   /// Configuration for the Cloud Storage Parallelstore CSI driver.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ParallelstoreCsiDriverConfig? parallelstoreCsiDriverConfig;
 
   /// Configuration for the Pod Snapshot feature.
@@ -12502,8 +12507,10 @@ class NodeConfig {
 
   /// Size of the disk attached to each node, specified in GB.
   ///
-  /// The smallest allowed disk size is 10GB. If unspecified, the default disk
-  /// size is 100GB.
+  /// The smallest allowed disk size is 15 GB for node pools running GKE
+  /// versions 1.36.3-gke.1480000 or later. Or, for earlier versions, the
+  /// smallest allowed disk size is 12 GB. If unspecified, the default disk size
+  /// is 100GB.
   core.int? diskSizeGb;
 
   /// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or
@@ -13427,6 +13434,13 @@ class NodeKubeletConfig {
   /// value must be greater than or equal to 1024 and less than 4194304.
   core.String? podPidsLimit;
 
+  /// Controls the reserved resources on the node.
+  ///
+  /// Only included if any fields are specified.
+  ///
+  /// Optional.
+  ReservedResourcesConfig? reservedResourcesConfig;
+
   /// shutdown_grace_period_critical_pods_seconds is the maximum allowed grace
   /// period (in seconds) used to terminate critical pods during a node
   /// shutdown.
@@ -13490,6 +13504,7 @@ class NodeKubeletConfig {
     this.maxParallelImagePulls,
     this.memoryManager,
     this.podPidsLimit,
+    this.reservedResourcesConfig,
     this.shutdownGracePeriodCriticalPodsSeconds,
     this.shutdownGracePeriodSeconds,
     this.singleProcessOomKill,
@@ -13546,6 +13561,12 @@ class NodeKubeletConfig {
               )
             : null,
         podPidsLimit: json_['podPidsLimit'] as core.String?,
+        reservedResourcesConfig: json_.containsKey('reservedResourcesConfig')
+            ? ReservedResourcesConfig.fromJson(
+                json_['reservedResourcesConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         shutdownGracePeriodCriticalPodsSeconds:
             json_['shutdownGracePeriodCriticalPodsSeconds'] as core.int?,
         shutdownGracePeriodSeconds:
@@ -13580,6 +13601,7 @@ class NodeKubeletConfig {
     final maxParallelImagePulls = this.maxParallelImagePulls;
     final memoryManager = this.memoryManager;
     final podPidsLimit = this.podPidsLimit;
+    final reservedResourcesConfig = this.reservedResourcesConfig;
     final shutdownGracePeriodCriticalPodsSeconds =
         this.shutdownGracePeriodCriticalPodsSeconds;
     final shutdownGracePeriodSeconds = this.shutdownGracePeriodSeconds;
@@ -13605,6 +13627,7 @@ class NodeKubeletConfig {
       'maxParallelImagePulls': ?maxParallelImagePulls,
       'memoryManager': ?memoryManager,
       'podPidsLimit': ?podPidsLimit,
+      'reservedResourcesConfig': ?reservedResourcesConfig,
       'shutdownGracePeriodCriticalPodsSeconds':
           ?shutdownGracePeriodCriticalPodsSeconds,
       'shutdownGracePeriodSeconds': ?shutdownGracePeriodSeconds,
@@ -15032,6 +15055,8 @@ class OperationProgress {
   }
 }
 
+/// Deprecated: The Parallelstore CSI driver is no longer supported.
+///
 /// Configuration for the Cloud Storage Parallelstore CSI driver.
 class ParallelstoreCsiDriverConfig {
   /// Whether the Cloud Storage Parallelstore CSI driver is enabled for this
@@ -15844,6 +15869,11 @@ class ReleaseChannelConfig {
   /// The default version for newly created clusters on the channel.
   core.String? defaultVersion;
 
+  /// List of preview versions for the channel.
+  ///
+  /// Output only.
+  core.List<core.String>? previewVersions;
+
   /// The auto upgrade target version for clusters on the channel.
   core.String? upgradeTargetVersion;
 
@@ -15854,6 +15884,7 @@ class ReleaseChannelConfig {
     this.channel,
     this.customVersions,
     this.defaultVersion,
+    this.previewVersions,
     this.upgradeTargetVersion,
     this.validVersions,
   });
@@ -15865,6 +15896,9 @@ class ReleaseChannelConfig {
             ?.map((value) => value as core.String)
             .toList(),
         defaultVersion: json_['defaultVersion'] as core.String?,
+        previewVersions: (json_['previewVersions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         upgradeTargetVersion: json_['upgradeTargetVersion'] as core.String?,
         validVersions: (json_['validVersions'] as core.List?)
             ?.map((value) => value as core.String)
@@ -15875,12 +15909,14 @@ class ReleaseChannelConfig {
     final channel = this.channel;
     final customVersions = this.customVersions;
     final defaultVersion = this.defaultVersion;
+    final previewVersions = this.previewVersions;
     final upgradeTargetVersion = this.upgradeTargetVersion;
     final validVersions = this.validVersions;
     return {
       'channel': ?channel,
       'customVersions': ?customVersions,
       'defaultVersion': ?defaultVersion,
+      'previewVersions': ?previewVersions,
       'upgradeTargetVersion': ?upgradeTargetVersion,
       'validVersions': ?validVersions,
     };
@@ -15931,6 +15967,72 @@ class ReservationAffinity {
       'consumeReservationType': ?consumeReservationType,
       'key': ?key,
       'values': ?values,
+    };
+  }
+}
+
+/// ReservedResourcesConfig contains the configuration for the reserved
+/// resources on the node.
+class ReservedResourcesConfig {
+  /// The amount of CPU to reserve for system daemons.
+  ///
+  /// This is a user-specified value. If unspecified, GKE decides the default
+  /// based on node version using different formula.
+  ///
+  /// Optional.
+  core.String? cpuReservedMillicore;
+
+  /// The effective amount of CPU reserved for system daemons.
+  ///
+  /// If `cpu_reserved_millicore` is specified, user-specified value is used.
+  /// Otherwise the GKE default is applied.
+  ///
+  /// Output only.
+  core.String? effectiveCpuReservedMillicore;
+
+  /// The effective amount of memory reserved for system daemons.
+  ///
+  /// If `memory_reserved_mib` is specified, the user-specified value is used.
+  /// Otherwise the GKE default is applied.
+  ///
+  /// Output only.
+  core.String? effectiveMemoryReservedMib;
+
+  /// The amount of memory to reserve for system daemons (in MiB).
+  ///
+  /// This is a user-specified value. If unspecified, GKE decides the default
+  /// based on node version using different formula.
+  ///
+  /// Optional.
+  core.String? memoryReservedMib;
+
+  ReservedResourcesConfig({
+    this.cpuReservedMillicore,
+    this.effectiveCpuReservedMillicore,
+    this.effectiveMemoryReservedMib,
+    this.memoryReservedMib,
+  });
+
+  ReservedResourcesConfig.fromJson(core.Map json_)
+    : this(
+        cpuReservedMillicore: json_['cpuReservedMillicore'] as core.String?,
+        effectiveCpuReservedMillicore:
+            json_['effectiveCpuReservedMillicore'] as core.String?,
+        effectiveMemoryReservedMib:
+            json_['effectiveMemoryReservedMib'] as core.String?,
+        memoryReservedMib: json_['memoryReservedMib'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cpuReservedMillicore = this.cpuReservedMillicore;
+    final effectiveCpuReservedMillicore = this.effectiveCpuReservedMillicore;
+    final effectiveMemoryReservedMib = this.effectiveMemoryReservedMib;
+    final memoryReservedMib = this.memoryReservedMib;
+    return {
+      'cpuReservedMillicore': ?cpuReservedMillicore,
+      'effectiveCpuReservedMillicore': ?effectiveCpuReservedMillicore,
+      'effectiveMemoryReservedMib': ?effectiveMemoryReservedMib,
+      'memoryReservedMib': ?memoryReservedMib,
     };
   }
 }

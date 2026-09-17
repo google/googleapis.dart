@@ -28,6 +28,7 @@
 ///
 /// - [BackupRunsResource]
 /// - [BackupsResource]
+/// - [BlueGreenDeploymentsResource]
 /// - [ConnectResource]
 /// - [DatabasesResource]
 /// - [FlagsResource]
@@ -68,6 +69,8 @@ class SQLAdminApi {
 
   BackupRunsResource get backupRuns => BackupRunsResource(_requester);
   BackupsResource get backups => BackupsResource(_requester);
+  BlueGreenDeploymentsResource get blueGreenDeployments =>
+      BlueGreenDeploymentsResource(_requester);
   ConnectResource get connect => ConnectResource(_requester);
   DatabasesResource get databases => DatabasesResource(_requester);
   FlagsResource get flags => FlagsResource(_requester);
@@ -523,6 +526,283 @@ class BackupsResource {
   }
 }
 
+class BlueGreenDeploymentsResource {
+  final commons.ApiRequester _requester;
+
+  BlueGreenDeploymentsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a blue-green deployment under a given project and location.
+  ///
+  /// This deployment provisions a synchronized green environment (target
+  /// instance) from a blue production environment (source instance),
+  /// facilitating updates like major version upgrades on the green instance
+  /// without impacting the blue instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this blue-green deployment
+  /// will be created. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [blueGreenDeploymentId] - Required. The ID to use for the blue-green
+  /// deployment, which will become the final component of the deployment's
+  /// resource name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    BlueGreenDeployment request,
+    core.String parent, {
+    core.String? blueGreenDeploymentId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'blueGreenDeploymentId': ?blueGreenDeploymentId == null
+          ? null
+          : [blueGreenDeploymentId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'sql/v1beta4/' +
+        core.Uri.encodeFull('$parent') +
+        '/blueGreenDeployments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a blue-green deployment, including metadata and underlying
+  /// resources based on the deployment state.
+  ///
+  /// If issued before switchover, this deletes the green instance. If issued
+  /// after switchover, this deletes the old blue instance (source instance) if
+  /// the `delete_old_source` field in the request is set to true. All
+  /// blue-green deployment metadata is permanently deleted. Resources deleted
+  /// as a result of this operation are no longer accessible and can't be
+  /// restored.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the blue-green deployment to delete.
+  /// Format:
+  /// projects/{project}/locations/{location}/blueGreenDeployments/{blue_green_deployment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/blueGreenDeployments/\[^/\]+$`.
+  ///
+  /// [deleteOldSource] - Optional. If set to true, and the switchover is
+  /// complete, this deletes the old source instance along with the deployment.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? deleteOldSource,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'deleteOldSource': ?deleteOldSource == null
+          ? null
+          : ['${deleteOldSource}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a blue-green deployment resource under a given project and
+  /// location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the blue-green deployment to retrieve.
+  /// Format:
+  /// projects/{project}/locations/{location}/blueGreenDeployments/{blue_green_deployment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/blueGreenDeployments/\[^/\]+$`.
+  ///
+  /// [view] - Optional. Specifies whether to return the basic or detailed view
+  /// of the resource in the response.
+  /// Possible string values are:
+  /// - "BLUE_GREEN_DEPLOYMENT_VIEW_UNSPECIFIED" : Blue-green deployment view
+  /// enumeration. This allows the caller to specify what view they query. If
+  /// unspecified (BLUE_GREEN_DEPLOYMENT_VIEW_UNSPECIFIED), the behavior is the
+  /// same as BASIC.
+  /// - "BASIC" : Includes basic metadata about the blue-green deployment.
+  /// `BASIC` is the default view.
+  /// - "DETAILED" : Includes basic metadata and configuration differences
+  /// between source and target instances (`database_version`, `tier`,
+  /// `edition`, `availability_type`, `data_disk_size_gb`, and
+  /// `data_disk_type`).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BlueGreenDeployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BlueGreenDeployment> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'view': ?view == null ? null : [view],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BlueGreenDeployment.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists blue-green deployments under a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose blue-green deployments are
+  /// to be listed. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that filters the results.
+  ///
+  /// [orderBy] - Optional. A comma-separated list of fields to order the
+  /// results by.
+  ///
+  /// [pageSize] - Optional. The maximum number of deployments to return.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListBlueGreenDeployments` call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBlueGreenDeploymentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBlueGreenDeploymentsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'sql/v1beta4/' +
+        core.Uri.encodeFull('$parent') +
+        '/blueGreenDeployments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBlueGreenDeploymentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Switches over to green instance for a blue-green deployment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the blue-green deployment to switch over.
+  /// Format:
+  /// projects/{project}/locations/{location}/blueGreenDeployments/{blue_green_deployment}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/blueGreenDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> switchover(
+    SwitchoverBlueGreenDeploymentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name') + ':switchover';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ConnectResource {
   final commons.ApiRequester _requester;
 
@@ -692,6 +972,8 @@ class DatabasesResource {
   ///
   /// [database] - Name of the database to be deleted in the instance.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -706,9 +988,11 @@ class DatabasesResource {
     core.String project,
     core.String instance,
     core.String database, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -739,6 +1023,8 @@ class DatabasesResource {
   ///
   /// [database] - Name of the database in the instance.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -753,9 +1039,11 @@ class DatabasesResource {
     core.String project,
     core.String instance,
     core.String database, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -788,6 +1076,8 @@ class DatabasesResource {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -802,10 +1092,12 @@ class DatabasesResource {
     Database request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -833,6 +1125,8 @@ class DatabasesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -846,9 +1140,11 @@ class DatabasesResource {
   async.Future<DatabasesListResponse> list(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -884,6 +1180,8 @@ class DatabasesResource {
   ///
   /// [database] - Name of the database to be updated in the instance.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -899,10 +1197,12 @@ class DatabasesResource {
     core.String project,
     core.String instance,
     core.String database, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -936,6 +1236,8 @@ class DatabasesResource {
   ///
   /// [database] - Name of the database to be updated in the instance.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -951,10 +1253,12 @@ class DatabasesResource {
     core.String project,
     core.String instance,
     core.String database, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1049,6 +1353,8 @@ class InstancesResource {
   /// [instance] - Required. Cloud SQL instance ID. This does not include the
   /// project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1063,9 +1369,11 @@ class InstancesResource {
   ListEntraIdCertificates(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1103,6 +1411,8 @@ class InstancesResource {
   /// [instance] - Required. Cloud SQL instance ID. This does not include the
   /// project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1116,9 +1426,11 @@ class InstancesResource {
   async.Future<InstancesListServerCertificatesResponse> ListServerCertificates(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1152,6 +1464,8 @@ class InstancesResource {
   /// [instance] - Required. Cloud SQL instance ID. This does not include the
   /// project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1166,10 +1480,12 @@ class InstancesResource {
     InstancesRotateEntraIdCertificateRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1205,6 +1521,8 @@ class InstancesResource {
   /// [instance] - Required. Cloud SQL instance ID. This does not include the
   /// project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1219,10 +1537,12 @@ class InstancesResource {
     InstancesRotateServerCertificateRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1256,6 +1576,8 @@ class InstancesResource {
   /// it must start with a letter. The total length must be 98 characters or
   /// less (Example: instance-id).
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1270,10 +1592,12 @@ class InstancesResource {
     InstancesAcquireSsrsLeaseRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1308,6 +1632,8 @@ class InstancesResource {
   /// [instance] - Required. Cloud SQL instance ID. This does not include the
   /// project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1321,9 +1647,11 @@ class InstancesResource {
   async.Future<Operation> addEntraIdCertificate(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1358,6 +1686,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1371,9 +1701,11 @@ class InstancesResource {
   async.Future<Operation> addServerCa(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1409,6 +1741,8 @@ class InstancesResource {
   /// [instance] - Required. Cloud SQL instance ID. This does not include the
   /// project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1422,9 +1756,11 @@ class InstancesResource {
   async.Future<Operation> addServerCertificate(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1456,6 +1792,8 @@ class InstancesResource {
   /// [instance] - The ID of the Cloud SQL instance to be cloned (source). This
   /// does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1470,10 +1808,12 @@ class InstancesResource {
     InstancesCloneRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1512,6 +1852,8 @@ class InstancesResource {
   ///
   /// [finalBackupTtlDays] - Optional. Retention period of the final backup.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1529,6 +1871,7 @@ class InstancesResource {
     core.String? finalBackupDescription,
     core.String? finalBackupExpiryTime,
     core.String? finalBackupTtlDays,
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -1544,6 +1887,7 @@ class InstancesResource {
       'finalBackupTtlDays': ?finalBackupTtlDays == null
           ? null
           : [finalBackupTtlDays],
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1573,6 +1917,8 @@ class InstancesResource {
   ///
   /// [instance] - Required. The name of the Cloud SQL instance.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1587,10 +1933,12 @@ class InstancesResource {
     InstancesDemoteRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1621,6 +1969,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance name.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1635,10 +1985,12 @@ class InstancesResource {
     InstancesDemoteMasterRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1670,6 +2022,8 @@ class InstancesResource {
   /// [instance] - Required. Database instance ID. This does not include the
   /// project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1684,10 +2038,12 @@ class InstancesResource {
     ExecuteSqlPayload request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1722,6 +2078,8 @@ class InstancesResource {
   /// [instance] - The Cloud SQL instance ID. This doesn't include the project
   /// ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1736,10 +2094,12 @@ class InstancesResource {
     InstancesExportRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1775,6 +2135,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1789,10 +2151,12 @@ class InstancesResource {
     InstancesFailoverRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1820,6 +2184,8 @@ class InstancesResource {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1833,9 +2199,11 @@ class InstancesResource {
   async.Future<DatabaseInstance> get(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1866,6 +2234,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1880,10 +2250,12 @@ class InstancesResource {
     InstancesImportRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1912,6 +2284,8 @@ class InstancesResource {
   /// [project] - Project ID of the project to which the newly created Cloud SQL
   /// instances should belong.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1925,10 +2299,12 @@ class InstancesResource {
   async.Future<Operation> insert(
     DatabaseInstance request,
     core.String project, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1961,6 +2337,8 @@ class InstancesResource {
   /// instanceType:CLOUD_SQL_INSTANCE'. By default, each expression is an AND
   /// expression. However, you can include AND and OR expressions explicitly.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [maxResults] - The maximum number of instances to return. The service may
   /// return fewer than this value. If unspecified, at most 500 instances are
   /// returned. The maximum value is 1000; values above 1000 are coerced to
@@ -1982,12 +2360,14 @@ class InstancesResource {
   async.Future<InstancesListResponse> list(
     core.String project, {
     core.String? filter,
+    core.String? location,
     core.int? maxResults,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'filter': ?filter == null ? null : [filter],
+      'location': ?location == null ? null : [location],
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'fields': ?$fields == null ? null : [$fields],
@@ -2022,6 +2402,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2035,9 +2417,11 @@ class InstancesResource {
   async.Future<InstancesListServerCasResponse> listServerCas(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2071,6 +2455,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [reconcilePscNetworking] - Optional. Set PSC config to the same value as
   /// the existing config to reconcile the PSC networking.
   ///
@@ -2091,12 +2477,14 @@ class InstancesResource {
     DatabaseInstance request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.bool? reconcilePscNetworking,
     core.bool? reconcilePscNetworkingForce,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'reconcilePscNetworking': ?reconcilePscNetworking == null
           ? null
           : ['${reconcilePscNetworking}'],
@@ -2176,6 +2564,8 @@ class InstancesResource {
   /// [instance] - Required. Cloud SQL instance ID. This does not include the
   /// project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2190,10 +2580,12 @@ class InstancesResource {
     InstancesPreCheckMajorVersionUpgradeRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2231,6 +2623,8 @@ class InstancesResource {
   /// specified, then the original primary instance becomes an independent Cloud
   /// SQL primary instance.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2245,10 +2639,12 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.bool? failover_1,
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'failover': ?failover_1 == null ? null : ['${failover_1}'],
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2277,6 +2673,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2291,10 +2689,12 @@ class InstancesResource {
     InstancesReencryptRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2326,6 +2726,8 @@ class InstancesResource {
   /// it must start with a letter. The total length must be 98 characters or
   /// less (Example: instance-id).
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2339,9 +2741,11 @@ class InstancesResource {
   async.Future<SqlInstancesReleaseSsrsLeaseResponse> releaseSsrsLease(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2371,6 +2775,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [mode] - Optional. Reset SSL mode to use.
   /// Possible string values are:
   /// - "RESET_SSL_MODE_UNSPECIFIED" : Reset SSL mode is not specified.
@@ -2392,10 +2798,12 @@ class InstancesResource {
   async.Future<Operation> resetSslConfig(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? mode,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'mode': ?mode == null ? null : [mode],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -2424,6 +2832,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2437,9 +2847,11 @@ class InstancesResource {
   async.Future<Operation> restart(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2470,6 +2882,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2484,10 +2898,12 @@ class InstancesResource {
     InstancesRestoreBackupRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2521,6 +2937,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2535,10 +2953,12 @@ class InstancesResource {
     InstancesRotateServerCaRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2566,6 +2986,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2579,9 +3001,11 @@ class InstancesResource {
   async.Future<Operation> startReplica(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2608,6 +3032,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2621,9 +3047,11 @@ class InstancesResource {
   async.Future<Operation> stopReplica(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2654,6 +3082,8 @@ class InstancesResource {
   /// operations timeout, which is a sum of all database operations. Default
   /// value is 10 minutes and can be modified to a maximum value of 24 hours.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2668,10 +3098,12 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String? dbTimeout,
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'dbTimeout': ?dbTimeout == null ? null : [dbTimeout],
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2700,6 +3132,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2714,10 +3148,12 @@ class InstancesResource {
     InstancesTruncateLogRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2749,6 +3185,8 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2763,10 +3201,12 @@ class InstancesResource {
     DatabaseInstance request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2964,6 +3404,8 @@ class ProjectsInstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2977,9 +3419,11 @@ class ProjectsInstancesResource {
   async.Future<SqlInstancesGetDiskShrinkConfigResponse> getDiskShrinkConfig(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3008,6 +3452,8 @@ class ProjectsInstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [sourceInstanceDeletionTime] - The timestamp used to identify the time
   /// when the source instance is deleted. If this instance is deleted, then you
   /// must set the timestamp.
@@ -3025,10 +3471,12 @@ class ProjectsInstancesResource {
   async.Future<SqlInstancesGetLatestRecoveryTimeResponse> getLatestRecoveryTime(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? sourceInstanceDeletionTime,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'sourceInstanceDeletionTime': ?sourceInstanceDeletionTime == null
           ? null
           : [sourceInstanceDeletionTime],
@@ -3062,6 +3510,8 @@ class ProjectsInstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3076,10 +3526,12 @@ class ProjectsInstancesResource {
     PerformDiskShrinkContext request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3109,6 +3561,8 @@ class ProjectsInstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3123,10 +3577,12 @@ class ProjectsInstancesResource {
     SqlInstancesRescheduleMaintenanceRequestBody request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3310,6 +3766,8 @@ class SslCertsResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3324,10 +3782,12 @@ class SslCertsResource {
     SslCertsCreateEphemeralRequest request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3603,6 +4063,8 @@ class UsersResource {
   ///
   /// [host] - Host of the user in the instance.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [name] - Name of the user in the instance.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3619,11 +4081,13 @@ class UsersResource {
     core.String project,
     core.String instance, {
     core.String? host,
+    core.String? location,
     core.String? name,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'host': ?host == null ? null : [host],
+      'location': ?location == null ? null : [location],
       'name': ?name == null ? null : [name],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -3655,6 +4119,8 @@ class UsersResource {
   ///
   /// [host] - Host of a user of the instance.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3670,10 +4136,12 @@ class UsersResource {
     core.String instance,
     core.String name, {
     core.String? host,
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'host': ?host == null ? null : [host],
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3703,6 +4171,8 @@ class UsersResource {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3717,10 +4187,12 @@ class UsersResource {
     User request,
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3748,6 +4220,8 @@ class UsersResource {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3761,9 +4235,11 @@ class UsersResource {
   async.Future<UsersListResponse> list(
     core.String project,
     core.String instance, {
+    core.String? location,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'location': ?location == null ? null : [location],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3799,6 +4275,8 @@ class UsersResource {
   ///
   /// [host] - Optional. Host of the user in the instance.
   ///
+  /// [location] - Optional. Region of the Cloud SQL instance.
+  ///
   /// [name] - Name of the user in the instance.
   ///
   /// [revokeExistingRoles] - Optional. Specifies whether to revoke existing
@@ -3831,6 +4309,7 @@ class UsersResource {
     core.String instance, {
     core.List<core.String>? databaseRoles,
     core.String? host,
+    core.String? location,
     core.String? name,
     core.bool? revokeExistingRoles,
     core.bool? revokeExistingServerRoles,
@@ -3841,6 +4320,7 @@ class UsersResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       'databaseRoles': ?databaseRoles,
       'host': ?host == null ? null : [host],
+      'location': ?location == null ? null : [location],
       'name': ?name == null ? null : [name],
       'revokeExistingRoles': ?revokeExistingRoles == null
           ? null
@@ -5004,6 +5484,257 @@ class BinLogCoordinates {
   }
 }
 
+/// A `BlueGreenDeployment` resource represents a Cloud SQL blue-green
+/// deployment setup.
+///
+/// It orchestrates the lifecycle of creating a synchronized "green" environment
+/// from a "blue" production environment, performing updates, and managing the
+/// switchover process to minimize downtime.
+class BlueGreenDeployment {
+  /// The time when the deployment was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A list representing the pairs of source and target instances in the
+  /// deployment.
+  ///
+  /// Output only.
+  core.List<SourceTargetPairedNode>? deploymentMappings;
+
+  /// Combined list of tasks for all paired nodes.
+  ///
+  /// Output only.
+  DeploymentTasks? deploymentTasks;
+
+  /// User-provided description for the deployment.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Provides an error message with details on why switchover is not possible.
+  ///
+  /// Output only.
+  core.String? errorDetail;
+
+  /// Identifier.
+  ///
+  /// The full resource name of the deployment. Format:
+  /// projects/{project}/locations/{location}/blueGreenDeployments/{deployment_id}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Deprecated: Use deployment_mappings instead.
+  ///
+  /// Output only. A list representing the pairs of source and target instances
+  /// in the deployment.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<SourceTargetPairedNode>? pairedNodes;
+
+  /// Optional on create, and immutable.
+  ///
+  /// The configuration intended for the target instance(s) when the deployment
+  /// was created.
+  ///
+  /// Optional. Immutable.
+  RequestedConfig? requestedConfig;
+
+  /// The instance ID of the source instance (the "blue" instance).
+  ///
+  /// The value for this field does not include the project ID, for example,
+  /// `my-instance-id`. This field is immutable.
+  ///
+  /// Required. Immutable.
+  core.String? sourceInstance;
+
+  /// The current state of the blue-green deployment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the deployment is unknown.
+  /// - "PROVISIONING" : The deployment is being provisioned.
+  /// - "SWITCHOVER_READY" : The deployment is ready for switchover.
+  /// - "SWITCHOVER_NOT_READY" : The deployment is not ready for switchover.
+  /// - "SWITCHOVER_IN_PROGRESS" : The deployment is in the process of switching
+  /// over.
+  /// - "SWITCHOVER_COMPLETED" : The deployment has completed switchover.
+  /// - "DELETING" : The deployment is being deleted.
+  core.String? state;
+
+  /// Details about the primary target instance (the "Green" instance) that will
+  /// be promoted during switchover.
+  ///
+  /// Output only.
+  core.String? switchoverTargetInstance;
+
+  /// Deprecated: Use requested_config instead.
+  ///
+  /// The configuration intended for the target instance(s) when the deployment
+  /// was created. This field is immutable.
+  ///
+  /// Optional. Immutable.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  TargetConfig? targetConfig;
+
+  BlueGreenDeployment({
+    this.createTime,
+    this.deploymentMappings,
+    this.deploymentTasks,
+    this.description,
+    this.errorDetail,
+    this.name,
+    this.pairedNodes,
+    this.requestedConfig,
+    this.sourceInstance,
+    this.state,
+    this.switchoverTargetInstance,
+    this.targetConfig,
+  });
+
+  BlueGreenDeployment.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        deploymentMappings: (json_['deploymentMappings'] as core.List?)
+            ?.map(
+              (value) => SourceTargetPairedNode.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        deploymentTasks: json_.containsKey('deploymentTasks')
+            ? DeploymentTasks.fromJson(
+                json_['deploymentTasks'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        description: json_['description'] as core.String?,
+        errorDetail: json_['errorDetail'] as core.String?,
+        name: json_['name'] as core.String?,
+        pairedNodes: (json_['pairedNodes'] as core.List?)
+            ?.map(
+              (value) => SourceTargetPairedNode.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        requestedConfig: json_.containsKey('requestedConfig')
+            ? RequestedConfig.fromJson(
+                json_['requestedConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sourceInstance: json_['sourceInstance'] as core.String?,
+        state: json_['state'] as core.String?,
+        switchoverTargetInstance:
+            json_['switchoverTargetInstance'] as core.String?,
+        targetConfig: json_.containsKey('targetConfig')
+            ? TargetConfig.fromJson(
+                json_['targetConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final deploymentMappings = this.deploymentMappings;
+    final deploymentTasks = this.deploymentTasks;
+    final description = this.description;
+    final errorDetail = this.errorDetail;
+    final name = this.name;
+    final pairedNodes = this.pairedNodes;
+    final requestedConfig = this.requestedConfig;
+    final sourceInstance = this.sourceInstance;
+    final state = this.state;
+    final switchoverTargetInstance = this.switchoverTargetInstance;
+    final targetConfig = this.targetConfig;
+    return {
+      'createTime': ?createTime,
+      'deploymentMappings': ?deploymentMappings,
+      'deploymentTasks': ?deploymentTasks,
+      'description': ?description,
+      'errorDetail': ?errorDetail,
+      'name': ?name,
+      'pairedNodes': ?pairedNodes,
+      'requestedConfig': ?requestedConfig,
+      'sourceInstance': ?sourceInstance,
+      'state': ?state,
+      'switchoverTargetInstance': ?switchoverTargetInstance,
+      'targetConfig': ?targetConfig,
+    };
+  }
+}
+
+/// Blue-green deployment metadata for a database instance.
+///
+/// In a blue-green deployment, we maintain two environments, one of which is
+/// live. This message contains details about the blue-green deployment.
+class BlueGreenDeploymentInfo {
+  /// The resource ID of the blue-green deployment.
+  ///
+  /// Output only.
+  core.String? deploymentId;
+
+  /// The source instance for the Blue-Green deployment.
+  ///
+  /// Output only.
+  SourceRole? source;
+
+  /// The current state of blue-green-deployment for UI tags
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the deployment is unknown.
+  /// - "PRE_SWITCHOVER" : The deployment is pre-switchover.
+  /// - "POST_SWITCHOVER" : The deployment is post-switchover.
+  core.String? state;
+
+  /// The target instance for the Blue-Green deployment.
+  ///
+  /// Output only.
+  TargetRole? target;
+
+  BlueGreenDeploymentInfo({
+    this.deploymentId,
+    this.source,
+    this.state,
+    this.target,
+  });
+
+  BlueGreenDeploymentInfo.fromJson(core.Map json_)
+    : this(
+        deploymentId: json_['deploymentId'] as core.String?,
+        source: json_.containsKey('source')
+            ? SourceRole.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+        target: json_.containsKey('target')
+            ? TargetRole.fromJson(
+                json_['target'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deploymentId = this.deploymentId;
+    final source = this.source;
+    final state = this.state;
+    final target = this.target;
+    return {
+      'deploymentId': ?deploymentId,
+      'source': ?source,
+      'state': ?state,
+      'target': ?target,
+    };
+  }
+}
+
 /// Database instance clone context.
 class CloneContext {
   /// The name of the allocated ip range for the private ip Cloud SQL instance.
@@ -5174,6 +5905,47 @@ class Column {
     final name = this.name;
     final type = this.type;
     return {'name': ?name, 'type': ?type};
+  }
+}
+
+/// Represents a specific configuration difference between Blue and Green
+/// instances.
+class ConfigDiff {
+  /// The name of the field that differs, fully-qualified.
+  ///
+  /// Example: settings.tier
+  ///
+  /// Output only.
+  core.String? field;
+
+  /// The value on the source instance.
+  ///
+  /// Output only.
+  core.String? sourceValue;
+
+  /// The value on the target instance.
+  ///
+  /// Output only.
+  core.String? targetValue;
+
+  ConfigDiff({this.field, this.sourceValue, this.targetValue});
+
+  ConfigDiff.fromJson(core.Map json_)
+    : this(
+        field: json_['field'] as core.String?,
+        sourceValue: json_['sourceValue'] as core.String?,
+        targetValue: json_['targetValue'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final field = this.field;
+    final sourceValue = this.sourceValue;
+    final targetValue = this.targetValue;
+    return {
+      'field': ?field,
+      'sourceValue': ?sourceValue,
+      'targetValue': ?targetValue,
+    };
   }
 }
 
@@ -5922,6 +6694,13 @@ class DatabaseInstance {
   /// Express.
   core.String? databaseVersion;
 
+  /// Deployment info for the instance.
+  ///
+  /// This is set if the instance is currently part of any blue-green setup.
+  ///
+  /// Output only.
+  BlueGreenDeploymentInfo? deploymentInfo;
+
   /// Disk encryption configuration specific to an instance.
   DiskEncryptionConfiguration? diskEncryptionConfiguration;
 
@@ -5973,6 +6752,8 @@ class DatabaseInstance {
   /// that is not managed by Cloud SQL.
   /// - "READ_REPLICA_INSTANCE" : A Cloud SQL instance acting as a read-replica.
   /// - "READ_POOL_INSTANCE" : A Cloud SQL read pool.
+  /// - "GREEN_INSTANCE" : A Cloud SQL instance acting as a Blue-Green
+  /// deployment target primary. (MySQL only)
   core.String? instanceType;
 
   /// The assigned IP addresses for the instance.
@@ -6173,6 +6954,7 @@ class DatabaseInstance {
     this.databaseCenterIntegrationEnabled,
     this.databaseInstalledVersion,
     this.databaseVersion,
+    this.deploymentInfo,
     this.diskEncryptionConfiguration,
     this.diskEncryptionStatus,
     this.dnsName,
@@ -6234,6 +7016,11 @@ class DatabaseInstance {
         databaseInstalledVersion:
             json_['databaseInstalledVersion'] as core.String?,
         databaseVersion: json_['databaseVersion'] as core.String?,
+        deploymentInfo: json_.containsKey('deploymentInfo')
+            ? BlueGreenDeploymentInfo.fromJson(
+                json_['deploymentInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         diskEncryptionConfiguration:
             json_.containsKey('diskEncryptionConfiguration')
             ? DiskEncryptionConfiguration.fromJson(
@@ -6376,6 +7163,7 @@ class DatabaseInstance {
         this.databaseCenterIntegrationEnabled;
     final databaseInstalledVersion = this.databaseInstalledVersion;
     final databaseVersion = this.databaseVersion;
+    final deploymentInfo = this.deploymentInfo;
     final diskEncryptionConfiguration = this.diskEncryptionConfiguration;
     final diskEncryptionStatus = this.diskEncryptionStatus;
     final dnsName = this.dnsName;
@@ -6431,6 +7219,7 @@ class DatabaseInstance {
       'databaseCenterIntegrationEnabled': ?databaseCenterIntegrationEnabled,
       'databaseInstalledVersion': ?databaseInstalledVersion,
       'databaseVersion': ?databaseVersion,
+      'deploymentInfo': ?deploymentInfo,
       'diskEncryptionConfiguration': ?diskEncryptionConfiguration,
       'diskEncryptionStatus': ?diskEncryptionStatus,
       'dnsName': ?dnsName,
@@ -6749,26 +7538,147 @@ class DenyMaintenancePeriod {
   }
 }
 
+/// Represents a task executed as part of the deployment on a target instance.
+class DeploymentTask {
+  /// Task end time (if completed).
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Optional Error details if the task state is FAILED.
+  ///
+  /// Output only.
+  core.String? errorMessage;
+
+  /// Task start time.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The current state of the task.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the task is unknown.
+  /// - "PENDING" : The task is pending.
+  /// - "RUNNING" : The task is running.
+  /// - "SUCCEEDED" : The task has succeeded.
+  /// - "FAILED" : The task has failed.
+  core.String? state;
+
+  /// The type of the task.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : The default value. This value is used if the type
+  /// is omitted.
+  /// - "PROVISION" : Creating target instance.
+  /// - "UPGRADE" : e.g., Major Version Upgrade on Target.
+  /// - "SWITCHOVER" : Promoting Target, Demoting Source for this pair.
+  /// - "DELETE" : The task is to delete deployment.
+  /// - "POST_SWITCHOVER_OPERATIONS" : Post-switchover operations, including
+  /// cleaning up resources of the old instance, taking final backups, and
+  /// updating metadata.
+  core.String? type;
+
+  DeploymentTask({
+    this.endTime,
+    this.errorMessage,
+    this.startTime,
+    this.state,
+    this.type,
+  });
+
+  DeploymentTask.fromJson(core.Map json_)
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final errorMessage = this.errorMessage;
+    final startTime = this.startTime;
+    final state = this.state;
+    final type = this.type;
+    return {
+      'endTime': ?endTime,
+      'errorMessage': ?errorMessage,
+      'startTime': ?startTime,
+      'state': ?state,
+      'type': ?type,
+    };
+  }
+}
+
+/// Combined list of tasks for all paired nodes in the deployment.
+class DeploymentTasks {
+  /// Tasks performed or being performed on the paired nodes of the deployment
+  /// at a consolidated level.
+  ///
+  /// Output only.
+  core.List<DeploymentTask>? task;
+
+  DeploymentTasks({this.task});
+
+  DeploymentTasks.fromJson(core.Map json_)
+    : this(
+        task: (json_['task'] as core.List?)
+            ?.map(
+              (value) => DeploymentTask.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final task = this.task;
+    return {'task': ?task};
+  }
+}
+
 /// Disk encryption configuration for an instance.
 class DiskEncryptionConfiguration {
+  /// If true, enables Confidential Mode for the instance's Hyperdisk Balanced
+  /// volumes.
+  ///
+  /// Only supported for zonal C4A instances currently.
+  ///
+  /// Optional.
+  core.bool? confidentialMode;
+
   /// This is always `sql#diskEncryptionConfiguration`.
   core.String? kind;
 
   /// Resource name of KMS key for disk encryption
   core.String? kmsKeyName;
 
-  DiskEncryptionConfiguration({this.kind, this.kmsKeyName});
+  DiskEncryptionConfiguration({
+    this.confidentialMode,
+    this.kind,
+    this.kmsKeyName,
+  });
 
   DiskEncryptionConfiguration.fromJson(core.Map json_)
     : this(
+        confidentialMode: json_['confidentialMode'] as core.bool?,
         kind: json_['kind'] as core.String?,
         kmsKeyName: json_['kmsKeyName'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final confidentialMode = this.confidentialMode;
     final kind = this.kind;
     final kmsKeyName = this.kmsKeyName;
-    return {'kind': ?kind, 'kmsKeyName': ?kmsKeyName};
+    return {
+      'confidentialMode': ?confidentialMode,
+      'kind': ?kind,
+      'kmsKeyName': ?kmsKeyName,
+    };
   }
 }
 
@@ -8852,6 +9762,13 @@ class InstancesRestoreBackupRequest {
   /// to the input.
   core.String? backupdrBackup;
 
+  /// If true, the restore operation proceeds even if the target instance's
+  /// maintenance version is older than the source instance's maintenance
+  /// version.
+  ///
+  /// Optional.
+  core.bool? ignoreMaintenanceVersion;
+
   /// Parameters required to perform the restore backup operation.
   RestoreBackupContext? restoreBackupContext;
 
@@ -8876,6 +9793,7 @@ class InstancesRestoreBackupRequest {
   InstancesRestoreBackupRequest({
     this.backup,
     this.backupdrBackup,
+    this.ignoreMaintenanceVersion,
     this.restoreBackupContext,
     this.restoreInstanceClearOverridesFieldNames,
     this.restoreInstanceSettings,
@@ -8885,6 +9803,8 @@ class InstancesRestoreBackupRequest {
     : this(
         backup: json_['backup'] as core.String?,
         backupdrBackup: json_['backupdrBackup'] as core.String?,
+        ignoreMaintenanceVersion:
+            json_['ignoreMaintenanceVersion'] as core.bool?,
         restoreBackupContext: json_.containsKey('restoreBackupContext')
             ? RestoreBackupContext.fromJson(
                 json_['restoreBackupContext']
@@ -8906,6 +9826,7 @@ class InstancesRestoreBackupRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final backup = this.backup;
     final backupdrBackup = this.backupdrBackup;
+    final ignoreMaintenanceVersion = this.ignoreMaintenanceVersion;
     final restoreBackupContext = this.restoreBackupContext;
     final restoreInstanceClearOverridesFieldNames =
         this.restoreInstanceClearOverridesFieldNames;
@@ -8913,6 +9834,7 @@ class InstancesRestoreBackupRequest {
     return {
       'backup': ?backup,
       'backupdrBackup': ?backupdrBackup,
+      'ignoreMaintenanceVersion': ?ignoreMaintenanceVersion,
       'restoreBackupContext': ?restoreBackupContext,
       'restoreInstanceClearOverridesFieldNames':
           ?restoreInstanceClearOverridesFieldNames,
@@ -9371,6 +10293,42 @@ class ListBackupsResponse {
   }
 }
 
+/// The response message for listing blue-green deployment resources.
+class ListBlueGreenDeploymentsResponse {
+  /// The list of blue-green deployment resources.
+  core.List<BlueGreenDeployment>? blueGreenDeployments;
+
+  /// A token to retrieve the next page of results, or empty if there are no
+  /// more results.
+  core.String? nextPageToken;
+
+  ListBlueGreenDeploymentsResponse({
+    this.blueGreenDeployments,
+    this.nextPageToken,
+  });
+
+  ListBlueGreenDeploymentsResponse.fromJson(core.Map json_)
+    : this(
+        blueGreenDeployments: (json_['blueGreenDeployments'] as core.List?)
+            ?.map(
+              (value) => BlueGreenDeployment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final blueGreenDeployments = this.blueGreenDeployments;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'blueGreenDeployments': ?blueGreenDeployments,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
 /// Preferred location.
 ///
 /// This specifies where a Cloud SQL instance is located. Note that if the
@@ -9669,6 +10627,60 @@ class MySqlSyncConfig {
   }
 }
 
+/// Details about an instance within the deployment.
+class NodeInfo {
+  /// The instance connection name.
+  ///
+  /// Output only.
+  core.String? connection;
+
+  /// The unique DNS name for this instance.
+  ///
+  /// Output only.
+  core.String? dns;
+
+  /// The full resource name of the instance.
+  ///
+  /// Format: projects/{project}/instances/{instance}
+  ///
+  /// Output only.
+  core.String? instance;
+
+  /// The list of IP addresses for this instance.
+  ///
+  /// Output only.
+  core.List<IpMapping>? ipMappings;
+
+  NodeInfo({this.connection, this.dns, this.instance, this.ipMappings});
+
+  NodeInfo.fromJson(core.Map json_)
+    : this(
+        connection: json_['connection'] as core.String?,
+        dns: json_['dns'] as core.String?,
+        instance: json_['instance'] as core.String?,
+        ipMappings: (json_['ipMappings'] as core.List?)
+            ?.map(
+              (value) => IpMapping.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final connection = this.connection;
+    final dns = this.dns;
+    final instance = this.instance;
+    final ipMappings = this.ipMappings;
+    return {
+      'connection': ?connection,
+      'dns': ?dns,
+      'instance': ?instance,
+      'ipMappings': ?ipMappings,
+    };
+  }
+}
+
 /// On-premises instance configuration.
 class OnPremisesConfiguration {
   /// PEM representation of the trusted CA's x509 certificate.
@@ -9928,6 +10940,10 @@ class Operation {
   /// - "CREATE_READ_POOL" : Creates a Cloud SQL read pool instance.
   /// - "PRE_CHECK_MAJOR_VERSION_UPGRADE" : Pre-checks for major version
   /// upgrade.
+  /// - "CREATE_BLUE_GREEN_DEPLOYMENT" : Creates a new Blue-Green deployment.
+  /// - "SWITCHOVER_BLUE_GREEN_DEPLOYMENT" : Switches over a Blue-Green
+  /// deployment.
+  /// - "DELETE_BLUE_GREEN_DEPLOYMENT" : Deletes a Blue-Green deployment.
   /// - "SETUP_MIGRATION" : This operation type represents individual steps in a
   /// multi-step setup migration workflow: including configuration, replication,
   /// switchover/back, and data reseeding, as defined by operation's intent.
@@ -11108,7 +12124,7 @@ class PscConfig {
   core.List<core.String>? allowedConsumerProjects;
 
   /// The network attachment of the consumer network that the Private Service
-  /// Connect enabled Cloud SQL instance is authorized to connect via PSC
+  /// Connect enabled Cloud SQL instance is authorized to connect using the PSC
   /// interface.
   ///
   /// format: projects/PROJECT/regions/REGION/networkAttachments/ID
@@ -11472,6 +12488,25 @@ class ReplicationCluster {
       'failoverDrReplicaName': ?failoverDrReplicaName,
       'psaWriteEndpoint': ?psaWriteEndpoint,
     };
+  }
+}
+
+/// Configuration specified by the user at creation time for the target (Green)
+/// instance.
+class RequestedConfig {
+  /// The target database major version for the upgrade.
+  ///
+  /// Optional.
+  core.String? databaseVersion;
+
+  RequestedConfig({this.databaseVersion});
+
+  RequestedConfig.fromJson(core.Map json_)
+    : this(databaseVersion: json_['databaseVersion'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final databaseVersion = this.databaseVersion;
+    return {'databaseVersion': ?databaseVersion};
   }
 }
 
@@ -11910,7 +12945,8 @@ class Settings {
   /// purposes.
   MaintenanceWindow? maintenanceWindow;
 
-  /// The local user password validation policy of the instance.
+  /// The local user password validation policy of the instance for PostgreSQL
+  /// and MySQL.
   PasswordValidationPolicy? passwordValidationPolicy;
 
   /// Configuration for Performance Capture, provides diagnostic metrics during
@@ -12296,6 +13332,143 @@ class Settings {
   }
 }
 
+/// The source instance for the Blue-Green deployment.
+class SourceRole {
+  /// The target instance paired with this source instance in a blue-green
+  /// deployment.
+  ///
+  /// Output only.
+  InstanceReference? targetId;
+
+  SourceRole({this.targetId});
+
+  SourceRole.fromJson(core.Map json_)
+    : this(
+        targetId: json_.containsKey('targetId')
+            ? InstanceReference.fromJson(
+                json_['targetId'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final targetId = this.targetId;
+    return {'targetId': ?targetId};
+  }
+}
+
+/// Represents a pairing of a source instance node and a target instance node.
+class SourceTargetPairedNode {
+  /// Deprecated: Indicates which instance (SOURCE or TARGET) in the pair is
+  /// currently live.
+  ///
+  /// Used for internal implementation and deprecated for external use.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CURRENTLY_SERVING_TRAFFIC_UNSPECIFIED" : The instance serving traffic
+  /// is unknown.
+  /// - "SOURCE" : The source instance is serving traffic.
+  /// - "TARGET" : The target instance is serving traffic.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? currentlyServingTraffic;
+
+  /// Describes the list of differences for this pair.
+  ///
+  /// Output only.
+  core.List<ConfigDiff>? diffs;
+
+  /// Resource name of the source instance in this pair.
+  ///
+  /// Output only.
+  NodeInfo? source;
+
+  /// The current state of this specific source-target pair.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the paired node is unknown.
+  /// - "PROVISIONING" : The paired node is being provisioned.
+  /// - "PROVISIONED" : The paired node is provisioned.
+  /// - "UPGRADING" : The paired node is upgrading.
+  /// - "UPGRADED" : The paired node is upgraded.
+  /// - "UPGRADE_FAILED" : Upgrade failed on the paired node.
+  /// - "SWITCHOVER_IN_PROGRESS" : Switchover is in progress.
+  /// - "SWITCHOVER_FAILED" : Switchover failed on the paired node.
+  /// - "SWITCHOVER_SUCCEEDED" : Switchover completed successfully.
+  /// - "DELETING" : The paired node is being deleted.
+  core.String? state;
+
+  /// Details of the corresponding target instance in this pair.
+  ///
+  /// Output only.
+  NodeInfo? target;
+
+  /// Tasks performed or being performed on the target instance of this pair.
+  ///
+  /// Output only.
+  core.List<DeploymentTask>? tasks;
+
+  SourceTargetPairedNode({
+    this.currentlyServingTraffic,
+    this.diffs,
+    this.source,
+    this.state,
+    this.target,
+    this.tasks,
+  });
+
+  SourceTargetPairedNode.fromJson(core.Map json_)
+    : this(
+        currentlyServingTraffic:
+            json_['currentlyServingTraffic'] as core.String?,
+        diffs: (json_['diffs'] as core.List?)
+            ?.map(
+              (value) => ConfigDiff.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        source: json_.containsKey('source')
+            ? NodeInfo.fromJson(
+                json_['source'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+        target: json_.containsKey('target')
+            ? NodeInfo.fromJson(
+                json_['target'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tasks: (json_['tasks'] as core.List?)
+            ?.map(
+              (value) => DeploymentTask.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentlyServingTraffic = this.currentlyServingTraffic;
+    final diffs = this.diffs;
+    final source = this.source;
+    final state = this.state;
+    final target = this.target;
+    final tasks = this.tasks;
+    return {
+      'currentlyServingTraffic': ?currentlyServingTraffic,
+      'diffs': ?diffs,
+      'source': ?source,
+      'state': ?state,
+      'target': ?target,
+      'tasks': ?tasks,
+    };
+  }
+}
+
 /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 class SqlActiveDirectoryConfig {
   /// The secret manager key storing the administrator credential.
@@ -12514,6 +13687,12 @@ class SqlExternalSyncSettingError {
   /// - "PG_DDL_REPLICATION_INSUFFICIENT_PRIVILEGE" : The replication user is
   /// missing specific privileges to setup DDL replication. (e.g. CREATE EVENT
   /// TRIGGER, CREATE SCHEMA) for PostgreSQL.
+  /// - "WRITABLE_DESTINATION_REPLICA_RECREATION_DOWNTIME" : Read replicas of
+  /// the Writable Destination instance will be recreated after external
+  /// synchronization is complete, causing downtime on read replicas.
+  /// - "WRITABLE_DESTINATION_STORAGE_AUTO_INCREASE_DISABLED" : A warning that
+  /// disk storage auto increase is disabled on the destination instance for a
+  /// Writable Destination migration.
   core.String? type;
 
   SqlExternalSyncSettingError({this.detail, this.kind, this.type});
@@ -12731,9 +13910,29 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
 }
 
 /// Instance reset replica size request.
-typedef SqlInstancesResetReplicaSizeRequest = $Empty;
+class SqlInstancesResetReplicaSizeRequest {
+  /// Region of the Cloud SQL instance.
+  ///
+  /// Optional.
+  core.String? location;
+
+  SqlInstancesResetReplicaSizeRequest({this.location});
+
+  SqlInstancesResetReplicaSizeRequest.fromJson(core.Map json_)
+    : this(location: json_['location'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final location = this.location;
+    return {'location': ?location};
+  }
+}
 
 class SqlInstancesStartExternalSyncRequest {
+  /// Region of the Cloud SQL instance.
+  ///
+  /// Optional.
+  core.String? location;
+
   /// MigrationType configures the migration to use physical files or logical
   /// dump files.
   ///
@@ -12788,6 +13987,7 @@ class SqlInstancesStartExternalSyncRequest {
   core.String? syncParallelLevel;
 
   SqlInstancesStartExternalSyncRequest({
+    this.location,
     this.migrationType,
     this.mysqlSyncConfig,
     this.replicaOverwriteEnabled,
@@ -12798,6 +13998,7 @@ class SqlInstancesStartExternalSyncRequest {
 
   SqlInstancesStartExternalSyncRequest.fromJson(core.Map json_)
     : this(
+        location: json_['location'] as core.String?,
         migrationType: json_['migrationType'] as core.String?,
         mysqlSyncConfig: json_.containsKey('mysqlSyncConfig')
             ? MySqlSyncConfig.fromJson(
@@ -12811,6 +14012,7 @@ class SqlInstancesStartExternalSyncRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final location = this.location;
     final migrationType = this.migrationType;
     final mysqlSyncConfig = this.mysqlSyncConfig;
     final replicaOverwriteEnabled = this.replicaOverwriteEnabled;
@@ -12818,6 +14020,7 @@ class SqlInstancesStartExternalSyncRequest {
     final syncMode = this.syncMode;
     final syncParallelLevel = this.syncParallelLevel;
     return {
+      'location': ?location,
       'migrationType': ?migrationType,
       'mysqlSyncConfig': ?mysqlSyncConfig,
       'replicaOverwriteEnabled': ?replicaOverwriteEnabled,
@@ -12829,6 +14032,11 @@ class SqlInstancesStartExternalSyncRequest {
 }
 
 class SqlInstancesVerifyExternalSyncSettingsRequest {
+  /// Region of the Cloud SQL instance.
+  ///
+  /// Optional.
+  core.String? location;
+
   /// MigrationType configures the migration to use physical files or logical
   /// dump files.
   ///
@@ -12887,6 +14095,7 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
   core.bool? verifyReplicationOnly;
 
   SqlInstancesVerifyExternalSyncSettingsRequest({
+    this.location,
     this.migrationType,
     this.mysqlSyncConfig,
     this.selectedObjects,
@@ -12898,6 +14107,7 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
 
   SqlInstancesVerifyExternalSyncSettingsRequest.fromJson(core.Map json_)
     : this(
+        location: json_['location'] as core.String?,
         migrationType: json_['migrationType'] as core.String?,
         mysqlSyncConfig: json_.containsKey('mysqlSyncConfig')
             ? MySqlSyncConfig.fromJson(
@@ -12918,6 +14128,7 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final location = this.location;
     final migrationType = this.migrationType;
     final mysqlSyncConfig = this.mysqlSyncConfig;
     final selectedObjects = this.selectedObjects;
@@ -12926,6 +14137,7 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
     final verifyConnectionOnly = this.verifyConnectionOnly;
     final verifyReplicationOnly = this.verifyReplicationOnly;
     return {
+      'location': ?location,
       'migrationType': ?migrationType,
       'mysqlSyncConfig': ?mysqlSyncConfig,
       'selectedObjects': ?selectedObjects,
@@ -13178,10 +14390,10 @@ class SqlServerEntraIdConfig {
 
 /// Represents a Sql Server user on the Cloud SQL instance.
 class SqlServerUserDetails {
-  /// If the user has been disabled
+  /// Indicates if the user has been disabled.
   core.bool? disabled;
 
-  /// The server roles for this user
+  /// Indicates the server roles for this user.
   core.List<core.String>? serverRoles;
 
   SqlServerUserDetails({this.disabled, this.serverRoles});
@@ -13483,6 +14695,9 @@ class SslCertsListResponse {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
+/// Request message for switching over a `BlueGreenDeployment` resource.
+typedef SwitchoverBlueGreenDeploymentRequest = $Empty;
+
 /// Initial sync flags for certain Cloud SQL APIs.
 ///
 /// Currently used for the MySQL external server initial dump.
@@ -13510,6 +14725,27 @@ class SyncFlags {
   }
 }
 
+/// Deprecated: Use RequestedConfig instead.
+///
+/// Configuration specified by the user at creation time for the target (Green)
+/// instance.
+class TargetConfig {
+  /// The target database major version for the upgrade.
+  ///
+  /// Optional.
+  core.String? databaseVersion;
+
+  TargetConfig({this.databaseVersion});
+
+  TargetConfig.fromJson(core.Map json_)
+    : this(databaseVersion: json_['databaseVersion'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final databaseVersion = this.databaseVersion;
+    return {'databaseVersion': ?databaseVersion};
+  }
+}
+
 /// Target metric for read pool auto scaling.
 class TargetMetric {
   /// The metric name to be used for auto scaling.
@@ -13530,6 +14766,31 @@ class TargetMetric {
     final metric = this.metric;
     final targetValue = this.targetValue;
     return {'metric': ?metric, 'targetValue': ?targetValue};
+  }
+}
+
+/// The target instance for the Blue-Green deployment.
+class TargetRole {
+  /// The source instance paired with this target instance in a blue-green
+  /// deployment.
+  ///
+  /// Output only.
+  InstanceReference? sourceId;
+
+  TargetRole({this.sourceId});
+
+  TargetRole.fromJson(core.Map json_)
+    : this(
+        sourceId: json_.containsKey('sourceId')
+            ? InstanceReference.fromJson(
+                json_['sourceId'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final sourceId = this.sourceId;
+    return {'sourceId': ?sourceId};
   }
 }
 

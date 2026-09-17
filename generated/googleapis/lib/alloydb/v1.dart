@@ -4161,6 +4161,49 @@ class DenyMaintenancePeriod {
   }
 }
 
+/// DnsAutomationInfo contains information about the DNS automation for the
+/// instance.
+class DnsAutomationInfo {
+  /// The fully qualified domain name of the instance for DNS automation.
+  ///
+  /// Example: "...alloydb.goog.". Note: The AUDIT directive is intentionally
+  /// omitted because this field contains sensitive network topology
+  /// information.
+  ///
+  /// Output only.
+  core.String? fullyQualifiedDomainName;
+
+  /// The state of the DNS automation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "PENDING_CREATE" : DNS record creation is pending.
+  /// - "ACTIVE" : DNS record is active.
+  /// - "PENDING_DELETE" : DNS record deletion is pending.
+  /// - "CREATE_FAILED" : DNS record creation failed.
+  /// - "DELETE_FAILED" : DNS record deletion failed.
+  core.String? state;
+
+  DnsAutomationInfo({this.fullyQualifiedDomainName, this.state});
+
+  DnsAutomationInfo.fromJson(core.Map json_)
+    : this(
+        fullyQualifiedDomainName:
+            json_['fullyQualifiedDomainName'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fullyQualifiedDomainName = this.fullyQualifiedDomainName;
+    final state = this.state;
+    return {
+      'fullyQualifiedDomainName': ?fullyQualifiedDomainName,
+      'state': ?state,
+    };
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -4678,6 +4721,11 @@ class Instance {
   /// Optional.
   PscInstanceConfig? pscInstanceConfig;
 
+  /// Information about the Private Service Connect (PSC) for the instance.
+  ///
+  /// Output only.
+  PscInstanceInfo? pscInstanceInfo;
+
   /// The public IP addresses for the Instance.
   ///
   /// This is available ONLY when enable_public_ip is set. This is the
@@ -4775,6 +4823,7 @@ class Instance {
     this.observabilityConfig,
     this.outboundPublicIpAddresses,
     this.pscInstanceConfig,
+    this.pscInstanceInfo,
     this.publicIpAddress,
     this.queryInsightsConfig,
     this.readPoolConfig,
@@ -4854,6 +4903,11 @@ class Instance {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        pscInstanceInfo: json_.containsKey('pscInstanceInfo')
+            ? PscInstanceInfo.fromJson(
+                json_['pscInstanceInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         publicIpAddress: json_['publicIpAddress'] as core.String?,
         queryInsightsConfig: json_.containsKey('queryInsightsConfig')
             ? QueryInsightsInstanceConfig.fromJson(
@@ -4902,6 +4956,7 @@ class Instance {
     final observabilityConfig = this.observabilityConfig;
     final outboundPublicIpAddresses = this.outboundPublicIpAddresses;
     final pscInstanceConfig = this.pscInstanceConfig;
+    final pscInstanceInfo = this.pscInstanceInfo;
     final publicIpAddress = this.publicIpAddress;
     final queryInsightsConfig = this.queryInsightsConfig;
     final readPoolConfig = this.readPoolConfig;
@@ -4935,6 +4990,7 @@ class Instance {
       'observabilityConfig': ?observabilityConfig,
       'outboundPublicIpAddresses': ?outboundPublicIpAddresses,
       'pscInstanceConfig': ?pscInstanceConfig,
+      'pscInstanceInfo': ?pscInstanceInfo,
       'publicIpAddress': ?publicIpAddress,
       'queryInsightsConfig': ?queryInsightsConfig,
       'readPoolConfig': ?readPoolConfig,
@@ -5853,10 +5909,32 @@ class PscAutoConnectionConfig {
   /// created.
   core.String? consumerProject;
 
+  /// List of DNS automation info for the PSC auto connection.
+  ///
+  /// Output only.
+  core.List<DnsAutomationInfo>? dnsAutomationInfos;
+
   /// The IP address of the PSC service automation endpoint.
   ///
   /// Output only.
   core.String? ipAddress;
+
+  /// The PSC service connection policy name.
+  ///
+  /// The format is "projects//regions//serviceConnectionPolicies/"
+  ///
+  /// Output only.
+  core.String? serviceConnectionPolicy;
+
+  /// The creation state or result of the connection policy.
+  ///
+  /// Possible values include: - `ACTIVE`: The policy was created successfully.
+  /// - `PERMISSION_DENIED`: Sufficient permissions were not provided. Note that
+  /// this field is an unstructured output and customers should not rely on the
+  /// specific string value or error message directly.
+  ///
+  /// Output only.
+  core.String? serviceConnectionPolicyCreationState;
 
   /// The status of the PSC service automation connection.
   ///
@@ -5875,7 +5953,10 @@ class PscAutoConnectionConfig {
     this.consumerNetwork,
     this.consumerNetworkStatus,
     this.consumerProject,
+    this.dnsAutomationInfos,
     this.ipAddress,
+    this.serviceConnectionPolicy,
+    this.serviceConnectionPolicyCreationState,
     this.status,
   });
 
@@ -5884,7 +5965,18 @@ class PscAutoConnectionConfig {
         consumerNetwork: json_['consumerNetwork'] as core.String?,
         consumerNetworkStatus: json_['consumerNetworkStatus'] as core.String?,
         consumerProject: json_['consumerProject'] as core.String?,
+        dnsAutomationInfos: (json_['dnsAutomationInfos'] as core.List?)
+            ?.map(
+              (value) => DnsAutomationInfo.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         ipAddress: json_['ipAddress'] as core.String?,
+        serviceConnectionPolicy:
+            json_['serviceConnectionPolicy'] as core.String?,
+        serviceConnectionPolicyCreationState:
+            json_['serviceConnectionPolicyCreationState'] as core.String?,
         status: json_['status'] as core.String?,
       );
 
@@ -5892,13 +5984,21 @@ class PscAutoConnectionConfig {
     final consumerNetwork = this.consumerNetwork;
     final consumerNetworkStatus = this.consumerNetworkStatus;
     final consumerProject = this.consumerProject;
+    final dnsAutomationInfos = this.dnsAutomationInfos;
     final ipAddress = this.ipAddress;
+    final serviceConnectionPolicy = this.serviceConnectionPolicy;
+    final serviceConnectionPolicyCreationState =
+        this.serviceConnectionPolicyCreationState;
     final status = this.status;
     return {
       'consumerNetwork': ?consumerNetwork,
       'consumerNetworkStatus': ?consumerNetworkStatus,
       'consumerProject': ?consumerProject,
+      'dnsAutomationInfos': ?dnsAutomationInfos,
       'ipAddress': ?ipAddress,
+      'serviceConnectionPolicy': ?serviceConnectionPolicy,
+      'serviceConnectionPolicyCreationState':
+          ?serviceConnectionPolicyCreationState,
       'status': ?status,
     };
   }
@@ -5945,10 +6045,37 @@ class PscInstanceConfig {
   /// Optional.
   core.List<core.String>? allowedConsumerProjects;
 
+  /// Configuration for setting up PSC auto connection for the instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PSC_AUTO_CONNECTION_POLICY_STATE_UNSPECIFIED" : The state is
+  /// unspecified. For old instances, this means the PSC auto connection is
+  /// disabled. For new instances, this means the PSC auto connection is enabled
+  /// by default.
+  /// - "ENABLED" : Enables the PSC auto connection for the instance.
+  /// - "DISABLED" : Disables the PSC auto connection for the instance.
+  core.String? pscAutoConnectionPolicyState;
+
   /// Configurations for setting up PSC service automation.
   ///
   /// Optional.
   core.List<PscAutoConnectionConfig>? pscAutoConnections;
+
+  /// Configuration for setting up PSC auto DNS for the instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PSC_AUTO_DNS_STATE_UNSPECIFIED" : The state is unspecified. For old
+  /// instances, this means the PSC auto DNS is disabled. For new instances,
+  /// this means the PSC auto DNS is enabled by default. Use
+  /// `effective_psc_auto_dns_enabled` to check the effective state of the PSC
+  /// auto DNS.
+  /// - "PSC_AUTO_DNS_STATE_ENABLED" : Enables the PSC auto DNS for the
+  /// instance.
+  /// - "PSC_AUTO_DNS_STATE_DISABLED" : Disables the PSC auto DNS for the
+  /// instance.
+  core.String? pscAutoDnsState;
 
   /// The DNS name of the instance for PSC connectivity.
   ///
@@ -5977,7 +6104,9 @@ class PscInstanceConfig {
 
   PscInstanceConfig({
     this.allowedConsumerProjects,
+    this.pscAutoConnectionPolicyState,
     this.pscAutoConnections,
+    this.pscAutoDnsState,
     this.pscDnsName,
     this.pscInterfaceConfigs,
     this.serviceAttachmentLink,
@@ -5989,6 +6118,8 @@ class PscInstanceConfig {
             (json_['allowedConsumerProjects'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        pscAutoConnectionPolicyState:
+            json_['pscAutoConnectionPolicyState'] as core.String?,
         pscAutoConnections: (json_['pscAutoConnections'] as core.List?)
             ?.map(
               (value) => PscAutoConnectionConfig.fromJson(
@@ -5996,6 +6127,7 @@ class PscInstanceConfig {
               ),
             )
             .toList(),
+        pscAutoDnsState: json_['pscAutoDnsState'] as core.String?,
         pscDnsName: json_['pscDnsName'] as core.String?,
         pscInterfaceConfigs: (json_['pscInterfaceConfigs'] as core.List?)
             ?.map(
@@ -6009,16 +6141,82 @@ class PscInstanceConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final allowedConsumerProjects = this.allowedConsumerProjects;
+    final pscAutoConnectionPolicyState = this.pscAutoConnectionPolicyState;
     final pscAutoConnections = this.pscAutoConnections;
+    final pscAutoDnsState = this.pscAutoDnsState;
     final pscDnsName = this.pscDnsName;
     final pscInterfaceConfigs = this.pscInterfaceConfigs;
     final serviceAttachmentLink = this.serviceAttachmentLink;
     return {
       'allowedConsumerProjects': ?allowedConsumerProjects,
+      'pscAutoConnectionPolicyState': ?pscAutoConnectionPolicyState,
       'pscAutoConnections': ?pscAutoConnections,
+      'pscAutoDnsState': ?pscAutoDnsState,
       'pscDnsName': ?pscDnsName,
       'pscInterfaceConfigs': ?pscInterfaceConfigs,
       'serviceAttachmentLink': ?serviceAttachmentLink,
+    };
+  }
+}
+
+/// Information about the Private Service Connect (PSC) for the instance.
+class PscInstanceInfo {
+  /// Indicates if the PSC auto connection policy is enabled for the instance.
+  ///
+  /// For older instances, this will be off by default, but for newer instances,
+  /// this will be auto-enabled.
+  ///
+  /// Output only.
+  core.bool? effectivePscAutoConnectionPolicy;
+
+  /// The effective state of the PSC auto DNS for the instance.
+  ///
+  /// Output only.
+  core.bool? effectivePscAutoDnsEnabled;
+
+  /// Specifies the auto DNS names for the instance.
+  ///
+  /// Output only.
+  core.List<core.String>? pscAutoDnsNames;
+
+  /// The PSC service connection policy name.
+  ///
+  /// The format is "projects//regions//serviceConnectionPolicies/"
+  ///
+  /// Output only.
+  core.String? serviceConnectionPolicy;
+
+  PscInstanceInfo({
+    this.effectivePscAutoConnectionPolicy,
+    this.effectivePscAutoDnsEnabled,
+    this.pscAutoDnsNames,
+    this.serviceConnectionPolicy,
+  });
+
+  PscInstanceInfo.fromJson(core.Map json_)
+    : this(
+        effectivePscAutoConnectionPolicy:
+            json_['effectivePscAutoConnectionPolicy'] as core.bool?,
+        effectivePscAutoDnsEnabled:
+            json_['effectivePscAutoDnsEnabled'] as core.bool?,
+        pscAutoDnsNames: (json_['pscAutoDnsNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        serviceConnectionPolicy:
+            json_['serviceConnectionPolicy'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final effectivePscAutoConnectionPolicy =
+        this.effectivePscAutoConnectionPolicy;
+    final effectivePscAutoDnsEnabled = this.effectivePscAutoDnsEnabled;
+    final pscAutoDnsNames = this.pscAutoDnsNames;
+    final serviceConnectionPolicy = this.serviceConnectionPolicy;
+    return {
+      'effectivePscAutoConnectionPolicy': ?effectivePscAutoConnectionPolicy,
+      'effectivePscAutoDnsEnabled': ?effectivePscAutoDnsEnabled,
+      'pscAutoDnsNames': ?pscAutoDnsNames,
+      'serviceConnectionPolicy': ?serviceConnectionPolicy,
     };
   }
 }

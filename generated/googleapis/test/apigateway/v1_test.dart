@@ -380,9 +380,11 @@ api.ApigatewayGateway buildApigatewayGateway() {
     o.createTime = 'foo';
     o.defaultHostname = 'foo';
     o.displayName = 'foo';
+    o.effectiveStreamingMode = 'foo';
     o.labels = buildUnnamed9();
     o.name = 'foo';
     o.state = 'foo';
+    o.streamingMode = 'foo';
     o.updateTime = 'foo';
   }
   buildCounterApigatewayGateway--;
@@ -396,9 +398,11 @@ void checkApigatewayGateway(api.ApigatewayGateway o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.defaultHostname!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.effectiveStreamingMode!, unittest.equals('foo'));
     checkUnnamed9(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.streamingMode!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterApigatewayGateway--;

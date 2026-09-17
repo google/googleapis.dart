@@ -1404,6 +1404,50 @@ class BuyersCreativesResource {
 
   BuyersCreativesResource(commons.ApiRequester client) : _requester = client;
 
+  /// Adds a list of deals to a creative, which submits the creative for
+  /// publisher review.
+  ///
+  /// Returns the updated creative.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the creative to add the deals to. See
+  /// creative.name.
+  /// Value must have pattern `^buyers/\[^/\]+/creatives/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Creative].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Creative> addDeals(
+    AddDealsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':addDeals';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Creative.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a creative.
   ///
   /// [request] - The metadata request object.
@@ -2030,6 +2074,32 @@ class AdTechnologyProviders {
       'detectedProviderIds': ?detectedProviderIds,
       'unidentifiedProviderDomains': ?unidentifiedProviderDomains,
     };
+  }
+}
+
+/// A request to add deals to a creative resource.
+class AddDealsRequest {
+  /// The IDs of the deals to associate with the creative.
+  ///
+  /// This can include Programmatic Guaranteed, Private Auction, Preferred Deal,
+  /// and Marketplace Package deal IDs. You can associate no more than 100 deal
+  /// IDs per request.
+  ///
+  /// Required.
+  core.List<core.String>? dealIds;
+
+  AddDealsRequest({this.dealIds});
+
+  AddDealsRequest.fromJson(core.Map json_)
+    : this(
+        dealIds: (json_['dealIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dealIds = this.dealIds;
+    return {'dealIds': ?dealIds};
   }
 }
 

@@ -7118,6 +7118,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.NetworkServicesApi(mock).projects.locations.agentGateways;
       final arg_parent = 'foo';
+      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_returnPartialSuccess = true;
@@ -7156,6 +7157,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
             core.int.parse(queryMap['pageSize']!.first),
             unittest.equals(arg_pageSize),
           );
@@ -7180,6 +7185,7 @@ void main() {
       );
       final response = await res.list(
         arg_parent,
+        filter: arg_filter,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
         returnPartialSuccess: arg_returnPartialSuccess,

@@ -4996,13 +4996,65 @@ class Location {
 }
 
 /// Result of Malicious Content LLM scan.
-typedef MaliciousContentLLMResult = $Result01;
+class MaliciousContentLLMResult {
+  /// Tracks max severity found.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity.
+  /// - "CRITICAL" : Critical severity.
+  /// - "HIGH" : High severity.
+  core.String? maxSeverity;
+
+  /// The base name of the model that performed the scan.
+  core.String? modelId;
+
+  /// Status of the scan.
+  /// Possible string values are:
+  /// - "SCAN_STATUS_UNSPECIFIED" : Unspecified scan status.
+  /// - "PERFORMED" : Scan was performed.
+  /// - "NOT_PERFORMED" : Scan was not performed.
+  core.String? scanStatus;
+
+  /// Telemetry metrics tracking token usage for the AI scan.
+  TokenUsage? tokenUsage;
+
+  MaliciousContentLLMResult({
+    this.maxSeverity,
+    this.modelId,
+    this.scanStatus,
+    this.tokenUsage,
+  });
+
+  MaliciousContentLLMResult.fromJson(core.Map json_)
+    : this(
+        maxSeverity: json_['maxSeverity'] as core.String?,
+        modelId: json_['modelId'] as core.String?,
+        scanStatus: json_['scanStatus'] as core.String?,
+        tokenUsage: json_.containsKey('tokenUsage')
+            ? TokenUsage.fromJson(
+                json_['tokenUsage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxSeverity = this.maxSeverity;
+    final modelId = this.modelId;
+    final scanStatus = this.scanStatus;
+    final tokenUsage = this.tokenUsage;
+    return {
+      'maxSeverity': ?maxSeverity,
+      'modelId': ?modelId,
+      'scanStatus': ?scanStatus,
+      'tokenUsage': ?tokenUsage,
+    };
+  }
+}
 
 /// Result of Malicious Content Static scan.
-typedef MaliciousContentStaticResult = $Result01;
+typedef MaliciousContentStaticResult = $MaliciousContentStaticResult;
 
 /// Result of Malware scan.
-typedef MalwareScanResult = $Result02;
+typedef MalwareScanResult = $Result01;
 typedef Material = $Material;
 
 /// Other properties of the build.
@@ -7081,6 +7133,9 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
+/// Token usage associated with an AI scan.
+typedef TokenUsage = $TokenUsage;
+
 /// The Upgrade Distribution represents metadata about the Upgrade for each
 /// operating system (CPE).
 ///
@@ -7932,4 +7987,4 @@ class WindowsUpdate {
 }
 
 /// Result of Workspace Policy scan.
-typedef WorkspacePolicyResult = $Result02;
+typedef WorkspacePolicyResult = $Result01;

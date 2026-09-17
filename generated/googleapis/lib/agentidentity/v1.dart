@@ -193,11 +193,11 @@ class ProjectsLocationsAccessSummariesResource {
   ProjectsLocationsAccessSummariesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Gets details of a single AccessSummary.
+  /// Gets details of a single access summary.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. The resource name of the access summary.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/accessSummaries/\[^/\]+$`.
   ///
@@ -231,9 +231,9 @@ class ProjectsLocationsAccessSummariesResource {
     );
   }
 
-  /// Lists AccessSummaries in a given project and location.
+  /// Lists access summaries in a given project and location.
   ///
-  /// Supported Filters: - `workload_id`: Filter by the SPIFFE ID of the agent.
+  /// Supported filters: - `workload_id`: Filter by the SPIFFE ID of the agent.
   /// Example: `workload_id="spiffe://example.com/ns/default/sa/my-agent"`
   ///
   /// Request parameters:
@@ -252,6 +252,7 @@ class ProjectsLocationsAccessSummariesResource {
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
+  /// The maximum page size is 1000.
   ///
   /// [pageToken] - Optional. A token identifying a page of results the server
   /// should return.
@@ -304,18 +305,18 @@ class ProjectsLocationsAuthProvidersResource {
   ProjectsLocationsAuthProvidersResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new AuthProvider in a given project and location.
+  /// Creates a new auth provider in a given project and location.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource where the AuthProvider is
+  /// [parent] - Required. The parent resource where the auth provider is
   /// created. Format: projects/{project}/locations/{location}
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [authProviderId] - Required. The ID to use for the AuthProvider, which
-  /// will become the final segment of the AuthProvider's resource name. This
+  /// [authProviderId] - Required. The ID to use for the auth provider, which
+  /// will become the final segment of the auth provider's resource name. This
   /// value should be 1-63 characters, and valid characters are /a-z-/. The
   /// first character must be a lowercase letter, and the last character must be
   /// a lowercase letter or a number.
@@ -369,11 +370,11 @@ class ProjectsLocationsAuthProvidersResource {
     );
   }
 
-  /// Deletes a single AuthProvider.
+  /// Deletes a single auth provider.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. The resource name of the auth provider.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+$`.
   ///
@@ -419,13 +420,13 @@ class ProjectsLocationsAuthProvidersResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Disables a single AuthProvider.
+  /// Disables a single auth provider.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource Format:
+  /// [name] - Required. The resource name of the auth provider. Format:
   /// projects/{project}/locations/{location}/authProviders/{auth_provider}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+$`.
@@ -463,13 +464,13 @@ class ProjectsLocationsAuthProvidersResource {
     );
   }
 
-  /// Enables a single AuthProvider.
+  /// Enables a single auth provider.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource Format:
+  /// [name] - Required. The resource name of the auth provider. Format:
   /// projects/{project}/locations/{location}/authProviders/{auth_provider}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+$`.
@@ -507,11 +508,11 @@ class ProjectsLocationsAuthProvidersResource {
     );
   }
 
-  /// Gets details of a single AuthProvider.
+  /// Gets details of a single auth provider.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. The resource name of the auth provider.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+$`.
   ///
@@ -603,7 +604,7 @@ class ProjectsLocationsAuthProvidersResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists AuthProviders in a given project and location.
+  /// Lists auth providers in a given project and location.
   ///
   /// Request parameters:
   ///
@@ -618,14 +619,15 @@ class ProjectsLocationsAuthProvidersResource {
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
+  /// The maximum page size is 1000.
   ///
   /// [pageToken] - Optional. A token, which can be sent as `page_token` to
   /// retrieve the next page. If this field is omitted, the first page is
   /// returned.
   ///
-  /// [showDeleted] - Optional. Deleted auth_providers will be kept with a
-  /// soft-delete for 30 days before being purged. If this field is set to true,
-  /// deleted auth_providers will also be returned.
+  /// [showDeleted] - Optional. Deleted auth providers will be kept with a
+  /// soft-delete for 30 days before being purged. If this field is set to
+  /// `true`, deleted auth providers will also be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -667,13 +669,13 @@ class ProjectsLocationsAuthProvidersResource {
     );
   }
 
-  /// Updates the parameters of a single AuthProvider.
+  /// Updates the parameters of a single auth provider.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. The full resource name of the auth_provider. Format:
+  /// [name] - Identifier. The full resource name of the auth provider. Format:
   /// projects/{project}/locations/{location}/authProviders/{auth_provider}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+$`.
@@ -691,8 +693,8 @@ class ProjectsLocationsAuthProvidersResource {
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
   /// [updateMask] - Optional. Field mask is used to specify the fields to be
-  /// overwritten in the AuthProvider resource by the update. The fields
-  /// specified in the update_mask are relative to the resource, not the full
+  /// overwritten in the auth provider resource by the update. The fields
+  /// specified in the `update_mask` are relative to the resource, not the full
   /// request. A field will be overwritten if it is in the mask. If the user
   /// does not provide a mask then all fields present in the request will be
   /// overwritten.
@@ -734,7 +736,7 @@ class ProjectsLocationsAuthProvidersResource {
     );
   }
 
-  /// Queries what all auth_providers are used by a given workload_id.
+  /// Queries which auth providers are used by a given workload ID.
   ///
   /// Request parameters:
   ///
@@ -792,21 +794,22 @@ class ProjectsLocationsAuthProvidersResource {
     );
   }
 
-  /// Queries what all workloads are using a given auth_provider.
+  /// Queries which workloads are using a given auth provider.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the auth_provider to query. Format:
+  /// [name] - Required. The name of the auth provider to query. Format:
   /// projects/{project}/locations/{location}/authProviders/{auth_provider}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
+  /// The maximum page size is 1000.
   ///
   /// [pageToken] - Optional. A token, which can be sent as `page_token` to
   /// retrieve the next page. When paginating, all other parameters provided to
-  /// QueryWorkloads must match the call that provided the page token. If this
+  /// `QueryWorkloads` must match the call that provided the page token. If this
   /// field is omitted, the first page is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -843,16 +846,16 @@ class ProjectsLocationsAuthProvidersResource {
     );
   }
 
-  /// Revokes all authorizations for a specific user on an AuthProvider.
+  /// Revokes all authorizations for a specific user on an auth provider.
   ///
-  /// This deletes all authorization records associated with the user and
-  /// AuthProvider, effectively revoking access across all agents.
+  /// This deletes all authorization records associated with the user and auth
+  /// provider, effectively revoking access across all agents.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the AuthProvider. Format:
+  /// [name] - Required. The resource name of the auth provider. Format:
   /// projects/{project}/locations/{location}/authProviders/{auth_provider}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+$`.
@@ -989,13 +992,13 @@ class ProjectsLocationsAuthProvidersResource {
     );
   }
 
-  /// Undeletes a single AuthProvider.
+  /// Undeletes a single auth provider.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource Format:
+  /// [name] - Required. The resource name of the auth provider. Format:
   /// projects/{project}/locations/{location}/authProviders/{auth_provider}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+$`.
@@ -1041,11 +1044,12 @@ class ProjectsLocationsAuthProvidersAuthorizationsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Deletes a single Authorization.
+  /// Deletes a single authorization.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Authorization to delete. Format:
+  /// [name] - Required. The resource name of the authorization to delete.
+  /// Format:
   /// projects/{project}/locations/{location}/authProviders/{auth_provider}/authorizations/{authorization}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+/authorizations/\[^/\]+$`.
@@ -1092,11 +1096,11 @@ class ProjectsLocationsAuthProvidersAuthorizationsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single Authorization.
+  /// Gets details of a single authorization.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the resource
+  /// [name] - Required. The resource name of the authorization.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+/authorizations/\[^/\]+$`.
   ///
@@ -1130,7 +1134,7 @@ class ProjectsLocationsAuthProvidersAuthorizationsResource {
     );
   }
 
-  /// Lists Authorizations in a given project and location.
+  /// Lists authorizations in a given project and location.
   ///
   /// Request parameters:
   ///
@@ -1148,6 +1152,7 @@ class ProjectsLocationsAuthProvidersAuthorizationsResource {
   ///
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
+  /// The maximum page size is 1000.
   ///
   /// [pageToken] - Optional. A page token, received from a previous
   /// `ListAuthorizations` call. Provide this to retrieve the subsequent page.
@@ -1193,49 +1198,47 @@ class ProjectsLocationsAuthProvidersAuthorizationsResource {
   }
 }
 
-/// Message describing AccessSummary object
+/// Represents an access summary.
 class AccessSummary {
-  /// The auth_provider that this access summary is associated with.
+  /// The auth provider that this access summary is associated with.
   ///
   /// Output only.
   core.String? authProvider;
 
-  /// The type of the connector that was used to create this access summary.
+  /// The auth provider type used to create this access summary.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "AUTH_PROVIDER_TYPE_UNSPECIFIED" : Unspecified auth-provider type.
-  /// - "AUTH_PROVIDER_TYPE_THREE_LEGGED_OAUTH" : Three Legged OAuth
-  /// auth-provider type.
-  /// - "AUTH_PROVIDER_TYPE_TWO_LEGGED_OAUTH" : Two Legged OAuth auth-provider
-  /// type.
-  /// - "AUTH_PROVIDER_TYPE_API_KEY" : API Key auth-provider type.
-  /// - "AUTH_PROVIDER_TYPE_GEMINI_ENTERPRISE" : Gemini Enterprise auth-provider
+  /// - "AUTH_PROVIDER_TYPE_UNSPECIFIED" : Unspecified auth provider type.
+  /// - "AUTH_PROVIDER_TYPE_THREE_LEGGED_OAUTH" : 3-legged OAuth (3LO) auth
+  /// provider type.
+  /// - "AUTH_PROVIDER_TYPE_TWO_LEGGED_OAUTH" : 2-legged OAuth (2LO) auth
+  /// provider type.
+  /// - "AUTH_PROVIDER_TYPE_API_KEY" : API key auth provider type.
+  /// - "AUTH_PROVIDER_TYPE_GEMINI_ENTERPRISE" : Gemini Enterprise auth provider
   /// type.
   core.String? authProviderType;
 
-  /// The first time this user has interacted with this workload.
-  ///
-  /// Rounded to the previous hour.
+  /// The first time this user interacted with this workload, rounded to the
+  /// previous hour.
   ///
   /// Output only.
   core.String? firstAccessTime;
 
-  /// Labels as key value pairs
+  /// Labels as key-value pairs.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// The most recent time this user has interacted with this workload.
-  ///
-  /// Rounded to the previous hour.
+  /// The most recent time this user interacted with this workload, rounded to
+  /// the previous hour.
   ///
   /// Output only.
   core.String? lastAccessTime;
 
   /// Identifier.
   ///
-  /// Name of the AccessSummary
+  /// The resource name of the access summary.
   ///
   /// Output only.
   core.String? name;
@@ -1252,12 +1255,12 @@ class AccessSummary {
   /// Output only.
   core.List<core.String>? scopes;
 
-  /// The url of the authentication server that was accessed.
+  /// The URL of the authentication server that was accessed.
   ///
   /// Output only.
   core.String? tokenUrl;
 
-  /// The user_id provided by the workload application for this user.
+  /// The user ID provided by the workload application for this user.
   ///
   /// Not verified by Google.
   ///
@@ -1265,9 +1268,9 @@ class AccessSummary {
   core.String? userId;
 
   /// The identity bound to the workload that this user interacted with to
-  /// produce this AccessSummary.
+  /// produce this access summary.
   ///
-  /// Will typically be an agentic spiffe id
+  /// Typically an agentic SPIFFE ID.
   ///
   /// Output only.
   core.String? workloadId;
@@ -1333,11 +1336,11 @@ class AccessSummary {
   }
 }
 
-/// Message describing ApiKeyParams object.
+/// Configuration for API key authentication.
 class ApiKeyParams {
   /// Input only.
   ///
-  /// The API key for this auth_provider.
+  /// The API key for this auth provider.
   ///
   /// Optional.
   core.String? apiKey;
@@ -1409,9 +1412,9 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
-/// Message describing AuthProvider object
+/// Represents an auth provider.
 class AuthProvider {
-  /// List of scopes that are allowed to be requested for this auth_provider.
+  /// List of scopes that are allowed to be requested for this auth provider.
   ///
   /// If this list is non-empty, only scopes within this list may be requested.
   /// If this list is empty, all scopes may be requested. Scopes appearing in
@@ -1421,13 +1424,13 @@ class AuthProvider {
   /// Optional.
   core.List<core.String>? allowedScopes;
 
-  /// AuthProvider type specific parameters.
+  /// Parameters specific to the auth provider type.
   ///
   /// Required.
   AuthProviderTypeParams? authProviderTypeParams;
 
-  /// List of scopes that are blocked from being requested for this
-  /// auth_provider.
+  /// List of scopes that are blocked from being requested for this auth
+  /// provider.
   ///
   /// If a scope appears in this list, it will not be requested, even if it also
   /// appears in `allowed_scopes`. `blocked_scopes` takes precedence over
@@ -1436,12 +1439,12 @@ class AuthProvider {
   /// Optional.
   core.List<core.String>? blockedScopes;
 
-  /// Create time stamp
+  /// The creation timestamp.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// This is set to true if the auth_provider is deleted.
+  /// Set to `true` if the auth provider is deleted.
   ///
   /// Output only.
   core.bool? deleted;
@@ -1453,23 +1456,23 @@ class AuthProvider {
   /// Optional.
   core.String? description;
 
-  /// The time when the auth_provider will expire.
+  /// The time when the auth provider will expire.
   ///
   /// Output only.
   core.String? expireTime;
 
-  /// Labels as key value pairs
+  /// Labels as key-value pairs.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Identifier.
   ///
-  /// The full resource name of the auth_provider. Format:
+  /// The full resource name of the auth provider. Format:
   /// projects/{project}/locations/{location}/authProviders/{auth_provider}
   core.String? name;
 
-  /// The state of the auth_provider.
+  /// The state of the auth provider.
   ///
   /// Output only.
   /// Possible string values are:
@@ -1478,15 +1481,15 @@ class AuthProvider {
   /// - "DISABLED" : Disabled and cannot be used.
   core.String? state;
 
-  /// Update time stamp
+  /// The update timestamp.
   ///
   /// Output only.
   core.String? updateTime;
 
   /// Input only.
   ///
-  /// Represents the workload identity in IAM `principal://` format of the
-  /// agent(s) that will use this AuthProvider. Example:
+  /// Identifiers for the agents that will use this auth provider, starting with
+  /// `principal://`. For example:
   /// `principal://agents.global.org-${ORG_ID}.system.id.goog/resources/aiplatform/projects/{PROJECT_ID}/locations/{LOCATIONS}/reasoningEngines/{ID}`
   ///
   /// Optional.
@@ -1566,20 +1569,20 @@ class AuthProvider {
   }
 }
 
-/// AuthProvider type specific parameters.
+/// Parameters specific to the auth provider type.
 ///
-/// Required when creating an auth_provider.
+/// Required.
 class AuthProviderTypeParams {
-  /// ApiKey AuthProvider type parameters.
+  /// Parameters for API key authentication.
   ApiKeyParams? apiKey;
 
-  /// GeminiEnterprise auth_provider type parameters.
+  /// Parameters for Gemini Enterprise authentication.
   GeminiEnterpriseAuthProviderParams? geAuthProvider;
 
-  /// ThreeLeggedOAuth AuthProvider type parameters.
+  /// Parameters for 3-legged OAuth (3LO) authentication.
   ThreeLeggedOAuth? threeLeggedOauth;
 
-  /// TwoLeggedOAuth AuthProvider type parameters.
+  /// Parameters for 2-legged OAuth (2LO) authentication.
   TwoLeggedOAuth? twoLeggedOauth;
 
   AuthProviderTypeParams({
@@ -1628,23 +1631,23 @@ class AuthProviderTypeParams {
   }
 }
 
-/// Message describing Authorization object
+/// Represents an authorization.
 class Authorization {
-  /// The client_user_id provided by the client application for their end user.
+  /// The client user ID provided by the client application for their end user.
   ///
   /// Not verified by Google.
   ///
   /// Output only.
   core.String? clientUserId;
 
-  /// Create time stamp
+  /// The creation timestamp.
   ///
   /// Output only.
   core.String? createTime;
 
   /// Identifier.
   ///
-  /// name of resource
+  /// The resource name of the authorization.
   core.String? name;
 
   /// The scopes actually granted by the end user during the consent flow.
@@ -1661,7 +1664,7 @@ class Authorization {
   /// - "SUSPENDED" : Suspended.
   core.String? state;
 
-  /// Update time stamp
+  /// The update timestamp.
   ///
   /// Output only.
   core.String? updateTime;
@@ -1808,7 +1811,7 @@ class Binding {
   }
 }
 
-/// Message for disabling an AuthProvider
+/// Request message for `DisableAuthProvider`.
 typedef DisableAuthProviderRequest = $AuthProviderRequest;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1819,7 +1822,7 @@ typedef DisableAuthProviderRequest = $AuthProviderRequest;
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// Message for enabling an AuthProvider
+/// Request message for `EnableAuthProvider`.
 typedef EnableAuthProviderRequest = $AuthProviderRequest;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1842,12 +1845,12 @@ typedef EnableAuthProviderRequest = $AuthProviderRequest;
 /// information.
 typedef Expr = $Expr;
 
-/// Message describing GeminiEnterpriseAuthProviderParams object.
+/// Configuration for Gemini Enterprise authentication.
 typedef GeminiEnterpriseAuthProviderParams = $Empty;
 
-/// Message for response to listing AccessSummaries
+/// Response message for `ListAccessSummaries`.
 class ListAccessSummariesResponse {
-  /// The list of AccessSummary
+  /// The list of access summaries.
   core.List<AccessSummary>? accessSummaries;
 
   /// A token identifying a page of results the server should return.
@@ -1891,9 +1894,9 @@ class ListAccessSummariesResponse {
   }
 }
 
-/// Message for response to listing AuthProviders
+/// Response message for `ListAuthProviders`.
 class ListAuthProvidersResponse {
-  /// The list of AuthProvider
+  /// The list of auth providers.
   core.List<AuthProvider>? authProviders;
 
   /// A token identifying a page of results the server should return.
@@ -1937,9 +1940,9 @@ class ListAuthProvidersResponse {
   }
 }
 
-/// Message for response to listing Authorizations
+/// Response message for `ListAuthorizations`.
 class ListAuthorizationsResponse {
-  /// The list of Authorization
+  /// The list of authorizations.
   core.List<Authorization>? authorizations;
 
   /// A token identifying a page of results the server should return.
@@ -2139,9 +2142,9 @@ class Policy {
   }
 }
 
-/// Response message for QueryAuthProviders.
+/// Response message for `QueryAuthProviders`.
 class QueryAuthProvidersResponse {
-  /// The unique list of auth_provider resource names used by the workload.
+  /// The unique list of auth provider resource names used by the workload.
   core.List<core.String>? authProviderNames;
 
   /// A token identifying a page of results the server should return.
@@ -2169,13 +2172,13 @@ class QueryAuthProvidersResponse {
   }
 }
 
-/// Response message for QueryWorkloads.
+/// Response message for `QueryWorkloads`.
 class QueryWorkloadsResponse {
   /// A token to retrieve the next page of results.
   core.String? nextPageToken;
 
-  /// The unique list of workload identifiers (agents) that used the
-  /// auth_provider.
+  /// The unique list of identifiers for the agents that used this auth
+  /// provider, starting with `principal://`.
   core.List<core.String>? workloadIds;
 
   QueryWorkloadsResponse({this.nextPageToken, this.workloadIds});
@@ -2195,7 +2198,7 @@ class QueryWorkloadsResponse {
   }
 }
 
-/// Request message for RevokeAuthorization.
+/// Request message for `RevokeAuthorization`.
 class RevokeAuthorizationRequest {
   /// The identity of the user to revoke authorization for.
   ///
@@ -2213,7 +2216,7 @@ class RevokeAuthorizationRequest {
   }
 }
 
-/// Response message for RevokeAuthorization.
+/// Response message for `RevokeAuthorization`.
 typedef RevokeAuthorizationResponse = $Empty;
 
 /// Request message for `SetIamPolicy` method.
@@ -2256,12 +2259,12 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
-/// Message describing ThreeLeggedOAuth object.
+/// Configuration for 3-legged OAuth (3LO) authentication.
 class ThreeLeggedOAuth {
   /// The authorization endpoint to send users to for consenting to delegate to
   /// the agent.
   ///
-  /// eg. "https://auth.atlassian.com/authorize"
+  /// For example, "https://auth.atlassian.com/authorize".
   ///
   /// Optional.
   core.String? authorizationUrl;
@@ -2278,8 +2281,8 @@ class ThreeLeggedOAuth {
   /// Optional.
   core.String? clientSecret;
 
-  /// The default continue URI for 3LO flow and it will be used when no continue
-  /// URI is provided in the RetrieveCredentials request.
+  /// The default continue URI for the 3LO flow, used when no continue URI is
+  /// provided in the RetrieveCredentials request.
   ///
   /// Optional.
   core.String? defaultContinueUri;
@@ -2290,16 +2293,16 @@ class ThreeLeggedOAuth {
   /// Optional.
   core.bool? enablePkce;
 
-  /// The redirect URL this auth_provider uses for the OAuth exchange.
+  /// The redirect URL this auth provider uses for the OAuth exchange.
   ///
-  /// This is deterministic based on the name of the auth_provider.
+  /// This is deterministic based on the name of the auth provider.
   ///
   /// Output only.
   core.String? redirectUrl;
 
   /// The token endpoint for requesting tokens on behalf of an end user.
   ///
-  /// eg. "https://auth.atlassian.com/oauth/token"
+  /// For example, "https://auth.atlassian.com/oauth/token".
   ///
   /// Optional.
   core.String? tokenUrl;
@@ -2345,7 +2348,7 @@ class ThreeLeggedOAuth {
   }
 }
 
-/// Message describing TwoLeggedOAuth object.
+/// Configuration for 2-legged OAuth (2LO) authentication.
 class TwoLeggedOAuth {
   /// The client ID of the OAuth client.
   ///
@@ -2385,5 +2388,5 @@ class TwoLeggedOAuth {
   }
 }
 
-/// Message for undeleting a AuthProvider
+/// Request message for `UndeleteAuthProvider`.
 typedef UndeleteAuthProviderRequest = $AuthProviderRequest;

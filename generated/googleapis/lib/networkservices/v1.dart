@@ -648,6 +648,10 @@ class ProjectsLocationsAgentGatewaysResource {
   /// should be listed, specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. A filter expression to filter the results listed in
+  /// the response. The expression must follow the syntax described in
+  /// \[AIP-160\](https://google.aip.dev/160).
+  ///
   /// [pageSize] - Optional. Maximum number of AgentGateways to return per call.
   ///
   /// [pageToken] - Optional. The value returned by the last
@@ -671,12 +675,14 @@ class ProjectsLocationsAgentGatewaysResource {
   /// this method will complete with the same error.
   async.Future<ListAgentGatewaysResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'returnPartialSuccess': ?returnPartialSuccess == null

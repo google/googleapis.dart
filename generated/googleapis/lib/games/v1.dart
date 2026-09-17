@@ -5448,16 +5448,12 @@ class PropertyValue {
   /// A string value.
   core.String? stringValue;
 
-  /// A timestamp value.
-  core.String? timestampValue;
-
   PropertyValue({
     this.boolValue,
     this.doubleValue,
     this.durationValue,
     this.intValue,
     this.stringValue,
-    this.timestampValue,
   });
 
   PropertyValue.fromJson(core.Map json_)
@@ -5467,7 +5463,6 @@ class PropertyValue {
         durationValue: json_['durationValue'] as core.String?,
         intValue: json_['intValue'] as core.String?,
         stringValue: json_['stringValue'] as core.String?,
-        timestampValue: json_['timestampValue'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -5476,14 +5471,12 @@ class PropertyValue {
     final durationValue = this.durationValue;
     final intValue = this.intValue;
     final stringValue = this.stringValue;
-    final timestampValue = this.timestampValue;
     return {
       'boolValue': ?boolValue,
       'doubleValue': ?doubleValue,
       'durationValue': ?durationValue,
       'intValue': ?intValue,
       'stringValue': ?stringValue,
-      'timestampValue': ?timestampValue,
     };
   }
 }

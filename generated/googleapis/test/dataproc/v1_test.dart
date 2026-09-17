@@ -688,6 +688,7 @@ api.AttachedDiskConfig buildAttachedDiskConfig() {
     o.diskType = 'foo';
     o.provisionedIops = 'foo';
     o.provisionedThroughput = 'foo';
+    o.type = 'foo';
   }
   buildCounterAttachedDiskConfig--;
   return o;
@@ -700,6 +701,7 @@ void checkAttachedDiskConfig(api.AttachedDiskConfig o) {
     unittest.expect(o.diskType!, unittest.equals('foo'));
     unittest.expect(o.provisionedIops!, unittest.equals('foo'));
     unittest.expect(o.provisionedThroughput!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterAttachedDiskConfig--;
 }

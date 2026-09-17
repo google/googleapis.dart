@@ -2324,6 +2324,7 @@ api.ObjectCustomContextPayload buildObjectCustomContextPayload() {
   buildCounterObjectCustomContextPayload++;
   if (buildCounterObjectCustomContextPayload < 3) {
     o.createTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.extendedDataTypeUrl = 'foo';
     o.updateTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.value = 'foo';
   }
@@ -2338,6 +2339,7 @@ void checkObjectCustomContextPayload(api.ObjectCustomContextPayload o) {
       o.createTime!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
+    unittest.expect(o.extendedDataTypeUrl!, unittest.equals('foo'));
     unittest.expect(
       o.updateTime!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),

@@ -604,7 +604,29 @@ class ActionInput {
 }
 
 /// Long text from external source.
-typedef AdditionalContent = $AdditionalContent;
+class AdditionalContent {
+  /// Long text organized into paragraphs.
+  core.List<core.String>? paragraphs;
+
+  /// Title of the additional content;
+  core.String? title;
+
+  AdditionalContent({this.paragraphs, this.title});
+
+  AdditionalContent.fromJson(core.Map json_)
+    : this(
+        paragraphs: (json_['paragraphs'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final paragraphs = this.paragraphs;
+    final title = this.title;
+    return {'paragraphs': ?paragraphs, 'title': ?title};
+  }
+}
 
 /// Aggregate product statuses for a given reporting context and country.
 class AggregateProductStatus {
@@ -663,6 +685,7 @@ class AggregateProductStatus {
   /// - "MERCHANT_REVIEWS" :
   /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
   /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  /// - "RENTAL_ADS" : Real Estate Rental Ads. .
   core.String? reportingContext;
 
   /// Products statistics for the given reporting context and country.
@@ -1457,7 +1480,31 @@ class Reason {
 }
 
 /// Region with code and localized name.
-typedef Region = $Region;
+class Region {
+  /// The
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  core.String? code;
+
+  /// The localized name of the region.
+  ///
+  /// For region with code='001' the value is 'All countries' or the equivalent
+  /// in other languages.
+  core.String? name;
+
+  Region({this.code, this.name});
+
+  Region.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final name = this.name;
+    return {'code': ?code, 'name': ?name};
+  }
+}
 
 /// Response containing an issue resolution content and actions for listed
 /// account issues.
@@ -1847,7 +1894,47 @@ class TextInputValue {
 }
 
 /// Block of text that may contain a tooltip with more information.
-typedef TextWithTooltip = $TextWithTooltip;
+class TextWithTooltip {
+  /// Value of the tooltip as a simple text.
+  core.String? simpleTooltipValue;
+
+  /// Value of the message as a simple text.
+  core.String? simpleValue;
+
+  /// The suggested type of an icon for tooltip, if a tooltip is present.
+  /// Possible string values are:
+  /// - "TOOLTIP_ICON_STYLE_UNSPECIFIED" : Default value. Will never be provided
+  /// by the API.
+  /// - "INFO" : Used when the tooltip adds additional information to the
+  /// context, the 'i' can be used as an icon.
+  /// - "QUESTION" : Used when the tooltip shows helpful information, the '?'
+  /// can be used as an icon.
+  core.String? tooltipIconStyle;
+
+  TextWithTooltip({
+    this.simpleTooltipValue,
+    this.simpleValue,
+    this.tooltipIconStyle,
+  });
+
+  TextWithTooltip.fromJson(core.Map json_)
+    : this(
+        simpleTooltipValue: json_['simpleTooltipValue'] as core.String?,
+        simpleValue: json_['simpleValue'] as core.String?,
+        tooltipIconStyle: json_['tooltipIconStyle'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final simpleTooltipValue = this.simpleTooltipValue;
+    final simpleValue = this.simpleValue;
+    final tooltipIconStyle = this.tooltipIconStyle;
+    return {
+      'simpleTooltipValue': ?simpleTooltipValue,
+      'simpleValue': ?simpleValue,
+      'tooltipIconStyle': ?tooltipIconStyle,
+    };
+  }
+}
 
 /// The payload for the triggered action.
 class TriggerActionPayload {

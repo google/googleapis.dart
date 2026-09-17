@@ -13415,6 +13415,15 @@ class Transport {
   /// Optional.
   core.List<core.String>? advertisedRoutes;
 
+  /// Controls whether resources proposed by the Transport are automatically
+  /// accepted on behalf of the user.
+  ///
+  /// List of actions that can be automatically accepted are: 1. VPC Peering
+  /// creation 2. Routing VPC Spoke creation 3. Hybrid Spoke creation
+  ///
+  /// Optional. Immutable.
+  core.bool? autoAccept;
+
   /// Bandwidth of the Transport.
   ///
   /// This must be one of the supported bandwidths for the remote profile, and
@@ -13458,6 +13467,14 @@ class Transport {
   /// Output only.
   core.String? generatedActivationKey;
 
+  /// The NCC Hub that the Transport should attach to.
+  ///
+  /// The hub must be in the same project as the Transport. Format: `{hub}` or
+  /// `projects/{project}/locations/global/hubs/{hub}`
+  ///
+  /// Optional. Immutable.
+  core.String? hub;
+
   /// Labels as key value pairs.
   ///
   /// Optional.
@@ -13497,6 +13514,15 @@ class Transport {
   ///
   /// Optional. Immutable.
   core.String? providedActivationKey;
+
+  /// Controls whether a Routing VPC Spoke should be created and attached to the
+  /// NCC Hub.
+  ///
+  /// This will provide Private Service Connect (PSC) connectivity through NCC.
+  /// This can only be set when the Transport is first created.
+  ///
+  /// Optional. Immutable.
+  core.bool? pscRoutingEnabled;
 
   /// The user supplied account id for the CSP associated with the remote
   /// profile.
@@ -13550,16 +13576,19 @@ class Transport {
 
   Transport({
     this.advertisedRoutes,
+    this.autoAccept,
     this.bandwidth,
     this.createTime,
     this.description,
     this.generatedActivationKey,
+    this.hub,
     this.labels,
     this.mtuLimit,
     this.name,
     this.network,
     this.peeringNetwork,
     this.providedActivationKey,
+    this.pscRoutingEnabled,
     this.remoteAccountId,
     this.remoteProfile,
     this.stackType,
@@ -13572,10 +13601,12 @@ class Transport {
         advertisedRoutes: (json_['advertisedRoutes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        autoAccept: json_['autoAccept'] as core.bool?,
         bandwidth: json_['bandwidth'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         generatedActivationKey: json_['generatedActivationKey'] as core.String?,
+        hub: json_['hub'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -13584,6 +13615,7 @@ class Transport {
         network: json_['network'] as core.String?,
         peeringNetwork: json_['peeringNetwork'] as core.String?,
         providedActivationKey: json_['providedActivationKey'] as core.String?,
+        pscRoutingEnabled: json_['pscRoutingEnabled'] as core.bool?,
         remoteAccountId: json_['remoteAccountId'] as core.String?,
         remoteProfile: json_['remoteProfile'] as core.String?,
         stackType: json_['stackType'] as core.String?,
@@ -13593,16 +13625,19 @@ class Transport {
 
   core.Map<core.String, core.dynamic> toJson() {
     final advertisedRoutes = this.advertisedRoutes;
+    final autoAccept = this.autoAccept;
     final bandwidth = this.bandwidth;
     final createTime = this.createTime;
     final description = this.description;
     final generatedActivationKey = this.generatedActivationKey;
+    final hub = this.hub;
     final labels = this.labels;
     final mtuLimit = this.mtuLimit;
     final name = this.name;
     final network = this.network;
     final peeringNetwork = this.peeringNetwork;
     final providedActivationKey = this.providedActivationKey;
+    final pscRoutingEnabled = this.pscRoutingEnabled;
     final remoteAccountId = this.remoteAccountId;
     final remoteProfile = this.remoteProfile;
     final stackType = this.stackType;
@@ -13610,16 +13645,19 @@ class Transport {
     final updateTime = this.updateTime;
     return {
       'advertisedRoutes': ?advertisedRoutes,
+      'autoAccept': ?autoAccept,
       'bandwidth': ?bandwidth,
       'createTime': ?createTime,
       'description': ?description,
       'generatedActivationKey': ?generatedActivationKey,
+      'hub': ?hub,
       'labels': ?labels,
       'mtuLimit': ?mtuLimit,
       'name': ?name,
       'network': ?network,
       'peeringNetwork': ?peeringNetwork,
       'providedActivationKey': ?providedActivationKey,
+      'pscRoutingEnabled': ?pscRoutingEnabled,
       'remoteAccountId': ?remoteAccountId,
       'remoteProfile': ?remoteProfile,
       'stackType': ?stackType,

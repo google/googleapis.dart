@@ -871,6 +871,7 @@ api.PscConfig buildPscConfig() {
   buildCounterPscConfig++;
   if (buildCounterPscConfig < 3) {
     o.endpointProject = 'foo';
+    o.requestedIpAddress = 'foo';
   }
   buildCounterPscConfig--;
   return o;
@@ -880,6 +881,7 @@ void checkPscConfig(api.PscConfig o) {
   buildCounterPscConfig++;
   if (buildCounterPscConfig < 3) {
     unittest.expect(o.endpointProject!, unittest.equals('foo'));
+    unittest.expect(o.requestedIpAddress!, unittest.equals('foo'));
   }
   buildCounterPscConfig--;
 }

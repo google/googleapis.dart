@@ -29,6 +29,8 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsMessagesResource]
+///   - [ProjectsRegistrationsResource]
+///     - [ProjectsRegistrationsTopicSubscriptionsResource]
 library;
 
 import 'dart:async' as async;
@@ -77,6 +79,8 @@ class ProjectsResource {
   final commons.ApiRequester _requester;
 
   ProjectsMessagesResource get messages => ProjectsMessagesResource(_requester);
+  ProjectsRegistrationsResource get registrations =>
+      ProjectsRegistrationsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -86,8 +90,9 @@ class ProjectsMessagesResource {
 
   ProjectsMessagesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Send a message to specified target (a registration token, topic or
-  /// condition).
+  /// Send a message to specified target (a \[Firebase Installation ID
+  /// (FID)\](/docs/cloud-messaging/android/get-started#access-firebase-installation-id),
+  /// registration token, topic, or condition).
   ///
   /// [request] - The metadata request object.
   ///
@@ -128,6 +133,267 @@ class ProjectsMessagesResource {
       queryParams: queryParams_,
     );
     return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsRegistrationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsRegistrationsTopicSubscriptionsResource get topicSubscriptions =>
+      ProjectsRegistrationsTopicSubscriptionsResource(_requester);
+
+  ProjectsRegistrationsResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class ProjectsRegistrationsTopicSubscriptionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsRegistrationsTopicSubscriptionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a TopicSubscription.
+  ///
+  /// Subscribes an app installation instance (by registration_id, either FID or
+  /// FCM Token) to a topicSubscription. Returns a TopicSubscription if it is
+  /// created successfully. If the subscription already exists, returns error of
+  /// ALREADY_EXISTS.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this subscription will be
+  /// created. Format: projects/{project}/registrations/{registration} The
+  /// {registration} part can be an FID or an FCM Token.
+  /// Value must have pattern `^projects/\[^/\]+/registrations/\[^/\]+$`.
+  ///
+  /// [topicName] - Required. The ID to use for the subscription, which is the
+  /// topic name. This will become the last segment of the TopicSubscription's
+  /// resource name. Topic names match the pattern of
+  /// "\[a-zA-Z0-9-_.~%\]{1,900}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TopicSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TopicSubscription> create(
+    TopicSubscription request,
+    core.String parent, {
+    core.String? topicName,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'topicName': ?topicName == null ? null : [topicName],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/topicSubscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TopicSubscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a TopicSubscription.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the topic subscription to delete. Format:
+  /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/registrations/\[^/\]+/topicSubscriptions/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the topic subscription is
+  /// not found, the request will succeed but no action will be taken on the
+  /// server.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a TopicSubscription.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the topic subscription to retrieve. Format:
+  /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/registrations/\[^/\]+/topicSubscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TopicSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TopicSubscription> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TopicSubscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists TopicSubscriptions for a given app instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource, which owns this collection of
+  /// subscriptions. Format: projects/{project}/registrations/{registration} The
+  /// {registration} part can be an FID or an FCM Token.
+  /// Value must have pattern `^projects/\[^/\]+/registrations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of subscriptions to return. The
+  /// service may return fewer than this value. If unspecified, at most 1000
+  /// subscriptions will be returned. The maximum value is 2000; values above
+  /// 2000 will be coerced to 2000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListTopicSubscriptions` call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTopicSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTopicSubscriptionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/topicSubscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTopicSubscriptionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a TopicSubscription.
+  ///
+  /// Subscribes an app installation instance by registration_id, either FID or
+  /// FCM Token, to a topicSubscription. Returns an existing TopicSubscription
+  /// or creates a new one if it does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the subscription. Format:
+  /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription}
+  /// The {registration} part contains the registration ID (e.g., FID).
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/registrations/\[^/\]+/topicSubscriptions/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the topic subscription is
+  /// not found, a new topic subscription will be created.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TopicSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TopicSubscription> patch(
+    TopicSubscription request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TopicSubscription.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -807,6 +1073,14 @@ class ApnsFcmOptions {
 /// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
 typedef Color = $Color;
 
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
 /// Platform independent options for features provided by the FCM SDKs.
 typedef FcmOptions = $FcmOptions;
 
@@ -859,6 +1133,40 @@ class LightSettings {
   }
 }
 
+/// Response message for ListTopicSubscriptions.
+class ListTopicSubscriptionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The topic subscriptions for the instance.
+  core.List<TopicSubscription>? topicSubscriptions;
+
+  ListTopicSubscriptionsResponse({this.nextPageToken, this.topicSubscriptions});
+
+  ListTopicSubscriptionsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        topicSubscriptions: (json_['topicSubscriptions'] as core.List?)
+            ?.map(
+              (value) => TopicSubscription.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final topicSubscriptions = this.topicSubscriptions;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'topicSubscriptions': ?topicSubscriptions,
+    };
+  }
+}
+
 /// Message to send by Firebase Cloud Messaging Service.
 class Message {
   /// Input only.
@@ -890,7 +1198,9 @@ class Message {
   /// Template for FCM SDK feature options to use across all platforms.
   FcmOptions? fcmOptions;
 
-  /// Firebase Installation ID to send a message to.
+  /// \[Firebase Installation ID
+  /// (FID)\](/docs/cloud-messaging/android/get-started#access-firebase-installation-id)
+  /// to send a message to.
   core.String? fid;
 
   /// The identifier of the message sent, in the format of `projects / *
@@ -906,8 +1216,8 @@ class Message {
 
   /// Deprecated: Use `fid` instead.
   ///
-  /// Registration token to send a message to. During the transition period,
-  /// this field also accepts a Firebase Installation ID (FID).
+  /// During the transition period, this field also accepts a Firebase
+  /// Installation ID (FID). Registration token to send a message to.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -1063,6 +1373,45 @@ class SendMessageRequest {
     final message = this.message;
     final validateOnly = this.validateOnly;
     return {'message': ?message, 'validateOnly': ?validateOnly};
+  }
+}
+
+/// Represents a subscription of a single app instance to a single FCM topic.
+class TopicSubscription {
+  /// Time when the subscription was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The resource name of the subscription. Format:
+  /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription}
+  /// The {registration} part contains the registration ID (e.g., FID).
+  core.String? name;
+
+  /// The ID of the TopicSubscription, which is the topic name.
+  ///
+  /// This corresponds to the {topicSubscription} segment in the resource name.
+  /// Topic names match the pattern of "\[a-zA-Z0-9-_.~%\]{1,900}".
+  ///
+  /// Output only.
+  core.String? topicName;
+
+  TopicSubscription({this.createTime, this.name, this.topicName});
+
+  TopicSubscription.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        topicName: json_['topicName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final name = this.name;
+    final topicName = this.topicName;
+    return {'createTime': ?createTime, 'name': ?name, 'topicName': ?topicName};
   }
 }
 

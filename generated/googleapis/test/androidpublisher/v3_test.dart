@@ -3866,6 +3866,29 @@ void checkExternalAccountIds(api.ExternalAccountIds o) {
   buildCounterExternalAccountIds--;
 }
 
+core.int buildCounterExternalContentLinkDetails = 0;
+api.ExternalContentLinkDetails buildExternalContentLinkDetails() {
+  final o = api.ExternalContentLinkDetails();
+  buildCounterExternalContentLinkDetails++;
+  if (buildCounterExternalContentLinkDetails < 3) {
+    o.externalAppCategory = 'foo';
+    o.installedAppPackage = 'foo';
+    o.linkType = 'foo';
+  }
+  buildCounterExternalContentLinkDetails--;
+  return o;
+}
+
+void checkExternalContentLinkDetails(api.ExternalContentLinkDetails o) {
+  buildCounterExternalContentLinkDetails++;
+  if (buildCounterExternalContentLinkDetails < 3) {
+    unittest.expect(o.externalAppCategory!, unittest.equals('foo'));
+    unittest.expect(o.installedAppPackage!, unittest.equals('foo'));
+    unittest.expect(o.linkType!, unittest.equals('foo'));
+  }
+  buildCounterExternalContentLinkDetails--;
+}
+
 core.int buildCounterExternalOfferDetails = 0;
 api.ExternalOfferDetails buildExternalOfferDetails() {
   final o = api.ExternalOfferDetails();
@@ -3921,6 +3944,7 @@ api.ExternalTransaction buildExternalTransaction() {
     o.createTime = 'foo';
     o.currentPreTaxAmount = buildPrice();
     o.currentTaxAmount = buildPrice();
+    o.externalContentLinkDetails = buildExternalContentLinkDetails();
     o.externalOfferDetails = buildExternalOfferDetails();
     o.externalTransactionId = 'foo';
     o.oneTimeTransaction = buildOneTimeExternalTransaction();
@@ -3944,6 +3968,7 @@ void checkExternalTransaction(api.ExternalTransaction o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkPrice(o.currentPreTaxAmount!);
     checkPrice(o.currentTaxAmount!);
+    checkExternalContentLinkDetails(o.externalContentLinkDetails!);
     checkExternalOfferDetails(o.externalOfferDetails!);
     unittest.expect(o.externalTransactionId!, unittest.equals('foo'));
     checkOneTimeExternalTransaction(o.oneTimeTransaction!);
@@ -6176,6 +6201,25 @@ void checkOneTimeProductDiscountedOffer(api.OneTimeProductDiscountedOffer o) {
   buildCounterOneTimeProductDiscountedOffer--;
 }
 
+core.int buildCounterOneTimeProductGameRewardOffer = 0;
+api.OneTimeProductGameRewardOffer buildOneTimeProductGameRewardOffer() {
+  final o = api.OneTimeProductGameRewardOffer();
+  buildCounterOneTimeProductGameRewardOffer++;
+  if (buildCounterOneTimeProductGameRewardOffer < 3) {
+    o.redemptionLimit = 'foo';
+  }
+  buildCounterOneTimeProductGameRewardOffer--;
+  return o;
+}
+
+void checkOneTimeProductGameRewardOffer(api.OneTimeProductGameRewardOffer o) {
+  buildCounterOneTimeProductGameRewardOffer++;
+  if (buildCounterOneTimeProductGameRewardOffer < 3) {
+    unittest.expect(o.redemptionLimit!, unittest.equals('foo'));
+  }
+  buildCounterOneTimeProductGameRewardOffer--;
+}
+
 core.int buildCounterOneTimeProductListing = 0;
 api.OneTimeProductListing buildOneTimeProductListing() {
   final o = api.OneTimeProductListing();
@@ -6227,6 +6271,7 @@ api.OneTimeProductOffer buildOneTimeProductOffer() {
   buildCounterOneTimeProductOffer++;
   if (buildCounterOneTimeProductOffer < 3) {
     o.discountedOffer = buildOneTimeProductDiscountedOffer();
+    o.gameRewardOffer = buildOneTimeProductGameRewardOffer();
     o.offerId = 'foo';
     o.offerTags = buildUnnamed120();
     o.packageName = 'foo';
@@ -6245,6 +6290,7 @@ void checkOneTimeProductOffer(api.OneTimeProductOffer o) {
   buildCounterOneTimeProductOffer++;
   if (buildCounterOneTimeProductOffer < 3) {
     checkOneTimeProductDiscountedOffer(o.discountedOffer!);
+    checkOneTimeProductGameRewardOffer(o.gameRewardOffer!);
     unittest.expect(o.offerId!, unittest.equals('foo'));
     checkUnnamed120(o.offerTags!);
     unittest.expect(o.packageName!, unittest.equals('foo'));
@@ -12307,6 +12353,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ExternalContentLinkDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExternalContentLinkDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExternalContentLinkDetails.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkExternalContentLinkDetails(od);
+    });
+  });
+
   unittest.group('obj-schema-ExternalOfferDetails', () {
     unittest.test('to-json--from-json', () async {
       final o = buildExternalOfferDetails();
@@ -13162,6 +13219,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkOneTimeProductDiscountedOffer(od);
+    });
+  });
+
+  unittest.group('obj-schema-OneTimeProductGameRewardOffer', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOneTimeProductGameRewardOffer();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OneTimeProductGameRewardOffer.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkOneTimeProductGameRewardOffer(od);
     });
   });
 

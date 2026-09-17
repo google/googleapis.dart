@@ -5392,7 +5392,7 @@ class Policy {
 }
 
 /// Request for getting a new access token.
-typedef RefreshRuntimeTokenInternalRequest = $Request13;
+typedef RefreshRuntimeTokenInternalRequest = $Request12;
 
 /// Response with a new access token.
 class RefreshRuntimeTokenInternalResponse {

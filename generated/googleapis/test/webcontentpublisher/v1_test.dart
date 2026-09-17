@@ -399,8 +399,6 @@ api.TosAcceptance buildTosAcceptance() {
   buildCounterTosAcceptance++;
   if (buildCounterTosAcceptance < 3) {
     o.emailOptIn = true;
-    o.signer = 'foo';
-    o.signerTitle = 'foo';
     o.userAccepted = true;
   }
   buildCounterTosAcceptance--;
@@ -411,8 +409,6 @@ void checkTosAcceptance(api.TosAcceptance o) {
   buildCounterTosAcceptance++;
   if (buildCounterTosAcceptance < 3) {
     unittest.expect(o.emailOptIn!, unittest.isTrue);
-    unittest.expect(o.signer!, unittest.equals('foo'));
-    unittest.expect(o.signerTitle!, unittest.equals('foo'));
     unittest.expect(o.userAccepted!, unittest.isTrue);
   }
   buildCounterTosAcceptance--;

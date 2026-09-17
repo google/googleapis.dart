@@ -116,6 +116,7 @@ api.AnswerQueryRequest buildAnswerQueryRequest() {
   final o = api.AnswerQueryRequest();
   buildCounterAnswerQueryRequest++;
   if (buildCounterAnswerQueryRequest < 3) {
+    o.filter = 'foo';
     o.query = 'foo';
   }
   buildCounterAnswerQueryRequest--;
@@ -125,6 +126,7 @@ api.AnswerQueryRequest buildAnswerQueryRequest() {
 void checkAnswerQueryRequest(api.AnswerQueryRequest o) {
   buildCounterAnswerQueryRequest++;
   if (buildCounterAnswerQueryRequest < 3) {
+    unittest.expect(o.filter!, unittest.equals('foo'));
     unittest.expect(o.query!, unittest.equals('foo'));
   }
   buildCounterAnswerQueryRequest--;

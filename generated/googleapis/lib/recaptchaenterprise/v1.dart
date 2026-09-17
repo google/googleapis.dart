@@ -4570,6 +4570,14 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// Output only.
   core.String? androidPackageName;
 
+  /// Indicates a failure collecting reCAPTCHA signals at token generation.
+  ///
+  /// This might be a transient condition, or persistent for a user’s
+  /// environment.
+  ///
+  /// Output only.
+  core.bool? clientSignalsFailed;
+
   /// The timestamp corresponding to the generation of the token.
   ///
   /// Output only.
@@ -4622,6 +4630,7 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   GoogleCloudRecaptchaenterpriseV1TokenProperties({
     this.action,
     this.androidPackageName,
+    this.clientSignalsFailed,
     this.createTime,
     this.hostname,
     this.invalidReason,
@@ -4633,6 +4642,7 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
     : this(
         action: json_['action'] as core.String?,
         androidPackageName: json_['androidPackageName'] as core.String?,
+        clientSignalsFailed: json_['clientSignalsFailed'] as core.bool?,
         createTime: json_['createTime'] as core.String?,
         hostname: json_['hostname'] as core.String?,
         invalidReason: json_['invalidReason'] as core.String?,
@@ -4643,6 +4653,7 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   core.Map<core.String, core.dynamic> toJson() {
     final action = this.action;
     final androidPackageName = this.androidPackageName;
+    final clientSignalsFailed = this.clientSignalsFailed;
     final createTime = this.createTime;
     final hostname = this.hostname;
     final invalidReason = this.invalidReason;
@@ -4651,6 +4662,7 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
     return {
       'action': ?action,
       'androidPackageName': ?androidPackageName,
+      'clientSignalsFailed': ?clientSignalsFailed,
       'createTime': ?createTime,
       'hostname': ?hostname,
       'invalidReason': ?invalidReason,
@@ -5394,8 +5406,9 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /// Settings for the frequency and difficulty at which this key triggers
   /// captcha challenges.
   ///
-  /// This should only be specified for `IntegrationType` CHECKBOX, INVISIBLE or
-  /// POLICY_BASED_CHALLENGE.
+  /// This should only be specified for `IntegrationType` CHECKBOX (defaults to
+  /// BALANCE), INVISIBLE (defaults to USABILITY), or POLICY_BASED_CHALLENGE
+  /// (defaults to USABILITY).
   ///
   /// Optional.
   /// Possible string values are:

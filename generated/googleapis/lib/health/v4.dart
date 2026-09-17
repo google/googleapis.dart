@@ -98,10 +98,18 @@ class GoogleHealthApi {
   static const googlehealthLocationReadonlyScope =
       'https://www.googleapis.com/auth/googlehealth.location.readonly';
 
+  /// See your Google Health logged symptoms data
+  static const googlehealthLoggedSymptomsReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.logged_symptoms.readonly';
+
   /// Add logged symptoms data to Google Health, and edit or delete the data it
   /// adds
   static const googlehealthLoggedSymptomsWriteonlyScope =
       'https://www.googleapis.com/auth/googlehealth.logged_symptoms.writeonly';
+
+  /// See your Google Health mindfulness data
+  static const googlehealthMindfulnessReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.mindfulness.readonly';
 
   /// Add mindfulness data to Google Health, and edit or delete the data it adds
   static const googlehealthMindfulnessWriteonlyScope =
@@ -118,6 +126,10 @@ class GoogleHealthApi {
   /// Add profile data to Google Health, and edit or delete the data it adds.
   static const googlehealthProfileWriteonlyScope =
       'https://www.googleapis.com/auth/googlehealth.profile.writeonly';
+
+  /// See your Google Health reproductive health data
+  static const googlehealthReproductiveHealthReadonlyScope =
+      'https://www.googleapis.com/auth/googlehealth.reproductive_health.readonly';
 
   /// Add reproductive health data to Google Health, and edit or delete the data
   /// it adds
@@ -3190,7 +3202,10 @@ class DailyRollUpDataPointsRequest {
 
   /// Aggregation window size, in number of days.
   ///
-  /// Defaults to 1 if not specified.
+  /// Defaults to 1 if not specified. If the requested range is not an exact
+  /// multiple of `window_size_days`, the final bucket chronologically will be
+  /// truncated at the upper endpoint of the range and will cover a duration
+  /// shorter than `window_size_days`.
   ///
   /// Optional.
   core.int? windowSizeDays;
@@ -5813,6 +5828,11 @@ class HeartRateRollupValue {
 /// square of successive differences (RMSSD) between normal heartbeats or by
 /// standard deviation of the inter-beat intervals (SDNN).
 class HeartRateVariability {
+  /// Metadata used in 1P surfaces.
+  ///
+  /// Optional.
+  HeartRateVariabilityMetadata? metadata;
+
   /// The root mean square of successive differences between normal heartbeats.
   ///
   /// This is a measure of heart rate variability used by Google Health.
@@ -5831,6 +5851,7 @@ class HeartRateVariability {
   core.double? standardDeviationMilliseconds;
 
   HeartRateVariability({
+    this.metadata,
     this.rootMeanSquareOfSuccessiveDifferencesMilliseconds,
     this.sampleTime,
     this.standardDeviationMilliseconds,
@@ -5838,6 +5859,11 @@ class HeartRateVariability {
 
   HeartRateVariability.fromJson(core.Map json_)
     : this(
+        metadata: json_.containsKey('metadata')
+            ? HeartRateVariabilityMetadata.fromJson(
+                json_['metadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         rootMeanSquareOfSuccessiveDifferencesMilliseconds:
             (json_['rootMeanSquareOfSuccessiveDifferencesMilliseconds']
                     as core.num?)
@@ -5852,15 +5878,54 @@ class HeartRateVariability {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final metadata = this.metadata;
     final rootMeanSquareOfSuccessiveDifferencesMilliseconds =
         this.rootMeanSquareOfSuccessiveDifferencesMilliseconds;
     final sampleTime = this.sampleTime;
     final standardDeviationMilliseconds = this.standardDeviationMilliseconds;
     return {
+      'metadata': ?metadata,
       'rootMeanSquareOfSuccessiveDifferencesMilliseconds':
           ?rootMeanSquareOfSuccessiveDifferencesMilliseconds,
       'sampleTime': ?sampleTime,
       'standardDeviationMilliseconds': ?standardDeviationMilliseconds,
+    };
+  }
+}
+
+/// Metadata for HeartRateVariability.
+class HeartRateVariabilityMetadata {
+  /// The power in interbeat interval fluctuations within the high frequency
+  /// band (0.15 Hz - 0.4 Hz).
+  ///
+  /// Optional.
+  core.double? highFrequencyPower;
+
+  /// The power in interbeat interval fluctuations within the low frequency band
+  /// (0.04 Hz - 0.15 Hz).
+  ///
+  /// Optional.
+  core.double? lowFrequencyPower;
+
+  HeartRateVariabilityMetadata({
+    this.highFrequencyPower,
+    this.lowFrequencyPower,
+  });
+
+  HeartRateVariabilityMetadata.fromJson(core.Map json_)
+    : this(
+        highFrequencyPower: (json_['highFrequencyPower'] as core.num?)
+            ?.toDouble(),
+        lowFrequencyPower: (json_['lowFrequencyPower'] as core.num?)
+            ?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final highFrequencyPower = this.highFrequencyPower;
+    final lowFrequencyPower = this.lowFrequencyPower;
+    return {
+      'highFrequencyPower': ?highFrequencyPower,
+      'lowFrequencyPower': ?lowFrequencyPower,
     };
   }
 }
@@ -7652,20 +7717,18 @@ class Profile {
 
   /// The automatically calculated running stride length, in millimeters.
   ///
-  /// The user must consent to one of the following access scopes to access this
-  /// field: -
+  /// The user must consent to the following access scope to access this field:
+  /// -
   /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
-  /// - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`
   ///
   /// Output only.
   core.int? autoRunningStrideLengthMm;
 
   /// The automatically calculated walking stride length, in millimeters.
   ///
-  /// The user must consent to one of the following access scopes to access this
-  /// field: -
+  /// The user must consent to the following access scope to access this field:
+  /// -
   /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
-  /// - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`
   ///
   /// Output only.
   core.int? autoWalkingStrideLengthMm;
@@ -7688,20 +7751,18 @@ class Profile {
 
   /// The user's user configured running stride length, in millimeters.
   ///
-  /// The user must consent to one of the following access scopes to access this
-  /// field: -
+  /// The user must consent to the following access scope to access this field:
+  /// -
   /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
-  /// - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`
   ///
   /// Optional.
   core.int? userConfiguredRunningStrideLengthMm;
 
   /// The user's user configured walking stride length, in millimeters.
   ///
-  /// The user must consent to one of the following access scopes to access this
-  /// field: -
+  /// The user must consent to the following access scope to access this field:
+  /// -
   /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
-  /// - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`
   ///
   /// Optional.
   core.int? userConfiguredWalkingStrideLengthMm;
@@ -8431,7 +8492,10 @@ class RollUpDataPointsRequest {
   /// The size of the time window to group data points into before applying the
   /// aggregation functions.
   ///
-  /// Must be at least 1 second.
+  /// Must be at least 1 second. If the requested range is not an exact multiple
+  /// of `window_size`, the final bucket chronologically will be truncated at
+  /// the upper endpoint of the range and will cover a duration shorter than
+  /// `window_size`.
   ///
   /// Required.
   core.String? windowSize;

@@ -22866,7 +22866,7 @@ class GoogleAdsSearchads360V23CommonPriceOffering {
 }
 
 /// Brand of the product.
-typedef GoogleAdsSearchads360V23CommonProductBrandInfo = $Shared25;
+typedef GoogleAdsSearchads360V23CommonProductBrandInfo = $Shared24;
 
 /// Category of a product offer.
 class GoogleAdsSearchads360V23CommonProductCategoryInfo {
@@ -22935,10 +22935,10 @@ class GoogleAdsSearchads360V23CommonProductChannelExclusivityInfo {
 }
 
 /// Locality of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductChannelInfo = $Shared26;
+typedef GoogleAdsSearchads360V23CommonProductChannelInfo = $Shared25;
 
 /// Condition of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductConditionInfo = $Shared27;
+typedef GoogleAdsSearchads360V23CommonProductConditionInfo = $Shared26;
 
 /// Custom attribute of a product offer.
 class GoogleAdsSearchads360V23CommonProductCustomAttributeInfo {
@@ -22996,7 +22996,7 @@ class GoogleAdsSearchads360V23CommonProductGroupingInfo {
 }
 
 /// Item id of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductItemIdInfo = $Shared28;
+typedef GoogleAdsSearchads360V23CommonProductItemIdInfo = $Shared27;
 
 /// Labels of a product offer.
 ///
@@ -23057,7 +23057,7 @@ class GoogleAdsSearchads360V23CommonProductTypeFullInfo {
 }
 
 /// Type of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductTypeInfo = $Shared29;
+typedef GoogleAdsSearchads360V23CommonProductTypeInfo = $Shared28;
 
 /// A Promotion asset.
 class GoogleAdsSearchads360V23CommonPromotionAsset {
@@ -32500,7 +32500,7 @@ class GoogleAdsSearchads360V23ResourcesInvoiceRegulatoryCostSummary {
 
 /// Brand of the product.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductBrand =
-    $Shared25;
+    $Shared24;
 
 /// One element of a category at a certain level.
 ///
@@ -32548,11 +32548,11 @@ class GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCategor
 
 /// Locality of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductChannel =
-    $Shared26;
+    $Shared25;
 
 /// Condition of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCondition =
-    $Shared27;
+    $Shared26;
 
 /// Custom attribute of a product offer.
 class GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCustomAttribute {
@@ -32592,11 +32592,11 @@ class GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCustomA
 
 /// Item id of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductItemId =
-    $Shared28;
+    $Shared27;
 
 /// Type of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductType =
-    $Shared29;
+    $Shared28;
 
 /// Filters for URLs in a page feed and URLs from the advertiser web domain.
 ///

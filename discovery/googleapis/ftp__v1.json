@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260815",
+    "revision": "20260909",
     "rootUrl": "https://ftp.googleapis.com/",
     "servicePath": "",
     "title": "Cloud FTP API",
@@ -1164,6 +1164,16 @@
                 "name": {
                     "description": "Identifier. name of resource",
                     "type": "string"
+                },
+                "satisfiesPzi": {
+                    "description": "Output only. Reserved for future use.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "satisfiesPzs": {
+                    "description": "Output only. Reserved for future use.",
+                    "readOnly": true,
+                    "type": "boolean"
                 },
                 "serviceAgent": {
                     "description": "Output only. Service agent used to access the customer bucket.",

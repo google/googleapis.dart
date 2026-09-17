@@ -1929,10 +1929,11 @@ class GroupsResource {
   /// request, if any.
   ///
   /// [query] - Required. The search query. * Must be specified in
-  /// [Common Expression Language](https://opensource.google/projects/cel). *
-  /// Must contain equality operators on the parent, e.g. `parent ==
-  /// 'customers/{customer_id}'`. The `customer_id` must begin with "C" (for
-  /// example, 'C046psxkn').
+  /// [Common Expression Language](https://opensource.google/projects/cel). See
+  /// [CEL Introduction](https://github.com/google/cel-spec/blob/master/doc/intro.md)
+  /// for CEL syntax usage and examples. * Must contain equality operators on
+  /// the parent, e.g. `parent == 'customers/{customer_id}'`. The `customer_id`
+  /// must begin with "C" (for example, 'C046psxkn').
   /// [Find your customer ID.](https://support.google.com/cloudidentity/answer/10070793)
   /// * Can contain optional inclusion operators on `labels` such as
   /// `'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). * Can
@@ -1943,7 +1944,13 @@ class GroupsResource {
   /// 'dev@examplepetstore.com'` * Can contain optional
   /// `startsWith/contains/equality` operators on `display_name`, such as
   /// `display_name.startsWith('dev')` , `display_name.contains('dev')`,
-  /// `display_name == 'dev'`
+  /// `display_name == 'dev'` Examples: * Search for all discussion forums under
+  /// a customer: `parent == 'customers/C046psxkn' &&
+  /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels` * Search
+  /// for groups with key starting with 'sales': `parent ==
+  /// 'customers/C046psxkn' && group_key.startsWith('sales')` * Search for
+  /// groups with display name containing 'test': `parent ==
+  /// 'customers/C046psxkn' && display_name.contains('test')`
   ///
   /// [view] - The level of detail to be returned. If unspecified, defaults to
   /// `View.BASIC`.
@@ -4027,6 +4034,42 @@ class ExpiryDetail {
   }
 }
 
+/// An external identifier for an entity in the Cloud Identity Groups API.
+///
+/// Used to link a `Group` in Cloud Identity Groups API with a corresponding
+/// entity in an external identity system or directory.
+class ExternalId {
+  /// The unique identifier assigned by the external identity provider.
+  ///
+  /// The API does not enforce uniqueness of IDs across entities, but clients
+  /// should ensure IDs are unique within their namespace.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// The namespace in which the entity exists.
+  ///
+  /// Cannot be empty. Currently, the only allowable namespace is
+  /// `"system/external"`.
+  ///
+  /// Required.
+  core.String? namespace;
+
+  ExternalId({this.id, this.namespace});
+
+  ExternalId.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        namespace: json_['namespace'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final namespace = this.namespace;
+    return {'id': ?id, 'namespace': ?namespace};
+  }
+}
+
 /// Resource representing the Android specific attributes of a Device.
 class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /// Whether the device passes Android CTS compliance.
@@ -5478,6 +5521,15 @@ class Group {
   /// Optional.
   DynamicGroupMetadata? dynamicGroupMetadata;
 
+  /// External identifiers associated with the `Group`.
+  ///
+  /// Enables external identity providers and directory sync tools to link their
+  /// native unique identifiers with this group. Currently, the only allowable
+  /// namespace is `"system/external"`.
+  ///
+  /// Optional.
+  core.List<ExternalId>? externalIds;
+
   /// The `EntityKey` of the `Group`.
   ///
   /// Required.
@@ -5534,6 +5586,7 @@ class Group {
     this.description,
     this.displayName,
     this.dynamicGroupMetadata,
+    this.externalIds,
     this.groupKey,
     this.labels,
     this.name,
@@ -5559,6 +5612,13 @@ class Group {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        externalIds: (json_['externalIds'] as core.List?)
+            ?.map(
+              (value) => ExternalId.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         groupKey: json_.containsKey('groupKey')
             ? EntityKey.fromJson(
                 json_['groupKey'] as core.Map<core.String, core.dynamic>,
@@ -5578,6 +5638,7 @@ class Group {
     final description = this.description;
     final displayName = this.displayName;
     final dynamicGroupMetadata = this.dynamicGroupMetadata;
+    final externalIds = this.externalIds;
     final groupKey = this.groupKey;
     final labels = this.labels;
     final name = this.name;
@@ -5589,6 +5650,7 @@ class Group {
       'description': ?description,
       'displayName': ?displayName,
       'dynamicGroupMetadata': ?dynamicGroupMetadata,
+      'externalIds': ?externalIds,
       'groupKey': ?groupKey,
       'labels': ?labels,
       'name': ?name,

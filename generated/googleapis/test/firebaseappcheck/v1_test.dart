@@ -815,6 +815,28 @@ void checkGoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse(
   buildCounterGoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse--;
 }
 
+core.int buildCounterGoogleFirebaseAppcheckV1LimitedUseConfig = 0;
+api.GoogleFirebaseAppcheckV1LimitedUseConfig
+buildGoogleFirebaseAppcheckV1LimitedUseConfig() {
+  final o = api.GoogleFirebaseAppcheckV1LimitedUseConfig();
+  buildCounterGoogleFirebaseAppcheckV1LimitedUseConfig++;
+  if (buildCounterGoogleFirebaseAppcheckV1LimitedUseConfig < 3) {
+    o.jti = 'foo';
+  }
+  buildCounterGoogleFirebaseAppcheckV1LimitedUseConfig--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1LimitedUseConfig(
+  api.GoogleFirebaseAppcheckV1LimitedUseConfig o,
+) {
+  buildCounterGoogleFirebaseAppcheckV1LimitedUseConfig++;
+  if (buildCounterGoogleFirebaseAppcheckV1LimitedUseConfig < 3) {
+    unittest.expect(o.jti!, unittest.equals('foo'));
+  }
+  buildCounterGoogleFirebaseAppcheckV1LimitedUseConfig--;
+}
+
 core.List<api.GoogleFirebaseAppcheckV1DebugToken> buildUnnamed9() => [
   buildGoogleFirebaseAppcheckV1DebugToken(),
   buildGoogleFirebaseAppcheckV1DebugToken(),
@@ -918,6 +940,54 @@ void checkGoogleFirebaseAppcheckV1ListServicesResponse(
     checkUnnamed11(o.services!);
   }
   buildCounterGoogleFirebaseAppcheckV1ListServicesResponse--;
+}
+
+core.int buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenRequest = 0;
+api.GoogleFirebaseAppcheckV1MintAppCheckTokenRequest
+buildGoogleFirebaseAppcheckV1MintAppCheckTokenRequest() {
+  final o = api.GoogleFirebaseAppcheckV1MintAppCheckTokenRequest();
+  buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenRequest++;
+  if (buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenRequest < 3) {
+    o.limitedUseConfig = buildGoogleFirebaseAppcheckV1LimitedUseConfig();
+    o.tokenTtl = 'foo';
+  }
+  buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenRequest--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1MintAppCheckTokenRequest(
+  api.GoogleFirebaseAppcheckV1MintAppCheckTokenRequest o,
+) {
+  buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenRequest++;
+  if (buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenRequest < 3) {
+    checkGoogleFirebaseAppcheckV1LimitedUseConfig(o.limitedUseConfig!);
+    unittest.expect(o.tokenTtl!, unittest.equals('foo'));
+  }
+  buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenRequest--;
+}
+
+core.int buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenResponse = 0;
+api.GoogleFirebaseAppcheckV1MintAppCheckTokenResponse
+buildGoogleFirebaseAppcheckV1MintAppCheckTokenResponse() {
+  final o = api.GoogleFirebaseAppcheckV1MintAppCheckTokenResponse();
+  buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenResponse++;
+  if (buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenResponse < 3) {
+    o.token = 'foo';
+    o.ttl = 'foo';
+  }
+  buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenResponse--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1MintAppCheckTokenResponse(
+  api.GoogleFirebaseAppcheckV1MintAppCheckTokenResponse o,
+) {
+  buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenResponse++;
+  if (buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenResponse < 3) {
+    unittest.expect(o.token!, unittest.equals('foo'));
+    unittest.expect(o.ttl!, unittest.equals('foo'));
+  }
+  buildCounterGoogleFirebaseAppcheckV1MintAppCheckTokenResponse--;
 }
 
 core.int buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfig = 0;
@@ -1741,6 +1811,17 @@ void main() {
     },
   );
 
+  unittest.group('obj-schema-GoogleFirebaseAppcheckV1LimitedUseConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleFirebaseAppcheckV1LimitedUseConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleFirebaseAppcheckV1LimitedUseConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleFirebaseAppcheckV1LimitedUseConfig(od);
+    });
+  });
+
   unittest.group(
     'obj-schema-GoogleFirebaseAppcheckV1ListDebugTokensResponse',
     () {
@@ -1780,6 +1861,36 @@ void main() {
       checkGoogleFirebaseAppcheckV1ListServicesResponse(od);
     });
   });
+
+  unittest.group(
+    'obj-schema-GoogleFirebaseAppcheckV1MintAppCheckTokenRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleFirebaseAppcheckV1MintAppCheckTokenRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleFirebaseAppcheckV1MintAppCheckTokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleFirebaseAppcheckV1MintAppCheckTokenRequest(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleFirebaseAppcheckV1MintAppCheckTokenResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleFirebaseAppcheckV1MintAppCheckTokenResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleFirebaseAppcheckV1MintAppCheckTokenResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleFirebaseAppcheckV1MintAppCheckTokenResponse(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleFirebaseAppcheckV1PlayIntegrityConfig', () {
     unittest.test('to-json--from-json', () async {
@@ -2997,6 +3108,75 @@ void main() {
       checkGoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse(
         response
             as api.GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse,
+      );
+    });
+
+    unittest.test('method--mintAppCheckToken', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(mock).projects.apps;
+      final arg_request =
+          buildGoogleFirebaseAppcheckV1MintAppCheckTokenRequest();
+      final arg_app = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj =
+              api.GoogleFirebaseAppcheckV1MintAppCheckTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>,
+              );
+          checkGoogleFirebaseAppcheckV1MintAppCheckTokenRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleFirebaseAppcheckV1MintAppCheckTokenResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.mintAppCheckToken(
+        arg_request,
+        arg_app,
+        $fields: arg_$fields,
+      );
+      checkGoogleFirebaseAppcheckV1MintAppCheckTokenResponse(
+        response as api.GoogleFirebaseAppcheckV1MintAppCheckTokenResponse,
       );
     });
   });

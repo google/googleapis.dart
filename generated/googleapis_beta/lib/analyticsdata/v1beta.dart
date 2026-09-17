@@ -1494,6 +1494,103 @@ class ConcatenateExpression {
   }
 }
 
+/// Define the truncated date range from start_date to end_date.
+class DataTruncationDateRange {
+  /// The end date in the format YYYY-MM-DD (inclusive).
+  core.String? endDate;
+
+  /// The start date in the format YYYY-MM-DD (inclusive).
+  core.String? startDate;
+
+  DataTruncationDateRange({this.endDate, this.startDate});
+
+  DataTruncationDateRange.fromJson(core.Map json_)
+    : this(
+        endDate: json_['endDate'] as core.String?,
+        startDate: json_['startDate'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endDate = this.endDate;
+    final startDate = this.startDate;
+    return {'endDate': ?endDate, 'startDate': ?startDate};
+  }
+}
+
+/// Describes a reason for data truncation in the report.
+class DataTruncationReason {
+  /// The data truncation date in the format YYYY-MM-DD.
+  ///
+  /// Indicates data before this date is truncated.
+  core.String? dataTruncationDate;
+
+  /// The truncated date ranges.
+  core.List<DataTruncationDateRange>? dataTruncationDateRanges;
+
+  /// A descriptive message explaining the data truncation.
+  core.String? dataTruncationMessage;
+
+  /// The type of data truncation.
+  /// Possible string values are:
+  /// - "DATA_TRUNCATION_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "DATA_TRUNCATION_TYPE_RULES_BASED_MODELS" : Data is truncated in
+  /// attribution report for rules-based models golden date.
+  /// - "DATA_TRUNCATION_TYPE_DATA_DRIVEN_ATTRIBUTION" : Data is truncated in
+  /// attribution report for data driven attribution golden date.
+  /// - "DATA_TRUNCATION_TYPE_DV360" : Data is truncated because DV360 policy
+  /// does not permit data older than 2 years from being returned.
+  /// - "DATA_TRUNCATION_TYPE_CM360" : Data is truncated because CM360 policy
+  /// does not permit data older than 2 years from being returned.
+  /// - "DATA_TRUNCATION_TYPE_ITEM_SCOPED_ECOMMERCE_METRICS" : New item-scoped
+  /// ecommerce metrics only have data after a specific date.
+  /// - "DATA_TRUNCATION_TYPE_EVENT_SCOPED_ECOMMERCE_METRICS" : New event-scoped
+  /// ecommerce metrics only have data after a specific date.
+  /// - "DATA_TRUNCATION_TYPE_DATE_RANGE" : Query date range may not be fully
+  /// served.
+  /// - "DATA_TRUNCATION_TYPE_PROPERTY" : Data truncated because the query
+  /// attempts to read event data prior to its retention date.
+  /// - "DATA_TRUNCATION_TYPE_CONVERSIONS" : Data is truncated in conversions
+  /// report.
+  /// - "DATA_TRUNCATION_TYPE_GOOGLE_ADS" : Data is truncated due to Google Ads
+  /// 36 month retention policy.
+  core.String? dataTruncationType;
+
+  DataTruncationReason({
+    this.dataTruncationDate,
+    this.dataTruncationDateRanges,
+    this.dataTruncationMessage,
+    this.dataTruncationType,
+  });
+
+  DataTruncationReason.fromJson(core.Map json_)
+    : this(
+        dataTruncationDate: json_['dataTruncationDate'] as core.String?,
+        dataTruncationDateRanges:
+            (json_['dataTruncationDateRanges'] as core.List?)
+                ?.map(
+                  (value) => DataTruncationDateRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dataTruncationMessage: json_['dataTruncationMessage'] as core.String?,
+        dataTruncationType: json_['dataTruncationType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dataTruncationDate = this.dataTruncationDate;
+    final dataTruncationDateRanges = this.dataTruncationDateRanges;
+    final dataTruncationMessage = this.dataTruncationMessage;
+    final dataTruncationType = this.dataTruncationType;
+    return {
+      'dataTruncationDate': ?dataTruncationDate,
+      'dataTruncationDateRanges': ?dataTruncationDateRanges,
+      'dataTruncationMessage': ?dataTruncationMessage,
+      'dataTruncationType': ?dataTruncationType,
+    };
+  }
+}
+
 /// A contiguous set of days: `startDate`, `startDate + 1`, ..., `endDate`.
 ///
 /// Requests are allowed up to 4 date ranges.
@@ -3010,6 +3107,9 @@ class ResponseMetaData {
   /// sampling\](https://support.google.com/analytics/answer/13208658#reports).
   core.bool? dataLossFromOtherRow;
 
+  /// If set, indicate there is data truncation in the report.
+  core.List<DataTruncationReason>? dataTruncationReasons;
+
   /// If empty reason is specified, the report is empty for this reason.
   core.String? emptyReason;
 
@@ -3050,6 +3150,7 @@ class ResponseMetaData {
   ResponseMetaData({
     this.currencyCode,
     this.dataLossFromOtherRow,
+    this.dataTruncationReasons,
     this.emptyReason,
     this.samplingMetadatas,
     this.schemaRestrictionResponse,
@@ -3061,6 +3162,13 @@ class ResponseMetaData {
     : this(
         currencyCode: json_['currencyCode'] as core.String?,
         dataLossFromOtherRow: json_['dataLossFromOtherRow'] as core.bool?,
+        dataTruncationReasons: (json_['dataTruncationReasons'] as core.List?)
+            ?.map(
+              (value) => DataTruncationReason.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         emptyReason: json_['emptyReason'] as core.String?,
         samplingMetadatas: (json_['samplingMetadatas'] as core.List?)
             ?.map(
@@ -3083,6 +3191,7 @@ class ResponseMetaData {
   core.Map<core.String, core.dynamic> toJson() {
     final currencyCode = this.currencyCode;
     final dataLossFromOtherRow = this.dataLossFromOtherRow;
+    final dataTruncationReasons = this.dataTruncationReasons;
     final emptyReason = this.emptyReason;
     final samplingMetadatas = this.samplingMetadatas;
     final schemaRestrictionResponse = this.schemaRestrictionResponse;
@@ -3091,6 +3200,7 @@ class ResponseMetaData {
     return {
       'currencyCode': ?currencyCode,
       'dataLossFromOtherRow': ?dataLossFromOtherRow,
+      'dataTruncationReasons': ?dataTruncationReasons,
       'emptyReason': ?emptyReason,
       'samplingMetadatas': ?samplingMetadatas,
       'schemaRestrictionResponse': ?schemaRestrictionResponse,

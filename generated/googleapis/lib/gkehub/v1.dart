@@ -10518,7 +10518,7 @@ class Role {
 
 /// Rollout contains the Rollout metadata and configuration.
 ///
-/// Next ID: 31
+/// Next ID: 32
 class Rollout {
   /// The timestamp at which the Rollout was completed.
   ///

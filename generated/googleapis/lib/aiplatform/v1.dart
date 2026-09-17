@@ -239,6 +239,8 @@
 ///       - [ProjectsLocationsStudiesOperationsResource]
 ///       - [ProjectsLocationsStudiesTrialsResource]
 ///         - [ProjectsLocationsStudiesTrialsOperationsResource]
+///     - [ProjectsLocationsTaskStoresResource]
+///       - [ProjectsLocationsTaskStoresOperationsResource]
 ///     - [ProjectsLocationsTensorboardsResource]
 ///       - [ProjectsLocationsTensorboardsExperimentsResource]
 ///         - [ProjectsLocationsTensorboardsExperimentsOperationsResource]
@@ -286,6 +288,8 @@
 ///   - [StudiesOperationsResource]
 ///   - [StudiesTrialsResource]
 ///     - [StudiesTrialsOperationsResource]
+/// - [TaskStoresResource]
+///   - [TaskStoresOperationsResource]
 /// - [TensorboardsResource]
 ///   - [TensorboardsExperimentsResource]
 ///     - [TensorboardsExperimentsOperationsResource]
@@ -324,6 +328,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Build, scale, govern, and optimize sophisticated agents and models.
 class AiplatformApi {
+  /// See, edit, configure, and delete your Google Cloud Vertex AI data and see
+  /// the email address for your Google Account
+  static const aiplatformScope = 'https://www.googleapis.com/auth/aiplatform';
+
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
   static const cloudPlatformScope =
@@ -391,6 +399,7 @@ class AiplatformApi {
   SpecialistPoolsResource get specialistPools =>
       SpecialistPoolsResource(_requester);
   StudiesResource get studies => StudiesResource(_requester);
+  TaskStoresResource get taskStores => TaskStoresResource(_requester);
   TensorboardsResource get tensorboards => TensorboardsResource(_requester);
   TrainingPipelinesResource get trainingPipelines =>
       TrainingPipelinesResource(_requester);
@@ -10955,6 +10964,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsSpecialistPoolsResource(_requester);
   ProjectsLocationsStudiesResource get studies =>
       ProjectsLocationsStudiesResource(_requester);
+  ProjectsLocationsTaskStoresResource get taskStores =>
+      ProjectsLocationsTaskStoresResource(_requester);
   ProjectsLocationsTensorboardsResource get tensorboards =>
       ProjectsLocationsTensorboardsResource(_requester);
   ProjectsLocationsTrainingPipelinesResource get trainingPipelines =>
@@ -11862,6 +11873,14 @@ class ProjectsLocationsAgentsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
   ///
+  /// [force] - Optional. If true, any `Task` belonging to this agent is deleted
+  /// along with it. If false or unset and the agent still has at least one
+  /// `Task`, the request fails with `FAILED_PRECONDITION` and nothing is
+  /// deleted. This governs `Task` and nothing else. Resources the agent owns
+  /// but a caller never named -- its AI Application and the tenant project
+  /// bound to it, its Workspace identity, its service-extension binding -- are
+  /// torn down with the agent on every delete, whatever this field says.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -11874,9 +11893,11 @@ class ProjectsLocationsAgentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'force': ?force == null ? null : ['${force}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -11931,6 +11952,66 @@ class ProjectsLocationsAgentsResource {
     );
   }
 
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists the agents in a location that belong to the caller.
   ///
   /// An agent belongs to the end user recorded as its owner when it was
@@ -11943,6 +12024,40 @@ class ProjectsLocationsAgentsResource {
   /// [parent] - Required. The resource name of the location to list agents
   /// from. Format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An \[AIP-160\](https://google.aip.dev/160) filter
+  /// over the returned agents. An empty filter returns the unfiltered
+  /// collection. Supported fields, and the operators each accepts: * `created`
+  /// * `updated` * `base_agent` * `metadata.agent_type` `created` and `updated`
+  /// are timestamps and take an RFC-3339 value, for example
+  /// `2026-08-01T00:00:00Z`. Supported operators: `=`, `!=`, `<`, `>`, `<=`,
+  /// `>=`, `:`, `AND`, `OR`, `NOT` (equivalently `-`), and parentheses. Note
+  /// that `OR` binds more tightly than `AND`, so `a AND b OR c` means `a AND (b
+  /// OR c)`; parentheses are recommended, not required. `metadata.agent_type`
+  /// accepts only the value `"default_agent"`, matched exactly:
+  /// `metadata.agent_type:"default_agent"` selects the caller's default agent,
+  /// of which there is at most one, and the negated form selects the rest. Any
+  /// other value is `INVALID_ARGUMENT` rather than an empty page -- `metadata`
+  /// is an opaque blob, so only this one marker is indexed, and the server
+  /// cannot answer a question about the others. An agent designated before the
+  /// server began recording the marker is not matched by the positive form;
+  /// there is no backfill. `base_agent` accepts `=` and `!=` against the value
+  /// an agent was created with, and selects only among the agents you own: an
+  /// agent that belongs to the project rather than to a user is never returned
+  /// by a filter naming it, including the negated form. An agent created before
+  /// the server began recording the value is not matched either. Example:
+  /// `created > "2026-08-01T00:00:00Z" AND updated < "2026-08-09T00:00:00Z"`.
+  /// IMPORTANT -- `base_agent` and `metadata.agent_type` select only among the
+  /// agents you own. An agent that belongs to the project rather than to a user
+  /// is never returned by a filter naming either of them, including a negated
+  /// one: `base_agent != "some-value"` returns your matching agents and no
+  /// project-owned agents at all. Filtering on `created` or `updated` alone is
+  /// unaffected and still spans both. If you want every agent in the project,
+  /// do not filter on these two fields. Not supported: any field other than
+  /// those listed above, wildcards other than `field:*`, bare literals with no
+  /// field name, functions, and the regular-expression operators `=~` and `!~`.
+  /// A filter that names an unsupported field, exceeds 1000 characters, or
+  /// nests parentheses more than 5 deep fails with `INVALID_ARGUMENT`.
   ///
   /// [orderBy] - Optional. A comma-separated list of fields to order by.
   /// Supported fields: * `created` * `updated` Use `desc` after a field name
@@ -11969,12 +12084,14 @@ class ProjectsLocationsAgentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudAiplatformV1ListAgentsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
@@ -12038,6 +12155,109 @@ class ProjectsLocationsAgentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudAiplatformV1Agent.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [permissions] - The set of permissions to check for the `resource`.
+  /// Permissions with wildcards (such as `*` or `storage.*`) are not allowed.
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    core.String resource, {
+    core.List<core.String>? permissions,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'permissions': ?permissions,
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -41821,6 +42041,59 @@ class ProjectsLocationsReasoningEnginesSandboxEnvironmentsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
+  /// Checks whether the caller is authorized to access the sandbox environment.
+  ///
+  /// Authorization is performed entirely by the API infrastructure from the
+  /// `method_policy` below; the handler is a no-op. A successful response means
+  /// the caller holds `sandboxEnvironments.execute` on the named sandbox. Used
+  /// by the sandbox data-plane proxy, which forwards the caller's credential
+  /// and proxies traffic only on success.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the sandbox environment to
+  /// authorize access to. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reasoningEngines/\[^/\]+/sandboxEnvironments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse>
+  authorizeAccess(
+    GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':authorizeAccess';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Creates a SandboxEnvironment in a given reasoning engine.
   ///
   /// [request] - The metadata request object.
@@ -46440,6 +46713,271 @@ class ProjectsLocationsStudiesTrialsOperationsResource {
   /// [name] - The name of the operation resource to wait on.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+/trials/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [timeout] - The maximum duration to wait before timing out. If left blank,
+  /// the wait will be at most the time permitted by the underlying HTTP/RPC
+  /// protocol. If RPC context deadline is also specified, the shorter one will
+  /// be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    core.String name, {
+    core.String? timeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'timeout': ?timeout == null ? null : [timeout],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsTaskStoresResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTaskStoresOperationsResource get operations =>
+      ProjectsLocationsTaskStoresOperationsResource(_requester);
+
+  ProjectsLocationsTaskStoresResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class ProjectsLocationsTaskStoresOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTaskStoresOperationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taskStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taskStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taskStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taskStores/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taskStores/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [timeout] - The maximum duration to wait before timing out. If left blank,
   /// the wait will be at most the time permitted by the underlying HTTP/RPC
@@ -53060,6 +53598,59 @@ class ReasoningEnginesSandboxEnvironmentsResource {
   ReasoningEnginesSandboxEnvironmentsResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Checks whether the caller is authorized to access the sandbox environment.
+  ///
+  /// Authorization is performed entirely by the API infrastructure from the
+  /// `method_policy` below; the handler is a no-op. A successful response means
+  /// the caller holds `sandboxEnvironments.execute` on the named sandbox. Used
+  /// by the sandbox data-plane proxy, which forwards the caller's credential
+  /// and proxies traffic only on success.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the sandbox environment to
+  /// authorize access to. Format:
+  /// `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}`
+  /// Value must have pattern
+  /// `^reasoningEngines/\[^/\]+/sandboxEnvironments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse>
+  authorizeAccess(
+    GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':authorizeAccess';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Creates a SandboxEnvironment in a given reasoning engine.
   ///
   /// [request] - The metadata request object.
@@ -55702,6 +56293,265 @@ class StudiesTrialsOperationsResource {
   }
 }
 
+class TaskStoresResource {
+  final commons.ApiRequester _requester;
+
+  TaskStoresOperationsResource get operations =>
+      TaskStoresOperationsResource(_requester);
+
+  TaskStoresResource(commons.ApiRequester client) : _requester = client;
+}
+
+class TaskStoresOperationsResource {
+  final commons.ApiRequester _requester;
+
+  TaskStoresOperationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern `^taskStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern `^taskStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern `^taskStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^taskStores/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern `^taskStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [timeout] - The maximum duration to wait before timing out. If left blank,
+  /// the wait will be at most the time permitted by the underlying HTTP/RPC
+  /// protocol. If RPC context deadline is also specified, the shorter one will
+  /// be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    core.String name, {
+    core.String? timeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'timeout': ?timeout == null ? null : [timeout],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class TensorboardsResource {
   final commons.ApiRequester _requester;
 
@@ -57955,6 +58805,29 @@ class GoogleCloudAiplatformV1AgentEvent {
   }
 }
 
+/// Customizes the agent's response to the end user when a
+/// `SemanticGovernancePolicy` is evaluated (for example, with a custom message
+/// shown on denial).
+class GoogleCloudAiplatformV1AgentResponseCustomization {
+  /// Custom message shown to the end user when the policy check results in a
+  /// denial.
+  ///
+  /// Use this to explain the rationale to the user. Max 1000 characters.
+  ///
+  /// Optional.
+  core.String? denialMessage;
+
+  GoogleCloudAiplatformV1AgentResponseCustomization({this.denialMessage});
+
+  GoogleCloudAiplatformV1AgentResponseCustomization.fromJson(core.Map json_)
+    : this(denialMessage: json_['denialMessage'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final denialMessage = this.denialMessage;
+    return {'denialMessage': ?denialMessage};
+  }
+}
+
 /// A tool provides a list of actions available to the Agent during the process
 /// of executing a task.
 class GoogleCloudAiplatformV1AgentTool {
@@ -57965,24 +58838,32 @@ class GoogleCloudAiplatformV1AgentTool {
   /// Optional.
   core.Map<core.String, core.String>? headers;
 
-  /// The name of the MCP server.
+  /// The tool's Google Cloud resource name, used to resolve the tool.
   ///
-  /// Only applicable when `type` is `mcp_server`.
+  /// Applicable when `type` is `mcp_server` or `endpoint` (a tool registered in
+  /// Agent Registry), for example
+  /// `projects/{project}/locations/{location}/.../mcpServers/{id}` or
+  /// `projects/{project}/locations/{location}/.../endpoints/{id}`.
   ///
   /// Optional.
   core.String? name;
 
   /// The type of the tool.
   ///
-  /// Supported types: * `code_execution` * `filesystem` * `google_search` *
-  /// `mcp_server` * `url_context`
+  /// Supported types: * `code_execution` * `endpoint` * `filesystem` *
+  /// `google_search` * `mcp_server` * `url_context`
   ///
   /// Required.
   core.String? type;
 
-  /// The URL for the MCP server endpoint.
+  /// Temporary: the tool's runtime reference, consumed by CreateAgent to create
+  /// the downstream AI App.
   ///
-  /// Only applicable when `type` is `mcp_server`.
+  /// Applicable when `type` is `mcp_server` or `endpoint`. It is duplicated
+  /// here (the resource name is already in `name`) only because the Agent
+  /// service is not yet connected to Agent Registry to derive it from `name`;
+  /// the Task Service instead resolves it from Agent Registry (GetMcpServer /
+  /// GetEndpoint) at task creation.
   ///
   /// Optional.
   core.String? url;
@@ -59052,22 +59933,6 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
   )
   GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints? languageHints;
 
-  /// Configures transcription mode.
-  ///
-  /// Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to
-  /// `VERBATIM` transcription. In `SMART` mode, the model performs disfluency
-  /// removal (eliminating filler words, repetitions, and false starts), light
-  /// grammatical cleanup, automatic formatting (paragraphs, bullet points,
-  /// numbered lists), and minor user edits (inline self-corrections).
-  /// Timestamps and diarization are incompatible with mode `SMART`.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Unspecified transcription mode.
-  /// - "VERBATIM" : Verbatim transcription mode.
-  /// - "SMART" : Smart transcription mode.
-  core.String? mode;
-
   /// Configures word-level timestamp generation.
   ///
   /// Optional.
@@ -59080,7 +59945,6 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
     this.languageAuto,
     this.languageCodes,
     this.languageHints,
-    this.mode,
     this.wordTimestamp,
   });
 
@@ -59106,7 +59970,6 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
                 json_['languageHints'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        mode: json_['mode'] as core.String?,
         wordTimestamp: json_['wordTimestamp'] as core.bool?,
       );
 
@@ -59117,7 +59980,6 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
     final languageAuto = this.languageAuto;
     final languageCodes = this.languageCodes;
     final languageHints = this.languageHints;
-    final mode = this.mode;
     final wordTimestamp = this.wordTimestamp;
     return {
       'adaptationPhrases': ?adaptationPhrases,
@@ -59126,7 +59988,6 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
       'languageAuto': ?languageAuto,
       'languageCodes': ?languageCodes,
       'languageHints': ?languageHints,
-      'mode': ?mode,
       'wordTimestamp': ?wordTimestamp,
     };
   }
@@ -59620,6 +60481,18 @@ class GoogleCloudAiplatformV1AuthConfigOidcConfig {
     return {'idToken': ?idToken, 'serviceAccount': ?serviceAccount};
   }
 }
+
+/// Request message for
+/// SandboxEnvironmentExecutionService.AuthorizeSandboxEnvironmentAccess.
+typedef GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest =
+    $Empty;
+
+/// Response message for
+/// SandboxEnvironmentExecutionService.AuthorizeSandboxEnvironmentAccess.
+///
+/// Intentionally empty: a successful response is the authorization result.
+typedef GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse =
+    $Empty;
 
 /// A description of resources that to large degree are decided by Agent
 /// Platform, and require only a modest additional configuration.
@@ -81138,6 +82011,11 @@ class GoogleCloudAiplatformV1GenerationConfig {
   /// Optional.
   core.double? topP;
 
+  /// Config for translation.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1TranslationConfig? translationConfig;
+
   GoogleCloudAiplatformV1GenerationConfig({
     this.audioTimestamp,
     this.audioTranscriptionConfig,
@@ -81163,6 +82041,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
     this.thinkingConfig,
     this.topK,
     this.topP,
+    this.translationConfig,
   });
 
   GoogleCloudAiplatformV1GenerationConfig.fromJson(core.Map json_)
@@ -81226,6 +82105,12 @@ class GoogleCloudAiplatformV1GenerationConfig {
             : null,
         topK: (json_['topK'] as core.num?)?.toDouble(),
         topP: (json_['topP'] as core.num?)?.toDouble(),
+        translationConfig: json_.containsKey('translationConfig')
+            ? GoogleCloudAiplatformV1TranslationConfig.fromJson(
+                json_['translationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -81253,6 +82138,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
     final thinkingConfig = this.thinkingConfig;
     final topK = this.topK;
     final topP = this.topP;
+    final translationConfig = this.translationConfig;
     return {
       'audioTimestamp': ?audioTimestamp,
       'audioTranscriptionConfig': ?audioTranscriptionConfig,
@@ -81278,6 +82164,7 @@ class GoogleCloudAiplatformV1GenerationConfig {
       'thinkingConfig': ?thinkingConfig,
       'topK': ?topK,
       'topP': ?topP,
+      'translationConfig': ?translationConfig,
     };
   }
 }
@@ -88415,6 +89302,11 @@ class GoogleCloudAiplatformV1MeasurementMetric {
 
 /// A memory.
 class GoogleCloudAiplatformV1Memory {
+  /// Represents the context of the memory.
+  ///
+  /// Optional.
+  core.String? context;
+
   /// Represents the timestamp when this Memory was created.
   ///
   /// Output only.
@@ -88516,6 +89408,7 @@ class GoogleCloudAiplatformV1Memory {
   core.String? updateTime;
 
   GoogleCloudAiplatformV1Memory({
+    this.context,
     this.createTime,
     this.description,
     this.disableMemoryRevisions,
@@ -88535,6 +89428,7 @@ class GoogleCloudAiplatformV1Memory {
 
   GoogleCloudAiplatformV1Memory.fromJson(core.Map json_)
     : this(
+        context: json_['context'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         disableMemoryRevisions: json_['disableMemoryRevisions'] as core.bool?,
@@ -88571,6 +89465,7 @@ class GoogleCloudAiplatformV1Memory {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final context = this.context;
     final createTime = this.createTime;
     final description = this.description;
     final disableMemoryRevisions = this.disableMemoryRevisions;
@@ -88587,6 +89482,7 @@ class GoogleCloudAiplatformV1Memory {
     final ttl = this.ttl;
     final updateTime = this.updateTime;
     return {
+      'context': ?context,
       'createTime': ?createTime,
       'description': ?description,
       'disableMemoryRevisions': ?disableMemoryRevisions,
@@ -89220,6 +90116,14 @@ class GoogleCloudAiplatformV1MemoryMetadataValue {
 
 /// A revision of a Memory.
 class GoogleCloudAiplatformV1MemoryRevision {
+  /// Represents the context of the Memory Revision.
+  ///
+  /// The context may include context from both the historical revisions and the
+  /// extracted content.
+  ///
+  /// Output only.
+  core.String? context;
+
   /// Represents the timestamp when this Memory Revision was created.
   ///
   /// Output only.
@@ -89271,6 +90175,7 @@ class GoogleCloudAiplatformV1MemoryRevision {
   core.Map<core.String, core.Object?>? structuredData;
 
   GoogleCloudAiplatformV1MemoryRevision({
+    this.context,
     this.createTime,
     this.expireTime,
     this.extractedMemories,
@@ -89282,6 +90187,7 @@ class GoogleCloudAiplatformV1MemoryRevision {
 
   GoogleCloudAiplatformV1MemoryRevision.fromJson(core.Map json_)
     : this(
+        context: json_['context'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
         extractedMemories: (json_['extractedMemories'] as core.List?)
@@ -89303,6 +90209,7 @@ class GoogleCloudAiplatformV1MemoryRevision {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final context = this.context;
     final createTime = this.createTime;
     final expireTime = this.expireTime;
     final extractedMemories = this.extractedMemories;
@@ -89311,6 +90218,7 @@ class GoogleCloudAiplatformV1MemoryRevision {
     final name = this.name;
     final structuredData = this.structuredData;
     return {
+      'context': ?context,
       'createTime': ?createTime,
       'expireTime': ?expireTime,
       'extractedMemories': ?extractedMemories,
@@ -96316,7 +97224,8 @@ class GoogleCloudAiplatformV1OnlineEvaluator {
 class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservability {
   /// Optional log view that will be used to query logs.
   ///
-  /// If empty, the `_Default` view will be used.
+  /// If empty, the project's default view (`projects/{project_id}`) will be
+  /// used.
   ///
   /// Optional.
   core.String? logView;
@@ -96336,8 +97245,8 @@ class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservability {
 
   /// Optional trace view that will be used to query traces.
   ///
-  /// If empty, the `_Default` view will be used. NOTE: This field is not
-  /// supported yet and will be ignored if set.
+  /// If empty, the `_AllSpans` view from `_Trace` US bucket will be used, i.e.
+  /// `projects/{project_id}/locations/us/buckets/_Trace/datasets/Spans/views/_AllSpans`.
   ///
   /// Optional.
   core.String? traceView;
@@ -107585,6 +108494,9 @@ class GoogleCloudAiplatformV1SandboxEnvironment {
   /// - "STATE_TERMINATED" : Sandbox has terminated with underlying runtime
   /// failure.
   /// - "STATE_DELETED" : Sandbox runtime has been deleted.
+  /// - "STATE_PAUSED" : Sandbox runtime is paused.
+  /// - "STATE_PAUSING" : Sandbox runtime is pausing.
+  /// - "STATE_RESUMING" : Sandbox runtime is resuming.
   /// - "STATE_STOPPING" : Sandbox runtime is stopping.
   core.String? state;
 
@@ -108238,11 +109150,6 @@ class GoogleCloudAiplatformV1SandboxEnvironmentTemplateDefaultContainerEnvironme
 
 /// Configuration for egress control of sandbox instances.
 class GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig {
-  /// The customer VPC network that sandbox egress is routed into.
-  ///
-  /// Optional.
-  core.String? customerVpcNetwork;
-
   /// DNS peering configurations that allow sandbox egress to resolve
   /// customer-internal domains via the customer VPC.
   ///
@@ -108264,7 +109171,6 @@ class GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig {
   core.String? networkAttachment;
 
   GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig({
-    this.customerVpcNetwork,
     this.dnsPeeringConfigs,
     this.internetAccess,
     this.networkAttachment,
@@ -108273,7 +109179,6 @@ class GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig {
   GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig.fromJson(
     core.Map json_,
   ) : this(
-        customerVpcNetwork: json_['customerVpcNetwork'] as core.String?,
         dnsPeeringConfigs: (json_['dnsPeeringConfigs'] as core.List?)
             ?.map(
               (value) =>
@@ -108287,12 +109192,10 @@ class GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final customerVpcNetwork = this.customerVpcNetwork;
     final dnsPeeringConfigs = this.dnsPeeringConfigs;
     final internetAccess = this.internetAccess;
     final networkAttachment = this.networkAttachment;
     return {
-      'customerVpcNetwork': ?customerVpcNetwork,
       'dnsPeeringConfigs': ?dnsPeeringConfigs,
       'internetAccess': ?internetAccess,
       'networkAttachment': ?networkAttachment,
@@ -109868,6 +110771,13 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicy {
   /// Output only.
   core.String? agentIdentity;
 
+  /// Settings for customizing the agent's response to end users when this
+  /// policy is evaluated, such as messages displayed when the policy denies a
+  /// request.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1AgentResponseCustomization? agentResponseCustomization;
+
   /// Timestamp when this SemanticGovernancePolicy was created.
   ///
   /// Output only.
@@ -109914,6 +110824,7 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicy {
   GoogleCloudAiplatformV1SemanticGovernancePolicy({
     this.agent,
     this.agentIdentity,
+    this.agentResponseCustomization,
     this.createTime,
     this.description,
     this.displayName,
@@ -109928,6 +110839,13 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicy {
     : this(
         agent: json_['agent'] as core.String?,
         agentIdentity: json_['agentIdentity'] as core.String?,
+        agentResponseCustomization:
+            json_.containsKey('agentResponseCustomization')
+            ? GoogleCloudAiplatformV1AgentResponseCustomization.fromJson(
+                json_['agentResponseCustomization']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -109949,6 +110867,7 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicy {
   core.Map<core.String, core.dynamic> toJson() {
     final agent = this.agent;
     final agentIdentity = this.agentIdentity;
+    final agentResponseCustomization = this.agentResponseCustomization;
     final createTime = this.createTime;
     final description = this.description;
     final displayName = this.displayName;
@@ -109960,6 +110879,7 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicy {
     return {
       'agent': ?agent,
       'agentIdentity': ?agentIdentity,
+      'agentResponseCustomization': ?agentResponseCustomization,
       'createTime': ?createTime,
       'description': ?description,
       'displayName': ?displayName,
@@ -116685,6 +117605,44 @@ class GoogleCloudAiplatformV1Transcription {
     final finished = this.finished;
     final text = this.text;
     return {'finished': ?finished, 'text': ?text};
+  }
+}
+
+/// Config for translation features.
+class GoogleCloudAiplatformV1TranslationConfig {
+  /// If `true`, the model will generate audio when the target language is
+  /// spoken, essentially it will parrot the input.
+  ///
+  /// If `false`, we will not produce audio for the target language.
+  ///
+  /// Optional.
+  core.bool? echoTargetLanguage;
+
+  /// The target language for translation.
+  ///
+  /// Supported values are BCP-47 language codes (e.g. "en", "es", "fr").
+  ///
+  /// Required.
+  core.String? targetLanguageCode;
+
+  GoogleCloudAiplatformV1TranslationConfig({
+    this.echoTargetLanguage,
+    this.targetLanguageCode,
+  });
+
+  GoogleCloudAiplatformV1TranslationConfig.fromJson(core.Map json_)
+    : this(
+        echoTargetLanguage: json_['echoTargetLanguage'] as core.bool?,
+        targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final echoTargetLanguage = this.echoTargetLanguage;
+    final targetLanguageCode = this.targetLanguageCode;
+    return {
+      'echoTargetLanguage': ?echoTargetLanguage,
+      'targetLanguageCode': ?targetLanguageCode,
+    };
   }
 }
 

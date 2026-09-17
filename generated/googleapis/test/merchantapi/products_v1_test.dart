@@ -1330,6 +1330,8 @@ api.ProductCertification buildProductCertification() {
   if (buildCounterProductCertification < 3) {
     o.certificationAuthority = 'foo';
     o.certificationCode = 'foo';
+    o.certificationDocumentLink = 'foo';
+    o.certificationLabelLink = 'foo';
     o.certificationName = 'foo';
     o.certificationValue = 'foo';
   }
@@ -1342,6 +1344,8 @@ void checkProductCertification(api.ProductCertification o) {
   if (buildCounterProductCertification < 3) {
     unittest.expect(o.certificationAuthority!, unittest.equals('foo'));
     unittest.expect(o.certificationCode!, unittest.equals('foo'));
+    unittest.expect(o.certificationDocumentLink!, unittest.equals('foo'));
+    unittest.expect(o.certificationLabelLink!, unittest.equals('foo'));
     unittest.expect(o.certificationName!, unittest.equals('foo'));
     unittest.expect(o.certificationValue!, unittest.equals('foo'));
   }
@@ -1472,6 +1476,7 @@ api.ProductInstallment buildProductInstallment() {
     o.annualPercentageRate = 42.0;
     o.creditType = 'foo';
     o.downpayment = buildPrice();
+    o.mileageAllowance = buildMileage();
     o.months = 'foo';
     o.totalAmount = buildPrice();
   }
@@ -1486,6 +1491,7 @@ void checkProductInstallment(api.ProductInstallment o) {
     unittest.expect(o.annualPercentageRate!, unittest.equals(42.0));
     unittest.expect(o.creditType!, unittest.equals('foo'));
     checkPrice(o.downpayment!);
+    checkMileage(o.mileageAllowance!);
     unittest.expect(o.months!, unittest.equals('foo'));
     checkPrice(o.totalAmount!);
   }

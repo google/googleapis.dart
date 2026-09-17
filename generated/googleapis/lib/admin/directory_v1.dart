@@ -9994,6 +9994,24 @@ class Domains2 {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Details regarding the expiration of this role assignment.
+///
+/// Used to automatically revoke access when the time limit is reached.
+class ExpirationDetails {
+  /// The specific timestamp when the role assignment expires.
+  core.String? expireTime;
+
+  ExpirationDetails({this.expireTime});
+
+  ExpirationDetails.fromJson(core.Map json_)
+    : this(expireTime: json_['expireTime'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final expireTime = this.expireTime;
+    return {'expireTime': ?expireTime};
+  }
+}
+
 /// External identifier used to link and identify this group across external
 /// directory systems.
 class ExternalId {
@@ -12049,6 +12067,11 @@ class RoleAssignment {
   /// ETag of the resource.
   core.String? etag;
 
+  /// Details regarding the expiration of this role assignment.
+  ///
+  /// Optional.
+  ExpirationDetails? expirationDetails;
+
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#roleAssignment`.
@@ -12072,6 +12095,7 @@ class RoleAssignment {
     this.assigneeType,
     this.condition,
     this.etag,
+    this.expirationDetails,
     this.kind,
     this.orgUnitId,
     this.roleAssignmentId,
@@ -12085,6 +12109,12 @@ class RoleAssignment {
         assigneeType: json_['assigneeType'] as core.String?,
         condition: json_['condition'] as core.String?,
         etag: json_['etag'] as core.String?,
+        expirationDetails: json_.containsKey('expirationDetails')
+            ? ExpirationDetails.fromJson(
+                json_['expirationDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         kind: json_['kind'] as core.String?,
         orgUnitId: json_['orgUnitId'] as core.String?,
         roleAssignmentId: json_['roleAssignmentId'] as core.String?,
@@ -12097,6 +12127,7 @@ class RoleAssignment {
     final assigneeType = this.assigneeType;
     final condition = this.condition;
     final etag = this.etag;
+    final expirationDetails = this.expirationDetails;
     final kind = this.kind;
     final orgUnitId = this.orgUnitId;
     final roleAssignmentId = this.roleAssignmentId;
@@ -12107,6 +12138,7 @@ class RoleAssignment {
       'assigneeType': ?assigneeType,
       'condition': ?condition,
       'etag': ?etag,
+      'expirationDetails': ?expirationDetails,
       'kind': ?kind,
       'orgUnitId': ?orgUnitId,
       'roleAssignmentId': ?roleAssignmentId,

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-dart --enable-asserts generator/bin/generate.dart run_config generate --no-delete-existing
+dart --enable-asserts generator/bin/generate.dart run_config generate
 
-#cp generated/googleapis/lib/discovery/v1.dart discoveryapis_generator/lib/src/generated_googleapis/discovery/v1.dart
+cp generated/googleapis/lib/discovery/v1.dart discoveryapis_generator/lib/src/generated_googleapis/discovery/v1.dart
 
 echo 'starting on googleapis'
 pushd generated/googleapis || exit

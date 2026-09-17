@@ -11881,7 +11881,7 @@ class AdGroup {
   }
 }
 
-/// A single ad associated with an ad group.
+/// LINT: LEGACY_NAMES A single ad associated with an ad group.
 class AdGroupAd {
   /// The unique ID of the ad.
   ///
@@ -24881,6 +24881,8 @@ class VideoPerformanceAd {
   core.String? displayUrlBreadcrumb2;
 
   /// The domain of the display URL.
+  ///
+  /// Output only.
   core.String? domain;
 
   /// The URL address of the webpage that people reach after they click the ad.

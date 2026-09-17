@@ -2385,6 +2385,7 @@ api.UploadFileRequest buildUploadFileRequest() {
   buildCounterUploadFileRequest++;
   if (buildCounterUploadFileRequest < 3) {
     o.fileId = 'foo';
+    o.fileType = 'foo';
   }
   buildCounterUploadFileRequest--;
   return o;
@@ -2394,6 +2395,7 @@ void checkUploadFileRequest(api.UploadFileRequest o) {
   buildCounterUploadFileRequest++;
   if (buildCounterUploadFileRequest < 3) {
     unittest.expect(o.fileId!, unittest.equals('foo'));
+    unittest.expect(o.fileType!, unittest.equals('foo'));
   }
   buildCounterUploadFileRequest--;
 }
@@ -2420,6 +2422,14 @@ void checkUploadGenericArtifactMediaResponse(
   buildCounterUploadGenericArtifactMediaResponse--;
 }
 
+core.Map<core.String, core.String> buildUnnamed42() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed42(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
 core.int buildCounterUploadGenericArtifactRequest = 0;
 api.UploadGenericArtifactRequest buildUploadGenericArtifactRequest() {
   final o = api.UploadGenericArtifactRequest();
@@ -2427,6 +2437,7 @@ api.UploadGenericArtifactRequest buildUploadGenericArtifactRequest() {
   if (buildCounterUploadGenericArtifactRequest < 3) {
     o.filename = 'foo';
     o.packageId = 'foo';
+    o.versionAnnotations = buildUnnamed42();
     o.versionId = 'foo';
   }
   buildCounterUploadGenericArtifactRequest--;
@@ -2438,6 +2449,7 @@ void checkUploadGenericArtifactRequest(api.UploadGenericArtifactRequest o) {
   if (buildCounterUploadGenericArtifactRequest < 3) {
     unittest.expect(o.filename!, unittest.equals('foo'));
     unittest.expect(o.packageId!, unittest.equals('foo'));
+    checkUnnamed42(o.versionAnnotations!);
     unittest.expect(o.versionId!, unittest.equals('foo'));
   }
   buildCounterUploadGenericArtifactRequest--;
@@ -2532,9 +2544,9 @@ void checkUploadKfpArtifactMediaResponse(api.UploadKfpArtifactMediaResponse o) {
   buildCounterUploadKfpArtifactMediaResponse--;
 }
 
-core.List<core.String> buildUnnamed42() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed43() => ['foo', 'foo'];
 
-void checkUnnamed42(core.List<core.String> o) {
+void checkUnnamed43(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2546,7 +2558,7 @@ api.UploadKfpArtifactRequest buildUploadKfpArtifactRequest() {
   buildCounterUploadKfpArtifactRequest++;
   if (buildCounterUploadKfpArtifactRequest < 3) {
     o.description = 'foo';
-    o.tags = buildUnnamed42();
+    o.tags = buildUnnamed43();
   }
   buildCounterUploadKfpArtifactRequest--;
   return o;
@@ -2556,7 +2568,7 @@ void checkUploadKfpArtifactRequest(api.UploadKfpArtifactRequest o) {
   buildCounterUploadKfpArtifactRequest++;
   if (buildCounterUploadKfpArtifactRequest < 3) {
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed42(o.tags!);
+    checkUnnamed43(o.tags!);
   }
   buildCounterUploadKfpArtifactRequest--;
 }
@@ -2679,23 +2691,23 @@ void checkVPCSCConfig(api.VPCSCConfig o) {
   buildCounterVPCSCConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed43() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed44() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed43(core.Map<core.String, core.String> o) {
+void checkUnnamed44(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.Hash> buildUnnamed44() => [buildHash(), buildHash()];
+core.List<api.Hash> buildUnnamed45() => [buildHash(), buildHash()];
 
-void checkUnnamed44(core.List<api.Hash> o) {
+void checkUnnamed45(core.List<api.Hash> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHash(o[0]);
   checkHash(o[1]);
 }
 
-core.Map<core.String, core.Object?> buildUnnamed45() => {
+core.Map<core.String, core.Object?> buildUnnamed46() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -2708,7 +2720,7 @@ core.Map<core.String, core.Object?> buildUnnamed45() => {
   },
 };
 
-void checkUnnamed45(core.Map<core.String, core.Object?> o) {
+void checkUnnamed46(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -2722,9 +2734,9 @@ void checkUnnamed45(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted10['string'], unittest.equals('foo'));
 }
 
-core.List<api.Tag> buildUnnamed46() => [buildTag(), buildTag()];
+core.List<api.Tag> buildUnnamed47() => [buildTag(), buildTag()];
 
-void checkUnnamed46(core.List<api.Tag> o) {
+void checkUnnamed47(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
@@ -2735,13 +2747,13 @@ api.Version buildVersion() {
   final o = api.Version();
   buildCounterVersion++;
   if (buildCounterVersion < 3) {
-    o.annotations = buildUnnamed43();
+    o.annotations = buildUnnamed44();
     o.createTime = 'foo';
     o.description = 'foo';
-    o.fingerprints = buildUnnamed44();
-    o.metadata = buildUnnamed45();
+    o.fingerprints = buildUnnamed45();
+    o.metadata = buildUnnamed46();
     o.name = 'foo';
-    o.relatedTags = buildUnnamed46();
+    o.relatedTags = buildUnnamed47();
     o.updateTime = 'foo';
   }
   buildCounterVersion--;
@@ -2751,24 +2763,24 @@ api.Version buildVersion() {
 void checkVersion(api.Version o) {
   buildCounterVersion++;
   if (buildCounterVersion < 3) {
-    checkUnnamed43(o.annotations!);
+    checkUnnamed44(o.annotations!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed44(o.fingerprints!);
-    checkUnnamed45(o.metadata!);
+    checkUnnamed45(o.fingerprints!);
+    checkUnnamed46(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed46(o.relatedTags!);
+    checkUnnamed47(o.relatedTags!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterVersion--;
 }
 
-core.List<api.UpstreamPolicy> buildUnnamed47() => [
+core.List<api.UpstreamPolicy> buildUnnamed48() => [
   buildUpstreamPolicy(),
   buildUpstreamPolicy(),
 ];
 
-void checkUnnamed47(core.List<api.UpstreamPolicy> o) {
+void checkUnnamed48(core.List<api.UpstreamPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpstreamPolicy(o[0]);
   checkUpstreamPolicy(o[1]);
@@ -2779,7 +2791,7 @@ api.VirtualRepositoryConfig buildVirtualRepositoryConfig() {
   final o = api.VirtualRepositoryConfig();
   buildCounterVirtualRepositoryConfig++;
   if (buildCounterVirtualRepositoryConfig < 3) {
-    o.upstreamPolicies = buildUnnamed47();
+    o.upstreamPolicies = buildUnnamed48();
   }
   buildCounterVirtualRepositoryConfig--;
   return o;
@@ -2788,7 +2800,7 @@ api.VirtualRepositoryConfig buildVirtualRepositoryConfig() {
 void checkVirtualRepositoryConfig(api.VirtualRepositoryConfig o) {
   buildCounterVirtualRepositoryConfig++;
   if (buildCounterVirtualRepositoryConfig < 3) {
-    checkUnnamed47(o.upstreamPolicies!);
+    checkUnnamed48(o.upstreamPolicies!);
   }
   buildCounterVirtualRepositoryConfig--;
 }
@@ -2845,9 +2857,9 @@ void checkYumRepository(api.YumRepository o) {
   buildCounterYumRepository--;
 }
 
-core.List<core.String> buildUnnamed48() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed49() => ['foo', 'foo'];
 
-void checkUnnamed48(core.List<core.String> o) {
+void checkUnnamed49(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4280,7 +4292,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ArtifactRegistryApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed48();
+      final arg_extraLocationTypes = buildUnnamed49();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

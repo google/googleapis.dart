@@ -286,6 +286,9 @@ class AccountsContainersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Container> combine(
     core.String path, {
     core.bool? allowUserPermissionFeatureUpdate,
@@ -533,6 +536,9 @@ class AccountsContainersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Container> moveTagId(
     core.String path, {
     core.bool? allowUserPermissionFeatureUpdate,

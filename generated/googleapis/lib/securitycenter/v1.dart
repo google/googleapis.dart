@@ -9396,7 +9396,7 @@ class Connection {
   }
 }
 
-typedef Contact = $Shared30;
+typedef Contact = $Shared29;
 
 class ContactDetails {
   core.List<Contact>? contacts;
@@ -12041,7 +12041,7 @@ class GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
 }
 
 typedef GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo =
-    $Shared30;
+    $Shared29;
 
 class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality {
   ///
@@ -14033,7 +14033,7 @@ class PathNodeAssociatedFinding {
   }
 }
 
-typedef Pipeline = $Shared23;
+typedef Pipeline = $Shared22;
 
 class Pod {
   core.List<Container>? containers;
@@ -15353,8 +15353,8 @@ class Subject {
   }
 }
 
-typedef TestIamPermissionsRequest = $Shared31;
-typedef TestIamPermissionsResponse = $Shared31;
+typedef TestIamPermissionsRequest = $Shared30;
+typedef TestIamPermissionsResponse = $Shared30;
 
 class TicketInfo {
   core.String? assignee;

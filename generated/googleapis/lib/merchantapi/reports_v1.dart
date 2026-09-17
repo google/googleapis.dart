@@ -964,6 +964,7 @@ class IssueSeverityPerReportingContext {
   /// - "MERCHANT_REVIEWS" :
   /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
   /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  /// - "RENTAL_ADS" : Real Estate Rental Ads. .
   core.String? reportingContext;
 
   IssueSeverityPerReportingContext({
@@ -2088,6 +2089,7 @@ class ProductView {
   /// - "MERCHANT_REVIEWS" :
   /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
   /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  /// - "RENTAL_ADS" : Real Estate Rental Ads. .
   core.String? reportingContext;
 
   /// Normalized
@@ -2563,6 +2565,7 @@ class StatusPerReportingContext {
   /// - "MERCHANT_REVIEWS" :
   /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
   /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  /// - "RENTAL_ADS" : Real Estate Rental Ads. .
   core.String? reportingContext;
 
   StatusPerReportingContext({

@@ -2039,7 +2039,6 @@ api.PropertyValue buildPropertyValue() {
     o.durationValue = 'foo';
     o.intValue = 'foo';
     o.stringValue = 'foo';
-    o.timestampValue = 'foo';
   }
   buildCounterPropertyValue--;
   return o;
@@ -2053,7 +2052,6 @@ void checkPropertyValue(api.PropertyValue o) {
     unittest.expect(o.durationValue!, unittest.equals('foo'));
     unittest.expect(o.intValue!, unittest.equals('foo'));
     unittest.expect(o.stringValue!, unittest.equals('foo'));
-    unittest.expect(o.timestampValue!, unittest.equals('foo'));
   }
   buildCounterPropertyValue--;
 }

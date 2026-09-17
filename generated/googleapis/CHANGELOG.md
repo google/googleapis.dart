@@ -1,3 +1,17 @@
+## 18.0.0-wip
+
+- Mark APIs as `@Deprecated` with references to replacement
+  `package:google_cloud_*` packages:
+  - `cloudtasks` (`v2`) -> `package:google_cloud_tasks_v2`
+  - `compute` (`v1`) -> `package:google_cloud_compute_v1`
+
+### APIs
+
+- `agenciesandbrands` - new!
+- `auditmanager` - new!
+- `content` - **REMOVED**
+- `curationpartners` - new!
+
 ## 17.0.0
 
 - Mark APIs as `@Deprecated` with references to replacement

@@ -1827,6 +1827,7 @@ api.HeartRateVariability buildHeartRateVariability() {
   final o = api.HeartRateVariability();
   buildCounterHeartRateVariability++;
   if (buildCounterHeartRateVariability < 3) {
+    o.metadata = buildHeartRateVariabilityMetadata();
     o.rootMeanSquareOfSuccessiveDifferencesMilliseconds = 42.0;
     o.sampleTime = buildObservationSampleTime();
     o.standardDeviationMilliseconds = 42.0;
@@ -1838,6 +1839,7 @@ api.HeartRateVariability buildHeartRateVariability() {
 void checkHeartRateVariability(api.HeartRateVariability o) {
   buildCounterHeartRateVariability++;
   if (buildCounterHeartRateVariability < 3) {
+    checkHeartRateVariabilityMetadata(o.metadata!);
     unittest.expect(
       o.rootMeanSquareOfSuccessiveDifferencesMilliseconds!,
       unittest.equals(42.0),
@@ -1846,6 +1848,27 @@ void checkHeartRateVariability(api.HeartRateVariability o) {
     unittest.expect(o.standardDeviationMilliseconds!, unittest.equals(42.0));
   }
   buildCounterHeartRateVariability--;
+}
+
+core.int buildCounterHeartRateVariabilityMetadata = 0;
+api.HeartRateVariabilityMetadata buildHeartRateVariabilityMetadata() {
+  final o = api.HeartRateVariabilityMetadata();
+  buildCounterHeartRateVariabilityMetadata++;
+  if (buildCounterHeartRateVariabilityMetadata < 3) {
+    o.highFrequencyPower = 42.0;
+    o.lowFrequencyPower = 42.0;
+  }
+  buildCounterHeartRateVariabilityMetadata--;
+  return o;
+}
+
+void checkHeartRateVariabilityMetadata(api.HeartRateVariabilityMetadata o) {
+  buildCounterHeartRateVariabilityMetadata++;
+  if (buildCounterHeartRateVariabilityMetadata < 3) {
+    unittest.expect(o.highFrequencyPower!, unittest.equals(42.0));
+    unittest.expect(o.lowFrequencyPower!, unittest.equals(42.0));
+  }
+  buildCounterHeartRateVariabilityMetadata--;
 }
 
 core.int buildCounterHeartRateVariabilityPersonalRangeRollupValue = 0;
@@ -4842,6 +4865,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkHeartRateVariability(od);
+    });
+  });
+
+  unittest.group('obj-schema-HeartRateVariabilityMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHeartRateVariabilityMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HeartRateVariabilityMetadata.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkHeartRateVariabilityMetadata(od);
     });
   });
 

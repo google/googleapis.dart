@@ -3401,6 +3401,42 @@ class CommitSchemaRequest {
   }
 }
 
+/// Configuration specific to compiled Protocol Buffer schemas.
+class CompiledProtoSchema {
+  /// The compiled FileDescriptorSet binary.
+  ///
+  /// Required.
+  core.String? compiledBytes;
+  core.List<core.int> get compiledBytesAsBytes =>
+      convert.base64.decode(compiledBytes!);
+
+  set compiledBytesAsBytes(core.List<core.int> bytes_) {
+    compiledBytes = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// The name of the root message type in the schema.
+  ///
+  /// Required.
+  core.String? rootMessage;
+
+  CompiledProtoSchema({this.compiledBytes, this.rootMessage});
+
+  CompiledProtoSchema.fromJson(core.Map json_)
+    : this(
+        compiledBytes: json_['compiledBytes'] as core.String?,
+        rootMessage: json_['rootMessage'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final compiledBytes = this.compiledBytes;
+    final rootMessage = this.rootMessage;
+    return {'compiledBytes': ?compiledBytes, 'rootMessage': ?rootMessage};
+  }
+}
+
 /// Configuration for compressing/decompressing message data using a
 /// user-specified compression algorithm.
 typedef Compression = $Compression;
@@ -4659,6 +4695,14 @@ class RollbackSchemaRequest {
 
 /// A schema resource.
 class Schema {
+  /// Configuration for a schema provided as a pre-compiled Protocol Buffer
+  /// FileDescriptorSet.
+  ///
+  /// The `type` field above must be set to PROTOCOL_BUFFER.
+  ///
+  /// Optional.
+  CompiledProtoSchema? compiledProtoSchema;
+
   /// The definition of the schema.
   ///
   /// This should contain a string representing the full definition of the
@@ -4690,6 +4734,7 @@ class Schema {
   core.String? type;
 
   Schema({
+    this.compiledProtoSchema,
     this.definition,
     this.name,
     this.revisionCreateTime,
@@ -4699,6 +4744,12 @@ class Schema {
 
   Schema.fromJson(core.Map json_)
     : this(
+        compiledProtoSchema: json_.containsKey('compiledProtoSchema')
+            ? CompiledProtoSchema.fromJson(
+                json_['compiledProtoSchema']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         definition: json_['definition'] as core.String?,
         name: json_['name'] as core.String?,
         revisionCreateTime: json_['revisionCreateTime'] as core.String?,
@@ -4707,12 +4758,14 @@ class Schema {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final compiledProtoSchema = this.compiledProtoSchema;
     final definition = this.definition;
     final name = this.name;
     final revisionCreateTime = this.revisionCreateTime;
     final revisionId = this.revisionId;
     final type = this.type;
     return {
+      'compiledProtoSchema': ?compiledProtoSchema,
       'definition': ?definition,
       'name': ?name,
       'revisionCreateTime': ?revisionCreateTime,

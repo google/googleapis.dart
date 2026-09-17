@@ -2101,6 +2101,25 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterExpirationDetails = 0;
+api.ExpirationDetails buildExpirationDetails() {
+  final o = api.ExpirationDetails();
+  buildCounterExpirationDetails++;
+  if (buildCounterExpirationDetails < 3) {
+    o.expireTime = 'foo';
+  }
+  buildCounterExpirationDetails--;
+  return o;
+}
+
+void checkExpirationDetails(api.ExpirationDetails o) {
+  buildCounterExpirationDetails++;
+  if (buildCounterExpirationDetails < 3) {
+    unittest.expect(o.expireTime!, unittest.equals('foo'));
+  }
+  buildCounterExpirationDetails--;
+}
+
 core.int buildCounterExternalId = 0;
 api.ExternalId buildExternalId() {
   final o = api.ExternalId();
@@ -3137,6 +3156,7 @@ api.RoleAssignment buildRoleAssignment() {
     o.assigneeType = 'foo';
     o.condition = 'foo';
     o.etag = 'foo';
+    o.expirationDetails = buildExpirationDetails();
     o.kind = 'foo';
     o.orgUnitId = 'foo';
     o.roleAssignmentId = 'foo';
@@ -3154,6 +3174,7 @@ void checkRoleAssignment(api.RoleAssignment o) {
     unittest.expect(o.assigneeType!, unittest.equals('foo'));
     unittest.expect(o.condition!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
+    checkExpirationDetails(o.expirationDetails!);
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.orgUnitId!, unittest.equals('foo'));
     unittest.expect(o.roleAssignmentId!, unittest.equals('foo'));
@@ -4649,6 +4670,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExpirationDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExpirationDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExpirationDetails.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkExpirationDetails(od);
     });
   });
 

@@ -308,8 +308,8 @@ class ActivitiesResource {
   ///
   /// [includeSensitiveData] - Optional. When set to `true`, this field allows
   /// sensitive user-generated content to be included in the returned audit
-  /// logs. This parameter is supported only for Rules (DLP) and Chat
-  /// applications; using it with any other application will result in a
+  /// logs. This parameter is supported only for Rules (DLP), Chat and Workspace
+  /// Studio applications; using it with any other application will result in a
   /// permission error.
   ///
   /// [maxResults] - Determines how many activity records are shown on each
@@ -1725,6 +1725,10 @@ class Activity {
   core.List<ResourceDetails>? resourceDetails;
 
   /// Device details of the user doing the action.
+  ///
+  /// This field is only exposed for the `contacts`, `gemini_in_workspace_apps`,
+  /// `keep`, `meet_hardware`, `meet`, `chat`, `chrome`, `directory_sync`,
+  /// `drive`, `groups`, `rules`, `data_studio`, `saml` applications.
   ActivityUserDeviceInfo? userDeviceInfo;
 
   Activity({

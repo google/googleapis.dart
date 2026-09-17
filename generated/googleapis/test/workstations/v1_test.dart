@@ -1408,6 +1408,27 @@ void checkStopWorkstationRequest(api.StopWorkstationRequest o) {
   buildCounterStopWorkstationRequest--;
 }
 
+core.int buildCounterSuspendWorkstationRequest = 0;
+api.SuspendWorkstationRequest buildSuspendWorkstationRequest() {
+  final o = api.SuspendWorkstationRequest();
+  buildCounterSuspendWorkstationRequest++;
+  if (buildCounterSuspendWorkstationRequest < 3) {
+    o.etag = 'foo';
+    o.validateOnly = true;
+  }
+  buildCounterSuspendWorkstationRequest--;
+  return o;
+}
+
+void checkSuspendWorkstationRequest(api.SuspendWorkstationRequest o) {
+  buildCounterSuspendWorkstationRequest++;
+  if (buildCounterSuspendWorkstationRequest < 3) {
+    unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(o.validateOnly!, unittest.isTrue);
+  }
+  buildCounterSuspendWorkstationRequest--;
+}
+
 core.List<core.String> buildUnnamed35() => ['foo', 'foo'];
 
 void checkUnnamed35(core.List<core.String> o) {
@@ -1737,6 +1758,7 @@ api.WorkstationConfig buildWorkstationConfig() {
     o.etag = 'foo';
     o.grantWorkstationAdminRoleOnCreate = true;
     o.host = buildHost();
+    o.idleAction = 'foo';
     o.idleTimeout = 'foo';
     o.labels = buildUnnamed49();
     o.maxUsableWorkstations = 42;
@@ -1771,6 +1793,7 @@ void checkWorkstationConfig(api.WorkstationConfig o) {
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.grantWorkstationAdminRoleOnCreate!, unittest.isTrue);
     checkHost(o.host!);
+    unittest.expect(o.idleAction!, unittest.equals('foo'));
     unittest.expect(o.idleTimeout!, unittest.equals('foo'));
     checkUnnamed49(o.labels!);
     unittest.expect(o.maxUsableWorkstations!, unittest.equals(42));
@@ -2275,6 +2298,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkStopWorkstationRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-SuspendWorkstationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSuspendWorkstationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuspendWorkstationRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSuspendWorkstationRequest(od);
     });
   });
 
@@ -4529,6 +4563,74 @@ void main() {
           true,
         );
         final response = await res.stop(
+          arg_request,
+          arg_name,
+          $fields: arg_$fields,
+        );
+        checkOperation(response as api.Operation);
+      });
+
+      unittest.test('method--suspend', () async {
+        final mock = HttpServerMock();
+        final res = api.CloudWorkstationsApi(mock)
+            .projects
+            .locations
+            .workstationClusters
+            .workstationConfigs
+            .workstations;
+        final arg_request = buildSuspendWorkstationRequest();
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final obj = api.SuspendWorkstationRequest.fromJson(
+              json as core.Map<core.String, core.dynamic>,
+            );
+            checkSuspendWorkstationRequest(obj);
+
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(buildOperation());
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.suspend(
           arg_request,
           arg_name,
           $fields: arg_$fields,

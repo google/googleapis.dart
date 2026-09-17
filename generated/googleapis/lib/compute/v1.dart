@@ -18,6 +18,11 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
+/// > [!WARNING]
+/// > This API is deprecated. Use
+/// > [`package:google_cloud_compute_v1`](https://pub.dev/packages/google_cloud_compute_v1)
+/// > instead.
+///
 /// Compute Engine API - v1
 ///
 /// Creates and runs virtual machines on Google Cloud Platform.
@@ -83,6 +88,7 @@
 /// - [OrganizationSecurityPoliciesResource]
 /// - [PacketMirroringsResource]
 /// - [PreviewFeaturesResource]
+/// - [ProjectViewsResource]
 /// - [ProjectsResource]
 /// - [PublicAdvertisedPrefixesResource]
 /// - [PublicDelegatedPrefixesResource]
@@ -153,6 +159,7 @@
 /// - [ZoneOperationsResource]
 /// - [ZoneVmExtensionPoliciesResource]
 /// - [ZonesResource]
+@core.Deprecated('Use package:google_cloud_compute_v1')
 library;
 
 import 'dart:async' as async;
@@ -294,6 +301,7 @@ class ComputeApi {
       PacketMirroringsResource(_requester);
   PreviewFeaturesResource get previewFeatures =>
       PreviewFeaturesResource(_requester);
+  ProjectViewsResource get projectViews => ProjectViewsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
   PublicAdvertisedPrefixesResource get publicAdvertisedPrefixes =>
       PublicAdvertisedPrefixesResource(_requester);
@@ -1605,6 +1613,112 @@ class AdviceResource {
       queryParams: queryParams_,
     );
     return CalendarModeAdviceResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Advice on making real-time decisions (such as choosing zone or
+  /// machine types) during deployment to maximize your chances of obtaining
+  /// capacity.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CapacityAdviceResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CapacityAdviceResponse> capacity(
+    CapacityAdviceRequest request,
+    core.String project,
+    core.String region, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/advice/capacity';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CapacityAdviceResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the capacity history.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CapacityHistoryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CapacityHistoryResponse> capacityHistory(
+    CapacityHistoryRequest request,
+    core.String project,
+    core.String region, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/advice/capacityHistory';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CapacityHistoryResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -41188,6 +41302,70 @@ class PreviewFeaturesResource {
   }
 }
 
+class ProjectViewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectViewsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the specified global ProjectViews resource, with a regional
+  /// context.
+  /// This regional API endpoint reads resource metadata from regional
+  /// read-only replicas.
+  ///
+  /// Because changes are copied to these regional replicas
+  /// asynchronously, for real-time resource reads or any write operations
+  /// (creating, updating, or deleting resources), use the global
+  /// [projects.get](https://cloud.google.com/compute/docs/reference/rest/v1/projects/get)
+  /// endpoint.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID for this request. This is part of the URL
+  /// path.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Required. Name of the region for this request. This is part of
+  /// the URL path.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProjectView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProjectView> get(
+    core.String project,
+    core.String region, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/projectViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ProjectView.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -64401,6 +64579,69 @@ class ReservationSlotsResource {
     return ReservationSlotsGetResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Get health info on a reservation slot.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  ///
+  /// [zone] - Name of the zone for this request. Zone name should conform to
+  /// RFC1035.
+  ///
+  /// [parentName] - The name of the parent reservation, parent block and parent
+  /// sub-block. In
+  /// the format of
+  /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}/reservationSubBlocks/{reservation_sub_block_name}
+  /// Value must have pattern
+  /// `reservations/(\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19})/reservationBlocks/(\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19})/reservationSubBlocks/(\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19})`.
+  ///
+  /// [reservationSlot] - The name of the reservation slot.
+  /// Name should conform to RFC1035 or be a resource ID.
+  ///
+  /// [requestId] - An optional request ID to identify requests.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> getHealth(
+    core.String project,
+    core.String zone,
+    core.String parentName,
+    core.String reservationSlot, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/' +
+        core.Uri.encodeFull('$parentName') +
+        '/reservationSlots/' +
+        commons.escapeVariable('$reservationSlot') +
+        '/getHealth';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Allows customers to get SBOM versions of a reservation slot.
@@ -95070,7 +95311,8 @@ class BackendServiceHAPolicyLeaderNetworkEndpoint {
   /// instance must already be attached to the NEG specified in the
   /// haPolicy.leader.backendGroup.
   ///
-  /// The name must be 1-63 characters long, and comply with RFC1035.
+  /// The value must be a valid RFC1035 name (1-63 characters) or a valid
+  /// instance URL.
   /// Authorization requires the following IAM permission on the
   /// specified resource instance: compute.instances.use
   core.String? instance;
@@ -98089,6 +98331,704 @@ class CalendarModeRecommendation {
   }
 }
 
+/// A request to provide Assistant Scores.
+///
+/// These scores determine VM
+/// obtainability and preemption likelihood.
+class CapacityAdviceRequest {
+  /// Policy specifying the distribution of instances across
+  /// zones within the requested region.
+  CapacityAdviceRequestDistributionPolicy? distributionPolicy;
+
+  /// Policy for instance selectors.
+  CapacityAdviceRequestInstanceFlexibilityPolicy? instanceFlexibilityPolicy;
+
+  /// Instance properties for this request.
+  CapacityAdviceRequestInstanceProperties? instanceProperties;
+
+  /// The number of VM instances to request.
+  core.int? size;
+
+  CapacityAdviceRequest({
+    this.distributionPolicy,
+    this.instanceFlexibilityPolicy,
+    this.instanceProperties,
+    this.size,
+  });
+
+  CapacityAdviceRequest.fromJson(core.Map json_)
+    : this(
+        distributionPolicy: json_.containsKey('distributionPolicy')
+            ? CapacityAdviceRequestDistributionPolicy.fromJson(
+                json_['distributionPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        instanceFlexibilityPolicy:
+            json_.containsKey('instanceFlexibilityPolicy')
+            ? CapacityAdviceRequestInstanceFlexibilityPolicy.fromJson(
+                json_['instanceFlexibilityPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        instanceProperties: json_.containsKey('instanceProperties')
+            ? CapacityAdviceRequestInstanceProperties.fromJson(
+                json_['instanceProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        size: json_['size'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final distributionPolicy = this.distributionPolicy;
+    final instanceFlexibilityPolicy = this.instanceFlexibilityPolicy;
+    final instanceProperties = this.instanceProperties;
+    final size = this.size;
+    return {
+      'distributionPolicy': ?distributionPolicy,
+      'instanceFlexibilityPolicy': ?instanceFlexibilityPolicy,
+      'instanceProperties': ?instanceProperties,
+      'size': ?size,
+    };
+  }
+}
+
+/// Distribution policy.
+class CapacityAdviceRequestDistributionPolicy {
+  /// Target distribution shape.
+  ///
+  /// You can specify the following values:ANY, ANY_SINGLE_ZONE, or BALANCED.
+  /// Possible string values are:
+  /// - "ANY" : Picks zones for creating VM instances to fulfill the requested
+  /// number
+  /// of VMs within present resource constraints.
+  /// - "ANY_SINGLE_ZONE" : Creates all VM instances within a single zone. The
+  /// zone is selected
+  /// based on the present resource constraints.
+  /// - "BALANCED" : Prioritizes acquisition of resources, scheduling VMs in
+  /// zones where
+  /// resources are available while distributing VMs as evenly as possible
+  /// across selected zones to minimize the impact of zonal failure.
+  /// - "TARGET_SHAPE_UNSPECIFIED" : Default value, unused.
+  core.String? targetShape;
+
+  /// Zones where Capacity Advisor looks for capacity.
+  core.List<CapacityAdviceRequestDistributionPolicyZoneConfiguration>? zones;
+
+  CapacityAdviceRequestDistributionPolicy({this.targetShape, this.zones});
+
+  CapacityAdviceRequestDistributionPolicy.fromJson(core.Map json_)
+    : this(
+        targetShape: json_['targetShape'] as core.String?,
+        zones: (json_['zones'] as core.List?)
+            ?.map(
+              (value) =>
+                  CapacityAdviceRequestDistributionPolicyZoneConfiguration.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final targetShape = this.targetShape;
+    final zones = this.zones;
+    return {'targetShape': ?targetShape, 'zones': ?zones};
+  }
+}
+
+/// Zone configuration for the distribution policy.
+class CapacityAdviceRequestDistributionPolicyZoneConfiguration {
+  /// The URL of the zone.
+  ///
+  /// It can be a
+  /// partial or full URL. For example, the following are valid values:
+  ///
+  ///
+  ///      - https://www.googleapis.com/compute/v1/projects/project/zones/zone
+  ///    - projects/project/zones/zone
+  ///    - zones/zone
+  core.String? zone;
+
+  CapacityAdviceRequestDistributionPolicyZoneConfiguration({this.zone});
+
+  CapacityAdviceRequestDistributionPolicyZoneConfiguration.fromJson(
+    core.Map json_,
+  ) : this(zone: json_['zone'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final zone = this.zone;
+    return {'zone': ?zone};
+  }
+}
+
+/// Specification of alternative, flexible instance configurations.
+class CapacityAdviceRequestInstanceFlexibilityPolicy {
+  /// Named instance selections to configure properties.
+  /// The key is an arbitrary, unique RFC1035 string that identifies the
+  /// instance selection.
+  core.Map<
+    core.String,
+    CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection
+  >?
+  instanceSelections;
+
+  CapacityAdviceRequestInstanceFlexibilityPolicy({this.instanceSelections});
+
+  CapacityAdviceRequestInstanceFlexibilityPolicy.fromJson(core.Map json_)
+    : this(
+        instanceSelections:
+            (json_['instanceSelections']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final instanceSelections = this.instanceSelections;
+    return {'instanceSelections': ?instanceSelections};
+  }
+}
+
+/// Machine specification.
+class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection {
+  /// Local SSDs.
+  core.List<
+    CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk
+  >?
+  disks;
+
+  /// Accelerators configuration.
+  core.List<AcceleratorConfig>? guestAccelerators;
+
+  /// Full machine-type names, e.g. "n1-standard-16".
+  core.List<core.String>? machineTypes;
+
+  CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection({
+    this.disks,
+    this.guestAccelerators,
+    this.machineTypes,
+  });
+
+  CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection.fromJson(
+    core.Map json_,
+  ) : this(
+        disks: (json_['disks'] as core.List?)
+            ?.map(
+              (value) =>
+                  CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        guestAccelerators: (json_['guestAccelerators'] as core.List?)
+            ?.map(
+              (value) => AcceleratorConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        machineTypes: (json_['machineTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final disks = this.disks;
+    final guestAccelerators = this.guestAccelerators;
+    final machineTypes = this.machineTypes;
+    return {
+      'disks': ?disks,
+      'guestAccelerators': ?guestAccelerators,
+      'machineTypes': ?machineTypes,
+    };
+  }
+}
+
+/// Attached disk configuration.
+class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk {
+  /// Specifies the type of the disk.
+  /// Possible string values are:
+  /// - "DISK_TYPE_UNSPECIFIED" : Default value, unspecified disk type.
+  /// - "SCRATCH" : Scratch disk (Local SSD).
+  core.String? type;
+
+  CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk({
+    this.type,
+  });
+
+  CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk.fromJson(
+    core.Map json_,
+  ) : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
+  }
+}
+
+/// Instance provisioning properties.
+class CapacityAdviceRequestInstanceProperties {
+  /// Specifies the scheduling options.
+  CapacityAdviceRequestInstancePropertiesScheduling? scheduling;
+
+  CapacityAdviceRequestInstanceProperties({this.scheduling});
+
+  CapacityAdviceRequestInstanceProperties.fromJson(core.Map json_)
+    : this(
+        scheduling: json_.containsKey('scheduling')
+            ? CapacityAdviceRequestInstancePropertiesScheduling.fromJson(
+                json_['scheduling'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final scheduling = this.scheduling;
+    return {'scheduling': ?scheduling};
+  }
+}
+
+/// Defines the instance scheduling options.
+class CapacityAdviceRequestInstancePropertiesScheduling {
+  /// Specifies the provisioning model.
+  /// Possible string values are:
+  /// - "FLEX_START" : Instance is provisioned using the Flex Start provisioning
+  /// model and
+  /// has a limited runtime.
+  /// - "RESERVATION_BOUND" : Bound to the lifecycle of the reservation in which
+  /// it is provisioned.
+  /// - "SPOT" : Heavily discounted, no guaranteed runtime.
+  /// - "STANDARD" : Standard provisioning with user controlled runtime, no
+  /// discounts.
+  core.String? provisioningModel;
+
+  CapacityAdviceRequestInstancePropertiesScheduling({this.provisioningModel});
+
+  CapacityAdviceRequestInstancePropertiesScheduling.fromJson(core.Map json_)
+    : this(provisioningModel: json_['provisioningModel'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final provisioningModel = this.provisioningModel;
+    return {'provisioningModel': ?provisioningModel};
+  }
+}
+
+/// A response contains scoring recommendations.
+class CapacityAdviceResponse {
+  /// Initially the API will provide one recommendation which balances the
+  /// individual scores according to the service provider's preference.
+  core.List<CapacityAdviceResponseRecommendation>? recommendations;
+
+  CapacityAdviceResponse({this.recommendations});
+
+  CapacityAdviceResponse.fromJson(core.Map json_)
+    : this(
+        recommendations: (json_['recommendations'] as core.List?)
+            ?.map(
+              (value) => CapacityAdviceResponseRecommendation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final recommendations = this.recommendations;
+    return {'recommendations': ?recommendations};
+  }
+}
+
+/// Recommendation.
+class CapacityAdviceResponseRecommendation {
+  /// Scores for the recommendation.
+  CapacityAdviceResponseRecommendationScores? scores;
+
+  /// Shards represent blocks of uniform capacity in recommendations.
+  core.List<CapacityAdviceResponseRecommendationShard>? shards;
+
+  CapacityAdviceResponseRecommendation({this.scores, this.shards});
+
+  CapacityAdviceResponseRecommendation.fromJson(core.Map json_)
+    : this(
+        scores: json_.containsKey('scores')
+            ? CapacityAdviceResponseRecommendationScores.fromJson(
+                json_['scores'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        shards: (json_['shards'] as core.List?)
+            ?.map(
+              (value) => CapacityAdviceResponseRecommendationShard.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final scores = this.scores;
+    final shards = this.shards;
+    return {'scores': ?scores, 'shards': ?shards};
+  }
+}
+
+/// Groups information about a shard of capacity.
+class CapacityAdviceResponseRecommendationScores {
+  /// The estimated run time of the majority of Spot VMs in the request
+  /// before preemption.
+  ///
+  /// The estimate is best-effort only. It is based on
+  /// historical data and current conditions.
+  core.String? estimatedUptime;
+
+  /// The obtainability score indicates the likelihood of successfully
+  /// obtaining (provisioning) the requested number of VMs.
+  /// The score range is 0.0 through 1.0.
+  ///
+  /// Higher is better.
+  core.double? obtainability;
+
+  CapacityAdviceResponseRecommendationScores({
+    this.estimatedUptime,
+    this.obtainability,
+  });
+
+  CapacityAdviceResponseRecommendationScores.fromJson(core.Map json_)
+    : this(
+        estimatedUptime: json_['estimatedUptime'] as core.String?,
+        obtainability: (json_['obtainability'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final estimatedUptime = this.estimatedUptime;
+    final obtainability = this.obtainability;
+    return {
+      'estimatedUptime': ?estimatedUptime,
+      'obtainability': ?obtainability,
+    };
+  }
+}
+
+/// Shards represent blocks of uniform capacity in recommendations.
+/// Each shard is for a single zone and a single machine shape.
+///
+/// Each shard
+/// defines a size expressed as the number of VMs.
+class CapacityAdviceResponseRecommendationShard {
+  /// The number of instances.
+  core.int? instanceCount;
+
+  /// The machine type corresponds to the instance selection in the request.
+  core.String? machineType;
+
+  /// The provisioning model that you want to view recommendations for.
+  /// Possible string values are:
+  /// - "FLEX_START" : Instance is provisioned using the Flex Start provisioning
+  /// model and
+  /// has a limited runtime.
+  /// - "RESERVATION_BOUND" : Bound to the lifecycle of the reservation in which
+  /// it is provisioned.
+  /// - "SPOT" : Heavily discounted, no guaranteed runtime.
+  /// - "STANDARD" : Standard provisioning with user controlled runtime, no
+  /// discounts.
+  core.String? provisioningModel;
+
+  /// The zone name for this shard.
+  ///
+  /// Output only.
+  core.String? zone;
+
+  CapacityAdviceResponseRecommendationShard({
+    this.instanceCount,
+    this.machineType,
+    this.provisioningModel,
+    this.zone,
+  });
+
+  CapacityAdviceResponseRecommendationShard.fromJson(core.Map json_)
+    : this(
+        instanceCount: json_['instanceCount'] as core.int?,
+        machineType: json_['machineType'] as core.String?,
+        provisioningModel: json_['provisioningModel'] as core.String?,
+        zone: json_['zone'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final instanceCount = this.instanceCount;
+    final machineType = this.machineType;
+    final provisioningModel = this.provisioningModel;
+    final zone = this.zone;
+    return {
+      'instanceCount': ?instanceCount,
+      'machineType': ?machineType,
+      'provisioningModel': ?provisioningModel,
+      'zone': ?zone,
+    };
+  }
+}
+
+/// A request to get the capacity history.
+class CapacityHistoryRequest {
+  /// Instance properties for this request.
+  CapacityHistoryRequestInstanceProperties? instanceProperties;
+
+  /// Location policy for this request.
+  CapacityHistoryRequestLocationPolicy? locationPolicy;
+
+  /// List of history types to get capacity history for.
+  core.List<core.String>? types;
+
+  CapacityHistoryRequest({
+    this.instanceProperties,
+    this.locationPolicy,
+    this.types,
+  });
+
+  CapacityHistoryRequest.fromJson(core.Map json_)
+    : this(
+        instanceProperties: json_.containsKey('instanceProperties')
+            ? CapacityHistoryRequestInstanceProperties.fromJson(
+                json_['instanceProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        locationPolicy: json_.containsKey('locationPolicy')
+            ? CapacityHistoryRequestLocationPolicy.fromJson(
+                json_['locationPolicy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        types: (json_['types'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final instanceProperties = this.instanceProperties;
+    final locationPolicy = this.locationPolicy;
+    final types = this.types;
+    return {
+      'instanceProperties': ?instanceProperties,
+      'locationPolicy': ?locationPolicy,
+      'types': ?types,
+    };
+  }
+}
+
+/// Instance properties for this request.
+class CapacityHistoryRequestInstanceProperties {
+  /// The machine type for the VM, such as `n2-standard-4`.
+  core.String? machineType;
+
+  /// Specifies the scheduling options.
+  CapacityHistoryRequestInstancePropertiesScheduling? scheduling;
+
+  CapacityHistoryRequestInstanceProperties({this.machineType, this.scheduling});
+
+  CapacityHistoryRequestInstanceProperties.fromJson(core.Map json_)
+    : this(
+        machineType: json_['machineType'] as core.String?,
+        scheduling: json_.containsKey('scheduling')
+            ? CapacityHistoryRequestInstancePropertiesScheduling.fromJson(
+                json_['scheduling'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final machineType = this.machineType;
+    final scheduling = this.scheduling;
+    return {'machineType': ?machineType, 'scheduling': ?scheduling};
+  }
+}
+
+/// Scheduling options.
+class CapacityHistoryRequestInstancePropertiesScheduling {
+  /// The provisioning model to get capacity history for.
+  /// This field must be set to SPOT.
+  ///
+  /// For more information, see
+  /// Compute Engine instances provisioning models.
+  /// Possible string values are:
+  /// - "FLEX_START" : Instance is provisioned using the Flex Start provisioning
+  /// model and
+  /// has a limited runtime.
+  /// - "RESERVATION_BOUND" : Bound to the lifecycle of the reservation in which
+  /// it is provisioned.
+  /// - "SPOT" : Heavily discounted, no guaranteed runtime.
+  /// - "STANDARD" : Standard provisioning with user controlled runtime, no
+  /// discounts.
+  core.String? provisioningModel;
+
+  CapacityHistoryRequestInstancePropertiesScheduling({this.provisioningModel});
+
+  CapacityHistoryRequestInstancePropertiesScheduling.fromJson(core.Map json_)
+    : this(provisioningModel: json_['provisioningModel'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final provisioningModel = this.provisioningModel;
+    return {'provisioningModel': ?provisioningModel};
+  }
+}
+
+/// Location policy for this request.
+class CapacityHistoryRequestLocationPolicy {
+  /// The region or zone to get capacity history for.
+  ///
+  /// It can be a partial or full URL.
+  ///
+  /// For example, the following are valid
+  /// values:
+  ///
+  ///
+  ///      - https://www.googleapis.com/compute/v1/projects/project/zones/zone
+  ///    - projects/project/zones/zone
+  ///    - zones/zone
+  ///
+  ///
+  ///
+  /// This field is optional.
+  core.String? location;
+
+  CapacityHistoryRequestLocationPolicy({this.location});
+
+  CapacityHistoryRequestLocationPolicy.fromJson(core.Map json_)
+    : this(location: json_['location'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final location = this.location;
+    return {'location': ?location};
+  }
+}
+
+/// Contains the capacity history.
+class CapacityHistoryResponse {
+  /// The location (region or zone) for which the capacity history is returned.
+  /// It is returned as a URL - For
+  /// example,https://www.googleapis.com/compute/v1/projects/project/zones/zone.
+  ///
+  /// Output only.
+  core.String? location;
+
+  /// The machine type for which the capacity history is returned.
+  core.String? machineType;
+
+  /// The preemption history for the requested machine type and location.
+  core.List<CapacityHistoryResponsePreemptionRecord>? preemptionHistory;
+
+  /// The price history for the requested machine type and location.
+  core.List<CapacityHistoryResponsePriceRecord>? priceHistory;
+
+  CapacityHistoryResponse({
+    this.location,
+    this.machineType,
+    this.preemptionHistory,
+    this.priceHistory,
+  });
+
+  CapacityHistoryResponse.fromJson(core.Map json_)
+    : this(
+        location: json_['location'] as core.String?,
+        machineType: json_['machineType'] as core.String?,
+        preemptionHistory: (json_['preemptionHistory'] as core.List?)
+            ?.map(
+              (value) => CapacityHistoryResponsePreemptionRecord.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        priceHistory: (json_['priceHistory'] as core.List?)
+            ?.map(
+              (value) => CapacityHistoryResponsePriceRecord.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final location = this.location;
+    final machineType = this.machineType;
+    final preemptionHistory = this.preemptionHistory;
+    final priceHistory = this.priceHistory;
+    return {
+      'location': ?location,
+      'machineType': ?machineType,
+      'preemptionHistory': ?preemptionHistory,
+      'priceHistory': ?priceHistory,
+    };
+  }
+}
+
+/// A record of Spot VM preemption history.
+class CapacityHistoryResponsePreemptionRecord {
+  /// The time interval for this preemption record.
+  Interval? interval;
+
+  /// The preemption rate during the interval, representing the fraction of
+  /// Spot VMs that were preempted.
+  ///
+  /// Range: 0.0 to 1.0. Preemption rate is
+  /// calculated as (total preempted Spots) / (total Spots that stopped
+  /// running).
+  core.double? preemptionRate;
+
+  CapacityHistoryResponsePreemptionRecord({this.interval, this.preemptionRate});
+
+  CapacityHistoryResponsePreemptionRecord.fromJson(core.Map json_)
+    : this(
+        interval: json_.containsKey('interval')
+            ? Interval.fromJson(
+                json_['interval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        preemptionRate: (json_['preemptionRate'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final interval = this.interval;
+    final preemptionRate = this.preemptionRate;
+    return {'interval': ?interval, 'preemptionRate': ?preemptionRate};
+  }
+}
+
+/// A record of price history.
+class CapacityHistoryResponsePriceRecord {
+  /// The time interval for this price record.
+  Interval? interval;
+
+  /// The Spot VM list price during the interval.
+  Money? listPrice;
+
+  CapacityHistoryResponsePriceRecord({this.interval, this.listPrice});
+
+  CapacityHistoryResponsePriceRecord.fromJson(core.Map json_)
+    : this(
+        interval: json_.containsKey('interval')
+            ? Interval.fromJson(
+                json_['interval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        listPrice: json_.containsKey('listPrice')
+            ? Money.fromJson(
+                json_['listPrice'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final interval = this.interval;
+    final listPrice = this.listPrice;
+    return {'interval': ?interval, 'listPrice': ?listPrice};
+  }
+}
+
 /// Settings controlling the volume of requests, connections and retries to this
 /// backend service.
 class CircuitBreakers {
@@ -98380,7 +99320,9 @@ class Commitment {
   /// GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4,
   /// GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED,
   /// GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
-  /// MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3.
+  /// MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4,
+  /// STORAGE_OPTIMIZED_Z3,STORAGE_OPTIMIZED_Z4DS,
+  /// STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T.
   ///
   /// For
   /// example, type MEMORY_OPTIMIZED specifies a commitment that
@@ -98437,6 +99379,9 @@ class Commitment {
   /// - "NETWORK_OPTIMIZED_U4P" : CUD bucket for NETWORK_OPTIMIZED_U4P machines.
   /// - "NETWORK_OPTIMIZED_U4S" : CUD bucket for NETWORK_OPTIMIZED_U4S machines.
   /// - "STORAGE_OPTIMIZED_Z3"
+  /// - "STORAGE_OPTIMIZED_Z4D4T" : CUD bucket for Z4D-4T machines.
+  /// - "STORAGE_OPTIMIZED_Z4DH" : CUD bucket for Z4DH machines.
+  /// - "STORAGE_OPTIMIZED_Z4DS" : CUD bucket for Z4DS machines.
   /// - "TYPE_UNSPECIFIED" : Note for internal users: When adding a new enum
   /// Type for v1, make sure
   /// to also add it in the comment for the `optional Type type` definition.
@@ -100286,6 +101231,7 @@ class CompositeHealthChecksScopedList {
 class ConfidentialInstanceConfig {
   /// Defines the type of technology used by the confidential instance.
   /// Possible string values are:
+  /// - "BMSAI" : Bare Metal Secure AI.
   /// - "CCA" : Arm Confidential Compute Architecture.
   /// - "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED" : No type specified. Do not use
   /// this value.
@@ -109038,6 +109984,7 @@ class FutureReservation {
 
   ///
   /// Possible string values are:
+  /// - "CONFIDENTIAL_COMPUTE_TYPE_BMSAI" : Bare Metal Secure AI.
   /// - "CONFIDENTIAL_COMPUTE_TYPE_TDX" : Intel Trust Domain Extensions.
   /// - "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
   core.String? confidentialComputeType;
@@ -111368,6 +112315,123 @@ class GRPCTLSHealthCheck {
   }
 }
 
+/// Metadata for GetHealth operations.
+class GetHealthOperationMetadata {
+  /// The health information.
+  ///
+  /// Output only.
+  GetHealthOperationMetadataHealthInfo? healthInfo;
+
+  GetHealthOperationMetadata({this.healthInfo});
+
+  GetHealthOperationMetadata.fromJson(core.Map json_)
+    : this(
+        healthInfo: json_.containsKey('healthInfo')
+            ? GetHealthOperationMetadataHealthInfo.fromJson(
+                json_['healthInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final healthInfo = this.healthInfo;
+    return {'healthInfo': ?healthInfo};
+  }
+}
+
+/// Health information.
+class GetHealthOperationMetadataHealthInfo {
+  /// The availability SLO status.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AVAILABILITY_SLO_STATUS_IN_SLO" : The slot availability is in SLO.
+  /// - "AVAILABILITY_SLO_STATUS_OUT_OF_SLO" : The slot availability is out of
+  /// SLO.
+  /// - "AVAILABILITY_SLO_STATUS_SLO_UNKNOWN" : The slot availability is
+  /// unknown.
+  /// - "AVAILABILITY_SLO_STATUS_UNSPECIFIED" : Unspecified availability SLO
+  /// status.
+  core.String? availabilitySloStatus;
+
+  /// The health status.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HEALTH_STATUS_HEALTHY" : The reservation slot is healthy.
+  /// - "HEALTH_STATUS_UNHEALTHY" : The reservation slot is unhealthy.
+  /// - "HEALTH_STATUS_UNSPECIFIED" : Unspecified health status.
+  core.String? healthStatus;
+
+  /// The repair category.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REPAIR_CATEGORY_CRITICAL_FAILURE" : The repair is because of critical
+  /// failures, that are scoped outside
+  /// emergent maintenance
+  /// - "REPAIR_CATEGORY_EMERGENT_MAINTENANCE" : The repair is because of an
+  /// emergent maintenance
+  /// - "REPAIR_CATEGORY_PLANNED_MAINTENANCE" : The repair is because of a
+  /// planned maintenance
+  /// - "REPAIR_CATEGORY_UNSPECIFIED" : Unspecified repair category.
+  /// - "REPAIR_CATEGORY_USER_REPORTED_FAULT" : The repair is because of a user
+  /// reported fault
+  core.String? repairCategory;
+
+  /// The reason for unhealthy status.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNHEALTHY_REASON_PENDING_USER_APPROVAL" : The slot is unhealthy because
+  /// there is a pending repair, waiting for
+  /// customer approval
+  /// - "UNHEALTHY_REASON_REPAIRING" : The slot is unhealthy because repair is
+  /// in progress
+  /// - "UNHEALTHY_REASON_UNSCHEDULABLE" : The slot is unhealthy because a vm
+  /// cannot be scheduled on it, and no
+  /// repairs are running on the slot
+  /// - "UNHEALTHY_REASON_UNSPECIFIED" : Unspecified unhealthy reason.
+  core.String? unhealthyReason;
+
+  /// The time when health info was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GetHealthOperationMetadataHealthInfo({
+    this.availabilitySloStatus,
+    this.healthStatus,
+    this.repairCategory,
+    this.unhealthyReason,
+    this.updateTime,
+  });
+
+  GetHealthOperationMetadataHealthInfo.fromJson(core.Map json_)
+    : this(
+        availabilitySloStatus: json_['availabilitySloStatus'] as core.String?,
+        healthStatus: json_['healthStatus'] as core.String?,
+        repairCategory: json_['repairCategory'] as core.String?,
+        unhealthyReason: json_['unhealthyReason'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final availabilitySloStatus = this.availabilitySloStatus;
+    final healthStatus = this.healthStatus;
+    final repairCategory = this.repairCategory;
+    final unhealthyReason = this.unhealthyReason;
+    final updateTime = this.updateTime;
+    return {
+      'availabilitySloStatus': ?availabilitySloStatus,
+      'healthStatus': ?healthStatus,
+      'repairCategory': ?repairCategory,
+      'unhealthyReason': ?unhealthyReason,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
 class GetVersionOperationMetadata {
   GetVersionOperationMetadataSbomInfo? inlineSbomInfo;
 
@@ -112712,12 +113776,16 @@ class GuestOsFeature {
   ///    - IDPF
   ///    - SNP_SVSM_CAPABLE
   ///    - CCA_CAPABLE
+  ///    - SUSPEND_SAFE_FPR
   ///
   ///
   /// For more information, see
   /// Enabling guest operating system features.
   /// Possible string values are:
   /// - "BARE_METAL_LINUX_COMPATIBLE"
+  /// - "BMSAI_CAPABLE" : Indicates the guest OS is capable of Bare Metal Secure
+  /// AI (BMSAI)
+  /// confidential computing.
   /// - "CCA_CAPABLE"
   /// - "FEATURE_TYPE_UNSPECIFIED"
   /// - "GVNIC"
@@ -112729,6 +113797,9 @@ class GuestOsFeature {
   /// - "SEV_LIVE_MIGRATABLE_V2"
   /// - "SEV_SNP_CAPABLE"
   /// - "SNP_SVSM_CAPABLE"
+  /// - "SUSPEND_SAFE_FPR" : Indicates the guest OS is safe for free page
+  /// reporting (FPR) during
+  /// suspend.
   /// - "TDX_CAPABLE"
   /// - "UEFI_COMPATIBLE"
   /// - "VIRTIO_SCSI_MULTIQUEUE"
@@ -128332,6 +129403,9 @@ class InstanceProperties {
 
 /// Represents the change that you want to make to the instance properties.
 class InstancePropertiesPatch {
+  /// This optional flag exposes the hashed physical host ID.
+  core.bool? exposeHostTopology;
+
   /// The label key-value pairs that you want to patch onto the instance.
   core.Map<core.String, core.String>? labels;
 
@@ -128342,10 +129416,15 @@ class InstancePropertiesPatch {
   /// instance metadata.
   core.Map<core.String, core.String>? metadata;
 
-  InstancePropertiesPatch({this.labels, this.metadata});
+  InstancePropertiesPatch({
+    this.exposeHostTopology,
+    this.labels,
+    this.metadata,
+  });
 
   InstancePropertiesPatch.fromJson(core.Map json_)
     : this(
+        exposeHostTopology: json_['exposeHostTopology'] as core.bool?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -128354,9 +129433,14 @@ class InstancePropertiesPatch {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final exposeHostTopology = this.exposeHostTopology;
     final labels = this.labels;
     final metadata = this.metadata;
-    return {'labels': ?labels, 'metadata': ?metadata};
+    return {
+      'exposeHostTopology': ?exposeHostTopology,
+      'labels': ?labels,
+      'metadata': ?metadata,
+    };
   }
 }
 
@@ -131699,6 +132783,11 @@ class Interconnect {
   /// Output only.
   core.String? selfLink;
 
+  /// Server-defined URL for this resource with the resource id.
+  ///
+  /// Output only.
+  core.String? selfLinkWithId;
+
   /// The current state of Interconnect functionality, which can
   /// take one of the following values:
   ///
@@ -131772,6 +132861,7 @@ class Interconnect {
     this.requestedLinkCount,
     this.satisfiesPzs,
     this.selfLink,
+    this.selfLinkWithId,
     this.state,
     this.subzone,
     this.wireGroups,
@@ -131850,6 +132940,7 @@ class Interconnect {
         requestedLinkCount: json_['requestedLinkCount'] as core.int?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         selfLink: json_['selfLink'] as core.String?,
+        selfLinkWithId: json_['selfLinkWithId'] as core.String?,
         state: json_['state'] as core.String?,
         subzone: json_['subzone'] as core.String?,
         wireGroups: (json_['wireGroups'] as core.List?)
@@ -131892,6 +132983,7 @@ class Interconnect {
     final requestedLinkCount = this.requestedLinkCount;
     final satisfiesPzs = this.satisfiesPzs;
     final selfLink = this.selfLink;
+    final selfLinkWithId = this.selfLinkWithId;
     final state = this.state;
     final subzone = this.subzone;
     final wireGroups = this.wireGroups;
@@ -131930,6 +133022,7 @@ class Interconnect {
       'requestedLinkCount': ?requestedLinkCount,
       'satisfiesPzs': ?satisfiesPzs,
       'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
       'state': ?state,
       'subzone': ?subzone,
       'wireGroups': ?wireGroups,
@@ -137066,14 +138159,42 @@ class InterconnectLocationCrossSiteInterconnectInfo {
   /// Output only.
   core.String? city;
 
-  InterconnectLocationCrossSiteInterconnectInfo({this.city});
+  /// The maximum unmetered bandwidth for dynamic paths allowable per
+  /// WireGroup for this metro.
+  ///
+  /// Output only.
+  core.String? maxDynamicPathBandwidthGbps;
+
+  /// The maximum unmetered bandwidth for fixed paths allowable per WireGroup
+  /// for this metro.
+  ///
+  /// Output only.
+  core.String? maxFixedPathBandwidthGbps;
+
+  InterconnectLocationCrossSiteInterconnectInfo({
+    this.city,
+    this.maxDynamicPathBandwidthGbps,
+    this.maxFixedPathBandwidthGbps,
+  });
 
   InterconnectLocationCrossSiteInterconnectInfo.fromJson(core.Map json_)
-    : this(city: json_['city'] as core.String?);
+    : this(
+        city: json_['city'] as core.String?,
+        maxDynamicPathBandwidthGbps:
+            json_['maxDynamicPathBandwidthGbps'] as core.String?,
+        maxFixedPathBandwidthGbps:
+            json_['maxFixedPathBandwidthGbps'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final city = this.city;
-    return {'city': ?city};
+    final maxDynamicPathBandwidthGbps = this.maxDynamicPathBandwidthGbps;
+    final maxFixedPathBandwidthGbps = this.maxFixedPathBandwidthGbps;
+    return {
+      'city': ?city,
+      'maxDynamicPathBandwidthGbps': ?maxDynamicPathBandwidthGbps,
+      'maxFixedPathBandwidthGbps': ?maxFixedPathBandwidthGbps,
+    };
   }
 }
 
@@ -138410,6 +139531,45 @@ class InterconnectsGetMacsecConfigResponse {
     final etag = this.etag;
     final result = this.result;
     return {'etag': ?etag, 'result': ?result};
+  }
+}
+
+/// Represents a time interval, encoded as a Timestamp start (inclusive) and a
+/// Timestamp end (exclusive).
+///
+/// The start must be less than or equal to the end.
+/// When the start equals the end, the interval is empty (matches no time).
+/// When both start and end are unspecified, the interval matches any time.
+class Interval {
+  /// Exclusive end of the interval.
+  ///
+  /// If specified, a Timestamp matching this interval will have to be before
+  /// the
+  /// end.
+  ///
+  /// Optional.
+  core.String? endTime;
+
+  /// Inclusive start of the interval.
+  ///
+  /// If specified, a Timestamp matching this interval will have to be the same
+  /// or after the start.
+  ///
+  /// Optional.
+  core.String? startTime;
+
+  Interval({this.endTime, this.startTime});
+
+  Interval.fromJson(core.Map json_)
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endTime = this.endTime;
+    final startTime = this.startTime;
+    return {'endTime': ?endTime, 'startTime': ?startTime};
   }
 }
 
@@ -141412,6 +142572,27 @@ class ManagedInstance {
   /// Output only.
   ManagedInstanceShutdownDetails? shutdownDetails;
 
+  /// The eventual status of the instance.
+  ///
+  /// The instance group
+  /// manager will not be identified as stable till each managed instance
+  /// reaches
+  /// its targetStatus.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ABANDONED" : The managed instance will eventually be ABANDONED, i.e.
+  /// dissociated
+  /// from the managed instance group.
+  /// - "DELETED" : The managed instance will eventually be DELETED.
+  /// - "INVALID" : Only present to map the STATUS_INVALID value.
+  /// - "RUNNING" : The managed instance will eventually reach status RUNNING.
+  /// - "STOPPED" : The managed instance will eventually reach status
+  /// TERMINATED.
+  /// - "SUSPENDED" : The managed instance will eventually reach status
+  /// SUSPENDED.
+  core.String? targetStatus;
+
   /// Intended version of this instance.
   ///
   /// Output only.
@@ -141430,6 +142611,7 @@ class ManagedInstance {
     this.propertiesFromFlexibilityPolicy,
     this.scheduling,
     this.shutdownDetails,
+    this.targetStatus,
     this.version,
   });
 
@@ -141481,6 +142663,7 @@ class ManagedInstance {
                 json_['shutdownDetails'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        targetStatus: json_['targetStatus'] as core.String?,
         version: json_.containsKey('version')
             ? ManagedInstanceVersion.fromJson(
                 json_['version'] as core.Map<core.String, core.dynamic>,
@@ -141502,6 +142685,7 @@ class ManagedInstance {
         this.propertiesFromFlexibilityPolicy;
     final scheduling = this.scheduling;
     final shutdownDetails = this.shutdownDetails;
+    final targetStatus = this.targetStatus;
     final version = this.version;
     return {
       'currentAction': ?currentAction,
@@ -141516,6 +142700,7 @@ class ManagedInstance {
       'propertiesFromFlexibilityPolicy': ?propertiesFromFlexibilityPolicy,
       'scheduling': ?scheduling,
       'shutdownDetails': ?shutdownDetails,
+      'targetStatus': ?targetStatus,
       'version': ?version,
     };
   }
@@ -142063,6 +143248,40 @@ class MetadataFilterLabelMatch {
     final name = this.name;
     final value = this.value;
     return {'name': ?name, 'value': ?value};
+  }
+}
+
+/// Represents an amount of money with its currency type.
+class Money {
+  /// The three-letter currency code defined in ISO 4217.
+  core.String? currencyCode;
+
+  /// Number of nano (10^-9) units of the amount.
+  /// The value must be between -999,999,999 and +999,999,999 inclusive.
+  /// If `units` is positive, `nanos` must be positive or zero.
+  /// If `units` is zero, `nanos` can be positive, zero, or negative.
+  /// If `units` is negative, `nanos` must be negative or zero.
+  /// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+  core.int? nanos;
+
+  /// The whole units of the amount.
+  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+  core.String? units;
+
+  Money({this.currencyCode, this.nanos, this.units});
+
+  Money.fromJson(core.Map json_)
+    : this(
+        currencyCode: json_['currencyCode'] as core.String?,
+        nanos: json_['nanos'] as core.int?,
+        units: json_['units'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final currencyCode = this.currencyCode;
+    final nanos = this.nanos;
+    final units = this.units;
+    return {'currencyCode': ?currencyCode, 'nanos': ?nanos, 'units': ?units};
   }
 }
 
@@ -144356,6 +145575,10 @@ class NetworkEndpointGroup {
   /// GCE_VM_IP_PORTMAP.
   /// Possible string values are:
   /// - "GCE_VM_IP" : The network endpoint is represented by an IP address.
+  /// - "GCE_VM_IP_DEDICATED_BACKEND" : The network endpoint for targeting a
+  /// specific network interface of a
+  /// VM instance in configurations with multiple network interfaces on the
+  /// same network.
   /// - "GCE_VM_IP_PORT" : The network endpoint is represented by IP address and
   /// port pair.
   /// - "GCE_VM_IP_PORTMAP" : The network endpoint is represented by an IP, Port
@@ -152912,6 +154135,11 @@ class Operation {
   ///
   /// Output only.
   OperationError? error;
+
+  /// Metadata for GetHealth operations.
+  ///
+  /// Output only.
+  GetHealthOperationMetadata? getHealthOperationMetadata;
   GetVersionOperationMetadata? getVersionOperationMetadata;
 
   /// If the operation fails, this field contains the HTTP error
@@ -153069,6 +154297,7 @@ class Operation {
     this.description,
     this.endTime,
     this.error,
+    this.getHealthOperationMetadata,
     this.getVersionOperationMetadata,
     this.httpErrorMessage,
     this.httpErrorStatusCode,
@@ -153102,6 +154331,13 @@ class Operation {
         error: json_.containsKey('error')
             ? OperationError.fromJson(
                 json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        getHealthOperationMetadata:
+            json_.containsKey('getHealthOperationMetadata')
+            ? GetHealthOperationMetadata.fromJson(
+                json_['getHealthOperationMetadata']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         getVersionOperationMetadata:
@@ -153158,6 +154394,7 @@ class Operation {
     final description = this.description;
     final endTime = this.endTime;
     final error = this.error;
+    final getHealthOperationMetadata = this.getHealthOperationMetadata;
     final getVersionOperationMetadata = this.getVersionOperationMetadata;
     final httpErrorMessage = this.httpErrorMessage;
     final httpErrorStatusCode = this.httpErrorStatusCode;
@@ -153188,6 +154425,7 @@ class Operation {
       'description': ?description,
       'endTime': ?endTime,
       'error': ?error,
+      'getHealthOperationMetadata': ?getHealthOperationMetadata,
       'getVersionOperationMetadata': ?getVersionOperationMetadata,
       'httpErrorMessage': ?httpErrorMessage,
       'httpErrorStatusCode': ?httpErrorStatusCode,
@@ -156962,6 +158200,38 @@ class Project {
       'vmDnsSetting': ?vmDnsSetting,
       'xpnProjectStatus': ?xpnProjectStatus,
     };
+  }
+}
+
+/// Represents a ProjectView resource.
+///
+/// A ProjectView resource contains read-only project data which is available
+/// globally.
+class ProjectView {
+  /// The project data.
+  /// The returned Project data does not contain regional or zonal quota
+  /// usage data.
+  ///
+  /// Global quota limits are present. For accurate, real-time quota
+  /// usage numbers, query the global
+  /// [projects.get](https://cloud.google.com/compute/docs/reference/rest/v1/projects/get)
+  /// endpoint.
+  Project? project;
+
+  ProjectView({this.project});
+
+  ProjectView.fromJson(core.Map json_)
+    : this(
+        project: json_.containsKey('project')
+            ? Project.fromJson(
+                json_['project'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final project = this.project;
+    return {'project': ?project};
   }
 }
 
@@ -162681,6 +163951,7 @@ class Reservation {
 
   ///
   /// Possible string values are:
+  /// - "CONFIDENTIAL_COMPUTE_TYPE_BMSAI" : Bare Metal Secure AI.
   /// - "CONFIDENTIAL_COMPUTE_TYPE_TDX" : Intel Trust Domain Extensions.
   /// - "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
   core.String? confidentialComputeType;
@@ -174388,6 +175659,10 @@ class Scheduling {
   /// must be a number between 1 and the number of availability domains
   /// specified in the spread placement policy attached to the instance.
   core.int? availabilityDomain;
+
+  /// This optional flag exposes the hashed physical host ID in the
+  /// ResourceStatus resource of the VM.
+  core.bool? exposeHostTopology;
   SchedulingGracefulShutdown? gracefulShutdown;
 
   /// Specify the time in seconds for host error detection, the value must be
@@ -174499,6 +175774,7 @@ class Scheduling {
   Scheduling({
     this.automaticRestart,
     this.availabilityDomain,
+    this.exposeHostTopology,
     this.gracefulShutdown,
     this.hostErrorTimeoutSeconds,
     this.instanceTerminationAction,
@@ -174520,6 +175796,7 @@ class Scheduling {
     : this(
         automaticRestart: json_['automaticRestart'] as core.bool?,
         availabilityDomain: json_['availabilityDomain'] as core.int?,
+        exposeHostTopology: json_['exposeHostTopology'] as core.bool?,
         gracefulShutdown: json_.containsKey('gracefulShutdown')
             ? SchedulingGracefulShutdown.fromJson(
                 json_['gracefulShutdown']
@@ -174571,6 +175848,7 @@ class Scheduling {
   core.Map<core.String, core.dynamic> toJson() {
     final automaticRestart = this.automaticRestart;
     final availabilityDomain = this.availabilityDomain;
+    final exposeHostTopology = this.exposeHostTopology;
     final gracefulShutdown = this.gracefulShutdown;
     final hostErrorTimeoutSeconds = this.hostErrorTimeoutSeconds;
     final instanceTerminationAction = this.instanceTerminationAction;
@@ -174589,6 +175867,7 @@ class Scheduling {
     return {
       'automaticRestart': ?automaticRestart,
       'availabilityDomain': ?availabilityDomain,
+      'exposeHostTopology': ?exposeHostTopology,
       'gracefulShutdown': ?gracefulShutdown,
       'hostErrorTimeoutSeconds': ?hostErrorTimeoutSeconds,
       'instanceTerminationAction': ?instanceTerminationAction,
@@ -185556,6 +186835,15 @@ class Subnetwork {
   /// Possible string values are:
   /// - "ARP_ALL_RANGES" : All ranges assigned to the VM NIC will respond to
   /// ARP.
+  /// - "ARP_BROADCAST_PRIMARY_RANGE" : VMs will receive an ARP response from a
+  /// VM instance owning the target IP
+  /// address within the subnetwork's primary CIDR range, if such a VM instance
+  /// exists and is running.
+  /// - "ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING" : Combines
+  /// ARP_BROADCAST_PRIMARY_RANGE with MAC learning. Enables cache
+  /// mapping between IP addresses and custom MAC addresses of instances and
+  /// use of it to set the correct destination MAC address. If this option is
+  /// chosen, the subnetwork must have /24 or a smaller CIDR range.
   /// - "ARP_PRIMARY_RANGE" : Only the primary range of the VM NIC will respond
   /// to ARP.
   core.String? resolveSubnetMask;

@@ -4365,6 +4365,7 @@ api.TlsInspectionPolicy buildTlsInspectionPolicy() {
   buildCounterTlsInspectionPolicy++;
   if (buildCounterTlsInspectionPolicy < 3) {
     o.caPool = 'foo';
+    o.certificateIssuanceMode = 'foo';
     o.createTime = 'foo';
     o.customTlsFeatures = buildUnnamed132();
     o.description = 'foo';
@@ -4383,6 +4384,7 @@ void checkTlsInspectionPolicy(api.TlsInspectionPolicy o) {
   buildCounterTlsInspectionPolicy++;
   if (buildCounterTlsInspectionPolicy < 3) {
     unittest.expect(o.caPool!, unittest.equals('foo'));
+    unittest.expect(o.certificateIssuanceMode!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkUnnamed132(o.customTlsFeatures!);
     unittest.expect(o.description!, unittest.equals('foo'));

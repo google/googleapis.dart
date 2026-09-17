@@ -2914,6 +2914,59 @@ class BackendMetastore {
   }
 }
 
+/// Backfill status for the migration execution.
+class BackfillStatus {
+  /// Summary of the migration results.
+  ///
+  /// This is populated after the backfill or dry run is finished.
+  ///
+  /// Output only.
+  MigrationSummary? migrationSummary;
+
+  /// The Cloud Storage path where the backfill or dry run report is written.
+  ///
+  /// Format: "gs://path-to-report".
+  ///
+  /// Output only.
+  core.String? reportPath;
+
+  /// The current state of the backfill (or dry run).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The backfill state is unspecified.
+  /// - "PENDING" : Waiting to start.
+  /// - "RUNNING" : Backfill in progress.
+  /// - "SUCCEEDED" : Backfill complete, report is available
+  /// - "FAILED" : Backfill failed; check report for details
+  core.String? state;
+
+  BackfillStatus({this.migrationSummary, this.reportPath, this.state});
+
+  BackfillStatus.fromJson(core.Map json_)
+    : this(
+        migrationSummary: json_.containsKey('migrationSummary')
+            ? MigrationSummary.fromJson(
+                json_['migrationSummary']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        reportPath: json_['reportPath'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final migrationSummary = this.migrationSummary;
+    final reportPath = this.reportPath;
+    final state = this.state;
+    return {
+      'migrationSummary': ?migrationSummary,
+      'reportPath': ?reportPath,
+      'state': ?state,
+    };
+  }
+}
+
 /// The details of a backup resource.
 class Backup {
   /// The time when the backup was started.
@@ -3004,6 +3057,122 @@ class Backup {
       'restoringServices': ?restoringServices,
       'serviceRevision': ?serviceRevision,
       'state': ?state,
+    };
+  }
+}
+
+/// Defines the configuration required to migrate metadata from a Dataproc
+/// Metastore service to BigLake Metastore.
+class BigLakeMetastoreMigrationConfig {
+  ///
+  ///
+  /// Output only.
+  BackfillStatus? backfillStatus;
+
+  /// The policy to handle conflicts when migrating resources, defaults to SKIP
+  /// if not specified.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONFLICT_POLICY_UNSPECIFIED" : The conflict policy is unspecified.
+  /// - "SKIP" : Skip migrating resources that already exist in the target
+  /// catalog.
+  /// - "OVERWRITE" : Update resources that already exist in the target catalog.
+  core.String? conflictPolicy;
+
+  /// If true, performs discovery of requested resources and analysis against
+  /// the target catalog to come up with a plan for each resource (e.g. Create,
+  /// Update, Skip, etc.).
+  ///
+  /// No metadata is actually migrated.
+  ///
+  /// Optional.
+  core.bool? dryRun;
+
+  /// At least one of hive_config or iceberg_config must be provided, otherwise,
+  /// a validation error will be thrown.
+  ///
+  /// If only one is provided, the service only migrates tables of that specific
+  /// type. If both are provided, both Hive and Iceberg tables will be
+  /// migrated.Configuration for migrating Hive tables to a BigLake Hive
+  /// catalog.
+  ///
+  /// Optional.
+  HiveConfig? hiveConfig;
+
+  /// Configuration for migrating Iceberg tables to a BigLake Iceberg REST
+  /// catalog.
+  ///
+  /// Optional.
+  IcebergConfig? icebergConfig;
+
+  /// Defines the behavior of the migration execution.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "MIGRATION_MODE_UNSPECIFIED" : The migration mode is unspecified.
+  /// - "BACKFILL" : Performs the metadata migration of requested resources. The
+  /// migration completes once the backfill is finished.
+  core.String? mode;
+
+  /// The Cloud Storage path where the backfill / dry run report should be
+  /// written.
+  ///
+  /// If not provided, the report will be generated in the service's artifacts
+  /// bucket. Format: "gs://path/to/folder"
+  ///
+  /// Optional.
+  core.String? reportPath;
+
+  BigLakeMetastoreMigrationConfig({
+    this.backfillStatus,
+    this.conflictPolicy,
+    this.dryRun,
+    this.hiveConfig,
+    this.icebergConfig,
+    this.mode,
+    this.reportPath,
+  });
+
+  BigLakeMetastoreMigrationConfig.fromJson(core.Map json_)
+    : this(
+        backfillStatus: json_.containsKey('backfillStatus')
+            ? BackfillStatus.fromJson(
+                json_['backfillStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        conflictPolicy: json_['conflictPolicy'] as core.String?,
+        dryRun: json_['dryRun'] as core.bool?,
+        hiveConfig: json_.containsKey('hiveConfig')
+            ? HiveConfig.fromJson(
+                json_['hiveConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        icebergConfig: json_.containsKey('icebergConfig')
+            ? IcebergConfig.fromJson(
+                json_['icebergConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mode: json_['mode'] as core.String?,
+        reportPath: json_['reportPath'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final backfillStatus = this.backfillStatus;
+    final conflictPolicy = this.conflictPolicy;
+    final dryRun = this.dryRun;
+    final hiveConfig = this.hiveConfig;
+    final icebergConfig = this.icebergConfig;
+    final mode = this.mode;
+    final reportPath = this.reportPath;
+    return {
+      'backfillStatus': ?backfillStatus,
+      'conflictPolicy': ?conflictPolicy,
+      'dryRun': ?dryRun,
+      'hiveConfig': ?hiveConfig,
+      'icebergConfig': ?icebergConfig,
+      'mode': ?mode,
+      'reportPath': ?reportPath,
     };
   }
 }
@@ -3116,260 +3285,50 @@ typedef CancelMigrationRequest = $Empty;
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
-/// Configuration information to start the Change Data Capture (CDC) streams
-/// from customer database to backend database of Dataproc Metastore.
-class CdcConfig {
-  /// The bucket to write the intermediate stream event data in.
+/// Summary of results for a specific destination catalog.
+class CatalogSummary {
+  /// The catalog resource name (format: projects / * /catalogs / * ).
   ///
-  /// The bucket name must be without any prefix like "gs://". See the bucket
-  /// naming requirements
-  /// (https://cloud.google.com/storage/docs/buckets#naming). This field is
-  /// optional. If not set, the Artifacts Cloud Storage bucket will be used.
-  ///
-  /// Optional.
-  core.String? bucket;
+  /// Output only.
+  core.String? catalog;
 
-  /// Input only.
+  /// The type of the catalog.
   ///
-  /// The password for the user that Datastream service should use for the MySQL
-  /// connection. This field is not returned on request.
-  ///
-  /// Required.
-  core.String? password;
+  /// Output only.
+  /// Possible string values are:
+  /// - "CATALOG_TYPE_UNSPECIFIED" : The catalog type is unspecified.
+  /// - "HIVE" : BigLake Metastore Hive catalog.
+  /// - "ICEBERG" : BigLake Metastore Iceberg REST catalog.
+  core.String? catalogType;
 
-  /// The URL of the subnetwork resource to create the VM instance hosting the
-  /// reverse proxy in.
+  /// Summary of results for each database in the catalog.
   ///
-  /// More context in
-  /// https://cloud.google.com/datastream/docs/private-connectivity#reverse-csql-proxy
-  /// The subnetwork should reside in the network provided in the request that
-  /// Datastream will peer to and should be in the same region as Datastream, in
-  /// the following format.
-  /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-  ///
-  /// Required.
-  core.String? reverseProxySubnet;
+  /// Output only.
+  core.List<DatabaseSummary>? databaseSummaries;
 
-  /// The root path inside the Cloud Storage bucket.
-  ///
-  /// The stream event data will be written to this path. The default value is
-  /// /migration.
-  ///
-  /// Optional.
-  core.String? rootPath;
+  CatalogSummary({this.catalog, this.catalogType, this.databaseSummaries});
 
-  /// A /29 CIDR IP range for peering with datastream.
-  ///
-  /// Required.
-  core.String? subnetIpRange;
-
-  /// The username that the Datastream service should use for the MySQL
-  /// connection.
-  ///
-  /// Required.
-  core.String? username;
-
-  /// Fully qualified name of the Cloud SQL instance's VPC network or the shared
-  /// VPC network that Datastream will peer to, in the following format:
-  /// projects/{project_id}/locations/global/networks/{network_id}.
-  ///
-  /// More context in
-  /// https://cloud.google.com/datastream/docs/network-connectivity-options#privateconnectivity
-  ///
-  /// Required.
-  core.String? vpcNetwork;
-
-  CdcConfig({
-    this.bucket,
-    this.password,
-    this.reverseProxySubnet,
-    this.rootPath,
-    this.subnetIpRange,
-    this.username,
-    this.vpcNetwork,
-  });
-
-  CdcConfig.fromJson(core.Map json_)
+  CatalogSummary.fromJson(core.Map json_)
     : this(
-        bucket: json_['bucket'] as core.String?,
-        password: json_['password'] as core.String?,
-        reverseProxySubnet: json_['reverseProxySubnet'] as core.String?,
-        rootPath: json_['rootPath'] as core.String?,
-        subnetIpRange: json_['subnetIpRange'] as core.String?,
-        username: json_['username'] as core.String?,
-        vpcNetwork: json_['vpcNetwork'] as core.String?,
+        catalog: json_['catalog'] as core.String?,
+        catalogType: json_['catalogType'] as core.String?,
+        databaseSummaries: (json_['databaseSummaries'] as core.List?)
+            ?.map(
+              (value) => DatabaseSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final bucket = this.bucket;
-    final password = this.password;
-    final reverseProxySubnet = this.reverseProxySubnet;
-    final rootPath = this.rootPath;
-    final subnetIpRange = this.subnetIpRange;
-    final username = this.username;
-    final vpcNetwork = this.vpcNetwork;
+    final catalog = this.catalog;
+    final catalogType = this.catalogType;
+    final databaseSummaries = this.databaseSummaries;
     return {
-      'bucket': ?bucket,
-      'password': ?password,
-      'reverseProxySubnet': ?reverseProxySubnet,
-      'rootPath': ?rootPath,
-      'subnetIpRange': ?subnetIpRange,
-      'username': ?username,
-      'vpcNetwork': ?vpcNetwork,
-    };
-  }
-}
-
-/// Configuration information to establish customer database connection before
-/// the cutover phase of migration
-class CloudSQLConnectionConfig {
-  /// The hive database name.
-  ///
-  /// Required.
-  core.String? hiveDatabaseName;
-
-  /// Cloud SQL database connection name (project_id:region:instance_name)
-  ///
-  /// Required.
-  core.String? instanceConnectionName;
-
-  /// The private IP address of the Cloud SQL instance.
-  ///
-  /// Required.
-  core.String? ipAddress;
-
-  /// The relative resource name of the subnetwork to be used for Private
-  /// Service Connect.
-  ///
-  /// Note that this cannot be a regular subnet and is used only for NAT.
-  /// (https://cloud.google.com/vpc/docs/about-vpc-hosted-services#psc-subnets)
-  /// This subnet is used to publish the SOCKS5 proxy service. The subnet size
-  /// must be at least /29 and it should reside in a network through which the
-  /// Cloud SQL instance is accessible. The resource name should be in the
-  /// format,
-  /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-  ///
-  /// Required.
-  core.String? natSubnet;
-
-  /// Input only.
-  ///
-  /// The password for the user that Dataproc Metastore service will be using to
-  /// connect to the database. This field is not returned on request.
-  ///
-  /// Required.
-  core.String? password;
-
-  /// The network port of the database.
-  ///
-  /// Required.
-  core.int? port;
-
-  /// The relative resource name of the subnetwork to deploy the SOCKS5 proxy
-  /// service in.
-  ///
-  /// The subnetwork should reside in a network through which the Cloud SQL
-  /// instance is accessible. The resource name should be in the format,
-  /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-  ///
-  /// Required.
-  core.String? proxySubnet;
-
-  /// The username that Dataproc Metastore service will use to connect to the
-  /// database.
-  ///
-  /// Required.
-  core.String? username;
-
-  CloudSQLConnectionConfig({
-    this.hiveDatabaseName,
-    this.instanceConnectionName,
-    this.ipAddress,
-    this.natSubnet,
-    this.password,
-    this.port,
-    this.proxySubnet,
-    this.username,
-  });
-
-  CloudSQLConnectionConfig.fromJson(core.Map json_)
-    : this(
-        hiveDatabaseName: json_['hiveDatabaseName'] as core.String?,
-        instanceConnectionName: json_['instanceConnectionName'] as core.String?,
-        ipAddress: json_['ipAddress'] as core.String?,
-        natSubnet: json_['natSubnet'] as core.String?,
-        password: json_['password'] as core.String?,
-        port: json_['port'] as core.int?,
-        proxySubnet: json_['proxySubnet'] as core.String?,
-        username: json_['username'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final hiveDatabaseName = this.hiveDatabaseName;
-    final instanceConnectionName = this.instanceConnectionName;
-    final ipAddress = this.ipAddress;
-    final natSubnet = this.natSubnet;
-    final password = this.password;
-    final port = this.port;
-    final proxySubnet = this.proxySubnet;
-    final username = this.username;
-    return {
-      'hiveDatabaseName': ?hiveDatabaseName,
-      'instanceConnectionName': ?instanceConnectionName,
-      'ipAddress': ?ipAddress,
-      'natSubnet': ?natSubnet,
-      'password': ?password,
-      'port': ?port,
-      'proxySubnet': ?proxySubnet,
-      'username': ?username,
-    };
-  }
-}
-
-/// Deprecated: Migrations to Dataproc Metastore are no longer supported.
-///
-/// Use BigLake Metastore migration instead. Configuration information for
-/// migrating from self-managed hive metastore on Google Cloud using Cloud SQL
-/// as the backend database to Dataproc Metastore.
-class CloudSQLMigrationConfig {
-  /// Configuration information to start the Change Data Capture (CDC) streams
-  /// from customer database to backend database of Dataproc Metastore.
-  ///
-  /// Dataproc Metastore switches to using its backend database after the
-  /// cutover phase of migration.
-  ///
-  /// Required.
-  CdcConfig? cdcConfig;
-
-  /// Configuration information to establish customer database connection before
-  /// the cutover phase of migration
-  ///
-  /// Required.
-  CloudSQLConnectionConfig? cloudSqlConnectionConfig;
-
-  CloudSQLMigrationConfig({this.cdcConfig, this.cloudSqlConnectionConfig});
-
-  CloudSQLMigrationConfig.fromJson(core.Map json_)
-    : this(
-        cdcConfig: json_.containsKey('cdcConfig')
-            ? CdcConfig.fromJson(
-                json_['cdcConfig'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        cloudSqlConnectionConfig: json_.containsKey('cloudSqlConnectionConfig')
-            ? CloudSQLConnectionConfig.fromJson(
-                json_['cloudSqlConnectionConfig']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cdcConfig = this.cdcConfig;
-    final cloudSqlConnectionConfig = this.cloudSqlConnectionConfig;
-    return {
-      'cdcConfig': ?cdcConfig,
-      'cloudSqlConnectionConfig': ?cloudSqlConnectionConfig,
+      'catalog': ?catalog,
+      'catalogType': ?catalogType,
+      'databaseSummaries': ?databaseSummaries,
     };
   }
 }
@@ -3511,6 +3470,77 @@ class DatabaseDump {
       'gcsUri': ?gcsUri,
       'sourceDatabase': ?sourceDatabase,
       'type': ?type,
+    };
+  }
+}
+
+/// Summary of results for a specific database in a catalog.
+class DatabaseSummary {
+  /// The name of the database.
+  ///
+  /// Output only.
+  core.String? database;
+
+  /// The migration plan action for the database.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED" : The action is unspecified.
+  /// - "CREATE" : Resource missing; will be created.
+  /// - "UPDATE" : Resource exists at the target, but differs from the source;
+  /// will be updated.
+  /// - "SKIP" : Resource exists at the target; no changes will be made.
+  /// - "DEPENDENCY_FAILURE" : Resource cannot be migrated due to a dependency
+  /// failure (e.g., parent resource missing).
+  /// - "ERROR" : Resource cannot be migrated due to an error during discovery.
+  core.String? planAction;
+
+  /// The migration result status for the database.
+  ///
+  /// This is only set if the migration is not a dry run.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "SUCCEEDED" : The resource was migrated successfully.
+  /// - "FAILED" : The resource failed to migrate.
+  /// - "SKIPPED" : The resource was skipped and will not be migrated.
+  core.String? resultStatus;
+
+  /// Aggregated summary of results for all tables in the database.
+  ///
+  /// Output only.
+  TableSummary? tableSummary;
+
+  DatabaseSummary({
+    this.database,
+    this.planAction,
+    this.resultStatus,
+    this.tableSummary,
+  });
+
+  DatabaseSummary.fromJson(core.Map json_)
+    : this(
+        database: json_['database'] as core.String?,
+        planAction: json_['planAction'] as core.String?,
+        resultStatus: json_['resultStatus'] as core.String?,
+        tableSummary: json_.containsKey('tableSummary')
+            ? TableSummary.fromJson(
+                json_['tableSummary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final database = this.database;
+    final planAction = this.planAction;
+    final resultStatus = this.resultStatus;
+    final tableSummary = this.tableSummary;
+    return {
+      'database': ?database,
+      'planAction': ?planAction,
+      'resultStatus': ?resultStatus,
+      'tableSummary': ?tableSummary,
     };
   }
 }
@@ -3770,6 +3800,40 @@ class Federation {
   }
 }
 
+/// Configuration for migrating Hive metadata.
+class HiveConfig {
+  /// The target catalog for migrated databases and tables.
+  ///
+  /// Format: "projects/{project_id_or_number}/catalogs/{catalog_id}"
+  ///
+  /// Required.
+  core.String? catalog;
+
+  /// The list of databases to migrate to the Hive catalog.
+  ///
+  /// Use "*" to migrate all databases. Note: If Iceberg tables exist in these
+  /// databases, they will only be migrated if iceberg_config is also specified.
+  ///
+  /// Required.
+  core.List<core.String>? databases;
+
+  HiveConfig({this.catalog, this.databases});
+
+  HiveConfig.fromJson(core.Map json_)
+    : this(
+        catalog: json_['catalog'] as core.String?,
+        databases: (json_['databases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final catalog = this.catalog;
+    final databases = this.databases;
+    return {'catalog': ?catalog, 'databases': ?databases};
+  }
+}
+
 /// Specifies configuration information specific to running Hive metastore
 /// software as the metastore service.
 class HiveMetastoreConfig {
@@ -3870,6 +3934,40 @@ class HiveMetastoreConfig {
       'kerberosConfig': ?kerberosConfig,
       'version': ?version,
     };
+  }
+}
+
+/// Configuration for migrating Iceberg metadata.
+class IcebergConfig {
+  /// The target catalog for migrated Iceberg metadata.
+  ///
+  /// Format: "projects/{project_id_or_number}/catalogs/{catalog_id}"
+  ///
+  /// Required.
+  core.String? catalog;
+
+  /// The list of namespaces to migrate to the Iceberg REST catalog.
+  ///
+  /// Use "*" to migrate all namespaces. Note: If Hive tables exist in these
+  /// namespaces, they will only be migrated if hive_config is also specified.
+  ///
+  /// Required.
+  core.List<core.String>? namespaces;
+
+  IcebergConfig({this.catalog, this.namespaces});
+
+  IcebergConfig.fromJson(core.Map json_)
+    : this(
+        catalog: json_['catalog'] as core.String?,
+        namespaces: (json_['namespaces'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final catalog = this.catalog;
+    final namespaces = this.namespaces;
+    return {'catalog': ?catalog, 'namespaces': ?namespaces};
   }
 }
 
@@ -4577,15 +4675,9 @@ class MetadataManagementActivity {
 
 /// The details of a migration execution resource.
 class MigrationExecution {
-  /// Deprecated: Migrations to Dataproc Metastore are no longer supported.
-  ///
-  /// Use BigLake Metastore migration instead. Configuration information
-  /// specific to migrating from self-managed hive metastore on Google Cloud
-  /// using Cloud SQL as the backend database to Dataproc Metastore.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  CloudSQLMigrationConfig? cloudSqlMigrationConfig;
+  /// Configuration information specific to migrating from Dataproc Metastore to
+  /// BigLake Metastore.
+  BigLakeMetastoreMigrationConfig? biglakeMetastoreMigrationConfig;
 
   /// The time when the migration execution was started.
   ///
@@ -4654,7 +4746,7 @@ class MigrationExecution {
   core.String? stateMessage;
 
   MigrationExecution({
-    this.cloudSqlMigrationConfig,
+    this.biglakeMetastoreMigrationConfig,
     this.createTime,
     this.endTime,
     this.name,
@@ -4665,9 +4757,10 @@ class MigrationExecution {
 
   MigrationExecution.fromJson(core.Map json_)
     : this(
-        cloudSqlMigrationConfig: json_.containsKey('cloudSqlMigrationConfig')
-            ? CloudSQLMigrationConfig.fromJson(
-                json_['cloudSqlMigrationConfig']
+        biglakeMetastoreMigrationConfig:
+            json_.containsKey('biglakeMetastoreMigrationConfig')
+            ? BigLakeMetastoreMigrationConfig.fromJson(
+                json_['biglakeMetastoreMigrationConfig']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -4680,7 +4773,8 @@ class MigrationExecution {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final cloudSqlMigrationConfig = this.cloudSqlMigrationConfig;
+    final biglakeMetastoreMigrationConfig =
+        this.biglakeMetastoreMigrationConfig;
     final createTime = this.createTime;
     final endTime = this.endTime;
     final name = this.name;
@@ -4688,13 +4782,71 @@ class MigrationExecution {
     final state = this.state;
     final stateMessage = this.stateMessage;
     return {
-      'cloudSqlMigrationConfig': ?cloudSqlMigrationConfig,
+      'biglakeMetastoreMigrationConfig': ?biglakeMetastoreMigrationConfig,
       'createTime': ?createTime,
       'endTime': ?endTime,
       'name': ?name,
       'phase': ?phase,
       'state': ?state,
       'stateMessage': ?stateMessage,
+    };
+  }
+}
+
+/// Summary of the migration results.
+class MigrationSummary {
+  /// Summary of results for each catalog involved in the migration.
+  ///
+  /// Output only.
+  core.List<CatalogSummary>? catalogSummaries;
+
+  /// The UTC time when this report was finalized.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Whether the migration was a dry run.
+  ///
+  /// Output only.
+  core.bool? dryRun;
+
+  /// The Dataproc Metastore service name (format: projects / * /locations / *
+  /// /services / * ) on which the migration was executed.
+  ///
+  /// Output only.
+  core.String? service;
+
+  MigrationSummary({
+    this.catalogSummaries,
+    this.createTime,
+    this.dryRun,
+    this.service,
+  });
+
+  MigrationSummary.fromJson(core.Map json_)
+    : this(
+        catalogSummaries: (json_['catalogSummaries'] as core.List?)
+            ?.map(
+              (value) => CatalogSummary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        createTime: json_['createTime'] as core.String?,
+        dryRun: json_['dryRun'] as core.bool?,
+        service: json_['service'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final catalogSummaries = this.catalogSummaries;
+    final createTime = this.createTime;
+    final dryRun = this.dryRun;
+    final service = this.service;
+    return {
+      'catalogSummaries': ?catalogSummaries,
+      'createTime': ?createTime,
+      'dryRun': ?dryRun,
+      'service': ?service,
     };
   }
 }
@@ -5706,6 +5858,16 @@ class StartMigrationRequest {
   /// Required.
   MigrationExecution? migrationExecution;
 
+  /// The ID to use for the migration execution, which will become the final
+  /// component of the migration execution's resource name.
+  ///
+  /// If not specified, a UUID will be generated.This value must be between 2
+  /// and 63 characters long inclusive, begin with a letter, end with a letter
+  /// or number, and valid characters are a-z0-9-.
+  ///
+  /// Optional.
+  core.String? migrationExecutionId;
+
   /// A request ID.
   ///
   /// Specify a unique request ID to allow the server to ignore the request if
@@ -5720,7 +5882,11 @@ class StartMigrationRequest {
   /// Optional.
   core.String? requestId;
 
-  StartMigrationRequest({this.migrationExecution, this.requestId});
+  StartMigrationRequest({
+    this.migrationExecution,
+    this.migrationExecutionId,
+    this.requestId,
+  });
 
   StartMigrationRequest.fromJson(core.Map json_)
     : this(
@@ -5730,13 +5896,19 @@ class StartMigrationRequest {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        migrationExecutionId: json_['migrationExecutionId'] as core.String?,
         requestId: json_['requestId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final migrationExecution = this.migrationExecution;
+    final migrationExecutionId = this.migrationExecutionId;
     final requestId = this.requestId;
-    return {'migrationExecution': ?migrationExecution, 'requestId': ?requestId};
+    return {
+      'migrationExecution': ?migrationExecution,
+      'migrationExecutionId': ?migrationExecutionId,
+      'requestId': ?requestId,
+    };
   }
 }
 
@@ -5748,6 +5920,78 @@ class StartMigrationRequest {
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// Aggregated summary of results for all tables in a database.
+class TableSummary {
+  /// Partition migration summary across all Hive tables in the database.The
+  /// total number of partitions discovered at the source.
+  ///
+  /// Output only.
+  core.String? partitionDiscoveredCount;
+
+  /// The total number of partitions that failed to migrate at the target.
+  ///
+  /// Output only.
+  core.String? partitionFailedCount;
+
+  /// The total number of partitions successfully migrated at the target.
+  ///
+  /// Output only.
+  core.String? partitionSuccessCount;
+
+  /// Number of tables with a specific migration plan action.
+  ///
+  /// The key is the action name (e.g. CREATE, UPDATE, SKIP, etc.).
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? planCounts;
+
+  /// Number of tables with a specific migration result status.
+  ///
+  /// The key is the status name (e.g. SUCCEEDED, FAILED, SKIPPED, etc.). This
+  /// is only set if the migration is not a dry run.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? resultCounts;
+
+  TableSummary({
+    this.partitionDiscoveredCount,
+    this.partitionFailedCount,
+    this.partitionSuccessCount,
+    this.planCounts,
+    this.resultCounts,
+  });
+
+  TableSummary.fromJson(core.Map json_)
+    : this(
+        partitionDiscoveredCount:
+            json_['partitionDiscoveredCount'] as core.String?,
+        partitionFailedCount: json_['partitionFailedCount'] as core.String?,
+        partitionSuccessCount: json_['partitionSuccessCount'] as core.String?,
+        planCounts:
+            (json_['planCounts'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        resultCounts:
+            (json_['resultCounts'] as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final partitionDiscoveredCount = this.partitionDiscoveredCount;
+    final partitionFailedCount = this.partitionFailedCount;
+    final partitionSuccessCount = this.partitionSuccessCount;
+    final planCounts = this.planCounts;
+    final resultCounts = this.resultCounts;
+    return {
+      'partitionDiscoveredCount': ?partitionDiscoveredCount,
+      'partitionFailedCount': ?partitionFailedCount,
+      'partitionSuccessCount': ?partitionSuccessCount,
+      'planCounts': ?planCounts,
+      'resultCounts': ?resultCounts,
+    };
+  }
+}
 
 /// Telemetry Configuration for the Dataproc Metastore service.
 class TelemetryConfig {

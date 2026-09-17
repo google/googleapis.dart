@@ -2044,6 +2044,7 @@ buildGoogleCloudDataplexV1DataDocumentationResultQuery() {
   if (buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery < 3) {
     o.description = 'foo';
     o.sql = 'foo';
+    o.sqlDialect = 'foo';
   }
   buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery--;
   return o;
@@ -2056,6 +2057,7 @@ void checkGoogleCloudDataplexV1DataDocumentationResultQuery(
   if (buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery < 3) {
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.sql!, unittest.equals('foo'));
+    unittest.expect(o.sqlDialect!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery--;
 }
@@ -2240,6 +2242,7 @@ buildGoogleCloudDataplexV1DataDocumentationSpec() {
   if (buildCounterGoogleCloudDataplexV1DataDocumentationSpec < 3) {
     o.catalogPublishingEnabled = true;
     o.generationScopes = buildUnnamed31();
+    o.sqlDialect = 'foo';
   }
   buildCounterGoogleCloudDataplexV1DataDocumentationSpec--;
   return o;
@@ -2252,6 +2255,7 @@ void checkGoogleCloudDataplexV1DataDocumentationSpec(
   if (buildCounterGoogleCloudDataplexV1DataDocumentationSpec < 3) {
     unittest.expect(o.catalogPublishingEnabled!, unittest.isTrue);
     checkUnnamed31(o.generationScopes!);
+    unittest.expect(o.sqlDialect!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1DataDocumentationSpec--;
 }
@@ -9971,6 +9975,14 @@ void checkUnnamed197(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.List<core.String> buildUnnamed198() => ['foo', 'foo'];
+
+void checkUnnamed198(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
@@ -14845,6 +14857,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudDataplexApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_contexts = buildUnnamed194();
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -14885,6 +14898,7 @@ void main() {
               );
             }
           }
+          unittest.expect(queryMap['contexts']!, unittest.equals(arg_contexts));
           unittest.expect(
             queryMap['orderBy']!.first,
             unittest.equals(arg_orderBy),
@@ -14918,6 +14932,7 @@ void main() {
       );
       final response = await res.searchEntries(
         arg_name,
+        contexts: arg_contexts,
         orderBy: arg_orderBy,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
@@ -21257,8 +21272,8 @@ void main() {
         mock,
       ).projects.locations.entryGroups.entries;
       final arg_name = 'foo';
-      final arg_aspectTypes = buildUnnamed194();
-      final arg_paths = buildUnnamed195();
+      final arg_aspectTypes = buildUnnamed195();
+      final arg_paths = buildUnnamed196();
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -21411,7 +21426,7 @@ void main() {
       final arg_request = buildGoogleCloudDataplexV1Entry();
       final arg_name = 'foo';
       final arg_allowMissing = true;
-      final arg_aspectKeys = buildUnnamed196();
+      final arg_aspectKeys = buildUnnamed197();
       final arg_deleteMissingAspects = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
@@ -21697,7 +21712,7 @@ void main() {
       final arg_request = buildGoogleCloudDataplexV1EntryLink();
       final arg_name = 'foo';
       final arg_allowMissing = true;
-      final arg_aspectKeys = buildUnnamed197();
+      final arg_aspectKeys = buildUnnamed198();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {

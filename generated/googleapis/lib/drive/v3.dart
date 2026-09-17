@@ -593,6 +593,11 @@ class ApprovalsResource {
   ///
   /// For more information, see
   /// [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+  /// By default, this method returns a minimal response that may not include
+  /// the items array. To retrieve approval details, you must explicitly specify
+  /// the fields you want using the `fields` query parameter. To return the
+  /// exact fields you need, see
+  /// [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
   ///
   /// Request parameters:
   ///
@@ -1815,6 +1820,8 @@ class FilesResource {
   ///
   /// [fileId] - The ID of the file.
   ///
+  /// [copyComments] - Whether to copy the comments associated with the file.
+  ///
   /// [enforceSingleParent] - Deprecated: Copying files into multiple folders is
   /// no longer supported. Use shortcuts instead.
   ///
@@ -1856,6 +1863,7 @@ class FilesResource {
   async.Future<File> copy(
     File request,
     core.String fileId, {
+    core.bool? copyComments,
     core.bool? enforceSingleParent,
     core.bool? ignoreDefaultVisibility,
     core.String? includeLabels,
@@ -1868,6 +1876,7 @@ class FilesResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'copyComments': ?copyComments == null ? null : ['${copyComments}'],
       'enforceSingleParent': ?enforceSingleParent == null
           ? null
           : ['${enforceSingleParent}'],
