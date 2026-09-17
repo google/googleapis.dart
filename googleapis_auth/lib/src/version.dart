@@ -7,7 +7,7 @@
 import 'version_fallback.dart' if (dart.library.io) 'version_io.dart' as impl;
 
 /// Must be kept in sync with `pubspec.yaml` (verified by `test/version_test.dart`).
-const packageVersion = '2.3.4-wip';
+const packageVersion = '2.3.4';
 
 /// Header name for Google API client telemetry.
 const xGoogApiClientHeader = 'x-goog-api-client';

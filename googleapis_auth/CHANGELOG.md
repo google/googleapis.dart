@@ -1,4 +1,4 @@
-## 2.3.4-wip
+## 2.3.4
 
 - Added a fallback `x-goog-api-client` tracking header to `AuthenticatedClient`
   and `signBlob` when not already set on outgoing requests.
