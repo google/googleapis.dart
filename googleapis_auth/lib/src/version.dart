@@ -4,23 +4,17 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 
-import 'version_fallback.dart' if (dart.library.io) 'version_io.dart' as impl;
+import 'version_fallback.dart' if (dart.library.io) 'version_io.dart';
 
 /// Must be kept in sync with `pubspec.yaml` (verified by `test/version_test.dart`).
-const _packageVersion = '2.3.4';
-
-const _xGoogApiClientHeader = 'x-goog-api-client';
-
-String get _dartVersion => impl.dartVersion;
-
-final _xGoogApiClientHeaderValue =
-    'gl-dart/$_dartVersion auth/$_packageVersion';
+final _xGoogApiClientHeaderValue = 'gl-dart/$dartVersion auth/2.3.4';
 
 /// Adds the fallback `x-goog-api-client` header to [headers] if not already
 /// present, and returns [headers].
 Map<String, String> addXGoogApiClientHeader(Map<String, String> headers) {
-  if (!headers.keys.any((k) => k.toLowerCase() == _xGoogApiClientHeader)) {
-    headers[_xGoogApiClientHeader] = _xGoogApiClientHeaderValue;
+  const header = 'x-goog-api-client';
+  if (!headers.keys.any((k) => k.toLowerCase() == header)) {
+    headers[header] = _xGoogApiClientHeaderValue;
   }
   return headers;
 }
