@@ -42,6 +42,7 @@ api.CloudLocation buildCloudLocation() {
     o.cloudProvider = 'foo';
     o.containingCloudLocation = 'foo';
     o.displayName = 'foo';
+    o.gcpAttributes = buildGcpAttributes();
     o.name = 'foo';
     o.territoryCode = 'foo';
   }
@@ -57,10 +58,30 @@ void checkCloudLocation(api.CloudLocation o) {
     unittest.expect(o.cloudProvider!, unittest.equals('foo'));
     unittest.expect(o.containingCloudLocation!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
+    checkGcpAttributes(o.gcpAttributes!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.territoryCode!, unittest.equals('foo'));
   }
   buildCounterCloudLocation--;
+}
+
+core.int buildCounterGcpAttributes = 0;
+api.GcpAttributes buildGcpAttributes() {
+  final o = api.GcpAttributes();
+  buildCounterGcpAttributes++;
+  if (buildCounterGcpAttributes < 3) {
+    o.zoneType = 'foo';
+  }
+  buildCounterGcpAttributes--;
+  return o;
+}
+
+void checkGcpAttributes(api.GcpAttributes o) {
+  buildCounterGcpAttributes++;
+  if (buildCounterGcpAttributes < 3) {
+    unittest.expect(o.zoneType!, unittest.equals('foo'));
+  }
+  buildCounterGcpAttributes--;
 }
 
 core.List<api.CloudLocation> buildUnnamed0() => [
@@ -235,6 +256,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCloudLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-GcpAttributes', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGcpAttributes();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GcpAttributes.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGcpAttributes(od);
     });
   });
 

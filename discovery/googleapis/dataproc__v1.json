@@ -123,7 +123,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260715",
+    "revision": "20260820",
     "rootUrl": "https://dataproc.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Dataproc API",
@@ -5984,7 +5984,8 @@
                     "type": "integer"
                 },
                 "diskType": {
-                    "description": "Optional. Disk type.",
+                    "deprecated": true,
+                    "description": "Optional. Deprecated: Use type instead.",
                     "enum": [
                         "DISK_TYPE_UNSPECIFIED",
                         "HYPERDISK_BALANCED",
@@ -5993,11 +5994,11 @@
                         "HYPERDISK_THROUGHPUT"
                     ],
                     "enumDescriptions": [
-                        "Required unspecified disk type.",
-                        "Hyperdisk Balanced disk type.",
-                        "Hyperdisk Extreme disk type.",
-                        "Hyperdisk ML disk type.",
-                        "Hyperdisk Throughput disk type."
+                        "Disk type is not specified.",
+                        "Hyperdisk Balanced.",
+                        "Hyperdisk Extreme.",
+                        "Hyperdisk ML.",
+                        "Hyperdisk Throughput."
                     ],
                     "type": "string"
                 },
@@ -6009,6 +6010,10 @@
                 "provisionedThroughput": {
                     "description": "Optional. Indicates how much throughput to provision for the attached disk. This sets the number of throughput mb per second that the disk can handle. See https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features",
                     "format": "int64",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Optional. Attached disk type. Currently only supports Hyperdisks. See https://cloud.google.com/compute/docs/disks/hyperdisks. Note: Hyperdisk Balanced High Availability is not supported.Allowed values are: hyperdisk-balanced hyperdisk-extreme hyperdisk-ml hyperdisk-throughput",
                     "type": "string"
                 }
             },
@@ -6841,8 +6846,7 @@
             "id": "ClusterStatus",
             "properties": {
                 "detail": {
-                    "description": "Optional. Output only. Details of cluster's state.",
-                    "readOnly": true,
+                    "description": "Optional. Details of cluster's state.",
                     "type": "string"
                 },
                 "state": {
@@ -8771,8 +8775,7 @@
             "id": "JobStatus",
             "properties": {
                 "details": {
-                    "description": "Optional. Output only. Job state details, such as an error description if the state is ERROR.",
-                    "readOnly": true,
+                    "description": "Optional. Job state details, such as an error description if the state is ERROR.",
                     "type": "string"
                 },
                 "state": {
@@ -9346,7 +9349,7 @@
             "id": "Metric",
             "properties": {
                 "metricOverrides": {
-                    "description": "Optional. Specify one or more Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) to collect for the metric course (for the SPARK metric source (any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics are collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics are not collected. The collection of the metrics for other enabled custom metric sources is unaffected. For example, if both SPARK and YARN metric sources are enabled, and overrides are provided for Spark metrics only, all YARN metrics are collected.",
+                    "description": "Optional. Specify one or more Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) to collect for the metric course (for the SPARK metric source (any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format:METRIC_SOURCE:INSTANCE :GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics are collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics are not collected. The collection of the metrics for other enabled custom metric sources is unaffected. For example, if both SPARK and YARN metric sources are enabled, and overrides are provided for Spark metrics only, all YARN metrics are collected.",
                     "items": {
                         "type": "string"
                     },

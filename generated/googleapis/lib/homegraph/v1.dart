@@ -1470,13 +1470,11 @@ class TraitData {
   /// The time the client update was committed in the server.
   core.String? commitTime;
 
-  /// Optional in write requests (e.g. ReportStateAndNotification).
+  /// The custom timestamp supplied by the provider during a
+  /// ReportStateAndNotification update (if provided).
   ///
-  /// If set, represents the provider version timestamp of the existing trait in
-  /// the database. The server will perform optimistic locking validation if
-  /// this field is present and the experiment is enabled. It will not be
-  /// persisted to the database.
-  core.String? providerVersionTime;
+  /// This field is returned as part of the `QueryResponse`.
+  core.String? providerUpdateTime;
 
   /// The Provider Home API trait payload.
   ///
@@ -1484,12 +1482,12 @@ class TraitData {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? trait;
 
-  TraitData({this.commitTime, this.providerVersionTime, this.trait});
+  TraitData({this.commitTime, this.providerUpdateTime, this.trait});
 
   TraitData.fromJson(core.Map json_)
     : this(
         commitTime: json_['commitTime'] as core.String?,
-        providerVersionTime: json_['providerVersionTime'] as core.String?,
+        providerUpdateTime: json_['providerUpdateTime'] as core.String?,
         trait: json_.containsKey('trait')
             ? json_['trait'] as core.Map<core.String, core.dynamic>
             : null,
@@ -1497,11 +1495,11 @@ class TraitData {
 
   core.Map<core.String, core.dynamic> toJson() {
     final commitTime = this.commitTime;
-    final providerVersionTime = this.providerVersionTime;
+    final providerUpdateTime = this.providerUpdateTime;
     final trait = this.trait;
     return {
       'commitTime': ?commitTime,
-      'providerVersionTime': ?providerVersionTime,
+      'providerUpdateTime': ?providerUpdateTime,
       'trait': ?trait,
     };
   }

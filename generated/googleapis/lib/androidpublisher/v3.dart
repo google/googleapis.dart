@@ -9530,11 +9530,12 @@ class AppRecoveryAction {
 
 /// An installable set of active APKs.
 ///
-/// A set of APKs might only contain 1 APK if the app in question publishes
-/// using APKs. If the app uses app bundles (or a similar technology), this set
-/// should contain all APKs (even optional ones) that might be installed for
-/// this app. A set of APKs should be installable together. If certain APKs are
-/// exclusive to one another and cannot be installed together, then a separate
+/// All APKs in this set should belong to the same version of the app. A set of
+/// APKs might only contain 1 APK if the app in question publishes using APKs.
+/// If the app uses app bundles (or a similar technology), this set should
+/// contain all APKs (even optional ones) that might be installed for this app.
+/// A set of APKs should be installable together. If certain APKs are exclusive
+/// to one another and cannot be installed together, then a separate
 /// AppStoreAppActiveApkSet should be created.
 class AppStoreAppActiveApkSet {
   /// The ID for the main base application module.
@@ -13970,6 +13971,61 @@ class ExternalAccountIds {
   }
 }
 
+/// Reporting details unique to the external content link program.
+class ExternalContentLinkDetails {
+  /// The category of the downlaoded app.
+  ///
+  /// This must match the category provided in Play Console during the external
+  /// app verification process. Only required for app installs.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXTERNAL_CONTENT_APP_CATEGORY_UNSPECIFIED" : Unspecified, do not use.
+  /// - "APP" : The app is classified under the app category.
+  /// - "GAME" : The app is classified under the game category.
+  core.String? externalAppCategory;
+
+  /// The package name of the app downloaded through this transaction.
+  ///
+  /// Only required for app installs.
+  ///
+  /// Optional.
+  core.String? installedAppPackage;
+
+  /// The type content being reported by this transaction.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "EXTERNAL_CONTENT_LINK_TYPE_UNSPECIFIED" : Unspecified, do not use.
+  /// - "LINK_TO_DIGITAL_CONTENT_OFFER" : An offer to purchase digital content.
+  /// - "LINK_TO_APP_DOWNLOAD" : An app install.
+  core.String? linkType;
+
+  ExternalContentLinkDetails({
+    this.externalAppCategory,
+    this.installedAppPackage,
+    this.linkType,
+  });
+
+  ExternalContentLinkDetails.fromJson(core.Map json_)
+    : this(
+        externalAppCategory: json_['externalAppCategory'] as core.String?,
+        installedAppPackage: json_['installedAppPackage'] as core.String?,
+        linkType: json_['linkType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final externalAppCategory = this.externalAppCategory;
+    final installedAppPackage = this.installedAppPackage;
+    final linkType = this.linkType;
+    return {
+      'externalAppCategory': ?externalAppCategory,
+      'installedAppPackage': ?installedAppPackage,
+      'linkType': ?linkType,
+    };
+  }
+}
+
 /// Reporting details unique to the external offers program.
 class ExternalOfferDetails {
   /// The external transaction id associated with the app download event through
@@ -14091,6 +14147,11 @@ class ExternalTransaction {
   /// Output only.
   Price? currentTaxAmount;
 
+  /// Details necessary to accurately report external content link transactions.
+  ///
+  /// Optional.
+  ExternalContentLinkDetails? externalContentLinkDetails;
+
   /// Details necessary to accurately report external offers transactions.
   ///
   /// Optional.
@@ -14179,6 +14240,7 @@ class ExternalTransaction {
     this.createTime,
     this.currentPreTaxAmount,
     this.currentTaxAmount,
+    this.externalContentLinkDetails,
     this.externalOfferDetails,
     this.externalTransactionId,
     this.oneTimeTransaction,
@@ -14205,6 +14267,13 @@ class ExternalTransaction {
         currentTaxAmount: json_.containsKey('currentTaxAmount')
             ? Price.fromJson(
                 json_['currentTaxAmount']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        externalContentLinkDetails:
+            json_.containsKey('externalContentLinkDetails')
+            ? ExternalContentLinkDetails.fromJson(
+                json_['externalContentLinkDetails']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -14259,6 +14328,7 @@ class ExternalTransaction {
     final createTime = this.createTime;
     final currentPreTaxAmount = this.currentPreTaxAmount;
     final currentTaxAmount = this.currentTaxAmount;
+    final externalContentLinkDetails = this.externalContentLinkDetails;
     final externalOfferDetails = this.externalOfferDetails;
     final externalTransactionId = this.externalTransactionId;
     final oneTimeTransaction = this.oneTimeTransaction;
@@ -14275,6 +14345,7 @@ class ExternalTransaction {
       'createTime': ?createTime,
       'currentPreTaxAmount': ?currentPreTaxAmount,
       'currentTaxAmount': ?currentTaxAmount,
+      'externalContentLinkDetails': ?externalContentLinkDetails,
       'externalOfferDetails': ?externalOfferDetails,
       'externalTransactionId': ?externalTransactionId,
       'oneTimeTransaction': ?oneTimeTransaction,
@@ -17615,6 +17686,27 @@ class OneTimeProductDiscountedOffer {
   }
 }
 
+/// Configuration specific to game reward offers.
+class OneTimeProductGameRewardOffer {
+  /// The number of times this offer can be redeemed.
+  ///
+  /// If unset or set to 0, allows for unlimited offer redemptions. Otherwise
+  /// must be a number between 1 and 50 inclusive.
+  ///
+  /// Optional.
+  core.String? redemptionLimit;
+
+  OneTimeProductGameRewardOffer({this.redemptionLimit});
+
+  OneTimeProductGameRewardOffer.fromJson(core.Map json_)
+    : this(redemptionLimit: json_['redemptionLimit'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final redemptionLimit = this.redemptionLimit;
+    return {'redemptionLimit': ?redemptionLimit};
+  }
+}
+
 /// Regional store listing for a one-time product.
 class OneTimeProductListing {
   /// The description of this product in the language of this listing.
@@ -17661,6 +17753,9 @@ class OneTimeProductListing {
 class OneTimeProductOffer {
   /// A discounted offer.
   OneTimeProductDiscountedOffer? discountedOffer;
+
+  /// A game reward offer.
+  OneTimeProductGameRewardOffer? gameRewardOffer;
 
   /// The ID of this product offer.
   ///
@@ -17727,6 +17822,7 @@ class OneTimeProductOffer {
 
   OneTimeProductOffer({
     this.discountedOffer,
+    this.gameRewardOffer,
     this.offerId,
     this.offerTags,
     this.packageName,
@@ -17743,6 +17839,11 @@ class OneTimeProductOffer {
         discountedOffer: json_.containsKey('discountedOffer')
             ? OneTimeProductDiscountedOffer.fromJson(
                 json_['discountedOffer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        gameRewardOffer: json_.containsKey('gameRewardOffer')
+            ? OneTimeProductGameRewardOffer.fromJson(
+                json_['gameRewardOffer'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         offerId: json_['offerId'] as core.String?,
@@ -17780,6 +17881,7 @@ class OneTimeProductOffer {
 
   core.Map<core.String, core.dynamic> toJson() {
     final discountedOffer = this.discountedOffer;
+    final gameRewardOffer = this.gameRewardOffer;
     final offerId = this.offerId;
     final offerTags = this.offerTags;
     final packageName = this.packageName;
@@ -17792,6 +17894,7 @@ class OneTimeProductOffer {
     final state = this.state;
     return {
       'discountedOffer': ?discountedOffer,
+      'gameRewardOffer': ?gameRewardOffer,
       'offerId': ?offerId,
       'offerTags': ?offerTags,
       'packageName': ?packageName,
@@ -19298,7 +19401,7 @@ class PolicyMultipleChoiceResponse {
   }
 }
 
-/// An individual response to a policy question about an app.
+/// An individual response (answer) to a policy question about an app.
 class PolicyResponse {
   /// A boolean response.
   ///

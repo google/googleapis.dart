@@ -51,7 +51,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260720",
+    "revision": "20260901",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "drive/v3/",
     "title": "Google Drive API",
@@ -452,7 +452,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists the approvals on a file. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals).",
+                    "description": "Lists the approvals on a file. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals). By default, this method returns a minimal response that may not include the items array. To retrieve approval details, you must explicitly specify the fields you want using the `fields` query parameter. To return the exact fields you need, see [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).",
                     "flatPath": "files/{fileId}/approvals",
                     "httpMethod": "GET",
                     "id": "drive.approvals.list",
@@ -1348,6 +1348,12 @@
                         "fileId"
                     ],
                     "parameters": {
+                        "copyComments": {
+                            "default": "false",
+                            "description": "Whether to copy the comments associated with the file.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "enforceSingleParent": {
                             "default": "false",
                             "deprecated": true,

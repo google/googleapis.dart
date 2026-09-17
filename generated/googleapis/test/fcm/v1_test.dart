@@ -297,6 +297,21 @@ void checkColor(api.Color o) {
   buildCounterColor--;
 }
 
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  final o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+}
+
 core.int buildCounterFcmOptions = 0;
 api.FcmOptions buildFcmOptions() {
   final o = api.FcmOptions();
@@ -339,9 +354,41 @@ void checkLightSettings(api.LightSettings o) {
   buildCounterLightSettings--;
 }
 
-core.Map<core.String, core.String> buildUnnamed6() => {'x': 'foo', 'y': 'foo'};
+core.List<api.TopicSubscription> buildUnnamed6() => [
+  buildTopicSubscription(),
+  buildTopicSubscription(),
+];
 
-void checkUnnamed6(core.Map<core.String, core.String> o) {
+void checkUnnamed6(core.List<api.TopicSubscription> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTopicSubscription(o[0]);
+  checkTopicSubscription(o[1]);
+}
+
+core.int buildCounterListTopicSubscriptionsResponse = 0;
+api.ListTopicSubscriptionsResponse buildListTopicSubscriptionsResponse() {
+  final o = api.ListTopicSubscriptionsResponse();
+  buildCounterListTopicSubscriptionsResponse++;
+  if (buildCounterListTopicSubscriptionsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.topicSubscriptions = buildUnnamed6();
+  }
+  buildCounterListTopicSubscriptionsResponse--;
+  return o;
+}
+
+void checkListTopicSubscriptionsResponse(api.ListTopicSubscriptionsResponse o) {
+  buildCounterListTopicSubscriptionsResponse++;
+  if (buildCounterListTopicSubscriptionsResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed6(o.topicSubscriptions!);
+  }
+  buildCounterListTopicSubscriptionsResponse--;
+}
+
+core.Map<core.String, core.String> buildUnnamed7() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed7(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -355,7 +402,7 @@ api.Message buildMessage() {
     o.android = buildAndroidConfig();
     o.apns = buildApnsConfig();
     o.condition = 'foo';
-    o.data = buildUnnamed6();
+    o.data = buildUnnamed7();
     o.fcmOptions = buildFcmOptions();
     o.fid = 'foo';
     o.name = 'foo';
@@ -374,7 +421,7 @@ void checkMessage(api.Message o) {
     checkAndroidConfig(o.android!);
     checkApnsConfig(o.apns!);
     unittest.expect(o.condition!, unittest.equals('foo'));
-    checkUnnamed6(o.data!);
+    checkUnnamed7(o.data!);
     checkFcmOptions(o.fcmOptions!);
     unittest.expect(o.fid!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -430,12 +477,27 @@ void checkSendMessageRequest(api.SendMessageRequest o) {
   buildCounterSendMessageRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7() => {'x': 'foo', 'y': 'foo'};
+core.int buildCounterTopicSubscription = 0;
+api.TopicSubscription buildTopicSubscription() {
+  final o = api.TopicSubscription();
+  buildCounterTopicSubscription++;
+  if (buildCounterTopicSubscription < 3) {
+    o.createTime = 'foo';
+    o.name = 'foo';
+    o.topicName = 'foo';
+  }
+  buildCounterTopicSubscription--;
+  return o;
+}
 
-void checkUnnamed7(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
+void checkTopicSubscription(api.TopicSubscription o) {
+  buildCounterTopicSubscription++;
+  if (buildCounterTopicSubscription < 3) {
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.topicName!, unittest.equals('foo'));
+  }
+  buildCounterTopicSubscription--;
 }
 
 core.Map<core.String, core.String> buildUnnamed8() => {'x': 'foo', 'y': 'foo'};
@@ -446,7 +508,15 @@ void checkUnnamed8(core.Map<core.String, core.String> o) {
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed9() => {
+core.Map<core.String, core.String> buildUnnamed9() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed9(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
+core.Map<core.String, core.Object?> buildUnnamed10() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -459,7 +529,7 @@ core.Map<core.String, core.Object?> buildUnnamed9() => {
   },
 };
 
-void checkUnnamed9(core.Map<core.String, core.Object?> o) {
+void checkUnnamed10(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -478,10 +548,10 @@ api.WebpushConfig buildWebpushConfig() {
   final o = api.WebpushConfig();
   buildCounterWebpushConfig++;
   if (buildCounterWebpushConfig < 3) {
-    o.data = buildUnnamed7();
+    o.data = buildUnnamed8();
     o.fcmOptions = buildWebpushFcmOptions();
-    o.headers = buildUnnamed8();
-    o.notification = buildUnnamed9();
+    o.headers = buildUnnamed9();
+    o.notification = buildUnnamed10();
   }
   buildCounterWebpushConfig--;
   return o;
@@ -490,10 +560,10 @@ api.WebpushConfig buildWebpushConfig() {
 void checkWebpushConfig(api.WebpushConfig o) {
   buildCounterWebpushConfig++;
   if (buildCounterWebpushConfig < 3) {
-    checkUnnamed7(o.data!);
+    checkUnnamed8(o.data!);
     checkWebpushFcmOptions(o.fcmOptions!);
-    checkUnnamed8(o.headers!);
-    checkUnnamed9(o.notification!);
+    checkUnnamed9(o.headers!);
+    checkUnnamed10(o.notification!);
   }
   buildCounterWebpushConfig--;
 }
@@ -586,6 +656,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Empty.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEmpty(od);
+    });
+  });
+
   unittest.group('obj-schema-FcmOptions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildFcmOptions();
@@ -605,6 +686,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkLightSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListTopicSubscriptionsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListTopicSubscriptionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListTopicSubscriptionsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListTopicSubscriptionsResponse(od);
     });
   });
 
@@ -638,6 +730,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSendMessageRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-TopicSubscription', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTopicSubscription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TopicSubscription.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTopicSubscription(od);
     });
   });
 
@@ -725,6 +828,343 @@ void main() {
         $fields: arg_$fields,
       );
       checkMessage(response as api.Message);
+    });
+  });
+
+  unittest.group('resource-ProjectsRegistrationsTopicSubscriptionsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseCloudMessagingApi(
+        mock,
+      ).projects.registrations.topicSubscriptions;
+      final arg_request = buildTopicSubscription();
+      final arg_parent = 'foo';
+      final arg_topicName = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TopicSubscription.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTopicSubscription(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['topicName']!.first,
+            unittest.equals(arg_topicName),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTopicSubscription());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        topicName: arg_topicName,
+        $fields: arg_$fields,
+      );
+      checkTopicSubscription(response as api.TopicSubscription);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseCloudMessagingApi(
+        mock,
+      ).projects.registrations.topicSubscriptions;
+      final arg_name = 'foo';
+      final arg_allowMissing = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['allowMissing']!.first,
+            unittest.equals('$arg_allowMissing'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        allowMissing: arg_allowMissing,
+        $fields: arg_$fields,
+      );
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseCloudMessagingApi(
+        mock,
+      ).projects.registrations.topicSubscriptions;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTopicSubscription());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTopicSubscription(response as api.TopicSubscription);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseCloudMessagingApi(
+        mock,
+      ).projects.registrations.topicSubscriptions;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListTopicSubscriptionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListTopicSubscriptionsResponse(
+        response as api.ListTopicSubscriptionsResponse,
+      );
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseCloudMessagingApi(
+        mock,
+      ).projects.registrations.topicSubscriptions;
+      final arg_request = buildTopicSubscription();
+      final arg_name = 'foo';
+      final arg_allowMissing = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.TopicSubscription.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkTopicSubscription(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['allowMissing']!.first,
+            unittest.equals('$arg_allowMissing'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildTopicSubscription());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        allowMissing: arg_allowMissing,
+        $fields: arg_$fields,
+      );
+      checkTopicSubscription(response as api.TopicSubscription);
     });
   });
 }

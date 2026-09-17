@@ -291,12 +291,21 @@ void checkDeviceRecall(api.DeviceRecall o) {
   buildCounterDeviceRecall--;
 }
 
+core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
+
+void checkUnnamed4(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterEnvironmentDetails = 0;
 api.EnvironmentDetails buildEnvironmentDetails() {
   final o = api.EnvironmentDetails();
   buildCounterEnvironmentDetails++;
   if (buildCounterEnvironmentDetails < 3) {
     o.appAccessRiskVerdict = buildAppAccessRiskVerdict();
+    o.locationSpoofingRiskVerdict = buildUnnamed4();
     o.playProtectVerdict = 'foo';
   }
   buildCounterEnvironmentDetails--;
@@ -307,6 +316,7 @@ void checkEnvironmentDetails(api.EnvironmentDetails o) {
   buildCounterEnvironmentDetails++;
   if (buildCounterEnvironmentDetails < 3) {
     checkAppAccessRiskVerdict(o.appAccessRiskVerdict!);
+    checkUnnamed4(o.locationSpoofingRiskVerdict!);
     unittest.expect(o.playProtectVerdict!, unittest.equals('foo'));
   }
   buildCounterEnvironmentDetails--;
@@ -331,9 +341,9 @@ void checkPcAccountDetails(api.PcAccountDetails o) {
   buildCounterPcAccountDetails--;
 }
 
-core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -344,7 +354,7 @@ api.PcDeviceIntegrity buildPcDeviceIntegrity() {
   final o = api.PcDeviceIntegrity();
   buildCounterPcDeviceIntegrity++;
   if (buildCounterPcDeviceIntegrity < 3) {
-    o.deviceRecognitionVerdict = buildUnnamed4();
+    o.deviceRecognitionVerdict = buildUnnamed5();
   }
   buildCounterPcDeviceIntegrity--;
   return o;
@@ -353,7 +363,7 @@ api.PcDeviceIntegrity buildPcDeviceIntegrity() {
 void checkPcDeviceIntegrity(api.PcDeviceIntegrity o) {
   buildCounterPcDeviceIntegrity++;
   if (buildCounterPcDeviceIntegrity < 3) {
-    checkUnnamed4(o.deviceRecognitionVerdict!);
+    checkUnnamed5(o.deviceRecognitionVerdict!);
   }
   buildCounterPcDeviceIntegrity--;
 }

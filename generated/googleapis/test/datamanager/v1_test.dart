@@ -56,6 +56,7 @@ api.AdEvent buildAdEvent() {
     o.eventSubtype = 'foo';
     o.eventSubtypeString = 'foo';
     o.eventType = 'foo';
+    o.ipAddress = 'foo';
     o.measurementAllowed = true;
     o.medium = 'foo';
     o.mobileDeviceId = 'foo';
@@ -97,6 +98,7 @@ void checkAdEvent(api.AdEvent o) {
     unittest.expect(o.eventSubtype!, unittest.equals('foo'));
     unittest.expect(o.eventSubtypeString!, unittest.equals('foo'));
     unittest.expect(o.eventType!, unittest.equals('foo'));
+    unittest.expect(o.ipAddress!, unittest.equals('foo'));
     unittest.expect(o.measurementAllowed!, unittest.isTrue);
     unittest.expect(o.medium!, unittest.equals('foo'));
     unittest.expect(o.mobileDeviceId!, unittest.equals('foo'));
@@ -139,7 +141,9 @@ api.AdIdentifiers buildAdIdentifiers() {
     o.landingPageDeviceInfo = buildDeviceInfo();
     o.matchId = 'foo';
     o.mobileDeviceId = 'foo';
+    o.ppid = 'foo';
     o.sessionAttributes = 'foo';
+    o.visitorPpid = 'foo';
     o.wbraid = 'foo';
   }
   buildCounterAdIdentifiers--;
@@ -157,7 +161,9 @@ void checkAdIdentifiers(api.AdIdentifiers o) {
     checkDeviceInfo(o.landingPageDeviceInfo!);
     unittest.expect(o.matchId!, unittest.equals('foo'));
     unittest.expect(o.mobileDeviceId!, unittest.equals('foo'));
+    unittest.expect(o.ppid!, unittest.equals('foo'));
     unittest.expect(o.sessionAttributes!, unittest.equals('foo'));
+    unittest.expect(o.visitorPpid!, unittest.equals('foo'));
     unittest.expect(o.wbraid!, unittest.equals('foo'));
   }
   buildCounterAdIdentifiers--;

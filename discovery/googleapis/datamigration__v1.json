@@ -262,7 +262,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260802",
+    "revision": "20260904",
     "rootUrl": "https://datamigration.googleapis.com/",
     "servicePath": "",
     "title": "Database Migration API",
@@ -5348,7 +5348,7 @@
                 },
                 "performanceConfig": {
                     "$ref": "PerformanceConfig",
-                    "description": "Optional. Data dump parallelism settings used by the migration."
+                    "description": "Optional. Data dump and load parallelism settings used by the migration."
                 },
                 "phase": {
                     "description": "Output only. The current migration job phase.",
@@ -5792,9 +5792,21 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "privateConnectivity": {
+                    "$ref": "PrivateConnectivity",
+                    "description": "Private connectivity."
+                },
+                "privateServiceConnectConnectivity": {
+                    "$ref": "PrivateServiceConnectConnectivity",
+                    "description": "Private Service Connect connectivity."
+                },
                 "ssl": {
                     "$ref": "SslConfig",
                     "description": "SSL configuration for the destination to connect to the source database."
+                },
+                "staticServiceIpConnectivity": {
+                    "$ref": "StaticServiceIpConnectivity",
+                    "description": "Static Service IP connectivity."
                 },
                 "username": {
                     "description": "Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.",
@@ -6036,6 +6048,22 @@
                         "Maximum parallel level."
                     ],
                     "type": "string"
+                },
+                "loadParallelLevel": {
+                    "description": "Optional. Initial load parallelism level.",
+                    "enum": [
+                        "LOAD_PARALLEL_LEVEL_UNSPECIFIED",
+                        "LOAD_MIN",
+                        "LOAD_OPTIMAL",
+                        "LOAD_MAX"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown load parallel level.",
+                        "Minimal parallel level.",
+                        "Optimal parallel level.",
+                        "Maximum parallel level."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -6161,7 +6189,7 @@
                 },
                 "privateServiceConnectConnectivity": {
                     "$ref": "PrivateServiceConnectConnectivity",
-                    "description": "Private service connect connectivity."
+                    "description": "Private Service Connect connectivity."
                 },
                 "ssl": {
                     "$ref": "SslConfig",

@@ -2695,7 +2695,11 @@ api.MySqlConnectionProfile buildMySqlConnectionProfile() {
     o.password = 'foo';
     o.passwordSet = true;
     o.port = 42;
+    o.privateConnectivity = buildPrivateConnectivity();
+    o.privateServiceConnectConnectivity =
+        buildPrivateServiceConnectConnectivity();
     o.ssl = buildSslConfig();
+    o.staticServiceIpConnectivity = buildStaticServiceIpConnectivity();
     o.username = 'foo';
   }
   buildCounterMySqlConnectionProfile--;
@@ -2710,7 +2714,12 @@ void checkMySqlConnectionProfile(api.MySqlConnectionProfile o) {
     unittest.expect(o.password!, unittest.equals('foo'));
     unittest.expect(o.passwordSet!, unittest.isTrue);
     unittest.expect(o.port!, unittest.equals(42));
+    checkPrivateConnectivity(o.privateConnectivity!);
+    checkPrivateServiceConnectConnectivity(
+      o.privateServiceConnectConnectivity!,
+    );
     checkSslConfig(o.ssl!);
+    checkStaticServiceIpConnectivity(o.staticServiceIpConnectivity!);
     unittest.expect(o.username!, unittest.equals('foo'));
   }
   buildCounterMySqlConnectionProfile--;
@@ -3007,6 +3016,7 @@ api.PerformanceConfig buildPerformanceConfig() {
   buildCounterPerformanceConfig++;
   if (buildCounterPerformanceConfig < 3) {
     o.dumpParallelLevel = 'foo';
+    o.loadParallelLevel = 'foo';
   }
   buildCounterPerformanceConfig--;
   return o;
@@ -3016,6 +3026,7 @@ void checkPerformanceConfig(api.PerformanceConfig o) {
   buildCounterPerformanceConfig++;
   if (buildCounterPerformanceConfig < 3) {
     unittest.expect(o.dumpParallelLevel!, unittest.equals('foo'));
+    unittest.expect(o.loadParallelLevel!, unittest.equals('foo'));
   }
   buildCounterPerformanceConfig--;
 }

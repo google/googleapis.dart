@@ -409,6 +409,11 @@ class CloudLocation {
   /// Optional.
   core.String? displayName;
 
+  /// GCP-specific attributes.
+  ///
+  /// Optional.
+  GcpAttributes? gcpAttributes;
+
   /// Identifier.
   ///
   /// Name of the cloud location. Unique name of the cloud location including
@@ -429,6 +434,7 @@ class CloudLocation {
     this.cloudProvider,
     this.containingCloudLocation,
     this.displayName,
+    this.gcpAttributes,
     this.name,
     this.territoryCode,
   });
@@ -442,6 +448,11 @@ class CloudLocation {
         containingCloudLocation:
             json_['containingCloudLocation'] as core.String?,
         displayName: json_['displayName'] as core.String?,
+        gcpAttributes: json_.containsKey('gcpAttributes')
+            ? GcpAttributes.fromJson(
+                json_['gcpAttributes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         territoryCode: json_['territoryCode'] as core.String?,
       );
@@ -452,6 +463,7 @@ class CloudLocation {
     final cloudProvider = this.cloudProvider;
     final containingCloudLocation = this.containingCloudLocation;
     final displayName = this.displayName;
+    final gcpAttributes = this.gcpAttributes;
     final name = this.name;
     final territoryCode = this.territoryCode;
     return {
@@ -460,9 +472,32 @@ class CloudLocation {
       'cloudProvider': ?cloudProvider,
       'containingCloudLocation': ?containingCloudLocation,
       'displayName': ?displayName,
+      'gcpAttributes': ?gcpAttributes,
       'name': ?name,
       'territoryCode': ?territoryCode,
     };
+  }
+}
+
+/// GCP-specific attributes.
+class GcpAttributes {
+  /// The type of the cloud zone.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GCP_ZONE_TYPE_UNSPECIFIED" : Default value. Unspecified zone type.
+  /// - "GENERAL_PURPOSE" : General purpose zone type.
+  /// - "AI_ZONE" : AI zone type.
+  core.String? zoneType;
+
+  GcpAttributes({this.zoneType});
+
+  GcpAttributes.fromJson(core.Map json_)
+    : this(zoneType: json_['zoneType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final zoneType = this.zoneType;
+    return {'zoneType': ?zoneType};
   }
 }
 

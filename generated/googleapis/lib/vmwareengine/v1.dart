@@ -10248,7 +10248,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared32;
+typedef Nsx = $Shared31;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -11774,7 +11774,7 @@ class Upgrade {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared32;
+typedef Vcenter = $Shared31;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.

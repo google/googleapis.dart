@@ -8987,7 +8987,7 @@ class GoogleCloudDialogflowCxV3EntityType {
 }
 
 typedef GoogleCloudDialogflowCxV3EntityTypeEntity = $EntityTypeEntity;
-typedef GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase = $Shared20;
+typedef GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase = $Shared19;
 
 class GoogleCloudDialogflowCxV3Environment {
   core.String? description;
@@ -10067,8 +10067,8 @@ class GoogleCloudDialogflowCxV3FlowMultiLanguageSettings {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3FlowTraceMetadata = $Shared21;
-typedef GoogleCloudDialogflowCxV3FlowTransition = $Shared21;
+typedef GoogleCloudDialogflowCxV3FlowTraceMetadata = $Shared20;
+typedef GoogleCloudDialogflowCxV3FlowTransition = $Shared20;
 
 class GoogleCloudDialogflowCxV3FlowValidationResult {
   core.String? name;
@@ -13067,8 +13067,8 @@ class GoogleCloudDialogflowCxV3PlaybookStep {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3PlaybookTraceMetadata = $Shared22;
-typedef GoogleCloudDialogflowCxV3PlaybookTransition = $Shared22;
+typedef GoogleCloudDialogflowCxV3PlaybookTraceMetadata = $Shared21;
+typedef GoogleCloudDialogflowCxV3PlaybookTransition = $Shared21;
 
 class GoogleCloudDialogflowCxV3PlaybookVersion {
   core.String? description;
@@ -13552,7 +13552,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3ResourceName = $Shared23;
+typedef GoogleCloudDialogflowCxV3ResourceName = $Shared22;
 
 class GoogleCloudDialogflowCxV3ResponseMessage {
   core.String? channel;
@@ -13694,10 +13694,10 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess = $Shared24;
+typedef GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess = $Shared23;
 typedef GoogleCloudDialogflowCxV3ResponseMessageEndInteraction = $Empty;
 typedef GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard = $Empty;
-typedef GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff = $Shared24;
+typedef GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff = $Shared23;
 
 class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
   core.List<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>?
@@ -14159,7 +14159,7 @@ class GoogleCloudDialogflowCxV3SafetySettings {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3SafetySettingsPhrase = $Shared19;
+typedef GoogleCloudDialogflowCxV3SafetySettingsPhrase = $Shared18;
 
 class GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings {
   core.bool? enablePromptSecurity;
@@ -14435,7 +14435,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
   }
 }
 
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared18;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared17;
 
 class GoogleCloudDialogflowCxV3SessionEntityType {
   core.List<GoogleCloudDialogflowCxV3EntityTypeEntity>? entities;

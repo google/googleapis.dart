@@ -4597,6 +4597,144 @@ class BigQueryAction {
   }
 }
 
+/// Represents a BigQuery unit test.
+class BigQueryUnitTest {
+  /// A list of actions that this action depends on.
+  core.List<Target>? dependencyTargets;
+
+  /// Whether this action is disabled (i.e. should not be run).
+  core.bool? disabled;
+
+  /// The name of the unit test.
+  core.String? displayName;
+
+  /// Expected output query to compare against the test query.
+  core.String? expectedOutputQuery;
+
+  /// Arbitrary, user-defined tags on this action.
+  core.List<core.String>? tags;
+
+  /// Test query to execute.
+  core.String? testQuery;
+
+  BigQueryUnitTest({
+    this.dependencyTargets,
+    this.disabled,
+    this.displayName,
+    this.expectedOutputQuery,
+    this.tags,
+    this.testQuery,
+  });
+
+  BigQueryUnitTest.fromJson(core.Map json_)
+    : this(
+        dependencyTargets: (json_['dependencyTargets'] as core.List?)
+            ?.map(
+              (value) =>
+                  Target.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        disabled: json_['disabled'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        expectedOutputQuery: json_['expectedOutputQuery'] as core.String?,
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        testQuery: json_['testQuery'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dependencyTargets = this.dependencyTargets;
+    final disabled = this.disabled;
+    final displayName = this.displayName;
+    final expectedOutputQuery = this.expectedOutputQuery;
+    final tags = this.tags;
+    final testQuery = this.testQuery;
+    return {
+      'dependencyTargets': ?dependencyTargets,
+      'disabled': ?disabled,
+      'displayName': ?displayName,
+      'expectedOutputQuery': ?expectedOutputQuery,
+      'tags': ?tags,
+      'testQuery': ?testQuery,
+    };
+  }
+}
+
+/// Represents a workflow action that will run a BigQuery unit test.
+class BigQueryUnitTestAction {
+  /// Job ID for the actual results.
+  ///
+  /// Output only.
+  core.String? actualResultsJobId;
+
+  /// SQL script for the actual results.
+  ///
+  /// Output only.
+  core.String? actualResultsSqlScript;
+
+  /// Job ID for the expected results.
+  ///
+  /// Output only.
+  core.String? expectedResultsJobId;
+
+  /// SQL script for the expected results.
+  ///
+  /// Output only.
+  core.String? expectedResultsSqlScript;
+
+  /// Total bytes billed for this action.
+  ///
+  /// Combined total for actual and expected jobs.
+  ///
+  /// Output only.
+  core.String? totalBilledBytes;
+
+  /// Total bytes processed for this action.
+  ///
+  /// Combined total for actual and expected jobs.
+  ///
+  /// Output only.
+  core.String? totalProcessedBytes;
+
+  BigQueryUnitTestAction({
+    this.actualResultsJobId,
+    this.actualResultsSqlScript,
+    this.expectedResultsJobId,
+    this.expectedResultsSqlScript,
+    this.totalBilledBytes,
+    this.totalProcessedBytes,
+  });
+
+  BigQueryUnitTestAction.fromJson(core.Map json_)
+    : this(
+        actualResultsJobId: json_['actualResultsJobId'] as core.String?,
+        actualResultsSqlScript: json_['actualResultsSqlScript'] as core.String?,
+        expectedResultsJobId: json_['expectedResultsJobId'] as core.String?,
+        expectedResultsSqlScript:
+            json_['expectedResultsSqlScript'] as core.String?,
+        totalBilledBytes: json_['totalBilledBytes'] as core.String?,
+        totalProcessedBytes: json_['totalProcessedBytes'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final actualResultsJobId = this.actualResultsJobId;
+    final actualResultsSqlScript = this.actualResultsSqlScript;
+    final expectedResultsJobId = this.expectedResultsJobId;
+    final expectedResultsSqlScript = this.expectedResultsSqlScript;
+    final totalBilledBytes = this.totalBilledBytes;
+    final totalProcessedBytes = this.totalProcessedBytes;
+    return {
+      'actualResultsJobId': ?actualResultsJobId,
+      'actualResultsSqlScript': ?actualResultsSqlScript,
+      'expectedResultsJobId': ?expectedResultsJobId,
+      'expectedResultsSqlScript': ?expectedResultsSqlScript,
+      'totalBilledBytes': ?totalBilledBytes,
+      'totalProcessedBytes': ?totalProcessedBytes,
+    };
+  }
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -5345,6 +5483,9 @@ class CompilationResultAction {
   /// The assertion executed by this action.
   Assertion? assertion;
 
+  /// The unit test executed by this action.
+  BigQueryUnitTest? bigqueryUnitTest;
+
   /// The action's identifier if the project had been compiled without any
   /// overrides configured.
   ///
@@ -5386,6 +5527,7 @@ class CompilationResultAction {
 
   CompilationResultAction({
     this.assertion,
+    this.bigqueryUnitTest,
     this.canonicalTarget,
     this.dataPreparation,
     this.declaration,
@@ -5402,6 +5544,12 @@ class CompilationResultAction {
         assertion: json_.containsKey('assertion')
             ? Assertion.fromJson(
                 json_['assertion'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bigqueryUnitTest: json_.containsKey('bigqueryUnitTest')
+            ? BigQueryUnitTest.fromJson(
+                json_['bigqueryUnitTest']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         canonicalTarget: json_.containsKey('canonicalTarget')
@@ -5445,6 +5593,7 @@ class CompilationResultAction {
 
   core.Map<core.String, core.dynamic> toJson() {
     final assertion = this.assertion;
+    final bigqueryUnitTest = this.bigqueryUnitTest;
     final canonicalTarget = this.canonicalTarget;
     final dataPreparation = this.dataPreparation;
     final declaration = this.declaration;
@@ -5456,6 +5605,7 @@ class CompilationResultAction {
     final target = this.target;
     return {
       'assertion': ?assertion,
+      'bigqueryUnitTest': ?bigqueryUnitTest,
       'canonicalTarget': ?canonicalTarget,
       'dataPreparation': ?dataPreparation,
       'declaration': ?declaration,
@@ -5762,6 +5912,61 @@ typedef DirectorySearchResult = $SearchResult;
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Includes configuration options for repository end user authentication.
+class EndUserAuthConfig {
+  /// OAuth configuration for repository end user authentication.
+  ///
+  /// Optional.
+  OAuthConfig? oauthConfig;
+
+  EndUserAuthConfig({this.oauthConfig});
+
+  EndUserAuthConfig.fromJson(core.Map json_)
+    : this(
+        oauthConfig: json_.containsKey('oauthConfig')
+            ? OAuthConfig.fromJson(
+                json_['oauthConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final oauthConfig = this.oauthConfig;
+    return {'oauthConfig': ?oauthConfig};
+  }
+}
+
+/// Includes configuration options for end user authentication.
+class EndUserAuthenticationConfig {
+  /// OAuth configuration for end user authentication.
+  ///
+  /// Optional.
+  OAuthConfig? oauthConfig;
+
+  /// Email address of the user to run workflow invocations under.
+  ///
+  /// Output only.
+  core.String? userEmail;
+
+  EndUserAuthenticationConfig({this.oauthConfig, this.userEmail});
+
+  EndUserAuthenticationConfig.fromJson(core.Map json_)
+    : this(
+        oauthConfig: json_.containsKey('oauthConfig')
+            ? OAuthConfig.fromJson(
+                json_['oauthConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userEmail: json_['userEmail'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final oauthConfig = this.oauthConfig;
+    final userEmail = this.userEmail;
+    return {'oauthConfig': ?oauthConfig, 'userEmail': ?userEmail};
+  }
+}
 
 /// Error table information, used to write error data into a BigQuery table.
 class ErrorTable {
@@ -6416,6 +6621,24 @@ typedef Interval = $Interval;
 /// If both `included_targets` and `included_tags` are unset, all actions will
 /// be included.
 class InvocationConfig {
+  /// Configuration for end user authentication.
+  ///
+  /// Note that this should not be set when `service_account` is used.
+  ///
+  /// Optional.
+  EndUserAuthenticationConfig? endUserAuthConfig;
+
+  /// Specifies the execution mode for the workflow invocation.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXECUTION_MODE_UNSPECIFIED" : Default value.
+  /// - "DEFAULT" : Default execution mode, which runs all actions except unit
+  /// tests. Same as ALL_EXCEPT_UNIT_TESTS.
+  /// - "ALL_EXCEPT_UNIT_TESTS" : Run all actions except unit tests.
+  /// - "UNIT_TESTS_ONLY" : Run unit tests only.
+  core.String? executionMode;
+
   /// When set to true, any incremental tables will be fully refreshed.
   ///
   /// Optional.
@@ -6465,6 +6688,8 @@ class InvocationConfig {
   core.bool? transitiveDependentsIncluded;
 
   InvocationConfig({
+    this.endUserAuthConfig,
+    this.executionMode,
     this.fullyRefreshIncrementalTablesEnabled,
     this.includedTags,
     this.includedTargets,
@@ -6476,6 +6701,13 @@ class InvocationConfig {
 
   InvocationConfig.fromJson(core.Map json_)
     : this(
+        endUserAuthConfig: json_.containsKey('endUserAuthConfig')
+            ? EndUserAuthenticationConfig.fromJson(
+                json_['endUserAuthConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        executionMode: json_['executionMode'] as core.String?,
         fullyRefreshIncrementalTablesEnabled:
             json_['fullyRefreshIncrementalTablesEnabled'] as core.bool?,
         includedTags: (json_['includedTags'] as core.List?)
@@ -6496,6 +6728,8 @@ class InvocationConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final endUserAuthConfig = this.endUserAuthConfig;
+    final executionMode = this.executionMode;
     final fullyRefreshIncrementalTablesEnabled =
         this.fullyRefreshIncrementalTablesEnabled;
     final includedTags = this.includedTags;
@@ -6505,6 +6739,8 @@ class InvocationConfig {
     final transitiveDependenciesIncluded = this.transitiveDependenciesIncluded;
     final transitiveDependentsIncluded = this.transitiveDependentsIncluded;
     return {
+      'endUserAuthConfig': ?endUserAuthConfig,
+      'executionMode': ?executionMode,
       'fullyRefreshIncrementalTablesEnabled':
           ?fullyRefreshIncrementalTablesEnabled,
       'includedTags': ?includedTags,
@@ -7194,6 +7430,30 @@ class NotebookRuntimeOptions {
   }
 }
 
+/// OAuth configuration for end user authentication.
+class OAuthConfig {
+  /// Additional OAuth scopes to use for BigQuery executions.
+  ///
+  /// Scopes always in use: `https://www.googleapis.com/auth/bigquery`
+  ///
+  /// Optional.
+  core.List<core.String>? additionalOauthScopes;
+
+  OAuthConfig({this.additionalOauthScopes});
+
+  OAuthConfig.fromJson(core.Map json_)
+    : this(
+        additionalOauthScopes: (json_['additionalOauthScopes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalOauthScopes = this.additionalOauthScopes;
+    return {'additionalOauthScopes': ?additionalOauthScopes};
+  }
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -7835,7 +8095,7 @@ class ReadFileResponse {
 }
 
 /// `ReadRepositoryFile` response message.
-typedef ReadRepositoryFileResponse = $Shared16;
+typedef ReadRepositoryFileResponse = $Shared15;
 
 /// Represents a database relation.
 class Relation {
@@ -8267,6 +8527,11 @@ class Repository {
   /// Optional.
   core.String? displayName;
 
+  /// Includes configuration options for end user authentication.
+  ///
+  /// Optional.
+  EndUserAuthConfig? endUserAuthConfig;
+
   /// If set, configures this repository to be linked to a Git remote.
   ///
   /// Optional.
@@ -8348,6 +8613,7 @@ class Repository {
     this.createTime,
     this.dataEncryptionState,
     this.displayName,
+    this.endUserAuthConfig,
     this.gitRemoteSettings,
     this.internalMetadata,
     this.kmsKeyName,
@@ -8371,6 +8637,12 @@ class Repository {
               )
             : null,
         displayName: json_['displayName'] as core.String?,
+        endUserAuthConfig: json_.containsKey('endUserAuthConfig')
+            ? EndUserAuthConfig.fromJson(
+                json_['endUserAuthConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gitRemoteSettings: json_.containsKey('gitRemoteSettings')
             ? GitRemoteSettings.fromJson(
                 json_['gitRemoteSettings']
@@ -8403,6 +8675,7 @@ class Repository {
     final createTime = this.createTime;
     final dataEncryptionState = this.dataEncryptionState;
     final displayName = this.displayName;
+    final endUserAuthConfig = this.endUserAuthConfig;
     final gitRemoteSettings = this.gitRemoteSettings;
     final internalMetadata = this.internalMetadata;
     final kmsKeyName = this.kmsKeyName;
@@ -8419,6 +8692,7 @@ class Repository {
       'createTime': ?createTime,
       'dataEncryptionState': ?dataEncryptionState,
       'displayName': ?displayName,
+      'endUserAuthConfig': ?endUserAuthConfig,
       'gitRemoteSettings': ?gitRemoteSettings,
       'internalMetadata': ?internalMetadata,
       'kmsKeyName': ?kmsKeyName,
@@ -9314,6 +9588,11 @@ class WorkflowInvocationAction {
   /// Output only.
   BigQueryAction? bigqueryAction;
 
+  /// The workflow action's unit test details.
+  ///
+  /// Output only.
+  BigQueryUnitTestAction? bigqueryUnitTestAction;
+
   /// The action's identifier if the project had been compiled without any
   /// overrides configured.
   ///
@@ -9380,6 +9659,7 @@ class WorkflowInvocationAction {
 
   WorkflowInvocationAction({
     this.bigqueryAction,
+    this.bigqueryUnitTestAction,
     this.canonicalTarget,
     this.dataPreparationAction,
     this.failureReason,
@@ -9395,6 +9675,12 @@ class WorkflowInvocationAction {
         bigqueryAction: json_.containsKey('bigqueryAction')
             ? BigQueryAction.fromJson(
                 json_['bigqueryAction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        bigqueryUnitTestAction: json_.containsKey('bigqueryUnitTestAction')
+            ? BigQueryUnitTestAction.fromJson(
+                json_['bigqueryUnitTestAction']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         canonicalTarget: json_.containsKey('canonicalTarget')
@@ -9431,6 +9717,7 @@ class WorkflowInvocationAction {
 
   core.Map<core.String, core.dynamic> toJson() {
     final bigqueryAction = this.bigqueryAction;
+    final bigqueryUnitTestAction = this.bigqueryUnitTestAction;
     final canonicalTarget = this.canonicalTarget;
     final dataPreparationAction = this.dataPreparationAction;
     final failureReason = this.failureReason;
@@ -9441,6 +9728,7 @@ class WorkflowInvocationAction {
     final target = this.target;
     return {
       'bigqueryAction': ?bigqueryAction,
+      'bigqueryUnitTestAction': ?bigqueryUnitTestAction,
       'canonicalTarget': ?canonicalTarget,
       'dataPreparationAction': ?dataPreparationAction,
       'failureReason': ?failureReason,
@@ -9586,7 +9874,7 @@ class WorkspaceCompilationOverrides {
 }
 
 /// Represents the write file operation (for files added or modified).
-typedef WriteFile = $Shared16;
+typedef WriteFile = $Shared15;
 
 /// `WriteFile` request message.
 class WriteFileRequest {

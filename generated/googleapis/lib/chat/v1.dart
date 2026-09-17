@@ -31,6 +31,7 @@
 /// - [MediaResource]
 /// - [SpacesResource]
 ///   - [SpacesMembersResource]
+///   - [SpacesMessagePinsResource]
 ///   - [SpacesMessagesResource]
 ///     - [SpacesMessagesAttachmentsResource]
 ///     - [SpacesMessagesReactionsResource]
@@ -211,6 +212,14 @@ class HangoutsChatApi {
   /// Create new conversations and spaces in Google Chat
   static const chatSpacesCreateScope =
       'https://www.googleapis.com/auth/chat.spaces.create';
+
+  /// See, add, and remove pins in your Google Chat spaces
+  static const chatSpacesPinsScope =
+      'https://www.googleapis.com/auth/chat.spaces.pins';
+
+  /// See pins in your Google Chat spaces
+  static const chatSpacesPinsReadonlyScope =
+      'https://www.googleapis.com/auth/chat.spaces.pins.readonly';
 
   /// View chat and spaces in Google Chat
   static const chatSpacesReadonlyScope =
@@ -636,6 +645,8 @@ class SpacesResource {
   final commons.ApiRequester _requester;
 
   SpacesMembersResource get members => SpacesMembersResource(_requester);
+  SpacesMessagePinsResource get messagePins =>
+      SpacesMessagePinsResource(_requester);
   SpacesMessagesResource get messages => SpacesMessagesResource(_requester);
   SpacesSpaceEventsResource get spaceEvents =>
       SpacesSpaceEventsResource(_requester);
@@ -732,11 +743,20 @@ class SpacesResource {
   ///
   /// Request parameters:
   ///
-  /// [requestId] - Optional. A unique identifier for this request. A random
-  /// UUID is recommended. Specifying an existing request ID returns the space
-  /// created with that ID instead of creating a new space. Specifying an
-  /// existing request ID from the same Chat app with a different authenticated
-  /// user returns an error.
+  /// [requestId] - Optional. A unique ID for this request. A random UUID is
+  /// recommended. Specifying a request ID makes the request idempotent, which
+  /// ensures that multiple identical requests with the same request ID result
+  /// in only a single space being created. Subsequent requests with the same
+  /// request ID return the existing space and do not update the space, even if
+  /// the requested details differ from the current state. To use this field
+  /// effectively: - Ensure that subsequent requests are identical and use the
+  /// same authentication credentials as the original request. - If a space was
+  /// already created with the provided request ID, the request returns that
+  /// space. Note that the returned space might not be fully populated; the API
+  /// echoes the space in your request with the system-assigned resource name
+  /// populated. To retrieve the latest metadata for the space, call `GetSpace`.
+  /// - Reusing an existing request ID with a different authenticated user
+  /// results in an error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1336,8 +1356,9 @@ class SpacesResource {
   ///
   /// [pageSize] - The maximum number of spaces to return. The service may
   /// return fewer than this value. If unspecified, at most 100 spaces are
-  /// returned. The maximum value is 1000. If you use a value more than 1000,
-  /// it's automatically changed to 1000.
+  /// returned. The maximum value is 1000 when `useAdminAccess` is set to
+  /// `true`. Otherwise, the maximum value is 100. If you use a value more than
+  /// the maximum value, it's automatically changed to the maximum value.
   ///
   /// [pageToken] - A token, received from the previous search spaces call.
   /// Provide this parameter to retrieve the subsequent page. When paginating,
@@ -1394,7 +1415,8 @@ class SpacesResource {
   /// OR display_name:"Fun") AND space_type = "SPACE" (external_user_allowed =
   /// "true" AND space_type = "SPACE") // Returns an empty response.
   /// (external_user_allowed = "true" AND display_name:"Hello" AND space_type =
-  /// "SPACE") ```
+  /// "SPACE") ``` The maximum query length is 1,000 characters. Invalid queries
+  /// are rejected by the server with an `INVALID_ARGUMENT` error.
   ///
   /// [useAdminAccess] - When `true`, the method runs using the user's Google
   /// Workspace administrator privileges. The calling user must be a Google
@@ -1982,6 +2004,168 @@ class SpacesMembersResource {
   }
 }
 
+class SpacesMessagePinsResource {
+  final commons.ApiRequester _requester;
+
+  SpacesMessagePinsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a message pin.
+  ///
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.spaces.pins` -
+  /// `https://www.googleapis.com/auth/chat.spaces`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent space in which to create the message pin.
+  /// Format: spaces/{space}
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MessagePin].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MessagePin> create(
+    MessagePin request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/messagePins';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return MessagePin.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a message pin.
+  ///
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.spaces.pins` -
+  /// `https://www.googleapis.com/auth/chat.spaces`
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the message pin to remove. Format:
+  /// spaces/{space}/messagePins/{message_pin}
+  /// Value must have pattern `^spaces/\[^/\]+/messagePins/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists message pins in a space.
+  ///
+  /// Users can pin important messages in spaces for easy access. For more
+  /// information, see
+  /// [Pin or unpin a conversation in Google Chat](https://support.google.com/chat/answer/15622437).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.spaces.pins.readonly` -
+  /// `https://www.googleapis.com/auth/chat.spaces.pins` -
+  /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
+  /// `https://www.googleapis.com/auth/chat.spaces`
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent space which owns the collection of pinned
+  /// items Format: `spaces/{space}`
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of message pins returned. The
+  /// service might return fewer messages than this value. The maximum value is
+  /// 100. If you use a value more than 100, it's automatically changed to 100.
+  /// If unspecified, at most 100 message pins will be returned. Negative values
+  /// return an `INVALID_ARGUMENT` error.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous list message
+  /// pins call. Provide this parameter to retrieve the subsequent page. When
+  /// paginating, all other parameters provided should match the call that
+  /// provided the page token. Passing different values to the other parameters
+  /// might lead to unexpected results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMessagePinsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMessagePinsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/messagePins';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMessagePinsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class SpacesMessagesResource {
   final commons.ApiRequester _requester;
 
@@ -2080,9 +2264,20 @@ class SpacesMessagesResource {
   /// new thread is created. If the message creation fails, a `NOT_FOUND` error
   /// is returned instead.
   ///
-  /// [requestId] - Optional. A unique request ID for this message. Specifying
-  /// an existing request ID returns the message created with that ID instead of
-  /// creating a new message.
+  /// [requestId] - Optional. A unique ID for this request. A random UUID is
+  /// recommended. Specifying a request ID makes the request idempotent, which
+  /// ensures that multiple identical requests with the same request ID result
+  /// in only a single message being created. Subsequent requests with the same
+  /// request ID return the existing message and do not update the message, even
+  /// if the requested details differ from the current state. To use this field
+  /// effectively: - Ensure that subsequent requests are identical and use the
+  /// same authentication credentials as the original request. - If a message
+  /// was already created with the provided request ID, the request returns that
+  /// message. Note that the returned message might not be fully populated; the
+  /// API echoes the message in your request with the system-assigned resource
+  /// names populated. To retrieve the latest metadata for the message, call
+  /// `GetMessage`. - Reusing an existing request ID with a different
+  /// authenticated user results in an error.
   ///
   /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. ID for
   /// the thread. Supports up to 4000 characters. To start or add to a thread,
@@ -9828,6 +10023,37 @@ class ListMembershipsResponse {
   }
 }
 
+/// Response message for listing message pins.
+class ListMessagePinsResponse {
+  /// The pinned messages from the specified space.
+  core.List<MessagePin>? messagePins;
+
+  /// You can send a token as `pageToken` to retrieve the next page of results.
+  ///
+  /// If empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListMessagePinsResponse({this.messagePins, this.nextPageToken});
+
+  ListMessagePinsResponse.fromJson(core.Map json_)
+    : this(
+        messagePins: (json_['messagePins'] as core.List?)
+            ?.map(
+              (value) => MessagePin.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final messagePins = this.messagePins;
+    final nextPageToken = this.nextPageToken;
+    return {'messagePins': ?messagePins, 'nextPageToken': ?nextPageToken};
+  }
+}
+
 /// Response message for listing messages.
 class ListMessagesResponse {
   /// List of messages.
@@ -11094,6 +11320,42 @@ class MessageDeletedEventData {
   }
 }
 
+/// A pin on a Chat message.
+///
+/// For more information see
+/// [Pin a message](https://support.google.com/chat?p=chat-board-hc).
+class MessagePin {
+  /// The resource name of the message that is pinned.
+  ///
+  /// Format: `spaces/{space}/messages/{message}`
+  ///
+  /// Required. Immutable.
+  core.String? message;
+
+  /// Identifier.
+  ///
+  /// The resource name of the message pin. Format:
+  /// `spaces/{space}/messagePins/{message_pin}` The resource ID component
+  /// matches the resource ID component of the message. For example, a message
+  /// with `spaces/AAA/messages/bbb.ccc` corresponds to the message pin with the
+  /// resource name `spaces/AAA/messagePins/bbb.ccc`.
+  core.String? name;
+
+  MessagePin({this.message, this.name});
+
+  MessagePin.fromJson(core.Map json_)
+    : this(
+        message: json_['message'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final name = this.name;
+    return {'message': ?message, 'name': ?name};
+  }
+}
+
 /// Event payload for an updated message.
 ///
 /// Event type: `google.workspace.chat.message.v1.updated`
@@ -12169,7 +12431,8 @@ class SearchSpaceResult {
 class SearchSpacesResponse {
   /// A token that can be used to retrieve the next page.
   ///
-  /// If this field is empty, there are no subsequent pages.
+  /// If this field is empty, there are no subsequent pages. Only populated when
+  /// `useAdminAccess` is set to `true`.
   core.String? nextPageToken;
 
   /// The list of search results that matched the query.
@@ -12189,7 +12452,8 @@ class SearchSpacesResponse {
 
   /// The total number of spaces that match the query, across all pages.
   ///
-  /// If the result is over 10,000 spaces, this value is an estimate.
+  /// If the result is over 10,000 spaces, this value is an estimate. Only
+  /// populated when `useAdminAccess` is set to `true`.
   core.int? totalSize;
 
   SearchSpacesResponse({
@@ -12355,12 +12619,21 @@ class SetUpSpaceRequest {
   /// Optional.
   core.List<Membership>? memberships;
 
-  /// A unique identifier for this request.
+  /// A unique ID for this request.
   ///
-  /// A random UUID is recommended. Specifying an existing request ID returns
-  /// the space created with that ID instead of creating a new space. Specifying
-  /// an existing request ID from the same Chat app with a different
-  /// authenticated user returns an error.
+  /// A random UUID is recommended. Specifying a request ID makes the request
+  /// idempotent, which ensures that multiple identical requests with the same
+  /// request ID result in only a single space being created. Subsequent
+  /// requests with the same request ID return the existing space and do not
+  /// update the space, even if the requested details differ from the current
+  /// state. To use this field effectively: - Ensure that subsequent requests
+  /// are identical and use the same authentication credentials as the original
+  /// request. - If a space was already created with the provided request ID,
+  /// the request returns that space. Note that the returned space might not be
+  /// fully populated; the API echoes the space in your request with the
+  /// system-assigned resource name populated. To retrieve the latest metadata
+  /// for the space, call `GetSpace`. - Reusing an existing request ID with a
+  /// different authenticated user results in an error.
   ///
   /// Optional.
   core.String? requestId;

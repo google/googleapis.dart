@@ -2740,14 +2740,31 @@ class PscConfig {
   /// Optional.
   core.String? endpointProject;
 
-  PscConfig({this.endpointProject});
+  /// Optional: The desired IP address for the instance.
+  ///
+  /// If not specified, an IP will be automatically allocated. The IP must be
+  /// from the subnetwork range configured in the Service Connection Policy.
+  /// This effective ip address is set in the ip_addresses field. use 3 instead
+  /// of 2 to avoid conflict with the reserved_ip_range field.
+  ///
+  /// Optional. Immutable.
+  core.String? requestedIpAddress;
+
+  PscConfig({this.endpointProject, this.requestedIpAddress});
 
   PscConfig.fromJson(core.Map json_)
-    : this(endpointProject: json_['endpointProject'] as core.String?);
+    : this(
+        endpointProject: json_['endpointProject'] as core.String?,
+        requestedIpAddress: json_['requestedIpAddress'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final endpointProject = this.endpointProject;
-    return {'endpointProject': ?endpointProject};
+    final requestedIpAddress = this.requestedIpAddress;
+    return {
+      'endpointProject': ?endpointProject,
+      'requestedIpAddress': ?requestedIpAddress,
+    };
   }
 }
 

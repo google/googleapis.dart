@@ -1988,7 +1988,7 @@ class DeviceSession {
   /// Output only.
   core.String? activeStartTime;
 
-  /// The requested device
+  /// The requested device.
   ///
   /// Required.
   AndroidDevice? androidDevice;

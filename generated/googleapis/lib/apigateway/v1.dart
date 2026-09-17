@@ -2188,6 +2188,25 @@ class ApigatewayGateway {
   /// Optional.
   core.String? displayName;
 
+  /// The streaming mode this gateway is actually served with, which the service
+  /// resolves at creation from `streaming_mode`, the referenced API Config, and
+  /// the platform default at the time.
+  ///
+  /// Read this rather than `streaming_mode` to determine whether a gateway
+  /// supports response streaming.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EFFECTIVE_STREAMING_MODE_UNSPECIFIED" : The service has not resolved a
+  /// mode. Every gateway returned by `GetGateway` and `ListGateways` carries a
+  /// resolved mode, so this value should not be returned under normal
+  /// circumstances.
+  /// - "EFFECTIVE_STREAMING_MODE_DISABLED" : The gateway does not support
+  /// response streaming.
+  /// - "EFFECTIVE_STREAMING_MODE_ENABLED" : The gateway supports response
+  /// streaming.
+  core.String? effectiveStreamingMode;
+
   /// Resource labels to represent user-provided metadata.
   ///
   /// Refer to cloud documentation on labels for more details.
@@ -2215,6 +2234,21 @@ class ApigatewayGateway {
   /// - "UPDATING" : Gateway is being updated.
   core.String? state;
 
+  /// Requests response streaming for a new gateway.
+  ///
+  /// An attempt to change it on update is rejected. If unset, the service
+  /// selects the mode. This field records only what was requested and is never
+  /// modified by the service; read `effective_streaming_mode` for the mode the
+  /// gateway is served with.
+  ///
+  /// Optional. Immutable.
+  /// Possible string values are:
+  /// - "STREAMING_MODE_UNSPECIFIED" : The service selects the streaming mode.
+  /// - "STREAMING_MODE_ENABLED" : Streaming is enabled. The gateway supports
+  /// response streaming: server-sent events, HTTP chunked transfer, WebSockets,
+  /// and gRPC/HTTP2 bidirectional streaming.
+  core.String? streamingMode;
+
   /// Updated time.
   ///
   /// Output only.
@@ -2225,9 +2259,11 @@ class ApigatewayGateway {
     this.createTime,
     this.defaultHostname,
     this.displayName,
+    this.effectiveStreamingMode,
     this.labels,
     this.name,
     this.state,
+    this.streamingMode,
     this.updateTime,
   });
 
@@ -2237,11 +2273,13 @@ class ApigatewayGateway {
         createTime: json_['createTime'] as core.String?,
         defaultHostname: json_['defaultHostname'] as core.String?,
         displayName: json_['displayName'] as core.String?,
+        effectiveStreamingMode: json_['effectiveStreamingMode'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
         state: json_['state'] as core.String?,
+        streamingMode: json_['streamingMode'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -2250,18 +2288,22 @@ class ApigatewayGateway {
     final createTime = this.createTime;
     final defaultHostname = this.defaultHostname;
     final displayName = this.displayName;
+    final effectiveStreamingMode = this.effectiveStreamingMode;
     final labels = this.labels;
     final name = this.name;
     final state = this.state;
+    final streamingMode = this.streamingMode;
     final updateTime = this.updateTime;
     return {
       'apiConfig': ?apiConfig,
       'createTime': ?createTime,
       'defaultHostname': ?defaultHostname,
       'displayName': ?displayName,
+      'effectiveStreamingMode': ?effectiveStreamingMode,
       'labels': ?labels,
       'name': ?name,
       'state': ?state,
+      'streamingMode': ?streamingMode,
       'updateTime': ?updateTime,
     };
   }

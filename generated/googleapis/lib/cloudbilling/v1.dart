@@ -30,11 +30,15 @@
 /// - [BillingAccountsResource]
 ///   - [BillingAccountsProjectsResource]
 ///   - [BillingAccountsSubAccountsResource]
+/// - [MessageResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsBillingAccountsResource]
 /// - [ProjectsResource]
 /// - [ServicesResource]
 ///   - [ServicesSkusResource]
+/// - [TasksResource]
+///   - [TasksPushNotificationConfigsResource]
+/// - [V1Resource]
 library;
 
 import 'dart:async' as async;
@@ -70,9 +74,12 @@ class CloudbillingApi {
 
   BillingAccountsResource get billingAccounts =>
       BillingAccountsResource(_requester);
+  MessageResource get message => MessageResource(_requester);
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
+  TasksResource get tasks => TasksResource(_requester);
+  V1Resource get v1 => V1Resource(_requester);
 
   CloudbillingApi(
     http.Client client, {
@@ -700,6 +707,92 @@ class BillingAccountsSubAccountsResource {
   }
 }
 
+class MessageResource {
+  final commons.ApiRequester _requester;
+
+  MessageResource(commons.ApiRequester client) : _requester = client;
+
+  /// Send a message to the agent.
+  ///
+  /// This is a blocking call that will return the task once it is completed, or
+  /// a LRO if requested.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SendMessageResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SendMessageResponse> send(
+    SendMessageRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/message:send';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SendMessageResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// SendStreamingMessage is a streaming call that will return a stream of task
+  /// update events until the Task is in an interrupted or terminal state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StreamResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StreamResponse> stream(
+    SendMessageRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/message:stream';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return StreamResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class OrganizationsResource {
   final commons.ApiRequester _requester;
 
@@ -1135,6 +1228,932 @@ class ServicesSkusResource {
   }
 }
 
+class TasksResource {
+  final commons.ApiRequester _requester;
+
+  TasksPushNotificationConfigsResource get pushNotificationConfigs =>
+      TasksPushNotificationConfigsResource(_requester);
+
+  TasksResource(commons.ApiRequester client) : _requester = client;
+
+  /// Cancel a task from the agent.
+  ///
+  /// If supported one should expect no more task updates for the task.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the task to cancel. Format: tasks/{task_id}
+  /// Value must have pattern `^tasks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Task> cancel(
+    CancelTaskRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Task.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get the current state of a task from the agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the task. Format: tasks/{task_id}
+  /// Value must have pattern `^tasks/\[^/\]+$`.
+  ///
+  /// [historyLength] - The number of most recent messages from the task's
+  /// history to retrieve.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Task> get(
+    core.String name, {
+    core.int? historyLength,
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'historyLength': ?historyLength == null ? null : ['${historyLength}'],
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Task.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// TaskSubscription is a streaming call that will return a stream of task
+  /// update events.
+  ///
+  /// This attaches the stream to an existing in process task. If the task is
+  /// complete the stream will return the completed task (like GetTask) and
+  /// close the stream.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the task to subscribe to. Format:
+  /// tasks/{task_id}
+  /// Value must have pattern `^tasks/\[^/\]+$`.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StreamResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StreamResponse> subscribe(
+    core.String name, {
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':subscribe';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return StreamResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class TasksPushNotificationConfigsResource {
+  final commons.ApiRequester _requester;
+
+  TasksPushNotificationConfigsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Set a push notification config for a task.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent task resource for this config. Format:
+  /// tasks/{task_id}
+  /// Value must have pattern `^tasks/\[^/\]+/pushNotificationConfigs$`.
+  ///
+  /// [configId] - Required. The ID for the new config.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TaskPushNotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TaskPushNotificationConfig> create(
+    TaskPushNotificationConfig request,
+    core.String parent, {
+    core.String? configId,
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'configId': ?configId == null ? null : [configId],
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TaskPushNotificationConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Delete a push notification config for a task.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the config to delete. Format:
+  /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+  /// Value must have pattern `^tasks/\[^/\]+/pushNotificationConfigs/\[^/\]+$`.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a push notification config for a task.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the config to retrieve. Format:
+  /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+  /// Value must have pattern `^tasks/\[^/\]+/pushNotificationConfigs/\[^/\]+$`.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TaskPushNotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TaskPushNotificationConfig> get(
+    core.String name, {
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TaskPushNotificationConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Get a list of push notifications configured for a task.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent task resource. Format: tasks/{task_id}
+  /// Value must have pattern `^tasks/\[^/\]+$`.
+  ///
+  /// [pageSize] - For AIP-158 these fields are present. Usually not
+  /// used/needed. The maximum number of configurations to return. If
+  /// unspecified, all configs will be returned.
+  ///
+  /// [pageToken] - A page token received from a previous
+  /// ListTaskPushNotificationConfigRequest call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListTaskPushNotificationConfigRequest` must match the call that provided
+  /// the page token.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTaskPushNotificationConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTaskPushNotificationConfigResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/pushNotificationConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTaskPushNotificationConfigResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class V1Resource {
+  final commons.ApiRequester _requester;
+
+  V1Resource(commons.ApiRequester client) : _requester = client;
+
+  /// GetAgentCard returns the agent card for the agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AgentCard].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AgentCard> getCard({
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'tenant': ?tenant == null ? null : [tenant],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/card';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AgentCard.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class APIKeySecurityScheme {
+  /// Description of this security scheme.
+  core.String? description;
+
+  /// Location of the API key, valid values are "query", "header", or "cookie"
+  core.String? location;
+
+  /// Name of the header, query or cookie parameter to be used.
+  core.String? name;
+
+  APIKeySecurityScheme({this.description, this.location, this.name});
+
+  APIKeySecurityScheme.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        location: json_['location'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final location = this.location;
+    final name = this.name;
+    return {'description': ?description, 'location': ?location, 'name': ?name};
+  }
+}
+
+/// Defines the A2A feature set supported by the agent
+class AgentCapabilities {
+  /// Extensions supported by this agent.
+  core.List<AgentExtension>? extensions;
+
+  /// If the agent can send push notifications to the clients webhook
+  core.bool? pushNotifications;
+
+  /// If the agent will support streaming responses
+  core.bool? streaming;
+
+  AgentCapabilities({this.extensions, this.pushNotifications, this.streaming});
+
+  AgentCapabilities.fromJson(core.Map json_)
+    : this(
+        extensions: (json_['extensions'] as core.List?)
+            ?.map(
+              (value) => AgentExtension.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        pushNotifications: json_['pushNotifications'] as core.bool?,
+        streaming: json_['streaming'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final extensions = this.extensions;
+    final pushNotifications = this.pushNotifications;
+    final streaming = this.streaming;
+    return {
+      'extensions': ?extensions,
+      'pushNotifications': ?pushNotifications,
+      'streaming': ?streaming,
+    };
+  }
+}
+
+/// AgentCard conveys key information: - Overall details (version, name,
+/// description, uses) - Skills; a set of actions/solutions the agent can
+/// perform - Default modalities/content types supported by the agent.
+///
+/// - Authentication requirements Next ID: 19
+class AgentCard {
+  /// Announcement of additional supported transports.
+  ///
+  /// Client can use any of the supported transports.
+  core.List<AgentInterface>? additionalInterfaces;
+
+  /// A2A Capability set supported by the agent.
+  AgentCapabilities? capabilities;
+
+  /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED The set of interaction
+  /// modes that the agent supports across all skills.
+  ///
+  /// This can be overridden per skill. Defined as mime types.
+  core.List<core.String>? defaultInputModes;
+
+  /// The mime types supported as outputs from this agent.
+  core.List<core.String>? defaultOutputModes;
+
+  /// A description of the agent's domain of action/solution space.
+  ///
+  /// Example: "Agent that helps users with recipes and cooking."
+  core.String? description;
+
+  /// A url to provide additional documentation about the agent.
+  core.String? documentationUrl;
+
+  /// An optional URL to an icon for the agent.
+  core.String? iconUrl;
+
+  /// A human readable name for the agent.
+  ///
+  /// Example: "Recipe Agent"
+  core.String? name;
+
+  /// The transport of the preferred endpoint.
+  ///
+  /// If empty, defaults to JSONRPC.
+  core.String? preferredTransport;
+
+  /// The version of the A2A protocol this agent supports.
+  core.String? protocolVersion;
+
+  /// The service provider of the agent.
+  AgentProvider? provider;
+
+  /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Security requirements
+  /// for contacting the agent.
+  ///
+  /// This list can be seen as an OR of ANDs. Each object in the list describes
+  /// one possible set of security requirements that must be present on a
+  /// request. This allows specifying, for example, "callers must either use
+  /// OAuth OR an API Key AND mTLS." Example: security { schemes { key: "oauth"
+  /// value { list: \["read"\] } } } security { schemes { key: "api-key" }
+  /// schemes { key: "mtls" } }
+  core.List<Security>? security;
+
+  /// The security scheme details used for authenticating with this agent.
+  core.Map<core.String, SecurityScheme>? securitySchemes;
+
+  /// JSON Web Signatures computed for this AgentCard.
+  core.List<AgentCardSignature>? signatures;
+
+  /// Skills represent a unit of ability an agent can perform.
+  ///
+  /// This may somewhat abstract but represents a more focused set of actions
+  /// that the agent is highly likely to succeed at.
+  core.List<AgentSkill>? skills;
+
+  /// Whether the agent supports providing an extended agent card when the user
+  /// is authenticated, i.e. is the card from .well-known different than the
+  /// card from GetAgentCard.
+  core.bool? supportsAuthenticatedExtendedCard;
+
+  /// A URL to the address the agent is hosted at.
+  ///
+  /// This represents the preferred endpoint as declared by the agent.
+  core.String? url;
+
+  /// The version of the agent.
+  ///
+  /// Example: "1.0.0"
+  core.String? version;
+
+  AgentCard({
+    this.additionalInterfaces,
+    this.capabilities,
+    this.defaultInputModes,
+    this.defaultOutputModes,
+    this.description,
+    this.documentationUrl,
+    this.iconUrl,
+    this.name,
+    this.preferredTransport,
+    this.protocolVersion,
+    this.provider,
+    this.security,
+    this.securitySchemes,
+    this.signatures,
+    this.skills,
+    this.supportsAuthenticatedExtendedCard,
+    this.url,
+    this.version,
+  });
+
+  AgentCard.fromJson(core.Map json_)
+    : this(
+        additionalInterfaces: (json_['additionalInterfaces'] as core.List?)
+            ?.map(
+              (value) => AgentInterface.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        capabilities: json_.containsKey('capabilities')
+            ? AgentCapabilities.fromJson(
+                json_['capabilities'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        defaultInputModes: (json_['defaultInputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        defaultOutputModes: (json_['defaultOutputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        description: json_['description'] as core.String?,
+        documentationUrl: json_['documentationUrl'] as core.String?,
+        iconUrl: json_['iconUrl'] as core.String?,
+        name: json_['name'] as core.String?,
+        preferredTransport: json_['preferredTransport'] as core.String?,
+        protocolVersion: json_['protocolVersion'] as core.String?,
+        provider: json_.containsKey('provider')
+            ? AgentProvider.fromJson(
+                json_['provider'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        security: (json_['security'] as core.List?)
+            ?.map(
+              (value) => Security.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        securitySchemes:
+            (json_['securitySchemes'] as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    SecurityScheme.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        signatures: (json_['signatures'] as core.List?)
+            ?.map(
+              (value) => AgentCardSignature.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        skills: (json_['skills'] as core.List?)
+            ?.map(
+              (value) => AgentSkill.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        supportsAuthenticatedExtendedCard:
+            json_['supportsAuthenticatedExtendedCard'] as core.bool?,
+        url: json_['url'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalInterfaces = this.additionalInterfaces;
+    final capabilities = this.capabilities;
+    final defaultInputModes = this.defaultInputModes;
+    final defaultOutputModes = this.defaultOutputModes;
+    final description = this.description;
+    final documentationUrl = this.documentationUrl;
+    final iconUrl = this.iconUrl;
+    final name = this.name;
+    final preferredTransport = this.preferredTransport;
+    final protocolVersion = this.protocolVersion;
+    final provider = this.provider;
+    final security = this.security;
+    final securitySchemes = this.securitySchemes;
+    final signatures = this.signatures;
+    final skills = this.skills;
+    final supportsAuthenticatedExtendedCard =
+        this.supportsAuthenticatedExtendedCard;
+    final url = this.url;
+    final version = this.version;
+    return {
+      'additionalInterfaces': ?additionalInterfaces,
+      'capabilities': ?capabilities,
+      'defaultInputModes': ?defaultInputModes,
+      'defaultOutputModes': ?defaultOutputModes,
+      'description': ?description,
+      'documentationUrl': ?documentationUrl,
+      'iconUrl': ?iconUrl,
+      'name': ?name,
+      'preferredTransport': ?preferredTransport,
+      'protocolVersion': ?protocolVersion,
+      'provider': ?provider,
+      'security': ?security,
+      'securitySchemes': ?securitySchemes,
+      'signatures': ?signatures,
+      'skills': ?skills,
+      'supportsAuthenticatedExtendedCard': ?supportsAuthenticatedExtendedCard,
+      'url': ?url,
+      'version': ?version,
+    };
+  }
+}
+
+/// AgentCardSignature represents a JWS signature of an AgentCard.
+///
+/// This follows the JSON format of an RFC 7515 JSON Web Signature (JWS).
+class AgentCardSignature {
+  /// The unprotected JWS header values.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? header;
+
+  /// The protected JWS header for the signature.
+  ///
+  /// This is always a base64url-encoded JSON object. Required.
+  ///
+  /// Required.
+  core.String? protected;
+
+  /// The computed signature, base64url-encoded.
+  ///
+  /// Required.
+  ///
+  /// Required.
+  core.String? signature;
+
+  AgentCardSignature({this.header, this.protected, this.signature});
+
+  AgentCardSignature.fromJson(core.Map json_)
+    : this(
+        header: json_.containsKey('header')
+            ? json_['header'] as core.Map<core.String, core.dynamic>
+            : null,
+        protected: json_['protected'] as core.String?,
+        signature: json_['signature'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final header = this.header;
+    final protected = this.protected;
+    final signature = this.signature;
+    return {
+      'header': ?header,
+      'protected': ?protected,
+      'signature': ?signature,
+    };
+  }
+}
+
+/// A declaration of an extension supported by an Agent.
+class AgentExtension {
+  /// A description of how this agent uses this extension.
+  ///
+  /// Example: "Google OAuth 2.0 authentication"
+  core.String? description;
+
+  /// Optional configuration for the extension.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? params;
+
+  /// Whether the client must follow specific requirements of the extension.
+  ///
+  /// Example: false
+  core.bool? required;
+
+  /// The URI of the extension.
+  ///
+  /// Example: "https://developers.google.com/identity/protocols/oauth2"
+  core.String? uri;
+
+  AgentExtension({this.description, this.params, this.required, this.uri});
+
+  AgentExtension.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        params: json_.containsKey('params')
+            ? json_['params'] as core.Map<core.String, core.dynamic>
+            : null,
+        required: json_['required'] as core.bool?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final params = this.params;
+    final required = this.required;
+    final uri = this.uri;
+    return {
+      'description': ?description,
+      'params': ?params,
+      'required': ?required,
+      'uri': ?uri,
+    };
+  }
+}
+
+/// Defines additional transport information for the agent.
+class AgentInterface {
+  /// Tenant to be set in the request when calling the agent.
+  ///
+  /// Experimental, might still change for 1.0 release.
+  core.String? tenant;
+
+  /// The transport supported this url.
+  ///
+  /// This is an open form string, to be easily extended for many transport
+  /// protocols. The core ones officially supported are JSONRPC, GRPC and
+  /// HTTP+JSON.
+  core.String? transport;
+
+  /// The url this interface is found at.
+  core.String? url;
+
+  AgentInterface({this.tenant, this.transport, this.url});
+
+  AgentInterface.fromJson(core.Map json_)
+    : this(
+        tenant: json_['tenant'] as core.String?,
+        transport: json_['transport'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final tenant = this.tenant;
+    final transport = this.transport;
+    final url = this.url;
+    return {'tenant': ?tenant, 'transport': ?transport, 'url': ?url};
+  }
+}
+
+/// Represents information about the service provider of an agent.
+class AgentProvider {
+  /// The providers organization name Example: "Google"
+  core.String? organization;
+
+  /// The providers reference url Example: "https://ai.google.dev"
+  core.String? url;
+
+  AgentProvider({this.organization, this.url});
+
+  AgentProvider.fromJson(core.Map json_)
+    : this(
+        organization: json_['organization'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final organization = this.organization;
+    final url = this.url;
+    return {'organization': ?organization, 'url': ?url};
+  }
+}
+
+/// AgentSkill represents a unit of action/solution that the agent can perform.
+///
+/// One can think of this as a type of highly reliable solution that an agent
+/// can be tasked to provide. Agents have the autonomy to choose how and when to
+/// use specific skills, but clients should have confidence that if the skill is
+/// defined that unit of action can be reliably performed.
+class AgentSkill {
+  /// A human (or llm) readable description of the skill details and behaviors.
+  core.String? description;
+
+  /// A set of example queries that this skill is designed to address.
+  ///
+  /// These examples should help the caller to understand how to craft requests
+  /// to the agent to achieve specific goals. Example: \["I need a recipe for
+  /// bread"\]
+  core.List<core.String>? examples;
+
+  /// Unique identifier of the skill within this agent.
+  core.String? id;
+
+  /// Possible input modalities supported.
+  core.List<core.String>? inputModes;
+
+  /// A human readable name for the skill.
+  core.String? name;
+
+  /// Possible output modalities produced
+  core.List<core.String>? outputModes;
+
+  /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Security schemes
+  /// necessary for the agent to leverage this skill.
+  ///
+  /// As in the overall AgentCard.security, this list represents a logical OR of
+  /// security requirement objects. Each object is a set of security schemes
+  /// that must be used together (a logical AND). protolint:enable
+  /// REPEATED_FIELD_NAMES_PLURALIZED
+  core.List<Security>? security;
+
+  /// A set of tags for the skill to enhance categorization/utilization.
+  ///
+  /// Example: \["cooking", "customer support", "billing"\]
+  core.List<core.String>? tags;
+
+  AgentSkill({
+    this.description,
+    this.examples,
+    this.id,
+    this.inputModes,
+    this.name,
+    this.outputModes,
+    this.security,
+    this.tags,
+  });
+
+  AgentSkill.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        examples: (json_['examples'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        id: json_['id'] as core.String?,
+        inputModes: (json_['inputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        name: json_['name'] as core.String?,
+        outputModes: (json_['outputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        security: (json_['security'] as core.List?)
+            ?.map(
+              (value) => Security.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final examples = this.examples;
+    final id = this.id;
+    final inputModes = this.inputModes;
+    final name = this.name;
+    final outputModes = this.outputModes;
+    final security = this.security;
+    final tags = this.tags;
+    return {
+      'description': ?description,
+      'examples': ?examples,
+      'id': ?id,
+      'inputModes': ?inputModes,
+      'name': ?name,
+      'outputModes': ?outputModes,
+      'security': ?security,
+      'tags': ?tags,
+    };
+  }
+}
+
 /// Represents the aggregation level and interval for pricing of a single SKU.
 class AggregationInfo {
   /// The number of intervals to aggregate over.
@@ -1178,6 +2197,80 @@ class AggregationInfo {
       'aggregationCount': ?aggregationCount,
       'aggregationInterval': ?aggregationInterval,
       'aggregationLevel': ?aggregationLevel,
+    };
+  }
+}
+
+/// Artifacts are the container for task completed results.
+///
+/// These are similar to Messages but are intended to be the product of a task,
+/// as opposed to point-to-point communication.
+class Artifact {
+  /// Unique identifier (e.g. UUID) for the artifact.
+  ///
+  /// It must be at least unique within a task.
+  core.String? artifactId;
+
+  /// A human readable description of the artifact, optional.
+  core.String? description;
+
+  /// The URIs of extensions that are present or contributed to this Artifact.
+  core.List<core.String>? extensions;
+
+  /// Optional metadata included with the artifact.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// A human readable name for the artifact.
+  core.String? name;
+
+  /// The content of the artifact.
+  core.List<Part>? parts;
+
+  Artifact({
+    this.artifactId,
+    this.description,
+    this.extensions,
+    this.metadata,
+    this.name,
+    this.parts,
+  });
+
+  Artifact.fromJson(core.Map json_)
+    : this(
+        artifactId: json_['artifactId'] as core.String?,
+        description: json_['description'] as core.String?,
+        extensions: (json_['extensions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        name: json_['name'] as core.String?,
+        parts: (json_['parts'] as core.List?)
+            ?.map(
+              (value) =>
+                  Part.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifactId = this.artifactId;
+    final description = this.description;
+    final extensions = this.extensions;
+    final metadata = this.metadata;
+    final name = this.name;
+    final parts = this.parts;
+    return {
+      'artifactId': ?artifactId,
+      'description': ?description,
+      'extensions': ?extensions,
+      'metadata': ?metadata,
+      'name': ?name,
+      'parts': ?parts,
     };
   }
 }
@@ -1237,6 +2330,65 @@ class AuditConfig {
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
+
+/// Defines authentication details, used for push notifications.
+typedef AuthenticationInfo = $AuthenticationInfo;
+
+class AuthorizationCodeOAuthFlow {
+  /// The authorization URL to be used for this flow.
+  ///
+  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
+  /// TLS
+  core.String? authorizationUrl;
+
+  /// The URL to be used for obtaining refresh tokens.
+  ///
+  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
+  /// TLS.
+  core.String? refreshUrl;
+
+  /// The available scopes for the OAuth2 security scheme.
+  ///
+  /// A map between the scope name and a short description for it. The map MAY
+  /// be empty.
+  core.Map<core.String, core.String>? scopes;
+
+  /// The token URL to be used for this flow.
+  ///
+  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
+  /// TLS.
+  core.String? tokenUrl;
+
+  AuthorizationCodeOAuthFlow({
+    this.authorizationUrl,
+    this.refreshUrl,
+    this.scopes,
+    this.tokenUrl,
+  });
+
+  AuthorizationCodeOAuthFlow.fromJson(core.Map json_)
+    : this(
+        authorizationUrl: json_['authorizationUrl'] as core.String?,
+        refreshUrl: json_['refreshUrl'] as core.String?,
+        scopes: (json_['scopes'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        tokenUrl: json_['tokenUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationUrl = this.authorizationUrl;
+    final refreshUrl = this.refreshUrl;
+    final scopes = this.scopes;
+    final tokenUrl = this.tokenUrl;
+    return {
+      'authorizationUrl': ?authorizationUrl,
+      'refreshUrl': ?refreshUrl,
+      'scopes': ?scopes,
+      'tokenUrl': ?tokenUrl,
+    };
+  }
+}
 
 /// A billing account in the
 /// [Google Cloud Console](https://console.cloud.google.com/).
@@ -1439,6 +2591,8 @@ class Binding {
   }
 }
 
+typedef CancelTaskRequest = $CancelTaskRequest;
+
 /// Represents the category hierarchy of a SKU.
 class Category {
   /// The type of product the SKU refers to.
@@ -1488,6 +2642,21 @@ class Category {
   }
 }
 
+typedef ClientCredentialsOAuthFlow = $OAuthFlow;
+
+/// DataPart represents a structured blob.
+///
+/// This is most commonly a JSON payload.
+typedef DataPart = $DataPart;
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -1507,6 +2676,13 @@ class Category {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// FilePart represents the different ways files can be provided.
+///
+/// If files are small, directly feeding the bytes is supported via
+/// file_with_bytes. If the file is large, the agent should read the content as
+/// appropriate directly from the file_with_uri source.
+typedef FilePart = $FilePart;
 
 /// Encapsulates the geographic taxonomy data for a sku.
 class GeoTaxonomy {
@@ -1541,6 +2717,46 @@ class GeoTaxonomy {
     return {'regions': ?regions, 'type': ?type};
   }
 }
+
+class HTTPAuthSecurityScheme {
+  /// A hint to the client to identify how the bearer token is formatted.
+  ///
+  /// Bearer tokens are usually generated by an authorization server, so this
+  /// information is primarily for documentation purposes.
+  core.String? bearerFormat;
+
+  /// Description of this security scheme.
+  core.String? description;
+
+  /// The name of the HTTP Authentication scheme to be used in the Authorization
+  /// header as defined in RFC7235.
+  ///
+  /// The values used SHOULD be registered in the IANA Authentication Scheme
+  /// registry. The value is case-insensitive, as defined in RFC7235.
+  core.String? scheme;
+
+  HTTPAuthSecurityScheme({this.bearerFormat, this.description, this.scheme});
+
+  HTTPAuthSecurityScheme.fromJson(core.Map json_)
+    : this(
+        bearerFormat: json_['bearerFormat'] as core.String?,
+        description: json_['description'] as core.String?,
+        scheme: json_['scheme'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bearerFormat = this.bearerFormat;
+    final description = this.description;
+    final scheme = this.scheme;
+    return {
+      'bearerFormat': ?bearerFormat,
+      'description': ?description,
+      'scheme': ?scheme,
+    };
+  }
+}
+
+typedef ImplicitOAuthFlow = $ImplicitOAuthFlow;
 
 /// Response message for `ListBillingAccounts`.
 class ListBillingAccountsResponse {
@@ -1680,6 +2896,134 @@ class ListSkusResponse {
   }
 }
 
+class ListTaskPushNotificationConfigResponse {
+  /// The list of push notification configurations.
+  core.List<TaskPushNotificationConfig>? configs;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListTaskPushNotificationConfigResponse({this.configs, this.nextPageToken});
+
+  ListTaskPushNotificationConfigResponse.fromJson(core.Map json_)
+    : this(
+        configs: (json_['configs'] as core.List?)
+            ?.map(
+              (value) => TaskPushNotificationConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final configs = this.configs;
+    final nextPageToken = this.nextPageToken;
+    return {'configs': ?configs, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Message is one unit of communication between client and server.
+///
+/// It is associated with a context and optionally a task. Since the server is
+/// responsible for the context definition, it must always provide a context_id
+/// in its messages. The client can optionally provide the context_id if it
+/// knows the context to associate the message to. Similarly for task_id, except
+/// the server decides if a task is created and whether to include the task_id.
+class Message {
+  /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Content is the container
+  /// of the message content.
+  core.List<Part>? content;
+
+  /// The context id of the message.
+  ///
+  /// This is optional and if set, the message will be associated with the given
+  /// context.
+  core.String? contextId;
+
+  /// The URIs of extensions that are present or contributed to this Message.
+  core.List<core.String>? extensions;
+
+  /// The unique identifier (e.g. UUID)of the message.
+  ///
+  /// This is required and created by the message creator.
+  core.String? messageId;
+
+  /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED Any optional metadata to
+  /// provide along with the message.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// A role for the message.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED"
+  /// - "ROLE_USER" : USER role refers to communication from the client to the
+  /// server.
+  /// - "ROLE_AGENT" : AGENT role refers to communication from the server to the
+  /// client.
+  core.String? role;
+
+  /// The task id of the message.
+  ///
+  /// This is optional and if set, the message will be associated with the given
+  /// task.
+  core.String? taskId;
+
+  Message({
+    this.content,
+    this.contextId,
+    this.extensions,
+    this.messageId,
+    this.metadata,
+    this.role,
+    this.taskId,
+  });
+
+  Message.fromJson(core.Map json_)
+    : this(
+        content: (json_['content'] as core.List?)
+            ?.map(
+              (value) =>
+                  Part.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        contextId: json_['contextId'] as core.String?,
+        extensions: (json_['extensions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        messageId: json_['messageId'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        role: json_['role'] as core.String?,
+        taskId: json_['taskId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final contextId = this.contextId;
+    final extensions = this.extensions;
+    final messageId = this.messageId;
+    final metadata = this.metadata;
+    final role = this.role;
+    final taskId = this.taskId;
+    return {
+      'content': ?content,
+      'contextId': ?contextId,
+      'extensions': ?extensions,
+      'messageId': ?messageId,
+      'metadata': ?metadata,
+      'role': ?role,
+      'taskId': ?taskId,
+    };
+  }
+}
+
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
 
@@ -1702,6 +3046,182 @@ class MoveBillingAccountRequest {
     return {'destinationParent': ?destinationParent};
   }
 }
+
+class MutualTlsSecurityScheme {
+  /// Description of this security scheme.
+  core.String? description;
+
+  MutualTlsSecurityScheme({this.description});
+
+  MutualTlsSecurityScheme.fromJson(core.Map json_)
+    : this(description: json_['description'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    return {'description': ?description};
+  }
+}
+
+class OAuth2SecurityScheme {
+  /// Description of this security scheme.
+  core.String? description;
+
+  /// An object containing configuration information for the flow types
+  /// supported
+  OAuthFlows? flows;
+
+  /// URL to the oauth2 authorization server metadata
+  /// [RFC8414](https://datatracker.ietf.org/doc/html/rfc8414).
+  ///
+  /// TLS is required.
+  core.String? oauth2MetadataUrl;
+
+  OAuth2SecurityScheme({this.description, this.flows, this.oauth2MetadataUrl});
+
+  OAuth2SecurityScheme.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        flows: json_.containsKey('flows')
+            ? OAuthFlows.fromJson(
+                json_['flows'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oauth2MetadataUrl: json_['oauth2MetadataUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final flows = this.flows;
+    final oauth2MetadataUrl = this.oauth2MetadataUrl;
+    return {
+      'description': ?description,
+      'flows': ?flows,
+      'oauth2MetadataUrl': ?oauth2MetadataUrl,
+    };
+  }
+}
+
+class OAuthFlows {
+  AuthorizationCodeOAuthFlow? authorizationCode;
+  ClientCredentialsOAuthFlow? clientCredentials;
+  ImplicitOAuthFlow? implicit;
+  PasswordOAuthFlow? password;
+
+  OAuthFlows({
+    this.authorizationCode,
+    this.clientCredentials,
+    this.implicit,
+    this.password,
+  });
+
+  OAuthFlows.fromJson(core.Map json_)
+    : this(
+        authorizationCode: json_.containsKey('authorizationCode')
+            ? AuthorizationCodeOAuthFlow.fromJson(
+                json_['authorizationCode']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        clientCredentials: json_.containsKey('clientCredentials')
+            ? ClientCredentialsOAuthFlow.fromJson(
+                json_['clientCredentials']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        implicit: json_.containsKey('implicit')
+            ? ImplicitOAuthFlow.fromJson(
+                json_['implicit'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        password: json_.containsKey('password')
+            ? PasswordOAuthFlow.fromJson(
+                json_['password'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationCode = this.authorizationCode;
+    final clientCredentials = this.clientCredentials;
+    final implicit = this.implicit;
+    final password = this.password;
+    return {
+      'authorizationCode': ?authorizationCode,
+      'clientCredentials': ?clientCredentials,
+      'implicit': ?implicit,
+      'password': ?password,
+    };
+  }
+}
+
+class OpenIdConnectSecurityScheme {
+  /// Description of this security scheme.
+  core.String? description;
+
+  /// Well-known URL to discover the \[\[OpenID-Connect-Discovery\]\] provider
+  /// metadata.
+  core.String? openIdConnectUrl;
+
+  OpenIdConnectSecurityScheme({this.description, this.openIdConnectUrl});
+
+  OpenIdConnectSecurityScheme.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        openIdConnectUrl: json_['openIdConnectUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final openIdConnectUrl = this.openIdConnectUrl;
+    return {'description': ?description, 'openIdConnectUrl': ?openIdConnectUrl};
+  }
+}
+
+/// Part represents a container for a section of communication content.
+///
+/// Parts can be purely textual, some sort of file (image, video, etc) or a
+/// structured data blob (i.e. JSON).
+class Part {
+  DataPart? data;
+  FilePart? file;
+
+  /// Optional metadata associated with this part.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+  core.String? text;
+
+  Part({this.data, this.file, this.metadata, this.text});
+
+  Part.fromJson(core.Map json_)
+    : this(
+        data: json_.containsKey('data')
+            ? DataPart.fromJson(
+                json_['data'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        file: json_.containsKey('file')
+            ? FilePart.fromJson(
+                json_['file'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        text: json_['text'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final file = this.file;
+    final metadata = this.metadata;
+    final text = this.text;
+    return {'data': ?data, 'file': ?file, 'metadata': ?metadata, 'text': ?text};
+  }
+}
+
+typedef PasswordOAuthFlow = $OAuthFlow;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -2071,6 +3591,282 @@ class ProjectBillingInfo {
   }
 }
 
+/// Configuration for setting up push notifications for task updates.
+class PushNotificationConfig {
+  /// Information about the authentication to sent with the notification
+  AuthenticationInfo? authentication;
+
+  /// A unique identifier (e.g. UUID) for this push notification.
+  core.String? id;
+
+  /// Token unique for this task/session
+  core.String? token;
+
+  /// Url to send the notification too
+  core.String? url;
+
+  PushNotificationConfig({this.authentication, this.id, this.token, this.url});
+
+  PushNotificationConfig.fromJson(core.Map json_)
+    : this(
+        authentication: json_.containsKey('authentication')
+            ? AuthenticationInfo.fromJson(
+                json_['authentication'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        id: json_['id'] as core.String?,
+        token: json_['token'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authentication = this.authentication;
+    final id = this.id;
+    final token = this.token;
+    final url = this.url;
+    return {
+      'authentication': ?authentication,
+      'id': ?id,
+      'token': ?token,
+      'url': ?url,
+    };
+  }
+}
+
+class Security {
+  core.Map<core.String, StringList>? schemes;
+
+  Security({this.schemes});
+
+  Security.fromJson(core.Map json_)
+    : this(
+        schemes: (json_['schemes'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                StringList.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final schemes = this.schemes;
+    return {'schemes': ?schemes};
+  }
+}
+
+class SecurityScheme {
+  APIKeySecurityScheme? apiKeySecurityScheme;
+  HTTPAuthSecurityScheme? httpAuthSecurityScheme;
+  MutualTlsSecurityScheme? mtlsSecurityScheme;
+  OAuth2SecurityScheme? oauth2SecurityScheme;
+  OpenIdConnectSecurityScheme? openIdConnectSecurityScheme;
+
+  SecurityScheme({
+    this.apiKeySecurityScheme,
+    this.httpAuthSecurityScheme,
+    this.mtlsSecurityScheme,
+    this.oauth2SecurityScheme,
+    this.openIdConnectSecurityScheme,
+  });
+
+  SecurityScheme.fromJson(core.Map json_)
+    : this(
+        apiKeySecurityScheme: json_.containsKey('apiKeySecurityScheme')
+            ? APIKeySecurityScheme.fromJson(
+                json_['apiKeySecurityScheme']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        httpAuthSecurityScheme: json_.containsKey('httpAuthSecurityScheme')
+            ? HTTPAuthSecurityScheme.fromJson(
+                json_['httpAuthSecurityScheme']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mtlsSecurityScheme: json_.containsKey('mtlsSecurityScheme')
+            ? MutualTlsSecurityScheme.fromJson(
+                json_['mtlsSecurityScheme']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        oauth2SecurityScheme: json_.containsKey('oauth2SecurityScheme')
+            ? OAuth2SecurityScheme.fromJson(
+                json_['oauth2SecurityScheme']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        openIdConnectSecurityScheme:
+            json_.containsKey('openIdConnectSecurityScheme')
+            ? OpenIdConnectSecurityScheme.fromJson(
+                json_['openIdConnectSecurityScheme']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKeySecurityScheme = this.apiKeySecurityScheme;
+    final httpAuthSecurityScheme = this.httpAuthSecurityScheme;
+    final mtlsSecurityScheme = this.mtlsSecurityScheme;
+    final oauth2SecurityScheme = this.oauth2SecurityScheme;
+    final openIdConnectSecurityScheme = this.openIdConnectSecurityScheme;
+    return {
+      'apiKeySecurityScheme': ?apiKeySecurityScheme,
+      'httpAuthSecurityScheme': ?httpAuthSecurityScheme,
+      'mtlsSecurityScheme': ?mtlsSecurityScheme,
+      'oauth2SecurityScheme': ?oauth2SecurityScheme,
+      'openIdConnectSecurityScheme': ?openIdConnectSecurityScheme,
+    };
+  }
+}
+
+/// Configuration of a send message request.
+class SendMessageConfiguration {
+  /// The output modes that the agent is expected to respond with.
+  core.List<core.String>? acceptedOutputModes;
+
+  /// If true, the message will be blocking until the task is completed.
+  ///
+  /// If false, the message will be non-blocking and the task will be returned
+  /// immediately. It is the caller's responsibility to check for any task
+  /// updates.
+  core.bool? blocking;
+
+  /// The maximum number of messages to include in the history.
+  ///
+  /// if 0, the history will be unlimited.
+  core.int? historyLength;
+
+  /// A configuration of a webhook that can be used to receive updates
+  PushNotificationConfig? pushNotification;
+
+  SendMessageConfiguration({
+    this.acceptedOutputModes,
+    this.blocking,
+    this.historyLength,
+    this.pushNotification,
+  });
+
+  SendMessageConfiguration.fromJson(core.Map json_)
+    : this(
+        acceptedOutputModes: (json_['acceptedOutputModes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        blocking: json_['blocking'] as core.bool?,
+        historyLength: json_['historyLength'] as core.int?,
+        pushNotification: json_.containsKey('pushNotification')
+            ? PushNotificationConfig.fromJson(
+                json_['pushNotification']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final acceptedOutputModes = this.acceptedOutputModes;
+    final blocking = this.blocking;
+    final historyLength = this.historyLength;
+    final pushNotification = this.pushNotification;
+    return {
+      'acceptedOutputModes': ?acceptedOutputModes,
+      'blocking': ?blocking,
+      'historyLength': ?historyLength,
+      'pushNotification': ?pushNotification,
+    };
+  }
+}
+
+/// /////////// Request Messages ///////////
+class SendMessageRequest {
+  /// Configuration for the send request.
+  SendMessageConfiguration? configuration;
+
+  /// The message to send to the agent.
+  ///
+  /// Required.
+  Message? message;
+
+  /// Optional metadata for the request.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// Optional tenant, provided as a path parameter.
+  ///
+  /// Experimental, might still change for 1.0 release.
+  core.String? tenant;
+
+  SendMessageRequest({
+    this.configuration,
+    this.message,
+    this.metadata,
+    this.tenant,
+  });
+
+  SendMessageRequest.fromJson(core.Map json_)
+    : this(
+        configuration: json_.containsKey('configuration')
+            ? SendMessageConfiguration.fromJson(
+                json_['configuration'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        message: json_.containsKey('message')
+            ? Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        tenant: json_['tenant'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final configuration = this.configuration;
+    final message = this.message;
+    final metadata = this.metadata;
+    final tenant = this.tenant;
+    return {
+      'configuration': ?configuration,
+      'message': ?message,
+      'metadata': ?metadata,
+      'tenant': ?tenant,
+    };
+  }
+}
+
+/// ////// Response Messages ///////////
+class SendMessageResponse {
+  Message? message;
+  Task? task;
+
+  SendMessageResponse({this.message, this.task});
+
+  SendMessageResponse.fromJson(core.Map json_)
+    : this(
+        message: json_.containsKey('message')
+            ? Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        task: json_.containsKey('task')
+            ? Task.fromJson(
+                json_['task'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final task = this.task;
+    return {'message': ?message, 'task': ?task};
+  }
+}
+
 /// Encapsulates a single service in Google Cloud Platform.
 class Service {
   /// The business under which the service is offered.
@@ -2247,6 +4043,385 @@ class Sku {
       'serviceProviderName': ?serviceProviderName,
       'serviceRegions': ?serviceRegions,
       'skuId': ?skuId,
+    };
+  }
+}
+
+/// The stream response for a message.
+///
+/// The stream should be one of the following sequences: If the response is a
+/// message, the stream should contain one, and only one, message and then close
+/// If the response is a task lifecycle, the first response should be a Task
+/// object followed by zero or more TaskStatusUpdateEvents and
+/// TaskArtifactUpdateEvents. The stream should complete when the Task if in an
+/// interrupted or terminal state. A stream that ends before these conditions
+/// are met are
+class StreamResponse {
+  TaskArtifactUpdateEvent? artifactUpdate;
+  Message? message;
+  TaskStatusUpdateEvent? statusUpdate;
+  Task? task;
+
+  StreamResponse({
+    this.artifactUpdate,
+    this.message,
+    this.statusUpdate,
+    this.task,
+  });
+
+  StreamResponse.fromJson(core.Map json_)
+    : this(
+        artifactUpdate: json_.containsKey('artifactUpdate')
+            ? TaskArtifactUpdateEvent.fromJson(
+                json_['artifactUpdate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        message: json_.containsKey('message')
+            ? Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        statusUpdate: json_.containsKey('statusUpdate')
+            ? TaskStatusUpdateEvent.fromJson(
+                json_['statusUpdate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        task: json_.containsKey('task')
+            ? Task.fromJson(
+                json_['task'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifactUpdate = this.artifactUpdate;
+    final message = this.message;
+    final statusUpdate = this.statusUpdate;
+    final task = this.task;
+    return {
+      'artifactUpdate': ?artifactUpdate,
+      'message': ?message,
+      'statusUpdate': ?statusUpdate,
+      'task': ?task,
+    };
+  }
+}
+
+/// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED
+class StringList {
+  core.List<core.String>? list;
+
+  StringList({this.list});
+
+  StringList.fromJson(core.Map json_)
+    : this(
+        list: (json_['list'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final list = this.list;
+    return {'list': ?list};
+  }
+}
+
+/// Task is the core unit of action for A2A.
+///
+/// It has a current status and when results are created for the task they are
+/// stored in the artifact. If there are multiple turns for a task, these are
+/// stored in history.
+class Task {
+  /// A set of output artifacts for a Task.
+  core.List<Artifact>? artifacts;
+
+  /// Unique identifier (e.g. UUID) for the contextual collection of
+  /// interactions (tasks and messages).
+  ///
+  /// Created by the A2A server.
+  core.String? contextId;
+
+  /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED The history of
+  /// interactions from a task.
+  core.List<Message>? history;
+
+  /// Unique identifier (e.g. UUID) for the task, generated by the server for a
+  /// new task.
+  core.String? id;
+
+  /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED A key/value object to
+  /// store custom metadata about a task.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The current status of a Task, including state and a message.
+  TaskStatus? status;
+
+  Task({
+    this.artifacts,
+    this.contextId,
+    this.history,
+    this.id,
+    this.metadata,
+    this.status,
+  });
+
+  Task.fromJson(core.Map json_)
+    : this(
+        artifacts: (json_['artifacts'] as core.List?)
+            ?.map(
+              (value) => Artifact.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        contextId: json_['contextId'] as core.String?,
+        history: (json_['history'] as core.List?)
+            ?.map(
+              (value) => Message.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        id: json_['id'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        status: json_.containsKey('status')
+            ? TaskStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifacts = this.artifacts;
+    final contextId = this.contextId;
+    final history = this.history;
+    final id = this.id;
+    final metadata = this.metadata;
+    final status = this.status;
+    return {
+      'artifacts': ?artifacts,
+      'contextId': ?contextId,
+      'history': ?history,
+      'id': ?id,
+      'metadata': ?metadata,
+      'status': ?status,
+    };
+  }
+}
+
+/// TaskArtifactUpdateEvent represents a task delta where an artifact has been
+/// generated.
+class TaskArtifactUpdateEvent {
+  /// Whether this should be appended to a prior one produced
+  core.bool? append;
+
+  /// The artifact itself
+  Artifact? artifact;
+
+  /// The id of the context that this task belongs too
+  core.String? contextId;
+
+  /// Whether this represents the last part of an artifact
+  core.bool? lastChunk;
+
+  /// Optional metadata associated with the artifact update.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The id of the task for this artifact
+  core.String? taskId;
+
+  TaskArtifactUpdateEvent({
+    this.append,
+    this.artifact,
+    this.contextId,
+    this.lastChunk,
+    this.metadata,
+    this.taskId,
+  });
+
+  TaskArtifactUpdateEvent.fromJson(core.Map json_)
+    : this(
+        append: json_['append'] as core.bool?,
+        artifact: json_.containsKey('artifact')
+            ? Artifact.fromJson(
+                json_['artifact'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contextId: json_['contextId'] as core.String?,
+        lastChunk: json_['lastChunk'] as core.bool?,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        taskId: json_['taskId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final append = this.append;
+    final artifact = this.artifact;
+    final contextId = this.contextId;
+    final lastChunk = this.lastChunk;
+    final metadata = this.metadata;
+    final taskId = this.taskId;
+    return {
+      'append': ?append,
+      'artifact': ?artifact,
+      'contextId': ?contextId,
+      'lastChunk': ?lastChunk,
+      'metadata': ?metadata,
+      'taskId': ?taskId,
+    };
+  }
+}
+
+class TaskPushNotificationConfig {
+  /// The resource name of the config.
+  ///
+  /// Format: tasks/{task_id}/pushNotificationConfigs/{config_id}
+  core.String? name;
+
+  /// The push notification configuration details.
+  PushNotificationConfig? pushNotificationConfig;
+
+  TaskPushNotificationConfig({this.name, this.pushNotificationConfig});
+
+  TaskPushNotificationConfig.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        pushNotificationConfig: json_.containsKey('pushNotificationConfig')
+            ? PushNotificationConfig.fromJson(
+                json_['pushNotificationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final pushNotificationConfig = this.pushNotificationConfig;
+    return {'name': ?name, 'pushNotificationConfig': ?pushNotificationConfig};
+  }
+}
+
+/// A container for the status of a task
+class TaskStatus {
+  /// A message associated with the status.
+  Message? message;
+
+  /// The current state of this task
+  /// Possible string values are:
+  /// - "TASK_STATE_UNSPECIFIED"
+  /// - "TASK_STATE_SUBMITTED" : Represents the status that acknowledges a task
+  /// is created
+  /// - "TASK_STATE_WORKING" : Represents the status that a task is actively
+  /// being processed
+  /// - "TASK_STATE_COMPLETED" : Represents the status a task is finished. This
+  /// is a terminal state
+  /// - "TASK_STATE_FAILED" : Represents the status a task is done but failed.
+  /// This is a terminal state
+  /// - "TASK_STATE_CANCELLED" : Represents the status a task was cancelled
+  /// before it finished. This is a terminal state.
+  /// - "TASK_STATE_INPUT_REQUIRED" : Represents the status that the task
+  /// requires information to complete. This is an interrupted state.
+  /// - "TASK_STATE_REJECTED" : Represents the status that the agent has decided
+  /// to not perform the task. This may be done during initial task creation or
+  /// later once an agent has determined it can't or won't proceed. This is a
+  /// terminal state.
+  /// - "TASK_STATE_AUTH_REQUIRED" : Represents the state that some
+  /// authentication is needed from the upstream client. Authentication is
+  /// expected to come out-of-band thus this is not an interrupted or terminal
+  /// state.
+  core.String? state;
+
+  /// Timestamp when the status was recorded.
+  ///
+  /// Example: "2023-10-27T10:00:00Z"
+  core.String? timestamp;
+
+  TaskStatus({this.message, this.state, this.timestamp});
+
+  TaskStatus.fromJson(core.Map json_)
+    : this(
+        message: json_.containsKey('message')
+            ? Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+        timestamp: json_['timestamp'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final message = this.message;
+    final state = this.state;
+    final timestamp = this.timestamp;
+    return {'message': ?message, 'state': ?state, 'timestamp': ?timestamp};
+  }
+}
+
+/// TaskStatusUpdateEvent is a delta even on a task indicating that a task has
+/// changed.
+class TaskStatusUpdateEvent {
+  /// The id of the context that the task belongs to
+  core.String? contextId;
+
+  /// Whether this is the last status update expected for this task.
+  core.bool? final_;
+
+  /// Optional metadata to associate with the task update.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The new status of the task.
+  TaskStatus? status;
+
+  /// The id of the task that is changed
+  core.String? taskId;
+
+  TaskStatusUpdateEvent({
+    this.contextId,
+    this.final_,
+    this.metadata,
+    this.status,
+    this.taskId,
+  });
+
+  TaskStatusUpdateEvent.fromJson(core.Map json_)
+    : this(
+        contextId: json_['contextId'] as core.String?,
+        final_: json_['final'] as core.bool?,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        status: json_.containsKey('status')
+            ? TaskStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        taskId: json_['taskId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextId = this.contextId;
+    final final_ = this.final_;
+    final metadata = this.metadata;
+    final status = this.status;
+    final taskId = this.taskId;
+    return {
+      'contextId': ?contextId,
+      'final': ?final_,
+      'metadata': ?metadata,
+      'status': ?status,
+      'taskId': ?taskId,
     };
   }
 }

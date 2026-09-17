@@ -3715,7 +3715,7 @@ class UpgradeInstanceRequest {
 }
 
 /// Request for upgrading a notebook instance from within the VM
-typedef UpgradeInstanceSystemRequest = $Request13;
+typedef UpgradeInstanceSystemRequest = $Request12;
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.

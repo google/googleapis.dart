@@ -1077,71 +1077,13 @@ class Artifact {
 }
 
 /// Defines authentication details, used for push notifications.
-class AuthenticationInfo {
-  /// Optional credentials
-  core.String? credentials;
-
-  /// Supported authentication schemes - e.g. Basic, Bearer, etc
-  core.List<core.String>? schemes;
-
-  AuthenticationInfo({this.credentials, this.schemes});
-
-  AuthenticationInfo.fromJson(core.Map json_)
-    : this(
-        credentials: json_['credentials'] as core.String?,
-        schemes: (json_['schemes'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final credentials = this.credentials;
-    final schemes = this.schemes;
-    return {'credentials': ?credentials, 'schemes': ?schemes};
-  }
-}
-
-class CancelTaskRequest {
-  /// Optional tenant, provided as a path parameter.
-  ///
-  /// Experimental, might still change for 1.0 release.
-  core.String? tenant;
-
-  CancelTaskRequest({this.tenant});
-
-  CancelTaskRequest.fromJson(core.Map json_)
-    : this(tenant: json_['tenant'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final tenant = this.tenant;
-    return {'tenant': ?tenant};
-  }
-}
+typedef AuthenticationInfo = $AuthenticationInfo;
+typedef CancelTaskRequest = $CancelTaskRequest;
 
 /// DataPart represents a structured blob.
 ///
 /// This is most commonly a JSON payload.
-class DataPart {
-  ///
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? data;
-
-  DataPart({this.data});
-
-  DataPart.fromJson(core.Map json_)
-    : this(
-        data: json_.containsKey('data')
-            ? json_['data'] as core.Map<core.String, core.dynamic>
-            : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final data = this.data;
-    return {'data': ?data};
-  }
-}
+typedef DataPart = $DataPart;
 
 /// Additional supported options for serving Drive events.
 class DriveOptions {
@@ -1182,45 +1124,7 @@ typedef Empty = $Empty;
 /// If files are small, directly feeding the bytes is supported via
 /// file_with_bytes. If the file is large, the agent should read the content as
 /// appropriate directly from the file_with_uri source.
-class FilePart {
-  core.String? fileWithBytes;
-  core.List<core.int> get fileWithBytesAsBytes =>
-      convert.base64.decode(fileWithBytes!);
-
-  set fileWithBytesAsBytes(core.List<core.int> bytes_) {
-    fileWithBytes = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  core.String? fileWithUri;
-  core.String? mimeType;
-  core.String? name;
-
-  FilePart({this.fileWithBytes, this.fileWithUri, this.mimeType, this.name});
-
-  FilePart.fromJson(core.Map json_)
-    : this(
-        fileWithBytes: json_['fileWithBytes'] as core.String?,
-        fileWithUri: json_['fileWithUri'] as core.String?,
-        mimeType: json_['mimeType'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final fileWithBytes = this.fileWithBytes;
-    final fileWithUri = this.fileWithUri;
-    final mimeType = this.mimeType;
-    final name = this.name;
-    return {
-      'fileWithBytes': ?fileWithBytes,
-      'fileWithUri': ?fileWithUri,
-      'mimeType': ?mimeType,
-      'name': ?name,
-    };
-  }
-}
+typedef FilePart = $FilePart;
 
 /// The response message for SubscriptionsService.ListSubscriptions.
 class ListSubscriptionsResponse {

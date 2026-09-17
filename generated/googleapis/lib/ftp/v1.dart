@@ -1516,6 +1516,16 @@ class Server {
   /// name of resource
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Service agent used to access the customer bucket.
   ///
   /// Output only.
@@ -1550,6 +1560,8 @@ class Server {
     this.internalConfig,
     this.labels,
     this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.serviceAgent,
     this.state,
     this.updateTime,
@@ -1581,6 +1593,8 @@ class Server {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         serviceAgent: json_['serviceAgent'] as core.String?,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
@@ -1595,6 +1609,8 @@ class Server {
     final internalConfig = this.internalConfig;
     final labels = this.labels;
     final name = this.name;
+    final satisfiesPzi = this.satisfiesPzi;
+    final satisfiesPzs = this.satisfiesPzs;
     final serviceAgent = this.serviceAgent;
     final state = this.state;
     final updateTime = this.updateTime;
@@ -1607,6 +1623,8 @@ class Server {
       'internalConfig': ?internalConfig,
       'labels': ?labels,
       'name': ?name,
+      'satisfiesPzi': ?satisfiesPzi,
+      'satisfiesPzs': ?satisfiesPzs,
       'serviceAgent': ?serviceAgent,
       'state': ?state,
       'updateTime': ?updateTime,

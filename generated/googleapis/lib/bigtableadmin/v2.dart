@@ -6967,6 +6967,10 @@ class Instance {
   /// characters long and must conform to the regular expression:
   /// `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated
   /// with a given resource. * Keys and values must both be under 128 bytes.
+  /// Labels and Tags (below) are both used to bind metadata to resources, with
+  /// different use-cases. See
+  /// https://cloud.google.com/resource-manager/docs/tags/tags-overview for an
+  /// in-depth overview on the difference between tags and labels.
   core.Map<core.String, core.String>? labels;
 
   /// The unique name of the instance.
@@ -8520,6 +8524,7 @@ class Table {
   /// granularity. Should not be returned. When specified during table creation,
   /// MILLIS will be used.
   /// - "MILLIS" : The table keeps data versioned at a granularity of 1ms.
+  /// - "MICROS" : The table keeps data versioned at a granularity of 1us.
   core.String? granularity;
 
   /// The unique name of the table.

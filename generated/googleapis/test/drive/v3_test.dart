@@ -6455,6 +6455,7 @@ void main() {
       final res = api.DriveApi(mock).files;
       final arg_request = buildFile();
       final arg_fileId = 'foo';
+      final arg_copyComments = true;
       final arg_enforceSingleParent = true;
       final arg_ignoreDefaultVisibility = true;
       final arg_includeLabels = 'foo';
@@ -6519,6 +6520,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['copyComments']!.first,
+            unittest.equals('$arg_copyComments'),
+          );
+          unittest.expect(
             queryMap['enforceSingleParent']!.first,
             unittest.equals('$arg_enforceSingleParent'),
           );
@@ -6564,6 +6569,7 @@ void main() {
       final response = await res.copy(
         arg_request,
         arg_fileId,
+        copyComments: arg_copyComments,
         enforceSingleParent: arg_enforceSingleParent,
         ignoreDefaultVisibility: arg_ignoreDefaultVisibility,
         includeLabels: arg_includeLabels,

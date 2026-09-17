@@ -2804,6 +2804,13 @@ class AbortInfo {
   /// which don't have assigned IP addresses yet.
   /// - "RESPONSE_TOO_LARGE" : Aborted because the response size exceeds the
   /// limit.
+  /// - "DESTINATION_CLOUD_RUN_SERVICE_REVISION_UNSUPPORTED" : Aborted because
+  /// revisions of Cloud Run Services are not supported as destinations.
+  /// - "DESTINATION_CLOUD_RUN_VPC_CONNECTOR_UNSUPPORTED" : Aborted because
+  /// serverless endpoints having Cloud Run VPC connectors configured are not
+  /// supported as destinations.
+  /// - "CLOUD_RUN_RESOURCE_NOT_CONNECTED_TO_VPC" : Aborted because Cloud Run
+  /// destination resource is not connected to the VPC network.
   core.String? cause;
 
   /// IP address that caused the abort.
@@ -3180,7 +3187,8 @@ class CloudRunJobInfo {
 class CloudRunRevisionEndpoint {
   /// The URI of the Cloud Run service that the revision belongs to.
   ///
-  /// The format is: projects/{project}/locations/{location}/services/{service}
+  /// The format is: projects/{project}/locations/{location}/services/{service}.
+  /// Mutually exclusive with worker_pool_uri.
   ///
   /// Output only.
   core.String? serviceUri;
@@ -3193,18 +3201,33 @@ class CloudRunRevisionEndpoint {
   /// projects/{project}/locations/{location}/revisions/{revision}
   core.String? uri;
 
-  CloudRunRevisionEndpoint({this.serviceUri, this.uri});
+  /// The URI of the worker pool that the revision belongs to.
+  ///
+  /// The format is:
+  /// projects/{project}/locations/{location}/workerPools/{workerPool}. Mutually
+  /// exclusive with service_uri.
+  ///
+  /// Output only.
+  core.String? workerPoolUri;
+
+  CloudRunRevisionEndpoint({this.serviceUri, this.uri, this.workerPoolUri});
 
   CloudRunRevisionEndpoint.fromJson(core.Map json_)
     : this(
         serviceUri: json_['serviceUri'] as core.String?,
         uri: json_['uri'] as core.String?,
+        workerPoolUri: json_['workerPoolUri'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final serviceUri = this.serviceUri;
     final uri = this.uri;
-    return {'serviceUri': ?serviceUri, 'uri': ?uri};
+    final workerPoolUri = this.workerPoolUri;
+    return {
+      'serviceUri': ?serviceUri,
+      'uri': ?uri,
+      'workerPoolUri': ?workerPoolUri,
+    };
   }
 }
 
@@ -3221,6 +3244,7 @@ class CloudRunRevisionInfo {
   /// URI of Cloud Run service this revision belongs to.
   ///
   /// Format: `projects/{project_id}/locations/{location}/services/{service_id}`
+  /// Mutually exclusive with `worker_pool_uri`.
   core.String? serviceUri;
 
   /// URI of the Cloud Run revision.
@@ -3229,11 +3253,19 @@ class CloudRunRevisionInfo {
   /// `projects/{project_id}/locations/{location}/revisions/{revision_id}`
   core.String? uri;
 
+  /// URI of Cloud Run worker pool this revision belongs to.
+  ///
+  /// Format:
+  /// `projects/{project_id}/locations/{location}/workerPools/{worker_pool_id}`.
+  /// Mutually exclusive with `service_uri`.
+  core.String? workerPoolUri;
+
   CloudRunRevisionInfo({
     this.displayName,
     this.location,
     this.serviceUri,
     this.uri,
+    this.workerPoolUri,
   });
 
   CloudRunRevisionInfo.fromJson(core.Map json_)
@@ -3242,6 +3274,7 @@ class CloudRunRevisionInfo {
         location: json_['location'] as core.String?,
         serviceUri: json_['serviceUri'] as core.String?,
         uri: json_['uri'] as core.String?,
+        workerPoolUri: json_['workerPoolUri'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -3249,11 +3282,13 @@ class CloudRunRevisionInfo {
     final location = this.location;
     final serviceUri = this.serviceUri;
     final uri = this.uri;
+    final workerPoolUri = this.workerPoolUri;
     return {
       'displayName': ?displayName,
       'location': ?location,
       'serviceUri': ?serviceUri,
       'uri': ?uri,
+      'workerPoolUri': ?workerPoolUri,
     };
   }
 }
@@ -3666,6 +3701,63 @@ class DirectVpcEgressConnectionInfo {
   });
 
   DirectVpcEgressConnectionInfo.fromJson(core.Map json_)
+    : this(
+        networkUri: json_['networkUri'] as core.String?,
+        region: json_['region'] as core.String?,
+        selectedIpAddress: json_['selectedIpAddress'] as core.String?,
+        selectedIpRange: json_['selectedIpRange'] as core.String?,
+        subnetworkUri: json_['subnetworkUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final networkUri = this.networkUri;
+    final region = this.region;
+    final selectedIpAddress = this.selectedIpAddress;
+    final selectedIpRange = this.selectedIpRange;
+    final subnetworkUri = this.subnetworkUri;
+    return {
+      'networkUri': ?networkUri,
+      'region': ?region,
+      'selectedIpAddress': ?selectedIpAddress,
+      'selectedIpRange': ?selectedIpRange,
+      'subnetworkUri': ?subnetworkUri,
+    };
+  }
+}
+
+/// For display only.
+///
+/// Metadata associated with a serverless direct VPC ingress connection.
+class DirectVpcIngressConnectionInfo {
+  /// URI of the VPC network for direct ingress.
+  ///
+  /// Format: `projects/{project_id}/global/networks/{network_id}`
+  core.String? networkUri;
+
+  /// Region in which the Direct VPC ingress is deployed.
+  core.String? region;
+
+  /// Selected destination IP address, from the selected IP range.
+  core.String? selectedIpAddress;
+
+  /// Selected IP range.
+  core.String? selectedIpRange;
+
+  /// URI of the subnetwork for direct ingress.
+  ///
+  /// Format:
+  /// `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+  core.String? subnetworkUri;
+
+  DirectVpcIngressConnectionInfo({
+    this.networkUri,
+    this.region,
+    this.selectedIpAddress,
+    this.selectedIpRange,
+    this.subnetworkUri,
+  });
+
+  DirectVpcIngressConnectionInfo.fromJson(core.Map json_)
     : this(
         networkUri: json_['networkUri'] as core.String?,
         region: json_['region'] as core.String?,
@@ -8458,6 +8550,10 @@ class Step {
   /// Display information of a serverless direct VPC egress connection.
   DirectVpcEgressConnectionInfo? directVpcEgressConnection;
 
+  /// Display information of a serverless direct VPC ingress connection for
+  /// Cloud Run.
+  DirectVpcIngressConnectionInfo? directVpcIngressConnection;
+
   /// Display information of a DMS Private Connection.
   PrivateConnectionInfo? dmsPrivateConnection;
 
@@ -8636,6 +8732,8 @@ class Step {
   /// - "DIRECT_VPC_EGRESS_CONNECTION" : Forwarding state: for packets
   /// originating from a serverless endpoint forwarded through Direct VPC
   /// egress.
+  /// - "ARRIVE_AT_DIRECT_VPC_INGRESS_CONNECTION" : Forwarding state: arriving
+  /// at a direct VPC ingress connection.
   /// - "SERVERLESS_EXTERNAL_CONNECTION" : Forwarding state: for packets
   /// originating from a serverless endpoint forwarded through public (external)
   /// connectivity.
@@ -8696,6 +8794,7 @@ class Step {
     this.deliver,
     this.description,
     this.directVpcEgressConnection,
+    this.directVpcIngressConnection,
     this.dmsPrivateConnection,
     this.drop,
     this.endpoint,
@@ -8784,6 +8883,13 @@ class Step {
             json_.containsKey('directVpcEgressConnection')
             ? DirectVpcEgressConnectionInfo.fromJson(
                 json_['directVpcEgressConnection']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        directVpcIngressConnection:
+            json_.containsKey('directVpcIngressConnection')
+            ? DirectVpcIngressConnectionInfo.fromJson(
+                json_['directVpcIngressConnection']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -8969,6 +9075,7 @@ class Step {
     final deliver = this.deliver;
     final description = this.description;
     final directVpcEgressConnection = this.directVpcEgressConnection;
+    final directVpcIngressConnection = this.directVpcIngressConnection;
     final dmsPrivateConnection = this.dmsPrivateConnection;
     final drop = this.drop;
     final endpoint = this.endpoint;
@@ -9014,6 +9121,7 @@ class Step {
       'deliver': ?deliver,
       'description': ?description,
       'directVpcEgressConnection': ?directVpcEgressConnection,
+      'directVpcIngressConnection': ?directVpcIngressConnection,
       'dmsPrivateConnection': ?dmsPrivateConnection,
       'drop': ?drop,
       'endpoint': ?endpoint,

@@ -573,6 +573,9 @@ class EnvironmentDetails {
   /// The evaluation of the App Access Risk verdicts.
   AppAccessRiskVerdict? appAccessRiskVerdict;
 
+  /// The evaluation of the Location Spoofing Risk verdict.
+  core.List<core.String>? locationSpoofingRiskVerdict;
+
   /// The evaluation of Play Protect verdict.
   /// Possible string values are:
   /// - "PLAY_PROTECT_VERDICT_UNSPECIFIED" : Play Protect verdict has not been
@@ -587,7 +590,11 @@ class EnvironmentDetails {
   /// - "POSSIBLE_RISK" : Play Protect is turned off. Turn on Play Protect.
   core.String? playProtectVerdict;
 
-  EnvironmentDetails({this.appAccessRiskVerdict, this.playProtectVerdict});
+  EnvironmentDetails({
+    this.appAccessRiskVerdict,
+    this.locationSpoofingRiskVerdict,
+    this.playProtectVerdict,
+  });
 
   EnvironmentDetails.fromJson(core.Map json_)
     : this(
@@ -597,14 +604,20 @@ class EnvironmentDetails {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        locationSpoofingRiskVerdict:
+            (json_['locationSpoofingRiskVerdict'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         playProtectVerdict: json_['playProtectVerdict'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final appAccessRiskVerdict = this.appAccessRiskVerdict;
+    final locationSpoofingRiskVerdict = this.locationSpoofingRiskVerdict;
     final playProtectVerdict = this.playProtectVerdict;
     return {
       'appAccessRiskVerdict': ?appAccessRiskVerdict,
+      'locationSpoofingRiskVerdict': ?locationSpoofingRiskVerdict,
       'playProtectVerdict': ?playProtectVerdict,
     };
   }

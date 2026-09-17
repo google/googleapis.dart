@@ -1589,6 +1589,7 @@ api.ExportDicomDataRequest buildExportDicomDataRequest() {
   if (buildCounterExportDicomDataRequest < 3) {
     o.bigqueryDestination =
         buildGoogleCloudHealthcareV1DicomBigQueryDestination();
+    o.filterConfig = buildDicomFilterConfig();
     o.gcsDestination = buildGoogleCloudHealthcareV1DicomGcsDestination();
   }
   buildCounterExportDicomDataRequest--;
@@ -1601,6 +1602,7 @@ void checkExportDicomDataRequest(api.ExportDicomDataRequest o) {
     checkGoogleCloudHealthcareV1DicomBigQueryDestination(
       o.bigqueryDestination!,
     );
+    checkDicomFilterConfig(o.filterConfig!);
     checkGoogleCloudHealthcareV1DicomGcsDestination(o.gcsDestination!);
   }
   buildCounterExportDicomDataRequest--;

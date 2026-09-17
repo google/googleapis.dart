@@ -16293,7 +16293,7 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig
 }
 
 typedef GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig =
-    $Shared17;
+    $Shared16;
 
 class GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig {
   GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig?
@@ -17514,6 +17514,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   core.bool? enableAutomaticPunctuation;
   core.bool? enableVoiceActivityEvents;
   core.bool? enableWordInfo;
+  GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig? geminiAsrConfig;
   core.String? languageCode;
   core.String? model;
 
@@ -17533,6 +17534,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   core.int? sampleRateHertz;
   core.bool? singleUtterance;
   core.List<GoogleCloudDialogflowV2SpeechContext>? speechContexts;
+  core.bool? useGeminiAsr;
 
   GoogleCloudDialogflowV2InputAudioConfig({
     this.audioEncoding,
@@ -17540,6 +17542,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     this.enableAutomaticPunctuation,
     this.enableVoiceActivityEvents,
     this.enableWordInfo,
+    this.geminiAsrConfig,
     this.languageCode,
     this.model,
     this.modelVariant,
@@ -17549,6 +17552,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     this.sampleRateHertz,
     this.singleUtterance,
     this.speechContexts,
+    this.useGeminiAsr,
   });
 
   GoogleCloudDialogflowV2InputAudioConfig.fromJson(core.Map json_)
@@ -17561,6 +17565,11 @@ class GoogleCloudDialogflowV2InputAudioConfig {
         enableVoiceActivityEvents:
             json_['enableVoiceActivityEvents'] as core.bool?,
         enableWordInfo: json_['enableWordInfo'] as core.bool?,
+        geminiAsrConfig: json_.containsKey('geminiAsrConfig')
+            ? GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig.fromJson(
+                json_['geminiAsrConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         languageCode: json_['languageCode'] as core.String?,
         model: json_['model'] as core.String?,
         modelVariant: json_['modelVariant'] as core.String?,
@@ -17581,6 +17590,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
               ),
             )
             .toList(),
+        useGeminiAsr: json_['useGeminiAsr'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -17589,6 +17599,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     final enableAutomaticPunctuation = this.enableAutomaticPunctuation;
     final enableVoiceActivityEvents = this.enableVoiceActivityEvents;
     final enableWordInfo = this.enableWordInfo;
+    final geminiAsrConfig = this.geminiAsrConfig;
     final languageCode = this.languageCode;
     final model = this.model;
     final modelVariant = this.modelVariant;
@@ -17598,12 +17609,14 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     final sampleRateHertz = this.sampleRateHertz;
     final singleUtterance = this.singleUtterance;
     final speechContexts = this.speechContexts;
+    final useGeminiAsr = this.useGeminiAsr;
     return {
       'audioEncoding': ?audioEncoding,
       'disableNoSpeechRecognizedEvent': ?disableNoSpeechRecognizedEvent,
       'enableAutomaticPunctuation': ?enableAutomaticPunctuation,
       'enableVoiceActivityEvents': ?enableVoiceActivityEvents,
       'enableWordInfo': ?enableWordInfo,
+      'geminiAsrConfig': ?geminiAsrConfig,
       'languageCode': ?languageCode,
       'model': ?model,
       'modelVariant': ?modelVariant,
@@ -17613,6 +17626,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
       'sampleRateHertz': ?sampleRateHertz,
       'singleUtterance': ?singleUtterance,
       'speechContexts': ?speechContexts,
+      'useGeminiAsr': ?useGeminiAsr,
     };
   }
 }
@@ -17637,7 +17651,7 @@ class GoogleCloudDialogflowV2InputConfig {
   }
 }
 
-typedef GoogleCloudDialogflowV2InputDataset = $Shared17;
+typedef GoogleCloudDialogflowV2InputDataset = $Shared16;
 
 class GoogleCloudDialogflowV2Intent {
   core.String? action;
@@ -21501,7 +21515,7 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
   }
 }
 
-typedef GoogleCloudDialogflowV2Sentiment = $Shared18;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared17;
 
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
   core.bool? analyzeQueryTextSentiment;
@@ -22030,6 +22044,7 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   /// - "AUDIO_ENCODING_ALAW"
   core.String? audioEncoding;
   core.bool? enableWordInfo;
+  GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig? geminiAsrConfig;
   core.String? languageCode;
   core.String? model;
   core.List<core.String>? phraseSets;
@@ -22042,16 +22057,19 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   /// - "USE_STANDARD"
   /// - "USE_ENHANCED"
   core.String? speechModelVariant;
+  core.bool? useGeminiAsr;
   core.bool? useTimeoutBasedEndpointing;
 
   GoogleCloudDialogflowV2SpeechToTextConfig({
     this.audioEncoding,
     this.enableWordInfo,
+    this.geminiAsrConfig,
     this.languageCode,
     this.model,
     this.phraseSets,
     this.sampleRateHertz,
     this.speechModelVariant,
+    this.useGeminiAsr,
     this.useTimeoutBasedEndpointing,
   });
 
@@ -22059,6 +22077,11 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
     : this(
         audioEncoding: json_['audioEncoding'] as core.String?,
         enableWordInfo: json_['enableWordInfo'] as core.bool?,
+        geminiAsrConfig: json_.containsKey('geminiAsrConfig')
+            ? GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig.fromJson(
+                json_['geminiAsrConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         languageCode: json_['languageCode'] as core.String?,
         model: json_['model'] as core.String?,
         phraseSets: (json_['phraseSets'] as core.List?)
@@ -22066,6 +22089,7 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
             .toList(),
         sampleRateHertz: json_['sampleRateHertz'] as core.int?,
         speechModelVariant: json_['speechModelVariant'] as core.String?,
+        useGeminiAsr: json_['useGeminiAsr'] as core.bool?,
         useTimeoutBasedEndpointing:
             json_['useTimeoutBasedEndpointing'] as core.bool?,
       );
@@ -22073,21 +22097,78 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final audioEncoding = this.audioEncoding;
     final enableWordInfo = this.enableWordInfo;
+    final geminiAsrConfig = this.geminiAsrConfig;
     final languageCode = this.languageCode;
     final model = this.model;
     final phraseSets = this.phraseSets;
     final sampleRateHertz = this.sampleRateHertz;
     final speechModelVariant = this.speechModelVariant;
+    final useGeminiAsr = this.useGeminiAsr;
     final useTimeoutBasedEndpointing = this.useTimeoutBasedEndpointing;
     return {
       'audioEncoding': ?audioEncoding,
       'enableWordInfo': ?enableWordInfo,
+      'geminiAsrConfig': ?geminiAsrConfig,
       'languageCode': ?languageCode,
       'model': ?model,
       'phraseSets': ?phraseSets,
       'sampleRateHertz': ?sampleRateHertz,
       'speechModelVariant': ?speechModelVariant,
+      'useGeminiAsr': ?useGeminiAsr,
       'useTimeoutBasedEndpointing': ?useTimeoutBasedEndpointing,
+    };
+  }
+}
+
+class GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig {
+  ///
+  /// Possible string values are:
+  /// - "END_SENSITIVITY_UNSPECIFIED"
+  /// - "END_SENSITIVITY_HIGH"
+  /// - "END_SENSITIVITY_LOW"
+  core.String? endOfSpeechSensitivity;
+  core.String? modelId;
+  core.int? prefixPaddingMs;
+  core.int? silenceDurationMs;
+
+  ///
+  /// Possible string values are:
+  /// - "START_SENSITIVITY_UNSPECIFIED"
+  /// - "START_SENSITIVITY_HIGH"
+  /// - "START_SENSITIVITY_LOW"
+  core.String? startOfSpeechSensitivity;
+
+  GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig({
+    this.endOfSpeechSensitivity,
+    this.modelId,
+    this.prefixPaddingMs,
+    this.silenceDurationMs,
+    this.startOfSpeechSensitivity,
+  });
+
+  GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        endOfSpeechSensitivity: json_['endOfSpeechSensitivity'] as core.String?,
+        modelId: json_['modelId'] as core.String?,
+        prefixPaddingMs: json_['prefixPaddingMs'] as core.int?,
+        silenceDurationMs: json_['silenceDurationMs'] as core.int?,
+        startOfSpeechSensitivity:
+            json_['startOfSpeechSensitivity'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endOfSpeechSensitivity = this.endOfSpeechSensitivity;
+    final modelId = this.modelId;
+    final prefixPaddingMs = this.prefixPaddingMs;
+    final silenceDurationMs = this.silenceDurationMs;
+    final startOfSpeechSensitivity = this.startOfSpeechSensitivity;
+    return {
+      'endOfSpeechSensitivity': ?endOfSpeechSensitivity,
+      'modelId': ?modelId,
+      'prefixPaddingMs': ?prefixPaddingMs,
+      'silenceDurationMs': ?silenceDurationMs,
+      'startOfSpeechSensitivity': ?startOfSpeechSensitivity,
     };
   }
 }
@@ -23479,7 +23560,7 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
   }
 }
 
-typedef GoogleCloudDialogflowV2TextInput = $Shared19;
+typedef GoogleCloudDialogflowV2TextInput = $Shared18;
 
 class GoogleCloudDialogflowV2TextToSpeechSettings {
   core.bool? enableTextToSpeech;

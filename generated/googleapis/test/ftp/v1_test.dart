@@ -525,6 +525,8 @@ api.Server buildServer() {
     o.internalConfig = buildInternalServerConfig();
     o.labels = buildUnnamed15();
     o.name = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.serviceAgent = 'foo';
     o.state = 'foo';
     o.updateTime = 'foo';
@@ -544,6 +546,8 @@ void checkServer(api.Server o) {
     checkInternalServerConfig(o.internalConfig!);
     checkUnnamed15(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(o.serviceAgent!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));

@@ -2582,10 +2582,6 @@ class ProjectsLocationsSourceUploadsResource {
   ///
   /// [uploadMedia] - The media to upload.
   ///
-  /// [uploadOptions] - Options for the media upload. Streaming Media without
-  /// the length being known ahead of time is only supported via resumable
-  /// uploads.
-  ///
   /// Completes with a [GoogleCloudRunV2UploadSourceResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2597,7 +2593,6 @@ class ProjectsLocationsSourceUploadsResource {
     GoogleCloudRunV2UploadSourceRequest request,
     core.String parent, {
     core.String? $fields,
-    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
     final body_ = convert.json.encode(request);
@@ -2608,11 +2603,6 @@ class ProjectsLocationsSourceUploadsResource {
     core.String url_;
     if (uploadMedia == null) {
       url_ = 'v2/' + core.Uri.encodeFull('$parent') + ':uploadSource';
-    } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ =
-          '/resumable/upload/v2/' +
-          core.Uri.encodeFull('$parent') +
-          ':uploadSource';
     } else {
       url_ = '/upload/v2/' + core.Uri.encodeFull('$parent') + ':uploadSource';
     }
@@ -2623,7 +2613,7 @@ class ProjectsLocationsSourceUploadsResource {
       body: body_,
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
-      uploadOptions: uploadOptions,
+      uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return GoogleCloudRunV2UploadSourceResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
@@ -3866,6 +3856,8 @@ class GoogleCloudRunV2Container {
   core.bool? sandboxLauncher;
 
   /// Location of the source.
+  ///
+  /// This field is only supported in Cloud Run Service.
   ///
   /// Optional.
   GoogleCloudRunV2SourceCode? sourceCode;
@@ -5367,6 +5359,11 @@ class GoogleCloudRunV2Instance {
   core.bool? satisfiesPzs;
   core.String? serviceAccount;
 
+  /// Enables SSH access to the Instance.
+  ///
+  /// Optional.
+  core.bool? sshEnabled;
+
   /// The Condition of this Instance, containing its readiness status, and
   /// detailed error information in case it did not reach a serving state.
   ///
@@ -5439,6 +5436,7 @@ class GoogleCloudRunV2Instance {
     this.restartPolicy,
     this.satisfiesPzs,
     this.serviceAccount,
+    this.sshEnabled,
     this.terminalCondition,
     this.uid,
     this.updateTime,
@@ -5517,6 +5515,7 @@ class GoogleCloudRunV2Instance {
         restartPolicy: json_['restartPolicy'] as core.String?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         serviceAccount: json_['serviceAccount'] as core.String?,
+        sshEnabled: json_['sshEnabled'] as core.bool?,
         terminalCondition: json_.containsKey('terminalCondition')
             ? GoogleCloudRunV2Condition.fromJson(
                 json_['terminalCondition']
@@ -5576,6 +5575,7 @@ class GoogleCloudRunV2Instance {
     final restartPolicy = this.restartPolicy;
     final satisfiesPzs = this.satisfiesPzs;
     final serviceAccount = this.serviceAccount;
+    final sshEnabled = this.sshEnabled;
     final terminalCondition = this.terminalCondition;
     final uid = this.uid;
     final updateTime = this.updateTime;
@@ -5616,6 +5616,7 @@ class GoogleCloudRunV2Instance {
       'restartPolicy': ?restartPolicy,
       'satisfiesPzs': ?satisfiesPzs,
       'serviceAccount': ?serviceAccount,
+      'sshEnabled': ?sshEnabled,
       'terminalCondition': ?terminalCondition,
       'uid': ?uid,
       'updateTime': ?updateTime,
@@ -5769,6 +5770,16 @@ class GoogleCloudRunV2Job {
   ///
   /// Output only.
   core.String? expireTime;
+
+  /// The functional type of the Job.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FUNCTIONAL_TYPE_UNSPECIFIED" : Specifies that the functional type is
+  /// unspecified.
+  /// - "FUNCTIONAL_TYPE_AGENT" : Represents an AGENT functional type.
+  /// - "FUNCTIONAL_TYPE_MCP_SERVER" : Represents an MCP_SERVER functional type.
+  core.String? functionalType;
 
   /// A number that monotonically increases every time the user modifies the
   /// desired state.
@@ -5931,6 +5942,7 @@ class GoogleCloudRunV2Job {
     this.etag,
     this.executionCount,
     this.expireTime,
+    this.functionalType,
     this.generation,
     this.labels,
     this.lastModifier,
@@ -5975,6 +5987,7 @@ class GoogleCloudRunV2Job {
         etag: json_['etag'] as core.String?,
         executionCount: json_['executionCount'] as core.int?,
         expireTime: json_['expireTime'] as core.String?,
+        functionalType: json_['functionalType'] as core.String?,
         generation: json_['generation'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -6020,6 +6033,7 @@ class GoogleCloudRunV2Job {
     final etag = this.etag;
     final executionCount = this.executionCount;
     final expireTime = this.expireTime;
+    final functionalType = this.functionalType;
     final generation = this.generation;
     final labels = this.labels;
     final lastModifier = this.lastModifier;
@@ -6047,6 +6061,7 @@ class GoogleCloudRunV2Job {
       'etag': ?etag,
       'executionCount': ?executionCount,
       'expireTime': ?expireTime,
+      'functionalType': ?functionalType,
       'generation': ?generation,
       'labels': ?labels,
       'lastModifier': ?lastModifier,
@@ -6910,6 +6925,11 @@ class GoogleCloudRunV2Revision {
   /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
   GoogleCloudRunV2VpcAccess? vpcAccess;
 
+  /// The Revision's workload identity settings.
+  ///
+  /// Optional.
+  GoogleCloudRunV2WorkloadIdentityConfig? workloadIdentityConfig;
+
   GoogleCloudRunV2Revision({
     this.annotations,
     this.client,
@@ -6947,6 +6967,7 @@ class GoogleCloudRunV2Revision {
     this.updateTime,
     this.volumes,
     this.vpcAccess,
+    this.workloadIdentityConfig,
   });
 
   GoogleCloudRunV2Revision.fromJson(core.Map json_)
@@ -7034,6 +7055,12 @@ class GoogleCloudRunV2Revision {
                 json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        workloadIdentityConfig: json_.containsKey('workloadIdentityConfig')
+            ? GoogleCloudRunV2WorkloadIdentityConfig.fromJson(
+                json_['workloadIdentityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -7073,6 +7100,7 @@ class GoogleCloudRunV2Revision {
     final updateTime = this.updateTime;
     final volumes = this.volumes;
     final vpcAccess = this.vpcAccess;
+    final workloadIdentityConfig = this.workloadIdentityConfig;
     return {
       'annotations': ?annotations,
       'client': ?client,
@@ -7110,6 +7138,7 @@ class GoogleCloudRunV2Revision {
       'updateTime': ?updateTime,
       'volumes': ?volumes,
       'vpcAccess': ?vpcAccess,
+      'workloadIdentityConfig': ?workloadIdentityConfig,
     };
   }
 }
@@ -7351,6 +7380,11 @@ class GoogleCloudRunV2RevisionTemplate {
   /// Optional.
   GoogleCloudRunV2VpcAccess? vpcAccess;
 
+  /// The Revision's workload identity settings.
+  ///
+  /// Optional.
+  GoogleCloudRunV2WorkloadIdentityConfig? workloadIdentityConfig;
+
   GoogleCloudRunV2RevisionTemplate({
     this.annotations,
     this.client,
@@ -7373,6 +7407,7 @@ class GoogleCloudRunV2RevisionTemplate {
     this.timeout,
     this.volumes,
     this.vpcAccess,
+    this.workloadIdentityConfig,
   });
 
   GoogleCloudRunV2RevisionTemplate.fromJson(core.Map json_)
@@ -7435,6 +7470,12 @@ class GoogleCloudRunV2RevisionTemplate {
                 json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        workloadIdentityConfig: json_.containsKey('workloadIdentityConfig')
+            ? GoogleCloudRunV2WorkloadIdentityConfig.fromJson(
+                json_['workloadIdentityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -7459,6 +7500,7 @@ class GoogleCloudRunV2RevisionTemplate {
     final timeout = this.timeout;
     final volumes = this.volumes;
     final vpcAccess = this.vpcAccess;
+    final workloadIdentityConfig = this.workloadIdentityConfig;
     return {
       'annotations': ?annotations,
       'client': ?client,
@@ -7481,6 +7523,7 @@ class GoogleCloudRunV2RevisionTemplate {
       'timeout': ?timeout,
       'volumes': ?volumes,
       'vpcAccess': ?vpcAccess,
+      'workloadIdentityConfig': ?workloadIdentityConfig,
     };
   }
 }
@@ -7704,13 +7747,6 @@ class GoogleCloudRunV2Service {
   /// This field currently has a 512-character limit.
   core.String? description;
 
-  /// Indicates whether the Service has durable execution enabled.
-  ///
-  /// This field is immutable once the Service is created.
-  ///
-  /// Optional. Immutable.
-  core.bool? durableExecution;
-
   /// A system-generated fingerprint for this version of the resource.
   ///
   /// May be used to detect modification conflict during updates.
@@ -7723,6 +7759,16 @@ class GoogleCloudRunV2Service {
   ///
   /// Output only.
   core.String? expireTime;
+
+  /// The functional type of the Service.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FUNCTIONAL_TYPE_UNSPECIFIED" : Specifies that the functional type is
+  /// unspecified.
+  /// - "FUNCTIONAL_TYPE_AGENT" : Represents an AGENT functional type.
+  /// - "FUNCTIONAL_TYPE_MCP_SERVER" : Represents an MCP_SERVER functional type.
+  core.String? functionalType;
 
   /// A number that monotonically increases every time the user modifies the
   /// desired state.
@@ -7978,9 +8024,9 @@ class GoogleCloudRunV2Service {
     this.defaultUriDisabled,
     this.deleteTime,
     this.description,
-    this.durableExecution,
     this.etag,
     this.expireTime,
+    this.functionalType,
     this.generation,
     this.iapEnabled,
     this.ingress,
@@ -8042,9 +8088,9 @@ class GoogleCloudRunV2Service {
         defaultUriDisabled: json_['defaultUriDisabled'] as core.bool?,
         deleteTime: json_['deleteTime'] as core.String?,
         description: json_['description'] as core.String?,
-        durableExecution: json_['durableExecution'] as core.bool?,
         etag: json_['etag'] as core.String?,
         expireTime: json_['expireTime'] as core.String?,
+        functionalType: json_['functionalType'] as core.String?,
         generation: json_['generation'] as core.String?,
         iapEnabled: json_['iapEnabled'] as core.bool?,
         ingress: json_['ingress'] as core.String?,
@@ -8119,9 +8165,9 @@ class GoogleCloudRunV2Service {
     final defaultUriDisabled = this.defaultUriDisabled;
     final deleteTime = this.deleteTime;
     final description = this.description;
-    final durableExecution = this.durableExecution;
     final etag = this.etag;
     final expireTime = this.expireTime;
+    final functionalType = this.functionalType;
     final generation = this.generation;
     final iapEnabled = this.iapEnabled;
     final ingress = this.ingress;
@@ -8160,9 +8206,9 @@ class GoogleCloudRunV2Service {
       'defaultUriDisabled': ?defaultUriDisabled,
       'deleteTime': ?deleteTime,
       'description': ?description,
-      'durableExecution': ?durableExecution,
       'etag': ?etag,
       'expireTime': ?expireTime,
+      'functionalType': ?functionalType,
       'generation': ?generation,
       'iapEnabled': ?iapEnabled,
       'ingress': ?ingress,
@@ -8288,7 +8334,7 @@ class GoogleCloudRunV2SourceCode {
   ///
   /// Source code inlined in the request. Cloud Run will store the
   /// inlined_source to Cloud Storage and replace the field with
-  /// cloud_storage_source.
+  /// cloud_storage_source. This field is only supported in Cloud Run Service.
   ///
   /// Optional.
   GoogleCloudRunV2InlinedSource? inlinedSource;
@@ -8851,6 +8897,11 @@ class GoogleCloudRunV2Task {
   /// Output only.
   GoogleCloudRunV2VpcAccess? vpcAccess;
 
+  /// The Task's workload identity settings.
+  ///
+  /// Optional.
+  GoogleCloudRunV2WorkloadIdentityConfig? workloadIdentityConfig;
+
   GoogleCloudRunV2Task({
     this.annotations,
     this.completionTime,
@@ -8885,6 +8936,7 @@ class GoogleCloudRunV2Task {
     this.updateTime,
     this.volumes,
     this.vpcAccess,
+    this.workloadIdentityConfig,
   });
 
   GoogleCloudRunV2Task.fromJson(core.Map json_)
@@ -8959,6 +9011,12 @@ class GoogleCloudRunV2Task {
                 json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        workloadIdentityConfig: json_.containsKey('workloadIdentityConfig')
+            ? GoogleCloudRunV2WorkloadIdentityConfig.fromJson(
+                json_['workloadIdentityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -8995,6 +9053,7 @@ class GoogleCloudRunV2Task {
     final updateTime = this.updateTime;
     final volumes = this.volumes;
     final vpcAccess = this.vpcAccess;
+    final workloadIdentityConfig = this.workloadIdentityConfig;
     return {
       'annotations': ?annotations,
       'completionTime': ?completionTime,
@@ -9029,6 +9088,7 @@ class GoogleCloudRunV2Task {
       'updateTime': ?updateTime,
       'volumes': ?volumes,
       'vpcAccess': ?vpcAccess,
+      'workloadIdentityConfig': ?workloadIdentityConfig,
     };
   }
 }
@@ -9158,6 +9218,11 @@ class GoogleCloudRunV2TaskTemplate {
   /// Optional.
   GoogleCloudRunV2VpcAccess? vpcAccess;
 
+  /// The Task's workload identity settings.
+  ///
+  /// Optional.
+  GoogleCloudRunV2WorkloadIdentityConfig? workloadIdentityConfig;
+
   GoogleCloudRunV2TaskTemplate({
     this.containers,
     this.encryptionKey,
@@ -9169,6 +9234,7 @@ class GoogleCloudRunV2TaskTemplate {
     this.timeout,
     this.volumes,
     this.vpcAccess,
+    this.workloadIdentityConfig,
   });
 
   GoogleCloudRunV2TaskTemplate.fromJson(core.Map json_)
@@ -9204,6 +9270,12 @@ class GoogleCloudRunV2TaskTemplate {
                 json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        workloadIdentityConfig: json_.containsKey('workloadIdentityConfig')
+            ? GoogleCloudRunV2WorkloadIdentityConfig.fromJson(
+                json_['workloadIdentityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -9217,6 +9289,7 @@ class GoogleCloudRunV2TaskTemplate {
     final timeout = this.timeout;
     final volumes = this.volumes;
     final vpcAccess = this.vpcAccess;
+    final workloadIdentityConfig = this.workloadIdentityConfig;
     return {
       'containers': ?containers,
       'encryptionKey': ?encryptionKey,
@@ -9228,6 +9301,7 @@ class GoogleCloudRunV2TaskTemplate {
       'timeout': ?timeout,
       'volumes': ?volumes,
       'vpcAccess': ?vpcAccess,
+      'workloadIdentityConfig': ?workloadIdentityConfig,
     };
   }
 }
@@ -10308,6 +10382,58 @@ class GoogleCloudRunV2WorkerPoolScaling {
   core.Map<core.String, core.dynamic> toJson() {
     final manualInstanceCount = this.manualInstanceCount;
     return {'manualInstanceCount': ?manualInstanceCount};
+  }
+}
+
+/// Workload identity settings.
+class GoogleCloudRunV2WorkloadIdentityConfig {
+  /// The Revision's SPIFFE workload identity.
+  ///
+  /// Enables provisioning of SPIFFE workload certificates.
+  ///
+  /// Optional.
+  core.String? identity;
+
+  /// Controls whether an instance receives a MWLID certificate.
+  ///
+  /// Corresponds to the intention of the original --\[no-\]identity-certificate
+  /// flag.
+  ///
+  /// Optional.
+  core.bool? identityCertificateEnabled;
+
+  /// The type of identity to use.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "IDENTITY_TYPE_UNSPECIFIED" : Unspecified
+  /// - "IDENTITY_TYPE_SERVICE_ACCOUNT" : Service account identity.
+  /// - "IDENTITY_TYPE_AGENT_IDENTITY" : Agent identity.
+  core.String? identityType;
+
+  GoogleCloudRunV2WorkloadIdentityConfig({
+    this.identity,
+    this.identityCertificateEnabled,
+    this.identityType,
+  });
+
+  GoogleCloudRunV2WorkloadIdentityConfig.fromJson(core.Map json_)
+    : this(
+        identity: json_['identity'] as core.String?,
+        identityCertificateEnabled:
+            json_['identityCertificateEnabled'] as core.bool?,
+        identityType: json_['identityType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final identity = this.identity;
+    final identityCertificateEnabled = this.identityCertificateEnabled;
+    final identityType = this.identityType;
+    return {
+      'identity': ?identity,
+      'identityCertificateEnabled': ?identityCertificateEnabled,
+      'identityType': ?identityType,
+    };
   }
 }
 

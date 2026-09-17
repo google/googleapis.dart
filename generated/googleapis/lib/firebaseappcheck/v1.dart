@@ -892,6 +892,59 @@ class ProjectsAppsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Mints a new App Check token for the specified Firebase App.
+  ///
+  /// This method is intended to be called from a privileged environment where
+  /// the caller can be authorized via Cloud IAM; for example, using a service
+  /// account. To call this method, the caller must have the
+  /// \[`firebaseappcheck.googleapis.com/tokens.mint`\](https://firebase.google.com/docs/projects/iam/permissions#app-check)
+  /// permission. Returns a MintAppCheckTokenResponse.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the app, in the format:
+  /// ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1MintAppCheckTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1MintAppCheckTokenResponse>
+  mintAppCheckToken(
+    GoogleFirebaseAppcheckV1MintAppCheckTokenRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$app') + ':mintAppCheckToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1MintAppCheckTokenResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsAppsAppAttestConfigResource {
@@ -3486,6 +3539,34 @@ class GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse {
   }
 }
 
+/// Configuration for a limited-use App Check token.
+class GoogleFirebaseAppcheckV1LimitedUseConfig {
+  /// Specifies the desired `jti` claim (Section 4.1.7 of RFC 7519) in the
+  /// returned App Check token.
+  ///
+  /// Limited-use App Check tokens with the same `jti` will be counted as the
+  /// same token for the purposes of replay protection. The size of this field
+  /// is limited to 500 bytes. If specified, its length must be at least 16
+  /// bytes. If this field is omitted or is empty, a randomly generated `jti`
+  /// claim with length between 16 and 500 bytes (inclusive) will be used in the
+  /// returned App Check token. Leaving this field empty is only recommended if
+  /// your custom attestation provider itself is not vulnerable to replay
+  /// attacks.
+  ///
+  /// Optional.
+  core.String? jti;
+
+  GoogleFirebaseAppcheckV1LimitedUseConfig({this.jti});
+
+  GoogleFirebaseAppcheckV1LimitedUseConfig.fromJson(core.Map json_)
+    : this(jti: json_['jti'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final jti = this.jti;
+    return {'jti': ?jti};
+  }
+}
+
 /// Response message for the ListDebugTokens method.
 class GoogleFirebaseAppcheckV1ListDebugTokensResponse {
   /// The DebugTokens retrieved.
@@ -3600,6 +3681,80 @@ class GoogleFirebaseAppcheckV1ListServicesResponse {
     final nextPageToken = this.nextPageToken;
     final services = this.services;
     return {'nextPageToken': ?nextPageToken, 'services': ?services};
+  }
+}
+
+/// Request message for the MintAppCheckToken method.
+class GoogleFirebaseAppcheckV1MintAppCheckTokenRequest {
+  /// If specified, the returned App Check token will be a limited-use token
+  /// minted according to the specified configuration options.
+  ///
+  /// Optional.
+  GoogleFirebaseAppcheckV1LimitedUseConfig? limitedUseConfig;
+
+  /// If specified, the returned App Check token will be a session token, valid
+  /// for the specified duration.
+  ///
+  /// Must be between 30 minutes and 7 days, inclusive.
+  ///
+  /// Optional.
+  core.String? tokenTtl;
+
+  GoogleFirebaseAppcheckV1MintAppCheckTokenRequest({
+    this.limitedUseConfig,
+    this.tokenTtl,
+  });
+
+  GoogleFirebaseAppcheckV1MintAppCheckTokenRequest.fromJson(core.Map json_)
+    : this(
+        limitedUseConfig: json_.containsKey('limitedUseConfig')
+            ? GoogleFirebaseAppcheckV1LimitedUseConfig.fromJson(
+                json_['limitedUseConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tokenTtl: json_['tokenTtl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final limitedUseConfig = this.limitedUseConfig;
+    final tokenTtl = this.tokenTtl;
+    return {'limitedUseConfig': ?limitedUseConfig, 'tokenTtl': ?tokenTtl};
+  }
+}
+
+/// Response message for the MintAppCheckToken method.
+class GoogleFirebaseAppcheckV1MintAppCheckTokenResponse {
+  /// The App Check token, used to access backend services protected by App
+  /// Check.
+  ///
+  /// App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519)
+  /// containing claims that identify the attested app and GCP project. This
+  /// token is used to access Google services protected by App Check. These
+  /// tokens can also be
+  /// [verified by your own custom backends](https://firebase.google.com/docs/app-check/custom-resource-backend)
+  /// using the Firebase Admin SDK or third-party libraries.
+  core.String? token;
+
+  /// The duration from the time this token is minted until its expiration.
+  ///
+  /// This field is intended to ease client-side token management, since the
+  /// client may have clock skew, but is still able to accurately measure a
+  /// duration.
+  core.String? ttl;
+
+  GoogleFirebaseAppcheckV1MintAppCheckTokenResponse({this.token, this.ttl});
+
+  GoogleFirebaseAppcheckV1MintAppCheckTokenResponse.fromJson(core.Map json_)
+    : this(
+        token: json_['token'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final token = this.token;
+    final ttl = this.ttl;
+    return {'token': ?token, 'ttl': ?ttl};
   }
 }
 

@@ -31,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260727",
+    "revision": "20260901",
     "rootUrl": "https://container.googleapis.com/",
     "servicePath": "",
     "title": "Kubernetes Engine API",
@@ -3013,7 +3013,8 @@
                 },
                 "parallelstoreCsiDriverConfig": {
                     "$ref": "ParallelstoreCsiDriverConfig",
-                    "description": "Configuration for the Cloud Storage Parallelstore CSI driver."
+                    "deprecated": true,
+                    "description": "Deprecated: The Parallelstore CSI driver is no longer supported. Configuration for the Cloud Storage Parallelstore CSI driver."
                 },
                 "podSnapshotConfig": {
                     "$ref": "PodSnapshotConfig",
@@ -7162,7 +7163,7 @@
                     "description": "Parameters for containerd customization."
                 },
                 "diskSizeGb": {
-                    "description": "Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.",
+                    "description": "Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 15 GB for node pools running GKE versions 1.36.3-gke.1480000 or later. Or, for earlier versions, the smallest allowed disk size is 12 GB. If unspecified, the default disk size is 100GB.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -7554,6 +7555,10 @@
                     "description": "Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.",
                     "format": "int64",
                     "type": "string"
+                },
+                "reservedResourcesConfig": {
+                    "$ref": "ReservedResourcesConfig",
+                    "description": "Optional. Controls the reserved resources on the node. Only included if any fields are specified."
                 },
                 "shutdownGracePeriodCriticalPodsSeconds": {
                     "description": "Optional. shutdown_grace_period_critical_pods_seconds is the maximum allowed grace period (in seconds) used to terminate critical pods during a node shutdown. This value should be <= shutdown_grace_period_seconds, and is only valid if shutdown_grace_period_seconds is set. https://kubernetes.io/docs/concepts/cluster-administration/node-shutdown/ Range: [0, 120].",
@@ -8313,7 +8318,8 @@
             "type": "object"
         },
         "ParallelstoreCsiDriverConfig": {
-            "description": "Configuration for the Cloud Storage Parallelstore CSI driver.",
+            "deprecated": true,
+            "description": "Deprecated: The Parallelstore CSI driver is no longer supported. Configuration for the Cloud Storage Parallelstore CSI driver.",
             "id": "ParallelstoreCsiDriverConfig",
             "properties": {
                 "enabled": {
@@ -8769,6 +8775,14 @@
                     "description": "The default version for newly created clusters on the channel.",
                     "type": "string"
                 },
+                "previewVersions": {
+                    "description": "Output only. List of preview versions for the channel.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "upgradeTargetVersion": {
                     "description": "The auto upgrade target version for clusters on the channel.",
                     "type": "string"
@@ -8815,6 +8829,35 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ReservedResourcesConfig": {
+            "description": "ReservedResourcesConfig contains the configuration for the reserved resources on the node.",
+            "id": "ReservedResourcesConfig",
+            "properties": {
+                "cpuReservedMillicore": {
+                    "description": "Optional. The amount of CPU to reserve for system daemons. This is a user-specified value. If unspecified, GKE decides the default based on node version using different formula.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "effectiveCpuReservedMillicore": {
+                    "description": "Output only. The effective amount of CPU reserved for system daemons. If `cpu_reserved_millicore` is specified, user-specified value is used. Otherwise the GKE default is applied.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "effectiveMemoryReservedMib": {
+                    "description": "Output only. The effective amount of memory reserved for system daemons. If `memory_reserved_mib` is specified, the user-specified value is used. Otherwise the GKE default is applied.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "memoryReservedMib": {
+                    "description": "Optional. The amount of memory to reserve for system daemons (in MiB). This is a user-specified value. If unspecified, GKE decides the default based on node version using different formula.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"

@@ -34,6 +34,7 @@
 ///   - [ConferenceRecordsTranscriptsResource]
 ///     - [ConferenceRecordsTranscriptsEntriesResource]
 /// - [SpacesResource]
+///   - [SpacesMembersResource]
 library;
 
 import 'dart:async' as async;
@@ -791,6 +792,8 @@ class ConferenceRecordsTranscriptsEntriesResource {
 class SpacesResource {
   final commons.ApiRequester _requester;
 
+  SpacesMembersResource get members => SpacesMembersResource(_requester);
+
   SpacesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a space.
@@ -976,6 +979,275 @@ class SpacesResource {
   }
 }
 
+class SpacesMembersResource {
+  final commons.ApiRequester _requester;
+
+  SpacesMembersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Updates members of one space within a batch.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource shared by all Members being
+  /// updated. Format: spaces/{space}
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUpdateMembersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateMembersResponse> batchUpdate(
+    BatchUpdateMembersRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/members:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchUpdateMembersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates a member.
+  ///
+  /// This API supports the `fields` parameter in
+  /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters).
+  /// When the `fields` parameter is omitted, this API response will default to
+  /// "name,email,role,user".
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format: spaces/{space}
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Member].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Member> create(
+    Member request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/members';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Member.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the member who was previously assigned roles in the space.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format: “spaces/{space}/members/{member}”
+  /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a member.
+  ///
+  /// This API supports the `fields` parameter in
+  /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters).
+  /// When the `fields` parameter is omitted, this API response will default to
+  /// "name,email,role,user".
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format: “spaces/{space}/members/{member}”
+  /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Member].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Member> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Member.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists members.
+  ///
+  /// This API supports the `fields` parameter in
+  /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters).
+  /// When the `fields` parameter is omitted this API response will default to
+  /// "name,email,role,user".
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format: spaces/{space}
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of members to return. The service
+  /// might return fewer than this value. If unspecified or set to 0, at most
+  /// 250 members are returned. The maximum value is 500; values above 500 are
+  /// coerced to 500. Maximum might change in the future.
+  ///
+  /// [pageToken] - Optional. Page token returned from previous List Call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMembersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMembersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/members';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMembersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a member.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name of the member. Format:
+  /// spaces/{space}/members/{member}
+  /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask used to specify the fields to be
+  /// updated in the member. If update_mask isn't provided(not set, set with
+  /// empty paths, or only has "" as paths), it defaults to update all fields
+  /// provided with values in the request. Using "*" as update_mask will update
+  /// all fields, including deleting fields not set in the request. In case of
+  /// BatchUpdate, it must be absent or the same as the update_mask in
+  /// BatchUpdateMembersRequest when UpdateMemberRequest is built as a child
+  /// request of BatchUpdateMembersRequest.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Member].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Member> patch(
+    Member request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Member.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Active conference.
 class ActiveConference {
   /// Reference to 'ConferenceRecord' resource.
@@ -1064,6 +1336,74 @@ class ArtifactConfig {
       'smartNotesConfig': ?smartNotesConfig,
       'transcriptionConfig': ?transcriptionConfig,
     };
+  }
+}
+
+/// Request to update members of one space within a batch.
+class BatchUpdateMembersRequest {
+  /// The request message specifying the resources to update.
+  ///
+  /// A maximum of 500 members can be modified in a batch.
+  ///
+  /// Required.
+  core.List<UpdateMemberRequest>? requests;
+
+  /// Top-level field mask used to specify the fields to be updated in the
+  /// member for all UpdateMemberRequests.
+  ///
+  /// There are 4 possible scenarios for top-level and child field mask: 1.
+  /// top-level and child field mask is absent: All fields provided in the
+  /// requests are updated, including deleting fields not set in the requests.
+  /// 2. top-level field mask is present but child field mask is absent: The
+  /// fields specified in the top-level field mask are updated. 3. top-level and
+  /// child field mask is present: The child field mask must be the same as the
+  /// top-level field mask. 4. top-level field mask is absent but child field
+  /// mask is present: It isn't supported and will return an error.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  BatchUpdateMembersRequest({this.requests, this.updateMask});
+
+  BatchUpdateMembersRequest.fromJson(core.Map json_)
+    : this(
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) => UpdateMemberRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        updateMask: json_['updateMask'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requests = this.requests;
+    final updateMask = this.updateMask;
+    return {'requests': ?requests, 'updateMask': ?updateMask};
+  }
+}
+
+/// Response of batch update members.
+class BatchUpdateMembersResponse {
+  /// Members updated.
+  core.List<Member>? members;
+
+  BatchUpdateMembersResponse({this.members});
+
+  BatchUpdateMembersResponse.fromJson(core.Map json_)
+    : this(
+        members: (json_['members'] as core.List?)
+            ?.map(
+              (value) =>
+                  Member.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final members = this.members;
+    return {'members': ?members};
   }
 }
 
@@ -1279,6 +1619,37 @@ class ListConferenceRecordsResponse {
       'conferenceRecords': ?conferenceRecords,
       'nextPageToken': ?nextPageToken,
     };
+  }
+}
+
+/// Response of list members.
+class ListMembersResponse {
+  /// The list of members for the current page.
+  core.List<Member>? members;
+
+  /// Token to be circulated back for further list call if current list doesn't
+  /// include all the members.
+  ///
+  /// Unset if all members are returned.
+  core.String? nextPageToken;
+
+  ListMembersResponse({this.members, this.nextPageToken});
+
+  ListMembersResponse.fromJson(core.Map json_)
+    : this(
+        members: (json_['members'] as core.List?)
+            ?.map(
+              (value) =>
+                  Member.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final members = this.members;
+    final nextPageToken = this.nextPageToken;
+    return {'members': ?members, 'nextPageToken': ?nextPageToken};
   }
 }
 
@@ -1498,6 +1869,47 @@ class ListTranscriptsResponse {
     final nextPageToken = this.nextPageToken;
     final transcripts = this.transcripts;
     return {'nextPageToken': ?nextPageToken, 'transcripts': ?transcripts};
+  }
+}
+
+/// Users who are configured to have a role in the space.
+///
+/// These users can join the space without knocking.
+class Member {
+  /// Email for the member.
+  ///
+  /// This is required for creating the member.
+  core.String? email;
+
+  /// Identifier.
+  ///
+  /// Resource name of the member. Format: spaces/{space}/members/{member}
+  core.String? name;
+
+  /// The meeting role assigned to the member.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED" : This is used to indicate the user hasn't specified
+  /// any value and the user’s role will be determined upon joining the meetings
+  /// between 'contributor' and 'viewer' role depending on meeting
+  /// configuration. For more information about the viewer role, see
+  /// [Assign View only roles in Google Meet](https://support.google.com/meet/answer/13658394).
+  /// - "COHOST" : Co-host role.
+  core.String? role;
+
+  Member({this.email, this.name, this.role});
+
+  Member.fromJson(core.Map json_)
+    : this(
+        email: json_['email'] as core.String?,
+        name: json_['name'] as core.String?,
+        role: json_['role'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final name = this.name;
+    final role = this.role;
+    return {'email': ?email, 'name': ?name, 'role': ?role};
   }
 }
 
@@ -2397,5 +2809,46 @@ class TranscriptionConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final autoTranscriptionGeneration = this.autoTranscriptionGeneration;
     return {'autoTranscriptionGeneration': ?autoTranscriptionGeneration};
+  }
+}
+
+/// Request to update a member.
+class UpdateMemberRequest {
+  /// The Member to update.
+  ///
+  /// Format: spaces/{space}/members/{member}
+  ///
+  /// Required.
+  Member? member;
+
+  /// Field mask used to specify the fields to be updated in the member.
+  ///
+  /// If update_mask isn't provided(not set, set with empty paths, or only has
+  /// "" as paths), it defaults to update all fields provided with values in the
+  /// request. Using "*" as update_mask will update all fields, including
+  /// deleting fields not set in the request. In case of BatchUpdate, it must be
+  /// absent or the same as the update_mask in BatchUpdateMembersRequest when
+  /// UpdateMemberRequest is built as a child request of
+  /// BatchUpdateMembersRequest.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  UpdateMemberRequest({this.member, this.updateMask});
+
+  UpdateMemberRequest.fromJson(core.Map json_)
+    : this(
+        member: json_.containsKey('member')
+            ? Member.fromJson(
+                json_['member'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final member = this.member;
+    final updateMask = this.updateMask;
+    return {'member': ?member, 'updateMask': ?updateMask};
   }
 }

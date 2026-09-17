@@ -20,7 +20,8 @@
 
 /// Policy Analyzer API - v1
 ///
-/// For more information, see <https://www.google.com>
+/// For more information, see
+/// <https://cloud.google.com/policy-intelligence/docs/overview>
 ///
 /// Create an instance of [PolicyAnalyzerApi] to access these resources:
 ///

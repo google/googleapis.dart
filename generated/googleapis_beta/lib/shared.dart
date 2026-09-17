@@ -961,6 +961,8 @@ class $DimensionValue {
 /// - cloudsupport:v2beta : ExpungeSupportEventSubscriptionRequest
 /// - cloudsupport:v2beta : UndeleteSupportEventSubscriptionRequest
 /// - dataflow:v1b3 : DeleteSnapshotResponse
+/// - dataflow:v1b3 : Empty
+/// - dataflow:v1b3 : ResolveConfigStoreSettingRequest
 /// - dataflow:v1b3 : ResourceUtilizationReportResponse
 /// - dataflow:v1b3 : SendDebugCaptureResponse
 /// - dataflow:v1b3 : WorkerShutdownNoticeResponse
@@ -994,7 +996,7 @@ class $DimensionValue {
 /// - sasportal:v1alpha1 : SasPortalGenerateSecretRequest
 /// - sasportal:v1alpha1 : SasPortalValidateInstallerResponse
 /// - sqladmin:v1beta4 : Empty
-/// - sqladmin:v1beta4 : SqlInstancesResetReplicaSizeRequest
+/// - sqladmin:v1beta4 : SwitchoverBlueGreenDeploymentRequest
 /// - toolresults:v1beta3 : AndroidTestLoop
 /// - toolresults:v1beta3 : IosRoboTest
 /// - toolresults:v1beta3 : MatrixDimensionDefinition

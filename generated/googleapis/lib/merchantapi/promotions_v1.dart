@@ -1002,6 +1002,7 @@ class DestinationStatus {
   /// - "MERCHANT_REVIEWS" :
   /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
   /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  /// - "RENTAL_ADS" : Real Estate Rental Ads. .
   core.String? reportingContext;
 
   /// The status for the specified destination.
@@ -1149,6 +1150,7 @@ class ItemLevelIssue {
   /// - "MERCHANT_REVIEWS" :
   /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
   /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  /// - "RENTAL_ADS" : Real Estate Rental Ads. .
   core.String? reportingContext;
 
   /// Whether the issue can be resolved by the merchant.

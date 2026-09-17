@@ -1094,6 +1094,7 @@ api.GoogleCloudRunV2Instance buildGoogleCloudRunV2Instance() {
     o.restartPolicy = 'foo';
     o.satisfiesPzs = true;
     o.serviceAccount = 'foo';
+    o.sshEnabled = true;
     o.terminalCondition = buildGoogleCloudRunV2Condition();
     o.uid = 'foo';
     o.updateTime = 'foo';
@@ -1141,6 +1142,7 @@ void checkGoogleCloudRunV2Instance(api.GoogleCloudRunV2Instance o) {
     unittest.expect(o.restartPolicy!, unittest.equals('foo'));
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
+    unittest.expect(o.sshEnabled!, unittest.isTrue);
     checkGoogleCloudRunV2Condition(o.terminalCondition!);
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -1243,6 +1245,7 @@ api.GoogleCloudRunV2Job buildGoogleCloudRunV2Job() {
     o.etag = 'foo';
     o.executionCount = 42;
     o.expireTime = 'foo';
+    o.functionalType = 'foo';
     o.generation = 'foo';
     o.labels = buildUnnamed29();
     o.lastModifier = 'foo';
@@ -1277,6 +1280,7 @@ void checkGoogleCloudRunV2Job(api.GoogleCloudRunV2Job o) {
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.executionCount!, unittest.equals(42));
     unittest.expect(o.expireTime!, unittest.equals('foo'));
+    unittest.expect(o.functionalType!, unittest.equals('foo'));
     unittest.expect(o.generation!, unittest.equals('foo'));
     checkUnnamed29(o.labels!);
     unittest.expect(o.lastModifier!, unittest.equals('foo'));
@@ -1868,6 +1872,7 @@ api.GoogleCloudRunV2Revision buildGoogleCloudRunV2Revision() {
     o.updateTime = 'foo';
     o.volumes = buildUnnamed46();
     o.vpcAccess = buildGoogleCloudRunV2VpcAccess();
+    o.workloadIdentityConfig = buildGoogleCloudRunV2WorkloadIdentityConfig();
   }
   buildCounterGoogleCloudRunV2Revision--;
   return o;
@@ -1912,6 +1917,7 @@ void checkGoogleCloudRunV2Revision(api.GoogleCloudRunV2Revision o) {
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     checkUnnamed46(o.volumes!);
     checkGoogleCloudRunV2VpcAccess(o.vpcAccess!);
+    checkGoogleCloudRunV2WorkloadIdentityConfig(o.workloadIdentityConfig!);
   }
   buildCounterGoogleCloudRunV2Revision--;
 }
@@ -2029,6 +2035,7 @@ api.GoogleCloudRunV2RevisionTemplate buildGoogleCloudRunV2RevisionTemplate() {
     o.timeout = 'foo';
     o.volumes = buildUnnamed50();
     o.vpcAccess = buildGoogleCloudRunV2VpcAccess();
+    o.workloadIdentityConfig = buildGoogleCloudRunV2WorkloadIdentityConfig();
   }
   buildCounterGoogleCloudRunV2RevisionTemplate--;
   return o;
@@ -2060,6 +2067,7 @@ void checkGoogleCloudRunV2RevisionTemplate(
     unittest.expect(o.timeout!, unittest.equals('foo'));
     checkUnnamed50(o.volumes!);
     checkGoogleCloudRunV2VpcAccess(o.vpcAccess!);
+    checkGoogleCloudRunV2WorkloadIdentityConfig(o.workloadIdentityConfig!);
   }
   buildCounterGoogleCloudRunV2RevisionTemplate--;
 }
@@ -2229,9 +2237,9 @@ api.GoogleCloudRunV2Service buildGoogleCloudRunV2Service() {
     o.defaultUriDisabled = true;
     o.deleteTime = 'foo';
     o.description = 'foo';
-    o.durableExecution = true;
     o.etag = 'foo';
     o.expireTime = 'foo';
+    o.functionalType = 'foo';
     o.generation = 'foo';
     o.iapEnabled = true;
     o.ingress = 'foo';
@@ -2277,9 +2285,9 @@ void checkGoogleCloudRunV2Service(api.GoogleCloudRunV2Service o) {
     unittest.expect(o.defaultUriDisabled!, unittest.isTrue);
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
-    unittest.expect(o.durableExecution!, unittest.isTrue);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.expireTime!, unittest.equals('foo'));
+    unittest.expect(o.functionalType!, unittest.equals('foo'));
     unittest.expect(o.generation!, unittest.equals('foo'));
     unittest.expect(o.iapEnabled!, unittest.isTrue);
     unittest.expect(o.ingress!, unittest.equals('foo'));
@@ -2648,6 +2656,7 @@ api.GoogleCloudRunV2Task buildGoogleCloudRunV2Task() {
     o.updateTime = 'foo';
     o.volumes = buildUnnamed64();
     o.vpcAccess = buildGoogleCloudRunV2VpcAccess();
+    o.workloadIdentityConfig = buildGoogleCloudRunV2WorkloadIdentityConfig();
   }
   buildCounterGoogleCloudRunV2Task--;
   return o;
@@ -2689,6 +2698,7 @@ void checkGoogleCloudRunV2Task(api.GoogleCloudRunV2Task o) {
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     checkUnnamed64(o.volumes!);
     checkGoogleCloudRunV2VpcAccess(o.vpcAccess!);
+    checkGoogleCloudRunV2WorkloadIdentityConfig(o.workloadIdentityConfig!);
   }
   buildCounterGoogleCloudRunV2Task--;
 }
@@ -2755,6 +2765,7 @@ api.GoogleCloudRunV2TaskTemplate buildGoogleCloudRunV2TaskTemplate() {
     o.timeout = 'foo';
     o.volumes = buildUnnamed66();
     o.vpcAccess = buildGoogleCloudRunV2VpcAccess();
+    o.workloadIdentityConfig = buildGoogleCloudRunV2WorkloadIdentityConfig();
   }
   buildCounterGoogleCloudRunV2TaskTemplate--;
   return o;
@@ -2773,6 +2784,7 @@ void checkGoogleCloudRunV2TaskTemplate(api.GoogleCloudRunV2TaskTemplate o) {
     unittest.expect(o.timeout!, unittest.equals('foo'));
     checkUnnamed66(o.volumes!);
     checkGoogleCloudRunV2VpcAccess(o.vpcAccess!);
+    checkGoogleCloudRunV2WorkloadIdentityConfig(o.workloadIdentityConfig!);
   }
   buildCounterGoogleCloudRunV2TaskTemplate--;
 }
@@ -3226,6 +3238,32 @@ void checkGoogleCloudRunV2WorkerPoolScaling(
     unittest.expect(o.manualInstanceCount!, unittest.equals(42));
   }
   buildCounterGoogleCloudRunV2WorkerPoolScaling--;
+}
+
+core.int buildCounterGoogleCloudRunV2WorkloadIdentityConfig = 0;
+api.GoogleCloudRunV2WorkloadIdentityConfig
+buildGoogleCloudRunV2WorkloadIdentityConfig() {
+  final o = api.GoogleCloudRunV2WorkloadIdentityConfig();
+  buildCounterGoogleCloudRunV2WorkloadIdentityConfig++;
+  if (buildCounterGoogleCloudRunV2WorkloadIdentityConfig < 3) {
+    o.identity = 'foo';
+    o.identityCertificateEnabled = true;
+    o.identityType = 'foo';
+  }
+  buildCounterGoogleCloudRunV2WorkloadIdentityConfig--;
+  return o;
+}
+
+void checkGoogleCloudRunV2WorkloadIdentityConfig(
+  api.GoogleCloudRunV2WorkloadIdentityConfig o,
+) {
+  buildCounterGoogleCloudRunV2WorkloadIdentityConfig++;
+  if (buildCounterGoogleCloudRunV2WorkloadIdentityConfig < 3) {
+    unittest.expect(o.identity!, unittest.equals('foo'));
+    unittest.expect(o.identityCertificateEnabled!, unittest.isTrue);
+    unittest.expect(o.identityType!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudRunV2WorkloadIdentityConfig--;
 }
 
 core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed78() => [
@@ -4606,6 +4644,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkGoogleCloudRunV2WorkerPoolScaling(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRunV2WorkloadIdentityConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRunV2WorkloadIdentityConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRunV2WorkloadIdentityConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudRunV2WorkloadIdentityConfig(od);
     });
   });
 

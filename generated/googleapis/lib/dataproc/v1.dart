@@ -8319,15 +8319,18 @@ class AttachedDiskConfig {
   /// Optional.
   core.int? diskSizeGb;
 
-  /// Disk type.
+  /// Deprecated: Use type instead.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "DISK_TYPE_UNSPECIFIED" : Required unspecified disk type.
-  /// - "HYPERDISK_BALANCED" : Hyperdisk Balanced disk type.
-  /// - "HYPERDISK_EXTREME" : Hyperdisk Extreme disk type.
-  /// - "HYPERDISK_ML" : Hyperdisk ML disk type.
-  /// - "HYPERDISK_THROUGHPUT" : Hyperdisk Throughput disk type.
+  /// - "DISK_TYPE_UNSPECIFIED" : Disk type is not specified.
+  /// - "HYPERDISK_BALANCED" : Hyperdisk Balanced.
+  /// - "HYPERDISK_EXTREME" : Hyperdisk Extreme.
+  /// - "HYPERDISK_ML" : Hyperdisk ML.
+  /// - "HYPERDISK_THROUGHPUT" : Hyperdisk Throughput.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? diskType;
 
   /// Indicates how many IOPS to provision for the attached disk.
@@ -8348,11 +8351,22 @@ class AttachedDiskConfig {
   /// Optional.
   core.String? provisionedThroughput;
 
+  /// Attached disk type.
+  ///
+  /// Currently only supports Hyperdisks. See
+  /// https://cloud.google.com/compute/docs/disks/hyperdisks. Note: Hyperdisk
+  /// Balanced High Availability is not supported.Allowed values are:
+  /// hyperdisk-balanced hyperdisk-extreme hyperdisk-ml hyperdisk-throughput
+  ///
+  /// Optional.
+  core.String? type;
+
   AttachedDiskConfig({
     this.diskSizeGb,
     this.diskType,
     this.provisionedIops,
     this.provisionedThroughput,
+    this.type,
   });
 
   AttachedDiskConfig.fromJson(core.Map json_)
@@ -8361,6 +8375,7 @@ class AttachedDiskConfig {
         diskType: json_['diskType'] as core.String?,
         provisionedIops: json_['provisionedIops'] as core.String?,
         provisionedThroughput: json_['provisionedThroughput'] as core.String?,
+        type: json_['type'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -8368,11 +8383,13 @@ class AttachedDiskConfig {
     final diskType = this.diskType;
     final provisionedIops = this.provisionedIops;
     final provisionedThroughput = this.provisionedThroughput;
+    final type = this.type;
     return {
       'diskSizeGb': ?diskSizeGb,
       'diskType': ?diskType,
       'provisionedIops': ?provisionedIops,
       'provisionedThroughput': ?provisionedThroughput,
+      'type': ?type,
     };
   }
 }
@@ -9718,7 +9735,7 @@ class ClusterSelector {
 class ClusterStatus {
   /// Details of cluster's state.
   ///
-  /// Optional. Output only.
+  /// Optional.
   core.String? detail;
 
   /// The cluster's state.
@@ -13430,7 +13447,7 @@ class JobScheduling {
 class JobStatus {
   /// Job state details, such as an error description if the state is ERROR.
   ///
-  /// Optional. Output only.
+  /// Optional.
   core.String? details;
 
   /// A state message specifying the overall job state.
@@ -14508,9 +14525,9 @@ class Metric {
   /// (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics)
   /// to collect for the metric course (for the SPARK metric source (any Spark
   /// metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can
-  /// be specified).Provide metrics in the following format: METRIC_SOURCE:
-  /// INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples:
-  /// yarn:ResourceManager:QueueMetrics:AppsCompleted
+  /// be specified).Provide metrics in the following
+  /// format:METRIC_SOURCE:INSTANCE :GROUP:METRIC Use camelcase as
+  /// appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted
   /// spark:driver:DAGScheduler:job.allJobs
   /// sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed
   /// hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified

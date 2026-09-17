@@ -1601,6 +1601,7 @@ class BulkInsertOperationStatus {
   /// - "CREATING" : Rolling forward - creating VMs.
   /// - "ROLLING_BACK" : Rolling back - cleaning up after an error.
   /// - "DONE" : Done
+  /// - "PENDING" : Pending - waiting until the capacity is available.
   core.String? status;
 
   /// Count of VMs originally planned to be created.
@@ -2076,9 +2077,12 @@ class ErrorInfo {
 /// information.
 typedef Expr = $Expr;
 
+/// Metadata for FirewallPolicyRule operations.
 class FirewallPolicyRuleOperationMetadata {
   /// The priority allocated for the firewall policy rule if query parameters
   /// specified minPriority/maxPriority.
+  ///
+  /// Output only.
   core.int? allocatedPriority;
 
   FirewallPolicyRuleOperationMetadata({this.allocatedPriority});
@@ -2089,6 +2093,120 @@ class FirewallPolicyRuleOperationMetadata {
   core.Map<core.String, core.dynamic> toJson() {
     final allocatedPriority = this.allocatedPriority;
     return {'allocatedPriority': ?allocatedPriority};
+  }
+}
+
+/// Metadata for GetHealth operations.
+class GetHealthOperationMetadata {
+  /// The health information.
+  ///
+  /// Output only.
+  GetHealthOperationMetadataHealthInfo? healthInfo;
+
+  GetHealthOperationMetadata({this.healthInfo});
+
+  GetHealthOperationMetadata.fromJson(core.Map json_)
+    : this(
+        healthInfo: json_.containsKey('healthInfo')
+            ? GetHealthOperationMetadataHealthInfo.fromJson(
+                json_['healthInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final healthInfo = this.healthInfo;
+    return {'healthInfo': ?healthInfo};
+  }
+}
+
+/// Health information.
+class GetHealthOperationMetadataHealthInfo {
+  /// The availability SLO status.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AVAILABILITY_SLO_STATUS_UNSPECIFIED" : Unspecified availability SLO
+  /// status.
+  /// - "AVAILABILITY_SLO_STATUS_IN_SLO" : The slot availability is in SLO.
+  /// - "AVAILABILITY_SLO_STATUS_OUT_OF_SLO" : The slot availability is out of
+  /// SLO.
+  /// - "AVAILABILITY_SLO_STATUS_SLO_UNKNOWN" : The slot availability is
+  /// unknown.
+  core.String? availabilitySloStatus;
+
+  /// The health status.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HEALTH_STATUS_UNSPECIFIED" : Unspecified health status.
+  /// - "HEALTH_STATUS_HEALTHY" : The reservation slot is healthy.
+  /// - "HEALTH_STATUS_UNHEALTHY" : The reservation slot is unhealthy.
+  core.String? healthStatus;
+
+  /// The repair category.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REPAIR_CATEGORY_UNSPECIFIED" : Unspecified repair category.
+  /// - "REPAIR_CATEGORY_PLANNED_MAINTENANCE" : The repair is because of a
+  /// planned maintenance
+  /// - "REPAIR_CATEGORY_EMERGENT_MAINTENANCE" : The repair is because of an
+  /// emergent maintenance
+  /// - "REPAIR_CATEGORY_USER_REPORTED_FAULT" : The repair is because of a user
+  /// reported fault
+  /// - "REPAIR_CATEGORY_CRITICAL_FAILURE" : The repair is because of critical
+  /// failures, that are scoped outside emergent maintenance
+  core.String? repairCategory;
+
+  /// The reason for unhealthy status.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNHEALTHY_REASON_UNSPECIFIED" : Unspecified unhealthy reason.
+  /// - "UNHEALTHY_REASON_REPAIRING" : The slot is unhealthy because repair is
+  /// in progress
+  /// - "UNHEALTHY_REASON_PENDING_USER_APPROVAL" : The slot is unhealthy because
+  /// there is a pending repair, waiting for customer approval
+  /// - "UNHEALTHY_REASON_UNSCHEDULABLE" : The slot is unhealthy because a vm
+  /// cannot be scheduled on it, and no repairs are running on the slot
+  core.String? unhealthyReason;
+
+  /// The time when health info was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GetHealthOperationMetadataHealthInfo({
+    this.availabilitySloStatus,
+    this.healthStatus,
+    this.repairCategory,
+    this.unhealthyReason,
+    this.updateTime,
+  });
+
+  GetHealthOperationMetadataHealthInfo.fromJson(core.Map json_)
+    : this(
+        availabilitySloStatus: json_['availabilitySloStatus'] as core.String?,
+        healthStatus: json_['healthStatus'] as core.String?,
+        repairCategory: json_['repairCategory'] as core.String?,
+        unhealthyReason: json_['unhealthyReason'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final availabilitySloStatus = this.availabilitySloStatus;
+    final healthStatus = this.healthStatus;
+    final repairCategory = this.repairCategory;
+    final unhealthyReason = this.unhealthyReason;
+    final updateTime = this.updateTime;
+    return {
+      'availabilitySloStatus': ?availabilitySloStatus,
+      'healthStatus': ?healthStatus,
+      'repairCategory': ?repairCategory,
+      'unhealthyReason': ?unhealthyReason,
+      'updateTime': ?updateTime,
+    };
   }
 }
 
@@ -2113,14 +2231,12 @@ class GetVersionOperationMetadata {
 }
 
 class GetVersionOperationMetadataSbomInfo {
-  /// SBOM versions currently applied to the resource.
-  ///
-  /// The key is the component name and the value is the version.
+  /// A mapping of components to their currently-applied versions or other
+  /// appropriate identifiers.
   core.Map<core.String, core.String>? currentComponentVersions;
 
-  /// SBOM versions scheduled for the next maintenance.
-  ///
-  /// The key is the component name and the value is the version.
+  /// A mapping of components to their target versions or other appropriate
+  /// identifiers.
   core.Map<core.String, core.String>? targetComponentVersions;
 
   GetVersionOperationMetadataSbomInfo({
@@ -2313,6 +2429,26 @@ class InstancesBulkInsertOperationMetadata {
   }
 }
 
+/// Operation metadata for instances.troubleshoot.
+///
+/// Output only.
+class InstancesTroubleshootOperationMetadata {
+  /// Serialized output of the troubleshooting diagnostic run.
+  ///
+  /// Output only.
+  core.String? troubleshootOutput;
+
+  InstancesTroubleshootOperationMetadata({this.troubleshootOutput});
+
+  InstancesTroubleshootOperationMetadata.fromJson(core.Map json_)
+    : this(troubleshootOutput: json_['troubleshootOutput'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final troubleshootOutput = this.troubleshootOutput;
+    return {'troubleshootOutput': ?troubleshootOutput};
+  }
+}
+
 /// Provides a localized error message that is safe to return to the user which
 /// can be attached to an RPC error.
 typedef LocalizedMessage = $LocalizedMessage;
@@ -2462,10 +2598,19 @@ class ManifestsListResponse {
   }
 }
 
+/// Container for structured error details providing additional context specific
+/// to the encountered error code.
 class OperationErrorErrorsErrorDetails {
+  /// Error information containing structured domain, reason, and metadata.
   ErrorInfo? errorInfo;
+
+  /// Links and information to help the user resolve the error.
   Help? help;
+
+  /// A localized human-readable error message intended for end users.
   LocalizedMessage? localizedMessage;
+
+  /// Details about quota limits and metrics when a quota is exceeded.
   QuotaExceededInfo? quotaInfo;
 
   OperationErrorErrorsErrorDetails({
@@ -2514,6 +2659,7 @@ class OperationErrorErrorsErrorDetails {
   }
 }
 
+/// Represents a single error encountered during the processing of an operation.
 class OperationErrorErrors {
   /// Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal
   /// use-only (like componentization) (thus the visibility "none") and in case
@@ -2527,6 +2673,11 @@ class OperationErrorErrors {
   ///
   /// Output only.
   core.String? code;
+
+  /// Advanced debugging information with stack traces and other diagnostic
+  /// details for the error.
+  ///
+  /// Output only.
   DebugInfo? debugInfo;
 
   /// An optional list of messages that contain the error details.
@@ -2752,7 +2903,7 @@ class OperationWarnings {
 
   /// Metadata about this warning in key: value format.
   ///
-  /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }\]
   ///
   /// Output only.
   core.List<OperationWarningsData>? data;
@@ -2817,6 +2968,11 @@ class Operation {
   /// Output only.
   core.String? description;
 
+  /// Extended details about the operation's execution.
+  ///
+  /// Output only.
+  OperationDetails? details;
+
   /// The time that this operation was completed.
   ///
   /// This value is in RFC3339 text format.
@@ -2829,7 +2985,18 @@ class Operation {
   ///
   /// Output only.
   OperationError? error;
+
+  /// Metadata containing the allocated priority from the
+  /// networkFirewallPolicies.addRule and regionNetworkFirewallPolicies.addRule
+  /// methods if not explicitly provided by the user.
+  ///
+  /// Output only.
   FirewallPolicyRuleOperationMetadata? firewallPolicyRuleOperationMetadata;
+
+  /// Metadata for GetHealth operations.
+  ///
+  /// Output only.
+  GetHealthOperationMetadata? getHealthOperationMetadata;
   GetVersionOperationMetadata? getVersionOperationMetadata;
 
   /// If the operation fails, this field contains the HTTP error message that
@@ -2860,6 +3027,12 @@ class Operation {
   /// Output only.
   core.String? insertTime;
   InstancesBulkInsertOperationMetadata? instancesBulkInsertOperationMetadata;
+
+  /// Operation metadata for instances.troubleshoot.
+  ///
+  /// Output only.
+  InstancesTroubleshootOperationMetadata?
+  instancesTroubleshootOperationMetadata;
 
   /// Type of the resource.
   ///
@@ -2934,9 +3107,10 @@ class Operation {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "PENDING"
-  /// - "RUNNING"
-  /// - "DONE"
+  /// - "PENDING" : The operation is waiting to be processed.
+  /// - "RUNNING" : The operation is actively being processed.
+  /// - "DONE" : The operation has completed processing successfully or with an
+  /// error.
   core.String? status;
 
   /// An optional textual description of the current status of the operation.
@@ -2981,15 +3155,18 @@ class Operation {
     this.clientOperationId,
     this.creationTimestamp,
     this.description,
+    this.details,
     this.endTime,
     this.error,
     this.firewallPolicyRuleOperationMetadata,
+    this.getHealthOperationMetadata,
     this.getVersionOperationMetadata,
     this.httpErrorMessage,
     this.httpErrorStatusCode,
     this.id,
     this.insertTime,
     this.instancesBulkInsertOperationMetadata,
+    this.instancesTroubleshootOperationMetadata,
     this.kind,
     this.name,
     this.operationGroupId,
@@ -3015,6 +3192,11 @@ class Operation {
         clientOperationId: json_['clientOperationId'] as core.String?,
         creationTimestamp: json_['creationTimestamp'] as core.String?,
         description: json_['description'] as core.String?,
+        details: json_.containsKey('details')
+            ? OperationDetails.fromJson(
+                json_['details'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         endTime: json_['endTime'] as core.String?,
         error: json_.containsKey('error')
             ? OperationError.fromJson(
@@ -3025,6 +3207,13 @@ class Operation {
             json_.containsKey('firewallPolicyRuleOperationMetadata')
             ? FirewallPolicyRuleOperationMetadata.fromJson(
                 json_['firewallPolicyRuleOperationMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        getHealthOperationMetadata:
+            json_.containsKey('getHealthOperationMetadata')
+            ? GetHealthOperationMetadata.fromJson(
+                json_['getHealthOperationMetadata']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -3043,6 +3232,13 @@ class Operation {
             json_.containsKey('instancesBulkInsertOperationMetadata')
             ? InstancesBulkInsertOperationMetadata.fromJson(
                 json_['instancesBulkInsertOperationMetadata']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        instancesTroubleshootOperationMetadata:
+            json_.containsKey('instancesTroubleshootOperationMetadata')
+            ? InstancesTroubleshootOperationMetadata.fromJson(
+                json_['instancesTroubleshootOperationMetadata']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -3088,10 +3284,12 @@ class Operation {
     final clientOperationId = this.clientOperationId;
     final creationTimestamp = this.creationTimestamp;
     final description = this.description;
+    final details = this.details;
     final endTime = this.endTime;
     final error = this.error;
     final firewallPolicyRuleOperationMetadata =
         this.firewallPolicyRuleOperationMetadata;
+    final getHealthOperationMetadata = this.getHealthOperationMetadata;
     final getVersionOperationMetadata = this.getVersionOperationMetadata;
     final httpErrorMessage = this.httpErrorMessage;
     final httpErrorStatusCode = this.httpErrorStatusCode;
@@ -3099,6 +3297,8 @@ class Operation {
     final insertTime = this.insertTime;
     final instancesBulkInsertOperationMetadata =
         this.instancesBulkInsertOperationMetadata;
+    final instancesTroubleshootOperationMetadata =
+        this.instancesTroubleshootOperationMetadata;
     final kind = this.kind;
     final name = this.name;
     final operationGroupId = this.operationGroupId;
@@ -3123,10 +3323,12 @@ class Operation {
       'clientOperationId': ?clientOperationId,
       'creationTimestamp': ?creationTimestamp,
       'description': ?description,
+      'details': ?details,
       'endTime': ?endTime,
       'error': ?error,
       'firewallPolicyRuleOperationMetadata':
           ?firewallPolicyRuleOperationMetadata,
+      'getHealthOperationMetadata': ?getHealthOperationMetadata,
       'getVersionOperationMetadata': ?getVersionOperationMetadata,
       'httpErrorMessage': ?httpErrorMessage,
       'httpErrorStatusCode': ?httpErrorStatusCode,
@@ -3134,6 +3336,8 @@ class Operation {
       'insertTime': ?insertTime,
       'instancesBulkInsertOperationMetadata':
           ?instancesBulkInsertOperationMetadata,
+      'instancesTroubleshootOperationMetadata':
+          ?instancesTroubleshootOperationMetadata,
       'kind': ?kind,
       'name': ?name,
       'operationGroupId': ?operationGroupId,
@@ -3154,6 +3358,33 @@ class Operation {
       'warnings': ?warnings,
       'zone': ?zone,
     };
+  }
+}
+
+class OperationDetails {
+  /// Machine readable data from the message.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? data;
+
+  /// Human or AI readable details on execution of the operation.
+  core.String? message;
+
+  OperationDetails({this.data, this.message});
+
+  OperationDetails.fromJson(core.Map json_)
+    : this(
+        data: json_.containsKey('data')
+            ? json_['data'] as core.Map<core.String, core.dynamic>
+            : null,
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final message = this.message;
+    return {'data': ?data, 'message': ?message};
   }
 }
 
@@ -3508,7 +3739,7 @@ class ResourceWarnings {
 
   /// Metadata about this warning in key: value format.
   ///
-  /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }\]
   ///
   /// Output only.
   core.List<ResourceWarningsData>? data;
@@ -3696,10 +3927,19 @@ class ResourceAccessControl {
   }
 }
 
+/// Container for structured error details providing additional context specific
+/// to the encountered error code.
 class ResourceUpdateErrorErrorsErrorDetails {
+  /// Error information containing structured domain, reason, and metadata.
   ErrorInfo? errorInfo;
+
+  /// Links and information to help the user resolve the error.
   Help? help;
+
+  /// A localized human-readable error message intended for end users.
   LocalizedMessage? localizedMessage;
+
+  /// Details about quota limits and metrics when a quota is exceeded.
   QuotaExceededInfo? quotaInfo;
 
   ResourceUpdateErrorErrorsErrorDetails({
@@ -3748,6 +3988,7 @@ class ResourceUpdateErrorErrorsErrorDetails {
   }
 }
 
+/// Represents a single error encountered during the processing of an operation.
 class ResourceUpdateErrorErrors {
   /// Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal
   /// use-only (like componentization) (thus the visibility "none") and in case
@@ -3761,6 +4002,11 @@ class ResourceUpdateErrorErrors {
   ///
   /// Output only.
   core.String? code;
+
+  /// Advanced debugging information with stack traces and other diagnostic
+  /// details for the error.
+  ///
+  /// Output only.
   DebugInfo? debugInfo;
 
   /// An optional list of messages that contain the error details.
@@ -3986,7 +4232,7 @@ class ResourceUpdateWarnings {
 
   /// Metadata about this warning in key: value format.
   ///
-  /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }\]
   ///
   /// Output only.
   core.List<ResourceUpdateWarningsData>? data;

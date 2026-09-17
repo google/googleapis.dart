@@ -1580,6 +1580,27 @@ class ProjectsDatabasesDocumentsResource {
   /// Document.fields for a field path syntax reference.
   ///
   /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  /// Request tags are user-provided strings used for usage monitoring, cost
+  /// management, and observability. Callers can associate custom application
+  /// context (such as component, microservice, feature name, or operation type)
+  /// with database requests. These tags are collected and aggregated in usage
+  /// and monitoring reports, allowing billable operations and usage metrics to
+  /// be sliced and analyzed by tag. These tags *only* show up in monitoring and
+  /// are visible in administrative operations (such as usage reports). They do
+  /// not affect data storage, query semantics, or request execution.
+  /// Cardinality and Best Practices: - Request tags are most effective when
+  /// using a bounded set of distinct values (e.g., fewer than 100 distinct tags
+  /// across an entire database). Using a large number of distinct tags may
+  /// result in tags being omitted from top usage dashboards. - Use structured
+  /// identifiers (for example: `app=cart`, `env=prod`, `service=checkout`) and
+  /// avoid high-cardinality values such as UUIDs, request IDs, timestamps, user
+  /// IDs, or document keys. - Do not include sensitive data or personally
+  /// identifiable information (PII) in request tags, as they show up in
+  /// administrative monitoring. The tags are processed as follows: - Leading
+  /// and trailing whitespace is trimmed. - Empty tags (after trimming) are
+  /// filtered out. - Truncated to a maximum of 510 characters. - Deduplicated
+  /// within the same request. - Limited to a maximum of 50 tags per request
+  /// (excess tags are silently discarded).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1641,6 +1662,27 @@ class ProjectsDatabasesDocumentsResource {
   /// aligned.
   ///
   /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  /// Request tags are user-provided strings used for usage monitoring, cost
+  /// management, and observability. Callers can associate custom application
+  /// context (such as component, microservice, feature name, or operation type)
+  /// with database requests. These tags are collected and aggregated in usage
+  /// and monitoring reports, allowing billable operations and usage metrics to
+  /// be sliced and analyzed by tag. These tags *only* show up in monitoring and
+  /// are visible in administrative operations (such as usage reports). They do
+  /// not affect data storage, query semantics, or request execution.
+  /// Cardinality and Best Practices: - Request tags are most effective when
+  /// using a bounded set of distinct values (e.g., fewer than 100 distinct tags
+  /// across an entire database). Using a large number of distinct tags may
+  /// result in tags being omitted from top usage dashboards. - Use structured
+  /// identifiers (for example: `app=cart`, `env=prod`, `service=checkout`) and
+  /// avoid high-cardinality values such as UUIDs, request IDs, timestamps, user
+  /// IDs, or document keys. - Do not include sensitive data or personally
+  /// identifiable information (PII) in request tags, as they show up in
+  /// administrative monitoring. The tags are processed as follows: - Leading
+  /// and trailing whitespace is trimmed. - Empty tags (after trimming) are
+  /// filtered out. - Truncated to a maximum of 510 characters. - Deduplicated
+  /// within the same request. - Limited to a maximum of 50 tags per request
+  /// (excess tags are silently discarded).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1743,6 +1785,27 @@ class ProjectsDatabasesDocumentsResource {
   /// timestamp within the past 7 days.
   ///
   /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  /// Request tags are user-provided strings used for usage monitoring, cost
+  /// management, and observability. Callers can associate custom application
+  /// context (such as component, microservice, feature name, or operation type)
+  /// with database requests. These tags are collected and aggregated in usage
+  /// and monitoring reports, allowing billable operations and usage metrics to
+  /// be sliced and analyzed by tag. These tags *only* show up in monitoring and
+  /// are visible in administrative operations (such as usage reports). They do
+  /// not affect data storage, query semantics, or request execution.
+  /// Cardinality and Best Practices: - Request tags are most effective when
+  /// using a bounded set of distinct values (e.g., fewer than 100 distinct tags
+  /// across an entire database). Using a large number of distinct tags may
+  /// result in tags being omitted from top usage dashboards. - Use structured
+  /// identifiers (for example: `app=cart`, `env=prod`, `service=checkout`) and
+  /// avoid high-cardinality values such as UUIDs, request IDs, timestamps, user
+  /// IDs, or document keys. - Do not include sensitive data or personally
+  /// identifiable information (PII) in request tags, as they show up in
+  /// administrative monitoring. The tags are processed as follows: - Leading
+  /// and trailing whitespace is trimmed. - Empty tags (after trimming) are
+  /// filtered out. - Truncated to a maximum of 510 characters. - Deduplicated
+  /// within the same request. - Limited to a maximum of 50 tags per request
+  /// (excess tags are silently discarded).
   ///
   /// [transaction] - Reads the document in a transaction.
   ///
@@ -1828,6 +1891,27 @@ class ProjectsDatabasesDocumentsResource {
   /// Requests with `recursive` may not specify `show_missing`.
   ///
   /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  /// Request tags are user-provided strings used for usage monitoring, cost
+  /// management, and observability. Callers can associate custom application
+  /// context (such as component, microservice, feature name, or operation type)
+  /// with database requests. These tags are collected and aggregated in usage
+  /// and monitoring reports, allowing billable operations and usage metrics to
+  /// be sliced and analyzed by tag. These tags *only* show up in monitoring and
+  /// are visible in administrative operations (such as usage reports). They do
+  /// not affect data storage, query semantics, or request execution.
+  /// Cardinality and Best Practices: - Request tags are most effective when
+  /// using a bounded set of distinct values (e.g., fewer than 100 distinct tags
+  /// across an entire database). Using a large number of distinct tags may
+  /// result in tags being omitted from top usage dashboards. - Use structured
+  /// identifiers (for example: `app=cart`, `env=prod`, `service=checkout`) and
+  /// avoid high-cardinality values such as UUIDs, request IDs, timestamps, user
+  /// IDs, or document keys. - Do not include sensitive data or personally
+  /// identifiable information (PII) in request tags, as they show up in
+  /// administrative monitoring. The tags are processed as follows: - Leading
+  /// and trailing whitespace is trimmed. - Empty tags (after trimming) are
+  /// filtered out. - Truncated to a maximum of 510 characters. - Deduplicated
+  /// within the same request. - Limited to a maximum of 50 tags per request
+  /// (excess tags are silently discarded).
   ///
   /// [showMissing] - If the list should show missing documents. A document is
   /// missing if it does not exist, but there are sub-documents nested
@@ -1983,6 +2067,27 @@ class ProjectsDatabasesDocumentsResource {
   /// Requests with `recursive` may not specify `show_missing`.
   ///
   /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  /// Request tags are user-provided strings used for usage monitoring, cost
+  /// management, and observability. Callers can associate custom application
+  /// context (such as component, microservice, feature name, or operation type)
+  /// with database requests. These tags are collected and aggregated in usage
+  /// and monitoring reports, allowing billable operations and usage metrics to
+  /// be sliced and analyzed by tag. These tags *only* show up in monitoring and
+  /// are visible in administrative operations (such as usage reports). They do
+  /// not affect data storage, query semantics, or request execution.
+  /// Cardinality and Best Practices: - Request tags are most effective when
+  /// using a bounded set of distinct values (e.g., fewer than 100 distinct tags
+  /// across an entire database). Using a large number of distinct tags may
+  /// result in tags being omitted from top usage dashboards. - Use structured
+  /// identifiers (for example: `app=cart`, `env=prod`, `service=checkout`) and
+  /// avoid high-cardinality values such as UUIDs, request IDs, timestamps, user
+  /// IDs, or document keys. - Do not include sensitive data or personally
+  /// identifiable information (PII) in request tags, as they show up in
+  /// administrative monitoring. The tags are processed as follows: - Leading
+  /// and trailing whitespace is trimmed. - Empty tags (after trimming) are
+  /// filtered out. - Truncated to a maximum of 510 characters. - Deduplicated
+  /// within the same request. - Limited to a maximum of 50 tags per request
+  /// (excess tags are silently discarded).
   ///
   /// [showMissing] - If the list should show missing documents. A document is
   /// missing if it does not exist, but there are sub-documents nested
@@ -2117,6 +2222,27 @@ class ProjectsDatabasesDocumentsResource {
   /// Document.fields for a field path syntax reference.
   ///
   /// [requestOptions_requestTags] - Optional. The request tags for the request.
+  /// Request tags are user-provided strings used for usage monitoring, cost
+  /// management, and observability. Callers can associate custom application
+  /// context (such as component, microservice, feature name, or operation type)
+  /// with database requests. These tags are collected and aggregated in usage
+  /// and monitoring reports, allowing billable operations and usage metrics to
+  /// be sliced and analyzed by tag. These tags *only* show up in monitoring and
+  /// are visible in administrative operations (such as usage reports). They do
+  /// not affect data storage, query semantics, or request execution.
+  /// Cardinality and Best Practices: - Request tags are most effective when
+  /// using a bounded set of distinct values (e.g., fewer than 100 distinct tags
+  /// across an entire database). Using a large number of distinct tags may
+  /// result in tags being omitted from top usage dashboards. - Use structured
+  /// identifiers (for example: `app=cart`, `env=prod`, `service=checkout`) and
+  /// avoid high-cardinality values such as UUIDs, request IDs, timestamps, user
+  /// IDs, or document keys. - Do not include sensitive data or personally
+  /// identifiable information (PII) in request tags, as they show up in
+  /// administrative monitoring. The tags are processed as follows: - Leading
+  /// and trailing whitespace is trimmed. - Empty tags (after trimming) are
+  /// filtered out. - Truncated to a maximum of 510 characters. - Deduplicated
+  /// within the same request. - Limited to a maximum of 50 tags per request
+  /// (excess tags are silently discarded).
   ///
   /// [updateMask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
@@ -6507,7 +6633,8 @@ class GoogleFirestoreAdminV1SearchConfig {
 class GoogleFirestoreAdminV1SearchGeoSpec {
   /// Disables geoJSON indexing for the field.
   ///
-  /// By default, geoJSON points are indexed.
+  /// By default, geoJSON points are indexed. Firestore GeoPoints are indexed
+  /// regardless of the value of this field.
   ///
   /// Optional.
   core.bool? geoJsonIndexingDisabled;
@@ -7549,27 +7676,8 @@ class ReadWrite {
   }
 }
 
-/// Options for a server request.
-class RequestOptions {
-  /// The request tags for the request.
-  ///
-  /// Optional.
-  core.List<core.String>? requestTags;
-
-  RequestOptions({this.requestTags});
-
-  RequestOptions.fromJson(core.Map json_)
-    : this(
-        requestTags: (json_['requestTags'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final requestTags = this.requestTags;
-    return {'requestTags': ?requestTags};
-  }
-}
+/// Options for a request.
+typedef RequestOptions = $RequestOptions;
 
 /// The request for Firestore.Rollback.
 class RollbackRequest {

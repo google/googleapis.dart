@@ -9587,19 +9587,28 @@ class ObjectCustomContextPayload {
   /// The time at which the object context was created in RFC 3339 format.
   core.DateTime? createTime;
 
+  /// The type URL of the object context's extended data.
+  core.String? extendedDataTypeUrl;
+
   /// The time at which the object context was last updated in RFC 3339 format.
   core.DateTime? updateTime;
 
   /// The value of the object context.
   core.String? value;
 
-  ObjectCustomContextPayload({this.createTime, this.updateTime, this.value});
+  ObjectCustomContextPayload({
+    this.createTime,
+    this.extendedDataTypeUrl,
+    this.updateTime,
+    this.value,
+  });
 
   ObjectCustomContextPayload.fromJson(core.Map json_)
     : this(
         createTime: json_.containsKey('createTime')
             ? core.DateTime.parse(json_['createTime'] as core.String)
             : null,
+        extendedDataTypeUrl: json_['extendedDataTypeUrl'] as core.String?,
         updateTime: json_.containsKey('updateTime')
             ? core.DateTime.parse(json_['updateTime'] as core.String)
             : null,
@@ -9608,10 +9617,12 @@ class ObjectCustomContextPayload {
 
   core.Map<core.String, core.dynamic> toJson() {
     final createTime = this.createTime;
+    final extendedDataTypeUrl = this.extendedDataTypeUrl;
     final updateTime = this.updateTime;
     final value = this.value;
     return {
       'createTime': ?createTime?.toUtc().toIso8601String(),
+      'extendedDataTypeUrl': ?extendedDataTypeUrl,
       'updateTime': ?updateTime?.toUtc().toIso8601String(),
       'value': ?value,
     };

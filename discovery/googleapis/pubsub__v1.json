@@ -260,7 +260,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260716",
+    "revision": "20260825",
     "rootUrl": "https://pubsub.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Pub/Sub API",
@@ -2289,6 +2289,22 @@
             },
             "type": "object"
         },
+        "CompiledProtoSchema": {
+            "description": "Configuration specific to compiled Protocol Buffer schemas.",
+            "id": "CompiledProtoSchema",
+            "properties": {
+                "compiledBytes": {
+                    "description": "Required. The compiled FileDescriptorSet binary.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "rootMessage": {
+                    "description": "Required. The name of the root message type in the schema.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Compression": {
             "description": "Configuration for compressing/decompressing message data using a user-specified compression algorithm.",
             "id": "Compression",
@@ -2972,6 +2988,10 @@
             "description": "A schema resource.",
             "id": "Schema",
             "properties": {
+                "compiledProtoSchema": {
+                    "$ref": "CompiledProtoSchema",
+                    "description": "Optional. Configuration for a schema provided as a pre-compiled Protocol Buffer FileDescriptorSet. The `type` field above must be set to PROTOCOL_BUFFER."
+                },
                 "definition": {
                     "description": "The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.",
                     "type": "string"

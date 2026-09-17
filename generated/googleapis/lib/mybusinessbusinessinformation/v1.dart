@@ -2902,17 +2902,15 @@ class ServiceType {
 /// close_time=12:00 start_date=2015-11-23, end_date=2015-11-25,
 /// open_time=08:00, close_time=18:00
 class SpecialHourPeriod {
-  /// Valid values are `00:00-24:00`, where `24:00` represents midnight at the
-  /// end of the specified day field.
+  /// Valid values are 00:00-24:00, where 24:00 represents midnight at the end
+  /// of the specified day field.
   ///
-  /// It must be specified if `closed` is `false`. Note: In Proto3 JSON mapping,
-  /// default zero values (`00:00`) are omitted, producing `{}` for
-  /// `close_time`.
+  /// Must be specified if `closed` is false.
   ///
   /// Optional.
   TimeOfDay? closeTime;
 
-  /// If `true`, `end_date`, `open_time`, and `close_time` are ignored, and the
+  /// If true, `end_date`, `open_time`, and `close_time` are ignored, and the
   /// date specified in `start_date` is treated as the location being closed for
   /// the entire day.
   ///
@@ -2928,11 +2926,10 @@ class SpecialHourPeriod {
   /// Optional.
   Date? endDate;
 
-  /// Valid values are `00:00-24:00`, where `24:00` represents midnight at the
-  /// end of the specified day field.
+  /// Valid values are 00:00-24:00 where 24:00 represents midnight at the end of
+  /// the specified day field.
   ///
-  /// It must be specified if `closed` is `false`. Note: In Proto3 JSON mapping,
-  /// default zero values (`00:00`) are omitted, producing `{}` for `open_time`.
+  /// Must be specified if `closed` is false.
   ///
   /// Optional.
   TimeOfDay? openTime;
@@ -3079,11 +3076,11 @@ class TimePeriod {
   /// - "SUNDAY" : Sunday
   core.String? closeDay;
 
-  /// Valid values are `00:00-24:00`, where `24:00` represents midnight at the
-  /// end of the specified day field.
+  /// Valid values are 00:00-24:00, where 24:00 represents midnight at the end
+  /// of the specified day field.
   ///
-  /// Note: In Proto3 JSON mapping, default zero values (`00:00`) are omitted,
-  /// producing `{}` for `close_time`.
+  /// Note: In Proto3 JSON mapping, default zero values (00:00) are omitted,
+  /// producing `{}` for close_time.
   ///
   /// Required.
   TimeOfDay? closeTime;
@@ -3102,11 +3099,11 @@ class TimePeriod {
   /// - "SUNDAY" : Sunday
   core.String? openDay;
 
-  /// Valid values are `00:00-24:00`, where `24:00` represents midnight at the
-  /// end of the specified day field.
+  /// Valid values are 00:00-24:00, where 24:00 represents midnight at the end
+  /// of the specified day field.
   ///
-  /// Note: In Proto3 JSON mapping, default zero values (`00:00`) are omitted,
-  /// producing `{}` for `open_time`.
+  /// Note: In Proto3 JSON mapping, default zero values (00:00) are omitted,
+  /// producing `{}` for open_time.
   ///
   /// Required.
   TimeOfDay? openTime;

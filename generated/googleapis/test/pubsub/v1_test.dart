@@ -404,6 +404,27 @@ void checkCommitSchemaRequest(api.CommitSchemaRequest o) {
   buildCounterCommitSchemaRequest--;
 }
 
+core.int buildCounterCompiledProtoSchema = 0;
+api.CompiledProtoSchema buildCompiledProtoSchema() {
+  final o = api.CompiledProtoSchema();
+  buildCounterCompiledProtoSchema++;
+  if (buildCounterCompiledProtoSchema < 3) {
+    o.compiledBytes = 'foo';
+    o.rootMessage = 'foo';
+  }
+  buildCounterCompiledProtoSchema--;
+  return o;
+}
+
+void checkCompiledProtoSchema(api.CompiledProtoSchema o) {
+  buildCounterCompiledProtoSchema++;
+  if (buildCounterCompiledProtoSchema < 3) {
+    unittest.expect(o.compiledBytes!, unittest.equals('foo'));
+    unittest.expect(o.rootMessage!, unittest.equals('foo'));
+  }
+  buildCounterCompiledProtoSchema--;
+}
+
 core.int buildCounterCompression = 0;
 api.Compression buildCompression() {
   final o = api.Compression();
@@ -1314,6 +1335,7 @@ api.Schema buildSchema() {
   final o = api.Schema();
   buildCounterSchema++;
   if (buildCounterSchema < 3) {
+    o.compiledProtoSchema = buildCompiledProtoSchema();
     o.definition = 'foo';
     o.name = 'foo';
     o.revisionCreateTime = 'foo';
@@ -1327,6 +1349,7 @@ api.Schema buildSchema() {
 void checkSchema(api.Schema o) {
   buildCounterSchema++;
   if (buildCounterSchema < 3) {
+    checkCompiledProtoSchema(o.compiledProtoSchema!);
     unittest.expect(o.definition!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.revisionCreateTime!, unittest.equals('foo'));
@@ -2026,6 +2049,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCommitSchemaRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-CompiledProtoSchema', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCompiledProtoSchema();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CompiledProtoSchema.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCompiledProtoSchema(od);
     });
   });
 

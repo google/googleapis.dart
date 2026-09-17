@@ -1949,7 +1949,9 @@ api.MaliciousContentLLMResult buildMaliciousContentLLMResult() {
   buildCounterMaliciousContentLLMResult++;
   if (buildCounterMaliciousContentLLMResult < 3) {
     o.maxSeverity = 'foo';
+    o.modelId = 'foo';
     o.scanStatus = 'foo';
+    o.tokenUsage = buildTokenUsage();
   }
   buildCounterMaliciousContentLLMResult--;
   return o;
@@ -1959,7 +1961,9 @@ void checkMaliciousContentLLMResult(api.MaliciousContentLLMResult o) {
   buildCounterMaliciousContentLLMResult++;
   if (buildCounterMaliciousContentLLMResult < 3) {
     unittest.expect(o.maxSeverity!, unittest.equals('foo'));
+    unittest.expect(o.modelId!, unittest.equals('foo'));
     unittest.expect(o.scanStatus!, unittest.equals('foo'));
+    checkTokenUsage(o.tokenUsage!);
   }
   buildCounterMaliciousContentLLMResult--;
 }
@@ -3509,6 +3513,33 @@ void checkSubject(api.Subject o) {
   buildCounterSubject--;
 }
 
+core.int buildCounterTokenUsage = 0;
+api.TokenUsage buildTokenUsage() {
+  final o = api.TokenUsage();
+  buildCounterTokenUsage++;
+  if (buildCounterTokenUsage < 3) {
+    o.cacheCount = 'foo';
+    o.candidateCount = 'foo';
+    o.promptCount = 'foo';
+    o.thinkingCount = 'foo';
+    o.toolUsePromptCount = 'foo';
+  }
+  buildCounterTokenUsage--;
+  return o;
+}
+
+void checkTokenUsage(api.TokenUsage o) {
+  buildCounterTokenUsage++;
+  if (buildCounterTokenUsage < 3) {
+    unittest.expect(o.cacheCount!, unittest.equals('foo'));
+    unittest.expect(o.candidateCount!, unittest.equals('foo'));
+    unittest.expect(o.promptCount!, unittest.equals('foo'));
+    unittest.expect(o.thinkingCount!, unittest.equals('foo'));
+    unittest.expect(o.toolUsePromptCount!, unittest.equals('foo'));
+  }
+  buildCounterTokenUsage--;
+}
+
 core.List<core.String> buildUnnamed73() => ['foo', 'foo'];
 
 void checkUnnamed73(core.List<core.String> o) {
@@ -4933,6 +4964,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSubject(od);
+    });
+  });
+
+  unittest.group('obj-schema-TokenUsage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTokenUsage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TokenUsage.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTokenUsage(od);
     });
   });
 

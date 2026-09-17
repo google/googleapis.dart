@@ -4652,7 +4652,12 @@ class AccessConfig {
   /// Required.
   core.List<NetworkConfig>? networkConfigs;
 
-  AccessConfig({this.networkConfigs});
+  /// The configuration for public connectivity to the Kafka cluster.
+  ///
+  /// Optional.
+  PublicClusterConfig? publicClusterConfig;
+
+  AccessConfig({this.networkConfigs, this.publicClusterConfig});
 
   AccessConfig.fromJson(core.Map json_)
     : this(
@@ -4663,11 +4668,21 @@ class AccessConfig {
               ),
             )
             .toList(),
+        publicClusterConfig: json_.containsKey('publicClusterConfig')
+            ? PublicClusterConfig.fromJson(
+                json_['publicClusterConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final networkConfigs = this.networkConfigs;
-    return {'networkConfigs': ?networkConfigs};
+    final publicClusterConfig = this.publicClusterConfig;
+    return {
+      'networkConfigs': ?networkConfigs,
+      'publicClusterConfig': ?publicClusterConfig,
+    };
   }
 }
 
@@ -4863,6 +4878,28 @@ class AddAclEntryResponse {
   }
 }
 
+/// Capacity configuration at a per-broker level within the Kafka cluster.
+///
+/// The config will be appled to each broker in the cluster.
+class BrokerCapacityConfig {
+  /// The disk to provision for each broker in Gibibytes.
+  ///
+  /// Minimum: 100 GiB.
+  ///
+  /// Optional.
+  core.String? diskSizeGib;
+
+  BrokerCapacityConfig({this.diskSizeGib});
+
+  BrokerCapacityConfig.fromJson(core.Map json_)
+    : this(diskSizeGib: json_['diskSizeGib'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final diskSizeGib = this.diskSizeGib;
+    return {'diskSizeGib': ?diskSizeGib};
+  }
+}
+
 /// Details of a broker in the Kafka cluster.
 class BrokerDetails {
   /// The index of the broker.
@@ -5048,6 +5085,25 @@ class CheckCompatibilityResponse {
 
 /// An Apache Kafka cluster deployed in a location.
 class Cluster {
+  /// The bootstrap address of the Kafka cluster.
+  ///
+  /// The returned address format is: `bootstrap-...managedkafka.s.cloud.goog`
+  /// or `bootstrap...managedkafka..cloud.goog` (legacy format). ## Examples:
+  /// `bootstrap-nol2mecj8p94jhx2ge2rg54579a.c0aad26f.europe-west1.managedkafka.s.cloud.goog`
+  /// - `bootstrap.my-cluster.us-central1.managedkafka.my-project.cloud.goog`
+  /// The port number is omitted so clients can connect to their target listener
+  /// (for example, `:9092` for TLS or `:9094` for mTLS).
+  ///
+  /// Output only.
+  core.String? bootstrapAddress;
+
+  /// Capacity configuration at a per-broker level within the Kafka cluster.
+  ///
+  /// The config will be appled to each broker in the cluster.
+  ///
+  /// Optional.
+  BrokerCapacityConfig? brokerCapacityConfig;
+
   /// Only populated when FULL view is requested.
   ///
   /// Details of each broker in the cluster.
@@ -5065,17 +5121,24 @@ class Cluster {
   /// Output only.
   core.String? createTime;
 
+  /// Only populated when FULL view is requested.
+  ///
+  /// The effective capacity configuration of the cluster.
+  ///
+  /// Output only.
+  EffectiveCapacityConfig? effectiveCapacityConfig;
+
   /// Configuration properties for a Kafka cluster deployed to Google Cloud
   /// Platform.
   ///
   /// Required.
   GcpConfig? gcpConfig;
 
-  /// Only populated when FULL view is requested.
+  /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`).
   ///
-  /// The Kafka version of the cluster.
+  /// If not specified during cluster creation, defaults to `3.7.x`.
   ///
-  /// Output only.
+  /// Optional.
   core.String? kafkaVersion;
 
   /// Labels as key value pairs.
@@ -5088,6 +5151,11 @@ class Cluster {
   /// The name of the cluster. Structured like:
   /// projects/{project_number}/locations/{location}/clusters/{cluster_id}
   core.String? name;
+
+  /// Details of the public cluster feature for the Kafka cluster.
+  ///
+  /// Output only.
+  PublicClusterDetails? publicClusterDetails;
 
   /// Rebalance configuration for the Kafka cluster.
   ///
@@ -5132,13 +5200,17 @@ class Cluster {
   core.String? updateTime;
 
   Cluster({
+    this.bootstrapAddress,
+    this.brokerCapacityConfig,
     this.brokerDetails,
     this.capacityConfig,
     this.createTime,
+    this.effectiveCapacityConfig,
     this.gcpConfig,
     this.kafkaVersion,
     this.labels,
     this.name,
+    this.publicClusterDetails,
     this.rebalanceConfig,
     this.satisfiesPzi,
     this.satisfiesPzs,
@@ -5150,6 +5222,13 @@ class Cluster {
 
   Cluster.fromJson(core.Map json_)
     : this(
+        bootstrapAddress: json_['bootstrapAddress'] as core.String?,
+        brokerCapacityConfig: json_.containsKey('brokerCapacityConfig')
+            ? BrokerCapacityConfig.fromJson(
+                json_['brokerCapacityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         brokerDetails: (json_['brokerDetails'] as core.List?)
             ?.map(
               (value) => BrokerDetails.fromJson(
@@ -5163,6 +5242,12 @@ class Cluster {
               )
             : null,
         createTime: json_['createTime'] as core.String?,
+        effectiveCapacityConfig: json_.containsKey('effectiveCapacityConfig')
+            ? EffectiveCapacityConfig.fromJson(
+                json_['effectiveCapacityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         gcpConfig: json_.containsKey('gcpConfig')
             ? GcpConfig.fromJson(
                 json_['gcpConfig'] as core.Map<core.String, core.dynamic>,
@@ -5173,6 +5258,12 @@ class Cluster {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        publicClusterDetails: json_.containsKey('publicClusterDetails')
+            ? PublicClusterDetails.fromJson(
+                json_['publicClusterDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         rebalanceConfig: json_.containsKey('rebalanceConfig')
             ? RebalanceConfig.fromJson(
                 json_['rebalanceConfig'] as core.Map<core.String, core.dynamic>,
@@ -5195,13 +5286,17 @@ class Cluster {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final bootstrapAddress = this.bootstrapAddress;
+    final brokerCapacityConfig = this.brokerCapacityConfig;
     final brokerDetails = this.brokerDetails;
     final capacityConfig = this.capacityConfig;
     final createTime = this.createTime;
+    final effectiveCapacityConfig = this.effectiveCapacityConfig;
     final gcpConfig = this.gcpConfig;
     final kafkaVersion = this.kafkaVersion;
     final labels = this.labels;
     final name = this.name;
+    final publicClusterDetails = this.publicClusterDetails;
     final rebalanceConfig = this.rebalanceConfig;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
@@ -5210,13 +5305,17 @@ class Cluster {
     final updateOptions = this.updateOptions;
     final updateTime = this.updateTime;
     return {
+      'bootstrapAddress': ?bootstrapAddress,
+      'brokerCapacityConfig': ?brokerCapacityConfig,
       'brokerDetails': ?brokerDetails,
       'capacityConfig': ?capacityConfig,
       'createTime': ?createTime,
+      'effectiveCapacityConfig': ?effectiveCapacityConfig,
       'gcpConfig': ?gcpConfig,
       'kafkaVersion': ?kafkaVersion,
       'labels': ?labels,
       'name': ?name,
+      'publicClusterDetails': ?publicClusterDetails,
       'rebalanceConfig': ?rebalanceConfig,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,
@@ -5849,6 +5948,37 @@ class CreateVersionResponse {
   }
 }
 
+/// Describes the effective capacity configuration of a Kafka cluster, both
+/// cluster-wide and per-broker.
+class EffectiveCapacityConfig {
+  /// The number of brokers in the cluster.
+  ///
+  /// Output only.
+  core.String? brokerCount;
+
+  /// The disk assigned to each broker in Gibibytes.
+  ///
+  /// Output only.
+  core.String? brokerDiskSizeGib;
+
+  EffectiveCapacityConfig({this.brokerCount, this.brokerDiskSizeGib});
+
+  EffectiveCapacityConfig.fromJson(core.Map json_)
+    : this(
+        brokerCount: json_['brokerCount'] as core.String?,
+        brokerDiskSizeGib: json_['brokerDiskSizeGib'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final brokerCount = this.brokerCount;
+    final brokerDiskSizeGib = this.brokerDiskSizeGib;
+    return {
+      'brokerCount': ?brokerCount,
+      'brokerDiskSizeGib': ?brokerDiskSizeGib,
+    };
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -6425,6 +6555,78 @@ typedef PauseConnectorRequest = $Empty;
 
 /// Response for PauseConnector.
 typedef PauseConnectorResponse = $Empty;
+
+/// The configuration for a public Kafka cluster
+class PublicClusterConfig {
+  /// The list of IPv4 ranges in CIDR notation that are allowed to connect to
+  /// the public Kafka broker endpoints.
+  ///
+  /// The Kafka cluster should only be exposed to trusted external ranges. A
+  /// maximum of 500 IP ranges can be specified and no single range can be
+  /// larger than a `/16`. This field is required if PublicClusterConfig is
+  /// specified.
+  ///
+  /// Required.
+  core.List<core.String>? allowedSourceIpRanges;
+
+  PublicClusterConfig({this.allowedSourceIpRanges});
+
+  PublicClusterConfig.fromJson(core.Map json_)
+    : this(
+        allowedSourceIpRanges: (json_['allowedSourceIpRanges'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedSourceIpRanges = this.allowedSourceIpRanges;
+    return {'allowedSourceIpRanges': ?allowedSourceIpRanges};
+  }
+}
+
+/// Details of the public cluster feature for the Kafka cluster.
+class PublicClusterDetails {
+  /// DNS discovery records that resolve to all of the external IP addresses
+  /// associated with the public cluster.
+  ///
+  /// Used for configuring DNS-based egress firewall rules to a public cluster.
+  /// discovery_dns_record can be added to this list if the cluster is scaled
+  /// up. Must configure DNS based firewalls to resolve ALL DNS records in this
+  /// list as large clusters have IP addresses sharded across records. Each
+  /// record contains a maximum of 30 IP addresses.
+  ///
+  /// Output only.
+  core.List<core.String>? discoveryDnsRecords;
+
+  /// All of the external IP addresses associated with the public cluster used
+  /// for configuring egress firewall rules to a public cluster.
+  ///
+  /// external_ip_address can be added to this list if the cluster is scaled up.
+  ///
+  /// Output only.
+  core.List<core.String>? externalIpAddresses;
+
+  PublicClusterDetails({this.discoveryDnsRecords, this.externalIpAddresses});
+
+  PublicClusterDetails.fromJson(core.Map json_)
+    : this(
+        discoveryDnsRecords: (json_['discoveryDnsRecords'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        externalIpAddresses: (json_['externalIpAddresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final discoveryDnsRecords = this.discoveryDnsRecords;
+    final externalIpAddresses = this.externalIpAddresses;
+    return {
+      'discoveryDnsRecords': ?discoveryDnsRecords,
+      'externalIpAddresses': ?externalIpAddresses,
+    };
+  }
+}
 
 /// Defines rebalancing behavior of a Kafka cluster.
 class RebalanceConfig {

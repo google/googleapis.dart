@@ -51,13 +51,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// publishers.
 class WebContentPublisherApi {
   /// Private Service:
-  /// https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage
-  static const subscribewithgooglePublicationsEntitlementsManageScope =
-      'https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage';
-
-  /// See and review your subscription information
-  static const subscribewithgooglePublicationsEntitlementsReadonlyScope =
-      'https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.readonly';
+  /// https://www.googleapis.com/auth/webcontentpublisher.publications.manage.system
+  static const webcontentpublisherPublicationsManageSystemScope =
+      'https://www.googleapis.com/auth/webcontentpublisher.publications.manage.system';
 
   final commons.ApiRequester _requester;
 
@@ -709,7 +705,7 @@ class DomainProperty {
   /// Whether the domain ownership has been verified (e.g., via Google Search
   /// Console).
   ///
-  /// Optional.
+  /// Output only.
   core.bool? ownershipVerified;
 
   /// The URL of the domain property (e.g., "https://example.com").
@@ -1201,46 +1197,22 @@ class TosAcceptance {
   /// Optional.
   core.bool? emailOptIn;
 
-  /// The name of the person who accepted the TOS.
-  ///
-  /// Optional.
-  core.String? signer;
-
-  /// The job title or role of the signer.
-  ///
-  /// Optional.
-  core.String? signerTitle;
-
   /// Whether the user has accepted the Terms of Service.
   ///
   /// Required.
   core.bool? userAccepted;
 
-  TosAcceptance({
-    this.emailOptIn,
-    this.signer,
-    this.signerTitle,
-    this.userAccepted,
-  });
+  TosAcceptance({this.emailOptIn, this.userAccepted});
 
   TosAcceptance.fromJson(core.Map json_)
     : this(
         emailOptIn: json_['emailOptIn'] as core.bool?,
-        signer: json_['signer'] as core.String?,
-        signerTitle: json_['signerTitle'] as core.String?,
         userAccepted: json_['userAccepted'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final emailOptIn = this.emailOptIn;
-    final signer = this.signer;
-    final signerTitle = this.signerTitle;
     final userAccepted = this.userAccepted;
-    return {
-      'emailOptIn': ?emailOptIn,
-      'signer': ?signer,
-      'signerTitle': ?signerTitle,
-      'userAccepted': ?userAccepted,
-    };
+    return {'emailOptIn': ?emailOptIn, 'userAccepted': ?userAccepted};
   }
 }

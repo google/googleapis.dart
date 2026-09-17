@@ -3659,29 +3659,7 @@ class ReadWrite {
 }
 
 /// Options for a request.
-class RequestOptions {
-  /// The request tags for the request.
-  ///
-  /// The tags are processed as follows: - Truncated to 510 characters. -
-  /// Filtered out if empty. - Deduplicated. - Limited to 50 tags.
-  ///
-  /// Optional.
-  core.List<core.String>? requestTags;
-
-  RequestOptions({this.requestTags});
-
-  RequestOptions.fromJson(core.Map json_)
-    : this(
-        requestTags: (json_['requestTags'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final requestTags = this.requestTags;
-    return {'requestTags': ?requestTags};
-  }
-}
+typedef RequestOptions = $RequestOptions;
 
 /// The request for Datastore.ReserveIds.
 class ReserveIdsRequest {

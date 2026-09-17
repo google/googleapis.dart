@@ -1148,6 +1148,10 @@ class ProjectsLocationsResource {
   /// in the following form: projects/{project}/locations/global.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [contexts] - Optional. Specifies the scope of the context in which the
+  /// search will be performed. This scope will also be used to perform IAM
+  /// checks, which if passing, will return all resources in the scope.
+  ///
   /// [orderBy] - Optional. Specifies the ordering of results. Supported values
   /// are: relevance last_modified_timestamp last_modified_timestamp asc
   ///
@@ -1183,6 +1187,7 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDataplexV1SearchEntriesResponse> searchEntries(
     core.String name, {
+    core.List<core.String>? contexts,
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
@@ -1192,6 +1197,7 @@ class ProjectsLocationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'contexts': ?contexts,
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
@@ -15180,21 +15186,37 @@ class GoogleCloudDataplexV1DataDocumentationResultQuery {
   /// Output only.
   core.String? sql;
 
+  /// The SQL dialect of the query.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SQL_DIALECT_UNSPECIFIED" : SQL dialect unspecified.
+  /// - "GOOGLE_SQL" : Google SQL dialect.
+  /// - "SPARK_SQL" : Spark SQL dialect.
+  core.String? sqlDialect;
+
   GoogleCloudDataplexV1DataDocumentationResultQuery({
     this.description,
     this.sql,
+    this.sqlDialect,
   });
 
   GoogleCloudDataplexV1DataDocumentationResultQuery.fromJson(core.Map json_)
     : this(
         description: json_['description'] as core.String?,
         sql: json_['sql'] as core.String?,
+        sqlDialect: json_['sqlDialect'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final description = this.description;
     final sql = this.sql;
-    return {'description': ?description, 'sql': ?sql};
+    final sqlDialect = this.sqlDialect;
+    return {
+      'description': ?description,
+      'sql': ?sql,
+      'sqlDialect': ?sqlDialect,
+    };
   }
 }
 
@@ -15421,9 +15443,21 @@ class GoogleCloudDataplexV1DataDocumentationSpec {
   /// Optional.
   core.List<core.String>? generationScopes;
 
+  /// The SQL dialect to use in the generated SQL queries.
+  ///
+  /// If not specified, the default dialect is Google SQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SQL_DIALECT_UNSPECIFIED" : SQL dialect unspecified.
+  /// - "GOOGLE_SQL" : Google SQL dialect.
+  /// - "SPARK_SQL" : Spark SQL dialect.
+  core.String? sqlDialect;
+
   GoogleCloudDataplexV1DataDocumentationSpec({
     this.catalogPublishingEnabled,
     this.generationScopes,
+    this.sqlDialect,
   });
 
   GoogleCloudDataplexV1DataDocumentationSpec.fromJson(core.Map json_)
@@ -15433,14 +15467,17 @@ class GoogleCloudDataplexV1DataDocumentationSpec {
         generationScopes: (json_['generationScopes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        sqlDialect: json_['sqlDialect'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final catalogPublishingEnabled = this.catalogPublishingEnabled;
     final generationScopes = this.generationScopes;
+    final sqlDialect = this.sqlDialect;
     return {
       'catalogPublishingEnabled': ?catalogPublishingEnabled,
       'generationScopes': ?generationScopes,
+      'sqlDialect': ?sqlDialect,
     };
   }
 }

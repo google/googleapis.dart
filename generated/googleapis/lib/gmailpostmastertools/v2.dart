@@ -1822,7 +1822,7 @@ class StatisticValue {
 typedef Status = $Status00;
 
 /// Represents a list of strings.
-typedef StringList = $StringList;
+typedef StringList = $StringList00;
 
 /// The date ranges or specific dates for which you want to retrieve data.
 class TimeQuery {

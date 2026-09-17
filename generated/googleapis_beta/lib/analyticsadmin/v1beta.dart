@@ -2629,7 +2629,7 @@ class PropertiesKeyEventsResource {
     );
   }
 
-  /// Retrieve a single Key Event.
+  /// Retrieves a single Key Event.
   ///
   /// Request parameters:
   ///

@@ -4888,7 +4888,23 @@ class AutomaticItemUpdates {
 /// estimated delivery times based on various factors: * Delivery address of an
 /// order * Current handling time and shipping time settings * Estimated
 /// weekdays or business days * Parcel tracking data
-typedef AutomaticShippingImprovements = $ShippingImprovements;
+class AutomaticShippingImprovements {
+  /// Enables automatic shipping improvements.
+  core.bool? allowShippingImprovements;
+
+  AutomaticShippingImprovements({this.allowShippingImprovements});
+
+  AutomaticShippingImprovements.fromJson(core.Map json_)
+    : this(
+        allowShippingImprovements:
+            json_['allowShippingImprovements'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowShippingImprovements = this.allowShippingImprovements;
+    return {'allowShippingImprovements': ?allowShippingImprovements};
+  }
+}
 
 /// Request message for the `BatchCreateRegions` method.
 class BatchCreateRegionsRequest {
@@ -6419,7 +6435,26 @@ class IdentityAttribute {
 }
 
 /// Settings for the Automatic Image Improvements.
-typedef ImageImprovementsAccountLevelSettings = $Settings;
+class ImageImprovementsAccountLevelSettings {
+  /// Enables automatic image improvements.
+  core.bool? allowAutomaticImageImprovements;
+
+  ImageImprovementsAccountLevelSettings({this.allowAutomaticImageImprovements});
+
+  ImageImprovementsAccountLevelSettings.fromJson(core.Map json_)
+    : this(
+        allowAutomaticImageImprovements:
+            json_['allowAutomaticImageImprovements'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowAutomaticImageImprovements =
+        this.allowAutomaticImageImprovements;
+    return {
+      'allowAutomaticImageImprovements': ?allowAutomaticImageImprovements,
+    };
+  }
+}
 
 /// The impact of the issue on a region.
 class Impact {
@@ -6496,6 +6531,7 @@ class ImpactedDestination {
   /// - "MERCHANT_REVIEWS" :
   /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
   /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  /// - "RENTAL_ADS" : Real Estate Rental Ads. .
   core.String? reportingContext;
 
   ImpactedDestination({this.impacts, this.reportingContext});
@@ -7226,7 +7262,27 @@ class ListUsersResponse {
 }
 
 /// Time that local delivery ends for the day.
-typedef LocalCutoffTime = $LocalCutoffTime;
+class LocalCutoffTime {
+  /// Hour local delivery orders must be placed by to process the same day.
+  core.String? hour;
+
+  /// Minute local delivery orders must be placed by to process the same day.
+  core.String? minute;
+
+  LocalCutoffTime({this.hour, this.minute});
+
+  LocalCutoffTime.fromJson(core.Map json_)
+    : this(
+        hour: json_['hour'] as core.String?,
+        minute: json_['minute'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final hour = this.hour;
+    final minute = this.minute;
+    return {'hour': ?hour, 'minute': ?minute};
+  }
+}
 
 /// `LocalListingManagement` payload.
 typedef LocalListingManagement = $Empty;

@@ -5736,9 +5736,8 @@ class ProjectsLocationsContentPoliciesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on the scope of the request (project or organization): +
-  /// Projects scope: `projects/{project_id}/locations/{location_id}` +
-  /// Organizations scope: `organizations/{org_id}/locations/{location_id}`
+  /// depending on the scope of the request (project): + Projects scope:
+  /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5857,8 +5856,7 @@ class ProjectsLocationsContentPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource name of the organization or project, for
-  /// example, `organizations/433245324/locations/europe` or
+  /// [parent] - Required. Resource name of the project, for example,
   /// `projects/project-id/locations/asia`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -11669,16 +11667,6 @@ class GooglePrivacyDlpV2ContentPolicy {
   /// Optional.
   GooglePrivacyDlpV2InspectConfig? inspectConfig;
 
-  /// InspectTemplate to use to produce findings.
-  ///
-  /// Deprecated: use inspect_config instead.
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  GooglePrivacyDlpV2InspectTemplate? inspectTemplate;
-
   /// Log the actions taken by the content policy to external systems.
   ///
   /// Optional.
@@ -11714,7 +11702,6 @@ class GooglePrivacyDlpV2ContentPolicy {
     this.failedToScanSupportedFileType,
     this.inputTooLarge,
     this.inspectConfig,
-    this.inspectTemplate,
     this.loggingConfigs,
     this.name,
     this.rules,
@@ -11755,11 +11742,6 @@ class GooglePrivacyDlpV2ContentPolicy {
                 json_['inspectConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        inspectTemplate: json_.containsKey('inspectTemplate')
-            ? GooglePrivacyDlpV2InspectTemplate.fromJson(
-                json_['inspectTemplate'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
         loggingConfigs: (json_['loggingConfigs'] as core.List?)
             ?.map(
               (value) => GooglePrivacyDlpV2LoggingConfig.fromJson(
@@ -11792,7 +11774,6 @@ class GooglePrivacyDlpV2ContentPolicy {
     final failedToScanSupportedFileType = this.failedToScanSupportedFileType;
     final inputTooLarge = this.inputTooLarge;
     final inspectConfig = this.inspectConfig;
-    final inspectTemplate = this.inspectTemplate;
     final loggingConfigs = this.loggingConfigs;
     final name = this.name;
     final rules = this.rules;
@@ -11806,7 +11787,6 @@ class GooglePrivacyDlpV2ContentPolicy {
       'failedToScanSupportedFileType': ?failedToScanSupportedFileType,
       'inputTooLarge': ?inputTooLarge,
       'inspectConfig': ?inspectConfig,
-      'inspectTemplate': ?inspectTemplate,
       'loggingConfigs': ?loggingConfigs,
       'name': ?name,
       'rules': ?rules,
@@ -11877,8 +11857,22 @@ class GooglePrivacyDlpV2ConversationLocation {
 
 /// Single message in a conversation.
 class GooglePrivacyDlpV2ConversationMessage {
-  /// The contents of this message.
+  /// Deprecated: Use `message_parts` instead.
+  ///
+  /// The contents of this message. Only one of `content` and `message_parts`
+  /// can be set.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? content;
+
+  /// The parts of the message.
+  ///
+  /// Restricted to being at most a single text item. Only one of `content` and
+  /// `message_parts` can be set.
+  ///
+  /// Optional.
+  core.List<GooglePrivacyDlpV2MessagePart>? messageParts;
 
   /// The type of message.
   /// Possible string values are:
@@ -11900,6 +11894,7 @@ class GooglePrivacyDlpV2ConversationMessage {
 
   GooglePrivacyDlpV2ConversationMessage({
     this.content,
+    this.messageParts,
     this.messageType,
     this.participantId,
   });
@@ -11907,16 +11902,25 @@ class GooglePrivacyDlpV2ConversationMessage {
   GooglePrivacyDlpV2ConversationMessage.fromJson(core.Map json_)
     : this(
         content: json_['content'] as core.String?,
+        messageParts: (json_['messageParts'] as core.List?)
+            ?.map(
+              (value) => GooglePrivacyDlpV2MessagePart.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         messageType: json_['messageType'] as core.String?,
         participantId: json_['participantId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final content = this.content;
+    final messageParts = this.messageParts;
     final messageType = this.messageType;
     final participantId = this.participantId;
     return {
       'content': ?content,
+      'messageParts': ?messageParts,
       'messageType': ?messageType,
       'participantId': ?participantId,
     };
@@ -20764,6 +20768,22 @@ class GooglePrivacyDlpV2LoggingConfig {
 /// Jobs must be manually created and finished.
 typedef GooglePrivacyDlpV2Manual = $Empty;
 
+/// A part of a conversation message.
+class GooglePrivacyDlpV2MessagePart {
+  /// String content for text-based messages.
+  core.String? text;
+
+  GooglePrivacyDlpV2MessagePart({this.text});
+
+  GooglePrivacyDlpV2MessagePart.fromJson(core.Map json_)
+    : this(text: json_['text'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final text = this.text;
+    return {'text': ?text};
+  }
+}
+
 /// Configuration for a custom infoType that detects key-value pairs in the
 /// metadata matching the specified regular expressions.
 class GooglePrivacyDlpV2MetadataKeyValueExpression {
@@ -21455,26 +21475,7 @@ class GooglePrivacyDlpV2PolicyRule {
   /// Optional.
   core.List<GooglePrivacyDlpV2PolicyCondition>? conditions;
 
-  /// If set, the verdict will be returned to the user.
-  ///
-  /// Deprecated: Use `action` instead.
-  /// Possible string values are:
-  /// - "CONTENT_POLICY_VERDICT_UNSPECIFIED" : Not used.
-  /// - "ALLOW" : The policy allows the provided content to be used.
-  /// - "BLOCK" : The policy prevents the provided content from being used. This
-  /// should result in a blocked file upload, exclusion from training dataset,
-  /// or other similar block action. (specific action will depend on the
-  /// caller).
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? returnVerdict;
-
-  GooglePrivacyDlpV2PolicyRule({
-    this.action,
-    this.conditions,
-    this.returnVerdict,
-  });
+  GooglePrivacyDlpV2PolicyRule({this.action, this.conditions});
 
   GooglePrivacyDlpV2PolicyRule.fromJson(core.Map json_)
     : this(
@@ -21490,18 +21491,12 @@ class GooglePrivacyDlpV2PolicyRule {
               ),
             )
             .toList(),
-        returnVerdict: json_['returnVerdict'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final action = this.action;
     final conditions = this.conditions;
-    final returnVerdict = this.returnVerdict;
-    return {
-      'action': ?action,
-      'conditions': ?conditions,
-      'returnVerdict': ?returnVerdict,
-    };
+    return {'action': ?action, 'conditions': ?conditions};
   }
 }
 

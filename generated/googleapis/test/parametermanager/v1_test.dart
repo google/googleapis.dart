@@ -311,6 +311,14 @@ void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
+core.Map<core.String, core.String> buildUnnamed12() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed12(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
 core.int buildCounterParameter = 0;
 api.Parameter buildParameter() {
   final o = api.Parameter();
@@ -322,6 +330,7 @@ api.Parameter buildParameter() {
     o.labels = buildUnnamed11();
     o.name = 'foo';
     o.policyMember = buildResourcePolicyMember();
+    o.tags = buildUnnamed12();
     o.updateTime = 'foo';
   }
   buildCounterParameter--;
@@ -337,6 +346,7 @@ void checkParameter(api.Parameter o) {
     checkUnnamed11(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkResourcePolicyMember(o.policyMember!);
+    checkUnnamed12(o.tags!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterParameter--;
@@ -347,6 +357,7 @@ api.ParameterVersion buildParameterVersion() {
   final o = api.ParameterVersion();
   buildCounterParameterVersion++;
   if (buildCounterParameterVersion < 3) {
+    o.checksumSource = 'foo';
     o.createTime = 'foo';
     o.disabled = true;
     o.kmsKeyVersion = 'foo';
@@ -361,6 +372,7 @@ api.ParameterVersion buildParameterVersion() {
 void checkParameterVersion(api.ParameterVersion o) {
   buildCounterParameterVersion++;
   if (buildCounterParameterVersion < 3) {
+    unittest.expect(o.checksumSource!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(o.kmsKeyVersion!, unittest.equals('foo'));
@@ -377,6 +389,7 @@ api.ParameterVersionPayload buildParameterVersionPayload() {
   buildCounterParameterVersionPayload++;
   if (buildCounterParameterVersionPayload < 3) {
     o.data = 'foo';
+    o.dataCrc32c = 'foo';
   }
   buildCounterParameterVersionPayload--;
   return o;
@@ -386,6 +399,7 @@ void checkParameterVersionPayload(api.ParameterVersionPayload o) {
   buildCounterParameterVersionPayload++;
   if (buildCounterParameterVersionPayload < 3) {
     unittest.expect(o.data!, unittest.equals('foo'));
+    unittest.expect(o.dataCrc32c!, unittest.equals('foo'));
   }
   buildCounterParameterVersionPayload--;
 }
@@ -461,9 +475,9 @@ void checkResourcePolicyMember(api.ResourcePolicyMember o) {
   buildCounterResourcePolicyMember--;
 }
 
-core.Map<core.String, core.String> buildUnnamed12() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed13() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed12(core.Map<core.String, core.String> o) {
+void checkUnnamed13(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -476,7 +490,7 @@ api.Template buildTemplate() {
   if (buildCounterTemplate < 3) {
     o.createTime = 'foo';
     o.format = 'foo';
-    o.labels = buildUnnamed12();
+    o.labels = buildUnnamed13();
     o.name = 'foo';
     o.updateTime = 'foo';
   }
@@ -489,7 +503,7 @@ void checkTemplate(api.Template o) {
   if (buildCounterTemplate < 3) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.format!, unittest.equals('foo'));
-    checkUnnamed12(o.labels!);
+    checkUnnamed13(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
@@ -542,9 +556,9 @@ void checkTemplateVersionPayload(api.TemplateVersionPayload o) {
   buildCounterTemplateVersionPayload--;
 }
 
-core.List<core.String> buildUnnamed13() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
 
-void checkUnnamed13(core.List<core.String> o) {
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -785,7 +799,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ParameterManagerApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed13();
+      final arg_extraLocationTypes = buildUnnamed14();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

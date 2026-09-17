@@ -1767,6 +1767,47 @@ class ProjectsLocationsKeyRingsResource {
     return KeyRing.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Permanently deletes the given KeyRing.
+  ///
+  /// All child resources of the KeyRing must have been previously deleted using
+  /// their corresponding Delete operations. The specified key ring will be
+  /// immediately and permanently deleted upon calling this method. This action
+  /// cannot be undone.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the KeyRing to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns metadata for a given KeyRing.
   ///
   /// Request parameters:
@@ -5810,7 +5851,7 @@ class CryptoKeyVersion {
   /// can only be set at creation or import time via CreateCryptoKeyVersion, or
   /// ImportCryptoKeyVersion.
   ///
-  /// Immutable.
+  /// Optional. Immutable.
   core.bool? trustedWrappingEnabled;
 
   CryptoKeyVersion({

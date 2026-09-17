@@ -2000,6 +2000,19 @@ class Environment {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Selects the environment mode that determines what settings are
+  /// customizable and what features are available in the environment.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Represents the default mode, which allows full
+  /// customization of the environment. It should be used for all production and
+  /// customized test environments.
+  /// - "DEVELOPMENT" : Represents the development mode, which has constraints
+  /// on the environment configuration, but offers an additional feature
+  /// (environment hibernation). It should be used only for test environments.
+  core.String? mode;
+
   /// Identifier.
   ///
   /// The resource name of the environment, in the form:
@@ -2026,6 +2039,8 @@ class Environment {
   /// ready for use.
   /// - "UPDATING" : The environment is being updated. It remains usable but
   /// cannot receive additional update requests or be deleted at this time.
+  /// - "HIBERNATED" : The environment is currently hibernated. It does not run
+  /// any DAGs.
   /// - "DELETING" : The environment is undergoing deletion. It cannot be used.
   /// - "ERROR" : The environment has encountered an error and cannot be used.
   core.String? state;
@@ -2051,6 +2066,7 @@ class Environment {
     this.config,
     this.createTime,
     this.labels,
+    this.mode,
     this.name,
     this.satisfiesPzi,
     this.satisfiesPzs,
@@ -2071,6 +2087,7 @@ class Environment {
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        mode: json_['mode'] as core.String?,
         name: json_['name'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
@@ -2088,6 +2105,7 @@ class Environment {
     final config = this.config;
     final createTime = this.createTime;
     final labels = this.labels;
+    final mode = this.mode;
     final name = this.name;
     final satisfiesPzi = this.satisfiesPzi;
     final satisfiesPzs = this.satisfiesPzs;
@@ -2099,6 +2117,7 @@ class Environment {
       'config': ?config,
       'createTime': ?createTime,
       'labels': ?labels,
+      'mode': ?mode,
       'name': ?name,
       'satisfiesPzi': ?satisfiesPzi,
       'satisfiesPzs': ?satisfiesPzs,

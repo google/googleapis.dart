@@ -1139,16 +1139,6 @@ class ProjectsLocationsAppsConversationsResource {
   /// the agent in a separate session, which is persisted for testing and
   /// debugging purposes.
   ///
-  /// [view] - Optional. The view specifying which fields in the response should
-  /// be populated.
-  /// Possible string values are:
-  /// - "CONVERSATION_VIEW_UNSPECIFIED" : Not specified, defaults to
-  /// CONVERSATION_VIEW_BASIC.
-  /// - "CONVERSATION_VIEW_BASIC" : The basic view. Returns everything except
-  /// resolved instructions.
-  /// - "CONVERSATION_VIEW_FULL" : The full view. Includes resolved instructions
-  /// dynamically per turn.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1162,12 +1152,10 @@ class ProjectsLocationsAppsConversationsResource {
   async.Future<Conversation> get(
     core.String name, {
     core.String? source,
-    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'source': ?source == null ? null : [source],
-      'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1589,6 +1577,54 @@ class ProjectsLocationsAppsDeploymentsMessageResource {
       queryParams: queryParams_,
     );
     return LfA2aV1SendMessageResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sends a streaming message to an agent, allowing for real-time interaction
+  /// and status updates.
+  ///
+  /// Streaming version of `SendMessage`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tenant] - Optional. Opaque routing identifier. Must match the `tenant`
+  /// value from the selected `AgentInterface` in the Agent Card when that field
+  /// is set.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+/deployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LfA2aV1StreamResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LfA2aV1StreamResponse> stream(
+    LfA2aV1SendMessageRequest request,
+    core.String tenant, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$tenant') + '/message:stream';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LfA2aV1StreamResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2120,6 +2156,54 @@ class ProjectsLocationsAppsMessageResource {
       queryParams: queryParams_,
     );
     return LfA2aV1SendMessageResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sends a streaming message to an agent, allowing for real-time interaction
+  /// and status updates.
+  ///
+  /// Streaming version of `SendMessage`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tenant] - Optional. Opaque routing identifier. Must match the `tenant`
+  /// value from the selected `AgentInterface` in the Agent Card when that field
+  /// is set.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LfA2aV1StreamResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LfA2aV1StreamResponse> stream(
+    LfA2aV1SendMessageRequest request,
+    core.String tenant, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$tenant') + '/message:stream';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LfA2aV1StreamResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3044,6 +3128,55 @@ class ProjectsLocationsAppsVersionsResource {
     );
   }
 
+  /// Updates the specified app version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique identifier of the app version. Format:
+  /// `projects/{project}/locations/{location}/apps/{app}/versions/{version}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. If empty, fields
+  /// `display_name` and `description` will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AppVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AppVersion> patch(
+    AppVersion request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AppVersion.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Restores the specified app version.
   ///
   /// This will create a new app version from the current draft app and
@@ -3136,6 +3269,54 @@ class ProjectsLocationsAppsVersionsMessageResource {
       queryParams: queryParams_,
     );
     return LfA2aV1SendMessageResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sends a streaming message to an agent, allowing for real-time interaction
+  /// and status updates.
+  ///
+  /// Streaming version of `SendMessage`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tenant] - Optional. Opaque routing identifier. Must match the `tenant`
+  /// value from the selected `AgentInterface` in the Agent Card when that field
+  /// is set.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/apps/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LfA2aV1StreamResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LfA2aV1StreamResponse> stream(
+    LfA2aV1SendMessageRequest request,
+    core.String tenant, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$tenant') + '/message:stream';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LfA2aV1StreamResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3561,6 +3742,12 @@ class Agent {
   /// `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
   core.String? name;
 
+  /// The remote [A2A](https://github.com/a2aproject/A2A) agent to be used for
+  /// the agent execution.
+  ///
+  /// Optional.
+  AgentRemoteA2aAgent? remoteA2aAgent;
+
   /// The remote
   /// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
   /// agent to be used for the agent execution.
@@ -3620,6 +3807,7 @@ class Agent {
     this.llmAgent,
     this.modelSettings,
     this.name,
+    this.remoteA2aAgent,
     this.remoteDialogflowAgent,
     this.tools,
     this.toolsets,
@@ -3695,6 +3883,11 @@ class Agent {
               )
             : null,
         name: json_['name'] as core.String?,
+        remoteA2aAgent: json_.containsKey('remoteA2aAgent')
+            ? AgentRemoteA2aAgent.fromJson(
+                json_['remoteA2aAgent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         remoteDialogflowAgent: json_.containsKey('remoteDialogflowAgent')
             ? AgentRemoteDialogflowAgent.fromJson(
                 json_['remoteDialogflowAgent']
@@ -3742,6 +3935,7 @@ class Agent {
     final llmAgent = this.llmAgent;
     final modelSettings = this.modelSettings;
     final name = this.name;
+    final remoteA2aAgent = this.remoteA2aAgent;
     final remoteDialogflowAgent = this.remoteDialogflowAgent;
     final tools = this.tools;
     final toolsets = this.toolsets;
@@ -3766,6 +3960,7 @@ class Agent {
       'llmAgent': ?llmAgent,
       'modelSettings': ?modelSettings,
       'name': ?name,
+      'remoteA2aAgent': ?remoteA2aAgent,
       'remoteDialogflowAgent': ?remoteDialogflowAgent,
       'tools': ?tools,
       'toolsets': ?toolsets,
@@ -3956,6 +4151,54 @@ class AgentInterface {
 /// The agent uses instructions and callbacks specified in the agent to perform
 /// the task using a large language model.
 typedef AgentLlmAgent = $Empty;
+
+/// Configuration and status for Agent Registry deployment.
+class AgentRegistryDeployment {
+  /// The resource name of the deployed Agent Registry service.
+  ///
+  /// Format: `projects/{project}/locations/{location}/services/{service}`
+  ///
+  /// Optional. Output only.
+  core.String? agentRegistryServiceName;
+
+  AgentRegistryDeployment({this.agentRegistryServiceName});
+
+  AgentRegistryDeployment.fromJson(core.Map json_)
+    : this(
+        agentRegistryServiceName:
+            json_['agentRegistryServiceName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentRegistryServiceName = this.agentRegistryServiceName;
+    return {'agentRegistryServiceName': ?agentRegistryServiceName};
+  }
+}
+
+/// The agent which will transfer execution to a remote
+/// [A2A](https://github.com/a2aproject/A2A) agent.
+class AgentRemoteA2aAgent {
+  /// The A2A connection configuration.
+  ///
+  /// Required.
+  RemoteA2aConfig? a2aConfig;
+
+  AgentRemoteA2aAgent({this.a2aConfig});
+
+  AgentRemoteA2aAgent.fromJson(core.Map json_)
+    : this(
+        a2aConfig: json_.containsKey('a2aConfig')
+            ? RemoteA2aConfig.fromJson(
+                json_['a2aConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final a2aConfig = this.a2aConfig;
+    return {'a2aConfig': ?a2aConfig};
+  }
+}
 
 /// The agent which will transfer execution to a remote
 /// [Dialogflow CX](https://docs.cloud.google.com/dialogflow/cx/docs/concept/agent)
@@ -4426,6 +4669,12 @@ class App {
   /// Output only.
   core.String? createTime;
 
+  /// App-specific dashboard settings for linking and configuring Contact Center
+  /// Insights dashboards.
+  ///
+  /// Optional.
+  DashboardSettings? dashboardSettings;
+
   /// The data store settings for the app.
   ///
   /// Optional.
@@ -4589,6 +4838,7 @@ class App {
     this.audioProcessingConfig,
     this.clientCertificateSettings,
     this.createTime,
+    this.dashboardSettings,
     this.dataStoreSettings,
     this.defaultChannelProfile,
     this.deploymentCount,
@@ -4632,6 +4882,12 @@ class App {
               )
             : null,
         createTime: json_['createTime'] as core.String?,
+        dashboardSettings: json_.containsKey('dashboardSettings')
+            ? DashboardSettings.fromJson(
+                json_['dashboardSettings']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         dataStoreSettings: json_.containsKey('dataStoreSettings')
             ? DataStoreSettings.fromJson(
                 json_['dataStoreSettings']
@@ -4724,6 +4980,7 @@ class App {
     final audioProcessingConfig = this.audioProcessingConfig;
     final clientCertificateSettings = this.clientCertificateSettings;
     final createTime = this.createTime;
+    final dashboardSettings = this.dashboardSettings;
     final dataStoreSettings = this.dataStoreSettings;
     final defaultChannelProfile = this.defaultChannelProfile;
     final deploymentCount = this.deploymentCount;
@@ -4753,6 +5010,7 @@ class App {
       'audioProcessingConfig': ?audioProcessingConfig,
       'clientCertificateSettings': ?clientCertificateSettings,
       'createTime': ?createTime,
+      'dashboardSettings': ?dashboardSettings,
       'dataStoreSettings': ?dataStoreSettings,
       'defaultChannelProfile': ?defaultChannelProfile,
       'deploymentCount': ?deploymentCount,
@@ -4966,6 +5224,11 @@ class AppVersion {
   /// Output only.
   AppSnapshot? snapshot;
 
+  /// Timestamp when the app version was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   AppVersion({
     this.createTime,
     this.creator,
@@ -4974,6 +5237,7 @@ class AppVersion {
     this.etag,
     this.name,
     this.snapshot,
+    this.updateTime,
   });
 
   AppVersion.fromJson(core.Map json_)
@@ -4989,6 +5253,7 @@ class AppVersion {
                 json_['snapshot'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        updateTime: json_['updateTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -4999,6 +5264,7 @@ class AppVersion {
     final etag = this.etag;
     final name = this.name;
     final snapshot = this.snapshot;
+    final updateTime = this.updateTime;
     return {
       'createTime': ?createTime,
       'creator': ?creator,
@@ -5007,6 +5273,7 @@ class AppVersion {
       'etag': ?etag,
       'name': ?name,
       'snapshot': ?snapshot,
+      'updateTime': ?updateTime,
     };
   }
 }
@@ -5024,6 +5291,11 @@ class AudioProcessingConfig {
   ///
   /// Optional.
   BargeInConfig? bargeInConfig;
+
+  /// Configures custom voice samples for voice cloning.
+  ///
+  /// Optional.
+  core.List<CustomVoiceSample>? customVoiceSamples;
 
   /// The duration of user inactivity (no speech or interaction) before the
   /// agent prompts the user for reengagement.
@@ -5048,6 +5320,7 @@ class AudioProcessingConfig {
   AudioProcessingConfig({
     this.ambientSoundConfig,
     this.bargeInConfig,
+    this.customVoiceSamples,
     this.inactivityTimeout,
     this.synthesizeSpeechConfigs,
   });
@@ -5065,6 +5338,13 @@ class AudioProcessingConfig {
                 json_['bargeInConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        customVoiceSamples: (json_['customVoiceSamples'] as core.List?)
+            ?.map(
+              (value) => CustomVoiceSample.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         inactivityTimeout: json_['inactivityTimeout'] as core.String?,
         synthesizeSpeechConfigs:
             (json_['synthesizeSpeechConfigs']
@@ -5082,11 +5362,13 @@ class AudioProcessingConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final ambientSoundConfig = this.ambientSoundConfig;
     final bargeInConfig = this.bargeInConfig;
+    final customVoiceSamples = this.customVoiceSamples;
     final inactivityTimeout = this.inactivityTimeout;
     final synthesizeSpeechConfigs = this.synthesizeSpeechConfigs;
     return {
       'ambientSoundConfig': ?ambientSoundConfig,
       'bargeInConfig': ?bargeInConfig,
+      'customVoiceSamples': ?customVoiceSamples,
       'inactivityTimeout': ?inactivityTimeout,
       'synthesizeSpeechConfigs': ?synthesizeSpeechConfigs,
     };
@@ -6016,7 +6298,12 @@ class Citations {
   /// List of cited pieces of information.
   core.List<CitationsCitedChunk>? citedChunks;
 
-  Citations({this.citedChunks});
+  /// List of inline citations in the agent response.
+  ///
+  /// Optional.
+  core.List<CitationsInlineCitation>? inlineCitations;
+
+  Citations({this.citedChunks, this.inlineCitations});
 
   Citations.fromJson(core.Map json_)
     : this(
@@ -6027,11 +6314,19 @@ class Citations {
               ),
             )
             .toList(),
+        inlineCitations: (json_['inlineCitations'] as core.List?)
+            ?.map(
+              (value) => CitationsInlineCitation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final citedChunks = this.citedChunks;
-    return {'citedChunks': ?citedChunks};
+    final inlineCitations = this.inlineCitations;
+    return {'citedChunks': ?citedChunks, 'inlineCitations': ?inlineCitations};
   }
 }
 
@@ -6074,6 +6369,46 @@ class CitationsCitedChunk {
       'text': ?text,
       'title': ?title,
       'uri': ?uri,
+    };
+  }
+}
+
+/// An inline citation in the response text.
+class CitationsInlineCitation {
+  /// The indices of the cited chunks that back this text segment.
+  ///
+  /// Indices refer to the elements in `cited_chunks`.
+  core.List<core.int>? citedChunkIndices;
+
+  /// The ending index (in bytes) of the text segment in the agent response.
+  core.int? endIndex;
+
+  /// The starting index (in bytes) of the text segment in the agent response.
+  core.int? startIndex;
+
+  CitationsInlineCitation({
+    this.citedChunkIndices,
+    this.endIndex,
+    this.startIndex,
+  });
+
+  CitationsInlineCitation.fromJson(core.Map json_)
+    : this(
+        citedChunkIndices: (json_['citedChunkIndices'] as core.List?)
+            ?.map((value) => value as core.int)
+            .toList(),
+        endIndex: json_['endIndex'] as core.int?,
+        startIndex: json_['startIndex'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final citedChunkIndices = this.citedChunkIndices;
+    final endIndex = this.endIndex;
+    final startIndex = this.startIndex;
+    return {
+      'citedChunkIndices': ?citedChunkIndices,
+      'endIndex': ?endIndex,
+      'startIndex': ?startIndex,
     };
   }
 }
@@ -6593,31 +6928,10 @@ class ConversationTurn {
   /// Optional.
   core.List<Message>? messages;
 
-  /// The full dynamically resolved developer instruction generated from
-  /// templates.
-  ///
-  /// This field is only populated on-demand when requested during history
-  /// retrieval. It is not persisted.
-  ///
-  /// Output only.
-  core.String? resolvedDeveloperInstruction;
-
   /// The root span of the action processing.
   ///
   /// Optional.
   Span? rootSpan;
-
-  /// Variables or configurations referenced by the template engine during
-  /// dynamic prompt generation.
-  ///
-  /// This allows reconstructing the exact prompt sent to the model for this
-  /// turn.
-  ///
-  /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? templateAttributes;
 
   /// The intended ground-truth text from the Simulated Caller (Polysynth).
   ///
@@ -6626,13 +6940,7 @@ class ConversationTurn {
   /// Optional.
   core.String? userIntendedText;
 
-  ConversationTurn({
-    this.messages,
-    this.resolvedDeveloperInstruction,
-    this.rootSpan,
-    this.templateAttributes,
-    this.userIntendedText,
-  });
+  ConversationTurn({this.messages, this.rootSpan, this.userIntendedText});
 
   ConversationTurn.fromJson(core.Map json_)
     : this(
@@ -6643,32 +6951,129 @@ class ConversationTurn {
               ),
             )
             .toList(),
-        resolvedDeveloperInstruction:
-            json_['resolvedDeveloperInstruction'] as core.String?,
         rootSpan: json_.containsKey('rootSpan')
             ? Span.fromJson(
                 json_['rootSpan'] as core.Map<core.String, core.dynamic>,
               )
-            : null,
-        templateAttributes: json_.containsKey('templateAttributes')
-            ? json_['templateAttributes'] as core.Map<core.String, core.dynamic>
             : null,
         userIntendedText: json_['userIntendedText'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final messages = this.messages;
-    final resolvedDeveloperInstruction = this.resolvedDeveloperInstruction;
     final rootSpan = this.rootSpan;
-    final templateAttributes = this.templateAttributes;
     final userIntendedText = this.userIntendedText;
     return {
       'messages': ?messages,
-      'resolvedDeveloperInstruction': ?resolvedDeveloperInstruction,
       'rootSpan': ?rootSpan,
-      'templateAttributes': ?templateAttributes,
       'userIntendedText': ?userIntendedText,
     };
+  }
+}
+
+/// Configuration for a custom voice sample used for voice cloning.
+class CustomVoiceSample {
+  /// Consent audio for voice cloning.
+  ///
+  /// Optional.
+  core.String? consentAudioGcsUri;
+
+  /// The user-defined name for the custom voice sample.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Synthesized preview audio for custom voice, formatted as canonical WAV
+  /// (LINEAR16, 24kHz, 16-bit, mono).
+  ///
+  /// Output only.
+  core.String? previewAudioContent;
+  core.List<core.int> get previewAudioContentAsBytes =>
+      convert.base64.decode(previewAudioContent!);
+
+  set previewAudioContentAsBytes(core.List<core.int> bytes_) {
+    previewAudioContent = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Text for synthesizing preview audio for custom voice.
+  ///
+  /// Optional.
+  core.String? previewText;
+
+  /// Natural language instructions for voice style, tone, pacing, or
+  /// pronunciation.
+  ///
+  /// Optional.
+  core.String? voiceInstruction;
+
+  /// The Cloud Storage URI to the audio sample for voice cloning.
+  ///
+  /// The audio sample should be a mono-channel, 24kHz WAV file.
+  ///
+  /// Optional.
+  core.String? voiceSampleGcsUri;
+
+  CustomVoiceSample({
+    this.consentAudioGcsUri,
+    this.name,
+    this.previewAudioContent,
+    this.previewText,
+    this.voiceInstruction,
+    this.voiceSampleGcsUri,
+  });
+
+  CustomVoiceSample.fromJson(core.Map json_)
+    : this(
+        consentAudioGcsUri: json_['consentAudioGcsUri'] as core.String?,
+        name: json_['name'] as core.String?,
+        previewAudioContent: json_['previewAudioContent'] as core.String?,
+        previewText: json_['previewText'] as core.String?,
+        voiceInstruction: json_['voiceInstruction'] as core.String?,
+        voiceSampleGcsUri: json_['voiceSampleGcsUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final consentAudioGcsUri = this.consentAudioGcsUri;
+    final name = this.name;
+    final previewAudioContent = this.previewAudioContent;
+    final previewText = this.previewText;
+    final voiceInstruction = this.voiceInstruction;
+    final voiceSampleGcsUri = this.voiceSampleGcsUri;
+    return {
+      'consentAudioGcsUri': ?consentAudioGcsUri,
+      'name': ?name,
+      'previewAudioContent': ?previewAudioContent,
+      'previewText': ?previewText,
+      'voiceInstruction': ?voiceInstruction,
+      'voiceSampleGcsUri': ?voiceSampleGcsUri,
+    };
+  }
+}
+
+/// Settings for dashboards associated with the app, that show up in the
+/// Monitoring view.
+class DashboardSettings {
+  /// The resource name of the default Contact Center Insights dashboard
+  /// associated with the app.
+  ///
+  /// This is the dashboard that will be displayed when users navigate to the
+  /// Monitoring view for the app. Format:
+  /// `projects/{project}/locations/{location}/dashboards/{dashboard}`
+  ///
+  /// Optional.
+  core.String? defaultDashboard;
+
+  DashboardSettings({this.defaultDashboard});
+
+  DashboardSettings.fromJson(core.Map json_)
+    : this(defaultDashboard: json_['defaultDashboard'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final defaultDashboard = this.defaultDashboard;
+    return {'defaultDashboard': ?defaultDashboard};
   }
 }
 
@@ -7487,14 +7892,25 @@ class DataStoreToolSnippetsConfig {
   /// Optional.
   core.bool? enableSnippets;
 
-  DataStoreToolSnippetsConfig({this.enableSnippets});
+  /// Number of snippets to return per query.
+  ///
+  /// If unset, returns all snippets from the service by default.
+  ///
+  /// Optional.
+  core.int? maxSnippets;
+
+  DataStoreToolSnippetsConfig({this.enableSnippets, this.maxSnippets});
 
   DataStoreToolSnippetsConfig.fromJson(core.Map json_)
-    : this(enableSnippets: json_['enableSnippets'] as core.bool?);
+    : this(
+        enableSnippets: json_['enableSnippets'] as core.bool?,
+        maxSnippets: json_['maxSnippets'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final enableSnippets = this.enableSnippets;
-    return {'enableSnippets': ?enableSnippets};
+    final maxSnippets = this.maxSnippets;
+    return {'enableSnippets': ?enableSnippets, 'maxSnippets': ?maxSnippets};
   }
 }
 
@@ -7550,6 +7966,13 @@ class DataStoreToolSummarizationConfig {
 ///
 /// It is used to deploy an app version with a specific channel profile.
 class Deployment {
+  /// Configuration for deploying this deployment to Agent Registry.
+  ///
+  /// If present, this deployment will be published to Agent Registry.
+  ///
+  /// Optional.
+  AgentRegistryDeployment? agentRegistryDeployment;
+
   /// The resource name of the app version to deploy.
   ///
   /// Format:
@@ -7638,6 +8061,7 @@ class Deployment {
   WhatsAppCredentials? whatsappCredentials;
 
   Deployment({
+    this.agentRegistryDeployment,
     this.appVersion,
     this.channelProfile,
     this.createTime,
@@ -7654,6 +8078,12 @@ class Deployment {
 
   Deployment.fromJson(core.Map json_)
     : this(
+        agentRegistryDeployment: json_.containsKey('agentRegistryDeployment')
+            ? AgentRegistryDeployment.fromJson(
+                json_['agentRegistryDeployment']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         appVersion: json_['appVersion'] as core.String?,
         channelProfile: json_.containsKey('channelProfile')
             ? ChannelProfile.fromJson(
@@ -7692,6 +8122,7 @@ class Deployment {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final agentRegistryDeployment = this.agentRegistryDeployment;
     final appVersion = this.appVersion;
     final channelProfile = this.channelProfile;
     final createTime = this.createTime;
@@ -7705,6 +8136,7 @@ class Deployment {
     final updateTime = this.updateTime;
     final whatsappCredentials = this.whatsappCredentials;
     return {
+      'agentRegistryDeployment': ?agentRegistryDeployment,
       'appVersion': ?appVersion,
       'channelProfile': ?channelProfile,
       'createTime': ?createTime,
@@ -8241,13 +8673,28 @@ class Event {
   /// Required.
   core.String? event;
 
-  Event({this.event});
+  /// Additional variables associated with the event.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? variables;
 
-  Event.fromJson(core.Map json_) : this(event: json_['event'] as core.String?);
+  Event({this.event, this.variables});
+
+  Event.fromJson(core.Map json_)
+    : this(
+        event: json_['event'] as core.String?,
+        variables: json_.containsKey('variables')
+            ? json_['variables'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final event = this.event;
-    return {'event': ?event};
+    final variables = this.variables;
+    return {'event': ?event, 'variables': ?variables};
   }
 }
 
@@ -9095,6 +9542,11 @@ class Guardrail {
   /// `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
   core.String? name;
 
+  /// Guardrail that runs supervisor intervention.
+  ///
+  /// Optional.
+  GuardrailSupervisor? supervisor;
+
   /// Timestamp when the guardrail was last updated.
   ///
   /// Output only.
@@ -9113,6 +9565,7 @@ class Guardrail {
     this.llmPromptSecurity,
     this.modelSafety,
     this.name,
+    this.supervisor,
     this.updateTime,
   });
 
@@ -9155,6 +9608,11 @@ class Guardrail {
               )
             : null,
         name: json_['name'] as core.String?,
+        supervisor: json_.containsKey('supervisor')
+            ? GuardrailSupervisor.fromJson(
+                json_['supervisor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -9171,6 +9629,7 @@ class Guardrail {
     final llmPromptSecurity = this.llmPromptSecurity;
     final modelSafety = this.modelSafety;
     final name = this.name;
+    final supervisor = this.supervisor;
     final updateTime = this.updateTime;
     return {
       'action': ?action,
@@ -9185,6 +9644,7 @@ class Guardrail {
       'llmPromptSecurity': ?llmPromptSecurity,
       'modelSafety': ?modelSafety,
       'name': ?name,
+      'supervisor': ?supervisor,
       'updateTime': ?updateTime,
     };
   }
@@ -9585,6 +10045,8 @@ class GuardrailModelSafetySafetySetting {
   /// - "HARM_CATEGORY_HARASSMENT" : The harm category is harassment.
   /// - "HARM_CATEGORY_SEXUALLY_EXPLICIT" : The harm category is sexually
   /// explicit content.
+  /// - "HARM_CATEGORY_PROFANITY" : The harm category is profanity.
+  /// - "HARM_CATEGORY_TOXIC" : The harm category is toxic.
   core.String? category;
 
   /// The harm block threshold.
@@ -9611,6 +10073,49 @@ class GuardrailModelSafetySafetySetting {
     final category = this.category;
     final threshold = this.threshold;
     return {'category': ?category, 'threshold': ?threshold};
+  }
+}
+
+/// Guardrail that runs supervisor intervention.
+class GuardrailSupervisor {
+  /// The detection mode of the supervisor.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DETECTION_MODE_UNSPECIFIED" : Detection mode is unspecified. Default to
+  /// NON_BLOCKING.
+  /// - "NON_BLOCKING" : Non blocking detection mode. Response is not blocked
+  /// when the supervisor detection is ongoing.
+  /// - "BLOCKING" : Blocking detection mode. Response is blocked when the
+  /// supervisor detection is ongoing.
+  core.String? detectionMode;
+
+  /// The type of the supervisor.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Type is unspecified.
+  /// - "INVALID_TEXT" : Invalid text issue type.
+  /// - "LANGUAGE_SHIFT" : Language shift issue type.
+  /// - "SPEAKER_SHIFT" : Speaker shift issue type.
+  /// - "AUDIO_MISMATCH" : Audio mismatch issue type.
+  /// - "MISSING_TOOL_CALL" : Missing tool call issue type.
+  /// - "CUSTOM" : Custom issue type.
+  /// - "CHOPPY_AUDIO" : Choppy audio issue type.
+  core.String? type;
+
+  GuardrailSupervisor({this.detectionMode, this.type});
+
+  GuardrailSupervisor.fromJson(core.Map json_)
+    : this(
+        detectionMode: json_['detectionMode'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final detectionMode = this.detectionMode;
+    final type = this.type;
+    return {'detectionMode': ?detectionMode, 'type': ?type};
   }
 }
 
@@ -9673,6 +10178,16 @@ class ImportAppRequest {
   /// Optional.
   ImportAppRequestImportOptions? importOptions;
 
+  /// Patch content as a JSON string.
+  ///
+  /// Optional.
+  core.String? jsonPatchContent;
+
+  /// A Cloud Storage URI pointing to a JSON file containing the patches.
+  ///
+  /// Optional.
+  core.String? jsonPatchGcsUri;
+
   ImportAppRequest({
     this.appContent,
     this.appId,
@@ -9680,6 +10195,8 @@ class ImportAppRequest {
     this.gcsUri,
     this.ignoreAppLock,
     this.importOptions,
+    this.jsonPatchContent,
+    this.jsonPatchGcsUri,
   });
 
   ImportAppRequest.fromJson(core.Map json_)
@@ -9694,6 +10211,8 @@ class ImportAppRequest {
                 json_['importOptions'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        jsonPatchContent: json_['jsonPatchContent'] as core.String?,
+        jsonPatchGcsUri: json_['jsonPatchGcsUri'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -9703,6 +10222,8 @@ class ImportAppRequest {
     final gcsUri = this.gcsUri;
     final ignoreAppLock = this.ignoreAppLock;
     final importOptions = this.importOptions;
+    final jsonPatchContent = this.jsonPatchContent;
+    final jsonPatchGcsUri = this.jsonPatchGcsUri;
     return {
       'appContent': ?appContent,
       'appId': ?appId,
@@ -9710,6 +10231,8 @@ class ImportAppRequest {
       'gcsUri': ?gcsUri,
       'ignoreAppLock': ?ignoreAppLock,
       'importOptions': ?importOptions,
+      'jsonPatchContent': ?jsonPatchContent,
+      'jsonPatchGcsUri': ?jsonPatchGcsUri,
     };
   }
 }
@@ -10810,51 +11333,7 @@ class LfA2aV1HTTPAuthSecurityScheme {
 }
 
 /// Deprecated: Use Authorization Code + PKCE instead.
-class LfA2aV1ImplicitOAuthFlow {
-  /// The authorization URL to be used for this flow.
-  ///
-  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
-  /// TLS
-  core.String? authorizationUrl;
-
-  /// The URL to be used for obtaining refresh tokens.
-  ///
-  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
-  /// TLS.
-  core.String? refreshUrl;
-
-  /// The available scopes for the OAuth2 security scheme.
-  ///
-  /// A map between the scope name and a short description for it. The map MAY
-  /// be empty.
-  core.Map<core.String, core.String>? scopes;
-
-  LfA2aV1ImplicitOAuthFlow({
-    this.authorizationUrl,
-    this.refreshUrl,
-    this.scopes,
-  });
-
-  LfA2aV1ImplicitOAuthFlow.fromJson(core.Map json_)
-    : this(
-        authorizationUrl: json_['authorizationUrl'] as core.String?,
-        refreshUrl: json_['refreshUrl'] as core.String?,
-        scopes: (json_['scopes'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final authorizationUrl = this.authorizationUrl;
-    final refreshUrl = this.refreshUrl;
-    final scopes = this.scopes;
-    return {
-      'authorizationUrl': ?authorizationUrl,
-      'refreshUrl': ?refreshUrl,
-      'scopes': ?scopes,
-    };
-  }
-}
+typedef LfA2aV1ImplicitOAuthFlow = $ImplicitOAuthFlow;
 
 /// `Message` is one unit of communication between client and server.
 ///
@@ -11230,47 +11709,7 @@ class LfA2aV1Part {
 }
 
 /// Deprecated: Use Authorization Code + PKCE or Device Code.
-class LfA2aV1PasswordOAuthFlow {
-  /// The URL to be used for obtaining refresh tokens.
-  ///
-  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
-  /// TLS.
-  core.String? refreshUrl;
-
-  /// The available scopes for the OAuth2 security scheme.
-  ///
-  /// A map between the scope name and a short description for it. The map MAY
-  /// be empty.
-  core.Map<core.String, core.String>? scopes;
-
-  /// The token URL to be used for this flow.
-  ///
-  /// This MUST be in the form of a URL. The OAuth2 standard requires the use of
-  /// TLS.
-  core.String? tokenUrl;
-
-  LfA2aV1PasswordOAuthFlow({this.refreshUrl, this.scopes, this.tokenUrl});
-
-  LfA2aV1PasswordOAuthFlow.fromJson(core.Map json_)
-    : this(
-        refreshUrl: json_['refreshUrl'] as core.String?,
-        scopes: (json_['scopes'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        tokenUrl: json_['tokenUrl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final refreshUrl = this.refreshUrl;
-    final scopes = this.scopes;
-    final tokenUrl = this.tokenUrl;
-    return {
-      'refreshUrl': ?refreshUrl,
-      'scopes': ?scopes,
-      'tokenUrl': ?tokenUrl,
-    };
-  }
-}
+typedef LfA2aV1PasswordOAuthFlow = $OAuthFlow;
 
 /// Defines the security requirements for an agent.
 class LfA2aV1SecurityRequirement {
@@ -11522,6 +11961,66 @@ class LfA2aV1SendMessageResponse {
   }
 }
 
+/// A wrapper object used in streaming operations to encapsulate different types
+/// of response data.
+class LfA2aV1StreamResponse {
+  /// An event indicating a task artifact update.
+  LfA2aV1TaskArtifactUpdateEvent? artifactUpdate;
+
+  /// A Message object containing a message from the agent.
+  LfA2aV1Message? message;
+
+  /// An event indicating a task status update.
+  LfA2aV1TaskStatusUpdateEvent? statusUpdate;
+
+  /// A Task object containing the current state of the task.
+  LfA2aV1Task? task;
+
+  LfA2aV1StreamResponse({
+    this.artifactUpdate,
+    this.message,
+    this.statusUpdate,
+    this.task,
+  });
+
+  LfA2aV1StreamResponse.fromJson(core.Map json_)
+    : this(
+        artifactUpdate: json_.containsKey('artifactUpdate')
+            ? LfA2aV1TaskArtifactUpdateEvent.fromJson(
+                json_['artifactUpdate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        message: json_.containsKey('message')
+            ? LfA2aV1Message.fromJson(
+                json_['message'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        statusUpdate: json_.containsKey('statusUpdate')
+            ? LfA2aV1TaskStatusUpdateEvent.fromJson(
+                json_['statusUpdate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        task: json_.containsKey('task')
+            ? LfA2aV1Task.fromJson(
+                json_['task'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final artifactUpdate = this.artifactUpdate;
+    final message = this.message;
+    final statusUpdate = this.statusUpdate;
+    final task = this.task;
+    return {
+      'artifactUpdate': ?artifactUpdate,
+      'message': ?message,
+      'statusUpdate': ?statusUpdate,
+      'task': ?task,
+    };
+  }
+}
+
 /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED A list of strings.
 class LfA2aV1StringList {
   /// The individual string values.
@@ -11628,6 +12127,81 @@ class LfA2aV1Task {
       'id': ?id,
       'metadata': ?metadata,
       'status': ?status,
+    };
+  }
+}
+
+/// A task delta where an artifact has been generated.
+class LfA2aV1TaskArtifactUpdateEvent {
+  /// If true, the content of this artifact should be appended to a previously
+  /// sent artifact with the same ID.
+  core.bool? append;
+
+  /// The artifact that was generated or updated.
+  ///
+  /// Required.
+  LfA2aV1Artifact? artifact;
+
+  /// The ID of the context that this task belongs to.
+  ///
+  /// Required.
+  core.String? contextId;
+
+  /// If true, this is the final chunk of the artifact.
+  core.bool? lastChunk;
+
+  /// Metadata associated with the artifact update.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The ID of the task for this artifact.
+  ///
+  /// Required.
+  core.String? taskId;
+
+  LfA2aV1TaskArtifactUpdateEvent({
+    this.append,
+    this.artifact,
+    this.contextId,
+    this.lastChunk,
+    this.metadata,
+    this.taskId,
+  });
+
+  LfA2aV1TaskArtifactUpdateEvent.fromJson(core.Map json_)
+    : this(
+        append: json_['append'] as core.bool?,
+        artifact: json_.containsKey('artifact')
+            ? LfA2aV1Artifact.fromJson(
+                json_['artifact'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contextId: json_['contextId'] as core.String?,
+        lastChunk: json_['lastChunk'] as core.bool?,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        taskId: json_['taskId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final append = this.append;
+    final artifact = this.artifact;
+    final contextId = this.contextId;
+    final lastChunk = this.lastChunk;
+    final metadata = this.metadata;
+    final taskId = this.taskId;
+    return {
+      'append': ?append,
+      'artifact': ?artifact,
+      'contextId': ?contextId,
+      'lastChunk': ?lastChunk,
+      'metadata': ?metadata,
+      'taskId': ?taskId,
     };
   }
 }
@@ -11757,6 +12331,67 @@ class LfA2aV1TaskStatus {
     final state = this.state;
     final timestamp = this.timestamp;
     return {'message': ?message, 'state': ?state, 'timestamp': ?timestamp};
+  }
+}
+
+/// An event sent by the agent to notify the client of a change in a task's
+/// status.
+class LfA2aV1TaskStatusUpdateEvent {
+  /// The ID of the context that the task belongs to.
+  ///
+  /// Required.
+  core.String? contextId;
+
+  /// Metadata associated with the task update.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The new status of the task.
+  ///
+  /// Required.
+  LfA2aV1TaskStatus? status;
+
+  /// The ID of the task that has changed.
+  ///
+  /// Required.
+  core.String? taskId;
+
+  LfA2aV1TaskStatusUpdateEvent({
+    this.contextId,
+    this.metadata,
+    this.status,
+    this.taskId,
+  });
+
+  LfA2aV1TaskStatusUpdateEvent.fromJson(core.Map json_)
+    : this(
+        contextId: json_['contextId'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        status: json_.containsKey('status')
+            ? LfA2aV1TaskStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        taskId: json_['taskId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contextId = this.contextId;
+    final metadata = this.metadata;
+    final status = this.status;
+    final taskId = this.taskId;
+    return {
+      'contextId': ?contextId,
+      'metadata': ?metadata,
+      'status': ?status,
+      'taskId': ?taskId,
+    };
   }
 }
 
@@ -13480,6 +14115,108 @@ class RedactionConfig {
   }
 }
 
+/// Shared configuration for connecting to a remote
+/// [A2A](https://github.com/a2aproject/A2A) agent.
+class RemoteA2aConfig {
+  /// The full agent card defined inline.
+  ///
+  /// Optional.
+  AgentCard? agentCard;
+
+  /// Reference to the agent in the Agent Registry.
+  ///
+  /// Format: `projects/{project}/locations/{location}/agents/{agent}`
+  ///
+  /// Optional.
+  core.String? agentRegistry;
+
+  /// Authentication configuration for calling the remote agent.
+  ///
+  /// Optional if the registry reference already handles authentication.
+  ///
+  /// Optional.
+  ApiAuthentication? apiAuthentication;
+
+  /// If not empty, interactions with the remote A2A agent will use this context
+  /// ID.
+  ///
+  /// This context_id field can refer to a session variable like
+  /// `$context.variables.order_agent_session_id`.
+  ///
+  /// Optional.
+  core.String? contextId;
+
+  /// Mapping of input variable names of remote agent to GECX variable names.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? inputVariableMapping;
+
+  /// Mapping of output variable names of remote agent to GECX variable names.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? outputVariableMapping;
+
+  /// Whether streaming is enabled for the remote agent.
+  ///
+  /// Optional.
+  core.bool? streamingEnabled;
+
+  RemoteA2aConfig({
+    this.agentCard,
+    this.agentRegistry,
+    this.apiAuthentication,
+    this.contextId,
+    this.inputVariableMapping,
+    this.outputVariableMapping,
+    this.streamingEnabled,
+  });
+
+  RemoteA2aConfig.fromJson(core.Map json_)
+    : this(
+        agentCard: json_.containsKey('agentCard')
+            ? AgentCard.fromJson(
+                json_['agentCard'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        agentRegistry: json_['agentRegistry'] as core.String?,
+        apiAuthentication: json_.containsKey('apiAuthentication')
+            ? ApiAuthentication.fromJson(
+                json_['apiAuthentication']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contextId: json_['contextId'] as core.String?,
+        inputVariableMapping:
+            (json_['inputVariableMapping']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        outputVariableMapping:
+            (json_['outputVariableMapping']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        streamingEnabled: json_['streamingEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentCard = this.agentCard;
+    final agentRegistry = this.agentRegistry;
+    final apiAuthentication = this.apiAuthentication;
+    final contextId = this.contextId;
+    final inputVariableMapping = this.inputVariableMapping;
+    final outputVariableMapping = this.outputVariableMapping;
+    final streamingEnabled = this.streamingEnabled;
+    return {
+      'agentCard': ?agentCard,
+      'agentRegistry': ?agentRegistry,
+      'apiAuthentication': ?apiAuthentication,
+      'contextId': ?contextId,
+      'inputVariableMapping': ?inputVariableMapping,
+      'outputVariableMapping': ?outputVariableMapping,
+      'streamingEnabled': ?streamingEnabled,
+    };
+  }
+}
+
 /// Represents a tool that allows the agent to call another remote agent.
 class RemoteAgentTool {
   /// The agent card of the remote agent that this tool invokes.
@@ -13487,17 +14224,49 @@ class RemoteAgentTool {
   /// Required.
   AgentCard? agentCard;
 
+  /// Authentication configuration for calling the remote agent.
+  ///
+  /// Optional.
+  ApiAuthentication? apiAuthentication;
+
   /// The description of the tool.
   ///
   /// Required.
   core.String? description;
+
+  /// Mapping of input variable names of remote agent to GECX variable names.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? inputVariableMapping;
 
   /// The name of the tool.
   ///
   /// Required.
   core.String? name;
 
-  RemoteAgentTool({this.agentCard, this.description, this.name});
+  /// Mapping of output variable names of remote agent to GECX variable names.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? outputVariableMapping;
+
+  /// When enabled, the interaction between the CXAS app and the remote agent
+  /// will share the same context.
+  ///
+  /// If the remote agent returns a context_id, it will be persisted for the
+  /// entirety of the session for this remote agent tool.
+  ///
+  /// Optional.
+  core.bool? statefulAgent;
+
+  RemoteAgentTool({
+    this.agentCard,
+    this.apiAuthentication,
+    this.description,
+    this.inputVariableMapping,
+    this.name,
+    this.outputVariableMapping,
+    this.statefulAgent,
+  });
 
   RemoteAgentTool.fromJson(core.Map json_)
     : this(
@@ -13506,18 +14275,41 @@ class RemoteAgentTool {
                 json_['agentCard'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        apiAuthentication: json_.containsKey('apiAuthentication')
+            ? ApiAuthentication.fromJson(
+                json_['apiAuthentication']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         description: json_['description'] as core.String?,
+        inputVariableMapping:
+            (json_['inputVariableMapping']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         name: json_['name'] as core.String?,
+        outputVariableMapping:
+            (json_['outputVariableMapping']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        statefulAgent: json_['statefulAgent'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final agentCard = this.agentCard;
+    final apiAuthentication = this.apiAuthentication;
     final description = this.description;
+    final inputVariableMapping = this.inputVariableMapping;
     final name = this.name;
+    final outputVariableMapping = this.outputVariableMapping;
+    final statefulAgent = this.statefulAgent;
     return {
       'agentCard': ?agentCard,
+      'apiAuthentication': ?apiAuthentication,
       'description': ?description,
+      'inputVariableMapping': ?inputVariableMapping,
       'name': ?name,
+      'outputVariableMapping': ?outputVariableMapping,
+      'statefulAgent': ?statefulAgent,
     };
   }
 }
@@ -14444,11 +15236,17 @@ class SessionOutput {
   /// GoogleSearchTool.
   GoogleSearchSuggestions? googleSearchSuggestions;
 
+  /// Output image from the CES agent.
+  Image? image;
+
   /// Custom payload with structured output from the CES agent.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? payload;
+
+  /// Intermediate progress update from the CES agent.
+  core.String? progress;
 
   /// Output text from the CES agent.
   core.String? text;
@@ -14471,7 +15269,9 @@ class SessionOutput {
     this.diagnosticInfo,
     this.endSession,
     this.googleSearchSuggestions,
+    this.image,
     this.payload,
+    this.progress,
     this.text,
     this.toolCalls,
     this.turnCompleted,
@@ -14505,9 +15305,15 @@ class SessionOutput {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        image: json_.containsKey('image')
+            ? Image.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         payload: json_.containsKey('payload')
             ? json_['payload'] as core.Map<core.String, core.dynamic>
             : null,
+        progress: json_['progress'] as core.String?,
         text: json_['text'] as core.String?,
         toolCalls: json_.containsKey('toolCalls')
             ? ToolCalls.fromJson(
@@ -14525,7 +15331,9 @@ class SessionOutput {
     final diagnosticInfo = this.diagnosticInfo;
     final endSession = this.endSession;
     final googleSearchSuggestions = this.googleSearchSuggestions;
+    final image = this.image;
     final payload = this.payload;
+    final progress = this.progress;
     final text = this.text;
     final toolCalls = this.toolCalls;
     final turnCompleted = this.turnCompleted;
@@ -14537,7 +15345,9 @@ class SessionOutput {
       'diagnosticInfo': ?diagnosticInfo,
       'endSession': ?endSession,
       'googleSearchSuggestions': ?googleSearchSuggestions,
+      'image': ?image,
       'payload': ?payload,
+      'progress': ?progress,
       'text': ?text,
       'toolCalls': ?toolCalls,
       'turnCompleted': ?turnCompleted,
@@ -15165,6 +15975,14 @@ class Tool {
 
 /// Request for the client or the agent to execute the specified tool.
 class ToolCall {
+  /// Human-readable name of the agent that issued this call, e.g. "Contract
+  /// Architect".
+  ///
+  /// Empty when the root agent issued it.
+  ///
+  /// Output only.
+  core.String? agentName;
+
   /// The input parameters and values for the tool in JSON object format.
   ///
   /// Optional.
@@ -15186,6 +16004,15 @@ class ToolCall {
   /// Optional.
   core.String? id;
 
+  /// The id of the tool call that caused this one, when it was issued by a
+  /// sub-agent working on behalf of a parent call.
+  ///
+  /// Empty for top-level calls. Lets a client group a sub-agent's work under
+  /// the call that started it instead of rendering every step as a sibling.
+  ///
+  /// Output only.
+  core.String? parentToolCallId;
+
   /// The name of the tool to execute.
   ///
   /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
@@ -15198,15 +16025,25 @@ class ToolCall {
   /// Optional.
   ToolsetTool? toolsetTool;
 
-  ToolCall({this.args, this.displayName, this.id, this.tool, this.toolsetTool});
+  ToolCall({
+    this.agentName,
+    this.args,
+    this.displayName,
+    this.id,
+    this.parentToolCallId,
+    this.tool,
+    this.toolsetTool,
+  });
 
   ToolCall.fromJson(core.Map json_)
     : this(
+        agentName: json_['agentName'] as core.String?,
         args: json_.containsKey('args')
             ? json_['args'] as core.Map<core.String, core.dynamic>
             : null,
         displayName: json_['displayName'] as core.String?,
         id: json_['id'] as core.String?,
+        parentToolCallId: json_['parentToolCallId'] as core.String?,
         tool: json_['tool'] as core.String?,
         toolsetTool: json_.containsKey('toolsetTool')
             ? ToolsetTool.fromJson(
@@ -15216,15 +16053,19 @@ class ToolCall {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final agentName = this.agentName;
     final args = this.args;
     final displayName = this.displayName;
     final id = this.id;
+    final parentToolCallId = this.parentToolCallId;
     final tool = this.tool;
     final toolsetTool = this.toolsetTool;
     return {
+      'agentName': ?agentName,
       'args': ?args,
       'displayName': ?displayName,
       'id': ?id,
+      'parentToolCallId': ?parentToolCallId,
       'tool': ?tool,
       'toolsetTool': ?toolsetTool,
     };
@@ -15291,6 +16132,14 @@ class ToolFakeConfig {
 
 /// The execution result of a specific tool from the client or the agent.
 class ToolResponse {
+  /// Human-readable name of the agent that issued this call, e.g. "Contract
+  /// Architect".
+  ///
+  /// Empty when the root agent issued it.
+  ///
+  /// Output only.
+  core.String? agentName;
+
   /// Display name of the tool.
   ///
   /// Output only.
@@ -15300,6 +16149,15 @@ class ToolResponse {
   ///
   /// Optional.
   core.String? id;
+
+  /// The id of the tool call that caused this one, when it was issued by a
+  /// sub-agent working on behalf of a parent call.
+  ///
+  /// Empty for top-level calls. Lets a client group a sub-agent's work under
+  /// the call that started it instead of rendering every step as a sibling.
+  ///
+  /// Output only.
+  core.String? parentToolCallId;
 
   /// The tool execution result in JSON object format.
   ///
@@ -15326,8 +16184,10 @@ class ToolResponse {
   ToolsetTool? toolsetTool;
 
   ToolResponse({
+    this.agentName,
     this.displayName,
     this.id,
+    this.parentToolCallId,
     this.response,
     this.tool,
     this.toolsetTool,
@@ -15335,8 +16195,10 @@ class ToolResponse {
 
   ToolResponse.fromJson(core.Map json_)
     : this(
+        agentName: json_['agentName'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         id: json_['id'] as core.String?,
+        parentToolCallId: json_['parentToolCallId'] as core.String?,
         response: json_.containsKey('response')
             ? json_['response'] as core.Map<core.String, core.dynamic>
             : null,
@@ -15349,14 +16211,18 @@ class ToolResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final agentName = this.agentName;
     final displayName = this.displayName;
     final id = this.id;
+    final parentToolCallId = this.parentToolCallId;
     final response = this.response;
     final tool = this.tool;
     final toolsetTool = this.toolsetTool;
     return {
+      'agentName': ?agentName,
       'displayName': ?displayName,
       'id': ?id,
+      'parentToolCallId': ?parentToolCallId,
       'response': ?response,
       'tool': ?tool,
       'toolsetTool': ?toolsetTool,

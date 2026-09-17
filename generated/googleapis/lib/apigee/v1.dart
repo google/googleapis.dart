@@ -344,13 +344,14 @@ class OrganizationsResource {
   ///
   /// For organizations with BillingType EVALUATION, an immediate deletion is
   /// performed. For paid organizations (Subscription or Pay-as-you-go), a
-  /// soft-deletion is performed. The organization can be restored within the
-  /// soft-deletion period, which is specified using the `retention` field in
-  /// the request or by filing a support ticket with Apigee. During the data
-  /// retention period specified in the request, the Apigee organization cannot
-  /// be recreated in the same Google Cloud project. **IMPORTANT: The default
-  /// data retention setting for this operation is 7 days. To permanently delete
-  /// the organization in 24 hours, set the retention parameter to `MINIMUM`.**
+  /// soft-deletion is performed by default. The organization can be restored
+  /// within the soft-deletion period, which is specified using the `retention`
+  /// field in the request or by filing a support ticket with Apigee. During the
+  /// data retention period specified in the request, the Apigee organization
+  /// cannot be recreated in the same Google Cloud project. **IMPORTANT: The
+  /// default data retention setting for this operation is 7 days. To
+  /// permanently delete the organization in 24 hours, set the retention
+  /// parameter to `MINIMUM`.**
   ///
   /// Request parameters:
   ///
@@ -536,6 +537,47 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1IngressConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the deployed MCP server configuration for an organization.
+  ///
+  /// McpServerConfig is an org-scoped singleton (one per organization). The
+  /// returned configuration may be up to 30 seconds out of date by default.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the deployed MCP server configuration for the
+  /// organization in the singleton form: `organizations/{org}/mcpServerConfig`.
+  /// Value must have pattern `^organizations/\[^/\]+/mcpServerConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1McpServerConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1McpServerConfig> getMcpServerConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1McpServerConfig.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -23510,10 +23552,17 @@ class GoogleCloudApigeeV1ControlPlaneAccess {
   /// Optional.
   core.List<core.String>? synchronizerIdentities;
 
+  /// Service accounts granted access to control plane resources for the
+  /// apigee-watcher component.
+  ///
+  /// Optional.
+  core.List<core.String>? watcherIdentities;
+
   GoogleCloudApigeeV1ControlPlaneAccess({
     this.analyticsPublisherIdentities,
     this.name,
     this.synchronizerIdentities,
+    this.watcherIdentities,
   });
 
   GoogleCloudApigeeV1ControlPlaneAccess.fromJson(core.Map json_)
@@ -23526,16 +23575,21 @@ class GoogleCloudApigeeV1ControlPlaneAccess {
         synchronizerIdentities: (json_['synchronizerIdentities'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        watcherIdentities: (json_['watcherIdentities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final analyticsPublisherIdentities = this.analyticsPublisherIdentities;
     final name = this.name;
     final synchronizerIdentities = this.synchronizerIdentities;
+    final watcherIdentities = this.watcherIdentities;
     return {
       'analyticsPublisherIdentities': ?analyticsPublisherIdentities,
       'name': ?name,
       'synchronizerIdentities': ?synchronizerIdentities,
+      'watcherIdentities': ?watcherIdentities,
     };
   }
 }
@@ -29963,6 +30017,85 @@ class GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow {
   }
 }
 
+/// Deployed MCP server configuration for an organization.
+///
+/// Response for GetMcpServerConfig. Org-scoped singleton: each organization has
+/// exactly one McpServerConfig. Multiple logical MCP servers within the same
+/// org are expressed inside the Cloud Storage blob (McpServerConfigData.hosts
+/// map), not as multiple McpServerConfig resources.
+class GoogleCloudApigeeV1McpServerConfig {
+  /// Cloud Storage URI to the McpServerConfigData blob in the Apigee tenant
+  /// project bucket.
+  ///
+  /// The sidecar fetches this URI using Cloud Storage, and deserializes the.
+  /// protojson blob to McpServerConfigData. Treat this as an opaque URI — its
+  /// format may change. Example:
+  /// gs://{apigee-tp-bucket}/apigee-mcp-config-{org}-{revision_id}.json
+  ///
+  /// Output only.
+  core.String? mcpServerConfigDataLocation;
+
+  /// Identifier.
+  ///
+  /// Resource name in the singleton form: organizations/{org}/mcpServerConfig
+  core.String? name;
+
+  /// Time at which this McpServerConfig revision was created.
+  ///
+  /// Mirrors IngressConfig.revision_create_time.
+  ///
+  /// Output only.
+  core.String? revisionCreateTime;
+
+  /// Revision ID that defines the ordering on McpServerConfig revisions.
+  ///
+  /// Higher values indicate more recently deployed configurations.
+  /// Monotonically non-decreasing per organization. Mirrors
+  /// IngressConfig.revision_id.
+  ///
+  /// Output only.
+  core.String? revisionId;
+
+  /// Unique ID for the McpServerConfig that will only change if the
+  /// organization is deleted and recreated.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  GoogleCloudApigeeV1McpServerConfig({
+    this.mcpServerConfigDataLocation,
+    this.name,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.uid,
+  });
+
+  GoogleCloudApigeeV1McpServerConfig.fromJson(core.Map json_)
+    : this(
+        mcpServerConfigDataLocation:
+            json_['mcpServerConfigDataLocation'] as core.String?,
+        name: json_['name'] as core.String?,
+        revisionCreateTime: json_['revisionCreateTime'] as core.String?,
+        revisionId: json_['revisionId'] as core.String?,
+        uid: json_['uid'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mcpServerConfigDataLocation = this.mcpServerConfigDataLocation;
+    final name = this.name;
+    final revisionCreateTime = this.revisionCreateTime;
+    final revisionId = this.revisionId;
+    final uid = this.uid;
+    return {
+      'mcpServerConfigDataLocation': ?mcpServerConfigDataLocation,
+      'name': ?name,
+      'revisionCreateTime': ?revisionCreateTime,
+      'revisionId': ?revisionId,
+      'uid': ?uid,
+    };
+  }
+}
+
 /// Encapsulates additional information about query execution.
 class GoogleCloudApigeeV1Metadata {
   /// List of error messages as strings.
@@ -35462,7 +35595,10 @@ class GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation {
   /// Output only.
   core.String? attachTime;
 
-  /// Name of the environment that the profile is attached to.
+  /// The environment ID that the profile is attached to, e.g. `prod`.
+  ///
+  /// This is the bare environment ID, not a full resource name; see
+  /// b/288477507.
   ///
   /// Immutable.
   core.String? name;

@@ -22250,6 +22250,8 @@ class VideoPerformanceAd {
   core.String? displayUrlBreadcrumb2;
 
   /// The domain of the display URL.
+  ///
+  /// Output only.
   core.String? domain;
 
   /// The URL address of the webpage that people reach after they click the ad.

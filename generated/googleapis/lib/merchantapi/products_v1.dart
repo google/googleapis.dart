@@ -1021,6 +1021,7 @@ class DestinationStatus {
   /// - "MERCHANT_REVIEWS" :
   /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
   /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  /// - "RENTAL_ADS" : Real Estate Rental Ads. .
   core.String? reportingContext;
 
   DestinationStatus({
@@ -1327,6 +1328,7 @@ class ItemLevelIssue {
   /// - "MERCHANT_REVIEWS" :
   /// [Merchant Reviews](https://developers.google.com/merchant-review-feeds).
   /// - "YOUTUBE_CHECKOUT" : YouTube Checkout .
+  /// - "RENTAL_ADS" : Real Estate Rental Ads. .
   core.String? reportingContext;
 
   /// Whether the issue can be resolved by the business.
@@ -2010,9 +2012,8 @@ class ProductAttributes {
   /// products recorded in the
   /// [EU EPREL](https://eprel.ec.europa.eu/screen/home) database.
   ///
-  /// See the
-  /// [Help Center](https://support.google.com/merchants/answer/13528839)
-  /// article for more information.
+  /// For more information, see
+  /// [Certification](https://support.google.com/merchants/answer/13528839).
   core.List<ProductCertification>? certifications;
 
   /// Whether the vehicle is OEM \[certified
@@ -3727,6 +3728,26 @@ class ProductCertification {
   /// Maximum length is 2000 characters.
   core.String? certificationCode;
 
+  /// URL to the certification document (eg.
+  ///
+  /// `https://www.example.com/document`), for example, the product data sheet
+  /// or fiche required by UK's DESNZ or EU's EPREL. Maximum length is 2000
+  /// characters. For more information, see
+  /// [Certification](https://support.google.com/merchants/answer/13528839).
+  ///
+  /// Optional.
+  core.String? certificationDocumentLink;
+
+  /// URL to the certification label (eg.
+  ///
+  /// `https://www.example.com/label`), for example, the energy efficiency label
+  /// required by UK's DESNZ or EU's EPREL. Maximum length is 2000 characters.
+  /// For more information, see
+  /// [Certification](https://support.google.com/merchants/answer/13528839).
+  ///
+  /// Optional.
+  core.String? certificationLabelLink;
+
   /// The name of the certification.
   /// Possible string values are:
   /// - "CERTIFICATION_NAME_UNSPECIFIED" : Certification name is not specified.
@@ -3749,6 +3770,8 @@ class ProductCertification {
   ProductCertification({
     this.certificationAuthority,
     this.certificationCode,
+    this.certificationDocumentLink,
+    this.certificationLabelLink,
     this.certificationName,
     this.certificationValue,
   });
@@ -3757,6 +3780,9 @@ class ProductCertification {
     : this(
         certificationAuthority: json_['certificationAuthority'] as core.String?,
         certificationCode: json_['certificationCode'] as core.String?,
+        certificationDocumentLink:
+            json_['certificationDocumentLink'] as core.String?,
+        certificationLabelLink: json_['certificationLabelLink'] as core.String?,
         certificationName: json_['certificationName'] as core.String?,
         certificationValue: json_['certificationValue'] as core.String?,
       );
@@ -3764,11 +3790,15 @@ class ProductCertification {
   core.Map<core.String, core.dynamic> toJson() {
     final certificationAuthority = this.certificationAuthority;
     final certificationCode = this.certificationCode;
+    final certificationDocumentLink = this.certificationDocumentLink;
+    final certificationLabelLink = this.certificationLabelLink;
     final certificationName = this.certificationName;
     final certificationValue = this.certificationValue;
     return {
       'certificationAuthority': ?certificationAuthority,
       'certificationCode': ?certificationCode,
+      'certificationDocumentLink': ?certificationDocumentLink,
+      'certificationLabelLink': ?certificationLabelLink,
       'certificationName': ?certificationName,
       'certificationValue': ?certificationValue,
     };
@@ -4059,6 +4089,13 @@ class ProductInstallment {
   /// The up-front down payment amount the buyer has to pay.
   Price? downpayment;
 
+  /// The mileage allowance for the lease of the vehicle.
+  ///
+  /// Only applicable to vehicle products.
+  ///
+  /// Optional.
+  Mileage? mileageAllowance;
+
   /// The number of installments the buyer has to pay.
   core.String? months;
 
@@ -4072,6 +4109,7 @@ class ProductInstallment {
     this.annualPercentageRate,
     this.creditType,
     this.downpayment,
+    this.mileageAllowance,
     this.months,
     this.totalAmount,
   });
@@ -4091,6 +4129,12 @@ class ProductInstallment {
                 json_['downpayment'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        mileageAllowance: json_.containsKey('mileageAllowance')
+            ? Mileage.fromJson(
+                json_['mileageAllowance']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         months: json_['months'] as core.String?,
         totalAmount: json_.containsKey('totalAmount')
             ? Price.fromJson(
@@ -4104,6 +4148,7 @@ class ProductInstallment {
     final annualPercentageRate = this.annualPercentageRate;
     final creditType = this.creditType;
     final downpayment = this.downpayment;
+    final mileageAllowance = this.mileageAllowance;
     final months = this.months;
     final totalAmount = this.totalAmount;
     return {
@@ -4111,6 +4156,7 @@ class ProductInstallment {
       'annualPercentageRate': ?annualPercentageRate,
       'creditType': ?creditType,
       'downpayment': ?downpayment,
+      'mileageAllowance': ?mileageAllowance,
       'months': ?months,
       'totalAmount': ?totalAmount,
     };
@@ -4721,10 +4767,51 @@ class ShippingBusinessDaysConfig {
 }
 
 /// The ShippingDimension of the product.
-typedef ShippingDimension = $ShippingDimension;
+class ShippingDimension {
+  /// The unit of value.
+  core.String? unit;
+
+  /// The dimension of the product used to calculate the shipping cost of the
+  /// item.
+  core.double? value;
+
+  ShippingDimension({this.unit, this.value});
+
+  ShippingDimension.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final unit = this.unit;
+    final value = this.value;
+    return {'unit': ?unit, 'value': ?value};
+  }
+}
 
 /// The ShippingWeight of the product.
-typedef ShippingWeight = $ShippingWeight;
+class ShippingWeight {
+  /// The unit of value.
+  core.String? unit;
+
+  /// The weight of the product used to calculate the shipping cost of the item.
+  core.double? value;
+
+  ShippingWeight({this.unit, this.value});
+
+  ShippingWeight.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final unit = this.unit;
+    final value = this.value;
+    return {'unit': ?unit, 'value': ?value};
+  }
+}
 
 /// Structured description, for algorithmically (AI)-generated descriptions.
 class StructuredDescription {
@@ -4860,10 +4947,50 @@ class UnitArea {
 }
 
 /// The UnitPricingBaseMeasure of the product.
-typedef UnitPricingBaseMeasure = $UnitPricingBaseMeasure;
+class UnitPricingBaseMeasure {
+  /// The unit of the denominator.
+  core.String? unit;
+
+  /// The denominator of the unit price.
+  core.String? value;
+
+  UnitPricingBaseMeasure({this.unit, this.value});
+
+  UnitPricingBaseMeasure.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final unit = this.unit;
+    final value = this.value;
+    return {'unit': ?unit, 'value': ?value};
+  }
+}
 
 /// The UnitPricingMeasure of the product.
-typedef UnitPricingMeasure = $UnitPricingMeasure;
+class UnitPricingMeasure {
+  /// The unit of the measure.
+  core.String? unit;
+
+  /// The measure of an item.
+  core.double? value;
+
+  UnitPricingMeasure({this.unit, this.value});
+
+  UnitPricingMeasure.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final unit = this.unit;
+    final value = this.value;
+    return {'unit': ?unit, 'value': ?value};
+  }
+}
 
 /// Additional product variants for the product.
 class VariantOption {

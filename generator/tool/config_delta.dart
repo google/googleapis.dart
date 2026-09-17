@@ -78,12 +78,12 @@ Future<void> main() async {
 
   for (var api in allApiNames) {
     if (!oldApis.containsKey(api)) {
-      print('- `$api` - new');
+      print('- `$api` - new!');
       continue;
     }
 
     if (!newApis.containsKey(api)) {
-      print('- `$api` - removed');
+      print('- `$api` - **REMOVED**');
       continue;
     }
 
@@ -94,7 +94,7 @@ Future<void> main() async {
     final removed = oldVersions.difference(newVersions);
 
     for (var v in removed) {
-      print('- `$api` - removed `$v`');
+      print('- `$api` - **REMOVED** `$v`');
     }
     for (var v in added) {
       print('- `$api` - added `$v`');

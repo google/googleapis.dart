@@ -2904,6 +2904,234 @@ class CustomersReportsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Find SaaS usage reports of a customer based on the given search and
+  /// sorting criteria.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Obfuscated customer ID prefixed with "customers/C"
+  /// or "customers/my_customer".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter expression to narrow down the SaaS reports
+  /// to return. Supported operators are: =, !=, \<, \<=, \>, \>=, :. Logical
+  /// operators AND, OR, and NOT are supported. Supported fields: * app *
+  /// org_unit_id * first_navigation_time * last_navigation_time * category *
+  /// organization * founded_year * headquarters * primary_domain * domains *
+  /// encryption_protocols * visits_count * distinct_users_count *
+  /// distinct_browsers_count * content_transfer_count Example:
+  /// `(first_navigation_time < "2026-01-31T00:00:00Z" AND last_navigation_time
+  /// > "2026-01-01T00:00:00Z") AND visits_count > 100`
+  ///
+  /// [orderBy] - Optional. The order by expression to sort the SaaS reports.
+  /// Supported fields: * app * category * organization * founded_year *
+  /// headquarters * primary_domain * visits_count * distinct_users_count *
+  /// distinct_browsers_count * content_transfer_count Default order is
+  /// ascending. To specify descending order for a field, append " desc".
+  /// Example: `visits_count desc`
+  ///
+  /// [pageSize] - Optional. The maximum number of reports to return. The
+  /// service may return fewer than this value. If unspecified, at most 100
+  /// reports will be returned. The maximum value is 200; values above 200 will
+  /// be coerced to 200.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `FindSaasUsageReports` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `FindSaasUsageReports`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1FindSaasUsageReportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1FindSaasUsageReportsResponse>
+  findSaasUsage(
+    core.String customer, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$customer') + '/reports:findSaasUsage';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1FindSaasUsageReportsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Find SaaS usage reports of a customer grouped by browsers based on the
+  /// given search and sorting criteria.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Obfuscated customer ID prefixed with "customers/C"
+  /// or "customers/my_customer".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [app] - Required. The name of the SaaS application (e.g., `ChatGPT`,
+  /// `Gemini`).
+  ///
+  /// [filter] - Optional. The filter expression to narrow down the SaaS browser
+  /// reports to return. Supported operators are: =, !=, \<, \<=, \>, \>=, :.
+  /// Logical operators AND, OR, and NOT are supported. Supported fields: *
+  /// machine * os_platform * first_navigation_time * last_navigation_time *
+  /// org_unit_id
+  ///
+  /// [orderBy] - Optional. The order by expression to sort the SaaS browser
+  /// reports. Supported fields: * machine * os_platform * first_navigation_time
+  /// * last_navigation_time Default order is ascending. To specify descending
+  /// order for a field, append " desc".
+  ///
+  /// [pageSize] - Optional. The maximum number of browsers to return. The
+  /// service may return fewer than this value. If unspecified, at most 100
+  /// browsers will be returned. The maximum value is 200; values above 200 will
+  /// be coerced to 200.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `FindSaasUsageBrowsers` call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1FindSaasUsageBrowsersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1FindSaasUsageBrowsersResponse>
+  findSaasUsageBrowsers(
+    core.String customer, {
+    core.String? app,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'app': ?app == null ? null : [app],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:findSaasUsageBrowsers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1FindSaasUsageBrowsersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Find SaaS usage reports of a customer grouped by profiles based on the
+  /// given search and sorting criteria.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Obfuscated customer ID prefixed with "customers/C"
+  /// or "customers/my_customer".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [app] - Required. The name of the SaaS application (e.g., `ChatGPT`,
+  /// `Gemini`).
+  ///
+  /// [filter] - Optional. The filter expression to narrow down the SaaS profile
+  /// reports to return. Supported operators are: =, !=, \<, \<=, \>, \>=, :.
+  /// Logical operators AND, OR, and NOT are supported. Supported fields: *
+  /// email * org_unit_id * os_platform * first_navigation_time *
+  /// last_navigation_time
+  ///
+  /// [orderBy] - Optional. The order by expression to sort the SaaS profile
+  /// reports. Supported fields: * email * os_platform * first_navigation_time *
+  /// last_navigation_time Default order is ascending. To specify descending
+  /// order for a field, append " desc".
+  ///
+  /// [pageSize] - Optional. The maximum number of reports to return. The
+  /// service may return fewer than this value. If unspecified, at most 100
+  /// reports will be returned. The maximum value is 200; values above 200 will
+  /// be coerced to 200.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `FindSaasUsageProfiles` call. Provide this to retrieve the subsequent
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1FindSaasUsageProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1FindSaasUsageProfilesResponse>
+  findSaasUsageProfiles(
+    core.String customer, {
+    core.String? app,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'app': ?app == null ? null : [app],
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:findSaasUsageProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1FindSaasUsageProfilesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class CustomersTelemetryResource {
@@ -6401,6 +6629,137 @@ class GoogleChromeManagementV1FindInstalledAppProfilesResponse {
   }
 }
 
+/// Response to `FindSaasUsageBrowsers` method.
+class GoogleChromeManagementV1FindSaasUsageBrowsersResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  core.String? nextPageToken;
+
+  /// The list of SaaS usage browser reports.
+  core.List<GoogleChromeManagementV1SaasUsageBrowser>? saasUsageBrowsers;
+
+  /// Total number of SaaS usage browser reports that match the request.
+  core.String? totalSize;
+
+  GoogleChromeManagementV1FindSaasUsageBrowsersResponse({
+    this.nextPageToken,
+    this.saasUsageBrowsers,
+    this.totalSize,
+  });
+
+  GoogleChromeManagementV1FindSaasUsageBrowsersResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        saasUsageBrowsers: (json_['saasUsageBrowsers'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementV1SaasUsageBrowser.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        totalSize: json_['totalSize'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final saasUsageBrowsers = this.saasUsageBrowsers;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'saasUsageBrowsers': ?saasUsageBrowsers,
+      'totalSize': ?totalSize,
+    };
+  }
+}
+
+/// Response to `FindSaasUsageProfiles` method.
+class GoogleChromeManagementV1FindSaasUsageProfilesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of SaaS usage profile reports.
+  core.List<GoogleChromeManagementV1SaasUsageProfileReport>? profileReports;
+
+  /// Total number of SaaS usage profile reports that match the request.
+  core.String? totalSize;
+
+  GoogleChromeManagementV1FindSaasUsageProfilesResponse({
+    this.nextPageToken,
+    this.profileReports,
+    this.totalSize,
+  });
+
+  GoogleChromeManagementV1FindSaasUsageProfilesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        profileReports: (json_['profileReports'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleChromeManagementV1SaasUsageProfileReport.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        totalSize: json_['totalSize'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final profileReports = this.profileReports;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'profileReports': ?profileReports,
+      'totalSize': ?totalSize,
+    };
+  }
+}
+
+/// Response to `FindSaasUsage` method.
+class GoogleChromeManagementV1FindSaasUsageReportsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of SaaS usage reports.
+  core.List<GoogleChromeManagementV1SaasUsageReport>? saasReports;
+
+  /// Total number of SaaS usage reports that match the request.
+  core.String? totalSize;
+
+  GoogleChromeManagementV1FindSaasUsageReportsResponse({
+    this.nextPageToken,
+    this.saasReports,
+    this.totalSize,
+  });
+
+  GoogleChromeManagementV1FindSaasUsageReportsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        saasReports: (json_['saasReports'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementV1SaasUsageReport.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        totalSize: json_['totalSize'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final saasReports = this.saasReports;
+    final totalSize = this.totalSize;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'saasReports': ?saasReports,
+      'totalSize': ?totalSize,
+    };
+  }
+}
+
 /// Information of a graphics adapter (GPU).
 class GoogleChromeManagementV1GraphicsAdapterInfo {
   /// Adapter name.
@@ -8074,6 +8433,361 @@ class GoogleChromeManagementV1RuntimeCountersReport {
       'reportTime': ?reportTime,
       'uptimeRuntimeDuration': ?uptimeRuntimeDuration,
     };
+  }
+}
+
+/// Details of a SaaS usage browser.
+class GoogleChromeManagementV1SaasUsageBrowser {
+  /// The device permanent ID.
+  ///
+  /// Output only.
+  core.String? devicePermanentId;
+
+  /// The timestamp when the application was first navigated to by this browser.
+  ///
+  /// Output only.
+  core.String? firstNavigationTime;
+
+  /// The timestamp when the application was last navigated to by this browser.
+  ///
+  /// Output only.
+  core.String? lastNavigationTime;
+
+  /// The machine name.
+  ///
+  /// Output only.
+  core.String? machine;
+
+  /// The ID of the organizational unit.
+  ///
+  /// Output only.
+  core.String? orgUnitId;
+
+  /// The OS platform.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEVICE_SYSTEM_UNSPECIFIED" : No operating system specified.
+  /// - "SYSTEM_OTHER" : Other operating system.
+  /// - "SYSTEM_ANDROID" : Android operating system.
+  /// - "SYSTEM_IOS" : Apple iOS operating system.
+  /// - "SYSTEM_CROS" : ChromeOS operating system.
+  /// - "SYSTEM_WINDOWS" : Microsoft Windows operating system.
+  /// - "SYSTEM_MAC" : Apple macOS operating system.
+  /// - "SYSTEM_LINUX" : Linux operating system.
+  core.String? osPlatform;
+
+  /// The OS version.
+  ///
+  /// Output only.
+  core.String? osVersion;
+
+  GoogleChromeManagementV1SaasUsageBrowser({
+    this.devicePermanentId,
+    this.firstNavigationTime,
+    this.lastNavigationTime,
+    this.machine,
+    this.orgUnitId,
+    this.osPlatform,
+    this.osVersion,
+  });
+
+  GoogleChromeManagementV1SaasUsageBrowser.fromJson(core.Map json_)
+    : this(
+        devicePermanentId: json_['devicePermanentId'] as core.String?,
+        firstNavigationTime: json_['firstNavigationTime'] as core.String?,
+        lastNavigationTime: json_['lastNavigationTime'] as core.String?,
+        machine: json_['machine'] as core.String?,
+        orgUnitId: json_['orgUnitId'] as core.String?,
+        osPlatform: json_['osPlatform'] as core.String?,
+        osVersion: json_['osVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final devicePermanentId = this.devicePermanentId;
+    final firstNavigationTime = this.firstNavigationTime;
+    final lastNavigationTime = this.lastNavigationTime;
+    final machine = this.machine;
+    final orgUnitId = this.orgUnitId;
+    final osPlatform = this.osPlatform;
+    final osVersion = this.osVersion;
+    return {
+      'devicePermanentId': ?devicePermanentId,
+      'firstNavigationTime': ?firstNavigationTime,
+      'lastNavigationTime': ?lastNavigationTime,
+      'machine': ?machine,
+      'orgUnitId': ?orgUnitId,
+      'osPlatform': ?osPlatform,
+      'osVersion': ?osVersion,
+    };
+  }
+}
+
+/// Represents a single SaaS report entry grouped by profile.
+class GoogleChromeManagementV1SaasUsageProfileReport {
+  /// The email of the user.
+  ///
+  /// Output only.
+  core.String? email;
+
+  /// The timestamp when the application was first navigated to by this profile.
+  ///
+  /// Output only.
+  core.String? firstNavigationTime;
+
+  /// The timestamp when the application was last navigated to by this profile.
+  ///
+  /// Output only.
+  core.String? lastNavigationTime;
+
+  /// The ID of the organizational unit.
+  ///
+  /// Output only.
+  core.String? orgUnitId;
+
+  /// The OS platform.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEVICE_SYSTEM_UNSPECIFIED" : No operating system specified.
+  /// - "SYSTEM_OTHER" : Other operating system.
+  /// - "SYSTEM_ANDROID" : Android operating system.
+  /// - "SYSTEM_IOS" : Apple iOS operating system.
+  /// - "SYSTEM_CROS" : ChromeOS operating system.
+  /// - "SYSTEM_WINDOWS" : Microsoft Windows operating system.
+  /// - "SYSTEM_MAC" : Apple macOS operating system.
+  /// - "SYSTEM_LINUX" : Linux operating system.
+  core.String? osPlatform;
+
+  /// The OS version.
+  ///
+  /// Output only.
+  core.String? osVersion;
+
+  /// The permanent ID of the profile.
+  ///
+  /// Output only.
+  core.String? profilePermanentId;
+
+  GoogleChromeManagementV1SaasUsageProfileReport({
+    this.email,
+    this.firstNavigationTime,
+    this.lastNavigationTime,
+    this.orgUnitId,
+    this.osPlatform,
+    this.osVersion,
+    this.profilePermanentId,
+  });
+
+  GoogleChromeManagementV1SaasUsageProfileReport.fromJson(core.Map json_)
+    : this(
+        email: json_['email'] as core.String?,
+        firstNavigationTime: json_['firstNavigationTime'] as core.String?,
+        lastNavigationTime: json_['lastNavigationTime'] as core.String?,
+        orgUnitId: json_['orgUnitId'] as core.String?,
+        osPlatform: json_['osPlatform'] as core.String?,
+        osVersion: json_['osVersion'] as core.String?,
+        profilePermanentId: json_['profilePermanentId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final email = this.email;
+    final firstNavigationTime = this.firstNavigationTime;
+    final lastNavigationTime = this.lastNavigationTime;
+    final orgUnitId = this.orgUnitId;
+    final osPlatform = this.osPlatform;
+    final osVersion = this.osVersion;
+    final profilePermanentId = this.profilePermanentId;
+    return {
+      'email': ?email,
+      'firstNavigationTime': ?firstNavigationTime,
+      'lastNavigationTime': ?lastNavigationTime,
+      'orgUnitId': ?orgUnitId,
+      'osPlatform': ?osPlatform,
+      'osVersion': ?osVersion,
+      'profilePermanentId': ?profilePermanentId,
+    };
+  }
+}
+
+/// Represents a single SaaS report entry.
+class GoogleChromeManagementV1SaasUsageReport {
+  /// The name of the application.
+  ///
+  /// Output only.
+  core.String? app;
+
+  /// The category of the application.
+  ///
+  /// Output only.
+  core.String? category;
+
+  /// Provides information about content transfer events, if available.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1SaasUsageReportContentTransferDetails?
+  contentTransferDetails;
+
+  /// Number of distinct browsers that visited the application.
+  ///
+  /// Output only.
+  core.String? distinctBrowsersCount;
+
+  /// Number of distinct users who visited the application.
+  ///
+  /// Output only.
+  core.String? distinctUsersCount;
+
+  /// A list of domains and subdomains associated with the application.
+  ///
+  /// Output only.
+  core.List<core.String>? domains;
+
+  /// A list of encryption protocols used to access the application.
+  ///
+  /// Output only.
+  core.List<core.String>? encryptionProtocols;
+
+  /// The timestamp when the application was first navigated to.
+  ///
+  /// Output only.
+  core.String? firstNavigationTime;
+
+  /// The year the organization was founded.
+  ///
+  /// Output only.
+  core.int? foundedYear;
+
+  /// The headquarters location of the organization.
+  ///
+  /// Output only.
+  core.String? headquarters;
+
+  /// The timestamp when the application was last navigated to.
+  ///
+  /// Output only.
+  core.String? lastNavigationTime;
+
+  /// The ID of the organizational unit.
+  ///
+  /// Output only.
+  core.String? orgUnitId;
+
+  /// The organization that develops the application.
+  ///
+  /// Output only.
+  core.String? organization;
+
+  /// The primary domain of the application.
+  ///
+  /// Output only.
+  core.String? primaryDomain;
+
+  /// Total number of visits to the application.
+  ///
+  /// Output only.
+  core.String? visitsCount;
+
+  GoogleChromeManagementV1SaasUsageReport({
+    this.app,
+    this.category,
+    this.contentTransferDetails,
+    this.distinctBrowsersCount,
+    this.distinctUsersCount,
+    this.domains,
+    this.encryptionProtocols,
+    this.firstNavigationTime,
+    this.foundedYear,
+    this.headquarters,
+    this.lastNavigationTime,
+    this.orgUnitId,
+    this.organization,
+    this.primaryDomain,
+    this.visitsCount,
+  });
+
+  GoogleChromeManagementV1SaasUsageReport.fromJson(core.Map json_)
+    : this(
+        app: json_['app'] as core.String?,
+        category: json_['category'] as core.String?,
+        contentTransferDetails: json_.containsKey('contentTransferDetails')
+            ? GoogleChromeManagementV1SaasUsageReportContentTransferDetails.fromJson(
+                json_['contentTransferDetails']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        distinctBrowsersCount: json_['distinctBrowsersCount'] as core.String?,
+        distinctUsersCount: json_['distinctUsersCount'] as core.String?,
+        domains: (json_['domains'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        encryptionProtocols: (json_['encryptionProtocols'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        firstNavigationTime: json_['firstNavigationTime'] as core.String?,
+        foundedYear: json_['foundedYear'] as core.int?,
+        headquarters: json_['headquarters'] as core.String?,
+        lastNavigationTime: json_['lastNavigationTime'] as core.String?,
+        orgUnitId: json_['orgUnitId'] as core.String?,
+        organization: json_['organization'] as core.String?,
+        primaryDomain: json_['primaryDomain'] as core.String?,
+        visitsCount: json_['visitsCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final app = this.app;
+    final category = this.category;
+    final contentTransferDetails = this.contentTransferDetails;
+    final distinctBrowsersCount = this.distinctBrowsersCount;
+    final distinctUsersCount = this.distinctUsersCount;
+    final domains = this.domains;
+    final encryptionProtocols = this.encryptionProtocols;
+    final firstNavigationTime = this.firstNavigationTime;
+    final foundedYear = this.foundedYear;
+    final headquarters = this.headquarters;
+    final lastNavigationTime = this.lastNavigationTime;
+    final orgUnitId = this.orgUnitId;
+    final organization = this.organization;
+    final primaryDomain = this.primaryDomain;
+    final visitsCount = this.visitsCount;
+    return {
+      'app': ?app,
+      'category': ?category,
+      'contentTransferDetails': ?contentTransferDetails,
+      'distinctBrowsersCount': ?distinctBrowsersCount,
+      'distinctUsersCount': ?distinctUsersCount,
+      'domains': ?domains,
+      'encryptionProtocols': ?encryptionProtocols,
+      'firstNavigationTime': ?firstNavigationTime,
+      'foundedYear': ?foundedYear,
+      'headquarters': ?headquarters,
+      'lastNavigationTime': ?lastNavigationTime,
+      'orgUnitId': ?orgUnitId,
+      'organization': ?organization,
+      'primaryDomain': ?primaryDomain,
+      'visitsCount': ?visitsCount,
+    };
+  }
+}
+
+/// Provides information about content transfer events, if available.
+class GoogleChromeManagementV1SaasUsageReportContentTransferDetails {
+  /// Total number of content transfers associated with the application.
+  ///
+  /// Output only.
+  core.String? contentTransferCount;
+
+  GoogleChromeManagementV1SaasUsageReportContentTransferDetails({
+    this.contentTransferCount,
+  });
+
+  GoogleChromeManagementV1SaasUsageReportContentTransferDetails.fromJson(
+    core.Map json_,
+  ) : this(contentTransferCount: json_['contentTransferCount'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentTransferCount = this.contentTransferCount;
+    return {'contentTransferCount': ?contentTransferCount};
   }
 }
 

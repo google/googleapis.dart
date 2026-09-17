@@ -872,6 +872,7 @@ api.Project buildProject() {
     o.deleteTime = 'foo';
     o.displayName = 'foo';
     o.etag = 'foo';
+    o.isManagementProject = true;
     o.labels = buildUnnamed21();
     o.name = 'foo';
     o.parent = 'foo';
@@ -892,6 +893,7 @@ void checkProject(api.Project o) {
     unittest.expect(o.deleteTime!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(o.isManagementProject!, unittest.isTrue);
     checkUnnamed21(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.parent!, unittest.equals('foo'));

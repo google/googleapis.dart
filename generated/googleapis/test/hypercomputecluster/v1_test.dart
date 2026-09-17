@@ -142,6 +142,7 @@ api.Cluster buildCluster() {
     o.orchestrator = buildOrchestrator();
     o.reconciling = true;
     o.storageResources = buildUnnamed3();
+    o.uid = 'foo';
     o.updateTime = 'foo';
   }
   buildCounterCluster--;
@@ -160,6 +161,7 @@ void checkCluster(api.Cluster o) {
     checkOrchestrator(o.orchestrator!);
     unittest.expect(o.reconciling!, unittest.isTrue);
     checkUnnamed3(o.storageResources!);
+    unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterCluster--;

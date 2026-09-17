@@ -6544,6 +6544,7 @@ class Repository {
   /// - "GO" : Go package format.
   /// - "GENERIC" : Generic package format.
   /// - "RUBY" : Ruby package format.
+  /// - "CONDA" : Conda package format.
   core.String? format;
 
   /// The Cloud KMS resource name of the customer managed encryption key that's
@@ -6898,14 +6899,28 @@ class UploadFileRequest {
   /// Optional.
   core.String? fileId;
 
-  UploadFileRequest({this.fileId});
+  /// The type of the file to upload.
+  ///
+  /// Defaulting to ATTACHMENT if not specified.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ATTACHMENT" : Attachment file. Default value.
+  /// - "ARTIFACT" : Facade specific artifact file.
+  core.String? fileType;
+
+  UploadFileRequest({this.fileId, this.fileType});
 
   UploadFileRequest.fromJson(core.Map json_)
-    : this(fileId: json_['fileId'] as core.String?);
+    : this(
+        fileId: json_['fileId'] as core.String?,
+        fileType: json_['fileType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final fileId = this.fileId;
-    return {'fileId': ?fileId};
+    final fileType = this.fileType;
+    return {'fileId': ?fileId, 'fileType': ?fileType};
   }
 }
 
@@ -6951,6 +6966,15 @@ class UploadGenericArtifactRequest {
   /// characters.
   core.String? packageId;
 
+  /// Client specified annotations to attach to the version upon creation.
+  ///
+  /// This field is only applied if the Version is created during this upload.
+  /// If the Version already exists and this field is set, the request will
+  /// fail.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? versionAnnotations;
+
   /// The ID of the version of the generic artifact.
   ///
   /// If the version does not exist, a new version will be created. The
@@ -6960,22 +6984,33 @@ class UploadGenericArtifactRequest {
   /// a version called `latest` is not allowed.
   core.String? versionId;
 
-  UploadGenericArtifactRequest({this.filename, this.packageId, this.versionId});
+  UploadGenericArtifactRequest({
+    this.filename,
+    this.packageId,
+    this.versionAnnotations,
+    this.versionId,
+  });
 
   UploadGenericArtifactRequest.fromJson(core.Map json_)
     : this(
         filename: json_['filename'] as core.String?,
         packageId: json_['packageId'] as core.String?,
+        versionAnnotations:
+            (json_['versionAnnotations']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
         versionId: json_['versionId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final filename = this.filename;
     final packageId = this.packageId;
+    final versionAnnotations = this.versionAnnotations;
     final versionId = this.versionId;
     return {
       'filename': ?filename,
       'packageId': ?packageId,
+      'versionAnnotations': ?versionAnnotations,
       'versionId': ?versionId,
     };
   }
@@ -7369,14 +7404,15 @@ class VirtualRepositoryConfig {
 class VulnerabilityScanningConfig {
   /// Config for whether this repository has vulnerability scanning disabled.
   ///
+  /// When unset (ENABLEMENT_CONFIG_UNSPECIFIED), this is treated as INHERITED
+  /// for Docker repositories and DISABLED for non-Docker repositories.
+  ///
   /// Optional.
   /// Possible string values are:
-  /// - "ENABLEMENT_CONFIG_UNSPECIFIED" : Not set. This will be treated as
-  /// INHERITED for Docker repositories and DISABLED for non-Docker
-  /// repositories.
-  /// - "INHERITED" : Scanning is Enabled, but dependent on API enablement.
-  /// - "DISABLED" : No automatic vulnerability scanning will be performed for
-  /// this repository.
+  /// - "ENABLEMENT_CONFIG_UNSPECIFIED" : Unspecified enablement configuration.
+  /// - "INHERITED" : Enables the feature, but is dependent on parent API
+  /// enablement.
+  /// - "DISABLED" : Disables the feature for this repository.
   core.String? enablementConfig;
 
   /// State of feature enablement, combining repository enablement config and

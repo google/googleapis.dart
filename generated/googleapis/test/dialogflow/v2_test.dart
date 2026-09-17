@@ -4795,6 +4795,8 @@ buildGoogleCloudDialogflowV2InputAudioConfig() {
     o.enableAutomaticPunctuation = true;
     o.enableVoiceActivityEvents = true;
     o.enableWordInfo = true;
+    o.geminiAsrConfig =
+        buildGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig();
     o.languageCode = 'foo';
     o.model = 'foo';
     o.modelVariant = 'foo';
@@ -4804,6 +4806,7 @@ buildGoogleCloudDialogflowV2InputAudioConfig() {
     o.sampleRateHertz = 42;
     o.singleUtterance = true;
     o.speechContexts = buildUnnamed66();
+    o.useGeminiAsr = true;
   }
   buildCounterGoogleCloudDialogflowV2InputAudioConfig--;
   return o;
@@ -4819,6 +4822,9 @@ void checkGoogleCloudDialogflowV2InputAudioConfig(
     unittest.expect(o.enableAutomaticPunctuation!, unittest.isTrue);
     unittest.expect(o.enableVoiceActivityEvents!, unittest.isTrue);
     unittest.expect(o.enableWordInfo!, unittest.isTrue);
+    checkGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig(
+      o.geminiAsrConfig!,
+    );
     unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.model!, unittest.equals('foo'));
     unittest.expect(o.modelVariant!, unittest.equals('foo'));
@@ -4828,6 +4834,7 @@ void checkGoogleCloudDialogflowV2InputAudioConfig(
     unittest.expect(o.sampleRateHertz!, unittest.equals(42));
     unittest.expect(o.singleUtterance!, unittest.isTrue);
     checkUnnamed66(o.speechContexts!);
+    unittest.expect(o.useGeminiAsr!, unittest.isTrue);
   }
   buildCounterGoogleCloudDialogflowV2InputAudioConfig--;
 }
@@ -9390,11 +9397,14 @@ buildGoogleCloudDialogflowV2SpeechToTextConfig() {
   if (buildCounterGoogleCloudDialogflowV2SpeechToTextConfig < 3) {
     o.audioEncoding = 'foo';
     o.enableWordInfo = true;
+    o.geminiAsrConfig =
+        buildGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig();
     o.languageCode = 'foo';
     o.model = 'foo';
     o.phraseSets = buildUnnamed151();
     o.sampleRateHertz = 42;
     o.speechModelVariant = 'foo';
+    o.useGeminiAsr = true;
     o.useTimeoutBasedEndpointing = true;
   }
   buildCounterGoogleCloudDialogflowV2SpeechToTextConfig--;
@@ -9408,14 +9418,51 @@ void checkGoogleCloudDialogflowV2SpeechToTextConfig(
   if (buildCounterGoogleCloudDialogflowV2SpeechToTextConfig < 3) {
     unittest.expect(o.audioEncoding!, unittest.equals('foo'));
     unittest.expect(o.enableWordInfo!, unittest.isTrue);
+    checkGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig(
+      o.geminiAsrConfig!,
+    );
     unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.model!, unittest.equals('foo'));
     checkUnnamed151(o.phraseSets!);
     unittest.expect(o.sampleRateHertz!, unittest.equals(42));
     unittest.expect(o.speechModelVariant!, unittest.equals('foo'));
+    unittest.expect(o.useGeminiAsr!, unittest.isTrue);
     unittest.expect(o.useTimeoutBasedEndpointing!, unittest.isTrue);
   }
   buildCounterGoogleCloudDialogflowV2SpeechToTextConfig--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig =
+    0;
+api.GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig
+buildGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig() {
+  final o = api.GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig();
+  buildCounterGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig++;
+  if (buildCounterGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig <
+      3) {
+    o.endOfSpeechSensitivity = 'foo';
+    o.modelId = 'foo';
+    o.prefixPaddingMs = 42;
+    o.silenceDurationMs = 42;
+    o.startOfSpeechSensitivity = 'foo';
+  }
+  buildCounterGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig(
+  api.GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig o,
+) {
+  buildCounterGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig++;
+  if (buildCounterGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig <
+      3) {
+    unittest.expect(o.endOfSpeechSensitivity!, unittest.equals('foo'));
+    unittest.expect(o.modelId!, unittest.equals('foo'));
+    unittest.expect(o.prefixPaddingMs!, unittest.equals(42));
+    unittest.expect(o.silenceDurationMs!, unittest.equals(42));
+    unittest.expect(o.startOfSpeechSensitivity!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig--;
 }
 
 core.int buildCounterGoogleCloudDialogflowV2SuggestArticlesRequest = 0;
@@ -15649,6 +15696,22 @@ void main() {
       checkGoogleCloudDialogflowV2SpeechToTextConfig(od);
     });
   });
+
+  unittest.group(
+    'obj-schema-GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig(od);
+      });
+    },
+  );
 
   unittest.group(
     'obj-schema-GoogleCloudDialogflowV2SuggestArticlesRequest',

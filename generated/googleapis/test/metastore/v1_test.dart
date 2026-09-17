@@ -223,6 +223,29 @@ void checkBackendMetastore(api.BackendMetastore o) {
   buildCounterBackendMetastore--;
 }
 
+core.int buildCounterBackfillStatus = 0;
+api.BackfillStatus buildBackfillStatus() {
+  final o = api.BackfillStatus();
+  buildCounterBackfillStatus++;
+  if (buildCounterBackfillStatus < 3) {
+    o.migrationSummary = buildMigrationSummary();
+    o.reportPath = 'foo';
+    o.state = 'foo';
+  }
+  buildCounterBackfillStatus--;
+  return o;
+}
+
+void checkBackfillStatus(api.BackfillStatus o) {
+  buildCounterBackfillStatus++;
+  if (buildCounterBackfillStatus < 3) {
+    checkMigrationSummary(o.migrationSummary!);
+    unittest.expect(o.reportPath!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+  }
+  buildCounterBackfillStatus--;
+}
+
 core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
 
 void checkUnnamed4(core.List<core.String> o) {
@@ -260,6 +283,39 @@ void checkBackup(api.Backup o) {
     unittest.expect(o.state!, unittest.equals('foo'));
   }
   buildCounterBackup--;
+}
+
+core.int buildCounterBigLakeMetastoreMigrationConfig = 0;
+api.BigLakeMetastoreMigrationConfig buildBigLakeMetastoreMigrationConfig() {
+  final o = api.BigLakeMetastoreMigrationConfig();
+  buildCounterBigLakeMetastoreMigrationConfig++;
+  if (buildCounterBigLakeMetastoreMigrationConfig < 3) {
+    o.backfillStatus = buildBackfillStatus();
+    o.conflictPolicy = 'foo';
+    o.dryRun = true;
+    o.hiveConfig = buildHiveConfig();
+    o.icebergConfig = buildIcebergConfig();
+    o.mode = 'foo';
+    o.reportPath = 'foo';
+  }
+  buildCounterBigLakeMetastoreMigrationConfig--;
+  return o;
+}
+
+void checkBigLakeMetastoreMigrationConfig(
+  api.BigLakeMetastoreMigrationConfig o,
+) {
+  buildCounterBigLakeMetastoreMigrationConfig++;
+  if (buildCounterBigLakeMetastoreMigrationConfig < 3) {
+    checkBackfillStatus(o.backfillStatus!);
+    unittest.expect(o.conflictPolicy!, unittest.equals('foo'));
+    unittest.expect(o.dryRun!, unittest.isTrue);
+    checkHiveConfig(o.hiveConfig!);
+    checkIcebergConfig(o.icebergConfig!);
+    unittest.expect(o.mode!, unittest.equals('foo'));
+    unittest.expect(o.reportPath!, unittest.equals('foo'));
+  }
+  buildCounterBigLakeMetastoreMigrationConfig--;
 }
 
 core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
@@ -323,89 +379,38 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
-core.int buildCounterCdcConfig = 0;
-api.CdcConfig buildCdcConfig() {
-  final o = api.CdcConfig();
-  buildCounterCdcConfig++;
-  if (buildCounterCdcConfig < 3) {
-    o.bucket = 'foo';
-    o.password = 'foo';
-    o.reverseProxySubnet = 'foo';
-    o.rootPath = 'foo';
-    o.subnetIpRange = 'foo';
-    o.username = 'foo';
-    o.vpcNetwork = 'foo';
+core.List<api.DatabaseSummary> buildUnnamed6() => [
+  buildDatabaseSummary(),
+  buildDatabaseSummary(),
+];
+
+void checkUnnamed6(core.List<api.DatabaseSummary> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDatabaseSummary(o[0]);
+  checkDatabaseSummary(o[1]);
+}
+
+core.int buildCounterCatalogSummary = 0;
+api.CatalogSummary buildCatalogSummary() {
+  final o = api.CatalogSummary();
+  buildCounterCatalogSummary++;
+  if (buildCounterCatalogSummary < 3) {
+    o.catalog = 'foo';
+    o.catalogType = 'foo';
+    o.databaseSummaries = buildUnnamed6();
   }
-  buildCounterCdcConfig--;
+  buildCounterCatalogSummary--;
   return o;
 }
 
-void checkCdcConfig(api.CdcConfig o) {
-  buildCounterCdcConfig++;
-  if (buildCounterCdcConfig < 3) {
-    unittest.expect(o.bucket!, unittest.equals('foo'));
-    unittest.expect(o.password!, unittest.equals('foo'));
-    unittest.expect(o.reverseProxySubnet!, unittest.equals('foo'));
-    unittest.expect(o.rootPath!, unittest.equals('foo'));
-    unittest.expect(o.subnetIpRange!, unittest.equals('foo'));
-    unittest.expect(o.username!, unittest.equals('foo'));
-    unittest.expect(o.vpcNetwork!, unittest.equals('foo'));
+void checkCatalogSummary(api.CatalogSummary o) {
+  buildCounterCatalogSummary++;
+  if (buildCounterCatalogSummary < 3) {
+    unittest.expect(o.catalog!, unittest.equals('foo'));
+    unittest.expect(o.catalogType!, unittest.equals('foo'));
+    checkUnnamed6(o.databaseSummaries!);
   }
-  buildCounterCdcConfig--;
-}
-
-core.int buildCounterCloudSQLConnectionConfig = 0;
-api.CloudSQLConnectionConfig buildCloudSQLConnectionConfig() {
-  final o = api.CloudSQLConnectionConfig();
-  buildCounterCloudSQLConnectionConfig++;
-  if (buildCounterCloudSQLConnectionConfig < 3) {
-    o.hiveDatabaseName = 'foo';
-    o.instanceConnectionName = 'foo';
-    o.ipAddress = 'foo';
-    o.natSubnet = 'foo';
-    o.password = 'foo';
-    o.port = 42;
-    o.proxySubnet = 'foo';
-    o.username = 'foo';
-  }
-  buildCounterCloudSQLConnectionConfig--;
-  return o;
-}
-
-void checkCloudSQLConnectionConfig(api.CloudSQLConnectionConfig o) {
-  buildCounterCloudSQLConnectionConfig++;
-  if (buildCounterCloudSQLConnectionConfig < 3) {
-    unittest.expect(o.hiveDatabaseName!, unittest.equals('foo'));
-    unittest.expect(o.instanceConnectionName!, unittest.equals('foo'));
-    unittest.expect(o.ipAddress!, unittest.equals('foo'));
-    unittest.expect(o.natSubnet!, unittest.equals('foo'));
-    unittest.expect(o.password!, unittest.equals('foo'));
-    unittest.expect(o.port!, unittest.equals(42));
-    unittest.expect(o.proxySubnet!, unittest.equals('foo'));
-    unittest.expect(o.username!, unittest.equals('foo'));
-  }
-  buildCounterCloudSQLConnectionConfig--;
-}
-
-core.int buildCounterCloudSQLMigrationConfig = 0;
-api.CloudSQLMigrationConfig buildCloudSQLMigrationConfig() {
-  final o = api.CloudSQLMigrationConfig();
-  buildCounterCloudSQLMigrationConfig++;
-  if (buildCounterCloudSQLMigrationConfig < 3) {
-    o.cdcConfig = buildCdcConfig();
-    o.cloudSqlConnectionConfig = buildCloudSQLConnectionConfig();
-  }
-  buildCounterCloudSQLMigrationConfig--;
-  return o;
-}
-
-void checkCloudSQLMigrationConfig(api.CloudSQLMigrationConfig o) {
-  buildCounterCloudSQLMigrationConfig++;
-  if (buildCounterCloudSQLMigrationConfig < 3) {
-    checkCdcConfig(o.cdcConfig!);
-    checkCloudSQLConnectionConfig(o.cloudSqlConnectionConfig!);
-  }
-  buildCounterCloudSQLMigrationConfig--;
+  buildCounterCatalogSummary--;
 }
 
 core.int buildCounterCompleteMigrationRequest = 0;
@@ -490,6 +495,31 @@ void checkDatabaseDump(api.DatabaseDump o) {
   buildCounterDatabaseDump--;
 }
 
+core.int buildCounterDatabaseSummary = 0;
+api.DatabaseSummary buildDatabaseSummary() {
+  final o = api.DatabaseSummary();
+  buildCounterDatabaseSummary++;
+  if (buildCounterDatabaseSummary < 3) {
+    o.database = 'foo';
+    o.planAction = 'foo';
+    o.resultStatus = 'foo';
+    o.tableSummary = buildTableSummary();
+  }
+  buildCounterDatabaseSummary--;
+  return o;
+}
+
+void checkDatabaseSummary(api.DatabaseSummary o) {
+  buildCounterDatabaseSummary++;
+  if (buildCounterDatabaseSummary < 3) {
+    unittest.expect(o.database!, unittest.equals('foo'));
+    unittest.expect(o.planAction!, unittest.equals('foo'));
+    unittest.expect(o.resultStatus!, unittest.equals('foo'));
+    checkTableSummary(o.tableSummary!);
+  }
+  buildCounterDatabaseSummary--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -572,23 +602,15 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.Map<core.String, api.BackendMetastore> buildUnnamed6() => {
+core.Map<core.String, api.BackendMetastore> buildUnnamed7() => {
   'x': buildBackendMetastore(),
   'y': buildBackendMetastore(),
 };
 
-void checkUnnamed6(core.Map<core.String, api.BackendMetastore> o) {
+void checkUnnamed7(core.Map<core.String, api.BackendMetastore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackendMetastore(o['x']!);
   checkBackendMetastore(o['y']!);
-}
-
-core.Map<core.String, core.String> buildUnnamed7() => {'x': 'foo', 'y': 'foo'};
-
-void checkUnnamed7(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.equals('foo'));
-  unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
 core.Map<core.String, core.String> buildUnnamed8() => {'x': 'foo', 'y': 'foo'};
@@ -599,19 +621,27 @@ void checkUnnamed8(core.Map<core.String, core.String> o) {
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
+core.Map<core.String, core.String> buildUnnamed9() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed9(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
 core.int buildCounterFederation = 0;
 api.Federation buildFederation() {
   final o = api.Federation();
   buildCounterFederation++;
   if (buildCounterFederation < 3) {
-    o.backendMetastores = buildUnnamed6();
+    o.backendMetastores = buildUnnamed7();
     o.createTime = 'foo';
     o.endpointUri = 'foo';
-    o.labels = buildUnnamed7();
+    o.labels = buildUnnamed8();
     o.name = 'foo';
     o.state = 'foo';
     o.stateMessage = 'foo';
-    o.tags = buildUnnamed8();
+    o.tags = buildUnnamed9();
     o.uid = 'foo';
     o.updateTime = 'foo';
     o.version = 'foo';
@@ -623,14 +653,14 @@ api.Federation buildFederation() {
 void checkFederation(api.Federation o) {
   buildCounterFederation++;
   if (buildCounterFederation < 3) {
-    checkUnnamed6(o.backendMetastores!);
+    checkUnnamed7(o.backendMetastores!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.endpointUri!, unittest.equals('foo'));
-    checkUnnamed7(o.labels!);
+    checkUnnamed8(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.stateMessage!, unittest.equals('foo'));
-    checkUnnamed8(o.tags!);
+    checkUnnamed9(o.tags!);
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     unittest.expect(o.version!, unittest.equals('foo'));
@@ -638,20 +668,49 @@ void checkFederation(api.Federation o) {
   buildCounterFederation--;
 }
 
-core.Map<core.String, api.AuxiliaryVersionConfig> buildUnnamed9() => {
+core.List<core.String> buildUnnamed10() => ['foo', 'foo'];
+
+void checkUnnamed10(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterHiveConfig = 0;
+api.HiveConfig buildHiveConfig() {
+  final o = api.HiveConfig();
+  buildCounterHiveConfig++;
+  if (buildCounterHiveConfig < 3) {
+    o.catalog = 'foo';
+    o.databases = buildUnnamed10();
+  }
+  buildCounterHiveConfig--;
+  return o;
+}
+
+void checkHiveConfig(api.HiveConfig o) {
+  buildCounterHiveConfig++;
+  if (buildCounterHiveConfig < 3) {
+    unittest.expect(o.catalog!, unittest.equals('foo'));
+    checkUnnamed10(o.databases!);
+  }
+  buildCounterHiveConfig--;
+}
+
+core.Map<core.String, api.AuxiliaryVersionConfig> buildUnnamed11() => {
   'x': buildAuxiliaryVersionConfig(),
   'y': buildAuxiliaryVersionConfig(),
 };
 
-void checkUnnamed9(core.Map<core.String, api.AuxiliaryVersionConfig> o) {
+void checkUnnamed11(core.Map<core.String, api.AuxiliaryVersionConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuxiliaryVersionConfig(o['x']!);
   checkAuxiliaryVersionConfig(o['y']!);
 }
 
-core.Map<core.String, core.String> buildUnnamed10() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed12() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed10(core.Map<core.String, core.String> o) {
+void checkUnnamed12(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -662,8 +721,8 @@ api.HiveMetastoreConfig buildHiveMetastoreConfig() {
   final o = api.HiveMetastoreConfig();
   buildCounterHiveMetastoreConfig++;
   if (buildCounterHiveMetastoreConfig < 3) {
-    o.auxiliaryVersions = buildUnnamed9();
-    o.configOverrides = buildUnnamed10();
+    o.auxiliaryVersions = buildUnnamed11();
+    o.configOverrides = buildUnnamed12();
     o.endpointProtocol = 'foo';
     o.kerberosConfig = buildKerberosConfig();
     o.version = 'foo';
@@ -675,13 +734,42 @@ api.HiveMetastoreConfig buildHiveMetastoreConfig() {
 void checkHiveMetastoreConfig(api.HiveMetastoreConfig o) {
   buildCounterHiveMetastoreConfig++;
   if (buildCounterHiveMetastoreConfig < 3) {
-    checkUnnamed9(o.auxiliaryVersions!);
-    checkUnnamed10(o.configOverrides!);
+    checkUnnamed11(o.auxiliaryVersions!);
+    checkUnnamed12(o.configOverrides!);
     unittest.expect(o.endpointProtocol!, unittest.equals('foo'));
     checkKerberosConfig(o.kerberosConfig!);
     unittest.expect(o.version!, unittest.equals('foo'));
   }
   buildCounterHiveMetastoreConfig--;
+}
+
+core.List<core.String> buildUnnamed13() => ['foo', 'foo'];
+
+void checkUnnamed13(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterIcebergConfig = 0;
+api.IcebergConfig buildIcebergConfig() {
+  final o = api.IcebergConfig();
+  buildCounterIcebergConfig++;
+  if (buildCounterIcebergConfig < 3) {
+    o.catalog = 'foo';
+    o.namespaces = buildUnnamed13();
+  }
+  buildCounterIcebergConfig--;
+  return o;
+}
+
+void checkIcebergConfig(api.IcebergConfig o) {
+  buildCounterIcebergConfig++;
+  if (buildCounterIcebergConfig < 3) {
+    unittest.expect(o.catalog!, unittest.equals('foo'));
+    checkUnnamed13(o.namespaces!);
+  }
+  buildCounterIcebergConfig--;
 }
 
 core.int buildCounterKerberosConfig = 0;
@@ -753,17 +841,17 @@ void checkLimitConfig(api.LimitConfig o) {
   buildCounterLimitConfig--;
 }
 
-core.List<api.Backup> buildUnnamed11() => [buildBackup(), buildBackup()];
+core.List<api.Backup> buildUnnamed14() => [buildBackup(), buildBackup()];
 
-void checkUnnamed11(core.List<api.Backup> o) {
+void checkUnnamed14(core.List<api.Backup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackup(o[0]);
   checkBackup(o[1]);
 }
 
-core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed15() => ['foo', 'foo'];
 
-void checkUnnamed12(core.List<core.String> o) {
+void checkUnnamed15(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -774,9 +862,9 @@ api.ListBackupsResponse buildListBackupsResponse() {
   final o = api.ListBackupsResponse();
   buildCounterListBackupsResponse++;
   if (buildCounterListBackupsResponse < 3) {
-    o.backups = buildUnnamed11();
+    o.backups = buildUnnamed14();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed12();
+    o.unreachable = buildUnnamed15();
   }
   buildCounterListBackupsResponse--;
   return o;
@@ -785,93 +873,22 @@ api.ListBackupsResponse buildListBackupsResponse() {
 void checkListBackupsResponse(api.ListBackupsResponse o) {
   buildCounterListBackupsResponse++;
   if (buildCounterListBackupsResponse < 3) {
-    checkUnnamed11(o.backups!);
+    checkUnnamed14(o.backups!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed12(o.unreachable!);
+    checkUnnamed15(o.unreachable!);
   }
   buildCounterListBackupsResponse--;
 }
 
-core.List<api.Federation> buildUnnamed13() => [
+core.List<api.Federation> buildUnnamed16() => [
   buildFederation(),
   buildFederation(),
 ];
 
-void checkUnnamed13(core.List<api.Federation> o) {
+void checkUnnamed16(core.List<api.Federation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFederation(o[0]);
   checkFederation(o[1]);
-}
-
-core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
-
-void checkUnnamed14(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterListFederationsResponse = 0;
-api.ListFederationsResponse buildListFederationsResponse() {
-  final o = api.ListFederationsResponse();
-  buildCounterListFederationsResponse++;
-  if (buildCounterListFederationsResponse < 3) {
-    o.federations = buildUnnamed13();
-    o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed14();
-  }
-  buildCounterListFederationsResponse--;
-  return o;
-}
-
-void checkListFederationsResponse(api.ListFederationsResponse o) {
-  buildCounterListFederationsResponse++;
-  if (buildCounterListFederationsResponse < 3) {
-    checkUnnamed13(o.federations!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed14(o.unreachable!);
-  }
-  buildCounterListFederationsResponse--;
-}
-
-core.List<api.Location> buildUnnamed15() => [buildLocation(), buildLocation()];
-
-void checkUnnamed15(core.List<api.Location> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
-}
-
-core.int buildCounterListLocationsResponse = 0;
-api.ListLocationsResponse buildListLocationsResponse() {
-  final o = api.ListLocationsResponse();
-  buildCounterListLocationsResponse++;
-  if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed15();
-    o.nextPageToken = 'foo';
-  }
-  buildCounterListLocationsResponse--;
-  return o;
-}
-
-void checkListLocationsResponse(api.ListLocationsResponse o) {
-  buildCounterListLocationsResponse++;
-  if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed15(o.locations!);
-    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-  }
-  buildCounterListLocationsResponse--;
-}
-
-core.List<api.MetadataImport> buildUnnamed16() => [
-  buildMetadataImport(),
-  buildMetadataImport(),
-];
-
-void checkUnnamed16(core.List<api.MetadataImport> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkMetadataImport(o[0]);
-  checkMetadataImport(o[1]);
 }
 
 core.List<core.String> buildUnnamed17() => ['foo', 'foo'];
@@ -882,14 +899,85 @@ void checkUnnamed17(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.int buildCounterListFederationsResponse = 0;
+api.ListFederationsResponse buildListFederationsResponse() {
+  final o = api.ListFederationsResponse();
+  buildCounterListFederationsResponse++;
+  if (buildCounterListFederationsResponse < 3) {
+    o.federations = buildUnnamed16();
+    o.nextPageToken = 'foo';
+    o.unreachable = buildUnnamed17();
+  }
+  buildCounterListFederationsResponse--;
+  return o;
+}
+
+void checkListFederationsResponse(api.ListFederationsResponse o) {
+  buildCounterListFederationsResponse++;
+  if (buildCounterListFederationsResponse < 3) {
+    checkUnnamed16(o.federations!);
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed17(o.unreachable!);
+  }
+  buildCounterListFederationsResponse--;
+}
+
+core.List<api.Location> buildUnnamed18() => [buildLocation(), buildLocation()];
+
+void checkUnnamed18(core.List<api.Location> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLocation(o[0]);
+  checkLocation(o[1]);
+}
+
+core.int buildCounterListLocationsResponse = 0;
+api.ListLocationsResponse buildListLocationsResponse() {
+  final o = api.ListLocationsResponse();
+  buildCounterListLocationsResponse++;
+  if (buildCounterListLocationsResponse < 3) {
+    o.locations = buildUnnamed18();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListLocationsResponse--;
+  return o;
+}
+
+void checkListLocationsResponse(api.ListLocationsResponse o) {
+  buildCounterListLocationsResponse++;
+  if (buildCounterListLocationsResponse < 3) {
+    checkUnnamed18(o.locations!);
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+  }
+  buildCounterListLocationsResponse--;
+}
+
+core.List<api.MetadataImport> buildUnnamed19() => [
+  buildMetadataImport(),
+  buildMetadataImport(),
+];
+
+void checkUnnamed19(core.List<api.MetadataImport> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMetadataImport(o[0]);
+  checkMetadataImport(o[1]);
+}
+
+core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
+
+void checkUnnamed20(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterListMetadataImportsResponse = 0;
 api.ListMetadataImportsResponse buildListMetadataImportsResponse() {
   final o = api.ListMetadataImportsResponse();
   buildCounterListMetadataImportsResponse++;
   if (buildCounterListMetadataImportsResponse < 3) {
-    o.metadataImports = buildUnnamed16();
+    o.metadataImports = buildUnnamed19();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed17();
+    o.unreachable = buildUnnamed20();
   }
   buildCounterListMetadataImportsResponse--;
   return o;
@@ -898,27 +986,27 @@ api.ListMetadataImportsResponse buildListMetadataImportsResponse() {
 void checkListMetadataImportsResponse(api.ListMetadataImportsResponse o) {
   buildCounterListMetadataImportsResponse++;
   if (buildCounterListMetadataImportsResponse < 3) {
-    checkUnnamed16(o.metadataImports!);
+    checkUnnamed19(o.metadataImports!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed17(o.unreachable!);
+    checkUnnamed20(o.unreachable!);
   }
   buildCounterListMetadataImportsResponse--;
 }
 
-core.List<api.MigrationExecution> buildUnnamed18() => [
+core.List<api.MigrationExecution> buildUnnamed21() => [
   buildMigrationExecution(),
   buildMigrationExecution(),
 ];
 
-void checkUnnamed18(core.List<api.MigrationExecution> o) {
+void checkUnnamed21(core.List<api.MigrationExecution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMigrationExecution(o[0]);
   checkMigrationExecution(o[1]);
 }
 
-core.List<core.String> buildUnnamed19() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed22() => ['foo', 'foo'];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -929,9 +1017,9 @@ api.ListMigrationExecutionsResponse buildListMigrationExecutionsResponse() {
   final o = api.ListMigrationExecutionsResponse();
   buildCounterListMigrationExecutionsResponse++;
   if (buildCounterListMigrationExecutionsResponse < 3) {
-    o.migrationExecutions = buildUnnamed18();
+    o.migrationExecutions = buildUnnamed21();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed19();
+    o.unreachable = buildUnnamed22();
   }
   buildCounterListMigrationExecutionsResponse--;
   return o;
@@ -942,27 +1030,27 @@ void checkListMigrationExecutionsResponse(
 ) {
   buildCounterListMigrationExecutionsResponse++;
   if (buildCounterListMigrationExecutionsResponse < 3) {
-    checkUnnamed18(o.migrationExecutions!);
+    checkUnnamed21(o.migrationExecutions!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed19(o.unreachable!);
+    checkUnnamed22(o.unreachable!);
   }
   buildCounterListMigrationExecutionsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed20() => [
+core.List<api.Operation> buildUnnamed23() => [
   buildOperation(),
   buildOperation(),
 ];
 
-void checkUnnamed20(core.List<api.Operation> o) {
+void checkUnnamed23(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
 }
 
-core.List<core.String> buildUnnamed21() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed24() => ['foo', 'foo'];
 
-void checkUnnamed21(core.List<core.String> o) {
+void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -974,8 +1062,8 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed20();
-    o.unreachable = buildUnnamed21();
+    o.operations = buildUnnamed23();
+    o.unreachable = buildUnnamed24();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -985,23 +1073,23 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed20(o.operations!);
-    checkUnnamed21(o.unreachable!);
+    checkUnnamed23(o.operations!);
+    checkUnnamed24(o.unreachable!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.Service> buildUnnamed22() => [buildService(), buildService()];
+core.List<api.Service> buildUnnamed25() => [buildService(), buildService()];
 
-void checkUnnamed22(core.List<api.Service> o) {
+void checkUnnamed25(core.List<api.Service> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkService(o[0]);
   checkService(o[1]);
 }
 
-core.List<core.String> buildUnnamed23() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed26() => ['foo', 'foo'];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed26(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1013,8 +1101,8 @@ api.ListServicesResponse buildListServicesResponse() {
   buildCounterListServicesResponse++;
   if (buildCounterListServicesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.services = buildUnnamed22();
-    o.unreachable = buildUnnamed23();
+    o.services = buildUnnamed25();
+    o.unreachable = buildUnnamed26();
   }
   buildCounterListServicesResponse--;
   return o;
@@ -1024,21 +1112,21 @@ void checkListServicesResponse(api.ListServicesResponse o) {
   buildCounterListServicesResponse++;
   if (buildCounterListServicesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed22(o.services!);
-    checkUnnamed23(o.unreachable!);
+    checkUnnamed25(o.services!);
+    checkUnnamed26(o.unreachable!);
   }
   buildCounterListServicesResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed24() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed27() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed24(core.Map<core.String, core.String> o) {
+void checkUnnamed27(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed25() => {
+core.Map<core.String, core.Object?> buildUnnamed28() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1051,7 +1139,7 @@ core.Map<core.String, core.Object?> buildUnnamed25() => {
   },
 };
 
-void checkUnnamed25(core.Map<core.String, core.Object?> o) {
+void checkUnnamed28(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1071,9 +1159,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed24();
+    o.labels = buildUnnamed27();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed25();
+    o.metadata = buildUnnamed28();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -1084,9 +1172,9 @@ void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed24(o.labels!);
+    checkUnnamed27(o.labels!);
     unittest.expect(o.locationId!, unittest.equals('foo'));
-    checkUnnamed25(o.metadata!);
+    checkUnnamed28(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterLocation--;
@@ -1190,20 +1278,20 @@ void checkMetadataIntegration(api.MetadataIntegration o) {
   buildCounterMetadataIntegration--;
 }
 
-core.List<api.MetadataExport> buildUnnamed26() => [
+core.List<api.MetadataExport> buildUnnamed29() => [
   buildMetadataExport(),
   buildMetadataExport(),
 ];
 
-void checkUnnamed26(core.List<api.MetadataExport> o) {
+void checkUnnamed29(core.List<api.MetadataExport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetadataExport(o[0]);
   checkMetadataExport(o[1]);
 }
 
-core.List<api.Restore> buildUnnamed27() => [buildRestore(), buildRestore()];
+core.List<api.Restore> buildUnnamed30() => [buildRestore(), buildRestore()];
 
-void checkUnnamed27(core.List<api.Restore> o) {
+void checkUnnamed30(core.List<api.Restore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestore(o[0]);
   checkRestore(o[1]);
@@ -1214,8 +1302,8 @@ api.MetadataManagementActivity buildMetadataManagementActivity() {
   final o = api.MetadataManagementActivity();
   buildCounterMetadataManagementActivity++;
   if (buildCounterMetadataManagementActivity < 3) {
-    o.metadataExports = buildUnnamed26();
-    o.restores = buildUnnamed27();
+    o.metadataExports = buildUnnamed29();
+    o.restores = buildUnnamed30();
   }
   buildCounterMetadataManagementActivity--;
   return o;
@@ -1224,8 +1312,8 @@ api.MetadataManagementActivity buildMetadataManagementActivity() {
 void checkMetadataManagementActivity(api.MetadataManagementActivity o) {
   buildCounterMetadataManagementActivity++;
   if (buildCounterMetadataManagementActivity < 3) {
-    checkUnnamed26(o.metadataExports!);
-    checkUnnamed27(o.restores!);
+    checkUnnamed29(o.metadataExports!);
+    checkUnnamed30(o.restores!);
   }
   buildCounterMetadataManagementActivity--;
 }
@@ -1235,7 +1323,7 @@ api.MigrationExecution buildMigrationExecution() {
   final o = api.MigrationExecution();
   buildCounterMigrationExecution++;
   if (buildCounterMigrationExecution < 3) {
-    o.cloudSqlMigrationConfig = buildCloudSQLMigrationConfig();
+    o.biglakeMetastoreMigrationConfig = buildBigLakeMetastoreMigrationConfig();
     o.createTime = 'foo';
     o.endTime = 'foo';
     o.name = 'foo';
@@ -1250,7 +1338,7 @@ api.MigrationExecution buildMigrationExecution() {
 void checkMigrationExecution(api.MigrationExecution o) {
   buildCounterMigrationExecution++;
   if (buildCounterMigrationExecution < 3) {
-    checkCloudSQLMigrationConfig(o.cloudSqlMigrationConfig!);
+    checkBigLakeMetastoreMigrationConfig(o.biglakeMetastoreMigrationConfig!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.endTime!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -1259,6 +1347,42 @@ void checkMigrationExecution(api.MigrationExecution o) {
     unittest.expect(o.stateMessage!, unittest.equals('foo'));
   }
   buildCounterMigrationExecution--;
+}
+
+core.List<api.CatalogSummary> buildUnnamed31() => [
+  buildCatalogSummary(),
+  buildCatalogSummary(),
+];
+
+void checkUnnamed31(core.List<api.CatalogSummary> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCatalogSummary(o[0]);
+  checkCatalogSummary(o[1]);
+}
+
+core.int buildCounterMigrationSummary = 0;
+api.MigrationSummary buildMigrationSummary() {
+  final o = api.MigrationSummary();
+  buildCounterMigrationSummary++;
+  if (buildCounterMigrationSummary < 3) {
+    o.catalogSummaries = buildUnnamed31();
+    o.createTime = 'foo';
+    o.dryRun = true;
+    o.service = 'foo';
+  }
+  buildCounterMigrationSummary--;
+  return o;
+}
+
+void checkMigrationSummary(api.MigrationSummary o) {
+  buildCounterMigrationSummary++;
+  if (buildCounterMigrationSummary < 3) {
+    checkUnnamed31(o.catalogSummaries!);
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.dryRun!, unittest.isTrue);
+    unittest.expect(o.service!, unittest.equals('foo'));
+  }
+  buildCounterMigrationSummary--;
 }
 
 core.int buildCounterMoveTableToDatabaseRequest = 0;
@@ -1284,9 +1408,9 @@ void checkMoveTableToDatabaseRequest(api.MoveTableToDatabaseRequest o) {
   buildCounterMoveTableToDatabaseRequest--;
 }
 
-core.List<api.Consumer> buildUnnamed28() => [buildConsumer(), buildConsumer()];
+core.List<api.Consumer> buildUnnamed32() => [buildConsumer(), buildConsumer()];
 
-void checkUnnamed28(core.List<api.Consumer> o) {
+void checkUnnamed32(core.List<api.Consumer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConsumer(o[0]);
   checkConsumer(o[1]);
@@ -1297,7 +1421,7 @@ api.NetworkConfig buildNetworkConfig() {
   final o = api.NetworkConfig();
   buildCounterNetworkConfig++;
   if (buildCounterNetworkConfig < 3) {
-    o.consumers = buildUnnamed28();
+    o.consumers = buildUnnamed32();
   }
   buildCounterNetworkConfig--;
   return o;
@@ -1306,12 +1430,12 @@ api.NetworkConfig buildNetworkConfig() {
 void checkNetworkConfig(api.NetworkConfig o) {
   buildCounterNetworkConfig++;
   if (buildCounterNetworkConfig < 3) {
-    checkUnnamed28(o.consumers!);
+    checkUnnamed32(o.consumers!);
   }
   buildCounterNetworkConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed29() => {
+core.Map<core.String, core.Object?> buildUnnamed33() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1324,7 +1448,7 @@ core.Map<core.String, core.Object?> buildUnnamed29() => {
   },
 };
 
-void checkUnnamed29(core.Map<core.String, core.Object?> o) {
+void checkUnnamed33(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1338,7 +1462,7 @@ void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed30() => {
+core.Map<core.String, core.Object?> buildUnnamed34() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1351,7 +1475,7 @@ core.Map<core.String, core.Object?> buildUnnamed30() => {
   },
 };
 
-void checkUnnamed30(core.Map<core.String, core.Object?> o) {
+void checkUnnamed34(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1372,9 +1496,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed29();
+    o.metadata = buildUnnamed33();
     o.name = 'foo';
-    o.response = buildUnnamed30();
+    o.response = buildUnnamed34();
   }
   buildCounterOperation--;
   return o;
@@ -1385,27 +1509,27 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed29(o.metadata!);
+    checkUnnamed33(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed30(o.response!);
+    checkUnnamed34(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.List<api.AuditConfig> buildUnnamed31() => [
+core.List<api.AuditConfig> buildUnnamed35() => [
   buildAuditConfig(),
   buildAuditConfig(),
 ];
 
-void checkUnnamed31(core.List<api.AuditConfig> o) {
+void checkUnnamed35(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed32() => [buildBinding(), buildBinding()];
+core.List<api.Binding> buildUnnamed36() => [buildBinding(), buildBinding()];
 
-void checkUnnamed32(core.List<api.Binding> o) {
+void checkUnnamed36(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -1416,8 +1540,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed31();
-    o.bindings = buildUnnamed32();
+    o.auditConfigs = buildUnnamed35();
+    o.bindings = buildUnnamed36();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1428,8 +1552,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed31(o.auditConfigs!);
-    checkUnnamed32(o.bindings!);
+    checkUnnamed35(o.auditConfigs!);
+    checkUnnamed36(o.bindings!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.version!, unittest.equals(42));
   }
@@ -1582,17 +1706,17 @@ void checkSecret(api.Secret o) {
   buildCounterSecret--;
 }
 
-core.Map<core.String, core.String> buildUnnamed33() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed37() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed33(core.Map<core.String, core.String> o) {
+void checkUnnamed37(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed34() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed38() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed34(core.Map<core.String, core.String> o) {
+void checkUnnamed38(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -1610,7 +1734,7 @@ api.Service buildService() {
     o.encryptionConfig = buildEncryptionConfig();
     o.endpointUri = 'foo';
     o.hiveMetastoreConfig = buildHiveMetastoreConfig();
-    o.labels = buildUnnamed33();
+    o.labels = buildUnnamed37();
     o.maintenanceWindow = buildMaintenanceWindow();
     o.metadataIntegration = buildMetadataIntegration();
     o.metadataManagementActivity = buildMetadataManagementActivity();
@@ -1623,7 +1747,7 @@ api.Service buildService() {
     o.scheduledBackup = buildScheduledBackup();
     o.state = 'foo';
     o.stateMessage = 'foo';
-    o.tags = buildUnnamed34();
+    o.tags = buildUnnamed38();
     o.telemetryConfig = buildTelemetryConfig();
     o.tier = 'foo';
     o.uid = 'foo';
@@ -1643,7 +1767,7 @@ void checkService(api.Service o) {
     checkEncryptionConfig(o.encryptionConfig!);
     unittest.expect(o.endpointUri!, unittest.equals('foo'));
     checkHiveMetastoreConfig(o.hiveMetastoreConfig!);
-    checkUnnamed33(o.labels!);
+    checkUnnamed37(o.labels!);
     checkMaintenanceWindow(o.maintenanceWindow!);
     checkMetadataIntegration(o.metadataIntegration!);
     checkMetadataManagementActivity(o.metadataManagementActivity!);
@@ -1656,7 +1780,7 @@ void checkService(api.Service o) {
     checkScheduledBackup(o.scheduledBackup!);
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.stateMessage!, unittest.equals('foo'));
-    checkUnnamed34(o.tags!);
+    checkUnnamed38(o.tags!);
     checkTelemetryConfig(o.telemetryConfig!);
     unittest.expect(o.tier!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
@@ -1692,6 +1816,7 @@ api.StartMigrationRequest buildStartMigrationRequest() {
   buildCounterStartMigrationRequest++;
   if (buildCounterStartMigrationRequest < 3) {
     o.migrationExecution = buildMigrationExecution();
+    o.migrationExecutionId = 'foo';
     o.requestId = 'foo';
   }
   buildCounterStartMigrationRequest--;
@@ -1702,12 +1827,13 @@ void checkStartMigrationRequest(api.StartMigrationRequest o) {
   buildCounterStartMigrationRequest++;
   if (buildCounterStartMigrationRequest < 3) {
     checkMigrationExecution(o.migrationExecution!);
+    unittest.expect(o.migrationExecutionId!, unittest.equals('foo'));
     unittest.expect(o.requestId!, unittest.equals('foo'));
   }
   buildCounterStartMigrationRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed35() => {
+core.Map<core.String, core.Object?> buildUnnamed39() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1720,7 +1846,7 @@ core.Map<core.String, core.Object?> buildUnnamed35() => {
   },
 };
 
-void checkUnnamed35(core.Map<core.String, core.Object?> o) {
+void checkUnnamed39(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1734,15 +1860,15 @@ void checkUnnamed35(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed36() => [
-  buildUnnamed35(),
-  buildUnnamed35(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed40() => [
+  buildUnnamed39(),
+  buildUnnamed39(),
 ];
 
-void checkUnnamed36(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed40(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed35(o[0]);
-  checkUnnamed35(o[1]);
+  checkUnnamed39(o[0]);
+  checkUnnamed39(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1751,7 +1877,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed36();
+    o.details = buildUnnamed40();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1762,10 +1888,53 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed36(o.details!);
+    checkUnnamed40(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
+}
+
+core.Map<core.String, core.String> buildUnnamed41() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed41(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
+core.Map<core.String, core.String> buildUnnamed42() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed42(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o['x']!, unittest.equals('foo'));
+  unittest.expect(o['y']!, unittest.equals('foo'));
+}
+
+core.int buildCounterTableSummary = 0;
+api.TableSummary buildTableSummary() {
+  final o = api.TableSummary();
+  buildCounterTableSummary++;
+  if (buildCounterTableSummary < 3) {
+    o.partitionDiscoveredCount = 'foo';
+    o.partitionFailedCount = 'foo';
+    o.partitionSuccessCount = 'foo';
+    o.planCounts = buildUnnamed41();
+    o.resultCounts = buildUnnamed42();
+  }
+  buildCounterTableSummary--;
+  return o;
+}
+
+void checkTableSummary(api.TableSummary o) {
+  buildCounterTableSummary++;
+  if (buildCounterTableSummary < 3) {
+    unittest.expect(o.partitionDiscoveredCount!, unittest.equals('foo'));
+    unittest.expect(o.partitionFailedCount!, unittest.equals('foo'));
+    unittest.expect(o.partitionSuccessCount!, unittest.equals('foo'));
+    checkUnnamed41(o.planCounts!);
+    checkUnnamed42(o.resultCounts!);
+  }
+  buildCounterTableSummary--;
 }
 
 core.int buildCounterTelemetryConfig = 0;
@@ -1787,9 +1956,9 @@ void checkTelemetryConfig(api.TelemetryConfig o) {
   buildCounterTelemetryConfig--;
 }
 
-core.List<core.String> buildUnnamed37() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed43() => ['foo', 'foo'];
 
-void checkUnnamed37(core.List<core.String> o) {
+void checkUnnamed43(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1800,7 +1969,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed37();
+    o.permissions = buildUnnamed43();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1809,14 +1978,14 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed37(o.permissions!);
+    checkUnnamed43(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed38() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed44() => ['foo', 'foo'];
 
-void checkUnnamed38(core.List<core.String> o) {
+void checkUnnamed44(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1827,7 +1996,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed38();
+    o.permissions = buildUnnamed44();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1836,14 +2005,14 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed38(o.permissions!);
+    checkUnnamed44(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-core.List<core.String> buildUnnamed39() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
 
-void checkUnnamed39(core.List<core.String> o) {
+void checkUnnamed45(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1927,6 +2096,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-BackfillStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBackfillStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BackfillStatus.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBackfillStatus(od);
+    });
+  });
+
   unittest.group('obj-schema-Backup', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBackup();
@@ -1935,6 +2115,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkBackup(od);
+    });
+  });
+
+  unittest.group('obj-schema-BigLakeMetastoreMigrationConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBigLakeMetastoreMigrationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BigLakeMetastoreMigrationConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBigLakeMetastoreMigrationConfig(od);
     });
   });
 
@@ -1971,36 +2162,14 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-CdcConfig', () {
+  unittest.group('obj-schema-CatalogSummary', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildCdcConfig();
+      final o = buildCatalogSummary();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CdcConfig.fromJson(
+      final od = api.CatalogSummary.fromJson(
         oJson as core.Map<core.String, core.dynamic>,
       );
-      checkCdcConfig(od);
-    });
-  });
-
-  unittest.group('obj-schema-CloudSQLConnectionConfig', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildCloudSQLConnectionConfig();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CloudSQLConnectionConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
-      checkCloudSQLConnectionConfig(od);
-    });
-  });
-
-  unittest.group('obj-schema-CloudSQLMigrationConfig', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildCloudSQLMigrationConfig();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CloudSQLMigrationConfig.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
-      checkCloudSQLMigrationConfig(od);
+      checkCatalogSummary(od);
     });
   });
 
@@ -2045,6 +2214,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkDatabaseDump(od);
+    });
+  });
+
+  unittest.group('obj-schema-DatabaseSummary', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDatabaseSummary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatabaseSummary.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDatabaseSummary(od);
     });
   });
 
@@ -2103,6 +2283,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-HiveConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHiveConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HiveConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkHiveConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-HiveMetastoreConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildHiveMetastoreConfig();
@@ -2111,6 +2302,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkHiveMetastoreConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-IcebergConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIcebergConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IcebergConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkIcebergConfig(od);
     });
   });
 
@@ -2301,6 +2503,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MigrationSummary', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMigrationSummary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MigrationSummary.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMigrationSummary(od);
+    });
+  });
+
   unittest.group('obj-schema-MoveTableToDatabaseRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMoveTableToDatabaseRequest();
@@ -2455,6 +2668,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-TableSummary', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTableSummary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TableSummary.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTableSummary(od);
+    });
+  });
+
   unittest.group('obj-schema-TelemetryConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildTelemetryConfig();
@@ -2546,7 +2770,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DataprocMetastoreApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed39();
+      final arg_extraLocationTypes = buildUnnamed45();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

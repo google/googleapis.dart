@@ -2438,6 +2438,7 @@ buildGoogleCloudRecaptchaenterpriseV1TokenProperties() {
   if (buildCounterGoogleCloudRecaptchaenterpriseV1TokenProperties < 3) {
     o.action = 'foo';
     o.androidPackageName = 'foo';
+    o.clientSignalsFailed = true;
     o.createTime = 'foo';
     o.hostname = 'foo';
     o.invalidReason = 'foo';
@@ -2455,6 +2456,7 @@ void checkGoogleCloudRecaptchaenterpriseV1TokenProperties(
   if (buildCounterGoogleCloudRecaptchaenterpriseV1TokenProperties < 3) {
     unittest.expect(o.action!, unittest.equals('foo'));
     unittest.expect(o.androidPackageName!, unittest.equals('foo'));
+    unittest.expect(o.clientSignalsFailed!, unittest.isTrue);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.hostname!, unittest.equals('foo'));
     unittest.expect(o.invalidReason!, unittest.equals('foo'));

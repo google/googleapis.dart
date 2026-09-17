@@ -2503,6 +2503,11 @@ class DataSourceParameter {
   /// Is parameter required.
   core.bool? required;
 
+  /// If true, the parameter value can be provided through Secret Manager.
+  ///
+  /// Output only.
+  core.bool? secretManagerAllowed;
+
   /// Parameter type.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Type unspecified.
@@ -2540,6 +2545,7 @@ class DataSourceParameter {
     this.recurse,
     this.repeated,
     this.required,
+    this.secretManagerAllowed,
     this.type,
     this.validationDescription,
     this.validationHelpUrl,
@@ -2569,6 +2575,7 @@ class DataSourceParameter {
         recurse: json_['recurse'] as core.bool?,
         repeated: json_['repeated'] as core.bool?,
         required: json_['required'] as core.bool?,
+        secretManagerAllowed: json_['secretManagerAllowed'] as core.bool?,
         type: json_['type'] as core.String?,
         validationDescription: json_['validationDescription'] as core.String?,
         validationHelpUrl: json_['validationHelpUrl'] as core.String?,
@@ -2589,6 +2596,7 @@ class DataSourceParameter {
     final recurse = this.recurse;
     final repeated = this.repeated;
     final required = this.required;
+    final secretManagerAllowed = this.secretManagerAllowed;
     final type = this.type;
     final validationDescription = this.validationDescription;
     final validationHelpUrl = this.validationHelpUrl;
@@ -2607,6 +2615,7 @@ class DataSourceParameter {
       'recurse': ?recurse,
       'repeated': ?repeated,
       'required': ?required,
+      'secretManagerAllowed': ?secretManagerAllowed,
       'type': ?type,
       'validationDescription': ?validationDescription,
       'validationHelpUrl': ?validationHelpUrl,
@@ -2999,6 +3008,33 @@ class MetadataDestination {
   core.Map<core.String, core.dynamic> toJson() {
     final dataplexConfiguration = this.dataplexConfiguration;
     return {'dataplexConfiguration': ?dataplexConfiguration};
+  }
+}
+
+/// Configuration for data source parameters.
+class ParameterConfig {
+  /// The list of parameters that are stored in Secret Manager.
+  ///
+  /// The value of a parameter included in this list will be interpreted as a
+  /// Secret Manager key version resource name instead of a raw value. The raw
+  /// value will be retrieved from Secret Manager upon execution.
+  ///
+  /// Optional.
+  core.List<core.String>? secretManagerManagedParams;
+
+  ParameterConfig({this.secretManagerManagedParams});
+
+  ParameterConfig.fromJson(core.Map json_)
+    : this(
+        secretManagerManagedParams:
+            (json_['secretManagerManagedParams'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final secretManagerManagedParams = this.secretManagerManagedParams;
+    return {'secretManagerManagedParams': ?secretManagerManagedParams};
   }
 }
 
@@ -3459,6 +3495,11 @@ class TransferConfig {
   /// Output only.
   UserInfo? ownerInfo;
 
+  /// The config for values in `params`.
+  ///
+  /// Optional.
+  ParameterConfig? paramConfig;
+
   /// Parameters specific to each data source.
   ///
   /// For more information see the bq tab in the 'Setting up a data transfer'
@@ -3532,6 +3573,7 @@ class TransferConfig {
     this.nextRunTime,
     this.notificationPubsubTopic,
     this.ownerInfo,
+    this.paramConfig,
     this.params,
     this.schedule,
     this.scheduleOptions,
@@ -3582,6 +3624,11 @@ class TransferConfig {
                 json_['ownerInfo'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        paramConfig: json_.containsKey('paramConfig')
+            ? ParameterConfig.fromJson(
+                json_['paramConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         params: json_.containsKey('params')
             ? json_['params'] as core.Map<core.String, core.dynamic>
             : null,
@@ -3618,6 +3665,7 @@ class TransferConfig {
     final nextRunTime = this.nextRunTime;
     final notificationPubsubTopic = this.notificationPubsubTopic;
     final ownerInfo = this.ownerInfo;
+    final paramConfig = this.paramConfig;
     final params = this.params;
     final schedule = this.schedule;
     final scheduleOptions = this.scheduleOptions;
@@ -3641,6 +3689,7 @@ class TransferConfig {
       'nextRunTime': ?nextRunTime,
       'notificationPubsubTopic': ?notificationPubsubTopic,
       'ownerInfo': ?ownerInfo,
+      'paramConfig': ?paramConfig,
       'params': ?params,
       'schedule': ?schedule,
       'scheduleOptions': ?scheduleOptions,
@@ -3919,6 +3968,11 @@ class TransferRun {
   /// Output only.
   core.String? notificationPubsubTopic;
 
+  /// The parameter config of the transfer run.
+  ///
+  /// Output only.
+  ParameterConfig? parameterConfig;
+
   /// Parameters specific to each data source.
   ///
   /// For more information see the bq tab in the 'Setting up a data transfer'
@@ -3987,6 +4041,7 @@ class TransferRun {
     this.errorStatus,
     this.name,
     this.notificationPubsubTopic,
+    this.parameterConfig,
     this.params,
     this.runTime,
     this.schedule,
@@ -4016,6 +4071,11 @@ class TransferRun {
         name: json_['name'] as core.String?,
         notificationPubsubTopic:
             json_['notificationPubsubTopic'] as core.String?,
+        parameterConfig: json_.containsKey('parameterConfig')
+            ? ParameterConfig.fromJson(
+                json_['parameterConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         params: json_.containsKey('params')
             ? json_['params'] as core.Map<core.String, core.dynamic>
             : null,
@@ -4036,6 +4096,7 @@ class TransferRun {
     final errorStatus = this.errorStatus;
     final name = this.name;
     final notificationPubsubTopic = this.notificationPubsubTopic;
+    final parameterConfig = this.parameterConfig;
     final params = this.params;
     final runTime = this.runTime;
     final schedule = this.schedule;
@@ -4052,6 +4113,7 @@ class TransferRun {
       'errorStatus': ?errorStatus,
       'name': ?name,
       'notificationPubsubTopic': ?notificationPubsubTopic,
+      'parameterConfig': ?parameterConfig,
       'params': ?params,
       'runTime': ?runTime,
       'schedule': ?schedule,

@@ -2185,43 +2185,7 @@ typedef ActivateClientRequest = $Empty;
 typedef ActivateClientUserRequest = $Empty;
 
 /// Represents size of a single ad slot, or a creative.
-class AdSize {
-  /// The height of the ad slot in pixels.
-  ///
-  /// This field will be present only when size type is `PIXEL`.
-  core.String? height;
-
-  /// The type of the ad slot size.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : A placeholder for an undefined size type.
-  /// - "PIXEL" : Ad slot with size specified by height and width in pixels.
-  /// - "INTERSTITIAL" : Special size to describe an interstitial ad slot.
-  /// - "NATIVE" : Native (mobile) ads rendered by the publisher.
-  /// - "FLUID" : Fluid size (responsive size) can be resized automatically with
-  /// the change of outside environment.
-  core.String? type;
-
-  /// The width of the ad slot in pixels.
-  ///
-  /// This field will be present only when size type is `PIXEL`.
-  core.String? width;
-
-  AdSize({this.height, this.type, this.width});
-
-  AdSize.fromJson(core.Map json_)
-    : this(
-        height: json_['height'] as core.String?,
-        type: json_['type'] as core.String?,
-        width: json_['width'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final height = this.height;
-    final type = this.type;
-    final width = this.width;
-    return {'height': ?height, 'type': ?type, 'width': ?width};
-  }
-}
+typedef AdSize = $AdSize;
 
 /// Request message for adding creative to be used in the bidding process for
 /// the finalized deal.
@@ -2786,34 +2750,7 @@ class CreativeRequirements {
 /// included and excluded numeric IDs.
 ///
 /// This cannot be filtered using list filter syntax.
-class CriteriaTargeting {
-  /// A list of numeric IDs to be excluded.
-  core.List<core.String>? excludedCriteriaIds;
-
-  /// A list of numeric IDs to be included.
-  core.List<core.String>? targetedCriteriaIds;
-
-  CriteriaTargeting({this.excludedCriteriaIds, this.targetedCriteriaIds});
-
-  CriteriaTargeting.fromJson(core.Map json_)
-    : this(
-        excludedCriteriaIds: (json_['excludedCriteriaIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-        targetedCriteriaIds: (json_['targetedCriteriaIds'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final excludedCriteriaIds = this.excludedCriteriaIds;
-    final targetedCriteriaIds = this.targetedCriteriaIds;
-    return {
-      'excludedCriteriaIds': ?excludedCriteriaIds,
-      'targetedCriteriaIds': ?targetedCriteriaIds,
-    };
-  }
-}
+typedef CriteriaTargeting = $CriteriaTargeting;
 
 /// Defines targeting for a period of time on a specific week day.
 class DayPart {

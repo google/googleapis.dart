@@ -11761,13 +11761,20 @@ class ExportDicomDataRequest {
   /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.
   GoogleCloudHealthcareV1DicomBigQueryDestination? bigqueryDestination;
 
+  /// Specifies the filter configuration.
+  DicomFilterConfig? filterConfig;
+
   /// The Cloud Storage output destination.
   ///
   /// The Cloud Healthcare Service Agent requires the
   /// `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location.
   GoogleCloudHealthcareV1DicomGcsDestination? gcsDestination;
 
-  ExportDicomDataRequest({this.bigqueryDestination, this.gcsDestination});
+  ExportDicomDataRequest({
+    this.bigqueryDestination,
+    this.filterConfig,
+    this.gcsDestination,
+  });
 
   ExportDicomDataRequest.fromJson(core.Map json_)
     : this(
@@ -11775,6 +11782,11 @@ class ExportDicomDataRequest {
             ? GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(
                 json_['bigqueryDestination']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        filterConfig: json_.containsKey('filterConfig')
+            ? DicomFilterConfig.fromJson(
+                json_['filterConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         gcsDestination: json_.containsKey('gcsDestination')
@@ -11786,9 +11798,11 @@ class ExportDicomDataRequest {
 
   core.Map<core.String, core.dynamic> toJson() {
     final bigqueryDestination = this.bigqueryDestination;
+    final filterConfig = this.filterConfig;
     final gcsDestination = this.gcsDestination;
     return {
       'bigqueryDestination': ?bigqueryDestination,
+      'filterConfig': ?filterConfig,
       'gcsDestination': ?gcsDestination,
     };
   }

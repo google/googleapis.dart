@@ -340,6 +340,7 @@ api.Environment buildEnvironment() {
     o.config = buildEnvironmentConfig();
     o.createTime = 'foo';
     o.labels = buildUnnamed0();
+    o.mode = 'foo';
     o.name = 'foo';
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
@@ -358,6 +359,7 @@ void checkEnvironment(api.Environment o) {
     checkEnvironmentConfig(o.config!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkUnnamed0(o.labels!);
+    unittest.expect(o.mode!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);

@@ -5684,6 +5684,24 @@ class GoogleCloudApihubV1AdditionalSpecContent {
 
 /// Addon resource.
 class GoogleCloudApihubV1Addon {
+  /// The Vertex AI region where the BoostSpec Gemini model calls run for this
+  /// API Hub instance.
+  ///
+  /// Populated only for the SpecGen addon (`system-spec-generation`); other
+  /// addons leave this field empty. `gemini-2.5-flash` is not available in
+  /// every API Hub region, so the effective region may differ from the API Hub
+  /// instance's own region. The value follows these semantics: - `""`:
+  /// BoostSpec is disabled in this region (the addon is not SpecGen, or the API
+  /// Hub instance region has no configured Gemini endpoint or fallback). -
+  /// Equal to the API Hub instance region: BoostSpec calls run in-region. -
+  /// Differs from the API Hub instance region: BoostSpec calls run in the
+  /// specified fallback region. Callers rendering this field can derive the
+  /// three display states from this single field combined with the API Hub
+  /// instance region.
+  ///
+  /// Output only.
+  core.String? boostSpecGeminiRegionId;
+
   /// The configuration of the addon.
   ///
   /// Required.
@@ -5740,6 +5758,7 @@ class GoogleCloudApihubV1Addon {
   core.String? updateTime;
 
   GoogleCloudApihubV1Addon({
+    this.boostSpecGeminiRegionId,
     this.config,
     this.createTime,
     this.dataSource,
@@ -5752,6 +5771,8 @@ class GoogleCloudApihubV1Addon {
 
   GoogleCloudApihubV1Addon.fromJson(core.Map json_)
     : this(
+        boostSpecGeminiRegionId:
+            json_['boostSpecGeminiRegionId'] as core.String?,
         config: json_.containsKey('config')
             ? GoogleCloudApihubV1AddonConfig.fromJson(
                 json_['config'] as core.Map<core.String, core.dynamic>,
@@ -5767,6 +5788,7 @@ class GoogleCloudApihubV1Addon {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final boostSpecGeminiRegionId = this.boostSpecGeminiRegionId;
     final config = this.config;
     final createTime = this.createTime;
     final dataSource = this.dataSource;
@@ -5776,6 +5798,7 @@ class GoogleCloudApihubV1Addon {
     final state = this.state;
     final updateTime = this.updateTime;
     return {
+      'boostSpecGeminiRegionId': ?boostSpecGeminiRegionId,
       'config': ?config,
       'createTime': ?createTime,
       'dataSource': ?dataSource,
@@ -6603,6 +6626,16 @@ class GoogleCloudApihubV1ApiOperation {
   /// Output only.
   core.String? createTime;
 
+  /// The deployments linked directly to this API operation.
+  ///
+  /// For operations parsed from a spec, `UpdateApiOperation` returns
+  /// `FAILED_PRECONDITION`; link the parent spec to the deployment via
+  /// `Spec.deployments` instead. Format is
+  /// `projects/{project}/locations/{location}/deployments/{deployment}`
+  ///
+  /// Optional.
+  core.List<core.String>? deployments;
+
   /// Operation details.
   ///
   /// Note: Even though this field is optional, it is required for
@@ -6638,6 +6671,7 @@ class GoogleCloudApihubV1ApiOperation {
   GoogleCloudApihubV1ApiOperation({
     this.attributes,
     this.createTime,
+    this.deployments,
     this.details,
     this.name,
     this.sourceMetadata,
@@ -6657,6 +6691,9 @@ class GoogleCloudApihubV1ApiOperation {
               ),
             ),
         createTime: json_['createTime'] as core.String?,
+        deployments: (json_['deployments'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         details: json_.containsKey('details')
             ? GoogleCloudApihubV1OperationDetails.fromJson(
                 json_['details'] as core.Map<core.String, core.dynamic>,
@@ -6677,6 +6714,7 @@ class GoogleCloudApihubV1ApiOperation {
   core.Map<core.String, core.dynamic> toJson() {
     final attributes = this.attributes;
     final createTime = this.createTime;
+    final deployments = this.deployments;
     final details = this.details;
     final name = this.name;
     final sourceMetadata = this.sourceMetadata;
@@ -6685,6 +6723,7 @@ class GoogleCloudApihubV1ApiOperation {
     return {
       'attributes': ?attributes,
       'createTime': ?createTime,
+      'deployments': ?deployments,
       'details': ?details,
       'name': ?name,
       'sourceMetadata': ?sourceMetadata,
@@ -8316,6 +8355,11 @@ class GoogleCloudApihubV1DependencyErrorDetail {
 /// Cloud services or non-Google Cloud services as well. A deployment entity is
 /// a root level entity in the API hub and exists independent of any API.
 class GoogleCloudApihubV1Deployment {
+  /// The API operations linked directly to this deployment.
+  ///
+  /// Output only.
+  core.List<core.String>? apiOperations;
+
   /// The API versions linked to this deployment.
   ///
   /// Note: A particular deployment could be linked to multiple different API
@@ -8446,6 +8490,15 @@ class GoogleCloudApihubV1Deployment {
   /// Optional.
   core.String? sourceProject;
 
+  /// A revision identifier for the underlying gateway configuration that this
+  /// deployment serves.
+  ///
+  /// For Apigee gateway variants, this is typically the proxy revision number
+  /// populated automatically when the deployment is discovered.
+  ///
+  /// Optional.
+  core.String? sourceRevision;
+
   /// The uri where additional source specific information for this deployment
   /// can be found.
   ///
@@ -8459,12 +8512,21 @@ class GoogleCloudApihubV1Deployment {
   /// Optional.
   GoogleCloudApihubV1AttributeValues? sourceUri;
 
+  /// The specs linked directly to this deployment.
+  ///
+  /// Note: a deployment could serve multiple specs (e.g., across different
+  /// revisions of the same underlying gateway configuration).
+  ///
+  /// Output only.
+  core.List<core.String>? specs;
+
   /// The time at which the deployment was last updated.
   ///
   /// Output only.
   core.String? updateTime;
 
   GoogleCloudApihubV1Deployment({
+    this.apiOperations,
     this.apiVersions,
     this.attributes,
     this.createTime,
@@ -8481,12 +8543,17 @@ class GoogleCloudApihubV1Deployment {
     this.sourceEnvironment,
     this.sourceMetadata,
     this.sourceProject,
+    this.sourceRevision,
     this.sourceUri,
+    this.specs,
     this.updateTime,
   });
 
   GoogleCloudApihubV1Deployment.fromJson(core.Map json_)
     : this(
+        apiOperations: (json_['apiOperations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         apiVersions: (json_['apiVersions'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -8541,15 +8608,20 @@ class GoogleCloudApihubV1Deployment {
             )
             .toList(),
         sourceProject: json_['sourceProject'] as core.String?,
+        sourceRevision: json_['sourceRevision'] as core.String?,
         sourceUri: json_.containsKey('sourceUri')
             ? GoogleCloudApihubV1AttributeValues.fromJson(
                 json_['sourceUri'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        specs: (json_['specs'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         updateTime: json_['updateTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final apiOperations = this.apiOperations;
     final apiVersions = this.apiVersions;
     final attributes = this.attributes;
     final createTime = this.createTime;
@@ -8566,9 +8638,12 @@ class GoogleCloudApihubV1Deployment {
     final sourceEnvironment = this.sourceEnvironment;
     final sourceMetadata = this.sourceMetadata;
     final sourceProject = this.sourceProject;
+    final sourceRevision = this.sourceRevision;
     final sourceUri = this.sourceUri;
+    final specs = this.specs;
     final updateTime = this.updateTime;
     return {
+      'apiOperations': ?apiOperations,
       'apiVersions': ?apiVersions,
       'attributes': ?attributes,
       'createTime': ?createTime,
@@ -8585,7 +8660,9 @@ class GoogleCloudApihubV1Deployment {
       'sourceEnvironment': ?sourceEnvironment,
       'sourceMetadata': ?sourceMetadata,
       'sourceProject': ?sourceProject,
+      'sourceRevision': ?sourceRevision,
       'sourceUri': ?sourceUri,
+      'specs': ?specs,
       'updateTime': ?updateTime,
     };
   }
@@ -12721,6 +12798,14 @@ class GoogleCloudApihubV1Spec {
   /// Output only.
   core.String? createTime;
 
+  /// The deployments linked directly to this spec.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/deployments/{deployment}`
+  ///
+  /// Optional.
+  core.List<core.String>? deployments;
+
   /// Details parsed from the spec.
   ///
   /// Output only.
@@ -12797,6 +12882,7 @@ class GoogleCloudApihubV1Spec {
     this.attributes,
     this.contents,
     this.createTime,
+    this.deployments,
     this.details,
     this.displayName,
     this.documentation,
@@ -12833,6 +12919,9 @@ class GoogleCloudApihubV1Spec {
               )
             : null,
         createTime: json_['createTime'] as core.String?,
+        deployments: (json_['deployments'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         details: json_.containsKey('details')
             ? GoogleCloudApihubV1SpecDetails.fromJson(
                 json_['details'] as core.Map<core.String, core.dynamic>,
@@ -12872,6 +12961,7 @@ class GoogleCloudApihubV1Spec {
     final attributes = this.attributes;
     final contents = this.contents;
     final createTime = this.createTime;
+    final deployments = this.deployments;
     final details = this.details;
     final displayName = this.displayName;
     final documentation = this.documentation;
@@ -12887,6 +12977,7 @@ class GoogleCloudApihubV1Spec {
       'attributes': ?attributes,
       'contents': ?contents,
       'createTime': ?createTime,
+      'deployments': ?deployments,
       'details': ?details,
       'displayName': ?displayName,
       'documentation': ?documentation,
@@ -12978,6 +13069,17 @@ class GoogleCloudApihubV1SpecDetails {
 
 /// The metadata associated with a spec of the API version.
 class GoogleCloudApihubV1SpecMetadata {
+  /// The gateway-side URIs of deployments that serve this spec.
+  ///
+  /// If provided, the API Hub service creates links between this spec and the
+  /// deployments identified by these URIs. URIs that don't match any known
+  /// deployment are ignored; a subsequent ingestion cycle that includes the
+  /// missing deployment will re-establish the link. The maximum number of URIs
+  /// allowed is 100.
+  ///
+  /// Optional.
+  core.List<core.String>? deploymentResourceUris;
+
   /// Timestamp indicating when the spec was created at the source.
   ///
   /// Optional.
@@ -13002,6 +13104,7 @@ class GoogleCloudApihubV1SpecMetadata {
   GoogleCloudApihubV1Spec? spec;
 
   GoogleCloudApihubV1SpecMetadata({
+    this.deploymentResourceUris,
     this.originalCreateTime,
     this.originalId,
     this.originalUpdateTime,
@@ -13010,6 +13113,9 @@ class GoogleCloudApihubV1SpecMetadata {
 
   GoogleCloudApihubV1SpecMetadata.fromJson(core.Map json_)
     : this(
+        deploymentResourceUris: (json_['deploymentResourceUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         originalCreateTime: json_['originalCreateTime'] as core.String?,
         originalId: json_['originalId'] as core.String?,
         originalUpdateTime: json_['originalUpdateTime'] as core.String?,
@@ -13021,11 +13127,13 @@ class GoogleCloudApihubV1SpecMetadata {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final deploymentResourceUris = this.deploymentResourceUris;
     final originalCreateTime = this.originalCreateTime;
     final originalId = this.originalId;
     final originalUpdateTime = this.originalUpdateTime;
     final spec = this.spec;
     return {
+      'deploymentResourceUris': ?deploymentResourceUris,
       'originalCreateTime': ?originalCreateTime,
       'originalId': ?originalId,
       'originalUpdateTime': ?originalUpdateTime,

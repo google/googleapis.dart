@@ -93,6 +93,65 @@ void checkArtifactConfig(api.ArtifactConfig o) {
   buildCounterArtifactConfig--;
 }
 
+core.List<api.UpdateMemberRequest> buildUnnamed0() => [
+  buildUpdateMemberRequest(),
+  buildUpdateMemberRequest(),
+];
+
+void checkUnnamed0(core.List<api.UpdateMemberRequest> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUpdateMemberRequest(o[0]);
+  checkUpdateMemberRequest(o[1]);
+}
+
+core.int buildCounterBatchUpdateMembersRequest = 0;
+api.BatchUpdateMembersRequest buildBatchUpdateMembersRequest() {
+  final o = api.BatchUpdateMembersRequest();
+  buildCounterBatchUpdateMembersRequest++;
+  if (buildCounterBatchUpdateMembersRequest < 3) {
+    o.requests = buildUnnamed0();
+    o.updateMask = 'foo';
+  }
+  buildCounterBatchUpdateMembersRequest--;
+  return o;
+}
+
+void checkBatchUpdateMembersRequest(api.BatchUpdateMembersRequest o) {
+  buildCounterBatchUpdateMembersRequest++;
+  if (buildCounterBatchUpdateMembersRequest < 3) {
+    checkUnnamed0(o.requests!);
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
+  }
+  buildCounterBatchUpdateMembersRequest--;
+}
+
+core.List<api.Member> buildUnnamed1() => [buildMember(), buildMember()];
+
+void checkUnnamed1(core.List<api.Member> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMember(o[0]);
+  checkMember(o[1]);
+}
+
+core.int buildCounterBatchUpdateMembersResponse = 0;
+api.BatchUpdateMembersResponse buildBatchUpdateMembersResponse() {
+  final o = api.BatchUpdateMembersResponse();
+  buildCounterBatchUpdateMembersResponse++;
+  if (buildCounterBatchUpdateMembersResponse < 3) {
+    o.members = buildUnnamed1();
+  }
+  buildCounterBatchUpdateMembersResponse--;
+  return o;
+}
+
+void checkBatchUpdateMembersResponse(api.BatchUpdateMembersResponse o) {
+  buildCounterBatchUpdateMembersResponse++;
+  if (buildCounterBatchUpdateMembersResponse < 3) {
+    checkUnnamed1(o.members!);
+  }
+  buildCounterBatchUpdateMembersResponse--;
+}
+
 core.int buildCounterConferenceRecord = 0;
 api.ConferenceRecord buildConferenceRecord() {
   final o = api.ConferenceRecord();
@@ -213,12 +272,12 @@ void checkGatewaySipAccess(api.GatewaySipAccess o) {
   buildCounterGatewaySipAccess--;
 }
 
-core.List<api.ConferenceRecord> buildUnnamed0() => [
+core.List<api.ConferenceRecord> buildUnnamed2() => [
   buildConferenceRecord(),
   buildConferenceRecord(),
 ];
 
-void checkUnnamed0(core.List<api.ConferenceRecord> o) {
+void checkUnnamed2(core.List<api.ConferenceRecord> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConferenceRecord(o[0]);
   checkConferenceRecord(o[1]);
@@ -229,7 +288,7 @@ api.ListConferenceRecordsResponse buildListConferenceRecordsResponse() {
   final o = api.ListConferenceRecordsResponse();
   buildCounterListConferenceRecordsResponse++;
   if (buildCounterListConferenceRecordsResponse < 3) {
-    o.conferenceRecords = buildUnnamed0();
+    o.conferenceRecords = buildUnnamed2();
     o.nextPageToken = 'foo';
   }
   buildCounterListConferenceRecordsResponse--;
@@ -239,18 +298,47 @@ api.ListConferenceRecordsResponse buildListConferenceRecordsResponse() {
 void checkListConferenceRecordsResponse(api.ListConferenceRecordsResponse o) {
   buildCounterListConferenceRecordsResponse++;
   if (buildCounterListConferenceRecordsResponse < 3) {
-    checkUnnamed0(o.conferenceRecords!);
+    checkUnnamed2(o.conferenceRecords!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListConferenceRecordsResponse--;
 }
 
-core.List<api.ParticipantSession> buildUnnamed1() => [
+core.List<api.Member> buildUnnamed3() => [buildMember(), buildMember()];
+
+void checkUnnamed3(core.List<api.Member> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMember(o[0]);
+  checkMember(o[1]);
+}
+
+core.int buildCounterListMembersResponse = 0;
+api.ListMembersResponse buildListMembersResponse() {
+  final o = api.ListMembersResponse();
+  buildCounterListMembersResponse++;
+  if (buildCounterListMembersResponse < 3) {
+    o.members = buildUnnamed3();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListMembersResponse--;
+  return o;
+}
+
+void checkListMembersResponse(api.ListMembersResponse o) {
+  buildCounterListMembersResponse++;
+  if (buildCounterListMembersResponse < 3) {
+    checkUnnamed3(o.members!);
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+  }
+  buildCounterListMembersResponse--;
+}
+
+core.List<api.ParticipantSession> buildUnnamed4() => [
   buildParticipantSession(),
   buildParticipantSession(),
 ];
 
-void checkUnnamed1(core.List<api.ParticipantSession> o) {
+void checkUnnamed4(core.List<api.ParticipantSession> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParticipantSession(o[0]);
   checkParticipantSession(o[1]);
@@ -262,7 +350,7 @@ api.ListParticipantSessionsResponse buildListParticipantSessionsResponse() {
   buildCounterListParticipantSessionsResponse++;
   if (buildCounterListParticipantSessionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.participantSessions = buildUnnamed1();
+    o.participantSessions = buildUnnamed4();
   }
   buildCounterListParticipantSessionsResponse--;
   return o;
@@ -274,17 +362,17 @@ void checkListParticipantSessionsResponse(
   buildCounterListParticipantSessionsResponse++;
   if (buildCounterListParticipantSessionsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed1(o.participantSessions!);
+    checkUnnamed4(o.participantSessions!);
   }
   buildCounterListParticipantSessionsResponse--;
 }
 
-core.List<api.Participant> buildUnnamed2() => [
+core.List<api.Participant> buildUnnamed5() => [
   buildParticipant(),
   buildParticipant(),
 ];
 
-void checkUnnamed2(core.List<api.Participant> o) {
+void checkUnnamed5(core.List<api.Participant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParticipant(o[0]);
   checkParticipant(o[1]);
@@ -296,7 +384,7 @@ api.ListParticipantsResponse buildListParticipantsResponse() {
   buildCounterListParticipantsResponse++;
   if (buildCounterListParticipantsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.participants = buildUnnamed2();
+    o.participants = buildUnnamed5();
     o.totalSize = 42;
   }
   buildCounterListParticipantsResponse--;
@@ -307,18 +395,18 @@ void checkListParticipantsResponse(api.ListParticipantsResponse o) {
   buildCounterListParticipantsResponse++;
   if (buildCounterListParticipantsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed2(o.participants!);
+    checkUnnamed5(o.participants!);
     unittest.expect(o.totalSize!, unittest.equals(42));
   }
   buildCounterListParticipantsResponse--;
 }
 
-core.List<api.Recording> buildUnnamed3() => [
+core.List<api.Recording> buildUnnamed6() => [
   buildRecording(),
   buildRecording(),
 ];
 
-void checkUnnamed3(core.List<api.Recording> o) {
+void checkUnnamed6(core.List<api.Recording> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRecording(o[0]);
   checkRecording(o[1]);
@@ -330,7 +418,7 @@ api.ListRecordingsResponse buildListRecordingsResponse() {
   buildCounterListRecordingsResponse++;
   if (buildCounterListRecordingsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.recordings = buildUnnamed3();
+    o.recordings = buildUnnamed6();
   }
   buildCounterListRecordingsResponse--;
   return o;
@@ -340,17 +428,17 @@ void checkListRecordingsResponse(api.ListRecordingsResponse o) {
   buildCounterListRecordingsResponse++;
   if (buildCounterListRecordingsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed3(o.recordings!);
+    checkUnnamed6(o.recordings!);
   }
   buildCounterListRecordingsResponse--;
 }
 
-core.List<api.SmartNote> buildUnnamed4() => [
+core.List<api.SmartNote> buildUnnamed7() => [
   buildSmartNote(),
   buildSmartNote(),
 ];
 
-void checkUnnamed4(core.List<api.SmartNote> o) {
+void checkUnnamed7(core.List<api.SmartNote> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSmartNote(o[0]);
   checkSmartNote(o[1]);
@@ -362,7 +450,7 @@ api.ListSmartNotesResponse buildListSmartNotesResponse() {
   buildCounterListSmartNotesResponse++;
   if (buildCounterListSmartNotesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.smartNotes = buildUnnamed4();
+    o.smartNotes = buildUnnamed7();
   }
   buildCounterListSmartNotesResponse--;
   return o;
@@ -372,17 +460,17 @@ void checkListSmartNotesResponse(api.ListSmartNotesResponse o) {
   buildCounterListSmartNotesResponse++;
   if (buildCounterListSmartNotesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed4(o.smartNotes!);
+    checkUnnamed7(o.smartNotes!);
   }
   buildCounterListSmartNotesResponse--;
 }
 
-core.List<api.TranscriptEntry> buildUnnamed5() => [
+core.List<api.TranscriptEntry> buildUnnamed8() => [
   buildTranscriptEntry(),
   buildTranscriptEntry(),
 ];
 
-void checkUnnamed5(core.List<api.TranscriptEntry> o) {
+void checkUnnamed8(core.List<api.TranscriptEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranscriptEntry(o[0]);
   checkTranscriptEntry(o[1]);
@@ -394,7 +482,7 @@ api.ListTranscriptEntriesResponse buildListTranscriptEntriesResponse() {
   buildCounterListTranscriptEntriesResponse++;
   if (buildCounterListTranscriptEntriesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.transcriptEntries = buildUnnamed5();
+    o.transcriptEntries = buildUnnamed8();
   }
   buildCounterListTranscriptEntriesResponse--;
   return o;
@@ -404,17 +492,17 @@ void checkListTranscriptEntriesResponse(api.ListTranscriptEntriesResponse o) {
   buildCounterListTranscriptEntriesResponse++;
   if (buildCounterListTranscriptEntriesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed5(o.transcriptEntries!);
+    checkUnnamed8(o.transcriptEntries!);
   }
   buildCounterListTranscriptEntriesResponse--;
 }
 
-core.List<api.Transcript> buildUnnamed6() => [
+core.List<api.Transcript> buildUnnamed9() => [
   buildTranscript(),
   buildTranscript(),
 ];
 
-void checkUnnamed6(core.List<api.Transcript> o) {
+void checkUnnamed9(core.List<api.Transcript> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranscript(o[0]);
   checkTranscript(o[1]);
@@ -426,7 +514,7 @@ api.ListTranscriptsResponse buildListTranscriptsResponse() {
   buildCounterListTranscriptsResponse++;
   if (buildCounterListTranscriptsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.transcripts = buildUnnamed6();
+    o.transcripts = buildUnnamed9();
   }
   buildCounterListTranscriptsResponse--;
   return o;
@@ -436,9 +524,32 @@ void checkListTranscriptsResponse(api.ListTranscriptsResponse o) {
   buildCounterListTranscriptsResponse++;
   if (buildCounterListTranscriptsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed6(o.transcripts!);
+    checkUnnamed9(o.transcripts!);
   }
   buildCounterListTranscriptsResponse--;
+}
+
+core.int buildCounterMember = 0;
+api.Member buildMember() {
+  final o = api.Member();
+  buildCounterMember++;
+  if (buildCounterMember < 3) {
+    o.email = 'foo';
+    o.name = 'foo';
+    o.role = 'foo';
+  }
+  buildCounterMember--;
+  return o;
+}
+
+void checkMember(api.Member o) {
+  buildCounterMember++;
+  if (buildCounterMember < 3) {
+    unittest.expect(o.email!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.role!, unittest.equals('foo'));
+  }
+  buildCounterMember--;
 }
 
 core.int buildCounterModerationRestrictions = 0;
@@ -675,23 +786,23 @@ void checkSmartNotesConfig(api.SmartNotesConfig o) {
   buildCounterSmartNotesConfig--;
 }
 
-core.List<api.GatewaySipAccess> buildUnnamed7() => [
+core.List<api.GatewaySipAccess> buildUnnamed10() => [
   buildGatewaySipAccess(),
   buildGatewaySipAccess(),
 ];
 
-void checkUnnamed7(core.List<api.GatewaySipAccess> o) {
+void checkUnnamed10(core.List<api.GatewaySipAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGatewaySipAccess(o[0]);
   checkGatewaySipAccess(o[1]);
 }
 
-core.List<api.PhoneAccess> buildUnnamed8() => [
+core.List<api.PhoneAccess> buildUnnamed11() => [
   buildPhoneAccess(),
   buildPhoneAccess(),
 ];
 
-void checkUnnamed8(core.List<api.PhoneAccess> o) {
+void checkUnnamed11(core.List<api.PhoneAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPhoneAccess(o[0]);
   checkPhoneAccess(o[1]);
@@ -704,11 +815,11 @@ api.Space buildSpace() {
   if (buildCounterSpace < 3) {
     o.activeConference = buildActiveConference();
     o.config = buildSpaceConfig();
-    o.gatewaySipAccess = buildUnnamed7();
+    o.gatewaySipAccess = buildUnnamed10();
     o.meetingCode = 'foo';
     o.meetingUri = 'foo';
     o.name = 'foo';
-    o.phoneAccess = buildUnnamed8();
+    o.phoneAccess = buildUnnamed11();
   }
   buildCounterSpace--;
   return o;
@@ -719,11 +830,11 @@ void checkSpace(api.Space o) {
   if (buildCounterSpace < 3) {
     checkActiveConference(o.activeConference!);
     checkSpaceConfig(o.config!);
-    checkUnnamed7(o.gatewaySipAccess!);
+    checkUnnamed10(o.gatewaySipAccess!);
     unittest.expect(o.meetingCode!, unittest.equals('foo'));
     unittest.expect(o.meetingUri!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed8(o.phoneAccess!);
+    checkUnnamed11(o.phoneAccess!);
   }
   buildCounterSpace--;
 }
@@ -832,6 +943,27 @@ void checkTranscriptionConfig(api.TranscriptionConfig o) {
   buildCounterTranscriptionConfig--;
 }
 
+core.int buildCounterUpdateMemberRequest = 0;
+api.UpdateMemberRequest buildUpdateMemberRequest() {
+  final o = api.UpdateMemberRequest();
+  buildCounterUpdateMemberRequest++;
+  if (buildCounterUpdateMemberRequest < 3) {
+    o.member = buildMember();
+    o.updateMask = 'foo';
+  }
+  buildCounterUpdateMemberRequest--;
+  return o;
+}
+
+void checkUpdateMemberRequest(api.UpdateMemberRequest o) {
+  buildCounterUpdateMemberRequest++;
+  if (buildCounterUpdateMemberRequest < 3) {
+    checkMember(o.member!);
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
+  }
+  buildCounterUpdateMemberRequest--;
+}
+
 void main() {
   unittest.group('obj-schema-ActiveConference', () {
     unittest.test('to-json--from-json', () async {
@@ -863,6 +995,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkArtifactConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-BatchUpdateMembersRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBatchUpdateMembersRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchUpdateMembersRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBatchUpdateMembersRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-BatchUpdateMembersResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBatchUpdateMembersResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchUpdateMembersResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBatchUpdateMembersResponse(od);
     });
   });
 
@@ -943,6 +1097,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListMembersResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListMembersResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListMembersResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListMembersResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListParticipantSessionsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListParticipantSessionsResponse();
@@ -1006,6 +1171,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkListTranscriptsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-Member', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMember();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Member.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMember(od);
     });
   });
 
@@ -1171,6 +1347,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkTranscriptionConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpdateMemberRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpdateMemberRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateMemberRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUpdateMemberRequest(od);
     });
   });
 
@@ -2310,6 +2497,379 @@ void main() {
         $fields: arg_$fields,
       );
       checkSpace(response as api.Space);
+    });
+  });
+
+  unittest.group('resource-SpacesMembersResource', () {
+    unittest.test('method--batchUpdate', () async {
+      final mock = HttpServerMock();
+      final res = api.MeetApi(mock).spaces.members;
+      final arg_request = buildBatchUpdateMembersRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.BatchUpdateMembersRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkBatchUpdateMembersRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildBatchUpdateMembersResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.batchUpdate(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkBatchUpdateMembersResponse(
+        response as api.BatchUpdateMembersResponse,
+      );
+    });
+
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.MeetApi(mock).spaces.members;
+      final arg_request = buildMember();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Member.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkMember(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildMember());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkMember(response as api.Member);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.MeetApi(mock).spaces.members;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.MeetApi(mock).spaces.members;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildMember());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkMember(response as api.Member);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.MeetApi(mock).spaces.members;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildListMembersResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
+      checkListMembersResponse(response as api.ListMembersResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.MeetApi(mock).spaces.members;
+      final arg_request = buildMember();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.Member.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkMember(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildMember());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkMember(response as api.Member);
     });
   });
 }

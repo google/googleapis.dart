@@ -1821,4 +1821,4 @@ class ReportWarning {
 }
 
 /// List of string values.
-typedef StringList = $StringList;
+typedef StringList = $StringList00;

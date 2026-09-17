@@ -11924,7 +11924,7 @@ class InvideoTiming {
   }
 }
 
-typedef LanguageTag = $Shared20;
+typedef LanguageTag = $Shared19;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.

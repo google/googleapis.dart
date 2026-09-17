@@ -1665,6 +1665,47 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Suspends a workstation to reduce costs.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the workstation to suspend.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workstationClusters/\[^/\]+/workstationConfigs/\[^/\]+/workstations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> suspend(
+    SuspendWorkstationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':suspend';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns permissions that a caller has on the specified resource.
   ///
   /// If the resource does not exist, this will return an empty set of
@@ -3782,33 +3823,10 @@ class StartWorkstationRequest {
 typedef Status = $Status00;
 
 /// Request message for StopWorkstation.
-class StopWorkstationRequest {
-  /// If set, the request will be rejected if the latest version of the
-  /// workstation on the server does not have this ETag.
-  ///
-  /// Optional.
-  core.String? etag;
+typedef StopWorkstationRequest = $WorkstationRequest;
 
-  /// If set, validate the request and preview the result, but do not actually
-  /// apply it.
-  ///
-  /// Optional.
-  core.bool? validateOnly;
-
-  StopWorkstationRequest({this.etag, this.validateOnly});
-
-  StopWorkstationRequest.fromJson(core.Map json_)
-    : this(
-        etag: json_['etag'] as core.String?,
-        validateOnly: json_['validateOnly'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final etag = this.etag;
-    final validateOnly = this.validateOnly;
-    return {'etag': ?etag, 'validateOnly': ?validateOnly};
-  }
-}
+/// Request message for SuspendWorkstation.
+typedef SuspendWorkstationRequest = $WorkstationRequest;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
@@ -3923,6 +3941,8 @@ class Workstation {
   /// - "STATE_STOPPING" : The workstation is being stopped.
   /// - "STATE_STOPPED" : The workstation is stopped and will not be able to
   /// receive requests until it is started.
+  /// - "STATE_SUSPENDING" : The workstation is being suspended.
+  /// - "STATE_SUSPENDED" : The workstation is suspended.
   core.String? state;
 
   /// A system-assigned unique identifier for this workstation.
@@ -4435,9 +4455,22 @@ class WorkstationConfig {
   /// Optional.
   Host? host;
 
-  /// Number of seconds to wait before automatically stopping a workstation
-  /// after it last received user traffic.
+  /// The action to take when the workstation has been idle for the duration
+  /// specified in idle_timeout.
   ///
+  /// Defaults to STOP.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "IDLE_ACTION_UNSPECIFIED" : Defaults to STOP.
+  /// - "STOP" : Stop the workstation after idle_timeout.
+  /// - "SUSPEND" : Suspend the workstation after idle_timeout.
+  core.String? idleAction;
+
+  /// Number of seconds to wait before automatically stopping or suspending a
+  /// workstation after it last received user traffic.
+  ///
+  /// See idle_action to configure whether to stop or suspend idle workstations.
   /// A value of `"0s"` indicates that Cloud Workstations VMs created with this
   /// configuration should never time out due to idleness. Provide
   /// [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration)
@@ -4510,14 +4543,16 @@ class WorkstationConfig {
   /// can be applied upon restart. The idle_timeout and running_timeout fields
   /// are independent of each other. Note that the running_timeout field stops
   /// workstations after the specified time, regardless of whether or not the
-  /// workstations are idle. Provide duration terminated by `s` for seconds—for
-  /// example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value
-  /// of `"0s"` indicates that workstations using this configuration should
-  /// never time out. If encryption_key is set, it must be greater than `"0s"`
-  /// and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates
-  /// that Cloud Workstations VMs created with this configuration have no
-  /// maximum running time. This is strongly discouraged because you incur costs
-  /// and will not pick up security updates.
+  /// workstations are idle. Note: This timeout applies to workstations in the
+  /// following states: * STATE_RUNNING * STATE_SUSPENDED Suspending a
+  /// workstation does not reset this timeout. Provide duration terminated by
+  /// `s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"`
+  /// (12 hours). A value of `"0s"` indicates that workstations using this
+  /// configuration should never time out. If encryption_key is set, it must be
+  /// greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value
+  /// of `"0s"` indicates that Cloud Workstations VMs created with this
+  /// configuration have no maximum running time. This is strongly discouraged
+  /// because you incur costs and will not pick up security updates.
   ///
   /// Optional.
   core.String? runningTimeout;
@@ -4548,6 +4583,7 @@ class WorkstationConfig {
     this.etag,
     this.grantWorkstationAdminRoleOnCreate,
     this.host,
+    this.idleAction,
     this.idleTimeout,
     this.labels,
     this.maxUsableWorkstations,
@@ -4611,6 +4647,7 @@ class WorkstationConfig {
                 json_['host'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        idleAction: json_['idleAction'] as core.String?,
         idleTimeout: json_['idleTimeout'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -4657,6 +4694,7 @@ class WorkstationConfig {
     final grantWorkstationAdminRoleOnCreate =
         this.grantWorkstationAdminRoleOnCreate;
     final host = this.host;
+    final idleAction = this.idleAction;
     final idleTimeout = this.idleTimeout;
     final labels = this.labels;
     final maxUsableWorkstations = this.maxUsableWorkstations;
@@ -4684,6 +4722,7 @@ class WorkstationConfig {
       'etag': ?etag,
       'grantWorkstationAdminRoleOnCreate': ?grantWorkstationAdminRoleOnCreate,
       'host': ?host,
+      'idleAction': ?idleAction,
       'idleTimeout': ?idleTimeout,
       'labels': ?labels,
       'maxUsableWorkstations': ?maxUsableWorkstations,

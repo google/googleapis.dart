@@ -700,6 +700,7 @@ class Destination {
   /// [Cloud retail](https://cloud.google.com/solutions/retail).
   /// - "LOCAL_CLOUD_RETAIL" :
   /// [Local cloud retail](https://cloud.google.com/solutions/retail).
+  /// - "RENTAL_ADS" : Real Estate Rental Ads. .
   core.String? destination;
 
   /// The state of the destination.

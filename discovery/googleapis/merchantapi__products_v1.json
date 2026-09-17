@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260729",
+    "revision": "20260910",
     "rootUrl": "https://merchantapi.googleapis.com/",
     "servicePath": "",
     "title": "Merchant API",
@@ -726,12 +726,14 @@
                         "LOCAL_CLOUD_RETAIL",
                         "PRODUCT_REVIEWS",
                         "MERCHANT_REVIEWS",
-                        "YOUTUBE_CHECKOUT"
+                        "YOUTUBE_CHECKOUT",
+                        "RENTAL_ADS"
                     ],
                     "enumDeprecated": [
                         false,
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -770,7 +772,8 @@
                         "[Local cloud retail](https://cloud.google.com/solutions/retail).",
                         "[Product Reviews](https://support.google.com/merchants/answer/14620732).",
                         "[Merchant Reviews](https://developers.google.com/merchant-review-feeds).",
-                        "YouTube Checkout ."
+                        "YouTube Checkout .",
+                        "Real Estate Rental Ads. ."
                     ],
                     "type": "string"
                 }
@@ -968,12 +971,14 @@
                         "LOCAL_CLOUD_RETAIL",
                         "PRODUCT_REVIEWS",
                         "MERCHANT_REVIEWS",
-                        "YOUTUBE_CHECKOUT"
+                        "YOUTUBE_CHECKOUT",
+                        "RENTAL_ADS"
                     ],
                     "enumDeprecated": [
                         false,
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -1012,7 +1017,8 @@
                         "[Local cloud retail](https://cloud.google.com/solutions/retail).",
                         "[Product Reviews](https://support.google.com/merchants/answer/14620732).",
                         "[Merchant Reviews](https://developers.google.com/merchant-review-feeds).",
-                        "YouTube Checkout ."
+                        "YouTube Checkout .",
+                        "Real Estate Rental Ads. ."
                     ],
                     "type": "string"
                 },
@@ -1562,7 +1568,7 @@
                     "type": "array"
                 },
                 "certifications": {
-                    "description": "Product Certifications, for example for energy efficiency labeling of products recorded in the [EU EPREL](https://eprel.ec.europa.eu/screen/home) database. See the [Help Center](https://support.google.com/merchants/answer/13528839) article for more information.",
+                    "description": "Product Certifications, for example for energy efficiency labeling of products recorded in the [EU EPREL](https://eprel.ec.europa.eu/screen/home) database. For more information, see [Certification](https://support.google.com/merchants/answer/13528839).",
                     "items": {
                         "$ref": "ProductCertification"
                     },
@@ -1791,7 +1797,8 @@
                             "FREE_VEHICLE_LISTINGS",
                             "VEHICLE_ADS",
                             "CLOUD_RETAIL",
-                            "LOCAL_CLOUD_RETAIL"
+                            "LOCAL_CLOUD_RETAIL",
+                            "RENTAL_ADS"
                         ],
                         "enumDescriptions": [
                             "Not specified.",
@@ -1806,7 +1813,8 @@
                             "[Free vehicle listings](https://support.google.com/merchants/answer/11189169).",
                             "[Vehicle ads](https://support.google.com/merchants/answer/11189169).",
                             "[Cloud retail](https://cloud.google.com/solutions/retail).",
-                            "[Local cloud retail](https://cloud.google.com/solutions/retail)."
+                            "[Local cloud retail](https://cloud.google.com/solutions/retail).",
+                            "Real Estate Rental Ads. ."
                         ],
                         "type": "string"
                     },
@@ -1894,7 +1902,8 @@
                             "FREE_VEHICLE_LISTINGS",
                             "VEHICLE_ADS",
                             "CLOUD_RETAIL",
-                            "LOCAL_CLOUD_RETAIL"
+                            "LOCAL_CLOUD_RETAIL",
+                            "RENTAL_ADS"
                         ],
                         "enumDescriptions": [
                             "Not specified.",
@@ -1909,7 +1918,8 @@
                             "[Free vehicle listings](https://support.google.com/merchants/answer/11189169).",
                             "[Vehicle ads](https://support.google.com/merchants/answer/11189169).",
                             "[Cloud retail](https://cloud.google.com/solutions/retail).",
-                            "[Local cloud retail](https://cloud.google.com/solutions/retail)."
+                            "[Local cloud retail](https://cloud.google.com/solutions/retail).",
+                            "Real Estate Rental Ads. ."
                         ],
                         "type": "string"
                     },
@@ -2597,6 +2607,14 @@
                     "description": "The certification code. Maximum length is 2000 characters.",
                     "type": "string"
                 },
+                "certificationDocumentLink": {
+                    "description": "Optional. URL to the certification document (eg. `https://www.example.com/document`), for example, the product data sheet or fiche required by UK's DESNZ or EU's EPREL. Maximum length is 2000 characters. For more information, see [Certification](https://support.google.com/merchants/answer/13528839).",
+                    "type": "string"
+                },
+                "certificationLabelLink": {
+                    "description": "Optional. URL to the certification label (eg. `https://www.example.com/label`), for example, the energy efficiency label required by UK's DESNZ or EU's EPREL. Maximum length is 2000 characters. For more information, see [Certification](https://support.google.com/merchants/answer/13528839).",
+                    "type": "string"
+                },
                 "certificationName": {
                     "description": "The name of the certification.",
                     "enum": [
@@ -2664,12 +2682,14 @@
                         "LOCAL_CLOUD_RETAIL",
                         "PRODUCT_REVIEWS",
                         "MERCHANT_REVIEWS",
-                        "YOUTUBE_CHECKOUT"
+                        "YOUTUBE_CHECKOUT",
+                        "RENTAL_ADS"
                     ],
                     "enumDeprecated": [
                         false,
                         false,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -2708,7 +2728,8 @@
                         "[Local cloud retail](https://cloud.google.com/solutions/retail).",
                         "[Product Reviews](https://support.google.com/merchants/answer/14620732).",
                         "[Merchant Reviews](https://developers.google.com/merchant-review-feeds).",
-                        "YouTube Checkout ."
+                        "YouTube Checkout .",
+                        "Real Estate Rental Ads. ."
                     ],
                     "type": "string"
                 }
@@ -2865,6 +2886,10 @@
                 "downpayment": {
                     "$ref": "Price",
                     "description": "The up-front down payment amount the buyer has to pay."
+                },
+                "mileageAllowance": {
+                    "$ref": "Mileage",
+                    "description": "Optional. The mileage allowance for the lease of the vehicle. Only applicable to vehicle products."
                 },
                 "months": {
                     "description": "The number of installments the buyer has to pay.",
