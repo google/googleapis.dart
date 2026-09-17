@@ -68,7 +68,10 @@ Future<({String signedBlob, String keyId})> signBlob(
 
   final response = await client.post(
     signBlobUrl,
-    headers: {'Content-Type': 'application/json'},
+    headers: {
+      'Content-Type': 'application/json',
+      'x-goog-api-client': 'gl-dart/ unknown auth/2.3.4-wip',
+    },
     body: requestBody,
   );
 

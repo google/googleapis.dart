@@ -472,6 +472,7 @@ void main() {
     final customBaseClient = mockClient((request) async {
       authenticatedRequestCalled = true;
       expect(request.headers['Authorization'], 'Bearer impersonated-token');
+      expect(request.headers['x-goog-api-client'], isNotNull);
       return http.Response('ok', 200);
     }, expectClose: false);
 

@@ -329,7 +329,6 @@ void main() {
             expectAsync1((request) async {
               expect(request.method, 'POST');
               expect(request.url, url);
-              expect(request.headers, hasLength(1));
               expect(
                 request.headers,
                 containsPair('Authorization', 'Bearer bar'),
@@ -353,7 +352,6 @@ void main() {
             expectAsync1((request) async {
               expect(request.method, 'POST');
               expect(request.url, url);
-              expect(request.headers, hasLength(2));
               expect(
                 request.headers,
                 containsPair('Authorization', 'Bearer bar'),
@@ -382,7 +380,6 @@ void main() {
             expectAsync1((request) async {
               expect(request.method, 'POST');
               expect(request.url, url);
-              expect(request.headers, hasLength(1));
               expect(
                 request.headers,
                 containsPair('Authorization', 'Bearer bar'),

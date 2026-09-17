@@ -40,6 +40,12 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
     if (quotaProject != null) {
       modifiedRequest.headers['X-Goog-User-Project'] = quotaProject!;
     }
+
+    if (!modifiedRequest.headers.containsKey('x-goog-api-client')) {
+      modifiedRequest.headers['x-goog-api-client'] =
+          'gl-dart/ unknown auth/2.3.4-wip';
+    }
+
     final response = await baseClient.send(modifiedRequest);
     final wwwAuthenticate = response.headers['www-authenticate'];
     if (wwwAuthenticate != null) {

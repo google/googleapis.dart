@@ -18,6 +18,7 @@ void main() {
     final client = MockClient((request) async {
       if (request.url.path.contains('signBlob')) {
         expect(request.url.toString(), contains('test-email%40example.com'));
+        expect(request.headers['x-goog-api-client'], isNotNull);
         final body = jsonDecode(request.body) as Map<String, dynamic>;
         expect(body['payload'], isNotNull);
         return Response(
