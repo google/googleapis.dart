@@ -11,6 +11,20 @@ import 'dart:typed_data';
 
 import 'package:meta/meta.dart';
 
+/// Represents integers obtained while creating a Public key.
+final class RSAPublicKey {
+  /// Modulus for public and private keys. Satisfies `n=p*q`.
+  final BigInt n;
+
+  /// Public key exponent. Satisfies `d*e=1 mod phi(n)`.
+  final BigInt e;
+
+  /// The number of bits used for the modulus. Usually 1024, 2048 or 4096 bits.
+  int get bitLength => n.bitLength;
+
+  RSAPublicKey(this.n, this.e);
+}
+
 /// Represents integers obtained while creating a Public/Private key pair.
 final class RSAPrivateKey {
   /// First prime number.
@@ -87,9 +101,9 @@ BigInt bytes2BigInt(List<int> bytes) {
   return number;
 }
 
-@visibleForTesting
+@internal
 Uint8List integer2Bytes(BigInt integer, int intendedLength) {
-  if (integer < BigInt.one) {
+  if (integer < BigInt.zero) {
     throw ArgumentError('Only positive integers are supported.');
   }
   final bytes = Uint8List(intendedLength);
