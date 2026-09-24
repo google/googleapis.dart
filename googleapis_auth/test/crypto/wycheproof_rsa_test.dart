@@ -1,3 +1,9 @@
+// Copyright 2026 Google LLC
+//
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file or at
+// https://developers.google.com/open-source/licenses/bsd
+
 // ignore_for_file: lines_longer_than_80_chars
 import 'dart:convert';
 import 'dart:typed_data';
@@ -151,7 +157,7 @@ void main() {
         final comment = t['comment'] as String?;
 
         test('$vectorFile - tcId $tcId ($result)', () {
-          bool isValid = false;
+          var isValid = false;
 
           final parts = jwsStr.split('.');
           if (parts.length == 3) {
@@ -166,7 +172,7 @@ void main() {
               final header = jsonDecode(headerJson) as Map<String, dynamic>;
 
               if (header['alg'] == 'RS256') {
-                bool badCrit = false;
+                var badCrit = false;
                 if (header.containsKey('crit')) {
                   final crit = header['crit'] as List;
                   for (final c in crit) {
