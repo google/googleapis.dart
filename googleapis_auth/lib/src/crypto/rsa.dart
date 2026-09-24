@@ -103,7 +103,7 @@ BigInt bytes2BigInt(List<int> bytes) {
 
 @internal
 Uint8List integer2Bytes(BigInt integer, int intendedLength) {
-  if (integer < BigInt.zero) {
+  if (integer < BigInt.one) {
     throw ArgumentError('Only positive integers are supported.');
   }
   final bytes = Uint8List(intendedLength);

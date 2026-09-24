@@ -7,7 +7,7 @@
 import 'version_fallback.dart' if (dart.library.io) 'version_io.dart';
 
 /// Must be kept in sync with `pubspec.yaml` (verified by `test/version_test.dart`).
-final _xGoogApiClientHeaderValue = 'gl-dart/$dartVersion auth/2.3.4';
+final _xGoogApiClientHeaderValue = 'gl-dart/$dartVersion auth/2.3.5-wip';
 
 /// Adds the fallback `x-goog-api-client` header to [headers] if not already
 /// present, and returns [headers].

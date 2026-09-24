@@ -95,9 +95,10 @@ final class RS256Verifier {
     if (signature.length != modulusLen) return false;
 
     final s = rsa.bytes2BigInt(signature);
-    if (s < BigInt.zero || s >= _rsaKey.n) return false;
+    if (s < BigInt.one || s >= _rsaKey.n) return false;
 
     final m = s.modPow(_rsaKey.e, _rsaKey.n);
+    if (m < BigInt.one) return false;
     final recoveredBlock = rsa.integer2Bytes(m, modulusLen);
 
     final digest = sha256.convert(bytes).bytes;
