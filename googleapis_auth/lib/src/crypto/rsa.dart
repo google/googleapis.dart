@@ -12,6 +12,7 @@ import 'dart:typed_data';
 import 'package:meta/meta.dart';
 
 /// Represents integers obtained while creating a Public key.
+@internal
 final class RSAPublicKey {
   /// Modulus for public and private keys. Satisfies `n=p*q`.
   final BigInt n;
