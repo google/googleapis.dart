@@ -1,5 +1,7 @@
 ## 2.3.5-wip
 
+- Reject malformed ASN.1 DER multi-byte length encodings with `FormatException`.
+
 ## 2.3.4
 
 - Added a fallback `x-goog-api-client` tracking header to `AuthenticatedClient`,

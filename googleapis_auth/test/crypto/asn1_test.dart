@@ -21,8 +21,24 @@ void main() {
     test('invalid-len', () {
       expectFormatException([tagBytes]);
       expectFormatException([tagBytes, 0x07]);
+      expectFormatException([tagBytes, 0x80]);
       expectFormatException([tagBytes, 0x82]);
       expectFormatException([tagBytes, 0x82, 1]);
+      expectFormatException([tagBytes, 0x84, 1, 2]);
+      expectFormatException([tagBytes, 0x88, 0x80, 0, 0, 0, 0, 0, 0, 0]);
+      expectFormatException([
+        tagBytes,
+        0x88,
+        0x7f,
+        0xff,
+        0xff,
+        0xff,
+        0xff,
+        0xff,
+        0xff,
+        0xff,
+      ]);
+      expectFormatException([tagBytes, 0x89, 1, 0, 0, 0, 0, 0, 0, 0, 0]);
       expectFormatException([tagBytes, 0x01, 1, 2, 3, 4]);
     });
   }

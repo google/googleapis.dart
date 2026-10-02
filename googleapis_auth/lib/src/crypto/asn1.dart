@@ -18,6 +18,16 @@ abstract final class ASN1Parser {
   static const objectIdTag = 0x06;
   static const sequenceTag = 0x30;
 
+  /// The maximum value of a multi-byte DER length before multiplying by 256 and
+  /// adding the next byte (`0..255`).
+  ///
+  /// On the Dart VM and dart2wasm (64-bit signed `int`), this is
+  /// `0x7fffffffffffffff ~/ 256` (`0x007fffffffffffff`). On JavaScript (`53`-bit
+  /// safe integers), this is `0x1fffffffffffff ~/ 256` (`0x0001fffffffffff`).
+  static const _maxLengthBeforeByteShift = identical(1.0, 1)
+      ? 0x0001fffffffffff
+      : (0x007fffff * 0x100000000) + 0xffffffff;
+
   static ASN1Sequence parseSequence(Uint8List bytes) {
     final obj = parseObject(bytes);
     return obj as ASN1Sequence;
@@ -34,7 +44,7 @@ abstract final class ASN1Parser {
     final end = bytes.length;
 
     void checkNBytesAvailable(int n) {
-      if ((offset + n) > end) {
+      if (n > end - offset) {
         invalidFormat('Tried to read more bytes than available.');
       }
     }
@@ -61,11 +71,17 @@ abstract final class ASN1Parser {
       // This byte has in bits 0..6 the number of bytes following which encode
       // the length.
       var countLengthBytes = lengthByte & 0x7f;
+      if (countLengthBytes == 0 || countLengthBytes > 8) {
+        invalidFormat('Invalid length encoding.');
+      }
       checkNBytesAvailable(countLengthBytes);
 
       var length = 0;
       while (countLengthBytes > 0) {
-        length = (length << 8) | data.getUint8(offset++);
+        if (length > _maxLengthBeforeByteShift) {
+          invalidFormat('Invalid length encoding.');
+        }
+        length = (length * 256) + data.getUint8(offset++);
         countLengthBytes--;
       }
       return length;
@@ -103,9 +119,7 @@ abstract final class ASN1Parser {
           return ASN1ObjectIdentifier._(readBytes(size));
         case sequenceTag:
           final lengthInBytes = readEncodedLength();
-          if ((offset + lengthInBytes) > end) {
-            invalidFormat('Tried to read more bytes than available.');
-          }
+          checkNBytesAvailable(lengthInBytes);
           final endOfSequence = offset + lengthInBytes;
 
           final objects = <ASN1Object>[];
