@@ -1,6 +1,10 @@
 ## 2.3.5-wip
 
-- Reject malformed ASN.1 DER multi-byte length encodings with `FormatException`.
+- Reject malformed ASN.1 DER multi-byte length encodings and non-sequence root
+  objects in `ASN1Parser`, and fix `Uint8List` slice offset handling.
+- Reject non-positive RSA private key integer parameters and malformed PKCS#8
+  headers with `FormatException`, and throw `ArgumentError` when optional
+  `ServiceAccountCredentials.fromJson` fields are not strings.
 
 ## 2.3.4
 

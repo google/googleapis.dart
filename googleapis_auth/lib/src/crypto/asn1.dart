@@ -30,7 +30,10 @@ abstract final class ASN1Parser {
 
   static ASN1Sequence parseSequence(Uint8List bytes) {
     final obj = parseObject(bytes);
-    return obj as ASN1Sequence;
+    if (obj is! ASN1Sequence) {
+      throw FormatException('Expected ASN1Sequence, got $obj.');
+    }
+    return obj;
   }
 
   @visibleForTesting
@@ -39,7 +42,6 @@ abstract final class ASN1Parser {
       throw FormatException('Invalid DER encoding: $msg');
     }
 
-    final data = ByteData.view(bytes.buffer);
     var offset = 0;
     final end = bytes.length;
 
@@ -49,7 +51,7 @@ abstract final class ASN1Parser {
       }
     }
 
-    List<int> readBytes(int n) {
+    Uint8List readBytes(int n) {
       checkNBytesAvailable(n);
 
       final integerBytes = bytes.sublist(offset, offset + n);
@@ -60,7 +62,7 @@ abstract final class ASN1Parser {
     int readEncodedLength() {
       checkNBytesAvailable(1);
 
-      final lengthByte = data.getUint8(offset++);
+      final lengthByte = bytes[offset++];
 
       // Short length encoding form: This byte is the length itself.
       if (lengthByte < 0x80) {
@@ -81,7 +83,7 @@ abstract final class ASN1Parser {
         if (length > _maxLengthBeforeByteShift) {
           invalidFormat('Invalid length encoding.');
         }
-        length = (length * 256) + data.getUint8(offset++);
+        length = (length * 256) + bytes[offset++];
         countLengthBytes--;
       }
       return length;
@@ -89,7 +91,7 @@ abstract final class ASN1Parser {
 
     void readNullBytes() {
       checkNBytesAvailable(1);
-      final nullByte = data.getUint8(offset++);
+      final nullByte = bytes[offset++];
       if (nullByte != 0x00) {
         invalidFormat('Null byte expect, but was: $nullByte.');
       }
@@ -159,13 +161,13 @@ final class ASN1Integer extends ASN1Object {
 }
 
 final class ASN1OctetString extends ASN1Object {
-  final List<int> bytes;
+  final Uint8List bytes;
 
   ASN1OctetString._(this.bytes) : super._();
 }
 
 final class ASN1ObjectIdentifier extends ASN1Object {
-  final List<int> bytes;
+  final Uint8List bytes;
 
   ASN1ObjectIdentifier._(this.bytes) : super._();
 }

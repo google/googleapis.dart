@@ -208,6 +208,78 @@ ${base64Encode(fullBytes)}
       _throwFormatExceptionWithMsg('Only 1024 or more bits are supported'),
     );
   });
+
+  test('throws FormatException for non-positive RSA key parameters', () {
+    final n = BigInt.two.pow(1024);
+    List<int> encodeBigInt(BigInt i) {
+      if (i == BigInt.zero) return [0];
+      final bytes = <int>[];
+      var temp = i;
+      while (temp > BigInt.zero) {
+        bytes.insert(0, (temp & BigInt.from(0xFF)).toInt());
+        temp >>= 8;
+      }
+      if ((bytes[0] & 0x80) != 0) {
+        bytes.insert(0, 0);
+      }
+      return bytes;
+    }
+
+    List<int> asn1Int(BigInt i) {
+      final b = encodeBigInt(i);
+      if (b.length < 128) {
+        return [0x02, b.length, ...b];
+      }
+      return [0x02, 0x81, b.length, ...b];
+    }
+
+    final seqContent = <int>[
+      ...asn1Int(BigInt.zero), // ver
+      ...asn1Int(n),
+      ...asn1Int(BigInt.from(65537)),
+      ...asn1Int(BigInt.one),
+      ...asn1Int(BigInt.zero), // p = 0 (invalid!)
+      ...asn1Int(BigInt.from(11)),
+      ...asn1Int(BigInt.one),
+      ...asn1Int(BigInt.one),
+      ...asn1Int(BigInt.one),
+    ];
+    final fullBytes = [0x30, 0x81, seqContent.length, ...seqContent];
+    final pem =
+        '-----BEGIN RSA PRIVATE KEY-----\n'
+        '${base64Encode(fullBytes)}\n'
+        '-----END RSA PRIVATE KEY-----';
+
+    expect(
+      () => keyFromString(pem),
+      _throwFormatExceptionWithMsg(
+        'RSA key parameters must be positive integers.',
+      ),
+    );
+  });
+
+  test('throws FormatException for PKCS#8 with non-sequence algId', () {
+    // 3-element sequence with ASN1Null instead of AlgorithmIdentifier sequence
+    final fullBytes = [
+      0x30,
+      0x09,
+      0x02,
+      0x01,
+      0x00,
+      0x05,
+      0x00,
+      0x04,
+      0x02,
+      0x30,
+      0x00,
+    ];
+    final pem =
+        '-----BEGIN PRIVATE KEY-----\n'
+        '${base64Encode(fullBytes)}\n'
+        '-----END PRIVATE KEY-----';
+
+    expect(() => keyFromString(pem), throwsFormatException);
+  });
 }
 
 Matcher _throwFormatExceptionWithMsg(String msg) => throwsA(

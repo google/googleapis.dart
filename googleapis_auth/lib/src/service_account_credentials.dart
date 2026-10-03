@@ -66,12 +66,15 @@ class ServiceAccountCredentials {
     }
     return switch (json) {
       final Map map &&
-          {
-            'type': 'service_account',
-            'client_id': final String identifier,
-            'private_key': final String privateKey,
-            'client_email': final String email,
-          } =>
+              {
+                'type': 'service_account',
+                'client_id': final String identifier,
+                'private_key': final String privateKey,
+                'client_email': final String email,
+              }
+          when (map['project_id'] is String?) &&
+              (map['universe_domain'] is String?) &&
+              (map['quota_project_id'] is String?) =>
         ServiceAccountCredentials(
           email,
           ClientId(identifier),

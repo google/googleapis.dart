@@ -85,6 +85,36 @@ void main() {
         }
       });
 
+      test('parseSequence throws FormatException for non-sequence root', () {
+        expect(
+          () => ASN1Parser.parseSequence(
+            Uint8List.fromList([ASN1Parser.objectIdTag, 0]),
+          ),
+          throwsFormatException,
+        );
+      });
+
+      test('sublistView with non-zero offsetInBytes parses accurately', () {
+        final backing = Uint8List.fromList([
+          0xff,
+          0xff,
+          0xff,
+          0xff,
+          ASN1Parser.sequenceTag,
+          0x81,
+          0x04,
+          ASN1Parser.nullTag,
+          0x00,
+          ASN1Parser.octetStringTag,
+          0x00,
+        ]);
+        final view = Uint8List.sublistView(backing, 4);
+        final seq = ASN1Parser.parseSequence(view);
+        expect(seq.objects, hasLength(2));
+        expect(seq.objects[0], isA<ASN1Null>());
+        expect(seq.objects[1], isA<ASN1OctetString>());
+      });
+
       invalidLenTest(ASN1Parser.sequenceTag);
     });
 
