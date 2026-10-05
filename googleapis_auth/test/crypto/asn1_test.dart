@@ -21,8 +21,25 @@ void main() {
     test('invalid-len', () {
       expectFormatException([tagBytes]);
       expectFormatException([tagBytes, 0x07]);
+      expectFormatException([tagBytes, 0x80]);
       expectFormatException([tagBytes, 0x82]);
       expectFormatException([tagBytes, 0x82, 1]);
+      expectFormatException([tagBytes, 0x84, 1, 2]);
+      expectFormatException([tagBytes, 0x85, 0, 0, 0, 0, 1, 0]);
+      expectFormatException([tagBytes, 0x88, 0x80, 0, 0, 0, 0, 0, 0, 0]);
+      expectFormatException([
+        tagBytes,
+        0x88,
+        0x7f,
+        0xff,
+        0xff,
+        0xff,
+        0xff,
+        0xff,
+        0xff,
+        0xff,
+      ]);
+      expectFormatException([tagBytes, 0x89, 1, 0, 0, 0, 0, 0, 0, 0, 0]);
       expectFormatException([tagBytes, 0x01, 1, 2, 3, 4]);
     });
   }
@@ -67,6 +84,36 @@ void main() {
         for (var i = 0; i < 128; i++) {
           expect(sequence.objects[i], isA<ASN1Null>());
         }
+      });
+
+      test('parseSequence throws FormatException for non-sequence root', () {
+        expect(
+          () => ASN1Parser.parseSequence(
+            Uint8List.fromList([ASN1Parser.objectIdTag, 0]),
+          ),
+          throwsFormatException,
+        );
+      });
+
+      test('sublistView with non-zero offsetInBytes parses accurately', () {
+        final backing = Uint8List.fromList([
+          0xff,
+          0xff,
+          0xff,
+          0xff,
+          ASN1Parser.sequenceTag,
+          0x81,
+          0x04,
+          ASN1Parser.nullTag,
+          0x00,
+          ASN1Parser.octetStringTag,
+          0x00,
+        ]);
+        final view = Uint8List.sublistView(backing, 4);
+        final seq = ASN1Parser.parseSequence(view);
+        expect(seq.objects, hasLength(2));
+        expect(seq.objects[0], isA<ASN1Null>());
+        expect(seq.objects[1], isA<ASN1OctetString>());
       });
 
       invalidLenTest(ASN1Parser.sequenceTag);

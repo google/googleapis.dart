@@ -49,6 +49,23 @@ const _rsaSha256DigestInfoPrefix = [
   0x20,
 ];
 
+Uint8List _emsaPkcs1v15Encode(List<int> bytes, int modulusLen) {
+  final digest = sha256.convert(bytes).bytes;
+  final block = Uint8List(modulusLen);
+  final padLength =
+      block.length - _rsaSha256DigestInfoPrefix.length - digest.length - 3;
+  block[0] = 0x00;
+  block[1] = 0x01;
+  block.fillRange(2, 2 + padLength, 0xFF);
+  block[2 + padLength] = 0x00;
+
+  var offset = 2 + padLength + 1;
+  block.setAll(offset, _rsaSha256DigestInfoPrefix);
+  offset += _rsaSha256DigestInfoPrefix.length;
+  block.setAll(offset, digest);
+  return block;
+}
+
 /// Used for signing messages with a private RSA key.
 ///
 /// The implemented algorithm can be seen in
@@ -60,22 +77,8 @@ final class RS256Signer {
   RS256Signer(this._rsaKey);
 
   Uint8List sign(List<int> bytes) {
-    final digest = sha256.convert(bytes).bytes;
     final modulusLen = (_rsaKey.bitLength + 7) ~/ 8;
-
-    final block = Uint8List(modulusLen);
-    final padLength =
-        block.length - _rsaSha256DigestInfoPrefix.length - digest.length - 3;
-    block[0] = 0x00;
-    block[1] = 0x01;
-    block.fillRange(2, 2 + padLength, 0xFF);
-    block[2 + padLength] = 0x00;
-
-    var offset = 2 + padLength + 1;
-    block.setAll(offset, _rsaSha256DigestInfoPrefix);
-    offset += _rsaSha256DigestInfoPrefix.length;
-    block.setAll(offset, digest);
-
+    final block = _emsaPkcs1v15Encode(bytes, modulusLen);
     return rsa.rawSign(_rsaKey, block, modulusLen);
   }
 }
@@ -100,23 +103,7 @@ final class RS256Verifier {
     final m = s.modPow(_rsaKey.e, _rsaKey.n);
     if (m < BigInt.one) return false;
     final recoveredBlock = rsa.integer2Bytes(m, modulusLen);
-
-    final digest = sha256.convert(bytes).bytes;
-    final expectedBlock = Uint8List(modulusLen);
-    final padLength =
-        expectedBlock.length -
-        _rsaSha256DigestInfoPrefix.length -
-        digest.length -
-        3;
-    expectedBlock[0] = 0x00;
-    expectedBlock[1] = 0x01;
-    expectedBlock.fillRange(2, 2 + padLength, 0xFF);
-    expectedBlock[2 + padLength] = 0x00;
-
-    var offset = 2 + padLength + 1;
-    expectedBlock.setAll(offset, _rsaSha256DigestInfoPrefix);
-    offset += _rsaSha256DigestInfoPrefix.length;
-    expectedBlock.setAll(offset, digest);
+    final expectedBlock = _emsaPkcs1v15Encode(bytes, modulusLen);
 
     var result = 0;
     for (var i = 0; i < modulusLen; i++) {

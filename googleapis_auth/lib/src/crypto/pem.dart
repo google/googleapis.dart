@@ -80,6 +80,13 @@ RSAPrivateKey _extractRSAKeyFromDERBytes(Uint8List bytes) {
         'Only 1024 or more bits are supported.',
       );
     }
+    for (var i = 1; i < asnIntegers.length; i++) {
+      if (asnIntegers[i].integer <= BigInt.zero) {
+        throw const FormatException(
+          'RSA key parameters must be positive integers.',
+        );
+      }
+    }
     return key;
   }
 
@@ -87,37 +94,23 @@ RSAPrivateKey _extractRSAKeyFromDERBytes(Uint8List bytes) {
     final asn = ASN1Parser.parseSequence(bytes);
     final objects = asn.objects;
     if (objects.length == 3 && objects[2] is ASN1OctetString) {
+      final version = objects[0] as ASN1Integer;
+      if (version.integer != BigInt.zero) {
+        throw FormatException('Expected version 0, got: ${version.integer}.');
+      }
       final string = objects[2] as ASN1OctetString;
-      final algId = objects[1];
-      if (algId is ASN1Sequence && algId.objects.isNotEmpty) {
-        final oid = algId.objects[0];
-        if (oid is ASN1ObjectIdentifier) {
-          final validOid = [
-            0x2a,
-            0x86,
-            0x48,
-            0x86,
-            0xf7,
-            0x0d,
-            0x01,
-            0x01,
-            0x01,
-          ];
-          if (oid.bytes.length != validOid.length) {
-            throw const FormatException('Unexpected Algorithm Identifier OID.');
-          }
-          for (var i = 0; i < validOid.length; i++) {
-            if (oid.bytes[i] != validOid[i]) {
-              throw const FormatException(
-                'Unexpected Algorithm Identifier OID.',
-              );
-            }
-          }
+      final algId = objects[1] as ASN1Sequence;
+      final oid = algId.objects.first as ASN1ObjectIdentifier;
+      const validOid = [0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01, 0x01];
+      if (oid.bytes.length != validOid.length) {
+        throw const FormatException('Unexpected Algorithm Identifier OID.');
+      }
+      for (var i = 0; i < validOid.length; i++) {
+        if (oid.bytes[i] != validOid[i]) {
+          throw const FormatException('Unexpected Algorithm Identifier OID.');
         }
       }
-      return privateKeyFromSequence(
-        ASN1Parser.parseSequence(string.bytes as Uint8List),
-      );
+      return privateKeyFromSequence(ASN1Parser.parseSequence(string.bytes));
     }
     return privateKeyFromSequence(asn);
   } on FormatException {

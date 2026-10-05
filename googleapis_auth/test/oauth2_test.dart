@@ -172,6 +172,20 @@ void main() {
       expect(credentialsFromJson.quotaProject, 'test-quota');
     });
 
+    test('throws ArgumentError for non-String optional fields in JSON', () {
+      for (final field in [
+        'project_id',
+        'universe_domain',
+        'quota_project_id',
+      ]) {
+        expect(
+          () =>
+              ServiceAccountCredentials.fromJson({...credentials, field: 123}),
+          throwsArgumentError,
+        );
+      }
+    });
+
     test('sign data', () {
       final credentials = ServiceAccountCredentials.fromJson({
         'private_key_id': '301029',

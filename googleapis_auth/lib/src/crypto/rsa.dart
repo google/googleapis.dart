@@ -85,11 +85,8 @@ Uint8List rawSign(RSAPrivateKey key, List<int> bytes, int intendedLength) {
 BigInt _encryptInteger(RSAPrivateKey key, BigInt x) {
   // The following is equivalent to `(x % key.n).modPow(key.d, key.n)` but is
   // much more efficient. It exploits the fact that we have dmp1/dmq1.
-  var xp = (x % key.p).modPow(key.dmp1, key.p);
+  final xp = (x % key.p).modPow(key.dmp1, key.p);
   final xq = (x % key.q).modPow(key.dmq1, key.q);
-  while (xp < xq) {
-    xp += key.p;
-  }
   return ((((xp - xq) * key.coeff) % key.p) * key.q) + xq;
 }
 
