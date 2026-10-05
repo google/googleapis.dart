@@ -25,6 +25,7 @@ void main() {
       expectFormatException([tagBytes, 0x82]);
       expectFormatException([tagBytes, 0x82, 1]);
       expectFormatException([tagBytes, 0x84, 1, 2]);
+      expectFormatException([tagBytes, 0x85, 0, 0, 0, 0, 1, 0]);
       expectFormatException([tagBytes, 0x88, 0x80, 0, 0, 0, 0, 0, 0, 0]);
       expectFormatException([
         tagBytes,
