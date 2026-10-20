@@ -1,4 +1,4 @@
-## 2.3.5-wip
+## 2.3.5
 
 - `AuthenticatedClient` and `ApiKeyClient` now keep the `contentLength`,
   `persistentConnection`, `followRedirects` and `maxRedirects` of the request
