@@ -30,12 +30,7 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
     // Make new request object and perform the authenticated request.
-    final modifiedRequest = RequestImpl(
-      request.method,
-      request.url,
-      request.finalize(),
-    );
-    modifiedRequest.headers.addAll(request.headers);
+    final modifiedRequest = RequestImpl.copyOf(request);
     modifiedRequest.headers['Authorization'] =
         'Bearer ${credentials.accessToken.data}';
     if (quotaProject != null) {
@@ -85,8 +80,7 @@ class ApiKeyClient extends DelegatingClient {
       url = url.replace(query: '${url.query}&key=$_encodedApiKey');
     }
 
-    final modifiedRequest = RequestImpl(request.method, url, request.finalize())
-      ..headers.addAll(request.headers);
+    final modifiedRequest = RequestImpl.copyOf(request, url: url);
     addXGoogApiClientHeader(modifiedRequest.headers);
     return baseClient.send(modifiedRequest);
   }

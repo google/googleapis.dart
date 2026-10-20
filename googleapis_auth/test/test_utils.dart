@@ -87,6 +87,20 @@ Client mockClient(
   bool expectClose = true,
 }) => ExpectCloseMockClient(requestHandler, expectClose ? 1 : 0);
 
+/// A client which records the request it is given, unlike a [MockClient],
+/// which hands its handler a new [Request] with the content length of the
+/// body it read.
+class RecordingClient extends BaseClient {
+  late BaseRequest request;
+
+  @override
+  Future<StreamedResponse> send(BaseRequest request) async {
+    this.request = request;
+    await request.finalize().drain<void>();
+    return StreamedResponse(const Stream.empty(), 204);
+  }
+}
+
 /// A client which will keep the VM alive until `close()` was called.
 class ExpectCloseMockClient extends MockClient {
   late void Function() _expectedToBeCalled;

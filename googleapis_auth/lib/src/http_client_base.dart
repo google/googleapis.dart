@@ -107,6 +107,20 @@ class RequestImpl extends BaseRequest {
   RequestImpl(super.method, super.url, [Stream<List<int>>? stream])
     : _stream = stream ?? const Stream.empty();
 
+  /// Creates a copy of [request] that sends its body, optionally to [url].
+  ///
+  /// Finalizes [request]. Besides its headers, the copy keeps the properties
+  /// that shape the request on the wire. Without [contentLength], `IOClient`
+  /// sends the body chunked: a `GET` request then carries an empty chunked
+  /// body.
+  factory RequestImpl.copyOf(BaseRequest request, {Uri? url}) =>
+      RequestImpl(request.method, url ?? request.url, request.finalize())
+        ..contentLength = request.contentLength
+        ..persistentConnection = request.persistentConnection
+        ..followRedirects = request.followRedirects
+        ..maxRedirects = request.maxRedirects
+        ..headers.addAll(request.headers);
+
   @override
   ByteStream finalize() {
     super.finalize();
