@@ -110,6 +110,24 @@ void main() {
       client.close();
     });
 
+    test('keeps the content length and connection settings', () async {
+      final recording = RecordingClient();
+      final client = ApiKeyClient(recording, key);
+
+      final request = Request('POST', Uri.parse('http://localhost/abc'))
+        ..body = 'abc'
+        ..persistentConnection = false
+        ..followRedirects = false
+        ..maxRedirects = 2;
+      await client.send(request);
+      expect('${recording.request.url}', 'http://localhost/abc?$keyEncoded');
+      expect(recording.request.contentLength, 3);
+      expect(recording.request.persistentConnection, false);
+      expect(recording.request.followRedirects, false);
+      expect(recording.request.maxRedirects, 2);
+      client.close();
+    });
+
     test('with-existing-key throws ArgumentError', () {
       final mock = mockClient(expectAsync1(_defaultResponseHandler, count: 0));
 

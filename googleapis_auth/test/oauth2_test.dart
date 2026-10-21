@@ -422,6 +422,30 @@ void main() {
         expect(response.statusCode, 204);
       });
 
+      test('keeps the content length of a request without a body', () async {
+        final recording = RecordingClient();
+        final client = authenticatedClient(recording, credentials);
+
+        await client.send(Request('GET', url));
+        expect(recording.request.contentLength, 0);
+      });
+
+      test('keeps the content length and connection settings', () async {
+        final recording = RecordingClient();
+        final client = authenticatedClient(recording, credentials);
+
+        final request = Request('POST', url)
+          ..body = 'abc'
+          ..persistentConnection = false
+          ..followRedirects = false
+          ..maxRedirects = 2;
+        await client.send(request);
+        expect(recording.request.contentLength, 3);
+        expect(recording.request.persistentConnection, false);
+        expect(recording.request.followRedirects, false);
+        expect(recording.request.maxRedirects, 2);
+      });
+
       test('throws on access denied', () {
         final client = authenticatedClient(
           mockClient(

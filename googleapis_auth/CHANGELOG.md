@@ -1,5 +1,9 @@
-## 2.3.5-wip
+## 2.3.5
 
+- `AuthenticatedClient` and `ApiKeyClient` now keep the `contentLength`,
+  `persistentConnection`, `followRedirects` and `maxRedirects` of the request
+  they forward. Without the content length, `IOClient` sent every request with
+  a chunked body, `GET` requests included.
 - Reject malformed ASN.1 DER multi-byte length encodings and non-sequence root
   objects in `ASN1Parser`, and fix `Uint8List` slice offset handling.
 - Reject non-positive RSA private key integer parameters and malformed PKCS#8
