@@ -1,3 +1,7 @@
+## 2.3.6-wip
+
+- Rewrite and verify `googleapis_auth` README examples.
+
 ## 2.3.5
 
 - `AuthenticatedClient` and `ApiKeyClient` now keep the `contentLength`,
