@@ -56,10 +56,11 @@ Future<void> main() async {
 ### Service Account
 
 If you want your application to act autonomously and access data, you can
-directly use a Service Account. Create a service account under **IAM & Admin >
-Service accounts**, then add a JSON key (**Keys > Add key > Create new key >
-JSON**). Service accounts are not created from the OAuth client ID
-application-type list.
+directly use a Service Account. Create a service account in the
+[Google Cloud console](https://console.cloud.google.com/iam-admin/serviceaccounts)
+under **IAM & Admin > Service accounts**, then add a JSON key (**Keys > Add
+key > Create new key > JSON**). Service accounts are not created from the OAuth
+client ID application-type list.
 
 ```dart
 import 'dart:io';
@@ -91,8 +92,10 @@ for the additional security configuration this requires.
 
 ### Installed Application / Desktop
 
-For a Dart command-line or installed application, create an OAuth client ID and
-choose **Desktop app**. The console shows both a client ID and a client secret.
+For a Dart command-line or installed application, create an OAuth client ID on
+the Google Cloud console
+[Credentials page](https://console.cloud.google.com/apis/credentials) and choose
+**Desktop app**. The console shows both a client ID and a client secret.
 
 ```dart
 import 'package:googleapis_auth/auth_io.dart';
@@ -123,15 +126,14 @@ Future<void> main() async {
 
 **Note:** Desktop app and Web application clients are issued a client secret;
 `ClientId.secret` is optional because some client types and providers omit it.
-Android and iOS clients are issued only a client ID and are not usable with this
-package's user-consent flows.
 
 ### Client-side Web Application
 
-For client-side web applications, create an OAuth client ID and choose **Web
-application**. You must set the **Authorized JavaScript origins** to the URLs
-where your application will be served (e.g. `http://localhost:8080` for local
-testing).
+For client-side web applications, create an OAuth client ID on the Google Cloud
+console [Credentials page](https://console.cloud.google.com/apis/credentials)
+and choose **Web application**. You must set the **Authorized JavaScript
+origins** to the URLs where your application will be served (e.g.
+`http://localhost:8080` for local testing).
 
 ```dart
 import 'package:googleapis_auth/auth_browser.dart';
