@@ -995,8 +995,6 @@ class $DimensionValue {
 /// - sasportal:v1alpha1 : SasPortalEmpty
 /// - sasportal:v1alpha1 : SasPortalGenerateSecretRequest
 /// - sasportal:v1alpha1 : SasPortalValidateInstallerResponse
-/// - sqladmin:v1beta4 : Empty
-/// - sqladmin:v1beta4 : SwitchoverBlueGreenDeploymentRequest
 /// - toolresults:v1beta3 : AndroidTestLoop
 /// - toolresults:v1beta3 : IosRoboTest
 /// - toolresults:v1beta3 : MatrixDimensionDefinition
@@ -2699,7 +2697,6 @@ class $Shared {
 /// - prod_tt_sasportal:v1alpha1 : SasPortalStatus
 /// - recommendationengine:v1beta1 : GoogleRpcStatus
 /// - sasportal:v1alpha1 : SasPortalStatus
-/// - sqladmin:v1beta4 : Status
 /// - toolresults:v1beta3 : Status
 class $Status {
   /// The status code, which should be an enum value of google.rpc.Code.

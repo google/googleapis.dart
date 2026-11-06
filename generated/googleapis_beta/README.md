@@ -143,13 +143,6 @@ Note that we now highly recommend new customers to use Retail API, which incorpo
 - [Original documentation](https://developers.google.com/spectrum-access-system/)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/sasportal_v1alpha1/sasportal_v1alpha1-library.html)
 
-#### Cloud SQL Admin API - `sqladmin/v1beta4`
-
-Cloud SQL Admin API
-
-- [Original documentation](https://cloud.google.com/sql/docs)
-- [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/sqladmin_v1beta4/sqladmin_v1beta4-library.html)
-
 #### Cloud Tool Results API - `toolresults/v1beta3`
 
 API to publish and access results from developer tools.

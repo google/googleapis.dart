@@ -11,6 +11,7 @@
 - `auditmanager` - new!
 - `content` - **REMOVED**
 - `curationpartners` - new!
+- `sqladmin` - new!
 
 ## 17.0.0
 
