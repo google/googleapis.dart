@@ -11,7 +11,7 @@ packages:
     mono_pkg: resources/googleapis/_mono_pkg.yaml
     resolution: workspace
     extraDevDependencies:
-        googleapis_auth: '^2.0.0'
+        googleapis_auth: '^2.3.5'
     apis:
       - abusiveexperiencereport:v1
       - acceleratedmobilepageurl:v1

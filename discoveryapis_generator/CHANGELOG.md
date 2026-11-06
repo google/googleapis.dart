@@ -11,6 +11,7 @@
 - Remove extra parenthesis from date encoding.
 - Generate much smaller code for trivial types: `String`, `bool`, `int`, `double`.
 - Require `sdk: ^3.9.0`
+- Require `_discoveryapis_commons: ^1.0.8`.
 
 ## 1.0.0
 
