@@ -1,6 +1,6 @@
-## 2.3.6-wip
+## 2.3.6
 
-- Rewrite and verify `googleapis_auth` README examples.
+- Reorganize and update README examples and Cloud Console setup instructions.
 
 ## 2.3.5
 
