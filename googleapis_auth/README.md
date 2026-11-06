@@ -1,12 +1,10 @@
-Provides support for obtaining OAuth2 credentials to access Google APIs.
+Provides support for obtaining OAuth 2.0 credentials and authenticated HTTP
+clients to access Google APIs.
 
-This package also provides convenience functionality for:
+This package also provides convenience functionality for automatically
+refreshing OAuth 2.0 credentials.
 
-- obtaining authenticated HTTP clients
-- automatically refreshing OAuth2 credentials
-
-> [!WARNING]
-> Do _**NOT**_ use this package (`package:googleapis_auth`) with a
+> [!WARNING] Do _**NOT**_ use this package (`package:googleapis_auth`) with a
 > [Flutter](https://flutter.dev/) application.
 >
 > Use
@@ -14,255 +12,187 @@ This package also provides convenience functionality for:
 > instead. The Flutter walkthrough is
 > [Google APIs](https://docs.flutter.dev/data-and-backend/google-apis).
 
-### Using this package
+## Getting Credentials
 
 Using this package requires creating a Google Cloud project and obtaining
-application credentials for the specific application type. The steps required
-are:
+application credentials for the specific application type.
 
-- Create a Google Cloud project in the
-  [Google Cloud Console](https://console.cloud.google.com/)
-- Enable every API the application will call under
-  **APIs & Services > Library**
-- Create credentials under **APIs & Services > Credentials**
-  ([Credentials](https://console.cloud.google.com/apis/credentials))
-- Use the `googleapis_auth` package to obtain access credentials / obtain an
-  authenticated HTTP client.
+1. Create a Google Cloud project in the
+   [Google Cloud Console](https://console.cloud.google.com/).
+2. Enable every API your application will call under **APIs & Services >
+   Library**.
+3. Create credentials under **APIs & Services > Credentials**
+   ([Credentials](https://console.cloud.google.com/apis/credentials)).
 
-There is no **Installed application > Other** option in the current console;
-choose **Desktop app** for a Dart VM or command-line application.
+The authentication flow you choose depends on your application type.
 
-**Desktop app** and **Web application** clients are issued a client secret;
-`ClientId.secret` is optional because some client types and providers omit it.
-**Android** and **iOS** clients are issued only a client ID and are not usable
-with this package's user-consent flows. Flutter applications should use
-[package:extension_google_sign_in_as_googleapis_auth](https://pub.dev/packages/extension_google_sign_in_as_googleapis_auth)
-instead, as described in the
-[Flutter Google APIs guide](https://docs.flutter.dev/data-and-backend/google-apis).
+### Application Default Credentials (ADC)
 
-Depending on the application type, there are different ways to achieve the third
-and fourth step. The following is a list of supported OAuth2 flows with a
-description of these two steps.
+If you are building a server-side application running on Google Cloud (Compute
+Engine, App Engine, Cloud Run) or testing locally with the Google Cloud CLI
+(`gcloud auth application-default login`), use Application Default Credentials
+(ADC).
 
-#### Client-side Web Application
-
-For client-side only web applications create an OAuth client ID under
-**APIs & Services > Credentials > Create credentials > OAuth client ID**.
-Choose **Web application**. For client-side only applications, no
-`Redirect URIs` are necessary. The `Authorized JavaScript origins` setting must
-be set to all URLs on which your application will be served (e.g.
-http://localhost:8080 for local testing).
-
-After the Client ID has been created, you can obtain access credentials via
-
-```dart
-import 'package:googleapis_auth/auth_browser.dart';
-
-// Initialize the browser oauth2 flow functionality then use it to obtain
-// credentials.
-Future<AccessCredentials> obtainCredentials() => requestAccessCredentials(
-      clientId: '....apps.googleusercontent.com',
-      scopes: ['scope1', 'scope2'],
-    );
-```
-
-or obtain an authenticated HTTP client via
-
-```dart
-import 'package:googleapis_auth/auth_browser.dart';
-import 'package:http/http.dart' as http;
-
-Future<AuthClient> obtainClient() async {
-  final credentials = await requestAccessCredentials(
-    clientId: '....apps.googleusercontent.com',
-    scopes: ['scope1', 'scope2'],
-  );
-
-  return authenticatedClient(http.Client(), credentials);
-}
-```
-
-#### Installed application / Desktop
-
-For a Dart command-line or other installed app, create an OAuth client ID and
-choose **Desktop app**. The console shows both a client ID and a client secret.
-Use them with `ClientId` and the user-consent helpers in
-`package:googleapis_auth/auth_io.dart` (the flow listens on localhost for the
-redirect).
+This transparently falls back to the Compute Engine metadata server when running
+on GCP, or uses the `GOOGLE_APPLICATION_CREDENTIALS` environment variable if
+set.
 
 ```dart
 import 'package:googleapis_auth/auth_io.dart';
 
-Future<AuthClient> obtainAuthenticatedClient() async {
-  final clientId = ClientId(
-    '....apps.googleusercontent.com',
-    '....',
+Future<void> main() async {
+  final client = await clientViaApplicationDefaultCredentials(
+    scopes: ['https://www.googleapis.com/auth/cloud-platform'],
   );
+
+  // The authenticated HTTP client can now access APIs.
+  // ...
+
+  // Remember to close the client when you are finished with it.
+  client.close();
+}
+```
+
+### Service Account
+
+If you want your application to act autonomously and access data, you can
+directly use a Service Account. Create a service account in the
+[Google Cloud console](https://console.cloud.google.com/iam-admin/serviceaccounts)
+under **IAM & Admin > Service accounts**, then add a JSON key (**Keys > Add
+key > Create new key > JSON**). Service accounts are not created from the OAuth
+client ID application-type list.
+
+```dart
+import 'dart:io';
+
+import 'package:googleapis_auth/auth_io.dart';
+
+Future<void> main() async {
+  final jsonCredentials = File('path/to/credentials.json').readAsStringSync();
+  final accountCredentials =
+      ServiceAccountCredentials.fromJson(jsonCredentials);
+
+  final client = await clientViaServiceAccount(
+    accountCredentials,
+    ['https://www.googleapis.com/auth/cloud-platform'],
+  );
+
+  // The authenticated HTTP client can now access APIs.
+  // ...
+
+  client.close();
+}
+```
+
+**Note:** For some APIs, a service account must impersonate a user. The
+`ServiceAccountCredentials` constructors have an optional `impersonatedUser`
+argument for this. See
+[Perform Google Workspace Domain-Wide Delegation of Authority](https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
+for the additional security configuration this requires.
+
+### Installed Application / Desktop
+
+For a Dart command-line or installed application, create an OAuth client ID on
+the Google Cloud console
+[Credentials page](https://console.cloud.google.com/apis/credentials) and choose
+**Desktop app**. The console shows both a client ID and a client secret.
+
+```dart
+import 'package:googleapis_auth/auth_io.dart';
+
+Future<void> main() async {
+  final clientId = ClientId(
+    'YOUR_CLIENT_ID.apps.googleusercontent.com',
+    'YOUR_CLIENT_SECRET',
+  );
+
+  // This flow will start a local HTTP server to listen for the redirect.
   final client = await clientViaUserConsent(
     clientId,
-    ['scope1', 'scope2'],
+    ['https://www.googleapis.com/auth/cloud-platform'],
     (url) {
       print('Please go to the following URL and grant access:');
       print('  => $url');
       print('');
     },
   );
-  return client; // Remember to close the client when you are finished with it.
-}
-```
 
-#### Autonomous Application / Service Account
-
-If an application wants to act autonomously and access e.g. data from a Google
-Cloud Project, then a Service Account can be created. In this case no user
-authorization is involved.
-
-Create a service account under **IAM & Admin > Service accounts**, then add a
-JSON key (**Keys > Add key > Create new key > JSON**). That JSON document
-contains a private RSA key used for obtaining access credentials. Service
-accounts are not created from the OAuth client ID application-type list.
-
-After the service account was created, you can obtain access credentials via
-
-```dart
-import 'package:googleapis_auth/auth_io.dart';
-import 'package:http/http.dart' as http;
-
-// Use service account credentials to obtain oauth credentials.
-Future<AccessCredentials> obtainCredentials() async {
-  final accountCredentials = ServiceAccountCredentials.fromJson({
-    'private_key_id': '<please fill in>',
-    'private_key': '<please fill in>',
-    'client_email': '<please fill in>@developer.gserviceaccount.com',
-    'client_id': '<please fill in>.apps.googleusercontent.com',
-    'type': 'service_account'
-  });
-  final scopes = ['scope1', 'scope2'];
-
-  final client = http.Client();
-  final credentials = await obtainAccessCredentialsViaServiceAccount(
-          accountCredentials, scopes, client);
+  // The authenticated HTTP client can now access APIs.
+  // ...
 
   client.close();
-  return credentials;
 }
 ```
 
-or an authenticated HTTP client via
+**Note:** Desktop app and Web application clients are issued a client secret;
+`ClientId.secret` is optional because some client types and providers omit it.
+
+### Client-side Web Application
+
+For client-side web applications, create an OAuth client ID on the Google Cloud
+console [Credentials page](https://console.cloud.google.com/apis/credentials)
+and choose **Web application**. You must set the **Authorized JavaScript
+origins** to the URLs where your application will be served (e.g.
+`http://localhost:8080` for local testing).
 
 ```dart
-import 'package:googleapis_auth/auth_io.dart';
-
-// Use service account credentials to get an authenticated and auto refreshing
-// client.
-Future<AuthClient> obtainAuthenticatedClient() async {
-  final accountCredentials = ServiceAccountCredentials.fromJson({
-    'private_key_id': '<please fill in>',
-    'private_key': '<please fill in>',
-    'client_email': '<please fill in>@developer.gserviceaccount.com',
-    'client_id': '<please fill in>.apps.googleusercontent.com',
-    'type': 'service_account'
-  });
-  final scopes = ['scope1'];
-
-  final AuthClient client =
-  await clientViaServiceAccount(accountCredentials, scopes);
-
-  return client; // Remember to close the client when you are finished with it.
-}
-```
-
-The authenticated HTTP client can now access APIs.
-
-##### Impersonation
-
-For some APIs the use of a service account also requires to impersonate a user.
-To support that the `ServiceAccountCredentials` constructors have an optional
-argument `impersonatedUser` to specify the user to impersonate.
-
-One example of this are the Google Apps APIs. See
-[Perform Google Apps Domain-Wide Delegation of Authority](https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
-for information on the additional security configuration required to enable this
-for a service account.
-
-#### Autonomous Application / Compute Engine using metadata service
-
-If an application wants to act autonomously and access e.g. data from a Google
-Cloud Project, then a Service Account can be used. In case the application is
-running on a ComputeEngine VM it is possible to start a VM with a set of scopes
-the VM is allowed to use. See the
-[documentation](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#using)
-for further information.
-
-Here is an example of using the metadata service for obtaining access
-credentials on a ComputeEngine VM.
-
-```dart
-import 'package:googleapis_auth/auth_io.dart';
+import 'package:googleapis_auth/auth_browser.dart';
 import 'package:http/http.dart' as http;
 
-// Use the metadata service to obtain oauth credentials.
-Future<AccessCredentials> obtainCredentials() async {
-  final client = http.Client();
+Future<void> main() async {
+  final credentials = await requestAccessCredentials(
+    clientId: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+    scopes: ['https://www.googleapis.com/auth/cloud-platform'],
+  );
 
-  final credentials =
-  await obtainAccessCredentialsViaMetadataServer(client);
+  // You can now obtain an authenticated HTTP client.
+  final client = authenticatedClient(
+    http.Client(),
+    credentials,
+    closeUnderlyingClient: true,
+  );
+
+  // The authenticated HTTP client can now access APIs.
+  // ...
 
   client.close();
-  return credentials;
 }
 ```
 
-or an authenticated HTTP client via
+### Accessing Public Data with API Key
+
+Some APIs can be accessed using an API key without OAuth 2.0. Create an API key
+under **APIs & Services > Credentials > Create credentials > API key**. Restrict
+it by HTTP referrers for browser apps, or IP addresses for server apps.
+
+The API key is used for quota and billing purposes and should not be disclosed
+to third parties.
 
 ```dart
 import 'package:googleapis_auth/auth_io.dart';
 
-// Use the metadata service to get an authenticated and auto refreshing client.
-Future<AuthClient> obtainAuthenticatedClient() async {
-  final AuthClient client = await clientViaMetadataServer();
+void main() {
+  final client = clientViaApiKey('YOUR_API_KEY');
 
-  return client; // Remember to close the client when you are finished with it.
+  // The client can now be used to make REST calls to Google APIs.
+  // ...
+
+  client.close();
 }
 ```
 
-The authenticated HTTP client can now access APIs.
+## Using a non-Google authentication provider
 
-#### Accessing Public Data with API Key
-
-It is possible to access some APIs by just using an API key without OAuth2.
-
-Create an API key under **APIs & Services > Credentials > Create credentials >
-API key**. Restrict it afterwards: HTTP referrers for browser apps, or IP
-addresses for server apps. There is no separate "Public API access" section.
-
-Note that the ApiKey is used for quota and billing purposes and should not be
-disclosed to third parties.
-
-Here is an example of getting an HTTP client which uses an API key for making
-HTTP requests.
-
-```dart
-import 'package:googleapis_auth/auth_io.dart';
-
-var client = clientViaApiKey('<api-key-from-devconsole>');
-// [client] can now be used to make REST calls to Google APIs.
-
-...
-
-client.close();
-```
-
-### Using a non-Google authentication provider
-
-This package is designed to work with Google's OAuth flow, but it can be used
-with other OAuth providers as well. To do this, you need to subclass
-`AuthEndpoints` and provide authorization and token uris. For example:
+This package is designed to work with Google's OAuth 2.0 flow, but it can be
+used with other OAuth providers as well. Subclass `AuthEndpoints` and provide
+authorization and token URIs.
 
 ```dart
 import 'package:googleapis_auth/auth_io.dart';
 
 class MicrosoftAuthEndpoints extends AuthEndpoints {
+  const MicrosoftAuthEndpoints();
+
   @override
   Uri get authorizationEndpoint =>
       Uri.https('login.microsoftonline.com', 'common/oauth2/v2.0/authorize');
@@ -273,26 +203,42 @@ class MicrosoftAuthEndpoints extends AuthEndpoints {
 }
 ```
 
-This can then be used to obtain credentials:
+Use it to obtain credentials:
 
 ```dart
-final clientId = ClientId('my-client-id', 'my-client-secret');
-final credentials = await obtainAccessCredentialsViaUserConsent(
-  clientId,
-  ['scope1', 'scope2'],
-  client,
-  (url) {
-    print('Please go to the following URL and grant access:');
-    print('  => $url');
-    print('');
-  },
-  authEndpoints: MicrosoftAuthEndpoints(),
-);
+import 'package:googleapis_auth/auth_io.dart';
+import 'package:http/http.dart' as http;
+
+Future<void> main() async {
+  final clientId = ClientId('my-client-id', 'my-client-secret');
+  final baseClient = http.Client();
+
+  final credentials = await obtainAccessCredentialsViaUserConsent(
+    clientId,
+    ['scope1', 'scope2'],
+    baseClient,
+    (url) {
+      print('Please go to the following URL and grant access:');
+      print('  => $url');
+      print('');
+    },
+    authEndpoints: const MicrosoftAuthEndpoints(),
+  );
+
+  // The baseClient used to obtain credentials should be closed.
+  baseClient.close();
+
+  final client = authenticatedClient(
+    http.Client(),
+    credentials,
+    closeUnderlyingClient: true,
+  );
+  // ...
+  client.close();
+}
 ```
 
-### More information
+## More Information
 
-More information can be obtained from official Google Developers documentation:
-
-- [OAuth2 to Access Google APIs](https://developers.google.com/identity/protocols/oauth2)
-- [OAuth2 Playground](https://developers.google.com/oauthplayground/)
+- [Google Cloud Console Credentials](https://console.cloud.google.com/apis/credentials)
+- [OAuth 2.0 to Access Google APIs](https://developers.google.com/identity/protocols/oauth2)
