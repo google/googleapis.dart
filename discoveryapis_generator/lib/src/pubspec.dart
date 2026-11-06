@@ -34,5 +34,5 @@ class Pubspec {
     '_discoveryapis_commons': '^1.0.8',
   };
 
-  static const _defaultDevDependencies = {'test': '^1.33.0'};
+  static const _defaultDevDependencies = {'test': '^1.16.0'};
 }
