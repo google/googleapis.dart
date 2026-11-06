@@ -3,7 +3,7 @@ environment:
   sdk: ^3.9.0
 publish_to: none
 dev_dependencies:
-  dart_flutter_team_lints: ^3.2.0
+  dart_flutter_team_lints: ^3.5.2
 workspace:
 - _googleapis_auth_e2e
 - _test
