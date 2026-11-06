@@ -8,4 +8,4 @@ environment:
 dependencies:
   googleapis:
     path: ../../generated/googleapis
-  googleapis_auth: any
+  googleapis_auth: ^2.3.5
