@@ -1,3 +1,7 @@
+## 2.3.6
+
+- Reorganize and update README examples and Cloud Console setup instructions.
+
 ## 2.3.5
 
 - `AuthenticatedClient` and `ApiKeyClient` now keep the `contentLength`,
