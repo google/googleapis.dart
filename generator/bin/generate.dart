@@ -138,12 +138,16 @@ Future<void> _applyDiffs(String configFile) async {
       entry.path,
     ], mode: ProcessStartMode.inheritStdio);
 
-    final exitCode = await result.exitCode;
-    if (exitCode == 0) {
+    final procExitCode = await result.exitCode;
+    if (procExitCode == 0) {
       print('    Success!');
     } else {
+      exitCode = 1;
       print(
-        ['Failed!', 'Exit code: $exitCode'].map((e) => '      $e').join('\n'),
+        [
+          'Failed!',
+          'Exit code: $procExitCode',
+        ].map((e) => '      $e').join('\n'),
       );
     }
     print('\n\n');
