@@ -974,6 +974,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.connectionName = 'foo';
     o.createTime = 'foo';
     o.currentDiskSize = 'foo';
+    o.databaseCenterIntegration = 'foo';
     o.databaseCenterIntegrationEnabled = true;
     o.databaseInstalledVersion = 'foo';
     o.databaseVersion = 'foo';
@@ -1015,6 +1016,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.serverCaCert = buildSslCert();
     o.serviceAccountEmailAddress = 'foo';
     o.settings = buildSettings();
+    o.skipPrecheck = true;
     o.sqlNetworkArchitecture = 'foo';
     o.state = 'foo';
     o.suspensionReason = buildUnnamed16();
@@ -1035,6 +1037,7 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     unittest.expect(o.connectionName!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.currentDiskSize!, unittest.equals('foo'));
+    unittest.expect(o.databaseCenterIntegration!, unittest.equals('foo'));
     unittest.expect(o.databaseCenterIntegrationEnabled!, unittest.isTrue);
     unittest.expect(o.databaseInstalledVersion!, unittest.equals('foo'));
     unittest.expect(o.databaseVersion!, unittest.equals('foo'));
@@ -1076,6 +1079,7 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     checkSslCert(o.serverCaCert!);
     unittest.expect(o.serviceAccountEmailAddress!, unittest.equals('foo'));
     checkSettings(o.settings!);
+    unittest.expect(o.skipPrecheck!, unittest.isTrue);
     unittest.expect(o.sqlNetworkArchitecture!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
     checkUnnamed16(o.suspensionReason!);
@@ -1308,6 +1312,7 @@ api.DiskEncryptionConfiguration buildDiskEncryptionConfiguration() {
   final o = api.DiskEncryptionConfiguration();
   buildCounterDiskEncryptionConfiguration++;
   if (buildCounterDiskEncryptionConfiguration < 3) {
+    o.cmekSourceLogEncryptionEnforced = true;
     o.confidentialMode = true;
     o.kind = 'foo';
     o.kmsKeyName = 'foo';
@@ -1319,6 +1324,7 @@ api.DiskEncryptionConfiguration buildDiskEncryptionConfiguration() {
 void checkDiskEncryptionConfiguration(api.DiskEncryptionConfiguration o) {
   buildCounterDiskEncryptionConfiguration++;
   if (buildCounterDiskEncryptionConfiguration < 3) {
+    unittest.expect(o.cmekSourceLogEncryptionEnforced!, unittest.isTrue);
     unittest.expect(o.confidentialMode!, unittest.isTrue);
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.kmsKeyName!, unittest.equals('foo'));
@@ -3022,7 +3028,11 @@ api.Operation buildOperation() {
         buildPreCheckMajorVersionUpgradeContext();
     o.selfLink = 'foo';
     o.startTime = 'foo';
+    o.startWorkloadCaptureContext = buildStartWorkloadCaptureContext();
+    o.startWorkloadReplayContext = buildStartWorkloadReplayContext();
     o.status = 'foo';
+    o.stopWorkloadCaptureContext = buildStopWorkloadCaptureContext();
+    o.stopWorkloadReplayContext = buildStopWorkloadReplayContext();
     o.subOperationType = buildSqlSubOperationType();
     o.targetId = 'foo';
     o.targetLink = 'foo';
@@ -3052,7 +3062,11 @@ void checkOperation(api.Operation o) {
     );
     unittest.expect(o.selfLink!, unittest.equals('foo'));
     unittest.expect(o.startTime!, unittest.equals('foo'));
+    checkStartWorkloadCaptureContext(o.startWorkloadCaptureContext!);
+    checkStartWorkloadReplayContext(o.startWorkloadReplayContext!);
     unittest.expect(o.status!, unittest.equals('foo'));
+    checkStopWorkloadCaptureContext(o.stopWorkloadCaptureContext!);
+    checkStopWorkloadReplayContext(o.stopWorkloadReplayContext!);
     checkSqlSubOperationType(o.subOperationType!);
     unittest.expect(o.targetId!, unittest.equals('foo'));
     unittest.expect(o.targetLink!, unittest.equals('foo'));
@@ -3404,6 +3418,7 @@ buildPreCheckMajorVersionUpgradeContext() {
   buildCounterPreCheckMajorVersionUpgradeContext++;
   if (buildCounterPreCheckMajorVersionUpgradeContext < 3) {
     o.kind = 'foo';
+    o.maxRuntime = 'foo';
     o.preCheckResponse = buildUnnamed50();
     o.targetDatabaseVersion = 'foo';
   }
@@ -3417,6 +3432,7 @@ void checkPreCheckMajorVersionUpgradeContext(
   buildCounterPreCheckMajorVersionUpgradeContext++;
   if (buildCounterPreCheckMajorVersionUpgradeContext < 3) {
     unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(o.maxRuntime!, unittest.equals('foo'));
     checkUnnamed50(o.preCheckResponse!);
     unittest.expect(o.targetDatabaseVersion!, unittest.equals('foo'));
   }
@@ -4739,6 +4755,48 @@ void checkSslCertsListResponse(api.SslCertsListResponse o) {
   buildCounterSslCertsListResponse--;
 }
 
+core.int buildCounterStartWorkloadCaptureContext = 0;
+api.StartWorkloadCaptureContext buildStartWorkloadCaptureContext() {
+  final o = api.StartWorkloadCaptureContext();
+  buildCounterStartWorkloadCaptureContext++;
+  if (buildCounterStartWorkloadCaptureContext < 3) {
+    o.enableLiveReplay = true;
+    o.replayInstance = 'foo';
+  }
+  buildCounterStartWorkloadCaptureContext--;
+  return o;
+}
+
+void checkStartWorkloadCaptureContext(api.StartWorkloadCaptureContext o) {
+  buildCounterStartWorkloadCaptureContext++;
+  if (buildCounterStartWorkloadCaptureContext < 3) {
+    unittest.expect(o.enableLiveReplay!, unittest.isTrue);
+    unittest.expect(o.replayInstance!, unittest.equals('foo'));
+  }
+  buildCounterStartWorkloadCaptureContext--;
+}
+
+core.int buildCounterStartWorkloadReplayContext = 0;
+api.StartWorkloadReplayContext buildStartWorkloadReplayContext() {
+  final o = api.StartWorkloadReplayContext();
+  buildCounterStartWorkloadReplayContext++;
+  if (buildCounterStartWorkloadReplayContext < 3) {
+    o.replayInstance = 'foo';
+    o.workloadId = 'foo';
+  }
+  buildCounterStartWorkloadReplayContext--;
+  return o;
+}
+
+void checkStartWorkloadReplayContext(api.StartWorkloadReplayContext o) {
+  buildCounterStartWorkloadReplayContext++;
+  if (buildCounterStartWorkloadReplayContext < 3) {
+    unittest.expect(o.replayInstance!, unittest.equals('foo'));
+    unittest.expect(o.workloadId!, unittest.equals('foo'));
+  }
+  buildCounterStartWorkloadReplayContext--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed71() => {
   'x': {
     'list': [1, 2, 3],
@@ -4798,6 +4856,40 @@ void checkStatus(api.Status o) {
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
+}
+
+core.int buildCounterStopWorkloadCaptureContext = 0;
+api.StopWorkloadCaptureContext buildStopWorkloadCaptureContext() {
+  final o = api.StopWorkloadCaptureContext();
+  buildCounterStopWorkloadCaptureContext++;
+  if (buildCounterStopWorkloadCaptureContext < 3) {
+    o.abortLiveReplay = true;
+  }
+  buildCounterStopWorkloadCaptureContext--;
+  return o;
+}
+
+void checkStopWorkloadCaptureContext(api.StopWorkloadCaptureContext o) {
+  buildCounterStopWorkloadCaptureContext++;
+  if (buildCounterStopWorkloadCaptureContext < 3) {
+    unittest.expect(o.abortLiveReplay!, unittest.isTrue);
+  }
+  buildCounterStopWorkloadCaptureContext--;
+}
+
+core.int buildCounterStopWorkloadReplayContext = 0;
+api.StopWorkloadReplayContext buildStopWorkloadReplayContext() {
+  final o = api.StopWorkloadReplayContext();
+  buildCounterStopWorkloadReplayContext++;
+  if (buildCounterStopWorkloadReplayContext < 3) {}
+  buildCounterStopWorkloadReplayContext--;
+  return o;
+}
+
+void checkStopWorkloadReplayContext(api.StopWorkloadReplayContext o) {
+  buildCounterStopWorkloadReplayContext++;
+  if (buildCounterStopWorkloadReplayContext < 3) {}
+  buildCounterStopWorkloadReplayContext--;
 }
 
 core.int buildCounterSwitchoverBlueGreenDeploymentRequest = 0;
@@ -5106,17 +5198,163 @@ void checkValue(api.Value o) {
   buildCounterValue--;
 }
 
-core.List<core.String> buildUnnamed78() => ['foo', 'foo'];
+core.int buildCounterWorkloadCapture = 0;
+api.WorkloadCapture buildWorkloadCapture() {
+  final o = api.WorkloadCapture();
+  buildCounterWorkloadCapture++;
+  if (buildCounterWorkloadCapture < 3) {
+    o.backupId = 'foo';
+    o.endTime = 'foo';
+    o.replayInstance = 'foo';
+    o.retentionDays = 42;
+    o.sourceInstance = 'foo';
+    o.startTime = 'foo';
+    o.workloadCaptureState = 'foo';
+    o.workloadId = 'foo';
+  }
+  buildCounterWorkloadCapture--;
+  return o;
+}
 
-void checkUnnamed78(core.List<core.String> o) {
+void checkWorkloadCapture(api.WorkloadCapture o) {
+  buildCounterWorkloadCapture++;
+  if (buildCounterWorkloadCapture < 3) {
+    unittest.expect(o.backupId!, unittest.equals('foo'));
+    unittest.expect(o.endTime!, unittest.equals('foo'));
+    unittest.expect(o.replayInstance!, unittest.equals('foo'));
+    unittest.expect(o.retentionDays!, unittest.equals(42));
+    unittest.expect(o.sourceInstance!, unittest.equals('foo'));
+    unittest.expect(o.startTime!, unittest.equals('foo'));
+    unittest.expect(o.workloadCaptureState!, unittest.equals('foo'));
+    unittest.expect(o.workloadId!, unittest.equals('foo'));
+  }
+  buildCounterWorkloadCapture--;
+}
+
+core.List<api.WorkloadCapture> buildUnnamed78() => [
+  buildWorkloadCapture(),
+  buildWorkloadCapture(),
+];
+
+void checkUnnamed78(core.List<api.WorkloadCapture> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  checkWorkloadCapture(o[0]);
+  checkWorkloadCapture(o[1]);
+}
+
+core.int buildCounterWorkloadCapturesListResponse = 0;
+api.WorkloadCapturesListResponse buildWorkloadCapturesListResponse() {
+  final o = api.WorkloadCapturesListResponse();
+  buildCounterWorkloadCapturesListResponse++;
+  if (buildCounterWorkloadCapturesListResponse < 3) {
+    o.kind = 'foo';
+    o.workloadCaptures = buildUnnamed78();
+  }
+  buildCounterWorkloadCapturesListResponse--;
+  return o;
+}
+
+void checkWorkloadCapturesListResponse(api.WorkloadCapturesListResponse o) {
+  buildCounterWorkloadCapturesListResponse++;
+  if (buildCounterWorkloadCapturesListResponse < 3) {
+    unittest.expect(o.kind!, unittest.equals('foo'));
+    checkUnnamed78(o.workloadCaptures!);
+  }
+  buildCounterWorkloadCapturesListResponse--;
+}
+
+core.int buildCounterWorkloadCapturesStartReplayRequest = 0;
+api.WorkloadCapturesStartReplayRequest
+buildWorkloadCapturesStartReplayRequest() {
+  final o = api.WorkloadCapturesStartReplayRequest();
+  buildCounterWorkloadCapturesStartReplayRequest++;
+  if (buildCounterWorkloadCapturesStartReplayRequest < 3) {
+    o.startWorkloadReplayContext = buildStartWorkloadReplayContext();
+  }
+  buildCounterWorkloadCapturesStartReplayRequest--;
+  return o;
+}
+
+void checkWorkloadCapturesStartReplayRequest(
+  api.WorkloadCapturesStartReplayRequest o,
+) {
+  buildCounterWorkloadCapturesStartReplayRequest++;
+  if (buildCounterWorkloadCapturesStartReplayRequest < 3) {
+    checkStartWorkloadReplayContext(o.startWorkloadReplayContext!);
+  }
+  buildCounterWorkloadCapturesStartReplayRequest--;
+}
+
+core.int buildCounterWorkloadCapturesStartRequest = 0;
+api.WorkloadCapturesStartRequest buildWorkloadCapturesStartRequest() {
+  final o = api.WorkloadCapturesStartRequest();
+  buildCounterWorkloadCapturesStartRequest++;
+  if (buildCounterWorkloadCapturesStartRequest < 3) {
+    o.startWorkloadCaptureContext = buildStartWorkloadCaptureContext();
+  }
+  buildCounterWorkloadCapturesStartRequest--;
+  return o;
+}
+
+void checkWorkloadCapturesStartRequest(api.WorkloadCapturesStartRequest o) {
+  buildCounterWorkloadCapturesStartRequest++;
+  if (buildCounterWorkloadCapturesStartRequest < 3) {
+    checkStartWorkloadCaptureContext(o.startWorkloadCaptureContext!);
+  }
+  buildCounterWorkloadCapturesStartRequest--;
+}
+
+core.int buildCounterWorkloadCapturesStopReplayRequest = 0;
+api.WorkloadCapturesStopReplayRequest buildWorkloadCapturesStopReplayRequest() {
+  final o = api.WorkloadCapturesStopReplayRequest();
+  buildCounterWorkloadCapturesStopReplayRequest++;
+  if (buildCounterWorkloadCapturesStopReplayRequest < 3) {
+    o.stopWorkloadReplayContext = buildStopWorkloadReplayContext();
+  }
+  buildCounterWorkloadCapturesStopReplayRequest--;
+  return o;
+}
+
+void checkWorkloadCapturesStopReplayRequest(
+  api.WorkloadCapturesStopReplayRequest o,
+) {
+  buildCounterWorkloadCapturesStopReplayRequest++;
+  if (buildCounterWorkloadCapturesStopReplayRequest < 3) {
+    checkStopWorkloadReplayContext(o.stopWorkloadReplayContext!);
+  }
+  buildCounterWorkloadCapturesStopReplayRequest--;
+}
+
+core.int buildCounterWorkloadCapturesStopRequest = 0;
+api.WorkloadCapturesStopRequest buildWorkloadCapturesStopRequest() {
+  final o = api.WorkloadCapturesStopRequest();
+  buildCounterWorkloadCapturesStopRequest++;
+  if (buildCounterWorkloadCapturesStopRequest < 3) {
+    o.stopWorkloadCaptureContext = buildStopWorkloadCaptureContext();
+  }
+  buildCounterWorkloadCapturesStopRequest--;
+  return o;
+}
+
+void checkWorkloadCapturesStopRequest(api.WorkloadCapturesStopRequest o) {
+  buildCounterWorkloadCapturesStopRequest++;
+  if (buildCounterWorkloadCapturesStopRequest < 3) {
+    checkStopWorkloadCaptureContext(o.stopWorkloadCaptureContext!);
+  }
+  buildCounterWorkloadCapturesStopRequest--;
 }
 
 core.List<core.String> buildUnnamed79() => ['foo', 'foo'];
 
 void checkUnnamed79(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed80() => ['foo', 'foo'];
+
+void checkUnnamed80(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6780,6 +7018,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-StartWorkloadCaptureContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStartWorkloadCaptureContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StartWorkloadCaptureContext.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkStartWorkloadCaptureContext(od);
+    });
+  });
+
+  unittest.group('obj-schema-StartWorkloadReplayContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStartWorkloadReplayContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StartWorkloadReplayContext.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkStartWorkloadReplayContext(od);
+    });
+  });
+
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStatus();
@@ -6788,6 +7048,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-StopWorkloadCaptureContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStopWorkloadCaptureContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StopWorkloadCaptureContext.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkStopWorkloadCaptureContext(od);
+    });
+  });
+
+  unittest.group('obj-schema-StopWorkloadReplayContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStopWorkloadReplayContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StopWorkloadReplayContext.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkStopWorkloadReplayContext(od);
     });
   });
 
@@ -6909,6 +7191,72 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkValue(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkloadCapture', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkloadCapture();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkloadCapture.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWorkloadCapture(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkloadCapturesListResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkloadCapturesListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkloadCapturesListResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWorkloadCapturesListResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkloadCapturesStartReplayRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkloadCapturesStartReplayRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkloadCapturesStartReplayRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWorkloadCapturesStartReplayRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkloadCapturesStartRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkloadCapturesStartRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkloadCapturesStartRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWorkloadCapturesStartRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkloadCapturesStopReplayRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkloadCapturesStopReplayRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkloadCapturesStopReplayRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWorkloadCapturesStopReplayRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkloadCapturesStopRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkloadCapturesStopRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkloadCapturesStopRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWorkloadCapturesStopRequest(od);
     });
   });
 
@@ -13776,13 +14124,13 @@ void main() {
       final arg_request = buildUser();
       final arg_project = 'foo';
       final arg_instance = 'foo';
-      final arg_databaseRoles = buildUnnamed78();
+      final arg_databaseRoles = buildUnnamed79();
       final arg_host = 'foo';
       final arg_location = 'foo';
       final arg_name = 'foo';
       final arg_revokeExistingRoles = true;
       final arg_revokeExistingServerRoles = true;
-      final arg_serverRoles = buildUnnamed79();
+      final arg_serverRoles = buildUnnamed80();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13889,6 +14237,457 @@ void main() {
         revokeExistingRoles: arg_revokeExistingRoles,
         revokeExistingServerRoles: arg_revokeExistingServerRoles,
         serverRoles: arg_serverRoles,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group('resource-WorkloadCapturesResource', () {
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).workloadCaptures;
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('v1/projects/'),
+          );
+          pathOffset += 12;
+          index = path.indexOf('/instances/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_project'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/instances/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf('/workloadCaptures', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_instance'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 17),
+            unittest.equals('/workloadCaptures'),
+          );
+          pathOffset += 17;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildWorkloadCapturesListResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_project,
+        arg_instance,
+        $fields: arg_$fields,
+      );
+      checkWorkloadCapturesListResponse(
+        response as api.WorkloadCapturesListResponse,
+      );
+    });
+
+    unittest.test('method--start', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).workloadCaptures;
+      final arg_request = buildWorkloadCapturesStartRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.WorkloadCapturesStartRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkWorkloadCapturesStartRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('v1/projects/'),
+          );
+          pathOffset += 12;
+          index = path.indexOf('/instances/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_project'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/instances/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf('/workloadCaptures:start', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_instance'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 23),
+            unittest.equals('/workloadCaptures:start'),
+          );
+          pathOffset += 23;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.start(
+        arg_request,
+        arg_project,
+        arg_instance,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--startReplay', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).workloadCaptures;
+      final arg_request = buildWorkloadCapturesStartReplayRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_workloadId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.WorkloadCapturesStartReplayRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkWorkloadCapturesStartReplayRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('v1/projects/'),
+          );
+          pathOffset += 12;
+          index = path.indexOf('/instances/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_project'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/instances/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf('/workloadCaptures/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_instance'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 18),
+            unittest.equals('/workloadCaptures/'),
+          );
+          pathOffset += 18;
+          index = path.indexOf(':startReplay', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_workloadId'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals(':startReplay'),
+          );
+          pathOffset += 12;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.startReplay(
+        arg_request,
+        arg_project,
+        arg_instance,
+        arg_workloadId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--stop', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).workloadCaptures;
+      final arg_request = buildWorkloadCapturesStopRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.WorkloadCapturesStopRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkWorkloadCapturesStopRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('v1/projects/'),
+          );
+          pathOffset += 12;
+          index = path.indexOf('/instances/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_project'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/instances/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf('/workloadCaptures:stop', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_instance'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 22),
+            unittest.equals('/workloadCaptures:stop'),
+          );
+          pathOffset += 22;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.stop(
+        arg_request,
+        arg_project,
+        arg_instance,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--stopReplay', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).workloadCaptures;
+      final arg_request = buildWorkloadCapturesStopReplayRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.WorkloadCapturesStopReplayRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkWorkloadCapturesStopReplayRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('v1/projects/'),
+          );
+          pathOffset += 12;
+          index = path.indexOf('/instances/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_project'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/instances/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf('/workloadCaptures:stopReplay', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_instance'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 28),
+            unittest.equals('/workloadCaptures:stopReplay'),
+          );
+          pathOffset += 28;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.stopReplay(
+        arg_request,
+        arg_project,
+        arg_instance,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);

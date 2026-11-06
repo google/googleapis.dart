@@ -4341,6 +4341,7 @@ api.VmwareNodePool buildVmwareNodePool() {
     o.status = buildResourceStatus();
     o.uid = 'foo';
     o.updateTime = 'foo';
+    o.validationCheck = buildValidationCheck();
   }
   buildCounterVmwareNodePool--;
   return o;
@@ -4363,6 +4364,7 @@ void checkVmwareNodePool(api.VmwareNodePool o) {
     checkResourceStatus(o.status!);
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
+    checkValidationCheck(o.validationCheck!);
   }
   buildCounterVmwareNodePool--;
 }

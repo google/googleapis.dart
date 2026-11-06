@@ -2158,6 +2158,7 @@ api.Version buildVersion() {
     o.threadsafe = true;
     o.versionUrl = 'foo';
     o.vm = true;
+    o.vpcAccess = buildVpcAccess();
     o.vpcAccessConnector = buildVpcAccessConnector();
     o.zones = buildUnnamed42();
   }
@@ -2209,6 +2210,7 @@ void checkVersion(api.Version o) {
     unittest.expect(o.threadsafe!, unittest.isTrue);
     unittest.expect(o.versionUrl!, unittest.equals('foo'));
     unittest.expect(o.vm!, unittest.isTrue);
+    checkVpcAccess(o.vpcAccess!);
     checkVpcAccessConnector(o.vpcAccessConnector!);
     checkUnnamed42(o.zones!);
   }
@@ -2238,6 +2240,38 @@ void checkVolume(api.Volume o) {
   buildCounterVolume--;
 }
 
+core.List<api.VpcNetworkInterface> buildUnnamed43() => [
+  buildVpcNetworkInterface(),
+  buildVpcNetworkInterface(),
+];
+
+void checkUnnamed43(core.List<api.VpcNetworkInterface> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkVpcNetworkInterface(o[0]);
+  checkVpcNetworkInterface(o[1]);
+}
+
+core.int buildCounterVpcAccess = 0;
+api.VpcAccess buildVpcAccess() {
+  final o = api.VpcAccess();
+  buildCounterVpcAccess++;
+  if (buildCounterVpcAccess < 3) {
+    o.networkInterfaces = buildUnnamed43();
+    o.vpcEgress = 'foo';
+  }
+  buildCounterVpcAccess--;
+  return o;
+}
+
+void checkVpcAccess(api.VpcAccess o) {
+  buildCounterVpcAccess++;
+  if (buildCounterVpcAccess < 3) {
+    checkUnnamed43(o.networkInterfaces!);
+    unittest.expect(o.vpcEgress!, unittest.equals('foo'));
+  }
+  buildCounterVpcAccess--;
+}
+
 core.int buildCounterVpcAccessConnector = 0;
 api.VpcAccessConnector buildVpcAccessConnector() {
   final o = api.VpcAccessConnector();
@@ -2257,6 +2291,37 @@ void checkVpcAccessConnector(api.VpcAccessConnector o) {
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterVpcAccessConnector--;
+}
+
+core.List<core.String> buildUnnamed44() => ['foo', 'foo'];
+
+void checkUnnamed44(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterVpcNetworkInterface = 0;
+api.VpcNetworkInterface buildVpcNetworkInterface() {
+  final o = api.VpcNetworkInterface();
+  buildCounterVpcNetworkInterface++;
+  if (buildCounterVpcNetworkInterface < 3) {
+    o.network = 'foo';
+    o.subnet = 'foo';
+    o.tags = buildUnnamed44();
+  }
+  buildCounterVpcNetworkInterface--;
+  return o;
+}
+
+void checkVpcNetworkInterface(api.VpcNetworkInterface o) {
+  buildCounterVpcNetworkInterface++;
+  if (buildCounterVpcNetworkInterface < 3) {
+    unittest.expect(o.network!, unittest.equals('foo'));
+    unittest.expect(o.subnet!, unittest.equals('foo'));
+    checkUnnamed44(o.tags!);
+  }
+  buildCounterVpcNetworkInterface--;
 }
 
 core.int buildCounterZipInfo = 0;
@@ -2280,9 +2345,9 @@ void checkZipInfo(api.ZipInfo o) {
   buildCounterZipInfo--;
 }
 
-core.List<core.String> buildUnnamed43() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
 
-void checkUnnamed43(core.List<core.String> o) {
+void checkUnnamed45(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3015,6 +3080,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-VpcAccess', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVpcAccess();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VpcAccess.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkVpcAccess(od);
+    });
+  });
+
   unittest.group('obj-schema-VpcAccessConnector', () {
     unittest.test('to-json--from-json', () async {
       final o = buildVpcAccessConnector();
@@ -3023,6 +3099,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkVpcAccessConnector(od);
+    });
+  });
+
+  unittest.group('obj-schema-VpcNetworkInterface', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVpcNetworkInterface();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VpcNetworkInterface.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkVpcNetworkInterface(od);
     });
   });
 
@@ -4806,7 +4893,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AppengineApi(mock).apps.locations;
       final arg_appsId = 'foo';
-      final arg_extraLocationTypes = buildUnnamed43();
+      final arg_extraLocationTypes = buildUnnamed45();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

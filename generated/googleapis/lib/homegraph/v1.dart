@@ -702,7 +702,7 @@ typedef Empty = $Empty;
 class EventData {
   /// The actual event payload.
   ///
-  /// Required.
+  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -718,7 +718,12 @@ class EventData {
   /// Required.
   core.String? eventTime;
 
-  EventData({this.event, this.eventId, this.eventTime});
+  /// Contains the dynamic JSON trait event payload.
+  ///
+  /// Optional.
+  JsonTraitEvent? jsonTraitEvent;
+
+  EventData({this.event, this.eventId, this.eventTime, this.jsonTraitEvent});
 
   EventData.fromJson(core.Map json_)
     : this(
@@ -727,13 +732,24 @@ class EventData {
             : null,
         eventId: json_['eventId'] as core.String?,
         eventTime: json_['eventTime'] as core.String?,
+        jsonTraitEvent: json_.containsKey('jsonTraitEvent')
+            ? JsonTraitEvent.fromJson(
+                json_['jsonTraitEvent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final event = this.event;
     final eventId = this.eventId;
     final eventTime = this.eventTime;
-    return {'event': ?event, 'eventId': ?eventId, 'eventTime': ?eventTime};
+    final jsonTraitEvent = this.jsonTraitEvent;
+    return {
+      'event': ?event,
+      'eventId': ?eventId,
+      'eventTime': ?eventTime,
+      'jsonTraitEvent': ?jsonTraitEvent,
+    };
   }
 }
 
@@ -742,7 +758,7 @@ class Events {
   /// The ID of the provider component if the events are associated with a
   /// specific component.
   ///
-  /// Optional for WHDM events, required for UDDM events.
+  /// Optional for WHDM events, required for UDDM and JSON events.
   ///
   /// Optional.
   core.String? componentId;
@@ -805,7 +821,7 @@ class HomeEvents {
   }
 }
 
-/// Container for UDDM trait data associated with a device.
+/// Container for UDDM or JSON trait data associated with a device.
 class HomeTraitPayload {
   /// The root component of the device as reported by the provider.
   Component? rootComponent;
@@ -860,6 +876,89 @@ class HomeTraitUpdates {
   }
 }
 
+/// Represents a dynamic JSON trait state payload that conforms to
+/// `json_trait_schema.md`.
+///
+/// This message is used for Category 2 (vendor Matter clusters) and Category 3
+/// (non-Matter capabilities) traits across all wire and internal paths, and for
+/// Category 1 traits on external JSON-only wire paths (for example, `Query`
+/// with `JSON_TRAIT_ONLY`).
+class JsonTrait {
+  /// Holds the trait attributes, which conform to the trait's registered JSON
+  /// Schema.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? data;
+
+  /// Identifies the trait by its canonical four-segment capability ID,
+  /// `capability...`: * Standard or Google Matter (Category 1):
+  /// `capability.matter.standard.` or `capability.matter.google.`, for example
+  /// `capability.matter.standard.Thermostat`.
+  ///
+  /// * Vendor Matter (Category 2): `capability.matter..`. * Non-Matter
+  /// (Category 3, from any provider including Google): `capability.generic..`,
+  /// for example `capability.generic.acme.Warranty`.
+  ///
+  /// Required.
+  core.String? id;
+
+  JsonTrait({this.data, this.id});
+
+  JsonTrait.fromJson(core.Map json_)
+    : this(
+        data: json_.containsKey('data')
+            ? json_['data'] as core.Map<core.String, core.dynamic>
+            : null,
+        id: json_['id'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final id = this.id;
+    return {'data': ?data, 'id': ?id};
+  }
+}
+
+/// Represents a dynamic JSON event payload that conforms to
+/// `json_trait_schema.md`.
+class JsonTraitEvent {
+  /// Holds the event payload fields, which conform to the event's registered
+  /// JSON Schema.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? data;
+
+  /// Identifies the event as `.`, where `` is the PascalCase key in the
+  /// schema's `x-capability-info.events`, for example
+  /// `capability.matter.standard.DoorLock.LockOperation` or
+  /// `capability.generic.acme.Warranty.ClaimUpdated`.
+  ///
+  /// Required.
+  core.String? id;
+
+  JsonTraitEvent({this.data, this.id});
+
+  JsonTraitEvent.fromJson(core.Map json_)
+    : this(
+        data: json_.containsKey('data')
+            ? json_['data'] as core.Map<core.String, core.dynamic>
+            : null,
+        id: json_['id'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final id = this.id;
+    return {'data': ?data, 'id': ?id};
+  }
+}
+
 /// Request type for the
 /// \[`Query`\](#google.home.graph.v1.HomeGraphApiService.Query) call.
 class QueryRequest {
@@ -872,18 +971,21 @@ class QueryRequest {
   ///
   /// This allows callers to request traditional Smart Home traits, Unified
   /// Device Data Model (UDDM) traits, or both. If unspecified, defaults to
-  /// SMART_HOME_TRAIT_ONLY.
+  /// `SMART_HOME_TRAIT_ONLY`.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "DEVICE_VIEW_UNSPECIFIED" : Default value. Equivalent to
-  /// SMART_HOME_TRAIT_ONLY.
+  /// `SMART_HOME_TRAIT_ONLY`.
   /// - "SMART_HOME_TRAIT_ONLY" : Return only standard Smart Home traits in the
   /// `devices` map.
   /// - "HOME_TRAIT_ONLY" : Return only Unified Device Data Model (UDDM) traits
   /// in the `home_trait_payload` map.
   /// - "HOME_TRAIT_AND_SMART_HOME_TRAIT" : Return both standard Smart Home
   /// traits and UDDM traits.
+  /// - "JSON_TRAIT_ONLY" : Return all component traits in `JsonTrait` format
+  /// (`TraitData.json_trait` in `home_trait_payload`), converting persisted
+  /// UDDM traits to `JsonTrait` on read.
   core.String? deviceView;
 
   /// If true, the response will include device metadata in the device_metadata
@@ -1040,11 +1142,11 @@ class QueryResponsePayload {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Map<core.String, core.Object?>>? devices;
 
-  /// Map of device IDs to their Unified Device Data Model (UDDM) trait
+  /// Map of device IDs to their Unified Device Data Model (UDDM) or JSON trait
   /// payloads.
   ///
-  /// This field is populated when `device_view` is set to HOME_TRAIT_ONLY or
-  /// HOME_TRAIT_AND_SMART_HOME_TRAIT.
+  /// This field is populated when `device_view` is set to `HOME_TRAIT_ONLY`,
+  /// `HOME_TRAIT_AND_SMART_HOME_TRAIT`, or `JSON_TRAIT_ONLY`.
   core.Map<core.String, HomeTraitPayload>? homeTraitPayload;
 
   QueryResponsePayload({
@@ -1470,6 +1572,9 @@ class TraitData {
   /// The time the client update was committed in the server.
   core.String? commitTime;
 
+  /// Contains the dynamic JSON trait payload.
+  JsonTrait? jsonTrait;
+
   /// The custom timestamp supplied by the provider during a
   /// ReportStateAndNotification update (if provided).
   ///
@@ -1482,11 +1587,21 @@ class TraitData {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? trait;
 
-  TraitData({this.commitTime, this.providerUpdateTime, this.trait});
+  TraitData({
+    this.commitTime,
+    this.jsonTrait,
+    this.providerUpdateTime,
+    this.trait,
+  });
 
   TraitData.fromJson(core.Map json_)
     : this(
         commitTime: json_['commitTime'] as core.String?,
+        jsonTrait: json_.containsKey('jsonTrait')
+            ? JsonTrait.fromJson(
+                json_['jsonTrait'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         providerUpdateTime: json_['providerUpdateTime'] as core.String?,
         trait: json_.containsKey('trait')
             ? json_['trait'] as core.Map<core.String, core.dynamic>
@@ -1495,10 +1610,12 @@ class TraitData {
 
   core.Map<core.String, core.dynamic> toJson() {
     final commitTime = this.commitTime;
+    final jsonTrait = this.jsonTrait;
     final providerUpdateTime = this.providerUpdateTime;
     final trait = this.trait;
     return {
       'commitTime': ?commitTime,
+      'jsonTrait': ?jsonTrait,
       'providerUpdateTime': ?providerUpdateTime,
       'trait': ?trait,
     };

@@ -575,6 +575,7 @@ api.ProductPerformanceView buildProductPerformanceView() {
     o.date = buildDate();
     o.impressions = 'foo';
     o.marketingMethod = 'foo';
+    o.network = 'foo';
     o.offerId = 'foo';
     o.productTypeL1 = 'foo';
     o.productTypeL2 = 'foo';
@@ -612,6 +613,7 @@ void checkProductPerformanceView(api.ProductPerformanceView o) {
     checkDate(o.date!);
     unittest.expect(o.impressions!, unittest.equals('foo'));
     unittest.expect(o.marketingMethod!, unittest.equals('foo'));
+    unittest.expect(o.network!, unittest.equals('foo'));
     unittest.expect(o.offerId!, unittest.equals('foo'));
     unittest.expect(o.productTypeL1!, unittest.equals('foo'));
     unittest.expect(o.productTypeL2!, unittest.equals('foo'));

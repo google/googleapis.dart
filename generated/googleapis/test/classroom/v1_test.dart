@@ -52,6 +52,7 @@ api.AddOnAttachment buildAddOnAttachment() {
     o.courseId = 'foo';
     o.dueDate = buildDate();
     o.dueTime = buildTimeOfDay();
+    o.gradeSyncEnabled = true;
     o.id = 'foo';
     o.itemId = 'foo';
     o.maxPoints = 42.0;
@@ -72,6 +73,7 @@ void checkAddOnAttachment(api.AddOnAttachment o) {
     unittest.expect(o.courseId!, unittest.equals('foo'));
     checkDate(o.dueDate!);
     checkTimeOfDay(o.dueTime!);
+    unittest.expect(o.gradeSyncEnabled!, unittest.isTrue);
     unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.itemId!, unittest.equals('foo'));
     unittest.expect(o.maxPoints!, unittest.equals(42.0));
@@ -1142,12 +1144,47 @@ void checkLink(api.Link o) {
   buildCounterLink--;
 }
 
-core.List<api.AddOnAttachment> buildUnnamed11() => [
+core.List<api.AddOnAttachmentStudentSubmission> buildUnnamed11() => [
+  buildAddOnAttachmentStudentSubmission(),
+  buildAddOnAttachmentStudentSubmission(),
+];
+
+void checkUnnamed11(core.List<api.AddOnAttachmentStudentSubmission> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAddOnAttachmentStudentSubmission(o[0]);
+  checkAddOnAttachmentStudentSubmission(o[1]);
+}
+
+core.int buildCounterListAddOnAttachmentStudentSubmissionsResponse = 0;
+api.ListAddOnAttachmentStudentSubmissionsResponse
+buildListAddOnAttachmentStudentSubmissionsResponse() {
+  final o = api.ListAddOnAttachmentStudentSubmissionsResponse();
+  buildCounterListAddOnAttachmentStudentSubmissionsResponse++;
+  if (buildCounterListAddOnAttachmentStudentSubmissionsResponse < 3) {
+    o.addOnAttachmentStudentSubmissions = buildUnnamed11();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListAddOnAttachmentStudentSubmissionsResponse--;
+  return o;
+}
+
+void checkListAddOnAttachmentStudentSubmissionsResponse(
+  api.ListAddOnAttachmentStudentSubmissionsResponse o,
+) {
+  buildCounterListAddOnAttachmentStudentSubmissionsResponse++;
+  if (buildCounterListAddOnAttachmentStudentSubmissionsResponse < 3) {
+    checkUnnamed11(o.addOnAttachmentStudentSubmissions!);
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+  }
+  buildCounterListAddOnAttachmentStudentSubmissionsResponse--;
+}
+
+core.List<api.AddOnAttachment> buildUnnamed12() => [
   buildAddOnAttachment(),
   buildAddOnAttachment(),
 ];
 
-void checkUnnamed11(core.List<api.AddOnAttachment> o) {
+void checkUnnamed12(core.List<api.AddOnAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAddOnAttachment(o[0]);
   checkAddOnAttachment(o[1]);
@@ -1158,7 +1195,7 @@ api.ListAddOnAttachmentsResponse buildListAddOnAttachmentsResponse() {
   final o = api.ListAddOnAttachmentsResponse();
   buildCounterListAddOnAttachmentsResponse++;
   if (buildCounterListAddOnAttachmentsResponse < 3) {
-    o.addOnAttachments = buildUnnamed11();
+    o.addOnAttachments = buildUnnamed12();
     o.nextPageToken = 'foo';
   }
   buildCounterListAddOnAttachmentsResponse--;
@@ -1168,18 +1205,18 @@ api.ListAddOnAttachmentsResponse buildListAddOnAttachmentsResponse() {
 void checkListAddOnAttachmentsResponse(api.ListAddOnAttachmentsResponse o) {
   buildCounterListAddOnAttachmentsResponse++;
   if (buildCounterListAddOnAttachmentsResponse < 3) {
-    checkUnnamed11(o.addOnAttachments!);
+    checkUnnamed12(o.addOnAttachments!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListAddOnAttachmentsResponse--;
 }
 
-core.List<api.Announcement> buildUnnamed12() => [
+core.List<api.Announcement> buildUnnamed13() => [
   buildAnnouncement(),
   buildAnnouncement(),
 ];
 
-void checkUnnamed12(core.List<api.Announcement> o) {
+void checkUnnamed13(core.List<api.Announcement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnouncement(o[0]);
   checkAnnouncement(o[1]);
@@ -1190,7 +1227,7 @@ api.ListAnnouncementsResponse buildListAnnouncementsResponse() {
   final o = api.ListAnnouncementsResponse();
   buildCounterListAnnouncementsResponse++;
   if (buildCounterListAnnouncementsResponse < 3) {
-    o.announcements = buildUnnamed12();
+    o.announcements = buildUnnamed13();
     o.nextPageToken = 'foo';
   }
   buildCounterListAnnouncementsResponse--;
@@ -1200,18 +1237,18 @@ api.ListAnnouncementsResponse buildListAnnouncementsResponse() {
 void checkListAnnouncementsResponse(api.ListAnnouncementsResponse o) {
   buildCounterListAnnouncementsResponse++;
   if (buildCounterListAnnouncementsResponse < 3) {
-    checkUnnamed12(o.announcements!);
+    checkUnnamed13(o.announcements!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListAnnouncementsResponse--;
 }
 
-core.List<api.CourseAlias> buildUnnamed13() => [
+core.List<api.CourseAlias> buildUnnamed14() => [
   buildCourseAlias(),
   buildCourseAlias(),
 ];
 
-void checkUnnamed13(core.List<api.CourseAlias> o) {
+void checkUnnamed14(core.List<api.CourseAlias> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseAlias(o[0]);
   checkCourseAlias(o[1]);
@@ -1222,7 +1259,7 @@ api.ListCourseAliasesResponse buildListCourseAliasesResponse() {
   final o = api.ListCourseAliasesResponse();
   buildCounterListCourseAliasesResponse++;
   if (buildCounterListCourseAliasesResponse < 3) {
-    o.aliases = buildUnnamed13();
+    o.aliases = buildUnnamed14();
     o.nextPageToken = 'foo';
   }
   buildCounterListCourseAliasesResponse--;
@@ -1232,18 +1269,18 @@ api.ListCourseAliasesResponse buildListCourseAliasesResponse() {
 void checkListCourseAliasesResponse(api.ListCourseAliasesResponse o) {
   buildCounterListCourseAliasesResponse++;
   if (buildCounterListCourseAliasesResponse < 3) {
-    checkUnnamed13(o.aliases!);
+    checkUnnamed14(o.aliases!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListCourseAliasesResponse--;
 }
 
-core.List<api.CourseWorkMaterial> buildUnnamed14() => [
+core.List<api.CourseWorkMaterial> buildUnnamed15() => [
   buildCourseWorkMaterial(),
   buildCourseWorkMaterial(),
 ];
 
-void checkUnnamed14(core.List<api.CourseWorkMaterial> o) {
+void checkUnnamed15(core.List<api.CourseWorkMaterial> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseWorkMaterial(o[0]);
   checkCourseWorkMaterial(o[1]);
@@ -1254,7 +1291,7 @@ api.ListCourseWorkMaterialResponse buildListCourseWorkMaterialResponse() {
   final o = api.ListCourseWorkMaterialResponse();
   buildCounterListCourseWorkMaterialResponse++;
   if (buildCounterListCourseWorkMaterialResponse < 3) {
-    o.courseWorkMaterial = buildUnnamed14();
+    o.courseWorkMaterial = buildUnnamed15();
     o.nextPageToken = 'foo';
   }
   buildCounterListCourseWorkMaterialResponse--;
@@ -1264,18 +1301,18 @@ api.ListCourseWorkMaterialResponse buildListCourseWorkMaterialResponse() {
 void checkListCourseWorkMaterialResponse(api.ListCourseWorkMaterialResponse o) {
   buildCounterListCourseWorkMaterialResponse++;
   if (buildCounterListCourseWorkMaterialResponse < 3) {
-    checkUnnamed14(o.courseWorkMaterial!);
+    checkUnnamed15(o.courseWorkMaterial!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListCourseWorkMaterialResponse--;
 }
 
-core.List<api.CourseWork> buildUnnamed15() => [
+core.List<api.CourseWork> buildUnnamed16() => [
   buildCourseWork(),
   buildCourseWork(),
 ];
 
-void checkUnnamed15(core.List<api.CourseWork> o) {
+void checkUnnamed16(core.List<api.CourseWork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourseWork(o[0]);
   checkCourseWork(o[1]);
@@ -1286,7 +1323,7 @@ api.ListCourseWorkResponse buildListCourseWorkResponse() {
   final o = api.ListCourseWorkResponse();
   buildCounterListCourseWorkResponse++;
   if (buildCounterListCourseWorkResponse < 3) {
-    o.courseWork = buildUnnamed15();
+    o.courseWork = buildUnnamed16();
     o.nextPageToken = 'foo';
   }
   buildCounterListCourseWorkResponse--;
@@ -1296,15 +1333,15 @@ api.ListCourseWorkResponse buildListCourseWorkResponse() {
 void checkListCourseWorkResponse(api.ListCourseWorkResponse o) {
   buildCounterListCourseWorkResponse++;
   if (buildCounterListCourseWorkResponse < 3) {
-    checkUnnamed15(o.courseWork!);
+    checkUnnamed16(o.courseWork!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListCourseWorkResponse--;
 }
 
-core.List<api.Course> buildUnnamed16() => [buildCourse(), buildCourse()];
+core.List<api.Course> buildUnnamed17() => [buildCourse(), buildCourse()];
 
-void checkUnnamed16(core.List<api.Course> o) {
+void checkUnnamed17(core.List<api.Course> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCourse(o[0]);
   checkCourse(o[1]);
@@ -1315,7 +1352,7 @@ api.ListCoursesResponse buildListCoursesResponse() {
   final o = api.ListCoursesResponse();
   buildCounterListCoursesResponse++;
   if (buildCounterListCoursesResponse < 3) {
-    o.courses = buildUnnamed16();
+    o.courses = buildUnnamed17();
     o.nextPageToken = 'foo';
   }
   buildCounterListCoursesResponse--;
@@ -1325,18 +1362,18 @@ api.ListCoursesResponse buildListCoursesResponse() {
 void checkListCoursesResponse(api.ListCoursesResponse o) {
   buildCounterListCoursesResponse++;
   if (buildCounterListCoursesResponse < 3) {
-    checkUnnamed16(o.courses!);
+    checkUnnamed17(o.courses!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListCoursesResponse--;
 }
 
-core.List<api.GuardianInvitation> buildUnnamed17() => [
+core.List<api.GuardianInvitation> buildUnnamed18() => [
   buildGuardianInvitation(),
   buildGuardianInvitation(),
 ];
 
-void checkUnnamed17(core.List<api.GuardianInvitation> o) {
+void checkUnnamed18(core.List<api.GuardianInvitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGuardianInvitation(o[0]);
   checkGuardianInvitation(o[1]);
@@ -1347,7 +1384,7 @@ api.ListGuardianInvitationsResponse buildListGuardianInvitationsResponse() {
   final o = api.ListGuardianInvitationsResponse();
   buildCounterListGuardianInvitationsResponse++;
   if (buildCounterListGuardianInvitationsResponse < 3) {
-    o.guardianInvitations = buildUnnamed17();
+    o.guardianInvitations = buildUnnamed18();
     o.nextPageToken = 'foo';
   }
   buildCounterListGuardianInvitationsResponse--;
@@ -1359,15 +1396,15 @@ void checkListGuardianInvitationsResponse(
 ) {
   buildCounterListGuardianInvitationsResponse++;
   if (buildCounterListGuardianInvitationsResponse < 3) {
-    checkUnnamed17(o.guardianInvitations!);
+    checkUnnamed18(o.guardianInvitations!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListGuardianInvitationsResponse--;
 }
 
-core.List<api.Guardian> buildUnnamed18() => [buildGuardian(), buildGuardian()];
+core.List<api.Guardian> buildUnnamed19() => [buildGuardian(), buildGuardian()];
 
-void checkUnnamed18(core.List<api.Guardian> o) {
+void checkUnnamed19(core.List<api.Guardian> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGuardian(o[0]);
   checkGuardian(o[1]);
@@ -1378,7 +1415,7 @@ api.ListGuardiansResponse buildListGuardiansResponse() {
   final o = api.ListGuardiansResponse();
   buildCounterListGuardiansResponse++;
   if (buildCounterListGuardiansResponse < 3) {
-    o.guardians = buildUnnamed18();
+    o.guardians = buildUnnamed19();
     o.nextPageToken = 'foo';
   }
   buildCounterListGuardiansResponse--;
@@ -1388,18 +1425,18 @@ api.ListGuardiansResponse buildListGuardiansResponse() {
 void checkListGuardiansResponse(api.ListGuardiansResponse o) {
   buildCounterListGuardiansResponse++;
   if (buildCounterListGuardiansResponse < 3) {
-    checkUnnamed18(o.guardians!);
+    checkUnnamed19(o.guardians!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListGuardiansResponse--;
 }
 
-core.List<api.Invitation> buildUnnamed19() => [
+core.List<api.Invitation> buildUnnamed20() => [
   buildInvitation(),
   buildInvitation(),
 ];
 
-void checkUnnamed19(core.List<api.Invitation> o) {
+void checkUnnamed20(core.List<api.Invitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInvitation(o[0]);
   checkInvitation(o[1]);
@@ -1410,7 +1447,7 @@ api.ListInvitationsResponse buildListInvitationsResponse() {
   final o = api.ListInvitationsResponse();
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    o.invitations = buildUnnamed19();
+    o.invitations = buildUnnamed20();
     o.nextPageToken = 'foo';
   }
   buildCounterListInvitationsResponse--;
@@ -1420,15 +1457,15 @@ api.ListInvitationsResponse buildListInvitationsResponse() {
 void checkListInvitationsResponse(api.ListInvitationsResponse o) {
   buildCounterListInvitationsResponse++;
   if (buildCounterListInvitationsResponse < 3) {
-    checkUnnamed19(o.invitations!);
+    checkUnnamed20(o.invitations!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListInvitationsResponse--;
 }
 
-core.List<api.Rubric> buildUnnamed20() => [buildRubric(), buildRubric()];
+core.List<api.Rubric> buildUnnamed21() => [buildRubric(), buildRubric()];
 
-void checkUnnamed20(core.List<api.Rubric> o) {
+void checkUnnamed21(core.List<api.Rubric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRubric(o[0]);
   checkRubric(o[1]);
@@ -1440,7 +1477,7 @@ api.ListRubricsResponse buildListRubricsResponse() {
   buildCounterListRubricsResponse++;
   if (buildCounterListRubricsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.rubrics = buildUnnamed20();
+    o.rubrics = buildUnnamed21();
   }
   buildCounterListRubricsResponse--;
   return o;
@@ -1450,17 +1487,17 @@ void checkListRubricsResponse(api.ListRubricsResponse o) {
   buildCounterListRubricsResponse++;
   if (buildCounterListRubricsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed20(o.rubrics!);
+    checkUnnamed21(o.rubrics!);
   }
   buildCounterListRubricsResponse--;
 }
 
-core.List<api.StudentGroupMember> buildUnnamed21() => [
+core.List<api.StudentGroupMember> buildUnnamed22() => [
   buildStudentGroupMember(),
   buildStudentGroupMember(),
 ];
 
-void checkUnnamed21(core.List<api.StudentGroupMember> o) {
+void checkUnnamed22(core.List<api.StudentGroupMember> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStudentGroupMember(o[0]);
   checkStudentGroupMember(o[1]);
@@ -1472,7 +1509,7 @@ api.ListStudentGroupMembersResponse buildListStudentGroupMembersResponse() {
   buildCounterListStudentGroupMembersResponse++;
   if (buildCounterListStudentGroupMembersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.studentGroupMembers = buildUnnamed21();
+    o.studentGroupMembers = buildUnnamed22();
   }
   buildCounterListStudentGroupMembersResponse--;
   return o;
@@ -1484,17 +1521,17 @@ void checkListStudentGroupMembersResponse(
   buildCounterListStudentGroupMembersResponse++;
   if (buildCounterListStudentGroupMembersResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed21(o.studentGroupMembers!);
+    checkUnnamed22(o.studentGroupMembers!);
   }
   buildCounterListStudentGroupMembersResponse--;
 }
 
-core.List<api.StudentGroup> buildUnnamed22() => [
+core.List<api.StudentGroup> buildUnnamed23() => [
   buildStudentGroup(),
   buildStudentGroup(),
 ];
 
-void checkUnnamed22(core.List<api.StudentGroup> o) {
+void checkUnnamed23(core.List<api.StudentGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStudentGroup(o[0]);
   checkStudentGroup(o[1]);
@@ -1506,7 +1543,7 @@ api.ListStudentGroupsResponse buildListStudentGroupsResponse() {
   buildCounterListStudentGroupsResponse++;
   if (buildCounterListStudentGroupsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.studentGroups = buildUnnamed22();
+    o.studentGroups = buildUnnamed23();
   }
   buildCounterListStudentGroupsResponse--;
   return o;
@@ -1516,17 +1553,17 @@ void checkListStudentGroupsResponse(api.ListStudentGroupsResponse o) {
   buildCounterListStudentGroupsResponse++;
   if (buildCounterListStudentGroupsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed22(o.studentGroups!);
+    checkUnnamed23(o.studentGroups!);
   }
   buildCounterListStudentGroupsResponse--;
 }
 
-core.List<api.StudentSubmission> buildUnnamed23() => [
+core.List<api.StudentSubmission> buildUnnamed24() => [
   buildStudentSubmission(),
   buildStudentSubmission(),
 ];
 
-void checkUnnamed23(core.List<api.StudentSubmission> o) {
+void checkUnnamed24(core.List<api.StudentSubmission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStudentSubmission(o[0]);
   checkStudentSubmission(o[1]);
@@ -1538,7 +1575,7 @@ api.ListStudentSubmissionsResponse buildListStudentSubmissionsResponse() {
   buildCounterListStudentSubmissionsResponse++;
   if (buildCounterListStudentSubmissionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.studentSubmissions = buildUnnamed23();
+    o.studentSubmissions = buildUnnamed24();
   }
   buildCounterListStudentSubmissionsResponse--;
   return o;
@@ -1548,14 +1585,14 @@ void checkListStudentSubmissionsResponse(api.ListStudentSubmissionsResponse o) {
   buildCounterListStudentSubmissionsResponse++;
   if (buildCounterListStudentSubmissionsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed23(o.studentSubmissions!);
+    checkUnnamed24(o.studentSubmissions!);
   }
   buildCounterListStudentSubmissionsResponse--;
 }
 
-core.List<api.Student> buildUnnamed24() => [buildStudent(), buildStudent()];
+core.List<api.Student> buildUnnamed25() => [buildStudent(), buildStudent()];
 
-void checkUnnamed24(core.List<api.Student> o) {
+void checkUnnamed25(core.List<api.Student> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStudent(o[0]);
   checkStudent(o[1]);
@@ -1567,7 +1604,7 @@ api.ListStudentsResponse buildListStudentsResponse() {
   buildCounterListStudentsResponse++;
   if (buildCounterListStudentsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.students = buildUnnamed24();
+    o.students = buildUnnamed25();
   }
   buildCounterListStudentsResponse--;
   return o;
@@ -1577,14 +1614,14 @@ void checkListStudentsResponse(api.ListStudentsResponse o) {
   buildCounterListStudentsResponse++;
   if (buildCounterListStudentsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed24(o.students!);
+    checkUnnamed25(o.students!);
   }
   buildCounterListStudentsResponse--;
 }
 
-core.List<api.Teacher> buildUnnamed25() => [buildTeacher(), buildTeacher()];
+core.List<api.Teacher> buildUnnamed26() => [buildTeacher(), buildTeacher()];
 
-void checkUnnamed25(core.List<api.Teacher> o) {
+void checkUnnamed26(core.List<api.Teacher> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeacher(o[0]);
   checkTeacher(o[1]);
@@ -1596,7 +1633,7 @@ api.ListTeachersResponse buildListTeachersResponse() {
   buildCounterListTeachersResponse++;
   if (buildCounterListTeachersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.teachers = buildUnnamed25();
+    o.teachers = buildUnnamed26();
   }
   buildCounterListTeachersResponse--;
   return o;
@@ -1606,14 +1643,14 @@ void checkListTeachersResponse(api.ListTeachersResponse o) {
   buildCounterListTeachersResponse++;
   if (buildCounterListTeachersResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed25(o.teachers!);
+    checkUnnamed26(o.teachers!);
   }
   buildCounterListTeachersResponse--;
 }
 
-core.List<api.Topic> buildUnnamed26() => [buildTopic(), buildTopic()];
+core.List<api.Topic> buildUnnamed27() => [buildTopic(), buildTopic()];
 
-void checkUnnamed26(core.List<api.Topic> o) {
+void checkUnnamed27(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopic(o[0]);
   checkTopic(o[1]);
@@ -1625,7 +1662,7 @@ api.ListTopicResponse buildListTopicResponse() {
   buildCounterListTopicResponse++;
   if (buildCounterListTopicResponse < 3) {
     o.nextPageToken = 'foo';
-    o.topic = buildUnnamed26();
+    o.topic = buildUnnamed27();
   }
   buildCounterListTopicResponse--;
   return o;
@@ -1635,7 +1672,7 @@ void checkListTopicResponse(api.ListTopicResponse o) {
   buildCounterListTopicResponse++;
   if (buildCounterListTopicResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed26(o.topic!);
+    checkUnnamed27(o.topic!);
   }
   buildCounterListTopicResponse--;
 }
@@ -1693,12 +1730,12 @@ void checkModifyAnnouncementAssigneesRequest(
   buildCounterModifyAnnouncementAssigneesRequest--;
 }
 
-core.List<api.Attachment> buildUnnamed27() => [
+core.List<api.Attachment> buildUnnamed28() => [
   buildAttachment(),
   buildAttachment(),
 ];
 
-void checkUnnamed27(core.List<api.Attachment> o) {
+void checkUnnamed28(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
@@ -1709,7 +1746,7 @@ api.ModifyAttachmentsRequest buildModifyAttachmentsRequest() {
   final o = api.ModifyAttachmentsRequest();
   buildCounterModifyAttachmentsRequest++;
   if (buildCounterModifyAttachmentsRequest < 3) {
-    o.addAttachments = buildUnnamed27();
+    o.addAttachments = buildUnnamed28();
   }
   buildCounterModifyAttachmentsRequest--;
   return o;
@@ -1718,7 +1755,7 @@ api.ModifyAttachmentsRequest buildModifyAttachmentsRequest() {
 void checkModifyAttachmentsRequest(api.ModifyAttachmentsRequest o) {
   buildCounterModifyAttachmentsRequest++;
   if (buildCounterModifyAttachmentsRequest < 3) {
-    checkUnnamed27(o.addAttachments!);
+    checkUnnamed28(o.addAttachments!);
   }
   buildCounterModifyAttachmentsRequest--;
 }
@@ -1746,43 +1783,12 @@ void checkModifyCourseWorkAssigneesRequest(
   buildCounterModifyCourseWorkAssigneesRequest--;
 }
 
-core.List<core.String> buildUnnamed28() => ['foo', 'foo'];
-
-void checkUnnamed28(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
 core.List<core.String> buildUnnamed29() => ['foo', 'foo'];
 
 void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterModifyIndividualStudentsOptions = 0;
-api.ModifyIndividualStudentsOptions buildModifyIndividualStudentsOptions() {
-  final o = api.ModifyIndividualStudentsOptions();
-  buildCounterModifyIndividualStudentsOptions++;
-  if (buildCounterModifyIndividualStudentsOptions < 3) {
-    o.addStudentIds = buildUnnamed28();
-    o.removeStudentIds = buildUnnamed29();
-  }
-  buildCounterModifyIndividualStudentsOptions--;
-  return o;
-}
-
-void checkModifyIndividualStudentsOptions(
-  api.ModifyIndividualStudentsOptions o,
-) {
-  buildCounterModifyIndividualStudentsOptions++;
-  if (buildCounterModifyIndividualStudentsOptions < 3) {
-    checkUnnamed28(o.addStudentIds!);
-    checkUnnamed29(o.removeStudentIds!);
-  }
-  buildCounterModifyIndividualStudentsOptions--;
 }
 
 core.List<core.String> buildUnnamed30() => ['foo', 'foo'];
@@ -1793,12 +1799,43 @@ void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.int buildCounterModifyIndividualStudentsOptions = 0;
+api.ModifyIndividualStudentsOptions buildModifyIndividualStudentsOptions() {
+  final o = api.ModifyIndividualStudentsOptions();
+  buildCounterModifyIndividualStudentsOptions++;
+  if (buildCounterModifyIndividualStudentsOptions < 3) {
+    o.addStudentIds = buildUnnamed29();
+    o.removeStudentIds = buildUnnamed30();
+  }
+  buildCounterModifyIndividualStudentsOptions--;
+  return o;
+}
+
+void checkModifyIndividualStudentsOptions(
+  api.ModifyIndividualStudentsOptions o,
+) {
+  buildCounterModifyIndividualStudentsOptions++;
+  if (buildCounterModifyIndividualStudentsOptions < 3) {
+    checkUnnamed29(o.addStudentIds!);
+    checkUnnamed30(o.removeStudentIds!);
+  }
+  buildCounterModifyIndividualStudentsOptions--;
+}
+
+core.List<core.String> buildUnnamed31() => ['foo', 'foo'];
+
+void checkUnnamed31(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterMultipleChoiceQuestion = 0;
 api.MultipleChoiceQuestion buildMultipleChoiceQuestion() {
   final o = api.MultipleChoiceQuestion();
   buildCounterMultipleChoiceQuestion++;
   if (buildCounterMultipleChoiceQuestion < 3) {
-    o.choices = buildUnnamed30();
+    o.choices = buildUnnamed31();
   }
   buildCounterMultipleChoiceQuestion--;
   return o;
@@ -1807,7 +1844,7 @@ api.MultipleChoiceQuestion buildMultipleChoiceQuestion() {
 void checkMultipleChoiceQuestion(api.MultipleChoiceQuestion o) {
   buildCounterMultipleChoiceQuestion++;
   if (buildCounterMultipleChoiceQuestion < 3) {
-    checkUnnamed30(o.choices!);
+    checkUnnamed31(o.choices!);
   }
   buildCounterMultipleChoiceQuestion--;
 }
@@ -1934,12 +1971,12 @@ void checkReturnStudentSubmissionRequest(api.ReturnStudentSubmissionRequest o) {
   buildCounterReturnStudentSubmissionRequest--;
 }
 
-core.List<api.Criterion> buildUnnamed31() => [
+core.List<api.Criterion> buildUnnamed32() => [
   buildCriterion(),
   buildCriterion(),
 ];
 
-void checkUnnamed31(core.List<api.Criterion> o) {
+void checkUnnamed32(core.List<api.Criterion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCriterion(o[0]);
   checkCriterion(o[1]);
@@ -1953,7 +1990,7 @@ api.Rubric buildRubric() {
     o.courseId = 'foo';
     o.courseWorkId = 'foo';
     o.creationTime = 'foo';
-    o.criteria = buildUnnamed31();
+    o.criteria = buildUnnamed32();
     o.id = 'foo';
     o.sourceSpreadsheetId = 'foo';
     o.updateTime = 'foo';
@@ -1968,7 +2005,7 @@ void checkRubric(api.Rubric o) {
     unittest.expect(o.courseId!, unittest.equals('foo'));
     unittest.expect(o.courseWorkId!, unittest.equals('foo'));
     unittest.expect(o.creationTime!, unittest.equals('foo'));
-    checkUnnamed31(o.criteria!);
+    checkUnnamed32(o.criteria!);
     unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.sourceSpreadsheetId!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -2152,17 +2189,6 @@ void checkStudentGroupMember(api.StudentGroupMember o) {
   buildCounterStudentGroupMember--;
 }
 
-core.Map<core.String, api.RubricGrade> buildUnnamed32() => {
-  'x': buildRubricGrade(),
-  'y': buildRubricGrade(),
-};
-
-void checkUnnamed32(core.Map<core.String, api.RubricGrade> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkRubricGrade(o['x']!);
-  checkRubricGrade(o['y']!);
-}
-
 core.Map<core.String, api.RubricGrade> buildUnnamed33() => {
   'x': buildRubricGrade(),
   'y': buildRubricGrade(),
@@ -2174,12 +2200,23 @@ void checkUnnamed33(core.Map<core.String, api.RubricGrade> o) {
   checkRubricGrade(o['y']!);
 }
 
-core.List<api.SubmissionHistory> buildUnnamed34() => [
+core.Map<core.String, api.RubricGrade> buildUnnamed34() => {
+  'x': buildRubricGrade(),
+  'y': buildRubricGrade(),
+};
+
+void checkUnnamed34(core.Map<core.String, api.RubricGrade> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRubricGrade(o['x']!);
+  checkRubricGrade(o['y']!);
+}
+
+core.List<api.SubmissionHistory> buildUnnamed35() => [
   buildSubmissionHistory(),
   buildSubmissionHistory(),
 ];
 
-void checkUnnamed34(core.List<api.SubmissionHistory> o) {
+void checkUnnamed35(core.List<api.SubmissionHistory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubmissionHistory(o[0]);
   checkSubmissionHistory(o[1]);
@@ -2192,7 +2229,7 @@ api.StudentSubmission buildStudentSubmission() {
   if (buildCounterStudentSubmission < 3) {
     o.alternateLink = 'foo';
     o.assignedGrade = 42.0;
-    o.assignedRubricGrades = buildUnnamed32();
+    o.assignedRubricGrades = buildUnnamed33();
     o.assignmentSubmission = buildAssignmentSubmission();
     o.associatedWithDeveloper = true;
     o.courseId = 'foo';
@@ -2200,13 +2237,13 @@ api.StudentSubmission buildStudentSubmission() {
     o.courseWorkType = 'foo';
     o.creationTime = 'foo';
     o.draftGrade = 42.0;
-    o.draftRubricGrades = buildUnnamed33();
+    o.draftRubricGrades = buildUnnamed34();
     o.id = 'foo';
     o.late = true;
     o.multipleChoiceSubmission = buildMultipleChoiceSubmission();
     o.shortAnswerSubmission = buildShortAnswerSubmission();
     o.state = 'foo';
-    o.submissionHistory = buildUnnamed34();
+    o.submissionHistory = buildUnnamed35();
     o.updateTime = 'foo';
     o.userId = 'foo';
   }
@@ -2219,7 +2256,7 @@ void checkStudentSubmission(api.StudentSubmission o) {
   if (buildCounterStudentSubmission < 3) {
     unittest.expect(o.alternateLink!, unittest.equals('foo'));
     unittest.expect(o.assignedGrade!, unittest.equals(42.0));
-    checkUnnamed32(o.assignedRubricGrades!);
+    checkUnnamed33(o.assignedRubricGrades!);
     checkAssignmentSubmission(o.assignmentSubmission!);
     unittest.expect(o.associatedWithDeveloper!, unittest.isTrue);
     unittest.expect(o.courseId!, unittest.equals('foo'));
@@ -2227,13 +2264,13 @@ void checkStudentSubmission(api.StudentSubmission o) {
     unittest.expect(o.courseWorkType!, unittest.equals('foo'));
     unittest.expect(o.creationTime!, unittest.equals('foo'));
     unittest.expect(o.draftGrade!, unittest.equals(42.0));
-    checkUnnamed33(o.draftRubricGrades!);
+    checkUnnamed34(o.draftRubricGrades!);
     unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.late!, unittest.isTrue);
     checkMultipleChoiceSubmission(o.multipleChoiceSubmission!);
     checkShortAnswerSubmission(o.shortAnswerSubmission!);
     unittest.expect(o.state!, unittest.equals('foo'));
-    checkUnnamed34(o.submissionHistory!);
+    checkUnnamed35(o.submissionHistory!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     unittest.expect(o.userId!, unittest.equals('foo'));
   }
@@ -2364,12 +2401,12 @@ void checkTurnInStudentSubmissionRequest(api.TurnInStudentSubmissionRequest o) {
   buildCounterTurnInStudentSubmissionRequest--;
 }
 
-core.List<api.GlobalPermission> buildUnnamed35() => [
+core.List<api.GlobalPermission> buildUnnamed36() => [
   buildGlobalPermission(),
   buildGlobalPermission(),
 ];
 
-void checkUnnamed35(core.List<api.GlobalPermission> o) {
+void checkUnnamed36(core.List<api.GlobalPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlobalPermission(o[0]);
   checkGlobalPermission(o[1]);
@@ -2383,7 +2420,7 @@ api.UserProfile buildUserProfile() {
     o.emailAddress = 'foo';
     o.id = 'foo';
     o.name = buildName();
-    o.permissions = buildUnnamed35();
+    o.permissions = buildUnnamed36();
     o.photoUrl = 'foo';
     o.verifiedTeacher = true;
   }
@@ -2397,7 +2434,7 @@ void checkUserProfile(api.UserProfile o) {
     unittest.expect(o.emailAddress!, unittest.equals('foo'));
     unittest.expect(o.id!, unittest.equals('foo'));
     checkName(o.name!);
-    checkUnnamed35(o.permissions!);
+    checkUnnamed36(o.permissions!);
     unittest.expect(o.photoUrl!, unittest.equals('foo'));
     unittest.expect(o.verifiedTeacher!, unittest.isTrue);
   }
@@ -2427,14 +2464,6 @@ void checkYouTubeVideo(api.YouTubeVideo o) {
     unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterYouTubeVideo--;
-}
-
-core.List<core.String> buildUnnamed36() => ['foo', 'foo'];
-
-void checkUnnamed36(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed37() => ['foo', 'foo'];
@@ -2472,6 +2501,14 @@ void checkUnnamed40(core.List<core.String> o) {
 core.List<core.String> buildUnnamed41() => ['foo', 'foo'];
 
 void checkUnnamed41(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed42() => ['foo', 'foo'];
+
+void checkUnnamed42(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2895,6 +2932,20 @@ void main() {
       checkLink(od);
     });
   });
+
+  unittest.group(
+    'obj-schema-ListAddOnAttachmentStudentSubmissionsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildListAddOnAttachmentStudentSubmissionsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.ListAddOnAttachmentStudentSubmissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkListAddOnAttachmentStudentSubmissionsResponse(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-ListAddOnAttachmentsResponse', () {
     unittest.test('to-json--from-json', () async {
@@ -3640,7 +3691,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.ClassroomApi(mock).courses;
-      final arg_courseStates = buildUnnamed36();
+      final arg_courseStates = buildUnnamed37();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_studentId = 'foo';
@@ -4486,7 +4537,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ClassroomApi(mock).courses.announcements;
       final arg_courseId = 'foo';
-      final arg_announcementStates = buildUnnamed37();
+      final arg_announcementStates = buildUnnamed38();
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -5561,7 +5612,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ClassroomApi(mock).courses.courseWork;
       final arg_courseId = 'foo';
-      final arg_courseWorkStates = buildUnnamed38();
+      final arg_courseWorkStates = buildUnnamed39();
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6526,6 +6577,119 @@ void main() {
         );
       });
 
+      unittest.test('method--list', () async {
+        final mock = HttpServerMock();
+        final res = api.ClassroomApi(
+          mock,
+        ).courses.courseWork.addOnAttachments.studentSubmissions;
+        final arg_courseId = 'foo';
+        final arg_itemId = 'foo';
+        final arg_attachmentId = 'foo';
+        final arg_pageSize = 42;
+        final arg_pageToken = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 11),
+              unittest.equals('v1/courses/'),
+            );
+            pathOffset += 11;
+            index = path.indexOf('/courseWork/', pathOffset);
+            unittest.expect(index >= 0, unittest.isTrue);
+            subPart = core.Uri.decodeQueryComponent(
+              path.substring(pathOffset, index),
+            );
+            pathOffset = index;
+            unittest.expect(subPart, unittest.equals('$arg_courseId'));
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 12),
+              unittest.equals('/courseWork/'),
+            );
+            pathOffset += 12;
+            index = path.indexOf('/addOnAttachments/', pathOffset);
+            unittest.expect(index >= 0, unittest.isTrue);
+            subPart = core.Uri.decodeQueryComponent(
+              path.substring(pathOffset, index),
+            );
+            pathOffset = index;
+            unittest.expect(subPart, unittest.equals('$arg_itemId'));
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 18),
+              unittest.equals('/addOnAttachments/'),
+            );
+            pathOffset += 18;
+            index = path.indexOf('/studentSubmissions', pathOffset);
+            unittest.expect(index >= 0, unittest.isTrue);
+            subPart = core.Uri.decodeQueryComponent(
+              path.substring(pathOffset, index),
+            );
+            pathOffset = index;
+            unittest.expect(subPart, unittest.equals('$arg_attachmentId'));
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 19),
+              unittest.equals('/studentSubmissions'),
+            );
+            pathOffset += 19;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              core.int.parse(queryMap['pageSize']!.first),
+              unittest.equals(arg_pageSize),
+            );
+            unittest.expect(
+              queryMap['pageToken']!.first,
+              unittest.equals(arg_pageToken),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildListAddOnAttachmentStudentSubmissionsResponse(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.list(
+          arg_courseId,
+          arg_itemId,
+          arg_attachmentId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields,
+        );
+        checkListAddOnAttachmentStudentSubmissionsResponse(
+          response as api.ListAddOnAttachmentStudentSubmissionsResponse,
+        );
+      });
+
       unittest.test('method--patch', () async {
         final mock = HttpServerMock();
         final res = api.ClassroomApi(
@@ -7202,7 +7366,7 @@ void main() {
       final arg_late = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_states = buildUnnamed39();
+      final arg_states = buildUnnamed40();
       final arg_userId = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -8133,7 +8297,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       final arg_courseId = 'foo';
-      final arg_courseWorkMaterialStates = buildUnnamed40();
+      final arg_courseWorkMaterialStates = buildUnnamed41();
       final arg_materialDriveId = 'foo';
       final arg_materialLink = 'foo';
       final arg_orderBy = 'foo';
@@ -11884,7 +12048,7 @@ void main() {
       final arg_invitedEmailAddress = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_states = buildUnnamed41();
+      final arg_states = buildUnnamed42();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {

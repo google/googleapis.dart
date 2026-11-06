@@ -47,6 +47,7 @@
 /// - [FutureReservationsResource]
 /// - [GlobalAddressesResource]
 /// - [GlobalForwardingRulesResource]
+/// - [GlobalFrontendSettingsResource]
 /// - [GlobalNetworkEndpointGroupsResource]
 /// - [GlobalOperationsResource]
 /// - [GlobalOrganizationOperationsResource]
@@ -57,6 +58,7 @@
 /// - [HttpHealthChecksResource]
 /// - [HttpsHealthChecksResource]
 /// - [ImageFamilyViewsResource]
+/// - [ImageViewsResource]
 /// - [ImagesResource]
 /// - [InstanceGroupManagerResizeRequestsResource]
 /// - [InstanceGroupManagersResource]
@@ -76,6 +78,7 @@
 /// - [LicensesResource]
 /// - [MachineImagesResource]
 /// - [MachineTypesResource]
+/// - [ManagedRulesetsResource]
 /// - [NetworkAttachmentsResource]
 /// - [NetworkEdgeSecurityServicesResource]
 /// - [NetworkEndpointGroupsResource]
@@ -231,6 +234,8 @@ class ComputeApi {
       GlobalAddressesResource(_requester);
   GlobalForwardingRulesResource get globalForwardingRules =>
       GlobalForwardingRulesResource(_requester);
+  GlobalFrontendSettingsResource get globalFrontendSettings =>
+      GlobalFrontendSettingsResource(_requester);
   GlobalNetworkEndpointGroupsResource get globalNetworkEndpointGroups =>
       GlobalNetworkEndpointGroupsResource(_requester);
   GlobalOperationsResource get globalOperations =>
@@ -249,6 +254,7 @@ class ComputeApi {
       HttpsHealthChecksResource(_requester);
   ImageFamilyViewsResource get imageFamilyViews =>
       ImageFamilyViewsResource(_requester);
+  ImageViewsResource get imageViews => ImageViewsResource(_requester);
   ImagesResource get images => ImagesResource(_requester);
   InstanceGroupManagerResizeRequestsResource
   get instanceGroupManagerResizeRequests =>
@@ -281,6 +287,8 @@ class ComputeApi {
   LicensesResource get licenses => LicensesResource(_requester);
   MachineImagesResource get machineImages => MachineImagesResource(_requester);
   MachineTypesResource get machineTypes => MachineTypesResource(_requester);
+  ManagedRulesetsResource get managedRulesets =>
+      ManagedRulesetsResource(_requester);
   NetworkAttachmentsResource get networkAttachments =>
       NetworkAttachmentsResource(_requester);
   NetworkEdgeSecurityServicesResource get networkEdgeSecurityServices =>
@@ -547,16 +555,6 @@ class AcceleratorTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -578,7 +576,6 @@ class AcceleratorTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -590,9 +587,6 @@ class AcceleratorTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -765,16 +759,6 @@ class AcceleratorTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -792,7 +776,6 @@ class AcceleratorTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -800,9 +783,6 @@ class AcceleratorTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -935,16 +915,6 @@ class AddressesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -966,7 +936,6 @@ class AddressesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -978,9 +947,6 @@ class AddressesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -1287,16 +1253,6 @@ class AddressesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1314,7 +1270,6 @@ class AddressesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -1322,9 +1277,6 @@ class AddressesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1835,16 +1787,6 @@ class AutoscalersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -1866,7 +1808,6 @@ class AutoscalersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -1878,9 +1819,6 @@ class AutoscalersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -2189,16 +2127,6 @@ class AutoscalersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2216,7 +2144,6 @@ class AutoscalersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -2224,9 +2151,6 @@ class AutoscalersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2640,16 +2564,6 @@ class BackendBucketsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -2671,7 +2585,6 @@ class BackendBucketsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -2683,9 +2596,6 @@ class BackendBucketsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -3096,16 +3006,6 @@ class BackendBucketsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3122,7 +3022,6 @@ class BackendBucketsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -3130,9 +3029,6 @@ class BackendBucketsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3245,16 +3141,6 @@ class BackendBucketsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3271,7 +3157,6 @@ class BackendBucketsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -3279,9 +3164,6 @@ class BackendBucketsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -3795,16 +3677,6 @@ class BackendServicesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -3826,7 +3698,6 @@ class BackendServicesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -3838,9 +3709,6 @@ class BackendServicesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -4358,16 +4226,6 @@ class BackendServicesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4384,7 +4242,6 @@ class BackendServicesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -4392,9 +4249,6 @@ class BackendServicesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -4510,16 +4364,6 @@ class BackendServicesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4536,7 +4380,6 @@ class BackendServicesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -4544,9 +4387,6 @@ class BackendServicesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -5234,16 +5074,6 @@ class CrossSiteNetworksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5260,7 +5090,6 @@ class CrossSiteNetworksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -5268,9 +5097,6 @@ class CrossSiteNetworksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -5484,16 +5310,6 @@ class DiskTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -5515,7 +5331,6 @@ class DiskTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -5527,9 +5342,6 @@ class DiskTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -5700,16 +5512,6 @@ class DiskTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5727,7 +5529,6 @@ class DiskTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -5735,9 +5536,6 @@ class DiskTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -5948,16 +5746,6 @@ class DisksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -5979,7 +5767,6 @@ class DisksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -5991,9 +5778,6 @@ class DisksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -6603,16 +6387,6 @@ class DisksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -6630,7 +6404,6 @@ class DisksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -6638,9 +6411,6 @@ class DisksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -7648,16 +7418,6 @@ class ExternalVpnGatewaysResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7674,7 +7434,6 @@ class ExternalVpnGatewaysResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -7682,9 +7441,6 @@ class ExternalVpnGatewaysResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -8394,16 +8150,6 @@ class FirewallPoliciesResource {
   /// if the parent is a folder or "organizations/\[ORGANIZATION_ID\]" if the
   /// parent is an organization.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -8420,7 +8166,6 @@ class FirewallPoliciesResource {
     core.String? orderBy,
     core.String? pageToken,
     core.String? parentId,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -8429,9 +8174,6 @@ class FirewallPoliciesResource {
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'parentId': ?parentId == null ? null : [parentId],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -9155,16 +8897,6 @@ class FirewallsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -9181,7 +8913,6 @@ class FirewallsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -9189,9 +8920,6 @@ class FirewallsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -9518,16 +9246,6 @@ class ForwardingRulesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -9549,7 +9267,6 @@ class ForwardingRulesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -9561,9 +9278,6 @@ class ForwardingRulesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -9882,16 +9596,6 @@ class ForwardingRulesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -9909,7 +9613,6 @@ class ForwardingRulesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -9917,9 +9620,6 @@ class ForwardingRulesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -10287,16 +9987,6 @@ class FutureReservationsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -10318,7 +10008,6 @@ class FutureReservationsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -10330,9 +10019,6 @@ class FutureReservationsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -10706,16 +10392,6 @@ class FutureReservationsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -10733,7 +10409,6 @@ class FutureReservationsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -10741,9 +10416,6 @@ class FutureReservationsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -11108,16 +10780,6 @@ class GlobalAddressesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -11134,7 +10796,6 @@ class GlobalAddressesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -11142,9 +10803,6 @@ class GlobalAddressesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -11621,16 +11279,6 @@ class GlobalForwardingRulesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -11647,7 +11295,6 @@ class GlobalForwardingRulesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -11655,9 +11302,6 @@ class GlobalForwardingRulesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -11874,6 +11518,104 @@ class GlobalForwardingRulesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class GlobalFrontendSettingsResource {
+  final commons.ApiRequester _requester;
+
+  GlobalFrontendSettingsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets the Global Frontend Billing Bundle Settings for a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GlobalFrontendSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GlobalFrontendSettings> get(
+    core.String project, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/globalFrontendSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GlobalFrontendSettings.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the Global Frontend Billing Bundle Settings for a project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID for this request.
+  ///
+  /// [requestId] - An optional request ID to identify requests.
+  ///
+  /// [updateMask] - Field mask to support patch. E.g., "type".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GlobalFrontendSettingsPatchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GlobalFrontendSettingsPatchResponse> patch(
+    GlobalFrontendSettings request,
+    core.String project, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/globalFrontendSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GlobalFrontendSettingsPatchResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -12299,16 +12041,6 @@ class GlobalNetworkEndpointGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -12325,7 +12057,6 @@ class GlobalNetworkEndpointGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -12333,9 +12064,6 @@ class GlobalNetworkEndpointGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -12452,16 +12180,6 @@ class GlobalNetworkEndpointGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -12479,7 +12197,6 @@ class GlobalNetworkEndpointGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -12487,9 +12204,6 @@ class GlobalNetworkEndpointGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -12622,16 +12336,6 @@ class GlobalOperationsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -12653,7 +12357,6 @@ class GlobalOperationsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -12665,9 +12368,6 @@ class GlobalOperationsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -12876,16 +12576,6 @@ class GlobalOperationsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -12902,7 +12592,6 @@ class GlobalOperationsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -12910,9 +12599,6 @@ class GlobalOperationsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -13182,16 +12868,6 @@ class GlobalOrganizationOperationsResource {
   ///
   /// [parentId] - Parent ID for this request.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -13208,7 +12884,6 @@ class GlobalOrganizationOperationsResource {
     core.String? orderBy,
     core.String? pageToken,
     core.String? parentId,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -13217,9 +12892,6 @@ class GlobalOrganizationOperationsResource {
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'parentId': ?parentId == null ? null : [parentId],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -13509,16 +13181,6 @@ class GlobalPublicDelegatedPrefixesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -13535,7 +13197,6 @@ class GlobalPublicDelegatedPrefixesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -13543,9 +13204,6 @@ class GlobalPublicDelegatedPrefixesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -13751,16 +13409,6 @@ class GlobalVmExtensionPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -13782,7 +13430,6 @@ class GlobalVmExtensionPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -13794,9 +13441,6 @@ class GlobalVmExtensionPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -14095,16 +13739,6 @@ class GlobalVmExtensionPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -14121,7 +13755,6 @@ class GlobalVmExtensionPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -14129,9 +13762,6 @@ class GlobalVmExtensionPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -14329,16 +13959,6 @@ class HealthChecksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -14360,7 +13980,6 @@ class HealthChecksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -14372,9 +13991,6 @@ class HealthChecksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -14662,16 +14278,6 @@ class HealthChecksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -14688,7 +14294,6 @@ class HealthChecksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -14696,9 +14301,6 @@ class HealthChecksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -15143,16 +14745,6 @@ class HostsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -15171,7 +14763,6 @@ class HostsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -15179,9 +14770,6 @@ class HostsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -15476,16 +15064,6 @@ class HttpHealthChecksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -15502,7 +15080,6 @@ class HttpHealthChecksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -15510,9 +15087,6 @@ class HttpHealthChecksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -15998,16 +15572,6 @@ class HttpsHealthChecksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -16024,7 +15588,6 @@ class HttpsHealthChecksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -16032,9 +15595,6 @@ class HttpsHealthChecksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -16304,6 +15864,206 @@ class ImageFamilyViewsResource {
       queryParams: queryParams_,
     );
     return ImageFamilyView.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ImageViewsResource {
+  final commons.ApiRequester _requester;
+
+  ImageViewsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the specified global ImageView resource, with a regional
+  /// context.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Required. Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resourceId] - Name of the image resource to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ImageView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImageView> get(
+    core.String project,
+    core.String region,
+    core.String resourceId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/imageViews/' +
+        commons.escapeVariable('$resourceId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ImageView.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of global ImageView resources, with a regional
+  /// context.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Required. Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ImageViewsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImageViewsListResponse> list(
+    core.String project,
+    core.String region, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/imageViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ImageViewsListResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -16763,16 +16523,6 @@ class ImagesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -16789,7 +16539,6 @@ class ImagesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -16797,9 +16546,6 @@ class ImagesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -17441,16 +17187,6 @@ class InstanceGroupManagerResizeRequestsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -17469,7 +17205,6 @@ class InstanceGroupManagerResizeRequestsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -17477,9 +17212,6 @@ class InstanceGroupManagerResizeRequestsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -17706,16 +17438,6 @@ class InstanceGroupManagersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -17737,7 +17459,6 @@ class InstanceGroupManagersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -17749,9 +17470,6 @@ class InstanceGroupManagersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -18379,16 +18097,6 @@ class InstanceGroupManagersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -18406,7 +18114,6 @@ class InstanceGroupManagersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -18414,9 +18121,6 @@ class InstanceGroupManagersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -18544,16 +18248,6 @@ class InstanceGroupManagersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -18572,7 +18266,6 @@ class InstanceGroupManagersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -18580,9 +18273,6 @@ class InstanceGroupManagersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -18715,16 +18405,6 @@ class InstanceGroupManagersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -18744,7 +18424,6 @@ class InstanceGroupManagersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -18752,9 +18431,6 @@ class InstanceGroupManagersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -18881,16 +18557,6 @@ class InstanceGroupManagersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -18910,7 +18576,6 @@ class InstanceGroupManagersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -18918,9 +18583,6 @@ class InstanceGroupManagersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -20124,16 +19786,6 @@ class InstanceGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -20155,7 +19807,6 @@ class InstanceGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -20167,9 +19818,6 @@ class InstanceGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -20490,16 +20138,6 @@ class InstanceGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -20517,7 +20155,6 @@ class InstanceGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -20525,9 +20162,6 @@ class InstanceGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -20654,16 +20288,6 @@ class InstanceGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -20683,7 +20307,6 @@ class InstanceGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -20692,9 +20315,6 @@ class InstanceGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -21168,16 +20788,6 @@ class InstanceTemplatesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -21199,7 +20809,6 @@ class InstanceTemplatesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -21211,9 +20820,6 @@ class InstanceTemplatesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -21565,16 +21171,6 @@ class InstanceTemplatesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -21591,7 +21187,6 @@ class InstanceTemplatesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -21599,9 +21194,6 @@ class InstanceTemplatesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -22072,16 +21664,6 @@ class InstancesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -22103,7 +21685,6 @@ class InstancesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -22115,9 +21696,6 @@ class InstancesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -23220,16 +22798,6 @@ class InstancesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -23247,7 +22815,6 @@ class InstancesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -23255,9 +22822,6 @@ class InstancesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -23387,16 +22951,6 @@ class InstancesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -23415,7 +22969,6 @@ class InstancesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -23423,9 +22976,6 @@ class InstancesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -26186,16 +25736,6 @@ class InstantSnapshotGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -26213,7 +25753,6 @@ class InstantSnapshotGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -26221,9 +25760,6 @@ class InstantSnapshotGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -26473,16 +26009,6 @@ class InstantSnapshotsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -26504,7 +26030,6 @@ class InstantSnapshotsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -26516,9 +26041,6 @@ class InstantSnapshotsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -26896,16 +26418,6 @@ class InstantSnapshotsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -26923,7 +26435,6 @@ class InstantSnapshotsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -26931,9 +26442,6 @@ class InstantSnapshotsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -27534,16 +27042,6 @@ class InterconnectAttachmentGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -27560,7 +27058,6 @@ class InterconnectAttachmentGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -27568,9 +27065,6 @@ class InterconnectAttachmentGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -27885,16 +27379,6 @@ class InterconnectAttachmentsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -27916,7 +27400,6 @@ class InterconnectAttachmentsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -27928,9 +27411,6 @@ class InterconnectAttachmentsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -28243,16 +27723,6 @@ class InterconnectAttachmentsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -28270,7 +27740,6 @@ class InterconnectAttachmentsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -28278,9 +27747,6 @@ class InterconnectAttachmentsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -28888,16 +28354,6 @@ class InterconnectGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -28914,7 +28370,6 @@ class InterconnectGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -28922,9 +28377,6 @@ class InterconnectGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -29277,16 +28729,6 @@ class InterconnectLocationsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -29303,7 +28745,6 @@ class InterconnectLocationsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -29311,9 +28752,6 @@ class InterconnectLocationsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -29485,16 +28923,6 @@ class InterconnectRemoteLocationsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -29511,7 +28939,6 @@ class InterconnectRemoteLocationsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -29519,9 +28946,6 @@ class InterconnectRemoteLocationsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -29922,16 +29346,6 @@ class InterconnectsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -29948,7 +29362,6 @@ class InterconnectsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -29956,9 +29369,6 @@ class InterconnectsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -30092,6 +29502,74 @@ class InterconnectsResource {
         '/global/interconnects/' +
         commons.escapeVariable('$resource') +
         '/setLabels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets name of an interconnect.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [interconnect] - Name of the interconnect to update.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID
+  /// so that if you must retry your request, the server will know to ignore
+  /// the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setName(
+    InterconnectsSetNameRequest request,
+    core.String project,
+    core.String interconnect, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/interconnects/' +
+        commons.escapeVariable('$interconnect') +
+        '/setName';
 
     final response_ = await _requester.request(
       url_,
@@ -30674,16 +30152,6 @@ class LicensesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -30700,7 +30168,6 @@ class LicensesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -30708,9 +30175,6 @@ class LicensesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -31254,16 +30718,6 @@ class MachineImagesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -31280,7 +30734,6 @@ class MachineImagesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -31288,9 +30741,6 @@ class MachineImagesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -31580,16 +31030,6 @@ class MachineTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -31611,7 +31051,6 @@ class MachineTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -31623,9 +31062,6 @@ class MachineTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -31798,16 +31234,6 @@ class MachineTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -31825,7 +31251,6 @@ class MachineTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -31833,9 +31258,6 @@ class MachineTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -31852,6 +31274,194 @@ class MachineTypesResource {
       queryParams: queryParams_,
     );
     return MachineTypeList.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ManagedRulesetsResource {
+  final commons.ApiRequester _requester;
+
+  ManagedRulesetsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the details for the specified managed ruleset name.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [managedRuleset] - Name of the managed ruleset to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManagedRuleset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedRuleset> get(
+    core.String project,
+    core.String managedRuleset, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/managedRulesets/' +
+        commons.escapeVariable('$managedRuleset');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ManagedRuleset.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves the list of all the managed rulesets available.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. Most
+  /// Compute resources support two types of filter expressions:
+  /// expressions that support regular expressions and expressions that follow
+  /// API improvement proposal AIP-160.
+  /// These two types of filter expressions cannot be mixed in one request.
+  ///
+  /// If you want to use AIP-160, your expression must specify the field name,
+  /// an
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. The operator
+  /// must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying
+  /// `name != example-instance`.
+  ///
+  /// The `:*` comparison can be used to test whether a key has been defined.
+  /// For example, to find all objects with `owner` label use:
+  /// ```
+  /// labels.owner:*
+  /// ```
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only
+  /// if they are not scheduled for automatic restarts. You can use filtering
+  /// on nested fields to filter based onresource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example:
+  /// ```
+  /// (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake")
+  /// ```
+  /// By default, each expression is an `AND` expression. However, you
+  /// can include `AND` and `OR` expressions explicitly.
+  /// For example:
+  /// ```
+  /// (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND
+  /// (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// If you want to use a regular expression, use the `eq` (equal) or `ne`
+  /// (not equal) operator against a single un-parenthesized expression with or
+  /// without quotes or against multiple parenthesized expressions. Examples:
+  ///
+  /// `fieldname eq unquoted literal`
+  /// `fieldname eq 'single quoted literal'`
+  /// `fieldname eq "double quoted literal"`
+  /// `(fieldname1 eq literal) (fieldname2 ne "literal")`
+  ///
+  /// The literal value is interpreted as a regular expression using GoogleRE2
+  /// library syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not end with name "instance",
+  /// you would use `name ne .*instance`.
+  ///
+  /// You cannot combine constraints on multiple fields using regular
+  /// expressions.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned.
+  /// If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get
+  /// the next page of results in subsequent list requests. Acceptable values
+  /// are
+  /// `0` to `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results
+  /// are returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts
+  /// results based on the `creationTimestamp` field in
+  /// reverse chronological order (newest result first). Use this to sort
+  /// resources like operations so that the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get
+  /// the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManagedRulesetList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedRulesetList> list(
+    core.String project, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'maxResults': ?maxResults == null ? null : ['${maxResults}'],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/managedRulesets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ManagedRulesetList.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -31969,16 +31579,6 @@ class NetworkAttachmentsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -32000,7 +31600,6 @@ class NetworkAttachmentsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -32012,9 +31611,6 @@ class NetworkAttachmentsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -32385,16 +31981,6 @@ class NetworkAttachmentsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -32412,7 +31998,6 @@ class NetworkAttachmentsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -32420,9 +32005,6 @@ class NetworkAttachmentsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -32754,16 +32336,6 @@ class NetworkEdgeSecurityServicesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -32785,7 +32357,6 @@ class NetworkEdgeSecurityServicesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -32797,9 +32368,6 @@ class NetworkEdgeSecurityServicesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -33211,16 +32779,6 @@ class NetworkEndpointGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -33242,7 +32800,6 @@ class NetworkEndpointGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -33254,9 +32811,6 @@ class NetworkEndpointGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -33735,16 +33289,6 @@ class NetworkEndpointGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -33762,7 +33306,6 @@ class NetworkEndpointGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -33770,9 +33313,6 @@ class NetworkEndpointGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -33896,16 +33436,6 @@ class NetworkEndpointGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -33925,7 +33455,6 @@ class NetworkEndpointGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -33934,9 +33463,6 @@ class NetworkEndpointGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -34371,16 +33897,6 @@ class NetworkFirewallPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -34402,7 +33918,6 @@ class NetworkFirewallPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -34414,9 +33929,6 @@ class NetworkFirewallPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -34987,16 +34499,6 @@ class NetworkFirewallPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -35013,7 +34515,6 @@ class NetworkFirewallPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -35021,9 +34522,6 @@ class NetworkFirewallPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -35707,16 +35205,6 @@ class NetworkProfilesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -35733,7 +35221,6 @@ class NetworkProfilesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -35741,9 +35228,6 @@ class NetworkProfilesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -36216,16 +35700,6 @@ class NetworksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -36242,7 +35716,6 @@ class NetworksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -36250,9 +35723,6 @@ class NetworksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -36378,16 +35848,6 @@ class NetworksResource {
   /// routes,
   /// static routes and dynamic routes in the region.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -36408,7 +35868,6 @@ class NetworksResource {
     core.String? pageToken,
     core.String? peeringName,
     core.String? region,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -36419,9 +35878,6 @@ class NetworksResource {
       'pageToken': ?pageToken == null ? null : [pageToken],
       'peeringName': ?peeringName == null ? null : [peeringName],
       'region': ?region == null ? null : [region],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -36972,16 +36428,6 @@ class NodeGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -37003,7 +36449,6 @@ class NodeGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -37015,9 +36460,6 @@ class NodeGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -37468,16 +36910,6 @@ class NodeGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -37495,7 +36927,6 @@ class NodeGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -37503,9 +36934,6 @@ class NodeGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -37627,16 +37055,6 @@ class NodeGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -37655,7 +37073,6 @@ class NodeGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -37663,9 +37080,6 @@ class NodeGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -38214,16 +37628,6 @@ class NodeTemplatesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -38245,7 +37649,6 @@ class NodeTemplatesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -38257,9 +37660,6 @@ class NodeTemplatesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -38629,16 +38029,6 @@ class NodeTemplatesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -38656,7 +38046,6 @@ class NodeTemplatesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -38664,9 +38053,6 @@ class NodeTemplatesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -38916,16 +38302,6 @@ class NodeTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -38947,7 +38323,6 @@ class NodeTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -38959,9 +38334,6 @@ class NodeTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -39132,16 +38504,6 @@ class NodeTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -39159,7 +38521,6 @@ class NodeTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -39167,9 +38528,6 @@ class NodeTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -39788,16 +39146,6 @@ class OrganizationSecurityPoliciesResource {
   ///
   /// [parentId] - Parent ID for this request.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -39814,7 +39162,6 @@ class OrganizationSecurityPoliciesResource {
     core.String? orderBy,
     core.String? pageToken,
     core.String? parentId,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -39823,9 +39170,6 @@ class OrganizationSecurityPoliciesResource {
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'parentId': ?parentId == null ? null : [parentId],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -39978,16 +39322,6 @@ class OrganizationSecurityPoliciesResource {
   ///
   /// [parentId] - Parent ID for this request.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -40006,7 +39340,6 @@ class OrganizationSecurityPoliciesResource {
     core.String? orderBy,
     core.String? pageToken,
     core.String? parentId,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -40015,9 +39348,6 @@ class OrganizationSecurityPoliciesResource {
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
       'parentId': ?parentId == null ? null : [parentId],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -40480,16 +39810,6 @@ class PacketMirroringsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -40511,7 +39831,6 @@ class PacketMirroringsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -40523,9 +39842,6 @@ class PacketMirroringsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -40834,16 +40150,6 @@ class PacketMirroringsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -40861,7 +40167,6 @@ class PacketMirroringsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -40869,9 +40174,6 @@ class PacketMirroringsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -41176,16 +40478,6 @@ class PreviewFeaturesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -41202,7 +40494,6 @@ class PreviewFeaturesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -41210,9 +40501,6 @@ class PreviewFeaturesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -41781,16 +41069,6 @@ class ProjectsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -41807,7 +41085,6 @@ class ProjectsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -41815,9 +41092,6 @@ class ProjectsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -41930,16 +41204,6 @@ class ProjectsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -41957,7 +41221,6 @@ class ProjectsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -41966,9 +41229,6 @@ class ProjectsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -42724,16 +41984,6 @@ class PublicAdvertisedPrefixesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -42750,7 +42000,6 @@ class PublicAdvertisedPrefixesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -42758,9 +42007,6 @@ class PublicAdvertisedPrefixesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -43028,16 +42274,6 @@ class PublicDelegatedPrefixesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -43059,7 +42295,6 @@ class PublicDelegatedPrefixesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -43071,9 +42306,6 @@ class PublicDelegatedPrefixesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -43451,16 +42683,6 @@ class PublicDelegatedPrefixesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -43478,7 +42700,6 @@ class PublicDelegatedPrefixesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -43486,9 +42707,6 @@ class PublicDelegatedPrefixesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -43950,16 +43168,6 @@ class RegionAutoscalersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -43977,7 +43185,6 @@ class RegionAutoscalersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -43985,9 +43192,6 @@ class RegionAutoscalersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -44575,16 +43779,6 @@ class RegionBackendBucketsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -44602,7 +43796,6 @@ class RegionBackendBucketsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -44610,9 +43803,6 @@ class RegionBackendBucketsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -44732,16 +43922,6 @@ class RegionBackendBucketsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -44759,7 +43939,6 @@ class RegionBackendBucketsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -44767,9 +43946,6 @@ class RegionBackendBucketsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -45405,16 +44581,6 @@ class RegionBackendServicesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -45432,7 +44598,6 @@ class RegionBackendServicesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -45440,9 +44605,6 @@ class RegionBackendServicesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -45565,16 +44727,6 @@ class RegionBackendServicesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -45592,7 +44744,6 @@ class RegionBackendServicesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -45600,9 +44751,6 @@ class RegionBackendServicesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -46087,16 +45235,6 @@ class RegionCommitmentsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -46118,7 +45256,6 @@ class RegionCommitmentsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -46130,9 +45267,6 @@ class RegionCommitmentsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -46373,16 +45507,6 @@ class RegionCommitmentsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -46400,7 +45524,6 @@ class RegionCommitmentsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -46408,9 +45531,6 @@ class RegionCommitmentsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -46631,16 +45751,6 @@ class RegionCompositeHealthChecksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -46662,7 +45772,6 @@ class RegionCompositeHealthChecksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -46674,9 +45783,6 @@ class RegionCompositeHealthChecksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -47042,16 +46148,6 @@ class RegionCompositeHealthChecksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -47069,7 +46165,6 @@ class RegionCompositeHealthChecksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -47077,9 +46172,6 @@ class RegionCompositeHealthChecksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -47392,16 +46484,6 @@ class RegionDiskTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -47419,7 +46501,6 @@ class RegionDiskTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -47427,9 +46508,6 @@ class RegionDiskTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -48036,16 +47114,6 @@ class RegionDisksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -48063,7 +47131,6 @@ class RegionDisksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -48071,9 +47138,6 @@ class RegionDisksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -48918,16 +47982,6 @@ class RegionHealthAggregationPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -48949,7 +48003,6 @@ class RegionHealthAggregationPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -48961,9 +48014,6 @@ class RegionHealthAggregationPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -49274,16 +48324,6 @@ class RegionHealthAggregationPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -49301,7 +48341,6 @@ class RegionHealthAggregationPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -49309,9 +48348,6 @@ class RegionHealthAggregationPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -49583,16 +48619,6 @@ class RegionHealthCheckServicesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -49614,7 +48640,6 @@ class RegionHealthCheckServicesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -49626,9 +48651,6 @@ class RegionHealthCheckServicesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -49935,16 +48957,6 @@ class RegionHealthCheckServicesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -49962,7 +48974,6 @@ class RegionHealthCheckServicesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -49970,9 +48981,6 @@ class RegionHealthCheckServicesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -50422,16 +49430,6 @@ class RegionHealthChecksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -50449,7 +49447,6 @@ class RegionHealthChecksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -50457,9 +49454,6 @@ class RegionHealthChecksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -50805,16 +49799,6 @@ class RegionHealthSourcesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -50836,7 +49820,6 @@ class RegionHealthSourcesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -50848,9 +49831,6 @@ class RegionHealthSourcesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -51213,16 +50193,6 @@ class RegionHealthSourcesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -51240,7 +50210,6 @@ class RegionHealthSourcesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -51248,9 +50217,6 @@ class RegionHealthSourcesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -51804,16 +50770,6 @@ class RegionInstanceGroupManagerResizeRequestsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -51832,7 +50788,6 @@ class RegionInstanceGroupManagerResizeRequestsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -51840,9 +50795,6 @@ class RegionInstanceGroupManagerResizeRequestsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -52553,16 +51505,6 @@ class RegionInstanceGroupManagersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -52580,7 +51522,6 @@ class RegionInstanceGroupManagersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -52588,9 +51529,6 @@ class RegionInstanceGroupManagersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -52716,16 +51654,6 @@ class RegionInstanceGroupManagersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -52744,7 +51672,6 @@ class RegionInstanceGroupManagersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -52752,9 +51679,6 @@ class RegionInstanceGroupManagersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -52882,16 +51806,6 @@ class RegionInstanceGroupManagersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -52911,7 +51825,6 @@ class RegionInstanceGroupManagersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -52919,9 +51832,6 @@ class RegionInstanceGroupManagersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -53047,16 +51957,6 @@ class RegionInstanceGroupManagersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -53076,7 +51976,6 @@ class RegionInstanceGroupManagersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -53084,9 +51983,6 @@ class RegionInstanceGroupManagersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -54225,16 +53121,6 @@ class RegionInstanceGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -54252,7 +53138,6 @@ class RegionInstanceGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -54260,9 +53145,6 @@ class RegionInstanceGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -54390,16 +53272,6 @@ class RegionInstanceGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -54419,7 +53291,6 @@ class RegionInstanceGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -54428,9 +53299,6 @@ class RegionInstanceGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -54882,16 +53750,6 @@ class RegionInstanceTemplatesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -54909,7 +53767,6 @@ class RegionInstanceTemplatesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -54917,9 +53774,6 @@ class RegionInstanceTemplatesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -55379,16 +54233,6 @@ class RegionInstantSnapshotGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -55406,7 +54250,6 @@ class RegionInstantSnapshotGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -55414,9 +54257,6 @@ class RegionInstantSnapshotGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -55917,16 +54757,6 @@ class RegionInstantSnapshotsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -55944,7 +54774,6 @@ class RegionInstantSnapshotsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -55952,9 +54781,6 @@ class RegionInstantSnapshotsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -56634,16 +55460,6 @@ class RegionNetworkEndpointGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -56661,7 +55477,6 @@ class RegionNetworkEndpointGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -56669,9 +55484,6 @@ class RegionNetworkEndpointGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -56794,16 +55606,6 @@ class RegionNetworkEndpointGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -56822,7 +55624,6 @@ class RegionNetworkEndpointGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -56830,9 +55631,6 @@ class RegionNetworkEndpointGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -56879,6 +55677,13 @@ class RegionNetworkFirewallPoliciesResource {
   /// Value must have pattern
   /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
+  /// [associatedPolicyToBeReplaced] - Name of the firewall policy associated
+  /// with the target network to swap
+  /// association with. This field is mutually exclusive with
+  /// 'replace_existing_association'.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
   /// [replaceExistingAssociation] - Indicates whether or not to replace it if
   /// an association already exists.
   /// This is false by default, in which case an error will be returned if an
@@ -56914,12 +55719,16 @@ class RegionNetworkFirewallPoliciesResource {
     core.String project,
     core.String region,
     core.String firewallPolicy, {
+    core.String? associatedPolicyToBeReplaced,
     core.bool? replaceExistingAssociation,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'associatedPolicyToBeReplaced': ?associatedPolicyToBeReplaced == null
+          ? null
+          : [associatedPolicyToBeReplaced],
       'replaceExistingAssociation': ?replaceExistingAssociation == null
           ? null
           : ['${replaceExistingAssociation}'],
@@ -57624,16 +56433,6 @@ class RegionNetworkFirewallPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -57651,7 +56450,6 @@ class RegionNetworkFirewallPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -57659,9 +56457,6 @@ class RegionNetworkFirewallPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -57749,6 +56544,80 @@ class RegionNetworkFirewallPoliciesResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an association for the specified network firewall policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to update.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so
+  /// that if you must retry your request, the server will know to ignore the
+  /// request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same
+  /// request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be
+  /// a valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patchAssociation(
+    FirewallPolicyAssociation request,
+    core.String project,
+    core.String region,
+    core.String firewallPolicy, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/firewallPolicies/' +
+        commons.escapeVariable('$firewallPolicy') +
+        '/patchAssociation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -58207,16 +57076,6 @@ class RegionNotificationEndpointsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -58238,7 +57097,6 @@ class RegionNotificationEndpointsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -58250,9 +57108,6 @@ class RegionNotificationEndpointsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -58562,16 +57417,6 @@ class RegionNotificationEndpointsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -58589,7 +57434,6 @@ class RegionNotificationEndpointsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -58597,9 +57441,6 @@ class RegionNotificationEndpointsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -58887,16 +57728,6 @@ class RegionOperationsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -58914,7 +57745,6 @@ class RegionOperationsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -58922,9 +57752,6 @@ class RegionOperationsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -59434,16 +58261,6 @@ class RegionSecurityPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -59461,7 +58278,6 @@ class RegionSecurityPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -59469,9 +58285,6 @@ class RegionSecurityPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -60268,16 +59081,6 @@ class RegionSnapshotsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -60295,7 +59098,6 @@ class RegionSnapshotsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -60303,9 +59105,6 @@ class RegionSnapshotsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -60896,16 +59695,6 @@ class RegionSslCertificatesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -60923,7 +59712,6 @@ class RegionSslCertificatesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -60931,9 +59719,6 @@ class RegionSslCertificatesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -61081,6 +59866,67 @@ class RegionSslPoliciesResource {
       queryParams: queryParams_,
     );
     return SslPolicy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.int? optionsRequestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion == null
+          ? null
+          : ['${optionsRequestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/sslPolicies/' +
+        commons.escapeVariable('$resource') +
+        '/getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new policy in the specified project and region using the data
@@ -61249,16 +60095,6 @@ class RegionSslPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -61276,7 +60112,6 @@ class RegionSslPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -61284,9 +60119,6 @@ class RegionSslPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -61405,16 +60237,6 @@ class RegionSslPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -61432,7 +60254,6 @@ class RegionSslPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -61440,9 +60261,6 @@ class RegionSslPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -61534,6 +60352,123 @@ class RegionSslPoliciesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    RegionSetPolicyRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/sslPolicies/' +
+        commons.escapeVariable('$resource') +
+        '/setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/sslPolicies/' +
+        commons.escapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -61830,16 +60765,6 @@ class RegionTargetHttpProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -61857,7 +60782,6 @@ class RegionTargetHttpProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -61865,9 +60789,6 @@ class RegionTargetHttpProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -62256,16 +61177,6 @@ class RegionTargetHttpsProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -62283,7 +61194,6 @@ class RegionTargetHttpsProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -62291,9 +61201,6 @@ class RegionTargetHttpsProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -62836,16 +61743,6 @@ class RegionTargetTcpProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -62863,7 +61760,6 @@ class RegionTargetTcpProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -62871,9 +61767,6 @@ class RegionTargetTcpProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -63161,16 +62054,6 @@ class RegionUrlMapsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -63188,7 +62071,6 @@ class RegionUrlMapsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -63196,9 +62078,6 @@ class RegionUrlMapsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -63515,16 +62394,6 @@ class RegionZonesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -63542,7 +62411,6 @@ class RegionZonesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -63550,9 +62418,6 @@ class RegionZonesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -63755,16 +62620,6 @@ class RegionsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -63781,7 +62636,6 @@ class RegionsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -63789,9 +62643,6 @@ class RegionsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -63954,16 +62805,6 @@ class ReliabilityRisksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -63980,7 +62821,6 @@ class ReliabilityRisksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -63988,9 +62828,6 @@ class ReliabilityRisksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -64247,16 +63084,6 @@ class ReservationBlocksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -64275,7 +63102,6 @@ class ReservationBlocksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -64283,9 +63109,6 @@ class ReservationBlocksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -64824,16 +63647,6 @@ class ReservationSlotsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -64852,7 +63665,6 @@ class ReservationSlotsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -64860,9 +63672,6 @@ class ReservationSlotsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -65272,16 +64081,6 @@ class ReservationSubBlocksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -65300,7 +64099,6 @@ class ReservationSubBlocksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -65308,9 +64106,6 @@ class ReservationSubBlocksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -65731,16 +64526,6 @@ class ReservationsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -65762,7 +64547,6 @@ class ReservationsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -65774,9 +64558,6 @@ class ReservationsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -66148,16 +64929,6 @@ class ReservationsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -66175,7 +64946,6 @@ class ReservationsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -66183,9 +64953,6 @@ class ReservationsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -66667,16 +65434,6 @@ class ResourcePoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -66698,7 +65455,6 @@ class ResourcePoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -66710,9 +65466,6 @@ class ResourcePoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -67081,16 +65834,6 @@ class ResourcePoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -67108,7 +65851,6 @@ class ResourcePoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -67116,9 +65858,6 @@ class ResourcePoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -67604,16 +66343,6 @@ class RolloutPlansResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -67630,7 +66359,6 @@ class RolloutPlansResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -67638,9 +66366,6 @@ class RolloutPlansResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -68006,16 +66731,6 @@ class RolloutsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -68032,7 +66747,6 @@ class RolloutsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -68040,9 +66754,6 @@ class RolloutsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -68309,16 +67020,6 @@ class RoutersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -68340,7 +67041,6 @@ class RoutersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -68352,9 +67052,6 @@ class RoutersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -68868,16 +67565,6 @@ class RoutersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -68897,7 +67584,6 @@ class RoutersResource {
     core.String? natName,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -68906,9 +67592,6 @@ class RoutersResource {
       'natName': ?natName == null ? null : [natName],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -69208,16 +67891,6 @@ class RoutersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -69235,7 +67908,6 @@ class RoutersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -69243,9 +67915,6 @@ class RoutersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -69385,16 +68054,6 @@ class RoutersResource {
   /// Otherwise, it returns
   /// pre-policy routes.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [routeType] - (Required) limit results to this type of route (either
   /// LEARNED or
   /// ADVERTISED)
@@ -69425,7 +68084,6 @@ class RoutersResource {
     core.String? pageToken,
     core.String? peer,
     core.bool? policyApplied,
-    core.bool? returnPartialSuccess,
     core.String? routeType,
     core.String? $fields,
   }) async {
@@ -69440,9 +68098,6 @@ class RoutersResource {
       'pageToken': ?pageToken == null ? null : [pageToken],
       'peer': ?peer == null ? null : [peer],
       'policyApplied': ?policyApplied == null ? null : ['${policyApplied}'],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'routeType': ?routeType == null ? null : [routeType],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -69569,16 +68224,6 @@ class RoutersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -69597,7 +68242,6 @@ class RoutersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -69605,9 +68249,6 @@ class RoutersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -69733,16 +68374,6 @@ class RoutersResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -69761,7 +68392,6 @@ class RoutersResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -69769,9 +68399,6 @@ class RoutersResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -70573,16 +69200,6 @@ class RoutesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -70599,7 +69216,6 @@ class RoutesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -70607,9 +69223,6 @@ class RoutesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -70845,16 +69458,6 @@ class SecurityPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -70876,7 +69479,6 @@ class SecurityPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -70888,9 +69490,6 @@ class SecurityPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -71234,16 +69833,6 @@ class SecurityPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -71260,7 +69849,6 @@ class SecurityPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -71268,9 +69856,6 @@ class SecurityPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -71384,16 +69969,6 @@ class SecurityPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -71412,7 +69987,6 @@ class SecurityPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -71420,9 +69994,6 @@ class SecurityPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -71802,16 +70373,6 @@ class ServiceAttachmentsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -71833,7 +70394,6 @@ class ServiceAttachmentsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -71845,9 +70405,6 @@ class ServiceAttachmentsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -72221,16 +70778,6 @@ class ServiceAttachmentsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -72248,7 +70795,6 @@ class ServiceAttachmentsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -72256,9 +70802,6 @@ class ServiceAttachmentsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -72923,16 +71466,6 @@ class SnapshotsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -72949,7 +71482,6 @@ class SnapshotsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -72957,9 +71489,6 @@ class SnapshotsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -73318,16 +71847,6 @@ class SslCertificatesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -73349,7 +71868,6 @@ class SslCertificatesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -73361,9 +71879,6 @@ class SslCertificatesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -73651,16 +72166,6 @@ class SslCertificatesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -73677,7 +72182,6 @@ class SslCertificatesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -73685,9 +72189,6 @@ class SslCertificatesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -73819,16 +72320,6 @@ class SslPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -73850,7 +72341,6 @@ class SslPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -73862,9 +72352,6 @@ class SslPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -73995,6 +72482,61 @@ class SslPoliciesResource {
       queryParams: queryParams_,
     );
     return SslPolicy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String project,
+    core.String resource, {
+    core.int? optionsRequestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'optionsRequestedPolicyVersion': ?optionsRequestedPolicyVersion == null
+          ? null
+          : ['${optionsRequestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/sslPolicies/' +
+        commons.escapeVariable('$resource') +
+        '/getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the specified SSL policy resource.
@@ -74153,16 +72695,6 @@ class SslPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -74179,7 +72711,6 @@ class SslPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -74187,9 +72718,6 @@ class SslPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -74303,16 +72831,6 @@ class SslPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -74329,7 +72847,6 @@ class SslPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -74337,9 +72854,6 @@ class SslPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -74423,6 +72937,111 @@ class SslPoliciesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    GlobalSetPolicyRequest request,
+    core.String project,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/sslPolicies/' +
+        commons.escapeVariable('$resource') +
+        '/setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String project,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/sslPolicies/' +
+        commons.escapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -74537,16 +73156,6 @@ class StoragePoolTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -74568,7 +73177,6 @@ class StoragePoolTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -74580,9 +73188,6 @@ class StoragePoolTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -74755,16 +73360,6 @@ class StoragePoolTypesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -74782,7 +73377,6 @@ class StoragePoolTypesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -74790,9 +73384,6 @@ class StoragePoolTypesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -74925,16 +73516,6 @@ class StoragePoolsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -74956,7 +73537,6 @@ class StoragePoolsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -74968,9 +73548,6 @@ class StoragePoolsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -75349,16 +73926,6 @@ class StoragePoolsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -75376,7 +73943,6 @@ class StoragePoolsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -75384,9 +73950,6 @@ class StoragePoolsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -75508,16 +74071,6 @@ class StoragePoolsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -75536,7 +74089,6 @@ class StoragePoolsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -75544,9 +74096,6 @@ class StoragePoolsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -75882,16 +74431,6 @@ class SubnetworksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -75920,7 +74459,6 @@ class SubnetworksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.List<core.String>? views,
     core.String? $fields,
@@ -75933,9 +74471,6 @@ class SubnetworksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -76389,16 +74924,6 @@ class SubnetworksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [views] - Defines the extra views returned back in the subnetwork
   /// resource.
   /// Supported values:
@@ -76423,7 +74948,6 @@ class SubnetworksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.List<core.String>? views,
     core.String? $fields,
   }) async {
@@ -76432,9 +74956,6 @@ class SubnetworksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'views': ?views,
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -76550,16 +75071,6 @@ class SubnetworksResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProject] - The project id or project number in which the
   /// subnetwork is intended to be
   /// used. Only applied for Shared VPC. See \[Shared VPC
@@ -76581,7 +75092,6 @@ class SubnetworksResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProject,
     core.String? $fields,
   }) async {
@@ -76590,9 +75100,6 @@ class SubnetworksResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProject': ?serviceProject == null ? null : [serviceProject],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -77168,16 +75675,6 @@ class TargetGrpcProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -77194,7 +75691,6 @@ class TargetGrpcProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -77202,9 +75698,6 @@ class TargetGrpcProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -77408,16 +75901,6 @@ class TargetHttpProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -77439,7 +75922,6 @@ class TargetHttpProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -77451,9 +75933,6 @@ class TargetHttpProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -77741,16 +76220,6 @@ class TargetHttpProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -77767,7 +76236,6 @@ class TargetHttpProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -77775,9 +76243,6 @@ class TargetHttpProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -78049,16 +76514,6 @@ class TargetHttpsProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -78080,7 +76535,6 @@ class TargetHttpsProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -78092,9 +76546,6 @@ class TargetHttpsProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -78382,16 +76833,6 @@ class TargetHttpsProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -78408,7 +76849,6 @@ class TargetHttpsProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -78416,9 +76856,6 @@ class TargetHttpsProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -78969,16 +77406,6 @@ class TargetInstancesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -79000,7 +77427,6 @@ class TargetInstancesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -79012,9 +77438,6 @@ class TargetInstancesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -79323,16 +77746,6 @@ class TargetInstancesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -79350,7 +77763,6 @@ class TargetInstancesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -79358,9 +77770,6 @@ class TargetInstancesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -79778,16 +78187,6 @@ class TargetPoolsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -79809,7 +78208,6 @@ class TargetPoolsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -79821,9 +78219,6 @@ class TargetPoolsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -80193,16 +78588,6 @@ class TargetPoolsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -80220,7 +78605,6 @@ class TargetPoolsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -80228,9 +78612,6 @@ class TargetPoolsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -80884,16 +79265,6 @@ class TargetSslProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -80910,7 +79281,6 @@ class TargetSslProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -80918,9 +79288,6 @@ class TargetSslProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -81454,16 +79821,6 @@ class TargetTcpProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -81485,7 +79842,6 @@ class TargetTcpProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -81497,9 +79853,6 @@ class TargetTcpProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -81787,16 +80140,6 @@ class TargetTcpProxiesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -81813,7 +80156,6 @@ class TargetTcpProxiesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -81821,9 +80163,6 @@ class TargetTcpProxiesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -82146,16 +80485,6 @@ class TargetVpnGatewaysResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -82177,7 +80506,6 @@ class TargetVpnGatewaysResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -82189,9 +80517,6 @@ class TargetVpnGatewaysResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -82500,16 +80825,6 @@ class TargetVpnGatewaysResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -82527,7 +80842,6 @@ class TargetVpnGatewaysResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -82535,9 +80849,6 @@ class TargetVpnGatewaysResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -82748,16 +81059,6 @@ class UrlMapsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -82779,7 +81080,6 @@ class UrlMapsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -82791,9 +81091,6 @@ class UrlMapsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -83149,16 +81446,6 @@ class UrlMapsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -83175,7 +81462,6 @@ class UrlMapsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -83183,9 +81469,6 @@ class UrlMapsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -83564,16 +81847,6 @@ class VpnGatewaysResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -83595,7 +81868,6 @@ class VpnGatewaysResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -83607,9 +81879,6 @@ class VpnGatewaysResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -83972,16 +82241,6 @@ class VpnGatewaysResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -83999,7 +82258,6 @@ class VpnGatewaysResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -84007,9 +82265,6 @@ class VpnGatewaysResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -84278,16 +82533,6 @@ class VpnTunnelsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [serviceProjectNumber] - The Shared VPC service project id or service
   /// project number for which
   /// aggregated list request is invoked for subnetworks list-usable api.
@@ -84309,7 +82554,6 @@ class VpnTunnelsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? serviceProjectNumber,
     core.String? $fields,
   }) async {
@@ -84321,9 +82565,6 @@ class VpnTunnelsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'serviceProjectNumber': ?serviceProjectNumber == null
           ? null
           : [serviceProjectNumber],
@@ -84630,16 +82871,6 @@ class VpnTunnelsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -84657,7 +82888,6 @@ class VpnTunnelsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -84665,9 +82895,6 @@ class VpnTunnelsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -85054,16 +83281,6 @@ class WireGroupsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -85081,7 +83298,6 @@ class WireGroupsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -85089,9 +83305,6 @@ class WireGroupsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -85406,16 +83619,6 @@ class ZoneOperationsResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -85433,7 +83636,6 @@ class ZoneOperationsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -85441,9 +83643,6 @@ class ZoneOperationsResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -85824,16 +84023,6 @@ class ZoneVmExtensionPoliciesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -85851,7 +84040,6 @@ class ZoneVmExtensionPoliciesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -85859,9 +84047,6 @@ class ZoneVmExtensionPoliciesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -86098,16 +84283,6 @@ class ZonesResource {
   /// `nextPageToken` returned by a previous list request to get
   /// the next page of results.
   ///
-  /// [returnPartialSuccess] - Opt-in for partial success behavior which
-  /// provides partial results in case
-  /// of failure. The default value is false.
-  ///
-  /// For example, when partial success behavior is enabled, aggregatedList for
-  /// a
-  /// single zone scope either returns all resources in the zone or no
-  /// resources,
-  /// with an error code.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -86124,7 +84299,6 @@ class ZonesResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
-    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -86132,9 +84306,6 @@ class ZonesResource {
       'maxResults': ?maxResults == null ? null : ['${maxResults}'],
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageToken': ?pageToken == null ? null : [pageToken],
-      'returnPartialSuccess': ?returnPartialSuccess == null
-          ? null
-          : ['${returnPartialSuccess}'],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -87207,6 +85378,24 @@ class AccessConfig {
   /// external IPv6 range.
   core.int? externalIpv6PrefixLength;
 
+  /// Reference to the source of external IPv4 addresses,
+  /// like a PublicDelegatedPrefix (PDP) for BYOIP.
+  /// The PDP must support enhanced IPv4 allocations.
+  ///
+  /// Use one of the following formats to specify a PDP when allocating an
+  /// external IPv4 address using BYOIP.
+  ///
+  ///    -
+  /// Full resource URL, as
+  /// inhttps://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+  ///    -
+  ///    Partial URL, as in
+  ///
+  ///
+  /// - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+  ///           - regions/region/publicDelegatedPrefixes/pdp-name
+  core.String? ipCollection;
+
   /// Type of the resource.
   ///
   /// Alwayscompute#accessConfig for access configs.
@@ -87291,6 +85480,7 @@ class AccessConfig {
   AccessConfig({
     this.externalIpv6,
     this.externalIpv6PrefixLength,
+    this.ipCollection,
     this.kind,
     this.name,
     this.natIP,
@@ -87306,6 +85496,7 @@ class AccessConfig {
         externalIpv6: json_['externalIpv6'] as core.String?,
         externalIpv6PrefixLength:
             json_['externalIpv6PrefixLength'] as core.int?,
+        ipCollection: json_['ipCollection'] as core.String?,
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
         natIP: json_['natIP'] as core.String?,
@@ -87319,6 +85510,7 @@ class AccessConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final externalIpv6 = this.externalIpv6;
     final externalIpv6PrefixLength = this.externalIpv6PrefixLength;
+    final ipCollection = this.ipCollection;
     final kind = this.kind;
     final name = this.name;
     final natIP = this.natIP;
@@ -87330,6 +85522,7 @@ class AccessConfig {
     return {
       'externalIpv6': ?externalIpv6,
       'externalIpv6PrefixLength': ?externalIpv6PrefixLength,
+      'ipCollection': ?ipCollection,
       'kind': ?kind,
       'name': ?name,
       'natIP': ?natIP,
@@ -87498,6 +85691,13 @@ class Address {
   /// only be used with INTERNAL type with theVPC_PEERING purpose.
   core.String? network;
 
+  /// The URL of the network attachment that this address comes from in the
+  /// following format:
+  /// projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+  ///
+  /// Optional.
+  core.String? networkAttachment;
+
   /// This signifies the networking tier used for configuring this address and
   /// can only take the following values: PREMIUM orSTANDARD.
   ///
@@ -87567,6 +85767,14 @@ class Address {
   /// creating a new VPN gateway, its interface IP address is allocated
   /// from the associated VLAN attachment's IP address range.
   /// - "NAT_AUTO" : External IP automatically reserved for Cloud NAT.
+  /// - "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0" : The global external
+  /// address can only be assigned to Global External
+  /// Passthrough Network Load Balancer forwarding rules, as an Availability
+  /// Group 0 address.
+  /// - "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1" : The global external
+  /// address can only be assigned to Global External
+  /// Passthrough Network Load Balancer forwarding rules, as an Availability
+  /// Group 1 address.
   /// - "PRIVATE_SERVICE_CONNECT" : A private network IP address that can be
   /// used to configure Private
   /// Service Connect. This purpose can be specified only forGLOBAL addresses of
@@ -87593,6 +85801,16 @@ class Address {
   ///
   /// Output only.
   core.String? selfLink;
+
+  /// Producer Service's Service class ID for the region of this address.
+  ///
+  /// Can
+  /// only be used with network_attachment. It is not possible to use on its
+  /// own;
+  /// however, network_attachment can be used without service_class_id.
+  ///
+  /// Optional.
+  core.String? serviceClassId;
 
   /// The status of the address, which can be one ofRESERVING, RESERVED, or
   /// IN_USE.
@@ -87638,11 +85856,13 @@ class Address {
     this.labels,
     this.name,
     this.network,
+    this.networkAttachment,
     this.networkTier,
     this.prefixLength,
     this.purpose,
     this.region,
     this.selfLink,
+    this.serviceClassId,
     this.status,
     this.subnetwork,
     this.users,
@@ -87665,11 +85885,13 @@ class Address {
         ),
         name: json_['name'] as core.String?,
         network: json_['network'] as core.String?,
+        networkAttachment: json_['networkAttachment'] as core.String?,
         networkTier: json_['networkTier'] as core.String?,
         prefixLength: json_['prefixLength'] as core.int?,
         purpose: json_['purpose'] as core.String?,
         region: json_['region'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
+        serviceClassId: json_['serviceClassId'] as core.String?,
         status: json_['status'] as core.String?,
         subnetwork: json_['subnetwork'] as core.String?,
         users: (json_['users'] as core.List?)
@@ -87691,11 +85913,13 @@ class Address {
     final labels = this.labels;
     final name = this.name;
     final network = this.network;
+    final networkAttachment = this.networkAttachment;
     final networkTier = this.networkTier;
     final prefixLength = this.prefixLength;
     final purpose = this.purpose;
     final region = this.region;
     final selfLink = this.selfLink;
+    final serviceClassId = this.serviceClassId;
     final status = this.status;
     final subnetwork = this.subnetwork;
     final users = this.users;
@@ -87713,11 +85937,13 @@ class Address {
       'labels': ?labels,
       'name': ?name,
       'network': ?network,
+      'networkAttachment': ?networkAttachment,
       'networkTier': ?networkTier,
       'prefixLength': ?prefixLength,
       'purpose': ?purpose,
       'region': ?region,
       'selfLink': ?selfLink,
+      'serviceClassId': ?serviceClassId,
       'status': ?status,
       'subnetwork': ?subnetwork,
       'users': ?users,
@@ -93352,6 +91578,14 @@ class BackendService {
   /// create the resource.
   core.String? description;
 
+  /// Dynamic forwarding configuration.
+  ///
+  /// This field is used to configure the
+  /// backend service with dynamic forwarding feature which together with
+  /// Service
+  /// Extension allows customized and complex routing logic.
+  BackendServiceDynamicForwarding? dynamicForwarding;
+
   /// The resource URL for the edge security policy associated with
   /// this backend service.
   ///
@@ -93574,6 +91808,9 @@ class BackendService {
   /// external Application Load
   /// Balancers, regional external Application Load Balancers, or regional
   /// external proxy Network Load Balancers.
+  /// - "EXTERNAL_PASSTHROUGH" : Signifies that this will be used for global
+  /// external passthrough Network
+  /// Load Balancers.
   /// - "INTERNAL" : Signifies that this will be used for internal passthrough
   /// Network Load
   /// Balancers.
@@ -94031,6 +92268,7 @@ class BackendService {
     this.customRequestHeaders,
     this.customResponseHeaders,
     this.description,
+    this.dynamicForwarding,
     this.edgeSecurityPolicy,
     this.enableCDN,
     this.externalManagedMigrationState,
@@ -94125,6 +92363,12 @@ class BackendService {
             ?.map((value) => value as core.String)
             .toList(),
         description: json_['description'] as core.String?,
+        dynamicForwarding: json_.containsKey('dynamicForwarding')
+            ? BackendServiceDynamicForwarding.fromJson(
+                json_['dynamicForwarding']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         edgeSecurityPolicy: json_['edgeSecurityPolicy'] as core.String?,
         enableCDN: json_['enableCDN'] as core.bool?,
         externalManagedMigrationState:
@@ -94262,6 +92506,7 @@ class BackendService {
     final customRequestHeaders = this.customRequestHeaders;
     final customResponseHeaders = this.customResponseHeaders;
     final description = this.description;
+    final dynamicForwarding = this.dynamicForwarding;
     final edgeSecurityPolicy = this.edgeSecurityPolicy;
     final enableCDN = this.enableCDN;
     final externalManagedMigrationState = this.externalManagedMigrationState;
@@ -94317,6 +92562,7 @@ class BackendService {
       'customRequestHeaders': ?customRequestHeaders,
       'customResponseHeaders': ?customResponseHeaders,
       'description': ?description,
+      'dynamicForwarding': ?dynamicForwarding,
       'edgeSecurityPolicy': ?edgeSecurityPolicy,
       'enableCDN': ?enableCDN,
       'externalManagedMigrationState': ?externalManagedMigrationState,
@@ -95022,6 +93268,83 @@ class BackendServiceCustomMetric {
   }
 }
 
+/// Defines a dynamic forwarding configuration for the backend service.
+class BackendServiceDynamicForwarding {
+  /// Dynamic Forwarding Proxy configuration.
+  BackendServiceDynamicForwardingForwardProxy? forwardProxy;
+
+  /// IP:PORT based dynamic forwarding configuration.
+  BackendServiceDynamicForwardingIpPortSelection? ipPortSelection;
+
+  BackendServiceDynamicForwarding({this.forwardProxy, this.ipPortSelection});
+
+  BackendServiceDynamicForwarding.fromJson(core.Map json_)
+    : this(
+        forwardProxy: json_.containsKey('forwardProxy')
+            ? BackendServiceDynamicForwardingForwardProxy.fromJson(
+                json_['forwardProxy'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ipPortSelection: json_.containsKey('ipPortSelection')
+            ? BackendServiceDynamicForwardingIpPortSelection.fromJson(
+                json_['ipPortSelection'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final forwardProxy = this.forwardProxy;
+    final ipPortSelection = this.ipPortSelection;
+    return {'forwardProxy': ?forwardProxy, 'ipPortSelection': ?ipPortSelection};
+  }
+}
+
+/// Defines Dynamic Forwarding Proxy configuration.
+class BackendServiceDynamicForwardingForwardProxy {
+  /// A boolean flag enabling dynamic forwarding proxy.
+  core.bool? enabled;
+
+  /// Determines the dynamic forwarding proxy mode.
+  /// Possible string values are:
+  /// - "CLOUD_RUN" : Dynamic forwarding directly to Cloud Run services.
+  /// - "DIRECT_FORWARDING" : Dynamic forwarding based on the Http Host header.
+  core.String? proxyMode;
+
+  BackendServiceDynamicForwardingForwardProxy({this.enabled, this.proxyMode});
+
+  BackendServiceDynamicForwardingForwardProxy.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        proxyMode: json_['proxyMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    final proxyMode = this.proxyMode;
+    return {'enabled': ?enabled, 'proxyMode': ?proxyMode};
+  }
+}
+
+/// Defines a IP:PORT based dynamic forwarding configuration for the backend
+/// service.
+///
+/// Some ranges are restricted: Restricted
+/// ranges.
+class BackendServiceDynamicForwardingIpPortSelection {
+  /// A boolean flag enabling IP:PORT based dynamic forwarding.
+  core.bool? enabled;
+
+  BackendServiceDynamicForwardingIpPortSelection({this.enabled});
+
+  BackendServiceDynamicForwardingIpPortSelection.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
+}
+
 /// For load balancers that have configurable
 /// failover:
 /// \[Internal passthrough Network Load
@@ -95166,6 +93489,9 @@ class BackendServiceHAPolicy {
   ///    Advertisement(RA) packet (IPv6).  Google Cloud immediately but
   /// temporarily associates the forwarding rule IP address with that VM, and
   ///    both new and in-flight packets are quickly delivered to that VM.
+  ///    - HA_CONTROLLER: The Backend Service is managed by a High Availability
+  /// Controller. Failover and leader election are exclusively managed by the
+  ///    HA Controller service.
   ///
   ///
   ///
@@ -97390,7 +95716,14 @@ class BulkInsertInstanceResource {
   /// The maximum number of instances to create.
   core.String? count;
 
-  /// A flexible specification of machine type of instances to create.
+  /// A specification of alternative machine types to use when creating
+  /// instances.
+  ///
+  /// A single bulkInsert request can create instances with multiple
+  /// different machine types based on capacity and quota availability. This
+  /// field is supported only for regional bulkInsert requests. For more
+  /// information, see About
+  /// instance flexibility for VMs created in bulk.
   InstanceFlexibilityPolicy? instanceFlexibilityPolicy;
 
   /// The instance properties defining the VM instances to be created.
@@ -97714,6 +96047,14 @@ class BundledLocalSsds {
 }
 
 class CacheInvalidationRule {
+  /// If set, this invalidation rule will only apply to requests routed to the
+  /// given backend service or backend bucket.
+  /// For example, for a backend bucket `bb1` in the same scope as the URL map,
+  /// the path would be `projects/my-project/global/backendBuckets/bb1`; and
+  /// for a backend service `bs1` in the same scope as the URL map, the path
+  /// would be `projects/my-project/global/backendServices/bs1`.
+  core.String? backendService;
+
   /// A list of cache tags used to identify cached objects.
   ///
   ///
@@ -97728,27 +96069,64 @@ class CacheInvalidationRule {
   /// Up to 10 tags can be specified in a single invalidation request.
   core.List<core.String>? cacheTags;
 
+  /// If set, this invalidation rule will only apply to responses with the given
+  /// content-type.
+  ///
+  /// Parameters are not allowed and are ignored from the response
+  /// when matching. Wildcards are not allowed.
+  core.String? contentType;
+
   /// If set, this invalidation rule will only apply to requests with a Host
   /// header matching host.
+  ///
+  /// This field also accepts wildcards (*) to replace the
+  /// leftmost (or first) label of a hostname. For example, *.example.com will
+  /// match www.example.com, but not sub1.dev.example.com.
   core.String? host;
+
+  /// If set, this invalidation rule will only apply to responses with the
+  /// given HTTP status.
+  ///
+  /// Valid range is 200-599.
+  core.int? httpStatus;
   core.String? path;
 
-  CacheInvalidationRule({this.cacheTags, this.host, this.path});
+  CacheInvalidationRule({
+    this.backendService,
+    this.cacheTags,
+    this.contentType,
+    this.host,
+    this.httpStatus,
+    this.path,
+  });
 
   CacheInvalidationRule.fromJson(core.Map json_)
     : this(
+        backendService: json_['backendService'] as core.String?,
         cacheTags: (json_['cacheTags'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        contentType: json_['contentType'] as core.String?,
         host: json_['host'] as core.String?,
+        httpStatus: json_['httpStatus'] as core.int?,
         path: json_['path'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final backendService = this.backendService;
     final cacheTags = this.cacheTags;
+    final contentType = this.contentType;
     final host = this.host;
+    final httpStatus = this.httpStatus;
     final path = this.path;
-    return {'cacheTags': ?cacheTags, 'host': ?host, 'path': ?path};
+    return {
+      'backendService': ?backendService,
+      'cacheTags': ?cacheTags,
+      'contentType': ?contentType,
+      'host': ?host,
+      'httpStatus': ?httpStatus,
+      'path': ?path,
+    };
   }
 }
 
@@ -97864,6 +96242,9 @@ class CachePolicy {
   /// If not
   /// specified, Cloud CDN uses `CACHE_ALL_STATIC` mode.
   /// Possible string values are:
+  /// - "BYPASS_CACHE" : Bypasses the cache for this route. All requests are
+  /// forwarded to the
+  /// origin, and responses are not cached.
   /// - "CACHE_ALL_STATIC" : Automatically cache static content, including
   /// common image formats,
   /// media (video and audio), and web assets (JavaScript and CSS).
@@ -98511,10 +96892,20 @@ class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection {
   /// Full machine-type names, e.g. "n1-standard-16".
   core.List<core.String>? machineTypes;
 
+  /// Rank when prioritizing the shape flexibilities.
+  /// The instance selections are considered in the ascending order of the
+  /// rank.
+  ///
+  /// If not set, defaults to 0.
+  ///
+  /// Optional.
+  core.String? rank;
+
   CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection({
     this.disks,
     this.guestAccelerators,
     this.machineTypes,
+    this.rank,
   });
 
   CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection.fromJson(
@@ -98538,16 +96929,19 @@ class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection {
         machineTypes: (json_['machineTypes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        rank: json_['rank'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final disks = this.disks;
     final guestAccelerators = this.guestAccelerators;
     final machineTypes = this.machineTypes;
+    final rank = this.rank;
     return {
       'disks': ?disks,
       'guestAccelerators': ?guestAccelerators,
       'machineTypes': ?machineTypes,
+      'rank': ?rank,
     };
   }
 }
@@ -98823,16 +97217,42 @@ class CapacityHistoryRequest {
 
 /// Instance properties for this request.
 class CapacityHistoryRequestInstanceProperties {
+  /// Local SSDs.
+  core.List<CapacityHistoryRequestInstancePropertiesAttachedDisk>? disks;
+
+  /// Accelerators configuration.
+  core.List<AcceleratorConfig>? guestAccelerators;
+
   /// The machine type for the VM, such as `n2-standard-4`.
   core.String? machineType;
 
   /// Specifies the scheduling options.
   CapacityHistoryRequestInstancePropertiesScheduling? scheduling;
 
-  CapacityHistoryRequestInstanceProperties({this.machineType, this.scheduling});
+  CapacityHistoryRequestInstanceProperties({
+    this.disks,
+    this.guestAccelerators,
+    this.machineType,
+    this.scheduling,
+  });
 
   CapacityHistoryRequestInstanceProperties.fromJson(core.Map json_)
     : this(
+        disks: (json_['disks'] as core.List?)
+            ?.map(
+              (value) =>
+                  CapacityHistoryRequestInstancePropertiesAttachedDisk.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        guestAccelerators: (json_['guestAccelerators'] as core.List?)
+            ?.map(
+              (value) => AcceleratorConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         machineType: json_['machineType'] as core.String?,
         scheduling: json_.containsKey('scheduling')
             ? CapacityHistoryRequestInstancePropertiesScheduling.fromJson(
@@ -98842,9 +97262,35 @@ class CapacityHistoryRequestInstanceProperties {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final disks = this.disks;
+    final guestAccelerators = this.guestAccelerators;
     final machineType = this.machineType;
     final scheduling = this.scheduling;
-    return {'machineType': ?machineType, 'scheduling': ?scheduling};
+    return {
+      'disks': ?disks,
+      'guestAccelerators': ?guestAccelerators,
+      'machineType': ?machineType,
+      'scheduling': ?scheduling,
+    };
+  }
+}
+
+/// AttachedDisk modeled after Instance's AttachedDisk.
+class CapacityHistoryRequestInstancePropertiesAttachedDisk {
+  /// Specifies the type of the disk.
+  /// Possible string values are:
+  /// - "DISK_TYPE_UNSPECIFIED" : Default value, unused.
+  /// - "SCRATCH" : Scratch disk (Local SSD).
+  core.String? type;
+
+  CapacityHistoryRequestInstancePropertiesAttachedDisk({this.type});
+
+  CapacityHistoryRequestInstancePropertiesAttachedDisk.fromJson(core.Map json_)
+    : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
   }
 }
 
@@ -99322,7 +97768,7 @@ class Commitment {
   /// GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
   /// MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4,
   /// STORAGE_OPTIMIZED_Z3,STORAGE_OPTIMIZED_Z4DS,
-  /// STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T.
+  /// STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T,STORAGE_OPTIMIZED_Z4M.
   ///
   /// For
   /// example, type MEMORY_OPTIMIZED specifies a commitment that
@@ -99341,6 +97787,8 @@ class Commitment {
   /// - "COMPUTE_OPTIMIZED_C3D"
   /// - "COMPUTE_OPTIMIZED_H3"
   /// - "COMPUTE_OPTIMIZED_H4D"
+  /// - "COMPUTE_OPTIMIZED_H4D_3TB" : CUD bucket for COMPUTE_OPTIMIZED_H4D_3TB
+  /// machines.
   /// - "GENERAL_PURPOSE"
   /// - "GENERAL_PURPOSE_C4"
   /// - "GENERAL_PURPOSE_C4A"
@@ -99358,6 +97806,10 @@ class Commitment {
   /// - "MEMORY_OPTIMIZED"
   /// - "MEMORY_OPTIMIZED_M3"
   /// - "MEMORY_OPTIMIZED_M4"
+  /// - "MEMORY_OPTIMIZED_M4N" : CUD bucket for M4N machines with less than 6TB
+  /// of memory.
+  /// - "MEMORY_OPTIMIZED_M4N_6TB" : CUD bucket for M4N machines with 6TB of
+  /// memory.
   /// - "MEMORY_OPTIMIZED_M4_6TB"
   /// - "MEMORY_OPTIMIZED_X4_1440_24T" : CUD bucket for X4 machine with 1440
   /// vCPUs and 24TB of memory.
@@ -99374,6 +97826,16 @@ class Commitment {
   /// and 12TB of memory.
   /// - "MEMORY_OPTIMIZED_X4_960_16T" : CUD bucket for X4 machine with 960 vCPUs
   /// and 16TB of memory.
+  /// - "MEMORY_OPTIMIZED_X5_1376_24T" : CUD bucket for X5 machine with 1376
+  /// vCPUs and 24TB of memory.
+  /// - "MEMORY_OPTIMIZED_X5_1376_32T" : CUD bucket for X5 machine with 1376
+  /// vCPUs and 32TB of memory.
+  /// - "MEMORY_OPTIMIZED_X5_2064_48T" : CUD bucket for X5 machine with 2064
+  /// vCPUs and 48TB of memory.
+  /// - "MEMORY_OPTIMIZED_X5_688_12T" : CUD bucket for X5 machine with 688 vCPUs
+  /// and 12TB of memory.
+  /// - "MEMORY_OPTIMIZED_X5_688_16T" : CUD bucket for X5 machine with 688 vCPUs
+  /// and 16TB of memory.
   /// - "NETWORK_OPTIMIZED_C4N" : CUD bucket for C4N (dual Diorite) machines.
   /// - "NETWORK_OPTIMIZED_U4C" : CUD bucket for NETWORK_OPTIMIZED_U4C machines.
   /// - "NETWORK_OPTIMIZED_U4P" : CUD bucket for NETWORK_OPTIMIZED_U4P machines.
@@ -99382,6 +97844,7 @@ class Commitment {
   /// - "STORAGE_OPTIMIZED_Z4D4T" : CUD bucket for Z4D-4T machines.
   /// - "STORAGE_OPTIMIZED_Z4DH" : CUD bucket for Z4DH machines.
   /// - "STORAGE_OPTIMIZED_Z4DS" : CUD bucket for Z4DS machines.
+  /// - "STORAGE_OPTIMIZED_Z4M" : CUD bucket for Z4M (bare metal) machines.
   /// - "TYPE_UNSPECIFIED" : Note for internal users: When adding a new enum
   /// Type for v1, make sure
   /// to also add it in the comment for the `optional Type type` definition.
@@ -101240,11 +99703,17 @@ class ConfidentialInstanceConfig {
   /// - "TDX" : Intel Trust Domain eXtension.
   core.String? confidentialInstanceType;
 
+  /// Defines a set of Confidential Paravisor (SVSM) options.
+  ConfidentialParavisorConfig? confidentialParavisorConfig;
+
   /// Defines whether the instance should have confidential compute enabled.
+  /// When enabled, the technology used defaults to
+  /// AMD SEV unless confidentialInstanceType is specified.
   core.bool? enableConfidentialCompute;
 
   ConfidentialInstanceConfig({
     this.confidentialInstanceType,
+    this.confidentialParavisorConfig,
     this.enableConfidentialCompute,
   });
 
@@ -101252,16 +99721,62 @@ class ConfidentialInstanceConfig {
     : this(
         confidentialInstanceType:
             json_['confidentialInstanceType'] as core.String?,
+        confidentialParavisorConfig:
+            json_.containsKey('confidentialParavisorConfig')
+            ? ConfidentialParavisorConfig.fromJson(
+                json_['confidentialParavisorConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         enableConfidentialCompute:
             json_['enableConfidentialCompute'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final confidentialInstanceType = this.confidentialInstanceType;
+    final confidentialParavisorConfig = this.confidentialParavisorConfig;
     final enableConfidentialCompute = this.enableConfidentialCompute;
     return {
       'confidentialInstanceType': ?confidentialInstanceType,
+      'confidentialParavisorConfig': ?confidentialParavisorConfig,
       'enableConfidentialCompute': ?enableConfidentialCompute,
+    };
+  }
+}
+
+/// A set of Confidential Paravisor (SVSM) options.
+class ConfidentialParavisorConfig {
+  /// Defines the type of TPM to use for the confidential instance.
+  /// Possible string values are:
+  /// - "CONFIDENTIAL_TPM_TYPE_UNSPECIFIED" : No TPM type specified. Do not use
+  /// this value.
+  /// - "EPHEMERAL" : An ephemeral vTPM running in the paravisor (SVSM).
+  /// - "NO_CC_TPM" : No confidential computing vTPM is used in the paravisor
+  /// (SVSM).
+  core.String? confidentialTpmType;
+
+  /// Defines the IRQ mode to use for the confidential instance.
+  /// Possible string values are:
+  /// - "RESTRICTED" : Restricted interrupt injection.
+  /// - "SEV_SNP_IRQ_MODE_UNSPECIFIED" : No IRQ mode specified. Do not use this
+  /// value.
+  /// - "UNRESTRICTED" : Unrestricted interrupt injection.
+  core.String? sevSnpIrqMode;
+
+  ConfidentialParavisorConfig({this.confidentialTpmType, this.sevSnpIrqMode});
+
+  ConfidentialParavisorConfig.fromJson(core.Map json_)
+    : this(
+        confidentialTpmType: json_['confidentialTpmType'] as core.String?,
+        sevSnpIrqMode: json_['sevSnpIrqMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final confidentialTpmType = this.confidentialTpmType;
+    final sevSnpIrqMode = this.sevSnpIrqMode;
+    return {
+      'confidentialTpmType': ?confidentialTpmType,
+      'sevSnpIrqMode': ?sevSnpIrqMode,
     };
   }
 }
@@ -102829,6 +101344,45 @@ class Disk {
   /// Output only.
   core.String? sourceInstantSnapshotId;
 
+  /// The machine image to create the disk from.
+  ///
+  /// You can provide this as a
+  /// partial or full URL to the resource. For example, the following are valid
+  /// values:
+  ///
+  ///
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/global/machineImages/machineImage
+  ///    - projects/project/global/machineImages/machineImage
+  ///      - global/machineImages/machineImage
+  core.String? sourceMachineImage;
+
+  /// The device name of a disk within a given machine image.
+  ///
+  /// The
+  /// source_machine_image must be specified.
+  core.String? sourceMachineImageDiskDeviceName;
+
+  /// Thecustomer-supplied
+  /// encryption key of the source machine image.
+  ///
+  /// Required if the source
+  /// machine image is protected by a customer-supplied encryption key.
+  CustomerEncryptionKey? sourceMachineImageEncryptionKey;
+
+  /// The unique ID of the machine image used to create this disk.
+  /// This value identifies the exact machine image that was used to create this
+  /// persistent disk.
+  ///
+  /// For example, if you created the persistent disk from a
+  /// machine image that was later deleted and recreated under the same name,
+  /// the
+  /// source machine image ID would identify the exact version of the machine
+  /// image that was used.
+  ///
+  /// Output only.
+  core.String? sourceMachineImageId;
+
   /// The source snapshot used to create this disk.
   ///
   /// You can provide this as a
@@ -102973,6 +101527,10 @@ class Disk {
     this.sourceImageId,
     this.sourceInstantSnapshot,
     this.sourceInstantSnapshotId,
+    this.sourceMachineImage,
+    this.sourceMachineImageDiskDeviceName,
+    this.sourceMachineImageEncryptionKey,
+    this.sourceMachineImageId,
     this.sourceSnapshot,
     this.sourceSnapshotEncryptionKey,
     this.sourceSnapshotId,
@@ -103080,6 +101638,17 @@ class Disk {
         sourceInstantSnapshot: json_['sourceInstantSnapshot'] as core.String?,
         sourceInstantSnapshotId:
             json_['sourceInstantSnapshotId'] as core.String?,
+        sourceMachineImage: json_['sourceMachineImage'] as core.String?,
+        sourceMachineImageDiskDeviceName:
+            json_['sourceMachineImageDiskDeviceName'] as core.String?,
+        sourceMachineImageEncryptionKey:
+            json_.containsKey('sourceMachineImageEncryptionKey')
+            ? CustomerEncryptionKey.fromJson(
+                json_['sourceMachineImageEncryptionKey']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sourceMachineImageId: json_['sourceMachineImageId'] as core.String?,
         sourceSnapshot: json_['sourceSnapshot'] as core.String?,
         sourceSnapshotEncryptionKey:
             json_.containsKey('sourceSnapshotEncryptionKey')
@@ -103141,6 +101710,12 @@ class Disk {
     final sourceImageId = this.sourceImageId;
     final sourceInstantSnapshot = this.sourceInstantSnapshot;
     final sourceInstantSnapshotId = this.sourceInstantSnapshotId;
+    final sourceMachineImage = this.sourceMachineImage;
+    final sourceMachineImageDiskDeviceName =
+        this.sourceMachineImageDiskDeviceName;
+    final sourceMachineImageEncryptionKey =
+        this.sourceMachineImageEncryptionKey;
+    final sourceMachineImageId = this.sourceMachineImageId;
     final sourceSnapshot = this.sourceSnapshot;
     final sourceSnapshotEncryptionKey = this.sourceSnapshotEncryptionKey;
     final sourceSnapshotId = this.sourceSnapshotId;
@@ -103192,6 +101767,10 @@ class Disk {
       'sourceImageId': ?sourceImageId,
       'sourceInstantSnapshot': ?sourceInstantSnapshot,
       'sourceInstantSnapshotId': ?sourceInstantSnapshotId,
+      'sourceMachineImage': ?sourceMachineImage,
+      'sourceMachineImageDiskDeviceName': ?sourceMachineImageDiskDeviceName,
+      'sourceMachineImageEncryptionKey': ?sourceMachineImageEncryptionKey,
+      'sourceMachineImageId': ?sourceMachineImageId,
       'sourceSnapshot': ?sourceSnapshot,
       'sourceSnapshotEncryptionKey': ?sourceSnapshotEncryptionKey,
       'sourceSnapshotId': ?sourceSnapshotId,
@@ -105277,6 +103856,30 @@ class Duration {
   }
 }
 
+/// Dynamic compression policy for this URL Map's route.
+class DynamicCompressionPolicy {
+  /// Compress text responses using Brotli or gzip compression, based on
+  /// the client's Accept-Encoding header.
+  /// Possible string values are:
+  /// - "AUTOMATIC" : Automatically uses the best compression based on the
+  /// Accept-Encoding
+  /// header sent by the client.
+  /// - "DISABLED" : Disables compression. Existing compressed responses cached
+  /// by
+  /// Cloud CDN will not be served to clients.
+  core.String? compressionMode;
+
+  DynamicCompressionPolicy({this.compressionMode});
+
+  DynamicCompressionPolicy.fromJson(core.Map json_)
+    : this(compressionMode: json_['compressionMode'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final compressionMode = this.compressionMode;
+    return {'compressionMode': ?compressionMode};
+  }
+}
+
 /// Describes the cause of the error with structured details.
 ///
 /// Example of an error when contacting the "pubsub.googleapis.com" API when it
@@ -107267,6 +105870,27 @@ class FirewallPolicy {
   /// Output only.
   core.String? parent;
 
+  /// Indicates the source of this Firewall Policy.
+  ///
+  /// This field is optional on
+  /// creation and defaults to USER_DEFINED.
+  ///
+  /// The USER_DEFINED value indicates a regular firewall policy.
+  ///
+  /// The SYSTEM value indicates a system-level policy managed by an
+  /// internal service like GKE. This SYSTEM value is reserved for
+  /// internal services and cannot be set by users during policy creation.
+  /// Policies with a SYSTEM source cannot be modified or deleted by
+  /// users.
+  /// Possible string values are:
+  /// - "SYSTEM" : A system-level policy managed by an internal service like
+  /// GKE. This value
+  /// is reserved for internal services and cannot be set by users during
+  /// policy creation. Policies with a SYSTEM source cannot be modified or
+  /// deleted by users.
+  /// - "USER_DEFINED" : A regular firewall policy.
+  core.String? policySource;
+
   /// The type of the firewall policy.
   ///
   /// This field can be one of
@@ -107340,6 +105964,7 @@ class FirewallPolicy {
     this.name,
     this.packetMirroringRules,
     this.parent,
+    this.policySource,
     this.policyType,
     this.region,
     this.ruleTupleCount,
@@ -107373,6 +105998,7 @@ class FirewallPolicy {
             )
             .toList(),
         parent: json_['parent'] as core.String?,
+        policySource: json_['policySource'] as core.String?,
         policyType: json_['policyType'] as core.String?,
         region: json_['region'] as core.String?,
         ruleTupleCount: json_['ruleTupleCount'] as core.int?,
@@ -107399,6 +106025,7 @@ class FirewallPolicy {
     final name = this.name;
     final packetMirroringRules = this.packetMirroringRules;
     final parent = this.parent;
+    final policySource = this.policySource;
     final policyType = this.policyType;
     final region = this.region;
     final ruleTupleCount = this.ruleTupleCount;
@@ -107417,6 +106044,7 @@ class FirewallPolicy {
       'name': ?name,
       'packetMirroringRules': ?packetMirroringRules,
       'parent': ?parent,
+      'policySource': ?policySource,
       'policyType': ?policyType,
       'region': ?region,
       'ruleTupleCount': ?ruleTupleCount,
@@ -107451,6 +106079,16 @@ class FirewallPolicyAssociation {
   /// The name for an association.
   core.String? name;
 
+  /// An integer indicating the priority of an association.
+  ///
+  /// The priority
+  /// must be a positive value between 1 and 2147483647.
+  /// Firewall Policies are evaluated from highest to lowest priority where 1
+  /// is the highest priority and 2147483647 is the lowest priority.
+  /// The default value is `1000`. If two associations have the same priority
+  /// then lexicographical order on association names is applied.
+  core.int? priority;
+
   /// The short name of the firewall policy of the association.
   ///
   /// Output only.
@@ -107461,6 +106099,7 @@ class FirewallPolicyAssociation {
     this.displayName,
     this.firewallPolicyId,
     this.name,
+    this.priority,
     this.shortName,
   });
 
@@ -107470,6 +106109,7 @@ class FirewallPolicyAssociation {
         displayName: json_['displayName'] as core.String?,
         firewallPolicyId: json_['firewallPolicyId'] as core.String?,
         name: json_['name'] as core.String?,
+        priority: json_['priority'] as core.int?,
         shortName: json_['shortName'] as core.String?,
       );
 
@@ -107478,12 +106118,14 @@ class FirewallPolicyAssociation {
     final displayName = this.displayName;
     final firewallPolicyId = this.firewallPolicyId;
     final name = this.name;
+    final priority = this.priority;
     final shortName = this.shortName;
     return {
       'attachmentTarget': ?attachmentTarget,
       'displayName': ?displayName,
       'firewallPolicyId': ?firewallPolicyId,
       'name': ?name,
+      'priority': ?priority,
       'shortName': ?shortName,
     };
   }
@@ -108437,6 +107079,77 @@ class ForwardingRule {
   /// theavailabilityGroup field for further details.
   core.String? IPAddress;
 
+  /// IP addresses for which this forwarding rule accepts traffic.
+  ///
+  /// All IP
+  /// addresses must have the same IP version, IPv4 or IPv6. When a client sends
+  /// traffic that matches one of the specified IP addresses, protocol and
+  /// ports,
+  /// the forwarding rule directs the traffic to the referencedbackendService.
+  /// All IP addresses are served by the same set of
+  /// backends, and they share the target capacities specified in the backend
+  /// service fairly.
+  ///
+  /// Global external Passthrough Network Load Balancer requires two IP
+  /// addresses
+  /// for each forwarding rule to provide high availability when both IP
+  /// addresses are used to serve client requests. The two IP addresses must
+  /// come
+  /// from global IP pools that belong to two distinct Availability
+  /// Groups, represented by the
+  /// purposePASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0
+  /// andPASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1. TheIPAddresses field
+  /// specifies zero, one, or two IP addresses:
+  ///
+  /// - If omitted, Google Cloud assigns two ephemeral IP addresses, one from
+  ///    each Availability Group.
+  ///    - If you specify one IP address that references an existing static IP
+  ///    address resource from one Availability Group, Google Cloud assigns an
+  ///    ephemeral IP address from the other Availability Group.
+  ///    - If you specify two IP addresses that reference existing static IP
+  ///    address resources, they are required to be from different Availability
+  ///    Groups.
+  ///
+  ///
+  ///
+  /// For global external Passthrough Network Load Balancer, each IP address can
+  /// be one of the following:
+  ///
+  ///    - A static or ephemeral IPv4 address from a Google-owned IP pool.
+  ///    - A static IPv4 address from a global public delegated prefix.
+  ///    - A static or ephemeral IPv6 /96 prefix from a Google-owned IP pool.
+  ///
+  ///
+  ///
+  /// For global external Passthrough Network Load Balancer, the two IP
+  /// addresses
+  /// can be of different types. One IP address can be from a BYOIP prefix while
+  /// the other is from a Google-owned IP pool. One IP address can be static
+  /// while the other is ephemeral. However, both IP addresses must have the
+  /// same
+  /// IP version, IPv4 or IPv6.
+  ///
+  /// The IP addresses can only be set at creation and cannot be updated.
+  ///
+  /// When creating a global external Passthrough Network Load Balancer
+  /// forwarding rule (a parent forwarding rule), you must use theIPAddresses
+  /// field, but the Google Cloud-generated child
+  /// forwarding rules set the IPAddress field instead. Refer to
+  /// theavailabilityGroup field for further details.
+  ///
+  /// Refer to the IPAddress field for the formats that can be used
+  /// to specify IP addresses while creating a forwarding rule.
+  ///
+  /// Because Passthrough Network Load Balancers do not terminate or translate
+  /// traffic, the backend stack types must be compatible with the forwarding
+  /// rule IP version:
+  ///
+  ///    - If the forwarding rule IP version is IPv4, backends should be
+  ///    configured as dual-stack or IPv4-only.
+  ///    - If the forwarding rule IP version is IPv6, backends should be
+  ///    configured as dual-stack or IPv6-only.
+  core.List<core.String>? IPAddresses;
+
   /// The IP protocol to which this rule applies.
   ///
   /// For protocol forwarding, valid
@@ -108497,6 +107210,46 @@ class ForwardingRule {
   /// Output only.
   core.List<ForwardingRuleAttachedExtension>? attachedExtensions;
 
+  /// Specifies the load balancing availability group, one of the
+  /// two that collectively provide high availability.
+  ///
+  /// Specifies the availability group of the forwarding rule.
+  ///
+  /// This
+  /// field is for use by global external passthrough load balancers (load
+  /// balancing scheme EXTERNAL_PASSTHROUGH) and is set for the
+  /// child forwarding rules only. The possible values are:
+  ///
+  ///    - AVAILABILITY_GROUP0: Set for the child forwarding rule
+  ///    that is programmed on the AVAILABILITY_GROUP0 load balancing
+  ///    stack. The child forwarding rule has the same IP protocol, port, and
+  /// backend service settings as the parent forwarding rule, but has only one
+  /// of
+  ///    the two IP addresses of the parent forwarding rule, the one with the
+  ///    purpose PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0.
+  ///    - AVAILABILITY_GROUP1: Set for the child forwarding rule
+  ///    that is programmed on the AVAILABILITY_GROUP1 load balancing
+  /// stack. The child forwarding rule has the same IP protocol, port and
+  /// backend
+  /// service settings as the parent forwarding rule, but has only one of the
+  /// two
+  /// IP addresses of the parent forwarding rule, the one with the
+  /// purposePASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1.
+  ///
+  ///
+  ///
+  /// For each global external Passthrough Network Load Balancer forwarding rule
+  /// (a parent forwarding rule) that you create, Google Cloud generates two
+  /// output-only child forwarding rules, one forAVAILABILITY_GROUP0 and one
+  /// forAVAILABILITY_GROUP1.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AVAILABILITY_GROUP0"
+  /// - "AVAILABILITY_GROUP1"
+  /// - "AVAILABILITY_GROUP_UNSPECIFIED"
+  core.String? availabilityGroup;
+
   /// Identifies the backend service to which the forwarding rule sends traffic.
   ///
   /// It is a required field for the following load balancers:
@@ -108523,6 +107276,22 @@ class ForwardingRule {
   ///
   /// Output only.
   core.String? baseForwardingRule;
+
+  /// The resource URLs for the child forwarding rules.
+  ///
+  /// Applicable only to the parent forwarding rule of global
+  /// external passthrough load balancers.
+  ///
+  /// This field contains the list of child
+  /// forwarding rule URLs associated with the parent forwarding rule: one for
+  /// each availability group. AVAILABILITY_GROUP0 will be the first element,
+  /// and
+  /// AVAILABILITY_GROUP1 will be the second element. Refer to
+  /// theavailabilityGroup field for further details. It cannot be set
+  /// by any other forwarding rules.
+  ///
+  /// Output only.
+  core.List<core.String>? childForwardingRules;
 
   /// Creation timestamp inRFC3339
   /// text format.
@@ -108683,6 +107452,7 @@ class ForwardingRule {
   /// Possible string values are:
   /// - "EXTERNAL"
   /// - "EXTERNAL_MANAGED"
+  /// - "EXTERNAL_PASSTHROUGH"
   /// - "INTERNAL"
   /// - "INTERNAL_MANAGED"
   /// - "INTERNAL_SELF_MANAGED"
@@ -108789,6 +107559,17 @@ class ForwardingRule {
   /// Non-PSC forwarding rules do not use
   /// this field. Once set, this field is not mutable.
   core.bool? noAutomateDnsZone;
+
+  /// The resource URL for the parent forwarding rule.
+  ///
+  /// Applicable only to the child forwarding rules of global external
+  /// passthrough load balancers.
+  ///
+  /// This field contains the URL of the parent
+  /// forwarding rule.
+  ///
+  /// Output only.
+  core.String? parentForwardingRule;
 
   /// The ports, portRange, and allPorts
   /// fields are mutually exclusive.
@@ -108973,13 +107754,16 @@ class ForwardingRule {
 
   ForwardingRule({
     this.IPAddress,
+    this.IPAddresses,
     this.IPProtocol,
     this.allPorts,
     this.allowGlobalAccess,
     this.allowPscGlobalAccess,
     this.attachedExtensions,
+    this.availabilityGroup,
     this.backendService,
     this.baseForwardingRule,
+    this.childForwardingRules,
     this.creationTimestamp,
     this.description,
     this.externalManagedBackendBucketMigrationState,
@@ -108998,6 +107782,7 @@ class ForwardingRule {
     this.network,
     this.networkTier,
     this.noAutomateDnsZone,
+    this.parentForwardingRule,
     this.portRange,
     this.ports,
     this.pscConnectionId,
@@ -109016,6 +107801,9 @@ class ForwardingRule {
   ForwardingRule.fromJson(core.Map json_)
     : this(
         IPAddress: json_['IPAddress'] as core.String?,
+        IPAddresses: (json_['IPAddresses'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         IPProtocol: json_['IPProtocol'] as core.String?,
         allPorts: json_['allPorts'] as core.bool?,
         allowGlobalAccess: json_['allowGlobalAccess'] as core.bool?,
@@ -109027,8 +107815,12 @@ class ForwardingRule {
               ),
             )
             .toList(),
+        availabilityGroup: json_['availabilityGroup'] as core.String?,
         backendService: json_['backendService'] as core.String?,
         baseForwardingRule: json_['baseForwardingRule'] as core.String?,
+        childForwardingRules: (json_['childForwardingRules'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         creationTimestamp: json_['creationTimestamp'] as core.String?,
         description: json_['description'] as core.String?,
         externalManagedBackendBucketMigrationState:
@@ -109059,6 +107851,7 @@ class ForwardingRule {
         network: json_['network'] as core.String?,
         networkTier: json_['networkTier'] as core.String?,
         noAutomateDnsZone: json_['noAutomateDnsZone'] as core.bool?,
+        parentForwardingRule: json_['parentForwardingRule'] as core.String?,
         portRange: json_['portRange'] as core.String?,
         ports: (json_['ports'] as core.List?)
             ?.map((value) => value as core.String)
@@ -109088,13 +107881,16 @@ class ForwardingRule {
 
   core.Map<core.String, core.dynamic> toJson() {
     final IPAddress = this.IPAddress;
+    final IPAddresses = this.IPAddresses;
     final IPProtocol = this.IPProtocol;
     final allPorts = this.allPorts;
     final allowGlobalAccess = this.allowGlobalAccess;
     final allowPscGlobalAccess = this.allowPscGlobalAccess;
     final attachedExtensions = this.attachedExtensions;
+    final availabilityGroup = this.availabilityGroup;
     final backendService = this.backendService;
     final baseForwardingRule = this.baseForwardingRule;
+    final childForwardingRules = this.childForwardingRules;
     final creationTimestamp = this.creationTimestamp;
     final description = this.description;
     final externalManagedBackendBucketMigrationState =
@@ -109115,6 +107911,7 @@ class ForwardingRule {
     final network = this.network;
     final networkTier = this.networkTier;
     final noAutomateDnsZone = this.noAutomateDnsZone;
+    final parentForwardingRule = this.parentForwardingRule;
     final portRange = this.portRange;
     final ports = this.ports;
     final pscConnectionId = this.pscConnectionId;
@@ -109130,13 +107927,16 @@ class ForwardingRule {
     final target = this.target;
     return {
       'IPAddress': ?IPAddress,
+      'IPAddresses': ?IPAddresses,
       'IPProtocol': ?IPProtocol,
       'allPorts': ?allPorts,
       'allowGlobalAccess': ?allowGlobalAccess,
       'allowPscGlobalAccess': ?allowPscGlobalAccess,
       'attachedExtensions': ?attachedExtensions,
+      'availabilityGroup': ?availabilityGroup,
       'backendService': ?backendService,
       'baseForwardingRule': ?baseForwardingRule,
+      'childForwardingRules': ?childForwardingRules,
       'creationTimestamp': ?creationTimestamp,
       'description': ?description,
       'externalManagedBackendBucketMigrationState':
@@ -109157,6 +107957,7 @@ class ForwardingRule {
       'network': ?network,
       'networkTier': ?networkTier,
       'noAutomateDnsZone': ?noAutomateDnsZone,
+      'parentForwardingRule': ?parentForwardingRule,
       'portRange': ?portRange,
       'ports': ?ports,
       'pscConnectionId': ?pscConnectionId,
@@ -109978,6 +108779,11 @@ class FutureReservation {
   /// to false.
   core.bool? autoDeleteAutoCreatedReservations;
 
+  /// Full or partial URL of an existing future reservation to indicate
+  /// intent for reserving capacity in the same cluster as the colocation
+  /// resource.
+  core.String? colocationResource;
+
   /// If not present, then FR will not deliver a new commitment or update an
   /// existing commitment.
   FutureReservationCommitmentInfo? commitmentInfo;
@@ -110157,6 +108963,7 @@ class FutureReservation {
     this.autoCreatedReservationsDeleteTime,
     this.autoCreatedReservationsDuration,
     this.autoDeleteAutoCreatedReservations,
+    this.colocationResource,
     this.commitmentInfo,
     this.confidentialComputeType,
     this.creationTimestamp,
@@ -110204,6 +109011,7 @@ class FutureReservation {
             : null,
         autoDeleteAutoCreatedReservations:
             json_['autoDeleteAutoCreatedReservations'] as core.bool?,
+        colocationResource: json_['colocationResource'] as core.String?,
         commitmentInfo: json_.containsKey('commitmentInfo')
             ? FutureReservationCommitmentInfo.fromJson(
                 json_['commitmentInfo'] as core.Map<core.String, core.dynamic>,
@@ -110278,6 +109086,7 @@ class FutureReservation {
         this.autoCreatedReservationsDuration;
     final autoDeleteAutoCreatedReservations =
         this.autoDeleteAutoCreatedReservations;
+    final colocationResource = this.colocationResource;
     final commitmentInfo = this.commitmentInfo;
     final confidentialComputeType = this.confidentialComputeType;
     final creationTimestamp = this.creationTimestamp;
@@ -110309,6 +109118,7 @@ class FutureReservation {
       'autoCreatedReservationsDeleteTime': ?autoCreatedReservationsDeleteTime,
       'autoCreatedReservationsDuration': ?autoCreatedReservationsDuration,
       'autoDeleteAutoCreatedReservations': ?autoDeleteAutoCreatedReservations,
+      'colocationResource': ?colocationResource,
       'commitmentInfo': ?commitmentInfo,
       'confidentialComputeType': ?confidentialComputeType,
       'creationTimestamp': ?creationTimestamp,
@@ -112522,6 +111332,118 @@ class GlobalAddressesMoveRequest {
       'description': ?description,
       'destinationAddress': ?destinationAddress,
     };
+  }
+}
+
+/// Represents the Global Frontend Bundle settings for a single project.
+class GlobalFrontendSettings {
+  /// Customer-settable bundle type.
+  /// Possible string values are:
+  /// - "BUNDLE_TYPE_UNSPECIFIED" : Bundling is not active.
+  /// - "GLOBAL_FRONT_END" : Standard Global Frontend bundle.
+  /// - "INDIVIDUAL" : Ala Carte mode.
+  core.String? bundleType;
+
+  /// Creation timestamp in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// For optimistic locking.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// OUTPUT_ONLY fields
+  /// \[Output Only\] Name of the resource.
+  ///
+  /// Must be 1-63 characters long and match
+  /// the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+  /// character must be a lowercase letter, and all following characters must
+  /// be a dash, lowercase letter, or digit, except the last character, which
+  /// cannot be a dash.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  GlobalFrontendSettings({
+    this.bundleType,
+    this.creationTimestamp,
+    this.description,
+    this.etag,
+    this.id,
+    this.name,
+    this.selfLink,
+  });
+
+  GlobalFrontendSettings.fromJson(core.Map json_)
+    : this(
+        bundleType: json_['bundleType'] as core.String?,
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bundleType = this.bundleType;
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final etag = this.etag;
+    final id = this.id;
+    final name = this.name;
+    final selfLink = this.selfLink;
+    return {
+      'bundleType': ?bundleType,
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'etag': ?etag,
+      'id': ?id,
+      'name': ?name,
+      'selfLink': ?selfLink,
+    };
+  }
+}
+
+/// Response to an UpdateGlobalFrontendSettingsRequest.
+class GlobalFrontendSettingsPatchResponse {
+  /// The Operation resource for this long-running operation.
+  Operation? operation;
+
+  GlobalFrontendSettingsPatchResponse({this.operation});
+
+  GlobalFrontendSettingsPatchResponse.fromJson(core.Map json_)
+    : this(
+        operation: json_.containsKey('operation')
+            ? Operation.fromJson(
+                json_['operation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final operation = this.operation;
+    return {'operation': ?operation};
   }
 }
 
@@ -119801,6 +118723,12 @@ class HttpRouteAction {
   /// Not supported when the URL map is bound to a target gRPC proxy.
   CorsPolicy? corsPolicy;
 
+  /// Dynamic compression policy for this URL Map's route.
+  ///
+  /// Available only for
+  /// Global EXTERNAL_MANAGED load balancer schemes.
+  DynamicCompressionPolicy? dynamicCompressionPolicy;
+
   /// The specification for fault injection introduced into traffic to test
   /// the resiliency of clients to backend service failure.
   ///
@@ -119819,6 +118747,14 @@ class HttpRouteAction {
   /// see Load
   /// balancing: Routing and traffic management features.
   HttpFaultInjection? faultInjectionPolicy;
+
+  /// Image optimization policy for this URL Map's route.
+  ///
+  /// Available only for
+  /// Global EXTERNAL_MANAGED load balancer schemes.
+  /// Either Cloud CDN must be enabled on the backend service or backend bucket
+  /// serving the route, or cache policy must be configured on the same route
+  ImageOptimizationPolicy? imageOptimizationPolicy;
 
   /// Specifies the maximum duration (timeout) for streams on the selected
   /// route.
@@ -119896,7 +118832,9 @@ class HttpRouteAction {
   HttpRouteAction({
     this.cachePolicy,
     this.corsPolicy,
+    this.dynamicCompressionPolicy,
     this.faultInjectionPolicy,
+    this.imageOptimizationPolicy,
     this.maxStreamDuration,
     this.requestMirrorPolicy,
     this.retryPolicy,
@@ -119917,9 +118855,21 @@ class HttpRouteAction {
                 json_['corsPolicy'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        dynamicCompressionPolicy: json_.containsKey('dynamicCompressionPolicy')
+            ? DynamicCompressionPolicy.fromJson(
+                json_['dynamicCompressionPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         faultInjectionPolicy: json_.containsKey('faultInjectionPolicy')
             ? HttpFaultInjection.fromJson(
                 json_['faultInjectionPolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageOptimizationPolicy: json_.containsKey('imageOptimizationPolicy')
+            ? ImageOptimizationPolicy.fromJson(
+                json_['imageOptimizationPolicy']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -119963,7 +118913,9 @@ class HttpRouteAction {
   core.Map<core.String, core.dynamic> toJson() {
     final cachePolicy = this.cachePolicy;
     final corsPolicy = this.corsPolicy;
+    final dynamicCompressionPolicy = this.dynamicCompressionPolicy;
     final faultInjectionPolicy = this.faultInjectionPolicy;
+    final imageOptimizationPolicy = this.imageOptimizationPolicy;
     final maxStreamDuration = this.maxStreamDuration;
     final requestMirrorPolicy = this.requestMirrorPolicy;
     final retryPolicy = this.retryPolicy;
@@ -119973,7 +118925,9 @@ class HttpRouteAction {
     return {
       'cachePolicy': ?cachePolicy,
       'corsPolicy': ?corsPolicy,
+      'dynamicCompressionPolicy': ?dynamicCompressionPolicy,
       'faultInjectionPolicy': ?faultInjectionPolicy,
+      'imageOptimizationPolicy': ?imageOptimizationPolicy,
       'maxStreamDuration': ?maxStreamDuration,
       'requestMirrorPolicy': ?requestMirrorPolicy,
       'retryPolicy': ?retryPolicy,
@@ -121621,6 +120575,39 @@ class ImageList {
   }
 }
 
+/// The configuration for Cloud CDN's image optimization feature.
+///
+/// This feature
+/// dynamically processes and delivers images from the network edge.
+/// Image Optimization is only available for Global External Application Load
+/// Balancers.
+/// Either Cloud CDN must be enabled on the backend service or backend bucket
+/// serving the route, or cache policy must be configured on the same route.
+class ImageOptimizationPolicy {
+  /// Specifies whether to interpret query parameters for image optimization.
+  /// Possible string values are:
+  /// - "DISABLED" : Query parameters for image optimization are ignored.
+  /// - "ENABLED" : Query parameters for image optimization are interpreted.
+  /// - "QUERY_PARAMETER_INTERPRETATION_UNSPECIFIED" : Default value. This field
+  /// value translates to the
+  /// default behavior, which is to ignore query parameters for image
+  /// optimization.
+  core.String? queryParameterInterpretation;
+
+  ImageOptimizationPolicy({this.queryParameterInterpretation});
+
+  ImageOptimizationPolicy.fromJson(core.Map json_)
+    : this(
+        queryParameterInterpretation:
+            json_['queryParameterInterpretation'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final queryParameterInterpretation = this.queryParameterInterpretation;
+    return {'queryParameterInterpretation': ?queryParameterInterpretation};
+  }
+}
+
 /// Additional image params.
 class ImageParams {
   /// Input only.
@@ -121647,6 +120634,275 @@ class ImageParams {
   core.Map<core.String, core.dynamic> toJson() {
     final resourceManagerTags = this.resourceManagerTags;
     return {'resourceManagerTags': ?resourceManagerTags};
+  }
+}
+
+/// Represents a read-only view of a global Image resource.
+class ImageView {
+  /// The Image resource.
+  Image? image;
+
+  ImageView({this.image});
+
+  ImageView.fromJson(core.Map json_)
+    : this(
+        image: json_.containsKey('image')
+            ? Image.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final image = this.image;
+    return {'image': ?image};
+  }
+}
+
+class ImageViewsListResponseWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  ImageViewsListResponseWarningData({this.key, this.value});
+
+  ImageViewsListResponseWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class ImageViewsListResponseWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }\]
+  ///
+  /// Output only.
+  core.List<ImageViewsListResponseWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  ImageViewsListResponseWarning({this.code, this.data, this.message});
+
+  ImageViewsListResponseWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => ImageViewsListResponseWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+/// Response message for ImageViewsService.List
+class ImageViewsListResponse {
+  /// Etag of the resource.
+  core.String? etag;
+
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of Image resources.
+  core.List<ImageView>? items;
+  core.String? kind;
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Unreachable resources.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachables;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  ImageViewsListResponseWarning? warning;
+
+  ImageViewsListResponse({
+    this.etag,
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.unreachables,
+    this.warning,
+  });
+
+  ImageViewsListResponse.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => ImageView.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        unreachables: (json_['unreachables'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        warning: json_.containsKey('warning')
+            ? ImageViewsListResponseWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final id = this.id;
+    final items = this.items;
+    final kind = this.kind;
+    final nextPageToken = this.nextPageToken;
+    final selfLink = this.selfLink;
+    final unreachables = this.unreachables;
+    final warning = this.warning;
+    return {
+      'etag': ?etag,
+      'id': ?id,
+      'items': ?items,
+      'kind': ?kind,
+      'nextPageToken': ?nextPageToken,
+      'selfLink': ?selfLink,
+      'unreachables': ?unreachables,
+      'warning': ?warning,
+    };
   }
 }
 
@@ -122740,15 +121996,8 @@ class InstanceConsumptionInfo {
 
 /// A flexible specification of machine types for instances to create.
 class InstanceFlexibilityPolicy {
-  /// Specification of alternative, flexible instance subsets.
-  /// One of them will be selected to create the instances
-  /// based on various criteria, like:
-  /// - ranks,
-  /// - location policy,
-  /// - current capacity,
-  /// - available reservations (you can specify affinity in
-  /// InstanceProperties),
-  /// - SWAN/GOOSE limitations.
+  /// Specifies named instance selections that define properties for instances
+  /// created in bulk.
   /// Key is an arbitrary, unique RFC1035 string that identifies the instance
   /// selection.
   core.Map<core.String, InstanceFlexibilityPolicyInstanceSelection>?
@@ -124530,8 +123779,16 @@ class InstanceGroupManagerInstanceFlexibilityPolicy {
 }
 
 class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+  /// List of disks to be attached to the instances created from this
+  /// selection.
+  core.List<AttachedDisk>? disks;
+
   /// Full machine-type names, e.g. "n1-standard-16".
   core.List<core.String>? machineTypes;
+
+  /// Name of the minimum CPU platform to be used by this instance selection.
+  /// e.g. 'Intel Ice Lake'.
+  core.String? minCpuPlatform;
 
   /// Preference of this instance selection.
   ///
@@ -124543,23 +123800,40 @@ class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
   core.int? rank;
 
   InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection({
+    this.disks,
     this.machineTypes,
+    this.minCpuPlatform,
     this.rank,
   });
 
   InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection.fromJson(
     core.Map json_,
   ) : this(
+        disks: (json_['disks'] as core.List?)
+            ?.map(
+              (value) => AttachedDisk.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         machineTypes: (json_['machineTypes'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        minCpuPlatform: json_['minCpuPlatform'] as core.String?,
         rank: json_['rank'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final disks = this.disks;
     final machineTypes = this.machineTypes;
+    final minCpuPlatform = this.minCpuPlatform;
     final rank = this.rank;
-    return {'machineTypes': ?machineTypes, 'rank': ?rank};
+    return {
+      'disks': ?disks,
+      'machineTypes': ?machineTypes,
+      'minCpuPlatform': ?minCpuPlatform,
+      'rank': ?rank,
+    };
   }
 }
 
@@ -125983,6 +125257,8 @@ class InstanceGroupManagerStatusAcceleratorTopology {
   /// Possible string values are:
   /// - "ACTIVATING" : The accelerator topology is being activated.
   /// - "ACTIVE" : The accelerator topology is active.
+  /// - "ACTIVE_DEGRADED" : The accelerator topology is active but operating in
+  /// degraded mode.
   /// - "DEACTIVATING" : The accelerator topology is being deactivated.
   /// - "FAILED" : The accelerator topology failed.
   /// - "INCOMPLETE" : The configuration is incomplete and the accelerator
@@ -127438,7 +126714,7 @@ class InstanceGroupManagersPatchPerInstanceConfigsReq {
   }
 }
 
-typedef InstanceGroupManagersRecreateInstancesRequest = $Request09;
+typedef InstanceGroupManagersRecreateInstancesRequest = $Request10;
 typedef InstanceGroupManagersResumeInstancesRequest =
     $InstanceGroupManagersResumeInstancesRequest;
 
@@ -131113,7 +130389,7 @@ class InstancesSetSecurityPolicyRequest {
   }
 }
 
-typedef InstancesSetServiceAccountRequest = $Shared13;
+typedef InstancesSetServiceAccountRequest = $Shared17;
 
 class InstancesStartWithEncryptionKeyRequest {
   /// Array of disks associated with this instance that are protected with
@@ -139534,6 +138810,31 @@ class InterconnectsGetMacsecConfigResponse {
   }
 }
 
+/// Request to rename an interconnect.
+class InterconnectsSetNameRequest {
+  /// The current name of the interconnect.
+  /// The name must be 1-63 characters long, and comply with RFC1035.
+  core.String? currentName;
+
+  /// The new name of the interconnect.
+  /// The name must be 1-63 characters long, and comply with RFC1035.
+  core.String? name;
+
+  InterconnectsSetNameRequest({this.currentName, this.name});
+
+  InterconnectsSetNameRequest.fromJson(core.Map json_)
+    : this(
+        currentName: json_['currentName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final currentName = this.currentName;
+    final name = this.name;
+    return {'currentName': ?currentName, 'name': ?name};
+  }
+}
+
 /// Represents a time interval, encoded as a Timestamp start (inclusive) and a
 /// Timestamp end (exclusive).
 ///
@@ -141437,6 +140738,18 @@ class MachineImageList {
 class MachineImageParams {
   /// Input only.
   ///
+  /// Specifies the list of disk device names that must be excluded from the
+  /// new machine image.
+  core.List<core.String>? excludedDisks;
+
+  /// Input only.
+  ///
+  /// Specifies the list of disk device names that must be included with the
+  /// new machine image.
+  core.List<core.String>? includedDisks;
+
+  /// Input only.
+  ///
   /// Resource manager tags to be bound to the machine image. Tag keys and
   /// values
   /// have the same definition as resource
@@ -141447,10 +140760,20 @@ class MachineImageParams {
   /// PATCH) when empty.
   core.Map<core.String, core.String>? resourceManagerTags;
 
-  MachineImageParams({this.resourceManagerTags});
+  MachineImageParams({
+    this.excludedDisks,
+    this.includedDisks,
+    this.resourceManagerTags,
+  });
 
   MachineImageParams.fromJson(core.Map json_)
     : this(
+        excludedDisks: (json_['excludedDisks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        includedDisks: (json_['includedDisks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         resourceManagerTags:
             (json_['resourceManagerTags']
                     as core.Map<core.String, core.dynamic>?)
@@ -141458,8 +140781,14 @@ class MachineImageParams {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final excludedDisks = this.excludedDisks;
+    final includedDisks = this.includedDisks;
     final resourceManagerTags = this.resourceManagerTags;
-    return {'resourceManagerTags': ?resourceManagerTags};
+    return {
+      'excludedDisks': ?excludedDisks,
+      'includedDisks': ?includedDisks,
+      'resourceManagerTags': ?resourceManagerTags,
+    };
   }
 }
 
@@ -142936,19 +142265,46 @@ class ManagedInstanceLastAttempt {
 }
 
 class ManagedInstancePropertiesFromFlexibilityPolicy {
+  /// List of disks to be attached to the instance.
+  core.List<AttachedDisk>? disks;
+
   /// The machine type to be used for this instance.
   ///
   /// Output only.
   core.String? machineType;
 
-  ManagedInstancePropertiesFromFlexibilityPolicy({this.machineType});
+  /// Name of the minimum CPU platform to be used by this instance.
+  /// e.g. 'Intel Ice Lake'.
+  core.String? minCpuPlatform;
+
+  ManagedInstancePropertiesFromFlexibilityPolicy({
+    this.disks,
+    this.machineType,
+    this.minCpuPlatform,
+  });
 
   ManagedInstancePropertiesFromFlexibilityPolicy.fromJson(core.Map json_)
-    : this(machineType: json_['machineType'] as core.String?);
+    : this(
+        disks: (json_['disks'] as core.List?)
+            ?.map(
+              (value) => AttachedDisk.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        machineType: json_['machineType'] as core.String?,
+        minCpuPlatform: json_['minCpuPlatform'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final disks = this.disks;
     final machineType = this.machineType;
-    return {'machineType': ?machineType};
+    final minCpuPlatform = this.minCpuPlatform;
+    return {
+      'disks': ?disks,
+      'machineType': ?machineType,
+      'minCpuPlatform': ?minCpuPlatform,
+    };
   }
 }
 
@@ -143053,6 +142409,310 @@ class ManagedInstanceVersion {
     final instanceTemplate = this.instanceTemplate;
     final name = this.name;
     return {'instanceTemplate': ?instanceTemplate, 'name': ?name};
+  }
+}
+
+/// Represents a ManagedRuleset resource.
+///
+/// Managed internally by Cloud Armor CLH for Managed Rules features.
+/// Customers can only view these resources to modify their Security Policies.
+/// For more information, see
+/// https://cloud.google.com/armor/docs/.
+class ManagedRuleset {
+  /// The change log for this managed ruleset.
+  ///
+  /// Output only.
+  core.String? changeLog;
+
+  /// Creation timestamp in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is
+  /// defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Name of the resource.
+  ///
+  /// Generated internally when the resource is created.
+  /// The name must be 1-63 characters long, and comply withRFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+  /// character must be a lowercase letter, and all following characters must
+  /// be a dash, lowercase letter, or digit, except the last character, which
+  /// cannot be a dash.
+  core.String? name;
+
+  /// The list of managed rule IDs that are included in
+  /// this managed ruleset.
+  ///
+  /// Output only.
+  core.List<core.String>? ruleIds;
+
+  /// The managed ruleset identifier that can be configured in
+  /// Security Policy rules.
+  ///
+  /// Output only.
+  core.String? rulesetId;
+
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  ManagedRuleset({
+    this.changeLog,
+    this.creationTimestamp,
+    this.description,
+    this.id,
+    this.name,
+    this.ruleIds,
+    this.rulesetId,
+    this.selfLink,
+  });
+
+  ManagedRuleset.fromJson(core.Map json_)
+    : this(
+        changeLog: json_['changeLog'] as core.String?,
+        creationTimestamp: json_['creationTimestamp'] as core.String?,
+        description: json_['description'] as core.String?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        ruleIds: (json_['ruleIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        rulesetId: json_['rulesetId'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final changeLog = this.changeLog;
+    final creationTimestamp = this.creationTimestamp;
+    final description = this.description;
+    final id = this.id;
+    final name = this.name;
+    final ruleIds = this.ruleIds;
+    final rulesetId = this.rulesetId;
+    final selfLink = this.selfLink;
+    return {
+      'changeLog': ?changeLog,
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'id': ?id,
+      'name': ?name,
+      'ruleIds': ?ruleIds,
+      'rulesetId': ?rulesetId,
+      'selfLink': ?selfLink,
+    };
+  }
+}
+
+class ManagedRulesetListWarningData {
+  /// A key that provides more detail on the warning being
+  /// returned.
+  ///
+  /// For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and
+  /// the key value might be the zone name. Other examples might be a key
+  /// indicating a deprecated resource and a suggested replacement, or a
+  /// warning about invalid network settings (for example, if an instance
+  /// attempts to perform IP forwarding but is not enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  ManagedRulesetListWarningData({this.key, this.value});
+
+  ManagedRulesetListWarningData.fromJson(core.Map json_)
+    : this(
+        key: json_['key'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final key = this.key;
+    final value = this.value;
+    return {'key': ?key, 'value': ?value};
+  }
+}
+
+class ManagedRulesetListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute
+  /// Engine returns NO_RESULTS_ON_PAGE if there
+  /// are no results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed
+  /// operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as
+  /// experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden.
+  /// Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB" : A WEIGHTED_MAGLEV
+  /// backend service is associated with a health check that is
+  /// not of type HTTP/HTTPS/HTTP2.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "LIST_OVERHEAD_QUOTA_EXCEED" : Resource can't be retrieved due to list
+  /// overhead quota exceed
+  /// which captures the amount of resources filtered out by
+  /// user-defined list filter.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the
+  /// network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE" : The route's nextHopInstance
+  /// URL refers to an instance that does not have an
+  /// ipv6 interface on the same network as the route.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the
+  /// same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite
+  /// the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "QUOTA_INFO_UNAVAILABLE" : Quota information is not available to client
+  /// requests (e.g:
+  /// regions.list).
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not
+  /// accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted
+  /// because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but
+  /// its application does not make a lot of sense, because it allows only
+  /// single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key:
+  /// value format.
+  ///
+  /// For example:
+  ///
+  /// "data": \[
+  ///   {
+  ///    "key": "scope",
+  ///    "value": "zones/us-east1-d"
+  ///   }\]
+  ///
+  /// Output only.
+  core.List<ManagedRulesetListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  ManagedRulesetListWarning({this.code, this.data, this.message});
+
+  ManagedRulesetListWarning.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => ManagedRulesetListWarningData.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final data = this.data;
+    final message = this.message;
+    return {'code': ?code, 'data': ?data, 'message': ?message};
+  }
+}
+
+class ManagedRulesetList {
+  core.String? id;
+
+  /// The list of managed rulesets.
+  core.List<ManagedRuleset>? items;
+  core.String? nextPageToken;
+  ManagedRulesetListWarning? warning;
+
+  ManagedRulesetList({this.id, this.items, this.nextPageToken, this.warning});
+
+  ManagedRulesetList.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        items: (json_['items'] as core.List?)
+            ?.map(
+              (value) => ManagedRuleset.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        warning: json_.containsKey('warning')
+            ? ManagedRulesetListWarning.fromJson(
+                json_['warning'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final items = this.items;
+    final nextPageToken = this.nextPageToken;
+    final warning = this.warning;
+    return {
+      'id': ?id,
+      'items': ?items,
+      'nextPageToken': ?nextPageToken,
+      'warning': ?warning,
+    };
   }
 }
 
@@ -143511,6 +143171,11 @@ class Network {
   )
   core.String? IPv4Range;
 
+  /// Additional tags for this resource.
+  ///
+  /// Output only.
+  core.List<core.String>? additionalTags;
+
   /// Must be set to create a VPC network.
   ///
   /// If not set, a legacy network is
@@ -143661,6 +143326,7 @@ class Network {
 
   Network({
     this.IPv4Range,
+    this.additionalTags,
     this.autoCreateSubnetworks,
     this.creationTimestamp,
     this.description,
@@ -143685,6 +143351,9 @@ class Network {
   Network.fromJson(core.Map json_)
     : this(
         IPv4Range: json_['IPv4Range'] as core.String?,
+        additionalTags: (json_['additionalTags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         autoCreateSubnetworks: json_['autoCreateSubnetworks'] as core.bool?,
         creationTimestamp: json_['creationTimestamp'] as core.String?,
         description: json_['description'] as core.String?,
@@ -143725,6 +143394,7 @@ class Network {
 
   core.Map<core.String, core.dynamic> toJson() {
     final IPv4Range = this.IPv4Range;
+    final additionalTags = this.additionalTags;
     final autoCreateSubnetworks = this.autoCreateSubnetworks;
     final creationTimestamp = this.creationTimestamp;
     final description = this.description;
@@ -143747,6 +143417,7 @@ class Network {
     final subnetworks = this.subnetworks;
     return {
       'IPv4Range': ?IPv4Range,
+      'additionalTags': ?additionalTags,
       'autoCreateSubnetworks': ?autoCreateSubnetworks,
       'creationTimestamp': ?creationTimestamp,
       'description': ?description,
@@ -144251,6 +143922,9 @@ class NetworkAttachmentConnectedEndpoint {
   /// from the producer to reach its VPC.
   /// - "REJECTED" : The consumer prohibits traffic from the producer to reach
   /// its VPC.
+  /// - "RESERVED" : There is no traffic flowing in this state, only the address
+  /// is
+  /// reserved.
   /// - "STATUS_UNSPECIFIED"
   core.String? status;
 
@@ -159087,6 +158761,49 @@ class PublicDelegatedPrefix {
   core.List<PublicDelegatedPrefixPublicDelegatedSubPrefix>?
   publicDelegatedSubPrefixs;
 
+  /// The purpose of the public delegated prefix.
+  ///
+  /// This field can only be set for the top-level global public delegated
+  /// prefix.
+  ///
+  /// It is an output-only field for the sub-delegates that inherit the
+  /// value from the top-level global public delegated prefix. Once the value is
+  /// set, it cannot be changed.
+  ///
+  /// The field cannot be set for regional public delegated prefixes.
+  ///
+  /// The supported values are:
+  ///
+  ///
+  ///      - APPLICATION_AND_PROXY_LOAD_BALANCERS: The global public
+  ///      delegated prefix can only be used by Global External Application and
+  /// Proxy Load Balancers to allocate addresses for forwarding rules. This is
+  ///      the default value.
+  ///      - PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0: The
+  ///      global public delegated prefix can only be used by Global External
+  ///      Passthrough Network Load Balancers to allocate Availability Group 0
+  ///      addresses for forwarding rules.
+  ///      - PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1: The
+  ///      global public delegated prefix can only be used by Global External
+  ///      Passthrough Network Load Balancers to allocate Availability Group 1
+  ///      addresses for forwarding rules.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "APPLICATION_AND_PROXY_LOAD_BALANCERS" : The global public delegated
+  /// prefix can only be used by Global External
+  /// Application and Proxy Load Balancers to allocate addresses for forwarding
+  /// rules. This is the default value.
+  /// - "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0" : The global public
+  /// delegated prefix can only be used by Global External
+  /// Passthrough Network Load Balancers to allocate Availability Group 0
+  /// addresses for forwarding rules.
+  /// - "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1" : The global public
+  /// delegated prefix can only be used by Global External
+  /// Passthrough Network Load Balancers to allocate Availability Group 1
+  /// addresses for forwarding rules.
+  core.String? purpose;
+
   /// URL of the region where the public delegated prefix resides.
   /// This field applies only to the region resource.
   ///
@@ -159147,6 +158864,7 @@ class PublicDelegatedPrefix {
     this.name,
     this.parentPrefix,
     this.publicDelegatedSubPrefixs,
+    this.purpose,
     this.region,
     this.selfLink,
     this.status,
@@ -159178,6 +158896,7 @@ class PublicDelegatedPrefix {
                       ),
                 )
                 .toList(),
+        purpose: json_['purpose'] as core.String?,
         region: json_['region'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
         status: json_['status'] as core.String?,
@@ -159199,6 +158918,7 @@ class PublicDelegatedPrefix {
     final name = this.name;
     final parentPrefix = this.parentPrefix;
     final publicDelegatedSubPrefixs = this.publicDelegatedSubPrefixs;
+    final purpose = this.purpose;
     final region = this.region;
     final selfLink = this.selfLink;
     final status = this.status;
@@ -159218,6 +158938,7 @@ class PublicDelegatedPrefix {
       'name': ?name,
       'parentPrefix': ?parentPrefix,
       'publicDelegatedSubPrefixs': ?publicDelegatedSubPrefixs,
+      'purpose': ?purpose,
       'region': ?region,
       'selfLink': ?selfLink,
       'status': ?status,
@@ -159802,6 +159523,27 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
   /// The name of the sub public delegated prefix.
   core.String? name;
 
+  /// The purpose of the sub public delegated prefix.
+  ///
+  /// Inherited
+  /// from parent prefix.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "APPLICATION_AND_PROXY_LOAD_BALANCERS" : The global public delegated
+  /// prefix can only be used by Global External
+  /// Application and Proxy Load Balancers to allocate addresses for forwarding
+  /// rules. This is the default value.
+  /// - "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0" : The global public
+  /// delegated prefix can only be used by Global External
+  /// Passthrough Network Load Balancers to allocate Availability Group 0
+  /// addresses for forwarding rules.
+  /// - "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1" : The global public
+  /// delegated prefix can only be used by Global External
+  /// Passthrough Network Load Balancers to allocate Availability Group 1
+  /// addresses for forwarding rules.
+  core.String? purpose;
+
   /// The region of the sub public delegated prefix if it is
   /// regional.
   ///
@@ -159828,6 +159570,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
     this.isAddress,
     this.mode,
     this.name,
+    this.purpose,
     this.region,
     this.status,
   });
@@ -159844,6 +159587,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
         isAddress: json_['isAddress'] as core.bool?,
         mode: json_['mode'] as core.String?,
         name: json_['name'] as core.String?,
+        purpose: json_['purpose'] as core.String?,
         region: json_['region'] as core.String?,
         status: json_['status'] as core.String?,
       );
@@ -159858,6 +159602,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
     final isAddress = this.isAddress;
     final mode = this.mode;
     final name = this.name;
+    final purpose = this.purpose;
     final region = this.region;
     final status = this.status;
     return {
@@ -159870,6 +159615,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
       'isAddress': ?isAddress,
       'mode': ?mode,
       'name': ?name,
+      'purpose': ?purpose,
       'region': ?region,
       'status': ?status,
     };
@@ -162571,7 +162317,7 @@ class RegionInstanceGroupManagersListInstancesResponse {
   }
 }
 
-typedef RegionInstanceGroupManagersRecreateRequest = $Request09;
+typedef RegionInstanceGroupManagersRecreateRequest = $Request10;
 typedef RegionInstanceGroupManagersResumeInstancesRequest =
     $InstanceGroupManagersResumeInstancesRequest;
 
@@ -166609,6 +166355,12 @@ class ReservationSubBlocksReportFaultyRequestFaultReason {
   /// Possible string values are:
   /// - "FAULT_BEHAVIOR_UNSPECIFIED"
   /// - "GPU_ERROR" : The subBlock experienced a GPU error.
+  /// - "NVSWITCH_FAULT_CONTROLLER_ERROR" : The subBlock experienced an NVSwitch
+  /// controller error.
+  /// - "NVSWITCH_FAULT_DEGRADED_BANDWIDTH" : The subBlock experienced NVSwitch
+  /// degraded bandwidth.
+  /// - "NVSWITCH_FAULT_SWITCH_ERROR" : The subBlock experienced an NVSwitch
+  /// switch error.
   /// - "PERFORMANCE" : The subBlock experienced performance issues.
   /// - "SILENT_DATA_CORRUPTION" : The subBlock experienced silent data
   /// corruption.
@@ -168839,12 +168591,34 @@ class ResourceStatusScheduling {
   /// Output only.
   core.String? gracefulShutdownTimestamp;
 
+  /// Protection tier for the workload which specifies the workload
+  /// expectations in the event of infrastructure failures at data center
+  /// (e.g. power and/or cooling failures).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PROTECTION_TIER_CAPACITY_OPTIMIZED" : CAPACITY_OPTIMIZED capacity
+  /// leverages redundancies (e.g. power,
+  /// cooling) at the data center during normal operating conditions. In the
+  /// event of infrastructure failures at data center (e.g. power and/or
+  /// cooling failures), this workload may be disrupted. As a consequence, it
+  /// has a weaker availability SLO than STANDARD.
+  /// - "PROTECTION_TIER_STANDARD" : STANDARD protection for workload that
+  /// should be protected by
+  /// redundancies (e.g. power, cooling) at the data center level. In the
+  /// event of infrastructure failures at data center (e.g. power and/or
+  /// cooling failures), this workload is expected to continue as normal
+  /// using the redundancies.
+  /// - "PROTECTION_TIER_UNSPECIFIED" : Unspecified protection tier.
+  core.String? protectionTier;
+
   /// Time in future when the instance will be terminated inRFC3339 text format.
   core.String? terminationTimestamp;
 
   ResourceStatusScheduling({
     this.availabilityDomain,
     this.gracefulShutdownTimestamp,
+    this.protectionTier,
     this.terminationTimestamp,
   });
 
@@ -168853,16 +168627,19 @@ class ResourceStatusScheduling {
         availabilityDomain: json_['availabilityDomain'] as core.int?,
         gracefulShutdownTimestamp:
             json_['gracefulShutdownTimestamp'] as core.String?,
+        protectionTier: json_['protectionTier'] as core.String?,
         terminationTimestamp: json_['terminationTimestamp'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final availabilityDomain = this.availabilityDomain;
     final gracefulShutdownTimestamp = this.gracefulShutdownTimestamp;
+    final protectionTier = this.protectionTier;
     final terminationTimestamp = this.terminationTimestamp;
     return {
       'availabilityDomain': ?availabilityDomain,
       'gracefulShutdownTimestamp': ?gracefulShutdownTimestamp,
+      'protectionTier': ?protectionTier,
       'terminationTimestamp': ?terminationTimestamp,
     };
   }
@@ -173401,10 +173178,16 @@ class RouterNatRule {
   ///
   /// `destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'`
   ///
-  /// The following example is a valid match expression for private NAT:
+  /// The following examples are valid match expressions for private NAT:
   ///
+  /// (NAT 44)
   /// `nexthop.hub ==
   /// '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'`
+  ///
+  /// `nexthop.is_hybrid`
+  ///
+  /// (NAT 64)
+  /// `isIPv6(source.ip)`
   core.String? match;
 
   /// An integer uniquely identifying a rule in the list.
@@ -173706,6 +173489,11 @@ class RouterStatusBgpPeerStatus {
   core.List<Route>? advertisedRoutes;
   BfdStatus? bfdStatus;
 
+  /// Indicates whether the BGP peer is in a depreferenced state.
+  ///
+  /// Output only.
+  core.bool? depreferenced;
+
   /// Enable IPv4 traffic over BGP Peer.
   /// It is enabled by default if the peerIpAddress is version 4.
   ///
@@ -173825,6 +173613,7 @@ class RouterStatusBgpPeerStatus {
   RouterStatusBgpPeerStatus({
     this.advertisedRoutes,
     this.bfdStatus,
+    this.depreferenced,
     this.enableIpv4,
     this.enableIpv6,
     this.ipAddress,
@@ -173858,6 +173647,7 @@ class RouterStatusBgpPeerStatus {
                 json_['bfdStatus'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        depreferenced: json_['depreferenced'] as core.bool?,
         enableIpv4: json_['enableIpv4'] as core.bool?,
         enableIpv6: json_['enableIpv6'] as core.bool?,
         ipAddress: json_['ipAddress'] as core.String?,
@@ -173882,6 +173672,7 @@ class RouterStatusBgpPeerStatus {
   core.Map<core.String, core.dynamic> toJson() {
     final advertisedRoutes = this.advertisedRoutes;
     final bfdStatus = this.bfdStatus;
+    final depreferenced = this.depreferenced;
     final enableIpv4 = this.enableIpv4;
     final enableIpv6 = this.enableIpv6;
     final ipAddress = this.ipAddress;
@@ -173903,6 +173694,7 @@ class RouterStatusBgpPeerStatus {
     return {
       'advertisedRoutes': ?advertisedRoutes,
       'bfdStatus': ?bfdStatus,
+      'depreferenced': ?depreferenced,
       'enableIpv4': ?enableIpv4,
       'enableIpv6': ?enableIpv6,
       'ipAddress': ?ipAddress,
@@ -175747,6 +175539,25 @@ class Scheduling {
   /// there will be no wait before the G2 Soft Off signal is triggered.
   Duration? preemptionNoticeDuration;
 
+  /// Protection tier for the workload which specifies the workload
+  /// expectations in the event of infrastructure failures at data center
+  /// (e.g. power and/or cooling failures).
+  /// Possible string values are:
+  /// - "PROTECTION_TIER_CAPACITY_OPTIMIZED" : CAPACITY_OPTIMIZED capacity
+  /// leverages redundancies (e.g. power,
+  /// cooling) at the data center during normal operating conditions. In the
+  /// event of infrastructure failures at data center (e.g. power and/or
+  /// cooling failures), this workload may be disrupted. As a consequence, it
+  /// has a weaker availability SLO than STANDARD.
+  /// - "PROTECTION_TIER_STANDARD" : STANDARD protection for workload that
+  /// should be protected by
+  /// redundancies (e.g. power, cooling) at the data center level. In the
+  /// event of infrastructure failures at data center (e.g. power and/or
+  /// cooling failures), this workload is expected to continue as normal
+  /// using the redundancies.
+  /// - "PROTECTION_TIER_UNSPECIFIED" : Unspecified protection tier.
+  core.String? protectionTier;
+
   /// Specifies the provisioning model of the instance.
   /// Possible string values are:
   /// - "FLEX_START" : Instance is provisioned using the Flex Start provisioning
@@ -175759,7 +175570,11 @@ class Scheduling {
   /// discounts.
   core.String? provisioningModel;
 
-  /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft
+  /// Defines whether GCE ACPI G2 Soft
+  /// Off signal should be skipped during shutdown operation of VM.
+  ///
+  /// Default is false, meaning there will be 120 seconds between GCE ACPI G2
+  /// Soft
   /// Off and ACPI G3 Mechanical
   /// Off for Standard VMs and 30 seconds for Spot VMs.
   core.bool? skipGuestOsShutdown;
@@ -175787,6 +175602,7 @@ class Scheduling {
     this.onInstanceStopAction,
     this.preemptible,
     this.preemptionNoticeDuration,
+    this.protectionTier,
     this.provisioningModel,
     this.skipGuestOsShutdown,
     this.terminationTime,
@@ -175840,6 +175656,7 @@ class Scheduling {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        protectionTier: json_['protectionTier'] as core.String?,
         provisioningModel: json_['provisioningModel'] as core.String?,
         skipGuestOsShutdown: json_['skipGuestOsShutdown'] as core.bool?,
         terminationTime: json_['terminationTime'] as core.String?,
@@ -175861,6 +175678,7 @@ class Scheduling {
     final onInstanceStopAction = this.onInstanceStopAction;
     final preemptible = this.preemptible;
     final preemptionNoticeDuration = this.preemptionNoticeDuration;
+    final protectionTier = this.protectionTier;
     final provisioningModel = this.provisioningModel;
     final skipGuestOsShutdown = this.skipGuestOsShutdown;
     final terminationTime = this.terminationTime;
@@ -175880,6 +175698,7 @@ class Scheduling {
       'onInstanceStopAction': ?onInstanceStopAction,
       'preemptible': ?preemptible,
       'preemptionNoticeDuration': ?preemptionNoticeDuration,
+      'protectionTier': ?protectionTier,
       'provisioningModel': ?provisioningModel,
       'skipGuestOsShutdown': ?skipGuestOsShutdown,
       'terminationTime': ?terminationTime,
@@ -178146,6 +177965,11 @@ class SecurityPolicyRulePreconfiguredWafConfig {
 }
 
 class SecurityPolicyRulePreconfiguredWafConfigExclusion {
+  /// A list of request body fields to be excluded from inspection during
+  /// preconfigured WAF evaluation.
+  core.List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>?
+  requestBodiesToExclude;
+
   /// A list of request cookie names whose value will be excluded from
   /// inspection during preconfigured WAF evaluation.
   core.List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>?
@@ -178183,6 +178007,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusion {
   core.String? targetRuleSet;
 
   SecurityPolicyRulePreconfiguredWafConfigExclusion({
+    this.requestBodiesToExclude,
     this.requestCookiesToExclude,
     this.requestHeadersToExclude,
     this.requestQueryParamsToExclude,
@@ -178193,6 +178018,14 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusion {
 
   SecurityPolicyRulePreconfiguredWafConfigExclusion.fromJson(core.Map json_)
     : this(
+        requestBodiesToExclude: (json_['requestBodiesToExclude'] as core.List?)
+            ?.map(
+              (value) =>
+                  SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         requestCookiesToExclude: (json_['requestCookiesToExclude'] as core.List?)
             ?.map(
               (value) =>
@@ -178233,6 +178066,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusion {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final requestBodiesToExclude = this.requestBodiesToExclude;
     final requestCookiesToExclude = this.requestCookiesToExclude;
     final requestHeadersToExclude = this.requestHeadersToExclude;
     final requestQueryParamsToExclude = this.requestQueryParamsToExclude;
@@ -178240,6 +178074,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusion {
     final targetRuleIds = this.targetRuleIds;
     final targetRuleSet = this.targetRuleSet;
     return {
+      'requestBodiesToExclude': ?requestBodiesToExclude,
       'requestCookiesToExclude': ?requestCookiesToExclude,
       'requestHeadersToExclude': ?requestHeadersToExclude,
       'requestQueryParamsToExclude': ?requestQueryParamsToExclude,
@@ -178875,7 +178710,7 @@ class ServerBinding {
 }
 
 /// A service account.
-typedef ServiceAccount = $Shared13;
+typedef ServiceAccount = $Shared17;
 
 /// Represents a ServiceAttachment resource.
 ///
@@ -180571,9 +180406,16 @@ class Snapshot {
   core.String? snapshotGroupName;
 
   /// Indicates the type of the snapshot.
+  ///
+  /// Valid values are ARCHIVE
+  /// or STANDARD. The default is STANDARD.
   /// Possible string values are:
-  /// - "ARCHIVE"
-  /// - "STANDARD"
+  /// - "ARCHIVE" : Indicates an archive snapshot, which is recommended for
+  /// long-term
+  /// retention and compliance.
+  /// - "STANDARD" : Indicates a standard snapshot, which is recommended for
+  /// frequent
+  /// restores.
   core.String? snapshotType;
 
   /// The source disk used to create this snapshot.
@@ -190115,7 +189957,7 @@ class TargetHttpsProxy {
   /// -
   /// //certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}.
   /// -
-  /// https://certificatemanager.googleapis.com/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}.
+  /// https://certificatemanager.{universeDomain}/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}.
   core.List<core.String>? sslCertificates;
 
   /// URL of SslPolicy resource that will be associated with the
@@ -195398,6 +195240,11 @@ class UrlMap {
   /// Output only.
   core.String? selfLink;
 
+  /// The status of the URL map.
+  ///
+  /// Output only.
+  UrlMapStatus? status;
+
   /// The list of expected URL mapping tests.
   ///
   /// Request to update theUrlMap succeeds only if all test cases pass. You can
@@ -195424,6 +195271,7 @@ class UrlMap {
     this.pathMatchers,
     this.region,
     this.selfLink,
+    this.status,
     this.tests,
   });
 
@@ -195476,6 +195324,11 @@ class UrlMap {
             .toList(),
         region: json_['region'] as core.String?,
         selfLink: json_['selfLink'] as core.String?,
+        status: json_.containsKey('status')
+            ? UrlMapStatus.fromJson(
+                json_['status'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         tests: (json_['tests'] as core.List?)
             ?.map(
               (value) => UrlMapTest.fromJson(
@@ -195502,6 +195355,7 @@ class UrlMap {
     final pathMatchers = this.pathMatchers;
     final region = this.region;
     final selfLink = this.selfLink;
+    final status = this.status;
     final tests = this.tests;
     return {
       'creationTimestamp': ?creationTimestamp,
@@ -195519,6 +195373,7 @@ class UrlMap {
       'pathMatchers': ?pathMatchers,
       'region': ?region,
       'selfLink': ?selfLink,
+      'status': ?status,
       'tests': ?tests,
     };
   }
@@ -195767,6 +195622,33 @@ class UrlMapList {
   }
 }
 
+/// Message representing the quota usage for a UrlMap.
+class UrlMapQuotaUsage {
+  /// The number of forwarding rules that uses this UrlMap.
+  ///
+  /// Output only.
+  core.int? forwardingRules;
+
+  /// The number of quota units calculated for this UrlMap.
+  ///
+  /// Output only.
+  core.String? units;
+
+  UrlMapQuotaUsage({this.forwardingRules, this.units});
+
+  UrlMapQuotaUsage.fromJson(core.Map json_)
+    : this(
+        forwardingRules: json_['forwardingRules'] as core.int?,
+        units: json_['units'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final forwardingRules = this.forwardingRules;
+    final units = this.units;
+    return {'forwardingRules': ?forwardingRules, 'units': ?units};
+  }
+}
+
 class UrlMapReference {
   core.String? urlMap;
 
@@ -195778,6 +195660,32 @@ class UrlMapReference {
   core.Map<core.String, core.dynamic> toJson() {
     final urlMap = this.urlMap;
     return {'urlMap': ?urlMap};
+  }
+}
+
+/// The status of the URL map.
+///
+/// Output only.
+class UrlMapStatus {
+  /// Summary of quota usage for given UrlMap.
+  ///
+  /// Output only.
+  UrlMapQuotaUsage? quotaUsage;
+
+  UrlMapStatus({this.quotaUsage});
+
+  UrlMapStatus.fromJson(core.Map json_)
+    : this(
+        quotaUsage: json_.containsKey('quotaUsage')
+            ? UrlMapQuotaUsage.fromJson(
+                json_['quotaUsage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final quotaUsage = this.quotaUsage;
+    return {'quotaUsage': ?quotaUsage};
   }
 }
 
@@ -195898,6 +195806,11 @@ class UrlMapValidationResult {
   /// Whether the given UrlMap can be successfully loaded.
   /// If false, 'loadErrors' indicates the reasons.
   core.bool? loadSucceeded;
+
+  /// Summary of quota usage for given UrlMap.
+  ///
+  /// Output only.
+  UrlMapQuotaUsage? quotaUsage;
   core.List<TestFailure>? testFailures;
 
   /// If successfully loaded, this field indicates whether the test passed.
@@ -195907,6 +195820,7 @@ class UrlMapValidationResult {
   UrlMapValidationResult({
     this.loadErrors,
     this.loadSucceeded,
+    this.quotaUsage,
     this.testFailures,
     this.testPassed,
   });
@@ -195917,6 +195831,11 @@ class UrlMapValidationResult {
             ?.map((value) => value as core.String)
             .toList(),
         loadSucceeded: json_['loadSucceeded'] as core.bool?,
+        quotaUsage: json_.containsKey('quotaUsage')
+            ? UrlMapQuotaUsage.fromJson(
+                json_['quotaUsage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         testFailures: (json_['testFailures'] as core.List?)
             ?.map(
               (value) => TestFailure.fromJson(
@@ -195930,11 +195849,13 @@ class UrlMapValidationResult {
   core.Map<core.String, core.dynamic> toJson() {
     final loadErrors = this.loadErrors;
     final loadSucceeded = this.loadSucceeded;
+    final quotaUsage = this.quotaUsage;
     final testFailures = this.testFailures;
     final testPassed = this.testPassed;
     return {
       'loadErrors': ?loadErrors,
       'loadSucceeded': ?loadSucceeded,
+      'quotaUsage': ?quotaUsage,
       'testFailures': ?testFailures,
       'testPassed': ?testPassed,
     };
@@ -200344,7 +200265,10 @@ class VpnTunnelAggregatedList {
 }
 
 class VpnTunnelCipherSuite {
+  /// Cipher algorithms for IKE phase 1.
   VpnTunnelPhase1Algorithms? phase1;
+
+  /// Cipher algorithms for IKE phase 2.
   VpnTunnelPhase2Algorithms? phase2;
 
   VpnTunnelCipherSuite({this.phase1, this.phase2});
@@ -200620,9 +200544,16 @@ class VpnTunnelList {
 typedef VpnTunnelParams = $Params01;
 
 class VpnTunnelPhase1Algorithms {
+  /// Diffie-Hellman groups for IKE phase 1.
   core.List<core.String>? dh;
+
+  /// Encryption algorithms for IKE phase 1.
   core.List<core.String>? encryption;
+
+  /// Integrity algorithms for IKE phase 1.
   core.List<core.String>? integrity;
+
+  /// Pseudo-random functions (PRF) for IKE phase 1.
   core.List<core.String>? prf;
 
   VpnTunnelPhase1Algorithms({
@@ -200663,8 +200594,13 @@ class VpnTunnelPhase1Algorithms {
 }
 
 class VpnTunnelPhase2Algorithms {
+  /// Encryption algorithms for IKE phase 2.
   core.List<core.String>? encryption;
+
+  /// Integrity algorithms for IKE phase 2.
   core.List<core.String>? integrity;
+
+  /// Perfect Forward Secrecy (PFS) groups for IKE phase 2.
   core.List<core.String>? pfs;
 
   VpnTunnelPhase2Algorithms({this.encryption, this.integrity, this.pfs});
@@ -201747,10 +201683,17 @@ class WireProperties {
   /// - "NONE" : Default.
   core.String? faultResponse;
 
+  /// The flow management configuration for the wire.
+  /// Possible string values are:
+  /// - "DYNAMIC_PATH" : The wire uses dynamic paths.
+  /// - "FIXED_PATH" : The wire uses fixed paths.
+  core.String? flowManagement;
+
   WireProperties({
     this.bandwidthAllocation,
     this.bandwidthUnmetered,
     this.faultResponse,
+    this.flowManagement,
   });
 
   WireProperties.fromJson(core.Map json_)
@@ -201758,16 +201701,19 @@ class WireProperties {
         bandwidthAllocation: json_['bandwidthAllocation'] as core.String?,
         bandwidthUnmetered: json_['bandwidthUnmetered'] as core.String?,
         faultResponse: json_['faultResponse'] as core.String?,
+        flowManagement: json_['flowManagement'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final bandwidthAllocation = this.bandwidthAllocation;
     final bandwidthUnmetered = this.bandwidthUnmetered;
     final faultResponse = this.faultResponse;
+    final flowManagement = this.flowManagement;
     return {
       'bandwidthAllocation': ?bandwidthAllocation,
       'bandwidthUnmetered': ?bandwidthUnmetered,
       'faultResponse': ?faultResponse,
+      'flowManagement': ?flowManagement,
     };
   }
 }
@@ -201776,21 +201722,35 @@ class WorkloadIdentityConfig {
   core.String? identity;
   core.bool? identityCertificateEnabled;
 
-  WorkloadIdentityConfig({this.identity, this.identityCertificateEnabled});
+  ///
+  /// Possible string values are:
+  /// - "AGENT_IDENTITY"
+  /// - "IDENTITY_TYPE_UNSPECIFIED"
+  /// - "SERVICE_ACCOUNT"
+  core.String? identityType;
+
+  WorkloadIdentityConfig({
+    this.identity,
+    this.identityCertificateEnabled,
+    this.identityType,
+  });
 
   WorkloadIdentityConfig.fromJson(core.Map json_)
     : this(
         identity: json_['identity'] as core.String?,
         identityCertificateEnabled:
             json_['identityCertificateEnabled'] as core.bool?,
+        identityType: json_['identityType'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final identity = this.identity;
     final identityCertificateEnabled = this.identityCertificateEnabled;
+    final identityType = this.identityType;
     return {
       'identity': ?identity,
       'identityCertificateEnabled': ?identityCertificateEnabled,
+      'identityType': ?identityType,
     };
   }
 }

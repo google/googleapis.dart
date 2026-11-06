@@ -4611,7 +4611,7 @@ class MonetizationOnetimeproductsResource {
   ///
   /// [packageName] - Required. The parent app (package name) for which the
   /// one-time products should be deleted. Must be equal to the package_name
-  /// field on all the OneTimeProduct resources.
+  /// field on all the requests.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4650,8 +4650,7 @@ class MonetizationOnetimeproductsResource {
   /// Request parameters:
   ///
   /// [packageName] - Required. The parent app (package name) for which the
-  /// products should be retrieved. Must be equal to the package_name field on
-  /// all requests.
+  /// products should be retrieved.
   ///
   /// [productIds] - Required. A list of up to 100 product IDs to retrieve. All
   /// IDs must be different.
@@ -5175,15 +5174,14 @@ class MonetizationOnetimeproductsPurchaseOptionsOffersResource {
   /// Request parameters:
   ///
   /// [packageName] - Required. The parent app (package name) of the offers to
-  /// delete. Must be equal to the package_name field on all the
-  /// OneTimeProductOffer resources.
+  /// delete. Must be equal to the package_name field on all the requests.
   ///
   /// [productId] - Required. The product ID of the parent one-time product, if
   /// all offers to delete belong to the same product. If this request spans
   /// multiple one-time products, set this field to "-".
   ///
   /// [purchaseOptionId] - Required. The parent purchase option (ID) for which
-  /// the offers should be deleted. May be specified as '-' to update offers
+  /// the offers should be deleted. May be specified as '-' to delete offers
   /// from multiple purchase options.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5230,16 +5228,15 @@ class MonetizationOnetimeproductsPurchaseOptionsOffersResource {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Required. The parent app (package name) of the updated
-  /// offers. Must be equal to the package_name field on all the updated
-  /// OneTimeProductOffer resources.
+  /// [packageName] - Required. The parent app (package name) of the offers to
+  /// retrieve. Must be equal to the package_name field on all the requests.
   ///
   /// [productId] - Required. The product ID of the parent one-time product, if
-  /// all updated offers belong to the same product. If this request spans
-  /// multiple one-time products, set this field to "-".
+  /// all offers belong to the same product. If this request spans multiple
+  /// one-time products, set this field to "-".
   ///
   /// [purchaseOptionId] - Required. The parent purchase option (ID) for which
-  /// the offers should be updated. May be specified as '-' to update offers
+  /// the offers should be retrieved. May be specified as '-' to retrieve offers
   /// from multiple purchase options.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5550,9 +5547,9 @@ class MonetizationOnetimeproductsPurchaseOptionsOffersResource {
   /// to 1000.
   ///
   /// [pageToken] - Optional. A page token, received from a previous
-  /// `ListOneTimeProductsOffers` call. Provide this to retrieve the subsequent
+  /// `ListOneTimeProductOffers` call. Provide this to retrieve the subsequent
   /// page. When paginating, product_id, package_name and purchase_option_id
-  /// provided to `ListOneTimeProductsOffersRequest` must match the call that
+  /// provided to `ListOneTimeProductOffersRequest` must match the call that
   /// provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -9538,6 +9535,14 @@ class AppRecoveryAction {
 /// to one another and cannot be installed together, then a separate
 /// AppStoreAppActiveApkSet should be created.
 class AppStoreAppActiveApkSet {
+  /// Whether all APKs referenced in this active APK set are published on Play
+  /// Store (or derived from an app bundle published on Play Store).
+  ///
+  /// When this is set, version_code must be provided.
+  ///
+  /// Optional.
+  core.bool? alreadyPublishedOnPlay;
+
   /// The ID for the main base application module.
   ///
   /// Example: base.apk or app.apk.
@@ -9554,20 +9559,39 @@ class AppStoreAppActiveApkSet {
   /// Optional.
   core.List<core.String>? splitApkId;
 
-  AppStoreAppActiveApkSet({this.baseApkId, this.splitApkId});
+  /// Version code for the version this APK set represents.
+  ///
+  /// Optional.
+  core.String? versionCode;
+
+  AppStoreAppActiveApkSet({
+    this.alreadyPublishedOnPlay,
+    this.baseApkId,
+    this.splitApkId,
+    this.versionCode,
+  });
 
   AppStoreAppActiveApkSet.fromJson(core.Map json_)
     : this(
+        alreadyPublishedOnPlay: json_['alreadyPublishedOnPlay'] as core.bool?,
         baseApkId: json_['baseApkId'] as core.String?,
         splitApkId: (json_['splitApkId'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        versionCode: json_['versionCode'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final alreadyPublishedOnPlay = this.alreadyPublishedOnPlay;
     final baseApkId = this.baseApkId;
     final splitApkId = this.splitApkId;
-    return {'baseApkId': ?baseApkId, 'splitApkId': ?splitApkId};
+    final versionCode = this.versionCode;
+    return {
+      'alreadyPublishedOnPlay': ?alreadyPublishedOnPlay,
+      'baseApkId': ?baseApkId,
+      'splitApkId': ?splitApkId,
+      'versionCode': ?versionCode,
+    };
   }
 }
 
@@ -10224,7 +10248,7 @@ typedef BasePriceOfferPhase = $Empty;
 
 /// Request message for BatchDeleteOneTimeProductOffers.
 class BatchDeleteOneTimeProductOffersRequest {
-  /// A list of update requests of up to 100 elements.
+  /// A list of delete requests of up to 100 elements.
   ///
   /// All requests must correspond to different offers.
   ///
@@ -10337,7 +10361,7 @@ class BatchGetOneTimeProductOffersRequest {
 
 /// Response message for the BatchGetOneTimeProductOffers endpoint.
 class BatchGetOneTimeProductOffersResponse {
-  /// The list of updated one-time product offers, in the same order as the
+  /// The list of requested one-time product offers, in the same order as the
   /// request.
   core.List<OneTimeProductOffer>? oneTimeProductOffers;
 
@@ -11334,6 +11358,9 @@ class CatalogAppView {
 
   /// The token used for delivery of the app with the Google Play Inline Install
   /// API.
+  ///
+  /// The token is unique per Play app and per third-party app store combination
+  /// and has a limited validity period of 7 days.
   core.String? deliveryToken;
 
   /// The developer details of the app.
@@ -15251,12 +15278,13 @@ class InAppProduct {
   /// developer's Checkout merchant currency.
   Price? defaultPrice;
 
-  /// Grace period of the subscription, specified in ISO 8601 format.
+  /// Deprecated: Subscriptions are no longer supported in the InAppProducts
+  /// API.
   ///
-  /// Allows developers to give their subscribers a grace period when the
-  /// payment for the new recurrence period is declined. Acceptable values are
-  /// P0D (zero days), P3D (three days), P7D (seven days), P14D (14 days), and
-  /// P30D (30 days).
+  /// Use the Subscriptions API instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? gracePeriod;
 
   /// List of localized title and description data.
@@ -15284,7 +15312,8 @@ class InAppProduct {
   /// Possible string values are:
   /// - "purchaseTypeUnspecified" : Unspecified purchase type.
   /// - "managedUser" : The default product type - one time purchase.
-  /// - "subscription" : In-app product with a recurring period.
+  /// - "subscription" : Deprecated: Subscriptions are no longer supported in
+  /// the InAppProducts API. Use the Subscriptions API instead.
   core.String? purchaseType;
 
   /// Stock-keeping-unit (SKU) of the product, unique within an app.
@@ -15298,21 +15327,31 @@ class InAppProduct {
   /// store.
   core.String? status;
 
-  /// Subscription period, specified in ISO 8601 format.
+  /// Deprecated: Subscriptions are no longer supported in the InAppProducts
+  /// API.
   ///
-  /// Acceptable values are P1W (one week), P1M (one month), P3M (three months),
-  /// P6M (six months), and P1Y (one year).
+  /// Use the Subscriptions API instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? subscriptionPeriod;
 
-  /// Details about taxes and legal compliance.
+  /// Deprecated: Subscriptions are no longer supported in the InAppProducts
+  /// API.
   ///
-  /// Only applicable to subscription products.
+  /// Use the Subscriptions API instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   SubscriptionTaxAndComplianceSettings? subscriptionTaxesAndComplianceSettings;
 
-  /// Trial period, specified in ISO 8601 format.
+  /// Deprecated: Subscriptions are no longer supported in the InAppProducts
+  /// API.
   ///
-  /// Acceptable values are anything between P7D (seven days) and P999D (999
-  /// days).
+  /// Use the Subscriptions API instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? trialPeriod;
 
   InAppProduct({
@@ -15415,7 +15454,13 @@ class InAppProduct {
 
 /// Store listing of a single in-app product.
 class InAppProductListing {
-  /// Localized entitlement benefits for a subscription.
+  /// Deprecated: Subscriptions are no longer supported in the InAppProducts
+  /// API.
+  ///
+  /// Use the Subscriptions API instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? benefits;
 
   /// Description for the store listing.
@@ -17816,8 +17861,8 @@ class OneTimeProductOffer {
   /// - "CANCELLED" : This state is specific to pre-orders. The offer is
   /// cancelled and not available to users. All pending orders related to this
   /// offer were cancelled.
-  /// - "INACTIVE" : This state is specific to discounted offers. The offer is
-  /// no longer available to users.
+  /// - "INACTIVE" : This state is specific to discounted and game reward
+  /// offers. The offer is no longer available to users.
   core.String? state;
 
   OneTimeProductOffer({
@@ -17941,16 +17986,15 @@ class OneTimeProductOfferRegionalPricingAndAvailabilityConfig {
   /// Required.
   core.String? regionCode;
 
-  /// The fraction of the purchase option price that the user pays for this
-  /// offer.
+  /// The percentage discount subtracted from the purchase option price,
+  /// specified as a fraction strictly larger than `0` and strictly smaller than
+  /// `1`.
   ///
-  /// For example, if the purchase option price for this region is $12, then a
-  /// 50% discount would correspond to a price of $6. The discount must be
-  /// specified as a fraction strictly larger than 0 and strictly smaller than
-  /// 1. The resulting price will be rounded to the nearest billable unit (e.g.
-  /// cents for USD). The relative discount is considered invalid if the
-  /// discounted price ends up being smaller than the minimum price allowed in
-  /// this region.
+  /// For example, a value of `0.8` represents an 80% discount, meaning that if
+  /// the purchase option price is $100, the offer price will be $20. The
+  /// resulting price will be rounded to the nearest billable unit (e.g. cents
+  /// for USD). The relative discount is considered invalid if the discounted
+  /// price ends up being smaller than the minimum price allowed in this region.
   core.double? relativeDiscount;
 
   OneTimeProductOfferRegionalPricingAndAvailabilityConfig({
@@ -18928,7 +18972,7 @@ class OtherRegionsSubscriptionOfferConfig {
 /// phase.
 class OtherRegionsSubscriptionOfferPhaseConfig {
   /// The absolute amount of money subtracted from the base plan price prorated
-  /// over the phase duration that the user pays for this offer phase.
+  /// over the phase duration.
   ///
   /// For example, if the base plan price for this region is $12 for a period of
   /// 1 year, then a $1 absolute discount for a phase of a duration of 3 months
@@ -18945,17 +18989,16 @@ class OtherRegionsSubscriptionOfferPhaseConfig {
   /// locations Play may launch in.
   OtherRegionsSubscriptionOfferPhasePrices? otherRegionsPrices;
 
-  /// The fraction of the base plan price prorated over the phase duration that
-  /// the user pays for this offer phase.
+  /// The percentage discount subtracted from the base plan price prorated over
+  /// the phase duration, specified as a fraction strictly larger than `0` and
+  /// strictly smaller than `1`.
   ///
-  /// For example, if the base plan price for this region is $12 for a period of
-  /// 1 year, then a 50% discount for a phase of a duration of 3 months would
-  /// correspond to a price of $1.50. The discount must be specified as a
-  /// fraction strictly larger than 0 and strictly smaller than 1. The resulting
-  /// price will be rounded to the nearest billable unit (e.g. cents for USD).
-  /// The relative discount is considered invalid if the discounted price ends
-  /// up being smaller than the minimum price allowed in any new locations Play
-  /// may launch in.
+  /// For example, a value of `0.8` represents an 80% discount, meaning that if
+  /// the prorated base plan price is $100, the offer price will be $20. The
+  /// resulting price will be rounded to the nearest billable unit (e.g. cents
+  /// for USD). The relative discount is considered invalid if the discounted
+  /// price ends up being smaller than the minimum price allowed in any new
+  /// locations Play may launch in.
   core.double? relativeDiscount;
 
   OtherRegionsSubscriptionOfferPhaseConfig({
@@ -20759,7 +20802,7 @@ class RegionalSubscriptionOfferConfig {
 /// Configuration for a single phase of a subscription offer in a single region.
 class RegionalSubscriptionOfferPhaseConfig {
   /// The absolute amount of money subtracted from the base plan price prorated
-  /// over the phase duration that the user pays for this offer phase.
+  /// over the phase duration.
   ///
   /// For example, if the base plan price for this region is $12 for a period of
   /// 1 year, then a $1 absolute discount for a phase of a duration of 3 months
@@ -20781,16 +20824,15 @@ class RegionalSubscriptionOfferPhaseConfig {
   /// Required. Immutable.
   core.String? regionCode;
 
-  /// The fraction of the base plan price prorated over the phase duration that
-  /// the user pays for this offer phase.
+  /// The percentage discount subtracted from the base plan price prorated over
+  /// the phase duration, specified as a fraction strictly larger than `0` and
+  /// strictly smaller than `1`.
   ///
-  /// For example, if the base plan price for this region is $12 for a period of
-  /// 1 year, then a 50% discount for a phase of a duration of 3 months would
-  /// correspond to a price of $1.50. The discount must be specified as a
-  /// fraction strictly larger than 0 and strictly smaller than 1. The resulting
-  /// price will be rounded to the nearest billable unit (e.g. cents for USD).
-  /// The relative discount is considered invalid if the discounted price ends
-  /// up being smaller than the minimum price allowed in this region.
+  /// For example, a value of `0.8` represents an 80% discount, meaning that if
+  /// the prorated base plan price is $100, the offer price will be $20. The
+  /// resulting price will be rounded to the nearest billable unit (e.g. cents
+  /// for USD). The relative discount is considered invalid if the discounted
+  /// price ends up being smaller than the minimum price allowed in this region.
   core.double? relativeDiscount;
 
   RegionalSubscriptionOfferPhaseConfig({
@@ -24050,7 +24092,25 @@ class UpdateAppStoreHostedAppRequest {
 }
 
 /// Response for updating an app record for an app store hosted app.
-typedef UpdateAppStoreHostedAppResponse = $Empty;
+class UpdateAppStoreHostedAppResponse {
+  /// Unique identifier for the specific version of the hosted app submitted in
+  /// this update.
+  ///
+  /// This identifier can be used to correlate publishing signals (such as those
+  /// returned by ListHostedAppsPublishingSignals) with this specific app
+  /// update.
+  core.String? updateId;
+
+  UpdateAppStoreHostedAppResponse({this.updateId});
+
+  UpdateAppStoreHostedAppResponse.fromJson(core.Map json_)
+    : this(updateId: json_['updateId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final updateId = this.updateId;
+    return {'updateId': ?updateId};
+  }
+}
 
 /// Request message to update the state of a subscription base plan.
 class UpdateBasePlanStateRequest {
@@ -24199,7 +24259,7 @@ class UpdateOneTimeProductOfferStateRequest {
   /// Deactivates an offer.
   ///
   /// Once deactivated, the offer is no longer available to users. This state
-  /// transition is specific to discounted offers.
+  /// transition is specific to discounted and game reward offers.
   DeactivateOneTimeProductOfferRequest? deactivateOneTimeProductOfferRequest;
 
   UpdateOneTimeProductOfferStateRequest({

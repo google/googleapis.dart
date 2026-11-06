@@ -1419,8 +1419,8 @@ class BuildConfig {
   /// deployments.
   core.String? sourceToken;
 
-  /// Name of the Cloud Build Custom Worker Pool that should be used to build
-  /// the function.
+  /// Name of the Cloud Build private pool that should be used to build the
+  /// function.
   ///
   /// The format of this field is
   /// `projects/{project}/locations/{region}/workerPools/{workerPool}` where

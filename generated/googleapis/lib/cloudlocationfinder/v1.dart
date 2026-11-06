@@ -244,7 +244,8 @@ class ProjectsLocationsCloudLocationsResource {
   ///
   /// [pageSize] - Optional. The maximum number of cloud locations to return per
   /// page. The service might return fewer cloud locations than this value. If
-  /// unspecified, server will pick an appropriate default.
+  /// unspecified, at most 500 cloud locations will be returned. The maximum
+  /// value is 1000; values above 1000 will be coerced to 1000.
   ///
   /// [pageToken] - Optional. A token identifying a page of results the server
   /// should return. Provide page token returned by a previous
@@ -298,7 +299,8 @@ class ProjectsLocationsCloudLocationsResource {
   ///
   /// [pageSize] - Optional. The maximum number of cloud locations to return.
   /// The service might return fewer cloud locations than this value. If
-  /// unspecified, server will pick an appropriate default.
+  /// unspecified, at most 500 cloud locations will be returned. The maximum
+  /// value is 1000; values above 1000 will be coerced to 1000.
   ///
   /// [pageToken] - Optional. A token identifying a page of results the server
   /// should return. Provide Page token returned by a previous
@@ -379,6 +381,7 @@ class CloudLocation {
   /// - "CLOUD_LOCATION_TYPE_ZONE" : CloudLocation type for zone.
   /// - "CLOUD_LOCATION_TYPE_GDCC_ZONE" : CloudLocation type for Google
   /// Distributed Cloud Connected Zone.
+  /// - "CLOUD_LOCATION_TYPE_GLOBAL" : CloudLocation type for global.
   core.String? cloudLocationType;
 
   /// The provider of the cloud location.

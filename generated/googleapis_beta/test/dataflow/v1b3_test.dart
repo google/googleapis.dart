@@ -10278,12 +10278,16 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DataflowApi(mock).projects.jobs;
       final arg_projectId = 'foo';
+      final arg_createTimeRange_endTime = 'foo';
+      final arg_createTimeRange_startTime = 'foo';
       final arg_filter = 'foo';
       final arg_location = 'foo';
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_regionalFanoutRequested = true;
+      final arg_terminationTimeRange_endTime = 'foo';
+      final arg_terminationTimeRange_startTime = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10331,6 +10335,14 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['createTimeRange.endTime']!.first,
+            unittest.equals(arg_createTimeRange_endTime),
+          );
+          unittest.expect(
+            queryMap['createTimeRange.startTime']!.first,
+            unittest.equals(arg_createTimeRange_startTime),
+          );
+          unittest.expect(
             queryMap['filter']!.first,
             unittest.equals(arg_filter),
           );
@@ -10351,6 +10363,14 @@ void main() {
             queryMap['regionalFanoutRequested']!.first,
             unittest.equals('$arg_regionalFanoutRequested'),
           );
+          unittest.expect(
+            queryMap['terminationTimeRange.endTime']!.first,
+            unittest.equals(arg_terminationTimeRange_endTime),
+          );
+          unittest.expect(
+            queryMap['terminationTimeRange.startTime']!.first,
+            unittest.equals(arg_terminationTimeRange_startTime),
+          );
           unittest.expect(queryMap['view']!.first, unittest.equals(arg_view));
           unittest.expect(
             queryMap['fields']!.first,
@@ -10365,12 +10385,16 @@ void main() {
       );
       final response = await res.aggregated(
         arg_projectId,
+        createTimeRange_endTime: arg_createTimeRange_endTime,
+        createTimeRange_startTime: arg_createTimeRange_startTime,
         filter: arg_filter,
         location: arg_location,
         name: arg_name,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
         regionalFanoutRequested: arg_regionalFanoutRequested,
+        terminationTimeRange_endTime: arg_terminationTimeRange_endTime,
+        terminationTimeRange_startTime: arg_terminationTimeRange_startTime,
         view: arg_view,
         $fields: arg_$fields,
       );
@@ -10644,12 +10668,16 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DataflowApi(mock).projects.jobs;
       final arg_projectId = 'foo';
+      final arg_createTimeRange_endTime = 'foo';
+      final arg_createTimeRange_startTime = 'foo';
       final arg_filter = 'foo';
       final arg_location = 'foo';
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_regionalFanoutRequested = true;
+      final arg_terminationTimeRange_endTime = 'foo';
+      final arg_terminationTimeRange_startTime = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -10697,6 +10725,14 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['createTimeRange.endTime']!.first,
+            unittest.equals(arg_createTimeRange_endTime),
+          );
+          unittest.expect(
+            queryMap['createTimeRange.startTime']!.first,
+            unittest.equals(arg_createTimeRange_startTime),
+          );
+          unittest.expect(
             queryMap['filter']!.first,
             unittest.equals(arg_filter),
           );
@@ -10717,6 +10753,14 @@ void main() {
             queryMap['regionalFanoutRequested']!.first,
             unittest.equals('$arg_regionalFanoutRequested'),
           );
+          unittest.expect(
+            queryMap['terminationTimeRange.endTime']!.first,
+            unittest.equals(arg_terminationTimeRange_endTime),
+          );
+          unittest.expect(
+            queryMap['terminationTimeRange.startTime']!.first,
+            unittest.equals(arg_terminationTimeRange_startTime),
+          );
           unittest.expect(queryMap['view']!.first, unittest.equals(arg_view));
           unittest.expect(
             queryMap['fields']!.first,
@@ -10731,12 +10775,16 @@ void main() {
       );
       final response = await res.list(
         arg_projectId,
+        createTimeRange_endTime: arg_createTimeRange_endTime,
+        createTimeRange_startTime: arg_createTimeRange_startTime,
         filter: arg_filter,
         location: arg_location,
         name: arg_name,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
         regionalFanoutRequested: arg_regionalFanoutRequested,
+        terminationTimeRange_endTime: arg_terminationTimeRange_endTime,
+        terminationTimeRange_startTime: arg_terminationTimeRange_startTime,
         view: arg_view,
         $fields: arg_$fields,
       );
@@ -12300,11 +12348,15 @@ void main() {
       final res = api.DataflowApi(mock).projects.locations.jobs;
       final arg_projectId = 'foo';
       final arg_location = 'foo';
+      final arg_createTimeRange_endTime = 'foo';
+      final arg_createTimeRange_startTime = 'foo';
       final arg_filter = 'foo';
       final arg_name = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_regionalFanoutRequested = true;
+      final arg_terminationTimeRange_endTime = 'foo';
+      final arg_terminationTimeRange_startTime = 'foo';
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12364,6 +12416,14 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['createTimeRange.endTime']!.first,
+            unittest.equals(arg_createTimeRange_endTime),
+          );
+          unittest.expect(
+            queryMap['createTimeRange.startTime']!.first,
+            unittest.equals(arg_createTimeRange_startTime),
+          );
+          unittest.expect(
             queryMap['filter']!.first,
             unittest.equals(arg_filter),
           );
@@ -12380,6 +12440,14 @@ void main() {
             queryMap['regionalFanoutRequested']!.first,
             unittest.equals('$arg_regionalFanoutRequested'),
           );
+          unittest.expect(
+            queryMap['terminationTimeRange.endTime']!.first,
+            unittest.equals(arg_terminationTimeRange_endTime),
+          );
+          unittest.expect(
+            queryMap['terminationTimeRange.startTime']!.first,
+            unittest.equals(arg_terminationTimeRange_startTime),
+          );
           unittest.expect(queryMap['view']!.first, unittest.equals(arg_view));
           unittest.expect(
             queryMap['fields']!.first,
@@ -12395,11 +12463,15 @@ void main() {
       final response = await res.list(
         arg_projectId,
         arg_location,
+        createTimeRange_endTime: arg_createTimeRange_endTime,
+        createTimeRange_startTime: arg_createTimeRange_startTime,
         filter: arg_filter,
         name: arg_name,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
         regionalFanoutRequested: arg_regionalFanoutRequested,
+        terminationTimeRange_endTime: arg_terminationTimeRange_endTime,
+        terminationTimeRange_startTime: arg_terminationTimeRange_startTime,
         view: arg_view,
         $fields: arg_$fields,
       );

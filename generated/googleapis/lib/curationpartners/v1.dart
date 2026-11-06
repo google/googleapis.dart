@@ -1103,6 +1103,56 @@ class MediaPlannersResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Searches for media planner accounts matching the given DSP seat ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [dspSeatId] - Required. The DSP seat ID to search for. The DSP seat ID is
+  /// provided by the media planner.
+  ///
+  /// [pageSize] - Optional. The maximum number of media planners to return. If
+  /// unspecified, at most 100 media planners will be returned. The maximum
+  /// value is 500; values above 500 will be coerced to 500.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. This value is received from a previous
+  /// `SearchMediaPlanners` call in SearchMediaPlannersResponse.nextPageToken.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchMediaPlannersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchMediaPlannersResponse> search({
+    core.String? dspSeatId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'dspSeatId': ?dspSeatId == null ? null : [dspSeatId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    const url_ = 'v1/mediaPlanners:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchMediaPlannersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 /// Settings for controlling access to a curated package.
@@ -2977,6 +3027,7 @@ class ReportDefinition {
   /// - "PROVIDED" : Use the time zone provided in the
   /// ReportDefinition.time_zone field. Reports may take longer to run since the
   /// dates are dynamically calculated at request time.
+  /// - "CURATOR" : Use the time zone from the curator's account settings.
   core.String? timeZoneSource;
 
   ReportDefinition({
@@ -3182,6 +3233,37 @@ class Row {
 
 /// Request message for a running a report.
 typedef RunReportRequest = $Empty;
+
+/// A response containing media planner account information from a search.
+class SearchMediaPlannersResponse {
+  /// List of media planners matching the search criteria.
+  core.List<MediaPlanner>? mediaPlanners;
+
+  /// A token which can be passed to a subsequent call to the
+  /// SearchMediaPlanners method to retrieve the next page of results in
+  /// SearchMediaPlannersRequest.page_token.
+  core.String? nextPageToken;
+
+  SearchMediaPlannersResponse({this.mediaPlanners, this.nextPageToken});
+
+  SearchMediaPlannersResponse.fromJson(core.Map json_)
+    : this(
+        mediaPlanners: (json_['mediaPlanners'] as core.List?)
+            ?.map(
+              (value) => MediaPlanner.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mediaPlanners = this.mediaPlanners;
+    final nextPageToken = this.nextPageToken;
+    return {'mediaPlanners': ?mediaPlanners, 'nextPageToken': ?nextPageToken};
+  }
+}
 
 /// Represents a sorting in a report.
 class Sort {

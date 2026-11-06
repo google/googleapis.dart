@@ -4034,23 +4034,21 @@ class ExpiryDetail {
   }
 }
 
-/// An external identifier for an entity in the Cloud Identity Groups API.
-///
-/// Used to link a `Group` in Cloud Identity Groups API with a corresponding
-/// entity in an external identity system or directory.
+/// Represents an external identifier that links a Group in the Cloud Identity
+/// Groups API with a corresponding entity in an external directory or identity
+/// provider.
 class ExternalId {
   /// The unique identifier assigned by the external identity provider.
   ///
-  /// The API does not enforce uniqueness of IDs across entities, but clients
-  /// should ensure IDs are unique within their namespace.
+  /// The API does not enforce unique IDs across entities, but clients **must**
+  /// ensure IDs are unique within their namespace.
   ///
   /// Required.
   core.String? id;
 
   /// The namespace in which the entity exists.
   ///
-  /// Cannot be empty. Currently, the only allowable namespace is
-  /// `"system/external"`.
+  /// The only supported namespace is `system/external`.
   ///
   /// Required.
   core.String? namespace;
@@ -4805,6 +4803,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "MAC_OS" : Device is a MacOS device.
   /// - "LINUX" : Device is a Linux device.
   /// - "CHROME_OS" : Device is a ChromeOS device.
+  /// - "GOOGLEBOOK" : Device is a Googlebook device.
   core.String? deviceType;
 
   /// Whether developer options is enabled on device.
@@ -5523,9 +5522,9 @@ class Group {
 
   /// External identifiers associated with the `Group`.
   ///
-  /// Enables external identity providers and directory sync tools to link their
-  /// native unique identifiers with this group. Currently, the only allowable
-  /// namespace is `"system/external"`.
+  /// Allows external identity providers and directory sync tools link their
+  /// native unique identifiers with this group. The only supported namespace is
+  /// `system/external`.
   ///
   /// Optional.
   core.List<ExternalId>? externalIds;
@@ -6576,6 +6575,8 @@ class Membership {
   /// - "SHARED_DRIVE" : Represents Shared drive.
   /// - "CBCM_BROWSER" : Represents a CBCM-managed Chrome Browser type.
   /// - "CHROME_OS_DEVICE" : Represents a ChromeOS-managed ChromeOS device type.
+  /// - "PERSONAL_AGENT" : Represents a Personal Agent type.
+  /// - "COWORKER_AGENT" : Represents a Coworker Agent type.
   /// - "OTHER" : Represents other type.
   core.String? type;
 

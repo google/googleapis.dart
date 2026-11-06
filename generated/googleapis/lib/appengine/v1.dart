@@ -7086,6 +7086,9 @@ class Version {
   /// Whether to deploy this version in a container on a virtual machine.
   core.bool? vm;
 
+  /// Enables VPC access connectivity for standard apps.
+  VpcAccess? vpcAccess;
+
   /// Enables VPC connectivity for standard apps.
   VpcAccessConnector? vpcAccessConnector;
 
@@ -7137,6 +7140,7 @@ class Version {
     this.threadsafe,
     this.versionUrl,
     this.vm,
+    this.vpcAccess,
     this.vpcAccessConnector,
     this.zones,
   });
@@ -7272,6 +7276,11 @@ class Version {
         threadsafe: json_['threadsafe'] as core.bool?,
         versionUrl: json_['versionUrl'] as core.String?,
         vm: json_['vm'] as core.bool?,
+        vpcAccess: json_.containsKey('vpcAccess')
+            ? VpcAccess.fromJson(
+                json_['vpcAccess'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         vpcAccessConnector: json_.containsKey('vpcAccessConnector')
             ? VpcAccessConnector.fromJson(
                 json_['vpcAccessConnector']
@@ -7325,6 +7334,7 @@ class Version {
     final threadsafe = this.threadsafe;
     final versionUrl = this.versionUrl;
     final vm = this.vm;
+    final vpcAccess = this.vpcAccess;
     final vpcAccessConnector = this.vpcAccessConnector;
     final zones = this.zones;
     return {
@@ -7369,6 +7379,7 @@ class Version {
       'threadsafe': ?threadsafe,
       'versionUrl': ?versionUrl,
       'vm': ?vm,
+      'vpcAccess': ?vpcAccess,
       'vpcAccessConnector': ?vpcAccessConnector,
       'zones': ?zones,
     };
@@ -7405,6 +7416,44 @@ class Volume {
   }
 }
 
+/// VPC Access settings
+class VpcAccess {
+  /// The Direct VPC configuration.
+  ///
+  /// Currently only single network interface is supported.
+  core.List<VpcNetworkInterface>? networkInterfaces;
+
+  /// The traffic egress setting for the VPC network interface, controlling what
+  /// traffic is diverted through it.
+  /// Possible string values are:
+  /// - "VPC_EGRESS_UNSPECIFIED" : No value set; apply default behavior
+  /// - "ALL_TRAFFIC" : Force all traffic to egress through the NetworkInterface
+  /// (and configured VPC Network)
+  /// - "PRIVATE_IP_RANGES" : Force all Private IP Space traffic to egress
+  /// through NetworkInterface (and configured VPC Network)
+  core.String? vpcEgress;
+
+  VpcAccess({this.networkInterfaces, this.vpcEgress});
+
+  VpcAccess.fromJson(core.Map json_)
+    : this(
+        networkInterfaces: (json_['networkInterfaces'] as core.List?)
+            ?.map(
+              (value) => VpcNetworkInterface.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        vpcEgress: json_['vpcEgress'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final networkInterfaces = this.networkInterfaces;
+    final vpcEgress = this.vpcEgress;
+    return {'networkInterfaces': ?networkInterfaces, 'vpcEgress': ?vpcEgress};
+  }
+}
+
 /// VPC access connector specification.
 class VpcAccessConnector {
   /// The egress setting for the connector, controlling what traffic is diverted
@@ -7433,6 +7482,56 @@ class VpcAccessConnector {
     final egressSetting = this.egressSetting;
     final name = this.name;
     return {'egressSetting': ?egressSetting, 'name': ?name};
+  }
+}
+
+/// Network interface key message.
+class VpcNetworkInterface {
+  /// The VPC network that the App Engine resource will be able to send traffic
+  /// to.
+  ///
+  /// At least one of network or subnetwork must be specified. If both network
+  /// and subnetwork are specified, the given VPC subnetwork must belong to the
+  /// given VPC network. If network is not specified, it will be looked up from
+  /// the subnetwork. Could be either a short name or a full path. e.g.
+  /// {VPC_NETWORK} or projects/{HOST_PROJECT_ID}/global/networks/{VPC_NETWORK}
+  ///
+  /// Optional.
+  core.String? network;
+
+  /// The VPC subnetwork that the App Engine resource will get IPs from.
+  ///
+  /// At least one of network or subnetwork must be specified. If both network
+  /// and subnetwork are specified, the given VPC subnetwork must belong to the
+  /// given VPC network. If subnetwork is not specified, the subnetwork with the
+  /// same name with the network will be used. Could be either a short name or a
+  /// full path. e.g. {SUBNET_NAME} or
+  /// projects/{HOST_PROJECT_ID}/regions/{REGION}/subnetworks/{SUBNET_NAME}
+  ///
+  /// Optional.
+  core.String? subnet;
+
+  /// The network tags that will be applied to this App Engine resource.
+  ///
+  /// Optional.
+  core.List<core.String>? tags;
+
+  VpcNetworkInterface({this.network, this.subnet, this.tags});
+
+  VpcNetworkInterface.fromJson(core.Map json_)
+    : this(
+        network: json_['network'] as core.String?,
+        subnet: json_['subnet'] as core.String?,
+        tags: (json_['tags'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final network = this.network;
+    final subnet = this.subnet;
+    final tags = this.tags;
+    return {'network': ?network, 'subnet': ?subnet, 'tags': ?tags};
   }
 }
 

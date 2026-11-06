@@ -67,6 +67,7 @@
 ///   - [IndexEndpointsOperationsResource]
 /// - [IndexesResource]
 ///   - [IndexesOperationsResource]
+/// - [InteractionsResource]
 /// - [MediaResource]
 /// - [MemoryBanksResource]
 ///   - [MemoryBanksMemoriesResource]
@@ -158,6 +159,8 @@
 ///       - [ProjectsLocationsIndexEndpointsOperationsResource]
 ///     - [ProjectsLocationsIndexesResource]
 ///       - [ProjectsLocationsIndexesOperationsResource]
+///     - [ProjectsLocationsInteractionsResource]
+///     - [ProjectsLocationsInteractionsHttpResource]
 ///     - [ProjectsLocationsMemoryBanksResource]
 ///       - [ProjectsLocationsMemoryBanksMemoriesResource]
 ///         - [ProjectsLocationsMemoryBanksMemoriesOperationsResource]
@@ -197,6 +200,7 @@
 ///     - [ProjectsLocationsPipelineJobsResource]
 ///       - [ProjectsLocationsPipelineJobsOperationsResource]
 ///     - [ProjectsLocationsPublishersResource]
+///       - [ProjectsLocationsPublishersFilesResource]
 ///       - [ProjectsLocationsPublishersModelsResource]
 ///         - [ProjectsLocationsPublishersModelsInvokeResource]
 ///       - [ProjectsLocationsPublishersV1Resource]
@@ -362,6 +366,7 @@ class AiplatformApi {
   IndexEndpointsResource get indexEndpoints =>
       IndexEndpointsResource(_requester);
   IndexesResource get indexes => IndexesResource(_requester);
+  InteractionsResource get interactions => InteractionsResource(_requester);
   MediaResource get media => MediaResource(_requester);
   MemoryBanksResource get memoryBanks => MemoryBanksResource(_requester);
   MetadataStoresResource get metadataStores =>
@@ -6268,6 +6273,148 @@ class IndexesOperationsResource {
   }
 }
 
+class InteractionsResource {
+  final commons.ApiRequester _requester;
+
+  InteractionsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Cancels an interaction.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the interaction to cancel. Format:
+  /// `interactions/{interaction}`.
+  /// Value must have pattern `^interactions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenaiVertexV1Interaction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenaiVertexV1Interaction> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GenaiVertexV1Interaction.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fully typed proto, unary version of GetInteraction that returns
+  /// Interaction proto.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the interaction to retrieve. Format:
+  /// interactions/{interaction}
+  /// Value must have pattern `^interactions/\[^/\]+$`.
+  ///
+  /// [lastEventId] - If set, resumes the interaction stream from the chunk
+  /// after the event marked by the event id. Can only be used if `stream` is
+  /// true.
+  ///
+  /// [stream] - If true, streams the interaction events as Server-Sent Events.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenaiVertexV1Interaction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenaiVertexV1Interaction> getPoll(
+    core.String name, {
+    core.String? lastEventId,
+    core.bool? stream,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'lastEventId': ?lastEventId == null ? null : [lastEventId],
+      'stream': ?stream == null ? null : ['${stream}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':poll';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GenaiVertexV1Interaction.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fully typed proto, streaming version of GetInteraction that returns
+  /// Interaction proto.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the interaction to retrieve. Format:
+  /// interactions/{interaction}
+  /// Value must have pattern `^interactions/\[^/\]+$`.
+  ///
+  /// [lastEventId] - If set, resumes the interaction stream from the chunk
+  /// after the event marked by the event id. Can only be used if `stream` is
+  /// true.
+  ///
+  /// [stream] - If true, streams the interaction events as Server-Sent Events.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenaiVertexV1InteractionStreamingEvent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenaiVertexV1InteractionStreamingEvent> getStream(
+    core.String name, {
+    core.String? lastEventId,
+    core.bool? stream,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'lastEventId': ?lastEventId == null ? null : [lastEventId],
+      'stream': ?stream == null ? null : ['${stream}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':stream';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GenaiVertexV1InteractionStreamingEvent.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class MediaResource {
   final commons.ApiRequester _requester;
 
@@ -10837,6 +10984,21 @@ class ProjectsResource {
   /// `projects/{project}/cacheConfig`.
   /// Value must have pattern `^projects/\[^/\]+/cacheConfig$`.
   ///
+  /// [updateMask] - Optional. The list of fields of `cache_config` to update.
+  /// Supported paths are `disable_cache`, `retention_config` (and its subfields
+  /// such as `retention_config.retention_type`), and the special value `*`; any
+  /// other path returns `INVALID_ARGUMENT`. Fields not covered by the mask keep
+  /// their stored value. If the mask is omitted, it is treated as an implied
+  /// mask covering the fields populated in `cache_config`, so updating one
+  /// field never clears another. `retention_config` is covered only when the
+  /// request carries it. `disable_cache` is always covered: it is a bare
+  /// `bool`, so the server cannot tell a request that omits it from one that
+  /// sets it to `false`. `*` requests full replacement of the resource: every
+  /// settable field is written from the request, clearing `retention_config`
+  /// when the request omits it. It cannot be combined with other paths. Prefer
+  /// naming fields explicitly -- a caller that sends `*` without knowing about
+  /// a field added to `CacheConfig` later would silently reset that field.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -10850,10 +11012,12 @@ class ProjectsResource {
   async.Future<GoogleLongrunningOperation> updateCacheConfig(
     GoogleCloudAiplatformV1CacheConfig request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -10912,6 +11076,10 @@ class ProjectsLocationsResource {
       ProjectsLocationsIndexEndpointsResource(_requester);
   ProjectsLocationsIndexesResource get indexes =>
       ProjectsLocationsIndexesResource(_requester);
+  ProjectsLocationsInteractionsResource get interactions =>
+      ProjectsLocationsInteractionsResource(_requester);
+  ProjectsLocationsInteractionsHttpResource get interactionsHttp =>
+      ProjectsLocationsInteractionsHttpResource(_requester);
   ProjectsLocationsMemoryBanksResource get memoryBanks =>
       ProjectsLocationsMemoryBanksResource(_requester);
   ProjectsLocationsMetadataStoresResource get metadataStores =>
@@ -11831,6 +11999,10 @@ class ProjectsLocationsAgentsResource {
   /// in. Format: `projects/{project}/locations/{location}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [idpNonce] - Optional. Optional. One-time cryptographic nonce issued by
+  /// the trusted IdP provisioning iframe for session and device
+  /// non-repudiation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -11844,10 +12016,12 @@ class ProjectsLocationsAgentsResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudAiplatformV1Agent request,
     core.String parent, {
+    core.String? idpNonce,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'idpNonce': ?idpNonce == null ? null : [idpNonce],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -12127,14 +12301,14 @@ class ProjectsLocationsAgentsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudAiplatformV1Agent].
+  /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudAiplatformV1Agent> patch(
+  async.Future<GoogleLongrunningOperation> patch(
     GoogleCloudAiplatformV1Agent request,
     core.String name, {
     core.String? updateMask,
@@ -12154,7 +12328,7 @@ class ProjectsLocationsAgentsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudAiplatformV1Agent.fromJson(
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -26777,6 +26951,295 @@ class ProjectsLocationsIndexesOperationsResource {
   }
 }
 
+class ProjectsLocationsInteractionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInteractionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates an interaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - null
+  ///
+  /// [locationsId] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenaiVertexV1Interaction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenaiVertexV1Interaction> create(
+    GenaiVertexV1CreateInteractionRequest request,
+    core.String projectsId,
+    core.String locationsId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/interactions:create';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenaiVertexV1Interaction.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates an interaction and streams the response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - null
+  ///
+  /// [locationsId] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenaiVertexV1InteractionStreamingEvent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenaiVertexV1InteractionStreamingEvent> createStream(
+    GenaiVertexV1CreateInteractionRequest request,
+    core.String projectsId,
+    core.String locationsId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/interactions:createStream';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenaiVertexV1InteractionStreamingEvent.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes an interaction.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the interaction to delete. Format:
+  /// interactions/{interaction}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interactions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenaiVertexV1DeleteInteractionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  async.Future<GenaiVertexV1DeleteInteractionResponse> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GenaiVertexV1DeleteInteractionResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsInteractionsHttpResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInteractionsHttpResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Cancels an interaction by id.
+  ///
+  /// This only applies to background interactions that are still running.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the interaction to cancel. Format:
+  /// `interactions/{interaction}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interactionsHttp/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiHttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiHttpBody> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleApiHttpBody.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates a new interaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this interaction will be
+  /// created. Format: `projects/{project}/locations/{location}` Supported only
+  /// by the Vertex API only.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiHttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiHttpBody> create(
+    GenaiVertexV1CreateInteractionHttpRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/interactionsHttp';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleApiHttpBody.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves the full details of a single interaction based on its
+  /// `Interaction.id`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the interaction to retrieve. Format:
+  /// interactions/{interaction}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/interactionsHttp/\[^/\]+$`.
+  ///
+  /// [lastEventId] - If set, resumes the interaction stream from the chunk
+  /// after the event marked by the event id. Can only be used if `stream` is
+  /// true.
+  ///
+  /// [stream] - If true, streams the interaction events as Server-Sent Events.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiHttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiHttpBody> get(
+    core.String name, {
+    core.String? lastEventId,
+    core.bool? stream,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'lastEventId': ?lastEventId == null ? null : [lastEventId],
+      'stream': ?stream == null ? null : ['${stream}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleApiHttpBody.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsMemoryBanksResource {
   final commons.ApiRequester _requester;
 
@@ -37454,6 +37917,8 @@ class ProjectsLocationsPipelineJobsOperationsResource {
 class ProjectsLocationsPublishersResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsPublishersFilesResource get files =>
+      ProjectsLocationsPublishersFilesResource(_requester);
   ProjectsLocationsPublishersModelsResource get models =>
       ProjectsLocationsPublishersModelsResource(_requester);
   ProjectsLocationsPublishersV1Resource get v1 =>
@@ -37461,6 +37926,283 @@ class ProjectsLocationsPublishersResource {
 
   ProjectsLocationsPublishersResource(commons.ApiRequester client)
     : _requester = client;
+}
+
+class ProjectsLocationsPublishersFilesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPublishersFilesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Deletes the given file.
+  ///
+  /// Returns the deleted file's ID rather than an empty body. See
+  /// `DeleteFileResponse`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the file to delete. Format:
+  /// `projects/{project}/locations/{location}/publishers/{publisher}/files/{file}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/publishers/\[^/\]+/files/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1DeleteFileResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1DeleteFileResponse> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1DeleteFileResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Downloads the contents of the given file.
+  ///
+  /// Only files marked `downloadable` can be retrieved this way; user-uploaded
+  /// files are not downloadable.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the file to download. Format:
+  /// `projects/{project}/locations/{location}/publishers/{publisher}/files/{file}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/publishers/\[^/\]+/files/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [GoogleCloudAiplatformV1DownloadFileResponse] for Metadata downloads
+  /// (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<core.Object> download(
+    core.String name, {
+    core.String? $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/content';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+      downloadOptions: downloadOptions,
+    );
+    if (downloadOptions.isMetadataDownload) {
+      return GoogleCloudAiplatformV1DownloadFileResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>,
+      );
+    } else {
+      return response_ as commons.Media;
+    }
+  }
+
+  /// Gets the metadata for the given file.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the file to get. Format:
+  /// `projects/{project}/locations/{location}/publishers/{publisher}/files/{file}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/publishers/\[^/\]+/files/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ClaudeFile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ClaudeFile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ClaudeFile.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists the files owned by the requesting project and location.
+  ///
+  /// Supports two mutually exclusive modes: paginated listing via an opaque
+  /// `page` cursor, or batch fetch by `ids`. See `ListFilesRequest`.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location to list files under. Format:
+  /// `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [publishersId] - null
+  ///
+  /// [ids] - Optional. Batch fetch: return only these files, up to 100 IDs
+  /// after de-duplication. Mutually exclusive with both `page` and `limit`.
+  /// Serialised as a repeated `ids` query parameter, one occurrence per ID.
+  ///
+  /// [limit] - Optional. The number of files to return per page. Defaults to 20
+  /// if unset, maximum 1000. Mutually exclusive with `ids`.
+  ///
+  /// [page] - Optional. Opaque pagination cursor. Pass the previous response's
+  /// `next_page` to fetch the next page. Mutually exclusive with `ids`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ListFilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListFilesResponse> list(
+    core.String parent,
+    core.String publishersId, {
+    core.List<core.String>? ids,
+    core.int? limit,
+    core.String? page,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'ids': ?ids,
+      'limit': ?limit == null ? null : ['${limit}'],
+      'page': ?page == null ? null : [page],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/publishers/' +
+        commons.escapeVariable('$publishersId') +
+        '/files';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListFilesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Uploads a file that can be referenced by ID from subsequent Claude model
+  /// requests.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location to create the file under. Format:
+  /// `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [publishersId] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ClaudeFile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ClaudeFile> upload(
+    GoogleCloudAiplatformV1CreateFileRequest request,
+    core.String parent,
+    core.String publishersId, {
+    core.String? $fields,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ =
+          'v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/publishers/' +
+          commons.escapeVariable('$publishersId') +
+          '/files';
+    } else {
+      url_ =
+          '/upload/v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/publishers/' +
+          commons.escapeVariable('$publishersId') +
+          '/files';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.defaultOptions,
+    );
+    return GoogleCloudAiplatformV1ClaudeFile.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsLocationsPublishersModelsResource {
@@ -37471,6 +38213,52 @@ class ProjectsLocationsPublishersModelsResource {
 
   ProjectsLocationsPublishersModelsResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Generates embeddings directly from multiple contents.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [model] - Required. The name of the publisher model requested to serve the
+  /// prediction. Format:
+  /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/publishers/\[^/\]+/models/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1BatchEmbedContentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1BatchEmbedContentsResponse>
+  batchEmbedContents(
+    GoogleCloudAiplatformV1BatchEmbedContentsRequest request,
+    core.String model, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$model') + ':batchEmbedContents';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1BatchEmbedContentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Return a list of tokens based on the input text.
   ///
@@ -44531,6 +45319,234 @@ class ProjectsLocationsServingProfilesResource {
 
   ProjectsLocationsServingProfilesResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Creates a ServingProfile.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location to create the
+  /// ServingProfile in. Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [servingProfileId] - Required. The ID to use for the ServingProfile, which
+  /// will become the final component of the ServingProfile's resource name.
+  /// This value should be 1-63 characters, and valid characters are
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudAiplatformV1ServingProfile request,
+    core.String parent, {
+    core.String? servingProfileId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'servingProfileId': ?servingProfileId == null ? null : [servingProfileId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/servingProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a ServingProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ServingProfile resource to be deleted.
+  /// Format:
+  /// `projects/{project}/locations/{location}/servingProfiles/{serving_profile}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/servingProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets a ServingProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ServingProfile resource. Format:
+  /// `projects/{project}/locations/{location}/servingProfiles/{serving_profile}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/servingProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ServingProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ServingProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ServingProfile.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists ServingProfiles in a Location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location to list the
+  /// ServingProfiles from. Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The standard list page size. If unspecified, at
+  /// most 100 ServingProfiles will be returned. The maximum value is 1000;
+  /// values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ListServingProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListServingProfilesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/servingProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListServingProfilesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a ServingProfile.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the ServingProfile.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/servingProfiles/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update; see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+  /// If omitted, all populated (non-empty) mutable fields are updated; if set
+  /// to `["*"]`, all mutable fields are fully replaced (unpopulated values are
+  /// cleared).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ServingProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ServingProfile> patch(
+    GoogleCloudAiplatformV1ServingProfile request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ServingProfile.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsLocationsServingProfilesOperationsResource {
@@ -58257,6 +59273,5654 @@ class V1Resource {
   }
 }
 
+/// Interaction for generating the completion using agents.
+class GenaiVertexV1AgentInteraction {
+  /// The name of the `Agent` used for generating the completion.
+  core.String? agent;
+
+  /// Antigravity agent configuration.
+  ///
+  /// This configuration is session-level settings that are passed to the agent
+  /// runtime on a per-request basis.
+  GenaiVertexV1AntigravityAgentConfig? antigravityConfig;
+  GenaiVertexV1CodeMenderAgentConfig? codeMenderConfig;
+  GenaiVertexV1DeepResearchAgentConfig? deepResearchConfig;
+  GenaiVertexV1DynamicAgentConfig? dynamicConfig;
+
+  GenaiVertexV1AgentInteraction({
+    this.agent,
+    this.antigravityConfig,
+    this.codeMenderConfig,
+    this.deepResearchConfig,
+    this.dynamicConfig,
+  });
+
+  GenaiVertexV1AgentInteraction.fromJson(core.Map json_)
+    : this(
+        agent: json_['agent'] as core.String?,
+        antigravityConfig: json_.containsKey('antigravityConfig')
+            ? GenaiVertexV1AntigravityAgentConfig.fromJson(
+                json_['antigravityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        codeMenderConfig: json_.containsKey('codeMenderConfig')
+            ? GenaiVertexV1CodeMenderAgentConfig.fromJson(
+                json_['codeMenderConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deepResearchConfig: json_.containsKey('deepResearchConfig')
+            ? GenaiVertexV1DeepResearchAgentConfig.fromJson(
+                json_['deepResearchConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dynamicConfig: json_.containsKey('dynamicConfig')
+            ? GenaiVertexV1DynamicAgentConfig.fromJson(
+                json_['dynamicConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agent = this.agent;
+    final antigravityConfig = this.antigravityConfig;
+    final codeMenderConfig = this.codeMenderConfig;
+    final deepResearchConfig = this.deepResearchConfig;
+    final dynamicConfig = this.dynamicConfig;
+    return {
+      'agent': ?agent,
+      'antigravityConfig': ?antigravityConfig,
+      'codeMenderConfig': ?codeMenderConfig,
+      'deepResearchConfig': ?deepResearchConfig,
+      'dynamicConfig': ?dynamicConfig,
+    };
+  }
+}
+
+/// The configuration for allowed tools.
+class GenaiVertexV1AllowedTools {
+  /// The mode of the tool choice.
+  /// Possible string values are:
+  /// - "TOOL_CHOICE_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "AUTO" : Auto tool choice.
+  /// - "ANY" : Any tool choice.
+  /// - "NONE" : No tool choice.
+  /// - "VALIDATED" : Validated tool choice.
+  core.String? mode;
+
+  /// The names of the allowed tools.
+  core.List<core.String>? tools;
+
+  GenaiVertexV1AllowedTools({this.mode, this.tools});
+
+  GenaiVertexV1AllowedTools.fromJson(core.Map json_)
+    : this(
+        mode: json_['mode'] as core.String?,
+        tools: (json_['tools'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mode = this.mode;
+    final tools = this.tools;
+    return {'mode': ?mode, 'tools': ?tools};
+  }
+}
+
+/// Configuration for the Antigravity agent runtime.
+///
+/// Provides server-side control over the agent's execution environment and tool
+/// configuration.
+class GenaiVertexV1AntigravityAgentConfig {
+  /// Max total tokens for the agent run.
+  core.String? maxTotalTokens;
+
+  /// The model to use for agent reasoning.
+  core.String? model;
+
+  GenaiVertexV1AntigravityAgentConfig({this.maxTotalTokens, this.model});
+
+  GenaiVertexV1AntigravityAgentConfig.fromJson(core.Map json_)
+    : this(
+        maxTotalTokens: json_['maxTotalTokens'] as core.String?,
+        model: json_['model'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxTotalTokens = this.maxTotalTokens;
+    final model = this.model;
+    return {'maxTotalTokens': ?maxTotalTokens, 'model': ?model};
+  }
+}
+
+class GenaiVertexV1ArgumentsDelta {
+  core.String? arguments;
+
+  GenaiVertexV1ArgumentsDelta({this.arguments});
+
+  GenaiVertexV1ArgumentsDelta.fromJson(core.Map json_)
+    : this(arguments: json_['arguments'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    return {'arguments': ?arguments};
+  }
+}
+
+/// An audio content block.
+class GenaiVertexV1AudioContent {
+  /// The number of audio channels.
+  core.int? channels;
+
+  /// The audio content.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Flexible MIME type string of the audio, superseding mime_type = 1.
+  ///
+  /// Note: Bespoke logic in the GAOS parser/serializer maps this to the
+  /// "mime_type" JSON key.
+  core.String? mimeTypeString;
+
+  /// The sample rate of the audio.
+  core.int? sampleRate;
+
+  /// The URI of the audio.
+  core.String? uri;
+
+  GenaiVertexV1AudioContent({
+    this.channels,
+    this.data,
+    this.mimeTypeString,
+    this.sampleRate,
+    this.uri,
+  });
+
+  GenaiVertexV1AudioContent.fromJson(core.Map json_)
+    : this(
+        channels: json_['channels'] as core.int?,
+        data: json_['data'] as core.String?,
+        mimeTypeString: json_['mimeTypeString'] as core.String?,
+        sampleRate: json_['sampleRate'] as core.int?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final channels = this.channels;
+    final data = this.data;
+    final mimeTypeString = this.mimeTypeString;
+    final sampleRate = this.sampleRate;
+    final uri = this.uri;
+    return {
+      'channels': ?channels,
+      'data': ?data,
+      'mimeTypeString': ?mimeTypeString,
+      'sampleRate': ?sampleRate,
+      'uri': ?uri,
+    };
+  }
+}
+
+class GenaiVertexV1AudioDelta {
+  /// The number of audio channels.
+  core.int? channels;
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ///
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED"
+  /// - "TYPE_WAV" : WAV audio format
+  /// - "TYPE_MP3" : MP3 audio format
+  /// - "TYPE_AIFF" : AIFF audio format
+  /// - "TYPE_AAC" : AAC audio format
+  /// - "TYPE_OGG" : OGG audio format
+  /// - "TYPE_FLAC" : FLAC audio format
+  /// - "TYPE_MPEG" : MPEG audio format
+  /// - "TYPE_M4A" : M4A audio format
+  /// - "TYPE_L16" : L16 audio format
+  /// - "TYPE_OPUS" : OPUS audio format
+  /// - "TYPE_ALAW" : ALAW audio format
+  /// - "TYPE_MULAW" : MULAW audio format
+  /// - "TYPE_WEBM" : WEBM audio format
+  core.String? mimeType;
+
+  /// The sample rate of the audio.
+  core.int? sampleRate;
+  core.String? uri;
+
+  GenaiVertexV1AudioDelta({
+    this.channels,
+    this.data,
+    this.mimeType,
+    this.sampleRate,
+    this.uri,
+  });
+
+  GenaiVertexV1AudioDelta.fromJson(core.Map json_)
+    : this(
+        channels: json_['channels'] as core.int?,
+        data: json_['data'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        sampleRate: json_['sampleRate'] as core.int?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final channels = this.channels;
+    final data = this.data;
+    final mimeType = this.mimeType;
+    final sampleRate = this.sampleRate;
+    final uri = this.uri;
+    return {
+      'channels': ?channels,
+      'data': ?data,
+      'mimeType': ?mimeType,
+      'sampleRate': ?sampleRate,
+      'uri': ?uri,
+    };
+  }
+}
+
+/// Configuration for audio output format.
+class GenaiVertexV1AudioResponseFormat {
+  /// Bit rate in bits per second (bps).
+  ///
+  /// Only applicable for compressed formats (MP3, Opus).
+  core.int? bitRate;
+
+  /// The delivery mode for the audio output.
+  /// Possible string values are:
+  /// - "DELIVERY_UNSPECIFIED" : Default value. This value is unused.
+  /// - "INLINE" : Audio data is returned inline in the response.
+  /// - "URI" : Audio data is returned as a URI.
+  core.String? delivery;
+
+  /// The MIME type of the audio output.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "TYPE_MP3" : MP3 audio format.
+  /// - "TYPE_OGG_OPUS" : OGG Opus audio format.
+  /// - "TYPE_L16" : Raw PCM (L16) audio format.
+  /// - "TYPE_WAV" : WAV audio format.
+  /// - "TYPE_ALAW" : A-law audio format.
+  /// - "TYPE_MULAW" : Mu-law audio format.
+  core.String? mimeType;
+
+  /// Sample rate in Hz.
+  core.int? sampleRate;
+
+  GenaiVertexV1AudioResponseFormat({
+    this.bitRate,
+    this.delivery,
+    this.mimeType,
+    this.sampleRate,
+  });
+
+  GenaiVertexV1AudioResponseFormat.fromJson(core.Map json_)
+    : this(
+        bitRate: json_['bitRate'] as core.int?,
+        delivery: json_['delivery'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        sampleRate: json_['sampleRate'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bitRate = this.bitRate;
+    final delivery = this.delivery;
+    final mimeType = this.mimeType;
+    final sampleRate = this.sampleRate;
+    return {
+      'bitRate': ?bitRate,
+      'delivery': ?delivery,
+      'mimeType': ?mimeType,
+      'sampleRate': ?sampleRate,
+    };
+  }
+}
+
+/// A tool that can be used by the model to execute code.
+typedef GenaiVertexV1CodeExecution = $Empty;
+
+/// The arguments to pass to the code execution.
+typedef GenaiVertexV1CodeExecutionCallContentCodeExecutionCallArguments =
+    $Arguments00;
+
+class GenaiVertexV1CodeExecutionCallDelta {
+  GenaiVertexV1CodeExecutionCallContentCodeExecutionCallArguments? arguments;
+
+  GenaiVertexV1CodeExecutionCallDelta({this.arguments});
+
+  GenaiVertexV1CodeExecutionCallDelta.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1CodeExecutionCallContentCodeExecutionCallArguments.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    return {'arguments': ?arguments};
+  }
+}
+
+/// Code execution call step.
+class GenaiVertexV1CodeExecutionCallStep {
+  /// The arguments to pass to the code execution.
+  ///
+  /// Required.
+  GenaiVertexV1CodeExecutionCallStepCodeExecutionCallStepArguments? arguments;
+
+  GenaiVertexV1CodeExecutionCallStep({this.arguments});
+
+  GenaiVertexV1CodeExecutionCallStep.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1CodeExecutionCallStepCodeExecutionCallStepArguments.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    return {'arguments': ?arguments};
+  }
+}
+
+/// The arguments to pass to the code execution.
+typedef GenaiVertexV1CodeExecutionCallStepCodeExecutionCallStepArguments =
+    $Arguments00;
+
+class GenaiVertexV1CodeExecutionResultDelta {
+  core.bool? isError;
+  core.String? result;
+
+  GenaiVertexV1CodeExecutionResultDelta({this.isError, this.result});
+
+  GenaiVertexV1CodeExecutionResultDelta.fromJson(core.Map json_)
+    : this(
+        isError: json_['isError'] as core.bool?,
+        result: json_['result'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isError = this.isError;
+    final result = this.result;
+    return {'isError': ?isError, 'result': ?result};
+  }
+}
+
+/// Code execution result step.
+class GenaiVertexV1CodeExecutionResultStep {
+  /// Whether the code execution resulted in an error.
+  core.bool? isError;
+
+  /// The output of the code execution.
+  ///
+  /// Required.
+  core.String? result;
+
+  GenaiVertexV1CodeExecutionResultStep({this.isError, this.result});
+
+  GenaiVertexV1CodeExecutionResultStep.fromJson(core.Map json_)
+    : this(
+        isError: json_['isError'] as core.bool?,
+        result: json_['result'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isError = this.isError;
+    final result = this.result;
+    return {'isError': ?isError, 'result': ?result};
+  }
+}
+
+/// Configuration for the CodeMender agent.
+class GenaiVertexV1CodeMenderAgentConfig {
+  /// Parameters for finding vulnerabilities.
+  GenaiVertexV1CodeMenderAgentConfigFindRequest? findRequest;
+
+  /// Parameters for fixing vulnerabilities.
+  GenaiVertexV1CodeMenderAgentConfigFixRequest? fixRequest;
+
+  /// The name of the model to use for the CodeMender agent.
+  ///
+  /// One CodeMender session will only use one model.
+  core.String? model;
+
+  /// Optional session-specific configurations to override default agent
+  /// behavior.
+  GenaiVertexV1CodeMenderAgentConfigSessionConfig? sessionConfig;
+
+  /// Parameter for grouping multiple interactions that belong to the same
+  /// CodeMender session.
+  core.String? sessionId;
+
+  GenaiVertexV1CodeMenderAgentConfig({
+    this.findRequest,
+    this.fixRequest,
+    this.model,
+    this.sessionConfig,
+    this.sessionId,
+  });
+
+  GenaiVertexV1CodeMenderAgentConfig.fromJson(core.Map json_)
+    : this(
+        findRequest: json_.containsKey('findRequest')
+            ? GenaiVertexV1CodeMenderAgentConfigFindRequest.fromJson(
+                json_['findRequest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fixRequest: json_.containsKey('fixRequest')
+            ? GenaiVertexV1CodeMenderAgentConfigFixRequest.fromJson(
+                json_['fixRequest'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        model: json_['model'] as core.String?,
+        sessionConfig: json_.containsKey('sessionConfig')
+            ? GenaiVertexV1CodeMenderAgentConfigSessionConfig.fromJson(
+                json_['sessionConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sessionId: json_['sessionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final findRequest = this.findRequest;
+    final fixRequest = this.fixRequest;
+    final model = this.model;
+    final sessionConfig = this.sessionConfig;
+    final sessionId = this.sessionId;
+    return {
+      'findRequest': ?findRequest,
+      'fixRequest': ?fixRequest,
+      'model': ?model,
+      'sessionConfig': ?sessionConfig,
+      'sessionId': ?sessionId,
+    };
+  }
+}
+
+/// Content of a single file in the codebase.
+class GenaiVertexV1CodeMenderAgentConfigFileContent {
+  /// The UTF-8 encoded text content of the file.
+  core.String? content;
+
+  /// The relative path of the file from the project root.
+  core.String? path;
+
+  GenaiVertexV1CodeMenderAgentConfigFileContent({this.content, this.path});
+
+  GenaiVertexV1CodeMenderAgentConfigFileContent.fromJson(core.Map json_)
+    : this(
+        content: json_['content'] as core.String?,
+        path: json_['path'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final path = this.path;
+    return {'content': ?content, 'path': ?path};
+  }
+}
+
+/// Request parameters specific to FIND sessions, used for discovering
+/// vulnerabilities in a codebase.
+class GenaiVertexV1CodeMenderAgentConfigFindRequest {
+  /// Additional context or custom instructions provided by the user to guide
+  /// the vulnerability analysis.
+  core.String? description;
+
+  /// The identifier of a specific finding to verify.
+  ///
+  /// This is primarily used in VERIFY mode to focus the agent's execution-based
+  /// validation on a single vulnerability.
+  core.String? findingId;
+
+  /// The mode of the find session.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "MODE_SCAN" : Fast scan using only the initial classifier.
+  /// - "MODE_VERIFY" : Performs classification followed by detailed
+  /// investigation.
+  core.String? mode;
+
+  /// A list of source files to provide as context for the scan.
+  core.List<GenaiVertexV1CodeMenderAgentConfigFileContent>? sourceFiles;
+
+  GenaiVertexV1CodeMenderAgentConfigFindRequest({
+    this.description,
+    this.findingId,
+    this.mode,
+    this.sourceFiles,
+  });
+
+  GenaiVertexV1CodeMenderAgentConfigFindRequest.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        findingId: json_['findingId'] as core.String?,
+        mode: json_['mode'] as core.String?,
+        sourceFiles: (json_['sourceFiles'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1CodeMenderAgentConfigFileContent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final findingId = this.findingId;
+    final mode = this.mode;
+    final sourceFiles = this.sourceFiles;
+    return {
+      'description': ?description,
+      'findingId': ?findingId,
+      'mode': ?mode,
+      'sourceFiles': ?sourceFiles,
+    };
+  }
+}
+
+/// Request parameters specific to FIX sessions, used for generating and
+/// validating security patches.
+class GenaiVertexV1CodeMenderAgentConfigFixRequest {
+  /// Additional context or custom instructions provided by the user to guide
+  /// the patch generation process.
+  core.String? description;
+
+  /// The identifier of the specific security finding to be remediated.
+  ///
+  /// This ID maps to a previously discovered vulnerability.
+  core.String? findingId;
+
+  /// A list of source files providing context for the remediation.
+  ///
+  /// These files are typically the ones containing the identified
+  /// vulnerability.
+  core.List<GenaiVertexV1CodeMenderAgentConfigFileContent>? sourceFiles;
+
+  GenaiVertexV1CodeMenderAgentConfigFixRequest({
+    this.description,
+    this.findingId,
+    this.sourceFiles,
+  });
+
+  GenaiVertexV1CodeMenderAgentConfigFixRequest.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        findingId: json_['findingId'] as core.String?,
+        sourceFiles: (json_['sourceFiles'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1CodeMenderAgentConfigFileContent.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final findingId = this.findingId;
+    final sourceFiles = this.sourceFiles;
+    return {
+      'description': ?description,
+      'findingId': ?findingId,
+      'sourceFiles': ?sourceFiles,
+    };
+  }
+}
+
+/// The configuration of CodeMender sessions.
+class GenaiVertexV1CodeMenderAgentConfigSessionConfig {
+  /// The maximum number of interaction rounds the agent is allowed to perform
+  /// before reaching a timeout.
+  core.int? maxRounds;
+
+  GenaiVertexV1CodeMenderAgentConfigSessionConfig({this.maxRounds});
+
+  GenaiVertexV1CodeMenderAgentConfigSessionConfig.fromJson(core.Map json_)
+    : this(maxRounds: json_['maxRounds'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxRounds = this.maxRounds;
+    return {'maxRounds': ?maxRounds};
+  }
+}
+
+/// A tool that can be used by the model to interact with the computer.
+class GenaiVertexV1ComputerUse {
+  /// Disabled safety policies for computer use.
+  ///
+  /// Optional.
+  core.List<core.String>? disabledSafetyPolicies;
+
+  /// Whether enable the prompt injection detection check on computer-use
+  /// request.
+  core.bool? enablePromptInjectionDetection;
+
+  /// The environment being operated.
+  /// Possible string values are:
+  /// - "ENVIRONMENT_UNSPECIFIED" : Defaults to browser.
+  /// - "BROWSER" : Operates in a web browser.
+  /// - "MOBILE" : Operates in a mobile environment.
+  /// - "DESKTOP" : Operates in a desktop environment.
+  core.String? environment;
+
+  /// The list of predefined functions that are excluded from the model call.
+  core.List<core.String>? excludedPredefinedFunctions;
+
+  GenaiVertexV1ComputerUse({
+    this.disabledSafetyPolicies,
+    this.enablePromptInjectionDetection,
+    this.environment,
+    this.excludedPredefinedFunctions,
+  });
+
+  GenaiVertexV1ComputerUse.fromJson(core.Map json_)
+    : this(
+        disabledSafetyPolicies: (json_['disabledSafetyPolicies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        enablePromptInjectionDetection:
+            json_['enablePromptInjectionDetection'] as core.bool?,
+        environment: json_['environment'] as core.String?,
+        excludedPredefinedFunctions:
+            (json_['excludedPredefinedFunctions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final disabledSafetyPolicies = this.disabledSafetyPolicies;
+    final enablePromptInjectionDetection = this.enablePromptInjectionDetection;
+    final environment = this.environment;
+    final excludedPredefinedFunctions = this.excludedPredefinedFunctions;
+    return {
+      'disabledSafetyPolicies': ?disabledSafetyPolicies,
+      'enablePromptInjectionDetection': ?enablePromptInjectionDetection,
+      'environment': ?environment,
+      'excludedPredefinedFunctions': ?excludedPredefinedFunctions,
+    };
+  }
+}
+
+/// The content of the response.
+class GenaiVertexV1Content {
+  GenaiVertexV1AudioContent? audio;
+  GenaiVertexV1DocumentContent? document;
+  GenaiVertexV1ImageContent? image;
+  GenaiVertexV1TextContent? text;
+  GenaiVertexV1VideoContent? video;
+
+  GenaiVertexV1Content({
+    this.audio,
+    this.document,
+    this.image,
+    this.text,
+    this.video,
+  });
+
+  GenaiVertexV1Content.fromJson(core.Map json_)
+    : this(
+        audio: json_.containsKey('audio')
+            ? GenaiVertexV1AudioContent.fromJson(
+                json_['audio'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        document: json_.containsKey('document')
+            ? GenaiVertexV1DocumentContent.fromJson(
+                json_['document'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        image: json_.containsKey('image')
+            ? GenaiVertexV1ImageContent.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        text: json_.containsKey('text')
+            ? GenaiVertexV1TextContent.fromJson(
+                json_['text'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        video: json_.containsKey('video')
+            ? GenaiVertexV1VideoContent.fromJson(
+                json_['video'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final audio = this.audio;
+    final document = this.document;
+    final image = this.image;
+    final text = this.text;
+    final video = this.video;
+    return {
+      'audio': ?audio,
+      'document': ?document,
+      'image': ?image,
+      'text': ?text,
+      'video': ?video,
+    };
+  }
+}
+
+/// A list of Content.
+class GenaiVertexV1ContentList {
+  /// The contents of the list.
+  core.List<GenaiVertexV1Content>? contents;
+
+  GenaiVertexV1ContentList({this.contents});
+
+  GenaiVertexV1ContentList.fromJson(core.Map json_)
+    : this(
+        contents: (json_['contents'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1Content.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contents = this.contents;
+    return {'contents': ?contents};
+  }
+}
+
+/// Request message for \[InteractionsService.CreateInteractionHttp\].
+class GenaiVertexV1CreateInteractionHttpRequest {
+  /// The interaction to create.
+  ///
+  /// Required.
+  GoogleApiHttpBody? httpBody;
+
+  GenaiVertexV1CreateInteractionHttpRequest({this.httpBody});
+
+  GenaiVertexV1CreateInteractionHttpRequest.fromJson(core.Map json_)
+    : this(
+        httpBody: json_.containsKey('httpBody')
+            ? GoogleApiHttpBody.fromJson(
+                json_['httpBody'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final httpBody = this.httpBody;
+    return {'httpBody': ?httpBody};
+  }
+}
+
+/// Configuration parameters for creating an interaction.
+class GenaiVertexV1CreateInteractionRequest {
+  /// Input only.
+  ///
+  /// Whether to run the model interaction in the background.
+  core.bool? background;
+
+  /// The interaction to create.
+  GenaiVertexV1Interaction? interaction;
+
+  /// Input only.
+  ///
+  /// Whether to store the response and request for later retrieval.
+  core.bool? store;
+
+  /// Input only.
+  ///
+  /// Whether the interaction will be streamed.
+  core.bool? stream;
+
+  GenaiVertexV1CreateInteractionRequest({
+    this.background,
+    this.interaction,
+    this.store,
+    this.stream,
+  });
+
+  GenaiVertexV1CreateInteractionRequest.fromJson(core.Map json_)
+    : this(
+        background: json_['background'] as core.bool?,
+        interaction: json_.containsKey('interaction')
+            ? GenaiVertexV1Interaction.fromJson(
+                json_['interaction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        store: json_['store'] as core.bool?,
+        stream: json_['stream'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final background = this.background;
+    final interaction = this.interaction;
+    final store = this.store;
+    final stream = this.stream;
+    return {
+      'background': ?background,
+      'interaction': ?interaction,
+      'store': ?store,
+      'stream': ?stream,
+    };
+  }
+}
+
+/// Configuration for the Deep Research agent.
+class GenaiVertexV1DeepResearchAgentConfig {
+  /// Enables human-in-the-loop planning for the Deep Research agent.
+  ///
+  /// If set to true, the Deep Research agent will provide a research plan in
+  /// its response. The agent will then proceed only if the user confirms the
+  /// plan in the next turn.
+  core.bool? collaborativePlanning;
+
+  /// Enables bigquery tool for the Deep Research agent.
+  core.bool? enableBigqueryTool;
+
+  /// Whether to include thought summaries in the response.
+  /// Possible string values are:
+  /// - "THINKING_SUMMARIES_UNSPECIFIED" : Default value. This value is unused.
+  /// - "THINKING_SUMMARIES_AUTO" : Auto thinking summaries.
+  /// - "THINKING_SUMMARIES_NONE" : No thinking summaries.
+  core.String? thinkingSummaries;
+
+  /// Whether to include visualizations in the response.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : The default visualization mode. Will default to AUTO.
+  /// - "OFF" : Do not include visualizations.
+  /// - "AUTO" : Automatically include visualizations.
+  core.String? visualization;
+
+  GenaiVertexV1DeepResearchAgentConfig({
+    this.collaborativePlanning,
+    this.enableBigqueryTool,
+    this.thinkingSummaries,
+    this.visualization,
+  });
+
+  GenaiVertexV1DeepResearchAgentConfig.fromJson(core.Map json_)
+    : this(
+        collaborativePlanning: json_['collaborativePlanning'] as core.bool?,
+        enableBigqueryTool: json_['enableBigqueryTool'] as core.bool?,
+        thinkingSummaries: json_['thinkingSummaries'] as core.String?,
+        visualization: json_['visualization'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final collaborativePlanning = this.collaborativePlanning;
+    final enableBigqueryTool = this.enableBigqueryTool;
+    final thinkingSummaries = this.thinkingSummaries;
+    final visualization = this.visualization;
+    return {
+      'collaborativePlanning': ?collaborativePlanning,
+      'enableBigqueryTool': ?enableBigqueryTool,
+      'thinkingSummaries': ?thinkingSummaries,
+      'visualization': ?visualization,
+    };
+  }
+}
+
+/// Response for InteractionService.DeleteInteraction.
+typedef GenaiVertexV1DeleteInteractionResponse = $Empty;
+
+/// A document content block.
+class GenaiVertexV1DocumentContent {
+  /// The document content.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Flexible MIME type string of the document, superseding mime_type = 1.
+  ///
+  /// Note: Bespoke logic in the GAOS parser/serializer maps this to the
+  /// "mime_type" JSON key.
+  core.String? mimeTypeString;
+
+  /// The URI of the document.
+  core.String? uri;
+
+  GenaiVertexV1DocumentContent({this.data, this.mimeTypeString, this.uri});
+
+  GenaiVertexV1DocumentContent.fromJson(core.Map json_)
+    : this(
+        data: json_['data'] as core.String?,
+        mimeTypeString: json_['mimeTypeString'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final mimeTypeString = this.mimeTypeString;
+    final uri = this.uri;
+    return {'data': ?data, 'mimeTypeString': ?mimeTypeString, 'uri': ?uri};
+  }
+}
+
+class GenaiVertexV1DocumentDelta {
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ///
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED"
+  /// - "TYPE_PDF" : PDF document format
+  /// - "TYPE_CSV" : CSV document format
+  core.String? mimeType;
+  core.String? uri;
+
+  GenaiVertexV1DocumentDelta({this.data, this.mimeType, this.uri});
+
+  GenaiVertexV1DocumentDelta.fromJson(core.Map json_)
+    : this(
+        data: json_['data'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final mimeType = this.mimeType;
+    final uri = this.uri;
+    return {'data': ?data, 'mimeType': ?mimeType, 'uri': ?uri};
+  }
+}
+
+/// Configuration for dynamic agents.
+class GenaiVertexV1DynamicAgentConfig {
+  /// For agents that are not supported statically in the API definition.
+  GenaiVertexV1Struct? config;
+
+  GenaiVertexV1DynamicAgentConfig({this.config});
+
+  GenaiVertexV1DynamicAgentConfig.fromJson(core.Map json_)
+    : this(
+        config: json_.containsKey('config')
+            ? GenaiVertexV1Struct.fromJson(
+                json_['config'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final config = this.config;
+    return {'config': ?config};
+  }
+}
+
+/// Error message from an interaction.
+class GenaiVertexV1Error {
+  /// A URI that identifies the error type.
+  core.String? code;
+
+  /// A human-readable error message.
+  core.String? message;
+
+  GenaiVertexV1Error({this.code, this.message});
+
+  GenaiVertexV1Error.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final message = this.message;
+    return {'code': ?code, 'message': ?message};
+  }
+}
+
+class GenaiVertexV1ErrorEvent {
+  GenaiVertexV1Error? error;
+
+  GenaiVertexV1ErrorEvent({this.error});
+
+  GenaiVertexV1ErrorEvent.fromJson(core.Map json_)
+    : this(
+        error: json_.containsKey('error')
+            ? GenaiVertexV1Error.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    return {'error': ?error};
+  }
+}
+
+/// Used to specify configuration for ExaAISearch.
+class GenaiVertexV1ExaAISearchConfig {
+  /// The API key for ExaAiSearch.
+  ///
+  /// Required.
+  core.String? apiKey;
+
+  /// This field can be used to pass any parameter from the Exa.ai Search API.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customConfig;
+
+  GenaiVertexV1ExaAISearchConfig({this.apiKey, this.customConfig});
+
+  GenaiVertexV1ExaAISearchConfig.fromJson(core.Map json_)
+    : this(
+        apiKey: json_['apiKey'] as core.String?,
+        customConfig: json_.containsKey('customConfig')
+            ? json_['customConfig'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKey = this.apiKey;
+    final customConfig = this.customConfig;
+    return {'apiKey': ?apiKey, 'customConfig': ?customConfig};
+  }
+}
+
+/// Represents a single field in a struct.
+class GenaiVertexV1Field {
+  core.String? name;
+  GenaiVertexV1Value? value;
+
+  GenaiVertexV1Field({this.name, this.value});
+
+  GenaiVertexV1Field.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_.containsKey('value')
+            ? GenaiVertexV1Value.fromJson(
+                json_['value'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final value = this.value;
+    return {'name': ?name, 'value': ?value};
+  }
+}
+
+/// A file citation annotation.
+class GenaiVertexV1FileCitation {
+  /// User provided metadata about the retrieved context.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customMetadata;
+
+  /// The URI of the file.
+  core.String? documentUri;
+
+  /// The name of the file.
+  core.String? fileName;
+
+  /// Media ID in-case of image citations, if applicable.
+  core.String? mediaId;
+
+  /// Page number of the cited document, if applicable.
+  core.int? pageNumber;
+
+  /// Source attributed for a portion of the text.
+  core.String? source;
+
+  GenaiVertexV1FileCitation({
+    this.customMetadata,
+    this.documentUri,
+    this.fileName,
+    this.mediaId,
+    this.pageNumber,
+    this.source,
+  });
+
+  GenaiVertexV1FileCitation.fromJson(core.Map json_)
+    : this(
+        customMetadata: json_.containsKey('customMetadata')
+            ? json_['customMetadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        documentUri: json_['documentUri'] as core.String?,
+        fileName: json_['fileName'] as core.String?,
+        mediaId: json_['mediaId'] as core.String?,
+        pageNumber: json_['pageNumber'] as core.int?,
+        source: json_['source'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final customMetadata = this.customMetadata;
+    final documentUri = this.documentUri;
+    final fileName = this.fileName;
+    final mediaId = this.mediaId;
+    final pageNumber = this.pageNumber;
+    final source = this.source;
+    return {
+      'customMetadata': ?customMetadata,
+      'documentUri': ?documentUri,
+      'fileName': ?fileName,
+      'mediaId': ?mediaId,
+      'pageNumber': ?pageNumber,
+      'source': ?source,
+    };
+  }
+}
+
+/// A tool that can be used by the model to search files.
+class GenaiVertexV1FileSearch {
+  /// The file search store names to search.
+  core.List<core.String>? fileSearchStoreNames;
+
+  /// Metadata filter to apply to the semantic retrieval documents and chunks.
+  core.String? metadataFilter;
+
+  /// The number of semantic retrieval chunks to retrieve.
+  core.int? topK;
+
+  GenaiVertexV1FileSearch({
+    this.fileSearchStoreNames,
+    this.metadataFilter,
+    this.topK,
+  });
+
+  GenaiVertexV1FileSearch.fromJson(core.Map json_)
+    : this(
+        fileSearchStoreNames: (json_['fileSearchStoreNames'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        metadataFilter: json_['metadataFilter'] as core.String?,
+        topK: json_['topK'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fileSearchStoreNames = this.fileSearchStoreNames;
+    final metadataFilter = this.metadataFilter;
+    final topK = this.topK;
+    return {
+      'fileSearchStoreNames': ?fileSearchStoreNames,
+      'metadataFilter': ?metadataFilter,
+      'topK': ?topK,
+    };
+  }
+}
+
+typedef GenaiVertexV1FileSearchCallDelta = $Empty;
+
+/// File Search call step.
+typedef GenaiVertexV1FileSearchCallStep = $Empty;
+
+/// The result of the File Search.
+typedef GenaiVertexV1FileSearchResultContentFileSearchResult = $Empty;
+
+class GenaiVertexV1FileSearchResultDelta {
+  core.List<GenaiVertexV1FileSearchResultContentFileSearchResult>? result;
+
+  GenaiVertexV1FileSearchResultDelta({this.result});
+
+  GenaiVertexV1FileSearchResultDelta.fromJson(core.Map json_)
+    : this(
+        result: (json_['result'] as core.List?)
+            ?.map(
+              (value) =>
+                  GenaiVertexV1FileSearchResultContentFileSearchResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final result = this.result;
+    return {'result': ?result};
+  }
+}
+
+/// File Search result step.
+typedef GenaiVertexV1FileSearchResultStep = $Empty;
+
+/// A tool that can be used by the model.
+class GenaiVertexV1Function {
+  /// A description of the function.
+  core.String? description;
+
+  /// The name of the function.
+  core.String? name;
+
+  /// The JSON Schema for the function's parameters.
+  GenaiVertexV1Value? parameters;
+
+  GenaiVertexV1Function({this.description, this.name, this.parameters});
+
+  GenaiVertexV1Function.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+        parameters: json_.containsKey('parameters')
+            ? GenaiVertexV1Value.fromJson(
+                json_['parameters'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final name = this.name;
+    final parameters = this.parameters;
+    return {
+      'description': ?description,
+      'name': ?name,
+      'parameters': ?parameters,
+    };
+  }
+}
+
+/// A function tool call step.
+class GenaiVertexV1FunctionCallStep {
+  /// The arguments to pass to the function.
+  ///
+  /// Required.
+  GenaiVertexV1Struct? arguments;
+
+  /// The name of the tool to call.
+  ///
+  /// Required.
+  core.String? name;
+
+  GenaiVertexV1FunctionCallStep({this.arguments, this.name});
+
+  GenaiVertexV1FunctionCallStep.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1Struct.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    final name = this.name;
+    return {'arguments': ?arguments, 'name': ?name};
+  }
+}
+
+class GenaiVertexV1FunctionResultDelta {
+  core.bool? isError;
+  core.String? name;
+  GenaiVertexV1Value? result;
+
+  GenaiVertexV1FunctionResultDelta({this.isError, this.name, this.result});
+
+  GenaiVertexV1FunctionResultDelta.fromJson(core.Map json_)
+    : this(
+        isError: json_['isError'] as core.bool?,
+        name: json_['name'] as core.String?,
+        result: json_.containsKey('result')
+            ? GenaiVertexV1Value.fromJson(
+                json_['result'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isError = this.isError;
+    final name = this.name;
+    final result = this.result;
+    return {'isError': ?isError, 'name': ?name, 'result': ?result};
+  }
+}
+
+/// Result of a function tool call.
+class GenaiVertexV1FunctionResultStep {
+  /// Whether the tool call resulted in an error.
+  core.bool? isError;
+
+  /// The name of the tool that was called.
+  core.String? name;
+
+  /// The result of the tool call.
+  ///
+  /// Required.
+  GenaiVertexV1Value? result;
+
+  GenaiVertexV1FunctionResultStep({this.isError, this.name, this.result});
+
+  GenaiVertexV1FunctionResultStep.fromJson(core.Map json_)
+    : this(
+        isError: json_['isError'] as core.bool?,
+        name: json_['name'] as core.String?,
+        result: json_.containsKey('result')
+            ? GenaiVertexV1Value.fromJson(
+                json_['result'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isError = this.isError;
+    final name = this.name;
+    final result = this.result;
+    return {'isError': ?isError, 'name': ?name, 'result': ?result};
+  }
+}
+
+/// Configuration parameters for model interactions.
+class GenaiVertexV1GenerationConfig {
+  /// The maximum number of tokens to include in the response.
+  core.int? maxOutputTokens;
+
+  /// Seed used in decoding for reproducibility.
+  core.int? seed;
+
+  /// A list of character sequences that will stop output interaction.
+  core.List<core.String>? stopSequences;
+
+  /// Speech and multi-speaker configuration.
+  GenaiVertexV1SpeakerConfig? structuredSpeechConfig;
+
+  /// Controls the randomness of the output.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.double? temperature;
+
+  /// The level of thought tokens that the model should generate.
+  /// Possible string values are:
+  /// - "THINKING_LEVEL_UNSPECIFIED" : Default value. This value is unused.
+  /// - "THINKING_LEVEL_MINIMAL" : Little to no thinking.
+  /// - "THINKING_LEVEL_LOW" : Low thinking level.
+  /// - "THINKING_LEVEL_MEDIUM" : Medium thinking level.
+  /// - "THINKING_LEVEL_HIGH" : High thinking level.
+  core.String? thinkingLevel;
+
+  /// Whether to include thought summaries in the response.
+  /// Possible string values are:
+  /// - "THINKING_SUMMARIES_UNSPECIFIED" : Default value. This value is unused.
+  /// - "THINKING_SUMMARIES_AUTO" : Auto thinking summaries.
+  /// - "THINKING_SUMMARIES_NONE" : No thinking summaries.
+  core.String? thinkingSummaries;
+
+  /// The config for the tool choice.
+  GenaiVertexV1ToolChoiceConfig? toolChoiceConfig;
+
+  /// The mode of the tool choice.
+  /// Possible string values are:
+  /// - "TOOL_CHOICE_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "AUTO" : Auto tool choice.
+  /// - "ANY" : Any tool choice.
+  /// - "NONE" : No tool choice.
+  /// - "VALIDATED" : Validated tool choice.
+  core.String? toolChoiceMode;
+
+  /// The maximum cumulative probability of tokens to consider when sampling.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.double? topP;
+
+  /// Configuration for speech recognition (transcription).
+  ///
+  /// If present, ASR is enabled.
+  ///
+  /// Optional.
+  GenaiVertexV1TranscriptionConfig? transcriptionConfig;
+
+  /// Configuration for video generation.
+  GenaiVertexV1VideoConfig? videoConfig;
+
+  GenaiVertexV1GenerationConfig({
+    this.maxOutputTokens,
+    this.seed,
+    this.stopSequences,
+    this.structuredSpeechConfig,
+    this.temperature,
+    this.thinkingLevel,
+    this.thinkingSummaries,
+    this.toolChoiceConfig,
+    this.toolChoiceMode,
+    this.topP,
+    this.transcriptionConfig,
+    this.videoConfig,
+  });
+
+  GenaiVertexV1GenerationConfig.fromJson(core.Map json_)
+    : this(
+        maxOutputTokens: json_['maxOutputTokens'] as core.int?,
+        seed: json_['seed'] as core.int?,
+        stopSequences: (json_['stopSequences'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        structuredSpeechConfig: json_.containsKey('structuredSpeechConfig')
+            ? GenaiVertexV1SpeakerConfig.fromJson(
+                json_['structuredSpeechConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        temperature: (json_['temperature'] as core.num?)?.toDouble(),
+        thinkingLevel: json_['thinkingLevel'] as core.String?,
+        thinkingSummaries: json_['thinkingSummaries'] as core.String?,
+        toolChoiceConfig: json_.containsKey('toolChoiceConfig')
+            ? GenaiVertexV1ToolChoiceConfig.fromJson(
+                json_['toolChoiceConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolChoiceMode: json_['toolChoiceMode'] as core.String?,
+        topP: (json_['topP'] as core.num?)?.toDouble(),
+        transcriptionConfig: json_.containsKey('transcriptionConfig')
+            ? GenaiVertexV1TranscriptionConfig.fromJson(
+                json_['transcriptionConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        videoConfig: json_.containsKey('videoConfig')
+            ? GenaiVertexV1VideoConfig.fromJson(
+                json_['videoConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final maxOutputTokens = this.maxOutputTokens;
+    final seed = this.seed;
+    final stopSequences = this.stopSequences;
+    final structuredSpeechConfig = this.structuredSpeechConfig;
+    final temperature = this.temperature;
+    final thinkingLevel = this.thinkingLevel;
+    final thinkingSummaries = this.thinkingSummaries;
+    final toolChoiceConfig = this.toolChoiceConfig;
+    final toolChoiceMode = this.toolChoiceMode;
+    final topP = this.topP;
+    final transcriptionConfig = this.transcriptionConfig;
+    final videoConfig = this.videoConfig;
+    return {
+      'maxOutputTokens': ?maxOutputTokens,
+      'seed': ?seed,
+      'stopSequences': ?stopSequences,
+      'structuredSpeechConfig': ?structuredSpeechConfig,
+      'temperature': ?temperature,
+      'thinkingLevel': ?thinkingLevel,
+      'thinkingSummaries': ?thinkingSummaries,
+      'toolChoiceConfig': ?toolChoiceConfig,
+      'toolChoiceMode': ?toolChoiceMode,
+      'topP': ?topP,
+      'transcriptionConfig': ?transcriptionConfig,
+      'videoConfig': ?videoConfig,
+    };
+  }
+}
+
+/// A tool that can be used by the model to call Google Maps.
+class GenaiVertexV1GoogleMaps {
+  /// Whether to return a widget context token in the tool call result of the
+  /// response.
+  core.bool? enableWidget;
+
+  /// The latitude of the user's location.
+  core.double? latitude;
+
+  /// The longitude of the user's location.
+  core.double? longitude;
+
+  GenaiVertexV1GoogleMaps({this.enableWidget, this.latitude, this.longitude});
+
+  GenaiVertexV1GoogleMaps.fromJson(core.Map json_)
+    : this(
+        enableWidget: json_['enableWidget'] as core.bool?,
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enableWidget = this.enableWidget;
+    final latitude = this.latitude;
+    final longitude = this.longitude;
+    return {
+      'enableWidget': ?enableWidget,
+      'latitude': ?latitude,
+      'longitude': ?longitude,
+    };
+  }
+}
+
+/// The arguments to pass to the Google Maps tool.
+typedef GenaiVertexV1GoogleMapsCallContentGoogleMapsCallArguments =
+    $Arguments01;
+
+class GenaiVertexV1GoogleMapsCallDelta {
+  /// The arguments to pass to the Google Maps tool.
+  GenaiVertexV1GoogleMapsCallContentGoogleMapsCallArguments? arguments;
+
+  GenaiVertexV1GoogleMapsCallDelta({this.arguments});
+
+  GenaiVertexV1GoogleMapsCallDelta.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1GoogleMapsCallContentGoogleMapsCallArguments.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    return {'arguments': ?arguments};
+  }
+}
+
+/// Google Maps call step.
+class GenaiVertexV1GoogleMapsCallStep {
+  /// The arguments to pass to the Google Maps tool.
+  GenaiVertexV1GoogleMapsCallStepGoogleMapsCallStepArguments? arguments;
+
+  GenaiVertexV1GoogleMapsCallStep({this.arguments});
+
+  GenaiVertexV1GoogleMapsCallStep.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1GoogleMapsCallStepGoogleMapsCallStepArguments.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    return {'arguments': ?arguments};
+  }
+}
+
+/// The arguments to pass to the Google Maps tool.
+typedef GenaiVertexV1GoogleMapsCallStepGoogleMapsCallStepArguments =
+    $Arguments01;
+
+/// The result of the Google Maps.
+class GenaiVertexV1GoogleMapsResultContentGoogleMapsResult {
+  /// The places that were found.
+  core.List<GenaiVertexV1GoogleMapsResultContentGoogleMapsResultPlaces>? places;
+
+  /// Resource name of the Google Maps widget context token.
+  core.String? widgetContextToken;
+
+  GenaiVertexV1GoogleMapsResultContentGoogleMapsResult({
+    this.places,
+    this.widgetContextToken,
+  });
+
+  GenaiVertexV1GoogleMapsResultContentGoogleMapsResult.fromJson(core.Map json_)
+    : this(
+        places: (json_['places'] as core.List?)
+            ?.map(
+              (value) =>
+                  GenaiVertexV1GoogleMapsResultContentGoogleMapsResultPlaces.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        widgetContextToken: json_['widgetContextToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final places = this.places;
+    final widgetContextToken = this.widgetContextToken;
+    return {'places': ?places, 'widgetContextToken': ?widgetContextToken};
+  }
+}
+
+class GenaiVertexV1GoogleMapsResultContentGoogleMapsResultPlaces {
+  /// Title of the place.
+  core.String? name;
+
+  /// The ID of the place, in `places/{place_id}` format.
+  core.String? placeId;
+
+  /// Snippets of reviews that are used to generate answers about the features
+  /// of a given place in Google Maps.
+  core.List<GenaiVertexV1ReviewSnippet>? reviewSnippets;
+
+  /// URI reference of the place.
+  core.String? url;
+
+  GenaiVertexV1GoogleMapsResultContentGoogleMapsResultPlaces({
+    this.name,
+    this.placeId,
+    this.reviewSnippets,
+    this.url,
+  });
+
+  GenaiVertexV1GoogleMapsResultContentGoogleMapsResultPlaces.fromJson(
+    core.Map json_,
+  ) : this(
+        name: json_['name'] as core.String?,
+        placeId: json_['placeId'] as core.String?,
+        reviewSnippets: (json_['reviewSnippets'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1ReviewSnippet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final placeId = this.placeId;
+    final reviewSnippets = this.reviewSnippets;
+    final url = this.url;
+    return {
+      'name': ?name,
+      'placeId': ?placeId,
+      'reviewSnippets': ?reviewSnippets,
+      'url': ?url,
+    };
+  }
+}
+
+class GenaiVertexV1GoogleMapsResultDelta {
+  /// The results of the Google Maps.
+  core.List<GenaiVertexV1GoogleMapsResultContentGoogleMapsResult>? result;
+
+  GenaiVertexV1GoogleMapsResultDelta({this.result});
+
+  GenaiVertexV1GoogleMapsResultDelta.fromJson(core.Map json_)
+    : this(
+        result: (json_['result'] as core.List?)
+            ?.map(
+              (value) =>
+                  GenaiVertexV1GoogleMapsResultContentGoogleMapsResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final result = this.result;
+    return {'result': ?result};
+  }
+}
+
+/// Google Maps result step.
+class GenaiVertexV1GoogleMapsResultStep {
+  core.List<GenaiVertexV1GoogleMapsResultStepGoogleMapsResultItem>? result;
+
+  GenaiVertexV1GoogleMapsResultStep({this.result});
+
+  GenaiVertexV1GoogleMapsResultStep.fromJson(core.Map json_)
+    : this(
+        result: (json_['result'] as core.List?)
+            ?.map(
+              (value) =>
+                  GenaiVertexV1GoogleMapsResultStepGoogleMapsResultItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final result = this.result;
+    return {'result': ?result};
+  }
+}
+
+/// The result of the Google Maps.
+class GenaiVertexV1GoogleMapsResultStepGoogleMapsResultItem {
+  core.List<
+    GenaiVertexV1GoogleMapsResultStepGoogleMapsResultItemGoogleMapsResultPlaces
+  >?
+  places;
+  core.String? widgetContextToken;
+
+  GenaiVertexV1GoogleMapsResultStepGoogleMapsResultItem({
+    this.places,
+    this.widgetContextToken,
+  });
+
+  GenaiVertexV1GoogleMapsResultStepGoogleMapsResultItem.fromJson(core.Map json_)
+    : this(
+        places: (json_['places'] as core.List?)
+            ?.map(
+              (value) =>
+                  GenaiVertexV1GoogleMapsResultStepGoogleMapsResultItemGoogleMapsResultPlaces.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        widgetContextToken: json_['widgetContextToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final places = this.places;
+    final widgetContextToken = this.widgetContextToken;
+    return {'places': ?places, 'widgetContextToken': ?widgetContextToken};
+  }
+}
+
+class GenaiVertexV1GoogleMapsResultStepGoogleMapsResultItemGoogleMapsResultPlaces {
+  core.String? name;
+  core.String? placeId;
+  core.List<GenaiVertexV1ReviewSnippet>? reviewSnippets;
+  core.String? url;
+
+  GenaiVertexV1GoogleMapsResultStepGoogleMapsResultItemGoogleMapsResultPlaces({
+    this.name,
+    this.placeId,
+    this.reviewSnippets,
+    this.url,
+  });
+
+  GenaiVertexV1GoogleMapsResultStepGoogleMapsResultItemGoogleMapsResultPlaces.fromJson(
+    core.Map json_,
+  ) : this(
+        name: json_['name'] as core.String?,
+        placeId: json_['placeId'] as core.String?,
+        reviewSnippets: (json_['reviewSnippets'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1ReviewSnippet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final placeId = this.placeId;
+    final reviewSnippets = this.reviewSnippets;
+    final url = this.url;
+    return {
+      'name': ?name,
+      'placeId': ?placeId,
+      'reviewSnippets': ?reviewSnippets,
+      'url': ?url,
+    };
+  }
+}
+
+/// A tool that can be used by the model to search Google.
+class GenaiVertexV1GoogleSearch {
+  /// The types of search grounding to enable.
+  core.List<core.String>? searchTypes;
+
+  GenaiVertexV1GoogleSearch({this.searchTypes});
+
+  GenaiVertexV1GoogleSearch.fromJson(core.Map json_)
+    : this(
+        searchTypes: (json_['searchTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final searchTypes = this.searchTypes;
+    return {'searchTypes': ?searchTypes};
+  }
+}
+
+/// The arguments to pass to Google Search.
+typedef GenaiVertexV1GoogleSearchCallContentGoogleSearchCallArguments =
+    $Arguments02;
+
+class GenaiVertexV1GoogleSearchCallDelta {
+  GenaiVertexV1GoogleSearchCallContentGoogleSearchCallArguments? arguments;
+
+  GenaiVertexV1GoogleSearchCallDelta({this.arguments});
+
+  GenaiVertexV1GoogleSearchCallDelta.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1GoogleSearchCallContentGoogleSearchCallArguments.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    return {'arguments': ?arguments};
+  }
+}
+
+/// Google Search call step.
+class GenaiVertexV1GoogleSearchCallStep {
+  /// The arguments to pass to Google Search.
+  ///
+  /// Required.
+  GenaiVertexV1GoogleSearchCallStepGoogleSearchCallStepArguments? arguments;
+
+  /// The type of search grounding enabled.
+  /// Possible string values are:
+  /// - "SEARCH_TYPE_UNSPECIFIED" : Unspecified search type. This value should
+  /// not be used.
+  /// - "SEARCH_TYPE_WEB_SEARCH" : Setting this field enables web search. Only
+  /// text results are returned.
+  /// - "SEARCH_TYPE_IMAGE_SEARCH" : Setting this field enables image search.
+  /// Image bytes are returned.
+  /// - "SEARCH_TYPE_ENTERPRISE_WEB_SEARCH" : Setting this field enables
+  /// enterprise web search.
+  core.String? searchType;
+
+  GenaiVertexV1GoogleSearchCallStep({this.arguments, this.searchType});
+
+  GenaiVertexV1GoogleSearchCallStep.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1GoogleSearchCallStepGoogleSearchCallStepArguments.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        searchType: json_['searchType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    final searchType = this.searchType;
+    return {'arguments': ?arguments, 'searchType': ?searchType};
+  }
+}
+
+/// The arguments to pass to Google Search.
+typedef GenaiVertexV1GoogleSearchCallStepGoogleSearchCallStepArguments =
+    $Arguments02;
+
+/// The result of the Google Search.
+typedef GenaiVertexV1GoogleSearchResultContentGoogleSearchResult = $Shared13;
+
+class GenaiVertexV1GoogleSearchResultDelta {
+  core.bool? isError;
+  core.List<GenaiVertexV1GoogleSearchResultContentGoogleSearchResult>? result;
+
+  GenaiVertexV1GoogleSearchResultDelta({this.isError, this.result});
+
+  GenaiVertexV1GoogleSearchResultDelta.fromJson(core.Map json_)
+    : this(
+        isError: json_['isError'] as core.bool?,
+        result: (json_['result'] as core.List?)
+            ?.map(
+              (value) =>
+                  GenaiVertexV1GoogleSearchResultContentGoogleSearchResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isError = this.isError;
+    final result = this.result;
+    return {'isError': ?isError, 'result': ?result};
+  }
+}
+
+/// Google Search result step.
+class GenaiVertexV1GoogleSearchResultStep {
+  /// Whether the Google Search resulted in an error.
+  core.bool? isError;
+
+  /// The results of the Google Search.
+  ///
+  /// Required.
+  core.List<GenaiVertexV1GoogleSearchResultStepGoogleSearchResultItem>? result;
+
+  GenaiVertexV1GoogleSearchResultStep({this.isError, this.result});
+
+  GenaiVertexV1GoogleSearchResultStep.fromJson(core.Map json_)
+    : this(
+        isError: json_['isError'] as core.bool?,
+        result: (json_['result'] as core.List?)
+            ?.map(
+              (value) =>
+                  GenaiVertexV1GoogleSearchResultStepGoogleSearchResultItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isError = this.isError;
+    final result = this.result;
+    return {'isError': ?isError, 'result': ?result};
+  }
+}
+
+/// The result of the Google Search.
+typedef GenaiVertexV1GoogleSearchResultStepGoogleSearchResultItem = $Shared13;
+
+/// An image content block.
+class GenaiVertexV1ImageContent {
+  /// The image content.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Flexible MIME type string of the image, superseding mime_type = 1.
+  ///
+  /// Note: Bespoke logic in the GAOS parser/serializer maps this to the
+  /// "mime_type" JSON key.
+  core.String? mimeTypeString;
+
+  /// The resolution of the media.
+  /// Possible string values are:
+  /// - "MEDIA_RESOLUTION_UNSPECIFIED" : Default value. This value is unused.
+  /// - "LOW" : Low resolution.
+  /// - "MEDIUM" : Medium resolution.
+  /// - "HIGH" : High resolution.
+  /// - "ULTRA_HIGH" : Ultra high resolution.
+  core.String? resolution;
+
+  /// The URI of the image.
+  core.String? uri;
+
+  GenaiVertexV1ImageContent({
+    this.data,
+    this.mimeTypeString,
+    this.resolution,
+    this.uri,
+  });
+
+  GenaiVertexV1ImageContent.fromJson(core.Map json_)
+    : this(
+        data: json_['data'] as core.String?,
+        mimeTypeString: json_['mimeTypeString'] as core.String?,
+        resolution: json_['resolution'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final mimeTypeString = this.mimeTypeString;
+    final resolution = this.resolution;
+    final uri = this.uri;
+    return {
+      'data': ?data,
+      'mimeTypeString': ?mimeTypeString,
+      'resolution': ?resolution,
+      'uri': ?uri,
+    };
+  }
+}
+
+class GenaiVertexV1ImageDelta {
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ///
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED"
+  /// - "TYPE_PNG" : PNG image format
+  /// - "TYPE_JPEG" : JPEG image format
+  /// - "TYPE_WEBP" : WebP image format
+  /// - "TYPE_HEIC" : HEIC image format
+  /// - "TYPE_HEIF" : HEIF image format
+  /// - "TYPE_GIF" : GIF image format
+  /// - "TYPE_BMP" : BMP image format
+  /// - "TYPE_TIFF" : TIFF image format
+  core.String? mimeType;
+
+  /// The resolution of the media.
+  /// Possible string values are:
+  /// - "MEDIA_RESOLUTION_UNSPECIFIED" : Default value. This value is unused.
+  /// - "LOW" : Low resolution.
+  /// - "MEDIUM" : Medium resolution.
+  /// - "HIGH" : High resolution.
+  /// - "ULTRA_HIGH" : Ultra high resolution.
+  core.String? resolution;
+  core.String? uri;
+
+  GenaiVertexV1ImageDelta({
+    this.data,
+    this.mimeType,
+    this.resolution,
+    this.uri,
+  });
+
+  GenaiVertexV1ImageDelta.fromJson(core.Map json_)
+    : this(
+        data: json_['data'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        resolution: json_['resolution'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final mimeType = this.mimeType;
+    final resolution = this.resolution;
+    final uri = this.uri;
+    return {
+      'data': ?data,
+      'mimeType': ?mimeType,
+      'resolution': ?resolution,
+      'uri': ?uri,
+    };
+  }
+}
+
+/// Configuration for image output format.
+class GenaiVertexV1ImageResponseFormat {
+  /// The aspect ratio for the image output.
+  /// Possible string values are:
+  /// - "ASPECT_RATIO_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ASPECT_RATIO_ONE_BY_ONE" : 1:1 aspect ratio.
+  /// - "ASPECT_RATIO_TWO_BY_THREE" : 2:3 aspect ratio.
+  /// - "ASPECT_RATIO_THREE_BY_TWO" : 3:2 aspect ratio.
+  /// - "ASPECT_RATIO_THREE_BY_FOUR" : 3:4 aspect ratio.
+  /// - "ASPECT_RATIO_FOUR_BY_THREE" : 4:3 aspect ratio.
+  /// - "ASPECT_RATIO_FOUR_BY_FIVE" : 4:5 aspect ratio.
+  /// - "ASPECT_RATIO_FIVE_BY_FOUR" : 5:4 aspect ratio.
+  /// - "ASPECT_RATIO_NINE_BY_SIXTEEN" : 9:16 aspect ratio.
+  /// - "ASPECT_RATIO_SIXTEEN_BY_NINE" : 16:9 aspect ratio.
+  /// - "ASPECT_RATIO_TWENTY_ONE_BY_NINE" : 21:9 aspect ratio.
+  /// - "ASPECT_RATIO_ONE_BY_EIGHT" : 1:8 aspect ratio.
+  /// - "ASPECT_RATIO_EIGHT_BY_ONE" : 8:1 aspect ratio.
+  /// - "ASPECT_RATIO_ONE_BY_FOUR" : 1:4 aspect ratio.
+  /// - "ASPECT_RATIO_FOUR_BY_ONE" : 4:1 aspect ratio.
+  core.String? aspectRatio;
+
+  /// The delivery mode for the image output.
+  /// Possible string values are:
+  /// - "DELIVERY_UNSPECIFIED" : Default value. This value is unused.
+  /// - "INLINE" : Image data is returned inline in the response.
+  /// - "URI" : Image data is returned as a URI.
+  core.String? delivery;
+
+  /// The size of the image output.
+  /// Possible string values are:
+  /// - "IMAGE_SIZE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "IMAGE_SIZE_FIVE_TWELVE" : 512px image size.
+  /// - "IMAGE_SIZE_ONE_K" : 1K image size.
+  /// - "IMAGE_SIZE_TWO_K" : 2K image size.
+  /// - "IMAGE_SIZE_FOUR_K" : 4K image size.
+  core.String? imageSize;
+
+  /// The MIME type of the image output.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "TYPE_JPEG" : JPEG image format.
+  core.String? mimeType;
+
+  GenaiVertexV1ImageResponseFormat({
+    this.aspectRatio,
+    this.delivery,
+    this.imageSize,
+    this.mimeType,
+  });
+
+  GenaiVertexV1ImageResponseFormat.fromJson(core.Map json_)
+    : this(
+        aspectRatio: json_['aspectRatio'] as core.String?,
+        delivery: json_['delivery'] as core.String?,
+        imageSize: json_['imageSize'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aspectRatio = this.aspectRatio;
+    final delivery = this.delivery;
+    final imageSize = this.imageSize;
+    final mimeType = this.mimeType;
+    return {
+      'aspectRatio': ?aspectRatio,
+      'delivery': ?delivery,
+      'imageSize': ?imageSize,
+      'mimeType': ?mimeType,
+    };
+  }
+}
+
+/// Response for InteractionService.CreateInteraction.
+class GenaiVertexV1Interaction {
+  /// Interaction for generating the completion using agents.
+  GenaiVertexV1AgentInteraction? agentInteraction;
+
+  /// The content for the interaction.
+  GenaiVertexV1Content? content;
+
+  /// The time at which the response was created in ISO 8601 format
+  /// (YYYY-MM-DDThh:mm:ssZ).
+  ///
+  /// Required. Output only.
+  core.String? created;
+
+  /// The environment ID for the interaction.
+  ///
+  /// Can be 'remote' for default environment.
+  core.String? envId;
+
+  /// The environment ID for the interaction.
+  ///
+  /// Only populated if environment config is set in the request.
+  ///
+  /// Output only.
+  core.String? environmentId;
+
+  /// Diagnostic faults / platform errors recorded on the interaction.
+  ///
+  /// Output only.
+  core.List<GenaiVertexV1Error>? errors;
+
+  /// A unique identifier for the interaction completion.
+  ///
+  /// Required. Output only.
+  core.String? id;
+
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints) and can only contain lowercase letters, numeric characters,
+  /// underscores, and dashes. International characters are allowed. Label
+  /// values are optional. Label keys must start with a letter.
+  core.Map<core.String, core.String>? labels;
+
+  /// Interaction for generating the completion using models.
+  GenaiVertexV1ModelInteraction? modelInteraction;
+
+  /// The ID of the previous interaction, if any.
+  core.String? previousInteractionId;
+  GenaiVertexV1ResponseFormatList? responseFormatList;
+  GenaiVertexV1ResponseFormat? responseFormatSingleton;
+
+  /// Safety settings for the interaction.
+  core.List<GenaiVertexV1SafetySetting>? safetySettings;
+
+  /// The service tier for the interaction.
+  /// Possible string values are:
+  /// - "SERVICE_TIER_UNSPECIFIED" : Default service tier, which is standard.
+  /// - "SERVICE_TIER_FLEX" : Flex service tier.
+  /// - "SERVICE_TIER_STANDARD" : Standard service tier.
+  /// - "SERVICE_TIER_PRIORITY" : Priority service tier.
+  /// - "SERVICE_TIER_DEFERRED" : Deferred service tier.
+  core.String? serviceTier;
+
+  /// The status of the interaction.
+  ///
+  /// Required. Output only.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : Default value. This value is unused.
+  /// - "IN_PROGRESS" : The interaction is in progress.
+  /// - "REQUIRES_ACTION" : The interaction requires action/input from the user.
+  /// - "COMPLETED" : The interaction is completed.
+  /// - "FAILED" : The interaction failed.
+  /// - "CANCELLED" : The interaction was cancelled.
+  /// - "INCOMPLETE" : The interaction is completed, but contains incomplete
+  /// results (e.g. hitting max_tokens).
+  /// - "QUEUED" : The interaction is queued, waiting for processing (e.g.
+  /// waiting for off-peak capacity).
+  core.String? status;
+
+  /// Input only.
+  ///
+  /// The steps for the interaction.
+  GenaiVertexV1StepList? stepList;
+
+  /// The steps that make up the interaction, when included in the response.
+  ///
+  /// Required. Output only.
+  core.List<GenaiVertexV1Step>? steps;
+
+  /// A string input for the interaction, it will be processed as a single text
+  /// input.
+  core.String? stringContent;
+
+  /// System instruction for the interaction.
+  core.String? systemInstruction;
+
+  /// A list of tool declarations the model may call during interaction.
+  core.List<GenaiVertexV1Tool>? tools;
+
+  /// The time at which the response was last updated in ISO 8601 format
+  /// (YYYY-MM-DDThh:mm:ssZ).
+  ///
+  /// Required. Output only.
+  core.String? updated;
+
+  /// Statistics on the interaction request's token usage.
+  ///
+  /// Output only.
+  GenaiVertexV1InteractionUsage? usage;
+
+  GenaiVertexV1Interaction({
+    this.agentInteraction,
+    this.content,
+    this.created,
+    this.envId,
+    this.environmentId,
+    this.errors,
+    this.id,
+    this.labels,
+    this.modelInteraction,
+    this.previousInteractionId,
+    this.responseFormatList,
+    this.responseFormatSingleton,
+    this.safetySettings,
+    this.serviceTier,
+    this.status,
+    this.stepList,
+    this.steps,
+    this.stringContent,
+    this.systemInstruction,
+    this.tools,
+    this.updated,
+    this.usage,
+  });
+
+  GenaiVertexV1Interaction.fromJson(core.Map json_)
+    : this(
+        agentInteraction: json_.containsKey('agentInteraction')
+            ? GenaiVertexV1AgentInteraction.fromJson(
+                json_['agentInteraction']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        content: json_.containsKey('content')
+            ? GenaiVertexV1Content.fromJson(
+                json_['content'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        created: json_['created'] as core.String?,
+        envId: json_['envId'] as core.String?,
+        environmentId: json_['environmentId'] as core.String?,
+        errors: (json_['errors'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1Error.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        id: json_['id'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        modelInteraction: json_.containsKey('modelInteraction')
+            ? GenaiVertexV1ModelInteraction.fromJson(
+                json_['modelInteraction']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        previousInteractionId: json_['previousInteractionId'] as core.String?,
+        responseFormatList: json_.containsKey('responseFormatList')
+            ? GenaiVertexV1ResponseFormatList.fromJson(
+                json_['responseFormatList']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        responseFormatSingleton: json_.containsKey('responseFormatSingleton')
+            ? GenaiVertexV1ResponseFormat.fromJson(
+                json_['responseFormatSingleton']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        safetySettings: (json_['safetySettings'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1SafetySetting.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        serviceTier: json_['serviceTier'] as core.String?,
+        status: json_['status'] as core.String?,
+        stepList: json_.containsKey('stepList')
+            ? GenaiVertexV1StepList.fromJson(
+                json_['stepList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        steps: (json_['steps'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1Step.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        stringContent: json_['stringContent'] as core.String?,
+        systemInstruction: json_['systemInstruction'] as core.String?,
+        tools: (json_['tools'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1Tool.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        updated: json_['updated'] as core.String?,
+        usage: json_.containsKey('usage')
+            ? GenaiVertexV1InteractionUsage.fromJson(
+                json_['usage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentInteraction = this.agentInteraction;
+    final content = this.content;
+    final created = this.created;
+    final envId = this.envId;
+    final environmentId = this.environmentId;
+    final errors = this.errors;
+    final id = this.id;
+    final labels = this.labels;
+    final modelInteraction = this.modelInteraction;
+    final previousInteractionId = this.previousInteractionId;
+    final responseFormatList = this.responseFormatList;
+    final responseFormatSingleton = this.responseFormatSingleton;
+    final safetySettings = this.safetySettings;
+    final serviceTier = this.serviceTier;
+    final status = this.status;
+    final stepList = this.stepList;
+    final steps = this.steps;
+    final stringContent = this.stringContent;
+    final systemInstruction = this.systemInstruction;
+    final tools = this.tools;
+    final updated = this.updated;
+    final usage = this.usage;
+    return {
+      'agentInteraction': ?agentInteraction,
+      'content': ?content,
+      'created': ?created,
+      'envId': ?envId,
+      'environmentId': ?environmentId,
+      'errors': ?errors,
+      'id': ?id,
+      'labels': ?labels,
+      'modelInteraction': ?modelInteraction,
+      'previousInteractionId': ?previousInteractionId,
+      'responseFormatList': ?responseFormatList,
+      'responseFormatSingleton': ?responseFormatSingleton,
+      'safetySettings': ?safetySettings,
+      'serviceTier': ?serviceTier,
+      'status': ?status,
+      'stepList': ?stepList,
+      'steps': ?steps,
+      'stringContent': ?stringContent,
+      'systemInstruction': ?systemInstruction,
+      'tools': ?tools,
+      'updated': ?updated,
+      'usage': ?usage,
+    };
+  }
+}
+
+/// Signals that the Interaction completed.
+///
+/// Sent when the Interaction receives Complete/Cancel or naturally terminates.
+/// No more input can be sent to the Interaction after this.
+class GenaiVertexV1InteractionCompletedSseEvent {
+  /// Partial completed interaction resource emitted at the end of the stream.
+  ///
+  /// Required.
+  GenaiVertexV1Interaction? interaction;
+
+  GenaiVertexV1InteractionCompletedSseEvent({this.interaction});
+
+  GenaiVertexV1InteractionCompletedSseEvent.fromJson(core.Map json_)
+    : this(
+        interaction: json_.containsKey('interaction')
+            ? GenaiVertexV1Interaction.fromJson(
+                json_['interaction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final interaction = this.interaction;
+    return {'interaction': ?interaction};
+  }
+}
+
+/// Server response confirming that a new interaction was created.
+class GenaiVertexV1InteractionCreatedSseEvent {
+  /// Partial interaction resource emitted when the stream is created.
+  ///
+  /// Required.
+  GenaiVertexV1Interaction? interaction;
+
+  GenaiVertexV1InteractionCreatedSseEvent({this.interaction});
+
+  GenaiVertexV1InteractionCreatedSseEvent.fromJson(core.Map json_)
+    : this(
+        interaction: json_.containsKey('interaction')
+            ? GenaiVertexV1Interaction.fromJson(
+                json_['interaction'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final interaction = this.interaction;
+    return {'interaction': ?interaction};
+  }
+}
+
+class GenaiVertexV1InteractionStatusUpdate {
+  core.String? interactionId;
+
+  ///
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : Default value. This value is unused.
+  /// - "IN_PROGRESS" : The interaction is in progress.
+  /// - "REQUIRES_ACTION" : The interaction requires action/input from the user.
+  /// - "COMPLETED" : The interaction is completed.
+  /// - "FAILED" : The interaction failed.
+  /// - "CANCELLED" : The interaction was cancelled.
+  /// - "INCOMPLETE" : The interaction is completed, but contains incomplete
+  /// results (e.g. hitting max_tokens).
+  /// - "QUEUED" : The interaction is queued, waiting for processing (e.g.
+  /// waiting for off-peak capacity).
+  core.String? status;
+
+  /// Model usage statistics up to this checkpoint.
+  GenaiVertexV1InteractionUsage? usage;
+
+  GenaiVertexV1InteractionStatusUpdate({
+    this.interactionId,
+    this.status,
+    this.usage,
+  });
+
+  GenaiVertexV1InteractionStatusUpdate.fromJson(core.Map json_)
+    : this(
+        interactionId: json_['interactionId'] as core.String?,
+        status: json_['status'] as core.String?,
+        usage: json_.containsKey('usage')
+            ? GenaiVertexV1InteractionUsage.fromJson(
+                json_['usage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final interactionId = this.interactionId;
+    final status = this.status;
+    final usage = this.usage;
+    return {
+      'interactionId': ?interactionId,
+      'status': ?status,
+      'usage': ?usage,
+    };
+  }
+}
+
+class GenaiVertexV1InteractionStreamingEvent {
+  /// The error event data, used for error events.
+  GenaiVertexV1ErrorEvent? errorEvent;
+
+  /// The event_id token to be used to resume the interaction stream, from this
+  /// event.
+  core.String? eventId;
+
+  /// The interaction data, used for interaction.completed events.
+  ///
+  /// Used when steps are enabled.
+  GenaiVertexV1InteractionCompletedSseEvent? interactionCompletedEvent;
+
+  /// The interaction data, used for interaction.created events.
+  ///
+  /// Used when steps are enabled.
+  GenaiVertexV1InteractionCreatedSseEvent? interactionCreatedEvent;
+
+  /// The interaction status data, used for interaction.status_update events.
+  GenaiVertexV1InteractionStatusUpdate? interactionStatusUpdate;
+
+  /// The step delta data, used for step.delta events.
+  ///
+  /// Step-based streaming event, used when steps are enabled.
+  GenaiVertexV1StepDelta? stepDelta;
+
+  /// The step start data, used for step.start events.
+  ///
+  /// Step-based streaming event, used when steps are enabled.
+  GenaiVertexV1StepStart? stepStart;
+
+  /// The step stop data, used for step.stop events.
+  ///
+  /// Step-based streaming event, used when steps are enabled.
+  GenaiVertexV1StepStop? stepStop;
+
+  GenaiVertexV1InteractionStreamingEvent({
+    this.errorEvent,
+    this.eventId,
+    this.interactionCompletedEvent,
+    this.interactionCreatedEvent,
+    this.interactionStatusUpdate,
+    this.stepDelta,
+    this.stepStart,
+    this.stepStop,
+  });
+
+  GenaiVertexV1InteractionStreamingEvent.fromJson(core.Map json_)
+    : this(
+        errorEvent: json_.containsKey('errorEvent')
+            ? GenaiVertexV1ErrorEvent.fromJson(
+                json_['errorEvent'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        eventId: json_['eventId'] as core.String?,
+        interactionCompletedEvent:
+            json_.containsKey('interactionCompletedEvent')
+            ? GenaiVertexV1InteractionCompletedSseEvent.fromJson(
+                json_['interactionCompletedEvent']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        interactionCreatedEvent: json_.containsKey('interactionCreatedEvent')
+            ? GenaiVertexV1InteractionCreatedSseEvent.fromJson(
+                json_['interactionCreatedEvent']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        interactionStatusUpdate: json_.containsKey('interactionStatusUpdate')
+            ? GenaiVertexV1InteractionStatusUpdate.fromJson(
+                json_['interactionStatusUpdate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stepDelta: json_.containsKey('stepDelta')
+            ? GenaiVertexV1StepDelta.fromJson(
+                json_['stepDelta'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stepStart: json_.containsKey('stepStart')
+            ? GenaiVertexV1StepStart.fromJson(
+                json_['stepStart'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stepStop: json_.containsKey('stepStop')
+            ? GenaiVertexV1StepStop.fromJson(
+                json_['stepStop'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorEvent = this.errorEvent;
+    final eventId = this.eventId;
+    final interactionCompletedEvent = this.interactionCompletedEvent;
+    final interactionCreatedEvent = this.interactionCreatedEvent;
+    final interactionStatusUpdate = this.interactionStatusUpdate;
+    final stepDelta = this.stepDelta;
+    final stepStart = this.stepStart;
+    final stepStop = this.stepStop;
+    return {
+      'errorEvent': ?errorEvent,
+      'eventId': ?eventId,
+      'interactionCompletedEvent': ?interactionCompletedEvent,
+      'interactionCreatedEvent': ?interactionCreatedEvent,
+      'interactionStatusUpdate': ?interactionStatusUpdate,
+      'stepDelta': ?stepDelta,
+      'stepStart': ?stepStart,
+      'stepStop': ?stepStop,
+    };
+  }
+}
+
+/// Statistics on the interaction request's token usage.
+class GenaiVertexV1InteractionUsage {
+  /// A breakdown of cached token usage by modality.
+  core.List<GenaiVertexV1InteractionUsageModalityTokens>?
+  cachedTokensByModality;
+
+  /// Grounding tool count.
+  core.List<GenaiVertexV1InteractionUsageGroundingToolCount>?
+  groundingToolCount;
+
+  /// A breakdown of input token usage by modality.
+  core.List<GenaiVertexV1InteractionUsageModalityTokens>? inputTokensByModality;
+
+  /// A breakdown of output token usage by modality.
+  core.List<GenaiVertexV1InteractionUsageModalityTokens>?
+  outputTokensByModality;
+
+  /// A breakdown of tool-use token usage by modality.
+  core.List<GenaiVertexV1InteractionUsageModalityTokens>?
+  toolUseTokensByModality;
+
+  /// Number of tokens in the cached part of the prompt (the cached content).
+  core.int? totalCachedTokens;
+
+  /// Number of tokens in the prompt (context).
+  core.int? totalInputTokens;
+
+  /// Total number of tokens across all the generated responses.
+  core.int? totalOutputTokens;
+
+  /// Number of tokens of thoughts for thinking models.
+  core.int? totalThoughtTokens;
+
+  /// Total token count for the interaction request (prompt + responses + other
+  /// internal tokens).
+  core.int? totalTokens;
+
+  /// Number of tokens present in tool-use prompt(s).
+  core.int? totalToolUseTokens;
+
+  GenaiVertexV1InteractionUsage({
+    this.cachedTokensByModality,
+    this.groundingToolCount,
+    this.inputTokensByModality,
+    this.outputTokensByModality,
+    this.toolUseTokensByModality,
+    this.totalCachedTokens,
+    this.totalInputTokens,
+    this.totalOutputTokens,
+    this.totalThoughtTokens,
+    this.totalTokens,
+    this.totalToolUseTokens,
+  });
+
+  GenaiVertexV1InteractionUsage.fromJson(core.Map json_)
+    : this(
+        cachedTokensByModality: (json_['cachedTokensByModality'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1InteractionUsageModalityTokens.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        groundingToolCount: (json_['groundingToolCount'] as core.List?)
+            ?.map(
+              (value) =>
+                  GenaiVertexV1InteractionUsageGroundingToolCount.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        inputTokensByModality: (json_['inputTokensByModality'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1InteractionUsageModalityTokens.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        outputTokensByModality: (json_['outputTokensByModality'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1InteractionUsageModalityTokens.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        toolUseTokensByModality:
+            (json_['toolUseTokensByModality'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GenaiVertexV1InteractionUsageModalityTokens.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        totalCachedTokens: json_['totalCachedTokens'] as core.int?,
+        totalInputTokens: json_['totalInputTokens'] as core.int?,
+        totalOutputTokens: json_['totalOutputTokens'] as core.int?,
+        totalThoughtTokens: json_['totalThoughtTokens'] as core.int?,
+        totalTokens: json_['totalTokens'] as core.int?,
+        totalToolUseTokens: json_['totalToolUseTokens'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cachedTokensByModality = this.cachedTokensByModality;
+    final groundingToolCount = this.groundingToolCount;
+    final inputTokensByModality = this.inputTokensByModality;
+    final outputTokensByModality = this.outputTokensByModality;
+    final toolUseTokensByModality = this.toolUseTokensByModality;
+    final totalCachedTokens = this.totalCachedTokens;
+    final totalInputTokens = this.totalInputTokens;
+    final totalOutputTokens = this.totalOutputTokens;
+    final totalThoughtTokens = this.totalThoughtTokens;
+    final totalTokens = this.totalTokens;
+    final totalToolUseTokens = this.totalToolUseTokens;
+    return {
+      'cachedTokensByModality': ?cachedTokensByModality,
+      'groundingToolCount': ?groundingToolCount,
+      'inputTokensByModality': ?inputTokensByModality,
+      'outputTokensByModality': ?outputTokensByModality,
+      'toolUseTokensByModality': ?toolUseTokensByModality,
+      'totalCachedTokens': ?totalCachedTokens,
+      'totalInputTokens': ?totalInputTokens,
+      'totalOutputTokens': ?totalOutputTokens,
+      'totalThoughtTokens': ?totalThoughtTokens,
+      'totalTokens': ?totalTokens,
+      'totalToolUseTokens': ?totalToolUseTokens,
+    };
+  }
+}
+
+/// The number of grounding tool counts.
+class GenaiVertexV1InteractionUsageGroundingToolCount {
+  /// The number of grounding tool counts.
+  core.int? count;
+
+  /// The grounding tool type associated with the count.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "GOOGLE_SEARCH" : Grounding with Google Web Search and Image Search, &
+  /// Web Grounding for Enterprise.
+  /// - "GOOGLE_MAPS" : Grounding with Google Maps.
+  /// - "RETRIEVAL" : Grounding with customer's data, for example,
+  /// VertexAISearch.
+  core.String? type;
+
+  GenaiVertexV1InteractionUsageGroundingToolCount({this.count, this.type});
+
+  GenaiVertexV1InteractionUsageGroundingToolCount.fromJson(core.Map json_)
+    : this(
+        count: json_['count'] as core.int?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final count = this.count;
+    final type = this.type;
+    return {'count': ?count, 'type': ?type};
+  }
+}
+
+/// The token count for a single response modality.
+class GenaiVertexV1InteractionUsageModalityTokens {
+  /// The modality associated with the token count.
+  /// Possible string values are:
+  /// - "RESPONSE_MODALITY_UNSPECIFIED" : Default value. This value is unused.
+  /// - "TEXT" : Indicates the model should return text.
+  /// - "IMAGE" : Indicates the model should return images.
+  /// - "AUDIO" : Indicates the model should return audio.
+  /// - "VIDEO" : Indicates the model should return video.
+  /// - "DOCUMENT" : Indicates the model should return documents.
+  core.String? modality;
+
+  /// Number of tokens for the modality.
+  core.int? tokens;
+
+  GenaiVertexV1InteractionUsageModalityTokens({this.modality, this.tokens});
+
+  GenaiVertexV1InteractionUsageModalityTokens.fromJson(core.Map json_)
+    : this(
+        modality: json_['modality'] as core.String?,
+        tokens: json_['tokens'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final modality = this.modality;
+    final tokens = this.tokens;
+    return {'modality': ?modality, 'tokens': ?tokens};
+  }
+}
+
+/// `ListValue` is a wrapper around a repeated field of values.
+class GenaiVertexV1ListValue {
+  /// Repeated field of dynamically typed values.
+  core.List<GenaiVertexV1Value>? values;
+
+  GenaiVertexV1ListValue({this.values});
+
+  GenaiVertexV1ListValue.fromJson(core.Map json_)
+    : this(
+        values: (json_['values'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1Value.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
+  }
+}
+
+/// A MCPServer is a server that can be called by the model to perform actions.
+class GenaiVertexV1McpServer {
+  /// The allowed tools.
+  core.List<GenaiVertexV1AllowedTools>? allowedTools;
+
+  /// Optional: Fields for authentication headers, timeouts, etc., if needed.
+  core.Map<core.String, core.String>? headers;
+
+  /// The name of the MCPServer.
+  core.String? name;
+
+  /// The full URL for the MCPServer endpoint.
+  ///
+  /// Example: "https://api.example.com/mcp"
+  core.String? url;
+
+  GenaiVertexV1McpServer({
+    this.allowedTools,
+    this.headers,
+    this.name,
+    this.url,
+  });
+
+  GenaiVertexV1McpServer.fromJson(core.Map json_)
+    : this(
+        allowedTools: (json_['allowedTools'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1AllowedTools.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        name: json_['name'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedTools = this.allowedTools;
+    final headers = this.headers;
+    final name = this.name;
+    final url = this.url;
+    return {
+      'allowedTools': ?allowedTools,
+      'headers': ?headers,
+      'name': ?name,
+      'url': ?url,
+    };
+  }
+}
+
+/// Interaction for generating the completion using models.
+class GenaiVertexV1ModelInteraction {
+  /// Input only.
+  ///
+  /// Configuration parameters for the model interaction.
+  GenaiVertexV1GenerationConfig? generationConfig;
+
+  /// The name of the `Model` used for generating the completion.
+  core.String? model;
+
+  GenaiVertexV1ModelInteraction({this.generationConfig, this.model});
+
+  GenaiVertexV1ModelInteraction.fromJson(core.Map json_)
+    : this(
+        generationConfig: json_.containsKey('generationConfig')
+            ? GenaiVertexV1GenerationConfig.fromJson(
+                json_['generationConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        model: json_['model'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final generationConfig = this.generationConfig;
+    final model = this.model;
+    return {'generationConfig': ?generationConfig, 'model': ?model};
+  }
+}
+
+/// Output generated by the model.
+class GenaiVertexV1ModelOutputStep {
+  core.List<GenaiVertexV1Content>? content;
+
+  /// The error result of the operation in case of failure or cancellation.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  GoogleRpcStatus? error;
+
+  GenaiVertexV1ModelOutputStep({this.content, this.error});
+
+  GenaiVertexV1ModelOutputStep.fromJson(core.Map json_)
+    : this(
+        content: (json_['content'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1Content.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        error: json_.containsKey('error')
+            ? GoogleRpcStatus.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    final error = this.error;
+    return {'content': ?content, 'error': ?error};
+  }
+}
+
+/// Used to specify configuration for ParallelAISearch.
+class GenaiVertexV1ParallelAISearchConfig {
+  /// The API key for ParallelAiSearch.
+  ///
+  /// Optional.
+  core.String? apiKey;
+
+  /// Custom configs for ParallelAiSearch.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customConfig;
+
+  GenaiVertexV1ParallelAISearchConfig({this.apiKey, this.customConfig});
+
+  GenaiVertexV1ParallelAISearchConfig.fromJson(core.Map json_)
+    : this(
+        apiKey: json_['apiKey'] as core.String?,
+        customConfig: json_.containsKey('customConfig')
+            ? json_['customConfig'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final apiKey = this.apiKey;
+    final customConfig = this.customConfig;
+    return {'apiKey': ?apiKey, 'customConfig': ?customConfig};
+  }
+}
+
+/// A place citation annotation.
+class GenaiVertexV1PlaceCitation {
+  /// Title of the place.
+  core.String? name;
+
+  /// The ID of the place, in `places/{place_id}` format.
+  core.String? placeId;
+
+  /// Snippets of reviews that are used to generate answers about the features
+  /// of a given place in Google Maps.
+  core.List<GenaiVertexV1ReviewSnippet>? reviewSnippets;
+
+  /// URI reference of the place.
+  core.String? url;
+
+  GenaiVertexV1PlaceCitation({
+    this.name,
+    this.placeId,
+    this.reviewSnippets,
+    this.url,
+  });
+
+  GenaiVertexV1PlaceCitation.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        placeId: json_['placeId'] as core.String?,
+        reviewSnippets: (json_['reviewSnippets'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1ReviewSnippet.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final name = this.name;
+    final placeId = this.placeId;
+    final reviewSnippets = this.reviewSnippets;
+    final url = this.url;
+    return {
+      'name': ?name,
+      'placeId': ?placeId,
+      'reviewSnippets': ?reviewSnippets,
+      'url': ?url,
+    };
+  }
+}
+
+/// Streaming delta for a server-initiated media processing step.
+typedef GenaiVertexV1ProcessingCallDelta = $Empty;
+
+/// A server-initiated processing step for media analysis (e.g. video
+/// understanding).
+typedef GenaiVertexV1ProcessingCallStep = $Empty;
+
+/// Streaming delta for the result of a server-initiated media processing step.
+typedef GenaiVertexV1ProcessingResultDelta = $Empty;
+
+/// The result of a server-initiated media processing step.
+typedef GenaiVertexV1ProcessingResultStep = $Empty;
+
+/// Use to specify configuration for RAG Store.
+class GenaiVertexV1RagStoreConfig {
+  /// The representation of the rag source.
+  ///
+  /// Optional.
+  core.List<GenaiVertexV1RagStoreConfigRagResource>? ragResources;
+
+  /// The retrieval config for the Rag query.
+  ///
+  /// Optional.
+  GenaiVertexV1RagStoreConfigRagRetrievalConfig? ragRetrievalConfig;
+
+  GenaiVertexV1RagStoreConfig({this.ragResources, this.ragRetrievalConfig});
+
+  GenaiVertexV1RagStoreConfig.fromJson(core.Map json_)
+    : this(
+        ragResources: (json_['ragResources'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1RagStoreConfigRagResource.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        ragRetrievalConfig: json_.containsKey('ragRetrievalConfig')
+            ? GenaiVertexV1RagStoreConfigRagRetrievalConfig.fromJson(
+                json_['ragRetrievalConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ragResources = this.ragResources;
+    final ragRetrievalConfig = this.ragRetrievalConfig;
+    return {
+      'ragResources': ?ragResources,
+      'ragRetrievalConfig': ?ragRetrievalConfig,
+    };
+  }
+}
+
+/// The definition of the Rag resource.
+class GenaiVertexV1RagStoreConfigRagResource {
+  /// RagCorpora resource name.
+  ///
+  /// Optional.
+  core.String? ragCorpus;
+
+  /// rag_file_id.
+  ///
+  /// The files should be in the same rag_corpus set in rag_corpus field.
+  ///
+  /// Optional.
+  core.List<core.String>? ragFileIds;
+
+  GenaiVertexV1RagStoreConfigRagResource({this.ragCorpus, this.ragFileIds});
+
+  GenaiVertexV1RagStoreConfigRagResource.fromJson(core.Map json_)
+    : this(
+        ragCorpus: json_['ragCorpus'] as core.String?,
+        ragFileIds: (json_['ragFileIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ragCorpus = this.ragCorpus;
+    final ragFileIds = this.ragFileIds;
+    return {'ragCorpus': ?ragCorpus, 'ragFileIds': ?ragFileIds};
+  }
+}
+
+/// Specifies the context retrieval config.
+class GenaiVertexV1RagStoreConfigRagRetrievalConfig {
+  /// Config for filters.
+  ///
+  /// Optional.
+  GenaiVertexV1RagStoreConfigRagRetrievalConfigFilter? filter;
+
+  /// Config for Hybrid Search.
+  ///
+  /// Optional.
+  GenaiVertexV1RagStoreConfigRagRetrievalConfigHybridSearch? hybridSearch;
+
+  /// Config for ranking and reranking.
+  ///
+  /// Optional.
+  GenaiVertexV1RagStoreConfigRagRetrievalConfigRanking? ranking;
+
+  /// The number of contexts to retrieve.
+  ///
+  /// Optional.
+  core.int? topK;
+
+  GenaiVertexV1RagStoreConfigRagRetrievalConfig({
+    this.filter,
+    this.hybridSearch,
+    this.ranking,
+    this.topK,
+  });
+
+  GenaiVertexV1RagStoreConfigRagRetrievalConfig.fromJson(core.Map json_)
+    : this(
+        filter: json_.containsKey('filter')
+            ? GenaiVertexV1RagStoreConfigRagRetrievalConfigFilter.fromJson(
+                json_['filter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        hybridSearch: json_.containsKey('hybridSearch')
+            ? GenaiVertexV1RagStoreConfigRagRetrievalConfigHybridSearch.fromJson(
+                json_['hybridSearch'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ranking: json_.containsKey('ranking')
+            ? GenaiVertexV1RagStoreConfigRagRetrievalConfigRanking.fromJson(
+                json_['ranking'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        topK: json_['topK'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final filter = this.filter;
+    final hybridSearch = this.hybridSearch;
+    final ranking = this.ranking;
+    final topK = this.topK;
+    return {
+      'filter': ?filter,
+      'hybridSearch': ?hybridSearch,
+      'ranking': ?ranking,
+      'topK': ?topK,
+    };
+  }
+}
+
+/// Config for filters.
+typedef GenaiVertexV1RagStoreConfigRagRetrievalConfigFilter =
+    $RagRetrievalConfigFilter;
+
+/// Config for Hybrid Search.
+class GenaiVertexV1RagStoreConfigRagRetrievalConfigHybridSearch {
+  /// Alpha value controls the weight between dense and sparse vector search
+  /// results.
+  ///
+  /// Optional.
+  core.double? alpha;
+
+  GenaiVertexV1RagStoreConfigRagRetrievalConfigHybridSearch({this.alpha});
+
+  GenaiVertexV1RagStoreConfigRagRetrievalConfigHybridSearch.fromJson(
+    core.Map json_,
+  ) : this(alpha: (json_['alpha'] as core.num?)?.toDouble());
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final alpha = this.alpha;
+    return {'alpha': ?alpha};
+  }
+}
+
+/// Config for ranking and reranking.
+class GenaiVertexV1RagStoreConfigRagRetrievalConfigRanking {
+  /// Config for Rank Service.
+  GenaiVertexV1RagStoreConfigRagRetrievalConfigRankingRankService? rankService;
+
+  GenaiVertexV1RagStoreConfigRagRetrievalConfigRanking({this.rankService});
+
+  GenaiVertexV1RagStoreConfigRagRetrievalConfigRanking.fromJson(core.Map json_)
+    : this(
+        rankService: json_.containsKey('rankService')
+            ? GenaiVertexV1RagStoreConfigRagRetrievalConfigRankingRankService.fromJson(
+                json_['rankService'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final rankService = this.rankService;
+    return {'rankService': ?rankService};
+  }
+}
+
+/// Config for Rank Service.
+class GenaiVertexV1RagStoreConfigRagRetrievalConfigRankingRankService {
+  /// The model name of the rank service.
+  ///
+  /// Optional.
+  core.String? modelName;
+
+  GenaiVertexV1RagStoreConfigRagRetrievalConfigRankingRankService({
+    this.modelName,
+  });
+
+  GenaiVertexV1RagStoreConfigRagRetrievalConfigRankingRankService.fromJson(
+    core.Map json_,
+  ) : this(modelName: json_['modelName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final modelName = this.modelName;
+    return {'modelName': ?modelName};
+  }
+}
+
+class GenaiVertexV1ResponseFormat {
+  GenaiVertexV1AudioResponseFormat? audio;
+  GenaiVertexV1ImageResponseFormat? image;
+
+  /// Multi-discriminator values is already enabled in GAOS
+  GenaiVertexV1Struct? structValue;
+  GenaiVertexV1TextResponseFormat? text;
+  GenaiVertexV1VideoResponseFormat? video;
+
+  GenaiVertexV1ResponseFormat({
+    this.audio,
+    this.image,
+    this.structValue,
+    this.text,
+    this.video,
+  });
+
+  GenaiVertexV1ResponseFormat.fromJson(core.Map json_)
+    : this(
+        audio: json_.containsKey('audio')
+            ? GenaiVertexV1AudioResponseFormat.fromJson(
+                json_['audio'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        image: json_.containsKey('image')
+            ? GenaiVertexV1ImageResponseFormat.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        structValue: json_.containsKey('structValue')
+            ? GenaiVertexV1Struct.fromJson(
+                json_['structValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        text: json_.containsKey('text')
+            ? GenaiVertexV1TextResponseFormat.fromJson(
+                json_['text'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        video: json_.containsKey('video')
+            ? GenaiVertexV1VideoResponseFormat.fromJson(
+                json_['video'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final audio = this.audio;
+    final image = this.image;
+    final structValue = this.structValue;
+    final text = this.text;
+    final video = this.video;
+    return {
+      'audio': ?audio,
+      'image': ?image,
+      'structValue': ?structValue,
+      'text': ?text,
+      'video': ?video,
+    };
+  }
+}
+
+class GenaiVertexV1ResponseFormatList {
+  core.List<GenaiVertexV1ResponseFormat>? responseFormats;
+
+  GenaiVertexV1ResponseFormatList({this.responseFormats});
+
+  GenaiVertexV1ResponseFormatList.fromJson(core.Map json_)
+    : this(
+        responseFormats: (json_['responseFormats'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1ResponseFormat.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final responseFormats = this.responseFormats;
+    return {'responseFormats': ?responseFormats};
+  }
+}
+
+/// A tool that can be used by the model to retrieve files.
+class GenaiVertexV1Retrieval {
+  /// Used to specify configuration for ExaAISearch.
+  GenaiVertexV1ExaAISearchConfig? exaAiSearchConfig;
+
+  /// Used to specify configuration for ParallelAISearch.
+  GenaiVertexV1ParallelAISearchConfig? parallelAiSearchConfig;
+
+  /// Used to specify configuration for RagStore.
+  GenaiVertexV1RagStoreConfig? ragStoreConfig;
+
+  /// The types of file retrieval to enable.
+  core.List<core.String>? retrievalTypes;
+
+  /// Used to specify configuration for VertexAISearch.
+  GenaiVertexV1VertexAISearchConfig? vertexAiSearchConfig;
+
+  GenaiVertexV1Retrieval({
+    this.exaAiSearchConfig,
+    this.parallelAiSearchConfig,
+    this.ragStoreConfig,
+    this.retrievalTypes,
+    this.vertexAiSearchConfig,
+  });
+
+  GenaiVertexV1Retrieval.fromJson(core.Map json_)
+    : this(
+        exaAiSearchConfig: json_.containsKey('exaAiSearchConfig')
+            ? GenaiVertexV1ExaAISearchConfig.fromJson(
+                json_['exaAiSearchConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        parallelAiSearchConfig: json_.containsKey('parallelAiSearchConfig')
+            ? GenaiVertexV1ParallelAISearchConfig.fromJson(
+                json_['parallelAiSearchConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ragStoreConfig: json_.containsKey('ragStoreConfig')
+            ? GenaiVertexV1RagStoreConfig.fromJson(
+                json_['ragStoreConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retrievalTypes: (json_['retrievalTypes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        vertexAiSearchConfig: json_.containsKey('vertexAiSearchConfig')
+            ? GenaiVertexV1VertexAISearchConfig.fromJson(
+                json_['vertexAiSearchConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final exaAiSearchConfig = this.exaAiSearchConfig;
+    final parallelAiSearchConfig = this.parallelAiSearchConfig;
+    final ragStoreConfig = this.ragStoreConfig;
+    final retrievalTypes = this.retrievalTypes;
+    final vertexAiSearchConfig = this.vertexAiSearchConfig;
+    return {
+      'exaAiSearchConfig': ?exaAiSearchConfig,
+      'parallelAiSearchConfig': ?parallelAiSearchConfig,
+      'ragStoreConfig': ?ragStoreConfig,
+      'retrievalTypes': ?retrievalTypes,
+      'vertexAiSearchConfig': ?vertexAiSearchConfig,
+    };
+  }
+}
+
+/// Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI
+/// Search, etc.
+///
+/// RetrievalType decides which tool is used.
+class GenaiVertexV1RetrievalCallDelta {
+  /// The arguments to pass to the Retrieval tool.
+  ///
+  /// Required.
+  GenaiVertexV1RetrievalCallStepRetrievalStepArguments? arguments;
+
+  /// The type of retrieval tools.
+  /// Possible string values are:
+  /// - "RETRIEVAL_TYPE_UNSPECIFIED"
+  /// - "RETRIEVAL_TYPE_VERTEX_AI_SEARCH"
+  /// - "RETRIEVAL_TYPE_RAG_STORE"
+  /// - "RETRIEVAL_TYPE_EXA_AI_SEARCH"
+  /// - "RETRIEVAL_TYPE_PARALLEL_AI_SEARCH"
+  core.String? retrievalType;
+
+  GenaiVertexV1RetrievalCallDelta({this.arguments, this.retrievalType});
+
+  GenaiVertexV1RetrievalCallDelta.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1RetrievalCallStepRetrievalStepArguments.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retrievalType: json_['retrievalType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    final retrievalType = this.retrievalType;
+    return {'arguments': ?arguments, 'retrievalType': ?retrievalType};
+  }
+}
+
+/// Retrieval call step.
+///
+/// Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI
+/// Search, etc. RetrievalType decides which tool is used.
+class GenaiVertexV1RetrievalCallStep {
+  /// The arguments to pass to the retrieval tool.
+  ///
+  /// Required.
+  GenaiVertexV1RetrievalCallStepRetrievalStepArguments? arguments;
+
+  /// The type of retrieval tools.
+  /// Possible string values are:
+  /// - "RETRIEVAL_TYPE_UNSPECIFIED"
+  /// - "RETRIEVAL_TYPE_VERTEX_AI_SEARCH"
+  /// - "RETRIEVAL_TYPE_RAG_STORE"
+  /// - "RETRIEVAL_TYPE_EXA_AI_SEARCH"
+  /// - "RETRIEVAL_TYPE_PARALLEL_AI_SEARCH"
+  core.String? retrievalType;
+
+  GenaiVertexV1RetrievalCallStep({this.arguments, this.retrievalType});
+
+  GenaiVertexV1RetrievalCallStep.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1RetrievalCallStepRetrievalStepArguments.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retrievalType: json_['retrievalType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    final retrievalType = this.retrievalType;
+    return {'arguments': ?arguments, 'retrievalType': ?retrievalType};
+  }
+}
+
+/// The arguments to pass to Retrieval tools.
+class GenaiVertexV1RetrievalCallStepRetrievalStepArguments {
+  /// Queries for Retrieval information.
+  core.List<core.String>? queries;
+
+  GenaiVertexV1RetrievalCallStepRetrievalStepArguments({this.queries});
+
+  GenaiVertexV1RetrievalCallStepRetrievalStepArguments.fromJson(core.Map json_)
+    : this(
+        queries: (json_['queries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final queries = this.queries;
+    return {'queries': ?queries};
+  }
+}
+
+/// Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI
+/// Search, etc.
+///
+/// ToolResultDelta.type
+typedef GenaiVertexV1RetrievalResultDelta = $Shared14;
+
+/// Vertex Retrieval result step.
+///
+/// Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI
+/// Search, etc.
+typedef GenaiVertexV1RetrievalResultStep = $Shared14;
+
+/// Encapsulates a snippet of a user review that answers a question about the
+/// features of a specific place in Google Maps.
+class GenaiVertexV1ReviewSnippet {
+  /// The ID of the review snippet.
+  core.String? reviewId;
+
+  /// Title of the review.
+  core.String? title;
+
+  /// A link that corresponds to the user review on Google Maps.
+  core.String? url;
+
+  GenaiVertexV1ReviewSnippet({this.reviewId, this.title, this.url});
+
+  GenaiVertexV1ReviewSnippet.fromJson(core.Map json_)
+    : this(
+        reviewId: json_['reviewId'] as core.String?,
+        title: json_['title'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final reviewId = this.reviewId;
+    final title = this.title;
+    final url = this.url;
+    return {'reviewId': ?reviewId, 'title': ?title, 'url': ?url};
+  }
+}
+
+/// A safety setting that affects the safety-blocking behavior.
+///
+/// A SafetySetting consists of a harm category and a threshold for that
+/// category.
+class GenaiVertexV1SafetySetting {
+  /// The method for blocking content.
+  ///
+  /// If not specified, the default behavior is to use the probability score.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "HARM_BLOCK_METHOD_UNSPECIFIED" : The harm block method is unspecified.
+  /// - "SEVERITY" : The harm block method uses both probability and severity
+  /// scores.
+  /// - "PROBABILITY" : The harm block method uses the probability score.
+  core.String? method;
+
+  /// The threshold for blocking content.
+  ///
+  /// If the harm probability exceeds this threshold, the content will be
+  /// blocked.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "HARM_BLOCK_THRESHOLD_UNSPECIFIED" : The harm block threshold is
+  /// unspecified.
+  /// - "BLOCK_LOW_AND_ABOVE" : Block content with a low harm probability or
+  /// higher.
+  /// - "BLOCK_MEDIUM_AND_ABOVE" : Block content with a medium harm probability
+  /// or higher.
+  /// - "BLOCK_ONLY_HIGH" : Block content with a high harm probability.
+  /// - "BLOCK_NONE" : Do not block any content, regardless of its harm
+  /// probability.
+  /// - "OFF" : Turn off the safety filter entirely.
+  core.String? threshold;
+
+  /// The type of harm category to be blocked.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "HARM_CATEGORY_UNSPECIFIED" : Default value. This value is unused.
+  /// - "HARM_CATEGORY_HATE_SPEECH" : Content that promotes violence or incites
+  /// hatred against individuals or groups based on certain attributes.
+  /// - "HARM_CATEGORY_DANGEROUS_CONTENT" : Content that promotes, facilitates,
+  /// or enables dangerous activities.
+  /// - "HARM_CATEGORY_HARASSMENT" : Abusive, threatening, or content intended
+  /// to bully, torment, or ridicule.
+  /// - "HARM_CATEGORY_SEXUALLY_EXPLICIT" : Content that contains sexually
+  /// explicit material.
+  /// - "HARM_CATEGORY_CIVIC_INTEGRITY" : Deprecated: Election filter is not
+  /// longer supported. The harm category is civic integrity.
+  /// - "HARM_CATEGORY_IMAGE_HATE" : Images that contain hate speech.
+  /// - "HARM_CATEGORY_IMAGE_DANGEROUS_CONTENT" : Images that contain dangerous
+  /// content.
+  /// - "HARM_CATEGORY_IMAGE_HARASSMENT" : Images that contain harassment.
+  /// - "HARM_CATEGORY_IMAGE_SEXUALLY_EXPLICIT" : Images that contain sexually
+  /// explicit content.
+  /// - "HARM_CATEGORY_JAILBREAK" : Prompts designed to bypass safety filters.
+  core.String? type;
+
+  GenaiVertexV1SafetySetting({this.method, this.threshold, this.type});
+
+  GenaiVertexV1SafetySetting.fromJson(core.Map json_)
+    : this(
+        method: json_['method'] as core.String?,
+        threshold: json_['threshold'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final method = this.method;
+    final threshold = this.threshold;
+    final type = this.type;
+    return {'method': ?method, 'threshold': ?threshold, 'type': ?type};
+  }
+}
+
+class GenaiVertexV1ServerToolCallDelta {
+  GenaiVertexV1CodeExecutionCallDelta? codeExecutionCall;
+  GenaiVertexV1FileSearchCallDelta? fileSearchCall;
+  GenaiVertexV1GoogleMapsCallDelta? googleMapsCall;
+  GenaiVertexV1GoogleSearchCallDelta? googleSearchCall;
+  GenaiVertexV1ProcessingCallDelta? processingCall;
+  GenaiVertexV1RetrievalCallDelta? retrievalCall;
+
+  /// A signature hash for backend validation.
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
+
+  set signatureAsBytes(core.List<core.int> bytes_) {
+    signature = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  GenaiVertexV1UrlContextCallDelta? urlContextCall;
+
+  GenaiVertexV1ServerToolCallDelta({
+    this.codeExecutionCall,
+    this.fileSearchCall,
+    this.googleMapsCall,
+    this.googleSearchCall,
+    this.processingCall,
+    this.retrievalCall,
+    this.signature,
+    this.urlContextCall,
+  });
+
+  GenaiVertexV1ServerToolCallDelta.fromJson(core.Map json_)
+    : this(
+        codeExecutionCall: json_.containsKey('codeExecutionCall')
+            ? GenaiVertexV1CodeExecutionCallDelta.fromJson(
+                json_['codeExecutionCall']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fileSearchCall: json_.containsKey('fileSearchCall')
+            ? GenaiVertexV1FileSearchCallDelta.fromJson(
+                json_['fileSearchCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleMapsCall: json_.containsKey('googleMapsCall')
+            ? GenaiVertexV1GoogleMapsCallDelta.fromJson(
+                json_['googleMapsCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleSearchCall: json_.containsKey('googleSearchCall')
+            ? GenaiVertexV1GoogleSearchCallDelta.fromJson(
+                json_['googleSearchCall']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        processingCall: json_.containsKey('processingCall')
+            ? GenaiVertexV1ProcessingCallDelta.fromJson(
+                json_['processingCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retrievalCall: json_.containsKey('retrievalCall')
+            ? GenaiVertexV1RetrievalCallDelta.fromJson(
+                json_['retrievalCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        signature: json_['signature'] as core.String?,
+        urlContextCall: json_.containsKey('urlContextCall')
+            ? GenaiVertexV1UrlContextCallDelta.fromJson(
+                json_['urlContextCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final codeExecutionCall = this.codeExecutionCall;
+    final fileSearchCall = this.fileSearchCall;
+    final googleMapsCall = this.googleMapsCall;
+    final googleSearchCall = this.googleSearchCall;
+    final processingCall = this.processingCall;
+    final retrievalCall = this.retrievalCall;
+    final signature = this.signature;
+    final urlContextCall = this.urlContextCall;
+    return {
+      'codeExecutionCall': ?codeExecutionCall,
+      'fileSearchCall': ?fileSearchCall,
+      'googleMapsCall': ?googleMapsCall,
+      'googleSearchCall': ?googleSearchCall,
+      'processingCall': ?processingCall,
+      'retrievalCall': ?retrievalCall,
+      'signature': ?signature,
+      'urlContextCall': ?urlContextCall,
+    };
+  }
+}
+
+class GenaiVertexV1ServerToolResultDelta {
+  GenaiVertexV1CodeExecutionResultDelta? codeExecutionResult;
+  GenaiVertexV1FileSearchResultDelta? fileSearchResult;
+  GenaiVertexV1GoogleMapsResultDelta? googleMapsResult;
+  GenaiVertexV1GoogleSearchResultDelta? googleSearchResult;
+  GenaiVertexV1ProcessingResultDelta? processingResult;
+  GenaiVertexV1RetrievalResultDelta? retrievalResult;
+
+  /// A signature hash for backend validation.
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
+
+  set signatureAsBytes(core.List<core.int> bytes_) {
+    signature = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  GenaiVertexV1UrlContextResultDelta? urlContextResult;
+
+  GenaiVertexV1ServerToolResultDelta({
+    this.codeExecutionResult,
+    this.fileSearchResult,
+    this.googleMapsResult,
+    this.googleSearchResult,
+    this.processingResult,
+    this.retrievalResult,
+    this.signature,
+    this.urlContextResult,
+  });
+
+  GenaiVertexV1ServerToolResultDelta.fromJson(core.Map json_)
+    : this(
+        codeExecutionResult: json_.containsKey('codeExecutionResult')
+            ? GenaiVertexV1CodeExecutionResultDelta.fromJson(
+                json_['codeExecutionResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fileSearchResult: json_.containsKey('fileSearchResult')
+            ? GenaiVertexV1FileSearchResultDelta.fromJson(
+                json_['fileSearchResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleMapsResult: json_.containsKey('googleMapsResult')
+            ? GenaiVertexV1GoogleMapsResultDelta.fromJson(
+                json_['googleMapsResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleSearchResult: json_.containsKey('googleSearchResult')
+            ? GenaiVertexV1GoogleSearchResultDelta.fromJson(
+                json_['googleSearchResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        processingResult: json_.containsKey('processingResult')
+            ? GenaiVertexV1ProcessingResultDelta.fromJson(
+                json_['processingResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retrievalResult: json_.containsKey('retrievalResult')
+            ? GenaiVertexV1RetrievalResultDelta.fromJson(
+                json_['retrievalResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        signature: json_['signature'] as core.String?,
+        urlContextResult: json_.containsKey('urlContextResult')
+            ? GenaiVertexV1UrlContextResultDelta.fromJson(
+                json_['urlContextResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final codeExecutionResult = this.codeExecutionResult;
+    final fileSearchResult = this.fileSearchResult;
+    final googleMapsResult = this.googleMapsResult;
+    final googleSearchResult = this.googleSearchResult;
+    final processingResult = this.processingResult;
+    final retrievalResult = this.retrievalResult;
+    final signature = this.signature;
+    final urlContextResult = this.urlContextResult;
+    return {
+      'codeExecutionResult': ?codeExecutionResult,
+      'fileSearchResult': ?fileSearchResult,
+      'googleMapsResult': ?googleMapsResult,
+      'googleSearchResult': ?googleSearchResult,
+      'processingResult': ?processingResult,
+      'retrievalResult': ?retrievalResult,
+      'signature': ?signature,
+      'urlContextResult': ?urlContextResult,
+    };
+  }
+}
+
+/// Configuration for multi-speaker and speech generation.
+class GenaiVertexV1SpeakerConfig {
+  /// Individual speaker configurations.
+  core.List<GenaiVertexV1SpeechConfig>? speakers;
+
+  GenaiVertexV1SpeakerConfig({this.speakers});
+
+  GenaiVertexV1SpeakerConfig.fromJson(core.Map json_)
+    : this(
+        speakers: (json_['speakers'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1SpeechConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final speakers = this.speakers;
+    return {'speakers': ?speakers};
+  }
+}
+
+/// Speech annotation for text content.
+class GenaiVertexV1SpeechAnnotation {
+  /// The speaker to associate with this turn.
+  core.String? speaker;
+
+  /// Style instruction for the speech synthesis.
+  core.String? style;
+
+  GenaiVertexV1SpeechAnnotation({this.speaker, this.style});
+
+  GenaiVertexV1SpeechAnnotation.fromJson(core.Map json_)
+    : this(
+        speaker: json_['speaker'] as core.String?,
+        style: json_['style'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final speaker = this.speaker;
+    final style = this.style;
+    return {'speaker': ?speaker, 'style': ?style};
+  }
+}
+
+/// The configuration for speech interaction.
+class GenaiVertexV1SpeechConfig {
+  /// The language of the speech.
+  core.String? language;
+
+  /// The speaker's name, it should match the speaker name given in the prompt.
+  core.String? speaker;
+
+  /// The voice of the speaker.
+  core.String? voice;
+
+  GenaiVertexV1SpeechConfig({this.language, this.speaker, this.voice});
+
+  GenaiVertexV1SpeechConfig.fromJson(core.Map json_)
+    : this(
+        language: json_['language'] as core.String?,
+        speaker: json_['speaker'] as core.String?,
+        voice: json_['voice'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final language = this.language;
+    final speaker = this.speaker;
+    final voice = this.voice;
+    return {'language': ?language, 'speaker': ?speaker, 'voice': ?voice};
+  }
+}
+
+/// A step in the interaction.
+class GenaiVertexV1Step {
+  GenaiVertexV1ModelOutputStep? modelOutput;
+  GenaiVertexV1ThoughtStep? thought;
+  GenaiVertexV1ToolCallStep? toolCall;
+  GenaiVertexV1ToolResultStep? toolResult;
+
+  /// DO NOT USE -- These are for 3P JSON only
+  GenaiVertexV1UserInputStep? userInput;
+
+  GenaiVertexV1Step({
+    this.modelOutput,
+    this.thought,
+    this.toolCall,
+    this.toolResult,
+    this.userInput,
+  });
+
+  GenaiVertexV1Step.fromJson(core.Map json_)
+    : this(
+        modelOutput: json_.containsKey('modelOutput')
+            ? GenaiVertexV1ModelOutputStep.fromJson(
+                json_['modelOutput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        thought: json_.containsKey('thought')
+            ? GenaiVertexV1ThoughtStep.fromJson(
+                json_['thought'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolCall: json_.containsKey('toolCall')
+            ? GenaiVertexV1ToolCallStep.fromJson(
+                json_['toolCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        toolResult: json_.containsKey('toolResult')
+            ? GenaiVertexV1ToolResultStep.fromJson(
+                json_['toolResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        userInput: json_.containsKey('userInput')
+            ? GenaiVertexV1UserInputStep.fromJson(
+                json_['userInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final modelOutput = this.modelOutput;
+    final thought = this.thought;
+    final toolCall = this.toolCall;
+    final toolResult = this.toolResult;
+    final userInput = this.userInput;
+    return {
+      'modelOutput': ?modelOutput,
+      'thought': ?thought,
+      'toolCall': ?toolCall,
+      'toolResult': ?toolResult,
+      'userInput': ?userInput,
+    };
+  }
+}
+
+class GenaiVertexV1StepDelta {
+  GenaiVertexV1StepDeltaData? delta;
+  core.int? index;
+
+  GenaiVertexV1StepDelta({this.delta, this.index});
+
+  GenaiVertexV1StepDelta.fromJson(core.Map json_)
+    : this(
+        delta: json_.containsKey('delta')
+            ? GenaiVertexV1StepDeltaData.fromJson(
+                json_['delta'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        index: json_['index'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final delta = this.delta;
+    final index = this.index;
+    return {'delta': ?delta, 'index': ?index};
+  }
+}
+
+class GenaiVertexV1StepDeltaData {
+  GenaiVertexV1ArgumentsDelta? argumentsDelta;
+  GenaiVertexV1AudioDelta? audio;
+  GenaiVertexV1DocumentDelta? document;
+  GenaiVertexV1FunctionResultDelta? functionResult;
+  GenaiVertexV1ImageDelta? image;
+  GenaiVertexV1ServerToolCallDelta? serverToolCall;
+  GenaiVertexV1ServerToolResultDelta? serverToolResult;
+  GenaiVertexV1TextDelta? text;
+  GenaiVertexV1TextAnnotationDelta? textAnnotationDelta;
+  GenaiVertexV1ThoughtSignatureDelta? thoughtSignature;
+  GenaiVertexV1ThoughtSummaryDelta? thoughtSummary;
+  GenaiVertexV1VideoDelta? video;
+
+  GenaiVertexV1StepDeltaData({
+    this.argumentsDelta,
+    this.audio,
+    this.document,
+    this.functionResult,
+    this.image,
+    this.serverToolCall,
+    this.serverToolResult,
+    this.text,
+    this.textAnnotationDelta,
+    this.thoughtSignature,
+    this.thoughtSummary,
+    this.video,
+  });
+
+  GenaiVertexV1StepDeltaData.fromJson(core.Map json_)
+    : this(
+        argumentsDelta: json_.containsKey('argumentsDelta')
+            ? GenaiVertexV1ArgumentsDelta.fromJson(
+                json_['argumentsDelta'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        audio: json_.containsKey('audio')
+            ? GenaiVertexV1AudioDelta.fromJson(
+                json_['audio'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        document: json_.containsKey('document')
+            ? GenaiVertexV1DocumentDelta.fromJson(
+                json_['document'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        functionResult: json_.containsKey('functionResult')
+            ? GenaiVertexV1FunctionResultDelta.fromJson(
+                json_['functionResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        image: json_.containsKey('image')
+            ? GenaiVertexV1ImageDelta.fromJson(
+                json_['image'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serverToolCall: json_.containsKey('serverToolCall')
+            ? GenaiVertexV1ServerToolCallDelta.fromJson(
+                json_['serverToolCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serverToolResult: json_.containsKey('serverToolResult')
+            ? GenaiVertexV1ServerToolResultDelta.fromJson(
+                json_['serverToolResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        text: json_.containsKey('text')
+            ? GenaiVertexV1TextDelta.fromJson(
+                json_['text'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        textAnnotationDelta: json_.containsKey('textAnnotationDelta')
+            ? GenaiVertexV1TextAnnotationDelta.fromJson(
+                json_['textAnnotationDelta']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        thoughtSignature: json_.containsKey('thoughtSignature')
+            ? GenaiVertexV1ThoughtSignatureDelta.fromJson(
+                json_['thoughtSignature']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        thoughtSummary: json_.containsKey('thoughtSummary')
+            ? GenaiVertexV1ThoughtSummaryDelta.fromJson(
+                json_['thoughtSummary'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        video: json_.containsKey('video')
+            ? GenaiVertexV1VideoDelta.fromJson(
+                json_['video'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final argumentsDelta = this.argumentsDelta;
+    final audio = this.audio;
+    final document = this.document;
+    final functionResult = this.functionResult;
+    final image = this.image;
+    final serverToolCall = this.serverToolCall;
+    final serverToolResult = this.serverToolResult;
+    final text = this.text;
+    final textAnnotationDelta = this.textAnnotationDelta;
+    final thoughtSignature = this.thoughtSignature;
+    final thoughtSummary = this.thoughtSummary;
+    final video = this.video;
+    return {
+      'argumentsDelta': ?argumentsDelta,
+      'audio': ?audio,
+      'document': ?document,
+      'functionResult': ?functionResult,
+      'image': ?image,
+      'serverToolCall': ?serverToolCall,
+      'serverToolResult': ?serverToolResult,
+      'text': ?text,
+      'textAnnotationDelta': ?textAnnotationDelta,
+      'thoughtSignature': ?thoughtSignature,
+      'thoughtSummary': ?thoughtSummary,
+      'video': ?video,
+    };
+  }
+}
+
+/// A list of Steps.
+class GenaiVertexV1StepList {
+  /// The steps of the list.
+  core.List<GenaiVertexV1Step>? steps;
+
+  GenaiVertexV1StepList({this.steps});
+
+  GenaiVertexV1StepList.fromJson(core.Map json_)
+    : this(
+        steps: (json_['steps'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1Step.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final steps = this.steps;
+    return {'steps': ?steps};
+  }
+}
+
+class GenaiVertexV1StepStart {
+  core.int? index;
+  GenaiVertexV1Step? step;
+
+  GenaiVertexV1StepStart({this.index, this.step});
+
+  GenaiVertexV1StepStart.fromJson(core.Map json_)
+    : this(
+        index: json_['index'] as core.int?,
+        step: json_.containsKey('step')
+            ? GenaiVertexV1Step.fromJson(
+                json_['step'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final index = this.index;
+    final step = this.step;
+    return {'index': ?index, 'step': ?step};
+  }
+}
+
+class GenaiVertexV1StepStop {
+  core.int? index;
+
+  /// Model usage stats for this specific step.
+  GenaiVertexV1InteractionUsage? stepUsage;
+
+  /// Cumulative model usage stats from the start of the session.
+  GenaiVertexV1InteractionUsage? usage;
+
+  GenaiVertexV1StepStop({this.index, this.stepUsage, this.usage});
+
+  GenaiVertexV1StepStop.fromJson(core.Map json_)
+    : this(
+        index: json_['index'] as core.int?,
+        stepUsage: json_.containsKey('stepUsage')
+            ? GenaiVertexV1InteractionUsage.fromJson(
+                json_['stepUsage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        usage: json_.containsKey('usage')
+            ? GenaiVertexV1InteractionUsage.fromJson(
+                json_['usage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final index = this.index;
+    final stepUsage = this.stepUsage;
+    final usage = this.usage;
+    return {'index': ?index, 'stepUsage': ?stepUsage, 'usage': ?usage};
+  }
+}
+
+/// `Struct` represents a structured data value, consisting of fields which map
+/// to dynamically typed values.
+class GenaiVertexV1Struct {
+  /// Dynamically typed fields.
+  ///
+  /// List instead of map because LLMs are sensitive to ordering, and we want to
+  /// give users full control.
+  core.List<GenaiVertexV1Field>? fields;
+
+  GenaiVertexV1Struct({this.fields});
+
+  GenaiVertexV1Struct.fromJson(core.Map json_)
+    : this(
+        fields: (json_['fields'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1Field.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final fields = this.fields;
+    return {'fields': ?fields};
+  }
+}
+
+class GenaiVertexV1TextAnnotationDelta {
+  /// Citation information for model-generated content.
+  core.List<GenaiVertexV1TextContentAnnotation>? annotations;
+
+  GenaiVertexV1TextAnnotationDelta({this.annotations});
+
+  GenaiVertexV1TextAnnotationDelta.fromJson(core.Map json_)
+    : this(
+        annotations: (json_['annotations'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1TextContentAnnotation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    return {'annotations': ?annotations};
+  }
+}
+
+/// A text content block.
+class GenaiVertexV1TextContent {
+  /// Citation information for model-generated content.
+  core.List<GenaiVertexV1TextContentAnnotation>? annotations;
+
+  /// The text content.
+  ///
+  /// Required.
+  core.String? text;
+
+  GenaiVertexV1TextContent({this.annotations, this.text});
+
+  GenaiVertexV1TextContent.fromJson(core.Map json_)
+    : this(
+        annotations: (json_['annotations'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1TextContentAnnotation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        text: json_['text'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final text = this.text;
+    return {'annotations': ?annotations, 'text': ?text};
+  }
+}
+
+/// Citation information for model-generated content.
+class GenaiVertexV1TextContentAnnotation {
+  /// End of the attributed segment, exclusive.
+  core.int? endIndex;
+
+  /// A file citation annotation.
+  GenaiVertexV1FileCitation? fileCitation;
+
+  /// A place citation annotation.
+  GenaiVertexV1PlaceCitation? placeCitation;
+
+  /// Speech annotation for text content.
+  GenaiVertexV1SpeechAnnotation? speechMetadata;
+
+  /// Start of segment of the response that is attributed to this source.
+  ///
+  /// Index indicates the start of the segment, measured in bytes.
+  core.int? startIndex;
+
+  /// NOTE: We use these instead of the Citation message for historical reasons.
+  ///
+  /// A URL citation annotation.
+  GenaiVertexV1UrlCitation? urlCitation;
+
+  /// Word-level ASR annotation with timing and speaker info.
+  GenaiVertexV1WordInfo? wordInfo;
+
+  GenaiVertexV1TextContentAnnotation({
+    this.endIndex,
+    this.fileCitation,
+    this.placeCitation,
+    this.speechMetadata,
+    this.startIndex,
+    this.urlCitation,
+    this.wordInfo,
+  });
+
+  GenaiVertexV1TextContentAnnotation.fromJson(core.Map json_)
+    : this(
+        endIndex: json_['endIndex'] as core.int?,
+        fileCitation: json_.containsKey('fileCitation')
+            ? GenaiVertexV1FileCitation.fromJson(
+                json_['fileCitation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        placeCitation: json_.containsKey('placeCitation')
+            ? GenaiVertexV1PlaceCitation.fromJson(
+                json_['placeCitation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        speechMetadata: json_.containsKey('speechMetadata')
+            ? GenaiVertexV1SpeechAnnotation.fromJson(
+                json_['speechMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        startIndex: json_['startIndex'] as core.int?,
+        urlCitation: json_.containsKey('urlCitation')
+            ? GenaiVertexV1UrlCitation.fromJson(
+                json_['urlCitation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        wordInfo: json_.containsKey('wordInfo')
+            ? GenaiVertexV1WordInfo.fromJson(
+                json_['wordInfo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endIndex = this.endIndex;
+    final fileCitation = this.fileCitation;
+    final placeCitation = this.placeCitation;
+    final speechMetadata = this.speechMetadata;
+    final startIndex = this.startIndex;
+    final urlCitation = this.urlCitation;
+    final wordInfo = this.wordInfo;
+    return {
+      'endIndex': ?endIndex,
+      'fileCitation': ?fileCitation,
+      'placeCitation': ?placeCitation,
+      'speechMetadata': ?speechMetadata,
+      'startIndex': ?startIndex,
+      'urlCitation': ?urlCitation,
+      'wordInfo': ?wordInfo,
+    };
+  }
+}
+
+typedef GenaiVertexV1TextDelta = $Shared02;
+
+/// Configuration for text output format.
+class GenaiVertexV1TextResponseFormat {
+  /// The MIME type of the text output.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "TYPE_APPLICATION_JSON" : JSON output format.
+  /// - "TYPE_TEXT_PLAIN" : Plain text output format.
+  core.String? mimeType;
+
+  /// The JSON schema that the output should conform to.
+  ///
+  /// Only applicable when mime_type is application/json.
+  GenaiVertexV1Struct? schema;
+
+  GenaiVertexV1TextResponseFormat({this.mimeType, this.schema});
+
+  GenaiVertexV1TextResponseFormat.fromJson(core.Map json_)
+    : this(
+        mimeType: json_['mimeType'] as core.String?,
+        schema: json_.containsKey('schema')
+            ? GenaiVertexV1Struct.fromJson(
+                json_['schema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final mimeType = this.mimeType;
+    final schema = this.schema;
+    return {'mimeType': ?mimeType, 'schema': ?schema};
+  }
+}
+
+class GenaiVertexV1ThoughtSignatureDelta {
+  /// Signature to match the backend source to be part of the generation.
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
+
+  set signatureAsBytes(core.List<core.int> bytes_) {
+    signature = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  GenaiVertexV1ThoughtSignatureDelta({this.signature});
+
+  GenaiVertexV1ThoughtSignatureDelta.fromJson(core.Map json_)
+    : this(signature: json_['signature'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final signature = this.signature;
+    return {'signature': ?signature};
+  }
+}
+
+/// A thought step.
+class GenaiVertexV1ThoughtStep {
+  /// A signature hash for backend validation.
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
+
+  set signatureAsBytes(core.List<core.int> bytes_) {
+    signature = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// A summary of the thought.
+  core.List<GenaiVertexV1Content>? summary;
+
+  GenaiVertexV1ThoughtStep({this.signature, this.summary});
+
+  GenaiVertexV1ThoughtStep.fromJson(core.Map json_)
+    : this(
+        signature: json_['signature'] as core.String?,
+        summary: (json_['summary'] as core.List?)
+            ?.map(
+              (value) => GenaiVertexV1Content.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final signature = this.signature;
+    final summary = this.summary;
+    return {'signature': ?signature, 'summary': ?summary};
+  }
+}
+
+class GenaiVertexV1ThoughtSummaryDelta {
+  /// A new summary item to be added to the thought.
+  GenaiVertexV1Content? content;
+
+  GenaiVertexV1ThoughtSummaryDelta({this.content});
+
+  GenaiVertexV1ThoughtSummaryDelta.fromJson(core.Map json_)
+    : this(
+        content: json_.containsKey('content')
+            ? GenaiVertexV1Content.fromJson(
+                json_['content'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final content = this.content;
+    return {'content': ?content};
+  }
+}
+
+/// A tool that can be used by the model.
+class GenaiVertexV1Tool {
+  /// A tool that can be used by the model to execute code.
+  GenaiVertexV1CodeExecution? codeExecution;
+
+  /// Tool to support the model interacting directly with the computer.
+  GenaiVertexV1ComputerUse? computerUse;
+
+  /// A tool that can be used by the model to search files.
+  GenaiVertexV1FileSearch? fileSearch;
+
+  /// A function that can be used by the model.
+  GenaiVertexV1Function? function;
+
+  /// A tool that can be used by the model to search Google Maps.
+  GenaiVertexV1GoogleMaps? googleMaps;
+
+  /// A tool that can be used by the model to search Google.
+  GenaiVertexV1GoogleSearch? googleSearch;
+
+  /// A MCPServer is a server that can be called by the model to perform
+  /// actions.
+  GenaiVertexV1McpServer? mcpServer;
+
+  /// A tool that can be used by the model to retrieve files.
+  GenaiVertexV1Retrieval? retrieval;
+
+  /// A tool that can be used by the model to fetch URL context.
+  GenaiVertexV1UrlContext? urlContext;
+
+  GenaiVertexV1Tool({
+    this.codeExecution,
+    this.computerUse,
+    this.fileSearch,
+    this.function,
+    this.googleMaps,
+    this.googleSearch,
+    this.mcpServer,
+    this.retrieval,
+    this.urlContext,
+  });
+
+  GenaiVertexV1Tool.fromJson(core.Map json_)
+    : this(
+        codeExecution: json_.containsKey('codeExecution')
+            ? GenaiVertexV1CodeExecution.fromJson(
+                json_['codeExecution'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        computerUse: json_.containsKey('computerUse')
+            ? GenaiVertexV1ComputerUse.fromJson(
+                json_['computerUse'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fileSearch: json_.containsKey('fileSearch')
+            ? GenaiVertexV1FileSearch.fromJson(
+                json_['fileSearch'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        function: json_.containsKey('function')
+            ? GenaiVertexV1Function.fromJson(
+                json_['function'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleMaps: json_.containsKey('googleMaps')
+            ? GenaiVertexV1GoogleMaps.fromJson(
+                json_['googleMaps'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleSearch: json_.containsKey('googleSearch')
+            ? GenaiVertexV1GoogleSearch.fromJson(
+                json_['googleSearch'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        mcpServer: json_.containsKey('mcpServer')
+            ? GenaiVertexV1McpServer.fromJson(
+                json_['mcpServer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retrieval: json_.containsKey('retrieval')
+            ? GenaiVertexV1Retrieval.fromJson(
+                json_['retrieval'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        urlContext: json_.containsKey('urlContext')
+            ? GenaiVertexV1UrlContext.fromJson(
+                json_['urlContext'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final codeExecution = this.codeExecution;
+    final computerUse = this.computerUse;
+    final fileSearch = this.fileSearch;
+    final function = this.function;
+    final googleMaps = this.googleMaps;
+    final googleSearch = this.googleSearch;
+    final mcpServer = this.mcpServer;
+    final retrieval = this.retrieval;
+    final urlContext = this.urlContext;
+    return {
+      'codeExecution': ?codeExecution,
+      'computerUse': ?computerUse,
+      'fileSearch': ?fileSearch,
+      'function': ?function,
+      'googleMaps': ?googleMaps,
+      'googleSearch': ?googleSearch,
+      'mcpServer': ?mcpServer,
+      'retrieval': ?retrieval,
+      'urlContext': ?urlContext,
+    };
+  }
+}
+
+/// Tool call step.
+class GenaiVertexV1ToolCallStep {
+  GenaiVertexV1CodeExecutionCallStep? codeExecutionCall;
+  GenaiVertexV1FileSearchCallStep? fileSearchCall;
+  GenaiVertexV1FunctionCallStep? functionCall;
+  GenaiVertexV1GoogleMapsCallStep? googleMapsCall;
+  GenaiVertexV1GoogleSearchCallStep? googleSearchCall;
+
+  /// A unique ID for this specific tool call.
+  ///
+  /// Required.
+  core.String? id;
+  GenaiVertexV1ProcessingCallStep? processingCall;
+  GenaiVertexV1RetrievalCallStep? retrievalCall;
+
+  /// A signature hash for backend validation.
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
+
+  set signatureAsBytes(core.List<core.int> bytes_) {
+    signature = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  GenaiVertexV1UrlContextCallStep? urlContextCall;
+
+  GenaiVertexV1ToolCallStep({
+    this.codeExecutionCall,
+    this.fileSearchCall,
+    this.functionCall,
+    this.googleMapsCall,
+    this.googleSearchCall,
+    this.id,
+    this.processingCall,
+    this.retrievalCall,
+    this.signature,
+    this.urlContextCall,
+  });
+
+  GenaiVertexV1ToolCallStep.fromJson(core.Map json_)
+    : this(
+        codeExecutionCall: json_.containsKey('codeExecutionCall')
+            ? GenaiVertexV1CodeExecutionCallStep.fromJson(
+                json_['codeExecutionCall']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fileSearchCall: json_.containsKey('fileSearchCall')
+            ? GenaiVertexV1FileSearchCallStep.fromJson(
+                json_['fileSearchCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        functionCall: json_.containsKey('functionCall')
+            ? GenaiVertexV1FunctionCallStep.fromJson(
+                json_['functionCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleMapsCall: json_.containsKey('googleMapsCall')
+            ? GenaiVertexV1GoogleMapsCallStep.fromJson(
+                json_['googleMapsCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleSearchCall: json_.containsKey('googleSearchCall')
+            ? GenaiVertexV1GoogleSearchCallStep.fromJson(
+                json_['googleSearchCall']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        id: json_['id'] as core.String?,
+        processingCall: json_.containsKey('processingCall')
+            ? GenaiVertexV1ProcessingCallStep.fromJson(
+                json_['processingCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retrievalCall: json_.containsKey('retrievalCall')
+            ? GenaiVertexV1RetrievalCallStep.fromJson(
+                json_['retrievalCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        signature: json_['signature'] as core.String?,
+        urlContextCall: json_.containsKey('urlContextCall')
+            ? GenaiVertexV1UrlContextCallStep.fromJson(
+                json_['urlContextCall'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final codeExecutionCall = this.codeExecutionCall;
+    final fileSearchCall = this.fileSearchCall;
+    final functionCall = this.functionCall;
+    final googleMapsCall = this.googleMapsCall;
+    final googleSearchCall = this.googleSearchCall;
+    final id = this.id;
+    final processingCall = this.processingCall;
+    final retrievalCall = this.retrievalCall;
+    final signature = this.signature;
+    final urlContextCall = this.urlContextCall;
+    return {
+      'codeExecutionCall': ?codeExecutionCall,
+      'fileSearchCall': ?fileSearchCall,
+      'functionCall': ?functionCall,
+      'googleMapsCall': ?googleMapsCall,
+      'googleSearchCall': ?googleSearchCall,
+      'id': ?id,
+      'processingCall': ?processingCall,
+      'retrievalCall': ?retrievalCall,
+      'signature': ?signature,
+      'urlContextCall': ?urlContextCall,
+    };
+  }
+}
+
+/// The tool choice configuration containing allowed tools.
+class GenaiVertexV1ToolChoiceConfig {
+  /// The allowed tools.
+  GenaiVertexV1AllowedTools? allowedTools;
+
+  GenaiVertexV1ToolChoiceConfig({this.allowedTools});
+
+  GenaiVertexV1ToolChoiceConfig.fromJson(core.Map json_)
+    : this(
+        allowedTools: json_.containsKey('allowedTools')
+            ? GenaiVertexV1AllowedTools.fromJson(
+                json_['allowedTools'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final allowedTools = this.allowedTools;
+    return {'allowedTools': ?allowedTools};
+  }
+}
+
+/// Tool result step.
+class GenaiVertexV1ToolResultStep {
+  /// ID to match the ID from the function call block.
+  ///
+  /// Required.
+  core.String? callId;
+  GenaiVertexV1CodeExecutionResultStep? codeExecutionResult;
+  GenaiVertexV1FileSearchResultStep? fileSearchResult;
+  GenaiVertexV1FunctionResultStep? functionResult;
+  GenaiVertexV1GoogleMapsResultStep? googleMapsResult;
+  GenaiVertexV1GoogleSearchResultStep? googleSearchResult;
+  GenaiVertexV1ProcessingResultStep? processingResult;
+  GenaiVertexV1RetrievalResultStep? retrievalResult;
+
+  /// A signature hash for backend validation.
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
+
+  set signatureAsBytes(core.List<core.int> bytes_) {
+    signature = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  GenaiVertexV1UrlContextResultStep? urlContextResult;
+
+  GenaiVertexV1ToolResultStep({
+    this.callId,
+    this.codeExecutionResult,
+    this.fileSearchResult,
+    this.functionResult,
+    this.googleMapsResult,
+    this.googleSearchResult,
+    this.processingResult,
+    this.retrievalResult,
+    this.signature,
+    this.urlContextResult,
+  });
+
+  GenaiVertexV1ToolResultStep.fromJson(core.Map json_)
+    : this(
+        callId: json_['callId'] as core.String?,
+        codeExecutionResult: json_.containsKey('codeExecutionResult')
+            ? GenaiVertexV1CodeExecutionResultStep.fromJson(
+                json_['codeExecutionResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        fileSearchResult: json_.containsKey('fileSearchResult')
+            ? GenaiVertexV1FileSearchResultStep.fromJson(
+                json_['fileSearchResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        functionResult: json_.containsKey('functionResult')
+            ? GenaiVertexV1FunctionResultStep.fromJson(
+                json_['functionResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleMapsResult: json_.containsKey('googleMapsResult')
+            ? GenaiVertexV1GoogleMapsResultStep.fromJson(
+                json_['googleMapsResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleSearchResult: json_.containsKey('googleSearchResult')
+            ? GenaiVertexV1GoogleSearchResultStep.fromJson(
+                json_['googleSearchResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        processingResult: json_.containsKey('processingResult')
+            ? GenaiVertexV1ProcessingResultStep.fromJson(
+                json_['processingResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        retrievalResult: json_.containsKey('retrievalResult')
+            ? GenaiVertexV1RetrievalResultStep.fromJson(
+                json_['retrievalResult'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        signature: json_['signature'] as core.String?,
+        urlContextResult: json_.containsKey('urlContextResult')
+            ? GenaiVertexV1UrlContextResultStep.fromJson(
+                json_['urlContextResult']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final callId = this.callId;
+    final codeExecutionResult = this.codeExecutionResult;
+    final fileSearchResult = this.fileSearchResult;
+    final functionResult = this.functionResult;
+    final googleMapsResult = this.googleMapsResult;
+    final googleSearchResult = this.googleSearchResult;
+    final processingResult = this.processingResult;
+    final retrievalResult = this.retrievalResult;
+    final signature = this.signature;
+    final urlContextResult = this.urlContextResult;
+    return {
+      'callId': ?callId,
+      'codeExecutionResult': ?codeExecutionResult,
+      'fileSearchResult': ?fileSearchResult,
+      'functionResult': ?functionResult,
+      'googleMapsResult': ?googleMapsResult,
+      'googleSearchResult': ?googleSearchResult,
+      'processingResult': ?processingResult,
+      'retrievalResult': ?retrievalResult,
+      'signature': ?signature,
+      'urlContextResult': ?urlContextResult,
+    };
+  }
+}
+
+/// Configuration for speech recognition (transcription).
+class GenaiVertexV1TranscriptionConfig {
+  /// A list of phrases to bias the ASR model towards.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<core.String>? adaptationPhrases;
+
+  /// A list of custom vocabulary phrases to bias the speech recognition model
+  /// toward recognizing specific terms.
+  ///
+  /// Optional.
+  core.List<core.String>? customVocabulary;
+
+  /// Configures speaker diarization.
+  ///
+  /// Supported values: "speaker".
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? diarizationMode;
+
+  /// BCP-47 language codes providing hints about the languages present in the
+  /// audio.
+  ///
+  /// If omitted or empty, defaults to automatic language detection.
+  ///
+  /// Optional.
+  core.List<core.String>? languageCodes;
+
+  /// The granularity of timestamps to include in the transcription output.
+  ///
+  /// Supported values: "word". If empty, no timestamps are generated.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<core.String>? timestampGranularities;
+
+  GenaiVertexV1TranscriptionConfig({
+    this.adaptationPhrases,
+    this.customVocabulary,
+    this.diarizationMode,
+    this.languageCodes,
+    this.timestampGranularities,
+  });
+
+  GenaiVertexV1TranscriptionConfig.fromJson(core.Map json_)
+    : this(
+        adaptationPhrases: (json_['adaptationPhrases'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        customVocabulary: (json_['customVocabulary'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        diarizationMode: json_['diarizationMode'] as core.String?,
+        languageCodes: (json_['languageCodes'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        timestampGranularities: (json_['timestampGranularities'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final adaptationPhrases = this.adaptationPhrases;
+    final customVocabulary = this.customVocabulary;
+    final diarizationMode = this.diarizationMode;
+    final languageCodes = this.languageCodes;
+    final timestampGranularities = this.timestampGranularities;
+    return {
+      'adaptationPhrases': ?adaptationPhrases,
+      'customVocabulary': ?customVocabulary,
+      'diarizationMode': ?diarizationMode,
+      'languageCodes': ?languageCodes,
+      'timestampGranularities': ?timestampGranularities,
+    };
+  }
+}
+
+/// A URL citation annotation.
+class GenaiVertexV1UrlCitation {
+  /// The title of the URL.
+  core.String? title;
+
+  /// The URL.
+  core.String? url;
+
+  GenaiVertexV1UrlCitation({this.title, this.url});
+
+  GenaiVertexV1UrlCitation.fromJson(core.Map json_)
+    : this(
+        title: json_['title'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final title = this.title;
+    final url = this.url;
+    return {'title': ?title, 'url': ?url};
+  }
+}
+
+/// A tool that can be used by the model to fetch URL context.
+typedef GenaiVertexV1UrlContext = $Empty;
+
+/// The arguments to pass to the URL context.
+typedef GenaiVertexV1UrlContextCallContentUrlContextCallArguments =
+    $Arguments03;
+
+class GenaiVertexV1UrlContextCallDelta {
+  GenaiVertexV1UrlContextCallContentUrlContextCallArguments? arguments;
+
+  GenaiVertexV1UrlContextCallDelta({this.arguments});
+
+  GenaiVertexV1UrlContextCallDelta.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1UrlContextCallContentUrlContextCallArguments.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    return {'arguments': ?arguments};
+  }
+}
+
+/// URL context call step.
+class GenaiVertexV1UrlContextCallStep {
+  /// The arguments to pass to the URL context.
+  ///
+  /// Required.
+  GenaiVertexV1UrlContextCallStepUrlContextCallStepArguments? arguments;
+
+  GenaiVertexV1UrlContextCallStep({this.arguments});
+
+  GenaiVertexV1UrlContextCallStep.fromJson(core.Map json_)
+    : this(
+        arguments: json_.containsKey('arguments')
+            ? GenaiVertexV1UrlContextCallStepUrlContextCallStepArguments.fromJson(
+                json_['arguments'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final arguments = this.arguments;
+    return {'arguments': ?arguments};
+  }
+}
+
+/// The arguments to pass to the URL context.
+typedef GenaiVertexV1UrlContextCallStepUrlContextCallStepArguments =
+    $Arguments03;
+
+/// The result of the URL context.
+class GenaiVertexV1UrlContextResultContentUrlContextResult {
+  /// The status of the URL retrieval.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Unspecified status. This value should not be
+  /// used.
+  /// - "SUCCESS" : Url retrieval is successful.
+  /// - "ERROR" : Url retrieval is failed due to error.
+  /// - "PAYWALL" : Url retrieval is failed because the content is behind
+  /// paywall.
+  /// - "UNSAFE" : Url retrieval is failed because the content is unsafe.
+  core.String? status;
+
+  /// The URL that was fetched.
+  core.String? url;
+
+  GenaiVertexV1UrlContextResultContentUrlContextResult({this.status, this.url});
+
+  GenaiVertexV1UrlContextResultContentUrlContextResult.fromJson(core.Map json_)
+    : this(
+        status: json_['status'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final status = this.status;
+    final url = this.url;
+    return {'status': ?status, 'url': ?url};
+  }
+}
+
+class GenaiVertexV1UrlContextResultDelta {
+  core.bool? isError;
+  core.List<GenaiVertexV1UrlContextResultContentUrlContextResult>? result;
+
+  GenaiVertexV1UrlContextResultDelta({this.isError, this.result});
+
+  GenaiVertexV1UrlContextResultDelta.fromJson(core.Map json_)
+    : this(
+        isError: json_['isError'] as core.bool?,
+        result: (json_['result'] as core.List?)
+            ?.map(
+              (value) =>
+                  GenaiVertexV1UrlContextResultContentUrlContextResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isError = this.isError;
+    final result = this.result;
+    return {'isError': ?isError, 'result': ?result};
+  }
+}
+
+/// URL context result step.
+class GenaiVertexV1UrlContextResultStep {
+  /// Whether the URL context resulted in an error.
+  core.bool? isError;
+
+  /// The results of the URL context.
+  ///
+  /// Required.
+  core.List<GenaiVertexV1UrlContextResultStepUrlContextResultItem>? result;
+
+  GenaiVertexV1UrlContextResultStep({this.isError, this.result});
+
+  GenaiVertexV1UrlContextResultStep.fromJson(core.Map json_)
+    : this(
+        isError: json_['isError'] as core.bool?,
+        result: (json_['result'] as core.List?)
+            ?.map(
+              (value) =>
+                  GenaiVertexV1UrlContextResultStepUrlContextResultItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final isError = this.isError;
+    final result = this.result;
+    return {'isError': ?isError, 'result': ?result};
+  }
+}
+
+/// The result of the URL context.
+class GenaiVertexV1UrlContextResultStepUrlContextResultItem {
+  /// The status of the URL retrieval.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED"
+  /// - "SUCCESS"
+  /// - "ERROR"
+  /// - "PAYWALL"
+  /// - "UNSAFE"
+  core.String? status;
+
+  /// The URL that was fetched.
+  core.String? url;
+
+  GenaiVertexV1UrlContextResultStepUrlContextResultItem({
+    this.status,
+    this.url,
+  });
+
+  GenaiVertexV1UrlContextResultStepUrlContextResultItem.fromJson(core.Map json_)
+    : this(
+        status: json_['status'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final status = this.status;
+    final url = this.url;
+    return {'status': ?status, 'url': ?url};
+  }
+}
+
+/// Input provided by the user.
+class GenaiVertexV1UserInputStep {
+  /// The content of the step.
+  ///
+  /// An array of Content objects.
+  GenaiVertexV1ContentList? contentList;
+
+  /// The content of the step.
+  ///
+  /// A single string.
+  core.String? contentString;
+
+  GenaiVertexV1UserInputStep({this.contentList, this.contentString});
+
+  GenaiVertexV1UserInputStep.fromJson(core.Map json_)
+    : this(
+        contentList: json_.containsKey('contentList')
+            ? GenaiVertexV1ContentList.fromJson(
+                json_['contentList'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        contentString: json_['contentString'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final contentList = this.contentList;
+    final contentString = this.contentString;
+    return {'contentList': ?contentList, 'contentString': ?contentString};
+  }
+}
+
+/// `Value` represents a dynamically typed value which can be either null, a
+/// number, a string, a boolean, a recursive struct value, or a list of values.
+///
+/// A producer of value is expected to set one of these variants. Absence of any
+/// variant indicates an error.
+class GenaiVertexV1Value {
+  /// Represents a boolean value.
+  core.bool? boolValue;
+
+  /// Represents rich content (text, image, etc.).
+  GenaiVertexV1Content? contentValue;
+
+  /// Represents a repeated `Value`.
+  GenaiVertexV1ListValue? listValue;
+
+  /// Represents a null value.
+  /// Possible string values are:
+  /// - "NULL_VALUE" : Null value.
+  core.String? nullValue;
+
+  /// Represents a double value.
+  core.double? numberValue;
+
+  /// Represents a string value.
+  core.String? stringValue;
+
+  /// Represents a structured value.
+  GenaiVertexV1Struct? structValue;
+
+  GenaiVertexV1Value({
+    this.boolValue,
+    this.contentValue,
+    this.listValue,
+    this.nullValue,
+    this.numberValue,
+    this.stringValue,
+    this.structValue,
+  });
+
+  GenaiVertexV1Value.fromJson(core.Map json_)
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        contentValue: json_.containsKey('contentValue')
+            ? GenaiVertexV1Content.fromJson(
+                json_['contentValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        listValue: json_.containsKey('listValue')
+            ? GenaiVertexV1ListValue.fromJson(
+                json_['listValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        nullValue: json_.containsKey('nullValue') ? 'NULL_VALUE' : null,
+        numberValue: (json_['numberValue'] as core.num?)?.toDouble(),
+        stringValue: json_['stringValue'] as core.String?,
+        structValue: json_.containsKey('structValue')
+            ? GenaiVertexV1Struct.fromJson(
+                json_['structValue'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final boolValue = this.boolValue;
+    final contentValue = this.contentValue;
+    final listValue = this.listValue;
+    final nullValue = this.nullValue;
+    final numberValue = this.numberValue;
+    final stringValue = this.stringValue;
+    final structValue = this.structValue;
+    return {
+      'boolValue': ?boolValue,
+      'contentValue': ?contentValue,
+      'listValue': ?listValue,
+      'nullValue': ?nullValue,
+      'numberValue': ?numberValue,
+      'stringValue': ?stringValue,
+      'structValue': ?structValue,
+    };
+  }
+}
+
+/// Used to specify configuration for VertexAISearch.
+class GenaiVertexV1VertexAISearchConfig {
+  /// Used to specify Vertex AI Search datastores.
+  ///
+  /// Optional.
+  core.List<core.String>? datastores;
+
+  /// Used to specify Vertex AI Search engine.
+  ///
+  /// Optional.
+  core.String? engine;
+
+  GenaiVertexV1VertexAISearchConfig({this.datastores, this.engine});
+
+  GenaiVertexV1VertexAISearchConfig.fromJson(core.Map json_)
+    : this(
+        datastores: (json_['datastores'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        engine: json_['engine'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final datastores = this.datastores;
+    final engine = this.engine;
+    return {'datastores': ?datastores, 'engine': ?engine};
+  }
+}
+
+/// Configuration options for video generation.
+class GenaiVertexV1VideoConfig {
+  /// Optional task mode for video generation.
+  ///
+  /// If not specified, the model automatically determines the appropriate mode
+  /// based on the provided text prompt and input media.
+  /// Possible string values are:
+  /// - "TASK_UNSPECIFIED" : Unspecified task. The task is inferred from the
+  /// input prompt and media.
+  /// - "TEXT_TO_VIDEO" : Generates video solely from a text prompt.
+  /// - "IMAGE_TO_VIDEO" : Generates video from one or two source images. The
+  /// first image defines the starting frame, and the optional second image
+  /// defines the ending frame.
+  /// - "REFERENCE_TO_VIDEO" : Generates video using reference media (such as
+  /// images, audio, or video).
+  /// - "EDIT" : Modifies an existing input video.
+  /// - "EXTEND" : Extends an existing input video.
+  core.String? task;
+
+  GenaiVertexV1VideoConfig({this.task});
+
+  GenaiVertexV1VideoConfig.fromJson(core.Map json_)
+    : this(task: json_['task'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final task = this.task;
+    return {'task': ?task};
+  }
+}
+
+/// A video content block.
+class GenaiVertexV1VideoContent {
+  /// The video content.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Flexible MIME type string of the video, superseding mime_type = 1.
+  ///
+  /// Note: Bespoke logic in the GAOS parser/serializer maps this to the
+  /// "mime_type" JSON key.
+  core.String? mimeTypeString;
+
+  /// A user-defined name for this content block.
+  ///
+  /// Can be referenced by the model in the final response.
+  core.String? name;
+  GenaiVertexV1VideoContentMediaProcessing? processingConfig;
+
+  ///
+  /// Possible string values are:
+  /// - "PROCESSING_UNSPECIFIED" : Default. Uses model-specific processing (3.5
+  /// Pro+ --\> AGENTIC, older models --\> STATIC)
+  /// - "STATIC" : Fixed-rate frame extraction. All frames placed in context.
+  /// - "AGENTIC" : Model-driven dynamic navigation.
+  core.String? processingType;
+
+  /// The resolution of the media.
+  /// Possible string values are:
+  /// - "MEDIA_RESOLUTION_UNSPECIFIED" : Default value. This value is unused.
+  /// - "LOW" : Low resolution.
+  /// - "MEDIUM" : Medium resolution.
+  /// - "HIGH" : High resolution.
+  /// - "ULTRA_HIGH" : Ultra high resolution.
+  core.String? resolution;
+
+  /// The URI of the video.
+  core.String? uri;
+
+  GenaiVertexV1VideoContent({
+    this.data,
+    this.mimeTypeString,
+    this.name,
+    this.processingConfig,
+    this.processingType,
+    this.resolution,
+    this.uri,
+  });
+
+  GenaiVertexV1VideoContent.fromJson(core.Map json_)
+    : this(
+        data: json_['data'] as core.String?,
+        mimeTypeString: json_['mimeTypeString'] as core.String?,
+        name: json_['name'] as core.String?,
+        processingConfig: json_.containsKey('processingConfig')
+            ? GenaiVertexV1VideoContentMediaProcessing.fromJson(
+                json_['processingConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        processingType: json_['processingType'] as core.String?,
+        resolution: json_['resolution'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final mimeTypeString = this.mimeTypeString;
+    final name = this.name;
+    final processingConfig = this.processingConfig;
+    final processingType = this.processingType;
+    final resolution = this.resolution;
+    final uri = this.uri;
+    return {
+      'data': ?data,
+      'mimeTypeString': ?mimeTypeString,
+      'name': ?name,
+      'processingConfig': ?processingConfig,
+      'processingType': ?processingType,
+      'resolution': ?resolution,
+      'uri': ?uri,
+    };
+  }
+}
+
+class GenaiVertexV1VideoContentMediaProcessing {
+  GenaiVertexV1VideoContentStaticMediaProcessing? static;
+
+  GenaiVertexV1VideoContentMediaProcessing({this.static});
+
+  GenaiVertexV1VideoContentMediaProcessing.fromJson(core.Map json_)
+    : this(
+        static: json_.containsKey('static')
+            ? GenaiVertexV1VideoContentStaticMediaProcessing.fromJson(
+                json_['static'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final static = this.static;
+    return {'static': ?static};
+  }
+}
+
+class GenaiVertexV1VideoContentStaticMediaProcessing {
+  /// Segment end time.
+  ///
+  /// Specified as a decimal number of seconds followed by an 's' suffix, e.g.,
+  /// "30s". Must be non-negative and greater than `start_offset` if
+  /// `start_offset` is set.
+  ///
+  /// Optional.
+  core.String? endOffset;
+
+  /// Video frame-rate sampling density.
+  ///
+  /// Optional.
+  core.double? fps;
+
+  /// Segment start time.
+  ///
+  /// Specified as a decimal number of seconds followed by an 's' suffix, e.g.,
+  /// "10.5s". Must be non-negative.
+  ///
+  /// Optional.
+  core.String? startOffset;
+
+  GenaiVertexV1VideoContentStaticMediaProcessing({
+    this.endOffset,
+    this.fps,
+    this.startOffset,
+  });
+
+  GenaiVertexV1VideoContentStaticMediaProcessing.fromJson(core.Map json_)
+    : this(
+        endOffset: json_['endOffset'] as core.String?,
+        fps: (json_['fps'] as core.num?)?.toDouble(),
+        startOffset: json_['startOffset'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endOffset = this.endOffset;
+    final fps = this.fps;
+    final startOffset = this.startOffset;
+    return {'endOffset': ?endOffset, 'fps': ?fps, 'startOffset': ?startOffset};
+  }
+}
+
+class GenaiVertexV1VideoDelta {
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ///
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED"
+  /// - "TYPE_MP4" : MP4 video format
+  /// - "TYPE_MPEG" : MPEG video format
+  /// - "TYPE_MPG" : MPG video format
+  /// - "TYPE_MOV" : MOV video format
+  /// - "TYPE_AVI" : AVI video format
+  /// - "TYPE_X_FLV" : FLV video format
+  /// - "TYPE_WEBM" : WebM video format
+  /// - "TYPE_WMV" : WMV video format
+  /// - "TYPE_3GPP" : 3GPP video format
+  /// - "TYPE_JPEG2000" : JPEG 2000 video format
+  core.String? mimeType;
+
+  /// The resolution of the media.
+  /// Possible string values are:
+  /// - "MEDIA_RESOLUTION_UNSPECIFIED" : Default value. This value is unused.
+  /// - "LOW" : Low resolution.
+  /// - "MEDIUM" : Medium resolution.
+  /// - "HIGH" : High resolution.
+  /// - "ULTRA_HIGH" : Ultra high resolution.
+  core.String? resolution;
+  core.String? uri;
+
+  GenaiVertexV1VideoDelta({
+    this.data,
+    this.mimeType,
+    this.resolution,
+    this.uri,
+  });
+
+  GenaiVertexV1VideoDelta.fromJson(core.Map json_)
+    : this(
+        data: json_['data'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        resolution: json_['resolution'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final mimeType = this.mimeType;
+    final resolution = this.resolution;
+    final uri = this.uri;
+    return {
+      'data': ?data,
+      'mimeType': ?mimeType,
+      'resolution': ?resolution,
+      'uri': ?uri,
+    };
+  }
+}
+
+/// Configuration for video output format.
+class GenaiVertexV1VideoResponseFormat {
+  /// The aspect ratio for the video output.
+  /// Possible string values are:
+  /// - "ASPECT_RATIO_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ASPECT_RATIO_SIXTEEN_BY_NINE" : 16:9 aspect ratio.
+  /// - "ASPECT_RATIO_NINE_BY_SIXTEEN" : 9:16 aspect ratio.
+  core.String? aspectRatio;
+
+  /// The delivery mode for the video output.
+  /// Possible string values are:
+  /// - "DELIVERY_UNSPECIFIED" : Default value. This value is unused.
+  /// - "INLINE" : Video data is returned inline in the response.
+  /// - "URI" : Video data is returned as a URI.
+  core.String? delivery;
+
+  /// The duration for the video output.
+  core.String? duration;
+
+  /// The Cloud Storage URI to store the video output.
+  ///
+  /// Required for Vertex if delivery mode is URI.
+  core.String? gcsUri;
+
+  /// The video output resolution.
+  ///
+  /// Defaults to 720p.
+  /// Possible string values are:
+  /// - "RESOLUTION_UNSPECIFIED" : Default value. This value is unused.
+  /// - "RESOLUTION_THREE_SIXTY_P" : 360p resolution.
+  /// - "RESOLUTION_SEVEN_TWENTY_P" : 720p resolution.
+  /// - "RESOLUTION_TEN_EIGHTY_P" : 1080p resolution.
+  /// - "RESOLUTION_FOUR_K" : 4K resolution.
+  core.String? resolution;
+
+  GenaiVertexV1VideoResponseFormat({
+    this.aspectRatio,
+    this.delivery,
+    this.duration,
+    this.gcsUri,
+    this.resolution,
+  });
+
+  GenaiVertexV1VideoResponseFormat.fromJson(core.Map json_)
+    : this(
+        aspectRatio: json_['aspectRatio'] as core.String?,
+        delivery: json_['delivery'] as core.String?,
+        duration: json_['duration'] as core.String?,
+        gcsUri: json_['gcsUri'] as core.String?,
+        resolution: json_['resolution'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final aspectRatio = this.aspectRatio;
+    final delivery = this.delivery;
+    final duration = this.duration;
+    final gcsUri = this.gcsUri;
+    final resolution = this.resolution;
+    return {
+      'aspectRatio': ?aspectRatio,
+      'delivery': ?delivery,
+      'duration': ?duration,
+      'gcsUri': ?gcsUri,
+      'resolution': ?resolution,
+    };
+  }
+}
+
+/// Word-level ASR annotation for transcription output.
+///
+/// Carries the word text, optional timing, and optional speaker attribution.
+class GenaiVertexV1WordInfo {
+  /// End offset in time of the word relative to the start of the audio.
+  ///
+  /// Present when timestamp_granularities contains "word".
+  core.String? endOffset;
+
+  /// Speaker label for this word (e.g. "spk_1", "spk_2").
+  ///
+  /// Present when diarization_mode is set in TranscriptionConfig.
+  ///
+  /// Optional.
+  core.String? speaker;
+
+  /// Start offset in time of the word relative to the start of the audio.
+  ///
+  /// Present when timestamp_granularities contains "word".
+  core.String? startOffset;
+
+  /// The transcribed word.
+  core.String? text;
+
+  GenaiVertexV1WordInfo({
+    this.endOffset,
+    this.speaker,
+    this.startOffset,
+    this.text,
+  });
+
+  GenaiVertexV1WordInfo.fromJson(core.Map json_)
+    : this(
+        endOffset: json_['endOffset'] as core.String?,
+        speaker: json_['speaker'] as core.String?,
+        startOffset: json_['startOffset'] as core.String?,
+        text: json_['text'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endOffset = this.endOffset;
+    final speaker = this.speaker;
+    final startOffset = this.startOffset;
+    final text = this.text;
+    return {
+      'endOffset': ?endOffset,
+      'speaker': ?speaker,
+      'startOffset': ?startOffset,
+      'text': ?text,
+    };
+  }
+}
+
 /// Message that represents an arbitrary HTTP body.
 ///
 /// It should only be used for payload formats that can't be represented as
@@ -58444,6 +65108,14 @@ class GoogleCloudAiplatformV1AddTrialMeasurementRequest {
 /// A Vertex agent contains instructions and configurations for the LLM to
 /// execute a certain task.
 class GoogleCloudAiplatformV1Agent {
+  /// The resource name of the AI Application provisioned for this agent.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`.
+  ///
+  /// Output only.
+  core.String? aiApplication;
+
   /// The base agent for the agent.
   ///
   /// Supported values: * `antigravity-preview-05-2026` Immutable: `UpdateAgent`
@@ -58476,6 +65148,11 @@ class GoogleCloudAiplatformV1Agent {
   /// Optional.
   core.String? description;
 
+  /// The resolved Agent Identity (SPIFFE principal) of the agent.
+  ///
+  /// Output only.
+  core.String? effectiveIdentity;
+
   /// The user-specified ID for the agent.
   ///
   /// This ID becomes the final component of the agent resource name. If not
@@ -58491,6 +65168,14 @@ class GoogleCloudAiplatformV1Agent {
   /// Optional.
   core.Map<core.String, core.String>? metadata;
 
+  /// Model configuration for the agent.
+  ///
+  /// When set, tasks running under this agent default to this model
+  /// configuration if they do not specify their own.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1AgentModelConfig? modelConfig;
+
   /// Identifier.
   ///
   /// The resource name of the agent. Format:
@@ -58503,6 +65188,11 @@ class GoogleCloudAiplatformV1Agent {
   ///
   /// Output only.
   core.String? object;
+
+  /// Observability settings for this agent's sessions.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1ObservabilityConfig? observabilityConfig;
 
   /// The instructions for the agent to follow.
   ///
@@ -58522,14 +65212,18 @@ class GoogleCloudAiplatformV1Agent {
   core.String? updated;
 
   GoogleCloudAiplatformV1Agent({
+    this.aiApplication,
     this.baseAgent,
     this.baseEnvironment,
     this.created,
     this.description,
+    this.effectiveIdentity,
     this.id,
     this.metadata,
+    this.modelConfig,
     this.name,
     this.object,
+    this.observabilityConfig,
     this.systemInstruction,
     this.tools,
     this.updated,
@@ -58537,15 +65231,28 @@ class GoogleCloudAiplatformV1Agent {
 
   GoogleCloudAiplatformV1Agent.fromJson(core.Map json_)
     : this(
+        aiApplication: json_['aiApplication'] as core.String?,
         baseAgent: json_['base_agent'] as core.String?,
         baseEnvironment: json_['base_environment'],
         created: json_['created'] as core.String?,
         description: json_['description'] as core.String?,
+        effectiveIdentity: json_['effectiveIdentity'] as core.String?,
         id: json_['id'] as core.String?,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        modelConfig: json_.containsKey('modelConfig')
+            ? GoogleCloudAiplatformV1AgentModelConfig.fromJson(
+                json_['modelConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         object: json_['object'] as core.String?,
+        observabilityConfig: json_.containsKey('observabilityConfig')
+            ? GoogleCloudAiplatformV1ObservabilityConfig.fromJson(
+                json_['observabilityConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         systemInstruction: json_['system_instruction'] as core.String?,
         tools: (json_['tools'] as core.List?)
             ?.map(
@@ -58558,26 +65265,34 @@ class GoogleCloudAiplatformV1Agent {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final aiApplication = this.aiApplication;
     final baseAgent = this.baseAgent;
     final baseEnvironment = this.baseEnvironment;
     final created = this.created;
     final description = this.description;
+    final effectiveIdentity = this.effectiveIdentity;
     final id = this.id;
     final metadata = this.metadata;
+    final modelConfig = this.modelConfig;
     final name = this.name;
     final object = this.object;
+    final observabilityConfig = this.observabilityConfig;
     final systemInstruction = this.systemInstruction;
     final tools = this.tools;
     final updated = this.updated;
     return {
+      'aiApplication': ?aiApplication,
       'base_agent': ?baseAgent,
       'base_environment': ?baseEnvironment,
       'created': ?created,
       'description': ?description,
+      'effectiveIdentity': ?effectiveIdentity,
       'id': ?id,
       'metadata': ?metadata,
+      'modelConfig': ?modelConfig,
       'name': ?name,
       'object': ?object,
+      'observabilityConfig': ?observabilityConfig,
       'system_instruction': ?systemInstruction,
       'tools': ?tools,
       'updated': ?updated,
@@ -58805,6 +65520,43 @@ class GoogleCloudAiplatformV1AgentEvent {
   }
 }
 
+/// Selects the model configuration for an agent.
+///
+/// Starts with just the model id/alias; extensible with further model
+/// parameters without a breaking change.
+class GoogleCloudAiplatformV1AgentModelConfig {
+  /// Publisher model resource name (an
+  /// `aiplatform.googleapis.com/PublisherModel`) of the form
+  /// "publishers/{publisher}/models/{model}", e.g.
+  /// "publishers/anthropic/models/claude-opus-4-8" or
+  /// "publishers/google/models/gemini-3-flash".
+  ///
+  /// Empty means the agent's default gemini model.
+  ///
+  /// Optional.
+  core.String? model;
+
+  /// Sampling temperature for the model's generation config (valid range (0.0,
+  /// 2.0\]); a value outside that range leaves the backend default standing.
+  ///
+  /// Optional.
+  core.double? temperature;
+
+  GoogleCloudAiplatformV1AgentModelConfig({this.model, this.temperature});
+
+  GoogleCloudAiplatformV1AgentModelConfig.fromJson(core.Map json_)
+    : this(
+        model: json_['model'] as core.String?,
+        temperature: (json_['temperature'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final model = this.model;
+    final temperature = this.temperature;
+    return {'model': ?model, 'temperature': ?temperature};
+  }
+}
+
 /// Customizes the agent's response to the end user when a
 /// `SemanticGovernancePolicy` is evaluated (for example, with a custom message
 /// shown on denial).
@@ -58830,6 +65582,10 @@ class GoogleCloudAiplatformV1AgentResponseCustomization {
 
 /// A tool provides a list of actions available to the Agent during the process
 /// of executing a task.
+///
+/// Example JSON for an MCP server tool: { "type": "mcp_server", "name":
+/// "my-mcp-server", "url": "https://api.example.com/mcp", "headers": {
+/// "Authorization": "Bearer token123" } }
 class GoogleCloudAiplatformV1AgentTool {
   /// The headers for the MCP server, such as for authentication.
   ///
@@ -58856,14 +65612,13 @@ class GoogleCloudAiplatformV1AgentTool {
   /// Required.
   core.String? type;
 
-  /// Temporary: the tool's runtime reference, consumed by CreateAgent to create
-  /// the downstream AI App.
+  /// Fallback for the tool's runtime reference, consumed by `CreateAgent` to
+  /// create the downstream AI App.
   ///
-  /// Applicable when `type` is `mcp_server` or `endpoint`. It is duplicated
-  /// here (the resource name is already in `name`) only because the Agent
-  /// service is not yet connected to Agent Registry to derive it from `name`;
-  /// the Task Service instead resolves it from Agent Registry (GetMcpServer /
-  /// GetEndpoint) at task creation.
+  /// Applicable when `type` is `mcp_server` or `endpoint`, and optional: the
+  /// Agent service derives the runtime reference from `name` via Agent Registry
+  /// (`GetMcpServer` / `GetEndpoint`), and reads this only when that lookup
+  /// yields none.
   ///
   /// Optional.
   core.String? url;
@@ -59933,6 +66688,22 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
   )
   GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints? languageHints;
 
+  /// Configures transcription mode.
+  ///
+  /// Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to
+  /// `VERBATIM` transcription. In `SMART` mode, the model performs disfluency
+  /// removal (eliminating filler words, repetitions, and false starts), light
+  /// grammatical cleanup, automatic formatting (paragraphs, bullet points,
+  /// numbered lists), and minor user edits (inline self-corrections).
+  /// Timestamps and diarization are incompatible with mode `SMART`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Unspecified transcription mode.
+  /// - "VERBATIM" : Verbatim transcription mode.
+  /// - "SMART" : Smart transcription mode.
+  core.String? mode;
+
   /// Configures word-level timestamp generation.
   ///
   /// Optional.
@@ -59945,6 +66716,7 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
     this.languageAuto,
     this.languageCodes,
     this.languageHints,
+    this.mode,
     this.wordTimestamp,
   });
 
@@ -59970,6 +66742,7 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
                 json_['languageHints'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        mode: json_['mode'] as core.String?,
         wordTimestamp: json_['wordTimestamp'] as core.bool?,
       );
 
@@ -59980,6 +66753,7 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
     final languageAuto = this.languageAuto;
     final languageCodes = this.languageCodes;
     final languageHints = this.languageHints;
+    final mode = this.mode;
     final wordTimestamp = this.wordTimestamp;
     return {
       'adaptationPhrases': ?adaptationPhrases,
@@ -59988,6 +66762,7 @@ class GoogleCloudAiplatformV1AudioTranscriptionConfig {
       'languageAuto': ?languageAuto,
       'languageCodes': ?languageCodes,
       'languageHints': ?languageHints,
+      'mode': ?mode,
       'wordTimestamp': ?wordTimestamp,
     };
   }
@@ -60935,6 +67710,80 @@ class GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest {
     return {'names': ?names};
   }
 }
+
+/// Request message for PredictionService.BatchEmbedContents.
+class GoogleCloudAiplatformV1BatchEmbedContentsRequest {
+  /// Embed requests for the batch.
+  ///
+  /// The model in each of these requests must either be empty or match the
+  /// model specified in `BatchEmbedContentsRequest.model`. All the requests in
+  /// a batch must have the same output dimensionality and auto truncation
+  /// parameters.
+  ///
+  /// Required.
+  core.List<GoogleCloudAiplatformV1EmbedContentRequest>? requests;
+
+  GoogleCloudAiplatformV1BatchEmbedContentsRequest({this.requests});
+
+  GoogleCloudAiplatformV1BatchEmbedContentsRequest.fromJson(core.Map json_)
+    : this(
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1EmbedContentRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requests = this.requests;
+    return {'requests': ?requests};
+  }
+}
+
+/// Response message for PredictionService.BatchEmbedContents.
+class GoogleCloudAiplatformV1BatchEmbedContentsResponse {
+  /// The embeddings for each request, in the same order as provided in the
+  /// batch request.
+  core.List<GoogleCloudAiplatformV1BatchEmbedContentsResponseEmbedding>?
+  embeddings;
+
+  /// Usage metadata about the response(s).
+  GoogleCloudAiplatformV1UsageMetadata? usageMetadata;
+
+  GoogleCloudAiplatformV1BatchEmbedContentsResponse({
+    this.embeddings,
+    this.usageMetadata,
+  });
+
+  GoogleCloudAiplatformV1BatchEmbedContentsResponse.fromJson(core.Map json_)
+    : this(
+        embeddings: (json_['embeddings'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleCloudAiplatformV1BatchEmbedContentsResponseEmbedding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        usageMetadata: json_.containsKey('usageMetadata')
+            ? GoogleCloudAiplatformV1UsageMetadata.fromJson(
+                json_['usageMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final embeddings = this.embeddings;
+    final usageMetadata = this.usageMetadata;
+    return {'embeddings': ?embeddings, 'usageMetadata': ?usageMetadata};
+  }
+}
+
+/// A list of floats representing an embedding.
+typedef GoogleCloudAiplatformV1BatchEmbedContentsResponseEmbedding =
+    $ResponseEmbedding;
 
 /// Request message for ModelService.BatchImportEvaluatedAnnotations
 class GoogleCloudAiplatformV1BatchImportEvaluatedAnnotationsRequest {
@@ -62380,18 +69229,69 @@ class GoogleCloudAiplatformV1CacheConfig {
   /// Name of the cache config. Format: - `projects/{project}/cacheConfig`.
   core.String? name;
 
-  GoogleCloudAiplatformV1CacheConfig({this.disableCache, this.name});
+  /// Project-level retention type for implicit caching.
+  ///
+  /// On `GetCacheConfig` this is populated with the retention the project gets:
+  /// a project that has stated no preference reports `DURABLE`. On
+  /// `UpdateCacheConfig`, leaving it unset means the project states no
+  /// preference. Whether that clears an existing preference depends on
+  /// `update_mask`; see that field.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1CacheConfigRetentionConfig? retentionConfig;
+
+  GoogleCloudAiplatformV1CacheConfig({
+    this.disableCache,
+    this.name,
+    this.retentionConfig,
+  });
 
   GoogleCloudAiplatformV1CacheConfig.fromJson(core.Map json_)
     : this(
         disableCache: json_['disableCache'] as core.bool?,
         name: json_['name'] as core.String?,
+        retentionConfig: json_.containsKey('retentionConfig')
+            ? GoogleCloudAiplatformV1CacheConfigRetentionConfig.fromJson(
+                json_['retentionConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final disableCache = this.disableCache;
     final name = this.name;
-    return {'disableCache': ?disableCache, 'name': ?name};
+    final retentionConfig = this.retentionConfig;
+    return {
+      'disableCache': ?disableCache,
+      'name': ?name,
+      'retentionConfig': ?retentionConfig,
+    };
+  }
+}
+
+/// Configures the retention behavior of GenAI implicit (automatic) context
+/// caching for this project.
+class GoogleCloudAiplatformV1CacheConfigRetentionConfig {
+  /// Retention type applied to implicit cache traffic for this project.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RETENTION_TYPE_UNSPECIFIED" : Unspecified. Treated the same as
+  /// `DURABLE`.
+  /// - "EPHEMERAL" : Restricts implicit caching to ephemeral,
+  /// volatile-memory-backed retention only.
+  /// - "DURABLE" : Allows implicit caching to use long-lived,
+  /// durable-storage-backed retention.
+  core.String? retentionType;
+
+  GoogleCloudAiplatformV1CacheConfigRetentionConfig({this.retentionType});
+
+  GoogleCloudAiplatformV1CacheConfigRetentionConfig.fromJson(core.Map json_)
+    : this(retentionType: json_['retentionType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final retentionType = this.retentionType;
+    return {'retentionType': ?retentionType};
   }
 }
 
@@ -62701,6 +69601,24 @@ class GoogleCloudAiplatformV1Candidate {
   /// Output only.
   GoogleCloudAiplatformV1Content? content;
 
+  /// An optional opaque continuation token returned when `finish_reason` is
+  /// `CONTINUATION`.
+  ///
+  /// Clients can pass this token in a subsequent `GenerateContentRequest` to
+  /// continue generation.
+  ///
+  /// Output only.
+  core.String? continuationToken;
+  core.List<core.int> get continuationTokenAsBytes =>
+      convert.base64.decode(continuationToken!);
+
+  set continuationTokenAsBytes(core.List<core.int> bytes_) {
+    continuationToken = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
   /// Describes the reason the model stopped generating tokens in more detail.
   ///
   /// This field is returned only when `finish_reason` is set.
@@ -62747,6 +69665,11 @@ class GoogleCloudAiplatformV1Candidate {
   /// semantically invalid. This can happen, for example, if function calling is
   /// not enabled or the generated function is not in the function declaration.
   /// - "NO_IMAGE" : The model was expected to generate an image, but didn't.
+  /// - "MALFORMED_RESPONSE" : Finishes due to malformed response.
+  /// - "CONTINUATION" : Token generation was stopped because the response
+  /// reached the per-request token limit, but generation is not yet complete.
+  /// The model response can be continued via a subsequent request using the
+  /// returned `continuation_token`.
   core.String? finishReason;
 
   /// Metadata returned when grounding is enabled.
@@ -62789,6 +69712,7 @@ class GoogleCloudAiplatformV1Candidate {
     this.avgLogprobs,
     this.citationMetadata,
     this.content,
+    this.continuationToken,
     this.finishMessage,
     this.finishReason,
     this.groundingMetadata,
@@ -62812,6 +69736,7 @@ class GoogleCloudAiplatformV1Candidate {
                 json_['content'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        continuationToken: json_['continuationToken'] as core.String?,
         finishMessage: json_['finishMessage'] as core.String?,
         finishReason: json_['finishReason'] as core.String?,
         groundingMetadata: json_.containsKey('groundingMetadata')
@@ -62845,6 +69770,7 @@ class GoogleCloudAiplatformV1Candidate {
     final avgLogprobs = this.avgLogprobs;
     final citationMetadata = this.citationMetadata;
     final content = this.content;
+    final continuationToken = this.continuationToken;
     final finishMessage = this.finishMessage;
     final finishReason = this.finishReason;
     final groundingMetadata = this.groundingMetadata;
@@ -62856,6 +69782,7 @@ class GoogleCloudAiplatformV1Candidate {
       'avgLogprobs': ?avgLogprobs,
       'citationMetadata': ?citationMetadata,
       'content': ?content,
+      'continuationToken': ?continuationToken,
       'finishMessage': ?finishMessage,
       'finishReason': ?finishReason,
       'groundingMetadata': ?groundingMetadata,
@@ -63252,6 +70179,111 @@ class GoogleCloudAiplatformV1Claim {
       'factIndexes': ?factIndexes,
       'score': ?score,
       'startIndex': ?startIndex,
+    };
+  }
+}
+
+/// A file that can be referenced by ID from subsequent Claude model requests.
+///
+/// The JSON representation of this message matches the Claude Files API File
+/// object field-for-field, so that code written against that API parses these
+/// responses unchanged.
+class GoogleCloudAiplatformV1ClaudeFile {
+  /// The time at which the file was created.
+  ///
+  /// Output only.
+  core.String? createdAt;
+
+  /// Whether the contents of this file can be retrieved with `DownloadFile`.
+  ///
+  /// False for user-uploaded files, true for tool-generated ones.
+  ///
+  /// Output only.
+  core.bool? downloadable;
+
+  /// The time at which the file expires and is deleted, set from the
+  /// `expires_in_seconds` upload form field.
+  ///
+  /// Unset for files that do not expire, which is serialised as `null`.
+  ///
+  /// Output only.
+  core.String? expiresAt;
+
+  /// The original name of the uploaded file, taken from the
+  /// `Content-Disposition` header on upload.
+  ///
+  /// Between 1 and 255 characters. Control characters and the characters
+  /// `<>:"|?*\/` are not accepted.
+  ///
+  /// Output only.
+  core.String? filename;
+
+  /// The server-assigned identifier of the file, for example `file_abc123`.
+  ///
+  /// This is the ID to pass in subsequent model requests.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The media type of the file, taken from the `Content-Type` header of the
+  /// file part on upload.
+  ///
+  /// Output only.
+  core.String? mimeType;
+
+  /// The size of the file in bytes.
+  ///
+  /// Output only.
+  core.int? sizeBytes;
+
+  /// The object type.
+  ///
+  /// Always `file`.
+  ///
+  /// Output only.
+  core.String? type;
+
+  GoogleCloudAiplatformV1ClaudeFile({
+    this.createdAt,
+    this.downloadable,
+    this.expiresAt,
+    this.filename,
+    this.id,
+    this.mimeType,
+    this.sizeBytes,
+    this.type,
+  });
+
+  GoogleCloudAiplatformV1ClaudeFile.fromJson(core.Map json_)
+    : this(
+        createdAt: json_['created_at'] as core.String?,
+        downloadable: json_['downloadable'] as core.bool?,
+        expiresAt: json_['expires_at'] as core.String?,
+        filename: json_['filename'] as core.String?,
+        id: json_['id'] as core.String?,
+        mimeType: json_['mime_type'] as core.String?,
+        sizeBytes: json_['size_bytes'] as core.int?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createdAt = this.createdAt;
+    final downloadable = this.downloadable;
+    final expiresAt = this.expiresAt;
+    final filename = this.filename;
+    final id = this.id;
+    final mimeType = this.mimeType;
+    final sizeBytes = this.sizeBytes;
+    final type = this.type;
+    return {
+      'created_at': ?createdAt,
+      'downloadable': ?downloadable,
+      'expires_at': ?expiresAt,
+      'filename': ?filename,
+      'id': ?id,
+      'mime_type': ?mimeType,
+      'size_bytes': ?sizeBytes,
+      'type': ?type,
     };
   }
 }
@@ -64837,6 +71869,9 @@ class GoogleCloudAiplatformV1CreateFeatureRequest {
     return {'feature': ?feature, 'featureId': ?featureId, 'parent': ?parent};
   }
 }
+
+/// Request message for ClaudeFileService.CreateFile.
+typedef GoogleCloudAiplatformV1CreateFileRequest = $Empty;
 
 /// Request message for \[NotebookService.CreateNotebookExecutionJob\]
 class GoogleCloudAiplatformV1CreateNotebookExecutionJobRequest {
@@ -66811,6 +73846,34 @@ class GoogleCloudAiplatformV1DeleteFeatureValuesRequestSelectTimeRangeAndFeature
   }
 }
 
+/// Response message for ClaudeFileService.DeleteFile.
+///
+/// Returns `{id, type: "file_deleted"}` rather than an empty body, matching the
+/// Claude Files API.
+class GoogleCloudAiplatformV1DeleteFileResponse {
+  /// The ID of the deleted file.
+  core.String? id;
+
+  /// The object type.
+  ///
+  /// Always `file_deleted`.
+  core.String? type;
+
+  GoogleCloudAiplatformV1DeleteFileResponse({this.id, this.type});
+
+  GoogleCloudAiplatformV1DeleteFileResponse.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final type = this.type;
+    return {'id': ?id, 'type': ?type};
+  }
+}
+
 /// Request message for IndexEndpointService.DeployIndex.
 class GoogleCloudAiplatformV1DeployIndexRequest {
   /// The DeployedIndex to be created within the IndexEndpoint.
@@ -68314,6 +75377,9 @@ class GoogleCloudAiplatformV1DoubleArray {
   }
 }
 
+/// Response message for ClaudeFileService.DownloadFile.
+typedef GoogleCloudAiplatformV1DownloadFileResponse = $Empty;
+
 /// Describes the options to customize dynamic retrieval.
 class GoogleCloudAiplatformV1DynamicRetrievalConfig {
   /// The threshold to be used in dynamic retrieval.
@@ -68371,6 +75437,14 @@ class GoogleCloudAiplatformV1EmbedContentRequest {
   GoogleCloudAiplatformV1EmbedContentRequestEmbedContentConfig?
   embedContentConfig;
 
+  /// The name of the publisher model requested to serve the prediction.
+  ///
+  /// Format: `projects/{project}/locations/{location}/publishers / * /models /
+  /// * `
+  ///
+  /// Required.
+  core.String? model;
+
   /// Deprecated: Please use EmbedContentConfig.output_dimensionality instead.
   ///
   /// Reduced dimension for the output embedding. If set, excessive values in
@@ -68423,6 +75497,7 @@ class GoogleCloudAiplatformV1EmbedContentRequest {
     this.autoTruncate,
     this.content,
     this.embedContentConfig,
+    this.model,
     this.outputDimensionality,
     this.taskType,
     this.title,
@@ -68442,6 +75517,7 @@ class GoogleCloudAiplatformV1EmbedContentRequest {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        model: json_['model'] as core.String?,
         outputDimensionality: json_['outputDimensionality'] as core.int?,
         taskType: json_['taskType'] as core.String?,
         title: json_['title'] as core.String?,
@@ -68451,6 +75527,7 @@ class GoogleCloudAiplatformV1EmbedContentRequest {
     final autoTruncate = this.autoTruncate;
     final content = this.content;
     final embedContentConfig = this.embedContentConfig;
+    final model = this.model;
     final outputDimensionality = this.outputDimensionality;
     final taskType = this.taskType;
     final title = this.title;
@@ -68458,6 +75535,7 @@ class GoogleCloudAiplatformV1EmbedContentRequest {
       'autoTruncate': ?autoTruncate,
       'content': ?content,
       'embedContentConfig': ?embedContentConfig,
+      'model': ?model,
       'outputDimensionality': ?outputDimensionality,
       'taskType': ?taskType,
       'title': ?title,
@@ -68607,24 +75685,8 @@ class GoogleCloudAiplatformV1EmbedContentResponse {
 }
 
 /// A list of floats representing an embedding.
-class GoogleCloudAiplatformV1EmbedContentResponseEmbedding {
-  /// Embedding vector values.
-  core.List<core.double>? values;
-
-  GoogleCloudAiplatformV1EmbedContentResponseEmbedding({this.values});
-
-  GoogleCloudAiplatformV1EmbedContentResponseEmbedding.fromJson(core.Map json_)
-    : this(
-        values: (json_['values'] as core.List?)
-            ?.map((value) => (value as core.num).toDouble())
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final values = this.values;
-    return {'values': ?values};
-  }
-}
+typedef GoogleCloudAiplatformV1EmbedContentResponseEmbedding =
+    $ResponseEmbedding;
 
 /// Represents a customer-managed encryption key specification that can be
 /// applied to a Vertex AI resource.
@@ -70802,6 +77864,11 @@ class GoogleCloudAiplatformV1EvaluationInstance {
   )
   GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentData? agentData;
 
+  /// Data used for agent evaluation.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1AgentData? agentEvalData;
+
   /// Source for populating `AgentData` from an Interactions API interaction.
   ///
   /// If set, no other agent data source fields
@@ -70846,6 +77913,7 @@ class GoogleCloudAiplatformV1EvaluationInstance {
 
   GoogleCloudAiplatformV1EvaluationInstance({
     this.agentData,
+    this.agentEvalData,
     this.interactionsDataSource,
     this.otherData,
     this.prompt,
@@ -70859,6 +77927,11 @@ class GoogleCloudAiplatformV1EvaluationInstance {
         agentData: json_.containsKey('agentData')
             ? GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentData.fromJson(
                 json_['agentData'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        agentEvalData: json_.containsKey('agentEvalData')
+            ? GoogleCloudAiplatformV1AgentData.fromJson(
+                json_['agentEvalData'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         interactionsDataSource: json_.containsKey('interactionsDataSource')
@@ -70901,6 +77974,7 @@ class GoogleCloudAiplatformV1EvaluationInstance {
 
   core.Map<core.String, core.dynamic> toJson() {
     final agentData = this.agentData;
+    final agentEvalData = this.agentEvalData;
     final interactionsDataSource = this.interactionsDataSource;
     final otherData = this.otherData;
     final prompt = this.prompt;
@@ -70909,6 +77983,7 @@ class GoogleCloudAiplatformV1EvaluationInstance {
     final rubricGroups = this.rubricGroups;
     return {
       'agentData': ?agentData,
+      'agentEvalData': ?agentEvalData,
       'interactionsDataSource': ?interactionsDataSource,
       'otherData': ?otherData,
       'prompt': ?prompt,
@@ -71963,7 +79038,12 @@ class GoogleCloudAiplatformV1EvaluationPromptUserScenario {
 /// AgentData context). 2. Offline Eval Mode: `prompt` is unset, and
 /// `candidate_responses` contains `agent_data` (the completed execution trace).
 /// Validation Rule: Either `prompt` must be set, OR at least one of the
-/// `candidate_responses` must contain `agent_data`.
+/// `candidate_responses` must contain `agent_data`. Metrics receive each
+/// candidate as an `EvaluationInstance`, whose fields are the names metrics can
+/// reference: `prompt` -\> `prompt`, the candidate -\> `response` (or
+/// `agent_eval_data` for `agent_data`), `golden_response` -\> `reference`,
+/// `rubrics` -\> `rubric_groups`, and `prompt.prompt_template_data.values` and
+/// `extra_context` -\> `other_data`.
 class GoogleCloudAiplatformV1EvaluationRequest {
   /// Responses from model under test and other baseline models for comparison.
   ///
@@ -72461,6 +79541,17 @@ class GoogleCloudAiplatformV1EvaluationRunDataSource {
 
 /// The Evalution configuration used for the evaluation run.
 class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig {
+  /// Allows the evaluation run to use cross region models.
+  ///
+  /// When this flag is set, the service may route traffic to other regions if a
+  /// model is unavailable in the current region (e.g., to a `global` endpoint).
+  /// If a fully-qualified model endpoint resource name with a different region
+  /// than the run location is provided elsewhere in the run config, this flag
+  /// must be set to true or the request will fail.
+  ///
+  /// Optional.
+  core.bool? allowCrossRegionModel;
+
   /// The autorater config for the evaluation run.
   ///
   /// Optional.
@@ -72518,6 +79609,7 @@ class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig {
   core.List<GoogleCloudAiplatformV1EvaluationRubricConfig>? rubricConfigs;
 
   GoogleCloudAiplatformV1EvaluationRunEvaluationConfig({
+    this.allowCrossRegionModel,
     this.autoraterConfig,
     this.cloudLoggingConfig,
     this.datasetCustomMetrics,
@@ -72530,6 +79622,7 @@ class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig {
 
   GoogleCloudAiplatformV1EvaluationRunEvaluationConfig.fromJson(core.Map json_)
     : this(
+        allowCrossRegionModel: json_['allowCrossRegionModel'] as core.bool?,
         autoraterConfig: json_.containsKey('autoraterConfig')
             ? GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig.fromJson(
                 json_['autoraterConfig'] as core.Map<core.String, core.dynamic>,
@@ -72582,6 +79675,7 @@ class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final allowCrossRegionModel = this.allowCrossRegionModel;
     final autoraterConfig = this.autoraterConfig;
     final cloudLoggingConfig = this.cloudLoggingConfig;
     final datasetCustomMetrics = this.datasetCustomMetrics;
@@ -72591,6 +79685,7 @@ class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig {
     final promptTemplate = this.promptTemplate;
     final rubricConfigs = this.rubricConfigs;
     return {
+      'allowCrossRegionModel': ?allowCrossRegionModel,
       'autoraterConfig': ?autoraterConfig,
       'cloudLoggingConfig': ?cloudLoggingConfig,
       'datasetCustomMetrics': ?datasetCustomMetrics,
@@ -80470,6 +87565,22 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
   /// Required.
   core.List<GoogleCloudAiplatformV1Content>? contents;
 
+  /// An opaque continuation token used to resume generation from a previous
+  /// `GenerateContent` or `StreamGenerateContent` response that stopped with
+  /// `finish_reason` set to `CONTINUATION`.
+  ///
+  /// Optional.
+  core.String? continuationToken;
+  core.List<core.int> get continuationTokenAsBytes =>
+      convert.base64.decode(continuationToken!);
+
+  set continuationTokenAsBytes(core.List<core.int> bytes_) {
+    continuationToken = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
   /// Generation config.
   ///
   /// Optional.
@@ -80493,6 +87604,11 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
   ///
   /// Optional.
   GoogleCloudAiplatformV1ModelArmorConfig? modelArmorConfig;
+
+  /// Configuration for persisting output assets to external storage.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1GenerateContentRequestOutputConfig? outputConfig;
 
   /// Per request settings for blocking unsafe content.
   ///
@@ -80528,9 +87644,11 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
   GoogleCloudAiplatformV1GenerateContentRequest({
     this.cachedContent,
     this.contents,
+    this.continuationToken,
     this.generationConfig,
     this.labels,
     this.modelArmorConfig,
+    this.outputConfig,
     this.safetySettings,
     this.systemInstruction,
     this.toolConfig,
@@ -80547,6 +87665,7 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
               ),
             )
             .toList(),
+        continuationToken: json_['continuationToken'] as core.String?,
         generationConfig: json_.containsKey('generationConfig')
             ? GoogleCloudAiplatformV1GenerationConfig.fromJson(
                 json_['generationConfig']
@@ -80560,6 +87679,11 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
             ? GoogleCloudAiplatformV1ModelArmorConfig.fromJson(
                 json_['modelArmorConfig']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        outputConfig: json_.containsKey('outputConfig')
+            ? GoogleCloudAiplatformV1GenerateContentRequestOutputConfig.fromJson(
+                json_['outputConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         safetySettings: (json_['safetySettings'] as core.List?)
@@ -80592,9 +87716,11 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final cachedContent = this.cachedContent;
     final contents = this.contents;
+    final continuationToken = this.continuationToken;
     final generationConfig = this.generationConfig;
     final labels = this.labels;
     final modelArmorConfig = this.modelArmorConfig;
+    final outputConfig = this.outputConfig;
     final safetySettings = this.safetySettings;
     final systemInstruction = this.systemInstruction;
     final toolConfig = this.toolConfig;
@@ -80602,14 +87728,42 @@ class GoogleCloudAiplatformV1GenerateContentRequest {
     return {
       'cachedContent': ?cachedContent,
       'contents': ?contents,
+      'continuationToken': ?continuationToken,
       'generationConfig': ?generationConfig,
       'labels': ?labels,
       'modelArmorConfig': ?modelArmorConfig,
+      'outputConfig': ?outputConfig,
       'safetySettings': ?safetySettings,
       'systemInstruction': ?systemInstruction,
       'toolConfig': ?toolConfig,
       'tools': ?tools,
     };
+  }
+}
+
+/// Configuration for persisting output assets to external storage.
+class GoogleCloudAiplatformV1GenerateContentRequestOutputConfig {
+  /// The Cloud Storage URI prefix or directory where generated media assets
+  /// should be written (e.g. `gs://my-bucket/prefix/`).
+  ///
+  /// Supported URI schemes: `gs://`. When set, media bytes are written directly
+  /// to this location and returned as `FileData` with a `file_uri` instead of
+  /// raw inline bytes.
+  ///
+  /// Optional.
+  core.String? outputUriPrefix;
+
+  GoogleCloudAiplatformV1GenerateContentRequestOutputConfig({
+    this.outputUriPrefix,
+  });
+
+  GoogleCloudAiplatformV1GenerateContentRequestOutputConfig.fromJson(
+    core.Map json_,
+  ) : this(outputUriPrefix: json_['outputUriPrefix'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final outputUriPrefix = this.outputUriPrefix;
+    return {'outputUriPrefix': ?outputUriPrefix};
   }
 }
 
@@ -81267,6 +88421,16 @@ class GoogleCloudAiplatformV1GenerateMemoriesRequest {
   /// Optional.
   core.Map<core.String, core.String>? scope;
 
+  /// The time zone of the conversation or caller, used as the baseline for
+  /// resolving relative time expressions (e.g., "yesterday") and formatting
+  /// timestamps.
+  ///
+  /// If not set, "UTC" is used. Must be a valid IANA Time Zone Database name,
+  /// e.g. "America/New_York".
+  ///
+  /// Optional.
+  core.String? timeZone;
+
   /// Defines a Vertex Session as the source content from which to generate
   /// memories.
   GoogleCloudAiplatformV1GenerateMemoriesRequestVertexSessionSource?
@@ -81284,6 +88448,7 @@ class GoogleCloudAiplatformV1GenerateMemoriesRequest {
     this.revisionLabels,
     this.revisionTtl,
     this.scope,
+    this.timeZone,
     this.vertexSessionSource,
   });
 
@@ -81328,6 +88493,7 @@ class GoogleCloudAiplatformV1GenerateMemoriesRequest {
         scope: (json_['scope'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        timeZone: json_['timeZone'] as core.String?,
         vertexSessionSource: json_.containsKey('vertexSessionSource')
             ? GoogleCloudAiplatformV1GenerateMemoriesRequestVertexSessionSource.fromJson(
                 json_['vertexSessionSource']
@@ -81348,6 +88514,7 @@ class GoogleCloudAiplatformV1GenerateMemoriesRequest {
     final revisionLabels = this.revisionLabels;
     final revisionTtl = this.revisionTtl;
     final scope = this.scope;
+    final timeZone = this.timeZone;
     final vertexSessionSource = this.vertexSessionSource;
     return {
       'allowedTopics': ?allowedTopics,
@@ -81361,6 +88528,7 @@ class GoogleCloudAiplatformV1GenerateMemoriesRequest {
       'revisionLabels': ?revisionLabels,
       'revisionTtl': ?revisionTtl,
       'scope': ?scope,
+      'timeZone': ?timeZone,
       'vertexSessionSource': ?vertexSessionSource,
     };
   }
@@ -84040,6 +91208,25 @@ class GoogleCloudAiplatformV1ImportEvaluationSetRequestAgentEngineSource {
 
 /// Source for loading traces directly from Cloud Trace.
 class GoogleCloudAiplatformV1ImportEvaluationSetRequestCloudTraceSource {
+  /// Restricts the imported spans to a single agent.
+  ///
+  /// Accepts either of two forms, matching `OnlineEvaluator.agent_resource`: *
+  /// a project-scoped resource name, matched against the `cloud.resource_id`
+  /// resource attribute that Vertex AI Agent Engine agents are stamped with; *
+  /// an Agent Registry agent URN, matched against the `gen_ai.main_agent.id`
+  /// resource attribute that agents on GKE, and any other runtime that stamps
+  /// it, are identified by. Scopes `session_ids` selection only. Traces named
+  /// explicitly in `trace_ids` are imported as given and are NOT filtered by
+  /// this field, because the caller has already identified them. Setting this
+  /// field with only `trace_ids` therefore has no effect. When unset, spans are
+  /// selected by session or trace ID alone. That is the pre-existing behavior
+  /// and it remains the correct one for a session whose agents run in several
+  /// deployments, because each deployment stamps its own `gen_ai.main_agent.id`
+  /// and filtering on one of them would silently truncate the trajectory.
+  ///
+  /// Optional.
+  core.String? agentResource;
+
   /// Project ID for the Cloud Trace.
   ///
   /// Required.
@@ -84059,6 +91246,7 @@ class GoogleCloudAiplatformV1ImportEvaluationSetRequestCloudTraceSource {
   core.List<core.String>? traceIds;
 
   GoogleCloudAiplatformV1ImportEvaluationSetRequestCloudTraceSource({
+    this.agentResource,
     this.projectId,
     this.sessionIds,
     this.traceIds,
@@ -84067,6 +91255,7 @@ class GoogleCloudAiplatformV1ImportEvaluationSetRequestCloudTraceSource {
   GoogleCloudAiplatformV1ImportEvaluationSetRequestCloudTraceSource.fromJson(
     core.Map json_,
   ) : this(
+        agentResource: json_['agentResource'] as core.String?,
         projectId: json_['projectId'] as core.String?,
         sessionIds: (json_['sessionIds'] as core.List?)
             ?.map((value) => value as core.String)
@@ -84077,10 +91266,12 @@ class GoogleCloudAiplatformV1ImportEvaluationSetRequestCloudTraceSource {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final agentResource = this.agentResource;
     final projectId = this.projectId;
     final sessionIds = this.sessionIds;
     final traceIds = this.traceIds;
     return {
+      'agentResource': ?agentResource,
       'projectId': ?projectId,
       'sessionIds': ?sessionIds,
       'traceIds': ?traceIds,
@@ -87324,6 +94515,38 @@ class GoogleCloudAiplatformV1ListFeaturestoresResponse {
   }
 }
 
+/// Response message for ClaudeFileService.ListFiles.
+class GoogleCloudAiplatformV1ListFilesResponse {
+  /// The files.
+  core.List<GoogleCloudAiplatformV1ClaudeFile>? data;
+
+  /// Opaque cursor for the next page.
+  ///
+  /// Unset on the last page, and always unset when `ids` was supplied, since
+  /// batch fetch is single-page.
+  core.String? nextPage;
+
+  GoogleCloudAiplatformV1ListFilesResponse({this.data, this.nextPage});
+
+  GoogleCloudAiplatformV1ListFilesResponse.fromJson(core.Map json_)
+    : this(
+        data: (json_['data'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1ClaudeFile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPage: json_['next_page'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final data = this.data;
+    final nextPage = this.nextPage;
+    return {'data': ?data, 'next_page': ?nextPage};
+  }
+}
+
 /// Response message for JobService.ListHyperparameterTuningJobs
 class GoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse {
   /// List of HyperparameterTuningJobs in the requested page.
@@ -88463,6 +95686,45 @@ class GoogleCloudAiplatformV1ListSemanticGovernancePoliciesResponse {
     return {
       'nextPageToken': ?nextPageToken,
       'semanticGovernancePolicies': ?semanticGovernancePolicies,
+    };
+  }
+}
+
+/// Response message for ServingProfileService.ListServingProfiles.
+class GoogleCloudAiplatformV1ListServingProfilesResponse {
+  /// A token to retrieve the next page of results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// A list of ServingProfiles.
+  ///
+  /// Output only.
+  core.List<GoogleCloudAiplatformV1ServingProfile>? servingProfiles;
+
+  GoogleCloudAiplatformV1ListServingProfilesResponse({
+    this.nextPageToken,
+    this.servingProfiles,
+  });
+
+  GoogleCloudAiplatformV1ListServingProfilesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        servingProfiles: (json_['servingProfiles'] as core.List?)
+            ?.map(
+              (value) => GoogleCloudAiplatformV1ServingProfile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final servingProfiles = this.servingProfiles;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'servingProfiles': ?servingProfiles,
     };
   }
 }
@@ -92284,6 +99546,9 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
   /// occur. This field corresponds to the `env` field of the Kubernetes
   /// Containers
   /// [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+  /// At most 200 environment variables can be specified. Each variable
+  /// (`NAME=value`) must be smaller than 128 KiB, and the total size of all
+  /// variables must not exceed 512 KiB.
   ///
   /// Immutable.
   core.List<GoogleCloudAiplatformV1EnvVar>? env;
@@ -97065,6 +104330,52 @@ class GoogleCloudAiplatformV1NotebookSoftwareConfig {
   }
 }
 
+/// Observability settings for one agent's sessions.
+class GoogleCloudAiplatformV1ObservabilityConfig {
+  /// Enables observability for this agent's sessions: OpenTelemetry span
+  /// emission covering tool names, model names, token counts, latencies and
+  /// status.
+  ///
+  /// If `false`, the other fields here are ignored.
+  ///
+  /// Optional.
+  core.bool? observabilityEnabled;
+
+  /// Enables sensitive logging.
+  ///
+  /// Sensitive logging includes customer core content (prompts, model
+  /// completions, tool argument payloads and tool responses). If `false`, those
+  /// are sanitized and only structural attributes are recorded. No effect
+  /// unless `observability_enabled` is true. Settable and returned, but NOT YET
+  /// ENFORCED. Nothing reads it at runtime, so `true` does not currently cause
+  /// content to be captured, and `false` is not what keeps content from being
+  /// captured. Treat it as a recorded intention that takes effect when
+  /// enforcement lands.
+  ///
+  /// Optional.
+  core.bool? sensitiveLoggingEnabled;
+
+  GoogleCloudAiplatformV1ObservabilityConfig({
+    this.observabilityEnabled,
+    this.sensitiveLoggingEnabled,
+  });
+
+  GoogleCloudAiplatformV1ObservabilityConfig.fromJson(core.Map json_)
+    : this(
+        observabilityEnabled: json_['observabilityEnabled'] as core.bool?,
+        sensitiveLoggingEnabled: json_['sensitiveLoggingEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final observabilityEnabled = this.observabilityEnabled;
+    final sensitiveLoggingEnabled = this.sensitiveLoggingEnabled;
+    return {
+      'observabilityEnabled': ?observabilityEnabled,
+      'sensitiveLoggingEnabled': ?sensitiveLoggingEnabled,
+    };
+  }
+}
+
 /// An OnlineEvaluator contains the configuration for an Online Evaluation.
 class GoogleCloudAiplatformV1OnlineEvaluator {
   /// The name of the agent that the OnlineEvaluator evaluates periodically.
@@ -97451,6 +104762,14 @@ class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredic
   GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate?
   modelCalls;
 
+  /// Filter on the versions that served a session (`service.version` OTel
+  /// resource attribute); matches if any of them is listed.
+  ///
+  /// At most one is allowed. On Vertex AI Agent Engine, this is the runtime
+  /// revision id, currently set only for agents created via v1beta1.
+  GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityStringPredicate?
+  serviceVersion;
+
   /// Filter on the number of tool call errors within a session.
   GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate?
   toolCallErrors;
@@ -97471,6 +104790,7 @@ class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredic
     this.duration,
     this.modelCallErrors,
     this.modelCalls,
+    this.serviceVersion,
     this.toolCallErrors,
     this.toolCalls,
     this.totalTokenUsage,
@@ -97493,6 +104813,11 @@ class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredic
         modelCalls: json_.containsKey('modelCalls')
             ? GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate.fromJson(
                 json_['modelCalls'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        serviceVersion: json_.containsKey('serviceVersion')
+            ? GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityStringPredicate.fromJson(
+                json_['serviceVersion'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         toolCallErrors: json_.containsKey('toolCallErrors')
@@ -97521,6 +104846,7 @@ class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredic
     final duration = this.duration;
     final modelCallErrors = this.modelCallErrors;
     final modelCalls = this.modelCalls;
+    final serviceVersion = this.serviceVersion;
     final toolCallErrors = this.toolCallErrors;
     final toolCalls = this.toolCalls;
     final totalTokenUsage = this.totalTokenUsage;
@@ -97529,11 +104855,39 @@ class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredic
       'duration': ?duration,
       'modelCallErrors': ?modelCallErrors,
       'modelCalls': ?modelCalls,
+      'serviceVersion': ?serviceVersion,
       'toolCallErrors': ?toolCallErrors,
       'toolCalls': ?toolCalls,
       'totalTokenUsage': ?totalTokenUsage,
       'userTurns': ?userTurns,
     };
+  }
+}
+
+/// Defines a predicate for filtering based on a string value.
+class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityStringPredicate {
+  /// The values to match exactly (case-sensitive).
+  ///
+  /// Requires 1 to 20 values, each at most 128 characters long.
+  ///
+  /// Required.
+  core.List<core.String>? values;
+
+  GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityStringPredicate({
+    this.values,
+  });
+
+  GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityStringPredicate.fromJson(
+    core.Map json_,
+  ) : this(
+        values: (json_['values'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final values = this.values;
+    return {'values': ?values};
   }
 }
 
@@ -97580,12 +104934,21 @@ class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopePredicat
   GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate?
   duration;
 
+  /// Filter on the version that served a trace (`service.version` OTel resource
+  /// attribute).
+  ///
+  /// At most one is allowed. On Vertex AI Agent Engine, this is the runtime
+  /// revision id, currently set only for agents created via v1beta1.
+  GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityStringPredicate?
+  serviceVersion;
+
   /// Filter on the total token usage within a trace.
   GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate?
   totalTokenUsage;
 
   GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopePredicate({
     this.duration,
+    this.serviceVersion,
     this.totalTokenUsage,
   });
 
@@ -97597,6 +104960,11 @@ class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopePredicat
                 json_['duration'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        serviceVersion: json_.containsKey('serviceVersion')
+            ? GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityStringPredicate.fromJson(
+                json_['serviceVersion'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         totalTokenUsage: json_.containsKey('totalTokenUsage')
             ? GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate.fromJson(
                 json_['totalTokenUsage'] as core.Map<core.String, core.dynamic>,
@@ -97606,8 +104974,13 @@ class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopePredicat
 
   core.Map<core.String, core.dynamic> toJson() {
     final duration = this.duration;
+    final serviceVersion = this.serviceVersion;
     final totalTokenUsage = this.totalTokenUsage;
-    return {'duration': ?duration, 'totalTokenUsage': ?totalTokenUsage};
+    return {
+      'duration': ?duration,
+      'serviceVersion': ?serviceVersion,
+      'totalTokenUsage': ?totalTokenUsage,
+    };
   }
 }
 
@@ -98406,11 +105779,11 @@ class GoogleCloudAiplatformV1PairwiseSummarizationQualitySpec {
 
 /// A datatype containing media that is part of a multi-part Content message.
 ///
-/// A `Part` consists of data which has an associated datatype. A `Part` can
-/// only contain one of the accepted types in `Part.data`. For media types that
-/// are not text, `Part` must have a fixed IANA MIME type identifying the type
-/// and subtype of the media if `inline_data` or `file_data` field is filled
-/// with raw bytes.
+/// A `Part` consists of data which has an associated datatype. A `Part` must
+/// contain one of the accepted types in `Part.data`. For media types that are
+/// not text, `Part` must have a fixed IANA MIME type identifying the type and
+/// subtype of the media if `inline_data` or `file_data` field is filled with
+/// raw bytes.
 class GoogleCloudAiplatformV1Part {
   /// Audio (input or output) transcription.
   ///
@@ -98464,6 +105837,14 @@ class GoogleCloudAiplatformV1Part {
   /// Media resolution for the input media.
   GoogleCloudAiplatformV1PartMediaResolution? mediaResolution;
 
+  /// Turn-level metadata for speech generation (e.g. Daikon speaker/style).
+  ///
+  /// May be set alongside `text` to attach speaker and style information to a
+  /// text part.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1SpeechMetadata? speechMetadata;
+
   /// The text content of the part.
   ///
   /// When sent from the VSCode Gemini Code Assist extension, references to
@@ -98512,6 +105893,7 @@ class GoogleCloudAiplatformV1Part {
     this.functionResponse,
     this.inlineData,
     this.mediaResolution,
+    this.speechMetadata,
     this.text,
     this.thought,
     this.thoughtSignature,
@@ -98563,6 +105945,11 @@ class GoogleCloudAiplatformV1Part {
                 json_['mediaResolution'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        speechMetadata: json_.containsKey('speechMetadata')
+            ? GoogleCloudAiplatformV1SpeechMetadata.fromJson(
+                json_['speechMetadata'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         text: json_['text'] as core.String?,
         thought: json_['thought'] as core.bool?,
         thoughtSignature: json_['thoughtSignature'] as core.String?,
@@ -98582,6 +105969,7 @@ class GoogleCloudAiplatformV1Part {
     final functionResponse = this.functionResponse;
     final inlineData = this.inlineData;
     final mediaResolution = this.mediaResolution;
+    final speechMetadata = this.speechMetadata;
     final text = this.text;
     final thought = this.thought;
     final thoughtSignature = this.thoughtSignature;
@@ -98595,6 +105983,7 @@ class GoogleCloudAiplatformV1Part {
       'functionResponse': ?functionResponse,
       'inlineData': ?inlineData,
       'mediaResolution': ?mediaResolution,
+      'speechMetadata': ?speechMetadata,
       'text': ?text,
       'thought': ?thought,
       'thoughtSignature': ?thoughtSignature,
@@ -104171,48 +111560,8 @@ class GoogleCloudAiplatformV1RagRetrievalConfig {
 }
 
 /// Config for filters.
-class GoogleCloudAiplatformV1RagRetrievalConfigFilter {
-  /// String for metadata filtering.
-  ///
-  /// Optional.
-  core.String? metadataFilter;
-
-  /// Only returns contexts with vector distance smaller than the threshold.
-  ///
-  /// Optional.
-  core.double? vectorDistanceThreshold;
-
-  /// Only returns contexts with vector similarity larger than the threshold.
-  ///
-  /// Optional.
-  core.double? vectorSimilarityThreshold;
-
-  GoogleCloudAiplatformV1RagRetrievalConfigFilter({
-    this.metadataFilter,
-    this.vectorDistanceThreshold,
-    this.vectorSimilarityThreshold,
-  });
-
-  GoogleCloudAiplatformV1RagRetrievalConfigFilter.fromJson(core.Map json_)
-    : this(
-        metadataFilter: json_['metadataFilter'] as core.String?,
-        vectorDistanceThreshold: (json_['vectorDistanceThreshold'] as core.num?)
-            ?.toDouble(),
-        vectorSimilarityThreshold:
-            (json_['vectorSimilarityThreshold'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final metadataFilter = this.metadataFilter;
-    final vectorDistanceThreshold = this.vectorDistanceThreshold;
-    final vectorSimilarityThreshold = this.vectorSimilarityThreshold;
-    return {
-      'metadataFilter': ?metadataFilter,
-      'vectorDistanceThreshold': ?vectorDistanceThreshold,
-      'vectorSimilarityThreshold': ?vectorSimilarityThreshold,
-    };
-  }
-}
+typedef GoogleCloudAiplatformV1RagRetrievalConfigFilter =
+    $RagRetrievalConfigFilter;
 
 /// Config for ranking and reranking.
 class GoogleCloudAiplatformV1RagRetrievalConfigRanking {
@@ -110757,6 +118106,8 @@ class GoogleCloudAiplatformV1Segment {
 class GoogleCloudAiplatformV1SemanticGovernancePolicy {
   /// The name of the agent in Agent Registry that is affected by this policy.
   ///
+  /// Format: `projects/{project}/locations/{location}/agents/{agent}`
+  ///
   /// Required.
   core.String? agent;
 
@@ -110793,6 +118144,18 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicy {
   /// Optional.
   core.String? displayName;
 
+  /// If true, this policy is evaluated and its result is reported, but the
+  /// policy is not enforced: a violation does not block the agent's action.
+  ///
+  /// Use this to validate a policy against real traffic before turning
+  /// enforcement on. Defaults to `false`, meaning the policy is enforced. This
+  /// setting applies only to this policy. If the SemanticGovernancePolicyEngine
+  /// for the project is itself in dry run, every policy behaves as dry run
+  /// regardless of this field.
+  ///
+  /// Optional.
+  core.bool? dryRun;
+
   /// Used to perform consistent read-modify-write transactions.
   ///
   /// If provided, the request will only succeed if the etag matches the current
@@ -110828,6 +118191,7 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicy {
     this.createTime,
     this.description,
     this.displayName,
+    this.dryRun,
     this.etag,
     this.mcpTools,
     this.name,
@@ -110849,6 +118213,7 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicy {
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
+        dryRun: json_['dryRun'] as core.bool?,
         etag: json_['etag'] as core.String?,
         mcpTools: (json_['mcpTools'] as core.List?)
             ?.map(
@@ -110871,6 +118236,7 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicy {
     final createTime = this.createTime;
     final description = this.description;
     final displayName = this.displayName;
+    final dryRun = this.dryRun;
     final etag = this.etag;
     final mcpTools = this.mcpTools;
     final name = this.name;
@@ -110883,6 +118249,7 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicy {
       'createTime': ?createTime,
       'description': ?description,
       'displayName': ?displayName,
+      'dryRun': ?dryRun,
       'etag': ?etag,
       'mcpTools': ?mcpTools,
       'name': ?name,
@@ -111023,12 +118390,12 @@ class GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool {
   /// Required.
   core.String? mcpServer;
 
-  /// The resource names of the McpTools used by the Agent that is affected by
-  /// this policy.
+  /// The resource names of the tools used by the Agent that is affected by this
+  /// policy.
   ///
-  /// If not specified, the policy applies to all McpTools in the McpServer.
+  /// Currently, exactly one tool must be specified.
   ///
-  /// Optional.
+  /// Required.
   core.List<core.String>? tools;
 
   GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool({
@@ -111095,6 +118462,119 @@ class GoogleCloudAiplatformV1ServiceAccountSpec {
       'enableCustomServiceAccount': ?enableCustomServiceAccount,
       'serviceAccount': ?serviceAccount,
     };
+  }
+}
+
+/// Configures the serving behavior for a resource-less GenAI serving.
+class GoogleCloudAiplatformV1ServingProfile {
+  /// CMEK configuration for the ServingProfile.
+  GoogleCloudAiplatformV1ServingProfileCmekConfig? cmekConfig;
+
+  /// Timestamp when the ServingProfile was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The description of the ServingProfile.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The display name of the ServingProfile.
+  ///
+  /// The name can be up to 128 characters long and can consist of any UTF-8
+  /// characters.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// The resource name of the ServingProfile.
+  core.String? name;
+
+  /// The specific API this ServingProfile applies to.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SERVING_PROFILE_SCOPE_UNSPECIFIED" : Default value. This value is
+  /// unused. When users create a ServingProfile, they must choose a scope.
+  /// - "GEMINI_LIVE" : The scope for Gemini Live.
+  /// - "INTERACTIONS_API" : The scope for Interactions API.
+  /// - "RESPONSE_API" : The scope for Response API.
+  core.String? scope;
+
+  /// Timestamp when the ServingProfile was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudAiplatformV1ServingProfile({
+    this.cmekConfig,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.scope,
+    this.updateTime,
+  });
+
+  GoogleCloudAiplatformV1ServingProfile.fromJson(core.Map json_)
+    : this(
+        cmekConfig: json_.containsKey('cmekConfig')
+            ? GoogleCloudAiplatformV1ServingProfileCmekConfig.fromJson(
+                json_['cmekConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        scope: json_['scope'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cmekConfig = this.cmekConfig;
+    final createTime = this.createTime;
+    final description = this.description;
+    final displayName = this.displayName;
+    final name = this.name;
+    final scope = this.scope;
+    final updateTime = this.updateTime;
+    return {
+      'cmekConfig': ?cmekConfig,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'scope': ?scope,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Configuration for Customer-Managed Encryption Keys (CMEK).
+class GoogleCloudAiplatformV1ServingProfileCmekConfig {
+  /// The customer-managed encryption key spec for the Serving Profile.
+  ///
+  /// Required.
+  GoogleCloudAiplatformV1EncryptionSpec? encryptionSpec;
+
+  GoogleCloudAiplatformV1ServingProfileCmekConfig({this.encryptionSpec});
+
+  GoogleCloudAiplatformV1ServingProfileCmekConfig.fromJson(core.Map json_)
+    : this(
+        encryptionSpec: json_.containsKey('encryptionSpec')
+            ? GoogleCloudAiplatformV1EncryptionSpec.fromJson(
+                json_['encryptionSpec'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final encryptionSpec = this.encryptionSpec;
+    return {'encryptionSpec': ?encryptionSpec};
   }
 }
 
@@ -111916,6 +119396,33 @@ class GoogleCloudAiplatformV1SpeechConfig {
       'multiSpeakerVoiceConfig': ?multiSpeakerVoiceConfig,
       'voiceConfig': ?voiceConfig,
     };
+  }
+}
+
+/// Structured Metadata Sub-Message for Part
+class GoogleCloudAiplatformV1SpeechMetadata {
+  /// Identifies which speaker is speaking this turn.
+  ///
+  /// Optional.
+  core.String? speaker;
+
+  /// Natural language description of the vocal style (e.g., "cheerful").
+  ///
+  /// Optional.
+  core.String? style;
+
+  GoogleCloudAiplatformV1SpeechMetadata({this.speaker, this.style});
+
+  GoogleCloudAiplatformV1SpeechMetadata.fromJson(core.Map json_)
+    : this(
+        speaker: json_['speaker'] as core.String?,
+        style: json_['style'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final speaker = this.speaker;
+    final style = this.style;
+    return {'speaker': ?speaker, 'style': ?style};
   }
 }
 
@@ -115783,36 +123290,42 @@ typedef GoogleCloudAiplatformV1ToolCallValidSpec = $Empty;
 /// to this tool.
 typedef GoogleCloudAiplatformV1ToolCodeExecution = $Empty;
 
-/// Tool to support computer use.
+/// A tool that enables the model to interact directly with a computer
+/// environment.
 class GoogleCloudAiplatformV1ToolComputerUse {
-  /// Enables the prompt injection detection check on computer-use request.
+  /// A list of safety policies to disable for the computer use tool.
+  ///
+  /// Optional.
+  core.List<core.String>? disabledSafetyPolicies;
+
+  /// Whether to enable the prompt injection detection check on the computer use
+  /// request.
   ///
   /// Optional.
   core.bool? enablePromptInjectionDetection;
 
-  /// The environment being operated.
+  /// The target environment where the computer use tool operates.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "ENVIRONMENT_UNSPECIFIED" : Defaults to browser.
-  /// - "ENVIRONMENT_BROWSER" : Operates in a web browser.
-  /// - "ENVIRONMENT_MOBILE" : Operates in a mobile environment.
-  /// - "ENVIRONMENT_DESKTOP" : Operates in a desktop environment.
+  /// - "ENVIRONMENT_UNSPECIFIED" : The environment is unspecified.
+  /// - "ENVIRONMENT_BROWSER" : The tool operates in a web browser.
+  /// - "ENVIRONMENT_MOBILE" : The tool operates in a mobile environment.
+  /// - "ENVIRONMENT_DESKTOP" : The tool operates in a desktop environment.
   core.String? environment;
 
+  /// A list of predefined functions to explicitly exclude from the model call.
+  ///
   /// By default,
   /// [predefined functions](https://cloud.google.com/vertex-ai/generative-ai/docs/computer-use#supported-actions)
-  /// are included in the final model call.
-  ///
-  /// Some of them can be explicitly excluded from being automatically included.
-  /// This can serve two purposes: 1. Using a more restricted / different action
-  /// space. 2. Improving the definitions / instructions of predefined
-  /// functions.
+  /// are included. Excluding functions allows for a more restricted action
+  /// space or custom definitions for predefined functions.
   ///
   /// Optional.
   core.List<core.String>? excludedPredefinedFunctions;
 
   GoogleCloudAiplatformV1ToolComputerUse({
+    this.disabledSafetyPolicies,
     this.enablePromptInjectionDetection,
     this.environment,
     this.excludedPredefinedFunctions,
@@ -115820,6 +123333,9 @@ class GoogleCloudAiplatformV1ToolComputerUse {
 
   GoogleCloudAiplatformV1ToolComputerUse.fromJson(core.Map json_)
     : this(
+        disabledSafetyPolicies: (json_['disabledSafetyPolicies'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         enablePromptInjectionDetection:
             json_['enablePromptInjectionDetection'] as core.bool?,
         environment: json_['environment'] as core.String?,
@@ -115830,10 +123346,12 @@ class GoogleCloudAiplatformV1ToolComputerUse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final disabledSafetyPolicies = this.disabledSafetyPolicies;
     final enablePromptInjectionDetection = this.enablePromptInjectionDetection;
     final environment = this.environment;
     final excludedPredefinedFunctions = this.excludedPredefinedFunctions;
     return {
+      'disabledSafetyPolicies': ?disabledSafetyPolicies,
       'enablePromptInjectionDetection': ?enablePromptInjectionDetection,
       'environment': ?environment,
       'excludedPredefinedFunctions': ?excludedPredefinedFunctions,
@@ -118139,6 +125657,11 @@ class GoogleCloudAiplatformV1TuningJob {
   /// Output only.
   core.String? experiment;
 
+  /// The Cloud Storage metrics URI associated with this TuningJob.
+  ///
+  /// Output only.
+  core.String? gcsMetricsUri;
+
   /// The labels with user-defined metadata to organize TuningJob and generated
   /// resources such as Model and Endpoint.
   ///
@@ -118241,6 +125764,7 @@ class GoogleCloudAiplatformV1TuningJob {
     this.error,
     this.evaluateDatasetRuns,
     this.experiment,
+    this.gcsMetricsUri,
     this.labels,
     this.name,
     this.preTunedModel,
@@ -118279,6 +125803,7 @@ class GoogleCloudAiplatformV1TuningJob {
             )
             .toList(),
         experiment: json_['experiment'] as core.String?,
+        gcsMetricsUri: json_['gcsMetricsUri'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -118327,6 +125852,7 @@ class GoogleCloudAiplatformV1TuningJob {
     final error = this.error;
     final evaluateDatasetRuns = this.evaluateDatasetRuns;
     final experiment = this.experiment;
+    final gcsMetricsUri = this.gcsMetricsUri;
     final labels = this.labels;
     final name = this.name;
     final preTunedModel = this.preTunedModel;
@@ -118348,6 +125874,7 @@ class GoogleCloudAiplatformV1TuningJob {
       'error': ?error,
       'evaluateDatasetRuns': ?evaluateDatasetRuns,
       'experiment': ?experiment,
+      'gcsMetricsUri': ?gcsMetricsUri,
       'labels': ?labels,
       'name': ?name,
       'preTunedModel': ?preTunedModel,
@@ -119537,9 +127064,19 @@ class GoogleCloudAiplatformV1VoiceConfig {
   /// Optional.
   GoogleCloudAiplatformV1ReplicatedVoiceConfig? replicatedVoiceConfig;
 
+  /// The speaker identifier for synthesis.
+  ///
+  /// Supported formats: * Speaker name for prebuilt voices (for example, `Orus`
+  /// or `Kore`). * Voice ID for stored voices (for example, `voice_xxx`). *
+  /// Voice replication key (for example, `voicekey_xxx`).
+  ///
+  /// Optional.
+  core.String? voice;
+
   GoogleCloudAiplatformV1VoiceConfig({
     this.prebuiltVoiceConfig,
     this.replicatedVoiceConfig,
+    this.voice,
   });
 
   GoogleCloudAiplatformV1VoiceConfig.fromJson(core.Map json_)
@@ -119556,14 +127093,17 @@ class GoogleCloudAiplatformV1VoiceConfig {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        voice: json_['voice'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final prebuiltVoiceConfig = this.prebuiltVoiceConfig;
     final replicatedVoiceConfig = this.replicatedVoiceConfig;
+    final voice = this.voice;
     return {
       'prebuiltVoiceConfig': ?prebuiltVoiceConfig,
       'replicatedVoiceConfig': ?replicatedVoiceConfig,
+      'voice': ?voice,
     };
   }
 }

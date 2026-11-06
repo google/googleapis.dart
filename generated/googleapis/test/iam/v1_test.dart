@@ -1490,6 +1490,7 @@ api.Oidc buildOidc() {
   buildCounterOidc++;
   if (buildCounterOidc < 3) {
     o.allowedAudiences = buildUnnamed27();
+    o.discoveryUri = 'foo';
     o.issuerUri = 'foo';
     o.jwksJson = 'foo';
   }
@@ -1501,6 +1502,7 @@ void checkOidc(api.Oidc o) {
   buildCounterOidc++;
   if (buildCounterOidc < 3) {
     checkUnnamed27(o.allowedAudiences!);
+    unittest.expect(o.discoveryUri!, unittest.equals('foo'));
     unittest.expect(o.issuerUri!, unittest.equals('foo'));
     unittest.expect(o.jwksJson!, unittest.equals('foo'));
   }
@@ -1884,6 +1886,24 @@ void checkRemoveAttestationRuleRequest(api.RemoveAttestationRuleRequest o) {
     checkAttestationRule(o.attestationRule!);
   }
   buildCounterRemoveAttestationRuleRequest--;
+}
+
+core.int buildCounterRevokeWorkforcePoolSubjectSessionsRequest = 0;
+api.RevokeWorkforcePoolSubjectSessionsRequest
+buildRevokeWorkforcePoolSubjectSessionsRequest() {
+  final o = api.RevokeWorkforcePoolSubjectSessionsRequest();
+  buildCounterRevokeWorkforcePoolSubjectSessionsRequest++;
+  if (buildCounterRevokeWorkforcePoolSubjectSessionsRequest < 3) {}
+  buildCounterRevokeWorkforcePoolSubjectSessionsRequest--;
+  return o;
+}
+
+void checkRevokeWorkforcePoolSubjectSessionsRequest(
+  api.RevokeWorkforcePoolSubjectSessionsRequest o,
+) {
+  buildCounterRevokeWorkforcePoolSubjectSessionsRequest++;
+  if (buildCounterRevokeWorkforcePoolSubjectSessionsRequest < 3) {}
+  buildCounterRevokeWorkforcePoolSubjectSessionsRequest--;
 }
 
 core.List<core.String> buildUnnamed35() => ['foo', 'foo'];
@@ -2688,6 +2708,7 @@ api.WorkforcePoolProvider buildWorkforcePoolProvider() {
     o.saml = buildGoogleIamAdminV1WorkforcePoolProviderSaml();
     o.scimUsage = 'foo';
     o.state = 'foo';
+    o.vendorType = 'foo';
   }
   buildCounterWorkforcePoolProvider--;
   return o;
@@ -2714,6 +2735,7 @@ void checkWorkforcePoolProvider(api.WorkforcePoolProvider o) {
     checkGoogleIamAdminV1WorkforcePoolProviderSaml(o.saml!);
     unittest.expect(o.scimUsage!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.vendorType!, unittest.equals('foo'));
   }
   buildCounterWorkforcePoolProvider--;
 }
@@ -2907,9 +2929,17 @@ void checkWorkloadIdentityPoolNamespace(api.WorkloadIdentityPoolNamespace o) {
   buildCounterWorkloadIdentityPoolNamespace--;
 }
 
-core.Map<core.String, core.String> buildUnnamed46() => {'x': 'foo', 'y': 'foo'};
+core.List<core.String> buildUnnamed46() => ['foo', 'foo'];
 
-void checkUnnamed46(core.Map<core.String, core.String> o) {
+void checkUnnamed46(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.String> buildUnnamed47() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed47(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -2920,8 +2950,9 @@ api.WorkloadIdentityPoolProvider buildWorkloadIdentityPoolProvider() {
   final o = api.WorkloadIdentityPoolProvider();
   buildCounterWorkloadIdentityPoolProvider++;
   if (buildCounterWorkloadIdentityPoolProvider < 3) {
+    o.actorProviders = buildUnnamed46();
     o.attributeCondition = 'foo';
-    o.attributeMapping = buildUnnamed46();
+    o.attributeMapping = buildUnnamed47();
     o.aws = buildAws();
     o.description = 'foo';
     o.disabled = true;
@@ -2940,8 +2971,9 @@ api.WorkloadIdentityPoolProvider buildWorkloadIdentityPoolProvider() {
 void checkWorkloadIdentityPoolProvider(api.WorkloadIdentityPoolProvider o) {
   buildCounterWorkloadIdentityPoolProvider++;
   if (buildCounterWorkloadIdentityPoolProvider < 3) {
+    checkUnnamed46(o.actorProviders!);
     unittest.expect(o.attributeCondition!, unittest.equals('foo'));
-    checkUnnamed46(o.attributeMapping!);
+    checkUnnamed47(o.attributeMapping!);
     checkAws(o.aws!);
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.disabled!, unittest.isTrue);
@@ -3004,9 +3036,9 @@ void checkX509(api.X509 o) {
   buildCounterX509--;
 }
 
-core.List<core.String> buildUnnamed47() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed48() => ['foo', 'foo'];
 
-void checkUnnamed47(core.List<core.String> o) {
+void checkUnnamed48(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3754,6 +3786,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkRemoveAttestationRuleRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RevokeWorkforcePoolSubjectSessionsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRevokeWorkforcePoolSubjectSessionsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RevokeWorkforcePoolSubjectSessionsRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRevokeWorkforcePoolSubjectSessionsRequest(od);
     });
   });
 
@@ -6846,6 +6889,69 @@ void main() {
         true,
       );
       final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--revokeSessions', () async {
+      final mock = HttpServerMock();
+      final res = api.IamApi(mock).locations.workforcePools.subjects;
+      final arg_request = buildRevokeWorkforcePoolSubjectSessionsRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.RevokeWorkforcePoolSubjectSessionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkRevokeWorkforcePoolSubjectSessionsRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.revokeSessions(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkOperation(response as api.Operation);
     });
 
@@ -12720,7 +12826,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.IamApi(mock).projects.serviceAccounts.keys;
       final arg_name = 'foo';
-      final arg_keyTypes = buildUnnamed47();
+      final arg_keyTypes = buildUnnamed48();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {

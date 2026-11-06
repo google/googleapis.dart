@@ -942,6 +942,16 @@ class DataPolicy {
   /// Optional.
   core.List<core.String>? grantees;
 
+  /// Matching condition specified as a SQL expression string.
+  ///
+  /// Data Governance Tag matcher functions are: `COLUMN_HAS_TAG_KEY(keyName
+  /// STRING) -> BOOL` `COLUMN_MATCH_TAG(keyName STRING, valueShortName STRING)
+  /// -> BOOL` For example: `COLUMN_HAS_TAG_KEY('project-id/pii') AND
+  /// COLUMN_MATCH_TAG('project-id/pii', 'ssn')`
+  ///
+  /// Optional.
+  core.String? matchingCondition;
+
   /// Identifier.
   ///
   /// Resource name of this data policy, in the format of
@@ -974,6 +984,7 @@ class DataPolicy {
     this.dataPolicyType,
     this.etag,
     this.grantees,
+    this.matchingCondition,
     this.name,
     this.policyTag,
     this.version,
@@ -999,6 +1010,7 @@ class DataPolicy {
         grantees: (json_['grantees'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        matchingCondition: json_['matchingCondition'] as core.String?,
         name: json_['name'] as core.String?,
         policyTag: json_['policyTag'] as core.String?,
         version: json_['version'] as core.String?,
@@ -1011,6 +1023,7 @@ class DataPolicy {
     final dataPolicyType = this.dataPolicyType;
     final etag = this.etag;
     final grantees = this.grantees;
+    final matchingCondition = this.matchingCondition;
     final name = this.name;
     final policyTag = this.policyTag;
     final version = this.version;
@@ -1021,6 +1034,7 @@ class DataPolicy {
       'dataPolicyType': ?dataPolicyType,
       'etag': ?etag,
       'grantees': ?grantees,
+      'matchingCondition': ?matchingCondition,
       'name': ?name,
       'policyTag': ?policyTag,
       'version': ?version,

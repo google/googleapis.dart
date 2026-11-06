@@ -416,8 +416,8 @@ class ProjectsLocationsParametersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. \[Output only\] The resource name of the Parameter in
-  /// the format `projects / * /locations / * /parameters / * `.
+  /// [name] - Identifier. The resource name of the Parameter in the format
+  /// `projects / * /locations / * /parameters / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/parameters/\[^/\]+$`.
   ///
@@ -714,9 +714,8 @@ class ProjectsLocationsParametersVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. \[Output only\] The resource name of the
-  /// ParameterVersion in the format `projects / * /locations / * /parameters /
-  /// * /versions / * `.
+  /// [name] - Identifier. The resource name of the ParameterVersion in the
+  /// format `projects / * /locations / * /parameters / * /versions / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/parameters/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -1690,11 +1689,11 @@ class Parameter {
 
   /// Identifier.
   ///
-  /// \[Output only\] The resource name of the Parameter in the format `projects
-  /// / * /locations / * /parameters / * `.
+  /// The resource name of the Parameter in the format `projects / * /locations
+  /// / * /parameters / * `.
   core.String? name;
 
-  /// \[Output-only\] policy member strings of a Google Cloud resource.
+  /// Policy member strings of a Google Cloud resource.
   ///
   /// Output only.
   ResourcePolicyMember? policyMember;
@@ -1805,8 +1804,8 @@ class ParameterVersion {
 
   /// Identifier.
   ///
-  /// \[Output only\] The resource name of the ParameterVersion in the format
-  /// `projects / * /locations / * /parameters / * /versions / * `.
+  /// The resource name of the ParameterVersion in the format `projects / *
+  /// /locations / * /parameters / * /versions / * `.
   core.String? name;
 
   /// Payload content of a ParameterVersion resource.
@@ -1905,12 +1904,10 @@ class ParameterVersionPayload {
   }
 }
 
-/// Message describing RenderParameterVersionResponse resource
+/// Message describing response of the `RenderParameterVersion` method
 class RenderParameterVersionResponse {
   /// Resource identifier of a ParameterVersion in the format `projects / *
   /// /locations / * /parameters / * /versions / * `.
-  ///
-  /// Output only.
   core.String? parameterVersion;
 
   /// Payload content of a ParameterVersion resource.
@@ -1922,8 +1919,6 @@ class RenderParameterVersionResponse {
   ///
   /// This substitution only works for a Parameter which is in JSON or YAML
   /// format.
-  ///
-  /// Output only.
   core.String? renderedPayload;
   core.List<core.int> get renderedPayloadAsBytes =>
       convert.base64.decode(renderedPayload!);
@@ -1964,13 +1959,11 @@ class RenderParameterVersionResponse {
   }
 }
 
-/// Message describing RenderTemplateVersionResponse resource
+/// Message describing response for `RenderTemplateVersion` method
 class RenderTemplateVersionResponse {
   /// The resource name of the ParameterVersion used to render the template
   /// version in the format `projects / * /locations / * /parameters / *
   /// /versions / * `.
-  ///
-  /// Output only.
   core.String? parameterVersion;
 
   /// Payload content of a TemplateVersion resource.
@@ -1979,8 +1972,6 @@ class RenderTemplateVersionResponse {
   /// Server generated rendered version of the user provided payload data
   /// (TemplateVersionPayload) which has all the variables resolved using the
   /// provided parameter version.
-  ///
-  /// Output only.
   core.String? renderedPayload;
   core.List<core.int> get renderedPayloadAsBytes =>
       convert.base64.decode(renderedPayload!);
@@ -1993,8 +1984,6 @@ class RenderTemplateVersionResponse {
   }
 
   /// Format of the template version.
-  ///
-  /// Output only.
   /// Possible string values are:
   /// - "TEMPLATE_FORMAT_UNSPECIFIED" : The default / unset value. The API will
   /// default to the YAML format.

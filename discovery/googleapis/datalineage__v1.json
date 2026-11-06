@@ -79,6 +79,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://datalineage.asia-southeast4.rep.googleapis.com/",
+            "location": "asia-southeast4"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://datalineage.australia-southeast1.rep.googleapis.com/",
             "location": "australia-southeast1"
         },
@@ -254,11 +259,6 @@
         },
         {
             "description": "Regional Endpoint",
-            "endpointUrl": "https://datalineage.us-west8.rep.googleapis.com/",
-            "location": "us-west8"
-        },
-        {
-            "description": "Regional Endpoint",
             "endpointUrl": "https://datalineage.us.rep.googleapis.com/",
             "location": "us"
         },
@@ -278,7 +278,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260822",
+    "revision": "20261030",
     "rootUrl": "https://datalineage.googleapis.com/",
     "servicePath": "",
     "title": "Data Lineage API",
@@ -1095,7 +1095,9 @@
                                                 "$ref": "GoogleCloudDatacatalogLineageV1ListRunsResponse"
                                             },
                                             "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/datalineage.read-write",
+                                                "https://www.googleapis.com/auth/datalineage.readonly"
                                             ]
                                         },
                                         "patch": {
@@ -2006,6 +2008,13 @@
                         "Returns entities with only FQN specified. For example, entities with the `field` field set are not returned."
                     ],
                     "type": "string"
+                },
+                "projects": {
+                    "description": "Optional. Projects to restrict lineage links to. Callers can provide project IDs (for example, `projects/my-project`) or project numbers (for example, `projects/123456789`). If unspecified, lineage is returned from all projects.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "timeRange": {
                     "$ref": "GoogleTypeInterval",

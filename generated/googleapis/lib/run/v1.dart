@@ -4671,6 +4671,9 @@ class Binding {
   }
 }
 
+/// BuildStatus holds the status of a build.
+typedef BuildStatus = $BuildStatus;
+
 /// Storage volume source using the Container Storage Interface.
 class CSIVolumeSource {
   /// name of the CSI driver for the requested storage system.
@@ -5385,6 +5388,49 @@ class ContainerPort {
   }
 }
 
+/// ContainerStatus holds the information of container name and image digest
+/// value.
+class ContainerStatus {
+  /// The build status of the container image.
+  ///
+  /// Output only.
+  BuildStatus? buildStatus;
+
+  /// ImageDigest holds the resolved digest for the image specified and resolved
+  /// during the creation of Revision.
+  ///
+  /// This field holds the digest value regardless of whether a tag or digest
+  /// was originally specified in the Container object.
+  core.String? imageDigest;
+
+  /// The name of the container, if specified.
+  core.String? name;
+
+  ContainerStatus({this.buildStatus, this.imageDigest, this.name});
+
+  ContainerStatus.fromJson(core.Map json_)
+    : this(
+        buildStatus: json_.containsKey('buildStatus')
+            ? BuildStatus.fromJson(
+                json_['buildStatus'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        imageDigest: json_['imageDigest'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final buildStatus = this.buildStatus;
+    final imageDigest = this.imageDigest;
+    final name = this.name;
+    return {
+      'buildStatus': ?buildStatus,
+      'imageDigest': ?imageDigest,
+      'name': ?name,
+    };
+  }
+}
+
 /// Resource to hold the state and status of a user's domain mapping.
 ///
 /// NOTE: This resource is currently in Beta.
@@ -5574,7 +5620,7 @@ class DomainMappingStatus {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// In memory (tmpfs) ephemeral storage.
+/// In memory or disk-backed ephemeral storage.
 ///
 /// It is ephemeral in the sense that when the sandbox is taken down, the data
 /// is destroyed with it (it does not persist across sandbox runs).
@@ -5582,7 +5628,7 @@ class EmptyDirVolumeSource {
   /// The medium on which the data is stored.
   ///
   /// The default is "" which means to use the node's default medium. Must be an
-  /// empty string (default) or Memory. More info:
+  /// empty string (default), `Memory`, or `Disk`. More info:
   /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir
   core.String? medium;
 
@@ -6143,6 +6189,9 @@ class ExecutionTemplateSpec {
 /// information.
 typedef Expr = $Expr;
 
+/// Represents a volume backed by a Filestore instance.
+typedef FilestoreVolumeSource = $FilestoreVolumeSource;
+
 /// GRPCAction describes an action involving a GRPC port.
 class GRPCAction {
   /// Port number of the gRPC service.
@@ -6580,6 +6629,11 @@ class InstanceSpec {
   /// Optional.
   core.String? restartPolicy;
 
+  /// Sandbox configuration that can be launched through the `sandbox` CLI.
+  ///
+  /// Optional.
+  SandboxConfiguration? sandboxes;
+
   /// Email address of the IAM service account associated with the Instance.
   ///
   /// The service account represents the identity of the running container, and
@@ -6599,6 +6653,7 @@ class InstanceSpec {
     this.containers,
     this.nodeSelector,
     this.restartPolicy,
+    this.sandboxes,
     this.serviceAccountName,
     this.volumes,
   });
@@ -6616,6 +6671,11 @@ class InstanceSpec {
             (json_['nodeSelector'] as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
         restartPolicy: json_['restartPolicy'] as core.String?,
+        sandboxes: json_.containsKey('sandboxes')
+            ? SandboxConfiguration.fromJson(
+                json_['sandboxes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serviceAccountName: json_['serviceAccountName'] as core.String?,
         volumes: (json_['volumes'] as core.List?)
             ?.map(
@@ -6629,12 +6689,14 @@ class InstanceSpec {
     final containers = this.containers;
     final nodeSelector = this.nodeSelector;
     final restartPolicy = this.restartPolicy;
+    final sandboxes = this.sandboxes;
     final serviceAccountName = this.serviceAccountName;
     final volumes = this.volumes;
     return {
       'containers': ?containers,
       'nodeSelector': ?nodeSelector,
       'restartPolicy': ?restartPolicy,
+      'sandboxes': ?sandboxes,
       'serviceAccountName': ?serviceAccountName,
       'volumes': ?volumes,
     };
@@ -7785,7 +7847,7 @@ class ObjectMeta {
   /// `run.googleapis.com/custom-audiences`: Service. *
   /// `run.googleapis.com/default-url-disabled`: Service. *
   /// `run.googleapis.com/description`: Service. *
-  /// `run.googleapis.com/encryption-key-shutdown-hours`: Revision *
+  /// `run.googleapis.com/encryption-key-shutdown-hours`: Revision. *
   /// `run.googleapis.com/encryption-key`: Revision, Execution, Instance. *
   /// `run.googleapis.com/execution-environment`: Revision, Execution. *
   /// `run.googleapis.com/gc-traffic-tags`: Service. *
@@ -8492,6 +8554,11 @@ class RevisionSpec {
   /// Optional.
   core.String? runtimeClassName;
 
+  /// Sandbox configuration that can be launched through the `sandbox` CLI.
+  ///
+  /// Optional.
+  SandboxConfiguration? sandboxes;
+
   /// Email address of the IAM service account associated with the revision of
   /// the service.
   ///
@@ -8517,6 +8584,7 @@ class RevisionSpec {
     this.imagePullSecrets,
     this.nodeSelector,
     this.runtimeClassName,
+    this.sandboxes,
     this.serviceAccountName,
     this.timeoutSeconds,
     this.volumes,
@@ -8544,6 +8612,11 @@ class RevisionSpec {
             (json_['nodeSelector'] as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
         runtimeClassName: json_['runtimeClassName'] as core.String?,
+        sandboxes: json_.containsKey('sandboxes')
+            ? SandboxConfiguration.fromJson(
+                json_['sandboxes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serviceAccountName: json_['serviceAccountName'] as core.String?,
         timeoutSeconds: json_['timeoutSeconds'] as core.int?,
         volumes: (json_['volumes'] as core.List?)
@@ -8561,6 +8634,7 @@ class RevisionSpec {
     final imagePullSecrets = this.imagePullSecrets;
     final nodeSelector = this.nodeSelector;
     final runtimeClassName = this.runtimeClassName;
+    final sandboxes = this.sandboxes;
     final serviceAccountName = this.serviceAccountName;
     final timeoutSeconds = this.timeoutSeconds;
     final volumes = this.volumes;
@@ -8571,6 +8645,7 @@ class RevisionSpec {
       'imagePullSecrets': ?imagePullSecrets,
       'nodeSelector': ?nodeSelector,
       'runtimeClassName': ?runtimeClassName,
+      'sandboxes': ?sandboxes,
       'serviceAccountName': ?serviceAccountName,
       'timeoutSeconds': ?timeoutSeconds,
       'volumes': ?volumes,
@@ -8591,6 +8666,13 @@ class RevisionStatus {
   /// when the Revision readiness check completes. * `Active`: `True` when the
   /// Revision may receive traffic.
   core.List<GoogleCloudRunV1Condition>? conditions;
+
+  /// Status information for each of the specified containers.
+  ///
+  /// The status includes the resolved digest for specified images.
+  ///
+  /// Output only.
+  core.List<ContainerStatus>? containerStatuses;
 
   /// The configured number of instances running this revision.
   ///
@@ -8627,6 +8709,7 @@ class RevisionStatus {
 
   RevisionStatus({
     this.conditions,
+    this.containerStatuses,
     this.desiredReplicas,
     this.imageDigest,
     this.logUrl,
@@ -8643,6 +8726,13 @@ class RevisionStatus {
               ),
             )
             .toList(),
+        containerStatuses: (json_['containerStatuses'] as core.List?)
+            ?.map(
+              (value) => ContainerStatus.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         desiredReplicas: json_['desiredReplicas'] as core.int?,
         imageDigest: json_['imageDigest'] as core.String?,
         logUrl: json_['logUrl'] as core.String?,
@@ -8652,6 +8742,7 @@ class RevisionStatus {
 
   core.Map<core.String, core.dynamic> toJson() {
     final conditions = this.conditions;
+    final containerStatuses = this.containerStatuses;
     final desiredReplicas = this.desiredReplicas;
     final imageDigest = this.imageDigest;
     final logUrl = this.logUrl;
@@ -8659,6 +8750,7 @@ class RevisionStatus {
     final serviceName = this.serviceName;
     return {
       'conditions': ?conditions,
+      'containerStatuses': ?containerStatuses,
       'desiredReplicas': ?desiredReplicas,
       'imageDigest': ?imageDigest,
       'logUrl': ?logUrl,
@@ -8915,6 +9007,135 @@ class RunJobRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final overrides = this.overrides;
     return {'overrides': ?overrides};
+  }
+}
+
+/// Configuration for sandboxes.
+class SandboxConfiguration {
+  /// Sandbox templates that can be launched through the `sandbox` CLI.
+  ///
+  /// Required.
+  core.List<SandboxTemplate>? templates;
+
+  SandboxConfiguration({this.templates});
+
+  SandboxConfiguration.fromJson(core.Map json_)
+    : this(
+        templates: (json_['templates'] as core.List?)
+            ?.map(
+              (value) => SandboxTemplate.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final templates = this.templates;
+    return {'templates': ?templates};
+  }
+}
+
+/// Template for a single sandbox.
+class SandboxTemplate {
+  /// Arguments to the entrypoint.
+  ///
+  /// The docker image's CMD is used if this is not provided.
+  ///
+  /// Optional.
+  core.List<core.String>? args;
+
+  /// Entrypoint array.
+  ///
+  /// Not executed within a shell. The docker image's ENTRYPOINT is used if this
+  /// is not provided.
+  ///
+  /// Optional.
+  core.List<core.String>? command;
+
+  /// List of environment variables to set in the sandbox.
+  ///
+  /// Optional.
+  core.List<EnvVar>? env;
+
+  /// Name of the container image in Dockerhub or Artifact Registry.
+  ///
+  /// If the host is not provided, Dockerhub is assumed.
+  ///
+  /// Required.
+  core.String? image;
+
+  /// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Volume to mount into the container's filesystem.
+  ///
+  /// Optional.
+  core.List<VolumeMount>? volumeMounts;
+
+  /// Container's working directory.
+  ///
+  /// If not specified, the container runtime's default will be used, which
+  /// might be configured in the container image.
+  ///
+  /// Optional.
+  core.String? workingDir;
+
+  SandboxTemplate({
+    this.args,
+    this.command,
+    this.env,
+    this.image,
+    this.name,
+    this.volumeMounts,
+    this.workingDir,
+  });
+
+  SandboxTemplate.fromJson(core.Map json_)
+    : this(
+        args: (json_['args'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        command: (json_['command'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        env: (json_['env'] as core.List?)
+            ?.map(
+              (value) =>
+                  EnvVar.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        image: json_['image'] as core.String?,
+        name: json_['name'] as core.String?,
+        volumeMounts: (json_['volumeMounts'] as core.List?)
+            ?.map(
+              (value) => VolumeMount.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        workingDir: json_['workingDir'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final args = this.args;
+    final command = this.command;
+    final env = this.env;
+    final image = this.image;
+    final name = this.name;
+    final volumeMounts = this.volumeMounts;
+    final workingDir = this.workingDir;
+    return {
+      'args': ?args,
+      'command': ?command,
+      'env': ?env,
+      'image': ?image,
+      'name': ?name,
+      'volumeMounts': ?volumeMounts,
+      'workingDir': ?workingDir,
+    };
   }
 }
 
@@ -9782,6 +10003,11 @@ class TaskSpec {
   /// Optional.
   core.Map<core.String, core.String>? nodeSelector;
 
+  /// Sandbox configuration that can be launched through the `sandbox` CLI.
+  ///
+  /// Optional.
+  SandboxConfiguration? sandboxes;
+
   /// Email address of the IAM service account associated with the task of a job
   /// execution.
   ///
@@ -9810,6 +10036,7 @@ class TaskSpec {
     this.containers,
     this.maxRetries,
     this.nodeSelector,
+    this.sandboxes,
     this.serviceAccountName,
     this.timeoutSeconds,
     this.volumes,
@@ -9828,6 +10055,11 @@ class TaskSpec {
         nodeSelector:
             (json_['nodeSelector'] as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        sandboxes: json_.containsKey('sandboxes')
+            ? SandboxConfiguration.fromJson(
+                json_['sandboxes'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serviceAccountName: json_['serviceAccountName'] as core.String?,
         timeoutSeconds: json_['timeoutSeconds'] as core.String?,
         volumes: (json_['volumes'] as core.List?)
@@ -9842,6 +10074,7 @@ class TaskSpec {
     final containers = this.containers;
     final maxRetries = this.maxRetries;
     final nodeSelector = this.nodeSelector;
+    final sandboxes = this.sandboxes;
     final serviceAccountName = this.serviceAccountName;
     final timeoutSeconds = this.timeoutSeconds;
     final volumes = this.volumes;
@@ -9849,6 +10082,7 @@ class TaskSpec {
       'containers': ?containers,
       'maxRetries': ?maxRetries,
       'nodeSelector': ?nodeSelector,
+      'sandboxes': ?sandboxes,
       'serviceAccountName': ?serviceAccountName,
       'timeoutSeconds': ?timeoutSeconds,
       'volumes': ?volumes,
@@ -10093,6 +10327,9 @@ class Volume {
   /// Ephemeral storage used as a shared volume.
   EmptyDirVolumeSource? emptyDir;
 
+  /// Represents a volume backed by a Filestore instance.
+  FilestoreVolumeSource? filestore;
+
   /// Volume's name.
   ///
   /// In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
@@ -10109,6 +10346,7 @@ class Volume {
     this.configMap,
     this.csi,
     this.emptyDir,
+    this.filestore,
     this.name,
     this.nfs,
     this.secret,
@@ -10131,6 +10369,11 @@ class Volume {
                 json_['emptyDir'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        filestore: json_.containsKey('filestore')
+            ? FilestoreVolumeSource.fromJson(
+                json_['filestore'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         nfs: json_.containsKey('nfs')
             ? NFSVolumeSource.fromJson(
@@ -10148,6 +10391,7 @@ class Volume {
     final configMap = this.configMap;
     final csi = this.csi;
     final emptyDir = this.emptyDir;
+    final filestore = this.filestore;
     final name = this.name;
     final nfs = this.nfs;
     final secret = this.secret;
@@ -10155,6 +10399,7 @@ class Volume {
       'configMap': ?configMap,
       'csi': ?csi,
       'emptyDir': ?emptyDir,
+      'filestore': ?filestore,
       'name': ?name,
       'nfs': ?nfs,
       'secret': ?secret,

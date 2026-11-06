@@ -557,6 +557,7 @@ api.ExportOptions buildExportOptions() {
   if (buildCounterExportOptions < 3) {
     o.calendarOptions = buildCalendarExportOptions();
     o.driveOptions = buildDriveExportOptions();
+    o.geminiInWorkspaceOptions = buildGeminiInWorkspaceExportOptions();
     o.geminiOptions = buildGeminiExportOptions();
     o.groupsOptions = buildGroupsExportOptions();
     o.hangoutsChatOptions = buildHangoutsChatExportOptions();
@@ -573,6 +574,7 @@ void checkExportOptions(api.ExportOptions o) {
   if (buildCounterExportOptions < 3) {
     checkCalendarExportOptions(o.calendarOptions!);
     checkDriveExportOptions(o.driveOptions!);
+    checkGeminiInWorkspaceExportOptions(o.geminiInWorkspaceOptions!);
     checkGeminiExportOptions(o.geminiOptions!);
     checkGroupsExportOptions(o.groupsOptions!);
     checkHangoutsChatExportOptions(o.hangoutsChatOptions!);
@@ -623,6 +625,40 @@ void checkGeminiExportOptions(api.GeminiExportOptions o) {
     unittest.expect(o.exportFormat!, unittest.equals('foo'));
   }
   buildCounterGeminiExportOptions--;
+}
+
+core.int buildCounterGeminiInWorkspaceExportOptions = 0;
+api.GeminiInWorkspaceExportOptions buildGeminiInWorkspaceExportOptions() {
+  final o = api.GeminiInWorkspaceExportOptions();
+  buildCounterGeminiInWorkspaceExportOptions++;
+  if (buildCounterGeminiInWorkspaceExportOptions < 3) {
+    o.exportFormat = 'foo';
+  }
+  buildCounterGeminiInWorkspaceExportOptions--;
+  return o;
+}
+
+void checkGeminiInWorkspaceExportOptions(api.GeminiInWorkspaceExportOptions o) {
+  buildCounterGeminiInWorkspaceExportOptions++;
+  if (buildCounterGeminiInWorkspaceExportOptions < 3) {
+    unittest.expect(o.exportFormat!, unittest.equals('foo'));
+  }
+  buildCounterGeminiInWorkspaceExportOptions--;
+}
+
+core.int buildCounterGeminiInWorkspaceOptions = 0;
+api.GeminiInWorkspaceOptions buildGeminiInWorkspaceOptions() {
+  final o = api.GeminiInWorkspaceOptions();
+  buildCounterGeminiInWorkspaceOptions++;
+  if (buildCounterGeminiInWorkspaceOptions < 3) {}
+  buildCounterGeminiInWorkspaceOptions--;
+  return o;
+}
+
+void checkGeminiInWorkspaceOptions(api.GeminiInWorkspaceOptions o) {
+  buildCounterGeminiInWorkspaceOptions++;
+  if (buildCounterGeminiInWorkspaceOptions < 3) {}
+  buildCounterGeminiInWorkspaceOptions--;
 }
 
 core.int buildCounterGeminiOptions = 0;
@@ -1367,6 +1403,7 @@ api.Query buildQuery() {
     o.driveDocumentInfo = buildDriveDocumentInfo();
     o.driveOptions = buildDriveOptions();
     o.endTime = 'foo';
+    o.geminiInWorkspaceOptions = buildGeminiInWorkspaceOptions();
     o.geminiOptions = buildGeminiOptions();
     o.hangoutsChatInfo = buildHangoutsChatInfo();
     o.hangoutsChatOptions = buildHangoutsChatOptions();
@@ -1396,6 +1433,7 @@ void checkQuery(api.Query o) {
     checkDriveDocumentInfo(o.driveDocumentInfo!);
     checkDriveOptions(o.driveOptions!);
     unittest.expect(o.endTime!, unittest.equals('foo'));
+    checkGeminiInWorkspaceOptions(o.geminiInWorkspaceOptions!);
     checkGeminiOptions(o.geminiOptions!);
     checkHangoutsChatInfo(o.hangoutsChatInfo!);
     checkHangoutsChatOptions(o.hangoutsChatOptions!);
@@ -2023,6 +2061,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkGeminiExportOptions(od);
+    });
+  });
+
+  unittest.group('obj-schema-GeminiInWorkspaceExportOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGeminiInWorkspaceExportOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GeminiInWorkspaceExportOptions.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGeminiInWorkspaceExportOptions(od);
+    });
+  });
+
+  unittest.group('obj-schema-GeminiInWorkspaceOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGeminiInWorkspaceOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GeminiInWorkspaceOptions.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGeminiInWorkspaceOptions(od);
     });
   });
 

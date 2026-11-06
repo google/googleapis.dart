@@ -398,13 +398,13 @@ class ProjectsLocationsApisResource {
   /// * /locations/global`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter.
+  /// [filter] - Optional. Filter.
   ///
-  /// [orderBy] - Order by parameters.
+  /// [orderBy] - Optional. Order by parameters.
   ///
-  /// [pageSize] - Page size.
+  /// [pageSize] - Optional. Page size.
   ///
-  /// [pageToken] - Page token.
+  /// [pageToken] - Optional. Page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -450,16 +450,16 @@ class ProjectsLocationsApisResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of the API. Format:
+  /// [name] - Identifier. Resource name of the API. Format:
   /// projects/{project}/locations/global/apis/{api}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
-  /// [updateMask] - Field mask is used to specify the fields to be overwritten
-  /// in the Api resource by the update. The fields specified in the update_mask
-  /// are relative to the resource, not the full request. A field will be
-  /// overwritten if it is in the mask. If the user does not provide a mask then
-  /// all fields will be overwritten.
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Api resource by the update. The fields specified in the
+  /// update_mask are relative to the resource, not the full request. A field
+  /// will be overwritten if it is in the mask. The request fails if
+  /// `update_mask` is missing or empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -701,8 +701,8 @@ class ProjectsLocationsApisConfigsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/configs/\[^/\]+$`.
   ///
-  /// [view] - Specifies which fields of the API Config are returned in the
-  /// response. Defaults to `BASIC` view.
+  /// [view] - Optional. Specifies which fields of the API Config are returned
+  /// in the response. Defaults to `BASIC` view.
   /// Possible string values are:
   /// - "CONFIG_VIEW_UNSPECIFIED"
   /// - "BASIC" : Do not include configuration source files.
@@ -809,13 +809,13 @@ class ProjectsLocationsApisConfigsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+$`.
   ///
-  /// [filter] - Filter.
+  /// [filter] - Optional. Filter.
   ///
-  /// [orderBy] - Order by parameters.
+  /// [orderBy] - Optional. Order by parameters.
   ///
-  /// [pageSize] - Page size.
+  /// [pageSize] - Optional. Page size.
   ///
-  /// [pageToken] - Page token.
+  /// [pageToken] - Optional. Page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -861,16 +861,16 @@ class ProjectsLocationsApisConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of the API Config. Format:
+  /// [name] - Identifier. Resource name of the API Config. Format:
   /// projects/{project}/locations/global/apis/{api}/configs/{api_config}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/configs/\[^/\]+$`.
   ///
-  /// [updateMask] - Field mask is used to specify the fields to be overwritten
-  /// in the ApiConfig resource by the update. The fields specified in the
-  /// update_mask are relative to the resource, not the full request. A field
-  /// will be overwritten if it is in the mask. If the user does not provide a
-  /// mask then all fields will be overwritten.
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the ApiConfig resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. The request fails if
+  /// `update_mask` is missing or empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1209,13 +1209,13 @@ class ProjectsLocationsGatewaysResource {
   /// `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter.
+  /// [filter] - Optional. Filter.
   ///
-  /// [orderBy] - Order by parameters.
+  /// [orderBy] - Optional. Order by parameters.
   ///
-  /// [pageSize] - Page size.
+  /// [pageSize] - Optional. Page size.
   ///
-  /// [pageToken] - Page token.
+  /// [pageToken] - Optional. Page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1261,16 +1261,16 @@ class ProjectsLocationsGatewaysResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of the Gateway. Format:
+  /// [name] - Identifier. Resource name of the Gateway. Format:
   /// projects/{project}/locations/{location}/gateways/{gateway}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gateways/\[^/\]+$`.
   ///
-  /// [updateMask] - Field mask is used to specify the fields to be overwritten
-  /// in the Gateway resource by the update. The fields specified in the
-  /// update_mask are relative to the resource, not the full request. A field
-  /// will be overwritten if it is in the mask. If the user does not provide a
-  /// mask then all fields will be overwritten.
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Gateway resource by the update. The fields specified in
+  /// the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. The request fails if
+  /// `update_mask` is missing or empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1636,11 +1636,10 @@ class ApigatewayApi {
   /// Optional. Immutable.
   core.String? managedService;
 
-  /// Resource name of the API.
+  /// Identifier.
   ///
-  /// Format: projects/{project}/locations/global/apis/{api}
-  ///
-  /// Output only.
+  /// Resource name of the API. Format:
+  /// projects/{project}/locations/global/apis/{api}
   core.String? name;
 
   /// State of the API.
@@ -1756,12 +1755,10 @@ class ApigatewayApiConfig {
   /// Optional.
   core.List<ApigatewayApiConfigFile>? managedServiceConfigs;
 
-  /// Resource name of the API Config.
+  /// Identifier.
   ///
-  /// Format:
+  /// Resource name of the API Config. Format:
   /// projects/{project}/locations/global/apis/{api}/configs/{api_config}
-  ///
-  /// Output only.
   core.String? name;
 
   /// OpenAPI specification documents.
@@ -2177,8 +2174,7 @@ class ApigatewayGateway {
   /// Output only.
   core.String? createTime;
 
-  /// The default API Gateway host name of the form
-  /// `{gateway_id}-{hash}.{region_code}.gateway.dev`.
+  /// The default hostname that serves traffic for this Gateway.
   ///
   /// Output only.
   core.String? defaultHostname;
@@ -2193,17 +2189,17 @@ class ApigatewayGateway {
   /// the platform default at the time.
   ///
   /// Read this rather than `streaming_mode` to determine whether a gateway
-  /// supports response streaming.
+  /// supports streaming.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "EFFECTIVE_STREAMING_MODE_UNSPECIFIED" : The service has not resolved a
-  /// mode. Every gateway returned by `GetGateway` and `ListGateways` carries a
-  /// resolved mode, so this value should not be returned under normal
-  /// circumstances.
-  /// - "EFFECTIVE_STREAMING_MODE_DISABLED" : The gateway does not support
-  /// response streaming.
-  /// - "EFFECTIVE_STREAMING_MODE_ENABLED" : The gateway supports response
+  /// - "EFFECTIVE_STREAMING_MODE_UNSPECIFIED" : Indicates that the service has
+  /// not resolved a mode. Every gateway returned by `GetGateway` and
+  /// `ListGateways` carries a resolved mode, so this value should not be
+  /// returned under normal circumstances.
+  /// - "EFFECTIVE_STREAMING_MODE_DISABLED" : Indicates that the gateway does
+  /// not support streaming.
+  /// - "EFFECTIVE_STREAMING_MODE_ENABLED" : Indicates that the gateway supports
   /// streaming.
   core.String? effectiveStreamingMode;
 
@@ -2215,11 +2211,10 @@ class ApigatewayGateway {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// Resource name of the Gateway.
+  /// Identifier.
   ///
-  /// Format: projects/{project}/locations/{location}/gateways/{gateway}
-  ///
-  /// Output only.
+  /// Resource name of the Gateway. Format:
+  /// projects/{project}/locations/{location}/gateways/{gateway}
   core.String? name;
 
   /// The current state of the Gateway.
@@ -2234,7 +2229,7 @@ class ApigatewayGateway {
   /// - "UPDATING" : Gateway is being updated.
   core.String? state;
 
-  /// Requests response streaming for a new gateway.
+  /// Requests streaming for a new gateway.
   ///
   /// An attempt to change it on update is rejected. If unset, the service
   /// selects the mode. This field records only what was requested and is never
@@ -2243,10 +2238,22 @@ class ApigatewayGateway {
   ///
   /// Optional. Immutable.
   /// Possible string values are:
-  /// - "STREAMING_MODE_UNSPECIFIED" : The service selects the streaming mode.
-  /// - "STREAMING_MODE_ENABLED" : Streaming is enabled. The gateway supports
-  /// response streaming: server-sent events, HTTP chunked transfer, WebSockets,
-  /// and gRPC/HTTP2 bidirectional streaming.
+  /// - "STREAMING_MODE_UNSPECIFIED" : Lets the service select the streaming
+  /// mode.
+  /// - "STREAMING_MODE_ENABLED" : Enables streaming. The gateway supports
+  /// Server-Sent Events (SSE), HTTP/2 streaming, HTTP chunked transfer,
+  /// WebSockets, and gRPC bidirectional streaming. The API config's backend
+  /// `deadline` field governs how long a request (unary or streaming) may run.
+  /// Enabling streaming on a gateway does not change how the `deadline` field
+  /// behaves on an SSE or chunked-transfer path. The deadline remains a
+  /// wall-clock bound on the complete response, so a stream is cut once the
+  /// deadline elapses regardless of how much data it is sending. The default is
+  /// 15 seconds and the maximum is 3,600 seconds. On gRPC streaming and
+  /// WebSockets, `deadline` bounds the gap between messages instead: default
+  /// 300 seconds; set `deadline` to change it, up to 3,600 seconds. On
+  /// WebSockets, a `deadline` of less than 300 seconds is ignored and a
+  /// 300-second minimum applies. The maximum total request duration is always
+  /// 3,600 seconds, not configurable.
   core.String? streamingMode;
 
   /// Updated time.

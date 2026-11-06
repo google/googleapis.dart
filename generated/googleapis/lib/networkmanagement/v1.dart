@@ -825,7 +825,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// have read permissions to the network configurations of listed projects),
   /// then the reachability result returns a value of `UNKNOWN`. If the endpoint
   /// specifications in `ConnectivityTest` are incomplete, the reachability
-  /// result returns a value of AMBIGUOUS. For more information, see the
+  /// result returns a value of `AMBIGUOUS`. For more information, see the
   /// Connectivity Test documentation.
   ///
   /// [request] - The metadata request object.
@@ -1017,22 +1017,22 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// `projects/{project_id}/locations/global`
   /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
-  /// [filter] - Lists the `ConnectivityTests` that match the filter expression.
-  /// A filter expression filters the resources listed in the response. The
-  /// expression must be of the form ` ` where operators: `<`, `>`, `<=`, `>=`,
-  /// `!=`, `=`, `:` are supported (colon `:` represents a HAS operator which is
-  /// roughly synonymous with equality). can refer to a proto or JSON field, or
-  /// a synthetic field. Field names can be camelCase or snake_case. Examples: -
-  /// Filter by name: name =
+  /// [filter] - Optional. Lists the `ConnectivityTests` that match the filter
+  /// expression. A filter expression filters the resources listed in the
+  /// response. The expression must be of the form ` ` where operators: `<`,
+  /// `>`, `<=`, `>=`, `!=`, `=`, `:` are supported (colon `:` represents a HAS
+  /// operator which is roughly synonymous with equality). can refer to a proto
+  /// or JSON field, or a synthetic field. Field names can be camelCase or
+  /// snake_case. Examples: - Filter by name: name =
   /// "projects/proj-1/locations/global/connectivityTests/test-1 - Filter by
   /// labels: - Resources that have a key called `foo` labels.foo:* - Resources
   /// that have a key called `foo` whose value is `bar` labels.foo = bar
   ///
-  /// [orderBy] - Field to use to sort the list.
+  /// [orderBy] - Optional. Field to use to sort the list.
   ///
-  /// [pageSize] - Number of `ConnectivityTests` to return.
+  /// [pageSize] - Optional. Number of `ConnectivityTests` to return.
   ///
-  /// [pageToken] - Page token from an earlier query, as returned in
+  /// [pageToken] - Optional. Page token from an earlier query, as returned in
   /// `next_page_token`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1081,10 +1081,10 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// result. If the endpoint specifications in `ConnectivityTest` are invalid
   /// (for example, they contain non-existent resources in the network, or the
   /// user does not have read permissions to the network configurations of
-  /// listed projects), then the reachability result returns a value of UNKNOWN.
-  /// If the endpoint specifications in `ConnectivityTest` are incomplete, the
-  /// reachability result returns a value of `AMBIGUOUS`. See the documentation
-  /// in `ConnectivityTest` for more details.
+  /// listed projects), then the reachability result returns a value of
+  /// `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are
+  /// incomplete, the reachability result returns a value of `AMBIGUOUS`. See
+  /// the documentation in `ConnectivityTest` for more details.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1802,6 +1802,18 @@ class ProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResource {
   ///
   /// [P_password] - Optional. Password for logging into the MonitoringPoint.
   ///
+  /// [cloudDeploymentType] - Optional. The deployment type for Cloud Monitoring
+  /// Points.
+  /// Possible string values are:
+  /// - "CLOUD_DEPLOYMENT_TYPE_UNSPECIFIED" : Default value. If unspecified,
+  /// defaults to `TERRAFORM` for `GCE_VM`, `BICEP` for `AZURE_VM`, and
+  /// `CLOUD_FORMATION` for `AWS_EC2`.
+  /// - "TERRAFORM" : Deploys using Terraform.
+  /// - "CLOUD_FORMATION" : Deploys using AWS Cloud Formation. Supported only
+  /// for `AWS_EC2` deployments.
+  /// - "BICEP" : Deploys using Azure Bicep. Supported only for `AZURE_VM`
+  /// deployments.
+  ///
   /// [hostname] - Required. The hostname of the MonitoringPoint, e.g. "test-vm"
   ///
   /// [monitoringPointType] - Required. The type of the monitoring point.
@@ -1867,6 +1879,7 @@ class ProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResource {
   async.Future<HttpBody> downloadInstallScript(
     core.String parent, {
     core.String? P_password,
+    core.String? cloudDeploymentType,
     core.String? hostname,
     core.String? monitoringPointType,
     core.String? ntpServerAddress,
@@ -1885,6 +1898,9 @@ class ProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       '_password': ?P_password == null ? null : [P_password],
+      'cloudDeploymentType': ?cloudDeploymentType == null
+          ? null
+          : [cloudDeploymentType],
       'hostname': ?hostname == null ? null : [hostname],
       'monitoringPointType': ?monitoringPointType == null
           ? null
@@ -3201,33 +3217,18 @@ class CloudRunRevisionEndpoint {
   /// projects/{project}/locations/{location}/revisions/{revision}
   core.String? uri;
 
-  /// The URI of the worker pool that the revision belongs to.
-  ///
-  /// The format is:
-  /// projects/{project}/locations/{location}/workerPools/{workerPool}. Mutually
-  /// exclusive with service_uri.
-  ///
-  /// Output only.
-  core.String? workerPoolUri;
-
-  CloudRunRevisionEndpoint({this.serviceUri, this.uri, this.workerPoolUri});
+  CloudRunRevisionEndpoint({this.serviceUri, this.uri});
 
   CloudRunRevisionEndpoint.fromJson(core.Map json_)
     : this(
         serviceUri: json_['serviceUri'] as core.String?,
         uri: json_['uri'] as core.String?,
-        workerPoolUri: json_['workerPoolUri'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final serviceUri = this.serviceUri;
     final uri = this.uri;
-    final workerPoolUri = this.workerPoolUri;
-    return {
-      'serviceUri': ?serviceUri,
-      'uri': ?uri,
-      'workerPoolUri': ?workerPoolUri,
-    };
+    return {'serviceUri': ?serviceUri, 'uri': ?uri};
   }
 }
 
@@ -3237,6 +3238,13 @@ class CloudRunRevisionEndpoint {
 class CloudRunRevisionInfo {
   /// Name of a Cloud Run revision.
   core.String? displayName;
+
+  /// IP address of a Cloud Run revision.
+  ///
+  /// If the Cloud Run revision is in dual-stack subnetwork, this is the IP
+  /// address relevant to the trace. Populated for
+  /// `ARRIVE_AT_CLOUD_RUN_REVISION` steps.
+  core.String? ipAddress;
 
   /// Location in which this revision is deployed.
   core.String? location;
@@ -3256,12 +3264,13 @@ class CloudRunRevisionInfo {
   /// URI of Cloud Run worker pool this revision belongs to.
   ///
   /// Format:
-  /// `projects/{project_id}/locations/{location}/workerPools/{worker_pool_id}`.
+  /// `projects/{project_id}/locations/{location}/workerPools/{worker_pool_id}`
   /// Mutually exclusive with `service_uri`.
   core.String? workerPoolUri;
 
   CloudRunRevisionInfo({
     this.displayName,
+    this.ipAddress,
     this.location,
     this.serviceUri,
     this.uri,
@@ -3271,6 +3280,7 @@ class CloudRunRevisionInfo {
   CloudRunRevisionInfo.fromJson(core.Map json_)
     : this(
         displayName: json_['displayName'] as core.String?,
+        ipAddress: json_['ipAddress'] as core.String?,
         location: json_['location'] as core.String?,
         serviceUri: json_['serviceUri'] as core.String?,
         uri: json_['uri'] as core.String?,
@@ -3279,12 +3289,14 @@ class CloudRunRevisionInfo {
 
   core.Map<core.String, core.dynamic> toJson() {
     final displayName = this.displayName;
+    final ipAddress = this.ipAddress;
     final location = this.location;
     final serviceUri = this.serviceUri;
     final uri = this.uri;
     final workerPoolUri = this.workerPoolUri;
     return {
       'displayName': ?displayName,
+      'ipAddress': ?ipAddress,
       'location': ?location,
       'serviceUri': ?serviceUri,
       'uri': ?uri,
@@ -3725,63 +3737,6 @@ class DirectVpcEgressConnectionInfo {
   }
 }
 
-/// For display only.
-///
-/// Metadata associated with a serverless direct VPC ingress connection.
-class DirectVpcIngressConnectionInfo {
-  /// URI of the VPC network for direct ingress.
-  ///
-  /// Format: `projects/{project_id}/global/networks/{network_id}`
-  core.String? networkUri;
-
-  /// Region in which the Direct VPC ingress is deployed.
-  core.String? region;
-
-  /// Selected destination IP address, from the selected IP range.
-  core.String? selectedIpAddress;
-
-  /// Selected IP range.
-  core.String? selectedIpRange;
-
-  /// URI of the subnetwork for direct ingress.
-  ///
-  /// Format:
-  /// `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
-  core.String? subnetworkUri;
-
-  DirectVpcIngressConnectionInfo({
-    this.networkUri,
-    this.region,
-    this.selectedIpAddress,
-    this.selectedIpRange,
-    this.subnetworkUri,
-  });
-
-  DirectVpcIngressConnectionInfo.fromJson(core.Map json_)
-    : this(
-        networkUri: json_['networkUri'] as core.String?,
-        region: json_['region'] as core.String?,
-        selectedIpAddress: json_['selectedIpAddress'] as core.String?,
-        selectedIpRange: json_['selectedIpRange'] as core.String?,
-        subnetworkUri: json_['subnetworkUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final networkUri = this.networkUri;
-    final region = this.region;
-    final selectedIpAddress = this.selectedIpAddress;
-    final selectedIpRange = this.selectedIpRange;
-    final subnetworkUri = this.subnetworkUri;
-    return {
-      'networkUri': ?networkUri,
-      'region': ?region,
-      'selectedIpAddress': ?selectedIpAddress,
-      'selectedIpRange': ?selectedIpRange,
-      'subnetworkUri': ?subnetworkUri,
-    };
-  }
-}
-
 /// Details of the final state "drop" and associated resource.
 class DropInfo {
   /// Cause that the packet is dropped.
@@ -4166,6 +4121,16 @@ class EffectiveVpcFlowLogsConfig {
   /// - "INTERVAL_15_MIN" : Aggregate logs in 15m intervals.
   core.String? aggregationInterval;
 
+  /// Configures whether connection logging is enabled for VPC Flow Logs.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONNECTION_LOGGING_UNSPECIFIED" : If not specified, will default to
+  /// CONNECTION_LOGGING_DISABLED.
+  /// - "CONNECTION_LOGGING_ENABLED" : Include connection logs.
+  /// - "CONNECTION_LOGGING_DISABLED" : Do not include connection logs.
+  core.String? connectionLogging;
+
   /// Determines whether to include cross project annotations in the logs.
   ///
   /// This field is available only for organization configurations. If not
@@ -4267,6 +4232,7 @@ class EffectiveVpcFlowLogsConfig {
 
   EffectiveVpcFlowLogsConfig({
     this.aggregationInterval,
+    this.connectionLogging,
     this.crossProjectMetadata,
     this.filterExpr,
     this.flowSampling,
@@ -4284,6 +4250,7 @@ class EffectiveVpcFlowLogsConfig {
   EffectiveVpcFlowLogsConfig.fromJson(core.Map json_)
     : this(
         aggregationInterval: json_['aggregationInterval'] as core.String?,
+        connectionLogging: json_['connectionLogging'] as core.String?,
         crossProjectMetadata: json_['crossProjectMetadata'] as core.String?,
         filterExpr: json_['filterExpr'] as core.String?,
         flowSampling: (json_['flowSampling'] as core.num?)?.toDouble(),
@@ -4302,6 +4269,7 @@ class EffectiveVpcFlowLogsConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final aggregationInterval = this.aggregationInterval;
+    final connectionLogging = this.connectionLogging;
     final crossProjectMetadata = this.crossProjectMetadata;
     final filterExpr = this.filterExpr;
     final flowSampling = this.flowSampling;
@@ -4316,6 +4284,7 @@ class EffectiveVpcFlowLogsConfig {
     final vpnTunnel = this.vpnTunnel;
     return {
       'aggregationInterval': ?aggregationInterval,
+      'connectionLogging': ?connectionLogging,
       'crossProjectMetadata': ?crossProjectMetadata,
       'filterExpr': ?filterExpr,
       'flowSampling': ?flowSampling,
@@ -4368,6 +4337,12 @@ class Endpoint {
 
   /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
   core.String? cloudSqlInstance;
+
+  /// A
+  /// [Datastream Private Connection](https://docs.cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.privateConnections)
+  /// name format:
+  /// projects/{project}/locations/{location}/privateConnections/{privateConnection}.
+  core.String? datastreamPrivateConnection;
 
   /// A
   /// [DMS Private Connection](https://docs.cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.privateConnections)
@@ -4507,6 +4482,7 @@ class Endpoint {
     this.cloudRunJob,
     this.cloudRunRevision,
     this.cloudSqlInstance,
+    this.datastreamPrivateConnection,
     this.dmsPrivateConnection,
     this.forwardingRule,
     this.forwardingRuleTarget,
@@ -4546,6 +4522,8 @@ class Endpoint {
               )
             : null,
         cloudSqlInstance: json_['cloudSqlInstance'] as core.String?,
+        datastreamPrivateConnection:
+            json_['datastreamPrivateConnection'] as core.String?,
         dmsPrivateConnection: json_['dmsPrivateConnection'] as core.String?,
         forwardingRule: json_['forwardingRule'] as core.String?,
         forwardingRuleTarget: json_['forwardingRuleTarget'] as core.String?,
@@ -4570,6 +4548,7 @@ class Endpoint {
     final cloudRunJob = this.cloudRunJob;
     final cloudRunRevision = this.cloudRunRevision;
     final cloudSqlInstance = this.cloudSqlInstance;
+    final datastreamPrivateConnection = this.datastreamPrivateConnection;
     final dmsPrivateConnection = this.dmsPrivateConnection;
     final forwardingRule = this.forwardingRule;
     final forwardingRuleTarget = this.forwardingRuleTarget;
@@ -4592,6 +4571,7 @@ class Endpoint {
       'cloudRunJob': ?cloudRunJob,
       'cloudRunRevision': ?cloudRunRevision,
       'cloudSqlInstance': ?cloudSqlInstance,
+      'datastreamPrivateConnection': ?datastreamPrivateConnection,
       'dmsPrivateConnection': ?dmsPrivateConnection,
       'forwardingRule': ?forwardingRule,
       'forwardingRuleTarget': ?forwardingRuleTarget,
@@ -5272,7 +5252,7 @@ class GkeNetworkPolicySkippedInfo {
   /// is stateful in both GKE Dataplane V2 (eBPF) and legacy (iptables)
   /// implementations.
   /// - "NETWORK_POLICY_ANALYSIS_UNSUPPORTED" : Network Policy evaluation is
-  /// currently not supported for clusters with FQDN Network Policies enabled.
+  /// currently not supported for Pods selected by an FQDN Network Policy.
   core.String? reason;
 
   GkeNetworkPolicySkippedInfo({this.reason});
@@ -6696,6 +6676,8 @@ class NatInfo {
   core.String? routerUri;
 
   /// The number of the NAT rule that was matched.
+  ///
+  /// Only valid when `type` is CLOUD_NAT.
   core.int? ruleNumber;
 
   /// Type of NAT.
@@ -8550,10 +8532,6 @@ class Step {
   /// Display information of a serverless direct VPC egress connection.
   DirectVpcEgressConnectionInfo? directVpcEgressConnection;
 
-  /// Display information of a serverless direct VPC ingress connection for
-  /// Cloud Run.
-  DirectVpcIngressConnectionInfo? directVpcIngressConnection;
-
   /// Display information of a DMS Private Connection.
   PrivateConnectionInfo? dmsPrivateConnection;
 
@@ -8732,8 +8710,6 @@ class Step {
   /// - "DIRECT_VPC_EGRESS_CONNECTION" : Forwarding state: for packets
   /// originating from a serverless endpoint forwarded through Direct VPC
   /// egress.
-  /// - "ARRIVE_AT_DIRECT_VPC_INGRESS_CONNECTION" : Forwarding state: arriving
-  /// at a direct VPC ingress connection.
   /// - "SERVERLESS_EXTERNAL_CONNECTION" : Forwarding state: for packets
   /// originating from a serverless endpoint forwarded through public (external)
   /// connectivity.
@@ -8794,7 +8770,6 @@ class Step {
     this.deliver,
     this.description,
     this.directVpcEgressConnection,
-    this.directVpcIngressConnection,
     this.dmsPrivateConnection,
     this.drop,
     this.endpoint,
@@ -8883,13 +8858,6 @@ class Step {
             json_.containsKey('directVpcEgressConnection')
             ? DirectVpcEgressConnectionInfo.fromJson(
                 json_['directVpcEgressConnection']
-                    as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        directVpcIngressConnection:
-            json_.containsKey('directVpcIngressConnection')
-            ? DirectVpcIngressConnectionInfo.fromJson(
-                json_['directVpcIngressConnection']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -9075,7 +9043,6 @@ class Step {
     final deliver = this.deliver;
     final description = this.description;
     final directVpcEgressConnection = this.directVpcEgressConnection;
-    final directVpcIngressConnection = this.directVpcIngressConnection;
     final dmsPrivateConnection = this.dmsPrivateConnection;
     final drop = this.drop;
     final endpoint = this.endpoint;
@@ -9121,7 +9088,6 @@ class Step {
       'deliver': ?deliver,
       'description': ?description,
       'directVpcEgressConnection': ?directVpcEgressConnection,
-      'directVpcIngressConnection': ?directVpcIngressConnection,
       'dmsPrivateConnection': ?dmsPrivateConnection,
       'drop': ?drop,
       'endpoint': ?endpoint,
@@ -9318,6 +9284,16 @@ class VpcFlowLogsConfig {
   /// - "INTERVAL_15_MIN" : Aggregate logs in 15m intervals.
   core.String? aggregationInterval;
 
+  /// Configures whether connection logging is enabled for VPC Flow Logs.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONNECTION_LOGGING_UNSPECIFIED" : If not specified, will default to
+  /// CONNECTION_LOGGING_DISABLED.
+  /// - "CONNECTION_LOGGING_ENABLED" : Include connection logs.
+  /// - "CONNECTION_LOGGING_DISABLED" : Do not include connection logs.
+  core.String? connectionLogging;
+
   /// The time the config was created.
   ///
   /// Output only.
@@ -9449,6 +9425,7 @@ class VpcFlowLogsConfig {
 
   VpcFlowLogsConfig({
     this.aggregationInterval,
+    this.connectionLogging,
     this.createTime,
     this.crossProjectMetadata,
     this.description,
@@ -9470,6 +9447,7 @@ class VpcFlowLogsConfig {
   VpcFlowLogsConfig.fromJson(core.Map json_)
     : this(
         aggregationInterval: json_['aggregationInterval'] as core.String?,
+        connectionLogging: json_['connectionLogging'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         crossProjectMetadata: json_['crossProjectMetadata'] as core.String?,
         description: json_['description'] as core.String?,
@@ -9494,6 +9472,7 @@ class VpcFlowLogsConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final aggregationInterval = this.aggregationInterval;
+    final connectionLogging = this.connectionLogging;
     final createTime = this.createTime;
     final crossProjectMetadata = this.crossProjectMetadata;
     final description = this.description;
@@ -9512,6 +9491,7 @@ class VpcFlowLogsConfig {
     final vpnTunnel = this.vpnTunnel;
     return {
       'aggregationInterval': ?aggregationInterval,
+      'connectionLogging': ?connectionLogging,
       'createTime': ?createTime,
       'crossProjectMetadata': ?crossProjectMetadata,
       'description': ?description,

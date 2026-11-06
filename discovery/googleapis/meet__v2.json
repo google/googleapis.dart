@@ -31,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260910",
+    "revision": "20261029",
     "rootUrl": "https://meet.googleapis.com/",
     "servicePath": "",
     "title": "Google Meet API",
@@ -118,7 +118,7 @@
         "conferenceRecords": {
             "methods": {
                 "get": {
-                    "description": "Gets a conference record by conference ID.",
+                    "description": "Gets a conference record by conference ID. For more information, see [Work with conferences](https://developers.google.com/workspace/meet/api/guides/conferences).",
                     "flatPath": "v2/conferenceRecords/{conferenceRecordsId}",
                     "httpMethod": "GET",
                     "id": "meet.conferenceRecords.get",
@@ -144,7 +144,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists the conference records. By default, ordered by start time and in descending order.",
+                    "description": "Lists the conference records. By default, ordered by start time and in descending order. For more information, see [Work with conferences](https://developers.google.com/workspace/meet/api/guides/conferences).",
                     "flatPath": "v2/conferenceRecords",
                     "httpMethod": "GET",
                     "id": "meet.conferenceRecords.list",
@@ -181,7 +181,7 @@
                 "participants": {
                     "methods": {
                         "get": {
-                            "description": "Gets a participant by participant ID.",
+                            "description": "Gets a participant by participant ID. For more information, see [Work with participants](https://developers.google.com/workspace/meet/api/guides/participants).",
                             "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/participants/{participantsId}",
                             "httpMethod": "GET",
                             "id": "meet.conferenceRecords.participants.get",
@@ -207,7 +207,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists the participants in a conference record. By default, ordered by join time and in descending order. This API supports `fields` as standard parameters like every other API. However, when the `fields` request parameter is omitted, this API defaults to `'participants/*, next_page_token'`.",
+                            "description": "Lists the participants in a conference record. By default, ordered by join time and in descending order. This API supports `fields` as standard parameters like every other API. However, when the `fields` request parameter is omitted, this API defaults to `'participants/*, next_page_token'`. For more information, see [Work with participants](https://developers.google.com/workspace/meet/api/guides/participants).",
                             "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/participants",
                             "httpMethod": "GET",
                             "id": "meet.conferenceRecords.participants.list",
@@ -253,7 +253,7 @@
                         "participantSessions": {
                             "methods": {
                                 "get": {
-                                    "description": "Gets a participant session by participant session ID.",
+                                    "description": "Gets a participant session by participant session ID. For more information, see [Work with participants](https://developers.google.com/workspace/meet/api/guides/participants).",
                                     "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/participants/{participantsId}/participantSessions/{participantSessionsId}",
                                     "httpMethod": "GET",
                                     "id": "meet.conferenceRecords.participants.participantSessions.get",
@@ -279,7 +279,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "Lists the participant sessions of a participant in a conference record. By default, ordered by join time and in descending order. This API supports `fields` as standard parameters like every other API. However, when the `fields` request parameter is omitted this API defaults to `'participantsessions/*, next_page_token'`.",
+                                    "description": "Lists the participant sessions of a participant in a conference record. By default, ordered by join time and in descending order. This API supports `fields` as standard parameters like every other API. However, when the `fields` request parameter is omitted this API defaults to `'participantsessions/*, next_page_token'`. For more information, see [Work with participants](https://developers.google.com/workspace/meet/api/guides/participants).",
                                     "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/participants/{participantsId}/participantSessions",
                                     "httpMethod": "GET",
                                     "id": "meet.conferenceRecords.participants.participantSessions.list",
@@ -327,7 +327,7 @@
                 "recordings": {
                     "methods": {
                         "get": {
-                            "description": "Gets a recording by recording ID.",
+                            "description": "Gets a recording by recording ID. For more information, see [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).",
                             "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/recordings/{recordingsId}",
                             "httpMethod": "GET",
                             "id": "meet.conferenceRecords.recordings.get",
@@ -353,7 +353,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists the recording resources from the conference record. By default, ordered by start time and in ascending order.",
+                            "description": "Lists the recording resources from the conference record. By default, ordered by start time and in ascending order. For more information, see [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).",
                             "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/recordings",
                             "httpMethod": "GET",
                             "id": "meet.conferenceRecords.recordings.list",
@@ -394,7 +394,7 @@
                 "smartNotes": {
                     "methods": {
                         "get": {
-                            "description": "Gets smart notes by smart note ID.",
+                            "description": "Gets smart notes by smart note ID. For more information, see [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).",
                             "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/smartNotes/{smartNotesId}",
                             "httpMethod": "GET",
                             "id": "meet.conferenceRecords.smartNotes.get",
@@ -420,7 +420,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists the set of smart notes from the conference record. By default, ordered by start time and in ascending order.",
+                            "description": "Lists the set of smart notes from the conference record. By default, ordered by start time and in ascending order. For more information, see [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).",
                             "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/smartNotes",
                             "httpMethod": "GET",
                             "id": "meet.conferenceRecords.smartNotes.list",
@@ -461,7 +461,7 @@
                 "transcripts": {
                     "methods": {
                         "get": {
-                            "description": "Gets a transcript by transcript ID.",
+                            "description": "Gets a transcript by transcript ID. For more information, see [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).",
                             "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/transcripts/{transcriptsId}",
                             "httpMethod": "GET",
                             "id": "meet.conferenceRecords.transcripts.get",
@@ -487,7 +487,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists the set of transcripts from the conference record. By default, ordered by start time and in ascending order.",
+                            "description": "Lists the set of transcripts from the conference record. By default, ordered by start time and in ascending order. For more information, see [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).",
                             "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/transcripts",
                             "httpMethod": "GET",
                             "id": "meet.conferenceRecords.transcripts.list",
@@ -528,7 +528,7 @@
                         "entries": {
                             "methods": {
                                 "get": {
-                                    "description": "Gets a `TranscriptEntry` resource by entry ID. Note: The transcript entries returned by the Google Meet API might not match the transcription found in the Google Docs transcript file. This can occur when 1) we have interleaved speakers within milliseconds, or 2) the Google Docs transcript file is modified after generation.",
+                                    "description": "Gets a `TranscriptEntry` resource by entry ID. For more information, see [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts). Note: The transcript entries returned by the Google Meet API might not match the transcription found in the Google Docs transcript file. This can occur when 1) we have interleaved speakers within milliseconds, or 2) the Google Docs transcript file is modified after generation.",
                                     "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/transcripts/{transcriptsId}/entries/{entriesId}",
                                     "httpMethod": "GET",
                                     "id": "meet.conferenceRecords.transcripts.entries.get",
@@ -554,7 +554,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "Lists the structured transcript entries per transcript. By default, ordered by start time and in ascending order. Note: The transcript entries returned by the Google Meet API might not match the transcription found in the Google Docs transcript file. This can occur when 1) we have interleaved speakers within milliseconds, or 2) the Google Docs transcript file is modified after generation.",
+                                    "description": "Lists the structured transcript entries per transcript. By default, ordered by start time and in ascending order. For more information, see [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts). Note: The transcript entries returned by the Google Meet API might not match the transcription found in the Google Docs transcript file. This can occur when 1) we have interleaved speakers within milliseconds, or 2) the Google Docs transcript file is modified after generation.",
                                     "flatPath": "v2/conferenceRecords/{conferenceRecordsId}/transcripts/{transcriptsId}/entries",
                                     "httpMethod": "GET",
                                     "id": "meet.conferenceRecords.transcripts.entries.list",
@@ -599,7 +599,7 @@
         "spaces": {
             "methods": {
                 "create": {
-                    "description": "Creates a space.",
+                    "description": "Creates a space. For more information, see [Manage meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).",
                     "flatPath": "v2/spaces",
                     "httpMethod": "POST",
                     "id": "meet.spaces.create",
@@ -617,7 +617,7 @@
                     ]
                 },
                 "endActiveConference": {
-                    "description": "Ends an active conference (if there's one). For an example, see [End active conference](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#end-active-conference).",
+                    "description": "Ends an active conference (if there's one). For more information, see [Manage meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).",
                     "flatPath": "v2/spaces/{spacesId}:endActiveConference",
                     "httpMethod": "POST",
                     "id": "meet.spaces.endActiveConference",
@@ -645,7 +645,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Gets details about a meeting space. For an example, see [Get a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-meeting-space).",
+                    "description": "Gets details about a meeting space. For more information, see [Manage meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces). For an example, see [Get a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-meeting-space).",
                     "flatPath": "v2/spaces/{spacesId}",
                     "httpMethod": "GET",
                     "id": "meet.spaces.get",
@@ -672,7 +672,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Updates details about a meeting space. For an example, see [Update a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#update-meeting-space).",
+                    "description": "Updates details about a meeting space. For more information, see [Manage meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).",
                     "flatPath": "v2/spaces/{spacesId}",
                     "httpMethod": "PATCH",
                     "id": "meet.spaces.patch",
@@ -711,7 +711,7 @@
                 "members": {
                     "methods": {
                         "batchUpdate": {
-                            "description": "Updates members of one space within a batch.",
+                            "description": "Updates members of one space within a batch. For more information, see [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).",
                             "flatPath": "v2/spaces/{spacesId}/members:batchUpdate",
                             "httpMethod": "POST",
                             "id": "meet.spaces.members.batchUpdate",
@@ -739,7 +739,7 @@
                             ]
                         },
                         "create": {
-                            "description": "Creates a member. This API supports the `fields` parameter in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields` parameter is omitted, this API response will default to \"name,email,role,user\".",
+                            "description": "Creates a member. For more information, see [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members). This API supports the `fields` parameter in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields` parameter is omitted, this API response will default to \"name,email,role,user\".",
                             "flatPath": "v2/spaces/{spacesId}/members",
                             "httpMethod": "POST",
                             "id": "meet.spaces.members.create",
@@ -767,7 +767,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes the member who was previously assigned roles in the space.",
+                            "description": "Deletes the member who was previously assigned roles in the space. For more information, see [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).",
                             "flatPath": "v2/spaces/{spacesId}/members/{membersId}",
                             "httpMethod": "DELETE",
                             "id": "meet.spaces.members.delete",
@@ -792,7 +792,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Gets a member. This API supports the `fields` parameter in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields` parameter is omitted, this API response will default to \"name,email,role,user\".",
+                            "description": "Gets a member. For more information, see [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members). This API supports the `fields` parameter in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields` parameter is omitted, this API response will default to \"name,email,role,user\".",
                             "flatPath": "v2/spaces/{spacesId}/members/{membersId}",
                             "httpMethod": "GET",
                             "id": "meet.spaces.members.get",
@@ -818,7 +818,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists members. This API supports the `fields` parameter in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields` parameter is omitted this API response will default to \"name,email,role,user\".",
+                            "description": "Lists members. For more information, see [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members). This API supports the `fields` parameter in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields` parameter is omitted this API response will default to \"name,email,role,user\".",
                             "flatPath": "v2/spaces/{spacesId}/members",
                             "httpMethod": "GET",
                             "id": "meet.spaces.members.list",
@@ -855,7 +855,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Updates a member.",
+                            "description": "Updates a member. For more information, see [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).",
                             "flatPath": "v2/spaces/{spacesId}/members/{membersId}",
                             "httpMethod": "PATCH",
                             "id": "meet.spaces.members.patch",
@@ -864,7 +864,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Identifier. Resource name of the member. Format: spaces/{space}/members/{member}",
+                                    "description": "Identifier. Resource name of the member. Format: `spaces/{space}/members/{member}`",
                                     "location": "path",
                                     "pattern": "^spaces/[^/]+/members/[^/]+$",
                                     "required": true,
@@ -1223,7 +1223,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Identifier. Resource name of the member. Format: spaces/{space}/members/{member}",
+                    "description": "Identifier. Resource name of the member. Format: `spaces/{space}/members/{member}`",
                     "type": "string"
                 },
                 "role": {
@@ -1729,7 +1729,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. Resource name of the entry. Format: \"conferenceRecords/{conference_record}/transcripts/{transcript}/entries/{entry}\"",
+                    "description": "Output only. Resource name of the entry. Format: `conferenceRecords/{conference_record}/transcripts/{transcript}/entries/{entry}`",
                     "readOnly": true,
                     "type": "string"
                 },

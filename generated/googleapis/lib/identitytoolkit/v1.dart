@@ -3058,6 +3058,12 @@ class GoogleCloudIdentitytoolkitV1GetAccountInfoRequest {
   /// [RFC 822](https://tools.ietf.org/html/rfc822) addr-spec production. Should
   /// only be specified by authenticated requests from a developer.
   core.List<core.String>? email;
+
+  /// The federated user identifier of one or more accounts to fetch.
+  ///
+  /// Should only be specified by authenticated requests bearing a Google OAuth
+  /// 2.0 credential with proper
+  /// [permissions](https://cloud.google.com/identity-platform/docs/access-control).
   core.List<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>?
   federatedUserId;
 
@@ -4179,6 +4185,9 @@ class GoogleCloudIdentitytoolkitV1ProviderUserInfo {
 
 /// Request message for QueryUserInfo.
 class GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
+  /// Query conditions used to filter results.
+  ///
+  /// If more than one is passed, only the first SqlExpression is evaluated.
   core.List<GoogleCloudIdentitytoolkitV1SqlExpression>? expression;
 
   /// The maximum number of accounts to return with an upper limit of __500__.
@@ -4191,7 +4200,10 @@ class GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
   /// Only valid when `return_user_info` is set to `true`.
   core.String? offset;
 
+  /// The order for sorting query result.
   ///
+  /// Defaults to __ascending__ order. Only valid when `return_user_info` is set
+  /// to `true`.
   /// Possible string values are:
   /// - "ORDER_UNSPECIFIED" : Order is not specified.
   /// - "ASC" : Sort on ascending order.
@@ -4204,7 +4216,11 @@ class GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
   /// returned. Defaults to `true`.
   core.bool? returnUserInfo;
 
+  /// The field to use for sorting user accounts.
   ///
+  /// Defaults to `USER_ID`. Note: when `phone_number` is specified in
+  /// `expression`, the result ignores the sorting. Only valid when
+  /// `return_user_info` is set to `true`.
   /// Possible string values are:
   /// - "SORT_BY_FIELD_UNSPECIFIED" : Sort field is not specified.
   /// - "USER_ID" : Sort result by userId.
@@ -4636,6 +4652,8 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
     'Not supported. Member documentation may have more information.',
   )
   core.String? delegatedProjectNumber;
+
+  /// The account's attributes to be deleted.
   core.List<core.String>? deleteAttribute;
 
   /// The Identity Providers to unlink from the user's account.
@@ -6831,7 +6849,7 @@ class GoogleCloudIdentitytoolkitV1UploadAccountRequest {
   /// speeds and memory technologies advance.
   core.int? parallelization;
 
-  ///
+  /// Password and salt order when verify password.
   /// Possible string values are:
   /// - "UNSPECIFIED_ORDER" : The order is not specified.
   /// - "SALT_AND_PASSWORD" : The order is salt first, and then password.

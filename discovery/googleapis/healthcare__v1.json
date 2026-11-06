@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260908",
+    "revision": "20261013",
     "rootUrl": "https://healthcare.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Healthcare API",
@@ -5636,7 +5636,7 @@
                     "type": "string"
                 },
                 "validateOnly": {
-                    "description": "Optional. If set to true, the request will only perform a dry run. By default (once the behavior change is fully rolled out), this will default to true. During the transition period, the default depends on the Mendel flag status for the project.",
+                    "description": "Optional. If set to `true`, the request will only perform a dry run. By default this will default to `false`.",
                     "type": "boolean"
                 },
                 "versionConfig": {
@@ -6042,6 +6042,25 @@
                 "kmsWrapped": {
                     "$ref": "KmsWrappedCryptoKey",
                     "description": "KMS wrapped key. Must not be set if `crypto_key` is set."
+                }
+            },
+            "type": "object"
+        },
+        "CustomRegex": {
+            "description": "Defines a custom regular expression pattern to detect and redact in the image.",
+            "id": "CustomRegex",
+            "properties": {
+                "groupIndexes": {
+                    "description": "Optional. The capturing group indexes to redact.",
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "pattern": {
+                    "description": "Optional. The regular expression pattern to match.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -7429,6 +7448,13 @@
             "description": "Specifies how to handle de-identification of image pixels.",
             "id": "ImageConfig",
             "properties": {
+                "customRegexes": {
+                    "description": "Optional. Custom regex patterns to redact from the image.",
+                    "items": {
+                        "$ref": "CustomRegex"
+                    },
+                    "type": "array"
+                },
                 "textRedactionMode": {
                     "description": "Optional. Determines how to redact text from image.",
                     "enum": [

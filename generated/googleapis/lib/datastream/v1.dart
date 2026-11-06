@@ -7647,7 +7647,28 @@ class SpecificStartPosition {
 }
 
 /// Configuration to use Change Tables CDC read method.
-typedef SqlServerChangeTables = $Empty;
+class SqlServerChangeTables {
+  /// DDL configuration for change tables.
+  ///
+  /// Optional.
+  SqlServerDdlConfig? ddlConfig;
+
+  SqlServerChangeTables({this.ddlConfig});
+
+  SqlServerChangeTables.fromJson(core.Map json_)
+    : this(
+        ddlConfig: json_.containsKey('ddlConfig')
+            ? SqlServerDdlConfig.fromJson(
+                json_['ddlConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ddlConfig = this.ddlConfig;
+    return {'ddlConfig': ?ddlConfig};
+  }
+}
 
 /// SQLServer Column.
 class SqlServerColumn {
@@ -7716,6 +7737,50 @@ class SqlServerColumn {
       'precision': ?precision,
       'primaryKey': ?primaryKey,
       'scale': ?scale,
+    };
+  }
+}
+
+/// DDL configuration for change tables.
+class SqlServerDdlConfig {
+  /// If set to true, Datastream will automatically create a new capture
+  /// instance when DDL is detected on a table.The customer will be responsible
+  /// for deleting it so that the next set of DDLs can be handled.
+  ///
+  /// The default is false and it means that DDL's will not be handled .
+  ///
+  /// Optional.
+  core.bool? autoCreateNewCaptureInstanceOnDdl;
+
+  /// If set to true, Datastream will automatically delete the old capture
+  /// instance after creating a new one to support a DDL change.
+  ///
+  /// The default is false and means that the customer has to delete the old
+  /// capture instance manually.
+  ///
+  /// Optional.
+  core.bool? autoDeleteOldCaptureInstance;
+
+  SqlServerDdlConfig({
+    this.autoCreateNewCaptureInstanceOnDdl,
+    this.autoDeleteOldCaptureInstance,
+  });
+
+  SqlServerDdlConfig.fromJson(core.Map json_)
+    : this(
+        autoCreateNewCaptureInstanceOnDdl:
+            json_['autoCreateNewCaptureInstanceOnDdl'] as core.bool?,
+        autoDeleteOldCaptureInstance:
+            json_['autoDeleteOldCaptureInstance'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final autoCreateNewCaptureInstanceOnDdl =
+        this.autoCreateNewCaptureInstanceOnDdl;
+    final autoDeleteOldCaptureInstance = this.autoDeleteOldCaptureInstance;
+    return {
+      'autoCreateNewCaptureInstanceOnDdl': ?autoCreateNewCaptureInstanceOnDdl,
+      'autoDeleteOldCaptureInstance': ?autoDeleteOldCaptureInstance,
     };
   }
 }

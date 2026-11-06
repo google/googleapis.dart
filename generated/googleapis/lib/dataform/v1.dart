@@ -1828,6 +1828,53 @@ class ProjectsLocationsRepositoriesCompilationResultsResource {
     );
   }
 
+  /// Creates a new CompilationResult in a given project and location
+  /// asynchronously.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The repository in which to create the compilation
+  /// result. Must be in the format `projects / * /locations / * /repositories /
+  /// * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> createLongRunning(
+    CompilationResult request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/compilationResults:createLongRunning';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Fetches a single CompilationResult.
   ///
   /// Request parameters:
@@ -5903,7 +5950,20 @@ class DirectoryEntry {
 }
 
 /// Client-facing representation of a directory entry in search results.
-typedef DirectorySearchResult = $SearchResult;
+class DirectorySearchResult {
+  /// File system path relative to the workspace root.
+  core.String? path;
+
+  DirectorySearchResult({this.path});
+
+  DirectorySearchResult.fromJson(core.Map json_)
+    : this(path: json_['path'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final path = this.path;
+    return {'path': ?path};
+  }
+}
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -6165,7 +6225,20 @@ class FileOperation {
 }
 
 /// Client-facing representation of a file entry in search results.
-typedef FileSearchResult = $SearchResult;
+class FileSearchResult {
+  /// File system path relative to the file tree root.
+  core.String? path;
+
+  FileSearchResult({this.path});
+
+  FileSearchResult.fromJson(core.Map json_)
+    : this(path: json_['path'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final path = this.path;
+    return {'path': ?path};
+  }
+}
 
 /// Represents metadata for a single entry in a filesystem.
 class FilesystemEntryMetadata {
@@ -6621,9 +6694,14 @@ typedef Interval = $Interval;
 /// If both `included_targets` and `included_tags` are unset, all actions will
 /// be included.
 class InvocationConfig {
+  /// Maximum number of actions that can be executed concurrently.
+  ///
+  /// Optional.
+  core.int? concurrentActionsLimit;
+
   /// Configuration for end user authentication.
   ///
-  /// Note that this should not be set when `service_account` is used.
+  /// Do not set if `service_account` is used.
   ///
   /// Optional.
   EndUserAuthenticationConfig? endUserAuthConfig;
@@ -6688,6 +6766,7 @@ class InvocationConfig {
   core.bool? transitiveDependentsIncluded;
 
   InvocationConfig({
+    this.concurrentActionsLimit,
     this.endUserAuthConfig,
     this.executionMode,
     this.fullyRefreshIncrementalTablesEnabled,
@@ -6701,6 +6780,7 @@ class InvocationConfig {
 
   InvocationConfig.fromJson(core.Map json_)
     : this(
+        concurrentActionsLimit: json_['concurrentActionsLimit'] as core.int?,
         endUserAuthConfig: json_.containsKey('endUserAuthConfig')
             ? EndUserAuthenticationConfig.fromJson(
                 json_['endUserAuthConfig']
@@ -6728,6 +6808,7 @@ class InvocationConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final concurrentActionsLimit = this.concurrentActionsLimit;
     final endUserAuthConfig = this.endUserAuthConfig;
     final executionMode = this.executionMode;
     final fullyRefreshIncrementalTablesEnabled =
@@ -6739,6 +6820,7 @@ class InvocationConfig {
     final transitiveDependenciesIncluded = this.transitiveDependenciesIncluded;
     final transitiveDependentsIncluded = this.transitiveDependentsIncluded;
     return {
+      'concurrentActionsLimit': ?concurrentActionsLimit,
       'endUserAuthConfig': ?endUserAuthConfig,
       'executionMode': ?executionMode,
       'fullyRefreshIncrementalTablesEnabled':
@@ -8095,7 +8177,7 @@ class ReadFileResponse {
 }
 
 /// `ReadRepositoryFile` response message.
-typedef ReadRepositoryFileResponse = $Shared15;
+typedef ReadRepositoryFileResponse = $Shared19;
 
 /// Represents a database relation.
 class Relation {
@@ -9648,6 +9730,8 @@ class WorkflowInvocationAction {
   /// - "SUCCEEDED" : The action succeeded. A terminal state.
   /// - "CANCELLED" : The action was cancelled. A terminal state.
   /// - "FAILED" : The action failed. A terminal state.
+  /// - "QUEUED" : Execution of the action was queued waiting for an available
+  /// concurrency slot.
   core.String? state;
 
   /// This action's identifier.
@@ -9874,7 +9958,7 @@ class WorkspaceCompilationOverrides {
 }
 
 /// Represents the write file operation (for files added or modified).
-typedef WriteFile = $Shared15;
+typedef WriteFile = $Shared19;
 
 /// `WriteFile` request message.
 class WriteFileRequest {

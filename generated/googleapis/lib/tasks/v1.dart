@@ -77,10 +77,12 @@ class TasklistsResource {
   ///
   /// If the list contains assigned tasks, both the assigned tasks and the
   /// original tasks in the assignment surface (Docs, Chat Spaces) are deleted.
+  /// The user's default task list cannot be deleted.
   ///
   /// Request parameters:
   ///
-  /// [tasklist] - Task list identifier.
+  /// [tasklist] - Task list identifier. The default task list cannot be
+  /// deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -113,7 +115,8 @@ class TasklistsResource {
   ///
   /// Request parameters:
   ///
-  /// [tasklist] - Task list identifier.
+  /// [tasklist] - Task list identifier. Use "@default" to get the authenticated
+  /// user's default task list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -189,10 +192,10 @@ class TasklistsResource {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - Maximum number of task lists returned on one page.
-  /// Optional. The default is 1000 (max allowed: 1000).
+  /// [maxResults] - Optional. Maximum number of task lists returned on one
+  /// page. The default is 1000 (max allowed: 1000).
   ///
-  /// [pageToken] - Token specifying the result page to return. Optional.
+  /// [pageToken] - Optional. Token specifying the result page to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -443,14 +446,14 @@ class TasksResource {
   ///
   /// [tasklist] - Task list identifier.
   ///
-  /// [parent] - Parent task identifier. If the task is created at the top
-  /// level, this parameter is omitted. An assigned task cannot be a parent
+  /// [parent] - Optional. Parent task identifier. If the task is created at the
+  /// top level, this parameter is omitted. An assigned task cannot be a parent
   /// task, nor can it have a parent. Setting the parent to an assigned task
-  /// results in failure of the request. Optional.
+  /// results in failure of the request.
   ///
-  /// [previous] - Previous sibling task identifier. If the task is created at
-  /// the first position among its siblings, this parameter is omitted.
-  /// Optional.
+  /// [previous] - Optional. Previous sibling task identifier. If the task is
+  /// created at the first position among its siblings, this parameter is
+  /// omitted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -498,41 +501,41 @@ class TasksResource {
   ///
   /// [tasklist] - Task list identifier.
   ///
-  /// [completedMax] - Upper bound for a task's completion date (as a RFC 3339
-  /// timestamp) to filter by. Optional. The default is not to filter by
+  /// [completedMax] - Optional. Upper bound for a task's completion date (as a
+  /// RFC 3339 timestamp) to filter by. The default is not to filter by
   /// completion date.
   ///
-  /// [completedMin] - Lower bound for a task's completion date (as a RFC 3339
-  /// timestamp) to filter by. Optional. The default is not to filter by
+  /// [completedMin] - Optional. Lower bound for a task's completion date (as a
+  /// RFC 3339 timestamp) to filter by. The default is not to filter by
   /// completion date.
   ///
-  /// [dueMax] - Upper bound for a task's due date (as a RFC 3339 timestamp) to
-  /// filter by. Optional. The default is not to filter by due date.
+  /// [dueMax] - Optional. Upper bound for a task's due date (as a RFC 3339
+  /// timestamp) to filter by. The default is not to filter by due date.
   ///
-  /// [dueMin] - Lower bound for a task's due date (as a RFC 3339 timestamp) to
-  /// filter by. Optional. The default is not to filter by due date.
+  /// [dueMin] - Optional. Lower bound for a task's due date (as a RFC 3339
+  /// timestamp) to filter by. The default is not to filter by due date.
   ///
-  /// [maxResults] - Maximum number of tasks returned on one page. Optional. The
+  /// [maxResults] - Optional. Maximum number of tasks returned on one page. The
   /// default is 20 (max allowed: 100).
   ///
-  /// [pageToken] - Token specifying the result page to return. Optional.
+  /// [pageToken] - Optional. Token specifying the result page to return.
   ///
   /// [showAssigned] - Optional. Flag indicating whether tasks assigned to the
-  /// current user are returned in the result. Optional. The default is False.
+  /// current user are returned in the result. The default is False.
   ///
-  /// [showCompleted] - Flag indicating whether completed tasks are returned in
-  /// the result. Note that showHidden must also be True to show tasks completed
-  /// in first party clients, such as the web UI and Google's mobile apps.
-  /// Optional. The default is True.
+  /// [showCompleted] - Optional. Flag indicating whether completed tasks are
+  /// returned in the result. Note that showHidden must also be True to show
+  /// tasks completed in first party clients, such as the web UI and Google's
+  /// mobile apps. The default is True.
   ///
-  /// [showDeleted] - Flag indicating whether deleted tasks are returned in the
-  /// result. Optional. The default is False.
+  /// [showDeleted] - Optional. Flag indicating whether deleted tasks are
+  /// returned in the result. The default is False.
   ///
-  /// [showHidden] - Flag indicating whether hidden tasks are returned in the
-  /// result. Optional. The default is False.
+  /// [showHidden] - Optional. Flag indicating whether hidden tasks are returned
+  /// in the result. The default is False.
   ///
-  /// [updatedMin] - Lower bound for a task's last modification time (as a RFC
-  /// 3339 timestamp) to filter by. Optional. The default is not to filter by
+  /// [updatedMin] - Optional. Lower bound for a task's last modification time
+  /// (as a RFC 3339 timestamp) to filter by. The default is not to filter by
   /// last modification time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1114,6 +1117,9 @@ class TaskList {
   core.String? etag;
 
   /// Task list identifier.
+  ///
+  /// In requests, the authenticated user's default task list can also be
+  /// referred to as "@default".
   core.String? id;
 
   /// Type of the resource.

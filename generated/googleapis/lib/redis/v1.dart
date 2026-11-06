@@ -4142,7 +4142,9 @@ class ClusterPersistenceConfig {
 
 /// Time window specified for weekly operations.
 class ClusterWeeklyMaintenanceWindow {
-  /// Allows to define schedule that runs specified day of the week.
+  /// The day of the week for the maintenance window.
+  ///
+  /// This field is required. You can't use `DAY_OF_WEEK_UNSPECIFIED`.
   ///
   /// Optional.
   /// Possible string values are:
@@ -4156,7 +4158,9 @@ class ClusterWeeklyMaintenanceWindow {
   /// - "SUNDAY" : Sunday
   core.String? day;
 
-  /// Start time of the window in UTC.
+  /// The start time of the maintenance window in UTC.
+  ///
+  /// When you specify a maintenance window, `start_time` is required.
   ///
   /// Optional.
   TimeOfDay? startTime;
@@ -6864,6 +6868,11 @@ class WeeklyMaintenanceWindow {
 
 /// Zone distribution config for allocation of cluster resources.
 class ZoneDistributionConfig {
+  /// The exact list of zones where the cluster currently has active VMs.
+  ///
+  /// Output only.
+  core.List<core.String>? activeZones;
+
   /// The mode of zone distribution.
   ///
   /// Defaults to MULTI_ZONE, when not specified.
@@ -6894,10 +6903,13 @@ class ZoneDistributionConfig {
   /// Optional.
   core.List<core.String>? zones;
 
-  ZoneDistributionConfig({this.mode, this.zone, this.zones});
+  ZoneDistributionConfig({this.activeZones, this.mode, this.zone, this.zones});
 
   ZoneDistributionConfig.fromJson(core.Map json_)
     : this(
+        activeZones: (json_['activeZones'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         mode: json_['mode'] as core.String?,
         zone: json_['zone'] as core.String?,
         zones: (json_['zones'] as core.List?)
@@ -6906,9 +6918,15 @@ class ZoneDistributionConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final activeZones = this.activeZones;
     final mode = this.mode;
     final zone = this.zone;
     final zones = this.zones;
-    return {'mode': ?mode, 'zone': ?zone, 'zones': ?zones};
+    return {
+      'activeZones': ?activeZones,
+      'mode': ?mode,
+      'zone': ?zone,
+      'zones': ?zones,
+    };
   }
 }

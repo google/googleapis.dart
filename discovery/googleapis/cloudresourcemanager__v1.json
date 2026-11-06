@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260820",
+    "revision": "20261026",
     "rootUrl": "https://cloudresourcemanager.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Resource Manager API",
@@ -1448,6 +1448,18 @@
             },
             "type": "object"
         },
+        "CreateSemanticTagBindingMetadata": {
+            "description": "Metadata for the `CreateSemanticTagBinding` long-running operation.",
+            "id": "CreateSemanticTagBindingMetadata",
+            "properties": {},
+            "type": "object"
+        },
+        "CreateSemanticTagValueMetadata": {
+            "description": "Runtime operation information for creating a `SemanticTagValue`.",
+            "id": "CreateSemanticTagValueMetadata",
+            "properties": {},
+            "type": "object"
+        },
         "CreateTagBindingMetadata": {
             "description": "Runtime operation information for creating a TagValue.",
             "id": "CreateTagBindingMetadata",
@@ -1493,6 +1505,18 @@
         "DeleteProjectMetadata": {
             "description": "A status object which is used as the `metadata` field for the Operation returned by `DeleteProject`.",
             "id": "DeleteProjectMetadata",
+            "properties": {},
+            "type": "object"
+        },
+        "DeleteSemanticTagBindingMetadata": {
+            "description": "Metadata for the `DeleteSemanticTagBinding` long-running operation.",
+            "id": "DeleteSemanticTagBindingMetadata",
+            "properties": {},
+            "type": "object"
+        },
+        "DeleteSemanticTagValueMetadata": {
+            "description": "Runtime operation information for deleting a `SemanticTagValue`.",
+            "id": "DeleteSemanticTagValueMetadata",
             "properties": {},
             "type": "object"
         },
@@ -2096,6 +2120,21 @@
                         "The project has been marked for deletion by the user (by invoking DeleteProject) or by the system (Google Cloud Platform). This can generally be reversed by invoking UndeleteProject.",
                         "This lifecycle state is no longer used and not returned by the API."
                     ],
+                    "type": "string"
+                },
+                "managementType": {
+                    "description": "Output only. The type of Management Project. This field is only populated if `is_management_project` is `true`.",
+                    "enum": [
+                        "MANAGEMENT_TYPE_UNSPECIFIED",
+                        "SELF_MANAGED",
+                        "HUB"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified type.",
+                        "The Management Project is a self-managed project that constitutes its own boundary.",
+                        "The Management Project is a hub project that manages resources across a boundary."
+                    ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "name": {

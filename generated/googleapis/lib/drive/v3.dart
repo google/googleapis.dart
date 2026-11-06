@@ -1820,7 +1820,8 @@ class FilesResource {
   ///
   /// [fileId] - The ID of the file.
   ///
-  /// [copyComments] - Whether to copy the comments associated with the file.
+  /// [copyComments] - Whether to copy the open (unresolved) comments associated
+  /// with the file.
   ///
   /// [enforceSingleParent] - Deprecated: Copying files into multiple folders is
   /// no longer supported. Use shortcuts instead.
@@ -2956,8 +2957,9 @@ class PermissionsResource {
   ///
   /// For more information, see
   /// [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
-  /// **Warning:** Concurrent permissions operations on the same file aren't
-  /// supported; only the last update is applied.
+  /// **Warning:** Concurrent permission modifications (such as update or
+  /// delete) on the same file, folder, or shared drive aren't supported across
+  /// any users or clients; only the last update is applied.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3072,8 +3074,9 @@ class PermissionsResource {
   ///
   /// For more information, see
   /// [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
-  /// **Warning:** Concurrent permissions operations on the same file aren't
-  /// supported; only the last update is applied.
+  /// **Warning:** Concurrent permission modifications (such as update or
+  /// delete) on the same file, folder, or shared drive aren't supported across
+  /// any users or clients; only the last update is applied.
   ///
   /// Request parameters:
   ///
@@ -3302,8 +3305,9 @@ class PermissionsResource {
   ///
   /// For more information, see
   /// [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).
-  /// **Warning:** Concurrent permissions operations on the same file aren't
-  /// supported; only the last update is applied.
+  /// **Warning:** Concurrent permission modifications (such as update or
+  /// delete) on the same file, folder, or shared drive aren't supported across
+  /// any users or clients; only the last update is applied.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4847,28 +4851,22 @@ class Approval {
   core.String? approvalId;
 
   /// The time the approval was completed.
-  ///
-  /// Output only.
   core.String? completeTime;
 
   /// The time the approval was created.
-  ///
-  /// Output only.
   core.String? createTime;
 
   /// The time that the approval is due.
   core.String? dueTime;
 
   /// The behavior of the approval when the file content changes.
-  ///
-  /// Output only.
   /// Possible string values are:
   /// - "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED" : The behavior is
   /// unspecified.
-  /// - "RESET_APPROVAL" : Any ReviewerResponse with a Response of APPROVED will
-  /// be reset to NO_DECISION when the file content changes while the approval
-  /// has a Status of IN_PROGRESS. When the approval has a Status of APPROVED
-  /// and RESET_APPROVAL is selected, the file is locked.
+  /// - "RESET_APPROVAL" : Any ReviewerResponse with a Response of `APPROVED`
+  /// will be reset to `NO_DECISION` when the file content changes while the
+  /// approval has a Status of `IN_PROGRESS`. When the approval has a Status of
+  /// `APPROVED` and `RESET_APPROVAL` is selected, the file is locked.
   /// - "NO_APPROVAL_ACTION" : No action is taken when the file content changes.
   core.String? fileContentChangeBehavior;
 
@@ -4879,16 +4877,12 @@ class Approval {
   core.String? kind;
 
   /// The most recent time the approval was modified.
-  ///
-  /// Output only.
   core.String? modifyTime;
 
   /// The responses made on the approval by reviewers.
   core.List<ReviewerResponse>? reviewerResponses;
 
   /// The status of the approval at the time this resource was requested.
-  ///
-  /// Output only.
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : The approval status has not been set or was set
   /// to an invalid value.
@@ -9681,10 +9675,10 @@ class StartApprovalRequest {
   /// Possible string values are:
   /// - "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED" : The behavior is
   /// unspecified.
-  /// - "RESET_APPROVAL" : Any ReviewerResponse with a Response of APPROVED will
-  /// be reset to NO_DECISION when the file content changes while the approval
-  /// has a Status of IN_PROGRESS. When the approval has a Status of APPROVED
-  /// and RESET_APPROVAL is selected, the file is locked.
+  /// - "RESET_APPROVAL" : Any ReviewerResponse with a Response of `APPROVED`
+  /// will be reset to `NO_DECISION` when the file content changes while the
+  /// approval has a Status of `IN_PROGRESS`. When the approval has a Status of
+  /// `APPROVED` and `RESET_APPROVAL` is selected, the file is locked.
   /// - "NO_APPROVAL_ACTION" : No action is taken when the file content changes.
   core.String? fileContentChangeBehavior;
 

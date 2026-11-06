@@ -32,6 +32,31 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAnswerChoiceTemplate = 0;
+api.AnswerChoiceTemplate buildAnswerChoiceTemplate() {
+  final o = api.AnswerChoiceTemplate();
+  buildCounterAnswerChoiceTemplate++;
+  if (buildCounterAnswerChoiceTemplate < 3) {
+    o.category = 'foo';
+    o.categoryLabel = 'foo';
+    o.displayText = 'foo';
+    o.id = 42;
+  }
+  buildCounterAnswerChoiceTemplate--;
+  return o;
+}
+
+void checkAnswerChoiceTemplate(api.AnswerChoiceTemplate o) {
+  buildCounterAnswerChoiceTemplate++;
+  if (buildCounterAnswerChoiceTemplate < 3) {
+    unittest.expect(o.category!, unittest.equals('foo'));
+    unittest.expect(o.categoryLabel!, unittest.equals('foo'));
+    unittest.expect(o.displayText!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals(42));
+  }
+  buildCounterAnswerChoiceTemplate--;
+}
+
 core.int buildCounterCheckFreeAccessResponse = 0;
 api.CheckFreeAccessResponse buildCheckFreeAccessResponse() {
   final o = api.CheckFreeAccessResponse();
@@ -49,6 +74,25 @@ void checkCheckFreeAccessResponse(api.CheckFreeAccessResponse o) {
     unittest.expect(o.isAllowed!, unittest.isTrue);
   }
   buildCounterCheckFreeAccessResponse--;
+}
+
+core.int buildCounterCheckProgramAccessResponse = 0;
+api.CheckProgramAccessResponse buildCheckProgramAccessResponse() {
+  final o = api.CheckProgramAccessResponse();
+  buildCounterCheckProgramAccessResponse++;
+  if (buildCounterCheckProgramAccessResponse < 3) {
+    o.status = 'foo';
+  }
+  buildCounterCheckProgramAccessResponse--;
+  return o;
+}
+
+void checkCheckProgramAccessResponse(api.CheckProgramAccessResponse o) {
+  buildCounterCheckProgramAccessResponse++;
+  if (buildCounterCheckProgramAccessResponse < 3) {
+    unittest.expect(o.status!, unittest.equals('foo'));
+  }
+  buildCounterCheckProgramAccessResponse--;
 }
 
 core.int buildCounterContentPolicyStatus = 0;
@@ -81,6 +125,7 @@ api.Cta buildCta() {
     o.name = 'foo';
     o.newsletterConfig = buildNewsletterConfig();
     o.state = 'foo';
+    o.surveyConfig = buildSurveyConfig();
     o.type = 'foo';
   }
   buildCounterCta--;
@@ -94,9 +139,65 @@ void checkCta(api.Cta o) {
     unittest.expect(o.name!, unittest.equals('foo'));
     checkNewsletterConfig(o.newsletterConfig!);
     unittest.expect(o.state!, unittest.equals('foo'));
+    checkSurveyConfig(o.surveyConfig!);
     unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterCta--;
+}
+
+core.int buildCounterCustomAnswerChoice = 0;
+api.CustomAnswerChoice buildCustomAnswerChoice() {
+  final o = api.CustomAnswerChoice();
+  buildCounterCustomAnswerChoice++;
+  if (buildCounterCustomAnswerChoice < 3) {
+    o.displayText = 'foo';
+  }
+  buildCounterCustomAnswerChoice--;
+  return o;
+}
+
+void checkCustomAnswerChoice(api.CustomAnswerChoice o) {
+  buildCounterCustomAnswerChoice++;
+  if (buildCounterCustomAnswerChoice < 3) {
+    unittest.expect(o.displayText!, unittest.equals('foo'));
+  }
+  buildCounterCustomAnswerChoice--;
+}
+
+core.List<api.CustomAnswerChoice> buildUnnamed0() => [
+  buildCustomAnswerChoice(),
+  buildCustomAnswerChoice(),
+];
+
+void checkUnnamed0(core.List<api.CustomAnswerChoice> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCustomAnswerChoice(o[0]);
+  checkCustomAnswerChoice(o[1]);
+}
+
+core.int buildCounterCustomQuestion = 0;
+api.CustomQuestion buildCustomQuestion() {
+  final o = api.CustomQuestion();
+  buildCounterCustomQuestion++;
+  if (buildCounterCustomQuestion < 3) {
+    o.answerChoices = buildUnnamed0();
+    o.categoryLabel = 'foo';
+    o.displayText = 'foo';
+    o.id = 'foo';
+  }
+  buildCounterCustomQuestion--;
+  return o;
+}
+
+void checkCustomQuestion(api.CustomQuestion o) {
+  buildCounterCustomQuestion++;
+  if (buildCounterCustomQuestion < 3) {
+    checkUnnamed0(o.answerChoices!);
+    unittest.expect(o.categoryLabel!, unittest.equals('foo'));
+    unittest.expect(o.displayText!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
+  }
+  buildCounterCustomQuestion--;
 }
 
 core.int buildCounterDomainProperty = 0;
@@ -137,12 +238,12 @@ void checkGeneratePlatformSiteTokensRequest(
   buildCounterGeneratePlatformSiteTokensRequest--;
 }
 
-core.List<api.SiteToken> buildUnnamed0() => [
+core.List<api.SiteToken> buildUnnamed1() => [
   buildSiteToken(),
   buildSiteToken(),
 ];
 
-void checkUnnamed0(core.List<api.SiteToken> o) {
+void checkUnnamed1(core.List<api.SiteToken> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteToken(o[0]);
   checkSiteToken(o[1]);
@@ -154,7 +255,7 @@ buildGeneratePlatformSiteTokensResponse() {
   final o = api.GeneratePlatformSiteTokensResponse();
   buildCounterGeneratePlatformSiteTokensResponse++;
   if (buildCounterGeneratePlatformSiteTokensResponse < 3) {
-    o.siteTokens = buildUnnamed0();
+    o.siteTokens = buildUnnamed1();
   }
   buildCounterGeneratePlatformSiteTokensResponse--;
   return o;
@@ -165,14 +266,14 @@ void checkGeneratePlatformSiteTokensResponse(
 ) {
   buildCounterGeneratePlatformSiteTokensResponse++;
   if (buildCounterGeneratePlatformSiteTokensResponse < 3) {
-    checkUnnamed0(o.siteTokens!);
+    checkUnnamed1(o.siteTokens!);
   }
   buildCounterGeneratePlatformSiteTokensResponse--;
 }
 
-core.List<api.Cta> buildUnnamed1() => [buildCta(), buildCta()];
+core.List<api.Cta> buildUnnamed2() => [buildCta(), buildCta()];
 
-void checkUnnamed1(core.List<api.Cta> o) {
+void checkUnnamed2(core.List<api.Cta> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCta(o[0]);
   checkCta(o[1]);
@@ -183,7 +284,7 @@ api.ListCtasResponse buildListCtasResponse() {
   final o = api.ListCtasResponse();
   buildCounterListCtasResponse++;
   if (buildCounterListCtasResponse < 3) {
-    o.ctas = buildUnnamed1();
+    o.ctas = buildUnnamed2();
     o.nextPageToken = 'foo';
   }
   buildCounterListCtasResponse--;
@@ -193,18 +294,18 @@ api.ListCtasResponse buildListCtasResponse() {
 void checkListCtasResponse(api.ListCtasResponse o) {
   buildCounterListCtasResponse++;
   if (buildCounterListCtasResponse < 3) {
-    checkUnnamed1(o.ctas!);
+    checkUnnamed2(o.ctas!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListCtasResponse--;
 }
 
-core.List<api.Publication> buildUnnamed2() => [
+core.List<api.Publication> buildUnnamed3() => [
   buildPublication(),
   buildPublication(),
 ];
 
-void checkUnnamed2(core.List<api.Publication> o) {
+void checkUnnamed3(core.List<api.Publication> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPublication(o[0]);
   checkPublication(o[1]);
@@ -216,7 +317,7 @@ api.ListPublicationsResponse buildListPublicationsResponse() {
   buildCounterListPublicationsResponse++;
   if (buildCounterListPublicationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.publications = buildUnnamed2();
+    o.publications = buildUnnamed3();
   }
   buildCounterListPublicationsResponse--;
   return o;
@@ -226,7 +327,7 @@ void checkListPublicationsResponse(api.ListPublicationsResponse o) {
   buildCounterListPublicationsResponse++;
   if (buildCounterListPublicationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed2(o.publications!);
+    checkUnnamed3(o.publications!);
   }
   buildCounterListPublicationsResponse--;
 }
@@ -258,20 +359,49 @@ void checkNewsletterConfig(api.NewsletterConfig o) {
   buildCounterNewsletterConfig--;
 }
 
-core.List<api.DomainProperty> buildUnnamed3() => [
+core.List<core.int> buildUnnamed4() => [42, 42];
+
+void checkUnnamed4(core.List<core.int> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals(42));
+  unittest.expect(o[1], unittest.equals(42));
+}
+
+core.int buildCounterPresetQuestion = 0;
+api.PresetQuestion buildPresetQuestion() {
+  final o = api.PresetQuestion();
+  buildCounterPresetQuestion++;
+  if (buildCounterPresetQuestion < 3) {
+    o.answerIds = buildUnnamed4();
+    o.questionId = 42;
+  }
+  buildCounterPresetQuestion--;
+  return o;
+}
+
+void checkPresetQuestion(api.PresetQuestion o) {
+  buildCounterPresetQuestion++;
+  if (buildCounterPresetQuestion < 3) {
+    checkUnnamed4(o.answerIds!);
+    unittest.expect(o.questionId!, unittest.equals(42));
+  }
+  buildCounterPresetQuestion--;
+}
+
+core.List<api.DomainProperty> buildUnnamed5() => [
   buildDomainProperty(),
   buildDomainProperty(),
 ];
 
-void checkUnnamed3(core.List<api.DomainProperty> o) {
+void checkUnnamed5(core.List<api.DomainProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDomainProperty(o[0]);
   checkDomainProperty(o[1]);
 }
 
-core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -282,7 +412,7 @@ api.Publication buildPublication() {
   final o = api.Publication();
   buildCounterPublication++;
   if (buildCounterPublication < 3) {
-    o.additionalDomains = buildUnnamed3();
+    o.additionalDomains = buildUnnamed5();
     o.contentPolicyStatus = buildContentPolicyStatus();
     o.displayName = 'foo';
     o.languageCode = 'foo';
@@ -291,7 +421,7 @@ api.Publication buildPublication() {
     o.organizationId = 'foo';
     o.paymentOption = 'foo';
     o.primaryDomain = buildDomainProperty();
-    o.products = buildUnnamed4();
+    o.products = buildUnnamed6();
     o.publicationId = 'foo';
     o.publicationPrivacyPolicyUrl = 'foo';
     o.publicationTosUrl = 'foo';
@@ -307,7 +437,7 @@ api.Publication buildPublication() {
 void checkPublication(api.Publication o) {
   buildCounterPublication++;
   if (buildCounterPublication < 3) {
-    checkUnnamed3(o.additionalDomains!);
+    checkUnnamed5(o.additionalDomains!);
     checkContentPolicyStatus(o.contentPolicyStatus!);
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.languageCode!, unittest.equals('foo'));
@@ -316,7 +446,7 @@ void checkPublication(api.Publication o) {
     unittest.expect(o.organizationId!, unittest.equals('foo'));
     unittest.expect(o.paymentOption!, unittest.equals('foo'));
     checkDomainProperty(o.primaryDomain!);
-    checkUnnamed4(o.products!);
+    checkUnnamed6(o.products!);
     unittest.expect(o.publicationId!, unittest.equals('foo'));
     unittest.expect(o.publicationPrivacyPolicyUrl!, unittest.equals('foo'));
     unittest.expect(o.publicationTosUrl!, unittest.equals('foo'));
@@ -326,6 +456,46 @@ void checkPublication(api.Publication o) {
     checkSlProduct(o.slProduct!);
   }
   buildCounterPublication--;
+}
+
+core.List<api.AnswerChoiceTemplate> buildUnnamed7() => [
+  buildAnswerChoiceTemplate(),
+  buildAnswerChoiceTemplate(),
+];
+
+void checkUnnamed7(core.List<api.AnswerChoiceTemplate> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAnswerChoiceTemplate(o[0]);
+  checkAnswerChoiceTemplate(o[1]);
+}
+
+core.int buildCounterQuestionTemplate = 0;
+api.QuestionTemplate buildQuestionTemplate() {
+  final o = api.QuestionTemplate();
+  buildCounterQuestionTemplate++;
+  if (buildCounterQuestionTemplate < 3) {
+    o.answerChoices = buildUnnamed7();
+    o.category = 'foo';
+    o.categoryLabel = 'foo';
+    o.configurationType = 'foo';
+    o.displayText = 'foo';
+    o.id = 42;
+  }
+  buildCounterQuestionTemplate--;
+  return o;
+}
+
+void checkQuestionTemplate(api.QuestionTemplate o) {
+  buildCounterQuestionTemplate++;
+  if (buildCounterQuestionTemplate < 3) {
+    checkUnnamed7(o.answerChoices!);
+    unittest.expect(o.category!, unittest.equals('foo'));
+    unittest.expect(o.categoryLabel!, unittest.equals('foo'));
+    unittest.expect(o.configurationType!, unittest.equals('foo'));
+    unittest.expect(o.displayText!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals(42));
+  }
+  buildCounterQuestionTemplate--;
 }
 
 core.int buildCounterRrmProduct = 0;
@@ -393,6 +563,93 @@ void checkSlProduct(api.SlProduct o) {
   buildCounterSlProduct--;
 }
 
+core.List<api.SurveyQuestion> buildUnnamed8() => [
+  buildSurveyQuestion(),
+  buildSurveyQuestion(),
+];
+
+void checkUnnamed8(core.List<api.SurveyQuestion> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSurveyQuestion(o[0]);
+  checkSurveyQuestion(o[1]);
+}
+
+core.int buildCounterSurveyConfig = 0;
+api.SurveyConfig buildSurveyConfig() {
+  final o = api.SurveyConfig();
+  buildCounterSurveyConfig++;
+  if (buildCounterSurveyConfig < 3) {
+    o.customMessage = 'foo';
+    o.questions = buildUnnamed8();
+    o.reportUrl = 'foo';
+  }
+  buildCounterSurveyConfig--;
+  return o;
+}
+
+void checkSurveyConfig(api.SurveyConfig o) {
+  buildCounterSurveyConfig++;
+  if (buildCounterSurveyConfig < 3) {
+    unittest.expect(o.customMessage!, unittest.equals('foo'));
+    checkUnnamed8(o.questions!);
+    unittest.expect(o.reportUrl!, unittest.equals('foo'));
+  }
+  buildCounterSurveyConfig--;
+}
+
+core.int buildCounterSurveyQuestion = 0;
+api.SurveyQuestion buildSurveyQuestion() {
+  final o = api.SurveyQuestion();
+  buildCounterSurveyQuestion++;
+  if (buildCounterSurveyQuestion < 3) {
+    o.customQuestion = buildCustomQuestion();
+    o.presetQuestion = buildPresetQuestion();
+  }
+  buildCounterSurveyQuestion--;
+  return o;
+}
+
+void checkSurveyQuestion(api.SurveyQuestion o) {
+  buildCounterSurveyQuestion++;
+  if (buildCounterSurveyQuestion < 3) {
+    checkCustomQuestion(o.customQuestion!);
+    checkPresetQuestion(o.presetQuestion!);
+  }
+  buildCounterSurveyQuestion--;
+}
+
+core.List<api.QuestionTemplate> buildUnnamed9() => [
+  buildQuestionTemplate(),
+  buildQuestionTemplate(),
+];
+
+void checkUnnamed9(core.List<api.QuestionTemplate> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkQuestionTemplate(o[0]);
+  checkQuestionTemplate(o[1]);
+}
+
+core.int buildCounterSurveyQuestionCatalog = 0;
+api.SurveyQuestionCatalog buildSurveyQuestionCatalog() {
+  final o = api.SurveyQuestionCatalog();
+  buildCounterSurveyQuestionCatalog++;
+  if (buildCounterSurveyQuestionCatalog < 3) {
+    o.name = 'foo';
+    o.questions = buildUnnamed9();
+  }
+  buildCounterSurveyQuestionCatalog--;
+  return o;
+}
+
+void checkSurveyQuestionCatalog(api.SurveyQuestionCatalog o) {
+  buildCounterSurveyQuestionCatalog++;
+  if (buildCounterSurveyQuestionCatalog < 3) {
+    unittest.expect(o.name!, unittest.equals('foo'));
+    checkUnnamed9(o.questions!);
+  }
+  buildCounterSurveyQuestionCatalog--;
+}
+
 core.int buildCounterTosAcceptance = 0;
 api.TosAcceptance buildTosAcceptance() {
   final o = api.TosAcceptance();
@@ -415,6 +672,17 @@ void checkTosAcceptance(api.TosAcceptance o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AnswerChoiceTemplate', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAnswerChoiceTemplate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnswerChoiceTemplate.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAnswerChoiceTemplate(od);
+    });
+  });
+
   unittest.group('obj-schema-CheckFreeAccessResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCheckFreeAccessResponse();
@@ -423,6 +691,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCheckFreeAccessResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-CheckProgramAccessResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCheckProgramAccessResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CheckProgramAccessResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCheckProgramAccessResponse(od);
     });
   });
 
@@ -443,6 +722,28 @@ void main() {
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Cta.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCta(od);
+    });
+  });
+
+  unittest.group('obj-schema-CustomAnswerChoice', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCustomAnswerChoice();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CustomAnswerChoice.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCustomAnswerChoice(od);
+    });
+  });
+
+  unittest.group('obj-schema-CustomQuestion', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCustomQuestion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CustomQuestion.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCustomQuestion(od);
     });
   });
 
@@ -512,6 +813,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PresetQuestion', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPresetQuestion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PresetQuestion.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPresetQuestion(od);
+    });
+  });
+
   unittest.group('obj-schema-Publication', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPublication();
@@ -520,6 +832,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkPublication(od);
+    });
+  });
+
+  unittest.group('obj-schema-QuestionTemplate', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQuestionTemplate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QuestionTemplate.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkQuestionTemplate(od);
     });
   });
 
@@ -553,6 +876,39 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSlProduct(od);
+    });
+  });
+
+  unittest.group('obj-schema-SurveyConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSurveyConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SurveyConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSurveyConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-SurveyQuestion', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSurveyQuestion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SurveyQuestion.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSurveyQuestion(od);
+    });
+  });
+
+  unittest.group('obj-schema-SurveyQuestionCatalog', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSurveyQuestionCatalog();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SurveyQuestionCatalog.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSurveyQuestionCatalog(od);
     });
   });
 
@@ -688,6 +1044,68 @@ void main() {
       );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkPublication(response as api.Publication);
+    });
+
+    unittest.test('method--getSurveyQuestionCatalog', () async {
+      final mock = HttpServerMock();
+      final res = api.WebContentPublisherApi(mock).organizations.publications;
+      final arg_name = 'foo';
+      final arg_languageCode = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['languageCode']!.first,
+            unittest.equals(arg_languageCode),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSurveyQuestionCatalog());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getSurveyQuestionCatalog(
+        arg_name,
+        languageCode: arg_languageCode,
+        $fields: arg_$fields,
+      );
+      checkSurveyQuestionCatalog(response as api.SurveyQuestionCatalog);
     });
 
     unittest.test('method--list', () async {
@@ -1164,6 +1582,76 @@ void main() {
         $fields: arg_$fields,
       );
       checkCheckFreeAccessResponse(response as api.CheckFreeAccessResponse);
+    });
+
+    unittest.test('method--checkProgramAccess', () async {
+      final mock = HttpServerMock();
+      final res = api.WebContentPublisherApi(mock).publications;
+      final arg_name = 'foo';
+      final arg_productId = 'foo';
+      final arg_swgUserToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['productId']!.first,
+            unittest.equals(arg_productId),
+          );
+          unittest.expect(
+            queryMap['swgUserToken']!.first,
+            unittest.equals(arg_swgUserToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildCheckProgramAccessResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.checkProgramAccess(
+        arg_name,
+        productId: arg_productId,
+        swgUserToken: arg_swgUserToken,
+        $fields: arg_$fields,
+      );
+      checkCheckProgramAccessResponse(
+        response as api.CheckProgramAccessResponse,
+      );
     });
   });
 

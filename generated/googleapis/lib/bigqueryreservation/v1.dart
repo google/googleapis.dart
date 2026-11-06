@@ -323,6 +323,62 @@ class ProjectsLocationsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Upgrades the edition for a list of reservations and capacity commitments.
+  ///
+  /// You can only upgrade to a higher edition (from `STANDARD` to `ENTERPRISE`
+  /// or `ENTERPRISE_PLUS`, from `ENTERPRISE` to `ENTERPRISE_PLUS`, or from
+  /// `EDITION_UNSPECIFIED` to `ENTERPRISE` or `ENTERPRISE_PLUS`). You can't
+  /// downgrade an edition. The upgrade must not cause an overall flexible slot
+  /// increase across the original and target editions (for example, by
+  /// upgrading a reservation without upgrading its corresponding capacity
+  /// commitment). Otherwise, the method fails with a
+  /// `google.rpc.Code.FAILED_PRECONDITION` error. Before the upgrade, the
+  /// service validates that the resources meet the requirements of the target
+  /// edition (for example, all reservations within a reservation group must be
+  /// upgraded together).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource name that identifies the admin project and
+  /// location, in the format `projects/{project}/locations/{location}`. For
+  /// example, `projects/myproject/locations/us-west1`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UpgradeEditionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UpgradeEditionResponse> upgradeEdition(
+    UpgradeEditionRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':upgradeEdition';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UpgradeEditionResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class ProjectsLocationsCapacityCommitmentsResource {
@@ -3566,3 +3622,107 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// The request for ReservationService.UpgradeEdition.
+///
+/// You must specify at least one reservation or capacity commitment.
+class UpgradeEditionRequest {
+  /// The resource names of the capacity commitments to upgrade, in the format
+  /// `projects/{project}/locations/{location}/capacityCommitments/{capacity_commitment}`.
+  ///
+  /// For example,
+  /// `projects/myproject/locations/us-west1/capacityCommitments/123`. These
+  /// capacity commitments must be in the `ACTIVE` state and must exist under
+  /// the specified `parent`. The `commitment_start_time` and
+  /// `commitment_end_time` fields don't change after the upgrade.
+  ///
+  /// Optional.
+  core.List<core.String>? capacityCommitments;
+
+  /// The resource names of the reservations to upgrade, in the format
+  /// `projects/{project}/locations/{location}/reservations/{reservation}`.
+  ///
+  /// For example,
+  /// `projects/myproject/locations/us-west1/reservations/team1-prod`. These
+  /// reservations must exist under the specified `parent`.
+  ///
+  /// Optional.
+  core.List<core.String>? reservations;
+
+  /// The edition to upgrade the capacity commitments and reservations to.
+  ///
+  /// Supported values are `ENTERPRISE` and `ENTERPRISE_PLUS`.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : Default value, which will be treated as
+  /// ENTERPRISE.
+  /// - "STANDARD" : Standard edition.
+  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "ENTERPRISE_PLUS" : Enterprise Plus edition.
+  core.String? targetEdition;
+
+  UpgradeEditionRequest({
+    this.capacityCommitments,
+    this.reservations,
+    this.targetEdition,
+  });
+
+  UpgradeEditionRequest.fromJson(core.Map json_)
+    : this(
+        capacityCommitments: (json_['capacityCommitments'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        reservations: (json_['reservations'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        targetEdition: json_['targetEdition'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final capacityCommitments = this.capacityCommitments;
+    final reservations = this.reservations;
+    final targetEdition = this.targetEdition;
+    return {
+      'capacityCommitments': ?capacityCommitments,
+      'reservations': ?reservations,
+      'targetEdition': ?targetEdition,
+    };
+  }
+}
+
+/// The response for ReservationService.UpgradeEdition.
+class UpgradeEditionResponse {
+  /// The updated capacity commitments after the upgrade.
+  core.List<CapacityCommitment>? capacityCommitments;
+
+  /// The updated reservations after the upgrade.
+  core.List<Reservation>? reservations;
+
+  UpgradeEditionResponse({this.capacityCommitments, this.reservations});
+
+  UpgradeEditionResponse.fromJson(core.Map json_)
+    : this(
+        capacityCommitments: (json_['capacityCommitments'] as core.List?)
+            ?.map(
+              (value) => CapacityCommitment.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        reservations: (json_['reservations'] as core.List?)
+            ?.map(
+              (value) => Reservation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final capacityCommitments = this.capacityCommitments;
+    final reservations = this.reservations;
+    return {
+      'capacityCommitments': ?capacityCommitments,
+      'reservations': ?reservations,
+    };
+  }
+}

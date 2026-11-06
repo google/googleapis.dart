@@ -247,7 +247,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260826",
+    "revision": "20260909",
     "rootUrl": "https://gkebackup.googleapis.com/",
     "servicePath": "",
     "title": "Backup for GKE API",
@@ -2699,11 +2699,15 @@
             "type": "object"
         },
         "BDRBackupRestoreJobLog": {
-            "description": "Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 27",
+            "description": "Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 28",
             "id": "BDRBackupRestoreJobLog",
             "properties": {
                 "autoProtectionPolicy": {
                     "description": "The auto-protection policy that created the backup.",
+                    "type": "string"
+                },
+                "autoProtectionPolicyBinding": {
+                    "description": "The auto-protection policy binding that created the backup.",
                     "type": "string"
                 },
                 "backupConsistencyTime": {

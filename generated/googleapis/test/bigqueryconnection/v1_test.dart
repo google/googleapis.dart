@@ -120,6 +120,7 @@ api.AwsProperties buildAwsProperties() {
   buildCounterAwsProperties++;
   if (buildCounterAwsProperties < 3) {
     o.accessRole = buildAwsAccessRole();
+    o.crossCloudCacheOptions = buildCrossCloudCacheOptions();
   }
   buildCounterAwsProperties--;
   return o;
@@ -129,6 +130,7 @@ void checkAwsProperties(api.AwsProperties o) {
   buildCounterAwsProperties++;
   if (buildCounterAwsProperties < 3) {
     checkAwsAccessRole(o.accessRole!);
+    checkCrossCloudCacheOptions(o.crossCloudCacheOptions!);
   }
   buildCounterAwsProperties--;
 }
@@ -140,6 +142,7 @@ api.AzureProperties buildAzureProperties() {
   if (buildCounterAzureProperties < 3) {
     o.application = 'foo';
     o.clientId = 'foo';
+    o.crossCloudCacheOptions = buildCrossCloudCacheOptions();
     o.customerTenantId = 'foo';
     o.federatedApplicationClientId = 'foo';
     o.identity = 'foo';
@@ -155,6 +158,7 @@ void checkAzureProperties(api.AzureProperties o) {
   if (buildCounterAzureProperties < 3) {
     unittest.expect(o.application!, unittest.equals('foo'));
     unittest.expect(o.clientId!, unittest.equals('foo'));
+    checkCrossCloudCacheOptions(o.crossCloudCacheOptions!);
     unittest.expect(o.customerTenantId!, unittest.equals('foo'));
     unittest.expect(o.federatedApplicationClientId!, unittest.equals('foo'));
     unittest.expect(o.identity!, unittest.equals('foo'));
@@ -642,6 +646,25 @@ void checkConnectorConfigurationUsernamePassword(
   buildCounterConnectorConfigurationUsernamePassword--;
 }
 
+core.int buildCounterCrossCloudCacheOptions = 0;
+api.CrossCloudCacheOptions buildCrossCloudCacheOptions() {
+  final o = api.CrossCloudCacheOptions();
+  buildCounterCrossCloudCacheOptions++;
+  if (buildCounterCrossCloudCacheOptions < 3) {
+    o.enabled = true;
+  }
+  buildCounterCrossCloudCacheOptions--;
+  return o;
+}
+
+void checkCrossCloudCacheOptions(api.CrossCloudCacheOptions o) {
+  buildCounterCrossCloudCacheOptions++;
+  if (buildCounterCrossCloudCacheOptions < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterCrossCloudCacheOptions--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -820,6 +843,7 @@ api.SalesforceDataCloudProperties buildSalesforceDataCloudProperties() {
   final o = api.SalesforceDataCloudProperties();
   buildCounterSalesforceDataCloudProperties++;
   if (buildCounterSalesforceDataCloudProperties < 3) {
+    o.crossCloudCacheOptions = buildCrossCloudCacheOptions();
     o.identity = 'foo';
     o.instanceUri = 'foo';
     o.tenantId = 'foo';
@@ -831,6 +855,7 @@ api.SalesforceDataCloudProperties buildSalesforceDataCloudProperties() {
 void checkSalesforceDataCloudProperties(api.SalesforceDataCloudProperties o) {
   buildCounterSalesforceDataCloudProperties++;
   if (buildCounterSalesforceDataCloudProperties < 3) {
+    checkCrossCloudCacheOptions(o.crossCloudCacheOptions!);
     unittest.expect(o.identity!, unittest.equals('foo'));
     unittest.expect(o.instanceUri!, unittest.equals('foo'));
     unittest.expect(o.tenantId!, unittest.equals('foo'));
@@ -1206,6 +1231,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkConnectorConfigurationUsernamePassword(od);
+    });
+  });
+
+  unittest.group('obj-schema-CrossCloudCacheOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCrossCloudCacheOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CrossCloudCacheOptions.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCrossCloudCacheOptions(od);
     });
   });
 

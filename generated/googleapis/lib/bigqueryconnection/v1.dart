@@ -549,7 +549,12 @@ class AwsProperties {
   /// customer's AWS IAM Role.
   AwsAccessRole? accessRole;
 
-  AwsProperties({this.accessRole});
+  /// Configuration options for cross-cloud caching of data and metadata files.
+  ///
+  /// Optional.
+  CrossCloudCacheOptions? crossCloudCacheOptions;
+
+  AwsProperties({this.accessRole, this.crossCloudCacheOptions});
 
   AwsProperties.fromJson(core.Map json_)
     : this(
@@ -558,11 +563,21 @@ class AwsProperties {
                 json_['accessRole'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        crossCloudCacheOptions: json_.containsKey('crossCloudCacheOptions')
+            ? CrossCloudCacheOptions.fromJson(
+                json_['crossCloudCacheOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final accessRole = this.accessRole;
-    return {'accessRole': ?accessRole};
+    final crossCloudCacheOptions = this.crossCloudCacheOptions;
+    return {
+      'accessRole': ?accessRole,
+      'crossCloudCacheOptions': ?crossCloudCacheOptions,
+    };
   }
 }
 
@@ -577,6 +592,11 @@ class AzureProperties {
   ///
   /// Output only.
   core.String? clientId;
+
+  /// Configuration options for cross-cloud caching of data and metadata files.
+  ///
+  /// Optional.
+  CrossCloudCacheOptions? crossCloudCacheOptions;
 
   /// The id of customer's directory that host the data.
   core.String? customerTenantId;
@@ -605,6 +625,7 @@ class AzureProperties {
   AzureProperties({
     this.application,
     this.clientId,
+    this.crossCloudCacheOptions,
     this.customerTenantId,
     this.federatedApplicationClientId,
     this.identity,
@@ -616,6 +637,12 @@ class AzureProperties {
     : this(
         application: json_['application'] as core.String?,
         clientId: json_['clientId'] as core.String?,
+        crossCloudCacheOptions: json_.containsKey('crossCloudCacheOptions')
+            ? CrossCloudCacheOptions.fromJson(
+                json_['crossCloudCacheOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         customerTenantId: json_['customerTenantId'] as core.String?,
         federatedApplicationClientId:
             json_['federatedApplicationClientId'] as core.String?,
@@ -627,6 +654,7 @@ class AzureProperties {
   core.Map<core.String, core.dynamic> toJson() {
     final application = this.application;
     final clientId = this.clientId;
+    final crossCloudCacheOptions = this.crossCloudCacheOptions;
     final customerTenantId = this.customerTenantId;
     final federatedApplicationClientId = this.federatedApplicationClientId;
     final identity = this.identity;
@@ -635,6 +663,7 @@ class AzureProperties {
     return {
       'application': ?application,
       'clientId': ?clientId,
+      'crossCloudCacheOptions': ?crossCloudCacheOptions,
       'customerTenantId': ?customerTenantId,
       'federatedApplicationClientId': ?federatedApplicationClientId,
       'identity': ?identity,
@@ -1571,6 +1600,29 @@ class ConnectorConfigurationUsernamePassword {
   }
 }
 
+/// Options for caching cross-cloud data and metadata files.
+class CrossCloudCacheOptions {
+  /// Whether cross-cloud caching is enabled.
+  ///
+  /// This only affects queries through BigQuery. If this value is `true`, read
+  /// data and metadata are stored in a cache, which can increase performance
+  /// and decrease network egress costs for cross-cloud queries. If this value
+  /// is `false`, cross-cloud caching is disabled.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  CrossCloudCacheOptions({this.enabled});
+
+  CrossCloudCacheOptions.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabled = this.enabled;
+    return {'enabled': ?enabled};
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1803,6 +1855,11 @@ class Policy {
 ///
 /// This is intended for use only by Salesforce partner projects.
 class SalesforceDataCloudProperties {
+  /// Configuration options for cross-cloud caching of data and metadata files.
+  ///
+  /// Optional.
+  CrossCloudCacheOptions? crossCloudCacheOptions;
+
   /// A unique Google-owned and Google-generated service account identity for
   /// the connection.
   ///
@@ -1816,6 +1873,7 @@ class SalesforceDataCloudProperties {
   core.String? tenantId;
 
   SalesforceDataCloudProperties({
+    this.crossCloudCacheOptions,
     this.identity,
     this.instanceUri,
     this.tenantId,
@@ -1823,16 +1881,24 @@ class SalesforceDataCloudProperties {
 
   SalesforceDataCloudProperties.fromJson(core.Map json_)
     : this(
+        crossCloudCacheOptions: json_.containsKey('crossCloudCacheOptions')
+            ? CrossCloudCacheOptions.fromJson(
+                json_['crossCloudCacheOptions']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         identity: json_['identity'] as core.String?,
         instanceUri: json_['instanceUri'] as core.String?,
         tenantId: json_['tenantId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final crossCloudCacheOptions = this.crossCloudCacheOptions;
     final identity = this.identity;
     final instanceUri = this.instanceUri;
     final tenantId = this.tenantId;
     return {
+      'crossCloudCacheOptions': ?crossCloudCacheOptions,
       'identity': ?identity,
       'instanceUri': ?instanceUri,
       'tenantId': ?tenantId,

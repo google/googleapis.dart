@@ -1219,6 +1219,7 @@ api.FirewallEndpoint buildFirewallEndpoint() {
     o.satisfiesPzs = true;
     o.state = 'foo';
     o.updateTime = 'foo';
+    o.wildfireSettings = buildFirewallEndpointWildfireSettings();
   }
   buildCounterFirewallEndpoint--;
   return o;
@@ -1240,6 +1241,7 @@ void checkFirewallEndpoint(api.FirewallEndpoint o) {
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
+    checkFirewallEndpointWildfireSettings(o.wildfireSettings!);
   }
   buildCounterFirewallEndpoint--;
 }
@@ -1318,6 +1320,8 @@ api.FirewallEndpointEndpointSettings buildFirewallEndpointEndpointSettings() {
   final o = api.FirewallEndpointEndpointSettings();
   buildCounterFirewallEndpointEndpointSettings++;
   if (buildCounterFirewallEndpointEndpointSettings < 3) {
+    o.contentCloudRegion = 'foo';
+    o.httpPartialResponseBlocked = true;
     o.jumboFramesEnabled = true;
   }
   buildCounterFirewallEndpointEndpointSettings--;
@@ -1329,9 +1333,77 @@ void checkFirewallEndpointEndpointSettings(
 ) {
   buildCounterFirewallEndpointEndpointSettings++;
   if (buildCounterFirewallEndpointEndpointSettings < 3) {
+    unittest.expect(o.contentCloudRegion!, unittest.equals('foo'));
+    unittest.expect(o.httpPartialResponseBlocked!, unittest.isTrue);
     unittest.expect(o.jumboFramesEnabled!, unittest.isTrue);
   }
   buildCounterFirewallEndpointEndpointSettings--;
+}
+
+core.int buildCounterFirewallEndpointWildfireSettings = 0;
+api.FirewallEndpointWildfireSettings buildFirewallEndpointWildfireSettings() {
+  final o = api.FirewallEndpointWildfireSettings();
+  buildCounterFirewallEndpointWildfireSettings++;
+  if (buildCounterFirewallEndpointWildfireSettings < 3) {
+    o.enabled = true;
+    o.wildfireInlineCloudAnalysisSettings =
+        buildFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings();
+    o.wildfireRealtimeLookupDuration = 'foo';
+    o.wildfireRealtimeLookupTimeoutAction = 'foo';
+    o.wildfireRegion = 'foo';
+  }
+  buildCounterFirewallEndpointWildfireSettings--;
+  return o;
+}
+
+void checkFirewallEndpointWildfireSettings(
+  api.FirewallEndpointWildfireSettings o,
+) {
+  buildCounterFirewallEndpointWildfireSettings++;
+  if (buildCounterFirewallEndpointWildfireSettings < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    checkFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings(
+      o.wildfireInlineCloudAnalysisSettings!,
+    );
+    unittest.expect(o.wildfireRealtimeLookupDuration!, unittest.equals('foo'));
+    unittest.expect(
+      o.wildfireRealtimeLookupTimeoutAction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.wildfireRegion!, unittest.equals('foo'));
+  }
+  buildCounterFirewallEndpointWildfireSettings--;
+}
+
+core.int
+buildCounterFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings =
+    0;
+api.FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings
+buildFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings() {
+  final o =
+      api.FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings();
+  buildCounterFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings++;
+  if (buildCounterFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings <
+      3) {
+    o.maxAnalysisDuration = 'foo';
+    o.submissionTimeoutLoggingDisabled = true;
+    o.timeoutAction = 'foo';
+  }
+  buildCounterFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings--;
+  return o;
+}
+
+void checkFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings(
+  api.FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings o,
+) {
+  buildCounterFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings++;
+  if (buildCounterFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings <
+      3) {
+    unittest.expect(o.maxAnalysisDuration!, unittest.equals('foo'));
+    unittest.expect(o.submissionTimeoutLoggingDisabled!, unittest.isTrue);
+    unittest.expect(o.timeoutAction!, unittest.equals('foo'));
+  }
+  buildCounterFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings--;
 }
 
 core.int buildCounterGatewaySecurityPolicy = 0;
@@ -3216,18 +3288,63 @@ void checkListUrlListsResponse(api.ListUrlListsResponse o) {
   buildCounterListUrlListsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed100() => {
+core.List<core.String> buildUnnamed100() => ['foo', 'foo'];
+
+void checkUnnamed100(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<api.WildfireVerdictChangeRequest> buildUnnamed101() => [
+  buildWildfireVerdictChangeRequest(),
+  buildWildfireVerdictChangeRequest(),
+];
+
+void checkUnnamed101(core.List<api.WildfireVerdictChangeRequest> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWildfireVerdictChangeRequest(o[0]);
+  checkWildfireVerdictChangeRequest(o[1]);
+}
+
+core.int buildCounterListWildfireVerdictChangeRequestsResponse = 0;
+api.ListWildfireVerdictChangeRequestsResponse
+buildListWildfireVerdictChangeRequestsResponse() {
+  final o = api.ListWildfireVerdictChangeRequestsResponse();
+  buildCounterListWildfireVerdictChangeRequestsResponse++;
+  if (buildCounterListWildfireVerdictChangeRequestsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.unreachable = buildUnnamed100();
+    o.wildfireVerdictChangeRequests = buildUnnamed101();
+  }
+  buildCounterListWildfireVerdictChangeRequestsResponse--;
+  return o;
+}
+
+void checkListWildfireVerdictChangeRequestsResponse(
+  api.ListWildfireVerdictChangeRequestsResponse o,
+) {
+  buildCounterListWildfireVerdictChangeRequestsResponse++;
+  if (buildCounterListWildfireVerdictChangeRequestsResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed100(o.unreachable!);
+    checkUnnamed101(o.wildfireVerdictChangeRequests!);
+  }
+  buildCounterListWildfireVerdictChangeRequestsResponse--;
+}
+
+core.Map<core.String, core.String> buildUnnamed102() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed100(core.Map<core.String, core.String> o) {
+void checkUnnamed102(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed101() => {
+core.Map<core.String, core.Object?> buildUnnamed103() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -3240,7 +3357,7 @@ core.Map<core.String, core.Object?> buildUnnamed101() => {
   },
 };
 
-void checkUnnamed101(core.Map<core.String, core.Object?> o) {
+void checkUnnamed103(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -3260,9 +3377,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed100();
+    o.labels = buildUnnamed102();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed101();
+    o.metadata = buildUnnamed103();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -3273,23 +3390,31 @@ void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed100(o.labels!);
+    checkUnnamed102(o.labels!);
     unittest.expect(o.locationId!, unittest.equals('foo'));
-    checkUnnamed101(o.metadata!);
+    checkUnnamed103(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterLocation--;
 }
 
-core.List<api.ValidationCA> buildUnnamed102() => [
+core.List<api.ValidationCA> buildUnnamed104() => [
   buildValidationCA(),
   buildValidationCA(),
 ];
 
-void checkUnnamed102(core.List<api.ValidationCA> o) {
+void checkUnnamed104(core.List<api.ValidationCA> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValidationCA(o[0]);
   checkValidationCA(o[1]);
+}
+
+core.List<core.String> buildUnnamed105() => ['foo', 'foo'];
+
+void checkUnnamed105(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterMTLSPolicy = 0;
@@ -3297,8 +3422,9 @@ api.MTLSPolicy buildMTLSPolicy() {
   final o = api.MTLSPolicy();
   buildCounterMTLSPolicy++;
   if (buildCounterMTLSPolicy < 3) {
-    o.clientValidationCa = buildUnnamed102();
+    o.clientValidationCa = buildUnnamed104();
     o.clientValidationMode = 'foo';
+    o.clientValidationRelaxations = buildUnnamed105();
     o.clientValidationTrustConfig = 'foo';
   }
   buildCounterMTLSPolicy--;
@@ -3308,19 +3434,20 @@ api.MTLSPolicy buildMTLSPolicy() {
 void checkMTLSPolicy(api.MTLSPolicy o) {
   buildCounterMTLSPolicy++;
   if (buildCounterMTLSPolicy < 3) {
-    checkUnnamed102(o.clientValidationCa!);
+    checkUnnamed104(o.clientValidationCa!);
     unittest.expect(o.clientValidationMode!, unittest.equals('foo'));
+    checkUnnamed105(o.clientValidationRelaxations!);
     unittest.expect(o.clientValidationTrustConfig!, unittest.equals('foo'));
   }
   buildCounterMTLSPolicy--;
 }
 
-core.Map<core.String, core.String> buildUnnamed103() => {
+core.Map<core.String, core.String> buildUnnamed106() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed103(core.Map<core.String, core.String> o) {
+void checkUnnamed106(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3334,7 +3461,7 @@ api.MirroringDeployment buildMirroringDeployment() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.forwardingRule = 'foo';
-    o.labels = buildUnnamed103();
+    o.labels = buildUnnamed106();
     o.mirroringDeploymentGroup = 'foo';
     o.name = 'foo';
     o.reconciling = true;
@@ -3351,7 +3478,7 @@ void checkMirroringDeployment(api.MirroringDeployment o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.forwardingRule!, unittest.equals('foo'));
-    checkUnnamed103(o.labels!);
+    checkUnnamed106(o.labels!);
     unittest.expect(o.mirroringDeploymentGroup!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
@@ -3362,12 +3489,12 @@ void checkMirroringDeployment(api.MirroringDeployment o) {
 }
 
 core.List<api.MirroringDeploymentGroupConnectedEndpointGroup>
-buildUnnamed104() => [
+buildUnnamed107() => [
   buildMirroringDeploymentGroupConnectedEndpointGroup(),
   buildMirroringDeploymentGroupConnectedEndpointGroup(),
 ];
 
-void checkUnnamed104(
+void checkUnnamed107(
   core.List<api.MirroringDeploymentGroupConnectedEndpointGroup> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3375,34 +3502,34 @@ void checkUnnamed104(
   checkMirroringDeploymentGroupConnectedEndpointGroup(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed105() => {
+core.Map<core.String, core.String> buildUnnamed108() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed105(core.Map<core.String, core.String> o) {
+void checkUnnamed108(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.MirroringLocation> buildUnnamed106() => [
+core.List<api.MirroringLocation> buildUnnamed109() => [
   buildMirroringLocation(),
   buildMirroringLocation(),
 ];
 
-void checkUnnamed106(core.List<api.MirroringLocation> o) {
+void checkUnnamed109(core.List<api.MirroringLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringLocation(o[0]);
   checkMirroringLocation(o[1]);
 }
 
-core.List<api.MirroringDeploymentGroupDeployment> buildUnnamed107() => [
+core.List<api.MirroringDeploymentGroupDeployment> buildUnnamed110() => [
   buildMirroringDeploymentGroupDeployment(),
   buildMirroringDeploymentGroupDeployment(),
 ];
 
-void checkUnnamed107(core.List<api.MirroringDeploymentGroupDeployment> o) {
+void checkUnnamed110(core.List<api.MirroringDeploymentGroupDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringDeploymentGroupDeployment(o[0]);
   checkMirroringDeploymentGroupDeployment(o[1]);
@@ -3413,13 +3540,13 @@ api.MirroringDeploymentGroup buildMirroringDeploymentGroup() {
   final o = api.MirroringDeploymentGroup();
   buildCounterMirroringDeploymentGroup++;
   if (buildCounterMirroringDeploymentGroup < 3) {
-    o.connectedEndpointGroups = buildUnnamed104();
+    o.connectedEndpointGroups = buildUnnamed107();
     o.createTime = 'foo';
     o.description = 'foo';
-    o.labels = buildUnnamed105();
-    o.locations = buildUnnamed106();
+    o.labels = buildUnnamed108();
+    o.locations = buildUnnamed109();
     o.name = 'foo';
-    o.nestedDeployments = buildUnnamed107();
+    o.nestedDeployments = buildUnnamed110();
     o.network = 'foo';
     o.reconciling = true;
     o.state = 'foo';
@@ -3432,13 +3559,13 @@ api.MirroringDeploymentGroup buildMirroringDeploymentGroup() {
 void checkMirroringDeploymentGroup(api.MirroringDeploymentGroup o) {
   buildCounterMirroringDeploymentGroup++;
   if (buildCounterMirroringDeploymentGroup < 3) {
-    checkUnnamed104(o.connectedEndpointGroups!);
+    checkUnnamed107(o.connectedEndpointGroups!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed105(o.labels!);
-    checkUnnamed106(o.locations!);
+    checkUnnamed108(o.labels!);
+    checkUnnamed109(o.locations!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed107(o.nestedDeployments!);
+    checkUnnamed110(o.nestedDeployments!);
     unittest.expect(o.network!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
@@ -3493,12 +3620,12 @@ void checkMirroringDeploymentGroupDeployment(
   buildCounterMirroringDeploymentGroupDeployment--;
 }
 
-core.List<api.MirroringEndpointGroupAssociationDetails> buildUnnamed108() => [
+core.List<api.MirroringEndpointGroupAssociationDetails> buildUnnamed111() => [
   buildMirroringEndpointGroupAssociationDetails(),
   buildMirroringEndpointGroupAssociationDetails(),
 ];
 
-void checkUnnamed108(
+void checkUnnamed111(
   core.List<api.MirroringEndpointGroupAssociationDetails> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3507,12 +3634,12 @@ void checkUnnamed108(
 }
 
 core.List<api.MirroringEndpointGroupConnectedDeploymentGroup>
-buildUnnamed109() => [
+buildUnnamed112() => [
   buildMirroringEndpointGroupConnectedDeploymentGroup(),
   buildMirroringEndpointGroupConnectedDeploymentGroup(),
 ];
 
-void checkUnnamed109(
+void checkUnnamed112(
   core.List<api.MirroringEndpointGroupConnectedDeploymentGroup> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3520,12 +3647,12 @@ void checkUnnamed109(
   checkMirroringEndpointGroupConnectedDeploymentGroup(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed110() => {
+core.Map<core.String, core.String> buildUnnamed113() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed110(core.Map<core.String, core.String> o) {
+void checkUnnamed113(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3536,11 +3663,11 @@ api.MirroringEndpointGroup buildMirroringEndpointGroup() {
   final o = api.MirroringEndpointGroup();
   buildCounterMirroringEndpointGroup++;
   if (buildCounterMirroringEndpointGroup < 3) {
-    o.associations = buildUnnamed108();
-    o.connectedDeploymentGroups = buildUnnamed109();
+    o.associations = buildUnnamed111();
+    o.connectedDeploymentGroups = buildUnnamed112();
     o.createTime = 'foo';
     o.description = 'foo';
-    o.labels = buildUnnamed110();
+    o.labels = buildUnnamed113();
     o.mirroringDeploymentGroup = 'foo';
     o.name = 'foo';
     o.reconciling = true;
@@ -3555,11 +3682,11 @@ api.MirroringEndpointGroup buildMirroringEndpointGroup() {
 void checkMirroringEndpointGroup(api.MirroringEndpointGroup o) {
   buildCounterMirroringEndpointGroup++;
   if (buildCounterMirroringEndpointGroup < 3) {
-    checkUnnamed108(o.associations!);
-    checkUnnamed109(o.connectedDeploymentGroups!);
+    checkUnnamed111(o.associations!);
+    checkUnnamed112(o.connectedDeploymentGroups!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed110(o.labels!);
+    checkUnnamed113(o.labels!);
     unittest.expect(o.mirroringDeploymentGroup!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
@@ -3570,35 +3697,35 @@ void checkMirroringEndpointGroup(api.MirroringEndpointGroup o) {
   buildCounterMirroringEndpointGroup--;
 }
 
-core.Map<core.String, core.String> buildUnnamed111() => {
+core.Map<core.String, core.String> buildUnnamed114() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed111(core.Map<core.String, core.String> o) {
+void checkUnnamed114(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.MirroringLocation> buildUnnamed112() => [
+core.List<api.MirroringLocation> buildUnnamed115() => [
   buildMirroringLocation(),
   buildMirroringLocation(),
 ];
 
-void checkUnnamed112(core.List<api.MirroringLocation> o) {
+void checkUnnamed115(core.List<api.MirroringLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringLocation(o[0]);
   checkMirroringLocation(o[1]);
 }
 
 core.List<api.MirroringEndpointGroupAssociationLocationDetails>
-buildUnnamed113() => [
+buildUnnamed116() => [
   buildMirroringEndpointGroupAssociationLocationDetails(),
   buildMirroringEndpointGroupAssociationLocationDetails(),
 ];
 
-void checkUnnamed113(
+void checkUnnamed116(
   core.List<api.MirroringEndpointGroupAssociationLocationDetails> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3612,9 +3739,9 @@ api.MirroringEndpointGroupAssociation buildMirroringEndpointGroupAssociation() {
   buildCounterMirroringEndpointGroupAssociation++;
   if (buildCounterMirroringEndpointGroupAssociation < 3) {
     o.createTime = 'foo';
-    o.labels = buildUnnamed111();
-    o.locations = buildUnnamed112();
-    o.locationsDetails = buildUnnamed113();
+    o.labels = buildUnnamed114();
+    o.locations = buildUnnamed115();
+    o.locationsDetails = buildUnnamed116();
     o.mirroringEndpointGroup = 'foo';
     o.name = 'foo';
     o.network = 'foo';
@@ -3633,9 +3760,9 @@ void checkMirroringEndpointGroupAssociation(
   buildCounterMirroringEndpointGroupAssociation++;
   if (buildCounterMirroringEndpointGroupAssociation < 3) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
-    checkUnnamed111(o.labels!);
-    checkUnnamed112(o.locations!);
-    checkUnnamed113(o.locationsDetails!);
+    checkUnnamed114(o.labels!);
+    checkUnnamed115(o.locations!);
+    checkUnnamed116(o.locationsDetails!);
     unittest.expect(o.mirroringEndpointGroup!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.network!, unittest.equals('foo'));
@@ -3697,12 +3824,12 @@ void checkMirroringEndpointGroupAssociationLocationDetails(
   buildCounterMirroringEndpointGroupAssociationLocationDetails--;
 }
 
-core.List<api.MirroringLocation> buildUnnamed114() => [
+core.List<api.MirroringLocation> buildUnnamed117() => [
   buildMirroringLocation(),
   buildMirroringLocation(),
 ];
 
-void checkUnnamed114(core.List<api.MirroringLocation> o) {
+void checkUnnamed117(core.List<api.MirroringLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMirroringLocation(o[0]);
   checkMirroringLocation(o[1]);
@@ -3714,7 +3841,7 @@ buildMirroringEndpointGroupConnectedDeploymentGroup() {
   final o = api.MirroringEndpointGroupConnectedDeploymentGroup();
   buildCounterMirroringEndpointGroupConnectedDeploymentGroup++;
   if (buildCounterMirroringEndpointGroupConnectedDeploymentGroup < 3) {
-    o.locations = buildUnnamed114();
+    o.locations = buildUnnamed117();
     o.name = 'foo';
   }
   buildCounterMirroringEndpointGroupConnectedDeploymentGroup--;
@@ -3726,7 +3853,7 @@ void checkMirroringEndpointGroupConnectedDeploymentGroup(
 ) {
   buildCounterMirroringEndpointGroupConnectedDeploymentGroup++;
   if (buildCounterMirroringEndpointGroupConnectedDeploymentGroup < 3) {
-    checkUnnamed114(o.locations!);
+    checkUnnamed117(o.locations!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterMirroringEndpointGroupConnectedDeploymentGroup--;
@@ -3753,7 +3880,7 @@ void checkMirroringLocation(api.MirroringLocation o) {
   buildCounterMirroringLocation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed115() => {
+core.Map<core.String, core.Object?> buildUnnamed118() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -3766,7 +3893,7 @@ core.Map<core.String, core.Object?> buildUnnamed115() => {
   },
 };
 
-void checkUnnamed115(core.Map<core.String, core.Object?> o) {
+void checkUnnamed118(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -3780,7 +3907,7 @@ void checkUnnamed115(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed116() => {
+core.Map<core.String, core.Object?> buildUnnamed119() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -3793,7 +3920,7 @@ core.Map<core.String, core.Object?> buildUnnamed116() => {
   },
 };
 
-void checkUnnamed116(core.Map<core.String, core.Object?> o) {
+void checkUnnamed119(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -3814,9 +3941,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed115();
+    o.metadata = buildUnnamed118();
     o.name = 'foo';
-    o.response = buildUnnamed116();
+    o.response = buildUnnamed119();
   }
   buildCounterOperation--;
   return o;
@@ -3827,16 +3954,16 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed115(o.metadata!);
+    checkUnnamed118(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed116(o.response!);
+    checkUnnamed119(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.List<core.String> buildUnnamed117() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed120() => ['foo', 'foo'];
 
-void checkUnnamed117(core.List<core.String> o) {
+void checkUnnamed120(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3847,7 +3974,7 @@ api.RemoveAddressGroupItemsRequest buildRemoveAddressGroupItemsRequest() {
   final o = api.RemoveAddressGroupItemsRequest();
   buildCounterRemoveAddressGroupItemsRequest++;
   if (buildCounterRemoveAddressGroupItemsRequest < 3) {
-    o.items = buildUnnamed117();
+    o.items = buildUnnamed120();
     o.requestId = 'foo';
   }
   buildCounterRemoveAddressGroupItemsRequest--;
@@ -3857,26 +3984,26 @@ api.RemoveAddressGroupItemsRequest buildRemoveAddressGroupItemsRequest() {
 void checkRemoveAddressGroupItemsRequest(api.RemoveAddressGroupItemsRequest o) {
   buildCounterRemoveAddressGroupItemsRequest++;
   if (buildCounterRemoveAddressGroupItemsRequest < 3) {
-    checkUnnamed117(o.items!);
+    checkUnnamed120(o.items!);
     unittest.expect(o.requestId!, unittest.equals('foo'));
   }
   buildCounterRemoveAddressGroupItemsRequest--;
 }
 
-core.List<api.Destination> buildUnnamed118() => [
+core.List<api.Destination> buildUnnamed121() => [
   buildDestination(),
   buildDestination(),
 ];
 
-void checkUnnamed118(core.List<api.Destination> o) {
+void checkUnnamed121(core.List<api.Destination> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDestination(o[0]);
   checkDestination(o[1]);
 }
 
-core.List<api.Source> buildUnnamed119() => [buildSource(), buildSource()];
+core.List<api.Source> buildUnnamed122() => [buildSource(), buildSource()];
 
-void checkUnnamed119(core.List<api.Source> o) {
+void checkUnnamed122(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSource(o[0]);
   checkSource(o[1]);
@@ -3887,8 +4014,8 @@ api.Rule buildRule() {
   final o = api.Rule();
   buildCounterRule++;
   if (buildCounterRule < 3) {
-    o.destinations = buildUnnamed118();
-    o.sources = buildUnnamed119();
+    o.destinations = buildUnnamed121();
+    o.sources = buildUnnamed122();
   }
   buildCounterRule--;
   return o;
@@ -3897,18 +4024,18 @@ api.Rule buildRule() {
 void checkRule(api.Rule o) {
   buildCounterRule++;
   if (buildCounterRule < 3) {
-    checkUnnamed118(o.destinations!);
-    checkUnnamed119(o.sources!);
+    checkUnnamed121(o.destinations!);
+    checkUnnamed122(o.sources!);
   }
   buildCounterRule--;
 }
 
-core.Map<core.String, core.String> buildUnnamed120() => {
+core.Map<core.String, core.String> buildUnnamed123() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed120(core.Map<core.String, core.String> o) {
+void checkUnnamed123(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3920,7 +4047,7 @@ api.SACAttachment buildSACAttachment() {
   buildCounterSACAttachment++;
   if (buildCounterSACAttachment < 3) {
     o.createTime = 'foo';
-    o.labels = buildUnnamed120();
+    o.labels = buildUnnamed123();
     o.name = 'foo';
     o.nccGateway = 'foo';
     o.sacRealm = 'foo';
@@ -3935,7 +4062,7 @@ void checkSACAttachment(api.SACAttachment o) {
   buildCounterSACAttachment++;
   if (buildCounterSACAttachment < 3) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
-    checkUnnamed120(o.labels!);
+    checkUnnamed123(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.nccGateway!, unittest.equals('foo'));
     unittest.expect(o.sacRealm!, unittest.equals('foo'));
@@ -3945,12 +4072,12 @@ void checkSACAttachment(api.SACAttachment o) {
   buildCounterSACAttachment--;
 }
 
-core.Map<core.String, core.String> buildUnnamed121() => {
+core.Map<core.String, core.String> buildUnnamed124() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed121(core.Map<core.String, core.String> o) {
+void checkUnnamed124(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3962,7 +4089,7 @@ api.SACRealm buildSACRealm() {
   buildCounterSACRealm++;
   if (buildCounterSACRealm < 3) {
     o.createTime = 'foo';
-    o.labels = buildUnnamed121();
+    o.labels = buildUnnamed124();
     o.name = 'foo';
     o.pairingKey = buildSACRealmPairingKey();
     o.securityService = 'foo';
@@ -3977,7 +4104,7 @@ void checkSACRealm(api.SACRealm o) {
   buildCounterSACRealm++;
   if (buildCounterSACRealm < 3) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
-    checkUnnamed121(o.labels!);
+    checkUnnamed124(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkSACRealmPairingKey(o.pairingKey!);
     unittest.expect(o.securityService!, unittest.equals('foo'));
@@ -4008,12 +4135,12 @@ void checkSACRealmPairingKey(api.SACRealmPairingKey o) {
   buildCounterSACRealmPairingKey--;
 }
 
-core.Map<core.String, core.String> buildUnnamed122() => {
+core.Map<core.String, core.String> buildUnnamed125() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed122(core.Map<core.String, core.String> o) {
+void checkUnnamed125(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -4029,12 +4156,13 @@ api.SecurityProfile buildSecurityProfile() {
     o.customMirroringProfile = buildCustomMirroringProfile();
     o.description = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed122();
+    o.labels = buildUnnamed125();
     o.name = 'foo';
     o.threatPreventionProfile = buildThreatPreventionProfile();
     o.type = 'foo';
     o.updateTime = 'foo';
     o.urlFilteringProfile = buildUrlFilteringProfile();
+    o.wildfireAnalysisProfile = buildWildfireAnalysisProfile();
   }
   buildCounterSecurityProfile--;
   return o;
@@ -4048,22 +4176,23 @@ void checkSecurityProfile(api.SecurityProfile o) {
     checkCustomMirroringProfile(o.customMirroringProfile!);
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
-    checkUnnamed122(o.labels!);
+    checkUnnamed125(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkThreatPreventionProfile(o.threatPreventionProfile!);
     unittest.expect(o.type!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     checkUrlFilteringProfile(o.urlFilteringProfile!);
+    checkWildfireAnalysisProfile(o.wildfireAnalysisProfile!);
   }
   buildCounterSecurityProfile--;
 }
 
-core.Map<core.String, core.String> buildUnnamed123() => {
+core.Map<core.String, core.String> buildUnnamed126() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed123(core.Map<core.String, core.String> o) {
+void checkUnnamed126(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -4080,11 +4209,12 @@ api.SecurityProfileGroup buildSecurityProfileGroup() {
     o.dataPathId = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed123();
+    o.labels = buildUnnamed126();
     o.name = 'foo';
     o.threatPreventionProfile = 'foo';
     o.updateTime = 'foo';
     o.urlFilteringProfile = 'foo';
+    o.wildfireAnalysisProfile = 'foo';
   }
   buildCounterSecurityProfileGroup--;
   return o;
@@ -4099,21 +4229,22 @@ void checkSecurityProfileGroup(api.SecurityProfileGroup o) {
     unittest.expect(o.dataPathId!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
-    checkUnnamed123(o.labels!);
+    checkUnnamed126(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.threatPreventionProfile!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
     unittest.expect(o.urlFilteringProfile!, unittest.equals('foo'));
+    unittest.expect(o.wildfireAnalysisProfile!, unittest.equals('foo'));
   }
   buildCounterSecurityProfileGroup--;
 }
 
-core.Map<core.String, core.String> buildUnnamed124() => {
+core.Map<core.String, core.String> buildUnnamed127() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed124(core.Map<core.String, core.String> o) {
+void checkUnnamed127(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -4127,7 +4258,7 @@ api.ServerTlsPolicy buildServerTlsPolicy() {
     o.allowOpen = true;
     o.createTime = 'foo';
     o.description = 'foo';
-    o.labels = buildUnnamed124();
+    o.labels = buildUnnamed127();
     o.mtlsPolicy = buildMTLSPolicy();
     o.name = 'foo';
     o.serverCertificate =
@@ -4144,7 +4275,7 @@ void checkServerTlsPolicy(api.ServerTlsPolicy o) {
     unittest.expect(o.allowOpen!, unittest.isTrue);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed124(o.labels!);
+    checkUnnamed127(o.labels!);
     checkMTLSPolicy(o.mtlsPolicy!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudNetworksecurityV1CertificateProvider(o.serverCertificate!);
@@ -4174,17 +4305,17 @@ void checkSeverityOverride(api.SeverityOverride o) {
   buildCounterSeverityOverride--;
 }
 
-core.List<core.String> buildUnnamed125() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed128() => ['foo', 'foo'];
 
-void checkUnnamed125(core.List<core.String> o) {
+void checkUnnamed128(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed126() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed129() => ['foo', 'foo'];
 
-void checkUnnamed126(core.List<core.String> o) {
+void checkUnnamed129(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4195,8 +4326,8 @@ api.Source buildSource() {
   final o = api.Source();
   buildCounterSource++;
   if (buildCounterSource < 3) {
-    o.ipBlocks = buildUnnamed125();
-    o.principals = buildUnnamed126();
+    o.ipBlocks = buildUnnamed128();
+    o.principals = buildUnnamed129();
   }
   buildCounterSource--;
   return o;
@@ -4205,13 +4336,13 @@ api.Source buildSource() {
 void checkSource(api.Source o) {
   buildCounterSource++;
   if (buildCounterSource < 3) {
-    checkUnnamed125(o.ipBlocks!);
-    checkUnnamed126(o.principals!);
+    checkUnnamed128(o.ipBlocks!);
+    checkUnnamed129(o.principals!);
   }
   buildCounterSource--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed127() => {
+core.Map<core.String, core.Object?> buildUnnamed130() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -4224,7 +4355,7 @@ core.Map<core.String, core.Object?> buildUnnamed127() => {
   },
 };
 
-void checkUnnamed127(core.Map<core.String, core.Object?> o) {
+void checkUnnamed130(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -4238,15 +4369,15 @@ void checkUnnamed127(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed128() => [
-  buildUnnamed127(),
-  buildUnnamed127(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed131() => [
+  buildUnnamed130(),
+  buildUnnamed130(),
 ];
 
-void checkUnnamed128(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed131(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed127(o[0]);
-  checkUnnamed127(o[1]);
+  checkUnnamed130(o[0]);
+  checkUnnamed130(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -4255,7 +4386,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed128();
+    o.details = buildUnnamed131();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -4266,7 +4397,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed128(o.details!);
+    checkUnnamed131(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -4295,34 +4426,34 @@ void checkThreatOverride(api.ThreatOverride o) {
   buildCounterThreatOverride--;
 }
 
-core.List<api.AntivirusOverride> buildUnnamed129() => [
+core.List<api.AntivirusOverride> buildUnnamed132() => [
   buildAntivirusOverride(),
   buildAntivirusOverride(),
 ];
 
-void checkUnnamed129(core.List<api.AntivirusOverride> o) {
+void checkUnnamed132(core.List<api.AntivirusOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAntivirusOverride(o[0]);
   checkAntivirusOverride(o[1]);
 }
 
-core.List<api.SeverityOverride> buildUnnamed130() => [
+core.List<api.SeverityOverride> buildUnnamed133() => [
   buildSeverityOverride(),
   buildSeverityOverride(),
 ];
 
-void checkUnnamed130(core.List<api.SeverityOverride> o) {
+void checkUnnamed133(core.List<api.SeverityOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSeverityOverride(o[0]);
   checkSeverityOverride(o[1]);
 }
 
-core.List<api.ThreatOverride> buildUnnamed131() => [
+core.List<api.ThreatOverride> buildUnnamed134() => [
   buildThreatOverride(),
   buildThreatOverride(),
 ];
 
-void checkUnnamed131(core.List<api.ThreatOverride> o) {
+void checkUnnamed134(core.List<api.ThreatOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatOverride(o[0]);
   checkThreatOverride(o[1]);
@@ -4333,9 +4464,9 @@ api.ThreatPreventionProfile buildThreatPreventionProfile() {
   final o = api.ThreatPreventionProfile();
   buildCounterThreatPreventionProfile++;
   if (buildCounterThreatPreventionProfile < 3) {
-    o.antivirusOverrides = buildUnnamed129();
-    o.severityOverrides = buildUnnamed130();
-    o.threatOverrides = buildUnnamed131();
+    o.antivirusOverrides = buildUnnamed132();
+    o.severityOverrides = buildUnnamed133();
+    o.threatOverrides = buildUnnamed134();
   }
   buildCounterThreatPreventionProfile--;
   return o;
@@ -4344,16 +4475,16 @@ api.ThreatPreventionProfile buildThreatPreventionProfile() {
 void checkThreatPreventionProfile(api.ThreatPreventionProfile o) {
   buildCounterThreatPreventionProfile++;
   if (buildCounterThreatPreventionProfile < 3) {
-    checkUnnamed129(o.antivirusOverrides!);
-    checkUnnamed130(o.severityOverrides!);
-    checkUnnamed131(o.threatOverrides!);
+    checkUnnamed132(o.antivirusOverrides!);
+    checkUnnamed133(o.severityOverrides!);
+    checkUnnamed134(o.threatOverrides!);
   }
   buildCounterThreatPreventionProfile--;
 }
 
-core.List<core.String> buildUnnamed132() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed135() => ['foo', 'foo'];
 
-void checkUnnamed132(core.List<core.String> o) {
+void checkUnnamed135(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4367,7 +4498,7 @@ api.TlsInspectionPolicy buildTlsInspectionPolicy() {
     o.caPool = 'foo';
     o.certificateIssuanceMode = 'foo';
     o.createTime = 'foo';
-    o.customTlsFeatures = buildUnnamed132();
+    o.customTlsFeatures = buildUnnamed135();
     o.description = 'foo';
     o.excludePublicCaSet = true;
     o.minTlsVersion = 'foo';
@@ -4386,7 +4517,7 @@ void checkTlsInspectionPolicy(api.TlsInspectionPolicy o) {
     unittest.expect(o.caPool!, unittest.equals('foo'));
     unittest.expect(o.certificateIssuanceMode!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
-    checkUnnamed132(o.customTlsFeatures!);
+    checkUnnamed135(o.customTlsFeatures!);
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.excludePublicCaSet!, unittest.isTrue);
     unittest.expect(o.minTlsVersion!, unittest.equals('foo'));
@@ -4398,9 +4529,9 @@ void checkTlsInspectionPolicy(api.TlsInspectionPolicy o) {
   buildCounterTlsInspectionPolicy--;
 }
 
-core.List<core.String> buildUnnamed133() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed136() => ['foo', 'foo'];
 
-void checkUnnamed133(core.List<core.String> o) {
+void checkUnnamed136(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4413,7 +4544,7 @@ api.UrlFilter buildUrlFilter() {
   if (buildCounterUrlFilter < 3) {
     o.filteringAction = 'foo';
     o.priority = 42;
-    o.urls = buildUnnamed133();
+    o.urls = buildUnnamed136();
   }
   buildCounterUrlFilter--;
   return o;
@@ -4424,17 +4555,17 @@ void checkUrlFilter(api.UrlFilter o) {
   if (buildCounterUrlFilter < 3) {
     unittest.expect(o.filteringAction!, unittest.equals('foo'));
     unittest.expect(o.priority!, unittest.equals(42));
-    checkUnnamed133(o.urls!);
+    checkUnnamed136(o.urls!);
   }
   buildCounterUrlFilter--;
 }
 
-core.List<api.UrlFilter> buildUnnamed134() => [
+core.List<api.UrlFilter> buildUnnamed137() => [
   buildUrlFilter(),
   buildUrlFilter(),
 ];
 
-void checkUnnamed134(core.List<api.UrlFilter> o) {
+void checkUnnamed137(core.List<api.UrlFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlFilter(o[0]);
   checkUrlFilter(o[1]);
@@ -4445,7 +4576,7 @@ api.UrlFilteringProfile buildUrlFilteringProfile() {
   final o = api.UrlFilteringProfile();
   buildCounterUrlFilteringProfile++;
   if (buildCounterUrlFilteringProfile < 3) {
-    o.urlFilters = buildUnnamed134();
+    o.urlFilters = buildUnnamed137();
   }
   buildCounterUrlFilteringProfile--;
   return o;
@@ -4454,14 +4585,14 @@ api.UrlFilteringProfile buildUrlFilteringProfile() {
 void checkUrlFilteringProfile(api.UrlFilteringProfile o) {
   buildCounterUrlFilteringProfile++;
   if (buildCounterUrlFilteringProfile < 3) {
-    checkUnnamed134(o.urlFilters!);
+    checkUnnamed137(o.urlFilters!);
   }
   buildCounterUrlFilteringProfile--;
 }
 
-core.List<core.String> buildUnnamed135() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed138() => ['foo', 'foo'];
 
-void checkUnnamed135(core.List<core.String> o) {
+void checkUnnamed138(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4476,7 +4607,7 @@ api.UrlList buildUrlList() {
     o.description = 'foo';
     o.name = 'foo';
     o.updateTime = 'foo';
-    o.values = buildUnnamed135();
+    o.values = buildUnnamed138();
   }
   buildCounterUrlList--;
   return o;
@@ -4489,7 +4620,7 @@ void checkUrlList(api.UrlList o) {
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
-    checkUnnamed135(o.values!);
+    checkUnnamed138(o.values!);
   }
   buildCounterUrlList--;
 }
@@ -4515,17 +4646,422 @@ void checkValidationCA(api.ValidationCA o) {
   buildCounterValidationCA--;
 }
 
-core.List<core.String> buildUnnamed136() => ['foo', 'foo'];
+core.List<api.WildfireInlineCloudAnalysisRule> buildUnnamed139() => [
+  buildWildfireInlineCloudAnalysisRule(),
+  buildWildfireInlineCloudAnalysisRule(),
+];
 
-void checkUnnamed136(core.List<core.String> o) {
+void checkUnnamed139(core.List<api.WildfireInlineCloudAnalysisRule> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWildfireInlineCloudAnalysisRule(o[0]);
+  checkWildfireInlineCloudAnalysisRule(o[1]);
+}
+
+core.List<api.WildfireInlineMlOverride> buildUnnamed140() => [
+  buildWildfireInlineMlOverride(),
+  buildWildfireInlineMlOverride(),
+];
+
+void checkUnnamed140(core.List<api.WildfireInlineMlOverride> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWildfireInlineMlOverride(o[0]);
+  checkWildfireInlineMlOverride(o[1]);
+}
+
+core.List<api.WildfireInlineMlSettings> buildUnnamed141() => [
+  buildWildfireInlineMlSettings(),
+  buildWildfireInlineMlSettings(),
+];
+
+void checkUnnamed141(core.List<api.WildfireInlineMlSettings> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWildfireInlineMlSettings(o[0]);
+  checkWildfireInlineMlSettings(o[1]);
+}
+
+core.List<api.WildfireOverride> buildUnnamed142() => [
+  buildWildfireOverride(),
+  buildWildfireOverride(),
+];
+
+void checkUnnamed142(core.List<api.WildfireOverride> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWildfireOverride(o[0]);
+  checkWildfireOverride(o[1]);
+}
+
+core.List<api.WildfireSubmissionRule> buildUnnamed143() => [
+  buildWildfireSubmissionRule(),
+  buildWildfireSubmissionRule(),
+];
+
+void checkUnnamed143(core.List<api.WildfireSubmissionRule> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWildfireSubmissionRule(o[0]);
+  checkWildfireSubmissionRule(o[1]);
+}
+
+core.List<api.WildfireThreatOverride> buildUnnamed144() => [
+  buildWildfireThreatOverride(),
+  buildWildfireThreatOverride(),
+];
+
+void checkUnnamed144(core.List<api.WildfireThreatOverride> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWildfireThreatOverride(o[0]);
+  checkWildfireThreatOverride(o[1]);
+}
+
+core.int buildCounterWildfireAnalysisProfile = 0;
+api.WildfireAnalysisProfile buildWildfireAnalysisProfile() {
+  final o = api.WildfireAnalysisProfile();
+  buildCounterWildfireAnalysisProfile++;
+  if (buildCounterWildfireAnalysisProfile < 3) {
+    o.wildfireInlineCloudAnalysisRules = buildUnnamed139();
+    o.wildfireInlineMlOverrides = buildUnnamed140();
+    o.wildfireInlineMlSetting = buildWildfireInlineMlSettings();
+    o.wildfireInlineMlSettings = buildUnnamed141();
+    o.wildfireOverrides = buildUnnamed142();
+    o.wildfireRealtimeLookup = true;
+    o.wildfireSubmissionRules = buildUnnamed143();
+    o.wildfireThreatOverrides = buildUnnamed144();
+  }
+  buildCounterWildfireAnalysisProfile--;
+  return o;
+}
+
+void checkWildfireAnalysisProfile(api.WildfireAnalysisProfile o) {
+  buildCounterWildfireAnalysisProfile++;
+  if (buildCounterWildfireAnalysisProfile < 3) {
+    checkUnnamed139(o.wildfireInlineCloudAnalysisRules!);
+    checkUnnamed140(o.wildfireInlineMlOverrides!);
+    checkWildfireInlineMlSettings(o.wildfireInlineMlSetting!);
+    checkUnnamed141(o.wildfireInlineMlSettings!);
+    checkUnnamed142(o.wildfireOverrides!);
+    unittest.expect(o.wildfireRealtimeLookup!, unittest.isTrue);
+    checkUnnamed143(o.wildfireSubmissionRules!);
+    checkUnnamed144(o.wildfireThreatOverrides!);
+  }
+  buildCounterWildfireAnalysisProfile--;
+}
+
+core.int buildCounterWildfireInlineCloudAnalysisRule = 0;
+api.WildfireInlineCloudAnalysisRule buildWildfireInlineCloudAnalysisRule() {
+  final o = api.WildfireInlineCloudAnalysisRule();
+  buildCounterWildfireInlineCloudAnalysisRule++;
+  if (buildCounterWildfireInlineCloudAnalysisRule < 3) {
+    o.action = 'foo';
+    o.customFileTypes = buildWildfireInlineCloudAnalysisRuleCustomFileTypes();
+    o.direction = 'foo';
+    o.fileSelectionMode = 'foo';
+  }
+  buildCounterWildfireInlineCloudAnalysisRule--;
+  return o;
+}
+
+void checkWildfireInlineCloudAnalysisRule(
+  api.WildfireInlineCloudAnalysisRule o,
+) {
+  buildCounterWildfireInlineCloudAnalysisRule++;
+  if (buildCounterWildfireInlineCloudAnalysisRule < 3) {
+    unittest.expect(o.action!, unittest.equals('foo'));
+    checkWildfireInlineCloudAnalysisRuleCustomFileTypes(o.customFileTypes!);
+    unittest.expect(o.direction!, unittest.equals('foo'));
+    unittest.expect(o.fileSelectionMode!, unittest.equals('foo'));
+  }
+  buildCounterWildfireInlineCloudAnalysisRule--;
+}
+
+core.List<core.String> buildUnnamed145() => ['foo', 'foo'];
+
+void checkUnnamed145(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed137() => ['foo', 'foo'];
+core.int buildCounterWildfireInlineCloudAnalysisRuleCustomFileTypes = 0;
+api.WildfireInlineCloudAnalysisRuleCustomFileTypes
+buildWildfireInlineCloudAnalysisRuleCustomFileTypes() {
+  final o = api.WildfireInlineCloudAnalysisRuleCustomFileTypes();
+  buildCounterWildfireInlineCloudAnalysisRuleCustomFileTypes++;
+  if (buildCounterWildfireInlineCloudAnalysisRuleCustomFileTypes < 3) {
+    o.fileTypes = buildUnnamed145();
+  }
+  buildCounterWildfireInlineCloudAnalysisRuleCustomFileTypes--;
+  return o;
+}
 
-void checkUnnamed137(core.List<core.String> o) {
+void checkWildfireInlineCloudAnalysisRuleCustomFileTypes(
+  api.WildfireInlineCloudAnalysisRuleCustomFileTypes o,
+) {
+  buildCounterWildfireInlineCloudAnalysisRuleCustomFileTypes++;
+  if (buildCounterWildfireInlineCloudAnalysisRuleCustomFileTypes < 3) {
+    checkUnnamed145(o.fileTypes!);
+  }
+  buildCounterWildfireInlineCloudAnalysisRuleCustomFileTypes--;
+}
+
+core.int buildCounterWildfireInlineMlFileException = 0;
+api.WildfireInlineMlFileException buildWildfireInlineMlFileException() {
+  final o = api.WildfireInlineMlFileException();
+  buildCounterWildfireInlineMlFileException++;
+  if (buildCounterWildfireInlineMlFileException < 3) {
+    o.filename = 'foo';
+    o.partialHash = 'foo';
+  }
+  buildCounterWildfireInlineMlFileException--;
+  return o;
+}
+
+void checkWildfireInlineMlFileException(api.WildfireInlineMlFileException o) {
+  buildCounterWildfireInlineMlFileException++;
+  if (buildCounterWildfireInlineMlFileException < 3) {
+    unittest.expect(o.filename!, unittest.equals('foo'));
+    unittest.expect(o.partialHash!, unittest.equals('foo'));
+  }
+  buildCounterWildfireInlineMlFileException--;
+}
+
+core.int buildCounterWildfireInlineMlOverride = 0;
+api.WildfireInlineMlOverride buildWildfireInlineMlOverride() {
+  final o = api.WildfireInlineMlOverride();
+  buildCounterWildfireInlineMlOverride++;
+  if (buildCounterWildfireInlineMlOverride < 3) {
+    o.action = 'foo';
+    o.protocol = 'foo';
+  }
+  buildCounterWildfireInlineMlOverride--;
+  return o;
+}
+
+void checkWildfireInlineMlOverride(api.WildfireInlineMlOverride o) {
+  buildCounterWildfireInlineMlOverride++;
+  if (buildCounterWildfireInlineMlOverride < 3) {
+    unittest.expect(o.action!, unittest.equals('foo'));
+    unittest.expect(o.protocol!, unittest.equals('foo'));
+  }
+  buildCounterWildfireInlineMlOverride--;
+}
+
+core.List<api.WildfireInlineMlFileException> buildUnnamed146() => [
+  buildWildfireInlineMlFileException(),
+  buildWildfireInlineMlFileException(),
+];
+
+void checkUnnamed146(core.List<api.WildfireInlineMlFileException> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWildfireInlineMlFileException(o[0]);
+  checkWildfireInlineMlFileException(o[1]);
+}
+
+core.List<api.WildfireInlineMlSettingsInlineMlConfig> buildUnnamed147() => [
+  buildWildfireInlineMlSettingsInlineMlConfig(),
+  buildWildfireInlineMlSettingsInlineMlConfig(),
+];
+
+void checkUnnamed147(core.List<api.WildfireInlineMlSettingsInlineMlConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWildfireInlineMlSettingsInlineMlConfig(o[0]);
+  checkWildfireInlineMlSettingsInlineMlConfig(o[1]);
+}
+
+core.int buildCounterWildfireInlineMlSettings = 0;
+api.WildfireInlineMlSettings buildWildfireInlineMlSettings() {
+  final o = api.WildfireInlineMlSettings();
+  buildCounterWildfireInlineMlSettings++;
+  if (buildCounterWildfireInlineMlSettings < 3) {
+    o.fileExceptions = buildUnnamed146();
+    o.inlineMlConfigs = buildUnnamed147();
+  }
+  buildCounterWildfireInlineMlSettings--;
+  return o;
+}
+
+void checkWildfireInlineMlSettings(api.WildfireInlineMlSettings o) {
+  buildCounterWildfireInlineMlSettings++;
+  if (buildCounterWildfireInlineMlSettings < 3) {
+    checkUnnamed146(o.fileExceptions!);
+    checkUnnamed147(o.inlineMlConfigs!);
+  }
+  buildCounterWildfireInlineMlSettings--;
+}
+
+core.int buildCounterWildfireInlineMlSettingsInlineMlConfig = 0;
+api.WildfireInlineMlSettingsInlineMlConfig
+buildWildfireInlineMlSettingsInlineMlConfig() {
+  final o = api.WildfireInlineMlSettingsInlineMlConfig();
+  buildCounterWildfireInlineMlSettingsInlineMlConfig++;
+  if (buildCounterWildfireInlineMlSettingsInlineMlConfig < 3) {
+    o.action = 'foo';
+    o.fileType = 'foo';
+  }
+  buildCounterWildfireInlineMlSettingsInlineMlConfig--;
+  return o;
+}
+
+void checkWildfireInlineMlSettingsInlineMlConfig(
+  api.WildfireInlineMlSettingsInlineMlConfig o,
+) {
+  buildCounterWildfireInlineMlSettingsInlineMlConfig++;
+  if (buildCounterWildfireInlineMlSettingsInlineMlConfig < 3) {
+    unittest.expect(o.action!, unittest.equals('foo'));
+    unittest.expect(o.fileType!, unittest.equals('foo'));
+  }
+  buildCounterWildfireInlineMlSettingsInlineMlConfig--;
+}
+
+core.int buildCounterWildfireOverride = 0;
+api.WildfireOverride buildWildfireOverride() {
+  final o = api.WildfireOverride();
+  buildCounterWildfireOverride++;
+  if (buildCounterWildfireOverride < 3) {
+    o.action = 'foo';
+    o.protocol = 'foo';
+  }
+  buildCounterWildfireOverride--;
+  return o;
+}
+
+void checkWildfireOverride(api.WildfireOverride o) {
+  buildCounterWildfireOverride++;
+  if (buildCounterWildfireOverride < 3) {
+    unittest.expect(o.action!, unittest.equals('foo'));
+    unittest.expect(o.protocol!, unittest.equals('foo'));
+  }
+  buildCounterWildfireOverride--;
+}
+
+core.int buildCounterWildfireSubmissionRule = 0;
+api.WildfireSubmissionRule buildWildfireSubmissionRule() {
+  final o = api.WildfireSubmissionRule();
+  buildCounterWildfireSubmissionRule++;
+  if (buildCounterWildfireSubmissionRule < 3) {
+    o.customFileTypes = buildWildfireSubmissionRuleCustomFileTypes();
+    o.direction = 'foo';
+    o.fileSelectionMode = 'foo';
+  }
+  buildCounterWildfireSubmissionRule--;
+  return o;
+}
+
+void checkWildfireSubmissionRule(api.WildfireSubmissionRule o) {
+  buildCounterWildfireSubmissionRule++;
+  if (buildCounterWildfireSubmissionRule < 3) {
+    checkWildfireSubmissionRuleCustomFileTypes(o.customFileTypes!);
+    unittest.expect(o.direction!, unittest.equals('foo'));
+    unittest.expect(o.fileSelectionMode!, unittest.equals('foo'));
+  }
+  buildCounterWildfireSubmissionRule--;
+}
+
+core.List<core.String> buildUnnamed148() => ['foo', 'foo'];
+
+void checkUnnamed148(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterWildfireSubmissionRuleCustomFileTypes = 0;
+api.WildfireSubmissionRuleCustomFileTypes
+buildWildfireSubmissionRuleCustomFileTypes() {
+  final o = api.WildfireSubmissionRuleCustomFileTypes();
+  buildCounterWildfireSubmissionRuleCustomFileTypes++;
+  if (buildCounterWildfireSubmissionRuleCustomFileTypes < 3) {
+    o.fileTypes = buildUnnamed148();
+  }
+  buildCounterWildfireSubmissionRuleCustomFileTypes--;
+  return o;
+}
+
+void checkWildfireSubmissionRuleCustomFileTypes(
+  api.WildfireSubmissionRuleCustomFileTypes o,
+) {
+  buildCounterWildfireSubmissionRuleCustomFileTypes++;
+  if (buildCounterWildfireSubmissionRuleCustomFileTypes < 3) {
+    checkUnnamed148(o.fileTypes!);
+  }
+  buildCounterWildfireSubmissionRuleCustomFileTypes--;
+}
+
+core.int buildCounterWildfireThreatOverride = 0;
+api.WildfireThreatOverride buildWildfireThreatOverride() {
+  final o = api.WildfireThreatOverride();
+  buildCounterWildfireThreatOverride++;
+  if (buildCounterWildfireThreatOverride < 3) {
+    o.action = 'foo';
+    o.threatId = 'foo';
+  }
+  buildCounterWildfireThreatOverride--;
+  return o;
+}
+
+void checkWildfireThreatOverride(api.WildfireThreatOverride o) {
+  buildCounterWildfireThreatOverride++;
+  if (buildCounterWildfireThreatOverride < 3) {
+    unittest.expect(o.action!, unittest.equals('foo'));
+    unittest.expect(o.threatId!, unittest.equals('foo'));
+  }
+  buildCounterWildfireThreatOverride--;
+}
+
+core.int buildCounterWildfireVerdictChangeRequest = 0;
+api.WildfireVerdictChangeRequest buildWildfireVerdictChangeRequest() {
+  final o = api.WildfireVerdictChangeRequest();
+  buildCounterWildfireVerdictChangeRequest++;
+  if (buildCounterWildfireVerdictChangeRequest < 3) {
+    o.comment = 'foo';
+    o.createTime = 'foo';
+    o.fileName = 'foo';
+    o.fileType = 'foo';
+    o.finalVerdict = 'foo';
+    o.name = 'foo';
+    o.newVerdict = 'foo';
+    o.oldVerdict = 'foo';
+    o.resolutionTime = 'foo';
+    o.sha256 = 'foo';
+    o.sourceRegion = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
+    o.wildfireVerdictChangeRequestId = 'foo';
+  }
+  buildCounterWildfireVerdictChangeRequest--;
+  return o;
+}
+
+void checkWildfireVerdictChangeRequest(api.WildfireVerdictChangeRequest o) {
+  buildCounterWildfireVerdictChangeRequest++;
+  if (buildCounterWildfireVerdictChangeRequest < 3) {
+    unittest.expect(o.comment!, unittest.equals('foo'));
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.fileName!, unittest.equals('foo'));
+    unittest.expect(o.fileType!, unittest.equals('foo'));
+    unittest.expect(o.finalVerdict!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.newVerdict!, unittest.equals('foo'));
+    unittest.expect(o.oldVerdict!, unittest.equals('foo'));
+    unittest.expect(o.resolutionTime!, unittest.equals('foo'));
+    unittest.expect(o.sha256!, unittest.equals('foo'));
+    unittest.expect(o.sourceRegion!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
+    unittest.expect(o.wildfireVerdictChangeRequestId!, unittest.equals('foo'));
+  }
+  buildCounterWildfireVerdictChangeRequest--;
+}
+
+core.List<core.String> buildUnnamed149() => ['foo', 'foo'];
+
+void checkUnnamed149(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed150() => ['foo', 'foo'];
+
+void checkUnnamed150(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4959,6 +5495,35 @@ void main() {
       checkFirewallEndpointEndpointSettings(od);
     });
   });
+
+  unittest.group('obj-schema-FirewallEndpointWildfireSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFirewallEndpointWildfireSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FirewallEndpointWildfireSettings.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFirewallEndpointWildfireSettings(od);
+    });
+  });
+
+  unittest.group(
+    'obj-schema-FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group('obj-schema-GatewaySecurityPolicy', () {
     unittest.test('to-json--from-json', () async {
@@ -5545,6 +6110,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListWildfireVerdictChangeRequestsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListWildfireVerdictChangeRequestsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListWildfireVerdictChangeRequestsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListWildfireVerdictChangeRequestsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-Location', () {
     unittest.test('to-json--from-json', () async {
       final o = buildLocation();
@@ -5896,6 +6472,141 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-WildfireAnalysisProfile', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireAnalysisProfile();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireAnalysisProfile.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireAnalysisProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-WildfireInlineCloudAnalysisRule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireInlineCloudAnalysisRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireInlineCloudAnalysisRule.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireInlineCloudAnalysisRule(od);
+    });
+  });
+
+  unittest.group(
+    'obj-schema-WildfireInlineCloudAnalysisRuleCustomFileTypes',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildWildfireInlineCloudAnalysisRuleCustomFileTypes();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.WildfireInlineCloudAnalysisRuleCustomFileTypes.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkWildfireInlineCloudAnalysisRuleCustomFileTypes(od);
+      });
+    },
+  );
+
+  unittest.group('obj-schema-WildfireInlineMlFileException', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireInlineMlFileException();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireInlineMlFileException.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireInlineMlFileException(od);
+    });
+  });
+
+  unittest.group('obj-schema-WildfireInlineMlOverride', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireInlineMlOverride();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireInlineMlOverride.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireInlineMlOverride(od);
+    });
+  });
+
+  unittest.group('obj-schema-WildfireInlineMlSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireInlineMlSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireInlineMlSettings.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireInlineMlSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-WildfireInlineMlSettingsInlineMlConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireInlineMlSettingsInlineMlConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireInlineMlSettingsInlineMlConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireInlineMlSettingsInlineMlConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-WildfireOverride', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireOverride();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireOverride.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireOverride(od);
+    });
+  });
+
+  unittest.group('obj-schema-WildfireSubmissionRule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireSubmissionRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireSubmissionRule.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireSubmissionRule(od);
+    });
+  });
+
+  unittest.group('obj-schema-WildfireSubmissionRuleCustomFileTypes', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireSubmissionRuleCustomFileTypes();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireSubmissionRuleCustomFileTypes.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireSubmissionRuleCustomFileTypes(od);
+    });
+  });
+
+  unittest.group('obj-schema-WildfireThreatOverride', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireThreatOverride();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireThreatOverride.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireThreatOverride(od);
+    });
+  });
+
+  unittest.group('obj-schema-WildfireVerdictChangeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWildfireVerdictChangeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WildfireVerdictChangeRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkWildfireVerdictChangeRequest(od);
+    });
+  });
+
   unittest.group('resource-OrganizationsLocationsResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
@@ -5954,7 +6665,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.NetworkSecurityApi(mock).organizations.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed136();
+      final arg_extraLocationTypes = buildUnnamed149();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7087,6 +7798,225 @@ void main() {
     });
   });
 
+  unittest.group(
+    'resource-OrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource',
+    () {
+      unittest.test('method--create', () async {
+        final mock = HttpServerMock();
+        final res = api.NetworkSecurityApi(mock)
+            .organizations
+            .locations
+            .firewallEndpoints
+            .wildfireVerdictChangeRequests;
+        final arg_request = buildWildfireVerdictChangeRequest();
+        final arg_parent = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final obj = api.WildfireVerdictChangeRequest.fromJson(
+              json as core.Map<core.String, core.dynamic>,
+            );
+            checkWildfireVerdictChangeRequest(obj);
+
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildWildfireVerdictChangeRequest(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.create(
+          arg_request,
+          arg_parent,
+          $fields: arg_$fields,
+        );
+        checkWildfireVerdictChangeRequest(
+          response as api.WildfireVerdictChangeRequest,
+        );
+      });
+
+      unittest.test('method--get', () async {
+        final mock = HttpServerMock();
+        final res = api.NetworkSecurityApi(mock)
+            .organizations
+            .locations
+            .firewallEndpoints
+            .wildfireVerdictChangeRequests;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildWildfireVerdictChangeRequest(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.get(arg_name, $fields: arg_$fields);
+        checkWildfireVerdictChangeRequest(
+          response as api.WildfireVerdictChangeRequest,
+        );
+      });
+
+      unittest.test('method--list', () async {
+        final mock = HttpServerMock();
+        final res = api.NetworkSecurityApi(mock)
+            .organizations
+            .locations
+            .firewallEndpoints
+            .wildfireVerdictChangeRequests;
+        final arg_parent = 'foo';
+        final arg_filter = 'foo';
+        final arg_pageSize = 42;
+        final arg_pageToken = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['filter']!.first,
+              unittest.equals(arg_filter),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['pageSize']!.first),
+              unittest.equals(arg_pageSize),
+            );
+            unittest.expect(
+              queryMap['pageToken']!.first,
+              unittest.equals(arg_pageToken),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildListWildfireVerdictChangeRequestsResponse(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.list(
+          arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields,
+        );
+        checkListWildfireVerdictChangeRequestsResponse(
+          response as api.ListWildfireVerdictChangeRequestsResponse,
+        );
+      });
+    },
+  );
+
   unittest.group('resource-OrganizationsLocationsOperationsResource', () {
     unittest.test('method--cancel', () async {
       final mock = HttpServerMock();
@@ -8070,7 +9000,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.NetworkSecurityApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed137();
+      final arg_extraLocationTypes = buildUnnamed150();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -11925,6 +12855,219 @@ void main() {
       checkOperation(response as api.Operation);
     });
   });
+
+  unittest.group(
+    'resource-ProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsResource',
+    () {
+      unittest.test('method--create', () async {
+        final mock = HttpServerMock();
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.firewallEndpoints.wildfireVerdictChangeRequests;
+        final arg_request = buildWildfireVerdictChangeRequest();
+        final arg_parent = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final obj = api.WildfireVerdictChangeRequest.fromJson(
+              json as core.Map<core.String, core.dynamic>,
+            );
+            checkWildfireVerdictChangeRequest(obj);
+
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildWildfireVerdictChangeRequest(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.create(
+          arg_request,
+          arg_parent,
+          $fields: arg_$fields,
+        );
+        checkWildfireVerdictChangeRequest(
+          response as api.WildfireVerdictChangeRequest,
+        );
+      });
+
+      unittest.test('method--get', () async {
+        final mock = HttpServerMock();
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.firewallEndpoints.wildfireVerdictChangeRequests;
+        final arg_name = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildWildfireVerdictChangeRequest(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.get(arg_name, $fields: arg_$fields);
+        checkWildfireVerdictChangeRequest(
+          response as api.WildfireVerdictChangeRequest,
+        );
+      });
+
+      unittest.test('method--list', () async {
+        final mock = HttpServerMock();
+        final res = api.NetworkSecurityApi(
+          mock,
+        ).projects.locations.firewallEndpoints.wildfireVerdictChangeRequests;
+        final arg_parent = 'foo';
+        final arg_filter = 'foo';
+        final arg_pageSize = 42;
+        final arg_pageToken = 'foo';
+        final arg_$fields = 'foo';
+        mock.register(
+          unittest.expectAsync2((http.BaseRequest req, json) {
+            final path = req.url.path;
+            var pathOffset = 0;
+            core.int index;
+            core.String subPart;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 1),
+              unittest.equals('/'),
+            );
+            pathOffset += 1;
+            unittest.expect(
+              path.substring(pathOffset, pathOffset + 3),
+              unittest.equals('v1/'),
+            );
+            pathOffset += 3;
+            // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+            final query = req.url.query;
+            var queryOffset = 0;
+            final queryMap = <core.String, core.List<core.String>>{};
+            void addQueryParam(core.String n, core.String v) =>
+                queryMap.putIfAbsent(n, () => []).add(v);
+
+            if (query.isNotEmpty) {
+              for (var part in query.split('&')) {
+                final keyValue = part.split('=');
+                addQueryParam(
+                  core.Uri.decodeQueryComponent(keyValue[0]),
+                  core.Uri.decodeQueryComponent(keyValue[1]),
+                );
+              }
+            }
+            unittest.expect(
+              queryMap['filter']!.first,
+              unittest.equals(arg_filter),
+            );
+            unittest.expect(
+              core.int.parse(queryMap['pageSize']!.first),
+              unittest.equals(arg_pageSize),
+            );
+            unittest.expect(
+              queryMap['pageToken']!.first,
+              unittest.equals(arg_pageToken),
+            );
+            unittest.expect(
+              queryMap['fields']!.first,
+              unittest.equals(arg_$fields),
+            );
+
+            final h = {'content-type': 'application/json; charset=utf-8'};
+            final resp = convert.json.encode(
+              buildListWildfireVerdictChangeRequestsResponse(),
+            );
+            return async.Future.value(stringResponse(200, h, resp));
+          }),
+          true,
+        );
+        final response = await res.list(
+          arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields,
+        );
+        checkListWildfireVerdictChangeRequestsResponse(
+          response as api.ListWildfireVerdictChangeRequestsResponse,
+        );
+      });
+    },
+  );
 
   unittest.group('resource-ProjectsLocationsGatewaySecurityPoliciesResource', () {
     unittest.test('method--create', () async {

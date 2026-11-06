@@ -20,8 +20,11 @@
 
 /// Places API (New) - v1
 ///
+/// The Places API allows developers to access a variety of search and retrieval
+/// endpoints for a Place.
+///
 /// For more information, see
-/// <https://mapsplatform.google.com/maps-products/#places-section>
+/// <https://developers.google.com/maps/documentation/places/web-service>
 ///
 /// Create an instance of [PlacesApi] to access these resources:
 ///
@@ -42,6 +45,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// The Places API allows developers to access a variety of search and retrieval
+/// endpoints for a Place.
 class PlacesApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -691,8 +696,8 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
   core.bool? includeQueryPredictions;
 
   /// Included primary Place type (for example, "restaurant" or "gas_station")
-  /// in Place Types
-  /// (https://developers.google.com/maps/documentation/places/web-service/place-types),
+  /// in
+  /// [Place Types](https://developers.google.com/maps/documentation/places/web-service/place-types),
   /// or only `(regions)`, or only `(cities)`.
   ///
   /// A Place is only returned if its primary type is included in this list. Up
@@ -1761,6 +1766,11 @@ class GoogleMapsPlacesV1FuelOptions {
 /// Fuel price information for a given type.
 class GoogleMapsPlacesV1FuelOptionsFuelPrice {
   /// The price of the fuel.
+  ///
+  /// The price is per US liquid gallon in the United States, and per liter
+  /// elsewhere. Prices do not distinguish between payment methods (cash or
+  /// credit). When a station offers multiple prices for the same `FuelType`,
+  /// the API returns the standard (highest) price.
   GoogleTypeMoney? price;
 
   /// The type of fuel.
@@ -1789,6 +1799,9 @@ class GoogleMapsPlacesV1FuelOptionsFuelPrice {
   core.String? type;
 
   /// The time the fuel price was last updated.
+  ///
+  /// This represents the time when the specific fuel price offer was last
+  /// observed or updated by the data provider.
   core.String? updateTime;
 
   GoogleMapsPlacesV1FuelOptionsFuelPrice({

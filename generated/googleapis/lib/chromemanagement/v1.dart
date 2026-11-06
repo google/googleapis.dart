@@ -35,7 +35,9 @@
 ///     - [CustomersAppsWebResource]
 ///   - [CustomersCertificateProvisioningProcessesResource]
 ///     - [CustomersCertificateProvisioningProcessesOperationsResource]
+///   - [CustomersChromeBrowsersResource]
 ///   - [CustomersConnectorConfigsResource]
+///   - [CustomersEnrollmentTokensResource]
 ///   - [CustomersEnterpriseResource]
 ///     - [CustomersEnterpriseSecurityInsightsResource]
 ///   - [CustomersProfilesResource]
@@ -71,6 +73,24 @@ class ChromeManagementApi {
   /// devices managed by your organization
   static const chromeManagementAppdetailsReadonlyScope =
       'https://www.googleapis.com/auth/chrome.management.appdetails.readonly';
+
+  /// See, edit, delete, and take other necessary actions on Chrome browsers
+  /// managed by your organization
+  static const chromeManagementBrowsersScope =
+      'https://www.googleapis.com/auth/chrome.management.browsers';
+
+  /// See Chrome browsers managed by your organization
+  static const chromeManagementBrowsersReadonlyScope =
+      'https://www.googleapis.com/auth/chrome.management.browsers.readonly';
+
+  /// See, edit, revoke, and take other necessary actions on Chrome enrollment
+  /// tokens managed by your organization
+  static const chromeManagementEnrollmenttokensScope =
+      'https://www.googleapis.com/auth/chrome.management.enrollmenttokens';
+
+  /// See Chrome enrollment tokens managed by your organization
+  static const chromeManagementEnrollmenttokensReadonlyScope =
+      'https://www.googleapis.com/auth/chrome.management.enrollmenttokens.readonly';
 
   /// See, edit, delete, and take other necessary actions on Chrome browser
   /// profiles managed by your organization
@@ -123,8 +143,12 @@ class CustomersResource {
   CustomersCertificateProvisioningProcessesResource
   get certificateProvisioningProcesses =>
       CustomersCertificateProvisioningProcessesResource(_requester);
+  CustomersChromeBrowsersResource get chromeBrowsers =>
+      CustomersChromeBrowsersResource(_requester);
   CustomersConnectorConfigsResource get connectorConfigs =>
       CustomersConnectorConfigsResource(_requester);
+  CustomersEnrollmentTokensResource get enrollmentTokens =>
+      CustomersEnrollmentTokensResource(_requester);
   CustomersEnterpriseResource get enterprise =>
       CustomersEnterpriseResource(_requester);
   CustomersProfilesResource get profiles =>
@@ -789,6 +813,274 @@ class CustomersCertificateProvisioningProcessesOperationsResource {
   }
 }
 
+class CustomersChromeBrowsersResource {
+  final commons.ApiRequester _requester;
+
+  CustomersChromeBrowsersResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Deletes the data collected from a Chrome browser profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// customers/{customer_id}/chromeBrowsers/{browser_permanent_id}
+  /// Value must have pattern `^customers/\[^/\]+/chromeBrowsers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves a single Chrome Browser identified by its customer ID and
+  /// resource ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// customers/{customer_id}/chromeBrowsers/{browser_permanent_id}
+  /// Value must have pattern `^customers/\[^/\]+/chromeBrowsers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1ChromeBrowser].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1ChromeBrowser> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ChromeBrowser.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves all Chrome Browsers of a customer (paginated).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format: customers/{customer_id}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter used to filter browsers. The following
+  /// fields can be used in the filter: * `browser_permanent_id` *
+  /// `virtual_device_id` * `last_policy_fetch_time` * `os_platform` *
+  /// `os_architecture` * `os_version` * `machine_name` * `annotated_location` *
+  /// `annotated_user` * `annotated_asset_id` * `annotated_note` *
+  /// `org_unit_path` * `org_unit_id` * `last_registration_time` *
+  /// `os_platform_version` * `browser_version` * `last_status_report_time` *
+  /// `extension_count` * `policy_count` * `last_device_user` *
+  /// `last_activity_time` * `device_id_collision` The following functions can
+  /// be used in the filter: * `in_group(string)`: Filters browsers that belong
+  /// to the specified Cloud Identity group resource name (e.g.
+  /// `in_group("groups/{group_id}")`). Any of the above fields or functions can
+  /// be used to specify a filter, and filtering by multiple fields or functions
+  /// is supported with AND operator. String type, Integer type fields and enum
+  /// type fields support `=` and `:` operators. The timestamp type fields
+  /// support `=`, `<=` and `>=` operators. Timestamps expect an RFC-3339
+  /// formatted string enclosed in double quotes (e.g.,
+  /// `"2012-04-21T11:30:00-04:00"`). Wildcard `*` is only supported for
+  /// `machine_name`, `annotated_asset_id`, and `browser_version`. In addition,
+  /// global string literal filtering without a field name is supported: a
+  /// single term (e.g., `ABC`) matches if any indexed string field contains
+  /// `ABC`, and multiple terms joined by `AND` or whitespace (e.g., `machine
+  /// AND 73` or `machine 73`) match browsers where every term appears in at
+  /// least one indexed string field (whereas a single quoted phrase like
+  /// `"machine 73"` matches the contiguous phrase within a single field).
+  ///
+  /// [orderBy] - Optional. The fields used to specify the ordering of the
+  /// results. The supported fields are: * `browser_permanent_id` *
+  /// `virtual_device_id` * `last_policy_fetch_time` * `annotated_user` *
+  /// `annotated_location` * `annotated_asset_id` * `annotated_notes` *
+  /// `org_unit_path` * `os_version` * `last_registration_time` *
+  /// `extension_count` * `policy_count` * `last_device_user` * `machine_name` *
+  /// `browser_version_channel` * `os_platform_version` * `last_activity_time` *
+  /// `browser_version` By default, sorting is in ascending order, to specify
+  /// descending order for a field, a suffix ` desc` should be added to the
+  /// field name. The default ordering is the ascending order of
+  /// `browser_permanent_id`.
+  ///
+  /// [pageSize] - Optional. Maximum number of results to return. Maximum and
+  /// default are 100.
+  ///
+  /// [pageToken] - Optional. Token to specify next page in the list.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1ListChromeBrowsersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1ListChromeBrowsersResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'orderBy': ?orderBy == null ? null : [orderBy],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/chromeBrowsers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ListChromeBrowsersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Moves managed Chrome Browsers to a new Organizational Unit (OU).
+  ///
+  /// If there is an error while moving any of the browsers, none of the
+  /// browsers will be moved.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format: customers/{customer_id}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1MoveChromeBrowsersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1MoveChromeBrowsersResponse> move(
+    GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/chromeBrowsers:move';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1MoveChromeBrowsersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates annotation information for a Chrome Browser.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Format:
+  /// customers/{customer_id}/chromeBrowsers/{browser_permanent_id}
+  /// Value must have pattern `^customers/\[^/\]+/chromeBrowsers/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The update mask that can be used to specify which
+  /// fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1ChromeBrowser].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1ChromeBrowser> patch(
+    GoogleChromeManagementVersionsV1ChromeBrowser request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ChromeBrowser.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class CustomersConnectorConfigsResource {
   final commons.ApiRequester _requester;
 
@@ -1020,6 +1312,208 @@ class CustomersConnectorConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleChromeManagementVersionsV1ConnectorConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class CustomersEnrollmentTokensResource {
+  final commons.ApiRequester _requester;
+
+  CustomersEnrollmentTokensResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new enrollment token for a browser device.
+  ///
+  /// Creation fails if there is already an active token for this customer under
+  /// the same org unit.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this enrollment token will
+  /// be created. Format: customers/{customer}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [enrollmentTokenId] - Optional. The ID to use for the enrollment token,
+  /// which will become the final component of the enrollment token's resource
+  /// name. This value must be local-unique under the customer and is optional.
+  /// If not provided, it will be auto-generated. If provided, it must be 1-63
+  /// characters long and match the regular expression `[a-zA-Z0-9._-]+`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1EnrollmentToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1EnrollmentToken> create(
+    GoogleChromeManagementVersionsV1EnrollmentToken request,
+    core.String parent, {
+    core.String? enrollmentTokenId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'enrollmentTokenId': ?enrollmentTokenId == null
+          ? null
+          : [enrollmentTokenId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/enrollmentTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1EnrollmentToken.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets a browser device enrollment token.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the enrollment token to retrieve. Format:
+  /// customers/{customer}/enrollmentTokens/{token_permanent_id}
+  /// Value must have pattern `^customers/\[^/\]+/enrollmentTokens/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1EnrollmentToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1EnrollmentToken> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1EnrollmentToken.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all browser device enrollment tokens.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this enrollment token will
+  /// be created. Format: customers/{customer}
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter to apply to list results. The following fields
+  /// can be used in the filter: * `device_type` (currently only
+  /// `"CHROME_BROWSER"` is supported) * `token_state` (supported values:
+  /// `"ACTIVE"`, `"EXPIRED"`, `"REVOKED"`) * `org_unit_path` The full path of
+  /// the org unit, such as `/Montreal/Sales`. * `org_unit_id` The obfuscated id
+  /// of the org unit, not the full path.
+  ///
+  /// [pageSize] - Optional. Maximum number of results to return. Maximum and
+  /// default are 100.
+  ///
+  /// [pageToken] - Optional. Token to specify next page in the list.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse>
+  list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/enrollmentTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Revokes a browser device enrollment token.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the enrollment token to revoke. Format:
+  /// customers/{customer}/enrollmentTokens/{token_permanent_id}
+  /// Value must have pattern `^customers/\[^/\]+/enrollmentTokens/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementVersionsV1EnrollmentToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementVersionsV1EnrollmentToken> revoke(
+    GoogleChromeManagementVersionsV1RevokeEnrollmentTokenRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':revoke';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementVersionsV1EnrollmentToken.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4773,6 +5267,11 @@ class GoogleChromeManagementV1ChromeAppInfo {
   /// Output only.
   core.List<GoogleChromeManagementV1ChromeAppPermission>? permissions;
 
+  /// Contains risk assessment data for the Chrome extension.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1RiskAssessmentData? riskAssessment;
+
   /// Every permission giving access to domains or broad host patterns.
   ///
   /// ( e.g. www.google.com). This includes the matches from content scripts as
@@ -4809,6 +5308,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
     this.manifestVersion,
     this.minUserCount,
     this.permissions,
+    this.riskAssessment,
     this.siteAccess,
     this.supportEnabled,
     this.type,
@@ -4832,6 +5332,11 @@ class GoogleChromeManagementV1ChromeAppInfo {
               ),
             )
             .toList(),
+        riskAssessment: json_.containsKey('riskAssessment')
+            ? GoogleChromeManagementV1RiskAssessmentData.fromJson(
+                json_['riskAssessment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         siteAccess: (json_['siteAccess'] as core.List?)
             ?.map(
               (value) => GoogleChromeManagementV1ChromeAppSiteAccess.fromJson(
@@ -4853,6 +5358,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
     final manifestVersion = this.manifestVersion;
     final minUserCount = this.minUserCount;
     final permissions = this.permissions;
+    final riskAssessment = this.riskAssessment;
     final siteAccess = this.siteAccess;
     final supportEnabled = this.supportEnabled;
     final type = this.type;
@@ -4866,6 +5372,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
       'manifestVersion': ?manifestVersion,
       'minUserCount': ?minUserCount,
       'permissions': ?permissions,
+      'riskAssessment': ?riskAssessment,
       'siteAccess': ?siteAccess,
       'supportEnabled': ?supportEnabled,
       'type': ?type,
@@ -8324,7 +8831,8 @@ class GoogleChromeManagementV1RiskAssessmentEntry {
   /// Possible string values are:
   /// - "RISK_ASSESSMENT_PROVIDER_UNSPECIFIED" : Default value when no provider
   /// is specified.
-  /// - "RISK_ASSESSMENT_PROVIDER_CRXCAVATOR" : CRXcavator.
+  /// - "RISK_ASSESSMENT_PROVIDER_CRXCAVATOR" : Deprecated: Please use other
+  /// risk score providers instead. CRXcavator.
   /// - "RISK_ASSESSMENT_PROVIDER_SPIN_AI" : Deprecated: Please use
   /// RISK_ASSESSMENT_PROVIDER_SPIN_AI_V2 instead. Spin.Ai.
   /// - "RISK_ASSESSMENT_PROVIDER_LAYERX" : LayerX Security.
@@ -11019,6 +11527,148 @@ class GoogleChromeManagementVersionsV1AttestationCredential {
   }
 }
 
+/// A specific installation of Chrome on a device with managed Chrome browsers.
+class GoogleChromeManagementVersionsV1Browser {
+  /// Browser version installed.
+  ///
+  /// Output only.
+  core.String? browserVersion;
+
+  /// The channel of the browser installed.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CHANNEL_UNSPECIFIED" : Represents an unspecified channel.
+  /// - "CHANNEL_STABLE" : Represents a stable channel.
+  /// - "CHANNEL_BETA" : Represents a beta channel.
+  /// - "CHANNEL_DEV" : Represents a dev channel.
+  /// - "CHANNEL_CANARY" : Represents a canary channel.
+  core.String? channel;
+
+  /// The path to the Chrome.exe executable for this browser.
+  ///
+  /// Output only.
+  core.String? executablePath;
+
+  /// The time when the last request to fetch policies succeeded on this Chrome
+  /// browser.
+  ///
+  /// Output only.
+  core.String? lastPolicyFetchTime;
+
+  /// The time when the last report was received from this Chrome browser.
+  ///
+  /// Output only.
+  core.String? lastStatusReportTime;
+
+  /// Pending version of a browser is installed.
+  ///
+  /// This field is only set when the current active browser has a different
+  /// version as in "browser_version".
+  ///
+  /// Output only.
+  core.String? pendingInstallVersion;
+
+  /// List of all plugins installed on this Chrome browser.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1Plugin>? plugins;
+
+  /// The list of profiles for this browser.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1Profile>? profiles;
+
+  GoogleChromeManagementVersionsV1Browser({
+    this.browserVersion,
+    this.channel,
+    this.executablePath,
+    this.lastPolicyFetchTime,
+    this.lastStatusReportTime,
+    this.pendingInstallVersion,
+    this.plugins,
+    this.profiles,
+  });
+
+  GoogleChromeManagementVersionsV1Browser.fromJson(core.Map json_)
+    : this(
+        browserVersion: json_['browserVersion'] as core.String?,
+        channel: json_['channel'] as core.String?,
+        executablePath: json_['executablePath'] as core.String?,
+        lastPolicyFetchTime: json_['lastPolicyFetchTime'] as core.String?,
+        lastStatusReportTime: json_['lastStatusReportTime'] as core.String?,
+        pendingInstallVersion: json_['pendingInstallVersion'] as core.String?,
+        plugins: (json_['plugins'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementVersionsV1Plugin.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        profiles: (json_['profiles'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementVersionsV1Profile.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final browserVersion = this.browserVersion;
+    final channel = this.channel;
+    final executablePath = this.executablePath;
+    final lastPolicyFetchTime = this.lastPolicyFetchTime;
+    final lastStatusReportTime = this.lastStatusReportTime;
+    final pendingInstallVersion = this.pendingInstallVersion;
+    final plugins = this.plugins;
+    final profiles = this.profiles;
+    return {
+      'browserVersion': ?browserVersion,
+      'channel': ?channel,
+      'executablePath': ?executablePath,
+      'lastPolicyFetchTime': ?lastPolicyFetchTime,
+      'lastStatusReportTime': ?lastStatusReportTime,
+      'pendingInstallVersion': ?pendingInstallVersion,
+      'plugins': ?plugins,
+      'profiles': ?profiles,
+    };
+  }
+}
+
+/// A Chrome browser user.
+class GoogleChromeManagementVersionsV1BrowserUser {
+  /// The time when this user info last reported a status.
+  ///
+  /// Output only.
+  core.String? lastStatusReportTime;
+
+  /// The user name of the user that signed into chrome.
+  ///
+  /// Output only.
+  core.String? userName;
+
+  GoogleChromeManagementVersionsV1BrowserUser({
+    this.lastStatusReportTime,
+    this.userName,
+  });
+
+  GoogleChromeManagementVersionsV1BrowserUser.fromJson(core.Map json_)
+    : this(
+        lastStatusReportTime: json_['lastStatusReportTime'] as core.String?,
+        userName: json_['userName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final lastStatusReportTime = this.lastStatusReportTime;
+    final userName = this.userName;
+    return {
+      'lastStatusReportTime': ?lastStatusReportTime,
+      'userName': ?userName,
+    };
+  }
+}
+
 /// A certificate provisioning process.
 class GoogleChromeManagementVersionsV1CertificateProvisioningProcess {
   /// The client certificate is being provisioned for a ChromeOS device.
@@ -11259,7 +11909,332 @@ class GoogleChromeManagementVersionsV1CertificateProvisioningProcess {
 
 /// Response from checking the enablement status of insights for the customer.
 typedef GoogleChromeManagementVersionsV1CheckEnablementStatusResponse =
-    $Response01;
+    $Response02;
+
+/// A device with managed Chrome Browsers.
+class GoogleChromeManagementVersionsV1ChromeBrowser {
+  /// Asset identifier as annotated by the administrator or specified during
+  /// enrollment.
+  ///
+  /// Optional.
+  core.String? annotatedAssetId;
+
+  /// Address or location of the device as annotated by the administrator.
+  ///
+  /// Optional.
+  core.String? annotatedLocation;
+
+  /// Notes about this device as annotated by the administrator.
+  ///
+  /// Optional.
+  core.String? annotatedNotes;
+
+  /// User of the device as annotated by the administrator.
+  ///
+  /// Optional.
+  core.String? annotatedUser;
+
+  /// The attestation credential used for Device Trust Connector.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1AttestationCredential? attestationCredential;
+
+  /// Unique identifier of Chrome Browser.
+  ///
+  /// Output only.
+  core.String? browserPermanentId;
+
+  /// List of all browser versions installed on this device.
+  ///
+  /// Output only.
+  core.List<core.String>? browserVersions;
+
+  /// List of Chrome browsers installed on this device.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1Browser>? browsers;
+
+  /// The history of identifiers reported to this device.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1DeviceIdentifiersHistory?
+  deviceIdentifiersHistory;
+
+  /// The number of distinct extensions installed on all the Chrome browsers of
+  /// this device.
+  ///
+  /// Output only.
+  core.String? extensionCount;
+
+  /// The time of the last activity on the device device either from reporting,
+  /// policy fetching or registration.
+  ///
+  /// Output only.
+  core.String? lastActivityTime;
+
+  /// The last user who logged into a Chrome browser on this device.
+  ///
+  /// Output only.
+  core.String? lastDeviceUser;
+
+  /// List of recent browser users, in descending order by last report time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1BrowserUser>? lastDeviceUsers;
+
+  /// The time the last policy fetch succeeded on this device.
+  ///
+  /// Output only.
+  core.String? lastPolicyFetchTime;
+
+  /// The time the device last tried to register.
+  ///
+  /// Output only.
+  core.String? lastRegistrationTime;
+
+  /// The time the device last sent a status report.
+  ///
+  /// Output only.
+  core.String? lastStatusReportTime;
+
+  /// The list of all device level policies set for extensions installed in
+  /// Chrome on this device.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1ExtensionPolicy>?
+  machineExtensionPolicies;
+
+  /// Machine name.
+  ///
+  /// Output only.
+  core.String? machineName;
+
+  /// The list of all device level policies set for Chrome browsers on this
+  /// device.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1Policy>? machinePolicies;
+
+  /// Identifier.
+  ///
+  /// Format: customers/{customer_id}/chromeBrowsers/{browser_permanent_id}
+  core.String? name;
+
+  /// Recent policy fetch activity by Omaha.
+  ///
+  /// Not necessarily the last fetch since this field is only updated daily.
+  ///
+  /// Output only.
+  core.String? omahaRecentFetchTime;
+
+  /// The obfuscated organizational unit ID of the browser.
+  ///
+  /// Output only.
+  core.String? orgUnitId;
+
+  /// Device CPU architecture.
+  ///
+  /// Output only.
+  core.String? osArchitecture;
+
+  /// Device Os platform.
+  ///
+  /// Output only.
+  core.String? osPlatform;
+
+  /// Device Os platform and version combined.
+  ///
+  /// Output only.
+  core.String? osPlatformVersion;
+
+  /// Device Os Version.
+  ///
+  /// Output only.
+  core.String? osVersion;
+
+  /// The number of distinct policies set on all the Chrome browsers of this
+  /// device.
+  ///
+  /// Output only.
+  core.String? policyCount;
+
+  /// The device's serial number.
+  ///
+  /// Output only.
+  core.String? serialNumber;
+
+  /// The initial device id sent by the first Chrome browser that enrolled this
+  /// device.
+  ///
+  /// Output only.
+  core.String? virtualDeviceId;
+
+  GoogleChromeManagementVersionsV1ChromeBrowser({
+    this.annotatedAssetId,
+    this.annotatedLocation,
+    this.annotatedNotes,
+    this.annotatedUser,
+    this.attestationCredential,
+    this.browserPermanentId,
+    this.browserVersions,
+    this.browsers,
+    this.deviceIdentifiersHistory,
+    this.extensionCount,
+    this.lastActivityTime,
+    this.lastDeviceUser,
+    this.lastDeviceUsers,
+    this.lastPolicyFetchTime,
+    this.lastRegistrationTime,
+    this.lastStatusReportTime,
+    this.machineExtensionPolicies,
+    this.machineName,
+    this.machinePolicies,
+    this.name,
+    this.omahaRecentFetchTime,
+    this.orgUnitId,
+    this.osArchitecture,
+    this.osPlatform,
+    this.osPlatformVersion,
+    this.osVersion,
+    this.policyCount,
+    this.serialNumber,
+    this.virtualDeviceId,
+  });
+
+  GoogleChromeManagementVersionsV1ChromeBrowser.fromJson(core.Map json_)
+    : this(
+        annotatedAssetId: json_['annotatedAssetId'] as core.String?,
+        annotatedLocation: json_['annotatedLocation'] as core.String?,
+        annotatedNotes: json_['annotatedNotes'] as core.String?,
+        annotatedUser: json_['annotatedUser'] as core.String?,
+        attestationCredential: json_.containsKey('attestationCredential')
+            ? GoogleChromeManagementVersionsV1AttestationCredential.fromJson(
+                json_['attestationCredential']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        browserPermanentId: json_['browserPermanentId'] as core.String?,
+        browserVersions: (json_['browserVersions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        browsers: (json_['browsers'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementVersionsV1Browser.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        deviceIdentifiersHistory: json_.containsKey('deviceIdentifiersHistory')
+            ? GoogleChromeManagementVersionsV1DeviceIdentifiersHistory.fromJson(
+                json_['deviceIdentifiersHistory']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        extensionCount: json_['extensionCount'] as core.String?,
+        lastActivityTime: json_['lastActivityTime'] as core.String?,
+        lastDeviceUser: json_['lastDeviceUser'] as core.String?,
+        lastDeviceUsers: (json_['lastDeviceUsers'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementVersionsV1BrowserUser.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        lastPolicyFetchTime: json_['lastPolicyFetchTime'] as core.String?,
+        lastRegistrationTime: json_['lastRegistrationTime'] as core.String?,
+        lastStatusReportTime: json_['lastStatusReportTime'] as core.String?,
+        machineExtensionPolicies:
+            (json_['machineExtensionPolicies'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleChromeManagementVersionsV1ExtensionPolicy.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        machineName: json_['machineName'] as core.String?,
+        machinePolicies: (json_['machinePolicies'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementVersionsV1Policy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        name: json_['name'] as core.String?,
+        omahaRecentFetchTime: json_['omahaRecentFetchTime'] as core.String?,
+        orgUnitId: json_['orgUnitId'] as core.String?,
+        osArchitecture: json_['osArchitecture'] as core.String?,
+        osPlatform: json_['osPlatform'] as core.String?,
+        osPlatformVersion: json_['osPlatformVersion'] as core.String?,
+        osVersion: json_['osVersion'] as core.String?,
+        policyCount: json_['policyCount'] as core.String?,
+        serialNumber: json_['serialNumber'] as core.String?,
+        virtualDeviceId: json_['virtualDeviceId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotatedAssetId = this.annotatedAssetId;
+    final annotatedLocation = this.annotatedLocation;
+    final annotatedNotes = this.annotatedNotes;
+    final annotatedUser = this.annotatedUser;
+    final attestationCredential = this.attestationCredential;
+    final browserPermanentId = this.browserPermanentId;
+    final browserVersions = this.browserVersions;
+    final browsers = this.browsers;
+    final deviceIdentifiersHistory = this.deviceIdentifiersHistory;
+    final extensionCount = this.extensionCount;
+    final lastActivityTime = this.lastActivityTime;
+    final lastDeviceUser = this.lastDeviceUser;
+    final lastDeviceUsers = this.lastDeviceUsers;
+    final lastPolicyFetchTime = this.lastPolicyFetchTime;
+    final lastRegistrationTime = this.lastRegistrationTime;
+    final lastStatusReportTime = this.lastStatusReportTime;
+    final machineExtensionPolicies = this.machineExtensionPolicies;
+    final machineName = this.machineName;
+    final machinePolicies = this.machinePolicies;
+    final name = this.name;
+    final omahaRecentFetchTime = this.omahaRecentFetchTime;
+    final orgUnitId = this.orgUnitId;
+    final osArchitecture = this.osArchitecture;
+    final osPlatform = this.osPlatform;
+    final osPlatformVersion = this.osPlatformVersion;
+    final osVersion = this.osVersion;
+    final policyCount = this.policyCount;
+    final serialNumber = this.serialNumber;
+    final virtualDeviceId = this.virtualDeviceId;
+    return {
+      'annotatedAssetId': ?annotatedAssetId,
+      'annotatedLocation': ?annotatedLocation,
+      'annotatedNotes': ?annotatedNotes,
+      'annotatedUser': ?annotatedUser,
+      'attestationCredential': ?attestationCredential,
+      'browserPermanentId': ?browserPermanentId,
+      'browserVersions': ?browserVersions,
+      'browsers': ?browsers,
+      'deviceIdentifiersHistory': ?deviceIdentifiersHistory,
+      'extensionCount': ?extensionCount,
+      'lastActivityTime': ?lastActivityTime,
+      'lastDeviceUser': ?lastDeviceUser,
+      'lastDeviceUsers': ?lastDeviceUsers,
+      'lastPolicyFetchTime': ?lastPolicyFetchTime,
+      'lastRegistrationTime': ?lastRegistrationTime,
+      'lastStatusReportTime': ?lastStatusReportTime,
+      'machineExtensionPolicies': ?machineExtensionPolicies,
+      'machineName': ?machineName,
+      'machinePolicies': ?machinePolicies,
+      'name': ?name,
+      'omahaRecentFetchTime': ?omahaRecentFetchTime,
+      'orgUnitId': ?orgUnitId,
+      'osArchitecture': ?osArchitecture,
+      'osPlatform': ?osPlatform,
+      'osPlatformVersion': ?osPlatformVersion,
+      'osVersion': ?osVersion,
+      'policyCount': ?policyCount,
+      'serialNumber': ?serialNumber,
+      'virtualDeviceId': ?virtualDeviceId,
+    };
+  }
+}
 
 /// A representation of a Chrome browser profile.
 class GoogleChromeManagementVersionsV1ChromeBrowserProfile {
@@ -11583,7 +12558,7 @@ class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand {
 
   /// Type of the remote command.
   ///
-  /// The only supported command_type is "clearBrowsingData".
+  /// Supported commands: "clearBrowsingData" and "extensionUpdateCheck".
   ///
   /// Required.
   core.String? commandType;
@@ -11602,7 +12577,8 @@ class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand {
   /// Payload of the remote command.
   ///
   /// The payload for "clearBrowsingData" command supports: - fields
-  /// "clearCache" and "clearCookies" - values of boolean type.
+  /// "clearCache" and "clearCookies" - values of boolean type. The payload for
+  /// "extensionUpdateCheck" should be empty.
   ///
   /// Required.
   ///
@@ -11837,6 +12813,8 @@ class GoogleChromeManagementVersionsV1ConnectorConfig {
 
   /// The display name of the config.
   ///
+  /// Must be at most 100 characters.
+  ///
   /// Required.
   core.String? displayName;
 
@@ -11863,6 +12841,7 @@ class GoogleChromeManagementVersionsV1ConnectorConfig {
   /// supported in the API.
   /// - "ROOT_STORE" : Root certificate connector.
   /// - "CONTENT_ANALYSIS" : Content analysis connector.
+  /// - "ENTERPRISE_PROXY" : Enterprise proxy connector.
   core.String? type;
 
   GoogleChromeManagementVersionsV1ConnectorConfig({
@@ -11937,6 +12916,9 @@ class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
   /// Pub/Sub XDR connector config.
   GoogleChromeManagementVersionsV1PubSubXdrConfig? pubSubXdrConfig;
 
+  /// Secure gateway connector config.
+  GoogleChromeManagementVersionsV1SecureGatewayConfig? secureGatewayConfig;
+
   /// Splunk connector config.
   GoogleChromeManagementVersionsV1SplunkConfig? splunkConfig;
 
@@ -11950,6 +12932,7 @@ class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
     this.paloAltoNetworksConfig,
     this.pubSubConfig,
     this.pubSubXdrConfig,
+    this.secureGatewayConfig,
     this.splunkConfig,
   });
 
@@ -12008,6 +12991,12 @@ class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
                 json_['pubSubXdrConfig'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        secureGatewayConfig: json_.containsKey('secureGatewayConfig')
+            ? GoogleChromeManagementVersionsV1SecureGatewayConfig.fromJson(
+                json_['secureGatewayConfig']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         splunkConfig: json_.containsKey('splunkConfig')
             ? GoogleChromeManagementVersionsV1SplunkConfig.fromJson(
                 json_['splunkConfig'] as core.Map<core.String, core.dynamic>,
@@ -12025,6 +13014,7 @@ class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
     final paloAltoNetworksConfig = this.paloAltoNetworksConfig;
     final pubSubConfig = this.pubSubConfig;
     final pubSubXdrConfig = this.pubSubXdrConfig;
+    final secureGatewayConfig = this.secureGatewayConfig;
     final splunkConfig = this.splunkConfig;
     return {
       'crowdStrikeConfig': ?crowdStrikeConfig,
@@ -12036,6 +13026,7 @@ class GoogleChromeManagementVersionsV1ConnectorConfigDetails {
       'paloAltoNetworksConfig': ?paloAltoNetworksConfig,
       'pubSubConfig': ?pubSubConfig,
       'pubSubXdrConfig': ?pubSubXdrConfig,
+      'secureGatewayConfig': ?secureGatewayConfig,
       'splunkConfig': ?splunkConfig,
     };
   }
@@ -12197,12 +13188,14 @@ class GoogleChromeManagementVersionsV1ContentTransfersSummary {
 class GoogleChromeManagementVersionsV1CrowdStrikeConfig {
   /// Input only.
   ///
-  /// API key to use on the ingestion API.
+  /// API key to use on the ingestion API. Must be at most 50 characters.
   ///
   /// Required.
   core.String? apiKey;
 
   /// Host to identify the customer specific server to receive the events.
+  ///
+  /// Must be at most 256 characters.
   ///
   /// Required.
   core.String? host;
@@ -12246,12 +13239,14 @@ class GoogleChromeManagementVersionsV1CrowdStrikeConfig {
 class GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig {
   /// Input only.
   ///
-  /// API key to use on the ingestion API.
+  /// API key to use on the ingestion API. Must be at most 50 characters.
   ///
   /// Required.
   core.String? apiKey;
 
   /// Host to identify the customer specific server to receive the events.
+  ///
+  /// Must be at most 256 characters.
   ///
   /// Required.
   core.String? host;
@@ -12296,12 +13291,14 @@ class GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig {
 class GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig {
   /// Input only.
   ///
-  /// API key to use on the ingestion API.
+  /// API key to use on the ingestion API. Must be at most 256 characters.
   ///
   /// Required.
   core.String? apiKey;
 
   /// Host to identify the customer specific server to receive the events.
+  ///
+  /// Must be at most 256 characters.
   ///
   /// Required.
   core.String? host;
@@ -12333,6 +13330,150 @@ class GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig {
     final host = this.host;
     final xdrSettings = this.xdrSettings;
     return {'apiKey': ?apiKey, 'host': ?host, 'xdrSettings': ?xdrSettings};
+  }
+}
+
+/// Collection of device identifiers.
+class GoogleChromeManagementVersionsV1DeviceIdentifiers {
+  /// The device's host name.
+  ///
+  /// Output only.
+  core.String? hostName;
+
+  /// The name of the machine associated with the device.
+  ///
+  /// Output only.
+  core.String? machineName;
+
+  /// The device's serial number.
+  ///
+  /// Output only.
+  core.String? serialNumber;
+
+  GoogleChromeManagementVersionsV1DeviceIdentifiers({
+    this.hostName,
+    this.machineName,
+    this.serialNumber,
+  });
+
+  GoogleChromeManagementVersionsV1DeviceIdentifiers.fromJson(core.Map json_)
+    : this(
+        hostName: json_['hostName'] as core.String?,
+        machineName: json_['machineName'] as core.String?,
+        serialNumber: json_['serialNumber'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final hostName = this.hostName;
+    final machineName = this.machineName;
+    final serialNumber = this.serialNumber;
+    return {
+      'hostName': ?hostName,
+      'machineName': ?machineName,
+      'serialNumber': ?serialNumber,
+    };
+  }
+}
+
+/// History of device identifiers reported from a device.
+class GoogleChromeManagementVersionsV1DeviceIdentifiersHistory {
+  /// The device id is potentially being used by multiple devices.
+  ///
+  /// Output only.
+  core.bool? deviceIdCollision;
+
+  /// The last time we detected the device id collision.
+  ///
+  /// Output only.
+  core.String? lastDeviceIdCollisionDetectionTime;
+
+  /// List of device identifiers sent by this device.
+  ///
+  /// In descending order by last_activity_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1DeviceIdentifiersRecord>? records;
+
+  GoogleChromeManagementVersionsV1DeviceIdentifiersHistory({
+    this.deviceIdCollision,
+    this.lastDeviceIdCollisionDetectionTime,
+    this.records,
+  });
+
+  GoogleChromeManagementVersionsV1DeviceIdentifiersHistory.fromJson(
+    core.Map json_,
+  ) : this(
+        deviceIdCollision: json_['deviceIdCollision'] as core.bool?,
+        lastDeviceIdCollisionDetectionTime:
+            json_['lastDeviceIdCollisionDetectionTime'] as core.String?,
+        records: (json_['records'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleChromeManagementVersionsV1DeviceIdentifiersRecord.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceIdCollision = this.deviceIdCollision;
+    final lastDeviceIdCollisionDetectionTime =
+        this.lastDeviceIdCollisionDetectionTime;
+    final records = this.records;
+    return {
+      'deviceIdCollision': ?deviceIdCollision,
+      'lastDeviceIdCollisionDetectionTime': ?lastDeviceIdCollisionDetectionTime,
+      'records': ?records,
+    };
+  }
+}
+
+/// Record of the device identifiers and when they were reported.
+class GoogleChromeManagementVersionsV1DeviceIdentifiersRecord {
+  /// The first time these identifiers were reported.
+  ///
+  /// Output only.
+  core.String? firstRecordTime;
+
+  /// Device identifiers.
+  ///
+  /// Output only.
+  GoogleChromeManagementVersionsV1DeviceIdentifiers? identifiers;
+
+  /// The time of the last activity of these identifiers either from reporting,
+  /// policy fetching or registration.
+  ///
+  /// Output only.
+  core.String? lastActivityTime;
+
+  GoogleChromeManagementVersionsV1DeviceIdentifiersRecord({
+    this.firstRecordTime,
+    this.identifiers,
+    this.lastActivityTime,
+  });
+
+  GoogleChromeManagementVersionsV1DeviceIdentifiersRecord.fromJson(
+    core.Map json_,
+  ) : this(
+        firstRecordTime: json_['firstRecordTime'] as core.String?,
+        identifiers: json_.containsKey('identifiers')
+            ? GoogleChromeManagementVersionsV1DeviceIdentifiers.fromJson(
+                json_['identifiers'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        lastActivityTime: json_['lastActivityTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final firstRecordTime = this.firstRecordTime;
+    final identifiers = this.identifiers;
+    final lastActivityTime = this.lastActivityTime;
+    return {
+      'firstRecordTime': ?firstRecordTime,
+      'identifiers': ?identifiers,
+      'lastActivityTime': ?lastActivityTime,
+    };
   }
 }
 
@@ -12482,7 +13623,7 @@ class GoogleChromeManagementVersionsV1DeviceTrustConfig {
 typedef GoogleChromeManagementVersionsV1DisableInsightsRequest = $Empty;
 
 /// Response from disabling insights for the customer.
-typedef GoogleChromeManagementVersionsV1DisableInsightsResponse = $Response01;
+typedef GoogleChromeManagementVersionsV1DisableInsightsResponse = $Response02;
 
 /// Request to enable insights for the customer.
 class GoogleChromeManagementVersionsV1EnableInsightsRequest {
@@ -12511,7 +13652,367 @@ class GoogleChromeManagementVersionsV1EnableInsightsRequest {
 }
 
 /// Response from enabling insights for the customer.
-typedef GoogleChromeManagementVersionsV1EnableInsightsResponse = $Response01;
+typedef GoogleChromeManagementVersionsV1EnableInsightsResponse = $Response02;
+
+/// Enrollment token for a chrome device.
+class GoogleChromeManagementVersionsV1EnrollmentToken {
+  /// The creation time of the token.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The id of the user who created the token.
+  ///
+  /// Output only.
+  core.String? creatorId;
+
+  /// The obfuscated ID of the customer to whom this token is associated.
+  ///
+  /// Output only.
+  core.String? customerId;
+
+  /// Identifier.
+  ///
+  /// The resource name of the enrollment token. Format:
+  /// customers/{customer}/enrollmentTokens/{token_permanent_id}
+  core.String? name;
+
+  /// Obfuscated ID of the organization unit this token is associated with.
+  ///
+  /// If not set, the token is created for the root organization unit.
+  ///
+  /// Optional.
+  core.String? orgUnitId;
+
+  /// The revocation time of the token, null if the token is not revoked.
+  ///
+  /// Output only.
+  core.String? revokeTime;
+
+  /// The id of the user who revoked the token, null if the token is not
+  /// revoked.
+  ///
+  /// Output only.
+  core.String? revokerId;
+
+  /// The state of the token.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ENROLLMENT_TOKEN_STATE_UNSPECIFIED" : Unknown token state.
+  /// - "ENROLLMENT_TOKEN_STATE_ACTIVE" : The token is still active and valid.
+  /// - "ENROLLMENT_TOKEN_STATE_EXPIRED" : The token has expired.
+  /// - "ENROLLMENT_TOKEN_STATE_REVOKED" : The token has been revoked by user.
+  core.String? state;
+
+  /// The value of the token stored on the device and used to identify it to the
+  /// management service handling the enrollment request.
+  ///
+  /// Output only.
+  core.String? token;
+
+  /// Unique identifier of the enrollment token used to access information on
+  /// tokens.
+  ///
+  /// Output only.
+  core.String? tokenPermanentId;
+
+  /// The device type this token is used for.
+  ///
+  /// If not set, defaults to `ENROLLMENT_TOKEN_TYPE_CHROME_BROWSER`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENROLLMENT_TOKEN_TYPE_UNSPECIFIED" : Unknown token device type.
+  /// - "ENROLLMENT_TOKEN_TYPE_CHROME_BROWSER" : The token is used to enroll a
+  /// Chrome Browser device.
+  core.String? tokenType;
+
+  GoogleChromeManagementVersionsV1EnrollmentToken({
+    this.createTime,
+    this.creatorId,
+    this.customerId,
+    this.name,
+    this.orgUnitId,
+    this.revokeTime,
+    this.revokerId,
+    this.state,
+    this.token,
+    this.tokenPermanentId,
+    this.tokenType,
+  });
+
+  GoogleChromeManagementVersionsV1EnrollmentToken.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        creatorId: json_['creatorId'] as core.String?,
+        customerId: json_['customerId'] as core.String?,
+        name: json_['name'] as core.String?,
+        orgUnitId: json_['orgUnitId'] as core.String?,
+        revokeTime: json_['revokeTime'] as core.String?,
+        revokerId: json_['revokerId'] as core.String?,
+        state: json_['state'] as core.String?,
+        token: json_['token'] as core.String?,
+        tokenPermanentId: json_['tokenPermanentId'] as core.String?,
+        tokenType: json_['tokenType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final creatorId = this.creatorId;
+    final customerId = this.customerId;
+    final name = this.name;
+    final orgUnitId = this.orgUnitId;
+    final revokeTime = this.revokeTime;
+    final revokerId = this.revokerId;
+    final state = this.state;
+    final token = this.token;
+    final tokenPermanentId = this.tokenPermanentId;
+    final tokenType = this.tokenType;
+    return {
+      'createTime': ?createTime,
+      'creatorId': ?creatorId,
+      'customerId': ?customerId,
+      'name': ?name,
+      'orgUnitId': ?orgUnitId,
+      'revokeTime': ?revokeTime,
+      'revokerId': ?revokerId,
+      'state': ?state,
+      'token': ?token,
+      'tokenPermanentId': ?tokenPermanentId,
+      'tokenType': ?tokenType,
+    };
+  }
+}
+
+/// Information about extensions installed on profile reported on an installed
+/// Chrome on a device with managed chrome browsers.
+class GoogleChromeManagementVersionsV1Extension {
+  /// The type of the extension.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EXTENSION_TYPE_UNSPECIFIED" : Represents an unspecified extension type.
+  /// - "EXTENSION" : Represents an extension.
+  /// - "APP" : Represents an app.
+  /// - "THEME" : Represents a theme.
+  /// - "HOSTED_APP" : Represents a hosted app.
+  core.String? appType;
+
+  /// If the extension is controlled by a browser policy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONFIGURED_APP_POLICY_UNSPECIFIED" : Represents an unspecified
+  /// configured app policy.
+  /// - "CONFIGURED_APP_POLICY_NONE" : Represents no configured app policy.
+  /// - "CONFIGURED_APP_POLICY_SHOULD_FORCE" : Represents an extension that
+  /// should be forced.
+  /// - "CONFIGURED_APP_POLICY_SHOULD_BLOCK" : Represents an extension that
+  /// should be blocked.
+  core.String? configuredAppPolicy;
+
+  /// The localized description of this extension.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Whether the extension is disabled.
+  ///
+  /// Output only.
+  core.bool? disabled;
+
+  /// The id of the extension.
+  ///
+  /// Output only.
+  core.String? extensionId;
+
+  /// The localized name of this extension as reported by Chrome.
+  ///
+  /// Output only.
+  core.String? extensionName;
+
+  /// The URL of the homepage for this extension.
+  ///
+  /// Output only.
+  core.String? homepageUri;
+
+  /// The list of icons available for this extension.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1ExtensionIcon>? icons;
+
+  /// The way the extension was installed.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INSTALLATION_TYPE_UNSPECIFIED" : Represents an unspecified installation
+  /// type.
+  /// - "MULTIPLE" : Represents instances of the extension having mixed
+  /// installation types.
+  /// - "NORMAL" : Represents a normal installation type.
+  /// - "ADMIN" : Represents an installation by admin.
+  /// - "DEVELOPMENT" : Represents a development installation type.
+  /// - "SIDELOAD" : Represents a sideload installation type.
+  /// - "OTHER" : Represents an installation type that is not covered in the
+  /// other options.
+  core.String? installType;
+
+  /// The manifest version of this extension.
+  ///
+  /// Output only.
+  core.int? manifestVersion;
+
+  /// The list of permissions required for this extension.
+  ///
+  /// Output only.
+  core.List<core.String>? permissions;
+
+  /// The version of the extension.
+  ///
+  /// Output only.
+  core.String? version;
+
+  GoogleChromeManagementVersionsV1Extension({
+    this.appType,
+    this.configuredAppPolicy,
+    this.description,
+    this.disabled,
+    this.extensionId,
+    this.extensionName,
+    this.homepageUri,
+    this.icons,
+    this.installType,
+    this.manifestVersion,
+    this.permissions,
+    this.version,
+  });
+
+  GoogleChromeManagementVersionsV1Extension.fromJson(core.Map json_)
+    : this(
+        appType: json_['appType'] as core.String?,
+        configuredAppPolicy: json_['configuredAppPolicy'] as core.String?,
+        description: json_['description'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        extensionId: json_['extensionId'] as core.String?,
+        extensionName: json_['extensionName'] as core.String?,
+        homepageUri: json_['homepageUri'] as core.String?,
+        icons: (json_['icons'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementVersionsV1ExtensionIcon.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        installType: json_['installType'] as core.String?,
+        manifestVersion: json_['manifestVersion'] as core.int?,
+        permissions: (json_['permissions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final appType = this.appType;
+    final configuredAppPolicy = this.configuredAppPolicy;
+    final description = this.description;
+    final disabled = this.disabled;
+    final extensionId = this.extensionId;
+    final extensionName = this.extensionName;
+    final homepageUri = this.homepageUri;
+    final icons = this.icons;
+    final installType = this.installType;
+    final manifestVersion = this.manifestVersion;
+    final permissions = this.permissions;
+    final version = this.version;
+    return {
+      'appType': ?appType,
+      'configuredAppPolicy': ?configuredAppPolicy,
+      'description': ?description,
+      'disabled': ?disabled,
+      'extensionId': ?extensionId,
+      'extensionName': ?extensionName,
+      'homepageUri': ?homepageUri,
+      'icons': ?icons,
+      'installType': ?installType,
+      'manifestVersion': ?manifestVersion,
+      'permissions': ?permissions,
+      'version': ?version,
+    };
+  }
+}
+
+/// An icon of a Chrome browser extension.
+class GoogleChromeManagementVersionsV1ExtensionIcon {
+  /// The size of the extension icon.
+  ///
+  /// Output only.
+  core.int? size;
+
+  /// The URL to the extension icon.
+  ///
+  /// Output only.
+  core.String? uri;
+
+  GoogleChromeManagementVersionsV1ExtensionIcon({this.size, this.uri});
+
+  GoogleChromeManagementVersionsV1ExtensionIcon.fromJson(core.Map json_)
+    : this(size: json_['size'] as core.int?, uri: json_['uri'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final size = this.size;
+    final uri = this.uri;
+    return {'size': ?size, 'uri': ?uri};
+  }
+}
+
+/// The reported policies applied to an extension installed on a Chrome profile.
+class GoogleChromeManagementVersionsV1ExtensionPolicy {
+  /// The id of the extension the policies are applied to.
+  ///
+  /// Output only.
+  core.String? extensionId;
+
+  /// The name of the extension the policies are applied to.
+  ///
+  /// Output only.
+  core.String? extensionName;
+
+  /// List of policies applied to this extension.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1Policy>? policies;
+
+  GoogleChromeManagementVersionsV1ExtensionPolicy({
+    this.extensionId,
+    this.extensionName,
+    this.policies,
+  });
+
+  GoogleChromeManagementVersionsV1ExtensionPolicy.fromJson(core.Map json_)
+    : this(
+        extensionId: json_['extensionId'] as core.String?,
+        extensionName: json_['extensionName'] as core.String?,
+        policies: (json_['policies'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementVersionsV1Policy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final extensionId = this.extensionId;
+    final extensionName = this.extensionName;
+    final policies = this.policies;
+    return {
+      'extensionId': ?extensionId,
+      'extensionName': ?extensionName,
+      'policies': ?policies,
+    };
+  }
+}
 
 /// Describes a generic Certificate Authority Connection.
 typedef GoogleChromeManagementVersionsV1GenericCaConnection = $CaConnection;
@@ -12544,7 +14045,7 @@ class GoogleChromeManagementVersionsV1GenericProfile {
 class GoogleChromeManagementVersionsV1GoogleSecOpsConfig {
   /// Input only.
   ///
-  /// API key to use on the ingestion API.
+  /// API key to use on the ingestion API. Must be 39 characters.
   ///
   /// Required.
   core.String? apiKey;
@@ -12552,7 +14053,8 @@ class GoogleChromeManagementVersionsV1GoogleSecOpsConfig {
   /// Host of ingestion API endpoint.
   ///
   /// Allows customer to upload events to servers in specific geographical
-  /// regions. Existing configs that don't have this setting default to US.
+  /// regions. Existing configs that don't have this setting default to US. Must
+  /// be at most 256 characters.
   ///
   /// Required.
   core.String? host;
@@ -12685,6 +14187,39 @@ class GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse {
   }
 }
 
+/// Response to ListChromeBrowsers method.
+class GoogleChromeManagementVersionsV1ListChromeBrowsersResponse {
+  /// List of Chrome Browser device objects.
+  core.List<GoogleChromeManagementVersionsV1ChromeBrowser>? chromeBrowsers;
+
+  /// Token used to access next page of this result.
+  core.String? nextPageToken;
+
+  GoogleChromeManagementVersionsV1ListChromeBrowsersResponse({
+    this.chromeBrowsers,
+    this.nextPageToken,
+  });
+
+  GoogleChromeManagementVersionsV1ListChromeBrowsersResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        chromeBrowsers: (json_['chromeBrowsers'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementVersionsV1ChromeBrowser.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final chromeBrowsers = this.chromeBrowsers;
+    final nextPageToken = this.nextPageToken;
+    return {'chromeBrowsers': ?chromeBrowsers, 'nextPageToken': ?nextPageToken};
+  }
+}
+
 /// Response to ListConnectorConfigs method.
 class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse {
   /// The list of connector configs returned.
@@ -12724,6 +14259,44 @@ class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse {
   }
 }
 
+/// Response that contains a list of tokens.
+class GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse {
+  /// List of Chrome device enrollment tokens.
+  core.List<GoogleChromeManagementVersionsV1EnrollmentToken>? enrollmentTokens;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse({
+    this.enrollmentTokens,
+    this.nextPageToken,
+  });
+
+  GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        enrollmentTokens: (json_['enrollmentTokens'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleChromeManagementVersionsV1EnrollmentToken.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enrollmentTokens = this.enrollmentTokens;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'enrollmentTokens': ?enrollmentTokens,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
+
 /// MIP label connector config.
 class GoogleChromeManagementVersionsV1MipLabelConfig {
   /// Domain can be used optionally for the corner case where one Dasher
@@ -12758,6 +14331,47 @@ class GoogleChromeManagementVersionsV1MipLabelConfig {
     return {'domains': ?domains, 'microsoftTenantId': ?microsoftTenantId};
   }
 }
+
+/// Request to MoveChromeBrowsers method.
+class GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest {
+  /// ID of the destination organizational unit.
+  ///
+  /// Required.
+  core.String? destinationOrgUnitId;
+
+  /// List of resource IDs of Chrome Browser Devices to move.
+  ///
+  /// A maximum of 600 browsers may be moved per request.
+  ///
+  /// Required.
+  core.List<core.String>? resourceIds;
+
+  GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest({
+    this.destinationOrgUnitId,
+    this.resourceIds,
+  });
+
+  GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest.fromJson(
+    core.Map json_,
+  ) : this(
+        destinationOrgUnitId: json_['destinationOrgUnitId'] as core.String?,
+        resourceIds: (json_['resourceIds'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final destinationOrgUnitId = this.destinationOrgUnitId;
+    final resourceIds = this.resourceIds;
+    return {
+      'destinationOrgUnitId': ?destinationOrgUnitId,
+      'resourceIds': ?resourceIds,
+    };
+  }
+}
+
+/// Response to MoveChromeBrowsers method.
+typedef GoogleChromeManagementVersionsV1MoveChromeBrowsersResponse = $Empty;
 
 /// Request to MoveThirdPartyProfileUser method.
 class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest {
@@ -12813,12 +14427,14 @@ class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse {
 class GoogleChromeManagementVersionsV1PaloAltoNetworksConfig {
   /// Input only.
   ///
-  /// API key to use on the ingestion API.
+  /// API key to use on the ingestion API. Must be at most 256 characters.
   ///
   /// Required.
   core.String? apiKey;
 
   /// Host to identify the customer specific server to receive the events.
+  ///
+  /// Must be at most 256 characters.
   ///
   /// Required.
   core.String? host;
@@ -12859,6 +14475,251 @@ class GoogleChromeManagementVersionsV1PaloAltoNetworksConfig {
   }
 }
 
+/// Information about a Chrome browser plugin installed on a reported Chrome
+/// installation on a device with managed Chrome browsers.
+class GoogleChromeManagementVersionsV1Plugin {
+  /// The description of the installed plugin.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The filename of the installed plugin.
+  ///
+  /// Output only.
+  core.String? filename;
+
+  /// The name of the installed plugin.
+  ///
+  /// Output only.
+  core.String? pluginName;
+
+  GoogleChromeManagementVersionsV1Plugin({
+    this.description,
+    this.filename,
+    this.pluginName,
+  });
+
+  GoogleChromeManagementVersionsV1Plugin.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        filename: json_['filename'] as core.String?,
+        pluginName: json_['pluginName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final description = this.description;
+    final filename = this.filename;
+    final pluginName = this.pluginName;
+    return {
+      'description': ?description,
+      'filename': ?filename,
+      'pluginName': ?pluginName,
+    };
+  }
+}
+
+/// The applied policy reported by a managed Chrome browser.
+///
+/// The policy can be applied at various scopes (machine, profile, extension).
+class GoogleChromeManagementVersionsV1Policy {
+  /// A localized string with all the errors reported when trying to apply this
+  /// policy, if any.
+  ///
+  /// Output only.
+  core.String? error;
+
+  /// The name of the policy.
+  ///
+  /// Output only.
+  core.String? policyName;
+
+  /// The source of the policy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "POLICY_SOURCE_UNSPECIFIED" : Represents an unspecified policy source.
+  /// - "MACHINE_PLATFORM" : Represents a machine level platform policy.
+  /// - "USER_PLATFORM" : Represents a user level platform policy.
+  /// - "MACHINE_LEVEL_USER_CLOUD" : Represents a machine level user cloud
+  /// policy.
+  /// - "USER_CLOUD" : Represents a user level cloud policy.
+  /// - "MACHINE_MERGED" : Represents a machine level merged policy.
+  core.String? source;
+
+  /// The value of the policy.
+  ///
+  /// Output only.
+  core.String? value;
+
+  GoogleChromeManagementVersionsV1Policy({
+    this.error,
+    this.policyName,
+    this.source,
+    this.value,
+  });
+
+  GoogleChromeManagementVersionsV1Policy.fromJson(core.Map json_)
+    : this(
+        error: json_['error'] as core.String?,
+        policyName: json_['policyName'] as core.String?,
+        source: json_['source'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final error = this.error;
+    final policyName = this.policyName;
+    final source = this.source;
+    final value = this.value;
+    return {
+      'error': ?error,
+      'policyName': ?policyName,
+      'source': ?source,
+      'value': ?value,
+    };
+  }
+}
+
+/// A profile reported on an installation of Chrome on a device with managed
+/// chrome browsers.
+class GoogleChromeManagementVersionsV1Profile {
+  /// The email of the user signed in to this profile, if any.
+  ///
+  /// Output only.
+  core.String? chromeSignedInUserEmail;
+
+  /// The list of extensions with applied extension policies.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1ExtensionPolicy>? extensionPolicies;
+
+  /// The list of extensions installed for this profile.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1Extension>? extensions;
+
+  /// A unique ID for this profile.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The time when the last request to fetch policies succeeded for this
+  /// profile.
+  ///
+  /// Output only.
+  core.String? lastPolicyFetchTime;
+
+  /// The time when the last report was received from this profile.
+  ///
+  /// Output only.
+  core.String? lastStatusReportTime;
+
+  /// The name given to this profile.
+  ///
+  /// Output only.
+  core.String? profileName;
+
+  /// The number of safe browsing warnings that were shown on this profile.
+  ///
+  /// Output only.
+  core.String? safeBrowsingWarnings;
+
+  /// The number of safe browsing warnings that were clicked through on this
+  /// profile.
+  ///
+  /// Output only.
+  core.String? safeBrowsingWarningsClickThroughs;
+
+  /// The last time the safe browsing warning info was reset to 0.
+  ///
+  /// Output only.
+  core.String? safeBrowsingWarningsResetTime;
+
+  /// The list of Chrome browser policies applied to this profile.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementVersionsV1Policy>? userPolicies;
+
+  GoogleChromeManagementVersionsV1Profile({
+    this.chromeSignedInUserEmail,
+    this.extensionPolicies,
+    this.extensions,
+    this.id,
+    this.lastPolicyFetchTime,
+    this.lastStatusReportTime,
+    this.profileName,
+    this.safeBrowsingWarnings,
+    this.safeBrowsingWarningsClickThroughs,
+    this.safeBrowsingWarningsResetTime,
+    this.userPolicies,
+  });
+
+  GoogleChromeManagementVersionsV1Profile.fromJson(core.Map json_)
+    : this(
+        chromeSignedInUserEmail:
+            json_['chromeSignedInUserEmail'] as core.String?,
+        extensionPolicies: (json_['extensionPolicies'] as core.List?)
+            ?.map(
+              (value) =>
+                  GoogleChromeManagementVersionsV1ExtensionPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
+        extensions: (json_['extensions'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementVersionsV1Extension.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        id: json_['id'] as core.String?,
+        lastPolicyFetchTime: json_['lastPolicyFetchTime'] as core.String?,
+        lastStatusReportTime: json_['lastStatusReportTime'] as core.String?,
+        profileName: json_['profileName'] as core.String?,
+        safeBrowsingWarnings: json_['safeBrowsingWarnings'] as core.String?,
+        safeBrowsingWarningsClickThroughs:
+            json_['safeBrowsingWarningsClickThroughs'] as core.String?,
+        safeBrowsingWarningsResetTime:
+            json_['safeBrowsingWarningsResetTime'] as core.String?,
+        userPolicies: (json_['userPolicies'] as core.List?)
+            ?.map(
+              (value) => GoogleChromeManagementVersionsV1Policy.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final chromeSignedInUserEmail = this.chromeSignedInUserEmail;
+    final extensionPolicies = this.extensionPolicies;
+    final extensions = this.extensions;
+    final id = this.id;
+    final lastPolicyFetchTime = this.lastPolicyFetchTime;
+    final lastStatusReportTime = this.lastStatusReportTime;
+    final profileName = this.profileName;
+    final safeBrowsingWarnings = this.safeBrowsingWarnings;
+    final safeBrowsingWarningsClickThroughs =
+        this.safeBrowsingWarningsClickThroughs;
+    final safeBrowsingWarningsResetTime = this.safeBrowsingWarningsResetTime;
+    final userPolicies = this.userPolicies;
+    return {
+      'chromeSignedInUserEmail': ?chromeSignedInUserEmail,
+      'extensionPolicies': ?extensionPolicies,
+      'extensions': ?extensions,
+      'id': ?id,
+      'lastPolicyFetchTime': ?lastPolicyFetchTime,
+      'lastStatusReportTime': ?lastStatusReportTime,
+      'profileName': ?profileName,
+      'safeBrowsingWarnings': ?safeBrowsingWarnings,
+      'safeBrowsingWarningsClickThroughs': ?safeBrowsingWarningsClickThroughs,
+      'safeBrowsingWarningsResetTime': ?safeBrowsingWarningsResetTime,
+      'userPolicies': ?userPolicies,
+    };
+  }
+}
+
 /// Pub/Sub connector config.
 class GoogleChromeManagementVersionsV1PubSubConfig {
   /// The reporting settings for the Pub/Sub config.
@@ -12867,6 +14728,8 @@ class GoogleChromeManagementVersionsV1PubSubConfig {
   GoogleChromeManagementVersionsV1ReportingSettings? reportingSettings;
 
   /// The full path to the topic to send the event to.
+  ///
+  /// Must be at most 1000 characters.
   ///
   /// Required.
   core.String? topicFullPath;
@@ -12900,6 +14763,8 @@ class GoogleChromeManagementVersionsV1PubSubConfig {
 /// Pub/Sub XDR connector config.
 class GoogleChromeManagementVersionsV1PubSubXdrConfig {
   /// The full path to the topic to send the event to.
+  ///
+  /// Must be at most 1000 characters.
   ///
   /// Required.
   core.String? topicFullPath;
@@ -13513,6 +15378,9 @@ class GoogleChromeManagementVersionsV1ReportingSettings {
   }
 }
 
+/// Request to revoke a token.
+typedef GoogleChromeManagementVersionsV1RevokeEnrollmentTokenRequest = $Empty;
+
 /// Describes a SCEP Certificate Authority Connection.
 typedef GoogleChromeManagementVersionsV1ScepCaConnection = $CaConnection;
 
@@ -13628,6 +15496,40 @@ class GoogleChromeManagementVersionsV1ScepProfile {
   }
 }
 
+/// Secure gateway connector config.
+class GoogleChromeManagementVersionsV1SecureGatewayConfig {
+  /// The enabled platforms for the secure gateway connector config.
+  ///
+  /// Optional.
+  core.List<core.String>? enabledPlatforms;
+
+  /// The resource ID of the secure gateway connector config.
+  ///
+  /// Must be at most 256 characters.
+  ///
+  /// Required.
+  core.String? resourceId;
+
+  GoogleChromeManagementVersionsV1SecureGatewayConfig({
+    this.enabledPlatforms,
+    this.resourceId,
+  });
+
+  GoogleChromeManagementVersionsV1SecureGatewayConfig.fromJson(core.Map json_)
+    : this(
+        enabledPlatforms: (json_['enabledPlatforms'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        resourceId: json_['resourceId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final enabledPlatforms = this.enabledPlatforms;
+    final resourceId = this.resourceId;
+    return {'enabledPlatforms': ?enabledPlatforms, 'resourceId': ?resourceId};
+  }
+}
+
 /// Request message for marking a certificate provisioning process as failed.
 class GoogleChromeManagementVersionsV1SetFailureRequest {
   /// A message describing the failure details.
@@ -13705,12 +15607,14 @@ class GoogleChromeManagementVersionsV1SplunkConfig {
   /// Input only.
   ///
   /// The data input's HTTP Event Collector token to use as an Authorization
-  /// header.
+  /// header. Must be at most 50 characters.
   ///
   /// Required.
   core.String? hecToken;
 
   /// Host to identify the customer specific server to receive the events.
+  ///
+  /// Must be at most 256 characters.
   ///
   /// Required.
   core.String? host;
@@ -13729,6 +15633,8 @@ class GoogleChromeManagementVersionsV1SplunkConfig {
 
   /// Optional source name to override the default one set in the Splunk admin
   /// console.
+  ///
+  /// Must be at most 100 characters.
   ///
   /// Optional.
   core.String? source;

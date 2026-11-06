@@ -59,6 +59,27 @@ void checkAdminSettings(api.AdminSettings o) {
   buildCounterAdminSettings--;
 }
 
+core.int buildCounterAuthType = 0;
+api.AuthType buildAuthType() {
+  final o = api.AuthType();
+  buildCounterAuthType++;
+  if (buildCounterAuthType < 3) {
+    o.googleAuthEnabled = true;
+    o.workforceAuthEnabled = true;
+  }
+  buildCounterAuthType--;
+  return o;
+}
+
+void checkAuthType(api.AuthType o) {
+  buildCounterAuthType++;
+  if (buildCounterAuthType < 3) {
+    unittest.expect(o.googleAuthEnabled!, unittest.isTrue);
+    unittest.expect(o.workforceAuthEnabled!, unittest.isTrue);
+  }
+  buildCounterAuthType--;
+}
+
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
   final o = api.CancelOperationRequest();
@@ -339,6 +360,7 @@ api.Instance buildInstance() {
   if (buildCounterInstance < 3) {
     o.acceleratedSecurityPatchEnabled = true;
     o.adminSettings = buildAdminSettings();
+    o.authType = buildAuthType();
     o.catalogIntegrationOptOut = true;
     o.classType = 'foo';
     o.consumerNetwork = 'foo';
@@ -387,6 +409,7 @@ void checkInstance(api.Instance o) {
   if (buildCounterInstance < 3) {
     unittest.expect(o.acceleratedSecurityPatchEnabled!, unittest.isTrue);
     checkAdminSettings(o.adminSettings!);
+    checkAuthType(o.authType!);
     unittest.expect(o.catalogIntegrationOptOut!, unittest.isTrue);
     unittest.expect(o.classType!, unittest.equals('foo'));
     unittest.expect(o.consumerNetwork!, unittest.equals('foo'));
@@ -1091,6 +1114,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkAdminSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-AuthType', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAuthType();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AuthType.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAuthType(od);
     });
   });
 

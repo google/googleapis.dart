@@ -7558,6 +7558,53 @@ class DnsAutomationStatus {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Configuration for more granular control of Private Service Connect
+/// connection propagation.
+///
+/// This allows enabling or disabling connection propagation for specific types
+/// of Private Service Connect endpoints.
+class ExportPscConfig {
+  /// Controls whether Private Service Connect endpoints for global Google APIs
+  /// should be propagated.
+  ///
+  /// The default value is false.
+  ///
+  /// Optional.
+  core.bool? globalGoogleApis;
+
+  /// Controls whether Private Service Connect endpoints for regional ILBs and
+  /// regional Google APIs should be propagated.
+  ///
+  /// Default value is true if export_psc is true. Otherwise, the default value
+  /// is false.
+  ///
+  /// Optional.
+  core.bool? publishedServicesAndRegionalGoogleApis;
+
+  ExportPscConfig({
+    this.globalGoogleApis,
+    this.publishedServicesAndRegionalGoogleApis,
+  });
+
+  ExportPscConfig.fromJson(core.Map json_)
+    : this(
+        globalGoogleApis: json_['globalGoogleApis'] as core.bool?,
+        publishedServicesAndRegionalGoogleApis:
+            json_['publishedServicesAndRegionalGoogleApis'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final globalGoogleApis = this.globalGoogleApis;
+    final publishedServicesAndRegionalGoogleApis =
+        this.publishedServicesAndRegionalGoogleApis;
+    return {
+      'globalGoogleApis': ?globalGoogleApis,
+      'publishedServicesAndRegionalGoogleApis':
+          ?publishedServicesAndRegionalGoogleApis,
+    };
+  }
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -8216,6 +8263,11 @@ class Hub {
   /// Optional.
   core.bool? exportPsc;
 
+  /// Config for more granular control of Private Service Connect transitivity.
+  ///
+  /// Optional.
+  ExportPscConfig? exportPscConfig;
+
   /// Optional labels in key-value pair format.
   ///
   /// For more information about labels, see
@@ -8328,6 +8380,7 @@ class Hub {
     this.createTime,
     this.description,
     this.exportPsc,
+    this.exportPscConfig,
     this.labels,
     this.name,
     this.policyMode,
@@ -8345,6 +8398,11 @@ class Hub {
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         exportPsc: json_['exportPsc'] as core.bool?,
+        exportPscConfig: json_.containsKey('exportPscConfig')
+            ? ExportPscConfig.fromJson(
+                json_['exportPscConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -8375,6 +8433,7 @@ class Hub {
     final createTime = this.createTime;
     final description = this.description;
     final exportPsc = this.exportPsc;
+    final exportPscConfig = this.exportPscConfig;
     final labels = this.labels;
     final name = this.name;
     final policyMode = this.policyMode;
@@ -8389,6 +8448,7 @@ class Hub {
       'createTime': ?createTime,
       'description': ?description,
       'exportPsc': ?exportPsc,
+      'exportPscConfig': ?exportPscConfig,
       'labels': ?labels,
       'name': ?name,
       'policyMode': ?policyMode,
@@ -8584,6 +8644,37 @@ class InternalRange {
   /// Optional.
   core.int? prefixLength;
 
+  /// The purpose of this internal range.
+  ///
+  /// Defines the intended use of the range and any restrictions associated with
+  /// it. If not specified, it defaults to VPC_SUBNET.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PURPOSE_UNSPECIFIED" : If purpose is left unspecified in
+  /// CreateInternalRange or UpdateInternalRange, it will be defaulted to
+  /// VPC_SUBNET.
+  /// - "VPC_SUBNET" : The internal range is used for VPC subnetworks.
+  /// - "INTERNAL_ADDRESS" : The internal range is used exclusively for
+  /// allocating individual IP addresses (e.g., for global PSC endpoints). Child
+  /// ranges or subnetworks cannot be created from a range with this purpose.
+  core.String? purpose;
+
+  /// Status of the Internal Range.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RANGE_STATUS_UNSPECIFIED" : Unspecified status is the default value for
+  /// an Internal Range.
+  /// - "ACTIVE" : Ranges with ACTIVE status will reserve the CIDR block from
+  /// the given VPC.
+  /// - "OBSOLETE" : A range becomes OBSOLETE if its VPC network is deleted. An
+  /// OBSOLETE range is inactive, doesn't reserve any CIDR blocks, and can only
+  /// be deleted or have its labels and description updated.
+  /// - "CREATING" : The resource is being created.
+  /// - "DELETING" : The resource is being deleted.
+  core.String? rangeStatus;
+
   /// Can be set to narrow down or pick a different address space while
   /// searching for a free range.
   ///
@@ -8648,6 +8739,8 @@ class InternalRange {
     this.overlaps,
     this.peering,
     this.prefixLength,
+    this.purpose,
+    this.rangeStatus,
     this.targetCidrRange,
     this.updateTime,
     this.usage,
@@ -8684,6 +8777,8 @@ class InternalRange {
             .toList(),
         peering: json_['peering'] as core.String?,
         prefixLength: json_['prefixLength'] as core.int?,
+        purpose: json_['purpose'] as core.String?,
+        rangeStatus: json_['rangeStatus'] as core.String?,
         targetCidrRange: (json_['targetCidrRange'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -8708,6 +8803,8 @@ class InternalRange {
     final overlaps = this.overlaps;
     final peering = this.peering;
     final prefixLength = this.prefixLength;
+    final purpose = this.purpose;
+    final rangeStatus = this.rangeStatus;
     final targetCidrRange = this.targetCidrRange;
     final updateTime = this.updateTime;
     final usage = this.usage;
@@ -8726,6 +8823,8 @@ class InternalRange {
       'overlaps': ?overlaps,
       'peering': ?peering,
       'prefixLength': ?prefixLength,
+      'purpose': ?purpose,
+      'rangeStatus': ?rangeStatus,
       'targetCidrRange': ?targetCidrRange,
       'updateTime': ?updateTime,
       'usage': ?usage,
@@ -8787,6 +8886,30 @@ class LinkedInterconnectAttachments {
   /// Optional.
   core.List<core.String>? includeImportRanges;
 
+  /// The proposed exclude export IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedExcludeExportRanges;
+
+  /// The proposed exclude import IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedExcludeImportRanges;
+
+  /// The proposed include export IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedIncludeExportRanges;
+
+  /// The proposed include import IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedIncludeImportRanges;
+
   /// A value that controls whether site-to-site data transfer is enabled for
   /// these resources.
   ///
@@ -8807,6 +8930,10 @@ class LinkedInterconnectAttachments {
     this.excludeImportRanges,
     this.includeExportRanges,
     this.includeImportRanges,
+    this.proposedExcludeExportRanges,
+    this.proposedExcludeImportRanges,
+    this.proposedIncludeExportRanges,
+    this.proposedIncludeImportRanges,
     this.siteToSiteDataTransfer,
     this.uris,
     this.vpcNetwork,
@@ -8826,6 +8953,22 @@ class LinkedInterconnectAttachments {
         includeImportRanges: (json_['includeImportRanges'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        proposedExcludeExportRanges:
+            (json_['proposedExcludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedExcludeImportRanges:
+            (json_['proposedExcludeImportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedIncludeExportRanges:
+            (json_['proposedIncludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedIncludeImportRanges:
+            (json_['proposedIncludeImportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
         uris: (json_['uris'] as core.List?)
             ?.map((value) => value as core.String)
@@ -8838,6 +8981,10 @@ class LinkedInterconnectAttachments {
     final excludeImportRanges = this.excludeImportRanges;
     final includeExportRanges = this.includeExportRanges;
     final includeImportRanges = this.includeImportRanges;
+    final proposedExcludeExportRanges = this.proposedExcludeExportRanges;
+    final proposedExcludeImportRanges = this.proposedExcludeImportRanges;
+    final proposedIncludeExportRanges = this.proposedIncludeExportRanges;
+    final proposedIncludeImportRanges = this.proposedIncludeImportRanges;
     final siteToSiteDataTransfer = this.siteToSiteDataTransfer;
     final uris = this.uris;
     final vpcNetwork = this.vpcNetwork;
@@ -8846,6 +8993,10 @@ class LinkedInterconnectAttachments {
       'excludeImportRanges': ?excludeImportRanges,
       'includeExportRanges': ?includeExportRanges,
       'includeImportRanges': ?includeImportRanges,
+      'proposedExcludeExportRanges': ?proposedExcludeExportRanges,
+      'proposedExcludeImportRanges': ?proposedExcludeImportRanges,
+      'proposedIncludeExportRanges': ?proposedIncludeExportRanges,
+      'proposedIncludeImportRanges': ?proposedIncludeImportRanges,
       'siteToSiteDataTransfer': ?siteToSiteDataTransfer,
       'uris': ?uris,
       'vpcNetwork': ?vpcNetwork,
@@ -8989,6 +9140,30 @@ class LinkedRouterApplianceInstances {
   /// The list of router appliance instances.
   core.List<RouterApplianceInstance>? instances;
 
+  /// The proposed exclude export IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedExcludeExportRanges;
+
+  /// The proposed exclude import IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedExcludeImportRanges;
+
+  /// The proposed include export IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedIncludeExportRanges;
+
+  /// The proposed include import IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedIncludeImportRanges;
+
   /// A value that controls whether site-to-site data transfer is enabled for
   /// these resources.
   ///
@@ -9007,6 +9182,10 @@ class LinkedRouterApplianceInstances {
     this.includeExportRanges,
     this.includeImportRanges,
     this.instances,
+    this.proposedExcludeExportRanges,
+    this.proposedExcludeImportRanges,
+    this.proposedIncludeExportRanges,
+    this.proposedIncludeImportRanges,
     this.siteToSiteDataTransfer,
     this.vpcNetwork,
   });
@@ -9032,6 +9211,22 @@ class LinkedRouterApplianceInstances {
               ),
             )
             .toList(),
+        proposedExcludeExportRanges:
+            (json_['proposedExcludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedExcludeImportRanges:
+            (json_['proposedExcludeImportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedIncludeExportRanges:
+            (json_['proposedIncludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedIncludeImportRanges:
+            (json_['proposedIncludeImportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
         vpcNetwork: json_['vpcNetwork'] as core.String?,
       );
@@ -9042,6 +9237,10 @@ class LinkedRouterApplianceInstances {
     final includeExportRanges = this.includeExportRanges;
     final includeImportRanges = this.includeImportRanges;
     final instances = this.instances;
+    final proposedExcludeExportRanges = this.proposedExcludeExportRanges;
+    final proposedExcludeImportRanges = this.proposedExcludeImportRanges;
+    final proposedIncludeExportRanges = this.proposedIncludeExportRanges;
+    final proposedIncludeImportRanges = this.proposedIncludeImportRanges;
     final siteToSiteDataTransfer = this.siteToSiteDataTransfer;
     final vpcNetwork = this.vpcNetwork;
     return {
@@ -9050,6 +9249,10 @@ class LinkedRouterApplianceInstances {
       'includeExportRanges': ?includeExportRanges,
       'includeImportRanges': ?includeImportRanges,
       'instances': ?instances,
+      'proposedExcludeExportRanges': ?proposedExcludeExportRanges,
+      'proposedExcludeImportRanges': ?proposedExcludeImportRanges,
+      'proposedIncludeExportRanges': ?proposedIncludeExportRanges,
+      'proposedIncludeImportRanges': ?proposedIncludeImportRanges,
       'siteToSiteDataTransfer': ?siteToSiteDataTransfer,
       'vpcNetwork': ?vpcNetwork,
     };
@@ -9177,6 +9380,30 @@ class LinkedVpnTunnels {
   /// Optional.
   core.List<core.String>? includeImportRanges;
 
+  /// The proposed exclude export IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedExcludeExportRanges;
+
+  /// The proposed exclude import IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedExcludeImportRanges;
+
+  /// The proposed include export IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedIncludeExportRanges;
+
+  /// The proposed include import IP ranges waiting for hub administrator's
+  /// approval.
+  ///
+  /// Output only.
+  core.List<core.String>? proposedIncludeImportRanges;
+
   /// A value that controls whether site-to-site data transfer is enabled for
   /// these resources.
   ///
@@ -9197,6 +9424,10 @@ class LinkedVpnTunnels {
     this.excludeImportRanges,
     this.includeExportRanges,
     this.includeImportRanges,
+    this.proposedExcludeExportRanges,
+    this.proposedExcludeImportRanges,
+    this.proposedIncludeExportRanges,
+    this.proposedIncludeImportRanges,
     this.siteToSiteDataTransfer,
     this.uris,
     this.vpcNetwork,
@@ -9216,6 +9447,22 @@ class LinkedVpnTunnels {
         includeImportRanges: (json_['includeImportRanges'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        proposedExcludeExportRanges:
+            (json_['proposedExcludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedExcludeImportRanges:
+            (json_['proposedExcludeImportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedIncludeExportRanges:
+            (json_['proposedIncludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedIncludeImportRanges:
+            (json_['proposedIncludeImportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
         uris: (json_['uris'] as core.List?)
             ?.map((value) => value as core.String)
@@ -9228,6 +9475,10 @@ class LinkedVpnTunnels {
     final excludeImportRanges = this.excludeImportRanges;
     final includeExportRanges = this.includeExportRanges;
     final includeImportRanges = this.includeImportRanges;
+    final proposedExcludeExportRanges = this.proposedExcludeExportRanges;
+    final proposedExcludeImportRanges = this.proposedExcludeImportRanges;
+    final proposedIncludeExportRanges = this.proposedIncludeExportRanges;
+    final proposedIncludeImportRanges = this.proposedIncludeImportRanges;
     final siteToSiteDataTransfer = this.siteToSiteDataTransfer;
     final uris = this.uris;
     final vpcNetwork = this.vpcNetwork;
@@ -9236,6 +9487,10 @@ class LinkedVpnTunnels {
       'excludeImportRanges': ?excludeImportRanges,
       'includeExportRanges': ?includeExportRanges,
       'includeImportRanges': ?includeImportRanges,
+      'proposedExcludeExportRanges': ?proposedExcludeExportRanges,
+      'proposedExcludeImportRanges': ?proposedExcludeImportRanges,
+      'proposedIncludeExportRanges': ?proposedIncludeExportRanges,
+      'proposedIncludeImportRanges': ?proposedIncludeImportRanges,
       'siteToSiteDataTransfer': ?siteToSiteDataTransfer,
       'uris': ?uris,
       'vpcNetwork': ?vpcNetwork,
@@ -11982,6 +12237,8 @@ class Route {
   /// - "DYNAMIC_ROUTE" : The route leads to a destination in a dynamic route.
   /// Dynamic routes are derived from Border Gateway Protocol (BGP)
   /// advertisements received from an NCC hybrid spoke.
+  /// - "PSC_GLOBAL_GAPI" : The route leads to a destination within the Private
+  /// Service Connect Global Google API range of the VPC network.
   core.String? type;
 
   /// The Google-generated UUID for the route.
@@ -12863,7 +13120,7 @@ class Spoke {
 
   /// The list of fields waiting for hub administrator's approval.
   ///
-  /// Optional.
+  /// Output only.
   core.List<core.String>? fieldPathsPendingUpdate;
 
   /// This is a gateway that can apply specialized processing to traffic going
@@ -13567,6 +13824,8 @@ class Transport {
   /// - "DEPROVISIONED" : The Transport was deleted on the remote provider's end
   /// and is no longer operational. GCP has insufficient information to move the
   /// resource back to PENDING_KEY state.
+  /// - "SUSPENDED" : The Transport is suspended due to an Abuse suspension or
+  /// Wipeout Hide event. Underlying connectivity is administratively disabled.
   core.String? state;
 
   /// Update time stamp.

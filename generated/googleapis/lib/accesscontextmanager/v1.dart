@@ -163,7 +163,7 @@ class AccessPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name for the access policy to delete. Format
+  /// [name] - Required. Resource name for the access policy to delete. Format:
   /// `accessPolicies/{policy_id}`
   /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
@@ -199,7 +199,7 @@ class AccessPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name for the access policy to get. Format
+  /// [name] - Required. Resource name for the access policy to get. Format:
   /// `accessPolicies/{policy_id}`
   /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
@@ -574,17 +574,19 @@ class AccessPoliciesAccessLevelsResource {
   /// Value must have pattern `^accessPolicies/\[^/\]+/accessLevels/\[^/\]+$`.
   ///
   /// [accessLevelFormat] - Whether to return `BasicLevels` in the Cloud Common
-  /// Expression Language rather than as `BasicLevels`. Defaults to AS_DEFINED,
-  /// where Access Levels are returned as `BasicLevels` or `CustomLevels` based
-  /// on how they were created. If set to CEL, all Access Levels are returned as
-  /// `CustomLevels`. In the CEL case, `BasicLevels` are translated to
-  /// equivalent `CustomLevels`.
+  /// Expression Language rather than as `BasicLevels`. Defaults to
+  /// `AS_DEFINED`, where Access Levels are returned as `BasicLevels` or
+  /// `CustomLevels` based on how they were created. If set to `CEL`, all Access
+  /// Levels are returned as `CustomLevels`. In the `CEL` case, `BasicLevels`
+  /// are translated to equivalent `CustomLevels`.
   /// Possible string values are:
   /// - "LEVEL_FORMAT_UNSPECIFIED" : The format was not specified.
-  /// - "AS_DEFINED" : Uses the format the resource was defined in. BasicLevels
-  /// are returned as BasicLevels, CustomLevels are returned as CustomLevels.
-  /// - "CEL" : Use Cloud Common Expression Language when returning the
-  /// resource. Both BasicLevels and CustomLevels are returned as CustomLevels.
+  /// - "AS_DEFINED" : Uses the format the resource was defined in.
+  /// `BasicLevels` are returned as `BasicLevels`, and `CustomLevels` are
+  /// returned as `CustomLevels`.
+  /// - "CEL" : Uses Cloud Common Expression Language when returning the
+  /// resource. Both `BasicLevels` and `CustomLevels` are returned as
+  /// `CustomLevels`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -629,14 +631,16 @@ class AccessPoliciesAccessLevelsResource {
   /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [accessLevelFormat] - Whether to return `BasicLevels` in the Cloud Common
-  /// Expression language, as `CustomLevels`, rather than as `BasicLevels`.
+  /// Expression Language, as `CustomLevels`, rather than as `BasicLevels`.
   /// Defaults to returning `AccessLevels` in the format they were defined.
   /// Possible string values are:
   /// - "LEVEL_FORMAT_UNSPECIFIED" : The format was not specified.
-  /// - "AS_DEFINED" : Uses the format the resource was defined in. BasicLevels
-  /// are returned as BasicLevels, CustomLevels are returned as CustomLevels.
-  /// - "CEL" : Use Cloud Common Expression Language when returning the
-  /// resource. Both BasicLevels and CustomLevels are returned as CustomLevels.
+  /// - "AS_DEFINED" : Uses the format the resource was defined in.
+  /// `BasicLevels` are returned as `BasicLevels`, and `CustomLevels` are
+  /// returned as `CustomLevels`.
+  /// - "CEL" : Uses Cloud Common Expression Language when returning the
+  /// resource. Both `BasicLevels` and `CustomLevels` are returned as
+  /// `CustomLevels`.
   ///
   /// [pageSize] - Number of Access Levels to include in the list. Default 100.
   ///
@@ -742,9 +746,9 @@ class AccessPoliciesAccessLevelsResource {
   /// successful status after all replacements propagate to long-lasting
   /// storage. If the replacement contains errors, an error response is returned
   /// for the first error encountered. Upon error, the replacement is cancelled,
-  /// and existing access levels are not affected. The Operation.response field
-  /// contains ReplaceAccessLevelsResponse. Removing access levels contained in
-  /// existing service perimeters result in an error.
+  /// and existing access levels are not affected. The `Operation.response`
+  /// field contains `ReplaceAccessLevelsResponse`. Removing access levels
+  /// contained in existing service perimeters results in an error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -848,7 +852,7 @@ class AccessPoliciesAuthorizedOrgsDescsResource {
   /// Creates an authorized orgs desc.
   ///
   /// The long-running operation from this RPC has a successful status after the
-  /// authorized orgs desc propagates to long-lasting storage. If a authorized
+  /// authorized orgs desc propagates to long-lasting storage. If an authorized
   /// orgs desc contains errors, an error response is returned for the first
   /// error encountered. The name of this `AuthorizedOrgsDesc` will be assigned
   /// during creation.
@@ -901,7 +905,7 @@ class AccessPoliciesAuthorizedOrgsDescsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name for the Authorized Orgs Desc. Format:
-  /// `accessPolicies/{policy_id}/authorizedOrgsDesc/{authorized_orgs_desc_id}`
+  /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_desc_id}`
   /// Value must have pattern
   /// `^accessPolicies/\[^/\]+/authorizedOrgsDescs/\[^/\]+$`.
   ///
@@ -938,7 +942,7 @@ class AccessPoliciesAuthorizedOrgsDescsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name for the Authorized Orgs Desc. Format:
-  /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_descs_id}`
+  /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_desc_id}`
   /// Value must have pattern
   /// `^accessPolicies/\[^/\]+/authorizedOrgsDescs/\[^/\]+$`.
   ///
@@ -1024,11 +1028,11 @@ class AccessPoliciesAuthorizedOrgsDescsResource {
   /// Updates an authorized orgs desc.
   ///
   /// The long-running operation from this RPC has a successful status after the
-  /// authorized orgs desc propagates to long-lasting storage. If a authorized
+  /// authorized orgs desc propagates to long-lasting storage. If an authorized
   /// orgs desc contains errors, an error response is returned for the first
   /// error encountered. Only the organization list in `AuthorizedOrgsDesc` can
-  /// be updated. The name, authorization_type, asset_type and
-  /// authorization_direction cannot be updated.
+  /// be updated. The `name`, `authorization_type`, `asset_type`, and
+  /// `authorization_direction` cannot be updated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1095,8 +1099,8 @@ class AccessPoliciesServicePerimetersResource {
   /// successful status after the dry-run specifications for all the service
   /// perimeters have been committed. If a commit fails, it causes the
   /// long-running operation to return an error response and the entire commit
-  /// operation is cancelled. When successful, the Operation.response field
-  /// contains CommitServicePerimetersResponse. The `dry_run` and the `spec`
+  /// operation is cancelled. When successful, the `Operation.response` field
+  /// contains `CommitServicePerimetersResponse`. The `dry_run` and the `spec`
   /// fields are cleared after a successful commit operation.
   ///
   /// [request] - The metadata request object.
@@ -1231,7 +1235,7 @@ class AccessPoliciesServicePerimetersResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name for the Service Perimeter. Format:
-  /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeters_id}`
+  /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeter_id}`
   /// Value must have pattern
   /// `^accessPolicies/\[^/\]+/servicePerimeters/\[^/\]+$`.
   ///
@@ -1414,15 +1418,15 @@ class AccessPoliciesServicePerimetersResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Replace all existing service perimeters in an access policy with the
+  /// Replaces all existing service perimeters in an access policy with the
   /// service perimeters provided.
   ///
   /// This is done atomically. The long-running operation from this RPC has a
   /// successful status after all replacements propagate to long-lasting
   /// storage. Replacements containing errors result in an error response for
   /// the first error encountered. Upon an error, replacements are cancelled and
-  /// existing service perimeters are not affected. The Operation.response field
-  /// contains ReplaceServicePerimetersResponse.
+  /// existing service perimeters are not affected. The `Operation.response`
+  /// field contains `ReplaceServicePerimetersResponse`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1525,13 +1529,14 @@ class FoldersResource {
 
   FoldersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Looks up the configured service perimeter for a given resource Format:
-  /// \['projects/{projectNumber}', 'folders/{folderNumber}'\].
+  /// Looks up the configured service perimeter for a given resource.
+  ///
+  /// Format: `['projects/{projectNumber}', 'folders/{folderNumber}']`.
   ///
   /// Request parameters:
   ///
-  /// [resource] - Required. The Resource to resolve (e.g. "projects/123",
-  /// "folders/456").
+  /// [resource] - Required. The resource to resolve (for example,
+  /// `projects/123` or `folders/456`).
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1906,11 +1911,14 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// [parent] - Required. Example: "organizations/256"
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The literal filter to apply to the results returned.
-  /// See https://google.aip.dev/160 for more details. Accepts values: *
-  /// `principal:group_key` * `principal:service_account` OR
-  /// `principal:service_account_project_number`. If this field is empty or not
-  /// one of the above, the default value is `"principal:group_key"`.
+  /// [filter] - Optional. Filters the results by principal type. Uses the
+  /// \[AIP-160\](https://google.aip.dev/160) filter syntax. Only the following
+  /// filters are supported: * `principal:group_key`: bindings for groups. This
+  /// is the default when the filter is empty. * `principal:service_account OR
+  /// principal:service_account_project_number`: bindings for service accounts.
+  /// * `principal:federated_principal`: bindings for federated principals.
+  /// Values can be in snake_case or camelCase. Whitespace and the order of `OR`
+  /// terms don't matter. Any other filter returns an `INVALID_ARGUMENT` error.
   ///
   /// [pageSize] - Optional. Maximum number of items to return. The server may
   /// return fewer items. If left blank, the server may return any number of
@@ -1972,24 +1980,24 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// defined by
   /// [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)).
   /// Should not be specified by the client during creation. Example:
-  /// "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+  /// `"organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/gcpUserAccessBindings/\[^/\]+$`.
   ///
   /// [append] - Optional. This field controls whether or not certain repeated
   /// settings in the update request overwrite or append to existing settings on
   /// the binding. If true, then append. Otherwise overwrite. So far, only
-  /// scoped_access_settings with session_settings supports appending. Global
-  /// access_levels, access_levels in scoped_access_settings,
-  /// dry_run_access_levels, and session_settings are not compatible with append
-  /// functionality, and the request will return an error if append=true when
-  /// these settings are in the update_mask. The request will also return an
-  /// error if append=true when "scoped_access_settings" is not set in the
-  /// update_mask.
+  /// `scoped_access_settings` with `session_settings` supports appending.
+  /// Global `access_levels`, `access_levels` in `scoped_access_settings`,
+  /// `dry_run_access_levels`, and `session_settings` are not compatible with
+  /// append functionality, and the request will return an error if
+  /// `append=true` when these settings are in the `update_mask`. The request
+  /// will also return an error if `append=true` when `"scoped_access_settings"`
+  /// is not set in the `update_mask`.
   ///
   /// [updateMask] - Required. Only the fields specified in this mask are
-  /// updated. Because name and group_key cannot be changed, update_mask is
-  /// required and may only contain the following fields: `access_levels`,
+  /// updated. Because `name` and `group_key` cannot be changed, `update_mask`
+  /// is required and may only contain the following fields: `access_levels`,
   /// `dry_run_access_levels`, `session_settings`, `scoped_access_settings`.
   /// update_mask { paths: "access_levels" }
   ///
@@ -2039,8 +2047,8 @@ class PermissionsResource {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Optional. This flag specifies the maximum number of services
-  /// to return per page. Default value is 100.
+  /// [pageSize] - Optional. This flag specifies the maximum number of
+  /// permissions to return per page. Default value is 100.
   ///
   /// [pageToken] - Optional. Use this token to retrieve a specific page of
   /// results. Default is the first page.
@@ -2084,13 +2092,14 @@ class ProjectsResource {
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Looks up the configured service perimeter for a given resource Format:
-  /// \['projects/{projectNumber}', 'folders/{folderNumber}'\].
+  /// Looks up the configured service perimeter for a given resource.
+  ///
+  /// Format: `['projects/{projectNumber}', 'folders/{folderNumber}']`.
   ///
   /// Request parameters:
   ///
-  /// [resource] - Required. The Resource to resolve (e.g. "projects/123",
-  /// "folders/456").
+  /// [resource] - Required. The resource to resolve (for example,
+  /// `projects/123` or `folders/456`).
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2245,9 +2254,9 @@ class AccessLevel {
   /// you create an `AccessLevel`, you cannot change its `name`.
   core.String? name;
 
-  /// Human readable title.
+  /// Human-readable title.
   ///
-  /// Must be unique within the Policy.
+  /// Must be unique within the policy.
   core.String? title;
 
   AccessLevel({
@@ -2299,9 +2308,7 @@ class AccessLevel {
 /// restrictions it specifies apply to all projects within an organization.
 typedef AccessPolicy = $AccessPolicy;
 
-/// Access scope represents the client scope, etc.
-///
-/// to which the settings will be applied to.
+/// Access scope represents the client scope to which the settings are applied.
 class AccessScope {
   /// Client scope for this access scope.
   ///
@@ -2334,12 +2341,12 @@ class AccessSettings {
   ///
   /// Only one access level is supported, not multiple. This repeated field must
   /// have exactly one element. Example:
-  /// "accessPolicies/9522/accessLevels/device_trusted"
+  /// `"accessPolicies/9522/accessLevels/device_trusted"`
   ///
   /// Optional.
   core.List<core.String>? accessLevels;
 
-  /// Session settings applied to user access on a given AccessScope.
+  /// Session settings applied to user access on a given `AccessScope`.
   ///
   /// Optional.
   SessionSettings? sessionSettings;
@@ -2492,8 +2499,7 @@ typedef AuditLogConfig = $AuditLogConfig;
 class AuthorizedOrgsDesc {
   /// The asset type of this authorized orgs desc.
   ///
-  /// Valid values are `ASSET_TYPE_DEVICE`, and
-  /// `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+  /// Valid values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
   /// Possible string values are:
   /// - "ASSET_TYPE_UNSPECIFIED" : No asset type specified.
   /// - "ASSET_TYPE_DEVICE" : Device asset type.
@@ -2510,7 +2516,7 @@ class AuthorizedOrgsDesc {
   /// `orgs` field to evaluate the traffic in this organization. For the
   /// authorization relationship to take effect, all of the organizations must
   /// authorize and specify the appropriate relationship direction. For example,
-  /// if organization A authorized organization B and C to evaluate its traffic,
+  /// if organization A authorizes organizations B and C to evaluate its traffic
   /// by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction,
   /// organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the
   /// authorization direction in their `AuthorizedOrgsDesc` resource.
@@ -2539,9 +2545,9 @@ class AuthorizedOrgsDesc {
   /// you cannot change its `name`.
   core.String? name;
 
-  /// The list of organization ids in this AuthorizedOrgsDesc.
+  /// The list of organization IDs in this `AuthorizedOrgsDesc`.
   ///
-  /// Format: `organizations/` Example: `organizations/123456`
+  /// Format: `organizations/{org_number}` Example: `organizations/123456`
   core.List<core.String>? orgs;
 
   AuthorizedOrgsDesc({
@@ -2584,10 +2590,10 @@ class BasicLevel {
   /// How the `conditions` list should be combined to determine if a request is
   /// granted this `AccessLevel`.
   ///
-  /// If AND is used, each `Condition` in `conditions` must be satisfied for the
-  /// `AccessLevel` to be applied. If OR is used, at least one `Condition` in
-  /// `conditions` must be satisfied for the `AccessLevel` to be applied.
-  /// Default behavior is AND.
+  /// If `AND` is used, each `Condition` in `conditions` must be satisfied for
+  /// the `AccessLevel` to be applied. If `OR` is used, at least one `Condition`
+  /// in `conditions` must be satisfied for the `AccessLevel` to be applied.
+  /// Default behavior is `AND`.
   /// Possible string values are:
   /// - "AND" : All `Conditions` must be true for the `BasicLevel` to be true.
   /// - "OR" : If at least one `Condition` is true, then the `BasicLevel` is
@@ -2726,9 +2732,8 @@ class Binding {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
-/// Client scope represents the application, etc.
-///
-/// subject to this binding's restrictions.
+/// Client scope represents the application, project, or other resource subject
+/// to this binding's restrictions.
 class ClientScope {
   /// The application that is subject to this binding's scope.
   ///
@@ -2797,27 +2802,28 @@ class CommitServicePerimetersRequest {
 
 /// A condition necessary for an `AccessLevel` to be granted.
 ///
-/// The Condition is an AND over its fields. So a Condition is true if: 1) the
-/// request IP is from one of the listed subnetworks AND 2) the originating
-/// device complies with the listed device policy AND 3) all listed access
-/// levels are granted AND 4) the request was sent at a time allowed by the
-/// DateTimeRestriction.
+/// The `Condition` is an AND over its fields. A `Condition` is true if: 1) the
+/// request IP is from one of the listed subnetworks, AND 2) the originating
+/// device complies with the listed device policy, AND 3) all listed access
+/// levels are granted, AND 4) the request was sent at a time allowed by the
+/// `DateTimeRestriction`.
 class Condition {
-  /// Device specific restrictions, all restrictions must hold for the Condition
-  /// to be true.
+  /// Device-specific restrictions.
   ///
-  /// If not specified, all devices are allowed.
+  /// All restrictions must hold for the `Condition` to be true. If not
+  /// specified, all devices are allowed.
   DevicePolicy? devicePolicy;
 
   /// CIDR block IP subnetwork specification.
   ///
   /// May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified
-  /// IP address portion must be properly truncated (i.e. all the host bits must
-  /// be zero) or the input is considered malformed. For example, "192.0.2.0/24"
-  /// is accepted but "192.0.2.1/24" is not. Similarly, for IPv6,
-  /// "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The
-  /// originating IP of a request must be in one of the listed subnets in order
-  /// for this Condition to be true. If empty, all IP addresses are allowed.
+  /// IP address portion must be properly truncated (that is, all the host bits
+  /// must be zero) or the input is considered malformed. For example,
+  /// `"192.0.2.0/24"` is accepted, but `"192.0.2.1/24"` is not. Similarly, for
+  /// IPv6, `"2001:db8::/32"` is accepted, whereas `"2001:db8::1/32"` is not.
+  /// The originating IP of a request must be in one of the listed subnets in
+  /// order for this `Condition` to be true. If empty, all IP addresses are
+  /// allowed.
   core.List<core.String>? ipSubnetworks;
 
   /// The request must be made by one of the provided user or service accounts.
@@ -2827,11 +2833,11 @@ class Condition {
   /// user.
   core.List<core.String>? members;
 
-  /// Whether to negate the Condition.
+  /// Whether to negate the `Condition`.
   ///
-  /// If true, the Condition becomes a NAND over its non-empty fields. Any
-  /// non-empty field criteria evaluating to false will result in the Condition
-  /// to be satisfied. Defaults to false.
+  /// If `true`, the `Condition` becomes a NAND over its non-empty fields. Any
+  /// non-empty field criteria evaluating to `false` will result in the
+  /// `Condition` being satisfied. Defaults to `false`.
   core.bool? negate;
 
   /// The request must originate from one of the provided countries/regions.
@@ -2842,9 +2848,9 @@ class Condition {
   /// A list of other access levels defined in the same `Policy`, referenced by
   /// resource name.
   ///
-  /// Referencing an `AccessLevel` which does not exist is an error. All access
-  /// levels listed must be granted for the Condition to be true. Example:
-  /// "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
+  /// Referencing an `AccessLevel` that does not exist is an error. All access
+  /// levels listed must be granted for the `Condition` to be true. Example:
+  /// `"accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
   core.List<core.String>? requiredAccessLevels;
 
   /// The request must originate from one of the provided VPC networks in Google
@@ -2939,35 +2945,40 @@ class CustomLevel {
   }
 }
 
-/// `DevicePolicy` specifies device specific restrictions necessary to acquire a
+/// `DevicePolicy` specifies device-specific restrictions necessary to acquire a
 /// given access level.
 ///
 /// A `DevicePolicy` specifies requirements for requests from devices to be
-/// granted access levels, it does not do any enforcement on the device.
+/// granted access levels; it does not do any enforcement on the device.
 /// `DevicePolicy` acts as an AND over all specified fields, and each repeated
 /// field is an OR over its elements. Any unset fields are ignored. For example,
-/// if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX,
-/// encryption_status: ENCRYPTED}, then the DevicePolicy will be true for
+/// if the proto is `{ os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX,
+/// encryption_status: ENCRYPTED}`, then the `DevicePolicy` will be true for
 /// requests originating from encrypted Linux desktops and encrypted Windows
 /// desktops.
 class DevicePolicy {
-  /// Allowed device management levels, an empty list allows all management
-  /// levels.
+  /// Allowed device management levels.
+  ///
+  /// An empty list allows all management levels.
   core.List<core.String>? allowedDeviceManagementLevels;
 
-  /// Allowed encryptions statuses, an empty list allows all statuses.
+  /// Allowed encryption statuses.
+  ///
+  /// An empty list allows all statuses.
   core.List<core.String>? allowedEncryptionStatuses;
 
-  /// Allowed OS versions, an empty list allows all types and all versions.
+  /// Allowed OS versions.
+  ///
+  /// An empty list allows all types and all versions.
   core.List<OsConstraint>? osConstraints;
 
   /// Whether the device needs to be approved by the customer admin.
   core.bool? requireAdminApproval;
 
-  /// Whether the device needs to be corp owned.
+  /// Whether the device needs to be corp-owned.
   core.bool? requireCorpOwned;
 
-  /// Whether or not screenlock is required for the DevicePolicy to be true.
+  /// Whether or not screenlock is required for the `DevicePolicy` to be true.
   ///
   /// Defaults to `false`.
   core.bool? requireScreenlock;
@@ -3023,10 +3034,10 @@ class DevicePolicy {
 
 /// Defines the conditions under which an EgressPolicy matches a request.
 ///
-/// Conditions based on information about the source of the request. Note that
-/// if the destination of the request is also protected by a ServicePerimeter,
-/// then that ServicePerimeter must have an IngressPolicy which allows access in
-/// order for this request to succeed.
+/// Conditions are based on information about the source of the request. Note
+/// that if the destination of the request is also protected by a
+/// ServicePerimeter, then that ServicePerimeter must have an IngressPolicy
+/// which allows access in order for this request to succeed.
 class EgressFrom {
   /// A list of identities that are allowed access through \[EgressPolicy\].
   ///
@@ -3053,7 +3064,7 @@ class EgressFrom {
 
   /// Whether to enforce traffic restrictions based on `sources` field.
   ///
-  /// If the `sources` fields is non-empty, then this field must be set to
+  /// If the `sources` field is not empty, then this field must be set to
   /// `SOURCE_RESTRICTION_ENABLED`.
   /// Possible string values are:
   /// - "SOURCE_RESTRICTION_UNSPECIFIED" : Enforcement preference unspecified,
@@ -3117,8 +3128,8 @@ class EgressFrom {
 /// ServicePerimeter to access a defined set of projects outside the perimeter
 /// in certain contexts (e.g. to read data from a Cloud Storage bucket or query
 /// against a BigQuery dataset). EgressPolicies are concerned with the
-/// *resources* that a request relates as well as the API services and API
-/// actions being used. They do not related to the direction of data movement.
+/// *resources* that a request relates to, as well as the API services and API
+/// actions being used. They do not relate to the direction of data movement.
 /// More detailed documentation for this concept can be found in the
 /// descriptions of EgressFrom and EgressTo.
 class EgressPolicy {
@@ -3132,7 +3143,7 @@ class EgressPolicy {
 
   /// Human-readable title for the egress rule.
   ///
-  /// The title must be unique within the perimeter and can not exceed 100
+  /// The title must be unique within the perimeter and cannot exceed 100
   /// characters. Within the access policy, the combined length of all rule
   /// titles must not exceed 240,000 characters.
   ///
@@ -3189,9 +3200,10 @@ class EgressSource {
   /// A Google Cloud resource from the service perimeter that you want to allow
   /// to access data outside the perimeter.
   ///
-  /// This field supports only projects. The project format is
-  /// `projects/{project_number}`. You can't use `*` in this field to allow all
-  /// Google Cloud resources.
+  /// This field supports projects, folders, and organizations in the form
+  /// `projects/{project_number}`, `folders/{folder_id}`, and
+  /// `organizations/{organization_id}`. You can't use `*` in this field to
+  /// allow all Google Cloud resources.
   core.String? resource;
 
   EgressSource({this.accessLevel, this.pscEndpoint, this.resource});
@@ -3231,11 +3243,11 @@ class EgressTo {
   /// A list of external resources that are allowed to be accessed.
   ///
   /// Only AWS and Azure resources are supported. For Amazon S3, the supported
-  /// formats are s3://BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME.
-  /// For Azure Storage, the supported format is
-  /// azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches
-  /// if it contains an external resource in this list (Example:
-  /// s3://bucket/path). Currently '*' is not allowed.
+  /// formats are `s3://BUCKET_NAME`, `s3a://BUCKET_NAME`, and
+  /// `s3n://BUCKET_NAME`. For Azure Storage, the supported format is
+  /// `azure://myaccount.blob.core.windows.net/CONTAINER_NAME`. A request
+  /// matches if it contains an external resource in this list (Example:
+  /// `s3://bucket/path`). Currently `'*'` is not allowed.
   core.List<core.String>? externalResources;
 
   /// A list of ApiOperations allowed to be performed by the sources specified
@@ -3244,9 +3256,10 @@ class EgressTo {
   /// A request matches if it uses an operation/service in this list.
   core.List<ApiOperation>? operations;
 
-  /// A list of resources, currently only projects in the form `projects/`, that
-  /// are allowed to be accessed by sources defined in the corresponding
-  /// EgressFrom.
+  /// A list of resources, currently projects, folders, and organizations in the
+  /// form `projects/{project_number}`, `folders/{folder_id}`, and
+  /// `organizations/{organization_id}`, that are allowed to be accessed by
+  /// sources defined in the corresponding EgressFrom.
   ///
   /// A request matches if it contains a resource in this list. If `*` is
   /// specified for `resources`, then this EgressTo rule will authorize access
@@ -3254,9 +3267,8 @@ class EgressTo {
   core.List<core.String>? resources;
 
   /// IAM roles that represent the set of operations that the sources specified
-  /// in the corresponding EgressFrom.
-  ///
-  /// are allowed to perform in this ServicePerimeter.
+  /// in the corresponding EgressFrom are allowed to perform in this
+  /// ServicePerimeter.
   core.List<core.String>? roles;
 
   EgressTo({
@@ -3335,27 +3347,27 @@ class GcpUserAccessBinding {
   ///
   /// Only one access level is supported, not multiple. This repeated field must
   /// have exactly one element. Example:
-  /// "accessPolicies/9522/accessLevels/device_trusted"
+  /// `"accessPolicies/9522/accessLevels/device_trusted"`
   ///
   /// Optional.
   core.List<core.String>? accessLevels;
 
-  /// Dry run access level that will be evaluated but will not be enforced.
+  /// Dry-run access level that is evaluated, but not enforced.
   ///
-  /// The access denial based on dry run policy will be logged. Only one access
+  /// Any access denial based on the dry-run policy is logged. Only one access
   /// level is supported, not multiple. This list must have exactly one element.
-  /// Example: "accessPolicies/9522/accessLevels/device_trusted"
+  /// Example: `"accessPolicies/9522/accessLevels/device_trusted"`
   ///
   /// Optional.
   core.List<core.String>? dryRunAccessLevels;
 
-  /// Google Group id whose users are subject to this binding's restrictions.
+  /// Google Group ID whose users are subject to this binding's restrictions.
   ///
   /// See "id" in the
   /// [Google Workspace Directory API's Group Resource](https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
-  /// If a group's email address/alias is changed, this resource will continue
-  /// to point at the changed group. This field does not accept group email
-  /// addresses or aliases. Example: "01d520gv4vjcrht"
+  /// If a group's email address or alias is changed, this resource will
+  /// continue to point at the changed group. This field does not accept group
+  /// email addresses or aliases. Example: `"01d520gv4vjcrht"`
   ///
   /// Optional. Immutable.
   core.String? groupKey;
@@ -3366,7 +3378,7 @@ class GcpUserAccessBinding {
   /// characters (as defined by
   /// [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)).
   /// Should not be specified by the client during creation. Example:
-  /// "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+  /// `"organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"`
   ///
   /// Immutable.
   core.String? name;
@@ -3557,7 +3569,7 @@ class IngressPolicy {
 
   /// Human-readable title for the ingress rule.
   ///
-  /// The title must be unique within the perimeter and can not exceed 100
+  /// The title must be unique within the perimeter and cannot exceed 100
   /// characters. Within the access policy, the combined length of all rule
   /// titles must not exceed 240,000 characters.
   ///
@@ -3595,7 +3607,7 @@ class IngressPolicy {
 
 /// The source that IngressPolicy authorizes access from.
 class IngressSource {
-  /// An AccessLevel resource name that allow resources within the
+  /// An AccessLevel resource name that allows resources within the
   /// ServicePerimeters to be accessed from the internet.
   ///
   /// AccessLevels listed must be in the same policy as this ServicePerimeter.
@@ -3615,8 +3627,9 @@ class IngressSource {
   /// A Google Cloud resource that is allowed to ingress the perimeter.
   ///
   /// Requests from these resources will be allowed to access perimeter data.
-  /// Currently only projects and VPCs are allowed. Project format:
-  /// `projects/{project_number}` VPC network format:
+  /// Currently projects, folders, organizations, and VPCs are allowed. Project
+  /// format: `projects/{project_number}` Folder format: `folders/{folder_id}`
+  /// Organization format: `organizations/{organization_id}` VPC network format:
   /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
   /// The project may be in any Google Cloud organization, not just the
   /// organization that the perimeter is defined in. `*` is not allowed, the
@@ -3658,12 +3671,14 @@ class IngressTo {
   /// in corresponding IngressFrom in this ServicePerimeter.
   core.List<ApiOperation>? operations;
 
-  /// A list of resources, currently only projects in the form `projects/`,
-  /// protected by this ServicePerimeter that are allowed to be accessed by
-  /// sources defined in the corresponding IngressFrom.
+  /// A list of resources, currently projects, folders, and organizations in the
+  /// form `projects/{project_number}`, `folders/{folder_id}`, and
+  /// `organizations/{organization_id}`, protected by this ServicePerimeter that
+  /// are allowed to be accessed by sources defined in the corresponding
+  /// IngressFrom.
   ///
   /// If a single `*` is specified, then access to all resources inside the
-  /// perimeter are allowed.
+  /// perimeter is allowed.
   core.List<core.String>? resources;
 
   /// IAM roles that represent the set of operations that the sources specified
@@ -3990,12 +4005,12 @@ class ListSupportedServicesResponse {
 
 /// A configured service perimeter returned by Access Context Manager.
 class LookupConfiguredServicePerimeterResponse {
-  /// The resource (e.g. "projects/123", "folders/456") that directly owns/is
-  /// restricted by the enforced perimeter.
+  /// The resource (for example, `projects/123` or `folders/456`) that directly
+  /// owns or is restricted by the enforced perimeter.
   core.String? restrictedResource;
 
-  /// The resource (e.g. "projects/123", "folders/456") that directly owns/is
-  /// restricted by the dry-run perimeter.
+  /// The resource (for example, `projects/123` or `folders/456`) that directly
+  /// owns or is restricted by the dry-run perimeter.
   core.String? restrictedResourceDryRun;
 
   /// Fully qualified name of the configured enforced perimeter.
@@ -4295,11 +4310,11 @@ class Principal {
   /// Service account email used to assign policies to a specific service
   /// account.
   ///
-  /// If a service account is subject to multiple policies (e.g., if there is a
-  /// policy for all service accounts in a project and a policy for the service
-  /// account), the closest (i.e. the most specific) dry-run policy will be used
-  /// for the dry-run functionality and the closest enforcement policy will be
-  /// used for the enforcement.
+  /// If a service account is subject to multiple policies (for example, if
+  /// there is a policy for all service accounts in a project and a policy for
+  /// the service account), the closest (that is, the most specific) dry-run
+  /// policy is used for the dry-run functionality and the closest enforcement
+  /// policy is used for enforcement.
   ///
   /// Immutable.
   core.String? serviceAccount;
@@ -4339,7 +4354,7 @@ class Principal {
 /// Specifies the Private Service Connect endpoint that an API call refers to.
 typedef PrivateServiceConnectEndpoint = $PrivateServiceConnectEndpoint;
 
-/// A Google Cloud project which contains applications and resources that users
+/// A Google Cloud project that contains applications and resources that users
 /// can access.
 class Project {
   /// The Google Cloud project resource name.
@@ -4446,26 +4461,26 @@ class ReplaceServicePerimetersRequest {
   }
 }
 
-/// A relationship between access settings and its scope.
+/// A relationship between access settings and their scope.
 class ScopedAccessSettings {
-  /// Access settings for this scoped access settings.
+  /// Access settings for this `ScopedAccessSettings`.
   ///
-  /// This field may be empty if dry_run_settings is set.
+  /// This field may be empty if `dry_run_settings` is set.
   ///
   /// Optional.
   AccessSettings? activeSettings;
 
-  /// Dry-run access settings for this scoped access settings.
+  /// Dry-run access settings for this `ScopedAccessSettings`.
   ///
-  /// This field may be empty if active_settings is set.
+  /// This field may be empty if `active_settings` is set.
   ///
   /// Optional.
   AccessSettings? dryRunSettings;
 
-  /// Application, etc.
+  /// Application or other resource to which the access settings are applied.
   ///
-  /// to which the access settings will be applied to. Implicitly, this is the
-  /// scoped access settings key; as such, it must be unique and non-empty.
+  /// Implicitly, this is the scoped access settings key; as such, it must be
+  /// unique and non-empty.
   ///
   /// Optional.
   AccessScope? scope;
@@ -4510,9 +4525,9 @@ class ServicePattern {
 
   /// URL pattern to allow.
   ///
-  /// Only patterns of ".googleapis.com / * ", "www.googleapis.com/ / * " and
-  /// "*.appspot.com / * forms are supported, where should be an alphanumeric
-  /// name.
+  /// Only patterns of `".googleapis.com / * "`, `"www.googleapis.com/ / * "`,
+  /// and `"*.appspot.com / * "` forms are supported, where `` should be an
+  /// alphanumeric name.
   core.String? pattern;
 
   /// Supported service to allow.
@@ -4578,9 +4593,9 @@ class ServicePerimeter {
 
   /// Perimeter type indicator.
   ///
-  /// A single project or VPC network is allowed to be a member of single
+  /// A single project or VPC network is allowed to be a member of a single
   /// regular perimeter, but multiple service perimeter bridges. A project
-  /// cannot be a included in a perimeter bridge without being included in
+  /// cannot be included in a perimeter bridge without being included in a
   /// regular perimeter. For perimeter bridges, the restricted service list as
   /// well as access level lists must be empty.
   /// Possible string values are:
@@ -4591,14 +4606,14 @@ class ServicePerimeter {
 
   /// Proposed (or dry run) ServicePerimeter configuration.
   ///
-  /// This configuration allows to specify and test ServicePerimeter
+  /// This configuration allows you to specify and test ServicePerimeter
   /// configuration without enforcing actual access restrictions. Only allowed
-  /// to be set when the "use_explicit_dry_run_spec" flag is set.
+  /// to be set when the `use_explicit_dry_run_spec` flag is set.
   ServicePerimeterConfig? spec;
 
   /// Current ServicePerimeter configuration.
   ///
-  /// Specifies sets of resources, restricted services and access levels that
+  /// Specifies sets of resources, restricted services, and access levels that
   /// determine perimeter content and boundaries.
   ServicePerimeterConfig? status;
 
@@ -4617,8 +4632,8 @@ class ServicePerimeter {
   /// to test changes to the enforced config ("status") without actually
   /// enforcing them. This testing is done through analyzing the differences
   /// between currently enforced and suggested restrictions.
-  /// use_explicit_dry_run_spec must bet set to True if any of the fields in the
-  /// spec are set to non-default values.
+  /// `use_explicit_dry_run_spec` must be set to `true` if any of the fields in
+  /// the spec are set to non-default values.
   core.bool? useExplicitDryRunSpec;
 
   ServicePerimeter({
@@ -4705,8 +4720,9 @@ class ServicePerimeterConfig {
 
   /// A list of Google Cloud resources that are inside of the service perimeter.
   ///
-  /// Currently only projects and VPCs are allowed. Project format:
-  /// `projects/{project_number}` VPC network format:
+  /// Currently projects, folders, and VPCs are allowed. Project format:
+  /// `projects/{project_number}` Folder format: `folders/{folder_id}` VPC
+  /// network format:
   /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
   core.List<core.String>? resources;
 
@@ -4781,8 +4797,8 @@ class ServicePerimeterConfig {
   }
 }
 
-/// Stores settings related to Google Cloud Session Length including session
-/// duration, the type of challenge (i.e. method) they should face when their
+/// Stores settings related to Google Cloud Session Length, including session
+/// duration, the type of challenge (that is, method) a user faces when their
 /// session expires, and other related settings.
 class SessionSettings {
   /// How long a user is allowed to take between actions before a new access
@@ -4799,8 +4815,8 @@ class SessionSettings {
   /// indefinitely. Also, setting `session_length_enabled` to `false` disregards
   /// session limits, which means that sessions never expire. If
   /// `use_oidc_max_age` is `true`, for OIDC apps, the session length will be
-  /// the minimum of this field and the OIDC `max_age` param. If this field is
-  /// set to zero, `session_length_enabled` must be set to `false` or left
+  /// the minimum of this field and the OIDC `max_age` parameter. If this field
+  /// is set to zero, `session_length_enabled` must be set to `false` or left
   /// unset.
   ///
   /// Optional.
@@ -4808,33 +4824,34 @@ class SessionSettings {
 
   /// This field enables or disables Google Cloud session length.
   ///
-  /// When false, all fields set above will be disregarded and the session
-  /// length is basically infinite. If `session_length` is set to zero, this
-  /// field must be set to false.
+  /// When `false`, all fields set above are disregarded and the session length
+  /// is effectively infinite. If `session_length` is set to zero, this field
+  /// must be set to `false`.
   ///
   /// Optional.
   core.bool? sessionLengthEnabled;
 
-  /// Session method when user's Google Cloud session is up.
+  /// Session challenge method when a user's Google Cloud session expires.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "SESSION_REAUTH_METHOD_UNSPECIFIED" : If method is undefined in the API,
-  /// LOGIN will be used by default.
+  /// - "SESSION_REAUTH_METHOD_UNSPECIFIED" : If the method is undefined in the
+  /// API, `LOGIN` is used by default.
   /// - "LOGIN" : The user will be prompted to perform regular login. Users who
   /// are enrolled for two-step verification and haven't chosen "Remember this
   /// computer" will be prompted for their second factor.
   /// - "SECURITY_KEY" : The user will be prompted to authenticate using their
   /// security key. If no security key has been configured, then authentication
-  /// will fallback to LOGIN.
+  /// will fall back to `LOGIN`.
   /// - "PASSWORD" : The user will be prompted for their password.
   core.String? sessionReauthMethod;
 
   /// Only useful for OIDC apps.
   ///
-  /// When false, the OIDC max_age param, if passed in the authentication
-  /// request will be ignored. When true, the re-auth period will be the minimum
-  /// of the session_length field and the max_age OIDC param.
+  /// When `false`, the OIDC `max_age` parameter, if passed in the
+  /// authentication request, is ignored. When `true`, the re-authentication
+  /// period is the minimum of the `session_length` field and the `max_age` OIDC
+  /// parameter.
   ///
   /// Optional.
   core.bool? useOidcMaxAge;
@@ -4915,7 +4932,8 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
 
-/// `SupportedService` specifies the VPC Service Controls and its properties.
+/// `SupportedService` specifies a service supported by VPC Service Controls and
+/// its properties.
 class SupportedService {
   /// True if the service is available on the restricted VIP.
   ///
@@ -4941,7 +4959,7 @@ class SupportedService {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "PREVIEW" : PREVIEW indicates a pre-release stage where the product is
-  /// functionally complete but undergoing real-world testing.
+  /// functionally complete, but undergoing real-world testing.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
   /// removed.
   core.String? serviceSupportStage;
@@ -4981,12 +4999,12 @@ class SupportedService {
   /// documentation.
   core.String? supportStage;
 
-  /// The list of the supported methods.
+  /// The list of supported methods.
   ///
-  /// This field exists only in response to GetSupportedService
+  /// This field exists only in response to GetSupportedService.
   core.List<MethodSelector>? supportedMethods;
 
-  /// The name of the supported product, such as 'Cloud Product API'.
+  /// The name of the supported product, such as `'Cloud Product API'`.
   core.String? title;
 
   SupportedService({
@@ -5051,14 +5069,14 @@ class VpcAccessibleServices {
 
   /// The list of APIs usable within the Service Perimeter.
   ///
-  /// Must be empty unless 'enable_restriction' is True. You can specify a list
-  /// of individual services, as well as include the 'RESTRICTED-SERVICES'
-  /// value, which automatically includes all of the services protected by the
-  /// perimeter.
+  /// Must be empty unless `enable_restriction` is `true`. You can specify a
+  /// list of individual services, as well as include the
+  /// `'RESTRICTED-SERVICES'` value, which automatically includes all of the
+  /// services protected by the perimeter.
   core.List<core.String>? allowedServices;
 
   /// Whether to restrict API calls within the Service Perimeter to the list of
-  /// APIs specified in 'allowed_services'.
+  /// APIs specified in `allowed_services`.
   core.bool? enableRestriction;
 
   /// Defines the enforcement scopes of service patterns.
@@ -5127,5 +5145,5 @@ class VpcNetworkSource {
   }
 }
 
-/// Sub-segment ranges inside of a VPC Network.
+/// Sub-segment ranges inside of a VPC network.
 typedef VpcSubNetwork = $VpcSubNetwork;

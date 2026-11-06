@@ -2025,12 +2025,12 @@ class GoogleCloudRecaptchaenterpriseV1Bot {
   /// browser-base - AI_AGENT * chat-gpt - AI_AGENT * aws-bedrock - AI_AGENT *
   /// cybaa-bot - AI_AGENT * cloudflare - AI_AGENT * payhawk - AI_AGENT *
   /// duck-duck-go - SEARCH_INDEXER * mediaboard - CONTENT_SCRAPER * marker-io -
-  /// AI_AGENT * broadcom - AI_AGENT * anchor-browser - AI_AGENT * shopify -
-  /// AI_AGENT * stackscope - CONTENT_SCRAPER * manus - AI_AGENT * kernel-sh -
-  /// AI_AGENT * zvelo - SEARCH_INDEXER Ensure that your applications can handle
-  /// identifier values not explicitly listed here. Deprecated values might take
-  /// some time to stop showing up in responses. New values can be pushed so
-  /// this list should be taken as non exhaustive.
+  /// AI_AGENT * anchor-browser - AI_AGENT * shopify - AI_AGENT * stackscope -
+  /// CONTENT_SCRAPER * manus - AI_AGENT * kernel-sh - AI_AGENT * zvelo -
+  /// SEARCH_INDEXER * meta-muse - AI_AGENT Ensure that your applications can
+  /// handle identifier values not explicitly listed here. Deprecated values
+  /// might take some time to stop showing up in responses. New values can be
+  /// pushed so this list should be taken as non exhaustive.
   ///
   /// Optional.
   core.String? name;
@@ -3955,16 +3955,20 @@ class GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint {
   /// Required.
   core.String? action;
 
-  /// URI path of the API endpoint to protect.
+  /// The URI path of the API endpoint to protect.
   ///
-  /// Must start with '/'. Supports glob characters '*' to match a single path
-  /// segment and '**' to match multiple path segments. Standalone root
-  /// catch-alls (' / * ' and ' / * *') are invalid because it can negatively
-  /// impact performance to trigger reCAPTCHA on every single request to your
-  /// backend. Matching is evaluated against the URL path only (domain, scheme,
-  /// and query parameters are ignored). Examples: - `/login` matches `/login`,
+  /// The path is case-sensitive and must meet the following criteria: * Be
+  /// unique, start with `/`, and contain 1 to 200 characters without
+  /// consecutive slashes (`//`). * Include at least one non-wildcard segment.
+  /// For example, cannot be `/`, ` / * `, ` / * *`, or ` / * /`. * Wildcards
+  /// must occupy complete segments: `*` matches a single segment. For example,
+  /// `/api / * /login` or `/api / * ` are valid; `/api/login*` is invalid, and
+  /// `**` matches multiple segments as the final segment only. For example,
+  /// `/api / * *` is valid; `/api / * * / login` is invalid. Matching is
+  /// evaluated against the URL path only. Domain, scheme, and query parameters
+  /// are ignored. Examples: * `/login` matches `/login`,
   /// `https://example.com/login`, and `/login?query=1`, but not `/login/step1`.
-  /// - `/products / * ` matches `/products/123`, but not `/products/123/456`. -
+  /// * `/products / * ` matches `/products/123`, but not `/products/123/456`. *
   /// `/content / * *` matches `/content/articles/2024/01/01`.
   ///
   /// Required.
@@ -4220,6 +4224,9 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   /// - "CHALLENGE_TYPE_UNSPECIFIED" : Default unspecified type.
   /// - "CHALLENGE_TYPE_VISUAL" : A visual challenge.
   /// - "CHALLENGE_TYPE_AUDIO" : An audio challenge.
+  /// - "CHALLENGE_TYPE_QR_CODE" : A challenge requiring mobile device
+  /// verification, completed by scanning a QR code on desktop or clicking a
+  /// verification button directly on a mobile device.
   core.String? lastChallengeType;
 
   /// Reasons contributing to the risk analysis verdict.
@@ -4570,9 +4577,16 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// Output only.
   core.String? androidPackageName;
 
+  /// Information collected by the reCAPTCHA Enterprise client-side integration
+  /// when the token is generated.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties?
+  clientProperties;
+
   /// Indicates a failure collecting reCAPTCHA signals at token generation.
   ///
-  /// This might be a transient condition, or persistent for a user’s
+  /// This might be a transient condition, or persistent for a user's
   /// environment.
   ///
   /// Output only.
@@ -4630,6 +4644,7 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   GoogleCloudRecaptchaenterpriseV1TokenProperties({
     this.action,
     this.androidPackageName,
+    this.clientProperties,
     this.clientSignalsFailed,
     this.createTime,
     this.hostname,
@@ -4642,6 +4657,12 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
     : this(
         action: json_['action'] as core.String?,
         androidPackageName: json_['androidPackageName'] as core.String?,
+        clientProperties: json_.containsKey('clientProperties')
+            ? GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties.fromJson(
+                json_['clientProperties']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         clientSignalsFailed: json_['clientSignalsFailed'] as core.bool?,
         createTime: json_['createTime'] as core.String?,
         hostname: json_['hostname'] as core.String?,
@@ -4653,6 +4674,7 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   core.Map<core.String, core.dynamic> toJson() {
     final action = this.action;
     final androidPackageName = this.androidPackageName;
+    final clientProperties = this.clientProperties;
     final clientSignalsFailed = this.clientSignalsFailed;
     final createTime = this.createTime;
     final hostname = this.hostname;
@@ -4662,6 +4684,7 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
     return {
       'action': ?action,
       'androidPackageName': ?androidPackageName,
+      'clientProperties': ?clientProperties,
       'clientSignalsFailed': ?clientSignalsFailed,
       'createTime': ?createTime,
       'hostname': ?hostname,
@@ -4669,6 +4692,45 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
       'iosBundleId': ?iosBundleId,
       'valid': ?valid,
     };
+  }
+}
+
+/// Information collected by the reCAPTCHA Enterprise client-side integration
+/// when the token is generated.
+class GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties {
+  /// The `User-Agent` header string observed by reCAPTCHA during token
+  /// generation.
+  ///
+  /// This string is truncated to a maximum length of 1000 characters.
+  ///
+  /// Output only.
+  core.String? userAgent;
+
+  /// The user's IP address at token generation.
+  ///
+  /// This can be either an IPv4 address (e.g., `192.0.2.1`) or an IPv6 address
+  /// in canonical format per RFC 5952 section 4 (e.g., `2001:db8::1`).
+  /// IPv4-mapped IPv6 addresses are canonicalized to standard IPv4.
+  ///
+  /// Output only.
+  core.String? userIpAddress;
+
+  GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties({
+    this.userAgent,
+    this.userIpAddress,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties.fromJson(
+    core.Map json_,
+  ) : this(
+        userAgent: json_['userAgent'] as core.String?,
+        userIpAddress: json_['userIpAddress'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final userAgent = this.userAgent;
+    final userIpAddress = this.userIpAddress;
+    return {'userAgent': ?userAgent, 'userIpAddress': ?userIpAddress};
   }
 }
 

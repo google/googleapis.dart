@@ -960,6 +960,8 @@ class Attributes {
 
   /// The list of destinations to exclude for this target (corresponds to
   /// unchecked check boxes in Merchant Center).
+  ///
+  /// Supported values are: - `css_ads_experiences` - `css_organic_experiences`
   core.List<core.String>? excludedDestinations;
 
   /// Date on which the item should expire, as specified upon insertion, in
@@ -1020,7 +1022,8 @@ class Attributes {
   /// checked check boxes in Merchant Center).
   ///
   /// Default destinations are always included unless provided in
-  /// `excludedDestinations`.
+  /// `excluded_destinations`. Supported values are: - `css_ads_experiences` -
+  /// `css_organic_experiences`
   core.List<core.String>? includedDestinations;
 
   /// Whether the item is a merchant-defined bundle.
@@ -1040,14 +1043,12 @@ class Attributes {
 
   /// Maximum rating score of the product.
   ///
-  /// Required if `rating` is provided. This field is for an upcoming feature
-  /// and is not yet used.
+  /// Required if `rating` is provided.
   core.String? maxRating;
 
   /// Minimum rating score of the product.
   ///
-  /// Required if `rating` is provided. This field is for an upcoming feature
-  /// and is not yet used.
+  /// Required if `rating` is provided.
   core.String? minRating;
 
   /// Manufacturer Part Number
@@ -1102,14 +1103,12 @@ class Attributes {
   /// The value must be within the range of \[`min_rating`, `max_rating`\],
   /// inclusive. When displayed on the product page, this rating is normalized
   /// to a scale of \[1, 5\] with one decimal place. If provided,
-  /// `review_count`, `min_rating`, and `max_rating` are also required. This
-  /// field is for an upcoming feature and is not yet used.
+  /// `review_count`, `min_rating`, and `max_rating` are also required.
   core.double? rating;
 
   /// Number of reviews of the product.
   ///
-  /// Required if `rating` is provided. This field is for an upcoming feature
-  /// and is not yet used.
+  /// Required if `rating` is provided.
   core.String? reviewCount;
 
   /// Size of the item.

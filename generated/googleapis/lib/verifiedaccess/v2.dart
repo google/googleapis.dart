@@ -348,6 +348,8 @@ class DeviceSignals {
   /// - "WINDOWS" : Windows.
   /// - "MAC_OS_X" : Mac Os X.
   /// - "LINUX" : Linux
+  /// - "IOS" : iOS.
+  /// - "ANDROID" : Android.
   core.String? operatingSystem;
 
   /// The state of the OS level firewall.

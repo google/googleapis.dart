@@ -255,7 +255,10 @@ class ProjectsScanConfigsResource {
 
   /// Updates a ScanConfig.
   ///
-  /// This method support partial update of a ScanConfig.
+  /// This method supports partial update of a ScanConfig. Authorization
+  /// requires the following [IAM](https://cloud.google.com/iam/docs/)
+  /// permission on the specified resource `scan_config.name`: -
+  /// `cloudsecurityscanner.scans.update`
   ///
   /// [request] - The metadata request object.
   ///

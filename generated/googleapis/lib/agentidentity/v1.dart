@@ -846,6 +846,52 @@ class ProjectsLocationsAuthProvidersResource {
     );
   }
 
+  /// Resolves an authorization for a user on an auth provider, creating one if
+  /// it does not exist or returning an existing one.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the auth provider to resolve authorization
+  /// for. Format:
+  /// projects/{project}/locations/{location}/authProviders/{auth_provider}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResolveAuthorizationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResolveAuthorizationResponse> resolveAuthorization(
+    ResolveAuthorizationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resolveAuthorization';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ResolveAuthorizationResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Revokes all authorizations for a specific user on an auth provider.
   ///
   /// This deletes all authorization records associated with the user and auth
@@ -1134,6 +1180,64 @@ class ProjectsLocationsAuthProvidersAuthorizationsResource {
     );
   }
 
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+/authorizations/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'options.requestedPolicyVersion': ?options_requestedPolicyVersion == null
+          ? null
+          : ['${options_requestedPolicyVersion}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists authorizations in a given project and location.
   ///
   /// Request parameters:
@@ -1196,6 +1300,105 @@ class ProjectsLocationsAuthProvidersAuthorizationsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+/authorizations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authProviders/\[^/\]+/authorizations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 /// Represents an access summary.
@@ -1217,6 +1420,10 @@ class AccessSummary {
   /// - "AUTH_PROVIDER_TYPE_API_KEY" : API key auth provider type.
   /// - "AUTH_PROVIDER_TYPE_GEMINI_ENTERPRISE" : Gemini Enterprise auth provider
   /// type.
+  /// - "AUTH_PROVIDER_TYPE_CROSS_APP_ACCESS" : Cross-App Access auth provider
+  /// type.
+  /// - "AUTH_PROVIDER_TYPE_CONNECTOR_REFERENCE" : Connector Reference auth
+  /// provider type.
   core.String? authProviderType;
 
   /// The first time this user interacted with this workload, rounded to the
@@ -1335,6 +1542,9 @@ class AccessSummary {
     };
   }
 }
+
+/// Marker message to indicate the managed Agent Identity Pool is used.
+typedef AgentIdentityPool = $Empty;
 
 /// Configuration for API key authentication.
 class ApiKeyParams {
@@ -1576,6 +1786,9 @@ class AuthProviderTypeParams {
   /// Parameters for API key authentication.
   ApiKeyParams? apiKey;
 
+  /// Parameters for Connector Reference authentication.
+  ConnectorReferenceAuthProvider? connectorReferenceAuthProvider;
+
   /// Parameters for Gemini Enterprise authentication.
   GeminiEnterpriseAuthProviderParams? geAuthProvider;
 
@@ -1585,11 +1798,16 @@ class AuthProviderTypeParams {
   /// Parameters for 2-legged OAuth (2LO) authentication.
   TwoLeggedOAuth? twoLeggedOauth;
 
+  /// Parameters for Cross-App Access authentication.
+  CrossAppAccessAuthProvider? xaaAuthProvider;
+
   AuthProviderTypeParams({
     this.apiKey,
+    this.connectorReferenceAuthProvider,
     this.geAuthProvider,
     this.threeLeggedOauth,
     this.twoLeggedOauth,
+    this.xaaAuthProvider,
   });
 
   AuthProviderTypeParams.fromJson(core.Map json_)
@@ -1597,6 +1815,13 @@ class AuthProviderTypeParams {
         apiKey: json_.containsKey('apiKey')
             ? ApiKeyParams.fromJson(
                 json_['apiKey'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        connectorReferenceAuthProvider:
+            json_.containsKey('connectorReferenceAuthProvider')
+            ? ConnectorReferenceAuthProvider.fromJson(
+                json_['connectorReferenceAuthProvider']
+                    as core.Map<core.String, core.dynamic>,
               )
             : null,
         geAuthProvider: json_.containsKey('geAuthProvider')
@@ -1615,18 +1840,27 @@ class AuthProviderTypeParams {
                 json_['twoLeggedOauth'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        xaaAuthProvider: json_.containsKey('xaaAuthProvider')
+            ? CrossAppAccessAuthProvider.fromJson(
+                json_['xaaAuthProvider'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final apiKey = this.apiKey;
+    final connectorReferenceAuthProvider = this.connectorReferenceAuthProvider;
     final geAuthProvider = this.geAuthProvider;
     final threeLeggedOauth = this.threeLeggedOauth;
     final twoLeggedOauth = this.twoLeggedOauth;
+    final xaaAuthProvider = this.xaaAuthProvider;
     return {
       'apiKey': ?apiKey,
+      'connectorReferenceAuthProvider': ?connectorReferenceAuthProvider,
       'geAuthProvider': ?geAuthProvider,
       'threeLeggedOauth': ?threeLeggedOauth,
       'twoLeggedOauth': ?twoLeggedOauth,
+      'xaaAuthProvider': ?xaaAuthProvider,
     };
   }
 }
@@ -1811,8 +2045,233 @@ class Binding {
   }
 }
 
+/// Configuration for client ID and client assertion JWT authentication.
+class ClientAssertionJwtAuth {
+  /// The client identifier.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  ClientAssertionJwtAuth({this.clientId});
+
+  ClientAssertionJwtAuth.fromJson(core.Map json_)
+    : this(clientId: json_['clientId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientId = this.clientId;
+    return {'clientId': ?clientId};
+  }
+}
+
+/// Configuration for client ID and client secret authentication.
+class ClientSecretAuth {
+  /// The client identifier.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  /// Input only.
+  ///
+  /// The client secret.
+  ///
+  /// Required.
+  core.String? clientSecret;
+
+  ClientSecretAuth({this.clientId, this.clientSecret});
+
+  ClientSecretAuth.fromJson(core.Map json_)
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientId = this.clientId;
+    final clientSecret = this.clientSecret;
+    return {'clientId': ?clientId, 'clientSecret': ?clientSecret};
+  }
+}
+
+/// Configuration parameters for the Connector Reference auth provider.
+class ConnectorReferenceAuthProvider {
+  /// Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+  /// resources/scopes, formatted as a JSON array of JSON objects.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? authorizationDetails;
+
+  /// The name of the referenced connector.
+  ///
+  /// Required.
+  core.String? connector;
+
+  ConnectorReferenceAuthProvider({this.authorizationDetails, this.connector});
+
+  ConnectorReferenceAuthProvider.fromJson(core.Map json_)
+    : this(
+        authorizationDetails: (json_['authorizationDetails'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
+        connector: json_['connector'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorizationDetails = this.authorizationDetails;
+    final connector = this.connector;
+    return {
+      'authorizationDetails': ?authorizationDetails,
+      'connector': ?connector,
+    };
+  }
+}
+
+/// Configuration parameters for the Cross-App Access auth provider.
+class CrossAppAccessAuthProvider {
+  /// Additional parameters to be passed to the token endpoint.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? additionalParameters;
+
+  /// Option 2: Authenticate using a standard `client_id` and a Client Assertion
+  /// JWT.
+  ClientAssertionJwtAuth? clientAssertionJwtAuth;
+
+  /// Option 1: Authenticate using a standard `client_id` and `client_secret`.
+  ClientSecretAuth? clientSecretAuth;
+
+  /// Configuration when using a custom or third-party authorization server as
+  /// the issuer.
+  CustomIssuer? customIssuer;
+
+  /// Configuration when using Google Accounts as the issuer.
+  GoogleAccount? googleAccount;
+
+  /// Configuration for when the input is already an ID-JAG.
+  DirectIdJagInput? idJagInput;
+
+  /// Configuration for when the input is an ID token.
+  IdTokenProcessingConfig? idTokenInput;
+
+  /// Configuration when using Workforce Identity Federation as the issuer.
+  WorkforceIdentityFederation? workforceIdentityFederation;
+
+  CrossAppAccessAuthProvider({
+    this.additionalParameters,
+    this.clientAssertionJwtAuth,
+    this.clientSecretAuth,
+    this.customIssuer,
+    this.googleAccount,
+    this.idJagInput,
+    this.idTokenInput,
+    this.workforceIdentityFederation,
+  });
+
+  CrossAppAccessAuthProvider.fromJson(core.Map json_)
+    : this(
+        additionalParameters:
+            (json_['additionalParameters']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        clientAssertionJwtAuth: json_.containsKey('clientAssertionJwtAuth')
+            ? ClientAssertionJwtAuth.fromJson(
+                json_['clientAssertionJwtAuth']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        clientSecretAuth: json_.containsKey('clientSecretAuth')
+            ? ClientSecretAuth.fromJson(
+                json_['clientSecretAuth']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        customIssuer: json_.containsKey('customIssuer')
+            ? CustomIssuer.fromJson(
+                json_['customIssuer'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        googleAccount: json_.containsKey('googleAccount')
+            ? GoogleAccount.fromJson(
+                json_['googleAccount'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        idJagInput: json_.containsKey('idJagInput')
+            ? DirectIdJagInput.fromJson(
+                json_['idJagInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        idTokenInput: json_.containsKey('idTokenInput')
+            ? IdTokenProcessingConfig.fromJson(
+                json_['idTokenInput'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        workforceIdentityFederation:
+            json_.containsKey('workforceIdentityFederation')
+            ? WorkforceIdentityFederation.fromJson(
+                json_['workforceIdentityFederation']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalParameters = this.additionalParameters;
+    final clientAssertionJwtAuth = this.clientAssertionJwtAuth;
+    final clientSecretAuth = this.clientSecretAuth;
+    final customIssuer = this.customIssuer;
+    final googleAccount = this.googleAccount;
+    final idJagInput = this.idJagInput;
+    final idTokenInput = this.idTokenInput;
+    final workforceIdentityFederation = this.workforceIdentityFederation;
+    return {
+      'additionalParameters': ?additionalParameters,
+      'clientAssertionJwtAuth': ?clientAssertionJwtAuth,
+      'clientSecretAuth': ?clientSecretAuth,
+      'customIssuer': ?customIssuer,
+      'googleAccount': ?googleAccount,
+      'idJagInput': ?idJagInput,
+      'idTokenInput': ?idTokenInput,
+      'workforceIdentityFederation': ?workforceIdentityFederation,
+    };
+  }
+}
+
+/// Configuration for a custom or third-party authorization server issuer.
+class CustomIssuer {
+  /// The issuer identifier of the target Authorization Server.
+  ///
+  /// Optional.
+  core.String? issuer;
+
+  /// The token endpoint of the target OAuth authorization server to retrieve
+  /// resource tokens.
+  ///
+  /// Required.
+  core.String? tokenUrl;
+
+  CustomIssuer({this.issuer, this.tokenUrl});
+
+  CustomIssuer.fromJson(core.Map json_)
+    : this(
+        issuer: json_['issuer'] as core.String?,
+        tokenUrl: json_['tokenUrl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final issuer = this.issuer;
+    final tokenUrl = this.tokenUrl;
+    return {'issuer': ?issuer, 'tokenUrl': ?tokenUrl};
+  }
+}
+
+/// Marker message indicating the input is already an ID-JAG, so no fetching is
+/// required.
+typedef DirectIdJagInput = $Empty;
+
 /// Request message for `DisableAuthProvider`.
-typedef DisableAuthProviderRequest = $AuthProviderRequest;
+typedef DisableAuthProviderRequest = $Request02;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1823,7 +2282,7 @@ typedef DisableAuthProviderRequest = $AuthProviderRequest;
 typedef Empty = $Empty;
 
 /// Request message for `EnableAuthProvider`.
-typedef EnableAuthProviderRequest = $AuthProviderRequest;
+typedef EnableAuthProviderRequest = $Request02;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -1847,6 +2306,62 @@ typedef Expr = $Expr;
 
 /// Configuration for Gemini Enterprise authentication.
 typedef GeminiEnterpriseAuthProviderParams = $Empty;
+
+/// Configuration for Google Account usage as the issuer.
+typedef GoogleAccount = $Empty;
+
+/// Defines how to process an input ID token to obtain an ID-JAG.
+class IdTokenProcessingConfig {
+  /// Indicates the managed Agent Identity pool should be used to fetch the
+  /// ID-JAG.
+  AgentIdentityPool? agentIdentityPool;
+
+  /// Optional additional claims to include when fetching an ID-JAG.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? idJagAdditionalClaims;
+
+  /// The resource name of the ID-JAG auth provider.
+  ///
+  /// Format:
+  /// "projects/{project}/locations/{location}/authProviders/{auth_provider}"
+  core.String? idJagAuthProvider;
+
+  IdTokenProcessingConfig({
+    this.agentIdentityPool,
+    this.idJagAdditionalClaims,
+    this.idJagAuthProvider,
+  });
+
+  IdTokenProcessingConfig.fromJson(core.Map json_)
+    : this(
+        agentIdentityPool: json_.containsKey('agentIdentityPool')
+            ? AgentIdentityPool.fromJson(
+                json_['agentIdentityPool']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        idJagAdditionalClaims: json_.containsKey('idJagAdditionalClaims')
+            ? json_['idJagAdditionalClaims']
+                  as core.Map<core.String, core.dynamic>
+            : null,
+        idJagAuthProvider: json_['idJagAuthProvider'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final agentIdentityPool = this.agentIdentityPool;
+    final idJagAdditionalClaims = this.idJagAdditionalClaims;
+    final idJagAuthProvider = this.idJagAuthProvider;
+    return {
+      'agentIdentityPool': ?agentIdentityPool,
+      'idJagAdditionalClaims': ?idJagAdditionalClaims,
+      'idJagAuthProvider': ?idJagAuthProvider,
+    };
+  }
+}
 
 /// Response message for `ListAccessSummaries`.
 class ListAccessSummariesResponse {
@@ -2198,6 +2713,43 @@ class QueryWorkloadsResponse {
   }
 }
 
+/// Request message for `ResolveAuthorization`.
+class ResolveAuthorizationRequest {
+  /// The user ID of the client for whom the authorization is resolved.
+  ///
+  /// Required.
+  core.String? clientUserId;
+
+  ResolveAuthorizationRequest({this.clientUserId});
+
+  ResolveAuthorizationRequest.fromJson(core.Map json_)
+    : this(clientUserId: json_['clientUserId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final clientUserId = this.clientUserId;
+    return {'clientUserId': ?clientUserId};
+  }
+}
+
+/// Response message for `ResolveAuthorization`.
+class ResolveAuthorizationResponse {
+  /// The resource name of the resolved authorization.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/authProviders/{auth_provider}/authorizations/{authorization}
+  core.String? authorization;
+
+  ResolveAuthorizationResponse({this.authorization});
+
+  ResolveAuthorizationResponse.fromJson(core.Map json_)
+    : this(authorization: json_['authorization'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final authorization = this.authorization;
+    return {'authorization': ?authorization};
+  }
+}
+
 /// Request message for `RevokeAuthorization`.
 class RevokeAuthorizationRequest {
   /// The identity of the user to revoke authorization for.
@@ -2389,4 +2941,7 @@ class TwoLeggedOAuth {
 }
 
 /// Request message for `UndeleteAuthProvider`.
-typedef UndeleteAuthProviderRequest = $AuthProviderRequest;
+typedef UndeleteAuthProviderRequest = $Request02;
+
+/// Configuration for Workforce Identity Federation usage as the issuer.
+typedef WorkforceIdentityFederation = $Empty;

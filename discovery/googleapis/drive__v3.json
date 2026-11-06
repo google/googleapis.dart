@@ -51,7 +51,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260901",
+    "revision": "20261023",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "drive/v3/",
     "title": "Google Drive API",
@@ -1350,7 +1350,7 @@
                     "parameters": {
                         "copyComments": {
                             "default": "false",
-                            "description": "Whether to copy the comments associated with the file.",
+                            "description": "Whether to copy the open (unresolved) comments associated with the file.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -2175,7 +2175,7 @@
         "permissions": {
             "methods": {
                 "create": {
-                    "description": "Creates a permission for a file or shared drive. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permissions operations on the same file aren't supported; only the last update is applied.",
+                    "description": "Creates a permission for a file or shared drive. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permission modifications (such as update or delete) on the same file, folder, or shared drive aren't supported across any users or clients; only the last update is applied.",
                     "flatPath": "files/{fileId}/permissions",
                     "httpMethod": "POST",
                     "id": "drive.permissions.create",
@@ -2258,7 +2258,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes a permission. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permissions operations on the same file aren't supported; only the last update is applied.",
+                    "description": "Deletes a permission. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permission modifications (such as update or delete) on the same file, folder, or shared drive aren't supported across any users or clients; only the last update is applied.",
                     "flatPath": "files/{fileId}/permissions/{permissionId}",
                     "httpMethod": "DELETE",
                     "id": "drive.permissions.delete",
@@ -2436,7 +2436,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a permission with patch semantics. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permissions operations on the same file aren't supported; only the last update is applied.",
+                    "description": "Updates a permission with patch semantics. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permission modifications (such as update or delete) on the same file, folder, or shared drive aren't supported across any users or clients; only the last update is applied.",
                     "flatPath": "files/{fileId}/permissions/{permissionId}",
                     "httpMethod": "PATCH",
                     "id": "drive.permissions.update",
@@ -3432,15 +3432,13 @@
                     "type": "string"
                 },
                 "completeTime": {
-                    "description": "Output only. The time the approval was completed.",
+                    "description": "The time the approval was completed.",
                     "format": "google-datetime",
-                    "readOnly": true,
                     "type": "string"
                 },
                 "createTime": {
-                    "description": "Output only. The time the approval was created.",
+                    "description": "The time the approval was created.",
                     "format": "google-datetime",
-                    "readOnly": true,
                     "type": "string"
                 },
                 "dueTime": {
@@ -3449,7 +3447,7 @@
                     "type": "string"
                 },
                 "fileContentChangeBehavior": {
-                    "description": "Output only. The behavior of the approval when the file content changes.",
+                    "description": "The behavior of the approval when the file content changes.",
                     "enum": [
                         "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED",
                         "RESET_APPROVAL",
@@ -3457,10 +3455,9 @@
                     ],
                     "enumDescriptions": [
                         "The behavior is unspecified.",
-                        "Any ReviewerResponse with a Response of APPROVED will be reset to NO_DECISION when the file content changes while the approval has a Status of IN_PROGRESS. When the approval has a Status of APPROVED and RESET_APPROVAL is selected, the file is locked.",
+                        "Any ReviewerResponse with a Response of `APPROVED` will be reset to `NO_DECISION` when the file content changes while the approval has a Status of `IN_PROGRESS`. When the approval has a Status of `APPROVED` and `RESET_APPROVAL` is selected, the file is locked.",
                         "No action is taken when the file content changes."
                     ],
-                    "readOnly": true,
                     "type": "string"
                 },
                 "initiator": {
@@ -3472,9 +3469,8 @@
                     "type": "string"
                 },
                 "modifyTime": {
-                    "description": "Output only. The most recent time the approval was modified.",
+                    "description": "The most recent time the approval was modified.",
                     "format": "google-datetime",
-                    "readOnly": true,
                     "type": "string"
                 },
                 "reviewerResponses": {
@@ -3485,7 +3481,7 @@
                     "type": "array"
                 },
                 "status": {
-                    "description": "Output only. The status of the approval at the time this resource was requested.",
+                    "description": "The status of the approval at the time this resource was requested.",
                     "enum": [
                         "STATUS_UNSPECIFIED",
                         "IN_PROGRESS",
@@ -3500,7 +3496,6 @@
                         "The approval process was cancelled before it finished.",
                         "The approval process is finished and the target was declined."
                     ],
-                    "readOnly": true,
                     "type": "string"
                 },
                 "targetFileId": {
@@ -5661,7 +5656,7 @@
                     ],
                     "enumDescriptions": [
                         "The behavior is unspecified.",
-                        "Any ReviewerResponse with a Response of APPROVED will be reset to NO_DECISION when the file content changes while the approval has a Status of IN_PROGRESS. When the approval has a Status of APPROVED and RESET_APPROVAL is selected, the file is locked.",
+                        "Any ReviewerResponse with a Response of `APPROVED` will be reset to `NO_DECISION` when the file content changes while the approval has a Status of `IN_PROGRESS`. When the approval has a Status of `APPROVED` and `RESET_APPROVAL` is selected, the file is locked.",
                         "No action is taken when the file content changes."
                     ],
                     "type": "string"

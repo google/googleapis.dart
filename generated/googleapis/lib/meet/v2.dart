@@ -99,6 +99,9 @@ class ConferenceRecordsResource {
 
   /// Gets a conference record by conference ID.
   ///
+  /// For more information, see
+  /// [Work with conferences](https://developers.google.com/workspace/meet/api/guides/conferences).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the conference.
@@ -136,7 +139,9 @@ class ConferenceRecordsResource {
 
   /// Lists the conference records.
   ///
-  /// By default, ordered by start time and in descending order.
+  /// By default, ordered by start time and in descending order. For more
+  /// information, see
+  /// [Work with conferences](https://developers.google.com/workspace/meet/api/guides/conferences).
   ///
   /// Request parameters:
   ///
@@ -203,6 +208,9 @@ class ConferenceRecordsParticipantsResource {
 
   /// Gets a participant by participant ID.
   ///
+  /// For more information, see
+  /// [Work with participants](https://developers.google.com/workspace/meet/api/guides/participants).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the participant.
@@ -244,7 +252,8 @@ class ConferenceRecordsParticipantsResource {
   /// By default, ordered by join time and in descending order. This API
   /// supports `fields` as standard parameters like every other API. However,
   /// when the `fields` request parameter is omitted, this API defaults to
-  /// `'participants / * , next_page_token'`.
+  /// `'participants / * , next_page_token'`. For more information, see
+  /// [Work with participants](https://developers.google.com/workspace/meet/api/guides/participants).
   ///
   /// Request parameters:
   ///
@@ -310,6 +319,9 @@ class ConferenceRecordsParticipantsParticipantSessionsResource {
 
   /// Gets a participant session by participant session ID.
   ///
+  /// For more information, see
+  /// [Work with participants](https://developers.google.com/workspace/meet/api/guides/participants).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the participant.
@@ -351,7 +363,8 @@ class ConferenceRecordsParticipantsParticipantSessionsResource {
   /// By default, ordered by join time and in descending order. This API
   /// supports `fields` as standard parameters like every other API. However,
   /// when the `fields` request parameter is omitted this API defaults to
-  /// `'participantsessions / * , next_page_token'`.
+  /// `'participantsessions / * , next_page_token'`. For more information, see
+  /// [Work with participants](https://developers.google.com/workspace/meet/api/guides/participants).
   ///
   /// Request parameters:
   ///
@@ -419,6 +432,9 @@ class ConferenceRecordsRecordingsResource {
 
   /// Gets a recording by recording ID.
   ///
+  /// For more information, see
+  /// [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the recording.
@@ -451,7 +467,9 @@ class ConferenceRecordsRecordingsResource {
 
   /// Lists the recording resources from the conference record.
   ///
-  /// By default, ordered by start time and in ascending order.
+  /// By default, ordered by start time and in ascending order. For more
+  /// information, see
+  /// [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
   ///
   /// Request parameters:
   ///
@@ -508,6 +526,9 @@ class ConferenceRecordsSmartNotesResource {
 
   /// Gets smart notes by smart note ID.
   ///
+  /// For more information, see
+  /// [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the smart note. Format:
@@ -541,7 +562,9 @@ class ConferenceRecordsSmartNotesResource {
 
   /// Lists the set of smart notes from the conference record.
   ///
-  /// By default, ordered by start time and in ascending order.
+  /// By default, ordered by start time and in ascending order. For more
+  /// information, see
+  /// [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
   ///
   /// Request parameters:
   ///
@@ -601,6 +624,9 @@ class ConferenceRecordsTranscriptsResource {
 
   /// Gets a transcript by transcript ID.
   ///
+  /// For more information, see
+  /// [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the transcript.
@@ -635,7 +661,9 @@ class ConferenceRecordsTranscriptsResource {
 
   /// Lists the set of transcripts from the conference record.
   ///
-  /// By default, ordered by start time and in ascending order.
+  /// By default, ordered by start time and in ascending order. For more
+  /// information, see
+  /// [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
   ///
   /// Request parameters:
   ///
@@ -692,6 +720,8 @@ class ConferenceRecordsTranscriptsEntriesResource {
 
   /// Gets a `TranscriptEntry` resource by entry ID.
   ///
+  /// For more information, see
+  /// [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
   /// Note: The transcript entries returned by the Google Meet API might not
   /// match the transcription found in the Google Docs transcript file. This can
   /// occur when 1) we have interleaved speakers within milliseconds, or 2) the
@@ -735,11 +765,13 @@ class ConferenceRecordsTranscriptsEntriesResource {
 
   /// Lists the structured transcript entries per transcript.
   ///
-  /// By default, ordered by start time and in ascending order. Note: The
-  /// transcript entries returned by the Google Meet API might not match the
-  /// transcription found in the Google Docs transcript file. This can occur
-  /// when 1) we have interleaved speakers within milliseconds, or 2) the Google
-  /// Docs transcript file is modified after generation.
+  /// By default, ordered by start time and in ascending order. For more
+  /// information, see
+  /// [Work with artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+  /// Note: The transcript entries returned by the Google Meet API might not
+  /// match the transcription found in the Google Docs transcript file. This can
+  /// occur when 1) we have interleaved speakers within milliseconds, or 2) the
+  /// Google Docs transcript file is modified after generation.
   ///
   /// Request parameters:
   ///
@@ -798,6 +830,9 @@ class SpacesResource {
 
   /// Creates a space.
   ///
+  /// For more information, see
+  /// [Manage meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -831,8 +866,8 @@ class SpacesResource {
 
   /// Ends an active conference (if there's one).
   ///
-  /// For an example, see
-  /// [End active conference](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#end-active-conference).
+  /// For more information, see
+  /// [Manage meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
   ///
   /// [request] - The metadata request object.
   ///
@@ -878,6 +913,8 @@ class SpacesResource {
 
   /// Gets details about a meeting space.
   ///
+  /// For more information, see
+  /// [Manage meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
   /// For an example, see
   /// [Get a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-meeting-space).
   ///
@@ -925,8 +962,8 @@ class SpacesResource {
 
   /// Updates details about a meeting space.
   ///
-  /// For an example, see
-  /// [Update a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#update-meeting-space).
+  /// For more information, see
+  /// [Manage meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
   ///
   /// [request] - The metadata request object.
   ///
@@ -986,6 +1023,9 @@ class SpacesMembersResource {
 
   /// Updates members of one space within a batch.
   ///
+  /// For more information, see
+  /// [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1030,6 +1070,8 @@ class SpacesMembersResource {
 
   /// Creates a member.
   ///
+  /// For more information, see
+  /// [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
   /// This API supports the `fields` parameter in
   /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters).
   /// When the `fields` parameter is omitted, this API response will default to
@@ -1075,6 +1117,9 @@ class SpacesMembersResource {
 
   /// Deletes the member who was previously assigned roles in the space.
   ///
+  /// For more information, see
+  /// [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. Format: “spaces/{space}/members/{member}”
@@ -1107,6 +1152,8 @@ class SpacesMembersResource {
 
   /// Gets a member.
   ///
+  /// For more information, see
+  /// [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
   /// This API supports the `fields` parameter in
   /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters).
   /// When the `fields` parameter is omitted, this API response will default to
@@ -1144,6 +1191,8 @@ class SpacesMembersResource {
 
   /// Lists members.
   ///
+  /// For more information, see
+  /// [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
   /// This API supports the `fields` parameter in
   /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters).
   /// When the `fields` parameter is omitted this API response will default to
@@ -1197,12 +1246,15 @@ class SpacesMembersResource {
 
   /// Updates a member.
   ///
+  /// For more information, see
+  /// [Manage meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Identifier. Resource name of the member. Format:
-  /// spaces/{space}/members/{member}
+  /// `spaces/{space}/members/{member}`
   /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask used to specify the fields to be
@@ -1883,7 +1935,7 @@ class Member {
 
   /// Identifier.
   ///
-  /// Resource name of the member. Format: spaces/{space}/members/{member}
+  /// Resource name of the member. Format: `spaces/{space}/members/{member}`
   core.String? name;
 
   /// The meeting role assigned to the member.
@@ -2728,7 +2780,7 @@ class TranscriptEntry {
   /// Resource name of the entry.
   ///
   /// Format:
-  /// "conferenceRecords/{conference_record}/transcripts/{transcript}/entries/{entry}"
+  /// `conferenceRecords/{conference_record}/transcripts/{transcript}/entries/{entry}`
   ///
   /// Output only.
   core.String? name;

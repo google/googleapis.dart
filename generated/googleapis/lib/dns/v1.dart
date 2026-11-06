@@ -26,8 +26,11 @@
 ///
 /// - [ChangesResource]
 /// - [DnsKeysResource]
+/// - [LocationsResource]
 /// - [ManagedZoneOperationsResource]
 /// - [ManagedZonesResource]
+/// - [OperationsResource]
+/// - [OutboundEndpointsResource]
 /// - [PoliciesResource]
 /// - [ProjectsResource]
 /// - [ResourceRecordSetsResource]
@@ -71,9 +74,13 @@ class DnsApi {
 
   ChangesResource get changes => ChangesResource(_requester);
   DnsKeysResource get dnsKeys => DnsKeysResource(_requester);
+  LocationsResource get locations => LocationsResource(_requester);
   ManagedZoneOperationsResource get managedZoneOperations =>
       ManagedZoneOperationsResource(_requester);
   ManagedZonesResource get managedZones => ManagedZonesResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  OutboundEndpointsResource get outboundEndpoints =>
+      OutboundEndpointsResource(_requester);
   PoliciesResource get policies => PoliciesResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
   ResourceRecordSetsResource get resourceRecordSets =>
@@ -405,6 +412,113 @@ class DnsKeysResource {
       queryParams: queryParams_,
     );
     return DnsKeysListResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class LocationsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'dns/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// This method lists locations based on the resource scope provided in the
+  /// ListLocationsRequest.name field: * **Global locations**: If `name` is
+  /// empty, the method lists the public locations available to all projects. *
+  /// **Project-specific locations**: If `name` follows the format
+  /// `projects/{project}`, the method lists locations visible to that specific
+  /// project. This includes public, private, or other project-specific
+  /// locations enabled for the project. For gRPC and client library
+  /// implementations, the resource name is passed as the `name` field. For
+  /// direct service calls, the resource name is incorporated into the request
+  /// path based on the specific service implementation and version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [extraLocationTypes] - Optional. Do not use this field unless explicitly
+  /// documented otherwise. This is primarily for internal usage.
+  ///
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
+  ///
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.List<core.String>? extraLocationTypes,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'extraLocationTypes': ?extraLocationTypes,
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'dns/v1/' + core.Uri.encodeFull('$name') + '/locations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLocationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1006,6 +1120,477 @@ class ManagedZonesResource {
   }
 }
 
+class OperationsResource {
+  final commons.ApiRequester _requester;
+
+  OperationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'dns/v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'dns/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'dns/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'returnPartialSuccess': ?returnPartialSuccess == null
+          ? null
+          : ['${returnPartialSuccess}'],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'dns/v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OutboundEndpointsResource {
+  final commons.ApiRequester _requester;
+
+  OutboundEndpointsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new Outbound Endpoint.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project and location where this
+  /// OutboundEndpoint will be created. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [outboundEndpointId] - Required. The ID to use for the OutboundEndpoint,
+  /// which will become the final component of the OutboundEndpoint's resource
+  /// name.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    OutboundEndpoint request,
+    core.String parent, {
+    core.String? clientOperationId,
+    core.String? outboundEndpointId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'clientOperationId': ?clientOperationId == null
+          ? null
+          : [clientOperationId],
+      'outboundEndpointId': ?outboundEndpointId == null
+          ? null
+          : [outboundEndpointId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'dns/v1/' + core.Uri.encodeFull('$parent') + '/outboundEndpoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a previously created Outbound Endpoint.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the OutboundEndpoint to delete. Format:
+  /// projects/{project}/locations/{location}/outboundEndpoints/{outboundEndpoint}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/outboundEndpoints/\[^/\]+$`.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? clientOperationId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'clientOperationId': ?clientOperationId == null
+          ? null
+          : [clientOperationId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'dns/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Fetches the representation of an existing Outbound Endpoint.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the OutboundEndpoint to retrieve. Format:
+  /// projects/{project}/locations/{location}/outboundEndpoints/{outboundEndpoint}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/outboundEndpoints/\[^/\]+$`.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OutboundEndpoint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OutboundEndpoint> get(
+    core.String name, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'clientOperationId': ?clientOperationId == null
+          ? null
+          : [clientOperationId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'dns/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return OutboundEndpoint.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Enumerates all Outbound Endpoints associated with a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project and location from which to list
+  /// resources. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [clientOperationId] - null
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous List call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOutboundEndpointsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOutboundEndpointsResponse> list(
+    core.String parent, {
+    core.String? clientOperationId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'clientOperationId': ?clientOperationId == null
+          ? null
+          : [clientOperationId],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'dns/v1/' + core.Uri.encodeFull('$parent') + '/outboundEndpoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOutboundEndpointsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates an existing Outbound Endpoint.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the OutboundEndpoint. Format:
+  /// `projects/{project}/locations/{location}/outboundEndpoints/{outboundEndpoint}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/outboundEndpoints/\[^/\]+$`.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    OutboundEndpoint request,
+    core.String name, {
+    core.String? clientOperationId,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'clientOperationId': ?clientOperationId == null
+          ? null
+          : [clientOperationId],
+      'requestId': ?requestId == null ? null : [requestId],
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'dns/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class PoliciesResource {
   final commons.ApiRequester _requester;
 
@@ -1332,10 +1917,6 @@ class ProjectsResource {
   ///
   /// [project] - Identifies the project addressed by this request.
   ///
-  /// [clientOperationId] - For mutating operation requests only. An optional
-  /// identifier specified by the client. Must be unique for operation resources
-  /// in the Operations collection.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1346,15 +1927,8 @@ class ProjectsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> get(
-    core.String project, {
-    core.String? clientOperationId,
-    core.String? $fields,
-  }) async {
+  async.Future<Project> get(core.String project, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      'clientOperationId': ?clientOperationId == null
-          ? null
-          : [clientOperationId],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -2480,6 +3054,8 @@ class ChangesListResponse {
   core.List<Change>? changes;
 
   /// Type of resource.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// This field indicates that more results are available beyond the last page
@@ -2744,6 +3320,8 @@ class DnsKeysListResponse {
   core.List<DnsKey>? dnsKeys;
 
   /// Type of resource.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// This field indicates that more results are available beyond the last page
@@ -2783,6 +3361,14 @@ class DnsKeysListResponse {
     };
   }
 }
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3158,6 +3744,284 @@ typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
 
+/// The response message for Operations.ListOperations.
+class GoogleLongrunningListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<GoogleLongrunningOperation>? operations;
+
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  GoogleLongrunningListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
+
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations: (json_['operations'] as core.List?)
+            ?.map(
+              (value) => GoogleLongrunningOperation.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final operations = this.operations;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'operations': ?operations,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class GoogleLongrunningOperation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal, successful response of the operation.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  GoogleLongrunningOperation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
+
+  GoogleLongrunningOperation.fromJson(core.Map json_)
+    : this(
+        done: json_['done'] as core.bool?,
+        error: json_.containsKey('error')
+            ? Status.fromJson(
+                json_['error'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        name: json_['name'] as core.String?,
+        response: json_.containsKey('response')
+            ? json_['response'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final done = this.done;
+    final error = this.error;
+    final metadata = this.metadata;
+    final name = this.name;
+    final response = this.response;
+    return {
+      'done': ?done,
+      'error': ?error,
+      'metadata': ?metadata,
+      'name': ?name,
+      'response': ?response,
+    };
+  }
+}
+
+/// The response message for Locations.ListLocations.
+class ListLocationsResponse {
+  /// A list of locations that matches the specified filter in the request.
+  core.List<Location>? locations;
+
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  ListLocationsResponse({this.locations, this.nextPageToken});
+
+  ListLocationsResponse.fromJson(core.Map json_)
+    : this(
+        locations: (json_['locations'] as core.List?)
+            ?.map(
+              (value) => Location.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final locations = this.locations;
+    final nextPageToken = this.nextPageToken;
+    return {'locations': ?locations, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Response message for OutboundEndpointsService.ListOutboundEndpoints
+class ListOutboundEndpointsResponse {
+  /// A token to retrieve the next page of results.
+  ///
+  /// Set to empty if there are no remaining results.
+  core.String? nextPageToken;
+
+  /// The list of OutboundEndpoints.
+  core.List<OutboundEndpoint>? outboundEndpoints;
+
+  /// Unordered list.
+  ///
+  /// The resource names of the unreachable locations. Format:
+  /// `projects/{project}/locations/{location}`
+  core.List<core.String>? unreachable;
+
+  ListOutboundEndpointsResponse({
+    this.nextPageToken,
+    this.outboundEndpoints,
+    this.unreachable,
+  });
+
+  ListOutboundEndpointsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        outboundEndpoints: (json_['outboundEndpoints'] as core.List?)
+            ?.map(
+              (value) => OutboundEndpoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        unreachable: (json_['unreachable'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nextPageToken = this.nextPageToken;
+    final outboundEndpoints = this.outboundEndpoints;
+    final unreachable = this.unreachable;
+    return {
+      'nextPageToken': ?nextPageToken,
+      'outboundEndpoints': ?outboundEndpoints,
+      'unreachable': ?unreachable,
+    };
+  }
+}
+
+/// A resource that represents a Google Cloud location.
+class Location {
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
+  core.String? displayName;
+
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
+  core.Map<core.String, core.String>? labels;
+
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
+  core.String? locationId;
+
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// Resource name for the location, which may vary between implementations.
+  ///
+  /// For example: `"projects/example-project/locations/us-east1"`
+  core.String? name;
+
+  Location({
+    this.displayName,
+    this.labels,
+    this.locationId,
+    this.metadata,
+    this.name,
+  });
+
+  Location.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        locationId: json_['locationId'] as core.String?,
+        metadata: json_.containsKey('metadata')
+            ? json_['metadata'] as core.Map<core.String, core.dynamic>
+            : null,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final displayName = this.displayName;
+    final labels = this.labels;
+    final locationId = this.locationId;
+    final metadata = this.metadata;
+    final name = this.name;
+    return {
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'locationId': ?locationId,
+      'metadata': ?metadata,
+      'name': ?name,
+    };
+  }
+}
+
 /// A zone is a subtree of the DNS namespace under one administrative
 /// responsibility.
 ///
@@ -3451,17 +4315,31 @@ class ManagedZoneDnsSecConfig {
 class ManagedZoneForwardingConfig {
   core.String? kind;
 
+  /// The list of outbound endpoints to use for queries.
+  core.List<ManagedZoneForwardingConfigOutboundEndpoint>? outboundEndpoints;
+
   /// List of target name servers to forward to.
   ///
   /// Cloud DNS selects the best available name server if more than one target
   /// is given.
   core.List<ManagedZoneForwardingConfigNameServerTarget>? targetNameServers;
 
-  ManagedZoneForwardingConfig({this.kind, this.targetNameServers});
+  ManagedZoneForwardingConfig({
+    this.kind,
+    this.outboundEndpoints,
+    this.targetNameServers,
+  });
 
   ManagedZoneForwardingConfig.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
+        outboundEndpoints: (json_['outboundEndpoints'] as core.List?)
+            ?.map(
+              (value) => ManagedZoneForwardingConfigOutboundEndpoint.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         targetNameServers: (json_['targetNameServers'] as core.List?)
             ?.map(
               (value) => ManagedZoneForwardingConfigNameServerTarget.fromJson(
@@ -3473,8 +4351,13 @@ class ManagedZoneForwardingConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final kind = this.kind;
+    final outboundEndpoints = this.outboundEndpoints;
     final targetNameServers = this.targetNameServers;
-    return {'kind': ?kind, 'targetNameServers': ?targetNameServers};
+    return {
+      'kind': ?kind,
+      'outboundEndpoints': ?outboundEndpoints,
+      'targetNameServers': ?targetNameServers,
+    };
   }
 }
 
@@ -3538,8 +4421,34 @@ class ManagedZoneForwardingConfigNameServerTarget {
   }
 }
 
+class ManagedZoneForwardingConfigOutboundEndpoint {
+  core.String? kind;
+
+  /// Specified as a resource path including project and region.
+  ///
+  /// This should be formatted like
+  /// projects/{project}/locations/{location}/outboundEndpoints/{endpoint}
+  core.String? name;
+
+  ManagedZoneForwardingConfigOutboundEndpoint({this.kind, this.name});
+
+  ManagedZoneForwardingConfigOutboundEndpoint.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final name = this.name;
+    return {'kind': ?kind, 'name': ?name};
+  }
+}
+
 class ManagedZoneOperationsListResponse {
   /// Type of resource.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// This field indicates that more results are available beyond the last page
@@ -3828,6 +4737,8 @@ class ManagedZoneServiceDirectoryConfigNamespace {
 
 class ManagedZonesListResponse {
   /// Type of resource.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// The managed zone resources.
@@ -4033,8 +4944,127 @@ class OperationManagedZoneContext {
   }
 }
 
+/// An OutboundEndpoint is a regional resource to enable outbound forwarding
+/// from a private IP range in VPCs to on-premise or other networks.
+class OutboundEndpoint {
+  /// Annotations as key value pairs
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Create time stamp
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User provided description.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// User provided IP address to use for outbound DNS forwarding.
+  ///
+  /// This address must be a free address on the subnetwork. If omitted, a free
+  /// IP address from the subnetwork is automatically allocated.
+  ///
+  /// Optional. Immutable.
+  core.String? endpointIp;
+
+  /// Labels as key value pairs
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of the OutboundEndpoint. Format:
+  /// `projects/{project}/locations/{location}/outboundEndpoints/{outboundEndpoint}`
+  core.String? name;
+
+  /// The VPC network containing the outbound endpoint, specified as full path.
+  ///
+  /// Required. Immutable.
+  core.String? network;
+
+  /// The subnetwork holding the endpoint_ip, specified as full path.
+  ///
+  /// Required. Immutable.
+  core.String? subnetwork;
+
+  /// Tag bindings as key value pairs
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
+  /// Update time stamp
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  OutboundEndpoint({
+    this.annotations,
+    this.createTime,
+    this.description,
+    this.endpointIp,
+    this.labels,
+    this.name,
+    this.network,
+    this.subnetwork,
+    this.tags,
+    this.updateTime,
+  });
+
+  OutboundEndpoint.fromJson(core.Map json_)
+    : this(
+        annotations:
+            (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(key, value as core.String),
+            ),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        endpointIp: json_['endpointIp'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        subnetwork: json_['subnetwork'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final annotations = this.annotations;
+    final createTime = this.createTime;
+    final description = this.description;
+    final endpointIp = this.endpointIp;
+    final labels = this.labels;
+    final name = this.name;
+    final network = this.network;
+    final subnetwork = this.subnetwork;
+    final tags = this.tags;
+    final updateTime = this.updateTime;
+    return {
+      'annotations': ?annotations,
+      'createTime': ?createTime,
+      'description': ?description,
+      'endpointIp': ?endpointIp,
+      'labels': ?labels,
+      'name': ?name,
+      'network': ?network,
+      'subnetwork': ?subnetwork,
+      'tags': ?tags,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
 class PoliciesListResponse {
   /// Type of resource.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// This field indicates that more results are available beyond the last page
@@ -4227,6 +5257,10 @@ class Policy {
 class PolicyAlternativeNameServerConfig {
   core.String? kind;
 
+  /// The list of outbound endpoints to use for queries.
+  core.List<PolicyAlternativeNameServerConfigOutboundEndpoint>?
+  outboundEndpoints;
+
   /// Sets an alternative name server for the associated networks.
   ///
   /// When specified, all DNS queries are forwarded to a name server that you
@@ -4235,11 +5269,23 @@ class PolicyAlternativeNameServerConfig {
   core.List<PolicyAlternativeNameServerConfigTargetNameServer>?
   targetNameServers;
 
-  PolicyAlternativeNameServerConfig({this.kind, this.targetNameServers});
+  PolicyAlternativeNameServerConfig({
+    this.kind,
+    this.outboundEndpoints,
+    this.targetNameServers,
+  });
 
   PolicyAlternativeNameServerConfig.fromJson(core.Map json_)
     : this(
         kind: json_['kind'] as core.String?,
+        outboundEndpoints: (json_['outboundEndpoints'] as core.List?)
+            ?.map(
+              (value) =>
+                  PolicyAlternativeNameServerConfigOutboundEndpoint.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+            )
+            .toList(),
         targetNameServers: (json_['targetNameServers'] as core.List?)
             ?.map(
               (value) =>
@@ -4252,8 +5298,37 @@ class PolicyAlternativeNameServerConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final kind = this.kind;
+    final outboundEndpoints = this.outboundEndpoints;
     final targetNameServers = this.targetNameServers;
-    return {'kind': ?kind, 'targetNameServers': ?targetNameServers};
+    return {
+      'kind': ?kind,
+      'outboundEndpoints': ?outboundEndpoints,
+      'targetNameServers': ?targetNameServers,
+    };
+  }
+}
+
+class PolicyAlternativeNameServerConfigOutboundEndpoint {
+  core.String? kind;
+
+  /// Specified as a resource path including project and region.
+  ///
+  /// This should be formatted like
+  /// projects/{project}/locations/{location}/outboundEndpoints/{endpoint}
+  core.String? name;
+
+  PolicyAlternativeNameServerConfigOutboundEndpoint({this.kind, this.name});
+
+  PolicyAlternativeNameServerConfigOutboundEndpoint.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kind = this.kind;
+    final name = this.name;
+    return {'kind': ?kind, 'name': ?name};
   }
 }
 
@@ -4464,6 +5539,12 @@ class Quota {
   /// Maximum allowed number of networks per response policy.
   core.int? networksPerResponsePolicy;
 
+  /// Maximum allowed number of outbound endpoints per managed zone.
+  core.int? outboundEndpointsPerManagedZone;
+
+  /// Maximum allowed number of outbound endpoints per policy.
+  core.int? outboundEndpointsPerPolicy;
+
   /// Maximum allowed number of consumer peering zones per target network owned
   /// by this producer project
   core.int? peeringZonesPerTargetNetwork;
@@ -4519,6 +5600,8 @@ class Quota {
     this.networksPerManagedZone,
     this.networksPerPolicy,
     this.networksPerResponsePolicy,
+    this.outboundEndpointsPerManagedZone,
+    this.outboundEndpointsPerPolicy,
     this.peeringZonesPerTargetNetwork,
     this.policies,
     this.resourceRecordsPerRrset,
@@ -4555,6 +5638,10 @@ class Quota {
         networksPerPolicy: json_['networksPerPolicy'] as core.int?,
         networksPerResponsePolicy:
             json_['networksPerResponsePolicy'] as core.int?,
+        outboundEndpointsPerManagedZone:
+            json_['outboundEndpointsPerManagedZone'] as core.int?,
+        outboundEndpointsPerPolicy:
+            json_['outboundEndpointsPerPolicy'] as core.int?,
         peeringZonesPerTargetNetwork:
             json_['peeringZonesPerTargetNetwork'] as core.int?,
         policies: json_['policies'] as core.int?,
@@ -4596,6 +5683,9 @@ class Quota {
     final networksPerManagedZone = this.networksPerManagedZone;
     final networksPerPolicy = this.networksPerPolicy;
     final networksPerResponsePolicy = this.networksPerResponsePolicy;
+    final outboundEndpointsPerManagedZone =
+        this.outboundEndpointsPerManagedZone;
+    final outboundEndpointsPerPolicy = this.outboundEndpointsPerPolicy;
     final peeringZonesPerTargetNetwork = this.peeringZonesPerTargetNetwork;
     final policies = this.policies;
     final resourceRecordsPerRrset = this.resourceRecordsPerRrset;
@@ -4625,6 +5715,8 @@ class Quota {
       'networksPerManagedZone': ?networksPerManagedZone,
       'networksPerPolicy': ?networksPerPolicy,
       'networksPerResponsePolicy': ?networksPerResponsePolicy,
+      'outboundEndpointsPerManagedZone': ?outboundEndpointsPerManagedZone,
+      'outboundEndpointsPerPolicy': ?outboundEndpointsPerPolicy,
       'peeringZonesPerTargetNetwork': ?peeringZonesPerTargetNetwork,
       'policies': ?policies,
       'resourceRecordsPerRrset': ?resourceRecordsPerRrset,
@@ -5121,8 +6213,6 @@ class ResourceRecordSet {
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
   /// examples.
   core.List<core.String>? rrdatas;
-
-  /// As defined in RFC 4034 (section 3.2).
   core.List<core.String>? signatureRrdatas;
 
   /// Number of seconds that this `ResourceRecordSet` can be cached by
@@ -5187,6 +6277,8 @@ typedef ResourceRecordSetsDeleteResponse = $Empty;
 
 class ResourceRecordSetsListResponse {
   /// Type of resource.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// This field indicates that more results are available beyond the last page
@@ -5621,5 +6713,49 @@ class ResponsePolicyRulesUpdateResponse {
   core.Map<core.String, core.dynamic> toJson() {
     final responsePolicyRule = this.responsePolicyRule;
     return {'responsePolicyRule': ?responsePolicyRule};
+  }
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+class Status {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int? code;
+
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? details;
+
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String? message;
+
+  Status({this.code, this.details, this.message});
+
+  Status.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.int?,
+        details: (json_['details'] as core.List?)
+            ?.map((value) => value as core.Map<core.String, core.dynamic>)
+            .toList(),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final code = this.code;
+    final details = this.details;
+    final message = this.message;
+    return {'code': ?code, 'details': ?details, 'message': ?message};
   }
 }

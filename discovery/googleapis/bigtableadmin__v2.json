@@ -49,7 +49,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260817",
+    "revision": "20261017",
     "rootUrl": "https://bigtableadmin.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Bigtable Admin API",
@@ -3370,8 +3370,17 @@
             "description": "Defines an automated backup policy for a table",
             "id": "AutomatedBackupPolicy",
             "properties": {
+                "disabled": {
+                    "description": "Optional. If `true`, automated backups are explicitly disabled on this table. This allows users to opt out of default enablement.",
+                    "type": "boolean"
+                },
                 "frequency": {
                     "description": "How frequently automated backups should occur. The only supported value at this time is 24 hours. An undefined frequency is treated as 24 hours.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "keepHotDuration": {
+                    "description": "Optional. The amount of time that the automated backups remain hot. If specified, the backups created by this policy are `HOT` backups. If not specified, the backups are `STANDARD` backups. The value must be at least 24 hours and at most 10 days, and can't exceed the policy's `retention_period`. Only SSD instances support `HOT` automated backups.",
                     "format": "google-duration",
                     "type": "string"
                 },
@@ -3420,6 +3429,20 @@
                     "description": "The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD.",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "AvroSchema": {
+            "description": "Represents a collection of Avro schemas.",
+            "id": "AvroSchema",
+            "properties": {
+                "jsonSchemas": {
+                    "description": "Required. The Avro schemas in JSON format. Each element must be the content of a valid, self-contained Avro schema file (.avsc), as described in https://avro.apache.org/docs/1.8.1/spec.html. Use repeated elements to include multiple Avro schema files in a single bundle.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -5690,6 +5713,10 @@
             "description": "A named collection of related schemas.",
             "id": "SchemaBundle",
             "properties": {
+                "avroSchema": {
+                    "$ref": "AvroSchema",
+                    "description": "Optional. Schema for Avros."
+                },
                 "etag": {
                     "description": "Optional. The etag for this schema bundle. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag.",
                     "type": "string"
@@ -5838,6 +5865,11 @@
                 "deletionProtection": {
                     "description": "Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.",
                     "type": "boolean"
+                },
+                "effectiveAutomatedBackupPolicy": {
+                    "$ref": "AutomatedBackupPolicy",
+                    "description": "Output only. The effective automated backup policy applied to the table. This represents the policy actually in effect, which may be a system-default policy if the user has not explicitly configured one. Views: `SCHEMA_VIEW`, `FULL`.",
+                    "readOnly": true
                 },
                 "granularity": {
                     "description": "Immutable. The granularity at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.",

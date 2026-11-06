@@ -204,6 +204,22 @@ class PresentationsResource {
   /// [presentationId] - The ID of the presentation to retrieve.
   /// Value must have pattern `^\[^/\]+$`.
   ///
+  /// [commentsViewMode] - The comments view mode to apply to the presentation.
+  /// This allows viewing the presentation with comments omitted or included. If
+  /// one is not specified, COMMENTS_VIEW_MODE_OMITTED is used.
+  /// Possible string values are:
+  /// - "COMMENTS_VIEW_MODE_UNSPECIFIED" : The CommentsViewMode is unspecified;
+  /// COMMENTS_VIEW_MODE_OMITTED is applied.
+  /// - "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS" : The CommentsViewMode
+  /// applied to the returned presentation depends on the user's current access
+  /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is
+  /// applied. Otherwise, COMMENTS_VIEW_MODE_INCLUDED is applied.
+  /// - "COMMENTS_VIEW_MODE_OMITTED" : The returned presentation has comments
+  /// omitted.
+  /// - "COMMENTS_VIEW_MODE_INCLUDED" : The returned presentation has comments
+  /// included. Requests to retrieve a presentation using this mode will return
+  /// a 403 error if the user does not have permission to view comments.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -216,9 +232,11 @@ class PresentationsResource {
   /// this method will complete with the same error.
   async.Future<Presentation> get(
     core.String presentationId, {
+    core.String? commentsViewMode,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'commentsViewMode': ?commentsViewMode == null ? null : [commentsViewMode],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -248,6 +266,22 @@ class PresentationsPagesResource {
   ///
   /// [pageObjectId] - The object ID of the page to retrieve.
   ///
+  /// [commentsViewMode] - The comments view mode to apply to the page. This
+  /// allows viewing the page with comments omitted or included. If one is not
+  /// specified, COMMENTS_VIEW_MODE_OMITTED is used.
+  /// Possible string values are:
+  /// - "COMMENTS_VIEW_MODE_UNSPECIFIED" : The CommentsViewMode is unspecified;
+  /// COMMENTS_VIEW_MODE_OMITTED is applied.
+  /// - "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS" : The CommentsViewMode
+  /// applied to the returned presentation depends on the user's current access
+  /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is
+  /// applied. Otherwise, COMMENTS_VIEW_MODE_INCLUDED is applied.
+  /// - "COMMENTS_VIEW_MODE_OMITTED" : The returned presentation has comments
+  /// omitted.
+  /// - "COMMENTS_VIEW_MODE_INCLUDED" : The returned presentation has comments
+  /// included. Requests to retrieve a presentation using this mode will return
+  /// a 403 error if the user does not have permission to view comments.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -261,9 +295,11 @@ class PresentationsPagesResource {
   async.Future<Page> get(
     core.String presentationId,
     core.String pageObjectId, {
+    core.String? commentsViewMode,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'commentsViewMode': ?commentsViewMode == null ? null : [commentsViewMode],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -352,6 +388,55 @@ class PresentationsPagesResource {
       queryParams: queryParams_,
     );
     return Thumbnail.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+/// Inserts a reply Post into a CommentThread.
+class AddCommentReplyRequest {
+  /// The ID of the CommentThread to add the reply to.
+  core.String? commentId;
+
+  /// The Post representing the reply.
+  Post? post;
+
+  AddCommentReplyRequest({this.commentId, this.post});
+
+  AddCommentReplyRequest.fromJson(core.Map json_)
+    : this(
+        commentId: json_['commentId'] as core.String?,
+        post: json_.containsKey('post')
+            ? Post.fromJson(
+                json_['post'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentId = this.commentId;
+    final post = this.post;
+    return {'commentId': ?commentId, 'post': ?post};
+  }
+}
+
+/// The result of creating a reply.
+class AddCommentReplyResponse {
+  /// The newly-inserted reply Post.
+  Post? post;
+
+  AddCommentReplyResponse({this.post});
+
+  AddCommentReplyResponse.fromJson(core.Map json_)
+    : this(
+        post: json_.containsKey('post')
+            ? Post.fromJson(
+                json_['post'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final post = this.post;
+    return {'post': ?post};
   }
 }
 
@@ -558,6 +643,17 @@ class BatchUpdatePresentationRequest {
 
 /// Response message from a batch update.
 class BatchUpdatePresentationResponse {
+  /// Whether comment updates were applied in the batch request.
+  /// Possible string values are:
+  /// - "COMMENT_UPDATE_STATE_UNSPECIFIED" : The status of comment updates is
+  /// unspecified.
+  /// - "NO_UPDATES_REQUESTED" : No comment updates were requested in the batch
+  /// request.
+  /// - "ALL_SAVED" : All requested comment updates were applied in the batch
+  /// request.
+  /// - "ALL_FAILED_UNKNOWN_REASON" : All requested comment updates failed.
+  core.String? commentUpdateState;
+
   /// The presentation the updates were applied to.
   core.String? presentationId;
 
@@ -571,6 +667,7 @@ class BatchUpdatePresentationResponse {
   WriteControl? writeControl;
 
   BatchUpdatePresentationResponse({
+    this.commentUpdateState,
     this.presentationId,
     this.replies,
     this.writeControl,
@@ -578,6 +675,7 @@ class BatchUpdatePresentationResponse {
 
   BatchUpdatePresentationResponse.fromJson(core.Map json_)
     : this(
+        commentUpdateState: json_['commentUpdateState'] as core.String?,
         presentationId: json_['presentationId'] as core.String?,
         replies: (json_['replies'] as core.List?)
             ?.map(
@@ -594,10 +692,12 @@ class BatchUpdatePresentationResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final commentUpdateState = this.commentUpdateState;
     final presentationId = this.presentationId;
     final replies = this.replies;
     final writeControl = this.writeControl;
     return {
+      'commentUpdateState': ?commentUpdateState,
       'presentationId': ?presentationId,
       'replies': ?replies,
       'writeControl': ?writeControl,
@@ -705,6 +805,115 @@ class ColorStop {
     final color = this.color;
     final position = this.position;
     return {'alpha': ?alpha, 'color': ?color, 'position': ?position};
+  }
+}
+
+/// Contains a list of all locations in a `Page` that are anchored to a
+/// CommentThread via the same anchorId.
+///
+/// Multiple separate anchors may refer to the same location, either within a
+/// `Page` or across different pages,
+class CommentAnchor {
+  /// The unique ID of the comment anchor.
+  ///
+  /// Output only.
+  core.String? anchorId;
+
+  /// All object ID-based locations within a page that refer to the anchor ID.
+  ///
+  /// Output only.
+  core.List<ObjectAnchor>? objectAnchors;
+
+  CommentAnchor({this.anchorId, this.objectAnchors});
+
+  CommentAnchor.fromJson(core.Map json_)
+    : this(
+        anchorId: json_['anchorId'] as core.String?,
+        objectAnchors: (json_['objectAnchors'] as core.List?)
+            ?.map(
+              (value) => ObjectAnchor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final anchorId = this.anchorId;
+    final objectAnchors = this.objectAnchors;
+    return {'anchorId': ?anchorId, 'objectAnchors': ?objectAnchors};
+  }
+}
+
+/// Represents a single comment thread inside a presentation.
+class CommentThread {
+  /// The ID of the CommentAnchor in the presentation that this thread is tied
+  /// to.
+  core.String? anchorId;
+
+  /// The unique ID of the comment thread.
+  core.String? commentId;
+
+  /// The first post in the thread.
+  Post? headPost;
+
+  /// The quoted text from the page element when the comment was created,
+  /// formatted as plain-text.
+  core.String? plainTextQuote;
+
+  /// Replies to the head post.
+  core.List<Post>? replies;
+
+  /// Whether the thread is open or resolved.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Default value. This value is unused.
+  /// - "OPEN" : The comment thread is open.
+  /// - "RESOLVED" : The comment thread is resolved.
+  core.String? status;
+
+  CommentThread({
+    this.anchorId,
+    this.commentId,
+    this.headPost,
+    this.plainTextQuote,
+    this.replies,
+    this.status,
+  });
+
+  CommentThread.fromJson(core.Map json_)
+    : this(
+        anchorId: json_['anchorId'] as core.String?,
+        commentId: json_['commentId'] as core.String?,
+        headPost: json_.containsKey('headPost')
+            ? Post.fromJson(
+                json_['headPost'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        plainTextQuote: json_['plainTextQuote'] as core.String?,
+        replies: (json_['replies'] as core.List?)
+            ?.map(
+              (value) =>
+                  Post.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        status: json_['status'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final anchorId = this.anchorId;
+    final commentId = this.commentId;
+    final headPost = this.headPost;
+    final plainTextQuote = this.plainTextQuote;
+    final replies = this.replies;
+    final status = this.status;
+    return {
+      'anchorId': ?anchorId,
+      'commentId': ?commentId,
+      'headPost': ?headPost,
+      'plainTextQuote': ?plainTextQuote,
+      'replies': ?replies,
+      'status': ?status,
+    };
   }
 }
 
@@ -1736,6 +1945,19 @@ class CropProperties {
   }
 }
 
+/// Deletes a reply Post from a CommentThread.
+///
+/// Returns a 400 bad request error if: - The requesting user is not the author
+/// of the post. - The reply post contains a comment action. - The reply post
+/// contains an assignee.
+typedef DeleteCommentReplyRequest = $DeleteCommentReplyRequest;
+
+/// Deletes a CommentThread.
+///
+/// Returns a 400 bad request error if the requesting user is not the author of
+/// the headPost.
+typedef DeleteCommentRequest = $DeleteCommentRequest;
+
 /// Deletes an object, either pages or page elements, from the presentation.
 class DeleteObjectRequest {
   /// The object ID of the page or page element to delete.
@@ -2266,6 +2488,114 @@ class ImageProperties {
       'shadow': ?shadow,
       'transparency': ?transparency,
     };
+  }
+}
+
+/// Inserts a CommentThread into the presentation.
+class InsertCommentRequest {
+  /// The email address of the assignee of the comment.
+  ///
+  /// Leave empty for a non-assigned comment. May not exceed 2048 UTF-8 code
+  /// units.
+  ///
+  /// Optional.
+  core.String? assigneeEmailAddress;
+
+  /// The text of the comment, as plain text.
+  ///
+  /// This text content will be handled similarly to comments created in the
+  /// Slides editor. It will have similar behaviors for formatting,
+  /// notifications, etc. This field cannot be empty, and must not exceed 2048
+  /// UTF-8 code units.
+  core.String? content;
+
+  /// The object ID of the Page or PageElement that is tied to this comment.
+  ///
+  /// If the specified object_id is a Group, the comment will be anchored to at
+  /// most 100 of the group's non-group descendants.
+  core.String? objectId;
+
+  /// Anchors a comment to a specific range of text within a Shape.
+  ShapeTextAnchor? shapeTextAnchor;
+
+  /// Anchors a comment to a specific range of cells within a Table.
+  ///
+  /// Returns a 400 bad request error if no cells within the range contain text.
+  TableAnchor? tableAnchor;
+
+  /// Anchors a comment to a specific range of text within a single cell in a
+  /// Table.
+  TableCellTextAnchor? tableCellTextAnchor;
+
+  InsertCommentRequest({
+    this.assigneeEmailAddress,
+    this.content,
+    this.objectId,
+    this.shapeTextAnchor,
+    this.tableAnchor,
+    this.tableCellTextAnchor,
+  });
+
+  InsertCommentRequest.fromJson(core.Map json_)
+    : this(
+        assigneeEmailAddress: json_['assigneeEmailAddress'] as core.String?,
+        content: json_['content'] as core.String?,
+        objectId: json_['objectId'] as core.String?,
+        shapeTextAnchor: json_.containsKey('shapeTextAnchor')
+            ? ShapeTextAnchor.fromJson(
+                json_['shapeTextAnchor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tableAnchor: json_.containsKey('tableAnchor')
+            ? TableAnchor.fromJson(
+                json_['tableAnchor'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tableCellTextAnchor: json_.containsKey('tableCellTextAnchor')
+            ? TableCellTextAnchor.fromJson(
+                json_['tableCellTextAnchor']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final assigneeEmailAddress = this.assigneeEmailAddress;
+    final content = this.content;
+    final objectId = this.objectId;
+    final shapeTextAnchor = this.shapeTextAnchor;
+    final tableAnchor = this.tableAnchor;
+    final tableCellTextAnchor = this.tableCellTextAnchor;
+    return {
+      'assigneeEmailAddress': ?assigneeEmailAddress,
+      'content': ?content,
+      'objectId': ?objectId,
+      'shapeTextAnchor': ?shapeTextAnchor,
+      'tableAnchor': ?tableAnchor,
+      'tableCellTextAnchor': ?tableCellTextAnchor,
+    };
+  }
+}
+
+/// The result of creating a comment.
+class InsertCommentResponse {
+  /// The newly-inserted comment thread.
+  CommentThread? commentThread;
+
+  InsertCommentResponse({this.commentThread});
+
+  InsertCommentResponse.fromJson(core.Map json_)
+    : this(
+        commentThread: json_.containsKey('commentThread')
+            ? CommentThread.fromJson(
+                json_['commentThread'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentThread = this.commentThread;
+    return {'commentThread': ?commentThread};
   }
 }
 
@@ -3041,6 +3371,53 @@ class NotesProperties {
   }
 }
 
+/// Represents comment anchor data tied to a Slides object, for example a `Page`
+/// or PageElement.
+class ObjectAnchor {
+  /// The page or page element that the comment thread is anchored to.
+  ///
+  /// Output only.
+  core.String? objectId;
+
+  /// Populated for Shapes that have comments anchored to ranges of text in the
+  /// shape's text.
+  ShapeTextAnchors? shapeTextAnchors;
+
+  /// Populated for Tables that have comments anchored to ranges of text in one
+  /// or more of the table's cells.
+  TableCellAnchors? tableCellAnchors;
+
+  ObjectAnchor({this.objectId, this.shapeTextAnchors, this.tableCellAnchors});
+
+  ObjectAnchor.fromJson(core.Map json_)
+    : this(
+        objectId: json_['objectId'] as core.String?,
+        shapeTextAnchors: json_.containsKey('shapeTextAnchors')
+            ? ShapeTextAnchors.fromJson(
+                json_['shapeTextAnchors']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        tableCellAnchors: json_.containsKey('tableCellAnchors')
+            ? TableCellAnchors.fromJson(
+                json_['tableCellAnchors']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final objectId = this.objectId;
+    final shapeTextAnchors = this.shapeTextAnchors;
+    final tableCellAnchors = this.tableCellAnchors;
+    return {
+      'objectId': ?objectId,
+      'shapeTextAnchors': ?shapeTextAnchors,
+      'tableCellAnchors': ?tableCellAnchors,
+    };
+  }
+}
+
 /// A themeable solid color value.
 class OpaqueColor {
   /// An opaque RGB color.
@@ -3224,6 +3601,40 @@ class OutlineFill {
 
 /// A page in a presentation.
 class Page {
+  /// The comment anchors present on the page.
+  ///
+  /// Output only.
+  core.List<CommentAnchor>? commentAnchors;
+
+  /// The comment threads associated with the page.
+  ///
+  /// Only populated if the page was fetched via a GetPageRequest with a
+  /// populated comments_view_mode. Otherwise, comments are returned in the
+  /// Presentation via the GetPresentationRequest.
+  ///
+  /// Output only.
+  core.List<CommentThread>? comments;
+
+  /// The comments view mode applied to the page.
+  ///
+  /// Only populated if the page was fetched via a GetPageRequest with a
+  /// populated comments_view_mode.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMMENTS_VIEW_MODE_UNSPECIFIED" : The CommentsViewMode is unspecified;
+  /// COMMENTS_VIEW_MODE_OMITTED is applied.
+  /// - "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS" : The CommentsViewMode
+  /// applied to the returned presentation depends on the user's current access
+  /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is
+  /// applied. Otherwise, COMMENTS_VIEW_MODE_INCLUDED is applied.
+  /// - "COMMENTS_VIEW_MODE_OMITTED" : The returned presentation has comments
+  /// omitted.
+  /// - "COMMENTS_VIEW_MODE_INCLUDED" : The returned presentation has comments
+  /// included. Requests to retrieve a presentation using this mode will return
+  /// a 403 error if the user does not have permission to view comments.
+  core.String? commentsViewMode;
+
   /// Layout specific properties.
   ///
   /// Only set if page_type = LAYOUT.
@@ -3281,6 +3692,9 @@ class Page {
   SlideProperties? slideProperties;
 
   Page({
+    this.commentAnchors,
+    this.comments,
+    this.commentsViewMode,
     this.layoutProperties,
     this.masterProperties,
     this.notesProperties,
@@ -3294,6 +3708,21 @@ class Page {
 
   Page.fromJson(core.Map json_)
     : this(
+        commentAnchors: (json_['commentAnchors'] as core.List?)
+            ?.map(
+              (value) => CommentAnchor.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        comments: (json_['comments'] as core.List?)
+            ?.map(
+              (value) => CommentThread.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        commentsViewMode: json_['commentsViewMode'] as core.String?,
         layoutProperties: json_.containsKey('layoutProperties')
             ? LayoutProperties.fromJson(
                 json_['layoutProperties']
@@ -3334,6 +3763,9 @@ class Page {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final commentAnchors = this.commentAnchors;
+    final comments = this.comments;
+    final commentsViewMode = this.commentsViewMode;
     final layoutProperties = this.layoutProperties;
     final masterProperties = this.masterProperties;
     final notesProperties = this.notesProperties;
@@ -3344,6 +3776,9 @@ class Page {
     final revisionId = this.revisionId;
     final slideProperties = this.slideProperties;
     return {
+      'commentAnchors': ?commentAnchors,
+      'comments': ?comments,
+      'commentsViewMode': ?commentsViewMode,
       'layoutProperties': ?layoutProperties,
       'masterProperties': ?masterProperties,
       'notesProperties': ?notesProperties,
@@ -3924,8 +4359,211 @@ class Placeholder {
   }
 }
 
+/// Represents a single post in a comment thread.
+class Post {
+  /// The email of the user who is being newly assigned to the thread as part of
+  /// this post.
+  ///
+  /// Returns a 400 bad request error if: - The parent thread is a CommentThread
+  /// whose headPost does not have an assignee. - commentAction is specified as
+  /// `RESOLVE` or `REOPEN`. - `assignee_email` exceeds 2048 UTF-8 code units.
+  ///
+  /// Optional.
+  core.String? assigneeEmail;
+
+  /// The user who created the post.
+  ///
+  /// Output only.
+  PostAuthor? author;
+
+  /// Action taken as part of creating the post.
+  /// Possible string values are:
+  /// - "COMMENT_ACTION_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "NO_COMMENT_ACTION_CHANGE" : No action change in this post.
+  /// - "RESOLVE" : This post resolves the thread.
+  /// - "REOPEN" : This post reopens the thread.
+  core.String? commentAction;
+
+  /// The content of the post.
+  ///
+  /// Required to be non-empty if comment_action is not `RESOLVE` or `REOPEN`.
+  /// This text content will be handled similarly to comments created in the
+  /// Slides editor. It will have similar behaviors for formatting,
+  /// notifications, etc. May not exceed 2048 UTF-8 code units.
+  core.String? content;
+
+  /// The content of the post as HTML.
+  ///
+  /// Output only.
+  core.String? contentHtml;
+
+  /// The time the post was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Whether the post is deleted.
+  ///
+  /// If `true`, content and author fields will be empty.
+  ///
+  /// Output only.
+  core.bool? deleted;
+
+  /// Whether the post is from a copied presentation.
+  ///
+  /// This field cannot be set directly by callers.
+  ///
+  /// Output only.
+  core.bool? fromCopiedPresentation;
+
+  /// Whether the post is from an imported presentation.
+  ///
+  /// This field cannot be set directly by callers.
+  ///
+  /// Output only.
+  core.bool? fromImportedPresentation;
+
+  /// The unique ID of the post.
+  ///
+  /// Output only.
+  core.String? postId;
+
+  /// The time the post was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Post({
+    this.assigneeEmail,
+    this.author,
+    this.commentAction,
+    this.content,
+    this.contentHtml,
+    this.createTime,
+    this.deleted,
+    this.fromCopiedPresentation,
+    this.fromImportedPresentation,
+    this.postId,
+    this.updateTime,
+  });
+
+  Post.fromJson(core.Map json_)
+    : this(
+        assigneeEmail: json_['assigneeEmail'] as core.String?,
+        author: json_.containsKey('author')
+            ? PostAuthor.fromJson(
+                json_['author'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        commentAction: json_['commentAction'] as core.String?,
+        content: json_['content'] as core.String?,
+        contentHtml: json_['contentHtml'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deleted: json_['deleted'] as core.bool?,
+        fromCopiedPresentation: json_['fromCopiedPresentation'] as core.bool?,
+        fromImportedPresentation:
+            json_['fromImportedPresentation'] as core.bool?,
+        postId: json_['postId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final assigneeEmail = this.assigneeEmail;
+    final author = this.author;
+    final commentAction = this.commentAction;
+    final content = this.content;
+    final contentHtml = this.contentHtml;
+    final createTime = this.createTime;
+    final deleted = this.deleted;
+    final fromCopiedPresentation = this.fromCopiedPresentation;
+    final fromImportedPresentation = this.fromImportedPresentation;
+    final postId = this.postId;
+    final updateTime = this.updateTime;
+    return {
+      'assigneeEmail': ?assigneeEmail,
+      'author': ?author,
+      'commentAction': ?commentAction,
+      'content': ?content,
+      'contentHtml': ?contentHtml,
+      'createTime': ?createTime,
+      'deleted': ?deleted,
+      'fromCopiedPresentation': ?fromCopiedPresentation,
+      'fromImportedPresentation': ?fromImportedPresentation,
+      'postId': ?postId,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// Represents a user who authored a comment post.
+class PostAuthor {
+  /// Whether the user is anonymous.
+  core.bool? anonymous;
+
+  /// The display name of the user.
+  ///
+  /// May be absent if the author is anonymous.
+  core.String? displayName;
+
+  /// Whether the user is the authenticated user making the request.
+  core.bool? me;
+
+  /// The resource name of the post author user, which can also be used to
+  /// identify the user in the
+  /// [Google People API](https://developers.google.com/people/api/rest/v1/people).
+  ///
+  /// Format: `users/{user}`. Will not be populated if the anonymous field is
+  /// `true` or if the post is from an imported presentation.
+  core.String? user;
+
+  PostAuthor({this.anonymous, this.displayName, this.me, this.user});
+
+  PostAuthor.fromJson(core.Map json_)
+    : this(
+        anonymous: json_['anonymous'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        me: json_['me'] as core.bool?,
+        user: json_['user'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final anonymous = this.anonymous;
+    final displayName = this.displayName;
+    final me = this.me;
+    final user = this.user;
+    return {
+      'anonymous': ?anonymous,
+      'displayName': ?displayName,
+      'me': ?me,
+      'user': ?user,
+    };
+  }
+}
+
 /// A Google Slides presentation.
 class Presentation {
+  /// The comment threads associated with the presentation.
+  ///
+  /// Output only.
+  core.List<CommentThread>? comments;
+
+  /// The comments view mode applied to the presentation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMMENTS_VIEW_MODE_UNSPECIFIED" : The CommentsViewMode is unspecified;
+  /// COMMENTS_VIEW_MODE_OMITTED is applied.
+  /// - "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS" : The CommentsViewMode
+  /// applied to the returned presentation depends on the user's current access
+  /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is
+  /// applied. Otherwise, COMMENTS_VIEW_MODE_INCLUDED is applied.
+  /// - "COMMENTS_VIEW_MODE_OMITTED" : The returned presentation has comments
+  /// omitted.
+  /// - "COMMENTS_VIEW_MODE_INCLUDED" : The returned presentation has comments
+  /// included. Requests to retrieve a presentation using this mode will return
+  /// a 403 error if the user does not have permission to view comments.
+  core.String? commentsViewMode;
+
   /// The layouts in the presentation.
   ///
   /// A layout is a template that determines how content is arranged and styled
@@ -3989,6 +4627,8 @@ class Presentation {
   core.String? title;
 
   Presentation({
+    this.comments,
+    this.commentsViewMode,
     this.layouts,
     this.locale,
     this.masters,
@@ -4002,6 +4642,14 @@ class Presentation {
 
   Presentation.fromJson(core.Map json_)
     : this(
+        comments: (json_['comments'] as core.List?)
+            ?.map(
+              (value) => CommentThread.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        commentsViewMode: json_['commentsViewMode'] as core.String?,
         layouts: (json_['layouts'] as core.List?)
             ?.map(
               (value) =>
@@ -4037,6 +4685,8 @@ class Presentation {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final comments = this.comments;
+    final commentsViewMode = this.commentsViewMode;
     final layouts = this.layouts;
     final locale = this.locale;
     final masters = this.masters;
@@ -4047,6 +4697,8 @@ class Presentation {
     final slides = this.slides;
     final title = this.title;
     return {
+      'comments': ?comments,
+      'commentsViewMode': ?commentsViewMode,
       'layouts': ?layouts,
       'locale': ?locale,
       'masters': ?masters,
@@ -4521,6 +5173,9 @@ class ReplaceImageRequest {
 
 /// A single kind of update to apply to a presentation.
 class Request {
+  /// Adds a reply to a CommentThread.
+  AddCommentReplyRequest? addCommentReply;
+
   /// Creates an image.
   CreateImageRequest? createImage;
 
@@ -4545,6 +5200,12 @@ class Request {
   /// Creates a video.
   CreateVideoRequest? createVideo;
 
+  /// Deletes a CommentThread.
+  DeleteCommentRequest? deleteComment;
+
+  /// Deletes a reply Post from a CommentThread.
+  DeleteCommentReplyRequest? deleteCommentReply;
+
   /// Deletes a page or page element from the presentation.
   DeleteObjectRequest? deleteObject;
 
@@ -4565,6 +5226,9 @@ class Request {
 
   /// Groups objects, such as page elements.
   GroupObjectsRequest? groupObjects;
+
+  /// Inserts a CommentThread into the presentation.
+  InsertCommentRequest? insertComment;
 
   /// Inserts columns into a table.
   InsertTableColumnsRequest? insertTableColumns;
@@ -4602,6 +5266,9 @@ class Request {
 
   /// Unmerges cells in a Table.
   UnmergeTableCellsRequest? unmergeTableCells;
+
+  /// Updates an existing post (head post or reply) of a CommentThread.
+  UpdateCommentPostRequest? updateCommentPost;
 
   /// Updates the properties of an Image.
   UpdateImagePropertiesRequest? updateImageProperties;
@@ -4655,6 +5322,7 @@ class Request {
   UpdateVideoPropertiesRequest? updateVideoProperties;
 
   Request({
+    this.addCommentReply,
     this.createImage,
     this.createLine,
     this.createParagraphBullets,
@@ -4663,6 +5331,8 @@ class Request {
     this.createSlide,
     this.createTable,
     this.createVideo,
+    this.deleteComment,
+    this.deleteCommentReply,
     this.deleteObject,
     this.deleteParagraphBullets,
     this.deleteTableColumn,
@@ -4670,6 +5340,7 @@ class Request {
     this.deleteText,
     this.duplicateObject,
     this.groupObjects,
+    this.insertComment,
     this.insertTableColumns,
     this.insertTableRows,
     this.insertText,
@@ -4682,6 +5353,7 @@ class Request {
     this.rerouteLine,
     this.ungroupObjects,
     this.unmergeTableCells,
+    this.updateCommentPost,
     this.updateImageProperties,
     this.updateLineCategory,
     this.updateLineProperties,
@@ -4703,6 +5375,11 @@ class Request {
 
   Request.fromJson(core.Map json_)
     : this(
+        addCommentReply: json_.containsKey('addCommentReply')
+            ? AddCommentReplyRequest.fromJson(
+                json_['addCommentReply'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createImage: json_.containsKey('createImage')
             ? CreateImageRequest.fromJson(
                 json_['createImage'] as core.Map<core.String, core.dynamic>,
@@ -4745,6 +5422,17 @@ class Request {
                 json_['createVideo'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        deleteComment: json_.containsKey('deleteComment')
+            ? DeleteCommentRequest.fromJson(
+                json_['deleteComment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deleteCommentReply: json_.containsKey('deleteCommentReply')
+            ? DeleteCommentReplyRequest.fromJson(
+                json_['deleteCommentReply']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         deleteObject: json_.containsKey('deleteObject')
             ? DeleteObjectRequest.fromJson(
                 json_['deleteObject'] as core.Map<core.String, core.dynamic>,
@@ -4780,6 +5468,11 @@ class Request {
         groupObjects: json_.containsKey('groupObjects')
             ? GroupObjectsRequest.fromJson(
                 json_['groupObjects'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        insertComment: json_.containsKey('insertComment')
+            ? InsertCommentRequest.fromJson(
+                json_['insertComment'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         insertTableColumns: json_.containsKey('insertTableColumns')
@@ -4846,6 +5539,12 @@ class Request {
         unmergeTableCells: json_.containsKey('unmergeTableCells')
             ? UnmergeTableCellsRequest.fromJson(
                 json_['unmergeTableCells']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateCommentPost: json_.containsKey('updateCommentPost')
+            ? UpdateCommentPostRequest.fromJson(
+                json_['updateCommentPost']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -4957,6 +5656,7 @@ class Request {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final addCommentReply = this.addCommentReply;
     final createImage = this.createImage;
     final createLine = this.createLine;
     final createParagraphBullets = this.createParagraphBullets;
@@ -4965,6 +5665,8 @@ class Request {
     final createSlide = this.createSlide;
     final createTable = this.createTable;
     final createVideo = this.createVideo;
+    final deleteComment = this.deleteComment;
+    final deleteCommentReply = this.deleteCommentReply;
     final deleteObject = this.deleteObject;
     final deleteParagraphBullets = this.deleteParagraphBullets;
     final deleteTableColumn = this.deleteTableColumn;
@@ -4972,6 +5674,7 @@ class Request {
     final deleteText = this.deleteText;
     final duplicateObject = this.duplicateObject;
     final groupObjects = this.groupObjects;
+    final insertComment = this.insertComment;
     final insertTableColumns = this.insertTableColumns;
     final insertTableRows = this.insertTableRows;
     final insertText = this.insertText;
@@ -4985,6 +5688,7 @@ class Request {
     final rerouteLine = this.rerouteLine;
     final ungroupObjects = this.ungroupObjects;
     final unmergeTableCells = this.unmergeTableCells;
+    final updateCommentPost = this.updateCommentPost;
     final updateImageProperties = this.updateImageProperties;
     final updateLineCategory = this.updateLineCategory;
     final updateLineProperties = this.updateLineProperties;
@@ -5003,6 +5707,7 @@ class Request {
     final updateTextStyle = this.updateTextStyle;
     final updateVideoProperties = this.updateVideoProperties;
     return {
+      'addCommentReply': ?addCommentReply,
       'createImage': ?createImage,
       'createLine': ?createLine,
       'createParagraphBullets': ?createParagraphBullets,
@@ -5011,6 +5716,8 @@ class Request {
       'createSlide': ?createSlide,
       'createTable': ?createTable,
       'createVideo': ?createVideo,
+      'deleteComment': ?deleteComment,
+      'deleteCommentReply': ?deleteCommentReply,
       'deleteObject': ?deleteObject,
       'deleteParagraphBullets': ?deleteParagraphBullets,
       'deleteTableColumn': ?deleteTableColumn,
@@ -5018,6 +5725,7 @@ class Request {
       'deleteText': ?deleteText,
       'duplicateObject': ?duplicateObject,
       'groupObjects': ?groupObjects,
+      'insertComment': ?insertComment,
       'insertTableColumns': ?insertTableColumns,
       'insertTableRows': ?insertTableRows,
       'insertText': ?insertText,
@@ -5030,6 +5738,7 @@ class Request {
       'rerouteLine': ?rerouteLine,
       'ungroupObjects': ?ungroupObjects,
       'unmergeTableCells': ?unmergeTableCells,
+      'updateCommentPost': ?updateCommentPost,
       'updateImageProperties': ?updateImageProperties,
       'updateLineCategory': ?updateLineCategory,
       'updateLineProperties': ?updateLineProperties,
@@ -5074,6 +5783,9 @@ class RerouteLineRequest {
 
 /// A single response from an update.
 class Response {
+  /// The result of creating a reply.
+  AddCommentReplyResponse? addCommentReply;
+
   /// The result of creating an image.
   CreateImageResponse? createImage;
 
@@ -5101,6 +5813,9 @@ class Response {
   /// The result of grouping objects.
   GroupObjectsResponse? groupObjects;
 
+  /// The result of creating a comment.
+  InsertCommentResponse? insertComment;
+
   /// The result of replacing all shapes matching some criteria with an image.
   ReplaceAllShapesWithImageResponse? replaceAllShapesWithImage;
 
@@ -5112,6 +5827,7 @@ class Response {
   ReplaceAllTextResponse? replaceAllText;
 
   Response({
+    this.addCommentReply,
     this.createImage,
     this.createLine,
     this.createShape,
@@ -5121,6 +5837,7 @@ class Response {
     this.createVideo,
     this.duplicateObject,
     this.groupObjects,
+    this.insertComment,
     this.replaceAllShapesWithImage,
     this.replaceAllShapesWithSheetsChart,
     this.replaceAllText,
@@ -5128,6 +5845,11 @@ class Response {
 
   Response.fromJson(core.Map json_)
     : this(
+        addCommentReply: json_.containsKey('addCommentReply')
+            ? AddCommentReplyResponse.fromJson(
+                json_['addCommentReply'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         createImage: json_.containsKey('createImage')
             ? CreateImageResponse.fromJson(
                 json_['createImage'] as core.Map<core.String, core.dynamic>,
@@ -5174,6 +5896,11 @@ class Response {
                 json_['groupObjects'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        insertComment: json_.containsKey('insertComment')
+            ? InsertCommentResponse.fromJson(
+                json_['insertComment'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         replaceAllShapesWithImage:
             json_.containsKey('replaceAllShapesWithImage')
             ? ReplaceAllShapesWithImageResponse.fromJson(
@@ -5196,6 +5923,7 @@ class Response {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final addCommentReply = this.addCommentReply;
     final createImage = this.createImage;
     final createLine = this.createLine;
     final createShape = this.createShape;
@@ -5205,11 +5933,13 @@ class Response {
     final createVideo = this.createVideo;
     final duplicateObject = this.duplicateObject;
     final groupObjects = this.groupObjects;
+    final insertComment = this.insertComment;
     final replaceAllShapesWithImage = this.replaceAllShapesWithImage;
     final replaceAllShapesWithSheetsChart =
         this.replaceAllShapesWithSheetsChart;
     final replaceAllText = this.replaceAllText;
     return {
+      'addCommentReply': ?addCommentReply,
       'createImage': ?createImage,
       'createLine': ?createLine,
       'createShape': ?createShape,
@@ -5219,6 +5949,7 @@ class Response {
       'createVideo': ?createVideo,
       'duplicateObject': ?duplicateObject,
       'groupObjects': ?groupObjects,
+      'insertComment': ?insertComment,
       'replaceAllShapesWithImage': ?replaceAllShapesWithImage,
       'replaceAllShapesWithSheetsChart': ?replaceAllShapesWithSheetsChart,
       'replaceAllText': ?replaceAllText,
@@ -5850,6 +6581,60 @@ class ShapeProperties {
   }
 }
 
+/// An anchor to a specific range of text within a Shape's text.
+///
+/// To insert comments in speaker notes, use the ShapeTextAnchor with the
+/// speaker notes object ID.
+class ShapeTextAnchor {
+  /// The object ID of the page element containing the text.
+  core.String? objectId;
+
+  /// The text range for the anchor.
+  Range? textRange;
+
+  ShapeTextAnchor({this.objectId, this.textRange});
+
+  ShapeTextAnchor.fromJson(core.Map json_)
+    : this(
+        objectId: json_['objectId'] as core.String?,
+        textRange: json_.containsKey('textRange')
+            ? Range.fromJson(
+                json_['textRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final objectId = this.objectId;
+    final textRange = this.textRange;
+    return {'objectId': ?objectId, 'textRange': ?textRange};
+  }
+}
+
+/// Represents text ranges within a shape covered by a comment anchor.
+class ShapeTextAnchors {
+  /// A list of text ranges covered by the comment anchor.
+  core.List<TextRange>? ranges;
+
+  ShapeTextAnchors({this.ranges});
+
+  ShapeTextAnchors.fromJson(core.Map json_)
+    : this(
+        ranges: (json_['ranges'] as core.List?)
+            ?.map(
+              (value) => TextRange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final ranges = this.ranges;
+    return {'ranges': ?ranges};
+  }
+}
+
 /// A PageElement kind representing a linked chart embedded from Google Sheets.
 class SheetsChart {
   /// The ID of the specific chart in the Google Sheets spreadsheet that is
@@ -6291,6 +7076,38 @@ class Table {
   }
 }
 
+/// An anchor to a specific range of cells within a Table.
+///
+/// Used to anchor a comment to all of the text in each cell in a range within a
+/// table.
+class TableAnchor {
+  /// The object ID of the table.
+  core.String? objectId;
+
+  /// The range of cells in the table to apply the anchor to.
+  ///
+  /// If omitted, all cells in the table will be used for the anchor.
+  TableRange? tableRange;
+
+  TableAnchor({this.objectId, this.tableRange});
+
+  TableAnchor.fromJson(core.Map json_)
+    : this(
+        objectId: json_['objectId'] as core.String?,
+        tableRange: json_.containsKey('tableRange')
+            ? TableRange.fromJson(
+                json_['tableRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final objectId = this.objectId;
+    final tableRange = this.tableRange;
+    return {'objectId': ?objectId, 'tableRange': ?tableRange};
+  }
+}
+
 /// The properties of each border cell.
 class TableBorderCell {
   /// The location of the border within the border table.
@@ -6492,6 +7309,31 @@ class TableCell {
   }
 }
 
+/// Represents table cell ranges within a table covered by a comment anchor.
+class TableCellAnchors {
+  /// A list of all table cells in a table that have text covered by the anchor
+  /// in the table.
+  core.List<TableCellTextRanges>? cellRanges;
+
+  TableCellAnchors({this.cellRanges});
+
+  TableCellAnchors.fromJson(core.Map json_)
+    : this(
+        cellRanges: (json_['cellRanges'] as core.List?)
+            ?.map(
+              (value) => TableCellTextRanges.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cellRanges = this.cellRanges;
+    return {'cellRanges': ?cellRanges};
+  }
+}
+
 /// The table cell background fill.
 class TableCellBackgroundFill {
   /// The background fill property state.
@@ -6608,6 +7450,79 @@ class TableCellProperties {
       'contentAlignment': ?contentAlignment,
       'tableCellBackgroundFill': ?tableCellBackgroundFill,
     };
+  }
+}
+
+/// An anchor to a specific range of text within a TableCell's TextElement.
+class TableCellTextAnchor {
+  /// The location of the cell in the table.
+  TableCellLocation? cellLocation;
+
+  /// The object ID of the table containing the cell.
+  core.String? objectId;
+
+  /// The text range for the anchor.
+  Range? textRange;
+
+  TableCellTextAnchor({this.cellLocation, this.objectId, this.textRange});
+
+  TableCellTextAnchor.fromJson(core.Map json_)
+    : this(
+        cellLocation: json_.containsKey('cellLocation')
+            ? TableCellLocation.fromJson(
+                json_['cellLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        objectId: json_['objectId'] as core.String?,
+        textRange: json_.containsKey('textRange')
+            ? Range.fromJson(
+                json_['textRange'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cellLocation = this.cellLocation;
+    final objectId = this.objectId;
+    final textRange = this.textRange;
+    return {
+      'cellLocation': ?cellLocation,
+      'objectId': ?objectId,
+      'textRange': ?textRange,
+    };
+  }
+}
+
+/// Represents text ranges within a table cell covered by a comment anchor.
+class TableCellTextRanges {
+  /// The location of the table cell.
+  TableCellLocation? cellLocation;
+
+  /// A list of all text ranges covered by the anchor in this cell.
+  core.List<TextRange>? ranges;
+
+  TableCellTextRanges({this.cellLocation, this.ranges});
+
+  TableCellTextRanges.fromJson(core.Map json_)
+    : this(
+        cellLocation: json_.containsKey('cellLocation')
+            ? TableCellLocation.fromJson(
+                json_['cellLocation'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        ranges: (json_['ranges'] as core.List?)
+            ?.map(
+              (value) => TextRange.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final cellLocation = this.cellLocation;
+    final ranges = this.ranges;
+    return {'cellLocation': ?cellLocation, 'ranges': ?ranges};
   }
 }
 
@@ -6864,6 +7779,35 @@ class TextElement {
       'startIndex': ?startIndex,
       'textRun': ?textRun,
     };
+  }
+}
+
+/// Specifies a contiguous range of text within a shape or table cell's text.
+class TextRange {
+  /// The zero-based index of the end of the range.
+  ///
+  /// This field is an Int32Value in order to accommodate future use cases with
+  /// open-ended ranges.
+  core.int? endIndex;
+
+  /// The zero-based index of the beginning range.
+  ///
+  /// This field is an Int32Value in order to accommodate future use cases with
+  /// open-ended ranges.
+  core.int? startIndex;
+
+  TextRange({this.endIndex, this.startIndex});
+
+  TextRange.fromJson(core.Map json_)
+    : this(
+        endIndex: json_['endIndex'] as core.int?,
+        startIndex: json_['startIndex'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final endIndex = this.endIndex;
+    final startIndex = this.startIndex;
+    return {'endIndex': ?endIndex, 'startIndex': ?startIndex};
   }
 }
 
@@ -7226,6 +8170,42 @@ class UnmergeTableCellsRequest {
     final objectId = this.objectId;
     final tableRange = this.tableRange;
     return {'objectId': ?objectId, 'tableRange': ?tableRange};
+  }
+}
+
+/// Updates a Post in a CommentThread.
+///
+/// Returns a 400 bad request error if: - The requesting user is not the author
+/// of the post.
+class UpdateCommentPostRequest {
+  /// The ID of the CommentThread which the post belongs to.
+  core.String? commentId;
+
+  /// The new text of the comment, as plain text.
+  ///
+  /// This text content will be handled similarly to comments created in the
+  /// Slides editor. It will have similar behaviors for formatting,
+  /// notifications, etc. This field cannot be empty, and must not exceed 2048
+  /// UTF-8 code units.
+  core.String? content;
+
+  /// The ID of the post being updated.
+  core.String? postId;
+
+  UpdateCommentPostRequest({this.commentId, this.content, this.postId});
+
+  UpdateCommentPostRequest.fromJson(core.Map json_)
+    : this(
+        commentId: json_['commentId'] as core.String?,
+        content: json_['content'] as core.String?,
+        postId: json_['postId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final commentId = this.commentId;
+    final content = this.content;
+    final postId = this.postId;
+    return {'commentId': ?commentId, 'content': ?content, 'postId': ?postId};
   }
 }
 

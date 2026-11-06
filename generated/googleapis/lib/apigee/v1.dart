@@ -372,6 +372,9 @@ class OrganizationsResource {
   /// seven days will be applied.
   /// - "MINIMUM" : Organization data will be retained for the minimum period of
   /// 24 hours.
+  /// - "NO_RETENTION" : Does not retain organization data and permanently
+  /// deletes the organization immediately. **Warning:** You will NOT be able to
+  /// restore the Apigee organization when using this option.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -19575,7 +19578,7 @@ class GoogleCloudApigeeV1Access {
 /// Get action.
 ///
 /// For example, "Get" : { "name" : "target.name", "value" : "default" }
-typedef GoogleCloudApigeeV1AccessGet = $Shared09;
+typedef GoogleCloudApigeeV1AccessGet = $Shared05;
 
 /// Access logging configuration enables customers to ship the access logs from
 /// the tenant projects to their own project's cloud logging.
@@ -36955,7 +36958,7 @@ class GoogleCloudApigeeV1TargetServer {
 
   /// The resource id of this target server.
   ///
-  /// Values must match the regular expression
+  ///
   ///
   /// Required.
   core.String? name;
@@ -36977,8 +36980,7 @@ class GoogleCloudApigeeV1TargetServer {
   /// - "HTTP2" : The TargetSever uses HTTP2.
   /// - "GRPC_TARGET" : The TargetServer uses GRPC.
   /// - "GRPC" : GRPC TargetServer to be used in ExternalCallout Policy. Prefer
-  /// to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL
-  /// _CALLOUT generally available.
+  /// to use EXTERNAL_CALLOUT instead.
   /// - "EXTERNAL_CALLOUT" : The TargetServer is to be used in the
   /// ExternalCallout Policy
   core.String? protocol;
@@ -37061,8 +37063,7 @@ class GoogleCloudApigeeV1TargetServerConfig {
   /// - "HTTP2" : The TargetSever uses HTTP2.
   /// - "GRPC_TARGET" : The TargetServer uses GRPC.
   /// - "GRPC" : GRPC TargetServer to be used in ExternalCallout Policy. Prefer
-  /// to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL
-  /// _CALLOUT generally available.
+  /// to use EXTERNAL_CALLOUT instead.
   /// - "EXTERNAL_CALLOUT" : The TargetServer is to be used in the
   /// ExternalCallout Policy
   core.String? protocol;

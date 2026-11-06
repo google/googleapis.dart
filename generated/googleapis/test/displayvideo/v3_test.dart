@@ -9608,8 +9608,6 @@ api.TargetingExpansionConfig buildTargetingExpansionConfig() {
   final o = api.TargetingExpansionConfig();
   buildCounterTargetingExpansionConfig++;
   if (buildCounterTargetingExpansionConfig < 3) {
-    o.audienceExpansionLevel = 'foo';
-    o.audienceExpansionSeedListExcluded = true;
     o.enableOptimizedTargeting = true;
     o.excludeDemographicExpansion = true;
   }
@@ -9620,8 +9618,6 @@ api.TargetingExpansionConfig buildTargetingExpansionConfig() {
 void checkTargetingExpansionConfig(api.TargetingExpansionConfig o) {
   buildCounterTargetingExpansionConfig++;
   if (buildCounterTargetingExpansionConfig < 3) {
-    unittest.expect(o.audienceExpansionLevel!, unittest.equals('foo'));
-    unittest.expect(o.audienceExpansionSeedListExcluded!, unittest.isTrue);
     unittest.expect(o.enableOptimizedTargeting!, unittest.isTrue);
     unittest.expect(o.excludeDemographicExpansion!, unittest.isTrue);
   }
@@ -10284,6 +10280,7 @@ api.VideoPerformanceAd buildVideoPerformanceAd() {
   buildCounterVideoPerformanceAd++;
   if (buildCounterVideoPerformanceAd < 3) {
     o.actionButtonLabels = buildUnnamed182();
+    o.businessName = 'foo';
     o.companionBanners = buildUnnamed183();
     o.customParameters = buildUnnamed184();
     o.descriptions = buildUnnamed185();
@@ -10292,6 +10289,7 @@ api.VideoPerformanceAd buildVideoPerformanceAd() {
     o.domain = 'foo';
     o.finalUrl = 'foo';
     o.headlines = buildUnnamed186();
+    o.logo = buildImageAsset();
     o.longHeadlines = buildUnnamed187();
     o.trackingUrl = 'foo';
     o.videos = buildUnnamed188();
@@ -10304,6 +10302,7 @@ void checkVideoPerformanceAd(api.VideoPerformanceAd o) {
   buildCounterVideoPerformanceAd++;
   if (buildCounterVideoPerformanceAd < 3) {
     checkUnnamed182(o.actionButtonLabels!);
+    unittest.expect(o.businessName!, unittest.equals('foo'));
     checkUnnamed183(o.companionBanners!);
     checkUnnamed184(o.customParameters!);
     checkUnnamed185(o.descriptions!);
@@ -10312,6 +10311,7 @@ void checkVideoPerformanceAd(api.VideoPerformanceAd o) {
     unittest.expect(o.domain!, unittest.equals('foo'));
     unittest.expect(o.finalUrl!, unittest.equals('foo'));
     checkUnnamed186(o.headlines!);
+    checkImageAsset(o.logo!);
     checkUnnamed187(o.longHeadlines!);
     unittest.expect(o.trackingUrl!, unittest.equals('foo'));
     checkUnnamed188(o.videos!);

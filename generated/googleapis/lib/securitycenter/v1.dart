@@ -8080,7 +8080,7 @@ class AffectedResources {
   }
 }
 
-typedef Agent = $Shared08;
+typedef Agent = $Shared09;
 
 class AgentAnomaly {
   core.double? confidenceScore;
@@ -8768,7 +8768,7 @@ class AuditLogConfig {
   }
 }
 
-typedef AwsAccount = $Shared05;
+typedef AwsAccount = $Shared06;
 
 class AwsMetadata {
   AwsAccount? account;
@@ -8810,9 +8810,9 @@ class AwsMetadata {
   }
 }
 
-typedef AwsOrganization = $Shared02;
-typedef AwsOrganizationalUnit = $Shared05;
-typedef AzureManagementGroup = $Shared08;
+typedef AwsOrganization = $Shared03;
+typedef AwsOrganizationalUnit = $Shared06;
+typedef AzureManagementGroup = $Shared09;
 
 class AzureMetadata {
   core.List<AzureManagementGroup>? managementGroups;
@@ -8867,9 +8867,9 @@ class AzureMetadata {
   }
 }
 
-typedef AzureResourceGroup = $Shared05;
-typedef AzureSubscription = $Shared08;
-typedef AzureTenant = $Shared08;
+typedef AzureResourceGroup = $Shared06;
+typedef AzureSubscription = $Shared09;
+typedef AzureTenant = $Shared09;
 
 class BackupDisasterRecovery {
   core.String? appliance;
@@ -9280,6 +9280,24 @@ class CloudLoggingEntry {
   }
 }
 
+class CloudRun {
+  core.List<core.String>? revisions;
+
+  CloudRun({this.revisions});
+
+  CloudRun.fromJson(core.Map json_)
+    : this(
+        revisions: (json_['revisions'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final revisions = this.revisions;
+    return {'revisions': ?revisions};
+  }
+}
+
 class Compliance {
   core.List<core.String>? ids;
   core.String? standard;
@@ -9396,7 +9414,7 @@ class Connection {
   }
 }
 
-typedef Contact = $Shared29;
+typedef Contact = $Shared32;
 
 class ContactDetails {
   core.List<Contact>? contacts;
@@ -10697,6 +10715,7 @@ class Finding {
   CloudArmor? cloudArmor;
   CloudDlpDataProfile? cloudDlpDataProfile;
   CloudDlpInspection? cloudDlpInspection;
+  CloudRun? cloudRun;
   ComplianceDetails? complianceDetails;
   core.List<Compliance>? compliances;
   core.List<Connection>? connections;
@@ -10813,6 +10832,7 @@ class Finding {
     this.cloudArmor,
     this.cloudDlpDataProfile,
     this.cloudDlpInspection,
+    this.cloudRun,
     this.complianceDetails,
     this.compliances,
     this.connections,
@@ -10956,6 +10976,11 @@ class Finding {
             ? CloudDlpInspection.fromJson(
                 json_['cloudDlpInspection']
                     as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        cloudRun: json_.containsKey('cloudRun')
+            ? CloudRun.fromJson(
+                json_['cloudRun'] as core.Map<core.String, core.dynamic>,
               )
             : null,
         complianceDetails: json_.containsKey('complianceDetails')
@@ -11227,6 +11252,7 @@ class Finding {
     final cloudArmor = this.cloudArmor;
     final cloudDlpDataProfile = this.cloudDlpDataProfile;
     final cloudDlpInspection = this.cloudDlpInspection;
+    final cloudRun = this.cloudRun;
     final complianceDetails = this.complianceDetails;
     final compliances = this.compliances;
     final connections = this.connections;
@@ -11300,6 +11326,7 @@ class Finding {
       'cloudArmor': ?cloudArmor,
       'cloudDlpDataProfile': ?cloudDlpDataProfile,
       'cloudDlpInspection': ?cloudDlpInspection,
+      'cloudRun': ?cloudRun,
       'complianceDetails': ?complianceDetails,
       'compliances': ?compliances,
       'connections': ?connections,
@@ -11489,6 +11516,7 @@ class GetPolicyOptions {
 class GoogleCloudSecuritycenterV1BigQueryExport {
   core.String? createTime;
   core.String? dataset;
+  core.bool? deletionNotificationsEnabled;
   core.String? description;
   core.String? filter;
   core.String? mostRecentEditor;
@@ -11499,6 +11527,7 @@ class GoogleCloudSecuritycenterV1BigQueryExport {
   GoogleCloudSecuritycenterV1BigQueryExport({
     this.createTime,
     this.dataset,
+    this.deletionNotificationsEnabled,
     this.description,
     this.filter,
     this.mostRecentEditor,
@@ -11511,6 +11540,8 @@ class GoogleCloudSecuritycenterV1BigQueryExport {
     : this(
         createTime: json_['createTime'] as core.String?,
         dataset: json_['dataset'] as core.String?,
+        deletionNotificationsEnabled:
+            json_['deletionNotificationsEnabled'] as core.bool?,
         description: json_['description'] as core.String?,
         filter: json_['filter'] as core.String?,
         mostRecentEditor: json_['mostRecentEditor'] as core.String?,
@@ -11522,6 +11553,7 @@ class GoogleCloudSecuritycenterV1BigQueryExport {
   core.Map<core.String, core.dynamic> toJson() {
     final createTime = this.createTime;
     final dataset = this.dataset;
+    final deletionNotificationsEnabled = this.deletionNotificationsEnabled;
     final description = this.description;
     final filter = this.filter;
     final mostRecentEditor = this.mostRecentEditor;
@@ -11531,6 +11563,7 @@ class GoogleCloudSecuritycenterV1BigQueryExport {
     return {
       'createTime': ?createTime,
       'dataset': ?dataset,
+      'deletionNotificationsEnabled': ?deletionNotificationsEnabled,
       'description': ?description,
       'filter': ?filter,
       'mostRecentEditor': ?mostRecentEditor,
@@ -12041,7 +12074,7 @@ class GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
 }
 
 typedef GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo =
-    $Shared29;
+    $Shared32;
 
 class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality {
   ///
@@ -12980,7 +13013,7 @@ class Kubernetes {
   }
 }
 
-typedef Label = $Shared09;
+typedef Label = $Shared05;
 
 class ListAssetsResponse {
   core.List<ListAssetsResult>? listAssetsResults;
@@ -13796,6 +13829,7 @@ class Notebook {
 }
 
 class NotificationConfig {
+  core.bool? deletionNotificationsEnabled;
   core.String? description;
   core.String? name;
   core.String? pubsubTopic;
@@ -13803,6 +13837,7 @@ class NotificationConfig {
   StreamingConfig? streamingConfig;
 
   NotificationConfig({
+    this.deletionNotificationsEnabled,
     this.description,
     this.name,
     this.pubsubTopic,
@@ -13812,6 +13847,8 @@ class NotificationConfig {
 
   NotificationConfig.fromJson(core.Map json_)
     : this(
+        deletionNotificationsEnabled:
+            json_['deletionNotificationsEnabled'] as core.bool?,
         description: json_['description'] as core.String?,
         name: json_['name'] as core.String?,
         pubsubTopic: json_['pubsubTopic'] as core.String?,
@@ -13824,12 +13861,14 @@ class NotificationConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final deletionNotificationsEnabled = this.deletionNotificationsEnabled;
     final description = this.description;
     final name = this.name;
     final pubsubTopic = this.pubsubTopic;
     final serviceAccount = this.serviceAccount;
     final streamingConfig = this.streamingConfig;
     return {
+      'deletionNotificationsEnabled': ?deletionNotificationsEnabled,
       'description': ?description,
       'name': ?name,
       'pubsubTopic': ?pubsubTopic,
@@ -14033,7 +14072,7 @@ class PathNodeAssociatedFinding {
   }
 }
 
-typedef Pipeline = $Shared22;
+typedef Pipeline = $Shared26;
 
 class Pod {
   core.List<Container>? containers;
@@ -15353,8 +15392,8 @@ class Subject {
   }
 }
 
-typedef TestIamPermissionsRequest = $Shared30;
-typedef TestIamPermissionsResponse = $Shared30;
+typedef TestIamPermissionsRequest = $Shared33;
+typedef TestIamPermissionsResponse = $Shared33;
 
 class TicketInfo {
   core.String? assignee;

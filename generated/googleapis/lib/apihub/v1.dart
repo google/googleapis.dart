@@ -1602,7 +1602,7 @@ class ProjectsLocationsApisVersionsOperationsResource {
   /// id will be used. This value should be 4-500 characters, overall resource
   /// name which will be of format
   /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}`,
-  /// its length is limited to 700 characters, and valid characters are
+  /// its length is limited to 1000 characters, and valid characters are
   /// /a-z\[0-9\]-_/.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1644,7 +1644,8 @@ class ProjectsLocationsApisVersionsOperationsResource {
   /// operations created via create API.
   ///
   /// If the operation was created by parsing the spec, then it can be deleted
-  /// by editing or deleting the spec.
+  /// by editing or deleting the spec. Deleting an operation will also remove
+  /// any links between the operation and deployments.
   ///
   /// Request parameters:
   ///
@@ -1974,7 +1975,7 @@ class ProjectsLocationsApisVersionsSpecsResource {
   /// Delete a spec.
   ///
   /// Deleting a spec will also delete the associated operations from the
-  /// version.
+  /// version and remove any links between the spec and deployments.
   ///
   /// Request parameters:
   ///
@@ -3247,7 +3248,10 @@ class ProjectsLocationsDeploymentsResource {
     );
   }
 
-  /// Delete a deployment resource in the API hub.
+  /// Deletes a deployment resource in the API hub.
+  ///
+  /// A deployment can only be deleted after its links to any versions, specs,
+  /// and API operations have been removed.
   ///
   /// Request parameters:
   ///
@@ -5909,8 +5913,8 @@ class GoogleCloudApihubV1AllowedValue {
   /// attribute resource. * If not provided, a system generated id derived from
   /// the display name will be used. In this case, the service will handle
   /// conflict resolution by adding a system generated suffix in case of
-  /// duplicates. This value should be 4-63 characters, and valid characters are
-  /// /a-z-/.
+  /// duplicates. This value should be 3-500 characters, and valid characters
+  /// are /a-z\[0-9\]-_/.
   ///
   /// Required.
   core.String? id;
@@ -6083,6 +6087,16 @@ class GoogleCloudApihubV1Api {
   /// Optional.
   core.String? selectedVersion;
 
+  /// The type of the service.
+  ///
+  /// This maps to the following system defined attribute:
+  /// `projects/{project}/locations/{location}/attributes/system-service-type`
+  /// attribute. The cardinality of this attribute is 1. All values should be
+  /// from the list of allowed values defined for the attribute.
+  ///
+  /// Optional.
+  GoogleCloudApihubV1AttributeValues? serviceType;
+
   /// The list of sources and metadata from the sources of the API resource.
   ///
   /// Output only.
@@ -6141,6 +6155,7 @@ class GoogleCloudApihubV1Api {
     this.name,
     this.owner,
     this.selectedVersion,
+    this.serviceType,
     this.sourceMetadata,
     this.targetUser,
     this.team,
@@ -6208,6 +6223,11 @@ class GoogleCloudApihubV1Api {
               )
             : null,
         selectedVersion: json_['selectedVersion'] as core.String?,
+        serviceType: json_.containsKey('serviceType')
+            ? GoogleCloudApihubV1AttributeValues.fromJson(
+                json_['serviceType'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sourceMetadata: (json_['sourceMetadata'] as core.List?)
             ?.map(
               (value) => GoogleCloudApihubV1SourceMetadata.fromJson(
@@ -6247,6 +6267,7 @@ class GoogleCloudApihubV1Api {
     final name = this.name;
     final owner = this.owner;
     final selectedVersion = this.selectedVersion;
+    final serviceType = this.serviceType;
     final sourceMetadata = this.sourceMetadata;
     final targetUser = this.targetUser;
     final team = this.team;
@@ -6268,6 +6289,7 @@ class GoogleCloudApihubV1Api {
       'name': ?name,
       'owner': ?owner,
       'selectedVersion': ?selectedVersion,
+      'serviceType': ?serviceType,
       'sourceMetadata': ?sourceMetadata,
       'targetUser': ?targetUser,
       'team': ?team,
@@ -9266,14 +9288,14 @@ class GoogleCloudApihubV1ExternalApi {
 
   /// Description of the external API.
   ///
-  /// Max length is 2000 characters (Unicode Code Points).
+  /// Max length is 500000 characters (Unicode Code Points).
   ///
   /// Optional.
   core.String? description;
 
   /// Display name of the external API.
   ///
-  /// Max length is 63 characters (Unicode Code Points).
+  /// Max length is 500 characters (Unicode Code Points).
   ///
   /// Required.
   core.String? displayName;
@@ -11565,14 +11587,14 @@ class GoogleCloudApihubV1Plugin {
 
   /// The plugin description.
   ///
-  /// Max length is 2000 characters (Unicode code points).
+  /// Max length is 500000 characters (Unicode code points).
   ///
   /// Optional.
   core.String? description;
 
   /// The display name of the plugin.
   ///
-  /// Max length is 50 characters (Unicode code points).
+  /// Max length is 500 characters (Unicode code points).
   ///
   /// Required.
   core.String? displayName;
@@ -11871,7 +11893,7 @@ class GoogleCloudApihubV1PluginInstance {
 
   /// The display name for this plugin instance.
   ///
-  /// Max length is 255 characters.
+  /// Max length is 500 characters.
   ///
   /// Required.
   core.String? displayName;

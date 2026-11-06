@@ -290,7 +290,6 @@ api.CloudRunRevisionEndpoint buildCloudRunRevisionEndpoint() {
   if (buildCounterCloudRunRevisionEndpoint < 3) {
     o.serviceUri = 'foo';
     o.uri = 'foo';
-    o.workerPoolUri = 'foo';
   }
   buildCounterCloudRunRevisionEndpoint--;
   return o;
@@ -301,7 +300,6 @@ void checkCloudRunRevisionEndpoint(api.CloudRunRevisionEndpoint o) {
   if (buildCounterCloudRunRevisionEndpoint < 3) {
     unittest.expect(o.serviceUri!, unittest.equals('foo'));
     unittest.expect(o.uri!, unittest.equals('foo'));
-    unittest.expect(o.workerPoolUri!, unittest.equals('foo'));
   }
   buildCounterCloudRunRevisionEndpoint--;
 }
@@ -312,6 +310,7 @@ api.CloudRunRevisionInfo buildCloudRunRevisionInfo() {
   buildCounterCloudRunRevisionInfo++;
   if (buildCounterCloudRunRevisionInfo < 3) {
     o.displayName = 'foo';
+    o.ipAddress = 'foo';
     o.location = 'foo';
     o.serviceUri = 'foo';
     o.uri = 'foo';
@@ -325,6 +324,7 @@ void checkCloudRunRevisionInfo(api.CloudRunRevisionInfo o) {
   buildCounterCloudRunRevisionInfo++;
   if (buildCounterCloudRunRevisionInfo < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.ipAddress!, unittest.equals('foo'));
     unittest.expect(o.location!, unittest.equals('foo'));
     unittest.expect(o.serviceUri!, unittest.equals('foo'));
     unittest.expect(o.uri!, unittest.equals('foo'));
@@ -481,33 +481,6 @@ void checkDirectVpcEgressConnectionInfo(api.DirectVpcEgressConnectionInfo o) {
   buildCounterDirectVpcEgressConnectionInfo--;
 }
 
-core.int buildCounterDirectVpcIngressConnectionInfo = 0;
-api.DirectVpcIngressConnectionInfo buildDirectVpcIngressConnectionInfo() {
-  final o = api.DirectVpcIngressConnectionInfo();
-  buildCounterDirectVpcIngressConnectionInfo++;
-  if (buildCounterDirectVpcIngressConnectionInfo < 3) {
-    o.networkUri = 'foo';
-    o.region = 'foo';
-    o.selectedIpAddress = 'foo';
-    o.selectedIpRange = 'foo';
-    o.subnetworkUri = 'foo';
-  }
-  buildCounterDirectVpcIngressConnectionInfo--;
-  return o;
-}
-
-void checkDirectVpcIngressConnectionInfo(api.DirectVpcIngressConnectionInfo o) {
-  buildCounterDirectVpcIngressConnectionInfo++;
-  if (buildCounterDirectVpcIngressConnectionInfo < 3) {
-    unittest.expect(o.networkUri!, unittest.equals('foo'));
-    unittest.expect(o.region!, unittest.equals('foo'));
-    unittest.expect(o.selectedIpAddress!, unittest.equals('foo'));
-    unittest.expect(o.selectedIpRange!, unittest.equals('foo'));
-    unittest.expect(o.subnetworkUri!, unittest.equals('foo'));
-  }
-  buildCounterDirectVpcIngressConnectionInfo--;
-}
-
 core.int buildCounterDropInfo = 0;
 api.DropInfo buildDropInfo() {
   final o = api.DropInfo();
@@ -572,6 +545,7 @@ api.EffectiveVpcFlowLogsConfig buildEffectiveVpcFlowLogsConfig() {
   buildCounterEffectiveVpcFlowLogsConfig++;
   if (buildCounterEffectiveVpcFlowLogsConfig < 3) {
     o.aggregationInterval = 'foo';
+    o.connectionLogging = 'foo';
     o.crossProjectMetadata = 'foo';
     o.filterExpr = 'foo';
     o.flowSampling = 42.0;
@@ -593,6 +567,7 @@ void checkEffectiveVpcFlowLogsConfig(api.EffectiveVpcFlowLogsConfig o) {
   buildCounterEffectiveVpcFlowLogsConfig++;
   if (buildCounterEffectiveVpcFlowLogsConfig < 3) {
     unittest.expect(o.aggregationInterval!, unittest.equals('foo'));
+    unittest.expect(o.connectionLogging!, unittest.equals('foo'));
     unittest.expect(o.crossProjectMetadata!, unittest.equals('foo'));
     unittest.expect(o.filterExpr!, unittest.equals('foo'));
     unittest.expect(o.flowSampling!, unittest.equals(42.0));
@@ -634,6 +609,7 @@ api.Endpoint buildEndpoint() {
     o.cloudRunJob = 'foo';
     o.cloudRunRevision = buildCloudRunRevisionEndpoint();
     o.cloudSqlInstance = 'foo';
+    o.datastreamPrivateConnection = 'foo';
     o.dmsPrivateConnection = 'foo';
     o.forwardingRule = 'foo';
     o.forwardingRuleTarget = 'foo';
@@ -663,6 +639,7 @@ void checkEndpoint(api.Endpoint o) {
     unittest.expect(o.cloudRunJob!, unittest.equals('foo'));
     checkCloudRunRevisionEndpoint(o.cloudRunRevision!);
     unittest.expect(o.cloudSqlInstance!, unittest.equals('foo'));
+    unittest.expect(o.datastreamPrivateConnection!, unittest.equals('foo'));
     unittest.expect(o.dmsPrivateConnection!, unittest.equals('foo'));
     unittest.expect(o.forwardingRule!, unittest.equals('foo'));
     unittest.expect(o.forwardingRuleTarget!, unittest.equals('foo'));
@@ -2834,7 +2811,6 @@ api.Step buildStep() {
     o.deliver = buildDeliverInfo();
     o.description = 'foo';
     o.directVpcEgressConnection = buildDirectVpcEgressConnectionInfo();
-    o.directVpcIngressConnection = buildDirectVpcIngressConnectionInfo();
     o.dmsPrivateConnection = buildPrivateConnectionInfo();
     o.drop = buildDropInfo();
     o.endpoint = buildEndpointInfo();
@@ -2887,7 +2863,6 @@ void checkStep(api.Step o) {
     checkDeliverInfo(o.deliver!);
     unittest.expect(o.description!, unittest.equals('foo'));
     checkDirectVpcEgressConnectionInfo(o.directVpcEgressConnection!);
-    checkDirectVpcIngressConnectionInfo(o.directVpcIngressConnection!);
     checkPrivateConnectionInfo(o.dmsPrivateConnection!);
     checkDropInfo(o.drop!);
     checkEndpointInfo(o.endpoint!);
@@ -3101,6 +3076,7 @@ api.VpcFlowLogsConfig buildVpcFlowLogsConfig() {
   buildCounterVpcFlowLogsConfig++;
   if (buildCounterVpcFlowLogsConfig < 3) {
     o.aggregationInterval = 'foo';
+    o.connectionLogging = 'foo';
     o.createTime = 'foo';
     o.crossProjectMetadata = 'foo';
     o.description = 'foo';
@@ -3126,6 +3102,7 @@ void checkVpcFlowLogsConfig(api.VpcFlowLogsConfig o) {
   buildCounterVpcFlowLogsConfig++;
   if (buildCounterVpcFlowLogsConfig < 3) {
     unittest.expect(o.aggregationInterval!, unittest.equals('foo'));
+    unittest.expect(o.connectionLogging!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.crossProjectMetadata!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
@@ -3460,17 +3437,6 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkDirectVpcEgressConnectionInfo(od);
-    });
-  });
-
-  unittest.group('obj-schema-DirectVpcIngressConnectionInfo', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildDirectVpcIngressConnectionInfo();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.DirectVpcIngressConnectionInfo.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
-      checkDirectVpcIngressConnectionInfo(od);
     });
   });
 
@@ -6429,6 +6395,7 @@ void main() {
         ).projects.locations.networkMonitoringProviders.monitoringPoints;
         final arg_parent = 'foo';
         final arg_P_password = 'foo';
+        final arg_cloudDeploymentType = 'foo';
         final arg_hostname = 'foo';
         final arg_monitoringPointType = 'foo';
         final arg_ntpServerAddress = 'foo';
@@ -6480,6 +6447,10 @@ void main() {
             unittest.expect(
               queryMap['_password']!.first,
               unittest.equals(arg_P_password),
+            );
+            unittest.expect(
+              queryMap['cloudDeploymentType']!.first,
+              unittest.equals(arg_cloudDeploymentType),
             );
             unittest.expect(
               queryMap['hostname']!.first,
@@ -6551,6 +6522,7 @@ void main() {
         final response = await res.downloadInstallScript(
           arg_parent,
           P_password: arg_P_password,
+          cloudDeploymentType: arg_cloudDeploymentType,
           hostname: arg_hostname,
           monitoringPointType: arg_monitoringPointType,
           ntpServerAddress: arg_ntpServerAddress,

@@ -2438,6 +2438,8 @@ buildGoogleCloudRecaptchaenterpriseV1TokenProperties() {
   if (buildCounterGoogleCloudRecaptchaenterpriseV1TokenProperties < 3) {
     o.action = 'foo';
     o.androidPackageName = 'foo';
+    o.clientProperties =
+        buildGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties();
     o.clientSignalsFailed = true;
     o.createTime = 'foo';
     o.hostname = 'foo';
@@ -2456,6 +2458,9 @@ void checkGoogleCloudRecaptchaenterpriseV1TokenProperties(
   if (buildCounterGoogleCloudRecaptchaenterpriseV1TokenProperties < 3) {
     unittest.expect(o.action!, unittest.equals('foo'));
     unittest.expect(o.androidPackageName!, unittest.equals('foo'));
+    checkGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties(
+      o.clientProperties!,
+    );
     unittest.expect(o.clientSignalsFailed!, unittest.isTrue);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.hostname!, unittest.equals('foo'));
@@ -2464,6 +2469,34 @@ void checkGoogleCloudRecaptchaenterpriseV1TokenProperties(
     unittest.expect(o.valid!, unittest.isTrue);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1TokenProperties--;
+}
+
+core.int
+buildCounterGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties = 0;
+api.GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties
+buildGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties() {
+  final o =
+      api.GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties();
+  buildCounterGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties <
+      3) {
+    o.userAgent = 'foo';
+    o.userIpAddress = 'foo';
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties(
+  api.GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties o,
+) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties <
+      3) {
+    unittest.expect(o.userAgent!, unittest.equals('foo'));
+    unittest.expect(o.userIpAddress!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties--;
 }
 
 core.List<api.GoogleCloudRecaptchaenterpriseV1TransactionDataItem>
@@ -4128,6 +4161,24 @@ void main() {
           oJson as core.Map<core.String, core.dynamic>,
         );
         checkGoogleCloudRecaptchaenterpriseV1TokenProperties(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od =
+            api.GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties.fromJson(
+              oJson as core.Map<core.String, core.dynamic>,
+            );
+        checkGoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties(
+          od,
+        );
       });
     },
   );

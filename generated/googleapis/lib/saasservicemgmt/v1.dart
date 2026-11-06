@@ -22,7 +22,8 @@
 ///
 /// Model, deploy, and operate your SaaS at scale.
 ///
-/// For more information, see <https://cloud.google.com/saas-runtime/docs>
+/// For more information, see
+/// <https://docs.cloud.google.com/app-lifecycle-manager>
 ///
 /// Create an instance of [SaaSServiceManagementApi] to access these resources:
 ///
@@ -2631,17 +2632,54 @@ class Aggregate {
   }
 }
 
+/// AppParams contains the parameters for creating an AppHub Application.
+class AppParams {
+  /// Grouping used to construct the name of the AppHub Application.
+  ///
+  /// Multiple UnitKinds can specify the same group to use the same Application
+  /// across their respective units. Corresponds to the app_boundary_id in the
+  /// ADC composite ApplicationTemplate. Defaults to UnitKind.name
+  ///
+  /// Optional.
+  core.String? group;
+
+  /// Corresponds to the scope in the ADC composite ApplicationTemplate.
+  ///
+  /// Defaults to TYPE_REGIONAL.
+  ///
+  /// Optional.
+  Scope? scope;
+
+  AppParams({this.group, this.scope});
+
+  AppParams.fromJson(core.Map json_)
+    : this(
+        group: json_['group'] as core.String?,
+        scope: json_.containsKey('scope')
+            ? Scope.fromJson(
+                json_['scope'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final group = this.group;
+    final scope = this.scope;
+    return {'group': ?group, 'scope': ?scope};
+  }
+}
+
 /// Blueprints are OCI Images that contain all of the artifacts needed to
 /// provision a unit.
 ///
-/// Metadata such as, type of the engine used to actuate the blueprint (e.g.
-/// terraform, helm etc) and version will come from the image manifest. If the
-/// hostname is omitted, it will be assumed to be the regional path to Artifact
-/// Registry (eg. us-east1-docker.pkg.dev).
+/// Metadata such as, type of the engine used to actuate the blueprint
+/// (Terraform, for example) and version will come from the image manifest. If
+/// the hostname is omitted, it will be assumed to be the regional path to
+/// Artifact Registry (eg. us-east1-docker.pkg.dev).
 class Blueprint {
   /// Type of the engine used to actuate the blueprint.
   ///
-  /// e.g. terraform, helm etc.
+  /// (Terraform, for example)
   ///
   /// Output only.
   core.String? engine;
@@ -2671,6 +2709,95 @@ class Blueprint {
     final package = this.package;
     final version = this.version;
     return {'engine': ?engine, 'package': ?package, 'version': ?version};
+  }
+}
+
+/// ComponentRef represents a reference to a component resource.
+class ComponentRef {
+  /// Name of the component in composite.Components
+  ///
+  /// Optional.
+  core.String? component;
+
+  /// Reference to the Composite ApplicationTemplate.
+  ///
+  /// Optional.
+  CompositeRef? compositeRef;
+
+  /// Revision of the component.
+  ///
+  /// If the component does not have a revision, this field will be explicitly
+  /// set to the revision of the composite ApplicationTemplate.
+  ///
+  /// Optional.
+  core.String? revision;
+
+  ComponentRef({this.component, this.compositeRef, this.revision});
+
+  ComponentRef.fromJson(core.Map json_)
+    : this(
+        component: json_['component'] as core.String?,
+        compositeRef: json_.containsKey('compositeRef')
+            ? CompositeRef.fromJson(
+                json_['compositeRef'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        revision: json_['revision'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final component = this.component;
+    final compositeRef = this.compositeRef;
+    final revision = this.revision;
+    return {
+      'component': ?component,
+      'compositeRef': ?compositeRef,
+      'revision': ?revision,
+    };
+  }
+}
+
+/// CompositeRef represents a reference to a composite resource.
+class CompositeRef {
+  /// Reference to the ApplicationTemplate resource.
+  ///
+  /// Required.
+  core.String? applicationTemplate;
+
+  /// Revision of the ApplicationTemplate to use.
+  ///
+  /// Changes to revision will trigger manual resynchronization. If empty,
+  /// ApplicationTemplate will be ignored.
+  ///
+  /// Optional.
+  core.String? revision;
+
+  /// Reference to on-going AppTemplate import and replication operation (i.e.
+  /// the operation_id for the long-running operation).
+  ///
+  /// This field is opaque for external usage.
+  ///
+  /// Output only.
+  core.String? syncOperation;
+
+  CompositeRef({this.applicationTemplate, this.revision, this.syncOperation});
+
+  CompositeRef.fromJson(core.Map json_)
+    : this(
+        applicationTemplate: json_['applicationTemplate'] as core.String?,
+        revision: json_['revision'] as core.String?,
+        syncOperation: json_['syncOperation'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final applicationTemplate = this.applicationTemplate;
+    final revision = this.revision;
+    final syncOperation = this.syncOperation;
+    return {
+      'applicationTemplate': ?applicationTemplate,
+      'revision': ?revision,
+      'syncOperation': ?syncOperation,
+    };
   }
 }
 
@@ -2718,6 +2845,35 @@ class Dependency {
 /// Can only execute if the Unit is currently provisioned.
 typedef Deprovision = $Empty;
 
+/// DurationLimits defines the time-related constraints for a UnitOperation's
+/// execution.
+///
+/// This allows users to control how long an operation can run before being
+/// cancelled by the system.
+class DurationLimits {
+  /// The maximum duration a UnitOperation is allowed to execute in the RUNNING
+  /// state.
+  ///
+  /// - Minimum value: 60 seconds (1 minute) - Maximum value: 604800 seconds (7
+  /// days) If this field is not set, or if the provided value falls outside the
+  /// allowed range, the system will use a default timeout of 10800 seconds (3
+  /// hours). Upon exceeding this time limit, the UnitOperation will be
+  /// best-effort cancelled, and its state will be set to FAILED.
+  ///
+  /// Optional.
+  core.String? unitOperationTimeout;
+
+  DurationLimits({this.unitOperationTimeout});
+
+  DurationLimits.fromJson(core.Map json_)
+    : this(unitOperationTimeout: json_['unitOperationTimeout'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final unitOperationTimeout = this.unitOperationTimeout;
+    return {'unitOperationTimeout': ?unitOperationTimeout};
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -2758,24 +2914,6 @@ class ErrorBudget {
       'allowedCount': ?allowedCount,
       'allowedPercentage': ?allowedPercentage,
     };
-  }
-}
-
-/// FlagUpdate is a UnitOperation that pushes new flag values to Units.
-class FlagUpdate {
-  /// Flag release being applied by UnitOperation.
-  ///
-  /// Required.
-  core.String? flagRelease;
-
-  FlagUpdate({this.flagRelease});
-
-  FlagUpdate.fromJson(core.Map json_)
-    : this(flagRelease: json_['flagRelease'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final flagRelease = this.flagRelease;
-    return {'flagRelease': ?flagRelease};
   }
 }
 
@@ -3272,8 +3410,8 @@ class Provision {
 
 /// A new version to be propagated and deployed to units.
 ///
-/// This includes pointers to packaged blueprints for actuation (e.g Helm or
-/// Terraform configuration packages) via artifact registry.
+/// This includes pointers to packaged blueprints for actuation via Artifact
+/// Registry.
 class Release {
   /// Annotations is an unstructured key-value map stored with a resource that
   /// may be set by external tools to store and retrieve arbitrary metadata.
@@ -3283,6 +3421,11 @@ class Release {
   ///
   /// Optional.
   core.Map<core.String, core.String>? annotations;
+
+  /// Reference to component and revision in a composite ApplicationTemplate.
+  ///
+  /// Output only.
+  ComponentRef? applicationTemplateComponent;
 
   /// Blueprints are OCI Images that contain all of the artifacts needed to
   /// provision a unit.
@@ -3367,6 +3510,7 @@ class Release {
 
   Release({
     this.annotations,
+    this.applicationTemplateComponent,
     this.blueprint,
     this.createTime,
     this.etag,
@@ -3387,6 +3531,13 @@ class Release {
             (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(key, value as core.String),
             ),
+        applicationTemplateComponent:
+            json_.containsKey('applicationTemplateComponent')
+            ? ComponentRef.fromJson(
+                json_['applicationTemplateComponent']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         blueprint: json_.containsKey('blueprint')
             ? Blueprint.fromJson(
                 json_['blueprint'] as core.Map<core.String, core.dynamic>,
@@ -3432,6 +3583,7 @@ class Release {
 
   core.Map<core.String, core.dynamic> toJson() {
     final annotations = this.annotations;
+    final applicationTemplateComponent = this.applicationTemplateComponent;
     final blueprint = this.blueprint;
     final createTime = this.createTime;
     final etag = this.etag;
@@ -3446,6 +3598,7 @@ class Release {
     final updateTime = this.updateTime;
     return {
       'annotations': ?annotations,
+      'applicationTemplateComponent': ?applicationTemplateComponent,
       'blueprint': ?blueprint,
       'createTime': ?createTime,
       'etag': ?etag,
@@ -3549,15 +3702,6 @@ class Rollout {
   ///
   /// Output only.
   core.String? etag;
-
-  /// Name of the FlagRelease to be rolled out to the target Units.
-  ///
-  /// Release and FlagRelease are mutually exclusive. Note: `release` comment
-  /// needs to be adjusted to mention that "Release and FlagRelease are mutually
-  /// exclusive" when visibility restriction will be lifted.
-  ///
-  /// Optional. Immutable.
-  core.String? flagRelease;
 
   /// The labels on the resource, which can be used for categorization.
   ///
@@ -3688,7 +3832,6 @@ class Rollout {
     this.effectiveUnitFilter,
     this.endTime,
     this.etag,
-    this.flagRelease,
     this.labels,
     this.name,
     this.parentRollout,
@@ -3722,7 +3865,6 @@ class Rollout {
         effectiveUnitFilter: json_['effectiveUnitFilter'] as core.String?,
         endTime: json_['endTime'] as core.String?,
         etag: json_['etag'] as core.String?,
-        flagRelease: json_['flagRelease'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -3755,7 +3897,6 @@ class Rollout {
     final effectiveUnitFilter = this.effectiveUnitFilter;
     final endTime = this.endTime;
     final etag = this.etag;
-    final flagRelease = this.flagRelease;
     final labels = this.labels;
     final name = this.name;
     final parentRollout = this.parentRollout;
@@ -3779,7 +3920,6 @@ class Rollout {
       'effectiveUnitFilter': ?effectiveUnitFilter,
       'endTime': ?endTime,
       'etag': ?etag,
-      'flagRelease': ?flagRelease,
       'labels': ?labels,
       'name': ?name,
       'parentRollout': ?parentRollout,
@@ -3920,7 +4060,7 @@ class RolloutKind {
   /// Output only.
   core.String? uid;
 
-  /// CEL(https://github.com/google/cel-spec) formatted filter string against
+  /// [CEL](https://github.com/google/cel-spec) formatted filter string against
   /// Unit.
   ///
   /// The filter will be applied to determine the eligible unit population. This
@@ -3935,7 +4075,7 @@ class RolloutKind {
   /// unit kind. In other words, this defines the population of target units to
   /// be upgraded by rollouts.
   ///
-  /// Required. Immutable.
+  /// Optional. Immutable.
   core.String? unitKind;
 
   /// Settings for controlling the pacing of rollouts i.e. the number of units
@@ -4123,6 +4263,24 @@ class Saas {
   /// Optional.
   core.Map<core.String, core.String>? annotations;
 
+  /// Reference to composite ApplicationTemplate.
+  ///
+  /// When specified, the template components will be imported into their
+  /// equivalent UnitKind, Release and Blueprint resources. Deleted references
+  /// will not delete imported resources. Should only be specified on source
+  /// regions, and be unspecified on replica regions.
+  ///
+  /// Optional.
+  CompositeRef? applicationTemplate;
+
+  /// Name of repository in Artifact Registry for system-generated Blueprints,
+  /// eg.
+  ///
+  /// Blueprints of imported ApplicationTemplates.
+  ///
+  /// Output only.
+  core.String? blueprintRepo;
+
   /// A set of conditions which indicate the various conditions this resource
   /// can have.
   ///
@@ -4206,6 +4364,8 @@ class Saas {
 
   Saas({
     this.annotations,
+    this.applicationTemplate,
+    this.blueprintRepo,
     this.conditions,
     this.createTime,
     this.error,
@@ -4224,6 +4384,13 @@ class Saas {
             (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(key, value as core.String),
             ),
+        applicationTemplate: json_.containsKey('applicationTemplate')
+            ? CompositeRef.fromJson(
+                json_['applicationTemplate']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        blueprintRepo: json_['blueprintRepo'] as core.String?,
         conditions: (json_['conditions'] as core.List?)
             ?.map(
               (value) => SaasCondition.fromJson(
@@ -4256,6 +4423,8 @@ class Saas {
 
   core.Map<core.String, core.dynamic> toJson() {
     final annotations = this.annotations;
+    final applicationTemplate = this.applicationTemplate;
+    final blueprintRepo = this.blueprintRepo;
     final conditions = this.conditions;
     final createTime = this.createTime;
     final error = this.error;
@@ -4268,6 +4437,8 @@ class Saas {
     final updateTime = this.updateTime;
     return {
       'annotations': ?annotations,
+      'applicationTemplate': ?applicationTemplate,
+      'blueprintRepo': ?blueprintRepo,
       'conditions': ?conditions,
       'createTime': ?createTime,
       'error': ?error,
@@ -4368,6 +4539,27 @@ class Schedule {
   core.Map<core.String, core.dynamic> toJson() {
     final startTime = this.startTime;
     return {'startTime': ?startTime};
+  }
+}
+
+/// Scope of an application.
+class Scope {
+  /// Scope Type.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "TYPE_REGIONAL" : Regional type.
+  /// - "TYPE_GLOBAL" : Global type.
+  core.String? type;
+
+  Scope({this.type});
+
+  Scope.fromJson(core.Map json_) : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final type = this.type;
+    return {'type': ?type};
   }
 }
 
@@ -4553,7 +4745,7 @@ class ToMapping {
 }
 
 /// A unit of deployment that has its lifecycle via a CRUD API using an
-/// actuation engine under the hood (e.g. based on Terraform, Helm or a custom
+/// actuation engine under the hood (e.g. based on Terraform, or a custom
 /// implementation provided by a service producer).
 ///
 /// A building block of a SaaS Tenant.
@@ -4566,6 +4758,14 @@ class Unit {
   ///
   /// Optional.
   core.Map<core.String, core.String>? annotations;
+
+  /// Reference to the AppHub Application this unit belongs to.
+  ///
+  /// All resources deployed in this Unit will be associated with the specified
+  /// Application.
+  ///
+  /// Optional.
+  core.String? application;
 
   /// A set of conditions which indicate the various conditions this resource
   /// can have.
@@ -4600,11 +4800,6 @@ class Unit {
   ///
   /// Output only.
   core.String? etag;
-
-  /// Flag revisions used by this Unit.
-  ///
-  /// Optional. Output only.
-  core.List<core.String>? flagRevisions;
 
   /// Indicates the current input variables deployed by the unit
   ///
@@ -4656,9 +4851,9 @@ class Unit {
   /// Set of key/value pairs corresponding to output variables from execution of
   /// actuation templates.
   ///
-  /// The variables are declared in actuation configs (e.g in helm chart or
-  /// terraform) and the values are fetched and returned by the actuation engine
-  /// upon completion of execution.
+  /// The variables are declared in actuation configs (in Terraform for example)
+  /// and the values are fetched and returned by the actuation engine upon
+  /// completion of execution.
   ///
   /// Optional. Output only.
   core.List<UnitVariable>? outputVariables;
@@ -4761,12 +4956,12 @@ class Unit {
 
   Unit({
     this.annotations,
+    this.application,
     this.conditions,
     this.createTime,
     this.dependencies,
     this.dependents,
     this.etag,
-    this.flagRevisions,
     this.inputVariables,
     this.labels,
     this.maintenance,
@@ -4794,6 +4989,7 @@ class Unit {
             (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(key, value as core.String),
             ),
+        application: json_['application'] as core.String?,
         conditions: (json_['conditions'] as core.List?)
             ?.map(
               (value) => UnitCondition.fromJson(
@@ -4817,9 +5013,6 @@ class Unit {
             )
             .toList(),
         etag: json_['etag'] as core.String?,
-        flagRevisions: (json_['flagRevisions'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
         inputVariables: (json_['inputVariables'] as core.List?)
             ?.map(
               (value) => UnitVariable.fromJson(
@@ -4867,12 +5060,12 @@ class Unit {
 
   core.Map<core.String, core.dynamic> toJson() {
     final annotations = this.annotations;
+    final application = this.application;
     final conditions = this.conditions;
     final createTime = this.createTime;
     final dependencies = this.dependencies;
     final dependents = this.dependents;
     final etag = this.etag;
-    final flagRevisions = this.flagRevisions;
     final inputVariables = this.inputVariables;
     final labels = this.labels;
     final maintenance = this.maintenance;
@@ -4894,12 +5087,12 @@ class Unit {
     final updateTime = this.updateTime;
     return {
       'annotations': ?annotations,
+      'application': ?application,
       'conditions': ?conditions,
       'createTime': ?createTime,
       'dependencies': ?dependencies,
       'dependents': ?dependents,
       'etag': ?etag,
-      'flagRevisions': ?flagRevisions,
       'inputVariables': ?inputVariables,
       'labels': ?labels,
       'maintenance': ?maintenance,
@@ -5048,6 +5241,16 @@ class UnitKind {
   /// Optional.
   core.Map<core.String, core.String>? annotations;
 
+  /// AppParams contains the parameters for creating an AppHub Application.
+  ///
+  /// Optional.
+  AppParams? appParams;
+
+  /// Reference to component and revision in a composite ApplicationTemplate.
+  ///
+  /// Optional.
+  ComponentRef? applicationTemplateComponent;
+
   /// BoundaryType describes the type of boundary the Unit Kind represents.
   ///
   /// Optional. Output only.
@@ -5062,14 +5265,6 @@ class UnitKind {
   /// Output only.
   core.String? createTime;
 
-  /// Default revisions of flags for this UnitKind.
-  ///
-  /// Newly created units will use the flag default_flag_revisions present at
-  /// the time of creation.
-  ///
-  /// Optional.
-  core.List<core.String>? defaultFlagRevisions;
-
   /// A reference to the Release object to use as default for creating new units
   /// of this UnitKind (optional).
   ///
@@ -5079,12 +5274,32 @@ class UnitKind {
   /// Optional.
   core.String? defaultRelease;
 
+  /// The timestamp when the resource was marked for deletion (deletion is an
+  /// asynchronous operation).
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
   /// List of other unit kinds that this release will depend on.
   ///
   /// Dependencies will be automatically provisioned if not found. Maximum 10.
   ///
   /// Optional. Immutable.
   core.List<Dependency>? dependencies;
+
+  /// Defines the default duration limits for UnitOperations created from this
+  /// UnitKind.
+  ///
+  /// These settings provide a baseline for execution time constraints. The
+  /// limits specified here can be overridden by more specific settings on an
+  /// individual UnitOperation resource. See the DurationLimits message
+  /// definition for details on the constraints like minimum, maximum, and
+  /// system default values for unit_operation_timeout. If not set,
+  /// UnitOperations will use the system default duration limits unless
+  /// overridden on the UnitOperation.
+  ///
+  /// Optional.
+  DurationLimits? durationLimits;
 
   /// An opaque value that uniquely identifies a version or generation of a
   /// resource.
@@ -5153,11 +5368,14 @@ class UnitKind {
 
   UnitKind({
     this.annotations,
+    this.appParams,
+    this.applicationTemplateComponent,
     this.boundaryType,
     this.createTime,
-    this.defaultFlagRevisions,
     this.defaultRelease,
+    this.deleteTime,
     this.dependencies,
+    this.durationLimits,
     this.etag,
     this.inputVariableMappings,
     this.labels,
@@ -5174,12 +5392,22 @@ class UnitKind {
             (json_['annotations'] as core.Map<core.String, core.dynamic>?)?.map(
               (key, value) => core.MapEntry(key, value as core.String),
             ),
+        appParams: json_.containsKey('appParams')
+            ? AppParams.fromJson(
+                json_['appParams'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        applicationTemplateComponent:
+            json_.containsKey('applicationTemplateComponent')
+            ? ComponentRef.fromJson(
+                json_['applicationTemplateComponent']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         boundaryType: json_['boundaryType'] as core.String?,
         createTime: json_['createTime'] as core.String?,
-        defaultFlagRevisions: (json_['defaultFlagRevisions'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
         defaultRelease: json_['defaultRelease'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
         dependencies: (json_['dependencies'] as core.List?)
             ?.map(
               (value) => Dependency.fromJson(
@@ -5187,6 +5415,11 @@ class UnitKind {
               ),
             )
             .toList(),
+        durationLimits: json_.containsKey('durationLimits')
+            ? DurationLimits.fromJson(
+                json_['durationLimits'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         etag: json_['etag'] as core.String?,
         inputVariableMappings: (json_['inputVariableMappings'] as core.List?)
             ?.map(
@@ -5213,11 +5446,14 @@ class UnitKind {
 
   core.Map<core.String, core.dynamic> toJson() {
     final annotations = this.annotations;
+    final appParams = this.appParams;
+    final applicationTemplateComponent = this.applicationTemplateComponent;
     final boundaryType = this.boundaryType;
     final createTime = this.createTime;
-    final defaultFlagRevisions = this.defaultFlagRevisions;
     final defaultRelease = this.defaultRelease;
+    final deleteTime = this.deleteTime;
     final dependencies = this.dependencies;
+    final durationLimits = this.durationLimits;
     final etag = this.etag;
     final inputVariableMappings = this.inputVariableMappings;
     final labels = this.labels;
@@ -5228,11 +5464,14 @@ class UnitKind {
     final updateTime = this.updateTime;
     return {
       'annotations': ?annotations,
+      'appParams': ?appParams,
+      'applicationTemplateComponent': ?applicationTemplateComponent,
       'boundaryType': ?boundaryType,
       'createTime': ?createTime,
-      'defaultFlagRevisions': ?defaultFlagRevisions,
       'defaultRelease': ?defaultRelease,
+      'deleteTime': ?deleteTime,
       'dependencies': ?dependencies,
+      'durationLimits': ?durationLimits,
       'etag': ?etag,
       'inputVariableMappings': ?inputVariableMappings,
       'labels': ?labels,
@@ -5293,6 +5532,16 @@ class UnitOperation {
   /// Optional.
   Deprovision? deprovision;
 
+  /// Defines the duration limits for this specific UnitOperation instance.
+  ///
+  /// These settings override any default duration limits set on the UnitKind.
+  /// See the DurationLimits message definition for details on the constraints
+  /// like minimum, maximum, and system default values for
+  /// unit_operation_timeout.
+  ///
+  /// Optional.
+  DurationLimits? durationLimits;
+
   /// The engine state for on-going deployment engine operation(s).
   ///
   /// This field is opaque for external usage.
@@ -5323,11 +5572,6 @@ class UnitOperation {
   ///
   /// Output only.
   core.String? etag;
-
-  /// Flag update operation.
-  ///
-  /// Optional.
-  FlagUpdate? flagUpdate;
 
   /// The labels on the resource, which can be used for categorization.
   ///
@@ -5422,10 +5666,10 @@ class UnitOperation {
     this.createTime,
     this.deleteTime,
     this.deprovision,
+    this.durationLimits,
     this.engineState,
     this.errorCategory,
     this.etag,
-    this.flagUpdate,
     this.labels,
     this.name,
     this.parentUnitOperation,
@@ -5460,14 +5704,14 @@ class UnitOperation {
                 json_['deprovision'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        durationLimits: json_.containsKey('durationLimits')
+            ? DurationLimits.fromJson(
+                json_['durationLimits'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         engineState: json_['engineState'] as core.String?,
         errorCategory: json_['errorCategory'] as core.String?,
         etag: json_['etag'] as core.String?,
-        flagUpdate: json_.containsKey('flagUpdate')
-            ? FlagUpdate.fromJson(
-                json_['flagUpdate'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -5502,10 +5746,10 @@ class UnitOperation {
     final createTime = this.createTime;
     final deleteTime = this.deleteTime;
     final deprovision = this.deprovision;
+    final durationLimits = this.durationLimits;
     final engineState = this.engineState;
     final errorCategory = this.errorCategory;
     final etag = this.etag;
-    final flagUpdate = this.flagUpdate;
     final labels = this.labels;
     final name = this.name;
     final parentUnitOperation = this.parentUnitOperation;
@@ -5524,10 +5768,10 @@ class UnitOperation {
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
       'deprovision': ?deprovision,
+      'durationLimits': ?durationLimits,
       'engineState': ?engineState,
       'errorCategory': ?errorCategory,
       'etag': ?etag,
-      'flagUpdate': ?flagUpdate,
       'labels': ?labels,
       'name': ?name,
       'parentUnitOperation': ?parentUnitOperation,

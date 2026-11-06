@@ -2,12 +2,12 @@ diff --git a/discovery/googleapis/places__v1.json b/discovery/googleapis/places_
 index 77d009fe0..c73f7887e 100644
 --- a/discovery/googleapis/places__v1.json
 +++ b/discovery/googleapis/places__v1.json
-@@ -17,7 +17,7 @@
+@@ -29,7 +29,7 @@
      "basePath": "",
      "baseUrl": "https://places.googleapis.com/",
      "batchPath": "batch",
 -    "canonicalName": "Maps Places",
 +    "canonicalName": "Places",
-     "description": "",
+     "description": "The Places API allows developers to access a variety of search and retrieval endpoints for a Place.",
      "discoveryVersion": "v1",
-     "documentationLink": "https://mapsplatform.google.com/maps-products/#places-section",
+     "documentationLink": "https://developers.google.com/maps/documentation/places/web-service",

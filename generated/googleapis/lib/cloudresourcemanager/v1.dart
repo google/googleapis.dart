@@ -2305,7 +2305,7 @@ typedef Lien = $Lien;
 
 /// The request sent to the `ListAvailableOrgPolicyConstraints` method on the
 /// project, folder, or organization.
-typedef ListAvailableOrgPolicyConstraintsRequest = $Request08;
+typedef ListAvailableOrgPolicyConstraintsRequest = $Request09;
 
 /// The response returned from the `ListAvailableOrgPolicyConstraints` method.
 ///
@@ -2406,7 +2406,7 @@ class ListLiensResponse {
 }
 
 /// The request sent to the ListOrgPolicies method.
-typedef ListOrgPoliciesRequest = $Request08;
+typedef ListOrgPoliciesRequest = $Request09;
 
 /// The response returned from the `ListOrgPolicies` method.
 ///
@@ -2966,6 +2966,19 @@ class Project {
   /// returned by the API.
   core.String? lifecycleState;
 
+  /// The type of Management Project.
+  ///
+  /// This field is only populated if `is_management_project` is `true`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MANAGEMENT_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "SELF_MANAGED" : The Management Project is a self-managed project that
+  /// constitutes its own boundary.
+  /// - "HUB" : The Management Project is a hub project that manages resources
+  /// across a boundary.
+  core.String? managementType;
+
   /// The optional user-assigned display name of the Project.
   ///
   /// When present it must be between 4 to 30 characters. Allowed characters
@@ -3010,6 +3023,7 @@ class Project {
     this.isManagementProject,
     this.labels,
     this.lifecycleState,
+    this.managementType,
     this.name,
     this.parent,
     this.projectId,
@@ -3028,6 +3042,7 @@ class Project {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         lifecycleState: json_['lifecycleState'] as core.String?,
+        managementType: json_['managementType'] as core.String?,
         name: json_['name'] as core.String?,
         parent: json_.containsKey('parent')
             ? ResourceId.fromJson(
@@ -3047,6 +3062,7 @@ class Project {
     final isManagementProject = this.isManagementProject;
     final labels = this.labels;
     final lifecycleState = this.lifecycleState;
+    final managementType = this.managementType;
     final name = this.name;
     final parent = this.parent;
     final projectId = this.projectId;
@@ -3058,6 +3074,7 @@ class Project {
       'isManagementProject': ?isManagementProject,
       'labels': ?labels,
       'lifecycleState': ?lifecycleState,
+      'managementType': ?managementType,
       'name': ?name,
       'parent': ?parent,
       'projectId': ?projectId,

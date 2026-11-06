@@ -1114,6 +1114,172 @@ class ProjectsLocationsConversionWorkspacesResource {
     );
   }
 
+  /// An internal, RPC only method that returns a list of the (filtered)
+  /// entities with minimal information required for the entities tree view.
+  ///
+  /// Request parameters:
+  ///
+  /// [conversionWorkspace] - Required. Name of the conversion workspace
+  /// resource whose database entities are described. Must be in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [fetchView] - Optional. The view to fetch. If not specified, FULL is used.
+  /// Possible string values are:
+  /// - "FETCH_VIEW_UNSPECIFIED" : Unspecified view. Defaults to FULL.
+  /// - "FULL" : Get all entities matching the filter.
+  /// - "SUMMARY" : Each schema will have one entity per (non sub) type with a
+  /// dummy name that will contain the aggregated information for all entities
+  /// of that type. Counters like number of statements and issues will be
+  /// aggregated accordingly.
+  /// - "FULL_WITH_DEPENDENCIES" : Same as FULL plus dependency information.
+  ///
+  /// [filter] - Optional. Filter the returned entities based on AIP-160
+  /// standard.
+  ///
+  /// [pageSize] - Optional. The maximum number of entities to return. The
+  /// service may return fewer entities than the value specifies. Default is
+  /// 100000.
+  ///
+  /// [pageToken] - Optional. The nextPageToken value received in the previous
+  /// call to conversionWorkspace.FetchEntitiesStatusView, used in the
+  /// subsequent request to retrieve the next page of results. On first call
+  /// this should be left blank. When paginating, all other parameters provided
+  /// to conversionWorkspace.FetchEntitiesStatusView must match the call that
+  /// provided the page token, except for the page_size parameter.
+  ///
+  /// [tree] - Required. The tree to fetch.
+  /// Possible string values are:
+  /// - "DB_TREE_TYPE_UNSPECIFIED" : Unspecified tree type.
+  /// - "SOURCE_TREE" : The source database tree.
+  /// - "DRAFT_TREE" : The draft database tree.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchEntitiesStatusViewResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchEntitiesStatusViewResponse> fetchEntitiesStatusView(
+    core.String conversionWorkspace, {
+    core.String? fetchView,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? tree,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fetchView': ?fetchView == null ? null : [fetchView],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'tree': ?tree == null ? null : [tree],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$conversionWorkspace') +
+        ':fetchEntitiesStatusView';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchEntitiesStatusViewResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// List issues of conversion workspace operations e.g. conversion.
+  ///
+  /// Request parameters:
+  ///
+  /// [conversionWorkspace] - Required. Conversion workspace with issues to
+  /// fetch. Must be in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [allIssues] - Optional. If 'true', gets all issues matching the filter.
+  /// Otherwise, for each entity only the issues matching the DdlKind chosen for
+  /// application on the destination are returned.
+  ///
+  /// [filter] - Optional. AIP-160 standard filter. Supporting both entity and
+  /// issue fields. Supported fields: - `name` / `fullname`: The entity full
+  /// name. - `type`: The entity type (e.g. `TABLE`, `VIEW`, `INDEX`,
+  /// `TRIGGER`). - `ddlkind`: The kind of DDL (e.g. `DDL_KIND_SOURCE`,
+  /// `DDL_KIND_AI`, `DDL_KIND_DETERMINISTIC`). - `issue.severity`: The severity
+  /// of the issue (e.g. `INFO`, `WARNING`, `ERROR`). - `issue.state`: The state
+  /// of the issue (e.g. `OPEN`, `RESOLVED`). - `issue.origin`: The origin of
+  /// the issue (e.g. `DETERMINISTIC`, `AI`). - `issue.category_id`: The
+  /// category ID of the issue. - `issue.group_id`: The group ID of the issue.
+  ///
+  /// [pageSize] - Optional. The maximum number of issues to return. The service
+  /// may return fewer issues than the value specifies.
+  ///
+  /// [pageToken] - Optional. The FetchIssuesResponse.next_page_token value
+  /// received in the previous call to FetchIssues, used in the subsequent
+  /// request to retrieve the next page of results. On first call this should be
+  /// left blank. When paginating, all other parameters provided to FetchIssues
+  /// must match the call that provided the page token, except for the page_size
+  /// parameter.
+  ///
+  /// [tree] - Optional. The tree to fetch issues from. If not specified, source
+  /// tree is assumed.
+  /// Possible string values are:
+  /// - "DB_TREE_TYPE_UNSPECIFIED" : Unspecified tree type.
+  /// - "SOURCE" : Returns seed and conversion issues
+  /// - "DRAFT" : Returns apply issues.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchIssuesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchIssuesResponse> fetchIssues(
+    core.String conversionWorkspace, {
+    core.bool? allIssues,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? tree,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'allIssues': ?allIssues == null ? null : ['${allIssues}'],
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'tree': ?tree == null ? null : [tree],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$conversionWorkspace') + ':fetchIssues';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchIssuesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Gets details of a single conversion workspace.
   ///
   /// Request parameters:
@@ -1481,6 +1647,54 @@ class ProjectsLocationsConversionWorkspacesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the draft DDL of an entity.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [conversionWorkspace] - Required. Name of the conversion workspace
+  /// resource in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SetDraftEntityDdlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SetDraftEntityDdlResponse> setDraftEntityDdl(
+    SetDraftEntityDdlRequest request,
+    core.String conversionWorkspace, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$conversionWorkspace') +
+        ':setDraftEntityDdl';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SetDraftEntityDdlResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3610,6 +3824,7 @@ class AlloyDbSettings {
   /// - "POSTGRES_16" : The database version is Postgres 16.
   /// - "POSTGRES_17" : The database version is Postgres 17.
   /// - "POSTGRES_18" : The database version is Postgres 18.
+  /// - "POSTGRES_19" : The database version is Postgres 19.
   core.String? databaseVersion;
 
   /// The encryption config can be specified to encrypt the data disks and other
@@ -5169,6 +5384,11 @@ class ConversionWorkspace {
   /// Output only.
   core.bool? hasUncommittedChanges;
 
+  /// The timestamp when the workspace was last applied.
+  ///
+  /// Optional. Output only.
+  core.String? latestApplyTime;
+
   /// The latest commit ID.
   ///
   /// Output only.
@@ -5178,6 +5398,11 @@ class ConversionWorkspace {
   ///
   /// Output only.
   core.String? latestCommitTime;
+
+  /// The timestamp when the workspace was last converted.
+  ///
+  /// Optional. Output only.
+  core.String? latestConvertTime;
 
   /// Full name of the workspace resource, in the form of:
   /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
@@ -5213,8 +5438,10 @@ class ConversionWorkspace {
     this.displayName,
     this.globalSettings,
     this.hasUncommittedChanges,
+    this.latestApplyTime,
     this.latestCommitId,
     this.latestCommitTime,
+    this.latestConvertTime,
     this.name,
     this.source,
     this.sourceProvider,
@@ -5235,8 +5462,10 @@ class ConversionWorkspace {
             (json_['globalSettings'] as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
         hasUncommittedChanges: json_['hasUncommittedChanges'] as core.bool?,
+        latestApplyTime: json_['latestApplyTime'] as core.String?,
         latestCommitId: json_['latestCommitId'] as core.String?,
         latestCommitTime: json_['latestCommitTime'] as core.String?,
+        latestConvertTime: json_['latestConvertTime'] as core.String?,
         name: json_['name'] as core.String?,
         source: json_.containsKey('source')
             ? DatabaseEngineInfo.fromJson(
@@ -5254,8 +5483,10 @@ class ConversionWorkspace {
     final displayName = this.displayName;
     final globalSettings = this.globalSettings;
     final hasUncommittedChanges = this.hasUncommittedChanges;
+    final latestApplyTime = this.latestApplyTime;
     final latestCommitId = this.latestCommitId;
     final latestCommitTime = this.latestCommitTime;
+    final latestConvertTime = this.latestConvertTime;
     final name = this.name;
     final source = this.source;
     final sourceProvider = this.sourceProvider;
@@ -5267,8 +5498,10 @@ class ConversionWorkspace {
       'displayName': ?displayName,
       'globalSettings': ?globalSettings,
       'hasUncommittedChanges': ?hasUncommittedChanges,
+      'latestApplyTime': ?latestApplyTime,
       'latestCommitId': ?latestCommitId,
       'latestCommitTime': ?latestCommitTime,
+      'latestConvertTime': ?latestConvertTime,
       'name': ?name,
       'source': ?source,
       'sourceProvider': ?sourceProvider,
@@ -5988,6 +6221,78 @@ class EntityDdl {
   }
 }
 
+/// An entity identifier.
+class EntityId {
+  /// The parent entity full name.
+  core.String? parentName;
+
+  /// The type of the database entity (schema, table, view, ...).
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
+  core.String? parentType;
+
+  /// The short name (e.g. table name) of the entity.
+  core.String? shortName;
+
+  /// The type of the database entity (schema, table, view, index, ...).
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
+  core.String? type;
+
+  EntityId({this.parentName, this.parentType, this.shortName, this.type});
+
+  EntityId.fromJson(core.Map json_)
+    : this(
+        parentName: json_['parentName'] as core.String?,
+        parentType: json_['parentType'] as core.String?,
+        shortName: json_['shortName'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final parentName = this.parentName;
+    final parentType = this.parentType;
+    final shortName = this.shortName;
+    final type = this.type;
+    return {
+      'parentName': ?parentName,
+      'parentType': ?parentType,
+      'shortName': ?shortName,
+      'type': ?type,
+    };
+  }
+}
+
 /// Issue related to the entity.
 class EntityIssue {
   /// Error/Warning code
@@ -6252,6 +6557,136 @@ class EntityMove {
   }
 }
 
+/// A single entity for the UI view.
+class EntityStatusView {
+  /// The set of entities that this entity directly depends on, i.e., it does
+  /// not include transitive dependencies.
+  ///
+  /// Provided only for FULL_WITH_DEPENDENCIES view. Dependencies are provided
+  /// according to the request tree type.
+  ///
+  /// Optional.
+  core.List<EntityId>? dependencies;
+
+  /// The DDL Kind selected for apply.
+  ///
+  /// If UNSPECIFIED, the entity wasn't converted yet. For SUMMARY view, this
+  /// rolls up from descendants with the logic of UNSPECIFIED \< DETERMINISTIC
+  /// \< AI. USER_EDIT is not propagated.
+  /// Possible string values are:
+  /// - "DDL_KIND_UNSPECIFIED" : The kind of the DDL is unknown.
+  /// - "SOURCE" : DDL of the source entity
+  /// - "DETERMINISTIC" : Deterministic converted DDL
+  /// - "AI" : Gemini AI converted DDL
+  /// - "USER_EDIT" : User edited DDL
+  core.String? draftDdlKind;
+
+  /// The entity short name and type from the DRAFT tree.
+  EntityId? draftEntity;
+
+  /// If ddl_kind is USER_EDIT, this holds the DDL kind of the original content
+  /// - DETERMINISTIC or AI.
+  ///
+  /// Otherwise, this is DDL_KIND_UNSPECIFIED. Relevant only for FULL view.
+  /// Possible string values are:
+  /// - "DDL_KIND_UNSPECIFIED" : The kind of the DDL is unknown.
+  /// - "SOURCE" : DDL of the source entity
+  /// - "DETERMINISTIC" : Deterministic converted DDL
+  /// - "AI" : Gemini AI converted DDL
+  /// - "USER_EDIT" : User edited DDL
+  core.String? editedDdlKind;
+
+  /// Unresolved issues information according to the current Draft DdlKind.
+  IssueAggregateData? issues;
+
+  /// Resolved issues information according to the current Draft DdlKind.
+  IssueAggregateData? resolvedIssues;
+
+  /// The entity short name and type from the SOURCE tree.
+  EntityId? sourceEntity;
+
+  /// Whether the entity has successfully generated and executed validation
+  /// tests.
+  ///
+  /// Optional.
+  core.bool? testedEntity;
+
+  /// Was the entity applied on the destination.
+  ///
+  /// Relevant only for FULL view.
+  core.bool? wasApplied;
+
+  EntityStatusView({
+    this.dependencies,
+    this.draftDdlKind,
+    this.draftEntity,
+    this.editedDdlKind,
+    this.issues,
+    this.resolvedIssues,
+    this.sourceEntity,
+    this.testedEntity,
+    this.wasApplied,
+  });
+
+  EntityStatusView.fromJson(core.Map json_)
+    : this(
+        dependencies: (json_['dependencies'] as core.List?)
+            ?.map(
+              (value) => EntityId.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        draftDdlKind: json_['draftDdlKind'] as core.String?,
+        draftEntity: json_.containsKey('draftEntity')
+            ? EntityId.fromJson(
+                json_['draftEntity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        editedDdlKind: json_['editedDdlKind'] as core.String?,
+        issues: json_.containsKey('issues')
+            ? IssueAggregateData.fromJson(
+                json_['issues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        resolvedIssues: json_.containsKey('resolvedIssues')
+            ? IssueAggregateData.fromJson(
+                json_['resolvedIssues'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        sourceEntity: json_.containsKey('sourceEntity')
+            ? EntityId.fromJson(
+                json_['sourceEntity'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        testedEntity: json_['testedEntity'] as core.bool?,
+        wasApplied: json_['wasApplied'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dependencies = this.dependencies;
+    final draftDdlKind = this.draftDdlKind;
+    final draftEntity = this.draftEntity;
+    final editedDdlKind = this.editedDdlKind;
+    final issues = this.issues;
+    final resolvedIssues = this.resolvedIssues;
+    final sourceEntity = this.sourceEntity;
+    final testedEntity = this.testedEntity;
+    final wasApplied = this.wasApplied;
+    return {
+      'dependencies': ?dependencies,
+      'draftDdlKind': ?draftDdlKind,
+      'draftEntity': ?draftEntity,
+      'editedDdlKind': ?editedDdlKind,
+      'issues': ?issues,
+      'resolvedIssues': ?resolvedIssues,
+      'sourceEntity': ?sourceEntity,
+      'testedEntity': ?testedEntity,
+      'wasApplied': ?wasApplied,
+    };
+  }
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -6271,6 +6706,115 @@ class EntityMove {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// Response message for DataMigrationService.FetchEntitiesStatusView.
+class FetchEntitiesStatusViewResponse {
+  /// A list of the entities matching the request, sorted by their full name
+  /// (source name if requested the SOURCE tree, draft name if requested the
+  /// DRAFT tree).
+  ///
+  /// Sub-entities (such as indexes) always appear immediately after their
+  /// parent element.
+  core.List<EntityStatusView>? entities;
+
+  /// A token which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  FetchEntitiesStatusViewResponse({this.entities, this.nextPageToken});
+
+  FetchEntitiesStatusViewResponse.fromJson(core.Map json_)
+    : this(
+        entities: (json_['entities'] as core.List?)
+            ?.map(
+              (value) => EntityStatusView.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final entities = this.entities;
+    final nextPageToken = this.nextPageToken;
+    return {'entities': ?entities, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Response for fetching issues of a conversion workspace.
+class FetchIssuesResponse {
+  /// The list of issues for the conversion workspace.
+  core.List<Issue>? issues;
+
+  /// A token which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  FetchIssuesResponse({this.issues, this.nextPageToken});
+
+  FetchIssuesResponse.fromJson(core.Map json_)
+    : this(
+        issues: (json_['issues'] as core.List?)
+            ?.map(
+              (value) =>
+                  Issue.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final issues = this.issues;
+    final nextPageToken = this.nextPageToken;
+    return {'issues': ?issues, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// Issue position.
+class FetchIssuesResponseIssuePosition {
+  /// Issue column number.
+  core.int? column;
+
+  /// Issue length.
+  core.int? length;
+
+  /// Issue line number.
+  core.int? line;
+
+  /// Issue offset.
+  core.int? offset;
+
+  FetchIssuesResponseIssuePosition({
+    this.column,
+    this.length,
+    this.line,
+    this.offset,
+  });
+
+  FetchIssuesResponseIssuePosition.fromJson(core.Map json_)
+    : this(
+        column: json_['column'] as core.int?,
+        length: json_['length'] as core.int?,
+        line: json_['line'] as core.int?,
+        offset: json_['offset'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final column = this.column;
+    final length = this.length;
+    final line = this.line;
+    final offset = this.offset;
+    return {
+      'column': ?column,
+      'length': ?length,
+      'line': ?line,
+      'offset': ?offset,
+    };
+  }
+}
 
 /// Response message for a 'FetchStaticIps' request.
 class FetchStaticIpsResponse {
@@ -6365,6 +6909,36 @@ class FunctionEntity {
     final customFeatures = this.customFeatures;
     final sqlCode = this.sqlCode;
     return {'customFeatures': ?customFeatures, 'sqlCode': ?sqlCode};
+  }
+}
+
+/// Cloud Storage source details for seeding.
+class GcsSource {
+  /// The Cloud Storage bucket containing the schema report files.
+  ///
+  /// Required.
+  core.String? bucket;
+
+  /// The prefix for the report paths in the bucket.
+  ///
+  /// Different seed versions (report versions) might reside in the same bucket,
+  /// the prefix allows to identify the correct seed version.
+  ///
+  /// Required.
+  core.String? prefix;
+
+  GcsSource({this.bucket, this.prefix});
+
+  GcsSource.fromJson(core.Map json_)
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        prefix: json_['prefix'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final bucket = this.bucket;
+    final prefix = this.prefix;
+    return {'bucket': ?bucket, 'prefix': ?prefix};
   }
 }
 
@@ -6749,6 +7323,296 @@ class IntComparisonFilter {
     final value = this.value;
     final valueComparison = this.valueComparison;
     return {'value': ?value, 'valueComparison': ?valueComparison};
+  }
+}
+
+/// Issue related to the entity.
+class Issue {
+  /// The category ID.
+  /// Possible string values are:
+  /// - "ISSUE_CATEGORY_ID_UNSPECIFIED" : Unspecified issue category ID.
+  /// - "ISSUE_CATEGORY_ID_CW00" : General conversion issues.
+  /// - "ISSUE_CATEGORY_ID_CW01" : Input issues.
+  /// - "ISSUE_CATEGORY_ID_CW02" : Source functionality not supported.
+  /// - "ISSUE_CATEGORY_ID_CW03" : Source feature not supported.
+  /// - "ISSUE_CATEGORY_ID_CW04" : Unsupported syntax.
+  /// - "ISSUE_CATEGORY_ID_CW05" : Data types and conversion.
+  /// - "ISSUE_CATEGORY_ID_CW06" : Potential functional nuances.
+  /// - "ISSUE_CATEGORY_ID_CW07" : Functional review recommended.
+  /// - "ISSUE_CATEGORY_ID_CW08" : Refactoring required.
+  /// - "ISSUE_CATEGORY_ID_CW99" : Gemini review recommendations.
+  /// - "ISSUE_CATEGORY_ID_QA00" : Quality assessment findings.
+  /// - "ISSUE_CATEGORY_ID_AP00" : General apply issues.
+  core.String? categoryId;
+
+  /// Entity full name.
+  core.String? entityFullName;
+
+  /// The entity type (if the DDL is for a sub entity).
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
+  core.String? entityType;
+
+  /// The group ID.
+  /// Possible string values are:
+  /// - "ISSUE_GROUP_ID_UNSPECIFIED" : Unspecified issue group ID.
+  /// - "ISSUE_GROUP_ID_CW_OP0000" : General conversion issues.
+  /// - "ISSUE_GROUP_ID_CW_OP0001" : Metadata conversion issues.
+  /// - "ISSUE_GROUP_ID_CW_OP0002" : Contact your support team.
+  /// - "ISSUE_GROUP_ID_CW_OP0101" : Invalid source code.
+  /// - "ISSUE_GROUP_ID_CW_OP0102" : Missing referenced objects.
+  /// - "ISSUE_GROUP_ID_CW_OP0103" : Missing primary key.
+  /// - "ISSUE_GROUP_ID_CW_OP0200" : Source functionality not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0201" : SQLCODE not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0202" : Oracle data dictionary object not
+  /// supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0203" : Oracle SQL function not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0204" : Oracle PL/SQL package not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0205" : Data type not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0206" : Naming conflict.
+  /// - "ISSUE_GROUP_ID_CW_OP0300" : Source feature not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0301" : Schema objects or attributes not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0315" : Synonyms not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0303" : Bulk binding not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0304" : Collections not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0305" : Pipelined functions not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0306" : Dynamic SQL not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0307" : CONNECT BY option not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0308" : Locking and transactions issues.
+  /// - "ISSUE_GROUP_ID_CW_OP0309" : JSON not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0310" : XML not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0311" : MERGE not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0312" : PIVOT not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0313" : ALTER statement option not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0314" : SQL feature not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0302" : PL/SQL feature not supported.
+  /// - "ISSUE_GROUP_ID_CW_OP0400" : Unsupported syntax.
+  /// - "ISSUE_GROUP_ID_CW_OP0401" : Unsupported SQL syntax.
+  /// - "ISSUE_GROUP_ID_CW_OP0402" : Unsupported PL/SQL syntax.
+  /// - "ISSUE_GROUP_ID_CW_OP0403" : Unsupported date and timestamp syntax.
+  /// - "ISSUE_GROUP_ID_CW_OP0404" : Unsupported exceptions syntax.
+  /// - "ISSUE_GROUP_ID_CW_OP0500" : Data types and conversion issues.
+  /// - "ISSUE_GROUP_ID_CW_OP0501" : Date format model issues.
+  /// - "ISSUE_GROUP_ID_CW_OP0502" : Numeric format model issues.
+  /// - "ISSUE_GROUP_ID_CW_OP0503" : Casting issues.
+  /// - "ISSUE_GROUP_ID_CW_OP0504" : Comparison issues.
+  /// - "ISSUE_GROUP_ID_CW_OP0601" : Review date format model.
+  /// - "ISSUE_GROUP_ID_CW_OP0602" : Review numeric format model.
+  /// - "ISSUE_GROUP_ID_CW_OP0603" : Review exception code.
+  /// - "ISSUE_GROUP_ID_CW_OP0604" : Review exception message.
+  /// - "ISSUE_GROUP_ID_CW_OP0605" : Review Oracle built-in function emulation.
+  /// - "ISSUE_GROUP_ID_CW_OP0606" : Review foreign key column data type.
+  /// - "ISSUE_GROUP_ID_CW_OP0701" : Functional review recommended.
+  /// - "ISSUE_GROUP_ID_CW_OP0702" : Review Oracle built-in function emulation.
+  /// - "ISSUE_GROUP_ID_CW_OP0801" : Autonomous transactions refactoring
+  /// required.
+  /// - "ISSUE_GROUP_ID_CW_OP0802" : Database links refactoring required.
+  /// - "ISSUE_GROUP_ID_CW_OP0803" : Advanced queuing refactoring required.
+  /// - "ISSUE_GROUP_ID_CW_OP0804" : Database email refactoring required.
+  /// - "ISSUE_GROUP_ID_CW_OP0805" : Jobs and scheduling refactoring required.
+  /// - "ISSUE_GROUP_ID_CW_OP0806" : File I/O refactoring required.
+  /// - "ISSUE_GROUP_ID_CW_OP0807" : Synonyms refactoring required.
+  /// - "ISSUE_GROUP_ID_CW_OP0808" : Global temporary tables refactoring
+  /// required.
+  /// - "ISSUE_GROUP_ID_QA_OP0000" : Functional equivalence assessment findings.
+  /// - "ISSUE_GROUP_ID_CW_SP0000" : General conversion issues.
+  /// - "ISSUE_GROUP_ID_CW_SP0001" : Metadata conversion issues.
+  /// - "ISSUE_GROUP_ID_CW_SP0002" : Contact your support team.
+  /// - "ISSUE_GROUP_ID_CW_SP0101" : Invalid source code.
+  /// - "ISSUE_GROUP_ID_CW_SP0102" : Missing referenced objects.
+  /// - "ISSUE_GROUP_ID_CW_SP0103" : Missing primary key.
+  /// - "ISSUE_GROUP_ID_CW_SP0200" : Source functionality not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0201" : SQL Server system view not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0202" : SQL Server SQL function not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0203" : SQL Server T-SQL object not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0204" : Missing SQL Server system View
+  /// - "ISSUE_GROUP_ID_CW_SP0205" : Naming conflict.
+  /// - "ISSUE_GROUP_ID_CW_SP0300" : Source feature not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0302" : T-SQL feature not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0306" : Dynamic SQL not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0308" : JSON not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0309" : Locking and transactions issues.
+  /// - "ISSUE_GROUP_ID_CW_SP0310" : XML not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0311" : MERGE not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0312" : PIVOT not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0313" : ALTER statement option not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0314" : SQL feature not supported.
+  /// - "ISSUE_GROUP_ID_CW_SP0400" : Unsupported syntax.
+  /// - "ISSUE_GROUP_ID_CW_SP0401" : Unsupported SQL syntax.
+  /// - "ISSUE_GROUP_ID_CW_SP0402" : Unsupported T-SQL syntax.
+  /// - "ISSUE_GROUP_ID_CW_SP0403" : Unsupported date and timestamp syntax.
+  /// - "ISSUE_GROUP_ID_CW_SP0404" : Unsupported exceptions syntax.
+  /// - "ISSUE_GROUP_ID_CW_SP0500" : Data types and conversion issues.
+  /// - "ISSUE_GROUP_ID_CW_SP0501" : Date format model issues.
+  /// - "ISSUE_GROUP_ID_CW_SP0502" : Numeric format model issues.
+  /// - "ISSUE_GROUP_ID_CW_SP0503" : Casting issues.
+  /// - "ISSUE_GROUP_ID_CW_SP0504" : Comparison issues.
+  /// - "ISSUE_GROUP_ID_CW_SP0601" : Review date format model.
+  /// - "ISSUE_GROUP_ID_CW_SP0602" : Review numeric format model.
+  /// - "ISSUE_GROUP_ID_CW_SP0604" : Review exception message.
+  /// - "ISSUE_GROUP_ID_CW_SP0701" : Functional review recommended.
+  /// - "ISSUE_GROUP_ID_CW_SP0802" : Database links refactoring required.
+  /// - "ISSUE_GROUP_ID_CW_SP0807" : Synonyms refactoring required.
+  /// - "ISSUE_GROUP_ID_QA_SP0000" : Functional equivalence assessment findings.
+  /// - "ISSUE_GROUP_ID_CW_AI9900" : Review Gemini suggestions.
+  /// - "ISSUE_GROUP_ID_CW_AI9901" : Review AI-augmented code.
+  /// - "ISSUE_GROUP_ID_CW_AI9902" : Citations for AI-augmented code.
+  /// - "ISSUE_GROUP_ID_CW_AP0000" : General apply issues.
+  core.String? groupId;
+
+  /// Unique Issue ID.
+  ///
+  /// Use this ID when referencing a specific issue in other API calls, such as
+  /// DataMigrationService.SetIssuesState.
+  core.String? id;
+
+  /// The source of the issue (deterministic, gemini, etc).
+  /// Possible string values are:
+  /// - "ISSUE_ORIGIN_UNSPECIFIED" : Unspecified issue origin.
+  /// - "ISSUE_ORIGIN_DETERMINISTIC" : Issue originated from the deterministic
+  /// conversion engine.
+  /// - "ISSUE_ORIGIN_AI" : Issue originated from the AI conversion engine.
+  /// - "ISSUE_ORIGIN_AI_FROM_DETERMINISTIC" : CODE_CONVERSION/CST issues that
+  /// were carried over to the Gemini conversion,
+  core.String? issueOrigin;
+
+  /// The state of the issue (open, resolved, etc).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ISSUE_STATE_UNSPECIFIED" : Unspecified issue state.
+  /// - "ISSUE_STATE_OPEN" : Issue is open.
+  /// - "ISSUE_STATE_RESOLVED" : Issue is resolved.
+  core.String? issueState;
+
+  /// Issue detailed message.
+  core.String? message;
+
+  /// The position of the issue found, if relevant.
+  FetchIssuesResponseIssuePosition? position;
+
+  /// Severity of the issue.
+  /// Possible string values are:
+  /// - "ISSUE_SEVERITY_UNSPECIFIED" : Unspecified issue severity.
+  /// - "ISSUE_SEVERITY_INFO" : Info.
+  /// - "ISSUE_SEVERITY_WARNING" : Warning.
+  /// - "ISSUE_SEVERITY_ERROR" : Error.
+  core.String? severity;
+
+  /// The type of the issue.
+  /// Possible string values are:
+  /// - "ISSUE_TYPE_UNSPECIFIED" : Unspecified issue type.
+  /// - "ISSUE_TYPE_CONVERSION" : Issue originated from the conversion process.
+  /// - "ISSUE_TYPE_PULL_SCHEMA" : Issue originated from the pull schema
+  /// process.
+  /// - "ISSUE_TYPE_APPLY" : Issue originated from the apply process.
+  core.String? type;
+
+  Issue({
+    this.categoryId,
+    this.entityFullName,
+    this.entityType,
+    this.groupId,
+    this.id,
+    this.issueOrigin,
+    this.issueState,
+    this.message,
+    this.position,
+    this.severity,
+    this.type,
+  });
+
+  Issue.fromJson(core.Map json_)
+    : this(
+        categoryId: json_['categoryId'] as core.String?,
+        entityFullName: json_['entityFullName'] as core.String?,
+        entityType: json_['entityType'] as core.String?,
+        groupId: json_['groupId'] as core.String?,
+        id: json_['id'] as core.String?,
+        issueOrigin: json_['issueOrigin'] as core.String?,
+        issueState: json_['issueState'] as core.String?,
+        message: json_['message'] as core.String?,
+        position: json_.containsKey('position')
+            ? FetchIssuesResponseIssuePosition.fromJson(
+                json_['position'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        severity: json_['severity'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final categoryId = this.categoryId;
+    final entityFullName = this.entityFullName;
+    final entityType = this.entityType;
+    final groupId = this.groupId;
+    final id = this.id;
+    final issueOrigin = this.issueOrigin;
+    final issueState = this.issueState;
+    final message = this.message;
+    final position = this.position;
+    final severity = this.severity;
+    final type = this.type;
+    return {
+      'categoryId': ?categoryId,
+      'entityFullName': ?entityFullName,
+      'entityType': ?entityType,
+      'groupId': ?groupId,
+      'id': ?id,
+      'issueOrigin': ?issueOrigin,
+      'issueState': ?issueState,
+      'message': ?message,
+      'position': ?position,
+      'severity': ?severity,
+      'type': ?type,
+    };
+  }
+}
+
+/// Aggregate issue information.
+class IssueAggregateData {
+  /// Number of error issues.
+  core.int? errorCount;
+
+  /// Number of info issues.
+  core.int? infoCount;
+
+  /// Number of warning issues.
+  core.int? warningCount;
+
+  IssueAggregateData({this.errorCount, this.infoCount, this.warningCount});
+
+  IssueAggregateData.fromJson(core.Map json_)
+    : this(
+        errorCount: json_['errorCount'] as core.int?,
+        infoCount: json_['infoCount'] as core.int?,
+        warningCount: json_['warningCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final errorCount = this.errorCount;
+    final infoCount = this.infoCount;
+    final warningCount = this.warningCount;
+    return {
+      'errorCount': ?errorCount,
+      'infoCount': ?infoCount,
+      'warningCount': ?warningCount,
+    };
   }
 }
 
@@ -7680,6 +8544,9 @@ class MigrationJob {
   /// - "PREPARING_THE_DUMP" : Only RDS flow - the sources writes stopped,
   /// waiting for dump to begin
   /// - "READY_FOR_PROMOTE" : The migration job is ready to be promoted.
+  /// - "PHASE_FAILBACK" : The migration job is in the failback phase. This
+  /// phase is currently used only for SQL Server Distributed Availability Group
+  /// (DAG) migrations.
   core.String? phase;
 
   /// Configuration for PostgreSQL homogeneous migration.
@@ -9719,15 +10586,23 @@ class PrivateServiceConnectConnectivity {
 
 /// Request message for 'PromoteMigrationJob' request.
 class PromoteMigrationJobRequest {
+  /// If true, the promote operation will perform a failback promote from
+  /// destination back to source (only supported when the migration job is in
+  /// FAILBACK phase).
+  ///
+  /// Optional.
+  core.bool? failback;
+
   /// The object filter to apply to the migration job.
   ///
   /// Optional.
   MigrationJobObjectsConfig? objectsFilter;
 
-  PromoteMigrationJobRequest({this.objectsFilter});
+  PromoteMigrationJobRequest({this.failback, this.objectsFilter});
 
   PromoteMigrationJobRequest.fromJson(core.Map json_)
     : this(
+        failback: json_['failback'] as core.bool?,
         objectsFilter: json_.containsKey('objectsFilter')
             ? MigrationJobObjectsConfig.fromJson(
                 json_['objectsFilter'] as core.Map<core.String, core.dynamic>,
@@ -9736,8 +10611,9 @@ class PromoteMigrationJobRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final failback = this.failback;
     final objectsFilter = this.objectsFilter;
-    return {'objectsFilter': ?objectsFilter};
+    return {'failback': ?failback, 'objectsFilter': ?objectsFilter};
   }
 }
 
@@ -10009,6 +10885,11 @@ class SeedConversionWorkspaceRequest {
   /// Optional.
   core.String? destinationConnectionProfile;
 
+  /// Cloud Storage source details for seeding.
+  ///
+  /// Optional.
+  GcsSource? gcsSource;
+
   /// Fully qualified (Uri) name of the source connection profile.
   ///
   /// Optional.
@@ -10017,6 +10898,7 @@ class SeedConversionWorkspaceRequest {
   SeedConversionWorkspaceRequest({
     this.autoCommit,
     this.destinationConnectionProfile,
+    this.gcsSource,
     this.sourceConnectionProfile,
   });
 
@@ -10025,6 +10907,11 @@ class SeedConversionWorkspaceRequest {
         autoCommit: json_['autoCommit'] as core.bool?,
         destinationConnectionProfile:
             json_['destinationConnectionProfile'] as core.String?,
+        gcsSource: json_.containsKey('gcsSource')
+            ? GcsSource.fromJson(
+                json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         sourceConnectionProfile:
             json_['sourceConnectionProfile'] as core.String?,
       );
@@ -10032,10 +10919,12 @@ class SeedConversionWorkspaceRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final autoCommit = this.autoCommit;
     final destinationConnectionProfile = this.destinationConnectionProfile;
+    final gcsSource = this.gcsSource;
     final sourceConnectionProfile = this.sourceConnectionProfile;
     return {
       'autoCommit': ?autoCommit,
       'destinationConnectionProfile': ?destinationConnectionProfile,
+      'gcsSource': ?gcsSource,
       'sourceConnectionProfile': ?sourceConnectionProfile,
     };
   }
@@ -10158,6 +11047,113 @@ class SequenceEntity {
     };
   }
 }
+
+/// Request message for DataMigrationService.SetDraftEntityDdl.
+class SetDraftEntityDdlRequest {
+  /// Which DDL (Deterministic/AI) the updated DDL is based on.
+  ///
+  /// Defaults to DETERMINISTIC if not specified.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DDL_KIND_UNSPECIFIED" : The kind of the DDL is unknown.
+  /// - "SOURCE" : DDL of the source entity
+  /// - "DETERMINISTIC" : Deterministic converted DDL
+  /// - "AI" : Gemini AI converted DDL
+  /// - "USER_EDIT" : User edited DDL
+  core.String? basedOnDdlKind;
+
+  /// The DDL to set.
+  ///
+  /// Required.
+  core.String? ddl;
+
+  /// The updated DDL Kind.
+  ///
+  /// Can be either USER_EDIT (default) or AI.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DDL_KIND_UNSPECIFIED" : The kind of the DDL is unknown.
+  /// - "SOURCE" : DDL of the source entity
+  /// - "DETERMINISTIC" : Deterministic converted DDL
+  /// - "AI" : Gemini AI converted DDL
+  /// - "USER_EDIT" : User edited DDL
+  core.String? ddlKind;
+
+  /// The draft entity full name from the tree.
+  ///
+  /// .
+  ///
+  /// Required.
+  core.String? entityName;
+
+  /// The type of the database entity (table, view, index, ...).
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
+  core.String? entityType;
+
+  /// An optional explanation of the generated DDL if ddl_kind is AI.
+  ///
+  /// Optional.
+  core.String? explanation;
+
+  SetDraftEntityDdlRequest({
+    this.basedOnDdlKind,
+    this.ddl,
+    this.ddlKind,
+    this.entityName,
+    this.entityType,
+    this.explanation,
+  });
+
+  SetDraftEntityDdlRequest.fromJson(core.Map json_)
+    : this(
+        basedOnDdlKind: json_['basedOnDdlKind'] as core.String?,
+        ddl: json_['ddl'] as core.String?,
+        ddlKind: json_['ddlKind'] as core.String?,
+        entityName: json_['entityName'] as core.String?,
+        entityType: json_['entityType'] as core.String?,
+        explanation: json_['explanation'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final basedOnDdlKind = this.basedOnDdlKind;
+    final ddl = this.ddl;
+    final ddlKind = this.ddlKind;
+    final entityName = this.entityName;
+    final entityType = this.entityType;
+    final explanation = this.explanation;
+    return {
+      'basedOnDdlKind': ?basedOnDdlKind,
+      'ddl': ?ddl,
+      'ddlKind': ?ddlKind,
+      'entityName': ?entityName,
+      'entityType': ?entityType,
+      'explanation': ?explanation,
+    };
+  }
+}
+
+/// Response message for DataMigrationService.SetDraftEntityDdl.
+typedef SetDraftEntityDdlResponse = $Empty;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -10610,7 +11606,14 @@ class SourceObjectIdentifier {
 
 /// List of configurations for the source objects to be migrated.
 class SourceObjectsConfig {
-  /// The list of the objects to be migrated.
+  /// The list of the objects to be excluded from the migration.
+  ///
+  /// Exclusion takes precedence over inclusion in `object_configs`.
+  ///
+  /// Optional.
+  core.List<SourceObjectConfig>? excludedObjectConfigs;
+
+  /// The list of the objects to be included in the migration.
   ///
   /// Optional.
   core.List<SourceObjectConfig>? objectConfigs;
@@ -10625,10 +11628,21 @@ class SourceObjectsConfig {
   /// - "SPECIFIED_OBJECTS" : Migrate specific objects.
   core.String? objectsSelectionType;
 
-  SourceObjectsConfig({this.objectConfigs, this.objectsSelectionType});
+  SourceObjectsConfig({
+    this.excludedObjectConfigs,
+    this.objectConfigs,
+    this.objectsSelectionType,
+  });
 
   SourceObjectsConfig.fromJson(core.Map json_)
     : this(
+        excludedObjectConfigs: (json_['excludedObjectConfigs'] as core.List?)
+            ?.map(
+              (value) => SourceObjectConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         objectConfigs: (json_['objectConfigs'] as core.List?)
             ?.map(
               (value) => SourceObjectConfig.fromJson(
@@ -10640,9 +11654,11 @@ class SourceObjectsConfig {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final excludedObjectConfigs = this.excludedObjectConfigs;
     final objectConfigs = this.objectConfigs;
     final objectsSelectionType = this.objectsSelectionType;
     return {
+      'excludedObjectConfigs': ?excludedObjectConfigs,
       'objectConfigs': ?objectConfigs,
       'objectsSelectionType': ?objectsSelectionType,
     };
@@ -11370,8 +12386,9 @@ class SslConfig {
   /// SSL flags used for establishing SSL connection to the source database.
   ///
   /// Only source specific flags are supported. An object containing a list of
-  /// "key": "value" pairs. Example: { "server_certificate_hostname":
-  /// "server.com"}.
+  /// "key": "value" pairs. Examples: { "server_certificate_dn":
+  /// "CN=server.com,OU=RDS,O=Amazon.com,C=US"} or {
+  /// "server_certificate_hostname": "server.com"}.
   ///
   /// Optional.
   core.Map<core.String, core.String>? sslFlags;

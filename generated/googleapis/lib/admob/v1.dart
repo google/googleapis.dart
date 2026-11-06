@@ -1221,6 +1221,11 @@ class MediationReportSpecSortCondition {
   /// average eCPM per mediation group and per ad source instance level is
   /// supported dating back to October 20, 2019. Third-party estimated average
   /// eCPM will show 0 for dates prior to October 20, 2019.
+  /// - "AD_LOAD_LATENCY" : The ad load latency is the total time it takes for
+  /// an ad to load measured in seconds. It starts when the ad is requested and
+  /// ends when a response is received. See
+  /// https://support.google.com/admob/answer/12571120 for additional
+  /// information.
   core.String? metric;
 
   /// Sorting order of the dimension or metric.

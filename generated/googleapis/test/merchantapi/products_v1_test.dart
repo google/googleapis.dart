@@ -1996,6 +1996,7 @@ api.Warranty buildWarranty() {
   buildCounterWarranty++;
   if (buildCounterWarranty < 3) {
     o.duration = 'foo';
+    o.durationUnit = 'foo';
     o.mileage = buildMileage();
   }
   buildCounterWarranty--;
@@ -2006,6 +2007,7 @@ void checkWarranty(api.Warranty o) {
   buildCounterWarranty++;
   if (buildCounterWarranty < 3) {
     unittest.expect(o.duration!, unittest.equals('foo'));
+    unittest.expect(o.durationUnit!, unittest.equals('foo'));
     checkMileage(o.mileage!);
   }
   buildCounterWarranty--;

@@ -3192,8 +3192,9 @@ class PermissionsResource {
 
   /// Deletes a permission from a file or shared drive.
   ///
-  /// **Warning:** Concurrent permissions operations on the same file are not
-  /// supported; only the last update is applied.
+  /// **Warning:** Concurrent permission modifications (such as update or
+  /// delete) on the same file, folder, or shared drive aren't supported across
+  /// any users or clients; only the last update is applied.
   ///
   /// Request parameters:
   ///
@@ -3364,8 +3365,9 @@ class PermissionsResource {
 
   /// Inserts a permission for a file or shared drive.
   ///
-  /// **Warning:** Concurrent permissions operations on the same file are not
-  /// supported; only the last update is applied.
+  /// **Warning:** Concurrent permission modifications (such as update or
+  /// delete) on the same file, folder, or shared drive aren't supported across
+  /// any users or clients; only the last update is applied.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3545,8 +3547,9 @@ class PermissionsResource {
 
   /// Updates a permission using patch semantics.
   ///
-  /// **Warning:** Concurrent permissions operations on the same file are not
-  /// supported; only the last update is applied.
+  /// **Warning:** Concurrent permission modifications (such as update or
+  /// delete) on the same file, folder, or shared drive aren't supported across
+  /// any users or clients; only the last update is applied.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3639,8 +3642,9 @@ class PermissionsResource {
 
   /// Updates a permission.
   ///
-  /// **Warning:** Concurrent permissions operations on the same file are not
-  /// supported; only the last update is applied.
+  /// **Warning:** Concurrent permission modifications (such as update or
+  /// delete) on the same file, folder, or shared drive aren't supported across
+  /// any users or clients; only the last update is applied.
   ///
   /// [request] - The metadata request object.
   ///

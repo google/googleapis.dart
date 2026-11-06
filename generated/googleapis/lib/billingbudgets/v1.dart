@@ -343,12 +343,17 @@ class BillingAccountsBudgetsResource {
 
 /// A budget is a plan that describes what you expect to spend on Cloud
 /// projects, plus the rules to execute as spend is tracked against that plan,
-/// (for example, send an alert when 90% of the target spend is met).
+/// (for example, send an alert when 90% of the target spend is met, or pause
+/// usage of the specified service when a spend cap budget is enforced).
 ///
-/// The budget time period is configurable, with options such as month
-/// (default), quarter, year, or custom time period.
+/// For alerts-only budgets, the budget time period is configurable, with
+/// options such as month (default), quarter, year, or custom time period. For
+/// spend cap budgets, the budget time period is limited to month.
 class GoogleCloudBillingBudgetsV1Budget {
   /// Budgeted amount.
+  ///
+  /// When `spend_cap` is set, `specified_amount` must be set to a non-negative
+  /// amount (\>= 0); `last_period_amount` is not supported.
   ///
   /// Required.
   GoogleCloudBillingBudgetsV1BudgetAmount? amount;
@@ -356,6 +361,9 @@ class GoogleCloudBillingBudgetsV1Budget {
   /// Filters that define which resources are used to compute the actual spend
   /// against the budget amount, such as projects, services, and the budget's
   /// time period, as well as other filters.
+  ///
+  /// Must be set when `spend_cap` is set. See `Filter` fields for spend cap
+  /// restrictions.
   ///
   /// Optional.
   GoogleCloudBillingBudgetsV1Filter? budgetFilter;
@@ -383,10 +391,20 @@ class GoogleCloudBillingBudgetsV1Budget {
 
   /// Rules to apply to notifications sent based on budget spend and thresholds.
   ///
+  /// Must be set when `spend_cap` is set. For spend caps,
+  /// `enable_project_level_recipients` must be set to `true`,
+  /// `disable_default_iam_recipients` must be `false` (or unset), and
+  /// `pubsub_topic` and `monitoring_notification_channels` must be empty.
+  ///
   /// Optional.
   GoogleCloudBillingBudgetsV1NotificationsRule? notificationsRule;
 
+  /// When `spend_cap` is set, must be `OWNERSHIP_SCOPE_UNSPECIFIED` or
+  /// `ALL_USERS`.
   ///
+  /// `BILLING_ACCOUNT` is not supported for spend caps.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "OWNERSHIP_SCOPE_UNSPECIFIED" : Unspecified ownership scope, same as
   /// ALL_USERS.
@@ -395,14 +413,35 @@ class GoogleCloudBillingBudgetsV1Budget {
   /// permissions.
   /// - "BILLING_ACCOUNT" : Only billing account-level users have full access to
   /// the budget. Project-level users have read-only access, even if they have
-  /// the required IAM permissions.
+  /// the required IAM permissions. Not supported when `spend_cap` is set.
   core.String? ownershipScope;
+
+  /// The spend cap configured for this budget.
+  ///
+  /// When `spend_cap` is set, strict field restrictions apply to the budget
+  /// (see field-level comments on `ownership_scope`, `budget_filter`, `amount`,
+  /// `threshold_rules`, and `notifications_rule`). When
+  /// `spend_cap.output_state` is `ENFORCED`, only `spend_cap.input_state` can
+  /// be modified in an `UpdateBudget` request (e.g., setting `input_state` to
+  /// `AWAITING_NEXT_PERIOD` to lift the cap); modifying any other budget field
+  /// while enforced will fail with `FAILED_PRECONDITION`. If the existing
+  /// resource is a spend cap and an `update_mask` is supplied in an
+  /// `UpdateBudget` request, `spend_cap` or `spend_cap.input_state` must be
+  /// specified in the update mask. To convert a spend cap budget to a regular
+  /// budget, specify `spend_cap` in the `update_mask` and omit `spend_cap` from
+  /// the budget in the request.
+  ///
+  /// Optional.
+  GoogleCloudBillingBudgetsV1SpendCap? spendCap;
 
   /// Rules that trigger alerts (notifications of thresholds being crossed) when
   /// spend exceeds the specified percentages of the budget.
   ///
   /// Optional for `pubsubTopic` notifications. Required if using email
-  /// notifications.
+  /// notifications. Must be set when `spend_cap` is set. Spend caps must have
+  /// exactly three `CURRENT_SPEND` threshold rules with `threshold_percent`
+  /// values of `0.5`, `0.8`, and `1.0` (50%, 80%, and 100%). `FORECASTED_SPEND`
+  /// threshold rules are not supported for spend caps.
   ///
   /// Optional.
   core.List<GoogleCloudBillingBudgetsV1ThresholdRule>? thresholdRules;
@@ -415,6 +454,7 @@ class GoogleCloudBillingBudgetsV1Budget {
     this.name,
     this.notificationsRule,
     this.ownershipScope,
+    this.spendCap,
     this.thresholdRules,
   });
 
@@ -440,6 +480,11 @@ class GoogleCloudBillingBudgetsV1Budget {
               )
             : null,
         ownershipScope: json_['ownershipScope'] as core.String?,
+        spendCap: json_.containsKey('spendCap')
+            ? GoogleCloudBillingBudgetsV1SpendCap.fromJson(
+                json_['spendCap'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         thresholdRules: (json_['thresholdRules'] as core.List?)
             ?.map(
               (value) => GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(
@@ -457,6 +502,7 @@ class GoogleCloudBillingBudgetsV1Budget {
     final name = this.name;
     final notificationsRule = this.notificationsRule;
     final ownershipScope = this.ownershipScope;
+    final spendCap = this.spendCap;
     final thresholdRules = this.thresholdRules;
     return {
       'amount': ?amount,
@@ -466,6 +512,7 @@ class GoogleCloudBillingBudgetsV1Budget {
       'name': ?name,
       'notificationsRule': ?notificationsRule,
       'ownershipScope': ?ownershipScope,
+      'spendCap': ?spendCap,
       'thresholdRules': ?thresholdRules,
     };
   }
@@ -477,7 +524,7 @@ class GoogleCloudBillingBudgetsV1BudgetAmount {
   ///
   /// LastPeriodAmount can only be set when the budget's time period is a
   /// Filter.calendar_period. It cannot be set in combination with
-  /// Filter.custom_period.
+  /// Filter.custom_period. Not supported when `spend_cap` is set.
   GoogleCloudBillingBudgetsV1LastPeriodAmount? lastPeriodAmount;
 
   /// A specified amount to use as the budget.
@@ -485,7 +532,8 @@ class GoogleCloudBillingBudgetsV1BudgetAmount {
   /// `currency_code` is optional. If specified when creating a budget, it must
   /// match the currency of the billing account. If specified when updating a
   /// budget, it must match the currency_code of the existing budget. The
-  /// `currency_code` is provided on output.
+  /// `currency_code` is provided on output. Must be set when `spend_cap` is
+  /// set; must be non-negative (\>= 0).
   GoogleTypeMoney? specifiedAmount;
 
   GoogleCloudBillingBudgetsV1BudgetAmount({
@@ -563,7 +611,10 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// For example, assume that CalendarPeriod.QUARTER is set. The budget tracks
   /// usage from April 1 to June 30, when the current calendar month is April,
   /// May, June. After that, it tracks usage from July 1 to September 30 when
-  /// the current calendar month is July, August, September, so on.
+  /// the current calendar month is July, August, September, so on. When
+  /// `spend_cap` is set, must be `MONTH` (or `usage_period` left unset, which
+  /// defaults to `MONTH`). `QUARTER` and `YEAR` are not supported for spend
+  /// caps.
   ///
   /// Optional.
   /// Possible string values are:
@@ -581,14 +632,17 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// spend for threshold calculations.
   ///
   /// See
-  /// [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
+  /// [a list of acceptable credit type values](https://docs.cloud.google.com/billing/docs/how-to/export-data-bigquery-tables/detailed-usage#credits-type).
   /// If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS,
-  /// this field must be empty.
+  /// this field must be empty. Not supported when `spend_cap` is set; must be
+  /// empty.
   ///
   /// Optional.
   core.List<core.String>? creditTypes;
 
   /// If not set, default behavior is `INCLUDE_ALL_CREDITS`.
+  ///
+  /// Must be set to `EXCLUDE_ALL_CREDITS` when `spend_cap` is set.
   ///
   /// Optional.
   /// Possible string values are:
@@ -598,7 +652,7 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// - "EXCLUDE_ALL_CREDITS" : All types of credit are added to the net cost to
   /// determine the spend for threshold calculations.
   /// - "INCLUDE_SPECIFIED_CREDITS" :
-  /// [Credit types](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type)
+  /// [Credit types](https://docs.cloud.google.com/billing/docs/how-to/export-data-bigquery-tables/detailed-usage#credits-type)
   /// specified in the credit_types field are subtracted from the gross cost to
   /// determine the spend for threshold calculations.
   core.String? creditTypesTreatment;
@@ -606,7 +660,8 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// Specifies to track usage from any start date (required) to any end date
   /// (optional).
   ///
-  /// This time period is static, it does not recur.
+  /// This time period is static, it does not recur. Not supported when
+  /// `spend_cap` is set.
   ///
   /// Optional.
   GoogleCloudBillingBudgetsV1CustomPeriod? customPeriod;
@@ -617,7 +672,7 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// If omitted, the report includes all labeled and unlabeled usage. An object
   /// containing a single `"key": value` pair. Example: `{ "name": "wrench" }`.
   /// _Currently, multiple entries or multiple values per entry are not
-  /// allowed._
+  /// allowed._ Not supported when `spend_cap` is set; must be empty.
   ///
   /// Optional.
   ///
@@ -629,7 +684,8 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// from only this set of projects should be included in the budget.
   ///
   /// If omitted, the report includes all usage for the billing account,
-  /// regardless of which project the usage occurred on.
+  /// regardless of which project the usage occurred on. Must be set when
+  /// `spend_cap` is set; must contain exactly one project.
   ///
   /// Optional.
   core.List<core.String>? projects;
@@ -641,7 +697,7 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// If omitted, the budget includes all usage that the billing account pays
   /// for. If the folder or organization contains projects that are paid for by
   /// a different Cloud Billing account, the budget *doesn't* apply to those
-  /// projects.
+  /// projects. Not supported when `spend_cap` is set; must be empty.
   ///
   /// Optional.
   core.List<core.String>? resourceAncestors;
@@ -651,7 +707,10 @@ class GoogleCloudBillingBudgetsV1Filter {
   ///
   /// If omitted, the report includes usage for all the services. The service
   /// names are available through the Catalog API:
-  /// https://cloud.google.com/billing/v1/how-tos/catalog-api.
+  /// https://docs.cloud.google.com/billing/v1/how-tos/catalog-api. When
+  /// `spend_cap` is set, the services filter must be set and must contain
+  /// exactly one service from this list of eligible services:
+  /// https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps#eligible-services.
   ///
   /// Optional.
   core.List<core.String>? services;
@@ -662,7 +721,8 @@ class GoogleCloudBillingBudgetsV1Filter {
   ///
   /// If a subaccount is set to the name of the parent account, usage from the
   /// parent account is included. If the field is omitted, the report includes
-  /// usage from the parent account and all subaccounts, if they exist.
+  /// usage from the parent account and all subaccounts, if they exist. Not
+  /// supported when `spend_cap` is set; must be empty.
   ///
   /// Optional.
   core.List<core.String>? subaccounts;
@@ -779,7 +839,9 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   /// exceeded.
   ///
   /// Default notifications are sent to those with Billing Account Administrator
-  /// and Billing Account User IAM roles for the target account.
+  /// and Billing Account User IAM roles for the target account. Must be `false`
+  /// (or unset) when `spend_cap` is set; default notifications cannot be
+  /// disabled for spend caps.
   ///
   /// Optional.
   core.bool? disableDefaultIamRecipients;
@@ -789,7 +851,7 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   ///
   /// This field will be ignored if the budget has multiple or no project
   /// configured. Currently, project level recipients are the users with `Owner`
-  /// role on a cloud project.
+  /// role on a cloud project. Must be set to `true` when `spend_cap` is set.
   ///
   /// Optional.
   core.bool? enableProjectLevelRecipients;
@@ -804,13 +866,14 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   /// recipients with monitoring notification channels, you _must create the
   /// monitoring notification channels before you link them to a budget_. For
   /// guidance on setting up notification channels to use with budgets, see
-  /// [Customize budget alert email recipients](https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients).
+  /// [Customize budget alert email recipients](https://docs.cloud.google.com/billing/docs/how-to/budgets-notification-recipients).
   /// For Cloud Billing budget alerts, you _must use email notification
   /// channels_. The other types of notification channels are _not_ supported,
   /// such as Slack, SMS, or PagerDuty. If you want to
-  /// [send budget notifications to Slack](https://cloud.google.com/billing/docs/how-to/notify#send_notifications_to_slack),
+  /// [send budget notifications to Slack](https://docs.cloud.google.com/billing/docs/how-to/send-notifications-to-slack),
   /// use a pubsubTopic and configure
-  /// [programmatic notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications).
+  /// [programmatic notifications](https://docs.cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications).
+  /// Not supported when `spend_cap` is set; must be empty.
   ///
   /// Optional.
   core.List<core.String>? monitoringNotificationChannels;
@@ -821,7 +884,7 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   /// Updates are sent to the topic at regular intervals; the timing of the
   /// updates is not dependent on the \[threshold rules\](#thresholdrule) you've
   /// set. Note that if you want your
-  /// [Pub/Sub JSON object](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format)
+  /// [Pub/Sub JSON object](https://docs.cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification-format)
   /// to contain data for `alertThresholdExceeded`, you need at least one
   /// \[alert threshold rule\](#thresholdrule). When you set threshold rules,
   /// you must also enable at least one of the email notification options,
@@ -829,11 +892,12 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   /// notification channels. To use Pub/Sub topics with budgets, you must do the
   /// following: 1. Create the Pub/Sub topic before connecting it to your
   /// budget. For guidance, see
-  /// [Manage programmatic budget alert notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications).
+  /// [Manage programmatic budget alert notifications](https://docs.cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications).
   /// 2. Grant the API caller the `pubsub.topics.setIamPolicy` permission on the
   /// Pub/Sub topic. If not set, the API call fails with PERMISSION_DENIED. For
   /// additional details on Pub/Sub roles and permissions, see
-  /// [Permissions required for this task](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task).
+  /// [Permissions required for this task](https://docs.cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions).
+  /// Not supported when `spend_cap` is set; must be empty.
   ///
   /// Optional.
   core.String? pubsubTopic;
@@ -843,7 +907,7 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   /// The schema version of the notification sent to
   /// NotificationsRule.pubsub_topic. Only "1.0" is accepted. It represents the
   /// JSON schema as defined in
-  /// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
+  /// https://docs.cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification-format.
   ///
   /// Optional.
   core.String? schemaVersion;
@@ -886,6 +950,70 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   }
 }
 
+/// SpendCap defines the spend cap configuration and state.
+class GoogleCloudBillingBudgetsV1SpendCap {
+  /// The desired state specified by the user.
+  ///
+  /// Valid values for mutation: - `CONFIGURED`: Must be set when creating a
+  /// spend cap (`CreateBudget`). Also valid when updating (`UpdateBudget`) to
+  /// activate the spend cap. If the spend cap is in state
+  /// `AWAITING_NEXT_PERIOD`, `input_state` must be set to `CONFIGURED`. -
+  /// `AWAITING_NEXT_PERIOD`: Valid only when updating (`UpdateBudget`) to
+  /// explicitly lift an enforced cap. Not allowed if the spend cap is in state
+  /// `AWAITING_NEXT_PERIOD`. Supplying any other value will result in an
+  /// INVALID_ARGUMENT error.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "CONFIGURED" : Spend cap is configured and active.
+  /// - "ENFORCED" : Spend cap limit is reached and enforced.
+  /// - "AWAITING_NEXT_PERIOD" : Spend cap is waiting for the next period to
+  /// start.
+  core.String? inputState;
+
+  /// The actual resting state of the spend cap.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "CONFIGURED" : Spend cap is configured and active.
+  /// - "ENFORCED" : Spend cap limit is reached and enforced.
+  /// - "AWAITING_NEXT_PERIOD" : Spend cap is waiting for the next period to
+  /// start.
+  core.String? outputState;
+
+  /// Indicates whether the server is actively processing a state transition or
+  /// async workflow.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  GoogleCloudBillingBudgetsV1SpendCap({
+    this.inputState,
+    this.outputState,
+    this.reconciling,
+  });
+
+  GoogleCloudBillingBudgetsV1SpendCap.fromJson(core.Map json_)
+    : this(
+        inputState: json_['inputState'] as core.String?,
+        outputState: json_['outputState'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final inputState = this.inputState;
+    final outputState = this.outputState;
+    final reconciling = this.reconciling;
+    return {
+      'inputState': ?inputState,
+      'outputState': ?outputState,
+      'reconciling': ?reconciling,
+    };
+  }
+}
+
 /// ThresholdRule contains the definition of a threshold.
 ///
 /// Threshold rules define the triggering events used to generate a budget
@@ -893,17 +1021,19 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
 /// percentages of the budget), budget alert emails are sent to the email
 /// recipients you specify in the \[NotificationsRule\](#notificationsrule).
 /// Threshold rules also affect the fields included in the
-/// [JSON data object](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format)
+/// [JSON data object](https://docs.cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification-format)
 /// sent to a Pub/Sub topic. Threshold rules are _required_ if using email
 /// notifications. Threshold rules are _optional_ if only setting a
 /// \[`pubsubTopic` NotificationsRule\](#NotificationsRule), unless you want
 /// your JSON data object to include data about the thresholds you set. For more
 /// information, see
-/// [set budget threshold rules and actions](https://cloud.google.com/billing/docs/how-to/budgets#budget-actions).
+/// [set budget threshold rules and actions](https://docs.cloud.google.com/billing/docs/how-to/budgets#budget-actions).
 class GoogleCloudBillingBudgetsV1ThresholdRule {
   /// The type of basis used to determine if spend has passed the threshold.
   ///
-  /// Behavior defaults to CURRENT_SPEND if not set.
+  /// Behavior defaults to CURRENT_SPEND if not set. When `spend_cap` is set on
+  /// the budget, must be `CURRENT_SPEND` or `BASIS_UNSPECIFIED`.
+  /// `FORECASTED_SPEND` is not supported.
   ///
   /// Optional.
   /// Possible string values are:
@@ -913,13 +1043,16 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
   /// - "FORECASTED_SPEND" : Use forecasted spend for the period as the basis
   /// for comparison against the threshold. FORECASTED_SPEND can only be set
   /// when the budget's time period is a Filter.calendar_period. It cannot be
-  /// set in combination with Filter.custom_period.
+  /// set in combination with Filter.custom_period. Not supported when
+  /// `spend_cap` is set.
   core.String? spendBasis;
 
   /// Send an alert when this threshold is exceeded.
   ///
   /// This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative
-  /// number.
+  /// number. When `spend_cap` is set on the budget, `threshold_rules` must
+  /// contain exactly three rules with `threshold_percent` values of `0.5`,
+  /// `0.8`, and `1.0` (50%, 80%, and 100%).
   ///
   /// Required.
   core.double? thresholdPercent;

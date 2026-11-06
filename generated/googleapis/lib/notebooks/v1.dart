@@ -4531,7 +4531,7 @@ class InstanceMigrationEligibility {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-typedef IsInstanceUpgradeableResponse = $Response03;
+typedef IsInstanceUpgradeableResponse = $Response04;
 
 /// Response for listing environments.
 class ListEnvironmentsResponse {
@@ -5392,7 +5392,7 @@ class Policy {
 }
 
 /// Request for getting a new access token.
-typedef RefreshRuntimeTokenInternalRequest = $Request12;
+typedef RefreshRuntimeTokenInternalRequest = $Request13;
 
 /// Response with a new access token.
 class RefreshRuntimeTokenInternalResponse {

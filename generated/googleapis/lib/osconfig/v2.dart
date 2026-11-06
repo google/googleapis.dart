@@ -2017,6 +2017,9 @@ class GoogleCloudOsconfigV2OrchestratedResource {
 class GoogleCloudOsconfigV2OrchestrationScope {
   /// Selectors of the orchestration scope.
   ///
+  /// Each `Selector` entry can specify either a `ResourceHierarchySelector` or
+  /// a `LocationSelector`, but not both. To filter by both resource hierarchy
+  /// and location, specify separate `Selector` entries for each selector type.
   /// There is a logical AND between each selector defined. When there is no
   /// explicit `ResourceHierarchySelector` selector specified, the scope is by
   /// default bounded to the parent of the policy orchestrator resource.
@@ -2615,7 +2618,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared07;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared08;
 
 /// Message representing label set.
 ///
@@ -2668,7 +2671,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared07;
+typedef OSPolicyInventoryFilter = $Shared08;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -3171,7 +3174,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT = $Shared03;
+typedef OSPolicyResourcePackageResourceAPT = $Shared04;
 
 /// A deb package file.
 ///
@@ -3211,7 +3214,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet = $Shared03;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared04;
 
 /// An MSI package.
 ///
@@ -3286,12 +3289,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM = $Shared03;
+typedef OSPolicyResourcePackageResourceYUM = $Shared04;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper = $Shared03;
+typedef OSPolicyResourcePackageResourceZypper = $Shared04;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {

@@ -481,6 +481,9 @@ class BuildingInsights {
 
 /// Information about solar arrays detected on the building.
 class BuildingInsightsDetectedArrays {
+  /// A list of solar arrays detected on the building.
+  core.List<BuildingInsightsDetectedArraysSolarArray>? arrays;
+
   /// Indicates the detection status of solar arrays for this building.
   /// Possible string values are:
   /// - "DETECTION_STATUS_UNSPECIFIED" : Unspecified status.
@@ -496,12 +499,20 @@ class BuildingInsightsDetectedArrays {
   Date? latestCaptureDate;
 
   BuildingInsightsDetectedArrays({
+    this.arrays,
     this.detectionStatus,
     this.latestCaptureDate,
   });
 
   BuildingInsightsDetectedArrays.fromJson(core.Map json_)
     : this(
+        arrays: (json_['arrays'] as core.List?)
+            ?.map(
+              (value) => BuildingInsightsDetectedArraysSolarArray.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         detectionStatus: json_['detectionStatus'] as core.String?,
         latestCaptureDate: json_.containsKey('latestCaptureDate')
             ? Date.fromJson(
@@ -512,12 +523,43 @@ class BuildingInsightsDetectedArrays {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final arrays = this.arrays;
     final detectionStatus = this.detectionStatus;
     final latestCaptureDate = this.latestCaptureDate;
     return {
+      'arrays': ?arrays,
       'detectionStatus': ?detectionStatus,
       'latestCaptureDate': ?latestCaptureDate,
     };
+  }
+}
+
+/// Details of a single detected solar array.
+class BuildingInsightsDetectedArraysSolarArray {
+  /// A GeoJSON representation of the building area where solar panels were
+  /// detected.
+  ///
+  /// The GeoJSON data must be in RFC 7946 format and represent a Polygon for a
+  /// single contiguous area. The Polygon will be represented by several loops
+  /// when it contains holes. Example: { "type": "Polygon", "coordinates": \[ \[
+  /// \[-1, -1\], \[-1, 0\], \[0, 0\], \[-1, -1\] \] \] }
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? polygonGeojson;
+
+  BuildingInsightsDetectedArraysSolarArray({this.polygonGeojson});
+
+  BuildingInsightsDetectedArraysSolarArray.fromJson(core.Map json_)
+    : this(
+        polygonGeojson: json_.containsKey('polygonGeojson')
+            ? json_['polygonGeojson'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final polygonGeojson = this.polygonGeojson;
+    return {'polygonGeojson': ?polygonGeojson};
   }
 }
 
@@ -1182,6 +1224,38 @@ class LeasingSavings {
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
 
+/// Details of a single detected obstacle.
+class Obstacle {
+  /// A GeoJSON representation of the obstacle.
+  ///
+  /// An obstacle is defined as any non-buildable area where solar panels cannot
+  /// be placed due to physical barriers (vents, chimneys, dormers, etc.). The
+  /// GeoJSON data must be in RFC 7946 format and represent a Polygon for a
+  /// single contiguous area. The Polygon will be represented by several loops
+  /// when it contains holes. Example: { "type": "Polygon", "coordinates": \[ \[
+  /// \[-1, -1, 0\], \[-1, 0, 0\], \[0, 0, 0\], \[-1, -1, 0\] \] \] }
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? polygonGeojson;
+
+  Obstacle({this.polygonGeojson});
+
+  Obstacle.fromJson(core.Map json_)
+    : this(
+        polygonGeojson: json_.containsKey('polygonGeojson')
+            ? json_['polygonGeojson'] as core.Map<core.String, core.dynamic>
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final polygonGeojson = this.polygonGeojson;
+    return {'polygonGeojson': ?polygonGeojson};
+  }
+}
+
 /// Information about the size and sunniness quantiles of a roof segment.
 class RoofSegmentSizeAndSunshineStats {
   /// Compass direction the roof segment is pointing in.
@@ -1209,6 +1283,24 @@ class RoofSegmentSizeAndSunshineStats {
   /// the roof segment plane.
   core.double? planeHeightAtCenterMeters;
 
+  /// A GeoJSON representation of the detailed geometry for the roof segment
+  /// plane.
+  ///
+  /// The polygon represents the physical roof facet, excluding overlapping
+  /// vegetation and internal cutouts (e.g., courtyards). This field is only
+  /// populated if ROOF_GEOMETRY is included in the request's
+  /// FindClosestBuildingInsightsRequest.additional_insights parameter. The
+  /// GeoJSON data must be in RFC 7946 format and represent a Polygon for a
+  /// single contiguous area. The Polygon will be represented by several loops
+  /// when it contains holes. Example: { "type": "Polygon", "coordinates": \[ \[
+  /// \[-1, -1, 0\], \[-1, 0, 0\], \[0, 0, 0\], \[-1, -1, 0\] \] \] }
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? polygonGeojson;
+
   /// Total size and sunlight quantiles for the roof segment.
   SizeAndSunshineStats? stats;
 
@@ -1218,6 +1310,7 @@ class RoofSegmentSizeAndSunshineStats {
     this.center,
     this.pitchDegrees,
     this.planeHeightAtCenterMeters,
+    this.polygonGeojson,
     this.stats,
   });
 
@@ -1237,6 +1330,9 @@ class RoofSegmentSizeAndSunshineStats {
         pitchDegrees: (json_['pitchDegrees'] as core.num?)?.toDouble(),
         planeHeightAtCenterMeters:
             (json_['planeHeightAtCenterMeters'] as core.num?)?.toDouble(),
+        polygonGeojson: json_.containsKey('polygonGeojson')
+            ? json_['polygonGeojson'] as core.Map<core.String, core.dynamic>
+            : null,
         stats: json_.containsKey('stats')
             ? SizeAndSunshineStats.fromJson(
                 json_['stats'] as core.Map<core.String, core.dynamic>,
@@ -1250,6 +1346,7 @@ class RoofSegmentSizeAndSunshineStats {
     final center = this.center;
     final pitchDegrees = this.pitchDegrees;
     final planeHeightAtCenterMeters = this.planeHeightAtCenterMeters;
+    final polygonGeojson = this.polygonGeojson;
     final stats = this.stats;
     return {
       'azimuthDegrees': ?azimuthDegrees,
@@ -1257,6 +1354,7 @@ class RoofSegmentSizeAndSunshineStats {
       'center': ?center,
       'pitchDegrees': ?pitchDegrees,
       'planeHeightAtCenterMeters': ?planeHeightAtCenterMeters,
+      'polygonGeojson': ?polygonGeojson,
       'stats': ?stats,
     };
   }
@@ -1611,6 +1709,14 @@ class SolarPotential {
   /// of capacity under Standard Testing Conditions).
   core.double? maxSunshineHoursPerYear;
 
+  /// Details for each obstacle detected on the rooftop.
+  ///
+  /// An obstacle is defined as any non-buildable area where solar panels cannot
+  /// be placed due to physical barriers (vents, chimneys, etc.). This field is
+  /// only populated if ROOF_GEOMETRY is included in the request's
+  /// FindClosestBuildingInsightsRequest.additional_insights.
+  core.List<Obstacle>? obstacles;
+
   /// Capacity, in watts, of the panel used in the calculations.
   core.double? panelCapacityWatts;
 
@@ -1659,6 +1765,7 @@ class SolarPotential {
     this.maxArrayAreaMeters2,
     this.maxArrayPanelsCount,
     this.maxSunshineHoursPerYear,
+    this.obstacles,
     this.panelCapacityWatts,
     this.panelHeightMeters,
     this.panelLifetimeYears,
@@ -1690,6 +1797,13 @@ class SolarPotential {
         maxArrayPanelsCount: json_['maxArrayPanelsCount'] as core.int?,
         maxSunshineHoursPerYear: (json_['maxSunshineHoursPerYear'] as core.num?)
             ?.toDouble(),
+        obstacles: (json_['obstacles'] as core.List?)
+            ?.map(
+              (value) => Obstacle.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
         panelCapacityWatts: (json_['panelCapacityWatts'] as core.num?)
             ?.toDouble(),
         panelHeightMeters: (json_['panelHeightMeters'] as core.num?)
@@ -1731,6 +1845,7 @@ class SolarPotential {
     final maxArrayAreaMeters2 = this.maxArrayAreaMeters2;
     final maxArrayPanelsCount = this.maxArrayPanelsCount;
     final maxSunshineHoursPerYear = this.maxSunshineHoursPerYear;
+    final obstacles = this.obstacles;
     final panelCapacityWatts = this.panelCapacityWatts;
     final panelHeightMeters = this.panelHeightMeters;
     final panelLifetimeYears = this.panelLifetimeYears;
@@ -1746,6 +1861,7 @@ class SolarPotential {
       'maxArrayAreaMeters2': ?maxArrayAreaMeters2,
       'maxArrayPanelsCount': ?maxArrayPanelsCount,
       'maxSunshineHoursPerYear': ?maxSunshineHoursPerYear,
+      'obstacles': ?obstacles,
       'panelCapacityWatts': ?panelCapacityWatts,
       'panelHeightMeters': ?panelHeightMeters,
       'panelLifetimeYears': ?panelLifetimeYears,

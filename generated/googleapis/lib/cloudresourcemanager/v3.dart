@@ -29,14 +29,19 @@
 ///
 /// - [EffectiveTagsResource]
 /// - [FoldersResource]
+///   - [FoldersBoundariesResource]
 ///   - [FoldersCapabilitiesResource]
+///   - [FoldersCapabilityConfigsResource]
 /// - [LiensResource]
 /// - [LocationsResource]
 ///   - [LocationsEffectiveTagBindingCollectionsResource]
 ///   - [LocationsTagBindingCollectionsResource]
 /// - [OperationsResource]
 /// - [OrganizationsResource]
+///   - [OrganizationsBoundariesResource]
+///   - [OrganizationsCapabilityConfigsResource]
 /// - [ProjectsResource]
+///   - [ProjectsCapabilityConfigsResource]
 /// - [TagBindingsResource]
 /// - [TagKeysResource]
 /// - [TagValuesResource]
@@ -157,8 +162,12 @@ class EffectiveTagsResource {
 class FoldersResource {
   final commons.ApiRequester _requester;
 
+  FoldersBoundariesResource get boundaries =>
+      FoldersBoundariesResource(_requester);
   FoldersCapabilitiesResource get capabilities =>
       FoldersCapabilitiesResource(_requester);
+  FoldersCapabilityConfigsResource get capabilityConfigs =>
+      FoldersCapabilityConfigsResource(_requester);
 
   FoldersResource(commons.ApiRequester client) : _requester = client;
 
@@ -291,6 +300,47 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the BoundaryConfig identified by the specified `name` (for
+  /// example, `folders/123456789/boundaryConfig`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the BoundaryConfig to retrieve. Format:
+  /// `organizations/{organization}/boundaryConfig` or
+  /// `folders/{folder}/boundaryConfig` Example:
+  /// `folders/123456789/boundaryConfig`
+  /// Value must have pattern `^folders/\[^/\]+/boundaryConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BoundaryConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BoundaryConfig> getBoundaryConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BoundaryConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a folder.
@@ -735,6 +785,289 @@ class FoldersResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates the BoundaryConfig identified by the specified `name` (for
+  /// example, `folders/123456789/boundaryConfig`).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique resource name of the BoundaryConfig.
+  /// Format: - `organizations/{organization}/boundaryConfig` -
+  /// `folders/{folder}/boundaryConfig` Example:
+  /// `folders/123456789/boundaryConfig`
+  /// Value must have pattern `^folders/\[^/\]+/boundaryConfig$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateBoundaryConfig(
+    BoundaryConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersBoundariesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersBoundariesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a Boundary under a parent Folder or Organization.
+  ///
+  /// Creating a Boundary triggers the creation of a Management Project if one
+  /// is not supplied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource under which the Boundary will be
+  /// created. Format: `organizations/{organization_id}` or
+  /// `folders/{folder_id}`
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [boundaryId] - Required. The user-assigned ID for the Boundary, which will
+  /// become the final component of the Boundary's resource name. Must be unique
+  /// within the parent resource. It must be 6 to 30 lowercase ASCII letters,
+  /// digits, or hyphens. It must start with a letter. Trailing hyphens are
+  /// prohibited. Example: `my-boundary-123`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Boundary request,
+    core.String parent, {
+    core.String? boundaryId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'boundaryId': ?boundaryId == null ? null : [boundaryId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/boundaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the Boundary identified by the specified `name` (for example,
+  /// `folders/123456789/boundaries/my-boundary`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Boundary to delete. Format:
+  /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+  /// `folders/{folder_id}/boundaries/{boundary_id}`
+  /// Value must have pattern `^folders/\[^/\]+/boundaries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the Boundary identified by the specified `name` (for example,
+  /// `folders/123456789/boundaries/my-boundary`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Boundary to retrieve. Format:
+  /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+  /// `folders/{folder_id}/boundaries/{boundary_id}` Example:
+  /// `folders/123456789/boundaries/my-boundary`
+  /// Value must have pattern `^folders/\[^/\]+/boundaries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Boundary].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Boundary> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Boundary.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Boundaries that are direct children of the specified organization or
+  /// folder resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose Boundaries are
+  /// being listed. Format: `organizations/{organization_id}` or
+  /// `folders/{folder_id}`
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of Boundaries to return in the
+  /// response. The service may return fewer Boundaries than requested. If
+  /// unspecified, at most 100 Boundaries will be returned. The maximum value is
+  /// 100; values above 100 will be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A pagination token received from a previous call
+  /// to `ListBoundaries` that indicates from where listing should continue.
+  /// Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBoundariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBoundariesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/boundaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBoundariesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the `display_name` and `resource_filter.tag_filter.tag_value` of
+  /// the Boundary identified by the specified `name` (for example,
+  /// `folders/123456789/boundaries/my-boundary`).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique resource name of the Boundary. Format: -
+  /// `organizations/{organization_id}/boundaries/{boundary_id}` -
+  /// `folders/{folder_id}/boundaries/{boundary_id}` Example:
+  /// `folders/123456789/boundaries/my-boundary`
+  /// Value must have pattern `^folders/\[^/\]+/boundaries/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Boundary request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class FoldersCapabilitiesResource {
@@ -806,6 +1139,253 @@ class FoldersCapabilitiesResource {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
     Capability request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersCapabilityConfigsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersCapabilityConfigsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a CapabilityConfig under a parent Organization, Folder or Project.
+  ///
+  /// Creating a CapabilityConfig triggers the creation of a Management Project
+  /// if one is not supplied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource under which the CapabilityConfig
+  /// will be created. Format: `organizations/{organization_id}` or
+  /// `folders/{folder_id}` or `projects/{project_number}`
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [capabilityConfigId] - Required. The user-assigned ID for the
+  /// CapabilityConfig, which will become the final component of the
+  /// CapabilityConfig's resource name. Must be unique within the parent
+  /// resource. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens.
+  /// It must start with a letter. Trailing hyphens are prohibited. Example:
+  /// `my-capability-config-123`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CapabilityConfig request,
+    core.String parent, {
+    core.String? capabilityConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'capabilityConfigId': ?capabilityConfigId == null
+          ? null
+          : [capabilityConfigId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/capabilityConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the CapabilityConfig identified by the specified `name` (for
+  /// example, `folders/123456789/capabilityConfigs/my-capability-config`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CapabilityConfig to delete. Format:
+  /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+  /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+  /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+  /// Value must have pattern `^folders/\[^/\]+/capabilityConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the CapabilityConfig identified by the specified `name` (for
+  /// example, `folders/123456789/capabilityConfigs/my-capability-config`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CapabilityConfig to retrieve. Format:
+  /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+  /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+  /// `projects/{project}/capabilityConfigs/{capabilityConfig}` Example:
+  /// `folders/123456789/capabilityConfigs/my-capability-config`
+  /// Value must have pattern `^folders/\[^/\]+/capabilityConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CapabilityConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CapabilityConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CapabilityConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists CapabilityConfigs that are direct children of the specified
+  /// organization, folder or project resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose
+  /// CapabilityConfigs are being listed. Format:
+  /// `organizations/{organization_id}` or `folders/{folder_id}`
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of CapabilityConfigs to return
+  /// in the response. The service may return fewer CapabilityConfigs than
+  /// requested. If unspecified, at most 100 CapabilityConfigs will be returned.
+  /// The maximum value is 100; values above 100 will be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A pagination token received from a previous call
+  /// to `ListCapabilityConfigs` that indicates from where listing should
+  /// continue. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCapabilityConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCapabilityConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/capabilityConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCapabilityConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the `display_name`, `types` and `boundaries` of the
+  /// CapabilityConfig identified by the specified `name` (for example,
+  /// `folders/123456789/capabilityConfigs/my-capability-config`).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique resource name of the CapabilityConfig.
+  /// Format:
+  /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+  /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+  /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+  /// Value must have pattern `^folders/\[^/\]+/capabilityConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    CapabilityConfig request,
     core.String name, {
     core.String? updateMask,
     core.String? $fields,
@@ -1207,6 +1787,11 @@ class OperationsResource {
 class OrganizationsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsBoundariesResource get boundaries =>
+      OrganizationsBoundariesResource(_requester);
+  OrganizationsCapabilityConfigsResource get capabilityConfigs =>
+      OrganizationsCapabilityConfigsResource(_requester);
+
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Fetches an organization resource identified by the specified resource
@@ -1245,6 +1830,47 @@ class OrganizationsResource {
       queryParams: queryParams_,
     );
     return Organization.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Retrieves the BoundaryConfig identified by the specified `name` (for
+  /// example, `folders/123456789/boundaryConfig`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the BoundaryConfig to retrieve. Format:
+  /// `organizations/{organization}/boundaryConfig` or
+  /// `folders/{folder}/boundaryConfig` Example:
+  /// `folders/123456789/boundaryConfig`
+  /// Value must have pattern `^organizations/\[^/\]+/boundaryConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BoundaryConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BoundaryConfig> getBoundaryConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BoundaryConfig.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1462,10 +2088,547 @@ class OrganizationsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+
+  /// Updates the BoundaryConfig identified by the specified `name` (for
+  /// example, `folders/123456789/boundaryConfig`).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique resource name of the BoundaryConfig.
+  /// Format: - `organizations/{organization}/boundaryConfig` -
+  /// `folders/{folder}/boundaryConfig` Example:
+  /// `folders/123456789/boundaryConfig`
+  /// Value must have pattern `^organizations/\[^/\]+/boundaryConfig$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateBoundaryConfig(
+    BoundaryConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsBoundariesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsBoundariesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a Boundary under a parent Folder or Organization.
+  ///
+  /// Creating a Boundary triggers the creation of a Management Project if one
+  /// is not supplied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource under which the Boundary will be
+  /// created. Format: `organizations/{organization_id}` or
+  /// `folders/{folder_id}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [boundaryId] - Required. The user-assigned ID for the Boundary, which will
+  /// become the final component of the Boundary's resource name. Must be unique
+  /// within the parent resource. It must be 6 to 30 lowercase ASCII letters,
+  /// digits, or hyphens. It must start with a letter. Trailing hyphens are
+  /// prohibited. Example: `my-boundary-123`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Boundary request,
+    core.String parent, {
+    core.String? boundaryId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'boundaryId': ?boundaryId == null ? null : [boundaryId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/boundaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the Boundary identified by the specified `name` (for example,
+  /// `folders/123456789/boundaries/my-boundary`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Boundary to delete. Format:
+  /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+  /// `folders/{folder_id}/boundaries/{boundary_id}`
+  /// Value must have pattern `^organizations/\[^/\]+/boundaries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the Boundary identified by the specified `name` (for example,
+  /// `folders/123456789/boundaries/my-boundary`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Boundary to retrieve. Format:
+  /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+  /// `folders/{folder_id}/boundaries/{boundary_id}` Example:
+  /// `folders/123456789/boundaries/my-boundary`
+  /// Value must have pattern `^organizations/\[^/\]+/boundaries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Boundary].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Boundary> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Boundary.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Boundaries that are direct children of the specified organization or
+  /// folder resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose Boundaries are
+  /// being listed. Format: `organizations/{organization_id}` or
+  /// `folders/{folder_id}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of Boundaries to return in the
+  /// response. The service may return fewer Boundaries than requested. If
+  /// unspecified, at most 100 Boundaries will be returned. The maximum value is
+  /// 100; values above 100 will be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A pagination token received from a previous call
+  /// to `ListBoundaries` that indicates from where listing should continue.
+  /// Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBoundariesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBoundariesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/boundaries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBoundariesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the `display_name` and `resource_filter.tag_filter.tag_value` of
+  /// the Boundary identified by the specified `name` (for example,
+  /// `folders/123456789/boundaries/my-boundary`).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique resource name of the Boundary. Format: -
+  /// `organizations/{organization_id}/boundaries/{boundary_id}` -
+  /// `folders/{folder_id}/boundaries/{boundary_id}` Example:
+  /// `folders/123456789/boundaries/my-boundary`
+  /// Value must have pattern `^organizations/\[^/\]+/boundaries/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Boundary request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsCapabilityConfigsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsCapabilityConfigsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a CapabilityConfig under a parent Organization, Folder or Project.
+  ///
+  /// Creating a CapabilityConfig triggers the creation of a Management Project
+  /// if one is not supplied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource under which the CapabilityConfig
+  /// will be created. Format: `organizations/{organization_id}` or
+  /// `folders/{folder_id}` or `projects/{project_number}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [capabilityConfigId] - Required. The user-assigned ID for the
+  /// CapabilityConfig, which will become the final component of the
+  /// CapabilityConfig's resource name. Must be unique within the parent
+  /// resource. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens.
+  /// It must start with a letter. Trailing hyphens are prohibited. Example:
+  /// `my-capability-config-123`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CapabilityConfig request,
+    core.String parent, {
+    core.String? capabilityConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'capabilityConfigId': ?capabilityConfigId == null
+          ? null
+          : [capabilityConfigId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/capabilityConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the CapabilityConfig identified by the specified `name` (for
+  /// example, `folders/123456789/capabilityConfigs/my-capability-config`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CapabilityConfig to delete. Format:
+  /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+  /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+  /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/capabilityConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the CapabilityConfig identified by the specified `name` (for
+  /// example, `folders/123456789/capabilityConfigs/my-capability-config`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CapabilityConfig to retrieve. Format:
+  /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+  /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+  /// `projects/{project}/capabilityConfigs/{capabilityConfig}` Example:
+  /// `folders/123456789/capabilityConfigs/my-capability-config`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/capabilityConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CapabilityConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CapabilityConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CapabilityConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists CapabilityConfigs that are direct children of the specified
+  /// organization, folder or project resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose
+  /// CapabilityConfigs are being listed. Format:
+  /// `organizations/{organization_id}` or `folders/{folder_id}`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of CapabilityConfigs to return
+  /// in the response. The service may return fewer CapabilityConfigs than
+  /// requested. If unspecified, at most 100 CapabilityConfigs will be returned.
+  /// The maximum value is 100; values above 100 will be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A pagination token received from a previous call
+  /// to `ListCapabilityConfigs` that indicates from where listing should
+  /// continue. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCapabilityConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCapabilityConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/capabilityConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCapabilityConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the `display_name`, `types` and `boundaries` of the
+  /// CapabilityConfig identified by the specified `name` (for example,
+  /// `folders/123456789/capabilityConfigs/my-capability-config`).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique resource name of the CapabilityConfig.
+  /// Format:
+  /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+  /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+  /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/capabilityConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    CapabilityConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsCapabilityConfigsResource get capabilityConfigs =>
+      ProjectsCapabilityConfigsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
@@ -2042,6 +3205,253 @@ class ProjectsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsCapabilityConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsCapabilityConfigsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a CapabilityConfig under a parent Organization, Folder or Project.
+  ///
+  /// Creating a CapabilityConfig triggers the creation of a Management Project
+  /// if one is not supplied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource under which the CapabilityConfig
+  /// will be created. Format: `organizations/{organization_id}` or
+  /// `folders/{folder_id}` or `projects/{project_number}`
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [capabilityConfigId] - Required. The user-assigned ID for the
+  /// CapabilityConfig, which will become the final component of the
+  /// CapabilityConfig's resource name. Must be unique within the parent
+  /// resource. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens.
+  /// It must start with a letter. Trailing hyphens are prohibited. Example:
+  /// `my-capability-config-123`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CapabilityConfig request,
+    core.String parent, {
+    core.String? capabilityConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'capabilityConfigId': ?capabilityConfigId == null
+          ? null
+          : [capabilityConfigId],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/capabilityConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the CapabilityConfig identified by the specified `name` (for
+  /// example, `folders/123456789/capabilityConfigs/my-capability-config`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CapabilityConfig to delete. Format:
+  /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+  /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+  /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+  /// Value must have pattern `^projects/\[^/\]+/capabilityConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the CapabilityConfig identified by the specified `name` (for
+  /// example, `folders/123456789/capabilityConfigs/my-capability-config`).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the CapabilityConfig to retrieve. Format:
+  /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+  /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+  /// `projects/{project}/capabilityConfigs/{capabilityConfig}` Example:
+  /// `folders/123456789/capabilityConfigs/my-capability-config`
+  /// Value must have pattern `^projects/\[^/\]+/capabilityConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CapabilityConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CapabilityConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CapabilityConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists CapabilityConfigs that are direct children of the specified
+  /// organization, folder or project resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource whose
+  /// CapabilityConfigs are being listed. Format:
+  /// `organizations/{organization_id}` or `folders/{folder_id}`
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of CapabilityConfigs to return
+  /// in the response. The service may return fewer CapabilityConfigs than
+  /// requested. If unspecified, at most 100 CapabilityConfigs will be returned.
+  /// The maximum value is 100; values above 100 will be coerced to 100.
+  ///
+  /// [pageToken] - Optional. A pagination token received from a previous call
+  /// to `ListCapabilityConfigs` that indicates from where listing should
+  /// continue. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCapabilityConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCapabilityConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/capabilityConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCapabilityConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the `display_name`, `types` and `boundaries` of the
+  /// CapabilityConfig identified by the specified `name` (for example,
+  /// `folders/123456789/capabilityConfigs/my-capability-config`).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The unique resource name of the CapabilityConfig.
+  /// Format:
+  /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+  /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+  /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+  /// Value must have pattern `^projects/\[^/\]+/capabilityConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    CapabilityConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
       body: body_,
       queryParams: queryParams_,
     );
@@ -3405,6 +4815,173 @@ class Binding {
   }
 }
 
+/// A Boundary is a collection of projects defined by a filtering criteria on an
+/// organization or a folder.
+class Boundary {
+  /// The creation time of the Boundary.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Human-readable display name of the Boundary.
+  ///
+  /// When present it must be between 4 to 30 characters. Allowed characters
+  /// are: lowercase and uppercase letters, numbers, hyphen, single-quote,
+  /// double-quote, space, and exclamation point. Example: `My Production
+  /// Boundary`
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// The Management Project of the CapabilityConfig this Boundary is associated
+  /// with.
+  ///
+  /// Will be empty if the Boundary is not associated with any CapabilityConfig.
+  /// Format: `projects/{project_number}` Example: `projects/123456789012`
+  ///
+  /// Output only.
+  core.String? managementProject;
+
+  /// Identifier.
+  ///
+  /// The unique resource name of the Boundary. Format: -
+  /// `organizations/{organization_id}/boundaries/{boundary_id}` -
+  /// `folders/{folder_id}/boundaries/{boundary_id}` Example:
+  /// `folders/123456789/boundaries/my-boundary`
+  core.String? name;
+
+  /// The filter defining the criteria for descendant projects to be included in
+  /// the Boundary.
+  ///
+  /// Descendant projects are dynamically included in the Boundary based on this
+  /// filter.
+  ///
+  /// Optional.
+  ResourceFilter? resourceFilter;
+
+  /// The lifecycle state of the Boundary.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "CREATING" : Boundary is being created.
+  /// - "ACTIVE" : Boundary is operational, and the management project is fully
+  /// active.
+  core.String? state;
+
+  /// The most recent time this Boundary was modified.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Boundary({
+    this.createTime,
+    this.displayName,
+    this.etag,
+    this.managementProject,
+    this.name,
+    this.resourceFilter,
+    this.state,
+    this.updateTime,
+  });
+
+  Boundary.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        managementProject: json_['managementProject'] as core.String?,
+        name: json_['name'] as core.String?,
+        resourceFilter: json_.containsKey('resourceFilter')
+            ? ResourceFilter.fromJson(
+                json_['resourceFilter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final managementProject = this.managementProject;
+    final name = this.name;
+    final resourceFilter = this.resourceFilter;
+    final state = this.state;
+    final updateTime = this.updateTime;
+    return {
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'managementProject': ?managementProject,
+      'name': ?name,
+      'resourceFilter': ?resourceFilter,
+      'state': ?state,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
+/// A BoundaryConfig defines the common configurations regarding Boundaries
+/// defined under a parent CRM node (Folder or Organization), such as the
+/// partitioning tag key.
+class BoundaryConfig {
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update requests to ensure the client has an
+  /// up-to-date value before proceeding.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The unique resource name of the BoundaryConfig. Format: -
+  /// `organizations/{organization}/boundaryConfig` -
+  /// `folders/{folder}/boundaryConfig` Example:
+  /// `folders/123456789/boundaryConfig`
+  core.String? name;
+
+  /// The namespaced name of the tag key.
+  ///
+  /// Format: `{parent_id}/{tag_key_short_name}` Example: `123456789012/env`
+  /// (where 123456789012 is the organization ID).
+  ///
+  /// Optional.
+  core.String? tagKey;
+
+  /// The most recent time this BoundaryConfig was modified.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  BoundaryConfig({this.etag, this.name, this.tagKey, this.updateTime});
+
+  BoundaryConfig.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        tagKey: json_['tagKey'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final etag = this.etag;
+    final name = this.name;
+    final tagKey = this.tagKey;
+    final updateTime = this.updateTime;
+    return {
+      'etag': ?etag,
+      'name': ?name,
+      'tagKey': ?tagKey,
+      'updateTime': ?updateTime,
+    };
+  }
+}
+
 /// Representation of a Capability.
 class Capability {
   /// Identifier.
@@ -3434,6 +5011,126 @@ class Capability {
     final name = this.name;
     final value = this.value;
     return {'name': ?name, 'value': ?value};
+  }
+}
+
+/// A CapabilityConfig allows managing experiences like applications and agents
+/// on a logical administrative perimeter of Projects (Boundary).
+class CapabilityConfig {
+  /// The list of Boundaries associated with this CapabilityConfig.
+  ///
+  /// Format: `organizations/{organization}/boundaries/{boundary}` or,
+  /// `folders/{folder}/boundaries/{boundary}` or,
+  /// `projects/{project}/boundaries/{boundary}`
+  ///
+  /// Optional.
+  core.List<core.String>? boundaries;
+
+  /// The creation time of the CapabilityConfig.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Human-readable non-unique display name of the CapabilityConfig.
+  ///
+  /// When present it must be between 4 to 30 characters. Allowed characters
+  /// are: lowercase and uppercase letters, numbers, hyphen, single-quote,
+  /// double-quote, space, and exclamation point. Example: `My CapabilityConfig`
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// The Management Project associated with this CapabilityConfig.
+  ///
+  /// If not provided during creation, a management project will be
+  /// automatically created. Cannot be modified after creation. Format:
+  /// `projects/{project_number}` Example: `projects/123456789012`
+  ///
+  /// Optional. Immutable.
+  core.String? managementProject;
+
+  /// Identifier.
+  ///
+  /// The unique resource name of the CapabilityConfig. Format:
+  /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+  /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+  /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+  core.String? name;
+
+  /// The lifecycle state of the CapabilityConfig.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "ACTIVE" : CapabilityConfig is operational, and the management project
+  /// is fully active.
+  core.String? state;
+
+  /// The CapabilityConfig types.
+  ///
+  /// Required.
+  core.List<core.String>? types;
+
+  /// The most recent time this CapabilityConfig was modified.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  CapabilityConfig({
+    this.boundaries,
+    this.createTime,
+    this.displayName,
+    this.etag,
+    this.managementProject,
+    this.name,
+    this.state,
+    this.types,
+    this.updateTime,
+  });
+
+  CapabilityConfig.fromJson(core.Map json_)
+    : this(
+        boundaries: (json_['boundaries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        managementProject: json_['managementProject'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        types: (json_['types'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final boundaries = this.boundaries;
+    final createTime = this.createTime;
+    final displayName = this.displayName;
+    final etag = this.etag;
+    final managementProject = this.managementProject;
+    final name = this.name;
+    final state = this.state;
+    final types = this.types;
+    final updateTime = this.updateTime;
+    return {
+      'boundaries': ?boundaries,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'managementProject': ?managementProject,
+      'name': ?name,
+      'state': ?state,
+      'types': ?types,
+      'updateTime': ?updateTime,
+    };
   }
 }
 
@@ -3802,6 +5499,95 @@ typedef GetPolicyOptions = $GetPolicyOptions00;
 /// A Lien represents an encumbrance on the actions that can be performed on a
 /// resource.
 typedef Lien = $Lien;
+
+/// A page of the response received from the ListBoundaries method.
+///
+/// A paginated response where more pages are available has `next_page_token`
+/// set. This token can be used in a subsequent request to retrieve the next
+/// page. NOTE: A response may contain fewer elements than the request
+/// `page_size` and still have a `next_page_token`.
+class ListBoundariesResponse {
+  /// The list of Boundaries under the parent.
+  ///
+  /// This list can be paginated.
+  core.List<Boundary>? boundaries;
+
+  /// Pagination token.
+  ///
+  /// If the result set is too large to fit in a single response, this token is
+  /// returned. It encodes the position of the current result cursor. Feeding
+  /// this value into a new list request with the `page_token` parameter gives
+  /// the next page of the results. When `next_page_token` is not filled in,
+  /// there is no next page and the list returned is the last page in the result
+  /// set.
+  core.String? nextPageToken;
+
+  ListBoundariesResponse({this.boundaries, this.nextPageToken});
+
+  ListBoundariesResponse.fromJson(core.Map json_)
+    : this(
+        boundaries: (json_['boundaries'] as core.List?)
+            ?.map(
+              (value) => Boundary.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final boundaries = this.boundaries;
+    final nextPageToken = this.nextPageToken;
+    return {'boundaries': ?boundaries, 'nextPageToken': ?nextPageToken};
+  }
+}
+
+/// A page of the response received from the ListCapabilityConfigs method.
+///
+/// A paginated response where more pages are available has `next_page_token`
+/// set. This token can be used in a subsequent request to retrieve the next
+/// page. NOTE: A response may contain fewer elements than the request
+/// `page_size` and still have a `next_page_token`.
+class ListCapabilityConfigsResponse {
+  /// The list of CapabilityConfigs under the parent.
+  ///
+  /// This list can be paginated.
+  core.List<CapabilityConfig>? capabilityConfigs;
+
+  /// Pagination token.
+  ///
+  /// If the result set is too large to fit in a single response, this token is
+  /// returned. It encodes the position of the current result cursor. Feeding
+  /// this value into a new list request with the `page_token` parameter gives
+  /// the next page of the results. When `next_page_token` is not filled in,
+  /// there is no next page and the list returned is the last page in the result
+  /// set.
+  core.String? nextPageToken;
+
+  ListCapabilityConfigsResponse({this.capabilityConfigs, this.nextPageToken});
+
+  ListCapabilityConfigsResponse.fromJson(core.Map json_)
+    : this(
+        capabilityConfigs: (json_['capabilityConfigs'] as core.List?)
+            ?.map(
+              (value) => CapabilityConfig.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final capabilityConfigs = this.capabilityConfigs;
+    final nextPageToken = this.nextPageToken;
+    return {
+      'capabilityConfigs': ?capabilityConfigs,
+      'nextPageToken': ?nextPageToken,
+    };
+  }
+}
 
 /// The response of ListEffectiveTags.
 class ListEffectiveTagsResponse {
@@ -4484,6 +6270,19 @@ class Project {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// The type of Management Project.
+  ///
+  /// This field is only populated if `is_management_project` is `true`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MANAGEMENT_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "SELF_MANAGED" : The Management Project is a self-managed project that
+  /// constitutes its own boundary.
+  /// - "HUB" : The Management Project is a hub project that manages resources
+  /// across a boundary.
+  core.String? managementType;
+
   /// The unique resource name of the project.
   ///
   /// It is an int64 generated number prefixed by "projects/". Example:
@@ -4543,6 +6342,7 @@ class Project {
     this.etag,
     this.isManagementProject,
     this.labels,
+    this.managementType,
     this.name,
     this.parent,
     this.projectId,
@@ -4564,6 +6364,7 @@ class Project {
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        managementType: json_['managementType'] as core.String?,
         name: json_['name'] as core.String?,
         parent: json_['parent'] as core.String?,
         projectId: json_['projectId'] as core.String?,
@@ -4582,6 +6383,7 @@ class Project {
     final etag = this.etag;
     final isManagementProject = this.isManagementProject;
     final labels = this.labels;
+    final managementType = this.managementType;
     final name = this.name;
     final parent = this.parent;
     final projectId = this.projectId;
@@ -4596,6 +6398,7 @@ class Project {
       'etag': ?etag,
       'isManagementProject': ?isManagementProject,
       'labels': ?labels,
+      'managementType': ?managementType,
       'name': ?name,
       'parent': ?parent,
       'projectId': ?projectId,
@@ -4603,6 +6406,30 @@ class Project {
       'tags': ?tags,
       'updateTime': ?updateTime,
     };
+  }
+}
+
+/// Filter to define the criteria for including projects in the Boundary.
+class ResourceFilter {
+  /// A tag based filter.
+  ///
+  /// A project must match it to be included.
+  TagFilter? tagFilter;
+
+  ResourceFilter({this.tagFilter});
+
+  ResourceFilter.fromJson(core.Map json_)
+    : this(
+        tagFilter: json_.containsKey('tagFilter')
+            ? TagFilter.fromJson(
+                json_['tagFilter'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final tagFilter = this.tagFilter;
+    return {'tagFilter': ?tagFilter};
   }
 }
 
@@ -4879,6 +6706,40 @@ class TagBindingCollection {
       'name': ?name,
       'tags': ?tags,
     };
+  }
+}
+
+/// Matches projects based on a specific tag key and a specific tag value.
+class TagFilter {
+  /// The namespaced name of the tag key.
+  ///
+  /// Format: `{parent_id}/{tag_key_short_name}` Example: `123456789012/env`
+  /// (where 123456789012 is the organization ID).
+  ///
+  /// Required. Immutable.
+  core.String? tagKey;
+
+  /// The allowed value for the tag key.
+  ///
+  /// A project matches this tag filter if its effective tag value for the given
+  /// `tag_key` matches this value. Format: short name of the tag value.
+  /// Example: `production` or `staging`.
+  ///
+  /// Required.
+  core.String? tagValue;
+
+  TagFilter({this.tagKey, this.tagValue});
+
+  TagFilter.fromJson(core.Map json_)
+    : this(
+        tagKey: json_['tagKey'] as core.String?,
+        tagValue: json_['tagValue'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final tagKey = this.tagKey;
+    final tagValue = this.tagValue;
+    return {'tagKey': ?tagKey, 'tagValue': ?tagValue};
   }
 }
 

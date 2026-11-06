@@ -301,7 +301,11 @@ class ProjectsBuildsResource {
   ///
   /// If approved, the returned long-running operation (LRO) will be analogous
   /// to the LRO returned from a CreateBuild call. If rejected, the returned LRO
-  /// will be immediately done.
+  /// will be immediately done. Note: This method only approves or rejects
+  /// builds in the "global" region when using the legacy resource path
+  /// projects/{project_id}/builds/{id}:approve. For all regions, use the
+  /// regional resource path:
+  /// `projects/{project_id}/locations/{location}/builds/{id}:approve`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1366,7 +1370,11 @@ class ProjectsLocationsBuildsResource {
   ///
   /// If approved, the returned long-running operation (LRO) will be analogous
   /// to the LRO returned from a CreateBuild call. If rejected, the returned LRO
-  /// will be immediately done.
+  /// will be immediately done. Note: This method only approves or rejects
+  /// builds in the "global" region when using the legacy resource path
+  /// projects/{project_id}/builds/{id}:approve. For all regions, use the
+  /// regional resource path:
+  /// `projects/{project_id}/locations/{location}/builds/{id}:approve`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2037,6 +2045,11 @@ class ProjectsLocationsTriggersResource {
 
   /// Creates a new `BuildTrigger`.
   ///
+  /// Note: This method only creates triggers in the "global" region when using
+  /// the legacy resource path projects/{project_id}/triggers. For all regions,
+  /// use the regional resource path:
+  /// `projects/{project_id}/locations/{location}/triggers`.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2085,6 +2098,11 @@ class ProjectsLocationsTriggersResource {
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID.
   ///
+  /// Note: This method only deletes triggers in the "global" region when using
+  /// the legacy resource path projects/{project_id}/triggers/{trigger_id}. For
+  /// all regions, use the regional resource path:
+  /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+  ///
   /// Request parameters:
   ///
   /// [name] - The name of the `Trigger` to delete. Format:
@@ -2129,6 +2147,11 @@ class ProjectsLocationsTriggersResource {
   }
 
   /// Returns information about a `BuildTrigger`.
+  ///
+  /// Note: This method only gets triggers in the "global" region when using the
+  /// legacy resource path projects/{project_id}/triggers/{trigger_id}. For all
+  /// regions, use the regional resource path:
+  /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
   ///
   /// Request parameters:
   ///
@@ -2177,6 +2200,11 @@ class ProjectsLocationsTriggersResource {
   }
 
   /// Lists existing `BuildTrigger`s.
+  ///
+  /// Note: This method only lists triggers in the "global" region when using
+  /// the legacy resource path projects/{project_id}/triggers. For all regions,
+  /// use the regional resource path:
+  /// `projects/{project_id}/locations/{location}/triggers`.
   ///
   /// Request parameters:
   ///
@@ -2227,6 +2255,11 @@ class ProjectsLocationsTriggersResource {
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID.
+  ///
+  /// Note: This method only updates triggers in the "global" region when using
+  /// the legacy resource path projects/{project_id}/triggers/{trigger_id}. For
+  /// all regions, use the regional resource path:
+  /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2650,6 +2683,11 @@ class ProjectsTriggersResource {
 
   /// Creates a new `BuildTrigger`.
   ///
+  /// Note: This method only creates triggers in the "global" region when using
+  /// the legacy resource path projects/{project_id}/triggers. For all regions,
+  /// use the regional resource path:
+  /// `projects/{project_id}/locations/{location}/triggers`.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2698,6 +2736,11 @@ class ProjectsTriggersResource {
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID.
   ///
+  /// Note: This method only deletes triggers in the "global" region when using
+  /// the legacy resource path projects/{project_id}/triggers/{trigger_id}. For
+  /// all regions, use the regional resource path:
+  /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - Required. ID of the project that owns the trigger.
@@ -2743,6 +2786,11 @@ class ProjectsTriggersResource {
   }
 
   /// Returns information about a `BuildTrigger`.
+  ///
+  /// Note: This method only gets triggers in the "global" region when using the
+  /// legacy resource path projects/{project_id}/triggers/{trigger_id}. For all
+  /// regions, use the regional resource path:
+  /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
   ///
   /// Request parameters:
   ///
@@ -2793,6 +2841,11 @@ class ProjectsTriggersResource {
 
   /// Lists existing `BuildTrigger`s.
   ///
+  /// Note: This method only lists triggers in the "global" region when using
+  /// the legacy resource path projects/{project_id}/triggers. For all regions,
+  /// use the regional resource path:
+  /// `projects/{project_id}/locations/{location}/triggers`.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - Required. ID of the project for which to list BuildTriggers.
@@ -2842,6 +2895,11 @@ class ProjectsTriggersResource {
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID.
+  ///
+  /// Note: This method only updates triggers in the "global" region when using
+  /// the legacy resource path projects/{project_id}/triggers/{trigger_id}. For
+  /// all regions, use the regional resource path:
+  /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4302,8 +4360,8 @@ class BuildOptions {
   /// - "REGIONAL_USER_OWNED_BUCKET" : Bucket is located in user-owned project
   /// in the same region as the build. The builder service account must have
   /// access to create and write to Cloud Storage buckets in the build project.
-  /// - "LEGACY_BUCKET" : Bucket is located in a Google-owned project and is not
-  /// regionalized.
+  /// - "LEGACY_BUCKET" : Deprecated: Use `REGIONAL_USER_OWNED_BUCKET` instead.
+  /// Bucket is located in a Google-owned project and is not regionalized.
   core.String? defaultLogsBucketBehavior;
 
   /// Requested disk size for the VM that runs the build.
@@ -4387,11 +4445,28 @@ class BuildOptions {
   /// Optional.
   core.String? pubsubTopic;
 
+  /// Ranked list (earlier items have higher priority) of Machine Series to
+  /// consider when provisioning Worker VMs.
+  ///
+  /// A concrete machine type will be selected based on machine availability in
+  /// the given region. This field must be empty for the Build to be eligible to
+  /// be paired with a pre-provisioned worker VM.
+  ///
+  /// Optional.
+  core.List<core.String>? rankedMachineSeries;
+
   /// Requested verifiability options.
   /// Possible string values are:
   /// - "NOT_VERIFIED" : Not a verifiable build (the default).
   /// - "VERIFIED" : Build must be verified.
+  /// - "BEST_EFFORT" : Build verification is best effort. If provenance
+  /// generation fails, the build will still succeed.
   core.String? requestedVerifyOption;
+
+  /// Worker release resolved from the release channel.
+  ///
+  /// Output only.
+  core.String? resolvedWorkerRelease;
 
   /// A list of global environment variables, which are encrypted using a Cloud
   /// Key Management Service crypto key.
@@ -4430,6 +4505,12 @@ class BuildOptions {
   )
   core.String? workerPool;
 
+  /// Option to specify which release or release channel (rapid|regular|stable)
+  /// to use to run this build.
+  ///
+  /// Optional.
+  core.String? workerRelease;
+
   BuildOptions({
     this.automapSubstitutions,
     this.defaultLogsBucketBehavior,
@@ -4442,12 +4523,15 @@ class BuildOptions {
     this.machineType,
     this.pool,
     this.pubsubTopic,
+    this.rankedMachineSeries,
     this.requestedVerifyOption,
+    this.resolvedWorkerRelease,
     this.secretEnv,
     this.sourceProvenanceHash,
     this.substitutionOption,
     this.volumes,
     this.workerPool,
+    this.workerRelease,
   });
 
   BuildOptions.fromJson(core.Map json_)
@@ -4470,7 +4554,11 @@ class BuildOptions {
               )
             : null,
         pubsubTopic: json_['pubsubTopic'] as core.String?,
+        rankedMachineSeries: (json_['rankedMachineSeries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         requestedVerifyOption: json_['requestedVerifyOption'] as core.String?,
+        resolvedWorkerRelease: json_['resolvedWorkerRelease'] as core.String?,
         secretEnv: (json_['secretEnv'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -4485,6 +4573,7 @@ class BuildOptions {
             )
             .toList(),
         workerPool: json_['workerPool'] as core.String?,
+        workerRelease: json_['workerRelease'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -4499,12 +4588,15 @@ class BuildOptions {
     final machineType = this.machineType;
     final pool = this.pool;
     final pubsubTopic = this.pubsubTopic;
+    final rankedMachineSeries = this.rankedMachineSeries;
     final requestedVerifyOption = this.requestedVerifyOption;
+    final resolvedWorkerRelease = this.resolvedWorkerRelease;
     final secretEnv = this.secretEnv;
     final sourceProvenanceHash = this.sourceProvenanceHash;
     final substitutionOption = this.substitutionOption;
     final volumes = this.volumes;
     final workerPool = this.workerPool;
+    final workerRelease = this.workerRelease;
     return {
       'automapSubstitutions': ?automapSubstitutions,
       'defaultLogsBucketBehavior': ?defaultLogsBucketBehavior,
@@ -4517,12 +4609,83 @@ class BuildOptions {
       'machineType': ?machineType,
       'pool': ?pool,
       'pubsubTopic': ?pubsubTopic,
+      'rankedMachineSeries': ?rankedMachineSeries,
       'requestedVerifyOption': ?requestedVerifyOption,
+      'resolvedWorkerRelease': ?resolvedWorkerRelease,
       'secretEnv': ?secretEnv,
       'sourceProvenanceHash': ?sourceProvenanceHash,
       'substitutionOption': ?substitutionOption,
       'volumes': ?volumes,
       'workerPool': ?workerPool,
+      'workerRelease': ?workerRelease,
+    };
+  }
+}
+
+/// Aggregated/summary metrics over the entire build lifecycle.
+class BuildResourceUsage {
+  /// The average CPU utilization ratio across all vCPUs over the duration of
+  /// the build, expressed as a fraction in the range \[0.0, 1.0\].
+  ///
+  /// Output only.
+  core.double? averageCpuUtilization;
+
+  /// The average memory utilization ratio over the duration of the build,
+  /// expressed as a fraction in the range \[0.0, 1.0\].
+  ///
+  /// Output only.
+  core.double? averageMemoryUtilization;
+
+  /// The highest CPU utilization ratio across all vCPUs observed over the
+  /// duration of the build, expressed as a fraction in the range \[0.0, 1.0\].
+  ///
+  /// Output only.
+  core.double? peakCpuUtilization;
+
+  /// The highest memory utilization ratio observed over the duration of the
+  /// build, expressed as a fraction in the range \[0.0, 1.0\].
+  ///
+  /// Output only.
+  core.double? peakMemoryUtilization;
+
+  /// Total CPU execution time consumed across all cores during build execution.
+  ///
+  /// Output only.
+  core.String? totalCpuDuration;
+
+  BuildResourceUsage({
+    this.averageCpuUtilization,
+    this.averageMemoryUtilization,
+    this.peakCpuUtilization,
+    this.peakMemoryUtilization,
+    this.totalCpuDuration,
+  });
+
+  BuildResourceUsage.fromJson(core.Map json_)
+    : this(
+        averageCpuUtilization: (json_['averageCpuUtilization'] as core.num?)
+            ?.toDouble(),
+        averageMemoryUtilization:
+            (json_['averageMemoryUtilization'] as core.num?)?.toDouble(),
+        peakCpuUtilization: (json_['peakCpuUtilization'] as core.num?)
+            ?.toDouble(),
+        peakMemoryUtilization: (json_['peakMemoryUtilization'] as core.num?)
+            ?.toDouble(),
+        totalCpuDuration: json_['totalCpuDuration'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final averageCpuUtilization = this.averageCpuUtilization;
+    final averageMemoryUtilization = this.averageMemoryUtilization;
+    final peakCpuUtilization = this.peakCpuUtilization;
+    final peakMemoryUtilization = this.peakMemoryUtilization;
+    final totalCpuDuration = this.totalCpuDuration;
+    return {
+      'averageCpuUtilization': ?averageCpuUtilization,
+      'averageMemoryUtilization': ?averageMemoryUtilization,
+      'peakCpuUtilization': ?peakCpuUtilization,
+      'peakMemoryUtilization': ?peakMemoryUtilization,
+      'totalCpuDuration': ?totalCpuDuration,
     };
   }
 }
@@ -5578,7 +5741,9 @@ class GenericArtifact {
 class GenericArtifactDependency {
   /// Where the artifact files should be placed on the worker.
   ///
-  /// Required.
+  /// Required when specified in `Build.dependencies`.
+  ///
+  /// Optional.
   core.String? destPath;
 
   /// The location to download the artifact files from.
@@ -6927,14 +7092,40 @@ class PoolOption {
   /// projects/{project}/locations/{location}/workerPools/{workerPoolId}
   core.String? name;
 
-  PoolOption({this.name});
+  /// OUTPUT_ONLY.
+  ///
+  /// Worker release resolved from the release channel.
+  ///
+  /// Output only.
+  core.String? resolvedWorkerRelease;
+
+  /// OUTPUT_ONLY.
+  ///
+  /// The release or release channel used to run the Build. This is set to the
+  /// same value as `PrivatePoolV1Config.WorkerConfig.worker_release` for the UI
+  /// to easily access.
+  ///
+  /// Output only.
+  core.String? workerRelease;
+
+  PoolOption({this.name, this.resolvedWorkerRelease, this.workerRelease});
 
   PoolOption.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
+    : this(
+        name: json_['name'] as core.String?,
+        resolvedWorkerRelease: json_['resolvedWorkerRelease'] as core.String?,
+        workerRelease: json_['workerRelease'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
     final name = this.name;
-    return {'name': ?name};
+    final resolvedWorkerRelease = this.resolvedWorkerRelease;
+    final workerRelease = this.workerRelease;
+    return {
+      'name': ?name,
+      'resolvedWorkerRelease': ?resolvedWorkerRelease,
+      'workerRelease': ?workerRelease,
+    };
   }
 }
 
@@ -7483,6 +7674,11 @@ class Results {
   /// Python artifacts uploaded to Artifact Registry at the end of the build.
   core.List<UploadedPythonPackage>? pythonPackages;
 
+  /// Aggregated metrics for the build.
+  ///
+  /// Output only.
+  BuildResourceUsage? resourceUsage;
+
   Results({
     this.artifactManifest,
     this.artifactTiming,
@@ -7496,6 +7692,7 @@ class Results {
     this.npmPackages,
     this.numArtifacts,
     this.pythonPackages,
+    this.resourceUsage,
   });
 
   Results.fromJson(core.Map json_)
@@ -7565,6 +7762,11 @@ class Results {
               ),
             )
             .toList(),
+        resourceUsage: json_.containsKey('resourceUsage')
+            ? BuildResourceUsage.fromJson(
+                json_['resourceUsage'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -7580,6 +7782,7 @@ class Results {
     final npmPackages = this.npmPackages;
     final numArtifacts = this.numArtifacts;
     final pythonPackages = this.pythonPackages;
+    final resourceUsage = this.resourceUsage;
     return {
       'artifactManifest': ?artifactManifest,
       'artifactTiming': ?artifactTiming,
@@ -7593,6 +7796,7 @@ class Results {
       'npmPackages': ?npmPackages,
       'numArtifacts': ?numArtifacts,
       'pythonPackages': ?pythonPackages,
+      'resourceUsage': ?resourceUsage,
     };
   }
 }
@@ -8573,10 +8777,27 @@ class WorkerConfig {
   /// Optional.
   core.String? machineType;
 
+  /// Ranked list (earlier items have higher priority) of Machine Series to
+  /// consider when provisioning Worker VMs.
+  ///
+  /// A concrete machine type will be selected based on machine availability in
+  /// the given region.
+  ///
+  /// Optional.
+  core.List<core.String>? rankedMachineSeries;
+
+  /// Option to specify which release or release channel (rapid|regular|stable)
+  /// to use to run this build.
+  ///
+  /// Optional.
+  core.String? workerRelease;
+
   WorkerConfig({
     this.diskSizeGb,
     this.enableNestedVirtualization,
     this.machineType,
+    this.rankedMachineSeries,
+    this.workerRelease,
   });
 
   WorkerConfig.fromJson(core.Map json_)
@@ -8585,16 +8806,24 @@ class WorkerConfig {
         enableNestedVirtualization:
             json_['enableNestedVirtualization'] as core.bool?,
         machineType: json_['machineType'] as core.String?,
+        rankedMachineSeries: (json_['rankedMachineSeries'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        workerRelease: json_['workerRelease'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final diskSizeGb = this.diskSizeGb;
     final enableNestedVirtualization = this.enableNestedVirtualization;
     final machineType = this.machineType;
+    final rankedMachineSeries = this.rankedMachineSeries;
+    final workerRelease = this.workerRelease;
     return {
       'diskSizeGb': ?diskSizeGb,
       'enableNestedVirtualization': ?enableNestedVirtualization,
       'machineType': ?machineType,
+      'rankedMachineSeries': ?rankedMachineSeries,
+      'workerRelease': ?workerRelease,
     };
   }
 }

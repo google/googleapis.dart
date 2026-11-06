@@ -442,74 +442,6 @@ class ProjectsLocationsAppConnectionsResource {
   ProjectsLocationsAppConnectionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new AppConnection in a given project and location.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource project name of the AppConnection
-  /// location using the form: `projects/{project_id}/locations/{location_id}`
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [appConnectionId] - Optional. User-settable AppConnection resource ID. *
-  /// Must start with a letter. * Must contain between 4-63 characters from
-  /// `/a-z-/`. * Must end with a number or a letter.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if the original operation with the
-  /// same request ID was received, and if so, will ignore the second request.
-  /// This prevents clients from accidentally creating duplicate commitments.
-  /// The request ID must be a valid UUID with the exception that zero UUID is
-  /// not supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [validateOnly] - Optional. If set, validates request by executing a
-  /// dry-run which would not alter the resource in any way.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> create(
-    GoogleCloudBeyondcorpAppconnectionsV1AppConnection request,
-    core.String parent, {
-    core.String? appConnectionId,
-    core.String? requestId,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'appConnectionId': ?appConnectionId == null ? null : [appConnectionId],
-      'requestId': ?requestId == null ? null : [requestId],
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnections';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
   /// Deletes a single AppConnection.
   ///
   /// Request parameters:
@@ -544,6 +476,9 @@ class ProjectsLocationsAppConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String? requestId,
@@ -587,6 +522,9 @@ class ProjectsLocationsAppConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudBeyondcorpAppconnectionsV1AppConnection> get(
     core.String name, {
     core.String? $fields,
@@ -701,6 +639,9 @@ class ProjectsLocationsAppConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse>
   list(
     core.String parent, {
@@ -726,81 +667,6 @@ class ProjectsLocationsAppConnectionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Updates the parameters of a single AppConnection.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Unique resource name of the AppConnection. The name is
-  /// ignored when creating a AppConnection.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/appConnections/\[^/\]+$`.
-  ///
-  /// [allowMissing] - Optional. If set as true, will create the resource if it
-  /// is not found.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if the original operation with the
-  /// same request ID was received, and if so, will ignore the second request.
-  /// This prevents clients from accidentally creating duplicate commitments.
-  /// The request ID must be a valid UUID with the exception that zero UUID is
-  /// not supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in this field. The elements of the repeated paths field may
-  /// only include these fields from \[BeyondCorp.AppConnection\]: * `labels` *
-  /// `display_name` * `application_endpoint` * `connectors`
-  ///
-  /// [validateOnly] - Optional. If set, validates request by executing a
-  /// dry-run which would not alter the resource in any way.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> patch(
-    GoogleCloudBeyondcorpAppconnectionsV1AppConnection request,
-    core.String name, {
-    core.bool? allowMissing,
-    core.String? requestId,
-    core.String? updateMask,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'allowMissing': ?allowMissing == null ? null : ['${allowMissing}'],
-      'requestId': ?requestId == null ? null : [requestId],
-      'updateMask': ?updateMask == null ? null : [updateMask],
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -840,6 +706,9 @@ class ProjectsLocationsAppConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<
     GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse
   >
@@ -978,74 +847,6 @@ class ProjectsLocationsAppConnectorsResource {
   ProjectsLocationsAppConnectorsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new AppConnector in a given project and location.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource project name of the AppConnector
-  /// location using the form: `projects/{project_id}/locations/{location_id}`
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [appConnectorId] - Optional. User-settable AppConnector resource ID. *
-  /// Must start with a letter. * Must contain between 4-63 characters from
-  /// `/a-z-/`. * Must end with a number or a letter.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [validateOnly] - Optional. If set, validates request by executing a
-  /// dry-run which would not alter the resource in any way.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> create(
-    GoogleCloudBeyondcorpAppconnectorsV1AppConnector request,
-    core.String parent, {
-    core.String? appConnectorId,
-    core.String? requestId,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'appConnectorId': ?appConnectorId == null ? null : [appConnectorId],
-      'requestId': ?requestId == null ? null : [requestId],
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appConnectors';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
   /// Deletes a single AppConnector.
   ///
   /// Request parameters:
@@ -1080,6 +881,9 @@ class ProjectsLocationsAppConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String? requestId,
@@ -1123,6 +927,9 @@ class ProjectsLocationsAppConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudBeyondcorpAppconnectorsV1AppConnector> get(
     core.String name, {
     core.String? $fields,
@@ -1237,6 +1044,9 @@ class ProjectsLocationsAppConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse>
   list(
     core.String parent, {
@@ -1266,120 +1076,6 @@ class ProjectsLocationsAppConnectorsResource {
     );
   }
 
-  /// Updates the parameters of a single AppConnector.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Unique resource name of the AppConnector. The name is
-  /// ignored when creating a AppConnector.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/appConnectors/\[^/\]+$`.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in this field. The elements of the repeated paths field may
-  /// only include these fields from \[BeyondCorp.AppConnector\]: * `labels` *
-  /// `display_name`
-  ///
-  /// [validateOnly] - Optional. If set, validates request by executing a
-  /// dry-run which would not alter the resource in any way.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> patch(
-    GoogleCloudBeyondcorpAppconnectorsV1AppConnector request,
-    core.String name, {
-    core.String? requestId,
-    core.String? updateMask,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'requestId': ?requestId == null ? null : [requestId],
-      'updateMask': ?updateMask == null ? null : [updateMask],
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Report status for a given connector.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [appConnector] - Required. BeyondCorp Connector name using the form:
-  /// `projects/{project_id}/locations/{location_id}/connectors/{connector}`
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/appConnectors/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> reportStatus(
-    GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest request,
-    core.String appConnector, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$appConnector') + ':reportStatus';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
   /// Gets instance configuration for a given AppConnector.
   ///
   /// An internal method called by a AppConnector to get its container config.
@@ -1402,6 +1098,9 @@ class ProjectsLocationsAppConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<
     GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse
   >
@@ -1534,74 +1233,6 @@ class ProjectsLocationsAppGatewaysResource {
   ProjectsLocationsAppGatewaysResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new AppGateway in a given project and location.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource project name of the AppGateway location
-  /// using the form: `projects/{project_id}/locations/{location_id}`
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [appGatewayId] - Optional. User-settable AppGateway resource ID. * Must
-  /// start with a letter. * Must contain between 4-63 characters from `/a-z-/`.
-  /// * Must end with a number or a letter.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [validateOnly] - Optional. If set, validates request by executing a
-  /// dry-run which would not alter the resource in any way.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> create(
-    AppGateway request,
-    core.String parent, {
-    core.String? appGatewayId,
-    core.String? requestId,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'appGatewayId': ?appGatewayId == null ? null : [appGatewayId],
-      'requestId': ?requestId == null ? null : [requestId],
-      'validateOnly': ?validateOnly == null ? null : ['${validateOnly}'],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appGateways';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
   /// Deletes a single AppGateway.
   ///
   /// Request parameters:
@@ -1636,6 +1267,9 @@ class ProjectsLocationsAppGatewaysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String? requestId,
@@ -1679,6 +1313,9 @@ class ProjectsLocationsAppGatewaysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<AppGateway> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       'fields': ?$fields == null ? null : [$fields],
@@ -1789,6 +1426,9 @@ class ProjectsLocationsAppGatewaysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListAppGatewaysResponse> list(
     core.String parent, {
     core.String? filter,
@@ -3983,65 +3623,6 @@ class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificat
   core.Map<core.String, core.dynamic> toJson() {
     final pubsubSubscription = this.pubsubSubscription;
     return {'pubsubSubscription': ?pubsubSubscription};
-  }
-}
-
-/// Request report the connector status.
-class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
-  /// An optional request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  /// Resource info of the connector.
-  ///
-  /// Required.
-  GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo? resourceInfo;
-
-  /// If set, validates request by executing a dry-run which would not alter the
-  /// resource in any way.
-  ///
-  /// Optional.
-  core.bool? validateOnly;
-
-  GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest({
-    this.requestId,
-    this.resourceInfo,
-    this.validateOnly,
-  });
-
-  GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        requestId: json_['requestId'] as core.String?,
-        resourceInfo: json_.containsKey('resourceInfo')
-            ? GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo.fromJson(
-                json_['resourceInfo'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
-        validateOnly: json_['validateOnly'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final requestId = this.requestId;
-    final resourceInfo = this.resourceInfo;
-    final validateOnly = this.validateOnly;
-    return {
-      'requestId': ?requestId,
-      'resourceInfo': ?resourceInfo,
-      'validateOnly': ?validateOnly,
-    };
   }
 }
 

@@ -640,7 +640,7 @@ class CompetitiveVisibilityCompetitorView {
   /// A condition on `date` is required in the `WHERE` clause.
   Date? date;
 
-  /// Domain of your competitor or your domain, if 'is_your_domain' is true.
+  /// Domain of your competitor or your domain, if `is_your_domain` is true.
   ///
   /// Required in the `SELECT` clause. Cannot be filtered on in the 'WHERE'
   /// clause.
@@ -789,7 +789,7 @@ class CompetitiveVisibilityTopMerchantView {
   /// required in the `WHERE` clause.
   Date? date;
 
-  /// Domain of your competitor or your domain, if 'is_your_domain' is true.
+  /// Domain of your competitor or your domain, if `is_your_domain` is true.
   ///
   /// Required in the `SELECT` clause. Cannot be filtered on in the 'WHERE'
   /// clause.
@@ -1693,7 +1693,30 @@ class ProductPerformanceView {
   /// - "MARKETING_METHOD_ENUM_UNSPECIFIED" : Not specified.
   /// - "ORGANIC" : Organic marketing.
   /// - "ADS" : Ads-based marketing.
+  /// - "AFFILIATE" :
+  /// [YouTube Shopping Affiliate marketing](https://support.google.com/merchants/answer/14815513).
   core.String? marketingMethod;
+
+  /// Network to which metrics apply.
+  ///
+  /// Segment.
+  /// Possible string values are:
+  /// - "NETWORK_ENUM_UNSPECIFIED" : Not specified.
+  /// - "UNKNOWN" : The value is unknown in this version.
+  /// - "SEARCH" : Google search.
+  /// - "SEARCH_PARTNERS" : Search partners.
+  /// - "CONTENT" : Display Network.
+  /// - "MIXED" : Cross-network.
+  /// - "YOUTUBE" : YouTube
+  /// - "GOOGLE_TV" : Google TV
+  /// - "GOOGLE_OWNED_CHANNELS" : This network is used for Google Owned channels
+  /// such as Discover feed, Gmail, YouTube. Demand Gen stats are attributed to
+  /// more granular network types such as GMAIL, DISCOVER, MAPS, YOUTUBE; this
+  /// value is only used for historical data.
+  /// - "GMAIL" : Gmail
+  /// - "DISCOVER" : Discover Feed
+  /// - "MAPS" : Maps
+  core.String? network;
 
   /// Merchant-provided id of the product.
   ///
@@ -1777,6 +1800,7 @@ class ProductPerformanceView {
     this.date,
     this.impressions,
     this.marketingMethod,
+    this.network,
     this.offerId,
     this.productTypeL1,
     this.productTypeL2,
@@ -1818,6 +1842,7 @@ class ProductPerformanceView {
             : null,
         impressions: json_['impressions'] as core.String?,
         marketingMethod: json_['marketingMethod'] as core.String?,
+        network: json_['network'] as core.String?,
         offerId: json_['offerId'] as core.String?,
         productTypeL1: json_['productTypeL1'] as core.String?,
         productTypeL2: json_['productTypeL2'] as core.String?,
@@ -1854,6 +1879,7 @@ class ProductPerformanceView {
     final date = this.date;
     final impressions = this.impressions;
     final marketingMethod = this.marketingMethod;
+    final network = this.network;
     final offerId = this.offerId;
     final productTypeL1 = this.productTypeL1;
     final productTypeL2 = this.productTypeL2;
@@ -1884,6 +1910,7 @@ class ProductPerformanceView {
       'date': ?date,
       'impressions': ?impressions,
       'marketingMethod': ?marketingMethod,
+      'network': ?network,
       'offerId': ?offerId,
       'productTypeL1': ?productTypeL1,
       'productTypeL2': ?productTypeL2,

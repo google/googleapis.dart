@@ -2837,7 +2837,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
   /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
-  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
   /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
   /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
   /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
@@ -2849,8 +2850,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
   /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
   /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
-  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
-  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`
+  /// * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
   /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
   /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
@@ -2927,8 +2928,6 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -3037,7 +3036,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
   /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
-  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
   /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
   /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
   /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
@@ -3049,8 +3049,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
   /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
   /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
-  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
-  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`
+  /// * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
   /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
   /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
@@ -3127,8 +3127,6 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -3232,7 +3230,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
   /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
-  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
   /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
   /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
   /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
@@ -3244,8 +3243,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
   /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
   /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
-  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
-  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`
+  /// * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
   /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
   /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
@@ -3326,8 +3325,6 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -3434,8 +3431,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of assigned targeting
   /// options to list. Supported targeting types include: *
   /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` *
-  /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` *
-  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUCTION_PACKAGE` *
+  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
   /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
   /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
   /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
@@ -3447,8 +3444,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
   /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
   /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
-  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
-  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`
+  /// * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
   /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
   /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
@@ -3529,8 +3526,6 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -5102,7 +5097,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -5169,8 +5165,6 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -5265,7 +5259,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -5332,8 +5327,6 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -5498,8 +5491,6 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -5667,8 +5658,6 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -6244,8 +6233,6 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -6426,8 +6413,6 @@ class AdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -9431,8 +9416,6 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -9592,8 +9575,6 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -9754,8 +9735,6 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -9919,8 +9898,6 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -10151,8 +10128,8 @@ class TargetingTypesTargetingOptionsResource {
   ///
   /// [targetingType] - Required. The type of targeting option to retrieve.
   /// Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` *
-  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` *
-  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
+  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_AUCTION_PACKAGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
   /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS`
   /// * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
   /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE`
@@ -10232,8 +10209,6 @@ class TargetingTypesTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -10329,8 +10304,8 @@ class TargetingTypesTargetingOptionsResource {
   ///
   /// [targetingType] - Required. The type of targeting option to be listed.
   /// Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` *
-  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` *
-  /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
+  /// `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_AUCTION_PACKAGE` *
+  /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` *
   /// `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS`
   /// * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` *
   /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE`
@@ -10410,8 +10385,6 @@ class TargetingTypesTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -10610,8 +10583,6 @@ class TargetingTypesTargetingOptionsResource {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -11756,7 +11727,7 @@ class AssignedTargetingOption {
   /// Inventory source details.
   ///
   /// This field will be populated when the targeting_type is
-  /// `TARGETING_TYPE_INVENTORY_SOURCE`.
+  /// `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`.
   InventorySourceAssignedTargetingOptionDetails? inventorySourceDetails;
 
   /// Inventory source group details.
@@ -11934,8 +11905,6 @@ class AssignedTargetingOption {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -12617,6 +12586,9 @@ class AudioAd {
   core.String? finalUrl;
 
   /// The URL address loaded in the background for tracking purposes.
+  ///
+  /// In v4 and earlier, this field represents the tracking URL specified by the
+  /// user manually. This can be found at userSpecifiedTrackingUrl in v5.
   core.String? trackingUrl;
 
   /// The YouTube video of the ad.
@@ -12725,11 +12697,18 @@ class BiddingStrategy {
   /// It is to be used only for a line item entity.
   PerformanceGoalBidStrategy? performanceGoalAutoBid;
 
+  /// A bid strategy used by YouTube and Partners resources.
+  ///
+  /// It can only be used for a YouTube and Partners line item or ad group
+  /// entity.
+  YoutubeAndPartnersBiddingStrategy? youtubeAndPartnersBid;
+
   BiddingStrategy({
     this.demandGenBid,
     this.fixedBid,
     this.maximizeSpendAutoBid,
     this.performanceGoalAutoBid,
+    this.youtubeAndPartnersBid,
   });
 
   BiddingStrategy.fromJson(core.Map json_)
@@ -12756,6 +12735,12 @@ class BiddingStrategy {
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
+        youtubeAndPartnersBid: json_.containsKey('youtubeAndPartnersBid')
+            ? YoutubeAndPartnersBiddingStrategy.fromJson(
+                json_['youtubeAndPartnersBid']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -12763,11 +12748,13 @@ class BiddingStrategy {
     final fixedBid = this.fixedBid;
     final maximizeSpendAutoBid = this.maximizeSpendAutoBid;
     final performanceGoalAutoBid = this.performanceGoalAutoBid;
+    final youtubeAndPartnersBid = this.youtubeAndPartnersBid;
     return {
       'demandGenBid': ?demandGenBid,
       'fixedBid': ?fixedBid,
       'maximizeSpendAutoBid': ?maximizeSpendAutoBid,
       'performanceGoalAutoBid': ?performanceGoalAutoBid,
+      'youtubeAndPartnersBid': ?youtubeAndPartnersBid,
     };
   }
 }
@@ -12864,7 +12851,8 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
   core.List<CreateAssignedTargetingOptionsRequest>? createRequests;
 
   /// The assigned targeting options to delete in batch, specified as a list of
@@ -12872,7 +12860,8 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
   core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
 
   BulkEditAdvertiserAssignedTargetingOptionsRequest({
@@ -13103,7 +13092,8 @@ class BulkEditAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
   /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
-  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
   /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
   /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
   /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
@@ -13115,8 +13105,8 @@ class BulkEditAssignedTargetingOptionsRequest {
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
   /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
   /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
-  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
-  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`
+  /// * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
   /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
   /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
@@ -13134,7 +13124,8 @@ class BulkEditAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` *
   /// `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` *
-  /// `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
+  /// `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_AUDIENCE_GROUP` *
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE` *
   /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` *
   /// `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` *
   /// `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` *
@@ -13146,8 +13137,8 @@ class BulkEditAssignedTargetingOptionsRequest {
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
   /// `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` *
   /// `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` *
-  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` *
-  /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`
+  /// * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` *
   /// `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` *
   /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` *
@@ -13788,6 +13779,8 @@ class BulkUpdateLineItemsResponse {
 /// Details for a bumper ad.
 class BumperAd {
   /// Common ad attributes.
+  ///
+  /// Required.
   CommonInStreamAttribute? commonInStreamAttribute;
 
   BumperAd({this.commonInStreamAttribute});
@@ -14293,24 +14286,43 @@ typedef CombinedAudienceTargetingSetting = $CombinedAudienceTargetingSetting;
 /// Common attributes for in-stream, non-skippable and bumper ads.
 class CommonInStreamAttribute {
   /// The text on the call-to-action button.
+  ///
+  /// Must be set if actionHeadline is set.
+  ///
+  /// Optional.
   core.String? actionButtonLabel;
 
   /// The headline of the call-to-action banner.
+  ///
+  /// Optional.
   core.String? actionHeadline;
 
   /// The image which shows next to the video ad.
+  ///
+  /// Optional.
   ImageAsset? companionBanner;
 
   /// The webpage address that appears with the ad.
+  ///
+  /// Required.
   core.String? displayUrl;
 
   /// The URL address of the webpage that people reach after they click the ad.
+  ///
+  /// Required.
   core.String? finalUrl;
 
   /// The URL address loaded in the background for tracking purposes.
+  ///
+  /// In v4 and earlier, this field represents the tracking URL specified by the
+  /// user manually. This can be found at userSpecifiedTrackingUrl in v5.
+  ///
+  /// Output only.
   core.String? trackingUrl;
 
   /// The YouTube video of the ad.
+  ///
+  /// Required. Immutable.
   YoutubeVideoDetails? video;
 
   CommonInStreamAttribute({
@@ -14610,8 +14622,6 @@ class CreateAssignedTargetingOptionsRequest {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -14718,27 +14728,6 @@ class CreateSdfDownloadTaskRequest {
   /// Possible string values are:
   /// - "SDF_VERSION_UNSPECIFIED" : SDF version value is not specified or is
   /// unknown in this version.
-  /// - "SDF_VERSION_3_1" : SDF version 3.1
-  /// - "SDF_VERSION_4" : SDF version 4
-  /// - "SDF_VERSION_4_1" : SDF version 4.1
-  /// - "SDF_VERSION_4_2" : SDF version 4.2
-  /// - "SDF_VERSION_5" : SDF version 5.
-  /// - "SDF_VERSION_5_1" : SDF version 5.1
-  /// - "SDF_VERSION_5_2" : SDF version 5.2
-  /// - "SDF_VERSION_5_3" : SDF version 5.3
-  /// - "SDF_VERSION_5_4" : SDF version 5.4
-  /// - "SDF_VERSION_5_5" : SDF version 5.5
-  /// - "SDF_VERSION_6" : SDF version 6
-  /// - "SDF_VERSION_7" : SDF version 7. Read the \[v7 migration
-  /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
-  /// migrating to this version.
-  /// - "SDF_VERSION_7_1" : SDF version 7.1. Read the \[v7 migration
-  /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
-  /// migrating to this version.
-  /// - "SDF_VERSION_8" : SDF version 8. Read the \[v8 migration
-  /// guide\](/display-video/api/structured-data-file/v8-migration-guide) before
-  /// migrating to this version.
-  /// - "SDF_VERSION_8_1" : SDF version 8.1.
   /// - "SDF_VERSION_9" : SDF version 9. Read the \[v9 migration
   /// guide\](/display-video/api/structured-data-file/v9-migration-guide) before
   /// migrating to this version.
@@ -16095,8 +16084,6 @@ class DeleteAssignedTargetingOptionsRequest {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -17181,9 +17168,13 @@ class ImageAsset {
 /// Details for an in-stream ad.
 class InStreamAd {
   /// Common ad attributes.
+  ///
+  /// Required.
   CommonInStreamAttribute? commonInStreamAttribute;
 
   /// The custom parameters and accompanying values to add to the tracking URL.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? customParameters;
 
   InStreamAd({this.commonInStreamAttribute, this.customParameters});
@@ -17817,7 +17808,7 @@ typedef IntegrationDetails = $IntegrationDetails;
 /// Targeting details for inventory source.
 ///
 /// This will be populated in the details field of an AssignedTargetingOption
-/// when targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE`.
+/// when targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`.
 typedef InventorySourceAssignedTargetingOptionDetails =
     $InventorySourceAssignedTargetingOptionDetails;
 
@@ -18353,7 +18344,7 @@ class LineItem {
 
   /// Settings specific to YouTube and Partners line items.
   ///
-  /// Output only.
+  /// Optional.
   YoutubeAndPartnersSettings? youtubeAndPartnersSettings;
 
   LineItem({
@@ -20029,9 +20020,13 @@ typedef NegativeKeywordListAssignedTargetingOptionDetails =
 /// Details for a non-skippable ad.
 class NonSkippableAd {
   /// Common ad attributes.
+  ///
+  /// Required.
   CommonInStreamAttribute? commonInStreamAttribute;
 
   /// The custom parameters and accompanying values to add to the tracking URL.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? customParameters;
 
   NonSkippableAd({this.commonInStreamAttribute, this.customParameters});
@@ -21376,8 +21371,6 @@ class TargetingOption {
   /// example, 80% viewable).
   /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
   /// (for example, arts & entertainment).
-  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
-  /// deals and auction packages.
   /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
   /// example, English or Japanese).
   /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
@@ -22232,21 +22225,49 @@ class VideoDiscoveryAd {
 /// Details for a video performance ad.
 class VideoPerformanceAd {
   /// The list of text assets shown on the call-to-action button.
+  ///
+  /// Must be set if headlines is set.
+  ///
+  /// Optional.
   core.List<core.String>? actionButtonLabels;
 
+  /// The business name shown on the ad.
+  ///
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
+  core.String? businessName;
+
   /// The list of companion banners used by this ad.
+  ///
+  /// Optional.
   core.List<ImageAsset>? companionBanners;
 
   /// The custom parameters and accompanying values to add to the tracking URL.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? customParameters;
 
   /// The list of descriptions shown on the call-to-action banner.
+  ///
+  /// Must be set unless the parent line item's lineItemType is
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE`, in which case this
+  /// field cannot be set.
+  ///
+  /// Optional.
   core.List<core.String>? descriptions;
 
   /// The first piece after the domain in the display URL.
+  ///
+  /// Optional.
   core.String? displayUrlBreadcrumb1;
 
   /// The second piece after the domain in the display URL.
+  ///
+  /// Can only be set if displayUrlBreadcrumb1 is also set.
+  ///
+  /// Optional.
   core.String? displayUrlBreadcrumb2;
 
   /// The domain of the display URL.
@@ -22255,22 +22276,48 @@ class VideoPerformanceAd {
   core.String? domain;
 
   /// The URL address of the webpage that people reach after they click the ad.
+  ///
+  /// Required.
   core.String? finalUrl;
 
   /// The list of headlines shown on the call-to-action banner.
+  ///
+  /// Optional.
   core.List<core.String>? headlines;
 
+  /// The logo image used by this ad.
+  ///
+  /// This setting is required unless a default value is set at the advertiser
+  /// level. If left unset, the default value will be applied.
+  ///
+  /// Optional.
+  ImageAsset? logo;
+
   /// The list of long headlines shown on the call-to-action banner.
+  ///
+  /// Must be set unless the parent line item's lineItemType is
+  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE`, in which case this
+  /// field cannot be set.
+  ///
+  /// Optional.
   core.List<core.String>? longHeadlines;
 
   /// The URL address loaded in the background for tracking purposes.
+  ///
+  /// In v4 and earlier, this field represents the tracking URL specified by the
+  /// user manually. This can be found at userSpecifiedTrackingUrl in v5.
+  ///
+  /// Output only.
   core.String? trackingUrl;
 
   /// The list of YouTube video assets used by this ad.
+  ///
+  /// Required.
   core.List<YoutubeVideoDetails>? videos;
 
   VideoPerformanceAd({
     this.actionButtonLabels,
+    this.businessName,
     this.companionBanners,
     this.customParameters,
     this.descriptions,
@@ -22279,6 +22326,7 @@ class VideoPerformanceAd {
     this.domain,
     this.finalUrl,
     this.headlines,
+    this.logo,
     this.longHeadlines,
     this.trackingUrl,
     this.videos,
@@ -22289,6 +22337,7 @@ class VideoPerformanceAd {
         actionButtonLabels: (json_['actionButtonLabels'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        businessName: json_['businessName'] as core.String?,
         companionBanners: (json_['companionBanners'] as core.List?)
             ?.map(
               (value) => ImageAsset.fromJson(
@@ -22309,6 +22358,11 @@ class VideoPerformanceAd {
         headlines: (json_['headlines'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
+        logo: json_.containsKey('logo')
+            ? ImageAsset.fromJson(
+                json_['logo'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         longHeadlines: (json_['longHeadlines'] as core.List?)
             ?.map((value) => value as core.String)
             .toList(),
@@ -22324,6 +22378,7 @@ class VideoPerformanceAd {
 
   core.Map<core.String, core.dynamic> toJson() {
     final actionButtonLabels = this.actionButtonLabels;
+    final businessName = this.businessName;
     final companionBanners = this.companionBanners;
     final customParameters = this.customParameters;
     final descriptions = this.descriptions;
@@ -22332,11 +22387,13 @@ class VideoPerformanceAd {
     final domain = this.domain;
     final finalUrl = this.finalUrl;
     final headlines = this.headlines;
+    final logo = this.logo;
     final longHeadlines = this.longHeadlines;
     final trackingUrl = this.trackingUrl;
     final videos = this.videos;
     return {
       'actionButtonLabels': ?actionButtonLabels,
+      'businessName': ?businessName,
       'companionBanners': ?companionBanners,
       'customParameters': ?customParameters,
       'descriptions': ?descriptions,
@@ -22345,6 +22402,7 @@ class VideoPerformanceAd {
       'domain': ?domain,
       'finalUrl': ?finalUrl,
       'headlines': ?headlines,
+      'logo': ?logo,
       'longHeadlines': ?longHeadlines,
       'trackingUrl': ?trackingUrl,
       'videos': ?videos,

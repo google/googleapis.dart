@@ -201,6 +201,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://dataflow.us-central6.rep.googleapis.com/",
+            "location": "us-central6"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://dataflow.us-east1.rep.googleapis.com/",
             "location": "us-east1"
         },
@@ -260,7 +265,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260825",
+    "revision": "20261018",
     "rootUrl": "https://dataflow.googleapis.com/",
     "servicePath": "",
     "title": "Dataflow API",
@@ -749,6 +754,18 @@
                                 "projectId"
                             ],
                             "parameters": {
+                                "createTimeRange.endTime": {
+                                    "description": "Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "createTimeRange.startTime": {
+                                    "description": "Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "The kind of filter to use.",
                                     "enum": [
@@ -797,6 +814,18 @@
                                     "description": "Optional.",
                                     "location": "query",
                                     "type": "boolean"
+                                },
+                                "terminationTimeRange.endTime": {
+                                    "description": "Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "terminationTimeRange.startTime": {
+                                    "description": "Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
                                 },
                                 "view": {
                                     "deprecated": true,
@@ -987,6 +1016,18 @@
                                 "projectId"
                             ],
                             "parameters": {
+                                "createTimeRange.endTime": {
+                                    "description": "Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "createTimeRange.startTime": {
+                                    "description": "Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "The kind of filter to use.",
                                     "enum": [
@@ -1035,6 +1076,18 @@
                                     "description": "Optional.",
                                     "location": "query",
                                     "type": "boolean"
+                                },
+                                "terminationTimeRange.endTime": {
+                                    "description": "Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "terminationTimeRange.startTime": {
+                                    "description": "Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
                                 },
                                 "view": {
                                     "deprecated": true,
@@ -1836,6 +1889,18 @@
                                         "location"
                                     ],
                                     "parameters": {
+                                        "createTimeRange.endTime": {
+                                            "description": "Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.",
+                                            "format": "google-datetime",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "createTimeRange.startTime": {
+                                            "description": "Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.",
+                                            "format": "google-datetime",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "filter": {
                                             "description": "The kind of filter to use.",
                                             "enum": [
@@ -1885,6 +1950,18 @@
                                             "description": "Optional.",
                                             "location": "query",
                                             "type": "boolean"
+                                        },
+                                        "terminationTimeRange.endTime": {
+                                            "description": "Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.",
+                                            "format": "google-datetime",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "terminationTimeRange.startTime": {
+                                            "description": "Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.",
+                                            "format": "google-datetime",
+                                            "location": "query",
+                                            "type": "string"
                                         },
                                         "view": {
                                             "deprecated": true,
@@ -3042,7 +3119,7 @@
                     "description": "Optional. The parameters to use for autoscaling when this schedule is active."
                 },
                 "priority": {
-                    "description": "Optional. Specifies the priority of the schedule. If two schedules overlap, the one with the higher priority will be used. The higher the value, the higher the priority of the schedule.",
+                    "description": "Optional. Specifies the priority of the schedule. If two schedules overlap, the one with the higher priority will be used. The higher the value, the higher the priority of the schedule. The value must be non-negative; the lowest priority is `0`, which is the default.",
                     "format": "int64",
                     "type": "string"
                 },

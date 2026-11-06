@@ -9,8 +9,15 @@
 
 - `agenciesandbrands` - new!
 - `auditmanager` - new!
+- `colaboratory` - new!
 - `content` - **REMOVED**
+- `contentwarehouse` - **REMOVED**
 - `curationpartners` - new!
+- `deepreview` - new!
+- `devicerun` - new!
+- `displayvideo` - added `v5`
+- `integrations` - new!
+- `rapidmigrationassessment` - **REMOVED**
 - `sqladmin` - new!
 
 ## 17.0.0

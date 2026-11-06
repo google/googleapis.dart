@@ -207,7 +207,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20260913",
+    "revision": "20261101",
     "rootUrl": "https://recommender.googleapis.com/",
     "servicePath": "",
     "title": "Recommender API",
@@ -2077,9 +2077,17 @@
                         "STRING_KEY_MEMORY_UTILIZATION_OUT_OF_SLA_LATEST_TIMESTAMP",
                         "STRING_KEY_ESTIMATED_OOM_PROBABILITY",
                         "STRING_KEY_MAX_CONNECTIONS_CURRENT_VALUE",
-                        "STRING_KEY_MAX_CONNECTIONS_RECOMMENDED_VALUE"
+                        "STRING_KEY_MAX_CONNECTIONS_RECOMMENDED_VALUE",
+                        "STRING_KEY_INNODB_REDO_LOG_CAPACITY_CURRENT_VALUE",
+                        "STRING_KEY_INNODB_REDO_LOG_CAPACITY_RECOMMENDED_VALUE",
+                        "STRING_KEY_INNODB_LOG_FILE_SIZE_CURRENT_VALUE",
+                        "STRING_KEY_INNODB_LOG_FILE_SIZE_RECOMMENDED_VALUE"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -2609,9 +2617,17 @@
                         "STRING_KEY_MEMORY_UTILIZATION_OUT_OF_SLA_LATEST_TIMESTAMP",
                         "STRING_KEY_ESTIMATED_OOM_PROBABILITY",
                         "STRING_KEY_MAX_CONNECTIONS_CURRENT_VALUE",
-                        "STRING_KEY_MAX_CONNECTIONS_RECOMMENDED_VALUE"
+                        "STRING_KEY_MAX_CONNECTIONS_RECOMMENDED_VALUE",
+                        "STRING_KEY_INNODB_REDO_LOG_CAPACITY_CURRENT_VALUE",
+                        "STRING_KEY_INNODB_REDO_LOG_CAPACITY_RECOMMENDED_VALUE",
+                        "STRING_KEY_INNODB_LOG_FILE_SIZE_CURRENT_VALUE",
+                        "STRING_KEY_INNODB_LOG_FILE_SIZE_RECOMMENDED_VALUE"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -2998,9 +3014,17 @@
                         "STRING_KEY_MEMORY_UTILIZATION_OUT_OF_SLA_LATEST_TIMESTAMP",
                         "STRING_KEY_ESTIMATED_OOM_PROBABILITY",
                         "STRING_KEY_MAX_CONNECTIONS_CURRENT_VALUE",
-                        "STRING_KEY_MAX_CONNECTIONS_RECOMMENDED_VALUE"
+                        "STRING_KEY_MAX_CONNECTIONS_RECOMMENDED_VALUE",
+                        "STRING_KEY_INNODB_REDO_LOG_CAPACITY_CURRENT_VALUE",
+                        "STRING_KEY_INNODB_REDO_LOG_CAPACITY_RECOMMENDED_VALUE",
+                        "STRING_KEY_INNODB_LOG_FILE_SIZE_CURRENT_VALUE",
+                        "STRING_KEY_INNODB_LOG_FILE_SIZE_RECOMMENDED_VALUE"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -3404,9 +3428,17 @@
                             "STRING_KEY_MEMORY_UTILIZATION_OUT_OF_SLA_LATEST_TIMESTAMP",
                             "STRING_KEY_ESTIMATED_OOM_PROBABILITY",
                             "STRING_KEY_MAX_CONNECTIONS_CURRENT_VALUE",
-                            "STRING_KEY_MAX_CONNECTIONS_RECOMMENDED_VALUE"
+                            "STRING_KEY_MAX_CONNECTIONS_RECOMMENDED_VALUE",
+                            "STRING_KEY_INNODB_REDO_LOG_CAPACITY_CURRENT_VALUE",
+                            "STRING_KEY_INNODB_REDO_LOG_CAPACITY_RECOMMENDED_VALUE",
+                            "STRING_KEY_INNODB_LOG_FILE_SIZE_CURRENT_VALUE",
+                            "STRING_KEY_INNODB_LOG_FILE_SIZE_RECOMMENDED_VALUE"
                         ],
                         "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            "",
                             "",
                             "",
                             "",
@@ -3799,9 +3831,17 @@
                         "STRING_KEY_MEMORY_UTILIZATION_OUT_OF_SLA_LATEST_TIMESTAMP",
                         "STRING_KEY_ESTIMATED_OOM_PROBABILITY",
                         "STRING_KEY_MAX_CONNECTIONS_CURRENT_VALUE",
-                        "STRING_KEY_MAX_CONNECTIONS_RECOMMENDED_VALUE"
+                        "STRING_KEY_MAX_CONNECTIONS_RECOMMENDED_VALUE",
+                        "STRING_KEY_INNODB_REDO_LOG_CAPACITY_CURRENT_VALUE",
+                        "STRING_KEY_INNODB_REDO_LOG_CAPACITY_RECOMMENDED_VALUE",
+                        "STRING_KEY_INNODB_LOG_FILE_SIZE_CURRENT_VALUE",
+                        "STRING_KEY_INNODB_LOG_FILE_SIZE_RECOMMENDED_VALUE"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
                         "",
                         "",
                         "",

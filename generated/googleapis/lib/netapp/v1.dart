@@ -5446,22 +5446,22 @@ class EstablishVolumePeeringRequest {
 }
 
 /// Response message for `ExecuteOntapDelete` API.
-typedef ExecuteOntapDeleteResponse = $Response00;
+typedef ExecuteOntapDeleteResponse = $Response01;
 
 /// Response message for `ExecuteOntapGet` API.
-typedef ExecuteOntapGetResponse = $Response00;
+typedef ExecuteOntapGetResponse = $Response01;
 
 /// Request message for `ExecuteOntapPatch` API.
-typedef ExecuteOntapPatchRequest = $Request11;
+typedef ExecuteOntapPatchRequest = $Request12;
 
 /// Response message for `ExecuteOntapPatch` API.
-typedef ExecuteOntapPatchResponse = $Response00;
+typedef ExecuteOntapPatchResponse = $Response01;
 
 /// Request message for `ExecuteOntapPost` API.
-typedef ExecuteOntapPostRequest = $Request11;
+typedef ExecuteOntapPostRequest = $Request12;
 
 /// Response message for `ExecuteOntapPost` API.
-typedef ExecuteOntapPostResponse = $Response00;
+typedef ExecuteOntapPostResponse = $Response01;
 
 /// Defines the export policy for the volume.
 class ExportPolicy {

@@ -2573,14 +2573,23 @@ void checkUnnamed57(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.List<core.String> buildUnnamed58() => ['foo', 'foo'];
+
+void checkUnnamed58(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterZoneDistributionConfig = 0;
 api.ZoneDistributionConfig buildZoneDistributionConfig() {
   final o = api.ZoneDistributionConfig();
   buildCounterZoneDistributionConfig++;
   if (buildCounterZoneDistributionConfig < 3) {
+    o.activeZones = buildUnnamed57();
     o.mode = 'foo';
     o.zone = 'foo';
-    o.zones = buildUnnamed57();
+    o.zones = buildUnnamed58();
   }
   buildCounterZoneDistributionConfig--;
   return o;
@@ -2589,16 +2598,17 @@ api.ZoneDistributionConfig buildZoneDistributionConfig() {
 void checkZoneDistributionConfig(api.ZoneDistributionConfig o) {
   buildCounterZoneDistributionConfig++;
   if (buildCounterZoneDistributionConfig < 3) {
+    checkUnnamed57(o.activeZones!);
     unittest.expect(o.mode!, unittest.equals('foo'));
     unittest.expect(o.zone!, unittest.equals('foo'));
-    checkUnnamed57(o.zones!);
+    checkUnnamed58(o.zones!);
   }
   buildCounterZoneDistributionConfig--;
 }
 
-core.List<core.String> buildUnnamed58() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed59() => ['foo', 'foo'];
 
-void checkUnnamed58(core.List<core.String> o) {
+void checkUnnamed59(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3592,7 +3602,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudRedisApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed58();
+      final arg_extraLocationTypes = buildUnnamed59();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

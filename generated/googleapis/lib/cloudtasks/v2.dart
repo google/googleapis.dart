@@ -132,12 +132,12 @@ class ProjectsLocationsResource {
   /// Gets the CMEK config.
   ///
   /// Gets the Customer Managed Encryption Key configured with the Cloud Tasks
-  /// lcoation. By default there is no kms_key configured.
+  /// location. By default there is no `kms_key` configured.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The config. For example:
-  /// projects/PROJECT_ID/locations/LOCATION_ID/CmekConfig\`
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/cmekConfig$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -252,7 +252,7 @@ class ProjectsLocationsResource {
   ///
   /// [name] - Output only. The config resource name which includes the project
   /// and location and must end in 'cmekConfig', in the format
-  /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig\`
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/cmekConfig$`.
   ///
   /// [updateMask] - List of fields to be updated in this request.
@@ -909,6 +909,99 @@ class ProjectsLocationsQueuesTasksResource {
   ProjectsLocationsQueuesTasksResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Creates a batch of tasks and adds them to a queue.
+  ///
+  /// All tasks must be for the same queue. A maximum of 100 tasks can be
+  /// created in a single batch.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The queue name. For example:
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must
+  /// already exist.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> batchCreate(
+    BatchCreateTasksRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tasks:batchCreate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a batch of tasks.
+  ///
+  /// This is a non-atomic operation: if deletion fails for some tasks, it can
+  /// still succeed for others. The metadata field of
+  /// google.longrunning.Operation contains details of failed deletions. A
+  /// maximum of 1000 tasks can be deleted in a batch.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The queue name. For example: Format:
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> batchDelete(
+    BatchDeleteTasksRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tasks:batchDelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates and buffers a new task without the need to explicitly define a
   /// Task message.
   ///
@@ -1549,6 +1642,83 @@ class Attempt {
   }
 }
 
+/// Request message for \[BatchCreateTasks\].
+class BatchCreateTasksRequest {
+  /// This field will be used to identify the long running operation, avoiding
+  /// duplication when user retries.
+  ///
+  /// If not provided, then a UUID will be generated at server side.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The list of requests to create tasks.
+  ///
+  /// The queue specified in parent field of each CreateTaskRequest will be the
+  /// same. This validation happens on the client side as well as in the
+  /// handler. BatchCreateTasksRequest.parent will also be the same value as the
+  /// individual `CreateTaskRequest.parent`. The maximum number of requests is
+  /// 100.
+  ///
+  /// Required.
+  core.List<CreateTaskRequest>? requests;
+
+  BatchCreateTasksRequest({this.requestId, this.requests});
+
+  BatchCreateTasksRequest.fromJson(core.Map json_)
+    : this(
+        requestId: json_['requestId'] as core.String?,
+        requests: (json_['requests'] as core.List?)
+            ?.map(
+              (value) => CreateTaskRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final requestId = this.requestId;
+    final requests = this.requests;
+    return {'requestId': ?requestId, 'requests': ?requests};
+  }
+}
+
+/// Request message for deleting a batch of tasks using BatchDeleteTasks.
+class BatchDeleteTasksRequest {
+  /// The names of the tasks to delete.
+  ///
+  /// A maximum of 1000 tasks can be deleted in a batch. For example: Format:
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
+  ///
+  /// Required.
+  core.List<core.String>? names;
+
+  /// This field will be used to identify the long running operation, avoiding
+  /// duplication when user retries.
+  ///
+  /// If not provided, then a UUID will be generated at server side.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  BatchDeleteTasksRequest({this.names, this.requestId});
+
+  BatchDeleteTasksRequest.fromJson(core.Map json_)
+    : this(
+        names: (json_['names'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        requestId: json_['requestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final names = this.names;
+    final requestId = this.requestId;
+    return {'names': ?names, 'requestId': ?requestId};
+  }
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -1713,7 +1883,7 @@ class CmekConfig {
 
   /// The config resource name which includes the project and location and must
   /// end in 'cmekConfig', in the format
-  /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig\`
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
   ///
   /// Output only.
   core.String? name;
@@ -1735,6 +1905,14 @@ class CmekConfig {
 
 /// Request message for CreateTask.
 class CreateTaskRequest {
+  /// The queue name.
+  ///
+  /// For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+  /// The queue must already exist.
+  ///
+  /// Required.
+  core.String? parent;
+
   /// The response_view specifies which subset of the Task will be returned.
   ///
   /// By default response_view is BASIC; not all information is retrieved by
@@ -1781,10 +1959,11 @@ class CreateTaskRequest {
   /// Required.
   Task? task;
 
-  CreateTaskRequest({this.responseView, this.task});
+  CreateTaskRequest({this.parent, this.responseView, this.task});
 
   CreateTaskRequest.fromJson(core.Map json_)
     : this(
+        parent: json_['parent'] as core.String?,
         responseView: json_['responseView'] as core.String?,
         task: json_.containsKey('task')
             ? Task.fromJson(
@@ -1794,9 +1973,10 @@ class CreateTaskRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final parent = this.parent;
     final responseView = this.responseView;
     final task = this.task;
-    return {'responseView': ?responseView, 'task': ?task};
+    return {'parent': ?parent, 'responseView': ?responseView, 'task': ?task};
   }
 }
 
@@ -2085,12 +2265,12 @@ class HttpTarget {
   /// prefixed with "X-CloudTasks-", can be used to define properties of the
   /// task. * Host: This will be computed by Cloud Tasks and derived from
   /// HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks.
-  /// \`Content-Type\` won't be set by Cloud Tasks. You can explicitly set
-  /// \`Content-Type\` to a media type when the task is created. For
-  /// example,\`Content-Type\` can be set to \`"application/octet-stream"\` or
-  /// \`"application/json"\`. The default value is set to "application/json"\`.
-  /// * User-Agent: This will be set to \`"Google-Cloud-Tasks"\`. Headers which
-  /// can have multiple values (according to RFC2616) can be specified using
+  /// `Content-Type` won't be set by Cloud Tasks. You can explicitly set
+  /// `Content-Type` to a media type when the task is created. For example,
+  /// `Content-Type` can be set to `"application/octet-stream"` or
+  /// `"application/json"`. The default value is set to `"application/json"`. *
+  /// User-Agent: This will be set to `"Google-Cloud-Tasks"`. Headers which can
+  /// have multiple values (according to RFC2616) can be specified using
   /// comma-separated values. The size of the headers must be less than 80KB.
   /// Queue-level headers to override headers of all the tasks in the queue. Do
   /// not put business sensitive or personally identifying data in the HTTP
@@ -3135,6 +3315,13 @@ class Task {
   /// Output only.
   core.int? responseCount;
 
+  /// Specifies the task-level RetryConfig.
+  ///
+  /// If present, this overrides the Queue.retry_config for this task.
+  ///
+  /// Optional.
+  RetryConfig? retryConfig;
+
   /// The time when the task is scheduled to be attempted or retried.
   ///
   /// `schedule_time` will be truncated to the nearest microsecond.
@@ -3165,6 +3352,7 @@ class Task {
     this.lastAttempt,
     this.name,
     this.responseCount,
+    this.retryConfig,
     this.scheduleTime,
     this.view,
   });
@@ -3197,6 +3385,11 @@ class Task {
             : null,
         name: json_['name'] as core.String?,
         responseCount: json_['responseCount'] as core.int?,
+        retryConfig: json_.containsKey('retryConfig')
+            ? RetryConfig.fromJson(
+                json_['retryConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         scheduleTime: json_['scheduleTime'] as core.String?,
         view: json_['view'] as core.String?,
       );
@@ -3211,6 +3404,7 @@ class Task {
     final lastAttempt = this.lastAttempt;
     final name = this.name;
     final responseCount = this.responseCount;
+    final retryConfig = this.retryConfig;
     final scheduleTime = this.scheduleTime;
     final view = this.view;
     return {
@@ -3223,6 +3417,7 @@ class Task {
       'lastAttempt': ?lastAttempt,
       'name': ?name,
       'responseCount': ?responseCount,
+      'retryConfig': ?retryConfig,
       'scheduleTime': ?scheduleTime,
       'view': ?view,
     };

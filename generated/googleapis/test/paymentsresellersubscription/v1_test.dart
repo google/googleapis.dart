@@ -1131,6 +1131,7 @@ api.SubscriptionLineItem buildSubscriptionLineItem() {
     o.name = 'foo';
     o.oneTimeRecurrenceDetails =
         buildSubscriptionLineItemOneTimeRecurrenceDetails();
+    o.planType = 'foo';
     o.product = 'foo';
     o.productPayload = buildProductPayload();
     o.recurrenceType = 'foo';
@@ -1154,6 +1155,7 @@ void checkSubscriptionLineItem(api.SubscriptionLineItem o) {
     checkSubscriptionLineItemOneTimeRecurrenceDetails(
       o.oneTimeRecurrenceDetails!,
     );
+    unittest.expect(o.planType!, unittest.equals('foo'));
     unittest.expect(o.product!, unittest.equals('foo'));
     checkProductPayload(o.productPayload!);
     unittest.expect(o.recurrenceType!, unittest.equals('foo'));
@@ -2869,6 +2871,7 @@ void main() {
       ).partners.subscriptions.lineItems;
       final arg_request = buildSubscriptionLineItem();
       final arg_name = 'foo';
+      final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -2910,6 +2913,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['requestId']!.first,
+            unittest.equals(arg_requestId),
+          );
+          unittest.expect(
             queryMap['updateMask']!.first,
             unittest.equals(arg_updateMask),
           );
@@ -2927,6 +2934,7 @@ void main() {
       final response = await res.patch(
         arg_request,
         arg_name,
+        requestId: arg_requestId,
         updateMask: arg_updateMask,
         $fields: arg_$fields,
       );

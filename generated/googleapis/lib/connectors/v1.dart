@@ -4688,26 +4688,7 @@ class AuthorizationCodeLink {
 }
 
 /// Billing config for the connection.
-class BillingConfig {
-  /// Billing category for the connector.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "BILLING_CATEGORY_UNSPECIFIED" : Billing category is not specified.
-  /// - "GCP_AND_TECHNICAL_CONNECTOR" : GCP/Technical connector.
-  /// - "NON_GCP_CONNECTOR" : Non-GCP connector.
-  core.String? billingCategory;
-
-  BillingConfig({this.billingCategory});
-
-  BillingConfig.fromJson(core.Map json_)
-    : this(billingCategory: json_['billingCategory'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final billingCategory = this.billingCategory;
-    return {'billingCategory': ?billingCategory};
-  }
-}
+typedef BillingConfig = $BillingConfig;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -5673,42 +5654,7 @@ class ConnectionSchemaMetadata {
 }
 
 /// ConnectionStatus indicates the state of the connection.
-class ConnectionStatus {
-  /// Description.
-  core.String? description;
-
-  /// State.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Connection does not have a state yet.
-  /// - "CREATING" : Connection is being created.
-  /// - "ACTIVE" : Connection is running and ready for requests.
-  /// - "INACTIVE" : Connection is stopped.
-  /// - "DELETING" : Connection is being deleted.
-  /// - "UPDATING" : Connection is being updated.
-  /// - "ERROR" : Connection is not running due to an error.
-  /// - "AUTHORIZATION_REQUIRED" : Connection is not running because the
-  /// authorization configuration is not complete.
-  core.String? state;
-
-  /// Status provides detailed information for the state.
-  core.String? status;
-
-  ConnectionStatus({this.description, this.state, this.status});
-
-  ConnectionStatus.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        state: json_['state'] as core.String?,
-        status: json_['status'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final description = this.description;
-    final state = this.state;
-    final status = this.status;
-    return {'description': ?description, 'state': ?state, 'status': ?status};
-  }
-}
+typedef ConnectionStatus = $ConnectionStatus;
 
 /// Connectors indicates a specific connector type, e.x. Salesforce, SAP etc.
 class Connector {
@@ -6565,36 +6511,7 @@ class ConnectorVersionInfraConfig {
 }
 
 /// Log configuration for the connection.
-class ConnectorsLogConfig {
-  /// Enabled represents whether logging is enabled or not for a connection.
-  ///
-  /// Optional.
-  core.bool? enabled;
-
-  /// Log configuration level.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "LOG_LEVEL_UNSPECIFIED" : Log level unspecified.
-  /// - "ERROR" : Only error logs are enabled.
-  /// - "INFO" : Info and error logs are enabled.
-  /// - "DEBUG" : Debug and high verbosity logs are enabled.
-  core.String? level;
-
-  ConnectorsLogConfig({this.enabled, this.level});
-
-  ConnectorsLogConfig.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        level: json_['level'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final enabled = this.enabled;
-    final level = this.level;
-    return {'enabled': ?enabled, 'level': ?level};
-  }
-}
+typedef ConnectorsLogConfig = $LogConfig;
 
 /// CustomConnector represents the custom connector defined by the customer as
 /// part of byoc.
@@ -6981,72 +6898,11 @@ class CustomConnectorVersion {
 }
 
 /// Dead Letter configuration details provided by the user.
-class DeadLetterConfig {
-  /// Project which has the topic given.
-  ///
-  /// Optional.
-  core.String? projectId;
-
-  /// Topic to push events which couldn't be processed.
-  ///
-  /// Optional.
-  core.String? topic;
-
-  DeadLetterConfig({this.projectId, this.topic});
-
-  DeadLetterConfig.fromJson(core.Map json_)
-    : this(
-        projectId: json_['projectId'] as core.String?,
-        topic: json_['topic'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final projectId = this.projectId;
-    final topic = this.topic;
-    return {'projectId': ?projectId, 'topic': ?topic};
-  }
-}
+typedef DeadLetterConfig = $DeadLetterConfig;
 
 /// Request message for ConnectorsService.DeprecateCustomConnectorVersion
 typedef DeprecateCustomConnectorVersionRequest = $Empty;
-
-class Destination {
-  /// For publicly routable host.
-  core.String? host;
-
-  /// The port is the target port number that is accepted by the destination.
-  ///
-  /// Optional.
-  core.int? port;
-
-  /// PSC service attachments.
-  ///
-  /// Format: projects / * /regions / * /serviceAttachments / *
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? serviceAttachment;
-
-  Destination({this.host, this.port, this.serviceAttachment});
-
-  Destination.fromJson(core.Map json_)
-    : this(
-        host: json_['host'] as core.String?,
-        port: json_['port'] as core.int?,
-        serviceAttachment: json_['serviceAttachment'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final host = this.host;
-    final port = this.port;
-    final serviceAttachment = this.serviceAttachment;
-    return {
-      'host': ?host,
-      'port': ?port,
-      'serviceAttachment': ?serviceAttachment,
-    };
-  }
-}
+typedef Destination = $Destination;
 
 /// Define the Connectors target endpoint.
 class DestinationConfig {
@@ -7353,38 +7209,7 @@ class EncryptionConfig {
 }
 
 /// Encryption Key value.
-class EncryptionKey {
-  /// The \[KMS key name\] with which the content of the Operation is encrypted.
-  ///
-  /// The expected format: `projects / * /locations / * /keyRings / *
-  /// /cryptoKeys / * `. Will be empty string if google managed.
-  ///
-  /// Optional.
-  core.String? kmsKeyName;
-
-  /// Specifies the type of the encryption key.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Value type is not specified.
-  /// - "GOOGLE_MANAGED" : Google Managed.
-  /// - "CUSTOMER_MANAGED" : Customer Managed.
-  core.String? type;
-
-  EncryptionKey({this.kmsKeyName, this.type});
-
-  EncryptionKey.fromJson(core.Map json_)
-    : this(
-        kmsKeyName: json_['kmsKeyName'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final kmsKeyName = this.kmsKeyName;
-    final type = this.type;
-    return {'kmsKeyName': ?kmsKeyName, 'type': ?type};
-  }
-}
+typedef EncryptionKey = $EncryptionKey;
 
 /// Endpoint message includes details of the Destination endpoint.
 class EndPoint {
@@ -8394,22 +8219,7 @@ class EndpointAttachment {
 }
 
 /// Data enrichment configuration.
-class EnrichmentConfig {
-  /// Append ACL to the event.
-  ///
-  /// Optional.
-  core.bool? appendAcl;
-
-  EnrichmentConfig({this.appendAcl});
-
-  EnrichmentConfig.fromJson(core.Map json_)
-    : this(appendAcl: json_['appendAcl'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final appendAcl = this.appendAcl;
-    return {'appendAcl': ?appendAcl};
-  }
-}
+typedef EnrichmentConfig = $EnrichmentConfig;
 
 /// EnumOption definition
 class EnumOption {
@@ -9315,36 +9125,7 @@ class EventingRuntimeData {
 }
 
 /// EventingStatus indicates the state of eventing.
-class EventingStatus {
-  /// Description of error if State is set to "ERROR".
-  ///
-  /// Output only.
-  core.String? description;
-
-  /// State.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default state.
-  /// - "ACTIVE" : Eventing is enabled and ready to receive events.
-  /// - "ERROR" : Eventing is not active due to an error.
-  /// - "INGRESS_ENDPOINT_REQUIRED" : Ingress endpoint required.
-  core.String? state;
-
-  EventingStatus({this.description, this.state});
-
-  EventingStatus.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final description = this.description;
-    final state = this.state;
-    return {'description': ?description, 'state': ?state};
-  }
-}
+typedef EventingStatus = $EventingStatus;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -9766,36 +9547,7 @@ class GenerateConnectionToolspecOverrideResponse {
 }
 
 /// Autoscaling config for connector deployment system metrics.
-class HPAConfig {
-  /// Percent CPU utilization where HPA triggers autoscaling.
-  ///
-  /// Output only.
-  core.String? cpuUtilizationThreshold;
-
-  /// Percent Memory utilization where HPA triggers autoscaling.
-  ///
-  /// Output only.
-  core.String? memoryUtilizationThreshold;
-
-  HPAConfig({this.cpuUtilizationThreshold, this.memoryUtilizationThreshold});
-
-  HPAConfig.fromJson(core.Map json_)
-    : this(
-        cpuUtilizationThreshold:
-            json_['cpuUtilizationThreshold'] as core.String?,
-        memoryUtilizationThreshold:
-            json_['memoryUtilizationThreshold'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cpuUtilizationThreshold = this.cpuUtilizationThreshold;
-    final memoryUtilizationThreshold = this.memoryUtilizationThreshold;
-    return {
-      'cpuUtilizationThreshold': ?cpuUtilizationThreshold,
-      'memoryUtilizationThreshold': ?memoryUtilizationThreshold,
-    };
-  }
-}
+typedef HPAConfig = $HPAConfig;
 
 /// Header details for a given header to be added to Endpoint.
 class Header {
@@ -10547,38 +10299,7 @@ class JsonSchema {
 }
 
 /// JWT claims used for the jwt-bearer authorization grant.
-class JwtClaims {
-  /// Value for the "aud" claim.
-  ///
-  /// Optional.
-  core.String? audience;
-
-  /// Value for the "iss" claim.
-  ///
-  /// Optional.
-  core.String? issuer;
-
-  /// Value for the "sub" claim.
-  ///
-  /// Optional.
-  core.String? subject;
-
-  JwtClaims({this.audience, this.issuer, this.subject});
-
-  JwtClaims.fromJson(core.Map json_)
-    : this(
-        audience: json_['audience'] as core.String?,
-        issuer: json_['issuer'] as core.String?,
-        subject: json_['subject'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final audience = this.audience;
-    final issuer = this.issuer;
-    final subject = this.subject;
-    return {'audience': ?audience, 'issuer': ?issuer, 'subject': ?subject};
-  }
-}
+typedef JwtClaims = $JwtClaims;
 
 /// Response message for ListActions API
 class ListActionsResponse {
@@ -11286,31 +11007,7 @@ typedef Location = $Location00;
 /// Determines whether or no a connection is locked.
 ///
 /// If locked, a reason must be specified.
-class LockConfig {
-  /// Indicates whether or not the connection is locked.
-  ///
-  /// Optional.
-  core.bool? locked;
-
-  /// Describes why a connection is locked.
-  ///
-  /// Optional.
-  core.String? reason;
-
-  LockConfig({this.locked, this.reason});
-
-  LockConfig.fromJson(core.Map json_)
-    : this(
-        locked: json_['locked'] as core.bool?,
-        reason: json_['reason'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final locked = this.locked;
-    final reason = this.reason;
-    return {'locked': ?locked, 'reason': ?reason};
-  }
-}
+typedef LockConfig = $LockConfig;
 
 /// Struct for representing boolean expressions.
 class LogicalExpression {
@@ -11735,31 +11432,7 @@ class NetworkEgressModeOverride {
 }
 
 /// Node configuration for the connection.
-class NodeConfig {
-  /// Maximum number of nodes in the runtime nodes.
-  ///
-  /// Optional.
-  core.int? maxNodeCount;
-
-  /// Minimum number of nodes in the runtime nodes.
-  ///
-  /// Optional.
-  core.int? minNodeCount;
-
-  NodeConfig({this.maxNodeCount, this.minNodeCount});
-
-  NodeConfig.fromJson(core.Map json_)
-    : this(
-        maxNodeCount: json_['maxNodeCount'] as core.int?,
-        minNodeCount: json_['minNodeCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final maxNodeCount = this.maxNodeCount;
-    final minNodeCount = this.minNodeCount;
-    return {'maxNodeCount': ?maxNodeCount, 'minNodeCount': ?minNodeCount};
-  }
-}
+typedef NodeConfig = $NodeConfig;
 
 /// pass only at create and not update using updateMask Auth Code Data
 class OAuthTokenData {
@@ -11920,49 +11593,7 @@ class Oauth2AuthCodeFlow {
 /// Provided OAuth Client.
 ///
 /// See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details.
-class Oauth2AuthCodeFlowGoogleManaged {
-  /// Authorization code to be exchanged for access and refresh tokens.
-  ///
-  /// Optional.
-  core.String? authCode;
-
-  /// Redirect URI to be provided during the auth code exchange.
-  ///
-  /// Optional.
-  core.String? redirectUri;
-
-  /// Scopes the connection will request when the user performs the auth code
-  /// flow.
-  ///
-  /// Required.
-  core.List<core.String>? scopes;
-
-  Oauth2AuthCodeFlowGoogleManaged({
-    this.authCode,
-    this.redirectUri,
-    this.scopes,
-  });
-
-  Oauth2AuthCodeFlowGoogleManaged.fromJson(core.Map json_)
-    : this(
-        authCode: json_['authCode'] as core.String?,
-        redirectUri: json_['redirectUri'] as core.String?,
-        scopes: (json_['scopes'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final authCode = this.authCode;
-    final redirectUri = this.redirectUri;
-    final scopes = this.scopes;
-    return {
-      'authCode': ?authCode,
-      'redirectUri': ?redirectUri,
-      'scopes': ?scopes,
-    };
-  }
-}
+typedef Oauth2AuthCodeFlowGoogleManaged = $Oauth2AuthCodeFlowGoogleManaged;
 
 /// Parameters to support Oauth 2.0 Client Credentials Grant Authentication.
 ///
@@ -12807,58 +12438,10 @@ class Resource {
 }
 
 /// Resource limits defined for connection pods of a given connector type.
-class ResourceLimits {
-  /// CPU limit.
-  ///
-  /// Output only.
-  core.String? cpu;
-
-  /// Memory limit.
-  ///
-  /// Output only.
-  core.String? memory;
-
-  ResourceLimits({this.cpu, this.memory});
-
-  ResourceLimits.fromJson(core.Map json_)
-    : this(
-        cpu: json_['cpu'] as core.String?,
-        memory: json_['memory'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cpu = this.cpu;
-    final memory = this.memory;
-    return {'cpu': ?cpu, 'memory': ?memory};
-  }
-}
+typedef ResourceLimits = $ResourceLimits;
 
 /// Resource requests defined for connection pods of a given connector type.
-class ResourceRequests {
-  /// CPU request.
-  ///
-  /// Output only.
-  core.String? cpu;
-
-  /// Memory request.
-  ///
-  /// Output only.
-  core.String? memory;
-
-  ResourceRequests({this.cpu, this.memory});
-
-  ResourceRequests.fromJson(core.Map json_)
-    : this(
-        cpu: json_['cpu'] as core.String?,
-        memory: json_['memory'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final cpu = this.cpu;
-    final memory = this.memory;
-    return {'cpu': ?cpu, 'memory': ?memory};
-  }
-}
+typedef ResourceRequests = $ResourceRequests;
 
 /// Metadata of result field.
 class ResultMetadata {
@@ -13484,23 +13067,7 @@ class SearchConnectionsResponse {
 }
 
 /// Secret provides a reference to entries in Secret Manager.
-class Secret {
-  /// The resource name of the secret version in the format, format as:
-  /// `projects / * /secrets / * /versions / * `.
-  ///
-  /// Optional.
-  core.String? secretVersion;
-
-  Secret({this.secretVersion});
-
-  Secret.fromJson(core.Map json_)
-    : this(secretVersion: json_['secretVersion'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final secretVersion = this.secretVersion;
-    return {'secretVersion': ?secretVersion};
-  }
-}
+typedef Secret = $Secret;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -13932,26 +13499,7 @@ class StandardEntity {
 typedef Status = $Status00;
 
 /// StringListValues is a message to store a list of string values.
-class StringListValues {
-  /// The list of string values.
-  ///
-  /// Required.
-  core.List<core.String>? listValues;
-
-  StringListValues({this.listValues});
-
-  StringListValues.fromJson(core.Map json_)
-    : this(
-        listValues: (json_['listValues'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final listValues = this.listValues;
-    return {'listValues': ?listValues};
-  }
-}
+typedef StringListValues = $StringListValues;
 
 /// Supported runtime features of a connector version.
 class SupportedRuntimeFeatures {
@@ -14115,42 +13663,7 @@ class ToolspecOverride {
 /// 100 duration: { seconds: 300 } } - if the quota limit is 10000 calls per
 /// day, then the message would be: { quota_limit: 10000 duration: { seconds:
 /// 86400 } and so on.
-class TrafficShapingConfig {
-  /// Specifies the duration over which the API call quota limits are
-  /// calculated.
-  ///
-  /// This duration is used to define the time window for evaluating if the
-  /// number of API calls made by a user is within the allowed quota limits. For
-  /// example: - To define a quota sampled over 16 seconds, set `seconds` to 16
-  /// - To define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60)
-  /// - To define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 *
-  /// 60) and so on. It is important to note that this duration is not the time
-  /// the quota is valid for, but rather the time window over which the quota is
-  /// evaluated. For example, if the quota is 100 calls per 10 seconds, then
-  /// this duration field would be set to 10 seconds.
-  ///
-  /// Required.
-  core.String? duration;
-
-  /// Maximum number of api calls allowed.
-  ///
-  /// Required.
-  core.String? quotaLimit;
-
-  TrafficShapingConfig({this.duration, this.quotaLimit});
-
-  TrafficShapingConfig.fromJson(core.Map json_)
-    : this(
-        duration: json_['duration'] as core.String?,
-        quotaLimit: json_['quotaLimit'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final duration = this.duration;
-    final quotaLimit = this.quotaLimit;
-    return {'duration': ?duration, 'quotaLimit': ?quotaLimit};
-  }
-}
+typedef TrafficShapingConfig = $TrafficShapingConfig;
 
 /// Parameters to support Username and Password Authentication.
 class UserPassword {

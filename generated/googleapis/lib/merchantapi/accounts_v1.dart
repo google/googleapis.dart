@@ -1353,7 +1353,12 @@ class AccountsHomepageResource {
 
   /// Unclaims a store's homepage.
   ///
-  /// Executing this method requires admin access.
+  /// Executing this method requires admin access. This method only removes a
+  /// claim made directly on the account. If the account inherits the claim from
+  /// its advanced account (for example, from an advanced account that is
+  /// exempted from claiming), the homepage stays claimed: the method returns a
+  /// successful response and `claimed` remains `true`. If the account itself is
+  /// exempted from claiming, the method returns a `FAILED_PRECONDITION` error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3907,6 +3912,11 @@ class Account {
   /// Optional.
   core.bool? adultContent;
 
+  /// URI (typically a URL) of the store's homepage.
+  ///
+  /// Output only.
+  core.String? homePageUri;
+
   /// The account's \[BCP-47 language code\](https://tools.ietf.org/html/bcp47),
   /// such as `en-US` or `sr-Latn`.
   ///
@@ -3938,6 +3948,7 @@ class Account {
     this.accountId,
     this.accountName,
     this.adultContent,
+    this.homePageUri,
     this.languageCode,
     this.name,
     this.testAccount,
@@ -3949,6 +3960,7 @@ class Account {
         accountId: json_['accountId'] as core.String?,
         accountName: json_['accountName'] as core.String?,
         adultContent: json_['adultContent'] as core.bool?,
+        homePageUri: json_['homePageUri'] as core.String?,
         languageCode: json_['languageCode'] as core.String?,
         name: json_['name'] as core.String?,
         testAccount: json_['testAccount'] as core.bool?,
@@ -3963,6 +3975,7 @@ class Account {
     final accountId = this.accountId;
     final accountName = this.accountName;
     final adultContent = this.adultContent;
+    final homePageUri = this.homePageUri;
     final languageCode = this.languageCode;
     final name = this.name;
     final testAccount = this.testAccount;
@@ -3971,6 +3984,7 @@ class Account {
       'accountId': ?accountId,
       'accountName': ?accountName,
       'adultContent': ?adultContent,
+      'homePageUri': ?homePageUri,
       'languageCode': ?languageCode,
       'name': ?name,
       'testAccount': ?testAccount,
@@ -4152,12 +4166,13 @@ class AccountRelationship {
 class AccountService {
   /// Service type for account aggregation.
   ///
-  /// This enables the provider, which is an advanced account, to manage
-  /// multiple sub-accounts (client accounts). Through this service, the
-  /// advanced account provider can perform administrative and operational tasks
-  /// across all linked sub-accounts. This is useful for agencies, aggregators,
-  /// or large retailers that need centralized control over many Merchant Center
-  /// accounts.
+  /// This enables the provider, which is a multi-client advanced account, to
+  /// manage multiple sub-accounts (client accounts). Through this service, the
+  /// service provider can perform administrative and operational tasks across
+  /// all linked sub-accounts. This is used by store builders (ecommerce
+  /// platforms), channel partners, marketplaces, multi-brand retailers, and
+  /// international retailers that need centralized control over sub-accounts in
+  /// Merchant Center.
   AccountAggregation? accountAggregation;
 
   /// Service type for account management.
@@ -6376,7 +6391,11 @@ class Headers {
 class Homepage {
   /// Whether the homepage is claimed.
   ///
-  /// See https://support.google.com/merchants/answer/176793.
+  /// See
+  /// [About online store URL verification](https://support.google.com/merchants/answer/176793).
+  /// This field is also `true` if the account inherits the claim from its
+  /// advanced account, or if the account is exempted from claiming, even when
+  /// the homepage isn't claimed directly on the account.
   ///
   /// Output only.
   core.bool? claimed;
@@ -8032,9 +8051,15 @@ typedef ProductsManagement = $Empty;
 /// [Free product listings](https://support.google.com/merchants/answer/13889434)
 /// program, which enables products from a business's store to be shown across
 /// Google for free. The following list is the available set of program resource
-/// IDs accessible through the API: * `checkout` * `free-listings` *
-/// `product-ratings` * `shopping-ads` * `ucp-integration` (limited access) *
-/// `youtube-affiliate` * `youtube-shopping-checkout`
+/// IDs accessible through the API: *
+/// \[`checkout`\](https://developers.google.com/merchant/api/guides/products/checkout-settings)
+/// * `free-listings` *
+/// \[`loyalty`\](https://developers.google.com/merchant/api/guides/loyalty/loyalty-programs)
+/// * `product-ratings` * `shopping-ads` * \[`ucp-integration` (limited
+/// access)\](https://developers.google.com/merchant/api/reference/rest/accounts_v1alpha/accounts.programs.ucpSettings)
+/// *
+/// \[`youtube-affiliate`\](https://support.google.com/merchants/answer/14815513)
+/// * `youtube-shopping-checkout`
 class Program {
   /// The regions in which the account is actively participating in the program.
   ///

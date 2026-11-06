@@ -386,7 +386,7 @@ The Google Books API allows clients to access the Google Books repository.
 
 #### Business Profile Performance API - `businessprofileperformance/v1`
 
-The Business Profile Performance API allows merchants to fetch performance reports about their business profile on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
+The Business Profile Performance API allows merchants to fetch performance reports about their business profile on Google. Note: If you have a quota of 0 after enabling the API, please request GBP API access at https://developers.google.com/my-business/content/prereqs#request-access.
 
 - [Original documentation](https://developers.google.com/my-business/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/businessprofileperformance_v1/businessprofileperformance_v1-library.html)
@@ -643,6 +643,13 @@ Sends application trace data to Cloud Trace for viewing. Trace data is collected
 - [Original documentation](https://cloud.google.com/trace/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/cloudtrace_v2/cloudtrace_v2-library.html)
 
+#### Colab API - `colaboratory/v1`
+
+The Colab API lets you programmatically manage Colab runtimes.
+
+- [Original documentation](https://developers.google.com/colab/api/reference/rest)
+- [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/colaboratory_v1/colaboratory_v1-library.html)
+
 #### Cloud Composer API - `composer/v1`
 
 Manages Apache Airflow environments on Google Cloud Platform.
@@ -701,11 +708,6 @@ This API is a prerequisite for leveraging Artifact Analysis scanning capabilitie
 
 - [Original documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/containeranalysis_v1/containeranalysis_v1-library.html)
-
-#### Document AI Warehouse API - `contentwarehouse/v1`
-
-- [Original documentation](https://cloud.google.com/document-warehouse)
-- [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/contentwarehouse_v1/contentwarehouse_v1-library.html)
 
 #### CSS API - `css/v1`
 
@@ -808,6 +810,13 @@ Accesses the schemaless NoSQL database to provide fully managed, robust, scalabl
 - [Original documentation](https://cloud.google.com/datastream/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/datastream_v1/datastream_v1-library.html)
 
+#### Deep Review API - `deepreview/v1`
+
+Deep Review API for automated, in-depth document reviews.
+
+- [Original documentation](https://research.google/deepreview)
+- [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/deepreview_v1/deepreview_v1-library.html)
+
 #### Cloud Deployment Manager V2 API - `deploymentmanager/v2`
 
 The Google Cloud Deployment Manager v2 API provides services for configuring, deploying, and viewing Google Cloud services and APIs via templates which specify deployments of Cloud resources.
@@ -828,6 +837,13 @@ The Developer Knowledge API provides access to Google's developer knowledge.
 
 - [Original documentation](https://developers.google.com/knowledge)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/developerknowledge_v1/developerknowledge_v1-library.html)
+
+#### Device Run API - `devicerun/v1`
+
+The Device Run API allows management, scheduling, and execution of automated sessions and workloads across device catalogs.
+
+- [Original documentation](https://docs.cloud.google.com/developer-device-platform/device-run)
+- [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/devicerun_v1/devicerun_v1-library.html)
 
 #### Campaign Manager 360 API - `dfareporting/v3_5`
 
@@ -891,6 +907,13 @@ Display & Video 360 API allows users to automate complex Display & Video 360 wor
 
 - [Original documentation](https://developers.google.com/display-video/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/displayvideo_v4/displayvideo_v4-library.html)
+
+#### Display & Video 360 API - `displayvideo/v5`
+
+Display & Video 360 API allows users to automate complex Display & Video 360 workflows, such as creating insertion orders and setting targeting options for individual line items.
+
+- [Original documentation](https://developers.google.com/display-video/)
+- [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/displayvideo_v5/displayvideo_v5-library.html)
 
 #### Sensitive Data Protection (DLP) - `dlp/v2`
 
@@ -1262,6 +1285,16 @@ Notifies Google Web Search when your web pages change.
 - [Original documentation](https://developers.google.com/search/apis/indexing-api/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/indexing_v3/indexing_v3-library.html)
 
+#### Application Integration API - `integrations/v1`
+
+- [Original documentation](https://cloud.google.com/application-integration)
+- [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/integrations_v1/integrations_v1-library.html)
+
+#### Application Integration API - `integrations/v2`
+
+- [Original documentation](https://cloud.google.com/application-integration)
+- [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/integrations_v2/integrations_v2-library.html)
+
 #### Cloud Talent Solution API - `jobs/v3`
 
 Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters.
@@ -1511,35 +1544,35 @@ Manages your Cloud Monitoring data and configurations.
 
 #### My Business Account Management API - `mybusinessaccountmanagement/v1`
 
-The My Business Account Management API provides an interface for managing access to a location on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
+The My Business Account Management API provides an interface for managing access to a location on Google. Note: If you have a quota of 0 after enabling the API, please request GBP API access at https://developers.google.com/my-business/content/prereqs#request-access.
 
 - [Original documentation](https://developers.google.com/my-business/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/mybusinessaccountmanagement_v1/mybusinessaccountmanagement_v1-library.html)
 
 #### My Business Business Information API - `mybusinessbusinessinformation/v1`
 
-The My Business Business Information API provides an interface for managing business information. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
+The My Business Business Information API provides an interface for managing business information on Google. Note: If you have a quota of 0 after enabling the API, please request GBP API access at https://developers.google.com/my-business/content/prereqs#request-access.
 
 - [Original documentation](https://developers.google.com/my-business/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/mybusinessbusinessinformation_v1/mybusinessbusinessinformation_v1-library.html)
 
 #### My Business Lodging API - `mybusinesslodging/v1`
 
-The My Business Lodging API enables managing lodging business information on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
+The My Business Lodging API enables managing lodging business information on Google. Note: If you have a quota of 0 after enabling the API, please request GBP API access at https://developers.google.com/my-business/content/prereqs#request-access.
 
 - [Original documentation](https://developers.google.com/my-business/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/mybusinesslodging_v1/mybusinesslodging_v1-library.html)
 
 #### My Business Notifications API - `mybusinessnotifications/v1`
 
-The My Business Notification Settings API enables managing notification settings for business accounts. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
+The My Business Notification Settings API enables managing notification settings for business accounts. Note: If you have a quota of 0 after enabling the API, please request GBP API access at https://developers.google.com/my-business/content/prereqs#request-access.
 
 - [Original documentation](https://developers.google.com/my-business/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/mybusinessnotifications_v1/mybusinessnotifications_v1-library.html)
 
 #### My Business Place Actions API - `mybusinessplaceactions/v1`
 
-The My Business Place Actions API provides an interface for managing place action links of a location on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.
+The My Business Place Actions API provides an interface for managing place action links of a location on Google. Note: If you have a quota of 0 after enabling the API, please request GBP API access at https://developers.google.com/my-business/content/prereqs#request-access.
 
 - [Original documentation](https://developers.google.com/my-business/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/mybusinessplaceactions_v1/mybusinessplaceactions_v1-library.html)
@@ -1685,7 +1718,9 @@ Provides access to information about profiles and contacts.
 
 #### Places API (New) - `places/v1`
 
-- [Original documentation](https://mapsplatform.google.com/maps-products/#places-section)
+The Places API allows developers to access a variety of search and retrieval endpoints for a Place.
+
+- [Original documentation](https://developers.google.com/maps/documentation/places/web-service)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/places_v1/places_v1-library.html)
 
 #### Google Play Custom App Publishing API - `playcustomapp/v1`
@@ -1756,13 +1791,6 @@ Provides reliable, many-to-many, asynchronous messaging between applications.
 
 - [Original documentation](https://cloud.google.com/pubsub/lite/docs)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/pubsublite_v1/pubsublite_v1-library.html)
-
-#### Rapid Migration Assessment API - `rapidmigrationassessment/v1`
-
-The Rapid Migration Assessment service is our first-party migration assessment and planning tool.
-
-- [Original documentation](https://cloud.google.com/migration-center)
-- [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/rapidmigrationassessment_v1/rapidmigrationassessment_v1-library.html)
 
 #### Reader Revenue Subscription Linking API - `readerrevenuesubscriptionlinking/v1`
 
@@ -1836,7 +1864,7 @@ The Runtime Configurator allows you to dynamically configure and expose variable
 
 Model, deploy, and operate your SaaS at scale.
 
-- [Original documentation](https://cloud.google.com/saas-runtime/docs)
+- [Original documentation](https://docs.cloud.google.com/app-lifecycle-manager)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/saasservicemgmt_v1/saasservicemgmt_v1-library.html)
 
 #### Safe Browsing API - `safebrowsing/v4`
@@ -2111,7 +2139,7 @@ TPU API provides customers with access to Google TPU technology.
 
 #### Transcoder API - `transcoder/v1`
 
-This API converts video files into formats suitable for consumer distribution. For more information, see the Transcoder API overview.
+This API converts video files into formats suitable for consumer distribution.
 
 - [Original documentation](https://cloud.google.com/transcoder/docs/)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/transcoder_v1/transcoder_v1-library.html)

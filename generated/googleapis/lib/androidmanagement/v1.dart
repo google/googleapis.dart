@@ -1867,6 +1867,8 @@ class AdvancedSecurityOverrides {
   /// previously, all user-configured Wi-Fi networks may be lost and any
   /// enterprise-configured Wi-Fi networks that require user input may need to
   /// be reconfigured.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "COMMON_CRITERIA_MODE_UNSPECIFIED" : Unspecified. Defaults to
   /// COMMON_CRITERIA_MODE_DISABLED.
@@ -1902,6 +1904,8 @@ class AdvancedSecurityOverrides {
   /// (deprecated). On personally-owned devices with a work profile, setting
   /// this policy will not disable safe boot. In this case, a
   /// NonComplianceDetail with MANAGEMENT_MODE is reported.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "DEVELOPER_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
   /// DEVELOPER_SETTINGS_DISABLED.
@@ -1915,6 +1919,8 @@ class AdvancedSecurityOverrides {
   /// (https://support.google.com/accounts/answer/2812853) is enforced.
   ///
   /// Replaces ensureVerifyAppsEnabled (deprecated).
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "GOOGLE_PLAY_PROTECT_VERIFY_APPS_UNSPECIFIED" : Unspecified. Defaults to
   /// VERIFY_APPS_ENFORCED.
@@ -1959,12 +1965,16 @@ class AdvancedSecurityOverrides {
   ///
   /// By default, no personal apps (aside from system apps) can read work
   /// notifications. Each value in the list must be a package name.
+  ///
+  /// Optional.
   core.List<core.String>? personalAppsThatCanReadWorkNotifications;
 
   /// The policy for untrusted apps (apps from unknown sources) enforced on the
   /// device.
   ///
   /// Replaces install_unknown_sources_allowed (deprecated).
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "UNTRUSTED_APPS_POLICY_UNSPECIFIED" : Unspecified. Defaults to
   /// DISALLOW_INSTALL.
@@ -4365,9 +4375,31 @@ class CrossDevicePolicies {
   /// devices which are signed in with the same authenticated managed account.
   core.String? nearbyNotificationStreaming;
 
+  /// Controls the task continuity handoff
+  /// (https://developer.android.com/partners/android-17/features#handoff)
+  /// feature.
+  ///
+  /// This policy applies to the entire device for fully managed devices, and to
+  /// the work profile for devices with a work profile. Requires Android 17 QPR1
+  /// or higher.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TASK_CONTINUITY_HANDOFF_UNSPECIFIED" : Defaults to
+  /// TASK_CONTINUITY_HANDOFF_ALLOWED.
+  /// - "TASK_CONTINUITY_HANDOFF_ALLOWED" : Allows the user to enable or disable
+  /// the task continuity handoff feature in settings. A NonComplianceDetail
+  /// with API_LEVEL is reported if the Android version is lower than Android 17
+  /// QPR1.
+  /// - "TASK_CONTINUITY_HANDOFF_DISALLOWED" : The task continuity handoff
+  /// feature is disallowed. A NonComplianceDetail with API_LEVEL is reported if
+  /// the Android version is lower than Android 17 QPR1.
+  core.String? taskContinuityHandoff;
+
   CrossDevicePolicies({
     this.nearbyAppStreaming,
     this.nearbyNotificationStreaming,
+    this.taskContinuityHandoff,
   });
 
   CrossDevicePolicies.fromJson(core.Map json_)
@@ -4375,14 +4407,17 @@ class CrossDevicePolicies {
         nearbyAppStreaming: json_['nearbyAppStreaming'] as core.String?,
         nearbyNotificationStreaming:
             json_['nearbyNotificationStreaming'] as core.String?,
+        taskContinuityHandoff: json_['taskContinuityHandoff'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final nearbyAppStreaming = this.nearbyAppStreaming;
     final nearbyNotificationStreaming = this.nearbyNotificationStreaming;
+    final taskContinuityHandoff = this.taskContinuityHandoff;
     return {
       'nearbyAppStreaming': ?nearbyAppStreaming,
       'nearbyNotificationStreaming': ?nearbyNotificationStreaming,
+      'taskContinuityHandoff': ?taskContinuityHandoff,
     };
   }
 }
@@ -4413,6 +4448,8 @@ class CrossProfilePolicies {
 
   /// Whether text copied from one profile (personal or work) can be pasted in
   /// the other profile.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CROSS_PROFILE_COPY_PASTE_UNSPECIFIED" : Unspecified. Defaults to
   /// COPY_FROM_WORK_TO_PERSONAL_DISALLOWED
@@ -4430,6 +4467,8 @@ class CrossProfilePolicies {
   /// Specifically controls simple data sharing via intents. Management of other
   /// cross-profile communication channels, such as contact search, copy/paste,
   /// or connected work & personal apps, are configured separately.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CROSS_PROFILE_DATA_SHARING_UNSPECIFIED" : Unspecified. Defaults to
   /// DATA_SHARING_FROM_WORK_TO_PERSONAL_DISALLOWED.
@@ -4456,10 +4495,14 @@ class CrossProfilePolicies {
   /// allowlisted system apps.Supported on Android 14 and above. A
   /// NonComplianceDetail with API_LEVEL is reported if the Android version is
   /// less than 14.
+  ///
+  /// Optional.
   PackageNameList? exemptionsToShowWorkContactsInPersonalProfile;
 
   /// Whether personal apps can access contacts stored in the work profile.See
   /// also exemptions_to_show_work_contacts_in_personal_profile.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_UNSPECIFIED" : Unspecified.
   /// Defaults to SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED.When this is
@@ -4495,6 +4538,8 @@ class CrossProfilePolicies {
   ///
   /// If the policy does not specify work_profile_widgets for a specific
   /// application, it will behave according to the value specified here.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "WORK_PROFILE_WIDGETS_DEFAULT_UNSPECIFIED" : Unspecified. Defaults to
   /// WORK_PROFILE_WIDGETS_DEFAULT_DISALLOWED.
@@ -5451,6 +5496,8 @@ class DeviceConnectivityManagement {
   ///
   /// Based on the option set, user will have either full or limited or no
   /// control in configuring Wi-Fi networks.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CONFIGURE_WIFI_UNSPECIFIED" : Unspecified. Defaults to
   /// ALLOW_CONFIGURING_WIFI unless wifiConfigDisabled is set to true. If
@@ -5498,6 +5545,8 @@ class DeviceConnectivityManagement {
   ///
   /// Based on the value set, the user is partially or fully disallowed from
   /// using different forms of tethering.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TETHERING_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
   /// ALLOW_ALL_TETHERING unless tetheringConfigDisabled is set to true. If
@@ -5519,6 +5568,8 @@ class DeviceConnectivityManagement {
   /// Controls what files and/or data can be transferred via USB.
   ///
   /// Supported only on company-owned devices.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "USB_DATA_ACCESS_UNSPECIFIED" : Unspecified. Defaults to
   /// DISALLOW_USB_FILE_TRANSFER.
@@ -5539,6 +5590,8 @@ class DeviceConnectivityManagement {
   /// Controls configuring and using Wi-Fi direct settings.
   ///
   /// Supported on company-owned devices running Android 13 and above.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "WIFI_DIRECT_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
   /// ALLOW_WIFI_DIRECT
@@ -5556,7 +5609,13 @@ class DeviceConnectivityManagement {
   /// Restrictions on which Wi-Fi SSIDs the device can connect to.
   ///
   /// Note that this does not affect which networks can be configured on the
-  /// device. Supported on company-owned devices running Android 13 and above.
+  /// device.Supported on Android 13 (API level 33) and higher on fully managed
+  /// devices and work profiles on company-owned devices. A NonComplianceDetail
+  /// with MANAGEMENT_MODE is reported on other management modes. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 13 (API level 33).
+  ///
+  /// Optional.
   WifiSsidPolicy? wifiSsidPolicy;
 
   DeviceConnectivityManagement({
@@ -5692,6 +5751,27 @@ class DeviceRadioState {
   /// reported if the Android version is less than 13.
   core.String? minimumWifiSecurityLevel;
 
+  /// Controls whether NFC is disabled on the device and if the user can toggle
+  /// NFC between enabled and disabled.
+  ///
+  /// This is for fully managed devices. To control NFC on work profiles on
+  /// company-owned devices, use deviceWidePolicies.deviceRadioState.nfc
+  /// instead.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "NFC_UNSPECIFIED" : Unspecified. Defaults to NFC_USER_CHOICE.
+  /// - "NFC_USER_CHOICE" : The user is allowed to toggle NFC between enabled
+  /// and disabled. A NonComplianceDetail with API_LEVEL is reported if the
+  /// Android version is less than 15.
+  /// - "NFC_DISABLED" : NFC is disabled on the device. The user is not allowed
+  /// to toggle NFC on. This is supported on fully managed devices and work
+  /// profiles on company-owned devices. For other management modes, a
+  /// NonComplianceDetail with MANAGEMENT_MODE is reported. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 15.
+  core.String? nfc;
+
   /// Controls the state of the ultra wideband setting and whether the user can
   /// toggle it on or off.
   ///
@@ -5714,9 +5794,17 @@ class DeviceRadioState {
   /// to USER_INITIATED_ADD_ESIM_ALLOWED.
   /// - "USER_INITIATED_ADD_ESIM_ALLOWED" : The user is allowed to add eSIM
   /// profiles.
-  /// - "USER_INITIATED_ADD_ESIM_DISALLOWED" : Supported only on company-owned
-  /// devices. A NonComplianceDetail with MANAGEMENT_MODE is reported for
-  /// personally-owned devices.
+  /// - "USER_INITIATED_ADD_ESIM_DISALLOWED" : Prevents the user from adding any
+  /// new eSIM profiles. Note the following behaviors: * Admin-provisioned
+  /// eSIMs: This setting does not block adding or managing eSIMs
+  /// programmatically using commands like ADD_ESIM. * Existing eSIMs: Any eSIM
+  /// profiles already present on the device before this restriction is applied,
+  /// will remain and are not removed. To view existing eSIMs, refer to the data
+  /// reported in TelephonyInfo.Supported on Android 15 and higher. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 15.Supported only on company-owned devices. A
+  /// NonComplianceDetail with MANAGEMENT_MODE is reported for personally-owned
+  /// devices.
   core.String? userInitiatedAddEsimSettings;
 
   /// Controls current state of Wi-Fi and if user can change its state.
@@ -5738,6 +5826,7 @@ class DeviceRadioState {
     this.airplaneModeState,
     this.cellularTwoGState,
     this.minimumWifiSecurityLevel,
+    this.nfc,
     this.ultraWidebandState,
     this.userInitiatedAddEsimSettings,
     this.wifiState,
@@ -5749,6 +5838,7 @@ class DeviceRadioState {
         cellularTwoGState: json_['cellularTwoGState'] as core.String?,
         minimumWifiSecurityLevel:
             json_['minimumWifiSecurityLevel'] as core.String?,
+        nfc: json_['nfc'] as core.String?,
         ultraWidebandState: json_['ultraWidebandState'] as core.String?,
         userInitiatedAddEsimSettings:
             json_['userInitiatedAddEsimSettings'] as core.String?,
@@ -5759,6 +5849,7 @@ class DeviceRadioState {
     final airplaneModeState = this.airplaneModeState;
     final cellularTwoGState = this.cellularTwoGState;
     final minimumWifiSecurityLevel = this.minimumWifiSecurityLevel;
+    final nfc = this.nfc;
     final ultraWidebandState = this.ultraWidebandState;
     final userInitiatedAddEsimSettings = this.userInitiatedAddEsimSettings;
     final wifiState = this.wifiState;
@@ -5766,6 +5857,7 @@ class DeviceRadioState {
       'airplaneModeState': ?airplaneModeState,
       'cellularTwoGState': ?cellularTwoGState,
       'minimumWifiSecurityLevel': ?minimumWifiSecurityLevel,
+      'nfc': ?nfc,
       'ultraWidebandState': ?ultraWidebandState,
       'userInitiatedAddEsimSettings': ?userInitiatedAddEsimSettings,
       'wifiState': ?wifiState,
@@ -5851,6 +5943,64 @@ class DeviceSettings {
       'unknownSourcesEnabled': ?unknownSourcesEnabled,
       'verifyAppsEnabled': ?verifyAppsEnabled,
     };
+  }
+}
+
+/// Policies controlling the device on company-owned devices.
+class DeviceWidePolicies {
+  /// Covers controls for radio state.
+  ///
+  /// Optional.
+  DeviceWideRadioState? deviceRadioState;
+
+  DeviceWidePolicies({this.deviceRadioState});
+
+  DeviceWidePolicies.fromJson(core.Map json_)
+    : this(
+        deviceRadioState: json_.containsKey('deviceRadioState')
+            ? DeviceWideRadioState.fromJson(
+                json_['deviceRadioState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final deviceRadioState = this.deviceRadioState;
+    return {'deviceRadioState': ?deviceRadioState};
+  }
+}
+
+/// Controls for device radio settings.
+class DeviceWideRadioState {
+  /// Controls whether NFC is disabled on the device and if the user can toggle
+  /// NFC between enabled and disabled.
+  ///
+  /// This is for work profiles on company-owned devices. To control NFC on
+  /// fully managed devices, use deviceRadioState.nfc instead.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "NFC_UNSPECIFIED" : Unspecified. Defaults to NFC_USER_CHOICE.
+  /// - "NFC_USER_CHOICE" : The user is allowed to toggle NFC between enabled
+  /// and disabled. A NonComplianceDetail with API_LEVEL is reported if the
+  /// Android version is less than 15.
+  /// - "NFC_DISABLED" : NFC is disabled on the device. The user is not allowed
+  /// to toggle NFC on. This is supported on fully managed devices and work
+  /// profiles on company-owned devices. For other management modes, a
+  /// NonComplianceDetail with MANAGEMENT_MODE is reported. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 15.
+  core.String? nfc;
+
+  DeviceWideRadioState({this.nfc});
+
+  DeviceWideRadioState.fromJson(core.Map json_)
+    : this(nfc: json_['nfc'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final nfc = this.nfc;
+    return {'nfc': ?nfc};
   }
 }
 
@@ -6419,7 +6569,10 @@ class EsimCommandStatus {
   /// - "SUCCESS" : The eSIM operation was successfully performed on the device.
   /// - "IN_PROGRESS" : The eSIM operation is in progress.
   /// - "PENDING_USER_ACTION" : The user needs to take an action for the eSIM
-  /// operation to proceed.
+  /// operation to proceed. When ADD_ESIM is issued, this can happen when the
+  /// device requires user consent to install or activate the eSIM, or when the
+  /// eSIM profile requires a confirmation code that was not provided in
+  /// confirmation_code.
   /// - "ERROR_SETUP_IN_PROGRESS" : The eSIM operation cannot be executed when
   /// setup is in progress.
   /// - "ERROR_USER_DENIED" : The user has denied the eSIM operation.
@@ -6606,6 +6759,36 @@ class ExternalData {
     final sha256Hash = this.sha256Hash;
     final url = this.url;
     return {'sha256Hash': ?sha256Hash, 'url': ?url};
+  }
+}
+
+/// Extra capabilities for a role.
+class ExtraCapabilities {
+  /// Controls whether the companion app can perform local device wipe
+  /// (https://developers.google.com/android/management/sdk-local-commands)
+  /// using AMAPI SDK
+  /// (https://developers.google.com/android/management/sdk-integration).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOCAL_DEVICE_WIPE_COMMAND_UNSPECIFIED" : Unspecified. Defaults to
+  /// LOCAL_DEVICE_WIPE_COMMAND_DISALLOWED.
+  /// - "LOCAL_DEVICE_WIPE_COMMAND_DISALLOWED" : The app is not allowed to
+  /// perform local device wipe.
+  /// - "LOCAL_DEVICE_WIPE_COMMAND_ALLOWED" : The app is allowed to perform
+  /// local device wipe. Only the COMPANION_APP role type can use this field.
+  core.String? localDeviceWipeCommand;
+
+  ExtraCapabilities({this.localDeviceWipeCommand});
+
+  ExtraCapabilities.fromJson(core.Map json_)
+    : this(
+        localDeviceWipeCommand: json_['localDeviceWipeCommand'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final localDeviceWipeCommand = this.localDeviceWipeCommand;
+    return {'localDeviceWipeCommand': ?localDeviceWipeCommand};
   }
 }
 
@@ -7174,7 +7357,9 @@ class InternalErrorDetails {
   /// - "ERROR_ADDRESS_MISSING" : See EuiccManager.ERROR_ADDRESS_MISSING
   /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_ADDRESS_MISSING)
   /// for details.
-  /// - "ERROR_INVALID_CONFIRMATION_CODE" : See
+  /// - "ERROR_INVALID_CONFIRMATION_CODE" : The confirmation code is invalid.
+  /// When ADD_ESIM is issued, this is reported when the carrier rejects the
+  /// provided confirmation_code. See
   /// EuiccManager.ERROR_INVALID_CONFIRMATION_CODE
   /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_INVALID_CONFIRMATION_CODE)
   /// for details.
@@ -7387,9 +7572,11 @@ class KeyedAppState {
 /// Settings controlling the behavior of a device in kiosk mode.
 ///
 /// To enable kiosk mode, set kioskCustomLauncherEnabled to true or specify an
-/// app in the policy with installType KIOSK.
+/// app in the policy with the KIOSK role.
 class KioskCustomization {
   /// Specifies whether the Settings app is allowed in kiosk mode.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "DEVICE_SETTINGS_UNSPECIFIED" : Unspecified, defaults to
   /// SETTINGS_ACCESS_ALLOWED.
@@ -7401,6 +7588,8 @@ class KioskCustomization {
 
   /// Sets the behavior of a device in kiosk mode when a user presses and holds
   /// (long-presses) the Power button.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "POWER_BUTTON_ACTIONS_UNSPECIFIED" : Unspecified, defaults to
   /// POWER_BUTTON_AVAILABLE.
@@ -7413,6 +7602,8 @@ class KioskCustomization {
 
   /// Specifies whether system info and notifications are disabled in kiosk
   /// mode.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "STATUS_BAR_UNSPECIFIED" : Unspecified, defaults to
   /// INFO_AND_NOTIFICATIONS_DISABLED.
@@ -7430,6 +7621,8 @@ class KioskCustomization {
   ///
   /// When blocked, the system will force-stop the app as if the user chooses
   /// the "close app" option on the UI.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SYSTEM_ERROR_WARNINGS_UNSPECIFIED" : Unspecified, defaults to
   /// ERROR_AND_WARNINGS_MUTED.
@@ -7442,6 +7635,8 @@ class KioskCustomization {
 
   /// Specifies which navigation features are enabled (e.g. Home, Overview
   /// buttons) in kiosk mode.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SYSTEM_NAVIGATION_UNSPECIFIED" : Unspecified, defaults to
   /// NAVIGATION_DISABLED.
@@ -8316,6 +8511,7 @@ class NonComplianceDetail {
   /// high enough.
   /// - "APP_NOT_UPDATED" : The app is installed, but it hasn't been updated to
   /// the minimum version code specified by policy.
+  /// - "OS_NOT_PERMITTED" : This OS version is not permitted by the policy
   /// - "DEVICE_INCOMPATIBLE" : The device is incompatible with the policy
   /// requirements.
   /// - "APP_SIGNING_CERT_MISMATCH" : The app's signing certificate does not
@@ -8396,6 +8592,9 @@ class NonComplianceDetail {
   /// - "PRIVATE_DNS_HOST_NOT_SERVING" : The specified host for private DNS is a
   /// valid hostname but was found to not be a private DNS server.
   /// nonComplianceReason is set to INVALID_VALUE.
+  /// - "USER_NOT_UNLOCKED" : The user's device is not unlocked (in direct boot
+  /// mode), preventing the application of the policy. nonComplianceReason is
+  /// set to PENDING.
   core.String? specificNonComplianceReason;
 
   NonComplianceDetail({
@@ -8482,6 +8681,7 @@ class NonComplianceDetailCondition {
   /// high enough.
   /// - "APP_NOT_UPDATED" : The app is installed, but it hasn't been updated to
   /// the minimum version code specified by policy.
+  /// - "OS_NOT_PERMITTED" : This OS version is not permitted by the policy
   /// - "DEVICE_INCOMPATIBLE" : The device is incompatible with the policy
   /// requirements.
   /// - "APP_SIGNING_CERT_MISMATCH" : The app's signing certificate does not
@@ -8656,6 +8856,43 @@ class Operation {
   }
 }
 
+/// Determines how to proceed with the update.
+class Outcome {
+  /// Determines how to proceed with the update.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OUTCOME_TYPE_UNSPECIFIED" : Do not use this value.
+  /// - "FORCE" : The action for which the policy is being evaluated (depending
+  /// on the stages), such as downloading the update or rebooting the device,
+  /// happens immediately. Positivity requirement: Any rule which uses this
+  /// can't use any of the following: * METERED_NETWORK * NOT_IDLE *
+  /// NOT_CHARGING * BATTERY_LEVEL_LOW
+  /// - "USER_PROMPT" : Action should not be taken without the user's consent,
+  /// but the user has a way of proceeding with the update and is prompted to do
+  /// so. Supported only for OS_UPDATE_WITHOUT_API_LEVEL_CHANGE and
+  /// OS_UPDATE_WITH_API_LEVEL_CHANGE. For SINGLE_APP, GOOGLE_SYSTEM_SERVICES,
+  /// and GOOGLE_PLAY_SYSTEM_UPDATE, the default update behavior applies, as if
+  /// no rule matched.
+  /// - "BLOCK" : The update is not downloaded and not installed. For updates on
+  /// Google Play, this only affects automatic updates, but does not prevent the
+  /// user from manually updating. For OEM system updates, this prevents both
+  /// manual and automatic updates. Positivity requirement: Any rule which uses
+  /// this cannot use any of the following: * UNMETERED_NETWORK * IDLE *
+  /// CHARGING * BATTERY_LEVEL_NOT_LOW
+  core.String? outcomeType;
+
+  Outcome({this.outcomeType});
+
+  Outcome.fromJson(core.Map json_)
+    : this(outcomeType: json_['outcomeType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final outcomeType = this.outcomeType;
+    return {'outcomeType': ?outcomeType};
+  }
+}
+
 /// A list of package names.
 class PackageNameList {
   /// A list of package names.
@@ -8706,9 +8943,13 @@ class PasswordRequirements {
   /// device is wiped.
   ///
   /// A value of 0 means there is no restriction.
+  ///
+  /// Optional.
   core.int? maximumFailedPasswordsForWipe;
 
   /// Password expiration timeout.
+  ///
+  /// Optional.
   core.String? passwordExpirationTimeout;
 
   /// The length of the password history.
@@ -8716,6 +8957,8 @@ class PasswordRequirements {
   /// After setting this field, the user won't be able to enter a new password
   /// that is the same as any password in the history. A value of 0 means there
   /// is no restriction.
+  ///
+  /// Optional.
   core.int? passwordHistoryLength;
 
   /// The minimum allowed password length.
@@ -8723,40 +8966,56 @@ class PasswordRequirements {
   /// A value of 0 means there is no restriction. Only enforced when
   /// password_quality is NUMERIC, NUMERIC_COMPLEX, ALPHABETIC, ALPHANUMERIC, or
   /// COMPLEX.
+  ///
+  /// Optional.
   core.int? passwordMinimumLength;
 
   /// Minimum number of letters required in the password.
   ///
   /// Only enforced when password_quality is COMPLEX.
+  ///
+  /// Optional.
   core.int? passwordMinimumLetters;
 
   /// Minimum number of lower case letters required in the password.
   ///
   /// Only enforced when password_quality is COMPLEX.
+  ///
+  /// Optional.
   core.int? passwordMinimumLowerCase;
 
   /// Minimum number of non-letter characters (numerical digits or symbols)
   /// required in the password.
   ///
   /// Only enforced when password_quality is COMPLEX.
+  ///
+  /// Optional.
   core.int? passwordMinimumNonLetter;
 
   /// Minimum number of numerical digits required in the password.
   ///
   /// Only enforced when password_quality is COMPLEX.
+  ///
+  /// Optional.
   core.int? passwordMinimumNumeric;
 
   /// Minimum number of symbols required in the password.
   ///
   /// Only enforced when password_quality is COMPLEX.
+  ///
+  /// Optional.
   core.int? passwordMinimumSymbols;
 
   /// Minimum number of upper case letters required in the password.
   ///
   /// Only enforced when password_quality is COMPLEX.
+  ///
+  /// Optional.
   core.int? passwordMinimumUpperCase;
 
   /// The required password quality.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PASSWORD_QUALITY_UNSPECIFIED" : There are no password requirements.
   /// - "BIOMETRIC_WEAK" : The device must be secured with a low-security
@@ -8816,6 +9075,8 @@ class PasswordRequirements {
   core.String? passwordQuality;
 
   /// The scope that the password requirement applies to.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SCOPE_UNSPECIFIED" : The scope is unspecified. The password
   /// requirements are applied to the work profile for work profile devices and
@@ -8833,6 +9094,8 @@ class PasswordRequirements {
   ///
   /// After the specified time period elapses, only strong forms of
   /// authentication can be used to unlock the device or work profile.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "REQUIRE_PASSWORD_UNLOCK_UNSPECIFIED" : Unspecified. Defaults to
   /// USE_DEFAULT_DEVICE_TIMEOUT.
@@ -8848,6 +9111,8 @@ class PasswordRequirements {
   /// will be rejected otherwise. If user has not set a separate work lock and
   /// this field is set to REQUIRE_SEPARATE_WORK_LOCK, a NonComplianceDetail is
   /// reported with nonComplianceReason set to USER_ACTION.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "UNIFIED_LOCK_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
   /// ALLOW_UNIFIED_WORK_AND_PERSONAL_LOCK.
@@ -9093,6 +9358,43 @@ class PersonalApplicationPolicy {
   }
 }
 
+/// Policies controlling cross-device communication in the personal profile.
+class PersonalCrossDevicePolicies {
+  /// Controls the task continuity handoff
+  /// (https://developer.android.com/partners/android-17/features#handoff)
+  /// feature for the personal profile on company-owned devices with a work
+  /// profile.
+  ///
+  /// To disable Handoff device-wide on a company-owned device, both
+  /// crossDevicePolicies.taskContinuityHandoff and this policy should be set to
+  /// TASK_CONTINUITY_HANDOFF_DISALLOWED. Requires Android 17 QPR1 or higher.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TASK_CONTINUITY_HANDOFF_UNSPECIFIED" : Defaults to
+  /// TASK_CONTINUITY_HANDOFF_ALLOWED.
+  /// - "TASK_CONTINUITY_HANDOFF_ALLOWED" : Allows the user to enable or disable
+  /// the task continuity handoff feature in settings. A NonComplianceDetail
+  /// with API_LEVEL is reported if the Android version is lower than Android 17
+  /// QPR1.
+  /// - "TASK_CONTINUITY_HANDOFF_DISALLOWED" : The task continuity handoff
+  /// feature is disallowed. A NonComplianceDetail with API_LEVEL is reported if
+  /// the Android version is lower than Android 17 QPR1.
+  core.String? taskContinuityHandoff;
+
+  PersonalCrossDevicePolicies({this.taskContinuityHandoff});
+
+  PersonalCrossDevicePolicies.fromJson(core.Map json_)
+    : this(
+        taskContinuityHandoff: json_['taskContinuityHandoff'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final taskContinuityHandoff = this.taskContinuityHandoff;
+    return {'taskContinuityHandoff': ?taskContinuityHandoff};
+  }
+}
+
 /// Policies controlling personal usage on a company-owned device with a work
 /// profile.
 class PersonalUsagePolicies {
@@ -9117,6 +9419,11 @@ class PersonalUsagePolicies {
 
   /// If true, the camera is disabled on the personal profile.
   core.bool? cameraDisabled;
+
+  /// Policies controlling cross-device communication in the personal profile.
+  ///
+  /// Optional.
+  PersonalCrossDevicePolicies? crossDevicePolicies;
 
   /// Controls how long the work profile can stay off.
   ///
@@ -9168,6 +9475,7 @@ class PersonalUsagePolicies {
     this.accountTypesWithManagementDisabled,
     this.bluetoothSharing,
     this.cameraDisabled,
+    this.crossDevicePolicies,
     this.maxDaysWithWorkOff,
     this.personalApplications,
     this.personalPlayStoreMode,
@@ -9183,6 +9491,12 @@ class PersonalUsagePolicies {
                 .toList(),
         bluetoothSharing: json_['bluetoothSharing'] as core.String?,
         cameraDisabled: json_['cameraDisabled'] as core.bool?,
+        crossDevicePolicies: json_.containsKey('crossDevicePolicies')
+            ? PersonalCrossDevicePolicies.fromJson(
+                json_['crossDevicePolicies']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         maxDaysWithWorkOff: json_['maxDaysWithWorkOff'] as core.int?,
         personalApplications: (json_['personalApplications'] as core.List?)
             ?.map(
@@ -9201,6 +9515,7 @@ class PersonalUsagePolicies {
         this.accountTypesWithManagementDisabled;
     final bluetoothSharing = this.bluetoothSharing;
     final cameraDisabled = this.cameraDisabled;
+    final crossDevicePolicies = this.crossDevicePolicies;
     final maxDaysWithWorkOff = this.maxDaysWithWorkOff;
     final personalApplications = this.personalApplications;
     final personalPlayStoreMode = this.personalPlayStoreMode;
@@ -9210,6 +9525,7 @@ class PersonalUsagePolicies {
       'accountTypesWithManagementDisabled': ?accountTypesWithManagementDisabled,
       'bluetoothSharing': ?bluetoothSharing,
       'cameraDisabled': ?cameraDisabled,
+      'crossDevicePolicies': ?crossDevicePolicies,
       'maxDaysWithWorkOff': ?maxDaysWithWorkOff,
       'personalApplications': ?personalApplications,
       'personalPlayStoreMode': ?personalPlayStoreMode,
@@ -9240,6 +9556,8 @@ class Policy {
   /// Advanced security settings.
   ///
   /// In most cases, setting these is not needed.
+  ///
+  /// Optional.
   AdvancedSecurityOverrides? advancedSecurityOverrides;
 
   /// Configuration for an always-on VPN connection.
@@ -9343,6 +9661,22 @@ class Policy {
   /// - "AUTOFILL_DISABLED" : Autofill is disabled and the user is not allowed
   /// to change this setting. This is supported only on Android 8 and above.
   core.String? autofillPolicy;
+
+  /// Controls whether the backup service is disabled.
+  ///
+  /// Supported only on fully managed devices running Android 8 and above.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BACKUP_SERVICE_UNSPECIFIED" : Unspecified. Defaults to
+  /// BACKUP_SERVICE_DISABLED.
+  /// - "BACKUP_SERVICE_DISABLED" : Backup service is disabled. The user is not
+  /// allowed to change this setting. A NonComplianceDetail with API_LEVEL is
+  /// reported if the Android version is less than 8 on a fully managed device.
+  /// - "BACKUP_SERVICE_USER_CHOICE" : The user can enable or disable the backup
+  /// service. A NonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 8 on a fully managed device.
+  core.String? backupService;
 
   /// This field has no effect.
   @core.Deprecated(
@@ -9456,6 +9790,8 @@ class Policy {
   CrossDevicePolicies? crossDevicePolicies;
 
   /// Cross-profile policies applied on the device.
+  ///
+  /// Optional.
   CrossProfilePolicies? crossProfilePolicies;
 
   /// Whether roaming data services are disabled.
@@ -9511,15 +9847,24 @@ class Policy {
 
   /// Covers controls for device connectivity such as Wi-Fi, USB data access,
   /// keyboard/mouse connections, and more.
+  ///
+  /// Optional.
   DeviceConnectivityManagement? deviceConnectivityManagement;
 
   /// The device owner information to be shown on the lock screen.
+  ///
+  /// Optional.
   UserFacingMessage? deviceOwnerLockScreenInfo;
 
   /// Covers controls for radio state such as Wi-Fi, bluetooth, and more.
   ///
   /// Optional.
   DeviceRadioState? deviceRadioState;
+
+  /// Policies controlling the device on company-owned devices.
+  ///
+  /// Optional.
+  DeviceWidePolicies? deviceWidePolicies;
 
   /// Controls for the display settings.
   ///
@@ -9605,7 +9950,9 @@ class Policy {
   /// Settings controlling the behavior of a device in kiosk mode.
   ///
   /// To enable kiosk mode, set kioskCustomLauncherEnabled to true or specify an
-  /// app in the policy with installType KIOSK.
+  /// app in the policy with the KIOSK role.
+  ///
+  /// Optional.
   KioskCustomization? kioskCustomization;
 
   /// The degree of location detection enabled.
@@ -9670,6 +10017,9 @@ class Policy {
   core.String? microphoneAccess;
 
   /// The minimum allowed Android API level.
+  ///
+  /// A NonComplianceDetail with OS_NOT_PERMITTED is reported if the Android API
+  /// level of the device is lower than this value.
   core.int? minimumApiLevel;
 
   /// Whether configuring mobile networks is disabled.
@@ -9727,6 +10077,8 @@ class Policy {
   ///
   /// Different policies can be set for work profile or fully managed devices by
   /// setting the password_scope field in the policy.
+  ///
+  /// Optional.
   core.List<PasswordRequirements>? passwordPolicies;
 
   /// Password requirements.
@@ -9915,7 +10267,9 @@ class Policy {
   /// Mainline updates) are automatically downloaded and require a device reboot
   /// to be installed. Refer to the mainline section in Manage system updates
   /// (https://developer.android.com/work/dpc/system-updates#mainline) for
-  /// further details.
+  /// further details.If this policy is set, it takes precedence over
+  /// unifiedUpdatePolicy for OEM OS updates. For more information, see
+  /// unifiedUpdatePolicy.
   SystemUpdate? systemUpdate;
 
   /// Whether configuring tethering and portable hotspots is disabled.
@@ -9926,6 +10280,19 @@ class Policy {
     'Not supported. Member documentation may have more information.',
   )
   core.bool? tetheringConfigDisabled;
+
+  /// The Unified Update Control policy, for controlling updates of software
+  /// components on the device.
+  ///
+  /// Supported only on company-owned devices.The targets
+  /// OS_UPDATE_WITH_API_LEVEL_CHANGE and OS_UPDATE_WITHOUT_API_LEVEL_CHANGE are
+  /// supported only on devices where the OEM has integrated with Unified Update
+  /// Controls, and are ignored otherwise. If systemUpdate is set, then that
+  /// policy takes precedence and the targets OS_UPDATE_WITH_API_LEVEL_CHANGE
+  /// and OS_UPDATE_WITHOUT_API_LEVEL_CHANGE are ignored here.
+  ///
+  /// Optional.
+  UnifiedUpdatePolicy? unifiedUpdatePolicy;
 
   /// Whether user uninstallation of applications is disabled.
   ///
@@ -9945,6 +10312,8 @@ class Policy {
   core.bool? unmuteMicrophoneDisabled;
 
   /// Configuration of device activity logging.
+  ///
+  /// Optional.
   UsageLog? usageLog;
 
   /// Whether transferring files over USB is disabled.
@@ -10024,6 +10393,7 @@ class Policy {
     this.autoDateAndTimeZone,
     this.autoTimeRequired,
     this.autofillPolicy,
+    this.backupService,
     this.blockApplicationsEnabled,
     this.bluetoothConfigDisabled,
     this.bluetoothContactSharingDisabled,
@@ -10045,6 +10415,7 @@ class Policy {
     this.deviceConnectivityManagement,
     this.deviceOwnerLockScreenInfo,
     this.deviceRadioState,
+    this.deviceWidePolicies,
     this.displaySettings,
     this.encryptionPolicy,
     this.ensureVerifyAppsEnabled,
@@ -10101,6 +10472,7 @@ class Policy {
     this.stayOnPluggedModes,
     this.systemUpdate,
     this.tetheringConfigDisabled,
+    this.unifiedUpdatePolicy,
     this.uninstallAppsDisabled,
     this.unmuteMicrophoneDisabled,
     this.usageLog,
@@ -10152,6 +10524,7 @@ class Policy {
         autoDateAndTimeZone: json_['autoDateAndTimeZone'] as core.String?,
         autoTimeRequired: json_['autoTimeRequired'] as core.bool?,
         autofillPolicy: json_['autofillPolicy'] as core.String?,
+        backupService: json_['backupService'] as core.String?,
         blockApplicationsEnabled:
             json_['blockApplicationsEnabled'] as core.bool?,
         bluetoothConfigDisabled: json_['bluetoothConfigDisabled'] as core.bool?,
@@ -10223,6 +10596,12 @@ class Policy {
         deviceRadioState: json_.containsKey('deviceRadioState')
             ? DeviceRadioState.fromJson(
                 json_['deviceRadioState']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        deviceWidePolicies: json_.containsKey('deviceWidePolicies')
+            ? DeviceWidePolicies.fromJson(
+                json_['deviceWidePolicies']
                     as core.Map<core.String, core.dynamic>,
               )
             : null,
@@ -10393,6 +10772,12 @@ class Policy {
               )
             : null,
         tetheringConfigDisabled: json_['tetheringConfigDisabled'] as core.bool?,
+        unifiedUpdatePolicy: json_.containsKey('unifiedUpdatePolicy')
+            ? UnifiedUpdatePolicy.fromJson(
+                json_['unifiedUpdatePolicy']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         uninstallAppsDisabled: json_['uninstallAppsDisabled'] as core.bool?,
         unmuteMicrophoneDisabled:
             json_['unmuteMicrophoneDisabled'] as core.bool?,
@@ -10434,6 +10819,7 @@ class Policy {
     final autoDateAndTimeZone = this.autoDateAndTimeZone;
     final autoTimeRequired = this.autoTimeRequired;
     final autofillPolicy = this.autofillPolicy;
+    final backupService = this.backupService;
     final blockApplicationsEnabled = this.blockApplicationsEnabled;
     final bluetoothConfigDisabled = this.bluetoothConfigDisabled;
     final bluetoothContactSharingDisabled =
@@ -10457,6 +10843,7 @@ class Policy {
     final deviceConnectivityManagement = this.deviceConnectivityManagement;
     final deviceOwnerLockScreenInfo = this.deviceOwnerLockScreenInfo;
     final deviceRadioState = this.deviceRadioState;
+    final deviceWidePolicies = this.deviceWidePolicies;
     final displaySettings = this.displaySettings;
     final encryptionPolicy = this.encryptionPolicy;
     final ensureVerifyAppsEnabled = this.ensureVerifyAppsEnabled;
@@ -10514,6 +10901,7 @@ class Policy {
     final stayOnPluggedModes = this.stayOnPluggedModes;
     final systemUpdate = this.systemUpdate;
     final tetheringConfigDisabled = this.tetheringConfigDisabled;
+    final unifiedUpdatePolicy = this.unifiedUpdatePolicy;
     final uninstallAppsDisabled = this.uninstallAppsDisabled;
     final unmuteMicrophoneDisabled = this.unmuteMicrophoneDisabled;
     final usageLog = this.usageLog;
@@ -10539,6 +10927,7 @@ class Policy {
       'autoDateAndTimeZone': ?autoDateAndTimeZone,
       'autoTimeRequired': ?autoTimeRequired,
       'autofillPolicy': ?autofillPolicy,
+      'backupService': ?backupService,
       'blockApplicationsEnabled': ?blockApplicationsEnabled,
       'bluetoothConfigDisabled': ?bluetoothConfigDisabled,
       'bluetoothContactSharingDisabled': ?bluetoothContactSharingDisabled,
@@ -10560,6 +10949,7 @@ class Policy {
       'deviceConnectivityManagement': ?deviceConnectivityManagement,
       'deviceOwnerLockScreenInfo': ?deviceOwnerLockScreenInfo,
       'deviceRadioState': ?deviceRadioState,
+      'deviceWidePolicies': ?deviceWidePolicies,
       'displaySettings': ?displaySettings,
       'encryptionPolicy': ?encryptionPolicy,
       'ensureVerifyAppsEnabled': ?ensureVerifyAppsEnabled,
@@ -10616,6 +11006,7 @@ class Policy {
       'stayOnPluggedModes': ?stayOnPluggedModes,
       'systemUpdate': ?systemUpdate,
       'tetheringConfigDisabled': ?tetheringConfigDisabled,
+      'unifiedUpdatePolicy': ?unifiedUpdatePolicy,
       'uninstallAppsDisabled': ?uninstallAppsDisabled,
       'unmuteMicrophoneDisabled': ?unmuteMicrophoneDisabled,
       'usageLog': ?usageLog,
@@ -10767,6 +11158,139 @@ class PowerManagementEvent {
       'batteryLevel': ?batteryLevel,
       'createTime': ?createTime,
       'eventType': ?eventType,
+    };
+  }
+}
+
+/// A predicate is something that can be evaluated on a device at any point of
+/// time, to return true or false.
+///
+/// This is the conjunction (logical AND) of all the individual conditions
+/// defined here. An empty Predicate always evaluates to true.
+class Predicate {
+  /// A lower bound on the current date, in the device time zone.
+  ///
+  /// If not set, always evaluates to true.
+  ///
+  /// Optional.
+  Date? dateLowerBound;
+
+  /// An upper bound on the current date, in the device time zone.
+  ///
+  /// If not set, always evaluates to true.
+  ///
+  /// Optional.
+  Date? dateUpperBound;
+
+  /// Evaluates to true if this list is empty or if the current day of the week
+  /// in the device's local time is in this list.
+  ///
+  /// Optional.
+  core.List<core.String>? daysOfWeek;
+
+  /// A lower bound on the current time of the day, evaluated as hh:00:00 in the
+  /// device time zone.
+  ///
+  /// Must specify only the hour (0-23). The policy will be rejected if minutes,
+  /// seconds, or nanos are set. If not set, always evaluates to true.
+  ///
+  /// Optional.
+  TimeOfDay? timeOfDayLowerBound;
+
+  /// An upper bound on the current time of the day, evaluated as hh:00:00 in
+  /// the device time zone.
+  ///
+  /// Must specify only the hour (0-23). The policy will be rejected if minutes,
+  /// seconds, or nanos are set. If not set, always evaluates to true.The window
+  /// closes at the specified hour (for example, a lower bound of 14 and an
+  /// upper bound of 15 covers 14:00 to 15:00). When both bounds are set in the
+  /// same rule, timeOfDayUpperBound must be strictly greater than
+  /// timeOfDayLowerBound for the window to match; if timeOfDayUpperBound is
+  /// less than or equal to timeOfDayLowerBound, the predicate evaluates to
+  /// false. Setting timeOfDayUpperBound to 0 (00:00) evaluates to false for the
+  /// entire day. To extend a window to the end of the day (24:00), omit
+  /// timeOfDayUpperBound. To define an overnight window spanning midnight, use
+  /// two rules: an evening rule with only timeOfDayLowerBound set and a morning
+  /// rule with only timeOfDayUpperBound set (targeting the following day if
+  /// daysOfWeek is set).
+  ///
+  /// Optional.
+  TimeOfDay? timeOfDayUpperBound;
+
+  /// A lower bound on the amount of time for which the update (that is, the
+  /// specific build or version) has been available to the device.
+  ///
+  /// This must be a multiple of 24 hours.
+  ///
+  /// Optional.
+  core.String? updateAgeLowerBound;
+
+  /// An upper bound on the amount of time for which the update has been
+  /// available.
+  ///
+  /// If not set or set to zero, always evaluates to true. This must be a
+  /// multiple of 24 hours.
+  ///
+  /// Optional.
+  core.String? updateAgeUpperBound;
+
+  Predicate({
+    this.dateLowerBound,
+    this.dateUpperBound,
+    this.daysOfWeek,
+    this.timeOfDayLowerBound,
+    this.timeOfDayUpperBound,
+    this.updateAgeLowerBound,
+    this.updateAgeUpperBound,
+  });
+
+  Predicate.fromJson(core.Map json_)
+    : this(
+        dateLowerBound: json_.containsKey('dateLowerBound')
+            ? Date.fromJson(
+                json_['dateLowerBound'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        dateUpperBound: json_.containsKey('dateUpperBound')
+            ? Date.fromJson(
+                json_['dateUpperBound'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        daysOfWeek: (json_['daysOfWeek'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        timeOfDayLowerBound: json_.containsKey('timeOfDayLowerBound')
+            ? TimeOfDay.fromJson(
+                json_['timeOfDayLowerBound']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        timeOfDayUpperBound: json_.containsKey('timeOfDayUpperBound')
+            ? TimeOfDay.fromJson(
+                json_['timeOfDayUpperBound']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        updateAgeLowerBound: json_['updateAgeLowerBound'] as core.String?,
+        updateAgeUpperBound: json_['updateAgeUpperBound'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final dateLowerBound = this.dateLowerBound;
+    final dateUpperBound = this.dateUpperBound;
+    final daysOfWeek = this.daysOfWeek;
+    final timeOfDayLowerBound = this.timeOfDayLowerBound;
+    final timeOfDayUpperBound = this.timeOfDayUpperBound;
+    final updateAgeLowerBound = this.updateAgeLowerBound;
+    final updateAgeUpperBound = this.updateAgeUpperBound;
+    return {
+      'dateLowerBound': ?dateLowerBound,
+      'dateUpperBound': ?dateUpperBound,
+      'daysOfWeek': ?daysOfWeek,
+      'timeOfDayLowerBound': ?timeOfDayLowerBound,
+      'timeOfDayUpperBound': ?timeOfDayUpperBound,
+      'updateAgeLowerBound': ?updateAgeLowerBound,
+      'updateAgeUpperBound': ?updateAgeUpperBound,
     };
   }
 }
@@ -11295,6 +11819,13 @@ class RequestDeviceInfoStatus {
 
 /// Role an app can have.
 class Role {
+  /// Extra capabilities configured specifically for this role.
+  ///
+  /// Not all role types support or utilize extra capabilities.
+  ///
+  /// Optional.
+  ExtraCapabilities? extraCapabilities;
+
   /// The type of the role an app can have.
   ///
   /// Required.
@@ -11338,14 +11869,111 @@ class Role {
   /// this role.
   core.String? roleType;
 
-  Role({this.roleType});
+  Role({this.extraCapabilities, this.roleType});
 
   Role.fromJson(core.Map json_)
-    : this(roleType: json_['roleType'] as core.String?);
+    : this(
+        extraCapabilities: json_.containsKey('extraCapabilities')
+            ? ExtraCapabilities.fromJson(
+                json_['extraCapabilities']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        roleType: json_['roleType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() {
+    final extraCapabilities = this.extraCapabilities;
     final roleType = this.roleType;
-    return {'roleType': ?roleType};
+    return {'extraCapabilities': ?extraCapabilities, 'roleType': ?roleType};
+  }
+}
+
+/// A rule as a part of the Unified Update Control policy.
+///
+/// See rules for how this is used.
+class Rule {
+  /// An EMM-defined identifier for this rule, of length at most 64 characters.
+  ///
+  /// This must not be empty. Within a UnifiedUpdatePolicy, different rules must
+  /// have different ids.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Determines how to proceed with the update.
+  ///
+  /// Optional.
+  Outcome? outcome;
+
+  /// The predicate of the rule, which can evaluate to true or false.
+  ///
+  /// See rules for how this is used. If not set, the predicate always evaluates
+  /// to true.
+  ///
+  /// Optional.
+  Predicate? predicate;
+
+  /// The stages at which the rule is evaluated.
+  ///
+  /// If this list is empty, the rule is evaluated at all stages. Specifying
+  /// stages is supported only for OS_UPDATE_WITHOUT_API_LEVEL_CHANGE and
+  /// OS_UPDATE_WITH_API_LEVEL_CHANGE. For SINGLE_APP, GOOGLE_SYSTEM_SERVICES,
+  /// and GOOGLE_PLAY_SYSTEM_UPDATE, this field is ignored and the rule is
+  /// evaluated at all stages.
+  ///
+  /// Optional.
+  core.List<core.String>? stages;
+
+  /// Targets that this rule applies to.
+  ///
+  /// This can have multiple targets here for convenience, and that is
+  /// equivalent to having multiple rules in sequence each having one target, in
+  /// the same order in which targets are listed here. This list must not be
+  /// empty and must not have duplicates.
+  ///
+  /// Required.
+  core.List<Target>? targets;
+
+  Rule({this.id, this.outcome, this.predicate, this.stages, this.targets});
+
+  Rule.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        outcome: json_.containsKey('outcome')
+            ? Outcome.fromJson(
+                json_['outcome'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        predicate: json_.containsKey('predicate')
+            ? Predicate.fromJson(
+                json_['predicate'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        stages: (json_['stages'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        targets: (json_['targets'] as core.List?)
+            ?.map(
+              (value) =>
+                  Target.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final id = this.id;
+    final outcome = this.outcome;
+    final predicate = this.predicate;
+    final stages = this.stages;
+    final targets = this.targets;
+    return {
+      'id': ?id,
+      'outcome': ?outcome,
+      'predicate': ?predicate,
+      'stages': ?stages,
+      'targets': ?targets,
+    };
   }
 }
 
@@ -11756,6 +12384,26 @@ class SignupUrl {
     final name = this.name;
     final url = this.url;
     return {'name': ?name, 'url': ?url};
+  }
+}
+
+/// Details of an app on Google System services.
+class SingleApp {
+  /// The package name of the app.
+  ///
+  /// This can only be an app which is a part of GOOGLE_SYSTEM_SERVICES.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  SingleApp({this.packageName});
+
+  SingleApp.fromJson(core.Map json_)
+    : this(packageName: json_['packageName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final packageName = this.packageName;
+    return {'packageName': ?packageName};
   }
 }
 
@@ -12311,6 +12959,49 @@ class SystemUpdateInfo {
   }
 }
 
+/// A software component that can be updated.
+class Target {
+  /// Details of an app on Google System services.
+  SingleApp? singleApp;
+
+  /// The type of software component that can be updated.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TARGET_TYPE_UNSPECIFIED" : This must not be used.
+  /// - "SINGLE_APP" : An app on Google System services. singleApp must be set.
+  /// This can be used only to control an app which is a part of
+  /// GOOGLE_SYSTEM_SERVICES.
+  /// - "GOOGLE_SYSTEM_SERVICES" : Google system services
+  /// (https://support.google.com/product-documentation/answer/14343500) updated
+  /// from Google Play, such as WebView.
+  /// - "GOOGLE_PLAY_SYSTEM_UPDATE" : Google Play System Updates. See
+  /// https://source.android.com/docs/core/ota/modular-system .
+  /// - "OS_UPDATE_WITHOUT_API_LEVEL_CHANGE" : An OS update issued by the OEM
+  /// which does not change the API level of the device.
+  /// - "OS_UPDATE_WITH_API_LEVEL_CHANGE" : An OS update issued by the OEM which
+  /// changes the API level of the device.
+  core.String? targetType;
+
+  Target({this.singleApp, this.targetType});
+
+  Target.fromJson(core.Map json_)
+    : this(
+        singleApp: json_.containsKey('singleApp')
+            ? SingleApp.fromJson(
+                json_['singleApp'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        targetType: json_['targetType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final singleApp = this.singleApp;
+    final targetType = this.targetType;
+    return {'singleApp': ?singleApp, 'targetType': ?targetType};
+  }
+}
+
 /// Telephony information associated with a given SIM card on the device.
 ///
 /// This is supported for all SIM cards on fully managed devices on Android 6
@@ -12420,6 +13111,49 @@ class TermsAndConditions {
   }
 }
 
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and google.protobuf.Timestamp.
+typedef TimeOfDay = $TimeOfDay;
+
+/// The Unified Update Control policy, for controlling updates of software
+/// components on the device (see Target).
+///
+/// Supported only on company-owned devices.
+class UnifiedUpdatePolicy {
+  /// When the policy is evaluated for a given target, all rules which refer to
+  /// that target are evaluated in sequence.
+  ///
+  /// The first rule for which the predicate evaluates to true is considered,
+  /// and its outcome is used. If no rule matches, the default update behavior
+  /// applies. In other words, this behaves like a chained if-else
+  /// statement.However, if an update has been available for more than a certain
+  /// amount of time, any outcome of BLOCK is automatically changed to the
+  /// default update behavior. At most 100 rules are allowed.
+  ///
+  /// Optional.
+  core.List<Rule>? rules;
+
+  UnifiedUpdatePolicy({this.rules});
+
+  UnifiedUpdatePolicy.fromJson(core.Map json_)
+    : this(
+        rules: (json_['rules'] as core.List?)
+            ?.map(
+              (value) =>
+                  Rule.fromJson(value as core.Map<core.String, core.dynamic>),
+            )
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final rules = this.rules;
+    return {'rules': ?rules};
+  }
+}
+
 /// Controls types of device activity logs collected from the device and
 /// reported via Pub/Sub notification
 /// (https://developers.google.com/android/management/notifications).
@@ -12428,11 +13162,15 @@ class UsageLog {
   ///
   /// Note that users will receive on-device messaging when usage logging is
   /// enabled.
+  ///
+  /// Optional.
   core.List<core.String>? enabledLogTypes;
 
   /// Specifies which of the enabled log types can be uploaded over mobile data.
   ///
   /// By default logs are queued for upload when the device connects to WiFi.
+  ///
+  /// Optional.
   core.List<core.String>? uploadOnCellularAllowed;
 
   UsageLog({this.enabledLogTypes, this.uploadOnCellularAllowed});
@@ -12768,9 +13506,12 @@ class WifiSsid {
 /// Restrictions on which Wi-Fi SSIDs the device can connect to.
 ///
 /// Note that this does not affect which networks can be configured on the
-/// device. Supported on company-owned devices running Android 13 and above.
+/// device. Supported on Android 13 (API level 33) and higher on fully managed
+/// devices and work profiles on company-owned devices.
 class WifiSsidPolicy {
   /// Type of the Wi-Fi SSID policy to be applied.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "WIFI_SSID_POLICY_TYPE_UNSPECIFIED" : Defaults to WIFI_SSID_DENYLIST.
   /// wifiSsids must not be set. There are no restrictions on which SSID the
@@ -12784,11 +13525,8 @@ class WifiSsidPolicy {
 
   /// List of Wi-Fi SSIDs that should be applied in the policy.
   ///
-  /// This field must be non-empty when WifiSsidPolicyType is set to
-  /// WIFI_SSID_ALLOWLIST. If this is set to a non-empty list, then a
-  /// NonComplianceDetail detail with API_LEVEL is reported if the Android
-  /// version is less than 13 and a NonComplianceDetail with MANAGEMENT_MODE is
-  /// reported for non-company-owned devices.
+  /// This field must be non-empty when wifiSsidPolicyType is set to
+  /// WIFI_SSID_ALLOWLIST.
   ///
   /// Optional.
   core.List<WifiSsid>? wifiSsids;

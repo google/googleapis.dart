@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250105",
+    "revision": "20261104",
     "rootUrl": "https://websecurityscanner.googleapis.com/",
     "servicePath": "",
     "title": "Web Security Scanner API",
@@ -228,7 +228,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Updates a ScanConfig. This method support partial update of a ScanConfig.",
+                            "description": "Updates a ScanConfig. This method supports partial update of a ScanConfig. Authorization requires the following [IAM](https://cloud.google.com/iam/docs/) permission on the specified resource `scan_config.name`: - `cloudsecurityscanner.scans.update`",
                             "flatPath": "v1/projects/{projectsId}/scanConfigs/{scanConfigsId}",
                             "httpMethod": "PATCH",
                             "id": "websecurityscanner.projects.scanConfigs.patch",

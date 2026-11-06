@@ -22866,7 +22866,7 @@ class GoogleAdsSearchads360V23CommonPriceOffering {
 }
 
 /// Brand of the product.
-typedef GoogleAdsSearchads360V23CommonProductBrandInfo = $Shared24;
+typedef GoogleAdsSearchads360V23CommonProductBrandInfo = $Shared27;
 
 /// Category of a product offer.
 class GoogleAdsSearchads360V23CommonProductCategoryInfo {
@@ -22935,10 +22935,10 @@ class GoogleAdsSearchads360V23CommonProductChannelExclusivityInfo {
 }
 
 /// Locality of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductChannelInfo = $Shared25;
+typedef GoogleAdsSearchads360V23CommonProductChannelInfo = $Shared28;
 
 /// Condition of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductConditionInfo = $Shared26;
+typedef GoogleAdsSearchads360V23CommonProductConditionInfo = $Shared29;
 
 /// Custom attribute of a product offer.
 class GoogleAdsSearchads360V23CommonProductCustomAttributeInfo {
@@ -22996,7 +22996,7 @@ class GoogleAdsSearchads360V23CommonProductGroupingInfo {
 }
 
 /// Item id of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductItemIdInfo = $Shared27;
+typedef GoogleAdsSearchads360V23CommonProductItemIdInfo = $Shared30;
 
 /// Labels of a product offer.
 ///
@@ -23057,7 +23057,7 @@ class GoogleAdsSearchads360V23CommonProductTypeFullInfo {
 }
 
 /// Type of a product offer.
-typedef GoogleAdsSearchads360V23CommonProductTypeInfo = $Shared28;
+typedef GoogleAdsSearchads360V23CommonProductTypeInfo = $Shared31;
 
 /// A Promotion asset.
 class GoogleAdsSearchads360V23CommonPromotionAsset {
@@ -32500,7 +32500,7 @@ class GoogleAdsSearchads360V23ResourcesInvoiceRegulatoryCostSummary {
 
 /// Brand of the product.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductBrand =
-    $Shared24;
+    $Shared27;
 
 /// One element of a category at a certain level.
 ///
@@ -32548,11 +32548,11 @@ class GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCategor
 
 /// Locality of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductChannel =
-    $Shared25;
+    $Shared28;
 
 /// Condition of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCondition =
-    $Shared26;
+    $Shared29;
 
 /// Custom attribute of a product offer.
 class GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCustomAttribute {
@@ -32592,11 +32592,11 @@ class GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductCustomA
 
 /// Item id of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductItemId =
-    $Shared27;
+    $Shared30;
 
 /// Type of a product offer.
 typedef GoogleAdsSearchads360V23ResourcesListingGroupFilterDimensionProductType =
-    $Shared28;
+    $Shared31;
 
 /// Filters for URLs in a page feed and URLs from the advertiser web domain.
 ///
@@ -72203,7 +72203,7 @@ class GoogleAdsSearchads360V23ServicesEnablementResult {
 }
 
 /// Request message for ExperimentService.EndExperiment.
-typedef GoogleAdsSearchads360V23ServicesEndExperimentRequest = $Request03;
+typedef GoogleAdsSearchads360V23ServicesEndExperimentRequest = $Request04;
 
 /// A single operation on an experiment arm.
 class GoogleAdsSearchads360V23ServicesExperimentArmOperation {
@@ -90024,7 +90024,7 @@ class GoogleAdsSearchads360V23ServicesPromoteCampaignDraftRequest {
 }
 
 /// Request message for ExperimentService.PromoteExperiment.
-typedef GoogleAdsSearchads360V23ServicesPromoteExperimentRequest = $Request03;
+typedef GoogleAdsSearchads360V23ServicesPromoteExperimentRequest = $Request04;
 
 /// Request message for LocalServicesLeadService.ProvideLeadFeedback.
 class GoogleAdsSearchads360V23ServicesProvideLeadFeedbackRequest {
@@ -90708,7 +90708,7 @@ class GoogleAdsSearchads360V23ServicesRemoveDataLinkRequest {
 }
 
 /// Response message for DataLinkService.RemoveDataLink.
-typedef GoogleAdsSearchads360V23ServicesRemoveDataLinkResponse = $Response02;
+typedef GoogleAdsSearchads360V23ServicesRemoveDataLinkResponse = $Response03;
 
 /// Request message for
 /// ProductLinkInvitationService.RemoveProductLinkInvitation.
@@ -90736,7 +90736,7 @@ class GoogleAdsSearchads360V23ServicesRemoveProductLinkInvitationRequest {
 
 /// Response message for product link invitation removeal.
 typedef GoogleAdsSearchads360V23ServicesRemoveProductLinkInvitationResponse =
-    $Response02;
+    $Response03;
 
 /// Request message for ProductLinkService.RemoveProductLink.
 class GoogleAdsSearchads360V23ServicesRemoveProductLinkRequest {
@@ -90771,7 +90771,7 @@ class GoogleAdsSearchads360V23ServicesRemoveProductLinkRequest {
 }
 
 /// Response message for product link removal.
-typedef GoogleAdsSearchads360V23ServicesRemoveProductLinkResponse = $Response02;
+typedef GoogleAdsSearchads360V23ServicesRemoveProductLinkResponse = $Response03;
 
 /// Contains information needed to restate a conversion's value.
 class GoogleAdsSearchads360V23ServicesRestatementValue {
@@ -90815,10 +90815,10 @@ typedef GoogleAdsSearchads360V23ServicesRunBatchJobRequest = $Empty;
 
 /// Request message for OfflineUserDataJobService.RunOfflineUserDataJob.
 typedef GoogleAdsSearchads360V23ServicesRunOfflineUserDataJobRequest =
-    $Request03;
+    $Request04;
 
 /// Request message for ExperimentService.ScheduleExperiment.
-typedef GoogleAdsSearchads360V23ServicesScheduleExperimentRequest = $Request03;
+typedef GoogleAdsSearchads360V23ServicesScheduleExperimentRequest = $Request04;
 
 /// A single operation (update) on a Search Ads 360 campaign.
 class GoogleAdsSearchads360V23ServicesSearchAds360CampaignOperation {

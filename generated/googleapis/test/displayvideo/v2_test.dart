@@ -932,6 +932,7 @@ api.BiddingStrategy buildBiddingStrategy() {
     o.fixedBid = buildFixedBidStrategy();
     o.maximizeSpendAutoBid = buildMaximizeSpendBidStrategy();
     o.performanceGoalAutoBid = buildPerformanceGoalBidStrategy();
+    o.youtubeAndPartnersBid = buildYoutubeAndPartnersBiddingStrategy();
   }
   buildCounterBiddingStrategy--;
   return o;
@@ -944,6 +945,7 @@ void checkBiddingStrategy(api.BiddingStrategy o) {
     checkFixedBidStrategy(o.fixedBid!);
     checkMaximizeSpendBidStrategy(o.maximizeSpendAutoBid!);
     checkPerformanceGoalBidStrategy(o.performanceGoalAutoBid!);
+    checkYoutubeAndPartnersBiddingStrategy(o.youtubeAndPartnersBid!);
   }
   buildCounterBiddingStrategy--;
 }
@@ -8634,6 +8636,7 @@ api.VideoPerformanceAd buildVideoPerformanceAd() {
   buildCounterVideoPerformanceAd++;
   if (buildCounterVideoPerformanceAd < 3) {
     o.actionButtonLabels = buildUnnamed140();
+    o.businessName = 'foo';
     o.companionBanners = buildUnnamed141();
     o.customParameters = buildUnnamed142();
     o.descriptions = buildUnnamed143();
@@ -8642,6 +8645,7 @@ api.VideoPerformanceAd buildVideoPerformanceAd() {
     o.domain = 'foo';
     o.finalUrl = 'foo';
     o.headlines = buildUnnamed144();
+    o.logo = buildImageAsset();
     o.longHeadlines = buildUnnamed145();
     o.trackingUrl = 'foo';
     o.videos = buildUnnamed146();
@@ -8654,6 +8658,7 @@ void checkVideoPerformanceAd(api.VideoPerformanceAd o) {
   buildCounterVideoPerformanceAd++;
   if (buildCounterVideoPerformanceAd < 3) {
     checkUnnamed140(o.actionButtonLabels!);
+    unittest.expect(o.businessName!, unittest.equals('foo'));
     checkUnnamed141(o.companionBanners!);
     checkUnnamed142(o.customParameters!);
     checkUnnamed143(o.descriptions!);
@@ -8662,6 +8667,7 @@ void checkVideoPerformanceAd(api.VideoPerformanceAd o) {
     unittest.expect(o.domain!, unittest.equals('foo'));
     unittest.expect(o.finalUrl!, unittest.equals('foo'));
     checkUnnamed144(o.headlines!);
+    checkImageAsset(o.logo!);
     checkUnnamed145(o.longHeadlines!);
     unittest.expect(o.trackingUrl!, unittest.equals('foo'));
     checkUnnamed146(o.videos!);

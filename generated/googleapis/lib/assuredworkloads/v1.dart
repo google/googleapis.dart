@@ -24,7 +24,6 @@
 ///
 /// Create an instance of [AssuredworkloadsApi] to access these resources:
 ///
-/// - [AssuredworkloadsResource]
 /// - [FoldersResource]
 ///   - [FoldersLocationsResource]
 ///     - [FoldersLocationsDbFindingSummariesResource]
@@ -73,8 +72,6 @@ class AssuredworkloadsApi {
 
   final commons.ApiRequester _requester;
 
-  AssuredworkloadsResource get assuredworkloads =>
-      AssuredworkloadsResource(_requester);
   FoldersResource get folders => FoldersResource(_requester);
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -89,96 +86,6 @@ class AssuredworkloadsApi {
          servicePath,
          requestHeaders,
        );
-}
-
-class AssuredworkloadsResource {
-  final commons.ApiRequester _requester;
-
-  AssuredworkloadsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Finds orphan ResourceEvents matching the criteria and moves them to the
-  /// ArchivedResourceEvents table.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse>
-  archiveResourceEvents(
-    GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    const url_ = 'v1/assuredworkloads:archiveResourceEvents';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Finds matching ArchivedResourceEvents and moves them back to the
-  /// ResourceEvents table.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<
-    GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse
-  >
-  revertArchivedResourceEvents(
-    GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    const url_ = 'v1/assuredworkloads:revertArchivedResourceEvents';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
 }
 
 class FoldersResource {
@@ -211,24 +118,31 @@ class FoldersLocationsDbFindingSummariesResource {
   FoldersLocationsDbFindingSummariesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Lists the finding summary by category for a given scope.
+  /// Lists summaries of the active findings in a Data Boundary scope (an
+  /// organization, folder, or project), with one summary for each finding
+  /// category.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent scope for the framework overview page.
-  /// Formats: - projects/{project}/locations/{location} -
-  /// folders/{folder}/locations/{location} -
-  /// organizations/{organization}/locations/{location}
+  /// [parent] - Required. The parent scope to list finding summaries for.
+  /// Formats: * `organizations/{organization}/locations/{location}` *
+  /// `folders/{folder}/locations/{location}` *
+  /// `projects/{project}/locations/{location}`
   /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the framework
+  /// deployments whose findings are summarized. The syntax follows
+  /// \[AIP-160\](https://google.aip.dev/160). Supported fields are
+  /// `framework_deployment`, `framework_name`, and `framework_revision` (the
+  /// major revision ID of the framework).
   ///
   /// [pageSize] - Optional. The requested page size. The server might return
   /// fewer items than requested. If unspecified, the server picks an
   /// appropriate default.
   ///
   /// [pageToken] - Optional. A token that identifies the page of results that
-  /// the server should return.
+  /// the server should return. Pass the `next_page_token` value from a previous
+  /// result.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -282,17 +196,23 @@ class FoldersLocationsDbFrameworkComplianceReportsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Gets the aggregated compliance report over time for a given scope.
+  /// Gets daily compliance reports over a time range for a framework that's
+  /// deployed in a Data Boundary scope.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the aggregated compliance report over time
-  /// to retrieve. Format:
+  /// [name] - Required. The name of the framework compliance report to
+  /// aggregate over time. The report ID is the ID of the compliance framework,
+  /// for example `builtin-fedramp-high`. Format:
   /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the framework
+  /// deployments that are included in the report. The syntax follows
+  /// \[AIP-160\](https://google.aip.dev/160). Supported fields are
+  /// `framework_deployment`, `framework_name`, and `framework_revision` (the
+  /// major revision ID of the framework).
   ///
   /// [interval_endTime] - Optional. Exclusive end of the interval. If
   /// specified, a Timestamp matching this interval will have to be before the
@@ -344,18 +264,30 @@ class FoldersLocationsDbFrameworkComplianceReportsResource {
     );
   }
 
-  /// Fetches the framework compliance report for a given scope.
+  /// Fetches the current compliance report for a framework that's deployed in a
+  /// Data Boundary scope (an organization, folder, or project).
+  ///
+  /// The report includes the number of passing, failing, and not assessed
+  /// controls in the framework.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the framework compliance report to
-  /// retrieve.
+  /// retrieve. The report ID is the ID of the compliance framework, for example
+  /// `builtin-fedramp-high`. Formats: *
+  /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
   ///
-  /// [endTime] - Optional. The end time of the report.
+  /// [endTime] - Optional. The end time of the report. Reserved for future use.
+  /// Currently, the report always reflects the current compliance state.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the results.
+  /// Reserved for future use.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -403,26 +335,37 @@ class FoldersLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesRe
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Lists the control compliance summary for a given scope.
+  /// Lists the compliance summaries of the controls in a framework compliance
+  /// report.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent scope for the framework overview page.
-  /// Format:
-  /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-  /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-  /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// [parent] - Required. The framework compliance report to list control
+  /// compliance summaries for. Formats: *
+  /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the results. The
+  /// syntax follows \[AIP-160\](https://google.aip.dev/160). Supported fields
+  /// are `framework_deployment`, `framework_name`, `framework_revision` (the
+  /// major revision ID of the framework), and `end_time`. The `end_time` field
+  /// accepts a single equality comparison with an
+  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) timestamp, for example
+  /// `end_time = "2026-01-01T00:00:00Z"`. Only findings that were updated at or
+  /// after this time are counted.
   ///
   /// [pageSize] - Optional. The requested page size. The server might return
   /// fewer items than requested. If unspecified, the default page size is 50.
   /// The maximum value is 1000.
   ///
   /// [pageToken] - Optional. A token that identifies the page of results that
-  /// the server should return.
+  /// the server should return. Pass the `next_page_token` value from a previous
+  /// result.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -475,28 +418,31 @@ class FoldersLocationsDbFrameworkComplianceSummariesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Lists the framework compliance summary for a given scope.
+  /// Lists the compliance summaries of the frameworks that are deployed in a
+  /// Data Boundary scope (an organization, folder, or project).
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent scope for the framework compliance
-  /// summary. Format: organizations/{organization}/locations/{location}
-  /// folders/{folder}/locations/{location}
-  /// projects/{project}/locations/{location}
+  /// [parent] - Required. The parent scope to list framework compliance
+  /// summaries for. Formats: *
+  /// `organizations/{organization}/locations/{location}` *
+  /// `folders/{folder}/locations/{location}` *
+  /// `projects/{project}/locations/{location}`
   /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the results.
+  /// Reserved for future use.
   ///
   /// [pageSize] - Optional. The requested page size. The server might return
   /// fewer items than requested. If unspecified, the default page size is 50.
   /// The maximum value is 1000.
   ///
   /// [pageToken] - Optional. A token that identifies the page of results that
-  /// the server should return. Pass the next_page_token value from a previous
+  /// the server should return. Pass the `next_page_token` value from a previous
   /// result.
   ///
-  /// [view] - Optional. Specifies the level of detail to return in the
-  /// response.
+  /// [view] - Optional. The level of detail to return for each summary. If not
+  /// specified, `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC` is used.
   /// Possible string values are:
   /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED" : The default / unset
   /// value. The API will default to the BASIC view.
@@ -587,24 +533,31 @@ class OrganizationsLocationsDbFindingSummariesResource {
   OrganizationsLocationsDbFindingSummariesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Lists the finding summary by category for a given scope.
+  /// Lists summaries of the active findings in a Data Boundary scope (an
+  /// organization, folder, or project), with one summary for each finding
+  /// category.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent scope for the framework overview page.
-  /// Formats: - projects/{project}/locations/{location} -
-  /// folders/{folder}/locations/{location} -
-  /// organizations/{organization}/locations/{location}
+  /// [parent] - Required. The parent scope to list finding summaries for.
+  /// Formats: * `organizations/{organization}/locations/{location}` *
+  /// `folders/{folder}/locations/{location}` *
+  /// `projects/{project}/locations/{location}`
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the framework
+  /// deployments whose findings are summarized. The syntax follows
+  /// \[AIP-160\](https://google.aip.dev/160). Supported fields are
+  /// `framework_deployment`, `framework_name`, and `framework_revision` (the
+  /// major revision ID of the framework).
   ///
   /// [pageSize] - Optional. The requested page size. The server might return
   /// fewer items than requested. If unspecified, the server picks an
   /// appropriate default.
   ///
   /// [pageToken] - Optional. A token that identifies the page of results that
-  /// the server should return.
+  /// the server should return. Pass the `next_page_token` value from a previous
+  /// result.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -658,17 +611,23 @@ class OrganizationsLocationsDbFrameworkComplianceReportsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Gets the aggregated compliance report over time for a given scope.
+  /// Gets daily compliance reports over a time range for a framework that's
+  /// deployed in a Data Boundary scope.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the aggregated compliance report over time
-  /// to retrieve. Format:
+  /// [name] - Required. The name of the framework compliance report to
+  /// aggregate over time. The report ID is the ID of the compliance framework,
+  /// for example `builtin-fedramp-high`. Format:
   /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the framework
+  /// deployments that are included in the report. The syntax follows
+  /// \[AIP-160\](https://google.aip.dev/160). Supported fields are
+  /// `framework_deployment`, `framework_name`, and `framework_revision` (the
+  /// major revision ID of the framework).
   ///
   /// [interval_endTime] - Optional. Exclusive end of the interval. If
   /// specified, a Timestamp matching this interval will have to be before the
@@ -720,18 +679,30 @@ class OrganizationsLocationsDbFrameworkComplianceReportsResource {
     );
   }
 
-  /// Fetches the framework compliance report for a given scope.
+  /// Fetches the current compliance report for a framework that's deployed in a
+  /// Data Boundary scope (an organization, folder, or project).
+  ///
+  /// The report includes the number of passing, failing, and not assessed
+  /// controls in the framework.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the framework compliance report to
-  /// retrieve.
+  /// retrieve. The report ID is the ID of the compliance framework, for example
+  /// `builtin-fedramp-high`. Formats: *
+  /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
   ///
-  /// [endTime] - Optional. The end time of the report.
+  /// [endTime] - Optional. The end time of the report. Reserved for future use.
+  /// Currently, the report always reflects the current compliance state.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the results.
+  /// Reserved for future use.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -779,26 +750,37 @@ class OrganizationsLocationsDbFrameworkComplianceReportsDbControlComplianceSumma
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Lists the control compliance summary for a given scope.
+  /// Lists the compliance summaries of the controls in a framework compliance
+  /// report.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent scope for the framework overview page.
-  /// Format:
-  /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-  /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-  /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// [parent] - Required. The framework compliance report to list control
+  /// compliance summaries for. Formats: *
+  /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the results. The
+  /// syntax follows \[AIP-160\](https://google.aip.dev/160). Supported fields
+  /// are `framework_deployment`, `framework_name`, `framework_revision` (the
+  /// major revision ID of the framework), and `end_time`. The `end_time` field
+  /// accepts a single equality comparison with an
+  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) timestamp, for example
+  /// `end_time = "2026-01-01T00:00:00Z"`. Only findings that were updated at or
+  /// after this time are counted.
   ///
   /// [pageSize] - Optional. The requested page size. The server might return
   /// fewer items than requested. If unspecified, the default page size is 50.
   /// The maximum value is 1000.
   ///
   /// [pageToken] - Optional. A token that identifies the page of results that
-  /// the server should return.
+  /// the server should return. Pass the `next_page_token` value from a previous
+  /// result.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -851,28 +833,31 @@ class OrganizationsLocationsDbFrameworkComplianceSummariesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Lists the framework compliance summary for a given scope.
+  /// Lists the compliance summaries of the frameworks that are deployed in a
+  /// Data Boundary scope (an organization, folder, or project).
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent scope for the framework compliance
-  /// summary. Format: organizations/{organization}/locations/{location}
-  /// folders/{folder}/locations/{location}
-  /// projects/{project}/locations/{location}
+  /// [parent] - Required. The parent scope to list framework compliance
+  /// summaries for. Formats: *
+  /// `organizations/{organization}/locations/{location}` *
+  /// `folders/{folder}/locations/{location}` *
+  /// `projects/{project}/locations/{location}`
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the results.
+  /// Reserved for future use.
   ///
   /// [pageSize] - Optional. The requested page size. The server might return
   /// fewer items than requested. If unspecified, the default page size is 50.
   /// The maximum value is 1000.
   ///
   /// [pageToken] - Optional. A token that identifies the page of results that
-  /// the server should return. Pass the next_page_token value from a previous
+  /// the server should return. Pass the `next_page_token` value from a previous
   /// result.
   ///
-  /// [view] - Optional. Specifies the level of detail to return in the
-  /// response.
+  /// [view] - Optional. The level of detail to return for each summary. If not
+  /// specified, `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC` is used.
   /// Possible string values are:
   /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED" : The default / unset
   /// value. The API will default to the BASIC view.
@@ -1362,14 +1347,14 @@ class OrganizationsLocationsWorkloadsResource {
   /// the form `organizations/{org_id}/locations/{location}`.
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - A custom filter for filtering by properties of a workload. At
-  /// this time, only filtering by labels is supported.
+  /// [filter] - Optional. A custom filter for filtering by properties of a
+  /// workload. At this time, only filtering by labels is supported.
   ///
-  /// [pageSize] - Page size.
+  /// [pageSize] - Optional. Page size.
   ///
-  /// [pageToken] - Page token returned from previous request. Page token
-  /// contains context from previous request. Page token needs to be passed in
-  /// the second and following requests.
+  /// [pageToken] - Optional. Page token returned from previous request. Page
+  /// token contains context from previous request. Page token needs to be
+  /// passed in the second and following requests.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1683,9 +1668,9 @@ class OrganizationsLocationsWorkloadsViolationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the Violation to acknowledge.
+  /// [name] - Required. The resource name of the violation to acknowledge.
   /// Format:
-  /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+  /// `organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+/violations/\[^/\]+$`.
   ///
@@ -1724,15 +1709,25 @@ class OrganizationsLocationsWorkloadsViolationsResource {
     );
   }
 
-  /// Retrieves Assured Workload Violation based on ID.
+  /// Retrieves an Assured Workloads violation by its resource name.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the Violation to fetch (ie.
-  /// Violation.name). Format:
-  /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+  /// [name] - Required. The resource name of the violation to retrieve (that
+  /// is, the value of `Violation.name`). Format:
+  /// `organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+/violations/\[^/\]+$`.
+  ///
+  /// [view] - Optional. The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS`
+  /// or `VIOLATION_VIEW_DATA_BOUNDARY`) that the violation belongs to. If not
+  /// specified, `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
+  /// Possible string values are:
+  /// - "VIOLATION_VIEW_UNSPECIFIED" : Defaults to the ASSURED_WORKLOADS view.
+  /// - "VIOLATION_VIEW_ASSURED_WORKLOADS" : Includes the basic metadata about
+  /// the violation.
+  /// - "VIOLATION_VIEW_DATA_BOUNDARY" : Includes all information about the
+  /// violation, including details about the data boundary.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1746,9 +1741,11 @@ class OrganizationsLocationsWorkloadsViolationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudAssuredworkloadsV1Violation> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1773,23 +1770,58 @@ class OrganizationsLocationsWorkloadsViolationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The Workload name. Format
-  /// `organizations/{org_id}/locations/{location}/workloads/{workload}`.
+  /// [parent] - Required. The workload to list violations for. To list
+  /// violations across all workloads in an organization, use `-` as the
+  /// workload ID. When `view` is `VIOLATION_VIEW_DATA_BOUNDARY`, violations are
+  /// listed for the entire organization and location, and the workload ID is
+  /// ignored. Format:
+  /// `organizations/{organization}/locations/{location}/workloads/{workload}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+$`.
   ///
-  /// [filter] - Optional. A custom filter for filtering by the Violations
-  /// properties.
+  /// [filter] - Optional. A filter expression that restricts the violations
+  /// that are returned. The syntax follows
+  /// \[AIP-160\](https://google.aip.dev/160). Only the equality operator (`=`)
+  /// is supported, and expressions can be combined with `AND`, `OR`, and `NOT`.
+  /// When `view` is `VIOLATION_VIEW_DATA_BOUNDARY`, the following fields are
+  /// supported: `violationId`, `category`, `state` (`UNRESOLVED`, `RESOLVED`,
+  /// or `EXCEPTION`), `violationType` (`ORG_POLICY` or `RESOURCE`),
+  /// `resourceType`, `resourceName`, `project`,
+  /// `associatedOrgPolicyViolationId`, `cloudControlName`,
+  /// `workloadDisplayName`, and `complianceType` (a framework ID). Example:
+  /// `state = "UNRESOLVED" AND complianceType = "builtin-fedramp-high"`
   ///
   /// [interval_endTime] - The end of the time window.
   ///
   /// [interval_startTime] - The start of the time window.
   ///
-  /// [orderBy] - Optional. Actionable sorting delegation.
+  /// [orderBy] - Optional. A comma-separated list of fields to sort the results
+  /// by. The default sort order is ascending; to sort in descending order,
+  /// append ` desc` to the field name. For example, `update_time
+  /// desc,category`. When `view` is `VIOLATION_VIEW_DATA_BOUNDARY`, the
+  /// following fields are supported: `begin_time`, `update_time`,
+  /// `resource_type`, `state`, and `category`. If not specified, results are
+  /// sorted by `begin_time` in descending order.
   ///
-  /// [pageSize] - Optional. Page size.
+  /// [pageSize] - Optional. The maximum number of violations to return. The
+  /// service might return fewer violations than this value. If unspecified, at
+  /// most 100 violations are returned. The maximum value is 1000; values above
+  /// 1000 are coerced to 1000.
   ///
-  /// [pageToken] - Optional. Page token returned from previous request.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListViolations` call. Provide this token to retrieve the subsequent page.
+  /// When paginating, all other parameters that are provided to
+  /// `ListViolations` must match the call that provided the page token.
+  ///
+  /// [view] - Optional. The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS`
+  /// or `VIOLATION_VIEW_DATA_BOUNDARY`) to list violations for. If not
+  /// specified, `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
+  /// Possible string values are:
+  /// - "VIOLATION_VIEW_UNSPECIFIED" : Defaults to the ASSURED_WORKLOADS view.
+  /// - "VIOLATION_VIEW_ASSURED_WORKLOADS" : Includes the basic metadata about
+  /// the violation.
+  /// - "VIOLATION_VIEW_DATA_BOUNDARY" : Includes all information about the
+  /// violation, including details about the data boundary.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1809,6 +1841,7 @@ class OrganizationsLocationsWorkloadsViolationsResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -1820,6 +1853,7 @@ class OrganizationsLocationsWorkloadsViolationsResource {
       'orderBy': ?orderBy == null ? null : [orderBy],
       'pageSize': ?pageSize == null ? null : ['${pageSize}'],
       'pageToken': ?pageToken == null ? null : [pageToken],
+      'view': ?view == null ? null : [view],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -1866,24 +1900,31 @@ class ProjectsLocationsDbFindingSummariesResource {
   ProjectsLocationsDbFindingSummariesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Lists the finding summary by category for a given scope.
+  /// Lists summaries of the active findings in a Data Boundary scope (an
+  /// organization, folder, or project), with one summary for each finding
+  /// category.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent scope for the framework overview page.
-  /// Formats: - projects/{project}/locations/{location} -
-  /// folders/{folder}/locations/{location} -
-  /// organizations/{organization}/locations/{location}
+  /// [parent] - Required. The parent scope to list finding summaries for.
+  /// Formats: * `organizations/{organization}/locations/{location}` *
+  /// `folders/{folder}/locations/{location}` *
+  /// `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the framework
+  /// deployments whose findings are summarized. The syntax follows
+  /// \[AIP-160\](https://google.aip.dev/160). Supported fields are
+  /// `framework_deployment`, `framework_name`, and `framework_revision` (the
+  /// major revision ID of the framework).
   ///
   /// [pageSize] - Optional. The requested page size. The server might return
   /// fewer items than requested. If unspecified, the server picks an
   /// appropriate default.
   ///
   /// [pageToken] - Optional. A token that identifies the page of results that
-  /// the server should return.
+  /// the server should return. Pass the `next_page_token` value from a previous
+  /// result.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1937,17 +1978,23 @@ class ProjectsLocationsDbFrameworkComplianceReportsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Gets the aggregated compliance report over time for a given scope.
+  /// Gets daily compliance reports over a time range for a framework that's
+  /// deployed in a Data Boundary scope.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the aggregated compliance report over time
-  /// to retrieve. Format:
+  /// [name] - Required. The name of the framework compliance report to
+  /// aggregate over time. The report ID is the ID of the compliance framework,
+  /// for example `builtin-fedramp-high`. Format:
   /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the framework
+  /// deployments that are included in the report. The syntax follows
+  /// \[AIP-160\](https://google.aip.dev/160). Supported fields are
+  /// `framework_deployment`, `framework_name`, and `framework_revision` (the
+  /// major revision ID of the framework).
   ///
   /// [interval_endTime] - Optional. Exclusive end of the interval. If
   /// specified, a Timestamp matching this interval will have to be before the
@@ -1999,18 +2046,30 @@ class ProjectsLocationsDbFrameworkComplianceReportsResource {
     );
   }
 
-  /// Fetches the framework compliance report for a given scope.
+  /// Fetches the current compliance report for a framework that's deployed in a
+  /// Data Boundary scope (an organization, folder, or project).
+  ///
+  /// The report includes the number of passing, failing, and not assessed
+  /// controls in the framework.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the framework compliance report to
-  /// retrieve.
+  /// retrieve. The report ID is the ID of the compliance framework, for example
+  /// `builtin-fedramp-high`. Formats: *
+  /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
   ///
-  /// [endTime] - Optional. The end time of the report.
+  /// [endTime] - Optional. The end time of the report. Reserved for future use.
+  /// Currently, the report always reflects the current compliance state.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the results.
+  /// Reserved for future use.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2058,26 +2117,37 @@ class ProjectsLocationsDbFrameworkComplianceReportsDbControlComplianceSummariesR
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Lists the control compliance summary for a given scope.
+  /// Lists the compliance summaries of the controls in a framework compliance
+  /// report.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent scope for the framework overview page.
-  /// Format:
-  /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-  /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-  /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+  /// [parent] - Required. The framework compliance report to list control
+  /// compliance summaries for. Formats: *
+  /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+  /// *
+  /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dbFrameworkComplianceReports/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the results. The
+  /// syntax follows \[AIP-160\](https://google.aip.dev/160). Supported fields
+  /// are `framework_deployment`, `framework_name`, `framework_revision` (the
+  /// major revision ID of the framework), and `end_time`. The `end_time` field
+  /// accepts a single equality comparison with an
+  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) timestamp, for example
+  /// `end_time = "2026-01-01T00:00:00Z"`. Only findings that were updated at or
+  /// after this time are counted.
   ///
   /// [pageSize] - Optional. The requested page size. The server might return
   /// fewer items than requested. If unspecified, the default page size is 50.
   /// The maximum value is 1000.
   ///
   /// [pageToken] - Optional. A token that identifies the page of results that
-  /// the server should return.
+  /// the server should return. Pass the `next_page_token` value from a previous
+  /// result.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2130,28 +2200,31 @@ class ProjectsLocationsDbFrameworkComplianceSummariesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Lists the framework compliance summary for a given scope.
+  /// Lists the compliance summaries of the frameworks that are deployed in a
+  /// Data Boundary scope (an organization, folder, or project).
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent scope for the framework compliance
-  /// summary. Format: organizations/{organization}/locations/{location}
-  /// folders/{folder}/locations/{location}
-  /// projects/{project}/locations/{location}
+  /// [parent] - Required. The parent scope to list framework compliance
+  /// summaries for. Formats: *
+  /// `organizations/{organization}/locations/{location}` *
+  /// `folders/{folder}/locations/{location}` *
+  /// `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filtering results.
+  /// [filter] - Optional. A filter expression that restricts the results.
+  /// Reserved for future use.
   ///
   /// [pageSize] - Optional. The requested page size. The server might return
   /// fewer items than requested. If unspecified, the default page size is 50.
   /// The maximum value is 1000.
   ///
   /// [pageToken] - Optional. A token that identifies the page of results that
-  /// the server should return. Pass the next_page_token value from a previous
+  /// the server should return. Pass the `next_page_token` value from a previous
   /// result.
   ///
-  /// [view] - Optional. Specifies the level of detail to return in the
-  /// response.
+  /// [view] - Optional. The level of detail to return for each summary. If not
+  /// specified, `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC` is used.
   /// Possible string values are:
   /// - "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED" : The default / unset
   /// value. The API will default to the BASIC view.
@@ -2207,30 +2280,38 @@ class ProjectsLocationsDbFrameworkComplianceSummariesResource {
   }
 }
 
-/// Request for acknowledging the violation
+/// Request message for acknowledging a violation.
 class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
-  /// Acknowledge type of specified violation.
+  /// The scope of the acknowledgement for the specified violation.
+  ///
+  /// If not specified, `SINGLE_VIOLATION` is used.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "ACKNOWLEDGE_TYPE_UNSPECIFIED" : Acknowledge type unspecified.
-  /// - "SINGLE_VIOLATION" : Acknowledge only the specific violation.
-  /// - "EXISTING_CHILD_RESOURCE_VIOLATIONS" : Acknowledge specified orgPolicy
-  /// violation and also associated resource violations.
+  /// - "ACKNOWLEDGE_TYPE_UNSPECIFIED" : Default value. The acknowledge type
+  /// isn't specified.
+  /// - "SINGLE_VIOLATION" : Acknowledges only the specified violation.
+  /// - "EXISTING_CHILD_RESOURCE_VIOLATIONS" : Acknowledges the specified
+  /// organization policy violation and all of its existing associated resource
+  /// violations.
   core.String? acknowledgeType;
 
-  /// Business justification explaining the need for violation acknowledgement
+  /// The business justification for acknowledging the violation.
+  ///
+  /// The comment can't be empty or contain only whitespace characters.
   ///
   /// Required.
   core.String? comment;
 
-  /// This field is deprecated and will be removed in future version of the API.
+  /// Deprecated: This field is deprecated and will be removed in a future
+  /// version of the API.
   ///
-  /// Name of the OrgPolicy which was modified with non-compliant change and
-  /// resulted in this violation. Format:
-  /// projects/{project_number}/policies/{constraint_name}
-  /// folders/{folder_id}/policies/{constraint_name}
-  /// organizations/{organization_id}/policies/{constraint_name}
+  /// The service identifies the violation to acknowledge by `name`, and ignores
+  /// this field. Don't set this field. The name of the organization policy that
+  /// was modified with a non-compliant change and resulted in this violation.
+  /// Formats: * `projects/{project_number}/policies/{constraint_name}` *
+  /// `folders/{folder_id}/policies/{constraint_name}` *
+  /// `organizations/{organization_id}/policies/{constraint_name}`
   ///
   /// Optional.
   @core.Deprecated(
@@ -2238,10 +2319,25 @@ class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
   )
   core.String? nonCompliantOrgPolicy;
 
+  /// The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS` or
+  /// `VIOLATION_VIEW_DATA_BOUNDARY`) that the violation belongs to.
+  ///
+  /// If not specified, `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "VIOLATION_VIEW_UNSPECIFIED" : Defaults to the ASSURED_WORKLOADS view.
+  /// - "VIOLATION_VIEW_ASSURED_WORKLOADS" : Includes the basic metadata about
+  /// the violation.
+  /// - "VIOLATION_VIEW_DATA_BOUNDARY" : Includes all information about the
+  /// violation, including details about the data boundary.
+  core.String? view;
+
   GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest({
     this.acknowledgeType,
     this.comment,
     this.nonCompliantOrgPolicy,
+    this.view,
   });
 
   GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest.fromJson(
@@ -2250,26 +2346,31 @@ class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
         acknowledgeType: json_['acknowledgeType'] as core.String?,
         comment: json_['comment'] as core.String?,
         nonCompliantOrgPolicy: json_['nonCompliantOrgPolicy'] as core.String?,
+        view: json_['view'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final acknowledgeType = this.acknowledgeType;
     final comment = this.comment;
     final nonCompliantOrgPolicy = this.nonCompliantOrgPolicy;
+    final view = this.view;
     return {
       'acknowledgeType': ?acknowledgeType,
       'comment': ?comment,
       'nonCompliantOrgPolicy': ?nonCompliantOrgPolicy,
+      'view': ?view,
     };
   }
 }
 
-/// Response for violation acknowledgement
+/// Response message for acknowledging a violation.
+///
+/// This message is empty.
 typedef GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse = $Empty;
 
 /// The response message for AggregateDbFrameworkComplianceReport.
 class GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse {
-  /// The list of aggregated compliance reports.
+  /// The daily compliance reports for the requested time range.
   core.List<GoogleCloudAssuredworkloadsV1AggregatedComplianceReport>?
   aggregatedComplianceReports;
 
@@ -2297,13 +2398,14 @@ class GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse 
   }
 }
 
-/// The aggregated compliance report.
+/// A point-in-time compliance report for a framework.
 class GoogleCloudAssuredworkloadsV1AggregatedComplianceReport {
-  /// The control assessment details of the framework.
+  /// The number of passing, failing, and not assessed controls in the framework
+  /// at `report_time`.
   GoogleCloudAssuredworkloadsV1ControlAssessmentDetails?
   controlAssessmentDetails;
 
-  /// The report time of the aggregated compliance report.
+  /// The time that the compliance report represents.
   core.String? reportTime;
 
   GoogleCloudAssuredworkloadsV1AggregatedComplianceReport({
@@ -2389,99 +2491,6 @@ class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest {
   core.Map<core.String, core.dynamic> toJson() {
     final action = this.action;
     return {'action': ?action};
-  }
-}
-
-/// Request for archiving resource events.
-class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest {
-  /// Time to set as ArchiveTime in the archive table.
-  ///
-  /// If not provided, the current time is used.
-  ///
-  /// Optional.
-  core.String? archiveTime;
-
-  /// The number of events to process in a single transaction batch.
-  ///
-  /// Required.
-  core.int? batchSize;
-
-  /// Only events with EventTime earlier than this cutoff will be archived.
-  ///
-  /// Required.
-  core.String? eventCutoffTime;
-
-  /// The maximum total number of events to move in this request.
-  ///
-  /// Required.
-  core.int? maxEventsMove;
-
-  /// The organization ID for which to archive events.
-  ///
-  /// Required.
-  core.String? organizationId;
-
-  /// The region of the workload(s) whose events should be archived.
-  ///
-  /// This is used to filter workloads based on AssurantWorkloadData.region.
-  ///
-  /// Required.
-  core.String? region;
-
-  GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest({
-    this.archiveTime,
-    this.batchSize,
-    this.eventCutoffTime,
-    this.maxEventsMove,
-    this.organizationId,
-    this.region,
-  });
-
-  GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        archiveTime: json_['archiveTime'] as core.String?,
-        batchSize: json_['batchSize'] as core.int?,
-        eventCutoffTime: json_['eventCutoffTime'] as core.String?,
-        maxEventsMove: json_['maxEventsMove'] as core.int?,
-        organizationId: json_['organizationId'] as core.String?,
-        region: json_['region'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final archiveTime = this.archiveTime;
-    final batchSize = this.batchSize;
-    final eventCutoffTime = this.eventCutoffTime;
-    final maxEventsMove = this.maxEventsMove;
-    final organizationId = this.organizationId;
-    final region = this.region;
-    return {
-      'archiveTime': ?archiveTime,
-      'batchSize': ?batchSize,
-      'eventCutoffTime': ?eventCutoffTime,
-      'maxEventsMove': ?maxEventsMove,
-      'organizationId': ?organizationId,
-      'region': ?region,
-    };
-  }
-}
-
-/// Response for archiving resource events.
-class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse {
-  /// The total number of events successfully moved to the archive table.
-  core.int? movedEventsCount;
-
-  GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse({
-    this.movedEventsCount,
-  });
-
-  GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse.fromJson(
-    core.Map json_,
-  ) : this(movedEventsCount: json_['movedEventsCount'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final movedEventsCount = this.movedEventsCount;
-    return {'movedEventsCount': ?movedEventsCount};
   }
 }
 
@@ -2591,9 +2600,21 @@ class GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails {
   /// The number of findings for the cloud control.
   core.int? findingsCount;
 
+  /// Number of organization policy findings for the cloud control.
+  ///
+  /// Output only.
+  core.String? orgPolicyFindingCount;
+
+  /// Number of resource findings for the cloud control.
+  ///
+  /// Output only.
+  core.String? resourceFindingCount;
+
   GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails({
     this.evaluationState,
     this.findingsCount,
+    this.orgPolicyFindingCount,
+    this.resourceFindingCount,
   });
 
   GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails.fromJson(
@@ -2601,14 +2622,20 @@ class GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails {
   ) : this(
         evaluationState: json_['evaluationState'] as core.String?,
         findingsCount: json_['findingsCount'] as core.int?,
+        orgPolicyFindingCount: json_['orgPolicyFindingCount'] as core.String?,
+        resourceFindingCount: json_['resourceFindingCount'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final evaluationState = this.evaluationState;
     final findingsCount = this.findingsCount;
+    final orgPolicyFindingCount = this.orgPolicyFindingCount;
+    final resourceFindingCount = this.resourceFindingCount;
     return {
       'evaluationState': ?evaluationState,
       'findingsCount': ?findingsCount,
+      'orgPolicyFindingCount': ?orgPolicyFindingCount,
+      'resourceFindingCount': ?resourceFindingCount,
     };
   }
 }
@@ -2898,7 +2925,8 @@ class GoogleCloudAssuredworkloadsV1ControlAssessmentDetails {
   }
 }
 
-/// The details for control compliance.
+/// A summary of the compliance status of a control in a framework compliance
+/// report.
 class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary {
   /// The list of cloud control reports.
   core.List<GoogleCloudAssuredworkloadsV1CloudControlReport>?
@@ -2933,8 +2961,14 @@ class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary {
 
   /// Identifier.
   ///
-  /// The name of the control compliance summary.
+  /// The resource name of the control compliance summary. Format:
+  /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}/dbControlComplianceSummaries/{db_control_compliance_summary}`
   core.String? name;
+
+  /// Number of organization policy findings for this control.
+  ///
+  /// Output only.
+  core.String? orgPolicyFindingCount;
 
   /// The overall evaluation status of the control.
   ///
@@ -2945,6 +2979,11 @@ class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary {
   /// - "EVALUATION_STATE_FAILED" : The control is failing.
   /// - "EVALUATION_STATE_NOT_ASSESSED" : The control is not assessed.
   core.String? overallEvaluationState;
+
+  /// Number of resource findings for this control.
+  ///
+  /// Output only.
+  core.String? resourceFindingCount;
 
   /// The list of similar controls.
   core.List<GoogleCloudAssuredworkloadsV1SimilarControls>? similarControls;
@@ -2961,7 +3000,9 @@ class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary {
     this.displayName,
     this.isFakeControl,
     this.name,
+    this.orgPolicyFindingCount,
     this.overallEvaluationState,
+    this.resourceFindingCount,
     this.similarControls,
     this.totalFindingsCount,
   });
@@ -2987,7 +3028,9 @@ class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary {
         displayName: json_['displayName'] as core.String?,
         isFakeControl: json_['isFakeControl'] as core.bool?,
         name: json_['name'] as core.String?,
+        orgPolicyFindingCount: json_['orgPolicyFindingCount'] as core.String?,
         overallEvaluationState: json_['overallEvaluationState'] as core.String?,
+        resourceFindingCount: json_['resourceFindingCount'] as core.String?,
         similarControls: (json_['similarControls'] as core.List?)
             ?.map(
               (value) => GoogleCloudAssuredworkloadsV1SimilarControls.fromJson(
@@ -3007,7 +3050,9 @@ class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary {
     final displayName = this.displayName;
     final isFakeControl = this.isFakeControl;
     final name = this.name;
+    final orgPolicyFindingCount = this.orgPolicyFindingCount;
     final overallEvaluationState = this.overallEvaluationState;
+    final resourceFindingCount = this.resourceFindingCount;
     final similarControls = this.similarControls;
     final totalFindingsCount = this.totalFindingsCount;
     return {
@@ -3019,21 +3064,24 @@ class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary {
       'displayName': ?displayName,
       'isFakeControl': ?isFakeControl,
       'name': ?name,
+      'orgPolicyFindingCount': ?orgPolicyFindingCount,
       'overallEvaluationState': ?overallEvaluationState,
+      'resourceFindingCount': ?resourceFindingCount,
       'similarControls': ?similarControls,
       'totalFindingsCount': ?totalFindingsCount,
     };
   }
 }
 
-/// The details for a finding.
+/// A summary of the active findings for a finding category in a Data Boundary
+/// scope.
 class GoogleCloudAssuredworkloadsV1DbFindingSummary {
-  /// The category of the finding.
+  /// The category of the findings that are summarized.
   ///
   /// Output only.
   core.String? findingCategory;
 
-  /// The class of the finding.
+  /// The class of the findings.
   ///
   /// Output only.
   /// Possible string values are:
@@ -3057,32 +3105,33 @@ class GoogleCloudAssuredworkloadsV1DbFindingSummary {
   /// converge, based on attack path simulations (APS).
   core.String? findingClass;
 
-  /// The count of the finding.
+  /// The total number of active findings in the category.
   ///
   /// Output only.
   core.String? findingCount;
 
   /// Identifier.
   ///
-  /// The name of the finding summary.
+  /// The resource name of the finding summary.
   core.String? name;
 
-  /// Number of active organization policy findings for this category.
+  /// The number of active organization policy findings in the category.
   ///
   /// Output only.
   core.String? organizationPolicyFindingCount;
 
-  /// The list of compliance frameworks that the finding belongs to.
+  /// The display names of the compliance frameworks that the findings are
+  /// related to.
   ///
   /// Optional.
   core.List<core.String>? relatedFrameworks;
 
-  /// Number of active resource findings for this category.
+  /// The number of active resource findings in the category.
   ///
   /// Output only.
   core.String? resourceFindingCount;
 
-  /// The severity of the finding.
+  /// The severity of the findings.
   ///
   /// Output only.
   /// Possible string values are:
@@ -3120,7 +3169,7 @@ class GoogleCloudAssuredworkloadsV1DbFindingSummary {
   /// environment but can't access data, execute code, or create resources.
   core.String? severity;
 
-  /// The last updated time of the finding.
+  /// The time when the findings in the category were last updated.
   ///
   /// Output only.
   core.String? updateTime;
@@ -3177,34 +3226,42 @@ class GoogleCloudAssuredworkloadsV1DbFindingSummary {
   }
 }
 
-/// The details for a framework compliance summary.
+/// A summary of the compliance status of a framework that's deployed in a Data
+/// Boundary scope.
 class GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary {
-  /// The control assessment details of the framework.
+  /// The number of passing, failing, and not assessed controls in the
+  /// framework.
   GoogleCloudAssuredworkloadsV1ControlAssessmentDetails?
   controlAssessmentDetails;
 
-  /// The trend of controls that are passing for the given duration.
+  /// The trend of passing controls over the trend duration.
+  ///
+  /// This field is only populated when using
+  /// `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL`.
   ///
   /// Output only.
   GoogleCloudAssuredworkloadsV1Trend? controlsPassingTrend;
 
-  /// The count of the findings generated against the framework.
+  /// The number of findings that were generated against the framework.
+  ///
+  /// This field is only populated when using
+  /// `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL`.
   ///
   /// Output only.
   core.String? findingCount;
 
-  /// The name of the framework.
+  /// The resource name of the compliance framework.
   core.String? framework;
 
-  /// The list of framework categories supported by the framework.
+  /// The categories of the framework.
   core.List<core.String>? frameworkCategories;
 
-  /// The display name for the framework.
+  /// The display name of the framework.
   ///
   /// Optional.
   core.String? frameworkDisplayName;
 
-  /// The type of framework.
+  /// The type of the framework.
   /// Possible string values are:
   /// - "FRAMEWORK_TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "BUILT_IN" : A framework that's provided and managed by Google.
@@ -3219,13 +3276,14 @@ class GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary {
 
   /// Identifier.
   ///
-  /// The name of the framework compliance summary.
+  /// The resource name of the framework compliance summary.
   core.String? name;
 
-  /// The list of cloud providers supported by the framework.
+  /// The cloud providers that are supported by the framework.
   core.List<core.String>? supportedCloudProviders;
 
-  /// The target resource details for the framework.
+  /// The details of the target resources (organizations, folders, or projects)
+  /// that the framework is deployed on.
   core.List<GoogleCloudAssuredworkloadsV1TargetResourceDetails>?
   targetResourceDetails;
 
@@ -3321,20 +3379,24 @@ typedef GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse = $Empty;
 
 /// The response message for FetchDbFrameworkComplianceReport.
 class GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse {
-  /// The control assessment details of the framework.
+  /// The number of passing, failing, and not assessed controls in the
+  /// framework.
   GoogleCloudAssuredworkloadsV1ControlAssessmentDetails?
   controlAssessmentDetails;
 
-  /// The name of the framework.
+  /// The resource name of the compliance framework.
+  ///
+  /// For example,
+  /// `organizations/{organization}/locations/{location}/frameworks/{framework_id}`.
   core.String? framework;
 
-  /// The list of framework categories supported.
+  /// The categories of the framework.
   core.List<core.String>? frameworkCategories;
 
   /// The description of the framework.
   core.String? frameworkDescription;
 
-  /// The display name for the framework.
+  /// The display name of the framework.
   ///
   /// Optional.
   core.String? frameworkDisplayName;
@@ -3353,17 +3415,18 @@ class GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse {
   /// framework.
   core.String? minorRevisionId;
 
-  /// The name of the framework compliance report.
+  /// The resource name of the framework compliance report.
   core.String? name;
 
-  /// The list of cloud providers that are supported by the framework.
+  /// The cloud providers that are supported by the framework.
   core.List<core.String>? supportedCloudProviders;
 
-  /// The target resource details of the framework.
+  /// The details of the target resources (organizations, folders, or projects)
+  /// that the framework is deployed on.
   core.List<GoogleCloudAssuredworkloadsV1TargetResourceDetails>?
   targetResourceDetails;
 
-  /// The last updated time of the report.
+  /// The time when the report was last updated.
   ///
   /// Output only.
   core.String? updateTime;
@@ -3447,13 +3510,15 @@ class GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse {
   }
 }
 
-/// The response message for ListDBControlComplianceSummaries.
+/// The response message for ListDbControlComplianceSummaries.
 class GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse {
-  /// The list of control compliance details.
+  /// The list of control compliance summaries.
   core.List<GoogleCloudAssuredworkloadsV1DbControlComplianceSummary>?
   dbControlComplianceSummaries;
 
-  /// The token to retrieve the next page of results.
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is empty, there are no subsequent pages.
   ///
   /// Output only.
   core.String? nextPageToken;
@@ -3490,10 +3555,12 @@ class GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse {
 
 /// The response message for ListDbFindingSummaries.
 class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse {
-  /// List of finding summary by category.
+  /// The list of finding summaries, one for each finding category.
   core.List<GoogleCloudAssuredworkloadsV1DbFindingSummary>? dbFindingSummaries;
 
-  /// The token to retrieve the next page of results.
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is empty, there are no subsequent pages.
   ///
   /// Output only.
   core.String? nextPageToken;
@@ -3526,13 +3593,15 @@ class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse {
   }
 }
 
-/// The response message for ListDbFrameworkComplianceSummariesResponse.
+/// The response message for ListDbFrameworkComplianceSummaries.
 class GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse {
   /// The list of framework compliance summaries.
   core.List<GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary>?
   dbFrameworkComplianceSummaries;
 
-  /// The token to retrieve the next page of results.
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is empty, there are no subsequent pages.
   ///
   /// Output only.
   core.String? nextPageToken;
@@ -3567,17 +3636,20 @@ class GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse {
   }
 }
 
-/// Response of ListViolations endpoint.
+/// Response message for the `ListViolations` method.
 class GoogleCloudAssuredworkloadsV1ListViolationsResponse {
-  /// The next page token.
+  /// A token that can be sent as `page_token` to retrieve the next page.
   ///
-  /// Returns empty if reached the last page.
+  /// If this field is empty, there are no subsequent pages.
   core.String? nextPageToken;
 
-  /// The total number of violations.
+  /// The total number of violations that match the request, across all pages.
+  ///
+  /// This field might not be populated for all requests; when it's not
+  /// populated, its value is `0`.
   core.int? totalSize;
 
-  /// List of Violations under a Workload.
+  /// The list of violations.
   core.List<GoogleCloudAssuredworkloadsV1Violation>? violations;
 
   GoogleCloudAssuredworkloadsV1ListViolationsResponse({
@@ -4062,101 +4134,6 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
 /// Response for restricting the list of allowed resources.
 typedef GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse = $Empty;
 
-/// Request for reverting archived resource events.
-class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest {
-  /// Only events within this time range will be reverted.
-  ///
-  /// This helps prevent reverting everything when something goes wrong.
-  ///
-  /// Required.
-  core.String? archiveEndTime;
-
-  /// Only events within this time range will be reverted.
-  ///
-  /// This helps prevent reverting everything when something goes wrong.
-  ///
-  /// Required.
-  core.String? archiveStartTime;
-
-  /// The number of events to process in a single transaction batch.
-  ///
-  /// Required.
-  core.int? batchSize;
-
-  /// The maximum total number of events to move in this request.
-  ///
-  /// Required.
-  core.int? maxEventsMove;
-
-  /// The organization ID for which to revert events.
-  ///
-  /// Required.
-  core.String? organizationId;
-
-  /// The region of the workload(s) whose events should be reverted.
-  ///
-  /// This is used to filter workloads based on AssurantWorkloadData.region.
-  ///
-  /// Required.
-  core.String? region;
-
-  GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest({
-    this.archiveEndTime,
-    this.archiveStartTime,
-    this.batchSize,
-    this.maxEventsMove,
-    this.organizationId,
-    this.region,
-  });
-
-  GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        archiveEndTime: json_['archiveEndTime'] as core.String?,
-        archiveStartTime: json_['archiveStartTime'] as core.String?,
-        batchSize: json_['batchSize'] as core.int?,
-        maxEventsMove: json_['maxEventsMove'] as core.int?,
-        organizationId: json_['organizationId'] as core.String?,
-        region: json_['region'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final archiveEndTime = this.archiveEndTime;
-    final archiveStartTime = this.archiveStartTime;
-    final batchSize = this.batchSize;
-    final maxEventsMove = this.maxEventsMove;
-    final organizationId = this.organizationId;
-    final region = this.region;
-    return {
-      'archiveEndTime': ?archiveEndTime,
-      'archiveStartTime': ?archiveStartTime,
-      'batchSize': ?batchSize,
-      'maxEventsMove': ?maxEventsMove,
-      'organizationId': ?organizationId,
-      'region': ?region,
-    };
-  }
-}
-
-/// Response for reverting archived resource events.
-class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse {
-  /// The total number of events successfully moved to the original table.
-  core.int? movedEventsCount;
-
-  GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse({
-    this.movedEventsCount,
-  });
-
-  GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse.fromJson(
-    core.Map json_,
-  ) : this(movedEventsCount: json_['movedEventsCount'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final movedEventsCount = this.movedEventsCount;
-    return {'movedEventsCount': ?movedEventsCount};
-  }
-}
-
 /// A rule in the cloud control.
 class GoogleCloudAssuredworkloadsV1Rule {
   /// The rule's logic expression in Common Expression Language (CEL).
@@ -4232,26 +4209,7 @@ class GoogleCloudAssuredworkloadsV1SimilarControls {
 }
 
 /// A list of strings for the parameter value.
-class GoogleCloudAssuredworkloadsV1StringList {
-  /// The strings in the list.
-  ///
-  /// Required.
-  core.List<core.String>? values;
-
-  GoogleCloudAssuredworkloadsV1StringList({this.values});
-
-  GoogleCloudAssuredworkloadsV1StringList.fromJson(core.Map json_)
-    : this(
-        values: (json_['values'] as core.List?)
-            ?.map((value) => value as core.String)
-            .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final values = this.values;
-    return {'values': ?values};
-  }
-}
+typedef GoogleCloudAssuredworkloadsV1StringList = $StringList02;
 
 /// The details for a target resource.
 class GoogleCloudAssuredworkloadsV1TargetResourceDetails {
@@ -4377,88 +4335,114 @@ class GoogleCloudAssuredworkloadsV1UpdateDetails {
   }
 }
 
-/// Workload monitoring Violation.
+/// A compliance violation that's detected by Assured Workloads monitoring.
+///
+/// A violation is created when an organization policy or a resource in a
+/// workload (or a Data Boundary scope) changes in a way that doesn't comply
+/// with the controls of the applicable compliance regime or framework.
 class GoogleCloudAssuredworkloadsV1Violation {
-  /// A boolean that indicates if the violation is acknowledged
+  /// Whether the violation has been acknowledged.
   core.bool? acknowledged;
 
-  /// Timestamp when this violation was acknowledged first.
+  /// The time when the violation was first acknowledged.
   ///
-  /// Check exception_contexts to find the last time the violation was
-  /// acknowledged when there are more than one violations. This field will be
-  /// absent when acknowledged field is marked as false.
+  /// To find the most recent time that the violation was acknowledged, check
+  /// `exception_contexts`. This field is absent when `acknowledged` is `false`.
   ///
   /// Optional.
   core.String? acknowledgementTime;
 
-  /// Violation Id of the org-policy violation due to which the resource
-  /// violation is caused.
+  /// The IDs of the compliance frameworks that are affected by this violation.
   ///
-  /// Empty for org-policy violations.
+  /// For example, `builtin-fedramp-high`. This field is only populated when
+  /// using `VIOLATION_VIEW_DATA_BOUNDARY`.
+  ///
+  /// Output only.
+  core.List<core.String>? affectedFrameworks;
+
+  /// For resource violations, the ID of the organization policy violation that
+  /// caused this resource violation.
+  ///
+  /// This field is empty for organization policy violations.
   ///
   /// Optional. Output only.
   core.String? associatedOrgPolicyViolationId;
 
-  /// Audit Log Link for violated resource Format:
-  /// https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{timeRange}{folder}
+  /// A link to the Cloud Audit Logs entries for the violated resource.
+  ///
+  /// Format:
+  /// `https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{timeRange}{folder}`
   ///
   /// Output only. Immutable.
   core.String? auditLogLink;
 
-  /// Time of the event which triggered the Violation.
+  /// The time of the event that triggered the violation.
   ///
   /// Output only.
   core.String? beginTime;
 
-  /// Category under which this violation is mapped.
+  /// The category that the violation is mapped to.
   ///
-  /// e.g. Location, Service Usage, Access, Encryption, etc.
+  /// For example, `Location`, `Service Usage`, `Access`, or `Encryption`.
   ///
   /// Output only.
   core.String? category;
 
-  /// Description for the Violation.
+  /// For organization policy violations, the number of resource violations that
+  /// are associated with this violation.
   ///
-  /// e.g. OrgPolicy gcp.resourceLocations has non compliant value.
+  /// This field is `0` for resource violations.
+  ///
+  /// Optional. Output only.
+  core.int? childResourceViolationCount;
+
+  /// A description of the violation.
+  ///
+  /// For example, `OrgPolicy gcp.resourceLocations has non compliant value.`
   ///
   /// Output only.
   core.String? description;
 
-  /// Audit Log link to find business justification provided for violation
-  /// exception.
+  /// A link to the Cloud Audit Logs entries that contain the business
+  /// justification that was provided when the violation was acknowledged.
   ///
   /// Format:
-  /// https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{protoPayload.methodName}{timeRange}{organization}
+  /// `https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{protoPayload.methodName}{timeRange}{organization}`
   ///
   /// Output only. Immutable.
   core.String? exceptionAuditLogLink;
 
-  /// List of all the exception detail added for the violation.
+  /// The details of all of the acknowledgements (exceptions) for the violation.
   ///
   /// Output only.
   core.List<GoogleCloudAssuredworkloadsV1ViolationExceptionContext>?
   exceptionContexts;
 
-  /// Name of the Violation.
+  /// The resource name of the violation.
   ///
   /// Format:
-  /// organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}
+  /// `organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}`
   ///
   /// Output only. Immutable.
   core.String? name;
 
-  /// Name of the OrgPolicy which was modified with non-compliant change and
-  /// resulted this violation.
+  /// The name of the organization policy that was modified with a non-compliant
+  /// change and resulted in this violation.
   ///
-  /// Format: projects/{project_number}/policies/{constraint_name}
-  /// folders/{folder_id}/policies/{constraint_name}
-  /// organizations/{organization_id}/policies/{constraint_name}
+  /// Formats: * `projects/{project_number}/policies/{constraint_name}` *
+  /// `folders/{folder_id}/policies/{constraint_name}` *
+  /// `organizations/{organization_id}/policies/{constraint_name}`
   ///
   /// Output only. Immutable.
   core.String? nonCompliantOrgPolicy;
 
-  /// The org-policy-constraint that was incorrectly changed, which resulted in
-  /// this violation.
+  /// Deprecated: This field is deprecated and might be removed in a future
+  /// version of the API.
+  ///
+  /// Use `non_compliant_org_policy` instead, which contains the full resource
+  /// name of the organization policy, including the constraint name. The
+  /// organization policy constraint that was changed in a non-compliant way,
+  /// which resulted in this violation.
   ///
   /// Output only. Immutable.
   @core.Deprecated(
@@ -4466,71 +4450,88 @@ class GoogleCloudAssuredworkloadsV1Violation {
   )
   core.String? orgPolicyConstraint;
 
-  /// Parent project number where resource is present.
+  /// For resource violations, the number of the project that contains the
+  /// non-compliant resource.
   ///
-  /// Empty for org-policy violations.
+  /// This field is empty for organization policy violations.
   ///
   /// Optional. Output only.
   core.String? parentProjectNumber;
 
-  /// Compliance violation remediation
+  /// The remediation guidance for the violation.
   ///
   /// Output only.
   GoogleCloudAssuredworkloadsV1ViolationRemediation? remediation;
 
-  /// Time of the event which fixed the Violation.
+  /// The remediation instructions for the violation, in Markdown format.
   ///
-  /// If the violation is ACTIVE this will be empty.
+  /// This field is only populated by `GetViolation` when using
+  /// `VIOLATION_VIEW_DATA_BOUNDARY`. When this field isn't populated, see
+  /// `remediation` instead.
+  ///
+  /// Output only.
+  core.String? remediationMarkdown;
+
+  /// The time of the event that resolved the violation.
+  ///
+  /// This field is empty if the violation is unresolved.
   ///
   /// Output only.
   core.String? resolveTime;
 
-  /// Name of the resource like
-  /// //storage.googleapis.com/myprojectxyz-testbucket.
+  /// For resource violations, the full resource name of the non-compliant
+  /// resource.
   ///
-  /// Empty for org-policy violations.
+  /// For example, `//storage.googleapis.com/myprojectxyz-testbucket`. This
+  /// field is empty for organization policy violations.
   ///
   /// Optional. Output only.
   core.String? resourceName;
 
-  /// Type of the resource like compute.googleapis.com/Disk, etc.
+  /// For resource violations, the type of the non-compliant resource.
   ///
-  /// Empty for org-policy violations.
+  /// For example, `compute.googleapis.com/Disk`. This field is empty for
+  /// organization policy violations.
   ///
   /// Optional. Output only.
   core.String? resourceType;
 
-  /// State of the violation
+  /// The state of the violation.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "RESOLVED" : Violation is resolved.
-  /// - "UNRESOLVED" : Violation is Unresolved
-  /// - "EXCEPTION" : Violation is Exception
+  /// - "STATE_UNSPECIFIED" : Default value. The state isn't specified.
+  /// - "RESOLVED" : The violation is resolved.
+  /// - "UNRESOLVED" : The violation is unresolved and hasn't been acknowledged.
+  /// - "EXCEPTION" : The violation is unresolved and has been acknowledged as
+  /// an exception.
   core.String? state;
 
-  /// The last time when the Violation record was updated.
+  /// The time when the violation record was last updated.
   ///
   /// Output only.
   core.String? updateTime;
 
-  /// Type of the violation
+  /// The type of the violation.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "VIOLATION_TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "ORG_POLICY" : Org Policy Violation.
-  /// - "RESOURCE" : Resource Violation.
+  /// - "VIOLATION_TYPE_UNSPECIFIED" : Default value. The violation type isn't
+  /// specified.
+  /// - "ORG_POLICY" : A violation that's caused by a non-compliant change to an
+  /// organization policy.
+  /// - "RESOURCE" : A violation that's caused by a non-compliant resource.
   core.String? violationType;
 
   GoogleCloudAssuredworkloadsV1Violation({
     this.acknowledged,
     this.acknowledgementTime,
+    this.affectedFrameworks,
     this.associatedOrgPolicyViolationId,
     this.auditLogLink,
     this.beginTime,
     this.category,
+    this.childResourceViolationCount,
     this.description,
     this.exceptionAuditLogLink,
     this.exceptionContexts,
@@ -4539,6 +4540,7 @@ class GoogleCloudAssuredworkloadsV1Violation {
     this.orgPolicyConstraint,
     this.parentProjectNumber,
     this.remediation,
+    this.remediationMarkdown,
     this.resolveTime,
     this.resourceName,
     this.resourceType,
@@ -4551,11 +4553,16 @@ class GoogleCloudAssuredworkloadsV1Violation {
     : this(
         acknowledged: json_['acknowledged'] as core.bool?,
         acknowledgementTime: json_['acknowledgementTime'] as core.String?,
+        affectedFrameworks: (json_['affectedFrameworks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         associatedOrgPolicyViolationId:
             json_['associatedOrgPolicyViolationId'] as core.String?,
         auditLogLink: json_['auditLogLink'] as core.String?,
         beginTime: json_['beginTime'] as core.String?,
         category: json_['category'] as core.String?,
+        childResourceViolationCount:
+            json_['childResourceViolationCount'] as core.int?,
         description: json_['description'] as core.String?,
         exceptionAuditLogLink: json_['exceptionAuditLogLink'] as core.String?,
         exceptionContexts: (json_['exceptionContexts'] as core.List?)
@@ -4575,6 +4582,7 @@ class GoogleCloudAssuredworkloadsV1Violation {
                 json_['remediation'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        remediationMarkdown: json_['remediationMarkdown'] as core.String?,
         resolveTime: json_['resolveTime'] as core.String?,
         resourceName: json_['resourceName'] as core.String?,
         resourceType: json_['resourceType'] as core.String?,
@@ -4586,10 +4594,12 @@ class GoogleCloudAssuredworkloadsV1Violation {
   core.Map<core.String, core.dynamic> toJson() {
     final acknowledged = this.acknowledged;
     final acknowledgementTime = this.acknowledgementTime;
+    final affectedFrameworks = this.affectedFrameworks;
     final associatedOrgPolicyViolationId = this.associatedOrgPolicyViolationId;
     final auditLogLink = this.auditLogLink;
     final beginTime = this.beginTime;
     final category = this.category;
+    final childResourceViolationCount = this.childResourceViolationCount;
     final description = this.description;
     final exceptionAuditLogLink = this.exceptionAuditLogLink;
     final exceptionContexts = this.exceptionContexts;
@@ -4598,6 +4608,7 @@ class GoogleCloudAssuredworkloadsV1Violation {
     final orgPolicyConstraint = this.orgPolicyConstraint;
     final parentProjectNumber = this.parentProjectNumber;
     final remediation = this.remediation;
+    final remediationMarkdown = this.remediationMarkdown;
     final resolveTime = this.resolveTime;
     final resourceName = this.resourceName;
     final resourceType = this.resourceType;
@@ -4607,10 +4618,12 @@ class GoogleCloudAssuredworkloadsV1Violation {
     return {
       'acknowledged': ?acknowledged,
       'acknowledgementTime': ?acknowledgementTime,
+      'affectedFrameworks': ?affectedFrameworks,
       'associatedOrgPolicyViolationId': ?associatedOrgPolicyViolationId,
       'auditLogLink': ?auditLogLink,
       'beginTime': ?beginTime,
       'category': ?category,
+      'childResourceViolationCount': ?childResourceViolationCount,
       'description': ?description,
       'exceptionAuditLogLink': ?exceptionAuditLogLink,
       'exceptionContexts': ?exceptionContexts,
@@ -4619,6 +4632,7 @@ class GoogleCloudAssuredworkloadsV1Violation {
       'orgPolicyConstraint': ?orgPolicyConstraint,
       'parentProjectNumber': ?parentProjectNumber,
       'remediation': ?remediation,
+      'remediationMarkdown': ?remediationMarkdown,
       'resolveTime': ?resolveTime,
       'resourceName': ?resourceName,
       'resourceType': ?resourceType,
@@ -4629,16 +4643,16 @@ class GoogleCloudAssuredworkloadsV1Violation {
   }
 }
 
-/// Violation exception detail.
+/// Details about an acknowledgement (exception) of a violation.
 class GoogleCloudAssuredworkloadsV1ViolationExceptionContext {
-  /// Timestamp when the violation was acknowledged.
+  /// The time when the violation was acknowledged.
   core.String? acknowledgementTime;
 
-  /// Business justification provided towards the acknowledgement of the
-  /// violation.
+  /// The business justification that was provided when the violation was
+  /// acknowledged.
   core.String? comment;
 
-  /// Name of the user (or service account) who acknowledged the violation.
+  /// The name of the user (or service account) who acknowledged the violation.
   core.String? userName;
 
   GoogleCloudAssuredworkloadsV1ViolationExceptionContext({
@@ -4667,35 +4681,41 @@ class GoogleCloudAssuredworkloadsV1ViolationExceptionContext {
   }
 }
 
-/// Represents remediation guidance to resolve compliance violation for
-/// AssuredWorkload
+/// Remediation guidance to resolve a compliance violation.
 class GoogleCloudAssuredworkloadsV1ViolationRemediation {
-  /// Values that can resolve the violation For example: for list org policy
-  /// violations, this will either be the list of allowed or denied values
+  /// The values that can resolve the violation.
+  ///
+  /// For example, for list organization policy violations, this field contains
+  /// the list of allowed or denied values.
   core.List<core.String>? compliantValues;
 
-  /// Remediation instructions to resolve violations
+  /// The instructions to resolve the violation.
   ///
   /// Required.
   GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions? instructions;
 
-  /// Reemediation type based on the type of org policy values violated
+  /// The remediation type, which is based on the type of organization policy
+  /// values that were violated.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "REMEDIATION_TYPE_UNSPECIFIED" : Unspecified remediation type
-  /// - "REMEDIATION_BOOLEAN_ORG_POLICY_VIOLATION" : Remediation type for
-  /// boolean org policy
-  /// - "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION" : Remediation
-  /// type for list org policy which have allowed values in the monitoring rule
-  /// - "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION" : Remediation type
-  /// for list org policy which have denied values in the monitoring rule
+  /// - "REMEDIATION_TYPE_UNSPECIFIED" : Default value. The remediation type
+  /// isn't specified.
+  /// - "REMEDIATION_BOOLEAN_ORG_POLICY_VIOLATION" : Remediation for a boolean
+  /// organization policy violation.
+  /// - "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION" : Remediation for
+  /// a list organization policy violation where the monitoring rule specifies
+  /// allowed values.
+  /// - "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION" : Remediation for
+  /// a list organization policy violation where the monitoring rule specifies
+  /// denied values.
   /// - "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION" :
-  /// Remediation type for gcp.restrictCmekCryptoKeyProjects
-  /// - "REMEDIATION_RESOURCE_VIOLATION" : Remediation type for resource
+  /// Remediation for a `gcp.restrictCmekCryptoKeyProjects` organization policy
   /// violation.
-  /// - "REMEDIATION_RESOURCE_VIOLATION_NON_CMEK_SERVICES" : Remediation type
-  /// for resource violation due to gcp.restrictNonCmekServices
+  /// - "REMEDIATION_RESOURCE_VIOLATION" : Remediation for a resource violation.
+  /// - "REMEDIATION_RESOURCE_VIOLATION_NON_CMEK_SERVICES" : Remediation for a
+  /// resource violation that's caused by the `gcp.restrictNonCmekServices`
+  /// organization policy.
   core.String? remediationType;
 
   GoogleCloudAssuredworkloadsV1ViolationRemediation({
@@ -4729,13 +4749,13 @@ class GoogleCloudAssuredworkloadsV1ViolationRemediation {
   }
 }
 
-/// Instructions to remediate violation
+/// Instructions to remediate a violation.
 class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions {
-  /// Remediation instructions to resolve violation via cloud console
+  /// Instructions to resolve the violation by using the Google Cloud console.
   GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole?
   consoleInstructions;
 
-  /// Remediation instructions to resolve violation via gcloud cli
+  /// Instructions to resolve the violation by using the gcloud CLI.
   GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud?
   gcloudInstructions;
 
@@ -4771,13 +4791,92 @@ class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions {
   }
 }
 
-/// Remediation instructions to resolve violation via cloud console
-typedef GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole =
-    $Console;
+/// Instructions to remediate a violation by using the Google Cloud console.
+class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole {
+  /// Additional URLs with more information about the steps.
+  core.List<core.String>? additionalLinks;
 
-/// Remediation instructions to resolve violation via gcloud cli
-typedef GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud =
-    $Gcloud;
+  /// Links to the Google Cloud console pages where the violation can be
+  /// resolved.
+  core.List<core.String>? consoleUris;
+
+  /// The steps to resolve the violation by using the Google Cloud console.
+  core.List<core.String>? steps;
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole({
+    this.additionalLinks,
+    this.consoleUris,
+    this.steps,
+  });
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole.fromJson(
+    core.Map json_,
+  ) : this(
+        additionalLinks: (json_['additionalLinks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        consoleUris: (json_['consoleUris'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        steps: (json_['steps'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalLinks = this.additionalLinks;
+    final consoleUris = this.consoleUris;
+    final steps = this.steps;
+    return {
+      'additionalLinks': ?additionalLinks,
+      'consoleUris': ?consoleUris,
+      'steps': ?steps,
+    };
+  }
+}
+
+/// Instructions to remediate a violation by using the Google Cloud CLI.
+class GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud {
+  /// Additional URLs with more information about the steps.
+  core.List<core.String>? additionalLinks;
+
+  /// The gcloud CLI commands that resolve the violation.
+  core.List<core.String>? gcloudCommands;
+
+  /// The steps to resolve the violation by using the gcloud CLI.
+  core.List<core.String>? steps;
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud({
+    this.additionalLinks,
+    this.gcloudCommands,
+    this.steps,
+  });
+
+  GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud.fromJson(
+    core.Map json_,
+  ) : this(
+        additionalLinks: (json_['additionalLinks'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        gcloudCommands: (json_['gcloudCommands'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+        steps: (json_['steps'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalLinks = this.additionalLinks;
+    final gcloudCommands = this.gcloudCommands;
+    final steps = this.steps;
+    return {
+      'additionalLinks': ?additionalLinks,
+      'gcloudCommands': ?gcloudCommands,
+      'steps': ?steps,
+    };
+  }
+}
 
 /// A Workload object for managing highly regulated workloads of cloud
 /// customers.

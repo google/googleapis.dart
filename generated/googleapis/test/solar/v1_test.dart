@@ -73,11 +73,23 @@ void checkBuildingInsights(api.BuildingInsights o) {
   buildCounterBuildingInsights--;
 }
 
+core.List<api.BuildingInsightsDetectedArraysSolarArray> buildUnnamed0() => [
+  buildBuildingInsightsDetectedArraysSolarArray(),
+  buildBuildingInsightsDetectedArraysSolarArray(),
+];
+
+void checkUnnamed0(core.List<api.BuildingInsightsDetectedArraysSolarArray> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBuildingInsightsDetectedArraysSolarArray(o[0]);
+  checkBuildingInsightsDetectedArraysSolarArray(o[1]);
+}
+
 core.int buildCounterBuildingInsightsDetectedArrays = 0;
 api.BuildingInsightsDetectedArrays buildBuildingInsightsDetectedArrays() {
   final o = api.BuildingInsightsDetectedArrays();
   buildCounterBuildingInsightsDetectedArrays++;
   if (buildCounterBuildingInsightsDetectedArrays < 3) {
+    o.arrays = buildUnnamed0();
     o.detectionStatus = 'foo';
     o.latestCaptureDate = buildDate();
   }
@@ -88,10 +100,60 @@ api.BuildingInsightsDetectedArrays buildBuildingInsightsDetectedArrays() {
 void checkBuildingInsightsDetectedArrays(api.BuildingInsightsDetectedArrays o) {
   buildCounterBuildingInsightsDetectedArrays++;
   if (buildCounterBuildingInsightsDetectedArrays < 3) {
+    checkUnnamed0(o.arrays!);
     unittest.expect(o.detectionStatus!, unittest.equals('foo'));
     checkDate(o.latestCaptureDate!);
   }
   buildCounterBuildingInsightsDetectedArrays--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed1() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed1(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
+}
+
+core.int buildCounterBuildingInsightsDetectedArraysSolarArray = 0;
+api.BuildingInsightsDetectedArraysSolarArray
+buildBuildingInsightsDetectedArraysSolarArray() {
+  final o = api.BuildingInsightsDetectedArraysSolarArray();
+  buildCounterBuildingInsightsDetectedArraysSolarArray++;
+  if (buildCounterBuildingInsightsDetectedArraysSolarArray < 3) {
+    o.polygonGeojson = buildUnnamed1();
+  }
+  buildCounterBuildingInsightsDetectedArraysSolarArray--;
+  return o;
+}
+
+void checkBuildingInsightsDetectedArraysSolarArray(
+  api.BuildingInsightsDetectedArraysSolarArray o,
+) {
+  buildCounterBuildingInsightsDetectedArraysSolarArray++;
+  if (buildCounterBuildingInsightsDetectedArraysSolarArray < 3) {
+    checkUnnamed1(o.polygonGeojson!);
+  }
+  buildCounterBuildingInsightsDetectedArraysSolarArray--;
 }
 
 core.int buildCounterCashPurchaseSavings = 0;
@@ -121,9 +183,9 @@ void checkCashPurchaseSavings(api.CashPurchaseSavings o) {
   buildCounterCashPurchaseSavings--;
 }
 
-core.List<core.String> buildUnnamed0() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
 
-void checkUnnamed0(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -136,7 +198,7 @@ api.DataLayers buildDataLayers() {
   if (buildCounterDataLayers < 3) {
     o.annualFluxUrl = 'foo';
     o.dsmUrl = 'foo';
-    o.hourlyShadeUrls = buildUnnamed0();
+    o.hourlyShadeUrls = buildUnnamed2();
     o.imageryDate = buildDate();
     o.imageryProcessedDate = buildDate();
     o.imageryQuality = 'foo';
@@ -153,7 +215,7 @@ void checkDataLayers(api.DataLayers o) {
   if (buildCounterDataLayers < 3) {
     unittest.expect(o.annualFluxUrl!, unittest.equals('foo'));
     unittest.expect(o.dsmUrl!, unittest.equals('foo'));
-    checkUnnamed0(o.hourlyShadeUrls!);
+    checkUnnamed2(o.hourlyShadeUrls!);
     checkDate(o.imageryDate!);
     checkDate(o.imageryProcessedDate!);
     unittest.expect(o.imageryQuality!, unittest.equals('foo'));
@@ -282,7 +344,7 @@ void checkFinancialDetails(api.FinancialDetails o) {
   buildCounterFinancialDetails--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed1() => {
+core.Map<core.String, core.Object?> buildUnnamed3() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -295,29 +357,29 @@ core.Map<core.String, core.Object?> buildUnnamed1() => {
   },
 };
 
-void checkUnnamed1(core.Map<core.String, core.Object?> o) {
+void checkUnnamed3(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']!) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']!) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  var casted3 = (o['x']!) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']!) as core.Map;
+  unittest.expect(casted4, unittest.hasLength(3));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed2() => [
-  buildUnnamed1(),
-  buildUnnamed1(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed4() => [
+  buildUnnamed3(),
+  buildUnnamed3(),
 ];
 
-void checkUnnamed2(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed4(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1(o[0]);
-  checkUnnamed1(o[1]);
+  checkUnnamed3(o[0]);
+  checkUnnamed3(o[1]);
 }
 
 core.int buildCounterHttpBody = 0;
@@ -327,7 +389,7 @@ api.HttpBody buildHttpBody() {
   if (buildCounterHttpBody < 3) {
     o.contentType = 'foo';
     o.data = 'foo';
-    o.extensions = buildUnnamed2();
+    o.extensions = buildUnnamed4();
   }
   buildCounterHttpBody--;
   return o;
@@ -338,7 +400,7 @@ void checkHttpBody(api.HttpBody o) {
   if (buildCounterHttpBody < 3) {
     unittest.expect(o.contentType!, unittest.equals('foo'));
     unittest.expect(o.data!, unittest.equals('foo'));
-    checkUnnamed2(o.extensions!);
+    checkUnnamed4(o.extensions!);
   }
   buildCounterHttpBody--;
 }
@@ -433,6 +495,79 @@ void checkMoney(api.Money o) {
   buildCounterMoney--;
 }
 
+core.Map<core.String, core.Object?> buildUnnamed5() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed5(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted5 = (o['x']!) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
+  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5['bool'], unittest.equals(true));
+  unittest.expect(casted5['string'], unittest.equals('foo'));
+  var casted6 = (o['y']!) as core.Map;
+  unittest.expect(casted6, unittest.hasLength(3));
+  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6['bool'], unittest.equals(true));
+  unittest.expect(casted6['string'], unittest.equals('foo'));
+}
+
+core.int buildCounterObstacle = 0;
+api.Obstacle buildObstacle() {
+  final o = api.Obstacle();
+  buildCounterObstacle++;
+  if (buildCounterObstacle < 3) {
+    o.polygonGeojson = buildUnnamed5();
+  }
+  buildCounterObstacle--;
+  return o;
+}
+
+void checkObstacle(api.Obstacle o) {
+  buildCounterObstacle++;
+  if (buildCounterObstacle < 3) {
+    checkUnnamed5(o.polygonGeojson!);
+  }
+  buildCounterObstacle--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed6() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed6(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted7 = (o['x']!) as core.Map;
+  unittest.expect(casted7, unittest.hasLength(3));
+  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7['bool'], unittest.equals(true));
+  unittest.expect(casted7['string'], unittest.equals('foo'));
+  var casted8 = (o['y']!) as core.Map;
+  unittest.expect(casted8, unittest.hasLength(3));
+  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8['bool'], unittest.equals(true));
+  unittest.expect(casted8['string'], unittest.equals('foo'));
+}
+
 core.int buildCounterRoofSegmentSizeAndSunshineStats = 0;
 api.RoofSegmentSizeAndSunshineStats buildRoofSegmentSizeAndSunshineStats() {
   final o = api.RoofSegmentSizeAndSunshineStats();
@@ -443,6 +578,7 @@ api.RoofSegmentSizeAndSunshineStats buildRoofSegmentSizeAndSunshineStats() {
     o.center = buildLatLng();
     o.pitchDegrees = 42.0;
     o.planeHeightAtCenterMeters = 42.0;
+    o.polygonGeojson = buildUnnamed6();
     o.stats = buildSizeAndSunshineStats();
   }
   buildCounterRoofSegmentSizeAndSunshineStats--;
@@ -459,6 +595,7 @@ void checkRoofSegmentSizeAndSunshineStats(
     checkLatLng(o.center!);
     unittest.expect(o.pitchDegrees!, unittest.equals(42.0));
     unittest.expect(o.planeHeightAtCenterMeters!, unittest.equals(42.0));
+    checkUnnamed6(o.polygonGeojson!);
     checkSizeAndSunshineStats(o.stats!);
   }
   buildCounterRoofSegmentSizeAndSunshineStats--;
@@ -520,9 +657,9 @@ void checkSavingsOverTime(api.SavingsOverTime o) {
   buildCounterSavingsOverTime--;
 }
 
-core.List<core.double> buildUnnamed3() => [42.0, 42.0];
+core.List<core.double> buildUnnamed7() => [42.0, 42.0];
 
-void checkUnnamed3(core.List<core.double> o) {
+void checkUnnamed7(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -535,7 +672,7 @@ api.SizeAndSunshineStats buildSizeAndSunshineStats() {
   if (buildCounterSizeAndSunshineStats < 3) {
     o.areaMeters2 = 42.0;
     o.groundAreaMeters2 = 42.0;
-    o.sunshineQuantiles = buildUnnamed3();
+    o.sunshineQuantiles = buildUnnamed7();
   }
   buildCounterSizeAndSunshineStats--;
   return o;
@@ -546,7 +683,7 @@ void checkSizeAndSunshineStats(api.SizeAndSunshineStats o) {
   if (buildCounterSizeAndSunshineStats < 3) {
     unittest.expect(o.areaMeters2!, unittest.equals(42.0));
     unittest.expect(o.groundAreaMeters2!, unittest.equals(42.0));
-    checkUnnamed3(o.sunshineQuantiles!);
+    checkUnnamed7(o.sunshineQuantiles!);
   }
   buildCounterSizeAndSunshineStats--;
 }
@@ -576,12 +713,12 @@ void checkSolarPanel(api.SolarPanel o) {
   buildCounterSolarPanel--;
 }
 
-core.List<api.RoofSegmentSummary> buildUnnamed4() => [
+core.List<api.RoofSegmentSummary> buildUnnamed8() => [
   buildRoofSegmentSummary(),
   buildRoofSegmentSummary(),
 ];
 
-void checkUnnamed4(core.List<api.RoofSegmentSummary> o) {
+void checkUnnamed8(core.List<api.RoofSegmentSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRoofSegmentSummary(o[0]);
   checkRoofSegmentSummary(o[1]);
@@ -593,7 +730,7 @@ api.SolarPanelConfig buildSolarPanelConfig() {
   buildCounterSolarPanelConfig++;
   if (buildCounterSolarPanelConfig < 3) {
     o.panelsCount = 42;
-    o.roofSegmentSummaries = buildUnnamed4();
+    o.roofSegmentSummaries = buildUnnamed8();
     o.yearlyEnergyDcKwh = 42.0;
   }
   buildCounterSolarPanelConfig--;
@@ -604,51 +741,59 @@ void checkSolarPanelConfig(api.SolarPanelConfig o) {
   buildCounterSolarPanelConfig++;
   if (buildCounterSolarPanelConfig < 3) {
     unittest.expect(o.panelsCount!, unittest.equals(42));
-    checkUnnamed4(o.roofSegmentSummaries!);
+    checkUnnamed8(o.roofSegmentSummaries!);
     unittest.expect(o.yearlyEnergyDcKwh!, unittest.equals(42.0));
   }
   buildCounterSolarPanelConfig--;
 }
 
-core.List<api.FinancialAnalysis> buildUnnamed5() => [
+core.List<api.FinancialAnalysis> buildUnnamed9() => [
   buildFinancialAnalysis(),
   buildFinancialAnalysis(),
 ];
 
-void checkUnnamed5(core.List<api.FinancialAnalysis> o) {
+void checkUnnamed9(core.List<api.FinancialAnalysis> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFinancialAnalysis(o[0]);
   checkFinancialAnalysis(o[1]);
 }
 
-core.List<api.RoofSegmentSizeAndSunshineStats> buildUnnamed6() => [
+core.List<api.Obstacle> buildUnnamed10() => [buildObstacle(), buildObstacle()];
+
+void checkUnnamed10(core.List<api.Obstacle> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkObstacle(o[0]);
+  checkObstacle(o[1]);
+}
+
+core.List<api.RoofSegmentSizeAndSunshineStats> buildUnnamed11() => [
   buildRoofSegmentSizeAndSunshineStats(),
   buildRoofSegmentSizeAndSunshineStats(),
 ];
 
-void checkUnnamed6(core.List<api.RoofSegmentSizeAndSunshineStats> o) {
+void checkUnnamed11(core.List<api.RoofSegmentSizeAndSunshineStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRoofSegmentSizeAndSunshineStats(o[0]);
   checkRoofSegmentSizeAndSunshineStats(o[1]);
 }
 
-core.List<api.SolarPanelConfig> buildUnnamed7() => [
+core.List<api.SolarPanelConfig> buildUnnamed12() => [
   buildSolarPanelConfig(),
   buildSolarPanelConfig(),
 ];
 
-void checkUnnamed7(core.List<api.SolarPanelConfig> o) {
+void checkUnnamed12(core.List<api.SolarPanelConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSolarPanelConfig(o[0]);
   checkSolarPanelConfig(o[1]);
 }
 
-core.List<api.SolarPanel> buildUnnamed8() => [
+core.List<api.SolarPanel> buildUnnamed13() => [
   buildSolarPanel(),
   buildSolarPanel(),
 ];
 
-void checkUnnamed8(core.List<api.SolarPanel> o) {
+void checkUnnamed13(core.List<api.SolarPanel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSolarPanel(o[0]);
   checkSolarPanel(o[1]);
@@ -661,17 +806,18 @@ api.SolarPotential buildSolarPotential() {
   if (buildCounterSolarPotential < 3) {
     o.buildingStats = buildSizeAndSunshineStats();
     o.carbonOffsetFactorKgPerMwh = 42.0;
-    o.financialAnalyses = buildUnnamed5();
+    o.financialAnalyses = buildUnnamed9();
     o.maxArrayAreaMeters2 = 42.0;
     o.maxArrayPanelsCount = 42;
     o.maxSunshineHoursPerYear = 42.0;
+    o.obstacles = buildUnnamed10();
     o.panelCapacityWatts = 42.0;
     o.panelHeightMeters = 42.0;
     o.panelLifetimeYears = 42;
     o.panelWidthMeters = 42.0;
-    o.roofSegmentStats = buildUnnamed6();
-    o.solarPanelConfigs = buildUnnamed7();
-    o.solarPanels = buildUnnamed8();
+    o.roofSegmentStats = buildUnnamed11();
+    o.solarPanelConfigs = buildUnnamed12();
+    o.solarPanels = buildUnnamed13();
     o.wholeRoofStats = buildSizeAndSunshineStats();
   }
   buildCounterSolarPotential--;
@@ -683,41 +829,42 @@ void checkSolarPotential(api.SolarPotential o) {
   if (buildCounterSolarPotential < 3) {
     checkSizeAndSunshineStats(o.buildingStats!);
     unittest.expect(o.carbonOffsetFactorKgPerMwh!, unittest.equals(42.0));
-    checkUnnamed5(o.financialAnalyses!);
+    checkUnnamed9(o.financialAnalyses!);
     unittest.expect(o.maxArrayAreaMeters2!, unittest.equals(42.0));
     unittest.expect(o.maxArrayPanelsCount!, unittest.equals(42));
     unittest.expect(o.maxSunshineHoursPerYear!, unittest.equals(42.0));
+    checkUnnamed10(o.obstacles!);
     unittest.expect(o.panelCapacityWatts!, unittest.equals(42.0));
     unittest.expect(o.panelHeightMeters!, unittest.equals(42.0));
     unittest.expect(o.panelLifetimeYears!, unittest.equals(42));
     unittest.expect(o.panelWidthMeters!, unittest.equals(42.0));
-    checkUnnamed6(o.roofSegmentStats!);
-    checkUnnamed7(o.solarPanelConfigs!);
-    checkUnnamed8(o.solarPanels!);
+    checkUnnamed11(o.roofSegmentStats!);
+    checkUnnamed12(o.solarPanelConfigs!);
+    checkUnnamed13(o.solarPanels!);
     checkSizeAndSunshineStats(o.wholeRoofStats!);
   }
   buildCounterSolarPotential--;
 }
 
-core.List<core.String> buildUnnamed9() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
 
-void checkUnnamed9(core.List<core.String> o) {
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed10() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed15() => ['foo', 'foo'];
 
-void checkUnnamed10(core.List<core.String> o) {
+void checkUnnamed15(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed16() => ['foo', 'foo'];
 
-void checkUnnamed11(core.List<core.String> o) {
+void checkUnnamed16(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -743,6 +890,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkBuildingInsightsDetectedArrays(od);
+    });
+  });
+
+  unittest.group('obj-schema-BuildingInsightsDetectedArraysSolarArray', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBuildingInsightsDetectedArraysSolarArray();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BuildingInsightsDetectedArraysSolarArray.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBuildingInsightsDetectedArraysSolarArray(od);
     });
   });
 
@@ -867,6 +1025,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Obstacle', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildObstacle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Obstacle.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkObstacle(od);
+    });
+  });
+
   unittest.group('obj-schema-RoofSegmentSizeAndSunshineStats', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRoofSegmentSizeAndSunshineStats();
@@ -948,9 +1117,9 @@ void main() {
     unittest.test('method--findClosest', () async {
       final mock = HttpServerMock();
       final res = api.SolarApi(mock).buildingInsights;
-      final arg_additionalInsights = buildUnnamed9();
+      final arg_additionalInsights = buildUnnamed14();
       final arg_exactQualityRequired = true;
-      final arg_experiments = buildUnnamed10();
+      final arg_experiments = buildUnnamed15();
       final arg_location_latitude = 42.0;
       final arg_location_longitude = 42.0;
       final arg_requiredQuality = 'foo';
@@ -1040,7 +1209,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.SolarApi(mock).dataLayers;
       final arg_exactQualityRequired = true;
-      final arg_experiments = buildUnnamed11();
+      final arg_experiments = buildUnnamed16();
       final arg_location_latitude = 42.0;
       final arg_location_longitude = 42.0;
       final arg_pixelSizeMeters = 42.0;

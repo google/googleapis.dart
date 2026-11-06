@@ -991,7 +991,7 @@ class ProjectsLocationsAuthzExtensionsResource {
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
-  /// [updateMask] - Required. Used to specify the fields to be overwritten in
+  /// [updateMask] - Optional. Used to specify the fields to be overwritten in
   /// the `AuthzExtension` resource by the update. The fields specified in the
   /// `update_mask` are relative to the resource, not the full request. A field
   /// is overwritten if it is in the mask. If the user does not specify a mask,
@@ -4967,6 +4967,17 @@ class ProjectsLocationsServiceBindingsResource {
   /// the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees this for 60 minutes after the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID
+  /// version 4 with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
   /// [serviceBindingId] - Required. Short name of the ServiceBinding resource
   /// to be created.
   ///
@@ -4983,11 +4994,13 @@ class ProjectsLocationsServiceBindingsResource {
   async.Future<Operation> create(
     ServiceBinding request,
     core.String parent, {
+    core.String? requestId,
     core.String? serviceBindingId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
       'serviceBindingId': ?serviceBindingId == null ? null : [serviceBindingId],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -5012,6 +5025,17 @@ class ProjectsLocationsServiceBindingsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceBindings/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees this for 60 minutes after the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID
+  /// version 4 with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5024,9 +5048,11 @@ class ProjectsLocationsServiceBindingsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
       'fields': ?$fields == null ? null : [$fields],
     };
 
@@ -5139,6 +5165,17 @@ class ProjectsLocationsServiceBindingsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serviceBindings/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server can ignore the request if it has already been completed. The server
+  /// guarantees this for 60 minutes after the first request. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server ignores the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID
+  /// version 4 with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
   /// [updateMask] - Optional. Field mask is used to specify the fields to be
   /// overwritten in the ServiceBinding resource by the update. The fields
   /// specified in the update_mask are relative to the resource, not the full
@@ -5158,11 +5195,13 @@ class ProjectsLocationsServiceBindingsResource {
   async.Future<Operation> patch(
     ServiceBinding request,
     core.String name, {
+    core.String? requestId,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      'requestId': ?requestId == null ? null : [requestId],
       'updateMask': ?updateMask == null ? null : [updateMask],
       'fields': ?$fields == null ? null : [$fields],
     };
@@ -6323,7 +6362,7 @@ class AgentConnectivityTemplate {
   /// AGENT_TO_ANYWHERE as carryovers from Agent Gateway's original resource
   /// model. The path is immutable once set. Exactly one path can be set.
   ///
-  /// Required. Immutable.
+  /// Optional. Immutable.
   /// Possible string values are:
   /// - "ACCESS_PATH_UNSPECIFIED" : Unspecified access path.
   /// - "CLIENT_TO_AGENT" : Protect connection to Agent or Tool.
@@ -6347,6 +6386,7 @@ class AgentConnectivityTemplate {
   /// - "GKE" : Google Kubernetes Engine.
   /// - "CLOUD_RUN" : Google Cloud Run.
   /// - "BORG" : Google Borg (for 1P producers).
+  /// - "GCE_VM" : Google Compute Engine VM.
   core.String? agentCompute;
 
   /// The timestamp when the resource was created.
@@ -6356,7 +6396,7 @@ class AgentConnectivityTemplate {
 
   /// The deployment model for the gateway.
   ///
-  /// Required.
+  /// Optional.
   /// Possible string values are:
   /// - "DEPLOYMENT_MODEL_UNSPECIFIED" : Unspecified deployment model.
   /// - "CENTRALIZED" : Centralized deployment.
@@ -7251,10 +7291,20 @@ typedef CancelOperationRequest = $Empty;
 
 /// DNS Peering configuration.
 class DnsPeeringConfig {
+  /// Deprecated: Use `domains` instead.
+  ///
   /// The domain to peer.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? domain;
+
+  /// The domains to peer.
+  ///
+  /// Optional.
+  core.List<core.String>? domains;
 
   /// The target network resource name for DNS peering.
   ///
@@ -7263,21 +7313,30 @@ class DnsPeeringConfig {
   /// Optional.
   core.String? targetNetwork;
 
-  DnsPeeringConfig({this.domain, this.targetNetwork});
+  DnsPeeringConfig({this.domain, this.domains, this.targetNetwork});
 
   DnsPeeringConfig.fromJson(core.Map json_)
     : this(
         domain: json_['domain'] as core.String?,
+        domains: (json_['domains'] as core.List?)
+            ?.map((value) => value as core.String)
+            .toList(),
         targetNetwork: json_['targetNetwork'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
     final domain = this.domain;
+    final domains = this.domains;
     final targetNetwork = this.targetNetwork;
-    return {'domain': ?domain, 'targetNetwork': ?targetNetwork};
+    return {
+      'domain': ?domain,
+      'domains': ?domains,
+      'targetNetwork': ?targetNetwork,
+    };
   }
 }
 
+/// Egress network config
 class EgressNetworkConfig {
   /// DNS Peering configuration.
   ///
@@ -7291,6 +7350,11 @@ class EgressNetworkConfig {
   ///
   /// Optional.
   core.String? networkAttachment;
+
+  /// The TLS configuration for the egress traffic.
+  ///
+  /// Optional.
+  EgressNetworkConfigTlsConfig? tlsConfig;
 
   /// Deprecated: Use tls_config instead.
   ///
@@ -7317,6 +7381,7 @@ class EgressNetworkConfig {
   EgressNetworkConfig({
     this.dnsPeeringConfig,
     this.networkAttachment,
+    this.tlsConfig,
     this.trustConfig,
     this.vpcEgress,
   });
@@ -7330,6 +7395,11 @@ class EgressNetworkConfig {
               )
             : null,
         networkAttachment: json_['networkAttachment'] as core.String?,
+        tlsConfig: json_.containsKey('tlsConfig')
+            ? EgressNetworkConfigTlsConfig.fromJson(
+                json_['tlsConfig'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         trustConfig: json_['trustConfig'] as core.String?,
         vpcEgress: json_['vpcEgress'] as core.String?,
       );
@@ -7337,14 +7407,52 @@ class EgressNetworkConfig {
   core.Map<core.String, core.dynamic> toJson() {
     final dnsPeeringConfig = this.dnsPeeringConfig;
     final networkAttachment = this.networkAttachment;
+    final tlsConfig = this.tlsConfig;
     final trustConfig = this.trustConfig;
     final vpcEgress = this.vpcEgress;
     return {
       'dnsPeeringConfig': ?dnsPeeringConfig,
       'networkAttachment': ?networkAttachment,
+      'tlsConfig': ?tlsConfig,
       'trustConfig': ?trustConfig,
       'vpcEgress': ?vpcEgress,
     };
+  }
+}
+
+/// Configuration for TLS connections.
+class EgressNetworkConfigTlsConfig {
+  /// The additional roots to trust.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ADDITIONAL_ROOTS_UNSPECIFIED" : Unspecified additional roots.
+  /// - "NO_ADDITIONAL_ROOTS" : Trust only the certificates provided in
+  /// `trust_config`.
+  /// - "PUBLICLY_TRUSTED_ROOTS" : Trust certificates provided in `trust_config`
+  /// and publicly trusted roots.
+  core.String? additionalRoots;
+
+  /// The trust config resource name.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/trustConfigs/{trust_config}
+  ///
+  /// Optional.
+  core.String? trustConfig;
+
+  EgressNetworkConfigTlsConfig({this.additionalRoots, this.trustConfig});
+
+  EgressNetworkConfigTlsConfig.fromJson(core.Map json_)
+    : this(
+        additionalRoots: json_['additionalRoots'] as core.String?,
+        trustConfig: json_['trustConfig'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final additionalRoots = this.additionalRoots;
+    final trustConfig = this.trustConfig;
+    return {'additionalRoots': ?additionalRoots, 'trustConfig': ?trustConfig};
   }
 }
 
@@ -7693,10 +7801,12 @@ class ExtensionBinding {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// A list of match conditions to match against the incoming request.
+  /// A list of match conditions to evaluate against the incoming request.
   ///
-  /// The extension will be invoked if at least one condition matches the
-  /// request, or if no match conditions are specified. Limited to 5 conditions.
+  /// The extension is invoked if the request matches at least one condition, or
+  /// if no match conditions are specified. A request matches a condition only
+  /// if it matches every field that is set in that condition. Limited to 5
+  /// conditions.
   ///
   /// Optional.
   core.List<ExtensionBindingMatchCondition>? matchConditions;
@@ -7707,11 +7817,7 @@ class ExtensionBinding {
   /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
   core.String? name;
 
-  /// Priority of the extension binding.
-  ///
-  /// Lower numbers indicate higher priority. Priority of extension bindings are
-  /// used to determine the order in which extension bindings are applied to a
-  /// request.
+  /// This field is not supported.
   ///
   /// Optional.
   core.int? priority;
@@ -7719,8 +7825,8 @@ class ExtensionBinding {
   /// The name of the extension that this binding should attach to target
   /// resources.
   ///
-  /// Format: For Google-provided extensions, specify the service endpoint (see
-  /// [Model Armor integration](https://docs.cloud.google.com/model-armor/integrations))
+  /// Format: For Google-provided extensions, specify the service endpoint, for
+  /// example `modelarmor.us-central1.rep.googleapis.com`.
   ///
   /// Required.
   core.String? producerExtension;
@@ -7728,12 +7834,15 @@ class ExtensionBinding {
   /// Additional metadata that should be passed to the attached extension with
   /// each request.
   ///
+  /// This field is subject to the following limitations: * The total size of
+  /// the metadata must be less than 1 KiB. * The total number of keys must be
+  /// less than 16. * The length of each key must be less than 64 characters. *
+  /// The length of each value must be less than 1024 characters.
+  ///
   /// Optional.
   core.Map<core.String, core.String>? producerMetadata;
 
   /// Specifies a target to which this `ExtensionBinding` should be attached.
-  ///
-  /// The target can be either a single resource or a scope of resources.
   ///
   /// Required.
   ExtensionBindingTarget? target;
@@ -7878,42 +7987,42 @@ class ExtensionBindingMatchConditionHeaderMatch {
 
 /// Specifies matching logic for string values.
 class ExtensionBindingMatchConditionStringMatch {
-  /// The input string must have the substring specified here.
+  /// The input string must contain the substring specified here.
   ///
-  /// Note: empty contains match is not allowed, please use regex instead.
-  /// Examples: * ``abc`` matches the value ``xyz.abc.def``
+  /// An empty substring is not allowed. Examples: * `abc` matches the value
+  /// `xyz.abc.def`.
   ///
   /// Optional.
   core.String? contains;
 
   /// The input string must match exactly the string specified here.
   ///
-  /// Examples: * ``abc`` only matches the value ``abc``.
+  /// Examples: * `abc` only matches the value `abc`.
   ///
   /// Optional.
   core.String? exact;
 
-  /// If true, indicates the exact/prefix/suffix/contains matching should be
-  /// case insensitive.
+  /// If true, the `exact`, `prefix`, `suffix`, or `contains` match is case
+  /// insensitive.
   ///
-  /// For example, the matcher ``data`` will match both input string ``Data``
-  /// and ``data`` if set to true.
+  /// For example, the matcher `data` matches both `Data` and `data` when set to
+  /// true.
   ///
   /// Optional.
   core.bool? ignoreCase;
 
   /// The input string must have the prefix specified here.
   ///
-  /// Note: empty prefix is not allowed. Examples: * ``abc`` matches the value
-  /// ``abc.xyz``
+  /// An empty prefix is not allowed. Examples: * `abc` matches the value
+  /// `abc.xyz`.
   ///
   /// Optional.
   core.String? prefix;
 
   /// The input string must have the suffix specified here.
   ///
-  /// Note: empty prefix is not allowed, please use regex instead. Examples: *
-  /// ``abc`` matches the value ``xyz.abc``
+  /// An empty suffix is not allowed. Examples: * `abc` matches the value
+  /// `xyz.abc`.
   ///
   /// Optional.
   core.String? suffix;
@@ -7953,12 +8062,13 @@ class ExtensionBindingMatchConditionStringMatch {
 
 /// Describes properties of one or more destinations of a request.
 class ExtensionBindingMatchConditionTo {
-  /// Describes properties of destination of a request.
+  /// Describes properties of the destination of a request.
   ///
-  /// Within a destination, the match follows AND semantics across fields and OR
-  /// semantics within a field, i.e. a match occurs when ANY path matches AND
-  /// ANY header matches and ANY method matches. At least one of destination or
-  /// not_destination must be specified.
+  /// A request matches the destination only if it matches every field that is
+  /// set. Fields that are not set are always considered a match. For example,
+  /// if only `hosts` and `paths` are set, a request matches when any host
+  /// matches and any path matches. At least one of `destination` or
+  /// `not_destination` must be specified.
   ///
   /// Optional.
   ExtensionBindingMatchConditionToDestination? destination;
@@ -8085,10 +8195,11 @@ class ExtensionBindingMatchConditionToDestination {
 
 /// Describes a set of HTTP headers to match against.
 class ExtensionBindingMatchConditionToDestinationHeaderSet {
-  /// A list of headers to match against in http header.
+  /// A list of HTTP headers to match against.
   ///
-  /// If multiple header matches are provided, they will be evaluated as an AND,
-  /// i.e. all header matches must match for the request to match.
+  /// If multiple header matches are provided, they are evaluated as an AND,
+  /// meaning that all header matches must match for the request to match.
+  /// Limited to 10 headers.
   ///
   /// Required.
   core.List<ExtensionBindingMatchConditionHeaderMatch>? headers;
@@ -8114,9 +8225,13 @@ class ExtensionBindingMatchConditionToDestinationHeaderSet {
 
 /// Specifies a list of targets to which this `ExtensionBinding` should attach.
 class ExtensionBindingTarget {
-  /// The reference to the target resource, to which this binding should attach.
+  /// The references to the target resources to which this binding should
+  /// attach.
   ///
-  /// Exactly one of `resources` or `scope` must be set.
+  /// Exactly one of `resources` or `scope` must be set. For AI Application
+  /// resources, specify the full resource name in the format:
+  /// `projects/{project}/locations/{location}/applications/{application}`.
+  /// Limited to 1 resource.
   ///
   /// Optional.
   core.List<core.String>? resources;
@@ -8151,13 +8266,18 @@ class ExtensionBindingTarget {
 
 /// Specifies the scope of resources to which this binding should attach.
 class ExtensionBindingTargetScope {
-  /// Parent resource name specification, in the format:
+  /// The parent resource that defines the scope, in the format
   /// `projects/{project_number}`.
+  ///
+  /// When the scope is a project, the binding applies to the resources that
+  /// meet all of the following conditions: * The resource belongs to the
+  /// specified project. * The resource is in the same location as the
+  /// `ExtensionBinding`. * The resource type is listed in `resource_types`.
   ///
   /// Required.
   core.String? parent;
 
-  /// Type of the resource to which the binding should attach.
+  /// The types of resources to which the binding should attach.
   ///
   /// Limited to 1 resource type.
   ///
@@ -8187,9 +8307,9 @@ class ExtensionChain {
   /// A set of extensions to execute for the matching request.
   ///
   /// At least one extension is required. Up to 3 extensions can be defined for
-  /// each extension chain for `LbTrafficExtension` resource. `LbRouteExtension`
-  /// and `LbEdgeExtension` chains are limited to 1 extension per extension
-  /// chain.
+  /// each extension chain for `LbTrafficExtension` and `CdnEdgeExtension`
+  /// resources. `LbRouteExtension`, `LbEdgeExtension`, and `LbTcpExtension`
+  /// chains are limited to 1 extension per extension chain.
   ///
   /// Required.
   core.List<ExtensionChainExtension>? extensions;
@@ -8407,7 +8527,8 @@ class ExtensionChainExtension {
   /// `projects/{project}/locations/{location}/wasmPlugins/{plugin}` or
   /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/wasmPlugins/{wasmPlugin}`.
   /// Plugin extensions are currently supported for the `LbTrafficExtension`,
-  /// the `LbRouteExtension`, and the `LbEdgeExtension` resources.
+  /// the `LbRouteExtension`, the `LbEdgeExtension`, and the `CdnEdgeExtension`
+  /// resources.
   ///
   /// Required.
   core.String? service;
@@ -8421,7 +8542,10 @@ class ExtensionChainExtension {
   /// resource, this field is required and must only contain `REQUEST_HEADERS`
   /// event. For the `AuthzExtension` resource, this field is optional.
   /// `REQUEST_HEADERS` is the only supported event. If unspecified,
-  /// `REQUEST_HEADERS` event is assumed as supported.
+  /// `REQUEST_HEADERS` event is assumed as supported. For the
+  /// `CdnEdgeExtension` resource, this field is optional. Eligible values are
+  /// `REQUEST_HEADERS` and `RESPONSE_HEADERS`. If unspecified, both are assumed
+  /// as supported.
   ///
   /// Optional.
   core.List<core.String>? supportedEvents;
@@ -12461,7 +12585,7 @@ class MulticastConsumerAssociation {
   /// Optional.
   core.String? description;
 
-  /// Labels as key-value pairs
+  /// Labels as key-value pairs.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -12522,8 +12646,9 @@ class MulticastConsumerAssociation {
   /// The Google-generated UUID for the resource.
   ///
   /// This value is unique across all multicast consumer association resources.
-  /// If a consumer association is deleted and another with the same name is
-  /// created, the new consumer association is assigned a different unique_id.
+  /// If a multicast consumer association is deleted and another with the same
+  /// name is created, the new multicast consumer association is assigned a
+  /// different unique_id.
   ///
   /// Output only.
   core.String? uniqueId;
@@ -12610,7 +12735,7 @@ class MulticastGroupConsumerActivation {
   /// Optional.
   core.String? description;
 
-  /// Labels as key-value pairs
+  /// Labels as key-value pairs.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -12636,8 +12761,8 @@ class MulticastGroupConsumerActivation {
   /// The resource name of the multicast group created by the admin in the same
   /// zone as this multicast group consumer activation.
   ///
-  /// Use the following format: // `projects / * /locations / * /multicastGroups
-  /// / * `. This field is deprecated. Use multicast_group_range_activation
+  /// Use the following format: `projects / * /locations / * /multicastGroups /
+  /// * `. This field is deprecated. Use multicast_group_range_activation
   /// instead.
   ///
   /// Optional.
@@ -12649,7 +12774,7 @@ class MulticastGroupConsumerActivation {
   /// The resource name of the multicast group range activation created by the
   /// admin in the same zone as this multicast group consumer activation.
   ///
-  /// Use the following format: // `projects / * /locations / *
+  /// Use the following format: `projects / * /locations / *
   /// /multicastGroupRangeActivations / * `.
   ///
   /// Required.
@@ -12686,9 +12811,9 @@ class MulticastGroupConsumerActivation {
   /// The Google-generated UUID for the resource.
   ///
   /// This value is unique across all multicast group consumer activation
-  /// resources. If a group consumer activation is deleted and another with the
-  /// same name is created, the new group consumer activation is assigned a
-  /// different unique_id.
+  /// resources. If a multicast group consumer activation is deleted and another
+  /// with the same name is created, the new multicast group consumer activation
+  /// is assigned a different unique_id.
   ///
   /// Output only.
   core.String? uniqueId;
@@ -13138,7 +13263,7 @@ class ProducerExtensionExtensionSettings {
   /// Optional.
   core.String? authority;
 
-  /// Whether the extension should function in observability mode.
+  /// This field is not supported.
   ///
   /// Optional.
   core.bool? observabilityMode;
@@ -13288,8 +13413,8 @@ class ServiceBinding {
   }
 }
 
-/// ServiceLbPolicy holds global load balancing and traffic distribution
-/// configuration that can be applied to a BackendService.
+/// ServiceLbPolicy holds load balancing and traffic distribution configuration
+/// that can be applied to a global or regional BackendService.
 class ServiceLbPolicy {
   /// Configuration to automatically move traffic away for unhealthy IG/NEG for
   /// the associated Backend Service.
@@ -13334,16 +13459,24 @@ class ServiceLbPolicy {
   /// - "LOAD_BALANCING_ALGORITHM_UNSPECIFIED" : The type of the loadbalancing
   /// algorithm is unspecified.
   /// - "SPRAY_TO_WORLD" : Balance traffic across all backends across the world
-  /// proportionally based on capacity.
+  /// proportionally based on capacity. Only supported for global
+  /// ServiceLbPolicy with Cloud Service Mesh, not supported for regional
+  /// ServiceLbPolicy.
   /// - "SPRAY_TO_REGION" : Direct traffic to the nearest region with endpoints
   /// and capacity before spilling over to other regions and spread the traffic
-  /// from each client to all the MIGs/NEGs in a region.
+  /// from each client to all the MIGs/NEGs in a region. For regional
+  /// ServiceLbPolicy, traffic stays within the configured region and does not
+  /// spill over to other regions.
   /// - "WATERFALL_BY_REGION" : Direct traffic to the nearest region with
   /// endpoints and capacity before spilling over to other regions. All
   /// MIGs/NEGs within a region are evenly loaded but each client might not
-  /// spread the traffic to all the MIGs/NEGs in the region.
+  /// spread the traffic to all the MIGs/NEGs in the region. For regional
+  /// ServiceLbPolicy, traffic stays within the configured region and does not
+  /// spill over to other regions.
   /// - "WATERFALL_BY_ZONE" : Attempt to keep traffic in a single zone closest
-  /// to the client, before spilling over to other zones.
+  /// to the client, before spilling over to other zones. For regional
+  /// ServiceLbPolicy, traffic only spills over to other zones within the same
+  /// region.
   core.String? loadBalancingAlgorithm;
 
   /// Identifier.
@@ -13421,8 +13554,8 @@ class ServiceLbPolicy {
   }
 }
 
-/// Option to specify if an unhealthy IG/NEG should be considered for global
-/// load balancing and traffic routing.
+/// Option to specify if an unhealthy IG/NEG should be considered for load
+/// balancing and traffic routing.
 class ServiceLbPolicyAutoCapacityDrain {
   /// If set to 'True', an unhealthy IG/NEG will be set as drained.
   ///
@@ -14342,7 +14475,7 @@ class WasmPluginLogConfig {
   ///
   /// Specifies the lowest level of the plugin logs that are exported to Cloud
   /// Logging. This setting relates to the logs generated by using logging
-  /// statements in your Wasm code. This field is can be set only if logging is
+  /// statements in your Wasm code. This field can be set only if logging is
   /// enabled for the plugin. If the field is not provided when logging is
   /// enabled, it is set to `INFO` by default.
   ///

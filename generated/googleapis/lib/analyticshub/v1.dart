@@ -1771,8 +1771,8 @@ class AIInference {
   ///
   /// The resource creator or updater that specifies this field must have
   /// `iam.serviceAccounts.actAs` permission on the service account. If not
-  /// specified, the Pub/Sub \[service
-  /// agent\]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents),
+  /// specified, the Pub/Sub
+  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
   /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
   ///
   /// Optional.
@@ -2064,13 +2064,11 @@ class BigQueryDatasetSource {
   }
 }
 
-/// Configuration for a Bigtable subscription.
+/// Configuration for a Bigtable subscription, which will write a Pub/Sub
+/// message to a Bigtable row.
 ///
-/// The Pub/Sub message will be written to a Bigtable row as follows: - row key:
-/// subscription name, message ID hash, and message ID delimited by `#`. -
-/// columns: message bytes written to a single column family `data` with an
-/// empty-string column qualifier. - cell timestamp: the message publish
-/// timestamp.
+/// See the ColumnFamilyMapping documentation below for details on how the row
+/// keys and columns will be written.
 class BigtableConfig {
   /// The app profile to use for the Bigtable writes.
   ///
@@ -2080,12 +2078,20 @@ class BigtableConfig {
   /// Optional.
   core.String? appProfileId;
 
+  /// Configuration that allows writing row keys and/or columns based on fields
+  /// in the input message.
+  ///
+  /// The input message format must be JSON if this field is set.
+  ///
+  /// Optional.
+  ColumnFamilyMapping? columnFamilyMapping;
+
   /// The service account to use to write to Bigtable.
   ///
   /// The subscription creator or updater that specifies this field must have
   /// `iam.serviceAccounts.actAs` permission on the service account. If not
-  /// specified, the Pub/Sub \[service
-  /// agent\]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents),
+  /// specified, the Pub/Sub
+  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
   /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
   ///
   /// Optional.
@@ -2111,6 +2117,7 @@ class BigtableConfig {
 
   BigtableConfig({
     this.appProfileId,
+    this.columnFamilyMapping,
     this.serviceAccountEmail,
     this.table,
     this.writeMetadata,
@@ -2119,6 +2126,12 @@ class BigtableConfig {
   BigtableConfig.fromJson(core.Map json_)
     : this(
         appProfileId: json_['appProfileId'] as core.String?,
+        columnFamilyMapping: json_.containsKey('columnFamilyMapping')
+            ? ColumnFamilyMapping.fromJson(
+                json_['columnFamilyMapping']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
         table: json_['table'] as core.String?,
         writeMetadata: json_['writeMetadata'] as core.bool?,
@@ -2126,11 +2139,13 @@ class BigtableConfig {
 
   core.Map<core.String, core.dynamic> toJson() {
     final appProfileId = this.appProfileId;
+    final columnFamilyMapping = this.columnFamilyMapping;
     final serviceAccountEmail = this.serviceAccountEmail;
     final table = this.table;
     final writeMetadata = this.writeMetadata;
     return {
       'appProfileId': ?appProfileId,
+      'columnFamilyMapping': ?columnFamilyMapping,
       'serviceAccountEmail': ?serviceAccountEmail,
       'table': ?table,
       'writeMetadata': ?writeMetadata,
@@ -2386,6 +2401,63 @@ class CloudStorageConfig {
       'serviceAccountEmail': ?serviceAccountEmail,
       'textConfig': ?textConfig,
     };
+  }
+}
+
+/// Configuration for writing a Pub/Sub message to a Bigtable row with a
+/// user-defined key and writing to column families.
+///
+/// If this field is set: - The subscription messages must be formatted as JSON.
+/// - The row key mapping is configured in the `key_definition` section. - The
+/// top-level fields will be written either: - By default, they will be written
+/// to the `data` column family with the field name as the column qualifier. -
+/// But if the field name matches an existing column family (except for the
+/// default `data` column), then that field will be written to that column
+/// family, either as a scalar or its next level nested fields if it's a JSON
+/// object. - The cell timestamp will be the message publish timestamp. If the
+/// field is not set, the default behavior is to write: - row key: subscription
+/// name, message ID hash, and message ID delimited by `#`. - columns: message
+/// bytes written to a single column family `data` with an empty-string column
+/// qualifier. - cell timestamp: the message publish timestamp.
+class ColumnFamilyMapping {
+  /// If set, the row key is constructed from the given key fields and
+  /// delimiter.
+  ///
+  /// All key fields must be present in the message; otherwise, the message
+  /// remains in the subscription backlog.
+  ///
+  /// Optional.
+  DelimitedKey? delimitedKey;
+
+  /// If set, the row key is constructed from the field names of the table's
+  /// [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+  ///
+  /// Note that if the field is nullable in the structured row key, then it need
+  /// not be present in the message; `null` will be used instead.
+  ///
+  /// Optional.
+  RowKeySchema? rowKeySchema;
+
+  ColumnFamilyMapping({this.delimitedKey, this.rowKeySchema});
+
+  ColumnFamilyMapping.fromJson(core.Map json_)
+    : this(
+        delimitedKey: json_.containsKey('delimitedKey')
+            ? DelimitedKey.fromJson(
+                json_['delimitedKey'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+        rowKeySchema: json_.containsKey('rowKeySchema')
+            ? RowKeySchema.fromJson(
+                json_['rowKeySchema'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final delimitedKey = this.delimitedKey;
+    final rowKeySchema = this.rowKeySchema;
+    return {'delimitedKey': ?delimitedKey, 'rowKeySchema': ?rowKeySchema};
   }
 }
 
@@ -2678,6 +2750,9 @@ class DeadLetterPolicy {
 /// Default Analytics Hub data exchange, used for secured data sharing.
 typedef DefaultExchangeConfig = $Empty;
 
+/// Row key definition based on fields from the message.
+typedef DelimitedKey = $DelimitedKey;
+
 /// Defines the destination bigquery dataset.
 class DestinationDataset {
   /// A reference that identifies the destination dataset.
@@ -2828,6 +2903,27 @@ class DestinationPubSubSubscription {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Encryption configuration for the query template.
+class EncryptionConfig {
+  /// The KMS key used to encrypt the query template.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  EncryptionConfig({this.kmsKeyName});
+
+  EncryptionConfig.fromJson(core.Map json_)
+    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final kmsKeyName = this.kmsKeyName;
+    return {'kmsKeyName': ?kmsKeyName};
+  }
+}
 
 /// A policy that specifies the conditions for resource expiration (i.e.,
 /// automatic resource deletion).
@@ -3174,8 +3270,8 @@ class GooglePubsubV1Subscription {
   ///
   /// Immutable. Tag keys/values directly bound to this resource. For example:
   /// "123/environment": "production", "123/costCenter": "marketing" See
-  /// https://{$universe.dns_names.final_documentation_domain}/pubsub/docs/tags
-  /// for more information on using tags with Pub/Sub resources.
+  /// [Create and manage tags](https://cloud.google.com/pubsub/docs/tags) for
+  /// more information on using tags with Pub/Sub resources.
   ///
   /// Optional.
   core.Map<core.String, core.String>? tags;
@@ -4346,6 +4442,14 @@ class QueryTemplate {
   /// Optional.
   core.String? documentation;
 
+  /// Encryption configuration for the query template.
+  ///
+  /// If set, the customer-managed KMS key is used to encrypt the query template
+  /// definition body.
+  ///
+  /// Optional.
+  EncryptionConfig? encryptionConfiguration;
+
   /// The resource name of the QueryTemplate.
   ///
   /// e.g.
@@ -4398,6 +4502,7 @@ class QueryTemplate {
     this.description,
     this.displayName,
     this.documentation,
+    this.encryptionConfiguration,
     this.name,
     this.primaryContact,
     this.proposer,
@@ -4412,6 +4517,12 @@ class QueryTemplate {
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         documentation: json_['documentation'] as core.String?,
+        encryptionConfiguration: json_.containsKey('encryptionConfiguration')
+            ? EncryptionConfig.fromJson(
+                json_['encryptionConfiguration']
+                    as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         name: json_['name'] as core.String?,
         primaryContact: json_['primaryContact'] as core.String?,
         proposer: json_['proposer'] as core.String?,
@@ -4429,6 +4540,7 @@ class QueryTemplate {
     final description = this.description;
     final displayName = this.displayName;
     final documentation = this.documentation;
+    final encryptionConfiguration = this.encryptionConfiguration;
     final name = this.name;
     final primaryContact = this.primaryContact;
     final proposer = this.proposer;
@@ -4440,6 +4552,7 @@ class QueryTemplate {
       'description': ?description,
       'displayName': ?displayName,
       'documentation': ?documentation,
+      'encryptionConfiguration': ?encryptionConfiguration,
       'name': ?name,
       'primaryContact': ?primaryContact,
       'proposer': ?proposer,
@@ -4664,6 +4777,14 @@ class Routine {
     return {'definitionBody': ?definitionBody, 'routineType': ?routineType};
   }
 }
+
+/// Row key definition that reads the input message fields based on the field
+/// names of the table's
+/// [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+///
+/// Note that if the field is nullable in the structured row key, then it need
+/// not be present in the message; `null` will be used instead.
+typedef RowKeySchema = $Empty;
 
 /// Resource in this dataset that is selectively shared.
 class SelectedResource {

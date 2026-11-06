@@ -2684,6 +2684,10 @@ class ImageVersion {
   /// Whether it is impossible to create an environment with the image version.
   core.bool? creationDisabled;
 
+  /// Whether it is possible to create an environment in the `DEVELOPMENT` mode
+  /// with the image version.
+  core.bool? devModeSupported;
+
   /// The string identifier of the ImageVersion, in the form:
   /// "composer-x.y.z-airflow-a.b.c"
   core.String? imageVersionId;
@@ -2704,6 +2708,7 @@ class ImageVersion {
 
   ImageVersion({
     this.creationDisabled,
+    this.devModeSupported,
     this.imageVersionId,
     this.isDefault,
     this.releaseDate,
@@ -2714,6 +2719,7 @@ class ImageVersion {
   ImageVersion.fromJson(core.Map json_)
     : this(
         creationDisabled: json_['creationDisabled'] as core.bool?,
+        devModeSupported: json_['devModeSupported'] as core.bool?,
         imageVersionId: json_['imageVersionId'] as core.String?,
         isDefault: json_['isDefault'] as core.bool?,
         releaseDate: json_.containsKey('releaseDate')
@@ -2730,6 +2736,7 @@ class ImageVersion {
 
   core.Map<core.String, core.dynamic> toJson() {
     final creationDisabled = this.creationDisabled;
+    final devModeSupported = this.devModeSupported;
     final imageVersionId = this.imageVersionId;
     final isDefault = this.isDefault;
     final releaseDate = this.releaseDate;
@@ -2737,12 +2744,40 @@ class ImageVersion {
     final upgradeDisabled = this.upgradeDisabled;
     return {
       'creationDisabled': ?creationDisabled,
+      'devModeSupported': ?devModeSupported,
       'imageVersionId': ?imageVersionId,
       'isDefault': ?isDefault,
       'releaseDate': ?releaseDate,
       'supportedPythonVersions': ?supportedPythonVersions,
       'upgradeDisabled': ?upgradeDisabled,
     };
+  }
+}
+
+/// The image version an environment can be rolled back to.
+class ImageVersionRollbackTarget {
+  /// The image version the environment can be rolled back to.
+  ///
+  /// Output only.
+  core.String? imageVersion;
+
+  /// The last time when the environment was running this image version.
+  ///
+  /// Output only.
+  core.String? lastActiveTime;
+
+  ImageVersionRollbackTarget({this.imageVersion, this.lastActiveTime});
+
+  ImageVersionRollbackTarget.fromJson(core.Map json_)
+    : this(
+        imageVersion: json_['imageVersion'] as core.String?,
+        lastActiveTime: json_['lastActiveTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final imageVersion = this.imageVersion;
+    final lastActiveTime = this.lastActiveTime;
+    return {'imageVersion': ?imageVersion, 'lastActiveTime': ?lastActiveTime};
   }
 }
 
@@ -4002,6 +4037,15 @@ class SoftwareConfig {
   /// Optional.
   core.String? imageVersion;
 
+  /// The list of image versions the environment can be rolled back to, sorted
+  /// by last_active_time in descending order (most recent first).
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-3-airflow-*.*.*-build.* and newer.
+  ///
+  /// Output only.
+  core.List<ImageVersionRollbackTarget>? imageVersionRollbackTargets;
+
   /// Custom Python Package Index (PyPI) packages to be installed in the
   /// environment.
   ///
@@ -4052,6 +4096,7 @@ class SoftwareConfig {
     this.cloudDataLineageIntegration,
     this.envVariables,
     this.imageVersion,
+    this.imageVersionRollbackTargets,
     this.pypiPackages,
     this.pythonVersion,
     this.schedulerCount,
@@ -4077,6 +4122,14 @@ class SoftwareConfig {
             (json_['envVariables'] as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
         imageVersion: json_['imageVersion'] as core.String?,
+        imageVersionRollbackTargets:
+            (json_['imageVersionRollbackTargets'] as core.List?)
+                ?.map(
+                  (value) => ImageVersionRollbackTarget.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         pypiPackages:
             (json_['pypiPackages'] as core.Map<core.String, core.dynamic>?)
                 ?.map((key, value) => core.MapEntry(key, value as core.String)),
@@ -4091,6 +4144,7 @@ class SoftwareConfig {
     final cloudDataLineageIntegration = this.cloudDataLineageIntegration;
     final envVariables = this.envVariables;
     final imageVersion = this.imageVersion;
+    final imageVersionRollbackTargets = this.imageVersionRollbackTargets;
     final pypiPackages = this.pypiPackages;
     final pythonVersion = this.pythonVersion;
     final schedulerCount = this.schedulerCount;
@@ -4101,6 +4155,7 @@ class SoftwareConfig {
       'cloudDataLineageIntegration': ?cloudDataLineageIntegration,
       'envVariables': ?envVariables,
       'imageVersion': ?imageVersion,
+      'imageVersionRollbackTargets': ?imageVersionRollbackTargets,
       'pypiPackages': ?pypiPackages,
       'pythonVersion': ?pythonVersion,
       'schedulerCount': ?schedulerCount,

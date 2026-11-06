@@ -1438,6 +1438,11 @@ class Scope3FlightEmissions {
   /// Matches the flight identifiers in the request.
   Scope3FlightSegment? flight;
 
+  /// The model version under which the emissions were computed.
+  ///
+  /// Optional.
+  ModelVersion? modelVersion;
+
   /// The source of the emissions data.
   ///
   /// Optional.
@@ -1472,6 +1477,7 @@ class Scope3FlightEmissions {
 
   Scope3FlightEmissions({
     this.flight,
+    this.modelVersion,
     this.source,
     this.ttwEmissionsGramsPerPax,
     this.wttEmissionsGramsPerPax,
@@ -1485,6 +1491,11 @@ class Scope3FlightEmissions {
                 json_['flight'] as core.Map<core.String, core.dynamic>,
               )
             : null,
+        modelVersion: json_.containsKey('modelVersion')
+            ? ModelVersion.fromJson(
+                json_['modelVersion'] as core.Map<core.String, core.dynamic>,
+              )
+            : null,
         source: json_['source'] as core.String?,
         ttwEmissionsGramsPerPax:
             json_['ttwEmissionsGramsPerPax'] as core.String?,
@@ -1496,12 +1507,14 @@ class Scope3FlightEmissions {
 
   core.Map<core.String, core.dynamic> toJson() {
     final flight = this.flight;
+    final modelVersion = this.modelVersion;
     final source = this.source;
     final ttwEmissionsGramsPerPax = this.ttwEmissionsGramsPerPax;
     final wttEmissionsGramsPerPax = this.wttEmissionsGramsPerPax;
     final wtwEmissionsGramsPerPax = this.wtwEmissionsGramsPerPax;
     return {
       'flight': ?flight,
+      'modelVersion': ?modelVersion,
       'source': ?source,
       'ttwEmissionsGramsPerPax': ?ttwEmissionsGramsPerPax,
       'wttEmissionsGramsPerPax': ?wttEmissionsGramsPerPax,
@@ -1559,7 +1572,7 @@ class Scope3FlightSegment {
   /// Optional.
   core.String? destination;
 
-  /// Distance in kilometers, e.g. `2423`, from \[1, 2.5e16) km.
+  /// Distance in kilometers, e.g. `2423`, from \[`1`, `1e12`) km.
   ///
   /// This is used to match a flight to distance-based emissions when origin and
   /// destination are not provided or there are no matching typical flights.
