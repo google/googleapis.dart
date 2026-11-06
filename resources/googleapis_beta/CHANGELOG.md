@@ -6,6 +6,7 @@
 ### APIs
 
 - `datalabeling` - removed `v1beta1`
+- `sqladmin` - removed `v1beta4`
 
 ## 9.0.0
 

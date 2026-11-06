@@ -299,6 +299,7 @@ packages:
       - solar:v1
       - spanner:v1
       - speech:v1
+      - sqladmin:v1
       - storage:v1
       - storagebatchoperations:v1
       - storagetransfer:v1
@@ -382,7 +383,6 @@ packages:
       - prod_tt_sasportal:v1alpha1
       - recommendationengine:v1beta1
       - sasportal:v1alpha1
-      - sqladmin:v1beta4
       - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
 
 skip_tests:
@@ -550,7 +550,7 @@ skipped_apis:
   - servicenetworking:v1beta
   - serviceusage:v1beta1
   - speech:v1p1beta1
-  - sqladmin:v1
+  - sqladmin:v1beta4
   - sts:v1beta
   - texttospeech:v1beta1
   - threatintelligence:v1beta

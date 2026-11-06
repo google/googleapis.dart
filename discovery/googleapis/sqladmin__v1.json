@@ -254,7 +254,7 @@
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
-    "id": "sqladmin:v1beta4",
+    "id": "sqladmin:v1",
     "kind": "discovery#restDescription",
     "name": "sqladmin",
     "ownerDomain": "google.com",
@@ -264,7 +264,7 @@
     "rootUrl": "https://sqladmin.googleapis.com/",
     "servicePath": "",
     "title": "Cloud SQL Admin API",
-    "version": "v1beta4",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -343,11 +343,173 @@
         }
     },
     "resources": {
+        "Backups": {
+            "methods": {
+                "CreateBackup": {
+                    "description": "Creates a backup for a Cloud SQL instance. This API can be used only to create on-demand backups.",
+                    "flatPath": "v1/projects/{projectsId}/backups",
+                    "httpMethod": "POST",
+                    "id": "sql.Backups.CreateBackup",
+                    "parameterOrder": [
+                        "parent"
+                    ],
+                    "parameters": {
+                        "parent": {
+                            "description": "Required. The parent resource where this backup is created. Format: projects/{project}",
+                            "location": "path",
+                            "pattern": "^projects/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+parent}/backups",
+                    "request": {
+                        "$ref": "Backup"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
+                },
+                "DeleteBackup": {
+                    "description": "Deletes the backup.",
+                    "flatPath": "v1/projects/{projectsId}/backups/{backupsId}",
+                    "httpMethod": "DELETE",
+                    "id": "sql.Backups.DeleteBackup",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "Required. The name of the backup to delete. Format: projects/{project}/backups/{backup}",
+                            "location": "path",
+                            "pattern": "^projects/[^/]+/backups/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
+                },
+                "GetBackup": {
+                    "description": "Retrieves a resource containing information about a backup.",
+                    "flatPath": "v1/projects/{projectsId}/backups/{backupsId}",
+                    "httpMethod": "GET",
+                    "id": "sql.Backups.GetBackup",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "Required. The name of the backup to retrieve. Format: projects/{project}/backups/{backup}",
+                            "location": "path",
+                            "pattern": "^projects/[^/]+/backups/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "response": {
+                        "$ref": "Backup"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
+                },
+                "ListBackups": {
+                    "description": "Lists all backups associated with the project.",
+                    "flatPath": "v1/projects/{projectsId}/backups",
+                    "httpMethod": "GET",
+                    "id": "sql.Backups.ListBackups",
+                    "parameterOrder": [
+                        "parent"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "description": "Multiple filter queries are separated by spaces. For example, 'instance:abc AND type:FINAL, 'location:us', 'backupInterval.startTime>=1950-01-01T01:01:25.771Z'. You can filter by type, instance, backupInterval.startTime (creation time), or location.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The maximum number of backups to return per response. The service might return fewer backups than this value. If a value for this parameter isn't specified, then, at most, 500 backups are returned. The maximum value is 2,000. Any values that you set, which are greater than 2,000, are changed to 2,000.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "A page token, received from a previous `ListBackups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBackups` must match the call that provided the page token.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "parent": {
+                            "description": "Required. The parent that owns this collection of backups. Format: projects/{project}",
+                            "location": "path",
+                            "pattern": "^projects/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+parent}/backups",
+                    "response": {
+                        "$ref": "ListBackupsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
+                },
+                "UpdateBackup": {
+                    "description": "Updates the retention period and description of the backup. You can use this API to update final backups only.",
+                    "flatPath": "v1/projects/{projectsId}/backups/{backupsId}",
+                    "httpMethod": "PATCH",
+                    "id": "sql.Backups.UpdateBackup",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}.",
+                            "location": "path",
+                            "pattern": "^projects/[^/]+/backups/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "updateMask": {
+                            "description": "The list of fields that you can update. You can update only the description and retention period of the final backup.",
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "request": {
+                        "$ref": "Backup"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
+                }
+            }
+        },
         "backupRuns": {
             "methods": {
                 "delete": {
                     "description": "Deletes the backup taken by a backup run.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/backupRuns/{id}",
                     "httpMethod": "DELETE",
                     "id": "sql.backupRuns.delete",
                     "parameterOrder": [
@@ -357,7 +519,7 @@
                     ],
                     "parameters": {
                         "id": {
-                            "description": "The ID of the backup run to delete. To find a backup run ID, use the [list](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/backupRuns/list) method.",
+                            "description": "The ID of the backup run to delete. To find a backup run ID, use the [list](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/backupRuns/list) method.",
                             "format": "int64",
                             "location": "path",
                             "required": true,
@@ -376,7 +538,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}",
+                    "path": "v1/projects/{project}/instances/{instance}/backupRuns/{id}",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -387,7 +549,7 @@
                 },
                 "get": {
                     "description": "Retrieves a resource containing information about a backup run.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/backupRuns/{id}",
                     "httpMethod": "GET",
                     "id": "sql.backupRuns.get",
                     "parameterOrder": [
@@ -416,7 +578,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}",
+                    "path": "v1/projects/{project}/instances/{instance}/backupRuns/{id}",
                     "response": {
                         "$ref": "BackupRun"
                     },
@@ -427,7 +589,7 @@
                 },
                 "insert": {
                     "description": "Creates a new backup run on demand.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/backupRuns",
                     "httpMethod": "POST",
                     "id": "sql.backupRuns.insert",
                     "parameterOrder": [
@@ -448,7 +610,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns",
+                    "path": "v1/projects/{project}/instances/{instance}/backupRuns",
                     "request": {
                         "$ref": "BackupRun"
                     },
@@ -462,7 +624,7 @@
                 },
                 "list": {
                     "description": "Lists all backup runs associated with the project or a given instance and configuration in the reverse chronological order of the backup initiation time.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/backupRuns",
                     "httpMethod": "GET",
                     "id": "sql.backupRuns.list",
                     "parameterOrder": [
@@ -494,171 +656,9 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns",
+                    "path": "v1/projects/{project}/instances/{instance}/backupRuns",
                     "response": {
                         "$ref": "BackupRunsListResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/sqlservice.admin"
-                    ]
-                }
-            }
-        },
-        "backups": {
-            "methods": {
-                "createBackup": {
-                    "description": "Creates a backup for a Cloud SQL instance. This API can be used only to create on-demand backups.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}/backups",
-                    "httpMethod": "POST",
-                    "id": "sql.backups.createBackup",
-                    "parameterOrder": [
-                        "parent"
-                    ],
-                    "parameters": {
-                        "parent": {
-                            "description": "Required. The parent resource where this backup is created. Format: projects/{project}",
-                            "location": "path",
-                            "pattern": "^projects/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "sql/v1beta4/{+parent}/backups",
-                    "request": {
-                        "$ref": "Backup"
-                    },
-                    "response": {
-                        "$ref": "Operation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/sqlservice.admin"
-                    ]
-                },
-                "deleteBackup": {
-                    "description": "Deletes the backup.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}/backups/{backupsId}",
-                    "httpMethod": "DELETE",
-                    "id": "sql.backups.deleteBackup",
-                    "parameterOrder": [
-                        "name"
-                    ],
-                    "parameters": {
-                        "name": {
-                            "description": "Required. The name of the backup to delete. Format: projects/{project}/backups/{backup}",
-                            "location": "path",
-                            "pattern": "^projects/[^/]+/backups/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "sql/v1beta4/{+name}",
-                    "response": {
-                        "$ref": "Operation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/sqlservice.admin"
-                    ]
-                },
-                "getBackup": {
-                    "description": "Retrieves a resource containing information about a backup.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}/backups/{backupsId}",
-                    "httpMethod": "GET",
-                    "id": "sql.backups.getBackup",
-                    "parameterOrder": [
-                        "name"
-                    ],
-                    "parameters": {
-                        "name": {
-                            "description": "Required. The name of the backup to retrieve. Format: projects/{project}/backups/{backup}",
-                            "location": "path",
-                            "pattern": "^projects/[^/]+/backups/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "sql/v1beta4/{+name}",
-                    "response": {
-                        "$ref": "Backup"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/sqlservice.admin"
-                    ]
-                },
-                "listBackups": {
-                    "description": "Lists all backups associated with the project.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}/backups",
-                    "httpMethod": "GET",
-                    "id": "sql.backups.listBackups",
-                    "parameterOrder": [
-                        "parent"
-                    ],
-                    "parameters": {
-                        "filter": {
-                            "description": "Multiple filter queries are separated by spaces. For example, 'instance:abc AND type:FINAL, 'location:us', 'backupInterval.startTime>=1950-01-01T01:01:25.771Z'. You can filter by type, instance, backupInterval.startTime (creation time), or location.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "pageSize": {
-                            "description": "The maximum number of backups to return per response. The service might return fewer backups than this value. If a value for this parameter isn't specified, then, at most, 500 backups are returned. The maximum value is 2,000. Any values that you set, which are greater than 2,000, are changed to 2,000.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        },
-                        "pageToken": {
-                            "description": "A page token, received from a previous `ListBackups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBackups` must match the call that provided the page token.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "parent": {
-                            "description": "Required. The parent that owns this collection of backups. Format: projects/{project}",
-                            "location": "path",
-                            "pattern": "^projects/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "sql/v1beta4/{+parent}/backups",
-                    "response": {
-                        "$ref": "ListBackupsResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/sqlservice.admin"
-                    ]
-                },
-                "updateBackup": {
-                    "description": "Updates the retention period and the description of the backup. You can use this API to update final backups only.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}/backups/{backupsId}",
-                    "httpMethod": "PATCH",
-                    "id": "sql.backups.updateBackup",
-                    "parameterOrder": [
-                        "name"
-                    ],
-                    "parameters": {
-                        "name": {
-                            "description": "Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}.",
-                            "location": "path",
-                            "pattern": "^projects/[^/]+/backups/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "updateMask": {
-                            "description": "The list of fields that you can update. You can update only the description and retention period of the final backup.",
-                            "format": "google-fieldmask",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "sql/v1beta4/{+name}",
-                    "request": {
-                        "$ref": "Backup"
-                    },
-                    "response": {
-                        "$ref": "Operation"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
@@ -670,8 +670,8 @@
         "blueGreenDeployments": {
             "methods": {
                 "create": {
-                    "description": "Creates a blue-green deployment under a given project and location. This deployment provisions a synchronized green environment (target instance) from a blue production environment (source instance), facilitating updates like major version upgrades on the green instance without impacting the blue instance.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments",
+                    "description": "Creates a blue-green deployment under a given project and location.",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments",
                     "httpMethod": "POST",
                     "id": "sql.blueGreenDeployments.create",
                     "parameterOrder": [
@@ -679,7 +679,7 @@
                     ],
                     "parameters": {
                         "blueGreenDeploymentId": {
-                            "description": "Required. The ID to use for the blue-green deployment, which will become the final component of the deployment's resource name.",
+                            "description": "Required. The ID to use for the blue-green deployment, which will become the final component of the deployment's resource name. The ID must be unique within the given project and location and between 2-63 characters.",
                             "location": "query",
                             "type": "string"
                         },
@@ -691,7 +691,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/{+parent}/blueGreenDeployments",
+                    "path": "v1/{+parent}/blueGreenDeployments",
                     "request": {
                         "$ref": "BlueGreenDeployment"
                     },
@@ -704,8 +704,8 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes a blue-green deployment, including metadata and underlying resources based on the deployment state. If issued before switchover, this deletes the green instance. If issued after switchover, this deletes the old blue instance (source instance) if the `delete_old_source` field in the request is set to true. All blue-green deployment metadata is permanently deleted. Resources deleted as a result of this operation are no longer accessible and can't be restored.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments/{blueGreenDeploymentsId}",
+                    "description": "Deletes a blue-green deployment.",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments/{blueGreenDeploymentsId}",
                     "httpMethod": "DELETE",
                     "id": "sql.blueGreenDeployments.delete",
                     "parameterOrder": [
@@ -725,7 +725,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/{+name}",
+                    "path": "v1/{+name}",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -736,7 +736,7 @@
                 },
                 "get": {
                     "description": "Retrieves a blue-green deployment resource under a given project and location.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments/{blueGreenDeploymentsId}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments/{blueGreenDeploymentsId}",
                     "httpMethod": "GET",
                     "id": "sql.blueGreenDeployments.get",
                     "parameterOrder": [
@@ -766,7 +766,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/{+name}",
+                    "path": "v1/{+name}",
                     "response": {
                         "$ref": "BlueGreenDeployment"
                     },
@@ -777,7 +777,7 @@
                 },
                 "list": {
                     "description": "Lists blue-green deployments under a given project.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments",
                     "httpMethod": "GET",
                     "id": "sql.blueGreenDeployments.list",
                     "parameterOrder": [
@@ -795,7 +795,7 @@
                             "type": "string"
                         },
                         "pageSize": {
-                            "description": "Optional. The maximum number of deployments to return.",
+                            "description": "Optional. The maximum number of deployments to return. The service may return fewer deployments than this value. If unspecified, at most 500 deployments are returned. The maximum value is 1000; values above 1000 are treated as 1000.",
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
@@ -813,7 +813,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/{+parent}/blueGreenDeployments",
+                    "path": "v1/{+parent}/blueGreenDeployments",
                     "response": {
                         "$ref": "ListBlueGreenDeploymentsResponse"
                     },
@@ -824,7 +824,7 @@
                 },
                 "switchover": {
                     "description": "Switches over to green instance for a blue-green deployment.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments/{blueGreenDeploymentsId}:switchover",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments/{blueGreenDeploymentsId}:switchover",
                     "httpMethod": "POST",
                     "id": "sql.blueGreenDeployments.switchover",
                     "parameterOrder": [
@@ -839,7 +839,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/{+name}:switchover",
+                    "path": "v1/{+name}:switchover",
                     "request": {
                         "$ref": "SwitchoverBlueGreenDeploymentRequest"
                     },
@@ -857,7 +857,7 @@
             "methods": {
                 "generateEphemeralCert": {
                     "description": "Generates a short-lived X509 certificate containing the provided public key and signed by a private key specific to the target instance. Users may use the certificate to authenticate as themselves when connecting to the database.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}:generateEphemeralCert",
+                    "flatPath": "v1/projects/{project}/instances/{instance}:generateEphemeralCert",
                     "httpMethod": "POST",
                     "id": "sql.connect.generateEphemeral",
                     "parameterOrder": [
@@ -878,7 +878,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}:generateEphemeralCert",
+                    "path": "v1/projects/{project}/instances/{instance}:generateEphemeralCert",
                     "request": {
                         "$ref": "GenerateEphemeralCertRequest"
                     },
@@ -892,7 +892,7 @@
                 },
                 "get": {
                     "description": "Retrieves connect settings about a Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/connectSettings",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/connectSettings",
                     "httpMethod": "GET",
                     "id": "sql.connect.get",
                     "parameterOrder": [
@@ -919,7 +919,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/connectSettings",
+                    "path": "v1/projects/{project}/instances/{instance}/connectSettings",
                     "response": {
                         "$ref": "ConnectSettings"
                     },
@@ -930,7 +930,7 @@
                 },
                 "resolve": {
                     "description": "Retrieves connect settings about a Cloud SQL instance using the instance DNS name.",
-                    "flatPath": "sql/v1beta4/locations/{location}/dns/{dnsName}:resolveConnectSettings",
+                    "flatPath": "v1/locations/{location}/dns/{dnsName}:resolveConnectSettings",
                     "httpMethod": "GET",
                     "id": "sql.connect.resolve",
                     "parameterOrder": [
@@ -951,7 +951,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/locations/{location}/dns/{dnsName}:resolveConnectSettings",
+                    "path": "v1/locations/{location}/dns/{dnsName}:resolveConnectSettings",
                     "response": {
                         "$ref": "ConnectSettings"
                     },
@@ -966,7 +966,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes a database from a Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/databases/{database}",
                     "httpMethod": "DELETE",
                     "id": "sql.databases.delete",
                     "parameterOrder": [
@@ -999,7 +999,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
+                    "path": "v1/projects/{project}/instances/{instance}/databases/{database}",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -1010,7 +1010,7 @@
                 },
                 "get": {
                     "description": "Retrieves a resource containing information about a database inside a Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/databases/{database}",
                     "httpMethod": "GET",
                     "id": "sql.databases.get",
                     "parameterOrder": [
@@ -1043,7 +1043,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
+                    "path": "v1/projects/{project}/instances/{instance}/databases/{database}",
                     "response": {
                         "$ref": "Database"
                     },
@@ -1054,7 +1054,7 @@
                 },
                 "insert": {
                     "description": "Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't modify the default character set and collation.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/databases",
                     "httpMethod": "POST",
                     "id": "sql.databases.insert",
                     "parameterOrder": [
@@ -1080,7 +1080,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases",
+                    "path": "v1/projects/{project}/instances/{instance}/databases",
                     "request": {
                         "$ref": "Database"
                     },
@@ -1094,7 +1094,7 @@
                 },
                 "list": {
                     "description": "Lists databases in the specified Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/databases",
                     "httpMethod": "GET",
                     "id": "sql.databases.list",
                     "parameterOrder": [
@@ -1120,7 +1120,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases",
+                    "path": "v1/projects/{project}/instances/{instance}/databases",
                     "response": {
                         "$ref": "DatabasesListResponse"
                     },
@@ -1131,7 +1131,7 @@
                 },
                 "patch": {
                     "description": "Partially updates a resource containing information about a database inside a Cloud SQL instance. This method supports patch semantics.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/databases/{database}",
                     "httpMethod": "PATCH",
                     "id": "sql.databases.patch",
                     "parameterOrder": [
@@ -1164,7 +1164,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
+                    "path": "v1/projects/{project}/instances/{instance}/databases/{database}",
                     "request": {
                         "$ref": "Database"
                     },
@@ -1178,7 +1178,7 @@
                 },
                 "update": {
                     "description": "Updates a resource containing information about a database inside a Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/databases/{database}",
                     "httpMethod": "PUT",
                     "id": "sql.databases.update",
                     "parameterOrder": [
@@ -1211,7 +1211,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
+                    "path": "v1/projects/{project}/instances/{instance}/databases/{database}",
                     "request": {
                         "$ref": "Database"
                     },
@@ -1229,7 +1229,7 @@
             "methods": {
                 "list": {
                     "description": "Lists all available database flags for Cloud SQL instances.",
-                    "flatPath": "sql/v1beta4/flags",
+                    "flatPath": "v1/flags",
                     "httpMethod": "GET",
                     "id": "sql.flags.list",
                     "parameterOrder": [],
@@ -1255,7 +1255,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/flags",
+                    "path": "v1/flags",
                     "response": {
                         "$ref": "FlagsListResponse"
                     },
@@ -1270,7 +1270,7 @@
             "methods": {
                 "ListEntraIdCertificates": {
                     "description": "Lists all versions of EntraID certificates for the specified instance. There can be up to three sets of certificates listed: the certificate that is currently in use, a future that has been added but not yet used to sign a certificate, and a certificate that has been rotated out.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/listEntraIdCertificates",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/listEntraIdCertificates",
                     "httpMethod": "GET",
                     "id": "sql.instances.ListEntraIdCertificates",
                     "parameterOrder": [
@@ -1296,7 +1296,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/listEntraIdCertificates",
+                    "path": "v1/projects/{project}/instances/{instance}/listEntraIdCertificates",
                     "response": {
                         "$ref": "InstancesListEntraIdCertificatesResponse"
                     },
@@ -1307,7 +1307,7 @@
                 },
                 "ListServerCertificates": {
                     "description": "Lists all versions of server certificates and certificate authorities (CAs) for the specified instance. There can be up to three sets of certs listed: the certificate that is currently in use, a future that has been added but not yet used to sign a certificate, and a certificate that has been rotated out. For instances not using Certificate Authority Service (CAS) server CA, use ListServerCas instead.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/listServerCertificates",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/listServerCertificates",
                     "httpMethod": "GET",
                     "id": "sql.instances.ListServerCertificates",
                     "parameterOrder": [
@@ -1333,7 +1333,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/listServerCertificates",
+                    "path": "v1/projects/{project}/instances/{instance}/listServerCertificates",
                     "response": {
                         "$ref": "InstancesListServerCertificatesResponse"
                     },
@@ -1343,8 +1343,8 @@
                     ]
                 },
                 "RotateEntraIdCertificate": {
-                    "description": "Rotates the Entra Id certificate version to one previously added with the addEntraIdCertificate method.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/rotateEntraIdCertificate",
+                    "description": "Rotates the server certificate version to one previously added with the addEntraIdCertificate method.",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/rotateEntraIdCertificate",
                     "httpMethod": "POST",
                     "id": "sql.instances.RotateEntraIdCertificate",
                     "parameterOrder": [
@@ -1370,7 +1370,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/rotateEntraIdCertificate",
+                    "path": "v1/projects/{project}/instances/{instance}/rotateEntraIdCertificate",
                     "request": {
                         "$ref": "InstancesRotateEntraIdCertificateRequest"
                     },
@@ -1384,7 +1384,7 @@
                 },
                 "RotateServerCertificate": {
                     "description": "Rotates the server certificate version to one previously added with the addServerCertificate method. For instances not using Certificate Authority Service (CAS) server CA, use RotateServerCa instead.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/rotateServerCertificate",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/rotateServerCertificate",
                     "httpMethod": "POST",
                     "id": "sql.instances.RotateServerCertificate",
                     "parameterOrder": [
@@ -1410,7 +1410,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/rotateServerCertificate",
+                    "path": "v1/projects/{project}/instances/{instance}/rotateServerCertificate",
                     "request": {
                         "$ref": "InstancesRotateServerCertificateRequest"
                     },
@@ -1424,7 +1424,7 @@
                 },
                 "acquireSsrsLease": {
                     "description": "Acquire a lease for the setup of SQL Server Reporting Services (SSRS).",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/acquireSsrsLease",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/acquireSsrsLease",
                     "httpMethod": "POST",
                     "id": "sql.instances.acquireSsrsLease",
                     "parameterOrder": [
@@ -1444,13 +1444,13 @@
                             "type": "string"
                         },
                         "project": {
-                            "description": "Required. ID of the project that contains the instance (Example: project-id).",
+                            "description": "Required. Project ID of the project that contains the instance (Example: project-id).",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/acquireSsrsLease",
+                    "path": "v1/projects/{project}/instances/{instance}/acquireSsrsLease",
                     "request": {
                         "$ref": "InstancesAcquireSsrsLeaseRequest"
                     },
@@ -1464,7 +1464,7 @@
                 },
                 "addEntraIdCertificate": {
                     "description": "Adds a new Entra ID certificate for the specified instance. If an Entra ID certificate was previously added but never used in a certificate rotation, this operation replaces that version.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/addEntraIdCertificate",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/addEntraIdCertificate",
                     "httpMethod": "POST",
                     "id": "sql.instances.addEntraIdCertificate",
                     "parameterOrder": [
@@ -1490,7 +1490,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/addEntraIdCertificate",
+                    "path": "v1/projects/{project}/instances/{instance}/addEntraIdCertificate",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -1500,8 +1500,8 @@
                     ]
                 },
                 "addServerCa": {
-                    "description": "Add a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a certificate rotation. If a CA version was previously added but never used in a certificate rotation, this operation replaces that version. There cannot be more than one CA version waiting to be rotated in. For instances that have enabled Certificate Authority Service (CAS) based server CA, use AddServerCertificate to add a new server certificate.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/addServerCa",
+                    "description": "Adds a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a certificate rotation. If a CA version was previously added but never used in a certificate rotation, this operation replaces that version. There cannot be more than one CA version waiting to be rotated in. For instances that have enabled Certificate Authority Service (CAS) based server CA, use AddServerCertificate to add a new server certificate.",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/addServerCa",
                     "httpMethod": "POST",
                     "id": "sql.instances.addServerCa",
                     "parameterOrder": [
@@ -1527,7 +1527,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/addServerCa",
+                    "path": "v1/projects/{project}/instances/{instance}/addServerCa",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -1538,7 +1538,7 @@
                 },
                 "addServerCertificate": {
                     "description": "Add a new trusted server certificate version for the specified instance using Certificate Authority Service (CAS) server CA. Required to prepare for a certificate rotation. If a server certificate version was previously added but never used in a certificate rotation, this operation replaces that version. There cannot be more than one certificate version waiting to be rotated in. For instances not using CAS server CA, use AddServerCa instead.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/addServerCertificate",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/addServerCertificate",
                     "httpMethod": "POST",
                     "id": "sql.instances.addServerCertificate",
                     "parameterOrder": [
@@ -1547,7 +1547,7 @@
                     ],
                     "parameters": {
                         "instance": {
-                            "description": "Required. Cloud SQL instance ID. This does not include the project ID.",
+                            "description": "Cloud SQL instance ID. This does not include the project ID.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1558,13 +1558,13 @@
                             "type": "string"
                         },
                         "project": {
-                            "description": "Required. Project ID of the project that contains the instance.",
+                            "description": "Project ID of the project that contains the instance.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/addServerCertificate",
+                    "path": "v1/projects/{project}/instances/{instance}/addServerCertificate",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -1575,7 +1575,7 @@
                 },
                 "clone": {
                     "description": "Creates a Cloud SQL instance as a clone of the source instance. Using this operation might cause your instance to restart.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/clone",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/clone",
                     "httpMethod": "POST",
                     "id": "sql.instances.clone",
                     "parameterOrder": [
@@ -1584,7 +1584,7 @@
                     ],
                     "parameters": {
                         "instance": {
-                            "description": "The ID of the Cloud SQL instance to be cloned (source). This does not include the project ID.",
+                            "description": "Required. The ID of the Cloud SQL instance to be cloned (source). This does not include the project ID.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1595,13 +1595,13 @@
                             "type": "string"
                         },
                         "project": {
-                            "description": "Project ID of the source Cloud SQL instance.",
+                            "description": "Required. Project ID of the source Cloud SQL instance.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/clone",
+                    "path": "v1/projects/{project}/instances/{instance}/clone",
                     "request": {
                         "$ref": "InstancesCloneRequest"
                     },
@@ -1615,7 +1615,7 @@
                 },
                 "delete": {
                     "description": "Deletes a Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}",
                     "httpMethod": "DELETE",
                     "id": "sql.instances.delete",
                     "parameterOrder": [
@@ -1663,7 +1663,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}",
+                    "path": "v1/projects/{project}/instances/{instance}",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -1674,7 +1674,7 @@
                 },
                 "demote": {
                     "description": "Demotes an existing standalone instance to be a Cloud SQL read replica for an external database server.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/demote",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/demote",
                     "httpMethod": "POST",
                     "id": "sql.instances.demote",
                     "parameterOrder": [
@@ -1683,7 +1683,7 @@
                     ],
                     "parameters": {
                         "instance": {
-                            "description": "Required. The name of the Cloud SQL instance.",
+                            "description": "Required. Cloud SQL instance name.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1694,13 +1694,13 @@
                             "type": "string"
                         },
                         "project": {
-                            "description": "Required. The project ID of the project that contains the instance.",
+                            "description": "Required. ID of the project that contains the instance.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/demote",
+                    "path": "v1/projects/{project}/instances/{instance}/demote",
                     "request": {
                         "$ref": "InstancesDemoteRequest"
                     },
@@ -1714,7 +1714,7 @@
                 },
                 "demoteMaster": {
                     "description": "Demotes the stand-alone instance to be a Cloud SQL read replica for an external database server.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/demoteMaster",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/demoteMaster",
                     "httpMethod": "POST",
                     "id": "sql.instances.demoteMaster",
                     "parameterOrder": [
@@ -1740,7 +1740,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/demoteMaster",
+                    "path": "v1/projects/{project}/instances/{instance}/demoteMaster",
                     "request": {
                         "$ref": "InstancesDemoteMasterRequest"
                     },
@@ -1754,7 +1754,7 @@
                 },
                 "executeSql": {
                     "description": "Execute SQL statements.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/executeSql",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/executeSql",
                     "httpMethod": "POST",
                     "id": "sql.instances.executeSql",
                     "parameterOrder": [
@@ -1780,7 +1780,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/executeSql",
+                    "path": "v1/projects/{project}/instances/{instance}/executeSql",
                     "request": {
                         "$ref": "ExecuteSqlPayload"
                     },
@@ -1794,7 +1794,7 @@
                 },
                 "export": {
                     "description": "Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL dump or CSV file.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/export",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/export",
                     "httpMethod": "POST",
                     "id": "sql.instances.export",
                     "parameterOrder": [
@@ -1803,7 +1803,7 @@
                     ],
                     "parameters": {
                         "instance": {
-                            "description": "The Cloud SQL instance ID. This doesn't include the project ID.",
+                            "description": "Cloud SQL instance ID. This does not include the project ID.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1820,7 +1820,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/export",
+                    "path": "v1/projects/{project}/instances/{instance}/export",
                     "request": {
                         "$ref": "InstancesExportRequest"
                     },
@@ -1833,7 +1833,7 @@
                 },
                 "failover": {
                     "description": "Initiates a manual failover of a high availability (HA) primary instance to a standby instance, which becomes the primary instance. Users are then rerouted to the new primary. For more information, see the [Overview of high availability](https://cloud.google.com/sql/docs/mysql/high-availability) page in the Cloud SQL documentation. If using Legacy HA (MySQL only), this causes the instance to failover to its failover replica instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/failover",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/failover",
                     "httpMethod": "POST",
                     "id": "sql.instances.failover",
                     "parameterOrder": [
@@ -1859,7 +1859,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/failover",
+                    "path": "v1/projects/{project}/instances/{instance}/failover",
                     "request": {
                         "$ref": "InstancesFailoverRequest"
                     },
@@ -1873,7 +1873,7 @@
                 },
                 "get": {
                     "description": "Retrieves a resource containing information about a Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}",
                     "httpMethod": "GET",
                     "id": "sql.instances.get",
                     "parameterOrder": [
@@ -1882,7 +1882,7 @@
                     ],
                     "parameters": {
                         "instance": {
-                            "description": "Database instance ID. This does not include the project ID.",
+                            "description": "Required. Database instance ID. This does not include the project ID.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1893,13 +1893,13 @@
                             "type": "string"
                         },
                         "project": {
-                            "description": "Project ID of the project that contains the instance.",
+                            "description": "Required. Project ID of the project that contains the instance.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}",
+                    "path": "v1/projects/{project}/instances/{instance}",
                     "response": {
                         "$ref": "DatabaseInstance"
                     },
@@ -1910,7 +1910,7 @@
                 },
                 "import": {
                     "description": "Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud Storage.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/import",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/import",
                     "httpMethod": "POST",
                     "id": "sql.instances.import",
                     "parameterOrder": [
@@ -1936,7 +1936,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/import",
+                    "path": "v1/projects/{project}/instances/{instance}/import",
                     "request": {
                         "$ref": "InstancesImportRequest"
                     },
@@ -1949,7 +1949,7 @@
                 },
                 "insert": {
                     "description": "Creates a new Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances",
+                    "flatPath": "v1/projects/{project}/instances",
                     "httpMethod": "POST",
                     "id": "sql.instances.insert",
                     "parameterOrder": [
@@ -1968,7 +1968,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances",
+                    "path": "v1/projects/{project}/instances",
                     "request": {
                         "$ref": "DatabaseInstance"
                     },
@@ -1982,7 +1982,7 @@
                 },
                 "list": {
                     "description": "Lists instances under a given project.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances",
+                    "flatPath": "v1/projects/{project}/instances",
                     "httpMethod": "GET",
                     "id": "sql.instances.list",
                     "parameterOrder": [
@@ -2017,7 +2017,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances",
+                    "path": "v1/projects/{project}/instances",
                     "response": {
                         "$ref": "InstancesListResponse"
                     },
@@ -2028,7 +2028,7 @@
                 },
                 "listServerCas": {
                     "description": "Lists all of the trusted Certificate Authorities (CAs) for the specified instance. There can be up to three CAs listed: the CA that was used to sign the certificate that is currently in use, a CA that has been added but not yet used to sign a certificate, and a CA used to sign a certificate that has previously rotated out.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/listServerCas",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/listServerCas",
                     "httpMethod": "GET",
                     "id": "sql.instances.listServerCas",
                     "parameterOrder": [
@@ -2054,7 +2054,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/listServerCas",
+                    "path": "v1/projects/{project}/instances/{instance}/listServerCas",
                     "response": {
                         "$ref": "InstancesListServerCasResponse"
                     },
@@ -2065,7 +2065,7 @@
                 },
                 "patch": {
                     "description": "Partially updates settings of a Cloud SQL instance by merging the request with the current configuration. This method supports patch semantics.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}",
                     "httpMethod": "PATCH",
                     "id": "sql.instances.patch",
                     "parameterOrder": [
@@ -2101,7 +2101,7 @@
                             "type": "boolean"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}",
+                    "path": "v1/projects/{project}/instances/{instance}",
                     "request": {
                         "$ref": "DatabaseInstance"
                     },
@@ -2115,7 +2115,7 @@
                 },
                 "pointInTimeRestore": {
                     "description": "Point in time restore for an instance managed by Google Cloud Backup and Disaster Recovery.",
-                    "flatPath": "sql/v1beta4/projects/{projectsId}:pointInTimeRestore",
+                    "flatPath": "v1/projects/{projectsId}:pointInTimeRestore",
                     "httpMethod": "POST",
                     "id": "sql.instances.pointInTimeRestore",
                     "parameterOrder": [
@@ -2130,7 +2130,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/{+parent}:pointInTimeRestore",
+                    "path": "v1/{+parent}:pointInTimeRestore",
                     "request": {
                         "$ref": "PointInTimeRestoreContext"
                     },
@@ -2144,7 +2144,7 @@
                 },
                 "preCheckMajorVersionUpgrade": {
                     "description": "Execute MVU Pre-checks",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade",
                     "httpMethod": "POST",
                     "id": "sql.instances.preCheckMajorVersionUpgrade",
                     "parameterOrder": [
@@ -2170,7 +2170,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade",
+                    "path": "v1/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade",
                     "request": {
                         "$ref": "InstancesPreCheckMajorVersionUpgradeRequest"
                     },
@@ -2184,7 +2184,7 @@
                 },
                 "promoteReplica": {
                     "description": "Promotes the read replica instance to be an independent Cloud SQL primary instance. Using this operation might cause your instance to restart.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/promoteReplica",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/promoteReplica",
                     "httpMethod": "POST",
                     "id": "sql.instances.promoteReplica",
                     "parameterOrder": [
@@ -2215,7 +2215,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/promoteReplica",
+                    "path": "v1/projects/{project}/instances/{instance}/promoteReplica",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -2226,7 +2226,7 @@
                 },
                 "reencrypt": {
                     "description": "Reencrypt CMEK instance with latest key version.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/reencrypt",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/reencrypt",
                     "httpMethod": "POST",
                     "id": "sql.instances.reencrypt",
                     "parameterOrder": [
@@ -2252,7 +2252,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/reencrypt",
+                    "path": "v1/projects/{project}/instances/{instance}/reencrypt",
                     "request": {
                         "$ref": "InstancesReencryptRequest"
                     },
@@ -2266,7 +2266,7 @@
                 },
                 "releaseSsrsLease": {
                     "description": "Release a lease for the setup of SQL Server Reporting Services (SSRS).",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/releaseSsrsLease",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/releaseSsrsLease",
                     "httpMethod": "POST",
                     "id": "sql.instances.releaseSsrsLease",
                     "parameterOrder": [
@@ -2275,7 +2275,7 @@
                     ],
                     "parameters": {
                         "instance": {
-                            "description": "Required. The Cloud SQL instance ID. This doesn't include the project ID. It's composed of lowercase letters, numbers, and hyphens, and it must start with a letter. The total length must be 98 characters or less (Example: instance-id).",
+                            "description": "Required. The Cloud SQL instance ID. This doesn't include the project ID. The instance ID contains lowercase letters, numbers, and hyphens, and it must start with a letter. This ID can have a maximum length of 98 characters.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2286,13 +2286,13 @@
                             "type": "string"
                         },
                         "project": {
-                            "description": "Required. The ID of the project that contains the instance (Example: project-id).",
+                            "description": "Required. The project ID that contains the instance.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/releaseSsrsLease",
+                    "path": "v1/projects/{project}/instances/{instance}/releaseSsrsLease",
                     "response": {
                         "$ref": "SqlInstancesReleaseSsrsLeaseResponse"
                     },
@@ -2303,7 +2303,7 @@
                 },
                 "resetSslConfig": {
                     "description": "Deletes all client certificates and generates a new server SSL certificate for the instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/resetSslConfig",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/resetSslConfig",
                     "httpMethod": "POST",
                     "id": "sql.instances.resetSslConfig",
                     "parameterOrder": [
@@ -2344,7 +2344,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/resetSslConfig",
+                    "path": "v1/projects/{project}/instances/{instance}/resetSslConfig",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -2355,7 +2355,7 @@
                 },
                 "restart": {
                     "description": "Restarts a Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/restart",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/restart",
                     "httpMethod": "POST",
                     "id": "sql.instances.restart",
                     "parameterOrder": [
@@ -2381,7 +2381,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/restart",
+                    "path": "v1/projects/{project}/instances/{instance}/restart",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -2392,7 +2392,7 @@
                 },
                 "restoreBackup": {
                     "description": "Restores a backup of a Cloud SQL instance. Using this operation might cause your instance to restart.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/restoreBackup",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/restoreBackup",
                     "httpMethod": "POST",
                     "id": "sql.instances.restoreBackup",
                     "parameterOrder": [
@@ -2418,7 +2418,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/restoreBackup",
+                    "path": "v1/projects/{project}/instances/{instance}/restoreBackup",
                     "request": {
                         "$ref": "InstancesRestoreBackupRequest"
                     },
@@ -2432,7 +2432,7 @@
                 },
                 "rotateServerCa": {
                     "description": "Rotates the server certificate to one signed by the Certificate Authority (CA) version previously added with the addServerCA method. For instances that have enabled Certificate Authority Service (CAS) based server CA, use RotateServerCertificate to rotate the server certificate.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/rotateServerCa",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/rotateServerCa",
                     "httpMethod": "POST",
                     "id": "sql.instances.rotateServerCa",
                     "parameterOrder": [
@@ -2458,7 +2458,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/rotateServerCa",
+                    "path": "v1/projects/{project}/instances/{instance}/rotateServerCa",
                     "request": {
                         "$ref": "InstancesRotateServerCaRequest"
                     },
@@ -2472,7 +2472,7 @@
                 },
                 "startReplica": {
                     "description": "Starts the replication in the read replica instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/startReplica",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/startReplica",
                     "httpMethod": "POST",
                     "id": "sql.instances.startReplica",
                     "parameterOrder": [
@@ -2498,7 +2498,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/startReplica",
+                    "path": "v1/projects/{project}/instances/{instance}/startReplica",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -2509,7 +2509,7 @@
                 },
                 "stopReplica": {
                     "description": "Stops the replication in the read replica instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/stopReplica",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/stopReplica",
                     "httpMethod": "POST",
                     "id": "sql.instances.stopReplica",
                     "parameterOrder": [
@@ -2535,7 +2535,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/stopReplica",
+                    "path": "v1/projects/{project}/instances/{instance}/stopReplica",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -2546,7 +2546,7 @@
                 },
                 "switchover": {
                     "description": "Switches over from the primary instance to the DR replica instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/switchover",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/switchover",
                     "httpMethod": "POST",
                     "id": "sql.instances.switchover",
                     "parameterOrder": [
@@ -2578,7 +2578,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/switchover",
+                    "path": "v1/projects/{project}/instances/{instance}/switchover",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -2589,7 +2589,7 @@
                 },
                 "truncateLog": {
                     "description": "Truncate MySQL general and slow query log tables MySQL only.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/truncateLog",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/truncateLog",
                     "httpMethod": "POST",
                     "id": "sql.instances.truncateLog",
                     "parameterOrder": [
@@ -2615,7 +2615,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/truncateLog",
+                    "path": "v1/projects/{project}/instances/{instance}/truncateLog",
                     "request": {
                         "$ref": "InstancesTruncateLogRequest"
                     },
@@ -2629,7 +2629,7 @@
                 },
                 "update": {
                     "description": "Updates settings of a Cloud SQL instance. Using this operation might cause your instance to restart.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}",
                     "httpMethod": "PUT",
                     "id": "sql.instances.update",
                     "parameterOrder": [
@@ -2655,7 +2655,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}",
+                    "path": "v1/projects/{project}/instances/{instance}",
                     "request": {
                         "$ref": "DatabaseInstance"
                     },
@@ -2672,8 +2672,8 @@
         "operations": {
             "methods": {
                 "cancel": {
-                    "description": "Cancels an instance operation that has been performed on an instance. Ordinarily, this method name should be `CancelSqlOperation`.",
-                    "flatPath": "sql/v1beta4/projects/{project}/operations/{operation}/cancel",
+                    "description": "Cancels an instance operation that has been performed on an instance.",
+                    "flatPath": "v1/projects/{project}/operations/{operation}/cancel",
                     "httpMethod": "POST",
                     "id": "sql.operations.cancel",
                     "parameterOrder": [
@@ -2699,7 +2699,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/operations/{operation}/cancel",
+                    "path": "v1/projects/{project}/operations/{operation}/cancel",
                     "response": {
                         "$ref": "Empty"
                     },
@@ -2710,7 +2710,7 @@
                 },
                 "get": {
                     "description": "Retrieves an instance operation that has been performed on an instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/operations/{operation}",
+                    "flatPath": "v1/projects/{project}/operations/{operation}",
                     "httpMethod": "GET",
                     "id": "sql.operations.get",
                     "parameterOrder": [
@@ -2724,19 +2724,19 @@
                             "type": "string"
                         },
                         "operation": {
-                            "description": "Instance operation ID.",
+                            "description": "Required. Instance operation ID.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "project": {
-                            "description": "Project ID of the project that contains the instance.",
+                            "description": "Required. Project ID of the project that contains the instance.",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/operations/{operation}",
+                    "path": "v1/projects/{project}/operations/{operation}",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -2747,7 +2747,7 @@
                 },
                 "list": {
                     "description": "Lists all instance operations that have been performed on the given Cloud SQL instance in the reverse chronological order of the start time.",
-                    "flatPath": "sql/v1beta4/projects/{project}/operations",
+                    "flatPath": "v1/projects/{project}/operations",
                     "httpMethod": "GET",
                     "id": "sql.operations.list",
                     "parameterOrder": [
@@ -2782,7 +2782,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/operations",
+                    "path": "v1/projects/{project}/operations",
                     "response": {
                         "$ref": "OperationsListResponse"
                     },
@@ -2799,7 +2799,7 @@
                     "methods": {
                         "getDiskShrinkConfig": {
                             "description": "Get Disk Shrink Config for a given instance.",
-                            "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/getDiskShrinkConfig",
+                            "flatPath": "v1/projects/{project}/instances/{instance}/getDiskShrinkConfig",
                             "httpMethod": "GET",
                             "id": "sql.projects.instances.getDiskShrinkConfig",
                             "parameterOrder": [
@@ -2825,7 +2825,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "sql/v1beta4/projects/{project}/instances/{instance}/getDiskShrinkConfig",
+                            "path": "v1/projects/{project}/instances/{instance}/getDiskShrinkConfig",
                             "response": {
                                 "$ref": "SqlInstancesGetDiskShrinkConfigResponse"
                             },
@@ -2836,7 +2836,7 @@
                         },
                         "getLatestRecoveryTime": {
                             "description": "Get Latest Recovery Time for a given instance.",
-                            "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/getLatestRecoveryTime",
+                            "flatPath": "v1/projects/{project}/instances/{instance}/getLatestRecoveryTime",
                             "httpMethod": "GET",
                             "id": "sql.projects.instances.getLatestRecoveryTime",
                             "parameterOrder": [
@@ -2868,7 +2868,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "sql/v1beta4/projects/{project}/instances/{instance}/getLatestRecoveryTime",
+                            "path": "v1/projects/{project}/instances/{instance}/getLatestRecoveryTime",
                             "response": {
                                 "$ref": "SqlInstancesGetLatestRecoveryTimeResponse"
                             },
@@ -2879,7 +2879,7 @@
                         },
                         "performDiskShrink": {
                             "description": "Perform Disk Shrink on primary instance.",
-                            "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/performDiskShrink",
+                            "flatPath": "v1/projects/{project}/instances/{instance}/performDiskShrink",
                             "httpMethod": "POST",
                             "id": "sql.projects.instances.performDiskShrink",
                             "parameterOrder": [
@@ -2905,7 +2905,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "sql/v1beta4/projects/{project}/instances/{instance}/performDiskShrink",
+                            "path": "v1/projects/{project}/instances/{instance}/performDiskShrink",
                             "request": {
                                 "$ref": "PerformDiskShrinkContext"
                             },
@@ -2919,7 +2919,7 @@
                         },
                         "rescheduleMaintenance": {
                             "description": "Reschedules the maintenance on the given instance.",
-                            "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/rescheduleMaintenance",
+                            "flatPath": "v1/projects/{project}/instances/{instance}/rescheduleMaintenance",
                             "httpMethod": "POST",
                             "id": "sql.projects.instances.rescheduleMaintenance",
                             "parameterOrder": [
@@ -2945,7 +2945,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "sql/v1beta4/projects/{project}/instances/{instance}/rescheduleMaintenance",
+                            "path": "v1/projects/{project}/instances/{instance}/rescheduleMaintenance",
                             "request": {
                                 "$ref": "SqlInstancesRescheduleMaintenanceRequestBody"
                             },
@@ -2959,7 +2959,7 @@
                         },
                         "resetReplicaSize": {
                             "description": "Reset Replica Size to primary instance disk size.",
-                            "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/resetReplicaSize",
+                            "flatPath": "v1/projects/{project}/instances/{instance}/resetReplicaSize",
                             "httpMethod": "POST",
                             "id": "sql.projects.instances.resetReplicaSize",
                             "parameterOrder": [
@@ -2980,7 +2980,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "sql/v1beta4/projects/{project}/instances/{instance}/resetReplicaSize",
+                            "path": "v1/projects/{project}/instances/{instance}/resetReplicaSize",
                             "request": {
                                 "$ref": "SqlInstancesResetReplicaSizeRequest"
                             },
@@ -2994,7 +2994,7 @@
                         },
                         "startExternalSync": {
                             "description": "Start External primary instance migration.",
-                            "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/startExternalSync",
+                            "flatPath": "v1/projects/{project}/instances/{instance}/startExternalSync",
                             "httpMethod": "POST",
                             "id": "sql.projects.instances.startExternalSync",
                             "parameterOrder": [
@@ -3015,7 +3015,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "sql/v1beta4/projects/{project}/instances/{instance}/startExternalSync",
+                            "path": "v1/projects/{project}/instances/{instance}/startExternalSync",
                             "request": {
                                 "$ref": "SqlInstancesStartExternalSyncRequest"
                             },
@@ -3029,7 +3029,7 @@
                         },
                         "verifyExternalSyncSettings": {
                             "description": "Verify External primary instance external sync settings.",
-                            "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/verifyExternalSyncSettings",
+                            "flatPath": "v1/projects/{project}/instances/{instance}/verifyExternalSyncSettings",
                             "httpMethod": "POST",
                             "id": "sql.projects.instances.verifyExternalSyncSettings",
                             "parameterOrder": [
@@ -3050,7 +3050,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "sql/v1beta4/projects/{project}/instances/{instance}/verifyExternalSyncSettings",
+                            "path": "v1/projects/{project}/instances/{instance}/verifyExternalSyncSettings",
                             "request": {
                                 "$ref": "SqlInstancesVerifyExternalSyncSettingsRequest"
                             },
@@ -3070,7 +3070,7 @@
             "methods": {
                 "createEphemeral": {
                     "description": "Generates a short-lived X509 certificate containing the provided public key and signed by a private key specific to the target instance. Users may use the certificate to authenticate as themselves when connecting to the database.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/createEphemeral",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/createEphemeral",
                     "httpMethod": "POST",
                     "id": "sql.sslCerts.createEphemeral",
                     "parameterOrder": [
@@ -3096,7 +3096,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/createEphemeral",
+                    "path": "v1/projects/{project}/instances/{instance}/createEphemeral",
                     "request": {
                         "$ref": "SslCertsCreateEphemeralRequest"
                     },
@@ -3110,7 +3110,7 @@
                 },
                 "delete": {
                     "description": "Deletes the SSL certificate. For First Generation instances, the certificate remains valid until the instance is restarted.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
                     "httpMethod": "DELETE",
                     "id": "sql.sslCerts.delete",
                     "parameterOrder": [
@@ -3138,7 +3138,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
+                    "path": "v1/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -3149,7 +3149,7 @@
                 },
                 "get": {
                     "description": "Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
                     "httpMethod": "GET",
                     "id": "sql.sslCerts.get",
                     "parameterOrder": [
@@ -3177,7 +3177,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
+                    "path": "v1/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
                     "response": {
                         "$ref": "SslCert"
                     },
@@ -3188,7 +3188,7 @@
                 },
                 "insert": {
                     "description": "Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/sslCerts",
                     "httpMethod": "POST",
                     "id": "sql.sslCerts.insert",
                     "parameterOrder": [
@@ -3209,7 +3209,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts",
+                    "path": "v1/projects/{project}/instances/{instance}/sslCerts",
                     "request": {
                         "$ref": "SslCertsInsertRequest"
                     },
@@ -3223,7 +3223,7 @@
                 },
                 "list": {
                     "description": "Lists all of the current SSL certificates for the instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/sslCerts",
                     "httpMethod": "GET",
                     "id": "sql.sslCerts.list",
                     "parameterOrder": [
@@ -3244,7 +3244,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts",
+                    "path": "v1/projects/{project}/instances/{instance}/sslCerts",
                     "response": {
                         "$ref": "SslCertsListResponse"
                     },
@@ -3258,8 +3258,8 @@
         "tiers": {
             "methods": {
                 "list": {
-                    "description": "Lists all available machine types (tiers) for Cloud SQL, for example, `db-custom-1-3840`. For related information, see [Pricing](/sql/pricing).",
-                    "flatPath": "sql/v1beta4/projects/{project}/tiers",
+                    "description": "Lists all available machine types (tiers) for Cloud SQL, for example, `db-custom-1-3840`. For more information, see https://cloud.google.com/sql/pricing.",
+                    "flatPath": "v1/projects/{project}/tiers",
                     "httpMethod": "GET",
                     "id": "sql.tiers.list",
                     "parameterOrder": [
@@ -3273,7 +3273,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/tiers",
+                    "path": "v1/projects/{project}/tiers",
                     "response": {
                         "$ref": "TiersListResponse"
                     },
@@ -3288,7 +3288,7 @@
             "methods": {
                 "delete": {
                     "description": "Deletes a user from a Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/users",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/users",
                     "httpMethod": "DELETE",
                     "id": "sql.users.delete",
                     "parameterOrder": [
@@ -3324,7 +3324,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/users",
+                    "path": "v1/projects/{project}/instances/{instance}/users",
                     "response": {
                         "$ref": "Operation"
                     },
@@ -3335,7 +3335,7 @@
                 },
                 "get": {
                     "description": "Retrieves a resource containing information about a user.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/users/{name}",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/users/{name}",
                     "httpMethod": "GET",
                     "id": "sql.users.get",
                     "parameterOrder": [
@@ -3373,7 +3373,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/users/{name}",
+                    "path": "v1/projects/{project}/instances/{instance}/users/{name}",
                     "response": {
                         "$ref": "User"
                     },
@@ -3384,7 +3384,7 @@
                 },
                 "insert": {
                     "description": "Creates a new user in a Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/users",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/users",
                     "httpMethod": "POST",
                     "id": "sql.users.insert",
                     "parameterOrder": [
@@ -3410,7 +3410,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/users",
+                    "path": "v1/projects/{project}/instances/{instance}/users",
                     "request": {
                         "$ref": "User"
                     },
@@ -3424,7 +3424,7 @@
                 },
                 "list": {
                     "description": "Lists users in the specified Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/users",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/users",
                     "httpMethod": "GET",
                     "id": "sql.users.list",
                     "parameterOrder": [
@@ -3450,7 +3450,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/users",
+                    "path": "v1/projects/{project}/instances/{instance}/users",
                     "response": {
                         "$ref": "UsersListResponse"
                     },
@@ -3461,7 +3461,7 @@
                 },
                 "update": {
                     "description": "Updates an existing user in a Cloud SQL instance.",
-                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/users",
+                    "flatPath": "v1/projects/{project}/instances/{instance}/users",
                     "httpMethod": "PUT",
                     "id": "sql.users.update",
                     "parameterOrder": [
@@ -3519,7 +3519,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/users",
+                    "path": "v1/projects/{project}/instances/{instance}/users",
                     "request": {
                         "$ref": "User"
                     },
@@ -3564,12 +3564,12 @@
             "id": "AcquireSsrsLeaseContext",
             "properties": {
                 "duration": {
-                    "description": "Lease duration needed for the SSRS setup.",
+                    "description": "Lease duration needed for SSRS setup.",
                     "format": "google-duration",
                     "type": "string"
                 },
                 "reportDatabase": {
-                    "description": "The report database to be used for the SSRS setup.",
+                    "description": "The report database to be used for SSRS setup.",
                     "type": "string"
                 },
                 "serviceLogin": {
@@ -3865,12 +3865,12 @@
                     "readOnly": true
                 },
                 "expiryTime": {
-                    "description": "Backup expiration time. A UTC timestamp of when this resource expired.",
+                    "description": "Backup expiration time. A UTC timestamp of when this backup expired.",
                     "format": "google-datetime",
                     "type": "string"
                 },
                 "instance": {
-                    "description": "The name of the database instance.",
+                    "description": "The name of the source database instance.",
                     "type": "string"
                 },
                 "instanceDeletionTime": {
@@ -3881,7 +3881,7 @@
                 },
                 "instanceSettings": {
                     "$ref": "DatabaseInstance",
-                    "description": "Optional. Output only. Instance setting of the source instance that's associated with this backup.",
+                    "description": "Optional. Output only. The instance setting of the source instance that's associated with this backup.",
                     "readOnly": true
                 },
                 "kind": {
@@ -3930,7 +3930,7 @@
                     "type": "string"
                 },
                 "state": {
-                    "description": "Output only. The state of this backup.",
+                    "description": "Output only. The status of this backup.",
                     "enum": [
                         "SQL_BACKUP_STATE_UNSPECIFIED",
                         "ENQUEUED",
@@ -3963,7 +3963,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Output only. The type of this backup. The type can be \"AUTOMATED\", \"ON_DEMAND\", or “FINAL”.",
+                    "description": "Output only. The type of this backup. The type can be \"AUTOMATED\", \"ON_DEMAND\" or “FINAL”.",
                     "enum": [
                         "SQL_BACKUP_TYPE_UNSPECIFIED",
                         "AUTOMATED",
@@ -3974,7 +3974,7 @@
                         "This is an unknown backup type.",
                         "The backup schedule triggers a backup automatically.",
                         "The user triggers a backup manually.",
-                        "The backup that's created when the instance is deleted."
+                        "The backup created when instance is deleted."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -4048,7 +4048,7 @@
                     "type": "integer"
                 },
                 "transactionalLogStorageState": {
-                    "description": "Output only. This value contains the storage location of transactional logs for the database for point-in-time recovery.",
+                    "description": "Output only. This value contains the storage location of transactional logs used to perform point-in-time recovery (PITR) for the database.",
                     "enum": [
                         "TRANSACTIONAL_LOG_STORAGE_STATE_UNSPECIFIED",
                         "DISK",
@@ -4491,11 +4491,11 @@
             "type": "object"
         },
         "BlueGreenDeployment": {
-            "description": "A `BlueGreenDeployment` resource represents a Cloud SQL blue-green deployment setup. It orchestrates the lifecycle of creating a synchronized \"green\" environment from a \"blue\" production environment, performing updates, and managing the switchover process to minimize downtime.",
+            "description": "A `BlueGreenDeployment` resource represents a Cloud SQL blue-green deployment setup.",
             "id": "BlueGreenDeployment",
             "properties": {
                 "createTime": {
-                    "description": "Output only. The time when the deployment was created.",
+                    "description": "Output only. The time when the deployment was created. Example: `2024-01-01T00:00:00Z`",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -4514,11 +4514,11 @@
                     "readOnly": true
                 },
                 "description": {
-                    "description": "Optional. User-provided description for the deployment.",
+                    "description": "Optional. User-provided description for the deployment. The description can be up to 255 characters long.",
                     "type": "string"
                 },
                 "errorDetail": {
-                    "description": "Output only. Provides an error message with details on why switchover is not possible.",
+                    "description": "Output only. Provides details on why switchover is not possible. This field is empty unless a switchover attempt failed or the state is `SWITCHOVER_NOT_READY`. Example: \"The target database version does not match the source instance database version.\"",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -4527,21 +4527,12 @@
                     "readOnly": true,
                     "type": "string"
                 },
-                "pairedNodes": {
-                    "deprecated": true,
-                    "description": "Output only. Deprecated: Use deployment_mappings instead. Output only. A list representing the pairs of source and target instances in the deployment.",
-                    "items": {
-                        "$ref": "SourceTargetPairedNode"
-                    },
-                    "readOnly": true,
-                    "type": "array"
-                },
                 "requestedConfig": {
                     "$ref": "RequestedConfig",
                     "description": "Optional. Immutable. Optional on create, and immutable. The configuration intended for the target instance(s) when the deployment was created."
                 },
                 "sourceInstance": {
-                    "description": "Required. Immutable. The instance ID of the source instance (the \"blue\" instance). The value for this field does not include the project ID, for example, `my-instance-id`. This field is immutable.",
+                    "description": "Required. Immutable. Required on create, and immutable. The full resource name of the source instance (the \"blue\" instance). Format: projects/{project}/instances/{instance}",
                     "type": "string"
                 },
                 "state": {
@@ -4556,7 +4547,7 @@
                         "DELETING"
                     ],
                     "enumDescriptions": [
-                        "The state of the deployment is unknown.",
+                        "The default value. This value is used if the state is omitted or unknown.",
                         "The deployment is being provisioned.",
                         "The deployment is ready for switchover.",
                         "The deployment is not ready for switchover.",
@@ -4568,14 +4559,9 @@
                     "type": "string"
                 },
                 "switchoverTargetInstance": {
-                    "description": "Output only. Details about the primary target instance (the \"Green\" instance) that will be promoted during switchover.",
+                    "description": "Output only. The full resource name of the primary target instance (the \"green\" instance) that will be promoted during switchover. This field is always populated once the deployment is created. Format: projects/{project}/instances/{instance}",
                     "readOnly": true,
                     "type": "string"
-                },
-                "targetConfig": {
-                    "$ref": "TargetConfig",
-                    "deprecated": true,
-                    "description": "Optional. Immutable. Deprecated: Use requested_config instead. The configuration intended for the target instance(s) when the deployment was created. This field is immutable."
                 }
             },
             "type": "object"
@@ -4637,7 +4623,7 @@
                     "type": "array"
                 },
                 "destinationInstanceName": {
-                    "description": "Name of the Cloud SQL instance to be created as a clone.",
+                    "description": "Required. Name of the Cloud SQL instance to be created as a clone.",
                     "type": "string"
                 },
                 "destinationNetwork": {
@@ -4663,11 +4649,11 @@
                     "type": "string"
                 },
                 "preferredSecondaryZone": {
-                    "description": "Optional. Copy clone and point-in-time recovery clone of a regional instance in the specified zones. If not specified, clone to the same secondary zone as the source instance. This value cannot be the same as the preferred_zone field.",
+                    "description": "Optional. Copy clone and point-in-time recovery clone of a regional instance in the specified zones. If not specified, clone to the same secondary zone as the source instance. This value cannot be the same as the preferred_zone field. This field applies to all DB types.",
                     "type": "string"
                 },
                 "preferredZone": {
-                    "description": "Optional. Copy clone and point-in-time recovery clone of an instance to the specified zone. If no zone is specified, clone to the same primary zone as the source instance.",
+                    "description": "Optional. Copy clone and point-in-time recovery clone of an instance to the specified zone. If no zone is specified, clone to the same primary zone as the source instance. This field applies to all DB types.",
                     "type": "string"
                 },
                 "sourceInstanceDeletionTime": {
@@ -4694,11 +4680,11 @@
             "type": "object"
         },
         "ConfigDiff": {
-            "description": "Represents a specific configuration difference between Blue and Green instances.",
+            "description": "Represents a specific configuration difference between blue and green instances.",
             "id": "ConfigDiff",
             "properties": {
                 "field": {
-                    "description": "Output only. The name of the field that differs, fully-qualified. Example: settings.tier",
+                    "description": "Output only. The name of the field that differs in the blue and green instances, fully-qualified. Example: `settings.tier`",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -4787,7 +4773,7 @@
                     "type": "array"
                 },
                 "databaseVersion": {
-                    "description": "The database engine type and version. The `databaseVersion` field cannot be changed after instance creation. MySQL instances: `MYSQL_8_0`, `MYSQL_5_7` (default), or `MYSQL_5_6`. PostgreSQL instances: `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11` or `POSTGRES_12` (default), `POSTGRES_13`, or `POSTGRES_14`. SQL Server instances: `SQLSERVER_2017_STANDARD` (default), `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`, or `SQLSERVER_2019_WEB`.",
+                    "description": "The database engine type and version. The `databaseVersion` field cannot be changed after instance creation. MySQL instances: `MYSQL_8_0`, `MYSQL_5_7` (default), or `MYSQL_5_6`. PostgreSQL instances: `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12` (default), `POSTGRES_13`, or `POSTGRES_14`. SQL Server instances: `SQLSERVER_2017_STANDARD` (default), `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`, or `SQLSERVER_2019_WEB`.",
                     "enum": [
                         "SQL_DATABASE_VERSION_UNSPECIFIED",
                         "MYSQL_5_1",
@@ -5021,7 +5007,7 @@
                     "type": "boolean"
                 },
                 "region": {
-                    "description": "The cloud region for the instance. e.g. `us-central1`, `europe-west1`. The region cannot be changed after instance creation.",
+                    "description": "The cloud region for the instance. For example, `us-central1`, `europe-west1`. The region cannot be changed after instance creation.",
                     "type": "string"
                 },
                 "serverCaCert": {
@@ -5037,7 +5023,7 @@
                         "CUSTOMER_MANAGED_CAS_CA"
                     ],
                     "enumDescriptions": [
-                        "CA mode is unspecified. It is effectively the same as `GOOGLE_MANAGED_INTERNAL_CA`.",
+                        "CA mode is unknown.",
                         "Google-managed self-signed internal CA.",
                         "Google-managed regional CA part of root CA hierarchy hosted on Google Cloud's Certificate Authority Service (CAS).",
                         "Customer-managed CA hosted on Google Cloud's Certificate Authority Service (CAS)."
@@ -5554,7 +5540,7 @@
                 },
                 "replicationCluster": {
                     "$ref": "ReplicationCluster",
-                    "description": "A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance experiences regional failure. Applicable to MySQL and PostgreSQL."
+                    "description": "Optional. A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance experiences regional failure. Applicable to MySQL and PostgreSQL."
                 },
                 "rootPassword": {
                     "description": "Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.",
@@ -5586,7 +5572,7 @@
                     "description": "SSL configuration."
                 },
                 "serviceAccountEmailAddress": {
-                    "description": "The service account email address assigned to the instance. \\This property is read-only.",
+                    "description": "The service account email address assigned to the instance.\\This property is read-only.",
                     "type": "string"
                 },
                 "settings": {
@@ -5594,7 +5580,6 @@
                     "description": "The user settings."
                 },
                 "sqlNetworkArchitecture": {
-                    "description": "The SQL network architecture for the instance.",
                     "enum": [
                         "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED",
                         "NEW_NETWORK_ARCHITECTURE",
@@ -5721,7 +5706,7 @@
                     "type": "string"
                 },
                 "sourceRepresentativeInstanceName": {
-                    "description": "Required. The name of the instance which acts as an on-premises primary instance in the replication setup.",
+                    "description": "Required. The name of the instance which acts as the on-premises primary instance in the replication setup.",
                     "type": "string"
                 }
             },
@@ -5801,11 +5786,11 @@
             "type": "object"
         },
         "DenyMaintenancePeriod": {
-            "description": "Deny Maintenance Periods. This specifies a date range during when all CSA rollout will be denied.",
+            "description": "Deny maintenance Periods. This specifies a date range during when all CSA rollout will be denied.",
             "id": "DenyMaintenancePeriod",
             "properties": {
                 "endDate": {
-                    "description": "\"deny maintenance period\" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01",
+                    "description": "\"deny maintenance period\" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01",
                     "type": "string"
                 },
                 "startDate": {
@@ -5830,7 +5815,7 @@
                     "type": "string"
                 },
                 "errorMessage": {
-                    "description": "Output only. Optional Error details if the task state is FAILED.",
+                    "description": "Output only. Optional error details if the task state is `FAILED`.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -5871,10 +5856,10 @@
                     ],
                     "enumDescriptions": [
                         "The default value. This value is used if the type is omitted.",
-                        "Creating target instance.",
-                        "e.g., Major Version Upgrade on Target.",
-                        "Promoting Target, Demoting Source for this pair.",
-                        "The task is to delete deployment.",
+                        "Provisions the green environment, which includes creating the target instance.",
+                        "Upgrades the green environment, for example, performing a major version upgrade on the target instance.",
+                        "Promotes the target instance and then demotes the source instance for this pair.",
+                        "Deletes the blue-green deployment, including underlying resources.",
                         "Post-switchover operations, including cleaning up resources of the old instance, taking final backups, and updating metadata."
                     ],
                     "readOnly": true,
@@ -6006,7 +5991,7 @@
                     "type": "string"
                 },
                 "autoIamAuthn": {
-                    "description": "Optional. When set to true, the API caller identity associated with the request is used for database authentication. The API caller must be an IAM user in the database.",
+                    "description": "Optional. When set to `true`, the API caller identity associated with the request is used for database authentication. The API caller must be an IAM user in the database.",
                     "type": "boolean"
                 },
                 "database": {
@@ -6028,7 +6013,7 @@
                     "type": "string"
                 },
                 "passwordSecretVersion": {
-                    "description": "Optional. The resource name of the Secret Manager secret holding the password for the user to log into the database. The secret should be created using the regional endpoint (for API) or from the Regional Secrets page (for UI), and stored in the same region as the Cloud SQL instance. The expected resource name format is `projects/{project}/locations/{location}/secrets/{secret}/versions/{secret_version}`. This field is used together with the `user` field. The secret resource name will not be stored.",
+                    "description": "Optional. The resource name of the Secret Manager secret holding the password for the user to log into the database. The secret should be created using the regional endpoint (for API) or from the Regional Secrets page (for UI), and stored in the same region as the Cloud SQL instance. The expected resource name format is `projects/{project}/locations/{location}/secrets/{secret}/versions/{secret_version}`. Used together with the `user` field. The secret resource name will not be stored.",
                     "type": "string"
                 },
                 "rowLimit": {
@@ -6066,7 +6051,7 @@
                                 "Default type.",
                                 "Full backup.",
                                 "Differential backup.",
-                                "SQL Server Transaction Log"
+                                "Transaction Log backup"
                             ],
                             "type": "string"
                         },
@@ -6215,7 +6200,7 @@
                     "description": "Optional. Export parameters specific to SQL Server TDE certificates",
                     "properties": {
                         "certificatePath": {
-                            "description": "Required. Path to the TDE certificate public key in the form gs://bucketName/fileName. The instance must have write access to the location. Applicable only for SQL Server instances.",
+                            "description": "Required. Path to the TDE certificate public key in the form gs://bucketName/fileName. The instance must have write access to the bucket. Applicable only for SQL Server instances.",
                             "type": "string"
                         },
                         "name": {
@@ -6520,12 +6505,12 @@
                     "type": "string"
                 },
                 "recommendedIntValue": {
-                    "description": "Recommended flag value in integer format for UI display.",
+                    "description": "Recommended int value in integer format for UI display.",
                     "format": "int64",
                     "type": "string"
                 },
                 "recommendedStringValue": {
-                    "description": "Recommended flag value in string format for UI display.",
+                    "description": "Recommended string value in string format for UI display.",
                     "type": "string"
                 },
                 "requiresRestart": {
@@ -6533,7 +6518,7 @@
                     "type": "boolean"
                 },
                 "type": {
-                    "description": "The type of the flag. Flags are typed to being `BOOLEAN`, `STRING`, `INTEGER` or `NONE`. `NONE` is used for flags which do not take a value, such as `skip_grant_tables`.",
+                    "description": "The type of the flag. Flags are typed to being `BOOLEAN`, `STRING`, `INTEGER` or `NONE`. `NONE` is used for flags that do not take a value, such as `skip_grant_tables`.",
                     "enum": [
                         "SQL_FLAG_TYPE_UNSPECIFIED",
                         "BOOLEAN",
@@ -6658,7 +6643,7 @@
                     "description": "Import parameters specific to SQL Server .BAK files",
                     "properties": {
                         "bakType": {
-                            "description": "Type of the bak content, FULL or DIFF.",
+                            "description": "Type of the bak content, FULL or DIFF",
                             "enum": [
                                 "BAK_TYPE_UNSPECIFIED",
                                 "FULL",
@@ -6669,7 +6654,7 @@
                                 "Default type.",
                                 "Full backup.",
                                 "Differential backup.",
-                                "SQL Server Transaction Log"
+                                "Transaction Log backup"
                             ],
                             "type": "string"
                         },
@@ -6756,7 +6741,7 @@
                     "type": "string"
                 },
                 "fileType": {
-                    "description": "The file type for the specified uri. * `SQL`: The file contains SQL statements. * `CSV`: The file contains CSV data. * `BAK`: The file contains backup data for a SQL Server instance.",
+                    "description": "The file type for the specified uri.\\`SQL`: The file contains SQL statements. \\`CSV`: The file contains CSV data.",
                     "enum": [
                         "SQL_FILE_TYPE_UNSPECIFIED",
                         "SQL",
@@ -6811,7 +6796,7 @@
                     "type": "object"
                 },
                 "tdeImportOptions": {
-                    "description": "Optional. Import parameters specific to SQL Server .TDE files Import parameters specific to SQL Server TDE certificates",
+                    "description": "Optional. Import parameters specific to SQL Server TDE certificates",
                     "properties": {
                         "certificatePath": {
                             "description": "Required. Path to the TDE certificate public key in the form gs://bucketName/fileName. The instance must have read access to the file. Applicable only for SQL Server instances.",
@@ -6892,7 +6877,7 @@
             "type": "object"
         },
         "InstancesAcquireSsrsLeaseRequest": {
-            "description": "Request to acquire an SSRS lease for an instance.",
+            "description": "Request to acquire a lease for SSRS.",
             "id": "InstancesAcquireSsrsLeaseRequest",
             "properties": {
                 "acquireSsrsLeaseContext": {
@@ -6908,7 +6893,7 @@
             "properties": {
                 "cloneContext": {
                     "$ref": "CloneContext",
-                    "description": "Contains details about the clone operation."
+                    "description": "Required. Contains details about the clone operation."
                 }
             },
             "type": "object"
@@ -6930,7 +6915,7 @@
             "properties": {
                 "demoteContext": {
                     "$ref": "DemoteContext",
-                    "description": "Required. This context is used to demote an existing standalone instance to be a Cloud SQL read replica for an external database server."
+                    "description": "Required. Contains details about the demote operation."
                 }
             },
             "type": "object"
@@ -7041,7 +7026,7 @@
             "type": "object"
         },
         "InstancesListServerCertificatesResponse": {
-            "description": "Instances ListServerCertificatess response.",
+            "description": "Instances ListServerCertificates response.",
             "id": "InstancesListServerCertificatesResponse",
             "properties": {
                 "activeVersion": {
@@ -7126,18 +7111,18 @@
             "type": "object"
         },
         "InstancesRotateEntraIdCertificateRequest": {
-            "description": "Rotate Entra ID Certificate request.",
+            "description": "Rotate Entra ID certificate request.",
             "id": "InstancesRotateEntraIdCertificateRequest",
             "properties": {
                 "rotateEntraIdCertificateContext": {
                     "$ref": "RotateEntraIdCertificateContext",
-                    "description": "Optional. Contains details about the rotate Entra ID certificate operation."
+                    "description": "Optional. Contains details about the rotate server certificate operation."
                 }
             },
             "type": "object"
         },
         "InstancesRotateServerCaRequest": {
-            "description": "Rotate Server CA request.",
+            "description": "Rotate server CA request.",
             "id": "InstancesRotateServerCaRequest",
             "properties": {
                 "rotateServerCaContext": {
@@ -7148,12 +7133,12 @@
             "type": "object"
         },
         "InstancesRotateServerCertificateRequest": {
-            "description": "Rotate Server Certificate request.",
+            "description": "Rotate server certificate request.",
             "id": "InstancesRotateServerCertificateRequest",
             "properties": {
                 "rotateServerCertificateContext": {
                     "$ref": "RotateServerCertificateContext",
-                    "description": "Optional. Contains details about the rotate server CA operation."
+                    "description": "Optional. Contains details about the rotate server certificate operation."
                 }
             },
             "type": "object"
@@ -7225,7 +7210,7 @@
                     "description": "PSC settings for this instance."
                 },
                 "requireSsl": {
-                    "description": "Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.",
+                    "description": "Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the `require_ssl` flag.",
                     "type": "boolean"
                 },
                 "serverCaMode": {
@@ -7592,7 +7577,7 @@
                     "description": "The reference to Cloud SQL instance if the source is Cloud SQL."
                 },
                 "sslOption": {
-                    "description": "Optional. SslOption for replica connection to the on-premises source.",
+                    "description": "Optional. SSL option for replica connection to the on-premises source.",
                     "enum": [
                         "SSL_OPTION_UNSPECIFIED",
                         "DISABLE",
@@ -7601,7 +7586,7 @@
                     ],
                     "enumDescriptions": [
                         "Unknown SSL option i.e. SSL option not specified by user.",
-                        "SSL is disabled for replica connection to the on-premises source.",
+                        "SSL is not used for replica connection to the on-premises source.",
                         "SSL is required for replica connection to the on-premises source.",
                         "Verify CA is required for replica connection to the on-premises source."
                     ],
@@ -7716,11 +7701,10 @@
                         "REPAIR_READ_POOL",
                         "CREATE_READ_POOL",
                         "PRE_CHECK_MAJOR_VERSION_UPGRADE",
+                        "SETUP_MIGRATION",
                         "CREATE_BLUE_GREEN_DEPLOYMENT",
                         "SWITCHOVER_BLUE_GREEN_DEPLOYMENT",
-                        "DELETE_BLUE_GREEN_DEPLOYMENT",
-                        "SETUP_MIGRATION",
-                        "AGENT_SEND_MESSAGE"
+                        "DELETE_BLUE_GREEN_DEPLOYMENT"
                     ],
                     "enumDeprecated": [
                         false,
@@ -7771,7 +7755,6 @@
                         false,
                         false,
                         true,
-                        false,
                         false,
                         false,
                         false,
@@ -7835,18 +7818,17 @@
                         "Creates a backup for an Enhanced BackupTier Cloud SQL instance.",
                         "Repairs entire read pool or specified read pool nodes in the read pool.",
                         "Creates a Cloud SQL read pool instance.",
-                        "Pre-checks for major version upgrade.",
+                        "Pre-checks the major version upgrade operation.",
+                        "This operation type represents individual steps in a multi-step setup migration workflow: including configuration, replication, switchover/back, and data reseeding, as defined by operation's intent.",
                         "Creates a new Blue-Green deployment.",
                         "Switches over a Blue-Green deployment.",
-                        "Deletes a Blue-Green deployment.",
-                        "This operation type represents individual steps in a multi-step setup migration workflow: including configuration, replication, switchover/back, and data reseeding, as defined by operation's intent.",
-                        "Sends a message to a Cloud SQL agent."
+                        "Deletes a Blue-Green deployment."
                     ],
                     "type": "string"
                 },
                 "preCheckMajorVersionUpgradeContext": {
                     "$ref": "PreCheckMajorVersionUpgradeContext",
-                    "description": "The context for pre-check major version upgrade operation, if applicable. This field is only populated when the operation_type is PRE_CHECK_MAJOR_VERSION_UPGRADE. The PreCheckMajorVersionUpgradeContext message itself contains the details for that pre-check, such as the target database version for the upgrade and the results of the check (including any warnings or errors found)."
+                    "description": "This field is only populated when the operation_type is PRE_CHECK_MAJOR_VERSION_UPGRADE. The PreCheckMajorVersionUpgradeContext message itself contains the details for that pre-check, such as the target database version for the upgrade and the results of the check (including any warnings or errors found)."
                 },
                 "selfLink": {
                     "description": "The URI of this resource.",
@@ -8161,7 +8143,7 @@
             "type": "object"
         },
         "PointInTimeRestoreContext": {
-            "description": "Context to perform a point-in-time restore of an instance managed by Backup and Disaster Recovery (DR) Service.",
+            "description": "The context to perform a point-in-time recovery of an instance managed by Backup and Disaster Recovery (DR) Service.",
             "id": "PointInTimeRestoreContext",
             "properties": {
                 "allocatedIpRange": {
@@ -8544,7 +8526,7 @@
                     "type": "string"
                 },
                 "consumerProject": {
-                    "description": "Optional. This is the project ID of consumer service project of this consumer endpoint. Optional. This is only applicable if consumer_network is a shared vpc network.",
+                    "description": "Optional. This is the project ID of consumer service project of this consumer endpoint. This is only applicable if `consumer_network` is a shared VPC network.",
                     "type": "string"
                 },
                 "instanceAutoDnsStatus": {
@@ -8637,7 +8619,7 @@
                     "type": "boolean"
                 },
                 "pscWriteEndpointDnsEnabled": {
-                    "description": "Optional. Indicates whether Private Service Connect write endpoint DNS automation is enabled for this instance. When enabled, Cloud SQL provisions a universal global DNS record across all networks configured with Private Service Connect auto-connections that points to the cluster primary instance. This feature is only supported for Enterprise Plus edition. This will default to true for new enterprise plus instances when `psc_auto_dns_enabled` is enabled.",
+                    "description": "Optional. Indicates whether Private Service Connect write endpoint DNS automation is enabled for this instance. When enabled, Cloud SQL provisions a universal global DNS record across all networks configured with Private Service Connect auto-connections that points to the cluster primary instance. This feature is only supported for Enterprise Plus edition. This will default to true for new Enterprise Plus instances when `psc_auto_dns_enabled` is enabled.",
                     "type": "boolean"
                 }
             },
@@ -8699,12 +8681,12 @@
                     "type": "integer"
                 },
                 "scaleInCooldownSeconds": {
-                    "description": "The cooldown period for scale in operations.",
+                    "description": "The cooldown period for scale-in operations.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "scaleOutCooldownSeconds": {
-                    "description": "The cooldown period for scale out operations.",
+                    "description": "The cooldown period for scale-out operations.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -8727,7 +8709,7 @@
                     "type": "boolean"
                 },
                 "failoverTarget": {
-                    "description": "Specifies if the replica is the failover target. If the field is set to `true` the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.",
+                    "description": "Specifies if the replica is the failover target. If the field is set to `true`, the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.",
                     "type": "boolean"
                 },
                 "kind": {
@@ -8742,7 +8724,7 @@
             "type": "object"
         },
         "ReplicationCluster": {
-            "description": "A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure. Applicable to MySQL and PostgreSQL.",
+            "description": "A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance experiences regional failure. Applicable to MySQL and PostgreSQL.",
             "id": "ReplicationCluster",
             "properties": {
                 "drReplica": {
@@ -8763,11 +8745,11 @@
             "type": "object"
         },
         "RequestedConfig": {
-            "description": "Configuration specified by the user at creation time for the target (Green) instance.",
+            "description": "Configuration specified by the user at creation time for the target (green) instance.",
             "id": "RequestedConfig",
             "properties": {
                 "databaseVersion": {
-                    "description": "Optional. The target database major version for the upgrade.",
+                    "description": "Optional. The target database major version for the upgrade. For example, `MYSQL_8_0` or `POSTGRES_15`.",
                     "type": "string"
                 }
             },
@@ -8833,7 +8815,7 @@
                     "type": "string"
                 },
                 "nextVersion": {
-                    "description": "Optional. The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the most recently added Entra ID certificate version.",
+                    "description": "Optional. The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the most recently added server certificate version.",
                     "type": "string"
                 }
             },
@@ -8863,7 +8845,7 @@
                     "type": "string"
                 },
                 "nextVersion": {
-                    "description": "Optional. The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the most recently added server certificate version.",
+                    "description": "The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the most recently added server certificate version.",
                     "type": "string"
                 }
             },
@@ -8899,7 +8881,7 @@
             "id": "Settings",
             "properties": {
                 "acceleratedReplicaMode": {
-                    "description": "Optional. Configures whether the replica is in accelerated mode. This feature is in private preview and requires allowlisting to take effect.",
+                    "description": "Optional. Whether the replica is in accelerated mode. This feature is in private preview and requires allowlisting to take effect.",
                     "type": "boolean"
                 },
                 "activationPolicy": {
@@ -8971,7 +8953,7 @@
                     "description": "Optional. The managed connection pooling configuration for the instance."
                 },
                 "connectorEnforcement": {
-                    "description": "Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors) Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.",
+                    "description": "Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.",
                     "enum": [
                         "CONNECTOR_ENFORCEMENT_UNSPECIFIED",
                         "NOT_REQUIRED",
@@ -9148,7 +9130,7 @@
                     "description": "Optional. The read pool auto-scale configuration for the instance."
                 },
                 "replicationLagMaxSeconds": {
-                    "description": "Optional. Configuration value for recreation of replica after certain replication lag.",
+                    "description": "Optional. Configuration value for recreation of replica after certain replication lag",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -9223,24 +9205,8 @@
             "description": "Represents a pairing of a source instance node and a target instance node.",
             "id": "SourceTargetPairedNode",
             "properties": {
-                "currentlyServingTraffic": {
-                    "deprecated": true,
-                    "description": "Output only. Deprecated: Indicates which instance (SOURCE or TARGET) in the pair is currently live. Used for internal implementation and deprecated for external use.",
-                    "enum": [
-                        "CURRENTLY_SERVING_TRAFFIC_UNSPECIFIED",
-                        "SOURCE",
-                        "TARGET"
-                    ],
-                    "enumDescriptions": [
-                        "The instance serving traffic is unknown.",
-                        "The source instance is serving traffic.",
-                        "The target instance is serving traffic."
-                    ],
-                    "readOnly": true,
-                    "type": "string"
-                },
                 "diffs": {
-                    "description": "Output only. Describes the list of differences for this pair.",
+                    "description": "Output only. Describes the list of differences for the `SourceTargetPairedNode`.",
                     "items": {
                         "$ref": "ConfigDiff"
                     },
@@ -9249,11 +9215,11 @@
                 },
                 "source": {
                     "$ref": "NodeInfo",
-                    "description": "Output only. Resource name of the source instance in this pair.",
+                    "description": "Output only. Specifies the resource name of the source instance in this pair.",
                     "readOnly": true
                 },
                 "state": {
-                    "description": "Output only. The current state of this specific source-target pair.",
+                    "description": "Output only. Specifies the current state of this specific source-target pair.",
                     "enum": [
                         "STATE_UNSPECIFIED",
                         "PROVISIONING",
@@ -9283,16 +9249,8 @@
                 },
                 "target": {
                     "$ref": "NodeInfo",
-                    "description": "Output only. Details of the corresponding target instance in this pair.",
+                    "description": "Output only. Specifies details of the corresponding target instance in this pair.",
                     "readOnly": true
-                },
-                "tasks": {
-                    "description": "Output only. Tasks performed or being performed on the target instance of this pair.",
-                    "items": {
-                        "$ref": "DeploymentTask"
-                    },
-                    "readOnly": true,
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -9335,8 +9293,8 @@
                         false
                     ],
                     "enumDescriptions": [
-                        "Unspecified mode.",
-                        "Managed Active Directory mode. This is the fallback option to maintain backward compatibility.",
+                        "Unspecified mode. Will default to MANAGED_ACTIVE_DIRECTORY if the mode is not specified to maintain backward compatibility.",
+                        "Managed Active Directory mode.",
                         "Deprecated: Use CUSTOMER_MANAGED_ACTIVE_DIRECTORY instead.",
                         "Customer-managed Active Directory mode."
                     ],
@@ -9441,7 +9399,7 @@
                         "The value of parameter max_replication_slots is not sufficient.",
                         "The value of parameter max_wal_senders is not sufficient.",
                         "The value of parameter max_worker_processes is not sufficient.",
-                        "Extensions installed are either not supported or having unsupported versions",
+                        "Extensions installed are either not supported or having unsupported versions.",
                         "The value of parameter rds.logical_replication is not set to 1.",
                         "The primary instance logging setup doesn't allow EM sync.",
                         "The primary instance database parameter setup doesn't allow EM sync.",
@@ -9495,7 +9453,7 @@
             "type": "object"
         },
         "SqlInstancesAcquireSsrsLeaseResponse": {
-            "description": "Acquire SSRS lease response.",
+            "description": "Response for the acquire SSRS lease request.",
             "id": "SqlInstancesAcquireSsrsLeaseResponse",
             "properties": {
                 "operationId": {
@@ -9576,11 +9534,11 @@
             "type": "object"
         },
         "SqlInstancesReleaseSsrsLeaseResponse": {
-            "description": "The response for the release of the SSRS lease.",
+            "description": "Response for the release SSRS lease request.",
             "id": "SqlInstancesReleaseSsrsLeaseResponse",
             "properties": {
                 "operationId": {
-                    "description": "The operation ID.",
+                    "description": "The unique identifier for this operation.",
                     "type": "string"
                 }
             },
@@ -9609,6 +9567,7 @@
             "type": "object"
         },
         "SqlInstancesStartExternalSyncRequest": {
+            "description": "Instance start external sync request.",
             "id": "SqlInstancesStartExternalSyncRequest",
             "properties": {
                 "location": {
@@ -9675,6 +9634,7 @@
             "type": "object"
         },
         "SqlInstancesVerifyExternalSyncSettingsRequest": {
+            "description": "Instance verify external sync settings request.",
             "id": "SqlInstancesVerifyExternalSyncSettingsRequest",
             "properties": {
                 "location": {
@@ -9944,7 +9904,7 @@
                     "type": "string"
                 },
                 "createTime": {
-                    "description": "The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.",
+                    "description": "The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`",
                     "format": "google-datetime",
                     "type": "string"
                 },
@@ -10102,18 +10062,6 @@
             },
             "type": "object"
         },
-        "TargetConfig": {
-            "deprecated": true,
-            "description": "Deprecated: Use RequestedConfig instead. Configuration specified by the user at creation time for the target (Green) instance.",
-            "id": "TargetConfig",
-            "properties": {
-                "databaseVersion": {
-                    "description": "Optional. The target database major version for the upgrade.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "TargetMetric": {
             "description": "Target metric for read pool auto scaling.",
             "id": "TargetMetric",
@@ -10261,7 +10209,7 @@
                     "type": "string"
                 },
                 "instance": {
-                    "description": "The name of the Cloud SQL instance. This does not include the project ID. Can be omitted for *update* because it is already specified on the URL.",
+                    "description": "The name of the Cloud SQL instance. This does not include the project ID. Can be omitted for `update` because it is already specified on the URL.",
                     "type": "string"
                 },
                 "kind": {
@@ -10281,7 +10229,7 @@
                     "description": "User level password validation policy."
                 },
                 "project": {
-                    "description": "The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable. Can be omitted for *update* because it is already specified on the URL.",
+                    "description": "The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable. Can be omitted for `update` because it is already specified on the URL.",
                     "type": "string"
                 },
                 "serverRoles": {
@@ -10363,7 +10311,7 @@
                     "type": "array"
                 },
                 "kind": {
-                    "description": "This is always *sql#usersList*.",
+                    "description": "This is always `sql#usersList`.",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -10383,7 +10331,7 @@
                     "type": "boolean"
                 },
                 "value": {
-                    "description": "The cell value represented in string format.",
+                    "description": "The cell value in string format.",
                     "type": "string"
                 }
             },

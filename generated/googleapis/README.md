@@ -2005,6 +2005,13 @@ Converts audio to text by applying powerful neural network models.
 - [Original documentation](https://cloud.google.com/speech-to-text/docs/quickstart-protocol)
 - [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/speech_v1/speech_v1-library.html)
 
+#### Cloud SQL Admin API - `sqladmin/v1`
+
+Cloud SQL Admin API
+
+- [Original documentation](https://cloud.google.com/sql/docs)
+- [Dart package details](https://pub.dev/documentation/googleapis/18.0.0-wip/sqladmin_v1/sqladmin_v1-library.html)
+
 #### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - `storage/v1`
 
 > [!WARNING]

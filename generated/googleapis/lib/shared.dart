@@ -9577,6 +9577,8 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 /// - spanner:v1 : IncrementalBackupSpec
 /// - spanner:v1 : PartitionedDml
 /// - speech:v1 : Empty
+/// - sqladmin:v1 : Empty
+/// - sqladmin:v1 : SwitchoverBlueGreenDeploymentRequest
 /// - storagebatchoperations:v1 : CancelJobResponse
 /// - storagebatchoperations:v1 : CancelOperationRequest
 /// - storagebatchoperations:v1 : Empty
@@ -15425,6 +15427,7 @@ class $IntegrityTokenRequest {
 /// - merchantapi:products_v1 : Interval
 /// - merchantapi:promotions_v1 : Interval
 /// - sheets:v4 : Interval
+/// - sqladmin:v1 : Interval
 /// - tpu:v2 : Interval
 /// - versionhistory:v1 : Interval
 /// - vmwareengine:v1 : Interval
@@ -25199,6 +25202,25 @@ class $SqlProperty {
 
 /// Used by:
 ///
+/// - sqladmin:v1 : SqlInstancesAcquireSsrsLeaseResponse
+/// - sqladmin:v1 : SqlInstancesReleaseSsrsLeaseResponse
+class $SsrsLeaseResponse {
+  /// The unique identifier for this operation.
+  core.String? operationId;
+
+  $SsrsLeaseResponse({this.operationId});
+
+  $SsrsLeaseResponse.fromJson(core.Map json_)
+    : this(operationId: json_['operationId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() {
+    final operationId = this.operationId;
+    return {'operationId': ?operationId};
+  }
+}
+
+/// Used by:
+///
 /// - workflowexecutions:v1 : StateError
 /// - workflows:v1 : StateError
 class $StateError {
@@ -25464,6 +25486,7 @@ class $StaticRouteConfig {
 /// - serviceusage:v1 : Status
 /// - spanner:v1 : Status
 /// - speech:v1 : Status
+/// - sqladmin:v1 : Status
 /// - storagebatchoperations:v1 : Status
 /// - storagetransfer:v1 : Status
 /// - streetviewpublish:v1 : Status

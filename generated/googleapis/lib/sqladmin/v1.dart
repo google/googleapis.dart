@@ -1,4 +1,4 @@
-// Copyright 2015 Google LLC
+// Copyright 2026 Google LLC
 //
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file or at
@@ -18,7 +18,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Cloud SQL Admin API - v1beta4
+/// Cloud SQL Admin API - v1
 ///
 /// Cloud SQL Admin API
 ///
@@ -26,8 +26,8 @@
 ///
 /// Create an instance of [SQLAdminApi] to access these resources:
 ///
-/// - [BackupRunsResource]
 /// - [BackupsResource]
+/// - [BackupRunsResource]
 /// - [BlueGreenDeploymentsResource]
 /// - [ConnectResource]
 /// - [DatabasesResource]
@@ -67,8 +67,8 @@ class SQLAdminApi {
 
   final commons.ApiRequester _requester;
 
+  BackupsResource get Backups => BackupsResource(_requester);
   BackupRunsResource get backupRuns => BackupRunsResource(_requester);
-  BackupsResource get backups => BackupsResource(_requester);
   BlueGreenDeploymentsResource get blueGreenDeployments =>
       BlueGreenDeploymentsResource(_requester);
   ConnectResource get connect => ConnectResource(_requester);
@@ -93,6 +93,235 @@ class SQLAdminApi {
        );
 }
 
+class BackupsResource {
+  final commons.ApiRequester _requester;
+
+  BackupsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a backup for a Cloud SQL instance.
+  ///
+  /// This API can be used only to create on-demand backups.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this backup is created.
+  /// Format: projects/{project}
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> CreateBackup(
+    Backup request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the backup to delete. Format:
+  /// projects/{project}/backups/{backup}
+  /// Value must have pattern `^projects/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> DeleteBackup(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a resource containing information about a backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the backup to retrieve. Format:
+  /// projects/{project}/backups/{backup}
+  /// Value must have pattern `^projects/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Backup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Backup> GetBackup(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all backups associated with the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent that owns this collection of backups.
+  /// Format: projects/{project}
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - Multiple filter queries are separated by spaces. For example,
+  /// 'instance:abc AND type:FINAL, 'location:us',
+  /// 'backupInterval.startTime\>=1950-01-01T01:01:25.771Z'. You can filter by
+  /// type, instance, backupInterval.startTime (creation time), or location.
+  ///
+  /// [pageSize] - The maximum number of backups to return per response. The
+  /// service might return fewer backups than this value. If a value for this
+  /// parameter isn't specified, then, at most, 500 backups are returned. The
+  /// maximum value is 2,000. Any values that you set, which are greater than
+  /// 2,000, are changed to 2,000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListBackups` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListBackups` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupsResponse> ListBackups(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'filter': ?filter == null ? null : [filter],
+      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
+      'pageToken': ?pageToken == null ? null : [pageToken],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBackupsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the retention period and description of the backup.
+  ///
+  /// You can use this API to update final backups only.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the backup. Format:
+  /// projects/{project}/backups/{backup}.
+  /// Value must have pattern `^projects/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields that you can update. You can update only
+  /// the description and retention period of the final backup.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> UpdateBackup(
+    Backup request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'updateMask': ?updateMask == null ? null : [updateMask],
+      'fields': ?$fields == null ? null : [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class BackupRunsResource {
   final commons.ApiRequester _requester;
 
@@ -108,7 +337,7 @@ class BackupRunsResource {
   ///
   /// [id] - The ID of the backup run to delete. To find a backup run ID, use
   /// the
-  /// [list](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/backupRuns/list)
+  /// [list](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/backupRuns/list)
   /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -132,7 +361,7 @@ class BackupRunsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -178,7 +407,7 @@ class BackupRunsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -225,7 +454,7 @@ class BackupRunsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -280,7 +509,7 @@ class BackupRunsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -297,235 +526,6 @@ class BackupRunsResource {
   }
 }
 
-class BackupsResource {
-  final commons.ApiRequester _requester;
-
-  BackupsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Creates a backup for a Cloud SQL instance.
-  ///
-  /// This API can be used only to create on-demand backups.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent resource where this backup is created.
-  /// Format: projects/{project}
-  /// Value must have pattern `^projects/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> createBackup(
-    Backup request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$parent') + '/backups';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes the backup.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the backup to delete. Format:
-  /// projects/{project}/backups/{backup}
-  /// Value must have pattern `^projects/\[^/\]+/backups/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> deleteBackup(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Retrieves a resource containing information about a backup.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the backup to retrieve. Format:
-  /// projects/{project}/backups/{backup}
-  /// Value must have pattern `^projects/\[^/\]+/backups/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Backup].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Backup> getBackup(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists all backups associated with the project.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent that owns this collection of backups.
-  /// Format: projects/{project}
-  /// Value must have pattern `^projects/\[^/\]+$`.
-  ///
-  /// [filter] - Multiple filter queries are separated by spaces. For example,
-  /// 'instance:abc AND type:FINAL, 'location:us',
-  /// 'backupInterval.startTime\>=1950-01-01T01:01:25.771Z'. You can filter by
-  /// type, instance, backupInterval.startTime (creation time), or location.
-  ///
-  /// [pageSize] - The maximum number of backups to return per response. The
-  /// service might return fewer backups than this value. If a value for this
-  /// parameter isn't specified, then, at most, 500 backups are returned. The
-  /// maximum value is 2,000. Any values that you set, which are greater than
-  /// 2,000, are changed to 2,000.
-  ///
-  /// [pageToken] - A page token, received from a previous `ListBackups` call.
-  /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListBackups` must match the call that provided the
-  /// page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListBackupsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListBackupsResponse> listBackups(
-    core.String parent, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'filter': ?filter == null ? null : [filter],
-      'pageSize': ?pageSize == null ? null : ['${pageSize}'],
-      'pageToken': ?pageToken == null ? null : [pageToken],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$parent') + '/backups';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListBackupsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Updates the retention period and the description of the backup.
-  ///
-  /// You can use this API to update final backups only.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Output only. The resource name of the backup. Format:
-  /// projects/{project}/backups/{backup}.
-  /// Value must have pattern `^projects/\[^/\]+/backups/\[^/\]+$`.
-  ///
-  /// [updateMask] - The list of fields that you can update. You can update only
-  /// the description and retention period of the final backup.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> updateBackup(
-    Backup request,
-    core.String name, {
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      'updateMask': ?updateMask == null ? null : [updateMask],
-      'fields': ?$fields == null ? null : [$fields],
-    };
-
-    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class BlueGreenDeploymentsResource {
   final commons.ApiRequester _requester;
 
@@ -533,11 +533,6 @@ class BlueGreenDeploymentsResource {
     : _requester = client;
 
   /// Creates a blue-green deployment under a given project and location.
-  ///
-  /// This deployment provisions a synchronized green environment (target
-  /// instance) from a blue production environment (source instance),
-  /// facilitating updates like major version upgrades on the green instance
-  /// without impacting the blue instance.
   ///
   /// [request] - The metadata request object.
   ///
@@ -549,7 +544,8 @@ class BlueGreenDeploymentsResource {
   ///
   /// [blueGreenDeploymentId] - Required. The ID to use for the blue-green
   /// deployment, which will become the final component of the deployment's
-  /// resource name.
+  /// resource name. The ID must be unique within the given project and location
+  /// and between 2-63 characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -576,9 +572,7 @@ class BlueGreenDeploymentsResource {
     };
 
     final url_ =
-        'sql/v1beta4/' +
-        core.Uri.encodeFull('$parent') +
-        '/blueGreenDeployments';
+        'v1/' + core.Uri.encodeFull('$parent') + '/blueGreenDeployments';
 
     final response_ = await _requester.request(
       url_,
@@ -589,15 +583,7 @@ class BlueGreenDeploymentsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a blue-green deployment, including metadata and underlying
-  /// resources based on the deployment state.
-  ///
-  /// If issued before switchover, this deletes the green instance. If issued
-  /// after switchover, this deletes the old blue instance (source instance) if
-  /// the `delete_old_source` field in the request is set to true. All
-  /// blue-green deployment metadata is permanently deleted. Resources deleted
-  /// as a result of this operation are no longer accessible and can't be
-  /// restored.
+  /// Deletes a blue-green deployment.
   ///
   /// Request parameters:
   ///
@@ -632,7 +618,7 @@ class BlueGreenDeploymentsResource {
       'fields': ?$fields == null ? null : [$fields],
     };
 
-    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
     final response_ = await _requester.request(
       url_,
@@ -687,7 +673,7 @@ class BlueGreenDeploymentsResource {
       'fields': ?$fields == null ? null : [$fields],
     };
 
-    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name');
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
     final response_ = await _requester.request(
       url_,
@@ -712,7 +698,10 @@ class BlueGreenDeploymentsResource {
   /// [orderBy] - Optional. A comma-separated list of fields to order the
   /// results by.
   ///
-  /// [pageSize] - Optional. The maximum number of deployments to return.
+  /// [pageSize] - Optional. The maximum number of deployments to return. The
+  /// service may return fewer deployments than this value. If unspecified, at
+  /// most 500 deployments are returned. The maximum value is 1000; values above
+  /// 1000 are treated as 1000.
   ///
   /// [pageToken] - Optional. A page token, received from a previous
   /// `ListBlueGreenDeployments` call. Provide this to retrieve the subsequent
@@ -745,9 +734,7 @@ class BlueGreenDeploymentsResource {
     };
 
     final url_ =
-        'sql/v1beta4/' +
-        core.Uri.encodeFull('$parent') +
-        '/blueGreenDeployments';
+        'v1/' + core.Uri.encodeFull('$parent') + '/blueGreenDeployments';
 
     final response_ = await _requester.request(
       url_,
@@ -791,7 +778,7 @@ class BlueGreenDeploymentsResource {
       'fields': ?$fields == null ? null : [$fields],
     };
 
-    final url_ = 'sql/v1beta4/' + core.Uri.encodeFull('$name') + ':switchover';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':switchover';
 
     final response_ = await _requester.request(
       url_,
@@ -844,7 +831,7 @@ class ConnectResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -894,7 +881,7 @@ class ConnectResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -940,7 +927,7 @@ class ConnectResource {
     };
 
     final url_ =
-        'sql/v1beta4/locations/' +
+        'v1/locations/' +
         commons.escapeVariable('$location') +
         '/dns/' +
         commons.escapeVariable('$dnsName') +
@@ -997,7 +984,7 @@ class DatabasesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1048,7 +1035,7 @@ class DatabasesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1102,7 +1089,7 @@ class DatabasesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1149,7 +1136,7 @@ class DatabasesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1207,7 +1194,7 @@ class DatabasesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1263,7 +1250,7 @@ class DatabasesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1321,7 +1308,7 @@ class FlagsResource {
       'fields': ?$fields == null ? null : [$fields],
     };
 
-    const url_ = 'sql/v1beta4/flags';
+    const url_ = 'v1/flags';
 
     final response_ = await _requester.request(
       url_,
@@ -1378,7 +1365,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1435,7 +1422,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1451,7 +1438,7 @@ class InstancesResource {
     );
   }
 
-  /// Rotates the Entra Id certificate version to one previously added with the
+  /// Rotates the server certificate version to one previously added with the
   /// addEntraIdCertificate method.
   ///
   /// [request] - The metadata request object.
@@ -1490,7 +1477,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1547,7 +1534,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1568,7 +1555,7 @@ class InstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - Required. ID of the project that contains the instance
+  /// [project] - Required. Project ID of the project that contains the instance
   /// (Example: project-id).
   ///
   /// [instance] - Required. Cloud SQL instance ID. This doesn't include the
@@ -1602,7 +1589,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1656,7 +1643,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1670,7 +1657,7 @@ class InstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Add a new trusted Certificate Authority (CA) version for the specified
+  /// Adds a new trusted Certificate Authority (CA) version for the specified
   /// instance.
   ///
   /// Required to prepare for a certificate rotation. If a CA version was
@@ -1710,7 +1697,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1735,11 +1722,9 @@ class InstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - Required. Project ID of the project that contains the
-  /// instance.
+  /// [project] - Project ID of the project that contains the instance.
   ///
-  /// [instance] - Required. Cloud SQL instance ID. This does not include the
-  /// project ID.
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
   /// [location] - Optional. Region of the Cloud SQL instance.
   ///
@@ -1765,7 +1750,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1787,10 +1772,10 @@ class InstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - Project ID of the source Cloud SQL instance.
+  /// [project] - Required. Project ID of the source Cloud SQL instance.
   ///
-  /// [instance] - The ID of the Cloud SQL instance to be cloned (source). This
-  /// does not include the project ID.
+  /// [instance] - Required. The ID of the Cloud SQL instance to be cloned
+  /// (source). This does not include the project ID.
   ///
   /// [location] - Optional. Region of the Cloud SQL instance.
   ///
@@ -1818,7 +1803,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1892,7 +1877,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance');
@@ -1912,10 +1897,9 @@ class InstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - Required. The project ID of the project that contains the
-  /// instance.
+  /// [project] - Required. ID of the project that contains the instance.
   ///
-  /// [instance] - Required. The name of the Cloud SQL instance.
+  /// [instance] - Required. Cloud SQL instance name.
   ///
   /// [location] - Optional. Region of the Cloud SQL instance.
   ///
@@ -1943,7 +1927,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -1995,7 +1979,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2048,7 +2032,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2075,8 +2059,7 @@ class InstancesResource {
   /// [project] - Project ID of the project that contains the instance to be
   /// exported.
   ///
-  /// [instance] - The Cloud SQL instance ID. This doesn't include the project
-  /// ID.
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
   /// [location] - Optional. Region of the Cloud SQL instance.
   ///
@@ -2104,7 +2087,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2161,7 +2144,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2180,9 +2163,11 @@ class InstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - Project ID of the project that contains the instance.
+  /// [project] - Required. Project ID of the project that contains the
+  /// instance.
   ///
-  /// [instance] - Database instance ID. This does not include the project ID.
+  /// [instance] - Required. Database instance ID. This does not include the
+  /// project ID.
   ///
   /// [location] - Optional. Region of the Cloud SQL instance.
   ///
@@ -2208,7 +2193,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance');
@@ -2260,7 +2245,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2309,9 +2294,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
-        commons.escapeVariable('$project') +
-        '/instances';
+        'v1/projects/' + commons.escapeVariable('$project') + '/instances';
 
     final response_ = await _requester.request(
       url_,
@@ -2374,9 +2357,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
-        commons.escapeVariable('$project') +
-        '/instances';
+        'v1/projects/' + commons.escapeVariable('$project') + '/instances';
 
     final response_ = await _requester.request(
       url_,
@@ -2426,7 +2407,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2495,7 +2476,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance');
@@ -2540,8 +2521,7 @@ class InstancesResource {
       'fields': ?$fields == null ? null : [$fields],
     };
 
-    final url_ =
-        'sql/v1beta4/' + core.Uri.encodeFull('$parent') + ':pointInTimeRestore';
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':pointInTimeRestore';
 
     final response_ = await _requester.request(
       url_,
@@ -2590,7 +2570,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2649,7 +2629,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2699,7 +2679,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2718,13 +2698,12 @@ class InstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - Required. The ID of the project that contains the instance
-  /// (Example: project-id).
+  /// [project] - Required. The project ID that contains the instance.
   ///
   /// [instance] - Required. The Cloud SQL instance ID. This doesn't include the
-  /// project ID. It's composed of lowercase letters, numbers, and hyphens, and
-  /// it must start with a letter. The total length must be 98 characters or
-  /// less (Example: instance-id).
+  /// project ID. The instance ID contains lowercase letters, numbers, and
+  /// hyphens, and it must start with a letter. This ID can have a maximum
+  /// length of 98 characters.
   ///
   /// [location] - Optional. Region of the Cloud SQL instance.
   ///
@@ -2750,7 +2729,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2809,7 +2788,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2856,7 +2835,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2908,7 +2887,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -2963,7 +2942,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3010,7 +2989,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3056,7 +3035,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3108,7 +3087,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3158,7 +3137,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3211,7 +3190,7 @@ class InstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance');
@@ -3232,8 +3211,6 @@ class OperationsResource {
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Cancels an instance operation that has been performed on an instance.
-  ///
-  /// Ordinarily, this method name should be `CancelSqlOperation`.
   ///
   /// Request parameters:
   ///
@@ -3265,7 +3242,7 @@ class OperationsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/operations/' +
         commons.escapeVariable('$operation') +
@@ -3283,9 +3260,10 @@ class OperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [project] - Project ID of the project that contains the instance.
+  /// [project] - Required. Project ID of the project that contains the
+  /// instance.
   ///
-  /// [operation] - Instance operation ID.
+  /// [operation] - Required. Instance operation ID.
   ///
   /// [location] - Optional. Region of the Cloud SQL instance.
   ///
@@ -3311,7 +3289,7 @@ class OperationsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/operations/' +
         commons.escapeVariable('$operation');
@@ -3367,9 +3345,7 @@ class OperationsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
-        commons.escapeVariable('$project') +
-        '/operations';
+        'v1/projects/' + commons.escapeVariable('$project') + '/operations';
 
     final response_ = await _requester.request(
       url_,
@@ -3428,7 +3404,7 @@ class ProjectsInstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3484,7 +3460,7 @@ class ProjectsInstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3536,7 +3512,7 @@ class ProjectsInstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3587,7 +3563,7 @@ class ProjectsInstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3634,7 +3610,7 @@ class ProjectsInstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3681,7 +3657,7 @@ class ProjectsInstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3729,7 +3705,7 @@ class ProjectsInstancesResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3792,7 +3768,7 @@ class SslCertsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3841,7 +3817,7 @@ class SslCertsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3890,7 +3866,7 @@ class SslCertsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3940,7 +3916,7 @@ class SslCertsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -3985,7 +3961,7 @@ class SslCertsResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -4010,7 +3986,7 @@ class TiersResource {
   /// Lists all available machine types (tiers) for Cloud SQL, for example,
   /// `db-custom-1-3840`.
   ///
-  /// For related information, see \[Pricing\](/sql/pricing).
+  /// For more information, see https://cloud.google.com/sql/pricing.
   ///
   /// Request parameters:
   ///
@@ -4034,8 +4010,7 @@ class TiersResource {
       'fields': ?$fields == null ? null : [$fields],
     };
 
-    final url_ =
-        'sql/v1beta4/projects/' + commons.escapeVariable('$project') + '/tiers';
+    final url_ = 'v1/projects/' + commons.escapeVariable('$project') + '/tiers';
 
     final response_ = await _requester.request(
       url_,
@@ -4093,7 +4068,7 @@ class UsersResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -4146,7 +4121,7 @@ class UsersResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -4197,7 +4172,7 @@ class UsersResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -4244,7 +4219,7 @@ class UsersResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -4333,7 +4308,7 @@ class UsersResource {
     };
 
     final url_ =
-        'sql/v1beta4/projects/' +
+        'v1/projects/' +
         commons.escapeVariable('$project') +
         '/instances/' +
         commons.escapeVariable('$instance') +
@@ -4393,10 +4368,10 @@ class AclEntry {
 
 /// Acquire SSRS lease context.
 class AcquireSsrsLeaseContext {
-  /// Lease duration needed for the SSRS setup.
+  /// Lease duration needed for SSRS setup.
   core.String? duration;
 
-  /// The report database to be used for the SSRS setup.
+  /// The report database to be used for SSRS setup.
   core.String? reportDatabase;
 
   /// The username to be used as the service login to connect to the report
@@ -4659,10 +4634,10 @@ class Backup {
 
   /// Backup expiration time.
   ///
-  /// A UTC timestamp of when this resource expired.
+  /// A UTC timestamp of when this backup expired.
   core.String? expiryTime;
 
-  /// The name of the database instance.
+  /// The name of the source database instance.
   core.String? instance;
 
   /// Timestamp in UTC of when the instance associated with this backup is
@@ -4671,7 +4646,7 @@ class Backup {
   /// Optional. Output only.
   core.String? instanceDeletionTime;
 
-  /// Instance setting of the source instance that's associated with this
+  /// The instance setting of the source instance that's associated with this
   /// backup.
   ///
   /// Optional. Output only.
@@ -4730,7 +4705,7 @@ class Backup {
   /// Output only.
   core.String? selfLink;
 
-  /// The state of this backup.
+  /// The status of this backup.
   ///
   /// Output only.
   /// Possible string values are:
@@ -4760,14 +4735,14 @@ class Backup {
 
   /// The type of this backup.
   ///
-  /// The type can be "AUTOMATED", "ON_DEMAND", or “FINAL”.
+  /// The type can be "AUTOMATED", "ON_DEMAND" or “FINAL”.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "SQL_BACKUP_TYPE_UNSPECIFIED" : This is an unknown backup type.
   /// - "AUTOMATED" : The backup schedule triggers a backup automatically.
   /// - "ON_DEMAND" : The user triggers a backup manually.
-  /// - "FINAL" : The backup that's created when the instance is deleted.
+  /// - "FINAL" : The backup created when instance is deleted.
   core.String? type;
 
   Backup({
@@ -4940,8 +4915,8 @@ class BackupConfiguration {
   /// restore, from 1-7.
   core.int? transactionLogRetentionDays;
 
-  /// This value contains the storage location of transactional logs for the
-  /// database for point-in-time recovery.
+  /// This value contains the storage location of transactional logs used to
+  /// perform point-in-time recovery (PITR) for the database.
   ///
   /// Output only.
   /// Possible string values are:
@@ -5486,12 +5461,10 @@ class BinLogCoordinates {
 
 /// A `BlueGreenDeployment` resource represents a Cloud SQL blue-green
 /// deployment setup.
-///
-/// It orchestrates the lifecycle of creating a synchronized "green" environment
-/// from a "blue" production environment, performing updates, and managing the
-/// switchover process to minimize downtime.
 class BlueGreenDeployment {
   /// The time when the deployment was created.
+  ///
+  /// Example: `2024-01-01T00:00:00Z`
   ///
   /// Output only.
   core.String? createTime;
@@ -5509,10 +5482,16 @@ class BlueGreenDeployment {
 
   /// User-provided description for the deployment.
   ///
+  /// The description can be up to 255 characters long.
+  ///
   /// Optional.
   core.String? description;
 
-  /// Provides an error message with details on why switchover is not possible.
+  /// Provides details on why switchover is not possible.
+  ///
+  /// This field is empty unless a switchover attempt failed or the state is
+  /// `SWITCHOVER_NOT_READY`. Example: "The target database version does not
+  /// match the source instance database version."
   ///
   /// Output only.
   core.String? errorDetail;
@@ -5525,17 +5504,6 @@ class BlueGreenDeployment {
   /// Output only.
   core.String? name;
 
-  /// Deprecated: Use deployment_mappings instead.
-  ///
-  /// Output only. A list representing the pairs of source and target instances
-  /// in the deployment.
-  ///
-  /// Output only.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.List<SourceTargetPairedNode>? pairedNodes;
-
   /// Optional on create, and immutable.
   ///
   /// The configuration intended for the target instance(s) when the deployment
@@ -5544,10 +5512,10 @@ class BlueGreenDeployment {
   /// Optional. Immutable.
   RequestedConfig? requestedConfig;
 
-  /// The instance ID of the source instance (the "blue" instance).
+  /// Required on create, and immutable.
   ///
-  /// The value for this field does not include the project ID, for example,
-  /// `my-instance-id`. This field is immutable.
+  /// The full resource name of the source instance (the "blue" instance).
+  /// Format: projects/{project}/instances/{instance}
   ///
   /// Required. Immutable.
   core.String? sourceInstance;
@@ -5556,7 +5524,8 @@ class BlueGreenDeployment {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The state of the deployment is unknown.
+  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
+  /// is omitted or unknown.
   /// - "PROVISIONING" : The deployment is being provisioned.
   /// - "SWITCHOVER_READY" : The deployment is ready for switchover.
   /// - "SWITCHOVER_NOT_READY" : The deployment is not ready for switchover.
@@ -5566,22 +5535,14 @@ class BlueGreenDeployment {
   /// - "DELETING" : The deployment is being deleted.
   core.String? state;
 
-  /// Details about the primary target instance (the "Green" instance) that will
-  /// be promoted during switchover.
+  /// The full resource name of the primary target instance (the "green"
+  /// instance) that will be promoted during switchover.
+  ///
+  /// This field is always populated once the deployment is created. Format:
+  /// projects/{project}/instances/{instance}
   ///
   /// Output only.
   core.String? switchoverTargetInstance;
-
-  /// Deprecated: Use requested_config instead.
-  ///
-  /// The configuration intended for the target instance(s) when the deployment
-  /// was created. This field is immutable.
-  ///
-  /// Optional. Immutable.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  TargetConfig? targetConfig;
 
   BlueGreenDeployment({
     this.createTime,
@@ -5590,12 +5551,10 @@ class BlueGreenDeployment {
     this.description,
     this.errorDetail,
     this.name,
-    this.pairedNodes,
     this.requestedConfig,
     this.sourceInstance,
     this.state,
     this.switchoverTargetInstance,
-    this.targetConfig,
   });
 
   BlueGreenDeployment.fromJson(core.Map json_)
@@ -5616,13 +5575,6 @@ class BlueGreenDeployment {
         description: json_['description'] as core.String?,
         errorDetail: json_['errorDetail'] as core.String?,
         name: json_['name'] as core.String?,
-        pairedNodes: (json_['pairedNodes'] as core.List?)
-            ?.map(
-              (value) => SourceTargetPairedNode.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
         requestedConfig: json_.containsKey('requestedConfig')
             ? RequestedConfig.fromJson(
                 json_['requestedConfig'] as core.Map<core.String, core.dynamic>,
@@ -5632,11 +5584,6 @@ class BlueGreenDeployment {
         state: json_['state'] as core.String?,
         switchoverTargetInstance:
             json_['switchoverTargetInstance'] as core.String?,
-        targetConfig: json_.containsKey('targetConfig')
-            ? TargetConfig.fromJson(
-                json_['targetConfig'] as core.Map<core.String, core.dynamic>,
-              )
-            : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() {
@@ -5646,12 +5593,10 @@ class BlueGreenDeployment {
     final description = this.description;
     final errorDetail = this.errorDetail;
     final name = this.name;
-    final pairedNodes = this.pairedNodes;
     final requestedConfig = this.requestedConfig;
     final sourceInstance = this.sourceInstance;
     final state = this.state;
     final switchoverTargetInstance = this.switchoverTargetInstance;
-    final targetConfig = this.targetConfig;
     return {
       'createTime': ?createTime,
       'deploymentMappings': ?deploymentMappings,
@@ -5659,12 +5604,10 @@ class BlueGreenDeployment {
       'description': ?description,
       'errorDetail': ?errorDetail,
       'name': ?name,
-      'pairedNodes': ?pairedNodes,
       'requestedConfig': ?requestedConfig,
       'sourceInstance': ?sourceInstance,
       'state': ?state,
       'switchoverTargetInstance': ?switchoverTargetInstance,
-      'targetConfig': ?targetConfig,
     };
   }
 }
@@ -5760,6 +5703,8 @@ class CloneContext {
   core.List<core.String>? databaseNames;
 
   /// Name of the Cloud SQL instance to be created as a clone.
+  ///
+  /// Required.
   core.String? destinationInstanceName;
 
   /// The fully qualified URI of the VPC network to which the cloned instance
@@ -5795,7 +5740,8 @@ class CloneContext {
   /// specified zones.
   ///
   /// If not specified, clone to the same secondary zone as the source instance.
-  /// This value cannot be the same as the preferred_zone field.
+  /// This value cannot be the same as the preferred_zone field. This field
+  /// applies to all DB types.
   ///
   /// Optional.
   core.String? preferredSecondaryZone;
@@ -5804,7 +5750,7 @@ class CloneContext {
   /// specified zone.
   ///
   /// If no zone is specified, clone to the same primary zone as the source
-  /// instance.
+  /// instance. This field applies to all DB types.
   ///
   /// Optional.
   core.String? preferredZone;
@@ -5908,12 +5854,13 @@ class Column {
   }
 }
 
-/// Represents a specific configuration difference between Blue and Green
+/// Represents a specific configuration difference between blue and green
 /// instances.
 class ConfigDiff {
-  /// The name of the field that differs, fully-qualified.
+  /// The name of the field that differs in the blue and green instances,
+  /// fully-qualified.
   ///
-  /// Example: settings.tier
+  /// Example: `settings.tier`
   ///
   /// Output only.
   core.String? field;
@@ -6043,7 +5990,7 @@ class ConnectSettings {
   ///
   /// The `databaseVersion` field cannot be changed after instance creation.
   /// MySQL instances: `MYSQL_8_0`, `MYSQL_5_7` (default), or `MYSQL_5_6`.
-  /// PostgreSQL instances: `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11` or
+  /// PostgreSQL instances: `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`,
   /// `POSTGRES_12` (default), `POSTGRES_13`, or `POSTGRES_14`. SQL Server
   /// instances: `SQLSERVER_2017_STANDARD` (default),
   /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`,
@@ -6181,8 +6128,8 @@ class ConnectSettings {
 
   /// The cloud region for the instance.
   ///
-  /// e.g. `us-central1`, `europe-west1`. The region cannot be changed after
-  /// instance creation.
+  /// For example, `us-central1`, `europe-west1`. The region cannot be changed
+  /// after instance creation.
   core.String? region;
 
   /// SSL configuration.
@@ -6190,8 +6137,7 @@ class ConnectSettings {
 
   /// Specify what type of CA is used for the server certificate.
   /// Possible string values are:
-  /// - "CA_MODE_UNSPECIFIED" : CA mode is unspecified. It is effectively the
-  /// same as `GOOGLE_MANAGED_INTERNAL_CA`.
+  /// - "CA_MODE_UNSPECIFIED" : CA mode is unknown.
   /// - "GOOGLE_MANAGED_INTERNAL_CA" : Google-managed self-signed internal CA.
   /// - "GOOGLE_MANAGED_CAS_CA" : Google-managed regional CA part of root CA
   /// hierarchy hosted on Google Cloud's Certificate Authority Service (CAS).
@@ -6844,6 +6790,8 @@ class DatabaseInstance {
   /// A DR replica is a cross-region replica that you designate for failover in
   /// the event that the primary instance experiences regional failure.
   /// Applicable to MySQL and PostgreSQL.
+  ///
+  /// Optional.
   ReplicationCluster? replicationCluster;
 
   /// Initial root password.
@@ -6881,15 +6829,14 @@ class DatabaseInstance {
   /// SSL configuration.
   SslCert? serverCaCert;
 
-  /// The service account email address assigned to the instance.
-  ///
-  /// \This property is read-only.
+  /// The service account email address assigned to the instance.\This property
+  /// is read-only.
   core.String? serviceAccountEmailAddress;
 
   /// The user settings.
   Settings? settings;
 
-  /// The SQL network architecture for the instance.
+  ///
   /// Possible string values are:
   /// - "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"
   /// - "NEW_NETWORK_ARCHITECTURE" : The instance uses the new network
@@ -7305,7 +7252,7 @@ class DemoteContext {
   /// This is always `sql#demoteContext`.
   core.String? kind;
 
-  /// The name of the instance which acts as an on-premises primary instance in
+  /// The name of the instance which acts as the on-premises primary instance in
   /// the replication setup.
   ///
   /// Required.
@@ -7495,14 +7442,14 @@ class DemoteMasterMySqlReplicaConfiguration {
   }
 }
 
-/// Deny Maintenance Periods.
+/// Deny maintenance Periods.
 ///
 /// This specifies a date range during when all CSA rollout will be denied.
 class DenyMaintenancePeriod {
   /// "deny maintenance period" end date.
   ///
   /// If the year of the end date is empty, the year of the start date also must
-  /// be empty. In this case, it means the deny maintenance period recurs every
+  /// be empty. In this case, it means the no maintenance interval recurs every
   /// year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e.,
   /// 11-01
   core.String? endDate;
@@ -7545,7 +7492,7 @@ class DeploymentTask {
   /// Output only.
   core.String? endTime;
 
-  /// Optional Error details if the task state is FAILED.
+  /// Optional error details if the task state is `FAILED`.
   ///
   /// Output only.
   core.String? errorMessage;
@@ -7572,10 +7519,14 @@ class DeploymentTask {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The default value. This value is used if the type
   /// is omitted.
-  /// - "PROVISION" : Creating target instance.
-  /// - "UPGRADE" : e.g., Major Version Upgrade on Target.
-  /// - "SWITCHOVER" : Promoting Target, Demoting Source for this pair.
-  /// - "DELETE" : The task is to delete deployment.
+  /// - "PROVISION" : Provisions the green environment, which includes creating
+  /// the target instance.
+  /// - "UPGRADE" : Upgrades the green environment, for example, performing a
+  /// major version upgrade on the target instance.
+  /// - "SWITCHOVER" : Promotes the target instance and then demotes the source
+  /// instance for this pair.
+  /// - "DELETE" : Deletes the blue-green deployment, including underlying
+  /// resources.
   /// - "POST_SWITCHOVER_OPERATIONS" : Post-switchover operations, including
   /// cleaning up resources of the old instance, taking final backups, and
   /// updating metadata.
@@ -7792,7 +7743,7 @@ class ExecuteSqlPayload {
   /// Optional.
   core.String? application;
 
-  /// When set to true, the API caller identity associated with the request is
+  /// When set to `true`, the API caller identity associated with the request is
   /// used for database authentication.
   ///
   /// The API caller must be an IAM user in the database.
@@ -7828,8 +7779,8 @@ class ExecuteSqlPayload {
   /// the Regional Secrets page (for UI), and stored in the same region as the
   /// Cloud SQL instance. The expected resource name format is
   /// `projects/{project}/locations/{location}/secrets/{secret}/versions/{secret_version}`.
-  /// This field is used together with the `user` field. The secret resource
-  /// name will not be stored.
+  /// Used together with the `user` field. The secret resource name will not be
+  /// stored.
   ///
   /// Optional.
   core.String? passwordSecretVersion;
@@ -7907,7 +7858,7 @@ class ExportContextBakExportOptions {
   /// - "BAK_TYPE_UNSPECIFIED" : Default type.
   /// - "FULL" : Full backup.
   /// - "DIFF" : Differential backup.
-  /// - "TLOG" : SQL Server Transaction Log
+  /// - "TLOG" : Transaction Log backup
   core.String? bakType;
 
   /// Deprecated: copy_only is deprecated.
@@ -8189,8 +8140,8 @@ class ExportContextTdeExportOptions {
   /// Path to the TDE certificate public key in the form
   /// gs://bucketName/fileName.
   ///
-  /// The instance must have write access to the location. Applicable only for
-  /// SQL Server instances.
+  /// The instance must have write access to the bucket. Applicable only for SQL
+  /// Server instances.
   ///
   /// Required.
   core.String? certificatePath;
@@ -8488,10 +8439,10 @@ class Flag {
   /// `max_allowed_packet`
   core.String? name;
 
-  /// Recommended flag value in integer format for UI display.
+  /// Recommended int value in integer format for UI display.
   core.String? recommendedIntValue;
 
-  /// Recommended flag value in string format for UI display.
+  /// Recommended string value in string format for UI display.
   core.String? recommendedStringValue;
 
   /// Indicates whether changing this flag will trigger a database restart.
@@ -8502,7 +8453,7 @@ class Flag {
   /// The type of the flag.
   ///
   /// Flags are typed to being `BOOLEAN`, `STRING`, `INTEGER` or `NONE`. `NONE`
-  /// is used for flags which do not take a value, such as `skip_grant_tables`.
+  /// is used for flags that do not take a value, such as `skip_grant_tables`.
   /// Possible string values are:
   /// - "SQL_FLAG_TYPE_UNSPECIFIED" : This is an unknown flag type.
   /// - "BOOLEAN" : Boolean type flag.
@@ -8809,12 +8760,12 @@ class ImportContextBakImportOptionsEncryptionOptions {
 
 /// Import parameters specific to SQL Server .BAK files
 class ImportContextBakImportOptions {
-  /// Type of the bak content, FULL or DIFF.
+  /// Type of the bak content, FULL or DIFF
   /// Possible string values are:
   /// - "BAK_TYPE_UNSPECIFIED" : Default type.
   /// - "FULL" : Full backup.
   /// - "DIFF" : Differential backup.
-  /// - "TLOG" : SQL Server Transaction Log
+  /// - "TLOG" : Transaction Log backup
   core.String? bakType;
   ImportContextBakImportOptionsEncryptionOptions? encryptionOptions;
 
@@ -9053,8 +9004,7 @@ class ImportContextSqlImportOptions {
   }
 }
 
-/// Import parameters specific to SQL Server .TDE files Import parameters
-/// specific to SQL Server TDE certificates
+/// Import parameters specific to SQL Server TDE certificates
 ///
 /// Optional.
 class ImportContextTdeImportOptions {
@@ -9134,10 +9084,10 @@ class ImportContext {
   /// subdirectory name. If `fileType` is `CSV`, one database must be specified.
   core.String? database;
 
-  /// The file type for the specified uri.
+  /// The file type for the specified uri.\`SQL`: The file contains SQL
+  /// statements.
   ///
-  /// * `SQL`: The file contains SQL statements. * `CSV`: The file contains CSV
-  /// data. * `BAK`: The file contains backup data for a SQL Server instance.
+  /// \`CSV`: The file contains CSV data.
   /// Possible string values are:
   /// - "SQL_FILE_TYPE_UNSPECIFIED" : Unknown file type.
   /// - "SQL" : File containing SQL statements.
@@ -9159,8 +9109,7 @@ class ImportContext {
   /// Optional.
   ImportContextSqlImportOptions? sqlImportOptions;
 
-  /// Import parameters specific to SQL Server .TDE files Import parameters
-  /// specific to SQL Server TDE certificates
+  /// Import parameters specific to SQL Server TDE certificates
   ///
   /// Optional.
   ImportContextTdeImportOptions? tdeImportOptions;
@@ -9346,7 +9295,7 @@ class InstanceReference {
   }
 }
 
-/// Request to acquire an SSRS lease for an instance.
+/// Request to acquire a lease for SSRS.
 class InstancesAcquireSsrsLeaseRequest {
   /// Contains details about the acquire SSRS lease operation.
   AcquireSsrsLeaseContext? acquireSsrsLeaseContext;
@@ -9372,6 +9321,8 @@ class InstancesAcquireSsrsLeaseRequest {
 /// Database instance clone request.
 class InstancesCloneRequest {
   /// Contains details about the clone operation.
+  ///
+  /// Required.
   CloneContext? cloneContext;
 
   InstancesCloneRequest({this.cloneContext});
@@ -9417,8 +9368,7 @@ class InstancesDemoteMasterRequest {
 /// This request is used to demote an existing standalone instance to be a Cloud
 /// SQL read replica for an external database server.
 class InstancesDemoteRequest {
-  /// This context is used to demote an existing standalone instance to be a
-  /// Cloud SQL read replica for an external database server.
+  /// Contains details about the demote operation.
   ///
   /// Required.
   DemoteContext? demoteContext;
@@ -9635,7 +9585,7 @@ class InstancesListServerCasResponse {
   }
 }
 
-/// Instances ListServerCertificatess response.
+/// Instances ListServerCertificates response.
 class InstancesListServerCertificatesResponse {
   /// The `sha1_fingerprint` of the active certificate from `server_certs`.
   core.String? activeVersion;
@@ -9843,9 +9793,9 @@ class InstancesRestoreBackupRequest {
   }
 }
 
-/// Rotate Entra ID Certificate request.
+/// Rotate Entra ID certificate request.
 class InstancesRotateEntraIdCertificateRequest {
-  /// Contains details about the rotate Entra ID certificate operation.
+  /// Contains details about the rotate server certificate operation.
   ///
   /// Optional.
   RotateEntraIdCertificateContext? rotateEntraIdCertificateContext;
@@ -9874,7 +9824,7 @@ class InstancesRotateEntraIdCertificateRequest {
   }
 }
 
-/// Rotate Server CA request.
+/// Rotate server CA request.
 class InstancesRotateServerCaRequest {
   /// Contains details about the rotate server CA operation.
   RotateServerCaContext? rotateServerCaContext;
@@ -9897,9 +9847,9 @@ class InstancesRotateServerCaRequest {
   }
 }
 
-/// Rotate Server Certificate request.
+/// Rotate server certificate request.
 class InstancesRotateServerCertificateRequest {
-  /// Contains details about the rotate server CA operation.
+  /// Contains details about the rotate server certificate operation.
   ///
   /// Optional.
   RotateServerCertificateContext? rotateServerCertificateContext;
@@ -9954,37 +9904,7 @@ class InstancesTruncateLogRequest {
 /// The start must be less than or equal to the end. When the start equals the
 /// end, the interval is empty (matches no time). When both start and end are
 /// unspecified, the interval matches any time.
-class Interval {
-  /// Exclusive end of the interval.
-  ///
-  /// If specified, a Timestamp matching this interval will have to be before
-  /// the end.
-  ///
-  /// Optional.
-  core.String? endTime;
-
-  /// Inclusive start of the interval.
-  ///
-  /// If specified, a Timestamp matching this interval will have to be the same
-  /// or after the start.
-  ///
-  /// Optional.
-  core.String? startTime;
-
-  Interval({this.endTime, this.startTime});
-
-  Interval.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final endTime = this.endTime;
-    final startTime = this.startTime;
-    return {'endTime': ?endTime, 'startTime': ?startTime};
-  }
-}
+typedef Interval = $Interval;
 
 /// IP Management configuration.
 class IpConfiguration {
@@ -10034,7 +9954,7 @@ class IpConfiguration {
   /// then only allow connections encrypted with SSL/TLS and with valid client
   /// certificates. If you want to enforce SSL/TLS without enforcing the
   /// requirement for valid client certificates, then use the `ssl_mode` flag
-  /// instead of the legacy `require_ssl` flag.
+  /// instead of the `require_ssl` flag.
   core.bool? requireSsl;
 
   /// Specify what type of CA is used for the server certificate.
@@ -10720,13 +10640,13 @@ class OnPremisesConfiguration {
   /// The reference to Cloud SQL instance if the source is Cloud SQL.
   InstanceReference? sourceInstance;
 
-  /// SslOption for replica connection to the on-premises source.
+  /// SSL option for replica connection to the on-premises source.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "SSL_OPTION_UNSPECIFIED" : Unknown SSL option i.e. SSL option not
   /// specified by user.
-  /// - "DISABLE" : SSL is disabled for replica connection to the on-premises
+  /// - "DISABLE" : SSL is not used for replica connection to the on-premises
   /// source.
   /// - "REQUIRE" : SSL is required for replica connection to the on-premises
   /// source.
@@ -10938,25 +10858,23 @@ class Operation {
   /// - "REPAIR_READ_POOL" : Repairs entire read pool or specified read pool
   /// nodes in the read pool.
   /// - "CREATE_READ_POOL" : Creates a Cloud SQL read pool instance.
-  /// - "PRE_CHECK_MAJOR_VERSION_UPGRADE" : Pre-checks for major version
-  /// upgrade.
+  /// - "PRE_CHECK_MAJOR_VERSION_UPGRADE" : Pre-checks the major version upgrade
+  /// operation.
+  /// - "SETUP_MIGRATION" : This operation type represents individual steps in a
+  /// multi-step setup migration workflow: including configuration, replication,
+  /// switchover/back, and data reseeding, as defined by operation's intent.
   /// - "CREATE_BLUE_GREEN_DEPLOYMENT" : Creates a new Blue-Green deployment.
   /// - "SWITCHOVER_BLUE_GREEN_DEPLOYMENT" : Switches over a Blue-Green
   /// deployment.
   /// - "DELETE_BLUE_GREEN_DEPLOYMENT" : Deletes a Blue-Green deployment.
-  /// - "SETUP_MIGRATION" : This operation type represents individual steps in a
-  /// multi-step setup migration workflow: including configuration, replication,
-  /// switchover/back, and data reseeding, as defined by operation's intent.
-  /// - "AGENT_SEND_MESSAGE" : Sends a message to a Cloud SQL agent.
   core.String? operationType;
 
-  /// The context for pre-check major version upgrade operation, if applicable.
-  ///
   /// This field is only populated when the operation_type is
-  /// PRE_CHECK_MAJOR_VERSION_UPGRADE. The PreCheckMajorVersionUpgradeContext
-  /// message itself contains the details for that pre-check, such as the target
-  /// database version for the upgrade and the results of the check (including
-  /// any warnings or errors found).
+  /// PRE_CHECK_MAJOR_VERSION_UPGRADE.
+  ///
+  /// The PreCheckMajorVersionUpgradeContext message itself contains the details
+  /// for that pre-check, such as the target database version for the upgrade
+  /// and the results of the check (including any warnings or errors found).
   PreCheckMajorVersionUpgradeContext? preCheckMajorVersionUpgradeContext;
 
   /// The URI of this resource.
@@ -11542,8 +11460,8 @@ class PerformanceCaptureConfig {
   }
 }
 
-/// Context to perform a point-in-time restore of an instance managed by Backup
-/// and Disaster Recovery (DR) Service.
+/// The context to perform a point-in-time recovery of an instance managed by
+/// Backup and Disaster Recovery (DR) Service.
 class PointInTimeRestoreContext {
   /// The name of the allocated IP range for the internal IP Cloud SQL instance.
   ///
@@ -12006,8 +11924,7 @@ class PscAutoConnectionConfig {
   /// This is the project ID of consumer service project of this consumer
   /// endpoint.
   ///
-  /// Optional. This is only applicable if consumer_network is a shared vpc
-  /// network.
+  /// This is only applicable if `consumer_network` is a shared VPC network.
   ///
   /// Optional.
   core.String? consumerProject;
@@ -12163,7 +12080,7 @@ class PscConfig {
   /// When enabled, Cloud SQL provisions a universal global DNS record across
   /// all networks configured with Private Service Connect auto-connections that
   /// points to the cluster primary instance. This feature is only supported for
-  /// Enterprise Plus edition. This will default to true for new enterprise plus
+  /// Enterprise Plus edition. This will default to true for new Enterprise Plus
   /// instances when `psc_auto_dns_enabled` is enabled.
   ///
   /// Optional.
@@ -12303,10 +12220,10 @@ class ReadPoolAutoScaleConfig {
   /// Minimum number of read pool nodes to be maintained.
   core.int? minNodeCount;
 
-  /// The cooldown period for scale in operations.
+  /// The cooldown period for scale-in operations.
   core.int? scaleInCooldownSeconds;
 
-  /// The cooldown period for scale out operations.
+  /// The cooldown period for scale-out operations.
   core.int? scaleOutCooldownSeconds;
 
   /// Target metrics for read pool auto scaling.
@@ -12373,11 +12290,11 @@ class ReplicaConfiguration {
 
   /// Specifies if the replica is the failover target.
   ///
-  /// If the field is set to `true` the replica will be designated as a failover
-  /// replica. In case the primary instance fails, the replica instance will be
-  /// promoted as the new primary instance. Only one replica can be specified as
-  /// failover target, and the replica has to be in different zone with the
-  /// primary instance.
+  /// If the field is set to `true`, the replica will be designated as a
+  /// failover replica. In case the primary instance fails, the replica instance
+  /// will be promoted as the new primary instance. Only one replica can be
+  /// specified as failover target, and the replica has to be in different zone
+  /// with the primary instance.
   core.bool? failoverTarget;
 
   /// This is always `sql#replicaConfiguration`.
@@ -12431,8 +12348,8 @@ class ReplicaConfiguration {
 /// A primary instance and disaster recovery (DR) replica pair.
 ///
 /// A DR replica is a cross-region replica that you designate for failover in
-/// the event that the primary instance has regional failure. Applicable to
-/// MySQL and PostgreSQL.
+/// the event that the primary instance experiences regional failure. Applicable
+/// to MySQL and PostgreSQL.
 class ReplicationCluster {
   /// Read-only field that indicates whether the replica is a DR replica.
   ///
@@ -12491,10 +12408,12 @@ class ReplicationCluster {
   }
 }
 
-/// Configuration specified by the user at creation time for the target (Green)
+/// Configuration specified by the user at creation time for the target (green)
 /// instance.
 class RequestedConfig {
   /// The target database major version for the upgrade.
+  ///
+  /// For example, `MYSQL_8_0` or `POSTGRES_15`.
   ///
   /// Optional.
   core.String? databaseVersion;
@@ -12599,7 +12518,7 @@ class RotateEntraIdCertificateContext {
 
   /// The fingerprint of the next version to be rotated to.
   ///
-  /// If left unspecified, will be rotated to the most recently added Entra ID
+  /// If left unspecified, will be rotated to the most recently added server
   /// certificate version.
   ///
   /// Optional.
@@ -12657,8 +12576,6 @@ class RotateServerCertificateContext {
   ///
   /// If left unspecified, will be rotated to the most recently added server
   /// certificate version.
-  ///
-  /// Optional.
   core.String? nextVersion;
 
   RotateServerCertificateContext({this.kind, this.nextVersion});
@@ -12720,7 +12637,7 @@ class SelectedObjects {
 
 /// Database instance settings.
 class Settings {
-  /// Configures whether the replica is in accelerated mode.
+  /// Whether the replica is in accelerated mode.
   ///
   /// This feature is in private preview and requires allowlisting to take
   /// effect.
@@ -12794,7 +12711,7 @@ class Settings {
   ///
   /// Option values include the following: `NOT_REQUIRED` (Cloud SQL instances
   /// can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow
-  /// connections that use Cloud SQL Connectors) Note that using REQUIRED
+  /// connections that use Cloud SQL Connectors). Note that using REQUIRED
   /// disables all existing authorized networks. If this field is not specified
   /// when creating a new instance, NOT_REQUIRED is used. If this field is not
   /// specified when patching or updating an existing instance, it is left
@@ -12972,7 +12889,7 @@ class Settings {
   ReadPoolAutoScaleConfig? readPoolAutoScaleConfig;
 
   /// Configuration value for recreation of replica after certain replication
-  /// lag.
+  /// lag
   ///
   /// Optional.
   core.int? replicationLagMaxSeconds;
@@ -13359,33 +13276,17 @@ class SourceRole {
 
 /// Represents a pairing of a source instance node and a target instance node.
 class SourceTargetPairedNode {
-  /// Deprecated: Indicates which instance (SOURCE or TARGET) in the pair is
-  /// currently live.
-  ///
-  /// Used for internal implementation and deprecated for external use.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CURRENTLY_SERVING_TRAFFIC_UNSPECIFIED" : The instance serving traffic
-  /// is unknown.
-  /// - "SOURCE" : The source instance is serving traffic.
-  /// - "TARGET" : The target instance is serving traffic.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? currentlyServingTraffic;
-
-  /// Describes the list of differences for this pair.
+  /// Describes the list of differences for the `SourceTargetPairedNode`.
   ///
   /// Output only.
   core.List<ConfigDiff>? diffs;
 
-  /// Resource name of the source instance in this pair.
+  /// Specifies the resource name of the source instance in this pair.
   ///
   /// Output only.
   NodeInfo? source;
 
-  /// The current state of this specific source-target pair.
+  /// Specifies the current state of this specific source-target pair.
   ///
   /// Output only.
   /// Possible string values are:
@@ -13401,29 +13302,15 @@ class SourceTargetPairedNode {
   /// - "DELETING" : The paired node is being deleted.
   core.String? state;
 
-  /// Details of the corresponding target instance in this pair.
+  /// Specifies details of the corresponding target instance in this pair.
   ///
   /// Output only.
   NodeInfo? target;
 
-  /// Tasks performed or being performed on the target instance of this pair.
-  ///
-  /// Output only.
-  core.List<DeploymentTask>? tasks;
-
-  SourceTargetPairedNode({
-    this.currentlyServingTraffic,
-    this.diffs,
-    this.source,
-    this.state,
-    this.target,
-    this.tasks,
-  });
+  SourceTargetPairedNode({this.diffs, this.source, this.state, this.target});
 
   SourceTargetPairedNode.fromJson(core.Map json_)
     : this(
-        currentlyServingTraffic:
-            json_['currentlyServingTraffic'] as core.String?,
         diffs: (json_['diffs'] as core.List?)
             ?.map(
               (value) => ConfigDiff.fromJson(
@@ -13442,29 +13329,18 @@ class SourceTargetPairedNode {
                 json_['target'] as core.Map<core.String, core.dynamic>,
               )
             : null,
-        tasks: (json_['tasks'] as core.List?)
-            ?.map(
-              (value) => DeploymentTask.fromJson(
-                value as core.Map<core.String, core.dynamic>,
-              ),
-            )
-            .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() {
-    final currentlyServingTraffic = this.currentlyServingTraffic;
     final diffs = this.diffs;
     final source = this.source;
     final state = this.state;
     final target = this.target;
-    final tasks = this.tasks;
     return {
-      'currentlyServingTraffic': ?currentlyServingTraffic,
       'diffs': ?diffs,
       'source': ?source,
       'state': ?state,
       'target': ?target,
-      'tasks': ?tasks,
     };
   }
 }
@@ -13493,9 +13369,10 @@ class SqlActiveDirectoryConfig {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "ACTIVE_DIRECTORY_MODE_UNSPECIFIED" : Unspecified mode.
-  /// - "MANAGED_ACTIVE_DIRECTORY" : Managed Active Directory mode. This is the
-  /// fallback option to maintain backward compatibility.
+  /// - "ACTIVE_DIRECTORY_MODE_UNSPECIFIED" : Unspecified mode. Will default to
+  /// MANAGED_ACTIVE_DIRECTORY if the mode is not specified to maintain backward
+  /// compatibility.
+  /// - "MANAGED_ACTIVE_DIRECTORY" : Managed Active Directory mode.
   /// - "SELF_MANAGED_ACTIVE_DIRECTORY" : Deprecated: Use
   /// CUSTOMER_MANAGED_ACTIVE_DIRECTORY instead.
   /// - "CUSTOMER_MANAGED_ACTIVE_DIRECTORY" : Customer-managed Active Directory
@@ -13582,7 +13459,7 @@ class SqlExternalSyncSettingError {
   /// - "INSUFFICIENT_MAX_WORKER_PROCESSES" : The value of parameter
   /// max_worker_processes is not sufficient.
   /// - "UNSUPPORTED_EXTENSIONS" : Extensions installed are either not supported
-  /// or having unsupported versions
+  /// or having unsupported versions.
   /// - "INVALID_RDS_LOGICAL_REPLICATION" : The value of parameter
   /// rds.logical_replication is not set to 1.
   /// - "INVALID_LOGGING_SETUP" : The primary instance logging setup doesn't
@@ -13712,21 +13589,8 @@ class SqlExternalSyncSettingError {
   }
 }
 
-/// Acquire SSRS lease response.
-class SqlInstancesAcquireSsrsLeaseResponse {
-  /// The unique identifier for this operation.
-  core.String? operationId;
-
-  SqlInstancesAcquireSsrsLeaseResponse({this.operationId});
-
-  SqlInstancesAcquireSsrsLeaseResponse.fromJson(core.Map json_)
-    : this(operationId: json_['operationId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final operationId = this.operationId;
-    return {'operationId': ?operationId};
-  }
-}
+/// Response for the acquire SSRS lease request.
+typedef SqlInstancesAcquireSsrsLeaseResponse = $SsrsLeaseResponse;
 
 /// Execute SQL statements response.
 class SqlInstancesExecuteSqlResponse {
@@ -13869,21 +13733,8 @@ class SqlInstancesGetLatestRecoveryTimeResponse {
   }
 }
 
-/// The response for the release of the SSRS lease.
-class SqlInstancesReleaseSsrsLeaseResponse {
-  /// The operation ID.
-  core.String? operationId;
-
-  SqlInstancesReleaseSsrsLeaseResponse({this.operationId});
-
-  SqlInstancesReleaseSsrsLeaseResponse.fromJson(core.Map json_)
-    : this(operationId: json_['operationId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final operationId = this.operationId;
-    return {'operationId': ?operationId};
-  }
-}
+/// Response for the release SSRS lease request.
+typedef SqlInstancesReleaseSsrsLeaseResponse = $SsrsLeaseResponse;
 
 /// Reschedule options for maintenance windows.
 class SqlInstancesRescheduleMaintenanceRequestBody {
@@ -13927,6 +13778,7 @@ class SqlInstancesResetReplicaSizeRequest {
   }
 }
 
+/// Instance start external sync request.
 class SqlInstancesStartExternalSyncRequest {
   /// Region of the Cloud SQL instance.
   ///
@@ -14031,6 +13883,7 @@ class SqlInstancesStartExternalSyncRequest {
   }
 }
 
+/// Instance verify external sync settings request.
 class SqlInstancesVerifyExternalSyncSettingsRequest {
   /// Region of the Cloud SQL instance.
   ///
@@ -14460,7 +14313,7 @@ class SslCert {
 
   /// The time when the certificate was created in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// `2012-11-15T16:19:00.094Z`.
+  /// `2012-11-15T16:19:00.094Z`
   core.String? createTime;
 
   /// The time when the certificate expires in
@@ -14693,7 +14546,7 @@ class SslCertsListResponse {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef Status = $Status;
+typedef Status = $Status00;
 
 /// Request message for switching over a `BlueGreenDeployment` resource.
 typedef SwitchoverBlueGreenDeploymentRequest = $Empty;
@@ -14722,27 +14575,6 @@ class SyncFlags {
     final name = this.name;
     final value = this.value;
     return {'name': ?name, 'value': ?value};
-  }
-}
-
-/// Deprecated: Use RequestedConfig instead.
-///
-/// Configuration specified by the user at creation time for the target (Green)
-/// instance.
-class TargetConfig {
-  /// The target database major version for the upgrade.
-  ///
-  /// Optional.
-  core.String? databaseVersion;
-
-  TargetConfig({this.databaseVersion});
-
-  TargetConfig.fromJson(core.Map json_)
-    : this(databaseVersion: json_['databaseVersion'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() {
-    final databaseVersion = this.databaseVersion;
-    return {'databaseVersion': ?databaseVersion};
   }
 }
 
@@ -14949,7 +14781,7 @@ class User {
 
   /// The name of the Cloud SQL instance.
   ///
-  /// This does not include the project ID. Can be omitted for *update* because
+  /// This does not include the project ID. Can be omitted for `update` because
   /// it is already specified on the URL.
   core.String? instance;
 
@@ -14970,7 +14802,7 @@ class User {
   /// The project ID of the project containing the Cloud SQL database.
   ///
   /// The Google apps domain is prefixed if applicable. Can be omitted for
-  /// *update* because it is already specified on the URL.
+  /// `update` because it is already specified on the URL.
   core.String? project;
 
   /// The server roles for the SQL Server login.
@@ -15150,7 +14982,7 @@ class UsersListResponse {
   /// List of user resources in the instance.
   core.List<User>? items;
 
-  /// This is always *sql#usersList*.
+  /// This is always `sql#usersList`.
   core.String? kind;
 
   /// Unused.
@@ -15186,7 +15018,7 @@ class Value {
   /// If cell value is null, then this flag will be set to true.
   core.bool? nullValue;
 
-  /// The cell value represented in string format.
+  /// The cell value in string format.
   core.String? value;
 
   Value({this.nullValue, this.value});
