@@ -160,7 +160,9 @@ class DiscoveryPackagesConfiguration {
       for (var apiId in missingApis) {
         final version = apiId.split(':').last;
         final isStable =
-            !version.contains('alpha') && !version.contains('beta');
+            !version.contains('alpha') &&
+            !version.contains('beta') &&
+            !version.contains('preview');
 
         final path = isStable
             ? ['packages', 'googleapis', 'apis']
@@ -254,6 +256,7 @@ class DiscoveryPackagesConfiguration {
       for (final result in results) {
         if (!result.success) {
           print(result.toString());
+          exitCode = 1;
         }
       }
 
