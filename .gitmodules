@@ -1,3 +1,5 @@
 [submodule "discovery-artifact-manager"]
 	path = discovery-artifact-manager
 	url = https://github.com/googleapis/discovery-artifact-manager
+	branch = master
+	shallow = true
