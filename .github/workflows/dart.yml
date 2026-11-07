@@ -467,42 +467,6 @@ jobs:
       - job_002
       - job_003
   job_009:
-    name: "unittest; Dart 3.9.0; PKG: generator; `dart test`"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:3.9.0;packages:generator;commands:test_0"
-          restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:3.9.0;packages:generator
-            os:ubuntu-latest;pub-cache-hosted;sdk:3.9.0
-            os:ubuntu-latest;pub-cache-hosted
-            os:ubuntu-latest
-      - name: Setup Dart SDK
-        uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
-        with:
-          sdk: "3.9.0"
-      - id: checkout
-        name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          persist-credentials: false
-      - id: generator_pub_upgrade
-        name: generator; dart pub upgrade
-        run: dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: generator
-      - name: generator; dart test
-        run: dart test
-        if: "always() && steps.generator_pub_upgrade.conclusion == 'success'"
-        working-directory: generator
-    needs:
-      - job_001
-      - job_002
-      - job_003
-  job_010:
     name: "unittest; Dart 3.9.0; PKG: googleapis_auth; `dart test -p chrome --compiler dart2js,dart2wasm`"
     runs-on: ubuntu-latest
     steps:
@@ -538,7 +502,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_011:
+  job_010:
     name: "unittest; Dart 3.9.0; PKG: googleapis_auth; `dart test -p vm`"
     runs-on: ubuntu-latest
     steps:
@@ -574,7 +538,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_012:
+  job_011:
     name: "unittest; Dart dev; PKG: _test_package; `dart test`"
     runs-on: ubuntu-latest
     steps:
@@ -610,7 +574,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_013:
+  job_012:
     name: "unittest; Dart dev; PKG: discoveryapis_commons; `dart test`"
     runs-on: ubuntu-latest
     steps:
@@ -646,7 +610,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_014:
+  job_013:
     name: "unittest; Dart dev; PKG: discoveryapis_generator; `dart test`"
     runs-on: ubuntu-latest
     steps:
@@ -682,7 +646,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_015:
+  job_014:
     name: "unittest; Dart dev; PKG: generated/googleapis; `dart test`"
     runs-on: ubuntu-latest
     steps:
@@ -718,7 +682,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_016:
+  job_015:
     name: "unittest; Dart dev; PKG: generated/googleapis_beta; `dart test`"
     runs-on: ubuntu-latest
     steps:
@@ -754,7 +718,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_017:
+  job_016:
     name: "unittest; Dart dev; PKG: generator; `dart test`"
     runs-on: ubuntu-latest
     steps:
@@ -790,7 +754,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_018:
+  job_017:
     name: "unittest; Dart dev; PKG: googleapis_auth; `dart test -p chrome --compiler dart2js,dart2wasm`"
     runs-on: ubuntu-latest
     steps:
@@ -826,7 +790,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_019:
+  job_018:
     name: "unittest; Dart dev; PKG: googleapis_auth; `dart test -p vm`"
     runs-on: ubuntu-latest
     steps:
@@ -862,7 +826,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_020:
+  job_019:
     name: "analyze_format; Dart 3.9.0; PKG: _googleapis_auth_e2e; `dart analyze`"
     runs-on: ubuntu-latest
     steps:
@@ -913,8 +877,7 @@ jobs:
       - job_016
       - job_017
       - job_018
-      - job_019
-  job_021:
+  job_020:
     name: "analyze_format; Dart dev; PKG: _googleapis_auth_e2e; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos`"
     runs-on: ubuntu-latest
     steps:
@@ -969,4 +932,3 @@ jobs:
       - job_016
       - job_017
       - job_018
-      - job_019
