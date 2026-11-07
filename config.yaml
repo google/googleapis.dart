@@ -404,7 +404,6 @@ skipped_apis:
   - aiplatform:v1beta1
   - alloydb:v1alpha
   - alloydb:v1beta
-  - analyticsadmin:v1alpha
   - analyticshub:v1beta1
   - apigateway:v1beta
   - apim:v1alpha
@@ -491,8 +490,6 @@ skipped_apis:
   - healthcare:v1beta1
   - iam:v2beta
   - iap:v1beta1
-  - identitytoolkit:v1
-  - identitytoolkit:v2
   - jobs:v3p1beta1
   - language:v1beta2
   - managedidentities:v1alpha1

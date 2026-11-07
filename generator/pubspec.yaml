@@ -17,3 +17,4 @@ dependencies:
 
 dev_dependencies:
   pub_semver: ^2.2.1
+  test: ^1.25.0
